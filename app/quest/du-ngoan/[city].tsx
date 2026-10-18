@@ -121,7 +121,7 @@ function City({ city }: { city: keyof typeof CITIES }) {
           {fs.active ? (
             <View pointerEvents="none" style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', gap: 8 }}>
               {[`🎫 ${state.tickets}`, `● ${state.coins}`].map((t) => (
-                <View key={t} style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: 'rgba(15,29,51,0.78)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.7)' }}>
+                <View key={t} style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: 'rgba(255, 253, 247, 0.96)', borderWidth: 1, borderColor: 'rgba(214, 94, 134,0.7)' }}>
                   <Text style={{ color: '#F3EDE1', fontSize: 14, fontWeight: '700' }}>{t}</Text>
                 </View>
               ))}

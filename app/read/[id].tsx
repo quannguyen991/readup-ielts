@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Platform, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, Alert, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import type { QuestionType } from '@/types/database';
 import * as Speech from 'expo-speech';
@@ -8,7 +8,10 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround, highlightRanges, snapToWords, type ReaderTool } from '@/components/reader/PassageView';
 import { QuestionPanel, type QuestionPanelHandle } from '@/components/reader/QuestionPanel';
-import { ExamTopBar, FloatingTools, QuestionNav, SplitPane, ToolRail } from '@/components/reader/exam/ExamChrome';
+import { FloatingTools, SplitPane, ToolRail } from '@/components/reader/exam/ExamChrome';
+import { EXAM_INK, ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
+import { ExamClock } from '@/components/exam/ExamClock';
+import { READING_NAVY, ReadingFrame } from '@/components/exam/ReadingLayout';
 import { NotesPanel, SettingsPanel } from '@/components/reader/exam/ExamPanels';
 import { EXAM, PAPER_THEMES } from '@/components/reader/exam/exam-theme';
 import { useTextSelection } from '@/components/reader/useTextSelection';
@@ -654,7 +657,6 @@ function ReadSession() {
   const theme = PAPER_THEMES.find((t) => t.key === paperKey) ?? PAPER_THEMES[0]!;
   const passageFont = EXAM_FONTS.find((f) => f.key === fontKey) ?? EXAM_FONTS[0]!;
   const pad = wide ? 28 : phone ? 16 : 20;
-  const allAnswered = questions.length > 0 && answeredCount >= questions.length;
 
   const toggleFullscreen = () => {
     if (Platform.OS !== 'web' || typeof document === 'undefined') return;
@@ -847,48 +849,122 @@ function ReadSession() {
     </View>
   );
 
-  return (
-    <View style={{ flex: 1, backgroundColor: EXAM.page }}>
-      <ExamTopBar
-        narrow={phone}
-        compact={lay.compactHeight}
-        paused={runEnd !== undefined ? false : paused}
-        onTogglePause={runEnd !== undefined ? () => {} : () => setPaused((p) => !p)}
-        endAt={runEnd}
-        onExpire={() => submit()}
-        onExit={() => router.back()}
-        notesOpen={notesOpen}
-        onNotes={toggleNotes}
-        settingsOpen={settingsOpen}
-        onSettings={() => {
-          setSettingsOpen((o) => !o);
-          setNotesOpen(false);
-        }}
-        onTutor={() => setChatOpen(true)}
-      />
+  // Bố cục phòng thi chung: một thanh công cụ kem phía trên, hai tấm viền mực bên dưới.
+  // Thanh này chỉ vẽ lại trạng thái đã có (đáp án, câu hiện tại, giấy, chữ, đồng hồ).
+  const answeredNums = new Set<number>();
+  questions.forEach((q, i) => {
+    if (answers[q.id]) answeredNums.add(i + 1);
+  });
+  const paperIndex = Math.max(0, PAPER_THEMES.findIndex((t) => t.key === paperKey));
+  const cycleFont = () => {
+    const i = EXAM_FONTS.findIndex((f) => f.key === fontKey);
+    setFontKey(EXAM_FONTS[(i + 1) % EXAM_FONTS.length]!.key);
+  };
+  const cycleSize = () => {
+    const next = SIZE_STEPS.find((s) => s > fontScale + 0.01);
+    setFontScale(next ?? SIZE_STEPS[0]);
+  };
 
-      <View style={{ flex: 1, minHeight: 0 }}>
-        {split ? (
-          <SplitPane left={passagePane} right={questionsPane} />
+  const toolbar = (
+    <ExamToolbar
+      onBack={() => router.back()}
+      parts={[{ key: 'read', label: L('Bài đọc', 'Passage') }]}
+      activePart="read"
+      onPickPart={() => {}}
+      questionNumbers={questions.map((_, i) => i + 1)}
+      answered={answeredNums}
+      current={activeQ}
+      onJump={jumpTo}
+      timer=""
+      timerSlot={
+        runEnd !== undefined ? (
+          <ExamClock endAt={runEnd} onExpire={() => submit()} />
         ) : (
-          <CrossFade swapKey={`tab-${narrowTab}`} style={{ flex: 1 }}>
-            {narrowTab === 'passage' ? passagePane : questionsPane}
-          </CrossFade>
-        )}
-      </View>
+          <ExamClock paused={paused} onToggle={() => setPaused((p) => !p)} />
+        )
+      }
+      typography={{
+        fontLabel: passageFont.label,
+        onCycleFont: cycleFont,
+        sizeLabel: `${Math.round(16 * fontScale)}px`,
+        onCycleSize: cycleSize,
+      }}
+      themes={{
+        swatches: PAPER_THEMES.map((t) => t.bg),
+        theme: paperIndex,
+        onPick: (i) => setPaperKey(PAPER_THEMES[i]?.key ?? 'white'),
+      }}
+      extras={
+        <View style={{ flexDirection: 'row', gap: 6 }}>
+          <ExamToolbarButton label={L('Ghi chú', 'Notes')} icon="note" active={notesOpen} compact={phone} onPress={toggleNotes} />
+          <ExamToolbarButton
+            label={L('Cài đặt', 'Settings')}
+            icon="settings"
+            active={settingsOpen}
+            compact={phone}
+            onPress={() => {
+              setSettingsOpen((o) => !o);
+              setNotesOpen(false);
+            }}
+          />
+          <ExamToolbarButton
+            label={L('Trợ giảng', 'Tutor')}
+            icon="chat"
+            compact={phone}
+            accessibilityLabel={L('Mở trợ giảng', 'Open tutor')}
+            onPress={() => setChatOpen(true)}
+          />
+        </View>
+      }
+      submitLabel={submitting ? L('Đang chấm…', 'Grading…') : L('Hoàn thành', 'Finish')}
+      submitDisabled={submitting || questions.length === 0}
+      onSubmit={finish}
+    />
+  );
 
-      <QuestionNav
-        items={questions.map((q) => ({ id: q.id, answered: Boolean(answers[q.id]), marked: Boolean(marked[q.id]) }))}
-        current={activeQ}
-        onJump={jumpTo}
-        onFinish={finish}
-        allAnswered={allAnswered}
-        submitting={submitting}
-        narrow={!split}
-        compact={lay.compactHeight}
-        tab={narrowTab}
-        onTab={setNarrowTab}
-      />
+  // Màn hẹp chỉ đủ một tấm: công tắc Bài đọc / Câu hỏi nằm ngay trên khung.
+  const narrowTabs = (
+    <View
+      accessibilityRole="tablist"
+      style={{ flexDirection: 'row', gap: 6, padding: 4, borderRadius: 999, backgroundColor: '#FFF5F8', borderWidth: 2, borderColor: EXAM_INK }}
+    >
+      {(['passage', 'questions'] as const).map((t) => (
+        <Pressable
+          key={t}
+          accessibilityRole="tab"
+          aria-selected={narrowTab === t}
+          onPress={() => setNarrowTab(t)}
+          style={{ flex: 1, height: 40, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: narrowTab === t ? EXAM_INK : 'transparent' }}
+        >
+          <Text style={{ fontSize: 14, fontWeight: '800', color: narrowTab === t ? '#FFFFFF' : EXAM_INK }}>
+            {t === 'passage' ? L('Bài đọc', 'Passage') : `${L('Câu hỏi', 'Questions')}${questions.length ? ` ${answeredCount}/${questions.length}` : ''}`}
+          </Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+
+  const mainBody = split ? (
+    <SplitPane
+      left={<ReadingFrame bg={theme.bg} flex={1}>{passagePane}</ReadingFrame>}
+      right={<ReadingFrame bg={EXAM.white} flex={1}>{questionsPane}</ReadingFrame>}
+    />
+  ) : (
+    <View style={{ flex: 1, minHeight: 0, gap: 10 }}>
+      {narrowTabs}
+      <CrossFade swapKey={`tab-${narrowTab}`} style={{ flex: 1, minHeight: 0 }}>
+        <ReadingFrame bg={narrowTab === 'passage' ? theme.bg : EXAM.white} flex={1}>
+          {narrowTab === 'passage' ? passagePane : questionsPane}
+        </ReadingFrame>
+      </CrossFade>
+    </View>
+  );
+
+  return (
+    <View style={{ flex: 1, backgroundColor: READING_NAVY, padding: split ? 12 : 10, gap: 10 }}>
+      {toolbar}
+
+      <View style={{ flex: 1, minHeight: 0 }}>{mainBody}</View>
 
       {notesOpen ? (
         <NotesPanel
@@ -950,3 +1026,6 @@ const EXAM_FONTS = [
   { key: 'lora', label: 'Lora', title: readingFont.body, body: readingFont.body },
   { key: 'sans', label: 'Jakarta', title: readingFont.sans, body: readingFont.sans },
 ] as const;
+
+/** Các cỡ chữ bài đọc, theo bội số của 16px, để nút cỡ chữ trên thanh công cụ bấm vòng. */
+const SIZE_STEPS = [0.9, 1, 1.15, 1.3] as const;

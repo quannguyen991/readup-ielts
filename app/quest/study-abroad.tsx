@@ -102,7 +102,7 @@ export default function StudyAbroadCampaignScreen() {
                         style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 10, borderRadius: 10, borderWidth: 1.5, borderColor: active ? T.goldDark : T.line, backgroundColor: active ? '#F7EDDA' : T.paper, opacity: unlocked ? 1 : 0.52 }}
                       >
                         <View style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: done ? T.good : active ? T.goldDark : T.navy }}>
-                          <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 12 }}>{done ? '✓' : unlocked ? index + 1 : '🔒'}</Text>
+                          <Text style={{ color: '#2A1808', fontWeight: '800', fontSize: 12 }}>{done ? '✓' : unlocked ? index + 1 : '🔒'}</Text>
                         </View>
                         <View className="min-w-0 flex-1">
                           <Text className="font-strong" style={{ color: T.ink, fontSize: 14 }}>{bi(mission.place, locale)}</Text>

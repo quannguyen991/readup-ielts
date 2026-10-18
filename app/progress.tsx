@@ -20,6 +20,10 @@ import {
   TrendBadge,
 } from '@/components/ui';
 import { filterArticles, getArticleWithBody } from '@/data/articles';
+import { ActivityList } from '@/components/progress/ActivityList';
+import { StreakRewardsCard } from '@/components/progress/StreakRewardsCard';
+import { useActivityFeed } from '@/services/activity/use-activity';
+import { isActiveDay } from '@/services/gamification/points';
 import { bandDelta, formatBand, latestBand } from '@/lib/band';
 import { MATH_DOMAIN_LABEL, MATH_ERROR_LABEL, type MathDomain } from '@/lib/math/types';
 import { formatAccuracy } from '@/services/math/scoring';
@@ -114,6 +118,7 @@ export default function ProgressScreen() {
   const sessions = useStudyStore((s) => s.sessions);
   const recentDays = useRecentDays(range);
   const streak = useStreak();
+  const activity = useActivityFeed();
   const accuracyByType = useAccuracyByType();
   // Mục tiêu và điểm xuất phát lấy từ chính người dùng khai (xem services/progress/goal.ts).
   const roadmapIelts = useRoadmapStore((s) => s.input?.ielts ?? null);
@@ -257,17 +262,19 @@ export default function ProgressScreen() {
           {recentDays.slice(-7).map((d) => (
             <View key={d.date} className="flex-1 items-center gap-1.5">
               <View
-                accessibilityLabel={d.minutes > 0 ? L('Có học', 'Studied') : L('Chưa học', 'Not studied')}
+                accessibilityLabel={isActiveDay(d) ? L('Có học', 'Studied') : L('Chưa học', 'Not studied')}
                 className="h-8 w-8 items-center justify-center rounded-pill"
-                style={{ backgroundColor: d.minutes > 0 ? themedHex('#D9A441') : 'rgba(255,255,255,0.75)' }}
+                style={{ backgroundColor: isActiveDay(d) ? themedHex('#D9A441') : 'rgba(255,255,255,0.75)' }}
               >
-                {d.minutes > 0 ? <Icon name="check" size={14} color="#FFFFFF" strokeWidth={2.6} /> : null}
+                {isActiveDay(d) ? <Icon name="check" size={14} color="#FFFFFF" strokeWidth={2.6} /> : null}
               </View>
               <Text className="font-mid text-label text-muted">{weekdayOf(d.date)}</Text>
             </View>
           ))}
         </View>
       </LinearGradient>
+
+      <StreakRewardsCard current={streak.current} longest={streak.longest} />
 
       <View
         accessibilityRole="tablist"
@@ -586,6 +593,17 @@ export default function ProgressScreen() {
       </View>
 
       <MathProgressCard />
+
+      <Card className="mt-4">
+        <SectionHeader
+          title={L('Hoạt động gần đây', 'Recent activity')}
+          icon="clock"
+          action={{ label: L('Xem tất cả', 'View all'), onPress: () => router.push('/lich-su' as never) }}
+        />
+        <View className="mt-3">
+          <ActivityList items={activity.slice(0, 6)} emptyText={L('Chưa có việc nào. Làm một bài, nghe một đề hoặc viết một bài là sẽ thấy ở đây.', 'Nothing yet. Do a test, a listening or a writing task and it will show up here.')} />
+        </View>
+      </Card>
 
       <Card className="mt-4">
         <SectionHeader

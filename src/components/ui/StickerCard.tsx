@@ -6,6 +6,8 @@ import { radius } from '@/theme/tokens';
 import { useRetroStyle } from '@/components/profile-retro/retro-scope';
 import { RINK } from '@/components/profile-retro/retro-art';
 import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
+import { ensureTaskMotionCss } from '@/components/motion/task-motion';
+ensureTaskMotionCss();
 
 type StickerCardProps = ViewProps & {
   /** Hai màu cùng tông, sáng → đậm — nền gradient chéo của thẻ. */
@@ -91,7 +93,13 @@ export function StickerCard({ colors: colorsProp, children, className, style, bo
       ? ({
           boxShadow: pixel
             ? px?.elev ?? 'none'
-            : `0 1px 2px rgba(15,23,42,0.06), 0 ${lifted ? 16 : bold ? 10 : 8}px ${lifted ? 32 : 24}px ${tone}${lifted ? '59' : '40'}`,
+            : lifted
+              ? // Rê chuột: bóng đổ sâu hơn, lớp màu của thẻ loang xuống dưới.
+                `0 4px 6px rgba(15,23,42,0.18), 0 18px 28px -6px rgba(15,23,42,0.26), 0 32px 52px -12px ${tone}CC`
+              : bold
+                ? // Thẻ nổi bật (bold): bóng đổ rõ hơn để thẻ tách khỏi nền.
+                  `0 3px 5px rgba(15,23,42,0.16), 0 14px 22px -4px rgba(15,23,42,0.22), 0 24px 40px -10px ${tone}B3`
+                : `0 2px 4px rgba(15,23,42,0.14), 0 10px 18px -4px rgba(15,23,42,0.2), 0 18px 34px -10px ${tone}99`,
           transitionProperty: 'box-shadow',
           transitionDuration: '140ms',
           transitionTimingFunction: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
@@ -117,7 +125,8 @@ export function StickerCard({ colors: colorsProp, children, className, style, bo
   return (
     <CardHoverContext.Provider value={pose !== 'rest'}>
       <Animated.View className={['rounded-card', className ?? ''].filter(Boolean).join(' ')} style={[{ borderRadius: radius.card }, shadow, motion, retro ? { borderWidth: 3, borderColor: RINK, ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}) } : null, px ? { borderWidth: px.bw, borderColor: px.line, borderRadius: px.radius } : null, style]} {...(handlers as object)} {...rest}>
-        <View className="flex-1 overflow-hidden rounded-card">
+        {/* Lớp bóng quét nằm ở đây: Animated.View không nhận className trên web, còn khung trong thì nhận. */}
+        <View className={['flex-1 overflow-hidden rounded-card', retro || px ? '' : 'rm-shine'].filter(Boolean).join(' ')}>
           <LinearGradient colors={face} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 16, flex: 1 }}>
             {children}
           </LinearGradient>

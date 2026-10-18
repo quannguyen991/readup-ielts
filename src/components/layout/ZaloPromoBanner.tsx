@@ -128,9 +128,9 @@ export function ZaloPromoBanner() {
           className="min-w-0 flex-1 justify-center"
           style={{ minHeight: 44 }}
         >
-          <Text className={`text-[13px] font-bold leading-tight ${chiikawa ? 'text-pink-200' : 'text-amber-200'}`} numberOfLines={2}>
+          <Text className={`text-[13px] font-strong leading-tight ${chiikawa ? 'text-pink-200' : 'text-amber-200'}`} numberOfLines={2}>
             {L('Gói MAX 2 tháng miễn phí', '2 months of MAX free')}
-            <Text className="font-medium text-white">{L(' · nhắn Zalo để nhận', ' · message us on Zalo')}</Text>
+            <Text className="font-mid text-white">{L(' · nhắn Zalo để nhận', ' · message us on Zalo')}</Text>
           </Text>
         </Pressable>
         <Pressable
@@ -140,7 +140,7 @@ export function ZaloPromoBanner() {
           className="items-center justify-center rounded-lg bg-white/10 px-3 active:opacity-70"
           style={{ minHeight: 44 }}
         >
-          <Text className={`text-[13px] font-semibold ${copied ? 'text-green-300' : 'text-slate-100'}`}>
+          <Text className={`text-[13px] font-semi ${copied ? 'text-green-300' : 'text-slate-100'}`}>
             {copied ? L('Đã chép', 'Copied') : L('Chép SĐT', 'Copy')}
           </Text>
         </Pressable>
@@ -178,20 +178,20 @@ export function ZaloPromoBanner() {
           {/* Text thông điệp */}
           <View className="flex-1 flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
             <View className={`rounded-full px-2 py-0.5 border ${chiikawa ? 'bg-pink-300/20 border-pink-200/35' : 'bg-amber-400/20 border-amber-300/35'}`}>
-              <Text className={`text-[12px] font-bold uppercase tracking-wider ${chiikawa ? 'text-pink-200' : 'text-amber-300'}`}>
+              <Text className={`text-[12px] font-strong uppercase tracking-wider ${chiikawa ? 'text-pink-200' : 'text-amber-300'}`}>
                 {L('Ưu Đãi Độc Quyền', 'Exclusive offer')}
               </Text>
             </View>
             <Text className="text-[13px] leading-tight text-white">
               {L('Nhắn tin Zalo', 'Message us on Zalo at')}{' '}
               <Text
-                className={`font-bold underline cursor-pointer ${chiikawa ? 'text-pink-200' : 'text-amber-300'}`}
+                className={`font-strong underline cursor-pointer ${chiikawa ? 'text-pink-200' : 'text-amber-300'}`}
                 onPress={handleOpenZalo}
               >
                 {ZALO_PHONE}
               </Text>{' '}
               {L('để nhận mã mời kích hoạt', 'to get an invite code for')}{' '}
-              <Text className={`font-extrabold ${chiikawa ? 'text-pink-200' : 'text-amber-200'}`}>
+              <Text className={`font-heavy ${chiikawa ? 'text-pink-200' : 'text-amber-200'}`}>
                 {L('Gói MAX 2 tháng miễn phí!', '2 months of MAX free!')}
               </Text>
             </Text>
@@ -212,7 +212,7 @@ export function ZaloPromoBanner() {
               size={14}
               color={copied ? '#4ADE80' : '#F0EBE2'}
             />
-            <Text className={`text-[12px] font-semibold ${copied ? 'text-green-300' : 'text-slate-200'}`}>
+            <Text className={`text-[12px] font-semi ${copied ? 'text-green-300' : 'text-slate-200'}`}>
               {copied ? L('Đã chép số!', 'Number copied!') : L('Chép SĐT', 'Copy number')}
             </Text>
           </Pressable>
@@ -240,7 +240,7 @@ export function ZaloPromoBanner() {
             >
               <Text style={{ fontSize: 12, fontWeight: '900', color: chiikawa ? '#B83D68' : '#8F6E36' }}>Z</Text>
             </View>
-            <Text className="text-[12px] font-bold text-white">{L('Nhắn Zalo ngay', 'Message on Zalo')}</Text>
+            <Text className="text-[12px] font-strong text-white">{L('Nhắn Zalo ngay', 'Message on Zalo')}</Text>
             <Icon name="external" size={12} color="#FFFFFF" />
           </Pressable>
 

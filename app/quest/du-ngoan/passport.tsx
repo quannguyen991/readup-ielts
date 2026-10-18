@@ -94,7 +94,7 @@ function Passport() {
             </Text>
             {badge ? (
               <View style={{ minWidth: 20, height: 20, borderRadius: 10, paddingHorizontal: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: T.bad }}>
-                <Text className="font-heavy" style={{ fontSize: 14, color: '#FFFFFF' }}>
+                <Text className="font-heavy" style={{ fontSize: 14, color: '#2A1808' }}>
                   {badge}
                 </Text>
               </View>

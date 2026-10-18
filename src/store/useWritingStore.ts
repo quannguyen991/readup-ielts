@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage, uid } from './persist';
 import { addSubmission, submissionsForPrompt, writingProgress } from './writing-history';
+import { useStudyStore } from './useStudyStore';
 import { countWords } from '@/lib/writing/word-count';
 import type {
   DrillPart,
@@ -108,6 +109,11 @@ export const useWritingStore = create<WritingState>()(
         };
         set((s) => ({ submissions: addSubmission(s.submissions, submission) }));
         get().clearDraft(input.promptId, input.drillPart);
+        // Bài viết tính vào thời gian học và vào chuỗi ngày, như mọi việc khác.
+        const study = useStudyStore.getState();
+        const minutes = Math.round(input.durationSeconds / 60);
+        if (minutes > 0) study.logStudyTime('practice', Math.min(minutes, 60));
+        study.logEvent();
         return submission;
       },
 

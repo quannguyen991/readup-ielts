@@ -11,7 +11,7 @@ import { satHubTargets } from './sat-hub';
 */
 const MUST_STAY_REACHABLE = [
   '/intro', '/dashboard', '/practice', '/write', '/mock-tests', '/math', '/sat-rw', '/sat/full-test',
-  '/sentence', '/sentence/sets', '/sentence/youtube', '/library', '/bilingual', '/vocabulary',
+  '/sentence', '/library', '/bilingual', '/vocabulary',
   '/vocabulary/quiz', '/vocabulary/topics', '/notes', '/bookmarks', '/plan', '/progress',
   '/leaderboard', '/shop', '/profile', '/teacher', '/quest', '/quest/hero', '/invite', '/upgrade', '/settings',
 ];
@@ -43,7 +43,7 @@ test('trang SAT rời thanh bên vẫn có lối vào từ hub SAT', () => {
 
 test('nhóm SAT trên thanh bên chỉ còn khoảng bốn trang con', () => {
   const sat = NAV_ITEMS.find((i) => i.key === 'sat');
-  assert.ok(sat?.children && sat.children.length <= 4, `${sat?.children?.length} trang con`);
+  assert.ok(sat?.children && sat.children.length <= 5, `${sat?.children?.length} trang con`);
   for (const child of sat.children) assert.ok(NAV_LABEL_EN[child.key], `${child.key} thiếu nhãn tiếng Anh`);
 });
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, ScrollView, Text as RNText, TextInput, View, type TextProps } from 'react-native';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
+import { ReadingShell } from '@/components/exam/ReadingLayout';
 import { readLS, writeLS, type Page, type Grade } from './ComputerDeliveredExamRoom';
 
 /** Phông Be Vietnam Pro của Band 9, chọn theo độ đậm cũ của từng chữ. */
@@ -154,247 +156,203 @@ export function PracticeRoom({
     if (y !== undefined) scrollRef.current?.scrollTo({ y: Math.max(0, y - 8), animated: true });
   };
 
-  return (
-    <View style={{ flex: 1, backgroundColor: PAPER }}>
-      {/* ===== Thanh trên: thoát, đồng hồ, nộp bài ===== */}
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 12,
-          paddingHorizontal: 18,
-          paddingVertical: 12,
-          backgroundColor: '#FFFFFF',
-          borderBottomWidth: 1,
-          borderBottomColor: LINE,
-        }}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexShrink: 1 }}>
-          <Pressable onPress={onExit} accessibilityRole="button" accessibilityLabel="Đóng" style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: PAPER }}>
-            <Icon name="close" size={18} color={INK} />
-          </Pressable>
-          <View style={{ flexShrink: 1 }}>
-            <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK, letterSpacing: 1 }}>LUYỆN TẬP</Text>
-            <Text style={{ fontSize: 16, fontWeight: '800', color: INK }} numberOfLines={1}>{testTitle}</Text>
-          </View>
-        </View>
+  const answeredSet = new Set(
+    Array.from({ length: questionCount }, (_, i) => i + 1).filter((n) => Boolean(answers[String(n)]?.trim())),
+  );
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, backgroundColor: PAPER }}>
-          <Icon name="clock" size={15} color={GOLD_DARK} />
-          <Text style={{ fontSize: 15, fontWeight: '800', color: INK }}>{formatTimer(elapsedSecs)}</Text>
-          <Pressable onPress={() => setIsPaused(!isPaused)} accessibilityRole="button" style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: isPaused ? '#166534' : '#FFFFFF', borderWidth: 1, borderColor: LINE }}>
-            <Text style={{ fontSize: 11, fontWeight: '800', color: isPaused ? '#FFFFFF' : INK }}>{isPaused ? 'Tiếp tục' : 'Tạm dừng'}</Text>
-          </Pressable>
-        </View>
+  const toolbar = (
+    <ExamToolbar
+      onBack={onExit}
+      parts={[
+        { key: 'all', label: `Tất cả (${questionCount} câu)` },
+        { key: '1', label: 'Passage 1' },
+        { key: '2', label: 'Passage 2' },
+        { key: '3', label: 'Passage 3' },
+      ]}
+      activePart={String(selectedPart)}
+      onPickPart={(key) => {
+        const next = key === 'all' ? 'all' : (Number(key) as 1 | 2 | 3);
+        setSelectedPart(next);
+        setActiveNav(next === 'all' ? 1 : next === 1 ? 1 : next === 2 ? 14 : 27);
+      }}
+      questionNumbers={activeQuestions}
+      answered={answeredSet}
+      current={activeNav}
+      onJump={jumpTo}
+      timer={formatTimer(elapsedSecs)}
+      extras={
+        <ExamToolbarButton
+          label={isPaused ? 'Tiếp tục' : 'Tạm dừng'}
+          icon="clock"
+          active={isPaused}
+          onPress={() => setIsPaused(!isPaused)}
+        />
+      }
+      submitLabel="Nộp bài chấm Band"
+      onSubmit={onSubmit}
+    />
+  );
 
-        <Pressable onPress={onSubmit} accessibilityRole="button" style={{ paddingHorizontal: 18, paddingVertical: 10, borderRadius: 12, backgroundColor: GOLD }}>
-          <Text style={{ color: NAVY, fontSize: 13, fontWeight: '900' }}>Nộp bài chấm Band</Text>
-        </Pressable>
+  const passagePane = (
+    <View style={{ flex: 1, minHeight: 0 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, padding: 10, borderBottomWidth: 1, borderBottomColor: LINE }}>
+        <ToolButton icon="pencil" label="Tô sáng" hint="Chạm đoạn văn" />
+        <ToolButton icon="note" label="Ghi chú" hint={onlyNotes ? 'Đang lọc' : 'Chỉ câu có ghi chú'} active={onlyNotes} onPress={() => setOnlyNotes((v) => !v)} />
+        <ToolButton icon="close" label="Xóa tô sáng" hint="Phần đang xem" onPress={clearHighlights} />
       </View>
-
-      {/* ===== Chọn phần đọc ===== */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, paddingHorizontal: 18, paddingVertical: 10, backgroundColor: PAPER }}>
-        <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
-          {[
-            { id: 'all' as const, label: `Tất cả (${questionCount} câu)` },
-            { id: 1 as const, label: 'Passage 1' },
-            { id: 2 as const, label: 'Passage 2' },
-            { id: 3 as const, label: 'Passage 3' },
-          ].map((tab) => {
-            const on = selectedPart === tab.id;
+      <View style={{ flex: 1, minHeight: 0, paddingHorizontal: 18, paddingTop: 12 }}>
+        <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK, letterSpacing: 1 }}>
+          {selectedPart === 'all' ? 'TOÀN BỘ BÀI ĐỌC' : `READING PASSAGE ${selectedPart}`}
+        </Text>
+        <Text style={{ fontSize: 12, color: MUTED, marginTop: 4, marginBottom: 8 }}>Chạm vào đoạn để tô sáng. Bôi đen chữ để tra từ.</Text>
+        <ScrollView contentContainerStyle={{ gap: 16, paddingBottom: 40 }}>
+          {paragraphs.map((para, i) => {
+            const key = `${selectedPart}:${i}`;
+            const on = highlightedText.has(key);
+            const letter = String.fromCharCode(65 + (i % 26));
             return (
-              <Pressable
-                key={String(tab.id)}
-                onPress={() => {
-                  setSelectedPart(tab.id);
-                  setActiveNav(tab.id === 'all' ? 1 : tab.id === 1 ? 1 : tab.id === 2 ? 14 : 27);
-                }}
-                accessibilityRole="button"
-                accessibilityState={{ selected: on }}
-                style={{ paddingHorizontal: 14, paddingVertical: 7, borderRadius: 999, backgroundColor: on ? NAVY : '#FFFFFF', borderWidth: 1, borderColor: on ? NAVY : LINE }}
-              >
-                <Text style={{ fontSize: 12, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{tab.label}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-        <Text style={{ fontSize: 12, color: MUTED }}>Đã điền {partAnswered}/{baseQuestions.length} câu của phần này · tổng {answeredCount}</Text>
-      </View>
-
-      {/* ===== Thân: cột công cụ, đoạn văn, câu hỏi ===== */}
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={{ width: 92, padding: 10, gap: 10, backgroundColor: '#FFFFFF', borderRightWidth: 1, borderRightColor: LINE }}>
-          <ToolButton icon="pencil" label="Tô sáng" hint="Chạm đoạn văn" />
-          <ToolButton icon="note" label="Ghi chú" hint={onlyNotes ? 'Đang lọc' : 'Chỉ câu có ghi chú'} active={onlyNotes} onPress={() => setOnlyNotes((v) => !v)} />
-          <ToolButton icon="close" label="Xóa tô sáng" hint="Phần đang xem" onPress={clearHighlights} />
-        </View>
-
-        {/* Đoạn văn */}
-        <View style={{ flex: 1.1, padding: 16 }}>
-          <View style={{ flex: 1, backgroundColor: '#FFFFFF', borderRadius: 16, borderWidth: 1, borderColor: LINE, padding: 22 }}>
-            <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK, letterSpacing: 1 }}>
-              {selectedPart === 'all' ? 'TOÀN BỘ BÀI ĐỌC' : `READING PASSAGE ${selectedPart}`}
-            </Text>
-            <Text style={{ fontSize: 12, color: MUTED, marginTop: 4, marginBottom: 12 }}>Chạm vào đoạn để tô sáng. Bôi đen chữ để tra từ.</Text>
-            <ScrollView contentContainerStyle={{ gap: 16, paddingBottom: 40 }}>
-              {paragraphs.map((para, i) => {
-                const key = `${selectedPart}:${i}`;
-                const on = highlightedText.has(key);
-                const letter = String.fromCharCode(65 + (i % 26));
-                return (
-                  <View key={key} style={{ flexDirection: 'row', gap: 10 }}>
-                    <Text style={{ width: 22, fontSize: 14, fontWeight: '800', color: GOLD_DARK, paddingTop: 2 }}>{letter}</Text>
-                    <Pressable
-                      onPress={() => toggleHighlight(key)}
-                      accessibilityRole="button"
-                      accessibilityLabel={on ? 'Bỏ tô sáng đoạn này' : 'Tô sáng đoạn này'}
-                      style={{ flex: 1, borderRadius: 6, backgroundColor: on ? '#FEF08A' : 'transparent', paddingHorizontal: on ? 8 : 0, paddingVertical: on ? 4 : 0 }}
-                    >
-                      <Text style={{ fontSize: 15, lineHeight: 24, color: INK, fontFamily: SERIF }} selectable>{para}</Text>
-                    </Pressable>
-                  </View>
-                );
-              })}
-            </ScrollView>
-          </View>
-        </View>
-
-        {/* Câu hỏi */}
-        <View style={{ flex: 0.9, padding: 16, paddingLeft: 0 }}>
-          <View style={{ backgroundColor: '#FFFFFF', borderRadius: 16, borderWidth: 1, borderColor: LINE, padding: 16, gap: 8, marginBottom: 12 }}>
-            <Text style={{ fontSize: 16, fontWeight: '900', color: INK }}>
-              {activeQuestions.length ? `Câu ${activeQuestions[0]}–${activeQuestions[activeQuestions.length - 1]}` : 'Không có câu nào'}
-            </Text>
-            {[
-              ['TRUE', 'Thông tin khớp với bài đọc'],
-              ['FALSE', 'Thông tin mâu thuẫn với bài đọc'],
-              ['NOT GIVEN', 'Bài đọc không đề cập'],
-            ].map(([k, v]) => (
-              <View key={k} style={{ flexDirection: 'row', gap: 10 }}>
-                <Text style={{ width: 84, fontSize: 12, fontWeight: '800', color: INK }}>{k}</Text>
-                <Text style={{ flex: 1, fontSize: 12, color: MUTED }}>{v}</Text>
-              </View>
-            ))}
-          </View>
-
-          <ScrollView ref={scrollRef} style={{ flex: 1 }} contentContainerStyle={{ gap: 12, paddingBottom: 24 }}>
-            {activeQuestions.map((num) => {
-              const val = answers[String(num)] ?? '';
-              const isChecked = checkedQuestions[num];
-              const res = grade?.results.find((r) => r.number === num);
-              const isShowingExpl = showExplanation[num];
-              const isActive = activeNav === num;
-              const border = isChecked && res?.correct ? '#16A34A' : isChecked && res && !res.correct ? '#DC2626' : isActive ? GOLD : LINE;
-
-              return (
-                <View
-                  key={num}
-                  onLayout={(e) => {
-                    cardY.current[num] = e.nativeEvent.layout.y;
-                  }}
-                  style={{ padding: 16, borderRadius: 14, backgroundColor: '#FFFFFF', borderWidth: isActive ? 2 : 1, borderColor: border, gap: 12 }}
+              <View key={key} style={{ flexDirection: 'row', gap: 10 }}>
+                <Text style={{ width: 22, fontSize: 14, fontWeight: '800', color: GOLD_DARK, paddingTop: 2 }}>{letter}</Text>
+                <Pressable
+                  onPress={() => toggleHighlight(key)}
+                  accessibilityRole="button"
+                  accessibilityLabel={on ? 'Bỏ tô sáng đoạn này' : 'Tô sáng đoạn này'}
+                  style={{ flex: 1, borderRadius: 6, backgroundColor: on ? '#FEF08A' : 'transparent', paddingHorizontal: on ? 8 : 0, paddingVertical: on ? 4 : 0 }}
                 >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                      <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: val.trim() ? NAVY : PAPER, borderWidth: 1, borderColor: val.trim() ? NAVY : LINE }}>
-                        <Text style={{ fontSize: 13, fontWeight: '900', color: val.trim() ? '#FFFFFF' : INK }}>{num}</Text>
-                      </View>
-                      <Text style={{ fontSize: 14, fontWeight: '800', color: INK }}>Câu {num}</Text>
-                    </View>
-                    <Pressable
-                      onPress={() => {
-                        setCheckedQuestions((prev) => ({ ...prev, [num]: true }));
-                        setShowExplanation((prev) => ({ ...prev, [num]: !prev[num] }));
-                      }}
-                      accessibilityRole="button"
-                      style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE }}
-                    >
-                      <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK }}>{isShowingExpl ? 'Ẩn giải thích' : 'Xem giải thích'}</Text>
-                    </Pressable>
-                  </View>
-
-                  <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
-                    {CHOICES.map((opt) => {
-                      const on = val.toUpperCase() === opt;
-                      return (
-                        <Pressable key={opt} onPress={() => onAnswerChange(num, opt)} accessibilityRole="button" accessibilityState={{ selected: on }} style={{ paddingHorizontal: 12, paddingVertical: 7, borderRadius: 8, backgroundColor: on ? NAVY : PAPER, borderWidth: 1, borderColor: on ? NAVY : LINE }}>
-                          <Text style={{ fontSize: 11, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{opt}</Text>
-                        </Pressable>
-                      );
-                    })}
-                    {LETTERS.map((letter) => {
-                      const on = val.toUpperCase() === letter;
-                      return (
-                        <Pressable key={letter} onPress={() => onAnswerChange(num, letter)} accessibilityRole="button" accessibilityState={{ selected: on }} style={{ width: 32, height: 32, borderRadius: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? NAVY : PAPER, borderWidth: 1, borderColor: on ? NAVY : LINE }}>
-                          <Text style={{ fontSize: 12, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{letter}</Text>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
-
-                  <TextInput
-                    value={val}
-                    onChangeText={(t) => onAnswerChange(num, t)}
-                    placeholder="Điền câu trả lời..."
-                    placeholderTextColor="#A39686"
-                    style={{ height: 40, borderRadius: 8, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE, paddingHorizontal: 12, fontSize: 14, color: INK }}
-                  />
-
-                  <Pressable onPress={() => setNoteOpen((p) => ({ ...p, [num]: !p[num] }))} accessibilityRole="button" style={{ alignSelf: 'flex-start' }}>
-                    <Text style={{ fontSize: 12, fontWeight: '800', color: GOLD_DARK }}>
-                      {notes[String(num)] ? 'Ghi chú của câu này' : noteOpen[num] ? 'Ẩn ghi chú' : '+ Ghi chú'}
-                    </Text>
-                  </Pressable>
-                  {noteOpen[num] || notes[String(num)] ? (
-                    <TextInput
-                      value={notes[String(num)] ?? ''}
-                      onChangeText={(t) => setNotes((prev) => ({ ...prev, [String(num)]: t }))}
-                      placeholder="Ghi chú cho câu này..."
-                      placeholderTextColor="#A39686"
-                      multiline
-                      style={{ minHeight: 40, borderRadius: 8, backgroundColor: '#FFFBEB', borderWidth: 1, borderColor: '#FCD34D', paddingHorizontal: 10, paddingVertical: 8, fontSize: 13, color: INK }}
-                    />
-                  ) : null}
-
-                  {isShowingExpl ? (
-                    <View style={{ padding: 12, borderRadius: 10, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE, gap: 6 }}>
-                      <Text style={{ fontSize: 12, fontWeight: '800', color: GOLD_DARK }}>Đáp án chuẩn: {res ? res.expected : 'Xem đáp án trong bộ đề'}</Text>
-                      {res?.quote ? <Text style={{ fontSize: 12, fontStyle: 'italic', color: '#0369A1' }}>Trích dẫn: "{res.quote}"</Text> : null}
-                      {res?.paraphrase ? <Text style={{ fontSize: 12, color: '#9D174D' }}>Diễn đạt lại: {res.paraphrase}</Text> : null}
-                      <Text style={{ fontSize: 12, color: INK, lineHeight: 17 }}>{res?.explanation || 'Dữ liệu được chuẩn hoá theo bộ đề Cambridge IELTS.'}</Text>
-                    </View>
-                  ) : null}
-                </View>
-              );
-            })}
-          </ScrollView>
-        </View>
-      </View>
-
-      {/* ===== Thanh số câu ở đáy ===== */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: LINE }}>
-        <Text style={{ fontSize: 12, fontWeight: '800', color: MUTED }}>Câu</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, alignItems: 'center' }}>
-          {activeQuestions.map((num) => {
-            const answered = Boolean(answers[String(num)]?.trim());
-            const active = activeNav === num;
-            return (
-              <Pressable
-                key={num}
-                onPress={() => jumpTo(num)}
-                accessibilityRole="button"
-                accessibilityLabel={`Đi tới câu ${num}`}
-                style={{ width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: active ? NAVY : answered ? '#EADCC4' : '#FFFFFF', borderWidth: 1, borderColor: active ? NAVY : LINE }}
-              >
-                <Text style={{ fontSize: 12, fontWeight: '800', color: active ? '#FFFFFF' : INK }}>{num}</Text>
-              </Pressable>
+                  <Text style={{ fontSize: 15, lineHeight: 24, color: INK, fontFamily: SERIF }} selectable>{para}</Text>
+                </Pressable>
+              </View>
             );
           })}
         </ScrollView>
       </View>
     </View>
+  );
+
+  const questionsPane = (
+    <View style={{ flex: 1, minHeight: 0 }}>
+      <View style={{ paddingHorizontal: 18, paddingTop: 14, paddingBottom: 10, gap: 6, borderBottomWidth: 1, borderBottomColor: LINE }}>
+        <Text style={{ fontSize: 17, fontWeight: '900', color: INK }}>
+          {activeQuestions.length ? `Câu ${activeQuestions[0]}–${activeQuestions[activeQuestions.length - 1]}` : 'Không có câu nào'}
+        </Text>
+        <Text style={{ fontSize: 12, color: MUTED }}>Đã điền {partAnswered}/{baseQuestions.length} câu của phần này · tổng {answeredCount}</Text>
+        {[
+          ['TRUE', 'Thông tin khớp với bài đọc'],
+          ['FALSE', 'Thông tin mâu thuẫn với bài đọc'],
+          ['NOT GIVEN', 'Bài đọc không đề cập'],
+        ].map(([k, v]) => (
+          <View key={k} style={{ flexDirection: 'row', gap: 10 }}>
+            <Text style={{ width: 84, fontSize: 12, fontWeight: '800', color: INK }}>{k}</Text>
+            <Text style={{ flex: 1, fontSize: 12, color: MUTED }}>{v}</Text>
+          </View>
+        ))}
+      </View>
+
+      <ScrollView ref={scrollRef} style={{ flex: 1 }} contentContainerStyle={{ padding: 16, gap: 12, paddingBottom: 24 }}>
+        {activeQuestions.map((num) => {
+          const val = answers[String(num)] ?? '';
+          const isChecked = checkedQuestions[num];
+          const res = grade?.results.find((r) => r.number === num);
+          const isShowingExpl = showExplanation[num];
+          const isActive = activeNav === num;
+          const border = isChecked && res?.correct ? '#16A34A' : isChecked && res && !res.correct ? '#DC2626' : isActive ? GOLD : LINE;
+
+          return (
+            <View
+              key={num}
+              onLayout={(e) => {
+                cardY.current[num] = e.nativeEvent.layout.y;
+              }}
+              style={{ padding: 16, borderRadius: 14, backgroundColor: '#FFFFFF', borderWidth: isActive ? 2 : 1, borderColor: border, gap: 12 }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: val.trim() ? NAVY : PAPER, borderWidth: 1, borderColor: val.trim() ? NAVY : LINE }}>
+                    <Text style={{ fontSize: 13, fontWeight: '900', color: val.trim() ? '#FFFFFF' : INK }}>{num}</Text>
+                  </View>
+                  <Text style={{ fontSize: 14, fontWeight: '800', color: INK }}>Câu {num}</Text>
+                </View>
+                <Pressable
+                  onPress={() => {
+                    setCheckedQuestions((prev) => ({ ...prev, [num]: true }));
+                    setShowExplanation((prev) => ({ ...prev, [num]: !prev[num] }));
+                  }}
+                  accessibilityRole="button"
+                  style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE }}
+                >
+                  <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK }}>{isShowingExpl ? 'Ẩn giải thích' : 'Xem giải thích'}</Text>
+                </Pressable>
+              </View>
+
+              <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
+                {CHOICES.map((opt) => {
+                  const on = val.toUpperCase() === opt;
+                  return (
+                    <Pressable key={opt} onPress={() => onAnswerChange(num, opt)} accessibilityRole="button" accessibilityState={{ selected: on }} style={{ paddingHorizontal: 12, paddingVertical: 7, borderRadius: 8, backgroundColor: on ? NAVY : PAPER, borderWidth: 1, borderColor: on ? NAVY : LINE }}>
+                      <Text style={{ fontSize: 11, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{opt}</Text>
+                    </Pressable>
+                  );
+                })}
+                {LETTERS.map((letter) => {
+                  const on = val.toUpperCase() === letter;
+                  return (
+                    <Pressable key={letter} onPress={() => onAnswerChange(num, letter)} accessibilityRole="button" accessibilityState={{ selected: on }} style={{ width: 32, height: 32, borderRadius: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? NAVY : PAPER, borderWidth: 1, borderColor: on ? NAVY : LINE }}>
+                      <Text style={{ fontSize: 12, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{letter}</Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+
+              <TextInput
+                value={val}
+                onChangeText={(t) => onAnswerChange(num, t)}
+                placeholder="Điền câu trả lời..."
+                placeholderTextColor="#A39686"
+                style={{ height: 40, borderRadius: 8, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE, paddingHorizontal: 12, fontSize: 14, color: INK }}
+              />
+
+              <Pressable onPress={() => setNoteOpen((p) => ({ ...p, [num]: !p[num] }))} accessibilityRole="button" style={{ alignSelf: 'flex-start' }}>
+                <Text style={{ fontSize: 12, fontWeight: '800', color: GOLD_DARK }}>
+                  {notes[String(num)] ? 'Ghi chú của câu này' : noteOpen[num] ? 'Ẩn ghi chú' : '+ Ghi chú'}
+                </Text>
+              </Pressable>
+              {noteOpen[num] || notes[String(num)] ? (
+                <TextInput
+                  value={notes[String(num)] ?? ''}
+                  onChangeText={(t) => setNotes((prev) => ({ ...prev, [String(num)]: t }))}
+                  placeholder="Ghi chú cho câu này..."
+                  placeholderTextColor="#A39686"
+                  multiline
+                  style={{ minHeight: 40, borderRadius: 8, backgroundColor: '#FFFBEB', borderWidth: 1, borderColor: '#FCD34D', paddingHorizontal: 10, paddingVertical: 8, fontSize: 13, color: INK }}
+                />
+              ) : null}
+
+              {isShowingExpl ? (
+                <View style={{ padding: 12, borderRadius: 10, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE, gap: 6 }}>
+                  <Text style={{ fontSize: 12, fontWeight: '800', color: GOLD_DARK }}>Đáp án chuẩn: {res ? res.expected : 'Xem đáp án trong bộ đề'}</Text>
+                  {res?.quote ? <Text style={{ fontSize: 12, fontStyle: 'italic', color: '#0369A1' }}>Trích dẫn: "{res.quote}"</Text> : null}
+                  {res?.paraphrase ? <Text style={{ fontSize: 12, color: '#9D174D' }}>Diễn đạt lại: {res.paraphrase}</Text> : null}
+                  <Text style={{ fontSize: 12, color: INK, lineHeight: 17 }}>{res?.explanation || 'Dữ liệu được chuẩn hoá theo bộ đề Cambridge IELTS.'}</Text>
+                </View>
+              ) : null}
+            </View>
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
+
+  return (
+    <ReadingShell
+      toolbar={toolbar}
+      left={passagePane}
+      right={questionsPane}
+      shellBg={NAVY}
+      leftBg="#FFFFFF"
+      rightBg={PAPER}
+      leftFlex={1.1}
+      rightFlex={0.9}
+    />
   );
 }
 

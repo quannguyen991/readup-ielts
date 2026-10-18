@@ -5,6 +5,7 @@ import type { GrammarLevel } from '@/services/hub/grammar-course';
 import { type LevelTestBest, type LevelTestRecord } from '@/services/hub/level-test';
 
 import { STORAGE_PREFIX, storage } from './persist';
+import { useStudyStore } from './useStudyStore';
 
 /**
  * Kết quả đề kiểm tra ngữ pháp theo cấp độ: điểm cao nhất và số lần làm của từng cấp.
@@ -26,6 +27,7 @@ export const useLevelTestStore = create<LevelTestState>()(
           ? { percent, at: new Date().toISOString(), attempts }
           : { ...prev, attempts };
         set((s) => ({ best: { ...s.best, [level]: next } }));
+        useStudyStore.getState().logEvent();
       },
     }),
     {

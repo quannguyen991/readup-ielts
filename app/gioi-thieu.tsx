@@ -102,6 +102,7 @@ const WEB_CSS = `
 @keyframes b9shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 .b9-shake{animation:b9shake .5s ease}
 .b9-par{overflow:hidden;border-radius:16px}
+.b9-caro{background-image:conic-gradient(rgba(140,106,31,.085) 25%,transparent 0 50%,rgba(140,106,31,.085) 0 75%,transparent 0);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,#000 30%,transparent 100%)}
 @supports (animation-timeline: view()){.b9-par > *{animation:b9par linear both;animation-timeline:view();animation-range:entry 0% exit 100%}}
 @keyframes b9par{from{transform:translateY(-7%) scale(1.06)}to{transform:translateY(7%) scale(1.06)}}
 @keyframes b9drift{0%{transform:translateX(-36px)}100%{transform:translateX(56px)}}
@@ -172,6 +173,7 @@ export default function WelcomeScreen() {
       <View style={{ minHeight: wide ? Math.min(Math.max(720, height), 960) : undefined, overflow: 'hidden' }}>
         <LinearGradient colors={GOLD_SKY} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
         <Aurora variant="hero" />
+        {isWeb ? <CaroLayer /> : null}
         <Motes />
         {isWeb ? <HeroScenery side={sideBySide} /> : null}
         <View style={{ flex: 1, paddingHorizontal: pad, paddingBottom: wide ? 40 : 28, zIndex: 2 }}>
@@ -402,6 +404,7 @@ export default function WelcomeScreen() {
       <View style={{ overflow: 'hidden' }}>
         <LinearGradient colors={GOLD_SKY_DEEP} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
         <Aurora variant="close" />
+        {isWeb ? <CaroLayer /> : null}
         <View style={{ paddingHorizontal: pad, paddingTop: wide ? 150 : 96, paddingBottom: 36 }}>
           <View className="mx-auto w-full" style={{ maxWidth: 820 }}>
             <Text accessibilityRole="header" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 64 : mid ? 48 : 38, lineHeight: wide ? 72 : mid ? 56 : 46, textAlign: 'center' }}>
@@ -459,6 +462,7 @@ function Room({
     <View className="b9-room" style={{ overflow: 'hidden' }}>
       <LinearGradient colors={GOLD_SKY} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
       <Aurora variant="close" />
+      {isWeb ? <CaroLayer /> : null}
       <View style={{ paddingHorizontal: pad, paddingTop: wide ? 130 : 80, paddingBottom: wide ? 56 : 40 }}>
         <View className="mx-auto w-full" style={{ maxWidth: 1180 }}>
           {children}
@@ -609,6 +613,11 @@ function CTA({ label, onPress, solid = false }: { label: string; onPress: () => 
 }
 
 /* ---------------- Màn app (dựng bằng mã, không ảnh chụp) ---------------- */
+
+/** Lớp họa tiết caro mờ đặt lên nền vàng kim (chỉ web). */
+function CaroLayer() {
+  return <View pointerEvents="none" className="b9-caro" style={StyleSheet.absoluteFill} />;
+}
 
 const MARQUEE_VI = ['IELTS Reading', 'Listening', 'Writing', 'Speaking', 'SAT Math', 'SAT Reading & Writing', 'Từ vựng', 'Chép chính tả', 'Phát âm từng âm', 'Du ngoạn thế giới'];
 const MARQUEE_EN = ['IELTS Reading', 'Listening', 'Writing', 'Speaking', 'SAT Math', 'SAT Reading & Writing', 'Vocabulary', 'Dictation', 'Sound-by-sound pronunciation', 'Travel through the world'];

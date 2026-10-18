@@ -4,7 +4,9 @@ import hardConventions from './seed/sat-rw/hard-conventions.json';
 import hardReading from './seed/sat-rw/hard-reading.json';
 import grammarSkills from './seed/sat-rw/grammar-skills.json';
 import grammarSkillsHard from './seed/sat-rw/grammar-skills-hard.json';
+import realTestsCraft from './seed/sat-rw/real-tests-craft.json';
 import { SAT_RW_ORIGINAL_READING_EXPANSION } from './seed/sat-rw/original-reading-expansion';
+import { SAT_READING_BOOK_QUESTIONS } from './seed/sat-rw/sat-reading-books';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 import { difficultyScore } from '@/services/sat-rw/mock/difficulty';
 import { sortByDifficulty, type Difficulty } from '@/lib/difficulty';
@@ -77,6 +79,8 @@ export type SatRwQuestion = {
    * phương án thay vì chỉ đọc `solutionVi`.
    */
   whyWrong?: string[];
+  /** Nguồn sách / đề thi thật (ví dụ: College Board SAT Suite Question Bank, Erica Meltzer...). */
+  sourceBook?: string;
 };
 
 type Seed = { units: SatRwUnit[]; questions: SatRwQuestion[] };
@@ -186,12 +190,23 @@ function labelOldByUnit(questions: SatRwQuestion[]): SatRwQuestion[] {
   return questions.map((q) => ({ ...q, difficulty: level.get(q.id) ?? 'medium' }));
 }
 
+export const SAT_RW_REAL_TEST_CRAFT_QUESTIONS: SatRwQuestion[] = realTestsCraft as SatRwQuestion[];
+
 export const SAT_RW_QUESTIONS: SatRwQuestion[] = [
   ...labelOldByUnit([...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS]),
   ...SAT_RW_HARD_QUESTIONS,
   // Câu ngữ pháp mới (bổ ngữ, dạng động từ) mang sẵn bậc Dễ/Vừa; không đi qua `labelOldByUnit`.
   ...(grammarSkills as { questions: SatRwQuestion[] }).questions,
   ...SAT_RW_ORIGINAL_READING_EXPANSION,
+];
+
+export { SAT_READING_BOOK_QUESTIONS };
+
+/** Toàn bộ câu hỏi bao gồm 261 câu Đề thi thật và các đề Reading từ sách kinh điển (Erica Meltzer, College Board, Princeton Review, Barron's). */
+export const SAT_RW_TOTAL_BANK: SatRwQuestion[] = [
+  ...SAT_RW_QUESTIONS,
+  ...SAT_RW_REAL_TEST_CRAFT_QUESTIONS,
+  ...SAT_READING_BOOK_QUESTIONS,
 ];
 
 /** Bậc của một câu; câu sinh lúc chạy không mang nhãn thì coi là Vừa. */

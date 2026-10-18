@@ -18,7 +18,7 @@ export const PIXEL_THEME_ID = 'theme-pixel';
 export const CYBER_THEME_ID = 'theme-cyber';
 
 export type PixelTheme = {
-  id: 'theme-pixel' | 'theme-cyber';
+  id: 'theme-pixel' | 'theme-cyber' | 'theme-pink';
   /** Màu viền, chữ đậm và bóng lệch. */
   line: string;
   /** Viền mảnh giữa các khối. */
@@ -157,14 +157,65 @@ const CYBER: PixelTheme = {
   elevLg: '0 0 0 1px rgba(61,217,245,0.25), 0 20px 50px -18px rgba(61,217,245,0.40), inset 0 1px 0 rgba(255,255,255,0.10)',
 };
 
+/**
+ * Hồng — bảng màu MẶC ĐỊNH của toàn app (khi người dùng chưa chọn theme nào). Lấy từ theme tím
+ * rồi đổi màu, nên hình khối, độ dày viền và bóng vẫn như cũ. Hai theme mua bằng sao ở trên không đổi.
+ */
+const PINK: PixelTheme = {
+  ...PURPLE,
+  id: 'theme-pink',
+  line: '#5A1E3C',
+  lineSoft: '#FFB3CC',
+  paper: '#FFF7FA',
+  canvas: '#FFE3EE',
+  text: '#5A1E3C',
+  body: '#7A3556',
+  muted: '#9A5C7C',
+  subtle: '#C48AA6',
+  accent: '#E0457B',
+  hi: '#FFFFFF',
+  lo: '#FFC2D8',
+  shadow: '#5A1E3C',
+  bgTop: '#FFC2D8',
+  bgBottom: '#FFE6F0',
+  grid: 'rgba(255,255,255,0.4)',
+  fillTop: '#FF9EC0',
+  fillBottom: '#F0628F',
+  onFill: '#5A1E3C',
+  secondary: '#FFD1E3',
+  danger: '#FF6B8B',
+  sticker: ['#FFC2D8', '#F0628F'],
+  palette: {
+    label: 'Hồng',
+    labelEn: 'Pink',
+    swatch: '#FF9EC0',
+    browse: ['#FFD1E3', '#FFE3EE', '#FFF0F6'],
+    study: ['#FFF7FA', '#FFEEF5', '#FFE0EC'],
+    browseLine: 'rgba(90, 30, 60, 0.10)',
+    studyLine: 'rgba(90, 30, 60, 0.12)',
+  },
+  gold: ['#FFE3EE', '#FF9EC0', '#F0628F'],
+  selection: '#FFB3CC',
+  elev: 'inset 3px 3px 0 #FFFFFF, inset -3px -3px 0 #FFC2D8, 4px 4px 0 #5A1E3C',
+  elevBtn: '3px 3px 0 #5A1E3C',
+  elevLg: '6px 6px 0 #5A1E3C',
+};
+
 export const PIXEL_THEMES: Record<PixelTheme['id'], PixelTheme> = {
   'theme-pixel': PURPLE,
   'theme-cyber': CYBER,
+  'theme-pink': PINK,
 };
 
-/** Bảng màu đang bật, hoặc null khi không dùng họ pixel. */
+/**
+ * Bảng màu đang bật: hồng khi chọn theme máy chơi điện tử (mua trong Đổi quà); theme pixel/cyber khi đã mua và chọn;
+ * null với các theme khác (Chiikawa, Sakura…) để chúng giữ giao diện riêng.
+ */
+export const ARCADE_THEME_ID = 'theme-arcade';
+
 export function usePixelTheme(): PixelTheme | null {
   const id = useRewardStore((s) => s.theme);
+  if (id === ARCADE_THEME_ID) return PINK;
   return id === PIXEL_THEME_ID || id === CYBER_THEME_ID ? PIXEL_THEMES[id] : null;
 }
 

@@ -222,7 +222,7 @@ export default function ShopScreen() {
     const unlockOnly = item.id === 'theme-chiikawa' || item.id === 'theme-retro' || item.id === 'theme-pixel' || item.id === 'theme-cyber';
     if (slot && !unlockOnly) useRewardStore.getState().equip(slot, item.id);
     say(unlockOnly
-      ? L(`Đã mở khóa ${item.name}. Mặc định vẫn là giao diện Band 9; bạn có thể bật chủ đề mới trong mục Cá nhân. Còn ${formatStars(stars - item.price)} sao.`, `Unlocked ${nm(item)}. Band 9 remains the default; turn on the new theme from Personal. ${formatStars(stars - item.price)} stars left.`)
+      ? L(`Đã mở khóa ${item.name}. Mặc định vẫn là giao diện Band 9; bấm món đó trong danh sách này để bật. Còn ${formatStars(stars - item.price)} sao.`, `Unlocked ${nm(item)}. Band 9 remains the default; turn on the new theme from Personal. ${formatStars(stars - item.price)} stars left.`)
       : L(`Đã đổi ${item.name}${slot ? ' và đeo luôn' : item.grants ? ' — đã vào túi đồ' : ''}. Còn ${formatStars(stars - item.price)} sao.`, `Got ${nm(item)}${slot ? ' and put it on' : item.grants ? ' — it’s in your bag' : ''}. ${formatStars(stars - item.price)} stars left.`));
   };
 

@@ -3,6 +3,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage, todayKey, uid } from './persist';
+import { useRewardStore } from './useRewardStore';
+import { currentStreak, isActiveDay, longestStreak } from '@/services/gamification/points';
 import type { EvidenceMark } from '@/services/proofloop/types';
 import type { ExamKind, QuestionType } from '@/types/database';
 
@@ -73,6 +75,11 @@ export type DailyRecord = {
   minutes: number;
   questions: number;
   wordsReviewed: number;
+  /**
+   * Số việc đã hoàn thành trong ngày (nghe, viết, nói, nhiệm vụ…) — để ngày có việc nhưng
+   * chưa có phút/câu vẫn được tính vào chuỗi. Ngày cũ không có trường này: đọc qua `?? 0`.
+   */
+  events?: number;
   byActivity: Record<StudyActivityKind, number>;
 };
 
@@ -90,6 +97,8 @@ type StudyState = {
   logStudyTime: (activity: StudyActivityKind, minutes: number) => void;
   logQuestions: (count: number) => void;
   logWordsReviewed: (count: number) => void;
+  /** Ghi một việc đã hoàn thành (không có phút hay câu): chỉ để ngày đó được tính là ngày học. */
+  logEvent: () => void;
   logWpm: (wpm: number) => void;
   toggleBookmark: (articleId: string) => void;
   setTargetBand: (band: number) => void;
@@ -97,7 +106,8 @@ type StudyState = {
 
   isBookmarked: (articleId: string) => boolean;
   getSession: (id: string) => TestSession | undefined;
-  streak: () => { current: number; longest: number; days: string[] };
+  /** Chuỗi ngày: hiện tại, dài nhất, và các ngày có hoạt động (mới trước). Ngày đông băng tính như đã học. */
+  streak: (frozen?: readonly string[]) => { current: number; longest: number; days: string[] };
   accuracyByType: () => Array<{ type: QuestionType; correct: number; total: number; percent: number }>;
   recentDays: (count: number) => DailyRecord[];
 };
@@ -116,6 +126,7 @@ function ensureDay(state: StudyState, date = todayKey()): DailyRecord {
       minutes: 0,
       questions: 0,
       wordsReviewed: 0,
+      events: 0,
       byActivity: emptyActivity(),
     }
   );
@@ -239,6 +250,13 @@ export const useStudyStore = create<StudyState>()(
           };
         }),
 
+      logEvent: () =>
+        set((state) => {
+          const date = todayKey();
+          const day = ensureDay(state, date);
+          return { daily: { ...state.daily, [date]: { ...day, events: (day.events ?? 0) + 1 } } };
+        }),
+
       logWpm: (wpm) =>
         set((state) => ({ readingWpm: [Math.round(wpm), ...state.readingWpm].slice(0, 60) })),
 
@@ -255,42 +273,19 @@ export const useStudyStore = create<StudyState>()(
       isBookmarked: (articleId) => get().bookmarks.includes(articleId),
       getSession: (id) => get().sessions.find((s) => s.id === id),
 
-      streak: () => {
-        const days = Object.values(get().daily)
-          .filter((d) => d.minutes > 0 || d.questions > 0)
+      streak: (frozen = []) => {
+        const daily = get().daily;
+        const days = Object.values(daily)
+          .filter(isActiveDay)
           .map((d) => d.date)
           .sort()
           .reverse();
-
-        if (days.length === 0) return { current: 0, longest: 0, days: [] };
-
-        const dayMs = 86_400_000;
-        const today = new Date(todayKey()).getTime();
-        const first = new Date(days[0] as string).getTime();
-
-        let current = 0;
-        // Chuỗi chỉ còn sống nếu hoạt động gần nhất là hôm nay hoặc hôm qua.
-        if (today - first <= dayMs) {
-          current = 1;
-          for (let i = 1; i < days.length; i += 1) {
-            const prev = new Date(days[i - 1] as string).getTime();
-            const cur = new Date(days[i] as string).getTime();
-            if (prev - cur === dayMs) current += 1;
-            else break;
-          }
-        }
-
-        let longest = 1;
-        let run = 1;
-        for (let i = 1; i < days.length; i += 1) {
-          const prev = new Date(days[i - 1] as string).getTime();
-          const cur = new Date(days[i] as string).getTime();
-          if (prev - cur === dayMs) run += 1;
-          else run = 1;
-          longest = Math.max(longest, run);
-        }
-
-        return { current, longest: Math.max(longest, current), days };
+        // Luật chuỗi nằm ở points.ts, dùng chung với Hồ sơ, Xếp hạng và Cửa hàng.
+        return {
+          current: currentStreak(daily, new Date(), frozen),
+          longest: longestStreak(daily, frozen),
+          days,
+        };
       },
 
       accuracyByType: () => {
@@ -368,7 +363,8 @@ export const useStudyStore = create<StudyState>()(
 export function useStreak(): { current: number; longest: number; days: string[] } {
   const daily = useStudyStore((s) => s.daily);
   const streak = useStudyStore((s) => s.streak);
-  return useMemo(() => streak(), [daily, streak]);
+  const frozen = useRewardStore((s) => s.frozenDays);
+  return useMemo(() => streak(frozen), [daily, frozen, streak]);
 }
 
 export function useAccuracyByType(): ReturnType<StudyState['accuracyByType']> {

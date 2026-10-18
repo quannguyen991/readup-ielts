@@ -7,6 +7,8 @@ import { shadow } from '@/theme/tokens';
 import { useDesktopGold } from '@/components/layout/gold-skin';
 import { GLASS } from '@/components/layout/phone-theme';
 import { pixelCardStyle, usePixelTheme } from '@/components/pixel-theme/pixel-art';
+import { ensureTaskMotionCss } from '@/components/motion/task-motion';
+ensureTaskMotionCss();
 
 type CardProps = ViewProps & {
   /** 'flat' bỏ đổ bóng, dùng cho card lồng trong card. */
@@ -36,6 +38,8 @@ export function Card({
     <View
       className={[
         retro || pixel ? '' : gold && variant === 'raised' ? 'rounded-card' : 'rounded-card border border-border bg-surface',
+        // Thẻ nổi (raised) là tác vụ: rê chuột thì nhô lên và phát sáng. Thẻ lồng (flat) đứng yên.
+        !retro && !pixel && variant === 'raised' ? 'rm-lift' : '',
         padded ? 'p-4' : '',
         className ?? '',
       ]

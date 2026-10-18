@@ -16,16 +16,16 @@ export const WEB = Platform.OS === 'web';
 
 /** Bảng màu của sảnh game. */
 export const HUB = {
-  panel: '#0E1B30',
-  raised: 'rgba(215, 192, 153,0.08)',
-  raisedHover: 'rgba(215, 192, 153,0.14)',
-  line: 'rgba(215, 192, 153,0.16)',
-  track: 'rgba(215, 192, 153,0.16)',
-  ink: '#FCFBF8',
-  muted: '#CDC1AC',
-  faint: 'rgba(205, 193, 172,0.62)',
-  stage: '#132C4E',
-  ground: '#0A1628',
+  panel: '#FFFDF7',
+  raised: 'rgba(120, 68, 21, 0.06)',
+  raisedHover: 'rgba(120, 68, 21, 0.12)',
+  line: '#EADFCF',
+  track: '#EFE5D8',
+  ink: '#2A1808',
+  muted: '#7C6552',
+  faint: 'rgba(124, 101, 82, 0.7)',
+  stage: '#FAF3E8',
+  ground: '#F3E6D2',
   blue: '#A8843F',
   gold: '#FACC15',
   goldHover: '#FDE047',
@@ -311,7 +311,7 @@ export function BackPill({ label, onPress }: { label: string; onPress: () => voi
         paddingVertical: 7,
         borderWidth: 1,
         borderColor: HUB.line,
-        backgroundColor: hovered ? '#16294A' : HUB.panel,
+        backgroundColor: hovered ? '#FAF3E8' : HUB.panel,
         ...(WEB ? ({ transition: 'background-color 150ms ease' } as object) : null),
       })}
     >

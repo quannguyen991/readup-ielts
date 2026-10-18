@@ -364,34 +364,68 @@ function defs(c1, c2) {
 </defs>`;
 }
 
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+// Bìa đứng 800×1000 (tỉ lệ 4:5, giống bìa sách): cảnh chính ở giữa, có tia sáng, vòng sóng,
+// đèn trang trí, khung nét đứt, gáy sách ở mép trái và dải nhãn tên bộ ở đáy.
 function cover(slug, index, pair, opts = {}) {
   const [c1, c2] = opts.palette ?? PALETTES[index % PALETTES.length];
   const f = { A: 'url(#gA)', B: 'url(#gB)', S: 'url(#gS)', S2: 'url(#gS2)', P: 'url(#gP)', W: '#FFFFFF', I: INK, c1, c2 };
   const [main, accent] = pair;
   const seed = (n) => ((n * 9301 + 49297) % 233280) / 233280;
-  const stars = Array.from({ length: 26 }, (_, i) => {
-    const x = 40 + seed(i + 1) * 1120;
-    const y = 30 + seed(i + 17) * 740;
-    const r = 1.5 + seed(i + 31) * 3.2;
+  const W = 800;
+  const H = 1000;
+  const CX = 400;
+  const CY = 470;
+  const stars = Array.from({ length: 42 }, (_, i) => {
+    const x = 36 + seed(i + 1) * 728;
+    const y = 30 + seed(i + 17) * 940;
+    const r = 1.4 + seed(i + 31) * 3;
     return `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${r.toFixed(1)}" fill="#FFFFFF" opacity="${(0.25 + seed(i + 5) * 0.4).toFixed(2)}"/>`;
   }).join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  const rays = Array.from({ length: 16 }, (_, i) => {
+    const a = (i * Math.PI) / 8;
+    const w = 0.07;
+    const p = (r, t) => `${(CX + Math.cos(t) * r).toFixed(1)} ${(CY + Math.sin(t) * r).toFixed(1)}`;
+    return `<path d="M${CX} ${CY}L${p(900, a - w)}L${p(900, a + w)}Z" fill="#FFFFFF" opacity="0.07"/>`;
+  }).join('');
+  const ripples = [0, 1, 2]
+    .map((k) => `<ellipse cx="${CX}" cy="${CY + 262}" rx="${210 + k * 60}" ry="${36 + k * 14}" fill="none" stroke="#FFFFFF" stroke-width="${(2 - k * 0.4).toFixed(1)}" opacity="${(0.42 - k * 0.12).toFixed(2)}"/>`)
+    .join('');
+  const motes = [[118, 352, 1.0], [684, 396, 0.8], [146, 640, 0.7], [648, 664, 0.9], [560, 128, 0.6], [220, 150, 0.7]]
+    .map(([x, y, s]) => sparkle(x, y, s, '#FFFFFF', 0.7))
+    .join('');
+  const frame = `<rect x="26" y="26" width="${W - 52}" height="${H - 52}" rx="30" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="10 9" opacity="0.5"/>`;
+  const spine = `<rect x="0" y="0" width="22" height="${H}" fill="${dark(c1, 0.45)}" opacity="0.28"/><rect x="22" y="0" width="3" height="${H}" fill="#FFFFFF" opacity="0.22"/>`;
+  const label = opts.label
+    ? `<g filter="url(#soft)"><rect x="110" y="${H - 118}" width="${W - 220}" height="62" rx="31" fill="#FFFFFF" opacity="0.94"/><text x="${W / 2}" y="${H - 79}" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="3" fill="${c1}">${esc(opts.label)}</text></g>`
+    : '';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
 ${defs(c1, c2)}
-<rect width="1200" height="800" fill="url(#bg)"/>
-<rect width="1200" height="800" fill="url(#glow)"/>
-<circle cx="150" cy="140" r="260" fill="#FFFFFF" opacity="0.07"/>
-<circle cx="1110" cy="720" r="300" fill="${dark(c1, 0.4)}" opacity="0.10"/>
+<rect width="${W}" height="${H}" fill="url(#bg)"/>
+<rect width="${W}" height="${H}" fill="url(#glow)"/>
+<circle cx="120" cy="150" r="230" fill="#FFFFFF" opacity="0.07"/>
+<circle cx="700" cy="880" r="280" fill="${dark(c1, 0.4)}" opacity="0.10"/>
 ${stars}
-<circle cx="600" cy="392" r="300" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="3 14" stroke-linecap="round" opacity="0.5"/>
-<circle cx="600" cy="392" r="330" fill="url(#halo)"/>
-<ellipse cx="600" cy="660" rx="300" ry="34" fill="url(#ground)"/>
-<g transform="translate(600 392) scale(1.9)" filter="url(#drop)">${M[main](f)}</g>
-<g transform="translate(1020 190) scale(0.62)" filter="url(#soft)">${M[accent](f)}</g>
-${opts.badge ?? ''}${sparkle(190, 170, 1.1, '#FFFFFF', 0.85)}${sparkle(262, 292, 0.6, '#FFFFFF', 0.6)}${sparkle(980, 560, 0.8, '#FFFFFF', 0.7)}
-<rect width="1200" height="800" filter="url(#speck)" opacity="0.16"/>
+${rays}
+${frame}
+${spine}
+<circle cx="${CX}" cy="${CY}" r="300" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="3 14" stroke-linecap="round" opacity="0.5"/>
+<circle cx="${CX}" cy="${CY}" r="330" fill="url(#halo)"/>
+${ripples}
+<ellipse cx="${CX}" cy="${CY + 262}" rx="300" ry="34" fill="url(#ground)"/>
+<g transform="translate(${CX} ${CY}) scale(1.75)" filter="url(#drop)">${M[main](f)}</g>
+<g transform="translate(640 232) scale(0.6)" filter="url(#soft)">${M[accent](f)}</g>
+${motes}
+${opts.badge ?? ''}
+${label}
+<rect width="${W}" height="${H}" filter="url(#speck)" opacity="0.16"/>
 </svg>
 `;
 }
+
+// Dải nhãn đáy bìa: tên tiếng Anh của bộ, viết hoa, tối đa 28 ký tự.
+const labelOf = (d) => String(d.en ?? d.slug).toUpperCase().slice(0, 28);
 
 const outDir = join(ROOT, 'public/vocab-covers');
 mkdirSync(outDir, { recursive: true });
@@ -403,12 +437,12 @@ decks.forEach((d, i) => {
     const unit = gs ? Number(gs[2]) : 0;
     const key = gs ? `${grade}-unit-${gs[2]}` : 'advanced';
     const pal = GS_PALETTE[grade];
-    writeFileSync(join(outDir, `${d.slug}.svg`), cover(d.slug, i, GS_SCENE[key], { palette: pal, badge: seriesBadge(grade, unit, pal[0]) }));
+    writeFileSync(join(outDir, `${d.slug}.svg`), cover(d.slug, i, GS_SCENE[key], { palette: pal, badge: seriesBadge(grade, unit, pal[0]), label: labelOf(d) }));
     map[d.slug] = `/vocab-covers/${d.slug}.svg`;
     return;
   }
   const pair = sceneFor(d);
-  writeFileSync(join(outDir, `${d.slug}.svg`), cover(d.slug, i, pair));
+  writeFileSync(join(outDir, `${d.slug}.svg`), cover(d.slug, i, pair, { label: labelOf(d) }));
   map[d.slug] = `/vocab-covers/${d.slug}.svg`;
 });
 

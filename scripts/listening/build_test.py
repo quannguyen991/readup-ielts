@@ -24,6 +24,12 @@ for n, f in enumerate(files, 1):
                 turns.append({"speaker": t.get("speaker"), "text": " ".join(cur)}); cur = []
         if cur:
             turns.append({"speaker": t.get("speaker"), "text": " ".join(cur)})
+    # Câu hỏi có `options: []` (ChatGPT hay để vậy ở nhóm matching) sẽ CHE danh sách chung của
+    # nhóm: app dùng `q.options ?? group.options`, nên phải bỏ mảng rỗng đi.
+    for g in sec["groups"]:
+        for q in g.get("questions", []):
+            if q.get("options") == []:
+                del q["options"]
     out = {"n": n, "title": sec["title"], "context": sec.get("context", ""), "audio": f"/listening/{tid}/s{n}.mp3",
            "transcript": turns, "groups": sec["groups"]}
     if tj.exists():

@@ -5,6 +5,10 @@ import { Image, Platform, Pressable, ScrollView, Text, View } from "react-native
 import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
+import { LionMascot } from "@/components/mascot/LionMascot";
+import { ensureTaskMotionCss } from "@/components/motion/task-motion";
+
+ensureTaskMotionCss();
 import { SidebarSearchTrigger } from "@/components/search/SearchTrigger";
 import { Icon } from "@/components/ui/Icon";
 import {
@@ -17,6 +21,7 @@ import {
   navLabel,
 } from "@/navigation/nav-items";
 import { useIeltsFocusStore } from "@/store/useIeltsFocusStore";
+import { useSatFocusStore } from "@/store/useSatFocusStore";
 import { useCityAvailable } from "@/services/city/availability";
 import { usePlan } from "@/store/useBillingStore";
 import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
@@ -34,6 +39,10 @@ import {
 import {
   SidebarStickerWindow,
 } from "./SidebarCuteStickers";
+import { pixelPageBg, type PixelTheme } from "@/components/pixel-theme/pixel-art";
+import { PT } from "@/components/pixel-theme/pixel-ui";
+import { PIXEL_NAV_ICON } from "@/components/pixel-theme/pixel-nav-icons";
+import { PixelBob } from "@/components/pixel-theme/pixel-fx";
 
 /**
  * Thanh bên trái — HIỆN ĐẦY ĐỦ TÊN, thu gọn được về dải biểu tượng.
@@ -55,6 +64,9 @@ import {
  */
 export function Sidebar({ compact = false, expanded = false, glass = false }: { compact?: boolean; /** Luôn mở rộng, không có nút thu gọn (khu Speaking). */ expanded?: boolean; /** Trong suốt, chỉ biểu tượng (màn học có nền cảnh bay). */ glass?: boolean }) {
   const pathname = usePathname();
+  // Thanh bên pixel chỉ dùng cho theme máy chơi điện tử (mua trong Đổi quà); màn làm bài (compact) và nền cảnh (glass) giữ thanh bên cũ.
+  const arcadeTheme = useRewardStore((s) => s.theme === "theme-arcade");
+  const pixel = compact || glass || !arcadeTheme ? null : PT;
   const activeKey = activeNavKey(pathname);
   const activeParent = parentNavKey(activeKey);
   const stored = useSidebarStore((s) => s.collapsed);
@@ -65,14 +77,15 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
   const theme = useSidebarTheme();
   const chiikawaTheme = useRewardStore((s) => s.theme === "theme-chiikawa");
   const themeConfig = glass ? GLASS_SIDEBAR_THEME : theme.themeConfig;
-  const activeEffect = glass ? null : theme.activeEffect;
+  const activeEffect = glass || pixel ? null : theme.activeEffect;
 
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
   const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
   const desktop = useCityAvailable();
   const ieltsFeatures = useIeltsFocusStore((s) => s.features);
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures);
+  const satFeatures = useSatFocusStore((s) => s.features);
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures, satFeatures);
   const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
 
   return (
@@ -82,11 +95,11 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
         {
           width,
           zIndex: 40,
-          borderRightWidth: 1,
-          borderRightColor: themeConfig.borderRightColor,
+          borderRightWidth: pixel ? pixel.bw : 1,
+          borderRightColor: pixel ? pixel.line : themeConfig.borderRightColor,
         },
-        themeConfig.bgStyle,
-        Platform.OS === "web" && !glass ? webShadow : null,
+        pixel ? pixelPageBg(pixel) : themeConfig.bgStyle,
+        Platform.OS === "web" && !glass && !pixel ? webShadow : null,
       ]}
     >
       {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}
@@ -111,7 +124,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
       </View>
 
       {/* Cửa sổ sticker kiểu desktop; ẩn khi thu gọn để giữ chỗ cho điều hướng. */}
-      {chiikawaTheme && !collapsed && !glass ? (
+      {chiikawaTheme && !collapsed && !glass && !pixel ? (
         <View className="mt-2 px-[14px]">
           <SidebarStickerWindow />
         </View>
@@ -122,6 +135,8 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: collapsed ? 12 : 14,
+          // Chừa chỗ để sư tử nằm trên mục đầu tiên đang chọn (không bị cắt bởi vùng cuộn).
+          paddingTop: collapsed ? 0 : 30,
           paddingBottom: 12,
         }}
       >
@@ -164,6 +179,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
                       subtitle={open && activeChild ? navLabel(activeChild, locale) : undefined}
                       themeConfig={themeConfig}
                       chiikawaTheme={chiikawaTheme}
+                      pixel={pixel}
                     />
                     {/* Thu gọn thì chỉ còn sáu biểu tượng lớn — không bày trang con. */}
                     {open && !collapsed && item.children?.length ? (
@@ -177,6 +193,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
                             child
                             themeConfig={themeConfig}
                             chiikawaTheme={chiikawaTheme}
+                            pixel={pixel}
                           />
                         ))}
                       </View>
@@ -205,7 +222,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
             }
             onPress={toggle}
             className="flex-row items-center gap-2 rounded-panel px-2 py-1.5"
-            style={{ backgroundColor: themeConfig.hoverBg }}
+            style={pixel ? { backgroundColor: pixel.paper, borderWidth: 2, borderColor: pixel.line, borderRadius: pixel.radius } : { backgroundColor: themeConfig.hoverBg }}
           >
             <View
               style={
@@ -224,13 +241,21 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
             )}
           </Pressable>
         )}
-        <AccountRow collapsed={collapsed} themeConfig={themeConfig} />
+        <AccountRow collapsed={collapsed} themeConfig={themeConfig} pixel={pixel} />
       </View>
     </View>
   );
 }
 
 const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
+
+/** Dòng điều hướng kiểu pixel: khung đậm, mục đang mở tô lilac kèm bóng lệch đặc. */
+function pixelRowStyle(t: PixelTheme, filled: boolean, active: boolean, hovered: boolean) {
+  const base = { backgroundImage: "none", backgroundColor: "transparent", borderRadius: t.radius, borderWidth: 2, borderColor: "transparent", boxShadow: "none" };
+  if (filled) return { ...base, backgroundColor: t.fillTop, borderColor: t.line, boxShadow: t.elevBtn };
+  if (active || hovered) return { ...base, backgroundColor: t.paper, borderColor: t.line };
+  return base;
+}
 
 /**
  * Một dòng điều hướng.
@@ -247,6 +272,7 @@ function NavRow({
   subtitle,
   themeConfig,
   chiikawaTheme,
+  pixel,
 }: {
   item: NavItem;
   active: boolean;
@@ -257,6 +283,7 @@ function NavRow({
   subtitle?: string;
   themeConfig: SidebarThemeConfig;
   chiikawaTheme: boolean;
+  pixel?: PixelTheme | null;
 }) {
   const [hovered, setHovered] = useState(false);
   // Mục lớn: tô khối khi chính nó hoặc một trang con của nó đang mở.
@@ -265,6 +292,8 @@ function NavRow({
   const filled = !child && (active || parentOfActive);
   const lit = filled || active;
   const tint = filled ? themeConfig.activeTextColor : active ? themeConfig.textPrimary : themeConfig.textMuted;
+  // Chỉ mục cha có icon pixel; trang con giữ icon nét mảnh cho gọn.
+  const pixelIcon = pixel && !child ? PIXEL_NAV_ICON[item.key] : undefined;
 
   return (
     <View style={{ position: "relative" }}>
@@ -276,40 +305,60 @@ function NavRow({
           onHoverIn={() => setHovered(true)}
           onHoverOut={() => setHovered(false)}
           className={[
-            "flex-row items-center rounded-2xl",
+            "flex-row items-center rounded-2xl rm-nav",
+            // Mục đang chọn (tô vàng) thở nhẹ quầng sáng; trên web, không kể chủ đề pixel.
+            filled && Platform.OS === "web" && !pixel ? "rm-glow" : "",
             collapsed
               ? `justify-center ${child ? "h-10" : "h-12"}`
               : child
                 ? "gap-2.5 px-3 py-2"
                 : "gap-3 px-3 py-3",
           ].join(" ")}
+          // Một object phẳng, KHÔNG phải hàm hay mảng: Link asChild gộp style của con bằng Slot,
+          // và cách gộp đó làm mất nền của mục đang mở (thanh bên mất dấu "đang ở đâu").
           style={
-            filled
-              ? ({
-                  backgroundColor: themeConfig.activeFill,
-                  ...(Platform.OS === "web"
-                    ? { backgroundImage: themeConfig.activeGradient, boxShadow: themeConfig.activeGlow }
-                    : null),
-                } as object)
-              : hovered || active
-                ? { backgroundColor: themeConfig.hoverBg }
-                : undefined
+            {
+              ...(filled
+                ? {
+                    backgroundColor: themeConfig.activeFill,
+                    ...(Platform.OS === "web"
+                      ? { backgroundImage: themeConfig.activeGradient, boxShadow: themeConfig.activeGlow }
+                      : null),
+                  }
+                : hovered || active
+                  ? { backgroundColor: themeConfig.hoverBg }
+                  : null),
+              // Nổi nhẹ khi rê chuột; trên web chuyển động có transition để mượt.
+              transform: [{ scale: hovered && !filled ? 1.02 : 1 }],
+              ...(Platform.OS === "web" ? { transition: "transform 180ms ease, background-color 180ms ease" } : null),
+              ...(pixel ? pixelRowStyle(pixel, filled, active, hovered) : null),
+            } as object
           }
         >
-          <View className="relative h-7 w-7 items-center justify-center">
-            <Icon
-              name={item.icon}
-              size={child ? 17 : 21}
-              color={tint}
-              strokeWidth={lit ? 2.1 : 1.8}
-            />
+          <View className="relative h-7 w-7 items-center justify-center rm-ico" style={pixelIcon ? { width: pixelIcon.w, height: pixelIcon.h } : undefined}>
+            {pixelIcon ? (
+              active ? (
+                <PixelBob amplitude={3} period={1200}>
+                  <Image source={pixelIcon.src} style={{ width: pixelIcon.w, height: pixelIcon.h }} />
+                </PixelBob>
+              ) : (
+                <Image source={pixelIcon.src} style={{ width: pixelIcon.w, height: pixelIcon.h }} />
+              )
+            ) : (
+              <Icon
+                name={item.icon}
+                size={child ? 17 : 21}
+                color={tint}
+                strokeWidth={lit ? 2.1 : 1.8}
+              />
+            )}
           </View>
           {collapsed ? null : (
             <View className="min-w-0 flex-1">
               <Text
                 numberOfLines={1}
                 className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
-                style={{ color: filled ? themeConfig.activeTextColor : child && !active ? themeConfig.textMuted : themeConfig.textPrimary }}
+                style={{ color: pixel ? pixel.text : filled ? themeConfig.activeTextColor : child && !active ? themeConfig.textMuted : themeConfig.textPrimary }}
               >
                 {label}
               </Text>
@@ -322,13 +371,19 @@ function NavRow({
           )}
         </Pressable>
       </Link>
-      {chiikawaTheme && !collapsed && !child && (active || parentOfActive) ? (
+      {chiikawaTheme && !collapsed && !child && !pixel && (active || parentOfActive) ? (
         <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: "absolute", right: 0, top: 0, width: 106, height: 60, zIndex: 5 }}>
           <Image
             source={require('../../../assets/illustrations/cute-home/task-stickers/chiikawa-taskbar-single.png')}
             resizeMode="contain"
             style={{ width: 106, height: 60 }}
           />
+        </View>
+      ) : null}
+      {/* Sư tử ngủ nằm trên mục đang được tô vàng (không áp dụng cho chủ đề Chiikawa, đã có mèo riêng, và không áp dụng khi thanh bên pixel). */}
+      {filled && !collapsed && !child && !chiikawaTheme && !pixel ? (
+        <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: "absolute", right: 14, top: -34, zIndex: 6 }}>
+          <LionMascot pose="sleep" size={68} />
         </View>
       ) : null}
       {collapsed && hovered ? <TooltipCard label={label} /> : null}
@@ -374,7 +429,7 @@ function planLabel(plan: string, en: boolean): string {
  * Chân thanh bên: chưa đăng nhập thì một nút Đăng nhập rõ ràng; đã đăng nhập
  * thì avatar + tên + số sao, dẫn sang trang Hồ sơ.
  */
-function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfig: SidebarThemeConfig }) {
+function AccountRow({ collapsed, themeConfig, pixel }: { collapsed: boolean; themeConfig: SidebarThemeConfig; pixel?: PixelTheme | null }) {
   const signedIn = useAuthStore((s) => s.status === "signed_in");
   const name = useDisplayName();
   const plan = usePlan();
@@ -397,12 +452,13 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
           {
             backgroundColor: themeConfig.activeFill,
             ...(Platform.OS === "web" ? { backgroundImage: themeConfig.activeGradient } : null),
+            ...(pixel ? { backgroundImage: "none", backgroundColor: pixel.fillTop, borderWidth: pixel.bw, borderColor: pixel.line, borderRadius: pixel.radius, boxShadow: pixel.elevBtn } : null),
           } as object
         }
       >
-        <Icon name="arrow-right" size={17} color={themeConfig.activeTextColor} strokeWidth={2.2} />
+        <Icon name="arrow-right" size={17} color={pixel ? pixel.line : themeConfig.activeTextColor} strokeWidth={2.2} />
         {collapsed ? null : (
-          <Text className="font-strong text-[15px]" style={{ color: themeConfig.activeTextColor }}>
+          <Text className="font-strong text-[15px]" style={{ color: pixel ? pixel.line : themeConfig.activeTextColor }}>
             {L("Đăng nhập", "Sign in")}
           </Text>
         )}

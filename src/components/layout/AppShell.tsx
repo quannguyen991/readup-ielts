@@ -8,12 +8,13 @@ import { LightGrid, usePageBackground } from './LightGrid';
 import { CUTE_PALETTES } from './cute-palettes';
 import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
 import { Sidebar } from './Sidebar';
-import { SidebarCats } from './SidebarCats';
 import { RCREAM } from '@/components/profile-retro/retro-art';
 import { pixelPageBg, usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
 import { RetroScope } from '@/components/profile-retro/retro-scope';
 import { RetroSidebar } from '@/components/profile-retro/RetroSidebar';
+import { SidebarCats } from './SidebarCats';
+import { WalkingCats } from '@/components/mascot/WalkingCats';
 import { RetroTopBar } from '@/components/profile-retro/RetroTopBar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
@@ -32,8 +33,8 @@ import { useRewardStore } from '@/store/useRewardStore';
 import { CuteAtmosphere } from './CuteAtmosphere';
 import { PhoneBackdrop, useIsPhone } from './PhoneBackdrop';
 import { useHydrated } from './useHydrated';
-import { WalkingCats } from '@/components/mascot/WalkingCats';
 import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
+import { FirstRunTour } from '@/components/onboarding/FirstRunTour';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#0F1D33';
@@ -93,6 +94,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Giao diện pixel tự vẽ nền và thẻ riêng nên tắt nền vàng kim (và các mèo đi kèm).
   const pixel = px !== null;
   const goldSkin = !pixel && (phone || (!chiikawaTheme && paletteKey === 'original'));
+  // Theme máy chơi điện tử (mua trong Đổi quà): Chikawa thay Leo ở bong bóng hỏi đáp.
+  const arcadeTheme = useRewardStore((s) => s.theme === 'theme-arcade');
   const viewportWidth = useWindowDimensions().width;
   // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
   const retro = useRetroOn();
@@ -150,7 +153,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
         <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
         {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
-        {isExamRoute(pathname) || isCityRoute || pathname.startsWith('/hub') ? null : <AskBubble />}
+        {isExamRoute(pathname) || isCityRoute || pathname.startsWith('/hub') ? null : <AskBubble forceChiikawa={arcadeTheme} />}
         <SelectionLookup />
         <SearchPalette />
       </FocusBackdrop>
@@ -168,7 +171,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
       {/*
-        NỀN PASTEL KẺ CARO cho mọi màn duyệt, theo bảng màu người học chọn.
+        NỀN cho mọi màn duyệt, theo bảng màu người học chọn (giao diện mặc định là vàng loang).
         Thẻ trắng vẫn có ranh giới rõ, còn hoạ tiết đứng yên để làm nền mà
         không tranh chú ý với nội dung.
       */}
@@ -223,10 +226,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <WalkingCats bottom={phone ? 74 : 14} left={viewportWidth >= 1024 ? SIDEBAR_WIDTH[collapsed ? 'collapsed' : 'expanded'] : 0} variant={phone ? 'phone' : 'desktop'} />
       ) : null}
       <BottomTabs />
-      {isCityRoute ? null : <AskBubble />}
+      {isCityRoute ? null : <AskBubble forceChiikawa={arcadeTheme} />}
       <SelectionLookup />
       <ReminderRunner />
       <SearchPalette />
+      <FirstRunTour />
     </SafeAreaView>
   );
 }

@@ -1,5 +1,6 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { currentStreak, monthPoints, type DayLog } from '@/services/gamification/points';
+import { vnToday } from '@/services/gamification/golden';
 import { anonymousName, displayableName } from '@/services/gamification/display-name';
 import { goldenBoard, type DayStatsLite } from '@/services/gamification/golden';
 import { endOfPreviousMonth, monthKey } from '@/services/gamification/monthly';
@@ -57,7 +58,9 @@ export async function GET(request: Request): Promise<Response> {
     const lookBy = new Map<string, LookRow>();
     for (const row of (looks.data ?? []) as unknown as LookRow[]) lookBy.set(row.user_id, row);
 
-    const now = new Date();
+    // Ngày học của người dùng là ngày theo giờ máy họ, mà người dùng ở Việt Nam. Máy chủ chạy
+    // giờ UTC nên lấy "hôm nay" theo giờ Việt Nam, không thì 0–7 giờ sáng chuỗi bị lệch một ngày.
+    const now = vnToday(new Date()).date;
     const lastMonth = endOfPreviousMonth(now);
     const scored = ((study.data ?? []) as unknown as StudyRow[]).map((row) => {
       const daily = row.daily ?? {};

@@ -7,8 +7,11 @@ import {
   Text,
   TextInput,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import { Icon } from '@/components/ui/Icon';
+import { EXAM_INK, ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
+import { ReadingShell, READING_NAVY } from '@/components/exam/ReadingLayout';
 
 export type Page = { page: number; text: string };
 export type GradeResult = {
@@ -85,6 +88,8 @@ export function ComputerDeliveredExamRoom({
   const [showConfirmFinish, setShowConfirmFinish] = useState(false);
   const [fontSizeMode, setFontSizeMode] = useState<'normal' | 'large' | 'xlarge'>('normal');
   const [contrastMode, setContrastMode] = useState<'default' | 'yellow-black' | 'black-yellow'>('default');
+  const [serifFont, setSerifFont] = useState(true);
+  const { width: winW } = useWindowDimensions();
 
   // Tô sáng đoạn văn và ghi chú theo từng câu, lưu theo đề để mở lại vẫn còn.
   const [highlightedText, setHighlightedText] = useState<Set<string>>(() => new Set(readLS<string[]>(`ielts-hl:${testId}`, [])));
@@ -192,42 +197,32 @@ export function ComputerDeliveredExamRoom({
   }, [activePart, passagePages]);
 
   // Theme styling based on contrast mode
+  // Bảng màu của phòng thi: nền navy, hai tấm kem viền mực; hai chế độ tương phản
+  // đổi cả nền và chữ. Nút chọn màu trên thanh công cụ đi theo `contrastOrder`.
+  const contrastOrder = ['default', 'yellow-black', 'black-yellow'] as const;
   const theme = useMemo(() => {
     if (contrastMode === 'yellow-black') {
-      return {
-        bg: '#000000',
-        text: '#FFFF00',
-        border: '#FFFF00',
-        cardBg: '#1A1A1A',
-        headerBg: '#000000',
-        activeBtn: '#FFFF00',
-        activeBtnText: '#000000',
-      };
+      return { bg: '#000000', text: '#FFFF00', border: '#FFFF00', softLine: '#7A6A00', cardBg: '#000000', panelBg: '#111111', muted: '#FDE68A' };
     }
     if (contrastMode === 'black-yellow') {
-      return {
-        bg: '#FFFDE7',
-        text: '#000000',
-        border: '#000000',
-        cardBg: '#FFF9C4',
-        headerBg: '#FFF59D',
-        activeBtn: '#000000',
-        activeBtnText: '#FFFDE7',
-      };
+      return { bg: '#FFF59D', text: '#000000', border: '#000000', softLine: '#B8A24A', cardBg: '#FFFDE7', panelBg: '#FFF9C4', muted: '#4B4B00' };
     }
-    return {
-      bg: '#F5F5F7',
-      text: '#111827',
-      border: '#D1D5DB',
-      cardBg: '#FFFFFF',
-      headerBg: '#1E1E1E',
-      activeBtn: '#0284C7',
-      activeBtnText: '#FFFFFF',
-    };
+    return { bg: READING_NAVY, text: EXAM_INK, border: EXAM_INK, softLine: '#D8CFBD', cardBg: '#FFFFFF', panelBg: '#FFF5F8', muted: '#6B5E50' };
   }, [contrastMode]);
 
-  const fontSize = fontSizeMode === 'large' ? 17 : fontSizeMode === 'xlarge' ? 19 : 14.5;
-  const lineSpacing = fontSizeMode === 'large' ? 26 : fontSizeMode === 'xlarge' ? 30 : 22;
+  const fontSize = fontSizeMode === 'large' ? 18 : fontSizeMode === 'xlarge' ? 20 : 16;
+  const lineSpacing = Math.round(fontSize * 1.65);
+  const cycleSize = () => setFontSizeMode(fontSizeMode === 'normal' ? 'large' : fontSizeMode === 'large' ? 'xlarge' : 'normal');
+  const pickPart = (p: 1 | 2 | 3) => {
+    setActivePart(p);
+    setActiveQuestion(p === 1 ? 1 : p === 2 ? 14 : 27);
+  };
+  const answeredSet = new Set(
+    Array.from({ length: questionCount }, (_, i) => i + 1).filter((n) => Boolean(answers[String(n)]?.trim())),
+  );
+  const partAnswered = partQuestions.filter((n) => Boolean(answers[String(n)]?.trim())).length;
+  const passageFontFamily =
+    Platform.OS === 'web' ? (serifFont ? 'Georgia, serif' : 'Arial, Helvetica, sans-serif') : undefined;
 
   // Question navigation
   const goToQuestion = (qNum: number) => {
@@ -368,522 +363,311 @@ export function ComputerDeliveredExamRoom({
     );
   }
 
-  return (
-    <View style={{ flex: 1, backgroundColor: theme.bg, minHeight: 800 }}>
-      {/* ============================================================== */}
-      {/* 1. TOP HEADER BAR: Real CD-IELTS Dark Charcoal Bar            */}
-      {/* ============================================================== */}
+  const toolbar = (
+    <ExamToolbar
+      onBack={onExit}
+      parts={[
+        { key: '1', label: 'Part 1 (1–13)' },
+        { key: '2', label: 'Part 2 (14–26)' },
+        { key: '3', label: 'Part 3 (27–40)' },
+      ]}
+      activePart={String(activePart)}
+      onPickPart={(key) => pickPart(Number(key) as 1 | 2 | 3)}
+      questionNumbers={partQuestions}
+      answered={answeredSet}
+      current={activeQuestion}
+      onJump={goToQuestion}
+      timer={isTimerHidden ? '--:--' : formatTimer(timeLeft)}
+      timerSlot={
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 6,
+            paddingLeft: 10,
+            paddingRight: 4,
+            height: 34,
+            borderRadius: 999,
+            borderWidth: 2,
+            borderColor: EXAM_INK,
+            backgroundColor: '#FFFFFF',
+          }}
+        >
+          <View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: timeLeft < 300 ? '#DC2626' : '#2E9E5B' }} />
+          <Text style={{ fontSize: 13, fontWeight: '700', color: timeLeft < 300 ? '#B91C1C' : EXAM_INK, fontVariant: ['tabular-nums'] as never }}>
+            {isTimerHidden ? '--:--' : formatTimer(timeLeft)}
+          </Text>
+          <Pressable
+            onPress={() => setIsTimerHidden(!isTimerHidden)}
+            accessibilityRole="button"
+            accessibilityLabel={isTimerHidden ? 'Hiện đồng hồ' : 'Ẩn đồng hồ'}
+            style={{ height: 26, paddingHorizontal: 8, borderRadius: 999, backgroundColor: EXAM_INK, justifyContent: 'center' }}
+          >
+            <Text style={{ fontSize: 10, fontWeight: '800', color: '#FFFFFF' }}>{isTimerHidden ? 'SHOW' : 'HIDE'}</Text>
+          </Pressable>
+        </View>
+      }
+      typography={{
+        fontLabel: serifFont ? 'Serif' : 'Sans',
+        onCycleFont: () => setSerifFont((v) => !v),
+        sizeLabel: `${fontSize}px`,
+        onCycleSize: cycleSize,
+      }}
+      themes={{
+        swatches: ['#FFF5F8', '#000000', '#FFF59D'],
+        theme: contrastOrder.indexOf(contrastMode),
+        onPick: (i) => setContrastMode(contrastOrder[i] ?? 'default'),
+      }}
+      extras={
+        <View style={{ flexDirection: 'row', gap: 6 }}>
+          <ExamToolbarButton label="Trợ giúp" icon="info" compact={winW < 1000} onPress={() => setShowHelp(true)} />
+          <ExamToolbarButton label="Cài đặt" icon="settings" compact={winW < 1000} onPress={() => setShowSettings(true)} />
+        </View>
+      }
+      submitLabel="Nộp bài"
+      onSubmit={() => setShowConfirmFinish(true)}
+    />
+  );
+
+  const passagePane = (
+    <View style={{ flex: 1, minHeight: 0 }}>
       <View
         style={{
-          height: 52,
-          backgroundColor: theme.headerBg,
+          paddingHorizontal: 22,
+          paddingTop: 16,
+          paddingBottom: 10,
+          borderBottomWidth: 1,
+          borderBottomColor: theme.softLine,
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingHorizontal: 20,
-          borderBottomWidth: 1,
-          borderBottomColor: '#333333',
+          flexWrap: 'wrap',
+          gap: 6,
         }}
       >
-        {/* Left: IELTS Brand & Test Info */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-          <View style={{ backgroundColor: '#E11D48', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 3 }}>
-            <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 15, letterSpacing: 0.5 }}>IELTS</Text>
-          </View>
-          <View>
-            <Text style={{ color: '#E5E7EB', fontSize: 13, fontWeight: '800' }}>
-              ACADEMIC READING
-            </Text>
-            <Text style={{ color: '#9CA3AF', fontSize: 11 }}>
-              Candidate: VN-018420 · {testTitle.split('·')[0]?.trim()}
-            </Text>
-          </View>
-        </View>
+        <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 1, color: theme.muted }}>
+          READING PASSAGE {activePart} · {activePart === 1 ? 'QUESTIONS 1–13' : activePart === 2 ? 'QUESTIONS 14–26' : 'QUESTIONS 27–40'}
+        </Text>
+        <Text style={{ fontSize: 11, color: theme.muted }}>~20 mins</Text>
+      </View>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 22, paddingBottom: 80, gap: 14 }}>
+        {currentPassageText.split('\n\n').map((para, i) => {
+          const key = `${activePart}:${i}`;
+          const on = highlightedText.has(key);
+          return (
+            <Pressable
+              key={key}
+              onPress={() => toggleHighlight(key)}
+              accessibilityRole="button"
+              accessibilityLabel={on ? 'Bỏ tô sáng đoạn này' : 'Tô sáng đoạn này'}
+              style={{ borderRadius: 6, backgroundColor: on ? '#FEF08A' : 'transparent', paddingHorizontal: on ? 8 : 0, paddingVertical: on ? 6 : 0 }}
+            >
+              <Text
+                style={{
+                  fontSize,
+                  lineHeight: lineSpacing,
+                  color: theme.text,
+                  fontFamily: passageFontFamily,
+                }}
+                selectable
+              >
+                {para}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
 
-        {/* Center: Countdown Timer with Hide/Show */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 6,
-              paddingHorizontal: 12,
-              paddingVertical: 5,
-              borderRadius: 6,
-              backgroundColor: timeLeft < 300 ? '#7F1D1D' : timeLeft < 600 ? '#78350F' : '#2D2D2D',
-              borderWidth: 1,
-              borderColor: timeLeft < 300 ? '#EF4444' : timeLeft < 600 ? '#F59E0B' : '#444444',
-            }}
-          >
-            <Text style={{ color: '#F3F4F6', fontSize: 12 }}>⏱</Text>
-            <Text
+  const questionsPane = (
+    <View style={{ flex: 1, minHeight: 0 }}>
+      <View style={{ paddingHorizontal: 18, paddingTop: 14, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: theme.softLine, gap: 4 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+          <Text style={{ fontSize: 17, fontWeight: '900', color: theme.text }}>
+            Questions {partQuestions[0]}–{partQuestions[partQuestions.length - 1]}
+          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <Pressable
+              onPress={() => toggleReview(activeQuestion)}
+              accessibilityRole="button"
+              aria-pressed={reviewedQuestions.has(activeQuestion)}
               style={{
-                color: timeLeft < 300 ? '#FCA5A5' : timeLeft < 600 ? '#FDE68A' : '#FFFFFF',
-                fontSize: 16,
-                fontWeight: '900',
-                fontFamily: Platform.OS === 'web' ? 'Courier New, monospace' : undefined,
+                height: 30,
+                paddingHorizontal: 10,
+                borderRadius: 999,
+                justifyContent: 'center',
+                borderWidth: 1.5,
+                borderColor: reviewedQuestions.has(activeQuestion) ? '#F59E0B' : theme.softLine,
+                backgroundColor: reviewedQuestions.has(activeQuestion) ? '#F59E0B' : '#FFFFFF',
               }}
             >
-              {isTimerHidden ? '--:--' : formatTimer(timeLeft)}
-            </Text>
-            <Pressable
-              onPress={() => setIsTimerHidden(!isTimerHidden)}
-              style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: '#404040' }}
-            >
-              <Text style={{ color: '#D1D5DB', fontSize: 10, fontWeight: '700' }}>
-                {isTimerHidden ? 'SHOW' : 'HIDE'}
+              <Text style={{ fontSize: 11, fontWeight: '800', color: reviewedQuestions.has(activeQuestion) ? '#FFFFFF' : EXAM_INK }}>
+                {reviewedQuestions.has(activeQuestion) ? '★ Reviewed' : '☆ Review'}
               </Text>
+            </Pressable>
+            <Pressable
+              onPress={prevQuestion}
+              accessibilityRole="button"
+              accessibilityLabel="Câu trước"
+              style={{ width: 30, height: 30, borderRadius: 999, borderWidth: 1.5, borderColor: theme.softLine, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <Icon name="chevron-left" size={14} color={EXAM_INK} />
+            </Pressable>
+            <Pressable
+              onPress={nextQuestion}
+              accessibilityRole="button"
+              accessibilityLabel="Câu sau"
+              style={{ width: 30, height: 30, borderRadius: 999, borderWidth: 1.5, borderColor: theme.softLine, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <Icon name="chevron-right" size={14} color={EXAM_INK} />
             </Pressable>
           </View>
         </View>
-
-        {/* Right: Help, Settings, Finish Button */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <Pressable
-            onPress={() => setShowHelp(true)}
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-              borderRadius: 6,
-              backgroundColor: '#2D2D2D',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 4,
-            }}
-          >
-            <Text style={{ color: '#D1D5DB', fontSize: 12, fontWeight: '700' }}>? Help</Text>
-          </Pressable>
-
-          <Pressable
-            onPress={() => setShowSettings(true)}
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-              borderRadius: 6,
-              backgroundColor: '#2D2D2D',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 4,
-            }}
-          >
-            <Text style={{ color: '#D1D5DB', fontSize: 12, fontWeight: '700' }}>⚙ Settings</Text>
-          </Pressable>
-
-          <Pressable
-            onPress={() => setShowConfirmFinish(true)}
-            style={{
-              paddingHorizontal: 14,
-              paddingVertical: 6,
-              borderRadius: 6,
-              backgroundColor: '#E11D48',
-            }}
-          >
-            <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '900' }}>FINISH TEST</Text>
-          </Pressable>
-        </View>
+        <Text style={{ fontSize: 12, color: theme.muted }}>
+          Đang làm: câu {activeQuestion} · đã điền {partAnswered}/{partQuestions.length} câu của phần này
+        </Text>
       </View>
 
-      {/* Warning Banner Pop */}
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 18, paddingBottom: 100, gap: 16 }}>
+        {partQuestions.map((num) => {
+          const val = answers[String(num)] ?? '';
+          const isActive = activeQuestion === num;
+          const isFlagged = reviewedQuestions.has(num);
+          const picked = (opt: string) => val.toUpperCase() === opt;
+          const rowBorder = isActive ? theme.border : isFlagged ? '#F59E0B' : theme.softLine;
+
+          return (
+            <Pressable
+              key={num}
+              onPress={() => setActiveQuestion(num)}
+              style={{ padding: 12, borderRadius: 12, borderWidth: isActive ? 2 : 1, borderColor: rowBorder, backgroundColor: theme.cardBg, gap: 10 }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+                <View
+                  style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 6,
+                    borderWidth: 1.5,
+                    borderColor: theme.border,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: val.trim() ? theme.border : 'transparent',
+                  }}
+                >
+                  <Text style={{ fontSize: 13, fontWeight: '900', color: val.trim() ? theme.cardBg : theme.text }}>{num}</Text>
+                </View>
+
+                {['TRUE', 'FALSE', 'NOT GIVEN'].map((opt) => (
+                  <Pressable
+                    key={opt}
+                    onPress={() => onAnswerChange(num, opt)}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: picked(opt) }}
+                    style={{
+                      height: 30,
+                      paddingHorizontal: 10,
+                      borderRadius: 6,
+                      justifyContent: 'center',
+                      borderWidth: 1.5,
+                      borderColor: theme.border,
+                      backgroundColor: picked(opt) ? theme.border : 'transparent',
+                    }}
+                  >
+                    <Text style={{ fontSize: 11, fontWeight: '800', color: picked(opt) ? theme.cardBg : theme.text }}>{opt}</Text>
+                  </Pressable>
+                ))}
+                {['A', 'B', 'C', 'D'].map((letter) => (
+                  <Pressable
+                    key={letter}
+                    onPress={() => onAnswerChange(num, letter)}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: picked(letter) }}
+                    style={{
+                      width: 30,
+                      height: 30,
+                      borderRadius: 6,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderWidth: 1.5,
+                      borderColor: theme.border,
+                      backgroundColor: picked(letter) ? theme.border : 'transparent',
+                    }}
+                  >
+                    <Text style={{ fontSize: 12, fontWeight: '800', color: picked(letter) ? theme.cardBg : theme.text }}>{letter}</Text>
+                  </Pressable>
+                ))}
+                {isFlagged ? (
+                  <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: '#FEF3C7' }}>
+                    <Text style={{ fontSize: 10, fontWeight: '800', color: '#B45309' }}>FLAGGED</Text>
+                  </View>
+                ) : null}
+              </View>
+
+              {/* Ô điền đáp án: đường gạch chân như đề thi giấy. */}
+              <TextInput
+                value={val}
+                onChangeText={(text) => onAnswerChange(num, text)}
+                placeholder="Type answer here..."
+                placeholderTextColor="#9CA3AF"
+                style={{
+                  minHeight: 36,
+                  paddingHorizontal: 4,
+                  borderBottomWidth: 1.5,
+                  borderBottomColor: isActive ? theme.border : theme.softLine,
+                  fontSize: 14,
+                  fontWeight: '600',
+                  color: theme.text,
+                }}
+              />
+
+              {/* Ghi chú của câu: hiện ở câu đang làm, các câu có ghi chú thì giữ lại dòng ghi chú */}
+              {isActive || notes[String(num)] ? (
+                <TextInput
+                  value={notes[String(num)] ?? ''}
+                  onChangeText={(text) => setNotes((prev) => ({ ...prev, [String(num)]: text }))}
+                  placeholder="Ghi chú cho câu này..."
+                  placeholderTextColor="#9CA3AF"
+                  multiline
+                  style={{
+                    minHeight: 40,
+                    borderRadius: 6,
+                    backgroundColor: contrastMode === 'yellow-black' ? '#000000' : '#FFFBEB',
+                    borderWidth: 1,
+                    borderColor: '#FCD34D',
+                    paddingHorizontal: 10,
+                    paddingVertical: 8,
+                    fontSize: 13,
+                    color: theme.text,
+                  }}
+                />
+              ) : null}
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
+
+  return (
+    <View style={{ flex: 1, backgroundColor: theme.bg, minHeight: 800 }}>
       {showWarningBanner ? (
-        <View
-          style={{
-            backgroundColor: '#DC2626',
-            paddingVertical: 8,
-            paddingHorizontal: 16,
-            alignItems: 'center',
-          }}
-        >
-          <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 13 }}>
-            {showWarningBanner}
-          </Text>
+        <View style={{ backgroundColor: '#DC2626', paddingVertical: 8, paddingHorizontal: 16, alignItems: 'center' }}>
+          <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 13 }}>{showWarningBanner}</Text>
         </View>
       ) : null}
 
-      {/* ============================================================== */}
-      {/* 2. MAIN WORKSPACE: Split Screen (Left: Passage, Right: Qs)     */}
-      {/* ============================================================== */}
-      <View style={{ flex: 1, flexDirection: 'row', overflow: 'hidden' }}>
-        {/* LEFT COLUMN: READING PASSAGE */}
-        <View
-          style={{
-            flex: 1.1,
-            borderRightWidth: 2,
-            borderRightColor: theme.border,
-            backgroundColor: theme.cardBg,
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          {/* Passage Top Header Bar */}
-          <View
-            style={{
-              paddingHorizontal: 18,
-              paddingVertical: 10,
-              backgroundColor: contrastMode === 'default' ? '#E5E7EB' : theme.cardBg,
-              borderBottomWidth: 1,
-              borderBottomColor: theme.border,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Text style={{ fontSize: 14, fontWeight: '900', color: theme.text, letterSpacing: 0.5 }}>
-              READING PASSAGE {activePart}
-            </Text>
-            <Text style={{ fontSize: 11, color: theme.text, opacity: 0.8 }}>
-              {activePart === 1 ? 'Questions 1–13' : activePart === 2 ? 'Questions 14–26' : 'Questions 27–40'} · ~20 mins
-            </Text>
-          </View>
-
-          {/* Passage Content */}
-          <ScrollView
-            style={{ flex: 1, padding: 22 }}
-            contentContainerStyle={{ paddingBottom: 80 }}
-          >
-            <View style={{ gap: 14 }}>
-              {currentPassageText.split('\n\n').map((para, i) => {
-                const key = `${activePart}:${i}`;
-                const on = highlightedText.has(key);
-                return (
-                  <Pressable
-                    key={key}
-                    onPress={() => toggleHighlight(key)}
-                    accessibilityRole="button"
-                    accessibilityLabel={on ? 'Bỏ tô sáng đoạn này' : 'Tô sáng đoạn này'}
-                    style={{ borderRadius: 6, backgroundColor: on ? '#FEF08A' : 'transparent', paddingHorizontal: on ? 8 : 0, paddingVertical: on ? 6 : 0 }}
-                  >
-                    <Text
-                      style={{
-                        fontSize,
-                        lineHeight: lineSpacing,
-                        color: theme.text,
-                        fontFamily: Platform.OS === 'web' ? 'Georgia, serif' : undefined,
-                      }}
-                      selectable
-                    >
-                      {para}
-                    </Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-          </ScrollView>
-        </View>
-
-        {/* RIGHT COLUMN: QUESTIONS FOR CURRENT PART */}
-        <View
-          style={{
-            flex: 0.9,
-            backgroundColor: theme.bg,
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          {/* Questions Top Header */}
-          <View
-            style={{
-              paddingHorizontal: 18,
-              paddingVertical: 10,
-              backgroundColor: contrastMode === 'default' ? '#E5E7EB' : theme.cardBg,
-              borderBottomWidth: 1,
-              borderBottomColor: theme.border,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Text style={{ fontSize: 14, fontWeight: '900', color: theme.text }}>
-              QUESTIONS {partQuestions[0]}–{partQuestions[partQuestions.length - 1]}
-            </Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <Text style={{ fontSize: 12, fontWeight: '800', color: theme.text }}>
-                Active: Question {activeQuestion}
-              </Text>
-              <Pressable
-                onPress={() => toggleReview(activeQuestion)}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 4,
-                  paddingHorizontal: 8,
-                  paddingVertical: 3,
-                  borderRadius: 4,
-                  backgroundColor: reviewedQuestions.has(activeQuestion) ? '#F59E0B' : '#E5E7EB',
-                }}
-              >
-                <Text style={{ fontSize: 11, fontWeight: '800', color: reviewedQuestions.has(activeQuestion) ? '#FFFFFF' : '#374151' }}>
-                  {reviewedQuestions.has(activeQuestion) ? '★ Reviewed' : '☆ Review'}
-                </Text>
-              </Pressable>
-            </View>
-          </View>
-
-          {/* Question List Scroll */}
-          <ScrollView
-            style={{ flex: 1, padding: 18 }}
-            contentContainerStyle={{ paddingBottom: 100, gap: 14 }}
-          >
-            {partQuestions.map((num) => {
-              const val = answers[String(num)] ?? '';
-              const isActive = activeQuestion === num;
-              const isFlagged = reviewedQuestions.has(num);
-
-              return (
-                <Pressable
-                  key={num}
-                  onPress={() => setActiveQuestion(num)}
-                  style={{
-                    padding: 16,
-                    borderRadius: 10,
-                    backgroundColor: theme.cardBg,
-                    borderWidth: 2,
-                    borderColor: isActive ? '#0284C7' : isFlagged ? '#F59E0B' : theme.border,
-                    gap: 10,
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                      <View
-                        style={{
-                          width: 28,
-                          height: 28,
-                          borderRadius: 4,
-                          backgroundColor: isActive ? '#0284C7' : val ? '#1F2937' : '#E5E7EB',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Text style={{ color: isActive || val ? '#FFFFFF' : '#374151', fontWeight: '900', fontSize: 13 }}>
-                          {num}
-                        </Text>
-                      </View>
-                      <Text style={{ fontSize: 13, fontWeight: '800', color: theme.text }}>
-                        Question {num}
-                      </Text>
-                    </View>
-
-                    {isFlagged ? (
-                      <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: '#FEF3C7' }}>
-                        <Text style={{ fontSize: 10, fontWeight: '800', color: '#B45309' }}>FLAGGED</Text>
-                      </View>
-                    ) : null}
-                  </View>
-
-                  {/* Standard True / False / Not Given Buttons */}
-                  <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
-                    {['TRUE', 'FALSE', 'NOT GIVEN'].map((opt) => (
-                      <Pressable
-                        key={opt}
-                        onPress={() => onAnswerChange(num, opt)}
-                        style={{
-                          paddingHorizontal: 12,
-                          paddingVertical: 6,
-                          borderRadius: 6,
-                          backgroundColor: val.toUpperCase() === opt ? '#1E293B' : '#F1F5F9',
-                          borderWidth: 1,
-                          borderColor: val.toUpperCase() === opt ? '#1E293B' : '#CBD5E1',
-                        }}
-                      >
-                        <Text style={{ fontSize: 11, fontWeight: '800', color: val.toUpperCase() === opt ? '#FFFFFF' : '#334155' }}>
-                          {opt}
-                        </Text>
-                      </Pressable>
-                    ))}
-                    {['A', 'B', 'C', 'D'].map((letter) => (
-                      <Pressable
-                        key={letter}
-                        onPress={() => onAnswerChange(num, letter)}
-                        style={{
-                          width: 30,
-                          height: 30,
-                          borderRadius: 6,
-                          backgroundColor: val.toUpperCase() === letter ? '#1E293B' : '#F1F5F9',
-                          borderWidth: 1,
-                          borderColor: val.toUpperCase() === letter ? '#1E293B' : '#CBD5E1',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Text style={{ fontSize: 12, fontWeight: '800', color: val.toUpperCase() === letter ? '#FFFFFF' : '#334155' }}>
-                          {letter}
-                        </Text>
-                      </Pressable>
-                    ))}
-                  </View>
-
-                  {/* Ghi chú của câu: hiện ở câu đang làm, các câu có ghi chú thì giữ lại dòng ghi chú */}
-                  {isActive || notes[String(num)] ? (
-                    <TextInput
-                      value={notes[String(num)] ?? ''}
-                      onChangeText={(text) => setNotes((prev) => ({ ...prev, [String(num)]: text }))}
-                      placeholder="Ghi chú cho câu này..."
-                      placeholderTextColor="#9CA3AF"
-                      multiline
-                      style={{
-                        minHeight: 40,
-                        borderRadius: 6,
-                        backgroundColor: contrastMode === 'yellow-black' ? '#000000' : '#FFFBEB',
-                        borderWidth: 1,
-                        borderColor: '#FCD34D',
-                        paddingHorizontal: 10,
-                        paddingVertical: 8,
-                        fontSize: 13,
-                        color: theme.text,
-                      }}
-                    />
-                  ) : null}
-
-                  {/* Text Input for Fill in Blank */}
-                  <TextInput
-                    value={val}
-                    onChangeText={(text) => onAnswerChange(num, text)}
-                    placeholder="Type answer here..."
-                    placeholderTextColor="#9CA3AF"
-                    style={{
-                      height: 38,
-                      borderRadius: 6,
-                      backgroundColor: contrastMode === 'yellow-black' ? '#000000' : '#FFFFFF',
-                      borderWidth: 1.5,
-                      borderColor: isActive ? '#0284C7' : '#D1D5DB',
-                      paddingHorizontal: 10,
-                      fontSize: 13,
-                      fontWeight: '600',
-                      color: theme.text,
-                    }}
-                  />
-                </Pressable>
-              );
-            })}
-          </ScrollView>
-        </View>
-      </View>
-
-      {/* ============================================================== */}
-      {/* 3. BOTTOM NAVIGATION BAR: Real CD-IELTS Navigator             */}
-      {/* ============================================================== */}
-      <View
-        style={{
-          height: 60,
-          backgroundColor: theme.headerBg,
-          borderTopWidth: 1,
-          borderTopColor: '#333333',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingHorizontal: 16,
-          gap: 12,
-        }}
-      >
-        {/* Left: Part Tabs */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          {[
-            { id: 1, label: 'Part 1 (1–13)' },
-            { id: 2, label: 'Part 2 (14–26)' },
-            { id: 3, label: 'Part 3 (27–40)' },
-          ].map((part) => (
-            <Pressable
-              key={part.id}
-              onPress={() => {
-                setActivePart(part.id as 1 | 2 | 3);
-                setActiveQuestion(part.id === 1 ? 1 : part.id === 2 ? 14 : 27);
-              }}
-              style={{
-                paddingHorizontal: 10,
-                paddingVertical: 6,
-                borderRadius: 4,
-                backgroundColor: activePart === part.id ? '#0284C7' : '#2D2D2D',
-              }}
-            >
-              <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '800' }}>
-                {part.label}
-              </Text>
-            </Pressable>
-          ))}
-        </View>
-
-        {/* Center: 40 Question Navigation Pills */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={{ flex: 1, marginHorizontal: 10 }}
-          contentContainerStyle={{ alignItems: 'center', gap: 4 }}
-        >
-          {Array.from({ length: questionCount }, (_, idx) => idx + 1).map((num) => {
-            const hasAns = Boolean(answers[String(num)]?.trim());
-            const isAct = activeQuestion === num;
-            const isFlg = reviewedQuestions.has(num);
-
-            return (
-              <Pressable
-                key={num}
-                onPress={() => goToQuestion(num)}
-                style={{
-                  width: 26,
-                  height: 32,
-                  borderRadius: 3,
-                  backgroundColor: isAct ? '#0284C7' : hasAns ? '#4B5563' : '#1F1F1F',
-                  borderWidth: 1,
-                  borderColor: isAct ? '#38BDF8' : isFlg ? '#F59E0B' : '#374151',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                }}
-              >
-                <Text style={{ color: '#FFFFFF', fontSize: 10.5, fontWeight: isAct || hasAns ? '900' : '600' }}>
-                  {num}
-                </Text>
-                {isFlg ? (
-                  <View style={{ position: 'absolute', top: 1, right: 1, width: 4, height: 4, borderRadius: 2, backgroundColor: '#F59E0B' }} />
-                ) : null}
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-
-        {/* Right: Review & Navigation Arrows */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Pressable
-            onPress={() => toggleReview(activeQuestion)}
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 4,
-              paddingHorizontal: 10,
-              paddingVertical: 6,
-              borderRadius: 4,
-              backgroundColor: reviewedQuestions.has(activeQuestion) ? '#F59E0B' : '#2D2D2D',
-            }}
-          >
-            <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '800' }}>
-              {reviewedQuestions.has(activeQuestion) ? '✓ Reviewing' : 'Review'}
-            </Text>
-          </Pressable>
-
-          <Pressable
-            onPress={prevQuestion}
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 6,
-              borderRadius: 4,
-              backgroundColor: '#2D2D2D',
-            }}
-          >
-            <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '800' }}>◀ Back</Text>
-          </Pressable>
-
-          <Pressable
-            onPress={nextQuestion}
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 6,
-              borderRadius: 4,
-              backgroundColor: '#0284C7',
-            }}
-          >
-            <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '800' }}>Next ▶</Text>
-          </Pressable>
-        </View>
-      </View>
+      <ReadingShell
+        toolbar={toolbar}
+        left={passagePane}
+        right={questionsPane}
+        shellBg={theme.bg}
+        leftBg={theme.cardBg}
+        rightBg={theme.panelBg}
+        leftFlex={1.1}
+        rightFlex={0.9}
+      />
 
       {/* ============================================================== */}
       {/* 4. MODALS: Settings, Help, Confirm Finish                      */}
@@ -901,9 +685,9 @@ export function ComputerDeliveredExamRoom({
               <Text style={{ fontSize: 13, fontWeight: '800', color: '#374151' }}>Text Size:</Text>
               <View style={{ flexDirection: 'row', gap: 8 }}>
                 {[
-                  { id: 'normal', label: 'Standard (14.5px)' },
-                  { id: 'large', label: 'Large (17px)' },
-                  { id: 'xlarge', label: 'Extra Large (19px)' },
+                  { id: 'normal', label: 'Standard (16px)' },
+                  { id: 'large', label: 'Large (18px)' },
+                  { id: 'xlarge', label: 'Extra Large (20px)' },
                 ].map((s) => (
                   <Pressable
                     key={s.id}

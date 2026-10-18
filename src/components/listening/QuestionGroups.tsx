@@ -34,9 +34,11 @@ export function groupTitle(group: ListeningGroup): string {
 export const GroupBlock = memo(function GroupBlock({ group, ...common }: { group: ListeningGroup } & Common) {
   return (
     <View className="rounded-card border border-border bg-surface p-4" style={{ marginBottom: 16 }}>
-      <Text className="font-nun-heavy text-ink" style={{ fontSize: 16 }}>
-        {groupTitle(group)}
-      </Text>
+      <View style={{ alignSelf: 'flex-start', backgroundColor: '#FDE8E8', borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5 }}>
+        <Text className="font-nun-heavy" style={{ fontSize: 14, color: '#DC2626' }}>
+          {groupTitle(group)}
+        </Text>
+      </View>
       <Text className="mt-1 font-nun text-body text-body" style={{ lineHeight: 22 }}>
         {group.instruction}
       </Text>
@@ -69,20 +71,22 @@ function GapInput({ n, answers, setAnswer, locked }: { n: number } & Common) {
   return (
     <View
       nativeID={qDomId(n)}
-      className="flex-row items-center overflow-hidden rounded-lg"
-      style={{
-        minWidth: 150,
-        minHeight: 44,
-        borderWidth: 1.5,
-        borderColor: focus ? color.primary : v ? '#CDAB6C' : color.borderStrong,
-        backgroundColor: '#FFFFFF',
-      }}
+      className="flex-row items-center"
+      style={{ marginHorizontal: 4, gap: 6 }}
     >
-      <View style={{ width: 32, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBF7EE' }}>
-        <Text className="font-nun-heavy" style={{ fontSize: 13, color: color.primary }}>
-          {n}
-        </Text>
-      </View>
+      <Text className="font-nun-heavy" style={{ fontSize: 15, color: '#1D4ED8' }}>
+        {n}.
+      </Text>
+      <View
+        className="flex-row items-center overflow-hidden rounded-md"
+        style={{
+          minWidth: 120,
+          minHeight: 32,
+          borderWidth: focus ? 1.5 : 0,
+          borderColor: '#1D4ED8',
+          backgroundColor: focus ? '#FFFFFF' : '#EEF1F5',
+        }}
+      >
       <TextInput
         ref={ref}
         value={v}
@@ -103,8 +107,9 @@ function GapInput({ n, answers, setAnswer, locked }: { n: number } & Common) {
         autoCorrect={false}
         spellCheck={false}
         accessibilityLabel={L(`Câu ${n}`, `Question ${n}`)}
-        style={{ flex: 1, minWidth: 110, paddingHorizontal: 8, paddingVertical: 8, fontSize: 16, color: color.ink, outlineStyle: 'none' } as never}
+        style={{ flex: 1, minWidth: 100, paddingHorizontal: 8, paddingVertical: 6, fontSize: 15, color: color.ink, outlineStyle: 'none' } as never}
       />
+      </View>
     </View>
   );
 }

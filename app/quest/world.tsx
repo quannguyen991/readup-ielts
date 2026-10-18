@@ -195,9 +195,9 @@ export default function WorldScreen() {
 
       {/* Bảng nhiệm vụ của đảo đang đứng. */}
       {here && introStep === null ? (
-        <View className="absolute bottom-3 right-3 w-[340px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(15,15,40,0.94)', borderWidth: 1.5, borderColor: here.color }}>
+        <View className="absolute bottom-3 right-3 w-[340px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(255, 253, 247, 0.96)', borderWidth: 1.5, borderColor: here.color }}>
           <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-heavy text-cardTitle text-white">{islandName(here, locale)}</Text>
+            <Text className="font-heavy text-cardTitle text-[#2A1808]">{islandName(here, locale)}</Text>
             <View aria-hidden>
               <Motion kind="pop">
                 <Label text={L('Bạn đang ở đây 📍', 'You are here 📍')} color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
@@ -231,7 +231,7 @@ export default function WorldScreen() {
 
       {/* Hộp thoại của Cú: lời chào lần đầu, hoặc lời khuyên khi bấm "Hỏi Cú". */}
       {introStep !== null || owl ? (
-        <View className="absolute bottom-3 left-3 w-[380px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(15,15,40,0.96)', borderWidth: 1.5, borderColor: '#F59E0B' }}>
+        <View className="absolute bottom-3 left-3 w-[380px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(255, 253, 247, 0.96)', borderWidth: 1.5, borderColor: '#F59E0B' }}>
           <View className="flex-row items-center justify-between">
             <View className="flex-row items-center gap-2">
               <View aria-hidden>
@@ -249,7 +249,7 @@ export default function WorldScreen() {
               </Text>
             ) : null}
           </View>
-          <Text className="mt-2 font-sans text-body text-white" style={{ lineHeight: 22 }}>
+          <Text className="mt-2 font-sans text-body text-[#2A1808]" style={{ lineHeight: 22 }}>
             {introStep !== null ? bi(OWL_INTRO[introStep] ?? { vi: '', en: '' }, locale) : owl}
           </Text>
           <View className="mt-3 flex-row justify-end gap-2">

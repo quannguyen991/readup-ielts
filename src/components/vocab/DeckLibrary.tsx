@@ -13,6 +13,7 @@ import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
 import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
 import { DESTINATION_DECKS } from '@/data/destination-vocab';
+import { OXFORD_TOPIC_DECKS } from '@/data/oxford-topics-decks';
 import { unitsFor } from '@/data/intl/units';
 import { DAILY_TALK_TOPICS } from '@/data/vocab-daily';
 import { byRecent, deckProgress, fold, isInProgress, type DeckProgress } from '@/services/vocab/deck-library';
@@ -59,6 +60,7 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'all', label: 'Tất cả', labelEn: 'All', icon: 'grid' },
   { key: 'learning', label: 'Đang học', labelEn: 'In progress', icon: 'flame' },
   { key: 'mine', label: 'Của bạn', labelEn: 'Yours', icon: 'bookmark' },
+  { key: 'oxford', label: 'Oxford 3000', labelEn: 'Oxford 3000', icon: 'book' },
   { key: 'ielts', label: 'Chủ đề IELTS', labelEn: 'IELTS topics', icon: 'book' },
   { key: 'globalSuccess', label: 'Global Success 10–12', labelEn: 'Global Success 10–12', icon: 'letters' },
   { key: 'vfi', label: 'Vocabulary for IELTS', labelEn: 'Vocabulary for IELTS', icon: 'letters' },
@@ -74,6 +76,7 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
 
 const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
   mine: { title: 'Của bạn', titleEn: 'Yours', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', subtitleEn: 'Words you saved while reading, plus decks you made', icon: 'bookmark' },
+  oxford: { title: 'Chủ đề Oxford 3000', titleEn: 'Oxford 3000 Topics', subtitle: '18 chủ đề từ vựng cốt lõi phân theo cấp độ A1–C1', subtitleEn: '18 core topics categorized with CEFR levels A1–C1', icon: 'book' },
   ielts: { title: 'Chủ đề IELTS', titleEn: 'IELTS topics', subtitle: 'Mỗi bộ xếp từ dễ tới khó theo band', subtitleEn: 'Each deck goes from easy to hard by band', icon: 'book' },
   globalSuccess: { title: 'Global Success 10–12', titleEn: 'Global Success 10–12', subtitle: '30 unit theo lớp, mỗi unit có thêm 30 từ nâng cao', subtitleEn: '30 grade units, each with 30 extra advanced words', icon: 'letters' },
   vfi: { title: 'Vocabulary for IELTS', titleEn: 'Vocabulary for IELTS', subtitle: '20 unit theo giáo trình, mỗi unit thêm 20 từ mở rộng', subtitleEn: '20 units in book order, each with 20 extra words', icon: 'letters' },
@@ -132,6 +135,23 @@ function lib(slug: string, title: string, words: readonly { word: string }[], su
 }
 
 const STATIC_DECKS: LibDeck[] = [
+  ...OXFORD_TOPIC_DECKS.map((t) => ({
+    slug: t.slug,
+    title: t.title,
+    subtitle: t.titleEn,
+    words: t.words,
+    look: {
+      source: 'oxford' as const,
+      sourceLabel: 'Oxford 3000',
+      sourceLabelEn: 'Oxford 3000',
+      accent: ['#E0E7FF', '#4338CA'] as const,
+      icon: 'book' as const,
+    },
+    en: { title: t.titleEn },
+    href: `/oxford?topic=${encodeURIComponent(t.title)}`,
+    cover: t.cover,
+    haystack: fold(`${t.title} ${t.titleEn} oxford 3000 ${t.words.map((w) => w.word).join(' ')}`),
+  })),
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
   // Unit titles already identify the lesson; omit the long source/enrichment blurb on each card.
   ...GLOBAL_SUCCESS_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, undefined, { title: t.name })),
@@ -201,7 +221,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
 
   const grid = (items: React.ReactNode[]) => (
     <View className="mt-3">
-      <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
+      <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={14}>
         {items}
       </Grid>
     </View>

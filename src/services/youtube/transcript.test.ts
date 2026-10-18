@@ -164,3 +164,32 @@ test('câu có chữ "translator" giữa dòng thì KHÔNG bị bỏ', () => {
   const cues = [{ start: 0, duration: 3, text: 'The translator explained the idea clearly.' }];
   assert.equal(speechCues(cues).length, 1);
 });
+
+/* ------------------------------------------------- mỗi đoạn chép chính tả là một câu */
+
+test('một mẩu chứa hai câu được tách thành hai đoạn, mốc thời gian nằm trong mẩu gốc', () => {
+  const [a, b] = usableSentences([
+    { start: 10, end: 14, text: 'The weather was cold yesterday. We stayed inside all day.' },
+  ]);
+  assert.equal(a?.text, 'The weather was cold yesterday.');
+  assert.equal(b?.text, 'We stayed inside all day.');
+  assert.ok((a?.start ?? -1) >= 10 && (b?.end ?? 99) <= 14, 'mốc thời gian phải nằm trong đoạn gốc');
+  assert.ok((a?.end ?? 0) <= (b?.start ?? 0) + 1e-9, 'hai đoạn không được chồng lên nhau');
+});
+
+test('câu quá dài được tách ở dấu phẩy gần giữa, mọi đoạn đều không quá ngưỡng', () => {
+  const long =
+    'In Tirana, anti-government demonstrations have entered their fourth consecutive day, with thousands gathering outside the prime minister office and police using tear gas to disperse them.';
+  const parts = usableSentences([{ start: 0, end: 12, text: long }]);
+  assert.ok(parts.length >= 2, 'câu dài phải được tách');
+  for (const p of parts) {
+    assert.ok(p.text.split(/\s+/).length <= 18, `còn quá dài: ${p.text}`);
+  }
+});
+
+test('câu ngắn sẵn thì giữ nguyên, không tách', () => {
+  const [only] = usableSentences([{ start: 1, end: 3, text: 'Hello there, how are you today?' }]);
+  assert.equal(only?.text, 'Hello there, how are you today?');
+  assert.equal(only?.start, 1);
+  assert.equal(only?.end, 3);
+});

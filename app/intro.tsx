@@ -39,6 +39,10 @@ import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
 import { useRewardStore } from '@/store/useRewardStore';
+import { ArcadeHome } from '@/components/arcade/ArcadeHome';
+import { CatSticker } from '@/components/mascot/CatSticker';
+import { PixelBob } from '@/components/pixel-theme/pixel-fx';
+import { FeatureStrip, NewsBoard, type Feature, type News } from '@/components/home/HomeExtras';
 import { stickerGradient } from '@/theme/tokens';
 import { bi, useL, type Bi } from '@/i18n/useL';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
@@ -58,6 +62,26 @@ const satCount = ARTICLES.filter((a) => a.exam === 'sat').length;
 const task1Count = WRITING_PROMPTS.filter((p) => p.task === 'ielts_task1').length;
 const task2Count = WRITING_PROMPTS.filter((p) => p.task === 'ielts_task2').length;
 const sentenceCount = DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length;
+
+/** Bốn tính năng nổi bật, đặt ngay dưới hero. */
+const FEATURES: Feature[] = [
+  { icon: 'check', title: { vi: 'Đề sát thi thật', en: 'Real-format tests' }, body: { vi: 'Reading và Listening chấm ngay, biết sai ở đâu.', en: 'Reading and Listening marked instantly, with the reason for each miss.' }, href: '/mock-tests' },
+  { icon: 'pencil', title: { vi: 'AI chấm Writing', en: 'AI-marked Writing' }, body: { vi: 'Góp ý theo tiêu chí IELTS, nhắc lỗi ngay lúc gõ.', en: 'Feedback on IELTS criteria, flagging mistakes as you type.' }, href: '/write' },
+  { icon: 'grid', title: { vi: 'SAT Math chắc chắn', en: 'SAT Math you can trust' }, body: { vi: 'Đáp án tính bằng code, không do AI đoán.', en: 'Answers computed by code, never guessed by AI.' }, href: '/sat' },
+  { icon: 'languages', title: { vi: 'Đọc song ngữ', en: 'Bilingual reading' }, body: { vi: 'Ghép từng đoạn Anh–Việt, miễn phí cho mọi người.', en: 'Paragraph-aligned English–Vietnamese, free for everyone.' }, href: '/bilingual' },
+];
+
+/** Bảng tin: các mục cập nhật, con số đếm từ dữ liệu thật. */
+const NEWS: News[] = [
+  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Giọng đọc Aoede', en: 'Aoede voice' }, body: { vi: 'Phát âm từ vựng và Listening dùng chung một giọng đọc tự nhiên.', en: 'Vocabulary pronunciation and Listening now share one natural voice.' }, href: '/vocabulary/topics' },
+  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Clip tiếng Anh', en: 'English clips' }, body: { vi: 'Xem clip có sẵn và học theo từng đoạn.', en: 'Watch ready-made clips and study them segment by segment.' }, href: '/clip' },
+  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Thi thử SAT đầy đủ', en: 'Full SAT mock' }, body: { vi: 'Bài thi thử SAT Math và Verbal, chấm bằng code.', en: 'Full SAT Math and Verbal mock, scored by code.' }, href: '/sat/full-test' },
+  { tag: { vi: 'MẸO', en: 'TIP' }, title: { vi: 'Học theo chủ đề', en: 'Study by topic' }, body: { vi: `${VOCAB_TOPICS.length} chủ đề từ vựng IELTS, có phát âm.`, en: `${VOCAB_TOPICS.length} IELTS vocabulary topics, with pronunciation.` }, href: '/vocabulary/topics' },
+  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Đọc báo song ngữ', en: 'Bilingual news' }, body: { vi: `${bilingualStats().articles} bài Anh–Việt, ghép theo từng đoạn.`, en: `${bilingualStats().articles} articles, aligned by paragraph.` }, href: '/bilingual' },
+];
+
+/** Tạm ẩn dải "Bạn đang học dở" trên trang chủ máy tính; đổi thành true để bật lại. */
+const SHOW_RESUME_BANNER = false;
 
 type Area = {
   icon: IconName;
@@ -117,7 +141,7 @@ const AREAS: Area[] = [
     colors: stickerGradient.success,
     title: { vi: 'Sổ từ vựng', en: 'Word notebook' },
     lines: [{ vi: 'Mỗi từ lưu kèm nguyên câu gặp nó', en: 'Every word saved with the sentence you found it in' }],
-    badge: { vi: 'FSRS', en: 'FSRS' },
+    badge: { vi: 'ÔN THEO FSRS', en: 'FSRS REVIEW' },
     href: '/vocabulary',
   },
   {
@@ -126,8 +150,62 @@ const AREAS: Area[] = [
     colors: stickerGradient.warning,
     title: { vi: 'Lộ trình', en: 'Roadmap' },
     lines: [{ vi: `${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`, en: `${CURRICULUM_TOTALS.stages} stages, ${CURRICULUM_TOTALS.units} lessons laid out for you` }],
-    badge: { vi: 'MIỄN PHÍ', en: 'FREE' },
+    badge: { vi: `${CURRICULUM_TOTALS.stages} CHẶNG`, en: `${CURRICULUM_TOTALS.stages} STAGES` },
     href: '/math',
+  },
+  {
+    icon: 'clipboard',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/reading.png'),
+    colors: stickerGradient.rose,
+    title: { vi: 'Thi thử Reading', en: 'Reading mock' },
+    lines: [{ vi: 'Đề thi thử đúng khổ, chấm và chấm điểm', en: 'Mock tests in the real format, scored' }],
+    badge: { vi: 'THI THỬ', en: 'MOCK TEST' },
+    href: '/mock-tests',
+  },
+  {
+    icon: 'volume',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.png'),
+    colors: stickerGradient.primary,
+    title: { vi: 'Nghe Listening', en: 'Listening' },
+    lines: [{ vi: 'Bài nghe có đáp án và giải thích từng câu', en: 'Listening sets with answers and explanations' }],
+    badge: { vi: 'CÓ ĐÁP ÁN', en: 'WITH ANSWERS' },
+    href: '/listening',
+  },
+  {
+    icon: 'mic',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/writing.png'),
+    colors: stickerGradient.danger,
+    title: { vi: 'Luyện nói', en: 'Speaking' },
+    lines: [{ vi: 'Nói và được AI góp ý theo tiêu chí IELTS', en: 'Speak and get IELTS-criteria feedback from AI' }],
+    badge: { vi: 'AI HỖ TRỢ', en: 'AI COACH' },
+    href: '/speaking',
+  },
+  {
+    icon: 'book',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/reading.png'),
+    colors: stickerGradient.accent,
+    title: { vi: 'Đọc theo VOA', en: 'Read along with VOA' },
+    lines: [{ vi: 'Vừa nghe vừa đọc theo từng câu', en: 'Listen and read along, sentence by sentence' }],
+    badge: { vi: 'NGHE · ĐỌC', en: 'LISTEN · READ' },
+    href: '/shadow',
+  },
+  {
+    icon: 'play',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.png'),
+    colors: stickerGradient.info,
+    title: { vi: 'Clip tiếng Anh', en: 'English clips' },
+    lines: [{ vi: 'Xem video có sẵn và học theo từng đoạn', en: 'Watch ready-made videos and study them by segment' }],
+    badge: { vi: 'VIDEO', en: 'VIDEO' },
+    href: '/clip',
+  },
+  {
+    icon: 'target',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/sat.png'),
+    colors: stickerGradient.success,
+    title: { vi: 'TOEIC · TOEFL', en: 'TOEIC · TOEFL' },
+    lines: [{ vi: 'Thêm bài luyện cho các kỳ thi khác', en: 'Practice for other exams' }],
+    badge: { vi: 'THÊM ĐỀ', en: 'MORE TESTS' },
+    href: '/toeic',
   },
 ];
 
@@ -198,6 +276,8 @@ export default function IntroScreen() {
   const { width } = useWindowDimensions();
   const { L, en } = useL();
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
+  // Theme máy chơi điện tử (mua trong Đổi quà): vào máy từ màn chào thay cho trang giới thiệu.
+  const arcadeOn = useRewardStore((state) => state.theme === 'theme-arcade');
   const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
   const px = usePixelTheme();
   const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : px ? px.palette : selectedPalette;
@@ -230,6 +310,8 @@ export default function IntroScreen() {
   const didMath = useMathStore((s) => s.sessions.length > 0);
   const returning = studied || didMath;
 
+  if (arcadeOn && width >= 640) return <ArcadeHome onEnter={enterApp} />;
+
   // Điện thoại: bản riêng theo ngôn ngữ của trang Hôm nay; máy tính giữ bản giới thiệu đầy đủ.
   if (width < 640) {
     return (
@@ -252,7 +334,7 @@ export default function IntroScreen() {
   return (
     <Screen>
       <SakuraRain />
-      {returning ? (
+      {SHOW_RESUME_BANNER && returning ? (
         <Appear>
           <Card className="mb-4">
             <View className="flex-row flex-wrap items-center justify-between gap-3">
@@ -384,6 +466,13 @@ export default function IntroScreen() {
 
       {/* ------------------------------------- Khám phá lịch sử (ẩn tới khi có cảnh xuất bản) */}
       <Appear index={1}>
+        <FeatureStrip items={FEATURES} onOpen={enterApp} />
+      </Appear>
+      <Appear index={2}>
+        <NewsBoard items={NEWS} onOpen={enterApp} />
+      </Appear>
+
+      <Appear index={1}>
         <HistoryHomeCard marginTop={28} />
       </Appear>
 
@@ -391,12 +480,12 @@ export default function IntroScreen() {
       <Appear index={1}>
         <Text className="mt-14 font-heavy text-sectionTitle text-ink">{L('App có gì', "What's inside")}</Text>
         <Text className="mt-1 font-sans text-body" style={{ color: '#1E293B' }}>
-          {L('Bảy mảng, dùng chung một sổ từ và một bảng tiến độ.', 'Seven areas sharing one word notebook and one progress board.')}
+          {L('Mười ba mảng học, dùng chung một sổ từ và một bảng tiến độ.', 'Thirteen study areas sharing one word notebook and one progress board.')}
         </Text>
       </Appear>
 
       <View className="mt-5">
-        <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={18}>
+        <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
           {AREAS.map((area, index) => (
             <Appear key={area.href} index={index + 2} style={{ flex: 1 }}>
               <AreaCard area={area} chiikawaTheme={chiikawaTheme} colorIndex={index} />
@@ -583,13 +672,10 @@ const AREA_CAT_POSE = ['sit', 'hangingPaws', 'curl', 'peeking', 'stretch', 'lie'
 function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaTheme: boolean; colorIndex: number }) {
   const { locale } = useL();
   const colors = (chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : area.colors) ?? ['#4A7FE8', '#7FA3F6'];
-  // Theme mặc định: mèo bám lên mép trên thẻ. Theme Chiikawa đã có nhân vật riêng trên thẻ.
-  const perch = !chiikawaTheme;
   return (
-    <View style={{ flex: 1, position: 'relative', paddingTop: perch ? 44 : 0 }}>
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
       <StickerCard bold colors={colors} style={{ flex: 1 }} ornament={<GlowStars />}>
-        <View style={{ height: chiikawaTheme ? 112 : 48, position: 'relative' }}>
+        <View style={{ height: chiikawaTheme ? 112 : 92, position: 'relative' }}>
           <View
             className="h-12 w-12 items-center justify-center rounded-panel bg-white"
             style={Platform.OS === 'web' ? ({ boxShadow: '0 2px 6px rgba(15,23,42,0.18)' } as object) : undefined}
@@ -604,17 +690,23 @@ function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaThe
               importantForAccessibility="no"
               style={{ position: 'absolute', top: -18, right: -12, width: 158, height: 132 }}
             />
-          ) : null}
+          ) : (
+            <View pointerEvents="none" style={{ position: 'absolute', right: -4, top: -6 }}>
+              <PixelBob amplitude={7} period={1800} delay={colorIndex * 180}>
+                <CatSticker pose={AREA_CAT_POSE[colorIndex % AREA_CAT_POSE.length] ?? 'sit'} size={104} />
+              </PixelBob>
+            </View>
+          )}
         </View>
 
-        <Text className="font-heavy text-sectionTitle text-white" style={[STICKER_TITLE_SHADOW, { marginTop: chiikawaTheme ? 2 : 14 }]}>
+        <Text className="font-heavy text-sectionTitle text-white" style={[STICKER_TITLE_SHADOW, { marginTop: chiikawaTheme ? 2 : 8 }]}>
           {bi(area.title, locale)}
         </Text>
 
         {/* Đẩy viên nhãn xuống đáy để các thẻ có nhãn thẳng hàng dù chữ dài ngắn khác nhau. */}
         <View className="flex-1" />
 
-        <View className="mt-5 flex-row items-center justify-between gap-2">
+        <View className="mt-4 flex-row items-center justify-between gap-2">
           <View className="rounded-pill px-3 py-1" style={{ backgroundColor: 'rgba(27,24,64,0.62)' }}>
             <Text className="font-heavy text-label text-white" style={{ letterSpacing: 0.6 }}>
               {bi(area.badge, locale)}
@@ -626,8 +718,6 @@ function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaThe
         </View>
       </StickerCard>
     </PressScale>
-    {perch ? <PerchCat pose={AREA_CAT_POSE[colorIndex % AREA_CAT_POSE.length] ?? 'sit'} size={64} side={colorIndex % 2 ? 'left' : 'right'} inset={28} offset={44} /> : null}
-    </View>
   );
 }
 

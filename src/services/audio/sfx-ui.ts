@@ -15,6 +15,11 @@ const bell = (e: Engine, notes: number[], step: number, gain = 0.08, dur = 0.3, 
 
 const DRAW: Record<SoundKind, (e: Engine) => void> = {
   click: (e) => tone(e, 880, { dur: 0.04, gain: 0.04, type: 'triangle', to: 660 }),
+  // Chuyển tab: một ting sin ngắn đi xuống, thay cho tiếng gió cũ.
+  tab: (e) => {
+    tone(e, 1318.5, { dur: 0.09, gain: 0.022, type: 'sine', to: 1174.66 });
+    tone(e, 1760, { at: 0.035, dur: 0.07, gain: 0.01, type: 'sine' });
+  },
   transition: (e) => {
     noise(e, { dur: 0.16, gain: 0.035, hz: 700, to: 2200, q: 0.7 });
     tone(e, 520, { dur: 0.12, gain: 0.02, to: 780 });

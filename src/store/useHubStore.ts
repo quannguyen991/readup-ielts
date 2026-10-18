@@ -2,6 +2,10 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
+import { useStudyStore } from './useStudyStore';
+
+/** Mọi việc làm trong khu Band 9 đều ghi một việc vào sổ ngày, để chuỗi ngày tính đủ. */
+const recordActivity = () => useStudyStore.getState().logEvent();
 
 /**
  * Tiến độ và State toàn cục của khu vực BAND 9 (tab Hôm nay / Học / Gia sư / Khám phá / Tiến độ).
@@ -103,12 +107,20 @@ export const useHubStore = create<HubState>()(
       lessonsDone: {},
       roleplayDone: {},
       ieltsDone: {},
-      completeIelts: (id) => set((s) => ({ ieltsDone: { ...s.ieltsDone, [id]: s.ieltsDone[id] ?? new Date().toISOString() } })),
+      completeIelts: (id) => {
+        set((s) => ({ ieltsDone: { ...s.ieltsDone, [id]: s.ieltsDone[id] ?? new Date().toISOString() } }));
+        recordActivity();
+      },
       phraseBest: {},
-      recordPhrase: (id, pct) =>
-        set((s) => ({ phraseBest: { ...s.phraseBest, [id]: Math.max(s.phraseBest[id] ?? 0, Math.round(pct)) } })),
+      recordPhrase: (id, pct) => {
+        set((s) => ({ phraseBest: { ...s.phraseBest, [id]: Math.max(s.phraseBest[id] ?? 0, Math.round(pct)) } }));
+        recordActivity();
+      },
       topicsDone: {},
-      completeTopic: (id) => set((s) => ({ topicsDone: { ...s.topicsDone, [id]: s.topicsDone[id] ?? new Date().toISOString() } })),
+      completeTopic: (id) => {
+        set((s) => ({ topicsDone: { ...s.topicsDone, [id]: s.topicsDone[id] ?? new Date().toISOString() } }));
+        recordActivity();
+      },
       userSets: [],
       saved: [],
       wordBookmarks: [],
@@ -146,19 +158,28 @@ export const useHubStore = create<HubState>()(
         })),
       slides: [],
       setSlides: (slides) => set({ slides: slides.slice(0, 30) }),
-      recordPhoneme: (symbol, score) =>
+      recordPhoneme: (symbol, score) => {
         set((s) => ({
           phonemeBest: { ...s.phonemeBest, [symbol]: Math.max(s.phonemeBest[symbol] ?? 0, Math.round(score)) },
           phonemeTries: { ...s.phonemeTries, [symbol]: (s.phonemeTries[symbol] ?? 0) + 1 },
-        })),
+        }));
+        recordActivity();
+      },
       completeTask: (day, taskId) => {
         const cur = get().doneByDay[day] ?? [];
         if (cur.includes(taskId)) return false;
         set((s) => ({ doneByDay: { ...s.doneByDay, [day]: [...cur, taskId] } }));
+        recordActivity();
         return true;
       },
-      completeLesson: (id) => set((s) => ({ lessonsDone: { ...s.lessonsDone, [id]: new Date().toISOString() } })),
-      completeRoleplay: (id) => set((s) => ({ roleplayDone: { ...s.roleplayDone, [id]: (s.roleplayDone[id] ?? 0) + 1 } })),
+      completeLesson: (id) => {
+        set((s) => ({ lessonsDone: { ...s.lessonsDone, [id]: new Date().toISOString() } }));
+        recordActivity();
+      },
+      completeRoleplay: (id) => {
+        set((s) => ({ roleplayDone: { ...s.roleplayDone, [id]: (s.roleplayDone[id] ?? 0) + 1 } }));
+        recordActivity();
+      },
       addUserSet: (title, items) =>
         set((s) => ({
           userSets: [{ id: `u-${Date.now().toString(36)}`, title, items, createdAt: new Date().toISOString() }, ...s.userSets],

@@ -239,7 +239,7 @@ export default function HeroScreen() {
                       </Text>
                       {isBoss(i) ? (
                         <View style={{ marginTop: 3, borderRadius: 4, paddingHorizontal: 5, backgroundColor: HUB.red }}>
-                          <Text className="font-heavy" style={{ fontSize: 12, letterSpacing: 1, color: '#FFFFFF' }}>
+                          <Text className="font-heavy" style={{ fontSize: 12, letterSpacing: 1, color: '#2A1808' }}>
                             BOSS
                           </Text>
                         </View>

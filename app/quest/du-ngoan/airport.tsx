@@ -128,7 +128,7 @@ function Airport() {
   return (
     <TravelPage title={L('Quầy đổi vé', 'Ticket counter')} back="/quest/du-ngoan" backLabel={L('Bản đồ', 'Map')}>
       <Modal transparent visible={ask} animationType="fade" onRequestClose={() => setAsk(false)}>
-        <View style={{ flex: 1, backgroundColor: 'rgba(15,29,51,0.6)', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+        <View style={{ flex: 1, backgroundColor: 'rgba(255, 253, 247, 0.96)', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
           <View accessibilityRole="alert" style={{ width: '100%', maxWidth: 380 }}>
             <PixelPanel inner={{ padding: 20, gap: 10 }}>
               <Text className="font-heavy" style={{ fontSize: 20, color: T.ink }}>

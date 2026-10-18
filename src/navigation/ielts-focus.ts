@@ -14,6 +14,8 @@ export const IELTS_SKILL_ORDER: readonly IeltsSkill[] = ['reading', 'listening',
 /** Mỗi trang con IELTS thuộc về một kỹ năng. */
 export const IELTS_SKILL_OF: Readonly<Record<string, IeltsSkill>> = {
   'mock-tests': 'reading',
+  'video-hub': 'listening',
+  grammar: 'other',
   'ielts-source-practice': 'reading',
   library: 'reading',
   bilingual: 'reading',

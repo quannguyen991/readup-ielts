@@ -8,8 +8,9 @@ import { GLASS_CARD, COSMIC } from '@/components/hub/theme';
 import { Icon } from '@/components/ui/Icon';
 import { CuteBook, CuteCalendar, CuteGlobe } from '@/components/illust/Cute';
 import { CuteBulb, CuteChat, CuteFlame, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CuteRocket, CuteStar } from '@/components/illust/CuteMore';
-import { dayKeyOf, streakDays, weekStrip } from '@/services/hub/daily';
+import { dayKeyOf, weekStrip } from '@/services/hub/daily';
 import { useHubStore } from '@/store/useHubStore';
+import { useStreak } from '@/store/useStudyStore';
 
 const WEEKDAYS = ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'];
 
@@ -49,10 +50,10 @@ export default function HubToday() {
   const wide = width >= 720;
   const today = dayKeyOf(new Date());
   const doneByDay = useHubStore((s) => s.doneByDay);
-  const streakCount = useHubStore((s) => s.streakCount);
   const gems = useHubStore((s) => s.gems);
   const doneToday = doneByDay[today] ?? [];
-  const streak = Math.max(streakCount, streakDays(doneByDay, today));
+  // Một chuỗi duy nhất cho cả app: ngày có việc làm ở đâu cũng tính (xem `isActiveDay`).
+  const streak = useStreak().current;
   const [info, setInfo] = useState(false);
 
   // 7 ngày trong tuần, lấy từ lịch sử làm nhiệm vụ thật

@@ -15,7 +15,12 @@
 
 import { dayBoost } from './promo';
 
-export type DayLog = { minutes: number; questions: number };
+/**
+ * Một ngày trong nhật ký. `wordsReviewed` và `events` là số liệu THÊM SAU: ngày cũ không có
+ * hai trường này, nên luôn đọc qua `?? 0`. Sao chỉ tính trên phút và câu (`rawEffort`); hai
+ * trường kia chỉ quyết định ngày đó có được tính là ngày học hay không (`isActiveDay`).
+ */
+export type DayLog = { minutes: number; questions: number; wordsReviewed?: number; events?: number };
 
 /** Công mỗi phút học và mỗi câu đã làm, trước khi nhân hệ số chuỗi. */
 export const POINT_PER_MINUTE = 1;
@@ -64,6 +69,16 @@ export function shiftDays(from: Date, days: number): Date {
 }
 
 /**
+ * Ngày có hoạt động thật: có phút học, có câu đã làm, có từ đã ôn, hoặc có một việc đã
+ * hoàn thành (nghe, viết, nói, nhiệm vụ). Đây là MỘT luật duy nhất cho chuỗi ngày — trang
+ * Tiến độ, Hồ sơ, Xếp hạng, Hub và nhắc học đều gọi qua đây, nên không còn số nào lệch.
+ */
+export function isActiveDay(day: DayLog | undefined): boolean {
+  if (!day) return false;
+  return day.minutes > 0 || day.questions > 0 || (day.wordsReviewed ?? 0) > 0 || (day.events ?? 0) > 0;
+}
+
+/**
  * Chuỗi ngày học liên tiếp tính tới hôm nay.
  *
  * Hôm nay chưa học thì chuỗi CHƯA đứt — nó chỉ đứt khi hôm qua cũng trống.
@@ -79,11 +94,36 @@ export function currentStreak(
   let streak = 0;
   for (let back = 0; back < 400; back += 1) {
     const key = dateKey(shiftDays(today, -back));
-    const active = (daily[key]?.minutes ?? 0) > 0 || frozenSet.has(key);
+    const active = isActiveDay(daily[key]) || frozenSet.has(key);
     if (active) streak += 1;
     else if (back > 0) break;
   }
   return streak;
+}
+
+/**
+ * Chuỗi dài nhất từng có trong nhật ký (kể cả ngày đông băng). Không phụ thuộc hôm nay: chuỗi
+ * dài nhất là một sự kiện đã xảy ra, không bị mất khi hôm nay chưa học.
+ */
+export function longestStreak(daily: Record<string, DayLog>, frozen: readonly string[] = []): number {
+  const active = new Set<string>(frozen);
+  for (const [key, day] of Object.entries(daily)) if (isActiveDay(day)) active.add(key);
+
+  let best = 0;
+  for (const key of active) {
+    const [y, m, d] = key.split('-').map(Number);
+    if (!y || !m || !d) continue;
+    // Chỉ đếm từ ngày đầu của một đoạn liên tiếp, để mỗi đoạn chỉ được quét một lần.
+    if (active.has(dateKey(shiftDays(new Date(y, m - 1, d), -1)))) continue;
+    let run = 0;
+    let cursor = new Date(y, m - 1, d);
+    while (active.has(dateKey(cursor))) {
+      run += 1;
+      cursor = shiftDays(cursor, 1);
+    }
+    best = Math.max(best, run);
+  }
+  return best;
 }
 
 /**

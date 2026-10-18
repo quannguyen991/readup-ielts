@@ -1,6 +1,6 @@
 import { themedHex } from '@/theme/palette-state';
-import React, { useEffect } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Platform, Pressable, Text, View, type PressableProps } from 'react-native';
 import { router, usePathname } from 'expo-router';
 
 import { BOTTOM_BAR_HEIGHT, BOTTOM_BAR_VAR, useChromeStore } from './chrome-store';
@@ -147,7 +147,7 @@ export function BottomTabs() {
           const on = active === item.key;
           const label = L(item.vi, item.en);
           return (
-            <Pressable
+            <TabButton
               key={item.key}
               accessibilityRole="tab"
               accessibilityState={{ selected: on }}
@@ -160,19 +160,12 @@ export function BottomTabs() {
                 haptic();
                 if (!on) router.navigate(item.href as never);
               }}
-              style={({ pressed }) => ({
-                flex: 1,
-                height: BOTTOM_BAR_HEIGHT,
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: pressed ? 0.7 : 1,
-                transform: [{ scale: pressed ? 0.94 : 1 }],
-              })}
             >
               <View
                 style={[
                   { width: 60, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
                   on ? { backgroundColor: chiikawaTheme ? 'rgba(214,94,134,0.14)' : 'rgba(217,164,65,0.18)' } : null,
+                  IS_WEB ? { transition: 'background-color 200ms ease' } : null,
                 ] as never}
               >
                 {item.coin ? (
@@ -195,11 +188,39 @@ export function BottomTabs() {
                   </View>
                 )}
               </View>
-            </Pressable>
+            </TabButton>
           );
         })}
       </View>
     </View>
+  );
+}
+
+/**
+ * Một nút tab: rê chuột thì nhô lên nhẹ, bấm thì co lại. Trên web chuyển động có transition
+ * nên mượt, không giật từ trạng thái này sang trạng thái kia.
+ */
+function TabButton({ children, ...rest }: PressableProps & { children: React.ReactNode }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Pressable
+      {...rest}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
+      style={({ pressed }) =>
+        ({
+          flex: 1,
+          height: BOTTOM_BAR_HEIGHT,
+          alignItems: 'center',
+          justifyContent: 'center',
+          opacity: pressed ? 0.7 : 1,
+          transform: [{ scale: pressed ? 0.92 : hovered ? 1.06 : 1 }],
+          ...(IS_WEB ? { transition: 'transform 160ms ease, opacity 160ms ease' } : null),
+        }) as never
+      }
+    >
+      {children}
+    </Pressable>
   );
 }
 

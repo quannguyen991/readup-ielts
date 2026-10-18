@@ -47,6 +47,8 @@ import { mergeStartup, normalizeStartup } from '@/services/startup/sync';
 import { useStartupStore } from '@/store/useStartupStore';
 import { mergeHistory, normalizeHistory } from '@/services/history/progress';
 import { useHubStore } from '@/store/useHubStore';
+import { useWritingStore } from '@/store/useWritingStore';
+import { mergeWriting, type WritingSyncPayload } from '@/services/writing/store-sync';
 import { useLevelTestStore } from '@/store/useLevelTestStore';
 import { mergeLevelTests, type LevelTestRecord } from '@/services/hub/level-test';
 import { useDialogueStore } from '@/store/useDialogueStore';
@@ -186,12 +188,29 @@ const gameStore: SyncedStore = {
  * để mua trên máy này thì máy kia cũng có — và để bảng xếp hạng hiện được avatar,
  * bìa của từng người (máy chủ đọc phần đồ đang đeo, không đọc gì khác).
  */
+/**
+ * Đưa giao diện về Band 9 MỘT LẦN trên mỗi máy: bản trên máy chủ có thể còn giữ gói
+ * giao diện cũ. Đặt thời điểm đeo mới nhất để bản trên máy thắng khi gộp (xem mergeReward),
+ * rồi đẩy lên máy chủ.
+ */
+const LOOK_RESET_KEY = 'readup:look-reset-v4';
+function resetLookOnce(): void {
+  try {
+    if (typeof localStorage === 'undefined' || localStorage.getItem(LOOK_RESET_KEY) === '1') return;
+    useRewardStore.setState({ theme: null, studyBg: null, wornAt: new Date().toISOString() });
+    localStorage.setItem(LOOK_RESET_KEY, '1');
+  } catch {
+    // Storage bị chặn thì bỏ qua: lần sau thử lại.
+  }
+}
+
 const rewardStore: SyncedStore = {
   key: 'reward',
   read: () => rewardPayload(),
   write: (payload) => {
     // Món miễn phí luôn có sẵn, kể cả khi dữ liệu từ máy chủ chưa ghi nhận.
     if (payload) useRewardStore.setState({ ...(payload as RewardPayload), owned: { ...freeOwned(), ...(payload as RewardPayload).owned } });
+    resetLookOnce();
   },
   merge: (local, remote) => mergeReward(local as RewardPayload | null, remote as RewardPayload | null),
 };
@@ -443,7 +462,30 @@ const topicStudyStore: SyncedStore = {
   merge: (local, remote) => mergeTopicStudy(remapTopicStudy(local as never), remote ? remapTopicStudy(remote as never) : remote),
 };
 
+/**
+ * Viết Band 9: bài đã nộp, bản chấm và bài mẫu. Trước đây kho này chỉ nằm trên máy, nên đổi
+ * máy là mất lịch sử viết. Bản nháp đang gõ không đồng bộ (thuộc về máy đang gõ).
+ */
+const writingStore: SyncedStore = {
+  key: 'writing',
+  read: () => {
+    const s = useWritingStore.getState();
+    return { submissions: s.submissions, evaluations: s.evaluations, modelEssays: s.modelEssays };
+  },
+  write: (payload) => {
+    if (!payload || typeof payload !== 'object') return;
+    const data = payload as WritingSyncPayload;
+    useWritingStore.setState({
+      submissions: (data.submissions ?? []) as never,
+      evaluations: (data.evaluations ?? []) as never,
+      modelEssays: (data.modelEssays ?? {}) as never,
+    });
+  },
+  merge: (local, remote) => mergeWriting(local as WritingSyncPayload, remote as WritingSyncPayload),
+};
+
 export function registerAllSyncedStores(): void {
+  registerSyncedStore(writingStore);
   registerSyncedStore(roadmapStore);
   registerSyncedStore(mathStore);
   registerSyncedStore(studyStore);

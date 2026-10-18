@@ -200,6 +200,7 @@ function VideoCard({
   progress?: string;
 }) {
   const { L, en } = useL();
+  const [imgError, setImgError] = useState(false);
   const s = video.durationSeconds;
   const duration = en && s !== null ? (s < 60 ? 'under 1 min' : `${Math.round(s / 60)} min`) : formatDuration(s);
 
@@ -214,12 +215,24 @@ function VideoCard({
         Ảnh giữ đúng tỉ lệ 16:9 bằng aspectRatio, không đặt chiều cao cứng: đặt
         cứng thì ở cột hẹp ảnh bị méo, mà thumbnail méo trông như ảnh hỏng.
       */}
-      <View style={{ aspectRatio: 16 / 9, backgroundColor: color.surfaceAlt }}>
-        <Image
-          source={{ uri: thumbnailUrl(video.id) }}
-          style={{ width: '100%', height: '100%' }}
-          resizeMode="cover"
-        />
+      <View style={{ aspectRatio: 16 / 9, backgroundColor: color.surfaceAlt, overflow: 'hidden' }}>
+        {!imgError ? (
+          <Image
+            source={{ uri: thumbnailUrl(video.id) }}
+            style={{ width: '100%', height: '100%' }}
+            resizeMode="cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <View style={{ width: '100%', height: '100%', backgroundColor: '#1E293B', alignItems: 'center', justifyContent: 'center', padding: 12 }}>
+            <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.18)', alignItems: 'center', justifyContent: 'center' }}>
+              <Icon name="play" size={20} color="#FFFFFF" strokeWidth={2.5} />
+            </View>
+            <Text className="mt-2 font-strong text-white" style={{ fontSize: 12 }} numberOfLines={1}>
+              {video.channel}
+            </Text>
+          </View>
+        )}
         {duration ? (
           <View className="absolute bottom-2 right-2 rounded-pill bg-black/70 px-2 py-0.5">
             <Text className="font-strong text-white" style={{ fontSize: 12 }}>

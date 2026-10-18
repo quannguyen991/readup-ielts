@@ -5,6 +5,7 @@ import { Icon } from '@/components/ui';
 import { color } from '@/theme/tokens';
 import { useRewardStore } from '@/store/useRewardStore';
 import { CHIIKAWA_IMG } from '@/components/chiikawa/chiikawa';
+import { LionMascot } from '@/components/mascot/LionMascot';
 import { currentLocale, pick, useL } from '@/i18n/useL';
 import { formatWordAnswer, isSingleWordQuestion } from '@/services/dictionary/word-answer';
 import { lookupOffline, resolveWord } from '@/services/dictionary/word-lookup';
@@ -31,9 +32,9 @@ const COOLDOWN_MS = 15_000;
 let aiBlockedUntil = 0;
 
 const GREETING =
-  'Hỏi mình về ngữ pháp, từ vựng, cách làm từng dạng câu, hay cách dùng app. Mình không xem được tài khoản hay bài viết của bạn.';
+  'Chào bạn, mình là Leo. Hỏi mình bất kỳ điều gì: từ vựng, ngữ pháp, cách làm từng dạng câu, hay cách dùng app. Mình không xem được tài khoản hay bài viết của bạn.';
 const GREETING_EN =
-  "Ask me about grammar, vocabulary, how to tackle each question type, or how to use the app. I can't see your account or your writing.";
+  "Hi, I'm Leo. Ask me anything: vocabulary, grammar, how to tackle each question type, or how to use the app. I can't see your account or your writing.";
 
 const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
 
@@ -63,9 +64,10 @@ function lift(px: number): { bottom: number; transition?: string } {
   return { bottom: `calc(${px}px + var(--bb-h, 0px))` as unknown as number, transition: 'bottom 200ms ease' } as never;
 }
 
-export function AskBubble() {
+export function AskBubble({ forceChiikawa = false }: { /** Trang chủ chỉ có Chiikawa: dùng Chiikawa thay Leo mà không đổi theme. */ forceChiikawa?: boolean } = {}) {
   const { L, en } = useL();
-  const chiikawaTheme = useRewardStore((s) => s.theme === 'theme-chiikawa');
+  const storeChiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
+  const chiikawaTheme = forceChiikawa || storeChiikawa;
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState('');
@@ -156,52 +158,42 @@ export function AskBubble() {
   }, [ask, busy, messages]);
 
   if (!open) {
+    // Linh vật sư tử là nút hỏi: bấm vào là mở khung hỏi. Không còn nút tròn riêng.
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Mở hỏi nhanh', 'Open quick ask')}
+        accessibilityLabel={chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Hỏi Leo, trợ lý AI', 'Ask Leo, the AI helper')}
         onPress={() => setOpen(true)}
         style={({ pressed, hovered }: { pressed: boolean; hovered?: boolean }) =>
           ({
             position: FIXED,
-            right: 14,
-            ...lift(6),
+            right: 6,
+            ...lift(2),
             zIndex: 60,
-            height: chiikawaTheme ? 84 : 52,
-            width: chiikawaTheme ? 84 : 52,
-            borderRadius: chiikawaTheme ? 0 : 34,
+            width: 100,
+            height: 100,
             alignItems: 'center',
             justifyContent: 'center',
-            // Chiikawa: không nền tròn, không viền, không bóng khối — chỉ có hình.
-            backgroundColor: chiikawaTheme ? 'transparent' : color.primary,
-            borderWidth: 0,
-            overflow: 'visible',
-            // Nhấn lún nhẹ, rê vào nảy lên: chuyển động nối tiếp, không giật.
-            transform: [{ scale: pressed ? 0.92 : hovered ? 1.06 : 1 }],
+            // Rê vào nhô lên, bấm xuống: chuyển động nối tiếp, không giật.
+            transform: [{ scale: pressed ? 0.94 : hovered ? 1.06 : 1 }],
             transition: 'transform 220ms cubic-bezier(.2,.8,.2,1), bottom 200ms ease',
-            ...(chiikawaTheme
-              ? {}
-              : Platform.OS === 'web'
-                ? ({ boxShadow: '0 8px 24px rgba(15,23,42,0.18)' } as never)
-                : {
-                    shadowColor: '#0F172A',
-                    shadowOffset: { width: 0, height: 5 },
-                    shadowOpacity: 0.18,
-                    shadowRadius: 12,
-                    elevation: 7,
-                  }),
           }) as never
         }
       >
-        {chiikawaTheme ? (
-          <Image
-            source={CHIIKAWA}
-            resizeMode="contain"
-            style={{ width: 84, height: 84, ...(Platform.OS === 'web' ? ({ animation: 'ab-float 3.2s ease-in-out infinite', filter: 'drop-shadow(0 10px 14px rgba(198,90,120,0.28))' } as object) : null) }}
-            accessibilityIgnoresInvertColors
-          />
-        ) : (
-          <Icon name="sparkle" size={22} color="#fff" strokeWidth={2.2} />
+        <View
+          {...({ dataSet: { ab: '1' } } as object)}
+          pointerEvents="none"
+          style={Platform.OS === 'web' ? ({ animation: 'ab-float 3.2s ease-in-out infinite' } as object) : undefined}
+        >
+          {forceChiikawa ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 92, height: 92 }} accessibilityIgnoresInvertColors /> : <LionMascot pose="wave" size={92} />}
+        </View>
+        {chiikawaTheme ? null : (
+          <View
+            pointerEvents="none"
+            style={{ position: 'absolute', top: 6, right: 4, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 999, backgroundColor: '#B94A70' }}
+          >
+            <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '800', letterSpacing: 0.4 }}>AI</Text>
+          </View>
         )}
       </Pressable>
     );
@@ -237,8 +229,8 @@ export function AskBubble() {
         style={{ backgroundColor: chiikawaTheme ? '#C65A78' : color.primary }}
       >
         <View className="flex-row items-center gap-2">
-          {chiikawaTheme ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 40, height: 40 }} accessibilityIgnoresInvertColors /> : <Icon name="sparkle" size={20} color="#fff" strokeWidth={2.2} />}
-          <Text className="font-strong text-body text-white">{chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Hỏi nhanh', 'Quick ask')}</Text>
+          {chiikawaTheme ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 40, height: 40 }} accessibilityIgnoresInvertColors /> : <LionMascot pose="wave" size={38} />}
+          <Text className="font-strong text-body text-white">{chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Leo · Trợ lý AI', 'Leo · AI helper')}</Text>
         </View>
         <Pressable
           accessibilityRole="button"

@@ -13,7 +13,7 @@ import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
  * viện bộ từ và phần đầu trang một bộ, để bấm vào thẻ nào thì trang bộ đó cùng màu.
  */
 
-export type DeckSource = 'mine' | 'ielts' | 'globalSuccess' | 'vfi' | 'vfia' | 'listening' | 'destination' | 'satMath' | 'satVerbal' | 'toeic' | 'toefl' | 'daily';
+export type DeckSource = 'mine' | 'oxford' | 'ielts' | 'globalSuccess' | 'vfi' | 'vfia' | 'listening' | 'destination' | 'satMath' | 'satVerbal' | 'toeic' | 'toefl' | 'daily';
 
 export type DeckLook = { source: DeckSource; sourceLabel: string; sourceLabelEn: string; accent: readonly [string, string]; icon: IconName };
 

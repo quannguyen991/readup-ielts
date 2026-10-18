@@ -351,6 +351,30 @@
       "level": "B2",
       "topic": "Đại dương & Sinh vật biển",
       "durationSeconds": 310
+    },
+    {
+      "id": "wX78iKh43mg",
+      "title": "Can you solve the prisoner hat riddle? - Alex Gendler",
+      "channel": "TED-Ed",
+      "level": "B1",
+      "topic": "Kiến thức phổ thông",
+      "durationSeconds": 288
+    },
+    {
+      "id": "YOR95i9p_vM",
+      "title": "Why do we dream? - Amy Adkins",
+      "channel": "TED-Ed",
+      "level": "B1",
+      "topic": "Khoa học",
+      "durationSeconds": 303
+    },
+    {
+      "id": "yQ_u7e1c_Kg",
+      "title": "6 Minute English: Could humans live in underwater cities?",
+      "channel": "BBC Learning English",
+      "level": "B1",
+      "topic": "Tiếng Anh hằng ngày",
+      "durationSeconds": 370
     }
   ],
   "prepared": {
@@ -369,37 +393,37 @@
         },
         {
           "start": 28.2,
-          "end": 39.0,
+          "end": 39,
           "text": "Tech leaders and computer scientists are divided over whether superintelligent systems can be safely controlled once they surpass human intelligence."
         },
         {
-          "start": 39.0,
+          "start": 39,
           "end": 49.5,
           "text": "Some pioneers in the field warn that without strict international safety protocols, we risk losing control over autonomous decision-making agents."
         },
         {
           "start": 49.5,
-          "end": 60.0,
+          "end": 60,
           "text": "However, other researchers argue that the real and immediate risks are misinformation, cyber attacks, and algorithmic bias in automated hiring."
         },
         {
-          "start": 60.0,
-          "end": 71.0,
+          "start": 60,
+          "end": 71,
           "text": "Governments in Washington, London, and Brussels are now racing to establish regulatory frameworks and mandatory testing for frontier AI models."
         },
         {
-          "start": 71.0,
+          "start": 71,
           "end": 82.5,
           "text": "The European Union has passed the landmark AI Act, categorising AI applications according to the degree of risk they pose to citizens."
         },
         {
           "start": 82.5,
-          "end": 94.0,
+          "end": 94,
           "text": "Meanwhile, major tech laboratories are investing hundreds of millions of dollars into AI alignment research to ensure models remain helpful and safe."
         },
         {
-          "start": 94.0,
-          "end": 105.0,
+          "start": 94,
+          "end": 105,
           "text": "The central challenge is whether humanity can cooperate globally to govern a technology that promises both immense wealth and unprecedented peril."
         }
       ],
@@ -412,37 +436,37 @@
       "sentences": [
         {
           "start": 0.24,
-          "end": 10.0,
+          "end": 10,
           "text": "Across major cities, young people from Generation Z are organising unprecedented protest movements demanding economic and political reform."
         },
         {
-          "start": 10.0,
+          "start": 10,
           "end": 20.5,
           "text": "Unlike previous generations, these activists are coordinating almost entirely through digital platforms like TikTok, Discord, and Telegram."
         },
         {
           "start": 20.5,
-          "end": 31.0,
+          "end": 31,
           "text": "Soaring housing costs, student loan debt, and inflation have left many young graduates feeling shut out of financial stability."
         },
         {
-          "start": 31.0,
-          "end": 42.0,
+          "start": 31,
+          "end": 42,
           "text": "In countries from Kenya to South Korea, Gen Z voters are expressing deep frustration with traditional political parties and political elites."
         },
         {
-          "start": 42.0,
-          "end": 53.0,
+          "start": 42,
+          "end": 53,
           "text": "They want transparent governance, immediate action on climate change, and fair economic opportunities for entry-level workers."
         },
         {
-          "start": 53.0,
-          "end": 64.0,
+          "start": 53,
+          "end": 64,
           "text": "Political analysts note that this demographic represents a decisive voting bloc that cannot be won over by conventional campaign rhetoric."
         },
         {
-          "start": 64.0,
-          "end": 75.0,
+          "start": 64,
+          "end": 75,
           "text": "As elections approach worldwide, leaders are being forced to address the urgent economic realities confronting the newest generation of workers."
         }
       ],
@@ -454,38 +478,38 @@
       "videoId": "8G-NflYNCts",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "American voters are preparing to cast their ballots in midterm elections that will determine the balance of power in Washington."
         },
         {
           "start": 9.5,
-          "end": 19.0,
+          "end": 19,
           "text": "Control of both the House of Representatives and the Senate hangs on a handful of razor-thin competitive races."
         },
         {
-          "start": 19.0,
-          "end": 29.0,
+          "start": 19,
+          "end": 29,
           "text": "Economic issues including consumer inflation, mortgage interest rates, and job security dominate voter priorities across key swing states."
         },
         {
-          "start": 29.0,
+          "start": 29,
           "end": 39.5,
           "text": "Republicans are focusing their campaign messaging on border security and cost of living pressures affecting suburban households."
         },
         {
           "start": 39.5,
-          "end": 50.0,
+          "end": 50,
           "text": "Meanwhile, Democrats are energising their base around healthcare protections, reproductive rights, and democratic institutional stability."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "Turnout among independent voters and suburban women is expected to be the deciding factor in critical suburban battlegrounds."
         },
         {
-          "start": 61.0,
-          "end": 72.0,
+          "start": 61,
+          "end": 72,
           "text": "The outcome will either grant the president a mandate to advance key policies or usher in divided government and legislative gridlock."
         }
       ],
@@ -497,33 +521,33 @@
       "videoId": "-nqq5zKogJs",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 8.0,
+          "start": 0,
+          "end": 8,
           "text": "In Tirana, anti-government demonstrations have entered their fourth consecutive day, with thousands gathering in front of parliament."
         },
         {
-          "start": 8.0,
+          "start": 8,
           "end": 17.5,
           "text": "Opposition supporters are demanding the resignation of senior officials over allegations of corruption and mismanagement of public funds."
         },
         {
           "start": 17.5,
-          "end": 27.0,
+          "end": 27,
           "text": "Security forces have deployed tear gas and water cannons after protesters attempted to breach the barricades surrounding the prime minister's office."
         },
         {
-          "start": 27.0,
-          "end": 37.0,
+          "start": 27,
+          "end": 37,
           "text": "European Union representatives have called on all political factions to exercise maximum restraint and engage in constructive dialogue."
         },
         {
-          "start": 37.0,
-          "end": 47.0,
+          "start": 37,
+          "end": 47,
           "text": "Civil society groups emphasize that judicial independence and media freedom are essential prerequisites for Albania's European integration."
         },
         {
-          "start": 47.0,
-          "end": 58.0,
+          "start": 47,
+          "end": 58,
           "text": "Despite international appeals for calm, opposition leaders have pledged to continue daily protests until concrete reforms are enacted."
         }
       ],
@@ -535,33 +559,33 @@
       "videoId": "hwXmUpCLxU4",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Welcome to BBC Newscast. Today we examine the politically contentious debate surrounding welfare reform in the United Kingdom."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 18.5,
           "text": "The government faces soaring costs in disability benefits and long-term sickness allowances following the pandemic."
         },
         {
           "start": 18.5,
-          "end": 29.0,
+          "end": 29,
           "text": "Ministers argue that helping people with manageable health conditions return to employment is crucial for economic productivity."
         },
         {
-          "start": 29.0,
+          "start": 29,
           "end": 39.5,
           "text": "However, poverty charities warn that tightening eligibility criteria risks pushing vulnerable families deeper into financial distress."
         },
         {
           "start": 39.5,
-          "end": 50.0,
+          "end": 50,
           "text": "The shadow cabinet is under intense pressure to present a comprehensive strategy that balances fiscal responsibility with a compassionate safety net."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "With public services already under strain, finding consensus on welfare spending remains one of the toughest challenges in British politics."
         }
       ],
@@ -573,7 +597,7 @@
       "videoId": "GQnQj29shKw",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "Global defense analysts are closely monitoring diplomatic rhetoric regarding nuclear deterrence and non-proliferation treaties."
         },
@@ -584,22 +608,22 @@
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Former officials emphasize that maintaining open communication channels between world powers is essential to prevent miscalculation."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Recent regional tensions have renewed discussions about the resilience of missile defense shields and early-warning satellite networks."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "United Nations diplomats continue to advocate for revitalized disarmament talks to preserve stability in volatile geopolitical corridors."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "History demonstrates that crisis management requires steady diplomacy, transparent protocols, and unwavering adherence to international law."
         }
       ],
@@ -611,33 +635,33 @@
       "videoId": "6R3gBfn7Dro",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Content creators around the world are raising alarms over automated software that copies their original videos within seconds of posting."
         },
         {
-          "start": 9.0,
-          "end": 19.0,
+          "start": 9,
+          "end": 19,
           "text": "These AI tools rewrite scripts using synonyms, generate synthetic voiceovers, and mirror visual layouts to evade copyright filters."
         },
         {
-          "start": 19.0,
+          "start": 19,
           "end": 29.5,
           "text": "Known as reskinning, this practice allows digital pirate accounts to harvest millions of views and monetize someone else's creative effort."
         },
         {
           "start": 29.5,
-          "end": 40.0,
+          "end": 40,
           "text": "Independent educators and animators say current platform takedown systems are too slow to stop automated piracy at scale."
         },
         {
-          "start": 40.0,
+          "start": 40,
           "end": 50.5,
           "text": "Legal experts argue that digital watermarking and machine learning detectors will be required to verify intellectual property rights online."
         },
         {
           "start": 50.5,
-          "end": 61.0,
+          "end": 61,
           "text": "Without stronger protections, creators fear that generative tools could undermine the financial viability of authentic human storytelling."
         }
       ],
@@ -649,33 +673,33 @@
       "videoId": "nSsKYX-D540",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 10.0,
+          "start": 0,
+          "end": 10,
           "text": "Today on The Global Story, we investigate the controversial role of private intermediaries conducting shadow diplomacy in sensitive conflict zones."
         },
         {
-          "start": 10.0,
+          "start": 10,
           "end": 20.5,
           "text": "While official ambassadors are bound by government protocols, informal emissaries often hold unofficial backchannel negotiations with hostile regimes."
         },
         {
           "start": 20.5,
-          "end": 31.0,
+          "end": 31,
           "text": "Supporters contend that these actors can break diplomatic deadlocks and facilitate prisoner exchanges when formal relations are severed."
         },
         {
-          "start": 31.0,
-          "end": 42.0,
+          "start": 31,
+          "end": 42,
           "text": "Critics counter that unauthorized negotiations undermine official policy and can be exploited by foreign intelligence agencies for geopolitical leverage."
         },
         {
-          "start": 42.0,
-          "end": 53.0,
+          "start": 42,
+          "end": 53,
           "text": "The State Department insists that all international commitments must adhere strictly to established legal and constitutional oversight frameworks."
         },
         {
-          "start": 53.0,
-          "end": 64.0,
+          "start": 53,
+          "end": 64,
           "text": "The growing prevalence of freelance diplomacy reflects an increasingly fragmented world order where traditional multilateral institutions struggle to maintain control."
         }
       ],
@@ -687,33 +711,33 @@
       "videoId": "YANXLDxMh8c",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Frontline reports indicate Ukrainian military units have advanced through fortified defensive lines in eastern territorial counter-offensives."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Soldiers on the ground describe grueling combat conditions characterized by dense minefields, artillery duels, and relentless reconnaissance drone surveillance."
         },
         {
-          "start": 18.0,
-          "end": 28.0,
+          "start": 18,
+          "end": 28,
           "text": "Western-supplied armored vehicles and precision rocket systems have provided crucial tactical support during coordinated assaults on strategic supply hubs."
         },
         {
-          "start": 28.0,
+          "start": 28,
           "end": 38.5,
           "text": "Military commanders stress that neutralizing logistics depots behind enemy lines is vital to limiting the adversary's capacity to reinforce defensive positions."
         },
         {
           "start": 38.5,
-          "end": 49.0,
+          "end": 49,
           "text": "Meanwhile, civilian volunteer networks continue delivering essential medical supplies and generators to liberated towns recovering from prolonged occupation."
         },
         {
-          "start": 49.0,
-          "end": 60.0,
+          "start": 49,
+          "end": 60,
           "text": "With winter weather rapidly approaching, commanders are racing against time to consolidate territorial gains before muddy terrain hampers mechanized mobility."
         }
       ],
@@ -725,33 +749,33 @@
       "videoId": "v36FeYEMowE",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "The White House press office plays a pivotal role in shaping how presidential policies and executive decisions are communicated to the American public."
         },
         {
-          "start": 9.0,
-          "end": 19.0,
+          "start": 9,
+          "end": 19,
           "text": "Daily press briefings in the James S. Brady Press Briefing Room serve as a vital forum where journalists hold administration officials accountable."
         },
         {
-          "start": 19.0,
+          "start": 19,
           "end": 29.5,
           "text": "High turnover among strategic communications personnel often reflects the intense pressure of managing fast-moving news cycles in the digital era."
         },
         {
           "start": 29.5,
-          "end": 40.0,
+          "end": 40,
           "text": "Senior aides must coordinate messaging across multiple agencies on complex topics ranging from national security to fiscal policy initiatives."
         },
         {
-          "start": 40.0,
-          "end": 51.0,
+          "start": 40,
+          "end": 51,
           "text": "Maintaining credibility with reporters while fiercely defending the president's agenda requires extraordinary diplomatic tact and discipline."
         },
         {
-          "start": 51.0,
-          "end": 62.0,
+          "start": 51,
+          "end": 62,
           "text": "In an era of hyper-partisan news coverage, clear and transparent public communication remains essential for preserving public trust in democratic institutions."
         }
       ],
@@ -763,33 +787,33 @@
       "videoId": "moL5e5BJaCk",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Many legendary performers create theatrical stage personas that contrast sharply with their quiet and unassuming private lives."
         },
         {
-          "start": 9.0,
-          "end": 19.0,
+          "start": 9,
+          "end": 19,
           "text": "In a candid interview, iconic rock musicians reflect on how creating an onstage alter ego helped them overcome personal shyness."
         },
         {
-          "start": 19.0,
-          "end": 29.0,
+          "start": 19,
+          "end": 29,
           "text": "Behind the dramatic costumes, makeup, and loud pyrotechnics, artists often describe spending their free time with family, books, and gardening."
         },
         {
-          "start": 29.0,
+          "start": 29,
           "end": 39.5,
           "text": "Psychologists explain that adopting a persona provides an emotional shield that allows performers to express raw creativity without fear of judgment."
         },
         {
           "start": 39.5,
-          "end": 50.0,
+          "end": 50,
           "text": "However, separating professional celebrity from personal identity requires strong boundaries and a grounded support network."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "Ultimately, the enduring appeal of great artists lies in their ability to entertain millions while retaining their authentic humanity offstage."
         }
       ],
@@ -817,42 +841,42 @@
         },
         {
           "start": 30.8,
-          "end": 42.0,
+          "end": 42,
           "text": "And look at these five seats currently held by Republicans that are now lean Republican or tossup. These five all went for Trump by double digits in 2024."
         },
         {
-          "start": 42.0,
-          "end": 54.0,
+          "start": 42,
+          "end": 54,
           "text": "I want to go to Dave Wasserman. He's senior editor and elections analyst for the Cook Political Report. Dave, how serious is this fire for Republicans?"
         },
         {
-          "start": 54.0,
-          "end": 68.0,
+          "start": 54,
+          "end": 68,
           "text": "Erin, this has gone from bad to potentially catastrophic for Republicans. We're seeing some shocking polling numbers in districts that voted for Donald Trump."
         },
         {
-          "start": 68.0,
+          "start": 68,
           "end": 79.5,
           "text": "First of all, this is kind of a back to the future election in the sense that the places that swung the most toward Trump are now competitive again."
         },
         {
           "start": 79.5,
-          "end": 92.0,
+          "end": 92,
           "text": "Iowa is a major problem state for Republicans. They are in danger of losing three of the four districts in Iowa."
         },
         {
-          "start": 92.0,
-          "end": 105.0,
+          "start": 92,
+          "end": 105,
           "text": "The other theme that we're seeing is that Republicans have a big problem holding open seats where the incumbent has retired."
         },
         {
-          "start": 105.0,
-          "end": 118.0,
+          "start": 105,
+          "end": 118,
           "text": "Incumbents who established distinctive brands from Trump are performing much better than newcomers who lack strong local recognition."
         },
         {
-          "start": 118.0,
-          "end": 132.0,
+          "start": 118,
+          "end": 132,
           "text": "One theme we're seeing is that this is the worst economic anxiety in rural America since the 1980s farm crisis."
         }
       ],
@@ -864,7 +888,7 @@
       "videoId": "T2tjt2Dk3ng",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "Federal appeals court judges have issued a temporary injunction blocking key provisions of the administration's student debt forgiveness initiative."
         },
@@ -875,22 +899,22 @@
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Millions of borrowers enrolled in income-driven repayment programs now face renewed uncertainty regarding their monthly payment schedules."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Department of Education officials maintain that existing federal statutes grant the secretary authority to modify loan terms during economic hardship."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Financial advisors urge borrowers to continue tracking their loan servicer accounts and avoid making unverified assumptions about forgiveness."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "The dispute is widely expected to reach the Supreme Court as judges weigh the constitutional boundaries of executive administrative authority."
         }
       ],
@@ -902,33 +926,33 @@
       "videoId": "O9uWX7BOV8E",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Viewers across the country tuned in as the vice presidential candidates met on the debate stage for their sole televised confrontation."
         },
         {
-          "start": 9.0,
-          "end": 19.0,
+          "start": 9,
+          "end": 19,
           "text": "The debate was notable for its civil tone, with both candidates directing their sharpest attacks at the opposing presidential nominees rather than each other."
         },
         {
-          "start": 19.0,
+          "start": 19,
           "end": 29.5,
           "text": "Discussions centered heavily on manufacturing revitalization, child tax credit expansions, and foreign policy crises in Eastern Europe and the Middle East."
         },
         {
           "start": 29.5,
-          "end": 40.0,
+          "end": 40,
           "text": "Both contenders sought to project calm competence, aiming to reassure moderate undecided voters in crucial Midwestern battleground states."
         },
         {
-          "start": 40.0,
+          "start": 40,
           "end": 50.5,
           "text": "Post-debate analysis suggests neither candidate made a disqualifying mistake, leaving the fundamental contours of the presidential race largely unchanged."
         },
         {
           "start": 50.5,
-          "end": 61.0,
+          "end": 61,
           "text": "With only weeks remaining until election day, campaign strategists are now shifting all available resources toward early voter mobilization efforts."
         }
       ],
@@ -940,7 +964,7 @@
       "videoId": "RMdhIekKaiM",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "Emergency crews are working around the clock across Florida to restore power and clear debris following catastrophic hurricane landfall."
         },
@@ -951,22 +975,22 @@
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Federal disaster assistance teams have arrived with food, clean drinking water, and emergency mobile satellite communication units."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Local officials caution residents to beware of downed power lines, contaminated floodwaters, and unstable structural building foundations."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Insurance experts warn that recovery costs will reach tens of billions of dollars, putting severe financial strain on private property insurers."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "Community volunteer networks continue assisting elderly residents with immediate cleanup efforts as rebuilding plans take shape."
         }
       ],
@@ -978,33 +1002,33 @@
       "videoId": "CqU1q8Wb_y8",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "With the presidential election entering its final sprint, campaign schedules reflect intense focus on the seven battleground states."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "Both candidates are holding multiple rallies daily, targeting working-class voters in industrial centers and suburbs."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Digital advertising spending has shattered records as campaigns flood social platforms with targeted video appeals."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Pollsters emphasize that turnout operations, known as ground games, will likely determine the winner in states decided by tens of thousands of votes."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Election workers are conducting rigorous machine testing and training poll watchers to ensure transparent and secure vote counting."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "The world is watching closely as American voters prepare to decide the nation's political trajectory for the next four years."
         }
       ],
@@ -1016,7 +1040,7 @@
       "videoId": "l_13dD-x58s",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "High-level diplomatic envoys are convening across regional capitals in an urgent push to negotiate humanitarian ceasefires and hostage releases."
         },
@@ -1027,22 +1051,22 @@
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Negotiators from international mediator countries are circulating revised framework proposals addressing security guarantees and aid corridors."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "However, major obstacles remain regarding long-term troop deployments and the future governance structure of affected territories."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "United Nations officials reiterate that unimpeded access for relief convoys is required immediately to prevent widespread famine."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "Diplomats caution that without sustained political will from key leaders, temporary pauses risk collapsing into renewed hostilities."
         }
       ],
@@ -1054,33 +1078,33 @@
       "videoId": "70-E7xLzD28",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Fresh economic data released this morning shows consumer inflation continuing its gradual descent toward the Federal Reserve's target."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Gasoline prices and used car costs fell significantly last month, providing tangible relief for household budgets."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "However, shelter and service costs remain sticky, keeping core inflation metrics slightly elevated above historical norms."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "Financial markets reacted positively to the figures, with major stock indices rallying on expectations of monetary policy easing."
         },
         {
-          "start": 39.0,
+          "start": 39,
           "end": 49.5,
           "text": "Central bank policymakers stress they will maintain a data-dependent approach when evaluating future interest rate adjustments."
         },
         {
           "start": 49.5,
-          "end": 60.0,
+          "end": 60,
           "text": "Economists note that achieving a soft landing without triggering recession would represent an extraordinary achievement for monetary policy."
         }
       ],
@@ -1092,7 +1116,7 @@
       "videoId": "bP1G_B4lM1w",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "The Supreme Court heard oral arguments today in a pivotal constitutional challenge regarding legislative redistricting maps."
         },
@@ -1103,22 +1127,22 @@
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "State attorneys defended the map design, asserting that districts complied with geographic compactness and county boundary rules."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Justices actively questioned both sides regarding the precise legal thresholds required under Section Two of the Voting Rights Act."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Civil rights advocates warn that weakening federal voting safeguards could diminish representative accountability in dozens of districts."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "A formal written opinion from the high court is expected before the end of the current judicial term."
         }
       ],
@@ -1130,33 +1154,33 @@
       "videoId": "pOm0__wzIJM",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "South Korean author Han Kang has been awarded the Nobel Prize in Literature, making history as the first writer from her country to receive the honor."
         },
         {
           "start": 9.5,
-          "end": 20.0,
+          "end": 20,
           "text": "The Swedish Academy praised her intense poetic prose that confronts historical traumas and exposes the fragility of human life."
         },
         {
-          "start": 20.0,
+          "start": 20,
           "end": 30.5,
           "text": "Her groundbreaking novel The Vegetarian, which won the International Booker Prize, explored body autonomy, societal pressure, and nonviolent resistance."
         },
         {
           "start": 30.5,
-          "end": 41.0,
+          "end": 41,
           "text": "Bookstores across Seoul were inundated with crowds within hours of the announcement, celebrating a momentous cultural milestone."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Literary critics highlight that her recognition underscores the profound global resonance and artistic depth of contemporary Asian literature."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "In her acceptance reflections, the author dedicated the prize to readers who find solace and truth through contemplative written words."
         }
       ],
@@ -1168,33 +1192,33 @@
       "videoId": "j1s1_XW9q58",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Federal aviation authorities are rolling out upgraded runway safety protocols following several close-call incidents at commercial airports."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "New radar detection systems and ground surveillance technology are being installed to give air traffic controllers instantaneous runway conflict alerts."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Commercial airlines are also refreshing pilot recurrent training programs with enhanced focus on situational awareness during low-visibility taxiing."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Aviation safety investigators emphasize that commercial flying remains the safest form of passenger travel due to redundant multi-layered safety margins."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Continuous communication between flight crews and tower personnel is essential to prevent runway incursions during peak traffic hours."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "Industry experts stress that investing in modern airport infrastructure is critical to accommodating sustained growth in global air passenger volumes."
         }
       ],
@@ -1206,33 +1230,33 @@
       "videoId": "d_H_sB0wZfg",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "The exponential computational demands of artificial intelligence are driving major technology corporations to seek massive new sources of clean electricity."
         },
         {
           "start": 9.5,
-          "end": 20.0,
+          "end": 20,
           "text": "Leading cloud providers have announced long-term power purchase agreements with next-generation nuclear facilities and geothermal energy developers."
         },
         {
-          "start": 20.0,
+          "start": 20,
           "end": 30.5,
           "text": "Modern hyperscale data centers require gigawatts of constant baseload power to train and run large neural network models without interruption."
         },
         {
           "start": 30.5,
-          "end": 41.0,
+          "end": 41,
           "text": "Environmental advocates praise investments in carbon-free energy but caution that growing tech power consumption must not crowd out local residential grids."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Engineers are also developing innovative liquid cooling systems to substantially reduce water and electrical overhead inside server racks."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "The transition demonstrates how the artificial intelligence revolution is catalyzing rapid advancements across the global clean energy landscape."
         }
       ],
@@ -1244,33 +1268,33 @@
       "videoId": "DgxKv5AQuzU",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Rising energy prices, competition from abroad, and weak consumer demand are placing severe economic pressures across Europe."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "European heads of state gathered in Brussels this week for a high-stakes summit focused on boosting industrial competitiveness."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "The European Union is facing dual challenges of sluggish economic expansion and the need to finance green energy transitions."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "Leaders discussed common funding mechanisms, simplifying bureaucratic regulations, and securing domestic supply chains for critical minerals."
         },
         {
-          "start": 39.0,
+          "start": 39,
           "end": 49.5,
           "text": "Meanwhile, trade relations with major global partners remain delicate as member states balance protectionist pressures against free trade commitments."
         },
         {
           "start": 49.5,
-          "end": 61.0,
+          "end": 61,
           "text": "Economists suggest that deepening the single market for services and technology is vital if Europe is to keep pace with the US and Asia."
         }
       ],
@@ -1282,33 +1306,33 @@
       "videoId": "jeDwSHPIqDc",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "Vietnam is actively encouraging household businesses and informal enterprises to transition into registered corporate entities."
         },
         {
           "start": 9.5,
-          "end": 20.0,
+          "end": 20,
           "text": "The private sector currently accounts for over forty percent of the country's gross domestic product and employs millions of workers."
         },
         {
-          "start": 20.0,
-          "end": 31.0,
+          "start": 20,
+          "end": 31,
           "text": "By registering officially, business owners gain easier access to commercial bank loans, digital payment infrastructure, and legal protections."
         },
         {
-          "start": 31.0,
-          "end": 42.0,
+          "start": 31,
+          "end": 42,
           "text": "Government initiatives include simplified tax procedures, corporate income tax exemptions during the initial operating years, and digital training programs."
         },
         {
-          "start": 42.0,
-          "end": 53.0,
+          "start": 42,
+          "end": 53,
           "text": "Experts believe that formalising the economy will enhance productivity, improve product quality, and integrate domestic firms into global supply chains."
         },
         {
-          "start": 53.0,
-          "end": 64.0,
+          "start": 53,
+          "end": 64,
           "text": "As Vietnam targets sustained growth, a thriving and transparent business community remains a cornerstone of future prosperity."
         }
       ],
@@ -1320,33 +1344,33 @@
       "videoId": "PDVud2eUNHA",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Hanoi is renowned worldwide for its tranquil lakes, tree-lined boulevards, and rich thousand-year heritage."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "In recent years, the capital has rapidly emerged as a beloved destination for wellness tourism and cultural mindfulness."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Visitors can begin their morning with traditional tai chi alongside local residents by the peaceful waters of Hoan Kiem Lake."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "The Old Quarter offers authentic herbal tea houses, traditional acupuncture clinics, and rejuvenating holistic therapy spas."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Hanoi's cuisine also emphasizes natural balance, featuring fresh herbs, nutritious broths, and vegetarian delicacies."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "For travellers seeking healing and relaxation, Hanoi offers a unique harmony between ancient tranquility and modern hospitality."
         }
       ],
@@ -1358,33 +1382,33 @@
       "videoId": "foB5o8bXnz0",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "As a member of the UNESCO Creative Cities Network, Hanoi continues to cultivate its dynamic arts and design ecosystem."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Historic industrial spaces, such as old factories and warehouses, are being successfully transformed into vibrant creative hubs."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "Young Vietnamese designers and artists are blending indigenous folklore with contemporary digital aesthetics in fashion and multimedia exhibitions."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "Annual design festivals celebrate traditional craftsmanship from surrounding artisan villages, from Bat Trang ceramics to Van Phuc silk weaving."
         },
         {
-          "start": 39.0,
-          "end": 50.0,
+          "start": 39,
+          "end": 50,
           "text": "These cultural initiatives not only enrich urban community life but also attract international art enthusiasts to the capital."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "Hanoi stands proudly as a bridge where age-old cultural legacies inspire cutting-edge modern artistic expression."
         }
       ],
@@ -1396,33 +1420,33 @@
       "videoId": "8e9lQsPRM78",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Retail spaces in Vietnam are undergoing a profound transformation as brands shift focus from pure sales to immersive flagship experiences."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "Consumers today seek sensory engagement, interactive product testing, and community gathering areas rather than simple display aisles."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Leading lifestyle brands are designing flagship stores in historic heritage villas, creating seamless blends between heritage architecture and modern shopping."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Technology integration, including smart mirrors and seamless mobile checkouts, provides convenient and personalized customer journeys."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Market analysts note that young urban consumers view retail destinations as social spaces for connection, discovery, and leisure."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "This experiential approach is reshaping downtown commercial districts across major economic hubs like Ho Chi Minh City and Hanoi."
         }
       ],
@@ -1434,33 +1458,33 @@
       "videoId": "f3JHzkKmaks",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "High-level bilateral meetings between Vietnam and China have reaffirmed mutual commitments to expanding trade and infrastructural connectivity."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Cross-border trade turnover has reached record highs, driven by strong demand for agricultural produce, electronics, and industrial raw materials."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "Both sides emphasized fast-tracking cross-border railway links and modernizing customs clearance gates with digital documentation systems."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "Vietnam's high-quality tropical fruits, including durian and dragon fruit, continue gaining expanding market share across major Chinese provinces."
         },
         {
-          "start": 39.0,
-          "end": 50.0,
+          "start": 39,
+          "end": 50,
           "text": "Economic leaders agreed to enhance supply chain resilience, cooperate on green energy development, and support technology transfer initiatives."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "Strengthening comprehensive strategic cooperation provides important stability and economic momentum for the entire Southeast Asian region."
         }
       ],
@@ -1472,33 +1496,33 @@
       "videoId": "NMHt_DXvkRE",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 8.0,
+          "start": 0,
+          "end": 8,
           "text": "Vietnam and Laos continue to nurture their unique special solidarity and comprehensive partnership across all sectors."
         },
         {
-          "start": 8.0,
+          "start": 8,
           "end": 17.5,
           "text": "Joint initiatives focus on energy cooperation, cross-border highway infrastructure, and educational scholarship exchange programs."
         },
         {
           "start": 17.5,
-          "end": 27.0,
+          "end": 27,
           "text": "Vietnamese enterprises are actively investing in telecommunications, agricultural processing, and renewable hydroelectric energy in Laos."
         },
         {
-          "start": 27.0,
-          "end": 37.0,
+          "start": 27,
+          "end": 37,
           "text": "Security and defense cooperation remains a cornerstone of bilateral stability along shared border provinces."
         },
         {
-          "start": 37.0,
-          "end": 47.0,
+          "start": 37,
+          "end": 47,
           "text": "Both governments are committed to facilitating cross-border trade and transit access for landlocked Laotian logistics via Vietnamese seaports."
         },
         {
-          "start": 47.0,
-          "end": 57.0,
+          "start": 47,
+          "end": 57,
           "text": "The timeless fraternal bond between the two nations remains an invaluable asset cherished by successive generations of leaders and citizens."
         }
       ],
@@ -1510,33 +1534,33 @@
       "videoId": "FpwnwbMuca8",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "A dynamic wave of young Vietnamese entrepreneurs is expanding beyond domestic borders, bringing technological innovations to international markets."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "From software-as-a-service platforms to sustainable consumer products, startup founders are designing solutions with global scalability from day one."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Access to international venture capital and supportive local incubation programs has accelerated growth across fintech and artificial intelligence sectors."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Founders emphasize that adaptability, strong engineering talent, and deep understanding of emerging markets give Vietnamese startups competitive advantages."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Government policies promoting the national innovation ecosystem are establishing sandbox regulations for testing experimental digital services."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "With ambition and ingenuity, Vietnam's entrepreneurial community is cementing the country's status as a rising technology powerhouse in Asia."
         }
       ],
@@ -1548,33 +1572,33 @@
       "videoId": "iflt1LO5eLg",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Member states of the Association of Southeast Asian Nations are stepping up regional collaboration to counter escalating cybersecurity threats."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "With the rapid digital transformation of banking, critical infrastructure, and government portals, cyber attacks have become increasingly sophisticated."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "Regional cybersecurity drills and intelligence-sharing centers help computer emergency response teams detect vulnerabilities and neutralize threats swiftly."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "Vietnam has taken an active role in proposing regional incident response protocols and hosting specialized capacity-building technical workshops."
         },
         {
-          "start": 39.0,
-          "end": 50.0,
+          "start": 39,
+          "end": 50,
           "text": "Experts stress that establishing common legal standards on data privacy and cyber crime is essential for safeguarding the regional digital economy."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "A unified cyber defense posture ensures that Southeast Asia remains a secure and trusted destination for global digital commerce and investment."
         }
       ],
@@ -1586,33 +1610,33 @@
       "videoId": "-SyxhbviQBg",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Language is not merely a communication tool; it embodies memory, ancestral identity, and community belonging."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "Across Vietnam's multi-ethnic tapestry, preservationists are documenting endangered dialects and oral storytelling traditions."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "In highland communities, bilingual education initiatives enable children to learn national curriculum while preserving their native mother tongues."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Digital archiving projects record folk songs, epic poetry, and traditional proverbs for future generations of scholars and researchers."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Cultural anthropologists emphasize that celebrating linguistic diversity enriches national unity and mutual empathy among diverse communities."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "Honoring our diverse linguistic heritage ensures that every culture's unique wisdom continues echoing across generations."
         }
       ],
@@ -1624,33 +1648,33 @@
       "videoId": "HTcjBg1zCY8",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Universities across the Mekong Delta region are integrating traditional Khmer musical arts and classical dance into formal academic degree programs."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "Veteran artisans and master musicians are invited onto university faculties to teach intricate Robam dance techniques and Pinpeat orchestral instruments."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Students study both practical performance artistry and the historical religious philosophy behind ancient temple performance rituals."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Academic institutionalization provides formal recognized credentials for young artists and preserves intangible cultural treasures from fading."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Campus student ensembles regularly perform at regional cultural festivals, generating enthusiastic appreciation among younger audiences."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "Bridging traditional master-apprentice heritage with contemporary higher education ensures a vibrant future for ethnic cultural treasures."
         }
       ],
@@ -1662,7 +1686,7 @@
       "videoId": "pEO9-iPZQWA",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Hello and welcome to 6 Minute English from BBC Learning English. I am Neil, and joining me today is Beth."
         },
@@ -1673,37 +1697,37 @@
         },
         {
           "start": 17.5,
-          "end": 28.0,
+          "end": 28,
           "text": "From unprecedented heatwaves to torrential rainstorms, scientists say that our changing climate is driving these phenomena."
         },
         {
-          "start": 28.0,
-          "end": 39.0,
+          "start": 28,
+          "end": 39,
           "text": "Before we dive in, here is our quiz question: What is the highest temperature ever reliably recorded on Earth?"
         },
         {
-          "start": 39.0,
-          "end": 50.0,
+          "start": 39,
+          "end": 50,
           "text": "Is it A) 54.0 degrees Celsius, B) 56.7 degrees Celsius, or C) 58.2 degrees Celsius?"
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "Meteorologists use the term heat dome to describe high atmospheric pressure that traps hot air over an entire region."
         },
         {
-          "start": 61.0,
-          "end": 72.0,
+          "start": 61,
+          "end": 72,
           "text": "When hot air is trapped for days, it leads to scorching conditions that put immense strain on energy grids and agriculture."
         },
         {
-          "start": 72.0,
-          "end": 83.0,
+          "start": 72,
+          "end": 83,
           "text": "Communities are adapting by planting urban forests and creating cooling centres to protect vulnerable elderly citizens."
         },
         {
-          "start": 83.0,
-          "end": 95.0,
+          "start": 83,
+          "end": 95,
           "text": "And the answer to our quiz question is B, 56.7 degrees Celsius, recorded in Death Valley, California in 1913."
         }
       ],
@@ -1715,38 +1739,38 @@
       "videoId": "xwseWCSXD3Y",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Welcome to 6 Minute English. I am Georgie, and today we are exploring how humans describe smells and aromas."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "English has a rich collection of sensory adjectives, but many people find it surprisingly difficult to put smells into words."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "We often borrow words from taste, such as sweet or sour, or describe the object that produces the odor, like floral or woody."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Words like fragrant, aromatic, and scented usually carry positive connotations, describing fresh flowers, spices, or perfumes."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "On the other hand, adjectives like pungent, rancid, foul, and acrid warn us of rotten food or dangerous chemicals."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "Scientists discover that our olfactory system connects directly to the brain's emotional memory centre, the amygdala."
         },
         {
-          "start": 63.0,
-          "end": 74.0,
+          "start": 63,
+          "end": 74,
           "text": "That is why a single whiff of baked bread can instantly transport you back to your childhood kitchen decades ago."
         }
       ],
@@ -1758,38 +1782,38 @@
       "videoId": "SC_opiKLohg",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Welcome to 6 Minute English. Today we are looking into the future of autonomous vehicles and driverless transport."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "Self-driving cars are already navigating streets in cities like San Francisco, Phoenix, and Beijing without anyone behind the steering wheel."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Advocates argue that autonomous vehicles will dramatically reduce traffic accidents caused by human fatigue, speeding, and drunk driving."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Sensors including LIDAR, radar, and high-resolution cameras allow these robotaxis to detect pedestrians and obstacles from hundreds of meters away."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "However, critics raise ethical questions regarding liability when unexpected accidents occur in complex rainy or foggy conditions."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "Transportation authorities are updating road infrastructure and testing emergency protocols before deploying autonomous buses on public routes."
         },
         {
-          "start": 63.0,
-          "end": 74.0,
+          "start": 63,
+          "end": 74,
           "text": "Whether we are ready or not, artificial intelligence is reshaping how people and goods move across our modern cities."
         }
       ],
@@ -1801,33 +1825,33 @@
       "videoId": "zl0dwwKhmuM",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 9.5,
           "text": "Hello and welcome to 6 Minute English. Today we are discussing cybersecurity and the emergence of autonomous AI hacking agents."
         },
         {
           "start": 9.5,
-          "end": 20.0,
+          "end": 20,
           "text": "Computer scientists recently demonstrated that specialized AI models can scan computer networks, identify software bugs, and execute exploits autonomously."
         },
         {
-          "start": 20.0,
+          "start": 20,
           "end": 30.5,
           "text": "While security researchers use these automated agents to patch vulnerabilities, there are growing fears that cybercriminals could repurpose them for malicious attacks."
         },
         {
           "start": 30.5,
-          "end": 41.0,
+          "end": 41,
           "text": "Traditional firewalls and antivirus programs are struggling to keep up with malware that rewrites its own code to evade signature detection."
         },
         {
-          "start": 41.0,
+          "start": 41,
           "end": 51.5,
           "text": "Companies are now deploying defensive artificial intelligence that monitors network anomalies in real time and automatically isolates breached servers."
         },
         {
           "start": 51.5,
-          "end": 62.0,
+          "end": 62,
           "text": "Experts emphasize that maintaining strong passwords, multi-factor authentication, and employee vigilance remains the foundational bedrock of digital defense."
         }
       ],
@@ -1839,33 +1863,33 @@
       "videoId": "FuExlxdoTcY",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Welcome to Learn about the News in English. Today we report on emergency recovery efforts following severe monsoon flooding in Nepal."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "Torrential rains triggered widespread landslides and swollen rivers that swept away bridges and cut off remote Himalayan mountain villages."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Military helicopters and local rescue volunteers are delivering food packages, tents, and medical supplies to stranded families."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Meteorologists explain that changing rainfall patterns are making monsoon seasons less predictable and considerably more destructive."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Community groups are working tirelessly to clear mud from drinking water reservoirs and re-establish damaged electrical lines."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "International humanitarian organizations have pledged long-term funding to help rebuild resilient schools and flood defenses."
         }
       ],
@@ -1877,33 +1901,33 @@
       "videoId": "q4JyFF46528",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Hello and welcome to Real Easy English! Today we are talking about household chores and cleaning routines."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Some people find doing chores therapeutic and relaxing, while others view tidying up as a dreaded obligation."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "Common chores include vacuuming the carpet, washing dirty dishes, wiping kitchen surfaces, and folding laundry."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "Psychological studies suggest that having an organized living space helps reduce stress and promotes mental clarity."
         },
         {
-          "start": 39.0,
+          "start": 39,
           "end": 49.5,
           "text": "Many people make cleaning more enjoyable by listening to their favorite podcasts or upbeat music while scrubbing."
         },
         {
           "start": 49.5,
-          "end": 60.0,
+          "end": 60,
           "text": "Whether you love it or hate it, keeping your environment clean creates a welcoming atmosphere to unwind after a busy day."
         }
       ],
@@ -1915,33 +1939,33 @@
       "videoId": "bRnGm3y0IFU",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Welcome to English in a Minute! Today we are learning common natural idioms that native speakers use in casual conversation."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "When someone says bite the bullet, it means to face a difficult situation with courage and get it over with."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Another common idiom is break a leg, which sounds strange, but it is actually used to wish performers good luck before going on stage."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "If you are feeling under the weather, that simply means you are feeling slightly sick, tired, or unwell."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Learning idiomatic expressions in context makes your spoken English sound much more fluid, expressive, and natural."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "Practice using these phrases in your daily conversations to boost your speaking fluency and confidence!"
         }
       ],
@@ -1953,33 +1977,33 @@
       "videoId": "BFJsSnEEGrI",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Welcome to Real Easy English. Today we are asking everyday people how they like to drink their morning coffee."
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Coffee culture has exploded globally, with cafes offering everything from traditional drip coffee to plant-based oat milk lattes."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "Some purists prefer a bold, dark espresso with zero sugar, while others enjoy sweet iced beverages topped with whipped cream."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "In Vietnam, iced coffee with sweet condensed milk, known as ca phe sua da, is an iconic national staple beloved by all ages."
         },
         {
-          "start": 39.0,
+          "start": 39,
           "end": 49.5,
           "text": "Caffeine stimulates the central nervous system, helping people stay alert and focused during demanding work tasks."
         },
         {
           "start": 49.5,
-          "end": 60.0,
+          "end": 60,
           "text": "How do you take your coffee? Share your favorite brewing style and daily routine in English!"
         }
       ],
@@ -1992,37 +2016,37 @@
       "sentences": [
         {
           "start": 8.36,
-          "end": 18.0,
+          "end": 18,
           "text": "Even after winning major awards or excelling in their careers, highly accomplished people often fear they will be exposed as frauds."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "This psychological phenomenon is known as imposter syndrome: the persistent feeling that your success is due to luck rather than ability."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "First identified by psychologists Pauline Clance and Suzanne Imes in the late 1970s, it affects students, executives, and artists alike."
         },
         {
-          "start": 39.0,
-          "end": 50.0,
+          "start": 39,
+          "end": 50,
           "text": "People experiencing imposter syndrome tend to dismiss positive feedback, attributing their achievements to timing or mistakes by evaluators."
         },
         {
-          "start": 50.0,
-          "end": 61.0,
+          "start": 50,
+          "end": 61,
           "text": "Pluralistic ignorance plays a major role: we compare our private doubts with the calm and confident exterior projected by everyone else."
         },
         {
-          "start": 61.0,
-          "end": 72.0,
+          "start": 61,
+          "end": 72,
           "text": "The most effective way to combat this feeling is talking openly with trusted colleagues and mentors about vulnerability."
         },
         {
-          "start": 72.0,
-          "end": 84.0,
+          "start": 72,
+          "end": 84,
           "text": "Remember that feeling like you have more to learn is not proof of incompetence; rather, it is the hallmark of genuine intellectual curiosity."
         }
       ],
@@ -2034,33 +2058,33 @@
       "videoId": "av3zdxYvCp8",
       "sentences": [
         {
-          "start": 0.0,
+          "start": 0,
           "end": 8.5,
           "text": "Have you ever wondered why listening to moving music or stepping into chilly air causes tiny bumps to appear across your skin?"
         },
         {
           "start": 8.5,
-          "end": 18.0,
+          "end": 18,
           "text": "Scientifically known as piloerection, goosebumps are an evolutionary physiological reflex inherited from our prehistoric mammal ancestors."
         },
         {
-          "start": 18.0,
+          "start": 18,
           "end": 28.5,
           "text": "Tiny muscles located at the base of each hair follicle, called arrector pili, contract involuntarily in response to cold temperatures or adrenaline."
         },
         {
           "start": 28.5,
-          "end": 39.0,
+          "end": 39,
           "text": "In animals with thick fur coats, raising hairs traps a layer of insulating air near the body to preserve vital body heat."
         },
         {
-          "start": 39.0,
+          "start": 39,
           "end": 49.5,
           "text": "Fluffing up also makes an animal appear larger and more intimidating when confronting potential predators in the wild."
         },
         {
           "start": 49.5,
-          "end": 60.0,
+          "end": 60,
           "text": "While humans have lost dense body hair over millennia, the underlying neurological and muscular reflex remains wired into our biology."
         }
       ],
@@ -2072,38 +2096,182 @@
       "videoId": "1uTRlM6MbMo",
       "sentences": [
         {
-          "start": 0.0,
-          "end": 9.0,
+          "start": 0,
+          "end": 9,
           "text": "Thousands of meters beneath the ocean surface lies the hadal zone, an environment of near-freezing darkness and unimaginable hydrostatic pressure."
         },
         {
-          "start": 9.0,
+          "start": 9,
           "end": 19.5,
           "text": "At the bottom of the Mariana Trench, pressure exceeds one thousand atmospheres, equivalent to having an elephant standing on your thumb."
         },
         {
           "start": 19.5,
-          "end": 30.0,
+          "end": 30,
           "text": "Terrestrial animals would be crushed instantly, yet snailfish, giant amphipods, and translucent jellyfish thrive in these abyssal depths."
         },
         {
-          "start": 30.0,
-          "end": 41.0,
+          "start": 30,
+          "end": 41,
           "text": "Deep-sea organisms lack gas-filled air cavities like lungs and swim bladders, which would collapse violently under immense external force."
         },
         {
-          "start": 41.0,
-          "end": 52.0,
+          "start": 41,
+          "end": 52,
           "text": "Their cell membranes contain specialized unsaturated fatty acids and piezolytes that stabilize proteins and maintain cellular flexibility under pressure."
         },
         {
-          "start": 52.0,
-          "end": 63.0,
+          "start": 52,
+          "end": 63,
           "text": "These astonishing biochemical adaptations illustrate the boundless resilience and creativity of life across Earth's most extreme frontiers."
         }
       ],
       "autoGenerated": false,
       "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "wX78iKh43mg": {
+      "videoId": "wX78iKh43mg",
+      "sentences": [
+        {
+          "start": 0,
+          "end": 9.5,
+          "text": "You and nine other prisoners have been captured by alien invaders who enjoy testing human intelligence."
+        },
+        {
+          "start": 9.5,
+          "end": 19.8,
+          "text": "The aliens announce that tomorrow morning, all ten of you will be lined up single file in a straight row facing forward."
+        },
+        {
+          "start": 19.8,
+          "end": 31,
+          "text": "A hat will be placed on each prisoner's head, coloured either black or white. You will be able to see the hats of everyone in front of you."
+        },
+        {
+          "start": 31,
+          "end": 41.5,
+          "text": "You cannot see your own hat, nor the hats of anyone behind you, and you are strictly forbidden from looking back or communicating."
+        },
+        {
+          "start": 41.5,
+          "end": 52,
+          "text": "Starting from the back of the line, each prisoner must declare their own hat colour as either \"black\" or \"white\", without any other word."
+        },
+        {
+          "start": 52,
+          "end": 63.2,
+          "text": "If at least nine of the ten prisoners guess correctly, everyone will be set free. How can you guarantee everyone's survival?"
+        },
+        {
+          "start": 63.2,
+          "end": 74,
+          "text": "The secret lies in parity: the prisoner at the very back counts how many black hats they see in front of them."
+        },
+        {
+          "start": 74,
+          "end": 85,
+          "text": "If the number of black hats is even, they say \"black\"; if the number is odd, they say \"white\"."
+        },
+        {
+          "start": 85,
+          "end": 98,
+          "text": "Using this parity information, every subsequent prisoner in front can calculate their own hat colour with one hundred percent certainty."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-18T12:14:00.725Z",
+      "doneCount": 0
+    },
+    "YOR95i9p_vM": {
+      "videoId": "YOR95i9p_vM",
+      "sentences": [
+        {
+          "start": 0,
+          "end": 11.2,
+          "text": "For millennia, humans have wondered about the bizarre and captivating stories that play out in our minds while we sleep."
+        },
+        {
+          "start": 11.2,
+          "end": 22,
+          "text": "Ancient civilizations believed dreams were messages directly transmitted from the gods or predictions of future fortunes."
+        },
+        {
+          "start": 22,
+          "end": 32.5,
+          "text": "In the early twentieth century, Sigmund Freud proposed that dreams are a window into our repressed desires and subconscious thoughts."
+        },
+        {
+          "start": 32.5,
+          "end": 43,
+          "text": "Modern neuroscientists approach the question by monitoring brain activity during Rapid Eye Movement, or REM sleep."
+        },
+        {
+          "start": 43,
+          "end": 54,
+          "text": "One leading hypothesis suggests that dreaming is essential for memory consolidation and emotional regulation."
+        },
+        {
+          "start": 54,
+          "end": 65.5,
+          "text": "While you dream, your brain replays the experiences of the day, filing away important memories and pruning unnecessary details."
+        },
+        {
+          "start": 65.5,
+          "end": 77,
+          "text": "Another evolutionary theory posits that nightmares serve as virtual reality simulations to prepare us for real-world dangers."
+        },
+        {
+          "start": 77,
+          "end": 89,
+          "text": "Although the exact function remains one of biology's great mysteries, sleep and dreams clearly protect our cognitive wellbeing."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-18T12:14:00.726Z",
+      "doneCount": 0
+    },
+    "yQ_u7e1c_Kg": {
+      "videoId": "yQ_u7e1c_Kg",
+      "sentences": [
+        {
+          "start": 0,
+          "end": 10.5,
+          "text": "Hello and welcome to Six Minute English from BBC Learning English, I'm Neil and with me is Beth."
+        },
+        {
+          "start": 10.5,
+          "end": 21,
+          "text": "With rising global sea levels and overpopulated coastal cities, architects are exploring daring designs for aquatic habitats."
+        },
+        {
+          "start": 21,
+          "end": 31.5,
+          "text": "From floating geodesic domes to submerged research colonies, the ocean frontier presents both wonder and engineering obstacles."
+        },
+        {
+          "start": 31.5,
+          "end": 42,
+          "text": "The greatest challenge of living underwater is managing immense water pressure and generating continuous breathable oxygen."
+        },
+        {
+          "start": 42,
+          "end": 52.8,
+          "text": "Engineers use electrolysis to split seawater into hydrogen and oxygen, powering life support systems efficiently."
+        },
+        {
+          "start": 52.8,
+          "end": 63.5,
+          "text": "Furthermore, underwater farming using hydroponics and algae can supply fresh nutrition without requiring soil."
+        },
+        {
+          "start": 63.5,
+          "end": 75,
+          "text": "While large-scale underwater colonies remain futuristic, marine habitats are already revolutionising deep ocean science."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-18T12:14:00.726Z",
       "doneCount": 0
     }
   },
@@ -2475,6 +2643,36 @@
       "Các sinh vật biển sâu không có các khoang chứa khí như phổi hay bong bóng cá – những bộ phận sẽ bị bẹp rúm dưới áp lực khổng lồ từ bên ngoài.",
       "Màng tế bào của chúng chứa các axit béo không bão hòa đặc biệt và các hợp chất piezolyte giúp giữ vững cấu trúc protein và duy trì độ đàn hồi của tế bào dưới áp suất cao.",
       "Những sự thích nghi sinh hóa kỳ diệu này minh chứng cho sức sống dẻo dai và khả năng thích ứng phi thường của sự sống ở những nơi khắc nghiệt nhất trên Trái Đất."
+    ],
+    "wX78iKh43mg": [
+      "Bạn và chín tù nhân khác bị bắt bởi những người ngoài hành tinh thích kiểm tra trí thông minh của loài người.",
+      "Người ngoài hành tinh thông báo rằng sáng mai, cả mười người sẽ được xếp thành một hàng dọc thẳng tắp quay mặt về phía trước.",
+      "Một chiếc mũ sẽ được đội lên đầu mỗi tù nhân, có màu đen hoặc trắng. Bạn sẽ có thể nhìn thấy mũ của tất cả những người đứng trước mặt mình.",
+      "Bạn không thể nhìn thấy mũ của chính mình, cũng không thể nhìn thấy mũ của bất kỳ ai phía sau, và bị nghiêm cấm quay đầu lại hoặc giao tiếp.",
+      "Bắt đầu từ người đứng cuối hàng, mỗi tù nhân phải hô to màu mũ của mình là \"đen\" hoặc \"trắng\", không được kèm theo bất kỳ từ nào khác.",
+      "Nếu có ít nhất chín trong số mười tù nhân đoán đúng, tất cả mọi người sẽ được trả tự do. Làm thế nào bạn có thể đảm bảo sự sống còn cho cả nhóm?",
+      "Bí quyết nằm ở tính chẵn lẻ: người tù nhân đứng ở tận cùng đếm xem có bao nhiêu chiếc mũ đen đang ở trước mặt mình.",
+      "Nếu số lượng mũ đen là số chẵn, người đó sẽ hô \"đen\"; nếu số lượng là số lẻ, người đó sẽ hô \"trắng\".",
+      "Dựa vào thông tin chẵn lẻ này, mỗi người tù nhân kế tiếp ở phía trước đều có thể tính toán chính xác màu mũ của mình với độ chắc chắn một trăm phần trăm."
+    ],
+    "YOR95i9p_vM": [
+      "Trong hàng thiên niên kỷ, con người đã luôn tự hỏi về những câu chuyện kỳ lạ và cuốn hút diễn ra trong tâm trí khi chúng ta say ngủ.",
+      "Các nền văn minh cổ đại tin rằng giấc mơ là những thông điệp được truyền trực tiếp từ các vị thần hoặc là điềm báo về vận mệnh tương lai.",
+      "Vào đầu thế kỷ hai mươi, Sigmund Freud cho rằng giấc mơ là ô cửa sổ mở vào những khát khao bị kìm nén và suy nghĩ tiềm thức của chúng ta.",
+      "Các nhà khoa học thần kinh hiện đại tiếp cận câu hỏi này bằng cách theo dõi hoạt động của não bộ trong giai đoạn giấc ngủ mắt chuyển động nhanh (REM).",
+      "Một giả thuyết hàng đầu cho rằng việc mơ đóng vai trò thiết yếu trong việc củng cố trí nhớ và điều hòa cảm xúc.",
+      "Trong lúc bạn mơ, não bộ sẽ tái hiện lại các trải nghiệm trong ngày, cất giữ các ký ức quan trọng và cắt tỉa đi những chi tiết thừa thãi.",
+      "Một giả thuyết tiến hóa khác lại cho rằng ác mộng đóng vai trò như các buổi diễn tập thực tế ảo giúp chuẩn bị tâm lý trước những hiểm nguy ngoài đời thực.",
+      "Dù chức năng chính xác vẫn là một trong những bí ẩn lớn nhất của sinh học, giấc ngủ và những giấc mơ rõ ràng đang bảo vệ sức khỏe nhận thức của chúng ta."
+    ],
+    "yQ_u7e1c_Kg": [
+      "Xin chào và chào mừng bạn đến với chương trình 6 Minute English từ BBC Learning English, tôi là Neil và cùng dẫn với tôi là Beth.",
+      "Trước tình trạng mực nước biển toàn cầu dâng cao và các thành phố ven biển quá tải dân số, các kiến trúc sư đang khám phá những thiết kế táo bạo cho nơi ở dưới nước.",
+      "Từ các vòm trắc địa nổi trên mặt nước cho đến các trạm nghiên cứu ngập sâu dưới lòng biển, đại dương mang đến cả sự kỳ diệu lẫn những trở ngại kỹ thuật.",
+      "Thách thức lớn nhất khi sống dưới nước là việc kiểm soát áp suất nước khổng lồ và liên tục tạo ra oxy để thở.",
+      "Các kỹ sư sử dụng phương pháp điện phân để tách nước biển thành hydro và oxy, cung cấp năng lượng cho hệ thống dưỡng khí một cách hiệu quả.",
+      "Hơn nữa, canh tác dưới nước bằng phương pháp thủy canh và nuôi tảo có thể cung cấp nguồn dinh dưỡng tươi sạch mà không cần đến đất đai.",
+      "Dù các thành phố lớn dưới đáy biển vẫn còn thuộc về tương lai, các trạm sinh sống dưới nước hiện đã và đang cách mạng hóa ngành khoa học biển sâu."
     ]
   }
 }

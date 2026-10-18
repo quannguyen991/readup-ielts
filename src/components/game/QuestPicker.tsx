@@ -269,7 +269,7 @@ export function StageTile({
         minHeight: 158,
         borderRadius: 18,
         padding: 14,
-        backgroundColor: hover ? '#16294A' : isNext ? '#13243F' : HUB.panel,
+        backgroundColor: hover ? '#FAF3E8' : isNext ? '#FFFDF7' : HUB.panel,
         borderWidth: 1,
         borderColor: isNext ? 'rgba(250,204,21,0.55)' : hover ? `${color}99` : HUB.line,
         ...hoverStyle(hover, 2),

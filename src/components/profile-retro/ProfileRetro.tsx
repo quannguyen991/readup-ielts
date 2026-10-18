@@ -371,6 +371,7 @@ export function ProfileRetro() {
                   <ReceiptRow label={L('Từ việc học', 'From studying')} value={`+${formatStars(ledger.study)}`} />
                   <ReceiptRow label={L('Thưởng trận đấu', 'Battle rewards')} value={`+${formatStars(ledger.battle)}`} />
                   <ReceiptRow label={L('Thưởng hạng tháng', 'Monthly rank rewards')} value={`+${formatStars(ledger.prizes)}`} />
+                  <ReceiptRow label={L('Thưởng chuỗi ngày', 'Streak rewards')} value={`+${formatStars(ledger.streak)}`} />
                   <ReceiptRow label={L('Đã đổi quà', 'Spent on rewards')} value={`−${formatStars(ledger.spent)}`} />
                   <View style={{ marginTop: 4, paddingTop: 14, borderTopWidth: 3, borderTopColor: RINK, borderStyle: 'dashed' }}>
                     <ReceiptRow strong label={L('Còn lại', 'Balance')} value={`${stars} ⭐`} />

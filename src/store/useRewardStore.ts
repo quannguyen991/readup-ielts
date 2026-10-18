@@ -138,7 +138,7 @@ export const useRewardStore = create<RewardState>()(
     {
       name: `${STORAGE_PREFIX}reward`,
       storage: storage(),
-      version: 3,
+      version: 4,
       // Người đã có dữ liệu cũ cũng được cấp món miễn phí; phần đã lưu giữ nguyên.
       merge: (persisted, current) => {
         const saved = (persisted ?? {}) as Partial<RewardState>;
@@ -146,9 +146,10 @@ export const useRewardStore = create<RewardState>()(
       },
       migrate: (persisted) => ({
         ...(persisted as Partial<RewardState>),
-        // Mặc định mở app phải về giao diện Band 9. Vật phẩm và sao vẫn giữ;
-        // người học có thể bật lại giao diện đã mở trong trang Cá nhân.
+        // Về màu mặc định Band 9 toàn bộ: giao diện và nền học đang bật được tắt đi.
+        // Vật phẩm đã mở, sao và lịch sử vẫn giữ; bật lại ở Đổi quà.
         theme: null,
+        studyBg: null,
       }) as RewardState,
       partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, theme: s.theme ?? null, studyBg: s.studyBg ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
     },

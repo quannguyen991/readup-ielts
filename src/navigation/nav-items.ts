@@ -95,14 +95,27 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
           { key: 'bilingual', label: 'Đọc báo song ngữ', href: '/bilingual', icon: 'languages' },
           { key: 'writing', label: 'Writing', href: '/write', icon: 'pencil' },
+          { key: 'grammar', label: 'Luyện ngữ pháp', href: '/ngu-phap', icon: 'list' },
+          { key: 'video-hub', label: 'Học qua video', href: '/video', icon: 'play' },
           { key: 'listening', label: 'Listening', href: '/listening', icon: 'volume' },
-          { key: 'sentence', label: 'Nghe & chép', href: '/sentence', icon: 'volume' },
-          { key: 'dictation-sets', label: 'Bộ đề chép chính tả', href: '/sentence/sets', icon: 'play' },
-          { key: 'dictation-youtube', label: 'Chép theo video', href: '/sentence/youtube', icon: 'play' },
-          { key: 'shadow', label: 'Đọc theo VOA', href: '/shadow', icon: 'mic' },
-          { key: 'speaking', label: 'Phòng luyện nói', href: '/speaking', icon: 'chat' },
-          // Khu luyện nói: phát âm, gia sư AI, khoá học. Có thanh tab riêng (app/hub/_layout.tsx).
-          { key: 'hub', label: 'Luyện nói AI', href: '/hub', icon: 'mic' },
+          { key: 'sentence', label: 'Nghe chép', href: '/sentence', icon: 'volume' },
+
+
+          // Khu luyện nói AI: Gia sư AI, Khám phá, Presentation Coach, Phòng luyện nói, Lồng tiếng video, Shadowing
+          {
+            key: 'hub',
+            label: 'Luyện nói AI',
+            href: '/hub',
+            icon: 'mic',
+            children: [
+              { key: 'hub-tutor', label: 'Gia sư AI', href: '/hub/tutor', icon: 'chat' },
+              { key: 'hub-explore', label: 'Khám phá', href: '/hub/explore', icon: 'compass' },
+              { key: 'hub-presentation', label: 'Presentation Coach', href: '/hub/course/presentation', icon: 'sparkle' },
+              { key: 'speaking', label: 'Phòng luyện nói & Forecast', href: '/speaking', icon: 'trophy' },
+              { key: 'hub-dubbing', label: 'Lồng tiếng video', href: '/speaking/long-tieng', icon: 'play' },
+              { key: 'shadow', label: 'Đọc theo VOA', href: '/shadow', icon: 'volume' },
+            ],
+          },
           { key: 'toeic-toefl', label: 'TOEIC · TOEFL', href: '/toeic', icon: 'letters' },
           { key: 'hsa-english', label: 'Luyện HSA · Tiếng Anh', href: '/hsa', icon: 'target' },
         ],
@@ -121,6 +134,7 @@ export const NAV_GROUPS: NavGroup[] = [
             khung Học → Luyện → Kiểm tra của hai hub (`navigation/sat-hub.ts`).
           */
           { key: 'sat-home', label: 'Tổng quan SAT', href: '/sat', icon: 'compass' },
+          { key: 'sat-practice-tests', label: 'Luyện đề Digital SAT', shortLabel: 'Đề SAT', href: '/sat/practice-tests', icon: 'clipboard' },
           { key: 'math', label: 'SAT Math', href: '/math', icon: 'grid' },
           { key: 'sat-rw', label: 'SAT Verbal', href: '/sat-rw', icon: 'letters' },
           { key: 'sat-full-test', label: 'Thi thử SAT', href: '/sat/full-test', icon: 'clock' },
@@ -134,6 +148,8 @@ export const NAV_GROUPS: NavGroup[] = [
         inBottomTabs: true,
         children: [
           { key: 'vocab-book', label: 'Sổ từ', href: '/vocabulary', icon: 'bookmark' },
+          { key: 'cefr-vocab', label: 'Từ vựng A1–C1', href: '/tu-vung-cefr', icon: 'list' },
+          { key: 'oxford', label: 'Oxford 3000 & 5000', href: '/oxford', icon: 'book' },
           { key: 'vocab-topics', label: 'Chủ đề IELTS', href: '/vocabulary/topics', icon: 'grid' },
           { key: 'vocab-sat-quiz', label: 'Ôn từ vựng SAT', href: '/vocabulary/sat-quiz', icon: 'trophy' },
           { key: 'vocab-import', label: 'Học từ bài bạn thích', href: '/vocabulary/import', icon: 'plus' },
@@ -171,6 +187,9 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'star',
         children: [
           { key: 'books', label: 'Tủ sách PDF', href: '/tu-sach', icon: 'book' },
+          { key: 'feature-requests', label: 'Yêu cầu tính năng', href: '/feature-requests', icon: 'star' },
+          { key: 'invite', label: 'Mời bạn bè', href: '/invite', icon: 'star' },
+          { key: 'upgrade', label: 'Nâng cấp tài khoản', href: '/upgrade', icon: 'star' },
           { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
           { key: 'teacher', label: 'Lớp học (giáo viên)', href: '/teacher', icon: 'clipboard' },
           { key: 'join-class', label: 'Vào lớp bằng mã', href: '/join', icon: 'letters' },
@@ -255,16 +274,19 @@ export function visibleGroups(
   groups: readonly NavGroup[],
   desktop: boolean,
   ieltsFeatures: readonly string[] | null = null,
+  satFeatures: readonly string[] | null = null,
 ): NavGroup[] {
   const historyOk = HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory());
   const keep = (i: NavItem): boolean => (desktop || !i.desktopOnly) && (i.requires !== 'history' || historyOk);
   const keepIelts = (parentKey: string, i: NavItem): boolean =>
     parentKey !== 'ielts' || ieltsFeatures === null || ieltsFeatures.includes(i.key);
+  const keepSat = (parentKey: string, i: NavItem): boolean =>
+    parentKey !== 'sat' || satFeatures === null || satFeatures.includes(i.key);
   return groups.map((g) => ({
     ...g,
     items: g.items
       .filter(keep)
-      .map((i) => (i.children ? { ...i, children: i.children.filter((c) => keep(c) && keepIelts(i.key, c)) } : i)),
+      .map((i) => (i.children ? { ...i, children: i.children.filter((c) => keep(c) && keepIelts(i.key, c) && keepSat(i.key, c)) } : i)),
   }));
 }
 
@@ -293,11 +315,17 @@ export const NAV_LABEL_EN: Record<string, string> = {
   'dictation-sets': 'Dictation sets',
   'dictation-youtube': 'Dictate from video',
   shadow: 'VOA shadowing',
-  speaking: 'Speaking room',
+  speaking: 'Speaking & Forecast',
+  hub: 'AI Speaking Hub',
+  'hub-tutor': 'AI Tutors',
+  'hub-explore': 'Explore',
+  'hub-presentation': 'Presentation Coach',
+  'hub-dubbing': 'Video dubbing',
   'toeic-toefl': 'TOEIC · TOEFL',
   'hsa-english': 'HSA English practice',
   sat: 'SAT',
   'sat-home': 'SAT overview',
+  'sat-practice-tests': 'SAT practice tests',
   math: 'SAT Math',
   'sat-rw': 'SAT Verbal',
   'sat-full-test': 'SAT practice test',
@@ -323,6 +351,11 @@ export const NAV_LABEL_EN: Record<string, string> = {
   shop: 'Rewards shop',
   me: 'Me',
   books: 'PDF bookshelf',
+  'feature-requests': 'Feature requests',
+  'video-hub': 'Learn with video',
+  grammar: 'Grammar',
+  'cefr-vocab': 'CEFR vocabulary',
+  oxford: 'Oxford 3000 & 5000',
   settings: 'Settings',
   observatory: 'AI question quality',
   teacher: 'Classes (teachers)',

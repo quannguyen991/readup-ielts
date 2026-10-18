@@ -552,7 +552,7 @@ function PracticeView({
                     <Text
                       className="font-sans text-label"
                       numberOfLines={1}
-                      style={{ color: i < index ? '#799084' : '#E7F1E8' }}
+                      style={{ color: i < index ? '#6E7A70' : i === index ? '#1F2A44' : '#8A7F72' }}
                     >
                       {i <= index || i < doneCount ? s.text : '•••••  •••••  •••'}
                     </Text>
@@ -560,7 +560,7 @@ function PracticeView({
                       <Text
                         className="font-sans"
                         numberOfLines={1}
-                        style={{ color: '#78B38A', opacity: 0.85, fontSize: 11 }}
+                        style={{ color: '#2E7D4F', opacity: 0.95, fontSize: 12 }}
                       >
                         {storedTranslations[i]}
                       </Text>

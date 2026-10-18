@@ -112,7 +112,7 @@ function AreaStep({ areas }: { areas: Island[] }) {
           <View aria-hidden>
             <SealIcon name="flame" color="#F0703F" size={32} />
           </View>
-          <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
+          <Text className="font-heavy" style={{ fontSize: 16, color: '#2A1808' }}>
             {L('Trận nhanh', 'Quick battle')}
           </Text>
           <View aria-hidden>
@@ -179,7 +179,7 @@ function LessonStep({ island }: { island: Island }) {
             <View style={{ flex: 1, height: 7, borderRadius: 3, backgroundColor: HUB.track, overflow: 'hidden' }}>
               <View style={{ height: 7, width: '100%', backgroundColor: tone, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
             </View>
-            <Text className="font-strong" style={{ fontSize: 12, color: '#FFFFFF' }}>
+            <Text className="font-strong" style={{ fontSize: 12, color: '#2A1808' }}>
               {L(`${island.done}/${island.missions.length} bài đã qua`, `${island.done}/${island.missions.length} lessons passed`)}
             </Text>
           </View>
@@ -238,7 +238,7 @@ function LessonStep({ island }: { island: Island }) {
                 </Sticker>
               </Motion>
             </View>
-            <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
+            <Text className="font-strong" style={{ fontSize: 14, color: '#2A1808' }}>
               {filter === 'done' ? L('Chưa qua bài nào ở đây.', 'No lessons passed here yet.') : L('Không còn bài nào khớp bộ lọc.', 'No lessons match this filter.')}
             </Text>
           </Panel>

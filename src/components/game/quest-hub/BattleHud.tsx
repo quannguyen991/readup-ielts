@@ -103,7 +103,7 @@ export function EnemyBlock({ stage = 96 }: { stage?: number }) {
           <Eyebrow text={L('ĐANG CHẶN ĐƯỜNG', 'BLOCKING YOUR PATH')} tone="#FCA5A5" />
           {enemy.boss ? (
             <View style={{ borderRadius: 5, paddingHorizontal: 6, paddingVertical: 1, backgroundColor: HUB.red }}>
-              <Text className="font-heavy" style={{ fontSize: 10, letterSpacing: 1, color: '#FFFFFF' }}>
+              <Text className="font-heavy" style={{ fontSize: 10, letterSpacing: 1, color: '#2A1808' }}>
                 BOSS
               </Text>
             </View>

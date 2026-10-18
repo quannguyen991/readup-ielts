@@ -23,7 +23,7 @@ export function SidebarStickerWindow() {
       <View className="h-[58px] flex-row items-center justify-between px-2.5" style={{ backgroundColor: '#FFF8FA' }}>
         <View className="min-w-0 flex-1">
           <Text className="font-strong text-[12px]" style={{ color: '#70424F' }}>Góc học xinh xắn</Text>
-          <Text className="mt-0.5 font-medium text-[10px]" style={{ color: '#A17E8A' }}>Học một chút, giỏi hơn một chút ♡</Text>
+          <Text className="mt-0.5 font-mid text-[10px]" style={{ color: '#A17E8A' }}>Học một chút, giỏi hơn một chút ♡</Text>
           <Text style={{ color: '#E78CA8', fontSize: 9 }}>♥  ✦  ♥  ✦  ♥</Text>
         </View>
       </View>

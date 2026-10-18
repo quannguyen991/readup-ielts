@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, type PressableProps, type ViewStyle } from 'react-native';
+import { Platform, Pressable, View, type PressableProps, type ViewStyle } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -79,6 +79,41 @@ function useEnter(delay: number, duration: number, lift: number) {
  * Dùng ở layout gốc với key là đường dẫn, nên mỗi lần đổi trang là một lần nội
  * dung mờ dần lên — đủ để mắt biết "vừa sang chỗ khác" mà không phải chờ.
  */
+
+/*
+  Trên web, chuyển trang và chuyển tab chạy bằng CSS keyframes (opacity + transform):
+  trình duyệt đẩy việc này sang GPU, không gọi JS ở mỗi khung hình nên không giật
+  khi chuyển nhanh liên tiếp. Native vẫn dùng Reanimated như cũ.
+*/
+const WEB_ID = 'readup-motion-web';
+function ensureWebMotion(): void {
+  if (Platform.OS !== 'web' || typeof document === 'undefined' || document.getElementById(WEB_ID)) return;
+  const el = document.createElement('style');
+  el.id = WEB_ID;
+  el.textContent = `
+@keyframes rm-page-in { 0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.995); } 100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
+@keyframes rm-tab-in { 0% { opacity: 0; transform: translate3d(0, 6px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes rm-item-lift { 0% { opacity: 0.45; transform: translate3d(0, 4px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes rm-item-flat { 0% { opacity: 0.45; } 100% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .rm-page, .rm-tab, .rm-item { animation: none !important; } }`;
+  document.head.appendChild(el);
+}
+
+/** Vùng nội dung của web: bọc bằng lớp CSS để chạy hoạt ảnh vào trang, đổi `key` là chạy lại. */
+function WebEnter({ kind, children, style }: { kind: 'page' | 'tab'; children: React.ReactNode; style?: ViewStyle }) {
+  ensureWebMotion();
+  const name = kind === 'page' ? 'rm-page-in' : 'rm-tab-in';
+  const dur = kind === 'page' ? '260ms' : '200ms';
+  return (
+    <View
+      className={kind === 'page' ? 'rm-page' : 'rm-tab'}
+      style={[style, { flex: 1, animationName: name, animationDuration: dur, animationTimingFunction: 'cubic-bezier(.2,.8,.2,1)', animationFillMode: 'both' } as ViewStyle]}
+    >
+      {children}
+    </View>
+  );
+}
+
 export function PageTransition({
   routeKey,
   children,
@@ -89,9 +124,13 @@ export function PageTransition({
   // `key` nằm ở đây chứ không ở trong: đổi key là dựng lại `Enter`, tức là chạy
   // lại effect. Không có nó thì hiệu ứng chỉ chạy đúng một lần lúc mở app.
   return (
-    <Enter key={routeKey} duration={MOTION.page} lift={0} style={{ flex: 1 }}>
-      {children}
-    </Enter>
+    Platform.OS === 'web' ? (
+      <WebEnter key={routeKey} kind="page">{children}</WebEnter>
+    ) : (
+      <Enter key={routeKey} duration={MOTION.page} lift={0} style={{ flex: 1 }}>
+        {children}
+      </Enter>
+    )
   );
 }
 
@@ -140,9 +179,51 @@ export function CrossFade({
   children: React.ReactNode;
 }) {
   return (
+    Platform.OS === 'web' ? (
+      <WebEnter key={swapKey} kind="tab" style={style}>{children}</WebEnter>
+    ) : (
     <Enter key={swapKey} duration={MOTION.item} lift={0} style={style}>
       {children}
     </Enter>
+    )
+  );
+}
+
+/*
+  Hiện dần của từng khối trên web bằng CSS keyframes thay cho Reanimated. Mỗi khối
+  Reanimated là một shared value và một luồng JS riêng; một lưới 30 thẻ là 30 luồng
+  tranh nhau, đó là lý do chuyển trang bị khựng. CSS chạy ở bộ kết xuất, không gọi JS.
+*/
+function WebEnterItem({
+  delay,
+  duration,
+  lift,
+  style,
+  children,
+}: {
+  delay: number;
+  duration: number;
+  lift: number;
+  style?: ViewStyle;
+  children: React.ReactNode;
+}) {
+  ensureWebMotion();
+  return (
+    <View
+      className="rm-item"
+      style={[
+        style,
+        {
+          animationName: lift > 0 ? 'rm-item-lift' : 'rm-item-flat',
+          animationDuration: `${duration}ms`,
+          animationDelay: `${delay}ms`,
+          animationTimingFunction: 'cubic-bezier(.2,.8,.2,1)',
+          animationFillMode: 'both',
+        } as ViewStyle,
+      ]}
+    >
+      {children}
+    </View>
   );
 }
 
@@ -154,6 +235,29 @@ function Enter({
   children,
 }: {
   delay?: number;
+  duration: number;
+  lift: number;
+  style?: ViewStyle;
+  children: React.ReactNode;
+}) {
+  if (Platform.OS === 'web') {
+    return (
+      <WebEnterItem delay={delay} duration={duration} lift={lift} style={style}>
+        {children}
+      </WebEnterItem>
+    );
+  }
+  return <NativeEnter delay={delay} duration={duration} lift={lift} style={style}>{children}</NativeEnter>;
+}
+
+function NativeEnter({
+  delay,
+  duration,
+  lift,
+  style,
+  children,
+}: {
+  delay: number;
   duration: number;
   lift: number;
   style?: ViewStyle;

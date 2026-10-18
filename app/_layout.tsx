@@ -49,6 +49,7 @@ import { installLocaleFetch } from '@/i18n/fetch-locale';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { useRewardStore } from '@/store/useRewardStore';
 import { setPaletteId } from '@/theme/palette-state';
+import { startStreakBonus } from '@/services/activity/streak-bonus';
 
 // Mọi lượt gọi `/api/...` mang theo ngôn ngữ đang chọn để máy chủ trả lời đúng
 // thứ tiếng. Chạy một lần lúc nạp module; gọi lại (HMR) vẫn chỉ bọc một lớp.
@@ -98,6 +99,8 @@ export default function RootLayout() {
 
   // Chủ đề Chiikawa: đổi bảng màu cho cả app. Chờ hydrate để lượt đầu khớp HTML máy
   // chủ; đổi bảng thì dựng lại cả cây (key) để mọi màu trong JS được tính lại.
+  // Thưởng mốc chuỗi ngày: theo dõi nhật ký học để cộng sao đúng lúc đạt mốc, kể cả khi người học không mở trang Tiến độ.
+  useEffect(() => startStreakBonus(), []);
   const hydrated = useHydrated();
   const themeId = useRewardStore((s) => s.theme);
   const paletteKey = hydrated && themeId === 'theme-chiikawa' ? 'chiikawa' : hydrated && themeId === 'theme-pixel' ? 'pixel' : hydrated && themeId === 'theme-cyber' ? 'cyber' : 'classic';
@@ -140,6 +143,13 @@ function AppTitle() {
   return (
     <Head>
       <title>Band 9</title>
+      {/* Nạp phông Be Vietnam Pro qua Google Fonts để web hiển thị ngay tức thì, đồng bộ mọi thiết bị */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+        rel="stylesheet"
+      />
       {/* Manifest + chế độ standalone: iPhone chỉ nhận thông báo đẩy (nhắc học)
           khi Band 9 được "Thêm vào MH chính" như một web app. */}
       <link rel="manifest" href="/manifest.webmanifest" />

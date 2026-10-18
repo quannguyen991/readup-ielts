@@ -353,6 +353,14 @@ export default function IeltsSourcePracticeScreen() {
     });
   }, [collectionFilter, sectionFilter, searchQuery, tests]);
 
+  // Chia đề theo kỹ năng: Reading, Listening… mỗi nhóm một khu riêng.
+  const sectionGroups = useMemo(() => {
+    const order = ['Reading', 'Listening', 'Writing', 'Speaking'];
+    return [...order, 'other']
+      .map((k) => ({ key: k, label: k === 'other' ? L('Khác', 'Other') : k, items: filteredTests.filter((t) => (t.section ?? 'other') === k) }))
+      .filter((g) => g.items.length > 0);
+  }, [filteredTests, L]);
+
   const currentTestMeta = useMemo(() => {
     if (!selectedId) return tests[0] ?? null;
     return tests.find((t) => t.id === selectedId) ?? null;
@@ -824,8 +832,17 @@ export default function IeltsSourcePracticeScreen() {
                   </View>
 
                   {/* Grid of Test Cards matching input_file_2 - Large, Balanced Covers */}
+                  {sectionGroups.map((g) => (
+                  <View key={g.key} style={{ gap: 14 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <Text style={{ fontSize: 20, fontWeight: '900' as never, color: '#2A1808' }}>{g.label}</Text>
+                    <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3E7D3' }}>
+                      <Text style={{ fontSize: 12, fontWeight: '800' as never, color: '#B94A70' }}>{g.items.length}</Text>
+                    </View>
+                    <View style={{ flex: 1, height: 1, backgroundColor: '#E6DACB' }} />
+                  </View>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
-                    {filteredTests.map((item) => {
+                    {g.items.map((item) => {
                       const isCam = item.source.toLowerCase().includes('cambridge');
 
                       return (
@@ -921,6 +938,8 @@ export default function IeltsSourcePracticeScreen() {
                       );
                     })}
                   </View>
+                  </View>
+                  ))}
                 </View>
               </View>
             </View>

@@ -8,6 +8,15 @@ import { MindMap } from '@/components/illust/MindMap';
 import { Badge, CuteBook, CuteClock, CuteGlobe, CutePencil } from '@/components/illust/Cute';
 import { CuteBulb, CuteCalculator, CuteChat, CuteMagnifier, CuteNotebook, CuteRocket, CuteStar, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
 import { SAT_DOMAINS, SAT_FACTS, SAT_SECTIONS, SAT_STRATEGY, type Domain } from '@/data/sat-knowledge';
+import {
+  SAT_5_STEP_METHOD,
+  SAT_CONTEXT_CLUES,
+  SAT_TRANSITION_GROUPS,
+  SAT_DESMOS_TECHNIQUES,
+  SAT_RW_16_WEEK_ROADMAP,
+  SAT_MATH_20_WEEK_ROADMAP,
+  SAT_BOOK_CATALOG,
+} from '@/data/sat-methods';
 import { useL } from '@/i18n/useL';
 
 /** Bản tiếng Anh của bốn ô số liệu đầu trang (dữ liệu gốc `SAT_FACTS` giữ tiếng Việt), theo thứ tự. */
@@ -133,10 +142,41 @@ export default function SatKnowledge() {
       ))}
 
       {/* ------------------------------------------------ chiến lược */}
-      <BigSection color="#FFFFFF" ink={INK} kicker={L('LÀM BÀI', 'TEST DAY')} title={L('Chiến lược.', 'Strategy.')} icon={<CuteTrophy size={56} />}>
+      <BigSection color="#FFFFFF" ink={INK} kicker={L('LÀM BÀI', 'TEST DAY')} title={L('Chiến lược làm bài.', 'Strategy.')} icon={<CuteTrophy size={56} />}>
         <Strategy wide={wide} />
       </BigSection>
-      <View style={{ height: 36 }} />
+
+      {/* ------------------------------------------------ phương pháp 5 bước */}
+      <BigSection color="#FCFBF8" ink={INK} kicker={L('PHƯƠNG PHÁP', 'METHODOLOGY')} title={L('Quy trình 5 bước giải mọi câu hỏi SAT.', 'Universal 5-Step SAT Method.')} icon={<CuteBulb size={56} />}>
+        <Method5StepSection wide={wide} />
+      </BigSection>
+
+      {/* ------------------------------------------------ Tuyệt chiêu Desmos */}
+      <BigSection color="#F4F8FA" ink="#1E3A8A" kicker={L('CÔNG CỤ TOÁN', 'MATH TOOL')} title={L('Tuyệt chiêu máy tính Desmos SAT Math.', 'Desmos Calculator Power Techniques.')} icon={<CuteCalculator size={56} />}>
+        <DesmosPowerSection wide={wide} />
+      </BigSection>
+
+      {/* ------------------------------------------------ 6 Bẫy Đọc hiểu Kinh điển */}
+      <BigSection color="#FFF5F5" ink="#991B1B" kicker={L('CHIẾN THUẬT ĐỌC HIỂU', 'READING TRAPS')} title={L('6 Bẫy đọc hiểu SAT kinh điển (Erica Meltzer & College Board).', '6 Classic SAT Reading Traps.')} icon={<CuteBulb size={56} />}>
+        <ReadingTrapsSection wide={wide} />
+      </BigSection>
+
+      {/* ------------------------------------------------ Bảng công thức vàng Math 800 */}
+      <BigSection color="#F0FDF4" ink="#166534" kicker={L('CÔNG THỨC VÀNG', 'GOLDEN FORMULAS')} title={L('Bảng công thức vàng SAT Math 800 (The College Panda & 1600.io).', 'SAT Math 800 Golden Formulas.')} icon={<CuteCalculator size={56} />}>
+        <MathFormulasSection wide={wide} />
+      </BigSection>
+
+      {/* ------------------------------------------------ Lộ trình 16 tuần R&W & 20 tuần Math */}
+      <BigSection color="#FFFDF7" ink="#78350F" kicker={L('LỘ TRÌNH CHUẨN', 'MASTER ROADMAPS')} title={L('Lộ trình 16 tuần R&W & 20 tuần Math.', '16-Week R&W & 20-Week Math Plans.')} icon={<CuteRocket size={56} />}>
+        <RoadmapPlansSection wide={wide} />
+      </BigSection>
+
+      {/* ------------------------------------------------ Tủ sách SAT & Đề thi thật */}
+      <BigSection color="#FFFFFF" ink={INK} kicker={L('TỦ SÁCH & ĐỀ THI', 'BOOK & TEST REPOSITORY')} title={L('27 tài liệu sách SAT kinh điển & Đề thi thật.', '27 Core SAT Books & Real Test Bank.')} icon={<CuteBook size={56} />}>
+        <BookCatalogSection wide={wide} />
+      </BigSection>
+
+      <View style={{ height: 48 }} />
     </Screen>
   );
 }
@@ -390,3 +430,498 @@ function Bullet({ text, color, glyph = '•' }: { text: string; color: string; g
     </View>
   );
 }
+
+function Method5StepSection({ wide }: { wide: boolean }) {
+  const { L, en } = useL();
+  return (
+    <View style={{ gap: 20 }}>
+      <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
+        {L(
+          'Quy trình giải quyết vạn năng đúc kết từ giáo trình 16 tuần R&W và kinh nghiệm các thủ khoa 1550+: không bao giờ đọc đoạn văn một cách thụ động, luôn đi từ câu hỏi để tìm bằng chứng xác đáng.',
+          'The universal question-solving workflow extracted from the 16-week R&W curriculum: never read passively; always begin with the question stem to locate conclusive evidence.'
+        )}
+      </Text>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
+        {SAT_5_STEP_METHOD.map((s) => (
+          <View
+            key={s.step}
+            style={{
+              flexGrow: 1,
+              flexBasis: wide ? 320 : '100%',
+              borderRadius: 22,
+              padding: 18,
+              backgroundColor: '#FFFFFF',
+              borderWidth: 1,
+              borderColor: LINE,
+              gap: 10,
+            }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <View
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 16,
+                  backgroundColor: '#B94A70',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Text className="font-heavy" style={{ color: '#FFFFFF', fontSize: 15 }}>
+                  {s.step}
+                </Text>
+              </View>
+              <Text className="font-heavy text-subTitle text-ink" style={{ flex: 1 }}>
+                {en ? s.titleEn : s.titleVi}
+              </Text>
+            </View>
+
+            <Text className="font-sans text-body" style={{ color: MUTED, lineHeight: 20 }}>
+              {en ? s.summaryEn : s.summaryVi}
+            </Text>
+
+            <View style={{ marginTop: 4, gap: 6, borderTopWidth: 1, borderTopColor: '#FBE3EC', paddingTop: 8 }}>
+              {s.tips.map((tip, idx) => (
+                <Bullet key={idx} text={tip} color="#B94A70" glyph="✓" />
+              ))}
+            </View>
+          </View>
+        ))}
+      </View>
+
+      {/* 7 Context Clues & 9 Transitions */}
+      <View style={{ flexDirection: wide ? 'row' : 'column', gap: 14 }}>
+        <View style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE, gap: 10 }}>
+          <Text className="font-heavy text-cardTitle text-ink">
+            {L('7 Manh Mối Ngữ Cảnh (Context Clues)', '7 Context Clues in Reading')}
+          </Text>
+          <View style={{ gap: 8 }}>
+            {SAT_CONTEXT_CLUES.map((c, i) => (
+              <View key={i} style={{ borderRadius: 14, padding: 10, backgroundColor: '#FAF7EE' }}>
+                <Text className="font-strong text-caption" style={{ color: '#B94A70' }}>
+                  {c.nameVi}
+                </Text>
+                <Text className="font-mono text-tiny" style={{ color: MUTED, marginTop: 2 }}>
+                  Dấu hiệu: {c.signal}
+                </Text>
+                <Text className="font-sans text-caption" style={{ color: INK, marginTop: 2 }}>
+                  {c.ruleVi}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        <View style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE, gap: 10 }}>
+          <Text className="font-heavy text-cardTitle text-ink">
+            {L('9 Nhóm Từ Nối Chuẩn SAT (Transitions)', '9 Official SAT Transition Groups')}
+          </Text>
+          <View style={{ gap: 8 }}>
+            {SAT_TRANSITION_GROUPS.map((g, i) => (
+              <View key={i} style={{ borderRadius: 14, padding: 10, backgroundColor: '#F8F9FA' }}>
+                <Text className="font-strong text-caption text-ink">{g.groupVi}</Text>
+                <Text className="font-mono text-tiny" style={{ color: '#3B82F6', marginTop: 3 }}>
+                  {g.words.join(' · ')}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function DesmosPowerSection({ wide }: { wide: boolean }) {
+  const { L } = useL();
+  return (
+    <View style={{ gap: 14 }}>
+      <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
+        {L(
+          'Trong Digital SAT, Desmos được tích hợp sẵn 100% phần thi Math. Nắm vững 4 tuyệt chiêu sau sẽ giúp giải quyết hơn 50% câu hỏi hóc búa chỉ trong 10 đến 20 giây mà không lo tính nhầm.',
+          'In Digital SAT, Desmos is built-in for 100% of the Math section. Mastering these 4 core techniques solves over 50% of tough questions in 10-20 seconds without arithmetic slips.'
+        )}
+      </Text>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
+        {SAT_DESMOS_TECHNIQUES.map((tech, idx) => (
+          <View
+            key={idx}
+            style={{
+              flexGrow: 1,
+              flexBasis: wide ? 320 : '100%',
+              borderRadius: 20,
+              padding: 16,
+              backgroundColor: '#FFFFFF',
+              borderWidth: 1,
+              borderColor: '#DBEAFE',
+              gap: 8,
+            }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Text className="font-heavy text-body text-ink">{tech.nameVi}</Text>
+              <View style={{ borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#EFF6FF' }}>
+                <Text className="font-mono text-tiny" style={{ color: '#1D4ED8' }}>
+                  Desmos Pro
+                </Text>
+              </View>
+            </View>
+            <Text className="font-sans text-caption" style={{ color: MUTED, lineHeight: 19 }}>
+              {tech.useVi}
+            </Text>
+            <View style={{ borderRadius: 10, padding: 8, backgroundColor: '#1E293B' }}>
+              <Text className="font-mono text-tiny" style={{ color: '#38BDF8' }}>
+                {tech.shortcut}
+              </Text>
+            </View>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+function RoadmapPlansSection({ wide }: { wide: boolean }) {
+  const { L } = useL();
+  return (
+    <View style={{ gap: 20 }}>
+      {/* 16-Week R&W */}
+      <View style={{ borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE, gap: 12 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <View style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: '#C97A9A' }} />
+          <Text className="font-heavy text-cardTitle text-ink">
+            {L('Lộ trình 16 tuần Reading & Writing (Chinh phục 700+)', '16-Week R&W Mastery Roadmap (Target 700+)')}
+          </Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+          {SAT_RW_16_WEEK_ROADMAP.map((phase, idx) => (
+            <View
+              key={idx}
+              style={{
+                flexGrow: 1,
+                flexBasis: wide ? 280 : '100%',
+                borderRadius: 16,
+                padding: 14,
+                backgroundColor: '#FCFAF5',
+                borderWidth: 1,
+                borderColor: '#F3EBD8',
+                gap: 6,
+              }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text className="font-heavy text-caption" style={{ color: '#B94A70' }}>
+                  {phase.weeks}
+                </Text>
+                <View style={{ borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#B94A70' }}>
+                  <Text className="font-heavy text-tiny" style={{ color: '#FFFFFF' }}>
+                    Chặng {idx + 1}
+                  </Text>
+                </View>
+              </View>
+              <Text className="font-strong text-body text-ink">{phase.phase}</Text>
+              <Text className="font-sans text-caption" style={{ color: '#22A06B', fontWeight: '600' }}>
+                Mục tiêu: {phase.target}
+              </Text>
+              <View style={{ marginTop: 4, gap: 4 }}>
+                {phase.items.map((it, i) => (
+                  <Bullet key={i} text={it} color="#B94A70" glyph="•" />
+                ))}
+              </View>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      {/* 20-Week Math */}
+      <View style={{ borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE, gap: 12 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <View style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: '#F2B632' }} />
+          <Text className="font-heavy text-cardTitle text-ink">
+            {L('Lộ trình 20 tuần SAT Math (Chinh phục 750 – 800)', '20-Week Math Mastery Roadmap (Target 750–800)')}
+          </Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+          {SAT_MATH_20_WEEK_ROADMAP.map((phase, idx) => (
+            <View
+              key={idx}
+              style={{
+                flexGrow: 1,
+                flexBasis: wide ? 280 : '100%',
+                borderRadius: 16,
+                padding: 14,
+                backgroundColor: '#FFFDF5',
+                borderWidth: 1,
+                borderColor: '#FBE8B5',
+                gap: 6,
+              }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text className="font-heavy text-caption" style={{ color: '#B45309' }}>
+                  {phase.weeks}
+                </Text>
+                <View style={{ borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#F2B632' }}>
+                  <Text className="font-heavy text-tiny" style={{ color: '#FFFFFF' }}>
+                    Chặng {idx + 1}
+                  </Text>
+                </View>
+              </View>
+              <Text className="font-strong text-body text-ink">{phase.phase}</Text>
+              <Text className="font-sans text-caption" style={{ color: '#22A06B', fontWeight: '600' }}>
+                Mục tiêu: {phase.target}
+              </Text>
+              <View style={{ marginTop: 4, gap: 4 }}>
+                {phase.items.map((it, i) => (
+                  <Bullet key={i} text={it} color="#F2B632" glyph="•" />
+                ))}
+              </View>
+            </View>
+          ))}
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function BookCatalogSection({ wide }: { wide: boolean }) {
+  const { L } = useL();
+  return (
+    <View style={{ gap: 14 }}>
+      <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
+        {L(
+          'Danh mục 27 cuốn sách kinh điển và tài liệu đề thi thật từ Google Spreadsheet (SAT by Springboard & College Board), được tuyển chọn để tích hợp lộ trình, phương pháp và câu hỏi vào Band 9.',
+          'Catalog of 27 core SAT books and real test archives from the official spreadsheet, integrated into Band 9 with roadmaps, methods, and curated question banks.'
+        )}
+      </Text>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+        {SAT_BOOK_CATALOG.map((b) => (
+          <View
+            key={b.id}
+            style={{
+              flexGrow: 1,
+              flexBasis: wide ? 320 : '100%',
+              borderRadius: 18,
+              padding: 16,
+              backgroundColor: '#FFFFFF',
+              borderWidth: 1,
+              borderColor: LINE,
+              gap: 8,
+            }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <View style={{ borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#FFF4F8' }}>
+                <Text className="font-strong text-tiny" style={{ color: '#B94A70' }}>
+                  {b.category}
+                </Text>
+              </View>
+              <Text className="font-semi text-tiny text-muted">{b.level}</Text>
+            </View>
+
+            <Text className="font-heavy text-body text-ink">{b.title}</Text>
+            <Text className="font-sans text-caption text-muted">Tác giả: {b.author}</Text>
+            <Text className="font-sans text-caption text-paper-ink" style={{ lineHeight: 18 }}>
+              {b.note}
+            </Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+function ReadingTrapsSection({ wide }: { wide: boolean }) {
+  const { L } = useL();
+  const traps = [
+    {
+      num: 1,
+      nameVi: 'Quá rộng (Too Broad) & Quá hẹp (Too Narrow)',
+      descVi: 'Phương án đưa ra kết luận khái quát toàn diện vượt xa phạm vi đoạn văn, hoặc chỉ nhắc tới 1 chi tiết nhỏ làm ví dụ mà bỏ qua toàn bộ luận điểm chính.',
+      signal: 'Dấu hiệu: Các từ bao quát toàn thể nhân loại, mọi loài; hoặc lặp lại nguyên văn một con số ở câu phụ.',
+    },
+    {
+      num: 2,
+      nameVi: 'Đảo ngược quan hệ nhân quả (Reversed Causation)',
+      descVi: 'Đoạn văn nói "A kích thích sinh ra B", nhưng phương án lại khẳng định "B là nguyên nhân trực tiếp dẫn tới A". Các danh từ giống hệt trong bài khiến thí sinh dễ chọn nhầm.',
+      signal: 'Dấu hiệu: Đọc kỹ chủ ngữ và tân ngữ của động từ chỉ nguyên nhân (caused by, stems from, triggers).',
+    },
+    {
+      num: 3,
+      nameVi: 'Từ ngữ tuyệt đối hóa (Extreme Language)',
+      descVi: 'Đoạn văn học thuật luôn giữ thái độ dè dặt, thận trọng (suggests, may, likely), nhưng phương án sai lại dùng các từ ngữ cực đoan, tuyệt đối.',
+      signal: 'Dấu hiệu: always, never, completely, impossible, solely, exclusively, proven fact.',
+    },
+    {
+      num: 4,
+      nameVi: 'So sánh khập khiễng (False Comparison)',
+      descVi: 'Đoạn văn nhắc tới 2 đối tượng X và Y độc lập, nhưng phương án lại tự tiện đặt ra phép so sánh hơn/kém (X is more efficient than Y, X evolved earlier than Y).',
+      signal: 'Dấu hiệu: Các tính từ so sánh hơn (-er, more than, superior to) mà bài đọc không hề đo lường.',
+    },
+    {
+      num: 5,
+      nameVi: 'Kiến thức ngoài đời không có trong bài (Outside Knowledge)',
+      descVi: 'Phương án phát biểu một chân lý khoa học hoặc lịch sử hoàn toàn đúng ngoài đời thực, nhưng lại KHÔNG ĐƯỢC ĐOẠN VĂN ĐỀ CẬP HOẶC HỖ TRỢ.',
+      signal: 'Dấu hiệu: Đọc nghe rất xuôi tai và hợp lý, nhưng không tìm được dòng nào trong bài chứng minh.',
+    },
+    {
+      num: 6,
+      nameVi: 'Nửa đúng nửa sai (Half-Right Half-Wrong)',
+      descVi: 'Bẫy tinh vi nhất của College Board: nửa đầu phương án paraphrase rất chuẩn, nhưng 2-3 từ cuối cùng lại gài một thông tin sai lệch hoặc một tính từ sai tông.',
+      signal: 'Dấu hiệu: Luôn đọc trọn vẹn cả câu của phương án đến dấu chấm cuối cùng; chỉ cần sai 1 từ là gạch bỏ!',
+    },
+  ];
+
+  return (
+    <View style={{ gap: 14 }}>
+      <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
+        {L(
+          'Đúc kết từ 27 tựa sách kinh điển (Erica Meltzer The Critical Reader, Barron’s & College Board): 3 phương án sai trong SAT Reading không phải ngẫu nhiên, mà được thiết kế theo đúng 6 công thức bẫy tâm lý sau.',
+          'Compiled from classic prep books: wrong answer choices in SAT Reading are engineered according to these 6 psychological trap archetypes.'
+        )}
+      </Text>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+        {traps.map((t) => (
+          <View
+            key={t.num}
+            style={{
+              flexGrow: 1,
+              flexBasis: wide ? 320 : '100%',
+              borderRadius: 18,
+              padding: 16,
+              backgroundColor: '#FFFFFF',
+              borderWidth: 1.5,
+              borderColor: '#FECACA',
+              gap: 8,
+            }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#EF4444', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>{t.num}</Text>
+              </View>
+              <Text className="font-heavy text-body text-ink" style={{ flex: 1 }}>
+                {t.nameVi}
+              </Text>
+            </View>
+            <Text className="font-sans text-caption text-muted" style={{ lineHeight: 19 }}>
+              {t.descVi}
+            </Text>
+            <View style={{ backgroundColor: '#FEF2F2', padding: 8, borderRadius: 8 }}>
+              <Text style={{ fontSize: 11.5, color: '#991B1B', fontWeight: '600' }}>
+                💡 {t.signal}
+              </Text>
+            </View>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+function MathFormulasSection({ wide }: { wide: boolean }) {
+  const { L } = useL();
+  const formulas = [
+    {
+      group: '1. Phương trình đường tròn & Hình quạt',
+      source: 'The College Panda Chapter 24',
+      items: [
+        'Dạng chuẩn: (x - h)² + (y - k)² = r² (tâm (h, k), bán kính r)',
+        'Độ dài cung: s = (θ / 360°) · 2πr',
+        'Diện tích hình quạt: A = (θ / 360°) · πr²',
+      ],
+    },
+    {
+      group: '2. Parabol, Đỉnh & Trục đối xứng',
+      source: '1600.io Orange Book Chapter 8',
+      items: [
+        'Dạng đỉnh: y = a(x - h)² + k (Đỉnh (h, k); a > 0 thì k là min, a < 0 thì k là max)',
+        'Hoành độ đỉnh & Trục đối xứng: x = -b / (2a)',
+        'Khoảng cách giữa 2 nghiệm: |x₁ - x₂| = √Δ / |a|',
+      ],
+    },
+    {
+      group: '3. Biệt thức Delta & Định lý Vi-et',
+      source: 'The College Panda Chapter 12',
+      items: [
+        'Biệt thức Δ = b² - 4ac: Δ > 0 (2 nghiệm), Δ = 0 (1 nghiệm kép), Δ < 0 (vô nghiệm thực)',
+        'Định lý Vi-et: x₁ + x₂ = -b / a',
+        'Định lý Vi-et: x₁ · x₂ = c / a',
+      ],
+    },
+    {
+      group: '4. Lượng giác & Góc phụ nhau',
+      source: 'Barron’s Math Workbook Chapter 18',
+      items: [
+        'Góc phụ nhau (Complementary): sin(x°) = cos(90° - x°)',
+        'Hằng số lượng giác: sin²(x) + cos²(x) = 1',
+        'Tam giác đặc biệt 30-60-90: x, x√3, 2x; Tam giác 45-45-90: x, x, x√2',
+      ],
+    },
+    {
+      group: '5. Hàm mũ & Tăng trưởng liên tục',
+      source: 'Digital SAT Math 800 Secrets',
+      items: [
+        'Tăng/giảm theo kỳ: y = a(1 ± r)ᵗ (a: giá trị ban đầu, r: tỉ lệ tăng giảm)',
+        'Nhân đôi / Chu kỳ bán rã: y = a · 2^(t/d) hoặc y = a · (1/2)^(t/h)',
+      ],
+    },
+    {
+      group: '6. Thống kê, Trung vị & Khoảng tin cậy',
+      source: 'McGraw-Hill SAT Math Practice',
+      items: [
+        'Trung vị (Median) và Tứ phân vị (IQR) không bị ảnh hưởng bởi giá trị ngoại lai (outliers)',
+        'Khoảng tin cậy: Muốn giảm Margin of Error xuống một nửa, cỡ mẫu n phải tăng gấp 4 lần (√n)',
+      ],
+    },
+  ];
+
+  return (
+    <View style={{ gap: 14 }}>
+      <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
+        {L(
+          'Tổng hợp trọn bộ công thức toán xuất hiện trong 100% đề thi Digital SAT, giúp làm chủ 44 câu hỏi phần Math với độ chính xác tuyệt đối.',
+          'Master formula sheet covering all recurring SAT Math concepts from The College Panda and 1600.io.'
+        )}
+      </Text>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+        {formulas.map((f, idx) => (
+          <View
+            key={idx}
+            style={{
+              flexGrow: 1,
+              flexBasis: wide ? 320 : '100%',
+              borderRadius: 18,
+              padding: 16,
+              backgroundColor: '#FFFFFF',
+              borderWidth: 1.5,
+              borderColor: '#BBF7D0',
+              gap: 8,
+            }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Text className="font-heavy text-body" style={{ color: '#166534' }}>
+                {f.group}
+              </Text>
+            </View>
+            <Text style={{ fontSize: 11, color: '#15803D', fontWeight: '700' }}>
+              Nguồn: {f.source}
+            </Text>
+            <View style={{ gap: 4, marginTop: 4 }}>
+              {f.items.map((it, iIdx) => (
+                <View key={iIdx} style={{ backgroundColor: '#F0FDF4', padding: 8, borderRadius: 8 }}>
+                  <Text className="font-mono text-caption" style={{ color: '#14532D', fontWeight: '600' }}>
+                    {it}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+

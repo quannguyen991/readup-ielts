@@ -28,7 +28,7 @@ export const useCuteAppearanceStore = create<CuteAppearanceState>()(
     {
       name: `${STORAGE_PREFIX}cute-appearance`,
       storage: storage<CuteAppearanceState>(),
-      version: 3,
+      version: 4,
       migrate: (persisted) => ({
         ...(persisted as Partial<CuteAppearanceState>),
         effectsEnabled: false,

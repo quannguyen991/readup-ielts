@@ -4,6 +4,7 @@ import { chatWithFallback } from './fallback';
 import { countQuoteMatches, writingReceipt, type VerificationReceipt } from './verification';
 import { withRetry } from './retry';
 import { anchorAnnotations, type RawAnnotation } from '@/services/writing/annotate';
+import { ieltsRound } from '@/services/speaking/grade';
 import type {
   CriterionDetail,
   CriterionKey,
@@ -55,33 +56,45 @@ function evaluationModel(): string {
  * Không có phần này thì model chấm rộng tay một cách hệ thống — nó phản ứng với
  * việc bài "đọc trôi" chứ không với việc bài có overview hay không.
  */
-const RUBRIC = `TIÊU CHUẨN CHẤM (IELTS Writing, rút gọn):
+const RUBRIC = `TIÊU CHUẨN CHẤM — IELTS Writing, theo mô tả band công khai của IELTS (band 5–9 cho từng tiêu chí).
+Chấm từng tiêu chí riêng, mỗi tiêu chí là một số nguyên hoặc x,5. Không tự cộng tổng: app tính band tổng từ bốn tiêu chí.
 
-Task Achievement / Task Response
-- 5: không có overview (Task 1) hoặc không trả lời đúng câu hỏi (Task 2); kể lể máy móc; có thể dưới số từ tối thiểu.
-- 6: có overview nhưng mờ; chọn được ý chính nhưng chi tiết lộn xộn hoặc thiếu số liệu.
-- 7: overview rõ ràng, nêu đúng xu hướng/khác biệt chính; mọi ý chính đều có dữ liệu minh hoạ; không bịa thông tin ngoài đề.
-- 8: chọn lọc rất khéo, làm nổi bật đúng điều quan trọng nhất.
+TASK ACHIEVEMENT (Task 1) / TASK RESPONSE (Task 2)
+- 9: trả lời đầy đủ mọi phần của đề; lập trường rõ và nhất quán; ý được phát triển đầy đủ, liên quan, có ví dụ.
+- 8: trả lời đầy đủ mọi phần; ý được phát triển tốt; lập trường rõ, có thể còn chỗ chưa nhất quán nhỏ.
+- 7: trả lời đủ mọi phần; có lập trường rõ; ý được mở rộng và hỗ trợ, một số ý còn chưa sâu.
+- 6: trả lời mọi phần nhưng có phần chưa đầy đủ; lập trường rõ nhưng có lúc không nhất quán; ý chính liên quan nhưng có ý chưa phát triển hoặc thiếu minh hoạ.
+- 5: chỉ trả lời một phần đề; lập trường chưa rõ; ý ít và chưa phát triển, thiếu hỗ trợ. Task 1: thiếu overview hoặc chỉ mô tả từng số liệu rời.
+- 4: trả lời lạc đề một phần; ý không rõ, lặp hoặc không liên quan.
 
-Coherence and Cohesion
-- 5: sắp xếp lộn xộn, từ nối lặp hoặc sai; không chia đoạn.
-- 6: theo dõi được nhưng từ nối máy móc; đoạn có chỗ chưa cân.
-- 7: ý được NHÓM hợp lý theo đoạn; từ nối linh hoạt, đúng chỗ.
-- 8: mạch chảy tự nhiên, liên kết chủ yếu nhờ cách sắp xếp ý.
+COHERENCE AND COHESION
+- 9: sắp xếp ý tự nhiên, từ nối không gây chú ý; chia đoạn khéo.
+- 8: sắp xếp thông tin và ý logic; quản lý tốt mọi khía cạnh của liên kết; chia đoạn đầy đủ, đúng chỗ.
+- 7: tổ chức thông tin logic, mạch rõ; dùng nhiều phương tiện liên kết đúng, có thể còn dùng thừa hoặc thiếu; mỗi đoạn có một ý trung tâm rõ.
+- 6: sắp xếp thông tin khá mạch lạc; từ nối có hiệu quả nhưng đôi khi máy móc hoặc sai; chia đoạn có thể chưa hợp lý.
+- 5: có tổ chức nhưng chưa logic; từ nối dùng sai, thiếu hoặc lặp quá nhiều; không chia đoạn hoặc chia đoạn không hợp lý.
+- 4: ý rời rạc, khó theo dõi; hầu như không có liên kết.
 
-Lexical Resource
-- 5: vốn từ hạn chế, lặp một chữ nhiều lần; lỗi chính tả gây khó hiểu.
-- 6: đủ dùng nhưng lặp; có lỗi chọn từ.
-- 7: đủ linh hoạt, có từ ít thông dụng dùng đúng; paraphrase được đề.
-- 8: tự nhiên, collocation chuẩn.
+LEXICAL RESOURCE
+- 9: vốn từ rộng, dùng tự nhiên và tinh tế; lỗi nhỏ rất hiếm.
+- 8: vốn từ rộng, linh hoạt; kiểm soát tốt từ ít gặp và collocation; sai sót hiếm.
+- 7: vốn từ đủ rộng; có ý thức về văn phong và collocation; dùng được từ ít gặp nhưng đôi khi sai; có lỗi chính tả hoặc cấu tạo từ nhỏ.
+- 6: vốn từ đủ dùng; thử dùng từ ít gặp nhưng còn sai; có lỗi chọn từ, collocation, hoặc chính tả.
+- 5: vốn từ hạn chế; paraphrase ít; lỗi chính tả hoặc cấu tạo từ đáng kể.
+- 4: vốn từ rất hạn chế; lỗi thường xuyên làm lệch nghĩa.
 
-Grammatical Range and Accuracy
-- 5: chủ yếu câu đơn một khuôn; lỗi thường xuyên.
-- 6: có trộn câu phức; lỗi xuất hiện đều đặn nhưng hiếm khi gây hiểu sai.
-- 7: nhiều dạng câu phức; ĐA SỐ câu không có lỗi.
-- 8: rất hiếm lỗi.
+GRAMMATICAL RANGE AND ACCURACY
+- 9: dùng đa dạng cấu trúc, linh hoạt; hầu hết câu không lỗi; lỗi nhỏ rất hiếm.
+- 8: nhiều cấu trúc, linh hoạt; đa số câu không lỗi; thỉnh thoảng có lỗi nhỏ không hệ thống.
+- 7: nhiều cấu trúc câu phức; ĐA SỐ câu không lỗi; kiểm soát tốt; lỗi ít, không làm khó hiểu.
+- 6: trộn câu đơn và câu phức; có lỗi nhưng hiếm khi làm khó hiểu.
+- 5: cấu trúc hạn chế, chủ yếu câu đơn; lỗi thường xuyên; có thể làm khó hiểu một phần.
+- 4: cấu trúc rất hạn chế; lỗi dày làm việc hiểu bị ảnh hưởng.
 
-Chấm CHẶT. Nếu phân vân giữa hai mức, chọn mức thấp hơn.`;
+QUY ƯỚC CHẤM CHẶT
+- Nếu phân vân giữa hai mức, chọn mức thấp hơn.
+- Bài thiếu từ so với yêu cầu: Task Response không được vượt 6 (app sẽ kẹp lại, bạn vẫn cần chấm đúng nội dung).
+- Đề biểu đồ: số liệu sai so với dữ liệu đề là lỗi Task Achievement nặng.`;
 
 const SCORE_SYSTEM = `Bạn là giám khảo IELTS Writing giàu kinh nghiệm, đang viết phiếu chấm chi tiết cho học viên người Việt.
 
@@ -161,7 +174,7 @@ export async function scoreWriting(input: {
         `${describePrompt(input.prompt)}\n\nBÀI LÀM:\n${input.bodyText}`,
       ),
     );
-    const built = buildResult(score, { annotations: [] }, input.bodyText, model);
+    const built = finalizeBands(buildResult(score, { annotations: [] }, input.bodyText, model), input.prompt.minWords);
     return {
       bandLow: built.bandLow,
       bandHigh: built.bandHigh,
@@ -195,10 +208,30 @@ export async function evaluateWriting(input: {
       ),
     );
 
-    return { ...buildResult(score, annotated, input.bodyText, model), minWords: input.prompt.minWords };
+    return finalizeBands(buildResult(score, annotated, input.bodyText, model), input.prompt.minWords);
   } catch (err) {
     throw toAiError(err, 'Không chấm được bài. Thử lại sau ít phút.');
   }
+}
+
+/**
+ * Band tổng theo đúng cách IELTS: trung bình bốn tiêu chí rồi làm tròn (xem ieltsRound).
+ * Model chỉ chấm từng tiêu chí; con số tổng không để model tự chốt.
+ *
+ * Bài thiếu từ thì Task Response bị kẹp ở 6, rồi tính lại band tổng.
+ */
+export function finalizeBands(result: WritingEvaluationResult, minWords: number): WritingEvaluationResult {
+  const underLength = minWords > 0 && result.wordCount < minWords;
+  const task = underLength ? Math.min(result.taskBand, 6) : result.taskBand;
+  const overall = ieltsRound((task + result.coherenceBand + result.lexicalBand + result.grammarBand) / 4);
+  return {
+    ...result,
+    taskBand: task,
+    criteria: { ...result.criteria, task: { ...result.criteria.task, band: task } },
+    bandLow: overall,
+    bandHigh: overall,
+    minWords,
+  };
 }
 
 /** Mô tả đề cho model, kèm dữ liệu biểu đồ để nó kiểm được số liệu trong bài. */

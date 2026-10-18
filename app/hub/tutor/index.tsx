@@ -1,157 +1,231 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { HubScreen } from '@/components/hub/HubScreen';
-import { BADGE_STYLES, GLASS_CARD, HUB } from '@/components/hub/theme';
-import { CuteBook, CuteCalendar, CuteCloud, CuteGlobe, CutePencil, CutePlane } from '@/components/illust/Cute';
-import {
-  CuteBulb,
-  CuteCalculator,
-  CuteChat,
-  CuteFlame,
-  CuteHeadphones,
-  CuteMagnifier,
-  CuteMic,
-  CuteNotebook,
-  CutePlant,
-  CuteRocket,
-  CuteStar,
-  CuteTrophy,
-} from '@/components/illust/CuteMore';
+import { CosmicBottomTabs } from '@/components/hub/CosmicBottomTabs';
+import { CosmicHeader } from '@/components/hub/CosmicHeader';
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
-import { TUTORS, type Tutor, type TutorTag } from '@/services/hub/tutors';
-import { tutorCopy } from '@/services/hub/tutors-en';
 
-type Art = (p: { size?: number }) => React.ReactElement;
-
-/** Minh hoạ cho từng gia sư: lấy từ bộ Cute, không dùng emoji. */
-const TUTOR_ART: Record<string, Art> = {
-  grammar: CuteBook,
-  'speech-analysis': CuteMic,
-  vocab: CuteNotebook,
-  pronounce: CuteHeadphones,
-  meeting: CuteCalendar,
-  interview: CuteChat,
-  'public-speaking': CuteStar,
-  presentation: CuteBulb,
-  sales: CuteRocket,
-  dating: CutePlant,
-  travel: CutePlane,
-  negotiation: CuteCalculator,
-  conflict: CuteCloud,
-  'leader-comms': CuteTrophy,
-  storytelling: CutePencil,
-  leadership: CuteFlame,
-  'ielts-examiner': CuteMagnifier,
-  profile: CuteGlobe,
-  phone: CuteChat,
-  diary: CuteNotebook,
+type TutorItem = {
+  id: string;
+  name: string;
+  desc: string;
+  icon: string;
+  iconBg: string;
+  tag?: 'MỚI' | 'BETA' | 'BAND 8.5' | 'HOT';
+  route: string;
 };
 
-/** Gia sư đã có màn riêng trong app: bấm vào mở đúng màn đó, không đi qua phòng hội thoại AI chung. */
-const OWN_SCREEN: Record<string, string> = {
-  grammar: '/hub/tutor/grammar',
-  'speech-analysis': '/hub/analyze',
-  pronounce: '/hub/learn',
-  meeting: '/hub/meeting',
-};
+const TUTOR_LIST: TutorItem[] = [
+  {
+    id: 'grammar',
+    name: 'Gia sư ngữ pháp',
+    desc: 'Cải thiện kỹ năng ngữ pháp của bạn với các bài tập cá nhân hoá.',
+    icon: '📚',
+    iconBg: 'linear-gradient(135deg, #FF6B8B, #FF8E53)',
+    route: '/hub/tutor/grammar',
+  },
+  {
+    id: 'speech-analysis',
+    name: 'Phân tích giọng nói',
+    tag: 'MỚI',
+    desc: 'Ghi âm và khám phá giọng nói của bạn nghe thế nào.',
+    icon: '🎙️',
+    iconBg: 'linear-gradient(135deg, #4E65FF, #92EFFD)',
+    route: '/hub/analyze',
+  },
+  {
+    id: 'vocab',
+    name: 'Gia sư từ vựng',
+    desc: 'Mở rộng vốn từ vựng tiếng Anh của bạn với bài luyện tập cá nhân hoá.',
+    icon: '🗂️',
+    iconBg: 'linear-gradient(135deg, #F39034, #FFD269)',
+    route: '/hub/tutor/vocab',
+  },
+  {
+    id: 'pronounce',
+    name: 'Gia sư phát âm',
+    desc: 'Học cách phát âm tiếng Anh rõ ràng',
+    icon: '🗣️',
+    iconBg: 'linear-gradient(135deg, #36D1DC, #5B86E5)',
+    route: '/hub/learn',
+  },
+  {
+    id: 'meeting',
+    name: 'Gia sư họp',
+    tag: 'MỚI',
+    desc: 'Luyện tập họp công việc',
+    icon: '📅',
+    iconBg: 'linear-gradient(135deg, #FF416C, #FF4B2B)',
+    route: '/hub/meeting',
+  },
+  {
+    id: 'interview',
+    name: 'Gia sư phỏng vấn',
+    desc: 'Luyện tập các cuộc trò chuyện phỏng vấn trực tiếp với người phỏng vấn AI',
+    icon: '👥',
+    iconBg: 'linear-gradient(135deg, #654ea3, #eaafc8)',
+    route: '/hub/tutor/interview',
+  },
+  {
+    id: 'public-speaking',
+    name: 'Gia sư nói trước đám đông',
+    desc: 'Thuyết trình tự tin trước khán giả AI trực tiếp',
+    icon: '🎤',
+    iconBg: 'linear-gradient(135deg, #F857A6, #FF5858)',
+    route: '/hub/tutor/public-speaking',
+  },
+  {
+    id: 'presentation',
+    name: 'Gia sư thuyết trình',
+    tag: 'BETA',
+    desc: 'Tải lên bộ slide của bạn và diễn tập từ đầu đến cuối',
+    icon: '📊',
+    iconBg: 'linear-gradient(135deg, #00B4DB, #0083B0)',
+    route: '/hub/course/presentation',
+  },
+  {
+    id: 'sales',
+    name: 'Gia sư bán hàng',
+    tag: 'BETA',
+    desc: 'Luyện tập cuộc gọi bán hàng trực tiếp và nhận huấn luyện tức thì',
+    icon: '📈',
+    iconBg: 'linear-gradient(135deg, #11998E, #38EF7D)',
+    route: '/hub/tutor/sales',
+  },
+  {
+    id: 'dating',
+    name: 'Gia sư hẹn hò',
+    desc: 'Luyện tập buổi hẹn hò trực tiếp để được huấn luyện',
+    icon: '💌',
+    iconBg: 'linear-gradient(135deg, #FC466B, #3F5EFB)',
+    route: '/hub/tutor/dating',
+  },
+  {
+    id: 'travel',
+    name: 'Gia sư du lịch',
+    desc: 'Luyện tiếng Anh cho chuyến đi sắp tới của bạn',
+    icon: '✈️',
+    iconBg: 'linear-gradient(135deg, #2193B0, #6DD5ED)',
+    route: '/hub/tutor/travel',
+  },
+  {
+    id: 'negotiation',
+    name: 'Huấn luyện viên Đàm phán',
+    tag: 'MỚI',
+    desc: 'Luyện tập những cuộc đàm phán thực tế nơi công sở — lời mời làm việc, tăng lương, khách hàng khó tính, hạn chót. AI đóng vai đối phương rồi huấn luyện bạn sau đó.',
+    icon: '🤝',
+    iconBg: 'linear-gradient(135deg, #F2994A, #F2C94C)',
+    route: '/hub/tutor/negotiation',
+  },
+  {
+    id: 'ielts-speaking',
+    name: 'Luyện thi IELTS Speaking & Forecast Quý 3/2026',
+    tag: 'BAND 8.5',
+    desc: 'Ngân hàng đề thi thật, Sample 8.0+, Speaking Roulette và phòng thi mô phỏng giám khảo thực tế.',
+    icon: '🏆',
+    iconBg: 'linear-gradient(135deg, #D946EF, #8B5CF6)',
+    route: '/speaking',
+  },
+  {
+    id: 'dubbing',
+    name: 'Lồng tiếng video BBC · TED-Ed',
+    tag: 'HOT',
+    desc: 'Phòng thu lồng tiếng theo từng cảnh, ghép giọng bạn vào video và AI phân tích độ nhấn, phát âm IELTS.',
+    icon: '🎬',
+    iconBg: 'linear-gradient(135deg, #0EA5E9, #3B82F6)',
+    route: '/speaking/long-tieng',
+  },
+];
 
-/**
- * Đích của một dòng: màn riêng nếu có; gia sư `soon` (chưa sẵn sàng) mở màn "đang chuẩn bị";
- * còn lại vào phòng hội thoại AI dùng vai của gia sư đó.
- */
-function tutorRoute(t: Tutor): string {
-  if (OWN_SCREEN[t.id]) return OWN_SCREEN[t.id]!;
-  if (t.status === 'soon') return `/hub/tutor/coming/${t.id}`;
-  return `/hub/tutor/${t.id}`;
-}
-
-function tagPill(tag: TutorTag): { text: string; style: { bg: string; text: string; border: string } } {
-  if (tag === 'MỚI' || tag === 'NEW') return { text: 'NEW', style: BADGE_STYLES.NEW };
-  if (tag === 'BETA') return { text: 'BETA', style: BADGE_STYLES.BETA };
-  if (tag === 'PREMIUM') return { text: 'PREMIUM', style: BADGE_STYLES.PREMIUM };
-  return { text: 'BAND 9', style: BADGE_STYLES.PREMIUM };
-}
-
-function TagPill({ tag }: { tag: TutorTag }) {
-  const p = tagPill(tag);
+function TagBadge({ tag }: { tag: TutorItem['tag'] }) {
+  if (!tag) return null;
+  if (tag === 'MỚI') {
+    return (
+      <View className="rounded-full bg-[#1E3A8A] px-2 py-0.5">
+        <Text className="font-heavy text-[10px] text-[#60A5FA] uppercase tracking-wide">MỚI</Text>
+      </View>
+    );
+  }
+  if (tag === 'BETA') {
+    return (
+      <View className="rounded-full bg-[#581C87] px-2 py-0.5">
+        <Text className="font-heavy text-[10px] text-[#C084FC] uppercase tracking-wide">BETA</Text>
+      </View>
+    );
+  }
+  if (tag === 'BAND 8.5') {
+    return (
+      <View className="rounded-full bg-[#831843] px-2 py-0.5">
+        <Text className="font-heavy text-[10px] text-[#F472B6] uppercase tracking-wide">BAND 8.5</Text>
+      </View>
+    );
+  }
   return (
-    <View
-      style={{
-        paddingHorizontal: 7,
-        paddingVertical: 2,
-        borderRadius: 999,
-        backgroundColor: p.style.bg,
-        borderWidth: 1,
-        borderColor: p.style.border,
-      }}
-    >
-      <Text style={{ color: p.style.text, fontSize: 10, fontWeight: '800', letterSpacing: 0.3 }}>{p.text}</Text>
+    <View className="rounded-full bg-[#7C2D12] px-2 py-0.5">
+      <Text className="font-heavy text-[10px] text-[#FB923C] uppercase tracking-wide">HOT</Text>
     </View>
   );
 }
 
-/** Danh sách gia sư kiểu ELSA: minh hoạ, tên, badge, mô tả ngắn và mũi tên. */
 export default function TutorList() {
   const { L } = useL();
-  return (
-    <HubScreen
-      title={L('Gia sư', 'Tutors')}
-      subtitle={L(`${TUTORS.length} gia sư AI theo mục tiêu của bạn`, `${TUTORS.length} AI tutors for your goals`)}
-    >
-      <View style={{ gap: 10 }}>
-        {TUTORS.map((t) => (
-          <TutorRow key={t.id} t={t} />
-        ))}
-      </View>
-
-      <View style={{ paddingVertical: 12, alignItems: 'center' }}>
-        <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>
-          {L('Sẽ sớm có thêm gia sư mới.', 'More tutors are coming soon.')}
-        </Text>
-      </View>
-    </HubScreen>
-  );
-}
-
-function TutorRow({ t }: { t: Tutor }) {
-  const { en } = useL();
-  const copy = tutorCopy(t, en);
-  const Art = TUTOR_ART[t.id] ?? CuteStar;
 
   return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={copy.name}
-      onPress={() => router.push(tutorRoute(t) as never)}
-      style={[GLASS_CARD, { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14 }]}
-    >
-      <View
-        style={{
-          width: 60,
-          height: 60,
-          borderRadius: 18,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: HUB.goldSoft,
-        }}
-      >
-        <Art size={44} />
-      </View>
+    <View className="flex-1 bg-[#0B0D26]">
+      {/* Khung nội dung chính cuộn dọc */}
+      <ScrollView className="flex-1 px-4 pt-3 pb-8" contentContainerStyle={{ paddingBottom: 100 }}>
+        <View className="mx-auto w-full max-w-[700px]">
+          {/* Header với flame, gem, trophy khớp ảnh 1 */}
+          <CosmicHeader title={L('Gia sư', 'AI Tutors')} />
 
-      <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>{copy.name}</Text>
-          {t.tag ? <TagPill tag={t.tag} /> : null}
+          {/* Danh sách 12 gia sư AI + 2 kết nối IELTS Speaking */}
+          <View className="gap-3">
+            {TUTOR_LIST.map((tutor) => (
+              <Pressable
+                key={tutor.id}
+                accessibilityRole="button"
+                accessibilityLabel={tutor.name}
+                onPress={() => router.push(tutor.route as never)}
+                className="flex-row items-center gap-3.5 rounded-2xl border border-[#232552] bg-[#16173B] p-4 active:scale-[0.99] active:bg-[#1E204D]"
+                style={{
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
+                }}
+              >
+                {/* Icon minh hoạ */}
+                <View
+                  className="h-12 w-12 items-center justify-center rounded-2xl shadow-md"
+                  style={{
+                    backgroundImage: tutor.iconBg,
+                  }}
+                >
+                  <Text className="text-[24px]">{tutor.icon}</Text>
+                </View>
+
+                {/* Tiêu đề, tag và mô tả */}
+                <View className="flex-1 pr-1">
+                  <View className="flex-row items-center gap-2">
+                    <Text className="font-heavy text-[16px] tracking-wide text-white" numberOfLines={1}>
+                      {tutor.name}
+                    </Text>
+                    <TagBadge tag={tutor.tag} />
+                  </View>
+                  <Text className="mt-1 font-sans text-[12.5px] leading-[18px] text-[#94A3B8]" numberOfLines={3}>
+                    {tutor.desc}
+                  </Text>
+                </View>
+
+                {/* Mũi tên dẫn hướng */}
+                <Icon name="chevron-right" size={18} color="#64748B" />
+              </Pressable>
+            ))}
+          </View>
         </View>
-        <Text numberOfLines={2} style={{ color: HUB.muted, fontSize: 12, lineHeight: 17 }}>
-          {copy.desc}
-        </Text>
-      </View>
+      </ScrollView>
 
-      <Icon name="chevron-right" size={18} color={HUB.muted} />
-    </Pressable>
+      {/* Thanh tab dưới cùng khớp ảnh 1 */}
+      <CosmicBottomTabs activeTab="tutor" />
+    </View>
   );
 }

@@ -14,7 +14,7 @@
  * ở đây; nếu nhóm mới thì thêm hàm vẽ ở `sfx-ui.ts` (TypeScript báo nếu thiếu).
  */
 
-export type SoundKind = 'correct' | 'wrong' | 'flip' | 'transition' | 'click';
+export type SoundKind = 'correct' | 'wrong' | 'flip' | 'transition' | 'click' | 'tab';
 
 /** Bốn nhóm âm thanh của app. `correct` và `wrong` cùng một nhóm "đúng / sai". */
 export const SOUND_FAMILY: Record<SoundKind, 'đúng-sai' | 'lật' | 'chuyển' | 'click'> = {
@@ -23,6 +23,7 @@ export const SOUND_FAMILY: Record<SoundKind, 'đúng-sai' | 'lật' | 'chuyển'
   flip: 'lật',
   transition: 'chuyển',
   click: 'click',
+  tab: 'click',
 };
 
 export const SFX_CATALOG = {
@@ -33,7 +34,7 @@ export const SFX_CATALOG = {
   next: { debounce: 150, group: 'neutral', sound: 'click' },
   micStart: { debounce: 300, group: 'neutral', sound: 'click' },
   micStop: { debounce: 300, group: 'neutral', sound: 'click' },
-  nav: { debounce: 400, group: 'neutral', sound: 'transition' },
+  nav: { debounce: 400, group: 'neutral', sound: 'tab' },
   modalOpen: { debounce: 250, group: 'neutral', sound: 'transition' },
   modalClose: { debounce: 250, group: 'neutral', sound: 'transition' },
   flip: { debounce: 150, group: 'neutral', sound: 'flip' },

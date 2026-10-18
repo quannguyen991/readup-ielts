@@ -303,8 +303,64 @@ export function speechCues(cues: TranscriptCue[]): TranscriptCue[] {
   return cues.filter((c) => !CREDIT_LINE.test(c.text));
 }
 
+/**
+ * Độ dài tối đa của MỘT câu chép chính tả, tính bằng từ. Câu dài hơn thì tách ở dấu phẩy
+ * (hoặc chấm phẩy, hai chấm, gạch ngang) gần giữa nhất, để người học không phải gõ một mạch quá dài.
+ */
+export const MAX_DICTATION_WORDS = 18;
+
+/**
+ * Tách một mẩu thành các CÂU RIÊNG, mỗi câu một đoạn chép chính tả.
+ *
+ * Gộp theo dấu kết câu vẫn có thể dồn hai ba câu vào một mẩu (phụ đề thường xuống dòng
+ * giữa câu, và một dòng có khi chứa cả câu trước lẫn câu sau). Mốc thời gian được rải
+ * theo độ dài ký tự của từng câu, đủ để tua đúng đoạn; không có mốc chính xác từng câu.
+ */
+export function splitIntoSentences(s: TranscriptSentence, maxWords = MAX_DICTATION_WORDS): TranscriptSentence[] {
+  const pieces = s.text.match(/[^.!?]+[.!?]+["')\]]?|[^.!?]+$/g) ?? [s.text];
+  const parts: string[] = [];
+  for (const raw of pieces) {
+    const piece = raw.trim();
+    if (piece) parts.push(...breakLongSentence(piece, maxWords));
+  }
+  if (parts.length <= 1) return [s];
+
+  const span = s.end - s.start;
+  const total = parts.reduce((n, p) => n + p.length, 0) || 1;
+  let acc = 0;
+  return parts.map((text) => {
+    const from = acc / total;
+    acc += text.length;
+    const to = acc / total;
+    return { start: s.start + span * from, end: s.start + span * to, text };
+  });
+}
+
+/** Cắt một câu quá dài ở dấu ngắt gần giữa nhất; cả hai vế đều phải đủ ý (≥ 4 từ). */
+function breakLongSentence(sentence: string, maxWords: number): string[] {
+  if (sentence.split(/\s+/).length <= maxWords) return [sentence];
+
+  const mid = sentence.length / 2;
+  let best: { at: number; gap: number } | null = null;
+  // Dấu ngắt phải đứng trước khoảng trắng, nên không cắt giữa một từ (anti-government có gạch nối thì bỏ qua).
+  for (const m of sentence.matchAll(/[,;:](?=\s)|\s[–—-](?=\s)/g)) {
+    const at = (m.index ?? 0) + m[0].length;
+    const left = sentence.slice(0, at).trim();
+    const right = sentence.slice(at).trim();
+    if (left.split(/\s+/).length < 4 || right.split(/\s+/).length < 4) continue;
+    const gap = Math.abs(at - mid);
+    if (!best || gap < best.gap) best = { at, gap };
+  }
+  if (!best) return [sentence];
+
+  const left = sentence.slice(0, best.at).trim();
+  const right = sentence.slice(best.at).trim();
+  return [...breakLongSentence(left, maxWords), ...breakLongSentence(right, maxWords)];
+}
+
 export function usableSentences(sentences: TranscriptSentence[], minWords = 4): TranscriptSentence[] {
   return sentences
     .map((s) => ({ ...s, text: s.text.replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').trim() }))
+    .flatMap((s) => splitIntoSentences(s))
     .filter((s) => /[a-zA-Z]/.test(s.text) && s.text.split(/\s+/).length >= minWords);
 }

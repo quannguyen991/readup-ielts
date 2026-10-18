@@ -1,395 +1,568 @@
 import React, { useMemo, useState } from 'react';
-import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { router, useLocalSearchParams } from 'expo-router';
+import { Image, Modal, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
-import { Icon } from '@/components/ui/Icon';
-import { SealIcon } from '@/components/illust/HeroArt';
-import { CatSticker } from '@/components/mascot/CatSticker';
-import { Label, Sticker } from '@/components/illust/Sticker';
-import { CuteChat, CuteMic, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
-import { bandTone, fmtBand, fmtDate, MODE_LABEL, useMicSupport } from '@/components/speaking/SpeakingKit';
-import { VoiceOrb } from '@/components/speaking/VoiceOrb';
-import { CUE_CARDS, PART1_TOPICS, type SessionMode } from '@/services/speaking/bank';
-import { CRITERIA, type CriterionKey } from '@/services/speaking/grade';
+import { Badge, Button, Card, Icon } from '@/components/ui';
+import { SPEAKING_FORECAST, type SpeakingSample } from '@/data/speaking-forecast';
+import { CUE_CARDS, PART1_TOPICS } from '@/services/speaking/bank';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
-import { bi, useL, type Bi } from '@/i18n/useL';
+import { useStreak } from '@/store/useStudyStore';
+import { useL } from '@/i18n/useL';
 
-type LobbyMode = Exclude<SessionMode, 'q'>;
+const SHADOW = '0 8px 24px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04)';
 
-const MODES: { key: LobbyMode; title: string; hint: Bi }[] = [
-  { key: 'full', title: 'Full test', hint: { vi: '11–14 phút · Part 1 → 2 → 3', en: '11–14 min · Part 1 → 2 → 3' } },
-  { key: 'p1', title: 'Part 1', hint: { vi: '1–2 câu cùng chủ đề · AI góp ý · nói lại', en: '1–2 questions per topic · AI feedback · try again' } },
-  { key: 'p2', title: 'Part 2', hint: { vi: '1 phút chuẩn bị · nói 2 phút', en: '1 min to prepare · speak for 2 min' } },
-  { key: 'p3', title: 'Part 3', hint: { vi: '4–5 phút · thảo luận mở rộng', en: '4–5 min · extended discussion' } },
-];
-
-const CRIT_ICON: Record<CriterionKey, { icon: React.ComponentProps<typeof SealIcon>['name']; color: string; short: Bi }> = {
-  fc: { icon: 'chat', color: '#A8843F', short: { vi: 'Trôi chảy', en: 'Fluency' } },
-  lr: { icon: 'book', color: '#22A06B', short: { vi: 'Vốn từ', en: 'Vocabulary' } },
-  gr: { icon: 'pencil', color: '#F0703F', short: { vi: 'Ngữ pháp', en: 'Grammar' } },
-  pr: { icon: 'volume', color: '#B07A3A', short: { vi: 'Phát âm ~', en: 'Pronunciation ~' } },
-};
-
-const pick = <T,>(list: T[]): T => list[Math.floor(Math.random() * list.length)]!;
-
-/**
- * SẢNH PHÒNG LUYỆN NÓI — dạng bento, ít chữ (người dùng 01/10/2026: "nhiều chữ
- * và rối, sửa đi", kèm ảnh tham khảo khối màu lớn, số to, sticker). Khối chính
- * là GIÁM KHẢO AI (quả cầu giọng nói): chọn phần thi rồi chạm để vào phòng.
- * Chủ đề mặc định ngẫu nhiên; ai muốn chọn thì mở danh sách trong khối Chủ đề.
- */
 export default function SpeakingLobby() {
-  const { L, locale, en } = useL();
-  const attempts = useSpeakingStore((s) => s.attempts);
-  const mic = useMicSupport();
+  const { L } = useL();
   const { width } = useWindowDimensions();
-  const wide = width >= 1000;
+  const wide = width >= 960;
 
-  // `?mode=p1` — đường dẫn từ bài giáo viên giao (`services/classes/assignments.ts`).
-  // `&p1=` / `&cue=` — đường dẫn từ Lộ trình học (`app/lo-trinh-hoc.tsx`) mở đúng chủ đề của bài.
-  const { mode: modeParam, p1: p1Param, cue: cueParam } = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string }>();
-  const [mode, setMode] = useState<LobbyMode>(() => MODES.find((m) => m.key === modeParam)?.key ?? 'p1');
-  const [p1Topic, setP1Topic] = useState(() => PART1_TOPICS.find((t) => t.id === p1Param)?.id ?? 'p1-weather');
-  const [cue, setCue] = useState(() => CUE_CARDS.find((c) => c.id === cueParam)?.id ?? pick(CUE_CARDS).id);
-  const [exam, setExam] = useState(modeParam === 'full');
-  const [questionCount, setQuestionCount] = useState<1 | 2>(2);
-  const [typedChoice, setTypedChoice] = useState(false);
-  const [choosing, setChoosing] = useState(true);
-  const typed = mic === false || typedChoice;
+  const attempts = useSpeakingStore((s) => s.attempts);
+  const { current: streak } = useStreak();
 
-  const graded = useMemo(() => attempts.filter((a) => !a.typed && a.grade?.overall != null), [attempts]);
-  const lastGrade = graded[0]?.grade ?? null;
-  const modeInfo = MODES.find((m) => m.key === mode)!;
-  const p1Found = PART1_TOPICS.find((t) => t.id === p1Topic);
-  const cueFound = CUE_CARDS.find((c) => c.id === cue);
-  const p1Title = (en ? p1Found?.titleEn : `${p1Found?.titleEn} · ${p1Found?.titleVi}`) ?? '';
-  const cueTitle = (en ? cueFound?.card.text : cueFound?.titleVi) ?? '';
+  // Thống kê
+  const weekSessions = useMemo(() => {
+    const oneWeekAgo = Date.now() - 7 * 86400000;
+    return attempts.filter((a) => new Date(a.startedAt).getTime() >= oneWeekAgo).length;
+  }, [attempts]);
 
-  const start = () => {
-    const q = new URLSearchParams({ mode, p1: p1Topic, cue, exam: exam ? '1' : '0', typed: typed ? '1' : '0' });
-    if (mode === 'p1' && !exam) { q.set('count', String(questionCount)); q.set('coach', '1'); }
-    router.push(`/speaking/room?${q.toString()}` as never);
+  const avgBand = useMemo(() => {
+    const graded = attempts.filter((a) => !a.typed && a.grade?.overall != null).slice(0, 7);
+    if (!graded.length) return '—';
+    const sum = graded.reduce((acc, a) => acc + (a.grade!.overall as number), 0);
+    return (sum / graded.length).toFixed(1);
+  }, [attempts]);
+
+  // Modal Forecast & Sample 8.0
+  const [forecastModalOpen, setForecastModalOpen] = useState(false);
+  const [selectedQuarter, setSelectedQuarter] = useState<'Q3-2026' | 'Q2-2026'>('Q3-2026');
+  const [selectedPart, setSelectedPart] = useState<'all' | 1 | 2 | 3>('all');
+  const [activeSample, setActiveSample] = useState<SpeakingSample | null>(null);
+
+  // Modal Speaking Roulette
+  const [rouletteModalOpen, setRouletteModalOpen] = useState(false);
+  const [drawnCard, setDrawnCard] = useState<any>(null);
+
+  const filteredForecast = useMemo(() => {
+    return SPEAKING_FORECAST.filter((item) => {
+      if (item.quarter !== selectedQuarter) return false;
+      if (selectedPart !== 'all' && item.part !== selectedPart) return false;
+      return true;
+    });
+  }, [selectedQuarter, selectedPart]);
+
+  const spinRoulette = () => {
+    const pool = [...PART1_TOPICS.map((t) => ({ type: 'Part 1', title: t.titleEn, vi: t.titleVi, raw: t })), ...CUE_CARDS.map((c) => ({ type: 'Part 2 & 3', title: c.card.text, vi: c.titleVi, raw: c }))];
+    const picked = pool[Math.floor(Math.random() * pool.length)];
+    setDrawnCard(picked);
+    setRouletteModalOpen(true);
   };
-  const shuffle = () => {
-    setP1Topic(pick(PART1_TOPICS).id);
-    setCue(pick(CUE_CARDS).id);
-  };
-
-  const row = { flexDirection: wide ? 'row' : 'column', gap: 16, marginTop: 16 } as const;
 
   return (
     <Screen>
-      <Appear>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
-          <View style={{ flex: 1, minWidth: 0 }}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: '#475569' }}>
-              IELTS SPEAKING
-            </Text>
-            <Text className="font-heavy" style={{ fontSize: wide ? 40 : 30, color: '#0F172A' }}>
-              {L('Phòng luyện nói.', 'Speaking room.')}
+      {/* -------------------- Top Stat Bar -------------------- */}
+      <View className="mb-6 flex-row items-center justify-center gap-3">
+        <View className="items-center rounded-2xl border-2 border-slate-900 bg-white px-7 py-3 shadow-sm">
+          <Text className="font-heavy text-sectionTitle text-slate-950">{weekSessions}</Text>
+          <Text className="font-strong tracking-wide text-slate-500 text-[11px] uppercase">
+            {L('SESSIONS (TUẦN)', 'SESSIONS (WEEK)')}
+          </Text>
+        </View>
+
+        <View className="items-center rounded-2xl border-2 border-slate-900 bg-white px-7 py-3 shadow-sm">
+          <Text className="font-heavy text-sectionTitle text-slate-950">{avgBand}</Text>
+          <Text className="font-strong tracking-wide text-slate-500 text-[11px] uppercase">
+            {L('AVG BAND (7 LẦN)', 'AVG BAND (LAST 7)')}
+          </Text>
+        </View>
+
+        <View className="items-center rounded-2xl border-2 border-slate-900 bg-white px-7 py-3 shadow-sm">
+          <Text className="font-heavy text-sectionTitle text-slate-950">{streak}</Text>
+          <Text className="font-strong tracking-wide text-slate-500 text-[11px] uppercase">
+            {L('NGÀY LIÊN TIẾP', 'DAY STREAK')}
+          </Text>
+        </View>
+      </View>
+
+      {/* -------------------- Bento Grid (Matching Screenshots) -------------------- */}
+      <View style={{ flexDirection: wide ? 'row' : 'column', gap: 18 }}>
+        {/* THẺ TÍM TRÁI (Luyện tập bộ đề thi thật quá khứ) */}
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push('/speaking/room' as never)}
+          style={{
+            flex: wide ? 1 : undefined,
+            minHeight: wide ? 460 : 340,
+            borderRadius: 26,
+            padding: 24,
+            backgroundColor: '#DCD4FB',
+            justifyContent: 'space-between',
+            boxShadow: SHADOW,
+          }}
+        >
+          <View>
+            <Text className="font-heavy text-sectionTitle text-[#2B1B67]" style={{ lineHeight: 32 }}>
+              {L('Luyện tập với các bộ đề được sưu tập từ các bộ câu hỏi thi thật ở quá khứ', 'Practise with authentic questions collected from real past IELTS exams')}
             </Text>
           </View>
-          {!wide ? <CatSticker pose="peace" size={66} /> : null}
-          {width >= HEADER_ART_MIN ? (
-            <Motion kind="float">
-              <Sticker tilt={8}>
-                <CuteMic size={72} />
-              </Sticker>
-            </Motion>
-          ) : null}
-        </View>
-      </Appear>
 
-      {/* ------------------------------------------------ hàng 1: giám khảo + band */}
-      <View style={row}>
-        <Appear style={{ flex: wide ? 2 : undefined }}>
-          <View style={[CARD, { backgroundColor: '#0B1A2E', alignItems: 'center' }]}>
-            <Sparkles count={6} />
-            <View style={{ alignSelf: 'stretch', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-                {L(exam ? 'Giám khảo AI.' : 'Luyện cùng Kore.', exam ? 'AI examiner.' : 'Practise with Kore.')}
+          {/* Minh hoạ sách */}
+          <View className="items-center justify-center py-4">
+            <View className="relative h-44 w-36 rotate-[-6deg] items-center justify-center rounded-xl bg-[#1C2C5E] p-4 shadow-xl">
+              <Text className="text-center font-strong text-[11px] uppercase tracking-wider text-amber-300">IELTS</Text>
+              <Text className="mt-1 text-center font-heavy text-cardTitle text-white">SPEAKING</Text>
+              <Text className="mt-2 text-center font-sans text-[10px] text-slate-300">REAL EXAM QUESTIONS</Text>
+            </View>
+          </View>
+
+          {/* Dải nút tròn danh mục */}
+          <View className="flex-row items-center justify-between rounded-pill bg-white/80 p-2 shadow-sm">
+            {['Reading', 'Writing', 'Listening', 'Speaking', 'Tests', 'History'].map((tab, idx) => (
+              <View key={idx} className="items-center px-1.5">
+                <Text className="font-strong text-[10px] text-[#2B1B67]">{tab}</Text>
+              </View>
+            ))}
+          </View>
+        </Pressable>
+
+        {/* CỘT PHẢI: Lưới các thẻ tính năng */}
+        <View style={{ flex: wide ? 2 : undefined, gap: 16 }}>
+          {/* THẺ HỒNG: FORECAST SPEAKING */}
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => {
+              setForecastModalOpen(true);
+            }}
+            style={{
+              borderRadius: 26,
+              padding: 24,
+              backgroundColor: '#F8B5C2',
+              backgroundImage: 'linear-gradient(135deg, #F8B5C2 0%, #F59FA8 100%)',
+              boxShadow: SHADOW,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <View style={{ flex: 1, paddingRight: 16 }}>
+              <Text className="font-heavy text-sectionTitle text-[#4A1121]">
+                FORECAST SPEAKING
               </Text>
-              <Label text={L('Nói cùng AI 🎙️', 'Talk with AI 🎙️')} color="#FACC15" ink="#1A1405" tilt={4} size={12} />
+              <Text className="mt-1 font-strong text-body text-[#6A1B2D]">
+                {L('(Quý 3 - Tháng 9–12, 2026)', '(Quarter 3 - Sep–Dec 2026)')}
+              </Text>
+              <Text className="mt-2 font-sans text-label text-[#4A1121]/90" style={{ lineHeight: 20 }}>
+                {L('Dự đoán và cập nhật bộ đề Speaking mới nhất — kèm bộ Quý 2 để ôn lại.', 'Latest predicted Speaking topics with model 8.0 answers, plus Q2 review.')}
+              </Text>
             </View>
-            <View style={{ marginTop: 10 }}>
-              <VoiceOrb
-                state="idle"
-                size={wide ? 190 : 160}
-                onPress={mic === null ? undefined : start}
-                label={L(exam ? 'Chạm để vào phòng thi' : 'Bắt đầu luyện chủ đề đã chọn', exam ? 'Tap to enter the exam room' : 'Practise the selected topic')}
-              />
-            </View>
-            <Text className="font-strong" style={{ marginTop: 10, fontSize: 14, color: 'rgba(255,255,255,0.75)' }}>
-              {mic === false
-                ? L('Trình duyệt này không nghe được — dùng Chrome/Edge, hoặc gõ phím', "This browser can't listen — use Chrome/Edge, or type instead")
-                : L('Chạm vào giám khảo để bắt đầu', 'Tap the examiner to start')}
-            </Text>
 
-            {/* chọn phần thi */}
-            <View accessibilityRole="radiogroup" style={{ marginTop: 16, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8 }}>
-              {MODES.map((m) => {
-                const on = m.key === mode;
-                return (
+            {/* Minh hoạ tờ forecast lịch */}
+            <View className="h-32 w-28 items-center justify-center rounded-2xl bg-white p-3 shadow-md">
+              <Text className="font-heavy text-[11px] uppercase text-[#6A1B2D]">FORECAST</Text>
+              <Text className="font-sans text-[9px] text-slate-500">Q3 2026</Text>
+              <View className="mt-2 h-1.5 w-full rounded-full bg-pink-100">
+                <View className="h-full w-3/4 rounded-full bg-pink-500" />
+              </View>
+              <Text className="mt-3 rounded-pill bg-slate-900 px-2 py-1 font-strong text-[9px] text-white">
+                {L('Mở bộ đề', 'Explore')}
+              </Text>
+            </View>
+          </Pressable>
+
+          {/* HÀNG 2 THẺ: SPEAKING ROULETTE & SHADOWING */}
+          <View style={{ flexDirection: wide ? 'row' : 'column', gap: 16 }}>
+            {/* THẺ XANH: SPEAKING ROULETTE */}
+            <Pressable
+              accessibilityRole="button"
+              onPress={spinRoulette}
+              style={{
+                flex: 1,
+                borderRadius: 24,
+                padding: 22,
+                backgroundColor: '#1E4D40',
+                boxShadow: SHADOW,
+                minHeight: 180,
+                justifyContent: 'space-between',
+              }}
+            >
+              <View>
+                <Text className="font-heavy text-cardTitle text-white">SPEAKING ROULETTE</Text>
+                <Text className="mt-1 font-sans text-label text-emerald-100">
+                  {L('Rút thẻ ngẫu nhiên, luyện tập P1/P2/P3 như thi thật.', 'Draw random cards to simulate real exam pressure.')}
+                </Text>
+              </View>
+
+              <View className="flex-row items-center justify-end gap-2 pt-3">
+                <View className="h-14 w-11 rotate-[-8deg] items-center justify-center rounded-lg bg-amber-400 shadow-md">
+                  <Text className="font-heavy text-slate-900 text-body">?</Text>
+                </View>
+                <View className="h-16 w-12 rotate-[6deg] items-center justify-center rounded-lg bg-amber-300 shadow-lg">
+                  <Text className="font-heavy text-slate-950 text-cardTitle">★</Text>
+                </View>
+              </View>
+            </Pressable>
+
+            {/* THẺ VÀNG: SHADOWING MODE */}
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => router.push('/shadow' as never)}
+              style={{
+                flex: 1,
+                borderRadius: 24,
+                padding: 22,
+                backgroundColor: '#F5D061',
+                boxShadow: SHADOW,
+                minHeight: 180,
+                justifyContent: 'space-between',
+              }}
+            >
+              <View>
+                <Text className="font-heavy text-cardTitle text-[#3A2A05]">SHADOWING MODE</Text>
+                <Text className="mt-1 font-sans text-label text-[#4A370A]">
+                  {L('Nghe và nhại theo video YouTube để chuẩn hóa ngữ điệu.', 'Listen and repeat after native YouTube videos to master natural rhythm.')}
+                </Text>
+              </View>
+
+              {/* Minh hoạ video wave */}
+              <View className="flex-row items-center justify-between rounded-xl bg-white/90 p-2.5 shadow-sm">
+                <View className="h-8 w-11 items-center justify-center rounded-md bg-red-600">
+                  <Icon name="play" size={16} color="#FFFFFF" strokeWidth={3} />
+                </View>
+                <Text className="font-mono text-label text-slate-700">~ ∿ ∿ ∿ ~</Text>
+                <Text className="font-strong text-[11px] text-slate-500">VOA & BBC</Text>
+              </View>
+            </Pressable>
+          </View>
+        </View>
+      </View>
+
+      {/* -------------------- Hàng 2: Premium Speaking & Sample 8.0 -------------------- */}
+      <View style={{ flexDirection: wide ? 'row' : 'column', gap: 18, marginTop: 18 }}>
+        {/* THẺ CAM: PREMIUM SPEAKING (AI PHÂN TÍCH CHUYÊN SÂU) */}
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push('/speaking/room' as never)}
+          style={{
+            flex: wide ? 1.6 : undefined,
+            borderRadius: 26,
+            padding: 24,
+            backgroundColor: '#F2A365',
+            boxShadow: SHADOW,
+            justifyContent: 'space-between',
+          }}
+        >
+          <View>
+            <Text className="font-heavy text-sectionTitle text-[#4A2007]">PREMIUM SPEAKING</Text>
+            <Text className="mt-1.5 font-sans text-label text-[#4A2007]/90" style={{ lineHeight: 22 }}>
+              {L(
+                'Đánh giá nội dung câu trả lời, phát âm và phân tích ngữ điệu, độ nhấn, gợi ý collocations và Idiomatic expressions tự nhiên, đồng thời mô phỏng câu hỏi follow-up theo phong cách giám khảo IELTS thực tế.',
+                'Comprehensive AI scoring on Pronunciation, Fluency, Stress & Rhythm, natural idioms, and authentic examiner follow-up simulations.'
+              )}
+            </Text>
+          </View>
+
+          {/* Bảng điểm minh hoạ */}
+          <View className="mt-4 rounded-2xl bg-white p-4 shadow-sm">
+            <View className="flex-row items-center justify-between border-b border-slate-100 pb-3">
+              <View>
+                <Text className="font-sans text-[11px] text-slate-400 uppercase">Overall Score</Text>
+                <Text className="font-heavy text-sectionTitle text-slate-900">8.0</Text>
+                <Text className="font-strong text-[10px] text-emerald-600">Great performance! ★★★★★</Text>
+              </View>
+              <View className="items-end">
+                <Text className="font-sans text-[11px] text-slate-400 uppercase">Pronunciation</Text>
+                <Text className="font-heavy text-cardTitle text-slate-800">8.5</Text>
+                <Text className="font-sans text-[10px] text-slate-500">Very Good</Text>
+              </View>
+              <View className="items-end">
+                <Text className="font-sans text-[11px] text-slate-400 uppercase">Fluency & Rhythm</Text>
+                <Text className="font-heavy text-cardTitle text-slate-800">7.5</Text>
+                <Text className="font-sans text-[10px] text-slate-500">Good</Text>
+              </View>
+            </View>
+
+            <View className="mt-3 flex-row flex-wrap items-center gap-1.5">
+              <Text className="font-strong text-[11px] text-slate-700">Collocations & Idioms:</Text>
+              {['make a decision', 'keep in mind', 'a wide range of', 'take the plunge'].map((col, idx) => (
+                <View key={idx} className="rounded-md bg-orange-100 px-2 py-0.5">
+                  <Text className="font-sans text-[11px] text-orange-900">{col}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        </Pressable>
+
+        {/* THẺ ĐEN: SAMPLE 8.0 SPEAKING */}
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => {
+            setForecastModalOpen(true);
+            setSelectedPart('all');
+          }}
+          style={{
+            flex: wide ? 1 : undefined,
+            borderRadius: 26,
+            padding: 24,
+            backgroundColor: '#1E293B',
+            boxShadow: SHADOW,
+            justifyContent: 'space-between',
+          }}
+        >
+          <View>
+            <View className="flex-row items-center justify-between">
+              <Text className="font-strong text-label uppercase tracking-widest text-slate-400">SAMPLE</Text>
+              <View className="rounded-md bg-amber-400 px-2 py-0.5">
+                <Text className="font-heavy text-[11px] text-slate-950">8.0</Text>
+              </View>
+            </View>
+
+            <Text className="mt-2 font-heavy text-sectionTitle text-white">8.0 SPEAKING</Text>
+            <Text className="mt-2 font-sans text-label text-slate-300">
+              {L('Biên soạn bởi giáo viên 10 lần 8.5 IELTS — phân tích chi tiết từ vựng C1/C2 và cấu trúc ăn điểm.', 'Authored by 8.5 IELTS instructors with C1/C2 vocabulary breakdowns.')}
+            </Text>
+          </View>
+
+          <View className="mt-6 flex-row items-center justify-between border-t border-slate-700 pt-3">
+            <Text className="font-strong text-label text-amber-300">{L('Khám phá ngân hàng bài mẫu →', 'Explore samples →')}</Text>
+            <Icon name="arrow-right" size={16} color="#FCD34D" />
+          </View>
+        </Pressable>
+      </View>
+
+      {/* -------------------- Dải Banner LỒNG TIẾNG BBC · TED-ED -------------------- */}
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => router.push('/speaking/long-tieng' as never)}
+        style={{
+          marginTop: 18,
+          borderRadius: 26,
+          padding: 24,
+          backgroundColor: '#BAE6FD',
+          backgroundImage: 'linear-gradient(135deg, #BAE6FD 0%, #93C5FD 100%)',
+          boxShadow: SHADOW,
+          flexDirection: wide ? 'row' : 'column',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+        }}
+      >
+        <View style={{ flex: 1 }}>
+          <View className="self-start rounded-pill bg-[#0369A1] px-3 py-1">
+            <Text className="font-heavy text-[10px] tracking-wider text-white uppercase">✨ {L('MỚI', 'NEW')}</Text>
+          </View>
+          <Text className="mt-2 font-heavy text-sectionTitle text-[#0C4A6E]">
+            LỒNG TIẾNG BBC · TED-Ed
+          </Text>
+          <Text className="mt-1 font-sans text-body text-[#0369A1]">
+            {L('Thu giọng từng câu, xem lại video với chính giọng của bạn. Máy phân tích phát âm IPA, độ nhấn và chấm theo thang IELTS.', 'Dub sentences line by line, re-watch video with your voice. Instant IELTS pronunciation & stress analysis.')}
+          </Text>
+        </View>
+
+        {/* Video mockup chip */}
+        <View className="rounded-2xl border border-sky-300 bg-white p-3 shadow-md" style={{ width: wide ? 280 : '100%' }}>
+          <View className="flex-row items-center justify-between">
+            <Text className="font-strong text-[11px] text-slate-700">CẢNH 2 · CÂU 4/9</Text>
+            <View className="rounded-pill bg-amber-100 px-2 py-0.5">
+              <Text className="font-heavy text-[10px] text-amber-800">🎙️ GIỌNG BẠN</Text>
+            </View>
+          </View>
+          <Text className="mt-2 font-sans italic text-[11px] text-slate-600" numberOfLines={2}>
+            "where we have real conversations in easy English to help you learn."
+          </Text>
+          <View className="mt-2.5 flex-row items-center justify-between border-t border-slate-100 pt-2">
+            <Text className="font-strong text-[11px] text-sky-700">{L('Vào phòng lồng tiếng', 'Enter Dubbing')}</Text>
+            <Icon name="arrow-right" size={14} color="#0284C7" />
+          </View>
+        </View>
+      </Pressable>
+
+      {/* ======================================================== */}
+      {/* MODAL: FORECAST SPEAKING & SAMPLE 8.0 VIEWER            */}
+      {/* ======================================================== */}
+      <Modal visible={forecastModalOpen} animationType="slide" transparent onRequestClose={() => setForecastModalOpen(false)}>
+        <View className="flex-1 items-center justify-center bg-black/60 p-4">
+          <View className="max-h-[90vh] w-full max-w-[850px] overflow-hidden rounded-3xl bg-white shadow-2xl">
+            {/* Modal Header */}
+            <View className="flex-row items-center justify-between border-b border-slate-100 bg-slate-50 px-6 py-4">
+              <View>
+                <Text className="font-heavy text-cardTitle text-slate-900">
+                  📚 {L('FORECAST SPEAKING & BÀI MẪU 8.0+', 'FORECAST SPEAKING & BAND 8.0+ SAMPLES')}
+                </Text>
+                <Text className="font-sans text-label text-slate-500">
+                  {L('Bộ đề dự đoán theo Quý & Phân tích từ vựng, ngữ pháp ăn điểm', 'Quarterly forecast questions with comprehensive Band 8.0 analysis')}
+                </Text>
+              </View>
+              <Pressable accessibilityRole="button" onPress={() => setForecastModalOpen(false)} className="rounded-full bg-slate-200 p-2">
+                <Icon name="close" size={18} color="#0F172A" />
+              </Pressable>
+            </View>
+
+            {/* Filter Controls */}
+            <View className="flex-row flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-6 py-3">
+              <View className="flex-row items-center gap-2">
+                {(['Q3-2026', 'Q2-2026'] as const).map((q) => (
                   <Pressable
-                    key={m.key}
-                    accessibilityRole="radio"
-                    aria-checked={on}
-                    onPress={() => { setMode(m.key); setExam(m.key === 'full'); }}
-                    style={{ borderRadius: 999, paddingHorizontal: 16, paddingVertical: 9, backgroundColor: on ? '#FFFFFF' : 'rgba(255,255,255,0.08)' }}
+                    key={q}
+                    onPress={() => setSelectedQuarter(q)}
+                    className="rounded-pill px-3 py-1.5"
+                    style={{ backgroundColor: selectedQuarter === q ? '#0F172A' : '#F1F5F9' }}
                   >
-                    <Text className="font-strong" style={{ fontSize: 14, color: on ? '#0F172A' : '#FFFFFF' }}>
-                      {m.title}
+                    <Text className="font-strong text-label" style={{ color: selectedQuarter === q ? '#FFFFFF' : '#475569' }}>
+                      {q === 'Q3-2026' ? L('Quý 3/2026 (Mới nhất)', 'Q3 2026 (Latest)') : L('Quý 2/2026 (Ôn lại)', 'Q2 2026 (Review)')}
                     </Text>
                   </Pressable>
-                );
-              })}
-            </View>
-            <Text className="font-sans" style={{ marginTop: 8, fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
-              {bi(modeInfo.hint, locale)}
-            </Text>
-
-            {mode === 'p1' && !exam ? (
-              <View style={{ marginTop: 12, alignItems: 'center', gap: 10 }}>
-                <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', gap: 8 }}>
-                  {([1, 2] as const).map((n) => (
-                    <Pressable key={n} accessibilityRole="radio" aria-checked={questionCount === n} onPress={() => setQuestionCount(n)} style={{ borderRadius: 999, paddingHorizontal: 18, paddingVertical: 10, backgroundColor: questionCount === n ? '#22A06B' : 'rgba(255,255,255,0.08)' }}>
-                      <Text className="font-strong" style={{ color: '#FFFFFF' }}>{L(`${n} câu mỗi lượt`, `${n} per round`)}</Text>
-                    </Pressable>
-                  ))}
-                </View>
-                <Text className="font-sans" style={{ color: '#C7D2E0', fontSize: 13, textAlign: 'center' }}>{L('Trả lời → bài mẫu & phân tích AI → sửa ý → nói lại', 'Answer → model answer & AI feedback → improve → speak again')}</Text>
+                ))}
               </View>
-            ) : null}
 
-            <View style={{ marginTop: 16, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
-              <Pressable
-                accessibilityRole="button"
-                onPress={start}
-                disabled={mic === null}
-                style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 24, paddingVertical: 13, backgroundColor: hovered ? '#FDE68A' : '#FACC15' }) as object}
-              >
-                <Icon name="mic" size={18} color="#1A1405" />
-                <Text className="font-heavy" style={{ fontSize: 16, color: '#1A1405' }}>
-                  {typed ? L('Bắt đầu (gõ phím)', 'Start (typing)') : exam ? L('Vào phòng thi', 'Enter the exam room') : L('Luyện chủ đề này', 'Practise this topic')}
-                </Text>
-              </Pressable>
-              <Switch on={exam} onPress={() => setExam((v) => !v)} text={L('Thi thật', 'Exam mode')} />
-              {mic ? <Switch on={typedChoice} onPress={() => setTypedChoice((v) => !v)} text={L('Gõ phím', 'Type')} /> : null}
-            </View>
-          </View>
-        </Appear>
-
-        <Appear index={1} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[CARD, { backgroundColor: '#F2B632', minHeight: wide ? '100%' : undefined }]}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#5A3B00' }}>
-              {L('BAND NÓI GẦN NHẤT', 'LATEST SPEAKING BAND')}
-            </Text>
-            <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 6 }}>
-              <Text className="font-heavy" style={{ fontSize: 88, lineHeight: 92, color: '#1A1405' }}>
-                {fmtBand(lastGrade?.overall ?? null)}
-              </Text>
-              <Text className="font-heavy" style={{ fontSize: 22, color: '#5A3B00', marginBottom: 12, marginLeft: 4 }}>
-                /9
-              </Text>
-            </View>
-            <Text className="font-semi" style={{ fontSize: 14, color: '#5A3B00' }}>
-              {graded.length
-                ? L(`${graded.length} lượt đã chấm · ${attempts.length} lượt luyện`, `${graded.length} graded · ${attempts.length} practice sessions`)
-                : L('Chưa có điểm — nói thử một Part 1 nhé', 'No score yet — try a Part 1')}
-            </Text>
-            <MiniBars bands={graded.slice(0, 8).map((a) => a.grade!.overall as number).reverse()} />
-            <View style={{ position: 'absolute', right: 14, bottom: 14 }} aria-hidden>
-              <Motion kind="wobble">
-                <Sticker tilt={10}>
-                  <CuteTrophy size={58} />
-                </Sticker>
-              </Motion>
-            </View>
-          </View>
-        </Appear>
-      </View>
-
-      {/* ------------------------------------------------ hàng 2: chủ đề · tiêu chí · lịch sử */}
-      <View style={row}>
-        <Appear index={2} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[CARD, { backgroundColor: '#22A06B' }]}>
-            <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-              {L('Chủ đề.', 'Topics.')}
-            </Text>
-            <View style={{ marginTop: 12, gap: 8 }}>
-              {mode === 'full' || mode === 'p1' ? <TopicPill k="PART 1" v={p1Title} /> : null}
-              {mode !== 'p1' ? <TopicPill k={mode === 'p3' ? 'PART 3' : 'PART 2'} v={cueTitle} /> : null}
-            </View>
-            <View style={{ marginTop: 12, flexDirection: 'row', gap: 8 }}>
-              <SmallBtn icon="refresh" text={L('Đổi ngẫu nhiên', 'Shuffle')} onPress={shuffle} />
-              <SmallBtn icon={choosing ? 'chevron-down' : 'chevron-right'} text={L('Tự chọn', 'Choose')} onPress={() => setChoosing((v) => !v)} />
-            </View>
-            {choosing ? (
-              <View style={{ marginTop: 12, gap: 10 }}>
-                {mode === 'full' || mode === 'p1' ? (
-                  <ChipList items={PART1_TOPICS.map((t) => ({ id: t.id, text: en ? t.titleEn : `${t.titleEn} · ${t.titleVi}` }))} value={p1Topic} onPick={setP1Topic} />
-                ) : null}
-                {mode !== 'p1' ? <ChipList items={CUE_CARDS.map((c) => ({ id: c.id, text: en ? c.card.text : c.titleVi }))} value={cue} onPick={setCue} /> : null}
+              <View className="flex-row items-center gap-1.5">
+                {(['all', 1, 2, 3] as const).map((p) => (
+                  <Pressable
+                    key={p}
+                    onPress={() => setSelectedPart(p)}
+                    className="rounded-pill px-2.5 py-1"
+                    style={{ backgroundColor: selectedPart === p ? '#2563EB' : '#F1F5F9' }}
+                  >
+                    <Text className="font-semi text-[11px]" style={{ color: selectedPart === p ? '#FFFFFF' : '#475569' }}>
+                      {p === 'all' ? L('Tất cả', 'All') : `Part ${p}`}
+                    </Text>
+                  </Pressable>
+                ))}
               </View>
-            ) : null}
-          </View>
-        </Appear>
+            </View>
 
-        <Appear index={3} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[CARD, { backgroundColor: '#F0703F' }]}>
-            <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-              {L('4 tiêu chí.', '4 criteria.')}
-            </Text>
-            <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-              {CRITERIA.map((c) => {
-                const meta = CRIT_ICON[c.key];
-                const band = lastGrade?.criteria[c.key]?.band ?? null;
-                return (
-                  <View key={c.key} style={{ flexBasis: '46%', flexGrow: 1, borderRadius: 18, padding: 12, backgroundColor: '#FFFFFF' }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <SealIcon name={meta.icon} color={meta.color} size={32} />
-                      <Text className="font-heavy" style={{ fontSize: 26, color: '#0F172A' }}>
-                        {fmtBand(band)}
-                      </Text>
+            {/* Content List */}
+            <ScrollView style={{ maxHeight: 520 }} contentContainerStyle={{ padding: 24, gap: 16 }}>
+              {filteredForecast.map((item) => (
+                <View key={item.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <View className="flex-row items-center justify-between">
+                    <View className="flex-row items-center gap-2">
+                      <View className="rounded-pill bg-blue-100 px-2.5 py-0.5">
+                        <Text className="font-heavy text-[11px] text-blue-900">PART {item.part}</Text>
+                      </View>
+                      <Text className="font-strong text-body text-slate-800">{item.topicVi} ({item.topic})</Text>
                     </View>
-                    <Text className="font-strong" style={{ marginTop: 4, fontSize: 13, color: '#334155' }} numberOfLines={1}>
-                      {bi(meta.short, locale)}
+                    <View className="rounded-pill bg-amber-100 px-2.5 py-0.5">
+                      <Text className="font-heavy text-[11px] text-amber-900">BAND {item.targetBand.toFixed(1)}</Text>
+                    </View>
+                  </View>
+
+                  <Text className="mt-3 font-heavy text-bodyLg text-slate-900">
+                    {item.question}
+                  </Text>
+
+                  {item.cueBullets?.length ? (
+                    <View className="mt-2 gap-1 rounded-xl bg-slate-50 p-3">
+                      <Text className="font-strong text-[11px] text-slate-600">You should say:</Text>
+                      {item.cueBullets.map((b, i) => (
+                        <Text key={i} className="font-sans text-[12px] text-slate-700">• {b}</Text>
+                      ))}
+                    </View>
+                  ) : null}
+
+                  {/* Sample Answer Box */}
+                  <View className="mt-3 rounded-xl border border-emerald-200 bg-[#F0FDF4] p-4">
+                    <Text className="font-strong uppercase tracking-wider text-[11px] text-emerald-800">
+                      🌟 {L('BÀI MẪU BAND 8.0+', 'BAND 8.0+ SAMPLE ANSWER')}
+                    </Text>
+                    <Text className="mt-2 font-sans text-body text-slate-900" style={{ lineHeight: 24 }}>
+                      {item.sampleAnswer}
+                    </Text>
+
+                    <Text className="mt-2 border-t border-emerald-100 pt-2 font-sans text-label text-slate-600">
+                      {item.sampleAnswerVi}
                     </Text>
                   </View>
-                );
-              })}
-            </View>
-            <Text className="font-sans" style={{ marginTop: 10, fontSize: 12, color: 'rgba(255,255,255,0.85)' }}>
-              {L('~ Phát âm là ước lượng: AI chỉ đọc chữ máy nghe được.', '~ Pronunciation is an estimate: the AI only sees the text the recogniser heard.')}
-            </Text>
-          </View>
-        </Appear>
 
-        <Appear index={4} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[CARD, { backgroundColor: '#B07A3A' }]}>
-            <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-              {L('Lượt gần đây.', 'Recent sessions.')}
-            </Text>
-            <View style={{ marginTop: 12, gap: 8 }}>
-              {attempts.length === 0 ? (
-                <View style={{ borderRadius: 18, padding: 14, backgroundColor: '#FFFFFF', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                  <Sticker tilt={-6}>
-                    <CuteChat size={40} />
-                  </Sticker>
-                  <Text className="font-semi" style={{ flex: 1, fontSize: 14, color: '#334155' }}>
-                    {L('Chưa có lượt nào.', 'No sessions yet.')}
-                  </Text>
+                  {/* Collocations & Vocabulary */}
+                  <View className="mt-3 gap-2">
+                    <Text className="font-strong text-[12px] text-slate-700">💎 {L('Collocations & Idioms ăn điểm:', 'Key Collocations & Idioms:')}</Text>
+                    <View className="flex-row flex-wrap gap-1.5">
+                      {item.collocationsAndIdioms.map((col, idx) => (
+                        <View key={idx} className="rounded-md bg-amber-50 px-2 py-1 border border-amber-200">
+                          <Text className="font-semi text-[11px] text-amber-950">{col}</Text>
+                        </View>
+                      ))}
+                    </View>
+
+                    <View className="mt-1 flex-row flex-wrap gap-2">
+                      {item.keyVocabulary.map((kv, idx) => (
+                        <View key={idx} className="flex-row items-center gap-1 rounded bg-slate-100 px-2 py-0.5">
+                          <Text className="font-strong text-[11px] text-slate-800">{kv.word}</Text>
+                          <Text className="font-mono text-[10px] text-slate-500">{kv.ipa}</Text>
+                          <Text className="font-sans text-[10px] text-slate-600">: {kv.meaningVi}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  </View>
+
+                  <Pressable
+                    accessibilityRole="button"
+                    onPress={() => {
+                      setForecastModalOpen(false);
+                      router.push(`/speaking/room?mode=p${item.part}` as never);
+                    }}
+                    className="mt-4 self-end rounded-pill bg-slate-900 px-4 py-2"
+                  >
+                    <Text className="font-strong text-label text-white">
+                      🎙️ {L('Luyện nói đề này với AI', 'Practise this with AI')}
+                    </Text>
+                  </Pressable>
                 </View>
-              ) : (
-                attempts.slice(0, 4).map((a) => {
-                  const band = a.typed ? null : (a.grade?.overall ?? null);
-                  const tone = bandTone(band);
-                  return (
-                    <Pressable
-                      key={a.id}
-                      accessibilityRole="link"
-                      onPress={() => router.push(`/speaking/result/${a.id}` as never)}
-                      style={{ borderRadius: 18, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: '#FFFFFF', flexDirection: 'row', alignItems: 'center', gap: 10 }}
-                    >
-                      <View style={{ width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: tone.bg }}>
-                        <Text className="font-heavy" style={{ fontSize: 15, color: tone.fg }}>
-                          {fmtBand(band)}
-                        </Text>
-                      </View>
-                      <View style={{ flex: 1, minWidth: 0 }}>
-                        <Text className="font-strong" style={{ fontSize: 14, color: '#0F172A' }} numberOfLines={1}>
-                          {MODE_LABEL[a.mode]} · {a.titleVi}
-                        </Text>
-                        <Text className="font-sans" style={{ fontSize: 12, color: '#64748B' }} numberOfLines={1}>
-                          {fmtDate(a.finishedAt)} · {L(`${a.metrics.words} từ`, `${a.metrics.words} words`)}
-                        </Text>
-                      </View>
-                    </Pressable>
-                  );
-                })
-              )}
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
+
+      {/* ======================================================== */}
+      {/* MODAL: SPEAKING ROULETTE DRAW RESULT                     */}
+      {/* ======================================================== */}
+      <Modal visible={rouletteModalOpen} animationType="fade" transparent onRequestClose={() => setRouletteModalOpen(false)}>
+        <View className="flex-1 items-center justify-center bg-black/65 p-4">
+          <View className="w-full max-w-[500px] rounded-3xl bg-white p-6 shadow-2xl">
+            <View className="items-center">
+              <View className="h-16 w-16 items-center justify-center rounded-2xl bg-emerald-600 shadow-md">
+                <Text className="font-heavy text-cardTitle text-white">🎰</Text>
+              </View>
+              <Text className="mt-3 font-heavy text-cardTitle text-slate-900">SPEAKING ROULETTE</Text>
+              <Text className="font-sans text-label text-slate-500">{L('Đã rút được thẻ đề ngẫu nhiên!', 'Random card drawn!')}</Text>
+            </View>
+
+            {drawnCard ? (
+              <View className="mt-5 rounded-2xl border-2 border-emerald-500 bg-[#ECFDF5] p-5">
+                <View className="self-start rounded-pill bg-emerald-700 px-3 py-0.5">
+                  <Text className="font-heavy text-[11px] text-white uppercase">{drawnCard.type}</Text>
+                </View>
+                <Text className="mt-3 font-heavy text-sectionTitle text-emerald-950">
+                  {drawnCard.title}
+                </Text>
+                <Text className="mt-1 font-sans text-body text-emerald-800">
+                  {drawnCard.vi}
+                </Text>
+              </View>
+            ) : null}
+
+            <View className="mt-6 flex-row items-center gap-3">
+              <Button
+                className="flex-1"
+                variant="secondary"
+                label={L('Rút thẻ khác', 'Spin again')}
+                onPress={spinRoulette}
+              />
+              <Button
+                className="flex-1"
+                variant="brand"
+                label={L('Vào phòng thi ngay', 'Start now')}
+                onPress={() => {
+                  setRouletteModalOpen(false);
+                  router.push('/speaking/room' as never);
+                }}
+              />
             </View>
           </View>
-        </Appear>
-      </View>
-
-      <Text className="font-sans" style={{ marginTop: 16, marginBottom: 32, fontSize: 12, color: '#64748B' }}>
-        {L(
-          'Câu hỏi do Band 9 tự soạn theo khuôn IELTS. Điểm AI là ước lượng để luyện tập. Chrome đổi giọng thành chữ qua dịch vụ của Google; Band 9 không ghi âm.',
-          "Questions are written by Band 9 in the IELTS format. AI scores are practice estimates. Chrome turns your voice into text via Google's service; Band 9 records no audio.",
-        )}
-      </Text>
+        </View>
+      </Modal>
     </Screen>
-  );
-}
-
-const CARD = { borderRadius: 32, padding: 22, overflow: 'hidden' } as const;
-
-function Switch({ on, onPress, text }: { on: boolean; onPress: () => void; text: string }) {
-  return (
-    <Pressable accessibilityRole="switch" aria-checked={on} onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 9, backgroundColor: 'rgba(255,255,255,0.08)' }}>
-      <View style={{ width: 34, height: 20, borderRadius: 10, padding: 2, justifyContent: 'center', backgroundColor: on ? '#22A06B' : 'rgba(255,255,255,0.25)' }}>
-        <View style={{ width: 16, height: 16, borderRadius: 8, backgroundColor: '#FFFFFF', alignSelf: on ? 'flex-end' : 'flex-start' }} />
-      </View>
-      <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
-        {text}
-      </Text>
-    </Pressable>
-  );
-}
-
-function TopicPill({ k, v }: { k: string; v: string }) {
-  return (
-    <View style={{ borderRadius: 18, padding: 12, backgroundColor: '#FFFFFF' }}>
-      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.4, color: '#22A06B' }}>
-        {k}
-      </Text>
-      <Text className="font-heavy" style={{ fontSize: 16, color: '#0F172A' }} numberOfLines={2}>
-        {v}
-      </Text>
-    </View>
-  );
-}
-
-function SmallBtn({ icon, text, onPress }: { icon: React.ComponentProps<typeof Icon>['name']; text: string; onPress: () => void }) {
-  return (
-    <Pressable accessibilityRole="button" onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: 'rgba(0,0,0,0.18)' }}>
-      <Icon name={icon} size={14} color="#FFFFFF" />
-      <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
-        {text}
-      </Text>
-    </Pressable>
-  );
-}
-
-function ChipList({ items, value, onPick }: { items: { id: string; text: string }[]; value: string; onPick: (id: string) => void }) {
-  return (
-    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-      {items.map((it) => {
-        const on = it.id === value;
-        return (
-          <Pressable key={it.id} accessibilityRole="radio" aria-checked={on} onPress={() => onPick(it.id)} style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: on ? '#FFFFFF' : 'rgba(255,255,255,0.18)' }}>
-            <Text className="font-semi" style={{ fontSize: 12, color: on ? '#14532D' : '#FFFFFF' }}>
-              {it.text}
-            </Text>
-          </Pressable>
-        );
-      })}
-    </View>
-  );
-}
-
-/** Cột band các lượt gần nhất (cũ → mới). */
-function MiniBars({ bands }: { bands: number[] }) {
-  if (bands.length === 0) return <View style={{ height: 70 }} />;
-  return (
-    <View style={{ marginTop: 14, height: 70, flexDirection: 'row', alignItems: 'flex-end', gap: 6, paddingRight: 70 }}>
-      {bands.map((b, i) => (
-        <View key={i} style={{ flex: 1, maxWidth: 22, height: `${Math.max(12, (b / 9) * 100)}%`, borderRadius: 6, backgroundColor: i === bands.length - 1 ? '#1A1405' : 'rgba(26,20,5,0.3)' }} />
-      ))}
-    </View>
   );
 }

@@ -16,6 +16,7 @@ import type { ListeningAnswers, ListeningAttempt, ListeningGroupType, ListeningS
 import { stopPronounce } from '@/services/audio/pronounce';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
+import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { allowLeave, useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveGuard, useWakeLock } from '@/lib/mobile/useMobileExam';
@@ -26,6 +27,8 @@ import { allowLeave, useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveG
  */
 
 const REVIEW_SECONDS = 30;
+/** Thời gian đọc đề bài và hướng dẫn trước khi mỗi section bắt đầu (IELTS: 30 giây). */
+const PREVIEW_SECONDS = 30;
 const GREEN = '#16A34A';
 
 type Phase = 'ready' | 'taking' | 'done';
@@ -81,6 +84,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   const [startedAt, setStartedAt] = useState(0);
   const elapsedNow = () => (startedAt ? Math.max(0, Math.round((Date.now() - startedAt) / 1000)) : 0);
   const [review, setReview] = useState<number | null>(null);
+  const [preview, setPreview] = useState<number | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const [notes, setNotes] = useState('');
@@ -146,22 +150,34 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
 
   // ---- tự phát khi vào section (cần metadata hoặc đã chuyển sang giọng máy)
   useEffect(() => {
-    /* Đồng bộ với phần tử audio bên ngoài React: phát đúng lúc nó sẵn sàng. */
-    if (!wantAuto.current || phase !== 'taking' || audio.status !== 'idle') return;
+    /* Đồng bộ với phần tử audio bên ngoài React: phát đúng lúc nó sẵn sàng. Chưa hết giờ đọc đề thì chưa phát. */
+    if (!wantAuto.current || phase !== 'taking' || audio.status !== 'idle' || preview !== null) return;
     if (audio.mode === 'tts' || audio.duration > 0) {
       wantAuto.current = false;
       audio.play();
     }
-  }, [audio, phase]);
+  }, [audio, phase, preview]);
 
-  // ---- thi thật: hết âm thanh -> 30 giây kiểm tra, rồi sang section kế
+  // ---- đọc đề trước section: đếm ngược, hết giờ thì mới phát âm thanh
   useEffect(() => {
-    if (phase === 'taking' && real && audio.status === 'ended' && review === null) {
+    if (preview === null) return;
+    if (preview <= 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hết giờ đọc đề thì cho phép phát
+      setPreview(null);
+      return;
+    }
+    const t = setTimeout(() => setPreview((v) => (v === null ? v : v - 1)), 1000);
+    return () => clearTimeout(t);
+  }, [preview]);
+
+  // ---- hết âm thanh -> 30 giây kiểm tra, rồi sang section kế (cả luyện tập lẫn thi thật)
+  useEffect(() => {
+    if (phase === 'taking' && audio.status === 'ended' && review === null) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- phản ứng với sự kiện audio kết thúc
       setReview(REVIEW_SECONDS);
       playSfx('notify');
     }
-  }, [audio.status, phase, real, review]);
+  }, [audio.status, phase, review]);
   useEffect(() => {
     if (review === null) return;
     if (review <= 0) {
@@ -171,6 +187,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
         // eslint-disable-next-line react-hooks/set-state-in-effect -- đếm ngược kiểm tra xong thì sang section kế
         setSecIdx((i) => i + 1);
         setReview(null);
+        setPreview(PREVIEW_SECONDS);
       }
       return;
     }
@@ -182,6 +199,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   const toggleRef = useRef<() => void>(() => undefined);
   useEffect(() => {
     toggleRef.current = () => {
+      if (preview !== null) return;
       if (audio.status === 'playing') {
         if (!(real && audio.started)) audio.pause();
       } else if (!(real && audio.started && !audio.blocked)) audio.play();
@@ -216,6 +234,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
     setSettings({ realTest: real });
     wantAuto.current = real || settings.autoPlay;
     setStartedAt(Date.now());
+    setPreview(PREVIEW_SECONDS);
     setPhase('taking');
   };
 
@@ -226,6 +245,8 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
     audio.pause();
     stopPronounce();
     wantAuto.current = settings.autoPlay;
+    setReview(null);
+    setPreview(null);
     setSecIdx(i);
   };
 
@@ -247,6 +268,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
     stopPronounce();
     setConfirm(null);
     setReview(null);
+    setPreview(null);
     const durationSec = elapsedNow();
     draft.clear();
     const band = bandFromScore(score.score, score.total);
@@ -269,6 +291,13 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
       answers: Object.fromEntries(Object.entries(answers).map(([k, v]) => [k, v])),
     };
     addAttempt(a);
+    // Lượt nghe tính vào thời gian học, số câu đã trả lời và chuỗi ngày.
+    const study = useStudyStore.getState();
+    const minutes = Math.round(durationSec / 60);
+    const answered = Object.values(answers).filter((v) => (Array.isArray(v) ? v.length > 0 : v.trim() !== '')).length;
+    if (minutes > 0) study.logStudyTime('practice', Math.min(minutes, 60));
+    if (answered > 0) study.logQuestions(answered);
+    study.logEvent();
     setFinalMeta({ mode: a.mode, durationSec });
     setPhase('done');
   };
@@ -280,6 +309,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
     setStartedAt(0);
     setRestoredCount(0);
     setReview(null);
+    setPreview(null);
     setFinalMeta(null);
     setPhase('ready');
     if (attemptId) router.setParams({ attempt: '' });
@@ -422,15 +452,33 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
             </View>
           ) : null}
 
+          {preview !== null ? (
+            <View className="flex-row flex-wrap items-center justify-center gap-3 px-3 py-2" style={{ backgroundColor: '#EEF4FF' }}>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: '#1E3A8A' }}>
+                {L(`Đọc đề bài và hướng dẫn của Section ${section.n} trước khi nghe: ${preview}s`, `Read the questions and instructions for Section ${section.n} before listening: ${preview}s`)}
+              </Text>
+              {!real ? (
+                <Pressable accessibilityRole="button" onPress={() => setPreview(0)} className="rounded-pill px-3" style={{ minHeight: 36, justifyContent: 'center', backgroundColor: '#1E3A8A' }}>
+                  <Text className="font-nun-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>{L('Bắt đầu nghe', 'Start listening')}</Text>
+                </Pressable>
+              ) : null}
+            </View>
+          ) : null}
+
           {review !== null ? (
-            <View className="px-3 py-2" style={{ backgroundColor: '#FEF4E6' }}>
-              <Text className="text-center font-nun-strong" style={{ fontSize: 13, color: '#7A4A00' }}>
+            <View className="flex-row flex-wrap items-center justify-center gap-3 px-3 py-2" style={{ backgroundColor: '#FEF4E6' }}>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: '#7A4A00' }}>
                 {review > 0
                   ? L(`Thời gian kiểm tra đáp án: ${review}s`, `Check your answers: ${review}s`)
                   : secIdx < sections.length - 1
                     ? L('Chuyển sang section tiếp theo…', 'Moving to the next section…')
                     : L('Hết thời gian kiểm tra. Bấm Hoàn thành khi sẵn sàng.', 'Check time is over. Press Finish when ready.')}
               </Text>
+              {!real && review > 0 && secIdx < sections.length - 1 ? (
+                <Pressable accessibilityRole="button" onPress={() => setReview(0)} className="rounded-pill px-3" style={{ minHeight: 36, justifyContent: 'center', backgroundColor: '#7A4A00' }}>
+                  <Text className="font-nun-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>{L('Sang section tiếp', 'Next section')}</Text>
+                </Pressable>
+              ) : null}
             </View>
           ) : null}
 
@@ -483,7 +531,11 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
             className="flex-row items-center gap-3 border-t border-border bg-surface px-3 py-2.5"
             style={Platform.OS === 'web' ? ({ paddingBottom: 'max(10px, env(safe-area-inset-bottom))' } as object) : undefined}
           >
-            <ScrollView horizontal={!wide} showsHorizontalScrollIndicator={false} className="min-w-0 flex-1" snapToInterval={wide ? undefined : 50} decelerationRate="fast" contentContainerStyle={wide ? { flexWrap: 'wrap', flexDirection: 'row', gap: 6 } : { gap: 6 }}>
+            <View className="min-w-0" style={{ marginRight: 4 }}>
+              <Text className="font-nun-heavy text-ink" style={{ fontSize: 15 }}>Practice</Text>
+              <Text className="font-nun-mid" style={{ fontSize: 12, color: '#6B7280' }}>{L(`Đã làm ${answered.size} / ${allNumbers.length}`, `Done ${answered.size} / ${allNumbers.length}`)}</Text>
+            </View>
+            <ScrollView horizontal={!wide} showsHorizontalScrollIndicator={false} className="min-w-0 flex-1" snapToInterval={wide ? undefined : 50} decelerationRate="fast" contentContainerStyle={wide ? { flexWrap: 'wrap', flexDirection: 'row', gap: 6, justifyContent: 'center' } : { gap: 6, justifyContent: 'center' }}>
               {allNumbers.map((n) => {
                 const done = answered.has(n);
                 const inSec = sectionOf.get(n) === secIdx;
@@ -494,16 +546,18 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                     accessibilityLabel={L(`Câu ${n}`, `Question ${n}`)}
                     onPress={() => jump(n)}
                     style={{
-                      width: wide ? 34 : 44, height: wide ? 34 : 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1.5,
-                      borderColor: GREEN, backgroundColor: done ? GREEN : '#FFFFFF', opacity: inSec ? 1 : 0.55,
+                      width: wide ? 36 : 40, height: wide ? 36 : 40, borderRadius: 8, alignItems: 'center', justifyContent: 'center', borderWidth: 1,
+                      borderColor: done ? '#1D4ED8' : '#D1D5DB', backgroundColor: done ? '#DBEAFE' : '#FFFFFF', opacity: inSec ? 1 : 0.6,
                     }}
                   >
-                    <Text className="font-nun-heavy" style={{ fontSize: 14, color: done ? '#FFFFFF' : '#0F7A38' }}>{n}</Text>
+                    <Text className="font-nun-heavy" style={{ fontSize: 14, color: done ? '#1D4ED8' : '#374151' }}>{n}</Text>
                   </Pressable>
                 );
               })}
             </ScrollView>
-            <Button label={L('Hoàn thành', 'Finish')} iconRight="check" onPress={() => { playSfx('modalOpen'); setConfirm('submit'); }} />
+            <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setConfirm('submit'); }} className="items-center justify-center rounded-lg px-5" style={{ minHeight: 44, backgroundColor: '#E11D48' }}>
+              <Text className="font-nun-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>{L('Nộp bài', 'Submit')}</Text>
+            </Pressable>
           </View>
           )}
         </>

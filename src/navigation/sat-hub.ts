@@ -75,6 +75,7 @@ export const MATH_HUB_LINKS: HubLink[] = [
 ];
 
 export const RW_HUB_LINKS: HubLink[] = [
+  { href: '/sat/practice-tests', vi: 'Kho 65 đề SAT', en: 'SAT practice tests' },
   { href: '/sat-rw/learn', vi: 'Học lý thuyết', en: 'Theory lessons' },
   { href: '/sat/full-test', vi: 'Thi thử', en: 'Mock test' },
 ];

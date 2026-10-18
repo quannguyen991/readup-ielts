@@ -49,6 +49,12 @@ export function QuestionCard({
 
   return (
     <PaperCard>
+      {question.sourceBook ? (
+        <View className="mb-3 flex-row items-center gap-1.5 self-start rounded-full border border-paper-brandSoft bg-paper-brandTint px-2.5 py-1">
+          <Icon name="book" size={12} color={paper.brandDark} />
+          <Text className="text-caption font-mid text-paper-ink/80">{question.sourceBook}</Text>
+        </View>
+      ) : null}
       <PassageText passage={question.passage} underline={question.underline} tone="paper" />
       {/*
         Ghi chú và bảng số CHỈ câu sinh mới có, nhưng phải vẽ ở đây chứ không

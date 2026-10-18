@@ -5,6 +5,7 @@ import { Screen } from '@/components/layout/Screen';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { B9 } from '@/components/practice/SkillBank';
 import { HubTitle, MoreLink, NextTag, PaperSheet, PrimaryButton, go } from '@/components/sat-hub/SatHub';
+import { SatFocusPicker } from '@/components/practice/SatFocusPicker';
 import { Icon } from '@/components/ui/Icon';
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
 import { VERBAL_LESSONS } from '@/data/lessons/verbal-lessons';
@@ -80,13 +81,9 @@ export default function SatHubScreen() {
   const nextId = hydrated ? (SAT_PATH_STEPS.find((s) => !started[s.id])?.id ?? null) : null;
 
   return (
-    <Screen cat="think">
-      <View className="w-full self-center" style={{ maxWidth: 1080 }}>
-        <HubTitle
-          eyebrow="DIGITAL SAT"
-          title={L('Ôn SAT theo bốn bước', 'Your SAT in four steps')}
-          line={L('Đi lần lượt từ trên xuống; mỗi bước một nút.', 'Work top to bottom; one button per step.')}
-        />
+    <Screen>
+      <View className="w-full self-center" style={{ maxWidth: 1080, gap: 16 }}>
+        <SatFocusPicker />
 
         <Guide />
 

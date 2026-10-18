@@ -70,16 +70,29 @@ export function ProgressRing({ pct, color, size = 46 }: { pct: number; color: st
   );
 }
 
-/** Bìa của bộ: ảnh nếu có, không thì nền gradient theo màu nguồn kèm biểu tượng. */
-function DeckCover({ cover, icon, soft, strong, height }: { cover?: string; icon: IconName; soft: string; strong: string; height: number }) {
+/**
+ * Bìa đứng 4:5 như bìa sách. Ảnh nếu có, không thì nền gradient theo màu nguồn kèm biểu tượng.
+ * Rê chuột thì ảnh phóng nhẹ, chậm và mượt.
+ */
+const COVER_RATIO = 0.8;
+function DeckCover({ cover, icon, soft, strong, size, hovered }: { cover?: string; icon: IconName; soft: string; strong: string; size: number; hovered: boolean }) {
   if (cover) {
-    return <Image source={{ uri: cover }} style={{ width: '100%', height }} contentFit="cover" accessibilityIgnoresInvertColors />;
+    return (
+      <View style={{ width: '100%', aspectRatio: COVER_RATIO, overflow: 'hidden' }}>
+        <Image
+          source={{ uri: cover }}
+          style={{ width: '100%', height: '100%', transform: [{ scale: hovered ? 1.05 : 1 }], ...(WEB ? ({ transition: 'transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1)' } as object) : null) }}
+          contentFit="cover"
+          accessibilityIgnoresInvertColors
+        />
+      </View>
+    );
   }
   return (
-    <View style={{ width: '100%', height, overflow: 'hidden' }}>
+    <View style={{ width: '100%', aspectRatio: COVER_RATIO, overflow: 'hidden' }}>
       <LinearGradient colors={[soft, strong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <View style={{ position: 'absolute', width: height * 1.1, height: height * 1.1, borderRadius: height, right: -height * 0.3, top: -height * 0.35, backgroundColor: 'rgba(255,255,255,0.16)' }} />
-        <View style={{ position: 'absolute', width: height * 0.55, height: height * 0.55, borderRadius: height, left: -height * 0.12, bottom: -height * 0.18, backgroundColor: 'rgba(255,255,255,0.14)' }} />
+        <View style={{ position: 'absolute', width: size * 1.1, height: size * 1.1, borderRadius: size, right: -size * 0.3, top: -size * 0.35, backgroundColor: 'rgba(255,255,255,0.16)' }} />
+        <View style={{ position: 'absolute', width: size * 0.55, height: size * 0.55, borderRadius: size, left: -size * 0.12, bottom: -size * 0.18, backgroundColor: 'rgba(255,255,255,0.14)' }} />
         <View style={{ width: 56, height: 56, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.92)' }}>
           <Icon name={icon} size={26} color={strong} strokeWidth={2} />
         </View>
@@ -142,7 +155,7 @@ export function DeckCard({
             : { elevation: 2 }),
         }}
       >
-        <DeckCover cover={cover} icon={icon} soft={soft} strong={strong} height={124} />
+        <DeckCover cover={cover} icon={icon} soft={soft} strong={strong} size={220} hovered={hovered} />
 
         <View style={{ flex: 1, padding: 16, gap: 6 }}>
           <Text

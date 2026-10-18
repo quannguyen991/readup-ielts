@@ -1,0 +1,1398 @@
+﻿TỔNG HỢP CÂU HỎI GEOMETRY & TRIGONOMETRY TỪ ĐỀ THI THẬT SAT MATH 2025
+Question Section
+
+Question 1 Easy
+An angle measure of (66)(180)° is equivalent to kπ radians. What is the value of k?
+A. 65
+B. 66
+C. 132
+D. 133
+
+
+Question 2 Easy
+A right circular cylinder has a height of 4 meters (m) and a base with a radius of 18 m. What is the volume, in , of the cylinder? 
+A. 4π
+B. 22π 
+C. 288π 
+D. 1296π
+
+
+Question 3 Easy
+In triangle RST, the measure of angle R is 10 degrees and the measure of angle T is 50 degrees. Point L lies on RS, point K lies on ST, and LK is parallel to RT. What is the measure, in degrees, of angle SKL? (Disregard the degree symbol when entering your answer.)
+
+
+Question 4 Easy
+Triangles ABC and DEF are congruent, where A corresponds to D, and B and E are right angles. The measure of angle A is 62°. What is the measure of angle F? 
+A. 28° 
+B. 62°  
+C. 90° 
+D. 118° 
+
+
+Question 5 Easy
+Circle A has equation  In the xy-plane, circle B is obtained by translating circle A to the right 2 units. Which equation represents circle B?
+
+A. 
+B. 
+C. 
+D. 
+
+
+Question 6 Easy
+For two acute angles, ∠A and ∠B , cos(A) = sin(B). The measures, in degrees, of ∠A and ∠B are x + 8 and 4x + 2, respectively. What is the value of x?
+
+A. 37 
+B. 34
+C. 16
+D. 2
+
+
+Question 7 Easy
+  
+
+In the figure shown, line segments AC and DE are parallel. The measure of angle ACB is 58°, and AB = 1.5DB. What is the measure, in degrees, of angle DEB?
+
+
+Question 8 Easy 
+  
+
+What is the value of cos(A) in the triangle shown?
+
+A. 
+B. 
+C. 
+D. 
+
+
+Question 9 Easy
+  
+
+For the triangles shown, triangle ABC is dilated by a scale factor of 3 to obtain triangle XYZ, where d = 16. What is the measure, in degrees, of angle X? 
+A. 20 
+B. 57 
+C. 60 
+D. 63
+
+
+Question 10 Easy
+The length of a side of square X is 9 centimeters. The area of rectangle Y is 24 square centimeters. What is the total area, in square centimeters, of square X and rectangle Y? 
+A. 66 
+B. 81 
+C. 105 
+D. 129
+
+
+Question 11 Easy
+The area of a rectangle is 630 square inches. The length of the rectangle is 90 inches. What is the width, in inches, of this rectangle?
+
+A. 7
+B. 90 
+C. 315
+D. 540 
+
+
+Question 11’ Easy
+The width of a rectangle is 7 centimeters. The length of the rectangle is 40 centimeters longer than the width. What is the area, in square centimeters, of this rectangle?
+
+A. 7
+B. 14
+C. 54
+D. 329
+
+
+Question 12 Easy
+Quadrilaterals PQRS and WXYZ are similar, where P, Q, and R correspond to W, X, and Y, respectively. The measure of ∠S is 135°, PS = 45, and WZ = 9. What is the measure of ∠Z? 
+
+
+Question 13 Easy
+  
+
+In the figures, two lines intersect at a point. If w = 150°, what is the value of z?
+
+
+________________
+Question 14 Easy
+What is the center of the circle in the zy-plane defined by the equation ?
+A. (-9;-6)
+B. (-9;6)
+C. (9;-6)
+D. (9;6)
+
+
+Question 15 Easy
+Triangles ABC and DEF are congruent, where A corresponds to D and B and E are right angles. The measure of angle A is 27. What is the measure, in degrees, of angle F?
+
+
+Question 16 Easy
+In the right triangle RST, the sum of the measures of angle R and angle S is 90 degrees. The value of sin(R) is . What is the value of cos(S)
+A.
+B. 
+C. 
+D. 
+
+
+Question 17 Easy
+In triangle ABC, angle B is a right angle, and the length of BC is 270 millimeters. If tan(A) =  ,what is the length, in millimeters, of AB?
+
+A. 62
+B. 186
+C. 248
+D. 450
+
+
+Question 18 Easy
+Each side of square A has a length of 11 inches. Each side of square A is multiplied by a scale factor of 3 to create square B. What is the length,in inches, of each side of square B?
+A. 8
+B. 11
+C. 14
+D. 33
+
+
+Question 19 Easy
+  
+
+The area of triangle ABC is 30 square centimeters. What is the height h, in centimeters, of this triangle?
+
+
+Question 20 Easy
+A sphere has a radius of  feet. What is the volume, in cubic feet, of the sphere?
+A.
+B. 
+C. 
+D. 
+
+
+Question 21 Easy
+In triangle ABC, the measure of angle A is 48°, the measure of angle B is 90°, and the measure of angle C is  What is the value of k?
+A. 42
+B. 45
+C. 84
+D. 96
+
+
+Question 22 Easy
+Quadrilateral P’Q’R’S’ is similar to quadrilateral PQRS, where P, Q, R, and S correspond to P’, Q’, R’, and S’, respectively. The measure of angle P is 45°, the measure of angle Q is 70°, and the measure of angle R is 90°. The length of each side of P’Q’R’S’ is 3 times the length of each corresponding side of PQRS. What is the measure of angle P’?
+
+A. 15°
+B. 45°
+C. 60°
+D. 135°
+
+
+Question 23 Easy
+Each side of equilateral triangle S is multiplied by a scale factor of k to create equilateral triangle T. The length of each side of triangle T is greater than the length of each side of triangle S. Which of the following could be the value of k?
+A. 0
+B. 43/44
+C. 1
+D. 44/43
+
+
+Question 24 Easy 
+In triangle ABC, B is a right angle. The length of side AB is  and the length of side BC is . What is the length of the side AC?
+
+A. 
+B. 
+C. 
+D. 
+
+
+Question 25 Easy
+A cylinder has a diameter of 6 inches and a height of 24 inches. What is the volume, in cubic inches, of the cylinder?
+A. 9π
+B. 144π
+C. 216π
+D. 864π
+
+
+Question 26 Easy
+A circle in the xy-plane has the equation . Which of the following gives the center of the circle and its radius? 
+A. The center is at (14, k) and the radius is 6. 
+B. The center is at (k, 14) and the radius is 6. 
+C. The center is at (k, 14) and the radius is 36. 
+D. The center is at (14, k) and the radius is 36.
+
+
+Question 27 Easy
+  
+
+Which expression represents the length of line segment AB?
+A. 
+B. 
+C. 
+D. 
+
+
+Question 28 Easy
+The function f(x) = 180*(x - 2) gives the sum of the interior angles, in degrees, for a polygon with x sides. What is the sum of the interior angles, in degrees, for a polygon with 14 sides?
+
+
+Question 29 Easy
+The difference between the measure of angle A and the measure of angle B is  radians. Which expression shows the difference between the measure of angle A and the measure of angle B, in degrees?
+A. 
+B. 
+C. 
+D. 
+
+
+
+
+Question 30 Medium
+The volume of a right rectangular prism with a square base is 2448 cubic centimeters. If the area of the square base is 144 square centimeters, what is the area, in square centimeters, of one of the four lateral faces of the prism? 
+A. 17 
+B. 204 
+C. 540 
+D. 816 
+
+
+Question 31 Medium
+  
+
+In the figure, AC is the diameter of the circle with center O, and AC = 10. Triangle ACB is equilateral. The length of BP is n times the length of AO. What is the value of n ?
+
+A. 
+B. 
+C 
+D. 
+
+
+Question 32 Medium
+The area of a triangle is  square inches. The base of the triangle is 5 + 2x inches, and the height of the triangle is x - 2 inches. What is the value of x ?
+
+A. 2.5
+B. 2.7
+C. 5
+D. 10
+
+
+Question 33 Medium
+A circle in the xy-plane has its center at (2;-5) and has a radius of 3. An equation of this circle is , where a, b, and c are constants. What is the value of c?
+
+
+Question 34 Medium
+Circle A in the xy-plane has the equation . Circle B has the same center as circle A. The radius of circle B is two times the radius of circle A. The equation defining circle B in the xy-plane is , where k is a constant. What is the value of k?
+
+
+Question 35 Medium
+Triangle ABC is similar to triangle DEF, where AB corresponds to DE. The length of each side of triangle ABC is  times the length of its corresponding side of triangle DEF. The area of triangle ABC is 40 square inches. What is the area, in square inches, of triangle DEF?
+
+A. 10
+B. 20 
+C. 80 
+D. 160
+
+
+Question 36 Medium
+  
+
+In the figure shown above, the measure of angle A is 80°. Angles B and C have measures of x° and y°, respectively, where x > y. Which of the following additional pieces of information is NOT sufficient to determine the value of x?
+
+A. The value of x + y 
+B. The value of x - y 
+C. The value of xy
+D. The value of 
+
+Question 37 Medium
+
+In the xy-plane, the graph of the given equation is a circle. The point (4;b) lies on the circle. What is a possible value of b? 
+
+
+Question 38 Medium
+The area of a triangle is 24 square inches. The length of the base of the triangle is 2 inches greater than the height of the triangle. What is the height, in inches, of the triangle?
+
+A. 4
+B. 6
+C. 8
+D. 12
+
+
+Question 39 Medium
+A polygon with 16 sides has a perimeter of 126 inches. The length of one side is 6 inches. The other 15 sides have equal lengths. What is the length, in inches, of one of the 15 sides with equal lengths?
+
+
+Question 40 Medium
+The length of the diagonal of a square is  units. What is the area, in square units, of the square?
+
+A. 79
+B. 316
+C. 6241
+D. 12482
+
+
+Question 41 Medium
+The floor of a school has an area of 4,400 square meters. An architect creates a scale model of the floor of the school, where the length of each side of the model is  times the length of the corresponding side of the actual floor of the school. What is the area, in square meters, of the scale model?
+
+A. 11
+B. 20
+C. 220
+D. 275
+Question 42 Medium
+A hemisphere is half of a sphere. If a hemisphere has a radius of 50 inches, which of the following is closest to the volume, in cubic inches, of this hemisphere? 
+
+A. 5200
+B. 20900
+C. 196300
+D. 261800
+
+
+Question 43 Medium
+A certain town has an area of 3.99 square miles. What is the area, in square yards, of this town (1 mile = 1,760 yards)?
+
+A. 441
+B. 7022
+C. 776341
+D. 12359424
+
+
+Question 44 Medium
+  
+
+In the figure, RT = TU, the measure of angle VST is 23°, and the measure of angle RVS is 34°. What is the value of x?
+
+
+Question 45 Medium
+  
+
+In the figure, AC = CD. The measure of angle EBC is 29°, and the measure of angle ACD is 108°. What is the value of x?
+
+
+Question 46 Medium
+A cube has an edge length of 82 inches. A solid sphere with a diameter of 82 inches is inside the cube, such that the sphere touches the center of each face of the cube. To the nearest cubic inch, what is the volume of the space in the cube not taken up by the sphere? 
+
+
+Question 47 Medium
+For a certain rectangular region, the ratio of its length to its width is 10 to 4. If the width of the rectangular region increases by 7 units, how must the length change to maintain this ratio?
+A. It must decrease by 7 units
+B. It must increase by 7 units
+C. It must increase by 17.5 units
+D. It must decrease by 17.5 units
+
+
+Question 48 Medium
+Rectangles ABCD and EFGH are similar. The length of each side of EFGH is 6 times the length of the corresponding side of ABCD. The area of ABCD is 96 square units. What is the area, in square units, of EFGH?
+
+
+Question 49 Medium
+In triangle XYZ, angle Y is a right angle, the measure of angle Z is 39°, and the length of YZ is 22 units. If the area, in square units, of triangle XYZ can be represented by the expression ktan(39), where k is a constant, what is the value of k?
+
+
+Question 50 Medium
+The area of a rectangular region is increasing at a rate of 260 square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use 1 meter = 3.28 feet). 
+A. 0.40
+B. 1.32
+C. 14.21
+D. 24.17
+
+
+Question 51 Medium
+  
+
+
+In the figure shown, line r is parallel to line s, and both lines are intersected by line t. If x = 2w + 24, y = 5w + 29, and 7w = a, where a is a constant, what is the value of a?
+
+
+Question 52 Medium
+A circle is inscribed in a square such that the circumference of the circle touches the midpoint of each side of the square. The length of the diagonal of the square is 176 units. What is the area, in square units, of the circle? 
+A. 3872π
+B. 7744π
+C. 15488π
+D. 30976π
+
+
+Question 53 Medium
+For each of two rectangles, the ratio of the rectangle's length to its width is 10 to 5. 
+The width of rectangle X is 16.5 times the width of rectangle Y. How does the length of rectangle X compare to the length of rectangle Y? 
+
+A. The length of rectangle X is 0.5 times the length of rectangle Y
+B. The length of rectangle X is 2 times the length of rectangle Y
+C. The length of rectangle X is 16.5 times the length of rectangle Y. 
+D. The length of rectangle X is 33 times the length of rectangle Y.
+
+
+Question 54 Medium
+Rectangle ABCD is similar to rectangle EFGH. The area of rectangle ABCD is 648 square inches, and the area of rectangle EFGH is 72 square inches. The length of the longest side of rectangle ABCD is 36 inches. What is the length, in inches, of the longest side of rectangle EFGH? 
+
+
+Question 55 Medium
+A circle has diameters AC and BD. The circumference of the circle is 84π, and the length of arc DA is 2 times the length of arc AB. What is the length of arc BC?
+
+A. 2π
+B. 14π
+C. 21π
+D. 28π
+
+
+Question 56 Medium
+  
+
+In triangle PQR, QR is extended to point S. The measure of ∠PQR is 114°, and the measure of ∠PRS is 158°. What is the measure of ∠QPR?
+A) 66°
+B) 44°
+C) 33°
+D) 22°
+
+
+Question 57 Medium
+A rectangular banner has an area of 3,300 square inches. A copy of the banner is made in which the length and width of the original banner are each increased by 40%. What is the area of the copy, in square inches? 
+A. 3340
+B. 3380
+C. 4620
+D. 6468
+
+
+Question 58 Medium
+A cube has a volume of 79507 cubic units. What is the surface area, in square units, of the cube?
+
+
+Question 59 Medium
+The table gives the perimeters of similar triangles TUV and XYZ, where TU corresponds to XY. The length of TU is 6.
+  
+What is the length of XY?
+
+
+Question 60 Medium
+In triangle FGH and triangle KLM, the measures of angles G and L are each 30°. The lengths of GH and LM are each 34 centimeters, and  = . Which additional piece of information would be necessary to prove that triangle FGH is congruent to triangle KLM ?
+
+A. The lengths of FG and KM are each 17 centimeters.
+B. The measures of angles H and M are each 60°.
+C. The measures of angles F and K are each 90°.
+D. No additional information is necessary. 
+
+
+Question 61 Medium
+A right rectangular prism has a length of 26 centimeters (cm), a width of 16cm, and a height of 14cm. What is the surface area, in , of the right rectangular prism?
+
+
+Question 62 Medium
+Triangle QRS is similar to triangle FGH such that Q, R, and S correspond to F, G, and H, respectively. Each side of triangle FGH has  the length of its corresponding side in triangle QRS. In triangle FGH, the measure of angle F is 35°, the measure of angle G is 8°, and FG = a. In triangle QRS, the measure of angle Q is b° and QR = 20. What is the value of a+b?
+
+
+Question 63 Medium
+If the perimeter of a equilateral triangle with a height of 46 units is  units, what is the value of k?
+
+
+Question 64 Medium
+  
+
+The figure shown is a right circular cylinder with a radius of r and height of h. A second right circular cylinder (not shown) has a volume that is 576 times as large as the volume of the cylinder shown. Which of the following could represent the radius R, in terms of r, and the height H, in terms of h, of the second cylinder? 
+
+A. R=9r and H=8h
+B. R=9r and H=64h
+C. R=8r and H=9h
+D. R=64r and H=9h
+
+
+Question 65 Medium
+
+The given equation represents circle P in the xy-plane. Circle Q has a center that is 3 units to the right of and 2 units below the center of circle P. Circle Q has a diameter that is double the diameter of circle P. Which equation represents circle Q? 
+
+A. 
+B. 
+C. 
+D. 
+
+
+Question 66 Medium
+Triangles ABC and DEF are similar, where A corresponds to D, and B corresponds to E. The measure of angle A is 26°, and AB = 4. Which of the following statements must be true? 
+   
+  I. The measure of angle D is 26°. 
+   II. DE=4 
+
+A. I only
+B. II only
+C. I and II 
+D. Neither I nor II
+
+
+Question 67 Medium
+The length of each edge of a box is 79 centimeters. Each side of the box is in the shape of a square. The box does not have a lid. What is the exterior surface area, in square meters, of this box without a lid? (1 meter = 100 centimeters)
+
+
+Question 68 Medium
+A rectangle is inscribed in a circle such that the length of the diagonal of the rectangle is twice the length of its shortest side. The circumference of the circle is 114π units. What is the area, in square units, of the rectangle? 
+A. 
+B. 
+C. 
+D. 
+
+
+Question 69 Medium
+A circle in the xy-plane has a diameter with endpoints (a, 11) and (a, d), where a and d are constants. An equation of this circle is (x-a)² + (y - 17)² = r², where r is a positive constant. What is the value of d?
+A. 5
+B. 12
+C. 17
+D. 23
+
+
+Question 70 Medium
+The perimeter of an isosceles right triangle is 18+ 18 inches. What is the length, in inches, of the hypotenuse of this triangle? 
+
+A. 9
+B. 9
+C. 18
+D. 18
+
+
+Question 71  Medium
+
+
+A line intersects two parallel lines, forming four acute angles and four obtuse angles. The measure of one of these eight angles is (7x - 250)°. The sum of the measures of four of the eight angles is k°. Which of the following could NOT be equivalent to k, for all values of x?
+
+A. -14x + 1540
+B. 14x - 320 
+C. -28x + 1720
+D. 360
+
+
+Question 72 Medium
+  
+
+In the figure shown,  units,  units, and  units. What is the area, in square units, of triangle ADE?
+
+
+Question 73 Medium
+A rectangular region of land is divided into 88 square lots of equal area R, in square units. The length of the region is 5.5 times the width of the region. If the width of the region is  units, what is the value of x?
+
+
+Question 74 Medium
+A circle has center O, and points A and B lie on the circle. The measure of arc AB is 20°. and the length of this arc is 4 inches. What is the circumference, in inches, of the circle? 
+A. 4
+B. 8
+C. 16
+D. 72
+
+
+Question 75 Medium
+  
+
+A property owner wants to find the length x, in feet, across a pond as represented in the figure. PR intersects ST at point Q, and ∠PTQ is congruent to ∠RSQ. The lengths represented by PQ, TQ, QS, and RS were determined to be 4,200 feet, 8,400 feet, 1,400 feet, and 1,600 feet, respectively. What is the value of x?
+
+
+Question 76 Difficult
+  
+
+In the figure shown, B and C lie on AD , E lies on DF and CE is parallel to AF. Which of the following is enough to prove that triangle BDE is similar to triangle EDC ?
+
+A. w + y = x + z 
+B. w + x = y + z
+C. s + x = z
+D. s + x = y
+
+
+Question 77 Difficult
+  
+
+In the figure, parallel lines a and b are intersected by lines c, d, and e. If z = 49 y = 136 and v < z, which statement about x and w must be true? 
+A. x < w 
+B. x > w 
+C. x = w 
+D. x + w = 90
+
+
+Question 78 Difficult
+Triangle ABC is similar to triangle DEF, where angle A corresponds to angle D and angles C and F are right angles. The length of AB is 2.4 times the length of DE. If tan A = 21/20, what is the value of sin D?
+
+
+Question 79 Difficult
+A raised garden is in the shape of a right rectangular prism. Its base has a width of 3 feet and a length of 24 feet, and it will be filled 24 inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is 256 dollars. What is the unit cost, in dollars per cubic yard, for the topsoil? (1 yard = 3 feet; 1 foot = 12 inches). 
+
+Question 80 Difficult
+  
+
+In the figure, the measures of angles 5, 6, and 7 are 66°, 139°, and 71°, respectively. What is the sum of the measures of angles 1, 2, 3, and 4, in degrees? (Disregard the degree symbol when entering your answer)
+
+
+Question 81 Difficult
+  
+
+In the figures above, a < b. If cos(4a) = sin(2b), what is the value of a?
+
+A. 8 
+B. 
+C. 15
+D. 
+
+
+Question 82 Difficult
+The sum of the volumes, in cubic meters, of n spheres each with radius r meters is equal to the volume, in cubic meters, of 1 right circular cone with a vertical height of 1 meter and a base with radius r meters. Which of the following expresses n in terms of r?
+
+A. 
+B. 
+C. 
+D. 
+
+
+Question 83 Difficult
+A polygon has exactly 83 sides. If the measure of each of the 83 interior angles of this polygon is (180p)°, what is the value of p?
+
+
+Question 84 Difficult
+Two lines intersect at exactly one point, forming two acute angles and two obtuse angles. The measure of one of these angles is (9x - 190)°. Which of the following could NOT be the sum of the measures of any two of these angles? 
+A. (-18x+380)°
+B. (-18x+740)°
+C. (18x-380)°
+D. 180°
+
+
+Question 85 Difficult
+The table shows the volume of two similar solids, right circular cylinder A and right circular cylinder B. The radius of the right circular cylinder A is 4 units. The surface area of right circular cylinder A is kπ square units, and the surface area of right circular cylinder B is nπ square units, where k and n are constants. What is the value of n - k?
+  
+
+
+Question 86 Difficult
+In triangle ABC and triangle DEF, sides AB and DE each have a side length of 6 inches, and angles A and D each have an angle measure of 40. Which of the following additional pieces of information is(are) sufficient to prove whether triangle ABC is congruent to triangle DEF? 
+I. The measures of angles B and C are equal. 
+II. The lengths of sides AC and DF are equal. 
+III. The lengths of sides BC and EF are equal. 
+
+A. I is sufficient, but II and III are not. 
+B. II is sufficient, but I and III are not. 
+C. III is sufficient, but I and II are not. C 
+D. II is sufficient and III is sufficient, but I is not
+
+
+Question 87 Difficult
+In isosceles triangle ABC, sides AB and AC are congruent. Point D divides side BC such that the length of BD is  of the length of BC. Point E lies on side AB and point F lies on side AC such that when segments DE and DF are drawn, angle BED is congruent to angle CFD. If the length of BE is 10, what is the length of CF?
+
+A. 4
+B. 14
+C. 50
+D. 70
+
+
+Question 88 Difficult
+Point N lies on a unit circle in the xy-plane and has coordinates (1, 0). Point O is the center of the circle and has coordinates (0, 0). Point M also lies on the unit circle, and the measure of angle NOM is  radians. If the coordinates of point M are (a, b), where a and b are constants, what is the value of a?
+
+
+Question 89 Difficult
+Point F lies on a unit circle in the xy-plane and has coordinates (1, 0). Point G is the center of the circle and has coordinates (0,0). Point H also lies on the circle and has coordinates (-1;y), where y is a constant. Which of the following could be the positive measure of angle FGH, in radians?
+A. 
+B. 
+C. 
+D. 
+
+
+Question 90 Difficult
+For triangle PQR and triangle STU, angles P and S each measure 30°, QR = 16 and TU 12. Which additional piece(s) of information is(are) sufficient to prove that triangle PQR is similar to triangle STU?
+  I. The length of PQ is  the length of ST
+  II. The length of PR is   the length of SU
+
+A. I is sufficient, but II is not. 
+B. II is sufficient, but I is not.
+C. I is sufficient, and II is sufficient.
+D. Neither I nor II is sufficient. 
+
+
+Question 91 Difficult
+  
+
+In the given figure, NP is the diameter of semicircle O. Angles Q, R, and S are right angles, and point P is the midpoint of NQ. If PQ = 52 feet and NS = 18 feet, the area of the figure can be expressed as  square feet, where a and b are integers. What is the value of a - b?
+
+
+Question 92 Difficult
+  
+
+In the figure, parallel lines r and s are intersected by lines t,u, and w. If d = 42°, g = 143°, and h > d, which statement about j and p must be true?
+A. j = p
+B. j + p = 90 
+C. j > p
+D. j < p
+
+
+Question 93 Difficult
+A square map has a side length of 35 inches, and 1 inch on the map represents an actual distance of 17 miles. A smaller version of the same map is printed as a square with the side length 55% shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by 1 inch?
+A. 7.65
+B. 10.97
+C. 19.25
+D. 37.78
+
+
+Question 94 Difficult
+In triangle PQR, the measure of angle P is (3x + 5)°, the measure of angle Q is (2x + 9)°, and the measure of angle R is (4y + 5)°. If side QR is extended through point R to point S. and the measure of angle PRS is (x + y). What is the value of x+y? 
+
+
+Question 95 Difficult
+A right triangular pyramid has exactly six edges. Each of these edges is 96 centimeters long. If the surface area of the pyramid is k square centimeters, what is the value of k?
+
+
+Question 96 Difficult
+A right square pyramid has a total surface area of 28160 square inches, and the combined surface area of the four lateral faces of this pyramid is 16060 square inches. What is the height, in inches, of this pyramid? 
+
+
+Question 97 Difficult
+A right square pyramid has a height of 11 centimeters (cm). A second right square pyramid has a height of 22 centimeters. The area of the bases of each of the two pyramids is 100 cm². Which of the following is closest to the difference in the surface area of the second pyramid and the surface area of the first pyramid, in cm²? 
+A. 209
+B. 220
+C. 367
+D. 551
+
+
+Question 98 Difficult
+  
+
+For triangle ABC, the length of AB is 11 less than the length of AC. Point D (not shown) lies on AC such that BD is perpendicular to AC. What is the value of ?
+
+
+Question 99 Difficult
+  
+
+                      (figures not shown to scale)
+In the figure shown, points A, B, C, and E lie on the circle, and AB<BC. Segment AC is perpendicular to segment BE at point D, and BD=. The diameter of the circle is 175. If , what is the value of r?
+
+
+
+
+________________
+Detailed Answer & Explanation
+
+Question 1 Easy
+The correct answer is B. Convert degree to radians: (66)(180)° = 66π ⇒ k=66
+
+
+Question 2 Easy
+The correct answer is D. Volume right circular cylinder =  
+⇒ V = 1296π
+
+
+Question 3 Easy
+The correct answer is 50.   
+LK // RT ⇒ ∠SKL = ∠STR = 50°
+
+
+Question 4 Easy
+The correct answer is A. △ABC  △DEF ⇒ ∠C = ∠F. 
+△ABC is a right triangle at ∠B ⇒ ∠C = 90° - ∠A = 90° - 62° = 28° 
+⇒ ∠F = 28°.
+
+
+Question 5 Easy
+The correct answer is A. The center of circle A is (3;-1) ⇒ translating circle A to the right 2 units means translating the center of circle A to the right 2 units and this center becomes the center of circle B
+⇒ center of circle B = 3 + 2 = 5 ⇒ (5;-1)
+⇒ 
+
+
+Question 6 Easy
+The correct answer is C. ∠A and ∠B are two acute angles ⇒ ∠A + ∠B = 90° 
+⇒ x + 8 + 4x + 2 = 90° ⇒ x=16
+
+
+Question 7 Easy
+The correct answer is 58. DE // AC ⇒ △BED  △BCA ⇒ ∠DEB = ∠ACB = 58°
+
+
+Question 8 Easy
+The correct answer is B. Triangle ABC is right at ∠C. ⇒ cos(A) = 
+
+
+Question 9 Easy
+The correct answer is 60°. Triangle ABC is dilated by a scale factor of 3 to create triangle XYZ ⇒ Triangle ABC is similar to triangle XYZ. ⇒ ∠A = ∠X = 60°. 
+
+
+Question 10 Easy
+The correct answer is C. Total area of square X and rectangle Y = 
+
+
+Question 11 Easy
+The correct answer is A.   ⇒ 
+
+
+
+Question 11’ Easy
+The correct answer is D. 
+
+
+Question 12 Easy
+The correct answer is 135. Quadrilaterals PQRS and WXYZ are similar 
+⇒ ∠S = ∠Z = 135 
+
+
+Question 13 Easy
+The correct answer is 150. Angle W and Angle Z are vertical angles, they are equal.
+⇒ ∠w = ∠z = 150
+
+
+Question 14 Easy
+The correct answer is C. The form of a circle equation is: (x - h)² + (y - k)² = r²
+The given equation is: (x - 9)² + (y + 6)² = 81 ⇒ the center of the circle is (9, -6)
+
+
+Question 15 Easy
+The correct answer is 63. Triangles ABC and DEF are congruent ⇒ ∠C = ∠F
+B and E are right angles ⇒ ∠C = ∠F = 90° - ∠A = 90°-27° = 63°.
+
+
+Question 16 Easy
+The correct answer is A. The sum of the measures of angle R and angle S is 90 degrees ⇒ sin(R) = cos(S) or sin(S) = cos(R) 
+⇒ cos(S) = 
+
+
+Question 17 Easy
+The correct answer is D. Triangle ABC is right at B ⇒ tan(A) =  ⇒ 
+
+
+Question 18 Easy
+The correct answer is D. Length of each side of square B = 11 inches  3 = 33 inches.
+
+
+Question 19 Easy
+The correct answer is 6. 
+
+
+Question 20 Easy
+The correct answer is A. Volume of sphere = 
+
+
+Question 21 Easy
+The correct answer is C. In triangle ABC, ∠A + ∠B + ∠C = 180°. 
+⇒ 48° + 90° + ° = 180° ⇒ k = 84°
+
+
+Question 22 Easy
+The correct answer is B. Quadrilateral P’Q’R’S’ is similar to quadrilateral PQRS 
+⇒ ∠P = ∠P’ = 45°.
+
+
+Question 23 Easy
+The correct answer is D. Equilateral triangle S is multiplied by a scale factor of k to create equilateral triangle T ⇒ △S  △T ⇒  and each side of triangle T is greater than the length of each side of triangle S ⇒ k > 1 ⇒ k= 44/43
+
+
+Question 24 Easy 
+The correct answer is B. In triangle ABC, B is a right angle ⇒ 
+
+
+Question 25 Easy
+The correct answer is C. 
+
+
+
+Question 26 Easy
+The correct answer is A. In the equation  . 
++ (x - h) = (x - 14), so h = 14
++ (y - k) = (y - k), so k = k
++  ⇒ Center (14;k) and radius 6.
+
+
+Question 27 Easy
+The correct answer is A. Triangle ABC is right at B ⇒  
+⇒ 
+
+
+Question 28 Easy
+The correct answer is 2160. f(x) = 180*(x - 2) with x sides. 14 sides ⇒ x = 14. 
+f(14) = 180*(14-2) = 2160. 
+
+
+Question 29 Easy
+The correct answer is C. The difference between the measure of angle A and the measure of angle B is  radians. Convert radians to degrees : .
+
+
+Question 30 Medium
+The correct answer is B. 
+  
+⇒ 
+
+
+Question 31 Medium
+The correct answer is C. To find , we need to find BP and AO. 
+
+Triangle ACB is equilateral ⇒ , OP is a radius ⇒ OP = AC
+ 
+
+
+
+Question 32 Medium
+The correct answer is D.  ⇒ 
+⇒ x = 10
+
+
+Question 33 Medium
+The correct answer is 20. Center at (2;-5) and a radius of 3 
+⇒ Circle equation: 
+⇒ 
+⇒  ⇒ c = 20.
+Or .
+
+
+Question 34 Medium
+The correct answer is 16. Circle A in the xy-plane has the equation  ⇒ 
+The radius of circle B is two times the radius of circle A ⇒ 
+⇒ The equation defining circle B in the xy-plane is 
+⇒ k = 16
+
+
+Question 35 Medium
+The correct answer is 160. 
+⇒  
+
+
+Question 36 Medium
+The correct answer is A. In triangle ABC, ∠A=80° ⇒ ∠B + ∠C = 180° - 80° = 100°
+⇒ x + y = 100° ⇒ we don’t need the information of x + y to determine x.
+Choice B is sufficient. We know that x + y = 100° and the value of x - y ⇒ we can find x
+Choice C is sufficient. We know that x + y = 100° and the value of xy ⇒ we can find x
+Choice D is sufficient. We know that x + y = 100° and the value of  ⇒ we can find x
+
+
+Question 37 Medium
+The correct answer is 10 or 6. The point (4;b) lies on the circle 
+⇒  ⇒ b = 10 or b = 6.
+
+
+Question 38 Medium
+The correct answer is B. 
+⇒ 
+⇒ x = 6 
+
+
+Question 39 Medium
+The correct answer is 8. 16 sides and perimeter 126 inches.
+1 exceptional side is 6 inches ⇒ 15 sides = 126 - 6 = 120 inches ⇒ 1 side of 15 equal sides is 120/15 = 8. 
+
+
+Question 40 Medium
+The correct answer is C.  ⇒ 
+Question 41 Medium
+The correct answer is A. 
+
+
+Question 42 Medium
+The correct answer is D. 
+
+
+Question 43 Medium
+The correct answer is B. 
+1 miles = 1,760 yards
+⇒ 
+⇒  ⇒ 
+
+
+Question 44 Medium
+The correct answer is 158. 
+  
+∠RVS = 34° ⇒ ∠SVU = 180° - 34° = 146°
+In triangle VSU, ∠V + ∠S + ∠U = 180° ⇒ ∠U = 180°- ∠S - ∠V = 11°
+In triangle RTU, TU = TR ⇒ ∠TUR = ∠TRU =  = 11° ⇒ ∠RTU = ∠x = 158°.
+
+
+Question 45 Medium
+The correct answer is 65. 
+  
+In triangle ACD, AC = CD ⇒ ∠CAD = ∠CDA =  = 36
+In triangle DBE, ∠DEB = 180 - ∠EBC - ∠CDA = 180 - 29 - 36 = 115
+⇒ x = 180 - 115 = 65
+
+
+Question 46 Medium
+The correct answer is 262672. The volume of the space in the cube not taken up by the sphere is equal to the difference between the volume of the cube and the solid sphere. 
+⇒ 
+
+
+Question 47 Medium
+The correct answer is C. 
+⇒ x = 17.5 
+
+
+Question 48 Medium
+The correct answer is 3456. 
+⇒ 
+
+
+Question 49 Medium
+The correct answer is 242. 
+  
+Triangle XYZ is right at Y ⇒ 
+
+⇒ k = 242.
+
+
+Question 50 Medium
+The correct answer is D. 
+1 meter = 3.28 feet
+⇒ 
+⇒  ⇒ 
+
+⇒  ⇒ ? = 0.40 .
+
+
+Question 51 Medium
+The correct answer is 127. 
+  
+Line r // line s and both are intersected by line t ⇒ y = x’ = 180 - x 
+⇒  
+
+
+
+Question 52 Medium
+The correct answer is A. 
+  
+diagonal = 
+diameter = a =  ⇒ R= 
+⇒ .
+
+
+Question 53 Medium
+The correct answer is C. 
+
+⇒  ⇒ 
+
+
+Question 54 Medium
+The correct answer is 12. 
+⇒  ⇒  
+
+
+Question 55 Medium
+The correct answer is D. 
+  
+arc AB + arc AD + arc DC + arc BC = circumference
+⇒ x + y + x + y = 84π
+⇒ x + 2x + x + 2x = 84π ⇒ x = 14π
+arc BC = y = 2x = 2  14π = 28π
+
+
+Question 56 Medium
+The correct answer is B. The sum of the exterior angles in a triangle is equal to the sum of the two non-adjacent interior angles. 
+⇒ ∠PRS = ∠PQR + ∠QPR ⇒ ∠QPR = 158 - 114 = 44.
+
+
+Question 57 Medium
+The correct answer is D. 
+⇒ 
+Question 58 Medium
+The correct answer is 11094. 
+⇒ 
+
+
+Question 59 Medium
+The correct answer is 18.  ⇒ 
+
+
+Question 60 Medium
+The correct answer is D
+  
+
+Looking at the figure, we see that ∠G = ∠L = 30° and GH = LM 
+⇒ To prove that triangle FGH is congruent to triangle KLM, we need to prove that GF = LK or ∠H = ∠M.
+Moreover, we have:  =  and  ⇒ GF = LK ⇒ we don’t need the information of ∠H = ∠M to prove the congruency. 
+⇒ We don’t need any other information.
+
+
+Question 61 Medium
+The correct answer is 2008.
+  
+Top and Bottom area = 
+Front and Back area = 
+Left and right area = 
+⇒ Surface area = Top and Bottom area + Front and Back area + Left and right area
+                          = 832 + 728 + 448 = 2008
+
+
+Question 62 Medium
+The correct answer is 40. Triangle QRS is similar to triangle FGH ⇒ ∠Q = ∠F = 35° ⇒b=35
+Each side of triangle FGH has  the length of its corresponding side in triangle QRS.
+⇒  ⇒ a = 5
+⇒ a + b = 35
+
+
+Question 63 Medium
+The correct answer is 92. An equilateral triangle has:
+height =  ⇒ a =  
+perimeter = 3a =  ⇒ k = 92.
+
+
+Question 64 Medium
+The correct answer is A. 
+⇒    
+Choice A: R=9r and H=8h ⇒  ⇒ incorrect
+Choice B: R=9r and H=64h ⇒  ⇒ incorrect
+Choice C: R=8r and H=9h ⇒  ⇒ correct.
+
+
+Question 65 Medium
+The correct answer is A.  ⇒ center (5;-3) and radius R = 6 
+⇒ 3 units to the right of and 2 units below ⇒ new center (5+3 ; -3 -2 ) = (8;-5)
+⇒ a diameter that is double the diameter of circle P ⇒ 
+⇒ equation : 
+
+
+Question 66 Medium
+The correct answer is A. 
+Because triangles ABC and DEF are similar, ∠A must be equal to ∠D = 26°.
+⇒ I must be true.
+Because triangles ABC and DEF are similar, . However, we cannot determine the value of k ⇒ we cannot know exactly whether AB is equal to DE (=4) or not. 
+⇒ II might be true or might not be true ⇒ II must not be true.
+
+
+Question 67 Medium
+The correct answer is 3.1205. The box does not have a lid ⇒ there are only 5 faces.
+⇒ Exterior surface area = 
+
+
+Question 68 Medium
+The correct answer is C. 
+  
+Circumference = 114π ⇒ diameter = 114 = diagonal = 2a ⇒ a = 57.
+⇒ width = 57 ⇒ 
+⇒ 
+Question 69 Medium
+The correct answer is D.
+(x-a)² + (y - 17)² = r² ⇒ center (a ; 17) and radius r
+center = midpoint of 2 endpoints (a, 11) and (a, d) of diameter.
+⇒  ;  ⇒ d = 23
+  
+
+
+Question 70 Medium
+The correct answer is C. 
+Perimeter of an isosceles right triangle = 2a + a = 18+ 18
+⇒ a = 9 
+Hypotenuse = a = 9   = 18
+
+
+Question 71 Medium
+The correct answer is A.
+  
+In this figure, there are only two types of angles : 7x-250 and 180-(7x-250)= -7x+430
+Choice D is correct. The sum of four angles could be 360°.
+(7x-250+7x-250+(-7x+430)+(-7x+430) = 360°)
+Choice C is correct. The sum of four angles could be -28x + 1720.
+( 4  (-7x+430) = -28x +1720)
+Choice B is correct. The sum of four angles could be 14x - 320
+( 7x-250 + 7x-250 + 7x-250 + (-7x+430) = 14x - 320 )
+Choice A is incorrect. The sum of four angles could not be -14x + 1540
+( -7x+430 + (-7x+430) + (-7x+430) + (7x-250) = -14x + 1040 )
+
+
+Question 72 Medium
+The correct answer is 240. 
+Triangle ABC  Triangle ADE (same ∠A and ∠C=∠E=90)
+⇒  ⇒  
+⇒  
+⇒ 
+
+
+Question 73 Medium
+The correct answer is 4. 
+
+⇒  ⇒ 
+⇒  ⇒ x = 4
+
+
+Question 74 Medium
+The correct answer is D. 
+arc AB =  ⇒ R = 
+⇒ circumference = 2R = 2π   = 72
+
+
+Question 75 Medium
+The correct answer is 9600.
+  
+Triangle PQT  Triangle RQS ⇒  ⇒ 
+
+
+Question 76 Difficult
+The correct answer is D. 
+Triangle BDE is similar to triangle EDC. We already have ∠BDE = ∠EDC ⇒ We need to find one more pair of equal angles. 
+Choice D is correct. If we have s + x = y = w (parallel), ∠DEB = ∠DCE ⇒ enough information to prove triangle BDE is similar to triangle EDC.
+Choice A and B are incorrect. With w + y = x + z and w + x = y + z, we cannot find any relationship between angles.
+Choice C is incorrect. s + x = z but x is equal to z already due to parallelism ⇒ illogical.
+
+
+Question 77 Difficult
+The correct answer is B. 
+  
+In the triangle 1, we have x = 180°- v - (180°- y) = y - v (1)
+In the triangle 2, we have w = 180°- z - (180°- y) = y -z (2)
+(1) and (2) + v < z ⇒ x > w
+
+
+Question 78 Difficult
+The correct answer is .
+  
+ ⇒ 
+
+Triangle ABC is similar to triangle DEF ⇒ 
+⇒ sin(D) = 
+
+
+Question 79 Difficult
+The correct answer is 48. 
+length = 24 feet = 8 yards 
+width = 3 feet = 1 yard
+height = 24 inches = 2 feet =  yards
+⇒ 
+ cubic yards : 256 dollars
+1 cubic yard : ? dollars 
+⇒ ? = 48 dollars.
+
+
+Question 80 Difficult
+The correct answer is 325. 
+∠1 = (∠5 + ∠2) = ∠5 + 180 - ∠6 = 107
+∠2 = 180 - ∠6 = 180 - 139 = 41
+∠3 = 180 - (180 - ∠6) - ∠7 = 68
+∠4 = 180 - ∠7 = 109 
+⇒ ∠1 + ∠2 + ∠3 + ∠4 = 325. 
+
+
+Question 81 Difficult
+The correct answer is A. 
+a + b + 143 = 180 ⇒ a + b = 37 ⇒ a = 37 - b 
+cos(4a) = sin(2b) ⇒ sin(90 - 4a) = sin(2b) 
+⇒ 90 - 4a = 2b ⇒ 90 - 4(37-b) = 2b ⇒ b = 29 ⇒ a = 8.
+
+
+Question 82 Difficult
+The correct answer is D. 
+Volume of n sphere =  
+= Volume right circular cone = 
+⇒ 
+
+
+Question 83 Difficult
+The correct answer is 81/83.
+ The sum of the interior angles of an n-sided polygon is given by: 
+Sum of n interior angles  = (n-2)  180
+83 sides ⇒ Sum of 83 interior angles = (83-2)*180 = 14580
+⇒ each angle = 14580 / 83 = 180p ⇒ p = 81/83
+
+
+Question 84 Difficult
+The correct answer is A. 
+  
+Choice A could NOT be the sum of the measures of any two of these angles. 
+If we want to have -18x, we should use the sum of 180-(9x-190) + 180-(9x-190) to have -18x. However, 180-(9x-190) + 180-(9x-190) = -18x + 740 ⇒ illogical
+Choice B is 180-(9x-190) + 180-(9x-190) = -18x + 740
+Choice C is 9x-190 + 9x-190 = 18x - 380
+Choice D is 9x-190 + 180-(9x-190) = 180
+
+
+Question 85 Difficult
+The correct answer is 704. 
+ ⇒ k = 
+⇒  ⇒ 
+
+
+ ⇒ k=88
+ ⇒ n=792
+⇒ n - k = 704
+
+
+Question 86 Difficult
+The correct answer is B.
+  
+To prove that triangle ABC is congruent to triangle DEF, we need to prove ∠B=∠E or 
+AC = DF. 
+I is not sufficient. That the measures of angles B and C are equal cannot prove triangle ABC is congruent to triangle DEF. If angles B and E are equal, then we can prove.
+II is sufficient. The lengths of sides AC and DF are equal. We have two congruent triangles when two pairs of sides are equal and the included angle is equal.
+III is not sufficient. The lengths of sides BC and EF are equal. This cannot prove triangle ABC is congruent to triangle DEF.
+
+
+Question 87 Difficult
+The correct answer is B. 
+  
+∠B = ∠C (AB=AC)
+∠BED = ∠CFD
+⇒ triangle BED  triangle CFD 
+
+⇒  ⇒ 
+
+
+Question 88 Difficult
+The correct answer is -0.5 or -1/2.
+  
+The value of a is the value of cos(NOM) 
+⇒ cos() = -0.5 ⇒ a=-0.5
+
+
+Question 89 Difficult
+The correct answer is D. 
+  
+F(1;), H(-1;y) ⇒ ∠FGH = 180° =  + k2 
+⇒ possible value is odd multiple of  ⇒ 23
+
+
+Question 90 Difficult
+The correct answer is D.
+To determine triangle similarity, we can use the Angle-Angle (AA) Similarity, Side-Side-Side (SSS) Similarity, or Side-Angle-Side (SAS) Similarity criteria. Here, we'll analyze the given information: 
++ Angles P and S each measure 30°, and the sides QR = 16 and TU = 12. Since the corresponding sides are not proportional yet, we need additional information to check similarity
++ Statement I: The length of PQ is 4/3 the length of ST.
+   If PQ/ST = QR/TU = 4/3, and we already know one pair of corresponding angles (P and S) are equal, the triangles satisfy the SAS similarity criterion. This makes Statement I sufficient.
++ Statement II: The length of PR is 43\frac{4}{3} the length of SU. If PR/SU = QR/TU = 4/3, and we already know one pair of corresponding angles (P and S) are equal, the triangles again satisfy the SAS similarity criterion. This makes Statement II sufficient.
+⇒ Both Statements I and II independently provide enough information to prove triangle similarity. Therefore, the correct answer is: C. I is sufficient, and II is sufficient.
+
+
+Question 91 Difficult
+The correct answer is -1534.
+
+
+ ⇒ a=338, b=1872 ⇒ a-b = 1534.
+
+
+Question 92 Difficult
+The correct answer is C.
+p = (180 - g) + d = 180 - g + d = 37 + d 
+j = (180 - g) + h = 180 - g + h = 37 + h
+h > d ⇒ j > p 
+
+
+Question 93 Difficult
+The correct answer is D. 
+35 inches and 1 inch is 17 miles ⇒ side = 595 miles.
+side smaller = 35*45%=15.75 miles.
+⇒ 
+
+
+Question 94 Difficult
+The correct answer is 39
+  
+4y + 5 + 3x + 5 + 2x + 9 = 180
+⇒ 5x + 4y = 161
+∠PRS = ∠RPQ + ∠PQR = 3x + 5 + 2x + 9 = 5x + 14
+⇒ x + y = 5x + 14 ⇒ -4x + y = 14
+⇒ x = 5 and y = 34 
+⇒ x + y = 39
+
+
+Question 95 Difficult
+The correct answer is 9216.
+The base is an equilateral triangle with sides of 96 ⇒ 
+Each lateral face is also an equilateral triangle with side length 96 ⇒ 
+⇒ 
+⇒ k = 9216
+
+
+Question 96 Difficult
+The correct answer is 48.
+  
+
+One face of the right square pyramid is an isosceles triangle
+⇒ 
+
+
+
+Question 97 Difficult
+The correct answer is A. 
+
+
+
+
+
+
+⇒ difference = 209
+
+
+Question 98 Difficult
+The correct answer is 32/21
+  
+AB is 11 less than AC ⇒ AB = 32-11 = 21.
+⇒ BC = 
+BD * AC = AB * BC ⇒ BD =  
+⇒ 
+
+
+Question 99 Difficult
+The correct answer is 86.5.
+Triangle ABC is right at B and BD is an altitude to AC at D.
+⇒ 
+⇒ 
+⇒

@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 
 import { Icon } from '@/components/ui/Icon';
 import { useHubStore, type ProgramMode } from '@/store/useHubStore';
-import { dayKeyOf, streakDays } from '@/services/hub/daily';
+import { useStreak } from '@/store/useStudyStore';
 import { COSMIC, GLASS_CARD } from './theme';
 
 const PROGRAMS: { id: ProgramMode; label: string; desc: string; icon: string }[] = [
@@ -33,16 +33,13 @@ export function HubScreen({
   scroll?: boolean;
   padBottom?: number;
 }) {
-  const doneByDay = useHubStore((s) => s.doneByDay);
-  const streakCount = useHubStore((s) => s.streakCount);
   const gems = useHubStore((s) => s.gems);
   const trophyScore = useHubStore((s) => s.trophyScore);
   const selectedProgram = useHubStore((s) => s.selectedProgram);
   const setProgram = useHubStore((s) => s.setProgram);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const calculatedStreak = streakDays(doneByDay, dayKeyOf(new Date()));
-  const displayStreak = Math.max(streakCount, calculatedStreak);
+  const displayStreak = useStreak().current;
   const displayTrophy = trophyScore >= 10000 ? '10000+' : String(trophyScore);
 
   const currentProgram = PROGRAMS.find((p) => p.id === selectedProgram) ?? PROGRAMS[1]!;

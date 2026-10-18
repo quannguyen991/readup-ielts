@@ -258,9 +258,11 @@ export default function WritingResultScreen() {
                   <Text className="font-heavy" style={{ fontSize: 52, lineHeight: 58, color: paper.brandMid }}>
                     {formatBand(saved.bandLow)}
                   </Text>
-                  <Text className="font-heavy text-pageTitle text-paper-muted">
-                    –{formatBand(saved.bandHigh)}
-                  </Text>
+                  {saved.bandHigh !== saved.bandLow ? (
+                    <Text className="font-heavy text-pageTitle text-paper-muted">
+                      –{formatBand(saved.bandHigh)}
+                    </Text>
+                  ) : null}
                   <View aria-hidden className="ml-auto items-end gap-2 self-center">
                     <Motion kind="wobble">
                       <Sticker tilt={8}>

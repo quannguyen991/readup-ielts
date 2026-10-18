@@ -936,12 +936,12 @@
   "durationSeconds": null
  },
  {
-  "id": "k3WvhHgXj-w",
-  "title": "Diana: In Her Own Words - A Lasting Legacy (Full Episode) | SPECIAL | National Geographic",
+  "id": "tn7ybEP6fSU",
+  "title": "Phím tắt",
   "channel": "National Geographic",
   "level": "B2",
   "topic": "Thiên nhiên",
-  "durationSeconds": null
+  "durationSeconds": 360
  },
  {
   "id": "YHhGHjLqli4",
@@ -1758,5 +1758,125 @@
   "level": "C1",
   "topic": "Kinh tế và hạ tầng",
   "durationSeconds": 1133
+ },
+ {
+  "id": "av3zdxYvCp8",
+  "title": "Phím tắt",
+  "channel": "TED-Ed",
+  "level": "B1",
+  "topic": "Kiến thức phổ thông",
+  "durationSeconds": 360
+ },
+ {
+  "id": "CelIpn03m1w",
+  "title": "Phím tắt",
+  "channel": "BBC Learning English",
+  "level": "B1",
+  "topic": "Tiếng Anh hằng ngày",
+  "durationSeconds": 360
+ },
+ {
+  "id": "_y9JuojAIg0",
+  "title": "Bạn muốn tham gia kênh này?",
+  "channel": "Kurzgesagt – In a Nutshell",
+  "level": "B2",
+  "topic": "Khoa học",
+  "durationSeconds": 360
+ },
+ {
+  "id": "L39YZQFuKb0",
+  "title": "Phím tắt",
+  "channel": "Vox",
+  "level": "B2",
+  "topic": "Thời sự và xã hội",
+  "durationSeconds": 360
+ },
+ {
+  "id": "NiCgcUTL9_Q",
+  "title": "Phím tắt",
+  "channel": "Veritasium",
+  "level": "B2",
+  "topic": "Khoa học",
+  "durationSeconds": 360
+ },
+ {
+  "id": "OWhZvY6GEK8",
+  "title": "Bạn muốn tham gia kênh này?",
+  "channel": "SciShow",
+  "level": "B1",
+  "topic": "Khoa học",
+  "durationSeconds": 360
+ },
+ {
+  "id": "PXuQ5ZEBfTA",
+  "title": "Phím tắt",
+  "channel": "Wendover Productions",
+  "level": "B2",
+  "topic": "Kinh tế và hạ tầng",
+  "durationSeconds": 360
+ },
+ {
+  "id": "PTMpRcUCvL8",
+  "title": "Phím tắt",
+  "channel": "BBC News",
+  "level": "B2",
+  "topic": "Thời sự và xã hội",
+  "durationSeconds": 360
+ },
+ {
+  "id": "JXyja2nQgfw",
+  "title": "Phím tắt",
+  "channel": "CNN",
+  "level": "B2",
+  "topic": "Thời sự và xã hội",
+  "durationSeconds": 360
+ },
+ {
+  "id": "Oyazqrv__P4",
+  "title": "Phím tắt",
+  "channel": "Vietnam Today",
+  "level": "B1",
+  "topic": "Du lịch & Văn hóa",
+  "durationSeconds": 360
+ },
+ {
+  "id": "h6fcK_fRYaI",
+  "title": "The Immune System Explained I – Bacteria Infection",
+  "channel": "Kurzgesagt – In a Nutshell",
+  "level": "B2",
+  "topic": "Khoa học",
+  "durationSeconds": 408
+ },
+ {
+  "id": "zQGOcOUBi6s",
+  "title": "The Last Human on Earth - Optimistic Nihilism",
+  "channel": "Kurzgesagt – In a Nutshell",
+  "level": "B2",
+  "topic": "Khoa học",
+  "durationSeconds": 371
+ },
+ {
+  "id": "MBRqu0YOH14",
+  "title": "What is Something? - The Vacuum Catastrophe",
+  "channel": "Kurzgesagt – In a Nutshell",
+  "level": "C1",
+  "topic": "Khoa học",
+  "durationSeconds": 586
+ },
+ {
+  "id": "UjtOGPJ0URM",
+  "title": "How Evolution works - Natural Selection",
+  "channel": "Kurzgesagt – In a Nutshell",
+  "level": "B1",
+  "topic": "Khoa học",
+  "durationSeconds": 478
+ },
+ {
+  "id": "sNhhvQGsMEc",
+  "title": "Can You Upload Your Mind Into a Computer?",
+  "channel": "Kurzgesagt – In a Nutshell",
+  "level": "B2",
+  "topic": "Khoa học",
+  "durationSeconds": 572
  }
 ]

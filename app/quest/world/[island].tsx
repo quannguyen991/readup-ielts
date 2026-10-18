@@ -96,7 +96,7 @@ export default function IslandScreen() {
             <View aria-hidden>
               <SealIcon name="compass" color="#22A06B" size={28} />
             </View>
-            <Text className="font-strong text-label text-white">
+            <Text className="font-strong text-label text-[#2A1808]">
               {islandName(island, locale)} · <Text style={{ color: '#FDE047' }}>{island.done}</Text>/{island.missions.length}
             </Text>
           </View>
@@ -109,7 +109,7 @@ export default function IslandScreen() {
       {mission && selected !== null ? (
         <View
           className="absolute bottom-4 self-center rounded-2xl px-4 py-3"
-          style={{ zIndex: 5, width: 460, maxWidth: '94%', backgroundColor: 'rgba(12,12,32,0.92)', borderWidth: 1.5, borderColor: island.color }}
+          style={{ zIndex: 5, width: 460, maxWidth: '94%', backgroundColor: 'rgba(255, 253, 247, 0.96)', borderWidth: 1.5, borderColor: island.color }}
         >
           <View className="flex-row items-center gap-3">
             <View className="h-10 w-10 items-center justify-center rounded-xl" style={{ backgroundColor: mission.done ? '#FACC15' : island.color }}>
@@ -127,7 +127,7 @@ export default function IslandScreen() {
                   </View>
                 ) : null}
               </View>
-              <Text className="font-heavy text-body text-white" numberOfLines={2}>
+              <Text className="font-heavy text-body text-[#2A1808]" numberOfLines={2}>
                 {missionTitle(mission, locale)}
               </Text>
             </View>

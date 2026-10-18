@@ -23,37 +23,36 @@ export type GradeAnswerInput = {
   longPauses: number;
 };
 
-const RUBRIC = `TIÊU CHÍ IELTS SPEAKING (rút gọn):
+const RUBRIC = `TIÊU CHÍ IELTS SPEAKING — theo mô tả band công khai của IELTS (band 4–9). Chấm từng tiêu chí, mỗi tiêu chí một số nguyên hoặc x,5. Không tự cộng tổng: app tính band tổng từ bốn tiêu chí.
 
 Fluency & Coherence (fc)
-- 5: nói được nhưng chậm, lặp, tự sửa nhiều; lạm dụng vài từ nối; câu trả lời ngắn.
-- 6: sẵn lòng nói dài; đôi khi mất mạch vì ngập ngừng/lặp; từ nối có nhưng máy móc.
-- 7: nói dài không mấy khó khăn; ngập ngừng đôi khi là để tìm ý chứ không phải tìm từ; từ nối linh hoạt.
-- 8: trôi chảy, hiếm khi lặp hay tự sửa; phát triển ý mạch lạc, đúng trọng tâm.
+- 9: nói trôi chảy, lặp hoặc tự sửa rất hiếm; ngập ngừng chỉ để tìm ý; phát triển chủ đề đầy đủ và mạch lạc.
+- 8: trôi chảy, lặp hoặc tự sửa thỉnh thoảng; ngập ngừng chủ yếu vì nội dung; phát triển chủ đề mạch lạc và đúng trọng tâm.
+- 7: nói dài không mấy khó khăn; có lặp hoặc tự sửa; dùng nhiều từ nối và từ đánh dấu diễn ngôn khá linh hoạt.
+- 6: sẵn lòng nói dài nhưng đôi lúc mất mạch; có lặp, tự sửa, ngập ngừng; từ nối đa dạng nhưng không phải lúc nào cũng đúng chỗ.
+- 5: thường giữ được mạch nhưng dùng nhiều lặp, tự sửa hoặc nói chậm; liên kết câu cơ bản, từ nối lặp đi lặp lại.
+- 4: không trả lời được nếu không ngừng khá lâu; nói chậm, lặp và tự sửa nhiều; liên kết rất cơ bản.
 
 Lexical Resource (lr)
-- 5: đủ nói chủ đề quen nhưng ít linh hoạt; ít paraphrase.
-- 6: đủ vốn để bàn dài; dùng sai đôi chỗ nhưng vẫn rõ nghĩa; paraphrase được phần nào.
-- 7: dùng linh hoạt, có từ ít phổ biến và cụm cố định (idiom, collocation) dù đôi khi chưa chuẩn.
-- 8: vốn từ rộng, dùng chính xác; paraphrase khéo.
+- 9: dùng từ linh hoạt và chính xác; duy trì được thành ngữ tự nhiên, chính xác.
+- 8: vốn từ rộng, dùng trôi chảy và linh hoạt để diễn đạt chính xác; paraphrase khéo; sai sót hiếm.
+- 7: vốn từ dùng linh hoạt; có từ ít gặp và thành ngữ; có ý thức về văn phong và collocation; đôi khi chọn từ chưa chuẩn; paraphrase được.
+- 6: vốn từ đủ để bàn chủ đề; cố paraphrase; có sai chọn từ và collocation nhưng không làm khó hiểu.
+- 5: nói được về chủ đề quen và lạ nhưng vốn từ linh hoạt hạn chế; paraphrase còn ít và chưa thành công.
+- 4: đủ để nói về chủ đề quen nhưng hạn chế; diễn đạt chủ yếu bằng từ cơ bản.
 
 Grammatical Range & Accuracy (gr)
-- 5: câu đơn khá chuẩn; câu phức ít và hay sai.
-- 6: trộn câu đơn và câu phức nhưng linh hoạt còn hạn chế; lỗi thường gặp nhưng hiếm khi gây khó hiểu.
-- 7: nhiều dạng câu phức; nhiều câu không lỗi dù vẫn còn vài lỗi.
-- 8: đa dạng, phần lớn câu không lỗi.
+- 9: đa dạng cấu trúc, chính xác và linh hoạt; nhất quán không lỗi; lỗi nhỏ không hệ thống rất hiếm.
+- 8: nhiều cấu trúc, linh hoạt; đa số câu không lỗi; thỉnh thoảng có lỗi nhỏ không hệ thống.
+- 7: nhiều cấu trúc câu phức linh hoạt; nhiều câu không lỗi; kiểm soát tốt, lỗi ít và không làm khó hiểu.
+- 6: trộn câu đơn và câu phức nhưng còn hạn chế về linh hoạt; lỗi thường gặp nhưng hiếm khi gây khó hiểu.
+- 5: câu cơ bản dùng khá đúng; câu phức ít và chính xác hạn chế; lỗi thường xuyên, có lúc gây khó hiểu.
+- 4: cấu trúc cơ bản, chính xác hạn chế.
 
-Pronunciation (pr) — BẠN KHÔNG NGHE ĐƯỢC GIỌNG. Chỉ ước lượng từ bản chữ do bộ nhận
-giọng tạo ra: đoạn trong ⟨ ⟩ là chỗ máy nghe không chắc; từ lạc nghĩa, sai chỗ, vô lý
-trong ngữ cảnh thường là dấu hiệu máy nghe nhầm vì phát âm chưa rõ. Không có dấu hiệu
-gì thì cho mức trung tính bằng khoảng trung bình ba tiêu chí kia. Nói rõ trong
-explanationVi rằng đây là ước lượng.
+Pronunciation (pr) — BẠN KHÔNG NGHE ĐƯỢC GIỌNG. Chỉ ước lượng từ bản chữ do bộ nhận giọng tạo ra: đoạn trong ⟨ ⟩ là chỗ máy nghe không chắc; từ lạc nghĩa, sai chỗ, vô lý trong ngữ cảnh thường là dấu hiệu máy nghe nhầm vì phát âm chưa rõ. Không có dấu hiệu gì thì cho mức trung tính bằng khoảng trung bình ba tiêu chí kia. Nói rõ trong explanationVi rằng đây là ước lượng.
 
-Chấm CHẶT như giám khảo thật. Phân vân giữa hai mức thì chọn mức thấp hơn. Câu trả
-lời ngắn cụt (Part 1 dưới ~20 từ, Part 3 dưới ~35 từ, Part 2 dưới ~110 từ) phải bị
-trừ ở Fluency & Coherence.
-Bản chữ do máy nhận giọng tạo nên KHÔNG có dấu câu và có thể sai chính tả — đừng trừ
-điểm vì dấu câu hay chính tả.`;
+Chấm CHẶT như giám khảo thật. Phân vân giữa hai mức thì chọn mức thấp hơn. Câu trả lời ngắn cụt (Part 1 dưới ~20 từ, Part 3 dưới ~35 từ, Part 2 dưới ~110 từ) phải bị trừ ở Fluency & Coherence.
+Bản chữ do máy nhận giọng tạo nên KHÔNG có dấu câu và có thể sai chính tả — đừng trừ điểm vì dấu câu hay chính tả.`;
 
 export function speakingSystemPrompt(typed: boolean): string {
   return `Bạn là giám khảo IELTS Speaking giàu kinh nghiệm, viết phiếu chấm cho học viên người Việt.

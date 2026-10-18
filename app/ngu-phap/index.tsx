@@ -1,0 +1,109 @@
+import React, { useState } from 'react';
+import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { router } from 'expo-router';
+
+import { Screen } from '@/components/layout/Screen';
+import { Appear } from '@/components/motion/Motion';
+import { CEFR_LEVELS, GRAMMAR_LESSONS, lessonsOfLevel, type CefrLevel } from '@/data/grammar';
+import { isPassed, useGrammarProgressStore } from '@/store/useGrammarProgressStore';
+
+/** DANH SÁCH NGỮ PHÁP: chọn cấp độ A1 → C2, bấm bài để vào phòng học. */
+
+const INK = '#2B2118';
+const ACCENT = '#B94A70';
+
+export default function GrammarIndex() {
+  const { width } = useWindowDimensions();
+  const wide = width >= 900;
+  const [level, setLevel] = useState<CefrLevel>('A1');
+  const lessons = lessonsOfLevel(level);
+  const counts = (lv: CefrLevel) => GRAMMAR_LESSONS.filter((l) => l.level === lv).length;
+  const best = useGrammarProgressStore((st) => st.best);
+  const passed = (id: string) => isPassed(best, id);
+  const next = GRAMMAR_LESSONS.find((l) => !passed(l.id));
+  const doneCount = GRAMMAR_LESSONS.filter((l) => passed(l.id)).length;
+  const passedIn = (lv: CefrLevel) => lessonsOfLevel(lv).filter((l) => passed(l.id)).length;
+  // Cấp đầu tiên còn bài chưa đạt: đó là chỗ nên học tiếp theo lộ trình.
+  const suggested = CEFR_LEVELS.find((lv) => passedIn(lv) < counts(lv)) ?? null;
+
+  return (
+    <Screen>
+      <View style={{ backgroundColor: '#0F1D33', backgroundImage: 'linear-gradient(120deg, #0F1D33, #22345A)', borderRadius: 26, borderWidth: 2, borderColor: INK, padding: 24, boxShadow: `0 5px 0 ${INK}` } as object}>
+        <Text className="font-heavy" style={{ fontSize: 30, color: '#F3D9A0' }}>Luyện ngữ pháp</Text>
+        <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: '#E9DCC6' }}>
+          Mỗi bài có các bước rõ ràng: định nghĩa, dùng khi nào, quy tắc, lỗi hay mắc, rồi kiểm tra cuối.
+        </Text>
+      </View>
+
+      <View style={{ marginTop: 18, backgroundColor: '#FFFFFF', borderRadius: 20, borderWidth: 2, borderColor: INK, padding: 18, gap: 6, boxShadow: `0 4px 0 ${INK}` } as object}>
+        <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>Tiến độ của bạn: {doneCount} / {GRAMMAR_LESSONS.length} bài đã đạt</Text>
+        <View style={{ height: 8, borderRadius: 4, backgroundColor: '#EFE6D6', overflow: 'hidden' }}>
+          <View style={{ width: `${Math.round((doneCount / GRAMMAR_LESSONS.length) * 100)}%`, height: 8, backgroundColor: ACCENT } as object} />
+        </View>
+        {next ? (
+          <Pressable
+            accessibilityRole="link"
+            onPress={() => router.push(`/ngu-phap/${next.id}` as never)}
+            style={({ pressed }: { pressed: boolean }) => ({ marginTop: 4, flexDirection: 'row', alignItems: 'center', gap: 8, opacity: pressed ? 0.8 : 1 }) as object}
+          >
+            <Text className="font-strong" style={{ fontSize: 12, color: ACCENT, letterSpacing: 0.5 }}>BÀI TIẾP THEO</Text>
+            <Text className="font-heavy" style={{ fontSize: 18, color: INK }}>{next.level} · {next.title} ›</Text>
+          </Pressable>
+        ) : (
+          <Text className="font-heavy" style={{ fontSize: 18, color: INK }}>Bạn đã đạt hết các bài.</Text>
+        )}
+        {suggested && suggested !== level ? (
+          <Pressable accessibilityRole="button" onPress={() => setLevel(suggested)} style={{ alignSelf: 'flex-start' }}>
+            <Text className="font-strong" style={{ fontSize: 14, color: ACCENT }}>Lộ trình gợi ý cấp {suggested} · xem ›</Text>
+          </Pressable>
+        ) : null}
+      </View>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 18 }}>
+        {CEFR_LEVELS.map((lv) => {
+          const on = lv === level;
+          return (
+            <Pressable
+              key={lv}
+              accessibilityRole="button"
+              aria-selected={on}
+              onPress={() => setLevel(lv)}
+              style={{ paddingHorizontal: 16, paddingVertical: 9, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: on ? INK : '#FFFFFF' } as object}
+            >
+              <Text className="font-strong" style={{ color: on ? '#FFFFFF' : INK }}>
+                {lv} · {passedIn(lv)}/{counts(lv)}{lv === suggested ? ' ★' : ''}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+
+      {lessons.length === 0 ? (
+        <Text className="font-sans" style={{ marginTop: 22, fontSize: 16, color: INK }}>Cấp {level} đang được soạn. Bạn có thể học các cấp đã có bài.</Text>
+      ) : (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginTop: 18 }}>
+          {lessons.map((l, i) => (
+            <Appear key={l.id} index={i} style={{ width: wide ? '48%' : '100%' } as object}>
+              <Pressable
+                accessibilityRole="link"
+                onPress={() => router.push(`/ngu-phap/${l.id}` as never)}
+                style={{ backgroundColor: '#FFFFFF', borderRadius: 22, borderWidth: 2, borderColor: INK, padding: 20, gap: 8, boxShadow: `0 5px 0 ${INK}` } as object}
+              >
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3E8D2' }}>
+                    <Text className="font-strong" style={{ color: ACCENT, fontSize: 12 }}>{l.level} · Bài {l.order}</Text>
+                  </View>
+                  {passed(l.id) ? <Text className="font-strong" style={{ color: '#15803D', fontSize: 13 }}>✓ Đã đạt</Text> : null}
+                  <Text className="font-sans" style={{ color: '#6B5E4E', fontSize: 13 }}>{l.minutes} phút</Text>
+                </View>
+                <Text className="font-heavy" style={{ fontSize: 21, lineHeight: 27, color: INK }}>{l.title}</Text>
+                <Text className="font-sans" style={{ fontSize: 14, lineHeight: 20, color: '#4B4036' }}>{l.summary}</Text>
+                <Text className="font-strong" style={{ marginTop: 6, color: ACCENT, fontSize: 15 }}>Vào bài học ›</Text>
+              </Pressable>
+            </Appear>
+          ))}
+        </View>
+      )}
+    </Screen>
+  );
+}

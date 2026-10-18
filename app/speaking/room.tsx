@@ -366,6 +366,8 @@ export default function SpeakingRoom() {
     useSpeakingStore.getState().add(attempt);
     const minutes = Math.round((finishedAt.getTime() - Date.parse(attempt.startedAt)) / 60_000);
     if (minutes > 0) useStudyStore.getState().logStudyTime('practice', Math.min(minutes, 40));
+    // Lượt dưới một phút vẫn là một việc đã làm: không có việc này thì ngày đó không tính vào chuỗi.
+    useStudyStore.getState().logEvent();
     router.replace(`/speaking/result/${attempt.id}` as never);
   };
 

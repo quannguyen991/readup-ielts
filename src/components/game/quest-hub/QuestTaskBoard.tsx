@@ -7,6 +7,7 @@ import { useL } from '@/i18n/useL';
 import { dateKey } from '@/services/gamification/points';
 import { levelProgress, levelForXp, MAX_HEARTS } from '@/services/game/rules';
 import { useGameStore } from '@/store/useGameStore';
+import { useShallow } from 'zustand/react/shallow';
 
 const P = {
   ink: '#513A4A', muted: '#8E7885', border: '#EFCBD7', pink: '#D95D83', blush: '#FFF1F5',
@@ -15,7 +16,8 @@ const P = {
 /** Bảng tác vụ arcade: cấp, điểm hôm nay, XP, tim và các lối luyện nhanh. */
 export function QuestTaskBoard() {
   const { L } = useL();
-  const game = useGameStore((s) => ({ xp: s.xp, hearts: s.hearts, today: s.today, day: s.day }));
+  // useShallow: selector trả object mới mỗi lần, thiếu nó là vòng render vô hạn (React #185) làm trắng trang Quest.
+  const game = useGameStore(useShallow((s) => ({ xp: s.xp, hearts: s.hearts, today: s.today, day: s.day })));
   const level = levelProgress(game.xp);
   const score = game.day === dateKey(new Date()) ? game.today.correct : 0;
   const actions = [
@@ -41,7 +43,7 @@ export function QuestTaskBoard() {
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text className="font-heavy" style={{ fontSize: 17, color: P.ink }}>{L('Nhiệm vụ của bạn', 'Your mission board')}</Text>
-            <Text className="font-medium" style={{ marginTop: 2, fontSize: 12, color: P.muted }}>{L('Mỗi lượt học thêm XP, tiến gần cấp tiếp theo.', 'Earn XP with every study session.')}</Text>
+            <Text className="font-mid" style={{ marginTop: 2, fontSize: 12, color: P.muted }}>{L('Mỗi lượt học thêm XP, tiến gần cấp tiếp theo.', 'Earn XP with every study session.')}</Text>
             <View style={{ marginTop: 8, height: 8, overflow: 'hidden', borderRadius: 6, backgroundColor: '#F5DCE4' }}>
               <View style={{ width: `${Math.round(level.need > 0 ? (level.into / level.need) * 100 : 0)}%`, height: 8, borderRadius: 6, backgroundColor: '#E985A2' }} />
             </View>
@@ -58,9 +60,9 @@ export function QuestTaskBoard() {
         <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}>
           {actions.map((a) => (
             <Pressable key={a.href} accessibilityRole="link" accessibilityLabel={`${a.label}: ${a.detail}`} onPress={() => router.push(a.href as never)} style={{ minWidth: 125, flexGrow: 1, flexBasis: 125, minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 11, paddingVertical: 7, backgroundColor: a.tone, borderWidth: 1, borderColor: '#C85F80', boxShadow: '0 3px 0 rgba(163,64,97,0.18), inset 0 1px 0 rgba(255,255,255,0.4)' } as object}>
-              <Text style={{ width: 24, textAlign: 'center', color: '#FFF', fontSize: 19, fontWeight: '900' }}>{a.glyph}</Text>
+              <Text style={{ width: 24, textAlign: 'center', color: '#2A1808', fontSize: 19, fontWeight: '900' }}>{a.glyph}</Text>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text className="font-heavy" numberOfLines={1} style={{ color: '#FFF', fontSize: 12 }}>{a.label}</Text>
+                <Text className="font-heavy" numberOfLines={1} style={{ color: '#2A1808', fontSize: 12 }}>{a.label}</Text>
                 <Text className="font-semi" numberOfLines={1} style={{ color: '#FFF7FA', fontSize: 9 }}>{a.detail}</Text>
               </View>
               <Icon name="arrow-right" size={13} color="#FFF" strokeWidth={2.7} />

@@ -148,4 +148,5 @@ const verbalLessons: VocabLesson[] = VERBAL_THEMES.map((theme, i) => ({
 export const SAT_MATH_VOCAB_LESSONS = mathLessons;
 const satBookVocabLessons = satBookVocab as unknown as VocabLesson[];
 export const SAT_VERBAL_VOCAB_LESSONS = [...verbalLessons, ...satBookVocabLessons];
-export const SAT_VOCAB_LESSONS: VocabLesson[] = [...mathLessons, ...SAT_VERBAL_VOCAB_LESSONS];
+export const SAT_VOCAB_LESSONS: VocabLesson[] = [...SAT_MATH_VOCAB_LESSONS, ...SAT_VERBAL_VOCAB_LESSONS];
+

@@ -37,7 +37,9 @@ export function QuestJourneyHero() {
 
   // Trước khi hydrate dùng thành phố mặc định (máy chủ không biết hành trình của máy này).
   const station = stationById(hydrated ? st.station : 'hanoi');
-  const route = routeById(st.route).stops.includes(station.id) ? routeById(st.route) : routeOf(station.id);
+  // Tuyến cũng phải chờ hydrate: máy chủ không biết tuyến đã lưu của máy này, lệch chữ là lỗi hydration (React #418).
+  const routeKey = hydrated ? st.route : 'vn';
+  const route = routeById(routeKey).stops.includes(station.id) ? routeById(routeKey) : routeOf(station.id);
   const next = nextOnRoute(route, station.id);
   const time = st.time === 'auto' ? timeOfDayAt(localClock(station.tz, now).h) : st.time;
   const stamps = hydrated ? Object.keys(st.tickets).length : 0;
