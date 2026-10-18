@@ -115,7 +115,9 @@ export function CatSticker({ pose, size = 90, style }: { pose: CatPose; size?: n
   const hydrated = useHydrated();
   const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
   const useChiikawa = hydrated && chiikawa;
-  const lion = hydrated && !useChiikawa && useLionSkin();
+  // Hook gọi luôn, không gọi có điều kiện: nếu không, lượt hydrate đổi số hook và React văng lỗi "reading 'next'".
+  const lionSkin = useLionSkin();
+  const lion = hydrated && !useChiikawa && lionSkin;
   const quiet = useChiikawaQuiet();
   const source = useChiikawa
     ? CHIIKAWA_SOURCES[CHIIKAWA_FOR[pose]]
