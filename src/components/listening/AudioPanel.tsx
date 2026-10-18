@@ -15,10 +15,18 @@ export const fmtTime = (sec: number) => {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 };
 
-/** Thanh tiến độ: chỉ bấm để tua khi `seekable`. */
-function Progress({ audio, seekable }: { audio: SectionAudio; seekable: boolean }) {
+/** Bảng màu phòng thi (khớp thanh công cụ dùng chung). */
+const INK = '#1F1A14';
+const GOLD = '#F2B84B';
+const GOLD_DEEP = '#E0A526';
+
+type Tone = 'brown' | 'gold';
+
+/** Thanh tiến độ: chỉ bấm để tua khi `seekable`. `tone="gold"` cho dải trình phát phòng thi. */
+function Progress({ audio, seekable, tone = 'brown' }: { audio: SectionAudio; seekable: boolean; tone?: Tone }) {
   const [w, setW] = useState(0);
   const pct = audio.duration > 0 ? Math.min(1, audio.current / audio.duration) : 0;
+  const gold = tone === 'gold';
   return (
     <Pressable
       accessibilityRole={seekable ? 'adjustable' : undefined}
@@ -30,22 +38,24 @@ function Progress({ audio, seekable }: { audio: SectionAudio; seekable: boolean 
       }}
       style={{ flex: 1, height: 36, justifyContent: 'center' }}
     >
-      <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE3C8', overflow: 'hidden' }}>
-        <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: themedHex('#B8955A') }} />
+      <View style={{ height: gold ? 8 : 6, borderRadius: 4, backgroundColor: gold ? '#E9E1CD' : '#EFE3C8', overflow: 'hidden' }}>
+        <View style={{ width: `${pct * 100}%`, height: '100%', borderRadius: 4, backgroundColor: gold ? GOLD_DEEP : themedHex('#B8955A') }} />
       </View>
       {seekable ? (
-        <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#8F6E36' }} />
+        <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: gold ? INK : '#8F6E36' }} />
       ) : null}
     </Pressable>
   );
 }
 
-export function PlayButton({ audio, real, size = 56 }: { audio: SectionAudio; real: boolean; size?: number }) {
+export function PlayButton({ audio, real, size = 56, tone = 'brown' }: { audio: SectionAudio; real: boolean; size?: number; tone?: Tone }) {
   const { L } = useL();
   const playing = audio.status === 'playing';
   // Thi thật: đã bắt đầu thì không tạm dừng, hết rồi thì không nghe lại.
   const locked = real && audio.started && (playing || audio.status === 'ended' || audio.status === 'paused');
   const disabled = locked && !(audio.status === 'paused' && audio.blocked);
+  const gold = tone === 'gold';
+  const fg = gold ? INK : '#FFFFFF';
   return (
     <Pressable
       accessibilityRole="button"
@@ -58,16 +68,18 @@ export function PlayButton({ audio, real, size = 56 }: { audio: SectionAudio; re
       }}
       style={{
         width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center',
-        backgroundColor: disabled ? '#D9CDB4' : themedHex('#B8955A'),
+        backgroundColor: disabled ? '#D9CDB4' : gold ? GOLD : themedHex('#B8955A'),
+        borderWidth: gold ? 2 : 0,
+        borderColor: INK,
       }}
     >
       {playing && !disabled ? (
         <View style={{ flexDirection: 'row', gap: size * 0.1 }}>
-          <View style={{ width: size * 0.1, height: size * 0.34, borderRadius: 2, backgroundColor: '#FFFFFF' }} />
-          <View style={{ width: size * 0.1, height: size * 0.34, borderRadius: 2, backgroundColor: '#FFFFFF' }} />
+          <View style={{ width: size * 0.1, height: size * 0.34, borderRadius: 2, backgroundColor: fg }} />
+          <View style={{ width: size * 0.1, height: size * 0.34, borderRadius: 2, backgroundColor: fg }} />
         </View>
       ) : (
-        <Icon name={disabled ? 'lock' : 'play'} size={size * 0.42} color="#FFFFFF" strokeWidth={2.2} />
+        <Icon name={disabled ? 'lock' : 'play'} size={size * 0.42} color={fg} strokeWidth={2.2} />
       )}
     </Pressable>
   );
@@ -101,7 +113,7 @@ export function SpeedChips({ speed, onChange, disabled }: { speed: number; onCha
   );
 }
 
-/** Thẻ âm thanh (máy tính): nút phát, thanh tiến độ, tốc độ, ghi chú chế độ. */
+/** Thẻ âm thanh (dùng ở trang kết quả): nút phát, thanh tiến độ, tốc độ, ghi chú chế độ. */
 export function AudioCard({
   audio, real, speed, onSpeed, title, context, sourceNote, localAudioName, onPickAudio,
 }: {
@@ -211,52 +223,98 @@ export function FallbackNote({ audio }: { audio: SectionAudio }) {
 }
 
 /**
- * Thanh âm thanh dính đáy (điện thoại): nút phát/tạm dừng LỚN 56px bên trái trong
- * tầm ngón cái, thanh tua + giờ ở giữa, rồi -10s / +10s và tốc độ (chạm để đổi vòng).
- * Thi thật: không tua, không đổi tốc độ nên các nút phụ ẩn đi.
+ * Dải trình phát dưới thanh công cụ phòng thi: nút tai nghe (bật/tắt thông tin nguồn
+ * audio), nút phát vàng, mốc giờ, thanh tiến độ, tổng thời lượng, tua -10s/+10s và
+ * tốc độ. Thi thật: không tua, không đổi tốc độ. Nạp tệp và ghi chú nguồn nằm trong
+ * phần thông tin mở bằng nút tai nghe.
  */
-export function AudioBar({
-  audio, real, label, speed = 1, onSpeed,
-}: { audio: SectionAudio; real: boolean; label: string; speed?: number; onSpeed?: (v: number) => void }) {
+export function AudioStrip({
+  audio, real, speed, onSpeed, sourceNote, localAudioName, onPickAudio, narrow = false,
+}: {
+  audio: SectionAudio; real: boolean; speed: number; onSpeed: (v: number) => void;
+  sourceNote?: string; localAudioName?: string; onPickAudio?: () => void; narrow?: boolean;
+}) {
+  const { L } = useL();
+  const [info, setInfo] = useState(false);
   const seekable = !real && (audio.mode === 'file' || audio.mode === 'aoede');
   const next = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length] ?? 1;
-  const small = {
-    minHeight: 44, minWidth: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 22,
-    borderWidth: 1, borderColor: color.borderStrong, backgroundColor: '#FFFFFF',
-  } as const;
+  const pill = {
+    height: 36,
+    minWidth: 40,
+    paddingHorizontal: 10,
+    borderRadius: 18,
+    borderWidth: 1.5,
+    borderColor: INK,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+  };
   return (
-    <View className="border-t border-border bg-surface px-3 py-2">
-      <View className="flex-row items-center gap-2.5">
-        <PlayButton audio={audio} real={real} size={56} />
-        <View className="min-w-0 flex-1">
-          <View className="flex-row items-center justify-between">
-            <Text className="font-nun-strong text-ink" style={{ fontSize: 13 }} numberOfLines={1}>{label}</Text>
-            <Text className="font-nun-mid text-muted" style={{ fontSize: 13, fontVariant: ['tabular-nums'] }}>
-              {fmtTime(audio.current)} / {audio.duration ? fmtTime(audio.duration) : '--:--'}
-            </Text>
-          </View>
-          <Progress audio={audio} seekable={seekable} />
+    <View style={{ borderRadius: 18, borderWidth: 2, borderColor: INK, backgroundColor: '#FFFFFF', paddingHorizontal: 12, paddingVertical: 10, gap: 8 }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={L('Thông tin âm thanh', 'Audio info')}
+          aria-expanded={info}
+          onPress={() => setInfo((v) => !v)}
+          style={{ ...pill, width: 40, paddingHorizontal: 0, backgroundColor: info ? INK : '#FFFFFF' }}
+        >
+          <Icon name="volume" size={17} color={info ? '#FFFFFF' : INK} strokeWidth={2.2} />
+        </Pressable>
+        <PlayButton audio={audio} real={real} size={48} tone="gold" />
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexGrow: 1, flexShrink: 1, flexBasis: narrow ? '100%' : 0, minWidth: 180 }}>
+          <Text className="font-nun-mid" style={{ fontSize: 13, width: 46, color: INK, fontVariant: ['tabular-nums'] }}>{fmtTime(audio.current)}</Text>
+          <Progress audio={audio} seekable={seekable} tone="gold" />
+          <Text className="font-nun-mid" style={{ fontSize: 13, width: 46, textAlign: 'right', color: INK, fontVariant: ['tabular-nums'] }}>
+            {audio.duration ? fmtTime(audio.duration) : '--:--'}
+          </Text>
         </View>
         {seekable ? (
           <>
-            <Pressable accessibilityRole="button" accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} style={small}>
-              <Text className="font-nun-strong text-muted" style={{ fontSize: 13 }}>-10</Text>
+            <Pressable accessibilityRole="button" accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} style={pill}>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: INK }}>-10</Text>
             </Pressable>
-            <Pressable accessibilityRole="button" accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} style={small}>
-              <Text className="font-nun-strong text-muted" style={{ fontSize: 13 }}>+10</Text>
+            <Pressable accessibilityRole="button" accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} style={pill}>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: INK }}>+10</Text>
             </Pressable>
           </>
         ) : null}
-        {!real && onSpeed ? (
-          <Pressable accessibilityRole="button" accessibilityLabel={`Speed ${speed}x`} onPress={() => onSpeed(next)} style={small}>
-            <Text className="font-nun-strong" style={{ fontSize: 13, color: color.primary }}>{speed}x</Text>
+        {!real ? (
+          <Pressable accessibilityRole="button" accessibilityLabel={`Speed ${speed}x`} onPress={() => onSpeed(next)} style={pill}>
+            <Text className="font-nun-strong" style={{ fontSize: 13, color: INK }}>{speed}x</Text>
           </Pressable>
         ) : null}
       </View>
+
       {audio.mode === 'tts' ? (
-        <Text className="mt-1 font-nun-mid" style={{ fontSize: 12, color: '#B26A00' }}>
+        <Text className="font-nun-mid" style={{ fontSize: 12, color: '#B26A00' }}>
           {audio.ttsVoice === 'device' ? 'Giọng thiết bị · chưa có audio gốc' : 'Aoede dự phòng · chưa có audio gốc'}
         </Text>
+      ) : null}
+
+      {info ? (
+        <View style={{ gap: 8, borderTopWidth: 1, borderColor: '#E3DACA', paddingTop: 8 }}>
+          {sourceNote ? <Text className="font-nun" style={{ fontSize: 13, lineHeight: 19, color: '#4A4438' }}>{sourceNote}</Text> : null}
+          {real ? (
+            <Text className="font-nun-mid" style={{ fontSize: 12, color: '#B26A00' }}>
+              {L('Thi thật: nghe một lần, không tạm dừng, không tua.', 'Real test: one listen, no pause, no seeking.')}
+            </Text>
+          ) : null}
+          <FallbackNote audio={audio} />
+          {onPickAudio ? (
+            <View style={{ gap: 4, alignItems: 'flex-start' }}>
+              <Pressable accessibilityRole="button" onPress={onPickAudio} style={{ ...pill, flexDirection: 'row', gap: 6, paddingHorizontal: 14 }}>
+                <Icon name="volume" size={15} color={INK} />
+                <Text className="font-nun-strong" style={{ fontSize: 13, color: INK }}>
+                  {localAudioName ? L('Chọn tệp khác', 'Choose another file') : L('Nạp audio từ thiết bị', 'Load audio from device')}
+                </Text>
+              </Pressable>
+              <Text className="font-nun" style={{ fontSize: 12, color: '#6B6353' }}>
+                {localAudioName ? `${L('Đã chọn', 'Selected')}: ${localAudioName}` : L('Tệp chỉ dùng trong phiên này, không tải lên máy chủ.', 'Used in this session only; the file is not uploaded.')}
+              </Text>
+            </View>
+          ) : null}
+        </View>
       ) : null}
     </View>
   );

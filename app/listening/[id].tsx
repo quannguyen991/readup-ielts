@@ -3,16 +3,17 @@ import { Platform, Pressable, ScrollView, Text, TextInput, View, useWindowDimens
 import { router, useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AudioBar, FallbackNote, SpeedChips } from '@/components/listening/AudioPanel';
-import { SECTION_COLOR, ListeningCover } from '@/components/listening/cover';
+import { ExamToolbar, ExamToolbarButton, EXAM_INK } from '@/components/exam/ExamToolbar';
+import { AudioStrip, FallbackNote, SpeedChips } from '@/components/listening/AudioPanel';
+import { ListeningCover } from '@/components/listening/cover';
 import { Sheet } from '@/components/listening/Sheet';
 import { ListeningResults } from '@/components/listening/ListeningResults';
-import { GroupBlock, qDomId, type SetAnswer } from '@/components/listening/QuestionGroups';
+import { ExamTextCtx, GroupBlock, qDomId, type SetAnswer } from '@/components/listening/QuestionGroups';
 import { useSectionAudio } from '@/components/listening/useSectionAudio';
 import { Button, Icon } from '@/components/ui';
 import { getListeningTest } from '@/data/listening-tests';
 import { answeredNumbers, bandFromScore, scoreSections, sectionNumbers } from '@/services/listening/scoring';
-import type { ListeningAnswers, ListeningAttempt, ListeningGroupType, ListeningSection, ListeningTest } from '@/services/listening/types';
+import type { ListeningAnswers, ListeningAttempt, ListeningSection, ListeningTest } from '@/services/listening/types';
 import { stopPronounce } from '@/services/audio/pronounce';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
@@ -23,10 +24,19 @@ import { allowLeave, useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveG
 /**
  * Phòng thi Listening. Ba pha: `ready` (chọn chế độ) -> `taking` (nghe + làm) ->
  * `done` (điểm, đối chiếu, bản chữ). Mở lại một lượt cũ (`?attempt=`) vào thẳng `done`.
+ *
+ * Giao diện: nền navy, thanh công cụ dùng chung (`ExamToolbar`) ở trên, dải trình phát
+ * ngay dưới, rồi khung kem chứa đề. Chỉ đổi bố cục; logic phát, chấm, nháp, phím tắt
+ * giữ nguyên.
  */
 
 const REVIEW_SECONDS = 30;
-const GREEN = '#16A34A';
+const NAVY = '#0F1D33';
+const INK = EXAM_INK;
+/** Các nền khung đề để chọn trên thanh công cụ (chỉ số đầu là kem mặc định). */
+const PAPER_TONES = ['#FBF7EE', '#FFFFFF', '#F1F6EE', '#EEF2F8'] as const;
+const TEXT_SIZES = [15, 17, 19, 21] as const;
+const NARROW_BELOW = 760;
 
 type Phase = 'ready' | 'taking' | 'done';
 
@@ -36,9 +46,9 @@ export default function ListeningExamScreen() {
   const test = typeof id === 'string' ? getListeningTest(id) : undefined;
   if (!test) {
     return (
-      <SafeAreaView className="flex-1" style={{ backgroundColor: '#F9F7F3' }}>
+      <SafeAreaView className="flex-1" style={{ backgroundColor: NAVY }}>
         <View className="flex-1 items-center justify-center gap-3 p-6">
-          <Text className="font-nun-heavy text-ink" style={{ fontSize: 18 }}>{L('Không tìm thấy đề này.', 'Test not found.')}</Text>
+          <Text className="font-nun-heavy" style={{ fontSize: 18, color: '#FFFFFF' }}>{L('Không tìm thấy đề này.', 'Test not found.')}</Text>
           <Button label={L('Về thư viện Listening', 'Back to Listening')} onPress={() => router.replace('/listening' as never)} />
         </View>
       </SafeAreaView>
@@ -54,7 +64,7 @@ export default function ListeningExamScreen() {
 function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: ListeningTest; sectionParam?: string; taskParam?: string; attemptId?: string; from?: string }) {
   const { L } = useL();
   const { width } = useWindowDimensions();
-  const wide = width >= 1024;
+  const narrow = width < NARROW_BELOW;
 
   const wanted = sectionParam ? Number(sectionParam) : null;
   const taskType = (['gap', 'mcq-one', 'mcq-many', 'matching'] as const).find((type) => type === taskParam) ?? null;
@@ -88,6 +98,12 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   const [finalMeta, setFinalMeta] = useState<{ mode: 'practice' | 'real'; durationSec: number } | null>(
     saved ? { mode: saved.mode, durationSec: saved.durationSec } : null,
   );
+  // Giao diện phòng thi: câu đang làm (viền nổi trên thanh công cụ), cỡ/kiểu chữ, nền khung đề.
+  const [activeQ, setActiveQ] = useState<number | null>(null);
+  const [textSizeIdx, setTextSizeIdx] = useState(0);
+  const [boldText, setBoldText] = useState(false);
+  const [toneIdx, setToneIdx] = useState(0);
+  const textCtx = useMemo(() => ({ size: TEXT_SIZES[textSizeIdx] ?? 15, bold: boldText }), [textSizeIdx, boldText]);
 
   const section = (sections[secIdx] ?? sections[0]) as ListeningSection;
   const hasPreparedAudio = test.source === 'Band 9 Original';
@@ -211,6 +227,24 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   }, [sections]);
   const score = useMemo(() => scoreSections(sections, answers), [sections, answers]);
 
+  // Câu đang làm: câu vừa chạm/điền, không thì câu chưa làm đầu tiên của section.
+  const firstOpen = useMemo(
+    () => sectionNumbers(section).find((n) => !answered.has(n)) ?? null,
+    [section, answered],
+  );
+  const currentQ = activeQ !== null && sectionOf.get(activeQ) === secIdx ? activeQ : firstOpen;
+  const secNums = sectionNumbers(section);
+  const partFirst = secNums.length ? Math.min(...secNums) : 1;
+  const partLast = secNums.length ? Math.max(...secNums) : 1;
+
+  const sourceNote = hasPreparedAudio
+    ? audio.audioFileReady
+      ? L('Audio tạo sẵn bằng Aoede · đề luyện tập nguyên bản của Band 9', 'Pre-generated Aoede audio · original Band 9 practice material')
+      : audio.mode === 'tts'
+        ? L('Audio không tải được; đang dùng giọng đọc trên thiết bị làm dự phòng.', 'Audio could not load; using the device voice as a fallback.')
+        : L('Đang tải audio Aoede đã chuẩn bị sẵn…', 'Loading the pre-generated Aoede audio…')
+    : undefined;
+
   const start = () => {
     playSfx('success');
     setSettings({ realTest: real });
@@ -233,6 +267,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
     const target = sectionOf.get(n) ?? 0;
     if (real && target !== secIdx) return;
     playSfx('tap');
+    setActiveQ(n);
     if (target !== secIdx) goSection(target);
     if (Platform.OS !== 'web') return;
     setTimeout(() => {
@@ -281,6 +316,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
     setRestoredCount(0);
     setReview(null);
     setFinalMeta(null);
+    setActiveQ(null);
     setPhase('ready');
     if (attemptId) router.setParams({ attempt: '' });
   };
@@ -299,40 +335,46 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   const unanswered = allNumbers.length - answered.size;
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: '#F9F7F3' }}>
-      {/* Thanh trên */}
-      <View className="flex-row items-center gap-2 border-b border-border bg-surface px-3 py-2.5" style={{ minHeight: 52 }}>
-        <Pressable accessibilityRole="button" accessibilityLabel={L('Thoát', 'Exit')} onPress={() => { playSfx('back'); exit(); }} className="items-center justify-center rounded-pill bg-canvas" style={{ width: 44, height: 44 }}>
-          <Icon name="close" size={17} color={color.ink} strokeWidth={2.2} />
-        </Pressable>
-        <View className="min-w-0 flex-1">
-          <Text className="font-nun-strong text-ink" style={{ fontSize: 14 }} numberOfLines={1}>{test.title}</Text>
-          <Text className="font-nun text-muted" style={{ fontSize: 12 }} numberOfLines={1}>
-            {sections.length === 1 ? `Section ${sections[0]?.n}` : 'Full test'}
-          </Text>
-        </View>
-        {/* Thi thật (màn rộng): đồng hồ nằm giữa thanh trên như bố cục phòng thi tham chiếu */}
-        {phase === 'taking' && !(real && wide) ? (
-          <ElapsedPill startedAt={startedAt} />
-        ) : null}
-        {phase === 'taking' && real && wide ? (
-          <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, alignItems: 'center' }}>
-            <ElapsedPill startedAt={startedAt} />
+    <SafeAreaView className="flex-1" style={{ backgroundColor: NAVY }}>
+      {/* Thanh trên khi chọn chế độ và khi xem kết quả (lúc làm bài, thanh công cụ thay thế) */}
+      {phase !== 'taking' ? (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, paddingVertical: 10, minHeight: 56 }}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={L('Thoát', 'Exit')}
+            onPress={() => { playSfx('back'); exit(); }}
+            style={{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.1)' }}
+          >
+            <Icon name="close" size={17} color="#FFFFFF" strokeWidth={2.2} />
+          </Pressable>
+          <View style={{ minWidth: 0, flex: 1 }}>
+            <Text className="font-nun-strong" style={{ fontSize: 14, color: '#FFFFFF' }} numberOfLines={1}>{test.title}</Text>
+            <Text className="font-nun" style={{ fontSize: 12, color: '#B8C4D6' }} numberOfLines={1}>
+              {sections.length === 1 ? `Section ${sections[0]?.n}` : 'Full test'}
+            </Text>
           </View>
-        ) : null}
-        {phase !== 'done' ? (
-          <>
-            <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setShowNotes(true); }} className="flex-row items-center justify-center gap-1.5 rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 44 }}>
-              <Icon name="note" size={15} color={color.muted} />
-              {width >= 480 ? <Text className="font-nun-strong text-muted" style={{ fontSize: 12 }}>{L('Xem note', 'Notes')}</Text> : null}
-            </Pressable>
-            <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setShowSettings(true); }} className="flex-row items-center justify-center gap-1.5 rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 44 }}>
-              <Icon name="settings" size={15} color={color.muted} />
-              {width >= 480 ? <Text className="font-nun-strong text-muted" style={{ fontSize: 12 }}>{L('Cài đặt', 'Settings')}</Text> : null}
-            </Pressable>
-          </>
-        ) : null}
-      </View>
+          {phase === 'ready' ? (
+            <>
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => { playSfx('modalOpen'); setShowNotes(true); }}
+                style={{ minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 12, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              >
+                <Icon name="note" size={15} color="#FFFFFF" />
+                {width >= 480 ? <Text className="font-nun-strong" style={{ fontSize: 12, color: '#FFFFFF' }}>{L('Xem note', 'Notes')}</Text> : null}
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => { playSfx('modalOpen'); setShowSettings(true); }}
+                style={{ minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 12, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              >
+                <Icon name="settings" size={15} color="#FFFFFF" />
+                {width >= 480 ? <Text className="font-nun-strong" style={{ fontSize: 12, color: '#FFFFFF' }}>{L('Cài đặt', 'Settings')}</Text> : null}
+              </Pressable>
+            </>
+          ) : null}
+        </View>
+      ) : null}
 
       {phase === 'ready' ? (
         <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 }}>
@@ -403,127 +445,151 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
       ) : null}
 
       {phase === 'taking' ? (
-        <>
-          {sections.length > 1 ? (
-            <View className="flex-row gap-1.5 border-b border-border bg-surface px-3 py-2">
-              {sections.map((sec, i) => (
-                <Pressable
-                  key={sec.n}
-                  accessibilityRole="tab"
-                  aria-selected={i === secIdx}
-                  aria-disabled={real && i !== secIdx}
-                  onPress={() => goSection(i)}
-                  className="items-center justify-center rounded-pill px-4"
-                  style={{ minHeight: 44, backgroundColor: i === secIdx ? SECTION_COLOR[sec.n] : '#F5F1E9', opacity: real && i !== secIdx ? 0.5 : 1 }}
-                >
-                  <Text className="font-nun-strong" style={{ fontSize: 13, color: i === secIdx ? '#FFFFFF' : color.muted }}>Section {sec.n}</Text>
-                </Pressable>
-              ))}
-            </View>
-          ) : null}
+        <View style={{ flex: 1, minHeight: 0, gap: 10, padding: 10 }}>
+          <ExamToolbar
+            onBack={() => { playSfx('back'); exit(); }}
+            parts={sections.map((sec) => ({ key: String(sec.n), label: `Part ${sec.n}` }))}
+            activePart={String(section.n)}
+            onPickPart={(key) => {
+              const i = sections.findIndex((sec) => String(sec.n) === key);
+              if (i >= 0) goSection(i);
+            }}
+            questionNumbers={secNums}
+            answered={answered}
+            current={currentQ}
+            onJump={jump}
+            timer=""
+            timerSlot={<ElapsedPill startedAt={startedAt} />}
+            onSubmit={() => { playSfx('modalOpen'); setConfirm('submit'); }}
+            submitLabel={L('Kiểm tra', 'Check')}
+            typography={{
+              fontLabel: boldText ? L('Chữ đậm', 'Bold text') : L('Chữ thường', 'Regular text'),
+              onCycleFont: () => setBoldText((b) => !b),
+              sizeLabel: `${textCtx.size}px`,
+              onCycleSize: () => setTextSizeIdx((i) => (i + 1) % TEXT_SIZES.length),
+            }}
+            themes={{ swatches: PAPER_TONES, theme: toneIdx, onPick: setToneIdx }}
+            extras={(
+              <>
+                <ExamToolbarButton label={L('Ghi chú', 'Notes')} icon="note" compact={narrow} onPress={() => { playSfx('modalOpen'); setShowNotes(true); }} />
+                <ExamToolbarButton label={L('Cài đặt', 'Settings')} icon="settings" compact={narrow} onPress={() => { playSfx('modalOpen'); setShowSettings(true); }} />
+              </>
+            )}
+          />
+
+          <AudioStrip
+            audio={audio}
+            real={real}
+            speed={speed}
+            onSpeed={(v) => setSettings({ speed: v })}
+            sourceNote={sourceNote}
+            localAudioName={localAudio?.name}
+            onPickAudio={real || hasPreparedAudio ? undefined : chooseLocalAudio}
+            narrow={narrow}
+          />
+          {localAudio || hasPreparedAudio ? null : (
+            <Pressable accessibilityRole="button" onPress={chooseLocalAudio} className="items-center py-1.5">
+              <Text className="font-nun-mid" style={{ fontSize: 13, color: '#FFFFFF', textDecorationLine: 'underline' }}>{L('Chọn file audio của section này', 'Choose audio for this section')}</Text>
+            </Pressable>
+          )}
 
           {review !== null ? (
-            <View className="px-3 py-2" style={{ backgroundColor: '#FEF4E6' }}>
+            <View style={{ paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12, borderWidth: 2, borderColor: INK, backgroundColor: '#FEF4E6' }}>
               <Text className="text-center font-nun-strong" style={{ fontSize: 13, color: '#7A4A00' }}>
                 {review > 0
                   ? L(`Thời gian kiểm tra đáp án: ${review}s`, `Check your answers: ${review}s`)
                   : secIdx < sections.length - 1
                     ? L('Chuyển sang section tiếp theo…', 'Moving to the next section…')
-                    : L('Hết thời gian kiểm tra. Bấm Hoàn thành khi sẵn sàng.', 'Check time is over. Press Finish when ready.')}
+                    : L('Hết thời gian kiểm tra. Bấm Kiểm tra khi sẵn sàng.', 'Check time is over. Press Check when ready.')}
               </Text>
             </View>
           ) : null}
 
-          <View className="min-h-0 flex-1 flex-row">
-            {/* Cột công cụ bên trái (màn rộng), theo bố cục phòng thi tham chiếu */}
-            {wide ? (
-              <View className="items-center gap-3 border-r border-border bg-surface px-3 pt-5" style={{ width: 104 }}>
-                <Text className="font-nun-heavy text-ink" style={{ fontSize: 14 }}>{L('Công cụ', 'Tools')}</Text>
-                <Pressable
-                  accessibilityRole="button"
-                  onPress={() => { playSfx('modalOpen'); setShowNotes(true); }}
-                  className="w-full items-center justify-center gap-1.5 rounded-xl border-2 py-3"
-                  style={{ borderColor: GREEN, backgroundColor: '#F0FBF4' }}
-                >
-                  <Icon name="note" size={20} color={GREEN} />
-                  <Text className="font-nun-strong text-center" style={{ fontSize: 12, color: '#0F7A38' }}>{L('Ghi chú', 'Notes')}</Text>
-                </Pressable>
-              </View>
-            ) : null}
-            <ScrollView className="flex-1" contentContainerStyle={{ padding: 16, paddingBottom: 32 + keyboardInset }} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
-              <View className="w-full self-center" style={{ maxWidth: 820 }}>
-                <Text className="font-nun-heavy text-ink" style={{ fontSize: 20 }}>{`Section ${section.n} — ${section.title}`}</Text>
-                {section.context ? (
-                  <Text className="mb-3 mt-1.5 font-nun text-label text-muted">{section.context}</Text>
-                ) : null}
-                {section.groups.map((g, i) => (
-                  <GroupBlock key={`${section.n}-${i}`} group={g} answers={answers} setAnswer={setAnswer} />
-                ))}
-              </View>
-            </ScrollView>
-          </View>
-
-          {/* Thanh nghe ở đáy, luôn hiện: giống bố cục tham chiếu (tiến độ, lùi/tiến 5s, tốc độ) */}
-          <AudioBar
-            audio={audio}
-            real={real}
-            label={real ? `Section ${section.n} · ${L('Thi thật, nghe một lần', 'Real test, one listen')}` : `Section ${section.n}`}
-            speed={speed}
-            onSpeed={(v) => setSettings({ speed: v })}
-          />
-          {localAudio || hasPreparedAudio ? null : (
-            <Pressable accessibilityRole="button" onPress={chooseLocalAudio} className="items-center bg-surface py-1.5">
-              <Text className="font-nun-mid text-label text-primary-700">{L('Chọn file audio của section này', 'Choose audio for this section')}</Text>
-            </Pressable>
-          )}
-
-          {/* Thanh điều hướng câu — ẩn khi bàn phím đang mở để ô điền không bị đè */}
-          {keyboardInset > 0 && !wide ? null : (
+          {/* Khung kem chứa đề: tiêu đề phần + tên đề ở trên, nội dung cuộn bên trong */}
           <View
-            className="flex-row items-center gap-3 border-t border-border bg-surface px-3 py-2.5"
-            style={Platform.OS === 'web' ? ({ paddingBottom: 'max(10px, env(safe-area-inset-bottom))' } as object) : undefined}
+            style={{
+              flex: 1,
+              minHeight: 0,
+              borderRadius: 18,
+              borderWidth: 2,
+              borderColor: INK,
+              backgroundColor: PAPER_TONES[toneIdx] ?? PAPER_TONES[0],
+              overflow: 'hidden',
+            }}
           >
-            <ScrollView horizontal={!wide} showsHorizontalScrollIndicator={false} className="min-w-0 flex-1" snapToInterval={wide ? undefined : 50} decelerationRate="fast" contentContainerStyle={wide ? { flexWrap: 'wrap', flexDirection: 'row', gap: 6 } : { gap: 6 }}>
-              {allNumbers.map((n) => {
-                const done = answered.has(n);
-                const inSec = sectionOf.get(n) === secIdx;
-                return (
-                  <Pressable
-                    key={n}
-                    accessibilityRole="button"
-                    accessibilityLabel={L(`Câu ${n}`, `Question ${n}`)}
-                    onPress={() => jump(n)}
-                    style={{
-                      width: wide ? 34 : 44, height: wide ? 34 : 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1.5,
-                      borderColor: GREEN, backgroundColor: done ? GREEN : '#FFFFFF', opacity: inSec ? 1 : 0.55,
-                    }}
-                  >
-                    <Text className="font-nun-heavy" style={{ fontSize: 14, color: done ? '#FFFFFF' : '#0F7A38' }}>{n}</Text>
-                  </Pressable>
-                );
-              })}
+            <View
+              style={{
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+                gap: 8,
+                paddingHorizontal: 18,
+                paddingVertical: 12,
+                borderBottomWidth: 1.5,
+                borderColor: '#D9CFBC',
+              }}
+            >
+              <View style={{ minWidth: 0, flexShrink: 1 }}>
+                <Text className="font-nun-heavy" style={{ fontSize: 16, color: INK }}>
+                  {L(`Part ${section.n} · Câu ${partFirst}–${partLast}`, `Part ${section.n} · Questions ${partFirst}–${partLast}`)}
+                </Text>
+                <Text className="font-nun-strong" numberOfLines={1} style={{ marginTop: 2, fontSize: 11, letterSpacing: 0.8, color: '#6B6353', textTransform: 'uppercase' }}>
+                  {section.title}
+                </Text>
+              </View>
+              <View style={{ minWidth: 0, flexShrink: 1, alignItems: 'flex-end' }}>
+                <Text className="font-nun-strong" numberOfLines={1} style={{ fontSize: 11, letterSpacing: 0.8, color: '#6B6353', textTransform: 'uppercase' }}>
+                  {test.title}
+                </Text>
+                {real ? (
+                  <Text className="font-nun-heavy" numberOfLines={1} style={{ marginTop: 2, fontSize: 11, letterSpacing: 0.8, color: '#B26A00', textTransform: 'uppercase' }}>
+                    {L('Thi thật · nghe một lần', 'Real test · one listen')}
+                  </Text>
+                ) : null}
+              </View>
+            </View>
+
+            <ScrollView
+              style={{ flex: 1 }}
+              contentContainerStyle={{ padding: 16, paddingBottom: 32 + keyboardInset }}
+              keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
+            >
+              <ExamTextCtx.Provider value={textCtx}>
+                <View style={{ width: '100%', maxWidth: 880, alignSelf: 'center' }}>
+                  {section.context ? (
+                    <Text className="font-nun" style={{ marginBottom: 14, fontSize: textCtx.size - 1, lineHeight: Math.round((textCtx.size - 1) * 1.5), color: '#4A4438' }}>
+                      {section.context}
+                    </Text>
+                  ) : null}
+                  {section.groups.map((g, i) => (
+                    <GroupBlock key={`${section.n}-${i}`} group={g} answers={answers} setAnswer={setAnswer} onFocusQ={setActiveQ} />
+                  ))}
+                </View>
+              </ExamTextCtx.Provider>
             </ScrollView>
-            <Button label={L('Hoàn thành', 'Finish')} iconRight="check" onPress={() => { playSfx('modalOpen'); setConfirm('submit'); }} />
           </View>
-          )}
-        </>
+        </View>
       ) : null}
 
       {phase === 'done' ? (
         <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
           <View className="w-full self-center" style={{ maxWidth: 1180 }}>
-            <ListeningResults
-              testTitle={`${test.title} · ${sections.length === 1 ? `Section ${sections[0]?.n}` : 'Full test'}`}
-              sections={sections}
-              score={score.score}
-              total={score.total}
-              results={score.results}
-              mode={finalMeta?.mode ?? 'practice'}
-              durationSec={finalMeta?.durationSec ?? 0}
-              onRetry={retry}
-              onLibrary={() => router.replace((from ?? '/listening') as never)}
-              libraryLabel={from ? L('Về thi thử', 'Back to mock test') : undefined}
-            />
+            <View style={{ borderRadius: 18, borderWidth: 2, borderColor: INK, backgroundColor: PAPER_TONES[0], padding: 14 }}>
+              <ListeningResults
+                testTitle={`${test.title} · ${sections.length === 1 ? `Section ${sections[0]?.n}` : 'Full test'}`}
+                sections={sections}
+                score={score.score}
+                total={score.total}
+                results={score.results}
+                mode={finalMeta?.mode ?? 'practice'}
+                durationSec={finalMeta?.durationSec ?? 0}
+                onRetry={retry}
+                onLibrary={() => router.replace((from ?? '/listening') as never)}
+                libraryLabel={from ? L('Về thi thử', 'Back to mock test') : undefined}
+              />
+            </View>
           </View>
         </ScrollView>
       ) : null}
@@ -596,7 +662,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   );
 }
 
-/** Đồng hồ đã làm bài, tự giữ giây (xem ghi chú ở `Exam`). */
+/** Đồng hồ đã làm bài, tự giữ giây (xem ghi chú ở `Exam`). Nằm trong thanh công cụ. */
 function ElapsedPill({ startedAt }: { startedAt: number }) {
   const [sec, setSec] = useState(0);
   useEffect(() => {
@@ -605,9 +671,9 @@ function ElapsedPill({ startedAt }: { startedAt: number }) {
   }, [startedAt]);
   const mmss = `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
   return (
-    <View className="flex-row items-center gap-1.5 rounded-pill px-3" style={{ backgroundColor: '#E8F8EE', minHeight: 36 }}>
-      <Icon name="clock" size={14} color={GREEN} strokeWidth={2.2} />
-      <Text className="font-nun-heavy" style={{ fontSize: 14, color: '#0F7A38', fontVariant: ['tabular-nums'] }}>{mmss}</Text>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 10, height: 34, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: '#FFFFFF' }}>
+      <View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: '#2E9E5B' }} />
+      <Text className="font-nun-heavy" style={{ fontSize: 13, color: INK, fontVariant: ['tabular-nums'] }}>{mmss}</Text>
     </View>
   );
 }
