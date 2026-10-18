@@ -2,13 +2,10 @@
  "voice": "Aoede",
  "model": "gemini-2.5-flash-preview-tts",
  "date": "2026-10-18",
- "scriptHash": "ef856db1348e",
+ "scriptHash": "087ee9d43762",
  "scenes": [
-  "s09",
-  "s10",
-  "s11",
-  "s12"
+  "s05"
  ],
- "coverage": 0.895,
- "duration": 172.1
+ "coverage": 0.929,
+ "duration": 57.3
 }

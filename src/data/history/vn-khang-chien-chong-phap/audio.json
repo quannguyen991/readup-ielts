@@ -21,10 +21,10 @@
     "sceneId": "s11",
     "lang": "en",
     "file": "/history/vn-khang-chien-chong-phap/audio/en/s11.mp3",
-    "voice": "Kore",
-    "engine": "gemini-3.1-flash-tts-preview",
+    "voice": "Aoede",
+    "engine": "gemini-2.5-flash-preview-tts",
     "textSha256": "9ef9abe29baeea27f020f358a0d56936b569310ebba42d3d48978ff6f8c4d06d",
-    "generatedAt": "2026-10-03"
+    "generatedAt": "2026-10-18"
   },
   {
     "sceneId": "s12",
