@@ -54,7 +54,7 @@ function makeRecognition(): Recognition | null {
  * đồng âm, và đó không phải lỗi phát âm của người học.
  *
  * Lượt đọc sai còn được AI giải thích (`askTip`): AI chỉ ra âm lệch và cách sửa,
- * không chấm. Huấn luyện viên đọc lời đó bằng giọng Kore, không có Kore thì
+ * không chấm. Huấn luyện viên đọc lời đó bằng giọng Aoede, không có Aoede thì
  * đọc bằng giọng máy.
  */
 export default function SpeakScreen() {

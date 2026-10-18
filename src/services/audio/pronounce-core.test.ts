@@ -139,9 +139,9 @@ test('tên tệp đoán sẵn chỉ cho từ chữ cái thuần', () => {
 
 /* ---------- Kho clip Gemini ---------- */
 
-test('giọng: Nữ → kore, Nam → fenrir; khoá tra bỏ hoa thường / khoảng trắng / nháy cong', () => {
-  assert.equal(clipVoiceFor('f'), 'kore');
-  assert.equal(clipVoiceFor('m'), 'fenrir');
+test('giọng: mọi giới → aoede; khoá tra bỏ hoa thường / khoảng trắng / nháy cong', () => {
+  assert.equal(clipVoiceFor('f'), 'aoede');
+  assert.equal(clipVoiceFor('m'), 'aoede');
   assert.equal(clipKey('  It’s  Fine '), "it's fine");
 });
 

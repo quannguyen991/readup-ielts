@@ -194,7 +194,7 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
 }
 
 /* ------------------------------------------------------------------ *
- * KHO CLIP GIỌNG GEMINI (giọng B: Nữ = Kore, Nam = Fenrir)
+ * KHO CLIP GIỌNG GEMINI (một giọng cho cả app: Aoede)
  *
  * Mỗi bộ clip là một thư mục tĩnh có `index.json` ánh xạ NGUYÊN VĂN chuỗi
  * (từ / cụm từ / câu) → tên tệp mp3 cùng thư mục. Tải index MỘT lần (lười),
@@ -203,9 +203,9 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
  * ------------------------------------------------------------------ */
 
 export type ClipVoice = 'kore' | 'fenrir' | 'aoede';
-/** Nữ → Aoede, Nam → Fenrir. */
-export function clipVoiceFor(gender: 'f' | 'm'): ClipVoice {
-  return gender === 'm' ? 'fenrir' : 'aoede';
+/** Một giọng cho mọi người: Aoede, không đổi theo giới. */
+export function clipVoiceFor(_gender: 'f' | 'm'): ClipVoice {
+  return 'aoede';
 }
 
 /** Chuẩn hoá khoá tra clip: bỏ khoảng trắng thừa, thường hoá, dấu nháy cong → thẳng. */

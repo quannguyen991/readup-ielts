@@ -1,7 +1,7 @@
 """Thuyết minh tiếng Anh cho một nhóm cảnh lịch sử bằng Gemini TTS (MỘT lượt gọi cho cả nhóm), rồi:
   - cắt thành từng cảnh (căn bằng Whisper có mốc từng chữ, cắt ở khoảng lặng gần nhất trước câu đầu của cảnh kế);
   - ghi mốc câu THẬT (đo từ âm thanh bằng Whisper, không ước lượng theo tốc độ đọc) khi khớp đủ chữ.
-python make_narration.py <topic> <scene ids cách nhau dấu phẩy> [--voice Kore] [--model gemini-3.1-flash-tts-preview] [--reuse]
+python make_narration.py <topic> <scene ids cách nhau dấu phẩy> [--voice Aoede] [--model gemini-2.5-flash-preview-tts] [--reuse]
 Đọc ĐÚNG văn bản đã chốt: nối các đoạn EN của cảnh trong scripts/history/content/scenes_*.py (một đoạn văn mỗi cảnh).
 Ra: public/history/<topic>/audio/en/<sceneId>.mp3 + <sceneId>.sentences.json + _narration-log.json (voice, model, ngày, hash văn bản).
 Khoá đọc từ D:/Claude/.secrets/google-api.key. Chạy bằng D:/khkt-venv-lap/Scripts/python.exe (cần transformers)."""

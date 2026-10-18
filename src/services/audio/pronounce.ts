@@ -234,7 +234,7 @@ export async function playClipUrl(
 }
 
 /**
- * Phát MỘT clip theo đường dẫn bất kỳ (ví dụ `/audio/lines/kore/<tên>.mp3` của huấn luyện viên / câu ví dụ)
+ * Phát MỘT clip theo đường dẫn bất kỳ (ví dụ `/audio/lines/aoede/<tên>.mp3` của huấn luyện viên / câu ví dụ)
  * qua cùng bộ quản lý một-tiếng-một-lúc: dừng tiếng đang đọc rồi mới phát. Trả `true` khi phát được.
  * Muốn tra theo văn bản (từ / cụm / câu → clip của giọng đang chọn) thì dùng `pronounce(text)`.
  */

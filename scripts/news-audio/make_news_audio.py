@@ -1,6 +1,6 @@
 """Báo nói: đọc một bài báo VOA Learning English bằng Gemini TTS, đoạn nào một lượt gọi.
 
-    python scripts/news-audio/make_news_audio.py <id> [<id> ...] [--voice Kore] [--force]
+    python scripts/news-audio/make_news_audio.py <id> [<id> ...] [--voice Aoede] [--force]
 
 VÌ SAO ĐỌC TỪNG ĐOẠN, KHÔNG ĐỌC CẢ BÀI MỘT LƯỢT
 - Biết chính xác đoạn nào bắt đầu và kết thúc ở giây thứ mấy, vì độ dài PCM đo được

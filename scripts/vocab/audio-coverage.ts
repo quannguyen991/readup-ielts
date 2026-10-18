@@ -1,5 +1,5 @@
 /**
- * Đo độ phủ ÂM THANH của từ vựng bộ chủ đề: bao nhiêu từ có clip giọng Gemini (Kore / Fenrir) trong public/audio/words,
+ * Đo độ phủ ÂM THANH của từ vựng bộ chủ đề: bao nhiêu từ có clip giọng Gemini (Aoede) trong public/audio/words,
  * bao nhiêu phải lùi về bản ghi âm gstatic (đoán URL) hoặc giọng máy.
  *   npx tsx scripts/vocab/audio-coverage.ts [--probe 60]   (--probe: thử HTTP thật N từ ngẫu nhiên trên gstatic)
  */
@@ -18,8 +18,6 @@ const load = (v: string) => {
   }
 };
 const norm = (s: string) => s.trim().toLowerCase();
-const kore = new Set(Object.keys(load('kore')).map(norm));
-const fenrir = new Set(Object.keys(load('fenrir')).map(norm));
 const defaultIndex = load(pronunciationVoice.id);
 const defaultClips = new Set(Object.entries(defaultIndex)
   .filter(([, file]) => fs.existsSync(path.join(root, pronunciationVoice.id, file)))
@@ -29,18 +27,14 @@ const all = new Map<string, string>();
 for (const t of VOCAB_TOPICS) for (const w of t.words) all.set(norm(w.word), t.slug);
 const words = [...all.keys()];
 const single = words.filter((w) => /^[a-z'-]+$/.test(w));
-const inKore = words.filter((w) => kore.has(w)).length;
-const inFen = words.filter((w) => fenrir.has(w)).length;
 const inDefault = words.filter((w) => defaultClips.has(w)).length;
 console.log(`tổng từ/cụm khác nhau: ${words.length} (từ đơn: ${single.length}, cụm nhiều chữ: ${words.length - single.length})`);
 console.log(`giọng mặc định ${pronunciationVoice.name}: ${inDefault}/${words.length} = ${((inDefault / words.length) * 100).toFixed(1)}%`);
-console.log(`có clip Kore (Nữ): ${inKore} = ${((inKore / words.length) * 100).toFixed(1)}%`);
-console.log(`có clip Fenrir (Nam): ${inFen} = ${((inFen / words.length) * 100).toFixed(1)}%`);
 
 const arg = process.argv.indexOf('--probe');
 if (arg > 0) {
   const n = Number(process.argv[arg + 1] ?? 60);
-  const pool = single.filter((w) => !kore.has(w));
+  const pool = single.filter((w) => !defaultClips.has(w));
   const pick = Array.from({ length: n }, (_, i) => pool[(i * 7919) % pool.length]!);
   void (async () => {
     let ok = 0;
@@ -52,6 +46,6 @@ if (arg > 0) {
         /* mạng lỗi: tính là không có */
       }
     }
-    console.log(`gstatic (từ đơn chưa có clip Kore): ${ok}/${pick.length} có bản ghi âm = ${((ok / pick.length) * 100).toFixed(0)}%`);
+    console.log(`gstatic (từ đơn chưa có clip Aoede): ${ok}/${pick.length} có bản ghi âm = ${((ok / pick.length) * 100).toFixed(0)}%`);
   })();
 }

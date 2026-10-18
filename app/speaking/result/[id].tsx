@@ -509,7 +509,7 @@ function AnswerCard({ attempt, index, previousAttempt }: { attempt: SpeakingAtte
             </Text>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={playing ? L('Dừng Kore', 'Stop Kore') : L('Nghe bài mẫu bằng Kore', 'Hear the sample in Kore')}
+              accessibilityLabel={playing ? L('Dừng Aoede', 'Stop Aoede') : L('Nghe bài mẫu bằng Aoede', 'Hear the sample in Aoede')}
               onPress={play} className="h-9 w-9 items-center justify-center rounded-pill bg-white">
               <Icon name={playing ? 'close' : 'volume'} size={17} color={SPK.teal} />
             </Pressable>
