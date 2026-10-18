@@ -94,7 +94,7 @@ export function WordFace({ word, hint }: { word: StudyWord; hint?: string }) {
   return (
     <>
       <Text className="font-semi text-label text-muted">{levelLabel(word.band)}</Text>
-      <Text className="mt-3 text-center font-heavy text-hero text-ink">{word.word}</Text>
+      <Text className="mt-3 text-center font-strong text-hero text-ink">{word.word}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">
         {posIpa(word)}
       </Text>
@@ -109,7 +109,7 @@ export function MeaningFace({ word, hint }: { word: StudyWord; hint?: string }) 
   return (
     <>
       <Text className="font-semi text-label text-muted">{L('Từ tiếng Anh là gì?', "What's the English word?")}</Text>
-      <Text className="mt-3 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
+      <Text className="mt-3 text-center font-strong text-pageTitle text-ink">{word.meaningVi}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">{word.pos}</Text>
       {hint ? <Text className="absolute bottom-5 font-sans text-label text-subtle">{hint}</Text> : null}
     </>
@@ -175,13 +175,13 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
     <View>
       {showWord ? (
         <View className="flex-row items-center justify-center gap-2">
-          <Text className="text-center font-heavy text-sectionTitle text-primary-700">
+          <Text className="text-center font-strong text-sectionTitle text-primary-700">
             {word.word} <Text className="font-sans text-body text-muted">{word.ipa}</Text>
           </Text>
           <SpeakButton text={word.word} rate={0.85} size={16} />
         </View>
       ) : null}
-      <Text className="mt-1 text-center font-heavy text-sectionTitle text-ink">{word.meaningVi}</Text>
+      <Text className="mt-1 text-center font-strong text-sectionTitle text-ink">{word.meaningVi}</Text>
 
       <View className="mt-3 gap-2.5">
         {word.example ? (

@@ -225,7 +225,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
               collapsed ? L("Mở rộng thanh bên", "Expand sidebar") : L("Thu gọn thanh bên", "Collapse sidebar")
             }
             onPress={toggle}
-            className="flex-row items-center gap-2 rounded-panel px-2 py-1.5"
+            className={collapsed ? "h-11 w-11 items-center justify-center rounded-panel" : "flex-row items-center gap-2 rounded-panel px-2 py-1.5"}
             style={pixel ? { backgroundColor: pixel.paper, borderWidth: 2, borderColor: pixel.line, borderRadius: pixel.radius } : { backgroundColor: themeConfig.hoverBg }}
           >
             <View

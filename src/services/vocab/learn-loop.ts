@@ -8,10 +8,9 @@
  *   Từ mới chỉ được mở khi KHÔNG có câu nào đến hạn, để khoảng cách hỏi lại không bị rút ngắn.
  * - BẬC CÂU HỎI: trắc nghiệm nghĩa → điền ABCD vào chỗ trống → gõ từ (dạng khó nhất sau cùng).
  *   Từ nào thiếu câu ví dụ có chỗ trống thì bỏ bậc điền, đi thẳng trắc nghiệm → gõ.
- * - ĐÚNG → lên một bậc và được HỎI LẠI sau `RIGHT_GAP` câu, bậc càng cao càng xa
- *   (8, 12, 16…). Làm đúng rồi vẫn quay lại cho tới khi đủ số lần đúng để xong từ.
- * - SAI → tụt một bậc và được HỎI LẠI sau 5 hoặc 6 câu. Sai lần thứ hai thì lùi thành
- *   7 hoặc 8 câu, lần thứ ba trở đi là 9 hoặc 10 câu.
+ * - ĐÚNG → lên một bậc và được HỎI LẠI sau đúng `SPACING` (5) câu khác.
+ * - SAI → tụt một bậc và cũng được HỎI LẠI sau 5 câu; vì tụt bậc nên phải làm thêm một lần
+ *   đúng nữa mới xong từ, tức là sai thì được hỏi thêm một lần.
  * - KHÔNG LẶP NGUYÊN CÂU: lần gặp lại của một từ đổi sang dạng khác với lần trước nếu
  *   còn dạng khác; các phương án luôn được xáo lại (learn.tsx đổi hạt giống theo số câu).
  * - Hai câu liền nhau không cùng một từ khi còn ít nhất ba từ chưa xong. Các câu đến hạn được
@@ -26,14 +25,8 @@ import { activeKinds, type StageKind } from './topic-study';
 /** Các dạng luyện (không tính lật thẻ), từ dễ tới khó. */
 export const PRACTICE_ORDER: readonly StageKind[] = ['mcq', 'fill', 'type'];
 
-/** Sai lần đầu thì hỏi lại sau bấy nhiêu câu (5 hoặc 6). */
-export const WRONG_GAP = 5;
-/**
- * Đúng thì hỏi lại sau `RIGHT_GAP` câu khi vừa lên bậc 1; mỗi bậc sau thêm `RIGHT_GAP_STEP`,
- * cộng thêm 0–2 câu xáo theo hạt giống để nhịp hỏi lại không cứng.
- */
-export const RIGHT_GAP = 8;
-export const RIGHT_GAP_STEP = 4;
+/** Hỏi lại một từ sau bấy nhiêu câu khác, dù đúng hay sai. */
+export const SPACING = 5;
 /** Quá hạn bấy nhiêu câu thì được ưu tiên trước mọi câu khác. */
 const OVERDUE = 3;
 
@@ -101,17 +94,6 @@ function practiceKinds(o: LoopOptions, word: string): StageKind[] {
 export function doneLevel(o: LoopOptions, word: string): number {
   const n = practiceKinds(o, word).length;
   return n === 0 ? 2 : Math.max(2, n);
-}
-
-/** Số câu phải chờ trước khi hỏi lại một từ vừa sai lần thứ `lapses`. */
-export function wrongGap(word: string, lapses: number, seed: number): number {
-  const band = Math.min(Math.max(lapses, 1), 3) - 1;
-  return WRONG_GAP + 2 * band + (mix(seed, word, lapses, 'gap') % 2);
-}
-
-/** Số câu phải chờ sau một lần đúng, khi từ vừa lên bậc `level` (≥ 1). */
-export function rightGap(level: number, word: string, seed: number): number {
-  return RIGHT_GAP + RIGHT_GAP_STEP * Math.max(0, level - 1) + (mix(seed, word, level, 'right') % 3);
 }
 
 function newSlot(word: string): Slot {
@@ -212,7 +194,7 @@ export function answerLoop(state: LoopState, correct: boolean, o: LoopOptions): 
       lastKind: head.kind,
       lastOk: true,
       done,
-      due: done ? Number.POSITIVE_INFINITY : now + rightGap(level, head.word, state.seed),
+      due: done ? Number.POSITIVE_INFINITY : now + SPACING,
     };
   } else {
     const lapses = slot.lapses + 1;
@@ -223,7 +205,7 @@ export function answerLoop(state: LoopState, correct: boolean, o: LoopOptions): 
       lapses,
       lastKind: head.kind,
       lastOk: false,
-      due: now + wrongGap(head.word, lapses, state.seed),
+      due: now + SPACING,
     };
   }
 

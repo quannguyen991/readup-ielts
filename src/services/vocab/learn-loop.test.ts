@@ -9,10 +9,9 @@ import {
   loopDone,
   loopFraction,
   pickNext,
-  rightGap,
   slotOf,
   startLoop,
-  wrongGap,
+  SPACING,
   type LoopItem,
   type LoopOptions,
   type LoopState,
@@ -89,47 +88,6 @@ test('từ mới không chen lên trước câu đang đến hạn; câu đến 
   assert.deepEqual([third.word, third.kind], ['a', 'mcq'], 'tới hạn thì hỏi lại từ vừa chưa nhớ');
 });
 
-test('sai thì hỏi lại sau 5 hoặc 6 câu', () => {
-  const o: LoopOptions = { ...ALL, kinds: ['mcq', 'type'] };
-  const s = startLoop(words.slice(0, 4), 7);
-  const first = pickNext(s, o)!;
-  const after = answerLoop(s, false, o);
-  const gap = slotOf(after, first.word).due - after.now;
-  assert.ok(gap === 5 || gap === 6, `khoảng chờ sau lần sai đầu: ${gap}`);
-});
-
-test('sai lần hai lùi thành 7 hoặc 8 câu, lần ba trở đi là 9 hoặc 10', () => {
-  for (const seed of [1, 2, 3, 99]) {
-    for (const w of ['academic', 'alumni', 'thesis']) {
-      const g1 = wrongGap(w, 1, seed);
-      const g2 = wrongGap(w, 2, seed);
-      const g3 = wrongGap(w, 3, seed);
-      const g9 = wrongGap(w, 9, seed);
-      assert.ok(g1 === 5 || g1 === 6, `lần 1: ${g1}`);
-      assert.ok(g2 === 7 || g2 === 8, `lần 2: ${g2}`);
-      assert.ok(g3 === 9 || g3 === 10, `lần 3: ${g3}`);
-      assert.ok(g9 === 9 || g9 === 10, `lần 9 vẫn không quá 10: ${g9}`);
-    }
-  }
-});
-
-test('đúng cũng hỏi lại, và mỗi bậc thì xa hơn', () => {
-  for (const seed of [1, 2, 3]) {
-    for (const w of ['academic', 'alumni']) {
-      const g1 = rightGap(1, w, seed);
-      const g2 = rightGap(2, w, seed);
-      const g3 = rightGap(3, w, seed);
-      assert.ok(g1 >= 8 && g1 <= 10, `bậc 1: ${g1}`);
-      assert.ok(g2 >= 12 && g2 <= 14, `bậc 2: ${g2}`);
-      assert.ok(g3 >= 16 && g3 <= 18, `bậc 3: ${g3}`);
-    }
-  }
-  const { asked } = run(ALL);
-  const at = asked.map((x, i) => (x.word === 'a' ? i : -1)).filter((i) => i >= 0);
-  // Có đủ các lần gặp lại sau mỗi lần đúng (không chỉ một lần).
-  assert.ok(at.length >= 4);
-});
-
 test('lần gặp lại đổi sang dạng khác nếu còn dạng khác (không hỏi nguyên câu vừa sai)', () => {
   const o: LoopOptions = { ...ALL, kinds: ['mcq', 'fill', 'type'] };
   let s = startLoop(words.slice(0, 2), 5);
@@ -187,3 +145,15 @@ test('đánh dấu xong đúng lúc, thanh tiến độ nhích theo mức', () =
   assert.deepEqual(seen, [0.5, 1]);
   assert.equal(pickNext(s, o), null);
 });
+
+test('mọi lần hỏi lại (đúng hay sai) cách đúng 5 câu', () => {
+  const o: LoopOptions = { ...ALL, kinds: ['mcq', 'type'] };
+  const s = startLoop(words.slice(0, 4), 7);
+  const first = pickNext(s, o)!;
+  const wrong = answerLoop(s, false, o);
+  assert.equal(slotOf(wrong, first.word).due - wrong.now, SPACING);
+  const right = answerLoop(s, true, o);
+  assert.equal(slotOf(right, first.word).due - right.now, SPACING);
+  assert.equal(SPACING, 5);
+});
+

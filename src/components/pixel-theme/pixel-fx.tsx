@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Easing, StyleSheet, Text, View, type StyleProp, type TextStyle } from 'react-native';
+import { Animated, Easing, Platform, StyleSheet, Text, View, type StyleProp, type TextStyle } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 
 /*
@@ -38,13 +38,32 @@ function seeded(seed: number) {
   };
 }
 
-/** Chạy vòng lặp 0 → 1 → 0 của một giá trị hoạt họa; trả về để nơi gọi dừng khi tháo. */
+/*
+  Trên web, hiệu ứng lặp chạy bằng CSS (chỉ transform và opacity, do trình duyệt đẩy sang GPU),
+  không gọi JS mỗi khung hình: nhiều sao cùng lúc vẫn mượt khi cuộn. Máy khác vẫn dùng Animated,
+  nhưng cũng đẩy sang luồng native để không tranh với JS.
+*/
+const PX_CSS_ID = 'readup-pixel-fx';
+const PX_CSS = `
+@keyframes px-twinkle{0%,100%{opacity:.2;transform:translate3d(0,0,0) scale(.8)}50%{opacity:1;transform:translate3d(0,-6px,0) scale(1.1)}}
+@keyframes px-bob{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,var(--px-amp),0)}}
+@media (prefers-reduced-motion:reduce){[data-px]{animation:none!important;opacity:.6!important}}
+`;
+function ensurePxCss() {
+  if (Platform.OS !== 'web' || typeof document === 'undefined' || document.getElementById(PX_CSS_ID)) return;
+  const el = document.createElement('style');
+  el.id = PX_CSS_ID;
+  el.textContent = PX_CSS;
+  document.head.appendChild(el);
+}
+
+/** Chạy vòng lặp 0 → 1 → 0 của một giá trị hoạt họa (máy khác, không dùng trên web); trả về để nơi gọi dừng khi tháo. */
 function loopValue(v: Animated.Value, period: number, delay: number) {
   const anim = Animated.loop(
     Animated.sequence([
       Animated.delay(delay),
-      Animated.timing(v, { toValue: 1, duration: period / 2, easing: Easing.inOut(Easing.quad), useNativeDriver: false }),
-      Animated.timing(v, { toValue: 0, duration: period / 2, easing: Easing.inOut(Easing.quad), useNativeDriver: false }),
+      Animated.timing(v, { toValue: 1, duration: period / 2, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+      Animated.timing(v, { toValue: 0, duration: period / 2, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
     ]),
   );
   anim.start();
@@ -74,12 +93,31 @@ function Twinkle({
   cell: number;
 }) {
   const v = useRef(new Animated.Value(0)).current;
+  useEffect(ensurePxCss, []);
   useEffect(() => {
+    if (Platform.OS === 'web') return;
     const anim = loopValue(v, period, delay);
     return () => anim.stop();
   }, [v, period, delay]);
   // Ô phải là số nguyên, nếu không cạnh SVG bị nhoè.
   const c = Math.max(2, Math.round(cell * size));
+  if (Platform.OS === 'web') {
+    return (
+      <div
+        data-px="1"
+        style={{
+          position: 'absolute',
+          left: `${left}%`,
+          top: `${top}%`,
+          opacity: 0.2,
+          animation: `px-twinkle ${period}ms ease-in-out ${delay}ms infinite`,
+          willChange: 'transform, opacity',
+        }}
+      >
+        <PixelGlyph pattern={pattern} cell={c} color={color} />
+      </div>
+    );
+  }
   return (
     <Animated.View
       style={{
@@ -146,10 +184,26 @@ export function PixelBob({
   delay?: number;
 }) {
   const v = useRef(new Animated.Value(0)).current;
+  useEffect(ensurePxCss, []);
   useEffect(() => {
+    if (Platform.OS === 'web') return;
     const anim = loopValue(v, period, delay);
     return () => anim.stop();
   }, [v, period, delay]);
+  if (Platform.OS === 'web') {
+    return (
+      <div
+        data-px="1"
+        style={{
+          animation: `px-bob ${period}ms ease-in-out ${delay}ms infinite`,
+          ['--px-amp' as string]: `${-amplitude}px`,
+          willChange: 'transform',
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
   return (
     <Animated.View style={{ transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [0, -amplitude] }) }] }}>
       {children}

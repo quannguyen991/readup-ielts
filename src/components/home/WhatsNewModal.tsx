@@ -27,6 +27,7 @@ const CTA_GRADIENT = 'linear-gradient(100deg, #B8955A 0%, #F2C65E 40%, #FFEFB8 5
 const CSS_ID = 'readup-whats-new';
 const CSS = `
 @keyframes wn-shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+[data-wn-shine]{animation:wn-shine 3.6s linear infinite}
 @media (prefers-reduced-motion:reduce){[data-wn-shine]{animation:none!important}}
 `;
 /** Đánh dấu phần chạy ánh kim để CSS ở trên tắt được khi người dùng cần yên. */
@@ -153,7 +154,6 @@ const goldText = (Platform.OS === 'web'
       WebkitBackgroundClip: 'text',
       backgroundClip: 'text',
       color: 'transparent',
-      animation: 'wn-shine 4s linear infinite',
     }
   : { color: GOLD_DEEP }) as never;
 
@@ -238,7 +238,7 @@ export function WhatsNewModal({ onOpen }: { onOpen: (href: string) => void }) {
 
   return (
     <Modal visible={open} transparent animationType="fade" onRequestClose={close}>
-      <View style={styles.backdrop}>
+      <View style={[styles.backdrop, wide ? styles.backdropBlur : null]}>
         <Pressable style={StyleSheet.absoluteFill} onPress={close} accessibilityLabel={L('Đóng', 'Close')} />
         <View style={styles.card} accessibilityRole="none">
           <Pressable onPress={close} accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} style={styles.closeBtn}>
@@ -342,8 +342,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     backgroundColor: 'rgba(26,18,6,0.55)',
-    ...(Platform.OS === 'web' ? ({ backdropFilter: 'blur(6px)' } as object) : {}),
   },
+  // Làm mờ nền tốn GPU: chỉ bật trên màn rộng, điện thoại dùng nền tối đặc.
+  backdropBlur: Platform.OS === 'web' ? ({ backdropFilter: 'blur(6px)' } as object) : {},
   card: {
     width: '100%',
     maxWidth: 940,
@@ -430,7 +431,6 @@ const styles = StyleSheet.create({
       ? ({
           backgroundImage: CTA_GRADIENT,
           backgroundSize: '200% auto',
-          animation: 'wn-shine 3.6s linear infinite',
           boxShadow: '0 10px 24px rgba(184,149,90,0.45)',
           transition: 'transform 180ms ease, box-shadow 180ms ease',
         } as object)
