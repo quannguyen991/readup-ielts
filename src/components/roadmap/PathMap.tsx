@@ -142,7 +142,7 @@ function NodeView({
         } as never)}
       >
         {hasBadge ? (
-          <Image source={{ uri: `/roadmap/badges/${badgeKey}.png` }} resizeMode="contain" accessibilityIgnoresInvertColors style={{ width: 66, height: 66 }} />
+          <Image source={{ uri: `/roadmap/badges/${badgeKey}.webp` }} resizeMode="contain" accessibilityIgnoresInvertColors style={{ width: 66, height: 66 }} />
         ) : (
           <Icon name={iconName} size={node.status === 'done' ? 30 : 28} color="#FFFFFF" strokeWidth={2.4} />
         )}

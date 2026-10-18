@@ -42,7 +42,7 @@ export type InteriorLayout = {
   portal?: { at: IPt; rect: IRect; destination: InteriorZone; spawn: IPt; label: { vi: string; en: string } };
 };
 
-// Đo từ ảnh `/travel/interiors/cafe.small.png` (và restaurant — cùng bố cục): sàn x 30–388, y 62–198; quầy + tủ kính
+// Đo từ ảnh `/travel/interiors/cafe.small.webp` (và restaurant — cùng bố cục): sàn x 30–388, y 62–198; quầy + tủ kính
 // x 135–295, y 52–90; bậc thềm / cửa ở đáy giữa x ~178–242, y 196–226. Loại chưa có ảnh dùng chung các số này.
 const FLOOR: IRect = { x: 30, y: 62, w: 358, h: 136 };
 const DOORWAY: IRect = { x: 178, y: 196, w: 64, h: 30 };

@@ -90,7 +90,7 @@ export function TravelHero() {
         style={{ flex: wide ? 1.35 : undefined, width: wide ? undefined : '100%', aspectRatio: wide ? undefined : MAP_RATIO, minHeight: wide ? 300 : undefined, backgroundColor: '#132C4E' }}
       >
         <Image
-          source={{ uri: '/travel/maps/world.small.png' }}
+          source={{ uri: '/travel/maps/world.small.webp' }}
           resizeMode="cover"
           accessibilityIgnoresInvertColors
           style={[{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }, WEB ? ({ imageRendering: 'pixelated' } as object) : null]}

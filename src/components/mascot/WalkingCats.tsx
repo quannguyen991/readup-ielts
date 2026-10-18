@@ -38,7 +38,7 @@ const CAT_WALK: ImageSourcePropType[] = [
 ];
 
 /** Bốn khung đi bộ của Leo (giao diện vàng kim), public/mascot/lion/lion-walk-1..4.png. */
-const LION_WALK: ImageSourcePropType[] = [1, 2, 3, 4].map((n) => ({ uri: `/mascot/lion/lion-walk-${n}.png` }));
+const LION_WALK: ImageSourcePropType[] = [1, 2, 3, 4].map((n) => ({ uri: `/mascot/lion/lion-walk-${n}.webp` }));
 
 const FRAME_MS = 110;
 const STEP_MS = 110;

@@ -64,7 +64,7 @@ export function WorldMapView({
   return (
     <FsPortal active={fs.active}>
     <View style={fs.active ? { flex: 1, justifyContent: 'center', padding: 8 } : null}>
-    <PixelStage source={{ uri: '/travel/maps/world-clean.png' }} focus={focus} label={L('Bản đồ thế giới', 'World map')} fullscreenButton>
+    <PixelStage source={{ uri: '/travel/maps/world-clean.webp' }} focus={focus} label={L('Bản đồ thế giới', 'World map')} fullscreenButton>
       {(k) => (
         <>
           <WorldAmbient progress={progress} k={k} still={still} hidePlane={!!flight} />

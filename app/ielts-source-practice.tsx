@@ -109,10 +109,10 @@ function getBookCover(title: string, source: string): string {
   if (camMatch && camMatch[1]) {
     const vol = parseInt(camMatch[1], 10);
     if (vol >= 7 && vol <= 20) {
-      return `/books/covers/cam-${vol}.png`;
+      return `/books/covers/cam-${vol}.webp`;
     }
     if (vol >= 1 && vol < 7) {
-      return `/books/covers/cam-7.png`;
+      return `/books/covers/cam-7.webp`;
     }
   }
 
@@ -121,15 +121,15 @@ function getBookCover(title: string, source: string): string {
   if (volMatch && volMatch[1]) {
     const vol = parseInt(volMatch[1], 10);
     if (vol >= 1 && vol <= 10) {
-      return `/books/covers/vol-${vol}.png`;
+      return `/books/covers/vol-${vol}.webp`;
     }
   }
 
   if (s.includes('vol 10') || s.includes('vol10') || s.includes('vol-10')) {
-    return '/books/covers/vol-10.png';
+    return '/books/covers/vol-10.webp';
   }
 
-  return '/books/covers/cam-19.png';
+  return '/books/covers/cam-19.webp';
 }
 
 
@@ -138,7 +138,7 @@ function getBookCover(title: string, source: string): string {
  */
 function FlatCover({ kind, num, width, height, radius = 10 }: { kind: 'CAMBRIDGE' | 'ACTUAL VOL'; num: string; width: number; height: number; radius?: number }) {
   const n = parseInt(num, 10) || 0;
-  const src = `/books/covers-2d/${kind === 'CAMBRIDGE' ? 'cam' : 'vol'}-${n}.png`;
+  const src = `/books/covers-2d/${kind === 'CAMBRIDGE' ? 'cam' : 'vol'}-${n}.webp`;
   return <Image source={{ uri: src }} style={{ width, height, borderRadius: radius }} resizeMode="cover" />;
 }
 
@@ -1145,14 +1145,14 @@ export default function IeltsSourcePracticeScreen() {
                 {/* 8 Saved Cards Grid */}
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
                   {[
-                    { id: 'cambridge-18-test-2', title: 'Cambridge IELTS 18 Reading Test 2', source: 'Cambridge IELTS 18', type: 'CAMBRIDGE', cover: '/books/covers/cam-18.png' },
-                    { id: 'vol-10-reading-test-3', title: 'VOL 10 KEY Reading Test 3', source: 'VOL 10 KEY', type: 'ACTUAL VOL', cover: '/books/covers/vol-10.png' },
-                    { id: 'cambridge-20-listening-test-4', title: 'Cambridge IELTS 20 Listening Test 4', source: 'Cambridge IELTS 20', type: 'CAMBRIDGE', cover: '/books/covers/cam-20.png' },
-                    { id: 'cambridge-19-writing-test-1', title: 'Cambridge IELTS 19 Writing Test 1', source: 'Cambridge IELTS 19', type: 'CAMBRIDGE', cover: '/books/covers/cam-19.png' },
-                    { id: 'cambridge-17-reading-test-1', title: 'Cambridge IELTS 17 Reading Test 1', source: 'Cambridge IELTS 17', type: 'CAMBRIDGE', cover: '/books/covers/cam-17.png' },
-                    { id: 'vol-10-reading-test-5', title: 'VOL 10 KEY Reading Test 5', source: 'VOL 10 KEY', type: 'ACTUAL VOL', cover: '/books/covers/vol-10.png' },
-                    { id: 'cambridge-16-listening-test-2', title: 'Cambridge IELTS 16 Listening Test 2', source: 'Cambridge IELTS 16', type: 'CAMBRIDGE', cover: '/books/covers/cam-16.png' },
-                    { id: 'vol-10-reading-test-6', title: 'VOL 10 KEY Reading Test 6', source: 'VOL 10 KEY', type: 'ACTUAL VOL', cover: '/books/covers/vol-10.png' },
+                    { id: 'cambridge-18-test-2', title: 'Cambridge IELTS 18 Reading Test 2', source: 'Cambridge IELTS 18', type: 'CAMBRIDGE', cover: '/books/covers/cam-18.webp' },
+                    { id: 'vol-10-reading-test-3', title: 'VOL 10 KEY Reading Test 3', source: 'VOL 10 KEY', type: 'ACTUAL VOL', cover: '/books/covers/vol-10.webp' },
+                    { id: 'cambridge-20-listening-test-4', title: 'Cambridge IELTS 20 Listening Test 4', source: 'Cambridge IELTS 20', type: 'CAMBRIDGE', cover: '/books/covers/cam-20.webp' },
+                    { id: 'cambridge-19-writing-test-1', title: 'Cambridge IELTS 19 Writing Test 1', source: 'Cambridge IELTS 19', type: 'CAMBRIDGE', cover: '/books/covers/cam-19.webp' },
+                    { id: 'cambridge-17-reading-test-1', title: 'Cambridge IELTS 17 Reading Test 1', source: 'Cambridge IELTS 17', type: 'CAMBRIDGE', cover: '/books/covers/cam-17.webp' },
+                    { id: 'vol-10-reading-test-5', title: 'VOL 10 KEY Reading Test 5', source: 'VOL 10 KEY', type: 'ACTUAL VOL', cover: '/books/covers/vol-10.webp' },
+                    { id: 'cambridge-16-listening-test-2', title: 'Cambridge IELTS 16 Listening Test 2', source: 'Cambridge IELTS 16', type: 'CAMBRIDGE', cover: '/books/covers/cam-16.webp' },
+                    { id: 'vol-10-reading-test-6', title: 'VOL 10 KEY Reading Test 6', source: 'VOL 10 KEY', type: 'ACTUAL VOL', cover: '/books/covers/vol-10.webp' },
                   ].map((card) => {
                     const isCam = card.type === 'CAMBRIDGE';
                     return (
@@ -1328,7 +1328,7 @@ export default function IeltsSourcePracticeScreen() {
                   }}
                 >
                   <Image
-                    source={{ uri: `/books/covers-2d/${/cambridge/i.test(currentTestMeta?.source ?? '') ? 'cam' : 'vol'}-${numOf(currentTestMeta?.source ?? '') || '20'}.png` }}
+                    source={{ uri: `/books/covers-2d/${/cambridge/i.test(currentTestMeta?.source ?? '') ? 'cam' : 'vol'}-${numOf(currentTestMeta?.source ?? '') || '20'}.webp` }}
                     style={{ width: '100%', height: '100%' }}
                     resizeMode="contain"
                   />

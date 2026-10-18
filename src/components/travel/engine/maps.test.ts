@@ -52,8 +52,8 @@ test('mọi thành phố đều là bản đồ ảnh 418×235 với lưới đi
       assert.equal(r.length, Math.ceil(im.size.w / cell), `${m.id}: độ dài dòng`);
       assert.match(r, /^[#~.]*$/);
     }
-    assert.match(im.src, /^\/travel\/(maps|terrain)\/[a-z]+\.png$/);
-    assert.match(im.smallSrc ?? '', /^\/travel\/(maps|terrain)\/[a-z]+\.small\.png$/);
+    assert.match(im.src, /^\/travel\/(maps|terrain)\/[a-z]+\.webp$/);
+    assert.match(im.smallSrc ?? '', /^\/travel\/(maps|terrain)\/[a-z]+\.small\.webp$/);
   }
 });
 
@@ -259,7 +259,7 @@ test('cảnh đối tượng: sprite có thật, kích thước khớp tệp, v�
     const sc = m.scene!;
     const { w: W, h: H } = m.image!.size;
     for (const [id, sp] of Object.entries(sc.sprites)) {
-      const file = join(process.cwd(), 'public', 'travel', 'sprites', m.id, sp.file ?? `${id}.png`);
+      const file = join(process.cwd(), 'public', 'travel', 'sprites', m.id, sp.file ?? `${id}.webp`);
       assert.ok(existsSync(file), `${m.id}/${id}: thiếu tệp ${file}`);
       const buf = readFileSync(file);
       const fw = buf.readUInt32BE(16);

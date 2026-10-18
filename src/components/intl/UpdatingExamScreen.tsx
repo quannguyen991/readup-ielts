@@ -137,7 +137,7 @@ export function UpdatingExamScreen({ initialExam = 'toeic' }: { initialExam?: Ex
               style={{ boxShadow: '0 8px 24px rgba(217, 119, 6, 0.2)' }}
             >
               <Image
-                source={{ uri: '/mascot/lion/lion-think.png' }}
+                source={{ uri: '/mascot/lion/lion-think.webp' }}
                 style={{ width: 84, height: 84 }}
                 resizeMode="contain"
               />

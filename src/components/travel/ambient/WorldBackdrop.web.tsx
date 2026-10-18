@@ -32,7 +32,7 @@ export function WorldBackdrop() {
     <div aria-hidden style={{ position: 'absolute', inset: 0, overflow: 'hidden', background: '#0A2A44', contain: 'strict' }}>
       <div style={{ position: 'absolute', width: w, height: h, transform: `translate3d(${left}px, ${top}px, 0)`, transition: still ? 'none' : 'transform 1.4s ease-out', willChange: 'transform' }}>
         <img
-          src="/travel/maps/world-clean.png"
+          src="/travel/maps/world-clean.webp"
           alt=""
           width={w}
           height={h}

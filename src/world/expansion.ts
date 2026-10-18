@@ -76,7 +76,7 @@ const civicLots: LotSeed[] = [
 const newLot = (seed: LotSeed): Lot => ({
   ...seed,
   poiId: seed.id,
-  sprite: { id: seed.id, src: `/travel/sprites/hanoi/${seed.sprite}.png`, w: seed.size[0], h: seed.size[1] },
+  sprite: { id: seed.id, src: `/travel/sprites/hanoi/${seed.sprite}.webp`, w: seed.size[0], h: seed.size[1] },
 });
 
 const movePair = (p: Pair, dx: number, dy: number): Pair => [p[0] + dx, p[1] + dy];

@@ -149,7 +149,7 @@ const LION_FOR_STATE: Record<CatState, LionPose> = { idle: 'wave', happy: 'cheer
 export function CatMascot({ size = 120, state = 'idle', pose = 'sit' }: Props) {
   const lion = useLionSkin();
   if (lion) {
-    return <Image source={{ uri: `/mascot/lion/lion-${pose === 'lie' ? 'sleep' : LION_FOR_STATE[state]}.png` }} resizeMode="contain" style={{ width: size, height: size }} accessibilityLabel="Leo" />;
+    return <Image source={{ uri: `/mascot/lion/lion-${pose === 'lie' ? 'sleep' : LION_FOR_STATE[state]}.webp` }} resizeMode="contain" style={{ width: size, height: size }} accessibilityLabel="Leo" />;
   }
   if (pose === 'lie') return <LyingCat size={size} />;
   return (

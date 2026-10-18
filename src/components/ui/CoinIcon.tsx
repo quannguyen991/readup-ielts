@@ -27,7 +27,7 @@ export function CoinIcon({ name, size = 40 }: { name: CoinName; size?: number })
     <Image
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
-      source={{ uri: `/roadmap/icons/${name}.png` }}
+      source={{ uri: `/roadmap/icons/${name}.webp` }}
       resizeMode="contain"
       style={{ width: size, height: size }}
     />

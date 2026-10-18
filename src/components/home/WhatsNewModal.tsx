@@ -59,7 +59,7 @@ const SLIDES: Slide[] = [
     ],
     cta: { vi: 'Mở bộ đề Cambridge', en: 'Open Cambridge tests' },
     href: '/ielts-source-practice',
-    covers: ['/books/covers-2d/cam-19.png', '/books/covers-2d/cam-20.png', '/books/covers-2d/cam-18.png'],
+    covers: ['/books/covers-2d/cam-19.webp', '/books/covers-2d/cam-20.webp', '/books/covers-2d/cam-18.webp'],
   },
   {
     title: { vi: 'Actual Tests, Vol 1–10', en: 'Actual Tests, Vol 1–10' },
@@ -74,7 +74,7 @@ const SLIDES: Slide[] = [
     ],
     cta: { vi: 'Mở Actual Tests', en: 'Open Actual Tests' },
     href: '/ielts-source-practice',
-    covers: ['/books/covers-2d/vol-9.png', '/books/covers-2d/vol-10.png', '/books/covers-2d/vol-8.png'],
+    covers: ['/books/covers-2d/vol-9.webp', '/books/covers-2d/vol-10.webp', '/books/covers-2d/vol-8.webp'],
   },
   {
     title: { vi: 'Đề SAT: thi thử đầy đủ', en: 'SAT: full mock tests' },

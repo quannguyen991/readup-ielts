@@ -70,7 +70,7 @@ import { BOOKS, BOOK_TOTALS } from '@/services/books/catalog';
 import { BOOK_BUNDLE_RULE } from '@/services/books/entitlement';
 
 const LOGO = require('../assets/brand/band9-logo-mark.png');
-const PARIS = { uri: '/travel/maps/paris.png' };
+const PARIS = { uri: '/travel/maps/paris.webp' };
 const THUMBS = [
   ['tokyo', 'Tokyo'],
   ['london', 'London'],
@@ -78,7 +78,7 @@ const THUMBS = [
   ['singapore', 'Singapore'],
   ['rome', 'Rome'],
 ] as const;
-const thumb = (k: string) => ({ uri: k === 'tokyo' || k === 'newyork' ? `/travel/maps/${k}.png` : `/travel/maps/${k}.small.png` });
+const thumb = (k: string) => ({ uri: k === 'tokyo' || k === 'newyork' ? `/travel/maps/${k}.webp` : `/travel/maps/${k}.small.webp` });
 
 /** Chủ đề thật trong kho từ vựng (src/data/seed/vocab-topics). */
 const TOPICS_VI = ['Du lịch', 'Thể thao', 'AI và tương lai', 'Ẩm thực', 'Công nghệ', 'Giải trí', 'Vũ trụ'];

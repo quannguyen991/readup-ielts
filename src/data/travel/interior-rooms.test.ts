@@ -39,7 +39,7 @@ test('khu phụ: cửa hai chiều, điểm xuất hiện đi được, tới đ
 test('khu phụ: mỗi khu có đủ tranh lớn và tranh nhỏ trong public/travel/interiors/<thành phố>', () => {
   for (const [city, rooms] of Object.entries(CITY_BACK_ROOMS)) {
     for (const kind of Object.keys(rooms ?? {})) {
-      for (const file of [`${kind}-back.png`, `${kind}-back.small.png`]) {
+      for (const file of [`${kind}-back.webp`, `${kind}-back.small.webp`]) {
         assert.ok(existsSync(join(process.cwd(), 'public', 'travel', 'interiors', city, file)), `${city}: thiếu tranh ${file}`);
       }
     }

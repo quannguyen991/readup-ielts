@@ -45,7 +45,7 @@ test('vật không chồng lên nhau: phần pixel nhìn thấy của tranh khô
     const sp = scene.sprites[o.sprite];
     assert.ok(sp, `${o.id}: thiếu kích thước sprite ${o.sprite}`);
     const full = spriteRect(o, sp);
-    const b = await opaqueBox(sp.file ?? `${o.sprite}.png`);
+    const b = await opaqueBox(sp.file ?? `${o.sprite}.webp`);
     rects.push({ id: o.id, r: { x: full.x + b.x0 * full.w, y: full.y + b.y0 * full.h, w: (b.x1 - b.x0) * full.w, h: (b.y1 - b.y0) * full.h } });
   }
   const bad: string[] = [];

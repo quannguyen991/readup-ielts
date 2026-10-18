@@ -21,7 +21,7 @@ export function LionMascot({ pose, size = 120 }: { pose: LionPose; size?: number
   }
   return (
     <Image
-      source={{ uri: `/mascot/lion/lion-${pose}.png` }}
+      source={{ uri: `/mascot/lion/lion-${pose}.webp` }}
       resizeMode="contain"
       style={style}
       accessibilityIgnoresInvertColors

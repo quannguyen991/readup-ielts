@@ -159,7 +159,7 @@ test('địa điểm không đặt lên đường lớn (đường chính không
 
 test('công trình có tranh pixel thật: mỗi địa điểm khai báo đều có PNG trong public/travel/sprites/hanoi-art', () => {
   for (const slug of HANOI_ART_SLUGS) {
-    assert.ok(existsSync(join(process.cwd(), 'public', 'travel', 'sprites', 'hanoi-art', `${slug}.png`)), `thiếu tranh ${slug}`);
+    assert.ok(existsSync(join(process.cwd(), 'public', 'travel', 'sprites', 'hanoi-art', `${slug}.webp`)), `thiếu tranh ${slug}`);
     const p = m.pois.find((q) => q.id === `hanoi-${slug}`)!;
     assert.equal(p.sprite, `art:hanoi-art/${slug}`, `${slug}: sprite chưa trỏ tới tranh`);
   }
@@ -169,7 +169,7 @@ test('nhân vật có tranh pixel: mỗi NPC dùng tranh đã có trong public/t
   for (const n of m.npcs) {
     if (!n.sprite.startsWith('art:hanoi-npc/')) continue;
     const slug = n.sprite.slice('art:hanoi-npc/'.length);
-    assert.ok(existsSync(join(process.cwd(), 'public', 'travel', 'sprites', 'hanoi-npc', `${slug}.png`)), `${n.id}: thiếu tranh ${slug}`);
+    assert.ok(existsSync(join(process.cwd(), 'public', 'travel', 'sprites', 'hanoi-npc', `${slug}.webp`)), `${n.id}: thiếu tranh ${slug}`);
   }
 });
 

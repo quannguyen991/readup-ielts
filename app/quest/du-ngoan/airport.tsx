@@ -179,7 +179,7 @@ function Airport() {
       ) : null}
 
       <View style={{ marginBottom: 18 }}>
-        <PixelStage source={{ uri: '/travel/maps/hanoi.png' }} focus={{ x: 200, y: 110 }} label={L('Sân bay Nội Bài', 'Noi Bai Airport')}>
+        <PixelStage source={{ uri: '/travel/maps/hanoi.webp' }} focus={{ x: 200, y: 110 }} label={L('Sân bay Nội Bài', 'Noi Bai Airport')}>
           {(k) => (
             <>
               {regions.map((r) => (

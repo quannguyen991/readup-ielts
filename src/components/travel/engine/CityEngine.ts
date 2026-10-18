@@ -315,7 +315,7 @@ export class CityEngine {
     for (const id of [...map.pois.map((p) => p.sprite), ...map.npcs.map((n) => n.sprite), ...(map.routes ?? []).map((r) => r.sprite)]) {
       if (!id?.startsWith('art:') || artRequested.has(id)) continue;
       artRequested.add(id);
-      void this.atlas.registerImage(id, `/travel/sprites/${id.slice(4)}.png`);
+      void this.atlas.registerImage(id, `/travel/sprites/${id.slice(4)}.webp`);
     }
     this.mode = map.image ? 'image' : 'tile';
     this.stats.mode = this.mode;
@@ -1068,7 +1068,7 @@ export class CityEngine {
     const key = `${this.map.id}/${id}`;
     let p = this.spriteCache.get(key);
     if (!p) {
-      p = loadMapImage(sp.src ?? `/travel/sprites/${this.map.id}/${sp.file ?? `${id}.png`}`)
+      p = loadMapImage(sp.src ?? `/travel/sprites/${this.map.id}/${sp.file ?? `${id}.webp`}`)
         .then((img) => {
           const cr = sp.crop ?? { x: 0, y: 0, w: img.naturalWidth, h: img.naturalHeight };
           const source = makeCanvas(cr.w, cr.h);
@@ -1268,7 +1268,7 @@ export class CityEngine {
     const artDir = (CITY_INTERIOR_ART[parent.id] ?? []).includes(kind) ? `/travel/interiors/${parent.id}` : '/travel/interiors';
     const image = kind === 'garden' || kind === 'landmark' || kind === 'secret'
       ? Promise.reject(new Error('generated outdoor scene'))
-      : loadMapImage(`${artDir}/${kind}.small.png`).catch(() => loadMapImage(`${artDir}/${kind}.png`));
+      : loadMapImage(`${artDir}/${kind}.small.webp`).catch(() => loadMapImage(`${artDir}/${kind}.webp`));
     image
       .then((img) => {
         if (seq !== this.loadSeq || !this.interior) return;
@@ -1321,7 +1321,7 @@ export class CityEngine {
   private loadBackArt(kind: InteriorKind, cityId: string) {
     const base = `/travel/interiors/${cityId}/${kind}-back`;
     const seq = this.loadSeq;
-    loadMapImage(`${base}.small.png`).catch(() => loadMapImage(`${base}.png`))
+    loadMapImage(`${base}.small.webp`).catch(() => loadMapImage(`${base}.webp`))
       .then((img) => {
         if (seq !== this.loadSeq || this.interior?.zone !== 'back') return;
         let src: CanvasImageSource = img;

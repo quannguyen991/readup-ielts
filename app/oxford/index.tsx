@@ -731,7 +731,7 @@ export default function OxfordTopicScreen() {
             }}
           >
             <Image
-              source={{ uri: '/mascot/lion/lion-wave.png' }}
+              source={{ uri: '/mascot/lion/lion-wave.webp' }}
               style={{ width: 52, height: 52 }}
               resizeMode="contain"
             />

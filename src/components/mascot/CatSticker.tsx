@@ -120,7 +120,7 @@ export function CatSticker({ pose, size = 90, style }: { pose: CatPose; size?: n
   const source = useChiikawa
     ? CHIIKAWA_SOURCES[CHIIKAWA_FOR[pose]]
     : lion
-      ? { uri: `/mascot/lion/lion-${LION_FOR[pose]}.png` }
+      ? { uri: `/mascot/lion/lion-${LION_FOR[pose]}.webp` }
       : SOURCES[pose];
   return (
     <View pointerEvents="none" style={[{ width: size, height: size }, useChiikawa && quiet ? { opacity: 0.2 } : null, style] as never}>

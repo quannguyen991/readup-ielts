@@ -97,7 +97,7 @@ export default function HubToday() {
             ) : null}
           </View>
           <Image
-            source={{ uri: '/mascot/lion/lion-wave.png' }}
+            source={{ uri: '/mascot/lion/lion-wave.webp' }}
             resizeMode="contain"
             style={{ width: wide ? 170 : 104, height: wide ? 170 : 104 }}
             accessibilityLabel="Linh vật sư tử"

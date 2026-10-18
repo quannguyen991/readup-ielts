@@ -378,16 +378,16 @@ const TERRAIN_MAPS: Record<TerrainId, CityMap> = {
 
 type BuildingStyle = { market: string; food: string; transit: string; culture: string; garden: string; decor: string };
 const BUILDING_STYLES: Record<NewCityId, BuildingStyle> = {
-  tokyo: { market: '/travel/sprites/singapore2/shophouse.png', food: '/travel/sprites/singapore/hawker.png', transit: '/travel/sprites/singapore/mrt.png', culture: '/travel/sprites/singapore2/temple.png', garden: '/travel/sprites/amsterdam/greenhouse.png', decor: '/travel/sprites/singapore2/mall.png' },
-  seoul: { market: '/travel/sprites/hanoi/dongxuan.png', food: '/travel/sprites/hanoi/pho.png', transit: '/travel/sprites/paris/metro.png', culture: '/travel/sprites/hanoi/oldquarter.png', garden: '/travel/sprites/singapore2/temple.png', decor: '/travel/sprites/amsterdam/row.png' },
-  newyork: { market: '/travel/sprites/london/pub.png', food: '/travel/sprites/london/cafe.png', transit: '/travel/sprites/london/tube.png', culture: '/travel/sprites/london/museum.png', garden: '/travel/sprites/amsterdam/greenhouse.png', decor: '/travel/sprites/london/bridge.png' },
-  istanbul: { market: '/travel/sprites/amsterdam/row.png', food: '/travel/sprites/rome/trattoria.png', transit: '/travel/sprites/amsterdam/station.png', culture: '/travel/sprites/rome/basilica.png', garden: '/travel/sprites/singapore2/temple.png', decor: '/travel/sprites/hanoi/dongxuan.png' },
-  cairo: { market: '/travel/sprites/hanoi/dongxuan.png', food: '/travel/sprites/rome/pizzeria.png', transit: '/travel/sprites/amsterdam/station.png', culture: '/travel/sprites/rome/ruins.png', garden: '/travel/sprites/rome/aqueduct.png', decor: '/travel/sprites/hanoi/oldquarter.png' },
-  sydney: { market: '/travel/sprites/london/pub.png', food: '/travel/sprites/singapore2/beachbar.png', transit: '/travel/sprites/singapore/mrt.png', culture: '/travel/sprites/london/museum.png', garden: '/travel/sprites/danang/resort.png', decor: '/travel/sprites/singapore2/shophouse.png' },
-  mexicocity: { market: '/travel/sprites/hanoi/oldquarter.png', food: '/travel/sprites/hochiminh/comtam.png', transit: '/travel/sprites/paris/metro.png', culture: '/travel/sprites/rome/basilica.png', garden: '/travel/sprites/danang/resort.png', decor: '/travel/sprites/singapore2/shophouse.png' },
-  rio: { market: '/travel/sprites/singapore2/beachbar.png', food: '/travel/sprites/paris/cafe.png', transit: '/travel/sprites/danang/airport.png', culture: '/travel/sprites/rome/ruins.png', garden: '/travel/sprites/danang/resort.png', decor: '/travel/sprites/singapore2/shophouse.png' },
-  capetown: { market: '/travel/sprites/london/pub.png', food: '/travel/sprites/singapore2/beachbar.png', transit: '/travel/sprites/london/bridge.png', culture: '/travel/sprites/london/museum.png', garden: '/travel/sprites/amsterdam/greenhouse.png', decor: '/travel/sprites/singapore2/shophouse.png' },
-  marrakech: { market: '/travel/sprites/hanoi/dongxuan.png', food: '/travel/sprites/rome/trattoria.png', transit: '/travel/sprites/amsterdam/station.png', culture: '/travel/sprites/rome/basilica.png', garden: '/travel/sprites/amsterdam/greenhouse.png', decor: '/travel/sprites/hanoi/oldquarter.png' },
+  tokyo: { market: '/travel/sprites/singapore2/shophouse.webp', food: '/travel/sprites/singapore/hawker.webp', transit: '/travel/sprites/singapore/mrt.webp', culture: '/travel/sprites/singapore2/temple.webp', garden: '/travel/sprites/amsterdam/greenhouse.webp', decor: '/travel/sprites/singapore2/mall.webp' },
+  seoul: { market: '/travel/sprites/hanoi/dongxuan.webp', food: '/travel/sprites/hanoi/pho.webp', transit: '/travel/sprites/paris/metro.webp', culture: '/travel/sprites/hanoi/oldquarter.webp', garden: '/travel/sprites/singapore2/temple.webp', decor: '/travel/sprites/amsterdam/row.webp' },
+  newyork: { market: '/travel/sprites/london/pub.webp', food: '/travel/sprites/london/cafe.webp', transit: '/travel/sprites/london/tube.webp', culture: '/travel/sprites/london/museum.webp', garden: '/travel/sprites/amsterdam/greenhouse.webp', decor: '/travel/sprites/london/bridge.webp' },
+  istanbul: { market: '/travel/sprites/amsterdam/row.webp', food: '/travel/sprites/rome/trattoria.webp', transit: '/travel/sprites/amsterdam/station.webp', culture: '/travel/sprites/rome/basilica.webp', garden: '/travel/sprites/singapore2/temple.webp', decor: '/travel/sprites/hanoi/dongxuan.webp' },
+  cairo: { market: '/travel/sprites/hanoi/dongxuan.webp', food: '/travel/sprites/rome/pizzeria.webp', transit: '/travel/sprites/amsterdam/station.webp', culture: '/travel/sprites/rome/ruins.webp', garden: '/travel/sprites/rome/aqueduct.webp', decor: '/travel/sprites/hanoi/oldquarter.webp' },
+  sydney: { market: '/travel/sprites/london/pub.webp', food: '/travel/sprites/singapore2/beachbar.webp', transit: '/travel/sprites/singapore/mrt.webp', culture: '/travel/sprites/london/museum.webp', garden: '/travel/sprites/danang/resort.webp', decor: '/travel/sprites/singapore2/shophouse.webp' },
+  mexicocity: { market: '/travel/sprites/hanoi/oldquarter.webp', food: '/travel/sprites/hochiminh/comtam.webp', transit: '/travel/sprites/paris/metro.webp', culture: '/travel/sprites/rome/basilica.webp', garden: '/travel/sprites/danang/resort.webp', decor: '/travel/sprites/singapore2/shophouse.webp' },
+  rio: { market: '/travel/sprites/singapore2/beachbar.webp', food: '/travel/sprites/paris/cafe.webp', transit: '/travel/sprites/danang/airport.webp', culture: '/travel/sprites/rome/ruins.webp', garden: '/travel/sprites/danang/resort.webp', decor: '/travel/sprites/singapore2/shophouse.webp' },
+  capetown: { market: '/travel/sprites/london/pub.webp', food: '/travel/sprites/singapore2/beachbar.webp', transit: '/travel/sprites/london/bridge.webp', culture: '/travel/sprites/london/museum.webp', garden: '/travel/sprites/amsterdam/greenhouse.webp', decor: '/travel/sprites/singapore2/shophouse.webp' },
+  marrakech: { market: '/travel/sprites/hanoi/dongxuan.webp', food: '/travel/sprites/rome/trattoria.webp', transit: '/travel/sprites/amsterdam/station.webp', culture: '/travel/sprites/rome/basilica.webp', garden: '/travel/sprites/amsterdam/greenhouse.webp', decor: '/travel/sprites/hanoi/oldquarter.webp' },
 };
 
 // The new cities use the same walkable, top-down 2D layout as the established maps.
@@ -470,7 +470,7 @@ const POI_BUILDING_SLOTS = [
 function spriteForSpot(id: NewCityId, kind: PoiKind, index: number, dimensions?: Pick<SceneSprite, 'w' | 'h'>): SceneSprite {
   const style = BUILDING_STYLES[id];
   const src = index === 0
-    ? `/travel/sprites/${id}/${id}-landmark.png`
+    ? `/travel/sprites/${id}/${id}-landmark.webp`
     : kind === 'market'
       ? style.market
       : kind === 'station'
@@ -552,8 +552,8 @@ function buildLegacyCity(id: NewCityId): CityMap {
   });
 
   const terrain = TERRAIN_SOURCE[id];
-  map.image!.src = `/travel/terrain/${terrain}.png`;
-  map.image!.smallSrc = `/travel/terrain/${terrain}.small.png`;
+  map.image!.src = `/travel/terrain/${terrain}.webp`;
+  map.image!.smallSrc = `/travel/terrain/${terrain}.small.webp`;
   map.scene = { sprites, objects, ambient: 3 };
   return map;
 }
@@ -602,7 +602,7 @@ function buildCity(id: NewCityId): CityMap {
   for (const [spriteId, sprite] of Object.entries(templateScene.sprites)) {
     sprites[spriteId] = {
       ...sprite,
-      src: sprite.src ?? '/travel/sprites/' + terrainId + '/' + (sprite.file ?? spriteId + '.png'),
+      src: sprite.src ?? '/travel/sprites/' + terrainId + '/' + (sprite.file ?? spriteId + '.webp'),
     };
   }
 

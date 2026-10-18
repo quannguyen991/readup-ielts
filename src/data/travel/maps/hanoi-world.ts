@@ -102,7 +102,7 @@ const objects: MapObject[] = world.objects.map((item) => {
   if (!sprite) {
     const px = decorSprite(item.kind, item.variant);
     if (!px) throw new Error(`Missing Hanoi world prop sprite ${spriteKey}`);
-    sprite = { src: `${PROP_BASE}/${item.kind}-${item.variant}.png`, w: px.w, h: px.h };
+    sprite = { src: `${PROP_BASE}/${item.kind}-${item.variant}.webp`, w: px.w, h: px.h };
     props.set(spriteKey, sprite);
     sprites[spriteKey] = sprite;
   }
@@ -196,8 +196,8 @@ const map: CityMap = imageMap({
   mask: { cell: TILE, rows },
 });
 
-map.image!.src = `${TERRAIN_BASE}.png`;
-map.image!.smallSrc = `${TERRAIN_BASE}.small.png`;
+map.image!.src = `${TERRAIN_BASE}.webp`;
+map.image!.smallSrc = `${TERRAIN_BASE}.small.webp`;
 map.image!.lights = world.objects.filter((item) => item.kind === 'lamp').filter((_, i) => i % 2 === 0).map((item) => ({ x: item.px, y: item.py - 16, r: 38 }));
 map.scene = { sprites, objects, ambient: 12 };
 

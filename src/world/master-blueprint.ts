@@ -18,7 +18,7 @@ const lot = (
   portalTo?: string,
 ): Lot => ({
   id, name, x, y, w, h, poiId: id, district,
-  sprite: { id, src: `/travel/sprites/hanoi/${sprite}.png`, w: size[0], h: size[1] },
+  sprite: { id, src: `/travel/sprites/hanoi/${sprite}.webp`, w: size[0], h: size[1] },
   ...(portalTo ? { portalTo } : {}),
 });
 
