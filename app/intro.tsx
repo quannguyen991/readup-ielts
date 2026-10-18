@@ -42,7 +42,7 @@ import { useRewardStore } from '@/store/useRewardStore';
 import { ArcadeHome } from '@/components/arcade/ArcadeHome';
 import { CatSticker } from '@/components/mascot/CatSticker';
 import { PixelBob } from '@/components/pixel-theme/pixel-fx';
-import { NewsBoard, type News } from '@/components/home/HomeExtras';
+import { WhatsNewModal } from '@/components/home/WhatsNewModal';
 import { stickerGradient } from '@/theme/tokens';
 import { bi, useL, type Bi } from '@/i18n/useL';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
@@ -62,15 +62,6 @@ const satCount = ARTICLES.filter((a) => a.exam === 'sat').length;
 const task1Count = WRITING_PROMPTS.filter((p) => p.task === 'ielts_task1').length;
 const task2Count = WRITING_PROMPTS.filter((p) => p.task === 'ielts_task2').length;
 const sentenceCount = DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length;
-
-/** Bảng tin: các mục cập nhật, con số đếm từ dữ liệu thật. */
-const NEWS: News[] = [
-  { icon: 'volume', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Giọng đọc Aoede', en: 'Aoede voice' }, body: { vi: 'Phát âm từ vựng và Listening dùng chung một giọng đọc tự nhiên.', en: 'Vocabulary pronunciation and Listening now share one natural voice.' }, href: '/vocabulary/topics' },
-  { icon: 'play', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Clip tiếng Anh', en: 'English clips' }, body: { vi: 'Xem clip có sẵn và học theo từng đoạn.', en: 'Watch ready-made clips and study them segment by segment.' }, href: '/clip' },
-  { icon: 'clipboard', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Thi thử SAT đầy đủ', en: 'Full SAT mock' }, body: { vi: 'Bài thi thử SAT Math và Verbal, chấm bằng code.', en: 'Full SAT Math and Verbal mock, scored by code.' }, href: '/sat/full-test' },
-  { icon: 'bookmark', tag: { vi: 'MẸO', en: 'TIP' }, title: { vi: 'Học theo chủ đề', en: 'Study by topic' }, body: { vi: `${VOCAB_TOPICS.length} chủ đề từ vựng IELTS, có phát âm.`, en: `${VOCAB_TOPICS.length} IELTS vocabulary topics, with pronunciation.` }, href: '/vocabulary/topics' },
-  { icon: 'languages', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Đọc báo song ngữ', en: 'Bilingual news' }, body: { vi: `${bilingualStats().articles} bài Anh–Việt, ghép theo từng đoạn.`, en: `${bilingualStats().articles} articles, aligned by paragraph.` }, href: '/bilingual' },
-];
 
 /** Tạm ẩn dải "Bạn đang học dở" trên trang chủ máy tính; đổi thành true để bật lại. */
 const SHOW_RESUME_BANNER = false;
@@ -307,19 +298,22 @@ export default function IntroScreen() {
   // Điện thoại: bản riêng theo ngôn ngữ của trang Hôm nay; máy tính giữ bản giới thiệu đầy đủ.
   if (width < 640) {
     return (
-      <PhoneIntro
-        returning={returning}
-        readable={num(readableCount)}
-        mathSets={String(CURRICULUM_TOTALS.sets)}
-        mathQuestions={num(CURRICULUM_TOTALS.questions)}
-        writing={String(WRITING_PROMPTS.length)}
-        L={L}
-        onContinue={() => enterApp('/dashboard')}
-        onStart={() => enterApp('/dashboard')}
-        onIelts={() => enterApp('/practice')}
-        onSat={() => enterApp('/sat')}
-        onMathRoadmap={() => enterApp('/math')}
-      />
+      <>
+        <PhoneIntro
+          returning={returning}
+          readable={num(readableCount)}
+          mathSets={String(CURRICULUM_TOTALS.sets)}
+          mathQuestions={num(CURRICULUM_TOTALS.questions)}
+          writing={String(WRITING_PROMPTS.length)}
+          L={L}
+          onContinue={() => enterApp('/dashboard')}
+          onStart={() => enterApp('/dashboard')}
+          onIelts={() => enterApp('/practice')}
+          onSat={() => enterApp('/sat')}
+          onMathRoadmap={() => enterApp('/math')}
+        />
+        <WhatsNewModal onOpen={enterApp} />
+      </>
     );
   }
 
@@ -458,10 +452,6 @@ export default function IntroScreen() {
 
       {/* ------------------------------------- Khám phá lịch sử (ẩn tới khi có cảnh xuất bản) */}
       <Appear index={1}>
-        <NewsBoard items={NEWS} onOpen={enterApp} />
-      </Appear>
-
-      <Appear index={1}>
         <HistoryHomeCard marginTop={28} />
       </Appear>
 
@@ -581,6 +571,7 @@ export default function IntroScreen() {
       </Appear>
 
       <View className="h-6" />
+      <WhatsNewModal onOpen={enterApp} />
     </Screen>
   );
 }

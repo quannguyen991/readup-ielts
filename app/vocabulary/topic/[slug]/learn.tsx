@@ -97,10 +97,10 @@ const AMBER_ON_NAVY = "#FCD34D";
  * - GÕ TỪ — chỉ thấy nghĩa (hoặc chỉ nghe), gõ (hoặc nói) ra từ tiếng Anh.
  *
  * Lịch gặp lại do VÒNG PHÂN PHỐI quyết định (`services/vocab/learn-loop.ts`):
- * sai thì gặp lại sau 2 câu bằng dạng dễ hơn; đúng cũng gặp lại, cách xa dần;
- * lần cuối để xong một từ là dạng khó nhất đang bật. Học xen kẽ (mặc định) trộn
- * các dạng; tắt đi thì mỗi từ đi tuần tự. Từ chỉ tính "đã nhớ" khi xong vòng
- * mà không sai lần nào.
+ * từ mới mở bằng lật thẻ; sai thì hỏi lại sau 5–6 câu (sai nữa thì lùi xa hơn);
+ * đúng cũng được hỏi lại, cách xa dần. Lần gặp lại đổi sang dạng khác nếu còn dạng
+ * khác, và thứ tự câu được xáo. Học xen kẽ (mặc định) trộn các từ; tắt đi thì mỗi
+ * từ đi tuần tự. Từ chỉ tính "đã nhớ" khi xong vòng mà không sai lần nào.
  */
 export default function LearnScreen() {
   // `?only=starred` (nút "Học riêng từ gắn sao" ở trang bộ từ): chỉ lượt này học
@@ -145,7 +145,7 @@ export default function LearnScreen() {
   const [round, setRound] = useState<StudyWord[]>(() => freshRound(settings));
   // Dạng câu và kiểu xếp của vòng ĐANG CHẠY — chỉ đổi khi bắt đầu vòng mới.
   const [cfg, setCfg] = useState(() => ({ kinds: activeKinds(settings.kinds), interleave: settings.interleave }));
-  const [plan, setPlan] = useState(() => startLoop(round));
+  const [plan, setPlan] = useState(() => startLoop(round, Date.now() % 100000));
   const [asked, setAsked] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -241,7 +241,7 @@ export default function LearnScreen() {
     const r = freshRound(s);
     setRound(r);
     setCfg({ kinds: activeKinds(s.kinds), interleave: s.interleave });
-    setPlan(startLoop(r));
+    setPlan(startLoop(r, Date.now() % 100000));
     setAsked(0);
     setWrong(0);
     setPicked(null);

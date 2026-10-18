@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 
 import { speakLines, stopPronounce } from '@/services/audio/pronounce';
 import type { TranscriptLine } from '@/services/listening/types';
+import { useAuthStore } from '@/store/useAuthStore';
 
 /**
  * Phát âm thanh của MỘT section.
@@ -153,9 +154,12 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
 
   const makeAoedeAudio = useCallback(async (): Promise<boolean> => {
     if (!testId || !section || Platform.OS !== 'web' || typeof URL === 'undefined' || typeof Blob === 'undefined') return false;
+    // Bản đọc Aoede chỉ cho người đã đăng nhập (mỗi lượt là tiền thật): không có phiên thì rơi về giọng máy.
+    const token = useAuthStore.getState().session?.access_token ?? null;
+    if (!token) throw new Error('Aoede TTS needs a signed-in session.');
     const response = await fetch('/api/listening/tts', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` },
       body: JSON.stringify({ testId, section }),
     });
     if (!response.ok) throw new Error(`Aoede TTS returned ${response.status}.`);

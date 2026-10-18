@@ -136,7 +136,7 @@ export function clozeOf(example: string, word: string): { before: string; answer
  * Lịch gặp lại từng từ nằm ở `learn-loop.ts`.
  */
 export type StageKind = 'flash' | 'mcq' | 'fill' | 'type';
-export const STAGE_ORDER: readonly StageKind[] = ['flash', 'mcq', 'type'];
+export const STAGE_ORDER: readonly StageKind[] = ['flash', 'mcq', 'fill', 'type'];
 
 /** Hỏi theo chiều nào: thấy từ chọn nghĩa, thấy nghĩa ra từ, hay chỉ NGHE giọng đọc. */
 export type Direction = 'enToVi' | 'viToEn' | 'listen';
@@ -169,7 +169,7 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   unmasteredOnly: false,
   ordered: true,
   autoAdvance: false,
-  kinds: ['flash', 'mcq', 'type'],
+  kinds: ['flash', 'mcq', 'fill', 'type'],
   interleave: true,
   acceptSynonyms: false,
   speakAnswer: false,

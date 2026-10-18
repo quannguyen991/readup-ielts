@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWindowDimensions, View } from 'react-native';
+import { View } from 'react-native';
 import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -13,14 +13,12 @@ import { pixelPageBg, usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
 import { RetroScope } from '@/components/profile-retro/retro-scope';
 import { RetroSidebar } from '@/components/profile-retro/RetroSidebar';
-import { SidebarCats } from './SidebarCats';
-import { WalkingCats } from '@/components/mascot/WalkingCats';
 import { RetroTopBar } from '@/components/profile-retro/RetroTopBar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
 import { TravelBackdrop, useSentenceThemeId, useTravelActive } from '@/components/rail/TravelBackdrop';
 import { isExamRoute, isFocusRoute, isImmersiveRoute, isPhoneChromelessRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
-import { SIDEBAR_WIDTH, useSidebarStore } from '@/store/useSidebarStore';
+import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
@@ -96,9 +94,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const goldSkin = !pixel && (phone || (!chiikawaTheme && paletteKey === 'original'));
   // Theme máy chơi điện tử (mua trong Đổi quà): Chikawa thay Leo ở bong bóng hỏi đáp.
   const arcadeTheme = useRewardStore((s) => s.theme === 'theme-arcade');
-  const viewportWidth = useWindowDimensions().width;
-  // Trang chủ máy tính (/intro): không đàn mèo đi dạo và không bong bóng Leo, để bảng tin và sư tử trong khuôn đứng một mình.
-  const deskHome = pathname === '/intro' && !phone;
   // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
   const retro = useRetroOn();
 
@@ -204,8 +199,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
         >
           {retro ? <RetroSidebar /> : <Sidebar />}
-          {/* Mèo leo mép phải thanh bên trên máy tính, khi đang dùng nền vàng kim. */}
-          {goldSkin && !retro ? <SidebarCats /> : null}
         </View>
         <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`}>
           {/* Trang Hôm nay trên điện thoại tự vẽ đầu trang riêng (xem PhoneHome), nên không có TopBar. */}
@@ -223,12 +216,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
       </View>
       <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
-      {/* Đàn mèo đi dạo trên nền vàng kim (chỉ máy tính): trên điện thoại mèo đã bám ở thanh tab, thêm đàn đi dạo thì rối. */}
-      {goldSkin && !retro && !pageBg && !isQuestRoute && !phone && !deskHome ? (
-        <WalkingCats bottom={phone ? 74 : 14} left={viewportWidth >= 1024 ? SIDEBAR_WIDTH[collapsed ? 'collapsed' : 'expanded'] : 0} variant={phone ? 'phone' : 'desktop'} />
-      ) : null}
       <BottomTabs />
-      {isCityRoute || deskHome ? null : <AskBubble forceChiikawa={arcadeTheme} />}
+      {isCityRoute ? null : <AskBubble forceChiikawa={arcadeTheme} />}
       <SelectionLookup />
       <ReminderRunner />
       <SearchPalette />
