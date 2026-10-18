@@ -27,14 +27,18 @@ export function mergeMath(local: unknown, remote: unknown | null): MathPayload {
   };
 }
 
+/** Số lượt từ vựng giữ lại trên máy và trên tài khoản (mới nhất trước). */
+export const MAX_VOCAB_RUNS = 200;
+
 export type StudyPayload = {
   sessions: { id: string; finishedAt: string }[];
   progress: Record<string, { lastReadAt: string; percentCompleted: number }>;
-  daily: Record<string, { minutes: number; questions: number; wordsReviewed: number }>;
+  daily: Record<string, { minutes: number; questions: number; wordsReviewed: number; events?: number; byActivity?: Record<string, number> }>;
   bookmarks: string[];
   targetBand: number;
   dailyGoalMinutes: number;
   readingWpm: number[];
+  vocabRuns?: { id: string; deck: string; title: string; correct: number; total: number; finishedAt: string }[];
 };
 
 export function mergeStudy(local: unknown, remote: unknown | null): StudyPayload {
@@ -62,6 +66,8 @@ export function mergeStudy(local: unknown, remote: unknown | null): StudyPayload
     dailyGoalMinutes: a.dailyGoalMinutes ?? b.dailyGoalMinutes,
 
     readingWpm: [...(b.readingWpm ?? []), ...(a.readingWpm ?? [])].slice(-50),
+
+    vocabRuns: sortByFinishedDesc(unionByKey(a.vocabRuns ?? [], b.vocabRuns ?? [], (v) => v.id)).slice(0, MAX_VOCAB_RUNS),
   };
 }
 
@@ -74,6 +80,7 @@ function emptyStudy(): StudyPayload {
     targetBand: 7,
     dailyGoalMinutes: 60,
     readingWpm: [],
+    vocabRuns: [],
   };
 }
 
@@ -86,12 +93,20 @@ function mergeDaily(
   for (const key of keys) {
     const l = local[key];
     const r = remote[key];
+    // Mọi con số trong ngày lấy số LỚN HƠN, kể cả `events` và từng mục `byActivity`. Trước đây
+    // `byActivity` và `events` lấy theo máy đang đăng nhập nên số của máy kia bị mất khi đồng bộ.
+    const byActivity: Record<string, number> = {};
+    for (const k of unionStrings(Object.keys(l?.byActivity ?? {}), Object.keys(r?.byActivity ?? {}))) {
+      byActivity[k] = Math.max(l?.byActivity?.[k] ?? 0, r?.byActivity?.[k] ?? 0);
+    }
     out[key] = {
       ...(r ?? {}),
       ...(l ?? {}),
       minutes: Math.max(l?.minutes ?? 0, r?.minutes ?? 0),
       questions: Math.max(l?.questions ?? 0, r?.questions ?? 0),
       wordsReviewed: Math.max(l?.wordsReviewed ?? 0, r?.wordsReviewed ?? 0),
+      events: Math.max(l?.events ?? 0, r?.events ?? 0),
+      byActivity: byActivity as never,
     };
   }
   return out;

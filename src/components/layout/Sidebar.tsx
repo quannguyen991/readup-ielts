@@ -87,19 +87,23 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
   const satFeatures = useSatFocusStore((s) => s.features);
   const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures, satFeatures);
   const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
+  // Thanh bên nổi: bo góc, cách mép trái/trên/dưới FLOAT_GAP. Bề rộng trừ đi FLOAT_GAP nên cả khối
+  // vẫn chiếm đúng `width`, vùng nội dung (lg:pl-[248px]) không phải đổi.
+  const floating = !compact && !glass && !pixel;
 
   return (
     <View
-      className="h-full relative overflow-hidden"
+      className={floating ? "relative overflow-hidden" : "h-full relative overflow-hidden"}
       style={[
         {
-          width,
+          width: floating ? width - FLOAT_GAP : width,
           zIndex: 40,
           borderRightWidth: pixel ? pixel.bw : 1,
           borderRightColor: pixel ? pixel.line : themeConfig.borderRightColor,
         },
+        floating ? floatingFrame(themeConfig) : null,
         pixel ? pixelPageBg(pixel) : themeConfig.bgStyle,
-        Platform.OS === "web" && !glass && !pixel ? webShadow : null,
+        Platform.OS === "web" && !glass && !pixel ? (floating ? floatingShadow(themeConfig.isDark) : webShadow) : null,
       ]}
     >
       {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}
@@ -135,8 +139,8 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: collapsed ? 12 : 14,
-          // Chừa chỗ để sư tử nằm trên mục đầu tiên đang chọn (không bị cắt bởi vùng cuộn).
-          paddingTop: collapsed ? 0 : 30,
+          // Chừa chút chỗ để ngôi sao trên mục đầu tiên đang chọn không bị cắt bởi vùng cuộn.
+          paddingTop: collapsed ? 0 : 12,
           paddingBottom: 12,
         }}
       >
@@ -249,6 +253,31 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
 
 const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
 
+/** Khoảng cách từ thanh bên nổi tới mép trái, trên và dưới màn hình. */
+const FLOAT_GAP = 12;
+
+/** Khung thanh bên nổi: bo góc, viền đều; chiều cao lấp phần còn lại của lớp bọc. */
+function floatingFrame(t: SidebarThemeConfig) {
+  return {
+    flex: 1,
+    marginLeft: FLOAT_GAP,
+    marginTop: FLOAT_GAP,
+    marginBottom: FLOAT_GAP,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: t.borderRightColor,
+  };
+}
+
+/** Bóng đổ nhẹ, để thanh bên lơ lửng trên nền trang. */
+function floatingShadow(isDark: boolean) {
+  return {
+    boxShadow: isDark
+      ? "0 22px 44px -18px rgba(0, 0, 0, 0.6)"
+      : "0 18px 40px -16px rgba(92, 64, 22, 0.32), 0 2px 8px rgba(92, 64, 22, 0.07)",
+  } as const;
+}
+
 /** Dòng điều hướng kiểu pixel: khung đậm, mục đang mở tô lilac kèm bóng lệch đặc. */
 function pixelRowStyle(t: PixelTheme, filled: boolean, active: boolean, hovered: boolean) {
   const base = { backgroundImage: "none", backgroundColor: "transparent", borderRadius: t.radius, borderWidth: 2, borderColor: "transparent", boxShadow: "none" };
@@ -294,6 +323,8 @@ function NavRow({
   const tint = filled ? themeConfig.activeTextColor : active ? themeConfig.textPrimary : themeConfig.textMuted;
   // Chỉ mục cha có icon pixel; trang con giữ icon nét mảnh cho gọn.
   const pixelIcon = pixel && !child ? PIXEL_NAV_ICON[item.key] : undefined;
+  // Sư tử và ngôi sao chỉ cho mục lớn đang được tô (không áp dụng Chiikawa hay thanh bên pixel).
+  const decorated = filled && !collapsed && !child && !chiikawaTheme && !pixel;
 
   return (
     <View style={{ position: "relative" }}>
@@ -354,7 +385,7 @@ function NavRow({
             )}
           </View>
           {collapsed ? null : (
-            <View className="min-w-0 flex-1">
+            <View className="min-w-0 flex-1" style={decorated ? { paddingRight: 36 } : undefined}>
               <Text
                 numberOfLines={1}
                 className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
@@ -380,14 +411,58 @@ function NavRow({
           />
         </View>
       ) : null}
-      {/* Sư tử ngủ nằm trên mục đang được tô vàng (không áp dụng cho chủ đề Chiikawa, đã có mèo riêng, và không áp dụng khi thanh bên pixel). */}
-      {filled && !collapsed && !child && !chiikawaTheme && !pixel ? (
-        <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: "absolute", right: 14, top: -34, zIndex: 6 }}>
-          <LionMascot pose="sleep" size={68} />
+      {/* Sư tử ngủ nằm GỌN TRONG nút đang được tô vàng, giữa chiều cao nút. */}
+      {decorated ? (
+        <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: "absolute", top: 0, bottom: 0, right: 8, justifyContent: "center", zIndex: 6 }}>
+          <LionMascot pose="sleep" size={40} />
         </View>
       ) : null}
+      {/* Ngôi sao nhỏ lấp lánh quanh nút đang chọn (chỉ web). */}
+      {decorated && Platform.OS === "web" ? <ActiveSparkles /> : null}
       {collapsed && hovered ? <TooltipCard label={label} /> : null}
     </View>
+  );
+}
+
+/** Vị trí và cỡ các ngôi sao quanh nút đang chọn (px; số âm là lấn ra ngoài mép nút). */
+const SPARKS: { top?: number; bottom?: number; left?: number; right?: number; size: number; delay: number }[] = [
+  { top: -8, left: -6, size: 14, delay: 0 },
+  { top: -6, right: 58, size: 9, delay: 0.9 },
+  { bottom: 6, left: -9, size: 9, delay: 1.5 },
+  { bottom: -8, right: 4, size: 12, delay: 0.5 },
+];
+
+/**
+ * Các ngôi sao lấp lánh quanh mục đang chọn. Dùng thẻ `div` như SidebarAtmosphere (chỉ chạy trên web,
+ * nơi có CSS keyframes). `pointerEvents: none` để sao không chặn chuột vào nút.
+ */
+function ActiveSparkles() {
+  return (
+    <>
+      {SPARKS.map((s, i) => (
+        <div
+          key={i}
+          className="rm-spark"
+          aria-hidden
+          style={{
+            position: "absolute",
+            top: s.top,
+            bottom: s.bottom,
+            left: s.left,
+            right: s.right,
+            fontSize: s.size,
+            lineHeight: 1,
+            color: "#FFF6D6",
+            textShadow: "0 0 6px #F6C453, 0 0 12px rgba(246,196,83,0.75)",
+            pointerEvents: "none",
+            zIndex: 7,
+            animationDelay: `${s.delay}s`,
+          }}
+        >
+          ✦
+        </div>
+      ))}
+    </>
   );
 }
 

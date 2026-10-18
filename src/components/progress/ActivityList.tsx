@@ -10,6 +10,7 @@ const KIND_ICON: Record<FeedKind, IconName> = {
   listening: 'volume',
   speaking: 'mic',
   writing: 'pencil',
+  vocab: 'letters',
   lesson: 'book',
   daily: 'target',
 };

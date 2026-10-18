@@ -87,6 +87,7 @@ const studyStore: SyncedStore = {
       targetBand: s.targetBand,
       dailyGoalMinutes: s.dailyGoalMinutes,
       readingWpm: s.readingWpm,
+      vocabRuns: s.vocabRuns,
     };
   },
   write: (payload) => {
@@ -99,6 +100,7 @@ const studyStore: SyncedStore = {
       targetBand: data.targetBand,
       dailyGoalMinutes: data.dailyGoalMinutes,
       readingWpm: data.readingWpm ?? [],
+      vocabRuns: (data.vocabRuns ?? []) as never,
     });
   },
   merge: mergeStudy,

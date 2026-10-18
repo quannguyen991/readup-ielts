@@ -63,6 +63,19 @@ export type TestSession = {
   attempts: AttemptRecord[];
 };
 
+/** Một lượt làm bộ từ vựng (quiz/kiểm tra): để hiện trong Lịch sử học. Số câu đã đếm vào `daily` riêng. */
+export type VocabRun = {
+  id: string;
+  deck: string;
+  title: string;
+  correct: number;
+  total: number;
+  finishedAt: string;
+};
+
+/** Khớp `MAX_VOCAB_RUNS` ở services/sync/store-merges.ts (file đó không được import vào store). */
+const MAX_VOCAB_RUNS = 200;
+
 export type ReadingProgress = {
   articleId: string;
   percentCompleted: number;
@@ -91,6 +104,7 @@ type StudyState = {
   targetBand: number;
   dailyGoalMinutes: number;
   readingWpm: number[];
+  vocabRuns: VocabRun[];
 
   setProgress: (articleId: string, percent: number, paragraph: number) => void;
   addSession: (session: Omit<TestSession, 'id' | 'finishedAt'>) => string;
@@ -100,6 +114,8 @@ type StudyState = {
   /** Ghi một việc đã hoàn thành (không có phút hay câu): chỉ để ngày đó được tính là ngày học. */
   logEvent: () => void;
   logWpm: (wpm: number) => void;
+  /** Ghi một lượt làm bộ từ vựng vào lịch sử, và tính là một việc đã làm trong ngày. */
+  logVocabRun: (run: { deck: string; title: string; correct: number; total: number }) => void;
   toggleBookmark: (articleId: string) => void;
   setTargetBand: (band: number) => void;
   setDailyGoal: (minutes: number) => void;
@@ -168,6 +184,7 @@ export const useStudyStore = create<StudyState>()(
       targetBand: 7,
       dailyGoalMinutes: 60,
       readingWpm: [],
+      vocabRuns: [],
 
       setProgress: (articleId, percent, paragraph) =>
         set((state) => ({
@@ -259,6 +276,17 @@ export const useStudyStore = create<StudyState>()(
 
       logWpm: (wpm) =>
         set((state) => ({ readingWpm: [Math.round(wpm), ...state.readingWpm].slice(0, 60) })),
+
+      logVocabRun: (run) =>
+        set((state) => {
+          const date = todayKey();
+          const day = ensureDay(state, date);
+          const entry: VocabRun = { ...run, id: uid(), finishedAt: new Date().toISOString() };
+          return {
+            vocabRuns: [entry, ...state.vocabRuns].slice(0, MAX_VOCAB_RUNS),
+            daily: { ...state.daily, [date]: { ...day, events: (day.events ?? 0) + 1 } },
+          };
+        }),
 
       toggleBookmark: (articleId) =>
         set((state) => ({

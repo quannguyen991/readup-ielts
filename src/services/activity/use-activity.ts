@@ -18,6 +18,7 @@ export function useActivityFeed(): FeedItem[] {
   const listening = useListeningStore((s) => s.attempts);
   const speaking = useSpeakingStore((s) => s.attempts);
   const writing = useWritingStore((s) => s.submissions);
+  const vocabRuns = useStudyStore((s) => s.vocabRuns);
   const lessonsDone = useHubStore((s) => s.lessonsDone);
   const doneByDay = useHubStore((s) => s.doneByDay);
 
@@ -40,6 +41,7 @@ export function useActivityFeed(): FeedItem[] {
           wordCount: w.wordCount,
           submittedAt: w.submittedAt,
         })),
+        vocab: vocabRuns,
         lessons: Object.entries(lessonsDone).map(([id, at]) => ({
           id,
           title: ALL_LESSONS.find((l) => l.id === id)?.title ?? id,
@@ -47,7 +49,7 @@ export function useActivityFeed(): FeedItem[] {
         })),
         dailyDone: Object.fromEntries(Object.entries(doneByDay).map(([day, ids]) => [day, ids.length])),
       }),
-    [sessions, listening, speaking, writing, lessonsDone, doneByDay],
+    [sessions, listening, speaking, writing, vocabRuns, lessonsDone, doneByDay],
   );
 }
 

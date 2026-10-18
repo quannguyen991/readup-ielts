@@ -1,33 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Easing, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { PixelSparkles } from '@/components/pixel-theme/pixel-fx';
 import { Icon, type IconName } from '@/components/ui';
 import { bi, useL, type Bi } from '@/i18n/useL';
 
 /*
-  Hai khối mới trên trang chủ mặc định:
-  - Dải "Tính năng nổi bật": bốn thẻ có biểu tượng vàng, nổi lên khi rê chuột, nền có sao lấp lánh.
-  - Bảng tin: các mục cập nhật chạy tự động từng trang, dừng khi người dùng vuốt, có chấm chỉ vị trí.
+  Bảng tin trên trang chủ máy tính: khung tối ở đầu với nhãn LIVE, một mục nổi bật bên trái
+  (chữ hiện dần, thanh tiến trình chạy theo thời gian), danh sách mục bên phải.
+  Tự chuyển mục sau mỗi DURATION ms; rê chuột vào thì đứng lại, bấm mục nào thì nhảy tới mục đó.
 */
 
 const GOLD = '#B8955A';
 const GOLD_DEEP = '#8A6A2E';
+const GOLD_LIGHT = '#F2C65E';
 const INK = '#2B2110';
 const INK_SOFT = '#7A6A4A';
-const SPARKLES = ['#F2C65E', '#FFFFFF', '#E9B949'] as const;
+const CREAM = '#FFF6DE';
+const LINE = '#F2E6CC';
+const TIP = '#4F8A6B';
+const SPARKS = ['#F2C65E', '#FFFFFF', '#E9B949'] as const;
+const DURATION = 5000;
+const TICK = 40;
 
-export type Feature = { icon: IconName; title: Bi; body: Bi; href: string };
-export type News = { tag: Bi; title: Bi; body: Bi; href: string };
+export type News = { icon: IconName; tag: Bi; title: Bi; body: Bi; href: string };
 
-/** Nhấp nháy nhẹ cho nhãn "MỚI". */
+/** Nhấp nháy nhẹ cho chấm LIVE. */
 function Pulse({ children }: { children: React.ReactNode }) {
   const v = useRef(new Animated.Value(1)).current;
   useEffect(() => {
     const anim = Animated.loop(
       Animated.sequence([
-        Animated.timing(v, { toValue: 0.45, duration: 900, easing: Easing.inOut(Easing.quad), useNativeDriver: false }),
-        Animated.timing(v, { toValue: 1, duration: 900, easing: Easing.inOut(Easing.quad), useNativeDriver: false }),
+        Animated.timing(v, { toValue: 0.3, duration: 800, easing: Easing.inOut(Easing.quad), useNativeDriver: false }),
+        Animated.timing(v, { toValue: 1, duration: 800, easing: Easing.inOut(Easing.quad), useNativeDriver: false }),
       ]),
     );
     anim.start();
@@ -36,174 +42,206 @@ function Pulse({ children }: { children: React.ReactNode }) {
   return <Animated.View style={{ opacity: v, alignSelf: 'flex-start' }}>{children}</Animated.View>;
 }
 
-export function FeatureStrip({ items, onOpen }: { items: Feature[]; onOpen: (href: string) => void }) {
-  const { locale } = useL();
-  return (
-    <View style={styles.strip}>
-      <PixelSparkles count={12} colors={SPARKLES} seed={13} cell={2} />
-      {items.map((f) => (
-        <Pressable
-          key={f.href + f.icon}
-          onPress={() => onOpen(f.href)}
-          accessibilityRole="button"
-          accessibilityLabel={bi(f.title, locale)}
-          style={({ hovered }) => [styles.feature, hovered && styles.lift]}
-        >
-          <View style={styles.featureIcon}>
-            <Icon name={f.icon} size={20} color={GOLD_DEEP} strokeWidth={2} />
-          </View>
-          <View style={styles.featureText}>
-            <Text style={styles.featureTitle}>{bi(f.title, locale)}</Text>
-            <Text style={styles.featureBody}>{bi(f.body, locale)}</Text>
-          </View>
-        </Pressable>
-      ))}
-    </View>
-  );
-}
+/** Nhãn MẸO màu xanh lá, còn lại (MỚI) màu vàng đồng. */
+const toneOf = (t: Bi) => (t.vi === 'MẸO' ? TIP : GOLD_DEEP);
 
 export function NewsBoard({ items, onOpen }: { items: News[]; onOpen: (href: string) => void }) {
   const { locale, en } = useL();
-  const ref = useRef<ScrollView>(null);
-  const [w, setW] = useState(0);
   const [i, setI] = useState(0);
-  const idx = useRef(0);
-  const paused = useRef(false);
+  const [p, setP] = useState(0);
+  const [hover, setHover] = useState(false);
+  const fade = useRef(new Animated.Value(1)).current;
+  const n = items.length;
+  const cur = items[i] ?? items[0];
 
-  // Tự lướt sang mục kế tiếp; khi người dùng đang vuốt thì tạm dừng.
+  // Thanh tiến trình chạy đều; đủ DURATION thì sang mục kế tiếp.
   useEffect(() => {
-    if (!w || items.length < 2) return;
-    const t = setInterval(() => {
-      if (paused.current) return;
-      const n = (idx.current + 1) % items.length;
-      idx.current = n;
-      setI(n);
-      ref.current?.scrollTo({ x: n * w, animated: true });
-    }, 4500);
+    if (n < 2 || hover) return;
+    const t = setInterval(() => setP((v) => v + TICK / DURATION), TICK);
     return () => clearInterval(t);
-  }, [w, items.length]);
+  }, [n, hover]);
 
-  const go = (n: number) => {
-    idx.current = n;
-    setI(n);
-    ref.current?.scrollTo({ x: n * w, animated: true });
+  useEffect(() => {
+    if (p < 1) return;
+    setI((k) => (k + 1) % n);
+    setP(0);
+  }, [p, n]);
+
+  // Chữ của mục nổi bật hiện dần mỗi lần đổi mục.
+  useEffect(() => {
+    fade.setValue(0);
+    Animated.timing(fade, { toValue: 1, duration: 420, easing: Easing.out(Easing.cubic), useNativeDriver: false }).start();
+  }, [i, fade]);
+
+  const pick = (k: number) => {
+    setI(k);
+    setP(0);
   };
 
+  if (!cur) return null;
+
+  // Rê chuột vào khung thì đứng lại để đọc kịp.
+  const hoverProps = { onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) } as object;
+
   return (
-    <View style={styles.board}>
-      <View style={styles.boardHead}>
-        <Text style={styles.boardTitle}>{en ? 'News board' : 'Bảng tin'}</Text>
-        <Text style={styles.boardHint}>{en ? 'Latest features' : 'Cập nhật tính năng mới'}</Text>
+    <View style={styles.board} {...hoverProps}>
+      <View style={styles.head}>
+        <View style={styles.live}>
+          <Pulse>
+            <View style={styles.liveDot} />
+          </Pulse>
+          <Text style={styles.headTitle}>{en ? 'NEWS BOARD' : 'BẢNG TIN'}</Text>
+        </View>
+        <Text style={styles.headHint} numberOfLines={1}>
+          {en ? 'Latest features' : 'Cập nhật tính năng mới'}
+        </Text>
+        <Text style={styles.counter}>{`${i + 1} / ${n}`}</Text>
       </View>
-      <View style={styles.boardClip} onLayout={(e) => setW(e.nativeEvent.layout.width)}>
-        <ScrollView
-          ref={ref}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          onScrollBeginDrag={() => {
-            paused.current = true;
-          }}
-          onScrollEndDrag={() => {
-            paused.current = false;
-          }}
-          onMomentumScrollEnd={(e) => {
-            const n = w ? Math.round(e.nativeEvent.contentOffset.x / w) : 0;
-            idx.current = n;
-            setI(n);
-            paused.current = false;
-          }}
+
+      <View style={styles.body}>
+        <Animated.View
+          style={[
+            styles.featured,
+            { opacity: fade, transform: [{ translateY: fade.interpolate({ inputRange: [0, 1], outputRange: [12, 0] }) }] },
+          ]}
         >
-          {items.map((n) => (
-            <View key={n.href + n.title.vi} style={{ width: w || 320 }}>
-              <Pressable onPress={() => onOpen(n.href)} accessibilityRole="button" style={styles.news}>
-                <Pulse>
-                  <Text style={styles.newsTag}>{bi(n.tag, locale)}</Text>
-                </Pulse>
-                <Text style={styles.newsTitle}>{bi(n.title, locale)}</Text>
-                <Text style={styles.newsBody}>{bi(n.body, locale)}</Text>
-                <Text style={styles.newsGo}>{en ? 'Open →' : 'Mở →'}</Text>
-              </Pressable>
-            </View>
-          ))}
-        </ScrollView>
-      </View>
-      <View style={styles.dots}>
-        {items.map((n, k) => (
+          <LinearGradient colors={[CREAM, '#FFE7A8']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+          <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+            <PixelSparkles count={10} colors={SPARKS} seed={21} cell={2} />
+          </View>
+          <View pointerEvents="none" style={styles.bigIcon}>
+            <Icon name={cur.icon} size={160} color={GOLD} strokeWidth={1.4} />
+          </View>
+
+          <View style={[styles.tag, { backgroundColor: toneOf(cur.tag) }]}>
+            <Text style={styles.tagText}>{bi(cur.tag, locale)}</Text>
+          </View>
+          <Text style={styles.fTitle}>{bi(cur.title, locale)}</Text>
+          <Text style={styles.fBody}>{bi(cur.body, locale)}</Text>
           <Pressable
-            key={`dot-${n.href}-${k}`}
-            onPress={() => go(k)}
             accessibilityRole="button"
-            accessibilityLabel={`${k + 1}`}
-            style={[styles.dot, k === i && styles.dotOn]}
-          />
-        ))}
+            onPress={() => onOpen(cur.href)}
+            style={({ hovered }) => [styles.cta, hovered && styles.ctaHover]}
+          >
+            <Text style={styles.ctaText}>{en ? 'Open now' : 'Mở ngay'}</Text>
+            <Icon name="arrow-right" size={16} color={CREAM} strokeWidth={2.2} />
+          </Pressable>
+
+          <View style={styles.track}>
+            <View style={[styles.fill, { width: `${Math.min(p, 1) * 100}%` }]} />
+          </View>
+        </Animated.View>
+
+        <View style={styles.list}>
+          {items.map((it, k) => {
+            const on = k === i;
+            return (
+              <Pressable
+                key={`${it.href}-${k}`}
+                accessibilityRole="button"
+                accessibilityState={{ selected: on }}
+                onPress={() => pick(k)}
+                style={({ hovered }) => [styles.row, on && styles.rowOn, !on && hovered && styles.rowHover]}
+              >
+                <View style={[styles.rowIcon, on && styles.rowIconOn]}>
+                  <Icon name={it.icon} size={16} color={on ? '#FFFFFF' : GOLD_DEEP} strokeWidth={2} />
+                </View>
+                <View style={styles.rowText}>
+                  <Text style={[styles.rowTag, { color: toneOf(it.tag) }]}>{bi(it.tag, locale)}</Text>
+                  <Text style={[styles.rowTitle, on && styles.rowTitleOn]} numberOfLines={1}>
+                    {bi(it.title, locale)}
+                  </Text>
+                </View>
+                {on ? <View style={styles.rowBar} /> : null}
+              </Pressable>
+            );
+          })}
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  strip: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, position: 'relative' },
-  feature: {
-    flexGrow: 1,
-    flexBasis: 220,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 14,
-    padding: 18,
-    borderRadius: 22,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#F2E6CC',
-    ...(Platform.OS === 'web' ? ({ boxShadow: '0 6px 18px rgba(184,149,90,0.14)', transition: 'transform 180ms ease, box-shadow 180ms ease' } as object) : {}),
-  },
-  lift: {
-    transform: [{ translateY: -4 }],
-    ...(Platform.OS === 'web' ? ({ boxShadow: '0 14px 30px rgba(184,149,90,0.28)' } as object) : {}),
-  },
-  featureIcon: {
-    width: 42,
-    height: 42,
-    borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFF6DE',
-  },
-  featureText: { flex: 1, gap: 4 },
-  featureTitle: { fontSize: 16, fontWeight: '700', color: INK },
-  featureBody: { fontSize: 13, lineHeight: 19, color: INK_SOFT },
-
   board: {
-    borderRadius: 24,
-    padding: 20,
-    gap: 14,
+    borderRadius: 26,
+    overflow: 'hidden',
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#F2E6CC',
-    ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 24px rgba(184,149,90,0.14)' } as object) : {}),
+    borderColor: LINE,
+    ...(Platform.OS === 'web' ? ({ boxShadow: '0 12px 32px rgba(138,106,46,0.16)' } as object) : {}),
   },
-  boardHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
-  boardTitle: { fontSize: 18, fontWeight: '800', color: INK },
-  boardHint: { fontSize: 13, color: INK_SOFT },
-  boardClip: { overflow: 'hidden', borderRadius: 18 },
-  news: { padding: 20, gap: 8, borderRadius: 18, backgroundColor: '#FFFBF0', minHeight: 130 },
-  newsTag: {
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 1,
-    color: '#FFFFFF',
-    backgroundColor: GOLD,
-    borderRadius: 999,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+  head: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 12,
+    paddingHorizontal: 22,
+    paddingVertical: 14,
+    backgroundColor: INK,
+  },
+  live: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  liveDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#FF5C7A' },
+  headTitle: { fontSize: 13, fontWeight: '800', letterSpacing: 2, color: GOLD_LIGHT },
+  headHint: { flex: 1, minWidth: 160, fontSize: 13, color: '#E9DCC0' },
+  counter: { fontSize: 13, fontWeight: '800', color: GOLD_LIGHT, fontVariant: ['tabular-nums'] },
+
+  body: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, padding: 14 },
+  featured: {
+    flexGrow: 3,
+    flexBasis: 360,
+    minHeight: 250,
+    borderRadius: 20,
     overflow: 'hidden',
+    paddingHorizontal: 26,
+    paddingTop: 26,
+    paddingBottom: 32,
+    gap: 12,
+    justifyContent: 'center',
   },
-  newsTitle: { fontSize: 18, fontWeight: '800', color: INK },
-  newsBody: { fontSize: 14, lineHeight: 21, color: INK_SOFT },
-  newsGo: { marginTop: 4, fontSize: 13, fontWeight: '700', color: GOLD_DEEP },
-  dots: { flexDirection: 'row', justifyContent: 'center', gap: 8 },
-  dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#E9DCC0' },
-  dotOn: { width: 22, backgroundColor: GOLD },
+  bigIcon: { position: 'absolute', right: -18, bottom: -16, opacity: 0.2 },
+  tag: { alignSelf: 'flex-start', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4 },
+  tagText: { fontSize: 11, fontWeight: '800', letterSpacing: 1, color: '#FFFFFF' },
+  fTitle: { fontSize: 26, lineHeight: 32, fontWeight: '800', color: INK },
+  fBody: { fontSize: 15, lineHeight: 22, color: '#5B4A2A', maxWidth: 520 },
+  cta: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: 6,
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+    borderRadius: 999,
+    backgroundColor: INK,
+    ...(Platform.OS === 'web' ? ({ transition: 'transform 180ms ease, box-shadow 180ms ease' } as object) : {}),
+  },
+  ctaHover: {
+    transform: [{ translateY: -2 }],
+    ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 18px rgba(43,33,16,0.25)' } as object) : {}),
+  },
+  ctaText: { fontSize: 14, fontWeight: '700', color: CREAM },
+  track: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 4, backgroundColor: 'rgba(138,106,46,0.18)' },
+  fill: { height: 4, backgroundColor: GOLD_DEEP },
+
+  list: { flexGrow: 2, flexBasis: 260, gap: 6, justifyContent: 'center' },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'transparent',
+  },
+  rowOn: { backgroundColor: CREAM, borderColor: LINE },
+  rowHover: { backgroundColor: '#FFFBF0' },
+  rowIcon: { width: 34, height: 34, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: CREAM },
+  rowIconOn: { backgroundColor: GOLD },
+  rowText: { flex: 1, gap: 2 },
+  rowTag: { fontSize: 10, fontWeight: '800', letterSpacing: 1 },
+  rowTitle: { fontSize: 15, fontWeight: '700', color: INK_SOFT },
+  rowTitleOn: { color: INK },
+  rowBar: { position: 'absolute', left: -1, top: 10, bottom: 10, width: 3, borderRadius: 2, backgroundColor: GOLD_DEEP },
 });

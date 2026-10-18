@@ -16,7 +16,7 @@ import { useActivityFeed } from '@/services/activity/use-activity';
 import { themedHex } from '@/theme/palette-state';
 
 const DAY_MS = 86_400_000;
-const FILTERS: Array<FeedKind | 'all'> = ['all', 'test', 'listening', 'speaking', 'writing', 'lesson', 'daily'];
+const FILTERS: Array<FeedKind | 'all'> = ['all', 'test', 'listening', 'speaking', 'writing', 'vocab', 'lesson', 'daily'];
 
 /**
  * Lịch sử làm bài: mọi việc đã làm (bài, nghe, nói, viết, ngữ pháp, nhiệm vụ) theo ngày,

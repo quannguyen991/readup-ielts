@@ -7,7 +7,7 @@
  * ở đây: trang này chỉ đọc và sắp xếp lại, nên không thể lệch với số liệu thật.
  */
 
-export type FeedKind = 'test' | 'listening' | 'speaking' | 'writing' | 'lesson' | 'daily';
+export type FeedKind = 'test' | 'listening' | 'speaking' | 'writing' | 'vocab' | 'lesson' | 'daily';
 
 export type FeedItem = {
   id: string;
@@ -39,6 +39,7 @@ export type FeedInput = {
   }>;
   speaking?: ReadonlyArray<{ id: string; titleVi: string; typed: boolean; finishedAt: string }>;
   writing?: ReadonlyArray<{ id: string; promptLabel: string; wordCount: number; submittedAt: string }>;
+  vocab?: ReadonlyArray<{ id: string; title: string; correct: number; total: number; finishedAt: string }>;
   /** Bài ngữ pháp đã đạt: id, tên bài và lúc đạt. */
   lessons?: ReadonlyArray<{ id: string; title: string; at: string }>;
   /** Nhiệm vụ hằng ngày đã làm: `YYYY-MM-DD` → số việc đã xong trong ngày. */
@@ -48,6 +49,7 @@ export type FeedInput = {
 /** Tên loại việc, tiếng Việt và tiếng Anh. */
 export const FEED_KIND_LABEL: Record<FeedKind, { vi: string; en: string }> = {
   test: { vi: 'Làm bài', en: 'Test' },
+  vocab: { vi: 'Từ vựng', en: 'Vocabulary' },
   listening: { vi: 'Nghe', en: 'Listening' },
   speaking: { vi: 'Nói', en: 'Speaking' },
   writing: { vi: 'Viết', en: 'Writing' },
@@ -102,6 +104,16 @@ export function buildActivityFeed(input: FeedInput): FeedItem[] {
     });
   }
 
+  for (const v of input.vocab ?? []) {
+    items.push({
+      id: `vocab:${v.id}`,
+      kind: 'vocab',
+      title: v.title,
+      detail: `${v.correct}/${v.total} đúng`,
+      at: v.finishedAt,
+    });
+  }
+
   for (const l of input.lessons ?? []) {
     items.push({ id: `lesson:${l.id}`, kind: 'lesson', title: l.title, detail: '', at: l.at });
   }
@@ -140,7 +152,7 @@ export function countFeedByKind(
   now: number,
   sinceMs: number,
 ): Record<FeedKind, number> {
-  const counts: Record<FeedKind, number> = { test: 0, listening: 0, speaking: 0, writing: 0, lesson: 0, daily: 0 };
+  const counts: Record<FeedKind, number> = { test: 0, listening: 0, speaking: 0, writing: 0, vocab: 0, lesson: 0, daily: 0 };
   const cutoff = now - sinceMs;
   for (const item of items) {
     const t = stamp(item);

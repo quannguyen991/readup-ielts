@@ -42,7 +42,7 @@ import { useRewardStore } from '@/store/useRewardStore';
 import { ArcadeHome } from '@/components/arcade/ArcadeHome';
 import { CatSticker } from '@/components/mascot/CatSticker';
 import { PixelBob } from '@/components/pixel-theme/pixel-fx';
-import { FeatureStrip, NewsBoard, type Feature, type News } from '@/components/home/HomeExtras';
+import { NewsBoard, type News } from '@/components/home/HomeExtras';
 import { stickerGradient } from '@/theme/tokens';
 import { bi, useL, type Bi } from '@/i18n/useL';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
@@ -63,21 +63,13 @@ const task1Count = WRITING_PROMPTS.filter((p) => p.task === 'ielts_task1').lengt
 const task2Count = WRITING_PROMPTS.filter((p) => p.task === 'ielts_task2').length;
 const sentenceCount = DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length;
 
-/** Bốn tính năng nổi bật, đặt ngay dưới hero. */
-const FEATURES: Feature[] = [
-  { icon: 'check', title: { vi: 'Đề sát thi thật', en: 'Real-format tests' }, body: { vi: 'Reading và Listening chấm ngay, biết sai ở đâu.', en: 'Reading and Listening marked instantly, with the reason for each miss.' }, href: '/mock-tests' },
-  { icon: 'pencil', title: { vi: 'AI chấm Writing', en: 'AI-marked Writing' }, body: { vi: 'Góp ý theo tiêu chí IELTS, nhắc lỗi ngay lúc gõ.', en: 'Feedback on IELTS criteria, flagging mistakes as you type.' }, href: '/write' },
-  { icon: 'grid', title: { vi: 'SAT Math chắc chắn', en: 'SAT Math you can trust' }, body: { vi: 'Đáp án tính bằng code, không do AI đoán.', en: 'Answers computed by code, never guessed by AI.' }, href: '/sat' },
-  { icon: 'languages', title: { vi: 'Đọc song ngữ', en: 'Bilingual reading' }, body: { vi: 'Ghép từng đoạn Anh–Việt, miễn phí cho mọi người.', en: 'Paragraph-aligned English–Vietnamese, free for everyone.' }, href: '/bilingual' },
-];
-
 /** Bảng tin: các mục cập nhật, con số đếm từ dữ liệu thật. */
 const NEWS: News[] = [
-  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Giọng đọc Aoede', en: 'Aoede voice' }, body: { vi: 'Phát âm từ vựng và Listening dùng chung một giọng đọc tự nhiên.', en: 'Vocabulary pronunciation and Listening now share one natural voice.' }, href: '/vocabulary/topics' },
-  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Clip tiếng Anh', en: 'English clips' }, body: { vi: 'Xem clip có sẵn và học theo từng đoạn.', en: 'Watch ready-made clips and study them segment by segment.' }, href: '/clip' },
-  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Thi thử SAT đầy đủ', en: 'Full SAT mock' }, body: { vi: 'Bài thi thử SAT Math và Verbal, chấm bằng code.', en: 'Full SAT Math and Verbal mock, scored by code.' }, href: '/sat/full-test' },
-  { tag: { vi: 'MẸO', en: 'TIP' }, title: { vi: 'Học theo chủ đề', en: 'Study by topic' }, body: { vi: `${VOCAB_TOPICS.length} chủ đề từ vựng IELTS, có phát âm.`, en: `${VOCAB_TOPICS.length} IELTS vocabulary topics, with pronunciation.` }, href: '/vocabulary/topics' },
-  { tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Đọc báo song ngữ', en: 'Bilingual news' }, body: { vi: `${bilingualStats().articles} bài Anh–Việt, ghép theo từng đoạn.`, en: `${bilingualStats().articles} articles, aligned by paragraph.` }, href: '/bilingual' },
+  { icon: 'volume', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Giọng đọc Aoede', en: 'Aoede voice' }, body: { vi: 'Phát âm từ vựng và Listening dùng chung một giọng đọc tự nhiên.', en: 'Vocabulary pronunciation and Listening now share one natural voice.' }, href: '/vocabulary/topics' },
+  { icon: 'play', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Clip tiếng Anh', en: 'English clips' }, body: { vi: 'Xem clip có sẵn và học theo từng đoạn.', en: 'Watch ready-made clips and study them segment by segment.' }, href: '/clip' },
+  { icon: 'clipboard', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Thi thử SAT đầy đủ', en: 'Full SAT mock' }, body: { vi: 'Bài thi thử SAT Math và Verbal, chấm bằng code.', en: 'Full SAT Math and Verbal mock, scored by code.' }, href: '/sat/full-test' },
+  { icon: 'bookmark', tag: { vi: 'MẸO', en: 'TIP' }, title: { vi: 'Học theo chủ đề', en: 'Study by topic' }, body: { vi: `${VOCAB_TOPICS.length} chủ đề từ vựng IELTS, có phát âm.`, en: `${VOCAB_TOPICS.length} IELTS vocabulary topics, with pronunciation.` }, href: '/vocabulary/topics' },
+  { icon: 'languages', tag: { vi: 'MỚI', en: 'NEW' }, title: { vi: 'Đọc báo song ngữ', en: 'Bilingual news' }, body: { vi: `${bilingualStats().articles} bài Anh–Việt, ghép theo từng đoạn.`, en: `${bilingualStats().articles} articles, aligned by paragraph.` }, href: '/bilingual' },
 ];
 
 /** Tạm ẩn dải "Bạn đang học dở" trên trang chủ máy tính; đổi thành true để bật lại. */
@@ -466,9 +458,6 @@ export default function IntroScreen() {
 
       {/* ------------------------------------- Khám phá lịch sử (ẩn tới khi có cảnh xuất bản) */}
       <Appear index={1}>
-        <FeatureStrip items={FEATURES} onOpen={enterApp} />
-      </Appear>
-      <Appear index={2}>
         <NewsBoard items={NEWS} onOpen={enterApp} />
       </Appear>
 

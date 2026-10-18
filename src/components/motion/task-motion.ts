@@ -22,14 +22,17 @@ const TASK_CSS = `
 .rm-shine::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 60%; pointer-events: none; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,.62) 50%, rgba(255,255,255,0) 70%, transparent 100%); transform: translateX(-130%); }
 .rm-shine:hover::after { transform: translateX(230%); transition: transform 760ms cubic-bezier(.2,.8,.2,1); }
 .rm-glow { animation: rm-glow-pulse 2.6s ease-in-out infinite; }
-@keyframes rm-glow-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(217,164,65,0), 0 6px 18px rgba(185, 74, 112,.22); } 50% { box-shadow: 0 0 0 4px rgba(217,164,65,.16), 0 0 26px rgba(232,190,100,.55), 0 6px 18px rgba(185, 74, 112,.22); } }
+@keyframes rm-glow-pulse { 0%, 100% { box-shadow: 0 0 0 1px rgba(246,196,83,.35), 0 0 14px rgba(246,196,83,.32), 0 6px 18px rgba(185, 74, 112,.22); } 50% { box-shadow: 0 0 0 2px rgba(246,196,83,.55), 0 0 34px rgba(246,196,83,.8), 0 6px 18px rgba(185, 74, 112,.22); } }
+.rm-spark { animation: rm-spark 2.4s ease-in-out infinite; }
+@keyframes rm-spark { 0%, 100% { opacity: .15; transform: scale(.45) rotate(0deg); } 50% { opacity: 1; transform: scale(1.1) rotate(45deg); } }
 .rm-ico { transition: transform 280ms cubic-bezier(.34,1.56,.64,1); }
 .rm-lift:hover .rm-ico, .rm-nav:hover .rm-ico { transform: scale(1.14) rotate(-7deg); }
 .rm-nav { transition: transform 200ms cubic-bezier(.2,.8,.2,1), background-color 200ms ease, box-shadow 220ms ease; }
 .rm-nav:hover { transform: translateX(3px); box-shadow: 0 0 0 1px rgba(217,164,65,.28), 0 0 18px rgba(232,190,100,.28); }
 .rm-nav:active { transform: translateX(1px) scale(.98); transition-duration: 90ms; }
 @media (prefers-reduced-motion: reduce) {
-  .rm-lift, .rm-nav, .rm-ico, .rm-glow, .rm-shine::after { transition: none !important; animation: none !important; }
+  .rm-lift, .rm-nav, .rm-ico, .rm-glow, .rm-spark, .rm-shine::after { transition: none !important; animation: none !important; }
+  .rm-spark { opacity: .8 !important; }
   .rm-lift:hover, .rm-nav:hover { transform: none !important; }
 }`;
 

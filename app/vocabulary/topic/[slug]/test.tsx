@@ -41,6 +41,7 @@ export default function TestScreen() {
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
+  const logVocabRun = useStudyStore((s) => s.logVocabRun);
   const [seed, setSeed] = useState(() => Date.now() % 100000);
 
   const questions = useMemo<QuizQuestion[]>(() => (topic ? buildQuiz(topic.words, seededRng(seed), LENGTH) : []), [topic, seed]);
@@ -60,6 +61,12 @@ export default function TestScreen() {
   const submit = () => {
     setSubmitted(true);
     logQuestions(questions.length);
+    logVocabRun({
+      deck: slug,
+      title: topic?.nameVi ?? topic?.name ?? slug,
+      correct: questions.filter((qq, i) => isQuizCorrect(qq, answers[i] ?? null)).length,
+      total: questions.length,
+    });
     useGameStore
       .getState()
       .awardBatch(questions.filter((qq, i) => isQuizCorrect(qq, answers[i] ?? null)).length, questions.length, 'vocab');

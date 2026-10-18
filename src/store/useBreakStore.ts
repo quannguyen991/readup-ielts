@@ -31,7 +31,7 @@ type BreakState = BreakSettings & {
 export const useBreakStore = create<BreakState>()(
   persist(
     (set) => ({
-      enabled: true,
+      enabled: false,
       studyMinutes: 25,
       breakMinutes: 5,
       clock: startClock(todayKey()),

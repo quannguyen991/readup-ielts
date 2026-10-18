@@ -25,14 +25,8 @@ import { useL } from '@/i18n/useL';
 const ACTIVITY_EVENTS = ['pointerdown', 'pointermove', 'keydown', 'scroll', 'touchstart'] as const;
 
 export function BreakLayer() {
-  if (Platform.OS !== 'web') return null;
-  return (
-    <>
-      <BreakRunner />
-      <BreakTimerPill />
-      <BreakOverlay />
-    </>
-  );
+  // Tạm bỏ phần đếm thời gian và giờ nghỉ
+  return null;
 }
 
 function BreakRunner() {

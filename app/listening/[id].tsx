@@ -389,10 +389,10 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                     title={L('Thi thật', 'Real test')}
                     note={audio.audioFileReady
                       ? hasPreparedAudio
-                        ? L('Audio luyện tập Aoede đã chuẩn bị sẵn. Nghe một lần, có 30 giây kiểm tra cuối mỗi section.', 'Pre-generated Aoede practice audio is ready. One listen, with 30 seconds to check at the end of each section.')
+                        ? L('Audio đã có sẵn. Mỗi section có 30 giây đọc đề trước khi nghe và 30 giây kiểm tra cuối section.', 'Audio is ready. Each section gives 30 seconds to read the questions before listening and 30 seconds to check at the end.')
                         : L('Nghe một lần, không tạm dừng, có 30 giây kiểm tra cuối mỗi section.', 'One listen, no pause, 30 seconds to check after each section.')
                       : hasPreparedAudio
-                        ? L('Đang tải audio luyện tập đã chuẩn bị sẵn…', 'Loading the pre-generated practice audio…')
+                        ? L('Đang kiểm tra audio của đề…', 'Checking the test audio…')
                         : L('Cần audio của đề này. Bạn có thể chọn tệp audio từ thiết bị.', 'This test needs audio. You can choose an audio file from your device.')}
                     disabled={!audio.audioFileReady}
                     onPress={() => { if (audio.audioFileReady) { playSfx('select'); setReal(true); } }}
@@ -411,7 +411,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                 ) : null}
                 <FallbackNote audio={audio} />
                 {hasPreparedAudio ? (
-                  <Text className="mt-3 font-nun-mid text-label text-muted">{L('Audio luyện tập đã được tạo sẵn bằng giọng Aoede và phát trực tiếp từ thư viện.', 'Aoede practice audio is pre-generated and ready to stream from the library.')}</Text>
+                  <Text className="mt-3 font-nun-mid text-label text-muted">{L('Audio của đề được phát trực tiếp từ thư viện.', 'The test audio streams directly from the library.')}</Text>
                 ) : (
                   <>
                     <Button

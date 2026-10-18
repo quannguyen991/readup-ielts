@@ -97,6 +97,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Theme máy chơi điện tử (mua trong Đổi quà): Chikawa thay Leo ở bong bóng hỏi đáp.
   const arcadeTheme = useRewardStore((s) => s.theme === 'theme-arcade');
   const viewportWidth = useWindowDimensions().width;
+  // Trang chủ máy tính (/intro): không đàn mèo đi dạo và không bong bóng Leo, để bảng tin và sư tử trong khuôn đứng một mình.
+  const deskHome = pathname === '/intro' && !phone;
   // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
   const retro = useRetroOn();
 
@@ -222,11 +224,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </View>
       <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
       {/* Đàn mèo đi dạo trên nền vàng kim (chỉ máy tính): trên điện thoại mèo đã bám ở thanh tab, thêm đàn đi dạo thì rối. */}
-      {goldSkin && !retro && !pageBg && !isQuestRoute && !phone ? (
+      {goldSkin && !retro && !pageBg && !isQuestRoute && !phone && !deskHome ? (
         <WalkingCats bottom={phone ? 74 : 14} left={viewportWidth >= 1024 ? SIDEBAR_WIDTH[collapsed ? 'collapsed' : 'expanded'] : 0} variant={phone ? 'phone' : 'desktop'} />
       ) : null}
       <BottomTabs />
-      {isCityRoute ? null : <AskBubble forceChiikawa={arcadeTheme} />}
+      {isCityRoute || deskHome ? null : <AskBubble forceChiikawa={arcadeTheme} />}
       <SelectionLookup />
       <ReminderRunner />
       <SearchPalette />

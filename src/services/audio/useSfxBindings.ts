@@ -95,9 +95,10 @@ function bindStores(): void {
     }
   });
 
-  let streak = useStudyStore.getState().streak().current;
+  // Chuỗi tính như mọi nơi khác: có cả ngày đông băng (thẻ giữ chuỗi) trong kho phần thưởng.
+  let streak = useStudyStore.getState().streak(useRewardStore.getState().frozenDays).current;
   useStudyStore.subscribe((s) => {
-    const now = s.streak().current;
+    const now = s.streak(useRewardStore.getState().frozenDays).current;
     if (now > streak && visible()) playSfx('streak');
     streak = now;
   });
