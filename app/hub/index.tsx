@@ -7,15 +7,17 @@ import { HubScreen } from '@/components/hub/HubScreen';
 import { GLASS_CARD, COSMIC } from '@/components/hub/theme';
 import { Icon } from '@/components/ui/Icon';
 import { CuteBook, CuteCalendar, CuteGlobe } from '@/components/illust/Cute';
-import { CuteBulb, CuteChat, CuteFlame, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CuteRocket, CuteStar } from '@/components/illust/CuteMore';
+import { CuteChat, CuteFlame, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CuteRocket, CuteStar } from '@/components/illust/CuteMore';
+import { PASTEL_INK as INK, PASTEL_INK_SOFT as INK_SOFT, TutorTile } from '@/components/hub/TutorCards';
 import { dayKeyOf, streakDays, weekStrip } from '@/services/hub/daily';
+import { TUTORS, homeTutors } from '@/services/hub/tutors';
 import { useHubStore } from '@/store/useHubStore';
 
 const WEEKDAYS = ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'];
 
-/** Chữ Nunito (cùng họ với trang cute-home). Hub nạp Nunito qua app/hub/_layout.tsx. */
-const INK = '#2B1D3A';
-const INK_SOFT = '#6E5D78';
+/** Bảng màu và font: xem src/components/hub/TutorCards.tsx (Nunito nạp qua app/hub/_layout.tsx). */
+const LIVE_TUTOR_COUNT = TUTORS.filter((t) => t.status === 'live').length;
+const HOME_TUTORS = homeTutors();
 
 /** Bốn thẻ công cụ AI — nền pastel, minh họa vẽ bằng SVG của app. */
 const AI_TOOLS: {
@@ -37,7 +39,6 @@ const AI_TOOLS: {
 const MODES: { title: string; desc: string; art: (size: number) => React.ReactNode; route: string; bg: string }[] = [
   { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại', art: (s) => <CuteChat size={s} />, route: '/hub/scenarios', bg: '#FFE4D8' },
   { title: 'Chủ đề', desc: 'Nói theo chủ đề 1–2 phút', art: (s) => <CuteGlobe size={s} />, route: '/hub/topics', bg: '#DDF5E6' },
-  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', bg: '#FFF3CC' },
   { title: 'Học', desc: 'Bài học theo từng kỹ năng', art: (s) => <CuteBook size={s} />, route: '/hub/learn', bg: '#DFEEFF' },
   { title: 'Khám phá', desc: 'Tìm nội dung và bài luyện mới', art: (s) => <CuteMagnifier size={s} />, route: '/hub/explore', bg: '#EEE6FF' },
   { title: 'Từ điển', desc: 'Tra từ, nghe phát âm', art: (s) => <CuteNotebook size={s} />, route: '/hub/dictionary', bg: '#E2F7F8' },
@@ -193,6 +194,24 @@ export default function HubToday() {
                 </View>
               </LinearGradient>
             </Pressable>
+          ))}
+        </View>
+      </View>
+
+      {/* Gia sư AI — lưới thẻ gia sư đang live; "Xem tất cả" mở danh sách đầy đủ */}
+      <View style={{ gap: 10 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
+          <View style={{ flexShrink: 1, gap: 2 }}>
+            <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Gia sư AI</Text>
+            <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '600' }}>Chọn gia sư theo mục tiêu của bạn.</Text>
+          </View>
+          <Pressable accessibilityRole="button" accessibilityLabel="Xem tất cả gia sư" onPress={() => router.push('/hub/tutor' as never)}>
+            <Text style={{ color: '#C2410C', fontSize: 13, fontWeight: '800' }}>Xem tất cả ({LIVE_TUTOR_COUNT}) ›</Text>
+          </Pressable>
+        </View>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+          {HOME_TUTORS.map((t, i) => (
+            <TutorTile key={t.id} t={t} index={i} wide={wide} />
           ))}
         </View>
       </View>

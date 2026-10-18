@@ -21,11 +21,222 @@ export type Tutor = {
   needsSlides?: boolean;
   /** Gia sư cần nạp CV / Hồ sơ trước khi bắt đầu. */
   needsProfile?: boolean;
+  /** Mức CEFR gợi ý cho người học, ví dụ 'B1–C1'. */
+  level?: string;
+  /** 2–3 kỹ năng/chủ đề chính (tiếng Việt). Bản Anh nằm ở tutors-en.ts. */
+  focus?: string[];
+  /** 2–3 bài tập mẫu, mỗi bài một câu (tiếng Việt). Bản Anh nằm ở tutors-en.ts. */
+  tasks?: string[];
 };
+
+/** Dữ liệu học của gia sư đang live: mức, kỹ năng chính và bài tập mẫu. */
+const TUTOR_LEARNING: Record<string, { level: string; focus: string[]; tasks: string[] }> = {
+  grammar: {
+    level: 'B1–C1',
+    focus: ['Thì và trợ động từ', 'Mệnh đề quan hệ', 'Câu điều kiện'],
+    tasks: [
+      'Nói một câu về khả năng hiện tại bằng can và can\'t.',
+      'Viết lại một câu có mệnh đề quan hệ với who, which hoặc that.',
+      'Hoàn thành một câu điều kiện loại 2 rồi nhận sửa lỗi.',
+    ],
+  },
+  'speech-analysis': {
+    level: 'B1–C1',
+    focus: ['Phát âm từng âm', 'Ngữ điệu câu', 'Nhịp và độ rõ'],
+    tasks: [
+      'Ghi âm bài nói 1 phút về một ngày làm việc điển hình.',
+      'Nghe lại và nhận xét phát âm, trọng âm của chính bạn.',
+      'Đọc lại đoạn đã sửa để so sánh ngữ điệu và nhịp.',
+    ],
+  },
+  vocab: {
+    level: 'B2–C2',
+    focus: ['Cụm từ học thuật', 'Từ đồng nghĩa mức C1', 'Giáo dục, công nghệ, môi trường'],
+    tasks: [
+      'Học một cụm từ C1 mới kèm một câu ví dụ.',
+      'Thay một từ đơn giản trong câu của bạn bằng từ chính xác hơn.',
+      'Trả lời một câu hỏi kiểm tra nhanh về cụm từ vừa học.',
+    ],
+  },
+  pronounce: {
+    level: 'A2–C1',
+    focus: ['Âm cuối /p/ /t/ /k/', 'Trọng âm từ', 'Cặp từ tối thiểu'],
+    tasks: [
+      'Đọc một từ có âm cuối /t/ hoặc /k/ và nghe nhận xét.',
+      'Phân biệt cặp từ ship và sheep bằng khẩu hình.',
+      'Đọc một câu dài và nhấn đúng trọng âm của từ chính.',
+    ],
+  },
+  meeting: {
+    level: 'B2–C1',
+    focus: ['Cập nhật tiến độ', 'Phản biện lịch trình', 'Đạt đồng thuận'],
+    tasks: [
+      'Báo cáo tiến độ một hạng mục trong khoảng 30 giây.',
+      'Phản đối nhẹ nhàng một mốc thời gian và nêu lý do.',
+      'Đề xuất hướng đi và chốt việc cần làm tiếp theo.',
+    ],
+  },
+  interview: {
+    level: 'B1–C1',
+    focus: ['Giới thiệu bản thân', 'Câu hỏi hành vi theo năng lực', 'Thành tựu nổi bật'],
+    tasks: [
+      'Giới thiệu bản thân trong khoảng 1 phút.',
+      'Kể một tình huống khó theo thứ tự: bối cảnh, việc cần làm, hành động, kết quả.',
+      'Trả lời về thành tựu bạn tự hào nhất bằng số liệu cụ thể.',
+    ],
+  },
+  'public-speaking': {
+    level: 'B2–C2',
+    focus: ['Mở đầu thu hút', 'Giọng và nhịp thuyết trình', 'Trả lời câu hỏi khán giả'],
+    tasks: [
+      'Mở bài thuyết trình trong 30 giây để thu hút khán giả.',
+      'Trình bày một ý chính rồi dừng lại để tạo điểm nhấn.',
+      'Trả lời một câu hỏi thử thách từ khán giả.',
+    ],
+  },
+  presentation: {
+    level: 'B2–C2',
+    focus: ['Trình bày theo slide', 'Ngôn ngữ thuyết trình', 'Hỏi đáp sau bài'],
+    tasks: [
+      'Trình bày Slide 1 bằng lời của bạn.',
+      'Chuyển sang slide tiếp theo bằng một câu dẫn ngắn.',
+      'Trả lời một câu hỏi phản biện sau khi kết thúc bài.',
+    ],
+  },
+  sales: {
+    level: 'B2–C1',
+    focus: ['Tìm nhu cầu của khách', 'Xử lý phản đối ngân sách', 'Chốt bước tiếp theo'],
+    tasks: [
+      'Đặt hai câu hỏi để tìm ra vấn đề thật sự của khách.',
+      'Đáp lại khi khách nói ngân sách đang bị giới hạn.',
+      'Chốt một bước tiếp theo rõ ràng trước khi kết thúc cuộc gọi.',
+    ],
+  },
+  dating: {
+    level: 'B1–B2',
+    focus: ['Hội thoại thân mật', 'Hỏi tiếp để giữ câu chuyện', 'Chuyển chủ đề tự nhiên'],
+    tasks: [
+      'Đáp lại lời chào và kể một chi tiết về ngày của bạn.',
+      'Hỏi lại một câu theo sở thích của đối phương.',
+      'Chuyển từ chuyện quán cà phê sang sở thích của bạn.',
+    ],
+  },
+  travel: {
+    level: 'A2–B1',
+    focus: ['Nhận phòng khách sạn', 'Hải quan và giấy tờ', 'Hỏi gợi ý địa phương'],
+    tasks: [
+      'Trả lời khi lễ tân xin hộ chiếu và mã đặt phòng.',
+      'Khai báo hành lý khi làm thủ tục hải quan.',
+      'Hỏi lễ tân gợi ý món ăn địa phương.',
+    ],
+  },
+  negotiation: {
+    level: 'B2–C1',
+    focus: ['Đưa ra mức đề nghị', 'Lập luận bằng dữ kiện', 'Giữ thế chủ động'],
+    tasks: [
+      'Nêu mức lương mong muốn kèm lý do cụ thể.',
+      'Đáp lại khi bên kia nói ngân sách đã chạm trần.',
+      'Đề xuất một phương án thay thế thay vì nhượng bộ ngay.',
+    ],
+  },
+  conflict: {
+    level: 'B2–C1',
+    focus: ['Diễn đạt cảm xúc', 'Nói về sự việc, không đổ lỗi', 'Thống nhất cách xử lý'],
+    tasks: [
+      'Nói về việc giao trễ mà không buộc tội ai.',
+      'Thể hiện sự thấu hiểu trước khi đưa ra yêu cầu.',
+      'Đề xuất cách cùng xử lý để kịp hạn chót mới.',
+    ],
+  },
+  'leader-comms': {
+    level: 'C1',
+    focus: ['Thông điệp chiến lược', 'Truyền cảm hứng cho đội', 'Góp ý khó một cách tử tế'],
+    tasks: [
+      'Phát biểu một phút để trấn an đội ngũ quản lý.',
+      'Nêu tầm nhìn ngắn gọn bằng hai ý chính.',
+      'Đưa ra một góp ý khó với giọng điệu tôn trọng.',
+    ],
+  },
+  storytelling: {
+    level: 'B2–C1',
+    focus: ['Cấu trúc SCQA', 'Biến số liệu thành câu chuyện', 'Mở đầu gây chú ý'],
+    tasks: [
+      'Kể bước ngoặt của sản phẩm theo khung bối cảnh, vấn đề, câu hỏi, trả lời.',
+      'Thay một con số khô khan bằng một ví dụ cụ thể.',
+      'Viết lại câu mở đầu để thu hút nhà đầu tư.',
+    ],
+  },
+  leadership: {
+    level: 'C1',
+    focus: ['Tự nhận thức', 'Ra quyết định khi thiếu thông tin', 'Tầm ảnh hưởng trong tổ chức'],
+    tasks: [
+      'Kể một điểm mù cá nhân đã ảnh hưởng đến đội của bạn.',
+      'Giải thích một quyết định bạn đưa ra khi chưa đủ thông tin.',
+      'Nói cách bạn tạo ảnh hưởng ở vị trí không có quyền quyết định.',
+    ],
+  },
+  'ielts-examiner': {
+    level: 'B2–C1',
+    focus: ['IELTS Speaking Part 1, 2, 3', 'Từ vựng và ngữ pháp mức cao', 'Giọng Anh, Úc, Mỹ'],
+    tasks: [
+      'Trả lời ba câu hỏi quen thuộc ở Part 1.',
+      'Nói về một chủ đề trong 1–2 phút ở Part 2.',
+      'Trả lời câu hỏi mở rộng ở Part 3 mà không đọc thuộc lòng.',
+    ],
+  },
+  profile: {
+    level: 'C1',
+    focus: ['Phỏng vấn sâu về hồ sơ', 'Bảo vệ thành tích học thuật', 'Giải thích phương pháp nghiên cứu'],
+    tasks: [
+      'Tải lên CV hoặc bài luận để AI đặt câu hỏi về hồ sơ của bạn.',
+      'Giải thích một thành tích trong hồ sơ bằng số liệu cụ thể.',
+      'Trả lời về phương pháp bạn đã dùng trong một dự án.',
+    ],
+  },
+  phone: {
+    level: 'A2–B1',
+    focus: ['Nghe và phản hồi nhanh', 'Xác nhận đặt bàn, lịch hẹn', 'Hỏi lại khi chưa rõ'],
+    tasks: [
+      'Trả lời cuộc gọi xác nhận đặt bàn nhà hàng.',
+      'Hỏi lại một câu khi chưa nghe rõ.',
+      'Đặt lịch hẹn qua điện thoại với phòng khám.',
+    ],
+  },
+  diary: {
+    level: 'A2–B1',
+    focus: ['Viết câu hoàn chỉnh', 'Chọn từ chính xác', 'Mô tả một ngày của bạn'],
+    tasks: [
+      'Viết 3–5 câu về một điều khiến bạn mỉm cười hôm nay.',
+      'Sửa một lỗi ngữ pháp hoặc chọn từ trong bài viết của bạn.',
+      'Trả lời câu hỏi tiếp theo của gia sư để viết thêm.',
+    ],
+  },
+};
+
+/** Gia sư hiện trên lưới chính của trang Luyện nói (theo thứ tự này). */
+export const HOME_TUTOR_IDS = ['grammar', 'speech-analysis', 'pronounce', 'interview', 'meeting', 'ielts-examiner'];
+
+/** Gia sư có màn riêng trong app: bấm vào mở đúng màn đó, không đi qua phòng hội thoại AI chung. */
+const OWN_SCREEN: Record<string, string> = {
+  grammar: '/hub/tutor/grammar',
+  'speech-analysis': '/hub/analyze',
+  pronounce: '/hub/learn',
+  meeting: '/hub/meeting',
+};
+
+/**
+ * Đích của một dòng: màn riêng nếu có; gia sư `soon` (chưa sẵn sàng) mở màn "đang chuẩn bị";
+ * còn lại vào phòng hội thoại AI dùng vai của gia sư đó.
+ */
+export function tutorRoute(t: Tutor): string {
+  if (OWN_SCREEN[t.id]) return OWN_SCREEN[t.id]!;
+  if (t.status === 'soon') return `/hub/tutor/coming/${t.id}`;
+  return `/hub/tutor/${t.id}`;
+}
 
 export const SHARED_RULE = 'Reply in short, natural English (1-3 sentences maximum). Always end with an open-ended question to maximize learner speaking time (70% learner, 30% AI). After the learner answers, give one concrete correction and explain briefly.';
 
-export const TUTORS: Tutor[] = [
+const TUTOR_LIST: Tutor[] = [
   {
     id: 'grammar',
     name: 'Gia sư ngữ pháp',
@@ -222,6 +433,21 @@ export const TUTORS: Tutor[] = [
     openingVi: 'Gợi ý hôm nay: Hãy miêu tả một điều nhỏ bé khiến bạn mỉm cười hôm nay. Viết 3 đến 5 câu tiếng Anh rồi gửi cho tôi nhé.',
   },
 ];
+
+/** Danh sách gia sư đầy đủ, đã gắn dữ liệu học cho từng gia sư đang live. */
+export const TUTORS: Tutor[] = TUTOR_LIST.map((t) => (TUTOR_LEARNING[t.id] ? { ...t, ...TUTOR_LEARNING[t.id] } : t));
+
+/** Các gia sư hiện trên lưới chính Luyện nói: chỉ gia sư đang live, theo HOME_TUTOR_IDS. */
+export function homeTutors(): Tutor[] {
+  return HOME_TUTOR_IDS.map((id) => TUTORS.find((t) => t.id === id)).filter(
+    (t): t is Tutor => !!t && t.status === 'live'
+  );
+}
+
+/** Gia sư chưa sẵn sàng: hiện gọn ở cuối danh sách. */
+export function soonTutors(): Tutor[] {
+  return TUTORS.filter((t) => t.status === 'soon');
+}
 
 export const DIARY_PROMPTS: string[] = [
   'Describe one small thing that made you smile today.',
