@@ -1,4 +1,5 @@
 import type { GrammarLessonDetail } from './types';
+import { B1_GRAMMAR_EXTRA } from './b1-2';
 
 /** Cấp B1: hiện tại hoàn thành, câu điều kiện loại 1–2, câu bị động. */
 export const B1_GRAMMAR: GrammarLessonDetail[] = [
@@ -577,4 +578,5 @@ export const B1_GRAMMAR: GrammarLessonDetail[] = [
       { q: "Choose the correct sentence.", options: ["We are meeting the director tomorrow.", "We will meeting the director tomorrow.", "We are meet the director tomorrow."], answer: 0, explain: "Kế hoạch đã sắp xếp dùng are meeting." },
     ],
   },
+  ...B1_GRAMMAR_EXTRA,
 ];

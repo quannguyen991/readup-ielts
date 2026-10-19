@@ -15,6 +15,8 @@ export type StudyWord = {
   example: string;
   collocation: string;
   band: string;
+  /** Mức CEFR B1–C2 (bộ IELTS sau khi ghép). */
+  cefr?: 'B1' | 'B2' | 'C1' | 'C2';
   /** Ngữ cảnh dùng (bộ giao tiếp hằng ngày). */
   context?: string;
   /** Chỉ bộ có dữ liệu viết tay (SAT Verbal): từ đồng nghĩa, trái nghĩa. */

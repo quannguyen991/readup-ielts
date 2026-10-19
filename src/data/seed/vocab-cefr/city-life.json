@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "city",
+    "pos": "noun",
+    "ipa": "/ˈsɪti/",
+    "meaningVi": "thành phố",
+    "definitionEn": "a large and busy town with many houses and streets",
+    "example": "Many young people move to the city to find better jobs.",
+    "collocation": "big city",
+    "cefr": "B1"
+  },
+  {
+    "word": "shop",
+    "pos": "noun",
+    "ipa": "/ʃɒp/",
+    "meaningVi": "cửa hàng",
+    "definitionEn": "a building or room where goods are sold",
+    "example": "The corner shop sells bread, milk and newspapers every morning.",
+    "collocation": "local shop",
+    "cefr": "B1"
+  },
+  {
+    "word": "park",
+    "pos": "noun",
+    "ipa": "/pɑːk/",
+    "meaningVi": "công viên",
+    "definitionEn": "an open area of grass and trees for public recreation",
+    "example": "Children play football in the park after school.",
+    "collocation": "public park",
+    "cefr": "B1"
+  },
+  {
+    "word": "noise",
+    "pos": "noun",
+    "ipa": "/nɔɪz/",
+    "meaningVi": "tiếng ồn",
+    "definitionEn": "a sound, especially one that is loud or unpleasant",
+    "example": "The constant noise from building sites keeps residents awake.",
+    "collocation": "loud noise",
+    "cefr": "B1"
+  },
+  {
+    "word": "neighbour",
+    "pos": "noun",
+    "ipa": "/ˈneɪbə/",
+    "meaningVi": "hàng xóm",
+    "definitionEn": "a person who lives next to or near you",
+    "example": "Our neighbours invited us to their summer barbecue.",
+    "collocation": "next-door neighbour",
+    "cefr": "B1"
+  },
+  {
+    "word": "crowded",
+    "pos": "adjective",
+    "ipa": "/ˈkraʊdɪd/",
+    "meaningVi": "đông đúc",
+    "definitionEn": "full of people",
+    "example": "The market is always crowded on Saturday mornings.",
+    "collocation": "crowded street",
+    "cefr": "B1"
+  },
+  {
+    "word": "quiet",
+    "pos": "adjective",
+    "ipa": "/ˈkwaɪət/",
+    "meaningVi": "yên tĩnh",
+    "definitionEn": "making little or no noise",
+    "example": "We moved to a quiet street away from the main road.",
+    "collocation": "quiet street",
+    "cefr": "B1"
+  },
+  {
+    "word": "traffic",
+    "pos": "noun",
+    "ipa": "/ˈtræfɪk/",
+    "meaningVi": "giao thông, xe cộ",
+    "definitionEn": "vehicles moving along roads",
+    "example": "Heavy traffic makes it difficult to cross the river at rush hour.",
+    "collocation": "heavy traffic",
+    "cefr": "B1"
+  },
+  {
+    "word": "library",
+    "pos": "noun",
+    "ipa": "/ˈlaɪbrəri/",
+    "meaningVi": "thư viện",
+    "definitionEn": "a place where books and other materials are kept for public use",
+    "example": "The public library offers free internet access and quiet reading rooms.",
+    "collocation": "public library",
+    "cefr": "B1"
+  },
+  {
+    "word": "market",
+    "pos": "noun",
+    "ipa": "/ˈmɑːkɪt/",
+    "meaningVi": "chợ",
+    "definitionEn": "a place where goods are bought and sold, often in open stalls",
+    "example": "We bought fresh vegetables at the market near our flat.",
+    "collocation": "street market",
+    "cefr": "B1"
+  },
+  {
+    "word": "flat",
+    "pos": "noun",
+    "ipa": "/flæt/",
+    "meaningVi": "căn hộ",
+    "definitionEn": "a set of rooms for living in, on one floor of a building",
+    "example": "They rent a small flat in the city centre.",
+    "collocation": "rent a flat",
+    "cefr": "B1"
+  },
+  {
+    "word": "bus stop",
+    "pos": "noun",
+    "ipa": "/bʌs stɒp/",
+    "meaningVi": "trạm xe buýt",
+    "definitionEn": "a place where buses regularly stop to pick up passengers",
+    "example": "Wait for me at the bus stop outside the bank.",
+    "collocation": "bus stop sign",
+    "cefr": "B1"
+  },
+  {
+    "word": "rubbish",
+    "pos": "noun",
+    "ipa": "/ˈrʌbɪʃ/",
+    "meaningVi": "rác",
+    "definitionEn": "waste material that is thrown away",
+    "example": "Please put your rubbish in the bin before you leave the park.",
+    "collocation": "collect rubbish",
+    "cefr": "B1"
+  },
+  {
+    "word": "busy",
+    "pos": "adjective",
+    "ipa": "/ˈbɪzi/",
+    "meaningVi": "nhộn nhịp, đông người",
+    "definitionEn": "full of activity or people",
+    "example": "The city centre becomes very busy during the lunch hour.",
+    "collocation": "busy street",
+    "cefr": "B1"
+  },
+  {
+    "word": "cosmopolitan",
+    "pos": "adjective",
+    "ipa": "/ˌkɒzməˈpɒlɪtən/",
+    "meaningVi": "đa văn hoá",
+    "definitionEn": "containing people and influences from many different countries",
+    "example": "The cosmopolitan city attracts visitors from every continent.",
+    "collocation": "cosmopolitan atmosphere",
+    "cefr": "B2"
+  },
+  {
+    "word": "thriving",
+    "pos": "adjective",
+    "ipa": "/ˈθraɪvɪŋ/",
+    "meaningVi": "phát đạt, sôi động",
+    "definitionEn": "growing successfully and strongly",
+    "example": "The district now has a thriving arts scene and busy cafés.",
+    "collocation": "thriving business district",
+    "cefr": "B2"
+  },
+  {
+    "word": "vibrant",
+    "pos": "adjective",
+    "ipa": "/ˈvaɪbrənt/",
+    "meaningVi": "sôi động, rực rỡ",
+    "definitionEn": "full of energy, colour and activity",
+    "example": "The vibrant nightlife keeps the old quarter busy until dawn.",
+    "collocation": "vibrant community",
+    "cefr": "B2"
+  },
+  {
+    "word": "run-down",
+    "pos": "adjective",
+    "ipa": "/ˌrʌn ˈdaʊn/",
+    "meaningVi": "xuống cấp",
+    "definitionEn": "in poor condition because of neglect",
+    "example": "The run-down estate was finally renovated after a decade of neglect.",
+    "collocation": "run-down area",
+    "cefr": "B2"
+  },
+  {
+    "word": "tenant",
+    "pos": "noun",
+    "ipa": "/ˈtenənt/",
+    "meaningVi": "người thuê nhà",
+    "definitionEn": "a person who pays rent to live in a property owned by someone else",
+    "example": "Tenants complained about damp walls and broken heating systems.",
+    "collocation": "tenant rights",
+    "cefr": "B2"
+  },
+  {
+    "word": "landlord",
+    "pos": "noun",
+    "ipa": "/ˈlændlɔːd/",
+    "meaningVi": "chủ nhà cho thuê",
+    "definitionEn": "a person who owns a property and rents it to others",
+    "example": "Our landlord agreed to repair the leaking roof before winter.",
+    "collocation": "private landlord",
+    "cefr": "B2"
+  },
+  {
+    "word": "rent",
+    "pos": "noun",
+    "ipa": "/rent/",
+    "meaningVi": "tiền thuê nhà",
+    "definitionEn": "a regular payment made for the use of a property",
+    "example": "The monthly rent includes water and electricity bills.",
+    "collocation": "monthly rent",
+    "cefr": "B2"
+  },
+  {
+    "word": "utilities",
+    "pos": "noun",
+    "ipa": "/juːˈtɪlətiz/",
+    "meaningVi": "dịch vụ tiện ích",
+    "definitionEn": "essential services such as water, gas and electricity supplied to homes",
+    "example": "Utilities such as water and electricity are included in the rent.",
+    "collocation": "public utilities",
+    "cefr": "B2"
+  },
+  {
+    "word": "commuter",
+    "pos": "noun",
+    "ipa": "/kəˈmjuːtə/",
+    "meaningVi": "người đi làm xa",
+    "definitionEn": "a person who travels regularly between home and work in a city",
+    "example": "Commuters crowd the platforms every weekday morning in the city.",
+    "collocation": "daily commuter",
+    "cefr": "B2"
+  },
+  {
+    "word": "landmark",
+    "pos": "noun",
+    "ipa": "/ˈlændmɑːk/",
+    "meaningVi": "công trình biểu tượng",
+    "definitionEn": "a building or feature that is easily recognised and important to a place",
+    "example": "The clock tower is the city's most famous landmark.",
+    "collocation": "historic landmark",
+    "cefr": "B2"
+  },
+  {
+    "word": "district",
+    "pos": "noun",
+    "ipa": "/ˈdɪstrɪkt/",
+    "meaningVi": "khu vực, quận",
+    "definitionEn": "a particular area of a town or city with its own character",
+    "example": "The financial district stays busy long after the offices close.",
+    "collocation": "financial district",
+    "cefr": "B2"
+  },
+  {
+    "word": "suburban",
+    "pos": "adjective",
+    "ipa": "/səˈbɜːbən/",
+    "meaningVi": "thuộc ngoại ô",
+    "definitionEn": "relating to the residential area on the edge of a city",
+    "example": "Suburban families often prefer quieter streets and larger gardens.",
+    "collocation": "suburban area",
+    "cefr": "B2"
+  },
+  {
+    "word": "bylaw",
+    "pos": "noun",
+    "ipa": "/ˈbaɪlɔː/",
+    "meaningVi": "quy định địa phương",
+    "definitionEn": "a rule made by a local authority that applies only within its area",
+    "example": "A local bylaw bans drinking alcohol in public parks after dark.",
+    "collocation": "local bylaw",
+    "cefr": "B2"
+  },
+  {
+    "word": "ordinance",
+    "pos": "noun",
+    "ipa": "/ˈɔːdɪnəns/",
+    "meaningVi": "sắc lệnh đô thị",
+    "definitionEn": "an official law or rule made by a city government",
+    "example": "A new ordinance requires all shops to recycle cardboard waste.",
+    "collocation": "city ordinance",
+    "cefr": "B2"
+  },
+  {
+    "word": "vandalism",
+    "pos": "noun",
+    "ipa": "/ˈvændəlɪzəm/",
+    "meaningVi": "hành vi phá hoại",
+    "definitionEn": "the deliberate damage of public or private property",
+    "example": "Vandalism has damaged the bus shelters across the district.",
+    "collocation": "acts of vandalism",
+    "cefr": "B2"
+  },
+  {
+    "word": "graffiti",
+    "pos": "noun",
+    "ipa": "/ɡrəˈfiːti/",
+    "meaningVi": "chữ vẽ bậy, graffiti",
+    "definitionEn": "writing or drawings scribbled or painted on public walls",
+    "example": "Colourful graffiti covers the walls of the old warehouse.",
+    "collocation": "street graffiti",
+    "cefr": "B2"
+  },
+  {
+    "word": "mural",
+    "pos": "noun",
+    "ipa": "/ˈmjʊərəl/",
+    "meaningVi": "tranh tường",
+    "definitionEn": "a large painting applied directly onto a wall",
+    "example": "A giant mural celebrates the neighbourhood's history on the bridge wall.",
+    "collocation": "painted mural",
+    "cefr": "B2"
+  },
+  {
+    "word": "lane",
+    "pos": "noun",
+    "ipa": "/leɪn/",
+    "meaningVi": "ngõ nhỏ, làn đường",
+    "definitionEn": "a narrow road or path, often in the countryside or an old quarter",
+    "example": "We walked down a narrow lane lined with old brick houses.",
+    "collocation": "narrow lane",
+    "cefr": "B2"
+  },
+  {
+    "word": "alley",
+    "pos": "noun",
+    "ipa": "/ˈæli/",
+    "meaningVi": "ngõ hẻm",
+    "definitionEn": "a narrow passage between or behind buildings",
+    "example": "Street vendors set up stalls in the narrow alley each evening.",
+    "collocation": "dark alley",
+    "cefr": "B2"
+  },
+  {
+    "word": "hub",
+    "pos": "noun",
+    "ipa": "/hʌb/",
+    "meaningVi": "trung tâm, đầu mối",
+    "definitionEn": "a central place where activity or transport is concentrated",
+    "example": "The railway station has become a busy hub for the entire region.",
+    "collocation": "transport hub",
+    "cefr": "B2"
+  },
+  {
+    "word": "facilities",
+    "pos": "noun",
+    "ipa": "/fəˈsɪlətiz/",
+    "meaningVi": "cơ sở vật chất, tiện nghi",
+    "definitionEn": "buildings or equipment provided for a particular purpose",
+    "example": "The community centre offers sports facilities and a children's playground.",
+    "collocation": "sports facilities",
+    "cefr": "B2"
+  },
+  {
+    "word": "rooftop",
+    "pos": "noun",
+    "ipa": "/ˈruːftɒp/",
+    "meaningVi": "sân thượng",
+    "definitionEn": "the top surface of a building",
+    "example": "We ate dinner on a rooftop terrace overlooking the city lights.",
+    "collocation": "rooftop garden",
+    "cefr": "B2"
+  },
+  {
+    "word": "metropolis",
+    "pos": "noun",
+    "ipa": "/məˈtrɒpəlɪs/",
+    "meaningVi": "đô thị lớn",
+    "definitionEn": "a very large and important city",
+    "example": "London has grown into one of the world's most dynamic metropolises.",
+    "collocation": "sprawling metropolis",
+    "cefr": "C1"
+  },
+  {
+    "word": "civic",
+    "pos": "adjective",
+    "ipa": "/ˈsɪvɪk/",
+    "meaningVi": "thuộc thành phố, công dân",
+    "definitionEn": "relating to the duties and affairs of a city or its citizens",
+    "example": "Civic pride inspired residents to restore the historic town hall.",
+    "collocation": "civic pride",
+    "cefr": "C1"
+  },
+  {
+    "word": "urbane",
+    "pos": "adjective",
+    "ipa": "/ɜːˈbeɪn/",
+    "meaningVi": "lịch lãm, thành thị",
+    "definitionEn": "polite, confident and sophisticated in manner",
+    "example": "The urbane manager moved easily between business meetings and art galleries.",
+    "collocation": "urbane manner",
+    "cefr": "C1"
+  },
+  {
+    "word": "cacophony",
+    "pos": "noun",
+    "ipa": "/kəˈkɒfəni/",
+    "meaningVi": "tiếng ồn hỗn tạp",
+    "definitionEn": "a harsh mixture of loud and discordant sounds",
+    "example": "A cacophony of horns and sirens filled the busy intersection.",
+    "collocation": "urban cacophony",
+    "cefr": "C1"
+  },
+  {
+    "word": "alienation",
+    "pos": "noun",
+    "ipa": "/ˌeɪliəˈneɪʃn/",
+    "meaningVi": "sự xa lạ, cô lập",
+    "definitionEn": "a feeling of being isolated or disconnected from others",
+    "example": "Many residents describe a sense of alienation in large high-rise estates.",
+    "collocation": "social alienation",
+    "cefr": "C1"
+  },
+  {
+    "word": "anonymity",
+    "pos": "noun",
+    "ipa": "/ˌænəˈnɪməti/",
+    "meaningVi": "sự ẩn danh",
+    "definitionEn": "the state of being unknown or unidentified",
+    "example": "Big cities offer residents a welcome degree of anonymity.",
+    "collocation": "urban anonymity",
+    "cefr": "C1"
+  },
+  {
+    "word": "ghetto",
+    "pos": "noun",
+    "ipa": "/ˈɡetəʊ/",
+    "meaningVi": "khu biệt lập",
+    "definitionEn": "an area of a city where a particular group is isolated from the rest",
+    "example": "Policymakers worry that poverty can concentrate in isolated urban ghettos.",
+    "collocation": "urban ghetto",
+    "cefr": "C1"
+  },
+  {
+    "word": "disrepair",
+    "pos": "noun",
+    "ipa": "/ˌdɪsrɪˈpeə/",
+    "meaningVi": "tình trạng hư hỏng",
+    "definitionEn": "the condition of being in poor repair",
+    "example": "Several public buildings have fallen into disrepair over the past decade.",
+    "collocation": "state of disrepair",
+    "cefr": "C1"
+  },
+  {
+    "word": "dereliction",
+    "pos": "noun",
+    "ipa": "/ˌderəˈlɪkʃn/",
+    "meaningVi": "tình trạng hoang phế",
+    "definitionEn": "the state of being abandoned and left to decay",
+    "example": "Empty warehouses in dereliction line the old docks.",
+    "collocation": "urban dereliction",
+    "cefr": "C1"
+  },
+  {
+    "word": "edifice",
+    "pos": "noun",
+    "ipa": "/ˈedɪfɪs/",
+    "meaningVi": "công trình đồ sộ",
+    "definitionEn": "a large and imposing building",
+    "example": "The Gothic edifice dominates the square with its soaring spires.",
+    "collocation": "imposing edifice",
+    "cefr": "C1"
+  },
+  {
+    "word": "cityscape",
+    "pos": "noun",
+    "ipa": "/ˈsɪtiskeɪp/",
+    "meaningVi": "cảnh quan đô thị",
+    "definitionEn": "the appearance of a city as seen from a distance",
+    "example": "Glass towers now dominate the cityscape along the riverbank.",
+    "collocation": "urban cityscape",
+    "cefr": "C1"
+  },
+  {
+    "word": "bourgeois",
+    "pos": "adjective",
+    "ipa": "/ˈbɔːʒwɑː/",
+    "meaningVi": "thuộc tầng lớp tư sản",
+    "definitionEn": "relating to the middle class with conventional tastes and values",
+    "example": "The bourgeois district is known for its elegant townhouses and private schools.",
+    "collocation": "bourgeois lifestyle",
+    "cefr": "C1"
+  },
+  {
+    "word": "proletarian",
+    "pos": "adjective",
+    "ipa": "/ˌprəʊləˈteəriən/",
+    "meaningVi": "thuộc tầng lớp lao động",
+    "definitionEn": "relating to the working class",
+    "example": "The proletarian neighbourhoods grew rapidly around the factories.",
+    "collocation": "proletarian district",
+    "cefr": "C1"
+  },
+  {
+    "word": "sprawling",
+    "pos": "adjective",
+    "ipa": "/ˈsprɔːlɪŋ/",
+    "meaningVi": "trải rộng",
+    "definitionEn": "spreading out over a large area in an untidy way",
+    "example": "The sprawling campus includes gardens, lecture halls and a sports ground.",
+    "collocation": "sprawling city",
+    "cefr": "C1"
+  },
+  {
+    "word": "cramped",
+    "pos": "adjective",
+    "ipa": "/kræmpt/",
+    "meaningVi": "chật chội",
+    "definitionEn": "too small for the number of people or things in it",
+    "example": "Many families live in cramped apartments without enough natural light.",
+    "collocation": "cramped conditions",
+    "cefr": "C1"
+  },
+  {
+    "word": "avenue",
+    "pos": "noun",
+    "ipa": "/ˈævənjuː/",
+    "meaningVi": "đại lộ",
+    "definitionEn": "a wide road or street, often lined with trees",
+    "example": "The avenue is lined with plane trees and elegant cafés.",
+    "collocation": "tree-lined avenue",
+    "cefr": "C1"
+  },
+  {
+    "word": "quarter",
+    "pos": "noun",
+    "ipa": "/ˈkwɔːtə/",
+    "meaningVi": "khu phố",
+    "definitionEn": "a district of a city with a particular character",
+    "example": "The historic quarter attracts artists, students and street performers.",
+    "collocation": "historic quarter",
+    "cefr": "C1"
+  },
+  {
+    "word": "tenancy",
+    "pos": "noun",
+    "ipa": "/ˈtenənsi/",
+    "meaningVi": "quyền thuê nhà",
+    "definitionEn": "the period or condition of renting a property",
+    "example": "Her tenancy agreement required two months' notice before moving out.",
+    "collocation": "tenancy agreement",
+    "cefr": "C1"
+  },
+  {
+    "word": "eviction",
+    "pos": "noun",
+    "ipa": "/ɪˈvɪkʃn/",
+    "meaningVi": "sự trục xuất khỏi nhà",
+    "definitionEn": "the legal removal of a tenant from a property",
+    "example": "Rising rents have led to an increase in eviction notices.",
+    "collocation": "eviction notice",
+    "cefr": "C1"
+  },
+  {
+    "word": "mortgage",
+    "pos": "noun",
+    "ipa": "/ˈmɔːɡɪdʒ/",
+    "meaningVi": "khoản vay mua nhà",
+    "definitionEn": "a loan taken out to buy a property, repaid over many years",
+    "example": "Young couples struggle to secure a mortgage in expensive cities.",
+    "collocation": "monthly mortgage",
+    "cefr": "C1"
+  },
+  {
+    "word": "eyesore",
+    "pos": "noun",
+    "ipa": "/ˈaɪsɔː/",
+    "meaningVi": "cảnh chướng mắt",
+    "definitionEn": "something very ugly that spoils the look of a place",
+    "example": "The derelict cinema became an eyesore after years of neglect.",
+    "collocation": "urban eyesore",
+    "cefr": "C1"
+  },
+  {
+    "word": "pollutant",
+    "pos": "noun",
+    "ipa": "/pəˈluːtənt/",
+    "meaningVi": "chất ô nhiễm",
+    "definitionEn": "a substance that contaminates air, water or soil",
+    "example": "Vehicle exhaust releases pollutants that affect children's lungs.",
+    "collocation": "airborne pollutants",
+    "cefr": "C1"
+  },
+  {
+    "word": "particulate",
+    "pos": "noun",
+    "ipa": "/pɑːˈtɪkjʊlət/",
+    "meaningVi": "bụi mịn",
+    "definitionEn": "tiny solid particles suspended in the air",
+    "example": "Particulate matter from construction sites worsens the air quality.",
+    "collocation": "fine particulate matter",
+    "cefr": "C1"
+  },
+  {
+    "word": "ventilation",
+    "pos": "noun",
+    "ipa": "/ˌventɪˈleɪʃn/",
+    "meaningVi": "hệ thống thông gió",
+    "definitionEn": "the supply of fresh air into a building",
+    "example": "Poor ventilation makes the basement flats damp and unhealthy.",
+    "collocation": "natural ventilation",
+    "cefr": "C1"
+  },
+  {
+    "word": "insulation",
+    "pos": "noun",
+    "ipa": "/ˌɪnsjʊˈleɪʃn/",
+    "meaningVi": "vật liệu cách nhiệt",
+    "definitionEn": "material used to reduce the loss of heat or sound from a building",
+    "example": "Better insulation can lower heating bills in older apartments.",
+    "collocation": "wall insulation",
+    "cefr": "C1"
+  },
+  {
+    "word": "pedestrianise",
+    "pos": "verb",
+    "ipa": "/pəˈdestriənaɪz/",
+    "meaningVi": "biến thành khu đi bộ",
+    "definitionEn": "to close a street to vehicles so that only people can walk there",
+    "example": "The council plans to pedestrianise the entire central high street.",
+    "collocation": "pedestrianise the centre",
+    "cefr": "C1"
+  },
+  {
+    "word": "decay",
+    "pos": "noun",
+    "ipa": "/dɪˈkeɪ/",
+    "meaningVi": "sự suy tàn, mục nát",
+    "definitionEn": "the gradual decline in condition of buildings or an area",
+    "example": "Urban decay spread rapidly after the factories closed.",
+    "collocation": "urban decay",
+    "cefr": "C1"
+  },
+  {
+    "word": "vitality",
+    "pos": "noun",
+    "ipa": "/vaɪˈtæləti/",
+    "meaningVi": "sức sống",
+    "definitionEn": "strength and energy in a place or community",
+    "example": "Street festivals restored the district's vitality after years of decline.",
+    "collocation": "urban vitality",
+    "cefr": "C1"
+  },
+  {
+    "word": "conviviality",
+    "pos": "noun",
+    "ipa": "/kənˌvɪviˈæləti/",
+    "meaningVi": "không khí thân mật, vui vẻ",
+    "definitionEn": "a friendly and sociable atmosphere among people",
+    "example": "Cafés with outdoor tables foster a sense of conviviality.",
+    "collocation": "social conviviality",
+    "cefr": "C1"
+  },
+  {
+    "word": "insularity",
+    "pos": "noun",
+    "ipa": "/ˌɪnsjəˈlærəti/",
+    "meaningVi": "tính khép kín",
+    "definitionEn": "a narrow outlook and reluctance to accept outsiders",
+    "example": "Small communities sometimes suffer from insularity and suspicion of newcomers.",
+    "collocation": "cultural insularity",
+    "cefr": "C1"
+  },
+  {
+    "word": "transience",
+    "pos": "noun",
+    "ipa": "/ˈtrænziəns/",
+    "meaningVi": "tính thoáng qua, sự di động",
+    "definitionEn": "the quality of lasting only for a short time or constantly changing",
+    "example": "The transience of city life makes lasting friendships harder to build.",
+    "collocation": "urban transience",
+    "cefr": "C1"
+  },
+  {
+    "word": "parochial",
+    "pos": "adjective",
+    "ipa": "/pəˈrəʊkiəl/",
+    "meaningVi": "hẹp hòi, cục bộ",
+    "definitionEn": "narrow in outlook and concerned only with local matters",
+    "example": "Parochial attitudes made it hard for newcomers to feel welcome.",
+    "collocation": "parochial outlook",
+    "cefr": "C1"
+  },
+  {
+    "word": "ostentatious",
+    "pos": "adjective",
+    "ipa": "/ˌɒstenˈteɪʃəs/",
+    "meaningVi": "phô trương",
+    "definitionEn": "showy and designed to attract attention and admiration",
+    "example": "Ostentatious mansions dominate the hilltop above the old town.",
+    "collocation": "ostentatious display",
+    "cefr": "C1"
+  },
+  {
+    "word": "malaise",
+    "pos": "noun",
+    "ipa": "/mæˈleɪz/",
+    "meaningVi": "suy sụp chung",
+    "definitionEn": "a general feeling of unease or decline",
+    "example": "Economic malaise has left many shopfronts empty along the high street.",
+    "collocation": "urban malaise",
+    "cefr": "C1"
+  },
+  {
+    "word": "pastoral",
+    "pos": "adjective",
+    "ipa": "/ˈpɑːstrəl/",
+    "meaningVi": "đồng quê, mục vụ",
+    "definitionEn": "relating to the countryside or to rural life",
+    "example": "Escape the crowds with a short ride to the pastoral countryside.",
+    "collocation": "pastoral scenery",
+    "cefr": "C1"
+  },
+  {
+    "word": "kerbside",
+    "pos": "noun",
+    "ipa": "/ˈkɜːbsaɪd/",
+    "meaningVi": "lề đường",
+    "definitionEn": "the edge of a pavement beside the road",
+    "example": "Recycling bins are collected from the kerbside every Tuesday.",
+    "collocation": "kerbside collection",
+    "cefr": "C1"
+  },
+  {
+    "word": "allotment",
+    "pos": "noun",
+    "ipa": "/əˈlɒtmənt/",
+    "meaningVi": "mảnh vườn cấp",
+    "definitionEn": "a small plot of land rented for growing vegetables or flowers",
+    "example": "Retired residents tend vegetables on the allotment behind the railway.",
+    "collocation": "community allotment",
+    "cefr": "C1"
+  },
+  {
+    "word": "tower block",
+    "pos": "noun",
+    "ipa": "/ˈtaʊə blɒk/",
+    "meaningVi": "chung cư cao tầng",
+    "definitionEn": "a tall residential building divided into many flats",
+    "example": "Residents of the tower block complained about broken lifts for months.",
+    "collocation": "concrete tower block",
+    "cefr": "C1"
+  },
+  {
+    "word": "polis",
+    "pos": "noun",
+    "ipa": "/ˈpɒlɪs/",
+    "meaningVi": "thành bang Hy Lạp cổ đại",
+    "definitionEn": "an ancient Greek city-state with its own government",
+    "example": "Ancient Athens was the most celebrated polis of the classical world.",
+    "collocation": "classical polis",
+    "cefr": "C2"
+  },
+  {
+    "word": "agora",
+    "pos": "noun",
+    "ipa": "/ˈæɡərə/",
+    "meaningVi": "quảng trường chợ Hy Lạp",
+    "definitionEn": "an open public space in an ancient Greek city used for assembly and trade",
+    "example": "Citizens debated politics in the agora every afternoon.",
+    "collocation": "ancient agora",
+    "cefr": "C2"
+  },
+  {
+    "word": "cosmopolis",
+    "pos": "noun",
+    "ipa": "/kɒzˈmɒpəlɪs/",
+    "meaningVi": "thành phố toàn cầu",
+    "definitionEn": "a city where people and cultures from around the world mix",
+    "example": "Singapore has become a cosmopolis of global finance and culture.",
+    "collocation": "thriving cosmopolis",
+    "cefr": "C2"
+  },
+  {
+    "word": "boulevardier",
+    "pos": "noun",
+    "ipa": "/ˌbuːlvɑːˈdieɪ/",
+    "meaningVi": "người hay dạo phố",
+    "definitionEn": "a fashionable person who spends time strolling along city boulevards",
+    "example": "The old boulevardier strolled the avenues greeting shopkeepers by name.",
+    "collocation": "elegant boulevardier",
+    "cefr": "C2"
+  },
+  {
+    "word": "palimpsest",
+    "pos": "noun",
+    "ipa": "/ˈpælɪmpsest/",
+    "meaningVi": "bản chồng lớp, dấu vết chồng chất",
+    "definitionEn": "something showing traces of earlier layers beneath its surface",
+    "example": "The city is a palimpsest, its streets layered with centuries of history.",
+    "collocation": "urban palimpsest",
+    "cefr": "C2"
+  },
+  {
+    "word": "dystopian",
+    "pos": "adjective",
+    "ipa": "/dɪsˈtəʊpiən/",
+    "meaningVi": "phản địa đàng",
+    "definitionEn": "describing an imagined society in which life is very bad",
+    "example": "The novel imagines a dystopian metropolis ruled by constant surveillance.",
+    "collocation": "dystopian future",
+    "cefr": "C2"
+  },
+  {
+    "word": "necropolis",
+    "pos": "noun",
+    "ipa": "/nɪˈkrɒpəlɪs/",
+    "meaningVi": "khu nghĩa địa lớn",
+    "definitionEn": "a large cemetery, especially of an ancient city",
+    "example": "Visitors wandered through the vast necropolis outside the walls.",
+    "collocation": "ancient necropolis",
+    "cefr": "C2"
+  },
+  {
+    "word": "acropolis",
+    "pos": "noun",
+    "ipa": "/əˈkrɒpəlɪs/",
+    "meaningVi": "thành cổ trên đồi",
+    "definitionEn": "the elevated fortified part of an ancient Greek city",
+    "example": "Tourists climb the marble steps to reach the acropolis at sunrise.",
+    "collocation": "ancient acropolis",
+    "cefr": "C2"
+  },
+  {
+    "word": "exurb",
+    "pos": "noun",
+    "ipa": "/ˈeksɜːb/",
+    "meaningVi": "vùng ngoại ô xa",
+    "definitionEn": "a wealthy residential area beyond the suburbs",
+    "example": "Wealthy families increasingly settle in the exurbs beyond the motorway.",
+    "collocation": "distant exurb",
+    "cefr": "C2"
+  },
+  {
+    "word": "cordon",
+    "pos": "noun",
+    "ipa": "/ˈkɔːdn/",
+    "meaningVi": "vòng phong toả",
+    "definitionEn": "a line of police or troops placed around an area to control access",
+    "example": "Police set up a cordon around the square during the protest.",
+    "collocation": "police cordon",
+    "cefr": "C2"
+  },
+  {
+    "word": "obsolescence",
+    "pos": "noun",
+    "ipa": "/ˌɒbsəˈlesns/",
+    "meaningVi": "sự lỗi thời",
+    "definitionEn": "the process of becoming outdated or no longer used",
+    "example": "Planned obsolescence in buildings leads to frequent demolition.",
+    "collocation": "planned obsolescence",
+    "cefr": "C2"
+  },
+  {
+    "word": "bailiwick",
+    "pos": "noun",
+    "ipa": "/ˈbeɪlɪwɪk/",
+    "meaningVi": "địa hạt, lãnh địa",
+    "definitionEn": "a person's area of control, expertise or influence",
+    "example": "The old market square was the bailiwick of a few powerful merchants.",
+    "collocation": "local bailiwick",
+    "cefr": "C2"
+  },
+  {
+    "word": "gentility",
+    "pos": "noun",
+    "ipa": "/dʒenˈtɪləti/",
+    "meaningVi": "sự lịch thiệp, nề nếp",
+    "definitionEn": "refined and polite behaviour associated with the upper class",
+    "example": "The suburb's faded gentility survives in its tree-lined squares.",
+    "collocation": "faded gentility",
+    "cefr": "C2"
+  },
+  {
+    "word": "insalubrious",
+    "pos": "adjective",
+    "ipa": "/ˌɪnsəˈluːbriəs/",
+    "meaningVi": "bẩn thỉu, không lành",
+    "definitionEn": "unhealthy and unpleasant, especially for living in",
+    "example": "Inspectors condemned the insalubrious lodgings near the docks.",
+    "collocation": "insalubrious conditions",
+    "cefr": "C2"
+  },
+  {
+    "word": "squalor",
+    "pos": "noun",
+    "ipa": "/ˈskwɒlə/",
+    "meaningVi": "cảnh nghèo bẩn thỉu",
+    "definitionEn": "dirty and unpleasant living conditions",
+    "example": "Reformers exposed the squalor in which many factory workers lived.",
+    "collocation": "urban squalor",
+    "cefr": "C2"
+  },
+  {
+    "word": "opulence",
+    "pos": "noun",
+    "ipa": "/ˈɒpjʊləns/",
+    "meaningVi": "sự xa hoa",
+    "definitionEn": "great wealth and luxury displayed visibly",
+    "example": "The opulence of the new hotels contrasts sharply with nearby shanties.",
+    "collocation": "sheer opulence",
+    "cefr": "C2"
+  },
+  {
+    "word": "polity",
+    "pos": "noun",
+    "ipa": "/ˈpɒləti/",
+    "meaningVi": "thể chế chính trị, cộng đồng",
+    "definitionEn": "an organised political community or state",
+    "example": "The city functions as a distinct political polity within the nation.",
+    "collocation": "urban polity",
+    "cefr": "C2"
+  },
+  {
+    "word": "clamour",
+    "pos": "noun",
+    "ipa": "/ˈklæmə/",
+    "meaningVi": "tiếng ồn ào, sự huyên náo",
+    "definitionEn": "a loud noise of voices or demands",
+    "example": "Above the clamour of traders, a bell announced the midday prayer.",
+    "collocation": "public clamour",
+    "cefr": "C2"
+  },
+  {
+    "word": "ennui",
+    "pos": "noun",
+    "ipa": "/ɒnˈwiː/",
+    "meaningVi": "sự chán chường",
+    "definitionEn": "a feeling of listlessness and dissatisfaction from lack of interest",
+    "example": "Bored commuters often sink into ennui during long winter journeys.",
+    "collocation": "urban ennui",
+    "cefr": "C2"
+  },
+  {
+    "word": "anomie",
+    "pos": "noun",
+    "ipa": "/ˈænəmi/",
+    "meaningVi": "trạng thái vô chuẩn",
+    "definitionEn": "a feeling of disconnection from society caused by a lack of norms",
+    "example": "Sociologists link rapid urban growth with anomie among newcomers.",
+    "collocation": "social anomie",
+    "cefr": "C2"
+  },
+  {
+    "word": "atomisation",
+    "pos": "noun",
+    "ipa": "/ˌætəmaɪˈzeɪʃn/",
+    "meaningVi": "sự phân tán cá nhân",
+    "definitionEn": "the breaking of a society into separate isolated individuals",
+    "example": "Critics blame modern urban life for the atomisation of community bonds.",
+    "collocation": "social atomisation",
+    "cefr": "C2"
+  },
+  {
+    "word": "hermetic",
+    "pos": "adjective",
+    "ipa": "/hɜːˈmetɪk/",
+    "meaningVi": "khép kín",
+    "definitionEn": "sealed off from outside influence",
+    "example": "The gated estate feels hermetic, cut off from the streets outside.",
+    "collocation": "hermetic world",
+    "cefr": "C2"
+  },
+  {
+    "word": "garret",
+    "pos": "noun",
+    "ipa": "/ˈɡærət/",
+    "meaningVi": "gác xép",
+    "definitionEn": "a small room under the roof of a house",
+    "example": "The poet rented a freezing garret above the bakery.",
+    "collocation": "cramped garret",
+    "cefr": "C2"
+  },
+  {
+    "word": "forum",
+    "pos": "noun",
+    "ipa": "/ˈfɔːrəm/",
+    "meaningVi": "diễn đàn công cộng",
+    "definitionEn": "a place or meeting where public discussion takes place",
+    "example": "The town hall meeting became a forum for heated local debate.",
+    "collocation": "public forum",
+    "cefr": "C2"
+  },
+  {
+    "word": "piazza",
+    "pos": "noun",
+    "ipa": "/piˈætsə/",
+    "meaningVi": "quảng trường",
+    "definitionEn": "a public square in an Italian town",
+    "example": "Musicians gathered each evening in the central piazza.",
+    "collocation": "central piazza",
+    "cefr": "C2"
+  },
+  {
+    "word": "cloister",
+    "pos": "noun",
+    "ipa": "/ˈklɔɪstə/",
+    "meaningVi": "hành lang có mái vòm",
+    "definitionEn": "a covered walkway around an open courtyard in a monastery or college",
+    "example": "Students read quietly beneath the arches of the cloister.",
+    "collocation": "stone cloister",
+    "cefr": "C2"
+  },
+  {
+    "word": "rookery",
+    "pos": "noun",
+    "ipa": "/ˈrʊkəri/",
+    "meaningVi": "khu nhà ổ chuột",
+    "definitionEn": "a crowded and squalid group of buildings in a city",
+    "example": "Officials condemned the rookery as a breeding ground for disease.",
+    "collocation": "Victorian rookery",
+    "cefr": "C2"
+  },
+  {
+    "word": "souk",
+    "pos": "noun",
+    "ipa": "/suːk/",
+    "meaningVi": "chợ phương Đông",
+    "definitionEn": "a traditional market area in an Arab city",
+    "example": "Shoppers haggled over spices in the crowded souk.",
+    "collocation": "old souk",
+    "cefr": "C2"
+  },
+  {
+    "word": "concourse",
+    "pos": "noun",
+    "ipa": "/ˈkɒŋkɔːs/",
+    "meaningVi": "sảnh rộng",
+    "definitionEn": "a large open hall or area in a station or public building",
+    "example": "Commuters streamed across the concourse toward the platforms.",
+    "collocation": "station concourse",
+    "cefr": "C2"
+  },
+  {
+    "word": "forecourt",
+    "pos": "noun",
+    "ipa": "/ˈfɔːkɔːt/",
+    "meaningVi": "sân trước",
+    "definitionEn": "an open paved area in front of a building",
+    "example": "Taxis queued in the forecourt of the central station.",
+    "collocation": "station forecourt",
+    "cefr": "C2"
+  },
+  {
+    "word": "cistern",
+    "pos": "noun",
+    "ipa": "/ˈsɪstən/",
+    "meaningVi": "bể chứa nước",
+    "definitionEn": "a tank or reservoir for storing water",
+    "example": "Engineers inspected the Roman cistern beneath the old square.",
+    "collocation": "underground cistern",
+    "cefr": "C2"
+  },
+  {
+    "word": "aqueduct",
+    "pos": "noun",
+    "ipa": "/ˈækwɪdʌkt/",
+    "meaningVi": "cầu máng dẫn nước",
+    "definitionEn": "a bridge-like channel that carries water across a valley",
+    "example": "The Roman aqueduct still carries water across the valley.",
+    "collocation": "Roman aqueduct",
+    "cefr": "C2"
+  },
+  {
+    "word": "ramshackle",
+    "pos": "adjective",
+    "ipa": "/ˈræmʃækl/",
+    "meaningVi": "lụp xụp",
+    "definitionEn": "badly constructed and in poor condition",
+    "example": "Ramshackle shacks clung to the hillside above the rail yards.",
+    "collocation": "ramshackle houses",
+    "cefr": "C2"
+  },
+  {
+    "word": "obstreperous",
+    "pos": "adjective",
+    "ipa": "/əbˈstrepərəs/",
+    "meaningVi": "ồn ào, ngang ngạnh",
+    "definitionEn": "noisy and difficult to control",
+    "example": "Obstreperous crowds gathered outside the stadium after the match.",
+    "collocation": "obstreperous crowd",
+    "cefr": "C2"
+  },
+  {
+    "word": "ferment",
+    "pos": "noun",
+    "ipa": "/ˈfɜːment/",
+    "meaningVi": "sự sôi sục",
+    "definitionEn": "a state of excited or unrest and activity",
+    "example": "Political ferment swept the capital during the summer of protests.",
+    "collocation": "intellectual ferment",
+    "cefr": "C2"
+  },
+  {
+    "word": "parvenu",
+    "pos": "noun",
+    "ipa": "/ˈpɑːvənjuː/",
+    "meaningVi": "kẻ mới phất",
+    "definitionEn": "a person who has recently risen to wealth but lacks social standing",
+    "example": "Old families sneered at the parvenu who bought the riverside mansion.",
+    "collocation": "social parvenu",
+    "cefr": "C2"
+  },
+  {
+    "word": "nouveau riche",
+    "pos": "phrase",
+    "ipa": "/ˌnuːvəʊ ˈriːʃ/",
+    "meaningVi": "tân giàu",
+    "definitionEn": "people who have recently acquired wealth and display it openly",
+    "example": "Nouveau riche families built glittering villas along the new boulevard.",
+    "collocation": "nouveau riche family",
+    "cefr": "C2"
+  },
+  {
+    "word": "metropole",
+    "pos": "noun",
+    "ipa": "/ˈmetrəpəʊl/",
+    "meaningVi": "trung tâm đô thị đế quốc",
+    "definitionEn": "the main city or centre of power of a colonial empire",
+    "example": "The colonial metropole directed trade from its distant capital.",
+    "collocation": "colonial metropole",
+    "cefr": "C2"
+  },
+  {
+    "word": "hovel",
+    "pos": "noun",
+    "ipa": "/ˈhɒvl/",
+    "meaningVi": "túp lều tồi tàn",
+    "definitionEn": "a small, dirty and poorly built house",
+    "example": "Families crowded into hovels built from scrap timber.",
+    "collocation": "damp hovel",
+    "cefr": "C2"
+  },
+  {
+    "word": "warren",
+    "pos": "noun",
+    "ipa": "/ˈwɒrən/",
+    "meaningVi": "mê cung ngõ hẻm",
+    "definitionEn": "a complicated network of narrow passages or streets",
+    "example": "Lost in the warren of backstreets, we circled the old bazaar twice.",
+    "collocation": "urban warren",
+    "cefr": "C2"
+  },
+  {
+    "word": "mews",
+    "pos": "noun",
+    "ipa": "/mjuːz/",
+    "meaningVi": "dãy nhà chuồng cải tạo",
+    "definitionEn": "a row of former stables converted into houses in a city",
+    "example": "The converted mews houses behind the square are now very expensive.",
+    "collocation": "converted mews",
+    "cefr": "C2"
+  },
+  {
+    "word": "entropy",
+    "pos": "noun",
+    "ipa": "/ˈentrəpi/",
+    "meaningVi": "sự hỗn loạn, suy thoái",
+    "definitionEn": "the gradual decline into disorder of a system",
+    "example": "Without maintenance, entropy gradually takes hold of every neighbourhood.",
+    "collocation": "urban entropy",
+    "cefr": "C2"
+  },
+  {
+    "word": "cobblestone",
+    "pos": "noun",
+    "ipa": "/ˈkɒblstəʊn/",
+    "meaningVi": "đá cuội lát đường",
+    "definitionEn": "a rounded stone used to pave streets",
+    "example": "Horse-drawn carriages rattled over the cobblestones of the old square.",
+    "collocation": "cobblestone street",
+    "cefr": "C2"
+  },
+  {
+    "word": "parapet",
+    "pos": "noun",
+    "ipa": "/ˈpærəpɪt/",
+    "meaningVi": "lan can, tường chắn",
+    "definitionEn": "a low protective wall along the edge of a bridge or roof",
+    "example": "Lovers leaned on the stone parapet overlooking the river.",
+    "collocation": "stone parapet",
+    "cefr": "C2"
+  },
+  {
+    "word": "catacomb",
+    "pos": "noun",
+    "ipa": "/ˈkætəkuːm/",
+    "meaningVi": "hầm mộ",
+    "definitionEn": "an underground burial chamber or passage",
+    "example": "Ancient catacombs run beneath the city's oldest district.",
+    "collocation": "underground catacombs",
+    "cefr": "C2"
+  },
+  {
+    "word": "pandemonium",
+    "pos": "noun",
+    "ipa": "/ˌpændəˈməʊniəm/",
+    "meaningVi": "cảnh hỗn loạn ồn ào",
+    "definitionEn": "a scene of wild noise and confusion",
+    "example": "Pandemonium erupted in the square when the lights failed.",
+    "collocation": "sheer pandemonium",
+    "cefr": "C2"
+  }
+]

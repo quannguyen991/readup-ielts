@@ -1,0 +1,1071 @@
+[
+  {
+    "word": "hailstorm",
+    "synonyms": [
+      "hail shower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "equinox",
+    "synonyms": [
+      "equinoctial day"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solstice",
+    "synonyms": [
+      "midsummer",
+      "midwinter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "greenhouse effect",
+    "synonyms": [
+      "heat trapping"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carbon footprint",
+    "synonyms": [
+      "carbon output"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypothermia",
+    "synonyms": [
+      "low body temperature"
+    ],
+    "antonyms": [
+      "hyperthermia"
+    ]
+  },
+  {
+    "word": "climate",
+    "synonyms": [
+      "long-term weather"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "condensation",
+    "synonyms": [
+      "liquefaction"
+    ],
+    "antonyms": [
+      "evaporation"
+    ]
+  },
+  {
+    "word": "evaporation",
+    "synonyms": [
+      "vaporization"
+    ],
+    "antonyms": [
+      "condensation"
+    ]
+  },
+  {
+    "word": "lightning",
+    "synonyms": [
+      "lightning bolt",
+      "electric discharge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sleet",
+    "synonyms": [
+      "ice pellets"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hail",
+    "synonyms": [
+      "hailstones"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "barometer",
+    "synonyms": [
+      "pressure gauge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "isotherm",
+    "synonyms": [
+      "isothermal line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seasonal",
+    "synonyms": [
+      "periodic",
+      "cyclical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "microclimate",
+    "synonyms": [
+      "local climate"
+    ],
+    "antonyms": [
+      "macroclimate"
+    ]
+  },
+  {
+    "word": "weather",
+    "synonyms": [
+      "atmospheric conditions"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sun",
+    "synonyms": [
+      "sunlight"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cloud",
+    "synonyms": [
+      "vapour cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wind",
+    "synonyms": [
+      "air current"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "snow",
+    "synonyms": [
+      "snowfall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "storm",
+    "synonyms": [
+      "tempest"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "temperature",
+    "synonyms": [
+      "degree of heat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "warm",
+    "synonyms": [
+      "toasty",
+      "heated"
+    ],
+    "antonyms": [
+      "cold"
+    ]
+  },
+  {
+    "word": "cold",
+    "synonyms": [
+      "chilly",
+      "frigid"
+    ],
+    "antonyms": [
+      "hot",
+      "warm"
+    ]
+  },
+  {
+    "word": "hot",
+    "synonyms": [
+      "scorching",
+      "sweltering"
+    ],
+    "antonyms": [
+      "cold"
+    ]
+  },
+  {
+    "word": "summer",
+    "synonyms": [
+      "summertime"
+    ],
+    "antonyms": [
+      "winter"
+    ]
+  },
+  {
+    "word": "winter",
+    "synonyms": [
+      "wintertime"
+    ],
+    "antonyms": [
+      "summer"
+    ]
+  },
+  {
+    "word": "rainbow",
+    "synonyms": [
+      "spectral arc"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thunder",
+    "synonyms": [
+      "thunderclap",
+      "rumble"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ice",
+    "synonyms": [
+      "frozen water"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "season",
+    "synonyms": [
+      "period"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dry",
+    "synonyms": [
+      "arid"
+    ],
+    "antonyms": [
+      "wet"
+    ]
+  },
+  {
+    "word": "rainy",
+    "synonyms": [
+      "wet"
+    ],
+    "antonyms": [
+      "dry"
+    ]
+  },
+  {
+    "word": "breeze",
+    "synonyms": [
+      "light wind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "humid",
+    "synonyms": [
+      "muggy",
+      "steamy"
+    ],
+    "antonyms": [
+      "dry",
+      "arid"
+    ]
+  },
+  {
+    "word": "gust",
+    "synonyms": [
+      "blast"
+    ],
+    "antonyms": [
+      "lull"
+    ]
+  },
+  {
+    "word": "downpour",
+    "synonyms": [
+      "heavy rain"
+    ],
+    "antonyms": [
+      "drizzle"
+    ]
+  },
+  {
+    "word": "overcast",
+    "synonyms": [
+      "cloudy"
+    ],
+    "antonyms": [
+      "clear"
+    ]
+  },
+  {
+    "word": "cloudburst",
+    "synonyms": [
+      "sudden heavy rain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frostbite",
+    "synonyms": [
+      "frost injury"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scorching",
+    "synonyms": [
+      "blistering",
+      "sweltering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sultry",
+    "synonyms": [
+      "muggy",
+      "oppressive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "balmy",
+    "synonyms": [
+      "mild",
+      "temperate"
+    ],
+    "antonyms": [
+      "frigid"
+    ]
+  },
+  {
+    "word": "chilly",
+    "synonyms": [
+      "cool",
+      "brisk"
+    ],
+    "antonyms": [
+      "warm"
+    ]
+  },
+  {
+    "word": "frigid",
+    "synonyms": [
+      "freezing",
+      "icy"
+    ],
+    "antonyms": [
+      "balmy"
+    ]
+  },
+  {
+    "word": "mild",
+    "synonyms": [
+      "temperate",
+      "gentle"
+    ],
+    "antonyms": [
+      "severe"
+    ]
+  },
+  {
+    "word": "pressure",
+    "synonyms": [
+      "air pressure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sunshine",
+    "synonyms": [
+      "sunlight"
+    ],
+    "antonyms": [
+      "shade"
+    ]
+  },
+  {
+    "word": "rainfall",
+    "synonyms": [
+      "precipitation"
+    ],
+    "antonyms": [
+      "drought"
+    ]
+  },
+  {
+    "word": "hailstone",
+    "synonyms": [
+      "ice pellet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "typhoon",
+    "synonyms": [
+      "hurricane",
+      "cyclone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "squall",
+    "synonyms": [
+      "sudden gust"
+    ],
+    "antonyms": [
+      "lull"
+    ]
+  },
+  {
+    "word": "cumulus",
+    "synonyms": [
+      "heap cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stratus",
+    "synonyms": [
+      "layer cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drizzle",
+    "synonyms": [
+      "light rain",
+      "sprinkle"
+    ],
+    "antonyms": [
+      "downpour"
+    ]
+  },
+  {
+    "word": "freeze",
+    "synonyms": [
+      "turn to ice"
+    ],
+    "antonyms": [
+      "thaw"
+    ]
+  },
+  {
+    "word": "isobar",
+    "synonyms": [
+      "isobaric line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "front",
+    "synonyms": [
+      "weather boundary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "convection",
+    "synonyms": [
+      "heat transfer"
+    ],
+    "antonyms": [
+      "conduction"
+    ]
+  },
+  {
+    "word": "advection",
+    "synonyms": [
+      "horizontal transport"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "radiation",
+    "synonyms": [
+      "radiant energy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "albedo",
+    "synonyms": [
+      "reflectivity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subsidence",
+    "synonyms": [
+      "air descent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turbulence",
+    "synonyms": [
+      "air instability"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "vortex",
+    "synonyms": [
+      "whirlpool",
+      "eddy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "precipitate",
+    "synonyms": [
+      "condense and fall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "saturation",
+    "synonyms": [
+      "saturation point"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cumulonimbus",
+    "synonyms": [
+      "thunderhead"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nimbostratus",
+    "synonyms": [
+      "rain cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inclement",
+    "synonyms": [
+      "severe"
+    ],
+    "antonyms": [
+      "clement"
+    ]
+  },
+  {
+    "word": "anticyclone",
+    "synonyms": [
+      "high-pressure system"
+    ],
+    "antonyms": [
+      "cyclone"
+    ]
+  },
+  {
+    "word": "trough",
+    "synonyms": [
+      "low-pressure channel"
+    ],
+    "antonyms": [
+      "ridge"
+    ]
+  },
+  {
+    "word": "zephyr",
+    "synonyms": [
+      "gentle breeze"
+    ],
+    "antonyms": [
+      "gale"
+    ]
+  },
+  {
+    "word": "inundation",
+    "synonyms": [
+      "flooding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deluge",
+    "synonyms": [
+      "flood"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "torrential",
+    "synonyms": [
+      "heavy",
+      "violent"
+    ],
+    "antonyms": [
+      "light"
+    ]
+  },
+  {
+    "word": "aridity",
+    "synonyms": [
+      "dryness"
+    ],
+    "antonyms": [
+      "humidity"
+    ]
+  },
+  {
+    "word": "insolation",
+    "synonyms": [
+      "solar radiation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hygrometer",
+    "synonyms": [
+      "humidity gauge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anemometer",
+    "synonyms": [
+      "wind gauge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "isohyet",
+    "synonyms": [
+      "isohyetal line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jet stream",
+    "synonyms": [
+      "high-altitude wind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "supercell",
+    "synonyms": [
+      "rotating thunderstorm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lapse rate",
+    "synonyms": [
+      "temperature gradient"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aurora",
+    "synonyms": [
+      "northern lights"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mirage",
+    "synonyms": [
+      "optical illusion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "haze",
+    "synonyms": [
+      "mist"
+    ],
+    "antonyms": [
+      "clarity"
+    ]
+  },
+  {
+    "word": "maelstrom",
+    "synonyms": [
+      "whirlpool"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "interglacial",
+    "synonyms": [
+      "warm period"
+    ],
+    "antonyms": [
+      "glacial"
+    ]
+  },
+  {
+    "word": "ozone",
+    "synonyms": [
+      "ozone layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "petrichor",
+    "synonyms": [
+      "rain scent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fulgurite",
+    "synonyms": [
+      "lightning tube"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crepuscule",
+    "synonyms": [
+      "twilight",
+      "dusk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sirocco",
+    "synonyms": [
+      "hot desert wind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "foehn",
+    "synonyms": [
+      "warm downslope wind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chinook",
+    "synonyms": [
+      "snow eater"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bora",
+    "synonyms": [
+      "cold wind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mistral",
+    "synonyms": [
+      "cold northerly wind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "haboob",
+    "synonyms": [
+      "dust storm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "graupel",
+    "synonyms": [
+      "soft hail"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rime",
+    "synonyms": [
+      "frost",
+      "ice coating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hoarfrost",
+    "synonyms": [
+      "white frost"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "verglas",
+    "synonyms": [
+      "black ice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nor'easter",
+    "synonyms": [
+      "coastal storm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zonda",
+    "synonyms": [
+      "andean foehn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "williwaw",
+    "synonyms": [
+      "sudden squall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dust devil",
+    "synonyms": [
+      "dust whirl"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "waterspout",
+    "synonyms": [
+      "water tornado"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "derecho",
+    "synonyms": [
+      "straight-line windstorm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tempestuous",
+    "synonyms": [
+      "stormy"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "blustery",
+    "synonyms": [
+      "gusty"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "squally",
+    "synonyms": [
+      "gusty"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "brumal",
+    "synonyms": [
+      "wintry"
+    ],
+    "antonyms": [
+      "estival"
+    ]
+  },
+  {
+    "word": "estival",
+    "synonyms": [
+      "summery"
+    ],
+    "antonyms": [
+      "brumal"
+    ]
+  },
+  {
+    "word": "vernal",
+    "synonyms": [
+      "springlike"
+    ],
+    "antonyms": [
+      "autumnal"
+    ]
+  },
+  {
+    "word": "autumnal",
+    "synonyms": [
+      "fall-like"
+    ],
+    "antonyms": [
+      "vernal"
+    ]
+  },
+  {
+    "word": "nebulosity",
+    "synonyms": [
+      "cloudiness"
+    ],
+    "antonyms": [
+      "clarity"
+    ]
+  },
+  {
+    "word": "cirrus",
+    "synonyms": [
+      "wispy cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cirrostratus",
+    "synonyms": [
+      "veil cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "altocumulus",
+    "synonyms": [
+      "mid-level cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scud",
+    "synonyms": [
+      "fast cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "virga",
+    "synonyms": [
+      "rain streaks"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mammatus",
+    "synonyms": [
+      "pouch cloud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lenticular",
+    "synonyms": [
+      "lens-shaped"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fogbow",
+    "synonyms": [
+      "white rainbow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parhelion",
+    "synonyms": [
+      "sun dog"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "iridescence",
+    "synonyms": [
+      "shimmer",
+      "opalescence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frazil",
+    "synonyms": [
+      "ice crystals"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perihelion",
+    "synonyms": [
+      "closest solar approach"
+    ],
+    "antonyms": [
+      "aphelion"
+    ]
+  },
+  {
+    "word": "aphelion",
+    "synonyms": [
+      "farthest solar approach"
+    ],
+    "antonyms": [
+      "perihelion"
+    ]
+  },
+  {
+    "word": "obliquity",
+    "synonyms": [
+      "axial tilt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paleoclimate",
+    "synonyms": [
+      "ancient climate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stadial",
+    "synonyms": [
+      "cold phase"
+    ],
+    "antonyms": [
+      "interstadial"
+    ]
+  },
+  {
+    "word": "cyclogenesis",
+    "synonyms": [
+      "cyclone formation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nimbus",
+    "synonyms": [
+      "rain-bearing cloud"
+    ],
+    "antonyms": []
+  }
+]

@@ -95,6 +95,100 @@ const ESSAY_KINDS = Object.keys(TEMPLATES) as Task2Essay[];
 /** Band gợi ý xoay vòng để kho đề có cả đề dễ lẫn đề khó. */
 const BANDS = [6.0, 6.5, 7.0];
 
+/**
+ * Đề Task 2 viết tay, đi kèm bộ sinh theo công thức ở trên.
+ *
+ * Bộ sinh chỉ cho mỗi chủ đề ba dạng luận cố định, nên không bao giờ ra được
+ * dạng "thảo luận" cho hai chủ đề thêm vào sau. Đề viết tay bù chỗ đó. Vẫn giữ
+ * đúng cụm câu lệnh mà các kiểm tra dạng luận phía trên đòi hỏi.
+ */
+const TASK2_CURATED: WritingPrompt[] = [
+  {
+    id: 'w-t2-curated-technology-opinion',
+    task: 'ielts_task2',
+    promptText:
+      'Some people believe that artificial intelligence will soon do most jobs better than humans. To what extent do you agree or disagree?',
+    chartKind: null,
+    chartData: null,
+    essayKind: 'opinion',
+    topicSlug: 'technology',
+    difficultyBand: 5.5,
+    timeLimitSeconds: 2400,
+    minWords: 250,
+    source: 'curated',
+  },
+  {
+    id: 'w-t2-curated-education-discussion',
+    task: 'ielts_task2',
+    promptText:
+      'Some people think that universities should focus mainly on preparing students for the job market, while others believe that they should focus on research and general knowledge. Discuss both views and give your own opinion.',
+    chartKind: null,
+    chartData: null,
+    essayKind: 'discussion',
+    topicSlug: 'education',
+    difficultyBand: 6.0,
+    timeLimitSeconds: 2400,
+    minWords: 250,
+    source: 'curated',
+  },
+  {
+    id: 'w-t2-curated-society-advantage-disadvantage',
+    task: 'ielts_task2',
+    promptText:
+      'In many cities, residents are giving up private cars and using shared bicycles and electric scooters instead. Do the advantages of this trend outweigh the disadvantages?',
+    chartKind: null,
+    chartData: null,
+    essayKind: 'advantage_disadvantage',
+    topicSlug: 'society',
+    difficultyBand: 6.5,
+    timeLimitSeconds: 2400,
+    minWords: 250,
+    source: 'curated',
+  },
+  {
+    id: 'w-t2-curated-environment-problem-solution',
+    task: 'ielts_task2',
+    promptText:
+      'Despite many public campaigns, households in most countries still throw away large amounts of edible food each year. What are the main causes of this problem, and what solutions can you suggest?',
+    chartKind: null,
+    chartData: null,
+    essayKind: 'problem_solution',
+    topicSlug: 'environment',
+    difficultyBand: 6.5,
+    timeLimitSeconds: 2400,
+    minWords: 250,
+    source: 'curated',
+  },
+  {
+    id: 'w-t2-curated-health-two-part',
+    task: 'ielts_task2',
+    promptText:
+      'Many people now prefer to exercise at home using online videos rather than joining a gym. Why is this happening, and is it a positive or a negative development?',
+    chartKind: null,
+    chartData: null,
+    essayKind: 'two_part',
+    topicSlug: 'health',
+    difficultyBand: 7.0,
+    timeLimitSeconds: 2400,
+    minWords: 250,
+    source: 'curated',
+  },
+  {
+    id: 'w-t2-curated-science-opinion',
+    task: 'ielts_task2',
+    promptText:
+      'Some people believe that scientists should concentrate on solving practical problems rather than carrying out research with no immediate use. To what extent do you agree or disagree?',
+    chartKind: null,
+    chartData: null,
+    essayKind: 'opinion',
+    topicSlug: 'science',
+    difficultyBand: 7.5,
+    timeLimitSeconds: 2400,
+    minWords: 250,
+    source: 'curated',
+  },
+];
+
 export function generateTask2Prompts(): WritingPrompt[] {
   const out: WritingPrompt[] = [];
 
@@ -120,6 +214,7 @@ export function generateTask2Prompts(): WritingPrompt[] {
     });
   });
 
+  out.push(...TASK2_CURATED);
   return out;
 }
 

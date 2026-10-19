@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "happy",
+    "pos": "adjective",
+    "ipa": "/ˈhæpi/",
+    "meaningVi": "vui vẻ, hạnh phúc",
+    "definitionEn": "feeling or showing pleasure and contentment",
+    "example": "She felt happy when she received a letter from her best friend.",
+    "collocation": "feel happy",
+    "cefr": "B1"
+  },
+  {
+    "word": "sad",
+    "pos": "adjective",
+    "ipa": "/sæd/",
+    "meaningVi": "buồn",
+    "definitionEn": "feeling unhappy, usually because something bad has happened",
+    "example": "He looked sad after his team lost the final match.",
+    "collocation": "a sad story",
+    "cefr": "B1"
+  },
+  {
+    "word": "angry",
+    "pos": "adjective",
+    "ipa": "/ˈæŋɡri/",
+    "meaningVi": "tức giận",
+    "definitionEn": "feeling strong displeasure or annoyance about something",
+    "example": "My parents were angry when I came home very late at night.",
+    "collocation": "get angry with",
+    "cefr": "B1"
+  },
+  {
+    "word": "afraid",
+    "pos": "adjective",
+    "ipa": "/əˈfreɪd/",
+    "meaningVi": "sợ hãi",
+    "definitionEn": "feeling fear or worry that something bad will happen",
+    "example": "Many young children are afraid of the dark at night.",
+    "collocation": "be afraid of",
+    "cefr": "B1"
+  },
+  {
+    "word": "surprised",
+    "pos": "adjective",
+    "ipa": "/səˈpraɪzd/",
+    "meaningVi": "ngạc nhiên",
+    "definitionEn": "feeling astonished by something unexpected",
+    "example": "I was surprised to see my old teacher at the airport.",
+    "collocation": "surprised by",
+    "cefr": "B1"
+  },
+  {
+    "word": "excited",
+    "pos": "adjective",
+    "ipa": "/ɪkˈsaɪtɪd/",
+    "meaningVi": "phấn khích, háo hức",
+    "definitionEn": "feeling eager and enthusiastic about something that will happen",
+    "example": "The children were excited about the school trip to the zoo.",
+    "collocation": "excited about",
+    "cefr": "B1"
+  },
+  {
+    "word": "bored",
+    "pos": "adjective",
+    "ipa": "/bɔːd/",
+    "meaningVi": "chán, buồn chán",
+    "definitionEn": "tired and uninterested because nothing seems interesting or challenging",
+    "example": "I got bored during the long lecture and started drawing pictures.",
+    "collocation": "get bored with",
+    "cefr": "B1"
+  },
+  {
+    "word": "proud",
+    "pos": "adjective",
+    "ipa": "/praʊd/",
+    "meaningVi": "tự hào",
+    "definitionEn": "feeling pleasure because you or someone close has achieved something",
+    "example": "Her parents were proud of her excellent graduation results.",
+    "collocation": "proud of",
+    "cefr": "B1"
+  },
+  {
+    "word": "lonely",
+    "pos": "adjective",
+    "ipa": "/ˈləʊnli/",
+    "meaningVi": "cô đơn",
+    "definitionEn": "feeling sad because you have no friends or company",
+    "example": "He felt lonely after moving to a new city where he knew no one.",
+    "collocation": "feel lonely",
+    "cefr": "B1"
+  },
+  {
+    "word": "embarrassed",
+    "pos": "adjective",
+    "ipa": "/ɪmˈbærəst/",
+    "meaningVi": "xấu hổ, ngượng",
+    "definitionEn": "feeling uncomfortable because of a mistake or foolish action",
+    "example": "She felt embarrassed when she forgot the words of her song.",
+    "collocation": "feel embarrassed about",
+    "cefr": "B1"
+  },
+  {
+    "word": "upset",
+    "pos": "adjective",
+    "ipa": "/ʌpˈset/",
+    "meaningVi": "buồn bực, khó chịu",
+    "definitionEn": "unhappy, worried, or disturbed by something that has happened",
+    "example": "He was upset after hearing the bad news about his grandfather.",
+    "collocation": "upset about",
+    "cefr": "B1"
+  },
+  {
+    "word": "glad",
+    "pos": "adjective",
+    "ipa": "/ɡlæd/",
+    "meaningVi": "vui mừng",
+    "definitionEn": "pleased or happy about something that has happened",
+    "example": "I am glad you could come to my birthday party today.",
+    "collocation": "glad to hear",
+    "cefr": "B1"
+  },
+  {
+    "word": "hopeful",
+    "pos": "adjective",
+    "ipa": "/ˈhəʊpfl/",
+    "meaningVi": "hy vọng, lạc quan",
+    "definitionEn": "feeling that something good is likely to happen in the future",
+    "example": "We are hopeful that the weather will be fine for the picnic.",
+    "collocation": "hopeful about",
+    "cefr": "B1"
+  },
+  {
+    "word": "confused",
+    "pos": "adjective",
+    "ipa": "/kənˈfjuːzd/",
+    "meaningVi": "bối rối, lúng túng",
+    "definitionEn": "unable to think clearly or understand something properly",
+    "example": "The instructions were so unclear that I felt completely confused.",
+    "collocation": "feel confused",
+    "cefr": "B1"
+  },
+  {
+    "word": "disgusted",
+    "pos": "adjective",
+    "ipa": "/dɪsˈɡʌstɪd/",
+    "meaningVi": "ghê tởm, phẫn nộ",
+    "definitionEn": "feeling strong dislike or revulsion towards something unpleasant",
+    "example": "Everyone was disgusted by the dirty condition of the restaurant kitchen.",
+    "collocation": "disgusted by",
+    "cefr": "B1"
+  },
+  {
+    "word": "homesick",
+    "pos": "adjective",
+    "ipa": "/ˈhəʊmsɪk/",
+    "meaningVi": "nhớ nhà",
+    "definitionEn": "sad because you are far from home and miss your family",
+    "example": "The students felt homesick during their first week at boarding school.",
+    "collocation": "feel homesick",
+    "cefr": "B1"
+  },
+  {
+    "word": "nervous",
+    "pos": "adjective",
+    "ipa": "/ˈnɜːvəs/",
+    "meaningVi": "lo lắng, hồi hộp",
+    "definitionEn": "worried or anxious about something that might happen soon",
+    "example": "I was nervous before my interview, but everything went very well.",
+    "collocation": "nervous about",
+    "cefr": "B1"
+  },
+  {
+    "word": "grateful",
+    "pos": "adjective",
+    "ipa": "/ˈɡreɪtfl/",
+    "meaningVi": "biết ơn",
+    "definitionEn": "feeling thankful for something kind that someone has done",
+    "example": "I am grateful to my teacher for her patient and careful help.",
+    "collocation": "grateful for",
+    "cefr": "B1"
+  },
+  {
+    "word": "relaxed",
+    "pos": "adjective",
+    "ipa": "/rɪˈlækst/",
+    "meaningVi": "thư giãn, thoải mái",
+    "definitionEn": "calm and free from tension, worry, or stress",
+    "example": "After the holiday, everyone in the family felt relaxed and refreshed.",
+    "collocation": "feel relaxed",
+    "cefr": "B1"
+  },
+  {
+    "word": "annoyed",
+    "pos": "adjective",
+    "ipa": "/əˈnɔɪd/",
+    "meaningVi": "khó chịu, bực mình",
+    "definitionEn": "slightly angry because of something that irritates you",
+    "example": "I was annoyed when the bus was late again this morning.",
+    "collocation": "get annoyed with",
+    "cefr": "B1"
+  },
+  {
+    "word": "amused",
+    "pos": "adjective",
+    "ipa": "/əˈmjuːzd/",
+    "meaningVi": "thích thú, buồn cười",
+    "definitionEn": "finding something funny or entertaining",
+    "example": "The audience was amused by the comedian's silly jokes and funny faces.",
+    "collocation": "amused by",
+    "cefr": "B1"
+  },
+  {
+    "word": "delighted",
+    "pos": "adjective",
+    "ipa": "/dɪˈlaɪtɪd/",
+    "meaningVi": "rất vui mừng",
+    "definitionEn": "extremely pleased or happy about something",
+    "example": "We were delighted with the excellent results of the school project.",
+    "collocation": "delighted with",
+    "cefr": "B1"
+  },
+  {
+    "word": "miserable",
+    "pos": "adjective",
+    "ipa": "/ˈmɪzrəbl/",
+    "meaningVi": "khổ sở, khốn khổ",
+    "definitionEn": "very unhappy or uncomfortable in a particular situation",
+    "example": "I felt miserable with a bad cold and could not go to school.",
+    "collocation": "feel miserable",
+    "cefr": "B1"
+  },
+  {
+    "word": "hurt",
+    "pos": "adjective",
+    "ipa": "/hɜːt/",
+    "meaningVi": "bị tổn thương",
+    "definitionEn": "feeling emotional pain because of someone's unkind words or actions",
+    "example": "She felt hurt when her friends did not invite her to the party.",
+    "collocation": "feeling hurt",
+    "cefr": "B1"
+  },
+  {
+    "word": "scared",
+    "pos": "adjective",
+    "ipa": "/skeəd/",
+    "meaningVi": "sợ hãi",
+    "definitionEn": "frightened by something dangerous or unpleasant",
+    "example": "The scared puppy hid under the table during the thunderstorm.",
+    "collocation": "scared of",
+    "cefr": "B1"
+  },
+  {
+    "word": "cheerful",
+    "pos": "adjective",
+    "ipa": "/ˈtʃɪəfʊl/",
+    "meaningVi": "vui tươi, phấn chấn",
+    "definitionEn": "happy and bright in mood, making others feel good",
+    "example": "The cheerful children sang songs as they walked to school together.",
+    "collocation": "a cheerful mood",
+    "cefr": "B1"
+  },
+  {
+    "word": "calm",
+    "pos": "adjective",
+    "ipa": "/kɑːm/",
+    "meaningVi": "bình tĩnh, yên tĩnh",
+    "definitionEn": "quiet and peaceful, not showing strong emotion",
+    "example": "Try to stay calm during the exam, and read each question carefully.",
+    "collocation": "keep calm",
+    "cefr": "B1"
+  },
+  {
+    "word": "curious",
+    "pos": "adjective",
+    "ipa": "/ˈkjʊəriəs/",
+    "meaningVi": "tò mò",
+    "definitionEn": "wanting to know or learn more about something",
+    "example": "I am curious about how this machine actually works inside.",
+    "collocation": "curious about",
+    "cefr": "B1"
+  },
+  {
+    "word": "thrilled",
+    "pos": "adjective",
+    "ipa": "/θrɪld/",
+    "meaningVi": "vô cùng phấn khích",
+    "definitionEn": "very excited and pleased about something good",
+    "example": "We were thrilled to win the national science competition this year.",
+    "collocation": "thrilled to bits",
+    "cefr": "B2"
+  },
+  {
+    "word": "furious",
+    "pos": "adjective",
+    "ipa": "/ˈfjʊəriəs/",
+    "meaningVi": "giận dữ, phẫn nộ",
+    "definitionEn": "extremely angry, often to the point of losing control",
+    "example": "The furious customer demanded a refund for the broken laptop.",
+    "collocation": "furious with",
+    "cefr": "B2"
+  },
+  {
+    "word": "terrified",
+    "pos": "adjective",
+    "ipa": "/ˈterɪfaɪd/",
+    "meaningVi": "kinh hoàng, khiếp sợ",
+    "definitionEn": "extremely frightened by something dangerous or threatening",
+    "example": "The terrified children clung to their teacher during the storm.",
+    "collocation": "terrified of",
+    "cefr": "B2"
+  },
+  {
+    "word": "overjoyed",
+    "pos": "adjective",
+    "ipa": "/ˌəʊvəˈdʒɔɪd/",
+    "meaningVi": "vui sướng tột độ",
+    "definitionEn": "extremely happy and delighted about something",
+    "example": "Her parents were overjoyed when she passed the entrance examination.",
+    "collocation": "overjoyed at",
+    "cefr": "B2"
+  },
+  {
+    "word": "heartbroken",
+    "pos": "adjective",
+    "ipa": "/ˈhɑːtbrəʊkən/",
+    "meaningVi": "đau lòng, tan nát",
+    "definitionEn": "extremely sad, usually after losing someone or something important",
+    "example": "She was heartbroken when her favourite dog died last winter.",
+    "collocation": "heartbroken over",
+    "cefr": "B2"
+  },
+  {
+    "word": "depressed",
+    "pos": "adjective",
+    "ipa": "/dɪˈprest/",
+    "meaningVi": "chán nản, buồn bã kéo dài",
+    "definitionEn": "feeling very sad and hopeless for a long period",
+    "example": "He felt depressed after losing his job and most of his savings.",
+    "collocation": "feel depressed",
+    "cefr": "B2"
+  },
+  {
+    "word": "puzzled",
+    "pos": "adjective",
+    "ipa": "/ˈpʌzld/",
+    "meaningVi": "bối rối, khó hiểu",
+    "definitionEn": "confused because you cannot understand something clearly",
+    "example": "The students looked puzzled by the difficult mathematics question.",
+    "collocation": "puzzled by",
+    "cefr": "B2"
+  },
+  {
+    "word": "sympathetic",
+    "pos": "adjective",
+    "ipa": "/ˌsɪmpəˈθetɪk/",
+    "meaningVi": "thông cảm, đồng cảm",
+    "definitionEn": "showing understanding of someone's problems or feelings",
+    "example": "The sympathetic doctor listened carefully to every worry the patient shared.",
+    "collocation": "sympathetic ear",
+    "cefr": "B2"
+  },
+  {
+    "word": "envious",
+    "pos": "adjective",
+    "ipa": "/ˈenviəs/",
+    "meaningVi": "ghen tị, thèm muốn",
+    "definitionEn": "wanting something that another person has",
+    "example": "She was envious of her cousin's brand new bicycle.",
+    "collocation": "envious of",
+    "cefr": "B2"
+  },
+  {
+    "word": "pleased",
+    "pos": "adjective",
+    "ipa": "/pliːzd/",
+    "meaningVi": "hài lòng, vui lòng",
+    "definitionEn": "happy or satisfied with something that has happened",
+    "example": "The teacher was pleased with the improvement in our essays.",
+    "collocation": "pleased with",
+    "cefr": "B2"
+  },
+  {
+    "word": "hesitant",
+    "pos": "adjective",
+    "ipa": "/ˈhezɪtənt/",
+    "meaningVi": "do dự, ngập ngừng",
+    "definitionEn": "slow to act or speak because of uncertainty or doubt",
+    "example": "He was hesitant to accept the job offer in another city.",
+    "collocation": "hesitant about",
+    "cefr": "B2"
+  },
+  {
+    "word": "enthusiastic",
+    "pos": "adjective",
+    "ipa": "/ɪnˌθjuːziˈæstɪk/",
+    "meaningVi": "nhiệt tình, hăng hái",
+    "definitionEn": "showing great interest and eagerness towards something",
+    "example": "The enthusiastic volunteers cleaned the entire beach before lunchtime.",
+    "collocation": "enthusiastic about",
+    "cefr": "B2"
+  },
+  {
+    "word": "bitter",
+    "pos": "adjective",
+    "ipa": "/ˈbɪtə/",
+    "meaningVi": "cay đắng, uất ức",
+    "definitionEn": "feeling angry and resentful because of unfair treatment",
+    "example": "He remained bitter about losing the election by only a few votes.",
+    "collocation": "bitter about",
+    "cefr": "B2"
+  },
+  {
+    "word": "passionate",
+    "pos": "adjective",
+    "ipa": "/ˈpæʃənət/",
+    "meaningVi": "đam mê, nhiệt huyết",
+    "definitionEn": "having or showing strong feelings or enthusiasm for something",
+    "example": "She is passionate about environmental protection and volunteers every weekend.",
+    "collocation": "passionate about",
+    "cefr": "B2"
+  },
+  {
+    "word": "uneasy",
+    "pos": "adjective",
+    "ipa": "/ʌnˈiːzi/",
+    "meaningVi": "bất an, không yên tâm",
+    "definitionEn": "slightly worried or anxious that something is wrong",
+    "example": "I felt uneasy walking alone through the empty street at night.",
+    "collocation": "feel uneasy about",
+    "cefr": "B2"
+  },
+  {
+    "word": "gloomy",
+    "pos": "adjective",
+    "ipa": "/ˈɡluːmi/",
+    "meaningVi": "u ám, buồn bã",
+    "definitionEn": "sad and without hope, or dark and dim in appearance",
+    "example": "The gloomy mood in the office worsened after the company's bad news.",
+    "collocation": "a gloomy mood",
+    "cefr": "B2"
+  },
+  {
+    "word": "affection",
+    "pos": "noun",
+    "ipa": "/əˈfekʃn/",
+    "meaningVi": "tình cảm, sự yêu mến",
+    "definitionEn": "a feeling of fondness or liking for someone",
+    "example": "She showed great affection for her grandmother by visiting her every week.",
+    "collocation": "show affection for",
+    "cefr": "B2"
+  },
+  {
+    "word": "admiration",
+    "pos": "noun",
+    "ipa": "/ˌædməˈreɪʃn/",
+    "meaningVi": "sự ngưỡng mộ",
+    "definitionEn": "a feeling of respect and approval for someone's qualities",
+    "example": "His students held deep admiration for his patience and kindness.",
+    "collocation": "deep admiration for",
+    "cefr": "B2"
+  },
+  {
+    "word": "bewildered",
+    "pos": "adjective",
+    "ipa": "/bɪˈwɪldəd/",
+    "meaningVi": "hoang mang, ngỡ ngàng",
+    "definitionEn": "completely confused and unable to understand what is happening",
+    "example": "The bewildered tourist stared at the map, unable to find the station.",
+    "collocation": "bewildered look",
+    "cefr": "C1"
+  },
+  {
+    "word": "perturbed",
+    "pos": "adjective",
+    "ipa": "/pəˈtɜːbd/",
+    "meaningVi": "bất an, lo lắng",
+    "definitionEn": "worried or troubled by something that has happened",
+    "example": "The committee was perturbed by the sudden rise in costs.",
+    "collocation": "perturbed by",
+    "cefr": "C1"
+  },
+  {
+    "word": "aggrieved",
+    "pos": "adjective",
+    "ipa": "/əˈɡriːvd/",
+    "meaningVi": "oan ức, bất bình",
+    "definitionEn": "feeling resentful because of unfair treatment",
+    "example": "The aggrieved employee filed a formal complaint about her unfair dismissal.",
+    "collocation": "aggrieved party",
+    "cefr": "C1"
+  },
+  {
+    "word": "disconsolate",
+    "pos": "adjective",
+    "ipa": "/ˌdɪsˈkɒnsələt/",
+    "meaningVi": "buồn rầu, không nguôi",
+    "definitionEn": "very unhappy and unable to be comforted",
+    "example": "The disconsolate child refused every toy and sat crying on the stairs.",
+    "collocation": "disconsolate widow",
+    "cefr": "C1"
+  },
+  {
+    "word": "dejected",
+    "pos": "adjective",
+    "ipa": "/dɪˈdʒektɪd/",
+    "meaningVi": "chán nản, thất vọng",
+    "definitionEn": "sad and lacking hope, especially after a failure",
+    "example": "The dejected players left the pitch silently after losing the final.",
+    "collocation": "a dejected look",
+    "cefr": "C1"
+  },
+  {
+    "word": "forlorn",
+    "pos": "adjective",
+    "ipa": "/fəˈlɔːn/",
+    "meaningVi": "cô quạnh, lạc lõng",
+    "definitionEn": "sad and lonely, looking abandoned and hopeless",
+    "example": "A forlorn dog waited at the bus stop for its owner to return.",
+    "collocation": "a forlorn hope",
+    "cefr": "C1"
+  },
+  {
+    "word": "apprehensive",
+    "pos": "adjective",
+    "ipa": "/ˌæprɪˈhensɪv/",
+    "meaningVi": "lo ngại, e sợ",
+    "definitionEn": "anxious or fearful that something bad may happen",
+    "example": "She felt apprehensive about the results of the medical test.",
+    "collocation": "apprehensive about",
+    "cefr": "C1"
+  },
+  {
+    "word": "vexed",
+    "pos": "adjective",
+    "ipa": "/vekst/",
+    "meaningVi": "bực bội, phiền muộn",
+    "definitionEn": "annoyed or worried by a problem that is difficult to solve",
+    "example": "The vexed manager spent hours trying to fix the budget error.",
+    "collocation": "a vexed question",
+    "cefr": "C1"
+  },
+  {
+    "word": "incensed",
+    "pos": "adjective",
+    "ipa": "/ɪnˈsenst/",
+    "meaningVi": "phẫn nộ, nổi giận",
+    "definitionEn": "extremely angry about something unfair or offensive",
+    "example": "Residents were incensed by the decision to demolish the old park.",
+    "collocation": "incensed by",
+    "cefr": "C1"
+  },
+  {
+    "word": "indifferent",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdɪfrənt/",
+    "meaningVi": "thờ ơ, dửng dưng",
+    "definitionEn": "showing no interest or concern about something",
+    "example": "He seemed indifferent to the criticism and carried on working calmly.",
+    "collocation": "indifferent to",
+    "cefr": "C1"
+  },
+  {
+    "word": "resigned",
+    "pos": "adjective",
+    "ipa": "/rɪˈzaɪnd/",
+    "meaningVi": "cam chịu, chấp nhận",
+    "definitionEn": "accepting an unpleasant situation without trying to fight it",
+    "example": "She sounded resigned when the flight was cancelled once again.",
+    "collocation": "resigned to",
+    "cefr": "C1"
+  },
+  {
+    "word": "mortified",
+    "pos": "adjective",
+    "ipa": "/ˈmɔːtɪfaɪd/",
+    "meaningVi": "xấu hổ tột độ",
+    "definitionEn": "extremely embarrassed or ashamed about something",
+    "example": "He was mortified when his phone rang loudly during the exam.",
+    "collocation": "mortified by",
+    "cefr": "C1"
+  },
+  {
+    "word": "humiliated",
+    "pos": "adjective",
+    "ipa": "/hjuːˈmɪlieɪtɪd/",
+    "meaningVi": "bị làm nhục",
+    "definitionEn": "made to feel ashamed or foolish in front of other people",
+    "example": "The candidate felt humiliated after the panel laughed at his answer.",
+    "collocation": "feel humiliated",
+    "cefr": "C1"
+  },
+  {
+    "word": "scornful",
+    "pos": "adjective",
+    "ipa": "/ˈskɔːnfl/",
+    "meaningVi": "khinh miệt",
+    "definitionEn": "showing that you believe someone or something is worthless",
+    "example": "The scornful critic dismissed the new novel in a single sentence.",
+    "collocation": "scornful of",
+    "cefr": "C1"
+  },
+  {
+    "word": "wary",
+    "pos": "adjective",
+    "ipa": "/ˈweəri/",
+    "meaningVi": "cảnh giác, dè chừng",
+    "definitionEn": "cautious and watchful because of possible danger or deception",
+    "example": "Investors remained wary of the bank after the recent financial scandal.",
+    "collocation": "wary of",
+    "cefr": "C1"
+  },
+  {
+    "word": "unnerved",
+    "pos": "adjective",
+    "ipa": "/ʌnˈnɜːvd/",
+    "meaningVi": "hoảng hốt, mất bình tĩnh",
+    "definitionEn": "made to feel nervous or lose confidence in a situation",
+    "example": "The strange noises in the attic unnerved the whole family.",
+    "collocation": "unnerved by",
+    "cefr": "C1"
+  },
+  {
+    "word": "rapturous",
+    "pos": "adjective",
+    "ipa": "/ˈræptʃərəs/",
+    "meaningVi": "ngây ngất, say mê",
+    "definitionEn": "expressing intense joy, delight, or admiration",
+    "example": "The audience gave the singer a rapturous welcome at the concert.",
+    "collocation": "rapturous applause",
+    "cefr": "C1"
+  },
+  {
+    "word": "jubilant",
+    "pos": "adjective",
+    "ipa": "/ˈdʒuːbɪlənt/",
+    "meaningVi": "hân hoan, vui sướng",
+    "definitionEn": "feeling or expressing great joy, especially after a victory",
+    "example": "The jubilant fans celebrated the championship in the city streets.",
+    "collocation": "jubilant crowd",
+    "cefr": "C1"
+  },
+  {
+    "word": "contrite",
+    "pos": "adjective",
+    "ipa": "/kənˈtraɪt/",
+    "meaningVi": "ăn năn, hối lỗi",
+    "definitionEn": "feeling or showing sincere regret for having done wrong",
+    "example": "The contrite student apologised and promised to return the borrowed book.",
+    "collocation": "contrite apology",
+    "cefr": "C1"
+  },
+  {
+    "word": "yearning",
+    "pos": "noun",
+    "ipa": "/ˈjɜːnɪŋ/",
+    "meaningVi": "khao khát, mong mỏi",
+    "definitionEn": "a strong longing for something you want or miss",
+    "example": "Her yearning for a quieter life grew stronger with each passing year.",
+    "collocation": "a strong yearning",
+    "cefr": "C1"
+  },
+  {
+    "word": "pang",
+    "pos": "noun",
+    "ipa": "/pæŋ/",
+    "meaningVi": "cơn nhói lòng",
+    "definitionEn": "a sudden sharp feeling of emotional pain",
+    "example": "He felt a pang of regret when he saw her disappointed face.",
+    "collocation": "a pang of regret",
+    "cefr": "C1"
+  },
+  {
+    "word": "rankle",
+    "pos": "verb",
+    "ipa": "/ˈræŋkl/",
+    "meaningVi": "day dứt, ấm ức",
+    "definitionEn": "to cause lasting bitterness or resentment in someone",
+    "example": "The unfair decision continued to rankle with the players for years.",
+    "collocation": "rankle with",
+    "cefr": "C1"
+  },
+  {
+    "word": "gleeful",
+    "pos": "adjective",
+    "ipa": "/ˈɡliːfl/",
+    "meaningVi": "hả hê, vui sướng",
+    "definitionEn": "showing joy, especially at someone else's misfortune or mistake",
+    "example": "The gleeful children ran outside as soon as the school bell rang.",
+    "collocation": "gleeful laughter",
+    "cefr": "C1"
+  },
+  {
+    "word": "nonplussed",
+    "pos": "adjective",
+    "ipa": "/ˌnɒnˈplʌst/",
+    "meaningVi": "sững sờ, lúng túng",
+    "definitionEn": "surprised and confused, unsure how to react",
+    "example": "The teacher was nonplussed by the student's unexpected question.",
+    "collocation": "nonplussed by",
+    "cefr": "C1"
+  },
+  {
+    "word": "disquiet",
+    "pos": "noun",
+    "ipa": "/dɪsˈkwaɪət/",
+    "meaningVi": "sự bất an, lo âu",
+    "definitionEn": "a feeling of worry or unease about something",
+    "example": "There was growing disquiet among voters about the new policy.",
+    "collocation": "growing disquiet",
+    "cefr": "C1"
+  },
+  {
+    "word": "sympathy",
+    "pos": "noun",
+    "ipa": "/ˈsɪmpəθi/",
+    "meaningVi": "sự cảm thông",
+    "definitionEn": "sharing or understanding another person's feelings or problems",
+    "example": "I have great sympathy for the families affected by the flood.",
+    "collocation": "deep sympathy for",
+    "cefr": "C1"
+  },
+  {
+    "word": "rueful",
+    "pos": "adjective",
+    "ipa": "/ˈruːfl/",
+    "meaningVi": "hối tiếc, ngậm ngùi",
+    "definitionEn": "feeling or showing regret, often with a wry smile",
+    "example": "He gave a rueful smile and admitted that he had forgotten.",
+    "collocation": "a rueful smile",
+    "cefr": "C1"
+  },
+  {
+    "word": "smug",
+    "pos": "adjective",
+    "ipa": "/smʌɡ/",
+    "meaningVi": "tự mãn, đắc ý",
+    "definitionEn": "too pleased with yourself, often in an annoying way",
+    "example": "The smug winner grinned at the losing candidates during the press conference.",
+    "collocation": "a smug smile",
+    "cefr": "C1"
+  },
+  {
+    "word": "schadenfreude",
+    "pos": "noun",
+    "ipa": "/ˈʃɑːdənˌfrɔɪdə/",
+    "meaningVi": "niềm vui trước nỗi xui xẻo của người khác",
+    "definitionEn": "pleasure felt at someone else's misfortune or failure",
+    "example": "Some readers felt schadenfreude when the arrogant critic's new book flopped.",
+    "collocation": "feel schadenfreude",
+    "cefr": "C2"
+  },
+  {
+    "word": "ennui",
+    "pos": "noun",
+    "ipa": "/ɒnˈwiː/",
+    "meaningVi": "nỗi chán chường, uể oải",
+    "definitionEn": "a feeling of boredom and dissatisfaction with life",
+    "example": "Years of routine work left him with a deep sense of ennui.",
+    "collocation": "a sense of ennui",
+    "cefr": "C2"
+  },
+  {
+    "word": "lassitude",
+    "pos": "noun",
+    "ipa": "/ˈlæsɪtjuːd/",
+    "meaningVi": "sự mệt mỏi uể oải",
+    "definitionEn": "a state of physical or mental tiredness and lack of energy",
+    "example": "The summer heat induced a lassitude that made every task feel exhausting.",
+    "collocation": "lassitude and fatigue",
+    "cefr": "C2"
+  },
+  {
+    "word": "acrimony",
+    "pos": "noun",
+    "ipa": "/ˈækrɪməni/",
+    "meaningVi": "sự gay gắt, cay nghiệt",
+    "definitionEn": "bitterness and anger shown in speech or in a relationship",
+    "example": "The divorce proceedings were marked by considerable acrimony between the couple.",
+    "collocation": "bitter acrimony",
+    "cefr": "C2"
+  },
+  {
+    "word": "exultant",
+    "pos": "adjective",
+    "ipa": "/ɪɡˈzʌltənt/",
+    "meaningVi": "hân hoan, đắc thắng",
+    "definitionEn": "triumphant and very happy, especially after a success",
+    "example": "The exultant team lifted the trophy high above their heads.",
+    "collocation": "an exultant cry",
+    "cefr": "C2"
+  },
+  {
+    "word": "dejection",
+    "pos": "noun",
+    "ipa": "/dɪˈdʒekʃn/",
+    "meaningVi": "sự chán nản, thất vọng",
+    "definitionEn": "a state of low spirits and deep sadness",
+    "example": "Her dejection was obvious after she read the rejection letter.",
+    "collocation": "deep dejection",
+    "cefr": "C2"
+  },
+  {
+    "word": "rancour",
+    "pos": "noun",
+    "ipa": "/ˈræŋkə/",
+    "meaningVi": "mối hận thù âm ỉ",
+    "definitionEn": "long-lasting bitterness or resentment towards someone",
+    "example": "Despite the settlement, rancour between the two brothers never fully disappeared.",
+    "collocation": "bitter rancour",
+    "cefr": "C2"
+  },
+  {
+    "word": "enmity",
+    "pos": "noun",
+    "ipa": "/ˈenmɪti/",
+    "meaningVi": "sự thù địch, oán hận",
+    "definitionEn": "a feeling of hatred or hostility between people or groups",
+    "example": "Decades of enmity divided the two neighbouring villages in the valley.",
+    "collocation": "mutual enmity",
+    "cefr": "C2"
+  },
+  {
+    "word": "vexation",
+    "pos": "noun",
+    "ipa": "/vekˈseɪʃn/",
+    "meaningVi": "sự bực bội, phiền toái",
+    "definitionEn": "annoyance or frustration caused by a small problem",
+    "example": "To his vexation, the train was cancelled without any warning at all.",
+    "collocation": "great vexation",
+    "cefr": "C2"
+  },
+  {
+    "word": "chagrin",
+    "pos": "noun",
+    "ipa": "/ˈʃæɡrɪn/",
+    "meaningVi": "sự xấu hổ, tiếc nuối",
+    "definitionEn": "annoyance and embarrassment caused by disappointment",
+    "example": "To her chagrin, the judges awarded the prize to a rival.",
+    "collocation": "to her chagrin",
+    "cefr": "C2"
+  },
+  {
+    "word": "consternation",
+    "pos": "noun",
+    "ipa": "/ˌkɒnstəˈneɪʃn/",
+    "meaningVi": "sự hoang mang, sửng sốt",
+    "definitionEn": "anxious dismay or alarm caused by something unexpected",
+    "example": "The sudden news caused widespread consternation among the staff members.",
+    "collocation": "widespread consternation",
+    "cefr": "C2"
+  },
+  {
+    "word": "bemusement",
+    "pos": "noun",
+    "ipa": "/bɪˈmjuːzmənt/",
+    "meaningVi": "sự ngỡ ngàng, bối rối",
+    "definitionEn": "a state of being puzzled or confused",
+    "example": "To the crowd's bemusement, the magician vanished into thin air.",
+    "collocation": "a look of bemusement",
+    "cefr": "C2"
+  },
+  {
+    "word": "ire",
+    "pos": "noun",
+    "ipa": "/aɪə/",
+    "meaningVi": "cơn giận dữ",
+    "definitionEn": "anger or wrath, especially when openly expressed",
+    "example": "The minister's remarks provoked the ire of opposition members.",
+    "collocation": "arouse someone's ire",
+    "cefr": "C2"
+  },
+  {
+    "word": "pique",
+    "pos": "noun",
+    "ipa": "/piːk/",
+    "meaningVi": "sự tự ái, hờn mát",
+    "definitionEn": "irritation caused by wounded pride or a slight",
+    "example": "In a fit of pique, she walked out of the meeting without a word.",
+    "collocation": "a fit of pique",
+    "cefr": "C2"
+  },
+  {
+    "word": "umbrage",
+    "pos": "noun",
+    "ipa": "/ˈʌmbrɪdʒ/",
+    "meaningVi": "sự bất bình, tự ái",
+    "definitionEn": "offence or resentment caused by a perceived insult",
+    "example": "He took umbrage at the suggestion that he had been dishonest.",
+    "collocation": "take umbrage at",
+    "cefr": "C2"
+  },
+  {
+    "word": "animus",
+    "pos": "noun",
+    "ipa": "/ˈænɪməs/",
+    "meaningVi": "ác cảm, thù địch",
+    "definitionEn": "strong hostility or ill will directed towards a person",
+    "example": "His animus towards the new director was obvious to everyone present.",
+    "collocation": "personal animus",
+    "cefr": "C2"
+  },
+  {
+    "word": "wrath",
+    "pos": "noun",
+    "ipa": "/rɒθ/",
+    "meaningVi": "cơn thịnh nộ",
+    "definitionEn": "intense anger, often in a powerful or punishing form",
+    "example": "The villagers feared the wrath of the local lord and obeyed him.",
+    "collocation": "incur someone's wrath",
+    "cefr": "C2"
+  },
+  {
+    "word": "rapture",
+    "pos": "noun",
+    "ipa": "/ˈræptʃə/",
+    "meaningVi": "sự ngây ngất sung sướng",
+    "definitionEn": "a state of intense joy or delight",
+    "example": "The children listened in rapture to the old storyteller's tales.",
+    "collocation": "in rapture",
+    "cefr": "C2"
+  },
+  {
+    "word": "exuberance",
+    "pos": "noun",
+    "ipa": "/ɪɡˈzjuːbərəns/",
+    "meaningVi": "sự hào hứng, tràn đầy sức sống",
+    "definitionEn": "lively energy and enthusiasm, often shown openly",
+    "example": "The exuberance of the young dancers filled the whole theatre with joy.",
+    "collocation": "youthful exuberance",
+    "cefr": "C2"
+  },
+  {
+    "word": "languor",
+    "pos": "noun",
+    "ipa": "/ˈlæŋɡə/",
+    "meaningVi": "sự uể oải, mệt rã rời",
+    "definitionEn": "a pleasant lack of energy, often caused by warm weather",
+    "example": "A languor settled over the village during the long summer afternoons.",
+    "collocation": "summer languor",
+    "cefr": "C2"
+  },
+  {
+    "word": "misgiving",
+    "pos": "noun",
+    "ipa": "/mɪsˈɡɪvɪŋ/",
+    "meaningVi": "sự nghi ngại, băn khoăn",
+    "definitionEn": "a feeling of doubt or worry about a decision",
+    "example": "She had serious misgivings about signing the contract so quickly.",
+    "collocation": "serious misgivings",
+    "cefr": "C2"
+  },
+  {
+    "word": "foreboding",
+    "pos": "noun",
+    "ipa": "/fɔːˈbəʊdɪŋ/",
+    "meaningVi": "linh cảm chẳng lành",
+    "definitionEn": "a strong feeling that something bad is about to happen",
+    "example": "A sense of foreboding crept over him as the dark storm approached.",
+    "collocation": "a sense of foreboding",
+    "cefr": "C2"
+  },
+  {
+    "word": "angst",
+    "pos": "noun",
+    "ipa": "/æŋst/",
+    "meaningVi": "nỗi lo âu, bất an",
+    "definitionEn": "a deep feeling of anxiety or worry about life or the future",
+    "example": "Many students feel angst about their future careers after graduation.",
+    "collocation": "teenage angst",
+    "cefr": "C2"
+  },
+  {
+    "word": "pathos",
+    "pos": "noun",
+    "ipa": "/ˈpeɪθɒs/",
+    "meaningVi": "nỗi buồn cảm động",
+    "definitionEn": "a quality in something that evokes pity or sadness",
+    "example": "The film's pathos came from the old couple's quiet farewell at the station.",
+    "collocation": "a sense of pathos",
+    "cefr": "C2"
+  },
+  {
+    "word": "wretched",
+    "pos": "adjective",
+    "ipa": "/ˈretʃɪd/",
+    "meaningVi": "khốn khổ, tồi tệ",
+    "definitionEn": "very unhappy, ill, or in a miserable condition",
+    "example": "The wretched refugees waited for hours in the cold, driving rain.",
+    "collocation": "feel wretched",
+    "cefr": "C2"
+  },
+  {
+    "word": "aghast",
+    "pos": "adjective",
+    "ipa": "/əˈɡɑːst/",
+    "meaningVi": "kinh hoàng, sững sờ",
+    "definitionEn": "filled with horror or shock",
+    "example": "The parents were aghast at the damage done to the school gym.",
+    "collocation": "aghast at",
+    "cefr": "C2"
+  },
+  {
+    "word": "bereft",
+    "pos": "adjective",
+    "ipa": "/bɪˈreft/",
+    "meaningVi": "mất mát, trống vắng",
+    "definitionEn": "deprived of something, or left feeling empty after a loss",
+    "example": "The widow was bereft after her husband's sudden and unexpected death.",
+    "collocation": "bereft of",
+    "cefr": "C2"
+  },
+  {
+    "word": "rapt",
+    "pos": "adjective",
+    "ipa": "/ræpt/",
+    "meaningVi": "say mê, chăm chú",
+    "definitionEn": "completely absorbed in something and paying full attention",
+    "example": "The audience sat rapt as the pianist played the final movement.",
+    "collocation": "rapt attention",
+    "cefr": "C2"
+  },
+  {
+    "word": "disgruntled",
+    "pos": "adjective",
+    "ipa": "/dɪsˈɡrʌntld/",
+    "meaningVi": "bất mãn, cáu kỉnh",
+    "definitionEn": "dissatisfied and annoyed, often about something unfair",
+    "example": "Disgruntled workers gathered outside the factory to protest the new rules.",
+    "collocation": "disgruntled employees",
+    "cefr": "C2"
+  },
+  {
+    "word": "incredulous",
+    "pos": "adjective",
+    "ipa": "/ɪnˈkredjələs/",
+    "meaningVi": "hoài nghi, không tin nổi",
+    "definitionEn": "unable or unwilling to believe what one has heard or seen",
+    "example": "He stared at the bill in incredulous silence for a long moment.",
+    "collocation": "incredulous look",
+    "cefr": "C2"
+  },
+  {
+    "word": "crestfallen",
+    "pos": "adjective",
+    "ipa": "/ˈkrestfɔːlən/",
+    "meaningVi": "ủ rũ, thất vọng",
+    "definitionEn": "sad and disappointed, especially after a failure",
+    "example": "The crestfallen actor left the stage after forgetting all of his lines.",
+    "collocation": "look crestfallen",
+    "cefr": "C2"
+  },
+  {
+    "word": "lovelorn",
+    "pos": "adjective",
+    "ipa": "/ˈlʌvlɔːn/",
+    "meaningVi": "tương tư, đơn phương",
+    "definitionEn": "unhappy because of love that is not returned",
+    "example": "The lovelorn poet wrote sad verses about the woman he could not forget.",
+    "collocation": "a lovelorn poet",
+    "cefr": "C2"
+  },
+  {
+    "word": "apoplectic",
+    "pos": "adjective",
+    "ipa": "/ˌæpəˈplektɪk/",
+    "meaningVi": "tức điên lên, giận run người",
+    "definitionEn": "extremely angry, often to the point of losing control",
+    "example": "The apoplectic manager shouted when he discovered the broken window.",
+    "collocation": "apoplectic with rage",
+    "cefr": "C2"
+  },
+  {
+    "word": "blithe",
+    "pos": "adjective",
+    "ipa": "/blaɪð/",
+    "meaningVi": "vô tư, nhẹ nhàng",
+    "definitionEn": "cheerful and carefree, showing no concern about problems",
+    "example": "She waved goodbye with a blithe smile, ignoring every warning sign.",
+    "collocation": "blithe indifference",
+    "cefr": "C2"
+  },
+  {
+    "word": "buoyant",
+    "pos": "adjective",
+    "ipa": "/ˈbɔɪənt/",
+    "meaningVi": "phấn khởi, lạc quan",
+    "definitionEn": "cheerful, optimistic, and full of energy",
+    "example": "The buoyant mood in the office improved after the successful product launch.",
+    "collocation": "a buoyant mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "perplexed",
+    "pos": "adjective",
+    "ipa": "/pəˈplekst/",
+    "meaningVi": "bối rối, băn khoăn",
+    "definitionEn": "puzzled and unable to understand something",
+    "example": "The perplexed teacher read the essay three times before grading it.",
+    "collocation": "a perplexed frown",
+    "cefr": "C2"
+  },
+  {
+    "word": "stricken",
+    "pos": "adjective",
+    "ipa": "/ˈstrɪkən/",
+    "meaningVi": "đau đớn, sững sờ",
+    "definitionEn": "badly affected by a serious emotion or misfortune",
+    "example": "The stricken mother sat beside her son's hospital bed all night.",
+    "collocation": "stricken with grief",
+    "cefr": "C2"
+  },
+  {
+    "word": "mournful",
+    "pos": "adjective",
+    "ipa": "/ˈmɔːnfl/",
+    "meaningVi": "ai oán, buồn thương",
+    "definitionEn": "expressing sorrow, especially after a loss",
+    "example": "A mournful tune drifted from the old violin in the empty square.",
+    "collocation": "a mournful tune",
+    "cefr": "C2"
+  },
+  {
+    "word": "euphoric",
+    "pos": "adjective",
+    "ipa": "/juːˈfɒrɪk/",
+    "meaningVi": "phấn khích tột độ",
+    "definitionEn": "feeling intense happiness or excitement",
+    "example": "The euphoric crowd danced through the streets after the victory.",
+    "collocation": "a euphoric mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "smitten",
+    "pos": "adjective",
+    "ipa": "/ˈsmɪtn/",
+    "meaningVi": "say mê, si mê",
+    "definitionEn": "strongly attracted to someone or deeply affected by something",
+    "example": "He was completely smitten with the new girl in his class.",
+    "collocation": "smitten with",
+    "cefr": "C2"
+  },
+  {
+    "word": "besotted",
+    "pos": "adjective",
+    "ipa": "/bɪˈsɒtɪd/",
+    "meaningVi": "mê mẩn, si tình",
+    "definitionEn": "completely infatuated with someone",
+    "example": "The besotted boy wrote her a poem every single day.",
+    "collocation": "besotted with",
+    "cefr": "C2"
+  },
+  {
+    "word": "piqued",
+    "pos": "adjective",
+    "ipa": "/piːkt/",
+    "meaningVi": "tự ái, bị chạm lòng tự trọng",
+    "definitionEn": "irritated or annoyed, often because of wounded pride",
+    "example": "She was piqued that no one had asked for her opinion at all.",
+    "collocation": "piqued curiosity",
+    "cefr": "C2"
+  },
+  {
+    "word": "nettled",
+    "pos": "adjective",
+    "ipa": "/ˈnetld/",
+    "meaningVi": "bực bội, khó chịu",
+    "definitionEn": "irritated or annoyed by something someone said or did",
+    "example": "He was nettled by the journalist's persistent and rather pointed questions.",
+    "collocation": "nettled by",
+    "cefr": "C2"
+  },
+  {
+    "word": "abject",
+    "pos": "adjective",
+    "ipa": "/ˈæbdʒekt/",
+    "meaningVi": "thảm hại, cùng cực",
+    "definitionEn": "extremely unhappy, miserable, or humiliating",
+    "example": "The defeated general offered an abject apology to the emperor.",
+    "collocation": "abject misery",
+    "cefr": "C2"
+  },
+  {
+    "word": "listless",
+    "pos": "adjective",
+    "ipa": "/ˈlɪstləs/",
+    "meaningVi": "uể oải, lừ đừ",
+    "definitionEn": "lacking energy, interest, or enthusiasm",
+    "example": "The listless child lay on the sofa all afternoon without speaking.",
+    "collocation": "a listless mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "disconcerted",
+    "pos": "adjective",
+    "ipa": "/ˌdɪskənˈsɜːtɪd/",
+    "meaningVi": "bối rối, lúng túng",
+    "definitionEn": "upset or confused, unable to act calmly",
+    "example": "She was disconcerted by the sudden silence in the crowded hall.",
+    "collocation": "disconcerted by",
+    "cefr": "C2"
+  }
+]

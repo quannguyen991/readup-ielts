@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "village",
+    "pos": "noun",
+    "ipa": "/ˈvɪlɪdʒ/",
+    "meaningVi": "ngôi làng",
+    "definitionEn": "a small group of houses in the countryside, smaller than a town",
+    "example": "Our family spends every summer in a quiet village near the sea.",
+    "collocation": "a small village",
+    "cefr": "B1"
+  },
+  {
+    "word": "city",
+    "pos": "noun",
+    "ipa": "/ˈsɪti/",
+    "meaningVi": "thành phố",
+    "definitionEn": "a large and busy town with many people and buildings",
+    "example": "Hanoi is an old city with many lakes and beautiful, winding streets.",
+    "collocation": "a busy city",
+    "cefr": "B1"
+  },
+  {
+    "word": "town",
+    "pos": "noun",
+    "ipa": "/taʊn/",
+    "meaningVi": "thị trấn",
+    "definitionEn": "a place with houses, shops, and offices, smaller than a city",
+    "example": "The little town has one train station and a lovely old church.",
+    "collocation": "a small town",
+    "cefr": "B1"
+  },
+  {
+    "word": "street",
+    "pos": "noun",
+    "ipa": "/striːt/",
+    "meaningVi": "con phố",
+    "definitionEn": "a road in a town or village with buildings on each side",
+    "example": "We walked along the busy street, looking for a place to eat.",
+    "collocation": "a narrow street",
+    "cefr": "B1"
+  },
+  {
+    "word": "park",
+    "pos": "noun",
+    "ipa": "/pɑːk/",
+    "meaningVi": "công viên",
+    "definitionEn": "a public area with grass, trees, and paths where people can relax",
+    "example": "Children love playing football together in the park after school.",
+    "collocation": "a public park",
+    "cefr": "B1"
+  },
+  {
+    "word": "river",
+    "pos": "noun",
+    "ipa": "/ˈrɪvə/",
+    "meaningVi": "con sông",
+    "definitionEn": "a large natural stream of water that flows into the sea or a lake",
+    "example": "The river flows slowly through green fields near our house.",
+    "collocation": "a wide river",
+    "cefr": "B1"
+  },
+  {
+    "word": "mountain",
+    "pos": "noun",
+    "ipa": "/ˈmaʊntən/",
+    "meaningVi": "ngọn núi",
+    "definitionEn": "a very high natural mass of rock rising above the land",
+    "example": "We climbed the mountain early in the morning to watch the sunrise.",
+    "collocation": "a high mountain",
+    "cefr": "B1"
+  },
+  {
+    "word": "beach",
+    "pos": "noun",
+    "ipa": "/biːtʃ/",
+    "meaningVi": "bãi biển",
+    "definitionEn": "an area of sand or pebbles beside the sea or a lake",
+    "example": "We spent the whole afternoon swimming and building sandcastles on the beach.",
+    "collocation": "a sandy beach",
+    "cefr": "B1"
+  },
+  {
+    "word": "forest",
+    "pos": "noun",
+    "ipa": "/ˈfɒrɪst/",
+    "meaningVi": "khu rừng",
+    "definitionEn": "a large area of land covered with trees and wild plants",
+    "example": "Deer often walk quietly through the forest at dawn.",
+    "collocation": "a dense forest",
+    "cefr": "B1"
+  },
+  {
+    "word": "lake",
+    "pos": "noun",
+    "ipa": "/leɪk/",
+    "meaningVi": "cái hồ",
+    "definitionEn": "a large area of fresh water surrounded by land",
+    "example": "We rowed a small boat across the lake on a warm Sunday.",
+    "collocation": "a calm lake",
+    "cefr": "B1"
+  },
+  {
+    "word": "garden",
+    "pos": "noun",
+    "ipa": "/ˈɡɑːdn/",
+    "meaningVi": "khu vườn",
+    "definitionEn": "a piece of land beside a house where plants and flowers grow",
+    "example": "My mother grows tomatoes and roses in our small garden.",
+    "collocation": "a vegetable garden",
+    "cefr": "B1"
+  },
+  {
+    "word": "hill",
+    "pos": "noun",
+    "ipa": "/hɪl/",
+    "meaningVi": "ngọn đồi",
+    "definitionEn": "a natural raised area of land, lower than a mountain",
+    "example": "The children ran up the grassy hill to fly their kites.",
+    "collocation": "a steep hill",
+    "cefr": "B1"
+  },
+  {
+    "word": "building",
+    "pos": "noun",
+    "ipa": "/ˈbɪldɪŋ/",
+    "meaningVi": "tòa nhà",
+    "definitionEn": "a structure with walls and a roof, such as a house or office",
+    "example": "The old building on the corner was converted into a public library.",
+    "collocation": "an office building",
+    "cefr": "B1"
+  },
+  {
+    "word": "market",
+    "pos": "noun",
+    "ipa": "/ˈmɑːkɪt/",
+    "meaningVi": "khu chợ",
+    "definitionEn": "a place where people buy and sell goods, often outdoors",
+    "example": "Every morning the market fills with farmers selling fresh vegetables.",
+    "collocation": "a flower market",
+    "cefr": "B1"
+  },
+  {
+    "word": "square",
+    "pos": "noun",
+    "ipa": "/skweə/",
+    "meaningVi": "quảng trường",
+    "definitionEn": "an open area in a town, often with buildings around it",
+    "example": "Tourists gather in the square to watch street performers in the evening.",
+    "collocation": "a town square",
+    "cefr": "B1"
+  },
+  {
+    "word": "bridge",
+    "pos": "noun",
+    "ipa": "/brɪdʒ/",
+    "meaningVi": "cây cầu",
+    "definitionEn": "a structure built over a river or road so people can cross",
+    "example": "The old stone bridge connects the two halves of the town.",
+    "collocation": "a suspension bridge",
+    "cefr": "B1"
+  },
+  {
+    "word": "island",
+    "pos": "noun",
+    "ipa": "/ˈaɪlənd/",
+    "meaningVi": "hòn đảo",
+    "definitionEn": "a piece of land completely surrounded by water",
+    "example": "We took a ferry to a small island off the coast.",
+    "collocation": "a tropical island",
+    "cefr": "B1"
+  },
+  {
+    "word": "field",
+    "pos": "noun",
+    "ipa": "/fiːld/",
+    "meaningVi": "cánh đồng",
+    "definitionEn": "an open area of land used for growing crops or keeping animals",
+    "example": "Cows grazed peacefully in the green field behind the farm.",
+    "collocation": "a rice field",
+    "cefr": "B1"
+  },
+  {
+    "word": "suburb",
+    "pos": "noun",
+    "ipa": "/ˈsʌbɜːb/",
+    "meaningVi": "vùng ngoại ô",
+    "definitionEn": "a residential area on the outskirts of a large city",
+    "example": "Many families prefer to live in a quiet suburb away from the noise.",
+    "collocation": "a leafy suburb",
+    "cefr": "B2"
+  },
+  {
+    "word": "countryside",
+    "pos": "noun",
+    "ipa": "/ˈkʌntrisaɪd/",
+    "meaningVi": "vùng nông thôn",
+    "definitionEn": "land outside towns and cities, with fields and natural scenery",
+    "example": "We enjoyed a peaceful walk through the countryside on Saturday morning.",
+    "collocation": "the English countryside",
+    "cefr": "B2"
+  },
+  {
+    "word": "coast",
+    "pos": "noun",
+    "ipa": "/kəʊst/",
+    "meaningVi": "bờ biển",
+    "definitionEn": "the land along the edge of the sea",
+    "example": "The fishing villages along the coast are famous for fresh seafood.",
+    "collocation": "the rugged coast",
+    "cefr": "B2"
+  },
+  {
+    "word": "neighbourhood",
+    "pos": "noun",
+    "ipa": "/ˈneɪbəhʊd/",
+    "meaningVi": "khu phố, khu dân cư",
+    "definitionEn": "a district of a town or city where people live",
+    "example": "Our neighbourhood is quiet at night, and everyone knows each other.",
+    "collocation": "a friendly neighbourhood",
+    "cefr": "B2"
+  },
+  {
+    "word": "district",
+    "pos": "noun",
+    "ipa": "/ˈdɪstrɪkt/",
+    "meaningVi": "quận, khu vực",
+    "definitionEn": "a particular area of a town, city, or country",
+    "example": "The old district is known for its narrow streets and traditional craft shops.",
+    "collocation": "a business district",
+    "cefr": "B2"
+  },
+  {
+    "word": "capital",
+    "pos": "noun",
+    "ipa": "/ˈkæpɪtl/",
+    "meaningVi": "thủ đô",
+    "definitionEn": "the city where a country's government is based",
+    "example": "Hanoi is the capital of Vietnam and a city full of history.",
+    "collocation": "a national capital",
+    "cefr": "B2"
+  },
+  {
+    "word": "valley",
+    "pos": "noun",
+    "ipa": "/ˈvæli/",
+    "meaningVi": "thung lũng",
+    "definitionEn": "a low area of land between hills or mountains, often with a river",
+    "example": "The farmers' houses are scattered across the green valley below.",
+    "collocation": "a fertile valley",
+    "cefr": "B2"
+  },
+  {
+    "word": "cliff",
+    "pos": "noun",
+    "ipa": "/klɪf/",
+    "meaningVi": "vách đá",
+    "definitionEn": "a high steep rock face, especially beside the sea",
+    "example": "Seabirds nest on the white cliffs overlooking the ocean.",
+    "collocation": "steep cliffs",
+    "cefr": "B2"
+  },
+  {
+    "word": "harbour",
+    "pos": "noun",
+    "ipa": "/ˈhɑːbə/",
+    "meaningVi": "bến cảng, cảng",
+    "definitionEn": "a sheltered area of water where ships can safely stop",
+    "example": "Dozens of fishing boats were anchored in the harbour at sunset.",
+    "collocation": "a busy harbour",
+    "cefr": "B2"
+  },
+  {
+    "word": "cottage",
+    "pos": "noun",
+    "ipa": "/ˈkɒtɪdʒ/",
+    "meaningVi": "nhà tranh, nhà nhỏ ở quê",
+    "definitionEn": "a small house, usually in the countryside",
+    "example": "They rented a cosy cottage in the hills for their summer holiday.",
+    "collocation": "a thatched cottage",
+    "cefr": "B2"
+  },
+  {
+    "word": "courtyard",
+    "pos": "noun",
+    "ipa": "/ˈkɔːtjɑːd/",
+    "meaningVi": "sân trong",
+    "definitionEn": "an open area surrounded by buildings or walls",
+    "example": "Children played games in the courtyard while the adults talked inside.",
+    "collocation": "a stone courtyard",
+    "cefr": "B2"
+  },
+  {
+    "word": "balcony",
+    "pos": "noun",
+    "ipa": "/ˈbælkəni/",
+    "meaningVi": "ban công",
+    "definitionEn": "a platform projecting from a building, with a railing",
+    "example": "She sat on the balcony every evening, watching the lights of the city.",
+    "collocation": "a small balcony",
+    "cefr": "B2"
+  },
+  {
+    "word": "alley",
+    "pos": "noun",
+    "ipa": "/ˈæli/",
+    "meaningVi": "ngõ hẻm",
+    "definitionEn": "a narrow passage between buildings",
+    "example": "The cat slipped into a dark alley behind the market.",
+    "collocation": "a narrow alley",
+    "cefr": "B2"
+  },
+  {
+    "word": "rooftop",
+    "pos": "noun",
+    "ipa": "/ˈruːftɒp/",
+    "meaningVi": "sân thượng, mái nhà",
+    "definitionEn": "the outer surface of the roof of a building",
+    "example": "We had dinner on the rooftop and watched the sunset over the river.",
+    "collocation": "a rooftop bar",
+    "cefr": "B2"
+  },
+  {
+    "word": "boulevard",
+    "pos": "noun",
+    "ipa": "/ˈbuːləvɑːd/",
+    "meaningVi": "đại lộ",
+    "definitionEn": "a wide city street, often lined with trees",
+    "example": "The boulevard was crowded with cafés and cyclists on Sunday afternoons.",
+    "collocation": "a wide boulevard",
+    "cefr": "B2"
+  },
+  {
+    "word": "settlement",
+    "pos": "noun",
+    "ipa": "/ˈsetlmənt/",
+    "meaningVi": "khu định cư, khu dân cư",
+    "definitionEn": "a small community of people newly established in a place",
+    "example": "The early settlement grew into a busy trading town within a century.",
+    "collocation": "a remote settlement",
+    "cefr": "B2"
+  },
+  {
+    "word": "terrace",
+    "pos": "noun",
+    "ipa": "/ˈterəs/",
+    "meaningVi": "sân hiên, bậc ruộng",
+    "definitionEn": "a flat raised area beside a house, or a row of houses",
+    "example": "We sipped coffee on the terrace while the sun slowly set.",
+    "collocation": "a rooftop terrace",
+    "cefr": "B2"
+  },
+  {
+    "word": "waterfront",
+    "pos": "noun",
+    "ipa": "/ˈwɔːtəfrʌnt/",
+    "meaningVi": "bờ sông, bờ biển",
+    "definitionEn": "the area of a town along the edge of a river or sea",
+    "example": "The waterfront is lined with restaurants and small wooden boats.",
+    "collocation": "a lively waterfront",
+    "cefr": "B2"
+  },
+  {
+    "word": "canyon",
+    "pos": "noun",
+    "ipa": "/ˈkænjən/",
+    "meaningVi": "hẻm núi",
+    "definitionEn": "a deep, narrow valley with steep sides, often formed by a river",
+    "example": "The river has carved a deep canyon through the red rock over millions of years.",
+    "collocation": "a deep canyon",
+    "cefr": "B2"
+  },
+  {
+    "word": "outskirts",
+    "pos": "noun",
+    "ipa": "/ˈaʊtskɜːts/",
+    "meaningVi": "ngoại ô, vùng rìa",
+    "definitionEn": "the outer edge or areas of a town or city",
+    "example": "The factory is located on the outskirts of the city, far from homes.",
+    "collocation": "on the outskirts",
+    "cefr": "B2"
+  },
+  {
+    "word": "desolate",
+    "pos": "adjective",
+    "ipa": "/ˈdesələt/",
+    "meaningVi": "hoang vắng, hoang tàn",
+    "definitionEn": "empty, bleak, and lonely, with no sign of life",
+    "example": "The desolate village stood silent after the factory had closed.",
+    "collocation": "a desolate landscape",
+    "cefr": "C1"
+  },
+  {
+    "word": "bleak",
+    "pos": "adjective",
+    "ipa": "/bliːk/",
+    "meaningVi": "ảm đạm, hoang vu",
+    "definitionEn": "cold, grey, and empty, offering little comfort or hope",
+    "example": "The bleak moorland stretched endlessly under a heavy grey sky.",
+    "collocation": "a bleak landscape",
+    "cefr": "C1"
+  },
+  {
+    "word": "sheltered",
+    "pos": "adjective",
+    "ipa": "/ˈʃeltəd/",
+    "meaningVi": "khuất gió, được che chở",
+    "definitionEn": "protected from wind, weather, or danger",
+    "example": "The sheltered bay was calm, making it ideal for small sailing boats.",
+    "collocation": "a sheltered harbour",
+    "cefr": "C1"
+  },
+  {
+    "word": "rugged",
+    "pos": "adjective",
+    "ipa": "/ˈrʌɡɪd/",
+    "meaningVi": "gồ ghề, hiểm trở",
+    "definitionEn": "having a rough, uneven surface and rocky terrain",
+    "example": "The rugged coastline is dangerous for ships in stormy weather.",
+    "collocation": "rugged terrain",
+    "cefr": "C1"
+  },
+  {
+    "word": "barren",
+    "pos": "adjective",
+    "ipa": "/ˈbærən/",
+    "meaningVi": "cằn cỗi, trơ trụi",
+    "definitionEn": "with few plants or trees; unable to support growth",
+    "example": "The barren hills were covered with dry rocks and little else.",
+    "collocation": "barren land",
+    "cefr": "C1"
+  },
+  {
+    "word": "fertile",
+    "pos": "adjective",
+    "ipa": "/ˈfɜːtaɪl/",
+    "meaningVi": "màu mỡ, phì nhiêu",
+    "definitionEn": "rich in nutrients and able to produce abundant crops",
+    "example": "The fertile plains along the river produce rice in every season.",
+    "collocation": "fertile soil",
+    "cefr": "C1"
+  },
+  {
+    "word": "dense",
+    "pos": "adjective",
+    "ipa": "/dens/",
+    "meaningVi": "rậm rạp, đông đúc",
+    "definitionEn": "closely packed together with many trees, plants, or people",
+    "example": "The explorers struggled through the dense jungle for three long days.",
+    "collocation": "dense jungle",
+    "cefr": "C1"
+  },
+  {
+    "word": "spacious",
+    "pos": "adjective",
+    "ipa": "/ˈspeɪʃəs/",
+    "meaningVi": "rộng rãi",
+    "definitionEn": "having plenty of room and open space",
+    "example": "The spacious hall was large enough to hold five hundred guests.",
+    "collocation": "a spacious room",
+    "cefr": "C1"
+  },
+  {
+    "word": "cramped",
+    "pos": "adjective",
+    "ipa": "/kræmpt/",
+    "meaningVi": "chật chội",
+    "definitionEn": "too small or crowded, leaving little room to move",
+    "example": "The cramped flat had only one window and a tiny kitchen.",
+    "collocation": "cramped conditions",
+    "cefr": "C1"
+  },
+  {
+    "word": "humid",
+    "pos": "adjective",
+    "ipa": "/ˈhjuːmɪd/",
+    "meaningVi": "ẩm ướt, oi bức",
+    "definitionEn": "containing a lot of moisture in the air, making it feel hot",
+    "example": "The humid summer air made the city feel heavy and uncomfortable.",
+    "collocation": "humid weather",
+    "cefr": "C1"
+  },
+  {
+    "word": "weathered",
+    "pos": "adjective",
+    "ipa": "/ˈweðəd/",
+    "meaningVi": "phong hóa, bạc màu",
+    "definitionEn": "worn or damaged by long exposure to weather",
+    "example": "The weathered wooden fence leaned gently in the strong winds.",
+    "collocation": "weathered stone",
+    "cefr": "C1"
+  },
+  {
+    "word": "cobbled",
+    "pos": "adjective",
+    "ipa": "/ˈkɒbld/",
+    "meaningVi": "lát đá cuội",
+    "definitionEn": "paved with rounded stones fitted closely together",
+    "example": "We strolled along the cobbled lane lined with old stone houses.",
+    "collocation": "cobbled street",
+    "cefr": "C1"
+  },
+  {
+    "word": "derelict",
+    "pos": "adjective",
+    "ipa": "/ˈderəlɪkt/",
+    "meaningVi": "hoang phế, bỏ hoang",
+    "definitionEn": "abandoned and falling into ruin",
+    "example": "The derelict factory had been empty for twenty years.",
+    "collocation": "a derelict building",
+    "cefr": "C1"
+  },
+  {
+    "word": "shabby",
+    "pos": "adjective",
+    "ipa": "/ˈʃæbi/",
+    "meaningVi": "tồi tàn, sờn cũ",
+    "definitionEn": "worn out and in poor condition, looking neglected",
+    "example": "The shabby hotel room had faded curtains and a broken chair.",
+    "collocation": "shabby hotel",
+    "cefr": "C1"
+  },
+  {
+    "word": "cluttered",
+    "pos": "adjective",
+    "ipa": "/ˈklʌtəd/",
+    "meaningVi": "bừa bộn, chất đống",
+    "definitionEn": "full of things scattered in an untidy way",
+    "example": "The cluttered market stalls blocked most of the narrow pavement.",
+    "collocation": "cluttered room",
+    "cefr": "C1"
+  },
+  {
+    "word": "pastoral",
+    "pos": "adjective",
+    "ipa": "/ˈpɑːstərəl/",
+    "meaningVi": "đồng quê, mục vụ",
+    "definitionEn": "relating to peaceful countryside life, with farms and grazing land",
+    "example": "The pastoral valley is full of sheep, cows, and quiet farm cottages.",
+    "collocation": "pastoral scene",
+    "cefr": "C1"
+  },
+  {
+    "word": "rustic",
+    "pos": "adjective",
+    "ipa": "/ˈrʌstɪk/",
+    "meaningVi": "mộc mạc, quê mùa",
+    "definitionEn": "simple and charming in the style of the countryside",
+    "example": "The restaurant served rustic dishes in a wooden hall decorated with lanterns.",
+    "collocation": "rustic charm",
+    "cefr": "C1"
+  },
+  {
+    "word": "bucolic",
+    "pos": "adjective",
+    "ipa": "/bjuːˈkɒlɪk/",
+    "meaningVi": "đồng quê thanh bình",
+    "definitionEn": "relating to the peaceful beauty of the countryside",
+    "example": "The bucolic village attracted artists seeking a quiet life among the fields.",
+    "collocation": "bucolic scene",
+    "cefr": "C1"
+  },
+  {
+    "word": "gleaming",
+    "pos": "adjective",
+    "ipa": "/ˈɡliːmɪŋ/",
+    "meaningVi": "lấp lánh, sáng bóng",
+    "definitionEn": "shining brightly, especially because of cleanliness",
+    "example": "The gleaming skyscrapers reflected the afternoon sun across the bay.",
+    "collocation": "gleaming towers",
+    "cefr": "C1"
+  },
+  {
+    "word": "drab",
+    "pos": "adjective",
+    "ipa": "/dræb/",
+    "meaningVi": "xám xịt, buồn tẻ",
+    "definitionEn": "dull, dreary, and lacking colour or interest",
+    "example": "The drab suburb had identical grey houses lining every quiet street.",
+    "collocation": "a drab neighbourhood",
+    "cefr": "C1"
+  },
+  {
+    "word": "sanctuary",
+    "pos": "noun",
+    "ipa": "/ˈsæŋktʃuəri/",
+    "meaningVi": "nơi trú ẩn, khu bảo tồn",
+    "definitionEn": "a place of refuge or protection, especially for wildlife",
+    "example": "The national park is a sanctuary for rare birds and endangered animals.",
+    "collocation": "a wildlife sanctuary",
+    "cefr": "C1"
+  },
+  {
+    "word": "enclave",
+    "pos": "noun",
+    "ipa": "/ˈenkleɪv/",
+    "meaningVi": "khu tự trị, vùng biệt lập",
+    "definitionEn": "a small area enclosed within a larger territory or city",
+    "example": "The old quarter forms a quiet enclave within the bustling modern city.",
+    "collocation": "a residential enclave",
+    "cefr": "C1"
+  },
+  {
+    "word": "hinterland",
+    "pos": "noun",
+    "ipa": "/ˈhɪntəlænd/",
+    "meaningVi": "vùng nội địa, vùng xa",
+    "definitionEn": "the land lying behind a coast or a city, away from it",
+    "example": "The fishing port depends on farms in the hinterland for food supplies.",
+    "collocation": "the rural hinterland",
+    "cefr": "C1"
+  },
+  {
+    "word": "precinct",
+    "pos": "noun",
+    "ipa": "/ˈpriːsɪŋkt/",
+    "meaningVi": "khu vực, khuôn viên",
+    "definitionEn": "a defined area around a building, such as a shopping or university zone",
+    "example": "Visitors must leave their cars outside the cathedral precinct.",
+    "collocation": "a pedestrian precinct",
+    "cefr": "C1"
+  },
+  {
+    "word": "thoroughfare",
+    "pos": "noun",
+    "ipa": "/ˈθʌrəfeə/",
+    "meaningVi": "đường huyết mạch",
+    "definitionEn": "a main road or street used by many people",
+    "example": "The busy thoroughfare was blocked by a huge street festival.",
+    "collocation": "a busy thoroughfare",
+    "cefr": "C1"
+  },
+  {
+    "word": "expanse",
+    "pos": "noun",
+    "ipa": "/ɪkˈspæns/",
+    "meaningVi": "vùng rộng lớn, dải rộng",
+    "definitionEn": "a wide and open area of land, water, or sky",
+    "example": "The vast expanse of desert stretched to the distant horizon.",
+    "collocation": "a vast expanse",
+    "cefr": "C1"
+  },
+  {
+    "word": "terrain",
+    "pos": "noun",
+    "ipa": "/təˈreɪn/",
+    "meaningVi": "địa hình",
+    "definitionEn": "the physical features and shape of a stretch of land",
+    "example": "The mountain terrain made the journey slow and physically demanding.",
+    "collocation": "rough terrain",
+    "cefr": "C1"
+  },
+  {
+    "word": "wilderness",
+    "pos": "noun",
+    "ipa": "/ˈwɪldənəs/",
+    "meaningVi": "vùng hoang dã",
+    "definitionEn": "a natural area that has not been changed or developed by humans",
+    "example": "Few people have ever ventured into the remote wilderness of northern Canada.",
+    "collocation": "a vast wilderness",
+    "cefr": "C1"
+  },
+  {
+    "word": "cityscape",
+    "pos": "noun",
+    "ipa": "/ˈsɪtiskeɪp/",
+    "meaningVi": "cảnh quan đô thị",
+    "definitionEn": "a view or picture of a city and its buildings",
+    "example": "The painter captured the misty cityscape at dawn from the high bridge.",
+    "collocation": "urban cityscape",
+    "cefr": "C1"
+  },
+  {
+    "word": "vista",
+    "pos": "noun",
+    "ipa": "/ˈvɪstə/",
+    "meaningVi": "tầm nhìn, cảnh đẹp",
+    "definitionEn": "a wide view of a landscape seen from a high place",
+    "example": "From the top of the tower we had a magnificent vista of the old town.",
+    "collocation": "a stunning vista",
+    "cefr": "C1"
+  },
+  {
+    "word": "tract",
+    "pos": "noun",
+    "ipa": "/trækt/",
+    "meaningVi": "dải đất, khu đất",
+    "definitionEn": "a large area of land or of forest",
+    "example": "The developers bought a large tract of farmland on the edge of town.",
+    "collocation": "a large tract",
+    "cefr": "C1"
+  },
+  {
+    "word": "quarter",
+    "pos": "noun",
+    "ipa": "/ˈkwɔːtə/",
+    "meaningVi": "khu phố, khu vực",
+    "definitionEn": "a district or section of a town with a particular character",
+    "example": "The artists' quarter is full of galleries, cafés, and small bookshops.",
+    "collocation": "the old quarter",
+    "cefr": "C1"
+  },
+  {
+    "word": "plateau",
+    "pos": "noun",
+    "ipa": "/ˈplætəʊ/",
+    "meaningVi": "cao nguyên",
+    "definitionEn": "a large area of high, flat land",
+    "example": "The village sits on a high plateau surrounded by pine forests.",
+    "collocation": "a high plateau",
+    "cefr": "C1"
+  },
+  {
+    "word": "habitat",
+    "pos": "noun",
+    "ipa": "/ˈhæbɪtæt/",
+    "meaningVi": "môi trường sống",
+    "definitionEn": "the natural home or environment of an animal or plant",
+    "example": "The wetland is an important habitat for migrating birds each winter.",
+    "collocation": "a natural habitat",
+    "cefr": "C1"
+  },
+  {
+    "word": "meander",
+    "pos": "verb",
+    "ipa": "/miˈændə/",
+    "meaningVi": "uốn lượn, đi dạo thong thả",
+    "definitionEn": "to wind slowly or to walk without a fixed route",
+    "example": "The river meanders through the valley before reaching the sea.",
+    "collocation": "meander through",
+    "cefr": "C1"
+  },
+  {
+    "word": "sprawl",
+    "pos": "verb",
+    "ipa": "/sprɔːl/",
+    "meaningVi": "lan rộng, trải dài",
+    "definitionEn": "to spread out in an untidy or uncontrolled way",
+    "example": "The city has continued to sprawl across the surrounding farmland for decades.",
+    "collocation": "sprawl across",
+    "cefr": "C1"
+  },
+  {
+    "word": "nestle",
+    "pos": "verb",
+    "ipa": "/ˈnesl/",
+    "meaningVi": "nép mình, nằm gọn",
+    "definitionEn": "to be positioned comfortably in a sheltered place",
+    "example": "The little church nestles among the vineyards on the hillside.",
+    "collocation": "nestle among",
+    "cefr": "C1"
+  },
+  {
+    "word": "loom",
+    "pos": "verb",
+    "ipa": "/luːm/",
+    "meaningVi": "hiện lên mờ ảo, sừng sững",
+    "definitionEn": "to appear as a large, unclear shape, often in a threatening way",
+    "example": "The dark mountains loomed above the small town at dusk.",
+    "collocation": "loom above",
+    "cefr": "C1"
+  },
+  {
+    "word": "bustle",
+    "pos": "noun",
+    "ipa": "/ˈbʌsl/",
+    "meaningVi": "sự nhộn nhịp, náo nhiệt",
+    "definitionEn": "busy and noisy movement of people and traffic",
+    "example": "The bustle of the morning market could be heard from far away.",
+    "collocation": "the bustle of",
+    "cefr": "C1"
+  },
+  {
+    "word": "hamlet",
+    "pos": "noun",
+    "ipa": "/ˈhæmlət/",
+    "meaningVi": "thôn xóm nhỏ",
+    "definitionEn": "a very small village, usually in the countryside",
+    "example": "The remote hamlet has only twelve houses and a tiny chapel.",
+    "collocation": "a remote hamlet",
+    "cefr": "C2"
+  },
+  {
+    "word": "conurbation",
+    "pos": "noun",
+    "ipa": "/ˌkɒnəˈbeɪʃn/",
+    "meaningVi": "đô thị liên hợp",
+    "definitionEn": "a large urban area formed by several towns merging together",
+    "example": "The conurbation stretches for more than fifty kilometres along the river.",
+    "collocation": "a sprawling conurbation",
+    "cefr": "C2"
+  },
+  {
+    "word": "environs",
+    "pos": "noun",
+    "ipa": "/ɪnˈvaɪrənz/",
+    "meaningVi": "vùng phụ cận, vùng lân cận",
+    "definitionEn": "the surrounding area of a town or place",
+    "example": "Tourists often stay in the environs of the city, where hotels are cheaper.",
+    "collocation": "the environs of",
+    "cefr": "C2"
+  },
+  {
+    "word": "fen",
+    "pos": "noun",
+    "ipa": "/fen/",
+    "meaningVi": "đầm lầy, vùng đồng lầy",
+    "definitionEn": "a low-lying area of marshy land",
+    "example": "Herons stand motionless in the cold water of the fen at dawn.",
+    "collocation": "a vast fen",
+    "cefr": "C2"
+  },
+  {
+    "word": "moor",
+    "pos": "noun",
+    "ipa": "/mɔː/",
+    "meaningVi": "đồng hoang, đồi cỏ",
+    "definitionEn": "an open area of high, uncultivated land covered with heather",
+    "example": "Walkers crossed the wild moor in the mist without seeing the path.",
+    "collocation": "open moor",
+    "cefr": "C2"
+  },
+  {
+    "word": "glen",
+    "pos": "noun",
+    "ipa": "/ɡlen/",
+    "meaningVi": "thung lũng hẹp",
+    "definitionEn": "a narrow valley, especially in Scotland or Ireland",
+    "example": "A small stream runs through the quiet glen beneath the mountains.",
+    "collocation": "a narrow glen",
+    "cefr": "C2"
+  },
+  {
+    "word": "dell",
+    "pos": "noun",
+    "ipa": "/del/",
+    "meaningVi": "khe lõm, thung lũng nhỏ",
+    "definitionEn": "a small hollow or valley among trees",
+    "example": "Deer rested in the shady dell beneath the old oak trees.",
+    "collocation": "a shady dell",
+    "cefr": "C2"
+  },
+  {
+    "word": "tarn",
+    "pos": "noun",
+    "ipa": "/tɑːn/",
+    "meaningVi": "hồ núi nhỏ",
+    "definitionEn": "a small mountain lake, usually formed by glacier action",
+    "example": "We camped beside a clear tarn surrounded by steep grey peaks.",
+    "collocation": "a mountain tarn",
+    "cefr": "C2"
+  },
+  {
+    "word": "crag",
+    "pos": "noun",
+    "ipa": "/kræɡ/",
+    "meaningVi": "mỏm đá, vách đá nhô",
+    "definitionEn": "a steep rugged rock rising from a hillside",
+    "example": "An eagle circled above the jagged crag as the storm approached.",
+    "collocation": "a jagged crag",
+    "cefr": "C2"
+  },
+  {
+    "word": "ravine",
+    "pos": "noun",
+    "ipa": "/rəˈviːn/",
+    "meaningVi": "khe núi, hẻm sâu",
+    "definitionEn": "a deep narrow valley cut by running water",
+    "example": "The narrow path descended steeply into the ravine below the waterfall.",
+    "collocation": "a deep ravine",
+    "cefr": "C2"
+  },
+  {
+    "word": "grotto",
+    "pos": "noun",
+    "ipa": "/ˈɡrɒtəʊ/",
+    "meaningVi": "hang động nhỏ",
+    "definitionEn": "a small natural cave, often decorated or used as a shrine",
+    "example": "Tourists explored the shimmering grotto lit by sunlight from the water.",
+    "collocation": "a hidden grotto",
+    "cefr": "C2"
+  },
+  {
+    "word": "belvedere",
+    "pos": "noun",
+    "ipa": "/ˈbelvɪdɪə/",
+    "meaningVi": "đài quan sát, vọng lâu",
+    "definitionEn": "a raised structure built to offer a fine view of the landscape",
+    "example": "From the belvedere we could see the entire valley and the distant lake.",
+    "collocation": "a stone belvedere",
+    "cefr": "C2"
+  },
+  {
+    "word": "colonnade",
+    "pos": "noun",
+    "ipa": "/ˌkɒləˈneɪd/",
+    "meaningVi": "dãy cột, hành lang cột",
+    "definitionEn": "a long row of evenly spaced columns supporting a roof",
+    "example": "Visitors walked slowly beneath the marble colonnade of the ancient temple.",
+    "collocation": "a marble colonnade",
+    "cefr": "C2"
+  },
+  {
+    "word": "esplanade",
+    "pos": "noun",
+    "ipa": "/ˌesplɑːˈneɪd/",
+    "meaningVi": "đường đi dạo ven biển",
+    "definitionEn": "a long open area for walking, usually beside the sea",
+    "example": "Families strolled along the esplanade as the sun set over the bay.",
+    "collocation": "a seaside esplanade",
+    "cefr": "C2"
+  },
+  {
+    "word": "promenade",
+    "pos": "noun",
+    "ipa": "/ˌprɒməˈnɑːd/",
+    "meaningVi": "đường đi dạo, lối dạo bộ",
+    "definitionEn": "a paved path along the seafront where people walk for pleasure",
+    "example": "Couples walked slowly along the promenade under the glowing street lamps.",
+    "collocation": "a seaside promenade",
+    "cefr": "C2"
+  },
+  {
+    "word": "thicket",
+    "pos": "noun",
+    "ipa": "/ˈθɪkɪt/",
+    "meaningVi": "bụi rậm",
+    "definitionEn": "a dense group of shrubs or small trees",
+    "example": "A rabbit darted out from the thicket and disappeared into the grass.",
+    "collocation": "a dense thicket",
+    "cefr": "C2"
+  },
+  {
+    "word": "copse",
+    "pos": "noun",
+    "ipa": "/kɒps/",
+    "meaningVi": "lùm cây, rừng nhỏ",
+    "definitionEn": "a small group of trees growing closely together",
+    "example": "We sheltered from the rain in a small copse at the edge of the field.",
+    "collocation": "a small copse",
+    "cefr": "C2"
+  },
+  {
+    "word": "glade",
+    "pos": "noun",
+    "ipa": "/ɡleɪd/",
+    "meaningVi": "khoảnh rừng thưa, bãi trống trong rừng",
+    "definitionEn": "an open space in a forest with grass and flowers",
+    "example": "Sunlight filtered through the leaves into a peaceful glade full of wildflowers.",
+    "collocation": "a sunlit glade",
+    "cefr": "C2"
+  },
+  {
+    "word": "scrubland",
+    "pos": "noun",
+    "ipa": "/ˈskrʌblənd/",
+    "meaningVi": "vùng cây bụi",
+    "definitionEn": "land covered with low bushes and stunted trees",
+    "example": "The scrubland looked barren, but it was home to many small animals.",
+    "collocation": "arid scrubland",
+    "cefr": "C2"
+  },
+  {
+    "word": "tundra",
+    "pos": "noun",
+    "ipa": "/ˈtʌndrə/",
+    "meaningVi": "lãnh nguyên, vùng đất đóng băng",
+    "definitionEn": "a treeless Arctic plain with frozen subsoil",
+    "example": "Reindeer migrate across the vast tundra in search of lichen and moss.",
+    "collocation": "the Arctic tundra",
+    "cefr": "C2"
+  },
+  {
+    "word": "steppe",
+    "pos": "noun",
+    "ipa": "/step/",
+    "meaningVi": "thảo nguyên",
+    "definitionEn": "a large flat grassland with few trees, especially in Eurasia",
+    "example": "Horsemen once rode across the endless steppe in search of pasture.",
+    "collocation": "the eastern steppe",
+    "cefr": "C2"
+  },
+  {
+    "word": "oasis",
+    "pos": "noun",
+    "ipa": "/əʊˈeɪsɪs/",
+    "meaningVi": "ốc đảo, nơi trú ẩn xanh mát",
+    "definitionEn": "a fertile place in a desert where water and plants are found",
+    "example": "Travellers rested under the palm trees at the desert oasis.",
+    "collocation": "a desert oasis",
+    "cefr": "C2"
+  },
+  {
+    "word": "mire",
+    "pos": "noun",
+    "ipa": "/ˈmaɪə/",
+    "meaningVi": "bùn lầy, vũng lầy",
+    "definitionEn": "soft, wet, deep mud or a difficult swampy place",
+    "example": "The cart sank deep into the mire after the heavy rain.",
+    "collocation": "a muddy mire",
+    "cefr": "C2"
+  },
+  {
+    "word": "archipelago",
+    "pos": "noun",
+    "ipa": "/ˌɑːkɪˈpeləɡəʊ/",
+    "meaningVi": "quần đảo",
+    "definitionEn": "a group of islands clustered together in a body of water",
+    "example": "The archipelago contains more than three hundred islands scattered across the sea.",
+    "collocation": "a remote archipelago",
+    "cefr": "C2"
+  },
+  {
+    "word": "quagmire",
+    "pos": "noun",
+    "ipa": "/ˈkwæɡmaɪə/",
+    "meaningVi": "vũng lầy, tình thế khó thoát",
+    "definitionEn": "soft, wet ground that sinks under the feet, or a difficult situation",
+    "example": "Heavy rain turned the farm track into a quagmire within a single day.",
+    "collocation": "a political quagmire",
+    "cefr": "C2"
+  },
+  {
+    "word": "cavern",
+    "pos": "noun",
+    "ipa": "/ˈkævən/",
+    "meaningVi": "hang động lớn",
+    "definitionEn": "a large cave underground",
+    "example": "Explorers discovered a vast cavern filled with glittering crystals.",
+    "collocation": "a vast cavern",
+    "cefr": "C2"
+  },
+  {
+    "word": "parapet",
+    "pos": "noun",
+    "ipa": "/ˈpærəpɪt/",
+    "meaningVi": "lan can, tường thấp",
+    "definitionEn": "a low protective wall along the edge of a roof, bridge, or balcony",
+    "example": "She leaned over the parapet to watch the boats passing below.",
+    "collocation": "a stone parapet",
+    "cefr": "C2"
+  },
+  {
+    "word": "atrium",
+    "pos": "noun",
+    "ipa": "/ˈeɪtriəm/",
+    "meaningVi": "đại sảnh có mái kính",
+    "definitionEn": "a large open central hall, often with a glass roof",
+    "example": "The hotel's atrium is filled with plants and a glass ceiling.",
+    "collocation": "a glass atrium",
+    "cefr": "C2"
+  },
+  {
+    "word": "nook",
+    "pos": "noun",
+    "ipa": "/nʊk/",
+    "meaningVi": "góc khuất, xó xỉnh",
+    "definitionEn": "a small, sheltered or secluded corner",
+    "example": "We found a cosy nook in the library where we could read quietly.",
+    "collocation": "a quiet nook",
+    "cefr": "C2"
+  },
+  {
+    "word": "fjord",
+    "pos": "noun",
+    "ipa": "/fjɔːd/",
+    "meaningVi": "vịnh hẹp sâu",
+    "definitionEn": "a long narrow inlet of the sea between steep cliffs",
+    "example": "The ferry glided slowly through the misty fjord towards the village.",
+    "collocation": "a deep fjord",
+    "cefr": "C2"
+  },
+  {
+    "word": "unkempt",
+    "pos": "adjective",
+    "ipa": "/ʌnˈkempt/",
+    "meaningVi": "bề bộn, lôi thôi",
+    "definitionEn": "untidy and not well cared for",
+    "example": "The unkempt garden was full of weeds and broken garden furniture.",
+    "collocation": "an unkempt lawn",
+    "cefr": "C2"
+  },
+  {
+    "word": "grimy",
+    "pos": "adjective",
+    "ipa": "/ˈɡraɪmi/",
+    "meaningVi": "bẩn thỉu, đầy bụi bẩn",
+    "definitionEn": "covered with dirt or grime",
+    "example": "The grimy streets near the station were filled with litter and oil stains.",
+    "collocation": "grimy streets",
+    "cefr": "C2"
+  },
+  {
+    "word": "squalid",
+    "pos": "adjective",
+    "ipa": "/ˈskwɒlɪd/",
+    "meaningVi": "bẩn thỉu, tồi tệ",
+    "definitionEn": "extremely dirty and unpleasant, usually because of poverty",
+    "example": "The squalid lodging house had no running water or proper heating.",
+    "collocation": "squalid conditions",
+    "cefr": "C2"
+  },
+  {
+    "word": "fetid",
+    "pos": "adjective",
+    "ipa": "/ˈfetɪd/",
+    "meaningVi": "hôi thối, ngột ngạt",
+    "definitionEn": "having a strong, unpleasant smell of decay",
+    "example": "The fetid water in the canal attracted swarms of flies in the summer.",
+    "collocation": "fetid air",
+    "cefr": "C2"
+  },
+  {
+    "word": "hushed",
+    "pos": "adjective",
+    "ipa": "/hʌʃt/",
+    "meaningVi": "yên ắng, khẽ khàng",
+    "definitionEn": "quiet, with the sound reduced to a whisper",
+    "example": "The hushed hall fell silent as the lights dimmed slowly.",
+    "collocation": "a hushed atmosphere",
+    "cefr": "C2"
+  },
+  {
+    "word": "resplendent",
+    "pos": "adjective",
+    "ipa": "/rɪˈsplendənt/",
+    "meaningVi": "lộng lẫy, rực rỡ",
+    "definitionEn": "attractive and impressive because of bright colours or decoration",
+    "example": "The resplendent palace glowed with gold and silk under the chandeliers.",
+    "collocation": "resplendent in gold",
+    "cefr": "C2"
+  },
+  {
+    "word": "sepulchral",
+    "pos": "adjective",
+    "ipa": "/səˈpʌlkrəl/",
+    "meaningVi": "u ám, như mồ mả",
+    "definitionEn": "dark, silent, and gloomy, like a tomb",
+    "example": "The sepulchral cathedral was cold, dark, and almost silent at midnight.",
+    "collocation": "a sepulchral silence",
+    "cefr": "C2"
+  },
+  {
+    "word": "pallid",
+    "pos": "adjective",
+    "ipa": "/ˈpælɪd/",
+    "meaningVi": "xanh xao, nhợt nhạt",
+    "definitionEn": "pale and lacking colour or vitality",
+    "example": "The pallid moon hung over the deserted harbour town.",
+    "collocation": "pallid light",
+    "cefr": "C2"
+  },
+  {
+    "word": "gilded",
+    "pos": "adjective",
+    "ipa": "/ˈɡɪldɪd/",
+    "meaningVi": "mạ vàng, dát vàng",
+    "definitionEn": "covered with a thin layer of gold",
+    "example": "The gilded ceilings of the palace shone brightly in the candlelight.",
+    "collocation": "gilded ceilings",
+    "cefr": "C2"
+  },
+  {
+    "word": "dank",
+    "pos": "adjective",
+    "ipa": "/dæŋk/",
+    "meaningVi": "ẩm thấp, ẩm mốc",
+    "definitionEn": "unpleasantly damp, cold, and musty",
+    "example": "The dank cellar smelled of mould and old wine barrels.",
+    "collocation": "dank cellar",
+    "cefr": "C2"
+  },
+  {
+    "word": "sylvan",
+    "pos": "adjective",
+    "ipa": "/ˈsɪlvən/",
+    "meaningVi": "thuộc rừng, cây xanh",
+    "definitionEn": "relating to woods or trees, or resembling a forest",
+    "example": "We wandered through the sylvan glade, listening to birds in the branches.",
+    "collocation": "sylvan setting",
+    "cefr": "C2"
+  },
+  {
+    "word": "halcyon",
+    "pos": "adjective",
+    "ipa": "/ˈhælsiən/",
+    "meaningVi": "êm đềm, thanh bình",
+    "definitionEn": "peaceful and happy, often recalling a golden past",
+    "example": "They remembered the halcyon summers they had spent by the lake.",
+    "collocation": "halcyon days",
+    "cefr": "C2"
+  },
+  {
+    "word": "teeming",
+    "pos": "adjective",
+    "ipa": "/ˈtiːmɪŋ/",
+    "meaningVi": "đông nghịt, tràn ngập",
+    "definitionEn": "full of people, animals, or things moving about",
+    "example": "The teeming market was full of shoppers, hawkers, and noisy traders.",
+    "collocation": "teeming streets",
+    "cefr": "C2"
+  }
+]

@@ -1,0 +1,1181 @@
+[
+  {
+    "word": "Emigration",
+    "synonyms": [
+      "out-migration",
+      "relocation abroad"
+    ],
+    "antonyms": [
+      "immigration"
+    ]
+  },
+  {
+    "word": "Immigration",
+    "synonyms": [
+      "inward migration"
+    ],
+    "antonyms": [
+      "emigration"
+    ]
+  },
+  {
+    "word": "import",
+    "synonyms": [
+      "imported good",
+      "foreign product"
+    ],
+    "antonyms": [
+      "export"
+    ]
+  },
+  {
+    "word": "export",
+    "synonyms": [
+      "outgoing shipment",
+      "outbound trade"
+    ],
+    "antonyms": [
+      "import"
+    ]
+  },
+  {
+    "word": "trade",
+    "synonyms": [
+      "commerce",
+      "exchange of goods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "abroad",
+    "synonyms": [
+      "overseas",
+      "in foreign countries"
+    ],
+    "antonyms": [
+      "at home"
+    ]
+  },
+  {
+    "word": "foreign",
+    "synonyms": [
+      "external",
+      "non-native"
+    ],
+    "antonyms": [
+      "domestic",
+      "native"
+    ]
+  },
+  {
+    "word": "overseas",
+    "synonyms": [
+      "abroad",
+      "internationally"
+    ],
+    "antonyms": [
+      "domestically",
+      "at home"
+    ]
+  },
+  {
+    "word": "global",
+    "synonyms": [
+      "worldwide",
+      "international",
+      "universal"
+    ],
+    "antonyms": [
+      "local",
+      "regional"
+    ]
+  },
+  {
+    "word": "culture",
+    "synonyms": [
+      "civilisation",
+      "customs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "passport",
+    "synonyms": [
+      "travel document",
+      "identity document"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "visa",
+    "synonyms": [
+      "entry permit",
+      "travel authorisation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tourism",
+    "synonyms": [
+      "travel industry",
+      "sightseeing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "worldwide",
+    "synonyms": [
+      "globally",
+      "internationally",
+      "universally"
+    ],
+    "antonyms": [
+      "locally",
+      "regionally"
+    ]
+  },
+  {
+    "word": "brand",
+    "synonyms": [
+      "trademark",
+      "label"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "network",
+    "synonyms": [
+      "web",
+      "system",
+      "circle of contacts"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "product",
+    "synonyms": [
+      "goods",
+      "commodity",
+      "merchandise"
+    ],
+    "antonyms": [
+      "service"
+    ]
+  },
+  {
+    "word": "border",
+    "synonyms": [
+      "frontier",
+      "boundary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sanction",
+    "synonyms": [
+      "penalty",
+      "restriction",
+      "trade ban"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embargo",
+    "synonyms": [
+      "ban",
+      "prohibition",
+      "blockade"
+    ],
+    "antonyms": [
+      "free trade"
+    ]
+  },
+  {
+    "word": "quota",
+    "synonyms": [
+      "limit",
+      "ceiling",
+      "allocation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "protectionism",
+    "synonyms": [
+      "economic nationalism",
+      "trade barriers"
+    ],
+    "antonyms": [
+      "free trade"
+    ]
+  },
+  {
+    "word": "treaty",
+    "synonyms": [
+      "agreement",
+      "pact"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alliance",
+    "synonyms": [
+      "coalition",
+      "union"
+    ],
+    "antonyms": [
+      "rivalry"
+    ]
+  },
+  {
+    "word": "diplomacy",
+    "synonyms": [
+      "statecraft",
+      "negotiation"
+    ],
+    "antonyms": [
+      "hostility"
+    ]
+  },
+  {
+    "word": "ambassador",
+    "synonyms": [
+      "envoy",
+      "emissary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "heritage",
+    "synonyms": [
+      "legacy",
+      "inheritance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "assimilation",
+    "synonyms": [
+      "integration",
+      "absorption",
+      "acculturation"
+    ],
+    "antonyms": [
+      "segregation"
+    ]
+  },
+  {
+    "word": "expansion",
+    "synonyms": [
+      "growth",
+      "extension",
+      "enlargement"
+    ],
+    "antonyms": [
+      "contraction"
+    ]
+  },
+  {
+    "word": "stereotype",
+    "synonyms": [
+      "generalisation",
+      "preconception"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prejudice",
+    "synonyms": [
+      "bias",
+      "bigotry"
+    ],
+    "antonyms": [
+      "tolerance"
+    ]
+  },
+  {
+    "word": "identity",
+    "synonyms": [
+      "individuality",
+      "character"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tradition",
+    "synonyms": [
+      "custom",
+      "convention",
+      "practice"
+    ],
+    "antonyms": [
+      "innovation"
+    ]
+  },
+  {
+    "word": "boundary",
+    "synonyms": [
+      "limit",
+      "dividing line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "partnership",
+    "synonyms": [
+      "collaboration",
+      "association"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "delegation",
+    "synonyms": [
+      "mission",
+      "deputation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exchange",
+    "synonyms": [
+      "swap",
+      "interchange"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ethnic",
+    "synonyms": [
+      "cultural",
+      "tribal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indigenous",
+    "synonyms": [
+      "native",
+      "aboriginal"
+    ],
+    "antonyms": [
+      "foreign"
+    ]
+  },
+  {
+    "word": "nationalism",
+    "synonyms": [
+      "patriotism",
+      "national pride"
+    ],
+    "antonyms": [
+      "internationalism"
+    ]
+  },
+  {
+    "word": "xenophobia",
+    "synonyms": [
+      "hostility to foreigners",
+      "bigotry"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "hybridity",
+    "synonyms": [
+      "fusion",
+      "mixture"
+    ],
+    "antonyms": [
+      "purity"
+    ]
+  },
+  {
+    "word": "ethnocentrism",
+    "synonyms": [
+      "chauvinism",
+      "bigotry"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "transcend",
+    "synonyms": [
+      "surpass",
+      "exceed",
+      "rise above"
+    ],
+    "antonyms": [
+      "succumb to"
+    ]
+  },
+  {
+    "word": "proliferation",
+    "synonyms": [
+      "spread",
+      "multiplication",
+      "surge"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "word": "commodification",
+    "synonyms": [
+      "marketisation",
+      "monetisation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hybrid",
+    "synonyms": [
+      "mixed",
+      "blended",
+      "composite"
+    ],
+    "antonyms": [
+      "pure"
+    ]
+  },
+  {
+    "word": "ubiquitous",
+    "synonyms": [
+      "omnipresent",
+      "widespread"
+    ],
+    "antonyms": [
+      "rare",
+      "scarce"
+    ]
+  },
+  {
+    "word": "entrenched",
+    "synonyms": [
+      "ingrained",
+      "deep-rooted"
+    ],
+    "antonyms": [
+      "transient"
+    ]
+  },
+  {
+    "word": "deregulation",
+    "synonyms": [
+      "liberalisation",
+      "decontrol"
+    ],
+    "antonyms": [
+      "regulation"
+    ]
+  },
+  {
+    "word": "insular",
+    "synonyms": [
+      "isolated",
+      "narrow-minded"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "word": "parochial",
+    "synonyms": [
+      "provincial",
+      "narrow"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "word": "marginalise",
+    "synonyms": [
+      "exclude",
+      "sideline",
+      "alienate"
+    ],
+    "antonyms": [
+      "integrate",
+      "include"
+    ]
+  },
+  {
+    "word": "disenfranchise",
+    "synonyms": [
+      "disempower",
+      "deprive"
+    ],
+    "antonyms": [
+      "enfranchise"
+    ]
+  },
+  {
+    "word": "precarious",
+    "synonyms": [
+      "unstable",
+      "insecure",
+      "uncertain"
+    ],
+    "antonyms": [
+      "secure"
+    ]
+  },
+  {
+    "word": "nomadic",
+    "synonyms": [
+      "itinerant",
+      "migratory"
+    ],
+    "antonyms": [
+      "sedentary"
+    ]
+  },
+  {
+    "word": "sovereignty",
+    "synonyms": [
+      "independence",
+      "autonomy"
+    ],
+    "antonyms": [
+      "dependence"
+    ]
+  },
+  {
+    "word": "jurisdiction",
+    "synonyms": [
+      "authority",
+      "remit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ratify",
+    "synonyms": [
+      "approve",
+      "endorse",
+      "confirm"
+    ],
+    "antonyms": [
+      "reject",
+      "repudiate"
+    ]
+  },
+  {
+    "word": "geopolitical",
+    "synonyms": [
+      "political",
+      "strategic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reciprocity",
+    "synonyms": [
+      "mutuality",
+      "give-and-take"
+    ],
+    "antonyms": [
+      "unilateralism"
+    ]
+  },
+  {
+    "word": "homogeneous",
+    "synonyms": [
+      "uniform",
+      "consistent",
+      "similar"
+    ],
+    "antonyms": [
+      "heterogeneous",
+      "diverse"
+    ]
+  },
+  {
+    "word": "vernacular",
+    "synonyms": [
+      "local",
+      "native"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "multifaceted",
+    "synonyms": [
+      "complex",
+      "many-sided"
+    ],
+    "antonyms": [
+      "one-dimensional"
+    ]
+  },
+  {
+    "word": "inexorable",
+    "synonyms": [
+      "relentless",
+      "unstoppable",
+      "inevitable"
+    ],
+    "antonyms": [
+      "avoidable"
+    ]
+  },
+  {
+    "word": "contentious",
+    "synonyms": [
+      "controversial",
+      "disputed",
+      "divisive"
+    ],
+    "antonyms": [
+      "uncontroversial"
+    ]
+  },
+  {
+    "word": "salient",
+    "synonyms": [
+      "prominent",
+      "notable",
+      "key"
+    ],
+    "antonyms": [
+      "minor"
+    ]
+  },
+  {
+    "word": "pervasive",
+    "synonyms": [
+      "widespread",
+      "prevalent",
+      "rife"
+    ],
+    "antonyms": [
+      "localised"
+    ]
+  },
+  {
+    "word": "burgeoning",
+    "synonyms": [
+      "flourishing",
+      "booming",
+      "expanding"
+    ],
+    "antonyms": [
+      "declining"
+    ]
+  },
+  {
+    "word": "arbitrary",
+    "synonyms": [
+      "random",
+      "capricious"
+    ],
+    "antonyms": [
+      "systematic"
+    ]
+  },
+  {
+    "word": "ethos",
+    "synonyms": [
+      "ideology",
+      "spirit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paradigm",
+    "synonyms": [
+      "model",
+      "framework"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accord",
+    "synonyms": [
+      "agreement",
+      "pact"
+    ],
+    "antonyms": [
+      "discord"
+    ]
+  },
+  {
+    "word": "vulnerable",
+    "synonyms": [
+      "exposed",
+      "susceptible"
+    ],
+    "antonyms": [
+      "secure"
+    ]
+  },
+  {
+    "word": "resilient",
+    "synonyms": [
+      "robust",
+      "tough"
+    ],
+    "antonyms": [
+      "fragile"
+    ]
+  },
+  {
+    "word": "polarise",
+    "synonyms": [
+      "divide",
+      "split",
+      "separate"
+    ],
+    "antonyms": [
+      "unite"
+    ]
+  },
+  {
+    "word": "stratify",
+    "synonyms": [
+      "rank",
+      "grade",
+      "classify"
+    ],
+    "antonyms": [
+      "equalise"
+    ]
+  },
+  {
+    "word": "obsolete",
+    "synonyms": [
+      "outdated",
+      "dated",
+      "antiquated"
+    ],
+    "antonyms": [
+      "current",
+      "up-to-date"
+    ]
+  },
+  {
+    "word": "kaleidoscopic",
+    "synonyms": [
+      "varied",
+      "colourful",
+      "diverse"
+    ],
+    "antonyms": [
+      "monotonous"
+    ]
+  },
+  {
+    "word": "heterogeneity",
+    "synonyms": [
+      "diversity",
+      "variety",
+      "mixture"
+    ],
+    "antonyms": [
+      "homogeneity"
+    ]
+  },
+  {
+    "word": "anglicisation",
+    "synonyms": [
+      "adopting English ways"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "americanisation",
+    "synonyms": [
+      "adopting American ways"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "creolisation",
+    "synonyms": [
+      "cultural blending",
+      "hybridisation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "polyglot",
+    "synonyms": [
+      "multilingual speaker",
+      "linguist"
+    ],
+    "antonyms": [
+      "monolingual speaker"
+    ]
+  },
+  {
+    "word": "exoticism",
+    "synonyms": [
+      "otherness",
+      "strangeness"
+    ],
+    "antonyms": [
+      "familiarity"
+    ]
+  },
+  {
+    "word": "provincialism",
+    "synonyms": [
+      "parochialism",
+      "narrow-mindedness"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "chauvinism",
+    "synonyms": [
+      "jingoism",
+      "bigotry"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "zeitgeist",
+    "synonyms": [
+      "public mood",
+      "cultural spirit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vicissitudes",
+    "synonyms": [
+      "ups and downs",
+      "setbacks"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "juxtaposition",
+    "synonyms": [
+      "contrast",
+      "pairing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lacuna",
+    "synonyms": [
+      "gap",
+      "omission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ineluctable",
+    "synonyms": [
+      "inevitable",
+      "unavoidable"
+    ],
+    "antonyms": [
+      "avoidable"
+    ]
+  },
+  {
+    "word": "insidious",
+    "synonyms": [
+      "subtle",
+      "stealthy"
+    ],
+    "antonyms": [
+      "overt"
+    ]
+  },
+  {
+    "word": "nebulous",
+    "synonyms": [
+      "vague",
+      "hazy"
+    ],
+    "antonyms": [
+      "precise"
+    ]
+  },
+  {
+    "word": "quintessential",
+    "synonyms": [
+      "archetypal",
+      "typical"
+    ],
+    "antonyms": [
+      "atypical"
+    ]
+  },
+  {
+    "word": "ostracise",
+    "synonyms": [
+      "shun",
+      "exclude"
+    ],
+    "antonyms": [
+      "embrace"
+    ]
+  },
+  {
+    "word": "eschew",
+    "synonyms": [
+      "avoid",
+      "abstain from"
+    ],
+    "antonyms": [
+      "embrace"
+    ]
+  },
+  {
+    "word": "evanescent",
+    "synonyms": [
+      "fleeting",
+      "transitory"
+    ],
+    "antonyms": [
+      "enduring"
+    ]
+  },
+  {
+    "word": "conflate",
+    "synonyms": [
+      "confuse",
+      "merge"
+    ],
+    "antonyms": [
+      "distinguish"
+    ]
+  },
+  {
+    "word": "acquiesce",
+    "synonyms": [
+      "consent",
+      "comply"
+    ],
+    "antonyms": [
+      "resist"
+    ]
+  },
+  {
+    "word": "labyrinthine",
+    "synonyms": [
+      "convoluted",
+      "intricate"
+    ],
+    "antonyms": [
+      "straightforward"
+    ]
+  },
+  {
+    "word": "perfunctory",
+    "synonyms": [
+      "cursory",
+      "superficial"
+    ],
+    "antonyms": [
+      "thorough"
+    ]
+  },
+  {
+    "word": "paradoxical",
+    "synonyms": [
+      "contradictory",
+      "ironic"
+    ],
+    "antonyms": [
+      "consistent"
+    ]
+  },
+  {
+    "word": "heterodox",
+    "synonyms": [
+      "unorthodox",
+      "heretical"
+    ],
+    "antonyms": [
+      "orthodox"
+    ]
+  },
+  {
+    "word": "bellicose",
+    "synonyms": [
+      "belligerent",
+      "combative"
+    ],
+    "antonyms": [
+      "peaceable"
+    ]
+  },
+  {
+    "word": "sophistry",
+    "synonyms": [
+      "fallacy",
+      "casuistry"
+    ],
+    "antonyms": [
+      "sound reasoning"
+    ]
+  },
+  {
+    "word": "anachronistic",
+    "synonyms": [
+      "outdated",
+      "archaic"
+    ],
+    "antonyms": [
+      "contemporary"
+    ]
+  },
+  {
+    "word": "syncretism",
+    "synonyms": [
+      "fusion",
+      "blending"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "extraterritorial",
+    "synonyms": [
+      "cross-border",
+      "transnational"
+    ],
+    "antonyms": [
+      "domestic"
+    ]
+  },
+  {
+    "word": "insularity",
+    "synonyms": [
+      "isolation",
+      "narrow-mindedness"
+    ],
+    "antonyms": [
+      "openness"
+    ]
+  },
+  {
+    "word": "idiosyncrasy",
+    "synonyms": [
+      "quirk",
+      "peculiarity"
+    ],
+    "antonyms": [
+      "uniformity"
+    ]
+  },
+  {
+    "word": "amalgamation",
+    "synonyms": [
+      "merger",
+      "consolidation"
+    ],
+    "antonyms": [
+      "division"
+    ]
+  },
+  {
+    "word": "ethnography",
+    "synonyms": [
+      "anthropology",
+      "cultural study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obfuscate",
+    "synonyms": [
+      "obscure",
+      "cloud"
+    ],
+    "antonyms": [
+      "clarify"
+    ]
+  },
+  {
+    "word": "pastiche",
+    "synonyms": [
+      "imitation",
+      "medley"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vestige",
+    "synonyms": [
+      "trace",
+      "remnant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ephemeral",
+    "synonyms": [
+      "transient",
+      "short-lived"
+    ],
+    "antonyms": [
+      "permanent"
+    ]
+  },
+  {
+    "word": "vanguard",
+    "synonyms": [
+      "forefront",
+      "spearhead"
+    ],
+    "antonyms": [
+      "rearguard"
+    ]
+  },
+  {
+    "word": "subversion",
+    "synonyms": [
+      "sabotage",
+      "undermining"
+    ],
+    "antonyms": [
+      "loyalty"
+    ]
+  },
+  {
+    "word": "tenacity",
+    "synonyms": [
+      "perseverance",
+      "persistence"
+    ],
+    "antonyms": [
+      "apathy"
+    ]
+  },
+  {
+    "word": "unprecedented",
+    "synonyms": [
+      "unparalleled",
+      "unheard-of"
+    ],
+    "antonyms": [
+      "commonplace"
+    ]
+  },
+  {
+    "word": "amorphous",
+    "synonyms": [
+      "shapeless",
+      "formless"
+    ],
+    "antonyms": [
+      "structured"
+    ]
+  }
+]

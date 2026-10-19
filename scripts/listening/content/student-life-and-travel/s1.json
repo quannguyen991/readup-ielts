@@ -1,0 +1,122 @@
+{
+  "n": 1,
+  "title": "Student flat enquiry",
+  "context": "A phone call between a new postgraduate student and a housing officer at a university accommodation office.",
+  "transcript": [
+    {
+      "speaker": "Officer",
+      "text": "Good morning, Riverside Student Housing. How can I help you?"
+    },
+    {
+      "speaker": "Linh",
+      "text": "Hello. I'm starting a master's course in September, and I'm looking for a flat close to the campus, because I'll be studying in the library late most evenings. My name is Linh Tran. That's T-R-A-N."
+    },
+    {
+      "speaker": "Officer",
+      "text": "Thanks, Linh. Let me note that down. What's the most you can pay each month?"
+    },
+    {
+      "speaker": "Linh",
+      "text": "I'd like to keep it at six hundred and fifty pounds a month at most. It would also be good if the bills were included."
+    },
+    {
+      "speaker": "Officer",
+      "text": "We have a few options in that range. Most of our flats include heating and internet in the rent, so there are no surprise bills at the end of the month."
+    },
+    {
+      "speaker": "Linh",
+      "text": "That sounds good. When can I move in?"
+    },
+    {
+      "speaker": "Officer",
+      "text": "All our flats are free from the first of September. If you arrive earlier, we can arrange that, but you'd pay for the extra days."
+    },
+    {
+      "speaker": "Linh",
+      "text": "The first of September is fine. I don't have any furniture yet, so I'd like a flat that comes furnished."
+    },
+    {
+      "speaker": "Officer",
+      "text": "All three of the flats I have in mind are furnished, with a desk, a bed and a wardrobe. Let me tell you about them. Oak House is two minutes from the bus stop, which is useful if you don't have a car. Mill Court is next to a supermarket, so you can buy groceries on the way home. And Garden Lodge is right beside the riverside park, which is lovely in the evenings."
+    },
+    {
+      "speaker": "Linh",
+      "text": "Oak House sounds convenient. Could I see it?"
+    },
+    {
+      "speaker": "Officer",
+      "text": "Of course. I've booked you a viewing on Thursday morning at ten. We'll meet at the main reception, so please bring a copy of your acceptance letter from the university."
+    },
+    {
+      "speaker": "Linh",
+      "text": "Perfect. I'll be there. Thank you for your help."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 1-5",
+      "instruction": "Complete the form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Flat enquiry form",
+        "Surname: {{1}}",
+        "Maximum monthly rent: £{{2}}",
+        "Available from: {{3}}",
+        "Bills included: {{4}} and internet",
+        "Viewing: {{5}} morning at 10 a.m."
+      ],
+      "questions": [
+        { "n": 1, "answer": "Tran" },
+        { "n": 2, "answer": "650", "accept": ["six hundred and fifty"] },
+        { "n": 3, "answer": "1 September", "accept": ["1st September", "first of September", "September 1st"] },
+        { "n": 4, "answer": "heating" },
+        { "n": 5, "answer": "Thursday" }
+      ]
+    },
+    {
+      "type": "mcq-one",
+      "title": "Questions 6-7",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 6,
+          "prompt": "Why does Linh want a flat near the campus?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "She does not like using public transport." },
+            { "key": "B", "text": "She plans to study late in the library." },
+            { "key": "C", "text": "She wants to share a flat with friends." }
+          ]
+        },
+        {
+          "n": 7,
+          "prompt": "What does Linh say about furniture?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "She has already bought some furniture." },
+            { "key": "B", "text": "She needs a flat that comes furnished." },
+            { "key": "C", "text": "She would like a flat with a garden." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "title": "Questions 8-10",
+      "instruction": "Which feature is each flat near? Choose the correct letter, A-E, for Questions 8-10.",
+      "options": [
+        { "key": "A", "text": "a gym" },
+        { "key": "B", "text": "a supermarket" },
+        { "key": "C", "text": "a bus stop" },
+        { "key": "D", "text": "a laundrette" },
+        { "key": "E", "text": "a riverside park" }
+      ],
+      "questions": [
+        { "n": 8, "prompt": "Oak House", "answer": "C" },
+        { "n": 9, "prompt": "Mill Court", "answer": "B" },
+        { "n": 10, "prompt": "Garden Lodge", "answer": "E" }
+      ]
+    }
+  ]
+}

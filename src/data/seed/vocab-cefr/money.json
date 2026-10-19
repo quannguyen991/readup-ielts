@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "spend",
+    "pos": "verb",
+    "ipa": "/spend/",
+    "meaningVi": "tiêu (tiền)",
+    "definitionEn": "To use money to buy things or pay for services.",
+    "example": "I try not to spend too much money on clothes each month.",
+    "collocation": "spend money on",
+    "cefr": "B1"
+  },
+  {
+    "word": "price",
+    "pos": "noun",
+    "ipa": "/praɪs/",
+    "meaningVi": "giá",
+    "definitionEn": "The amount of money needed to buy something.",
+    "example": "The price of petrol has risen sharply over the past year.",
+    "collocation": "reasonable price",
+    "cefr": "B1"
+  },
+  {
+    "word": "cash",
+    "pos": "noun",
+    "ipa": "/kæʃ/",
+    "meaningVi": "tiền mặt",
+    "definitionEn": "Money in the form of coins or notes, not cards or cheques.",
+    "example": "Many small shops still prefer to be paid in cash.",
+    "collocation": "pay in cash",
+    "cefr": "B1"
+  },
+  {
+    "word": "salary",
+    "pos": "noun",
+    "ipa": "/ˈsæləri/",
+    "meaningVi": "lương tháng",
+    "definitionEn": "The fixed amount of money someone receives each month for their job.",
+    "example": "She accepted the job mainly because of the generous salary.",
+    "collocation": "annual salary",
+    "cefr": "B1"
+  },
+  {
+    "word": "earn",
+    "pos": "verb",
+    "ipa": "/ɜːn/",
+    "meaningVi": "kiếm được",
+    "definitionEn": "To receive money in return for work or services.",
+    "example": "He earns a good living by teaching English online.",
+    "collocation": "earn a living",
+    "cefr": "B1"
+  },
+  {
+    "word": "receipt",
+    "pos": "noun",
+    "ipa": "/rɪˈsiːt/",
+    "meaningVi": "hóa đơn, biên lai",
+    "definitionEn": "A piece of paper showing that you have paid for something.",
+    "example": "Always keep the receipt in case you need to return the item.",
+    "collocation": "keep the receipt",
+    "cefr": "B1"
+  },
+  {
+    "word": "bargain",
+    "pos": "noun",
+    "ipa": "/ˈbɑːɡən/",
+    "meaningVi": "món hời",
+    "definitionEn": "Something bought for much less than its usual price.",
+    "example": "We found a real bargain at the sale on Saturday morning.",
+    "collocation": "real bargain",
+    "cefr": "B1"
+  },
+  {
+    "word": "discount",
+    "pos": "noun",
+    "ipa": "/ˈdɪskaʊnt/",
+    "meaningVi": "giảm giá",
+    "definitionEn": "A reduction in the usual price of something.",
+    "example": "Students get a ten percent discount on all train tickets.",
+    "collocation": "offer a discount",
+    "cefr": "B1"
+  },
+  {
+    "word": "expensive",
+    "pos": "adjective",
+    "ipa": "/ɪkˈspensɪv/",
+    "meaningVi": "đắt tiền",
+    "definitionEn": "Costing a lot of money; having a high price.",
+    "example": "Living in the city centre is far more expensive than in the suburbs.",
+    "collocation": "very expensive",
+    "cefr": "B1"
+  },
+  {
+    "word": "afford",
+    "pos": "verb",
+    "ipa": "/əˈfɔːd/",
+    "meaningVi": "đủ tiền chi trả",
+    "definitionEn": "To have enough money to pay for something.",
+    "example": "Many young families cannot afford to buy a house nowadays.",
+    "collocation": "afford to buy",
+    "cefr": "B1"
+  },
+  {
+    "word": "save up",
+    "pos": "phrasal verb",
+    "ipa": "/seɪv ʌp/",
+    "meaningVi": "để dành tiền",
+    "definitionEn": "To keep money over time in order to buy something later.",
+    "example": "They saved up enough money for a holiday in Japan next summer.",
+    "collocation": "save up for",
+    "cefr": "B1"
+  },
+  {
+    "word": "borrow",
+    "pos": "verb",
+    "ipa": "/ˈbɒrəʊ/",
+    "meaningVi": "vay, mượn",
+    "definitionEn": "To take money or things from someone and give them back later.",
+    "example": "I had to borrow money from my parents to pay the rent.",
+    "collocation": "borrow money from",
+    "cefr": "B1"
+  },
+  {
+    "word": "owe",
+    "pos": "verb",
+    "ipa": "/əʊ/",
+    "meaningVi": "nợ",
+    "definitionEn": "To have to pay someone money that you received from them earlier.",
+    "example": "He still owes his brother two hundred dollars from last year.",
+    "collocation": "owe someone money",
+    "cefr": "B1"
+  },
+  {
+    "word": "refund",
+    "pos": "noun",
+    "ipa": "/ˈriːfʌnd/",
+    "meaningVi": "hoàn tiền",
+    "definitionEn": "Money returned to a customer after a purchase is cancelled or returned.",
+    "example": "The shop gave me a full refund because the jacket was faulty.",
+    "collocation": "full refund",
+    "cefr": "B1"
+  },
+  {
+    "word": "wage",
+    "pos": "noun",
+    "ipa": "/weɪdʒ/",
+    "meaningVi": "tiền công",
+    "definitionEn": "Money paid to a worker, usually weekly or hourly, for their work.",
+    "example": "Many factory workers receive a minimum wage for their long hours.",
+    "collocation": "minimum wage",
+    "cefr": "B1"
+  },
+  {
+    "word": "currency",
+    "pos": "noun",
+    "ipa": "/ˈkʌrənsi/",
+    "meaningVi": "tiền tệ",
+    "definitionEn": "The system of money used in a particular country.",
+    "example": "The euro is the official currency in many European countries.",
+    "collocation": "foreign currency",
+    "cefr": "B1"
+  },
+  {
+    "word": "bonus",
+    "pos": "noun",
+    "ipa": "/ˈbəʊnəs/",
+    "meaningVi": "tiền thưởng",
+    "definitionEn": "An extra sum of money given to an employee as a reward.",
+    "example": "Staff received a generous year-end bonus after the company's best season.",
+    "collocation": "year-end bonus",
+    "cefr": "B2"
+  },
+  {
+    "word": "commission",
+    "pos": "noun",
+    "ipa": "/kəˈmɪʃn/",
+    "meaningVi": "tiền hoa hồng",
+    "definitionEn": "A fee paid to someone for selling goods or arranging a deal.",
+    "example": "The estate agent earns a commission of two percent on each sale.",
+    "collocation": "earn a commission",
+    "cefr": "B2"
+  },
+  {
+    "word": "interest",
+    "pos": "noun",
+    "ipa": "/ˈɪntrəst/",
+    "meaningVi": "tiền lãi",
+    "definitionEn": "Extra money paid on savings, or charged on money borrowed.",
+    "example": "The bank pays a low rate of interest on children's savings accounts.",
+    "collocation": "compound interest",
+    "cefr": "B2"
+  },
+  {
+    "word": "surplus",
+    "pos": "noun",
+    "ipa": "/ˈsɜːpləs/",
+    "meaningVi": "thặng dư",
+    "definitionEn": "An amount of money or goods left over after needs are met.",
+    "example": "The government used its budget surplus to repay part of the national debt.",
+    "collocation": "budget surplus",
+    "cefr": "B2"
+  },
+  {
+    "word": "deficit",
+    "pos": "noun",
+    "ipa": "/ˈdefɪsɪt/",
+    "meaningVi": "thâm hụt",
+    "definitionEn": "The amount by which spending is greater than income.",
+    "example": "The company reported a deficit of several million pounds last quarter.",
+    "collocation": "trade deficit",
+    "cefr": "B2"
+  },
+  {
+    "word": "invoice",
+    "pos": "noun",
+    "ipa": "/ˈɪnvɔɪs/",
+    "meaningVi": "hóa đơn thương mại",
+    "definitionEn": "A document listing goods or services supplied and the amount due.",
+    "example": "Please send the invoice to our accounts department by Friday.",
+    "collocation": "send an invoice",
+    "cefr": "B2"
+  },
+  {
+    "word": "bill",
+    "pos": "noun",
+    "ipa": "/bɪl/",
+    "meaningVi": "hóa đơn",
+    "definitionEn": "A written statement of the amount of money owed for goods or services.",
+    "example": "We received the electricity bill, and it was much higher than usual.",
+    "collocation": "pay the bill",
+    "cefr": "B2"
+  },
+  {
+    "word": "fee",
+    "pos": "noun",
+    "ipa": "/fiː/",
+    "meaningVi": "phí, lệ phí",
+    "definitionEn": "A sum of money charged for a service or for permission to do something.",
+    "example": "The bank charges a monthly fee if the balance falls below a limit.",
+    "collocation": "membership fee",
+    "cefr": "B2"
+  },
+  {
+    "word": "expense",
+    "pos": "noun",
+    "ipa": "/ɪkˈspens/",
+    "meaningVi": "chi phí",
+    "definitionEn": "A cost of doing something that a person or business must pay.",
+    "example": "Travel expenses are reimbursed only when you attach the original receipts.",
+    "collocation": "living expenses",
+    "cefr": "B2"
+  },
+  {
+    "word": "shortfall",
+    "pos": "noun",
+    "ipa": "/ˈʃɔːtfɔːl/",
+    "meaningVi": "sự thiếu hụt",
+    "definitionEn": "A situation where the amount of something is less than what is needed.",
+    "example": "The charity faced a shortfall in donations after the economic downturn.",
+    "collocation": "funding shortfall",
+    "cefr": "B2"
+  },
+  {
+    "word": "affordable",
+    "pos": "adjective",
+    "ipa": "/əˈfɔːdəbl/",
+    "meaningVi": "giá phải chăng",
+    "definitionEn": "Not too expensive for most people to pay for.",
+    "example": "Affordable housing is a major concern for young couples in big cities.",
+    "collocation": "affordable housing",
+    "cefr": "B2"
+  },
+  {
+    "word": "solvent",
+    "pos": "adjective",
+    "ipa": "/ˈsɒlvənt/",
+    "meaningVi": "có khả năng thanh toán",
+    "definitionEn": "Having enough money to pay all debts that are due.",
+    "example": "The firm remained solvent despite losing its largest client last year.",
+    "collocation": "remain solvent",
+    "cefr": "B2"
+  },
+  {
+    "word": "liability",
+    "pos": "noun",
+    "ipa": "/ˌlaɪəˈbɪləti/",
+    "meaningVi": "khoản nợ phải trả",
+    "definitionEn": "A debt or financial obligation that a person or company must pay.",
+    "example": "The company's total liabilities now exceed the value of its assets.",
+    "collocation": "legal liability",
+    "cefr": "B2"
+  },
+  {
+    "word": "asset",
+    "pos": "noun",
+    "ipa": "/ˈæset/",
+    "meaningVi": "tài sản",
+    "definitionEn": "Something valuable owned by a person or company, such as property.",
+    "example": "Her house is her most valuable asset, worth far more than her savings.",
+    "collocation": "valuable asset",
+    "cefr": "B2"
+  },
+  {
+    "word": "equity",
+    "pos": "noun",
+    "ipa": "/ˈekwəti/",
+    "meaningVi": "vốn chủ sở hữu",
+    "definitionEn": "The value of an owner's share in a property or company after debts.",
+    "example": "He built up home equity by paying down his mortgage for twenty years.",
+    "collocation": "home equity",
+    "cefr": "B2"
+  },
+  {
+    "word": "premium",
+    "pos": "noun",
+    "ipa": "/ˈpriːmiəm/",
+    "meaningVi": "phí bảo hiểm",
+    "definitionEn": "A regular amount paid to an insurance company for cover.",
+    "example": "Her insurance premium rose sharply after she made a claim.",
+    "collocation": "insurance premium",
+    "cefr": "B2"
+  },
+  {
+    "word": "insurance",
+    "pos": "noun",
+    "ipa": "/ɪnˈʃʊərəns/",
+    "meaningVi": "bảo hiểm",
+    "definitionEn": "Protection against financial loss, paid for through regular payments.",
+    "example": "Everyone who drives a car must have valid insurance under the law.",
+    "collocation": "buy insurance",
+    "cefr": "B2"
+  },
+  {
+    "word": "pawn",
+    "pos": "verb",
+    "ipa": "/pɔːn/",
+    "meaningVi": "cầm đồ",
+    "definitionEn": "To leave something valuable with a lender as security for a loan.",
+    "example": "He had to pawn his watch to pay urgent bills last month.",
+    "collocation": "pawn jewellery",
+    "cefr": "B2"
+  },
+  {
+    "word": "stock",
+    "pos": "noun",
+    "ipa": "/stɒk/",
+    "meaningVi": "cổ phiếu",
+    "definitionEn": "Shares of ownership in a company that can be bought and sold.",
+    "example": "She bought stock in a renewable energy company last spring.",
+    "collocation": "stock market",
+    "cefr": "B2"
+  },
+  {
+    "word": "fortune",
+    "pos": "noun",
+    "ipa": "/ˈfɔːtʃuːn/",
+    "meaningVi": "gia sản lớn",
+    "definitionEn": "A very large amount of money or wealth owned by a person.",
+    "example": "He made a fortune selling software before he turned thirty.",
+    "collocation": "make a fortune",
+    "cefr": "B2"
+  },
+  {
+    "word": "payslip",
+    "pos": "noun",
+    "ipa": "/ˈpeɪslɪp/",
+    "meaningVi": "phiếu lương",
+    "definitionEn": "A document showing how much pay a worker receives and what was deducted.",
+    "example": "Check your payslip carefully to make sure the tax is correct.",
+    "collocation": "monthly payslip",
+    "cefr": "B2"
+  },
+  {
+    "word": "cheque",
+    "pos": "noun",
+    "ipa": "/tʃek/",
+    "meaningVi": "séc",
+    "definitionEn": "A written order to a bank to pay money from your account to someone.",
+    "example": "Could you make the cheque payable to the company, please?",
+    "collocation": "write a cheque",
+    "cefr": "B2"
+  },
+  {
+    "word": "transaction",
+    "pos": "noun",
+    "ipa": "/trænˈzækʃn/",
+    "meaningVi": "giao dịch",
+    "definitionEn": "An act of buying, selling, or transferring money between two parties.",
+    "example": "Every online transaction is protected by a secure encryption system.",
+    "collocation": "financial transaction",
+    "cefr": "B2"
+  },
+  {
+    "word": "repayment",
+    "pos": "noun",
+    "ipa": "/rɪˈpeɪmənt/",
+    "meaningVi": "khoản trả nợ",
+    "definitionEn": "The act of paying back money that was borrowed, usually in parts.",
+    "example": "Monthly repayments on the car loan will finish in March next year.",
+    "collocation": "loan repayment",
+    "cefr": "B2"
+  },
+  {
+    "word": "overspend",
+    "pos": "verb",
+    "ipa": "/ˌəʊvəˈspend/",
+    "meaningVi": "tiêu quá mức",
+    "definitionEn": "To spend more money than you have or than you planned.",
+    "example": "Many families overspend during the holidays and struggle in January.",
+    "collocation": "overspend on",
+    "cefr": "B2"
+  },
+  {
+    "word": "feel the pinch",
+    "pos": "idiom",
+    "ipa": "/fiːl ðə pɪntʃ/",
+    "meaningVi": "chịu cảnh túng thiếu",
+    "definitionEn": "To experience financial difficulty because money is scarce.",
+    "example": "Many workers began to feel the pinch after prices rose so quickly.",
+    "collocation": "really feel the pinch",
+    "cefr": "B2"
+  },
+  {
+    "word": "break even",
+    "pos": "idiom",
+    "ipa": "/breɪk ˈiːvn/",
+    "meaningVi": "hòa vốn",
+    "definitionEn": "To earn exactly as much money as you spend, so there is no profit.",
+    "example": "The new café should break even within its first year of trading.",
+    "collocation": "expected to break even",
+    "cefr": "B2"
+  },
+  {
+    "word": "make ends meet",
+    "pos": "idiom",
+    "ipa": "/meɪk endz miːt/",
+    "meaningVi": "xoay xở đủ sống",
+    "definitionEn": "To earn just enough money to pay for basic living costs.",
+    "example": "Working two jobs was the only way she could make ends meet.",
+    "collocation": "struggle to make ends meet",
+    "cefr": "B2"
+  },
+  {
+    "word": "in the red",
+    "pos": "idiom",
+    "ipa": "/ɪn ðə red/",
+    "meaningVi": "âm tiền, thua lỗ",
+    "definitionEn": "Having a negative bank balance or losing money in business.",
+    "example": "The company has been in the red for three consecutive years now.",
+    "collocation": "operate in the red",
+    "cefr": "B2"
+  },
+  {
+    "word": "cost of living",
+    "pos": "phrase",
+    "ipa": "/kɒst əv ˈlɪvɪŋ/",
+    "meaningVi": "chi phí sinh hoạt",
+    "definitionEn": "The amount of money needed to pay for everyday expenses like food and rent.",
+    "example": "The rising cost of living has hit low-income families the hardest.",
+    "collocation": "rising cost of living",
+    "cefr": "B2"
+  },
+  {
+    "word": "fiscal",
+    "pos": "adjective",
+    "ipa": "/ˈfɪskl/",
+    "meaningVi": "thuộc tài khoá, tài chính công",
+    "definitionEn": "Relating to government revenue, spending, and public debt.",
+    "example": "The government announced a fiscal policy aimed at reducing the deficit.",
+    "collocation": "fiscal policy",
+    "cefr": "C1"
+  },
+  {
+    "word": "monetary",
+    "pos": "adjective",
+    "ipa": "/ˈmʌnɪtri/",
+    "meaningVi": "thuộc tiền tệ",
+    "definitionEn": "Relating to money or to the currency system of a country.",
+    "example": "The central bank raised interest rates as part of its monetary policy.",
+    "collocation": "monetary policy",
+    "cefr": "C1"
+  },
+  {
+    "word": "depreciate",
+    "pos": "verb",
+    "ipa": "/dɪˈpriːʃieɪt/",
+    "meaningVi": "mất giá",
+    "definitionEn": "To decrease in value over time, especially a vehicle or equipment.",
+    "example": "Most new cars depreciate sharply during their first three years.",
+    "collocation": "rapidly depreciate",
+    "cefr": "C1"
+  },
+  {
+    "word": "appreciate",
+    "pos": "verb",
+    "ipa": "/əˈpriːʃieɪt/",
+    "meaningVi": "tăng giá",
+    "definitionEn": "To increase in value over a period of time.",
+    "example": "Property in this district has appreciated considerably over the last decade.",
+    "collocation": "appreciate in value",
+    "cefr": "C1"
+  },
+  {
+    "word": "deflation",
+    "pos": "noun",
+    "ipa": "/dɪˈfleɪʃn/",
+    "meaningVi": "giảm phát",
+    "definitionEn": "A sustained fall in general price levels across an economy.",
+    "example": "Economists warned that prolonged deflation could slow economic growth sharply.",
+    "collocation": "prolonged deflation",
+    "cefr": "C1"
+  },
+  {
+    "word": "stimulus",
+    "pos": "noun",
+    "ipa": "/ˈstɪmjələs/",
+    "meaningVi": "gói kích thích kinh tế",
+    "definitionEn": "Government spending or action designed to boost economic activity.",
+    "example": "The government unveiled a massive stimulus package to support struggling businesses.",
+    "collocation": "economic stimulus",
+    "cefr": "C1"
+  },
+  {
+    "word": "austerity",
+    "pos": "noun",
+    "ipa": "/ɔːˈsterəti/",
+    "meaningVi": "thắt lưng buộc bụng",
+    "definitionEn": "Strict government measures to reduce spending during an economic crisis.",
+    "example": "Years of austerity left many public services underfunded and overstretched.",
+    "collocation": "austerity measures",
+    "cefr": "C1"
+  },
+  {
+    "word": "arrears",
+    "pos": "noun",
+    "ipa": "/əˈrɪəz/",
+    "meaningVi": "nợ quá hạn",
+    "definitionEn": "Money that is owed and remains unpaid after the due date.",
+    "example": "The tenant fell into arrears after losing his job in the spring.",
+    "collocation": "in arrears",
+    "cefr": "C1"
+  },
+  {
+    "word": "liquidate",
+    "pos": "verb",
+    "ipa": "/ˈlɪkwɪdeɪt/",
+    "meaningVi": "thanh lý tài sản",
+    "definitionEn": "To sell off a company's assets in order to pay its debts.",
+    "example": "The directors decided to liquidate the company after months of losses.",
+    "collocation": "liquidate assets",
+    "cefr": "C1"
+  },
+  {
+    "word": "leverage",
+    "pos": "noun",
+    "ipa": "/ˈliːvərɪdʒ/",
+    "meaningVi": "đòn bẩy tài chính",
+    "definitionEn": "The use of borrowed money to increase the potential return of an investment.",
+    "example": "Investors often use leverage to magnify gains, but losses can grow just as fast.",
+    "collocation": "financial leverage",
+    "cefr": "C1"
+  },
+  {
+    "word": "speculation",
+    "pos": "noun",
+    "ipa": "/ˌspekjuˈleɪʃn/",
+    "meaningVi": "đầu cơ",
+    "definitionEn": "Buying something in hope of profit from future price changes.",
+    "example": "Wild speculation in the housing market eventually pushed prices beyond reach.",
+    "collocation": "wild speculation",
+    "cefr": "C1"
+  },
+  {
+    "word": "volatility",
+    "pos": "noun",
+    "ipa": "/ˌvɒləˈtɪləti/",
+    "meaningVi": "sự biến động mạnh",
+    "definitionEn": "The tendency of prices or markets to change rapidly and unpredictably.",
+    "example": "Market volatility increased sharply after the unexpected election result.",
+    "collocation": "market volatility",
+    "cefr": "C1"
+  },
+  {
+    "word": "mitigate",
+    "pos": "verb",
+    "ipa": "/ˈmɪtɪɡeɪt/",
+    "meaningVi": "giảm nhẹ, giảm thiểu",
+    "definitionEn": "To make a harmful or unpleasant situation less severe.",
+    "example": "Companies must mitigate financial risks by diversifying their investments carefully.",
+    "collocation": "mitigate the risk",
+    "cefr": "C1"
+  },
+  {
+    "word": "viability",
+    "pos": "noun",
+    "ipa": "/ˌvaɪəˈbɪləti/",
+    "meaningVi": "tính khả thi",
+    "definitionEn": "The ability of a plan or business to succeed and be sustainable.",
+    "example": "The consultants questioned the long-term viability of the proposed project.",
+    "collocation": "economic viability",
+    "cefr": "C1"
+  },
+  {
+    "word": "surcharge",
+    "pos": "noun",
+    "ipa": "/ˈsɜːtʃɑːdʒ/",
+    "meaningVi": "phụ phí",
+    "definitionEn": "An additional fee charged on top of the normal price of something.",
+    "example": "Airlines often add a fuel surcharge to the price of every ticket.",
+    "collocation": "fuel surcharge",
+    "cefr": "C1"
+  },
+  {
+    "word": "levy",
+    "pos": "noun",
+    "ipa": "/ˈlevi/",
+    "meaningVi": "khoản thu thuế",
+    "definitionEn": "A tax or fee imposed by a government or authority.",
+    "example": "The council plans to introduce a new levy on tourist accommodation.",
+    "collocation": "impose a levy",
+    "cefr": "C1"
+  },
+  {
+    "word": "remuneration",
+    "pos": "noun",
+    "ipa": "/rɪˌmjuːnəˈreɪʃn/",
+    "meaningVi": "thù lao",
+    "definitionEn": "Money or payment given to someone in return for work or services.",
+    "example": "Executives' remuneration packages have attracted criticism from many shareholders.",
+    "collocation": "total remuneration",
+    "cefr": "C1"
+  },
+  {
+    "word": "underwrite",
+    "pos": "verb",
+    "ipa": "/ˈʌndərraɪt/",
+    "meaningVi": "bảo lãnh tài chính",
+    "definitionEn": "To guarantee financial support for a project and accept its risks.",
+    "example": "The bank agreed to underwrite the entire cost of the new bridge.",
+    "collocation": "underwrite a loan",
+    "cefr": "C1"
+  },
+  {
+    "word": "amortise",
+    "pos": "verb",
+    "ipa": "/ˈæmətaɪz/",
+    "meaningVi": "trả dần nợ",
+    "definitionEn": "To pay off a debt through regular payments over a fixed period.",
+    "example": "The loan is designed to amortise over twenty-five years of monthly payments.",
+    "collocation": "amortise a loan",
+    "cefr": "C1"
+  },
+  {
+    "word": "solvency",
+    "pos": "noun",
+    "ipa": "/ˈsɒlvənsi/",
+    "meaningVi": "khả năng thanh toán",
+    "definitionEn": "The ability of a person or business to meet long-term financial obligations.",
+    "example": "Analysts are concerned about the solvency of several regional banks.",
+    "collocation": "long-term solvency",
+    "cefr": "C1"
+  },
+  {
+    "word": "hoard",
+    "pos": "verb",
+    "ipa": "/hɔːd/",
+    "meaningVi": "tích trữ",
+    "definitionEn": "To collect and store large amounts of something, often secretly.",
+    "example": "During the crisis, many people began to hoard cash at home.",
+    "collocation": "hoard cash",
+    "cefr": "C1"
+  },
+  {
+    "word": "prudent",
+    "pos": "adjective",
+    "ipa": "/ˈpruːdnt/",
+    "meaningVi": "thận trọng",
+    "definitionEn": "Acting carefully and wisely, especially in managing money or risks.",
+    "example": "It is prudent to keep an emergency fund equal to six months' expenses.",
+    "collocation": "financially prudent",
+    "cefr": "C1"
+  },
+  {
+    "word": "exorbitant",
+    "pos": "adjective",
+    "ipa": "/ɪɡˈzɔːbɪtənt/",
+    "meaningVi": "cắt cổ, quá đắt",
+    "definitionEn": "Much higher than is reasonable or acceptable in cost.",
+    "example": "The hotel charged exorbitant prices for drinks and room service.",
+    "collocation": "exorbitant prices",
+    "cefr": "C1"
+  },
+  {
+    "word": "lucrative",
+    "pos": "adjective",
+    "ipa": "/ˈluːkrətɪv/",
+    "meaningVi": "sinh lợi, béo bở",
+    "definitionEn": "Producing a large amount of profit or money.",
+    "example": "She left teaching for a more lucrative career in corporate finance.",
+    "collocation": "highly lucrative",
+    "cefr": "C1"
+  },
+  {
+    "word": "ostentatious",
+    "pos": "adjective",
+    "ipa": "/ˌɒstenˈteɪʃəs/",
+    "meaningVi": "phô trương",
+    "definitionEn": "Showing off wealth in a way intended to attract attention and admiration.",
+    "example": "The ostentatious display of jewellery at the party embarrassed many guests.",
+    "collocation": "ostentatious display",
+    "cefr": "C1"
+  },
+  {
+    "word": "fleece",
+    "pos": "verb",
+    "ipa": "/fliːs/",
+    "meaningVi": "lừa tiền, vắt kiệt",
+    "definitionEn": "To cheat someone by charging them far too much money.",
+    "example": "Unscrupulous traders fleeced tourists who were unfamiliar with local prices.",
+    "collocation": "fleece customers",
+    "cefr": "C1"
+  },
+  {
+    "word": "inflationary",
+    "pos": "adjective",
+    "ipa": "/ɪnˈfleɪʃənəri/",
+    "meaningVi": "gây lạm phát",
+    "definitionEn": "Likely to cause a general rise in prices across an economy.",
+    "example": "Economists warned that the new spending plan could be inflationary.",
+    "collocation": "inflationary pressure",
+    "cefr": "C1"
+  },
+  {
+    "word": "portfolio",
+    "pos": "noun",
+    "ipa": "/pɔːtˈfəʊliəʊ/",
+    "meaningVi": "danh mục đầu tư",
+    "definitionEn": "A collection of investments owned by a person or institution.",
+    "example": "A diversified portfolio helps reduce the risk of major losses.",
+    "collocation": "investment portfolio",
+    "cefr": "C1"
+  },
+  {
+    "word": "fluctuation",
+    "pos": "noun",
+    "ipa": "/ˌflʌktʃuˈeɪʃn/",
+    "meaningVi": "sự dao động",
+    "definitionEn": "A continual change up and down in amount, level, or price.",
+    "example": "Currency fluctuations make it difficult to plan long-term export contracts.",
+    "collocation": "currency fluctuation",
+    "cefr": "C1"
+  },
+  {
+    "word": "indebtedness",
+    "pos": "noun",
+    "ipa": "/ɪnˈdetɪdnəs/",
+    "meaningVi": "tình trạng mắc nợ",
+    "definitionEn": "The state of owing money, or the total amount that is owed.",
+    "example": "Household indebtedness has risen steadily since interest rates began falling.",
+    "collocation": "high indebtedness",
+    "cefr": "C1"
+  },
+  {
+    "word": "fiduciary",
+    "pos": "adjective",
+    "ipa": "/fɪˈdjuːʃəri/",
+    "meaningVi": "có tính ủy thác",
+    "definitionEn": "Relating to a legal duty to act in another person's financial interest.",
+    "example": "Financial advisers have a fiduciary duty to act in their clients' best interests.",
+    "collocation": "fiduciary duty",
+    "cefr": "C1"
+  },
+  {
+    "word": "liquidity",
+    "pos": "noun",
+    "ipa": "/lɪˈkwɪdəti/",
+    "meaningVi": "tính thanh khoản",
+    "definitionEn": "The ease with which an asset can be turned into cash without losing value.",
+    "example": "The firm needs more liquidity to cover its short-term debts this quarter.",
+    "collocation": "market liquidity",
+    "cefr": "C1"
+  },
+  {
+    "word": "bailout",
+    "pos": "noun",
+    "ipa": "/ˈbeɪlaʊt/",
+    "meaningVi": "gói cứu trợ tài chính",
+    "definitionEn": "Financial rescue given to a failing business or bank by an outside party.",
+    "example": "The government refused to provide a bailout for the struggling airline.",
+    "collocation": "financial bailout",
+    "cefr": "C1"
+  },
+  {
+    "word": "pecuniary",
+    "pos": "adjective",
+    "ipa": "/pɪˈkjuːniəri/",
+    "meaningVi": "thuộc về tiền bạc",
+    "definitionEn": "Relating to money, especially in the context of financial gain or loss.",
+    "example": "The committee dismissed the claim, citing a lack of pecuniary motive.",
+    "collocation": "pecuniary gain",
+    "cefr": "C2"
+  },
+  {
+    "word": "mercenary",
+    "pos": "adjective",
+    "ipa": "/ˈmɜːsənri/",
+    "meaningVi": "vụ lợi, chỉ vì tiền",
+    "definitionEn": "Motivated only by the desire for money or personal gain.",
+    "example": "Critics accused the consultant of having purely mercenary motives for the merger.",
+    "collocation": "mercenary motives",
+    "cefr": "C2"
+  },
+  {
+    "word": "parsimonious",
+    "pos": "adjective",
+    "ipa": "/ˌpɑːsɪˈməʊniəs/",
+    "meaningVi": "keo kiệt, tằn tiện",
+    "definitionEn": "Unwilling to spend money or use resources; extremely careful with money.",
+    "example": "His parsimonious habits meant he rarely bought anything for himself.",
+    "collocation": "parsimonious nature",
+    "cefr": "C2"
+  },
+  {
+    "word": "penurious",
+    "pos": "adjective",
+    "ipa": "/pɪˈnjʊəriəs/",
+    "meaningVi": "nghèo túng",
+    "definitionEn": "Extremely poor, lacking the money needed for basic necessities.",
+    "example": "The penurious author wrote his finest novel in a freezing attic.",
+    "collocation": "penurious existence",
+    "cefr": "C2"
+  },
+  {
+    "word": "impecunious",
+    "pos": "adjective",
+    "ipa": "/ˌɪmpɪˈkjuːniəs/",
+    "meaningVi": "túng thiếu tiền bạc",
+    "definitionEn": "Having little or no money; habitually short of funds.",
+    "example": "Many impecunious students rely on part-time work to pay their tuition.",
+    "collocation": "impecunious students",
+    "cefr": "C2"
+  },
+  {
+    "word": "profligate",
+    "pos": "adjective",
+    "ipa": "/ˈprɒflɪɡət/",
+    "meaningVi": "hoang phí",
+    "definitionEn": "Spending money or resources recklessly and wastefully.",
+    "example": "The profligate heir squandered the family fortune within a decade.",
+    "collocation": "profligate spending",
+    "cefr": "C2"
+  },
+  {
+    "word": "sumptuous",
+    "pos": "adjective",
+    "ipa": "/ˈsʌmptʃuəs/",
+    "meaningVi": "xa hoa, lộng lẫy",
+    "definitionEn": "Expensive, rich, and lavish, especially in food, furnishings or dress.",
+    "example": "The guests were served a sumptuous banquet of seafood and rare wines.",
+    "collocation": "sumptuous banquet",
+    "cefr": "C2"
+  },
+  {
+    "word": "opulence",
+    "pos": "noun",
+    "ipa": "/ˈɒpjələns/",
+    "meaningVi": "sự giàu sang xa hoa",
+    "definitionEn": "Great wealth or luxury, especially as shown in surroundings or lifestyle.",
+    "example": "The palace was furnished with a staggering opulence that impressed every visitor.",
+    "collocation": "sheer opulence",
+    "cefr": "C2"
+  },
+  {
+    "word": "munificence",
+    "pos": "noun",
+    "ipa": "/mjuːˈnɪfɪsns/",
+    "meaningVi": "sự hào phóng",
+    "definitionEn": "Great generosity in giving money or gifts to others.",
+    "example": "The philanthropist's munificence funded three new hospitals across the region.",
+    "collocation": "remarkable munificence",
+    "cefr": "C2"
+  },
+  {
+    "word": "avarice",
+    "pos": "noun",
+    "ipa": "/ˈævərɪs/",
+    "meaningVi": "lòng tham tiền",
+    "definitionEn": "An extreme and greedy desire for wealth and possessions.",
+    "example": "Dickens portrayed avarice as a corrupting force in Victorian society.",
+    "collocation": "unbridled avarice",
+    "cefr": "C2"
+  },
+  {
+    "word": "cupidity",
+    "pos": "noun",
+    "ipa": "/kjuːˈpɪdəti/",
+    "meaningVi": "lòng tham lam",
+    "definitionEn": "An eager desire to acquire wealth, often in an improper way.",
+    "example": "The scandal exposed the cupidity of several senior board members.",
+    "collocation": "human cupidity",
+    "cefr": "C2"
+  },
+  {
+    "word": "pittance",
+    "pos": "noun",
+    "ipa": "/ˈpɪtns/",
+    "meaningVi": "đồng tiền ít ỏi",
+    "definitionEn": "A very small amount of money, especially as payment for work.",
+    "example": "Workers were paid a pittance for backbreaking labour in the mines.",
+    "collocation": "paid a pittance",
+    "cefr": "C2"
+  },
+  {
+    "word": "stipend",
+    "pos": "noun",
+    "ipa": "/ˈstaɪpend/",
+    "meaningVi": "trợ cấp định kỳ",
+    "definitionEn": "A fixed regular sum of money paid to someone such as a student or clergy member.",
+    "example": "Doctoral students receive a modest monthly stipend while conducting their research.",
+    "collocation": "monthly stipend",
+    "cefr": "C2"
+  },
+  {
+    "word": "emolument",
+    "pos": "noun",
+    "ipa": "/ɪˈmɒljumənt/",
+    "meaningVi": "thù lao, lợi lộc",
+    "definitionEn": "Money or benefits received from employment or an office.",
+    "example": "The post carries generous emoluments, including housing and a private car.",
+    "collocation": "generous emoluments",
+    "cefr": "C2"
+  },
+  {
+    "word": "chicanery",
+    "pos": "noun",
+    "ipa": "/ʃɪˈkeɪnəri/",
+    "meaningVi": "thủ đoạn gian lận",
+    "definitionEn": "Trickery or deception used to gain a financial or legal advantage.",
+    "example": "The company's accounts were full of chicanery designed to hide its losses.",
+    "collocation": "financial chicanery",
+    "cefr": "C2"
+  },
+  {
+    "word": "usury",
+    "pos": "noun",
+    "ipa": "/ˈjuːʒəri/",
+    "meaningVi": "cho vay nặng lãi",
+    "definitionEn": "The practice of lending money at extremely high interest rates.",
+    "example": "Laws against usury were introduced to protect poor borrowers from exploitation.",
+    "collocation": "practise usury",
+    "cefr": "C2"
+  },
+  {
+    "word": "bequest",
+    "pos": "noun",
+    "ipa": "/bɪˈkwest/",
+    "meaningVi": "tài sản thừa kế",
+    "definitionEn": "Money or property left to someone in a will.",
+    "example": "She received a generous bequest from an aunt she barely knew.",
+    "collocation": "substantial bequest",
+    "cefr": "C2"
+  },
+  {
+    "word": "largesse",
+    "pos": "noun",
+    "ipa": "/lɑːˈʒes/",
+    "meaningVi": "sự ban phát rộng rãi",
+    "definitionEn": "Generous giving of money or gifts, often to inferiors or the public.",
+    "example": "The wealthy patron distributed largesse to the artists and musicians of the city.",
+    "collocation": "royal largesse",
+    "cefr": "C2"
+  },
+  {
+    "word": "sinecure",
+    "pos": "noun",
+    "ipa": "/ˈsaɪnɪkjʊə/",
+    "meaningVi": "việc nhàn hạ béo bở",
+    "definitionEn": "A paid job requiring little or no work, often given as a favour.",
+    "example": "The minister's brother held a lucrative sinecure with the state railways.",
+    "collocation": "lucrative sinecure",
+    "cefr": "C2"
+  },
+  {
+    "word": "parlous",
+    "pos": "adjective",
+    "ipa": "/ˈpɑːləs/",
+    "meaningVi": "nguy ngập, bấp bênh",
+    "definitionEn": "Dangerously uncertain or in a very bad state, especially financially.",
+    "example": "The company's parlous finances forced it to cut hundreds of jobs.",
+    "collocation": "parlous state",
+    "cefr": "C2"
+  },
+  {
+    "word": "indigent",
+    "pos": "adjective",
+    "ipa": "/ˈɪndɪdʒənt/",
+    "meaningVi": "túng quẫn, nghèo khó",
+    "definitionEn": "Poor to the point of lacking the basic necessities of life.",
+    "example": "Charities provide free meals for indigent families during the winter months.",
+    "collocation": "indigent families",
+    "cefr": "C2"
+  },
+  {
+    "word": "pinchpenny",
+    "pos": "noun",
+    "ipa": "/ˈpɪntʃpeni/",
+    "meaningVi": "người keo kiệt",
+    "definitionEn": "A person who is extremely careful and stingy about spending money.",
+    "example": "My grandmother was a pinchpenny who reused every paper bag she received.",
+    "collocation": "old pinchpenny",
+    "cefr": "C2"
+  },
+  {
+    "word": "moneyed",
+    "pos": "adjective",
+    "ipa": "/ˈmʌnid/",
+    "meaningVi": "giàu có",
+    "definitionEn": "Having a great deal of money; wealthy.",
+    "example": "The moneyed elite of the city had lived in the district for generations.",
+    "collocation": "moneyed classes",
+    "cefr": "C2"
+  },
+  {
+    "word": "ransom",
+    "pos": "noun",
+    "ipa": "/ˈrænsəm/",
+    "meaningVi": "tiền chuộc",
+    "definitionEn": "A sum of money demanded in return for releasing a captured person.",
+    "example": "The kidnappers demanded a ransom of two million dollars for the hostage's release.",
+    "collocation": "demand a ransom",
+    "cefr": "C2"
+  },
+  {
+    "word": "exchequer",
+    "pos": "noun",
+    "ipa": "/ɪksˈtʃekə/",
+    "meaningVi": "ngân khố nhà nước",
+    "definitionEn": "The national treasury or the funds controlled by a government.",
+    "example": "Rising welfare costs have placed a heavy strain on the public exchequer.",
+    "collocation": "public exchequer",
+    "cefr": "C2"
+  },
+  {
+    "word": "disbursement",
+    "pos": "noun",
+    "ipa": "/dɪsˈbɜːsmənt/",
+    "meaningVi": "sự chi trả",
+    "definitionEn": "The act of paying out money from a fund or account.",
+    "example": "The foundation's disbursement of grants was delayed by administrative errors.",
+    "collocation": "disbursement of funds",
+    "cefr": "C2"
+  },
+  {
+    "word": "extortion",
+    "pos": "noun",
+    "ipa": "/ɪkˈstɔːʃn/",
+    "meaningVi": "tống tiền",
+    "definitionEn": "The crime of obtaining money from someone by threats or force.",
+    "example": "Police arrested two men accused of extortion against local shop owners.",
+    "collocation": "charged with extortion",
+    "cefr": "C2"
+  },
+  {
+    "word": "embezzle",
+    "pos": "verb",
+    "ipa": "/ɪmˈbezl/",
+    "meaningVi": "biển thủ",
+    "definitionEn": "To steal money that has been entrusted to you by an employer.",
+    "example": "The accountant was jailed after he embezzled funds from the charity.",
+    "collocation": "embezzle funds",
+    "cefr": "C2"
+  },
+  {
+    "word": "squander",
+    "pos": "verb",
+    "ipa": "/ˈskwɒndə/",
+    "meaningVi": "phung phí",
+    "definitionEn": "To waste money or an opportunity carelessly and foolishly.",
+    "example": "He squandered his inheritance on expensive cars and failed investments.",
+    "collocation": "squander money",
+    "cefr": "C2"
+  },
+  {
+    "word": "wherewithal",
+    "pos": "noun",
+    "ipa": "/ˈweəwɪðɔːl/",
+    "meaningVi": "phương tiện tài chính",
+    "definitionEn": "The money or resources needed to do something.",
+    "example": "Few small firms have the wherewithal to fund such an expensive research programme.",
+    "collocation": "financial wherewithal",
+    "cefr": "C2"
+  },
+  {
+    "word": "mammon",
+    "pos": "noun",
+    "ipa": "/ˈmæmən/",
+    "meaningVi": "của cải vật chất",
+    "definitionEn": "Wealth regarded as a corrupting influence or an excessive pursuit.",
+    "example": "The novel warns readers against worshipping mammon above all human values.",
+    "collocation": "worship mammon",
+    "cefr": "C2"
+  },
+  {
+    "word": "prodigal",
+    "pos": "adjective",
+    "ipa": "/ˈprɒdɪɡl/",
+    "meaningVi": "hoang phí",
+    "definitionEn": "Spending money or resources in a wasteful, reckless way.",
+    "example": "The prodigal son spent every penny of his father's wealth in a single year.",
+    "collocation": "prodigal son",
+    "cefr": "C2"
+  },
+  {
+    "word": "niggardly",
+    "pos": "adjective",
+    "ipa": "/ˈnɪɡədli/",
+    "meaningVi": "bủn xỉn",
+    "definitionEn": "Very reluctant to spend money or to give generously to others.",
+    "example": "The niggardly landlord refused to repair the broken heating system.",
+    "collocation": "niggardly attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "tightwad",
+    "pos": "noun",
+    "ipa": "/ˈtaɪtwɒd/",
+    "meaningVi": "người keo kiệt",
+    "definitionEn": "An informal term for someone who hates spending money.",
+    "example": "Nobody wanted to split the bill with such a notorious tightwad.",
+    "collocation": "total tightwad",
+    "cefr": "C2"
+  },
+  {
+    "word": "pinch pennies",
+    "pos": "idiom",
+    "ipa": "/pɪntʃ ˈpenɪz/",
+    "meaningVi": "tiết kiệm từng đồng",
+    "definitionEn": "To be very careful about spending small amounts of money.",
+    "example": "Students often have to pinch pennies to survive until the next loan.",
+    "collocation": "have to pinch pennies",
+    "cefr": "C2"
+  },
+  {
+    "word": "mendicant",
+    "pos": "noun",
+    "ipa": "/ˈmendɪkənt/",
+    "meaningVi": "người ăn xin",
+    "definitionEn": "A person, often a monk, who lives by begging for alms.",
+    "example": "The mendicant monks walked from village to village asking for food.",
+    "collocation": "wandering mendicant",
+    "cefr": "C2"
+  },
+  {
+    "word": "dearth",
+    "pos": "noun",
+    "ipa": "/dɜːθ/",
+    "meaningVi": "sự khan hiếm",
+    "definitionEn": "A severe shortage or lack of something that is needed.",
+    "example": "There is a dearth of affordable credit for small rural businesses.",
+    "collocation": "dearth of funds",
+    "cefr": "C2"
+  },
+  {
+    "word": "penury",
+    "pos": "noun",
+    "ipa": "/ˈpenjəri/",
+    "meaningVi": "cảnh nghèo túng",
+    "definitionEn": "Extreme poverty, or the condition of having no money at all.",
+    "example": "The writer lived in penury for years before his novels became famous.",
+    "collocation": "reduced to penury",
+    "cefr": "C2"
+  },
+  {
+    "word": "gratuity",
+    "pos": "noun",
+    "ipa": "/ɡrəˈtjuːəti/",
+    "meaningVi": "tiền boa, tiền thưởng",
+    "definitionEn": "A sum of money given in appreciation of service, such as a tip.",
+    "example": "A service gratuity of fifteen percent is added to your bill automatically.",
+    "collocation": "service gratuity",
+    "cefr": "C2"
+  },
+  {
+    "word": "recompense",
+    "pos": "noun",
+    "ipa": "/ˈrekəmpens/",
+    "meaningVi": "tiền đền bù",
+    "definitionEn": "Payment or compensation given for loss, injury, or work done.",
+    "example": "The family sought recompense for the damage caused by the faulty wiring.",
+    "collocation": "fair recompense",
+    "cefr": "C2"
+  },
+  {
+    "word": "lucre",
+    "pos": "noun",
+    "ipa": "/ˈluːkə/",
+    "meaningVi": "tiền bạc, của cải",
+    "definitionEn": "Money, especially when it is regarded as a base or greedy goal.",
+    "example": "Some critics accused the artist of chasing filthy lucre rather than meaning.",
+    "collocation": "filthy lucre",
+    "cefr": "C2"
+  }
+]

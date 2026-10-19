@@ -1,0 +1,950 @@
+[
+  {
+    "word": "species",
+    "synonyms": [
+      "kind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "captive breeding",
+    "synonyms": [
+      "controlled breeding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ecological balance",
+    "synonyms": [
+      "ecological equilibrium",
+      "ecosystem balance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amphibian",
+    "synonyms": [
+      "batrachian"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mammal",
+    "synonyms": [
+      "mammalian animal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "omnivore",
+    "synonyms": [
+      "omnivorous animal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reptile",
+    "synonyms": [
+      "saurian"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "animal",
+    "synonyms": [
+      "creature"
+    ],
+    "antonyms": [
+      "plant"
+    ]
+  },
+  {
+    "word": "bird",
+    "synonyms": [
+      "avian"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fish",
+    "synonyms": [
+      "aquatic animal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insect",
+    "synonyms": [
+      "bug"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wolf",
+    "synonyms": [
+      "grey wolf",
+      "timber wolf"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bear",
+    "synonyms": [
+      "ursid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rabbit",
+    "synonyms": [
+      "bunny"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "snake",
+    "synonyms": [
+      "serpent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frog",
+    "synonyms": [
+      "anuran"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nest",
+    "synonyms": [
+      "nesting place"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "feather",
+    "synonyms": [
+      "plume"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "claw",
+    "synonyms": [
+      "talon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hunt",
+    "synonyms": [
+      "pursue",
+      "chase"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "swim",
+    "synonyms": [
+      "paddle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zoo",
+    "synonyms": [
+      "menagerie"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wildlife",
+    "synonyms": [
+      "fauna"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fur",
+    "synonyms": [
+      "pelt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hoof",
+    "synonyms": [
+      "cloven hoof"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tusk",
+    "synonyms": [
+      "elongated incisor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "antler",
+    "synonyms": [
+      "deer horn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scale",
+    "synonyms": [
+      "scute"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "territory",
+    "synonyms": [
+      "domain",
+      "range"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "den",
+    "synonyms": [
+      "lair",
+      "burrow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plumage",
+    "synonyms": [
+      "feathering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colony",
+    "synonyms": [
+      "community"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "roam",
+    "synonyms": [
+      "wander"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forage",
+    "synonyms": [
+      "browse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scavenge",
+    "synonyms": [
+      "forage",
+      "rummage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stalk",
+    "synonyms": [
+      "track",
+      "shadow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "graze",
+    "synonyms": [
+      "browse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lure",
+    "synonyms": [
+      "entice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bask",
+    "synonyms": [
+      "sunbathe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "predation",
+    "synonyms": [
+      "hunting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mate",
+    "synonyms": [
+      "breed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "migrate",
+    "synonyms": [
+      "travel seasonally"
+    ],
+    "antonyms": [
+      "remain"
+    ]
+  },
+  {
+    "word": "estivate",
+    "synonyms": [
+      "summer dormancy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spawn",
+    "synonyms": [
+      "lay eggs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "niche",
+    "synonyms": [
+      "ecological role"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "symbiosis",
+    "synonyms": [
+      "mutualism",
+      "partnership"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parasite",
+    "synonyms": [
+      "parasitic organism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nomadic",
+    "synonyms": [
+      "migratory"
+    ],
+    "antonyms": [
+      "sedentary"
+    ]
+  },
+  {
+    "word": "gregarious",
+    "synonyms": [
+      "social"
+    ],
+    "antonyms": [
+      "solitary"
+    ]
+  },
+  {
+    "word": "solitary",
+    "synonyms": [
+      "lone"
+    ],
+    "antonyms": [
+      "gregarious"
+    ]
+  },
+  {
+    "word": "venomous",
+    "synonyms": [
+      "poisonous"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indigenous",
+    "synonyms": [
+      "native"
+    ],
+    "antonyms": [
+      "non-native"
+    ]
+  },
+  {
+    "word": "keystone",
+    "synonyms": [
+      "key species"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scavenger",
+    "synonyms": [
+      "carrion eater"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carrion",
+    "synonyms": [
+      "rotting flesh"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mimicry",
+    "synonyms": [
+      "imitation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aposematic",
+    "synonyms": [
+      "warning-colored"
+    ],
+    "antonyms": [
+      "cryptic"
+    ]
+  },
+  {
+    "word": "metamorphosis",
+    "synonyms": [
+      "transformation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "larva",
+    "synonyms": [
+      "grub"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pupa",
+    "synonyms": [
+      "chrysalis",
+      "cocoon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nectar",
+    "synonyms": [
+      "sugary liquid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sedentary",
+    "synonyms": [
+      "stationary",
+      "settled"
+    ],
+    "antonyms": [
+      "migratory",
+      "nomadic"
+    ]
+  },
+  {
+    "word": "gestation",
+    "synonyms": [
+      "pregnancy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "litter",
+    "synonyms": [
+      "offspring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chrysalis",
+    "synonyms": [
+      "pupa"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cocoon",
+    "synonyms": [
+      "pupal case"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "torpor",
+    "synonyms": [
+      "lethargy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brood",
+    "synonyms": [
+      "offspring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ungulate",
+    "synonyms": [
+      "hoofed mammal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "marsupial",
+    "synonyms": [
+      "pouched mammal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arachnid",
+    "synonyms": [
+      "arachnoid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crustacean",
+    "synonyms": [
+      "shellfish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cephalopod",
+    "synonyms": [
+      "soft-bodied mollusc"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crepuscular",
+    "synonyms": [
+      "twilight-active"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ruminant",
+    "synonyms": [
+      "cud-chewing animal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pachyderm",
+    "synonyms": [
+      "thick-skinned mammal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "apex",
+    "synonyms": [
+      "top predator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quadruped",
+    "synonyms": [
+      "four-legged animal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amphibious",
+    "synonyms": [
+      "semi-aquatic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "piscivorous",
+    "synonyms": [
+      "fish-eating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "philopatry",
+    "synonyms": [
+      "site fidelity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anadromous",
+    "synonyms": [
+      "sea-run"
+    ],
+    "antonyms": [
+      "catadromous"
+    ]
+  },
+  {
+    "word": "catadromous",
+    "synonyms": [
+      "ocean-spawning"
+    ],
+    "antonyms": [
+      "anadromous"
+    ]
+  },
+  {
+    "word": "dimorphism",
+    "synonyms": [
+      "sexual difference"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "polygyny",
+    "synonyms": [
+      "polygamy"
+    ],
+    "antonyms": [
+      "monogamy"
+    ]
+  },
+  {
+    "word": "altricial",
+    "synonyms": [
+      "helpless at birth"
+    ],
+    "antonyms": [
+      "precocial"
+    ]
+  },
+  {
+    "word": "precocial",
+    "synonyms": [
+      "mobile at birth"
+    ],
+    "antonyms": [
+      "altricial"
+    ]
+  },
+  {
+    "word": "ectotherm",
+    "synonyms": [
+      "cold-blooded"
+    ],
+    "antonyms": [
+      "endotherm"
+    ]
+  },
+  {
+    "word": "endotherm",
+    "synonyms": [
+      "warm-blooded"
+    ],
+    "antonyms": [
+      "ectotherm"
+    ]
+  },
+  {
+    "word": "cryptic",
+    "synonyms": [
+      "camouflaged"
+    ],
+    "antonyms": [
+      "conspicuous"
+    ]
+  },
+  {
+    "word": "volant",
+    "synonyms": [
+      "flying"
+    ],
+    "antonyms": [
+      "flightless"
+    ]
+  },
+  {
+    "word": "saltatorial",
+    "synonyms": [
+      "jumping"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fossorial",
+    "synonyms": [
+      "burrowing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cursorial",
+    "synonyms": [
+      "running"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "natatorial",
+    "synonyms": [
+      "swimming"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scansorial",
+    "synonyms": [
+      "climbing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "troglobite",
+    "synonyms": [
+      "cave-dwelling creature"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vermivore",
+    "synonyms": [
+      "worm-eating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frugivore",
+    "synonyms": [
+      "fruit-eating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "granivore",
+    "synonyms": [
+      "seed-eating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hematophagous",
+    "synonyms": [
+      "blood-feeding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "entomophagy",
+    "synonyms": [
+      "insect-eating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parasitoid",
+    "synonyms": [
+      "parasitic insect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commensal",
+    "synonyms": [
+      "symbiotic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mutualism",
+    "synonyms": [
+      "mutual benefit"
+    ],
+    "antonyms": [
+      "parasitism"
+    ]
+  },
+  {
+    "word": "allopatric",
+    "synonyms": [
+      "geographically separate"
+    ],
+    "antonyms": [
+      "sympatric"
+    ]
+  },
+  {
+    "word": "sympatric",
+    "synonyms": [
+      "co-occurring"
+    ],
+    "antonyms": [
+      "allopatric"
+    ]
+  },
+  {
+    "word": "fecundity",
+    "synonyms": [
+      "fertility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zoonosis",
+    "synonyms": [
+      "animal-borne disease"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vagility",
+    "synonyms": [
+      "mobility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phylogeny",
+    "synonyms": [
+      "evolutionary history"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "taxon",
+    "synonyms": [
+      "taxonomic group"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "endemic",
+    "synonyms": [
+      "native"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "word": "lekking",
+    "synonyms": [
+      "courtship display"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stridulation",
+    "synonyms": [
+      "chirping"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "echolocation",
+    "synonyms": [
+      "sonar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vestigial",
+    "synonyms": [
+      "rudimentary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chelonian",
+    "synonyms": [
+      "turtle-like"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "piebald",
+    "synonyms": [
+      "pied"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bioacoustics",
+    "synonyms": [
+      "animal sound study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pelagic",
+    "synonyms": [
+      "open-ocean"
+    ],
+    "antonyms": [
+      "benthic"
+    ]
+  },
+  {
+    "word": "benthic",
+    "synonyms": [
+      "bottom-dwelling"
+    ],
+    "antonyms": [
+      "pelagic"
+    ]
+  },
+  {
+    "word": "plankton",
+    "synonyms": [
+      "drifting organisms"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "estuary",
+    "synonyms": [
+      "river mouth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gravid",
+    "synonyms": [
+      "pregnant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ovoviviparous",
+    "synonyms": [
+      "egg-retaining"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oviparous",
+    "synonyms": [
+      "egg-laying"
+    ],
+    "antonyms": [
+      "viviparous"
+    ]
+  }
+]

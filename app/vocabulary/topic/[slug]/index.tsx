@@ -372,12 +372,12 @@ function WordRow({
       <View className="flex-row flex-wrap items-start justify-between gap-2">
         <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
           <View className="flex-row flex-wrap items-baseline gap-2">
-            <Text className="font-heavy text-cardTitle text-ink">{word.word}</Text>
+            <Text className="font-semi text-cardTitle text-ink">{word.word}</Text>
             <Text className="font-sans text-label text-subtle">{word.ipa}</Text>
             {word.pos ? <Badge label={word.pos} tone="neutral" shape="tag" /> : null}
             {(word as { more?: boolean }).more ? <Badge label={L('Mở rộng', 'Extra')} tone="primary" shape="tag" /> : null}
           </View>
-          <Text className="mt-0.5 font-strong text-body text-ink">{word.meaningVi}</Text>
+          <Text className="mt-0.5 font-sans text-body text-ink">{word.meaningVi}</Text>
         </View>
 
         <View className="flex-row items-center gap-2">

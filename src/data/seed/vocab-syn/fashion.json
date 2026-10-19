@@ -1,0 +1,885 @@
+[
+  {
+    "word": "couture",
+    "synonyms": [
+      "high fashion"
+    ],
+    "antonyms": [
+      "ready-to-wear"
+    ]
+  },
+  {
+    "word": "dress",
+    "synonyms": [
+      "gown",
+      "frock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shirt",
+    "synonyms": [
+      "top"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shoes",
+    "synonyms": [
+      "footwear"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jacket",
+    "synonyms": [
+      "blazer",
+      "windbreaker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "skirt",
+    "synonyms": [
+      "lower garment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jeans",
+    "synonyms": [
+      "denims"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coat",
+    "synonyms": [
+      "overcoat",
+      "topcoat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hat",
+    "synonyms": [
+      "cap",
+      "headgear"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scarf",
+    "synonyms": [
+      "muffler",
+      "wrap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "belt",
+    "synonyms": [
+      "girdle",
+      "sash"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "button",
+    "synonyms": [
+      "fastener"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pocket",
+    "synonyms": [
+      "pouch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sleeve",
+    "synonyms": [
+      "arm covering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colour",
+    "synonyms": [
+      "hue",
+      "shade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pattern",
+    "synonyms": [
+      "design",
+      "motif"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cotton",
+    "synonyms": [
+      "calico"
+    ],
+    "antonyms": [
+      "synthetic"
+    ]
+  },
+  {
+    "word": "wool",
+    "synonyms": [
+      "woollen fabric"
+    ],
+    "antonyms": [
+      "synthetic"
+    ]
+  },
+  {
+    "word": "hemline",
+    "synonyms": [
+      "hem"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lapel",
+    "synonyms": [
+      "collar flap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cuff",
+    "synonyms": [
+      "wristband"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hem",
+    "synonyms": [
+      "border",
+      "edging"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stitch",
+    "synonyms": [
+      "loop",
+      "tack"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seam",
+    "synonyms": [
+      "join",
+      "stitch line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "knit",
+    "synonyms": [
+      "crochet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embroider",
+    "synonyms": [
+      "stitch",
+      "sew"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "denim",
+    "synonyms": [
+      "twill cotton"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "suede",
+    "synonyms": [
+      "nubuck"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "velvet",
+    "synonyms": [
+      "plush"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "layer",
+    "synonyms": [
+      "ply"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tailor",
+    "synonyms": [
+      "alter",
+      "fit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fastener",
+    "synonyms": [
+      "clasp",
+      "buckle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "haberdashery",
+    "synonyms": [
+      "notions"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tulle",
+    "synonyms": [
+      "netting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "organza",
+    "synonyms": [
+      "sheer fabric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chiffon",
+    "synonyms": [
+      "voile",
+      "georgette"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brocade",
+    "synonyms": [
+      "figured silk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jacquard",
+    "synonyms": [
+      "figured weave"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gingham",
+    "synonyms": [
+      "checked cotton"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corduroy",
+    "synonyms": [
+      "cord"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cashmere",
+    "synonyms": [
+      "fine wool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "linen",
+    "synonyms": [
+      "flax fabric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lamé",
+    "synonyms": [
+      "metallic cloth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tweed",
+    "synonyms": [
+      "wool cloth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seersucker",
+    "synonyms": [
+      "puckered cloth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "taffeta",
+    "synonyms": [
+      "crisp fabric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "satin",
+    "synonyms": [
+      "glossy silk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ruching",
+    "synonyms": [
+      "gathering",
+      "shirring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pleat",
+    "synonyms": [
+      "crease",
+      "fold"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gusset",
+    "synonyms": [
+      "insert",
+      "panel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bodice",
+    "synonyms": [
+      "upper garment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bustle",
+    "synonyms": [
+      "back pad"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corsage",
+    "synonyms": [
+      "flower spray"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cravat",
+    "synonyms": [
+      "neckerchief"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cummerbund",
+    "synonyms": [
+      "waist sash"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fedora",
+    "synonyms": [
+      "trilby"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "beret",
+    "synonyms": [
+      "flat cap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fascinator",
+    "synonyms": [
+      "headpiece"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "espadrille",
+    "synonyms": [
+      "rope-soled shoe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loafer",
+    "synonyms": [
+      "slip-on shoe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stiletto",
+    "synonyms": [
+      "spike heel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brogue",
+    "synonyms": [
+      "wingtip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hosiery",
+    "synonyms": [
+      "stockings",
+      "tights"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lingerie",
+    "synonyms": [
+      "underwear"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "monogram",
+    "synonyms": [
+      "initials"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "appliqué",
+    "synonyms": [
+      "applied decoration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sequin",
+    "synonyms": [
+      "paillette",
+      "spangle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "couturier",
+    "synonyms": [
+      "fashion designer",
+      "designer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sartorial",
+    "synonyms": [
+      "tailored",
+      "bespoke"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "raiment",
+    "synonyms": [
+      "attire",
+      "clothing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "habiliment",
+    "synonyms": [
+      "garb",
+      "attire"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epaulette",
+    "synonyms": [
+      "shoulder board"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frock",
+    "synonyms": [
+      "dress",
+      "gown"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pashmina",
+    "synonyms": [
+      "shawl"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sprezzatura",
+    "synonyms": [
+      "studied nonchalance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dandy",
+    "synonyms": [
+      "fop",
+      "beau"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mannequin",
+    "synonyms": [
+      "dummy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "haberdasher",
+    "synonyms": [
+      "notions seller"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "millinery",
+    "synonyms": [
+      "hat making"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "modiste",
+    "synonyms": [
+      "dressmaker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vestment",
+    "synonyms": [
+      "robe",
+      "garment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "regalia",
+    "synonyms": [
+      "insignia",
+      "emblems"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "damask",
+    "synonyms": [
+      "figured weave"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moiré",
+    "synonyms": [
+      "watered silk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "muslin",
+    "synonyms": [
+      "cheesecloth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "toile",
+    "synonyms": [
+      "mock-up"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crepe",
+    "synonyms": [
+      "crinkled fabric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gossamer",
+    "synonyms": [
+      "gauzy fabric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brocatelle",
+    "synonyms": [
+      "brocade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grosgrain",
+    "synonyms": [
+      "ribbon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bombazine",
+    "synonyms": [
+      "mourning fabric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vicuña",
+    "synonyms": [
+      "camelid wool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mohair",
+    "synonyms": [
+      "goat hair"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "angora",
+    "synonyms": [
+      "rabbit wool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alpaca",
+    "synonyms": [
+      "camelid fiber"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chenille",
+    "synonyms": [
+      "velvety yarn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ticking",
+    "synonyms": [
+      "mattress cloth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jodhpurs",
+    "synonyms": [
+      "riding breeches"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "culottes",
+    "synonyms": [
+      "divided skirt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jabot",
+    "synonyms": [
+      "frill",
+      "ruffle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frogging",
+    "synonyms": [
+      "braided fastening"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "peplum",
+    "synonyms": [
+      "flared waistband"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gilet",
+    "synonyms": [
+      "waistcoat",
+      "vest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pinafore",
+    "synonyms": [
+      "apron dress"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kirtle",
+    "synonyms": [
+      "medieval gown"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "doublet",
+    "synonyms": [
+      "close-fitting jacket"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "surcoat",
+    "synonyms": [
+      "tabard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chasuble",
+    "synonyms": [
+      "liturgical vestment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cassock",
+    "synonyms": [
+      "soutane"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caftan",
+    "synonyms": [
+      "long tunic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obi",
+    "synonyms": [
+      "sash"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hanbok",
+    "synonyms": [
+      "korean traditional dress"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ao dai",
+    "synonyms": [
+      "vietnamese long dress"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sari",
+    "synonyms": [
+      "draped garment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cheongsam",
+    "synonyms": [
+      "qipao"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kente",
+    "synonyms": [
+      "ghanaian cloth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dashiki",
+    "synonyms": [
+      "african shirt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kilt",
+    "synonyms": [
+      "tartan skirt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sarong",
+    "synonyms": [
+      "wrap skirt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bolero",
+    "synonyms": [
+      "cropped jacket"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "poncho",
+    "synonyms": [
+      "cape"
+    ],
+    "antonyms": []
+  }
+]

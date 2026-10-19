@@ -1,0 +1,1272 @@
+[
+  {
+    "word": "underlie",
+    "synonyms": [
+      "underpin",
+      "lie beneath"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "because",
+    "synonyms": [
+      "since",
+      "as",
+      "for"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "so",
+    "synonyms": [
+      "therefore",
+      "thus",
+      "hence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "therefore",
+    "synonyms": [
+      "hence",
+      "thus",
+      "consequently"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reason",
+    "synonyms": [
+      "cause",
+      "grounds",
+      "motive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "problem",
+    "synonyms": [
+      "difficulty",
+      "issue",
+      "trouble"
+    ],
+    "antonyms": [
+      "solution"
+    ]
+  },
+  {
+    "word": "change",
+    "synonyms": [
+      "alteration",
+      "modification",
+      "shift"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "affect",
+    "synonyms": [
+      "influence",
+      "impact",
+      "alter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "need",
+    "synonyms": [
+      "require",
+      "demand",
+      "necessitate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drop",
+    "synonyms": [
+      "decline",
+      "fall",
+      "plummet"
+    ],
+    "antonyms": [
+      "rise",
+      "increase"
+    ]
+  },
+  {
+    "word": "fall",
+    "synonyms": [
+      "decline",
+      "drop",
+      "decrease"
+    ],
+    "antonyms": [
+      "rise",
+      "increase"
+    ]
+  },
+  {
+    "word": "damage",
+    "synonyms": [
+      "harm",
+      "injury",
+      "impairment"
+    ],
+    "antonyms": [
+      "repair"
+    ]
+  },
+  {
+    "word": "stress",
+    "synonyms": [
+      "pressure",
+      "strain",
+      "tension"
+    ],
+    "antonyms": [
+      "relaxation",
+      "calm"
+    ]
+  },
+  {
+    "word": "illness",
+    "synonyms": [
+      "disease",
+      "sickness",
+      "ailment"
+    ],
+    "antonyms": [
+      "health",
+      "wellness"
+    ]
+  },
+  {
+    "word": "pollution",
+    "synonyms": [
+      "contamination",
+      "impurity"
+    ],
+    "antonyms": [
+      "purity",
+      "cleanliness"
+    ]
+  },
+  {
+    "word": "traffic",
+    "synonyms": [
+      "congestion",
+      "vehicles"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "heat",
+    "synonyms": [
+      "warmth",
+      "temperature",
+      "hotness"
+    ],
+    "antonyms": [
+      "cold",
+      "coolness"
+    ]
+  },
+  {
+    "word": "lack",
+    "synonyms": [
+      "shortage",
+      "deficiency",
+      "absence"
+    ],
+    "antonyms": [
+      "abundance",
+      "surplus"
+    ]
+  },
+  {
+    "word": "poverty",
+    "synonyms": [
+      "destitution",
+      "penury",
+      "hardship"
+    ],
+    "antonyms": [
+      "affluence",
+      "wealth"
+    ]
+  },
+  {
+    "word": "tired",
+    "synonyms": [
+      "exhausted",
+      "weary",
+      "fatigued"
+    ],
+    "antonyms": [
+      "energetic",
+      "refreshed"
+    ]
+  },
+  {
+    "word": "unemployment",
+    "synonyms": [
+      "joblessness",
+      "redundancy"
+    ],
+    "antonyms": [
+      "employment"
+    ]
+  },
+  {
+    "word": "sick",
+    "synonyms": [
+      "ill",
+      "unwell",
+      "diseased"
+    ],
+    "antonyms": [
+      "healthy",
+      "well"
+    ]
+  },
+  {
+    "word": "happen",
+    "synonyms": [
+      "occur",
+      "take place",
+      "arise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rain",
+    "synonyms": [
+      "precipitation",
+      "showers",
+      "rainfall"
+    ],
+    "antonyms": [
+      "drought"
+    ]
+  },
+  {
+    "word": "decrease",
+    "synonyms": [
+      "decline",
+      "reduce",
+      "diminish"
+    ],
+    "antonyms": [
+      "increase",
+      "rise"
+    ]
+  },
+  {
+    "word": "sleep",
+    "synonyms": [
+      "slumber",
+      "rest",
+      "repose"
+    ],
+    "antonyms": [
+      "wakefulness"
+    ]
+  },
+  {
+    "word": "consequently",
+    "synonyms": [
+      "therefore",
+      "as a result",
+      "accordingly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hence",
+    "synonyms": [
+      "therefore",
+      "thus",
+      "consequently"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thus",
+    "synonyms": [
+      "therefore",
+      "hence",
+      "so"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "due",
+    "synonyms": [
+      "attributable",
+      "owing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "owing to",
+    "synonyms": [
+      "because of",
+      "due to"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arise",
+    "synonyms": [
+      "emerge",
+      "originate",
+      "result"
+    ],
+    "antonyms": [
+      "subside",
+      "cease"
+    ]
+  },
+  {
+    "word": "spark",
+    "synonyms": [
+      "trigger",
+      "provoke",
+      "ignite"
+    ],
+    "antonyms": [
+      "extinguish",
+      "quell"
+    ]
+  },
+  {
+    "word": "fuel",
+    "synonyms": [
+      "intensify",
+      "aggravate",
+      "stoke"
+    ],
+    "antonyms": [
+      "dampen"
+    ]
+  },
+  {
+    "word": "weaken",
+    "synonyms": [
+      "undermine",
+      "diminish",
+      "erode"
+    ],
+    "antonyms": [
+      "strengthen",
+      "reinforce"
+    ]
+  },
+  {
+    "word": "boost",
+    "synonyms": [
+      "enhance",
+      "promote",
+      "raise"
+    ],
+    "antonyms": [
+      "reduce",
+      "diminish"
+    ]
+  },
+  {
+    "word": "hinder",
+    "synonyms": [
+      "impede",
+      "obstruct",
+      "hamper"
+    ],
+    "antonyms": [
+      "facilitate",
+      "aid"
+    ]
+  },
+  {
+    "word": "prevent",
+    "synonyms": [
+      "avert",
+      "preclude"
+    ],
+    "antonyms": [
+      "cause",
+      "permit"
+    ]
+  },
+  {
+    "word": "bring about",
+    "synonyms": [
+      "cause",
+      "produce",
+      "generate"
+    ],
+    "antonyms": [
+      "prevent"
+    ]
+  },
+  {
+    "word": "set off",
+    "synonyms": [
+      "trigger",
+      "initiate",
+      "spark"
+    ],
+    "antonyms": [
+      "halt",
+      "stop"
+    ]
+  },
+  {
+    "word": "give rise to",
+    "synonyms": [
+      "lead to",
+      "cause",
+      "result in"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accumulate",
+    "synonyms": [
+      "amass",
+      "gather",
+      "build up"
+    ],
+    "antonyms": [
+      "disperse",
+      "dissipate"
+    ]
+  },
+  {
+    "word": "stimulate",
+    "synonyms": [
+      "trigger",
+      "stir",
+      "encourage"
+    ],
+    "antonyms": [
+      "suppress",
+      "inhibit"
+    ]
+  },
+  {
+    "word": "deplete",
+    "synonyms": [
+      "exhaust",
+      "drain",
+      "reduce"
+    ],
+    "antonyms": [
+      "replenish",
+      "restore"
+    ]
+  },
+  {
+    "word": "erode",
+    "synonyms": [
+      "wear away",
+      "corrode",
+      "undermine"
+    ],
+    "antonyms": [
+      "build up",
+      "strengthen"
+    ]
+  },
+  {
+    "word": "subsequent",
+    "synonyms": [
+      "following",
+      "succeeding",
+      "later"
+    ],
+    "antonyms": [
+      "previous",
+      "prior"
+    ]
+  },
+  {
+    "word": "ensuing",
+    "synonyms": [
+      "resulting",
+      "consequent",
+      "following"
+    ],
+    "antonyms": [
+      "preceding",
+      "previous"
+    ]
+  },
+  {
+    "word": "spiral",
+    "synonyms": [
+      "escalate",
+      "intensify",
+      "soar"
+    ],
+    "antonyms": [
+      "decline",
+      "stabilise"
+    ]
+  },
+  {
+    "word": "instigate",
+    "synonyms": [
+      "incite",
+      "provoke",
+      "initiate"
+    ],
+    "antonyms": [
+      "prevent",
+      "deter"
+    ]
+  },
+  {
+    "word": "culminate",
+    "synonyms": [
+      "climax",
+      "peak",
+      "conclude"
+    ],
+    "antonyms": [
+      "begin",
+      "commence"
+    ]
+  },
+  {
+    "word": "ensue",
+    "synonyms": [
+      "follow",
+      "result",
+      "arise"
+    ],
+    "antonyms": [
+      "precede"
+    ]
+  },
+  {
+    "word": "underpin",
+    "synonyms": [
+      "support",
+      "sustain",
+      "reinforce"
+    ],
+    "antonyms": [
+      "undermine",
+      "weaken"
+    ]
+  },
+  {
+    "word": "beget",
+    "synonyms": [
+      "engender",
+      "produce",
+      "generate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "entail",
+    "synonyms": [
+      "involve",
+      "require",
+      "necessitate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "necessitate",
+    "synonyms": [
+      "require",
+      "demand",
+      "call for"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prompt",
+    "synonyms": [
+      "induce",
+      "provoke",
+      "motivate"
+    ],
+    "antonyms": [
+      "deter",
+      "discourage"
+    ]
+  },
+  {
+    "word": "compound",
+    "synonyms": [
+      "aggravate",
+      "exacerbate",
+      "worsen"
+    ],
+    "antonyms": [
+      "alleviate",
+      "mitigate"
+    ]
+  },
+  {
+    "word": "amplify",
+    "synonyms": [
+      "magnify",
+      "intensify",
+      "boost"
+    ],
+    "antonyms": [
+      "diminish",
+      "reduce"
+    ]
+  },
+  {
+    "word": "reverberate",
+    "synonyms": [
+      "echo",
+      "resound",
+      "spread"
+    ],
+    "antonyms": [
+      "subside",
+      "dampen"
+    ]
+  },
+  {
+    "word": "ramify",
+    "synonyms": [
+      "branch out",
+      "spread",
+      "proliferate"
+    ],
+    "antonyms": [
+      "converge",
+      "consolidate"
+    ]
+  },
+  {
+    "word": "consequential",
+    "synonyms": [
+      "significant",
+      "momentous",
+      "important"
+    ],
+    "antonyms": [
+      "inconsequential",
+      "trivial"
+    ]
+  },
+  {
+    "word": "incidental",
+    "synonyms": [
+      "peripheral",
+      "secondary",
+      "accidental"
+    ],
+    "antonyms": [
+      "essential",
+      "central"
+    ]
+  },
+  {
+    "word": "attributable",
+    "synonyms": [
+      "ascribable",
+      "traceable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ascribe",
+    "synonyms": [
+      "attribute",
+      "credit",
+      "assign"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eventuate",
+    "synonyms": [
+      "result",
+      "culminate",
+      "materialise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "infer",
+    "synonyms": [
+      "deduce",
+      "conclude",
+      "gather"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deduce",
+    "synonyms": [
+      "infer",
+      "conclude",
+      "reason"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corollary",
+    "synonyms": [
+      "consequence",
+      "outcome",
+      "result"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "repercussion",
+    "synonyms": [
+      "consequence",
+      "ramification",
+      "effect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aftermath",
+    "synonyms": [
+      "consequences",
+      "fallout",
+      "results"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "domino effect",
+    "synonyms": [
+      "chain reaction",
+      "ripple effect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "snowball",
+    "synonyms": [
+      "escalate",
+      "mushroom",
+      "multiply"
+    ],
+    "antonyms": [
+      "dwindle",
+      "shrink"
+    ]
+  },
+  {
+    "word": "proximate",
+    "synonyms": [
+      "immediate",
+      "direct",
+      "close"
+    ],
+    "antonyms": [
+      "remote",
+      "distant"
+    ]
+  },
+  {
+    "word": "germane",
+    "synonyms": [
+      "relevant",
+      "pertinent",
+      "applicable"
+    ],
+    "antonyms": [
+      "irrelevant",
+      "extraneous"
+    ]
+  },
+  {
+    "word": "aetiology",
+    "synonyms": [
+      "causation",
+      "origin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mediate",
+    "synonyms": [
+      "transmit",
+      "convey",
+      "facilitate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conduce",
+    "synonyms": [
+      "contribute",
+      "lead",
+      "favour"
+    ],
+    "antonyms": [
+      "hinder",
+      "impede"
+    ]
+  },
+  {
+    "word": "emanate",
+    "synonyms": [
+      "originate",
+      "issue",
+      "arise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concatenation",
+    "synonyms": [
+      "sequence",
+      "series",
+      "chain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sequela",
+    "synonyms": [
+      "aftereffect",
+      "consequence",
+      "complication"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "causation",
+    "synonyms": [
+      "causality",
+      "origination"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concatenate",
+    "synonyms": [
+      "link",
+      "chain",
+      "connect"
+    ],
+    "antonyms": [
+      "separate",
+      "disconnect"
+    ]
+  },
+  {
+    "word": "consequent",
+    "synonyms": [
+      "resulting",
+      "ensuing",
+      "subsequent"
+    ],
+    "antonyms": [
+      "antecedent",
+      "prior"
+    ]
+  },
+  {
+    "word": "resultant",
+    "synonyms": [
+      "resulting",
+      "consequent",
+      "ensuing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epiphenomenon",
+    "synonyms": [
+      "by-product",
+      "side effect",
+      "offshoot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aggravate",
+    "synonyms": [
+      "worsen",
+      "exacerbate",
+      "intensify"
+    ],
+    "antonyms": [
+      "alleviate",
+      "mitigate"
+    ]
+  },
+  {
+    "word": "perpetuate",
+    "synonyms": [
+      "sustain",
+      "maintain",
+      "prolong"
+    ],
+    "antonyms": [
+      "end",
+      "terminate"
+    ]
+  },
+  {
+    "word": "incite",
+    "synonyms": [
+      "provoke",
+      "stir up",
+      "instigate"
+    ],
+    "antonyms": [
+      "deter",
+      "pacify"
+    ]
+  },
+  {
+    "word": "foment",
+    "synonyms": [
+      "stir up",
+      "incite",
+      "instigate"
+    ],
+    "antonyms": [
+      "quell",
+      "suppress"
+    ]
+  },
+  {
+    "word": "kindle",
+    "synonyms": [
+      "ignite",
+      "stir",
+      "arouse"
+    ],
+    "antonyms": [
+      "extinguish",
+      "quench"
+    ]
+  },
+  {
+    "word": "effectuate",
+    "synonyms": [
+      "implement",
+      "execute",
+      "accomplish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "occasion",
+    "synonyms": [
+      "cause",
+      "bring about",
+      "provoke"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concomitance",
+    "synonyms": [
+      "coincidence",
+      "co-occurrence",
+      "concurrence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reverberation",
+    "synonyms": [
+      "echo",
+      "repercussion",
+      "aftershock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "resonance",
+    "synonyms": [
+      "echo",
+      "reverberation",
+      "impact"
+    ],
+    "antonyms": [
+      "dissonance"
+    ]
+  },
+  {
+    "word": "butterfly effect",
+    "synonyms": [
+      "sensitive dependence",
+      "ripple effect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cumulative",
+    "synonyms": [
+      "aggregate",
+      "collective",
+      "accruing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sequence",
+    "synonyms": [
+      "succession",
+      "series",
+      "order"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rationale",
+    "synonyms": [
+      "reasoning",
+      "justification",
+      "basis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "motivate",
+    "synonyms": [
+      "inspire",
+      "prompt",
+      "encourage"
+    ],
+    "antonyms": [
+      "discourage",
+      "deter"
+    ]
+  },
+  {
+    "word": "propel",
+    "synonyms": [
+      "drive",
+      "impel",
+      "push"
+    ],
+    "antonyms": [
+      "hinder",
+      "impede"
+    ]
+  },
+  {
+    "word": "galvanise",
+    "synonyms": [
+      "stimulate",
+      "rouse",
+      "energise"
+    ],
+    "antonyms": [
+      "dishearten",
+      "demoralise"
+    ]
+  },
+  {
+    "word": "fallacy",
+    "synonyms": [
+      "misconception",
+      "delusion",
+      "error"
+    ],
+    "antonyms": [
+      "truth"
+    ]
+  },
+  {
+    "word": "spurious",
+    "synonyms": [
+      "false",
+      "fake",
+      "bogus"
+    ],
+    "antonyms": [
+      "genuine",
+      "authentic"
+    ]
+  },
+  {
+    "word": "confound",
+    "synonyms": [
+      "confuse",
+      "perplex",
+      "bewilder"
+    ],
+    "antonyms": [
+      "clarify",
+      "enlighten"
+    ]
+  },
+  {
+    "word": "concurrent",
+    "synonyms": [
+      "simultaneous",
+      "coinciding",
+      "parallel"
+    ],
+    "antonyms": [
+      "sequential",
+      "consecutive"
+    ]
+  },
+  {
+    "word": "conjunction",
+    "synonyms": [
+      "combination",
+      "connection",
+      "association"
+    ],
+    "antonyms": [
+      "disjunction",
+      "separation"
+    ]
+  },
+  {
+    "word": "precursor",
+    "synonyms": [
+      "forerunner",
+      "harbinger",
+      "antecedent"
+    ],
+    "antonyms": [
+      "successor",
+      "descendant"
+    ]
+  },
+  {
+    "word": "sequitur",
+    "synonyms": [
+      "inference",
+      "consequence",
+      "conclusion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prelude",
+    "synonyms": [
+      "introduction",
+      "preface",
+      "preamble"
+    ],
+    "antonyms": [
+      "conclusion",
+      "epilogue"
+    ]
+  },
+  {
+    "word": "catalytic",
+    "synonyms": [
+      "stimulating",
+      "accelerating",
+      "triggering"
+    ],
+    "antonyms": [
+      "inhibiting"
+    ]
+  },
+  {
+    "word": "eventuality",
+    "synonyms": [
+      "possibility",
+      "contingency",
+      "occurrence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "upshot",
+    "synonyms": [
+      "outcome",
+      "result",
+      "consequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "outgrowth",
+    "synonyms": [
+      "by-product",
+      "offshoot",
+      "consequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "offshoot",
+    "synonyms": [
+      "by-product",
+      "branch",
+      "spin-off"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "backlash",
+    "synonyms": [
+      "reaction",
+      "recoil",
+      "outcry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "linchpin",
+    "synonyms": [
+      "cornerstone",
+      "key",
+      "mainstay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "genesis",
+    "synonyms": [
+      "origin",
+      "beginning",
+      "source"
+    ],
+    "antonyms": [
+      "end",
+      "demise"
+    ]
+  },
+  {
+    "word": "emanation",
+    "synonyms": [
+      "product",
+      "outflow",
+      "manifestation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "predicate",
+    "synonyms": [
+      "base",
+      "ground",
+      "found"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "unintended",
+    "synonyms": [
+      "unplanned",
+      "accidental",
+      "inadvertent"
+    ],
+    "antonyms": [
+      "intended",
+      "deliberate"
+    ]
+  }
+]

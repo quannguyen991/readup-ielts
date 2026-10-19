@@ -1,0 +1,1267 @@
+[
+  {
+    "word": "peer pressure",
+    "synonyms": [
+      "social pressure",
+      "group pressure"
+    ],
+    "antonyms": [
+      "individuality"
+    ]
+  },
+  {
+    "word": "self-esteem",
+    "synonyms": [
+      "self-worth",
+      "self-respect"
+    ],
+    "antonyms": [
+      "self-doubt"
+    ]
+  },
+  {
+    "word": "emotional intelligence",
+    "synonyms": [
+      "emotional awareness",
+      "EQ"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "authoritative parenting",
+    "synonyms": [
+      "democratic parenting",
+      "firm-but-fair parenting"
+    ],
+    "antonyms": [
+      "permissive parenting",
+      "authoritarian parenting"
+    ]
+  },
+  {
+    "word": "permissive parenting",
+    "synonyms": [
+      "indulgent parenting",
+      "lenient parenting"
+    ],
+    "antonyms": [
+      "authoritative parenting"
+    ]
+  },
+  {
+    "word": "authoritarian parenting",
+    "synonyms": [
+      "strict parenting",
+      "controlling parenting"
+    ],
+    "antonyms": [
+      "permissive parenting"
+    ]
+  },
+  {
+    "word": "neglectful parenting",
+    "synonyms": [
+      "uninvolved parenting"
+    ],
+    "antonyms": [
+      "authoritative parenting"
+    ]
+  },
+  {
+    "word": "free-range parenting",
+    "synonyms": [
+      "hands-off parenting"
+    ],
+    "antonyms": [
+      "helicopter parenting"
+    ]
+  },
+  {
+    "word": "growth mindset",
+    "synonyms": [
+      "incremental mindset",
+      "learning orientation"
+    ],
+    "antonyms": [
+      "fixed mindset"
+    ]
+  },
+  {
+    "word": "fixed mindset",
+    "synonyms": [
+      "entity mindset",
+      "closed mindset"
+    ],
+    "antonyms": [
+      "growth mindset"
+    ]
+  },
+  {
+    "word": "zone of proximal development",
+    "synonyms": [
+      "ZPD",
+      "learning zone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "generation gap",
+    "synonyms": [
+      "generational divide",
+      "age gap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "child",
+    "synonyms": [
+      "kid",
+      "youngster"
+    ],
+    "antonyms": [
+      "adult"
+    ]
+  },
+  {
+    "word": "toddler",
+    "synonyms": [
+      "young child",
+      "tot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "teenager",
+    "synonyms": [
+      "adolescent",
+      "teen"
+    ],
+    "antonyms": [
+      "adult"
+    ]
+  },
+  {
+    "word": "childhood",
+    "synonyms": [
+      "early years",
+      "infancy"
+    ],
+    "antonyms": [
+      "adulthood"
+    ]
+  },
+  {
+    "word": "playground",
+    "synonyms": [
+      "play area",
+      "schoolyard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "homework",
+    "synonyms": [
+      "assignment",
+      "schoolwork"
+    ],
+    "antonyms": [
+      "classwork"
+    ]
+  },
+  {
+    "word": "nursery",
+    "synonyms": [
+      "kindergarten",
+      "preschool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tantrum",
+    "synonyms": [
+      "meltdown",
+      "outburst"
+    ],
+    "antonyms": [
+      "composure"
+    ]
+  },
+  {
+    "word": "curious",
+    "synonyms": [
+      "inquisitive",
+      "interested"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "word": "obedient",
+    "synonyms": [
+      "compliant",
+      "dutiful"
+    ],
+    "antonyms": [
+      "disobedient"
+    ]
+  },
+  {
+    "word": "naughty",
+    "synonyms": [
+      "mischievous",
+      "badly behaved"
+    ],
+    "antonyms": [
+      "well-behaved"
+    ]
+  },
+  {
+    "word": "gentle",
+    "synonyms": [
+      "tender",
+      "kind"
+    ],
+    "antonyms": [
+      "harsh"
+    ]
+  },
+  {
+    "word": "sibling",
+    "synonyms": [
+      "brother",
+      "sister"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "toy",
+    "synonyms": [
+      "plaything"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bedtime",
+    "synonyms": [
+      "lights-out"
+    ],
+    "antonyms": [
+      "wake-up time"
+    ]
+  },
+  {
+    "word": "nurture",
+    "synonyms": [
+      "foster",
+      "cultivate"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "supervise",
+    "synonyms": [
+      "oversee",
+      "monitor"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "curfew",
+    "synonyms": [
+      "time limit",
+      "deadline"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "guardian",
+    "synonyms": [
+      "custodian",
+      "protector"
+    ],
+    "antonyms": [
+      "ward"
+    ]
+  },
+  {
+    "word": "confide",
+    "synonyms": [
+      "open up",
+      "share secrets"
+    ],
+    "antonyms": [
+      "conceal"
+    ]
+  },
+  {
+    "word": "sensitive",
+    "synonyms": [
+      "tender",
+      "emotional"
+    ],
+    "antonyms": [
+      "callous"
+    ]
+  },
+  {
+    "word": "impulsive",
+    "synonyms": [
+      "hasty",
+      "rash"
+    ],
+    "antonyms": [
+      "deliberate"
+    ]
+  },
+  {
+    "word": "stubborn",
+    "synonyms": [
+      "obstinate",
+      "headstrong"
+    ],
+    "antonyms": [
+      "flexible"
+    ]
+  },
+  {
+    "word": "supportive",
+    "synonyms": [
+      "encouraging",
+      "caring"
+    ],
+    "antonyms": [
+      "discouraging"
+    ]
+  },
+  {
+    "word": "tutor",
+    "synonyms": [
+      "instructor",
+      "coach"
+    ],
+    "antonyms": [
+      "pupil"
+    ]
+  },
+  {
+    "word": "playgroup",
+    "synonyms": [
+      "toddler group",
+      "playschool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bond",
+    "synonyms": [
+      "attachment",
+      "tie"
+    ],
+    "antonyms": [
+      "estrangement"
+    ]
+  },
+  {
+    "word": "friendship",
+    "synonyms": [
+      "companionship",
+      "camaraderie"
+    ],
+    "antonyms": [
+      "enmity"
+    ]
+  },
+  {
+    "word": "puberty",
+    "synonyms": [
+      "adolescence",
+      "pubescence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "peer",
+    "synonyms": [
+      "equal",
+      "contemporary"
+    ],
+    "antonyms": [
+      "superior"
+    ]
+  },
+  {
+    "word": "dependent",
+    "synonyms": [
+      "reliant",
+      "needy"
+    ],
+    "antonyms": [
+      "independent"
+    ]
+  },
+  {
+    "word": "independence",
+    "synonyms": [
+      "self-reliance",
+      "autonomy"
+    ],
+    "antonyms": [
+      "dependence"
+    ]
+  },
+  {
+    "word": "sleepover",
+    "synonyms": [
+      "slumber party",
+      "overnight stay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "homesick",
+    "synonyms": [
+      "longing for home",
+      "missing home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ambitious",
+    "synonyms": [
+      "aspiring",
+      "driven"
+    ],
+    "antonyms": [
+      "complacent"
+    ]
+  },
+  {
+    "word": "considerate",
+    "synonyms": [
+      "thoughtful",
+      "attentive"
+    ],
+    "antonyms": [
+      "thoughtless"
+    ]
+  },
+  {
+    "word": "cognitive",
+    "synonyms": [
+      "mental",
+      "intellectual"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "maturation",
+    "synonyms": [
+      "development",
+      "growing up"
+    ],
+    "antonyms": [
+      "regression"
+    ]
+  },
+  {
+    "word": "developmental",
+    "synonyms": [
+      "growth-related",
+      "maturational"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "temperament",
+    "synonyms": [
+      "disposition",
+      "personality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inhibition",
+    "synonyms": [
+      "restraint",
+      "reticence"
+    ],
+    "antonyms": [
+      "abandon"
+    ]
+  },
+  {
+    "word": "impressionable",
+    "synonyms": [
+      "susceptible",
+      "malleable"
+    ],
+    "antonyms": [
+      "resistant"
+    ]
+  },
+  {
+    "word": "precocious",
+    "synonyms": [
+      "advanced",
+      "gifted"
+    ],
+    "antonyms": [
+      "backward"
+    ]
+  },
+  {
+    "word": "disciplinary",
+    "synonyms": [
+      "corrective",
+      "punitive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indulgent",
+    "synonyms": [
+      "lenient",
+      "tolerant"
+    ],
+    "antonyms": [
+      "strict"
+    ]
+  },
+  {
+    "word": "overprotective",
+    "synonyms": [
+      "smothering",
+      "overbearing"
+    ],
+    "antonyms": [
+      "hands-off"
+    ]
+  },
+  {
+    "word": "nonchalant",
+    "synonyms": [
+      "casual",
+      "unconcerned"
+    ],
+    "antonyms": [
+      "anxious"
+    ]
+  },
+  {
+    "word": "disobedience",
+    "synonyms": [
+      "defiance",
+      "insubordination"
+    ],
+    "antonyms": [
+      "obedience"
+    ]
+  },
+  {
+    "word": "reprimand",
+    "synonyms": [
+      "rebuke",
+      "scolding"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "word": "adolescent",
+    "synonyms": [
+      "teenager",
+      "youth"
+    ],
+    "antonyms": [
+      "adult"
+    ]
+  },
+  {
+    "word": "sibling rivalry",
+    "synonyms": [
+      "sibling competition",
+      "sibling jealousy"
+    ],
+    "antonyms": [
+      "sibling harmony"
+    ]
+  },
+  {
+    "word": "empathetic",
+    "synonyms": [
+      "compassionate",
+      "sympathetic"
+    ],
+    "antonyms": [
+      "unfeeling"
+    ]
+  },
+  {
+    "word": "altruism",
+    "synonyms": [
+      "selflessness",
+      "philanthropy"
+    ],
+    "antonyms": [
+      "selfishness"
+    ]
+  },
+  {
+    "word": "compassion",
+    "synonyms": [
+      "empathy",
+      "kindness"
+    ],
+    "antonyms": [
+      "cruelty"
+    ]
+  },
+  {
+    "word": "disposition",
+    "synonyms": [
+      "temperament",
+      "nature"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "adversity",
+    "synonyms": [
+      "hardship",
+      "misfortune"
+    ],
+    "antonyms": [
+      "prosperity"
+    ]
+  },
+  {
+    "word": "endurance",
+    "synonyms": [
+      "stamina",
+      "perseverance"
+    ],
+    "antonyms": [
+      "weakness"
+    ]
+  },
+  {
+    "word": "vulnerability",
+    "synonyms": [
+      "fragility",
+      "susceptibility"
+    ],
+    "antonyms": [
+      "resilience"
+    ]
+  },
+  {
+    "word": "withdrawn",
+    "synonyms": [
+      "reserved",
+      "introverted"
+    ],
+    "antonyms": [
+      "outgoing"
+    ]
+  },
+  {
+    "word": "inquisitive",
+    "synonyms": [
+      "curious",
+      "questioning"
+    ],
+    "antonyms": [
+      "incurious"
+    ]
+  },
+  {
+    "word": "aptitude",
+    "synonyms": [
+      "talent",
+      "flair"
+    ],
+    "antonyms": [
+      "ineptitude"
+    ]
+  },
+  {
+    "word": "tutelage",
+    "synonyms": [
+      "guidance",
+      "instruction"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "delinquency",
+    "synonyms": [
+      "juvenile crime",
+      "misconduct"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "truancy",
+    "synonyms": [
+      "skipping class",
+      "absenteeism"
+    ],
+    "antonyms": [
+      "attendance"
+    ]
+  },
+  {
+    "word": "self-regulation",
+    "synonyms": [
+      "self-control",
+      "self-discipline"
+    ],
+    "antonyms": [
+      "impulsivity"
+    ]
+  },
+  {
+    "word": "mimicry",
+    "synonyms": [
+      "imitation",
+      "copying"
+    ],
+    "antonyms": [
+      "originality"
+    ]
+  },
+  {
+    "word": "egocentric",
+    "synonyms": [
+      "self-centred",
+      "selfish"
+    ],
+    "antonyms": [
+      "altruistic"
+    ]
+  },
+  {
+    "word": "ambivalent",
+    "synonyms": [
+      "conflicted",
+      "torn"
+    ],
+    "antonyms": [
+      "decisive"
+    ]
+  },
+  {
+    "word": "resentment",
+    "synonyms": [
+      "bitterness",
+      "grudge"
+    ],
+    "antonyms": [
+      "gratitude"
+    ]
+  },
+  {
+    "word": "intrinsic",
+    "synonyms": [
+      "inherent",
+      "innate"
+    ],
+    "antonyms": [
+      "extrinsic"
+    ]
+  },
+  {
+    "word": "conscientious",
+    "synonyms": [
+      "diligent",
+      "meticulous"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "gregarious",
+    "synonyms": [
+      "sociable",
+      "outgoing"
+    ],
+    "antonyms": [
+      "reclusive"
+    ]
+  },
+  {
+    "word": "solace",
+    "synonyms": [
+      "comfort",
+      "consolation"
+    ],
+    "antonyms": [
+      "distress"
+    ]
+  },
+  {
+    "word": "reticent",
+    "synonyms": [
+      "reserved",
+      "quiet"
+    ],
+    "antonyms": [
+      "forthcoming"
+    ]
+  },
+  {
+    "word": "pedagogy",
+    "synonyms": [
+      "teaching method",
+      "instruction"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nascent",
+    "synonyms": [
+      "emerging",
+      "budding"
+    ],
+    "antonyms": [
+      "mature"
+    ]
+  },
+  {
+    "word": "precocity",
+    "synonyms": [
+      "early development",
+      "advancement"
+    ],
+    "antonyms": [
+      "backwardness"
+    ]
+  },
+  {
+    "word": "puerile",
+    "synonyms": [
+      "childish",
+      "immature"
+    ],
+    "antonyms": [
+      "mature"
+    ]
+  },
+  {
+    "word": "juvenile",
+    "synonyms": [
+      "youthful",
+      "adolescent"
+    ],
+    "antonyms": [
+      "adult"
+    ]
+  },
+  {
+    "word": "infantile",
+    "synonyms": [
+      "babyish",
+      "childish"
+    ],
+    "antonyms": [
+      "mature"
+    ]
+  },
+  {
+    "word": "filial",
+    "synonyms": [
+      "dutiful",
+      "devoted"
+    ],
+    "antonyms": [
+      "disrespectful"
+    ]
+  },
+  {
+    "word": "paternal",
+    "synonyms": [
+      "fatherly"
+    ],
+    "antonyms": [
+      "maternal"
+    ]
+  },
+  {
+    "word": "maternal",
+    "synonyms": [
+      "motherly"
+    ],
+    "antonyms": [
+      "paternal"
+    ]
+  },
+  {
+    "word": "avuncular",
+    "synonyms": [
+      "kindly",
+      "genial"
+    ],
+    "antonyms": [
+      "aloof"
+    ]
+  },
+  {
+    "word": "sagacious",
+    "synonyms": [
+      "wise",
+      "astute"
+    ],
+    "antonyms": [
+      "foolish"
+    ]
+  },
+  {
+    "word": "impetuous",
+    "synonyms": [
+      "impulsive",
+      "hasty"
+    ],
+    "antonyms": [
+      "deliberate"
+    ]
+  },
+  {
+    "word": "truculent",
+    "synonyms": [
+      "belligerent",
+      "combative"
+    ],
+    "antonyms": [
+      "amiable"
+    ]
+  },
+  {
+    "word": "petulant",
+    "synonyms": [
+      "sulky",
+      "peevish"
+    ],
+    "antonyms": [
+      "good-humoured"
+    ]
+  },
+  {
+    "word": "wayward",
+    "synonyms": [
+      "wilful",
+      "unruly"
+    ],
+    "antonyms": [
+      "obedient"
+    ]
+  },
+  {
+    "word": "incorrigible",
+    "synonyms": [
+      "hopeless",
+      "irredeemable"
+    ],
+    "antonyms": [
+      "tractable"
+    ]
+  },
+  {
+    "word": "docile",
+    "synonyms": [
+      "tame",
+      "meek"
+    ],
+    "antonyms": [
+      "unruly"
+    ]
+  },
+  {
+    "word": "pliable",
+    "synonyms": [
+      "malleable",
+      "flexible"
+    ],
+    "antonyms": [
+      "rigid"
+    ]
+  },
+  {
+    "word": "formative",
+    "synonyms": [
+      "shaping",
+      "developmental"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indoctrination",
+    "synonyms": [
+      "brainwashing",
+      "conditioning"
+    ],
+    "antonyms": [
+      "enlightenment"
+    ]
+  },
+  {
+    "word": "didactic",
+    "synonyms": [
+      "instructive",
+      "pedagogical"
+    ],
+    "antonyms": [
+      "entertaining"
+    ]
+  },
+  {
+    "word": "cathartic",
+    "synonyms": [
+      "cleansing",
+      "liberating"
+    ],
+    "antonyms": [
+      "stifling"
+    ]
+  },
+  {
+    "word": "introspection",
+    "synonyms": [
+      "self-examination",
+      "self-reflection"
+    ],
+    "antonyms": [
+      "extroversion"
+    ]
+  },
+  {
+    "word": "ennui",
+    "synonyms": [
+      "boredom",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm"
+    ]
+  },
+  {
+    "word": "solicitous",
+    "synonyms": [
+      "attentive",
+      "caring"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "word": "sanguine",
+    "synonyms": [
+      "optimistic",
+      "upbeat"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "word": "diffident",
+    "synonyms": [
+      "shy",
+      "timid"
+    ],
+    "antonyms": [
+      "confident"
+    ]
+  },
+  {
+    "word": "ebullient",
+    "synonyms": [
+      "exuberant",
+      "buoyant"
+    ],
+    "antonyms": [
+      "subdued"
+    ]
+  },
+  {
+    "word": "fractious",
+    "synonyms": [
+      "irritable",
+      "quarrelsome"
+    ],
+    "antonyms": [
+      "placid"
+    ]
+  },
+  {
+    "word": "sullen",
+    "synonyms": [
+      "sulky",
+      "moody"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "morose",
+    "synonyms": [
+      "gloomy",
+      "dejected"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "lethargic",
+    "synonyms": [
+      "sluggish",
+      "listless"
+    ],
+    "antonyms": [
+      "energetic"
+    ]
+  },
+  {
+    "word": "precept",
+    "synonyms": [
+      "principle",
+      "maxim"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "progeny",
+    "synonyms": [
+      "offspring",
+      "descendants"
+    ],
+    "antonyms": [
+      "ancestors"
+    ]
+  },
+  {
+    "word": "scion",
+    "synonyms": [
+      "heir",
+      "descendant"
+    ],
+    "antonyms": [
+      "ancestor"
+    ]
+  },
+  {
+    "word": "consanguinity",
+    "synonyms": [
+      "blood relation",
+      "kinship"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fledgling",
+    "synonyms": [
+      "novice",
+      "newcomer"
+    ],
+    "antonyms": [
+      "veteran"
+    ]
+  },
+  {
+    "word": "neophyte",
+    "synonyms": [
+      "novice",
+      "tyro"
+    ],
+    "antonyms": [
+      "veteran"
+    ]
+  },
+  {
+    "word": "orphan",
+    "synonyms": [
+      "foundling",
+      "waif"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "callow",
+    "synonyms": [
+      "inexperienced",
+      "green"
+    ],
+    "antonyms": [
+      "seasoned"
+    ]
+  },
+  {
+    "word": "gauche",
+    "synonyms": [
+      "awkward",
+      "clumsy"
+    ],
+    "antonyms": [
+      "poised"
+    ]
+  },
+  {
+    "word": "unruly",
+    "synonyms": [
+      "disorderly",
+      "rowdy"
+    ],
+    "antonyms": [
+      "orderly"
+    ]
+  },
+  {
+    "word": "raucous",
+    "synonyms": [
+      "loud",
+      "boisterous"
+    ],
+    "antonyms": [
+      "hushed"
+    ]
+  },
+  {
+    "word": "cantankerous",
+    "synonyms": [
+      "grumpy",
+      "irritable"
+    ],
+    "antonyms": [
+      "good-natured"
+    ]
+  },
+  {
+    "word": "obstreperous",
+    "synonyms": [
+      "unruly",
+      "boisterous"
+    ],
+    "antonyms": [
+      "compliant"
+    ]
+  },
+  {
+    "word": "vexatious",
+    "synonyms": [
+      "annoying",
+      "troublesome"
+    ],
+    "antonyms": [
+      "agreeable"
+    ]
+  }
+]

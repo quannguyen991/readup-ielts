@@ -1,0 +1,1132 @@
+[
+  {
+    "word": "extradite",
+    "synonyms": [
+      "hand over",
+      "surrender"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impeachment",
+    "synonyms": [
+      "indictment",
+      "removal from office"
+    ],
+    "antonyms": [
+      "acquittal"
+    ]
+  },
+  {
+    "word": "habeas corpus",
+    "synonyms": [
+      "writ of production",
+      "challenge to detention"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "election",
+    "synonyms": [
+      "poll",
+      "ballot"
+    ],
+    "antonyms": [
+      "appointment"
+    ]
+  },
+  {
+    "word": "vote",
+    "synonyms": [
+      "ballot",
+      "suffrage"
+    ],
+    "antonyms": [
+      "abstention"
+    ]
+  },
+  {
+    "word": "parliament",
+    "synonyms": [
+      "legislature",
+      "assembly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "minister",
+    "synonyms": [
+      "secretary",
+      "cabinet member"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "president",
+    "synonyms": [
+      "head of state",
+      "chief executive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "democracy",
+    "synonyms": [
+      "popular rule",
+      "self-government"
+    ],
+    "antonyms": [
+      "dictatorship",
+      "autocracy"
+    ]
+  },
+  {
+    "word": "republic",
+    "synonyms": [
+      "commonwealth",
+      "free state"
+    ],
+    "antonyms": [
+      "monarchy"
+    ]
+  },
+  {
+    "word": "tax",
+    "synonyms": [
+      "levy",
+      "duty"
+    ],
+    "antonyms": [
+      "subsidy",
+      "rebate"
+    ]
+  },
+  {
+    "word": "council",
+    "synonyms": [
+      "assembly",
+      "board"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mayor",
+    "synonyms": [
+      "civic leader",
+      "city head"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "referendum",
+    "synonyms": [
+      "plebiscite",
+      "popular vote"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lawyer",
+    "synonyms": [
+      "attorney",
+      "counsel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "police",
+    "synonyms": [
+      "constabulary",
+      "law enforcement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prison",
+    "synonyms": [
+      "jail",
+      "penitentiary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "law",
+    "synonyms": [
+      "statute",
+      "legislation"
+    ],
+    "antonyms": [
+      "lawlessness"
+    ]
+  },
+  {
+    "word": "candidate",
+    "synonyms": [
+      "contender",
+      "nominee"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "campaign",
+    "synonyms": [
+      "drive",
+      "crusade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "monarchy",
+    "synonyms": [
+      "kingdom",
+      "crown rule"
+    ],
+    "antonyms": [
+      "republic"
+    ]
+  },
+  {
+    "word": "army",
+    "synonyms": [
+      "military",
+      "armed forces"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ballot",
+    "synonyms": [
+      "voting slip",
+      "secret vote"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manifesto",
+    "synonyms": [
+      "policy statement",
+      "platform"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coalition",
+    "synonyms": [
+      "alliance",
+      "union"
+    ],
+    "antonyms": [
+      "opposition"
+    ]
+  },
+  {
+    "word": "opposition",
+    "synonyms": [
+      "minority party",
+      "resistance"
+    ],
+    "antonyms": [
+      "government",
+      "support"
+    ]
+  },
+  {
+    "word": "cabinet",
+    "synonyms": [
+      "ministry",
+      "executive council"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lobbying",
+    "synonyms": [
+      "advocacy",
+      "pressure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bill",
+    "synonyms": [
+      "draft law",
+      "proposal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "taxation",
+    "synonyms": [
+      "levying",
+      "tax collection"
+    ],
+    "antonyms": [
+      "exemption"
+    ]
+  },
+  {
+    "word": "benefit",
+    "synonyms": [
+      "allowance",
+      "welfare payment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nationalism",
+    "synonyms": [
+      "patriotism",
+      "jingoism"
+    ],
+    "antonyms": [
+      "internationalism"
+    ]
+  },
+  {
+    "word": "populism",
+    "synonyms": [
+      "demagoguery",
+      "popular appeal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bureaucracy",
+    "synonyms": [
+      "civil service",
+      "administration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diplomacy",
+    "synonyms": [
+      "statecraft",
+      "negotiation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embassy",
+    "synonyms": [
+      "legation",
+      "diplomatic mission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "treaty",
+    "synonyms": [
+      "pact",
+      "accord"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annexation",
+    "synonyms": [
+      "seizure",
+      "incorporation"
+    ],
+    "antonyms": [
+      "secession"
+    ]
+  },
+  {
+    "word": "regime",
+    "synonyms": [
+      "government",
+      "administration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dictatorship",
+    "synonyms": [
+      "tyranny",
+      "absolutism"
+    ],
+    "antonyms": [
+      "democracy"
+    ]
+  },
+  {
+    "word": "authoritarian",
+    "synonyms": [
+      "autocratic",
+      "dictatorial"
+    ],
+    "antonyms": [
+      "democratic",
+      "liberal"
+    ]
+  },
+  {
+    "word": "accountability",
+    "synonyms": [
+      "answerability",
+      "responsibility"
+    ],
+    "antonyms": [
+      "impunity"
+    ]
+  },
+  {
+    "word": "transparency",
+    "synonyms": [
+      "openness",
+      "candour"
+    ],
+    "antonyms": [
+      "secrecy",
+      "opacity"
+    ]
+  },
+  {
+    "word": "scrutiny",
+    "synonyms": [
+      "examination",
+      "inspection"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "veto",
+    "synonyms": [
+      "prohibition",
+      "rejection"
+    ],
+    "antonyms": [
+      "approval"
+    ]
+  },
+  {
+    "word": "filibuster",
+    "synonyms": [
+      "obstruction",
+      "stonewalling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "legislature",
+    "synonyms": [
+      "law-making body",
+      "assembly"
+    ],
+    "antonyms": [
+      "executive"
+    ]
+  },
+  {
+    "word": "inauguration",
+    "synonyms": [
+      "investiture",
+      "installation"
+    ],
+    "antonyms": [
+      "resignation"
+    ]
+  },
+  {
+    "word": "ratify",
+    "synonyms": [
+      "approve",
+      "confirm"
+    ],
+    "antonyms": [
+      "reject",
+      "repudiate"
+    ]
+  },
+  {
+    "word": "mandate",
+    "synonyms": [
+      "authority",
+      "warrant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "constituency",
+    "synonyms": [
+      "electoral district",
+      "ward"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "incumbent",
+    "synonyms": [
+      "office holder",
+      "current holder"
+    ],
+    "antonyms": [
+      "challenger"
+    ]
+  },
+  {
+    "word": "oversight",
+    "synonyms": [
+      "supervision",
+      "monitoring"
+    ],
+    "antonyms": [
+      "negligence"
+    ]
+  },
+  {
+    "word": "arbitrary",
+    "synonyms": [
+      "capricious",
+      "random"
+    ],
+    "antonyms": [
+      "systematic",
+      "reasoned"
+    ]
+  },
+  {
+    "word": "impartial",
+    "synonyms": [
+      "unbiased",
+      "neutral"
+    ],
+    "antonyms": [
+      "partial",
+      "biased"
+    ]
+  },
+  {
+    "word": "statutory",
+    "synonyms": [
+      "legal",
+      "prescribed by law"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ombudsman",
+    "synonyms": [
+      "public advocate",
+      "grievance official"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "autonomy",
+    "synonyms": [
+      "self-rule",
+      "independence"
+    ],
+    "antonyms": [
+      "dependence",
+      "subordination"
+    ]
+  },
+  {
+    "word": "devolution",
+    "synonyms": [
+      "decentralization",
+      "transfer of power"
+    ],
+    "antonyms": [
+      "centralization"
+    ]
+  },
+  {
+    "word": "federal",
+    "synonyms": [
+      "confederal",
+      "union-based"
+    ],
+    "antonyms": [
+      "unitary"
+    ]
+  },
+  {
+    "word": "decentralize",
+    "synonyms": [
+      "devolve",
+      "delegate"
+    ],
+    "antonyms": [
+      "centralize"
+    ]
+  },
+  {
+    "word": "legitimacy",
+    "synonyms": [
+      "legality",
+      "validity"
+    ],
+    "antonyms": [
+      "illegitimacy"
+    ]
+  },
+  {
+    "word": "exemption",
+    "synonyms": [
+      "immunity",
+      "exception"
+    ],
+    "antonyms": [
+      "liability"
+    ]
+  },
+  {
+    "word": "appeal",
+    "synonyms": [
+      "challenge",
+      "review"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embezzle",
+    "synonyms": [
+      "misappropriate",
+      "defraud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cabal",
+    "synonyms": [
+      "conspiracy",
+      "faction"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sedition",
+    "synonyms": [
+      "incitement",
+      "subversion"
+    ],
+    "antonyms": [
+      "loyalty"
+    ]
+  },
+  {
+    "word": "treason",
+    "synonyms": [
+      "state betrayal",
+      "disloyalty"
+    ],
+    "antonyms": [
+      "loyalty",
+      "patriotism"
+    ]
+  },
+  {
+    "word": "espionage",
+    "synonyms": [
+      "spying",
+      "intelligence gathering"
+    ],
+    "antonyms": [
+      "counterintelligence"
+    ]
+  },
+  {
+    "word": "conscription",
+    "synonyms": [
+      "draft",
+      "compulsory enlistment"
+    ],
+    "antonyms": [
+      "volunteer service"
+    ]
+  },
+  {
+    "word": "gerrymandering",
+    "synonyms": [
+      "electoral manipulation",
+      "district rigging"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quorum",
+    "synonyms": [
+      "minimum attendance",
+      "required number"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bipartisan",
+    "synonyms": [
+      "cross-party",
+      "non-partisan"
+    ],
+    "antonyms": [
+      "partisan"
+    ]
+  },
+  {
+    "word": "plenary",
+    "synonyms": [
+      "full",
+      "complete"
+    ],
+    "antonyms": [
+      "partial"
+    ]
+  },
+  {
+    "word": "prerogative",
+    "synonyms": [
+      "privilege",
+      "entitlement"
+    ],
+    "antonyms": [
+      "obligation"
+    ]
+  },
+  {
+    "word": "tenure",
+    "synonyms": [
+      "term",
+      "incumbency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deregulation",
+    "synonyms": [
+      "liberalization",
+      "removal of controls"
+    ],
+    "antonyms": [
+      "regulation"
+    ]
+  },
+  {
+    "word": "privatize",
+    "synonyms": [
+      "denationalize",
+      "sell off"
+    ],
+    "antonyms": [
+      "nationalize"
+    ]
+  },
+  {
+    "word": "fiduciary",
+    "synonyms": [
+      "trustee",
+      "custodial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lobbyist",
+    "synonyms": [
+      "advocate",
+      "pressure group agent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "constitutional",
+    "synonyms": [
+      "statutory",
+      "lawful"
+    ],
+    "antonyms": [
+      "unconstitutional"
+    ]
+  },
+  {
+    "word": "parliamentary",
+    "synonyms": [
+      "legislative",
+      "congressional"
+    ],
+    "antonyms": [
+      "presidential"
+    ]
+  },
+  {
+    "word": "electorate",
+    "synonyms": [
+      "voters",
+      "constituents"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "autocracy",
+    "synonyms": [
+      "absolutism",
+      "despotism"
+    ],
+    "antonyms": [
+      "democracy"
+    ]
+  },
+  {
+    "word": "totalitarian",
+    "synonyms": [
+      "authoritarian",
+      "dictatorial"
+    ],
+    "antonyms": [
+      "liberal",
+      "pluralistic"
+    ]
+  },
+  {
+    "word": "despot",
+    "synonyms": [
+      "tyrant",
+      "dictator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tyranny",
+    "synonyms": [
+      "despotism",
+      "oppression"
+    ],
+    "antonyms": [
+      "liberty",
+      "freedom"
+    ]
+  },
+  {
+    "word": "usurp",
+    "synonyms": [
+      "seize",
+      "appropriate"
+    ],
+    "antonyms": [
+      "relinquish"
+    ]
+  },
+  {
+    "word": "insurrection",
+    "synonyms": [
+      "uprising",
+      "revolt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "junta",
+    "synonyms": [
+      "military council",
+      "military government"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coup",
+    "synonyms": [
+      "overthrow",
+      "putsch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pander",
+    "synonyms": [
+      "cater",
+      "indulge"
+    ],
+    "antonyms": [
+      "resist"
+    ]
+  },
+  {
+    "word": "expedient",
+    "synonyms": [
+      "convenient",
+      "practical"
+    ],
+    "antonyms": [
+      "inexpedient"
+    ]
+  },
+  {
+    "word": "perfunctory",
+    "synonyms": [
+      "cursory",
+      "superficial"
+    ],
+    "antonyms": [
+      "thorough",
+      "meticulous"
+    ]
+  },
+  {
+    "word": "fiat",
+    "synonyms": [
+      "decree",
+      "edict"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caucus",
+    "synonyms": [
+      "faction",
+      "party group"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impasse",
+    "synonyms": [
+      "deadlock",
+      "stalemate"
+    ],
+    "antonyms": [
+      "breakthrough"
+    ]
+  },
+  {
+    "word": "statecraft",
+    "synonyms": [
+      "statesmanship",
+      "governance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "realpolitik",
+    "synonyms": [
+      "pragmatic politics",
+      "power politics"
+    ],
+    "antonyms": [
+      "idealism"
+    ]
+  },
+  {
+    "word": "encroach",
+    "synonyms": [
+      "trespass",
+      "intrude"
+    ],
+    "antonyms": [
+      "withdraw"
+    ]
+  },
+  {
+    "word": "plenipotentiary",
+    "synonyms": [
+      "fully empowered envoy",
+      "ambassador"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emissary",
+    "synonyms": [
+      "envoy",
+      "delegate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "envoy",
+    "synonyms": [
+      "diplomat",
+      "emissary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dispensation",
+    "synonyms": [
+      "exemption",
+      "special permission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jurisprudence",
+    "synonyms": [
+      "legal philosophy",
+      "case law"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "codicil",
+    "synonyms": [
+      "will supplement",
+      "addendum"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "escheat",
+    "synonyms": [
+      "forfeiture to state",
+      "reversion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "usufruct",
+    "synonyms": [
+      "right of use",
+      "beneficial enjoyment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moratorium",
+    "synonyms": [
+      "suspension",
+      "postponement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sequestration",
+    "synonyms": [
+      "seizure",
+      "confiscation"
+    ],
+    "antonyms": [
+      "restitution"
+    ]
+  },
+  {
+    "word": "requisition",
+    "synonyms": [
+      "commandeer",
+      "seizure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eminent domain",
+    "synonyms": [
+      "compulsory purchase",
+      "expropriation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nullify",
+    "synonyms": [
+      "invalidate",
+      "annul"
+    ],
+    "antonyms": [
+      "validate",
+      "ratify"
+    ]
+  },
+  {
+    "word": "abrogate",
+    "synonyms": [
+      "repeal",
+      "annul"
+    ],
+    "antonyms": [
+      "enact",
+      "reinstate"
+    ]
+  },
+  {
+    "word": "proscribe",
+    "synonyms": [
+      "ban",
+      "prohibit"
+    ],
+    "antonyms": [
+      "permit",
+      "sanction"
+    ]
+  },
+  {
+    "word": "contravene",
+    "synonyms": [
+      "violate",
+      "breach"
+    ],
+    "antonyms": [
+      "comply with",
+      "observe"
+    ]
+  },
+  {
+    "word": "dereliction",
+    "synonyms": [
+      "neglect",
+      "negligence"
+    ],
+    "antonyms": [
+      "diligence"
+    ]
+  },
+  {
+    "word": "malfeasance",
+    "synonyms": [
+      "misconduct",
+      "wrongdoing in office"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "culpable",
+    "synonyms": [
+      "blameworthy",
+      "guilty"
+    ],
+    "antonyms": [
+      "blameless",
+      "innocent"
+    ]
+  },
+  {
+    "word": "exonerate",
+    "synonyms": [
+      "vindicate",
+      "absolve"
+    ],
+    "antonyms": [
+      "convict",
+      "incriminate"
+    ]
+  },
+  {
+    "word": "indemnity",
+    "synonyms": [
+      "compensation",
+      "immunity from liability"
+    ],
+    "antonyms": [
+      "liability"
+    ]
+  },
+  {
+    "word": "patronage",
+    "synonyms": [
+      "favouritism",
+      "sponsorship"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "repeal",
+    "synonyms": [
+      "revoke",
+      "rescind"
+    ],
+    "antonyms": [
+      "enact",
+      "pass"
+    ]
+  }
+]

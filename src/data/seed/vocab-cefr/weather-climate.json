@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "weather",
+    "pos": "noun",
+    "ipa": "/ˈweðə/",
+    "meaningVi": "thời tiết",
+    "definitionEn": "The condition of the atmosphere at a particular place and time.",
+    "example": "The weather in the mountains can change very quickly during the summer.",
+    "collocation": "bad weather",
+    "cefr": "B1"
+  },
+  {
+    "word": "sun",
+    "pos": "noun",
+    "ipa": "/sʌn/",
+    "meaningVi": "mặt trời",
+    "definitionEn": "The star at the centre of our solar system that gives light and heat.",
+    "example": "The sun rose over the hills, warming the frozen fields below.",
+    "collocation": "bright sun",
+    "cefr": "B1"
+  },
+  {
+    "word": "cloud",
+    "pos": "noun",
+    "ipa": "/klaʊd/",
+    "meaningVi": "mây",
+    "definitionEn": "A mass of tiny water droplets floating in the sky.",
+    "example": "Dark clouds gathered over the bay, warning us of an approaching storm.",
+    "collocation": "dark cloud",
+    "cefr": "B1"
+  },
+  {
+    "word": "wind",
+    "pos": "noun",
+    "ipa": "/wɪnd/",
+    "meaningVi": "gió",
+    "definitionEn": "Air moving across the earth, especially when it moves quickly.",
+    "example": "A cool wind blew from the sea, carrying the smell of salt.",
+    "collocation": "strong wind",
+    "cefr": "B1"
+  },
+  {
+    "word": "snow",
+    "pos": "noun",
+    "ipa": "/snəʊ/",
+    "meaningVi": "tuyết",
+    "definitionEn": "White flakes of frozen water that fall from the sky in winter.",
+    "example": "Heavy snow covered the village, closing the roads for several days.",
+    "collocation": "fresh snow",
+    "cefr": "B1"
+  },
+  {
+    "word": "storm",
+    "pos": "noun",
+    "ipa": "/stɔːm/",
+    "meaningVi": "bão, cơn bão",
+    "definitionEn": "A violent weather event with strong winds, heavy rain or snow.",
+    "example": "A violent storm knocked down trees and cut power across the whole town.",
+    "collocation": "severe storm",
+    "cefr": "B1"
+  },
+  {
+    "word": "temperature",
+    "pos": "noun",
+    "ipa": "/ˈtemprətʃə/",
+    "meaningVi": "nhiệt độ",
+    "definitionEn": "How hot or cold the air, water or ground is, usually measured in degrees.",
+    "example": "The temperature dropped sharply overnight, leaving the lake covered in ice.",
+    "collocation": "rising temperature",
+    "cefr": "B1"
+  },
+  {
+    "word": "warm",
+    "pos": "adjective",
+    "ipa": "/wɔːm/",
+    "meaningVi": "ấm",
+    "definitionEn": "Having a comfortable, moderately high temperature.",
+    "example": "The afternoon was warm, so we swam in the lake until sunset.",
+    "collocation": "warm weather",
+    "cefr": "B1"
+  },
+  {
+    "word": "cold",
+    "pos": "adjective",
+    "ipa": "/kəʊld/",
+    "meaningVi": "lạnh",
+    "definitionEn": "Having a low temperature, or feeling chilly to the touch.",
+    "example": "The cold morning air made our breath visible as we walked.",
+    "collocation": "bitterly cold",
+    "cefr": "B1"
+  },
+  {
+    "word": "hot",
+    "pos": "adjective",
+    "ipa": "/hɒt/",
+    "meaningVi": "nóng",
+    "definitionEn": "Having a high temperature, often uncomfortably so.",
+    "example": "It was so hot that the asphalt on the road began to soften.",
+    "collocation": "hot weather",
+    "cefr": "B1"
+  },
+  {
+    "word": "summer",
+    "pos": "noun",
+    "ipa": "/ˈsʌmə/",
+    "meaningVi": "mùa hè",
+    "definitionEn": "The warmest season of the year, between spring and autumn.",
+    "example": "Many tourists visit the coast during summer to enjoy the long sunny days.",
+    "collocation": "hot summer",
+    "cefr": "B1"
+  },
+  {
+    "word": "winter",
+    "pos": "noun",
+    "ipa": "/ˈwɪntə/",
+    "meaningVi": "mùa đông",
+    "definitionEn": "The coldest season of the year, between autumn and spring.",
+    "example": "In winter, the mountain villages are often cut off by deep snow.",
+    "collocation": "harsh winter",
+    "cefr": "B1"
+  },
+  {
+    "word": "rainbow",
+    "pos": "noun",
+    "ipa": "/ˈreɪnbəʊ/",
+    "meaningVi": "cầu vồng",
+    "definitionEn": "A curved band of colours in the sky caused by sunlight shining through rain.",
+    "example": "A bright rainbow appeared after the shower, arching across the valley.",
+    "collocation": "double rainbow",
+    "cefr": "B1"
+  },
+  {
+    "word": "thunder",
+    "pos": "noun",
+    "ipa": "/ˈθʌndə/",
+    "meaningVi": "sấm",
+    "definitionEn": "The loud rumbling sound that follows a flash of lightning.",
+    "example": "Thunder rumbled in the distance, so we hurried indoors.",
+    "collocation": "distant thunder",
+    "cefr": "B1"
+  },
+  {
+    "word": "ice",
+    "pos": "noun",
+    "ipa": "/aɪs/",
+    "meaningVi": "băng, đá",
+    "definitionEn": "Water frozen into a solid state at or below zero degrees.",
+    "example": "The children skated carefully across the ice on the frozen pond.",
+    "collocation": "thin ice",
+    "cefr": "B1"
+  },
+  {
+    "word": "season",
+    "pos": "noun",
+    "ipa": "/ˈsiːzn/",
+    "meaningVi": "mùa",
+    "definitionEn": "One of the four main periods of the year, each with its own weather.",
+    "example": "Spring is my favourite season because flowers bloom everywhere.",
+    "collocation": "rainy season",
+    "cefr": "B1"
+  },
+  {
+    "word": "dry",
+    "pos": "adjective",
+    "ipa": "/draɪ/",
+    "meaningVi": "khô",
+    "definitionEn": "Having little or no water or moisture in the air or ground.",
+    "example": "The dry season lasts from November until May in this region.",
+    "collocation": "dry season",
+    "cefr": "B1"
+  },
+  {
+    "word": "rainy",
+    "pos": "adjective",
+    "ipa": "/ˈreɪni/",
+    "meaningVi": "có mưa",
+    "definitionEn": "Characterised by a lot of rain falling over a period of time.",
+    "example": "Rainy days are common in autumn, so remember to bring an umbrella.",
+    "collocation": "rainy day",
+    "cefr": "B1"
+  },
+  {
+    "word": "breeze",
+    "pos": "noun",
+    "ipa": "/briːz/",
+    "meaningVi": "gió nhẹ",
+    "definitionEn": "A gentle, light wind, often pleasant on a warm day.",
+    "example": "A gentle breeze drifted through the open window, cooling the room.",
+    "collocation": "gentle breeze",
+    "cefr": "B1"
+  },
+  {
+    "word": "humid",
+    "pos": "adjective",
+    "ipa": "/ˈhjuːmɪd/",
+    "meaningVi": "ẩm ướt",
+    "definitionEn": "Having a high amount of moisture in the air, making it feel damp.",
+    "example": "The air was humid and heavy, so we walked slowly through the jungle.",
+    "collocation": "humid air",
+    "cefr": "B2"
+  },
+  {
+    "word": "gust",
+    "pos": "noun",
+    "ipa": "/ɡʌst/",
+    "meaningVi": "cơn gió giật",
+    "definitionEn": "A sudden strong rush of wind lasting only a short time.",
+    "example": "A strong gust of wind tore the umbrella from her hands.",
+    "collocation": "sudden gust",
+    "cefr": "B2"
+  },
+  {
+    "word": "downpour",
+    "pos": "noun",
+    "ipa": "/ˈdaʊnpɔː/",
+    "meaningVi": "trận mưa xối xả",
+    "definitionEn": "A sudden heavy fall of rain that lasts a short time.",
+    "example": "A sudden downpour soaked the crowd before they could reach shelter.",
+    "collocation": "sudden downpour",
+    "cefr": "B2"
+  },
+  {
+    "word": "overcast",
+    "pos": "adjective",
+    "ipa": "/ˌəʊvəˈkɑːst/",
+    "meaningVi": "u ám, đầy mây",
+    "definitionEn": "Covered with cloud, so that the sky appears grey and dull.",
+    "example": "The sky remained overcast all day, and no sunshine broke through.",
+    "collocation": "overcast sky",
+    "cefr": "B2"
+  },
+  {
+    "word": "cloudburst",
+    "pos": "noun",
+    "ipa": "/ˈklaʊdbɜːst/",
+    "meaningVi": "mưa rào đột ngột, trút nước",
+    "definitionEn": "A sudden very heavy rainstorm, often causing flash floods.",
+    "example": "A cloudburst turned the dry riverbed into a rushing torrent within minutes.",
+    "collocation": "sudden cloudburst",
+    "cefr": "B2"
+  },
+  {
+    "word": "frostbite",
+    "pos": "noun",
+    "ipa": "/ˈfrɒstbaɪt/",
+    "meaningVi": "bỏng lạnh",
+    "definitionEn": "Damage to skin and tissue caused by exposure to extreme cold.",
+    "example": "Climbers wore thick gloves to prevent frostbite on their fingers.",
+    "collocation": "severe frostbite",
+    "cefr": "B2"
+  },
+  {
+    "word": "scorching",
+    "pos": "adjective",
+    "ipa": "/ˈskɔːtʃɪŋ/",
+    "meaningVi": "nóng như thiêu",
+    "definitionEn": "Extremely hot, burning and intense.",
+    "example": "The scorching midday sun drove everyone indoors until late afternoon.",
+    "collocation": "scorching heat",
+    "cefr": "B2"
+  },
+  {
+    "word": "sultry",
+    "pos": "adjective",
+    "ipa": "/ˈsʌltri/",
+    "meaningVi": "oi bức",
+    "definitionEn": "Hot, humid and still, making the air feel heavy.",
+    "example": "The sultry afternoon made even the lazy dogs lie motionless in the shade.",
+    "collocation": "sultry evening",
+    "cefr": "B2"
+  },
+  {
+    "word": "balmy",
+    "pos": "adjective",
+    "ipa": "/ˈbɑːmi/",
+    "meaningVi": "ấm êm dễ chịu",
+    "definitionEn": "Warm, mild and pleasant, often used of evenings.",
+    "example": "We sat outside on the balmy evening, listening to crickets in the garden.",
+    "collocation": "balmy evening",
+    "cefr": "B2"
+  },
+  {
+    "word": "chilly",
+    "pos": "adjective",
+    "ipa": "/ˈtʃɪli/",
+    "meaningVi": "lạnh buốt, se lạnh",
+    "definitionEn": "Unpleasantly cold, in a way that makes one shiver.",
+    "example": "A chilly wind swept across the empty beach in late October.",
+    "collocation": "chilly morning",
+    "cefr": "B2"
+  },
+  {
+    "word": "frigid",
+    "pos": "adjective",
+    "ipa": "/ˈfrɪdʒɪd/",
+    "meaningVi": "rét buốt",
+    "definitionEn": "Extremely cold, often describing weather or air temperature.",
+    "example": "The frigid air outside made the windows freeze over overnight.",
+    "collocation": "frigid temperatures",
+    "cefr": "B2"
+  },
+  {
+    "word": "mild",
+    "pos": "adjective",
+    "ipa": "/maɪld/",
+    "meaningVi": "ôn hoà",
+    "definitionEn": "Not severe or extreme, typically describing weather that is gentle.",
+    "example": "This coastal town enjoys mild winters that rarely drop below freezing.",
+    "collocation": "mild winter",
+    "cefr": "B2"
+  },
+  {
+    "word": "pressure",
+    "pos": "noun",
+    "ipa": "/ˈpreʃə/",
+    "meaningVi": "áp suất",
+    "definitionEn": "The force exerted by the weight of air on a given area.",
+    "example": "Falling air pressure often signals that rain is approaching soon.",
+    "collocation": "high pressure",
+    "cefr": "B2"
+  },
+  {
+    "word": "sunshine",
+    "pos": "noun",
+    "ipa": "/ˈsʌnʃaɪn/",
+    "meaningVi": "ánh nắng",
+    "definitionEn": "Direct light and warmth from the sun reaching the ground.",
+    "example": "After days of rain, the sunshine finally broke through the clouds.",
+    "collocation": "bright sunshine",
+    "cefr": "B2"
+  },
+  {
+    "word": "rainfall",
+    "pos": "noun",
+    "ipa": "/ˈreɪnfɔːl/",
+    "meaningVi": "lượng mưa",
+    "definitionEn": "The total amount of rain that falls in a particular area over time.",
+    "example": "Annual rainfall in the highlands has fallen steadily over the past decade.",
+    "collocation": "heavy rainfall",
+    "cefr": "B2"
+  },
+  {
+    "word": "hailstone",
+    "pos": "noun",
+    "ipa": "/ˈheɪlstəʊn/",
+    "meaningVi": "hạt mưa đá",
+    "definitionEn": "A small ball of ice that falls from clouds during a storm.",
+    "example": "Hailstones the size of marbles bounced off the car roof during the storm.",
+    "collocation": "giant hailstones",
+    "cefr": "B2"
+  },
+  {
+    "word": "typhoon",
+    "pos": "noun",
+    "ipa": "/taɪˈfuːn/",
+    "meaningVi": "bão nhiệt đới Tây Thái Bình Dương",
+    "definitionEn": "A tropical storm with very strong winds, found in the western Pacific.",
+    "example": "The typhoon struck the coast overnight, flooding streets and damaging hundreds of homes.",
+    "collocation": "approaching typhoon",
+    "cefr": "B2"
+  },
+  {
+    "word": "squall",
+    "pos": "noun",
+    "ipa": "/skwɔːl/",
+    "meaningVi": "cơn gió mạnh bất chợt",
+    "definitionEn": "A sudden, violent rush of wind, often with rain or snow.",
+    "example": "A fierce squall blew in from the north, scattering boats across the harbour.",
+    "collocation": "sudden squall",
+    "cefr": "B2"
+  },
+  {
+    "word": "cumulus",
+    "pos": "noun",
+    "ipa": "/ˈkjuːmjʊləs/",
+    "meaningVi": "mây tích",
+    "definitionEn": "A type of white, fluffy cloud with flat bases and rounded tops.",
+    "example": "Cumulus clouds drifted lazily across the blue sky above the fields.",
+    "collocation": "cumulus clouds",
+    "cefr": "B2"
+  },
+  {
+    "word": "stratus",
+    "pos": "noun",
+    "ipa": "/ˈstreɪtəs/",
+    "meaningVi": "mây tầng",
+    "definitionEn": "A low, grey layer of cloud that covers the sky evenly.",
+    "example": "A thick stratus layer hung over the city, blocking out all the sunlight.",
+    "collocation": "stratus clouds",
+    "cefr": "B2"
+  },
+  {
+    "word": "drizzle",
+    "pos": "noun",
+    "ipa": "/ˈdrɪzl/",
+    "meaningVi": "mưa phùn",
+    "definitionEn": "Light rain made up of very fine, small drops.",
+    "example": "A fine drizzle fell all morning, leaving the pavements slick and grey.",
+    "collocation": "light drizzle",
+    "cefr": "B2"
+  },
+  {
+    "word": "freeze",
+    "pos": "verb",
+    "ipa": "/friːz/",
+    "meaningVi": "đóng băng",
+    "definitionEn": "To turn into ice, or to become very cold when water hardens.",
+    "example": "Water in the pipes can freeze overnight when temperatures drop below zero.",
+    "collocation": "freeze solid",
+    "cefr": "B2"
+  },
+  {
+    "word": "isobar",
+    "pos": "noun",
+    "ipa": "/ˈaɪsəʊbɑː/",
+    "meaningVi": "đường đẳng áp",
+    "definitionEn": "A line on a weather map joining points of equal atmospheric pressure.",
+    "example": "Closely spaced isobars on the chart indicate a powerful wind forming over the sea.",
+    "collocation": "isobar map",
+    "cefr": "C1"
+  },
+  {
+    "word": "front",
+    "pos": "noun",
+    "ipa": "/frʌnt/",
+    "meaningVi": "frông, mặt phân khối khí",
+    "definitionEn": "The boundary between two air masses of different temperature and humidity.",
+    "example": "A cold front approaching from the west will bring showers by evening.",
+    "collocation": "cold front",
+    "cefr": "C1"
+  },
+  {
+    "word": "convection",
+    "pos": "noun",
+    "ipa": "/kənˈvekʃn/",
+    "meaningVi": "đối lưu",
+    "definitionEn": "The transfer of heat through the upward movement of warm air or fluid.",
+    "example": "Convection currents in the atmosphere drive the formation of towering storm clouds.",
+    "collocation": "convection currents",
+    "cefr": "C1"
+  },
+  {
+    "word": "advection",
+    "pos": "noun",
+    "ipa": "/ədˈvekʃn/",
+    "meaningVi": "bình lưu ngang",
+    "definitionEn": "The horizontal transport of heat or moisture by the movement of air masses.",
+    "example": "Advection of warm, moist air from the ocean keeps the coastline unusually mild.",
+    "collocation": "moisture advection",
+    "cefr": "C1"
+  },
+  {
+    "word": "radiation",
+    "pos": "noun",
+    "ipa": "/ˌreɪdiˈeɪʃn/",
+    "meaningVi": "bức xạ",
+    "definitionEn": "Energy emitted as waves, including the light and heat that come from the sun.",
+    "example": "Solar radiation warms the surface of the earth, which then heats the air above it.",
+    "collocation": "solar radiation",
+    "cefr": "C1"
+  },
+  {
+    "word": "albedo",
+    "pos": "noun",
+    "ipa": "/ælˈbiːdəʊ/",
+    "meaningVi": "độ phản xạ",
+    "definitionEn": "The proportion of incoming sunlight reflected by a surface such as ice or cloud.",
+    "example": "Melting ice lowers albedo, so the darker ocean absorbs more heat and warms faster.",
+    "collocation": "high albedo",
+    "cefr": "C1"
+  },
+  {
+    "word": "subsidence",
+    "pos": "noun",
+    "ipa": "/səbˈsaɪdns/",
+    "meaningVi": "sự hạ xuống của không khí",
+    "definitionEn": "The gradual downward movement of air that warms and dries as it descends.",
+    "example": "Subsidence of dry air over the desert suppresses cloud formation and rainfall.",
+    "collocation": "air subsidence",
+    "cefr": "C1"
+  },
+  {
+    "word": "turbulence",
+    "pos": "noun",
+    "ipa": "/ˈtɜːbjʊləns/",
+    "meaningVi": "nhiễu động không khí",
+    "definitionEn": "Irregular, rough movement of air that causes unsteady flight or rough weather.",
+    "example": "Passengers were told to fasten their seatbelts because of severe turbulence over the mountains.",
+    "collocation": "severe turbulence",
+    "cefr": "C1"
+  },
+  {
+    "word": "vortex",
+    "pos": "noun",
+    "ipa": "/ˈvɔːteks/",
+    "meaningVi": "xoáy",
+    "definitionEn": "A spiral mass of air or water that spins rapidly around a central point.",
+    "example": "A vortex of swirling air formed above the lake, lifting dust into the sky.",
+    "collocation": "polar vortex",
+    "cefr": "C1"
+  },
+  {
+    "word": "precipitate",
+    "pos": "verb",
+    "ipa": "/prɪˈsɪpɪteɪt/",
+    "meaningVi": "gây ra, đổ xuống (mưa, tuyết)",
+    "definitionEn": "To cause something to happen suddenly, or to fall as rain or snow.",
+    "example": "The rapidly cooling air mass may precipitate heavy snow across the northern plains.",
+    "collocation": "precipitate snowfall",
+    "cefr": "C1"
+  },
+  {
+    "word": "saturation",
+    "pos": "noun",
+    "ipa": "/ˌsætʃəˈreɪʃn/",
+    "meaningVi": "độ bão hoà",
+    "definitionEn": "The state in which air holds the maximum amount of water vapour possible.",
+    "example": "When air reaches saturation, water vapour condenses into droplets to form clouds.",
+    "collocation": "air saturation",
+    "cefr": "C1"
+  },
+  {
+    "word": "cumulonimbus",
+    "pos": "noun",
+    "ipa": "/ˌkjuːmjʊləʊˈnɪmbəs/",
+    "meaningVi": "mây dông",
+    "definitionEn": "A towering dark cloud that produces thunderstorms, heavy rain and hail.",
+    "example": "A huge cumulonimbus cloud towered over the plain before the storm broke.",
+    "collocation": "cumulonimbus cloud",
+    "cefr": "C1"
+  },
+  {
+    "word": "nimbostratus",
+    "pos": "noun",
+    "ipa": "/ˌnɪmbəʊˈstrɑːtəs/",
+    "meaningVi": "mây vũ tầng",
+    "definitionEn": "A thick grey cloud layer that brings steady, continuous rain or snow.",
+    "example": "A dense nimbostratus layer settled over the valley and brought steady rain all day.",
+    "collocation": "nimbostratus layer",
+    "cefr": "C1"
+  },
+  {
+    "word": "inclement",
+    "pos": "adjective",
+    "ipa": "/ɪnˈklemənt/",
+    "meaningVi": "khắc nghiệt (thời tiết)",
+    "definitionEn": "Describing weather that is unpleasantly harsh, cold or stormy.",
+    "example": "Inclement weather forced the organisers to postpone the outdoor festival until Sunday.",
+    "collocation": "inclement weather",
+    "cefr": "C1"
+  },
+  {
+    "word": "anticyclone",
+    "pos": "noun",
+    "ipa": "/ˌæntiˈsaɪkləʊn/",
+    "meaningVi": "áp cao",
+    "definitionEn": "A large area of high pressure associated with settled, calm weather.",
+    "example": "A persistent anticyclone brought days of clear skies and cold, still nights.",
+    "collocation": "stationary anticyclone",
+    "cefr": "C1"
+  },
+  {
+    "word": "trough",
+    "pos": "noun",
+    "ipa": "/trɒf/",
+    "meaningVi": "máng khí áp thấp",
+    "definitionEn": "An elongated area of low pressure in the atmosphere.",
+    "example": "A trough of low pressure moved slowly across the region, bringing unsettled showers.",
+    "collocation": "upper-level trough",
+    "cefr": "C1"
+  },
+  {
+    "word": "zephyr",
+    "pos": "noun",
+    "ipa": "/ˈzefə/",
+    "meaningVi": "gió nhẹ hiu hiu",
+    "definitionEn": "A gentle, mild breeze, often blowing from the west.",
+    "example": "A soft zephyr stirred the blossoms as we strolled through the orchard.",
+    "collocation": "gentle zephyr",
+    "cefr": "C1"
+  },
+  {
+    "word": "inundation",
+    "pos": "noun",
+    "ipa": "/ˌɪnʌnˈdeɪʃn/",
+    "meaningVi": "sự ngập lụt",
+    "definitionEn": "A severe flooding of land, often caused by heavy rain or storm surge.",
+    "example": "Inundation of the lowlands destroyed crops and forced thousands of villagers to evacuate.",
+    "collocation": "coastal inundation",
+    "cefr": "C1"
+  },
+  {
+    "word": "deluge",
+    "pos": "noun",
+    "ipa": "/ˈdeljuːdʒ/",
+    "meaningVi": "trận mưa lớn, lũ lụt",
+    "definitionEn": "An extremely heavy fall of rain, or an overwhelming flood of water.",
+    "example": "A deluge of rain fell on the city overnight, overwhelming the drainage system.",
+    "collocation": "torrential deluge",
+    "cefr": "C1"
+  },
+  {
+    "word": "torrential",
+    "pos": "adjective",
+    "ipa": "/təˈrenʃl/",
+    "meaningVi": "xối xả",
+    "definitionEn": "Describing rain that falls in an extremely heavy and violent way.",
+    "example": "Torrential rain transformed the quiet street into a fast-flowing stream.",
+    "collocation": "torrential rain",
+    "cefr": "C1"
+  },
+  {
+    "word": "aridity",
+    "pos": "noun",
+    "ipa": "/əˈrɪdəti/",
+    "meaningVi": "độ khô hạn",
+    "definitionEn": "The condition of having very little rainfall and an extremely dry climate.",
+    "example": "Rising aridity has shortened the growing season across much of the continent.",
+    "collocation": "increasing aridity",
+    "cefr": "C1"
+  },
+  {
+    "word": "insolation",
+    "pos": "noun",
+    "ipa": "/ˌɪnsəˈleɪʃn/",
+    "meaningVi": "lượng bức xạ mặt trời",
+    "definitionEn": "The amount of solar radiation received over an area during a given time.",
+    "example": "Insolation on the south-facing slopes is far greater than on the shaded northern side.",
+    "collocation": "high insolation",
+    "cefr": "C1"
+  },
+  {
+    "word": "hygrometer",
+    "pos": "noun",
+    "ipa": "/haɪˈɡrɒmɪtə/",
+    "meaningVi": "ẩm kế",
+    "definitionEn": "An instrument used for measuring the moisture content of the air.",
+    "example": "The technician checked the hygrometer to confirm the humidity inside the greenhouse.",
+    "collocation": "digital hygrometer",
+    "cefr": "C1"
+  },
+  {
+    "word": "anemometer",
+    "pos": "noun",
+    "ipa": "/ˌænɪˈmɒmɪtə/",
+    "meaningVi": "phong kế",
+    "definitionEn": "An instrument that measures the speed of wind.",
+    "example": "The anemometer on the rooftop recorded gusts of more than ninety kilometres an hour.",
+    "collocation": "wind anemometer",
+    "cefr": "C1"
+  },
+  {
+    "word": "isohyet",
+    "pos": "noun",
+    "ipa": "/ˈaɪsəhaɪət/",
+    "meaningVi": "đường đẳng vũ",
+    "definitionEn": "A line on a map connecting places that receive equal amounts of rainfall.",
+    "example": "The isohyet map shows rainfall dropping sharply from the coast toward the interior.",
+    "collocation": "isohyet map",
+    "cefr": "C1"
+  },
+  {
+    "word": "jet stream",
+    "pos": "noun",
+    "ipa": "/ˈdʒet striːm/",
+    "meaningVi": "dòng phản lực",
+    "definitionEn": "A fast, narrow current of air high in the atmosphere that steers weather systems.",
+    "example": "The jet stream shifted south this winter, bringing unusually cold air to the region.",
+    "collocation": "polar jet stream",
+    "cefr": "C1"
+  },
+  {
+    "word": "supercell",
+    "pos": "noun",
+    "ipa": "/ˈsuːpəsel/",
+    "meaningVi": "siêu ô bão",
+    "definitionEn": "A rotating thunderstorm with a deep, persistent updraft that can produce tornadoes.",
+    "example": "Forecasters warned that a dangerous supercell was forming over the western plains.",
+    "collocation": "severe supercell",
+    "cefr": "C1"
+  },
+  {
+    "word": "lapse rate",
+    "pos": "noun",
+    "ipa": "/ˈlæps reɪt/",
+    "meaningVi": "tỷ suất giảm nhiệt theo độ cao",
+    "definitionEn": "The rate at which air temperature decreases with increasing altitude.",
+    "example": "A steep lapse rate encourages rising air currents that build tall storm clouds.",
+    "collocation": "environmental lapse rate",
+    "cefr": "C1"
+  },
+  {
+    "word": "aurora",
+    "pos": "noun",
+    "ipa": "/əˈrɔːrə/",
+    "meaningVi": "cực quang",
+    "definitionEn": "A natural light display in polar skies caused by charged particles from the sun.",
+    "example": "Green curtains of the aurora shimmered across the northern sky all night.",
+    "collocation": "northern aurora",
+    "cefr": "C1"
+  },
+  {
+    "word": "mirage",
+    "pos": "noun",
+    "ipa": "/mɪˈrɑːʒ/",
+    "meaningVi": "ảo ảnh",
+    "definitionEn": "An optical illusion caused by light bending through layers of hot air.",
+    "example": "Travellers in the desert often mistake a shimmering mirage for a distant lake.",
+    "collocation": "desert mirage",
+    "cefr": "C1"
+  },
+  {
+    "word": "haze",
+    "pos": "noun",
+    "ipa": "/heɪz/",
+    "meaningVi": "sương mù mờ, khói bụi",
+    "definitionEn": "A thin layer of dust, smoke or moisture that reduces visibility in the air.",
+    "example": "A thick haze of smoke from distant fires hung over the valley for days.",
+    "collocation": "smoky haze",
+    "cefr": "C1"
+  },
+  {
+    "word": "maelstrom",
+    "pos": "noun",
+    "ipa": "/ˈmeɪlstrɒm/",
+    "meaningVi": "xoáy nước dữ dội, cơn lốc",
+    "definitionEn": "A violent whirlpool or turbulent situation, often in the sea or air.",
+    "example": "The fishing boat was caught in a maelstrom of waves and howling wind.",
+    "collocation": "storm maelstrom",
+    "cefr": "C1"
+  },
+  {
+    "word": "interglacial",
+    "pos": "adjective",
+    "ipa": "/ˌɪntəˈɡleɪʃl/",
+    "meaningVi": "liên băng kỳ",
+    "definitionEn": "Describing a warm period between two ice ages.",
+    "example": "Scientists study ancient ice cores to understand past interglacial periods on Earth.",
+    "collocation": "interglacial period",
+    "cefr": "C1"
+  },
+  {
+    "word": "ozone",
+    "pos": "noun",
+    "ipa": "/ˈəʊzəʊn/",
+    "meaningVi": "tầng ozone",
+    "definitionEn": "A form of oxygen in the upper atmosphere that absorbs harmful ultraviolet radiation.",
+    "example": "Chemicals released on the ground have thinned the ozone layer over the poles.",
+    "collocation": "ozone layer",
+    "cefr": "C1"
+  },
+  {
+    "word": "petrichor",
+    "pos": "noun",
+    "ipa": "/ˈpetrɪkɔː/",
+    "meaningVi": "mùi đất sau mưa",
+    "definitionEn": "The pleasant earthy smell produced when rain falls on dry ground.",
+    "example": "The petrichor rising from the parched garden was the first sign of relief.",
+    "collocation": "sweet petrichor",
+    "cefr": "C2"
+  },
+  {
+    "word": "fulgurite",
+    "pos": "noun",
+    "ipa": "/ˈfʌlɡjʊraɪt/",
+    "meaningVi": "ống thuỷ tinh do sét đánh",
+    "definitionEn": "A tube of glassy rock formed when lightning strikes sand or soil.",
+    "example": "Hikers discovered a fulgurite in the dunes, formed by a lightning strike centuries ago.",
+    "collocation": "fulgurite formation",
+    "cefr": "C2"
+  },
+  {
+    "word": "crepuscule",
+    "pos": "noun",
+    "ipa": "/krɪˈpʌskjuːl/",
+    "meaningVi": "chạng vạng, hoàng hôn",
+    "definitionEn": "The soft light of dusk or dawn, when the sun is just below the horizon.",
+    "example": "The crepuscule painted the lake in soft violet hues before the stars appeared.",
+    "collocation": "evening crepuscule",
+    "cefr": "C2"
+  },
+  {
+    "word": "sirocco",
+    "pos": "noun",
+    "ipa": "/sɪˈrɒkəʊ/",
+    "meaningVi": "gió sirocco (gió nóng từ Sahara)",
+    "definitionEn": "A hot, dusty wind blowing north from the Sahara into southern Europe.",
+    "example": "A sirocco swept across Sicily, coating cars and balconies with fine red dust.",
+    "collocation": "scorching sirocco",
+    "cefr": "C2"
+  },
+  {
+    "word": "foehn",
+    "pos": "noun",
+    "ipa": "/fɜːn/",
+    "meaningVi": "gió phơn",
+    "definitionEn": "A warm, dry wind that descends the leeward side of a mountain range.",
+    "example": "A foehn wind raised temperatures sharply in the Alpine valley after the snow melted.",
+    "collocation": "warm foehn",
+    "cefr": "C2"
+  },
+  {
+    "word": "chinook",
+    "pos": "noun",
+    "ipa": "/ʃɪˈnʊk/",
+    "meaningVi": "gió chinook",
+    "definitionEn": "A warm, dry wind that descends the eastern slopes of the Rockies.",
+    "example": "A chinook melted the snow across the prairies in a single afternoon.",
+    "collocation": "chinook wind",
+    "cefr": "C2"
+  },
+  {
+    "word": "bora",
+    "pos": "noun",
+    "ipa": "/ˈbɒrə/",
+    "meaningVi": "gió bora",
+    "definitionEn": "A cold, violent wind that blows down from mountains toward the Adriatic Sea.",
+    "example": "The bora gusted fiercely along the Croatian coast, rattling shutters and tossing boats.",
+    "collocation": "violent bora",
+    "cefr": "C2"
+  },
+  {
+    "word": "mistral",
+    "pos": "noun",
+    "ipa": "/mɪˈstrɑːl/",
+    "meaningVi": "gió mistral",
+    "definitionEn": "A cold, strong northwesterly wind that blows through southern France.",
+    "example": "The mistral swept through Provence, bending the cypress trees and cooling the vineyards.",
+    "collocation": "cold mistral",
+    "cefr": "C2"
+  },
+  {
+    "word": "haboob",
+    "pos": "noun",
+    "ipa": "/həˈbuːb/",
+    "meaningVi": "bão cát",
+    "definitionEn": "A violent dust storm produced when thunderstorm outflow lifts sand into the air.",
+    "example": "A towering haboob rolled across the desert, plunging the town into brown darkness.",
+    "collocation": "approaching haboob",
+    "cefr": "C2"
+  },
+  {
+    "word": "graupel",
+    "pos": "noun",
+    "ipa": "/ˈɡraʊpel/",
+    "meaningVi": "tuyết hạt, mưa đá mềm",
+    "definitionEn": "Soft, snow-like ice pellets formed when supercooled droplets freeze onto snowflakes.",
+    "example": "Graupel bounced off the windscreen, forming a crunchy white layer on the road.",
+    "collocation": "graupel pellets",
+    "cefr": "C2"
+  },
+  {
+    "word": "rime",
+    "pos": "noun",
+    "ipa": "/raɪm/",
+    "meaningVi": "sương muối đóng băng",
+    "definitionEn": "A white, granular coating of ice that forms on objects in freezing fog.",
+    "example": "Rime coated every branch and fence post along the mountain path that morning.",
+    "collocation": "thick rime",
+    "cefr": "C2"
+  },
+  {
+    "word": "hoarfrost",
+    "pos": "noun",
+    "ipa": "/ˈhɔːfrɒst/",
+    "meaningVi": "sương giá trắng",
+    "definitionEn": "Feathery crystals of ice that form on surfaces on clear, cold nights.",
+    "example": "Hoarfrost sparkled on the meadow grass as the sun rose over the frozen valley.",
+    "collocation": "delicate hoarfrost",
+    "cefr": "C2"
+  },
+  {
+    "word": "verglas",
+    "pos": "noun",
+    "ipa": "/vɜːˈɡlɑː/",
+    "meaningVi": "băng đen mỏng trên đường",
+    "definitionEn": "A thin, transparent coating of ice on roads, rocks or pavements.",
+    "example": "Verglas formed overnight on the mountain road, making driving extremely treacherous.",
+    "collocation": "black verglas",
+    "cefr": "C2"
+  },
+  {
+    "word": "nor'easter",
+    "pos": "noun",
+    "ipa": "/nɔːrˈiːstə/",
+    "meaningVi": "gió đông bắc bão",
+    "definitionEn": "A powerful storm moving northeast along the Atlantic coast of North America.",
+    "example": "A powerful nor'easter battered the coast, flooding roads and knocking out power lines.",
+    "collocation": "winter nor'easter",
+    "cefr": "C2"
+  },
+  {
+    "word": "zonda",
+    "pos": "noun",
+    "ipa": "/ˈzɒndə/",
+    "meaningVi": "gió zonda",
+    "definitionEn": "A hot, dry foehn-like wind on the eastern side of the Andes.",
+    "example": "Zonda winds carried dust across Mendoza, leaving the vineyards coated in grit.",
+    "collocation": "zonda wind",
+    "cefr": "C2"
+  },
+  {
+    "word": "williwaw",
+    "pos": "noun",
+    "ipa": "/ˈwɪliwɔː/",
+    "meaningVi": "gió giật đột ngột trên vịnh",
+    "definitionEn": "A sudden violent gust of wind blowing down from mountains onto water.",
+    "example": "A williwaw struck the anchored yacht without warning, snapping its mooring lines.",
+    "collocation": "sudden williwaw",
+    "cefr": "C2"
+  },
+  {
+    "word": "dust devil",
+    "pos": "noun",
+    "ipa": "/ˈdʌst devl/",
+    "meaningVi": "cột bụi xoáy",
+    "definitionEn": "A small, swirling column of dust and air rising from hot ground.",
+    "example": "A dust devil spun across the empty car park, lifting leaves and paper.",
+    "collocation": "dust devil",
+    "cefr": "C2"
+  },
+  {
+    "word": "waterspout",
+    "pos": "noun",
+    "ipa": "/ˈwɔːtəspaʊt/",
+    "meaningVi": "vòi rồng trên biển",
+    "definitionEn": "A rotating column of air and water spray over the sea or a lake.",
+    "example": "Tourists watched a waterspout twist across the bay before it dissipated.",
+    "collocation": "funnel waterspout",
+    "cefr": "C2"
+  },
+  {
+    "word": "derecho",
+    "pos": "noun",
+    "ipa": "/dɪˈreɪtʃəʊ/",
+    "meaningVi": "bão gió thẳng (derecho)",
+    "definitionEn": "A widespread, long-lived windstorm associated with a line of severe thunderstorms.",
+    "example": "The derecho flattened thousands of trees across several states in a single night.",
+    "collocation": "powerful derecho",
+    "cefr": "C2"
+  },
+  {
+    "word": "tempestuous",
+    "pos": "adjective",
+    "ipa": "/tempˈestʃuəs/",
+    "meaningVi": "bão tố, dữ dội",
+    "definitionEn": "Stormy, turbulent or violently emotional.",
+    "example": "The tempestuous sea hurled waves against the cliffs throughout the long night.",
+    "collocation": "tempestuous weather",
+    "cefr": "C2"
+  },
+  {
+    "word": "blustery",
+    "pos": "adjective",
+    "ipa": "/ˈblʌstəri/",
+    "meaningVi": "gió giật từng cơn",
+    "definitionEn": "Characterised by strong, gusty wind that blows in bursts.",
+    "example": "A blustery afternoon sent leaves swirling across the cobbled square.",
+    "collocation": "blustery day",
+    "cefr": "C2"
+  },
+  {
+    "word": "squally",
+    "pos": "adjective",
+    "ipa": "/ˈskwɒli/",
+    "meaningVi": "có gió giật, bão táp",
+    "definitionEn": "Characterised by sudden squalls of wind, often accompanied by rain.",
+    "example": "Squally showers swept across the harbour, forcing the ferries to stay in port.",
+    "collocation": "squally conditions",
+    "cefr": "C2"
+  },
+  {
+    "word": "brumal",
+    "pos": "adjective",
+    "ipa": "/ˈbruːməl/",
+    "meaningVi": "thuộc mùa đông",
+    "definitionEn": "Relating to winter, especially its cold and dormant character.",
+    "example": "The brumal landscape lay silent under a thick blanket of snow.",
+    "collocation": "brumal chill",
+    "cefr": "C2"
+  },
+  {
+    "word": "estival",
+    "pos": "adjective",
+    "ipa": "/ɪˈstaɪvl/",
+    "meaningVi": "thuộc mùa hè",
+    "definitionEn": "Relating to or characteristic of the summer season.",
+    "example": "Estival heat built slowly over the plains until the afternoon grew unbearable.",
+    "collocation": "estival weather",
+    "cefr": "C2"
+  },
+  {
+    "word": "vernal",
+    "pos": "adjective",
+    "ipa": "/ˈvɜːnl/",
+    "meaningVi": "thuộc mùa xuân",
+    "definitionEn": "Relating to spring, or appearing during the spring season.",
+    "example": "Vernal rains brought fresh green shoots to the parched hillsides after winter.",
+    "collocation": "vernal showers",
+    "cefr": "C2"
+  },
+  {
+    "word": "autumnal",
+    "pos": "adjective",
+    "ipa": "/ɔːˈtʌmnl/",
+    "meaningVi": "thuộc mùa thu",
+    "definitionEn": "Relating to autumn, especially its mild, golden or cool character.",
+    "example": "The autumnal light turned the maple forest into a glowing tapestry of gold.",
+    "collocation": "autumnal colours",
+    "cefr": "C2"
+  },
+  {
+    "word": "nebulosity",
+    "pos": "noun",
+    "ipa": "/ˌnebjʊˈlɒsəti/",
+    "meaningVi": "độ mây phủ",
+    "definitionEn": "The extent or density of cloud cover across the sky.",
+    "example": "Increasing nebulosity over the mountains suggested that rain would arrive before dawn.",
+    "collocation": "cloud nebulosity",
+    "cefr": "C2"
+  },
+  {
+    "word": "cirrus",
+    "pos": "noun",
+    "ipa": "/ˈsɪrəs/",
+    "meaningVi": "mây ti",
+    "definitionEn": "Wispy, feathery high-altitude clouds made of ice crystals.",
+    "example": "Thin cirrus clouds streaked the sky, foretelling a change in the weather.",
+    "collocation": "wispy cirrus",
+    "cefr": "C2"
+  },
+  {
+    "word": "cirrostratus",
+    "pos": "noun",
+    "ipa": "/ˌsɪrəʊˈstrɑːtəs/",
+    "meaningVi": "mây ti tầng",
+    "definitionEn": "A thin, sheet-like layer of high ice cloud often creating halos.",
+    "example": "Cirrostratus clouds veiled the sun, creating a faint halo around its disc.",
+    "collocation": "cirrostratus halo",
+    "cefr": "C2"
+  },
+  {
+    "word": "altocumulus",
+    "pos": "noun",
+    "ipa": "/ˌæltəʊˈkjuːmjʊləs/",
+    "meaningVi": "mây cao tích",
+    "definitionEn": "Mid-level white or grey cloud in rounded patches or rolls.",
+    "example": "Altocumulus clouds rolled across the sky like a sea of white pebbles at dusk.",
+    "collocation": "altocumulus field",
+    "cefr": "C2"
+  },
+  {
+    "word": "scud",
+    "pos": "noun",
+    "ipa": "/skʌd/",
+    "meaningVi": "mây vụn thấp bay nhanh",
+    "definitionEn": "Low, ragged clouds driven rapidly by strong wind.",
+    "example": "Scud raced across the grey sky, driven by a fierce wind from the sea.",
+    "collocation": "racing scud",
+    "cefr": "C2"
+  },
+  {
+    "word": "virga",
+    "pos": "noun",
+    "ipa": "/ˈvɜːɡə/",
+    "meaningVi": "mưa rơi không chạm đất",
+    "definitionEn": "Streaks of precipitation falling from a cloud that evaporate before reaching the ground.",
+    "example": "Dark virga hung beneath the clouds, but no rain reached the thirsty dry fields.",
+    "collocation": "streaks of virga",
+    "cefr": "C2"
+  },
+  {
+    "word": "mammatus",
+    "pos": "noun",
+    "ipa": "/məˈmeɪtəs/",
+    "meaningVi": "mây bầu vú",
+    "definitionEn": "Pouch-like clouds hanging beneath the base of a storm cloud.",
+    "example": "Mammatus clouds hung ominously beneath the anvil, signalling a severe storm.",
+    "collocation": "mammatus formation",
+    "cefr": "C2"
+  },
+  {
+    "word": "lenticular",
+    "pos": "adjective",
+    "ipa": "/lenˈtɪkjʊlə/",
+    "meaningVi": "hình thấu kính",
+    "definitionEn": "Lens-shaped, describing clouds that form over mountains in stable air.",
+    "example": "Lenticular clouds hovered motionless above the peak, like stacked silver plates.",
+    "collocation": "lenticular cloud",
+    "cefr": "C2"
+  },
+  {
+    "word": "fogbow",
+    "pos": "noun",
+    "ipa": "/ˈfɒɡbəʊ/",
+    "meaningVi": "cầu vồng trong sương mù",
+    "definitionEn": "A faint, white arc of light appearing in fog opposite the sun.",
+    "example": "A pale fogbow curved across the mist above the frozen lake at sunrise.",
+    "collocation": "pale fogbow",
+    "cefr": "C2"
+  },
+  {
+    "word": "parhelion",
+    "pos": "noun",
+    "ipa": "/pɑːˈhiːliən/",
+    "meaningVi": "ảo nhật (mặt trời phụ)",
+    "definitionEn": "A bright spot of light beside the sun, caused by refraction through ice crystals.",
+    "example": "Observers saw a bright parhelion beside the sun, a rare halo of refracted light.",
+    "collocation": "rare parhelion",
+    "cefr": "C2"
+  },
+  {
+    "word": "iridescence",
+    "pos": "noun",
+    "ipa": "/ˌɪrɪˈdesns/",
+    "meaningVi": "ánh óng ánh đổi màu",
+    "definitionEn": "A shimmering play of changing colours, like those seen on a soap bubble.",
+    "example": "The iridescence of the oil puddle shifted from purple to green as the cloud passed.",
+    "collocation": "shimmering iridescence",
+    "cefr": "C2"
+  },
+  {
+    "word": "frazil",
+    "pos": "noun",
+    "ipa": "/ˈfreɪzɪl/",
+    "meaningVi": "băng kim vụn trên sông",
+    "definitionEn": "Loose, needle-like ice crystals suspended in turbulent, supercooled water.",
+    "example": "Frazil ice drifted down the river, clogging the intake pipes of the riverside plant.",
+    "collocation": "frazil ice",
+    "cefr": "C2"
+  },
+  {
+    "word": "perihelion",
+    "pos": "noun",
+    "ipa": "/ˌperɪˈhiːliən/",
+    "meaningVi": "điểm cận nhật",
+    "definitionEn": "The point in a planet's orbit closest to the sun.",
+    "example": "Earth reaches perihelion in early January, when it is nearest the sun.",
+    "collocation": "at perihelion",
+    "cefr": "C2"
+  },
+  {
+    "word": "aphelion",
+    "pos": "noun",
+    "ipa": "/æfˈhiːliən/",
+    "meaningVi": "điểm viễn nhật",
+    "definitionEn": "The point in a planet's orbit farthest from the sun.",
+    "example": "Earth reaches aphelion in early July, when its distance from the sun is greatest.",
+    "collocation": "at aphelion",
+    "cefr": "C2"
+  },
+  {
+    "word": "obliquity",
+    "pos": "noun",
+    "ipa": "/əˈblɪkwəti/",
+    "meaningVi": "độ nghiêng trục",
+    "definitionEn": "The angle by which a planet's axis tilts relative to its orbit.",
+    "example": "Changes in Earth's obliquity influence the intensity of seasons over thousands of years.",
+    "collocation": "axial obliquity",
+    "cefr": "C2"
+  },
+  {
+    "word": "paleoclimate",
+    "pos": "noun",
+    "ipa": "/ˌpeɪlɪəʊˈklaɪmət/",
+    "meaningVi": "khí hậu cổ",
+    "definitionEn": "The climate of the distant geological past, reconstructed from natural records.",
+    "example": "Paleoclimate records from ice cores reveal dramatic swings in temperature over millennia.",
+    "collocation": "paleoclimate data",
+    "cefr": "C2"
+  },
+  {
+    "word": "stadial",
+    "pos": "noun",
+    "ipa": "/ˈsteɪdiəl/",
+    "meaningVi": "giai đoạn lạnh giữa băng kỳ",
+    "definitionEn": "A short cold phase during a warmer interglacial or glacial period.",
+    "example": "A sudden stadial plunged northern Europe back into icy conditions for a century.",
+    "collocation": "cold stadial",
+    "cefr": "C2"
+  },
+  {
+    "word": "cyclogenesis",
+    "pos": "noun",
+    "ipa": "/ˌsaɪkləʊˈdʒenəsɪs/",
+    "meaningVi": "sự hình thành xoáy thuận",
+    "definitionEn": "The formation or intensification of a cyclone or low-pressure system.",
+    "example": "Rapid cyclogenesis over the Atlantic turned a routine front into a violent storm.",
+    "collocation": "explosive cyclogenesis",
+    "cefr": "C2"
+  },
+  {
+    "word": "nimbus",
+    "pos": "noun",
+    "ipa": "/ˈnɪmbəs/",
+    "meaningVi": "mây mưa đen",
+    "definitionEn": "A dark rain cloud that forms the base of storm clouds.",
+    "example": "A dense nimbus gathered over the hills, promising heavy rain before evening.",
+    "collocation": "nimbus cloud",
+    "cefr": "C2"
+  }
+]

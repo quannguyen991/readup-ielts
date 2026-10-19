@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "child",
+    "pos": "noun",
+    "ipa": "/tʃaɪld/",
+    "meaningVi": "đứa trẻ",
+    "definitionEn": "A young human who has not yet reached adulthood.",
+    "example": "Every child deserves a safe place to learn and play.",
+    "collocation": "young child",
+    "cefr": "B1"
+  },
+  {
+    "word": "toddler",
+    "pos": "noun",
+    "ipa": "/ˈtɒdlə/",
+    "meaningVi": "trẻ mới biết đi",
+    "definitionEn": "A very young child who has only recently started walking.",
+    "example": "The toddler laughed loudly when the puppy licked his face.",
+    "collocation": "young toddler",
+    "cefr": "B1"
+  },
+  {
+    "word": "teenager",
+    "pos": "noun",
+    "ipa": "/ˈtiːneɪdʒə/",
+    "meaningVi": "thiếu niên",
+    "definitionEn": "A person aged between thirteen and nineteen years old.",
+    "example": "Many teenagers spend hours on their phones after school.",
+    "collocation": "moody teenager",
+    "cefr": "B1"
+  },
+  {
+    "word": "childhood",
+    "pos": "noun",
+    "ipa": "/ˈtʃaɪldhʊd/",
+    "meaningVi": "tuổi thơ",
+    "definitionEn": "The period of a person's life when they are a child.",
+    "example": "Her happiest memories are of summers spent at her grandmother's house during childhood.",
+    "collocation": "early childhood",
+    "cefr": "B1"
+  },
+  {
+    "word": "playground",
+    "pos": "noun",
+    "ipa": "/ˈpleɪɡraʊnd/",
+    "meaningVi": "sân chơi",
+    "definitionEn": "An outdoor area with equipment where children play at school or in a park.",
+    "example": "The children ran straight to the playground as soon as the bell rang.",
+    "collocation": "school playground",
+    "cefr": "B1"
+  },
+  {
+    "word": "homework",
+    "pos": "noun",
+    "ipa": "/ˈhəʊmwɜːk/",
+    "meaningVi": "bài tập về nhà",
+    "definitionEn": "Tasks that pupils are given by teachers to complete at home.",
+    "example": "She finished her maths homework before dinner and then watched television.",
+    "collocation": "finish homework",
+    "cefr": "B1"
+  },
+  {
+    "word": "nursery",
+    "pos": "noun",
+    "ipa": "/ˈnɜːsəri/",
+    "meaningVi": "nhà trẻ, trường mẫu giáo",
+    "definitionEn": "A place where very young children are cared for while parents work.",
+    "example": "My son started at the nursery when he was just two years old.",
+    "collocation": "nursery school",
+    "cefr": "B1"
+  },
+  {
+    "word": "tantrum",
+    "pos": "noun",
+    "ipa": "/ˈtæntrəm/",
+    "meaningVi": "cơn nổi giận của trẻ",
+    "definitionEn": "A sudden outburst of anger, often shown by a young child.",
+    "example": "The little boy threw a tantrum because he could not have sweets.",
+    "collocation": "throw a tantrum",
+    "cefr": "B1"
+  },
+  {
+    "word": "curious",
+    "pos": "adjective",
+    "ipa": "/ˈkjʊəriəs/",
+    "meaningVi": "tò mò",
+    "definitionEn": "Eager to learn or know more about something.",
+    "example": "Young children are naturally curious and ask questions about everything.",
+    "collocation": "curious mind",
+    "cefr": "B1"
+  },
+  {
+    "word": "obedient",
+    "pos": "adjective",
+    "ipa": "/əˈbiːdiənt/",
+    "meaningVi": "vâng lời",
+    "definitionEn": "Willing to do what you are told by parents or teachers.",
+    "example": "The obedient child put away his toys without being asked twice.",
+    "collocation": "obedient child",
+    "cefr": "B1"
+  },
+  {
+    "word": "naughty",
+    "pos": "adjective",
+    "ipa": "/ˈnɔːti/",
+    "meaningVi": "nghịch ngợm",
+    "definitionEn": "Behaving badly, especially in a playful way that breaks small rules.",
+    "example": "The naughty puppy chewed my shoes while I was in the kitchen.",
+    "collocation": "naughty child",
+    "cefr": "B1"
+  },
+  {
+    "word": "gentle",
+    "pos": "adjective",
+    "ipa": "/ˈdʒentl/",
+    "meaningVi": "nhẹ nhàng, dịu dàng",
+    "definitionEn": "Kind, calm, and careful in the way you treat people.",
+    "example": "The nurse was gentle with the frightened little girl during the check-up.",
+    "collocation": "gentle voice",
+    "cefr": "B1"
+  },
+  {
+    "word": "sibling",
+    "pos": "noun",
+    "ipa": "/ˈsɪblɪŋ/",
+    "meaningVi": "anh chị em ruột",
+    "definitionEn": "A brother or sister.",
+    "example": "Each sibling in our family has a different personality and interests.",
+    "collocation": "older sibling",
+    "cefr": "B1"
+  },
+  {
+    "word": "toy",
+    "pos": "noun",
+    "ipa": "/tɔɪ/",
+    "meaningVi": "đồ chơi",
+    "definitionEn": "An object designed for children to play with.",
+    "example": "The child's favourite toy was a battered teddy bear with one eye.",
+    "collocation": "favourite toy",
+    "cefr": "B1"
+  },
+  {
+    "word": "bedtime",
+    "pos": "noun",
+    "ipa": "/ˈbedtaɪm/",
+    "meaningVi": "giờ đi ngủ",
+    "definitionEn": "The time when a person usually goes to bed.",
+    "example": "Bedtime is at eight o'clock on school nights in our house.",
+    "collocation": "strict bedtime",
+    "cefr": "B1"
+  },
+  {
+    "word": "nurture",
+    "pos": "verb",
+    "ipa": "/ˈnɜːtʃə/",
+    "meaningVi": "nuôi dưỡng, chăm sóc",
+    "definitionEn": "To care for and encourage a child's growth and development.",
+    "example": "Good teachers nurture curiosity by encouraging students to ask questions.",
+    "collocation": "nurture talent",
+    "cefr": "B2"
+  },
+  {
+    "word": "supervise",
+    "pos": "verb",
+    "ipa": "/ˈsuːpəvaɪz/",
+    "meaningVi": "giám sát",
+    "definitionEn": "To watch over and direct someone's activities to make sure they are safe.",
+    "example": "Parents should supervise young children when they swim in the sea.",
+    "collocation": "closely supervise",
+    "cefr": "B2"
+  },
+  {
+    "word": "curfew",
+    "pos": "noun",
+    "ipa": "/ˈkɜːfjuː/",
+    "meaningVi": "giờ giới nghiêm",
+    "definitionEn": "A time by which a young person must be home at night.",
+    "example": "My parents set a curfew of ten o'clock on weekday nights.",
+    "collocation": "strict curfew",
+    "cefr": "B2"
+  },
+  {
+    "word": "guardian",
+    "pos": "noun",
+    "ipa": "/ˈɡɑːdiən/",
+    "meaningVi": "người giám hộ",
+    "definitionEn": "An adult legally responsible for caring for a child whose parents cannot.",
+    "example": "The court appointed her aunt as the child's legal guardian.",
+    "collocation": "legal guardian",
+    "cefr": "B2"
+  },
+  {
+    "word": "confide",
+    "pos": "verb",
+    "ipa": "/kənˈfaɪd/",
+    "meaningVi": "tâm sự, giãi bày",
+    "definitionEn": "To tell someone a private or personal thought in confidence.",
+    "example": "Many teenagers confide in a close friend rather than their parents.",
+    "collocation": "confide in someone",
+    "cefr": "B2"
+  },
+  {
+    "word": "sensitive",
+    "pos": "adjective",
+    "ipa": "/ˈsensətɪv/",
+    "meaningVi": "nhạy cảm",
+    "definitionEn": "Easily upset or hurt by criticism or by other people's words.",
+    "example": "Some children are very sensitive to criticism, even when it is gentle.",
+    "collocation": "highly sensitive",
+    "cefr": "B2"
+  },
+  {
+    "word": "impulsive",
+    "pos": "adjective",
+    "ipa": "/ɪmˈpʌlsɪv/",
+    "meaningVi": "bốc đồng",
+    "definitionEn": "Acting quickly on feelings without thinking carefully about the results.",
+    "example": "The impulsive boy jumped into the pool before anyone could stop him.",
+    "collocation": "impulsive behaviour",
+    "cefr": "B2"
+  },
+  {
+    "word": "stubborn",
+    "pos": "adjective",
+    "ipa": "/ˈstʌbən/",
+    "meaningVi": "bướng bỉnh",
+    "definitionEn": "Refusing to change your opinion or behaviour, even when others ask you to.",
+    "example": "The stubborn toddler refused to eat anything except bananas.",
+    "collocation": "stubborn streak",
+    "cefr": "B2"
+  },
+  {
+    "word": "supportive",
+    "pos": "adjective",
+    "ipa": "/səˈpɔːtɪv/",
+    "meaningVi": "hỗ trợ, động viên",
+    "definitionEn": "Giving encouragement and help to someone in need.",
+    "example": "Supportive parents praise effort, not just results, when children try hard.",
+    "collocation": "supportive family",
+    "cefr": "B2"
+  },
+  {
+    "word": "tutor",
+    "pos": "noun",
+    "ipa": "/ˈtjuːtə/",
+    "meaningVi": "gia sư",
+    "definitionEn": "A private teacher who gives extra lessons to a pupil.",
+    "example": "She hired a tutor to help her son prepare for the entrance exam.",
+    "collocation": "private tutor",
+    "cefr": "B2"
+  },
+  {
+    "word": "playgroup",
+    "pos": "noun",
+    "ipa": "/ˈpleɪɡruːp/",
+    "meaningVi": "nhóm chơi trẻ nhỏ",
+    "definitionEn": "A regular meeting where young children play together with adults supervising.",
+    "example": "My daughter made her first friends at a local playgroup.",
+    "collocation": "weekly playgroup",
+    "cefr": "B2"
+  },
+  {
+    "word": "bond",
+    "pos": "noun",
+    "ipa": "/bɒnd/",
+    "meaningVi": "mối gắn kết",
+    "definitionEn": "A strong emotional connection between people, such as parent and child.",
+    "example": "The bond between a baby and its mother forms very early in life.",
+    "collocation": "strong bond",
+    "cefr": "B2"
+  },
+  {
+    "word": "friendship",
+    "pos": "noun",
+    "ipa": "/ˈfrendʃɪp/",
+    "meaningVi": "tình bạn",
+    "definitionEn": "A close relationship between people who like and trust each other.",
+    "example": "A lasting friendship helps children feel secure during difficult times.",
+    "collocation": "lasting friendship",
+    "cefr": "B2"
+  },
+  {
+    "word": "puberty",
+    "pos": "noun",
+    "ipa": "/ˈpjuːbəti/",
+    "meaningVi": "tuổi dậy thì",
+    "definitionEn": "The stage when a child's body begins to develop into an adult body.",
+    "example": "Puberty can bring big changes in mood, appearance, and friendships.",
+    "collocation": "reach puberty",
+    "cefr": "B2"
+  },
+  {
+    "word": "peer",
+    "pos": "noun",
+    "ipa": "/pɪə/",
+    "meaningVi": "bạn đồng trang lứa",
+    "definitionEn": "A person of the same age or status as another person.",
+    "example": "Teenagers often value their peers' opinions more than their parents' advice.",
+    "collocation": "peer group",
+    "cefr": "B2"
+  },
+  {
+    "word": "dependent",
+    "pos": "adjective",
+    "ipa": "/dɪˈpendənt/",
+    "meaningVi": "phụ thuộc",
+    "definitionEn": "Relying on someone else for money, support, or care.",
+    "example": "Young children are completely dependent on adults for food and shelter.",
+    "collocation": "dependent on",
+    "cefr": "B2"
+  },
+  {
+    "word": "independence",
+    "pos": "noun",
+    "ipa": "/ˌɪndɪˈpendəns/",
+    "meaningVi": "tính độc lập",
+    "definitionEn": "The ability to act and make decisions without relying on others.",
+    "example": "Learning independence early helps children become confident adults.",
+    "collocation": "develop independence",
+    "cefr": "B2"
+  },
+  {
+    "word": "sleepover",
+    "pos": "noun",
+    "ipa": "/ˈsliːpəʊvə/",
+    "meaningVi": "buổi ngủ lại nhà bạn",
+    "definitionEn": "An occasion when a child spends the night at a friend's house.",
+    "example": "Her daughter begged to go to a sleepover at her best friend's house.",
+    "collocation": "sleepover party",
+    "cefr": "B2"
+  },
+  {
+    "word": "homesick",
+    "pos": "adjective",
+    "ipa": "/ˈhəʊmsɪk/",
+    "meaningVi": "nhớ nhà",
+    "definitionEn": "Feeling sad because you are away from home and miss your family.",
+    "example": "The homesick student called his mother every night during his first term.",
+    "collocation": "feel homesick",
+    "cefr": "B2"
+  },
+  {
+    "word": "ambitious",
+    "pos": "adjective",
+    "ipa": "/æmˈbɪʃəs/",
+    "meaningVi": "tham vọng",
+    "definitionEn": "Having a strong desire to achieve success or reach high goals.",
+    "example": "Ambitious students often set themselves demanding targets for each school year.",
+    "collocation": "highly ambitious",
+    "cefr": "B2"
+  },
+  {
+    "word": "considerate",
+    "pos": "adjective",
+    "ipa": "/kənˈsɪdərət/",
+    "meaningVi": "chu đáo, quan tâm",
+    "definitionEn": "Thoughtful about other people's feelings and needs.",
+    "example": "A considerate child remembers to say thank you after every meal.",
+    "collocation": "considerate behaviour",
+    "cefr": "B2"
+  },
+  {
+    "word": "cognitive",
+    "pos": "adjective",
+    "ipa": "/ˈkɒɡnətɪv/",
+    "meaningVi": "thuộc nhận thức",
+    "definitionEn": "Relating to the mental processes of thinking, learning, and remembering.",
+    "example": "Reading aloud supports cognitive growth in children during the early school years.",
+    "collocation": "cognitive development",
+    "cefr": "C1"
+  },
+  {
+    "word": "maturation",
+    "pos": "noun",
+    "ipa": "/ˌmætʃuˈreɪʃn/",
+    "meaningVi": "sự trưởng thành",
+    "definitionEn": "The process of growing up physically, emotionally, or intellectually.",
+    "example": "Emotional maturation often lags behind physical growth during the early teens.",
+    "collocation": "natural maturation",
+    "cefr": "C1"
+  },
+  {
+    "word": "developmental",
+    "pos": "adjective",
+    "ipa": "/dɪˌveləpˈmentl/",
+    "meaningVi": "thuộc phát triển",
+    "definitionEn": "Relating to the stages by which a person grows and changes.",
+    "example": "Paediatricians monitor developmental progress at every routine check-up.",
+    "collocation": "developmental stage",
+    "cefr": "C1"
+  },
+  {
+    "word": "temperament",
+    "pos": "noun",
+    "ipa": "/ˈtemprəmənt/",
+    "meaningVi": "tính khí, tâm tính",
+    "definitionEn": "A person's natural way of thinking, feeling, and reacting to things.",
+    "example": "Some babies have a calm temperament, while others cry at every noise.",
+    "collocation": "difficult temperament",
+    "cefr": "C1"
+  },
+  {
+    "word": "inhibition",
+    "pos": "noun",
+    "ipa": "/ˌɪnhɪˈbɪʃn/",
+    "meaningVi": "sự kìm hãm",
+    "definitionEn": "A feeling of restraint that stops a person from acting freely or spontaneously.",
+    "example": "Shyness can create inhibition that stops children from speaking in class.",
+    "collocation": "social inhibition",
+    "cefr": "C1"
+  },
+  {
+    "word": "impressionable",
+    "pos": "adjective",
+    "ipa": "/ɪmˈpreʃənəbl/",
+    "meaningVi": "dễ bị ảnh hưởng",
+    "definitionEn": "Easily influenced by the ideas or behaviour of others.",
+    "example": "Young children are highly impressionable and copy the adults around them.",
+    "collocation": "highly impressionable",
+    "cefr": "C1"
+  },
+  {
+    "word": "precocious",
+    "pos": "adjective",
+    "ipa": "/prɪˈkəʊʃəs/",
+    "meaningVi": "khôn trước tuổi",
+    "definitionEn": "Showing skills or maturity at an earlier age than is usual.",
+    "example": "The precocious girl could already read novels at the age of five.",
+    "collocation": "precocious talent",
+    "cefr": "C1"
+  },
+  {
+    "word": "disciplinary",
+    "pos": "adjective",
+    "ipa": "/ˈdɪsɪplɪnəri/",
+    "meaningVi": "thuộc kỷ luật",
+    "definitionEn": "Relating to punishment or rules used to control behaviour.",
+    "example": "The school introduced new disciplinary rules after several fights in the playground.",
+    "collocation": "disciplinary action",
+    "cefr": "C1"
+  },
+  {
+    "word": "indulgent",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdʌldʒənt/",
+    "meaningVi": "nuông chiều",
+    "definitionEn": "Allowing someone to have or do what they want, often too easily.",
+    "example": "Indulgent grandparents often spoil children with sweets and expensive toys.",
+    "collocation": "indulgent parents",
+    "cefr": "C1"
+  },
+  {
+    "word": "overprotective",
+    "pos": "adjective",
+    "ipa": "/ˌəʊvəprəˈtektɪv/",
+    "meaningVi": "bảo vệ quá mức",
+    "definitionEn": "Protecting someone so much that they cannot become independent.",
+    "example": "Overprotective parents may prevent children from taking healthy risks.",
+    "collocation": "overprotective parent",
+    "cefr": "C1"
+  },
+  {
+    "word": "nonchalant",
+    "pos": "adjective",
+    "ipa": "/ˈnɒnʃələnt/",
+    "meaningVi": "thờ ơ, điềm nhiên",
+    "definitionEn": "Appearing calm and unconcerned, even when a situation is serious.",
+    "example": "The teenager was nonchalant about failing the test and shrugged it off.",
+    "collocation": "nonchalant attitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "disobedience",
+    "pos": "noun",
+    "ipa": "/ˌdɪsəˈbiːdiəns/",
+    "meaningVi": "sự không vâng lời",
+    "definitionEn": "Refusal to obey rules, orders, or instructions from those in authority.",
+    "example": "Repeated disobedience led to the boy being moved to another class.",
+    "collocation": "open disobedience",
+    "cefr": "C1"
+  },
+  {
+    "word": "reprimand",
+    "pos": "noun",
+    "ipa": "/ˈreprɪmɑːnd/",
+    "meaningVi": "lời quở trách",
+    "definitionEn": "A formal expression of disapproval given to someone who has done wrong.",
+    "example": "The head teacher gave the pupil a stern reprimand for bullying.",
+    "collocation": "stern reprimand",
+    "cefr": "C1"
+  },
+  {
+    "word": "adolescent",
+    "pos": "noun",
+    "ipa": "/ˌædəˈlesnt/",
+    "meaningVi": "thanh thiếu niên",
+    "definitionEn": "A young person who is developing from a child into an adult.",
+    "example": "Adolescent brains are still developing, which affects decision making.",
+    "collocation": "young adolescent",
+    "cefr": "C1"
+  },
+  {
+    "word": "sibling rivalry",
+    "pos": "phrase",
+    "ipa": "/ˈsɪblɪŋ ˈraɪvlri/",
+    "meaningVi": "cạnh tranh giữa anh chị em",
+    "definitionEn": "Competition and jealousy between brothers and sisters for attention.",
+    "example": "Sibling rivalry often eases once children grow older and more independent.",
+    "collocation": "intense sibling rivalry",
+    "cefr": "C1"
+  },
+  {
+    "word": "empathetic",
+    "pos": "adjective",
+    "ipa": "/ˌempəˈθetɪk/",
+    "meaningVi": "đồng cảm",
+    "definitionEn": "Able to understand and share the feelings of another person.",
+    "example": "An empathetic teacher notices when a student is feeling sad or anxious.",
+    "collocation": "highly empathetic",
+    "cefr": "C1"
+  },
+  {
+    "word": "altruism",
+    "pos": "noun",
+    "ipa": "/ˈæltruɪzəm/",
+    "meaningVi": "lòng vị tha",
+    "definitionEn": "Selfless concern for the wellbeing of others.",
+    "example": "Children can learn altruism by helping classmates and volunteering in their community.",
+    "collocation": "acts of altruism",
+    "cefr": "C1"
+  },
+  {
+    "word": "compassion",
+    "pos": "noun",
+    "ipa": "/kəmˈpæʃn/",
+    "meaningVi": "lòng trắc ẩn",
+    "definitionEn": "Sympathy and a strong desire to relieve another's suffering.",
+    "example": "She showed great compassion when her classmate lost a parent.",
+    "collocation": "deep compassion",
+    "cefr": "C1"
+  },
+  {
+    "word": "disposition",
+    "pos": "noun",
+    "ipa": "/ˌdɪspəˈzɪʃn/",
+    "meaningVi": "tính cách, khuynh hướng",
+    "definitionEn": "A person's natural mood, character, or tendency to behave in a particular way.",
+    "example": "The child has a cheerful disposition that lifts everyone around her.",
+    "collocation": "cheerful disposition",
+    "cefr": "C1"
+  },
+  {
+    "word": "adversity",
+    "pos": "noun",
+    "ipa": "/ədˈvɜːsəti/",
+    "meaningVi": "nghịch cảnh",
+    "definitionEn": "Difficult circumstances or misfortune that challenge a person.",
+    "example": "Children who overcome adversity often develop remarkable inner strength.",
+    "collocation": "overcome adversity",
+    "cefr": "C1"
+  },
+  {
+    "word": "endurance",
+    "pos": "noun",
+    "ipa": "/ɪnˈdjʊərəns/",
+    "meaningVi": "sự bền bỉ, chịu đựng",
+    "definitionEn": "The ability to keep going through a difficult or tiring experience.",
+    "example": "Long-distance running builds endurance and patience in young athletes.",
+    "collocation": "mental endurance",
+    "cefr": "C1"
+  },
+  {
+    "word": "vulnerability",
+    "pos": "noun",
+    "ipa": "/ˌvʌlnərəˈbɪləti/",
+    "meaningVi": "sự dễ tổn thương",
+    "definitionEn": "The state of being open to harm, criticism, or emotional hurt.",
+    "example": "Adolescents show great vulnerability to peer rejection and online bullying.",
+    "collocation": "emotional vulnerability",
+    "cefr": "C1"
+  },
+  {
+    "word": "withdrawn",
+    "pos": "adjective",
+    "ipa": "/wɪðˈdrɔːn/",
+    "meaningVi": "thu mình, khép kín",
+    "definitionEn": "Quiet and reserved, avoiding contact with other people.",
+    "example": "The withdrawn boy sat alone at lunch and rarely spoke in class.",
+    "collocation": "socially withdrawn",
+    "cefr": "C1"
+  },
+  {
+    "word": "inquisitive",
+    "pos": "adjective",
+    "ipa": "/ɪnˈkwɪzətɪv/",
+    "meaningVi": "hiếu kỳ, ham học hỏi",
+    "definitionEn": "Showing a strong interest in learning about things.",
+    "example": "An inquisitive child asks questions about how everything works.",
+    "collocation": "inquisitive mind",
+    "cefr": "C1"
+  },
+  {
+    "word": "aptitude",
+    "pos": "noun",
+    "ipa": "/ˈæptɪtjuːd/",
+    "meaningVi": "năng khiếu, khả năng",
+    "definitionEn": "A natural ability or talent for learning a particular skill.",
+    "example": "She showed a strong aptitude for mathematics from a very early age.",
+    "collocation": "natural aptitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "tutelage",
+    "pos": "noun",
+    "ipa": "/ˈtjuːtəlɪdʒ/",
+    "meaningVi": "sự dạy dỗ, sự giám hộ",
+    "definitionEn": "Guidance, instruction, or protection given by a teacher or guardian.",
+    "example": "Under the tutelage of an experienced coach, the young swimmer improved quickly.",
+    "collocation": "under the tutelage of",
+    "cefr": "C1"
+  },
+  {
+    "word": "delinquency",
+    "pos": "noun",
+    "ipa": "/dɪˈlɪŋkwənsi/",
+    "meaningVi": "hành vi phạm pháp thanh thiếu niên",
+    "definitionEn": "Antisocial or illegal behaviour, especially by young people.",
+    "example": "Researchers link family neglect with a higher risk of juvenile delinquency.",
+    "collocation": "juvenile delinquency",
+    "cefr": "C1"
+  },
+  {
+    "word": "truancy",
+    "pos": "noun",
+    "ipa": "/ˈtruːənsi/",
+    "meaningVi": "trốn học",
+    "definitionEn": "The practice of staying away from school without permission.",
+    "example": "Persistent truancy can cause serious gaps in a student's education.",
+    "collocation": "persistent truancy",
+    "cefr": "C1"
+  },
+  {
+    "word": "self-regulation",
+    "pos": "noun",
+    "ipa": "/ˌself ˌreɡjuˈleɪʃn/",
+    "meaningVi": "tự điều chỉnh",
+    "definitionEn": "The ability to manage one's own emotions, behaviour, and impulses.",
+    "example": "Self-regulation skills help children wait their turn and handle frustration.",
+    "collocation": "develop self-regulation",
+    "cefr": "C1"
+  },
+  {
+    "word": "mimicry",
+    "pos": "noun",
+    "ipa": "/ˈmɪmɪkri/",
+    "meaningVi": "sự bắt chước",
+    "definitionEn": "The act of copying the speech, movements, or behaviour of others.",
+    "example": "Young children learn language partly through mimicry of their parents.",
+    "collocation": "skilful mimicry",
+    "cefr": "C1"
+  },
+  {
+    "word": "egocentric",
+    "pos": "adjective",
+    "ipa": "/ˌiːɡəʊˈsentrɪk/",
+    "meaningVi": "tự cho mình là trung tâm",
+    "definitionEn": "Focused on one's own needs and perspective, without considering others.",
+    "example": "Toddlers are naturally egocentric and find it hard to share.",
+    "collocation": "egocentric behaviour",
+    "cefr": "C1"
+  },
+  {
+    "word": "ambivalent",
+    "pos": "adjective",
+    "ipa": "/æmˈbɪvələnt/",
+    "meaningVi": "mâu thuẫn, do dự",
+    "definitionEn": "Having mixed or conflicting feelings about someone or something.",
+    "example": "Many teenagers feel ambivalent about moving to a new school.",
+    "collocation": "ambivalent feelings",
+    "cefr": "C1"
+  },
+  {
+    "word": "resentment",
+    "pos": "noun",
+    "ipa": "/rɪˈzentmənt/",
+    "meaningVi": "sự oán giận",
+    "definitionEn": "Bitter anger at being treated unfairly or given less than others.",
+    "example": "Favouritism among siblings often breeds resentment that lasts for years.",
+    "collocation": "deep resentment",
+    "cefr": "C1"
+  },
+  {
+    "word": "intrinsic",
+    "pos": "adjective",
+    "ipa": "/ɪnˈtrɪnsɪk/",
+    "meaningVi": "vốn có, nội tại",
+    "definitionEn": "Belonging naturally to something; coming from within rather than from outside.",
+    "example": "Intrinsic motivation makes children keep learning for the joy of it.",
+    "collocation": "intrinsic motivation",
+    "cefr": "C1"
+  },
+  {
+    "word": "conscientious",
+    "pos": "adjective",
+    "ipa": "/ˌkɒnʃiˈenʃəs/",
+    "meaningVi": "tận tâm, cẩn thận",
+    "definitionEn": "Careful and thorough in doing one's work or duties.",
+    "example": "The conscientious pupil always checks her homework twice before submitting it.",
+    "collocation": "conscientious student",
+    "cefr": "C1"
+  },
+  {
+    "word": "gregarious",
+    "pos": "adjective",
+    "ipa": "/ɡrɪˈɡeəriəs/",
+    "meaningVi": "hòa đồng, thích giao du",
+    "definitionEn": "Enjoying the company of others and seeking social contact.",
+    "example": "My gregarious nephew makes friends with everyone at the playground.",
+    "collocation": "gregarious nature",
+    "cefr": "C1"
+  },
+  {
+    "word": "solace",
+    "pos": "noun",
+    "ipa": "/ˈsɒləs/",
+    "meaningVi": "niềm an ủi",
+    "definitionEn": "Comfort received after a loss or disappointment.",
+    "example": "Her pet rabbit provided solace during the difficult months after the move.",
+    "collocation": "find solace",
+    "cefr": "C1"
+  },
+  {
+    "word": "reticent",
+    "pos": "adjective",
+    "ipa": "/ˈretɪsnt/",
+    "meaningVi": "kín đáo, ít nói",
+    "definitionEn": "Unwilling to speak openly about feelings or thoughts.",
+    "example": "The reticent girl rarely shared her feelings with her teachers.",
+    "collocation": "reticent about",
+    "cefr": "C1"
+  },
+  {
+    "word": "pedagogy",
+    "pos": "noun",
+    "ipa": "/ˈpedəɡɒdʒi/",
+    "meaningVi": "phương pháp sư phạm",
+    "definitionEn": "The method and practice of teaching, especially the theory behind it.",
+    "example": "Modern pedagogy emphasises active learning over memorising facts.",
+    "collocation": "modern pedagogy",
+    "cefr": "C2"
+  },
+  {
+    "word": "nascent",
+    "pos": "adjective",
+    "ipa": "/ˈnæsnt/",
+    "meaningVi": "non trẻ, mới manh nha",
+    "definitionEn": "Just beginning to develop or show signs of growth.",
+    "example": "The child showed a nascent talent for drawing at only three years old.",
+    "collocation": "nascent talent",
+    "cefr": "C2"
+  },
+  {
+    "word": "precocity",
+    "pos": "noun",
+    "ipa": "/prɪˈkɒsəti/",
+    "meaningVi": "sự chín sớm",
+    "definitionEn": "Unusually early development of mental or physical abilities in a child.",
+    "example": "Her precocity surprised teachers, who had never met such an advanced reader.",
+    "collocation": "remarkable precocity",
+    "cefr": "C2"
+  },
+  {
+    "word": "puerile",
+    "pos": "adjective",
+    "ipa": "/ˈpjʊəraɪl/",
+    "meaningVi": "trẻ con, ấu trĩ",
+    "definitionEn": "Childishly silly or immature, especially in behaviour that should be outgrown.",
+    "example": "His puerile jokes embarrassed everyone at the otherwise serious meeting.",
+    "collocation": "puerile behaviour",
+    "cefr": "C2"
+  },
+  {
+    "word": "juvenile",
+    "pos": "adjective",
+    "ipa": "/ˈdʒuːvənaɪl/",
+    "meaningVi": "thuộc thiếu niên",
+    "definitionEn": "Relating to young people, or characteristic of immaturity.",
+    "example": "Juvenile offenders are often placed in separate facilities from adult prisoners.",
+    "collocation": "juvenile offender",
+    "cefr": "C2"
+  },
+  {
+    "word": "infantile",
+    "pos": "adjective",
+    "ipa": "/ˈɪnfəntaɪl/",
+    "meaningVi": "trẻ con, ấu trĩ",
+    "definitionEn": "Relating to infants, or showing childish immaturity in an adult.",
+    "example": "His infantile sulking during the game annoyed his teammates.",
+    "collocation": "infantile behaviour",
+    "cefr": "C2"
+  },
+  {
+    "word": "filial",
+    "pos": "adjective",
+    "ipa": "/ˈfɪliəl/",
+    "meaningVi": "thuộc về hiếu thảo",
+    "definitionEn": "Relating to or showing the duty and respect expected of a son or daughter.",
+    "example": "She showed filial devotion by caring for her father through his illness.",
+    "collocation": "filial duty",
+    "cefr": "C2"
+  },
+  {
+    "word": "paternal",
+    "pos": "adjective",
+    "ipa": "/pəˈtɜːnl/",
+    "meaningVi": "thuộc người cha",
+    "definitionEn": "Relating to a father, or the protective care of a father.",
+    "example": "His paternal instincts made him protective of his younger brother.",
+    "collocation": "paternal instinct",
+    "cefr": "C2"
+  },
+  {
+    "word": "maternal",
+    "pos": "adjective",
+    "ipa": "/məˈtɜːnl/",
+    "meaningVi": "thuộc người mẹ",
+    "definitionEn": "Relating to a mother, or the protective care of a mother.",
+    "example": "Maternal love shapes a child's sense of security in the earliest years.",
+    "collocation": "maternal love",
+    "cefr": "C2"
+  },
+  {
+    "word": "avuncular",
+    "pos": "adjective",
+    "ipa": "/əˈvʌŋkjələ/",
+    "meaningVi": "như chú bác, hiền hậu",
+    "definitionEn": "Kind, friendly, and warmly helpful, like a favourite uncle.",
+    "example": "The avuncular teacher always had a kind word for anxious pupils.",
+    "collocation": "avuncular manner",
+    "cefr": "C2"
+  },
+  {
+    "word": "sagacious",
+    "pos": "adjective",
+    "ipa": "/səˈɡeɪʃəs/",
+    "meaningVi": "khôn ngoan, sáng suốt",
+    "definitionEn": "Having or showing keen judgement and good sense.",
+    "example": "The sagacious old headmaster knew exactly how to calm a quarrel.",
+    "collocation": "sagacious advice",
+    "cefr": "C2"
+  },
+  {
+    "word": "impetuous",
+    "pos": "adjective",
+    "ipa": "/ɪmˈpetʃuəs/",
+    "meaningVi": "bốc đồng, hấp tấp",
+    "definitionEn": "Acting quickly and rashly without considering the consequences.",
+    "example": "The impetuous boy ran into the road without looking for traffic.",
+    "collocation": "impetuous youth",
+    "cefr": "C2"
+  },
+  {
+    "word": "truculent",
+    "pos": "adjective",
+    "ipa": "/ˈtrʌkjələnt/",
+    "meaningVi": "hung hăng, cục cằn",
+    "definitionEn": "Eager to argue or fight; aggressively defiant.",
+    "example": "The truculent teenager refused every suggestion his parents offered.",
+    "collocation": "truculent attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "petulant",
+    "pos": "adjective",
+    "ipa": "/ˈpetjələnt/",
+    "meaningVi": "hờn dỗi, nóng nảy",
+    "definitionEn": "Childishly bad-tempered or sulky about small matters.",
+    "example": "The petulant toddler stamped his feet when his juice was finished.",
+    "collocation": "petulant tone",
+    "cefr": "C2"
+  },
+  {
+    "word": "wayward",
+    "pos": "adjective",
+    "ipa": "/ˈweɪwəd/",
+    "meaningVi": "bướng bỉnh, khó bảo",
+    "definitionEn": "Difficult to control, and inclined to behave badly or unpredictably.",
+    "example": "The wayward son ignored his father's advice and left school early.",
+    "collocation": "wayward child",
+    "cefr": "C2"
+  },
+  {
+    "word": "incorrigible",
+    "pos": "adjective",
+    "ipa": "/ɪnˈkɒrɪdʒəbl/",
+    "meaningVi": "không thể sửa được",
+    "definitionEn": "Too firmly fixed in bad habits to be corrected or reformed.",
+    "example": "The incorrigible prankster never stopped playing tricks on his classmates.",
+    "collocation": "incorrigible prankster",
+    "cefr": "C2"
+  },
+  {
+    "word": "docile",
+    "pos": "adjective",
+    "ipa": "/ˈdəʊsaɪl/",
+    "meaningVi": "dễ bảo, ngoan ngoãn",
+    "definitionEn": "Quiet and easy to control or teach.",
+    "example": "The docile puppy followed the children around the garden all afternoon.",
+    "collocation": "docile nature",
+    "cefr": "C2"
+  },
+  {
+    "word": "pliable",
+    "pos": "adjective",
+    "ipa": "/ˈplaɪəbl/",
+    "meaningVi": "dễ uốn nắn",
+    "definitionEn": "Easily shaped or influenced, especially in character or opinion.",
+    "example": "Young minds are pliable and can be shaped by early experiences.",
+    "collocation": "pliable mind",
+    "cefr": "C2"
+  },
+  {
+    "word": "formative",
+    "pos": "adjective",
+    "ipa": "/ˈfɔːmətɪv/",
+    "meaningVi": "mang tính định hình",
+    "definitionEn": "Having a strong influence on the development of character during early years.",
+    "example": "Her formative years in the countryside shaped her love of nature.",
+    "collocation": "formative years",
+    "cefr": "C2"
+  },
+  {
+    "word": "indoctrination",
+    "pos": "noun",
+    "ipa": "/ɪnˌdɒktrɪˈneɪʃn/",
+    "meaningVi": "sự nhồi nhét tư tưởng",
+    "definitionEn": "The process of teaching someone to accept a set of beliefs without question.",
+    "example": "Critics warn that rigid schooling can become indoctrination rather than education.",
+    "collocation": "political indoctrination",
+    "cefr": "C2"
+  },
+  {
+    "word": "didactic",
+    "pos": "adjective",
+    "ipa": "/daɪˈdæktɪk/",
+    "meaningVi": "mang tính giáo huấn",
+    "definitionEn": "Intended to teach a lesson, often in a preachy or overly instructive way.",
+    "example": "The picture book is too didactic and lectures children on every page.",
+    "collocation": "didactic approach",
+    "cefr": "C2"
+  },
+  {
+    "word": "cathartic",
+    "pos": "adjective",
+    "ipa": "/kəˈθɑːtɪk/",
+    "meaningVi": "giải tỏa cảm xúc",
+    "definitionEn": "Providing emotional release and relief through expressing strong feelings.",
+    "example": "Writing in a diary was cathartic for the teenager after the family argument.",
+    "collocation": "cathartic experience",
+    "cefr": "C2"
+  },
+  {
+    "word": "introspection",
+    "pos": "noun",
+    "ipa": "/ˌɪntrəˈspekʃn/",
+    "meaningVi": "sự tự soi xét",
+    "definitionEn": "The examination of one's own thoughts and feelings.",
+    "example": "Adolescence often brings deep introspection about identity and purpose.",
+    "collocation": "deep introspection",
+    "cefr": "C2"
+  },
+  {
+    "word": "ennui",
+    "pos": "noun",
+    "ipa": "/ˈɒnwi/",
+    "meaningVi": "buồn chán, uể oải",
+    "definitionEn": "A feeling of listlessness and dissatisfaction caused by boredom.",
+    "example": "Some students feel ennui during long lessons that offer no challenge.",
+    "collocation": "deep ennui",
+    "cefr": "C2"
+  },
+  {
+    "word": "solicitous",
+    "pos": "adjective",
+    "ipa": "/səˈlɪsɪtəs/",
+    "meaningVi": "ân cần, chu đáo",
+    "definitionEn": "Showing care and concern for someone's wellbeing.",
+    "example": "The solicitous nurse checked on the sick child every hour.",
+    "collocation": "solicitous care",
+    "cefr": "C2"
+  },
+  {
+    "word": "sanguine",
+    "pos": "adjective",
+    "ipa": "/ˈsæŋɡwɪn/",
+    "meaningVi": "lạc quan, tự tin",
+    "definitionEn": "Optimistic and cheerful, especially in difficult circumstances.",
+    "example": "Despite the setbacks, the coach remained sanguine about the team's chances.",
+    "collocation": "sanguine outlook",
+    "cefr": "C2"
+  },
+  {
+    "word": "diffident",
+    "pos": "adjective",
+    "ipa": "/ˈdɪfɪdənt/",
+    "meaningVi": "rụt rè, thiếu tự tin",
+    "definitionEn": "Modest or shy, lacking confidence in oneself.",
+    "example": "The diffident boy hesitated before raising his hand in class.",
+    "collocation": "diffident manner",
+    "cefr": "C2"
+  },
+  {
+    "word": "ebullient",
+    "pos": "adjective",
+    "ipa": "/ɪˈbʌliənt/",
+    "meaningVi": "sôi nổi, hào hứng",
+    "definitionEn": "Cheerful and full of energy and enthusiasm.",
+    "example": "The ebullient children burst into the classroom after the holiday.",
+    "collocation": "ebullient mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "fractious",
+    "pos": "adjective",
+    "ipa": "/ˈfrækʃəs/",
+    "meaningVi": "cáu kỉnh, khó bảo",
+    "definitionEn": "Irritable and quarrelsome, especially when tired or bored.",
+    "example": "The fractious toddlers grew tired and began to fight over toys.",
+    "collocation": "fractious mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "sullen",
+    "pos": "adjective",
+    "ipa": "/ˈsʌlən/",
+    "meaningVi": "ủ rũ, hằn học",
+    "definitionEn": "Silent and bad-tempered, showing resentment through a gloomy expression.",
+    "example": "The sullen teenager said nothing during the entire family dinner.",
+    "collocation": "sullen silence",
+    "cefr": "C2"
+  },
+  {
+    "word": "morose",
+    "pos": "adjective",
+    "ipa": "/məˈrəʊs/",
+    "meaningVi": "u sầu, ủ rũ",
+    "definitionEn": "Sad, bad-tempered, and gloomy, often withdrawing from others.",
+    "example": "The morose boy stayed in his room for days after losing the match.",
+    "collocation": "morose mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "lethargic",
+    "pos": "adjective",
+    "ipa": "/ləˈθɑːdʒɪk/",
+    "meaningVi": "uể oải, lờ đờ",
+    "definitionEn": "Lacking energy, enthusiasm, or the will to act.",
+    "example": "The lethargic child slept late and refused to join the morning exercises.",
+    "collocation": "lethargic mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "precept",
+    "pos": "noun",
+    "ipa": "/ˈpriːsept/",
+    "meaningVi": "giáo huấn, nguyên tắc",
+    "definitionEn": "A rule or principle intended to guide behaviour or conduct.",
+    "example": "Her grandmother's precept was always to treat others with respect.",
+    "collocation": "guiding precept",
+    "cefr": "C2"
+  },
+  {
+    "word": "progeny",
+    "pos": "noun",
+    "ipa": "/ˈprɒdʒəni/",
+    "meaningVi": "con cháu, đời sau",
+    "definitionEn": "A person's children or descendants.",
+    "example": "The king's progeny were educated abroad to prepare them for rule.",
+    "collocation": "numerous progeny",
+    "cefr": "C2"
+  },
+  {
+    "word": "scion",
+    "pos": "noun",
+    "ipa": "/ˈsaɪən/",
+    "meaningVi": "con cháu của gia tộc",
+    "definitionEn": "A young member of a noble or wealthy family.",
+    "example": "The scion of the merchant family was sent to study in London.",
+    "collocation": "noble scion",
+    "cefr": "C2"
+  },
+  {
+    "word": "consanguinity",
+    "pos": "noun",
+    "ipa": "/ˌkɒnsæŋˈɡwɪnəti/",
+    "meaningVi": "quan hệ huyết thống",
+    "definitionEn": "The relationship between people who share a common ancestor.",
+    "example": "Consanguinity between the two families was revealed through old church records.",
+    "collocation": "close consanguinity",
+    "cefr": "C2"
+  },
+  {
+    "word": "fledgling",
+    "pos": "noun",
+    "ipa": "/ˈfledʒlɪŋ/",
+    "meaningVi": "người mới vào nghề",
+    "definitionEn": "A person or thing that is new and inexperienced in a particular field.",
+    "example": "The fledgling designer won her first major commission at twenty-two.",
+    "collocation": "fledgling business",
+    "cefr": "C2"
+  },
+  {
+    "word": "neophyte",
+    "pos": "noun",
+    "ipa": "/ˈniːəfaɪt/",
+    "meaningVi": "người mới nhập môn",
+    "definitionEn": "A beginner who has just started learning a skill or activity.",
+    "example": "The neophyte teacher struggled with discipline during her first month.",
+    "collocation": "complete neophyte",
+    "cefr": "C2"
+  },
+  {
+    "word": "orphan",
+    "pos": "noun",
+    "ipa": "/ˈɔːfn/",
+    "meaningVi": "trẻ mồ côi",
+    "definitionEn": "A child whose parents have died.",
+    "example": "The charity supports orphan children with food, schooling, and medical care.",
+    "collocation": "orphan child",
+    "cefr": "C2"
+  },
+  {
+    "word": "callow",
+    "pos": "adjective",
+    "ipa": "/ˈkæləʊ/",
+    "meaningVi": "non nớt, thiếu kinh nghiệm",
+    "definitionEn": "Young, inexperienced, and naive.",
+    "example": "The callow youth believed everything his friends told him.",
+    "collocation": "callow youth",
+    "cefr": "C2"
+  },
+  {
+    "word": "gauche",
+    "pos": "adjective",
+    "ipa": "/ɡəʊʃ/",
+    "meaningVi": "vụng về, thiếu khéo léo",
+    "definitionEn": "Socially awkward and lacking grace or tact.",
+    "example": "The gauche teenager knocked over a glass at the formal dinner.",
+    "collocation": "gauche manner",
+    "cefr": "C2"
+  },
+  {
+    "word": "unruly",
+    "pos": "adjective",
+    "ipa": "/ʌnˈruːli/",
+    "meaningVi": "hỗn loạn, khó bảo",
+    "definitionEn": "Difficult to control and disorderly in behaviour.",
+    "example": "The unruly class ignored the substitute teacher completely.",
+    "collocation": "unruly children",
+    "cefr": "C2"
+  },
+  {
+    "word": "raucous",
+    "pos": "adjective",
+    "ipa": "/ˈrɔːkəs/",
+    "meaningVi": "ồn ào, inh ỏi",
+    "definitionEn": "Loud, harsh, and noisy in a rowdy way.",
+    "example": "The raucous children shouted and laughed all the way down the corridor.",
+    "collocation": "raucous laughter",
+    "cefr": "C2"
+  },
+  {
+    "word": "cantankerous",
+    "pos": "adjective",
+    "ipa": "/kænˈtæŋkərəs/",
+    "meaningVi": "cáu kỉnh, hay gây gổ",
+    "definitionEn": "Bad-tempered and quarrelsome, especially in an old or contrary way.",
+    "example": "The cantankerous old man complained about the children playing outside.",
+    "collocation": "cantankerous old man",
+    "cefr": "C2"
+  },
+  {
+    "word": "obstreperous",
+    "pos": "adjective",
+    "ipa": "/əbˈstrepərəs/",
+    "meaningVi": "ồn ào, ngang bướng",
+    "definitionEn": "Noisy and difficult to control, refusing to obey.",
+    "example": "The obstreperous pupils refused to sit down until the bell rang.",
+    "collocation": "obstreperous behaviour",
+    "cefr": "C2"
+  },
+  {
+    "word": "vexatious",
+    "pos": "adjective",
+    "ipa": "/vekˈseɪʃəs/",
+    "meaningVi": "gây bực bội, phiền toái",
+    "definitionEn": "Causing annoyance or irritation, often without good reason.",
+    "example": "The vexatious parent sent a stream of complaints about every small matter.",
+    "collocation": "vexatious complaints",
+    "cefr": "C2"
+  }
+]

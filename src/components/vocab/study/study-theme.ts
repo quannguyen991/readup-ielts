@@ -8,8 +8,8 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light';
-export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene';
+export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light';
+export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene' | 'waves' | 'snow' | 'bamboo' | 'aurora';
 
 export type StudyTheme = {
   id: ThemeId;
@@ -187,8 +187,75 @@ const PX_THEMES: Record<'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-
   'px-hanoi': { ...PX_BASE, id: 'px-hanoi', vi: 'Hồ Gươm sớm mai', en: 'Hoan Kiem at dawn', skyBase: '#14202E', skyStops: ['#0E1824', '#14202E'], sky: '#14202E', swatch: 'linear-gradient(180deg,#6C9CC4,#F7D9A8 55%,#C8402A)' },
 };
 
+/** Khung cảnh vẽ bằng CSS và vài thẻ div (không ảnh): biển, tuyết, rừng tre, cực quang. */
+const SCENE_THEMES: Record<'beach' | 'snow' | 'bamboo' | 'aurora', StudyTheme> = {
+  beach: {
+    ...LIGHT_BASE,
+    id: 'beach',
+    vi: 'Biển chiều',
+    en: 'Seaside afternoon',
+    layer: 'waves',
+    skyBase: '#BFE3F2',
+    skyStops: ['#BFE3F2', '#E9F6F9', '#FBE3C4'],
+    sky: 'linear-gradient(180deg,#8FD0EC 0%,#D6EEF6 52%,#FBE3C4 100%)',
+    swatch: 'linear-gradient(180deg,#8FD0EC 0%,#FBE3C4 60%,#2E8BB8 61%,#1B5F86 100%)',
+    card: 'rgba(255,255,255,0.94)',
+    cardBorder: 'rgba(40,120,160,0.22)',
+    soft: '#EEF8FB',
+    accent: '#1F6E96',
+    accentDisabled: '#CFE7F1',
+    onBg: '#0E3B52',
+    pill: 'rgba(255,255,255,0.8)',
+  },
+  snow: {
+    ...DARK_BASE,
+    id: 'snow',
+    vi: 'Đêm tuyết',
+    en: 'Snowy night',
+    layer: 'snow',
+    skyBase: '#0E1A2E',
+    skyStops: ['#0A1424', '#0E1A2E', '#1C2D4A'],
+    sky: 'linear-gradient(180deg,#0A1424 0%,#0E1A2E 55%,#1C2D4A 100%)',
+    swatch: 'linear-gradient(180deg,#0A1424,#1C2D4A)',
+    card: 'rgba(14,26,46,0.92)',
+    cardBorder: 'rgba(190,215,255,0.22)',
+  },
+  bamboo: {
+    ...LIGHT_BASE,
+    id: 'bamboo',
+    vi: 'Rừng tre',
+    en: 'Bamboo grove',
+    layer: 'bamboo',
+    skyBase: '#E4EFD9',
+    skyStops: ['#E4EFD9', '#C6DDB0', '#9FC285'],
+    sky: 'linear-gradient(180deg,#EEF6E6 0%,#CFE5BA 55%,#A8CB8C 100%)',
+    swatch: 'linear-gradient(180deg,#EEF6E6,#8DB873)',
+    card: '#FBFDF8',
+    cardBorder: 'rgba(60,110,50,0.22)',
+    soft: '#F1F7EA',
+    accent: '#3F7A34',
+    accentDisabled: '#D5E7C7',
+    onBg: '#1F3D17',
+    pill: 'rgba(255,255,255,0.8)',
+  },
+  aurora: {
+    ...DARK_BASE,
+    id: 'aurora',
+    vi: 'Cực quang',
+    en: 'Aurora',
+    layer: 'aurora',
+    skyBase: '#06141F',
+    skyStops: ['#04101A', '#06141F', '#0B2A3A'],
+    sky: 'linear-gradient(180deg,#04101A 0%,#06141F 60%,#0B2A3A 100%)',
+    swatch: 'linear-gradient(180deg,#06141F,#2BD9A0 45%,#7C5CFF 75%,#06141F)',
+    card: 'rgba(6,20,31,0.9)',
+    cardBorder: 'rgba(110,240,200,0.22)',
+  },
+};
+
 export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
   chiikawa: CHIIKAWA_STUDY,
+  ...SCENE_THEMES,
   ...ART_THEMES,
   ...PX_THEMES,
   plain: {
@@ -323,7 +390,7 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
 };
 
 /** Chủ đề chọn được khi bật "Nền & hiệu ứng" (Mặc định phẳng là lúc tắt). */
-export const THEME_ORDER: readonly ThemeId[] = ['scene', 'px-auto', 'px-tokyo', 'px-paris', 'px-london', 'px-singapore', 'px-hanoi', 'journey', 'space', 'sakura', 'forest', 'sunset', 'rain'];
+export const THEME_ORDER: readonly ThemeId[] = ['scene', 'px-auto', 'px-tokyo', 'px-paris', 'px-london', 'px-singapore', 'px-hanoi', 'journey', 'beach', 'snow', 'bamboo', 'aurora', 'space', 'sakura', 'forest', 'sunset', 'rain'];
 export const ALL_THEMES: readonly ThemeId[] = ['plain', ...THEME_ORDER];
 
 export function isThemeId(v: unknown): v is ThemeId {

@@ -27,6 +27,8 @@ export type VocabTopicWord = {
   example: string;
   collocation: string;
   band: '5-6' | '6-7' | '7-8' | '8+';
+  /** Mức CEFR: B1 ≈ band 5–6, B2 ≈ 6–7, C1 ≈ 7–8, C2 ≈ 8+. Có ở mọi từ sau khi ghép bộ B1–C2. */
+  cefr?: 'B1' | 'B2' | 'C1' | 'C2';
   /** Đồng nghĩa cùng nghĩa, cùng từ loại (soạn tay, máy kiểm khi gộp). Không có thì bỏ trống. */
   synonyms?: string[];
   antonyms?: string[];

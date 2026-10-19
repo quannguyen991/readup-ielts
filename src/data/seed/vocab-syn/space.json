@@ -1,0 +1,1061 @@
+[
+  {
+    "word": "astronomy",
+    "synonyms": [
+      "astrophysics",
+      "stellar science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "observatory",
+    "synonyms": [
+      "astronomical station",
+      "skywatch facility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "telescope",
+    "synonyms": [
+      "spyglass",
+      "scope"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "galaxy",
+    "synonyms": [
+      "star system",
+      "stellar system"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "comet",
+    "synonyms": [
+      "icy body",
+      "dirty snowball"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meteorite",
+    "synonyms": [
+      "space rock",
+      "meteor fragment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "planetary",
+    "synonyms": [
+      "planet-related",
+      "planetal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "atmosphere",
+    "synonyms": [
+      "air layer",
+      "envelope"
+    ],
+    "antonyms": [
+      "vacuum"
+    ]
+  },
+  {
+    "word": "rover",
+    "synonyms": [
+      "planetary vehicle",
+      "explorer vehicle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "geopolitical",
+    "synonyms": [
+      "political",
+      "geostrategic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "star",
+    "synonyms": [
+      "sun",
+      "stellar object"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "planet",
+    "synonyms": [
+      "world",
+      "orb"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moon",
+    "synonyms": [
+      "natural satellite",
+      "satellite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rocket",
+    "synonyms": [
+      "launch vehicle",
+      "launcher"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "universe",
+    "synonyms": [
+      "cosmos",
+      "all creation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sky",
+    "synonyms": [
+      "heavens",
+      "firmament"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alien",
+    "synonyms": [
+      "extraterrestrial",
+      "outworlder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spacesuit",
+    "synonyms": [
+      "space suit",
+      "extravehicular suit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fuel",
+    "synonyms": [
+      "propellant",
+      "combustible"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "engine",
+    "synonyms": [
+      "motor",
+      "powerplant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sunrise",
+    "synonyms": [
+      "daybreak",
+      "dawn"
+    ],
+    "antonyms": [
+      "sunset"
+    ]
+  },
+  {
+    "word": "gas",
+    "synonyms": [
+      "vapour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dust",
+    "synonyms": [
+      "particulate",
+      "grit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ice",
+    "synonyms": [
+      "frozen water"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "light",
+    "synonyms": [
+      "illumination",
+      "radiance"
+    ],
+    "antonyms": [
+      "darkness"
+    ]
+  },
+  {
+    "word": "explore",
+    "synonyms": [
+      "investigate",
+      "survey"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "float",
+    "synonyms": [
+      "drift",
+      "hover"
+    ],
+    "antonyms": [
+      "sink"
+    ]
+  },
+  {
+    "word": "crater",
+    "synonyms": [
+      "impact basin",
+      "pit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eclipse",
+    "synonyms": [
+      "occultation",
+      "obscuration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solar",
+    "synonyms": [
+      "sun-related",
+      "heliacal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meteor",
+    "synonyms": [
+      "shooting star",
+      "falling star"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nebula",
+    "synonyms": [
+      "cloud of gas",
+      "star nursery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "constellation",
+    "synonyms": [
+      "star pattern",
+      "asterism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "weightless",
+    "synonyms": [
+      "zero-gravity",
+      "floating"
+    ],
+    "antonyms": [
+      "heavy"
+    ]
+  },
+  {
+    "word": "vacuum",
+    "synonyms": [
+      "void",
+      "emptiness"
+    ],
+    "antonyms": [
+      "atmosphere"
+    ]
+  },
+  {
+    "word": "spectrum",
+    "synonyms": [
+      "range",
+      "band"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cosmic",
+    "synonyms": [
+      "celestial",
+      "universal"
+    ],
+    "antonyms": [
+      "terrestrial"
+    ]
+  },
+  {
+    "word": "ignite",
+    "synonyms": [
+      "kindle",
+      "fire up"
+    ],
+    "antonyms": [
+      "extinguish"
+    ]
+  },
+  {
+    "word": "propel",
+    "synonyms": [
+      "thrust",
+      "drive forward"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "unmanned",
+    "synonyms": [
+      "uncrewed",
+      "robotic"
+    ],
+    "antonyms": [
+      "manned",
+      "crewed"
+    ]
+  },
+  {
+    "word": "black hole",
+    "synonyms": [
+      "gravitational singularity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "supernova",
+    "synonyms": [
+      "stellar explosion",
+      "nova"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sunspot",
+    "synonyms": [
+      "solar spot",
+      "dark spot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lander",
+    "synonyms": [
+      "landing module",
+      "touchdown craft"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "observe",
+    "synonyms": [
+      "watch",
+      "monitor"
+    ],
+    "antonyms": [
+      "ignore"
+    ]
+  },
+  {
+    "word": "stargazing",
+    "synonyms": [
+      "star-watching",
+      "sky-watching"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vast",
+    "synonyms": [
+      "immense",
+      "enormous"
+    ],
+    "antonyms": [
+      "tiny"
+    ]
+  },
+  {
+    "word": "countdown",
+    "synonyms": [
+      "final count",
+      "launch sequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stratosphere",
+    "synonyms": [
+      "middle atmosphere"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hemisphere",
+    "synonyms": [
+      "half-globe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cosmology",
+    "synonyms": [
+      "universe science",
+      "cosmogony"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terrestrial",
+    "synonyms": [
+      "earthly",
+      "land-based"
+    ],
+    "antonyms": [
+      "celestial",
+      "extraterrestrial"
+    ]
+  },
+  {
+    "word": "interstellar",
+    "synonyms": [
+      "deep-space",
+      "between stars"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spectroscopy",
+    "synonyms": [
+      "spectral analysis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "extrasolar",
+    "synonyms": [
+      "exoplanetary",
+      "extra-solar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "luminosity",
+    "synonyms": [
+      "brightness",
+      "radiance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "magnitude",
+    "synonyms": [
+      "brightness class",
+      "stellar size"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parallax",
+    "synonyms": [
+      "apparent shift"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ascent",
+    "synonyms": [
+      "climb",
+      "rise"
+    ],
+    "antonyms": [
+      "descent"
+    ]
+  },
+  {
+    "word": "descent",
+    "synonyms": [
+      "fall",
+      "drop"
+    ],
+    "antonyms": [
+      "ascent"
+    ]
+  },
+  {
+    "word": "thrust",
+    "synonyms": [
+      "push",
+      "propulsion"
+    ],
+    "antonyms": [
+      "drag"
+    ]
+  },
+  {
+    "word": "aerodynamic",
+    "synonyms": [
+      "streamlined"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ballistic",
+    "synonyms": [
+      "unpowered-flight"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gravitational",
+    "synonyms": [
+      "gravity-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "equatorial",
+    "synonyms": [
+      "tropical",
+      "equinoctial"
+    ],
+    "antonyms": [
+      "polar"
+    ]
+  },
+  {
+    "word": "pioneer",
+    "synonyms": [
+      "lead",
+      "innovate"
+    ],
+    "antonyms": [
+      "follow"
+    ]
+  },
+  {
+    "word": "frontier",
+    "synonyms": [
+      "boundary",
+      "edge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "expedition",
+    "synonyms": [
+      "mission",
+      "voyage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viability",
+    "synonyms": [
+      "feasibility",
+      "practicality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scrutiny",
+    "synonyms": [
+      "examination",
+      "inspection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "autonomous",
+    "synonyms": [
+      "self-governing",
+      "independent"
+    ],
+    "antonyms": [
+      "dependent"
+    ]
+  },
+  {
+    "word": "telemetry",
+    "synonyms": [
+      "remote measurement",
+      "data transmission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "instrumentation",
+    "synonyms": [
+      "instruments",
+      "measuring equipment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aperture",
+    "synonyms": [
+      "opening",
+      "lens opening"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photometric",
+    "synonyms": [
+      "light-measuring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ephemeris",
+    "synonyms": [
+      "almanac",
+      "astronomical table"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "analogue",
+    "synonyms": [
+      "counterpart",
+      "equivalent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "propagation",
+    "synonyms": [
+      "transmission",
+      "spread"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terraforming",
+    "synonyms": [
+      "planetary engineering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subsurface",
+    "synonyms": [
+      "underground",
+      "below-ground"
+    ],
+    "antonyms": [
+      "surface"
+    ]
+  },
+  {
+    "word": "deploy",
+    "synonyms": [
+      "unfold",
+      "release"
+    ],
+    "antonyms": [
+      "retract",
+      "stow"
+    ]
+  },
+  {
+    "word": "modular",
+    "synonyms": [
+      "sectional",
+      "prefabricated"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ecliptic",
+    "synonyms": [
+      "zodiac plane",
+      "orbital plane"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perihelion",
+    "synonyms": [
+      "near-sun point"
+    ],
+    "antonyms": [
+      "aphelion"
+    ]
+  },
+  {
+    "word": "aphelion",
+    "synonyms": [
+      "far-sun point"
+    ],
+    "antonyms": [
+      "perihelion"
+    ]
+  },
+  {
+    "word": "perigee",
+    "synonyms": [
+      "near-earth point"
+    ],
+    "antonyms": [
+      "apogee"
+    ]
+  },
+  {
+    "word": "apogee",
+    "synonyms": [
+      "far-earth point"
+    ],
+    "antonyms": [
+      "perigee"
+    ]
+  },
+  {
+    "word": "albedo",
+    "synonyms": [
+      "reflectivity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bolide",
+    "synonyms": [
+      "fireball"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chondrite",
+    "synonyms": [
+      "stony meteorite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nucleosynthesis",
+    "synonyms": [
+      "element formation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "redshift",
+    "synonyms": [
+      "red shift",
+      "recession shift"
+    ],
+    "antonyms": [
+      "blueshift"
+    ]
+  },
+  {
+    "word": "quasar",
+    "synonyms": [
+      "quasi-stellar object",
+      "qso"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pulsar",
+    "synonyms": [
+      "pulsing star",
+      "neutron star"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "magnetosphere",
+    "synonyms": [
+      "magnetic field region"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "heliosphere",
+    "synonyms": [
+      "solar bubble"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corona",
+    "synonyms": [
+      "solar atmosphere",
+      "solar crown"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coronal",
+    "synonyms": [
+      "corona-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photosphere",
+    "synonyms": [
+      "solar surface"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ionisation",
+    "synonyms": [
+      "ionization"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cryogenic",
+    "synonyms": [
+      "ultra-cold",
+      "supercooled"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypergolic",
+    "synonyms": [
+      "self-igniting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deuterium",
+    "synonyms": [
+      "heavy hydrogen"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spallation",
+    "synonyms": [
+      "fragmentation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exobiology",
+    "synonyms": [
+      "astrobiology"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "astrobiology",
+    "synonyms": [
+      "exobiology"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aerospace",
+    "synonyms": [
+      "aviation and space"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "libration",
+    "synonyms": [
+      "lunar wobble",
+      "oscillation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "precession",
+    "synonyms": [
+      "axial precession",
+      "wobble"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nutation",
+    "synonyms": [
+      "axial nod",
+      "wobble"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eccentricity",
+    "synonyms": [
+      "orbital deviation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obliquity",
+    "synonyms": [
+      "axial tilt",
+      "tilt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "occultation",
+    "synonyms": [
+      "eclipse",
+      "concealment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "syzygy",
+    "synonyms": [
+      "alignment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perturbation",
+    "synonyms": [
+      "disturbance",
+      "deviation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accretion",
+    "synonyms": [
+      "accumulation",
+      "agglomeration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hydrazine",
+    "synonyms": [
+      "rocket fuel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cryosphere",
+    "synonyms": [
+      "ice sheet zone",
+      "frozen realm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cislunar",
+    "synonyms": [
+      "earth-moon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ionosphere",
+    "synonyms": [
+      "ionized layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thermosphere",
+    "synonyms": [
+      "heat layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exosphere",
+    "synonyms": [
+      "outermost layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stellar",
+    "synonyms": [
+      "astral",
+      "star-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nadir",
+    "synonyms": [
+      "lowest point",
+      "bottom"
+    ],
+    "antonyms": [
+      "zenith"
+    ]
+  },
+  {
+    "word": "zenith",
+    "synonyms": [
+      "apex",
+      "summit"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "apsis",
+    "synonyms": [
+      "apse",
+      "orbital extreme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brown dwarf",
+    "synonyms": [
+      "failed star"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gibbous",
+    "synonyms": [
+      "bulging",
+      "nearly full"
+    ],
+    "antonyms": [
+      "crescent"
+    ]
+  },
+  {
+    "word": "cosmogony",
+    "synonyms": [
+      "origin theory",
+      "cosmology"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spectral",
+    "synonyms": [
+      "spectroscopic"
+    ],
+    "antonyms": []
+  }
+]

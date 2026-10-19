@@ -1,0 +1,1195 @@
+[
+  {
+    "word": "immersion",
+    "synonyms": [
+      "full exposure",
+      "saturation learning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "semantics",
+    "synonyms": [
+      "study of meaning",
+      "meaning theory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phonetics",
+    "synonyms": [
+      "speech sound study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "literacy",
+    "synonyms": [
+      "reading ability",
+      "writing skill"
+    ],
+    "antonyms": [
+      "illiteracy"
+    ]
+  },
+  {
+    "word": "oracy",
+    "synonyms": [
+      "speaking ability",
+      "verbal fluency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "native speaker",
+    "synonyms": [
+      "mother-tongue speaker",
+      "first-language speaker"
+    ],
+    "antonyms": [
+      "non-native speaker"
+    ]
+  },
+  {
+    "word": "second language",
+    "synonyms": [
+      "L2",
+      "foreign language"
+    ],
+    "antonyms": [
+      "mother tongue"
+    ]
+  },
+  {
+    "word": "code-switching",
+    "synonyms": [
+      "language alternation",
+      "code-mixing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bilingualism",
+    "synonyms": [
+      "dual-language use"
+    ],
+    "antonyms": [
+      "monolingualism"
+    ]
+  },
+  {
+    "word": "multilingualism",
+    "synonyms": [
+      "plurilingualism"
+    ],
+    "antonyms": [
+      "monolingualism"
+    ]
+  },
+  {
+    "word": "morpheme",
+    "synonyms": [
+      "meaningful unit",
+      "word element"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phoneme",
+    "synonyms": [
+      "sound unit",
+      "distinctive sound"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allophone",
+    "synonyms": [
+      "phoneme variant",
+      "sound variant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diglossia",
+    "synonyms": [
+      "dual language varieties"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "creole",
+    "synonyms": [
+      "mixed language"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "language",
+    "synonyms": [
+      "tongue",
+      "speech"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meaning",
+    "synonyms": [
+      "sense",
+      "significance"
+    ],
+    "antonyms": [
+      "nonsense"
+    ]
+  },
+  {
+    "word": "sentence",
+    "synonyms": [
+      "utterance",
+      "statement"
+    ],
+    "antonyms": [
+      "fragment"
+    ]
+  },
+  {
+    "word": "spelling",
+    "synonyms": [
+      "orthography"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pronunciation",
+    "synonyms": [
+      "articulation",
+      "enunciation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alphabet",
+    "synonyms": [
+      "script",
+      "letters"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conversation",
+    "synonyms": [
+      "discussion",
+      "chat"
+    ],
+    "antonyms": [
+      "monologue"
+    ]
+  },
+  {
+    "word": "fluent",
+    "synonyms": [
+      "proficient",
+      "competent"
+    ],
+    "antonyms": [
+      "hesitant"
+    ]
+  },
+  {
+    "word": "vowel",
+    "synonyms": [
+      "vowel sound"
+    ],
+    "antonyms": [
+      "consonant"
+    ]
+  },
+  {
+    "word": "consonant",
+    "synonyms": [
+      "consonant sound"
+    ],
+    "antonyms": [
+      "vowel"
+    ]
+  },
+  {
+    "word": "verb",
+    "synonyms": [
+      "action word"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dictionary",
+    "synonyms": [
+      "wordbook",
+      "lexicon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "textbook",
+    "synonyms": [
+      "coursebook",
+      "manual"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "translate",
+    "synonyms": [
+      "interpret",
+      "render"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "understand",
+    "synonyms": [
+      "grasp",
+      "comprehend"
+    ],
+    "antonyms": [
+      "misunderstand"
+    ]
+  },
+  {
+    "word": "lesson",
+    "synonyms": [
+      "class",
+      "tutorial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pronounce",
+    "synonyms": [
+      "articulate",
+      "enunciate"
+    ],
+    "antonyms": [
+      "mispronounce"
+    ]
+  },
+  {
+    "word": "phrase",
+    "synonyms": [
+      "expression",
+      "word group"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eloquent",
+    "synonyms": [
+      "articulate",
+      "persuasive"
+    ],
+    "antonyms": [
+      "inarticulate"
+    ]
+  },
+  {
+    "word": "articulate",
+    "synonyms": [
+      "lucid",
+      "coherent"
+    ],
+    "antonyms": [
+      "inarticulate"
+    ]
+  },
+  {
+    "word": "intonation",
+    "synonyms": [
+      "pitch pattern",
+      "pitch contour"
+    ],
+    "antonyms": [
+      "monotone"
+    ]
+  },
+  {
+    "word": "stress",
+    "synonyms": [
+      "emphasis",
+      "accent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rhythm",
+    "synonyms": [
+      "cadence",
+      "beat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tone",
+    "synonyms": [
+      "pitch",
+      "inflection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ambiguous",
+    "synonyms": [
+      "equivocal",
+      "unclear"
+    ],
+    "antonyms": [
+      "explicit"
+    ]
+  },
+  {
+    "word": "metaphor",
+    "synonyms": [
+      "figure of speech",
+      "trope"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "simile",
+    "synonyms": [
+      "comparison",
+      "figure of speech"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "irony",
+    "synonyms": [
+      "incongruity",
+      "paradox"
+    ],
+    "antonyms": [
+      "sincerity"
+    ]
+  },
+  {
+    "word": "sarcasm",
+    "synonyms": [
+      "mockery",
+      "derision"
+    ],
+    "antonyms": [
+      "sincerity"
+    ]
+  },
+  {
+    "word": "rhetoric",
+    "synonyms": [
+      "oratory",
+      "eloquence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paraphrase",
+    "synonyms": [
+      "reword",
+      "restate"
+    ],
+    "antonyms": [
+      "quote"
+    ]
+  },
+  {
+    "word": "summarise",
+    "synonyms": [
+      "condense",
+      "sum up"
+    ],
+    "antonyms": [
+      "elaborate"
+    ]
+  },
+  {
+    "word": "subtitle",
+    "synonyms": [
+      "caption",
+      "on-screen text"
+    ],
+    "antonyms": [
+      "dubbing"
+    ]
+  },
+  {
+    "word": "hesitate",
+    "synonyms": [
+      "pause",
+      "falter"
+    ],
+    "antonyms": [
+      "proceed"
+    ]
+  },
+  {
+    "word": "clause",
+    "synonyms": [
+      "sentence part",
+      "proposition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "suffix",
+    "synonyms": [
+      "ending",
+      "affix"
+    ],
+    "antonyms": [
+      "prefix"
+    ]
+  },
+  {
+    "word": "prefix",
+    "synonyms": [
+      "initial affix"
+    ],
+    "antonyms": [
+      "suffix"
+    ]
+  },
+  {
+    "word": "synonym",
+    "synonyms": [
+      "equivalent word",
+      "alternative word"
+    ],
+    "antonyms": [
+      "antonym"
+    ]
+  },
+  {
+    "word": "antonym",
+    "synonyms": [
+      "opposite word",
+      "contrary term"
+    ],
+    "antonyms": [
+      "synonym"
+    ]
+  },
+  {
+    "word": "pun",
+    "synonyms": [
+      "wordplay",
+      "double entendre"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dialogue",
+    "synonyms": [
+      "conversation",
+      "discourse"
+    ],
+    "antonyms": [
+      "monologue"
+    ]
+  },
+  {
+    "word": "comprehension",
+    "synonyms": [
+      "understanding",
+      "grasp"
+    ],
+    "antonyms": [
+      "incomprehension"
+    ]
+  },
+  {
+    "word": "accurate",
+    "synonyms": [
+      "precise",
+      "correct"
+    ],
+    "antonyms": [
+      "inaccurate"
+    ]
+  },
+  {
+    "word": "expressive",
+    "synonyms": [
+      "vivid",
+      "demonstrative"
+    ],
+    "antonyms": [
+      "inexpressive"
+    ]
+  },
+  {
+    "word": "idiomatic",
+    "synonyms": [
+      "natural",
+      "fluent"
+    ],
+    "antonyms": [
+      "stilted"
+    ]
+  },
+  {
+    "word": "fragment",
+    "synonyms": [
+      "incomplete sentence",
+      "scrap"
+    ],
+    "antonyms": [
+      "complete sentence"
+    ]
+  },
+  {
+    "word": "literal",
+    "synonyms": [
+      "verbatim",
+      "word-for-word"
+    ],
+    "antonyms": [
+      "figurative"
+    ]
+  },
+  {
+    "word": "figurative",
+    "synonyms": [
+      "metaphorical",
+      "symbolic"
+    ],
+    "antonyms": [
+      "literal"
+    ]
+  },
+  {
+    "word": "lexicon",
+    "synonyms": [
+      "vocabulary",
+      "word stock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phonology",
+    "synonyms": [
+      "sound system",
+      "phonemics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "morphology",
+    "synonyms": [
+      "word structure",
+      "word formation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "linguistic",
+    "synonyms": [
+      "lingual",
+      "philological"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ambiguity",
+    "synonyms": [
+      "vagueness",
+      "equivocation"
+    ],
+    "antonyms": [
+      "clarity"
+    ]
+  },
+  {
+    "word": "nuance",
+    "synonyms": [
+      "subtlety",
+      "shade of meaning"
+    ],
+    "antonyms": [
+      "bluntness"
+    ]
+  },
+  {
+    "word": "coherence",
+    "synonyms": [
+      "consistency",
+      "logic"
+    ],
+    "antonyms": [
+      "incoherence"
+    ]
+  },
+  {
+    "word": "cohesion",
+    "synonyms": [
+      "unity",
+      "linkage"
+    ],
+    "antonyms": [
+      "disunity"
+    ]
+  },
+  {
+    "word": "lexical",
+    "synonyms": [
+      "vocabulary-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "syntactic",
+    "synonyms": [
+      "grammatical",
+      "structural"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lingo",
+    "synonyms": [
+      "jargon",
+      "slang"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colloquial",
+    "synonyms": [
+      "informal",
+      "conversational"
+    ],
+    "antonyms": [
+      "formal"
+    ]
+  },
+  {
+    "word": "formality",
+    "synonyms": [
+      "decorum",
+      "protocol"
+    ],
+    "antonyms": [
+      "informality"
+    ]
+  },
+  {
+    "word": "hyperbole",
+    "synonyms": [
+      "exaggeration",
+      "overstatement"
+    ],
+    "antonyms": [
+      "understatement"
+    ]
+  },
+  {
+    "word": "analogy",
+    "synonyms": [
+      "comparison",
+      "parallel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allegory",
+    "synonyms": [
+      "parable",
+      "fable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lexicography",
+    "synonyms": [
+      "dictionary-making",
+      "dictionary compilation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "transliteration",
+    "synonyms": [
+      "romanisation",
+      "transcription"
+    ],
+    "antonyms": [
+      "translation"
+    ]
+  },
+  {
+    "word": "idiolect",
+    "synonyms": [
+      "personal dialect",
+      "individual speech"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sociolinguistics",
+    "synonyms": [
+      "social linguistics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "psycholinguistics",
+    "synonyms": [
+      "psychology of language",
+      "cognitive linguistics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cadence",
+    "synonyms": [
+      "rhythm",
+      "lilt"
+    ],
+    "antonyms": [
+      "monotony"
+    ]
+  },
+  {
+    "word": "enunciate",
+    "synonyms": [
+      "articulate",
+      "pronounce"
+    ],
+    "antonyms": [
+      "mumble"
+    ]
+  },
+  {
+    "word": "inflection",
+    "synonyms": [
+      "modulation",
+      "variation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conjugation",
+    "synonyms": [
+      "verb inflection",
+      "verb form"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "declension",
+    "synonyms": [
+      "case inflection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terminology",
+    "synonyms": [
+      "jargon",
+      "nomenclature"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "argot",
+    "synonyms": [
+      "slang",
+      "cant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prosody",
+    "synonyms": [
+      "metre",
+      "versification"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "digraph",
+    "synonyms": [
+      "letter pair",
+      "two-letter sequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palindrome",
+    "synonyms": [
+      "mirror word",
+      "reversible word"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aphasia",
+    "synonyms": [
+      "dysphasia",
+      "language loss"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "logorrhoea",
+    "synonyms": [
+      "verbal diarrhoea",
+      "garrulity"
+    ],
+    "antonyms": [
+      "taciturnity"
+    ]
+  },
+  {
+    "word": "loquacious",
+    "synonyms": [
+      "talkative",
+      "chatty"
+    ],
+    "antonyms": [
+      "taciturn"
+    ]
+  },
+  {
+    "word": "taciturn",
+    "synonyms": [
+      "reticent",
+      "reserved"
+    ],
+    "antonyms": [
+      "talkative"
+    ]
+  },
+  {
+    "word": "sesquipedalian",
+    "synonyms": [
+      "polysyllabic",
+      "bombastic"
+    ],
+    "antonyms": [
+      "succinct"
+    ]
+  },
+  {
+    "word": "pedantic",
+    "synonyms": [
+      "fussy",
+      "nitpicking"
+    ],
+    "antonyms": [
+      "casual"
+    ]
+  },
+  {
+    "word": "verbose",
+    "synonyms": [
+      "wordy",
+      "long-winded"
+    ],
+    "antonyms": [
+      "concise"
+    ]
+  },
+  {
+    "word": "garrulous",
+    "synonyms": [
+      "talkative",
+      "loquacious"
+    ],
+    "antonyms": [
+      "taciturn"
+    ]
+  },
+  {
+    "word": "laconic",
+    "synonyms": [
+      "terse",
+      "succinct"
+    ],
+    "antonyms": [
+      "verbose"
+    ]
+  },
+  {
+    "word": "onomatopoeia",
+    "synonyms": [
+      "sound imitation",
+      "echoism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alliteration",
+    "synonyms": [
+      "initial rhyme",
+      "head rhyme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "assonance",
+    "synonyms": [
+      "vowel rhyme",
+      "vowel repetition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "euphony",
+    "synonyms": [
+      "harmony",
+      "melodiousness"
+    ],
+    "antonyms": [
+      "cacophony"
+    ]
+  },
+  {
+    "word": "cacophony",
+    "synonyms": [
+      "discord",
+      "din"
+    ],
+    "antonyms": [
+      "euphony"
+    ]
+  },
+  {
+    "word": "ellipsis",
+    "synonyms": [
+      "omission",
+      "elision"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tautology",
+    "synonyms": [
+      "redundancy",
+      "pleonasm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "circumlocution",
+    "synonyms": [
+      "roundabout speech",
+      "wordiness"
+    ],
+    "antonyms": [
+      "directness"
+    ]
+  },
+  {
+    "word": "periphrasis",
+    "synonyms": [
+      "circumlocution",
+      "roundabout expression"
+    ],
+    "antonyms": [
+      "directness"
+    ]
+  },
+  {
+    "word": "litotes",
+    "synonyms": [
+      "understatement",
+      "meiosis"
+    ],
+    "antonyms": [
+      "hyperbole"
+    ]
+  },
+  {
+    "word": "epithet",
+    "synonyms": [
+      "descriptive term",
+      "sobriquet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "neologism",
+    "synonyms": [
+      "new word",
+      "coinage"
+    ],
+    "antonyms": [
+      "archaism"
+    ]
+  },
+  {
+    "word": "archaism",
+    "synonyms": [
+      "old word",
+      "obsolete term"
+    ],
+    "antonyms": [
+      "neologism"
+    ]
+  },
+  {
+    "word": "shibboleth",
+    "synonyms": [
+      "catchword",
+      "identifying phrase"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lexeme",
+    "synonyms": [
+      "lexical unit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allomorph",
+    "synonyms": [
+      "morpheme variant",
+      "variant form"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "etymon",
+    "synonyms": [
+      "root word",
+      "source word"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "calque",
+    "synonyms": [
+      "loan translation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loanword",
+    "synonyms": [
+      "borrowed word",
+      "imported word"
+    ],
+    "antonyms": [
+      "native word"
+    ]
+  },
+  {
+    "word": "dysphemism",
+    "synonyms": [
+      "derogatory term",
+      "pejorative"
+    ],
+    "antonyms": [
+      "euphemism"
+    ]
+  },
+  {
+    "word": "metonymy",
+    "synonyms": [
+      "figure of speech",
+      "substitution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "synecdoche",
+    "synonyms": [
+      "part for whole"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "polysemy",
+    "synonyms": [
+      "multiple meanings"
+    ],
+    "antonyms": [
+      "monosemy"
+    ]
+  },
+  {
+    "word": "homophone",
+    "synonyms": [
+      "sound-alike",
+      "homonym"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glossary",
+    "synonyms": [
+      "word list",
+      "vocabulary list"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hyponym",
+    "synonyms": [
+      "subordinate term",
+      "specific term"
+    ],
+    "antonyms": [
+      "hypernym"
+    ]
+  },
+  {
+    "word": "anagram",
+    "synonyms": [
+      "word puzzle",
+      "letter rearrangement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "acronym",
+    "synonyms": [
+      "initialism",
+      "abbreviation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "abbreviation",
+    "synonyms": [
+      "shortening",
+      "contraction"
+    ],
+    "antonyms": [
+      "full form"
+    ]
+  },
+  {
+    "word": "vocative",
+    "synonyms": [
+      "calling case"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subjunctive",
+    "synonyms": [
+      "hypothetical mood",
+      "conditional mood"
+    ],
+    "antonyms": [
+      "indicative"
+    ]
+  },
+  {
+    "word": "ablative",
+    "synonyms": [
+      "separative case"
+    ],
+    "antonyms": []
+  }
+]

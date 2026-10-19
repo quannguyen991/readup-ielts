@@ -1,0 +1,76 @@
+{
+  "n": 2,
+  "title": "Orientation at the City Science Museum",
+  "context": "A museum guide gives a short introduction to visitors before they explore the galleries on their own.",
+  "transcript": [
+    {
+      "speaker": "Guide",
+      "text": "Welcome to the City Science Museum. I'm Ms Lam, and I'll give you a short introduction before you explore on your own. The museum opens at nine a.m. every day, and the first hour is usually quieter, so it's a good time to visit the most popular galleries."
+    },
+    {
+      "speaker": "Guide",
+      "text": "Before we start, a few practical points. Students receive ten percent off all tickets if they show a valid student card at the desk. If you want to join the robotics workshop on Saturday, you'll need to book in advance, because places are limited."
+    },
+    {
+      "speaker": "Guide",
+      "text": "Our galleries are arranged by theme. The telescope display is in the space gallery on the first floor, where you can look at the moon through a powerful lens. The shark tank is in the ocean gallery, next to the entrance to the cinema."
+    },
+    {
+      "speaker": "Guide",
+      "text": "The interactive heartbeat exhibit is in the human body gallery, and it's very popular with children. The solar panel demonstration is in the energy gallery, close to the café, and it shows how much power a small roof can produce."
+    },
+    {
+      "speaker": "Guide",
+      "text": "Lockers are near the entrance, so please store large bags there. Photography is allowed in all galleries, but flash is not permitted, because it can damage some of the exhibits."
+    },
+    {
+      "speaker": "Guide",
+      "text": "Finally, the last entry is at half past four, and the galleries close at five. Please remember that the museum café closes earlier, so eat before you come up. Enjoy your visit, and let me know if you have any questions."
+    }
+  ],
+  "groups": [
+    {
+      "type": "matching",
+      "title": "Questions 11-14",
+      "instruction": "Which gallery is each exhibit in? Choose the correct letter, A-G, for Questions 11-14.",
+      "options": [
+        { "key": "A", "text": "Space" },
+        { "key": "B", "text": "Ocean" },
+        { "key": "C", "text": "Human body" },
+        { "key": "D", "text": "Energy" },
+        { "key": "E", "text": "Dinosaurs" },
+        { "key": "F", "text": "Weather" },
+        { "key": "G", "text": "Robots" }
+      ],
+      "questions": [
+        { "n": 11, "prompt": "Telescope display", "answer": "A" },
+        { "n": 12, "prompt": "Shark tank", "answer": "B" },
+        { "n": 13, "prompt": "Interactive heartbeat exhibit", "answer": "C" },
+        { "n": 14, "prompt": "Solar panel demonstration", "answer": "D" }
+      ]
+    },
+    {
+      "type": "gap",
+      "title": "Questions 15-20",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## City Science Museum visitor information",
+        "Museum opens at {{15}} a.m.",
+        "Students receive {{16}} off tickets",
+        "Booking needed for the {{17}} workshop",
+        "Lockers are near the {{18}}",
+        "Photography is allowed, but not {{19}}",
+        "Last entry is at {{20}} p.m."
+      ],
+      "questions": [
+        { "n": 15, "answer": "nine", "accept": ["9"] },
+        { "n": 16, "answer": "ten percent", "accept": ["10%", "10 percent"] },
+        { "n": 17, "answer": "robotics" },
+        { "n": 18, "answer": "entrance" },
+        { "n": 19, "answer": "flash" },
+        { "n": 20, "answer": "4:30", "accept": ["half past four", "four thirty"] }
+      ]
+    }
+  ]
+}

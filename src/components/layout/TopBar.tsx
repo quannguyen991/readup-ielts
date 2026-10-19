@@ -10,8 +10,6 @@ import { Icon } from '@/components/ui/Icon';
 import { Sheet } from '@/components/ui/Sheet';
 import { haptic } from '@/services/haptics';
 import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, hiddenOnPhone, navLabel, parentNavKey, visibleGroups } from '@/navigation/nav-items';
-import { useIeltsFocusStore } from '@/store/useIeltsFocusStore';
-import { useSatFocusStore } from '@/store/useSatFocusStore';
 import { useL } from '@/i18n/useL';
 import { useCityAvailable } from '@/services/city/availability';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
@@ -328,9 +326,7 @@ export function NavSheet({ open, onClose }: { open: boolean; onClose: () => void
   const activeParent = parentNavKey(activeKey);
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const desktop = useCityAvailable();
-  const ieltsFeatures = useIeltsFocusStore((s) => s.features);
-  const satFeatures = useSatFocusStore((s) => s.features);
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures, satFeatures);
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
   const { L, locale, en } = useL();
 
   // Khối nào người dùng đã tự bấm mở/đóng thì giữ theo lựa chọn đó; khối chưa bấm

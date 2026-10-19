@@ -1,0 +1,994 @@
+[
+  {
+    "word": "run",
+    "synonyms": [
+      "jog"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "swim",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "jump",
+    "synonyms": [
+      "leap",
+      "spring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "team",
+    "synonyms": [
+      "squad",
+      "side"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ball",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "goal",
+    "synonyms": [
+      "score"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "game",
+    "synonyms": [
+      "contest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "player",
+    "synonyms": [
+      "athlete",
+      "competitor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "match",
+    "synonyms": [
+      "contest",
+      "fixture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "train",
+    "synonyms": [
+      "practise",
+      "drill"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "win",
+    "synonyms": [
+      "triumph",
+      "prevail"
+    ],
+    "antonyms": [
+      "lose"
+    ]
+  },
+  {
+    "word": "lose",
+    "synonyms": [
+      "be defeated"
+    ],
+    "antonyms": [
+      "win"
+    ]
+  },
+  {
+    "word": "pitch",
+    "synonyms": [
+      "field",
+      "ground"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "race",
+    "synonyms": [
+      "contest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sprint",
+    "synonyms": [
+      "dash"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kick",
+    "synonyms": [
+      "boot",
+      "strike"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "throw",
+    "synonyms": [
+      "hurl",
+      "fling"
+    ],
+    "antonyms": [
+      "catch"
+    ]
+  },
+  {
+    "word": "stadium",
+    "synonyms": [
+      "arena"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "defender",
+    "synonyms": [
+      "back"
+    ],
+    "antonyms": [
+      "striker"
+    ]
+  },
+  {
+    "word": "striker",
+    "synonyms": [
+      "forward",
+      "attacker"
+    ],
+    "antonyms": [
+      "defender"
+    ]
+  },
+  {
+    "word": "midfielder",
+    "synonyms": [
+      "midfield player"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fan",
+    "synonyms": [
+      "supporter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crowd",
+    "synonyms": [
+      "spectators",
+      "audience"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "injury",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "recovery",
+    "synonyms": [
+      "rehabilitation",
+      "healing"
+    ],
+    "antonyms": [
+      "relapse"
+    ]
+  },
+  {
+    "word": "warm-up",
+    "synonyms": [
+      "limbering up"
+    ],
+    "antonyms": [
+      "cool-down"
+    ]
+  },
+  {
+    "word": "stretch",
+    "synonyms": [
+      "loosen",
+      "extend"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sprain",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "marathon",
+    "synonyms": [
+      "long-distance race"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hurdle",
+    "synonyms": [
+      "obstacle",
+      "barrier"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gymnastics",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "cycling",
+    "synonyms": [
+      "biking"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rowing",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "boxing",
+    "synonyms": [
+      "pugilism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wrestling",
+    "synonyms": [
+      "grappling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tackle",
+    "synonyms": [
+      "challenge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dribble",
+    "synonyms": [
+      "carry the ball"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "strategy",
+    "synonyms": [
+      "tactic",
+      "plan"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rival",
+    "synonyms": [
+      "opponent",
+      "adversary"
+    ],
+    "antonyms": [
+      "ally"
+    ]
+  },
+  {
+    "word": "veteran",
+    "synonyms": [
+      "old hand"
+    ],
+    "antonyms": [
+      "novice",
+      "rookie"
+    ]
+  },
+  {
+    "word": "amateur",
+    "synonyms": [
+      "non-professional"
+    ],
+    "antonyms": [
+      "professional"
+    ]
+  },
+  {
+    "word": "professional",
+    "synonyms": [
+      "expert",
+      "paid"
+    ],
+    "antonyms": [
+      "amateur"
+    ]
+  },
+  {
+    "word": "pass",
+    "synonyms": [
+      "transfer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exertion",
+    "synonyms": [
+      "effort",
+      "strain"
+    ],
+    "antonyms": [
+      "rest"
+    ]
+  },
+  {
+    "word": "exhaustion",
+    "synonyms": [
+      "fatigue",
+      "weariness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aerobic",
+    "synonyms": [],
+    "antonyms": [
+      "anaerobic"
+    ]
+  },
+  {
+    "word": "anaerobic",
+    "synonyms": [],
+    "antonyms": [
+      "aerobic"
+    ]
+  },
+  {
+    "word": "hydration",
+    "synonyms": [
+      "fluid intake"
+    ],
+    "antonyms": [
+      "dehydration"
+    ]
+  },
+  {
+    "word": "biomechanics",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "proficiency",
+    "synonyms": [
+      "competence",
+      "mastery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "versatility",
+    "synonyms": [
+      "adaptability"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dexterity",
+    "synonyms": [
+      "deftness"
+    ],
+    "antonyms": [
+      "clumsiness"
+    ]
+  },
+  {
+    "word": "tenacity",
+    "synonyms": [
+      "perseverance",
+      "persistence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "composure",
+    "synonyms": [
+      "poise",
+      "calm"
+    ],
+    "antonyms": [
+      "agitation"
+    ]
+  },
+  {
+    "word": "gruelling",
+    "synonyms": [
+      "arduous",
+      "exhausting"
+    ],
+    "antonyms": [
+      "easy"
+    ]
+  },
+  {
+    "word": "formidable",
+    "synonyms": [
+      "daunting",
+      "powerful"
+    ],
+    "antonyms": [
+      "weak"
+    ]
+  },
+  {
+    "word": "dominance",
+    "synonyms": [
+      "supremacy",
+      "superiority"
+    ],
+    "antonyms": [
+      "subordination"
+    ]
+  },
+  {
+    "word": "hegemony",
+    "synonyms": [
+      "dominance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "underdog",
+    "synonyms": [
+      "outsider",
+      "long shot"
+    ],
+    "antonyms": [
+      "favourite"
+    ]
+  },
+  {
+    "word": "bracket",
+    "synonyms": [
+      "draw"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "qualifier",
+    "synonyms": [
+      "qualifying round"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nemesis",
+    "synonyms": [
+      "archenemy",
+      "arch-rival"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stalemate",
+    "synonyms": [
+      "deadlock",
+      "draw"
+    ],
+    "antonyms": [
+      "breakthrough"
+    ]
+  },
+  {
+    "word": "arbitration",
+    "synonyms": [
+      "adjudication"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sanction",
+    "synonyms": [
+      "penalty",
+      "ban"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "governing",
+    "synonyms": [
+      "ruling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scrutiny",
+    "synonyms": [
+      "examination",
+      "inspection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "endorsement",
+    "synonyms": [
+      "backing",
+      "approval"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sponsorship",
+    "synonyms": [
+      "funding",
+      "patronage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "franchise",
+    "synonyms": [
+      "club"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "precedent",
+    "synonyms": [
+      "example"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "incumbent",
+    "synonyms": [
+      "reigning",
+      "current"
+    ],
+    "antonyms": [
+      "challenger"
+    ]
+  },
+  {
+    "word": "handicap",
+    "synonyms": [
+      "allowance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pacing",
+    "synonyms": [
+      "tempo"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "relay",
+    "synonyms": [
+      "team race"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "momentum",
+    "synonyms": [
+      "impetus",
+      "drive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "steadfast",
+    "synonyms": [
+      "unwavering",
+      "resolute"
+    ],
+    "antonyms": [
+      "fickle",
+      "wavering"
+    ]
+  },
+  {
+    "word": "vanquish",
+    "synonyms": [
+      "conquer",
+      "defeat"
+    ],
+    "antonyms": [
+      "surrender"
+    ]
+  },
+  {
+    "word": "audacious",
+    "synonyms": [
+      "bold",
+      "daring"
+    ],
+    "antonyms": [
+      "timid",
+      "cautious"
+    ]
+  },
+  {
+    "word": "accolade",
+    "synonyms": [
+      "honour",
+      "tribute"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indefatigable",
+    "synonyms": [
+      "tireless",
+      "untiring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "invincible",
+    "synonyms": [
+      "unbeatable"
+    ],
+    "antonyms": [
+      "vulnerable"
+    ]
+  },
+  {
+    "word": "hubris",
+    "synonyms": [
+      "arrogance",
+      "overconfidence"
+    ],
+    "antonyms": [
+      "humility"
+    ]
+  },
+  {
+    "word": "gambit",
+    "synonyms": [
+      "ploy",
+      "stratagem"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ruse",
+    "synonyms": [
+      "trick",
+      "ploy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "feint",
+    "synonyms": [
+      "fake",
+      "dummy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parry",
+    "synonyms": [
+      "deflect",
+      "block"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "riposte",
+    "synonyms": [
+      "counterattack"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "volley",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "lacklustre",
+    "synonyms": [
+      "dull",
+      "uninspired"
+    ],
+    "antonyms": [
+      "sparkling",
+      "brilliant"
+    ]
+  },
+  {
+    "word": "pyrrhic",
+    "synonyms": [
+      "costly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "herculean",
+    "synonyms": [
+      "arduous",
+      "colossal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "acumen",
+    "synonyms": [
+      "shrewdness",
+      "insight"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ascendancy",
+    "synonyms": [
+      "supremacy"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "word": "vicissitude",
+    "synonyms": [
+      "ups and downs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sangfroid",
+    "synonyms": [
+      "composure",
+      "coolness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phlegmatic",
+    "synonyms": [
+      "unflappable",
+      "calm"
+    ],
+    "antonyms": [
+      "excitable"
+    ]
+  },
+  {
+    "word": "pugnacious",
+    "synonyms": [
+      "combative",
+      "belligerent"
+    ],
+    "antonyms": [
+      "peaceable"
+    ]
+  },
+  {
+    "word": "intrepid",
+    "synonyms": [
+      "fearless",
+      "daring"
+    ],
+    "antonyms": [
+      "timid"
+    ]
+  },
+  {
+    "word": "doughty",
+    "synonyms": [
+      "stalwart",
+      "valiant"
+    ],
+    "antonyms": [
+      "cowardly"
+    ]
+  },
+  {
+    "word": "lethargic",
+    "synonyms": [
+      "sluggish",
+      "listless"
+    ],
+    "antonyms": [
+      "energetic",
+      "lively"
+    ]
+  },
+  {
+    "word": "obstinate",
+    "synonyms": [
+      "stubborn",
+      "headstrong"
+    ],
+    "antonyms": [
+      "flexible",
+      "compliant"
+    ]
+  },
+  {
+    "word": "truculent",
+    "synonyms": [
+      "aggressive",
+      "hostile"
+    ],
+    "antonyms": [
+      "amiable"
+    ]
+  },
+  {
+    "word": "perfunctory",
+    "synonyms": [
+      "token",
+      "superficial"
+    ],
+    "antonyms": [
+      "thorough",
+      "meticulous"
+    ]
+  },
+  {
+    "word": "nonchalant",
+    "synonyms": [
+      "casual",
+      "relaxed"
+    ],
+    "antonyms": [
+      "anxious"
+    ]
+  },
+  {
+    "word": "cavalier",
+    "synonyms": [
+      "careless",
+      "offhand"
+    ],
+    "antonyms": [
+      "conscientious"
+    ]
+  },
+  {
+    "word": "deleterious",
+    "synonyms": [
+      "harmful",
+      "damaging"
+    ],
+    "antonyms": [
+      "beneficial"
+    ]
+  },
+  {
+    "word": "sanguine",
+    "synonyms": [
+      "optimistic",
+      "hopeful"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "word": "stoic",
+    "synonyms": [
+      "impassive"
+    ],
+    "antonyms": [
+      "emotional"
+    ]
+  },
+  {
+    "word": "gladiatorial",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "onerous",
+    "synonyms": [
+      "burdensome",
+      "demanding"
+    ],
+    "antonyms": [
+      "effortless",
+      "light"
+    ]
+  },
+  {
+    "word": "cursory",
+    "synonyms": [
+      "hasty",
+      "superficial"
+    ],
+    "antonyms": [
+      "thorough"
+    ]
+  },
+  {
+    "word": "hiatus",
+    "synonyms": [
+      "break",
+      "pause"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zenith",
+    "synonyms": [
+      "peak",
+      "summit"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "nadir",
+    "synonyms": [
+      "low point",
+      "rock bottom"
+    ],
+    "antonyms": [
+      "zenith"
+    ]
+  },
+  {
+    "word": "apogee",
+    "synonyms": [
+      "peak",
+      "height"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "juggernaut",
+    "synonyms": [
+      "powerhouse",
+      "behemoth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bellwether",
+    "synonyms": [
+      "barometer",
+      "indicator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quagmire",
+    "synonyms": [
+      "predicament",
+      "morass"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "modus operandi",
+    "synonyms": [
+      "method",
+      "approach"
+    ],
+    "antonyms": []
+  }
+]

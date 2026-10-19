@@ -1,4 +1,5 @@
 import type { GrammarLessonDetail } from './types';
+import { B2_GRAMMAR_EXTRA } from './b2-2';
 
 /** Cấp B2: quá khứ hoàn thành, câu gián tiếp, mệnh đề quan hệ. */
 export const B2_GRAMMAR: GrammarLessonDetail[] = [
@@ -505,4 +506,5 @@ export const B2_GRAMMAR: GrammarLessonDetail[] = [
       { q: "Choose the correct sentence.", options: ["She looks her grandmother after.", "She looks after of her grandmother.", "She looks after her grandmother."], answer: 2, explain: "Look after là cụm không tách và không thêm giới từ." },
     ],
   },
+  ...B2_GRAMMAR_EXTRA,
 ];

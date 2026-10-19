@@ -1,0 +1,72 @@
+{
+  "n": 4,
+  "title": "Coral reef restoration",
+  "context": "A university lecture on marine biology about how damaged coral reefs are restored.",
+  "transcript": [
+    {
+      "speaker": "Lecturer",
+      "text": "Good morning, everyone. Today we're looking at coral reef restoration. To begin, it's worth knowing how little of the ocean floor is covered by reefs. Coral reefs cover only about one percent of the ocean floor, yet they support around a quarter of all marine species. That's why losing them is such a serious problem."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "The biggest threat today is rising sea temperatures. When the water gets too warm, corals lose the algae that give them their colour and their food, and many of them begin to die. Other pressures, such as pollution and overfishing, make recovery even harder."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Restoration projects usually follow two main methods. The first is coral nurseries. Scientists grow small coral fragments in nurseries, often on land or in shallow water, and then transplant them to damaged reefs. The second method is to attach fragments to artificial structures, often made of concrete, which are placed on the seabed."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Early results are encouraging but not perfect. Roughly sixty percent of transplanted fragments survive their first year, which is better than many people expected. However, the survival rate depends heavily on the site and on the water conditions."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "One practical rule is that divers should never touch the corals while they work. Even a light touch can damage the tissue, so the teams use special markers to show where each fragment has been placed."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "There is also good news about wildlife. In restored areas, fish populations often recover within two years, which tells us the wider ecosystem is responding."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Of course, all of this is expensive. A typical large project can cost about two hundred thousand dollars, and most of that money comes from government grants rather than private companies."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "For next semester, the research team plans to use drone surveys to track changes across much larger areas. The results will be published in the spring, so I'd recommend keeping an eye on the journal."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 31-40",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Coral reef restoration",
+        "Reefs cover only about {{31}} of the ocean floor",
+        "Main threat: rising {{32}} temperatures",
+        "Method one: growing coral in {{33}}",
+        "Method two: attaching fragments to {{34}} structures",
+        "Survival rate: about {{35}} percent in the first year",
+        "Divers should avoid {{36}} the coral",
+        "Fish numbers recover within {{37}}",
+        "Project cost: about {{38}} dollars",
+        "Main funding source: {{39}}",
+        "Next step: drone {{40}}"
+      ],
+      "questions": [
+        { "n": 31, "answer": "one percent", "accept": ["1 percent", "1%"] },
+        { "n": 32, "answer": "sea" },
+        { "n": 33, "answer": "nurseries" },
+        { "n": 34, "answer": "concrete" },
+        { "n": 35, "answer": "sixty", "accept": ["60"] },
+        { "n": 36, "answer": "touching", "accept": ["touch"] },
+        { "n": 37, "answer": "two years", "accept": ["2 years"] },
+        { "n": 38, "answer": "two hundred thousand", "accept": ["200,000", "200000"] },
+        { "n": 39, "answer": "government grants" },
+        { "n": 40, "answer": "surveys" }
+      ]
+    }
+  ]
+}

@@ -54,6 +54,9 @@ export const BACKDROPS: readonly Backdrop[] = [
   entry('kiss', 'Nụ hôn', 'The Kiss', 'Gustav Klimt', '1908', 'dark', '30,20,8', 0.62, 'center 30%'),
   entry('lagrande', 'Chiều Chủ nhật ở đảo La Grande Jatte', 'A Sunday Afternoon on La Grande Jatte', 'Georges Seurat', '1886', 'dark', '14,22,16', 0.6),
   entry('pearl', 'Cô gái đeo hoa tai ngọc trai', 'Girl with a Pearl Earring', 'Johannes Vermeer', 'c. 1665', 'dark', '6,6,10', 0.35, 'center 22%'),
+  entry('impression', 'Ấn tượng, mặt trời mọc', 'Impression, Sunrise', 'Claude Monet', '1872', 'dark', '12,18,30', 0.5),
+  entry('venus', 'Sự ra đời của thần Vệ nữ', 'The Birth of Venus', 'Sandro Botticelli', 'c. 1485', 'light', '250,244,230', 0.6, 'center 40%'),
+  entry('monalisa', 'Nàng Mona Lisa', 'Mona Lisa', 'Leonardo da Vinci', 'c. 1503', 'dark', '20,14,6', 0.5, 'center 30%'),
 ];
 
 export const DEFAULT_BACKDROP_ID = 'starry';

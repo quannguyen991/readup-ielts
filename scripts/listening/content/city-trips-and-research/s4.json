@@ -1,0 +1,72 @@
+{
+  "n": 4,
+  "title": "Urban heat islands",
+  "context": "A university lecture on how cities become warmer than the surrounding countryside, and what can be done about it.",
+  "transcript": [
+    {
+      "speaker": "Lecturer",
+      "text": "Good morning. Today's topic is the urban heat island. This is the name given to the way cities become warmer than the countryside around them. On a hot day, the difference can be up to five degrees, and at night it can be even larger."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "The main cause is the materials we build with. Dark asphalt and concrete absorb heat during the day and then release it slowly after sunset. Buildings do the same thing, so the city stays warm long after the sun has gone down."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "A second cause is the lack of vegetation. Plants and trees provide shade and cool the air through evaporation. Where there are few green spaces, that natural cooling simply doesn't happen, and the temperature keeps rising."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "This matters for health. The risk is highest for elderly people, who find it harder to cope with prolonged heat, and for people who work outdoors. Hospitals in some cities report more heat-related admissions during summer heatwaves."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Now, what can we do? Green roofs are one option. Studies suggest they can lower surface temperatures by about eight degrees, which makes a noticeable difference inside the top floor of a building."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Water features also help. Fountains and ponds provide local cooling, although the effect only reaches a short distance. Trees planted along major streets give the most benefit, because they shade pedestrians and cars at the same time."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "The most ambitious project so far is in Melbourne. The pilot project there plants trees along several streets and tracks the results with temperature sensors. The city's planners hope to use the data to decide where to plant next."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Finally, the research group is writing a review of all the pilot projects. Their findings will be used to shape new planning guidelines, and the review is expected to be published next year. I'll share the link once it's available."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 31-40",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Urban heat islands",
+        "Cities can be up to {{31}} degrees warmer than the countryside",
+        "Main cause: heat absorbed by dark {{32}}",
+        "Second cause: lack of {{33}}",
+        "Buildings {{34}} stored heat slowly at night",
+        "Health risk is highest for {{35}} people",
+        "Green roofs can lower surface temperatures by about {{36}} degrees",
+        "Water features provide {{37}} cooling",
+        "Trees along major {{38}} give the most benefit",
+        "Pilot project location: {{39}}",
+        "Researchers will publish new {{40}} next year"
+      ],
+      "questions": [
+        { "n": 31, "answer": "five", "accept": ["5"] },
+        { "n": 32, "answer": "asphalt" },
+        { "n": 33, "answer": "vegetation" },
+        { "n": 34, "answer": "release" },
+        { "n": 35, "answer": "elderly" },
+        { "n": 36, "answer": "eight", "accept": ["8"] },
+        { "n": 37, "answer": "local" },
+        { "n": 38, "answer": "streets" },
+        { "n": 39, "answer": "Melbourne" },
+        { "n": 40, "answer": "guidelines" }
+      ]
+    }
+  ]
+}

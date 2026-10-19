@@ -1,0 +1,1126 @@
+[
+  {
+    "word": "extended family",
+    "synonyms": [
+      "extended household",
+      "kin group"
+    ],
+    "antonyms": [
+      "nuclear family"
+    ]
+  },
+  {
+    "word": "sibling",
+    "synonyms": [
+      "brother or sister",
+      "sib"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "adoption",
+    "synonyms": [
+      "adoptive placement",
+      "legal adoption"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "only child",
+    "synonyms": [
+      "single child",
+      "sole child"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "middle child",
+    "synonyms": [
+      "middle-born child",
+      "middle sibling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grandparent",
+    "synonyms": [
+      "grandfather",
+      "grandmother"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "multigenerational",
+    "synonyms": [
+      "multi-generational",
+      "generation-spanning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mother",
+    "synonyms": [
+      "mum",
+      "mom"
+    ],
+    "antonyms": [
+      "father"
+    ]
+  },
+  {
+    "word": "relative",
+    "synonyms": [
+      "relation",
+      "kin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "household",
+    "synonyms": [
+      "family unit",
+      "domestic unit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "toddler",
+    "synonyms": [
+      "young child",
+      "preschooler"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "teenager",
+    "synonyms": [
+      "adolescent",
+      "teen"
+    ],
+    "antonyms": [
+      "adult"
+    ]
+  },
+  {
+    "word": "divorce",
+    "synonyms": [
+      "marital breakdown",
+      "separation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "marriage",
+    "synonyms": [
+      "matrimony",
+      "wedlock"
+    ],
+    "antonyms": [
+      "divorce"
+    ]
+  },
+  {
+    "word": "grandmother",
+    "synonyms": [
+      "grandma",
+      "granny"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cousin",
+    "synonyms": [
+      "first cousin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nephew",
+    "synonyms": [
+      "brother's son",
+      "sister's son"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "niece",
+    "synonyms": [
+      "brother's daughter",
+      "sister's daughter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wedding",
+    "synonyms": [
+      "marriage ceremony",
+      "nuptials"
+    ],
+    "antonyms": [
+      "funeral"
+    ]
+  },
+  {
+    "word": "childhood",
+    "synonyms": [
+      "early life",
+      "youth"
+    ],
+    "antonyms": [
+      "adulthood"
+    ]
+  },
+  {
+    "word": "get along",
+    "synonyms": [
+      "get on well",
+      "be friendly"
+    ],
+    "antonyms": [
+      "fall out"
+    ]
+  },
+  {
+    "word": "look after",
+    "synonyms": [
+      "take care of",
+      "care for",
+      "mind"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "grow up",
+    "synonyms": [
+      "mature",
+      "come of age"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "move out",
+    "synonyms": [
+      "leave home",
+      "move away"
+    ],
+    "antonyms": [
+      "move in"
+    ]
+  },
+  {
+    "word": "in-laws",
+    "synonyms": [
+      "relatives by marriage",
+      "spouse's family"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "daughter",
+    "synonyms": [
+      "female offspring",
+      "girl child"
+    ],
+    "antonyms": [
+      "son"
+    ]
+  },
+  {
+    "word": "family reunion",
+    "synonyms": [
+      "family gathering",
+      "get-together"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "childcare",
+    "synonyms": [
+      "child minding",
+      "daycare"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chore",
+    "synonyms": [
+      "housework",
+      "household task"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "estranged",
+    "synonyms": [
+      "alienated",
+      "separated"
+    ],
+    "antonyms": [
+      "reconciled"
+    ]
+  },
+  {
+    "word": "infancy",
+    "synonyms": [
+      "babyhood",
+      "early childhood"
+    ],
+    "antonyms": [
+      "adulthood"
+    ]
+  },
+  {
+    "word": "hand down",
+    "synonyms": [
+      "pass on",
+      "bequeath"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "come of age",
+    "synonyms": [
+      "reach maturity",
+      "grow up"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "domestic",
+    "synonyms": [
+      "home",
+      "household"
+    ],
+    "antonyms": [
+      "foreign"
+    ]
+  },
+  {
+    "word": "spoil",
+    "synonyms": [
+      "pamper",
+      "indulge"
+    ],
+    "antonyms": [
+      "discipline"
+    ]
+  },
+  {
+    "word": "nag",
+    "synonyms": [
+      "pester",
+      "badger"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bring up",
+    "synonyms": [
+      "raise",
+      "rear"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "homemaker",
+    "synonyms": [
+      "housewife",
+      "stay-at-home parent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dependant",
+    "synonyms": [
+      "dependent",
+      "ward"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cherish",
+    "synonyms": [
+      "treasure",
+      "value"
+    ],
+    "antonyms": [
+      "despise"
+    ]
+  },
+  {
+    "word": "sacrifice",
+    "synonyms": [
+      "self-denial",
+      "giving up"
+    ],
+    "antonyms": [
+      "indulgence"
+    ]
+  },
+  {
+    "word": "stepfamily",
+    "synonyms": [
+      "blended family",
+      "step-family"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "guardian",
+    "synonyms": [
+      "custodian",
+      "protector"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scold",
+    "synonyms": [
+      "reprimand",
+      "rebuke"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "word": "confide",
+    "synonyms": [
+      "disclose",
+      "open up"
+    ],
+    "antonyms": [
+      "conceal"
+    ]
+  },
+  {
+    "word": "inherit",
+    "synonyms": [
+      "succeed to",
+      "be bequeathed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wholesome",
+    "synonyms": [
+      "healthy",
+      "nourishing"
+    ],
+    "antonyms": [
+      "unhealthy"
+    ]
+  },
+  {
+    "word": "bereavement",
+    "synonyms": [
+      "grief",
+      "mourning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pass away",
+    "synonyms": [
+      "die",
+      "depart"
+    ],
+    "antonyms": [
+      "be born"
+    ]
+  },
+  {
+    "word": "sentimental",
+    "synonyms": [
+      "nostalgic",
+      "emotional"
+    ],
+    "antonyms": [
+      "unsentimental"
+    ]
+  },
+  {
+    "word": "filial",
+    "synonyms": [
+      "dutiful",
+      "devoted"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "matriarch",
+    "synonyms": [
+      "matriarchal figure",
+      "family matron"
+    ],
+    "antonyms": [
+      "patriarch"
+    ]
+  },
+  {
+    "word": "patriarchal",
+    "synonyms": [
+      "male-dominated",
+      "paternalistic"
+    ],
+    "antonyms": [
+      "matriarchal"
+    ]
+  },
+  {
+    "word": "matrimony",
+    "synonyms": [
+      "marriage",
+      "wedlock"
+    ],
+    "antonyms": [
+      "celibacy"
+    ]
+  },
+  {
+    "word": "cohabit",
+    "synonyms": [
+      "live together",
+      "share a home"
+    ],
+    "antonyms": [
+      "live apart"
+    ]
+  },
+  {
+    "word": "progeny",
+    "synonyms": [
+      "offspring",
+      "descendants"
+    ],
+    "antonyms": [
+      "ancestors"
+    ]
+  },
+  {
+    "word": "offspring",
+    "synonyms": [
+      "children",
+      "progeny"
+    ],
+    "antonyms": [
+      "parents"
+    ]
+  },
+  {
+    "word": "affinity",
+    "synonyms": [
+      "closeness",
+      "rapport"
+    ],
+    "antonyms": [
+      "antipathy"
+    ]
+  },
+  {
+    "word": "estrangement",
+    "synonyms": [
+      "alienation",
+      "separation"
+    ],
+    "antonyms": [
+      "reconciliation"
+    ]
+  },
+  {
+    "word": "intergenerational",
+    "synonyms": [
+      "cross-generational",
+      "between generations"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paternalistic",
+    "synonyms": [
+      "patriarchal",
+      "overprotective"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indulgent",
+    "synonyms": [
+      "lenient",
+      "permissive"
+    ],
+    "antonyms": [
+      "strict"
+    ]
+  },
+  {
+    "word": "aloof",
+    "synonyms": [
+      "distant",
+      "detached"
+    ],
+    "antonyms": [
+      "friendly",
+      "warm"
+    ]
+  },
+  {
+    "word": "rear",
+    "synonyms": [
+      "raise",
+      "bring up"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "strained",
+    "synonyms": [
+      "tense",
+      "uneasy"
+    ],
+    "antonyms": [
+      "relaxed"
+    ]
+  },
+  {
+    "word": "domesticity",
+    "synonyms": [
+      "home life",
+      "housekeeping"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fraternal",
+    "synonyms": [
+      "brotherly",
+      "sibling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "maternal",
+    "synonyms": [
+      "motherly",
+      "motherlike"
+    ],
+    "antonyms": [
+      "paternal"
+    ]
+  },
+  {
+    "word": "paternal",
+    "synonyms": [
+      "fatherly"
+    ],
+    "antonyms": [
+      "maternal"
+    ]
+  },
+  {
+    "word": "dynasty",
+    "synonyms": [
+      "royal house",
+      "lineage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bereft",
+    "synonyms": [
+      "deprived",
+      "lacking"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hearth",
+    "synonyms": [
+      "fireside",
+      "home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nuptial",
+    "synonyms": [
+      "marital",
+      "matrimonial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dowry",
+    "synonyms": [
+      "marriage portion"
+    ],
+    "antonyms": [
+      "bride price"
+    ]
+  },
+  {
+    "word": "genealogy",
+    "synonyms": [
+      "family history",
+      "pedigree"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kindred",
+    "synonyms": [
+      "like-minded",
+      "related"
+    ],
+    "antonyms": [
+      "unrelated"
+    ]
+  },
+  {
+    "word": "bequest",
+    "synonyms": [
+      "legacy",
+      "inheritance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rift",
+    "synonyms": [
+      "breach",
+      "schism"
+    ],
+    "antonyms": [
+      "reconciliation"
+    ]
+  },
+  {
+    "word": "conjugal",
+    "synonyms": [
+      "marital",
+      "matrimonial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nepotism",
+    "synonyms": [
+      "favouritism",
+      "cronyism"
+    ],
+    "antonyms": [
+      "meritocracy"
+    ]
+  },
+  {
+    "word": "co-parenting",
+    "synonyms": [
+      "shared parenting",
+      "joint parenting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "consanguineous",
+    "synonyms": [
+      "blood-related",
+      "related by blood"
+    ],
+    "antonyms": [
+      "unrelated"
+    ]
+  },
+  {
+    "word": "consanguinity",
+    "synonyms": [
+      "blood relationship",
+      "kinship"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "avuncular",
+    "synonyms": [
+      "uncle-like",
+      "kindly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sororal",
+    "synonyms": [
+      "sisterly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "progenitor",
+    "synonyms": [
+      "ancestor",
+      "forefather"
+    ],
+    "antonyms": [
+      "descendant"
+    ]
+  },
+  {
+    "word": "primogeniture",
+    "synonyms": [
+      "eldest-son inheritance",
+      "firstborn inheritance"
+    ],
+    "antonyms": [
+      "ultimogeniture"
+    ]
+  },
+  {
+    "word": "prodigal",
+    "synonyms": [
+      "wasteful",
+      "extravagant"
+    ],
+    "antonyms": [
+      "thrifty"
+    ]
+  },
+  {
+    "word": "ancestral",
+    "synonyms": [
+      "hereditary",
+      "inherited"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "matrilineal",
+    "synonyms": [
+      "matrilinear"
+    ],
+    "antonyms": [
+      "patrilineal"
+    ]
+  },
+  {
+    "word": "patrilineal",
+    "synonyms": [
+      "patrilinear"
+    ],
+    "antonyms": [
+      "matrilineal"
+    ]
+  },
+  {
+    "word": "amity",
+    "synonyms": [
+      "friendship",
+      "goodwill"
+    ],
+    "antonyms": [
+      "enmity"
+    ]
+  },
+  {
+    "word": "inculcate",
+    "synonyms": [
+      "instil",
+      "imbue"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solicitude",
+    "synonyms": [
+      "concern",
+      "attentiveness"
+    ],
+    "antonyms": [
+      "indifference"
+    ]
+  },
+  {
+    "word": "pater familias",
+    "synonyms": [
+      "head of household",
+      "male family head"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wean",
+    "synonyms": [
+      "detach",
+      "disengage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "enmeshed",
+    "synonyms": [
+      "entangled",
+      "entwined"
+    ],
+    "antonyms": [
+      "disentangled"
+    ]
+  },
+  {
+    "word": "kinsfolk",
+    "synonyms": [
+      "relatives",
+      "kin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scion",
+    "synonyms": [
+      "descendant",
+      "heir"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hereditary",
+    "synonyms": [
+      "inherited",
+      "genetic"
+    ],
+    "antonyms": [
+      "acquired"
+    ]
+  },
+  {
+    "word": "blood ties",
+    "synonyms": [
+      "kinship",
+      "family bonds"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disinherit",
+    "synonyms": [
+      "cut off",
+      "dispossess"
+    ],
+    "antonyms": [
+      "bequeath"
+    ]
+  },
+  {
+    "word": "cosset",
+    "synonyms": [
+      "pamper",
+      "spoil"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "forebear",
+    "synonyms": [
+      "ancestor",
+      "forefather"
+    ],
+    "antonyms": [
+      "descendant"
+    ]
+  },
+  {
+    "word": "abnegation",
+    "synonyms": [
+      "self-denial",
+      "renunciation"
+    ],
+    "antonyms": [
+      "self-indulgence"
+    ]
+  },
+  {
+    "word": "tutelage",
+    "synonyms": [
+      "guardianship",
+      "instruction"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meddlesome",
+    "synonyms": [
+      "interfering",
+      "intrusive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "patrimony",
+    "synonyms": [
+      "inheritance",
+      "legacy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mesalliance",
+    "synonyms": [
+      "misalliance",
+      "unequal marriage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "consort",
+    "synonyms": [
+      "spouse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agnate",
+    "synonyms": [
+      "paternal relative"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "affinal",
+    "synonyms": [
+      "related by marriage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "uxorious",
+    "synonyms": [
+      "doting",
+      "devoted"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fecund",
+    "synonyms": [
+      "fertile",
+      "prolific"
+    ],
+    "antonyms": [
+      "barren",
+      "sterile"
+    ]
+  },
+  {
+    "word": "mollycoddle",
+    "synonyms": [
+      "pamper",
+      "coddle"
+    ],
+    "antonyms": [
+      "toughen up"
+    ]
+  },
+  {
+    "word": "dotage",
+    "synonyms": [
+      "old age",
+      "senility"
+    ],
+    "antonyms": [
+      "youth"
+    ]
+  },
+  {
+    "word": "pedigree",
+    "synonyms": [
+      "lineage",
+      "ancestry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "genteel",
+    "synonyms": [
+      "refined",
+      "polite"
+    ],
+    "antonyms": [
+      "vulgar",
+      "coarse"
+    ]
+  },
+  {
+    "word": "ménage",
+    "synonyms": [
+      "household"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fraternity",
+    "synonyms": [
+      "brotherhood",
+      "camaraderie"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "matriarchy",
+    "synonyms": [
+      "female rule",
+      "matriarchate"
+    ],
+    "antonyms": [
+      "patriarchy"
+    ]
+  },
+  {
+    "word": "ancestry",
+    "synonyms": [
+      "lineage",
+      "descent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "orphanage",
+    "synonyms": [
+      "children's home",
+      "foundling home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "widowhood",
+    "synonyms": [
+      "widowed state",
+      "bereavement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kith and kin",
+    "synonyms": [
+      "friends and relatives",
+      "family and acquaintances"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parturition",
+    "synonyms": [
+      "childbirth",
+      "delivery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wardship",
+    "synonyms": [
+      "guardianship",
+      "custody"
+    ],
+    "antonyms": []
+  }
+]

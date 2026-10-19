@@ -15,16 +15,20 @@ import { BAND_ORDER, VOCAB_TOPICS, groupByBand, type VocabTopicWord } from './vo
  */
 
 const EXPECTED_TOPICS = 50;
-const WORDS_PER_TOPIC = 50;
+/** Mục tiêu theo mức, tổng cả bộ (xem scripts/vocab/cefr-merge.mjs). */
+const LEVEL_TARGET = { B1: 30, B2: 40, C1: 50, C2: 50 } as const;
 
-test('đủ 50 chủ đề, mỗi chủ đề đúng 50 từ', () => {
+test('đủ 50 chủ đề, mỗi bộ đủ số từ theo từng mức B1–C2', () => {
   assert.equal(
     VOCAB_TOPICS.length,
     EXPECTED_TOPICS,
     `Có ${VOCAB_TOPICS.length} chủ đề. Chạy \`npm run vocab:topics\` để sinh nốt phần thiếu.`,
   );
   for (const topic of VOCAB_TOPICS) {
-    assert.equal(topic.words.length, WORDS_PER_TOPIC, `Chủ đề "${topic.slug}" thiếu từ.`);
+    for (const [level, target] of Object.entries(LEVEL_TARGET)) {
+      const n = topic.words.filter((w) => w.cefr === level).length;
+      assert.equal(n, target, `Chủ đề "${topic.slug}" có ${n} từ mức ${level}, cần ${target}.`);
+    }
   }
 });
 
@@ -116,7 +120,8 @@ test('CÂU VÍ DỤ PHẢI CHỨA CHÍNH TỪ ĐANG DẠY', () => {
   const bad: string[] = [];
   for (const topic of VOCAB_TOPICS) {
     for (const w of topic.words) {
-      const stem = w.word.toLowerCase().replace(/[^a-z]/g, '').slice(0, 4);
+      // Cụm từ (get along, jet lag): chỉ cần từ đầu, vì câu hay viết dạng biến đổi.
+      const stem = (w.word.toLowerCase().split(' ')[0] ?? '').replace(/[^a-z]/g, '').slice(0, 4);
       if (stem.length < 4) continue;
       const example = w.example.toLowerCase().replace(/[^a-z ]/g, '');
       if (!example.includes(stem)) bad.push(`${topic.slug}/${w.word}`);

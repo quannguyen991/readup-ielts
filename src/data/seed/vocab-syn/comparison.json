@@ -1,0 +1,1333 @@
+[
+  {
+    "word": "same",
+    "synonyms": [
+      "identical",
+      "equal",
+      "alike"
+    ],
+    "antonyms": [
+      "different",
+      "distinct"
+    ]
+  },
+  {
+    "word": "similar",
+    "synonyms": [
+      "alike",
+      "comparable",
+      "akin"
+    ],
+    "antonyms": [
+      "different",
+      "dissimilar"
+    ]
+  },
+  {
+    "word": "better",
+    "synonyms": [
+      "superior",
+      "preferable",
+      "improved"
+    ],
+    "antonyms": [
+      "worse",
+      "inferior"
+    ]
+  },
+  {
+    "word": "worse",
+    "synonyms": [
+      "poorer",
+      "inferior"
+    ],
+    "antonyms": [
+      "better",
+      "superior"
+    ]
+  },
+  {
+    "word": "big",
+    "synonyms": [
+      "large",
+      "huge",
+      "sizeable"
+    ],
+    "antonyms": [
+      "small",
+      "little"
+    ]
+  },
+  {
+    "word": "small",
+    "synonyms": [
+      "little",
+      "tiny",
+      "compact"
+    ],
+    "antonyms": [
+      "big",
+      "large"
+    ]
+  },
+  {
+    "word": "fast",
+    "synonyms": [
+      "quick",
+      "rapid",
+      "swift"
+    ],
+    "antonyms": [
+      "slow",
+      "sluggish"
+    ]
+  },
+  {
+    "word": "slow",
+    "synonyms": [
+      "sluggish",
+      "gradual",
+      "unhurried"
+    ],
+    "antonyms": [
+      "fast",
+      "quick"
+    ]
+  },
+  {
+    "word": "cheap",
+    "synonyms": [
+      "inexpensive",
+      "affordable",
+      "low-cost"
+    ],
+    "antonyms": [
+      "expensive",
+      "costly"
+    ]
+  },
+  {
+    "word": "expensive",
+    "synonyms": [
+      "costly",
+      "pricey",
+      "dear"
+    ],
+    "antonyms": [
+      "cheap",
+      "inexpensive"
+    ]
+  },
+  {
+    "word": "compare",
+    "synonyms": [
+      "juxtapose",
+      "weigh up",
+      "liken"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "like",
+    "synonyms": [
+      "similar to",
+      "akin to"
+    ],
+    "antonyms": [
+      "unlike"
+    ]
+  },
+  {
+    "word": "unlike",
+    "synonyms": [
+      "different from",
+      "distinct from",
+      "dissimilar to"
+    ],
+    "antonyms": [
+      "like",
+      "similar to"
+    ]
+  },
+  {
+    "word": "also",
+    "synonyms": [
+      "too",
+      "as well",
+      "besides"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "however",
+    "synonyms": [
+      "nevertheless",
+      "yet",
+      "still"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "whereas",
+    "synonyms": [
+      "whilst",
+      "while"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "while",
+    "synonyms": [
+      "whilst",
+      "whereas"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "similarly",
+    "synonyms": [
+      "likewise",
+      "equally",
+      "correspondingly"
+    ],
+    "antonyms": [
+      "conversely",
+      "differently"
+    ]
+  },
+  {
+    "word": "difference",
+    "synonyms": [
+      "discrepancy",
+      "disparity",
+      "distinction"
+    ],
+    "antonyms": [
+      "similarity",
+      "resemblance"
+    ]
+  },
+  {
+    "word": "difficult",
+    "synonyms": [
+      "hard",
+      "challenging",
+      "arduous"
+    ],
+    "antonyms": [
+      "easy",
+      "simple"
+    ]
+  },
+  {
+    "word": "strong",
+    "synonyms": [
+      "powerful",
+      "robust",
+      "sturdy"
+    ],
+    "antonyms": [
+      "weak",
+      "feeble"
+    ]
+  },
+  {
+    "word": "weak",
+    "synonyms": [
+      "feeble",
+      "frail",
+      "fragile"
+    ],
+    "antonyms": [
+      "strong",
+      "robust"
+    ]
+  },
+  {
+    "word": "superior",
+    "synonyms": [
+      "better",
+      "higher-grade",
+      "excellent"
+    ],
+    "antonyms": [
+      "inferior",
+      "lesser"
+    ]
+  },
+  {
+    "word": "inferior",
+    "synonyms": [
+      "lesser",
+      "poorer",
+      "substandard"
+    ],
+    "antonyms": [
+      "superior",
+      "better"
+    ]
+  },
+  {
+    "word": "rival",
+    "synonyms": [
+      "competitor",
+      "contender",
+      "opponent"
+    ],
+    "antonyms": [
+      "ally",
+      "partner"
+    ]
+  },
+  {
+    "word": "match",
+    "synonyms": [
+      "equal",
+      "correspond",
+      "rival"
+    ],
+    "antonyms": [
+      "mismatch",
+      "differ"
+    ]
+  },
+  {
+    "word": "versus",
+    "synonyms": [
+      "against",
+      "as opposed to",
+      "compared with"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contrary",
+    "synonyms": [
+      "opposite",
+      "opposed",
+      "conflicting"
+    ],
+    "antonyms": [
+      "consistent",
+      "compatible"
+    ]
+  },
+  {
+    "word": "vary",
+    "synonyms": [
+      "differ",
+      "fluctuate",
+      "diverge"
+    ],
+    "antonyms": [
+      "remain constant"
+    ]
+  },
+  {
+    "word": "variation",
+    "synonyms": [
+      "difference",
+      "discrepancy",
+      "fluctuation"
+    ],
+    "antonyms": [
+      "uniformity",
+      "consistency"
+    ]
+  },
+  {
+    "word": "measure",
+    "synonyms": [
+      "assess",
+      "gauge",
+      "quantify"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ratio",
+    "synonyms": [
+      "proportion",
+      "relation",
+      "rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gap",
+    "synonyms": [
+      "disparity",
+      "difference",
+      "discrepancy"
+    ],
+    "antonyms": [
+      "parity",
+      "equality"
+    ]
+  },
+  {
+    "word": "outperform",
+    "synonyms": [
+      "surpass",
+      "exceed",
+      "outdo"
+    ],
+    "antonyms": [
+      "underperform",
+      "lag behind"
+    ]
+  },
+  {
+    "word": "surpass",
+    "synonyms": [
+      "exceed",
+      "outdo",
+      "outstrip"
+    ],
+    "antonyms": [
+      "fall short of"
+    ]
+  },
+  {
+    "word": "alike",
+    "synonyms": [
+      "similar",
+      "identical",
+      "analogous"
+    ],
+    "antonyms": [
+      "different",
+      "dissimilar"
+    ]
+  },
+  {
+    "word": "compatible",
+    "synonyms": [
+      "consistent",
+      "harmonious",
+      "matching"
+    ],
+    "antonyms": [
+      "incompatible",
+      "conflicting"
+    ]
+  },
+  {
+    "word": "benchmark",
+    "synonyms": [
+      "standard",
+      "yardstick",
+      "criterion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "standard",
+    "synonyms": [
+      "norm",
+      "benchmark",
+      "criterion"
+    ],
+    "antonyms": [
+      "anomaly",
+      "deviation"
+    ]
+  },
+  {
+    "word": "relative",
+    "synonyms": [
+      "comparative",
+      "proportional",
+      "related"
+    ],
+    "antonyms": [
+      "absolute"
+    ]
+  },
+  {
+    "word": "analogy",
+    "synonyms": [
+      "comparison",
+      "parallel",
+      "correspondence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "juxtaposition",
+    "synonyms": [
+      "contrast",
+      "collocation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contrasting",
+    "synonyms": [
+      "differing",
+      "opposing",
+      "dissimilar"
+    ],
+    "antonyms": [
+      "similar",
+      "comparable"
+    ]
+  },
+  {
+    "word": "disparate",
+    "synonyms": [
+      "unrelated",
+      "dissimilar",
+      "divergent"
+    ],
+    "antonyms": [
+      "comparable",
+      "homogeneous"
+    ]
+  },
+  {
+    "word": "incongruous",
+    "synonyms": [
+      "incompatible",
+      "inappropriate",
+      "out of place"
+    ],
+    "antonyms": [
+      "fitting"
+    ]
+  },
+  {
+    "word": "commensurate",
+    "synonyms": [
+      "proportionate",
+      "corresponding",
+      "equivalent"
+    ],
+    "antonyms": [
+      "disproportionate"
+    ]
+  },
+  {
+    "word": "paradox",
+    "synonyms": [
+      "contradiction",
+      "anomaly",
+      "inconsistency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dissimilar",
+    "synonyms": [
+      "different",
+      "unlike",
+      "distinct"
+    ],
+    "antonyms": [
+      "similar",
+      "alike"
+    ]
+  },
+  {
+    "word": "congruent",
+    "synonyms": [
+      "consistent",
+      "compatible",
+      "harmonious"
+    ],
+    "antonyms": [
+      "incongruent",
+      "discordant"
+    ]
+  },
+  {
+    "word": "conversely",
+    "synonyms": [
+      "by contrast",
+      "inversely"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nonetheless",
+    "synonyms": [
+      "nevertheless",
+      "however",
+      "still"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "notwithstanding",
+    "synonyms": [
+      "despite",
+      "in spite of",
+      "regardless of"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "albeit",
+    "synonyms": [
+      "although",
+      "though",
+      "even though"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concomitant",
+    "synonyms": [
+      "accompanying",
+      "attendant",
+      "concurrent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eclectic",
+    "synonyms": [
+      "diverse",
+      "varied",
+      "wide-ranging"
+    ],
+    "antonyms": [
+      "homogeneous",
+      "uniform"
+    ]
+  },
+  {
+    "word": "heterogeneity",
+    "synonyms": [
+      "diversity",
+      "variety",
+      "multiplicity"
+    ],
+    "antonyms": [
+      "homogeneity",
+      "uniformity"
+    ]
+  },
+  {
+    "word": "uniformity",
+    "synonyms": [
+      "consistency",
+      "sameness",
+      "homogeneity"
+    ],
+    "antonyms": [
+      "diversity",
+      "variation"
+    ]
+  },
+  {
+    "word": "discordant",
+    "synonyms": [
+      "dissonant",
+      "conflicting",
+      "inharmonious"
+    ],
+    "antonyms": [
+      "harmonious",
+      "consonant"
+    ]
+  },
+  {
+    "word": "equivalence",
+    "synonyms": [
+      "equality",
+      "parity",
+      "correspondence"
+    ],
+    "antonyms": [
+      "difference",
+      "disparity"
+    ]
+  },
+  {
+    "word": "reciprocal",
+    "synonyms": [
+      "mutual",
+      "interchangeable",
+      "shared"
+    ],
+    "antonyms": [
+      "unilateral",
+      "one-sided"
+    ]
+  },
+  {
+    "word": "parallelism",
+    "synonyms": [
+      "correspondence",
+      "similarity",
+      "resemblance"
+    ],
+    "antonyms": [
+      "divergence",
+      "discrepancy"
+    ]
+  },
+  {
+    "word": "dichotomous",
+    "synonyms": [
+      "dualistic",
+      "bipartite",
+      "binary"
+    ],
+    "antonyms": [
+      "unified",
+      "integrated"
+    ]
+  },
+  {
+    "word": "unparalleled",
+    "synonyms": [
+      "unmatched",
+      "unrivalled",
+      "matchless"
+    ],
+    "antonyms": [
+      "ordinary",
+      "mediocre"
+    ]
+  },
+  {
+    "word": "indistinguishable",
+    "synonyms": [
+      "identical",
+      "indiscernible",
+      "alike"
+    ],
+    "antonyms": [
+      "distinguishable",
+      "distinct"
+    ]
+  },
+  {
+    "word": "incomparable",
+    "synonyms": [
+      "unmatched",
+      "peerless",
+      "matchless"
+    ],
+    "antonyms": [
+      "comparable",
+      "equivalent"
+    ]
+  },
+  {
+    "word": "antithesis",
+    "synonyms": [
+      "opposite",
+      "contrary",
+      "converse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disproportionate",
+    "synonyms": [
+      "unequal",
+      "unbalanced",
+      "excessive"
+    ],
+    "antonyms": [
+      "proportionate",
+      "commensurate"
+    ]
+  },
+  {
+    "word": "marginal",
+    "synonyms": [
+      "minor",
+      "slight",
+      "negligible"
+    ],
+    "antonyms": [
+      "significant",
+      "substantial"
+    ]
+  },
+  {
+    "word": "divergent",
+    "synonyms": [
+      "differing",
+      "diverse",
+      "separate"
+    ],
+    "antonyms": [
+      "convergent",
+      "similar"
+    ]
+  },
+  {
+    "word": "polarise",
+    "synonyms": [
+      "divide",
+      "separate",
+      "split"
+    ],
+    "antonyms": [
+      "unify",
+      "reconcile"
+    ]
+  },
+  {
+    "word": "replicate",
+    "synonyms": [
+      "duplicate",
+      "copy",
+      "reproduce"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emulate",
+    "synonyms": [
+      "imitate",
+      "mirror",
+      "follow"
+    ],
+    "antonyms": [
+      "disregard"
+    ]
+  },
+  {
+    "word": "approximate",
+    "synonyms": [
+      "roughly equal",
+      "close",
+      "estimated"
+    ],
+    "antonyms": [
+      "exact",
+      "precise"
+    ]
+  },
+  {
+    "word": "tantamount",
+    "synonyms": [
+      "equivalent",
+      "commensurate",
+      "synonymous"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "isomorphic",
+    "synonyms": [
+      "structurally identical",
+      "equivalent in form"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "idiosyncratic",
+    "synonyms": [
+      "peculiar",
+      "distinctive",
+      "individual"
+    ],
+    "antonyms": [
+      "typical",
+      "conventional"
+    ]
+  },
+  {
+    "word": "tautological",
+    "synonyms": [
+      "redundant",
+      "repetitive",
+      "superfluous"
+    ],
+    "antonyms": [
+      "concise"
+    ]
+  },
+  {
+    "word": "dissonant",
+    "synonyms": [
+      "discordant",
+      "jarring",
+      "inharmonious"
+    ],
+    "antonyms": [
+      "consonant",
+      "harmonious"
+    ]
+  },
+  {
+    "word": "consonant",
+    "synonyms": [
+      "harmonious",
+      "compatible",
+      "in accord"
+    ],
+    "antonyms": [
+      "dissonant",
+      "discordant"
+    ]
+  },
+  {
+    "word": "quintessential",
+    "synonyms": [
+      "typical",
+      "archetypal",
+      "classic"
+    ],
+    "antonyms": [
+      "atypical"
+    ]
+  },
+  {
+    "word": "archetypal",
+    "synonyms": [
+      "typical",
+      "prototypical",
+      "classic"
+    ],
+    "antonyms": [
+      "atypical",
+      "unconventional"
+    ]
+  },
+  {
+    "word": "emblematic",
+    "synonyms": [
+      "symbolic",
+      "representative",
+      "characteristic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parochial",
+    "synonyms": [
+      "provincial",
+      "insular",
+      "narrow-minded"
+    ],
+    "antonyms": [
+      "cosmopolitan",
+      "worldly"
+    ]
+  },
+  {
+    "word": "cosmopolitan",
+    "synonyms": [
+      "international",
+      "worldly",
+      "multicultural"
+    ],
+    "antonyms": [
+      "parochial",
+      "provincial"
+    ]
+  },
+  {
+    "word": "provincial",
+    "synonyms": [
+      "regional",
+      "rural",
+      "insular"
+    ],
+    "antonyms": [
+      "cosmopolitan",
+      "metropolitan"
+    ]
+  },
+  {
+    "word": "urbane",
+    "synonyms": [
+      "suave",
+      "sophisticated",
+      "polished"
+    ],
+    "antonyms": [
+      "unsophisticated",
+      "boorish"
+    ]
+  },
+  {
+    "word": "amalgamate",
+    "synonyms": [
+      "merge",
+      "combine",
+      "unite"
+    ],
+    "antonyms": [
+      "separate",
+      "divide"
+    ]
+  },
+  {
+    "word": "dichotomise",
+    "synonyms": [
+      "divide",
+      "bifurcate",
+      "split"
+    ],
+    "antonyms": [
+      "unite",
+      "integrate"
+    ]
+  },
+  {
+    "word": "bifurcate",
+    "synonyms": [
+      "fork",
+      "divide",
+      "split"
+    ],
+    "antonyms": [
+      "converge",
+      "unite"
+    ]
+  },
+  {
+    "word": "dissimilitude",
+    "synonyms": [
+      "dissimilarity",
+      "difference",
+      "divergence"
+    ],
+    "antonyms": [
+      "similitude",
+      "resemblance"
+    ]
+  },
+  {
+    "word": "commensurable",
+    "synonyms": [
+      "comparable",
+      "measurable",
+      "equivalent"
+    ],
+    "antonyms": [
+      "incommensurable"
+    ]
+  },
+  {
+    "word": "incommensurable",
+    "synonyms": [
+      "incomparable",
+      "immeasurable",
+      "disproportionate"
+    ],
+    "antonyms": [
+      "commensurable",
+      "comparable"
+    ]
+  },
+  {
+    "word": "antipodal",
+    "synonyms": [
+      "opposite",
+      "contrary",
+      "diametrical"
+    ],
+    "antonyms": [
+      "identical",
+      "matching"
+    ]
+  },
+  {
+    "word": "diametrically",
+    "synonyms": [
+      "completely",
+      "utterly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obverse",
+    "synonyms": [
+      "counterpart",
+      "other side"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "converse",
+    "synonyms": [
+      "opposite",
+      "reverse",
+      "inverse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "equipollent",
+    "synonyms": [
+      "equivalent",
+      "equal",
+      "commensurate"
+    ],
+    "antonyms": [
+      "unequal",
+      "disparate"
+    ]
+  },
+  {
+    "word": "contradistinction",
+    "synonyms": [
+      "contrast",
+      "distinction",
+      "opposition"
+    ],
+    "antonyms": [
+      "similarity"
+    ]
+  },
+  {
+    "word": "gradation",
+    "synonyms": [
+      "gradient",
+      "progression",
+      "range"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nuanced",
+    "synonyms": [
+      "subtle",
+      "complex",
+      "delicate"
+    ],
+    "antonyms": [
+      "simplistic",
+      "crude"
+    ]
+  },
+  {
+    "word": "homogenise",
+    "synonyms": [
+      "standardise",
+      "unify",
+      "level"
+    ],
+    "antonyms": [
+      "diversify",
+      "differentiate"
+    ]
+  },
+  {
+    "word": "heterodox",
+    "synonyms": [
+      "unorthodox",
+      "heretical",
+      "unconventional"
+    ],
+    "antonyms": [
+      "orthodox",
+      "conventional"
+    ]
+  },
+  {
+    "word": "orthodox",
+    "synonyms": [
+      "conventional",
+      "traditional",
+      "mainstream"
+    ],
+    "antonyms": [
+      "heterodox",
+      "unorthodox"
+    ]
+  },
+  {
+    "word": "disjunctive",
+    "synonyms": [
+      "disconnected",
+      "separating",
+      "alternative"
+    ],
+    "antonyms": [
+      "conjunctive",
+      "connective"
+    ]
+  },
+  {
+    "word": "disparagement",
+    "synonyms": [
+      "belittlement",
+      "derogation",
+      "deprecation"
+    ],
+    "antonyms": [
+      "praise",
+      "commendation"
+    ]
+  },
+  {
+    "word": "countervailing",
+    "synonyms": [
+      "offsetting",
+      "compensating",
+      "counterbalancing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bilateral",
+    "synonyms": [
+      "two-sided",
+      "mutual",
+      "reciprocal"
+    ],
+    "antonyms": [
+      "unilateral",
+      "multilateral"
+    ]
+  },
+  {
+    "word": "assimilate",
+    "synonyms": [
+      "absorb",
+      "integrate",
+      "incorporate"
+    ],
+    "antonyms": [
+      "separate",
+      "segregate"
+    ]
+  },
+  {
+    "word": "gauge",
+    "synonyms": [
+      "assess",
+      "evaluate",
+      "measure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concordant",
+    "synonyms": [
+      "consistent",
+      "harmonious",
+      "congruent"
+    ],
+    "antonyms": [
+      "discordant",
+      "conflicting"
+    ]
+  },
+  {
+    "word": "incongruity",
+    "synonyms": [
+      "inconsistency",
+      "incompatibility",
+      "anomaly"
+    ],
+    "antonyms": [
+      "congruity",
+      "consistency"
+    ]
+  },
+  {
+    "word": "tandem",
+    "synonyms": [
+      "in conjunction",
+      "in combination",
+      "alongside"
+    ],
+    "antonyms": [
+      "separately",
+      "independently"
+    ]
+  },
+  {
+    "word": "verisimilitude",
+    "synonyms": [
+      "realism",
+      "authenticity",
+      "lifelikeness"
+    ],
+    "antonyms": [
+      "artificiality",
+      "implausibility"
+    ]
+  },
+  {
+    "word": "dualism",
+    "synonyms": [
+      "dichotomy",
+      "duality",
+      "bipartition"
+    ],
+    "antonyms": [
+      "monism"
+    ]
+  },
+  {
+    "word": "binary",
+    "synonyms": [
+      "dual",
+      "twofold",
+      "dichotomous"
+    ],
+    "antonyms": [
+      "multiple"
+    ]
+  },
+  {
+    "word": "analogue",
+    "synonyms": [
+      "counterpart",
+      "equivalent",
+      "parallel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "superlative",
+    "synonyms": [
+      "supreme",
+      "unsurpassed",
+      "finest"
+    ],
+    "antonyms": [
+      "inferior",
+      "mediocre"
+    ]
+  },
+  {
+    "word": "polarisation",
+    "synonyms": [
+      "division",
+      "separation",
+      "schism"
+    ],
+    "antonyms": [
+      "unification",
+      "convergence"
+    ]
+  },
+  {
+    "word": "hierarchy",
+    "synonyms": [
+      "ranking",
+      "order",
+      "structure"
+    ],
+    "antonyms": [
+      "equality",
+      "egalitarianism"
+    ]
+  },
+  {
+    "word": "ambivalent",
+    "synonyms": [
+      "conflicted",
+      "uncertain",
+      "torn"
+    ],
+    "antonyms": [
+      "certain",
+      "decided"
+    ]
+  }
+]

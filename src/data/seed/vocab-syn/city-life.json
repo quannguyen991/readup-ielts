@@ -1,0 +1,1111 @@
+[
+  {
+    "word": "city",
+    "synonyms": [
+      "urban area",
+      "municipality"
+    ],
+    "antonyms": [
+      "countryside",
+      "village"
+    ]
+  },
+  {
+    "word": "shop",
+    "synonyms": [
+      "store",
+      "outlet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "park",
+    "synonyms": [
+      "green space",
+      "public garden"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "noise",
+    "synonyms": [
+      "din",
+      "racket"
+    ],
+    "antonyms": [
+      "silence"
+    ]
+  },
+  {
+    "word": "neighbour",
+    "synonyms": [
+      "next-door resident",
+      "fellow resident"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crowded",
+    "synonyms": [
+      "packed",
+      "congested"
+    ],
+    "antonyms": [
+      "deserted",
+      "empty"
+    ]
+  },
+  {
+    "word": "quiet",
+    "synonyms": [
+      "silent",
+      "peaceful"
+    ],
+    "antonyms": [
+      "noisy",
+      "loud"
+    ]
+  },
+  {
+    "word": "traffic",
+    "synonyms": [
+      "vehicles",
+      "road traffic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "library",
+    "synonyms": [
+      "reading room"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "market",
+    "synonyms": [
+      "marketplace",
+      "bazaar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flat",
+    "synonyms": [
+      "apartment",
+      "unit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bus stop",
+    "synonyms": [
+      "bus stand",
+      "stop"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rubbish",
+    "synonyms": [
+      "trash",
+      "litter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "busy",
+    "synonyms": [
+      "bustling",
+      "hectic"
+    ],
+    "antonyms": [
+      "quiet",
+      "idle"
+    ]
+  },
+  {
+    "word": "cosmopolitan",
+    "synonyms": [
+      "multicultural",
+      "international"
+    ],
+    "antonyms": [
+      "provincial",
+      "parochial"
+    ]
+  },
+  {
+    "word": "thriving",
+    "synonyms": [
+      "flourishing",
+      "prosperous"
+    ],
+    "antonyms": [
+      "declining",
+      "struggling"
+    ]
+  },
+  {
+    "word": "vibrant",
+    "synonyms": [
+      "lively",
+      "energetic"
+    ],
+    "antonyms": [
+      "dull",
+      "lifeless"
+    ]
+  },
+  {
+    "word": "run-down",
+    "synonyms": [
+      "dilapidated",
+      "neglected"
+    ],
+    "antonyms": [
+      "well-maintained"
+    ]
+  },
+  {
+    "word": "tenant",
+    "synonyms": [
+      "renter",
+      "lessee"
+    ],
+    "antonyms": [
+      "landlord"
+    ]
+  },
+  {
+    "word": "landlord",
+    "synonyms": [
+      "lessor",
+      "property owner"
+    ],
+    "antonyms": [
+      "tenant"
+    ]
+  },
+  {
+    "word": "rent",
+    "synonyms": [
+      "rental fee",
+      "rent payment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "utilities",
+    "synonyms": [
+      "services",
+      "public utilities"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commuter",
+    "synonyms": [
+      "daily traveller",
+      "city worker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "landmark",
+    "synonyms": [
+      "monument",
+      "icon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "district",
+    "synonyms": [
+      "area",
+      "neighbourhood"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "suburban",
+    "synonyms": [
+      "outer-city",
+      "residential"
+    ],
+    "antonyms": [
+      "urban",
+      "inner-city"
+    ]
+  },
+  {
+    "word": "bylaw",
+    "synonyms": [
+      "local law",
+      "municipal regulation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ordinance",
+    "synonyms": [
+      "municipal law",
+      "decree"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vandalism",
+    "synonyms": [
+      "defacement",
+      "damage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "graffiti",
+    "synonyms": [
+      "street art",
+      "tagging"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mural",
+    "synonyms": [
+      "wall painting",
+      "fresco"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lane",
+    "synonyms": [
+      "path",
+      "passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alley",
+    "synonyms": [
+      "alleyway",
+      "backstreet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hub",
+    "synonyms": [
+      "centre",
+      "nexus"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "facilities",
+    "synonyms": [
+      "amenities",
+      "services"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rooftop",
+    "synonyms": [
+      "roof terrace",
+      "roof deck"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "metropolis",
+    "synonyms": [
+      "megacity",
+      "conurbation"
+    ],
+    "antonyms": [
+      "village"
+    ]
+  },
+  {
+    "word": "civic",
+    "synonyms": [
+      "municipal",
+      "public"
+    ],
+    "antonyms": [
+      "private"
+    ]
+  },
+  {
+    "word": "urbane",
+    "synonyms": [
+      "sophisticated",
+      "suave"
+    ],
+    "antonyms": [
+      "rustic",
+      "unsophisticated"
+    ]
+  },
+  {
+    "word": "cacophony",
+    "synonyms": [
+      "din",
+      "racket"
+    ],
+    "antonyms": [
+      "harmony",
+      "euphony"
+    ]
+  },
+  {
+    "word": "alienation",
+    "synonyms": [
+      "estrangement",
+      "isolation"
+    ],
+    "antonyms": [
+      "belonging",
+      "integration"
+    ]
+  },
+  {
+    "word": "anonymity",
+    "synonyms": [
+      "namelessness",
+      "obscurity"
+    ],
+    "antonyms": [
+      "recognition",
+      "visibility"
+    ]
+  },
+  {
+    "word": "ghetto",
+    "synonyms": [
+      "slum",
+      "inner-city area"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disrepair",
+    "synonyms": [
+      "dilapidation",
+      "decay"
+    ],
+    "antonyms": [
+      "good repair"
+    ]
+  },
+  {
+    "word": "dereliction",
+    "synonyms": [
+      "abandonment",
+      "decay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "edifice",
+    "synonyms": [
+      "building",
+      "structure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cityscape",
+    "synonyms": [
+      "skyline",
+      "urban landscape"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bourgeois",
+    "synonyms": [
+      "middle-class"
+    ],
+    "antonyms": [
+      "proletarian",
+      "working-class"
+    ]
+  },
+  {
+    "word": "proletarian",
+    "synonyms": [
+      "working-class",
+      "blue-collar"
+    ],
+    "antonyms": [
+      "bourgeois"
+    ]
+  },
+  {
+    "word": "sprawling",
+    "synonyms": [
+      "spread out",
+      "expansive"
+    ],
+    "antonyms": [
+      "compact",
+      "cramped"
+    ]
+  },
+  {
+    "word": "cramped",
+    "synonyms": [
+      "confined",
+      "crowded"
+    ],
+    "antonyms": [
+      "spacious",
+      "roomy"
+    ]
+  },
+  {
+    "word": "avenue",
+    "synonyms": [
+      "boulevard",
+      "broad street"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quarter",
+    "synonyms": [
+      "district",
+      "neighbourhood"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tenancy",
+    "synonyms": [
+      "lease",
+      "occupancy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eviction",
+    "synonyms": [
+      "ejection",
+      "removal from home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mortgage",
+    "synonyms": [
+      "home loan",
+      "housing loan"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eyesore",
+    "synonyms": [
+      "blight",
+      "monstrosity"
+    ],
+    "antonyms": [
+      "beauty spot"
+    ]
+  },
+  {
+    "word": "pollutant",
+    "synonyms": [
+      "contaminant",
+      "toxin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "particulate",
+    "synonyms": [
+      "particulate matter",
+      "fine dust"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ventilation",
+    "synonyms": [
+      "airflow",
+      "air circulation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insulation",
+    "synonyms": [
+      "thermal lining",
+      "heat protection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pedestrianise",
+    "synonyms": [
+      "make car-free",
+      "close to vehicles"
+    ],
+    "antonyms": [
+      "open to traffic"
+    ]
+  },
+  {
+    "word": "decay",
+    "synonyms": [
+      "decline",
+      "deterioration"
+    ],
+    "antonyms": [
+      "renewal",
+      "regeneration"
+    ]
+  },
+  {
+    "word": "vitality",
+    "synonyms": [
+      "energy",
+      "liveliness"
+    ],
+    "antonyms": [
+      "lethargy"
+    ]
+  },
+  {
+    "word": "conviviality",
+    "synonyms": [
+      "sociability",
+      "geniality"
+    ],
+    "antonyms": [
+      "hostility",
+      "unfriendliness"
+    ]
+  },
+  {
+    "word": "insularity",
+    "synonyms": [
+      "parochialism",
+      "narrow-mindedness"
+    ],
+    "antonyms": [
+      "cosmopolitanism",
+      "openness"
+    ]
+  },
+  {
+    "word": "transience",
+    "synonyms": [
+      "impermanence",
+      "ephemerality"
+    ],
+    "antonyms": [
+      "permanence",
+      "stability"
+    ]
+  },
+  {
+    "word": "parochial",
+    "synonyms": [
+      "provincial",
+      "narrow-minded"
+    ],
+    "antonyms": [
+      "cosmopolitan",
+      "broad-minded"
+    ]
+  },
+  {
+    "word": "ostentatious",
+    "synonyms": [
+      "showy",
+      "flashy"
+    ],
+    "antonyms": [
+      "modest",
+      "understated"
+    ]
+  },
+  {
+    "word": "malaise",
+    "synonyms": [
+      "unease",
+      "listlessness"
+    ],
+    "antonyms": [
+      "well-being"
+    ]
+  },
+  {
+    "word": "pastoral",
+    "synonyms": [
+      "rural",
+      "agrarian"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "kerbside",
+    "synonyms": [
+      "curbside",
+      "roadside"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allotment",
+    "synonyms": [
+      "plot",
+      "vegetable garden"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tower block",
+    "synonyms": [
+      "high-rise",
+      "tower"
+    ],
+    "antonyms": [
+      "low-rise"
+    ]
+  },
+  {
+    "word": "polis",
+    "synonyms": [
+      "city-state",
+      "ancient city"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agora",
+    "synonyms": [
+      "marketplace",
+      "public square"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cosmopolis",
+    "synonyms": [
+      "global city",
+      "world city"
+    ],
+    "antonyms": [
+      "provincial town"
+    ]
+  },
+  {
+    "word": "boulevardier",
+    "synonyms": [
+      "urban stroller",
+      "man-about-town"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "layered record",
+      "overwritten manuscript"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dystopian",
+    "synonyms": [
+      "bleak",
+      "anti-utopian"
+    ],
+    "antonyms": [
+      "utopian"
+    ]
+  },
+  {
+    "word": "necropolis",
+    "synonyms": [
+      "cemetery",
+      "burial city"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "acropolis",
+    "synonyms": [
+      "citadel",
+      "hilltop fortress"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exurb",
+    "synonyms": [
+      "outer suburb",
+      "commuter belt"
+    ],
+    "antonyms": [
+      "inner city"
+    ]
+  },
+  {
+    "word": "cordon",
+    "synonyms": [
+      "barrier",
+      "security ring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obsolescence",
+    "synonyms": [
+      "obsoleteness",
+      "outdatedness"
+    ],
+    "antonyms": [
+      "modernity",
+      "currency"
+    ]
+  },
+  {
+    "word": "bailiwick",
+    "synonyms": [
+      "domain",
+      "province"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gentility",
+    "synonyms": [
+      "refinement",
+      "respectability"
+    ],
+    "antonyms": [
+      "vulgarity"
+    ]
+  },
+  {
+    "word": "insalubrious",
+    "synonyms": [
+      "unhealthy",
+      "squalid"
+    ],
+    "antonyms": [
+      "salubrious",
+      "healthy"
+    ]
+  },
+  {
+    "word": "squalor",
+    "synonyms": [
+      "filth",
+      "destitution"
+    ],
+    "antonyms": [
+      "opulence",
+      "cleanliness"
+    ]
+  },
+  {
+    "word": "opulence",
+    "synonyms": [
+      "luxury",
+      "splendour"
+    ],
+    "antonyms": [
+      "squalor",
+      "poverty"
+    ]
+  },
+  {
+    "word": "polity",
+    "synonyms": [
+      "state",
+      "political entity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "clamour",
+    "synonyms": [
+      "uproar",
+      "din"
+    ],
+    "antonyms": [
+      "silence"
+    ]
+  },
+  {
+    "word": "ennui",
+    "synonyms": [
+      "boredom",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm",
+      "excitement"
+    ]
+  },
+  {
+    "word": "anomie",
+    "synonyms": [
+      "normlessness",
+      "social breakdown"
+    ],
+    "antonyms": [
+      "social cohesion"
+    ]
+  },
+  {
+    "word": "atomisation",
+    "synonyms": [
+      "fragmentation",
+      "individualisation"
+    ],
+    "antonyms": [
+      "cohesion",
+      "unity"
+    ]
+  },
+  {
+    "word": "hermetic",
+    "synonyms": [
+      "sealed",
+      "airtight"
+    ],
+    "antonyms": [
+      "open",
+      "accessible"
+    ]
+  },
+  {
+    "word": "garret",
+    "synonyms": [
+      "attic",
+      "loft"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forum",
+    "synonyms": [
+      "assembly",
+      "discussion forum"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "piazza",
+    "synonyms": [
+      "square",
+      "plaza"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cloister",
+    "synonyms": [
+      "arcade",
+      "covered walk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rookery",
+    "synonyms": [
+      "slum",
+      "tenement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "souk",
+    "synonyms": [
+      "bazaar",
+      "marketplace"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concourse",
+    "synonyms": [
+      "hall",
+      "foyer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forecourt",
+    "synonyms": [
+      "front court",
+      "frontage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cistern",
+    "synonyms": [
+      "reservoir",
+      "tank"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aqueduct",
+    "synonyms": [
+      "water channel",
+      "water bridge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ramshackle",
+    "synonyms": [
+      "dilapidated",
+      "rickety"
+    ],
+    "antonyms": [
+      "sturdy",
+      "solid"
+    ]
+  },
+  {
+    "word": "obstreperous",
+    "synonyms": [
+      "unruly",
+      "rowdy"
+    ],
+    "antonyms": [
+      "well-behaved",
+      "docile"
+    ]
+  },
+  {
+    "word": "ferment",
+    "synonyms": [
+      "turmoil",
+      "unrest"
+    ],
+    "antonyms": [
+      "calm",
+      "tranquillity"
+    ]
+  },
+  {
+    "word": "parvenu",
+    "synonyms": [
+      "upstart",
+      "social climber"
+    ],
+    "antonyms": [
+      "patrician"
+    ]
+  },
+  {
+    "word": "nouveau riche",
+    "synonyms": [
+      "upstart rich",
+      "newly rich"
+    ],
+    "antonyms": [
+      "old money"
+    ]
+  },
+  {
+    "word": "metropole",
+    "synonyms": [
+      "metropolis",
+      "mother city"
+    ],
+    "antonyms": [
+      "colony"
+    ]
+  },
+  {
+    "word": "hovel",
+    "synonyms": [
+      "shack",
+      "hut"
+    ],
+    "antonyms": [
+      "mansion",
+      "villa"
+    ]
+  },
+  {
+    "word": "warren",
+    "synonyms": [
+      "labyrinth",
+      "maze"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mews",
+    "synonyms": [
+      "stable block",
+      "coach house"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "entropy",
+    "synonyms": [
+      "disorder",
+      "decay"
+    ],
+    "antonyms": [
+      "order",
+      "organisation"
+    ]
+  },
+  {
+    "word": "cobblestone",
+    "synonyms": [
+      "setts",
+      "paving stone"
+    ],
+    "antonyms": [
+      "tarmac",
+      "asphalt"
+    ]
+  },
+  {
+    "word": "parapet",
+    "synonyms": [
+      "railing",
+      "balustrade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catacomb",
+    "synonyms": [
+      "underground tomb",
+      "crypt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pandemonium",
+    "synonyms": [
+      "chaos",
+      "uproar"
+    ],
+    "antonyms": [
+      "order",
+      "calm"
+    ]
+  }
+]

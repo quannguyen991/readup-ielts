@@ -46,13 +46,30 @@ const CSS = `
 .stbd-drift{position:absolute;left:-30%;width:160%;will-change:transform;animation:stbd-drift var(--d) ease-in-out var(--dl,0s) infinite alternate}
 @keyframes stbd-drift{from{transform:translate3d(-6%,0,0)}to{transform:translate3d(6%,0,0)}}
 
+/* Biển: dải sóng trôi ngang, mặt trời mờ */
+.stbd-sun{position:absolute;right:12%;top:12%;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,246,214,.95) 0 34%,rgba(255,226,160,.45) 45%,transparent 70%)}
+.stbd-sea{position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,#3FA6CF,#1B6E96)}
+.stbd-wave{position:absolute;left:-30%;width:160%;height:14%;border-radius:50%;will-change:transform;animation:stbd-drift var(--d) ease-in-out var(--dl,0s) infinite alternate}
+
+/* Đêm tuyết: bông tuyết rơi chậm */
+.stbd-flake{position:absolute;top:-6%;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:#fff;opacity:.8;will-change:transform;animation:stbd-snow var(--d) linear var(--dl) infinite}
+@keyframes stbd-snow{from{transform:translate3d(0,-6vh,0)}50%{transform:translate3d(14px,50vh,0)}to{transform:translate3d(-10px,106vh,0)}}
+
+/* Rừng tre: thân tre đung đưa quanh gốc */
+.stbd-stalk{position:absolute;bottom:-2%;width:var(--w);height:var(--h);left:var(--x);transform-origin:50% 100%;background:linear-gradient(90deg,#5E8F45,#8CBF6A 45%,#4E7D39);border-radius:6px;opacity:.9;animation:stbd-sway var(--d) ease-in-out var(--dl) infinite alternate}
+@keyframes stbd-sway{from{transform:rotate(-2deg)}to{transform:rotate(2.5deg)}}
+
+/* Cực quang: các dải màu trôi và thở chậm */
+.stbd-band{position:absolute;left:-20%;width:140%;border-radius:50%;will-change:transform,opacity;animation:stbd-drift var(--d) ease-in-out var(--dl,0s) infinite alternate,stbd-breathe 9s ease-in-out infinite}
+@keyframes stbd-breathe{0%,100%{opacity:.45}50%{opacity:.9}}
+
 /* Mưa: lớp vệt mưa lặp theo chiều dọc, nghiêng nhẹ */
 .stbd-rain{position:absolute;inset:-12% -12%;will-change:transform;transform:rotate(9deg);animation:stbd-rain var(--d) linear infinite}
 @keyframes stbd-rain{from{transform:rotate(9deg) translate3d(0,0,0)}to{transform:rotate(9deg) translate3d(0,var(--h),0)}}
 
 @media (prefers-reduced-motion: reduce){
  .stbd *{animation:none!important}
- .stbd-petal{display:none}
+ .stbd-petal,.stbd-flake{display:none}
 }
 `;
 
@@ -134,6 +151,39 @@ function Layers({ theme }: { theme: StudyTheme }) {
             className: 'stbd-rain',
             style: st({ '--d': '1.5s', '--h': '340px', opacity: 0.32, backgroundSize: '210px 340px', backgroundImage: 'radial-gradient(1px 22px at 40px 60px, rgba(190,215,255,0.5), transparent), radial-gradient(1px 28px at 150px 220px, rgba(190,215,255,0.5), transparent)' }),
           })}
+        </>
+      );
+    case 'waves':
+      return (
+        <>
+          <div className="stbd-sun" />
+          <div className="stbd-sea" />
+          {h('div', { className: 'stbd-wave', style: st({ bottom: '22%', '--d': '18s', background: 'radial-gradient(60% 60% at 50% 40%,rgba(255,255,255,.4),transparent 70%)' }) })}
+          {h('div', { className: 'stbd-wave', style: st({ bottom: '10%', '--d': '24s', '--dl': '-7s', height: '18%', background: 'radial-gradient(60% 60% at 50% 40%,rgba(255,255,255,.3),transparent 70%)' }) })}
+        </>
+      );
+    case 'snow':
+      return (
+        <>
+          <div className="stbd-fill" style={st({ background: 'radial-gradient(60% 30% at 50% 110%, rgba(190,215,255,.22), transparent 70%)' })} />
+          {PETALS.map((p, i) => h('div', { key: i, className: 'stbd-flake', style: st({ '--x': p.x, '--s': `${3 + (p.s % 6)}px`, '--d': `${9 + (i % 6)}s`, '--dl': p.dl }) }))}
+        </>
+      );
+    case 'bamboo':
+      return (
+        <>
+          <div className="stbd-fill" style={st({ background: 'radial-gradient(70% 40% at 50% 0%, rgba(255,255,230,.6), transparent 70%)' })} />
+          {[6, 18, 31, 47, 58, 72, 86, 95].map((x, i) =>
+            h('div', { key: i, className: 'stbd-stalk', style: st({ '--x': `${x}%`, '--w': `${10 + (i % 3) * 4}px`, '--h': `${62 + ((i * 7) % 30)}%`, '--d': `${6 + (i % 4)}s`, '--dl': `${-i * 0.7}s` }) }),
+          )}
+        </>
+      );
+    case 'aurora':
+      return (
+        <>
+          {h('div', { className: 'stbd-band', style: st({ top: '14%', height: '26%', '--d': '22s', background: 'radial-gradient(50% 50% at 40% 50%,rgba(60,255,190,.45),transparent 72%)' }) })}
+          {h('div', { className: 'stbd-band', style: st({ top: '34%', height: '24%', '--d': '30s', '--dl': '-11s', background: 'radial-gradient(50% 50% at 62% 50%,rgba(140,110,255,.42),transparent 72%)' }) })}
+          {h('div', { className: 'stbd-band', style: st({ top: '6%', height: '18%', '--d': '40s', '--dl': '-20s', background: 'radial-gradient(50% 50% at 55% 50%,rgba(80,220,255,.3),transparent 72%)' }) })}
         </>
       );
     case 'world':

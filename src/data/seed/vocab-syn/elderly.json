@@ -1,0 +1,1143 @@
+[
+  {
+    "word": "contributory",
+    "synonyms": [
+      "contribution-based",
+      "insurance-based"
+    ],
+    "antonyms": [
+      "non-contributory"
+    ]
+  },
+  {
+    "word": "means-tested",
+    "synonyms": [
+      "income-tested",
+      "needs-based"
+    ],
+    "antonyms": [
+      "universal"
+    ]
+  },
+  {
+    "word": "gerontology",
+    "synonyms": [
+      "geriatrics",
+      "study of ageing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grandparent",
+    "synonyms": [
+      "grandfather",
+      "grandmother"
+    ],
+    "antonyms": [
+      "grandchild"
+    ]
+  },
+  {
+    "word": "wrinkle",
+    "synonyms": [
+      "crease",
+      "furrow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retire",
+    "synonyms": [
+      "stop working",
+      "withdraw"
+    ],
+    "antonyms": [
+      "return to work"
+    ]
+  },
+  {
+    "word": "wise",
+    "synonyms": [
+      "sage",
+      "sensible"
+    ],
+    "antonyms": [
+      "foolish"
+    ]
+  },
+  {
+    "word": "lonely",
+    "synonyms": [
+      "lonesome",
+      "isolated"
+    ],
+    "antonyms": [
+      "sociable"
+    ]
+  },
+  {
+    "word": "stroll",
+    "synonyms": [
+      "amble",
+      "saunter"
+    ],
+    "antonyms": [
+      "rush"
+    ]
+  },
+  {
+    "word": "hearing",
+    "synonyms": [
+      "hearing ability",
+      "auditory sense"
+    ],
+    "antonyms": [
+      "deafness"
+    ]
+  },
+  {
+    "word": "eyesight",
+    "synonyms": [
+      "vision",
+      "sight"
+    ],
+    "antonyms": [
+      "blindness"
+    ]
+  },
+  {
+    "word": "elder",
+    "synonyms": [
+      "senior",
+      "older person"
+    ],
+    "antonyms": [
+      "junior"
+    ]
+  },
+  {
+    "word": "memory",
+    "synonyms": [
+      "recall",
+      "recollection"
+    ],
+    "antonyms": [
+      "forgetfulness"
+    ]
+  },
+  {
+    "word": "wheelchair",
+    "synonyms": [
+      "mobility aid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hobby",
+    "synonyms": [
+      "pastime",
+      "pursuit"
+    ],
+    "antonyms": [
+      "chore"
+    ]
+  },
+  {
+    "word": "neighbour",
+    "synonyms": [
+      "next-door resident",
+      "fellow resident"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "medicine",
+    "synonyms": [
+      "medication",
+      "remedy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "care",
+    "synonyms": [
+      "nursing",
+      "support"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "senior",
+    "synonyms": [
+      "elderly",
+      "older"
+    ],
+    "antonyms": [
+      "junior"
+    ]
+  },
+  {
+    "word": "widow",
+    "synonyms": [
+      "widowed woman"
+    ],
+    "antonyms": [
+      "widower"
+    ]
+  },
+  {
+    "word": "patient",
+    "synonyms": [
+      "sufferer"
+    ],
+    "antonyms": [
+      "healthy person"
+    ]
+  },
+  {
+    "word": "generation",
+    "synonyms": [
+      "age group",
+      "era"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arthritis",
+    "synonyms": [
+      "joint inflammation",
+      "rheumatism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "osteoporosis",
+    "synonyms": [
+      "bone thinning",
+      "brittle bones"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stroke",
+    "synonyms": [
+      "cerebrovascular accident",
+      "brain attack"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hip",
+    "synonyms": [
+      "hip joint"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frail",
+    "synonyms": [
+      "fragile",
+      "weak"
+    ],
+    "antonyms": [
+      "robust"
+    ]
+  },
+  {
+    "word": "incontinence",
+    "synonyms": [
+      "bladder weakness"
+    ],
+    "antonyms": [
+      "continence"
+    ]
+  },
+  {
+    "word": "nursing home",
+    "synonyms": [
+      "care home",
+      "residential home"
+    ],
+    "antonyms": [
+      "home care"
+    ]
+  },
+  {
+    "word": "retiree",
+    "synonyms": [
+      "pensioner",
+      "senior citizen"
+    ],
+    "antonyms": [
+      "worker"
+    ]
+  },
+  {
+    "word": "widowhood",
+    "synonyms": [
+      "bereavement"
+    ],
+    "antonyms": [
+      "wedlock"
+    ]
+  },
+  {
+    "word": "bereavement",
+    "synonyms": [
+      "grief",
+      "mourning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loneliness",
+    "synonyms": [
+      "isolation",
+      "solitude"
+    ],
+    "antonyms": [
+      "companionship"
+    ]
+  },
+  {
+    "word": "companionship",
+    "synonyms": [
+      "fellowship",
+      "company"
+    ],
+    "antonyms": [
+      "loneliness"
+    ]
+  },
+  {
+    "word": "self-reliance",
+    "synonyms": [
+      "self-sufficiency",
+      "independence"
+    ],
+    "antonyms": [
+      "dependence"
+    ]
+  },
+  {
+    "word": "mobility",
+    "synonyms": [
+      "agility",
+      "movability"
+    ],
+    "antonyms": [
+      "immobility"
+    ]
+  },
+  {
+    "word": "walking aid",
+    "synonyms": [
+      "walking stick",
+      "walker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hearing aid",
+    "synonyms": [
+      "hearing device"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "benefit",
+    "synonyms": [
+      "allowance",
+      "subsidy"
+    ],
+    "antonyms": [
+      "drawback"
+    ]
+  },
+  {
+    "word": "supplement",
+    "synonyms": [
+      "additive",
+      "add-on"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nutrition",
+    "synonyms": [
+      "nourishment",
+      "sustenance"
+    ],
+    "antonyms": [
+      "malnutrition"
+    ]
+  },
+  {
+    "word": "diet",
+    "synonyms": [
+      "eating habits",
+      "regimen"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exercise",
+    "synonyms": [
+      "workout",
+      "physical activity"
+    ],
+    "antonyms": [
+      "inactivity"
+    ]
+  },
+  {
+    "word": "forgetfulness",
+    "synonyms": [
+      "absent-mindedness",
+      "memory lapse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "confusion",
+    "synonyms": [
+      "bewilderment",
+      "disorientation"
+    ],
+    "antonyms": [
+      "lucidity"
+    ]
+  },
+  {
+    "word": "vitality",
+    "synonyms": [
+      "energy",
+      "liveliness"
+    ],
+    "antonyms": [
+      "lethargy"
+    ]
+  },
+  {
+    "word": "wellbeing",
+    "synonyms": [
+      "welfare",
+      "health"
+    ],
+    "antonyms": [
+      "illness"
+    ]
+  },
+  {
+    "word": "reminiscence",
+    "synonyms": [
+      "recollection",
+      "remembrance"
+    ],
+    "antonyms": [
+      "oblivion"
+    ]
+  },
+  {
+    "word": "senescence",
+    "synonyms": [
+      "ageing",
+      "old age"
+    ],
+    "antonyms": [
+      "youth"
+    ]
+  },
+  {
+    "word": "octogenarian",
+    "synonyms": [
+      "eighty-something"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nonagenarian",
+    "synonyms": [
+      "ninety-something"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "centenarian",
+    "synonyms": [
+      "hundred-year-old"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "infirmity",
+    "synonyms": [
+      "frailty",
+      "disability"
+    ],
+    "antonyms": [
+      "vigour"
+    ]
+  },
+  {
+    "word": "debilitating",
+    "synonyms": [
+      "enfeebling",
+      "weakening"
+    ],
+    "antonyms": [
+      "invigorating"
+    ]
+  },
+  {
+    "word": "sclerosis",
+    "synonyms": [
+      "hardening"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hospice",
+    "synonyms": [
+      "palliative care unit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "geriatrician",
+    "synonyms": [
+      "geriatric specialist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "polypharmacy",
+    "synonyms": [
+      "multiple medication",
+      "drug overuse"
+    ],
+    "antonyms": [
+      "monotherapy"
+    ]
+  },
+  {
+    "word": "comorbidity",
+    "synonyms": [
+      "co-existing illness",
+      "multimorbidity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "decrepit",
+    "synonyms": [
+      "dilapidated",
+      "run-down"
+    ],
+    "antonyms": [
+      "sound"
+    ]
+  },
+  {
+    "word": "infirm",
+    "synonyms": [
+      "feeble",
+      "frail"
+    ],
+    "antonyms": [
+      "hale"
+    ]
+  },
+  {
+    "word": "actuarial",
+    "synonyms": [
+      "statistical",
+      "insurance-based"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annuitant",
+    "synonyms": [
+      "pensioner",
+      "annuity holder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pensionable",
+    "synonyms": [
+      "eligible for pension",
+      "qualifying"
+    ],
+    "antonyms": [
+      "non-pensionable"
+    ]
+  },
+  {
+    "word": "generational",
+    "synonyms": [
+      "intergenerational",
+      "age-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inclusive",
+    "synonyms": [
+      "comprehensive",
+      "all-embracing"
+    ],
+    "antonyms": [
+      "exclusive"
+    ]
+  },
+  {
+    "word": "isolated",
+    "synonyms": [
+      "secluded",
+      "cut off"
+    ],
+    "antonyms": [
+      "connected"
+    ]
+  },
+  {
+    "word": "paternalistic",
+    "synonyms": [
+      "overbearing",
+      "patronising"
+    ],
+    "antonyms": [
+      "liberal"
+    ]
+  },
+  {
+    "word": "cohort",
+    "synonyms": [
+      "peer group",
+      "generation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "longitudinal",
+    "synonyms": [
+      "long-term",
+      "time-series"
+    ],
+    "antonyms": [
+      "cross-sectional"
+    ]
+  },
+  {
+    "word": "sarcopenia",
+    "synonyms": [
+      "muscle wasting",
+      "muscle loss"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amnesia",
+    "synonyms": [
+      "memory loss"
+    ],
+    "antonyms": [
+      "retention"
+    ]
+  },
+  {
+    "word": "gerontocracy",
+    "synonyms": [
+      "rule by elders",
+      "elder rule"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "convalescence",
+    "synonyms": [
+      "recovery",
+      "recuperation"
+    ],
+    "antonyms": [
+      "relapse"
+    ]
+  },
+  {
+    "word": "incapacitated",
+    "synonyms": [
+      "disabled",
+      "helpless"
+    ],
+    "antonyms": [
+      "able-bodied"
+    ]
+  },
+  {
+    "word": "bedridden",
+    "synonyms": [
+      "immobile",
+      "housebound"
+    ],
+    "antonyms": [
+      "mobile"
+    ]
+  },
+  {
+    "word": "ailing",
+    "synonyms": [
+      "sick",
+      "unwell"
+    ],
+    "antonyms": [
+      "healthy"
+    ]
+  },
+  {
+    "word": "fragility",
+    "synonyms": [
+      "brittleness",
+      "weakness"
+    ],
+    "antonyms": [
+      "robustness"
+    ]
+  },
+  {
+    "word": "rejuvenation",
+    "synonyms": [
+      "renewal",
+      "revitalisation"
+    ],
+    "antonyms": [
+      "deterioration"
+    ]
+  },
+  {
+    "word": "hardship",
+    "synonyms": [
+      "deprivation",
+      "adversity"
+    ],
+    "antonyms": [
+      "prosperity"
+    ]
+  },
+  {
+    "word": "senescent",
+    "synonyms": [
+      "ageing",
+      "declining"
+    ],
+    "antonyms": [
+      "youthful"
+    ]
+  },
+  {
+    "word": "decrepitude",
+    "synonyms": [
+      "decay",
+      "dilapidation"
+    ],
+    "antonyms": [
+      "vigour"
+    ]
+  },
+  {
+    "word": "superannuated",
+    "synonyms": [
+      "retired",
+      "obsolete"
+    ],
+    "antonyms": [
+      "in service"
+    ]
+  },
+  {
+    "word": "dotage",
+    "synonyms": [
+      "old age",
+      "senility"
+    ],
+    "antonyms": [
+      "youth"
+    ]
+  },
+  {
+    "word": "anile",
+    "synonyms": [
+      "senile",
+      "doddering"
+    ],
+    "antonyms": [
+      "youthful"
+    ]
+  },
+  {
+    "word": "obsolescence",
+    "synonyms": [
+      "outdatedness",
+      "redundancy"
+    ],
+    "antonyms": [
+      "modernity"
+    ]
+  },
+  {
+    "word": "twilight",
+    "synonyms": [
+      "dusk",
+      "decline"
+    ],
+    "antonyms": [
+      "dawn"
+    ]
+  },
+  {
+    "word": "vigour",
+    "synonyms": [
+      "energy",
+      "vitality"
+    ],
+    "antonyms": [
+      "lethargy"
+    ]
+  },
+  {
+    "word": "lassitude",
+    "synonyms": [
+      "fatigue",
+      "languor"
+    ],
+    "antonyms": [
+      "vigour"
+    ]
+  },
+  {
+    "word": "infirmary",
+    "synonyms": [
+      "sickbay",
+      "clinic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lacklustre",
+    "synonyms": [
+      "dull",
+      "uninspired"
+    ],
+    "antonyms": [
+      "vibrant"
+    ]
+  },
+  {
+    "word": "vestigial",
+    "synonyms": [
+      "residual",
+      "rudimentary"
+    ],
+    "antonyms": [
+      "functional"
+    ]
+  },
+  {
+    "word": "ossify",
+    "synonyms": [
+      "harden",
+      "stiffen"
+    ],
+    "antonyms": [
+      "loosen"
+    ]
+  },
+  {
+    "word": "cognisance",
+    "synonyms": [
+      "awareness",
+      "recognition"
+    ],
+    "antonyms": [
+      "ignorance"
+    ]
+  },
+  {
+    "word": "reminiscent",
+    "synonyms": [
+      "evocative",
+      "suggestive"
+    ],
+    "antonyms": [
+      "dissimilar"
+    ]
+  },
+  {
+    "word": "gerontologist",
+    "synonyms": [
+      "ageing specialist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epigenetic",
+    "synonyms": [
+      "gene-regulatory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "telomere",
+    "synonyms": [
+      "chromosome end",
+      "DNA cap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "atrophy",
+    "synonyms": [
+      "wasting",
+      "degeneration"
+    ],
+    "antonyms": [
+      "hypertrophy"
+    ]
+  },
+  {
+    "word": "osteoarthritis",
+    "synonyms": [
+      "degenerative joint disease",
+      "wear-and-tear arthritis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nostalgia",
+    "synonyms": [
+      "longing",
+      "yearning"
+    ],
+    "antonyms": [
+      "indifference"
+    ]
+  },
+  {
+    "word": "reverie",
+    "synonyms": [
+      "daydream",
+      "musing"
+    ],
+    "antonyms": [
+      "alertness"
+    ]
+  },
+  {
+    "word": "stoicism",
+    "synonyms": [
+      "fortitude",
+      "endurance"
+    ],
+    "antonyms": [
+      "emotionalism"
+    ]
+  },
+  {
+    "word": "resignation",
+    "synonyms": [
+      "acceptance",
+      "submission"
+    ],
+    "antonyms": [
+      "defiance"
+    ]
+  },
+  {
+    "word": "decorum",
+    "synonyms": [
+      "propriety",
+      "etiquette"
+    ],
+    "antonyms": [
+      "indecorum"
+    ]
+  },
+  {
+    "word": "sanctuary",
+    "synonyms": [
+      "refuge",
+      "haven"
+    ],
+    "antonyms": [
+      "danger"
+    ]
+  },
+  {
+    "word": "ministration",
+    "synonyms": [
+      "care",
+      "attention"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "solicitude",
+    "synonyms": [
+      "concern",
+      "attentiveness"
+    ],
+    "antonyms": [
+      "indifference"
+    ]
+  },
+  {
+    "word": "lugubrious",
+    "synonyms": [
+      "mournful",
+      "doleful"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "wizened",
+    "synonyms": [
+      "shrivelled",
+      "withered"
+    ],
+    "antonyms": [
+      "plump"
+    ]
+  },
+  {
+    "word": "doddering",
+    "synonyms": [
+      "feeble",
+      "tottering"
+    ],
+    "antonyms": [
+      "agile"
+    ]
+  },
+  {
+    "word": "fogey",
+    "synonyms": [
+      "stick-in-the-mud",
+      "old-timer"
+    ],
+    "antonyms": [
+      "trendsetter"
+    ]
+  },
+  {
+    "word": "curmudgeon",
+    "synonyms": [
+      "grouch",
+      "grump"
+    ],
+    "antonyms": [
+      "optimist"
+    ]
+  },
+  {
+    "word": "sprightly",
+    "synonyms": [
+      "nimble",
+      "lively"
+    ],
+    "antonyms": [
+      "sluggish"
+    ]
+  },
+  {
+    "word": "spry",
+    "synonyms": [
+      "nimble",
+      "agile"
+    ],
+    "antonyms": [
+      "feeble"
+    ]
+  },
+  {
+    "word": "hale",
+    "synonyms": [
+      "healthy",
+      "robust"
+    ],
+    "antonyms": [
+      "infirm"
+    ]
+  },
+  {
+    "word": "hoary",
+    "synonyms": [
+      "grey-haired",
+      "ancient"
+    ],
+    "antonyms": [
+      "youthful"
+    ]
+  },
+  {
+    "word": "venerable",
+    "synonyms": [
+      "respected",
+      "revered"
+    ],
+    "antonyms": [
+      "disreputable"
+    ]
+  },
+  {
+    "word": "patriarch",
+    "synonyms": [
+      "head of family",
+      "family elder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "matriarch",
+    "synonyms": [
+      "head of family",
+      "grande dame"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anachronism",
+    "synonyms": [
+      "relic",
+      "throwback"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fossilised",
+    "synonyms": [
+      "petrified",
+      "rigid"
+    ],
+    "antonyms": [
+      "flexible"
+    ]
+  },
+  {
+    "word": "languish",
+    "synonyms": [
+      "decline",
+      "wither"
+    ],
+    "antonyms": [
+      "flourish",
+      "thrive"
+    ]
+  }
+]

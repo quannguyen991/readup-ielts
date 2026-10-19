@@ -1,4 +1,5 @@
 import type { GrammarLessonDetail } from './types';
+import { A2_GRAMMAR_EXTRA } from './a2-2';
 
 /** Cấp A2: thì hiện tại đơn, quá khứ đơn, so sánh hơn. */
 export const A2_GRAMMAR: GrammarLessonDetail[] = [
@@ -507,4 +508,5 @@ export const A2_GRAMMAR: GrammarLessonDetail[] = [
       { q: "Choose the correct sentence.", options: ["I musted leave early yesterday.", "I have to left early yesterday.", "I had to leave early yesterday."], answer: 2, explain: "Quá khứ của have to là had to, đi với động từ nguyên mẫu." },
     ],
   },
+  ...A2_GRAMMAR_EXTRA,
 ];

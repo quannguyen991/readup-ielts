@@ -109,7 +109,11 @@ def tts(text):
                 print('  TTS finish:', d['candidates'][0].get('finishReason'), 'tokens:', d.get('usageMetadata', {}).get('candidatesTokenCount'), flush=True)
             if "candidates" not in d:
                 print("  ! không có candidates:", json.dumps(d)[:200]); time.sleep(10); continue
-            b = base64.b64decode(d["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
+            try:
+                b = base64.b64decode(d["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
+            except (KeyError, IndexError, TypeError):
+                # finishReason OTHER / không có phần âm thanh: lỗi tạm của API, thử lại thay vì dừng cả lượt
+                print("  ! phản hồi không có âm thanh (finishReason=%s), thử lại" % d["candidates"][0].get("finishReason")); time.sleep(15); continue
             if b[:4] != b"RIFF":
                 o = io.BytesIO(); w = wave.open(o, "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000); w.writeframes(b); w.close(); b = o.getvalue()
             return b

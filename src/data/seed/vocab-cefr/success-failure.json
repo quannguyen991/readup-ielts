@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "win",
+    "pos": "verb",
+    "ipa": "/wɪn/",
+    "meaningVi": "thắng",
+    "definitionEn": "to get first place or be the best in a game, contest, or competition",
+    "example": "Our team hopes to win the football match on Saturday.",
+    "collocation": "win a prize",
+    "cefr": "B1"
+  },
+  {
+    "word": "lose",
+    "pos": "verb",
+    "ipa": "/luːz/",
+    "meaningVi": "thua, mất",
+    "definitionEn": "to not win a game or contest, or to be defeated",
+    "example": "We could lose the game if we do not score any goals.",
+    "collocation": "lose a match",
+    "cefr": "B1"
+  },
+  {
+    "word": "try",
+    "pos": "verb",
+    "ipa": "/traɪ/",
+    "meaningVi": "cố gắng, thử",
+    "definitionEn": "to make an effort to do or achieve something",
+    "example": "I will try my best to pass the English exam this year.",
+    "collocation": "try hard",
+    "cefr": "B1"
+  },
+  {
+    "word": "goal",
+    "pos": "noun",
+    "ipa": "/ɡəʊl/",
+    "meaningVi": "mục tiêu",
+    "definitionEn": "something you want to achieve in the future",
+    "example": "My goal is to become a doctor and help sick people.",
+    "collocation": "set a goal",
+    "cefr": "B1"
+  },
+  {
+    "word": "prize",
+    "pos": "noun",
+    "ipa": "/praɪz/",
+    "meaningVi": "giải thưởng",
+    "definitionEn": "something given to a person who wins a competition",
+    "example": "She won a prize for her painting at the school art contest.",
+    "collocation": "win a prize",
+    "cefr": "B1"
+  },
+  {
+    "word": "mistake",
+    "pos": "noun",
+    "ipa": "/mɪˈsteɪk/",
+    "meaningVi": "sai lầm, lỗi",
+    "definitionEn": "something you do wrongly, usually by accident",
+    "example": "Everyone makes a mistake sometimes, so do not be too worried.",
+    "collocation": "make a mistake",
+    "cefr": "B1"
+  },
+  {
+    "word": "practice",
+    "pos": "noun",
+    "ipa": "/ˈpræktɪs/",
+    "meaningVi": "sự luyện tập",
+    "definitionEn": "repeated activity done to improve a skill",
+    "example": "Regular practice helps you improve your speaking skills quite quickly.",
+    "collocation": "daily practice",
+    "cefr": "B1"
+  },
+  {
+    "word": "champion",
+    "pos": "noun",
+    "ipa": "/ˈtʃæmpiən/",
+    "meaningVi": "nhà vô địch",
+    "definitionEn": "a person or team that has won first place in a competition",
+    "example": "The champion lifted the trophy above his head in front of the crowd.",
+    "collocation": "reigning champion",
+    "cefr": "B1"
+  },
+  {
+    "word": "medal",
+    "pos": "noun",
+    "ipa": "/ˈmedl/",
+    "meaningVi": "huy chương",
+    "definitionEn": "a metal disc given as an award for an achievement",
+    "example": "He hung his silver medal around his neck and smiled proudly.",
+    "collocation": "win a medal",
+    "cefr": "B1"
+  },
+  {
+    "word": "trophy",
+    "pos": "noun",
+    "ipa": "/ˈtrəʊfi/",
+    "meaningVi": "cúp",
+    "definitionEn": "a cup or figure given as a prize to the winner of a competition",
+    "example": "The school put the trophy on display in the main hall.",
+    "collocation": "a golden trophy",
+    "cefr": "B1"
+  },
+  {
+    "word": "result",
+    "pos": "noun",
+    "ipa": "/rɪˈzʌlt/",
+    "meaningVi": "kết quả",
+    "definitionEn": "the final outcome of an exam, game, or action",
+    "example": "The results of the test will be announced next Monday morning.",
+    "collocation": "exam result",
+    "cefr": "B1"
+  },
+  {
+    "word": "plan",
+    "pos": "noun",
+    "ipa": "/plæn/",
+    "meaningVi": "kế hoạch",
+    "definitionEn": "a set of ideas or steps for achieving something",
+    "example": "Our plan is to finish the project before the summer holidays begin.",
+    "collocation": "make a plan",
+    "cefr": "B1"
+  },
+  {
+    "word": "fail",
+    "pos": "verb",
+    "ipa": "/feɪl/",
+    "meaningVi": "trượt, thất bại",
+    "definitionEn": "to be unsuccessful at doing something you tried to do",
+    "example": "If you fail the test, you can always take it again later.",
+    "collocation": "fail an exam",
+    "cefr": "B1"
+  },
+  {
+    "word": "score",
+    "pos": "noun",
+    "ipa": "/skɔː/",
+    "meaningVi": "tỉ số, điểm số",
+    "definitionEn": "the number of points gained in a game or test",
+    "example": "The final score was two goals to one in our favour.",
+    "collocation": "a high score",
+    "cefr": "B1"
+  },
+  {
+    "word": "reward",
+    "pos": "noun",
+    "ipa": "/rɪˈwɔːd/",
+    "meaningVi": "phần thưởng",
+    "definitionEn": "something given in return for good work or behaviour",
+    "example": "The teacher gave a small reward to every student who worked hard.",
+    "collocation": "a great reward",
+    "cefr": "B1"
+  },
+  {
+    "word": "deadline",
+    "pos": "noun",
+    "ipa": "/ˈdedlaɪn/",
+    "meaningVi": "hạn chót",
+    "definitionEn": "the latest time or date by which something must be finished",
+    "example": "We must submit the final report before the deadline on Friday.",
+    "collocation": "meet a deadline",
+    "cefr": "B2"
+  },
+  {
+    "word": "ambition",
+    "pos": "noun",
+    "ipa": "/æmˈbɪʃn/",
+    "meaningVi": "tham vọng, hoài bão",
+    "definitionEn": "a strong desire to achieve something great in the future",
+    "example": "His ambition is to become a famous architect one day.",
+    "collocation": "strong ambition",
+    "cefr": "B2"
+  },
+  {
+    "word": "motivation",
+    "pos": "noun",
+    "ipa": "/ˌməʊtɪˈveɪʃn/",
+    "meaningVi": "động lực",
+    "definitionEn": "the reason or desire that makes someone act or keep working",
+    "example": "Good motivation is essential if you want to learn a difficult language.",
+    "collocation": "high motivation",
+    "cefr": "B2"
+  },
+  {
+    "word": "confidence",
+    "pos": "noun",
+    "ipa": "/ˈkɒnfɪdəns/",
+    "meaningVi": "sự tự tin",
+    "definitionEn": "a strong belief in your own abilities",
+    "example": "Winning the first game gave the whole team much more confidence.",
+    "collocation": "build confidence",
+    "cefr": "B2"
+  },
+  {
+    "word": "regret",
+    "pos": "noun",
+    "ipa": "/rɪˈɡret/",
+    "meaningVi": "sự tiếc nuối, hối tiếc",
+    "definitionEn": "a feeling of sadness about something you did or did not do",
+    "example": "She has no regret about leaving her job to travel the world.",
+    "collocation": "deep regret",
+    "cefr": "B2"
+  },
+  {
+    "word": "bounce back",
+    "pos": "phrasal verb",
+    "ipa": "/ˌbaʊns ˈbæk/",
+    "meaningVi": "hồi phục nhanh, vượt qua",
+    "definitionEn": "to recover quickly after a difficult time or a setback",
+    "example": "The company managed to bounce back after a very difficult year.",
+    "collocation": "bounce back from",
+    "cefr": "B2"
+  },
+  {
+    "word": "give up",
+    "pos": "phrasal verb",
+    "ipa": "/ɡɪv ˈʌp/",
+    "meaningVi": "từ bỏ",
+    "definitionEn": "to stop trying to do something because it is too difficult",
+    "example": "Do not give up on your dream, even when the task seems too hard.",
+    "collocation": "give up hope",
+    "cefr": "B2"
+  },
+  {
+    "word": "keep going",
+    "pos": "phrase",
+    "ipa": "/kiːp ˈɡəʊɪŋ/",
+    "meaningVi": "tiếp tục cố gắng",
+    "definitionEn": "to continue doing something despite difficulties or tiredness",
+    "example": "When I felt exhausted, I just had to keep going until the end.",
+    "collocation": "keep going",
+    "cefr": "B2"
+  },
+  {
+    "word": "pass",
+    "pos": "verb",
+    "ipa": "/pɑːs/",
+    "meaningVi": "vượt qua, đậu",
+    "definitionEn": "to succeed in an exam, test, or course",
+    "example": "She studied hard every evening and finally passed her driving test.",
+    "collocation": "pass an exam",
+    "cefr": "B2"
+  },
+  {
+    "word": "gamble",
+    "pos": "verb",
+    "ipa": "/ˈɡæmbl/",
+    "meaningVi": "đánh cược, liều lĩnh",
+    "definitionEn": "to take a risk in the hope of gaining something",
+    "example": "Starting a new business is a gamble, but it can bring great rewards.",
+    "collocation": "gamble on",
+    "cefr": "B2"
+  },
+  {
+    "word": "risk",
+    "pos": "noun",
+    "ipa": "/rɪsk/",
+    "meaningVi": "rủi ro",
+    "definitionEn": "the possibility that something bad or unwanted may happen",
+    "example": "There is always a risk of failure when you try something completely new.",
+    "collocation": "take a risk",
+    "cefr": "B2"
+  },
+  {
+    "word": "reputation",
+    "pos": "noun",
+    "ipa": "/ˌrepjuˈteɪʃn/",
+    "meaningVi": "danh tiếng",
+    "definitionEn": "the opinion that people generally have about someone or something",
+    "example": "The school has a strong reputation for academic excellence and discipline.",
+    "collocation": "good reputation",
+    "cefr": "B2"
+  },
+  {
+    "word": "scholarship",
+    "pos": "noun",
+    "ipa": "/ˈskɒləʃɪp/",
+    "meaningVi": "học bổng",
+    "definitionEn": "money given to a student to help pay for their education",
+    "example": "She won a full scholarship to study engineering in Australia.",
+    "collocation": "win a scholarship",
+    "cefr": "B2"
+  },
+  {
+    "word": "promotion",
+    "pos": "noun",
+    "ipa": "/prəˈməʊʃn/",
+    "meaningVi": "sự thăng chức",
+    "definitionEn": "a move to a higher position or rank at work",
+    "example": "After five years of hard work, he finally earned a promotion.",
+    "collocation": "get a promotion",
+    "cefr": "B2"
+  },
+  {
+    "word": "bankrupt",
+    "pos": "adjective",
+    "ipa": "/ˈbæŋkrʌpt/",
+    "meaningVi": "phá sản",
+    "definitionEn": "unable to pay debts, usually because a business has failed",
+    "example": "The small shop went bankrupt after losing most of its customers.",
+    "collocation": "go bankrupt",
+    "cefr": "B2"
+  },
+  {
+    "word": "doubt",
+    "pos": "noun",
+    "ipa": "/daʊt/",
+    "meaningVi": "sự nghi ngờ",
+    "definitionEn": "a feeling of not being certain about something",
+    "example": "Many people had doubts about whether the new plan would succeed.",
+    "collocation": "have doubts about",
+    "cefr": "B2"
+  },
+  {
+    "word": "comeback",
+    "pos": "noun",
+    "ipa": "/ˈkʌmbæk/",
+    "meaningVi": "sự trở lại thành công",
+    "definitionEn": "a return to success after a period of failure or absence",
+    "example": "The actor made a remarkable comeback after several years out of the spotlight.",
+    "collocation": "make a comeback",
+    "cefr": "B2"
+  },
+  {
+    "word": "rejection",
+    "pos": "noun",
+    "ipa": "/rɪˈdʒekʃn/",
+    "meaningVi": "sự từ chối",
+    "definitionEn": "the act of refusing something that was offered or applied for",
+    "example": "Her rejection by three universities was painful, but she kept trying.",
+    "collocation": "face rejection",
+    "cefr": "B2"
+  },
+  {
+    "word": "flop",
+    "pos": "noun",
+    "ipa": "/flɒp/",
+    "meaningVi": "sự thất bại thảm hại",
+    "definitionEn": "something that fails badly or does not succeed",
+    "example": "The new film was a flop and lost money at the box office.",
+    "collocation": "a complete flop",
+    "cefr": "B2"
+  },
+  {
+    "word": "underdog",
+    "pos": "noun",
+    "ipa": "/ˈʌndədɒɡ/",
+    "meaningVi": "đội yếu thế",
+    "definitionEn": "a person or team expected to lose a contest or competition",
+    "example": "Nobody expected the underdog to win, but they defeated the champions.",
+    "collocation": "the underdog",
+    "cefr": "B2"
+  },
+  {
+    "word": "pressure",
+    "pos": "noun",
+    "ipa": "/ˈpreʃə/",
+    "meaningVi": "áp lực",
+    "definitionEn": "a feeling of stress caused by demands or expectations",
+    "example": "Many students feel pressure to get good grades in every subject.",
+    "collocation": "under pressure",
+    "cefr": "B2"
+  },
+  {
+    "word": "accomplished",
+    "pos": "adjective",
+    "ipa": "/əˈkʌmplɪʃt/",
+    "meaningVi": "tài giỏi, thành thạo",
+    "definitionEn": "highly skilled or talented in a particular field",
+    "example": "She is an accomplished pianist who has performed in concert halls worldwide.",
+    "collocation": "an accomplished musician",
+    "cefr": "C1"
+  },
+  {
+    "word": "formidable",
+    "pos": "adjective",
+    "ipa": "/ˈfɔːmɪdəbl/",
+    "meaningVi": "đáng gờm, ghê gớm",
+    "definitionEn": "very strong or impressive, causing respect or even fear",
+    "example": "The team faced a formidable opponent in the final round of the tournament.",
+    "collocation": "a formidable opponent",
+    "cefr": "C1"
+  },
+  {
+    "word": "unrivalled",
+    "pos": "adjective",
+    "ipa": "/ʌnˈraɪvld/",
+    "meaningVi": "không ai sánh kịp",
+    "definitionEn": "better than all others and without equal",
+    "example": "The museum has an unrivalled collection of ancient coins from many empires.",
+    "collocation": "unrivalled success",
+    "cefr": "C1"
+  },
+  {
+    "word": "illustrious",
+    "pos": "adjective",
+    "ipa": "/ɪˈlʌstriəs/",
+    "meaningVi": "lừng lẫy, lẫy lừng",
+    "definitionEn": "famous and respected for great achievements",
+    "example": "The illustrious scientist received the prize for her groundbreaking discoveries.",
+    "collocation": "an illustrious career",
+    "cefr": "C1"
+  },
+  {
+    "word": "esteemed",
+    "pos": "adjective",
+    "ipa": "/ɪˈstiːmd/",
+    "meaningVi": "được kính trọng",
+    "definitionEn": "respected and admired by many people",
+    "example": "The esteemed professor gave a lecture on climate science last week.",
+    "collocation": "an esteemed colleague",
+    "cefr": "C1"
+  },
+  {
+    "word": "prevail",
+    "pos": "verb",
+    "ipa": "/prɪˈveɪl/",
+    "meaningVi": "chiến thắng, thắng thế",
+    "definitionEn": "to succeed or win in the end after a long struggle",
+    "example": "Justice will prevail if we continue to fight for the truth.",
+    "collocation": "prevail over",
+    "cefr": "C1"
+  },
+  {
+    "word": "thwart",
+    "pos": "verb",
+    "ipa": "/θwɔːt/",
+    "meaningVi": "cản trở, làm thất bại",
+    "definitionEn": "to prevent someone from achieving a plan or goal",
+    "example": "The police thwarted the plan to rob the bank on Friday night.",
+    "collocation": "thwart the plan",
+    "cefr": "C1"
+  },
+  {
+    "word": "hamper",
+    "pos": "verb",
+    "ipa": "/ˈhæmpə/",
+    "meaningVi": "cản trở, gây khó khăn",
+    "definitionEn": "to make it difficult for someone to make progress",
+    "example": "Heavy snow hampered the rescue team's progress throughout the night.",
+    "collocation": "hamper progress",
+    "cefr": "C1"
+  },
+  {
+    "word": "impede",
+    "pos": "verb",
+    "ipa": "/ɪmˈpiːd/",
+    "meaningVi": "cản trở, làm chậm",
+    "definitionEn": "to delay or obstruct the progress of something",
+    "example": "Lack of funding will impede the development of the new hospital.",
+    "collocation": "impede progress",
+    "cefr": "C1"
+  },
+  {
+    "word": "stymie",
+    "pos": "verb",
+    "ipa": "/ˈstaɪmi/",
+    "meaningVi": "cản trở, bế tắc",
+    "definitionEn": "to block or prevent someone from doing what they want",
+    "example": "Bureaucracy stymied the project for almost two long years.",
+    "collocation": "stymie efforts",
+    "cefr": "C1"
+  },
+  {
+    "word": "squander",
+    "pos": "verb",
+    "ipa": "/ˈskwɒndə/",
+    "meaningVi": "phung phí",
+    "definitionEn": "to waste money, time, or opportunities carelessly",
+    "example": "He squandered his talent by refusing to practise seriously.",
+    "collocation": "squander an opportunity",
+    "cefr": "C1"
+  },
+  {
+    "word": "flounder",
+    "pos": "verb",
+    "ipa": "/ˈflaʊndə/",
+    "meaningVi": "lúng túng, rối loạn",
+    "definitionEn": "to struggle or make mistakes because you are confused",
+    "example": "The new manager floundered when the company's sales began to drop.",
+    "collocation": "flounder under pressure",
+    "cefr": "C1"
+  },
+  {
+    "word": "stumble",
+    "pos": "verb",
+    "ipa": "/ˈstʌmbl/",
+    "meaningVi": "vấp, lảo đảo",
+    "definitionEn": "to trip or make a mistake while doing something",
+    "example": "She stumbled over her words during the important presentation.",
+    "collocation": "stumble over",
+    "cefr": "C1"
+  },
+  {
+    "word": "rebound",
+    "pos": "verb",
+    "ipa": "/rɪˈbaʊnd/",
+    "meaningVi": "phục hồi, bật lại",
+    "definitionEn": "to recover strongly after a setback or decline",
+    "example": "The economy rebounded quickly after the difficult recession of the past year.",
+    "collocation": "rebound from",
+    "cefr": "C1"
+  },
+  {
+    "word": "recover",
+    "pos": "verb",
+    "ipa": "/rɪˈkʌvə/",
+    "meaningVi": "hồi phục",
+    "definitionEn": "to return to a normal state after a difficulty or illness",
+    "example": "It took him several months to recover from the serious knee injury.",
+    "collocation": "recover from",
+    "cefr": "C1"
+  },
+  {
+    "word": "undertaking",
+    "pos": "noun",
+    "ipa": "/ˌʌndəˈteɪkɪŋ/",
+    "meaningVi": "công việc lớn, dự án",
+    "definitionEn": "a task or project that requires considerable effort",
+    "example": "Building the bridge was an enormous undertaking for the small community.",
+    "collocation": "a major undertaking",
+    "cefr": "C1"
+  },
+  {
+    "word": "feat",
+    "pos": "noun",
+    "ipa": "/fiːt/",
+    "meaningVi": "kỳ tích",
+    "definitionEn": "an achievement that requires great courage, skill, or strength",
+    "example": "Climbing the mountain in a single day was a truly remarkable feat.",
+    "collocation": "a remarkable feat",
+    "cefr": "C1"
+  },
+  {
+    "word": "exploit",
+    "pos": "noun",
+    "ipa": "/ˈeksplɔɪt/",
+    "meaningVi": "chiến công",
+    "definitionEn": "a bold or daring act, often one that is heroic",
+    "example": "The soldier's daring exploits were celebrated across the entire nation.",
+    "collocation": "daring exploit",
+    "cefr": "C1"
+  },
+  {
+    "word": "landmark",
+    "pos": "noun",
+    "ipa": "/ˈlændmɑːk/",
+    "meaningVi": "cột mốc",
+    "definitionEn": "an event or achievement that marks an important stage in history",
+    "example": "The first successful heart transplant was a landmark in medical history.",
+    "collocation": "a historic landmark",
+    "cefr": "C1"
+  },
+  {
+    "word": "honour",
+    "pos": "noun",
+    "ipa": "/ˈɒnə/",
+    "meaningVi": "vinh dự",
+    "definitionEn": "respect or high regard given to someone for an achievement",
+    "example": "It was a great honour to receive the award from the president.",
+    "collocation": "a great honour",
+    "cefr": "C1"
+  },
+  {
+    "word": "laurels",
+    "pos": "noun",
+    "ipa": "/ˈlɒrəlz/",
+    "meaningVi": "vòng nguyệt quế, danh vọng",
+    "definitionEn": "honour or praise gained through an achievement",
+    "example": "After the victory, the team rested on its laurels for several weeks.",
+    "collocation": "rest on laurels",
+    "cefr": "C1"
+  },
+  {
+    "word": "impasse",
+    "pos": "noun",
+    "ipa": "/ˈæmpɑːs/",
+    "meaningVi": "bế tắc",
+    "definitionEn": "a situation in which no progress can be made",
+    "example": "The negotiations reached an impasse after both sides refused to compromise.",
+    "collocation": "reach an impasse",
+    "cefr": "C1"
+  },
+  {
+    "word": "quandary",
+    "pos": "noun",
+    "ipa": "/ˈkwɒndəri/",
+    "meaningVi": "tình thế khó xử",
+    "definitionEn": "a state of uncertainty about what to do",
+    "example": "She was in a quandary about whether to accept the job offer.",
+    "collocation": "in a quandary",
+    "cefr": "C1"
+  },
+  {
+    "word": "predicament",
+    "pos": "noun",
+    "ipa": "/prɪˈdɪkəmənt/",
+    "meaningVi": "tình cảnh khó khăn",
+    "definitionEn": "a difficult situation with no easy solution",
+    "example": "He found himself in a serious predicament after losing the keys.",
+    "collocation": "a difficult predicament",
+    "cefr": "C1"
+  },
+  {
+    "word": "ordeal",
+    "pos": "noun",
+    "ipa": "/ɔːˈdiːl/",
+    "meaningVi": "thử thách khắc nghiệt",
+    "definitionEn": "a painful or very difficult experience",
+    "example": "The long journey across the desert was a terrible ordeal for everyone.",
+    "collocation": "a terrible ordeal",
+    "cefr": "C1"
+  },
+  {
+    "word": "tribulation",
+    "pos": "noun",
+    "ipa": "/ˌtrɪbjuˈleɪʃn/",
+    "meaningVi": "hoạn nạn, gian nan",
+    "definitionEn": "great trouble or suffering that tests a person",
+    "example": "The family endured many tribulations before they finally found a home.",
+    "collocation": "trials and tribulations",
+    "cefr": "C1"
+  },
+  {
+    "word": "misstep",
+    "pos": "noun",
+    "ipa": "/ˈmɪsstep/",
+    "meaningVi": "bước sai lầm",
+    "definitionEn": "a mistake or wrong action that causes a problem",
+    "example": "One misstep in the negotiations could ruin the entire deal.",
+    "collocation": "a costly misstep",
+    "cefr": "C1"
+  },
+  {
+    "word": "stagnation",
+    "pos": "noun",
+    "ipa": "/stæɡˈneɪʃn/",
+    "meaningVi": "sự trì trệ",
+    "definitionEn": "a state in which there is no growth or progress",
+    "example": "Economic stagnation has lasted for several years in the region.",
+    "collocation": "economic stagnation",
+    "cefr": "C1"
+  },
+  {
+    "word": "fiasco",
+    "pos": "noun",
+    "ipa": "/fiˈæskəʊ/",
+    "meaningVi": "thảm họa, thất bại thảm hại",
+    "definitionEn": "a complete and embarrassing failure",
+    "example": "The launch of the new app turned out to be a total fiasco.",
+    "collocation": "a total fiasco",
+    "cefr": "C1"
+  },
+  {
+    "word": "resolve",
+    "pos": "noun",
+    "ipa": "/rɪˈzɒlv/",
+    "meaningVi": "quyết tâm",
+    "definitionEn": "firm determination to achieve something despite difficulties",
+    "example": "Her resolve to finish the course never wavered, even in hard times.",
+    "collocation": "strong resolve",
+    "cefr": "C1"
+  },
+  {
+    "word": "indomitable",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdɒmɪtəbl/",
+    "meaningVi": "bất khuất",
+    "definitionEn": "impossible to defeat or discourage",
+    "example": "The indomitable athlete trained every morning despite a serious injury.",
+    "collocation": "indomitable spirit",
+    "cefr": "C1"
+  },
+  {
+    "word": "unwavering",
+    "pos": "adjective",
+    "ipa": "/ʌnˈweɪvərɪŋ/",
+    "meaningVi": "kiên định, không lay chuyển",
+    "definitionEn": "steady and firm, not changing or weakening",
+    "example": "Her unwavering faith in her team inspired everyone around her.",
+    "collocation": "unwavering commitment",
+    "cefr": "C1"
+  },
+  {
+    "word": "meritorious",
+    "pos": "adjective",
+    "ipa": "/ˌmerɪˈtɔːriəs/",
+    "meaningVi": "đáng khen, xứng đáng",
+    "definitionEn": "deserving praise, reward, or recognition",
+    "example": "The committee gave a special prize for meritorious service to the community.",
+    "collocation": "meritorious service",
+    "cefr": "C1"
+  },
+  {
+    "word": "commendable",
+    "pos": "adjective",
+    "ipa": "/kəˈmendəbl/",
+    "meaningVi": "đáng khen",
+    "definitionEn": "deserving praise and admiration",
+    "example": "Her effort to complete the marathon despite the injury was commendable.",
+    "collocation": "commendable effort",
+    "cefr": "C1"
+  },
+  {
+    "word": "auspicious",
+    "pos": "adjective",
+    "ipa": "/ɔːˈspɪʃəs/",
+    "meaningVi": "thuận lợi, đầy hứa hẹn",
+    "definitionEn": "showing signs of future success or good fortune",
+    "example": "The company began its venture under auspicious circumstances and strong support.",
+    "collocation": "an auspicious start",
+    "cefr": "C1"
+  },
+  {
+    "word": "precarious",
+    "pos": "adjective",
+    "ipa": "/prɪˈkeəriəs/",
+    "meaningVi": "bấp bênh, bất ổn",
+    "definitionEn": "uncertain or unsafe, not securely held",
+    "example": "The small business remained in a precarious financial position for months.",
+    "collocation": "precarious position",
+    "cefr": "C1"
+  },
+  {
+    "word": "insurmountable",
+    "pos": "adjective",
+    "ipa": "/ˌɪnsəˈmaʊntəbl/",
+    "meaningVi": "không thể vượt qua",
+    "definitionEn": "too great to be overcome",
+    "example": "The language barrier seemed insurmountable at first, but she learned quickly.",
+    "collocation": "insurmountable difficulties",
+    "cefr": "C1"
+  },
+  {
+    "word": "dwindle",
+    "pos": "verb",
+    "ipa": "/ˈdwɪndl/",
+    "meaningVi": "suy giảm dần",
+    "definitionEn": "to gradually become smaller or weaker over time",
+    "example": "Public support for the plan began to dwindle after the scandal.",
+    "collocation": "dwindle away",
+    "cefr": "C1"
+  },
+  {
+    "word": "deteriorate",
+    "pos": "verb",
+    "ipa": "/dɪˈtɪəriəreɪt/",
+    "meaningVi": "xấu đi, suy giảm",
+    "definitionEn": "to become worse in quality or condition",
+    "example": "Her health began to deteriorate rapidly after the difficult operation.",
+    "collocation": "deteriorate rapidly",
+    "cefr": "C1"
+  },
+  {
+    "word": "vindicate",
+    "pos": "verb",
+    "ipa": "/ˈvɪndɪkeɪt/",
+    "meaningVi": "minh oan, chứng minh là đúng",
+    "definitionEn": "to prove that someone was right after they had been doubted",
+    "example": "The discovery fully vindicated her years of research, which critics had dismissed.",
+    "collocation": "fully vindicate",
+    "cefr": "C2"
+  },
+  {
+    "word": "exonerate",
+    "pos": "verb",
+    "ipa": "/ɪɡˈzɒnəreɪt/",
+    "meaningVi": "minh oan, tuyên bố vô tội",
+    "definitionEn": "to officially declare someone free from blame or guilt",
+    "example": "New evidence exonerated the man after he had spent ten years in prison.",
+    "collocation": "exonerate from blame",
+    "cefr": "C2"
+  },
+  {
+    "word": "laudable",
+    "pos": "adjective",
+    "ipa": "/ˈlɔːdəbl/",
+    "meaningVi": "đáng ca ngợi",
+    "definitionEn": "deserving praise, even if the outcome is not fully successful",
+    "example": "Their intention to help the poor was laudable, though the plan ultimately failed.",
+    "collocation": "a laudable aim",
+    "cefr": "C2"
+  },
+  {
+    "word": "preeminent",
+    "pos": "adjective",
+    "ipa": "/ˌpriːˈemɪnənt/",
+    "meaningVi": "vượt trội, hàng đầu",
+    "definitionEn": "superior to all others in a particular field",
+    "example": "She is preeminent among historians of the Ming dynasty in Asia.",
+    "collocation": "preeminent position",
+    "cefr": "C2"
+  },
+  {
+    "word": "paramount",
+    "pos": "adjective",
+    "ipa": "/ˈpærəmaʊnt/",
+    "meaningVi": "tối quan trọng, tối cao",
+    "definitionEn": "more important than anything else",
+    "example": "Safety is paramount when planning any large construction project.",
+    "collocation": "of paramount importance",
+    "cefr": "C2"
+  },
+  {
+    "word": "hegemony",
+    "pos": "noun",
+    "ipa": "/hɪˈdʒeməni/",
+    "meaningVi": "bá quyền, ưu thế thống trị",
+    "definitionEn": "dominance or leadership of one group over others",
+    "example": "The empire sought hegemony over the entire region for several centuries.",
+    "collocation": "cultural hegemony",
+    "cefr": "C2"
+  },
+  {
+    "word": "pyrrhic",
+    "pos": "adjective",
+    "ipa": "/pɪˈrɪk/",
+    "meaningVi": "chiến thắng trả giá đắt",
+    "definitionEn": "a victory won at such a great cost that it is almost a defeat",
+    "example": "The army's pyrrhic victory left the city in complete ruins.",
+    "collocation": "a pyrrhic victory",
+    "cefr": "C2"
+  },
+  {
+    "word": "apotheosis",
+    "pos": "noun",
+    "ipa": "/əˌpɒθiˈəʊsɪs/",
+    "meaningVi": "đỉnh cao, sự lý tưởng hóa",
+    "definitionEn": "the highest point or the perfect form of something",
+    "example": "The symphony was the apotheosis of his long and distinguished creative career.",
+    "collocation": "the apotheosis of",
+    "cefr": "C2"
+  },
+  {
+    "word": "zenith",
+    "pos": "noun",
+    "ipa": "/ˈzenɪθ/",
+    "meaningVi": "đỉnh cao",
+    "definitionEn": "the highest point reached by something",
+    "example": "His fame reached its zenith in the same year he won the prize.",
+    "collocation": "reach its zenith",
+    "cefr": "C2"
+  },
+  {
+    "word": "meteoric",
+    "pos": "adjective",
+    "ipa": "/ˌmiːtiˈɒrɪk/",
+    "meaningVi": "vụt sáng, thăng tiến thần tốc",
+    "definitionEn": "rising or developing very quickly and spectacularly",
+    "example": "Her meteoric rise to fame surprised even her closest friends and family.",
+    "collocation": "a meteoric rise",
+    "cefr": "C2"
+  },
+  {
+    "word": "unscathed",
+    "pos": "adjective",
+    "ipa": "/ʌnˈskeɪðd/",
+    "meaningVi": "không hề hấn gì",
+    "definitionEn": "not harmed or damaged, especially after danger or conflict",
+    "example": "The team emerged unscathed from the difficult and bruising season.",
+    "collocation": "emerge unscathed",
+    "cefr": "C2"
+  },
+  {
+    "word": "catastrophe",
+    "pos": "noun",
+    "ipa": "/kəˈtæstrəfi/",
+    "meaningVi": "thảm họa",
+    "definitionEn": "an event causing great damage, suffering, or failure",
+    "example": "The failed launch was a catastrophe for the entire space programme.",
+    "collocation": "a national catastrophe",
+    "cefr": "C2"
+  },
+  {
+    "word": "nemesis",
+    "pos": "noun",
+    "ipa": "/ˈnemɪsɪs/",
+    "meaningVi": "kẻ thù không đội trời chung",
+    "definitionEn": "a person or thing that causes someone's downfall",
+    "example": "The rival team became his nemesis, beating him in every major final.",
+    "collocation": "sworn nemesis",
+    "cefr": "C2"
+  },
+  {
+    "word": "hubris",
+    "pos": "noun",
+    "ipa": "/ˈhjuːbrɪs/",
+    "meaningVi": "kiêu ngạo, tự phụ",
+    "definitionEn": "excessive pride that often leads to a downfall",
+    "example": "His hubris led him to ignore every warning from his trusted advisers.",
+    "collocation": "sheer hubris",
+    "cefr": "C2"
+  },
+  {
+    "word": "bathos",
+    "pos": "noun",
+    "ipa": "/ˈbeɪθɒs/",
+    "meaningVi": "sự hụt hẫng từ cao trào",
+    "definitionEn": "a sudden and absurd drop from serious to trivial",
+    "example": "The speech ended in bathos when the microphone stopped working.",
+    "collocation": "sudden bathos",
+    "cefr": "C2"
+  },
+  {
+    "word": "anticlimax",
+    "pos": "noun",
+    "ipa": "/ˌæntiˈklaɪmæks/",
+    "meaningVi": "sự hụt hẫng, kết thúc nhạt nhẽo",
+    "definitionEn": "a disappointing ending after a period of excitement",
+    "example": "The final match was an anticlimax after weeks of fevered anticipation.",
+    "collocation": "an anticlimax",
+    "cefr": "C2"
+  },
+  {
+    "word": "abortive",
+    "pos": "adjective",
+    "ipa": "/əˈbɔːtɪv/",
+    "meaningVi": "thất bại, vô hiệu",
+    "definitionEn": "unsuccessful, failing to achieve the intended result",
+    "example": "The rebels' abortive uprising ended within a single day.",
+    "collocation": "an abortive attempt",
+    "cefr": "C2"
+  },
+  {
+    "word": "fruitless",
+    "pos": "adjective",
+    "ipa": "/ˈfruːtləs/",
+    "meaningVi": "vô ích",
+    "definitionEn": "producing no useful result despite effort",
+    "example": "After hours of fruitless searching, they gave up and went home.",
+    "collocation": "a fruitless search",
+    "cefr": "C2"
+  },
+  {
+    "word": "futile",
+    "pos": "adjective",
+    "ipa": "/ˈfjuːtaɪl/",
+    "meaningVi": "vô ích, không có kết quả",
+    "definitionEn": "having no chance of success",
+    "example": "It was futile to argue with a man who refused to listen.",
+    "collocation": "a futile effort",
+    "cefr": "C2"
+  },
+  {
+    "word": "abysmal",
+    "pos": "adjective",
+    "ipa": "/əˈbɪzml/",
+    "meaningVi": "tệ hại, thảm hại",
+    "definitionEn": "extremely bad or of very poor quality",
+    "example": "The team's performance was abysmal throughout the entire season.",
+    "collocation": "abysmal performance",
+    "cefr": "C2"
+  },
+  {
+    "word": "lamentable",
+    "pos": "adjective",
+    "ipa": "/ˈlæməntəbl/",
+    "meaningVi": "đáng tiếc, tồi tệ",
+    "definitionEn": "very bad or regrettable in quality",
+    "example": "The lamentable results of the test shocked the entire faculty.",
+    "collocation": "a lamentable record",
+    "cefr": "C2"
+  },
+  {
+    "word": "ignominy",
+    "pos": "noun",
+    "ipa": "/ˈɪɡnɪmɪni/",
+    "meaningVi": "sự nhục nhã",
+    "definitionEn": "public shame or humiliation after a failure",
+    "example": "He suffered the ignominy of being dismissed in front of all his colleagues.",
+    "collocation": "public ignominy",
+    "cefr": "C2"
+  },
+  {
+    "word": "opprobrium",
+    "pos": "noun",
+    "ipa": "/əˈprəʊbriəm/",
+    "meaningVi": "sự lên án, nhục nhã",
+    "definitionEn": "harsh public criticism or disgrace",
+    "example": "The corrupt official faced universal opprobrium after the scandal was revealed.",
+    "collocation": "universal opprobrium",
+    "cefr": "C2"
+  },
+  {
+    "word": "obloquy",
+    "pos": "noun",
+    "ipa": "/ˈɒbləkwi/",
+    "meaningVi": "sự chê bai, nhục mạ",
+    "definitionEn": "strong public criticism and abuse directed at someone",
+    "example": "He endured years of obloquy before his innocence was finally proven.",
+    "collocation": "public obloquy",
+    "cefr": "C2"
+  },
+  {
+    "word": "linchpin",
+    "pos": "noun",
+    "ipa": "/ˈlɪntʃpɪn/",
+    "meaningVi": "yếu tố then chốt",
+    "definitionEn": "a person or thing on which something else depends",
+    "example": "The coach was the linchpin of the team's success that season.",
+    "collocation": "the linchpin of",
+    "cefr": "C2"
+  },
+  {
+    "word": "cornerstone",
+    "pos": "noun",
+    "ipa": "/ˈkɔːnəstəʊn/",
+    "meaningVi": "nền tảng, viên đá góc",
+    "definitionEn": "the basis or most important element of something",
+    "example": "Trust is the cornerstone of every lasting business partnership.",
+    "collocation": "the cornerstone of",
+    "cefr": "C2"
+  },
+  {
+    "word": "kudos",
+    "pos": "noun",
+    "ipa": "/ˈkjuːdɒs/",
+    "meaningVi": "danh tiếng, vinh quang",
+    "definitionEn": "praise and prestige gained through an achievement",
+    "example": "She gained great kudos from her colleagues for the successful merger.",
+    "collocation": "gain kudos",
+    "cefr": "C2"
+  },
+  {
+    "word": "plaudits",
+    "pos": "noun",
+    "ipa": "/ˈplɔːdɪts/",
+    "meaningVi": "lời tán dương",
+    "definitionEn": "expressions of praise or approval for achievement",
+    "example": "The novel earned warm plaudits from critics across the entire country.",
+    "collocation": "win plaudits",
+    "cefr": "C2"
+  },
+  {
+    "word": "eminence",
+    "pos": "noun",
+    "ipa": "/ˈemɪnəns/",
+    "meaningVi": "sự nổi bật, danh vọng",
+    "definitionEn": "high rank or fame in a particular field",
+    "example": "He rose to eminence as a leading surgeon in his country.",
+    "collocation": "rise to eminence",
+    "cefr": "C2"
+  },
+  {
+    "word": "renown",
+    "pos": "noun",
+    "ipa": "/rɪˈnaʊn/",
+    "meaningVi": "danh tiếng, tiếng tăm",
+    "definitionEn": "the state of being famous and widely respected",
+    "example": "The chef achieved international renown for his creative and elegant desserts.",
+    "collocation": "international renown",
+    "cefr": "C2"
+  },
+  {
+    "word": "ascent",
+    "pos": "noun",
+    "ipa": "/əˈsent/",
+    "meaningVi": "sự đi lên, thăng tiến",
+    "definitionEn": "the act of rising to a higher level or position",
+    "example": "Her steady ascent through the company took only six years in total.",
+    "collocation": "a steady ascent",
+    "cefr": "C2"
+  },
+  {
+    "word": "trajectory",
+    "pos": "noun",
+    "ipa": "/trəˈdʒektəri/",
+    "meaningVi": "quỹ đạo, tiến trình",
+    "definitionEn": "the path or course followed over time",
+    "example": "His career trajectory was remarkable, rising from clerk to chief executive.",
+    "collocation": "career trajectory",
+    "cefr": "C2"
+  },
+  {
+    "word": "hiatus",
+    "pos": "noun",
+    "ipa": "/haɪˈeɪtəs/",
+    "meaningVi": "gián đoạn",
+    "definitionEn": "a temporary break or pause in an activity",
+    "example": "The band took a long hiatus after years of constant touring.",
+    "collocation": "a long hiatus",
+    "cefr": "C2"
+  },
+  {
+    "word": "abyss",
+    "pos": "noun",
+    "ipa": "/əˈbɪs/",
+    "meaningVi": "vực thẳm",
+    "definitionEn": "a very deep hole, or a situation of great hopelessness",
+    "example": "The company stood on the brink of an abyss after losing its main client.",
+    "collocation": "a bottomless abyss",
+    "cefr": "C2"
+  },
+  {
+    "word": "precipice",
+    "pos": "noun",
+    "ipa": "/ˈpresɪpɪs/",
+    "meaningVi": "bờ vực",
+    "definitionEn": "a steep cliff, or a situation of great danger",
+    "example": "The nation stood on the precipice of economic collapse that winter.",
+    "collocation": "on the precipice",
+    "cefr": "C2"
+  },
+  {
+    "word": "vicissitude",
+    "pos": "noun",
+    "ipa": "/vɪˈsɪsɪtjuːd/",
+    "meaningVi": "thăng trầm",
+    "definitionEn": "a change of fortune, especially a difficult one",
+    "example": "The family endured the vicissitudes of war and poverty for many decades.",
+    "collocation": "the vicissitudes of",
+    "cefr": "C2"
+  },
+  {
+    "word": "nadir",
+    "pos": "noun",
+    "ipa": "/ˈneɪdɪə/",
+    "meaningVi": "điểm thấp nhất",
+    "definitionEn": "the lowest point in a situation",
+    "example": "The economy hit its nadir during the harsh winter of that year.",
+    "collocation": "the nadir of",
+    "cefr": "C2"
+  },
+  {
+    "word": "tenuous",
+    "pos": "adjective",
+    "ipa": "/ˈtenjuəs/",
+    "meaningVi": "mong manh, yếu ớt",
+    "definitionEn": "weak or flimsy, not strong or certain",
+    "example": "Their hopes of winning rested on a tenuous lead in the polls.",
+    "collocation": "a tenuous link",
+    "cefr": "C2"
+  },
+  {
+    "word": "mettle",
+    "pos": "noun",
+    "ipa": "/ˈmetl/",
+    "meaningVi": "bản lĩnh, khí phách",
+    "definitionEn": "courage and determination shown when facing difficulty",
+    "example": "The new recruits were tested to prove their mettle on the battlefield.",
+    "collocation": "prove their mettle",
+    "cefr": "C2"
+  },
+  {
+    "word": "doughty",
+    "pos": "adjective",
+    "ipa": "/ˈdaʊti/",
+    "meaningVi": "dũng cảm, gan dạ",
+    "definitionEn": "brave and determined, especially in a fight or challenge",
+    "example": "The doughty climber refused to turn back despite the violent storm.",
+    "collocation": "a doughty fighter",
+    "cefr": "C2"
+  },
+  {
+    "word": "valiant",
+    "pos": "adjective",
+    "ipa": "/ˈvæliənt/",
+    "meaningVi": "anh dũng",
+    "definitionEn": "very brave and determined in facing danger",
+    "example": "The valiant firefighters worked through the night to save the village.",
+    "collocation": "a valiant effort",
+    "cefr": "C2"
+  },
+  {
+    "word": "gallant",
+    "pos": "adjective",
+    "ipa": "/ˈɡælənt/",
+    "meaningVi": "dũng cảm, hào hiệp",
+    "definitionEn": "brave and noble in behaviour and character",
+    "example": "The gallant knight rode out alone to defend the castle from invaders.",
+    "collocation": "a gallant effort",
+    "cefr": "C2"
+  },
+  {
+    "word": "intrepid",
+    "pos": "adjective",
+    "ipa": "/ɪnˈtrepɪd/",
+    "meaningVi": "gan dạ, không sợ hãi",
+    "definitionEn": "fearless and ready to face danger",
+    "example": "The intrepid explorer crossed the frozen desert alone, without any help.",
+    "collocation": "an intrepid explorer",
+    "cefr": "C2"
+  },
+  {
+    "word": "inexorable",
+    "pos": "adjective",
+    "ipa": "/ɪnˈeksərəbl/",
+    "meaningVi": "không gì ngăn nổi",
+    "definitionEn": "impossible to stop, prevent, or change",
+    "example": "The inexorable decline of the old factory could not be halted by anyone.",
+    "collocation": "an inexorable decline",
+    "cefr": "C2"
+  },
+  {
+    "word": "bedrock",
+    "pos": "noun",
+    "ipa": "/ˈbedrɒk/",
+    "meaningVi": "nền tảng vững chắc",
+    "definitionEn": "the solid foundation on which something is built",
+    "example": "Honesty is the bedrock of every successful and lasting business relationship.",
+    "collocation": "the bedrock of",
+    "cefr": "C2"
+  }
+]

@@ -36,8 +36,3 @@ export const IELTS_SKILL_OF: Readonly<Record<string, IeltsSkill>> = {
 export function isIeltsFeature(key: string): boolean {
   return Object.prototype.hasOwnProperty.call(IELTS_SKILL_OF, key);
 }
-
-/** Mục này có hiện không, theo lựa chọn của người học. Mục không thuộc IELTS luôn hiện. */
-export function ieltsShown(key: string, selected: readonly string[] | null): boolean {
-  return !isIeltsFeature(key) || selected === null || selected.includes(key);
-}

@@ -1,4 +1,5 @@
 import type { GrammarLessonDetail } from './types';
+import { A1_GRAMMAR_EXTRA } from './a1-2';
 
 /** Cấp A1. Bài đầu tiên đặt khuôn trình bày cho các bài sau. */
 export const A1_GRAMMAR: GrammarLessonDetail[] = [
@@ -512,4 +513,5 @@ export const A1_GRAMMAR: GrammarLessonDetail[] = [
       { q: "Choose the correct sentence.", options: ["He cans speak Japanese.", "He can to speak Japanese.", "He can speak Japanese."], answer: 2, explain: "Can đi với động từ nguyên mẫu không có to." },
     ],
   },
+  ...A1_GRAMMAR_EXTRA,
 ];

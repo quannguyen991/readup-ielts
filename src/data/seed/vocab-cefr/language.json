@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "language",
+    "pos": "noun",
+    "ipa": "/ˈlæŋɡwɪdʒ/",
+    "meaningVi": "ngôn ngữ",
+    "definitionEn": "A system of communication using words, sounds, and grammar used by a community.",
+    "example": "Learning a new language opens doors to different cultures and careers.",
+    "collocation": "foreign language",
+    "cefr": "B1"
+  },
+  {
+    "word": "meaning",
+    "pos": "noun",
+    "ipa": "/ˈmiːnɪŋ/",
+    "meaningVi": "nghĩa",
+    "definitionEn": "The idea or message that a word, sentence, or action expresses.",
+    "example": "Can you guess the meaning of this word from the context?",
+    "collocation": "hidden meaning",
+    "cefr": "B1"
+  },
+  {
+    "word": "sentence",
+    "pos": "noun",
+    "ipa": "/ˈsentəns/",
+    "meaningVi": "câu",
+    "definitionEn": "A group of words that expresses a complete thought, usually with a verb.",
+    "example": "Write a short sentence using the new vocabulary from today's lesson.",
+    "collocation": "complete sentence",
+    "cefr": "B1"
+  },
+  {
+    "word": "spelling",
+    "pos": "noun",
+    "ipa": "/ˈspelɪŋ/",
+    "meaningVi": "chính tả, cách viết",
+    "definitionEn": "The correct order of letters that form a word.",
+    "example": "Her spelling mistakes were corrected by the editor before printing.",
+    "collocation": "correct spelling",
+    "cefr": "B1"
+  },
+  {
+    "word": "pronunciation",
+    "pos": "noun",
+    "ipa": "/prəˌnʌnsiˈeɪʃn/",
+    "meaningVi": "cách phát âm",
+    "definitionEn": "The way in which a word is spoken, including its sounds and stress.",
+    "example": "Good pronunciation helps listeners understand you more easily.",
+    "collocation": "clear pronunciation",
+    "cefr": "B1"
+  },
+  {
+    "word": "alphabet",
+    "pos": "noun",
+    "ipa": "/ˈælfəbet/",
+    "meaningVi": "bảng chữ cái",
+    "definitionEn": "The set of letters used to write a language, in a fixed order.",
+    "example": "Children learn the alphabet before they begin reading simple words.",
+    "collocation": "learn the alphabet",
+    "cefr": "B1"
+  },
+  {
+    "word": "conversation",
+    "pos": "noun",
+    "ipa": "/ˌkɒnvəˈseɪʃn/",
+    "meaningVi": "cuộc trò chuyện",
+    "definitionEn": "An informal talk between two or more people.",
+    "example": "We had a long conversation about our plans for the summer.",
+    "collocation": "have a conversation",
+    "cefr": "B1"
+  },
+  {
+    "word": "fluent",
+    "pos": "adjective",
+    "ipa": "/ˈfluːənt/",
+    "meaningVi": "thông thạo, trôi chảy",
+    "definitionEn": "Able to speak or write a language easily and accurately.",
+    "example": "After two years abroad, she became fluent in Spanish.",
+    "collocation": "fluent in",
+    "cefr": "B1"
+  },
+  {
+    "word": "vowel",
+    "pos": "noun",
+    "ipa": "/ˈvaʊəl/",
+    "meaningVi": "nguyên âm",
+    "definitionEn": "A speech sound made with an open mouth, such as a, e, i, o, u.",
+    "example": "English words often contain a vowel sound that is hard for beginners.",
+    "collocation": "short vowel",
+    "cefr": "B1"
+  },
+  {
+    "word": "consonant",
+    "pos": "noun",
+    "ipa": "/ˈkɒnsənənt/",
+    "meaningVi": "phụ âm",
+    "definitionEn": "A speech sound produced by blocking or restricting airflow in the mouth.",
+    "example": "The letter b is a consonant that is pronounced with both lips.",
+    "collocation": "silent consonant",
+    "cefr": "B1"
+  },
+  {
+    "word": "verb",
+    "pos": "noun",
+    "ipa": "/vɜːb/",
+    "meaningVi": "động từ",
+    "definitionEn": "A word that describes an action or a state, such as run or be.",
+    "example": "In most English sentences, the verb comes after the subject.",
+    "collocation": "irregular verb",
+    "cefr": "B1"
+  },
+  {
+    "word": "dictionary",
+    "pos": "noun",
+    "ipa": "/ˈdɪkʃənri/",
+    "meaningVi": "từ điển",
+    "definitionEn": "A book listing words in alphabetical order with their meanings.",
+    "example": "Look up unfamiliar words in a good English dictionary every day.",
+    "collocation": "pocket dictionary",
+    "cefr": "B1"
+  },
+  {
+    "word": "textbook",
+    "pos": "noun",
+    "ipa": "/ˈtekstbʊk/",
+    "meaningVi": "sách giáo khoa",
+    "definitionEn": "A book used for teaching a particular subject in school or college.",
+    "example": "Our English textbook includes exercises on pronunciation and listening.",
+    "collocation": "school textbook",
+    "cefr": "B1"
+  },
+  {
+    "word": "translate",
+    "pos": "verb",
+    "ipa": "/trænsˈleɪt/",
+    "meaningVi": "dịch",
+    "definitionEn": "To change words from one language into another while keeping the meaning.",
+    "example": "It is difficult to translate humour from one language to another.",
+    "collocation": "translate literally",
+    "cefr": "B1"
+  },
+  {
+    "word": "understand",
+    "pos": "verb",
+    "ipa": "/ˌʌndəˈstænd/",
+    "meaningVi": "hiểu",
+    "definitionEn": "To know the meaning of something that someone says or writes.",
+    "example": "I could not understand the instructions because they were too complicated.",
+    "collocation": "fully understand",
+    "cefr": "B1"
+  },
+  {
+    "word": "lesson",
+    "pos": "noun",
+    "ipa": "/ˈlesn/",
+    "meaningVi": "bài học",
+    "definitionEn": "A period of teaching or a piece of learning on a particular subject.",
+    "example": "Tomorrow's lesson will focus on how to use the past tense.",
+    "collocation": "English lesson",
+    "cefr": "B1"
+  },
+  {
+    "word": "pronounce",
+    "pos": "verb",
+    "ipa": "/prəˈnaʊns/",
+    "meaningVi": "phát âm",
+    "definitionEn": "To say a word or letter in a particular way.",
+    "example": "Many learners struggle to pronounce the th sound correctly at first.",
+    "collocation": "pronounce correctly",
+    "cefr": "B1"
+  },
+  {
+    "word": "phrase",
+    "pos": "noun",
+    "ipa": "/freɪz/",
+    "meaningVi": "cụm từ",
+    "definitionEn": "A small group of words that together have a particular meaning.",
+    "example": "Learn common phrases such as how do you do to sound natural.",
+    "collocation": "set phrase",
+    "cefr": "B1"
+  },
+  {
+    "word": "eloquent",
+    "pos": "adjective",
+    "ipa": "/ˈeləkwənt/",
+    "meaningVi": "hùng biện, lưu loát",
+    "definitionEn": "Able to express ideas clearly and persuasively in speech or writing.",
+    "example": "The speaker was eloquent and won over the audience with ease.",
+    "collocation": "eloquent speech",
+    "cefr": "B2"
+  },
+  {
+    "word": "articulate",
+    "pos": "adjective",
+    "ipa": "/ɑːˈtɪkjələt/",
+    "meaningVi": "rõ ràng, mạch lạc",
+    "definitionEn": "Able to express thoughts clearly and fluently in words.",
+    "example": "She is an articulate writer whose essays are always clear and vivid.",
+    "collocation": "articulate speaker",
+    "cefr": "B2"
+  },
+  {
+    "word": "intonation",
+    "pos": "noun",
+    "ipa": "/ˌɪntəˈneɪʃn/",
+    "meaningVi": "ngữ điệu",
+    "definitionEn": "The rise and fall of the voice when speaking, which can change meaning.",
+    "example": "Rising intonation at the end of a sentence often signals a question.",
+    "collocation": "rising intonation",
+    "cefr": "B2"
+  },
+  {
+    "word": "stress",
+    "pos": "noun",
+    "ipa": "/stres/",
+    "meaningVi": "trọng âm",
+    "definitionEn": "The emphasis placed on a particular syllable or word when spoken.",
+    "example": "English word stress can change the meaning of a word completely.",
+    "collocation": "word stress",
+    "cefr": "B2"
+  },
+  {
+    "word": "rhythm",
+    "pos": "noun",
+    "ipa": "/ˈrɪðəm/",
+    "meaningVi": "nhịp điệu",
+    "definitionEn": "A regular pattern of stressed and unstressed sounds in speech or music.",
+    "example": "English has a stress-timed rhythm that differs from many other languages.",
+    "collocation": "natural rhythm",
+    "cefr": "B2"
+  },
+  {
+    "word": "tone",
+    "pos": "noun",
+    "ipa": "/təʊn/",
+    "meaningVi": "giọng điệu, thanh điệu",
+    "definitionEn": "The quality of voice that shows attitude or feeling, or pitch in tonal languages.",
+    "example": "Her tone sounded friendly, although her words were quite direct.",
+    "collocation": "friendly tone",
+    "cefr": "B2"
+  },
+  {
+    "word": "ambiguous",
+    "pos": "adjective",
+    "ipa": "/æmˈbɪɡjuəs/",
+    "meaningVi": "nhập nhằng, mơ hồ",
+    "definitionEn": "Open to more than one interpretation; not clear in meaning.",
+    "example": "The instructions were ambiguous, so students misunderstood the task.",
+    "collocation": "ambiguous wording",
+    "cefr": "B2"
+  },
+  {
+    "word": "metaphor",
+    "pos": "noun",
+    "ipa": "/ˈmetəfə/",
+    "meaningVi": "ẩn dụ",
+    "definitionEn": "A figure of speech describing something as if it were something else.",
+    "example": "The phrase time is money is a common business metaphor.",
+    "collocation": "powerful metaphor",
+    "cefr": "B2"
+  },
+  {
+    "word": "simile",
+    "pos": "noun",
+    "ipa": "/ˈsɪməli/",
+    "meaningVi": "so sánh ví von",
+    "definitionEn": "A figure of speech comparing two things using like or as.",
+    "example": "She is as brave as a lion is a simile used in many stories.",
+    "collocation": "vivid simile",
+    "cefr": "B2"
+  },
+  {
+    "word": "irony",
+    "pos": "noun",
+    "ipa": "/ˈaɪrəni/",
+    "meaningVi": "sự mỉa mai, nghịch lý",
+    "definitionEn": "Language that means the opposite of what is literally said.",
+    "example": "The irony of the advert was lost on viewers who missed the joke.",
+    "collocation": "dramatic irony",
+    "cefr": "B2"
+  },
+  {
+    "word": "sarcasm",
+    "pos": "noun",
+    "ipa": "/ˈsɑːkæzəm/",
+    "meaningVi": "lời châm biếm",
+    "definitionEn": "Sharp, mocking remarks that say the opposite of what is meant.",
+    "example": "His sarcasm was obvious from the tone of his voice.",
+    "collocation": "dry sarcasm",
+    "cefr": "B2"
+  },
+  {
+    "word": "rhetoric",
+    "pos": "noun",
+    "ipa": "/ˈretərɪk/",
+    "meaningVi": "tu từ, hùng biện",
+    "definitionEn": "The art of persuasive speaking or writing, often using rhetorical devices.",
+    "example": "The politician's rhetoric impressed the crowd but offered few concrete facts.",
+    "collocation": "persuasive rhetoric",
+    "cefr": "B2"
+  },
+  {
+    "word": "paraphrase",
+    "pos": "verb",
+    "ipa": "/ˈpærəfreɪz/",
+    "meaningVi": "diễn đạt lại",
+    "definitionEn": "To express the meaning of something using different words.",
+    "example": "Try to paraphrase the article in your own words to avoid copying.",
+    "collocation": "paraphrase a sentence",
+    "cefr": "B2"
+  },
+  {
+    "word": "summarise",
+    "pos": "verb",
+    "ipa": "/ˈsʌməraɪz/",
+    "meaningVi": "tóm tắt",
+    "definitionEn": "To give a short account of the main points of something.",
+    "example": "Please summarise the main argument of the essay in two sentences.",
+    "collocation": "summarise the main points",
+    "cefr": "B2"
+  },
+  {
+    "word": "subtitle",
+    "pos": "noun",
+    "ipa": "/ˈsʌbtaɪtl/",
+    "meaningVi": "phụ đề",
+    "definitionEn": "A line of text at the bottom of a film that shows the spoken words.",
+    "example": "Turning on the subtitle helped me follow the film in English.",
+    "collocation": "English subtitles",
+    "cefr": "B2"
+  },
+  {
+    "word": "hesitate",
+    "pos": "verb",
+    "ipa": "/ˈhezɪteɪt/",
+    "meaningVi": "do dự, ngập ngừng",
+    "definitionEn": "To pause before speaking or acting because of uncertainty.",
+    "example": "She hesitated before answering, searching for the right word.",
+    "collocation": "hesitate to speak",
+    "cefr": "B2"
+  },
+  {
+    "word": "clause",
+    "pos": "noun",
+    "ipa": "/klɔːz/",
+    "meaningVi": "mệnh đề",
+    "definitionEn": "A group of words with its own subject and verb, forming part of a sentence.",
+    "example": "This sentence contains a main clause and a subordinate clause.",
+    "collocation": "relative clause",
+    "cefr": "B2"
+  },
+  {
+    "word": "suffix",
+    "pos": "noun",
+    "ipa": "/ˈsʌfɪks/",
+    "meaningVi": "hậu tố",
+    "definitionEn": "A group of letters added to the end of a word to change its meaning or form.",
+    "example": "Adding the suffix ness to happy creates the noun happiness.",
+    "collocation": "add a suffix",
+    "cefr": "B2"
+  },
+  {
+    "word": "prefix",
+    "pos": "noun",
+    "ipa": "/ˈpriːfɪks/",
+    "meaningVi": "tiền tố",
+    "definitionEn": "A group of letters placed at the start of a word to change its meaning.",
+    "example": "The prefix un in unhappy means not, so it reverses the meaning.",
+    "collocation": "common prefix",
+    "cefr": "B2"
+  },
+  {
+    "word": "synonym",
+    "pos": "noun",
+    "ipa": "/ˈsɪnənɪm/",
+    "meaningVi": "từ đồng nghĩa",
+    "definitionEn": "A word that has the same or nearly the same meaning as another word.",
+    "example": "Happy is a synonym for glad, but the two words feel slightly different.",
+    "collocation": "close synonym",
+    "cefr": "B2"
+  },
+  {
+    "word": "antonym",
+    "pos": "noun",
+    "ipa": "/ˈæntənɪm/",
+    "meaningVi": "từ trái nghĩa",
+    "definitionEn": "A word that has the opposite meaning of another word.",
+    "example": "Hot is the antonym of cold, so they are useful for learning contrasts.",
+    "collocation": "common antonym",
+    "cefr": "B2"
+  },
+  {
+    "word": "pun",
+    "pos": "noun",
+    "ipa": "/pʌn/",
+    "meaningVi": "chơi chữ",
+    "definitionEn": "A joke that exploits words with more than one meaning or similar sounds.",
+    "example": "The teacher's pun about grammar made the whole class laugh.",
+    "collocation": "clever pun",
+    "cefr": "B2"
+  },
+  {
+    "word": "dialogue",
+    "pos": "noun",
+    "ipa": "/ˈdaɪəlɒɡ/",
+    "meaningVi": "đối thoại",
+    "definitionEn": "Conversation between two or more people, especially in a book or film.",
+    "example": "The dialogue in the film sounded natural and reflected everyday speech.",
+    "collocation": "written dialogue",
+    "cefr": "B2"
+  },
+  {
+    "word": "comprehension",
+    "pos": "noun",
+    "ipa": "/ˌkɒmprɪˈhenʃn/",
+    "meaningVi": "sự hiểu, khả năng lĩnh hội",
+    "definitionEn": "The ability to understand spoken or written language.",
+    "example": "Reading comprehension improves when you practise with varied texts.",
+    "collocation": "reading comprehension",
+    "cefr": "B2"
+  },
+  {
+    "word": "accurate",
+    "pos": "adjective",
+    "ipa": "/ˈækjərət/",
+    "meaningVi": "chính xác",
+    "definitionEn": "Correct in every detail, without mistakes.",
+    "example": "Her translation was accurate, although it sounded a little stiff.",
+    "collocation": "accurate translation",
+    "cefr": "B2"
+  },
+  {
+    "word": "expressive",
+    "pos": "adjective",
+    "ipa": "/ɪkˈspresɪv/",
+    "meaningVi": "biểu cảm",
+    "definitionEn": "Showing feelings or meaning clearly through words, face, or voice.",
+    "example": "The actor's expressive voice made every line of the poem come alive.",
+    "collocation": "highly expressive",
+    "cefr": "B2"
+  },
+  {
+    "word": "idiomatic",
+    "pos": "adjective",
+    "ipa": "/ˌɪdiəˈmætɪk/",
+    "meaningVi": "theo thành ngữ, tự nhiên",
+    "definitionEn": "Using expressions that are natural to native speakers of a language.",
+    "example": "Her English sounded idiomatic, with natural phrases used in the right places.",
+    "collocation": "idiomatic English",
+    "cefr": "B2"
+  },
+  {
+    "word": "fragment",
+    "pos": "noun",
+    "ipa": "/ˈfræɡmənt/",
+    "meaningVi": "mảnh câu không hoàn chỉnh",
+    "definitionEn": "An incomplete sentence that lacks a subject or a main verb.",
+    "example": "Because I was tired is a fragment and needs a main clause.",
+    "collocation": "sentence fragment",
+    "cefr": "B2"
+  },
+  {
+    "word": "literal",
+    "pos": "adjective",
+    "ipa": "/ˈlɪtərəl/",
+    "meaningVi": "nghĩa đen",
+    "definitionEn": "Following the exact meaning of words, without any figurative sense.",
+    "example": "The literal translation of the idiom sounded silly in English.",
+    "collocation": "literal meaning",
+    "cefr": "B2"
+  },
+  {
+    "word": "figurative",
+    "pos": "adjective",
+    "ipa": "/ˈfɪɡərətɪv/",
+    "meaningVi": "bóng bẩy, nghĩa bóng",
+    "definitionEn": "Using words in a non-literal way to create an image or effect.",
+    "example": "The poem uses figurative language rich with metaphor and imagery.",
+    "collocation": "figurative language",
+    "cefr": "B2"
+  },
+  {
+    "word": "lexicon",
+    "pos": "noun",
+    "ipa": "/ˈleksɪkən/",
+    "meaningVi": "vốn từ vựng",
+    "definitionEn": "The total set of words known to a person or used in a language.",
+    "example": "Her lexicon of academic terms grew rapidly during her postgraduate study.",
+    "collocation": "active lexicon",
+    "cefr": "C1"
+  },
+  {
+    "word": "phonology",
+    "pos": "noun",
+    "ipa": "/fəˈnɒlədʒi/",
+    "meaningVi": "âm vị học",
+    "definitionEn": "The branch of linguistics that studies the sound systems of languages.",
+    "example": "Phonology explains why English speakers pronounce the same letters so differently.",
+    "collocation": "English phonology",
+    "cefr": "C1"
+  },
+  {
+    "word": "morphology",
+    "pos": "noun",
+    "ipa": "/mɔːˈfɒlədʒi/",
+    "meaningVi": "hình thái học",
+    "definitionEn": "The study of how words are formed from smaller meaningful units.",
+    "example": "Morphology helps learners see how prefixes and suffixes change word meanings.",
+    "collocation": "study morphology",
+    "cefr": "C1"
+  },
+  {
+    "word": "linguistic",
+    "pos": "adjective",
+    "ipa": "/lɪŋˈɡwɪstɪk/",
+    "meaningVi": "thuộc ngôn ngữ học",
+    "definitionEn": "Relating to language or the scientific study of it.",
+    "example": "The team analysed linguistic patterns in thousands of online messages.",
+    "collocation": "linguistic patterns",
+    "cefr": "C1"
+  },
+  {
+    "word": "ambiguity",
+    "pos": "noun",
+    "ipa": "/ˌæmbɪˈɡjuːəti/",
+    "meaningVi": "tính nhập nhằng",
+    "definitionEn": "The quality of having more than one possible meaning.",
+    "example": "The contract's ambiguity led to a lengthy legal dispute.",
+    "collocation": "linguistic ambiguity",
+    "cefr": "C1"
+  },
+  {
+    "word": "nuance",
+    "pos": "noun",
+    "ipa": "/ˈnjuːɑːns/",
+    "meaningVi": "sắc thái",
+    "definitionEn": "A subtle difference in meaning, tone, or expression.",
+    "example": "The translator captured every nuance of the poem's original tone.",
+    "collocation": "subtle nuance",
+    "cefr": "C1"
+  },
+  {
+    "word": "coherence",
+    "pos": "noun",
+    "ipa": "/kəʊˈhɪərəns/",
+    "meaningVi": "tính mạch lạc",
+    "definitionEn": "The quality of being logically consistent and clearly connected.",
+    "example": "Good essays show coherence through clear links between paragraphs.",
+    "collocation": "logical coherence",
+    "cefr": "C1"
+  },
+  {
+    "word": "cohesion",
+    "pos": "noun",
+    "ipa": "/kəʊˈhiːʒn/",
+    "meaningVi": "sự gắn kết văn bản",
+    "definitionEn": "The way parts of a text are linked together by grammar and vocabulary.",
+    "example": "Cohesion improves when writers use linking words and reference pronouns.",
+    "collocation": "textual cohesion",
+    "cefr": "C1"
+  },
+  {
+    "word": "lexical",
+    "pos": "adjective",
+    "ipa": "/ˈleksɪkl/",
+    "meaningVi": "thuộc từ vựng",
+    "definitionEn": "Relating to the words or vocabulary of a language.",
+    "example": "Lexical choice matters greatly in formal academic writing.",
+    "collocation": "lexical choice",
+    "cefr": "C1"
+  },
+  {
+    "word": "syntactic",
+    "pos": "adjective",
+    "ipa": "/sɪnˈtæktɪk/",
+    "meaningVi": "thuộc cú pháp",
+    "definitionEn": "Relating to the arrangement of words and phrases in sentences.",
+    "example": "Syntactic errors can make a sentence confusing even when vocabulary is correct.",
+    "collocation": "syntactic structure",
+    "cefr": "C1"
+  },
+  {
+    "word": "lingo",
+    "pos": "noun",
+    "ipa": "/ˈlɪŋɡəʊ/",
+    "meaningVi": "tiếng lóng chuyên ngành",
+    "definitionEn": "Informal or specialised language used by a particular group.",
+    "example": "Doctors often use medical lingo that patients find hard to follow.",
+    "collocation": "technical lingo",
+    "cefr": "C1"
+  },
+  {
+    "word": "colloquial",
+    "pos": "adjective",
+    "ipa": "/kəˈləʊkwiəl/",
+    "meaningVi": "thông tục, khẩu ngữ",
+    "definitionEn": "Used in informal conversation rather than formal writing.",
+    "example": "Colloquial expressions like gonna should be avoided in academic essays.",
+    "collocation": "colloquial English",
+    "cefr": "C1"
+  },
+  {
+    "word": "formality",
+    "pos": "noun",
+    "ipa": "/fɔːˈmæləti/",
+    "meaningVi": "sự trang trọng",
+    "definitionEn": "The quality of being formal in style, manner, or language.",
+    "example": "The formality of the letter surprised the staff at the small firm.",
+    "collocation": "level of formality",
+    "cefr": "C1"
+  },
+  {
+    "word": "hyperbole",
+    "pos": "noun",
+    "ipa": "/haɪˈpɜːbəli/",
+    "meaningVi": "phép cường điệu",
+    "definitionEn": "Deliberate exaggeration used for emphasis rather than literal truth.",
+    "example": "Saying I have a million things to do is an obvious hyperbole.",
+    "collocation": "obvious hyperbole",
+    "cefr": "C1"
+  },
+  {
+    "word": "analogy",
+    "pos": "noun",
+    "ipa": "/əˈnælədʒi/",
+    "meaningVi": "phép tương tự",
+    "definitionEn": "A comparison that explains something unfamiliar by relating it to something familiar.",
+    "example": "The teacher used an analogy between grammar and building blocks.",
+    "collocation": "draw an analogy",
+    "cefr": "C1"
+  },
+  {
+    "word": "allegory",
+    "pos": "noun",
+    "ipa": "/ˈæləɡəri/",
+    "meaningVi": "ngụ ngôn",
+    "definitionEn": "A story in which characters and events represent deeper moral or political meanings.",
+    "example": "The novel works as an allegory of colonial rule in the region.",
+    "collocation": "political allegory",
+    "cefr": "C1"
+  },
+  {
+    "word": "lexicography",
+    "pos": "noun",
+    "ipa": "/ˌleksɪˈkɒɡrəfi/",
+    "meaningVi": "biên soạn từ điển",
+    "definitionEn": "The practice of writing and compiling dictionaries.",
+    "example": "Modern lexicography relies heavily on large electronic corpora of text.",
+    "collocation": "modern lexicography",
+    "cefr": "C1"
+  },
+  {
+    "word": "transliteration",
+    "pos": "noun",
+    "ipa": "/ˌtrænzˌlɪtəˈreɪʃn/",
+    "meaningVi": "phiên âm chữ viết",
+    "definitionEn": "Writing the letters of one script using the letters of another.",
+    "example": "Transliteration of Vietnamese names into English letters can cause confusion.",
+    "collocation": "systematic transliteration",
+    "cefr": "C1"
+  },
+  {
+    "word": "idiolect",
+    "pos": "noun",
+    "ipa": "/ˈɪdiəʊlekt/",
+    "meaningVi": "thổ ngữ cá nhân",
+    "definitionEn": "The unique speech habits and vocabulary of one individual speaker.",
+    "example": "Each writer develops a distinctive idiolect that readers come to recognise.",
+    "collocation": "personal idiolect",
+    "cefr": "C1"
+  },
+  {
+    "word": "sociolinguistics",
+    "pos": "noun",
+    "ipa": "/ˌsəʊsiəʊlɪŋˈɡwɪstɪks/",
+    "meaningVi": "xã hội ngôn ngữ học",
+    "definitionEn": "The study of how language varies with social factors such as class and gender.",
+    "example": "Sociolinguistics shows how speech differs between urban and rural communities.",
+    "collocation": "applied sociolinguistics",
+    "cefr": "C1"
+  },
+  {
+    "word": "psycholinguistics",
+    "pos": "noun",
+    "ipa": "/ˌsaɪkəʊlɪŋˈɡwɪstɪks/",
+    "meaningVi": "tâm lý ngôn ngữ học",
+    "definitionEn": "The study of the mental processes involved in understanding and producing language.",
+    "example": "Psycholinguistics examines how children acquire words during their early years.",
+    "collocation": "experimental psycholinguistics",
+    "cefr": "C1"
+  },
+  {
+    "word": "cadence",
+    "pos": "noun",
+    "ipa": "/ˈkeɪdns/",
+    "meaningVi": "nhịp điệu, ngữ điệu",
+    "definitionEn": "The rhythmic rise and fall of a voice or sentence.",
+    "example": "The speaker's cadence made the closing line memorable and powerful.",
+    "collocation": "rhythmic cadence",
+    "cefr": "C1"
+  },
+  {
+    "word": "enunciate",
+    "pos": "verb",
+    "ipa": "/ɪˈnʌnsieɪt/",
+    "meaningVi": "phát âm rõ ràng",
+    "definitionEn": "To pronounce words clearly and distinctly.",
+    "example": "Actors must enunciate every word so that the back row can hear.",
+    "collocation": "enunciate clearly",
+    "cefr": "C1"
+  },
+  {
+    "word": "inflection",
+    "pos": "noun",
+    "ipa": "/ɪnˈflekʃn/",
+    "meaningVi": "biến tố, ngữ điệu",
+    "definitionEn": "A change in a word's form to show tense, number, or case; also a change in voice pitch.",
+    "example": "English has very few inflection endings compared with many other languages.",
+    "collocation": "verb inflection",
+    "cefr": "C1"
+  },
+  {
+    "word": "conjugation",
+    "pos": "noun",
+    "ipa": "/ˌkɒndʒʊˈɡeɪʃn/",
+    "meaningVi": "sự chia động từ",
+    "definitionEn": "The set of different forms a verb takes for person, number, and tense.",
+    "example": "Learners memorise the conjugation of irregular verbs in the present tense.",
+    "collocation": "verb conjugation",
+    "cefr": "C1"
+  },
+  {
+    "word": "declension",
+    "pos": "noun",
+    "ipa": "/dɪˈklenʃn/",
+    "meaningVi": "sự biến cách danh từ",
+    "definitionEn": "The set of forms a noun or adjective takes depending on its grammatical case.",
+    "example": "Latin students spend months learning every noun declension in order.",
+    "collocation": "noun declension",
+    "cefr": "C1"
+  },
+  {
+    "word": "terminology",
+    "pos": "noun",
+    "ipa": "/ˌtɜːmɪˈnɒlədʒi/",
+    "meaningVi": "thuật ngữ",
+    "definitionEn": "The specialised words used in a particular subject or profession.",
+    "example": "Legal terminology can be hard for non-specialists to understand.",
+    "collocation": "technical terminology",
+    "cefr": "C1"
+  },
+  {
+    "word": "argot",
+    "pos": "noun",
+    "ipa": "/ˈɑːɡəʊ/",
+    "meaningVi": "tiếng lóng nhóm kín",
+    "definitionEn": "Specialised slang used by a particular social group or profession.",
+    "example": "Criminals and hackers often develop their own argot to avoid being understood.",
+    "collocation": "street argot",
+    "cefr": "C1"
+  },
+  {
+    "word": "prosody",
+    "pos": "noun",
+    "ipa": "/ˈprɒsədi/",
+    "meaningVi": "thể luật, ngữ điệu thơ",
+    "definitionEn": "The patterns of rhythm, stress, and intonation in speech or verse.",
+    "example": "The poet's prosody creates a musical rhythm that reflects the emotion.",
+    "collocation": "study prosody",
+    "cefr": "C1"
+  },
+  {
+    "word": "digraph",
+    "pos": "noun",
+    "ipa": "/ˈdaɪɡrɑːf/",
+    "meaningVi": "nhị hợp tự",
+    "definitionEn": "Two letters combined to represent a single sound, such as ch or sh.",
+    "example": "The digraph th is pronounced differently in thin and this.",
+    "collocation": "common digraph",
+    "cefr": "C1"
+  },
+  {
+    "word": "palindrome",
+    "pos": "noun",
+    "ipa": "/ˈpælɪndrəʊm/",
+    "meaningVi": "chữ đọc xuôi ngược giống nhau",
+    "definitionEn": "A word or phrase that reads the same forwards and backwards.",
+    "example": "Level is a palindrome, so it reads the same both ways.",
+    "collocation": "simple palindrome",
+    "cefr": "C1"
+  },
+  {
+    "word": "aphasia",
+    "pos": "noun",
+    "ipa": "/əˈfeɪziə/",
+    "meaningVi": "chứng mất ngôn ngữ",
+    "definitionEn": "A loss or impairment of the ability to use or understand language, usually after brain damage.",
+    "example": "After the stroke, he developed aphasia and struggled to find everyday words.",
+    "collocation": "expressive aphasia",
+    "cefr": "C2"
+  },
+  {
+    "word": "logorrhoea",
+    "pos": "noun",
+    "ipa": "/ˌlɒɡəˈriːə/",
+    "meaningVi": "nói huyên thuyên",
+    "definitionEn": "An abnormal tendency to talk excessively or incoherently.",
+    "example": "His logorrhoea made every meeting run far beyond its scheduled time.",
+    "collocation": "chronic logorrhoea",
+    "cefr": "C2"
+  },
+  {
+    "word": "loquacious",
+    "pos": "adjective",
+    "ipa": "/ləˈkweɪʃəs/",
+    "meaningVi": "nói nhiều, lắm lời",
+    "definitionEn": "Tending to talk a great deal, often in a friendly way.",
+    "example": "The loquacious taxi driver told us the history of every street.",
+    "collocation": "loquacious host",
+    "cefr": "C2"
+  },
+  {
+    "word": "taciturn",
+    "pos": "adjective",
+    "ipa": "/ˈtæsɪtɜːn/",
+    "meaningVi": "ít nói, trầm lặng",
+    "definitionEn": "Reserved and saying very little in conversation.",
+    "example": "The taciturn shopkeeper answered our questions with a single word.",
+    "collocation": "taciturn nature",
+    "cefr": "C2"
+  },
+  {
+    "word": "sesquipedalian",
+    "pos": "adjective",
+    "ipa": "/ˌseskwɪpɪˈdeɪliən/",
+    "meaningVi": "dùng từ dài ngoằng",
+    "definitionEn": "Characterised by the use of long, polysyllabic words.",
+    "example": "His sesquipedalian style of writing puzzled readers without dictionaries.",
+    "collocation": "sesquipedalian vocabulary",
+    "cefr": "C2"
+  },
+  {
+    "word": "pedantic",
+    "pos": "adjective",
+    "ipa": "/pɪˈdæntɪk/",
+    "meaningVi": "câu nệ chi tiết",
+    "definitionEn": "Overly concerned with minor rules, details, or technicalities.",
+    "example": "The pedantic editor corrected every comma, even in casual messages.",
+    "collocation": "pedantic about grammar",
+    "cefr": "C2"
+  },
+  {
+    "word": "verbose",
+    "pos": "adjective",
+    "ipa": "/vɜːˈbəʊs/",
+    "meaningVi": "rườm rà, dài dòng",
+    "definitionEn": "Using more words than necessary to express an idea.",
+    "example": "The report was verbose, repeating the same point in every paragraph.",
+    "collocation": "verbose writing",
+    "cefr": "C2"
+  },
+  {
+    "word": "garrulous",
+    "pos": "adjective",
+    "ipa": "/ˈɡærələs/",
+    "meaningVi": "nói dai, lải nhải",
+    "definitionEn": "Excessively talkative, especially about trivial matters.",
+    "example": "The garrulous neighbour chatted about her cats for almost an hour.",
+    "collocation": "garrulous companion",
+    "cefr": "C2"
+  },
+  {
+    "word": "laconic",
+    "pos": "adjective",
+    "ipa": "/ləˈkɒnɪk/",
+    "meaningVi": "cộc lốc, súc tích",
+    "definitionEn": "Using very few words, often to the point of seeming unfriendly.",
+    "example": "His laconic reply was just yes, and nothing more.",
+    "collocation": "laconic reply",
+    "cefr": "C2"
+  },
+  {
+    "word": "onomatopoeia",
+    "pos": "noun",
+    "ipa": "/ˌɒnəˌmætəˈpiːə/",
+    "meaningVi": "từ tượng thanh",
+    "definitionEn": "Words that imitate the sounds they describe, such as buzz or bang.",
+    "example": "The comic book used onomatopoeia like boom and crash to show action.",
+    "collocation": "vivid onomatopoeia",
+    "cefr": "C2"
+  },
+  {
+    "word": "alliteration",
+    "pos": "noun",
+    "ipa": "/əˌlɪtəˈreɪʃn/",
+    "meaningVi": "điệp âm đầu",
+    "definitionEn": "Repetition of the same initial consonant sound in nearby words.",
+    "example": "Peter Piper picked is a classic example of alliteration.",
+    "collocation": "strong alliteration",
+    "cefr": "C2"
+  },
+  {
+    "word": "assonance",
+    "pos": "noun",
+    "ipa": "/ˈæsənəns/",
+    "meaningVi": "điệp nguyên âm",
+    "definitionEn": "Repetition of similar vowel sounds within nearby words.",
+    "example": "The line uses assonance in the words sea and feet to create a soft sound.",
+    "collocation": "subtle assonance",
+    "cefr": "C2"
+  },
+  {
+    "word": "euphony",
+    "pos": "noun",
+    "ipa": "/ˈjuːfəni/",
+    "meaningVi": "âm điệu êm tai",
+    "definitionEn": "A pleasant, harmonious sound in speech or writing.",
+    "example": "The poem's euphony makes it a pleasure to read aloud.",
+    "collocation": "pleasing euphony",
+    "cefr": "C2"
+  },
+  {
+    "word": "cacophony",
+    "pos": "noun",
+    "ipa": "/kəˈkɒfəni/",
+    "meaningVi": "âm thanh chói tai hỗn loạn",
+    "definitionEn": "A harsh, jarring mixture of loud and discordant sounds.",
+    "example": "A cacophony of car horns filled the street during the rush hour.",
+    "collocation": "sudden cacophony",
+    "cefr": "C2"
+  },
+  {
+    "word": "ellipsis",
+    "pos": "noun",
+    "ipa": "/ɪˈlɪpsɪs/",
+    "meaningVi": "lược bỏ từ, dấu lược",
+    "definitionEn": "The omission of words that are understood from context, or the marks showing this.",
+    "example": "The dialogue uses an ellipsis to leave out words the listener can easily infer.",
+    "collocation": "use an ellipsis",
+    "cefr": "C2"
+  },
+  {
+    "word": "tautology",
+    "pos": "noun",
+    "ipa": "/tɔːˈtɒlədʒi/",
+    "meaningVi": "lặp ý thừa",
+    "definitionEn": "A statement that repeats the same idea in different words, unnecessarily.",
+    "example": "Saying free gift is a tautology, since every gift is free.",
+    "collocation": "avoid tautology",
+    "cefr": "C2"
+  },
+  {
+    "word": "circumlocution",
+    "pos": "noun",
+    "ipa": "/ˌsɜːkəmləˈkjuːʃn/",
+    "meaningVi": "lối nói vòng vo",
+    "definitionEn": "The use of many words to express something that could be said simply.",
+    "example": "His circumlocution about the budget confused everyone in the meeting.",
+    "collocation": "verbal circumlocution",
+    "cefr": "C2"
+  },
+  {
+    "word": "periphrasis",
+    "pos": "noun",
+    "ipa": "/pəˈrɪfrəsɪs/",
+    "meaningVi": "cách nói vòng",
+    "definitionEn": "Expressing an idea with several words instead of one direct term.",
+    "example": "The phrase the lady of the house is a periphrasis for wife.",
+    "collocation": "use periphrasis",
+    "cefr": "C2"
+  },
+  {
+    "word": "litotes",
+    "pos": "noun",
+    "ipa": "/ˈlaɪtəʊtiːz/",
+    "meaningVi": "cách nói giảm bằng phủ định",
+    "definitionEn": "Ironic understatement expressed by denying the opposite, such as not bad.",
+    "example": "The reviewer's phrase not unimpressive is a clear litotes.",
+    "collocation": "ironic litotes",
+    "cefr": "C2"
+  },
+  {
+    "word": "epithet",
+    "pos": "noun",
+    "ipa": "/ˈepɪθet/",
+    "meaningVi": "định ngữ miêu tả",
+    "definitionEn": "A descriptive word or phrase used to characterise a person or thing.",
+    "example": "Homer's epithet rosy-fingered dawn is a famous example of poetic language.",
+    "collocation": "descriptive epithet",
+    "cefr": "C2"
+  },
+  {
+    "word": "neologism",
+    "pos": "noun",
+    "ipa": "/niˈɒlədʒɪzəm/",
+    "meaningVi": "từ mới",
+    "definitionEn": "A newly coined word or expression that has not yet become standard.",
+    "example": "The neologism selfie entered dictionaries within a decade of appearing.",
+    "collocation": "coin a neologism",
+    "cefr": "C2"
+  },
+  {
+    "word": "archaism",
+    "pos": "noun",
+    "ipa": "/ˈɑːkeɪɪzəm/",
+    "meaningVi": "từ cổ",
+    "definitionEn": "An old-fashioned word or expression no longer in common use.",
+    "example": "The poet deliberately used archaism such as thee and thou for effect.",
+    "collocation": "deliberate archaism",
+    "cefr": "C2"
+  },
+  {
+    "word": "shibboleth",
+    "pos": "noun",
+    "ipa": "/ˈʃɪbəleθ/",
+    "meaningVi": "dấu hiệu nhận biết nhóm",
+    "definitionEn": "A custom, word, or phrase used to identify members of a particular group.",
+    "example": "Pronouncing certain vowels in a particular way became a shibboleth for regional identity.",
+    "collocation": "cultural shibboleth",
+    "cefr": "C2"
+  },
+  {
+    "word": "lexeme",
+    "pos": "noun",
+    "ipa": "/ˈleksiːm/",
+    "meaningVi": "đơn vị từ vựng",
+    "definitionEn": "A basic unit of vocabulary, including all forms of a single word.",
+    "example": "The lexeme run covers forms such as runs, running and ran.",
+    "collocation": "single lexeme",
+    "cefr": "C2"
+  },
+  {
+    "word": "allomorph",
+    "pos": "noun",
+    "ipa": "/ˈæləmɔːf/",
+    "meaningVi": "biến thể hình vị",
+    "definitionEn": "One of several variant forms of the same morpheme.",
+    "example": "The English plural endings s, z and iz are allomorphs of one morpheme.",
+    "collocation": "regular allomorph",
+    "cefr": "C2"
+  },
+  {
+    "word": "etymon",
+    "pos": "noun",
+    "ipa": "/ˈetɪmɒn/",
+    "meaningVi": "từ nguyên gốc",
+    "definitionEn": "The original word from which a later word has developed.",
+    "example": "The Latin etymon of the English word library is liber, meaning book.",
+    "collocation": "identify the etymon",
+    "cefr": "C2"
+  },
+  {
+    "word": "calque",
+    "pos": "noun",
+    "ipa": "/kælk/",
+    "meaningVi": "từ dịch mượn",
+    "definitionEn": "A word or phrase borrowed by translating its parts literally into another language.",
+    "example": "The English word skyscraper is a calque of the German Wolkenkratzer.",
+    "collocation": "literal calque",
+    "cefr": "C2"
+  },
+  {
+    "word": "loanword",
+    "pos": "noun",
+    "ipa": "/ˈləʊnwɜːd/",
+    "meaningVi": "từ vay mượn",
+    "definitionEn": "A word taken from another language and adopted into a language.",
+    "example": "English has absorbed countless loanwords from French, Latin, and Arabic over centuries.",
+    "collocation": "common loanword",
+    "cefr": "C2"
+  },
+  {
+    "word": "dysphemism",
+    "pos": "noun",
+    "ipa": "/ˈdɪsfəmɪzəm/",
+    "meaningVi": "cách nói thô, hạ thấp",
+    "definitionEn": "A harsh or offensive expression used instead of a neutral term.",
+    "example": "Calling a hospital a death trap is a dysphemism meant to shock listeners.",
+    "collocation": "crude dysphemism",
+    "cefr": "C2"
+  },
+  {
+    "word": "metonymy",
+    "pos": "noun",
+    "ipa": "/məˈtɒnəmi/",
+    "meaningVi": "hoán dụ",
+    "definitionEn": "A figure of speech in which an object is named after something closely associated with it.",
+    "example": "Saying the crown for the monarchy is an example of metonymy.",
+    "collocation": "common metonymy",
+    "cefr": "C2"
+  },
+  {
+    "word": "synecdoche",
+    "pos": "noun",
+    "ipa": "/sɪˈnekdəki/",
+    "meaningVi": "hoán dụ bộ phận",
+    "definitionEn": "A figure of speech in which a part stands for the whole, or the reverse.",
+    "example": "Referring to ten hands for ten workers uses synecdoche to make a point.",
+    "collocation": "classic synecdoche",
+    "cefr": "C2"
+  },
+  {
+    "word": "polysemy",
+    "pos": "noun",
+    "ipa": "/pəˈlɪsəmi/",
+    "meaningVi": "đa nghĩa",
+    "definitionEn": "The existence of several related meanings for a single word.",
+    "example": "The polysemy of the word bank covers both riverside land and financial institutions.",
+    "collocation": "high polysemy",
+    "cefr": "C2"
+  },
+  {
+    "word": "homophone",
+    "pos": "noun",
+    "ipa": "/ˈhɒməfəʊn/",
+    "meaningVi": "từ đồng âm",
+    "definitionEn": "A word that sounds the same as another but has a different meaning or spelling.",
+    "example": "Their, there, and they're are homophones that often confuse English learners.",
+    "collocation": "common homophone",
+    "cefr": "C2"
+  },
+  {
+    "word": "glossary",
+    "pos": "noun",
+    "ipa": "/ˈɡlɒsəri/",
+    "meaningVi": "bảng chú giải thuật ngữ",
+    "definitionEn": "A list of specialised or difficult terms with their definitions.",
+    "example": "The textbook includes a glossary of key linguistic terms at the back.",
+    "collocation": "technical glossary",
+    "cefr": "C2"
+  },
+  {
+    "word": "hyponym",
+    "pos": "noun",
+    "ipa": "/ˈhaɪpənɪm/",
+    "meaningVi": "từ hạ vị",
+    "definitionEn": "A word whose meaning is included within the meaning of a broader term.",
+    "example": "Rose is a hyponym of flower because every rose is a kind of flower.",
+    "collocation": "semantic hyponym",
+    "cefr": "C2"
+  },
+  {
+    "word": "anagram",
+    "pos": "noun",
+    "ipa": "/ˈænəɡræm/",
+    "meaningVi": "từ đảo chữ",
+    "definitionEn": "A word or phrase formed by rearranging the letters of another word.",
+    "example": "Listen is an anagram of silent, which makes a fun word puzzle.",
+    "collocation": "word anagram",
+    "cefr": "C2"
+  },
+  {
+    "word": "acronym",
+    "pos": "noun",
+    "ipa": "/ˈækrənɪm/",
+    "meaningVi": "từ viết tắt đọc như từ",
+    "definitionEn": "A word formed from the initial letters of other words, such as NATO.",
+    "example": "The acronym NATO stands for North Atlantic Treaty Organization.",
+    "collocation": "common acronym",
+    "cefr": "C2"
+  },
+  {
+    "word": "abbreviation",
+    "pos": "noun",
+    "ipa": "/əˌbriːviˈeɪʃn/",
+    "meaningVi": "từ viết tắt",
+    "definitionEn": "A shortened form of a word or phrase, such as Dr for Doctor.",
+    "example": "The abbreviation etc stands for et cetera in formal documents.",
+    "collocation": "common abbreviation",
+    "cefr": "C2"
+  },
+  {
+    "word": "vocative",
+    "pos": "adjective",
+    "ipa": "/ˈvɒkətɪv/",
+    "meaningVi": "hô cách, cách gọi",
+    "definitionEn": "Relating to a grammatical case used for addressing someone directly.",
+    "example": "In Latin, the vocative case is used when speaking directly to a person.",
+    "collocation": "vocative case",
+    "cefr": "C2"
+  },
+  {
+    "word": "subjunctive",
+    "pos": "adjective",
+    "ipa": "/səbˈdʒʌŋktɪv/",
+    "meaningVi": "cách giả định",
+    "definitionEn": "Relating to a verb mood used to express wishes, doubts, or hypothetical situations.",
+    "example": "I suggest that he be present uses the subjunctive mood in English.",
+    "collocation": "subjunctive mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "ablative",
+    "pos": "adjective",
+    "ipa": "/ˈæblətɪv/",
+    "meaningVi": "cách tước đoạt, Latin",
+    "definitionEn": "Relating to a grammatical case in Latin that expresses means, manner or separation.",
+    "example": "The ablative case in Latin often expresses means, manner, or separation.",
+    "collocation": "ablative case",
+    "cefr": "C2"
+  }
+]

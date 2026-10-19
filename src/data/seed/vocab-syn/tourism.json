@@ -1,0 +1,1016 @@
+[
+  {
+    "word": "holiday",
+    "synonyms": [
+      "vacation",
+      "break"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trip",
+    "synonyms": [
+      "journey",
+      "excursion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "view",
+    "synonyms": [
+      "vista",
+      "outlook"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "beach",
+    "synonyms": [
+      "shore",
+      "seaside"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sunbathe",
+    "synonyms": [
+      "bask",
+      "tan"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scenic",
+    "synonyms": [
+      "picturesque",
+      "panoramic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "getaway",
+    "synonyms": [
+      "short break",
+      "retreat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wanderlust",
+    "synonyms": [
+      "itchy feet",
+      "travel bug"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stopover",
+    "synonyms": [
+      "layover",
+      "stop"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vista",
+    "synonyms": [
+      "view",
+      "prospect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "panorama",
+    "synonyms": [
+      "vista",
+      "overview"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "backpack",
+    "synonyms": [
+      "travel cheaply",
+      "rough it"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tour",
+    "synonyms": [
+      "excursion",
+      "sightseeing trip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sightseer",
+    "synonyms": [
+      "tourist",
+      "visitor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jet lag",
+    "synonyms": [
+      "time-zone fatigue",
+      "circadian disruption"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "postcard",
+    "synonyms": [
+      "picture postcard",
+      "travel card"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "guesthouse",
+    "synonyms": [
+      "bed and breakfast",
+      "B&B"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hostel",
+    "synonyms": [
+      "youth hostel",
+      "backpacker lodge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "homestay",
+    "synonyms": [
+      "home stay",
+      "host family stay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "self-guided",
+    "synonyms": [
+      "independent",
+      "unaccompanied"
+    ],
+    "antonyms": [
+      "guided"
+    ]
+  },
+  {
+    "word": "off-season",
+    "synonyms": [
+      "low season"
+    ],
+    "antonyms": [
+      "peak season",
+      "high season"
+    ]
+  },
+  {
+    "word": "peak season",
+    "synonyms": [
+      "high season",
+      "busy season"
+    ],
+    "antonyms": [
+      "off-season",
+      "low season"
+    ]
+  },
+  {
+    "word": "brochure",
+    "synonyms": [
+      "leaflet",
+      "pamphlet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diving",
+    "synonyms": [
+      "scuba diving",
+      "underwater swimming"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trekking",
+    "synonyms": [
+      "hiking",
+      "rambling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wildlife",
+    "synonyms": [
+      "fauna",
+      "animal life"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "snorkel",
+    "synonyms": [
+      "snorkelling",
+      "skin-dive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lodging",
+    "synonyms": [
+      "accommodation",
+      "digs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "foreigner",
+    "synonyms": [
+      "non-native",
+      "outsider"
+    ],
+    "antonyms": [
+      "local",
+      "native"
+    ]
+  },
+  {
+    "word": "pilgrimage",
+    "synonyms": [
+      "religious journey",
+      "devotional trip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "holidaymaker",
+    "synonyms": [
+      "vacationer",
+      "tourist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "waterfront",
+    "synonyms": [
+      "seafront",
+      "harbourside"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "itinerant",
+    "synonyms": [
+      "nomadic",
+      "wandering"
+    ],
+    "antonyms": [
+      "settled",
+      "stationary"
+    ]
+  },
+  {
+    "word": "wayside",
+    "synonyms": [
+      "roadside",
+      "verge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sojourn",
+    "synonyms": [
+      "stay",
+      "visit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hinterland",
+    "synonyms": [
+      "backcountry",
+      "interior"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pristine",
+    "synonyms": [
+      "unspoilt",
+      "immaculate"
+    ],
+    "antonyms": [
+      "polluted",
+      "tainted"
+    ]
+  },
+  {
+    "word": "picturesque",
+    "synonyms": [
+      "scenic",
+      "pretty"
+    ],
+    "antonyms": [
+      "ugly"
+    ]
+  },
+  {
+    "word": "bucolic",
+    "synonyms": [
+      "rural",
+      "pastoral"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "unspoilt",
+    "synonyms": [
+      "pristine",
+      "untouched"
+    ],
+    "antonyms": [
+      "spoilt"
+    ]
+  },
+  {
+    "word": "vernacular",
+    "synonyms": [
+      "local",
+      "traditional"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "idyllic",
+    "synonyms": [
+      "blissful",
+      "heavenly"
+    ],
+    "antonyms": [
+      "grim",
+      "dreadful"
+    ]
+  },
+  {
+    "word": "expatriate",
+    "synonyms": [
+      "expat",
+      "emigrant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gastronomy",
+    "synonyms": [
+      "culinary arts",
+      "food culture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amenity",
+    "synonyms": [
+      "facility",
+      "convenience"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exotic",
+    "synonyms": [
+      "foreign",
+      "unusual"
+    ],
+    "antonyms": [
+      "ordinary",
+      "mundane"
+    ]
+  },
+  {
+    "word": "sanctuary",
+    "synonyms": [
+      "refuge",
+      "reserve"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "promenade",
+    "synonyms": [
+      "boardwalk",
+      "seafront walk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "enclave",
+    "synonyms": [
+      "pocket",
+      "enclosed district"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cuisine",
+    "synonyms": [
+      "cooking",
+      "food tradition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kitsch",
+    "synonyms": [
+      "tacky",
+      "gaudy"
+    ],
+    "antonyms": [
+      "tasteful",
+      "refined"
+    ]
+  },
+  {
+    "word": "hospitable",
+    "synonyms": [
+      "welcoming",
+      "friendly"
+    ],
+    "antonyms": [
+      "inhospitable",
+      "unwelcoming"
+    ]
+  },
+  {
+    "word": "sumptuous",
+    "synonyms": [
+      "luxurious",
+      "opulent"
+    ],
+    "antonyms": [
+      "austere",
+      "spartan"
+    ]
+  },
+  {
+    "word": "meander",
+    "synonyms": [
+      "wind",
+      "ramble"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bazaar",
+    "synonyms": [
+      "market",
+      "marketplace"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terrain",
+    "synonyms": [
+      "landscape",
+      "topography"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spectacle",
+    "synonyms": [
+      "display",
+      "show"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hallmark",
+    "synonyms": [
+      "trademark",
+      "signature"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "charter",
+    "synonyms": [
+      "hire",
+      "rent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indigenous",
+    "synonyms": [
+      "native",
+      "aboriginal"
+    ],
+    "antonyms": [
+      "foreign"
+    ]
+  },
+  {
+    "word": "folklore",
+    "synonyms": [
+      "traditional stories",
+      "legend"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "panoramic",
+    "synonyms": [
+      "sweeping",
+      "wide-angle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "archaeological",
+    "synonyms": [
+      "archeological"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "voyage",
+    "synonyms": [
+      "journey",
+      "passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "escapade",
+    "synonyms": [
+      "adventure",
+      "exploit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coastline",
+    "synonyms": [
+      "shoreline",
+      "seaboard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vantage",
+    "synonyms": [
+      "viewpoint",
+      "lookout"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nostalgia",
+    "synonyms": [
+      "longing",
+      "wistfulness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "curio",
+    "synonyms": [
+      "knick-knack",
+      "trinket"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pagoda",
+    "synonyms": [
+      "temple tower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lacquerware",
+    "synonyms": [
+      "lacquer ware",
+      "lacquer goods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bustling",
+    "synonyms": [
+      "busy",
+      "lively"
+    ],
+    "antonyms": [
+      "deserted",
+      "quiet"
+    ]
+  },
+  {
+    "word": "aperitif",
+    "synonyms": [
+      "appetiser drink",
+      "pre-dinner drink"
+    ],
+    "antonyms": [
+      "digestif"
+    ]
+  },
+  {
+    "word": "tranquil",
+    "synonyms": [
+      "peaceful",
+      "serene"
+    ],
+    "antonyms": [
+      "turbulent",
+      "noisy"
+    ]
+  },
+  {
+    "word": "peregrination",
+    "synonyms": [
+      "wandering",
+      "travels"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wayfaring",
+    "synonyms": [
+      "travelling",
+      "roaming"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grand tour",
+    "synonyms": [
+      "European tour",
+      "cultural tour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pilgrim",
+    "synonyms": [
+      "devotee",
+      "wayfarer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epicure",
+    "synonyms": [
+      "gourmet",
+      "gastronome"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "connoisseur",
+    "synonyms": [
+      "expert",
+      "aficionado"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flâneur",
+    "synonyms": [
+      "stroller",
+      "idler"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exoticism",
+    "synonyms": [
+      "fascination with foreignness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terra incognita",
+    "synonyms": [
+      "unknown land",
+      "uncharted territory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vagabond",
+    "synonyms": [
+      "vagrant",
+      "drifter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anchorage",
+    "synonyms": [
+      "mooring",
+      "harbour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "archipelago",
+    "synonyms": [
+      "island chain",
+      "island group"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "atoll",
+    "synonyms": [
+      "coral ring",
+      "coral island"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plateau",
+    "synonyms": [
+      "tableland",
+      "highland"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fjord",
+    "synonyms": [
+      "sea inlet",
+      "inlet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caldera",
+    "synonyms": [
+      "crater",
+      "volcanic basin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "estuary",
+    "synonyms": [
+      "river mouth",
+      "tidal inlet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "karst",
+    "synonyms": [
+      "limestone terrain",
+      "karst landscape"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mangrove",
+    "synonyms": [
+      "mangrove swamp",
+      "tidal forest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "savannah",
+    "synonyms": [
+      "grassland",
+      "prairie"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tundra",
+    "synonyms": [
+      "arctic plain",
+      "frozen plain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oasis",
+    "synonyms": [
+      "fertile spot",
+      "refuge"
+    ],
+    "antonyms": [
+      "desert"
+    ]
+  },
+  {
+    "word": "escarpment",
+    "synonyms": [
+      "cliff",
+      "scarp"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lagoon",
+    "synonyms": [
+      "backwater",
+      "coastal lake"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sanctum",
+    "synonyms": [
+      "inner chamber",
+      "shrine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reverie",
+    "synonyms": [
+      "daydream",
+      "trance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sybaritic",
+    "synonyms": [
+      "luxurious",
+      "hedonistic"
+    ],
+    "antonyms": [
+      "ascetic",
+      "spartan"
+    ]
+  },
+  {
+    "word": "serendipity",
+    "synonyms": [
+      "happy accident",
+      "good fortune"
+    ],
+    "antonyms": [
+      "misfortune"
+    ]
+  },
+  {
+    "word": "gazetteer",
+    "synonyms": [
+      "index",
+      "place-name dictionary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bivouac",
+    "synonyms": [
+      "camp",
+      "temporary camp"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tarn",
+    "synonyms": [
+      "mountain lake",
+      "upland pool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hostelry",
+    "synonyms": [
+      "inn",
+      "tavern"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tavern",
+    "synonyms": [
+      "pub",
+      "inn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gazebo",
+    "synonyms": [
+      "summerhouse",
+      "garden shelter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pavilion",
+    "synonyms": [
+      "gazebo",
+      "summerhouse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "esplanade",
+    "synonyms": [
+      "seafront",
+      "waterfront walk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caravan",
+    "synonyms": [
+      "convoy",
+      "travelling party"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sherpa",
+    "synonyms": [
+      "mountain guide",
+      "trekking guide"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nomad",
+    "synonyms": [
+      "wanderer",
+      "migrant herder"
+    ],
+    "antonyms": [
+      "settled resident",
+      "sedentary"
+    ]
+  },
+  {
+    "word": "isthmus",
+    "synonyms": [
+      "land bridge",
+      "neck of land"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hermitage",
+    "synonyms": [
+      "retreat",
+      "hermit's cell"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moraine",
+    "synonyms": [
+      "glacial debris",
+      "glacial ridge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glacier",
+    "synonyms": [
+      "ice field",
+      "ice river"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cirque",
+    "synonyms": [
+      "corrie",
+      "glacial hollow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wadi",
+    "synonyms": [
+      "dry riverbed",
+      "gully"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sandbar",
+    "synonyms": [
+      "sandbank",
+      "shoal"
+    ],
+    "antonyms": []
+  }
+]

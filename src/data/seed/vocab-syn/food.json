@@ -1,0 +1,973 @@
+[
+  {
+    "word": "macronutrient",
+    "synonyms": [],
+    "antonyms": [
+      "micronutrient"
+    ]
+  },
+  {
+    "word": "micronutrient",
+    "synonyms": [],
+    "antonyms": [
+      "macronutrient"
+    ]
+  },
+  {
+    "word": "protein",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "vitamin",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "mineral",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "antioxidant",
+    "synonyms": [],
+    "antonyms": [
+      "pro-oxidant"
+    ]
+  },
+  {
+    "word": "metabolism",
+    "synonyms": [
+      "metabolic process"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nutrient-dense",
+    "synonyms": [
+      "nutritious",
+      "wholesome"
+    ],
+    "antonyms": [
+      "empty-calorie"
+    ]
+  },
+  {
+    "word": "diabetes",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "bread",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "rice",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "meat",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "fish",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "egg",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "cheese",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "milk",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "sugar",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "salt",
+    "synonyms": [
+      "sodium chloride"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "soup",
+    "synonyms": [
+      "potage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fry",
+    "synonyms": [
+      "pan-fry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grill",
+    "synonyms": [
+      "broil"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "boil",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "bake",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "roast",
+    "synonyms": [
+      "bake"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "steam",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "chop",
+    "synonyms": [
+      "cut up",
+      "dice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "season",
+    "synonyms": [
+      "flavour",
+      "spice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flavour",
+    "synonyms": [
+      "taste"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spicy",
+    "synonyms": [
+      "hot",
+      "peppery"
+    ],
+    "antonyms": [
+      "mild"
+    ]
+  },
+  {
+    "word": "sour",
+    "synonyms": [
+      "tart",
+      "acidic"
+    ],
+    "antonyms": [
+      "sweet"
+    ]
+  },
+  {
+    "word": "bitter",
+    "synonyms": [],
+    "antonyms": [
+      "sweet"
+    ]
+  },
+  {
+    "word": "crisp",
+    "synonyms": [
+      "crunchy"
+    ],
+    "antonyms": [
+      "soggy"
+    ]
+  },
+  {
+    "word": "tender",
+    "synonyms": [
+      "soft"
+    ],
+    "antonyms": [
+      "tough"
+    ]
+  },
+  {
+    "word": "recipe",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "ingredient",
+    "synonyms": [
+      "component"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cuisine",
+    "synonyms": [
+      "cookery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "delicacy",
+    "synonyms": [
+      "speciality",
+      "treat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "takeaway",
+    "synonyms": [
+      "takeout"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "snack",
+    "synonyms": [
+      "bite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "leftovers",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "marinate",
+    "synonyms": [
+      "steep",
+      "soak"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "simmer",
+    "synonyms": [
+      "bubble gently"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "braise",
+    "synonyms": [
+      "stew"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "blanch",
+    "synonyms": [
+      "parboil",
+      "scald"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ferment",
+    "synonyms": [
+      "brew"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pickle",
+    "synonyms": [
+      "preserve",
+      "brine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "infuse",
+    "synonyms": [
+      "steep"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "garnish",
+    "synonyms": [
+      "decorate",
+      "adorn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glaze",
+    "synonyms": [
+      "coat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "whisk",
+    "synonyms": [
+      "beat",
+      "whip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "knead",
+    "synonyms": [
+      "press",
+      "work"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sear",
+    "synonyms": [
+      "brown"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emulsify",
+    "synonyms": [
+      "blend",
+      "bind"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caramelise",
+    "synonyms": [
+      "brown"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aromatic",
+    "synonyms": [
+      "fragrant",
+      "scented"
+    ],
+    "antonyms": [
+      "odourless"
+    ]
+  },
+  {
+    "word": "pungent",
+    "synonyms": [
+      "sharp",
+      "biting"
+    ],
+    "antonyms": [
+      "mild",
+      "bland"
+    ]
+  },
+  {
+    "word": "savoury",
+    "synonyms": [
+      "salty"
+    ],
+    "antonyms": [
+      "sweet"
+    ]
+  },
+  {
+    "word": "succulent",
+    "synonyms": [
+      "juicy",
+      "luscious"
+    ],
+    "antonyms": [
+      "dry"
+    ]
+  },
+  {
+    "word": "zesty",
+    "synonyms": [
+      "tangy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "piquant",
+    "synonyms": [
+      "tangy",
+      "spicy"
+    ],
+    "antonyms": [
+      "bland"
+    ]
+  },
+  {
+    "word": "palatable",
+    "synonyms": [
+      "appetising",
+      "tasty"
+    ],
+    "antonyms": [
+      "unpalatable"
+    ]
+  },
+  {
+    "word": "texture",
+    "synonyms": [
+      "consistency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bouquet",
+    "synonyms": [
+      "aroma"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palate",
+    "synonyms": [
+      "taste"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gastronomy",
+    "synonyms": [
+      "culinary arts"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "culinary",
+    "synonyms": [
+      "gastronomic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gourmet",
+    "synonyms": [
+      "gastronome",
+      "foodie"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "delicatessen",
+    "synonyms": [
+      "deli"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "provisions",
+    "synonyms": [
+      "supplies",
+      "stores"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "staple",
+    "synonyms": [
+      "mainstay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accompaniment",
+    "synonyms": [
+      "side dish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "condiment",
+    "synonyms": [
+      "seasoning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "broth",
+    "synonyms": [
+      "stock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stock",
+    "synonyms": [
+      "broth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "confection",
+    "synonyms": [
+      "confectionery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fermentation",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "emulsion",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "reduction",
+    "synonyms": [
+      "concentrate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smorgasbord",
+    "synonyms": [
+      "buffet",
+      "spread"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "umami",
+    "synonyms": [
+      "savouriness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "piquancy",
+    "synonyms": [
+      "spiciness",
+      "zest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "savour",
+    "synonyms": [
+      "relish",
+      "enjoy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gustatory",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "olfactory",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "edible",
+    "synonyms": [
+      "eatable"
+    ],
+    "antonyms": [
+      "inedible"
+    ]
+  },
+  {
+    "word": "unpalatable",
+    "synonyms": [
+      "unappetising",
+      "distasteful"
+    ],
+    "antonyms": [
+      "palatable"
+    ]
+  },
+  {
+    "word": "insipid",
+    "synonyms": [
+      "tasteless",
+      "flat"
+    ],
+    "antonyms": [
+      "flavourful"
+    ]
+  },
+  {
+    "word": "bland",
+    "synonyms": [
+      "plain",
+      "mild"
+    ],
+    "antonyms": [
+      "spicy"
+    ]
+  },
+  {
+    "word": "saccharine",
+    "synonyms": [
+      "cloying",
+      "sugary"
+    ],
+    "antonyms": [
+      "tart"
+    ]
+  },
+  {
+    "word": "astringent",
+    "synonyms": [],
+    "antonyms": [
+      "mellow"
+    ]
+  },
+  {
+    "word": "acrid",
+    "synonyms": [
+      "harsh"
+    ],
+    "antonyms": [
+      "fragrant"
+    ]
+  },
+  {
+    "word": "rancid",
+    "synonyms": [
+      "spoiled"
+    ],
+    "antonyms": [
+      "fresh"
+    ]
+  },
+  {
+    "word": "putrid",
+    "synonyms": [
+      "rotten",
+      "decayed"
+    ],
+    "antonyms": [
+      "fresh"
+    ]
+  },
+  {
+    "word": "viscous",
+    "synonyms": [
+      "thick",
+      "syrupy"
+    ],
+    "antonyms": [
+      "thin",
+      "runny"
+    ]
+  },
+  {
+    "word": "gelatinous",
+    "synonyms": [
+      "jelly-like",
+      "gummy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "unctuous",
+    "synonyms": [
+      "oily",
+      "rich"
+    ],
+    "antonyms": [
+      "lean"
+    ]
+  },
+  {
+    "word": "sybaritic",
+    "synonyms": [
+      "luxurious",
+      "indulgent"
+    ],
+    "antonyms": [
+      "austere",
+      "ascetic"
+    ]
+  },
+  {
+    "word": "epicurean",
+    "synonyms": [
+      "gourmet"
+    ],
+    "antonyms": [
+      "ascetic"
+    ]
+  },
+  {
+    "word": "prandial",
+    "synonyms": [
+      "mealtime"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eschew",
+    "synonyms": [
+      "avoid",
+      "abstain from"
+    ],
+    "antonyms": [
+      "indulge in"
+    ]
+  },
+  {
+    "word": "ravenous",
+    "synonyms": [
+      "starving",
+      "famished"
+    ],
+    "antonyms": [
+      "sated"
+    ]
+  },
+  {
+    "word": "voracious",
+    "synonyms": [
+      "insatiable",
+      "greedy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gluttony",
+    "synonyms": [
+      "greed",
+      "overindulgence"
+    ],
+    "antonyms": [
+      "temperance",
+      "moderation"
+    ]
+  },
+  {
+    "word": "frugal",
+    "synonyms": [
+      "thrifty",
+      "economical"
+    ],
+    "antonyms": [
+      "extravagant",
+      "lavish"
+    ]
+  },
+  {
+    "word": "parsimonious",
+    "synonyms": [
+      "stingy",
+      "miserly"
+    ],
+    "antonyms": [
+      "generous"
+    ]
+  },
+  {
+    "word": "bountiful",
+    "synonyms": [
+      "abundant",
+      "plentiful"
+    ],
+    "antonyms": [
+      "scarce"
+    ]
+  },
+  {
+    "word": "lavish",
+    "synonyms": [
+      "opulent",
+      "extravagant"
+    ],
+    "antonyms": [
+      "meagre",
+      "frugal"
+    ]
+  },
+  {
+    "word": "sumptuous",
+    "synonyms": [
+      "luxurious",
+      "lavish"
+    ],
+    "antonyms": [
+      "meagre",
+      "plain"
+    ]
+  },
+  {
+    "word": "toothsome",
+    "synonyms": [
+      "delicious",
+      "appetising"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "morsel",
+    "synonyms": [
+      "bite",
+      "mouthful"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viand",
+    "synonyms": [
+      "dish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "comestible",
+    "synonyms": [
+      "foodstuff"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "provender",
+    "synonyms": [
+      "provisions"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "repast",
+    "synonyms": [
+      "meal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "banquet",
+    "synonyms": [
+      "feast"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bouillon",
+    "synonyms": [
+      "broth",
+      "consommé"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ragout",
+    "synonyms": [
+      "stew"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "charcuterie",
+    "synonyms": [
+      "cold cuts",
+      "cured meats"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "roux",
+    "synonyms": [
+      "thickener"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "julienne",
+    "synonyms": [
+      "matchstick cut"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mirepoix",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "bain-marie",
+    "synonyms": [
+      "water bath"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sous-vide",
+    "synonyms": [
+      "vacuum-cooked"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "al dente",
+    "synonyms": [
+      "firm"
+    ],
+    "antonyms": [
+      "overcooked"
+    ]
+  },
+  {
+    "word": "deglaze",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "flambé",
+    "synonyms": [
+      "flamed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tannin",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "terroir",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "aperitif",
+    "synonyms": [
+      "pre-dinner drink"
+    ],
+    "antonyms": [
+      "digestif"
+    ]
+  }
+]

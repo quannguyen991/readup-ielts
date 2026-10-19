@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "building",
+    "pos": "noun",
+    "ipa": "/ˈbɪldɪŋ/",
+    "meaningVi": "tòa nhà",
+    "definitionEn": "A structure with walls and a roof, such as a house, school or office.",
+    "example": "The old building on the corner has been converted into small apartments.",
+    "collocation": "tall building",
+    "cefr": "B1"
+  },
+  {
+    "word": "house",
+    "pos": "noun",
+    "ipa": "/haʊs/",
+    "meaningVi": "ngôi nhà",
+    "definitionEn": "A building where people live, usually intended for one family.",
+    "example": "Our house has three bedrooms and a small garden at the back.",
+    "collocation": "family house",
+    "cefr": "B1"
+  },
+  {
+    "word": "room",
+    "pos": "noun",
+    "ipa": "/ruːm/",
+    "meaningVi": "căn phòng",
+    "definitionEn": "A separate space inside a building, enclosed by walls and usually a door.",
+    "example": "Every room in the flat faces south, so it stays bright all day.",
+    "collocation": "spare room",
+    "cefr": "B1"
+  },
+  {
+    "word": "wall",
+    "pos": "noun",
+    "ipa": "/wɔːl/",
+    "meaningVi": "bức tường",
+    "definitionEn": "A vertical structure that divides or encloses a space in a building.",
+    "example": "The walls of the living room were painted a soft shade of cream.",
+    "collocation": "stone wall",
+    "cefr": "B1"
+  },
+  {
+    "word": "roof",
+    "pos": "noun",
+    "ipa": "/ruːf/",
+    "meaningVi": "mái nhà",
+    "definitionEn": "The top covering of a building that protects it from rain and weather.",
+    "example": "Rain leaked through the old roof and stained the bedroom ceiling.",
+    "collocation": "flat roof",
+    "cefr": "B1"
+  },
+  {
+    "word": "window",
+    "pos": "noun",
+    "ipa": "/ˈwɪndəʊ/",
+    "meaningVi": "cửa sổ",
+    "definitionEn": "An opening in a wall that lets in light and air, often fitted with glass.",
+    "example": "Sunlight streamed through the tall window and onto the wooden floor.",
+    "collocation": "sash window",
+    "cefr": "B1"
+  },
+  {
+    "word": "door",
+    "pos": "noun",
+    "ipa": "/dɔː/",
+    "meaningVi": "cửa ra vào",
+    "definitionEn": "A movable barrier that opens and closes an entrance to a building or room.",
+    "example": "She unlocked the front door and stepped into the quiet hallway.",
+    "collocation": "front door",
+    "cefr": "B1"
+  },
+  {
+    "word": "floor",
+    "pos": "noun",
+    "ipa": "/flɔː/",
+    "meaningVi": "sàn nhà, tầng",
+    "definitionEn": "The level surface inside a building, or one storey of a building.",
+    "example": "Our office is on the fifth floor of the tall glass building.",
+    "collocation": "ground floor",
+    "cefr": "B1"
+  },
+  {
+    "word": "brick",
+    "pos": "noun",
+    "ipa": "/brɪk/",
+    "meaningVi": "viên gạch",
+    "definitionEn": "A small rectangular block of clay used for building walls.",
+    "example": "The houses in this street were built with red bricks over a century ago.",
+    "collocation": "red brick",
+    "cefr": "B1"
+  },
+  {
+    "word": "stone",
+    "pos": "noun",
+    "ipa": "/stəʊn/",
+    "meaningVi": "đá",
+    "definitionEn": "A hard, solid piece of rock used as a building material.",
+    "example": "The cathedral was built from grey stone quarried in the hills nearby.",
+    "collocation": "carved stone",
+    "cefr": "B1"
+  },
+  {
+    "word": "bridge",
+    "pos": "noun",
+    "ipa": "/brɪdʒ/",
+    "meaningVi": "cầu",
+    "definitionEn": "A structure built over a river, road or valley to allow people to cross.",
+    "example": "The old stone bridge has carried travellers across the river for centuries.",
+    "collocation": "suspension bridge",
+    "cefr": "B1"
+  },
+  {
+    "word": "tower",
+    "pos": "noun",
+    "ipa": "/ˈtaʊə/",
+    "meaningVi": "tháp",
+    "definitionEn": "A tall, narrow building or structure, often standing alone.",
+    "example": "The clock tower dominates the town square and can be seen for miles.",
+    "collocation": "clock tower",
+    "cefr": "B1"
+  },
+  {
+    "word": "castle",
+    "pos": "noun",
+    "ipa": "/ˈkɑːsl/",
+    "meaningVi": "lâu đài",
+    "definitionEn": "A large fortified building, usually built in medieval times for defence.",
+    "example": "Tourists climb the steep path to explore the ruins of the medieval castle.",
+    "collocation": "medieval castle",
+    "cefr": "B1"
+  },
+  {
+    "word": "church",
+    "pos": "noun",
+    "ipa": "/tʃɜːtʃ/",
+    "meaningVi": "nhà thờ",
+    "definitionEn": "A building used for Christian worship, often with a tall spire.",
+    "example": "The little church at the end of the lane has a beautiful wooden roof.",
+    "collocation": "village church",
+    "cefr": "B1"
+  },
+  {
+    "word": "ceiling",
+    "pos": "noun",
+    "ipa": "/ˈsiːlɪŋ/",
+    "meaningVi": "trần nhà",
+    "definitionEn": "The upper inside surface of a room, opposite the floor.",
+    "example": "High ceilings and tall windows make the old apartment feel spacious.",
+    "collocation": "high ceiling",
+    "cefr": "B1"
+  },
+  {
+    "word": "tile",
+    "pos": "noun",
+    "ipa": "/taɪl/",
+    "meaningVi": "ngói, gạch lát",
+    "definitionEn": "A flat piece of clay, stone or ceramic used to cover roofs, floors or walls.",
+    "example": "The bathroom walls are covered with small blue tiles from Portugal.",
+    "collocation": "ceramic tile",
+    "cefr": "B1"
+  },
+  {
+    "word": "paint",
+    "pos": "verb",
+    "ipa": "/peɪnt/",
+    "meaningVi": "sơn",
+    "definitionEn": "To cover a surface with coloured liquid to decorate or protect it.",
+    "example": "We decided to paint the kitchen walls yellow before moving in.",
+    "collocation": "paint the walls",
+    "cefr": "B1"
+  },
+  {
+    "word": "flat",
+    "pos": "noun",
+    "ipa": "/flæt/",
+    "meaningVi": "căn hộ",
+    "definitionEn": "A set of rooms for living in, on one floor of a larger building.",
+    "example": "They rent a small flat above the bakery in the town centre.",
+    "collocation": "rented flat",
+    "cefr": "B1"
+  },
+  {
+    "word": "storey",
+    "pos": "noun",
+    "ipa": "/ˈstɔːri/",
+    "meaningVi": "tầng (của toà nhà)",
+    "definitionEn": "One level of a building, forming a floor above or below another.",
+    "example": "The new library will have three storeys with a rooftop reading garden.",
+    "collocation": "two-storey house",
+    "cefr": "B2"
+  },
+  {
+    "word": "courtyard",
+    "pos": "noun",
+    "ipa": "/ˈkɔːtjɑːd/",
+    "meaningVi": "sân trong",
+    "definitionEn": "An open space enclosed by buildings or walls, usually within a larger complex.",
+    "example": "Guests gathered in the courtyard, where a fountain splashed beneath orange trees.",
+    "collocation": "enclosed courtyard",
+    "cefr": "B2"
+  },
+  {
+    "word": "corridor",
+    "pos": "noun",
+    "ipa": "/ˈkɒrɪdɔː/",
+    "meaningVi": "hành lang",
+    "definitionEn": "A long passage in a building that connects separate rooms.",
+    "example": "A long corridor with polished wooden doors led to the lecture theatres.",
+    "collocation": "narrow corridor",
+    "cefr": "B2"
+  },
+  {
+    "word": "pavilion",
+    "pos": "noun",
+    "ipa": "/pəˈvɪliən/",
+    "meaningVi": "nhà thủy đình, gian triển lãm",
+    "definitionEn": "A decorative building in a park or garden, or a temporary exhibition structure.",
+    "example": "The garden pavilion offers shade and a lovely view across the lake.",
+    "collocation": "garden pavilion",
+    "cefr": "B2"
+  },
+  {
+    "word": "turret",
+    "pos": "noun",
+    "ipa": "/ˈtʌrɪt/",
+    "meaningVi": "tháp nhỏ trên góc",
+    "definitionEn": "A small tower projecting from the corner of a larger building, often a castle.",
+    "example": "A pointed turret rises from each corner of the castle's grey stone walls.",
+    "collocation": "corner turret",
+    "cefr": "B2"
+  },
+  {
+    "word": "gable",
+    "pos": "noun",
+    "ipa": "/ˈɡeɪbl/",
+    "meaningVi": "đầu hồi mái",
+    "definitionEn": "The triangular upper part of a wall at the end of a pitched roof.",
+    "example": "Carved wooden gables decorate the rooftops of the traditional Dutch houses.",
+    "collocation": "triangular gable",
+    "cefr": "B2"
+  },
+  {
+    "word": "timber",
+    "pos": "noun",
+    "ipa": "/ˈtɪmbə/",
+    "meaningVi": "gỗ xây dựng",
+    "definitionEn": "Wood prepared for use in building, such as beams and planks.",
+    "example": "The barn was constructed from heavy oak timber that has lasted centuries.",
+    "collocation": "solid timber",
+    "cefr": "B2"
+  },
+  {
+    "word": "concrete",
+    "pos": "noun",
+    "ipa": "/ˈkɒŋkriːt/",
+    "meaningVi": "bê tông",
+    "definitionEn": "A hard building material made from cement mixed with sand, gravel and water.",
+    "example": "Engineers poured concrete into the moulds to create the bridge's supports.",
+    "collocation": "poured concrete",
+    "cefr": "B2"
+  },
+  {
+    "word": "glazing",
+    "pos": "noun",
+    "ipa": "/ˈɡleɪzɪŋ/",
+    "meaningVi": "kính lắp (cửa, mặt tiền)",
+    "definitionEn": "Glass set into the frames of windows, doors or walls of a building.",
+    "example": "Floor-to-ceiling glazing fills the living room with natural light.",
+    "collocation": "double glazing",
+    "cefr": "B2"
+  },
+  {
+    "word": "parapet",
+    "pos": "noun",
+    "ipa": "/ˈpærəpɪt/",
+    "meaningVi": "lan can tường, tường chắn",
+    "definitionEn": "A low protective wall along the edge of a roof, balcony or bridge.",
+    "example": "Visitors leaned over the parapet to admire the view of the river below.",
+    "collocation": "stone parapet",
+    "cefr": "B2"
+  },
+  {
+    "word": "plinth",
+    "pos": "noun",
+    "ipa": "/plɪnθ/",
+    "meaningVi": "bệ đỡ tượng",
+    "definitionEn": "The square base on which a column, statue or building rests.",
+    "example": "The bronze statue stands on a granite plinth in the centre of the square.",
+    "collocation": "granite plinth",
+    "cefr": "B2"
+  },
+  {
+    "word": "lintel",
+    "pos": "noun",
+    "ipa": "/ˈlɪntl/",
+    "meaningVi": "xà ngang cửa",
+    "definitionEn": "A horizontal beam spanning the top of a door or window opening.",
+    "example": "A carved stone lintel bears the date the house was first built.",
+    "collocation": "carved lintel",
+    "cefr": "B2"
+  },
+  {
+    "word": "rafter",
+    "pos": "noun",
+    "ipa": "/ˈrɑːftə/",
+    "meaningVi": "xà gồ mái",
+    "definitionEn": "One of the sloping beams that support the covering of a roof.",
+    "example": "Exposed oak rafters give the loft a warm, traditional character.",
+    "collocation": "oak rafters",
+    "cefr": "B2"
+  },
+  {
+    "word": "terrace",
+    "pos": "noun",
+    "ipa": "/ˈterəs/",
+    "meaningVi": "sân thượng, hiên ngoài",
+    "definitionEn": "A flat paved area outside a building, or a row of attached houses.",
+    "example": "We ate dinner on the terrace overlooking the rooftops of the old town.",
+    "collocation": "rooftop terrace",
+    "cefr": "B2"
+  },
+  {
+    "word": "scaffolding",
+    "pos": "noun",
+    "ipa": "/ˈskæfəldɪŋ/",
+    "meaningVi": "giàn giáo",
+    "definitionEn": "A temporary metal framework erected around a building for workers during construction.",
+    "example": "Scaffolding covered the cathedral's west front while the stonework was repaired.",
+    "collocation": "metal scaffolding",
+    "cefr": "B2"
+  },
+  {
+    "word": "cornice",
+    "pos": "noun",
+    "ipa": "/ˈkɔːnɪs/",
+    "meaningVi": "gờ chỉ trang trí trên tường",
+    "definitionEn": "A decorative moulding running along the top of a wall or below a ceiling.",
+    "example": "Elaborate plaster cornices frame the ceilings of the nineteenth-century apartments.",
+    "collocation": "plaster cornice",
+    "cefr": "B2"
+  },
+  {
+    "word": "bay",
+    "pos": "noun",
+    "ipa": "/beɪ/",
+    "meaningVi": "gian nhà, khoảng giữa các cột",
+    "definitionEn": "A recessed or projecting section of a building between columns, walls or windows.",
+    "example": "The bay in the library holds a comfortable reading chair beside the window.",
+    "collocation": "bay of columns",
+    "cefr": "B2"
+  },
+  {
+    "word": "hallway",
+    "pos": "noun",
+    "ipa": "/ˈhɔːlweɪ/",
+    "meaningVi": "hành lang trong nhà",
+    "definitionEn": "A passage inside a house, leading from the front door to other rooms.",
+    "example": "Coats and umbrellas hung neatly along the hallway by the front door.",
+    "collocation": "narrow hallway",
+    "cefr": "B2"
+  },
+  {
+    "word": "loft",
+    "pos": "noun",
+    "ipa": "/lɒft/",
+    "meaningVi": "gác xép",
+    "definitionEn": "An upper space under a roof, often converted into living or working space.",
+    "example": "They converted the dusty loft into a bright study with skylights.",
+    "collocation": "converted loft",
+    "cefr": "B2"
+  },
+  {
+    "word": "gatehouse",
+    "pos": "noun",
+    "ipa": "/ˈɡeɪthaʊs/",
+    "meaningVi": "nhà canh cổng",
+    "definitionEn": "A small building that guards or controls access through a gate.",
+    "example": "A gatehouse with a heavy portcullis once guarded the entrance to the fortress.",
+    "collocation": "medieval gatehouse",
+    "cefr": "B2"
+  },
+  {
+    "word": "annex",
+    "pos": "noun",
+    "ipa": "/ˈænəks/",
+    "meaningVi": "khu nhà phụ, nhà bổ sung",
+    "definitionEn": "A smaller building attached to or added onto a larger main building.",
+    "example": "The museum opened a new annex to display its growing modern art collection.",
+    "collocation": "new annex",
+    "cefr": "B2"
+  },
+  {
+    "word": "fenestration",
+    "pos": "noun",
+    "ipa": "/ˌfenɪˈstreɪʃn/",
+    "meaningVi": "bố trí cửa sổ",
+    "definitionEn": "The arrangement and design of windows and other openings in a building.",
+    "example": "The fenestration on the north wall was designed to admit soft, even daylight.",
+    "collocation": "fenestration pattern",
+    "cefr": "C1"
+  },
+  {
+    "word": "vaulted",
+    "pos": "adjective",
+    "ipa": "/ˈvɔːltɪd/",
+    "meaningVi": "có mái vòm",
+    "definitionEn": "Having a roof or ceiling formed by a series of arches.",
+    "example": "The vaulted ceiling of the nave soars high above the congregation.",
+    "collocation": "vaulted ceiling",
+    "cefr": "C1"
+  },
+  {
+    "word": "apse",
+    "pos": "noun",
+    "ipa": "/æps/",
+    "meaningVi": "gian thờ hình bán nguyệt",
+    "definitionEn": "A semicircular recess, usually roofed with a half dome, at the end of a church.",
+    "example": "The apse behind the altar is decorated with gold mosaics of saints.",
+    "collocation": "church apse",
+    "cefr": "C1"
+  },
+  {
+    "word": "nave",
+    "pos": "noun",
+    "ipa": "/neɪv/",
+    "meaningVi": "gian giữa nhà thờ",
+    "definitionEn": "The central part of a church, extending from the entrance toward the altar.",
+    "example": "Worshippers filled the nave as the organ music echoed through the vast space.",
+    "collocation": "central nave",
+    "cefr": "C1"
+  },
+  {
+    "word": "transept",
+    "pos": "noun",
+    "ipa": "/ˈtrænsept/",
+    "meaningVi": "cánh ngang nhà thờ",
+    "definitionEn": "The transverse arms of a cross-shaped church, crossing the nave.",
+    "example": "Light poured through the rose window at the end of the transept.",
+    "collocation": "north transept",
+    "cefr": "C1"
+  },
+  {
+    "word": "clerestory",
+    "pos": "noun",
+    "ipa": "/ˈklɪəstɔːri/",
+    "meaningVi": "dãy cửa sổ cao",
+    "definitionEn": "An upper storey with windows that admit light into the central space of a church.",
+    "example": "Tall clerestory windows flood the nave with light throughout the morning.",
+    "collocation": "clerestory windows",
+    "cefr": "C1"
+  },
+  {
+    "word": "cloister",
+    "pos": "noun",
+    "ipa": "/ˈklɔɪstə/",
+    "meaningVi": "hành lang tu viện",
+    "definitionEn": "A covered walkway around an open courtyard in a monastery or convent.",
+    "example": "The monks walked slowly around the cloister, reciting prayers in silence.",
+    "collocation": "monastery cloister",
+    "cefr": "C1"
+  },
+  {
+    "word": "transom",
+    "pos": "noun",
+    "ipa": "/ˈtrænsəm/",
+    "meaningVi": "thanh ngang cửa",
+    "definitionEn": "A horizontal bar across a window or door dividing the opening into sections.",
+    "example": "A decorative iron transom sits above the carved front door.",
+    "collocation": "transom window",
+    "cefr": "C1"
+  },
+  {
+    "word": "mullion",
+    "pos": "noun",
+    "ipa": "/ˈmʌliən/",
+    "meaningVi": "thanh đứng chia cửa sổ",
+    "definitionEn": "A vertical bar dividing a window into separate sections or lights.",
+    "example": "Stone mullions divide the tall gothic window into elegant narrow panels.",
+    "collocation": "stone mullion",
+    "cefr": "C1"
+  },
+  {
+    "word": "spandrel",
+    "pos": "noun",
+    "ipa": "/ˈspændrəl/",
+    "meaningVi": "khoảng góc vòm",
+    "definitionEn": "The roughly triangular space between an arch and the surrounding frame or ceiling.",
+    "example": "Mosaics fill the spandrels beside the arch, depicting scenes from scripture.",
+    "collocation": "decorated spandrel",
+    "cefr": "C1"
+  },
+  {
+    "word": "cornerstone",
+    "pos": "noun",
+    "ipa": "/ˈkɔːnəstəʊn/",
+    "meaningVi": "đá góc móng, nền tảng",
+    "definitionEn": "A stone at the corner of a building, or a fundamental basis of something.",
+    "example": "The mayor laid the cornerstone of the new library in a formal ceremony.",
+    "collocation": "laid the cornerstone",
+    "cefr": "C1"
+  },
+  {
+    "word": "brutalism",
+    "pos": "noun",
+    "ipa": "/ˈbruːtəlɪzəm/",
+    "meaningVi": "chủ nghĩa Brutalism",
+    "definitionEn": "An architectural style using raw concrete and bold geometric forms, popular mid-century.",
+    "example": "Brutalism divides critics, with some admiring its bold concrete forms and others condemning them.",
+    "collocation": "Brutalism architecture",
+    "cefr": "C1"
+  },
+  {
+    "word": "modernism",
+    "pos": "noun",
+    "ipa": "/ˈmɒdənɪzəm/",
+    "meaningVi": "chủ nghĩa hiện đại (kiến trúc)",
+    "definitionEn": "A movement favouring clean lines, function and new materials over traditional ornament.",
+    "example": "Modernism rejected decorative ornament in favour of honest, functional design.",
+    "collocation": "classic modernism",
+    "cefr": "C1"
+  },
+  {
+    "word": "postmodern",
+    "pos": "adjective",
+    "ipa": "/ˌpəʊstˈmɒdn/",
+    "meaningVi": "hậu hiện đại",
+    "definitionEn": "Relating to a style that playfully mixes historical references with modern forms.",
+    "example": "The postmodern office block playfully quotes classical columns in bright pastel colours.",
+    "collocation": "postmodern design",
+    "cefr": "C1"
+  },
+  {
+    "word": "gothic",
+    "pos": "adjective",
+    "ipa": "/ˈɡɒθɪk/",
+    "meaningVi": "thuộc kiểu Gothic",
+    "definitionEn": "Relating to a medieval style with pointed arches and soaring vaulted interiors.",
+    "example": "Gothic cathedrals feature soaring pointed arches and dramatic stained glass.",
+    "collocation": "gothic cathedral",
+    "cefr": "C1"
+  },
+  {
+    "word": "baroque",
+    "pos": "adjective",
+    "ipa": "/bəˈrɒk/",
+    "meaningVi": "thuộc kiểu Baroque",
+    "definitionEn": "Relating to an ornate seventeenth-century style marked by dramatic curves and decoration.",
+    "example": "The baroque palace is famous for its dramatic curves and gilded ceilings.",
+    "collocation": "baroque palace",
+    "cefr": "C1"
+  },
+  {
+    "word": "neoclassical",
+    "pos": "adjective",
+    "ipa": "/ˌniːəʊˈklæsɪkl/",
+    "meaningVi": "tân cổ điển",
+    "definitionEn": "Relating to a style that revives classical Greek and Roman forms in later architecture.",
+    "example": "The neoclassical museum features a grand portico supported by tall white columns.",
+    "collocation": "neoclassical portico",
+    "cefr": "C1"
+  },
+  {
+    "word": "portico",
+    "pos": "noun",
+    "ipa": "/ˈpɔːtɪkəʊ/",
+    "meaningVi": "hiên cột trước nhà",
+    "definitionEn": "A porch with a roof supported by columns, forming the entrance to a building.",
+    "example": "Visitors climb the wide steps to reach the portico of the bank.",
+    "collocation": "grand portico",
+    "cefr": "C1"
+  },
+  {
+    "word": "vestibule",
+    "pos": "noun",
+    "ipa": "/ˈvestɪbjuːl/",
+    "meaningVi": "tiền sảnh",
+    "definitionEn": "A small entrance hall or lobby leading from the outside into a larger building.",
+    "example": "We waited in the marble vestibule until the guide arrived to greet us.",
+    "collocation": "marble vestibule",
+    "cefr": "C1"
+  },
+  {
+    "word": "gallery",
+    "pos": "noun",
+    "ipa": "/ˈɡæləri/",
+    "meaningVi": "ban công dài, phòng trưng bày",
+    "definitionEn": "A long covered passage, or an elevated balcony overlooking a large interior space.",
+    "example": "The upper gallery overlooks the great hall, where musicians once performed.",
+    "collocation": "upper gallery",
+    "cefr": "C1"
+  },
+  {
+    "word": "rotunda",
+    "pos": "noun",
+    "ipa": "/rəʊˈtʌndə/",
+    "meaningVi": "nhà tròn có mái vòm",
+    "definitionEn": "A circular building or room, usually topped with a dome.",
+    "example": "The rotunda's dome is lit by a ring of windows that bathe the floor in light.",
+    "collocation": "circular rotunda",
+    "cefr": "C1"
+  },
+  {
+    "word": "bailey",
+    "pos": "noun",
+    "ipa": "/ˈbeɪli/",
+    "meaningVi": "khu sân trong lâu đài",
+    "definitionEn": "The open courtyard enclosed by the outer walls of a medieval castle.",
+    "example": "Knights trained in the bailey while servants carried water from the well.",
+    "collocation": "castle bailey",
+    "cefr": "C1"
+  },
+  {
+    "word": "keep",
+    "pos": "noun",
+    "ipa": "/kiːp/",
+    "meaningVi": "tháp chính lâu đài",
+    "definitionEn": "The strongest central tower of a medieval castle, used as a last refuge.",
+    "example": "Defenders retreated to the keep when the outer walls were finally breached.",
+    "collocation": "castle keep",
+    "cefr": "C1"
+  },
+  {
+    "word": "moat",
+    "pos": "noun",
+    "ipa": "/məʊt/",
+    "meaningVi": "hào nước",
+    "definitionEn": "A deep, water-filled ditch that surrounds a castle as a defence.",
+    "example": "A drawbridge crossed the moat, which was filled with murky water and reeds.",
+    "collocation": "water-filled moat",
+    "cefr": "C1"
+  },
+  {
+    "word": "rampart",
+    "pos": "noun",
+    "ipa": "/ˈræmpɑːt/",
+    "meaningVi": "lũy thành, tường thành",
+    "definitionEn": "A high defensive wall with a walkway on top, surrounding a fortified site.",
+    "example": "Guards patrolled the rampart at night, watching the valley below for intruders.",
+    "collocation": "stone rampart",
+    "cefr": "C1"
+  },
+  {
+    "word": "embrasure",
+    "pos": "noun",
+    "ipa": "/ɪmˈbreɪʒə/",
+    "meaningVi": "lỗ châu mai",
+    "definitionEn": "A notch or opening in a parapet through which soldiers could shoot.",
+    "example": "Archers aimed through narrow embrasures cut into the fortress walls.",
+    "collocation": "narrow embrasure",
+    "cefr": "C1"
+  },
+  {
+    "word": "brownstone",
+    "pos": "noun",
+    "ipa": "/ˈbraʊnstəʊn/",
+    "meaningVi": "đá nâu, nhà phố đá nâu",
+    "definitionEn": "A reddish-brown sandstone commonly used for building townhouses in cities.",
+    "example": "Rows of brownstone townhouses line the quiet, tree-filled street.",
+    "collocation": "brownstone townhouse",
+    "cefr": "C1"
+  },
+  {
+    "word": "adobe",
+    "pos": "noun",
+    "ipa": "/əˈdəʊbi/",
+    "meaningVi": "gạch bùn rơm (adobe)",
+    "definitionEn": "Sun-dried clay bricks used as a building material in hot, dry regions.",
+    "example": "Villagers built their homes from adobe, which keeps interiors cool in the desert heat.",
+    "collocation": "adobe walls",
+    "cefr": "C1"
+  },
+  {
+    "word": "lattice",
+    "pos": "noun",
+    "ipa": "/ˈlætɪs/",
+    "meaningVi": "mạng lưới, song chắn",
+    "definitionEn": "A framework of crossing strips of wood or metal, used as a screen or support.",
+    "example": "A wooden lattice screen filtered the sunlight across the courtyard floor.",
+    "collocation": "wooden lattice",
+    "cefr": "C1"
+  },
+  {
+    "word": "aperture",
+    "pos": "noun",
+    "ipa": "/ˈæpətʃə/",
+    "meaningVi": "lỗ hở, khe mở",
+    "definitionEn": "An opening or gap, such as a window, door or vent, that lets in light or air.",
+    "example": "A small aperture in the dome lets natural light fall onto the altar.",
+    "collocation": "narrow aperture",
+    "cefr": "C1"
+  },
+  {
+    "word": "corbel",
+    "pos": "noun",
+    "ipa": "/ˈkɔːbl/",
+    "meaningVi": "rầm đỡ mũi",
+    "definitionEn": "A projecting block of stone or wood that supports a weight such as a beam.",
+    "example": "Carved stone corbels support the wooden beams of the medieval great hall.",
+    "collocation": "stone corbel",
+    "cefr": "C1"
+  },
+  {
+    "word": "caisson",
+    "pos": "noun",
+    "ipa": "/ˈkeɪsɒn/",
+    "meaningVi": "khoang chìm, giếng chìm",
+    "definitionEn": "A watertight chamber used to build structures underwater or in soft ground.",
+    "example": "Workers descended into the caisson to dig the bridge pier beneath the riverbed.",
+    "collocation": "pneumatic caisson",
+    "cefr": "C1"
+  },
+  {
+    "word": "pilaster",
+    "pos": "noun",
+    "ipa": "/pɪˈlæstə/",
+    "meaningVi": "cột ốp tường",
+    "definitionEn": "A flat column projecting slightly from a wall, purely decorative or structural.",
+    "example": "Flat pilasters divide the front wall into sections, framing each of the tall windows.",
+    "collocation": "fluted pilaster",
+    "cefr": "C1"
+  },
+  {
+    "word": "entablature",
+    "pos": "noun",
+    "ipa": "/ɪnˈtæblətʃə/",
+    "meaningVi": "phần dầm trên cột cổ điển",
+    "definitionEn": "The horizontal superstructure resting on columns in classical architecture.",
+    "example": "The entablature above the columns is decorated with carved friezes of athletes.",
+    "collocation": "classical entablature",
+    "cefr": "C1"
+  },
+  {
+    "word": "frieze",
+    "pos": "noun",
+    "ipa": "/friːz/",
+    "meaningVi": "phù điêu dải trang trí",
+    "definitionEn": "A horizontal band of sculpture or decoration running along the upper part of a wall.",
+    "example": "A carved frieze depicting a procession runs around the top of the temple.",
+    "collocation": "sculpted frieze",
+    "cefr": "C1"
+  },
+  {
+    "word": "hypostyle",
+    "pos": "noun",
+    "ipa": "/ˈhaɪpəstaɪl/",
+    "meaningVi": "sảnh nhiều cột",
+    "definitionEn": "A large hall with a roof supported by many columns, common in ancient temples.",
+    "example": "The hypostyle hall at the temple is filled with hundreds of massive stone columns.",
+    "collocation": "hypostyle hall",
+    "cefr": "C1"
+  },
+  {
+    "word": "mansard",
+    "pos": "noun",
+    "ipa": "/ˈmænsɑːd/",
+    "meaningVi": "mái Mansard",
+    "definitionEn": "A roof with a double slope on each side, the lower slope steeper than the upper.",
+    "example": "The mansard roof gave the Parisian apartments an elegant, sloping profile.",
+    "collocation": "mansard roof",
+    "cefr": "C1"
+  },
+  {
+    "word": "ogee",
+    "pos": "noun",
+    "ipa": "/ˈəʊdʒiː/",
+    "meaningVi": "đường cong hình S",
+    "definitionEn": "A moulding shaped like an S-curve, with concave and convex sections.",
+    "example": "The arched doorway is framed by an elegant ogee profile carved in pale limestone.",
+    "collocation": "ogee arch",
+    "cefr": "C2"
+  },
+  {
+    "word": "machicolation",
+    "pos": "noun",
+    "ipa": "/məˌtʃɪkəˈleɪʃn/",
+    "meaningVi": "lỗ châu mai trên tường thành",
+    "definitionEn": "An opening in a castle parapet through which defenders dropped missiles.",
+    "example": "Defenders dropped stones through the machicolations onto the attacking soldiers below.",
+    "collocation": "stone machicolation",
+    "cefr": "C2"
+  },
+  {
+    "word": "crenellation",
+    "pos": "noun",
+    "ipa": "/ˌkrenəˈleɪʃn/",
+    "meaningVi": "răng cưa tường thành",
+    "definitionEn": "A parapet with alternating raised sections and gaps, used on fortified walls.",
+    "example": "The crenellations along the battlements gave archers cover while they fired.",
+    "collocation": "castle crenellation",
+    "cefr": "C2"
+  },
+  {
+    "word": "barbican",
+    "pos": "noun",
+    "ipa": "/ˈbɑːbɪkən/",
+    "meaningVi": "tháp canh tiền đồn",
+    "definitionEn": "A fortified outer gateway or watchtower guarding the entrance to a castle.",
+    "example": "Travellers passed beneath the barbican, where guards checked every cart and rider.",
+    "collocation": "stone barbican",
+    "cefr": "C2"
+  },
+  {
+    "word": "hypocaust",
+    "pos": "noun",
+    "ipa": "/ˈhaɪpəkɔːst/",
+    "meaningVi": "hệ thống sưởi dưới sàn La Mã",
+    "definitionEn": "An ancient Roman underfloor heating system using hot air channelled beneath the floors.",
+    "example": "Archaeologists uncovered a hypocaust beneath the villa, its clay pillars still intact.",
+    "collocation": "Roman hypocaust",
+    "cefr": "C2"
+  },
+  {
+    "word": "solarium",
+    "pos": "noun",
+    "ipa": "/səʊˈleəriəm/",
+    "meaningVi": "phòng tắm nắng",
+    "definitionEn": "A glass-enclosed room or terrace designed to collect and enjoy sunlight.",
+    "example": "A solarium on the top floor floods the flat with warmth throughout winter.",
+    "collocation": "glass solarium",
+    "cefr": "C2"
+  },
+  {
+    "word": "oriel",
+    "pos": "noun",
+    "ipa": "/ˈɔːriəl/",
+    "meaningVi": "cửa sổ lồi nhô ra",
+    "definitionEn": "A bay window projecting from an upper storey, supported by brackets or corbels.",
+    "example": "An oriel window projects over the street, letting the scholar watch passing carriages.",
+    "collocation": "oriel window",
+    "cefr": "C2"
+  },
+  {
+    "word": "dormer",
+    "pos": "noun",
+    "ipa": "/ˈdɔːmə/",
+    "meaningVi": "cửa sổ mái nhô",
+    "definitionEn": "A window set vertically in a sloping roof, projecting from the roof surface.",
+    "example": "Two dormer windows peer out from the steep slate roof of the cottage.",
+    "collocation": "dormer window",
+    "cefr": "C2"
+  },
+  {
+    "word": "quoin",
+    "pos": "noun",
+    "ipa": "/kwɔɪn/",
+    "meaningVi": "góc tường đá",
+    "definitionEn": "A cornerstone or external angle of a building, often decorated or emphasised.",
+    "example": "Rusticated quoins emphasise the corners of the palazzo's rough stone walls.",
+    "collocation": "rusticated quoin",
+    "cefr": "C2"
+  },
+  {
+    "word": "rustication",
+    "pos": "noun",
+    "ipa": "/ˌrʌstɪˈkeɪʃn/",
+    "meaningVi": "kỹ thuật đá thô tạo rãnh",
+    "definitionEn": "Deliberately rough stonework with recessed joints, creating a bold textured effect.",
+    "example": "The rustication of the lower storey lends the palace a formidable, fortress-like appearance.",
+    "collocation": "stone rustication",
+    "cefr": "C2"
+  },
+  {
+    "word": "ashlar",
+    "pos": "noun",
+    "ipa": "/ˈæʃlə/",
+    "meaningVi": "đá xây gọt vuông",
+    "definitionEn": "Smooth, square-cut stone blocks laid in regular courses to face a wall.",
+    "example": "The walls are faced with precisely cut ashlar, fitted without visible mortar.",
+    "collocation": "smooth ashlar",
+    "cefr": "C2"
+  },
+  {
+    "word": "rubble",
+    "pos": "noun",
+    "ipa": "/ˈrʌbl/",
+    "meaningVi": "đá vụn, gạch vụn",
+    "definitionEn": "Rough, broken stones or bricks used in building or left after demolition.",
+    "example": "Rubble masonry filled the core of the wall, faced with dressed stone on each side.",
+    "collocation": "rubble masonry",
+    "cefr": "C2"
+  },
+  {
+    "word": "masonry",
+    "pos": "noun",
+    "ipa": "/ˈmeɪsənri/",
+    "meaningVi": "công việc xây đá",
+    "definitionEn": "Stonework or brickwork in building, or the craft of working with stone.",
+    "example": "Skilled masonry work preserved the chapel's walls through five centuries of weather.",
+    "collocation": "stone masonry",
+    "cefr": "C2"
+  },
+  {
+    "word": "mortise",
+    "pos": "noun",
+    "ipa": "/ˈmɔːtɪs/",
+    "meaningVi": "lỗ mộng",
+    "definitionEn": "A rectangular hole cut into timber to receive a corresponding tenon.",
+    "example": "The carpenter cut a deep mortise to join the two heavy oak beams securely.",
+    "collocation": "mortise joint",
+    "cefr": "C2"
+  },
+  {
+    "word": "tenon",
+    "pos": "noun",
+    "ipa": "/ˈtenən/",
+    "meaningVi": "mộng gỗ",
+    "definitionEn": "A projecting tongue shaped to fit a mortise, used to join pieces of wood.",
+    "example": "Each tenon slots precisely into its mortise, requiring no nails or glue.",
+    "collocation": "wooden tenon",
+    "cefr": "C2"
+  },
+  {
+    "word": "joinery",
+    "pos": "noun",
+    "ipa": "/ˈdʒɔɪnəri/",
+    "meaningVi": "nghề mộc, kết cấu gỗ",
+    "definitionEn": "Skilled woodwork involving the fitting of pieces together without nails.",
+    "example": "Fine joinery gives the staircase its smooth curves and seamless joints.",
+    "collocation": "fine joinery",
+    "cefr": "C2"
+  },
+  {
+    "word": "gantry",
+    "pos": "noun",
+    "ipa": "/ˈɡæntri/",
+    "meaningVi": "giàn cẩu, khung đỡ",
+    "definitionEn": "A raised framework supporting machinery, cranes or walkways over a site.",
+    "example": "A steel gantry carried the crane above the construction site all day.",
+    "collocation": "steel gantry",
+    "cefr": "C2"
+  },
+  {
+    "word": "pinnacle",
+    "pos": "noun",
+    "ipa": "/ˈpɪnəkl/",
+    "meaningVi": "chóp tháp nhọn",
+    "definitionEn": "A slender, pointed ornamental turret or peak crowning a Gothic structure.",
+    "example": "Each pinnacle on the cathedral's roofline is carved with a different saint.",
+    "collocation": "gothic pinnacle",
+    "cefr": "C2"
+  },
+  {
+    "word": "finial",
+    "pos": "noun",
+    "ipa": "/ˈfɪniəl/",
+    "meaningVi": "đỉnh trang trí",
+    "definitionEn": "An ornamental top or terminal, often carved, crowning a spire, gable or pinnacle.",
+    "example": "Bronze finials crown each gable, glinting in the late afternoon sun.",
+    "collocation": "bronze finial",
+    "cefr": "C2"
+  },
+  {
+    "word": "crocket",
+    "pos": "noun",
+    "ipa": "/ˈkrɒkɪt/",
+    "meaningVi": "họa tiết lá cuộn Gothic",
+    "definitionEn": "A carved ornament of curling leaves projecting along the edges of Gothic spires.",
+    "example": "Crockets curl up the sloping edges of the spire, carved in delicate stone foliage.",
+    "collocation": "stone crocket",
+    "cefr": "C2"
+  },
+  {
+    "word": "tracery",
+    "pos": "noun",
+    "ipa": "/ˈtreɪsəri/",
+    "meaningVi": "họa tiết chấn song đá",
+    "definitionEn": "Decorative stone patterns of intersecting ribs filling the upper part of a Gothic window.",
+    "example": "The delicate tracery in the window depicts flowers and interlaced geometric shapes.",
+    "collocation": "window tracery",
+    "cefr": "C2"
+  },
+  {
+    "word": "quatrefoil",
+    "pos": "noun",
+    "ipa": "/ˈkætrəfɔɪl/",
+    "meaningVi": "hình bốn cánh",
+    "definitionEn": "A four-lobed decorative shape used in tracery, panels and windows.",
+    "example": "A quatrefoil pattern is carved into the stone parapet above the doorway.",
+    "collocation": "carved quatrefoil",
+    "cefr": "C2"
+  },
+  {
+    "word": "groin",
+    "pos": "noun",
+    "ipa": "/ɡrɔɪn/",
+    "meaningVi": "đường giao nhau của hai vòm",
+    "definitionEn": "The curved line formed where two vaults intersect at right angles.",
+    "example": "Stone groins bind the ribs together, transferring the weight of the vault downward.",
+    "collocation": "vault groin",
+    "cefr": "C2"
+  },
+  {
+    "word": "intrados",
+    "pos": "noun",
+    "ipa": "/ˈɪntrədɒs/",
+    "meaningVi": "mặt trong của vòm",
+    "definitionEn": "The inner curved surface of an arch or vault, visible from below.",
+    "example": "Painted decoration covers the intrados of the arch, visible from the nave floor.",
+    "collocation": "arch intrados",
+    "cefr": "C2"
+  },
+  {
+    "word": "extrados",
+    "pos": "noun",
+    "ipa": "/ekˈstreɪdɒs/",
+    "meaningVi": "mặt ngoài của vòm",
+    "definitionEn": "The outer curved surface of an arch or vault, facing the outside.",
+    "example": "Water seeped into cracks along the extrados, weakening the stone arch over time.",
+    "collocation": "arch extrados",
+    "cefr": "C2"
+  },
+  {
+    "word": "voussoir",
+    "pos": "noun",
+    "ipa": "/ˈvuːswɑː/",
+    "meaningVi": "viên đá hình nêm của vòm",
+    "definitionEn": "One of the wedge-shaped stones forming the curve of an arch.",
+    "example": "Each voussoir was carefully cut to fit precisely into the arch's curve.",
+    "collocation": "keystone voussoir",
+    "cefr": "C2"
+  },
+  {
+    "word": "impost",
+    "pos": "noun",
+    "ipa": "/ˈɪmpəʊst/",
+    "meaningVi": "đệm chân vòm",
+    "definitionEn": "The bottom block or course from which an arch springs, resting on a pier or column.",
+    "example": "The arch springs from a carved impost resting on the slender stone pier.",
+    "collocation": "carved impost",
+    "cefr": "C2"
+  },
+  {
+    "word": "abacus",
+    "pos": "noun",
+    "ipa": "/ˈæbəkəs/",
+    "meaningVi": "phiến đầu cột",
+    "definitionEn": "The flat slab forming the uppermost member of a column's capital.",
+    "example": "The carved abacus above each column supports the heavy architrave beams.",
+    "collocation": "column abacus",
+    "cefr": "C2"
+  },
+  {
+    "word": "architrave",
+    "pos": "noun",
+    "ipa": "/ˈɑːkɪtreɪv/",
+    "meaningVi": "khung cửa chạm, dầm đỡ cột",
+    "definitionEn": "The moulded frame surrounding a door or window, or the beam resting on columns.",
+    "example": "A moulded architrave frames the doorway, drawing the eye toward the carved panel.",
+    "collocation": "moulded architrave",
+    "cefr": "C2"
+  },
+  {
+    "word": "pergola",
+    "pos": "noun",
+    "ipa": "/ˈpɜːɡələ/",
+    "meaningVi": "giàn leo trong vườn",
+    "definitionEn": "A garden structure with columns and cross-beams supporting climbing plants.",
+    "example": "Wisteria climbs over the wooden pergola, shading the garden seats beneath.",
+    "collocation": "wooden pergola",
+    "cefr": "C2"
+  },
+  {
+    "word": "gazebo",
+    "pos": "noun",
+    "ipa": "/ɡəˈziːbəʊ/",
+    "meaningVi": "chòi nghỉ ngoài vườn",
+    "definitionEn": "A freestanding, open-sided summerhouse or shelter in a garden or park.",
+    "example": "We read our books in the white gazebo at the far end of the garden.",
+    "collocation": "garden gazebo",
+    "cefr": "C2"
+  },
+  {
+    "word": "belvedere",
+    "pos": "noun",
+    "ipa": "/ˈbelvɪdɪə/",
+    "meaningVi": "đài ngắm cảnh",
+    "definitionEn": "A raised structure or room designed to offer an elevated view of the surroundings.",
+    "example": "From the belvedere on the hilltop, visitors can see the entire valley below.",
+    "collocation": "hilltop belvedere",
+    "cefr": "C2"
+  },
+  {
+    "word": "ziggurat",
+    "pos": "noun",
+    "ipa": "/ˈzɪɡʊræt/",
+    "meaningVi": "kim tự tháp bậc thang Lưỡng Hà",
+    "definitionEn": "A massive stepped tower of ancient Mesopotamia, built of mud brick.",
+    "example": "The ziggurat rose in tiers above the flat plain of ancient Ur.",
+    "collocation": "ancient ziggurat",
+    "cefr": "C2"
+  },
+  {
+    "word": "stupa",
+    "pos": "noun",
+    "ipa": "/ˈstuːpə/",
+    "meaningVi": "bảo tháp Phật giáo",
+    "definitionEn": "A dome-shaped Buddhist monument containing relics or sacred objects.",
+    "example": "Pilgrims circled the white stupa, spinning prayer wheels as they walked.",
+    "collocation": "white stupa",
+    "cefr": "C2"
+  },
+  {
+    "word": "pagoda",
+    "pos": "noun",
+    "ipa": "/pəˈɡəʊdə/",
+    "meaningVi": "chùa tháp nhiều tầng",
+    "definitionEn": "A tiered tower with curved eaves, typical of East Asian temples.",
+    "example": "The five-storey pagoda rises gracefully above the rice fields of the valley.",
+    "collocation": "tiered pagoda",
+    "cefr": "C2"
+  },
+  {
+    "word": "minaret",
+    "pos": "noun",
+    "ipa": "/ˌmɪnəˈret/",
+    "meaningVi": "tháp minaret",
+    "definitionEn": "A tall, slender tower attached to a mosque, from which the call to prayer is made.",
+    "example": "The muezzin climbed the minaret at dawn to call the faithful to prayer.",
+    "collocation": "tall minaret",
+    "cefr": "C2"
+  },
+  {
+    "word": "caryatid",
+    "pos": "noun",
+    "ipa": "/ˌkæriˈætɪd/",
+    "meaningVi": "tượng nữ trụ",
+    "definitionEn": "A sculpted female figure serving as a column supporting an entablature.",
+    "example": "Six caryatids support the porch of the temple, carved in graceful draped robes.",
+    "collocation": "carved caryatid",
+    "cefr": "C2"
+  },
+  {
+    "word": "telamon",
+    "pos": "noun",
+    "ipa": "/ˈteləmɒn/",
+    "meaningVi": "tượng nam trụ",
+    "definitionEn": "A sculpted male figure used as a column to support a roof or entablature.",
+    "example": "Massive telamon figures carry the weight of the balcony on their broad shoulders.",
+    "collocation": "stone telamon",
+    "cefr": "C2"
+  },
+  {
+    "word": "cartouche",
+    "pos": "noun",
+    "ipa": "/kɑːˈtuːʃ/",
+    "meaningVi": "khung trang trí hình bầu dục",
+    "definitionEn": "An ornamental panel or scroll-shaped frame bearing an inscription or coat of arms.",
+    "example": "A carved cartouche above the entrance bears the family's coat of arms.",
+    "collocation": "ornate cartouche",
+    "cefr": "C2"
+  },
+  {
+    "word": "trumeau",
+    "pos": "noun",
+    "ipa": "/ˈtruːməʊ/",
+    "meaningVi": "cột giữa cửa",
+    "definitionEn": "A central column supporting the lintel that divides a doorway into two openings.",
+    "example": "A sculpted trumeau divides the cathedral portal into two arched doorways.",
+    "collocation": "sculpted trumeau",
+    "cefr": "C2"
+  },
+  {
+    "word": "hypaethral",
+    "pos": "adjective",
+    "ipa": "/haɪˈpiːθrəl/",
+    "meaningVi": "lộ thiên, không mái ở giữa",
+    "definitionEn": "Describing a temple that is open to the sky in its centre.",
+    "example": "The hypaethral temple had an open courtyard that let rain fall into its sanctuary.",
+    "collocation": "hypaethral temple",
+    "cefr": "C2"
+  },
+  {
+    "word": "hypogeum",
+    "pos": "noun",
+    "ipa": "/ˌhaɪpəˈdʒiːəm/",
+    "meaningVi": "hầm mộ ngầm",
+    "definitionEn": "An underground chamber or tomb, typically cut into rock.",
+    "example": "Visitors descend into the hypogeum, a subterranean tomb carved deep beneath the hill.",
+    "collocation": "rock hypogeum",
+    "cefr": "C2"
+  },
+  {
+    "word": "cenotaph",
+    "pos": "noun",
+    "ipa": "/ˈsenətɑːf/",
+    "meaningVi": "đài tưởng niệm không có hài cốt",
+    "definitionEn": "A memorial monument to people buried elsewhere, without actual remains inside.",
+    "example": "The cenotaph in the square honours soldiers whose bodies were never recovered.",
+    "collocation": "war cenotaph",
+    "cefr": "C2"
+  },
+  {
+    "word": "mastaba",
+    "pos": "noun",
+    "ipa": "/ˈmæstəbə/",
+    "meaningVi": "mộ phẳng Ai Cập cổ",
+    "definitionEn": "An ancient Egyptian flat-roofed tomb with sloping sides, built of mud brick or stone.",
+    "example": "The mastaba's sloping walls once concealed the burial chamber of a royal official.",
+    "collocation": "Egyptian mastaba",
+    "cefr": "C2"
+  }
+]

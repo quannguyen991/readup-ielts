@@ -1,0 +1,1194 @@
+[
+  {
+    "word": "biocomputing",
+    "synonyms": [
+      "biological computing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cloud computing",
+    "synonyms": [
+      "cloud services",
+      "remote computing"
+    ],
+    "antonyms": [
+      "on-premises computing"
+    ]
+  },
+  {
+    "word": "facial recognition",
+    "synonyms": [
+      "face recognition",
+      "facial identification"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "firewall",
+    "synonyms": [
+      "security gateway",
+      "network security barrier"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "interface",
+    "synonyms": [
+      "user interface",
+      "front end"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "internet of things",
+    "synonyms": [
+      "IoT",
+      "connected devices"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quantum computing",
+    "synonyms": [
+      "quantum processing"
+    ],
+    "antonyms": [
+      "classical computing"
+    ]
+  },
+  {
+    "word": "robotics",
+    "synonyms": [
+      "robotic engineering",
+      "automation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "virtual reality",
+    "synonyms": [
+      "VR",
+      "immersive simulation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biometric",
+    "synonyms": [
+      "physiological",
+      "biometrical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "browser",
+    "synonyms": [
+      "web browser",
+      "web client"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "digitisation",
+    "synonyms": [
+      "digitalisation",
+      "conversion to digital"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "user-generated content",
+    "synonyms": [
+      "UGC",
+      "crowdsourced content"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phone",
+    "synonyms": [
+      "mobile",
+      "handset"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "computer",
+    "synonyms": [
+      "PC",
+      "workstation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "laptop",
+    "synonyms": [
+      "notebook",
+      "portable computer"
+    ],
+    "antonyms": [
+      "desktop"
+    ]
+  },
+  {
+    "word": "app",
+    "synonyms": [
+      "application",
+      "program"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "website",
+    "synonyms": [
+      "web site",
+      "web page"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "email",
+    "synonyms": [
+      "e-mail",
+      "electronic message"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "download",
+    "synonyms": [
+      "retrieve",
+      "fetch"
+    ],
+    "antonyms": [
+      "upload"
+    ]
+  },
+  {
+    "word": "upload",
+    "synonyms": [
+      "send",
+      "transmit"
+    ],
+    "antonyms": [
+      "download"
+    ]
+  },
+  {
+    "word": "screen",
+    "synonyms": [
+      "display",
+      "monitor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "battery",
+    "synonyms": [
+      "cell",
+      "power pack"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "keyboard",
+    "synonyms": [
+      "keypad",
+      "input device"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "password",
+    "synonyms": [
+      "passcode",
+      "access code"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "message",
+    "synonyms": [
+      "text",
+      "communication"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "camera",
+    "synonyms": [
+      "webcam",
+      "video recorder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "robot",
+    "synonyms": [
+      "automaton",
+      "android"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "internet",
+    "synonyms": [
+      "web",
+      "online network"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "online",
+    "synonyms": [
+      "connected",
+      "digital"
+    ],
+    "antonyms": [
+      "offline"
+    ]
+  },
+  {
+    "word": "software",
+    "synonyms": [
+      "programs",
+      "applications"
+    ],
+    "antonyms": [
+      "hardware"
+    ]
+  },
+  {
+    "word": "charge",
+    "synonyms": [
+      "recharge",
+      "power up"
+    ],
+    "antonyms": [
+      "discharge"
+    ]
+  },
+  {
+    "word": "search",
+    "synonyms": [
+      "look up",
+      "seek"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "click",
+    "synonyms": [
+      "press",
+      "tap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "device",
+    "synonyms": [
+      "gadget",
+      "appliance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "data",
+    "synonyms": [
+      "information",
+      "figures"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smartphone",
+    "synonyms": [
+      "mobile phone",
+      "cell phone"
+    ],
+    "antonyms": [
+      "feature phone"
+    ]
+  },
+  {
+    "word": "virtual",
+    "synonyms": [
+      "digital",
+      "simulated"
+    ],
+    "antonyms": [
+      "physical"
+    ]
+  },
+  {
+    "word": "compatible",
+    "synonyms": [
+      "interoperable",
+      "supported"
+    ],
+    "antonyms": [
+      "incompatible"
+    ]
+  },
+  {
+    "word": "sensor",
+    "synonyms": [
+      "detector",
+      "transducer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chip",
+    "synonyms": [
+      "microchip",
+      "integrated circuit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "update",
+    "synonyms": [
+      "upgrade",
+      "patch"
+    ],
+    "antonyms": [
+      "downgrade"
+    ]
+  },
+  {
+    "word": "subscribe",
+    "synonyms": [
+      "sign up",
+      "register"
+    ],
+    "antonyms": [
+      "unsubscribe"
+    ]
+  },
+  {
+    "word": "stream",
+    "synonyms": [
+      "broadcast",
+      "transmit"
+    ],
+    "antonyms": [
+      "download"
+    ]
+  },
+  {
+    "word": "notification",
+    "synonyms": [
+      "alert",
+      "reminder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "backup",
+    "synonyms": [
+      "copy",
+      "duplicate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glitch",
+    "synonyms": [
+      "bug",
+      "fault"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crash",
+    "synonyms": [
+      "freeze",
+      "fail"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tablet",
+    "synonyms": [
+      "slate",
+      "touchscreen device"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "navigation",
+    "synonyms": [
+      "wayfinding",
+      "routing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gigabyte",
+    "synonyms": [
+      "GB"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pixel",
+    "synonyms": [
+      "picture element",
+      "dot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "simulation",
+    "synonyms": [
+      "model",
+      "emulation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smartwatch",
+    "synonyms": [
+      "smart watch",
+      "wearable device"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "troubleshoot",
+    "synonyms": [
+      "diagnose",
+      "fix"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "debug",
+    "synonyms": [
+      "fix",
+      "correct"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "versatile",
+    "synonyms": [
+      "multipurpose",
+      "flexible"
+    ],
+    "antonyms": [
+      "specialised"
+    ]
+  },
+  {
+    "word": "algorithmic",
+    "synonyms": [
+      "computational",
+      "procedural"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cryptography",
+    "synonyms": [
+      "encryption",
+      "cryptology"
+    ],
+    "antonyms": [
+      "cryptanalysis"
+    ]
+  },
+  {
+    "word": "semiconductor",
+    "synonyms": [
+      "semiconducting material"
+    ],
+    "antonyms": [
+      "insulator"
+    ]
+  },
+  {
+    "word": "scalability",
+    "synonyms": [
+      "expandability",
+      "adaptability"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "integrate",
+    "synonyms": [
+      "combine",
+      "merge"
+    ],
+    "antonyms": [
+      "separate"
+    ]
+  },
+  {
+    "word": "obsolete",
+    "synonyms": [
+      "outdated",
+      "antiquated"
+    ],
+    "antonyms": [
+      "current"
+    ]
+  },
+  {
+    "word": "obsolescence",
+    "synonyms": [
+      "outdatedness",
+      "becoming outdated"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dystopian",
+    "synonyms": [
+      "bleak",
+      "nightmarish"
+    ],
+    "antonyms": [
+      "utopian"
+    ]
+  },
+  {
+    "word": "transparency",
+    "synonyms": [
+      "openness",
+      "clarity"
+    ],
+    "antonyms": [
+      "opacity",
+      "secrecy"
+    ]
+  },
+  {
+    "word": "scrutiny",
+    "synonyms": [
+      "examination",
+      "inspection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mainstream",
+    "synonyms": [
+      "conventional",
+      "popular"
+    ],
+    "antonyms": [
+      "fringe",
+      "niche"
+    ]
+  },
+  {
+    "word": "paradigm",
+    "synonyms": [
+      "model",
+      "framework"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disruptive",
+    "synonyms": [
+      "revolutionary",
+      "transformative"
+    ],
+    "antonyms": [
+      "conventional"
+    ]
+  },
+  {
+    "word": "prototype",
+    "synonyms": [
+      "mock-up",
+      "model"
+    ],
+    "antonyms": [
+      "finished product"
+    ]
+  },
+  {
+    "word": "cutting-edge",
+    "synonyms": [
+      "state-of-the-art",
+      "advanced"
+    ],
+    "antonyms": [
+      "outdated"
+    ]
+  },
+  {
+    "word": "incorporate",
+    "synonyms": [
+      "include",
+      "integrate"
+    ],
+    "antonyms": [
+      "exclude"
+    ]
+  },
+  {
+    "word": "deploy",
+    "synonyms": [
+      "roll out",
+      "implement"
+    ],
+    "antonyms": [
+      "decommission"
+    ]
+  },
+  {
+    "word": "proprietary",
+    "synonyms": [
+      "patented",
+      "closed-source"
+    ],
+    "antonyms": [
+      "open-source"
+    ]
+  },
+  {
+    "word": "open-source",
+    "synonyms": [
+      "free software",
+      "community-developed"
+    ],
+    "antonyms": [
+      "proprietary"
+    ]
+  },
+  {
+    "word": "authentication",
+    "synonyms": [
+      "verification",
+      "validation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vulnerability",
+    "synonyms": [
+      "weakness",
+      "security flaw"
+    ],
+    "antonyms": [
+      "robustness"
+    ]
+  },
+  {
+    "word": "throughput",
+    "synonyms": [
+      "capacity",
+      "output"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cache",
+    "synonyms": [
+      "buffer",
+      "temporary storage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pervasive",
+    "synonyms": [
+      "ubiquitous",
+      "widespread"
+    ],
+    "antonyms": [
+      "rare"
+    ]
+  },
+  {
+    "word": "feasibility",
+    "synonyms": [
+      "practicality",
+      "viability"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "monitor",
+    "synonyms": [
+      "track",
+      "observe"
+    ],
+    "antonyms": [
+      "ignore"
+    ]
+  },
+  {
+    "word": "intrusive",
+    "synonyms": [
+      "invasive",
+      "obtrusive"
+    ],
+    "antonyms": [
+      "unobtrusive"
+    ]
+  },
+  {
+    "word": "replicate",
+    "synonyms": [
+      "reproduce",
+      "duplicate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ethical",
+    "synonyms": [
+      "moral",
+      "principled"
+    ],
+    "antonyms": [
+      "unethical"
+    ]
+  },
+  {
+    "word": "customise",
+    "synonyms": [
+      "personalise",
+      "tailor"
+    ],
+    "antonyms": [
+      "standardise"
+    ]
+  },
+  {
+    "word": "iterate",
+    "synonyms": [
+      "repeat",
+      "refine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ergonomic",
+    "synonyms": [
+      "user-friendly",
+      "anatomically designed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ineluctable",
+    "synonyms": [
+      "inescapable",
+      "inevitable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obviate",
+    "synonyms": [
+      "eliminate",
+      "preclude"
+    ],
+    "antonyms": [
+      "necessitate"
+    ]
+  },
+  {
+    "word": "recalcitrant",
+    "synonyms": [
+      "obstinate",
+      "stubborn"
+    ],
+    "antonyms": [
+      "compliant"
+    ]
+  },
+  {
+    "word": "ramification",
+    "synonyms": [
+      "consequence",
+      "implication"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anachronistic",
+    "synonyms": [
+      "outdated",
+      "archaic"
+    ],
+    "antonyms": [
+      "contemporary"
+    ]
+  },
+  {
+    "word": "perfunctory",
+    "synonyms": [
+      "cursory",
+      "superficial"
+    ],
+    "antonyms": [
+      "thorough"
+    ]
+  },
+  {
+    "word": "labyrinthine",
+    "synonyms": [
+      "convoluted",
+      "intricate"
+    ],
+    "antonyms": [
+      "straightforward"
+    ]
+  },
+  {
+    "word": "nascent",
+    "synonyms": [
+      "emerging",
+      "budding"
+    ],
+    "antonyms": [
+      "mature"
+    ]
+  },
+  {
+    "word": "luddite",
+    "synonyms": [
+      "technophobe"
+    ],
+    "antonyms": [
+      "technophile"
+    ]
+  },
+  {
+    "word": "technophobe",
+    "synonyms": [
+      "luddite"
+    ],
+    "antonyms": [
+      "technophile"
+    ]
+  },
+  {
+    "word": "technocracy",
+    "synonyms": [
+      "rule by experts",
+      "expert governance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ascendancy",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "word": "incipient",
+    "synonyms": [
+      "emerging",
+      "developing"
+    ],
+    "antonyms": [
+      "established"
+    ]
+  },
+  {
+    "word": "hegemony",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "subordination"
+    ]
+  },
+  {
+    "word": "dichotomy",
+    "synonyms": [
+      "division",
+      "polarity"
+    ],
+    "antonyms": [
+      "synthesis"
+    ]
+  },
+  {
+    "word": "epitome",
+    "synonyms": [
+      "embodiment",
+      "personification"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conundrum",
+    "synonyms": [
+      "puzzle",
+      "dilemma"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "panacea",
+    "synonyms": [
+      "cure-all",
+      "magic bullet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solipsistic",
+    "synonyms": [
+      "self-centred",
+      "egocentric"
+    ],
+    "antonyms": [
+      "altruistic"
+    ]
+  },
+  {
+    "word": "fastidious",
+    "synonyms": [
+      "meticulous",
+      "fussy"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "quixotic",
+    "synonyms": [
+      "idealistic",
+      "romantic"
+    ],
+    "antonyms": [
+      "pragmatic"
+    ]
+  },
+  {
+    "word": "orwellian",
+    "synonyms": [
+      "totalitarian",
+      "authoritarian"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kafkaesque",
+    "synonyms": [
+      "absurd",
+      "nightmarish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insidious",
+    "synonyms": [
+      "stealthy",
+      "treacherous"
+    ],
+    "antonyms": [
+      "overt"
+    ]
+  },
+  {
+    "word": "bespoke",
+    "synonyms": [
+      "custom-made",
+      "tailor-made"
+    ],
+    "antonyms": [
+      "mass-produced"
+    ]
+  },
+  {
+    "word": "ersatz",
+    "synonyms": [
+      "artificial",
+      "imitation"
+    ],
+    "antonyms": [
+      "genuine"
+    ]
+  },
+  {
+    "word": "vestigial",
+    "synonyms": [
+      "rudimentary",
+      "residual"
+    ],
+    "antonyms": [
+      "fully developed"
+    ]
+  },
+  {
+    "word": "neologism",
+    "synonyms": [
+      "new word",
+      "coinage"
+    ],
+    "antonyms": [
+      "archaism"
+    ]
+  },
+  {
+    "word": "vicissitude",
+    "synonyms": [
+      "fluctuation",
+      "upheaval"
+    ],
+    "antonyms": [
+      "stability"
+    ]
+  },
+  {
+    "word": "plethora",
+    "synonyms": [
+      "abundance",
+      "glut"
+    ],
+    "antonyms": [
+      "dearth"
+    ]
+  },
+  {
+    "word": "bellwether",
+    "synonyms": [
+      "indicator",
+      "trendsetter"
+    ],
+    "antonyms": [
+      "laggard"
+    ]
+  },
+  {
+    "word": "harbinger",
+    "synonyms": [
+      "forerunner",
+      "herald"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vertiginous",
+    "synonyms": [
+      "dizzying",
+      "rapid"
+    ],
+    "antonyms": [
+      "gradual"
+    ]
+  },
+  {
+    "word": "arcane",
+    "synonyms": [
+      "esoteric",
+      "obscure"
+    ],
+    "antonyms": [
+      "familiar"
+    ]
+  },
+  {
+    "word": "precipitous",
+    "synonyms": [
+      "steep",
+      "sudden"
+    ],
+    "antonyms": [
+      "gradual"
+    ]
+  },
+  {
+    "word": "cacophony",
+    "synonyms": [
+      "din",
+      "clamour"
+    ],
+    "antonyms": [
+      "harmony"
+    ]
+  },
+  {
+    "word": "juggernaut",
+    "synonyms": [
+      "colossus",
+      "behemoth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cornucopia",
+    "synonyms": [
+      "abundance",
+      "plenty"
+    ],
+    "antonyms": [
+      "scarcity"
+    ]
+  },
+  {
+    "word": "maelstrom",
+    "synonyms": [
+      "whirlpool",
+      "turmoil"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "overwritten manuscript",
+      "layered text"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ontology",
+    "synonyms": [
+      "taxonomy",
+      "classification system"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catalyst",
+    "synonyms": [
+      "trigger",
+      "stimulus"
+    ],
+    "antonyms": [
+      "inhibitor"
+    ]
+  },
+  {
+    "word": "demiurge",
+    "synonyms": [
+      "creator",
+      "architect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mercurial",
+    "synonyms": [
+      "volatile",
+      "capricious"
+    ],
+    "antonyms": [
+      "steady"
+    ]
+  }
+]

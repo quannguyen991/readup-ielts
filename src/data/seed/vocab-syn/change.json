@@ -1,0 +1,1345 @@
+[
+  {
+    "word": "grow",
+    "synonyms": [
+      "expand",
+      "develop",
+      "mature"
+    ],
+    "antonyms": [
+      "shrink",
+      "decline"
+    ]
+  },
+  {
+    "word": "build",
+    "synonyms": [
+      "construct",
+      "erect",
+      "assemble"
+    ],
+    "antonyms": [
+      "demolish",
+      "dismantle"
+    ]
+  },
+  {
+    "word": "start",
+    "synonyms": [
+      "commence",
+      "initiate",
+      "launch"
+    ],
+    "antonyms": [
+      "end",
+      "finish"
+    ]
+  },
+  {
+    "word": "begin",
+    "synonyms": [
+      "commence",
+      "initiate",
+      "launch"
+    ],
+    "antonyms": [
+      "conclude",
+      "finish"
+    ]
+  },
+  {
+    "word": "end",
+    "synonyms": [
+      "conclusion",
+      "termination",
+      "finish"
+    ],
+    "antonyms": [
+      "beginning",
+      "start"
+    ]
+  },
+  {
+    "word": "increase",
+    "synonyms": [
+      "rise",
+      "grow",
+      "escalate"
+    ],
+    "antonyms": [
+      "decrease",
+      "reduce"
+    ]
+  },
+  {
+    "word": "reduce",
+    "synonyms": [
+      "decrease",
+      "cut",
+      "lessen"
+    ],
+    "antonyms": [
+      "increase",
+      "raise"
+    ]
+  },
+  {
+    "word": "improve",
+    "synonyms": [
+      "enhance",
+      "upgrade",
+      "ameliorate"
+    ],
+    "antonyms": [
+      "worsen",
+      "deteriorate"
+    ]
+  },
+  {
+    "word": "develop",
+    "synonyms": [
+      "evolve",
+      "grow",
+      "advance"
+    ],
+    "antonyms": [
+      "regress",
+      "stagnate"
+    ]
+  },
+  {
+    "word": "new",
+    "synonyms": [
+      "novel",
+      "fresh",
+      "recent"
+    ],
+    "antonyms": [
+      "old",
+      "outdated"
+    ]
+  },
+  {
+    "word": "old",
+    "synonyms": [
+      "aged",
+      "antiquated"
+    ],
+    "antonyms": [
+      "new",
+      "modern"
+    ]
+  },
+  {
+    "word": "modern",
+    "synonyms": [
+      "contemporary",
+      "current",
+      "up-to-date"
+    ],
+    "antonyms": [
+      "old",
+      "ancient"
+    ]
+  },
+  {
+    "word": "different",
+    "synonyms": [
+      "distinct",
+      "dissimilar",
+      "alternative"
+    ],
+    "antonyms": [
+      "identical",
+      "similar"
+    ]
+  },
+  {
+    "word": "popular",
+    "synonyms": [
+      "fashionable",
+      "favoured",
+      "trendy"
+    ],
+    "antonyms": [
+      "unpopular",
+      "obscure"
+    ]
+  },
+  {
+    "word": "invent",
+    "synonyms": [
+      "devise",
+      "create",
+      "originate"
+    ],
+    "antonyms": [
+      "copy",
+      "imitate"
+    ]
+  },
+  {
+    "word": "replace",
+    "synonyms": [
+      "substitute",
+      "supersede",
+      "succeed"
+    ],
+    "antonyms": [
+      "retain",
+      "keep"
+    ]
+  },
+  {
+    "word": "move",
+    "synonyms": [
+      "relocate",
+      "shift",
+      "transfer"
+    ],
+    "antonyms": [
+      "remain",
+      "stay"
+    ]
+  },
+  {
+    "word": "rise",
+    "synonyms": [
+      "increase",
+      "climb",
+      "escalate"
+    ],
+    "antonyms": [
+      "fall",
+      "decline"
+    ]
+  },
+  {
+    "word": "fade",
+    "synonyms": [
+      "dim",
+      "wane",
+      "diminish"
+    ],
+    "antonyms": [
+      "brighten",
+      "intensify"
+    ]
+  },
+  {
+    "word": "dramatic",
+    "synonyms": [
+      "striking",
+      "sudden"
+    ],
+    "antonyms": [
+      "gradual",
+      "subtle"
+    ]
+  },
+  {
+    "word": "drastic",
+    "synonyms": [
+      "radical",
+      "extreme",
+      "severe"
+    ],
+    "antonyms": [
+      "gradual",
+      "moderate"
+    ]
+  },
+  {
+    "word": "obsolete",
+    "synonyms": [
+      "outmoded",
+      "defunct",
+      "antiquated"
+    ],
+    "antonyms": [
+      "current",
+      "modern"
+    ]
+  },
+  {
+    "word": "outdated",
+    "synonyms": [
+      "obsolete",
+      "old-fashioned",
+      "dated"
+    ],
+    "antonyms": [
+      "current",
+      "up-to-date"
+    ]
+  },
+  {
+    "word": "emerge",
+    "synonyms": [
+      "appear",
+      "surface",
+      "arise"
+    ],
+    "antonyms": [
+      "disappear",
+      "vanish"
+    ]
+  },
+  {
+    "word": "trend",
+    "synonyms": [
+      "tendency",
+      "movement",
+      "pattern"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accelerate",
+    "synonyms": [
+      "speed up",
+      "hasten",
+      "expedite"
+    ],
+    "antonyms": [
+      "decelerate",
+      "slow"
+    ]
+  },
+  {
+    "word": "flexible",
+    "synonyms": [
+      "adaptable",
+      "pliable",
+      "versatile"
+    ],
+    "antonyms": [
+      "rigid",
+      "inflexible"
+    ]
+  },
+  {
+    "word": "reshape",
+    "synonyms": [
+      "remodel",
+      "transform",
+      "restructure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disrupt",
+    "synonyms": [
+      "disturb",
+      "interrupt",
+      "upset"
+    ],
+    "antonyms": [
+      "stabilise",
+      "maintain"
+    ]
+  },
+  {
+    "word": "disruption",
+    "synonyms": [
+      "disturbance",
+      "interruption",
+      "upheaval"
+    ],
+    "antonyms": [
+      "continuity",
+      "stability"
+    ]
+  },
+  {
+    "word": "turnaround",
+    "synonyms": [
+      "recovery",
+      "revival",
+      "reversal"
+    ],
+    "antonyms": [
+      "decline",
+      "downturn"
+    ]
+  },
+  {
+    "word": "emerging",
+    "synonyms": [
+      "developing",
+      "budding",
+      "nascent"
+    ],
+    "antonyms": [
+      "established",
+      "declining"
+    ]
+  },
+  {
+    "word": "milestone",
+    "synonyms": [
+      "landmark",
+      "turning point",
+      "benchmark"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "landmark",
+    "synonyms": [
+      "milestone",
+      "breakthrough",
+      "watershed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pioneer",
+    "synonyms": [
+      "trailblazer",
+      "innovator",
+      "forerunner"
+    ],
+    "antonyms": [
+      "follower"
+    ]
+  },
+  {
+    "word": "stagnate",
+    "synonyms": [
+      "stall",
+      "languish",
+      "stop"
+    ],
+    "antonyms": [
+      "flourish",
+      "thrive"
+    ]
+  },
+  {
+    "word": "stagnation",
+    "synonyms": [
+      "stasis",
+      "inertia",
+      "standstill"
+    ],
+    "antonyms": [
+      "growth",
+      "progress"
+    ]
+  },
+  {
+    "word": "recession",
+    "synonyms": [
+      "downturn",
+      "depression"
+    ],
+    "antonyms": [
+      "boom",
+      "expansion"
+    ]
+  },
+  {
+    "word": "boom",
+    "synonyms": [
+      "surge",
+      "upswing",
+      "flourishing"
+    ],
+    "antonyms": [
+      "slump",
+      "recession"
+    ]
+  },
+  {
+    "word": "slump",
+    "synonyms": [
+      "decline",
+      "plunge",
+      "downturn"
+    ],
+    "antonyms": [
+      "boom",
+      "surge"
+    ]
+  },
+  {
+    "word": "sustainable",
+    "synonyms": [
+      "viable",
+      "durable",
+      "maintainable"
+    ],
+    "antonyms": [
+      "unsustainable"
+    ]
+  },
+  {
+    "word": "reinvent",
+    "synonyms": [
+      "remake",
+      "revamp",
+      "reshape"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trajectory",
+    "synonyms": [
+      "course",
+      "path",
+      "direction"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pivot",
+    "synonyms": [
+      "turning point",
+      "hinge",
+      "watershed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paradigm",
+    "synonyms": [
+      "model",
+      "framework",
+      "pattern"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catalyse",
+    "synonyms": [
+      "trigger",
+      "spark",
+      "accelerate"
+    ],
+    "antonyms": [
+      "inhibit",
+      "hinder"
+    ]
+  },
+  {
+    "word": "entrench",
+    "synonyms": [
+      "establish",
+      "consolidate",
+      "fix"
+    ],
+    "antonyms": [
+      "undermine",
+      "weaken"
+    ]
+  },
+  {
+    "word": "obsolescence",
+    "synonyms": [
+      "outdatedness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ephemeral",
+    "synonyms": [
+      "transitory",
+      "fleeting",
+      "short-lived"
+    ],
+    "antonyms": [
+      "permanent",
+      "enduring"
+    ]
+  },
+  {
+    "word": "transient",
+    "synonyms": [
+      "temporary",
+      "fleeting",
+      "brief"
+    ],
+    "antonyms": [
+      "permanent",
+      "lasting"
+    ]
+  },
+  {
+    "word": "perpetual",
+    "synonyms": [
+      "constant",
+      "perennial",
+      "everlasting"
+    ],
+    "antonyms": [
+      "temporary",
+      "intermittent"
+    ]
+  },
+  {
+    "word": "incipient",
+    "synonyms": [
+      "emerging",
+      "nascent",
+      "embryonic"
+    ],
+    "antonyms": [
+      "mature",
+      "established"
+    ]
+  },
+  {
+    "word": "burgeon",
+    "synonyms": [
+      "flourish",
+      "thrive",
+      "proliferate"
+    ],
+    "antonyms": [
+      "wither",
+      "decline"
+    ]
+  },
+  {
+    "word": "ameliorate",
+    "synonyms": [
+      "improve",
+      "alleviate",
+      "mitigate"
+    ],
+    "antonyms": [
+      "worsen",
+      "aggravate"
+    ]
+  },
+  {
+    "word": "consolidate",
+    "synonyms": [
+      "strengthen",
+      "unify",
+      "merge"
+    ],
+    "antonyms": [
+      "weaken",
+      "disperse"
+    ]
+  },
+  {
+    "word": "institutionalise",
+    "synonyms": [
+      "formalise",
+      "systematise",
+      "establish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reconfigure",
+    "synonyms": [
+      "restructure",
+      "rearrange",
+      "reorganise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amorphous",
+    "synonyms": [
+      "formless",
+      "shapeless",
+      "nebulous"
+    ],
+    "antonyms": [
+      "defined",
+      "structured"
+    ]
+  },
+  {
+    "word": "protracted",
+    "synonyms": [
+      "prolonged",
+      "lengthy",
+      "drawn-out"
+    ],
+    "antonyms": [
+      "brief",
+      "short"
+    ]
+  },
+  {
+    "word": "unabated",
+    "synonyms": [
+      "undiminished",
+      "unrelenting",
+      "sustained"
+    ],
+    "antonyms": [
+      "diminished",
+      "abated"
+    ]
+  },
+  {
+    "word": "reconcile",
+    "synonyms": [
+      "harmonise",
+      "align",
+      "resolve"
+    ],
+    "antonyms": [
+      "estrange",
+      "alienate"
+    ]
+  },
+  {
+    "word": "conducive",
+    "synonyms": [
+      "favourable",
+      "helpful",
+      "contributory"
+    ],
+    "antonyms": [
+      "detrimental",
+      "inimical"
+    ]
+  },
+  {
+    "word": "salient",
+    "synonyms": [
+      "prominent",
+      "conspicuous",
+      "notable"
+    ],
+    "antonyms": [
+      "minor",
+      "insignificant"
+    ]
+  },
+  {
+    "word": "contentious",
+    "synonyms": [
+      "controversial",
+      "disputed",
+      "debatable"
+    ],
+    "antonyms": [
+      "uncontroversial",
+      "undisputed"
+    ]
+  },
+  {
+    "word": "resilience",
+    "synonyms": [
+      "toughness",
+      "adaptability",
+      "endurance"
+    ],
+    "antonyms": [
+      "fragility",
+      "vulnerability"
+    ]
+  },
+  {
+    "word": "mutable",
+    "synonyms": [
+      "changeable",
+      "variable",
+      "fickle"
+    ],
+    "antonyms": [
+      "immutable",
+      "fixed"
+    ]
+  },
+  {
+    "word": "unforeseen",
+    "synonyms": [
+      "unexpected",
+      "unanticipated",
+      "sudden"
+    ],
+    "antonyms": [
+      "foreseeable",
+      "expected"
+    ]
+  },
+  {
+    "word": "vicissitude",
+    "synonyms": [
+      "fluctuation",
+      "vagary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impetus",
+    "synonyms": [
+      "momentum",
+      "stimulus",
+      "impulse"
+    ],
+    "antonyms": [
+      "restraint"
+    ]
+  },
+  {
+    "word": "sweeping",
+    "synonyms": [
+      "comprehensive",
+      "wide-ranging",
+      "far-reaching"
+    ],
+    "antonyms": [
+      "limited",
+      "narrow"
+    ]
+  },
+  {
+    "word": "transmute",
+    "synonyms": [
+      "transform",
+      "convert",
+      "metamorphose"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dynamism",
+    "synonyms": [
+      "energy",
+      "vitality",
+      "vigour"
+    ],
+    "antonyms": [
+      "lethargy",
+      "inertia"
+    ]
+  },
+  {
+    "word": "fluctuate",
+    "synonyms": [
+      "vary",
+      "oscillate",
+      "waver"
+    ],
+    "antonyms": [
+      "stabilise"
+    ]
+  },
+  {
+    "word": "stagnant",
+    "synonyms": [
+      "stale",
+      "stationary",
+      "inactive"
+    ],
+    "antonyms": [
+      "flowing",
+      "dynamic"
+    ]
+  },
+  {
+    "word": "recalibrate",
+    "synonyms": [
+      "readjust",
+      "realign",
+      "recalculate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ebb",
+    "synonyms": [
+      "recede",
+      "subside",
+      "wane"
+    ],
+    "antonyms": [
+      "flow",
+      "surge"
+    ]
+  },
+  {
+    "word": "sea change",
+    "synonyms": [
+      "paradigm shift",
+      "radical transformation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "intrinsic",
+    "synonyms": [
+      "inherent",
+      "innate",
+      "essential"
+    ],
+    "antonyms": [
+      "extrinsic",
+      "superficial"
+    ]
+  },
+  {
+    "word": "mutation",
+    "synonyms": [
+      "alteration",
+      "variation",
+      "transformation"
+    ],
+    "antonyms": [
+      "stability",
+      "constancy"
+    ]
+  },
+  {
+    "word": "flux",
+    "synonyms": [
+      "flow",
+      "fluctuation",
+      "instability"
+    ],
+    "antonyms": [
+      "stability",
+      "stasis"
+    ]
+  },
+  {
+    "word": "inchoate",
+    "synonyms": [
+      "rudimentary",
+      "embryonic",
+      "undeveloped"
+    ],
+    "antonyms": [
+      "developed",
+      "complete"
+    ]
+  },
+  {
+    "word": "vestigial",
+    "synonyms": [
+      "residual",
+      "rudimentary",
+      "remnant"
+    ],
+    "antonyms": [
+      "functional"
+    ]
+  },
+  {
+    "word": "anachronistic",
+    "synonyms": [
+      "outdated",
+      "archaic",
+      "obsolete"
+    ],
+    "antonyms": [
+      "contemporary",
+      "modern"
+    ]
+  },
+  {
+    "word": "atavistic",
+    "synonyms": [
+      "primitive",
+      "ancestral",
+      "regressive"
+    ],
+    "antonyms": [
+      "modern",
+      "advanced"
+    ]
+  },
+  {
+    "word": "ossify",
+    "synonyms": [
+      "harden",
+      "stiffen",
+      "petrify"
+    ],
+    "antonyms": [
+      "soften",
+      "loosen"
+    ]
+  },
+  {
+    "word": "fossilise",
+    "synonyms": [
+      "petrify",
+      "harden",
+      "ossify"
+    ],
+    "antonyms": [
+      "revive",
+      "renew"
+    ]
+  },
+  {
+    "word": "mutability",
+    "synonyms": [
+      "changeability",
+      "variability",
+      "fickleness"
+    ],
+    "antonyms": [
+      "immutability",
+      "constancy"
+    ]
+  },
+  {
+    "word": "evanescent",
+    "synonyms": [
+      "fleeting",
+      "ephemeral",
+      "transitory"
+    ],
+    "antonyms": [
+      "permanent",
+      "enduring"
+    ]
+  },
+  {
+    "word": "transience",
+    "synonyms": [
+      "impermanence",
+      "ephemerality",
+      "fleetingness"
+    ],
+    "antonyms": [
+      "permanence",
+      "durability"
+    ]
+  },
+  {
+    "word": "ineluctable",
+    "synonyms": [
+      "inevitable",
+      "unavoidable",
+      "inescapable"
+    ],
+    "antonyms": [
+      "avoidable",
+      "preventable"
+    ]
+  },
+  {
+    "word": "portentous",
+    "synonyms": [
+      "ominous",
+      "momentous",
+      "threatening"
+    ],
+    "antonyms": [
+      "trivial",
+      "insignificant"
+    ]
+  },
+  {
+    "word": "epochal",
+    "synonyms": [
+      "momentous",
+      "historic",
+      "pivotal"
+    ],
+    "antonyms": [
+      "trivial",
+      "insignificant"
+    ]
+  },
+  {
+    "word": "palpable",
+    "synonyms": [
+      "tangible",
+      "perceptible",
+      "obvious"
+    ],
+    "antonyms": [
+      "imperceptible",
+      "intangible"
+    ]
+  },
+  {
+    "word": "undulate",
+    "synonyms": [
+      "ripple",
+      "billow",
+      "rise and fall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "volatile",
+    "synonyms": [
+      "unstable",
+      "erratic",
+      "changeable"
+    ],
+    "antonyms": [
+      "stable",
+      "steady"
+    ]
+  },
+  {
+    "word": "precipitous",
+    "synonyms": [
+      "steep",
+      "sudden",
+      "abrupt"
+    ],
+    "antonyms": [
+      "gradual",
+      "gentle"
+    ]
+  },
+  {
+    "word": "rejuvenate",
+    "synonyms": [
+      "revitalise",
+      "renew",
+      "refresh"
+    ],
+    "antonyms": [
+      "age"
+    ]
+  },
+  {
+    "word": "renaissance",
+    "synonyms": [
+      "revival",
+      "rebirth",
+      "resurgence"
+    ],
+    "antonyms": [
+      "decline",
+      "decay"
+    ]
+  },
+  {
+    "word": "impermanence",
+    "synonyms": [
+      "transience",
+      "fleetingness",
+      "ephemerality"
+    ],
+    "antonyms": [
+      "permanence",
+      "durability"
+    ]
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "layered record",
+      "overlay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tectonic",
+    "synonyms": [
+      "seismic",
+      "momentous",
+      "far-reaching"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seismic",
+    "synonyms": [
+      "momentous",
+      "dramatic",
+      "far-reaching"
+    ],
+    "antonyms": [
+      "minor",
+      "insignificant"
+    ]
+  },
+  {
+    "word": "exponential",
+    "synonyms": [
+      "rapid",
+      "accelerating",
+      "geometric"
+    ],
+    "antonyms": [
+      "linear",
+      "gradual"
+    ]
+  },
+  {
+    "word": "evolutionary",
+    "synonyms": [
+      "developmental",
+      "gradual",
+      "adaptive"
+    ],
+    "antonyms": [
+      "static"
+    ]
+  },
+  {
+    "word": "mutate",
+    "synonyms": [
+      "change",
+      "transform",
+      "alter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "metamorphose",
+    "synonyms": [
+      "transform",
+      "transmute",
+      "evolve"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palliative",
+    "synonyms": [
+      "soothing",
+      "temporary",
+      "mitigating"
+    ],
+    "antonyms": [
+      "curative",
+      "remedial"
+    ]
+  },
+  {
+    "word": "interregnum",
+    "synonyms": [
+      "transition",
+      "hiatus",
+      "interim"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hiatus",
+    "synonyms": [
+      "break",
+      "pause",
+      "interruption"
+    ],
+    "antonyms": [
+      "continuity",
+      "continuation"
+    ]
+  },
+  {
+    "word": "lacuna",
+    "synonyms": [
+      "gap",
+      "void",
+      "omission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "apotheosis",
+    "synonyms": [
+      "culmination",
+      "pinnacle",
+      "climax"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "rubicon",
+    "synonyms": [
+      "threshold"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zeitgeist",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "accretion",
+    "synonyms": [
+      "accumulation",
+      "build-up",
+      "increment"
+    ],
+    "antonyms": [
+      "erosion",
+      "depletion"
+    ]
+  },
+  {
+    "word": "kaleidoscopic",
+    "synonyms": [
+      "varied",
+      "multicoloured",
+      "shifting"
+    ],
+    "antonyms": [
+      "monotonous",
+      "uniform"
+    ]
+  },
+  {
+    "word": "protean",
+    "synonyms": [
+      "versatile",
+      "mutable",
+      "adaptable"
+    ],
+    "antonyms": [
+      "fixed",
+      "static"
+    ]
+  },
+  {
+    "word": "recrudescence",
+    "synonyms": [
+      "resurgence",
+      "recurrence",
+      "relapse"
+    ],
+    "antonyms": [
+      "abatement",
+      "remission"
+    ]
+  },
+  {
+    "word": "quiescent",
+    "synonyms": [
+      "dormant",
+      "inactive",
+      "latent"
+    ],
+    "antonyms": [
+      "active",
+      "dynamic"
+    ]
+  },
+  {
+    "word": "transmogrify",
+    "synonyms": [
+      "transform",
+      "metamorphose",
+      "transfigure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mercurial",
+    "synonyms": [
+      "volatile",
+      "capricious",
+      "fickle"
+    ],
+    "antonyms": [
+      "steady",
+      "constant"
+    ]
+  }
+]

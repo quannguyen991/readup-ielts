@@ -1,0 +1,1013 @@
+[
+  {
+    "word": "hybrid",
+    "synonyms": [
+      "hybrid vehicle",
+      "hybrid car"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bus",
+    "synonyms": [
+      "omnibus",
+      "motor coach"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ticket",
+    "synonyms": [
+      "travel document",
+      "pass"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bicycle",
+    "synonyms": [
+      "bike",
+      "cycle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "taxi",
+    "synonyms": [
+      "cab",
+      "hackney carriage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "platform",
+    "synonyms": [
+      "station platform",
+      "railway platform"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "delay",
+    "synonyms": [
+      "hold-up",
+      "lateness"
+    ],
+    "antonyms": [
+      "punctuality"
+    ]
+  },
+  {
+    "word": "timetable",
+    "synonyms": [
+      "schedule",
+      "service plan"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drive",
+    "synonyms": [
+      "steer",
+      "pilot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "walk",
+    "synonyms": [
+      "stroll",
+      "hike"
+    ],
+    "antonyms": [
+      "ride"
+    ]
+  },
+  {
+    "word": "get on",
+    "synonyms": [
+      "board",
+      "mount"
+    ],
+    "antonyms": [
+      "get off"
+    ]
+  },
+  {
+    "word": "tram",
+    "synonyms": [
+      "streetcar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shuttle",
+    "synonyms": [
+      "shuttle bus",
+      "transfer service"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "layover",
+    "synonyms": [
+      "stopover",
+      "connection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "boarding",
+    "synonyms": [
+      "embarkation",
+      "entry"
+    ],
+    "antonyms": [
+      "disembarkation"
+    ]
+  },
+  {
+    "word": "embark",
+    "synonyms": [
+      "board",
+      "set sail"
+    ],
+    "antonyms": [
+      "disembark"
+    ]
+  },
+  {
+    "word": "disembark",
+    "synonyms": [
+      "alight",
+      "get off"
+    ],
+    "antonyms": [
+      "embark"
+    ]
+  },
+  {
+    "word": "terminus",
+    "synonyms": [
+      "terminal",
+      "last stop"
+    ],
+    "antonyms": [
+      "origin"
+    ]
+  },
+  {
+    "word": "tailback",
+    "synonyms": [
+      "traffic jam",
+      "queue"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chauffeur",
+    "synonyms": [
+      "driver",
+      "private driver"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hitchhike",
+    "synonyms": [
+      "thumb a lift",
+      "bum a lift"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carriage",
+    "synonyms": [
+      "railway car",
+      "coach"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cab",
+    "synonyms": [
+      "taxi",
+      "hackney"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bypass",
+    "synonyms": [
+      "detour",
+      "ring road"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "overtake",
+    "synonyms": [
+      "pass",
+      "go past"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reverse",
+    "synonyms": [
+      "back up",
+      "go backwards"
+    ],
+    "antonyms": [
+      "go forward"
+    ]
+  },
+  {
+    "word": "commuter",
+    "synonyms": [
+      "daily traveller",
+      "rush-hour passenger"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "motorway",
+    "synonyms": [
+      "highway",
+      "freeway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cyclist",
+    "synonyms": [
+      "bicyclist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ferry",
+    "synonyms": [
+      "ferryboat",
+      "passenger boat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "berth",
+    "synonyms": [
+      "mooring",
+      "dock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bottleneck",
+    "synonyms": [
+      "choke point",
+      "congestion point"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mobility",
+    "synonyms": [
+      "movement",
+      "transport access"
+    ],
+    "antonyms": [
+      "immobility"
+    ]
+  },
+  {
+    "word": "multimodal",
+    "synonyms": [
+      "intermodal",
+      "mixed-mode"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viaduct",
+    "synonyms": [
+      "bridge",
+      "arched bridge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thoroughfare",
+    "synonyms": [
+      "main road",
+      "highway"
+    ],
+    "antonyms": [
+      "cul-de-sac"
+    ]
+  },
+  {
+    "word": "arterial",
+    "synonyms": [
+      "main",
+      "trunk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cumbersome",
+    "synonyms": [
+      "unwieldy",
+      "awkward"
+    ],
+    "antonyms": [
+      "streamlined"
+    ]
+  },
+  {
+    "word": "curtail",
+    "synonyms": [
+      "cut back",
+      "reduce"
+    ],
+    "antonyms": [
+      "expand",
+      "extend"
+    ]
+  },
+  {
+    "word": "paralysis",
+    "synonyms": [
+      "standstill",
+      "gridlock"
+    ],
+    "antonyms": [
+      "mobility"
+    ]
+  },
+  {
+    "word": "overhaul",
+    "synonyms": [
+      "revamp",
+      "reform"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retrofit",
+    "synonyms": [
+      "upgrade",
+      "adapt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "decarbonise",
+    "synonyms": [
+      "reduce emissions",
+      "cut carbon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "modal shift",
+    "synonyms": [
+      "mode shift",
+      "transport switch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "incentive",
+    "synonyms": [
+      "motivation",
+      "inducement"
+    ],
+    "antonyms": [
+      "disincentive"
+    ]
+  },
+  {
+    "word": "subsidy",
+    "synonyms": [
+      "grant",
+      "allowance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dispatch",
+    "synonyms": [
+      "send",
+      "deploy"
+    ],
+    "antonyms": [
+      "recall"
+    ]
+  },
+  {
+    "word": "onboard",
+    "synonyms": [
+      "aboard",
+      "on board"
+    ],
+    "antonyms": [
+      "ashore"
+    ]
+  },
+  {
+    "word": "scheduling",
+    "synonyms": [
+      "timetabling",
+      "planning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "throughput",
+    "synonyms": [
+      "output",
+      "processing rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "capacity",
+    "synonyms": [
+      "carrying capacity",
+      "seating capacity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "haulage",
+    "synonyms": [
+      "freight transport",
+      "road haulage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vehicular",
+    "synonyms": [
+      "motorised",
+      "automotive"
+    ],
+    "antonyms": [
+      "pedestrian"
+    ]
+  },
+  {
+    "word": "stow",
+    "synonyms": [
+      "store",
+      "pack away"
+    ],
+    "antonyms": [
+      "unpack"
+    ]
+  },
+  {
+    "word": "kerb",
+    "synonyms": [
+      "curb",
+      "pavement edge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bollard",
+    "synonyms": [
+      "traffic post",
+      "barrier post"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cul-de-sac",
+    "synonyms": [
+      "dead end",
+      "close"
+    ],
+    "antonyms": [
+      "thoroughfare"
+    ]
+  },
+  {
+    "word": "lay-by",
+    "synonyms": [
+      "pull-in",
+      "layby"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contraflow",
+    "synonyms": [
+      "opposing lane",
+      "reverse flow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sidings",
+    "synonyms": [
+      "rail siding",
+      "loop line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "axle",
+    "synonyms": [
+      "axle shaft"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gearbox",
+    "synonyms": [
+      "transmission",
+      "gear system"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "consignment",
+    "synonyms": [
+      "shipment",
+      "load"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tarmac",
+    "synonyms": [
+      "asphalt",
+      "apron"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turnaround",
+    "synonyms": [
+      "changeover time",
+      "turnover time"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accessibility",
+    "synonyms": [
+      "access",
+      "ease of access"
+    ],
+    "antonyms": [
+      "inaccessibility"
+    ]
+  },
+  {
+    "word": "interchange",
+    "synonyms": [
+      "junction",
+      "intersection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corridor",
+    "synonyms": [
+      "route",
+      "passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "circuitous",
+    "synonyms": [
+      "roundabout",
+      "indirect"
+    ],
+    "antonyms": [
+      "direct",
+      "straight"
+    ]
+  },
+  {
+    "word": "dilapidated",
+    "synonyms": [
+      "run-down",
+      "decrepit"
+    ],
+    "antonyms": [
+      "well-maintained"
+    ]
+  },
+  {
+    "word": "conveyance",
+    "synonyms": [
+      "transport",
+      "vehicle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "logistical",
+    "synonyms": [
+      "organisational",
+      "operational"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rolling stock",
+    "synonyms": [
+      "railway vehicles",
+      "locomotives and carriages"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palanquin",
+    "synonyms": [
+      "litter",
+      "sedan chair"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "velocipede",
+    "synonyms": [
+      "early bicycle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hansom",
+    "synonyms": [
+      "hansom cab",
+      "two-wheeled cab"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caravanserai",
+    "synonyms": [
+      "caravan inn",
+      "roadside inn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sampan",
+    "synonyms": [
+      "small boat",
+      "wooden boat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gondola",
+    "synonyms": [
+      "Venetian boat",
+      "flat-bottomed boat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "funicular",
+    "synonyms": [
+      "cable railway",
+      "incline railway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "monorail",
+    "synonyms": [
+      "single-rail train",
+      "elevated railway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trawler",
+    "synonyms": [
+      "fishing boat",
+      "fishing vessel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stevedore",
+    "synonyms": [
+      "docker",
+      "longshoreman"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dredger",
+    "synonyms": [
+      "dredge ship",
+      "dredging vessel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rickshaw",
+    "synonyms": [
+      "jinrikisha",
+      "human-pulled cart"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pedicab",
+    "synonyms": [
+      "cycle rickshaw",
+      "cyclo"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pilotage",
+    "synonyms": [
+      "piloting",
+      "navigation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jettison",
+    "synonyms": [
+      "discard",
+      "throw overboard"
+    ],
+    "antonyms": [
+      "retain",
+      "keep"
+    ]
+  },
+  {
+    "word": "ballast",
+    "synonyms": [
+      "weight",
+      "counterweight"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bilge",
+    "synonyms": [
+      "hull bottom",
+      "bilge water"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "windlass",
+    "synonyms": [
+      "winch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "portage",
+    "synonyms": [
+      "overland carry",
+      "carrying across"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "outrigger",
+    "synonyms": [
+      "float",
+      "stabiliser"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cortège",
+    "synonyms": [
+      "procession",
+      "funeral procession"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "convoy",
+    "synonyms": [
+      "column",
+      "escort"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dray",
+    "synonyms": [
+      "cart",
+      "wagon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wagon",
+    "synonyms": [
+      "cart",
+      "waggon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chassis",
+    "synonyms": [
+      "frame",
+      "underframe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wayfarer",
+    "synonyms": [
+      "traveller",
+      "wanderer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jaywalk",
+    "synonyms": [
+      "cross illegally",
+      "cross carelessly"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tailgate",
+    "synonyms": [
+      "follow too closely",
+      "ride the bumper"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hydroplane",
+    "synonyms": [
+      "skid",
+      "aquaplane"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fender",
+    "synonyms": [
+      "buffer",
+      "bumper"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "headway",
+    "synonyms": [
+      "gap",
+      "time interval"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dwell time",
+    "synonyms": [
+      "stop time",
+      "standing time"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pothole",
+    "synonyms": [
+      "road hole",
+      "crater"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gangway",
+    "synonyms": [
+      "gangplank",
+      "boarding ramp"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "locomotive",
+    "synonyms": [
+      "engine",
+      "train engine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tugboat",
+    "synonyms": [
+      "tug",
+      "towboat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "barge",
+    "synonyms": [
+      "lighter",
+      "flat-bottomed boat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hovercraft",
+    "synonyms": [
+      "air-cushion vehicle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paddle steamer",
+    "synonyms": [
+      "sternwheeler",
+      "paddle boat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sledge",
+    "synonyms": [
+      "sled",
+      "sleigh"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wheelbarrow",
+    "synonyms": [
+      "barrow",
+      "garden cart"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carriageway",
+    "synonyms": [
+      "traffic lane",
+      "roadway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trundle",
+    "synonyms": [
+      "roll slowly",
+      "rumble along"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quay",
+    "synonyms": [
+      "wharf",
+      "pier"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fuselage",
+    "synonyms": [
+      "aircraft body",
+      "airframe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "undercarriage",
+    "synonyms": [
+      "landing gear",
+      "chassis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "towrope",
+    "synonyms": [
+      "tow line",
+      "towing cable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gunwale",
+    "synonyms": [
+      "gunnel",
+      "boat rail"
+    ],
+    "antonyms": []
+  }
+]

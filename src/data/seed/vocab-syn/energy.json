@@ -1,0 +1,1192 @@
+[
+  {
+    "word": "geothermal",
+    "synonyms": [
+      "geothermic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fossil fuel",
+    "synonyms": [
+      "hydrocarbon fuel",
+      "carbon fuel"
+    ],
+    "antonyms": [
+      "renewable energy"
+    ]
+  },
+  {
+    "word": "greenhouse gas",
+    "synonyms": [
+      "heat-trapping gas"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carbon footprint",
+    "synonyms": [
+      "carbon emissions",
+      "carbon impact"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turbine",
+    "synonyms": [
+      "turbomachine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "energy-saving",
+    "synonyms": [
+      "energy-efficient",
+      "low-energy"
+    ],
+    "antonyms": [
+      "energy-wasting"
+    ]
+  },
+  {
+    "word": "energy crisis",
+    "synonyms": [
+      "power crisis",
+      "energy shortage"
+    ],
+    "antonyms": [
+      "energy surplus"
+    ]
+  },
+  {
+    "word": "energy security",
+    "synonyms": [
+      "energy supply security"
+    ],
+    "antonyms": [
+      "energy insecurity"
+    ]
+  },
+  {
+    "word": "smart grid",
+    "synonyms": [
+      "intelligent grid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "energy audit",
+    "synonyms": [
+      "energy assessment",
+      "energy review"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carbon tax",
+    "synonyms": [
+      "carbon levy",
+      "carbon price"
+    ],
+    "antonyms": [
+      "carbon subsidy"
+    ]
+  },
+  {
+    "word": "renewable portfolio",
+    "synonyms": [
+      "renewable mix",
+      "clean energy mix"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "energy transition",
+    "synonyms": [
+      "energy shift",
+      "energy changeover"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "electrification",
+    "synonyms": [
+      "electrical conversion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "energy storage",
+    "synonyms": [
+      "power storage",
+      "energy reserve"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hydrogen",
+    "synonyms": [
+      "h2"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biogas",
+    "synonyms": [
+      "biomethane",
+      "renewable gas"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "power",
+    "synonyms": [
+      "electricity",
+      "energy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "electricity",
+    "synonyms": [
+      "power",
+      "electric power"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "heat",
+    "synonyms": [
+      "warmth",
+      "thermal energy"
+    ],
+    "antonyms": [
+      "cold",
+      "coolness"
+    ]
+  },
+  {
+    "word": "oil",
+    "synonyms": [
+      "petroleum",
+      "crude"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coal",
+    "synonyms": [
+      "black rock",
+      "fossil coal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fuel",
+    "synonyms": [
+      "propellant",
+      "combustible"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pollution",
+    "synonyms": [
+      "contamination",
+      "fouling"
+    ],
+    "antonyms": [
+      "purification",
+      "cleanliness"
+    ]
+  },
+  {
+    "word": "electric",
+    "synonyms": [
+      "electrical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bulb",
+    "synonyms": [
+      "light bulb",
+      "lamp bulb"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "switch",
+    "synonyms": [
+      "toggle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "charge",
+    "synonyms": [
+      "recharge",
+      "top up"
+    ],
+    "antonyms": [
+      "discharge",
+      "drain"
+    ]
+  },
+  {
+    "word": "plug",
+    "synonyms": [
+      "connector",
+      "stopper"
+    ],
+    "antonyms": [
+      "socket"
+    ]
+  },
+  {
+    "word": "dam",
+    "synonyms": [
+      "barrier",
+      "barrage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pipe",
+    "synonyms": [
+      "conduit",
+      "duct"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cable",
+    "synonyms": [
+      "wire",
+      "line"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lamp",
+    "synonyms": [
+      "light",
+      "lantern"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "waste",
+    "synonyms": [
+      "refuse",
+      "rubbish"
+    ],
+    "antonyms": [
+      "resource"
+    ]
+  },
+  {
+    "word": "recycle",
+    "synonyms": [
+      "reprocess",
+      "reuse"
+    ],
+    "antonyms": [
+      "discard",
+      "dispose"
+    ]
+  },
+  {
+    "word": "sunshine",
+    "synonyms": [
+      "sunlight",
+      "solar radiation"
+    ],
+    "antonyms": [
+      "darkness",
+      "shade"
+    ]
+  },
+  {
+    "word": "rain",
+    "synonyms": [
+      "rainfall",
+      "precipitation"
+    ],
+    "antonyms": [
+      "drought"
+    ]
+  },
+  {
+    "word": "emit",
+    "synonyms": [
+      "release",
+      "discharge"
+    ],
+    "antonyms": [
+      "absorb",
+      "capture"
+    ]
+  },
+  {
+    "word": "pollute",
+    "synonyms": [
+      "contaminate",
+      "foul"
+    ],
+    "antonyms": [
+      "purify",
+      "clean"
+    ]
+  },
+  {
+    "word": "generate",
+    "synonyms": [
+      "produce",
+      "create"
+    ],
+    "antonyms": [
+      "consume",
+      "use up"
+    ]
+  },
+  {
+    "word": "fossil",
+    "synonyms": [
+      "carbon-based",
+      "non-renewable"
+    ],
+    "antonyms": [
+      "renewable"
+    ]
+  },
+  {
+    "word": "reservoir",
+    "synonyms": [
+      "lake",
+      "storage basin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "voltage",
+    "synonyms": [
+      "potential difference",
+      "electric potential"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "current",
+    "synonyms": [
+      "flow",
+      "electric flow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kilowatt",
+    "synonyms": [
+      "kw"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "megawatt",
+    "synonyms": [
+      "mw"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insulate",
+    "synonyms": [
+      "lag",
+      "cover"
+    ],
+    "antonyms": [
+      "expose"
+    ]
+  },
+  {
+    "word": "ventilation",
+    "synonyms": [
+      "airflow",
+      "air circulation"
+    ],
+    "antonyms": [
+      "stagnation"
+    ]
+  },
+  {
+    "word": "thermostat",
+    "synonyms": [
+      "temperature regulator",
+      "heat controller"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "appliance",
+    "synonyms": [
+      "device",
+      "gadget"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contaminate",
+    "synonyms": [
+      "pollute",
+      "taint"
+    ],
+    "antonyms": [
+      "purify",
+      "decontaminate"
+    ]
+  },
+  {
+    "word": "deplete",
+    "synonyms": [
+      "exhaust",
+      "drain"
+    ],
+    "antonyms": [
+      "replenish",
+      "restore"
+    ]
+  },
+  {
+    "word": "renew",
+    "synonyms": [
+      "regenerate",
+      "refresh"
+    ],
+    "antonyms": [
+      "deplete",
+      "exhaust"
+    ]
+  },
+  {
+    "word": "sustain",
+    "synonyms": [
+      "maintain",
+      "support"
+    ],
+    "antonyms": [
+      "abandon",
+      "undermine"
+    ]
+  },
+  {
+    "word": "consume",
+    "synonyms": [
+      "use",
+      "expend"
+    ],
+    "antonyms": [
+      "conserve",
+      "save"
+    ]
+  },
+  {
+    "word": "offset",
+    "synonyms": [
+      "compensate",
+      "balance out"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "refinery",
+    "synonyms": [
+      "oil refinery",
+      "processing plant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reactor",
+    "synonyms": [
+      "nuclear reactor",
+      "pile"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conserve",
+    "synonyms": [
+      "save",
+      "preserve"
+    ],
+    "antonyms": [
+      "waste",
+      "squander"
+    ]
+  },
+  {
+    "word": "decarbonise",
+    "synonyms": [
+      "decarbonize",
+      "reduce carbon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photosynthesis",
+    "synonyms": [
+      "carbon fixation"
+    ],
+    "antonyms": [
+      "respiration"
+    ]
+  },
+  {
+    "word": "combustion",
+    "synonyms": [
+      "burning",
+      "ignition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hydrocarbon",
+    "synonyms": [
+      "carbon compound"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "petrochemical",
+    "synonyms": [
+      "oil-based chemical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cogeneration",
+    "synonyms": [
+      "combined heat-power"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kinetic",
+    "synonyms": [
+      "motion-related",
+      "dynamic"
+    ],
+    "antonyms": [
+      "static",
+      "potential"
+    ]
+  },
+  {
+    "word": "electromagnetic",
+    "synonyms": [
+      "em"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photon",
+    "synonyms": [
+      "light particle",
+      "quantum of light"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "entropy",
+    "synonyms": [
+      "disorder",
+      "randomness"
+    ],
+    "antonyms": [
+      "order"
+    ]
+  },
+  {
+    "word": "dispatchable",
+    "synonyms": [
+      "controllable",
+      "on-demand"
+    ],
+    "antonyms": [
+      "intermittent",
+      "variable"
+    ]
+  },
+  {
+    "word": "efficacy",
+    "synonyms": [
+      "effectiveness",
+      "potency"
+    ],
+    "antonyms": [
+      "ineffectiveness"
+    ]
+  },
+  {
+    "word": "mitigation",
+    "synonyms": [
+      "reduction",
+      "alleviation"
+    ],
+    "antonyms": [
+      "aggravation",
+      "exacerbation"
+    ]
+  },
+  {
+    "word": "abatement",
+    "synonyms": [
+      "reduction",
+      "mitigation"
+    ],
+    "antonyms": [
+      "increase",
+      "escalation"
+    ]
+  },
+  {
+    "word": "externality",
+    "synonyms": [
+      "spillover effect",
+      "side effect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subsidy",
+    "synonyms": [
+      "grant",
+      "financial support"
+    ],
+    "antonyms": [
+      "levy",
+      "tax"
+    ]
+  },
+  {
+    "word": "curtailment",
+    "synonyms": [
+      "reduction",
+      "limitation"
+    ],
+    "antonyms": [
+      "expansion"
+    ]
+  },
+  {
+    "word": "infrastructure",
+    "synonyms": [
+      "foundations",
+      "facilities"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scalability",
+    "synonyms": [
+      "expandability",
+      "extensibility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "intermittency",
+    "synonyms": [
+      "irregularity",
+      "sporadic supply"
+    ],
+    "antonyms": [
+      "continuity",
+      "steadiness"
+    ]
+  },
+  {
+    "word": "baseload",
+    "synonyms": [
+      "base power"
+    ],
+    "antonyms": [
+      "peak load"
+    ]
+  },
+  {
+    "word": "regulatory",
+    "synonyms": [
+      "supervisory",
+      "controlling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deregulation",
+    "synonyms": [
+      "liberalisation",
+      "decontrol"
+    ],
+    "antonyms": [
+      "regulation",
+      "re-regulation"
+    ]
+  },
+  {
+    "word": "privatisation",
+    "synonyms": [
+      "privatization",
+      "denationalisation"
+    ],
+    "antonyms": [
+      "nationalisation"
+    ]
+  },
+  {
+    "word": "decommissioning",
+    "synonyms": [
+      "shutdown",
+      "dismantling"
+    ],
+    "antonyms": [
+      "commissioning"
+    ]
+  },
+  {
+    "word": "retrofit",
+    "synonyms": [
+      "upgrade",
+      "refit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "resilience",
+    "synonyms": [
+      "robustness",
+      "durability"
+    ],
+    "antonyms": [
+      "fragility",
+      "vulnerability"
+    ]
+  },
+  {
+    "word": "sequestration",
+    "synonyms": [
+      "storage",
+      "capture and storage"
+    ],
+    "antonyms": [
+      "release"
+    ]
+  },
+  {
+    "word": "capture",
+    "synonyms": [
+      "seizure",
+      "trapping"
+    ],
+    "antonyms": [
+      "release"
+    ]
+  },
+  {
+    "word": "electrolysis",
+    "synonyms": [
+      "electrolytic decomposition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turbulence",
+    "synonyms": [
+      "agitation",
+      "disturbance"
+    ],
+    "antonyms": [
+      "laminar flow",
+      "smoothness"
+    ]
+  },
+  {
+    "word": "hydrology",
+    "synonyms": [
+      "water science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "magnetism",
+    "synonyms": [
+      "magnetic force"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conductivity",
+    "synonyms": [
+      "conductance"
+    ],
+    "antonyms": [
+      "insulation",
+      "resistivity"
+    ]
+  },
+  {
+    "word": "reliability",
+    "synonyms": [
+      "dependability",
+      "consistency"
+    ],
+    "antonyms": [
+      "unreliability"
+    ]
+  },
+  {
+    "word": "anthracite",
+    "synonyms": [
+      "hard coal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lignite",
+    "synonyms": [
+      "brown coal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bituminous",
+    "synonyms": [
+      "soft coal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "petroleum",
+    "synonyms": [
+      "crude oil",
+      "mineral oil"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shale",
+    "synonyms": [
+      "oil shale",
+      "mudstone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fracking",
+    "synonyms": [
+      "hydraulic fracturing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pyrolysis",
+    "synonyms": [
+      "thermal decomposition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gasification",
+    "synonyms": [
+      "gas production"
+    ],
+    "antonyms": [
+      "liquefaction"
+    ]
+  },
+  {
+    "word": "torrefaction",
+    "synonyms": [
+      "biomass roasting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anaerobic",
+    "synonyms": [
+      "oxygen-free",
+      "non-aerobic"
+    ],
+    "antonyms": [
+      "aerobic"
+    ]
+  },
+  {
+    "word": "aerobic",
+    "synonyms": [
+      "oxygen-using",
+      "oxygen-dependent"
+    ],
+    "antonyms": [
+      "anaerobic"
+    ]
+  },
+  {
+    "word": "thermoelectric",
+    "synonyms": [
+      "thermal-electric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "piezoelectric",
+    "synonyms": [
+      "pressure-electric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "superconductor",
+    "synonyms": [
+      "zero-resistance conductor"
+    ],
+    "antonyms": [
+      "insulator"
+    ]
+  },
+  {
+    "word": "superconductivity",
+    "synonyms": [
+      "zero resistance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ferromagnetic",
+    "synonyms": [
+      "ferrous magnetic"
+    ],
+    "antonyms": [
+      "diamagnetic"
+    ]
+  },
+  {
+    "word": "hysteresis",
+    "synonyms": [
+      "lag",
+      "delayed response"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reactance",
+    "synonyms": [
+      "reactive impedance"
+    ],
+    "antonyms": [
+      "resistance"
+    ]
+  },
+  {
+    "word": "impedance",
+    "synonyms": [
+      "opposition to current"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "capacitance",
+    "synonyms": [
+      "electrical capacity"
+    ],
+    "antonyms": [
+      "inductance"
+    ]
+  },
+  {
+    "word": "inductance",
+    "synonyms": [
+      "self-inductance"
+    ],
+    "antonyms": [
+      "capacitance"
+    ]
+  },
+  {
+    "word": "rectifier",
+    "synonyms": [
+      "converter",
+      "ac-dc converter"
+    ],
+    "antonyms": [
+      "inverter"
+    ]
+  },
+  {
+    "word": "inverter",
+    "synonyms": [
+      "dc-ac converter",
+      "power inverter"
+    ],
+    "antonyms": [
+      "rectifier"
+    ]
+  },
+  {
+    "word": "transformer",
+    "synonyms": [
+      "converter",
+      "voltage changer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flywheel",
+    "synonyms": [
+      "momentum wheel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "supercapacitor",
+    "synonyms": [
+      "ultracapacitor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "electrolyte",
+    "synonyms": [
+      "ionic solution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cathode",
+    "synonyms": [
+      "negative electrode"
+    ],
+    "antonyms": [
+      "anode"
+    ]
+  },
+  {
+    "word": "anode",
+    "synonyms": [
+      "positive electrode"
+    ],
+    "antonyms": [
+      "cathode"
+    ]
+  },
+  {
+    "word": "catalyst",
+    "synonyms": [
+      "accelerator",
+      "promoter"
+    ],
+    "antonyms": [
+      "inhibitor"
+    ]
+  },
+  {
+    "word": "entropic",
+    "synonyms": [
+      "disorder-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thermodynamics",
+    "synonyms": [
+      "heat dynamics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "enthalpy",
+    "synonyms": [
+      "heat content",
+      "heat of reaction"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exergy",
+    "synonyms": [
+      "available energy",
+      "useful energy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "calorific",
+    "synonyms": [
+      "heat-producing",
+      "caloric"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stoichiometry",
+    "synonyms": [
+      "reaction quantities"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "isotope",
+    "synonyms": [
+      "nuclide variant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "radioactivity",
+    "synonyms": [
+      "radioactive decay",
+      "radiation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "half-life",
+    "synonyms": [
+      "decay period"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fissile",
+    "synonyms": [
+      "splittable"
+    ],
+    "antonyms": [
+      "fertile"
+    ]
+  },
+  {
+    "word": "fusion",
+    "synonyms": [
+      "nuclear fusion",
+      "merging"
+    ],
+    "antonyms": [
+      "fission"
+    ]
+  },
+  {
+    "word": "ohmic",
+    "synonyms": [
+      "resistive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "joule",
+    "synonyms": [
+      "j"
+    ],
+    "antonyms": []
+  }
+]

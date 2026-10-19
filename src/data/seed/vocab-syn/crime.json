@@ -1,0 +1,1082 @@
+[
+  {
+    "word": "plea",
+    "synonyms": [
+      "answer to charge",
+      "defence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "restorative justice",
+    "synonyms": [
+      "reconciliatory justice",
+      "community justice"
+    ],
+    "antonyms": [
+      "retributive justice"
+    ]
+  },
+  {
+    "word": "mandatory sentencing",
+    "synonyms": [
+      "fixed sentencing",
+      "minimum sentencing"
+    ],
+    "antonyms": [
+      "discretionary sentencing"
+    ]
+  },
+  {
+    "word": "theft",
+    "synonyms": [
+      "stealing",
+      "larceny"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thief",
+    "synonyms": [
+      "stealer",
+      "robber"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "steal",
+    "synonyms": [
+      "take without permission",
+      "filch"
+    ],
+    "antonyms": [
+      "return",
+      "give back"
+    ]
+  },
+  {
+    "word": "robbery",
+    "synonyms": [
+      "holdup",
+      "theft"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rob",
+    "synonyms": [
+      "hold up",
+      "burgle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "police",
+    "synonyms": [
+      "law enforcement",
+      "constabulary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "officer",
+    "synonyms": [
+      "policeman",
+      "constable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arrest",
+    "synonyms": [
+      "apprehend",
+      "detain"
+    ],
+    "antonyms": [
+      "release",
+      "free"
+    ]
+  },
+  {
+    "word": "suspect",
+    "synonyms": [
+      "accused",
+      "person of interest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crime",
+    "synonyms": [
+      "offence",
+      "lawbreaking"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "criminal",
+    "synonyms": [
+      "offender",
+      "lawbreaker"
+    ],
+    "antonyms": [
+      "law-abiding citizen"
+    ]
+  },
+  {
+    "word": "burglar",
+    "synonyms": [
+      "housebreaker",
+      "intruder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "burglary",
+    "synonyms": [
+      "housebreaking",
+      "break-in"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "break in",
+    "synonyms": [
+      "force entry",
+      "burgle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lock",
+    "synonyms": [
+      "secure",
+      "bolt"
+    ],
+    "antonyms": [
+      "unlock"
+    ]
+  },
+  {
+    "word": "alarm",
+    "synonyms": [
+      "siren",
+      "warning signal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "camera",
+    "synonyms": [
+      "CCTV",
+      "recording device"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gang",
+    "synonyms": [
+      "mob",
+      "crew"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drug",
+    "synonyms": [
+      "narcotic",
+      "substance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jail",
+    "synonyms": [
+      "prison",
+      "gaol"
+    ],
+    "antonyms": [
+      "freedom"
+    ]
+  },
+  {
+    "word": "guilty",
+    "synonyms": [
+      "culpable",
+      "convicted"
+    ],
+    "antonyms": [
+      "innocent",
+      "not guilty"
+    ]
+  },
+  {
+    "word": "innocent",
+    "synonyms": [
+      "not guilty",
+      "blameless"
+    ],
+    "antonyms": [
+      "guilty"
+    ]
+  },
+  {
+    "word": "lawyer",
+    "synonyms": [
+      "attorney",
+      "counsel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vandalise",
+    "synonyms": [
+      "damage",
+      "deface"
+    ],
+    "antonyms": [
+      "restore",
+      "repair"
+    ]
+  },
+  {
+    "word": "mugging",
+    "synonyms": [
+      "street robbery",
+      "assault and robbery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shoplift",
+    "synonyms": [
+      "steal from shops",
+      "pilfer goods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pickpocket",
+    "synonyms": [
+      "cutpurse",
+      "dip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hijack",
+    "synonyms": [
+      "commandeer",
+      "seize"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kidnap",
+    "synonyms": [
+      "abduct",
+      "seize"
+    ],
+    "antonyms": [
+      "release",
+      "free"
+    ]
+  },
+  {
+    "word": "ransom",
+    "synonyms": [
+      "release money",
+      "payoff"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hostage",
+    "synonyms": [
+      "captive",
+      "prisoner"
+    ],
+    "antonyms": [
+      "captor"
+    ]
+  },
+  {
+    "word": "assault",
+    "synonyms": [
+      "attack",
+      "assault and battery"
+    ],
+    "antonyms": [
+      "defence"
+    ]
+  },
+  {
+    "word": "hit-and-run",
+    "synonyms": [
+      "fleeing the scene"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perpetrator",
+    "synonyms": [
+      "offender",
+      "wrongdoer"
+    ],
+    "antonyms": [
+      "victim"
+    ]
+  },
+  {
+    "word": "alibi",
+    "synonyms": [
+      "cover story",
+      "excuse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cover-up",
+    "synonyms": [
+      "concealment",
+      "whitewash"
+    ],
+    "antonyms": [
+      "disclosure",
+      "exposure"
+    ]
+  },
+  {
+    "word": "loot",
+    "synonyms": [
+      "plunder",
+      "booty"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trespass",
+    "synonyms": [
+      "intrude",
+      "encroach"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "offence",
+    "synonyms": [
+      "crime",
+      "violation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "felony",
+    "synonyms": [
+      "serious crime",
+      "major offence"
+    ],
+    "antonyms": [
+      "misdemeanour"
+    ]
+  },
+  {
+    "word": "misdemeanour",
+    "synonyms": [
+      "minor offence",
+      "petty crime"
+    ],
+    "antonyms": [
+      "felony"
+    ]
+  },
+  {
+    "word": "wrongdoing",
+    "synonyms": [
+      "misconduct",
+      "misdeed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hacker",
+    "synonyms": [
+      "cracker",
+      "cyber-intruder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "racketeering",
+    "synonyms": [
+      "extortion scheme",
+      "organised crime"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "money laundering",
+    "synonyms": [
+      "washing money",
+      "concealing illicit funds"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "extortion",
+    "synonyms": [
+      "blackmail",
+      "coercion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impersonation",
+    "synonyms": [
+      "imposture",
+      "masquerade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "counterfeit",
+    "synonyms": [
+      "fake",
+      "forged"
+    ],
+    "antonyms": [
+      "genuine",
+      "authentic"
+    ]
+  },
+  {
+    "word": "forgery",
+    "synonyms": [
+      "fake",
+      "counterfeiting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smuggling",
+    "synonyms": [
+      "bootlegging",
+      "contraband trade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trafficking",
+    "synonyms": [
+      "illegal trade",
+      "illicit trade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vigilante",
+    "synonyms": [
+      "self-appointed enforcer",
+      "avenger"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "malfeasance",
+    "synonyms": [
+      "misconduct",
+      "wrongdoing"
+    ],
+    "antonyms": [
+      "probity"
+    ]
+  },
+  {
+    "word": "subterfuge",
+    "synonyms": [
+      "deception",
+      "ruse"
+    ],
+    "antonyms": [
+      "candour"
+    ]
+  },
+  {
+    "word": "larceny",
+    "synonyms": [
+      "theft",
+      "stealing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "collusion",
+    "synonyms": [
+      "conspiracy",
+      "complicity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nefarious",
+    "synonyms": [
+      "wicked",
+      "villainous"
+    ],
+    "antonyms": [
+      "virtuous",
+      "honourable"
+    ]
+  },
+  {
+    "word": "illicit",
+    "synonyms": [
+      "illegal",
+      "unlawful"
+    ],
+    "antonyms": [
+      "legal",
+      "licit"
+    ]
+  },
+  {
+    "word": "contraband",
+    "synonyms": [
+      "smuggled goods",
+      "illicit goods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bootleg",
+    "synonyms": [
+      "pirated",
+      "illicit"
+    ],
+    "antonyms": [
+      "licensed",
+      "authorised"
+    ]
+  },
+  {
+    "word": "pilfer",
+    "synonyms": [
+      "filch",
+      "steal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "purloin",
+    "synonyms": [
+      "steal",
+      "filch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "heist",
+    "synonyms": [
+      "robbery",
+      "raid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stakeout",
+    "synonyms": [
+      "surveillance",
+      "watch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dossier",
+    "synonyms": [
+      "file",
+      "case file"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "felon",
+    "synonyms": [
+      "criminal",
+      "convict"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vice",
+    "synonyms": [
+      "immorality",
+      "depravity"
+    ],
+    "antonyms": [
+      "virtue"
+    ]
+  },
+  {
+    "word": "scam",
+    "synonyms": [
+      "fraud",
+      "swindle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hoodwink",
+    "synonyms": [
+      "deceive",
+      "dupe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fugitive",
+    "synonyms": [
+      "runaway",
+      "escapee"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "malefactor",
+    "synonyms": [
+      "evildoer",
+      "wrongdoer"
+    ],
+    "antonyms": [
+      "benefactor"
+    ]
+  },
+  {
+    "word": "miscreant",
+    "synonyms": [
+      "rogue",
+      "villain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reprobate",
+    "synonyms": [
+      "libertine",
+      "degenerate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scoundrel",
+    "synonyms": [
+      "rogue",
+      "villain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rogue",
+    "synonyms": [
+      "scoundrel",
+      "knave"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brigand",
+    "synonyms": [
+      "bandit",
+      "highwayman"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "marauder",
+    "synonyms": [
+      "raider",
+      "plunderer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pillage",
+    "synonyms": [
+      "plunder",
+      "sack"
+    ],
+    "antonyms": [
+      "protect"
+    ]
+  },
+  {
+    "word": "plunder",
+    "synonyms": [
+      "loot",
+      "pillage"
+    ],
+    "antonyms": [
+      "protect",
+      "safeguard"
+    ]
+  },
+  {
+    "word": "defalcation",
+    "synonyms": [
+      "embezzlement",
+      "misappropriation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "peculation",
+    "synonyms": [
+      "embezzlement",
+      "misappropriation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "venality",
+    "synonyms": [
+      "corruption",
+      "bribability"
+    ],
+    "antonyms": [
+      "integrity",
+      "incorruptibility"
+    ]
+  },
+  {
+    "word": "graft",
+    "synonyms": [
+      "bribery",
+      "corruption"
+    ],
+    "antonyms": [
+      "probity"
+    ]
+  },
+  {
+    "word": "kickback",
+    "synonyms": [
+      "bribe",
+      "payoff"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "racketeer",
+    "synonyms": [
+      "extortionist",
+      "gangster"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shakedown",
+    "synonyms": [
+      "extortion",
+      "thorough search"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "swindle",
+    "synonyms": [
+      "fraud",
+      "scam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "con artist",
+    "synonyms": [
+      "confidence trickster",
+      "fraudster"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "charlatan",
+    "synonyms": [
+      "quack",
+      "impostor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "imposter",
+    "synonyms": [
+      "impostor",
+      "pretender"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forger",
+    "synonyms": [
+      "counterfeiter",
+      "faker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "poacher",
+    "synonyms": [
+      "game thief",
+      "illegal hunter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "looter",
+    "synonyms": [
+      "plunderer",
+      "pillager"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vandal",
+    "synonyms": [
+      "wrecker",
+      "defacer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hooligan",
+    "synonyms": [
+      "yob",
+      "troublemaker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thug",
+    "synonyms": [
+      "heavy",
+      "bruiser"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brute",
+    "synonyms": [
+      "bully",
+      "savage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ruffian",
+    "synonyms": [
+      "hooligan",
+      "thug"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "assailant",
+    "synonyms": [
+      "attacker",
+      "aggressor"
+    ],
+    "antonyms": [
+      "victim"
+    ]
+  },
+  {
+    "word": "culprit",
+    "synonyms": [
+      "offender",
+      "perpetrator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "absconder",
+    "synonyms": [
+      "fugitive",
+      "runaway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "abscond",
+    "synonyms": [
+      "flee",
+      "run off"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "decamp",
+    "synonyms": [
+      "bolt",
+      "flee"
+    ],
+    "antonyms": [
+      "stay",
+      "remain"
+    ]
+  },
+  {
+    "word": "pilferage",
+    "synonyms": [
+      "petty theft",
+      "pilfering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subornation",
+    "synonyms": [
+      "witness bribery",
+      "witness tampering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sedition",
+    "synonyms": [
+      "incitement",
+      "subversion"
+    ],
+    "antonyms": [
+      "loyalty"
+    ]
+  },
+  {
+    "word": "treason",
+    "synonyms": [
+      "betrayal",
+      "disloyalty"
+    ],
+    "antonyms": [
+      "loyalty",
+      "allegiance"
+    ]
+  },
+  {
+    "word": "arson",
+    "synonyms": [
+      "fire-raising",
+      "deliberate fire-setting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "homicide",
+    "synonyms": [
+      "killing",
+      "murder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manslaughter",
+    "synonyms": [
+      "unlawful killing",
+      "culpable homicide"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "blackmail",
+    "synonyms": [
+      "extortion",
+      "coercion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perfidy",
+    "synonyms": [
+      "treachery",
+      "betrayal"
+    ],
+    "antonyms": [
+      "fidelity",
+      "loyalty"
+    ]
+  },
+  {
+    "word": "malice",
+    "synonyms": [
+      "ill will",
+      "spite"
+    ],
+    "antonyms": [
+      "benevolence",
+      "goodwill"
+    ]
+  },
+  {
+    "word": "skullduggery",
+    "synonyms": [
+      "trickery",
+      "underhand dealing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insidious",
+    "synonyms": [
+      "stealthy",
+      "treacherous"
+    ],
+    "antonyms": [
+      "obvious",
+      "overt"
+    ]
+  },
+  {
+    "word": "heinous",
+    "synonyms": [
+      "monstrous",
+      "atrocious"
+    ],
+    "antonyms": [
+      "admirable"
+    ]
+  },
+  {
+    "word": "clandestine",
+    "synonyms": [
+      "secret",
+      "covert"
+    ],
+    "antonyms": [
+      "open",
+      "overt"
+    ]
+  },
+  {
+    "word": "ransack",
+    "synonyms": [
+      "plunder",
+      "turn over"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pernicious",
+    "synonyms": [
+      "harmful",
+      "destructive"
+    ],
+    "antonyms": [
+      "beneficial",
+      "benign"
+    ]
+  },
+  {
+    "word": "fence",
+    "synonyms": [
+      "receiver",
+      "stolen-goods dealer"
+    ],
+    "antonyms": []
+  }
+]

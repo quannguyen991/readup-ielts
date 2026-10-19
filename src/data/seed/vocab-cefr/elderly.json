@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "grandparent",
+    "pos": "noun",
+    "ipa": "/ˈɡrænpeərənt/",
+    "meaningVi": "ông bà",
+    "definitionEn": "A parent of one's father or mother.",
+    "example": "My grandparents still walk to the market every morning before breakfast.",
+    "collocation": "loving grandparent",
+    "cefr": "B1"
+  },
+  {
+    "word": "wrinkle",
+    "pos": "noun",
+    "ipa": "/ˈrɪŋkl/",
+    "meaningVi": "nếp nhăn",
+    "definitionEn": "A small line on the skin that appears with age.",
+    "example": "Her face had fine wrinkles around the eyes from years of laughing.",
+    "collocation": "deep wrinkle",
+    "cefr": "B1"
+  },
+  {
+    "word": "retire",
+    "pos": "verb",
+    "ipa": "/rɪˈtaɪə/",
+    "meaningVi": "nghỉ hưu",
+    "definitionEn": "To stop working permanently, usually at an older age.",
+    "example": "My father plans to retire next year after thirty years at the bank.",
+    "collocation": "retire early",
+    "cefr": "B1"
+  },
+  {
+    "word": "wise",
+    "pos": "adjective",
+    "ipa": "/waɪz/",
+    "meaningVi": "khôn ngoan, từng trải",
+    "definitionEn": "Having good judgement based on knowledge and experience.",
+    "example": "My wise old uncle always gives sensible advice when I am worried.",
+    "collocation": "wise advice",
+    "cefr": "B1"
+  },
+  {
+    "word": "lonely",
+    "pos": "adjective",
+    "ipa": "/ˈləʊnli/",
+    "meaningVi": "cô đơn",
+    "definitionEn": "Sad because you have no friends or company.",
+    "example": "Some older people feel lonely after their children move away.",
+    "collocation": "feel lonely",
+    "cefr": "B1"
+  },
+  {
+    "word": "stroll",
+    "pos": "verb",
+    "ipa": "/strəʊl/",
+    "meaningVi": "đi dạo chậm rãi",
+    "definitionEn": "To walk slowly and casually, usually for pleasure.",
+    "example": "After lunch, he likes to stroll along the river with his dog.",
+    "collocation": "stroll along",
+    "cefr": "B1"
+  },
+  {
+    "word": "hearing",
+    "pos": "noun",
+    "ipa": "/ˈhɪərɪŋ/",
+    "meaningVi": "thính giác",
+    "definitionEn": "The ability to perceive sound through the ears.",
+    "example": "Her hearing has weakened, so she now uses a small device.",
+    "collocation": "poor hearing",
+    "cefr": "B1"
+  },
+  {
+    "word": "eyesight",
+    "pos": "noun",
+    "ipa": "/ˈaɪsaɪt/",
+    "meaningVi": "thị lực",
+    "definitionEn": "The ability of the eyes to see clearly.",
+    "example": "His eyesight is not as good as it was, so he wears glasses.",
+    "collocation": "failing eyesight",
+    "cefr": "B1"
+  },
+  {
+    "word": "elder",
+    "pos": "noun",
+    "ipa": "/ˈeldə/",
+    "meaningVi": "người lớn tuổi, bậc trưởng thượng",
+    "definitionEn": "An older person, especially one respected in a family or community.",
+    "example": "The village elders gathered under the tree to settle the dispute.",
+    "collocation": "village elder",
+    "cefr": "B1"
+  },
+  {
+    "word": "memory",
+    "pos": "noun",
+    "ipa": "/ˈmeməri/",
+    "meaningVi": "trí nhớ, ký ức",
+    "definitionEn": "The ability to remember things, or something you remember.",
+    "example": "She has a clear memory of her wedding day, fifty years ago.",
+    "collocation": "clear memory",
+    "cefr": "B1"
+  },
+  {
+    "word": "wheelchair",
+    "pos": "noun",
+    "ipa": "/ˈwiːltʃeə/",
+    "meaningVi": "xe lăn",
+    "definitionEn": "A chair with wheels that a person uses if they cannot walk well.",
+    "example": "The hospital provides a wheelchair for patients who cannot walk far.",
+    "collocation": "push a wheelchair",
+    "cefr": "B1"
+  },
+  {
+    "word": "hobby",
+    "pos": "noun",
+    "ipa": "/ˈhɒbi/",
+    "meaningVi": "sở thích",
+    "definitionEn": "An activity you do regularly for pleasure in your free time.",
+    "example": "Gardening is my grandmother's favourite hobby and keeps her busy.",
+    "collocation": "favourite hobby",
+    "cefr": "B1"
+  },
+  {
+    "word": "neighbour",
+    "pos": "noun",
+    "ipa": "/ˈneɪbə/",
+    "meaningVi": "hàng xóm",
+    "definitionEn": "A person who lives near or next to you.",
+    "example": "Our elderly neighbour often brings us homemade soup on cold days.",
+    "collocation": "kind neighbour",
+    "cefr": "B1"
+  },
+  {
+    "word": "medicine",
+    "pos": "noun",
+    "ipa": "/ˈmedsn/",
+    "meaningVi": "thuốc, y học",
+    "definitionEn": "A substance taken to treat illness, or the science of treating illness.",
+    "example": "He takes his medicine every morning with a glass of water.",
+    "collocation": "take medicine",
+    "cefr": "B1"
+  },
+  {
+    "word": "care",
+    "pos": "noun",
+    "ipa": "/keə/",
+    "meaningVi": "sự chăm sóc",
+    "definitionEn": "Attention and help given to someone who needs support.",
+    "example": "Good care at home allows many older people to stay independent longer.",
+    "collocation": "daily care",
+    "cefr": "B1"
+  },
+  {
+    "word": "senior",
+    "pos": "adjective",
+    "ipa": "/ˈsiːniə/",
+    "meaningVi": "cao tuổi, cấp cao",
+    "definitionEn": "Older in age, or higher in rank or position.",
+    "example": "The senior residents enjoy a weekly film club at the community centre.",
+    "collocation": "senior citizen",
+    "cefr": "B1"
+  },
+  {
+    "word": "widow",
+    "pos": "noun",
+    "ipa": "/ˈwɪdəʊ/",
+    "meaningVi": "góa phụ",
+    "definitionEn": "A woman whose husband has died and who has not remarried.",
+    "example": "The widow moved into a smaller flat near her daughter's home.",
+    "collocation": "elderly widow",
+    "cefr": "B1"
+  },
+  {
+    "word": "patient",
+    "pos": "noun",
+    "ipa": "/ˈpeɪʃnt/",
+    "meaningVi": "bệnh nhân",
+    "definitionEn": "A person receiving medical treatment from a doctor or hospital.",
+    "example": "The nurse helped the patient sit up and drink some water.",
+    "collocation": "elderly patient",
+    "cefr": "B1"
+  },
+  {
+    "word": "generation",
+    "pos": "noun",
+    "ipa": "/ˌdʒenəˈreɪʃn/",
+    "meaningVi": "thế hệ",
+    "definitionEn": "All the people born and living at about the same time.",
+    "example": "Each generation has different ideas about health, work, and family life.",
+    "collocation": "older generation",
+    "cefr": "B1"
+  },
+  {
+    "word": "arthritis",
+    "pos": "noun",
+    "ipa": "/ɑːˈθraɪtɪs/",
+    "meaningVi": "viêm khớp",
+    "definitionEn": "A condition causing painful, stiff, and swollen joints.",
+    "example": "Arthritis makes it painful for my father to open jars and hold cups.",
+    "collocation": "suffer from arthritis",
+    "cefr": "B2"
+  },
+  {
+    "word": "osteoporosis",
+    "pos": "noun",
+    "ipa": "/ˌɒstiəʊpəˈrəʊsɪs/",
+    "meaningVi": "loãng xương",
+    "definitionEn": "A condition in which bones become weak and brittle and break easily.",
+    "example": "Regular exercise can help slow the progress of osteoporosis in older women.",
+    "collocation": "diagnosed with osteoporosis",
+    "cefr": "B2"
+  },
+  {
+    "word": "stroke",
+    "pos": "noun",
+    "ipa": "/strəʊk/",
+    "meaningVi": "đột quỵ",
+    "definitionEn": "A sudden interruption of blood supply to the brain, causing weakness or loss of function.",
+    "example": "Quick treatment after a stroke can greatly improve a patient's recovery.",
+    "collocation": "suffer a stroke",
+    "cefr": "B2"
+  },
+  {
+    "word": "hip",
+    "pos": "noun",
+    "ipa": "/hɪp/",
+    "meaningVi": "hông, xương hông",
+    "definitionEn": "The joint where the thigh bone meets the pelvis.",
+    "example": "She broke her hip after a fall in the bathroom last winter.",
+    "collocation": "hip replacement",
+    "cefr": "B2"
+  },
+  {
+    "word": "frail",
+    "pos": "adjective",
+    "ipa": "/freɪl/",
+    "meaningVi": "yếu ớt, mong manh",
+    "definitionEn": "Weak and delicate, especially because of age or illness.",
+    "example": "The frail old man needed help climbing the stairs to his flat.",
+    "collocation": "frail health",
+    "cefr": "B2"
+  },
+  {
+    "word": "incontinence",
+    "pos": "noun",
+    "ipa": "/ɪnˈkɒntɪnəns/",
+    "meaningVi": "không kiểm soát được bàng quang",
+    "definitionEn": "The inability to control the bladder or bowels.",
+    "example": "Urinary incontinence is common but often goes untreated among older adults.",
+    "collocation": "urinary incontinence",
+    "cefr": "B2"
+  },
+  {
+    "word": "nursing home",
+    "pos": "phrase",
+    "ipa": "/ˈnɜːsɪŋ həʊm/",
+    "meaningVi": "viện dưỡng lão",
+    "definitionEn": "A residential facility providing full-time care for elderly or disabled people.",
+    "example": "My aunt moved into a nursing home when she could no longer live alone.",
+    "collocation": "move into a nursing home",
+    "cefr": "B2"
+  },
+  {
+    "word": "retiree",
+    "pos": "noun",
+    "ipa": "/rɪˌtaɪəˈriː/",
+    "meaningVi": "người về hưu",
+    "definitionEn": "A person who has stopped working because of age.",
+    "example": "Many retirees volunteer at the library to stay active and meet people.",
+    "collocation": "active retiree",
+    "cefr": "B2"
+  },
+  {
+    "word": "widowhood",
+    "pos": "noun",
+    "ipa": "/ˈwɪdəʊhʊd/",
+    "meaningVi": "cảnh góa bụa",
+    "definitionEn": "The state of being a widow or widower.",
+    "example": "Her widowhood was lonely, but her friends visited her every week.",
+    "collocation": "early widowhood",
+    "cefr": "B2"
+  },
+  {
+    "word": "bereavement",
+    "pos": "noun",
+    "ipa": "/bɪˈriːvmənt/",
+    "meaningVi": "sự mất người thân",
+    "definitionEn": "The loss of a close person through death, and the grief that follows.",
+    "example": "Bereavement counselling helped him cope after his wife died.",
+    "collocation": "bereavement counselling",
+    "cefr": "B2"
+  },
+  {
+    "word": "loneliness",
+    "pos": "noun",
+    "ipa": "/ˈləʊnlinəs/",
+    "meaningVi": "sự cô đơn",
+    "definitionEn": "The unhappy feeling of being alone or without companionship.",
+    "example": "Loneliness is a serious health risk for many elderly people living alone.",
+    "collocation": "deep loneliness",
+    "cefr": "B2"
+  },
+  {
+    "word": "companionship",
+    "pos": "noun",
+    "ipa": "/kəmˈpæniənʃɪp/",
+    "meaningVi": "sự bầu bạn",
+    "definitionEn": "The company and friendship of other people.",
+    "example": "Her dog provides constant companionship during long winter evenings.",
+    "collocation": "offer companionship",
+    "cefr": "B2"
+  },
+  {
+    "word": "self-reliance",
+    "pos": "noun",
+    "ipa": "/ˌselfrɪˈlaɪəns/",
+    "meaningVi": "tự lực",
+    "definitionEn": "The ability to take care of yourself without depending on others.",
+    "example": "Self-reliance is important for older people who want to stay at home.",
+    "collocation": "practical self-reliance",
+    "cefr": "B2"
+  },
+  {
+    "word": "mobility",
+    "pos": "noun",
+    "ipa": "/məʊˈbɪləti/",
+    "meaningVi": "khả năng di chuyển",
+    "definitionEn": "The ability to move about freely and easily.",
+    "example": "Regular stretching can improve mobility and reduce stiffness in the joints.",
+    "collocation": "reduced mobility",
+    "cefr": "B2"
+  },
+  {
+    "word": "walking aid",
+    "pos": "phrase",
+    "ipa": "/ˈwɔːkɪŋ eɪd/",
+    "meaningVi": "dụng cụ hỗ trợ đi lại",
+    "definitionEn": "A device such as a frame or stick that helps a person walk safely.",
+    "example": "She uses a walking aid whenever she goes shopping on the high street.",
+    "collocation": "use a walking aid",
+    "cefr": "B2"
+  },
+  {
+    "word": "hearing aid",
+    "pos": "phrase",
+    "ipa": "/ˈhɪərɪŋ eɪd/",
+    "meaningVi": "máy trợ thính",
+    "definitionEn": "A small electronic device worn in or behind the ear to improve hearing.",
+    "example": "Grandpa finally agreed to wear a hearing aid during family dinners.",
+    "collocation": "fit a hearing aid",
+    "cefr": "B2"
+  },
+  {
+    "word": "benefit",
+    "pos": "noun",
+    "ipa": "/ˈbenɪfɪt/",
+    "meaningVi": "lợi ích, trợ cấp",
+    "definitionEn": "An advantage or useful result, or money paid by the state to those in need.",
+    "example": "Older workers may receive state benefits to help with rising living costs.",
+    "collocation": "social benefit",
+    "cefr": "B2"
+  },
+  {
+    "word": "supplement",
+    "pos": "noun",
+    "ipa": "/ˈsʌplɪmənt/",
+    "meaningVi": "thực phẩm bổ sung",
+    "definitionEn": "A product taken to add nutrients that the diet may lack.",
+    "example": "The doctor recommended a vitamin D supplement during the darker months.",
+    "collocation": "dietary supplement",
+    "cefr": "B2"
+  },
+  {
+    "word": "nutrition",
+    "pos": "noun",
+    "ipa": "/njuːˈtrɪʃn/",
+    "meaningVi": "dinh dưỡng",
+    "definitionEn": "The food and substances needed for health and growth.",
+    "example": "Good nutrition helps older adults maintain strength and energy.",
+    "collocation": "good nutrition",
+    "cefr": "B2"
+  },
+  {
+    "word": "diet",
+    "pos": "noun",
+    "ipa": "/ˈdaɪət/",
+    "meaningVi": "chế độ ăn",
+    "definitionEn": "The food and drink that a person usually consumes.",
+    "example": "A balanced diet with plenty of vegetables supports healthy ageing.",
+    "collocation": "balanced diet",
+    "cefr": "B2"
+  },
+  {
+    "word": "exercise",
+    "pos": "noun",
+    "ipa": "/ˈeksəsaɪz/",
+    "meaningVi": "tập thể dục",
+    "definitionEn": "Physical activity done to improve or maintain health and fitness.",
+    "example": "Gentle exercise every day can help older people keep their balance.",
+    "collocation": "regular exercise",
+    "cefr": "B2"
+  },
+  {
+    "word": "forgetfulness",
+    "pos": "noun",
+    "ipa": "/fəˈɡetfəlnəs/",
+    "meaningVi": "tính hay quên",
+    "definitionEn": "A tendency to forget things, often a normal part of ageing.",
+    "example": "Occasional forgetfulness is common, but severe memory loss needs medical advice.",
+    "collocation": "occasional forgetfulness",
+    "cefr": "B2"
+  },
+  {
+    "word": "confusion",
+    "pos": "noun",
+    "ipa": "/kənˈfjuːʒn/",
+    "meaningVi": "sự lú lẫn, rối trí",
+    "definitionEn": "A state of being unable to think clearly or understand what is happening.",
+    "example": "Sudden confusion can be a warning sign that a person needs urgent care.",
+    "collocation": "mental confusion",
+    "cefr": "B2"
+  },
+  {
+    "word": "vitality",
+    "pos": "noun",
+    "ipa": "/vaɪˈtæləti/",
+    "meaningVi": "sức sống",
+    "definitionEn": "Physical or mental energy and strength, especially in a person.",
+    "example": "Her vitality at eighty surprised everyone who met her at the club.",
+    "collocation": "great vitality",
+    "cefr": "B2"
+  },
+  {
+    "word": "wellbeing",
+    "pos": "noun",
+    "ipa": "/ˌwelˈbiːɪŋ/",
+    "meaningVi": "sức khoẻ thể chất và tinh thần",
+    "definitionEn": "A state of being comfortable, healthy, and happy.",
+    "example": "Social clubs can improve the wellbeing of older residents significantly.",
+    "collocation": "emotional wellbeing",
+    "cefr": "B2"
+  },
+  {
+    "word": "reminiscence",
+    "pos": "noun",
+    "ipa": "/ˌremɪˈnɪsns/",
+    "meaningVi": "sự hồi tưởng",
+    "definitionEn": "The act of remembering and talking about past experiences.",
+    "example": "Reminiscence sessions help people with memory loss connect with their past.",
+    "collocation": "pleasant reminiscence",
+    "cefr": "B2"
+  },
+  {
+    "word": "senescence",
+    "pos": "noun",
+    "ipa": "/sɪˈnesns/",
+    "meaningVi": "sự già đi, lão hoá",
+    "definitionEn": "The gradual deterioration of body and mind with advancing age.",
+    "example": "Senescence brings a gradual decline in cell repair and muscle strength.",
+    "collocation": "natural senescence",
+    "cefr": "C1"
+  },
+  {
+    "word": "octogenarian",
+    "pos": "noun",
+    "ipa": "/ˌɒktəʊdʒɪˈneəriən/",
+    "meaningVi": "người ngoài tám mươi",
+    "definitionEn": "A person who is between eighty and eighty-nine years old.",
+    "example": "The octogenarian still swims a kilometre every morning at the local pool.",
+    "collocation": "sprightly octogenarian",
+    "cefr": "C1"
+  },
+  {
+    "word": "nonagenarian",
+    "pos": "noun",
+    "ipa": "/ˌnəʊnədʒɪˈneəriən/",
+    "meaningVi": "người ngoài chín mươi",
+    "definitionEn": "A person who is between ninety and ninety-nine years old.",
+    "example": "The nonagenarian shared memories of growing up during the war.",
+    "collocation": "elderly nonagenarian",
+    "cefr": "C1"
+  },
+  {
+    "word": "centenarian",
+    "pos": "noun",
+    "ipa": "/ˌsentɪˈneəriən/",
+    "meaningVi": "người trăm tuổi",
+    "definitionEn": "A person who has reached the age of one hundred years.",
+    "example": "The village celebrated its oldest centenarian with a traditional feast.",
+    "collocation": "oldest centenarian",
+    "cefr": "C1"
+  },
+  {
+    "word": "infirmity",
+    "pos": "noun",
+    "ipa": "/ɪnˈfɜːməti/",
+    "meaningVi": "sự yếu đuối, bệnh tật",
+    "definitionEn": "A physical weakness or illness, especially one that comes with old age.",
+    "example": "Advancing infirmity forced him to give up gardening and driving.",
+    "collocation": "physical infirmity",
+    "cefr": "C1"
+  },
+  {
+    "word": "debilitating",
+    "pos": "adjective",
+    "ipa": "/dɪˈbɪlɪteɪtɪŋ/",
+    "meaningVi": "làm suy nhược",
+    "definitionEn": "Causing weakness and reducing physical or mental strength severely.",
+    "example": "The debilitating disease gradually limited her ability to walk.",
+    "collocation": "debilitating illness",
+    "cefr": "C1"
+  },
+  {
+    "word": "sclerosis",
+    "pos": "noun",
+    "ipa": "/skləˈrəʊsɪs/",
+    "meaningVi": "xơ cứng mô",
+    "definitionEn": "Abnormal hardening of body tissue, such as in multiple sclerosis.",
+    "example": "Doctors diagnosed sclerosis in her spine after months of numbness and fatigue.",
+    "collocation": "multiple sclerosis",
+    "cefr": "C1"
+  },
+  {
+    "word": "hospice",
+    "pos": "noun",
+    "ipa": "/ˈhɒspɪs/",
+    "meaningVi": "nhà chăm sóc cuối đời",
+    "definitionEn": "A residential facility providing comfort care for people who are terminally ill.",
+    "example": "The hospice offers gentle care and emotional support to patients and families.",
+    "collocation": "local hospice",
+    "cefr": "C1"
+  },
+  {
+    "word": "geriatrician",
+    "pos": "noun",
+    "ipa": "/ˌdʒeriəˈtrɪʃn/",
+    "meaningVi": "bác sĩ lão khoa",
+    "definitionEn": "A doctor who specialises in the medical care of older people.",
+    "example": "The geriatrician reviewed all of his medications to reduce side effects.",
+    "collocation": "consultant geriatrician",
+    "cefr": "C1"
+  },
+  {
+    "word": "polypharmacy",
+    "pos": "noun",
+    "ipa": "/ˌpɒlɪˈfɑːməsi/",
+    "meaningVi": "dùng nhiều thuốc cùng lúc",
+    "definitionEn": "The simultaneous use of many medicines by a single patient.",
+    "example": "Polypharmacy increases the risk of harmful interactions in older patients.",
+    "collocation": "dangerous polypharmacy",
+    "cefr": "C1"
+  },
+  {
+    "word": "comorbidity",
+    "pos": "noun",
+    "ipa": "/ˌkɒmɔːˈbɪdəti/",
+    "meaningVi": "bệnh đi kèm",
+    "definitionEn": "The presence of two or more medical conditions in the same patient.",
+    "example": "Comorbidity makes treating older patients more complex for doctors.",
+    "collocation": "significant comorbidity",
+    "cefr": "C1"
+  },
+  {
+    "word": "decrepit",
+    "pos": "adjective",
+    "ipa": "/dɪˈkrepɪt/",
+    "meaningVi": "xác xơ, suy tàn",
+    "definitionEn": "Weakened or worn out by age or neglect.",
+    "example": "The decrepit old house had been empty for many years.",
+    "collocation": "decrepit building",
+    "cefr": "C1"
+  },
+  {
+    "word": "infirm",
+    "pos": "adjective",
+    "ipa": "/ɪnˈfɜːm/",
+    "meaningVi": "yếu, ốm yếu",
+    "definitionEn": "Physically weak, especially because of age or illness.",
+    "example": "The infirm pensioner needed a carer to help with shopping and cooking.",
+    "collocation": "infirm and frail",
+    "cefr": "C1"
+  },
+  {
+    "word": "actuarial",
+    "pos": "adjective",
+    "ipa": "/ˌæktʃuˈeəriəl/",
+    "meaningVi": "thuộc toán bảo hiểm",
+    "definitionEn": "Relating to statistical calculations of risk, used by insurers and pension funds.",
+    "example": "Actuarial tables predict how long a pensioner is likely to live.",
+    "collocation": "actuarial analysis",
+    "cefr": "C1"
+  },
+  {
+    "word": "annuitant",
+    "pos": "noun",
+    "ipa": "/əˈnjuːɪtənt/",
+    "meaningVi": "người nhận niên kim",
+    "definitionEn": "A person who receives regular payments from an annuity.",
+    "example": "The annuitant receives a fixed sum every month for the rest of her life.",
+    "collocation": "elderly annuitant",
+    "cefr": "C1"
+  },
+  {
+    "word": "pensionable",
+    "pos": "adjective",
+    "ipa": "/ˈpenʃənəbl/",
+    "meaningVi": "được tính lương hưu",
+    "definitionEn": "Qualifying for a pension, or counted when calculating a pension.",
+    "example": "Her pensionable service started the year she joined the civil service.",
+    "collocation": "pensionable age",
+    "cefr": "C1"
+  },
+  {
+    "word": "generational",
+    "pos": "adjective",
+    "ipa": "/ˌdʒenəˈreɪʃənl/",
+    "meaningVi": "thuộc thế hệ",
+    "definitionEn": "Relating to differences or changes between generations.",
+    "example": "The generational gap affects how families discuss money and healthcare.",
+    "collocation": "generational gap",
+    "cefr": "C1"
+  },
+  {
+    "word": "inclusive",
+    "pos": "adjective",
+    "ipa": "/ɪnˈkluːsɪv/",
+    "meaningVi": "bao gồm, hoà nhập",
+    "definitionEn": "Including and welcoming people of all ages, backgrounds, and abilities.",
+    "example": "The new community centre is designed to be fully inclusive for seniors.",
+    "collocation": "inclusive design",
+    "cefr": "C1"
+  },
+  {
+    "word": "isolated",
+    "pos": "adjective",
+    "ipa": "/ˈaɪsəleɪtɪd/",
+    "meaningVi": "bị cô lập",
+    "definitionEn": "Separated from others and lacking social contact or support.",
+    "example": "Isolated older residents benefit greatly from regular visits by volunteers.",
+    "collocation": "socially isolated",
+    "cefr": "C1"
+  },
+  {
+    "word": "paternalistic",
+    "pos": "adjective",
+    "ipa": "/pəˌtɜːnəˈlɪstɪk/",
+    "meaningVi": "gia trưởng, bao bọc quá mức",
+    "definitionEn": "Controlling people by making decisions for their own supposed good.",
+    "example": "The paternalistic care home limited residents' choices about meals and visitors.",
+    "collocation": "paternalistic attitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "cohort",
+    "pos": "noun",
+    "ipa": "/ˈkəʊhɔːt/",
+    "meaningVi": "nhóm người cùng độ tuổi",
+    "definitionEn": "A group of people who share a common characteristic, such as birth year.",
+    "example": "The study followed a cohort of women born in 1950 for thirty years.",
+    "collocation": "study cohort",
+    "cefr": "C1"
+  },
+  {
+    "word": "longitudinal",
+    "pos": "adjective",
+    "ipa": "/ˌlɒndʒɪˈtjuːdɪnl/",
+    "meaningVi": "theo chiều dọc thời gian",
+    "definitionEn": "Studying the same subjects over a long period of time.",
+    "example": "A longitudinal study tracked ageing patterns across two decades.",
+    "collocation": "longitudinal study",
+    "cefr": "C1"
+  },
+  {
+    "word": "sarcopenia",
+    "pos": "noun",
+    "ipa": "/ˌsɑːkəʊˈpiːniə/",
+    "meaningVi": "teo cơ do tuổi già",
+    "definitionEn": "Age-related loss of muscle mass and strength.",
+    "example": "Sarcopenia makes everyday movements like standing up much harder.",
+    "collocation": "age-related sarcopenia",
+    "cefr": "C1"
+  },
+  {
+    "word": "amnesia",
+    "pos": "noun",
+    "ipa": "/æmˈniːziə/",
+    "meaningVi": "chứng mất trí nhớ",
+    "definitionEn": "Partial or total loss of memory, often caused by injury or illness.",
+    "example": "After the accident, he suffered amnesia and could not remember his childhood.",
+    "collocation": "temporary amnesia",
+    "cefr": "C1"
+  },
+  {
+    "word": "gerontocracy",
+    "pos": "noun",
+    "ipa": "/ˌdʒerənˈtɒkrəsi/",
+    "meaningVi": "chế độ người già cầm quyền",
+    "definitionEn": "A form of rule in which old people hold power over the young.",
+    "example": "Critics argue that the council has become a gerontocracy dominated by elders.",
+    "collocation": "political gerontocracy",
+    "cefr": "C1"
+  },
+  {
+    "word": "convalescence",
+    "pos": "noun",
+    "ipa": "/ˌkɒnvəˈlesns/",
+    "meaningVi": "thời gian dưỡng bệnh",
+    "definitionEn": "The gradual period of recovery after illness or surgery.",
+    "example": "During convalescence, she rested at home and walked a little each day.",
+    "collocation": "long convalescence",
+    "cefr": "C1"
+  },
+  {
+    "word": "incapacitated",
+    "pos": "adjective",
+    "ipa": "/ˌɪnkəˈpæsɪteɪtɪd/",
+    "meaningVi": "mất khả năng hoạt động",
+    "definitionEn": "Made unable to act or function normally, often due to injury or illness.",
+    "example": "The stroke left him incapacitated on his left side.",
+    "collocation": "incapacitated by illness",
+    "cefr": "C1"
+  },
+  {
+    "word": "bedridden",
+    "pos": "adjective",
+    "ipa": "/ˈbedrɪdn/",
+    "meaningVi": "nằm liệt giường",
+    "definitionEn": "Confined to bed because of illness or extreme weakness.",
+    "example": "The bedridden patient relied on her family for food, washing, and company.",
+    "collocation": "bedridden patient",
+    "cefr": "C1"
+  },
+  {
+    "word": "ailing",
+    "pos": "adjective",
+    "ipa": "/ˈeɪlɪŋ/",
+    "meaningVi": "ốm yếu",
+    "definitionEn": "Suffering from illness or in poor health, especially over a long period.",
+    "example": "The ailing businessman spent his final months writing letters to his grandchildren.",
+    "collocation": "ailing parent",
+    "cefr": "C1"
+  },
+  {
+    "word": "fragility",
+    "pos": "noun",
+    "ipa": "/frəˈdʒɪləti/",
+    "meaningVi": "sự mong manh",
+    "definitionEn": "The quality of being easily broken or harmed, especially with age.",
+    "example": "Bone fragility increases with age and can lead to serious fractures.",
+    "collocation": "bone fragility",
+    "cefr": "C1"
+  },
+  {
+    "word": "rejuvenation",
+    "pos": "noun",
+    "ipa": "/rɪˌdʒuːvəˈneɪʃn/",
+    "meaningVi": "sự trẻ hoá, phục hồi sinh lực",
+    "definitionEn": "The restoration of youthful vigour or energy.",
+    "example": "Regular swimming gave him a surprising sense of rejuvenation.",
+    "collocation": "physical rejuvenation",
+    "cefr": "C1"
+  },
+  {
+    "word": "hardship",
+    "pos": "noun",
+    "ipa": "/ˈhɑːdʃɪp/",
+    "meaningVi": "khó khăn, cảnh túng thiếu",
+    "definitionEn": "Difficult conditions, especially a lack of money or basic needs.",
+    "example": "Many pensioners face serious financial hardship during high-inflation years.",
+    "collocation": "financial hardship",
+    "cefr": "C1"
+  },
+  {
+    "word": "senescent",
+    "pos": "adjective",
+    "ipa": "/sɪˈnesnt/",
+    "meaningVi": "đang già đi, lão hoá",
+    "definitionEn": "Growing old and gradually losing vitality.",
+    "example": "The senescent dog slept most of the day by the fireplace.",
+    "collocation": "senescent cells",
+    "cefr": "C2"
+  },
+  {
+    "word": "decrepitude",
+    "pos": "noun",
+    "ipa": "/dɪˈkrepɪtjuːd/",
+    "meaningVi": "tình trạng suy tàn",
+    "definitionEn": "The state of being old, weak, and in poor condition.",
+    "example": "His decrepitude was evident in his trembling hands and slow, shuffling steps.",
+    "collocation": "state of decrepitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "superannuated",
+    "pos": "adjective",
+    "ipa": "/ˌsjuːpərˈænjueɪtɪd/",
+    "meaningVi": "quá tuổi về hưu, lỗi thời",
+    "definitionEn": "Retired or discharged because of age, or outdated.",
+    "example": "The superannuated professor still lectured with notes written decades earlier.",
+    "collocation": "superannuated staff",
+    "cefr": "C2"
+  },
+  {
+    "word": "dotage",
+    "pos": "noun",
+    "ipa": "/ˈdəʊtɪdʒ/",
+    "meaningVi": "tuổi già lẫn lộn",
+    "definitionEn": "The period of life when a person is old and their mind is failing.",
+    "example": "In his dotage, the old scholar forgot the names of his own students.",
+    "collocation": "in one's dotage",
+    "cefr": "C2"
+  },
+  {
+    "word": "anile",
+    "pos": "adjective",
+    "ipa": "/ˈeɪnaɪl/",
+    "meaningVi": "như bà già, lẩm cẩm",
+    "definitionEn": "Relating to or resembling an old woman, often in a weak or foolish way.",
+    "example": "Her anile babbling embarrassed the family during the wedding speech.",
+    "collocation": "anile chatter",
+    "cefr": "C2"
+  },
+  {
+    "word": "obsolescence",
+    "pos": "noun",
+    "ipa": "/ˌɒbsəˈlesns/",
+    "meaningVi": "sự lỗi thời",
+    "definitionEn": "The process of becoming outdated or no longer useful.",
+    "example": "Planned obsolescence means products wear out sooner than they should.",
+    "collocation": "planned obsolescence",
+    "cefr": "C2"
+  },
+  {
+    "word": "twilight",
+    "pos": "noun",
+    "ipa": "/ˈtwaɪlaɪt/",
+    "meaningVi": "tuổi xế chiều",
+    "definitionEn": "The period of late life, or the time when daylight fades.",
+    "example": "In her twilight years she enjoyed painting landscapes at the lake.",
+    "collocation": "twilight years",
+    "cefr": "C2"
+  },
+  {
+    "word": "vigour",
+    "pos": "noun",
+    "ipa": "/ˈvɪɡə/",
+    "meaningVi": "sức sống, sinh lực",
+    "definitionEn": "Physical or mental strength and energy.",
+    "example": "He still walks with remarkable vigour at the age of ninety.",
+    "collocation": "remarkable vigour",
+    "cefr": "C2"
+  },
+  {
+    "word": "lassitude",
+    "pos": "noun",
+    "ipa": "/ˈlæsɪtjuːd/",
+    "meaningVi": "sự mệt mỏi uể oải",
+    "definitionEn": "A lack of energy or enthusiasm, usually due to fatigue or illness.",
+    "example": "A deep lassitude settled over the old farmer after his illness.",
+    "collocation": "deep lassitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "infirmary",
+    "pos": "noun",
+    "ipa": "/ɪnˈfɜːməri/",
+    "meaningVi": "bệnh xá",
+    "definitionEn": "A place where people are treated for illness, especially in an institution.",
+    "example": "The aged monks were cared for in a quiet infirmary near the chapel.",
+    "collocation": "monastery infirmary",
+    "cefr": "C2"
+  },
+  {
+    "word": "lacklustre",
+    "pos": "adjective",
+    "ipa": "/ˈlæklʌstə/",
+    "meaningVi": "thiếu sức sống, buồn tẻ",
+    "definitionEn": "Lacking brightness, energy, or enthusiasm.",
+    "example": "His lacklustre performance disappointed the crowd of older fans.",
+    "collocation": "lacklustre performance",
+    "cefr": "C2"
+  },
+  {
+    "word": "vestigial",
+    "pos": "adjective",
+    "ipa": "/veˈstɪdʒiəl/",
+    "meaningVi": "còn sót lại, thoái hoá",
+    "definitionEn": "Remaining as a small, non-functioning trace of something that was once useful.",
+    "example": "The tiny bone is a vestigial structure left over from an earlier stage of evolution.",
+    "collocation": "vestigial organ",
+    "cefr": "C2"
+  },
+  {
+    "word": "ossify",
+    "pos": "verb",
+    "ipa": "/ˈɒsɪfaɪ/",
+    "meaningVi": "hoá xương, cứng nhắc",
+    "definitionEn": "To harden into bone, or to become rigid and inflexible.",
+    "example": "Over the decades, the committee's rules began to ossify and resist all reform.",
+    "collocation": "ossify into",
+    "cefr": "C2"
+  },
+  {
+    "word": "cognisance",
+    "pos": "noun",
+    "ipa": "/ˈkɒɡnɪzəns/",
+    "meaningVi": "sự nhận thức, hiểu biết",
+    "definitionEn": "Awareness or knowledge of something.",
+    "example": "The doctor took full cognisance of the patient's memory difficulties.",
+    "collocation": "take cognisance of",
+    "cefr": "C2"
+  },
+  {
+    "word": "reminiscent",
+    "pos": "adjective",
+    "ipa": "/ˌremɪˈnɪsnt/",
+    "meaningVi": "gợi nhớ, giống với",
+    "definitionEn": "Bringing to mind or resembling something from the past.",
+    "example": "The old café was reminiscent of the one we visited in childhood.",
+    "collocation": "reminiscent of",
+    "cefr": "C2"
+  },
+  {
+    "word": "gerontologist",
+    "pos": "noun",
+    "ipa": "/ˌdʒerənˈtɒlədʒɪst/",
+    "meaningVi": "nhà lão khoa học",
+    "definitionEn": "A scientist who studies the social, psychological, and biological aspects of ageing.",
+    "example": "The gerontologist explained why social contact slows cognitive decline.",
+    "collocation": "leading gerontologist",
+    "cefr": "C2"
+  },
+  {
+    "word": "epigenetic",
+    "pos": "adjective",
+    "ipa": "/ˌepɪdʒəˈnetɪk/",
+    "meaningVi": "biểu sinh học",
+    "definitionEn": "Relating to changes in gene activity that do not alter the DNA sequence.",
+    "example": "Epigenetic changes may help explain why ageing progresses differently in each person.",
+    "collocation": "epigenetic changes",
+    "cefr": "C2"
+  },
+  {
+    "word": "telomere",
+    "pos": "noun",
+    "ipa": "/ˈteləmɪə/",
+    "meaningVi": "đầu mút nhiễm sắc thể",
+    "definitionEn": "The protective end of a chromosome that shortens as cells divide.",
+    "example": "Shorter telomere length has been linked with faster biological ageing.",
+    "collocation": "shortened telomere",
+    "cefr": "C2"
+  },
+  {
+    "word": "atrophy",
+    "pos": "noun",
+    "ipa": "/ˈætrəfi/",
+    "meaningVi": "teo đi, suy thoái",
+    "definitionEn": "A wasting away or decline in size and function of muscle or tissue.",
+    "example": "Prolonged bed rest can cause muscle atrophy in older patients.",
+    "collocation": "muscle atrophy",
+    "cefr": "C2"
+  },
+  {
+    "word": "osteoarthritis",
+    "pos": "noun",
+    "ipa": "/ˌɒstiəʊɑːˈθraɪtɪs/",
+    "meaningVi": "thoái hoá khớp",
+    "definitionEn": "A chronic disease causing the breakdown of joint cartilage, common in ageing.",
+    "example": "Osteoarthritis in the knees made long walks increasingly difficult for her.",
+    "collocation": "severe osteoarthritis",
+    "cefr": "C2"
+  },
+  {
+    "word": "nostalgia",
+    "pos": "noun",
+    "ipa": "/nɒˈstældʒə/",
+    "meaningVi": "nỗi nhớ quê, hoài niệm",
+    "definitionEn": "A sentimental longing for the past or for a former time.",
+    "example": "Old photographs fill her with nostalgia for her youth in the village.",
+    "collocation": "deep nostalgia",
+    "cefr": "C2"
+  },
+  {
+    "word": "reverie",
+    "pos": "noun",
+    "ipa": "/ˈrevəri/",
+    "meaningVi": "sự mơ màng, trầm tư",
+    "definitionEn": "A state of being pleasantly lost in dreamy thoughts.",
+    "example": "He sat by the window in quiet reverie, remembering his early years.",
+    "collocation": "lost in reverie",
+    "cefr": "C2"
+  },
+  {
+    "word": "stoicism",
+    "pos": "noun",
+    "ipa": "/ˈstəʊɪsɪzəm/",
+    "meaningVi": "tính điềm tĩnh chịu đựng",
+    "definitionEn": "Calm endurance of pain or hardship without complaint.",
+    "example": "Her stoicism during the long illness amazed the nurses on the ward.",
+    "collocation": "quiet stoicism",
+    "cefr": "C2"
+  },
+  {
+    "word": "resignation",
+    "pos": "noun",
+    "ipa": "/ˌrezɪɡˈneɪʃn/",
+    "meaningVi": "sự cam chịu",
+    "definitionEn": "Acceptance of an unpleasant situation without protest.",
+    "example": "He faced the loss of his independence with quiet resignation.",
+    "collocation": "quiet resignation",
+    "cefr": "C2"
+  },
+  {
+    "word": "decorum",
+    "pos": "noun",
+    "ipa": "/dɪˈkɔːrəm/",
+    "meaningVi": "sự đoan trang, phép tắc",
+    "definitionEn": "Behaviour that is socially proper and dignified.",
+    "example": "The old gentleman maintained decorum even when the children made noise.",
+    "collocation": "maintain decorum",
+    "cefr": "C2"
+  },
+  {
+    "word": "sanctuary",
+    "pos": "noun",
+    "ipa": "/ˈsæŋktʃuəri/",
+    "meaningVi": "nơi trú ẩn, chốn bình yên",
+    "definitionEn": "A safe place of refuge or peace, especially from danger or stress.",
+    "example": "The garden became a sanctuary for her in the final years of life.",
+    "collocation": "quiet sanctuary",
+    "cefr": "C2"
+  },
+  {
+    "word": "ministration",
+    "pos": "noun",
+    "ipa": "/ˌmɪnɪˈstreɪʃn/",
+    "meaningVi": "sự chăm sóc, phục vụ",
+    "definitionEn": "Care, help, or attention given to someone in need.",
+    "example": "The volunteers provided kind ministrations to the residents each evening.",
+    "collocation": "tender ministrations",
+    "cefr": "C2"
+  },
+  {
+    "word": "solicitude",
+    "pos": "noun",
+    "ipa": "/səˈlɪsɪtjuːd/",
+    "meaningVi": "sự ân cần, quan tâm",
+    "definitionEn": "Care and concern for the welfare of another person.",
+    "example": "Her solicitude for her ageing parents was obvious in every visit.",
+    "collocation": "tender solicitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "lugubrious",
+    "pos": "adjective",
+    "ipa": "/ləˈɡuːbriəs/",
+    "meaningVi": "buồn thảm, ủ ê",
+    "definitionEn": "Looking or sounding excessively mournful or gloomy.",
+    "example": "The old man wore a lugubrious expression during the long funeral service.",
+    "collocation": "lugubrious tone",
+    "cefr": "C2"
+  },
+  {
+    "word": "wizened",
+    "pos": "adjective",
+    "ipa": "/ˈwɪznd/",
+    "meaningVi": "nhăn nheo, khô héo",
+    "definitionEn": "Dried up and wrinkled, especially with age.",
+    "example": "The wizened farmer smiled as he showed us his prize vegetables.",
+    "collocation": "wizened face",
+    "cefr": "C2"
+  },
+  {
+    "word": "doddering",
+    "pos": "adjective",
+    "ipa": "/ˈdɒdərɪŋ/",
+    "meaningVi": "lẩm cẩm, run rẩy",
+    "definitionEn": "Unsteady in movement or mind because of old age.",
+    "example": "The doddering pensioner needed both hands to lift his teacup.",
+    "collocation": "doddering old man",
+    "cefr": "C2"
+  },
+  {
+    "word": "fogey",
+    "pos": "noun",
+    "ipa": "/ˈfəʊɡi/",
+    "meaningVi": "người cổ hủ, lỗi thời",
+    "definitionEn": "An old-fashioned person who dislikes new ideas.",
+    "example": "My grandfather is an old fogey who refuses to use a smartphone.",
+    "collocation": "old fogey",
+    "cefr": "C2"
+  },
+  {
+    "word": "curmudgeon",
+    "pos": "noun",
+    "ipa": "/kɜːˈmʌdʒən/",
+    "meaningVi": "người gắt gỏng, cục cằn",
+    "definitionEn": "A bad-tempered, grumpy person, especially an old one.",
+    "example": "The old curmudgeon complained about the noise from every neighbour.",
+    "collocation": "grumpy curmudgeon",
+    "cefr": "C2"
+  },
+  {
+    "word": "sprightly",
+    "pos": "adjective",
+    "ipa": "/ˈspraɪtli/",
+    "meaningVi": "nhanh nhẹn, linh hoạt",
+    "definitionEn": "Lively, active, and full of energy, especially for one's age.",
+    "example": "At ninety, my aunt remains sprightly and walks to church each Sunday.",
+    "collocation": "remarkably sprightly",
+    "cefr": "C2"
+  },
+  {
+    "word": "spry",
+    "pos": "adjective",
+    "ipa": "/spraɪ/",
+    "meaningVi": "nhanh nhẹn, khoẻ mạnh",
+    "definitionEn": "Active and nimble, especially in an older person.",
+    "example": "The spry widow climbed the hill without stopping for a rest.",
+    "collocation": "remarkably spry",
+    "cefr": "C2"
+  },
+  {
+    "word": "hale",
+    "pos": "adjective",
+    "ipa": "/heɪl/",
+    "meaningVi": "khoẻ mạnh, tráng kiện",
+    "definitionEn": "Healthy and strong, especially for one's age.",
+    "example": "Remarkably hale for his age, he still tends his vegetable garden daily.",
+    "collocation": "hale and hearty",
+    "cefr": "C2"
+  },
+  {
+    "word": "hoary",
+    "pos": "adjective",
+    "ipa": "/ˈhɔːri/",
+    "meaningVi": "bạc trắng, cổ xưa",
+    "definitionEn": "Grey or white with age, or very old and familiar.",
+    "example": "The hoary professor had taught at the college for over fifty years.",
+    "collocation": "hoary old",
+    "cefr": "C2"
+  },
+  {
+    "word": "venerable",
+    "pos": "adjective",
+    "ipa": "/ˈvenərəbl/",
+    "meaningVi": "đáng kính, trưởng thượng",
+    "definitionEn": "Deserving respect because of age, wisdom, or position.",
+    "example": "The venerable monk offered gentle advice to every visitor who came.",
+    "collocation": "venerable elder",
+    "cefr": "C2"
+  },
+  {
+    "word": "patriarch",
+    "pos": "noun",
+    "ipa": "/ˈpeɪtriɑːk/",
+    "meaningVi": "gia trưởng, người đứng đầu dòng họ",
+    "definitionEn": "The male head of a family or tribe, typically the oldest man.",
+    "example": "The patriarch of the family gathered everyone for the Lunar New Year feast.",
+    "collocation": "family patriarch",
+    "cefr": "C2"
+  },
+  {
+    "word": "matriarch",
+    "pos": "noun",
+    "ipa": "/ˈmeɪtriɑːk/",
+    "meaningVi": "bà trưởng tộc, người đứng đầu dòng họ",
+    "definitionEn": "A woman who is the head or dominant figure in a family.",
+    "example": "The matriarch of the village ruled her household with calm authority.",
+    "collocation": "respected matriarch",
+    "cefr": "C2"
+  },
+  {
+    "word": "anachronism",
+    "pos": "noun",
+    "ipa": "/əˈnækrənɪzəm/",
+    "meaningVi": "sự lạc thời, vật lỗi thời",
+    "definitionEn": "Something that belongs to an earlier period and seems out of place now.",
+    "example": "A paper ledger is an anachronism in an office full of computers.",
+    "collocation": "living anachronism",
+    "cefr": "C2"
+  },
+  {
+    "word": "fossilised",
+    "pos": "adjective",
+    "ipa": "/ˈfɒsəlaɪzd/",
+    "meaningVi": "hoá thạch, cứng nhắc",
+    "definitionEn": "Turned into fossil, or rigid and unchanging in attitude.",
+    "example": "The fossilised habits of the old office frustrated younger staff members.",
+    "collocation": "fossilised attitudes",
+    "cefr": "C2"
+  },
+  {
+    "word": "languish",
+    "pos": "verb",
+    "ipa": "/ˈlæŋɡwɪʃ/",
+    "meaningVi": "sống mòn, héo hon",
+    "definitionEn": "To lose strength, vitality, or enjoyment; to remain in an unpleasant state.",
+    "example": "Many elderly people languish in isolation when no one visits them.",
+    "collocation": "languish alone",
+    "cefr": "C2"
+  }
+]

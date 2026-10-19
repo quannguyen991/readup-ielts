@@ -7,8 +7,8 @@ import { useBackdropStore } from '@/store/useBackdropStore';
 import { color } from '@/theme/tokens';
 
 /**
- * Hỏi NGAY khi vào học: giao diện mặc định (phẳng, gọn) hay Chiikawa (hồng, có hiệu ứng).
- * Chọn xong áp dụng luôn cho bảng học này; đổi sau vẫn được trong Cài đặt → Nền & hiệu ứng.
+ * Chọn giao diện học ở trang thư viện từ vựng: mặc định (phẳng, gọn) hay Chiikawa (hồng, có hiệu ứng).
+ * Áp dụng cho mọi bảng học.
  */
 export function StudyEntryChooser({ visible, onDone }: { visible: boolean; onDone: () => void }) {
   const { L } = useL();
@@ -53,7 +53,7 @@ export function StudyEntryChooser({ visible, onDone }: { visible: boolean; onDon
             {L('Chọn giao diện học', 'Pick a study look')}
           </Text>
           <Text className="font-sans text-label text-muted">
-            {L('Áp dụng cho bảng học này. Đổi sau được trong Cài đặt.', 'Applies to this session. You can change it later in Settings.')}
+            {L('Áp dụng cho mọi bảng học. Đổi lúc nào cũng được ở đây.', 'Applies to every study session. Change it any time here.')}
           </Text>
 
           <Choice

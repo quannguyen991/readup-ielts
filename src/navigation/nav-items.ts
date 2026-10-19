@@ -267,26 +267,13 @@ export function parentNavKey(key: string | null): string | null {
 /**
  * Bỏ các mục chỉ-máy-tính khi thiết bị không đủ điều kiện (không để lại dấu vết).
  *
- * `ieltsFeatures`: các trang con IELTS người học đã chọn (xem ielts-focus.ts).
- * `null` = chưa chọn, hiện đủ. Chỉ lọc các trang con của mục IELTS.
  */
-export function visibleGroups(
-  groups: readonly NavGroup[],
-  desktop: boolean,
-  ieltsFeatures: readonly string[] | null = null,
-  satFeatures: readonly string[] | null = null,
-): NavGroup[] {
+export function visibleGroups(groups: readonly NavGroup[], desktop: boolean): NavGroup[] {
   const historyOk = HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory());
   const keep = (i: NavItem): boolean => (desktop || !i.desktopOnly) && (i.requires !== 'history' || historyOk);
-  const keepIelts = (parentKey: string, i: NavItem): boolean =>
-    parentKey !== 'ielts' || ieltsFeatures === null || ieltsFeatures.includes(i.key);
-  const keepSat = (parentKey: string, i: NavItem): boolean =>
-    parentKey !== 'sat' || satFeatures === null || satFeatures.includes(i.key);
   return groups.map((g) => ({
     ...g,
-    items: g.items
-      .filter(keep)
-      .map((i) => (i.children ? { ...i, children: i.children.filter((c) => keep(c) && keepIelts(i.key, c) && keepSat(i.key, c)) } : i)),
+    items: g.items.filter(keep).map((i) => (i.children ? { ...i, children: i.children.filter(keep) } : i)),
   }));
 }
 

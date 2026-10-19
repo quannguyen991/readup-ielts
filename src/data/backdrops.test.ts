@@ -18,9 +18,9 @@ import {
   withAlpha,
 } from './backdrops';
 
-test('manifest: id duy nhất, đủ 12 bức, cần ảnh gốc + ảnh nhỏ, tiêu điểm hợp lệ', () => {
-  assert.equal(BACKDROPS.length, 12);
-  assert.equal(new Set(BACKDROPS.map((b) => b.id)).size, 12);
+test('manifest: id duy nhất, đủ 15 bức, cần ảnh gốc + ảnh nhỏ, tiêu điểm hợp lệ', () => {
+  assert.equal(BACKDROPS.length, 15);
+  assert.equal(new Set(BACKDROPS.map((b) => b.id)).size, 15);
   for (const b of BACKDROPS) {
     assert.deepEqual(b.needs, [`/backdrops/art/${b.id}.jpg`, `/backdrops/art/${b.id}.thumb.jpg`]);
     assert.ok(b.vi && b.en && b.artist && /^\d+,\d+,\d+$/.test(b.scrim));

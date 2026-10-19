@@ -1,0 +1,1064 @@
+[
+  {
+    "word": "diabetes",
+    "synonyms": [
+      "diabetes mellitus"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cardiovascular",
+    "synonyms": [
+      "cardiac",
+      "circulatory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epidemiology",
+    "synonyms": [
+      "disease surveillance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pathogenesis",
+    "synonyms": [
+      "disease development",
+      "pathogenic process"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "doctor",
+    "synonyms": [
+      "physician",
+      "medic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nurse",
+    "synonyms": [
+      "healthcare worker",
+      "carer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hospital",
+    "synonyms": [
+      "infirmary",
+      "medical centre"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "patient",
+    "synonyms": [
+      "sufferer",
+      "case"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pill",
+    "synonyms": [
+      "tablet",
+      "capsule"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fever",
+    "synonyms": [
+      "high temperature",
+      "pyrexia"
+    ],
+    "antonyms": [
+      "hypothermia"
+    ]
+  },
+  {
+    "word": "cough",
+    "synonyms": [
+      "hack"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "headache",
+    "synonyms": [
+      "cephalalgia"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "injury",
+    "synonyms": [
+      "trauma",
+      "harm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sleep",
+    "synonyms": [
+      "slumber",
+      "rest"
+    ],
+    "antonyms": [
+      "wakefulness"
+    ]
+  },
+  {
+    "word": "exercise",
+    "synonyms": [
+      "physical activity",
+      "workout"
+    ],
+    "antonyms": [
+      "inactivity"
+    ]
+  },
+  {
+    "word": "vitamin",
+    "synonyms": [
+      "nutrient",
+      "micronutrient"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "healthy",
+    "synonyms": [
+      "fit",
+      "well"
+    ],
+    "antonyms": [
+      "unhealthy"
+    ]
+  },
+  {
+    "word": "ill",
+    "synonyms": [
+      "sick",
+      "unwell"
+    ],
+    "antonyms": [
+      "well"
+    ]
+  },
+  {
+    "word": "tired",
+    "synonyms": [
+      "weary",
+      "exhausted"
+    ],
+    "antonyms": [
+      "energetic"
+    ]
+  },
+  {
+    "word": "clinic",
+    "synonyms": [
+      "medical centre",
+      "health centre"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dentist",
+    "synonyms": [
+      "dental surgeon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "recover",
+    "synonyms": [
+      "get better",
+      "heal"
+    ],
+    "antonyms": [
+      "relapse"
+    ]
+  },
+  {
+    "word": "infection",
+    "synonyms": [
+      "contamination",
+      "disease"
+    ],
+    "antonyms": [
+      "immunity"
+    ]
+  },
+  {
+    "word": "bacteria",
+    "synonyms": [
+      "microbes",
+      "germs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "virus",
+    "synonyms": [
+      "pathogen",
+      "germ"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "antibiotic",
+    "synonyms": [
+      "antimicrobial",
+      "antibacterial drug"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allergy",
+    "synonyms": [
+      "hypersensitivity",
+      "sensitivity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "asthma",
+    "synonyms": [
+      "reactive airway disease"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "injection",
+    "synonyms": [
+      "jab",
+      "shot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prescription",
+    "synonyms": [
+      "prescribed medicine",
+      "medical order"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dose",
+    "synonyms": [
+      "measure",
+      "quantity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wellbeing",
+    "synonyms": [
+      "welfare",
+      "health"
+    ],
+    "antonyms": [
+      "ill-health"
+    ]
+  },
+  {
+    "word": "fitness",
+    "synonyms": [
+      "physical condition",
+      "shape"
+    ],
+    "antonyms": [
+      "unfitness"
+    ]
+  },
+  {
+    "word": "stroke",
+    "synonyms": [
+      "cerebrovascular accident",
+      "CVA"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fatigue",
+    "synonyms": [
+      "exhaustion",
+      "weariness"
+    ],
+    "antonyms": [
+      "vigour"
+    ]
+  },
+  {
+    "word": "dehydrated",
+    "synonyms": [
+      "depleted of fluid",
+      "water-deficient"
+    ],
+    "antonyms": [
+      "hydrated"
+    ]
+  },
+  {
+    "word": "immune",
+    "synonyms": [
+      "resistant",
+      "protected"
+    ],
+    "antonyms": [
+      "susceptible"
+    ]
+  },
+  {
+    "word": "wound",
+    "synonyms": [
+      "injury",
+      "laceration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bruise",
+    "synonyms": [
+      "contusion",
+      "discolouration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sprain",
+    "synonyms": [
+      "twist",
+      "wrench"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allergic",
+    "synonyms": [
+      "hypersensitive",
+      "sensitive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ambulance",
+    "synonyms": [
+      "emergency vehicle",
+      "rescue vehicle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emergency",
+    "synonyms": [
+      "crisis",
+      "urgent situation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "consultation",
+    "synonyms": [
+      "appointment",
+      "examination"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prevention",
+    "synonyms": [
+      "avoidance",
+      "deterrence"
+    ],
+    "antonyms": [
+      "cure"
+    ]
+  },
+  {
+    "word": "screening",
+    "synonyms": [
+      "check-up",
+      "testing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "recovery",
+    "synonyms": [
+      "recuperation",
+      "healing"
+    ],
+    "antonyms": [
+      "relapse"
+    ]
+  },
+  {
+    "word": "dizzy",
+    "synonyms": [
+      "giddy",
+      "lightheaded"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pathology",
+    "synonyms": [
+      "pathological science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biopsy",
+    "synonyms": [
+      "tissue sample",
+      "tissue test"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anaemia",
+    "synonyms": [
+      "low haemoglobin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sepsis",
+    "synonyms": [
+      "septicaemia",
+      "blood poisoning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arthritis",
+    "synonyms": [
+      "joint inflammation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dementia",
+    "synonyms": [
+      "cognitive impairment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "neurology",
+    "synonyms": [
+      "neurological medicine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oncology",
+    "synonyms": [
+      "cancer medicine",
+      "cancer care"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paediatric",
+    "synonyms": [
+      "childhood",
+      "pediatric"
+    ],
+    "antonyms": [
+      "geriatric"
+    ]
+  },
+  {
+    "word": "geriatric",
+    "synonyms": [
+      "elderly",
+      "gerontological"
+    ],
+    "antonyms": [
+      "paediatric"
+    ]
+  },
+  {
+    "word": "adherence",
+    "synonyms": [
+      "compliance",
+      "observance"
+    ],
+    "antonyms": [
+      "non-compliance"
+    ]
+  },
+  {
+    "word": "triage",
+    "synonyms": [
+      "prioritisation",
+      "sorting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "morbidity",
+    "synonyms": [
+      "disease prevalence",
+      "sickness rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mortality",
+    "synonyms": [
+      "death rate",
+      "fatality"
+    ],
+    "antonyms": [
+      "survival"
+    ]
+  },
+  {
+    "word": "incidence",
+    "synonyms": [
+      "occurrence",
+      "frequency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prevalence",
+    "synonyms": [
+      "frequency",
+      "commonness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contraindication",
+    "synonyms": [
+      "counter-indication",
+      "reason to avoid"
+    ],
+    "antonyms": [
+      "indication"
+    ]
+  },
+  {
+    "word": "polypharmacy",
+    "synonyms": [
+      "multiple medication use"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lesion",
+    "synonyms": [
+      "wound",
+      "injury"
+    ],
+    "antonyms": [
+      "healthy tissue"
+    ]
+  },
+  {
+    "word": "tumour",
+    "synonyms": [
+      "growth",
+      "neoplasm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anaesthesia",
+    "synonyms": [
+      "anaesthetic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "analgesic",
+    "synonyms": [
+      "painkiller",
+      "pain reliever"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "antiviral",
+    "synonyms": [
+      "antiviral drug"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypothermia",
+    "synonyms": [
+      "low body temperature",
+      "subnormal temperature"
+    ],
+    "antonyms": [
+      "hyperthermia"
+    ]
+  },
+  {
+    "word": "haemorrhage",
+    "synonyms": [
+      "bleeding",
+      "blood loss"
+    ],
+    "antonyms": [
+      "clotting"
+    ]
+  },
+  {
+    "word": "intervention",
+    "synonyms": [
+      "treatment",
+      "procedure"
+    ],
+    "antonyms": [
+      "non-intervention"
+    ]
+  },
+  {
+    "word": "resuscitation",
+    "synonyms": [
+      "revival"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "microbiome",
+    "synonyms": [
+      "microbiota"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "genome",
+    "synonyms": [
+      "genetic makeup",
+      "DNA sequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biomarker",
+    "synonyms": [
+      "biological indicator",
+      "marker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contagion",
+    "synonyms": [
+      "transmission",
+      "spread"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sedation",
+    "synonyms": [
+      "tranquillisation"
+    ],
+    "antonyms": [
+      "arousal"
+    ]
+  },
+  {
+    "word": "idiopathic",
+    "synonyms": [
+      "of unknown cause",
+      "cryptogenic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "asymptomatic",
+    "synonyms": [
+      "symptom-free",
+      "subclinical"
+    ],
+    "antonyms": [
+      "symptomatic"
+    ]
+  },
+  {
+    "word": "adjunct",
+    "synonyms": [
+      "supplement",
+      "complement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ischaemia",
+    "synonyms": [
+      "insufficient blood supply",
+      "ischemia"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sequelae",
+    "synonyms": [
+      "aftereffects",
+      "complications"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "convalescence",
+    "synonyms": [
+      "recuperation",
+      "recovery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lethargy",
+    "synonyms": [
+      "sluggishness",
+      "listlessness"
+    ],
+    "antonyms": [
+      "vitality"
+    ]
+  },
+  {
+    "word": "malaise",
+    "synonyms": [
+      "unease",
+      "discomfort"
+    ],
+    "antonyms": [
+      "wellbeing"
+    ]
+  },
+  {
+    "word": "ataxia",
+    "synonyms": [
+      "incoordination",
+      "unsteadiness"
+    ],
+    "antonyms": [
+      "coordination"
+    ]
+  },
+  {
+    "word": "cachexia",
+    "synonyms": [
+      "wasting",
+      "emaciation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dysphagia",
+    "synonyms": [
+      "swallowing difficulty"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dyspnoea",
+    "synonyms": [
+      "shortness of breath",
+      "breathlessness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tachycardia",
+    "synonyms": [
+      "rapid heartbeat",
+      "racing heart"
+    ],
+    "antonyms": [
+      "bradycardia"
+    ]
+  },
+  {
+    "word": "bradycardia",
+    "synonyms": [
+      "slow heartbeat"
+    ],
+    "antonyms": [
+      "tachycardia"
+    ]
+  },
+  {
+    "word": "necrosis",
+    "synonyms": [
+      "tissue death",
+      "mortification"
+    ],
+    "antonyms": [
+      "regeneration"
+    ]
+  },
+  {
+    "word": "oedema",
+    "synonyms": [
+      "swelling",
+      "fluid retention"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sclerosis",
+    "synonyms": [
+      "hardening",
+      "induration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fibrosis",
+    "synonyms": [
+      "scarring",
+      "fibrous thickening"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cirrhosis",
+    "synonyms": [
+      "liver scarring",
+      "hepatic fibrosis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dysentery",
+    "synonyms": [
+      "bloody diarrhoea",
+      "flux"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "idiosyncratic",
+    "synonyms": [
+      "peculiar",
+      "distinctive"
+    ],
+    "antonyms": [
+      "typical"
+    ]
+  },
+  {
+    "word": "vertigo",
+    "synonyms": [
+      "dizziness",
+      "giddiness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lassitude",
+    "synonyms": [
+      "listlessness",
+      "languor"
+    ],
+    "antonyms": [
+      "vitality"
+    ]
+  },
+  {
+    "word": "cathartic",
+    "synonyms": [
+      "purging",
+      "cleansing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palliate",
+    "synonyms": [
+      "alleviate",
+      "relieve"
+    ],
+    "antonyms": [
+      "exacerbate"
+    ]
+  },
+  {
+    "word": "pyrexia",
+    "synonyms": [
+      "fever",
+      "high temperature"
+    ],
+    "antonyms": [
+      "hypothermia"
+    ]
+  },
+  {
+    "word": "emaciated",
+    "synonyms": [
+      "skeletal",
+      "gaunt"
+    ],
+    "antonyms": [
+      "obese"
+    ]
+  },
+  {
+    "word": "asthenia",
+    "synonyms": [
+      "weakness",
+      "debility"
+    ],
+    "antonyms": [
+      "vigour"
+    ]
+  },
+  {
+    "word": "dyspepsia",
+    "synonyms": [
+      "indigestion",
+      "stomach upset"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diuresis",
+    "synonyms": [
+      "urine production",
+      "diuretic effect"
+    ],
+    "antonyms": [
+      "antidiuresis"
+    ]
+  },
+  {
+    "word": "hypoglycaemia",
+    "synonyms": [
+      "low blood sugar",
+      "hypoglycemia"
+    ],
+    "antonyms": [
+      "hyperglycaemia"
+    ]
+  },
+  {
+    "word": "nosology",
+    "synonyms": [
+      "disease classification",
+      "classification of diseases"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aetiology",
+    "synonyms": [
+      "causation",
+      "origin of disease"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "salubrious",
+    "synonyms": [
+      "healthful",
+      "wholesome"
+    ],
+    "antonyms": [
+      "insalubrious"
+    ]
+  },
+  {
+    "word": "febrile",
+    "synonyms": [
+      "feverish",
+      "pyretic"
+    ],
+    "antonyms": [
+      "afebrile"
+    ]
+  },
+  {
+    "word": "inoculate",
+    "synonyms": [
+      "vaccinate",
+      "immunise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "debilitating",
+    "synonyms": [
+      "enfeebling",
+      "crippling"
+    ],
+    "antonyms": [
+      "invigorating"
+    ]
+  },
+  {
+    "word": "morbid",
+    "synonyms": [
+      "diseased",
+      "unhealthy"
+    ],
+    "antonyms": [
+      "healthy"
+    ]
+  },
+  {
+    "word": "sanguine",
+    "synonyms": [
+      "optimistic",
+      "hopeful"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "word": "rhinitis",
+    "synonyms": [
+      "nasal inflammation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gangrene",
+    "synonyms": [
+      "tissue death"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jaundice",
+    "synonyms": [
+      "icterus"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catatonia",
+    "synonyms": [
+      "stupor",
+      "motor immobility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anhedonia",
+    "synonyms": [
+      "loss of pleasure",
+      "emotional blunting"
+    ],
+    "antonyms": [
+      "euphoria"
+    ]
+  }
+]

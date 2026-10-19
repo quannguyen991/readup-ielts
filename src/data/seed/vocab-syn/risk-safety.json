@@ -1,0 +1,1243 @@
+[
+  {
+    "word": "careful",
+    "synonyms": [
+      "cautious",
+      "attentive",
+      "meticulous"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "warning",
+    "synonyms": [
+      "caution",
+      "alert",
+      "notice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "helmet",
+    "synonyms": [
+      "headgear",
+      "crash helmet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seat belt",
+    "synonyms": [
+      "safety belt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fire",
+    "synonyms": [
+      "blaze",
+      "conflagration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alarm",
+    "synonyms": [
+      "siren",
+      "warning signal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "protect",
+    "synonyms": [
+      "safeguard",
+      "shield",
+      "defend"
+    ],
+    "antonyms": [
+      "endanger"
+    ]
+  },
+  {
+    "word": "shelter",
+    "synonyms": [
+      "refuge",
+      "haven",
+      "sanctuary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "guard",
+    "synonyms": [
+      "sentry",
+      "watchman",
+      "custodian"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fragile",
+    "synonyms": [
+      "delicate",
+      "brittle",
+      "frail"
+    ],
+    "antonyms": [
+      "sturdy",
+      "robust"
+    ]
+  },
+  {
+    "word": "slippery",
+    "synonyms": [
+      "slick",
+      "greasy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "poison",
+    "synonyms": [
+      "toxin",
+      "venom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "weapon",
+    "synonyms": [
+      "firearm",
+      "armament"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lock",
+    "synonyms": [
+      "bolt",
+      "secure",
+      "fasten"
+    ],
+    "antonyms": [
+      "unlock"
+    ]
+  },
+  {
+    "word": "crash",
+    "synonyms": [
+      "collision",
+      "accident",
+      "smash"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smoke",
+    "synonyms": [
+      "vapour",
+      "haze"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flood",
+    "synonyms": [
+      "deluge",
+      "inundation"
+    ],
+    "antonyms": [
+      "drought"
+    ]
+  },
+  {
+    "word": "earthquake",
+    "synonyms": [
+      "tremor",
+      "quake"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "storm",
+    "synonyms": [
+      "tempest",
+      "gale"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "slip",
+    "synonyms": [
+      "slide",
+      "stumble",
+      "fall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "avoid",
+    "synonyms": [
+      "evade",
+      "shun",
+      "sidestep"
+    ],
+    "antonyms": [
+      "confront"
+    ]
+  },
+  {
+    "word": "vulnerable",
+    "synonyms": [
+      "exposed",
+      "susceptible",
+      "defenceless"
+    ],
+    "antonyms": [
+      "invulnerable"
+    ]
+  },
+  {
+    "word": "fatal",
+    "synonyms": [
+      "deadly",
+      "lethal",
+      "mortal"
+    ],
+    "antonyms": [
+      "harmless"
+    ]
+  },
+  {
+    "word": "reckless",
+    "synonyms": [
+      "rash",
+      "foolhardy",
+      "careless"
+    ],
+    "antonyms": [
+      "cautious",
+      "prudent"
+    ]
+  },
+  {
+    "word": "toxic",
+    "synonyms": [
+      "poisonous",
+      "noxious",
+      "harmful"
+    ],
+    "antonyms": [
+      "harmless"
+    ]
+  },
+  {
+    "word": "pollutant",
+    "synonyms": [
+      "contaminant",
+      "impurity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epidemic",
+    "synonyms": [
+      "outbreak",
+      "plague"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pandemic",
+    "synonyms": [
+      "global outbreak",
+      "worldwide epidemic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alert",
+    "synonyms": [
+      "warning",
+      "notice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "evacuation",
+    "synonyms": [
+      "removal",
+      "relocation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rescue",
+    "synonyms": [
+      "save",
+      "deliver",
+      "salvage"
+    ],
+    "antonyms": [
+      "abandon"
+    ]
+  },
+  {
+    "word": "secure",
+    "synonyms": [
+      "safe",
+      "protected",
+      "stable"
+    ],
+    "antonyms": [
+      "insecure",
+      "vulnerable"
+    ]
+  },
+  {
+    "word": "risky",
+    "synonyms": [
+      "hazardous",
+      "dangerous",
+      "perilous"
+    ],
+    "antonyms": [
+      "safe"
+    ]
+  },
+  {
+    "word": "recall",
+    "synonyms": [
+      "withdrawal",
+      "callback"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contaminate",
+    "synonyms": [
+      "pollute",
+      "taint",
+      "infect"
+    ],
+    "antonyms": [
+      "purify",
+      "sanitize"
+    ]
+  },
+  {
+    "word": "fume",
+    "synonyms": [
+      "vapour",
+      "exhaust"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perilous",
+    "synonyms": [
+      "dangerous",
+      "hazardous",
+      "risky"
+    ],
+    "antonyms": [
+      "safe"
+    ]
+  },
+  {
+    "word": "imminent",
+    "synonyms": [
+      "impending",
+      "forthcoming",
+      "approaching"
+    ],
+    "antonyms": [
+      "remote"
+    ]
+  },
+  {
+    "word": "precarious",
+    "synonyms": [
+      "unstable",
+      "insecure",
+      "shaky"
+    ],
+    "antonyms": [
+      "secure",
+      "stable"
+    ]
+  },
+  {
+    "word": "catastrophic",
+    "synonyms": [
+      "disastrous",
+      "calamitous",
+      "devastating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "detrimental",
+    "synonyms": [
+      "harmful",
+      "damaging",
+      "injurious"
+    ],
+    "antonyms": [
+      "beneficial",
+      "advantageous"
+    ]
+  },
+  {
+    "word": "inadvertent",
+    "synonyms": [
+      "accidental",
+      "unintentional",
+      "unwitting"
+    ],
+    "antonyms": [
+      "deliberate",
+      "intentional"
+    ]
+  },
+  {
+    "word": "negligence",
+    "synonyms": [
+      "carelessness",
+      "neglect",
+      "oversight"
+    ],
+    "antonyms": [
+      "diligence"
+    ]
+  },
+  {
+    "word": "lapse",
+    "synonyms": [
+      "slip",
+      "oversight",
+      "mistake"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "breach",
+    "synonyms": [
+      "violation",
+      "infringement",
+      "break"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deterrent",
+    "synonyms": [
+      "disincentive",
+      "restraint"
+    ],
+    "antonyms": [
+      "incentive"
+    ]
+  },
+  {
+    "word": "forestall",
+    "synonyms": [
+      "prevent",
+      "preclude",
+      "avert"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prevalent",
+    "synonyms": [
+      "widespread",
+      "rife",
+      "common"
+    ],
+    "antonyms": [
+      "rare"
+    ]
+  },
+  {
+    "word": "endanger",
+    "synonyms": [
+      "threaten",
+      "imperil"
+    ],
+    "antonyms": [
+      "protect",
+      "safeguard"
+    ]
+  },
+  {
+    "word": "jeopardize",
+    "synonyms": [
+      "endanger",
+      "imperil",
+      "threaten"
+    ],
+    "antonyms": [
+      "safeguard",
+      "protect"
+    ]
+  },
+  {
+    "word": "vigilance",
+    "synonyms": [
+      "watchfulness",
+      "alertness",
+      "caution"
+    ],
+    "antonyms": [
+      "complacency"
+    ]
+  },
+  {
+    "word": "vigilant",
+    "synonyms": [
+      "alert",
+      "watchful",
+      "wary"
+    ],
+    "antonyms": [
+      "complacent",
+      "careless"
+    ]
+  },
+  {
+    "word": "mishap",
+    "synonyms": [
+      "accident",
+      "misadventure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "calamity",
+    "synonyms": [
+      "disaster",
+      "catastrophe",
+      "tragedy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "susceptible",
+    "synonyms": [
+      "vulnerable",
+      "prone",
+      "liable"
+    ],
+    "antonyms": [
+      "immune",
+      "resistant"
+    ]
+  },
+  {
+    "word": "stringent",
+    "synonyms": [
+      "strict",
+      "rigorous",
+      "tough"
+    ],
+    "antonyms": [
+      "lax",
+      "lenient"
+    ]
+  },
+  {
+    "word": "fallout",
+    "synonyms": [
+      "aftermath",
+      "consequences",
+      "repercussions"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "audit",
+    "synonyms": [
+      "inspection",
+      "review",
+      "examination"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contingent",
+    "synonyms": [
+      "dependent",
+      "conditional",
+      "subject"
+    ],
+    "antonyms": [
+      "independent"
+    ]
+  },
+  {
+    "word": "ascertain",
+    "synonyms": [
+      "determine",
+      "establish",
+      "verify"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "undermine",
+    "synonyms": [
+      "weaken",
+      "sabotage",
+      "erode"
+    ],
+    "antonyms": [
+      "strengthen",
+      "reinforce"
+    ]
+  },
+  {
+    "word": "compromise",
+    "synonyms": [
+      "jeopardize",
+      "impair"
+    ],
+    "antonyms": [
+      "protect",
+      "safeguard"
+    ]
+  },
+  {
+    "word": "incur",
+    "synonyms": [
+      "sustain",
+      "suffer",
+      "bear"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sabotage",
+    "synonyms": [
+      "subversion",
+      "vandalism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deterioration",
+    "synonyms": [
+      "decline",
+      "degradation",
+      "decay"
+    ],
+    "antonyms": [
+      "improvement",
+      "recovery"
+    ]
+  },
+  {
+    "word": "fortify",
+    "synonyms": [
+      "strengthen",
+      "buttress",
+      "bolster"
+    ],
+    "antonyms": [
+      "weaken",
+      "undermine"
+    ]
+  },
+  {
+    "word": "reinforce",
+    "synonyms": [
+      "strengthen",
+      "bolster",
+      "fortify"
+    ],
+    "antonyms": [
+      "weaken"
+    ]
+  },
+  {
+    "word": "immunity",
+    "synonyms": [
+      "resistance",
+      "protection"
+    ],
+    "antonyms": [
+      "susceptibility"
+    ]
+  },
+  {
+    "word": "sanitation",
+    "synonyms": [
+      "hygiene",
+      "sewerage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eradicate",
+    "synonyms": [
+      "eliminate",
+      "wipe out",
+      "exterminate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "isolate",
+    "synonyms": [
+      "quarantine",
+      "separate",
+      "segregate"
+    ],
+    "antonyms": [
+      "integrate",
+      "connect"
+    ]
+  },
+  {
+    "word": "containment",
+    "synonyms": [
+      "control",
+      "restraint",
+      "suppression"
+    ],
+    "antonyms": [
+      "spread"
+    ]
+  },
+  {
+    "word": "malfunction",
+    "synonyms": [
+      "fault",
+      "failure",
+      "breakdown"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turmoil",
+    "synonyms": [
+      "chaos",
+      "upheaval",
+      "disorder"
+    ],
+    "antonyms": [
+      "calm",
+      "tranquillity"
+    ]
+  },
+  {
+    "word": "perimeter",
+    "synonyms": [
+      "boundary",
+      "border",
+      "periphery"
+    ],
+    "antonyms": [
+      "centre",
+      "core"
+    ]
+  },
+  {
+    "word": "abate",
+    "synonyms": [
+      "subside",
+      "diminish",
+      "ease"
+    ],
+    "antonyms": [
+      "intensify",
+      "escalate"
+    ]
+  },
+  {
+    "word": "remedy",
+    "synonyms": [
+      "cure",
+      "solution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pernicious",
+    "synonyms": [
+      "harmful",
+      "destructive"
+    ],
+    "antonyms": [
+      "beneficial"
+    ]
+  },
+  {
+    "word": "malevolent",
+    "synonyms": [
+      "malicious",
+      "hostile",
+      "spiteful"
+    ],
+    "antonyms": [
+      "benevolent"
+    ]
+  },
+  {
+    "word": "insidious",
+    "synonyms": [
+      "stealthy",
+      "subtle",
+      "treacherous"
+    ],
+    "antonyms": [
+      "overt"
+    ]
+  },
+  {
+    "word": "nefarious",
+    "synonyms": [
+      "wicked",
+      "villainous",
+      "sinister"
+    ],
+    "antonyms": [
+      "virtuous"
+    ]
+  },
+  {
+    "word": "vitiate",
+    "synonyms": [
+      "impair",
+      "corrupt",
+      "invalidate"
+    ],
+    "antonyms": [
+      "enhance"
+    ]
+  },
+  {
+    "word": "dilapidated",
+    "synonyms": [
+      "ruined",
+      "decrepit",
+      "run-down"
+    ],
+    "antonyms": [
+      "well-maintained"
+    ]
+  },
+  {
+    "word": "menace",
+    "synonyms": [
+      "threat",
+      "danger",
+      "hazard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scourge",
+    "synonyms": [
+      "plague",
+      "affliction",
+      "curse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "harbinger",
+    "synonyms": [
+      "herald",
+      "omen",
+      "precursor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inimical",
+    "synonyms": [
+      "hostile",
+      "adverse",
+      "harmful"
+    ],
+    "antonyms": [
+      "favourable",
+      "beneficial"
+    ]
+  },
+  {
+    "word": "noxious",
+    "synonyms": [
+      "toxic",
+      "poisonous",
+      "harmful"
+    ],
+    "antonyms": [
+      "harmless"
+    ]
+  },
+  {
+    "word": "precipice",
+    "synonyms": [
+      "cliff",
+      "edge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quagmire",
+    "synonyms": [
+      "predicament",
+      "morass"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inexorable",
+    "synonyms": [
+      "relentless",
+      "unstoppable",
+      "inevitable"
+    ],
+    "antonyms": [
+      "avoidable",
+      "preventable"
+    ]
+  },
+  {
+    "word": "ominous",
+    "synonyms": [
+      "menacing",
+      "threatening",
+      "sinister"
+    ],
+    "antonyms": [
+      "auspicious",
+      "promising"
+    ]
+  },
+  {
+    "word": "unscathed",
+    "synonyms": [
+      "unharmed",
+      "unhurt",
+      "intact"
+    ],
+    "antonyms": [
+      "injured",
+      "wounded"
+    ]
+  },
+  {
+    "word": "averse",
+    "synonyms": [
+      "opposed",
+      "reluctant",
+      "unwilling"
+    ],
+    "antonyms": [
+      "eager",
+      "keen"
+    ]
+  },
+  {
+    "word": "cavalier",
+    "synonyms": [
+      "careless",
+      "nonchalant",
+      "offhand"
+    ],
+    "antonyms": [
+      "conscientious",
+      "meticulous"
+    ]
+  },
+  {
+    "word": "foolhardy",
+    "synonyms": [
+      "reckless",
+      "rash",
+      "imprudent"
+    ],
+    "antonyms": [
+      "prudent",
+      "cautious"
+    ]
+  },
+  {
+    "word": "egregious",
+    "synonyms": [
+      "flagrant",
+      "glaring",
+      "outrageous"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hapless",
+    "synonyms": [
+      "unlucky",
+      "luckless",
+      "ill-fated"
+    ],
+    "antonyms": [
+      "fortunate",
+      "lucky"
+    ]
+  },
+  {
+    "word": "inherent",
+    "synonyms": [
+      "intrinsic",
+      "innate",
+      "inbuilt"
+    ],
+    "antonyms": [
+      "extrinsic",
+      "acquired"
+    ]
+  },
+  {
+    "word": "prudent",
+    "synonyms": [
+      "cautious",
+      "sensible",
+      "wise"
+    ],
+    "antonyms": [
+      "imprudent",
+      "reckless"
+    ]
+  },
+  {
+    "word": "heedless",
+    "synonyms": [
+      "careless",
+      "reckless",
+      "thoughtless"
+    ],
+    "antonyms": [
+      "attentive",
+      "mindful"
+    ]
+  },
+  {
+    "word": "jeopardy",
+    "synonyms": [
+      "danger",
+      "peril",
+      "risk"
+    ],
+    "antonyms": [
+      "safety",
+      "security"
+    ]
+  },
+  {
+    "word": "rampant",
+    "synonyms": [
+      "widespread",
+      "unchecked",
+      "rife"
+    ],
+    "antonyms": [
+      "controlled",
+      "restrained"
+    ]
+  },
+  {
+    "word": "pandemonium",
+    "synonyms": [
+      "chaos",
+      "uproar",
+      "bedlam"
+    ],
+    "antonyms": [
+      "calm",
+      "order"
+    ]
+  },
+  {
+    "word": "mayhem",
+    "synonyms": [
+      "chaos",
+      "havoc",
+      "bedlam"
+    ],
+    "antonyms": [
+      "order",
+      "calm"
+    ]
+  },
+  {
+    "word": "havoc",
+    "synonyms": [
+      "devastation",
+      "ruin",
+      "chaos"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "devastate",
+    "synonyms": [
+      "ravage",
+      "destroy",
+      "wreck"
+    ],
+    "antonyms": [
+      "rebuild",
+      "restore"
+    ]
+  },
+  {
+    "word": "contraband",
+    "synonyms": [
+      "smuggled goods",
+      "illicit goods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impending",
+    "synonyms": [
+      "imminent",
+      "approaching",
+      "forthcoming"
+    ],
+    "antonyms": [
+      "remote"
+    ]
+  },
+  {
+    "word": "tenuous",
+    "synonyms": [
+      "fragile",
+      "flimsy",
+      "precarious"
+    ],
+    "antonyms": [
+      "solid",
+      "strong"
+    ]
+  },
+  {
+    "word": "brink",
+    "synonyms": [
+      "edge",
+      "verge",
+      "threshold"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "imprudent",
+    "synonyms": [
+      "reckless",
+      "rash",
+      "unwise"
+    ],
+    "antonyms": [
+      "prudent",
+      "wise"
+    ]
+  },
+  {
+    "word": "perturbed",
+    "synonyms": [
+      "worried",
+      "anxious",
+      "disturbed"
+    ],
+    "antonyms": [
+      "calm",
+      "composed"
+    ]
+  },
+  {
+    "word": "ruin",
+    "synonyms": [
+      "destroy",
+      "wreck",
+      "devastate"
+    ],
+    "antonyms": [
+      "repair",
+      "restore"
+    ]
+  },
+  {
+    "word": "imperil",
+    "synonyms": [
+      "endanger",
+      "jeopardize",
+      "threaten"
+    ],
+    "antonyms": [
+      "protect",
+      "safeguard"
+    ]
+  },
+  {
+    "word": "indefensible",
+    "synonyms": [
+      "unjustifiable",
+      "inexcusable",
+      "unforgivable"
+    ],
+    "antonyms": [
+      "defensible",
+      "justifiable"
+    ]
+  },
+  {
+    "word": "untenable",
+    "synonyms": [
+      "unsustainable",
+      "indefensible",
+      "unbearable"
+    ],
+    "antonyms": [
+      "tenable",
+      "sustainable"
+    ]
+  },
+  {
+    "word": "calamitous",
+    "synonyms": [
+      "disastrous",
+      "catastrophic",
+      "tragic"
+    ],
+    "antonyms": [
+      "fortunate",
+      "beneficial"
+    ]
+  },
+  {
+    "word": "gravity",
+    "synonyms": [
+      "seriousness",
+      "severity",
+      "importance"
+    ],
+    "antonyms": [
+      "triviality"
+    ]
+  },
+  {
+    "word": "cataclysm",
+    "synonyms": [
+      "catastrophe",
+      "disaster",
+      "calamity"
+    ],
+    "antonyms": []
+  }
+]

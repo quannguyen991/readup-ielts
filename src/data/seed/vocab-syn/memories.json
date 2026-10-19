@@ -1,0 +1,1111 @@
+[
+  {
+    "word": "photo",
+    "synonyms": [
+      "snapshot",
+      "picture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "album",
+    "synonyms": [
+      "photo book",
+      "scrapbook"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "birthday",
+    "synonyms": [
+      "birth anniversary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "holiday",
+    "synonyms": [
+      "vacation",
+      "break"
+    ],
+    "antonyms": [
+      "workday"
+    ]
+  },
+  {
+    "word": "diary",
+    "synonyms": [
+      "journal",
+      "log"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "letter",
+    "synonyms": [
+      "epistle",
+      "missive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "story",
+    "synonyms": [
+      "tale",
+      "narrative"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "toy",
+    "synonyms": [
+      "plaything"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "party",
+    "synonyms": [
+      "celebration",
+      "gathering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trip",
+    "synonyms": [
+      "journey",
+      "excursion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "picnic",
+    "synonyms": [
+      "outing",
+      "alfresco meal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "camera",
+    "synonyms": [
+      "camcorder",
+      "digicam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grandmother",
+    "synonyms": [
+      "grandma",
+      "granny"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "playground",
+    "synonyms": [
+      "play area",
+      "schoolyard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "classmate",
+    "synonyms": [
+      "schoolmate",
+      "fellow student"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lullaby",
+    "synonyms": [
+      "cradle song",
+      "berceuse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "summer",
+    "synonyms": [
+      "summertime"
+    ],
+    "antonyms": [
+      "winter"
+    ]
+  },
+  {
+    "word": "bicycle",
+    "synonyms": [
+      "bike",
+      "cycle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sweets",
+    "synonyms": [
+      "candy",
+      "confectionery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "remember",
+    "synonyms": [
+      "recall",
+      "recollect"
+    ],
+    "antonyms": [
+      "forget"
+    ]
+  },
+  {
+    "word": "souvenir",
+    "synonyms": [
+      "keepsake",
+      "memento"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anecdote",
+    "synonyms": [
+      "story",
+      "tale"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "youth",
+    "synonyms": [
+      "young age",
+      "early life"
+    ],
+    "antonyms": [
+      "old age"
+    ]
+  },
+  {
+    "word": "adolescence",
+    "synonyms": [
+      "puberty",
+      "teenage years"
+    ],
+    "antonyms": [
+      "adulthood",
+      "maturity"
+    ]
+  },
+  {
+    "word": "reunion",
+    "synonyms": [
+      "get-together",
+      "gathering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scrapbook",
+    "synonyms": [
+      "album",
+      "memory book"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "snapshot",
+    "synonyms": [
+      "photo",
+      "shot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anniversary",
+    "synonyms": [
+      "jubilee",
+      "commemoration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nostalgic",
+    "synonyms": [
+      "wistful",
+      "reminiscent"
+    ],
+    "antonyms": [
+      "forward-looking"
+    ]
+  },
+  {
+    "word": "daydream",
+    "synonyms": [
+      "fantasise",
+      "muse"
+    ],
+    "antonyms": [
+      "concentrate",
+      "focus"
+    ]
+  },
+  {
+    "word": "memorise",
+    "synonyms": [
+      "learn by heart",
+      "commit to memory"
+    ],
+    "antonyms": [
+      "forget"
+    ]
+  },
+  {
+    "word": "remind",
+    "synonyms": [
+      "prompt",
+      "evoke"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forget",
+    "synonyms": [
+      "overlook",
+      "neglect"
+    ],
+    "antonyms": [
+      "remember",
+      "recall"
+    ]
+  },
+  {
+    "word": "heirloom",
+    "synonyms": [
+      "family treasure",
+      "keepsake"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nursery",
+    "synonyms": [
+      "kindergarten",
+      "preschool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "teenager",
+    "synonyms": [
+      "adolescent",
+      "youngster"
+    ],
+    "antonyms": [
+      "adult",
+      "grown-up"
+    ]
+  },
+  {
+    "word": "adulthood",
+    "synonyms": [
+      "maturity",
+      "majority"
+    ],
+    "antonyms": [
+      "childhood",
+      "infancy"
+    ]
+  },
+  {
+    "word": "bygone",
+    "synonyms": [
+      "former",
+      "past"
+    ],
+    "antonyms": [
+      "modern",
+      "contemporary"
+    ]
+  },
+  {
+    "word": "ritual",
+    "synonyms": [
+      "ceremony",
+      "custom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fondly",
+    "synonyms": [
+      "affectionately",
+      "tenderly"
+    ],
+    "antonyms": [
+      "bitterly",
+      "coldly"
+    ]
+  },
+  {
+    "word": "generation",
+    "synonyms": [
+      "age group",
+      "cohort"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reminisce",
+    "synonyms": [
+      "recall",
+      "look back"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retrospective",
+    "synonyms": [
+      "looking back",
+      "reflective"
+    ],
+    "antonyms": [
+      "prospective",
+      "forward-looking"
+    ]
+  },
+  {
+    "word": "chronicle",
+    "synonyms": [
+      "record",
+      "account"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amnesia",
+    "synonyms": [
+      "memory loss",
+      "forgetfulness"
+    ],
+    "antonyms": [
+      "recall"
+    ]
+  },
+  {
+    "word": "mnemonic",
+    "synonyms": [
+      "memory aid",
+      "memory device"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embed",
+    "synonyms": [
+      "implant",
+      "fix"
+    ],
+    "antonyms": [
+      "remove",
+      "extract"
+    ]
+  },
+  {
+    "word": "instil",
+    "synonyms": [
+      "impart",
+      "inculcate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ingrained",
+    "synonyms": [
+      "deep-rooted",
+      "entrenched"
+    ],
+    "antonyms": [
+      "superficial"
+    ]
+  },
+  {
+    "word": "erstwhile",
+    "synonyms": [
+      "former",
+      "previous"
+    ],
+    "antonyms": [
+      "current",
+      "present"
+    ]
+  },
+  {
+    "word": "hallowed",
+    "synonyms": [
+      "revered",
+      "sacred"
+    ],
+    "antonyms": [
+      "profane",
+      "desecrated"
+    ]
+  },
+  {
+    "word": "lineage",
+    "synonyms": [
+      "ancestry",
+      "descent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "genealogy",
+    "synonyms": [
+      "family tree",
+      "pedigree"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "posterity",
+    "synonyms": [
+      "future generations",
+      "descendants"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tribute",
+    "synonyms": [
+      "homage",
+      "honour"
+    ],
+    "antonyms": [
+      "insult",
+      "slight"
+    ]
+  },
+  {
+    "word": "vestige",
+    "synonyms": [
+      "trace",
+      "remnant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "layered record"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indelible",
+    "synonyms": [
+      "unforgettable",
+      "permanent"
+    ],
+    "antonyms": [
+      "erasable",
+      "transient"
+    ]
+  },
+  {
+    "word": "hazy",
+    "synonyms": [
+      "vague",
+      "blurred"
+    ],
+    "antonyms": [
+      "clear",
+      "vivid"
+    ]
+  },
+  {
+    "word": "faint",
+    "synonyms": [
+      "dim",
+      "vague"
+    ],
+    "antonyms": [
+      "vivid",
+      "distinct"
+    ]
+  },
+  {
+    "word": "transient",
+    "synonyms": [
+      "fleeting",
+      "momentary"
+    ],
+    "antonyms": [
+      "permanent",
+      "lasting"
+    ]
+  },
+  {
+    "word": "fleeting",
+    "synonyms": [
+      "brief",
+      "momentary"
+    ],
+    "antonyms": [
+      "lasting",
+      "enduring"
+    ]
+  },
+  {
+    "word": "ephemeral",
+    "synonyms": [
+      "short-lived",
+      "transitory"
+    ],
+    "antonyms": [
+      "lasting",
+      "eternal"
+    ]
+  },
+  {
+    "word": "unforgettable",
+    "synonyms": [
+      "memorable",
+      "haunting"
+    ],
+    "antonyms": [
+      "forgettable"
+    ]
+  },
+  {
+    "word": "immortalise",
+    "synonyms": [
+      "commemorate",
+      "perpetuate"
+    ],
+    "antonyms": [
+      "erase"
+    ]
+  },
+  {
+    "word": "evocative",
+    "synonyms": [
+      "suggestive",
+      "redolent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annals",
+    "synonyms": [
+      "chronicles",
+      "records"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "archive",
+    "synonyms": [
+      "repository",
+      "record office"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anecdotal",
+    "synonyms": [
+      "unverified",
+      "informal"
+    ],
+    "antonyms": [
+      "documented",
+      "verified"
+    ]
+  },
+  {
+    "word": "latent",
+    "synonyms": [
+      "dormant",
+      "hidden"
+    ],
+    "antonyms": [
+      "manifest",
+      "overt"
+    ]
+  },
+  {
+    "word": "dormant",
+    "synonyms": [
+      "inactive",
+      "sleeping"
+    ],
+    "antonyms": [
+      "active",
+      "awake"
+    ]
+  },
+  {
+    "word": "resurface",
+    "synonyms": [
+      "reappear",
+      "re-emerge"
+    ],
+    "antonyms": [
+      "submerge",
+      "vanish"
+    ]
+  },
+  {
+    "word": "wane",
+    "synonyms": [
+      "fade",
+      "diminish"
+    ],
+    "antonyms": [
+      "wax",
+      "grow"
+    ]
+  },
+  {
+    "word": "rekindle",
+    "synonyms": [
+      "revive",
+      "reignite"
+    ],
+    "antonyms": [
+      "extinguish",
+      "quench"
+    ]
+  },
+  {
+    "word": "reverie",
+    "synonyms": [
+      "daydream",
+      "trance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rumination",
+    "synonyms": [
+      "contemplation",
+      "brooding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sepia",
+    "synonyms": [
+      "brown tint",
+      "tawny"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hiraeth",
+    "synonyms": [
+      "homesickness",
+      "longing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "saudade",
+    "synonyms": [
+      "longing",
+      "yearning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "yesteryear",
+    "synonyms": [
+      "the past",
+      "bygone days"
+    ],
+    "antonyms": [
+      "today"
+    ]
+  },
+  {
+    "word": "relic",
+    "synonyms": [
+      "artefact",
+      "heirloom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "remembrance",
+    "synonyms": [
+      "commemoration",
+      "recollection"
+    ],
+    "antonyms": [
+      "oblivion",
+      "forgetfulness"
+    ]
+  },
+  {
+    "word": "chronicler",
+    "synonyms": [
+      "historian",
+      "annalist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pilgrimage",
+    "synonyms": [
+      "sacred journey",
+      "devotional trip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "antiquated",
+    "synonyms": [
+      "outdated",
+      "obsolete"
+    ],
+    "antonyms": [
+      "modern",
+      "current"
+    ]
+  },
+  {
+    "word": "reminiscent",
+    "synonyms": [
+      "evocative",
+      "suggestive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anachronistic",
+    "synonyms": [
+      "outdated",
+      "out of date"
+    ],
+    "antonyms": [
+      "timely",
+      "contemporary"
+    ]
+  },
+  {
+    "word": "archaic",
+    "synonyms": [
+      "ancient",
+      "obsolete"
+    ],
+    "antonyms": [
+      "modern",
+      "contemporary"
+    ]
+  },
+  {
+    "word": "vestigial",
+    "synonyms": [
+      "residual",
+      "rudimentary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commemorative",
+    "synonyms": [
+      "memorial",
+      "celebratory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "immemorial",
+    "synonyms": [
+      "ancient",
+      "age-old"
+    ],
+    "antonyms": [
+      "recent",
+      "modern"
+    ]
+  },
+  {
+    "word": "evanescent",
+    "synonyms": [
+      "fleeting",
+      "vanishing"
+    ],
+    "antonyms": [
+      "lasting",
+      "enduring"
+    ]
+  },
+  {
+    "word": "fugitive",
+    "synonyms": [
+      "fleeting",
+      "elusive"
+    ],
+    "antonyms": [
+      "permanent"
+    ]
+  },
+  {
+    "word": "primordial",
+    "synonyms": [
+      "primeval",
+      "primitive"
+    ],
+    "antonyms": [
+      "modern",
+      "recent"
+    ]
+  },
+  {
+    "word": "olden",
+    "synonyms": [
+      "ancient",
+      "former"
+    ],
+    "antonyms": [
+      "modern",
+      "present-day"
+    ]
+  },
+  {
+    "word": "ruminate",
+    "synonyms": [
+      "ponder",
+      "meditate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "engrave",
+    "synonyms": [
+      "carve",
+      "inscribe"
+    ],
+    "antonyms": [
+      "erase",
+      "obliterate"
+    ]
+  },
+  {
+    "word": "etch",
+    "synonyms": [
+      "imprint",
+      "score"
+    ],
+    "antonyms": [
+      "erase"
+    ]
+  },
+  {
+    "word": "crystallise",
+    "synonyms": [
+      "take shape",
+      "solidify"
+    ],
+    "antonyms": [
+      "dissolve",
+      "blur"
+    ]
+  },
+  {
+    "word": "unearth",
+    "synonyms": [
+      "uncover",
+      "dig up"
+    ],
+    "antonyms": [
+      "bury",
+      "conceal"
+    ]
+  },
+  {
+    "word": "conjure up",
+    "synonyms": [
+      "evoke",
+      "summon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "call to mind",
+    "synonyms": [
+      "recall",
+      "evoke"
+    ],
+    "antonyms": [
+      "forget"
+    ]
+  },
+  {
+    "word": "bring back",
+    "synonyms": [
+      "recall",
+      "revive"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "look back on",
+    "synonyms": [
+      "reminisce",
+      "recall"
+    ],
+    "antonyms": [
+      "look forward to",
+      "anticipate"
+    ]
+  },
+  {
+    "word": "dwell on",
+    "synonyms": [
+      "brood over",
+      "fixate on"
+    ],
+    "antonyms": [
+      "move on from",
+      "put behind"
+    ]
+  },
+  {
+    "word": "cling to",
+    "synonyms": [
+      "hold on to",
+      "cherish"
+    ],
+    "antonyms": [
+      "let go of",
+      "release"
+    ]
+  },
+  {
+    "word": "stir up",
+    "synonyms": [
+      "arouse",
+      "provoke"
+    ],
+    "antonyms": [
+      "suppress"
+    ]
+  },
+  {
+    "word": "wax nostalgic",
+    "synonyms": [
+      "reminisce",
+      "get sentimental"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "go down memory lane",
+    "synonyms": [
+      "reminisce",
+      "reflect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anamnesis",
+    "synonyms": [
+      "recollection",
+      "recall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "effigy",
+    "synonyms": [
+      "statue",
+      "likeness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "elegy",
+    "synonyms": [
+      "lament",
+      "dirge"
+    ],
+    "antonyms": [
+      "ode",
+      "paean"
+    ]
+  },
+  {
+    "word": "evocation",
+    "synonyms": [
+      "recollection",
+      "summoning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tableau",
+    "synonyms": [
+      "scene",
+      "picture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vignette",
+    "synonyms": [
+      "sketch",
+      "cameo"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "afterglow",
+    "synonyms": [
+      "lingering glow",
+      "residual warmth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lingering",
+    "synonyms": [
+      "persistent",
+      "enduring"
+    ],
+    "antonyms": [
+      "fleeting",
+      "transient"
+    ]
+  },
+  {
+    "word": "undimmed",
+    "synonyms": [
+      "unfaded",
+      "undiminished"
+    ],
+    "antonyms": [
+      "faded",
+      "dimmed"
+    ]
+  },
+  {
+    "word": "resonate",
+    "synonyms": [
+      "reverberate",
+      "echo"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hallmark",
+    "synonyms": [
+      "trademark",
+      "characteristic"
+    ],
+    "antonyms": []
+  }
+]

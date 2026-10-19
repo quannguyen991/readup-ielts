@@ -1,0 +1,1110 @@
+[
+  {
+    "word": "architectural",
+    "synonyms": [
+      "structural",
+      "constructional"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "village",
+    "synonyms": [
+      "hamlet",
+      "settlement"
+    ],
+    "antonyms": [
+      "city",
+      "metropolis"
+    ]
+  },
+  {
+    "word": "city",
+    "synonyms": [
+      "metropolis",
+      "urban centre"
+    ],
+    "antonyms": [
+      "village",
+      "countryside"
+    ]
+  },
+  {
+    "word": "town",
+    "synonyms": [
+      "township",
+      "borough"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "street",
+    "synonyms": [
+      "road",
+      "thoroughfare"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "park",
+    "synonyms": [
+      "green space",
+      "public garden"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "river",
+    "synonyms": [
+      "stream",
+      "waterway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mountain",
+    "synonyms": [
+      "peak",
+      "summit"
+    ],
+    "antonyms": [
+      "valley",
+      "plain"
+    ]
+  },
+  {
+    "word": "beach",
+    "synonyms": [
+      "shore",
+      "sands"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forest",
+    "synonyms": [
+      "woodland",
+      "woods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lake",
+    "synonyms": [
+      "loch",
+      "reservoir"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "garden",
+    "synonyms": [
+      "yard",
+      "allotment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hill",
+    "synonyms": [
+      "knoll",
+      "rise"
+    ],
+    "antonyms": [
+      "valley",
+      "hollow"
+    ]
+  },
+  {
+    "word": "building",
+    "synonyms": [
+      "edifice",
+      "structure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "market",
+    "synonyms": [
+      "bazaar",
+      "marketplace"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "square",
+    "synonyms": [
+      "plaza",
+      "piazza"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bridge",
+    "synonyms": [
+      "span",
+      "viaduct"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "island",
+    "synonyms": [
+      "isle",
+      "islet"
+    ],
+    "antonyms": [
+      "mainland"
+    ]
+  },
+  {
+    "word": "field",
+    "synonyms": [
+      "meadow",
+      "pasture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "suburb",
+    "synonyms": [
+      "outskirts",
+      "commuter belt"
+    ],
+    "antonyms": [
+      "city centre"
+    ]
+  },
+  {
+    "word": "countryside",
+    "synonyms": [
+      "rural area",
+      "the country"
+    ],
+    "antonyms": [
+      "city",
+      "urban area"
+    ]
+  },
+  {
+    "word": "coast",
+    "synonyms": [
+      "seaboard",
+      "shoreline"
+    ],
+    "antonyms": [
+      "inland"
+    ]
+  },
+  {
+    "word": "neighbourhood",
+    "synonyms": [
+      "locality",
+      "district"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "district",
+    "synonyms": [
+      "area",
+      "ward"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "capital",
+    "synonyms": [
+      "capital city"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "valley",
+    "synonyms": [
+      "dale",
+      "vale"
+    ],
+    "antonyms": [
+      "ridge"
+    ]
+  },
+  {
+    "word": "cliff",
+    "synonyms": [
+      "bluff",
+      "precipice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "harbour",
+    "synonyms": [
+      "port",
+      "haven"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cottage",
+    "synonyms": [
+      "cabin",
+      "chalet"
+    ],
+    "antonyms": [
+      "mansion"
+    ]
+  },
+  {
+    "word": "courtyard",
+    "synonyms": [
+      "quadrangle",
+      "forecourt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "balcony",
+    "synonyms": [
+      "veranda",
+      "gallery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alley",
+    "synonyms": [
+      "lane",
+      "backstreet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rooftop",
+    "synonyms": [
+      "roof",
+      "housetop"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "boulevard",
+    "synonyms": [
+      "avenue",
+      "promenade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "settlement",
+    "synonyms": [
+      "colony",
+      "community"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terrace",
+    "synonyms": [
+      "patio",
+      "veranda"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "waterfront",
+    "synonyms": [
+      "quayside",
+      "seafront"
+    ],
+    "antonyms": [
+      "inland"
+    ]
+  },
+  {
+    "word": "canyon",
+    "synonyms": [
+      "gorge",
+      "chasm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "outskirts",
+    "synonyms": [
+      "fringes",
+      "periphery"
+    ],
+    "antonyms": [
+      "centre",
+      "heart"
+    ]
+  },
+  {
+    "word": "desolate",
+    "synonyms": [
+      "forsaken",
+      "deserted"
+    ],
+    "antonyms": [
+      "populous",
+      "bustling"
+    ]
+  },
+  {
+    "word": "bleak",
+    "synonyms": [
+      "desolate",
+      "bare"
+    ],
+    "antonyms": [
+      "lush"
+    ]
+  },
+  {
+    "word": "sheltered",
+    "synonyms": [
+      "protected",
+      "secluded"
+    ],
+    "antonyms": [
+      "exposed",
+      "open"
+    ]
+  },
+  {
+    "word": "rugged",
+    "synonyms": [
+      "rough",
+      "craggy"
+    ],
+    "antonyms": [
+      "smooth",
+      "level"
+    ]
+  },
+  {
+    "word": "barren",
+    "synonyms": [
+      "bare",
+      "desolate"
+    ],
+    "antonyms": [
+      "fertile",
+      "fruitful"
+    ]
+  },
+  {
+    "word": "fertile",
+    "synonyms": [
+      "fruitful",
+      "productive"
+    ],
+    "antonyms": [
+      "barren",
+      "infertile"
+    ]
+  },
+  {
+    "word": "dense",
+    "synonyms": [
+      "thick",
+      "crowded"
+    ],
+    "antonyms": [
+      "sparse",
+      "open"
+    ]
+  },
+  {
+    "word": "spacious",
+    "synonyms": [
+      "roomy",
+      "capacious"
+    ],
+    "antonyms": [
+      "cramped",
+      "confined"
+    ]
+  },
+  {
+    "word": "cramped",
+    "synonyms": [
+      "crowded",
+      "confined"
+    ],
+    "antonyms": [
+      "spacious",
+      "roomy"
+    ]
+  },
+  {
+    "word": "humid",
+    "synonyms": [
+      "muggy",
+      "damp"
+    ],
+    "antonyms": [
+      "arid",
+      "dry"
+    ]
+  },
+  {
+    "word": "weathered",
+    "synonyms": [
+      "worn",
+      "eroded"
+    ],
+    "antonyms": [
+      "new",
+      "pristine"
+    ]
+  },
+  {
+    "word": "cobbled",
+    "synonyms": [
+      "paved",
+      "stone-paved"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "derelict",
+    "synonyms": [
+      "abandoned",
+      "dilapidated"
+    ],
+    "antonyms": [
+      "well-maintained"
+    ]
+  },
+  {
+    "word": "shabby",
+    "synonyms": [
+      "dilapidated",
+      "scruffy"
+    ],
+    "antonyms": [
+      "smart",
+      "well-kept"
+    ]
+  },
+  {
+    "word": "cluttered",
+    "synonyms": [
+      "messy",
+      "untidy"
+    ],
+    "antonyms": [
+      "tidy",
+      "orderly"
+    ]
+  },
+  {
+    "word": "pastoral",
+    "synonyms": [
+      "rural",
+      "idyllic"
+    ],
+    "antonyms": [
+      "urban",
+      "industrial"
+    ]
+  },
+  {
+    "word": "rustic",
+    "synonyms": [
+      "rural",
+      "homely"
+    ],
+    "antonyms": [
+      "urban",
+      "sophisticated"
+    ]
+  },
+  {
+    "word": "bucolic",
+    "synonyms": [
+      "idyllic",
+      "rural"
+    ],
+    "antonyms": [
+      "urban",
+      "industrial"
+    ]
+  },
+  {
+    "word": "gleaming",
+    "synonyms": [
+      "shining",
+      "glistening"
+    ],
+    "antonyms": [
+      "dull",
+      "grimy"
+    ]
+  },
+  {
+    "word": "drab",
+    "synonyms": [
+      "dull",
+      "dreary"
+    ],
+    "antonyms": [
+      "colourful",
+      "vibrant"
+    ]
+  },
+  {
+    "word": "sanctuary",
+    "synonyms": [
+      "refuge",
+      "haven"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "enclave",
+    "synonyms": [
+      "pocket",
+      "enclosure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hinterland",
+    "synonyms": [
+      "backcountry",
+      "interior"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "precinct",
+    "synonyms": [
+      "enclosure",
+      "zone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thoroughfare",
+    "synonyms": [
+      "highway",
+      "main road"
+    ],
+    "antonyms": [
+      "backstreet"
+    ]
+  },
+  {
+    "word": "expanse",
+    "synonyms": [
+      "stretch",
+      "sweep"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terrain",
+    "synonyms": [
+      "landscape",
+      "ground"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wilderness",
+    "synonyms": [
+      "wild",
+      "backcountry"
+    ],
+    "antonyms": [
+      "civilisation"
+    ]
+  },
+  {
+    "word": "cityscape",
+    "synonyms": [
+      "urban view",
+      "skyline"
+    ],
+    "antonyms": [
+      "countryside"
+    ]
+  },
+  {
+    "word": "vista",
+    "synonyms": [
+      "view",
+      "panorama"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tract",
+    "synonyms": [
+      "expanse",
+      "parcel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quarter",
+    "synonyms": [
+      "district",
+      "area"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plateau",
+    "synonyms": [
+      "tableland",
+      "upland"
+    ],
+    "antonyms": [
+      "lowland",
+      "basin"
+    ]
+  },
+  {
+    "word": "habitat",
+    "synonyms": [
+      "environment",
+      "home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meander",
+    "synonyms": [
+      "wind",
+      "twist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sprawl",
+    "synonyms": [
+      "spread",
+      "extend"
+    ],
+    "antonyms": [
+      "contract",
+      "shrink"
+    ]
+  },
+  {
+    "word": "nestle",
+    "synonyms": [
+      "snuggle",
+      "settle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loom",
+    "synonyms": [
+      "tower",
+      "rise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bustle",
+    "synonyms": [
+      "hustle",
+      "activity"
+    ],
+    "antonyms": [
+      "tranquillity",
+      "quiet"
+    ]
+  },
+  {
+    "word": "hamlet",
+    "synonyms": [
+      "village",
+      "settlement"
+    ],
+    "antonyms": [
+      "metropolis"
+    ]
+  },
+  {
+    "word": "conurbation",
+    "synonyms": [
+      "metropolitan area",
+      "urban sprawl"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "environs",
+    "synonyms": [
+      "surroundings",
+      "vicinity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fen",
+    "synonyms": [
+      "marsh",
+      "bog"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moor",
+    "synonyms": [
+      "heath",
+      "upland"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glen",
+    "synonyms": [
+      "valley",
+      "dale"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dell",
+    "synonyms": [
+      "hollow",
+      "dip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tarn",
+    "synonyms": [
+      "mountain lake",
+      "pool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crag",
+    "synonyms": [
+      "cliff",
+      "outcrop"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ravine",
+    "synonyms": [
+      "gorge",
+      "gully"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grotto",
+    "synonyms": [
+      "cave",
+      "cavern"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "belvedere",
+    "synonyms": [
+      "gazebo",
+      "lookout"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colonnade",
+    "synonyms": [
+      "arcade",
+      "portico"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "esplanade",
+    "synonyms": [
+      "promenade",
+      "waterfront"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "promenade",
+    "synonyms": [
+      "esplanade",
+      "boardwalk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "thicket",
+    "synonyms": [
+      "brush",
+      "undergrowth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "copse",
+    "synonyms": [
+      "grove",
+      "spinney"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glade",
+    "synonyms": [
+      "clearing",
+      "opening"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scrubland",
+    "synonyms": [
+      "brushland",
+      "heath"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tundra",
+    "synonyms": [
+      "arctic plain",
+      "permafrost region"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "steppe",
+    "synonyms": [
+      "grassland",
+      "prairie"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oasis",
+    "synonyms": [
+      "haven",
+      "refuge"
+    ],
+    "antonyms": [
+      "desert",
+      "wasteland"
+    ]
+  },
+  {
+    "word": "mire",
+    "synonyms": [
+      "bog",
+      "swamp"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "archipelago",
+    "synonyms": [
+      "island chain",
+      "chain of islands"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quagmire",
+    "synonyms": [
+      "bog",
+      "morass"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cavern",
+    "synonyms": [
+      "cave",
+      "grotto"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parapet",
+    "synonyms": [
+      "balustrade",
+      "railing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "atrium",
+    "synonyms": [
+      "lobby",
+      "foyer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nook",
+    "synonyms": [
+      "corner",
+      "recess"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fjord",
+    "synonyms": [
+      "inlet",
+      "sound"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "unkempt",
+    "synonyms": [
+      "overgrown",
+      "neglected"
+    ],
+    "antonyms": [
+      "well-groomed",
+      "trim"
+    ]
+  },
+  {
+    "word": "grimy",
+    "synonyms": [
+      "dirty",
+      "filthy"
+    ],
+    "antonyms": [
+      "clean",
+      "spotless"
+    ]
+  },
+  {
+    "word": "squalid",
+    "synonyms": [
+      "filthy",
+      "sordid"
+    ],
+    "antonyms": [
+      "clean",
+      "hygienic"
+    ]
+  },
+  {
+    "word": "fetid",
+    "synonyms": [
+      "foul-smelling",
+      "stinking"
+    ],
+    "antonyms": [
+      "fresh",
+      "fragrant"
+    ]
+  },
+  {
+    "word": "hushed",
+    "synonyms": [
+      "muted",
+      "quiet"
+    ],
+    "antonyms": [
+      "noisy",
+      "loud"
+    ]
+  },
+  {
+    "word": "resplendent",
+    "synonyms": [
+      "magnificent",
+      "splendid"
+    ],
+    "antonyms": [
+      "drab",
+      "shabby"
+    ]
+  },
+  {
+    "word": "sepulchral",
+    "synonyms": [
+      "gloomy",
+      "funereal"
+    ],
+    "antonyms": [
+      "lively",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "pallid",
+    "synonyms": [
+      "pale",
+      "wan"
+    ],
+    "antonyms": [
+      "ruddy",
+      "rosy"
+    ]
+  },
+  {
+    "word": "gilded",
+    "synonyms": [
+      "gold-plated",
+      "golden"
+    ],
+    "antonyms": [
+      "plain",
+      "unadorned"
+    ]
+  },
+  {
+    "word": "dank",
+    "synonyms": [
+      "damp",
+      "musty"
+    ],
+    "antonyms": [
+      "dry",
+      "airy"
+    ]
+  },
+  {
+    "word": "sylvan",
+    "synonyms": [
+      "wooded",
+      "woodland"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "halcyon",
+    "synonyms": [
+      "peaceful",
+      "idyllic"
+    ],
+    "antonyms": [
+      "turbulent",
+      "stormy"
+    ]
+  },
+  {
+    "word": "teeming",
+    "synonyms": [
+      "crowded",
+      "swarming"
+    ],
+    "antonyms": [
+      "deserted",
+      "empty"
+    ]
+  }
+]

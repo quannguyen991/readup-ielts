@@ -1,4 +1,5 @@
 import type { GrammarLessonDetail } from './types';
+import { C2_GRAMMAR_EXTRA } from './c2-2';
 
 /** Cấp C2: thức giả định, rút gọn mệnh đề, cấu trúc trang trọng. */
 export const C2_GRAMMAR: GrammarLessonDetail[] = [
@@ -444,4 +445,5 @@ export const C2_GRAMMAR: GrammarLessonDetail[] = [
       { q: "Choose the correct sentence.", options: ["The offer was tempting however I declined.", "The offer was tempting; however, I declined.", "The offer was tempting; albeit I declined."], answer: 1, explain: "However đứng sau dấu chấm phẩy và có dấu phẩy sau nó." },
     ],
   },
+  ...C2_GRAMMAR_EXTRA,
 ];

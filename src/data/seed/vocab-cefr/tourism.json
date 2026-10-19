@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "holiday",
+    "pos": "noun",
+    "ipa": "/ˈhɒlədeɪ/",
+    "meaningVi": "kỳ nghỉ",
+    "definitionEn": "a period of time spent away from home for rest or enjoyment",
+    "example": "We are planning a holiday to the coast next summer.",
+    "collocation": "go on holiday",
+    "cefr": "B1"
+  },
+  {
+    "word": "trip",
+    "pos": "noun",
+    "ipa": "/trɪp/",
+    "meaningVi": "chuyến đi",
+    "definitionEn": "a journey to a place for a short time",
+    "example": "Our school trip to the old citadel was really interesting.",
+    "collocation": "day trip",
+    "cefr": "B1"
+  },
+  {
+    "word": "view",
+    "pos": "noun",
+    "ipa": "/vjuː/",
+    "meaningVi": "khung cảnh",
+    "definitionEn": "everything that can be seen from a particular place",
+    "example": "From the top of the hill, you get a stunning view of the bay.",
+    "collocation": "stunning view",
+    "cefr": "B1"
+  },
+  {
+    "word": "beach",
+    "pos": "noun",
+    "ipa": "/biːtʃ/",
+    "meaningVi": "bãi biển",
+    "definitionEn": "an area of sand or pebbles beside the sea or a lake",
+    "example": "Many visitors spend their mornings relaxing on the beach.",
+    "collocation": "sandy beach",
+    "cefr": "B1"
+  },
+  {
+    "word": "sunbathe",
+    "pos": "verb",
+    "ipa": "/ˈsʌnbeɪð/",
+    "meaningVi": "tắm nắng",
+    "definitionEn": "to sit or lie in the sun to get a tan",
+    "example": "Visitors like to sunbathe on the white sand beaches of the island.",
+    "collocation": "sunbathe by the pool",
+    "cefr": "B2"
+  },
+  {
+    "word": "scenic",
+    "pos": "adjective",
+    "ipa": "/ˈsiːnɪk/",
+    "meaningVi": "đẹp, có phong cảnh",
+    "definitionEn": "having attractive natural views",
+    "example": "We took the scenic route along the coast instead of the motorway.",
+    "collocation": "scenic route",
+    "cefr": "B2"
+  },
+  {
+    "word": "getaway",
+    "pos": "noun",
+    "ipa": "/ˈɡetəweɪ/",
+    "meaningVi": "chuyến đi nghỉ ngắn ngày",
+    "definitionEn": "a short trip taken to escape from everyday life",
+    "example": "A weekend getaway in the mountains helped us recharge completely.",
+    "collocation": "weekend getaway",
+    "cefr": "B2"
+  },
+  {
+    "word": "wanderlust",
+    "pos": "noun",
+    "ipa": "/ˈwɒndəlʌst/",
+    "meaningVi": "khát khao du lịch",
+    "definitionEn": "a strong desire to travel and explore the world",
+    "example": "Her wanderlust took her across forty countries before she turned thirty.",
+    "collocation": "insatiable wanderlust",
+    "cefr": "B2"
+  },
+  {
+    "word": "stopover",
+    "pos": "noun",
+    "ipa": "/ˈstɒpəʊvə/",
+    "meaningVi": "điểm dừng chân",
+    "definitionEn": "a short break in a long journey before continuing",
+    "example": "Our flight included a short stopover in Singapore.",
+    "collocation": "brief stopover",
+    "cefr": "B2"
+  },
+  {
+    "word": "vista",
+    "pos": "noun",
+    "ipa": "/ˈvɪstə/",
+    "meaningVi": "quang cảnh rộng",
+    "definitionEn": "a wide and beautiful view of an area of land",
+    "example": "The terrace offers a breathtaking vista over the rice fields.",
+    "collocation": "panoramic vista",
+    "cefr": "B2"
+  },
+  {
+    "word": "panorama",
+    "pos": "noun",
+    "ipa": "/ˌpænəˈrɑːmə/",
+    "meaningVi": "toàn cảnh",
+    "definitionEn": "a wide view of a whole area",
+    "example": "The cable car provides a panorama of the entire valley.",
+    "collocation": "breathtaking panorama",
+    "cefr": "B2"
+  },
+  {
+    "word": "backpack",
+    "pos": "verb",
+    "ipa": "/ˈbækpæk/",
+    "meaningVi": "đi du lịch bụi",
+    "definitionEn": "to travel carrying your belongings in a rucksack on a low budget",
+    "example": "Many students backpack through Southeast Asia after graduating.",
+    "collocation": "backpack across Europe",
+    "cefr": "B2"
+  },
+  {
+    "word": "tour",
+    "pos": "noun",
+    "ipa": "/tʊə/",
+    "meaningVi": "chuyến tham quan",
+    "definitionEn": "a journey visiting several places for sightseeing",
+    "example": "We joined a guided tour of the old citadel this morning.",
+    "collocation": "guided tour",
+    "cefr": "B2"
+  },
+  {
+    "word": "sightseer",
+    "pos": "noun",
+    "ipa": "/ˈsaɪtsiːə/",
+    "meaningVi": "khách tham quan",
+    "definitionEn": "a person who visits places of interest as a tourist",
+    "example": "Sightseers crowded the old town square during the festival.",
+    "collocation": "keen sightseer",
+    "cefr": "B2"
+  },
+  {
+    "word": "jet lag",
+    "pos": "noun",
+    "ipa": "/ˈdʒet læɡ/",
+    "meaningVi": "mệt do lệch múi giờ",
+    "definitionEn": "tiredness caused by travelling across several time zones",
+    "example": "Jet lag made it hard for us to sleep during the first night.",
+    "collocation": "suffer from jet lag",
+    "cefr": "B2"
+  },
+  {
+    "word": "postcard",
+    "pos": "noun",
+    "ipa": "/ˈpəʊstkɑːd/",
+    "meaningVi": "bưu thiếp",
+    "definitionEn": "a card with a picture on one side, sent by post from a holiday",
+    "example": "She sent a postcard from Hoi An to her grandparents.",
+    "collocation": "send a postcard",
+    "cefr": "B2"
+  },
+  {
+    "word": "guesthouse",
+    "pos": "noun",
+    "ipa": "/ˈɡesthaʊs/",
+    "meaningVi": "nhà khách",
+    "definitionEn": "a small private home offering rooms to paying visitors",
+    "example": "We stayed in a small family-run guesthouse near the old quarter.",
+    "collocation": "family-run guesthouse",
+    "cefr": "B2"
+  },
+  {
+    "word": "hostel",
+    "pos": "noun",
+    "ipa": "/ˈhɒstl/",
+    "meaningVi": "nhà nghỉ bình dân",
+    "definitionEn": "a cheap place to stay with shared rooms and facilities",
+    "example": "Budget travellers often prefer a hostel dormitory to a private room.",
+    "collocation": "youth hostel",
+    "cefr": "B2"
+  },
+  {
+    "word": "homestay",
+    "pos": "noun",
+    "ipa": "/ˈhəʊmsteɪ/",
+    "meaningVi": "ở nhờ nhà dân",
+    "definitionEn": "a stay in a local family's home to experience their daily life",
+    "example": "A homestay in the countryside lets visitors learn about local farming.",
+    "collocation": "rural homestay",
+    "cefr": "B2"
+  },
+  {
+    "word": "self-guided",
+    "pos": "adjective",
+    "ipa": "/ˌself ˈɡaɪdɪd/",
+    "meaningVi": "tự hướng dẫn",
+    "definitionEn": "done without a guide, following instructions or a map",
+    "example": "A self-guided walk around the old town takes about two hours.",
+    "collocation": "self-guided tour",
+    "cefr": "B2"
+  },
+  {
+    "word": "off-season",
+    "pos": "adjective",
+    "ipa": "/ˌɒf ˈsiːzn/",
+    "meaningVi": "ngoài mùa cao điểm",
+    "definitionEn": "relating to the time of year when few visitors come",
+    "example": "Prices drop considerably during the off-season, making it a bargain.",
+    "collocation": "off-season rates",
+    "cefr": "B2"
+  },
+  {
+    "word": "peak season",
+    "pos": "phrase",
+    "ipa": "/piːk ˈsiːzn/",
+    "meaningVi": "mùa cao điểm",
+    "definitionEn": "the busiest time of year for travel or tourism",
+    "example": "Hotel rates rise sharply during peak season in July and August.",
+    "collocation": "during peak season",
+    "cefr": "B2"
+  },
+  {
+    "word": "brochure",
+    "pos": "noun",
+    "ipa": "/ˈbrəʊʃə/",
+    "meaningVi": "tờ quảng cáo",
+    "definitionEn": "a small printed booklet giving information about a product or place",
+    "example": "The glossy brochure promised crystal-clear water and empty beaches.",
+    "collocation": "glossy brochure",
+    "cefr": "B2"
+  },
+  {
+    "word": "diving",
+    "pos": "noun",
+    "ipa": "/ˈdaɪvɪŋ/",
+    "meaningVi": "lặn biển",
+    "definitionEn": "the activity of swimming underwater with breathing equipment",
+    "example": "Scuba diving is the main reason many visitors come to the island.",
+    "collocation": "scuba diving",
+    "cefr": "B2"
+  },
+  {
+    "word": "trekking",
+    "pos": "noun",
+    "ipa": "/ˈtrekɪŋ/",
+    "meaningVi": "đi bộ đường dài",
+    "definitionEn": "the activity of walking long distances through rough countryside",
+    "example": "Trekking through the highlands takes about four days with a guide.",
+    "collocation": "trekking route",
+    "cefr": "B2"
+  },
+  {
+    "word": "wildlife",
+    "pos": "noun",
+    "ipa": "/ˈwaɪldlaɪf/",
+    "meaningVi": "động vật hoang dã",
+    "definitionEn": "animals and plants living in their natural environment",
+    "example": "Safari tours offer close encounters with wildlife in its natural habitat.",
+    "collocation": "wildlife watching",
+    "cefr": "B2"
+  },
+  {
+    "word": "snorkel",
+    "pos": "verb",
+    "ipa": "/ˈsnɔːkl/",
+    "meaningVi": "lặn với ống thở",
+    "definitionEn": "to swim on the surface of the water wearing a mask and breathing tube",
+    "example": "We spent the afternoon snorkelling among colourful coral reefs.",
+    "collocation": "snorkel over reefs",
+    "cefr": "B2"
+  },
+  {
+    "word": "lodging",
+    "pos": "noun",
+    "ipa": "/ˈlɒdʒɪŋ/",
+    "meaningVi": "chỗ trọ",
+    "definitionEn": "a temporary place to stay, such as a room or house",
+    "example": "Affordable lodging near the station fills up quickly in summer.",
+    "collocation": "affordable lodging",
+    "cefr": "B2"
+  },
+  {
+    "word": "foreigner",
+    "pos": "noun",
+    "ipa": "/ˈfɒrənə/",
+    "meaningVi": "người nước ngoài",
+    "definitionEn": "a person from another country",
+    "example": "Foreigners often find the traffic in busy cities quite overwhelming.",
+    "collocation": "foreigner visiting",
+    "cefr": "B2"
+  },
+  {
+    "word": "pilgrimage",
+    "pos": "noun",
+    "ipa": "/ˈpɪlɡrɪmɪdʒ/",
+    "meaningVi": "chuyến hành hương",
+    "definitionEn": "a journey to a sacred or important place for religious reasons",
+    "example": "Thousands make the annual pilgrimage to the temple every spring.",
+    "collocation": "religious pilgrimage",
+    "cefr": "B2"
+  },
+  {
+    "word": "holidaymaker",
+    "pos": "noun",
+    "ipa": "/ˈhɒlɪdeɪmeɪkə/",
+    "meaningVi": "người đi nghỉ",
+    "definitionEn": "a person who is away from home on holiday",
+    "example": "Holidaymakers flocked to the coast despite the unexpected rain.",
+    "collocation": "British holidaymaker",
+    "cefr": "B2"
+  },
+  {
+    "word": "waterfront",
+    "pos": "noun",
+    "ipa": "/ˈwɔːtəfrʌnt/",
+    "meaningVi": "bờ sông, bờ biển",
+    "definitionEn": "the area of land along the edge of a river, lake or sea",
+    "example": "We strolled along the waterfront as the sun set over the harbour.",
+    "collocation": "lakeside waterfront",
+    "cefr": "B2"
+  },
+  {
+    "word": "itinerant",
+    "pos": "adjective",
+    "ipa": "/aɪˈtɪnərənt/",
+    "meaningVi": "lang thang, du mục",
+    "definitionEn": "travelling from place to place rather than staying in one location",
+    "example": "Itinerant traders once carried their wares from village to village.",
+    "collocation": "itinerant workers",
+    "cefr": "C1"
+  },
+  {
+    "word": "wayside",
+    "pos": "noun",
+    "ipa": "/ˈweɪsaɪd/",
+    "meaningVi": "ven đường",
+    "definitionEn": "the edge of a road or path",
+    "example": "We stopped at a wayside cafe selling fresh sugarcane juice.",
+    "collocation": "wayside shrine",
+    "cefr": "C1"
+  },
+  {
+    "word": "sojourn",
+    "pos": "noun",
+    "ipa": "/ˈsɒdʒɜːn/",
+    "meaningVi": "thời gian lưu trú",
+    "definitionEn": "a temporary stay in a place",
+    "example": "Their sojourn in Italy inspired a series of paintings.",
+    "collocation": "brief sojourn",
+    "cefr": "C1"
+  },
+  {
+    "word": "hinterland",
+    "pos": "noun",
+    "ipa": "/ˈhɪntəlænd/",
+    "meaningVi": "vùng nội địa",
+    "definitionEn": "the land lying behind a coastal area or a city",
+    "example": "Few tourists venture beyond the coast into the hinterland.",
+    "collocation": "rural hinterland",
+    "cefr": "C1"
+  },
+  {
+    "word": "pristine",
+    "pos": "adjective",
+    "ipa": "/ˈprɪstiːn/",
+    "meaningVi": "nguyên sơ",
+    "definitionEn": "in its original clean and untouched condition",
+    "example": "The island's pristine beaches remain largely untouched by development.",
+    "collocation": "pristine waters",
+    "cefr": "C1"
+  },
+  {
+    "word": "picturesque",
+    "pos": "adjective",
+    "ipa": "/ˌpɪktʃəˈresk/",
+    "meaningVi": "đẹp như tranh",
+    "definitionEn": "attractive in a charming or old-fashioned way",
+    "example": "The picturesque village is famous for its terraced gardens.",
+    "collocation": "picturesque village",
+    "cefr": "C1"
+  },
+  {
+    "word": "bucolic",
+    "pos": "adjective",
+    "ipa": "/bjuːˈkɒlɪk/",
+    "meaningVi": "đồng quê yên bình",
+    "definitionEn": "relating to the pleasant peaceful life of the countryside",
+    "example": "We spent a week in a bucolic valley far from the city.",
+    "collocation": "bucolic countryside",
+    "cefr": "C1"
+  },
+  {
+    "word": "unspoilt",
+    "pos": "adjective",
+    "ipa": "/ʌnˈspɔɪlt/",
+    "meaningVi": "chưa bị tàn phá",
+    "definitionEn": "still in a natural state and not damaged by development",
+    "example": "Travellers come here seeking unspoilt landscapes and quiet villages.",
+    "collocation": "unspoilt coastline",
+    "cefr": "C1"
+  },
+  {
+    "word": "vernacular",
+    "pos": "adjective",
+    "ipa": "/vəˈnækjʊlə/",
+    "meaningVi": "bản địa",
+    "definitionEn": "relating to the local style of building or the everyday language of a place",
+    "example": "The guide explained the vernacular architecture of the old houses.",
+    "collocation": "vernacular architecture",
+    "cefr": "C1"
+  },
+  {
+    "word": "idyllic",
+    "pos": "adjective",
+    "ipa": "/ɪˈdɪlɪk/",
+    "meaningVi": "yên bình như thần tiên",
+    "definitionEn": "extremely pleasant, peaceful and happy",
+    "example": "The lagoon was idyllic, with clear water and swaying palm trees.",
+    "collocation": "idyllic setting",
+    "cefr": "C1"
+  },
+  {
+    "word": "expatriate",
+    "pos": "noun",
+    "ipa": "/ekˈspætriət/",
+    "meaningVi": "người sống xa tổ quốc",
+    "definitionEn": "a person who lives in a country that is not their own",
+    "example": "Many expatriates settle in the city for its relaxed lifestyle.",
+    "collocation": "expatriate community",
+    "cefr": "C1"
+  },
+  {
+    "word": "gastronomy",
+    "pos": "noun",
+    "ipa": "/ɡæˈstrɒnəmi/",
+    "meaningVi": "ẩm thực học, nghệ thuật ẩm thực",
+    "definitionEn": "the art and science of good eating and cooking",
+    "example": "The region is celebrated for its rich gastronomy and fresh seafood.",
+    "collocation": "regional gastronomy",
+    "cefr": "C1"
+  },
+  {
+    "word": "amenity",
+    "pos": "noun",
+    "ipa": "/əˈmiːnəti/",
+    "meaningVi": "tiện nghi",
+    "definitionEn": "a useful or pleasant facility provided for visitors",
+    "example": "The resort offers excellent amenities including a spa and a pool.",
+    "collocation": "essential amenities",
+    "cefr": "C1"
+  },
+  {
+    "word": "exotic",
+    "pos": "adjective",
+    "ipa": "/ɪɡˈzɒtɪk/",
+    "meaningVi": "kỳ lạ, xa lạ",
+    "definitionEn": "strikingly unusual and originating in a distant foreign place",
+    "example": "The exotic markets overflowed with spices, silks and unfamiliar fruits.",
+    "collocation": "exotic destination",
+    "cefr": "C1"
+  },
+  {
+    "word": "sanctuary",
+    "pos": "noun",
+    "ipa": "/ˈsæŋktʃuəri/",
+    "meaningVi": "khu bảo tồn, nơi trú ẩn",
+    "definitionEn": "a place of safety or a protected area for wildlife",
+    "example": "The wildlife sanctuary protects endangered birds from hunters.",
+    "collocation": "bird sanctuary",
+    "cefr": "C1"
+  },
+  {
+    "word": "promenade",
+    "pos": "noun",
+    "ipa": "/ˌprɒməˈnɑːd/",
+    "meaningVi": "đường đi dạo ven biển",
+    "definitionEn": "a wide path where people walk for pleasure, often by the sea",
+    "example": "Couples strolled along the promenade as the lights came on.",
+    "collocation": "seafront promenade",
+    "cefr": "C1"
+  },
+  {
+    "word": "enclave",
+    "pos": "noun",
+    "ipa": "/ˈenkleɪv/",
+    "meaningVi": "vùng đất biệt lập",
+    "definitionEn": "a distinct area enclosed within a larger territory or community",
+    "example": "The old quarter forms a cultural enclave within the modern city.",
+    "collocation": "cultural enclave",
+    "cefr": "C1"
+  },
+  {
+    "word": "cuisine",
+    "pos": "noun",
+    "ipa": "/kwɪˈziːn/",
+    "meaningVi": "ẩm thực",
+    "definitionEn": "a particular style of cooking typical of a country or region",
+    "example": "Visitors come to sample the distinctive cuisine of the northern highlands.",
+    "collocation": "local cuisine",
+    "cefr": "C1"
+  },
+  {
+    "word": "kitsch",
+    "pos": "noun",
+    "ipa": "/kɪtʃ/",
+    "meaningVi": "đồ kitsch, lòe loẹt",
+    "definitionEn": "art or objects that are tasteless but appealing in a playful way",
+    "example": "The gift shops sold kitsch figurines that tourists found irresistible.",
+    "collocation": "kitsch souvenirs",
+    "cefr": "C1"
+  },
+  {
+    "word": "hospitable",
+    "pos": "adjective",
+    "ipa": "/hɒˈspɪtəbl/",
+    "meaningVi": "hiếu khách",
+    "definitionEn": "friendly and generous in welcoming guests",
+    "example": "The villagers were remarkably hospitable, inviting us to share their meal.",
+    "collocation": "hospitable hosts",
+    "cefr": "C1"
+  },
+  {
+    "word": "sumptuous",
+    "pos": "adjective",
+    "ipa": "/ˈsʌmptʃuəs/",
+    "meaningVi": "xa hoa",
+    "definitionEn": "rich, expensive and luxurious in appearance",
+    "example": "The hotel's sumptuous suites were decorated with gold and silk.",
+    "collocation": "sumptuous banquet",
+    "cefr": "C1"
+  },
+  {
+    "word": "meander",
+    "pos": "verb",
+    "ipa": "/miˈændə/",
+    "meaningVi": "đi lang thang, uốn khúc",
+    "definitionEn": "to wander in a leisurely way or follow a winding course",
+    "example": "We let the river path meander through meadows and orchards.",
+    "collocation": "meander through the village",
+    "cefr": "C1"
+  },
+  {
+    "word": "bazaar",
+    "pos": "noun",
+    "ipa": "/bəˈzɑː/",
+    "meaningVi": "chợ",
+    "definitionEn": "a market area with many small shops and stalls",
+    "example": "The bazaar was crowded with shoppers bargaining for silk scarves.",
+    "collocation": "crowded bazaar",
+    "cefr": "C1"
+  },
+  {
+    "word": "terrain",
+    "pos": "noun",
+    "ipa": "/təˈreɪn/",
+    "meaningVi": "địa hình",
+    "definitionEn": "the physical features of an area of land",
+    "example": "The rugged terrain made the hike far more challenging than expected.",
+    "collocation": "rugged terrain",
+    "cefr": "C1"
+  },
+  {
+    "word": "spectacle",
+    "pos": "noun",
+    "ipa": "/ˈspektəkl/",
+    "meaningVi": "cảnh tượng ngoạn mục",
+    "definitionEn": "an impressive or dramatic sight",
+    "example": "The fireworks over the harbour created a dazzling spectacle.",
+    "collocation": "dazzling spectacle",
+    "cefr": "C1"
+  },
+  {
+    "word": "hallmark",
+    "pos": "noun",
+    "ipa": "/ˈhɔːlmɑːk/",
+    "meaningVi": "dấu ấn đặc trưng",
+    "definitionEn": "a distinctive feature that characterises something",
+    "example": "Lantern-lit streets are the hallmark of this charming old town.",
+    "collocation": "a hallmark of",
+    "cefr": "C1"
+  },
+  {
+    "word": "charter",
+    "pos": "verb",
+    "ipa": "/ˈtʃɑːtə/",
+    "meaningVi": "thuê riêng (tàu, xe)",
+    "definitionEn": "to hire a vehicle, boat or aircraft for private use",
+    "example": "We chartered a small boat to explore the hidden coves.",
+    "collocation": "charter a yacht",
+    "cefr": "C1"
+  },
+  {
+    "word": "indigenous",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdɪdʒənəs/",
+    "meaningVi": "bản địa",
+    "definitionEn": "originating in and naturally occurring in a particular place",
+    "example": "Visitors can learn about indigenous crafts in the village workshop.",
+    "collocation": "indigenous culture",
+    "cefr": "C1"
+  },
+  {
+    "word": "folklore",
+    "pos": "noun",
+    "ipa": "/ˈfəʊklɔː/",
+    "meaningVi": "văn hoá dân gian",
+    "definitionEn": "the traditional stories, beliefs and customs of a people",
+    "example": "Local folklore tells of a dragon guarding the bay.",
+    "collocation": "local folklore",
+    "cefr": "C1"
+  },
+  {
+    "word": "panoramic",
+    "pos": "adjective",
+    "ipa": "/ˌpænəˈræmɪk/",
+    "meaningVi": "toàn cảnh",
+    "definitionEn": "providing a wide and unobstructed view",
+    "example": "Panoramic windows frame the mountains from every room.",
+    "collocation": "panoramic views",
+    "cefr": "C1"
+  },
+  {
+    "word": "archaeological",
+    "pos": "adjective",
+    "ipa": "/ˌɑːkiəˈlɒdʒɪkl/",
+    "meaningVi": "thuộc khảo cổ",
+    "definitionEn": "relating to the scientific study of past human remains and objects",
+    "example": "The archaeological site draws historians from around the world.",
+    "collocation": "archaeological site",
+    "cefr": "C1"
+  },
+  {
+    "word": "voyage",
+    "pos": "noun",
+    "ipa": "/ˈvɔɪɪdʒ/",
+    "meaningVi": "chuyến hành trình trên biển",
+    "definitionEn": "a long journey by sea or in space",
+    "example": "The voyage across the Pacific took nearly three weeks.",
+    "collocation": "maiden voyage",
+    "cefr": "C1"
+  },
+  {
+    "word": "escapade",
+    "pos": "noun",
+    "ipa": "/ˈeskəpeɪd/",
+    "meaningVi": "cuộc phiêu lưu",
+    "definitionEn": "an adventurous or slightly reckless event",
+    "example": "Their weekend escapade in the desert turned into an unforgettable adventure.",
+    "collocation": "daring escapade",
+    "cefr": "C1"
+  },
+  {
+    "word": "coastline",
+    "pos": "noun",
+    "ipa": "/ˈkəʊstlaɪn/",
+    "meaningVi": "đường bờ biển",
+    "definitionEn": "the outline or edge of a sea coast",
+    "example": "The rugged coastline attracts photographers and hikers alike.",
+    "collocation": "rugged coastline",
+    "cefr": "C1"
+  },
+  {
+    "word": "vantage",
+    "pos": "noun",
+    "ipa": "/ˈvɑːntɪdʒ/",
+    "meaningVi": "điểm quan sát",
+    "definitionEn": "a position that gives a good view of something",
+    "example": "We reached a vantage point that overlooked the entire valley.",
+    "collocation": "vantage point",
+    "cefr": "C1"
+  },
+  {
+    "word": "nostalgia",
+    "pos": "noun",
+    "ipa": "/nɒˈstældʒə/",
+    "meaningVi": "hoài niệm",
+    "definitionEn": "a sentimental longing for the past",
+    "example": "Walking through the old quarter filled her with nostalgia for childhood summers.",
+    "collocation": "wave of nostalgia",
+    "cefr": "C1"
+  },
+  {
+    "word": "curio",
+    "pos": "noun",
+    "ipa": "/ˈkjʊəriəʊ/",
+    "meaningVi": "món đồ lạ mắt, đồ cổ nhỏ",
+    "definitionEn": "an unusual or interesting object collected for its novelty",
+    "example": "He bought a carved curio from a stall near the temple.",
+    "collocation": "antique curio",
+    "cefr": "C1"
+  },
+  {
+    "word": "pagoda",
+    "pos": "noun",
+    "ipa": "/pəˈɡəʊdə/",
+    "meaningVi": "chùa tháp",
+    "definitionEn": "a tiered tower-like temple common in East Asia",
+    "example": "Visitors climb the hill to reach the ancient pagoda at sunrise.",
+    "collocation": "ancient pagoda",
+    "cefr": "C1"
+  },
+  {
+    "word": "lacquerware",
+    "pos": "noun",
+    "ipa": "/ˈlækəweə/",
+    "meaningVi": "đồ sơn mài",
+    "definitionEn": "objects coated with layers of lacquer and decorated by hand",
+    "example": "Lacquerware from the village makes a beautiful and durable gift.",
+    "collocation": "hand-painted lacquerware",
+    "cefr": "C1"
+  },
+  {
+    "word": "bustling",
+    "pos": "adjective",
+    "ipa": "/ˈbʌslɪŋ/",
+    "meaningVi": "nhộn nhịp",
+    "definitionEn": "full of busy activity and movement",
+    "example": "The bustling night market spills onto every street corner.",
+    "collocation": "bustling market",
+    "cefr": "C1"
+  },
+  {
+    "word": "aperitif",
+    "pos": "noun",
+    "ipa": "/əˌperəˈtiːf/",
+    "meaningVi": "rượu khai vị",
+    "definitionEn": "an alcoholic drink taken before a meal to stimulate the appetite",
+    "example": "We sipped an aperitif on the terrace before dinner.",
+    "collocation": "pre-dinner aperitif",
+    "cefr": "C1"
+  },
+  {
+    "word": "tranquil",
+    "pos": "adjective",
+    "ipa": "/ˈtræŋkwɪl/",
+    "meaningVi": "yên tĩnh",
+    "definitionEn": "calm, quiet and free from disturbance",
+    "example": "Early mornings on the lake are calm and tranquil.",
+    "collocation": "tranquil setting",
+    "cefr": "C1"
+  },
+  {
+    "word": "peregrination",
+    "pos": "noun",
+    "ipa": "/ˌperɪɡrɪˈneɪʃn/",
+    "meaningVi": "chuyến du hành dài",
+    "definitionEn": "a long journey or a series of travels from place to place",
+    "example": "His peregrinations across Asia lasted nearly a decade.",
+    "collocation": "lengthy peregrinations",
+    "cefr": "C2"
+  },
+  {
+    "word": "wayfaring",
+    "pos": "adjective",
+    "ipa": "/ˈweɪfeərɪŋ/",
+    "meaningVi": "lữ hành",
+    "definitionEn": "travelling on foot or from place to place",
+    "example": "The wayfaring merchants rested at the inn before crossing the mountains.",
+    "collocation": "wayfaring stranger",
+    "cefr": "C2"
+  },
+  {
+    "word": "grand tour",
+    "pos": "phrase",
+    "ipa": "/ɡrænd tʊə/",
+    "meaningVi": "chuyến du lịch châu Âu của giới quý tộc",
+    "definitionEn": "a traditional extended tour of Europe undertaken by wealthy young men",
+    "example": "Wealthy young men once embarked on the grand tour of Europe.",
+    "collocation": "embark on the grand tour",
+    "cefr": "C2"
+  },
+  {
+    "word": "pilgrim",
+    "pos": "noun",
+    "ipa": "/ˈpɪlɡrɪm/",
+    "meaningVi": "người hành hương",
+    "definitionEn": "a person who travels to a holy place for religious reasons",
+    "example": "Weary pilgrims rested at the monastery before the final climb.",
+    "collocation": "devout pilgrim",
+    "cefr": "C2"
+  },
+  {
+    "word": "epicure",
+    "pos": "noun",
+    "ipa": "/ˈepɪkjʊə/",
+    "meaningVi": "người sành ăn",
+    "definitionEn": "a person who has refined tastes in food and drink",
+    "example": "The epicure travelled across the country to taste every regional dish.",
+    "collocation": "discerning epicure",
+    "cefr": "C2"
+  },
+  {
+    "word": "connoisseur",
+    "pos": "noun",
+    "ipa": "/ˌkɒnəˈsɜː/",
+    "meaningVi": "người sành sỏi",
+    "definitionEn": "an expert judge of fine things such as art, wine or food",
+    "example": "The wine connoisseur praised the island's surprisingly elegant vintages.",
+    "collocation": "art connoisseur",
+    "cefr": "C2"
+  },
+  {
+    "word": "flâneur",
+    "pos": "noun",
+    "ipa": "/flɑːˈnɜː/",
+    "meaningVi": "người thả bộ quan sát đô thị",
+    "definitionEn": "a person who strolls through the city to observe urban life",
+    "example": "The flâneur wandered the boulevards, watching the rhythm of the city.",
+    "collocation": "urban flâneur",
+    "cefr": "C2"
+  },
+  {
+    "word": "exoticism",
+    "pos": "noun",
+    "ipa": "/ɪɡˈzɒtɪsɪzəm/",
+    "meaningVi": "sự thích thú cái lạ",
+    "definitionEn": "the appeal of things that seem strange or foreign",
+    "example": "Critics argue that such brochures rely on exoticism to sell distant places.",
+    "collocation": "cultural exoticism",
+    "cefr": "C2"
+  },
+  {
+    "word": "terra incognita",
+    "pos": "phrase",
+    "ipa": "/ˌterə ɪnˈkɒɡnɪtə/",
+    "meaningVi": "vùng đất chưa được khám phá",
+    "definitionEn": "an unknown or unexplored territory",
+    "example": "Early explorers ventured into the terra incognita beyond the mountains.",
+    "collocation": "remain terra incognita",
+    "cefr": "C2"
+  },
+  {
+    "word": "vagabond",
+    "pos": "noun",
+    "ipa": "/ˈvæɡəbɒnd/",
+    "meaningVi": "kẻ lang thang",
+    "definitionEn": "a person who wanders from place to place without a permanent home",
+    "example": "The vagabond spent his summers hitching rides across the northern provinces.",
+    "collocation": "wandering vagabond",
+    "cefr": "C2"
+  },
+  {
+    "word": "anchorage",
+    "pos": "noun",
+    "ipa": "/ˈæŋkərɪdʒ/",
+    "meaningVi": "chỗ neo tàu",
+    "definitionEn": "a sheltered place where ships can drop anchor",
+    "example": "Our yacht found a sheltered anchorage among the limestone islands.",
+    "collocation": "sheltered anchorage",
+    "cefr": "C2"
+  },
+  {
+    "word": "archipelago",
+    "pos": "noun",
+    "ipa": "/ˌɑːkɪˈpeləɡəʊ/",
+    "meaningVi": "quần đảo",
+    "definitionEn": "a group of islands clustered together in a sea or lake",
+    "example": "The archipelago contains more than two thousand limestone islets.",
+    "collocation": "remote archipelago",
+    "cefr": "C2"
+  },
+  {
+    "word": "atoll",
+    "pos": "noun",
+    "ipa": "/ˈætɒl/",
+    "meaningVi": "đảo san hô vòng",
+    "definitionEn": "a ring-shaped coral reef enclosing a lagoon",
+    "example": "Our boat anchored beside a tiny atoll ringed by turquoise water.",
+    "collocation": "coral atoll",
+    "cefr": "C2"
+  },
+  {
+    "word": "plateau",
+    "pos": "noun",
+    "ipa": "/ˈplætəʊ/",
+    "meaningVi": "cao nguyên",
+    "definitionEn": "a large area of high, level land",
+    "example": "The plateau offers cool air and sweeping views during the dry season.",
+    "collocation": "highland plateau",
+    "cefr": "C2"
+  },
+  {
+    "word": "fjord",
+    "pos": "noun",
+    "ipa": "/fjɔːd/",
+    "meaningVi": "vịnh hẹp",
+    "definitionEn": "a long narrow inlet of the sea between high cliffs",
+    "example": "Cruise ships glide silently through the narrow fjord each morning.",
+    "collocation": "deep fjord",
+    "cefr": "C2"
+  },
+  {
+    "word": "caldera",
+    "pos": "noun",
+    "ipa": "/kælˈdɪərə/",
+    "meaningVi": "miệng núi lửa lớn",
+    "definitionEn": "a large crater formed when a volcano collapses",
+    "example": "Visitors descend into the caldera to bathe in volcanic hot springs.",
+    "collocation": "volcanic caldera",
+    "cefr": "C2"
+  },
+  {
+    "word": "estuary",
+    "pos": "noun",
+    "ipa": "/ˈestʃuəri/",
+    "meaningVi": "cửa sông",
+    "definitionEn": "the wide tidal mouth where a river meets the sea",
+    "example": "Dolphins often feed in the waters where the river meets the estuary.",
+    "collocation": "river estuary",
+    "cefr": "C2"
+  },
+  {
+    "word": "karst",
+    "pos": "noun",
+    "ipa": "/kɑːst/",
+    "meaningVi": "địa hình karst",
+    "definitionEn": "a landscape of limestone with caves, sinkholes and sharp rock towers",
+    "example": "Limestone karst towers rise dramatically from the emerald water.",
+    "collocation": "karst landscape",
+    "cefr": "C2"
+  },
+  {
+    "word": "mangrove",
+    "pos": "noun",
+    "ipa": "/ˈmæŋɡrəʊv/",
+    "meaningVi": "rừng ngập mặn",
+    "definitionEn": "a tropical tree or shrub that grows in coastal salt water",
+    "example": "Boats glide quietly through the mangrove forests at dawn.",
+    "collocation": "dense mangrove",
+    "cefr": "C2"
+  },
+  {
+    "word": "savannah",
+    "pos": "noun",
+    "ipa": "/səˈvænə/",
+    "meaningVi": "thảo nguyên",
+    "definitionEn": "a flat grassland with scattered trees in a tropical region",
+    "example": "Herds of elephants roam across the savannah during the dry season.",
+    "collocation": "African savannah",
+    "cefr": "C2"
+  },
+  {
+    "word": "tundra",
+    "pos": "noun",
+    "ipa": "/ˈtʌndrə/",
+    "meaningVi": "lãnh nguyên",
+    "definitionEn": "a treeless Arctic plain with permanently frozen subsoil",
+    "example": "Few travellers venture into the frozen tundra in winter.",
+    "collocation": "arctic tundra",
+    "cefr": "C2"
+  },
+  {
+    "word": "oasis",
+    "pos": "noun",
+    "ipa": "/əʊˈeɪsɪs/",
+    "meaningVi": "ốc đảo",
+    "definitionEn": "a fertile spot in a desert where water is found",
+    "example": "After days in the desert, we reached a shaded oasis with palm trees.",
+    "collocation": "desert oasis",
+    "cefr": "C2"
+  },
+  {
+    "word": "escarpment",
+    "pos": "noun",
+    "ipa": "/ɪˈskɑːpmənt/",
+    "meaningVi": "vách đá dốc",
+    "definitionEn": "a long steep slope marking the edge of a plateau",
+    "example": "The trail climbs steeply along the escarpment toward the summit.",
+    "collocation": "steep escarpment",
+    "cefr": "C2"
+  },
+  {
+    "word": "lagoon",
+    "pos": "noun",
+    "ipa": "/ləˈɡuːn/",
+    "meaningVi": "đầm phá",
+    "definitionEn": "a shallow body of water separated from the sea by a sandbar",
+    "example": "Kayakers paddled across the calm lagoon at sunrise.",
+    "collocation": "turquoise lagoon",
+    "cefr": "C2"
+  },
+  {
+    "word": "sanctum",
+    "pos": "noun",
+    "ipa": "/ˈsæŋktəm/",
+    "meaningVi": "nơi thiêng liêng, nơi riêng tư",
+    "definitionEn": "a holy or private place where entry is restricted",
+    "example": "The temple's inner sanctum is open only to monks and priests.",
+    "collocation": "inner sanctum",
+    "cefr": "C2"
+  },
+  {
+    "word": "reverie",
+    "pos": "noun",
+    "ipa": "/ˈrevəri/",
+    "meaningVi": "trạng thái mơ màng",
+    "definitionEn": "a state of pleasant daydreaming",
+    "example": "Lost in reverie, she gazed at the temple for hours.",
+    "collocation": "lost in reverie",
+    "cefr": "C2"
+  },
+  {
+    "word": "sybaritic",
+    "pos": "adjective",
+    "ipa": "/ˌsɪbəˈrɪtɪk/",
+    "meaningVi": "hưởng lạc xa hoa",
+    "definitionEn": "devoted to luxury and pleasure",
+    "example": "The sybaritic retreat offered silk linens, champagne and private plunge pools.",
+    "collocation": "sybaritic lifestyle",
+    "cefr": "C2"
+  },
+  {
+    "word": "serendipity",
+    "pos": "noun",
+    "ipa": "/ˌserənˈdɪpəti/",
+    "meaningVi": "may mắn tình cờ",
+    "definitionEn": "the happy chance of finding something valuable by accident",
+    "example": "Serendipity led us to a tiny cafe that became our favourite.",
+    "collocation": "pure serendipity",
+    "cefr": "C2"
+  },
+  {
+    "word": "gazetteer",
+    "pos": "noun",
+    "ipa": "/ˌɡæzəˈtɪə/",
+    "meaningVi": "từ điển địa danh",
+    "definitionEn": "a geographical index listing places and their features",
+    "example": "A gazetteer listed every village along the old pilgrimage route.",
+    "collocation": "consult a gazetteer",
+    "cefr": "C2"
+  },
+  {
+    "word": "bivouac",
+    "pos": "noun",
+    "ipa": "/ˈbɪvuæk/",
+    "meaningVi": "trại dã ngoại tạm",
+    "definitionEn": "a temporary camp, usually without tents, in the open air",
+    "example": "We set up a simple bivouac beneath the glacier.",
+    "collocation": "overnight bivouac",
+    "cefr": "C2"
+  },
+  {
+    "word": "tarn",
+    "pos": "noun",
+    "ipa": "/tɑːn/",
+    "meaningVi": "hồ núi",
+    "definitionEn": "a small mountain lake formed in a glacial hollow",
+    "example": "Our path circled a silent mountain tarn reflecting the peaks.",
+    "collocation": "mountain tarn",
+    "cefr": "C2"
+  },
+  {
+    "word": "hostelry",
+    "pos": "noun",
+    "ipa": "/ˈhɒstəlri/",
+    "meaningVi": "quán trọ",
+    "definitionEn": "an old-fashioned word for an inn or place offering food and lodging",
+    "example": "The old hostelry still serves ale to weary walkers.",
+    "collocation": "village hostelry",
+    "cefr": "C2"
+  },
+  {
+    "word": "tavern",
+    "pos": "noun",
+    "ipa": "/ˈtævən/",
+    "meaningVi": "quán rượu",
+    "definitionEn": "an establishment where alcoholic drinks and simple food are served",
+    "example": "We rested in a centuries-old tavern beside the harbour.",
+    "collocation": "old tavern",
+    "cefr": "C2"
+  },
+  {
+    "word": "gazebo",
+    "pos": "noun",
+    "ipa": "/ɡəˈziːbəʊ/",
+    "meaningVi": "nhà chòi nghỉ",
+    "definitionEn": "a small open-sided summer house in a garden or park",
+    "example": "Guests gathered in a wooden gazebo overlooking the rice terraces.",
+    "collocation": "garden gazebo",
+    "cefr": "C2"
+  },
+  {
+    "word": "pavilion",
+    "pos": "noun",
+    "ipa": "/pəˈvɪliən/",
+    "meaningVi": "nhà nghỉ, đình mát",
+    "definitionEn": "a decorative building in a park or garden used for rest or events",
+    "example": "The royal pavilion was built on a hill for summer retreats.",
+    "collocation": "garden pavilion",
+    "cefr": "C2"
+  },
+  {
+    "word": "esplanade",
+    "pos": "noun",
+    "ipa": "/ˌespləˈneɪd/",
+    "meaningVi": "đại lộ ven nước",
+    "definitionEn": "a level open area or walkway beside the sea or a river",
+    "example": "Joggers fill the esplanade every morning before the heat rises.",
+    "collocation": "waterfront esplanade",
+    "cefr": "C2"
+  },
+  {
+    "word": "caravan",
+    "pos": "noun",
+    "ipa": "/ˈkærəvæn/",
+    "meaningVi": "đoàn lữ hành",
+    "definitionEn": "a group of travellers journeying together, especially through a desert",
+    "example": "A caravan of camels crossed the dunes at dusk.",
+    "collocation": "desert caravan",
+    "cefr": "C2"
+  },
+  {
+    "word": "sherpa",
+    "pos": "noun",
+    "ipa": "/ˈʃɜːpə/",
+    "meaningVi": "người dẫn đường vùng núi",
+    "definitionEn": "a local guide who helps climbers and trekkers in the Himalayas",
+    "example": "Our sherpa guided us safely through the icy mountain passes.",
+    "collocation": "experienced sherpa",
+    "cefr": "C2"
+  },
+  {
+    "word": "nomad",
+    "pos": "noun",
+    "ipa": "/ˈnəʊmæd/",
+    "meaningVi": "dân du mục",
+    "definitionEn": "a member of a people who move from place to place rather than settle",
+    "example": "Nomads have crossed these plains for centuries with their herds.",
+    "collocation": "desert nomads",
+    "cefr": "C2"
+  },
+  {
+    "word": "isthmus",
+    "pos": "noun",
+    "ipa": "/ˈɪsməs/",
+    "meaningVi": "eo đất",
+    "definitionEn": "a narrow strip of land connecting two larger areas of land",
+    "example": "The city sits on a narrow isthmus between two seas.",
+    "collocation": "narrow isthmus",
+    "cefr": "C2"
+  },
+  {
+    "word": "hermitage",
+    "pos": "noun",
+    "ipa": "/ˈhɜːmɪtɪdʒ/",
+    "meaningVi": "am ẩn tu",
+    "definitionEn": "a secluded dwelling where a religious hermit lives",
+    "example": "We climbed to a remote hermitage carved into the cliffs.",
+    "collocation": "remote hermitage",
+    "cefr": "C2"
+  },
+  {
+    "word": "moraine",
+    "pos": "noun",
+    "ipa": "/məˈreɪn/",
+    "meaningVi": "băng tích",
+    "definitionEn": "a ridge of rock and debris left behind by a moving glacier",
+    "example": "The trail crosses a rocky moraine left by the retreating glacier.",
+    "collocation": "glacial moraine",
+    "cefr": "C2"
+  },
+  {
+    "word": "glacier",
+    "pos": "noun",
+    "ipa": "/ˈɡlæsiə/",
+    "meaningVi": "sông băng",
+    "definitionEn": "a large mass of slowly moving ice formed from compacted snow",
+    "example": "Visitors can hike across the glacier with trained guides.",
+    "collocation": "retreating glacier",
+    "cefr": "C2"
+  },
+  {
+    "word": "cirque",
+    "pos": "noun",
+    "ipa": "/sɜːk/",
+    "meaningVi": "vòng núi, hốc băng",
+    "definitionEn": "a bowl-shaped hollow on a mountainside formed by glacial erosion",
+    "example": "The lake fills a cirque carved out by ancient ice.",
+    "collocation": "glacial cirque",
+    "cefr": "C2"
+  },
+  {
+    "word": "wadi",
+    "pos": "noun",
+    "ipa": "/ˈwɒdi/",
+    "meaningVi": "lòng sông khô",
+    "definitionEn": "a dry river valley that fills with water only after rain",
+    "example": "Flash floods can suddenly fill the wadi after a storm.",
+    "collocation": "dry wadi",
+    "cefr": "C2"
+  },
+  {
+    "word": "sandbar",
+    "pos": "noun",
+    "ipa": "/ˈsændbɑː/",
+    "meaningVi": "bãi cát ngầm",
+    "definitionEn": "a ridge of sand built up in a river or near the shore",
+    "example": "Our boat grounded on a sandbar near the mouth of the bay.",
+    "collocation": "shifting sandbar",
+    "cefr": "C2"
+  }
+]

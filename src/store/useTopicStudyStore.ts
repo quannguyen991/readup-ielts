@@ -8,6 +8,7 @@ import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
 import { stageAfterQuiz } from '@/services/vocab/deck-status';
 import { loadByDay, nextReview, repairReviews, type ReviewEntry } from '@/services/vocab/review-schedule';
+import type { LoopState } from '@/services/vocab/learn-loop';
 import { todayKey } from './persist';
 
 /** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
@@ -66,6 +67,18 @@ type TopicStudyState = {
   setStage: (slug: string, word: string, stage: WordStage) => void;
   addScore: (slug: string, score: number) => void;
   resetTopic: (slug: string) => void;
+  /** Vòng học đang dở của từng bộ: học tới đâu lưu tới đó, mở lại thì tiếp tục đúng vòng. */
+  activeRound: Record<string, SavedRound>;
+  setActiveRound: (slug: string, round: SavedRound | null) => void;
+};
+
+export type SavedRound = {
+  words: string[];
+  plan: LoopState;
+  asked: number;
+  wrong: number;
+  streak: number;
+  step: number;
 };
 
 export const useTopicStudyStore = create<TopicStudyState>()(
@@ -136,6 +149,14 @@ export const useTopicStudyStore = create<TopicStudyState>()(
           },
           lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
         })),
+      activeRound: {},
+      setActiveRound: (slug, round) =>
+        set((s) => {
+          const next = { ...s.activeRound };
+          if (round) next[slug] = round;
+          else delete next[slug];
+          return { activeRound: next };
+        }),
       resetTopic: (slug) =>
         set((s) => {
           const stages = { ...s.stages };
@@ -155,7 +176,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx, activeRound: s.activeRound }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.

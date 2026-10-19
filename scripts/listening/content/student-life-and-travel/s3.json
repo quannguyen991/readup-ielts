@@ -1,0 +1,144 @@
+{
+  "n": 3,
+  "title": "Planning a cycling project",
+  "context": "A tutor meets a student to review the plan for a group research presentation on urban cycling. The student is presenting the plan for himself and his partner.",
+  "transcript": [
+    {
+      "speaker": "Tutor",
+      "text": "Come in, Ben. Let's look at your cycling project. Where have you got to?"
+    },
+    {
+      "speaker": "Ben",
+      "text": "Mia and I have decided to compare bike lanes in Amsterdam and Hanoi. We've already got figures on how many people cycle to work in each city."
+    },
+    {
+      "speaker": "Ben",
+      "text": "The trouble is that the accident figures we found only cover 2019, so they might be out of date."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "That's a real weakness. Check whether the city councils have published newer figures. Now, what are your options for the presentation itself?"
+    },
+    {
+      "speaker": "Ben",
+      "text": "We could show a short video of the bike lanes, run a live survey of the audience, include a map of cycle routes, add a cost comparison, or arrange interviews with city planners."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "With only ten minutes, you can't do everything. What have you decided?"
+    },
+    {
+      "speaker": "Ben",
+      "text": "The video would take up too much time, and interviews are hard to arrange in just a few weeks. So we think a route map and a cost comparison are the best choices."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Agreed. What about the survey idea?"
+    },
+    {
+      "speaker": "Ben",
+      "text": "We thought about asking the audience to vote on which city is safer, but it's probably not worth it."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "I'd avoid it. A survey of thirty people won't be representative, so it's risky to draw conclusions from it."
+    },
+    {
+      "speaker": "Ben",
+      "text": "Understood. We'll drop it."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Good. What are you doing next week?"
+    },
+    {
+      "speaker": "Ben",
+      "text": "I'll contact the city council to ask for the latest figures. If I can get them by Wednesday, I can update the charts."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Excellent. Can you and Mia write the draft introduction? The draft is due on Friday, and I'll read it over the weekend."
+    },
+    {
+      "speaker": "Ben",
+      "text": "Of course. We'll send it to you on Friday morning."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Let's meet again in room fourteen next Monday to go through the draft."
+    }
+  ],
+  "groups": [
+    {
+      "type": "mcq-many",
+      "title": "Questions 21-22",
+      "instruction": "Choose TWO letters, A-E. Which TWO things will the group include in the presentation?",
+      "options": [
+        { "key": "A", "text": "a short video of the bike lanes" },
+        { "key": "B", "text": "a live survey of the audience" },
+        { "key": "C", "text": "a map of cycle routes" },
+        { "key": "D", "text": "a cost comparison" },
+        { "key": "E", "text": "interviews with city planners" }
+      ],
+      "questions": [{ "n": 21, "answer": ["C", "D"] }]
+    },
+    {
+      "type": "mcq-one",
+      "title": "Questions 23-25",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 23,
+          "prompt": "What is the problem with the accident figures?",
+          "answer": "A",
+          "options": [
+            { "key": "A", "text": "They are out of date." },
+            { "key": "B", "text": "They only cover one city." },
+            { "key": "C", "text": "They are too complicated to read." }
+          ]
+        },
+        {
+          "n": 24,
+          "prompt": "Why does the tutor reject the survey idea?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "It would take too long to analyse." },
+            { "key": "B", "text": "The sample would be too small." },
+            { "key": "C", "text": "Students dislike doing surveys." }
+          ]
+        },
+        {
+          "n": 25,
+          "prompt": "What will Ben do next week?",
+          "answer": "A",
+          "options": [
+            { "key": "A", "text": "contact the city council" },
+            { "key": "B", "text": "rewrite the introduction" },
+            { "key": "C", "text": "book the seminar room" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "title": "Questions 26-30",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "wordLimit": "ONE WORD AND/OR A NUMBER",
+      "lines": [
+        "## Cycling project notes",
+        "Cities being compared: Amsterdam and {{26}}",
+        "Main data: {{27}} figures",
+        "Presentation length: {{28}} minutes",
+        "Draft introduction due: {{29}}",
+        "Next meeting: room {{30}}"
+      ],
+      "questions": [
+        { "n": 26, "answer": "Hanoi" },
+        { "n": 27, "answer": "accident" },
+        { "n": 28, "answer": "ten", "accept": ["10"] },
+        { "n": 29, "answer": "Friday" },
+        { "n": 30, "answer": "fourteen", "accept": ["14"] }
+      ]
+    }
+  ]
+}

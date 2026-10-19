@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "theft",
+    "pos": "noun",
+    "ipa": "/θeft/",
+    "meaningVi": "hành vi trộm cắp",
+    "definitionEn": "the crime of taking someone else's property without permission",
+    "example": "The shop reported a theft after someone took cash from the till.",
+    "collocation": "petty theft",
+    "cefr": "B1"
+  },
+  {
+    "word": "thief",
+    "pos": "noun",
+    "ipa": "/θiːf/",
+    "meaningVi": "kẻ trộm",
+    "definitionEn": "a person who steals things from others",
+    "example": "A thief stole her bag while she was waiting for the bus.",
+    "collocation": "car thief",
+    "cefr": "B1"
+  },
+  {
+    "word": "steal",
+    "pos": "verb",
+    "ipa": "/stiːl/",
+    "meaningVi": "ăn cắp",
+    "definitionEn": "to take something that belongs to someone else without permission",
+    "example": "Someone tried to steal our bicycle from the garden shed.",
+    "collocation": "steal money",
+    "cefr": "B1"
+  },
+  {
+    "word": "robbery",
+    "pos": "noun",
+    "ipa": "/ˈrɒbəri/",
+    "meaningVi": "vụ cướp",
+    "definitionEn": "the crime of taking property from a person or place by force or threat",
+    "example": "Police arrested two men suspected of the bank robbery.",
+    "collocation": "armed robbery",
+    "cefr": "B1"
+  },
+  {
+    "word": "rob",
+    "pos": "verb",
+    "ipa": "/rɒb/",
+    "meaningVi": "cướp, lấy trộm",
+    "definitionEn": "to steal from a person or place, often using force or threats",
+    "example": "Two masked men robbed the jewellery shop on Saturday.",
+    "collocation": "rob a bank",
+    "cefr": "B1"
+  },
+  {
+    "word": "police",
+    "pos": "noun",
+    "ipa": "/pəˈliːs/",
+    "meaningVi": "cảnh sát",
+    "definitionEn": "the official force responsible for keeping public order and enforcing the law",
+    "example": "The police arrived within minutes of the emergency call.",
+    "collocation": "call the police",
+    "cefr": "B1"
+  },
+  {
+    "word": "officer",
+    "pos": "noun",
+    "ipa": "/ˈɒfɪsə/",
+    "meaningVi": "viên cảnh sát",
+    "definitionEn": "a person who holds a position of authority in the police or military",
+    "example": "The officer asked the driver to show his licence.",
+    "collocation": "police officer",
+    "cefr": "B1"
+  },
+  {
+    "word": "arrest",
+    "pos": "verb",
+    "ipa": "/əˈrest/",
+    "meaningVi": "bắt giữ",
+    "definitionEn": "to take someone into custody for suspected involvement in a crime",
+    "example": "Officers arrested the suspect outside the train station.",
+    "collocation": "make an arrest",
+    "cefr": "B1"
+  },
+  {
+    "word": "suspect",
+    "pos": "noun",
+    "ipa": "/ˈsʌspekt/",
+    "meaningVi": "nghi phạm",
+    "definitionEn": "a person believed to have committed a crime",
+    "example": "The suspect was seen leaving the building through the back door.",
+    "collocation": "main suspect",
+    "cefr": "B1"
+  },
+  {
+    "word": "crime",
+    "pos": "noun",
+    "ipa": "/kraɪm/",
+    "meaningVi": "tội phạm, tội ác",
+    "definitionEn": "an action that is against the law and punishable by the state",
+    "example": "Crime rates in the area have fallen significantly this year.",
+    "collocation": "violent crime",
+    "cefr": "B1"
+  },
+  {
+    "word": "criminal",
+    "pos": "noun",
+    "ipa": "/ˈkrɪmɪnl/",
+    "meaningVi": "tội phạm",
+    "definitionEn": "a person who has committed a crime",
+    "example": "The criminal was jailed after confessing to the burglary.",
+    "collocation": "hardened criminal",
+    "cefr": "B1"
+  },
+  {
+    "word": "burglar",
+    "pos": "noun",
+    "ipa": "/ˈbɜːɡlə/",
+    "meaningVi": "kẻ đột nhập trộm cắp",
+    "definitionEn": "a person who breaks into a building to steal",
+    "example": "The burglar climbed through the bathroom window while we slept.",
+    "collocation": "masked burglar",
+    "cefr": "B1"
+  },
+  {
+    "word": "burglary",
+    "pos": "noun",
+    "ipa": "/ˈbɜːɡləri/",
+    "meaningVi": "vụ trộm đột nhập",
+    "definitionEn": "the crime of entering a building illegally in order to steal",
+    "example": "Our neighbour reported a burglary while the family was on holiday.",
+    "collocation": "house burglary",
+    "cefr": "B1"
+  },
+  {
+    "word": "break in",
+    "pos": "phrasal verb",
+    "ipa": "/breɪk ɪn/",
+    "meaningVi": "đột nhập",
+    "definitionEn": "to enter a building illegally, usually by force",
+    "example": "Thieves may break in through an unlocked window during the night.",
+    "collocation": "break in at night",
+    "cefr": "B1"
+  },
+  {
+    "word": "lock",
+    "pos": "verb",
+    "ipa": "/lɒk/",
+    "meaningVi": "khoá",
+    "definitionEn": "to fasten a door or container so that it cannot be opened without a key",
+    "example": "Always lock your car doors when you park in the street.",
+    "collocation": "lock the door",
+    "cefr": "B1"
+  },
+  {
+    "word": "alarm",
+    "pos": "noun",
+    "ipa": "/əˈlɑːm/",
+    "meaningVi": "chuông báo động",
+    "definitionEn": "a device that makes a loud sound to warn of danger or a break-in",
+    "example": "The shop alarm went off, scaring the thieves away.",
+    "collocation": "security alarm",
+    "cefr": "B1"
+  },
+  {
+    "word": "camera",
+    "pos": "noun",
+    "ipa": "/ˈkæmərə/",
+    "meaningVi": "camera",
+    "definitionEn": "a device used to record images or video, often for security",
+    "example": "Security cameras recorded the suspect entering the car park.",
+    "collocation": "security camera",
+    "cefr": "B1"
+  },
+  {
+    "word": "gang",
+    "pos": "noun",
+    "ipa": "/ɡæŋ/",
+    "meaningVi": "băng nhóm",
+    "definitionEn": "a group of people who commit crimes together",
+    "example": "A local gang has been terrorising shopkeepers for months.",
+    "collocation": "street gang",
+    "cefr": "B1"
+  },
+  {
+    "word": "drug",
+    "pos": "noun",
+    "ipa": "/drʌɡ/",
+    "meaningVi": "ma tuý",
+    "definitionEn": "an illegal or controlled substance that affects the body or mind",
+    "example": "Police seized a large quantity of drugs hidden inside the van.",
+    "collocation": "illegal drugs",
+    "cefr": "B1"
+  },
+  {
+    "word": "jail",
+    "pos": "noun",
+    "ipa": "/dʒeɪl/",
+    "meaningVi": "nhà tù",
+    "definitionEn": "a building where people are held as punishment for crimes",
+    "example": "He spent three years in jail for stealing from his employer.",
+    "collocation": "go to jail",
+    "cefr": "B1"
+  },
+  {
+    "word": "guilty",
+    "pos": "adjective",
+    "ipa": "/ˈɡɪlti/",
+    "meaningVi": "có tội",
+    "definitionEn": "responsible for committing a crime or wrongdoing",
+    "example": "The jury found the man guilty of assault after two days.",
+    "collocation": "plead guilty",
+    "cefr": "B1"
+  },
+  {
+    "word": "innocent",
+    "pos": "adjective",
+    "ipa": "/ˈɪnəsnt/",
+    "meaningVi": "vô tội",
+    "definitionEn": "not guilty of a crime or wrongdoing",
+    "example": "She insisted that she was innocent and had never seen the money.",
+    "collocation": "presumed innocent",
+    "cefr": "B1"
+  },
+  {
+    "word": "lawyer",
+    "pos": "noun",
+    "ipa": "/ˈlɔːjə/",
+    "meaningVi": "luật sư",
+    "definitionEn": "a person trained and licensed to give advice on the law",
+    "example": "The lawyer advised her not to answer questions without legal advice.",
+    "collocation": "hire a lawyer",
+    "cefr": "B1"
+  },
+  {
+    "word": "vandalise",
+    "pos": "verb",
+    "ipa": "/ˈvændəlaɪz/",
+    "meaningVi": "phá hoại",
+    "definitionEn": "to deliberately damage public or private property",
+    "example": "Teenagers vandalised the bus shelter with spray paint overnight.",
+    "collocation": "vandalise property",
+    "cefr": "B2"
+  },
+  {
+    "word": "mugging",
+    "pos": "noun",
+    "ipa": "/ˈmʌɡɪŋ/",
+    "meaningVi": "vụ cướp giật",
+    "definitionEn": "the crime of attacking someone in a public place to steal from them",
+    "example": "Muggings rose sharply in the late evening along the canal.",
+    "collocation": "street mugging",
+    "cefr": "B2"
+  },
+  {
+    "word": "shoplift",
+    "pos": "verb",
+    "ipa": "/ˈʃɒplɪft/",
+    "meaningVi": "trộm đồ siêu thị",
+    "definitionEn": "to steal goods from a shop while pretending to be a customer",
+    "example": "Security guards caught a teenager trying to shoplift a phone.",
+    "collocation": "shoplift from a supermarket",
+    "cefr": "B2"
+  },
+  {
+    "word": "pickpocket",
+    "pos": "noun",
+    "ipa": "/ˈpɪkpɒkɪt/",
+    "meaningVi": "kẻ móc túi",
+    "definitionEn": "a thief who steals from people's pockets or bags in crowds",
+    "example": "A pickpocket targeted tourists crowding onto the metro.",
+    "collocation": "skilled pickpocket",
+    "cefr": "B2"
+  },
+  {
+    "word": "hijack",
+    "pos": "verb",
+    "ipa": "/ˈhaɪdʒæk/",
+    "meaningVi": "cướp (phương tiện)",
+    "definitionEn": "to seize control of a vehicle, aircraft or ship by force",
+    "example": "Armed men hijacked the delivery truck on the motorway.",
+    "collocation": "hijack a plane",
+    "cefr": "B2"
+  },
+  {
+    "word": "kidnap",
+    "pos": "verb",
+    "ipa": "/ˈkɪdnæp/",
+    "meaningVi": "bắt cóc",
+    "definitionEn": "to take a person away by force and hold them for ransom or other demands",
+    "example": "Gangsters kidnapped the businessman and demanded a huge ransom.",
+    "collocation": "kidnap a child",
+    "cefr": "B2"
+  },
+  {
+    "word": "ransom",
+    "pos": "noun",
+    "ipa": "/ˈrænsəm/",
+    "meaningVi": "tiền chuộc",
+    "definitionEn": "money demanded in exchange for the release of a captured person",
+    "example": "The kidnappers demanded a ransom of two million dollars.",
+    "collocation": "demand a ransom",
+    "cefr": "B2"
+  },
+  {
+    "word": "hostage",
+    "pos": "noun",
+    "ipa": "/ˈhɒstɪdʒ/",
+    "meaningVi": "con tin",
+    "definitionEn": "a person held captive until certain demands are met",
+    "example": "The hostages were released unharmed after a tense negotiation.",
+    "collocation": "take hostages",
+    "cefr": "B2"
+  },
+  {
+    "word": "assault",
+    "pos": "noun",
+    "ipa": "/əˈsɔːlt/",
+    "meaningVi": "hành hung",
+    "definitionEn": "a physical attack on a person",
+    "example": "He was charged with assault after the fight outside the pub.",
+    "collocation": "physical assault",
+    "cefr": "B2"
+  },
+  {
+    "word": "hit-and-run",
+    "pos": "adjective",
+    "ipa": "/ˌhɪt ən ˈrʌn/",
+    "meaningVi": "gây tai nạn rồi bỏ chạy",
+    "definitionEn": "involving a driver who crashes into someone and then leaves the scene",
+    "example": "Police are searching for the driver in a hit-and-run incident.",
+    "collocation": "hit-and-run accident",
+    "cefr": "B2"
+  },
+  {
+    "word": "perpetrator",
+    "pos": "noun",
+    "ipa": "/ˈpɜːpɪtreɪtə/",
+    "meaningVi": "thủ phạm",
+    "definitionEn": "a person who carries out a crime",
+    "example": "Investigators believe the perpetrator knew the building well.",
+    "collocation": "identify the perpetrator",
+    "cefr": "B2"
+  },
+  {
+    "word": "alibi",
+    "pos": "noun",
+    "ipa": "/ˈælɪbaɪ/",
+    "meaningVi": "chứng cứ ngoại phạm",
+    "definitionEn": "evidence that a suspect was somewhere else when a crime occurred",
+    "example": "His alibi collapsed when camera footage showed him at the scene.",
+    "collocation": "provide an alibi",
+    "cefr": "B2"
+  },
+  {
+    "word": "cover-up",
+    "pos": "noun",
+    "ipa": "/ˈkʌvər ʌp/",
+    "meaningVi": "sự che giấu",
+    "definitionEn": "an attempt to hide the truth about a wrongdoing",
+    "example": "The scandal grew worse after officials attempted a cover-up.",
+    "collocation": "cover-up operation",
+    "cefr": "B2"
+  },
+  {
+    "word": "loot",
+    "pos": "noun",
+    "ipa": "/luːt/",
+    "meaningVi": "chiến lợi phẩm",
+    "definitionEn": "goods stolen during a riot or robbery",
+    "example": "Rioters broke into shops and carried away televisions and jewellery as loot.",
+    "collocation": "stolen loot",
+    "cefr": "B2"
+  },
+  {
+    "word": "trespass",
+    "pos": "verb",
+    "ipa": "/ˈtrespəs/",
+    "meaningVi": "xâm nhập trái phép",
+    "definitionEn": "to enter someone's land or property without permission",
+    "example": "Signs warn that anyone caught trespassing will be reported to police.",
+    "collocation": "trespass on private land",
+    "cefr": "B2"
+  },
+  {
+    "word": "offence",
+    "pos": "noun",
+    "ipa": "/əˈfens/",
+    "meaningVi": "hành vi phạm tội",
+    "definitionEn": "an act that breaks the law",
+    "example": "Drink-driving is a serious criminal offence in most countries.",
+    "collocation": "serious offence",
+    "cefr": "B2"
+  },
+  {
+    "word": "felony",
+    "pos": "noun",
+    "ipa": "/ˈfeləni/",
+    "meaningVi": "trọng tội",
+    "definitionEn": "a serious crime, more severe than a misdemeanour",
+    "example": "He faced a felony charge for breaking into the warehouse.",
+    "collocation": "commit a felony",
+    "cefr": "B2"
+  },
+  {
+    "word": "misdemeanour",
+    "pos": "noun",
+    "ipa": "/ˌmɪsdɪˈmiːnə/",
+    "meaningVi": "tội nhẹ",
+    "definitionEn": "a minor offence that is less serious than a felony",
+    "example": "The offence was treated as a minor misdemeanour rather than a crime.",
+    "collocation": "minor misdemeanour",
+    "cefr": "B2"
+  },
+  {
+    "word": "wrongdoing",
+    "pos": "noun",
+    "ipa": "/ˈrɒŋduːɪŋ/",
+    "meaningVi": "hành vi sai trái",
+    "definitionEn": "illegal or immoral behaviour",
+    "example": "The company admitted wrongdoing and promised to compensate customers.",
+    "collocation": "admit wrongdoing",
+    "cefr": "B2"
+  },
+  {
+    "word": "hacker",
+    "pos": "noun",
+    "ipa": "/ˈhækə/",
+    "meaningVi": "tin tặc",
+    "definitionEn": "a person who gains unauthorised access to computer systems",
+    "example": "A hacker stole thousands of customer passwords from the website.",
+    "collocation": "computer hacker",
+    "cefr": "B2"
+  },
+  {
+    "word": "racketeering",
+    "pos": "noun",
+    "ipa": "/ˌrækɪˈtɪərɪŋ/",
+    "meaningVi": "tội tổ chức tống tiền, làm ăn bất chính",
+    "definitionEn": "organised illegal activity such as extortion carried out for profit",
+    "example": "Prosecutors charged the gang leaders with racketeering and money laundering.",
+    "collocation": "racketeering charges",
+    "cefr": "C1"
+  },
+  {
+    "word": "money laundering",
+    "pos": "phrase",
+    "ipa": "/ˈmʌni ˈlɔːndərɪŋ/",
+    "meaningVi": "rửa tiền",
+    "definitionEn": "disguising the origin of money obtained through illegal means",
+    "example": "The bank was fined for failing to detect money laundering.",
+    "collocation": "money laundering scheme",
+    "cefr": "C1"
+  },
+  {
+    "word": "extortion",
+    "pos": "noun",
+    "ipa": "/ɪkˈstɔːʃn/",
+    "meaningVi": "tống tiền",
+    "definitionEn": "obtaining money from someone through threats or force",
+    "example": "Shop owners were victims of extortion by local criminal groups.",
+    "collocation": "extortion racket",
+    "cefr": "C1"
+  },
+  {
+    "word": "impersonation",
+    "pos": "noun",
+    "ipa": "/ˌɪmpɜːsəˈneɪʃn/",
+    "meaningVi": "sự giả danh",
+    "definitionEn": "pretending to be another person in order to deceive",
+    "example": "Identity impersonation is a growing threat in online banking.",
+    "collocation": "identity impersonation",
+    "cefr": "C1"
+  },
+  {
+    "word": "counterfeit",
+    "pos": "adjective",
+    "ipa": "/ˈkaʊntəfɪt/",
+    "meaningVi": "giả mạo, làm giả",
+    "definitionEn": "made to imitate something genuine in order to deceive",
+    "example": "Police seized counterfeit banknotes worth thousands of dollars.",
+    "collocation": "counterfeit currency",
+    "cefr": "C1"
+  },
+  {
+    "word": "forgery",
+    "pos": "noun",
+    "ipa": "/ˈfɔːdʒəri/",
+    "meaningVi": "sự làm giả",
+    "definitionEn": "the crime of producing a false document or artwork",
+    "example": "The forgery of signatures on the contract was uncovered by experts.",
+    "collocation": "document forgery",
+    "cefr": "C1"
+  },
+  {
+    "word": "smuggling",
+    "pos": "noun",
+    "ipa": "/ˈsmʌɡlɪŋ/",
+    "meaningVi": "buôn lậu",
+    "definitionEn": "the illegal import or export of goods or people",
+    "example": "Customs officers intercepted a major smuggling operation at the port.",
+    "collocation": "drug smuggling",
+    "cefr": "C1"
+  },
+  {
+    "word": "trafficking",
+    "pos": "noun",
+    "ipa": "/ˈtræfɪkɪŋ/",
+    "meaningVi": "buôn bán trái phép",
+    "definitionEn": "the illegal trade in people, drugs or goods",
+    "example": "Authorities uncovered a network involved in trafficking wildlife across the border.",
+    "collocation": "human trafficking",
+    "cefr": "C1"
+  },
+  {
+    "word": "vigilante",
+    "pos": "noun",
+    "ipa": "/ˌvɪdʒɪˈlænti/",
+    "meaningVi": "kẻ tự xử",
+    "definitionEn": "a person who takes the law into their own hands",
+    "example": "A vigilante group patrolled the streets, claiming to protect residents.",
+    "collocation": "self-appointed vigilante",
+    "cefr": "C1"
+  },
+  {
+    "word": "malfeasance",
+    "pos": "noun",
+    "ipa": "/mælˈfiːzns/",
+    "meaningVi": "hành vi sai trái công quyền",
+    "definitionEn": "wrongful or illegal conduct by a public official",
+    "example": "The inquiry uncovered serious malfeasance among senior officials.",
+    "collocation": "official malfeasance",
+    "cefr": "C1"
+  },
+  {
+    "word": "subterfuge",
+    "pos": "noun",
+    "ipa": "/ˈsʌbtəfjuːdʒ/",
+    "meaningVi": "mưu mẹo lừa dối",
+    "definitionEn": "a deceitful action or trick used to hide one's true intentions",
+    "example": "The fraudsters used subterfuge to gain access to private accounts.",
+    "collocation": "use subterfuge",
+    "cefr": "C1"
+  },
+  {
+    "word": "larceny",
+    "pos": "noun",
+    "ipa": "/ˈlɑːsəni/",
+    "meaningVi": "tội trộm cắp",
+    "definitionEn": "the legal term for theft of personal property",
+    "example": "He was charged with grand larceny after stealing valuable jewellery.",
+    "collocation": "petty larceny",
+    "cefr": "C1"
+  },
+  {
+    "word": "collusion",
+    "pos": "noun",
+    "ipa": "/kəˈluːʒn/",
+    "meaningVi": "sự thông đồng",
+    "definitionEn": "secret cooperation for an illegal or deceitful purpose",
+    "example": "Investigators suspected collusion between the auditors and the directors.",
+    "collocation": "secret collusion",
+    "cefr": "C1"
+  },
+  {
+    "word": "nefarious",
+    "pos": "adjective",
+    "ipa": "/nɪˈfeəriəs/",
+    "meaningVi": "xấu xa, độc ác",
+    "definitionEn": "wicked or criminal in nature",
+    "example": "The nefarious scheme involved forged invoices and offshore accounts.",
+    "collocation": "nefarious activities",
+    "cefr": "C1"
+  },
+  {
+    "word": "illicit",
+    "pos": "adjective",
+    "ipa": "/ɪˈlɪsɪt/",
+    "meaningVi": "bất hợp pháp",
+    "definitionEn": "forbidden by law or social rules",
+    "example": "Illicit trade in antiquities has flourished in conflict zones.",
+    "collocation": "illicit trade",
+    "cefr": "C1"
+  },
+  {
+    "word": "contraband",
+    "pos": "noun",
+    "ipa": "/ˈkɒntrəbænd/",
+    "meaningVi": "hàng lậu",
+    "definitionEn": "goods that are illegally imported or exported",
+    "example": "Officers found contraband cigarettes hidden in the lorry's trailer.",
+    "collocation": "smuggled contraband",
+    "cefr": "C1"
+  },
+  {
+    "word": "bootleg",
+    "pos": "adjective",
+    "ipa": "/ˈbuːtleɡ/",
+    "meaningVi": "lậu, không có giấy phép",
+    "definitionEn": "made or sold illegally, especially copies of recordings or films",
+    "example": "Bootleg copies of the film were sold on every street corner.",
+    "collocation": "bootleg recordings",
+    "cefr": "C1"
+  },
+  {
+    "word": "pilfer",
+    "pos": "verb",
+    "ipa": "/ˈpɪlfə/",
+    "meaningVi": "ăn cắp vặt",
+    "definitionEn": "to steal small items in a sly way",
+    "example": "Staff were caught pilfering stationery and small electronic items.",
+    "collocation": "pilfer from the till",
+    "cefr": "C1"
+  },
+  {
+    "word": "purloin",
+    "pos": "verb",
+    "ipa": "/pɜːˈlɔɪn/",
+    "meaningVi": "lấy trộm",
+    "definitionEn": "to steal something, often in a secret or sneaky way",
+    "example": "The clerk purloined files containing confidential client information.",
+    "collocation": "purloin documents",
+    "cefr": "C1"
+  },
+  {
+    "word": "heist",
+    "pos": "noun",
+    "ipa": "/haɪst/",
+    "meaningVi": "vụ cướp táo bạo",
+    "definitionEn": "a carefully planned robbery, especially of a bank or valuable goods",
+    "example": "The jewellery heist was planned for months by a team of experts.",
+    "collocation": "bank heist",
+    "cefr": "C1"
+  },
+  {
+    "word": "stakeout",
+    "pos": "noun",
+    "ipa": "/ˈsteɪkaʊt/",
+    "meaningVi": "vụ theo dõi phục kích",
+    "definitionEn": "a period of secret surveillance of a place by police",
+    "example": "Detectives maintained a stakeout outside the warehouse all night.",
+    "collocation": "police stakeout",
+    "cefr": "C1"
+  },
+  {
+    "word": "dossier",
+    "pos": "noun",
+    "ipa": "/ˈdɒsieɪ/",
+    "meaningVi": "hồ sơ vụ án",
+    "definitionEn": "a collection of documents about a particular person or case",
+    "example": "The detective compiled a detailed dossier on the suspect's movements.",
+    "collocation": "confidential dossier",
+    "cefr": "C1"
+  },
+  {
+    "word": "felon",
+    "pos": "noun",
+    "ipa": "/ˈfelən/",
+    "meaningVi": "tội phạm nghiêm trọng",
+    "definitionEn": "a person who has been convicted of a serious crime",
+    "example": "The felon served ten years before being released from prison.",
+    "collocation": "convicted felon",
+    "cefr": "C1"
+  },
+  {
+    "word": "vice",
+    "pos": "noun",
+    "ipa": "/vaɪs/",
+    "meaningVi": "tệ nạn",
+    "definitionEn": "illegal or immoral activities such as gambling or prostitution",
+    "example": "Police targeted vice rings operating behind the nightclubs.",
+    "collocation": "vice squad",
+    "cefr": "C1"
+  },
+  {
+    "word": "scam",
+    "pos": "noun",
+    "ipa": "/skæm/",
+    "meaningVi": "trò lừa đảo",
+    "definitionEn": "a dishonest scheme designed to trick people out of money",
+    "example": "A phone scam tricked elderly residents into handing over their savings.",
+    "collocation": "online scam",
+    "cefr": "C1"
+  },
+  {
+    "word": "hoodwink",
+    "pos": "verb",
+    "ipa": "/ˈhʊdwɪŋk/",
+    "meaningVi": "lừa gạt",
+    "definitionEn": "to deceive someone by making them believe something false",
+    "example": "The conman hoodwinked investors with promises of impossible returns.",
+    "collocation": "hoodwink investors",
+    "cefr": "C1"
+  },
+  {
+    "word": "fugitive",
+    "pos": "noun",
+    "ipa": "/ˈfjuːdʒɪtɪv/",
+    "meaningVi": "kẻ đào tẩu",
+    "definitionEn": "a person who is running away from the police or authorities",
+    "example": "The fugitive was finally captured in a remote mountain village.",
+    "collocation": "wanted fugitive",
+    "cefr": "C1"
+  },
+  {
+    "word": "malefactor",
+    "pos": "noun",
+    "ipa": "/ˈmæləfæktə/",
+    "meaningVi": "kẻ phạm pháp",
+    "definitionEn": "a person who commits a crime or does wrong",
+    "example": "The malefactor escaped justice for decades by changing his identity.",
+    "collocation": "notorious malefactor",
+    "cefr": "C2"
+  },
+  {
+    "word": "miscreant",
+    "pos": "noun",
+    "ipa": "/ˈmɪskriːənt/",
+    "meaningVi": "kẻ xấu, kẻ hư hỏng",
+    "definitionEn": "a person who behaves badly or breaks the law",
+    "example": "The local miscreants vandalised the church before fleeing the village.",
+    "collocation": "young miscreant",
+    "cefr": "C2"
+  },
+  {
+    "word": "reprobate",
+    "pos": "noun",
+    "ipa": "/ˈreprəbeɪt/",
+    "meaningVi": "kẻ vô lại",
+    "definitionEn": "a person of immoral or dishonest character",
+    "example": "The reprobate gambled away the family fortune within a single year.",
+    "collocation": "hardened reprobate",
+    "cefr": "C2"
+  },
+  {
+    "word": "scoundrel",
+    "pos": "noun",
+    "ipa": "/ˈskaʊndrəl/",
+    "meaningVi": "kẻ bất lương",
+    "definitionEn": "a dishonest or unscrupulous person",
+    "example": "The scoundrel swindled widows out of their pensions for years.",
+    "collocation": "charming scoundrel",
+    "cefr": "C2"
+  },
+  {
+    "word": "rogue",
+    "pos": "noun",
+    "ipa": "/rəʊɡ/",
+    "meaningVi": "kẻ bất hảo",
+    "definitionEn": "a dishonest person who acts without regard for rules",
+    "example": "A rogue trader lost the bank billions through unauthorised deals.",
+    "collocation": "rogue trader",
+    "cefr": "C2"
+  },
+  {
+    "word": "brigand",
+    "pos": "noun",
+    "ipa": "/ˈbrɪɡənd/",
+    "meaningVi": "tên cướp đường",
+    "definitionEn": "a bandit who robs travellers, especially in mountain areas",
+    "example": "Brigands ambushed merchants on the mountain road at dusk.",
+    "collocation": "roadside brigands",
+    "cefr": "C2"
+  },
+  {
+    "word": "marauder",
+    "pos": "noun",
+    "ipa": "/məˈrɔːdə/",
+    "meaningVi": "kẻ cướp phá",
+    "definitionEn": "a person who roams about attacking and robbing people",
+    "example": "Marauders raided coastal villages and carried off livestock.",
+    "collocation": "bands of marauders",
+    "cefr": "C2"
+  },
+  {
+    "word": "pillage",
+    "pos": "verb",
+    "ipa": "/ˈpɪlɪdʒ/",
+    "meaningVi": "cướp bóc",
+    "definitionEn": "to rob a place violently, especially during war",
+    "example": "Invaders pillaged the monastery and burned its library.",
+    "collocation": "pillage and plunder",
+    "cefr": "C2"
+  },
+  {
+    "word": "plunder",
+    "pos": "verb",
+    "ipa": "/ˈplʌndə/",
+    "meaningVi": "cướp đoạt",
+    "definitionEn": "to steal goods from a place, usually by force",
+    "example": "Soldiers plundered the town's granaries during the long siege.",
+    "collocation": "plunder treasure",
+    "cefr": "C2"
+  },
+  {
+    "word": "defalcation",
+    "pos": "noun",
+    "ipa": "/ˌdiːfælˈkeɪʃn/",
+    "meaningVi": "sự biển thủ",
+    "definitionEn": "the misappropriation of money held in trust",
+    "example": "The auditor uncovered a defalcation totalling several million pounds.",
+    "collocation": "financial defalcation",
+    "cefr": "C2"
+  },
+  {
+    "word": "peculation",
+    "pos": "noun",
+    "ipa": "/ˌpekjʊˈleɪʃn/",
+    "meaningVi": "sự tham ô công quỹ",
+    "definitionEn": "the theft or misuse of public funds by an official",
+    "example": "Peculation within the ministry drained public funds for years.",
+    "collocation": "public peculation",
+    "cefr": "C2"
+  },
+  {
+    "word": "venality",
+    "pos": "noun",
+    "ipa": "/vɪˈnæləti/",
+    "meaningVi": "tính tham nhũng, dễ mua chuộc",
+    "definitionEn": "willingness to accept bribes in exchange for favours",
+    "example": "Venality among junior officials made every permit expensive.",
+    "collocation": "rampant venality",
+    "cefr": "C2"
+  },
+  {
+    "word": "graft",
+    "pos": "noun",
+    "ipa": "/ɡrɑːft/",
+    "meaningVi": "hối lộ, tham nhũng",
+    "definitionEn": "dishonest gain made through the misuse of a position",
+    "example": "Graft among contractors inflated the cost of the new bridge.",
+    "collocation": "political graft",
+    "cefr": "C2"
+  },
+  {
+    "word": "kickback",
+    "pos": "noun",
+    "ipa": "/ˈkɪkbæk/",
+    "meaningVi": "tiền lại quả",
+    "definitionEn": "a secret payment made in return for a favour or contract",
+    "example": "The official received kickbacks for awarding contracts to favoured firms.",
+    "collocation": "secret kickback",
+    "cefr": "C2"
+  },
+  {
+    "word": "racketeer",
+    "pos": "noun",
+    "ipa": "/ˌrækɪˈtɪə/",
+    "meaningVi": "kẻ tống tiền",
+    "definitionEn": "a person who makes money through illegal extortion",
+    "example": "The racketeer demanded weekly payments from every shopkeeper on the street.",
+    "collocation": "local racketeer",
+    "cefr": "C2"
+  },
+  {
+    "word": "shakedown",
+    "pos": "noun",
+    "ipa": "/ˈʃeɪkdaʊn/",
+    "meaningVi": "vụ tống tiền, khám xét gắt gao",
+    "definitionEn": "an act of extortion or a thorough search for illegal activity",
+    "example": "Officers were accused of a shakedown of the nightclub owners.",
+    "collocation": "police shakedown",
+    "cefr": "C2"
+  },
+  {
+    "word": "swindle",
+    "pos": "noun",
+    "ipa": "/ˈswɪndl/",
+    "meaningVi": "vụ lừa đảo",
+    "definitionEn": "a dishonest scheme to obtain money or property from someone",
+    "example": "The elderly couple lost their savings in a cunning swindle.",
+    "collocation": "elaborate swindle",
+    "cefr": "C2"
+  },
+  {
+    "word": "con artist",
+    "pos": "noun",
+    "ipa": "/ˈkɒn ɑːtɪst/",
+    "meaningVi": "kẻ lừa đảo tinh vi",
+    "definitionEn": "a person who deceives others to gain money or trust",
+    "example": "The con artist posed as a banker to win the victim's trust.",
+    "collocation": "smooth con artist",
+    "cefr": "C2"
+  },
+  {
+    "word": "charlatan",
+    "pos": "noun",
+    "ipa": "/ˈʃɑːlətən/",
+    "meaningVi": "kẻ lừa bịp",
+    "definitionEn": "a person who falsely claims to have special skills or knowledge",
+    "example": "The charlatan sold worthless potions promising miraculous cures.",
+    "collocation": "crooked charlatan",
+    "cefr": "C2"
+  },
+  {
+    "word": "imposter",
+    "pos": "noun",
+    "ipa": "/ɪmˈpɒstə/",
+    "meaningVi": "kẻ mạo danh",
+    "definitionEn": "a person who pretends to be someone else in order to deceive",
+    "example": "The imposter convinced the hotel staff that he was a visiting royal.",
+    "collocation": "clever imposter",
+    "cefr": "C2"
+  },
+  {
+    "word": "forger",
+    "pos": "noun",
+    "ipa": "/ˈfɔːdʒə/",
+    "meaningVi": "kẻ làm giả",
+    "definitionEn": "a person who produces false copies of documents or artworks",
+    "example": "The forger produced paintings so convincing that experts were fooled.",
+    "collocation": "master forger",
+    "cefr": "C2"
+  },
+  {
+    "word": "poacher",
+    "pos": "noun",
+    "ipa": "/ˈpəʊtʃə/",
+    "meaningVi": "kẻ săn trộm",
+    "definitionEn": "a person who illegally hunts or takes wildlife from private land",
+    "example": "Gamekeepers chased poachers through the woods late at night.",
+    "collocation": "illegal poacher",
+    "cefr": "C2"
+  },
+  {
+    "word": "looter",
+    "pos": "noun",
+    "ipa": "/ˈluːtə/",
+    "meaningVi": "kẻ cướp bóc",
+    "definitionEn": "a person who steals goods during a riot or disaster",
+    "example": "Looters smashed shop windows while the city was in chaos.",
+    "collocation": "roving looters",
+    "cefr": "C2"
+  },
+  {
+    "word": "vandal",
+    "pos": "noun",
+    "ipa": "/ˈvændl/",
+    "meaningVi": "kẻ phá hoại",
+    "definitionEn": "a person who deliberately damages property",
+    "example": "A vandal scratched offensive words into the newly painted bench.",
+    "collocation": "malicious vandal",
+    "cefr": "C2"
+  },
+  {
+    "word": "hooligan",
+    "pos": "noun",
+    "ipa": "/ˈhuːlɪɡən/",
+    "meaningVi": "côn đồ",
+    "definitionEn": "a violent or disorderly person, especially at sporting events",
+    "example": "Hooligans caused havoc at the stadium before the final whistle.",
+    "collocation": "football hooligan",
+    "cefr": "C2"
+  },
+  {
+    "word": "thug",
+    "pos": "noun",
+    "ipa": "/θʌɡ/",
+    "meaningVi": "côn đồ",
+    "definitionEn": "a violent criminal who uses brute force",
+    "example": "Two thugs cornered the shopkeeper in the alley behind the store.",
+    "collocation": "street thug",
+    "cefr": "C2"
+  },
+  {
+    "word": "brute",
+    "pos": "noun",
+    "ipa": "/bruːt/",
+    "meaningVi": "kẻ thô bạo",
+    "definitionEn": "a cruel and violent person",
+    "example": "The brute beat his opponents until they could no longer stand.",
+    "collocation": "vicious brute",
+    "cefr": "C2"
+  },
+  {
+    "word": "ruffian",
+    "pos": "noun",
+    "ipa": "/ˈrʌfiən/",
+    "meaningVi": "kẻ côn đồ",
+    "definitionEn": "a rough and lawless person who causes trouble",
+    "example": "A gang of ruffians harassed travellers along the riverbank.",
+    "collocation": "young ruffian",
+    "cefr": "C2"
+  },
+  {
+    "word": "assailant",
+    "pos": "noun",
+    "ipa": "/əˈseɪlənt/",
+    "meaningVi": "kẻ tấn công",
+    "definitionEn": "a person who physically attacks another",
+    "example": "Witnesses described the assailant as a tall man in a grey coat.",
+    "collocation": "unknown assailant",
+    "cefr": "C2"
+  },
+  {
+    "word": "culprit",
+    "pos": "noun",
+    "ipa": "/ˈkʌlprɪt/",
+    "meaningVi": "thủ phạm",
+    "definitionEn": "the person responsible for a crime or wrongdoing",
+    "example": "Detectives are still searching for the culprit behind the arson.",
+    "collocation": "main culprit",
+    "cefr": "C2"
+  },
+  {
+    "word": "absconder",
+    "pos": "noun",
+    "ipa": "/əbˈskɒndə/",
+    "meaningVi": "kẻ trốn chạy",
+    "definitionEn": "a person who escapes from custody or flees from the law",
+    "example": "Authorities offered a reward for information leading to the absconder.",
+    "collocation": "fugitive absconder",
+    "cefr": "C2"
+  },
+  {
+    "word": "abscond",
+    "pos": "verb",
+    "ipa": "/əbˈskɒnd/",
+    "meaningVi": "trốn đi",
+    "definitionEn": "to leave secretly and hide, usually to avoid the law",
+    "example": "The accountant absconded with the company's funds and vanished abroad.",
+    "collocation": "abscond with funds",
+    "cefr": "C2"
+  },
+  {
+    "word": "decamp",
+    "pos": "verb",
+    "ipa": "/dɪˈkæmp/",
+    "meaningVi": "bỏ trốn đột ngột",
+    "definitionEn": "to leave a place suddenly and secretly",
+    "example": "The gang decamped overnight, leaving the warehouse full of stolen goods.",
+    "collocation": "decamp suddenly",
+    "cefr": "C2"
+  },
+  {
+    "word": "pilferage",
+    "pos": "noun",
+    "ipa": "/ˈpɪlfərɪdʒ/",
+    "meaningVi": "nạn trộm vặt",
+    "definitionEn": "the act of stealing small quantities of goods over time",
+    "example": "Pilferage from the warehouse cost the firm thousands every month.",
+    "collocation": "petty pilferage",
+    "cefr": "C2"
+  },
+  {
+    "word": "subornation",
+    "pos": "noun",
+    "ipa": "/ˌsʌbɔːˈneɪʃn/",
+    "meaningVi": "sự mua chuộc nhân chứng",
+    "definitionEn": "the crime of bribing someone to commit perjury or give false evidence",
+    "example": "Prosecutors accused the lawyer of subornation of a key witness.",
+    "collocation": "charge of subornation",
+    "cefr": "C2"
+  },
+  {
+    "word": "sedition",
+    "pos": "noun",
+    "ipa": "/sɪˈdɪʃn/",
+    "meaningVi": "tội kích động nổi loạn",
+    "definitionEn": "speech or action intended to incite rebellion against the state",
+    "example": "Authorities charged the journalist with sedition for inciting unrest.",
+    "collocation": "charged with sedition",
+    "cefr": "C2"
+  },
+  {
+    "word": "treason",
+    "pos": "noun",
+    "ipa": "/ˈtriːzn/",
+    "meaningVi": "tội phản quốc",
+    "definitionEn": "the crime of betraying one's country",
+    "example": "He was convicted of treason after passing state secrets to foreign agents.",
+    "collocation": "high treason",
+    "cefr": "C2"
+  },
+  {
+    "word": "arson",
+    "pos": "noun",
+    "ipa": "/ˈɑːsn/",
+    "meaningVi": "tội đốt phá",
+    "definitionEn": "the crime of deliberately setting fire to property",
+    "example": "Investigators confirmed arson as the cause of the warehouse fire.",
+    "collocation": "deliberate arson",
+    "cefr": "C2"
+  },
+  {
+    "word": "homicide",
+    "pos": "noun",
+    "ipa": "/ˈhɒmɪsaɪd/",
+    "meaningVi": "tội giết người",
+    "definitionEn": "the act of killing one person by another",
+    "example": "Detectives opened a homicide investigation after the body was found.",
+    "collocation": "homicide squad",
+    "cefr": "C2"
+  },
+  {
+    "word": "manslaughter",
+    "pos": "noun",
+    "ipa": "/ˈmænslɔːtə/",
+    "meaningVi": "ngộ sát",
+    "definitionEn": "the unlawful killing of a person without intent to murder",
+    "example": "The driver was convicted of manslaughter after the fatal crash.",
+    "collocation": "involuntary manslaughter",
+    "cefr": "C2"
+  },
+  {
+    "word": "blackmail",
+    "pos": "noun",
+    "ipa": "/ˈblækmeɪl/",
+    "meaningVi": "tống tiền bằng uy hiếp",
+    "definitionEn": "the crime of threatening to reveal secrets unless money is paid",
+    "example": "The politician was the victim of blackmail over a private affair.",
+    "collocation": "emotional blackmail",
+    "cefr": "C2"
+  },
+  {
+    "word": "perfidy",
+    "pos": "noun",
+    "ipa": "/ˈpɜːfɪdi/",
+    "meaningVi": "sự phản bội",
+    "definitionEn": "deliberate betrayal of trust",
+    "example": "Her perfidy shocked the partners who had trusted her for decades.",
+    "collocation": "sheer perfidy",
+    "cefr": "C2"
+  },
+  {
+    "word": "malice",
+    "pos": "noun",
+    "ipa": "/ˈmæləs/",
+    "meaningVi": "ác ý",
+    "definitionEn": "the intention to cause harm to someone",
+    "example": "The attack was carried out with obvious malice and careful planning.",
+    "collocation": "malice aforethought",
+    "cefr": "C2"
+  },
+  {
+    "word": "skullduggery",
+    "pos": "noun",
+    "ipa": "/skʌlˈdʌɡəri/",
+    "meaningVi": "trò gian lận, mưu mô bẩn",
+    "definitionEn": "dishonest or sneaky behaviour intended to deceive",
+    "example": "Some suspected skullduggery behind the sudden collapse of the company.",
+    "collocation": "political skullduggery",
+    "cefr": "C2"
+  },
+  {
+    "word": "insidious",
+    "pos": "adjective",
+    "ipa": "/ɪnˈsɪdiəs/",
+    "meaningVi": "ngấm ngầm nguy hiểm",
+    "definitionEn": "proceeding in a gradual and harmful way that is not easily noticed",
+    "example": "The insidious scam drained retirees' accounts one small payment at a time.",
+    "collocation": "insidious crime",
+    "cefr": "C2"
+  },
+  {
+    "word": "heinous",
+    "pos": "adjective",
+    "ipa": "/ˈheɪnəs/",
+    "meaningVi": "tày trời, ghê tởm",
+    "definitionEn": "extremely wicked or shocking",
+    "example": "The judge described the crime as heinous and unforgivable.",
+    "collocation": "heinous crime",
+    "cefr": "C2"
+  },
+  {
+    "word": "clandestine",
+    "pos": "adjective",
+    "ipa": "/klænˈdestɪn/",
+    "meaningVi": "bí mật",
+    "definitionEn": "kept secret, usually because it is illegal",
+    "example": "The gang held clandestine meetings in the basement of a bakery.",
+    "collocation": "clandestine operation",
+    "cefr": "C2"
+  },
+  {
+    "word": "ransack",
+    "pos": "verb",
+    "ipa": "/ˈrænsæk/",
+    "meaningVi": "lục soát tàn phá",
+    "definitionEn": "to search a place roughly and leave it in disorder",
+    "example": "Burglars ransacked the flat, scattering papers across every room.",
+    "collocation": "ransack the house",
+    "cefr": "C2"
+  },
+  {
+    "word": "pernicious",
+    "pos": "adjective",
+    "ipa": "/pəˈnɪʃəs/",
+    "meaningVi": "độc hại, ngấm ngầm",
+    "definitionEn": "having a harmful effect that develops gradually",
+    "example": "The pernicious influence of gangs spread through the neighbourhood's schools.",
+    "collocation": "pernicious influence",
+    "cefr": "C2"
+  },
+  {
+    "word": "fence",
+    "pos": "noun",
+    "ipa": "/fens/",
+    "meaningVi": "kẻ mua bán đồ ăn cắp",
+    "definitionEn": "a person who buys and sells stolen goods",
+    "example": "The stolen paintings were sold to a fence operating in the docks.",
+    "collocation": "professional fence",
+    "cefr": "C2"
+  }
+]

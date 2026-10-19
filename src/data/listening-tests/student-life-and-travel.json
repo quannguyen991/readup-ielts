@@ -1,0 +1,823 @@
+{
+ "id": "student-life-and-travel",
+ "title": "Student Life and Travel",
+ "source": "Band 9 Original",
+ "level": "medium",
+ "cover": {
+  "topic": "campus"
+ },
+ "sections": [
+  {
+   "n": 1,
+   "title": "Student flat enquiry",
+   "context": "A phone call between a new postgraduate student and a housing officer at a university accommodation office.",
+   "audio": "/listening/student-life-and-travel/s1.mp3",
+   "transcript": [
+    {
+     "speaker": "Officer",
+     "text": "Good morning, Riverside Student Housing. How can I help you?",
+     "start": 0.0,
+     "end": 2.76
+    },
+    {
+     "speaker": "Linh",
+     "text": "Hello. I'm starting a master's course in September, and I'm looking for a flat close to the campus, because I'll be studying in the library late most evenings. My name is Linh Tran. That's T-R-A-N.",
+     "start": 2.76,
+     "end": 12.43
+    },
+    {
+     "speaker": "Officer",
+     "text": "Thanks, Linh. Let me note that down. What's the most you can pay each month?",
+     "start": 12.43,
+     "end": 16.57
+    },
+    {
+     "speaker": "Linh",
+     "text": "I'd like to keep it at six hundred and fifty pounds a month at most. It would also be good if the bills were included.",
+     "start": 16.57,
+     "end": 23.48
+    },
+    {
+     "speaker": "Officer",
+     "text": "We have a few options in that range. Most of our flats include heating and internet in the rent, so there are no surprise bills at the end of the month.",
+     "start": 23.48,
+     "end": 32.04
+    },
+    {
+     "speaker": "Linh",
+     "text": "That sounds good. When can I move in?",
+     "start": 32.04,
+     "end": 34.25
+    },
+    {
+     "speaker": "Officer",
+     "text": "All our flats are free from the first of September. If you arrive earlier, we can arrange that, but you'd pay for the extra days.",
+     "start": 34.25,
+     "end": 41.15
+    },
+    {
+     "speaker": "Linh",
+     "text": "The first of September is fine. I don't have any furniture yet, so I'd like a flat that comes furnished.",
+     "start": 41.15,
+     "end": 46.68
+    },
+    {
+     "speaker": "Officer",
+     "text": "All three of the flats I have in mind are furnished, with a desk, a bed and a wardrobe. Let me tell you about them. Oak House is two minutes from the bus stop, which is useful if you don't have a car.",
+     "start": 46.68,
+     "end": 58.56
+    },
+    {
+     "speaker": "Officer",
+     "text": "Mill Court is next to a supermarket, so you can buy groceries on the way home. And Garden Lodge is right beside the riverside park, which is lovely in the evenings.",
+     "start": 58.56,
+     "end": 67.12
+    },
+    {
+     "speaker": "Linh",
+     "text": "Oak House sounds convenient. Could I see it?",
+     "start": 67.12,
+     "end": 69.33
+    },
+    {
+     "speaker": "Officer",
+     "text": "Of course. I've booked you a viewing on Thursday morning at ten. We'll meet at the main reception, so please bring a copy of your acceptance letter from the university.",
+     "start": 69.33,
+     "end": 77.61
+    },
+    {
+     "speaker": "Linh",
+     "text": "Perfect. I'll be there. Thank you for your help.",
+     "start": 77.61,
+     "end": 80.1
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 1-5",
+     "instruction": "Complete the form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Flat enquiry form",
+      "Surname: {{1}}",
+      "Maximum monthly rent: £{{2}}",
+      "Available from: {{3}}",
+      "Bills included: {{4}} and internet",
+      "Viewing: {{5}} morning at 10 a.m."
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "answer": "Tran"
+      },
+      {
+       "n": 2,
+       "answer": "650",
+       "accept": [
+        "six hundred and fifty"
+       ]
+      },
+      {
+       "n": 3,
+       "answer": "1 September",
+       "accept": [
+        "1st September",
+        "first of September",
+        "September 1st"
+       ]
+      },
+      {
+       "n": 4,
+       "answer": "heating"
+      },
+      {
+       "n": 5,
+       "answer": "Thursday"
+      }
+     ]
+    },
+    {
+     "type": "mcq-one",
+     "title": "Questions 6-7",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 6,
+       "prompt": "Why does Linh want a flat near the campus?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "She does not like using public transport."
+        },
+        {
+         "key": "B",
+         "text": "She plans to study late in the library."
+        },
+        {
+         "key": "C",
+         "text": "She wants to share a flat with friends."
+        }
+       ]
+      },
+      {
+       "n": 7,
+       "prompt": "What does Linh say about furniture?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "She has already bought some furniture."
+        },
+        {
+         "key": "B",
+         "text": "She needs a flat that comes furnished."
+        },
+        {
+         "key": "C",
+         "text": "She would like a flat with a garden."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 8-10",
+     "instruction": "Which feature is each flat near? Choose the correct letter, A-E, for Questions 8-10.",
+     "options": [
+      {
+       "key": "A",
+       "text": "a gym"
+      },
+      {
+       "key": "B",
+       "text": "a supermarket"
+      },
+      {
+       "key": "C",
+       "text": "a bus stop"
+      },
+      {
+       "key": "D",
+       "text": "a laundrette"
+      },
+      {
+       "key": "E",
+       "text": "a riverside park"
+      }
+     ],
+     "questions": [
+      {
+       "n": 8,
+       "prompt": "Oak House",
+       "answer": "C"
+      },
+      {
+       "n": 9,
+       "prompt": "Mill Court",
+       "answer": "B"
+      },
+      {
+       "n": 10,
+       "prompt": "Garden Lodge",
+       "answer": "E"
+      }
+     ]
+    }
+   ],
+   "durationSec": 80.1
+  },
+  {
+   "n": 2,
+   "title": "Walking tour of the Old Town",
+   "context": "A tour guide briefs a group of visitors before a morning walking tour of a historic town in Central Vietnam.",
+   "audio": "/listening/student-life-and-travel/s2.mp3",
+   "transcript": [
+    {
+     "speaker": "Guide",
+     "text": "Good morning, everyone, and welcome to the Hoi An Ancient Town walking tour. My name is Duc, and I'll be your guide for the next two hours. Please gather around me. We'll meet outside the old post office on Tran Phu Street.",
+     "start": 0.0,
+     "end": 13.7
+    },
+    {
+     "speaker": "Guide",
+     "text": "We're starting early this morning to avoid the afternoon heat, so let's keep moving.",
+     "start": 13.7,
+     "end": 18.26
+    },
+    {
+     "speaker": "Guide",
+     "text": "A few practical points before we begin. The tour price includes bottled water and entrance tickets to several of the old houses. Please bring a sun hat, because there is very little shade in the open squares, and wear comfortable shoes, since we'll be walking on uneven streets.",
+     "start": 18.26,
+     "end": 33.92
+    },
+    {
+     "speaker": "Guide",
+     "text": "Our first stop is the Japanese Covered Bridge. It was built several centuries ago, and it's one of the town's most recognisable landmarks. Please don't rush across it. The best photos are taken from the riverbank anyway.",
+     "start": 33.92,
+     "end": 45.99
+    },
+    {
+     "speaker": "Guide",
+     "text": "After that, we'll visit a lantern workshop. Many families here still make handmade lanterns, using bamboo and silk. You'll have about twenty minutes to try making one yourself.",
+     "start": 45.99,
+     "end": 55.12
+    },
+    {
+     "speaker": "Guide",
+     "text": "Finally, we'll walk along the old tailors' street. Many of the tailors can make a shirt in one day if you order in the morning, so if you're interested, you can ask them at the end.",
+     "start": 55.12,
+     "end": 66.86
+    },
+    {
+     "speaker": "Guide",
+     "text": "One more thing. The night market opens after sunset, so I suggest you come back after the tour ends. The lanterns there look lovely in the evening. Thank you, and let's begin!",
+     "start": 66.86,
+     "end": 77.3
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 11-14",
+     "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Hoi An Ancient Town walking tour",
+      "Meeting point: outside the old {{11}} on Tran Phu Street",
+      "Tour length: {{12}} hours",
+      "Included in the price: {{13}}",
+      "Bring: a {{14}}"
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "answer": "post office"
+      },
+      {
+       "n": 12,
+       "answer": "two",
+       "accept": [
+        "2"
+       ]
+      },
+      {
+       "n": 13,
+       "answer": "bottled water"
+      },
+      {
+       "n": 14,
+       "answer": "sun hat",
+       "accept": [
+        "hat"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "mcq-one",
+     "title": "Questions 15-17",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 15,
+       "prompt": "Why does the tour start early in the morning?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "to avoid the afternoon heat"
+        },
+        {
+         "key": "B",
+         "text": "to watch the lantern festival"
+        },
+        {
+         "key": "C",
+         "text": "because most shops open late"
+        }
+       ]
+      },
+      {
+       "n": 16,
+       "prompt": "What does the guide say about the tailors?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "They only make suits for men."
+        },
+        {
+         "key": "B",
+         "text": "Many can make a shirt in one day."
+        },
+        {
+         "key": "C",
+         "text": "They are more expensive than in Ho Chi Minh City."
+        }
+       ]
+      },
+      {
+       "n": 17,
+       "prompt": "When should visitors go to the night market?",
+       "answer": "C",
+       "options": [
+        {
+         "key": "A",
+         "text": "in the morning"
+        },
+        {
+         "key": "B",
+         "text": "before the tour starts"
+        },
+        {
+         "key": "C",
+         "text": "after the tour ends"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 18-20",
+     "instruction": "Match each place with what it is known for. Choose the correct letter, A-E, for Questions 18-20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "tailoring and fabric shops"
+      },
+      {
+       "key": "B",
+       "text": "a covered wooden bridge"
+      },
+      {
+       "key": "C",
+       "text": "handmade lanterns"
+      },
+      {
+       "key": "D",
+       "text": "a night market"
+      },
+      {
+       "key": "E",
+       "text": "a riverside temple"
+      }
+     ],
+     "questions": [
+      {
+       "n": 18,
+       "prompt": "The Japanese Covered Bridge",
+       "answer": "B"
+      },
+      {
+       "n": 19,
+       "prompt": "The lantern workshop",
+       "answer": "C"
+      },
+      {
+       "n": 20,
+       "prompt": "The old tailors' street",
+       "answer": "A"
+      }
+     ]
+    }
+   ],
+   "durationSec": 77.3
+  },
+  {
+   "n": 3,
+   "title": "Planning a cycling project",
+   "context": "A tutor meets a student to review the plan for a group research presentation on urban cycling. The student is presenting the plan for himself and his partner.",
+   "audio": "/listening/student-life-and-travel/s3.mp3",
+   "transcript": [
+    {
+     "speaker": "Tutor",
+     "text": "Come in, Ben. Let's look at your cycling project. Where have you got to?",
+     "start": 0.0,
+     "end": 3.91
+    },
+    {
+     "speaker": "Ben",
+     "text": "Mia and I have decided to compare bike lanes in Amsterdam and Hanoi. We've already got figures on how many people cycle to work in each city.",
+     "start": 3.91,
+     "end": 11.46
+    },
+    {
+     "speaker": "Ben",
+     "text": "The trouble is that the accident figures we found only cover 2019, so they might be out of date.",
+     "start": 11.46,
+     "end": 16.77
+    },
+    {
+     "speaker": "Tutor",
+     "text": "That's a real weakness. Check whether the city councils have published newer figures. Now, what are your options for the presentation itself?",
+     "start": 16.77,
+     "end": 22.92
+    },
+    {
+     "speaker": "Ben",
+     "text": "We could show a short video of the bike lanes, run a live survey of the audience, include a map of cycle routes, add a cost comparison, or arrange interviews with city planners.",
+     "start": 22.92,
+     "end": 32.14
+    },
+    {
+     "speaker": "Tutor",
+     "text": "With only ten minutes, you can't do everything. What have you decided?",
+     "start": 32.14,
+     "end": 35.5
+    },
+    {
+     "speaker": "Ben",
+     "text": "The video would take up too much time, and interviews are hard to arrange in just a few weeks. So we think a route map and a cost comparison are the best choices.",
+     "start": 35.5,
+     "end": 44.72
+    },
+    {
+     "speaker": "Tutor",
+     "text": "Agreed. What about the survey idea?",
+     "start": 44.72,
+     "end": 46.4
+    },
+    {
+     "speaker": "Ben",
+     "text": "We thought about asking the audience to vote on which city is safer, but it's probably not worth it.",
+     "start": 46.4,
+     "end": 51.71
+    },
+    {
+     "speaker": "Tutor",
+     "text": "I'd avoid it. A survey of thirty people won't be representative, so it's risky to draw conclusions from it.",
+     "start": 51.71,
+     "end": 57.02
+    },
+    {
+     "speaker": "Ben",
+     "text": "Understood. We'll drop it.",
+     "start": 57.02,
+     "end": 58.14
+    },
+    {
+     "speaker": "Tutor",
+     "text": "Good. What are you doing next week?",
+     "start": 58.14,
+     "end": 60.09
+    },
+    {
+     "speaker": "Ben",
+     "text": "I'll contact the city council to ask for the latest figures. If I can get them by Wednesday, I can update the charts.",
+     "start": 60.09,
+     "end": 66.52
+    },
+    {
+     "speaker": "Tutor",
+     "text": "Excellent. Can you and Mia write the draft introduction? The draft is due on Friday, and I'll read it over the weekend.",
+     "start": 66.52,
+     "end": 72.67
+    },
+    {
+     "speaker": "Ben",
+     "text": "Of course. We'll send it to you on Friday morning.",
+     "start": 72.67,
+     "end": 75.47
+    },
+    {
+     "speaker": "Tutor",
+     "text": "Let's meet again in room fourteen next Monday to go through the draft.",
+     "start": 75.47,
+     "end": 79.1
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-many",
+     "title": "Questions 21-22",
+     "instruction": "Choose TWO letters, A-E. Which TWO things will the group include in the presentation?",
+     "options": [
+      {
+       "key": "A",
+       "text": "a short video of the bike lanes"
+      },
+      {
+       "key": "B",
+       "text": "a live survey of the audience"
+      },
+      {
+       "key": "C",
+       "text": "a map of cycle routes"
+      },
+      {
+       "key": "D",
+       "text": "a cost comparison"
+      },
+      {
+       "key": "E",
+       "text": "interviews with city planners"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "C",
+        "D"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "mcq-one",
+     "title": "Questions 23-25",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 23,
+       "prompt": "What is the problem with the accident figures?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are out of date."
+        },
+        {
+         "key": "B",
+         "text": "They only cover one city."
+        },
+        {
+         "key": "C",
+         "text": "They are too complicated to read."
+        }
+       ]
+      },
+      {
+       "n": 24,
+       "prompt": "Why does the tutor reject the survey idea?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "It would take too long to analyse."
+        },
+        {
+         "key": "B",
+         "text": "The sample would be too small."
+        },
+        {
+         "key": "C",
+         "text": "Students dislike doing surveys."
+        }
+       ]
+      },
+      {
+       "n": 25,
+       "prompt": "What will Ben do next week?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "contact the city council"
+        },
+        {
+         "key": "B",
+         "text": "rewrite the introduction"
+        },
+        {
+         "key": "C",
+         "text": "book the seminar room"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "gap",
+     "title": "Questions 26-30",
+     "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": "ONE WORD AND/OR A NUMBER",
+     "lines": [
+      "## Cycling project notes",
+      "Cities being compared: Amsterdam and {{26}}",
+      "Main data: {{27}} figures",
+      "Presentation length: {{28}} minutes",
+      "Draft introduction due: {{29}}",
+      "Next meeting: room {{30}}"
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "answer": "Hanoi"
+      },
+      {
+       "n": 27,
+       "answer": "accident"
+      },
+      {
+       "n": 28,
+       "answer": "ten",
+       "accept": [
+        "10"
+       ]
+      },
+      {
+       "n": 29,
+       "answer": "Friday"
+      },
+      {
+       "n": 30,
+       "answer": "fourteen",
+       "accept": [
+        "14"
+       ]
+      }
+     ]
+    }
+   ],
+   "durationSec": 79.1
+  },
+  {
+   "n": 4,
+   "title": "Coral reef restoration",
+   "context": "A university lecture on marine biology about how damaged coral reefs are restored.",
+   "audio": "/listening/student-life-and-travel/s4.mp3",
+   "transcript": [
+    {
+     "speaker": "Lecturer",
+     "text": "Good morning, everyone. Today we're looking at coral reef restoration. To begin, it's worth knowing how little of the ocean floor is covered by reefs. Coral reefs cover only about one percent of the ocean floor, yet they support around a quarter of all marine species.",
+     "start": 0.0,
+     "end": 16.28
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "That's why losing them is such a serious problem.",
+     "start": 16.28,
+     "end": 19.47
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "The biggest threat today is rising sea temperatures. When the water gets too warm, corals lose the algae that give them their colour and their food, and many of them begin to die. Other pressures, such as pollution and overfishing, make recovery even harder.",
+     "start": 19.47,
+     "end": 35.04
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Restoration projects usually follow two main methods. The first is coral nurseries. Scientists grow small coral fragments in nurseries, often on land or in shallow water, and then transplant them to damaged reefs. The second method is to attach fragments to artificial structures, often made of concrete, which are placed on the seabed.",
+     "start": 35.04,
+     "end": 53.8
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Early results are encouraging but not perfect. Roughly sixty percent of transplanted fragments survive their first year, which is better than many people expected. However, the survival rate depends heavily on the site and on the water conditions.",
+     "start": 53.8,
+     "end": 67.25
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "One practical rule is that divers should never touch the corals while they work. Even a light touch can damage the tissue, so the teams use special markers to show where each fragment has been placed.",
+     "start": 67.25,
+     "end": 79.99
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "There is also good news about wildlife. In restored areas, fish populations often recover within two years, which tells us the wider ecosystem is responding.",
+     "start": 79.99,
+     "end": 88.84
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Of course, all of this is expensive. A typical large project can cost about two hundred thousand dollars, and most of that money comes from government grants rather than private companies.",
+     "start": 88.84,
+     "end": 99.81
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "For next semester, the research team plans to use drone surveys to track changes across much larger areas. The results will be published in the spring, so I'd recommend keeping an eye on the journal.",
+     "start": 99.81,
+     "end": 112.2
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 31-40",
+     "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Coral reef restoration",
+      "Reefs cover only about {{31}} of the ocean floor",
+      "Main threat: rising {{32}} temperatures",
+      "Method one: growing coral in {{33}}",
+      "Method two: attaching fragments to {{34}} structures",
+      "Survival rate: about {{35}} percent in the first year",
+      "Divers should avoid {{36}} the coral",
+      "Fish numbers recover within {{37}}",
+      "Project cost: about {{38}} dollars",
+      "Main funding source: {{39}}",
+      "Next step: drone {{40}}"
+     ],
+     "questions": [
+      {
+       "n": 31,
+       "answer": "one percent",
+       "accept": [
+        "1 percent",
+        "1%"
+       ]
+      },
+      {
+       "n": 32,
+       "answer": "sea"
+      },
+      {
+       "n": 33,
+       "answer": "nurseries"
+      },
+      {
+       "n": 34,
+       "answer": "concrete"
+      },
+      {
+       "n": 35,
+       "answer": "sixty",
+       "accept": [
+        "60"
+       ]
+      },
+      {
+       "n": 36,
+       "answer": "touching",
+       "accept": [
+        "touch"
+       ]
+      },
+      {
+       "n": 37,
+       "answer": "two years",
+       "accept": [
+        "2 years"
+       ]
+      },
+      {
+       "n": 38,
+       "answer": "two hundred thousand",
+       "accept": [
+        "200,000",
+        "200000"
+       ]
+      },
+      {
+       "n": 39,
+       "answer": "government grants"
+      },
+      {
+       "n": 40,
+       "answer": "surveys"
+      }
+     ]
+    }
+   ],
+   "durationSec": 112.2
+  }
+ ]
+}

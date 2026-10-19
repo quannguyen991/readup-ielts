@@ -1,0 +1,973 @@
+[
+  {
+    "word": "cross-sectional",
+    "synonyms": [],
+    "antonyms": [
+      "longitudinal"
+    ]
+  },
+  {
+    "word": "double-blind",
+    "synonyms": [
+      "double-masked"
+    ],
+    "antonyms": [
+      "open-label"
+    ]
+  },
+  {
+    "word": "longitudinal",
+    "synonyms": [
+      "long-term"
+    ],
+    "antonyms": [
+      "cross-sectional"
+    ]
+  },
+  {
+    "word": "null hypothesis",
+    "synonyms": [
+      "H0",
+      "default hypothesis"
+    ],
+    "antonyms": [
+      "alternative hypothesis"
+    ]
+  },
+  {
+    "word": "p-value",
+    "synonyms": [
+      "probability value"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "experiment",
+    "synonyms": [
+      "trial",
+      "test"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scientist",
+    "synonyms": [
+      "researcher",
+      "investigator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "microscope",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "gravity",
+    "synonyms": [
+      "gravitation",
+      "gravitational force"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "atom",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "molecule",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "chemical",
+    "synonyms": [
+      "substance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "planet",
+    "synonyms": [
+      "world"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "temperature",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "electricity",
+    "synonyms": [
+      "electric power"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "magnet",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "cell",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "bacteria",
+    "synonyms": [
+      "microbes"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "invention",
+    "synonyms": [
+      "innovation",
+      "creation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "theory",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "formula",
+    "synonyms": [
+      "equation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "result",
+    "synonyms": [
+      "outcome",
+      "finding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "observe",
+    "synonyms": [
+      "watch",
+      "notice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "measure",
+    "synonyms": [
+      "gauge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mixture",
+    "synonyms": [
+      "blend"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conduct",
+    "synonyms": [
+      "carry out",
+      "perform"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "analyse",
+    "synonyms": [
+      "examine",
+      "evaluate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "discover",
+    "synonyms": [
+      "find out",
+      "uncover"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "invent",
+    "synonyms": [
+      "devise",
+      "create"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "element",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "compound",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "reaction",
+    "synonyms": [
+      "response"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "evolution",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "species",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "ecosystem",
+    "synonyms": [
+      "ecological community"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "extinction",
+    "synonyms": [
+      "dying out"
+    ],
+    "antonyms": [
+      "survival"
+    ]
+  },
+  {
+    "word": "hypothesize",
+    "synonyms": [
+      "theorize",
+      "postulate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accurate",
+    "synonyms": [
+      "correct",
+      "exact"
+    ],
+    "antonyms": [
+      "inaccurate"
+    ]
+  },
+  {
+    "word": "precise",
+    "synonyms": [
+      "exact",
+      "accurate"
+    ],
+    "antonyms": [
+      "imprecise"
+    ]
+  },
+  {
+    "word": "predict",
+    "synonyms": [
+      "forecast",
+      "foresee"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prediction",
+    "synonyms": [
+      "forecast",
+      "projection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phenomenon",
+    "synonyms": [
+      "occurrence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "particle",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "radiation",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "equipment",
+    "synonyms": [
+      "apparatus",
+      "gear"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "procedure",
+    "synonyms": [
+      "method",
+      "process"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fossil",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "genome",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "infection",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "vaccine",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "mechanism",
+    "synonyms": [
+      "process"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inference",
+    "synonyms": [
+      "deduction",
+      "conclusion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "correlate",
+    "synonyms": [
+      "associate",
+      "relate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quantify",
+    "synonyms": [
+      "measure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "empirically",
+    "synonyms": [
+      "experimentally"
+    ],
+    "antonyms": [
+      "theoretically"
+    ]
+  },
+  {
+    "word": "replicate",
+    "synonyms": [
+      "reproduce",
+      "duplicate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "refute",
+    "synonyms": [
+      "disprove",
+      "rebut"
+    ],
+    "antonyms": [
+      "corroborate"
+    ]
+  },
+  {
+    "word": "postulate",
+    "synonyms": [
+      "assume",
+      "presume"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meticulous",
+    "synonyms": [
+      "careful",
+      "thorough"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "anomalous",
+    "synonyms": [
+      "abnormal",
+      "irregular"
+    ],
+    "antonyms": [
+      "normal"
+    ]
+  },
+  {
+    "word": "inconclusive",
+    "synonyms": [
+      "indecisive",
+      "unresolved"
+    ],
+    "antonyms": [
+      "conclusive"
+    ]
+  },
+  {
+    "word": "spectrum",
+    "synonyms": [
+      "range"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catalyst",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "oxidation",
+    "synonyms": [],
+    "antonyms": [
+      "reduction"
+    ]
+  },
+  {
+    "word": "entropy",
+    "synonyms": [
+      "disorder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quantum",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "neutron",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "isotope",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "telescope",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "viable",
+    "synonyms": [
+      "feasible",
+      "workable"
+    ],
+    "antonyms": [
+      "unviable"
+    ]
+  },
+  {
+    "word": "methodical",
+    "synonyms": [
+      "systematic",
+      "orderly"
+    ],
+    "antonyms": [
+      "haphazard"
+    ]
+  },
+  {
+    "word": "ambiguous",
+    "synonyms": [
+      "unclear",
+      "equivocal"
+    ],
+    "antonyms": [
+      "unambiguous",
+      "clear"
+    ]
+  },
+  {
+    "word": "substantiate",
+    "synonyms": [
+      "verify",
+      "validate"
+    ],
+    "antonyms": [
+      "refute"
+    ]
+  },
+  {
+    "word": "extrapolate",
+    "synonyms": [
+      "project"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "interdisciplinary",
+    "synonyms": [
+      "multidisciplinary",
+      "cross-disciplinary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diagnostic",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "proliferate",
+    "synonyms": [
+      "multiply"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mutation",
+    "synonyms": [
+      "alteration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "genetic",
+    "synonyms": [
+      "hereditary",
+      "inherited"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "synthesis",
+    "synonyms": [
+      "production"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emission",
+    "synonyms": [
+      "discharge",
+      "release"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ecological",
+    "synonyms": [
+      "environmental"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biodiversity",
+    "synonyms": [
+      "biological diversity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "threshold",
+    "synonyms": [
+      "limit",
+      "cutoff"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contaminant",
+    "synonyms": [
+      "pollutant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photosynthesis",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "heuristic",
+    "synonyms": [
+      "rule of thumb"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "axiom",
+    "synonyms": [
+      "postulate",
+      "principle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epistemology",
+    "synonyms": [
+      "theory of knowledge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ontology",
+    "synonyms": [
+      "theory of being"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reductionism",
+    "synonyms": [
+      "reductivism"
+    ],
+    "antonyms": [
+      "holism"
+    ]
+  },
+  {
+    "word": "teleological",
+    "synonyms": [
+      "purposive"
+    ],
+    "antonyms": [
+      "mechanistic"
+    ]
+  },
+  {
+    "word": "stochastic",
+    "synonyms": [
+      "random",
+      "probabilistic"
+    ],
+    "antonyms": [
+      "deterministic"
+    ]
+  },
+  {
+    "word": "deterministic",
+    "synonyms": [
+      "predictable"
+    ],
+    "antonyms": [
+      "stochastic",
+      "probabilistic"
+    ]
+  },
+  {
+    "word": "isomorphic",
+    "synonyms": [
+      "structurally identical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "asymptote",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "tenuous",
+    "synonyms": [
+      "weak",
+      "flimsy"
+    ],
+    "antonyms": [
+      "strong",
+      "solid"
+    ]
+  },
+  {
+    "word": "corroborate",
+    "synonyms": [
+      "confirm",
+      "support"
+    ],
+    "antonyms": [
+      "refute",
+      "contradict"
+    ]
+  },
+  {
+    "word": "falsifiable",
+    "synonyms": [
+      "refutable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nebulous",
+    "synonyms": [
+      "vague",
+      "hazy"
+    ],
+    "antonyms": [
+      "clear",
+      "precise"
+    ]
+  },
+  {
+    "word": "serendipity",
+    "synonyms": [
+      "happy accident"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obfuscate",
+    "synonyms": [
+      "confuse",
+      "obscure"
+    ],
+    "antonyms": [
+      "clarify"
+    ]
+  },
+  {
+    "word": "ubiquitous",
+    "synonyms": [
+      "omnipresent",
+      "pervasive"
+    ],
+    "antonyms": [
+      "rare",
+      "scarce"
+    ]
+  },
+  {
+    "word": "orthogonal",
+    "synonyms": [
+      "perpendicular",
+      "independent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tautology",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "recalcitrant",
+    "synonyms": [
+      "stubborn",
+      "resistant"
+    ],
+    "antonyms": [
+      "degradable"
+    ]
+  },
+  {
+    "word": "coalesce",
+    "synonyms": [
+      "merge",
+      "unite"
+    ],
+    "antonyms": [
+      "separate",
+      "disperse"
+    ]
+  },
+  {
+    "word": "elucidate",
+    "synonyms": [
+      "clarify",
+      "explain"
+    ],
+    "antonyms": [
+      "obscure"
+    ]
+  },
+  {
+    "word": "corollary",
+    "synonyms": [
+      "consequence",
+      "implication"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parsimony",
+    "synonyms": [
+      "simplicity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "idiosyncratic",
+    "synonyms": [
+      "peculiar",
+      "distinctive"
+    ],
+    "antonyms": [
+      "typical",
+      "standard"
+    ]
+  },
+  {
+    "word": "dichotomy",
+    "synonyms": [
+      "division"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nascent",
+    "synonyms": [
+      "emerging",
+      "budding"
+    ],
+    "antonyms": [
+      "mature",
+      "established"
+    ]
+  },
+  {
+    "word": "perspicacious",
+    "synonyms": [
+      "astute",
+      "perceptive"
+    ],
+    "antonyms": [
+      "obtuse"
+    ]
+  },
+  {
+    "word": "superfluous",
+    "synonyms": [
+      "redundant",
+      "unnecessary"
+    ],
+    "antonyms": [
+      "essential"
+    ]
+  },
+  {
+    "word": "concomitant",
+    "synonyms": [
+      "accompanying",
+      "concurrent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vestigial",
+    "synonyms": [
+      "rudimentary"
+    ],
+    "antonyms": [
+      "functional"
+    ]
+  },
+  {
+    "word": "aberrant",
+    "synonyms": [
+      "abnormal",
+      "deviant"
+    ],
+    "antonyms": [
+      "normal"
+    ]
+  },
+  {
+    "word": "heterogeneous",
+    "synonyms": [
+      "varied",
+      "diverse"
+    ],
+    "antonyms": [
+      "homogeneous"
+    ]
+  },
+  {
+    "word": "homogeneous",
+    "synonyms": [
+      "uniform"
+    ],
+    "antonyms": [
+      "heterogeneous"
+    ]
+  },
+  {
+    "word": "quintessential",
+    "synonyms": [
+      "archetypal",
+      "typical"
+    ],
+    "antonyms": [
+      "atypical"
+    ]
+  },
+  {
+    "word": "ostensibly",
+    "synonyms": [
+      "apparently",
+      "seemingly"
+    ],
+    "antonyms": [
+      "actually",
+      "really"
+    ]
+  },
+  {
+    "word": "disparate",
+    "synonyms": [
+      "dissimilar",
+      "diverse"
+    ],
+    "antonyms": [
+      "similar",
+      "alike"
+    ]
+  },
+  {
+    "word": "indeterminate",
+    "synonyms": [
+      "uncertain",
+      "undetermined"
+    ],
+    "antonyms": [
+      "determinate",
+      "definite"
+    ]
+  },
+  {
+    "word": "emergent",
+    "synonyms": [
+      "emerging",
+      "arising"
+    ],
+    "antonyms": []
+  }
+]

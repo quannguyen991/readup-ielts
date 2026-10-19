@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "kind",
+    "pos": "adjective",
+    "ipa": "/kaɪnd/",
+    "meaningVi": "tốt bụng, tử tế",
+    "definitionEn": "caring about others and willing to help them",
+    "example": "Our neighbour is very kind and always brings us fresh vegetables.",
+    "collocation": "kind to animals",
+    "cefr": "B1"
+  },
+  {
+    "word": "shy",
+    "pos": "adjective",
+    "ipa": "/ʃaɪ/",
+    "meaningVi": "nhút nhát, ngại giao tiếp",
+    "definitionEn": "feeling nervous or uncomfortable when meeting or talking to other people",
+    "example": "My little brother is shy and hides behind me when strangers arrive.",
+    "collocation": "a shy smile",
+    "cefr": "B1"
+  },
+  {
+    "word": "honest",
+    "pos": "adjective",
+    "ipa": "/ˈɒnɪst/",
+    "meaningVi": "trung thực, thật thà",
+    "definitionEn": "telling the truth and not trying to deceive people",
+    "example": "Please be honest with me about what you really think of my essay.",
+    "collocation": "an honest answer",
+    "cefr": "B1"
+  },
+  {
+    "word": "generous",
+    "pos": "adjective",
+    "ipa": "/ˈdʒenərəs/",
+    "meaningVi": "hào phóng, rộng rãi",
+    "definitionEn": "willing to give money, time, or help to other people",
+    "example": "My grandmother is very generous and always shares her food with neighbours.",
+    "collocation": "a generous donation",
+    "cefr": "B1"
+  },
+  {
+    "word": "selfish",
+    "pos": "adjective",
+    "ipa": "/ˈselfɪʃ/",
+    "meaningVi": "ích kỷ",
+    "definitionEn": "caring only about your own needs and not about others",
+    "example": "It was selfish of him to eat the whole cake without asking anyone.",
+    "collocation": "a selfish attitude",
+    "cefr": "B1"
+  },
+  {
+    "word": "polite",
+    "pos": "adjective",
+    "ipa": "/pəˈlaɪt/",
+    "meaningVi": "lịch sự",
+    "definitionEn": "behaving with good manners and showing respect towards other people",
+    "example": "The students were polite to the visitors and thanked them for coming.",
+    "collocation": "polite manners",
+    "cefr": "B1"
+  },
+  {
+    "word": "cheerful",
+    "pos": "adjective",
+    "ipa": "/ˈtʃɪəfʊl/",
+    "meaningVi": "vui vẻ, yêu đời",
+    "definitionEn": "happy and positive, making other people feel good",
+    "example": "The cheerful waiter greeted every customer with a warm smile.",
+    "collocation": "a cheerful attitude",
+    "cefr": "B1"
+  },
+  {
+    "word": "brave",
+    "pos": "adjective",
+    "ipa": "/breɪv/",
+    "meaningVi": "dũng cảm",
+    "definitionEn": "ready to face danger, pain, or fear without showing fear",
+    "example": "The brave firefighter rushed into the burning building to rescue a child.",
+    "collocation": "a brave decision",
+    "cefr": "B1"
+  },
+  {
+    "word": "patient",
+    "pos": "adjective",
+    "ipa": "/ˈpeɪʃnt/",
+    "meaningVi": "kiên nhẫn",
+    "definitionEn": "able to wait calmly without becoming angry or annoyed",
+    "example": "Teachers need to be patient with students who learn more slowly.",
+    "collocation": "be patient with",
+    "cefr": "B1"
+  },
+  {
+    "word": "confident",
+    "pos": "adjective",
+    "ipa": "/ˈkɒnfɪdənt/",
+    "meaningVi": "tự tin",
+    "definitionEn": "sure of your own abilities and not worried about what others think",
+    "example": "She felt confident enough to give a speech in front of the whole school.",
+    "collocation": "feel confident about",
+    "cefr": "B1"
+  },
+  {
+    "word": "nervous",
+    "pos": "adjective",
+    "ipa": "/ˈnɜːvəs/",
+    "meaningVi": "lo lắng, hồi hộp",
+    "definitionEn": "worried or anxious about something that may happen",
+    "example": "I felt nervous before my job interview, but it went very well.",
+    "collocation": "feel nervous about",
+    "cefr": "B1"
+  },
+  {
+    "word": "rude",
+    "pos": "adjective",
+    "ipa": "/ruːd/",
+    "meaningVi": "thô lỗ, bất lịch sự",
+    "definitionEn": "not polite or respectful when speaking to or treating other people",
+    "example": "It is rude to interrupt someone while they are speaking.",
+    "collocation": "a rude remark",
+    "cefr": "B1"
+  },
+  {
+    "word": "calm",
+    "pos": "adjective",
+    "ipa": "/kɑːm/",
+    "meaningVi": "bình tĩnh, điềm đạm",
+    "definitionEn": "quiet and relaxed, not showing anger or worry",
+    "example": "Please stay calm and think carefully before you make a decision.",
+    "collocation": "remain calm",
+    "cefr": "B1"
+  },
+  {
+    "word": "careful",
+    "pos": "adjective",
+    "ipa": "/ˈkeəfʊl/",
+    "meaningVi": "cẩn thận",
+    "definitionEn": "paying attention to avoid mistakes, damage, or danger",
+    "example": "You should be careful when you cross a busy road with your bicycle.",
+    "collocation": "be careful with",
+    "cefr": "B1"
+  },
+  {
+    "word": "creative",
+    "pos": "adjective",
+    "ipa": "/kriˈeɪtɪv/",
+    "meaningVi": "sáng tạo",
+    "definitionEn": "good at thinking of new ideas or making original things",
+    "example": "Children are often more creative than adults when they play imaginative games.",
+    "collocation": "creative thinking",
+    "cefr": "B1"
+  },
+  {
+    "word": "lazy",
+    "pos": "adjective",
+    "ipa": "/ˈleɪzi/",
+    "meaningVi": "lười biếng",
+    "definitionEn": "not wanting to work or make any physical or mental effort",
+    "example": "He is too lazy to clean his room even on weekends.",
+    "collocation": "a lazy student",
+    "cefr": "B1"
+  },
+  {
+    "word": "bossy",
+    "pos": "adjective",
+    "ipa": "/ˈbɒsi/",
+    "meaningVi": "hay ra lệnh, hách dịch",
+    "definitionEn": "liking to tell other people what to do all the time",
+    "example": "My sister is bossy and always tries to organise our games.",
+    "collocation": "a bossy manager",
+    "cefr": "B1"
+  },
+  {
+    "word": "funny",
+    "pos": "adjective",
+    "ipa": "/ˈfʌni/",
+    "meaningVi": "hài hước, buồn cười",
+    "definitionEn": "making you laugh or smile because it is amusing",
+    "example": "My best friend tells funny stories that make everyone laugh.",
+    "collocation": "a funny joke",
+    "cefr": "B1"
+  },
+  {
+    "word": "reliable",
+    "pos": "adjective",
+    "ipa": "/rɪˈlaɪəbl/",
+    "meaningVi": "đáng tin cậy",
+    "definitionEn": "that you can trust to do what is expected of you",
+    "example": "She is a reliable colleague who always finishes her work on time.",
+    "collocation": "a reliable source",
+    "cefr": "B2"
+  },
+  {
+    "word": "sensitive",
+    "pos": "adjective",
+    "ipa": "/ˈsensɪtɪv/",
+    "meaningVi": "nhạy cảm, tinh tế",
+    "definitionEn": "easily hurt or upset, or aware of other people's feelings",
+    "example": "He is very sensitive to criticism, so please give him gentle feedback.",
+    "collocation": "sensitive to criticism",
+    "cefr": "B2"
+  },
+  {
+    "word": "outgoing",
+    "pos": "adjective",
+    "ipa": "/ˌaʊtˈɡəʊɪŋ/",
+    "meaningVi": "hướng ngoại, cởi mở",
+    "definitionEn": "friendly and enjoying meeting and talking with other people",
+    "example": "Her outgoing personality helps her make new friends very quickly.",
+    "collocation": "an outgoing personality",
+    "cefr": "B2"
+  },
+  {
+    "word": "easygoing",
+    "pos": "adjective",
+    "ipa": "/ˌiːzɪˈɡəʊɪŋ/",
+    "meaningVi": "dễ tính, thoải mái",
+    "definitionEn": "relaxed and not easily annoyed or worried by small problems",
+    "example": "Our easygoing manager lets us choose how to organise our own work.",
+    "collocation": "an easygoing attitude",
+    "cefr": "B2"
+  },
+  {
+    "word": "cynical",
+    "pos": "adjective",
+    "ipa": "/ˈsɪnɪkl/",
+    "meaningVi": "hoài nghi, yếm thế",
+    "definitionEn": "believing that people are mainly selfish and rarely sincere",
+    "example": "After many broken promises, he became cynical about politicians' intentions.",
+    "collocation": "a cynical view",
+    "cefr": "B2"
+  },
+  {
+    "word": "optimistic",
+    "pos": "adjective",
+    "ipa": "/ˌɒptɪˈmɪstɪk/",
+    "meaningVi": "lạc quan",
+    "definitionEn": "expecting that good things will happen in the future",
+    "example": "Despite the bad weather, she remained optimistic about the family picnic.",
+    "collocation": "optimistic about the future",
+    "cefr": "B2"
+  },
+  {
+    "word": "pessimistic",
+    "pos": "adjective",
+    "ipa": "/ˌpesɪˈmɪstɪk/",
+    "meaningVi": "bi quan",
+    "definitionEn": "expecting that bad things are likely to happen",
+    "example": "He is pessimistic about finding a good job in such a weak economy.",
+    "collocation": "a pessimistic outlook",
+    "cefr": "B2"
+  },
+  {
+    "word": "moody",
+    "pos": "adjective",
+    "ipa": "/ˈmuːdi/",
+    "meaningVi": "thất thường, hay thay đổi tâm trạng",
+    "definitionEn": "often changing mood, sometimes sad and sometimes irritable",
+    "example": "My teenage son can be moody after he has argued with his friends.",
+    "collocation": "a moody teenager",
+    "cefr": "B2"
+  },
+  {
+    "word": "stubborn",
+    "pos": "adjective",
+    "ipa": "/ˈstʌbən/",
+    "meaningVi": "bướng bỉnh",
+    "definitionEn": "refusing to change your opinion or behaviour even when others try to persuade you",
+    "example": "My grandfather is stubborn and refuses to learn how to use a smartphone.",
+    "collocation": "stubborn as a mule",
+    "cefr": "B2"
+  },
+  {
+    "word": "sociable",
+    "pos": "adjective",
+    "ipa": "/ˈsəʊʃəbl/",
+    "meaningVi": "hòa đồng, thích giao du",
+    "definitionEn": "enjoying the company of other people and spending time with them",
+    "example": "The sociable students organised a party to welcome the new classmates.",
+    "collocation": "a sociable atmosphere",
+    "cefr": "B2"
+  },
+  {
+    "word": "reserved",
+    "pos": "adjective",
+    "ipa": "/rɪˈzɜːvd/",
+    "meaningVi": "kín đáo, dè dặt",
+    "definitionEn": "not showing your feelings openly or talking very much",
+    "example": "Although reserved at first, Mia soon became friends with the whole team.",
+    "collocation": "a reserved person",
+    "cefr": "B2"
+  },
+  {
+    "word": "thoughtful",
+    "pos": "adjective",
+    "ipa": "/ˈθɔːtfʊl/",
+    "meaningVi": "chu đáo, biết nghĩ cho người khác",
+    "definitionEn": "considerate of other people's needs, or deep in thought",
+    "example": "It was thoughtful of her to bring soup when I was ill.",
+    "collocation": "a thoughtful gift",
+    "cefr": "B2"
+  },
+  {
+    "word": "humble",
+    "pos": "adjective",
+    "ipa": "/ˈhʌmbl/",
+    "meaningVi": "khiêm tốn",
+    "definitionEn": "not proud or boastful about your abilities or achievements",
+    "example": "Despite winning the award, the humble author thanked her readers quietly.",
+    "collocation": "a humble beginning",
+    "cefr": "B2"
+  },
+  {
+    "word": "loyal",
+    "pos": "adjective",
+    "ipa": "/ˈlɔɪəl/",
+    "meaningVi": "trung thành",
+    "definitionEn": "firmly supporting a person, group, or principle over a long time",
+    "example": "A loyal friend will stand by you even when times are difficult.",
+    "collocation": "loyal to friends",
+    "cefr": "B2"
+  },
+  {
+    "word": "dishonest",
+    "pos": "adjective",
+    "ipa": "/dɪsˈɒnɪst/",
+    "meaningVi": "không trung thực, gian dối",
+    "definitionEn": "not telling the truth, or intending to deceive someone",
+    "example": "It was dishonest of him to claim money that he had not earned.",
+    "collocation": "a dishonest businessman",
+    "cefr": "B2"
+  },
+  {
+    "word": "tolerant",
+    "pos": "adjective",
+    "ipa": "/ˈtɒlərənt/",
+    "meaningVi": "khoan dung, độ lượng",
+    "definitionEn": "willing to accept beliefs or behaviour that are different from your own",
+    "example": "Our city is tolerant of people from many different cultures and religions.",
+    "collocation": "tolerant of differences",
+    "cefr": "B2"
+  },
+  {
+    "word": "bold",
+    "pos": "adjective",
+    "ipa": "/bəʊld/",
+    "meaningVi": "táo bạo, mạnh dạn",
+    "definitionEn": "showing confidence and willingness to take risks",
+    "example": "She made a bold decision to leave her job and start her own company.",
+    "collocation": "a bold move",
+    "cefr": "B2"
+  },
+  {
+    "word": "anxious",
+    "pos": "adjective",
+    "ipa": "/ˈæŋkʃəs/",
+    "meaningVi": "lo âu, bồn chồn",
+    "definitionEn": "worried and nervous about what might happen in the future",
+    "example": "Parents often feel anxious when their children first start school.",
+    "collocation": "anxious about exams",
+    "cefr": "B2"
+  },
+  {
+    "word": "considerate",
+    "pos": "adjective",
+    "ipa": "/kənˈsɪdərət/",
+    "meaningVi": "ân cần, chu đáo",
+    "definitionEn": "careful not to upset or inconvenience other people",
+    "example": "It is considerate to keep your voice down in a library.",
+    "collocation": "considerate of others",
+    "cefr": "B2"
+  },
+  {
+    "word": "fussy",
+    "pos": "adjective",
+    "ipa": "/ˈfʌsi/",
+    "meaningVi": "kén chọn, cầu kỳ",
+    "definitionEn": "very particular and difficult to please about small details",
+    "example": "My cat is very fussy about food and refuses anything new.",
+    "collocation": "a fussy eater",
+    "cefr": "B2"
+  },
+  {
+    "word": "introspective",
+    "pos": "adjective",
+    "ipa": "/ˌɪntrəˈspektɪv/",
+    "meaningVi": "hay suy ngẫm nội tâm",
+    "definitionEn": "thoughtful and inclined to examine your own thoughts and feelings",
+    "example": "The novel's introspective narrator spends long passages examining his own past failures.",
+    "collocation": "an introspective mood",
+    "cefr": "C1"
+  },
+  {
+    "word": "magnanimous",
+    "pos": "adjective",
+    "ipa": "/mæɡˈnænɪməs/",
+    "meaningVi": "độ lượng, cao thượng",
+    "definitionEn": "generous and forgiving, especially towards a rival or enemy",
+    "example": "In a magnanimous gesture, the defeated candidate congratulated her opponent publicly.",
+    "collocation": "a magnanimous gesture",
+    "cefr": "C1"
+  },
+  {
+    "word": "idiosyncratic",
+    "pos": "adjective",
+    "ipa": "/ˌɪdiəsɪŋˈkrætɪk/",
+    "meaningVi": "mang nét riêng, kỳ lạ",
+    "definitionEn": "having a distinctive style or habits that are unusual to others",
+    "example": "His idiosyncratic habit of counting every stair amused all his colleagues.",
+    "collocation": "idiosyncratic behaviour",
+    "cefr": "C1"
+  },
+  {
+    "word": "disdainful",
+    "pos": "adjective",
+    "ipa": "/dɪsˈdeɪnfl/",
+    "meaningVi": "khinh khỉnh, coi thường",
+    "definitionEn": "showing that you think someone or something is not worth respect",
+    "example": "She gave a disdainful glance at the cheap furniture in the room.",
+    "collocation": "a disdainful look",
+    "cefr": "C1"
+  },
+  {
+    "word": "assertive",
+    "pos": "adjective",
+    "ipa": "/əˈsɜːtɪv/",
+    "meaningVi": "quyết đoán, dám khẳng định",
+    "definitionEn": "confident in clearly expressing your needs and opinions",
+    "example": "Assertive employees explain their ideas clearly without being aggressive towards colleagues.",
+    "collocation": "assertive behaviour",
+    "cefr": "C1"
+  },
+  {
+    "word": "sagacious",
+    "pos": "adjective",
+    "ipa": "/səˈɡeɪʃəs/",
+    "meaningVi": "minh triết, sáng suốt",
+    "definitionEn": "having good judgement and wisdom, especially from long experience",
+    "example": "The sagacious old farmer advised us to wait until the rain stopped.",
+    "collocation": "a sagacious leader",
+    "cefr": "C1"
+  },
+  {
+    "word": "pedantic",
+    "pos": "adjective",
+    "ipa": "/pɪˈdæntɪk/",
+    "meaningVi": "câu nệ tiểu tiết",
+    "definitionEn": "too concerned with minor rules, details, or technical correctness",
+    "example": "The pedantic editor corrected every tiny punctuation mark in the report.",
+    "collocation": "a pedantic teacher",
+    "cefr": "C1"
+  },
+  {
+    "word": "obsequious",
+    "pos": "adjective",
+    "ipa": "/əbˈsiːkwiəs/",
+    "meaningVi": "xu nịnh, khúm núm",
+    "definitionEn": "too eager to please or obey people in authority",
+    "example": "The obsequious assistant agreed with every opinion his boss expressed.",
+    "collocation": "an obsequious manner",
+    "cefr": "C1"
+  },
+  {
+    "word": "forthright",
+    "pos": "adjective",
+    "ipa": "/ˈfɔːθraɪt/",
+    "meaningVi": "thẳng thắn",
+    "definitionEn": "direct and honest in speech, without hiding your opinions",
+    "example": "She was forthright about the problems in the project and suggested clear solutions.",
+    "collocation": "a forthright opinion",
+    "cefr": "C1"
+  },
+  {
+    "word": "tactful",
+    "pos": "adjective",
+    "ipa": "/ˈtæktfl/",
+    "meaningVi": "khéo léo, tế nhị",
+    "definitionEn": "careful not to say or do things that might upset people",
+    "example": "It was tactful of him to mention the mistake privately rather than publicly.",
+    "collocation": "tactful remarks",
+    "cefr": "C1"
+  },
+  {
+    "word": "diplomatic",
+    "pos": "adjective",
+    "ipa": "/ˌdɪpləˈmætɪk/",
+    "meaningVi": "khéo ngoại giao, tế nhị",
+    "definitionEn": "skilful at handling delicate situations without causing offence",
+    "example": "He gave a diplomatic answer that satisfied both sides of the dispute.",
+    "collocation": "diplomatic skills",
+    "cefr": "C1"
+  },
+  {
+    "word": "reticent",
+    "pos": "adjective",
+    "ipa": "/ˈretɪsnt/",
+    "meaningVi": "ít nói, dè dặt",
+    "definitionEn": "not revealing your thoughts or feelings readily",
+    "example": "Reticent about his personal life, he rarely shared details with his colleagues.",
+    "collocation": "reticent about",
+    "cefr": "C1"
+  },
+  {
+    "word": "gullible",
+    "pos": "adjective",
+    "ipa": "/ˈɡʌləbl/",
+    "meaningVi": "cả tin, dễ bị lừa",
+    "definitionEn": "easily persuaded to believe things, often by people who deceive",
+    "example": "Gullible tourists often fall for fake tickets sold near famous landmarks.",
+    "collocation": "a gullible person",
+    "cefr": "C1"
+  },
+  {
+    "word": "capricious",
+    "pos": "adjective",
+    "ipa": "/kəˈprɪʃəs/",
+    "meaningVi": "thất thường, hay đổi ý",
+    "definitionEn": "changing suddenly and without reason or warning",
+    "example": "The capricious king changed his mind about the policy every few days.",
+    "collocation": "a capricious mood",
+    "cefr": "C1"
+  },
+  {
+    "word": "belligerent",
+    "pos": "adjective",
+    "ipa": "/bəˈlɪdʒərənt/",
+    "meaningVi": "hiếu chiến, gây gổ",
+    "definitionEn": "aggressively hostile and ready to argue or fight",
+    "example": "The belligerent customer shouted at the staff and refused to leave the shop.",
+    "collocation": "a belligerent attitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "meek",
+    "pos": "adjective",
+    "ipa": "/miːk/",
+    "meaningVi": "nhu mì, hiền lành",
+    "definitionEn": "quiet, gentle, and easily controlled by others",
+    "example": "The meek boy never argued, even when he was treated unfairly.",
+    "collocation": "meek and mild",
+    "cefr": "C1"
+  },
+  {
+    "word": "docile",
+    "pos": "adjective",
+    "ipa": "/ˈdəʊsaɪl/",
+    "meaningVi": "ngoan ngoãn, dễ bảo",
+    "definitionEn": "easy to control or train, and willing to obey",
+    "example": "The docile student followed every instruction the teacher gave without complaint.",
+    "collocation": "a docile nature",
+    "cefr": "C1"
+  },
+  {
+    "word": "aloof",
+    "pos": "adjective",
+    "ipa": "/əˈluːf/",
+    "meaningVi": "xa cách, lạnh nhạt",
+    "definitionEn": "not friendly or interested in other people",
+    "example": "The new manager remained aloof and rarely spoke with the junior staff.",
+    "collocation": "remain aloof",
+    "cefr": "C1"
+  },
+  {
+    "word": "introverted",
+    "pos": "adjective",
+    "ipa": "/ˈɪntrəvɜːtɪd/",
+    "meaningVi": "hướng nội",
+    "definitionEn": "quiet and shy, preferring solitude to social activity",
+    "example": "Introverted students often prefer writing their thoughts rather than speaking aloud.",
+    "collocation": "an introverted personality",
+    "cefr": "C1"
+  },
+  {
+    "word": "extroverted",
+    "pos": "adjective",
+    "ipa": "/ˈekstrəvɜːtɪd/",
+    "meaningVi": "hướng ngoại",
+    "definitionEn": "lively and sociable, energised by being with other people",
+    "example": "The extroverted host kept everyone entertained with jokes and lively conversation.",
+    "collocation": "an extroverted personality",
+    "cefr": "C1"
+  },
+  {
+    "word": "dogged",
+    "pos": "adjective",
+    "ipa": "/ˈdɒɡɪd/",
+    "meaningVi": "bền bỉ, kiên trì",
+    "definitionEn": "persistent and determined despite difficulties or setbacks",
+    "example": "Her dogged pursuit of the goal eventually earned her a place in the team.",
+    "collocation": "dogged determination",
+    "cefr": "C1"
+  },
+  {
+    "word": "steadfast",
+    "pos": "adjective",
+    "ipa": "/ˈstedfɑːst/",
+    "meaningVi": "kiên định, trung kiên",
+    "definitionEn": "firmly loyal and unwavering in belief or purpose",
+    "example": "The steadfast nurse stayed beside her patient throughout the long night.",
+    "collocation": "steadfast loyalty",
+    "cefr": "C1"
+  },
+  {
+    "word": "ingenious",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdʒiːniəs/",
+    "meaningVi": "tài tình, khéo léo",
+    "definitionEn": "clever, original, and inventive in solving problems",
+    "example": "The ingenious student designed a solar cooker from recycled materials.",
+    "collocation": "an ingenious solution",
+    "cefr": "C1"
+  },
+  {
+    "word": "perceptive",
+    "pos": "adjective",
+    "ipa": "/pəˈseptɪv/",
+    "meaningVi": "tinh tế, sâu sắc",
+    "definitionEn": "able to notice and understand things quickly and accurately",
+    "example": "The perceptive teacher noticed that one student was struggling at home.",
+    "collocation": "a perceptive comment",
+    "cefr": "C1"
+  },
+  {
+    "word": "astute",
+    "pos": "adjective",
+    "ipa": "/əˈstjuːt/",
+    "meaningVi": "sắc sảo, tinh khôn",
+    "definitionEn": "clever at understanding situations and making good decisions",
+    "example": "The astute investor sold his shares just before the market crashed.",
+    "collocation": "an astute businessman",
+    "cefr": "C1"
+  },
+  {
+    "word": "sardonic",
+    "pos": "adjective",
+    "ipa": "/sɑːˈdɒnɪk/",
+    "meaningVi": "châm biếm, mỉa mai",
+    "definitionEn": "mocking or scornful in a clever but unkind way",
+    "example": "He gave a sardonic smile when the plan failed again.",
+    "collocation": "a sardonic remark",
+    "cefr": "C1"
+  },
+  {
+    "word": "cantankerous",
+    "pos": "adjective",
+    "ipa": "/kænˈtæŋkərəs/",
+    "meaningVi": "cáu kỉnh, gắt gỏng",
+    "definitionEn": "bad-tempered and argumentative",
+    "example": "The cantankerous old neighbour complained about the children playing outside.",
+    "collocation": "a cantankerous old man",
+    "cefr": "C1"
+  },
+  {
+    "word": "jovial",
+    "pos": "adjective",
+    "ipa": "/ˈdʒəʊviəl/",
+    "meaningVi": "vui vẻ, hào hứng",
+    "definitionEn": "cheerful, friendly, and good-humoured",
+    "example": "The jovial host welcomed every guest with a warm handshake and a laugh.",
+    "collocation": "a jovial mood",
+    "cefr": "C1"
+  },
+  {
+    "word": "affable",
+    "pos": "adjective",
+    "ipa": "/ˈæfəbl/",
+    "meaningVi": "thân thiện, dễ gần",
+    "definitionEn": "friendly, easy to talk to, and pleasant to be with",
+    "example": "The affable receptionist greeted visitors warmly and helped them quickly.",
+    "collocation": "an affable manner",
+    "cefr": "C1"
+  },
+  {
+    "word": "frivolous",
+    "pos": "adjective",
+    "ipa": "/ˈfrɪvələs/",
+    "meaningVi": "phù phiếm, nông nổi",
+    "definitionEn": "silly and not serious, lacking any real purpose",
+    "example": "He was criticised for his frivolous attitude towards important responsibilities.",
+    "collocation": "a frivolous attitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "scrupulous",
+    "pos": "adjective",
+    "ipa": "/ˈskruːpjələs/",
+    "meaningVi": "tỉ mỉ, liêm chính",
+    "definitionEn": "very careful to do what is morally right and accurate",
+    "example": "The scrupulous accountant checked every receipt before signing the final report.",
+    "collocation": "scrupulous honesty",
+    "cefr": "C1"
+  },
+  {
+    "word": "unflappable",
+    "pos": "adjective",
+    "ipa": "/ʌnˈflæpəbl/",
+    "meaningVi": "điềm tĩnh, không nao núng",
+    "definitionEn": "remaining calm and composed in difficult situations",
+    "example": "The unflappable pilot stayed calm when the storm damaged the plane's instruments.",
+    "collocation": "an unflappable manner",
+    "cefr": "C1"
+  },
+  {
+    "word": "pensive",
+    "pos": "adjective",
+    "ipa": "/ˈpensɪv/",
+    "meaningVi": "trầm tư, suy tư",
+    "definitionEn": "thoughtful and quiet, sometimes slightly sad",
+    "example": "She sat by the window in a pensive mood, watching the rain fall.",
+    "collocation": "a pensive mood",
+    "cefr": "C1"
+  },
+  {
+    "word": "cavalier",
+    "pos": "adjective",
+    "ipa": "/ˌkævəˈlɪə/",
+    "meaningVi": "bất cần, coi nhẹ",
+    "definitionEn": "showing little concern for other people's feelings or for rules",
+    "example": "His cavalier attitude to safety rules alarmed the new recruits.",
+    "collocation": "a cavalier attitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "petulant",
+    "pos": "adjective",
+    "ipa": "/ˈpetjʊlənt/",
+    "meaningVi": "hờn dỗi, giận dỗi",
+    "definitionEn": "childishly bad-tempered or sulky over small things",
+    "example": "The petulant child stamped his foot when he did not get the toy.",
+    "collocation": "a petulant tone",
+    "cefr": "C1"
+  },
+  {
+    "word": "fastidious",
+    "pos": "adjective",
+    "ipa": "/fæˈstɪdiəs/",
+    "meaningVi": "cầu kỳ, khó tính",
+    "definitionEn": "very attentive to detail and hard to please",
+    "example": "The fastidious chef checked every plate carefully before it left the kitchen.",
+    "collocation": "fastidious about hygiene",
+    "cefr": "C1"
+  },
+  {
+    "word": "prudent",
+    "pos": "adjective",
+    "ipa": "/ˈpruːdnt/",
+    "meaningVi": "thận trọng, khôn ngoan",
+    "definitionEn": "acting with care and good judgement to avoid unnecessary risk",
+    "example": "It was prudent of her to save money before buying a house.",
+    "collocation": "prudent decisions",
+    "cefr": "C1"
+  },
+  {
+    "word": "truculent",
+    "pos": "adjective",
+    "ipa": "/ˈtrʌkjʊlənt/",
+    "meaningVi": "hung hăng, ngang ngạnh",
+    "definitionEn": "defiant and eager to argue or fight with other people",
+    "example": "The truculent passenger refused to show his ticket and insulted the conductor.",
+    "collocation": "truculent attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "mercurial",
+    "pos": "adjective",
+    "ipa": "/mɜːˈkjʊəriəl/",
+    "meaningVi": "thất thường, đổi tính nhanh",
+    "definitionEn": "changing mood or behaviour quickly and unpredictably",
+    "example": "The mercurial director could praise an actor one minute and fire him the next.",
+    "collocation": "a mercurial temperament",
+    "cefr": "C2"
+  },
+  {
+    "word": "supercilious",
+    "pos": "adjective",
+    "ipa": "/ˌsuːpəˈsɪliəs/",
+    "meaningVi": "kiêu căng, tỏ vẻ bề trên",
+    "definitionEn": "behaving as if you are better or more important than others",
+    "example": "The supercilious waiter looked down at us and ignored our questions.",
+    "collocation": "a supercilious smile",
+    "cefr": "C2"
+  },
+  {
+    "word": "querulous",
+    "pos": "adjective",
+    "ipa": "/ˈkwerələs/",
+    "meaningVi": "hay than phiền, cằn nhằn",
+    "definitionEn": "complaining in a whining and irritable manner",
+    "example": "His querulous voice filled the office as he listed every small grievance.",
+    "collocation": "a querulous voice",
+    "cefr": "C2"
+  },
+  {
+    "word": "perfidious",
+    "pos": "adjective",
+    "ipa": "/pəˈfɪdiəs/",
+    "meaningVi": "bội bạc, phản bội",
+    "definitionEn": "deceitful and disloyal, breaking promises or betraying trust",
+    "example": "The perfidious ally secretly sold our plans to the enemy.",
+    "collocation": "perfidious betrayal",
+    "cefr": "C2"
+  },
+  {
+    "word": "sanctimonious",
+    "pos": "adjective",
+    "ipa": "/ˌsæŋktɪˈməʊniəs/",
+    "meaningVi": "đạo đức giả, ra vẻ mẫu mực",
+    "definitionEn": "pretending to be more virtuous or morally superior to others",
+    "example": "The sanctimonious critic lectured everyone on ethics while cheating on his taxes.",
+    "collocation": "a sanctimonious tone",
+    "cefr": "C2"
+  },
+  {
+    "word": "intransigent",
+    "pos": "adjective",
+    "ipa": "/ɪnˈtrænsɪdʒənt/",
+    "meaningVi": "cứng rắn, không nhượng bộ",
+    "definitionEn": "refusing to change your views or accept any compromise",
+    "example": "The intransigent negotiator rejected every offer put forward by the other side.",
+    "collocation": "intransigent attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "misanthropic",
+    "pos": "adjective",
+    "ipa": "/ˌmɪsənˈθrɒpɪk/",
+    "meaningVi": "ghét đời, chán ghét con người",
+    "definitionEn": "disliking and distrusting other people in general",
+    "example": "The misanthropic hermit lived alone in the mountains and avoided every visitor.",
+    "collocation": "a misanthropic outlook",
+    "cefr": "C2"
+  },
+  {
+    "word": "pusillanimous",
+    "pos": "adjective",
+    "ipa": "/ˌpjuːsɪˈlænɪməs/",
+    "meaningVi": "nhút nhát, hèn nhát",
+    "definitionEn": "lacking courage, timid and easily frightened",
+    "example": "His pusillanimous decision to avoid the debate disappointed all his supporters.",
+    "collocation": "pusillanimous behaviour",
+    "cefr": "C2"
+  },
+  {
+    "word": "craven",
+    "pos": "adjective",
+    "ipa": "/ˈkreɪvn/",
+    "meaningVi": "hèn nhát, không có dũng khí",
+    "definitionEn": "showing no courage at all in the face of danger",
+    "example": "The craven official abandoned his principles to protect his own career.",
+    "collocation": "craven cowardice",
+    "cefr": "C2"
+  },
+  {
+    "word": "obdurate",
+    "pos": "adjective",
+    "ipa": "/ˈɒbdjʊrət/",
+    "meaningVi": "ngoan cố, cứng đầu",
+    "definitionEn": "stubbornly refusing to change one's opinion or course of action",
+    "example": "The obdurate king ignored the pleas of his advisers and his people.",
+    "collocation": "obdurate refusal",
+    "cefr": "C2"
+  },
+  {
+    "word": "ebullient",
+    "pos": "adjective",
+    "ipa": "/ɪˈbʌliənt/",
+    "meaningVi": "sôi nổi, phấn chấn",
+    "definitionEn": "cheerful, full of energy and excitement",
+    "example": "The ebullient coach celebrated every goal with enthusiastic shouts and dancing.",
+    "collocation": "an ebullient personality",
+    "cefr": "C2"
+  },
+  {
+    "word": "effervescent",
+    "pos": "adjective",
+    "ipa": "/ˌefəˈvesnt/",
+    "meaningVi": "sôi nổi, tươi vui",
+    "definitionEn": "lively, cheerful, and full of enthusiasm",
+    "example": "Her effervescent character brightened every meeting she attended this year.",
+    "collocation": "an effervescent personality",
+    "cefr": "C2"
+  },
+  {
+    "word": "phlegmatic",
+    "pos": "adjective",
+    "ipa": "/fleɡˈmætɪk/",
+    "meaningVi": "điềm đạm, ít xúc động",
+    "definitionEn": "calm and unemotional, not easily excited or upset",
+    "example": "The phlegmatic farmer accepted the flood damage without any visible distress.",
+    "collocation": "a phlegmatic temperament",
+    "cefr": "C2"
+  },
+  {
+    "word": "dour",
+    "pos": "adjective",
+    "ipa": "/dʊə/",
+    "meaningVi": "nghiêm nghị, khắc khổ",
+    "definitionEn": "stern, unfriendly, and rarely smiling",
+    "example": "The dour landlord rarely smiled and barely answered our greetings.",
+    "collocation": "a dour expression",
+    "cefr": "C2"
+  },
+  {
+    "word": "morose",
+    "pos": "adjective",
+    "ipa": "/məˈrəʊs/",
+    "meaningVi": "u sầu, ủ rũ",
+    "definitionEn": "sullen and gloomy, unwilling to talk or be sociable",
+    "example": "After losing the match, the morose striker sat alone in the dressing room.",
+    "collocation": "a morose mood",
+    "cefr": "C2"
+  },
+  {
+    "word": "laconic",
+    "pos": "adjective",
+    "ipa": "/ləˈkɒnɪk/",
+    "meaningVi": "kiệm lời, ngắn gọn",
+    "definitionEn": "using very few words, often in a way that seems unfriendly",
+    "example": "His laconic reply of one word ended the conversation at once.",
+    "collocation": "a laconic reply",
+    "cefr": "C2"
+  },
+  {
+    "word": "loquacious",
+    "pos": "adjective",
+    "ipa": "/ləˈkweɪʃəs/",
+    "meaningVi": "nói nhiều, lắm lời",
+    "definitionEn": "talkative and fond of chatting at length",
+    "example": "The loquacious taxi driver told us his life story during the journey.",
+    "collocation": "a loquacious companion",
+    "cefr": "C2"
+  },
+  {
+    "word": "quixotic",
+    "pos": "adjective",
+    "ipa": "/kwɪkˈsɒtɪk/",
+    "meaningVi": "viển vông, lý tưởng hão huyền",
+    "definitionEn": "extremely idealistic and impractical in pursuing goals",
+    "example": "Her quixotic plan to clean the entire river within a month attracted media attention.",
+    "collocation": "a quixotic quest",
+    "cefr": "C2"
+  },
+  {
+    "word": "puckish",
+    "pos": "adjective",
+    "ipa": "/ˈpʌkɪʃ/",
+    "meaningVi": "tinh nghịch, nghịch ngợm",
+    "definitionEn": "playfully mischievous in a witty way",
+    "example": "The puckish grin on his face suggested he had planned another prank.",
+    "collocation": "a puckish grin",
+    "cefr": "C2"
+  },
+  {
+    "word": "impetuous",
+    "pos": "adjective",
+    "ipa": "/ɪmˈpetʃuəs/",
+    "meaningVi": "bốc đồng, hấp tấp",
+    "definitionEn": "acting quickly and rashly without thinking about consequences",
+    "example": "His impetuous decision to quit the job left him without any income.",
+    "collocation": "an impetuous decision",
+    "cefr": "C2"
+  },
+  {
+    "word": "censorious",
+    "pos": "adjective",
+    "ipa": "/senˈsɔːriəs/",
+    "meaningVi": "hay chỉ trích, khắt khe",
+    "definitionEn": "severely critical of other people's behaviour",
+    "example": "The censorious neighbours condemned every party held on the street.",
+    "collocation": "a censorious attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "mawkish",
+    "pos": "adjective",
+    "ipa": "/ˈmɔːkɪʃ/",
+    "meaningVi": "ủy mị, sướt mướt",
+    "definitionEn": "sentimental in a sickly or excessive way",
+    "example": "The mawkish film ended with a sugary speech about love and loss.",
+    "collocation": "mawkish sentimentality",
+    "cefr": "C2"
+  },
+  {
+    "word": "insouciant",
+    "pos": "adjective",
+    "ipa": "/ɪnˈsuːsiənt/",
+    "meaningVi": "vô tư, thờ ơ",
+    "definitionEn": "carefree and showing no concern about problems",
+    "example": "The insouciant teenager ignored the warnings and went swimming anyway.",
+    "collocation": "an insouciant shrug",
+    "cefr": "C2"
+  },
+  {
+    "word": "fractious",
+    "pos": "adjective",
+    "ipa": "/ˈfrækʃəs/",
+    "meaningVi": "hay cáu gắt, khó bảo",
+    "definitionEn": "irritable and quarrelsome, and difficult to control",
+    "example": "The fractious toddler refused to sit still during the long journey.",
+    "collocation": "a fractious child",
+    "cefr": "C2"
+  },
+  {
+    "word": "peevish",
+    "pos": "adjective",
+    "ipa": "/ˈpiːvɪʃ/",
+    "meaningVi": "cáu kỉnh, nhõng nhẽo",
+    "definitionEn": "irritable and complaining about small annoyances",
+    "example": "The peevish customer grumbled about the price of every item on the menu.",
+    "collocation": "a peevish tone",
+    "cefr": "C2"
+  },
+  {
+    "word": "histrionic",
+    "pos": "adjective",
+    "ipa": "/ˌhɪstriˈɒnɪk/",
+    "meaningVi": "kịch tính, làm màu",
+    "definitionEn": "overly dramatic in behaviour, designed to attract attention",
+    "example": "Her histrionic reaction to a small delay surprised everyone in the room.",
+    "collocation": "histrionic display",
+    "cefr": "C2"
+  },
+  {
+    "word": "vainglorious",
+    "pos": "adjective",
+    "ipa": "/ˌveɪnˈɡlɔːriəs/",
+    "meaningVi": "khoe khoang, tự phụ",
+    "definitionEn": "excessively proud of oneself and one's own achievements",
+    "example": "The vainglorious general ordered portraits of himself hung throughout the palace.",
+    "collocation": "vainglorious boasting",
+    "cefr": "C2"
+  },
+  {
+    "word": "grandiloquent",
+    "pos": "adjective",
+    "ipa": "/ɡrænˈdɪləkwənt/",
+    "meaningVi": "khoa trương, kiểu cách",
+    "definitionEn": "using pompous and elaborate language to impress others",
+    "example": "The politician's grandiloquent speech contained many words but little real substance.",
+    "collocation": "grandiloquent language",
+    "cefr": "C2"
+  },
+  {
+    "word": "bombastic",
+    "pos": "adjective",
+    "ipa": "/bɒmˈbæstɪk/",
+    "meaningVi": "huênh hoang, khoa trương",
+    "definitionEn": "high-sounding and pompous in speech or writing",
+    "example": "The bombastic commentator filled every minute with exaggerated praise.",
+    "collocation": "bombastic rhetoric",
+    "cefr": "C2"
+  },
+  {
+    "word": "churlish",
+    "pos": "adjective",
+    "ipa": "/ˈtʃɜːlɪʃ/",
+    "meaningVi": "thô lỗ, cộc cằn",
+    "definitionEn": "rude and unpleasant in a surly way",
+    "example": "It was churlish of him to ignore the gift his neighbour had brought.",
+    "collocation": "churlish behaviour",
+    "cefr": "C2"
+  },
+  {
+    "word": "sycophantic",
+    "pos": "adjective",
+    "ipa": "/ˌsɪkəˈfæntɪk/",
+    "meaningVi": "nịnh bợ, bợ đỡ",
+    "definitionEn": "flattering powerful people in order to gain their favour",
+    "example": "The sycophantic advisers praised every decision made by the emperor.",
+    "collocation": "sycophantic flattery",
+    "cefr": "C2"
+  },
+  {
+    "word": "munificent",
+    "pos": "adjective",
+    "ipa": "/mjuːˈnɪfɪsnt/",
+    "meaningVi": "hào phóng, rộng lượng",
+    "definitionEn": "very generous, giving money or gifts lavishly",
+    "example": "The munificent donor gave a million pounds to build the new library.",
+    "collocation": "munificent donation",
+    "cefr": "C2"
+  },
+  {
+    "word": "benevolent",
+    "pos": "adjective",
+    "ipa": "/bəˈnevələnt/",
+    "meaningVi": "nhân từ, nhân ái",
+    "definitionEn": "kind, generous, and wishing good things for others",
+    "example": "The benevolent landlord reduced the rent for families who had lost their jobs.",
+    "collocation": "a benevolent smile",
+    "cefr": "C2"
+  },
+  {
+    "word": "parsimonious",
+    "pos": "adjective",
+    "ipa": "/ˌpɑːsɪˈməʊniəs/",
+    "meaningVi": "keo kiệt, tiết kiệm quá mức",
+    "definitionEn": "unwilling to spend money or to use resources freely",
+    "example": "The parsimonious owner refused to pay for proper heating in the office.",
+    "collocation": "parsimonious habits",
+    "cefr": "C2"
+  },
+  {
+    "word": "vacillating",
+    "pos": "adjective",
+    "ipa": "/ˈvæsɪleɪtɪŋ/",
+    "meaningVi": "dao động, lưỡng lự",
+    "definitionEn": "unable to make up one's mind and hesitating between options",
+    "example": "The vacillating candidate changed his position on taxes three times.",
+    "collocation": "vacillating attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "indefatigable",
+    "pos": "adjective",
+    "ipa": "/ˌɪndɪˈfætɪɡəbl/",
+    "meaningVi": "không mệt mỏi, bền bỉ",
+    "definitionEn": "tireless, persisting despite fatigue or setbacks",
+    "example": "The indefatigable volunteer worked through the night to help flood victims.",
+    "collocation": "an indefatigable worker",
+    "cefr": "C2"
+  },
+  {
+    "word": "fatalistic",
+    "pos": "adjective",
+    "ipa": "/ˌfeɪtəˈlɪstɪk/",
+    "meaningVi": "định mệnh, cam chịu",
+    "definitionEn": "believing that events are predetermined and cannot be changed",
+    "example": "His fatalistic view led him to accept every misfortune without protest.",
+    "collocation": "a fatalistic attitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "cerebral",
+    "pos": "adjective",
+    "ipa": "/ˈserəbrəl/",
+    "meaningVi": "duy lý, thiên về trí óc",
+    "definitionEn": "intellectual, relying on reason rather than emotion or instinct",
+    "example": "The cerebral detective solved cases through careful logic rather than instinct.",
+    "collocation": "a cerebral approach",
+    "cefr": "C2"
+  },
+  {
+    "word": "ornery",
+    "pos": "adjective",
+    "ipa": "/ˈɔːnəri/",
+    "meaningVi": "khó tính, bướng bỉnh",
+    "definitionEn": "bad-tempered, stubborn, and hard to get along with",
+    "example": "The ornery farmer refused every offer from the property developers.",
+    "collocation": "an ornery old man",
+    "cefr": "C2"
+  },
+  {
+    "word": "irascible",
+    "pos": "adjective",
+    "ipa": "/ɪˈræsɪbl/",
+    "meaningVi": "nóng nảy, dễ nổi giận",
+    "definitionEn": "quick to become angry, especially over small matters",
+    "example": "The irascible professor shouted at any student who asked a question.",
+    "collocation": "irascible temper",
+    "cefr": "C2"
+  },
+  {
+    "word": "mordant",
+    "pos": "adjective",
+    "ipa": "/ˈmɔːdnt/",
+    "meaningVi": "cay độc, châm chọc",
+    "definitionEn": "sharply critical and bitterly sarcastic in tone",
+    "example": "Her mordant wit made every guest uneasy at the dinner party.",
+    "collocation": "mordant wit",
+    "cefr": "C2"
+  },
+  {
+    "word": "unctuous",
+    "pos": "adjective",
+    "ipa": "/ˈʌŋktʃuəs/",
+    "meaningVi": "nịnh hót, dầu mỡ",
+    "definitionEn": "excessively and insincerely flattering or obsequious",
+    "example": "The unctuous salesman praised my taste and pushed the most expensive model.",
+    "collocation": "an unctuous manner",
+    "cefr": "C2"
+  },
+  {
+    "word": "lackadaisical",
+    "pos": "adjective",
+    "ipa": "/ˌlækəˈdeɪzɪkl/",
+    "meaningVi": "uể oải, lười nhác",
+    "definitionEn": "lacking enthusiasm, vigour, or care in one's work",
+    "example": "The lackadaisical intern forgot the meeting and never apologised for it.",
+    "collocation": "a lackadaisical approach",
+    "cefr": "C2"
+  },
+  {
+    "word": "mendacious",
+    "pos": "adjective",
+    "ipa": "/menˈdeɪʃəs/",
+    "meaningVi": "dối trá, lừa lọc",
+    "definitionEn": "habitually lying or deliberately deceptive",
+    "example": "The mendacious witness contradicted his earlier statements under questioning.",
+    "collocation": "mendacious claims",
+    "cefr": "C2"
+  }
+]

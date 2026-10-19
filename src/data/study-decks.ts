@@ -14,10 +14,12 @@
 import { BAND_ORDER, getVocabTopic } from './vocab-topics';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { SAT_VOCAB_LESSONS } from './lessons/vocab-lessons';
+import { OXFORD_TOPIC_DECKS } from './oxford-topics-decks';
+import { fillStudyDeck } from './study-deck-fill';
 
 export type StudyDeck = {
   slug: string;
-  kind: 'topic' | 'sat' | 'notebook' | 'custom';
+  kind: 'topic' | 'oxford' | 'sat' | 'notebook' | 'custom';
   name: string;
   nameVi: string;
   blurb: string;
@@ -25,8 +27,13 @@ export type StudyDeck = {
 };
 
 export const NOTEBOOK_SLUG = 'so-tu';
-/** Bộ không phụ thuộc dữ liệu người dùng: chủ đề IELTS và bài từ vựng SAT. */
+/** Bộ không phụ thuộc dữ liệu người dùng: chủ đề IELTS và bài từ vựng SAT. Đã bổ sung câu ví dụ và headword sạch (xem `study-deck-fill.ts`). */
 export function getStaticDeck(slug: string): StudyDeck | undefined {
+  const deck = rawStaticDeck(slug);
+  return deck && fillStudyDeck(deck);
+}
+
+export function rawStaticDeck(slug: string): StudyDeck | undefined {
   const lesson = SAT_VOCAB_LESSONS.find((l) => l.slug === slug);
   if (lesson) {
     return {
@@ -39,7 +46,21 @@ export function getStaticDeck(slug: string): StudyDeck | undefined {
     };
   }
   const t = getVocabTopic(slug);
-  return t ? { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words } : undefined;
+  if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words };
+  // Bộ Oxford 3000 dùng đúng màn học của bộ IELTS. Từ Oxford không có phiên âm hay
+  // định nghĩa tiếng Anh, nên hai trường đó để trống (màn học tự bỏ trống, không hiện rỗng);
+  // cấp độ A1–C1 đi vào trường `band` để nhóm theo mức.
+  const o = OXFORD_TOPIC_DECKS.find((d) => d.slug === slug);
+  if (o)
+    return {
+      slug: o.slug,
+      kind: 'oxford',
+      name: `Oxford 3000 · ${o.titleEn}`,
+      nameVi: `Oxford 3000 · ${o.title}`,
+      blurb: `${o.words.length} từ cốt lõi, xếp theo cấp độ A1–C1.`,
+      words: o.words.map((w) => ({ word: w.word, pos: w.pos, ipa: '', meaningVi: w.meaningVi, definitionEn: '', example: w.example, collocation: '', band: w.level })),
+    };
+  return undefined;
 }
 
 export type NotebookSource = {
@@ -84,11 +105,20 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
 
 /** Nhóm từ để hiện danh sách: bộ IELTS theo band (dễ → khó), bộ khác một nhóm. */
 export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWord[] }[] {
+  if (deck.kind === 'oxford') {
+    const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+    return levels.map((level) => ({ label: level, words: deck.words.filter((w) => w.band === level) })).filter((g) => g.words.length > 0);
+  }
   if (deck.kind !== 'topic')
     return deck.words.length
       ? [{ label: deck.kind === 'notebook' ? 'Từ đã lưu' : deck.kind === 'custom' ? 'Từ trong bài' : 'Thuật ngữ', words: deck.words }]
       : [];
-  return BAND_ORDER.map((band) => ({ label: `Band ${band}`, words: deck.words.filter((w) => w.band === band) })).filter((g) => g.words.length > 0);
+  return BAND_ORDER.map((band) => {
+    const words = deck.words.filter((w) => w.band === band);
+    // Nhãn theo mức B1–C2 khi từ có `cefr`; bộ chưa có thì giữ nhãn band cũ.
+    const cefr = words.find((w) => w.cefr)?.cefr;
+    return { label: cefr ? `${cefr} · Band ${band}` : `Band ${band}`, words };
+  }).filter((g) => g.words.length > 0);
 }
 
 /** "noun · /ˈhæbɪtæt/" — bỏ phần trống, bộ SAT không có loại từ và phiên âm. */

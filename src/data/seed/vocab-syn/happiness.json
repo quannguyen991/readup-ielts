@@ -1,0 +1,1286 @@
+[
+  {
+    "word": "eudaimonia",
+    "synonyms": [
+      "flourishing",
+      "human well-being"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "self-actualization",
+    "synonyms": [
+      "self-fulfilment",
+      "self-realisation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "work-life balance",
+    "synonyms": [
+      "life balance",
+      "work-life harmony"
+    ],
+    "antonyms": [
+      "work overload"
+    ]
+  },
+  {
+    "word": "positive psychology",
+    "synonyms": [
+      "well-being science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "self-esteem",
+    "synonyms": [
+      "self-respect",
+      "self-worth"
+    ],
+    "antonyms": [
+      "self-doubt"
+    ]
+  },
+  {
+    "word": "subjective well-being",
+    "synonyms": [
+      "life satisfaction",
+      "subjective happiness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "life satisfaction",
+    "synonyms": [
+      "contentment with life",
+      "life contentment"
+    ],
+    "antonyms": [
+      "life dissatisfaction"
+    ]
+  },
+  {
+    "word": "emotional intelligence",
+    "synonyms": [
+      "emotional awareness",
+      "eq"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "happy",
+    "synonyms": [
+      "glad",
+      "joyful"
+    ],
+    "antonyms": [
+      "unhappy",
+      "sad"
+    ]
+  },
+  {
+    "word": "smile",
+    "synonyms": [
+      "grin",
+      "beam"
+    ],
+    "antonyms": [
+      "frown",
+      "scowl"
+    ]
+  },
+  {
+    "word": "laugh",
+    "synonyms": [
+      "chuckle",
+      "giggle"
+    ],
+    "antonyms": [
+      "cry",
+      "weep"
+    ]
+  },
+  {
+    "word": "friend",
+    "synonyms": [
+      "companion",
+      "pal"
+    ],
+    "antonyms": [
+      "enemy",
+      "foe"
+    ]
+  },
+  {
+    "word": "kind",
+    "synonyms": [
+      "gentle",
+      "considerate"
+    ],
+    "antonyms": [
+      "cruel",
+      "unkind"
+    ]
+  },
+  {
+    "word": "calm",
+    "synonyms": [
+      "serene",
+      "tranquil"
+    ],
+    "antonyms": [
+      "agitated",
+      "turbulent"
+    ]
+  },
+  {
+    "word": "celebrate",
+    "synonyms": [
+      "commemorate",
+      "rejoice"
+    ],
+    "antonyms": [
+      "mourn"
+    ]
+  },
+  {
+    "word": "hug",
+    "synonyms": [
+      "embrace",
+      "cuddle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "party",
+    "synonyms": [
+      "celebration",
+      "gathering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mood",
+    "synonyms": [
+      "temper",
+      "spirit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sleep",
+    "synonyms": [
+      "rest",
+      "slumber"
+    ],
+    "antonyms": [
+      "wakefulness"
+    ]
+  },
+  {
+    "word": "kindness",
+    "synonyms": [
+      "compassion",
+      "generosity"
+    ],
+    "antonyms": [
+      "cruelty",
+      "malice"
+    ]
+  },
+  {
+    "word": "relax",
+    "synonyms": [
+      "unwind",
+      "rest"
+    ],
+    "antonyms": [
+      "tense up"
+    ]
+  },
+  {
+    "word": "peaceful",
+    "synonyms": [
+      "tranquil",
+      "placid"
+    ],
+    "antonyms": [
+      "turbulent",
+      "chaotic"
+    ]
+  },
+  {
+    "word": "cheer",
+    "synonyms": [
+      "applaud",
+      "encourage"
+    ],
+    "antonyms": [
+      "boo",
+      "jeer"
+    ]
+  },
+  {
+    "word": "hobby",
+    "synonyms": [
+      "pastime",
+      "pursuit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "holiday",
+    "synonyms": [
+      "vacation",
+      "break"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dream",
+    "synonyms": [
+      "aspiration",
+      "ambition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "content",
+    "synonyms": [
+      "satisfied",
+      "pleased"
+    ],
+    "antonyms": [
+      "discontented"
+    ]
+  },
+  {
+    "word": "cheerful",
+    "synonyms": [
+      "bright",
+      "sunny"
+    ],
+    "antonyms": [
+      "glum",
+      "morose"
+    ]
+  },
+  {
+    "word": "upbeat",
+    "synonyms": [
+      "positive",
+      "buoyant"
+    ],
+    "antonyms": [
+      "downbeat",
+      "gloomy"
+    ]
+  },
+  {
+    "word": "grateful",
+    "synonyms": [
+      "thankful",
+      "appreciative"
+    ],
+    "antonyms": [
+      "ungrateful"
+    ]
+  },
+  {
+    "word": "optimistic",
+    "synonyms": [
+      "hopeful",
+      "confident"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "word": "pessimistic",
+    "synonyms": [
+      "cynical",
+      "defeatist"
+    ],
+    "antonyms": [
+      "optimistic"
+    ]
+  },
+  {
+    "word": "resilient",
+    "synonyms": [
+      "tough",
+      "hardy"
+    ],
+    "antonyms": [
+      "fragile"
+    ]
+  },
+  {
+    "word": "cope",
+    "synonyms": [
+      "manage",
+      "get by"
+    ],
+    "antonyms": [
+      "falter"
+    ]
+  },
+  {
+    "word": "overwhelmed",
+    "synonyms": [
+      "swamped",
+      "overburdened"
+    ],
+    "antonyms": [
+      "unburdened"
+    ]
+  },
+  {
+    "word": "fulfilled",
+    "synonyms": [
+      "content",
+      "gratified"
+    ],
+    "antonyms": [
+      "frustrated",
+      "unfulfilled"
+    ]
+  },
+  {
+    "word": "satisfied",
+    "synonyms": [
+      "content",
+      "pleased"
+    ],
+    "antonyms": [
+      "dissatisfied"
+    ]
+  },
+  {
+    "word": "worry",
+    "synonyms": [
+      "anxiety",
+      "concern"
+    ],
+    "antonyms": [
+      "calm",
+      "serenity"
+    ]
+  },
+  {
+    "word": "relieved",
+    "synonyms": [
+      "reassured",
+      "comforted"
+    ],
+    "antonyms": [
+      "distressed"
+    ]
+  },
+  {
+    "word": "amused",
+    "synonyms": [
+      "entertained",
+      "diverted"
+    ],
+    "antonyms": [
+      "bored"
+    ]
+  },
+  {
+    "word": "ecstatic",
+    "synonyms": [
+      "elated",
+      "overjoyed"
+    ],
+    "antonyms": [
+      "miserable"
+    ]
+  },
+  {
+    "word": "self-care",
+    "synonyms": [
+      "self-maintenance",
+      "personal wellness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "boost",
+    "synonyms": [
+      "lift",
+      "encouragement"
+    ],
+    "antonyms": [
+      "setback",
+      "knock"
+    ]
+  },
+  {
+    "word": "lift",
+    "synonyms": [
+      "raise",
+      "cheer up"
+    ],
+    "antonyms": [
+      "lower",
+      "depress"
+    ]
+  },
+  {
+    "word": "uplifting",
+    "synonyms": [
+      "inspiring",
+      "encouraging"
+    ],
+    "antonyms": [
+      "depressing",
+      "dispiriting"
+    ]
+  },
+  {
+    "word": "melancholy",
+    "synonyms": [
+      "sadness",
+      "wistfulness"
+    ],
+    "antonyms": [
+      "cheerfulness",
+      "joy"
+    ]
+  },
+  {
+    "word": "gloomy",
+    "synonyms": [
+      "dismal",
+      "dreary"
+    ],
+    "antonyms": [
+      "cheerful",
+      "bright"
+    ]
+  },
+  {
+    "word": "jubilant",
+    "synonyms": [
+      "exultant",
+      "triumphant"
+    ],
+    "antonyms": [
+      "despondent"
+    ]
+  },
+  {
+    "word": "reassure",
+    "synonyms": [
+      "comfort",
+      "console"
+    ],
+    "antonyms": [
+      "alarm",
+      "unsettle"
+    ]
+  },
+  {
+    "word": "exhilarated",
+    "synonyms": [
+      "thrilled",
+      "elated"
+    ],
+    "antonyms": [
+      "dejected"
+    ]
+  },
+  {
+    "word": "equanimity",
+    "synonyms": [
+      "composure",
+      "serenity"
+    ],
+    "antonyms": [
+      "agitation",
+      "disquiet"
+    ]
+  },
+  {
+    "word": "exuberant",
+    "synonyms": [
+      "ebullient",
+      "effusive"
+    ],
+    "antonyms": [
+      "reserved",
+      "subdued"
+    ]
+  },
+  {
+    "word": "melancholic",
+    "synonyms": [
+      "wistful",
+      "sorrowful"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "introspection",
+    "synonyms": [
+      "self-examination",
+      "self-reflection"
+    ],
+    "antonyms": [
+      "extroversion"
+    ]
+  },
+  {
+    "word": "catharsis",
+    "synonyms": [
+      "release",
+      "purgation"
+    ],
+    "antonyms": [
+      "repression"
+    ]
+  },
+  {
+    "word": "ruminate",
+    "synonyms": [
+      "brood",
+      "meditate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vulnerability",
+    "synonyms": [
+      "openness",
+      "fragility"
+    ],
+    "antonyms": [
+      "invulnerability"
+    ]
+  },
+  {
+    "word": "resignation",
+    "synonyms": [
+      "acceptance",
+      "submission"
+    ],
+    "antonyms": [
+      "defiance",
+      "resistance"
+    ]
+  },
+  {
+    "word": "complacency",
+    "synonyms": [
+      "self-satisfaction",
+      "smugness"
+    ],
+    "antonyms": [
+      "vigilance"
+    ]
+  },
+  {
+    "word": "wistful",
+    "synonyms": [
+      "nostalgic",
+      "yearning"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "word": "buoyant",
+    "synonyms": [
+      "cheerful",
+      "optimistic"
+    ],
+    "antonyms": [
+      "despondent",
+      "dejected"
+    ]
+  },
+  {
+    "word": "disillusioned",
+    "synonyms": [
+      "disenchanted",
+      "disappointed"
+    ],
+    "antonyms": [
+      "idealistic"
+    ]
+  },
+  {
+    "word": "apathy",
+    "synonyms": [
+      "indifference",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm",
+      "passion"
+    ]
+  },
+  {
+    "word": "ambivalence",
+    "synonyms": [
+      "mixed feelings",
+      "uncertainty"
+    ],
+    "antonyms": [
+      "certainty"
+    ]
+  },
+  {
+    "word": "sanguine",
+    "synonyms": [
+      "hopeful",
+      "optimistic"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "word": "stoicism",
+    "synonyms": [
+      "fortitude",
+      "endurance"
+    ],
+    "antonyms": [
+      "emotionalism"
+    ]
+  },
+  {
+    "word": "empathetic",
+    "synonyms": [
+      "compassionate",
+      "understanding"
+    ],
+    "antonyms": [
+      "callous",
+      "indifferent"
+    ]
+  },
+  {
+    "word": "altruistic",
+    "synonyms": [
+      "unselfish",
+      "benevolent"
+    ],
+    "antonyms": [
+      "selfish",
+      "egoistic"
+    ]
+  },
+  {
+    "word": "solace",
+    "synonyms": [
+      "comfort",
+      "consolation"
+    ],
+    "antonyms": [
+      "distress"
+    ]
+  },
+  {
+    "word": "reverie",
+    "synonyms": [
+      "daydream",
+      "trance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zest",
+    "synonyms": [
+      "enthusiasm",
+      "gusto"
+    ],
+    "antonyms": [
+      "apathy",
+      "listlessness"
+    ]
+  },
+  {
+    "word": "gratification",
+    "synonyms": [
+      "satisfaction",
+      "fulfilment"
+    ],
+    "antonyms": [
+      "frustration"
+    ]
+  },
+  {
+    "word": "rejuvenation",
+    "synonyms": [
+      "renewal",
+      "revival"
+    ],
+    "antonyms": [
+      "exhaustion"
+    ]
+  },
+  {
+    "word": "effervescence",
+    "synonyms": [
+      "vivacity",
+      "exuberance"
+    ],
+    "antonyms": [
+      "lethargy"
+    ]
+  },
+  {
+    "word": "disposition",
+    "synonyms": [
+      "temperament",
+      "nature"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "temperament",
+    "synonyms": [
+      "disposition",
+      "character"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "equilibrium",
+    "synonyms": [
+      "balance",
+      "stability"
+    ],
+    "antonyms": [
+      "imbalance"
+    ]
+  },
+  {
+    "word": "resolve",
+    "synonyms": [
+      "determination",
+      "resolution"
+    ],
+    "antonyms": [
+      "irresolution",
+      "indecision"
+    ]
+  },
+  {
+    "word": "perseverance",
+    "synonyms": [
+      "persistence",
+      "tenacity"
+    ],
+    "antonyms": [
+      "surrender",
+      "giving up"
+    ]
+  },
+  {
+    "word": "tenacity",
+    "synonyms": [
+      "persistence",
+      "doggedness"
+    ],
+    "antonyms": [
+      "irresolution"
+    ]
+  },
+  {
+    "word": "indulgence",
+    "synonyms": [
+      "treat",
+      "luxury"
+    ],
+    "antonyms": [
+      "self-denial",
+      "austerity"
+    ]
+  },
+  {
+    "word": "reassurance",
+    "synonyms": [
+      "comfort",
+      "assurance"
+    ],
+    "antonyms": [
+      "alarm"
+    ]
+  },
+  {
+    "word": "consolation",
+    "synonyms": [
+      "comfort",
+      "solace"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fortitude",
+    "synonyms": [
+      "courage",
+      "resilience"
+    ],
+    "antonyms": [
+      "cowardice"
+    ]
+  },
+  {
+    "word": "wellspring",
+    "synonyms": [
+      "source",
+      "fount"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ataraxia",
+    "synonyms": [
+      "tranquillity",
+      "imperturbability"
+    ],
+    "antonyms": [
+      "anxiety"
+    ]
+  },
+  {
+    "word": "quietude",
+    "synonyms": [
+      "stillness",
+      "calm"
+    ],
+    "antonyms": [
+      "clamour",
+      "tumult"
+    ]
+  },
+  {
+    "word": "felicity",
+    "synonyms": [
+      "happiness",
+      "bliss"
+    ],
+    "antonyms": [
+      "misery"
+    ]
+  },
+  {
+    "word": "exultation",
+    "synonyms": [
+      "jubilation",
+      "triumph"
+    ],
+    "antonyms": [
+      "despair"
+    ]
+  },
+  {
+    "word": "transcendence",
+    "synonyms": [
+      "sublimity",
+      "elevation"
+    ],
+    "antonyms": [
+      "mundaneness"
+    ]
+  },
+  {
+    "word": "gladden",
+    "synonyms": [
+      "delight",
+      "please"
+    ],
+    "antonyms": [
+      "sadden",
+      "dismay"
+    ]
+  },
+  {
+    "word": "beatitude",
+    "synonyms": [
+      "bliss",
+      "blessedness"
+    ],
+    "antonyms": [
+      "misery"
+    ]
+  },
+  {
+    "word": "equipoise",
+    "synonyms": [
+      "equilibrium",
+      "poise"
+    ],
+    "antonyms": [
+      "imbalance"
+    ]
+  },
+  {
+    "word": "languor",
+    "synonyms": [
+      "lethargy",
+      "listlessness"
+    ],
+    "antonyms": [
+      "vigour",
+      "energy"
+    ]
+  },
+  {
+    "word": "lassitude",
+    "synonyms": [
+      "weariness",
+      "lethargy"
+    ],
+    "antonyms": [
+      "vitality"
+    ]
+  },
+  {
+    "word": "mirthful",
+    "synonyms": [
+      "merry",
+      "jolly"
+    ],
+    "antonyms": [
+      "sombre",
+      "mirthless"
+    ]
+  },
+  {
+    "word": "ebullient",
+    "synonyms": [
+      "exuberant",
+      "buoyant"
+    ],
+    "antonyms": [
+      "subdued",
+      "restrained"
+    ]
+  },
+  {
+    "word": "jocund",
+    "synonyms": [
+      "cheerful",
+      "merry"
+    ],
+    "antonyms": [
+      "morose",
+      "gloomy"
+    ]
+  },
+  {
+    "word": "gleeful",
+    "synonyms": [
+      "joyful",
+      "merry"
+    ],
+    "antonyms": [
+      "doleful"
+    ]
+  },
+  {
+    "word": "rapture",
+    "synonyms": [
+      "ecstasy",
+      "euphoria"
+    ],
+    "antonyms": [
+      "despondency"
+    ]
+  },
+  {
+    "word": "pensive",
+    "synonyms": [
+      "thoughtful",
+      "reflective"
+    ],
+    "antonyms": [
+      "carefree"
+    ]
+  },
+  {
+    "word": "buoyancy",
+    "synonyms": [
+      "cheerfulness",
+      "resilience"
+    ],
+    "antonyms": [
+      "despondency"
+    ]
+  },
+  {
+    "word": "mellow",
+    "synonyms": [
+      "relaxed",
+      "gentle"
+    ],
+    "antonyms": [
+      "harsh",
+      "tense"
+    ]
+  },
+  {
+    "word": "serendipity",
+    "synonyms": [
+      "happy accident",
+      "chance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bonhomie",
+    "synonyms": [
+      "geniality",
+      "camaraderie"
+    ],
+    "antonyms": [
+      "hostility"
+    ]
+  },
+  {
+    "word": "halcyon",
+    "synonyms": [
+      "idyllic",
+      "tranquil"
+    ],
+    "antonyms": [
+      "turbulent"
+    ]
+  },
+  {
+    "word": "idyllic",
+    "synonyms": [
+      "blissful",
+      "pastoral"
+    ],
+    "antonyms": [
+      "dreadful"
+    ]
+  },
+  {
+    "word": "chagrin",
+    "synonyms": [
+      "annoyance",
+      "vexation"
+    ],
+    "antonyms": [
+      "delight"
+    ]
+  },
+  {
+    "word": "malaise",
+    "synonyms": [
+      "unease",
+      "discomfort"
+    ],
+    "antonyms": [
+      "well-being"
+    ]
+  },
+  {
+    "word": "ennui",
+    "synonyms": [
+      "boredom",
+      "listlessness"
+    ],
+    "antonyms": [
+      "excitement"
+    ]
+  },
+  {
+    "word": "acedia",
+    "synonyms": [
+      "apathy",
+      "spiritual sloth"
+    ],
+    "antonyms": [
+      "zeal"
+    ]
+  },
+  {
+    "word": "lugubrious",
+    "synonyms": [
+      "mournful",
+      "doleful"
+    ],
+    "antonyms": [
+      "jovial"
+    ]
+  },
+  {
+    "word": "disconsolate",
+    "synonyms": [
+      "inconsolable",
+      "dejected"
+    ],
+    "antonyms": [
+      "consoled"
+    ]
+  },
+  {
+    "word": "forlorn",
+    "synonyms": [
+      "lonely",
+      "forsaken"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "exasperated",
+    "synonyms": [
+      "irritated",
+      "infuriated"
+    ],
+    "antonyms": [
+      "pleased"
+    ]
+  },
+  {
+    "word": "vexed",
+    "synonyms": [
+      "annoyed",
+      "irritated"
+    ],
+    "antonyms": [
+      "soothed"
+    ]
+  },
+  {
+    "word": "gladness",
+    "synonyms": [
+      "joy",
+      "delight"
+    ],
+    "antonyms": [
+      "sorrow"
+    ]
+  },
+  {
+    "word": "ecstasy",
+    "synonyms": [
+      "rapture",
+      "bliss"
+    ],
+    "antonyms": [
+      "agony"
+    ]
+  },
+  {
+    "word": "elation",
+    "synonyms": [
+      "euphoria",
+      "high spirits"
+    ],
+    "antonyms": [
+      "dejection"
+    ]
+  },
+  {
+    "word": "jubilation",
+    "synonyms": [
+      "rejoicing",
+      "exultation"
+    ],
+    "antonyms": [
+      "despair"
+    ]
+  },
+  {
+    "word": "hilarity",
+    "synonyms": [
+      "merriment",
+      "mirth"
+    ],
+    "antonyms": [
+      "gloom"
+    ]
+  },
+  {
+    "word": "whimsical",
+    "synonyms": [
+      "playful",
+      "quirky"
+    ],
+    "antonyms": [
+      "serious",
+      "sober"
+    ]
+  },
+  {
+    "word": "phlegmatic",
+    "synonyms": [
+      "stolid",
+      "unemotional"
+    ],
+    "antonyms": [
+      "excitable",
+      "volatile"
+    ]
+  },
+  {
+    "word": "unperturbed",
+    "synonyms": [
+      "unruffled",
+      "composed"
+    ],
+    "antonyms": [
+      "agitated",
+      "flustered"
+    ]
+  },
+  {
+    "word": "nonchalant",
+    "synonyms": [
+      "casual",
+      "indifferent"
+    ],
+    "antonyms": [
+      "anxious",
+      "concerned"
+    ]
+  },
+  {
+    "word": "sybaritic",
+    "synonyms": [
+      "luxurious",
+      "self-indulgent"
+    ],
+    "antonyms": [
+      "ascetic",
+      "austere"
+    ]
+  },
+  {
+    "word": "rue",
+    "synonyms": [
+      "regret",
+      "lament"
+    ],
+    "antonyms": [
+      "relish"
+    ]
+  },
+  {
+    "word": "dejection",
+    "synonyms": [
+      "despondency",
+      "melancholy"
+    ],
+    "antonyms": [
+      "elation",
+      "exhilaration"
+    ]
+  }
+]

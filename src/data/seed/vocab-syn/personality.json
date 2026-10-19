@@ -1,0 +1,1310 @@
+[
+  {
+    "word": "kind",
+    "synonyms": [
+      "warm-hearted",
+      "caring",
+      "good-natured"
+    ],
+    "antonyms": [
+      "cruel",
+      "unkind"
+    ]
+  },
+  {
+    "word": "shy",
+    "synonyms": [
+      "bashful",
+      "timid"
+    ],
+    "antonyms": [
+      "outgoing",
+      "bold"
+    ]
+  },
+  {
+    "word": "honest",
+    "synonyms": [
+      "truthful",
+      "sincere"
+    ],
+    "antonyms": [
+      "dishonest",
+      "deceitful"
+    ]
+  },
+  {
+    "word": "generous",
+    "synonyms": [
+      "open-handed",
+      "bountiful"
+    ],
+    "antonyms": [
+      "stingy",
+      "mean"
+    ]
+  },
+  {
+    "word": "selfish",
+    "synonyms": [
+      "self-centred",
+      "egotistical"
+    ],
+    "antonyms": [
+      "unselfish",
+      "altruistic"
+    ]
+  },
+  {
+    "word": "polite",
+    "synonyms": [
+      "courteous",
+      "respectful"
+    ],
+    "antonyms": [
+      "rude",
+      "impolite"
+    ]
+  },
+  {
+    "word": "cheerful",
+    "synonyms": [
+      "upbeat",
+      "jolly",
+      "sunny"
+    ],
+    "antonyms": [
+      "gloomy",
+      "glum"
+    ]
+  },
+  {
+    "word": "brave",
+    "synonyms": [
+      "courageous",
+      "fearless",
+      "valiant"
+    ],
+    "antonyms": [
+      "cowardly",
+      "timid"
+    ]
+  },
+  {
+    "word": "patient",
+    "synonyms": [
+      "tolerant",
+      "forbearing"
+    ],
+    "antonyms": [
+      "impatient"
+    ]
+  },
+  {
+    "word": "confident",
+    "synonyms": [
+      "self-assured",
+      "assured"
+    ],
+    "antonyms": [
+      "insecure",
+      "unsure"
+    ]
+  },
+  {
+    "word": "nervous",
+    "synonyms": [
+      "anxious",
+      "uneasy"
+    ],
+    "antonyms": [
+      "calm",
+      "relaxed"
+    ]
+  },
+  {
+    "word": "rude",
+    "synonyms": [
+      "impolite",
+      "discourteous"
+    ],
+    "antonyms": [
+      "polite",
+      "courteous"
+    ]
+  },
+  {
+    "word": "calm",
+    "synonyms": [
+      "composed",
+      "serene",
+      "level-headed"
+    ],
+    "antonyms": [
+      "agitated",
+      "anxious"
+    ]
+  },
+  {
+    "word": "careful",
+    "synonyms": [
+      "cautious",
+      "attentive"
+    ],
+    "antonyms": [
+      "careless",
+      "reckless"
+    ]
+  },
+  {
+    "word": "creative",
+    "synonyms": [
+      "imaginative",
+      "inventive"
+    ],
+    "antonyms": [
+      "unimaginative"
+    ]
+  },
+  {
+    "word": "lazy",
+    "synonyms": [
+      "idle",
+      "indolent"
+    ],
+    "antonyms": [
+      "diligent",
+      "industrious"
+    ]
+  },
+  {
+    "word": "bossy",
+    "synonyms": [
+      "domineering",
+      "overbearing"
+    ],
+    "antonyms": [
+      "submissive"
+    ]
+  },
+  {
+    "word": "funny",
+    "synonyms": [
+      "amusing",
+      "humorous"
+    ],
+    "antonyms": [
+      "serious",
+      "dull"
+    ]
+  },
+  {
+    "word": "reliable",
+    "synonyms": [
+      "dependable",
+      "trustworthy"
+    ],
+    "antonyms": [
+      "unreliable",
+      "undependable"
+    ]
+  },
+  {
+    "word": "sensitive",
+    "synonyms": [
+      "thin-skinned",
+      "emotional"
+    ],
+    "antonyms": [
+      "insensitive",
+      "callous"
+    ]
+  },
+  {
+    "word": "outgoing",
+    "synonyms": [
+      "sociable",
+      "extroverted"
+    ],
+    "antonyms": [
+      "reserved",
+      "introverted"
+    ]
+  },
+  {
+    "word": "easygoing",
+    "synonyms": [
+      "relaxed",
+      "laid-back"
+    ],
+    "antonyms": [
+      "uptight",
+      "rigid"
+    ]
+  },
+  {
+    "word": "cynical",
+    "synonyms": [
+      "sceptical",
+      "distrustful"
+    ],
+    "antonyms": [
+      "trusting",
+      "naive"
+    ]
+  },
+  {
+    "word": "optimistic",
+    "synonyms": [
+      "hopeful",
+      "positive"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "word": "pessimistic",
+    "synonyms": [
+      "gloomy",
+      "defeatist"
+    ],
+    "antonyms": [
+      "optimistic"
+    ]
+  },
+  {
+    "word": "moody",
+    "synonyms": [
+      "temperamental",
+      "volatile"
+    ],
+    "antonyms": [
+      "even-tempered",
+      "stable"
+    ]
+  },
+  {
+    "word": "stubborn",
+    "synonyms": [
+      "obstinate",
+      "headstrong"
+    ],
+    "antonyms": [
+      "flexible",
+      "compliant"
+    ]
+  },
+  {
+    "word": "sociable",
+    "synonyms": [
+      "friendly",
+      "gregarious"
+    ],
+    "antonyms": [
+      "unsociable",
+      "reclusive"
+    ]
+  },
+  {
+    "word": "reserved",
+    "synonyms": [
+      "reticent",
+      "private"
+    ],
+    "antonyms": [
+      "outgoing",
+      "open"
+    ]
+  },
+  {
+    "word": "thoughtful",
+    "synonyms": [
+      "considerate",
+      "attentive"
+    ],
+    "antonyms": [
+      "thoughtless",
+      "inconsiderate"
+    ]
+  },
+  {
+    "word": "humble",
+    "synonyms": [
+      "modest",
+      "unassuming"
+    ],
+    "antonyms": [
+      "arrogant",
+      "proud"
+    ]
+  },
+  {
+    "word": "loyal",
+    "synonyms": [
+      "faithful",
+      "devoted"
+    ],
+    "antonyms": [
+      "disloyal",
+      "unfaithful"
+    ]
+  },
+  {
+    "word": "dishonest",
+    "synonyms": [
+      "deceitful",
+      "untruthful"
+    ],
+    "antonyms": [
+      "honest",
+      "truthful"
+    ]
+  },
+  {
+    "word": "tolerant",
+    "synonyms": [
+      "open-minded",
+      "accepting"
+    ],
+    "antonyms": [
+      "intolerant",
+      "bigoted"
+    ]
+  },
+  {
+    "word": "bold",
+    "synonyms": [
+      "daring",
+      "fearless"
+    ],
+    "antonyms": [
+      "timid",
+      "cautious"
+    ]
+  },
+  {
+    "word": "anxious",
+    "synonyms": [
+      "worried",
+      "apprehensive"
+    ],
+    "antonyms": [
+      "calm",
+      "carefree"
+    ]
+  },
+  {
+    "word": "considerate",
+    "synonyms": [
+      "thoughtful",
+      "caring"
+    ],
+    "antonyms": [
+      "inconsiderate",
+      "thoughtless"
+    ]
+  },
+  {
+    "word": "fussy",
+    "synonyms": [
+      "finicky",
+      "picky"
+    ],
+    "antonyms": [
+      "easygoing",
+      "undemanding"
+    ]
+  },
+  {
+    "word": "introspective",
+    "synonyms": [
+      "contemplative",
+      "reflective"
+    ],
+    "antonyms": [
+      "extroverted"
+    ]
+  },
+  {
+    "word": "magnanimous",
+    "synonyms": [
+      "generous",
+      "big-hearted"
+    ],
+    "antonyms": [
+      "petty",
+      "spiteful"
+    ]
+  },
+  {
+    "word": "idiosyncratic",
+    "synonyms": [
+      "eccentric",
+      "peculiar"
+    ],
+    "antonyms": [
+      "conventional",
+      "ordinary"
+    ]
+  },
+  {
+    "word": "disdainful",
+    "synonyms": [
+      "scornful",
+      "contemptuous"
+    ],
+    "antonyms": [
+      "admiring",
+      "respectful"
+    ]
+  },
+  {
+    "word": "assertive",
+    "synonyms": [
+      "confident",
+      "self-assured"
+    ],
+    "antonyms": [
+      "passive",
+      "timid"
+    ]
+  },
+  {
+    "word": "sagacious",
+    "synonyms": [
+      "wise",
+      "shrewd"
+    ],
+    "antonyms": [
+      "foolish",
+      "unwise"
+    ]
+  },
+  {
+    "word": "pedantic",
+    "synonyms": [
+      "fussy",
+      "hair-splitting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obsequious",
+    "synonyms": [
+      "servile",
+      "fawning"
+    ],
+    "antonyms": [
+      "independent",
+      "assertive"
+    ]
+  },
+  {
+    "word": "forthright",
+    "synonyms": [
+      "candid",
+      "blunt"
+    ],
+    "antonyms": [
+      "evasive",
+      "tactful"
+    ]
+  },
+  {
+    "word": "tactful",
+    "synonyms": [
+      "diplomatic",
+      "discreet"
+    ],
+    "antonyms": [
+      "tactless",
+      "blunt"
+    ]
+  },
+  {
+    "word": "diplomatic",
+    "synonyms": [
+      "tactful",
+      "politic"
+    ],
+    "antonyms": [
+      "tactless"
+    ]
+  },
+  {
+    "word": "reticent",
+    "synonyms": [
+      "reserved",
+      "taciturn"
+    ],
+    "antonyms": [
+      "talkative",
+      "forthcoming"
+    ]
+  },
+  {
+    "word": "gullible",
+    "synonyms": [
+      "credulous",
+      "naive"
+    ],
+    "antonyms": [
+      "sceptical",
+      "suspicious"
+    ]
+  },
+  {
+    "word": "capricious",
+    "synonyms": [
+      "fickle",
+      "changeable"
+    ],
+    "antonyms": [
+      "constant",
+      "steadfast"
+    ]
+  },
+  {
+    "word": "belligerent",
+    "synonyms": [
+      "hostile",
+      "combative"
+    ],
+    "antonyms": [
+      "peaceable",
+      "conciliatory"
+    ]
+  },
+  {
+    "word": "meek",
+    "synonyms": [
+      "mild",
+      "submissive"
+    ],
+    "antonyms": [
+      "aggressive",
+      "assertive"
+    ]
+  },
+  {
+    "word": "docile",
+    "synonyms": [
+      "tame",
+      "compliant"
+    ],
+    "antonyms": [
+      "unruly",
+      "wild"
+    ]
+  },
+  {
+    "word": "aloof",
+    "synonyms": [
+      "distant",
+      "detached"
+    ],
+    "antonyms": [
+      "friendly",
+      "warm"
+    ]
+  },
+  {
+    "word": "introverted",
+    "synonyms": [
+      "reserved",
+      "quiet"
+    ],
+    "antonyms": [
+      "extroverted",
+      "sociable"
+    ]
+  },
+  {
+    "word": "extroverted",
+    "synonyms": [
+      "outgoing",
+      "sociable"
+    ],
+    "antonyms": [
+      "introverted",
+      "reserved"
+    ]
+  },
+  {
+    "word": "dogged",
+    "synonyms": [
+      "persistent",
+      "tenacious"
+    ],
+    "antonyms": [
+      "half-hearted"
+    ]
+  },
+  {
+    "word": "steadfast",
+    "synonyms": [
+      "unwavering",
+      "resolute"
+    ],
+    "antonyms": [
+      "fickle",
+      "inconstant"
+    ]
+  },
+  {
+    "word": "ingenious",
+    "synonyms": [
+      "clever",
+      "inventive"
+    ],
+    "antonyms": [
+      "unimaginative"
+    ]
+  },
+  {
+    "word": "perceptive",
+    "synonyms": [
+      "observant",
+      "insightful"
+    ],
+    "antonyms": [
+      "obtuse",
+      "unobservant"
+    ]
+  },
+  {
+    "word": "astute",
+    "synonyms": [
+      "shrewd",
+      "perceptive"
+    ],
+    "antonyms": [
+      "naive",
+      "foolish"
+    ]
+  },
+  {
+    "word": "sardonic",
+    "synonyms": [
+      "mocking",
+      "sarcastic"
+    ],
+    "antonyms": [
+      "earnest"
+    ]
+  },
+  {
+    "word": "cantankerous",
+    "synonyms": [
+      "irritable",
+      "grumpy"
+    ],
+    "antonyms": [
+      "genial",
+      "good-humoured"
+    ]
+  },
+  {
+    "word": "jovial",
+    "synonyms": [
+      "cheerful",
+      "genial"
+    ],
+    "antonyms": [
+      "glum",
+      "sullen"
+    ]
+  },
+  {
+    "word": "affable",
+    "synonyms": [
+      "friendly",
+      "amiable"
+    ],
+    "antonyms": [
+      "unfriendly",
+      "aloof"
+    ]
+  },
+  {
+    "word": "frivolous",
+    "synonyms": [
+      "flippant",
+      "trivial"
+    ],
+    "antonyms": [
+      "serious",
+      "earnest"
+    ]
+  },
+  {
+    "word": "scrupulous",
+    "synonyms": [
+      "meticulous",
+      "principled"
+    ],
+    "antonyms": [
+      "unscrupulous",
+      "careless"
+    ]
+  },
+  {
+    "word": "unflappable",
+    "synonyms": [
+      "imperturbable",
+      "composed"
+    ],
+    "antonyms": [
+      "flustered",
+      "rattled"
+    ]
+  },
+  {
+    "word": "pensive",
+    "synonyms": [
+      "thoughtful",
+      "contemplative"
+    ],
+    "antonyms": [
+      "carefree",
+      "unthinking"
+    ]
+  },
+  {
+    "word": "cavalier",
+    "synonyms": [
+      "casual",
+      "offhand"
+    ],
+    "antonyms": [
+      "careful",
+      "conscientious"
+    ]
+  },
+  {
+    "word": "petulant",
+    "synonyms": [
+      "sulky",
+      "peevish"
+    ],
+    "antonyms": [
+      "good-humoured",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "fastidious",
+    "synonyms": [
+      "meticulous",
+      "particular"
+    ],
+    "antonyms": [
+      "careless",
+      "unfussy"
+    ]
+  },
+  {
+    "word": "prudent",
+    "synonyms": [
+      "wise",
+      "cautious"
+    ],
+    "antonyms": [
+      "reckless",
+      "imprudent"
+    ]
+  },
+  {
+    "word": "truculent",
+    "synonyms": [
+      "belligerent",
+      "pugnacious"
+    ],
+    "antonyms": [
+      "conciliatory",
+      "amiable"
+    ]
+  },
+  {
+    "word": "mercurial",
+    "synonyms": [
+      "volatile",
+      "capricious"
+    ],
+    "antonyms": [
+      "steady",
+      "stable"
+    ]
+  },
+  {
+    "word": "supercilious",
+    "synonyms": [
+      "haughty",
+      "condescending"
+    ],
+    "antonyms": [
+      "humble",
+      "modest"
+    ]
+  },
+  {
+    "word": "querulous",
+    "synonyms": [
+      "complaining",
+      "peevish"
+    ],
+    "antonyms": [
+      "contented",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "perfidious",
+    "synonyms": [
+      "treacherous",
+      "disloyal"
+    ],
+    "antonyms": [
+      "faithful",
+      "loyal"
+    ]
+  },
+  {
+    "word": "sanctimonious",
+    "synonyms": [
+      "self-righteous",
+      "holier-than-thou"
+    ],
+    "antonyms": [
+      "humble"
+    ]
+  },
+  {
+    "word": "intransigent",
+    "synonyms": [
+      "uncompromising",
+      "inflexible"
+    ],
+    "antonyms": [
+      "flexible",
+      "accommodating"
+    ]
+  },
+  {
+    "word": "misanthropic",
+    "synonyms": [
+      "antisocial",
+      "unsociable"
+    ],
+    "antonyms": [
+      "philanthropic",
+      "gregarious"
+    ]
+  },
+  {
+    "word": "pusillanimous",
+    "synonyms": [
+      "cowardly",
+      "timorous"
+    ],
+    "antonyms": [
+      "brave",
+      "valiant"
+    ]
+  },
+  {
+    "word": "craven",
+    "synonyms": [
+      "cowardly",
+      "spineless"
+    ],
+    "antonyms": [
+      "brave",
+      "fearless"
+    ]
+  },
+  {
+    "word": "obdurate",
+    "synonyms": [
+      "obstinate",
+      "inflexible"
+    ],
+    "antonyms": [
+      "compliant",
+      "yielding"
+    ]
+  },
+  {
+    "word": "ebullient",
+    "synonyms": [
+      "exuberant",
+      "buoyant"
+    ],
+    "antonyms": [
+      "subdued",
+      "listless"
+    ]
+  },
+  {
+    "word": "effervescent",
+    "synonyms": [
+      "bubbly",
+      "vivacious"
+    ],
+    "antonyms": [
+      "lifeless",
+      "dull"
+    ]
+  },
+  {
+    "word": "phlegmatic",
+    "synonyms": [
+      "stoical",
+      "impassive"
+    ],
+    "antonyms": [
+      "excitable",
+      "volatile"
+    ]
+  },
+  {
+    "word": "dour",
+    "synonyms": [
+      "stern",
+      "austere"
+    ],
+    "antonyms": [
+      "cheerful",
+      "genial"
+    ]
+  },
+  {
+    "word": "morose",
+    "synonyms": [
+      "sullen",
+      "glum"
+    ],
+    "antonyms": [
+      "cheerful",
+      "jovial"
+    ]
+  },
+  {
+    "word": "laconic",
+    "synonyms": [
+      "terse",
+      "concise"
+    ],
+    "antonyms": [
+      "verbose",
+      "garrulous"
+    ]
+  },
+  {
+    "word": "loquacious",
+    "synonyms": [
+      "talkative",
+      "garrulous"
+    ],
+    "antonyms": [
+      "taciturn",
+      "reticent"
+    ]
+  },
+  {
+    "word": "quixotic",
+    "synonyms": [
+      "idealistic",
+      "romantic"
+    ],
+    "antonyms": [
+      "pragmatic",
+      "realistic"
+    ]
+  },
+  {
+    "word": "puckish",
+    "synonyms": [
+      "mischievous",
+      "impish"
+    ],
+    "antonyms": [
+      "solemn",
+      "sober"
+    ]
+  },
+  {
+    "word": "impetuous",
+    "synonyms": [
+      "impulsive",
+      "rash"
+    ],
+    "antonyms": [
+      "deliberate",
+      "prudent"
+    ]
+  },
+  {
+    "word": "censorious",
+    "synonyms": [
+      "critical",
+      "disapproving"
+    ],
+    "antonyms": [
+      "lenient",
+      "tolerant"
+    ]
+  },
+  {
+    "word": "mawkish",
+    "synonyms": [
+      "sentimental",
+      "maudlin"
+    ],
+    "antonyms": [
+      "unsentimental",
+      "restrained"
+    ]
+  },
+  {
+    "word": "insouciant",
+    "synonyms": [
+      "carefree",
+      "nonchalant"
+    ],
+    "antonyms": [
+      "anxious",
+      "worried"
+    ]
+  },
+  {
+    "word": "fractious",
+    "synonyms": [
+      "irritable",
+      "unruly"
+    ],
+    "antonyms": [
+      "docile",
+      "placid"
+    ]
+  },
+  {
+    "word": "peevish",
+    "synonyms": [
+      "irritable",
+      "petulant"
+    ],
+    "antonyms": [
+      "good-natured",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "histrionic",
+    "synonyms": [
+      "theatrical",
+      "melodramatic"
+    ],
+    "antonyms": [
+      "understated",
+      "restrained"
+    ]
+  },
+  {
+    "word": "vainglorious",
+    "synonyms": [
+      "boastful",
+      "conceited"
+    ],
+    "antonyms": [
+      "modest",
+      "humble"
+    ]
+  },
+  {
+    "word": "grandiloquent",
+    "synonyms": [
+      "pompous",
+      "bombastic"
+    ],
+    "antonyms": [
+      "plain-spoken",
+      "laconic"
+    ]
+  },
+  {
+    "word": "bombastic",
+    "synonyms": [
+      "pompous",
+      "grandiose"
+    ],
+    "antonyms": [
+      "modest",
+      "understated"
+    ]
+  },
+  {
+    "word": "churlish",
+    "synonyms": [
+      "boorish",
+      "surly"
+    ],
+    "antonyms": [
+      "courteous",
+      "gracious"
+    ]
+  },
+  {
+    "word": "sycophantic",
+    "synonyms": [
+      "servile",
+      "obsequious"
+    ],
+    "antonyms": [
+      "independent",
+      "outspoken"
+    ]
+  },
+  {
+    "word": "munificent",
+    "synonyms": [
+      "lavish",
+      "bountiful"
+    ],
+    "antonyms": [
+      "stingy",
+      "miserly"
+    ]
+  },
+  {
+    "word": "benevolent",
+    "synonyms": [
+      "kindly",
+      "charitable"
+    ],
+    "antonyms": [
+      "malevolent",
+      "spiteful"
+    ]
+  },
+  {
+    "word": "parsimonious",
+    "synonyms": [
+      "miserly",
+      "stingy"
+    ],
+    "antonyms": [
+      "generous",
+      "lavish"
+    ]
+  },
+  {
+    "word": "vacillating",
+    "synonyms": [
+      "irresolute",
+      "wavering"
+    ],
+    "antonyms": [
+      "decisive",
+      "resolute"
+    ]
+  },
+  {
+    "word": "indefatigable",
+    "synonyms": [
+      "tireless",
+      "untiring"
+    ],
+    "antonyms": [
+      "lethargic"
+    ]
+  },
+  {
+    "word": "fatalistic",
+    "synonyms": [
+      "resigned",
+      "defeatist"
+    ],
+    "antonyms": [
+      "proactive"
+    ]
+  },
+  {
+    "word": "cerebral",
+    "synonyms": [
+      "intellectual",
+      "analytical"
+    ],
+    "antonyms": [
+      "emotional",
+      "instinctive"
+    ]
+  },
+  {
+    "word": "ornery",
+    "synonyms": [
+      "cantankerous",
+      "obstinate"
+    ],
+    "antonyms": [
+      "amiable",
+      "agreeable"
+    ]
+  },
+  {
+    "word": "irascible",
+    "synonyms": [
+      "irritable",
+      "testy"
+    ],
+    "antonyms": [
+      "placid",
+      "genial"
+    ]
+  },
+  {
+    "word": "mordant",
+    "synonyms": [
+      "biting",
+      "caustic"
+    ],
+    "antonyms": [
+      "mild",
+      "gentle"
+    ]
+  },
+  {
+    "word": "unctuous",
+    "synonyms": [
+      "oily",
+      "smarmy"
+    ],
+    "antonyms": [
+      "sincere",
+      "candid"
+    ]
+  },
+  {
+    "word": "lackadaisical",
+    "synonyms": [
+      "listless",
+      "apathetic"
+    ],
+    "antonyms": [
+      "energetic",
+      "diligent"
+    ]
+  },
+  {
+    "word": "mendacious",
+    "synonyms": [
+      "lying",
+      "untruthful"
+    ],
+    "antonyms": [
+      "truthful",
+      "honest"
+    ]
+  }
+]

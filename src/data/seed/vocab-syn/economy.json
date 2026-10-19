@@ -1,0 +1,1246 @@
+[
+  {
+    "word": "gross domestic product",
+    "synonyms": [
+      "national output",
+      "economic output"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trade deficit",
+    "synonyms": [
+      "negative trade balance",
+      "import surplus"
+    ],
+    "antonyms": [
+      "trade surplus"
+    ]
+  },
+  {
+    "word": "fiscal policy",
+    "synonyms": [
+      "budgetary policy",
+      "public spending policy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "monetary policy",
+    "synonyms": [
+      "money supply policy",
+      "central bank policy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "supply chain",
+    "synonyms": [
+      "distribution network",
+      "logistics network"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "demand",
+    "synonyms": [
+      "consumer need",
+      "desire for goods"
+    ],
+    "antonyms": [
+      "supply"
+    ]
+  },
+  {
+    "word": "export",
+    "synonyms": [
+      "ship abroad",
+      "sell overseas"
+    ],
+    "antonyms": [
+      "import"
+    ]
+  },
+  {
+    "word": "import",
+    "synonyms": [
+      "bring in",
+      "purchase from abroad"
+    ],
+    "antonyms": [
+      "export"
+    ]
+  },
+  {
+    "word": "elasticity",
+    "synonyms": [
+      "responsiveness",
+      "sensitivity"
+    ],
+    "antonyms": [
+      "inelasticity"
+    ]
+  },
+  {
+    "word": "opportunity cost",
+    "synonyms": [
+      "forgone alternative",
+      "implicit cost"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "interest rate",
+    "synonyms": [
+      "borrowing rate",
+      "lending rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exchange rate",
+    "synonyms": [
+      "currency rate",
+      "forex rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inflation rate",
+    "synonyms": [
+      "price growth rate",
+      "price growth"
+    ],
+    "antonyms": [
+      "deflation rate"
+    ]
+  },
+  {
+    "word": "consumer price index",
+    "synonyms": [
+      "cost-of-living index",
+      "price index"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "economic indicator",
+    "synonyms": [
+      "economic measure",
+      "economic statistic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "price",
+    "synonyms": [
+      "cost",
+      "charge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cost",
+    "synonyms": [
+      "expense",
+      "outlay"
+    ],
+    "antonyms": [
+      "revenue",
+      "profit"
+    ]
+  },
+  {
+    "word": "wage",
+    "synonyms": [
+      "pay",
+      "earnings"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "salary",
+    "synonyms": [
+      "monthly pay",
+      "remuneration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "employer",
+    "synonyms": [
+      "company owner",
+      "boss"
+    ],
+    "antonyms": [
+      "employee"
+    ]
+  },
+  {
+    "word": "employee",
+    "synonyms": [
+      "worker",
+      "staff member"
+    ],
+    "antonyms": [
+      "employer"
+    ]
+  },
+  {
+    "word": "customer",
+    "synonyms": [
+      "client",
+      "buyer"
+    ],
+    "antonyms": [
+      "vendor",
+      "seller"
+    ]
+  },
+  {
+    "word": "bank",
+    "synonyms": [
+      "financial institution",
+      "lender"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loan",
+    "synonyms": [
+      "advance",
+      "credit"
+    ],
+    "antonyms": [
+      "repayment"
+    ]
+  },
+  {
+    "word": "savings",
+    "synonyms": [
+      "reserves",
+      "nest egg"
+    ],
+    "antonyms": [
+      "debt"
+    ]
+  },
+  {
+    "word": "payment",
+    "synonyms": [
+      "settlement",
+      "remittance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "discount",
+    "synonyms": [
+      "reduction",
+      "markdown"
+    ],
+    "antonyms": [
+      "surcharge",
+      "markup"
+    ]
+  },
+  {
+    "word": "product",
+    "synonyms": [
+      "good",
+      "merchandise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "factory",
+    "synonyms": [
+      "plant",
+      "manufacturing facility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "business",
+    "synonyms": [
+      "enterprise",
+      "firm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "company",
+    "synonyms": [
+      "corporation",
+      "firm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retailer",
+    "synonyms": [
+      "shopkeeper",
+      "store owner"
+    ],
+    "antonyms": [
+      "wholesaler"
+    ]
+  },
+  {
+    "word": "trade",
+    "synonyms": [
+      "commerce",
+      "exchange"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "entrepreneur",
+    "synonyms": [
+      "business founder",
+      "innovator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "startup",
+    "synonyms": [
+      "new venture",
+      "young firm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "margin",
+    "synonyms": [
+      "profit margin",
+      "markup"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "merger",
+    "synonyms": [
+      "amalgamation",
+      "consolidation"
+    ],
+    "antonyms": [
+      "demerger",
+      "divestiture"
+    ]
+  },
+  {
+    "word": "acquisition",
+    "synonyms": [
+      "takeover",
+      "buyout"
+    ],
+    "antonyms": [
+      "divestment"
+    ]
+  },
+  {
+    "word": "bankruptcy",
+    "synonyms": [
+      "insolvency",
+      "liquidation"
+    ],
+    "antonyms": [
+      "solvency"
+    ]
+  },
+  {
+    "word": "outsourcing",
+    "synonyms": [
+      "subcontracting",
+      "contracting out"
+    ],
+    "antonyms": [
+      "insourcing"
+    ]
+  },
+  {
+    "word": "automation",
+    "synonyms": [
+      "mechanization",
+      "computerization"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "unemployment",
+    "synonyms": [
+      "joblessness",
+      "idleness"
+    ],
+    "antonyms": [
+      "employment"
+    ]
+  },
+  {
+    "word": "employment",
+    "synonyms": [
+      "work",
+      "jobs"
+    ],
+    "antonyms": [
+      "unemployment"
+    ]
+  },
+  {
+    "word": "deflation",
+    "synonyms": [
+      "falling prices",
+      "price decline"
+    ],
+    "antonyms": [
+      "inflation"
+    ]
+  },
+  {
+    "word": "credit",
+    "synonyms": [
+      "loan facility",
+      "borrowing"
+    ],
+    "antonyms": [
+      "debit"
+    ]
+  },
+  {
+    "word": "mortgage",
+    "synonyms": [
+      "home loan",
+      "housing loan"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "collateral",
+    "synonyms": [
+      "security",
+      "pledge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shareholder",
+    "synonyms": [
+      "stockholder",
+      "investor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stakeholder",
+    "synonyms": [
+      "interested party",
+      "involved party"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wholesale",
+    "synonyms": [
+      "bulk",
+      "mass"
+    ],
+    "antonyms": [
+      "retail"
+    ]
+  },
+  {
+    "word": "commodity",
+    "synonyms": [
+      "raw material",
+      "staple"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pension",
+    "synonyms": [
+      "retirement benefit",
+      "retirement income"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "liquidity",
+    "synonyms": [
+      "cash availability",
+      "solvency"
+    ],
+    "antonyms": [
+      "illiquidity"
+    ]
+  },
+  {
+    "word": "austerity",
+    "synonyms": [
+      "fiscal restraint",
+      "spending cuts"
+    ],
+    "antonyms": [
+      "stimulus",
+      "expansion"
+    ]
+  },
+  {
+    "word": "stimulus",
+    "synonyms": [
+      "boost",
+      "incentive"
+    ],
+    "antonyms": [
+      "austerity"
+    ]
+  },
+  {
+    "word": "liquidate",
+    "synonyms": [
+      "wind up",
+      "dissolve"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solvency",
+    "synonyms": [
+      "financial stability",
+      "ability to pay"
+    ],
+    "antonyms": [
+      "insolvency"
+    ]
+  },
+  {
+    "word": "viability",
+    "synonyms": [
+      "feasibility",
+      "practicability"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arbitrage",
+    "synonyms": [
+      "price differential trading",
+      "exploiting price gaps"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hedge",
+    "synonyms": [
+      "safeguard",
+      "insurance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "speculation",
+    "synonyms": [
+      "gambling",
+      "conjecture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "volatility",
+    "synonyms": [
+      "instability",
+      "fluctuation"
+    ],
+    "antonyms": [
+      "stability"
+    ]
+  },
+  {
+    "word": "leverage",
+    "synonyms": [
+      "gearing",
+      "borrowed capital"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amortize",
+    "synonyms": [
+      "pay off gradually",
+      "write off gradually"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "depreciation",
+    "synonyms": [
+      "loss of value",
+      "wear"
+    ],
+    "antonyms": [
+      "appreciation"
+    ]
+  },
+  {
+    "word": "appreciation",
+    "synonyms": [
+      "rise in value",
+      "increase in value"
+    ],
+    "antonyms": [
+      "depreciation"
+    ]
+  },
+  {
+    "word": "devaluation",
+    "synonyms": [
+      "currency depreciation",
+      "downgrading"
+    ],
+    "antonyms": [
+      "revaluation"
+    ]
+  },
+  {
+    "word": "protectionism",
+    "synonyms": [
+      "trade barriers",
+      "economic nationalism"
+    ],
+    "antonyms": [
+      "free trade"
+    ]
+  },
+  {
+    "word": "liberalization",
+    "synonyms": [
+      "deregulation",
+      "opening up"
+    ],
+    "antonyms": [
+      "protectionism",
+      "regulation"
+    ]
+  },
+  {
+    "word": "oligopoly",
+    "synonyms": [
+      "few-seller market",
+      "market domination"
+    ],
+    "antonyms": [
+      "competition"
+    ]
+  },
+  {
+    "word": "cartel",
+    "synonyms": [
+      "syndicate",
+      "trust"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "externality",
+    "synonyms": [
+      "spillover effect",
+      "side effect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subsidiary",
+    "synonyms": [
+      "affiliate",
+      "offshoot"
+    ],
+    "antonyms": [
+      "parent company"
+    ]
+  },
+  {
+    "word": "conglomerate",
+    "synonyms": [
+      "diversified group",
+      "holding company"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insolvency",
+    "synonyms": [
+      "bankruptcy",
+      "inability to pay"
+    ],
+    "antonyms": [
+      "solvency"
+    ]
+  },
+  {
+    "word": "remittance",
+    "synonyms": [
+      "money transfer",
+      "overseas payment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trade-off",
+    "synonyms": [
+      "compromise",
+      "exchange"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "output",
+    "synonyms": [
+      "production",
+      "yield"
+    ],
+    "antonyms": [
+      "input"
+    ]
+  },
+  {
+    "word": "incentive",
+    "synonyms": [
+      "motive",
+      "encouragement"
+    ],
+    "antonyms": [
+      "disincentive",
+      "deterrent"
+    ]
+  },
+  {
+    "word": "disincentive",
+    "synonyms": [
+      "deterrent",
+      "discouragement"
+    ],
+    "antonyms": [
+      "incentive"
+    ]
+  },
+  {
+    "word": "outlay",
+    "synonyms": [
+      "expenditure",
+      "spending"
+    ],
+    "antonyms": [
+      "income"
+    ]
+  },
+  {
+    "word": "tranche",
+    "synonyms": [
+      "instalment",
+      "portion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "yield",
+    "synonyms": [
+      "return",
+      "interest earned"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "portfolio",
+    "synonyms": [
+      "investment holdings",
+      "asset mix"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diversification",
+    "synonyms": [
+      "spreading risk",
+      "broadening"
+    ],
+    "antonyms": [
+      "specialization"
+    ]
+  },
+  {
+    "word": "bottleneck",
+    "synonyms": [
+      "constraint",
+      "choke point"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "consolidation",
+    "synonyms": [
+      "merging",
+      "strengthening"
+    ],
+    "antonyms": [
+      "fragmentation"
+    ]
+  },
+  {
+    "word": "redundancy",
+    "synonyms": [
+      "layoff",
+      "job loss"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "laissez-faire",
+    "synonyms": [
+      "free-market policy",
+      "non-intervention"
+    ],
+    "antonyms": [
+      "dirigisme"
+    ]
+  },
+  {
+    "word": "mercantilism",
+    "synonyms": [
+      "trade protectionism",
+      "bullionism"
+    ],
+    "antonyms": [
+      "free trade"
+    ]
+  },
+  {
+    "word": "autarky",
+    "synonyms": [
+      "self-sufficiency",
+      "economic isolation"
+    ],
+    "antonyms": [
+      "interdependence"
+    ]
+  },
+  {
+    "word": "dirigisme",
+    "synonyms": [
+      "state intervention",
+      "state control"
+    ],
+    "antonyms": [
+      "laissez-faire"
+    ]
+  },
+  {
+    "word": "neoliberal",
+    "synonyms": [
+      "free-market",
+      "market-oriented"
+    ],
+    "antonyms": [
+      "interventionist"
+    ]
+  },
+  {
+    "word": "usury",
+    "synonyms": [
+      "loan sharking",
+      "excessive interest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pecuniary",
+    "synonyms": [
+      "financial",
+      "monetary"
+    ],
+    "antonyms": [
+      "non-monetary"
+    ]
+  },
+  {
+    "word": "lucrative",
+    "synonyms": [
+      "profitable",
+      "rewarding"
+    ],
+    "antonyms": [
+      "unprofitable"
+    ]
+  },
+  {
+    "word": "exorbitant",
+    "synonyms": [
+      "excessive",
+      "extortionate"
+    ],
+    "antonyms": [
+      "reasonable",
+      "moderate"
+    ]
+  },
+  {
+    "word": "parsimonious",
+    "synonyms": [
+      "stingy",
+      "miserly"
+    ],
+    "antonyms": [
+      "generous",
+      "lavish"
+    ]
+  },
+  {
+    "word": "frugal",
+    "synonyms": [
+      "thrifty",
+      "economical"
+    ],
+    "antonyms": [
+      "wasteful",
+      "extravagant"
+    ]
+  },
+  {
+    "word": "prodigal",
+    "synonyms": [
+      "wasteful",
+      "spendthrift"
+    ],
+    "antonyms": [
+      "thrifty",
+      "frugal"
+    ]
+  },
+  {
+    "word": "fungible",
+    "synonyms": [
+      "interchangeable",
+      "replaceable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "illiquid",
+    "synonyms": [
+      "hard to sell",
+      "non-cash"
+    ],
+    "antonyms": [
+      "liquid"
+    ]
+  },
+  {
+    "word": "bullion",
+    "synonyms": [
+      "ingots",
+      "precious metal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "specie",
+    "synonyms": [
+      "coinage",
+      "hard money"
+    ],
+    "antonyms": [
+      "paper money"
+    ]
+  },
+  {
+    "word": "seigniorage",
+    "synonyms": [
+      "minting profit",
+      "coinage profit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hyperinflation",
+    "synonyms": [
+      "runaway inflation",
+      "extreme inflation"
+    ],
+    "antonyms": [
+      "deflation"
+    ]
+  },
+  {
+    "word": "stagflation",
+    "synonyms": [
+      "slump with inflation",
+      "inflationary recession"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deleveraging",
+    "synonyms": [
+      "debt reduction",
+      "debt paydown"
+    ],
+    "antonyms": [
+      "leveraging"
+    ]
+  },
+  {
+    "word": "moribund",
+    "synonyms": [
+      "declining",
+      "stagnant"
+    ],
+    "antonyms": [
+      "thriving",
+      "burgeoning"
+    ]
+  },
+  {
+    "word": "burgeoning",
+    "synonyms": [
+      "thriving",
+      "flourishing"
+    ],
+    "antonyms": [
+      "moribund",
+      "declining"
+    ]
+  },
+  {
+    "word": "dearth",
+    "synonyms": [
+      "shortage",
+      "scarcity"
+    ],
+    "antonyms": [
+      "glut",
+      "abundance"
+    ]
+  },
+  {
+    "word": "glut",
+    "synonyms": [
+      "surplus",
+      "oversupply"
+    ],
+    "antonyms": [
+      "shortage",
+      "dearth"
+    ]
+  },
+  {
+    "word": "penury",
+    "synonyms": [
+      "destitution",
+      "poverty"
+    ],
+    "antonyms": [
+      "affluence",
+      "wealth"
+    ]
+  },
+  {
+    "word": "impecunious",
+    "synonyms": [
+      "penniless",
+      "impoverished"
+    ],
+    "antonyms": [
+      "wealthy",
+      "affluent"
+    ]
+  },
+  {
+    "word": "escrow",
+    "synonyms": [
+      "trust account",
+      "held funds"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annuity",
+    "synonyms": [
+      "regular payment",
+      "fixed income"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rent-seeking",
+    "synonyms": [
+      "privilege-seeking",
+      "lobbying for gain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sovereign debt",
+    "synonyms": [
+      "public debt",
+      "government debt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bailout",
+    "synonyms": [
+      "rescue package",
+      "financial rescue"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quantitative easing",
+    "synonyms": [
+      "asset purchases",
+      "money printing"
+    ],
+    "antonyms": [
+      "quantitative tightening"
+    ]
+  },
+  {
+    "word": "dumping",
+    "synonyms": [
+      "below-cost selling",
+      "predatory pricing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lucre",
+    "synonyms": [
+      "money",
+      "gain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pittance",
+    "synonyms": [
+      "meagre sum",
+      "trifle"
+    ],
+    "antonyms": [
+      "fortune"
+    ]
+  },
+  {
+    "word": "exchequer",
+    "synonyms": [
+      "treasury",
+      "public purse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obsolescence",
+    "synonyms": [
+      "outdatedness",
+      "redundancy"
+    ],
+    "antonyms": [
+      "durability"
+    ]
+  },
+  {
+    "word": "cyclical",
+    "synonyms": [
+      "recurrent",
+      "periodic"
+    ],
+    "antonyms": [
+      "acyclical"
+    ]
+  },
+  {
+    "word": "countercyclical",
+    "synonyms": [
+      "anti-cyclical",
+      "stabilizing"
+    ],
+    "antonyms": [
+      "procyclical"
+    ]
+  },
+  {
+    "word": "thrift",
+    "synonyms": [
+      "frugality",
+      "economy"
+    ],
+    "antonyms": [
+      "extravagance",
+      "profligacy"
+    ]
+  },
+  {
+    "word": "hoard",
+    "synonyms": [
+      "stockpile",
+      "stash"
+    ],
+    "antonyms": [
+      "release",
+      "distribute"
+    ]
+  },
+  {
+    "word": "gilt",
+    "synonyms": [
+      "government bond",
+      "sovereign bond"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tithe",
+    "synonyms": [
+      "tenth tax",
+      "church tax"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "levy",
+    "synonyms": [
+      "charge",
+      "tax"
+    ],
+    "antonyms": [
+      "waiver",
+      "exemption"
+    ]
+  },
+  {
+    "word": "remuneration",
+    "synonyms": [
+      "pay",
+      "compensation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emolument",
+    "synonyms": [
+      "salary",
+      "perquisite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deflationary",
+    "synonyms": [
+      "disinflationary",
+      "price-depressing"
+    ],
+    "antonyms": [
+      "inflationary"
+    ]
+  }
+]

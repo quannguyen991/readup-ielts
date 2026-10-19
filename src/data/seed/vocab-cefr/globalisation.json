@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "import",
+    "pos": "noun",
+    "ipa": "/ˈɪmpɔːt/",
+    "meaningVi": "hàng nhập khẩu",
+    "definitionEn": "Goods that are brought into a country from abroad to be sold.",
+    "example": "Many electronic goods sold here are an import from factories in Asia.",
+    "collocation": "major import",
+    "cefr": "B1"
+  },
+  {
+    "word": "export",
+    "pos": "noun",
+    "ipa": "/ˈekspɔːt/",
+    "meaningVi": "xuất khẩu",
+    "definitionEn": "Goods or services sold to customers in another country.",
+    "example": "Vietnamese rice is a major export to markets across Asia and Africa.",
+    "collocation": "major export",
+    "cefr": "B1"
+  },
+  {
+    "word": "trade",
+    "pos": "noun",
+    "ipa": "/treɪd/",
+    "meaningVi": "thương mại",
+    "definitionEn": "The buying and selling of goods between countries or people.",
+    "example": "Trade between the two countries grew rapidly after the new agreement.",
+    "collocation": "fair trade",
+    "cefr": "B1"
+  },
+  {
+    "word": "abroad",
+    "pos": "adverb",
+    "ipa": "/əˈbrɔːd/",
+    "meaningVi": "ở nước ngoài",
+    "definitionEn": "In or to a foreign country.",
+    "example": "Many students dream of studying abroad after finishing high school.",
+    "collocation": "study abroad",
+    "cefr": "B1"
+  },
+  {
+    "word": "foreign",
+    "pos": "adjective",
+    "ipa": "/ˈfɒrən/",
+    "meaningVi": "nước ngoài",
+    "definitionEn": "Belonging to or coming from a country other than your own.",
+    "example": "She speaks three foreign languages fluently and works for a global firm.",
+    "collocation": "foreign language",
+    "cefr": "B1"
+  },
+  {
+    "word": "overseas",
+    "pos": "adverb",
+    "ipa": "/ˌəʊvəˈsiːz/",
+    "meaningVi": "ở hải ngoại",
+    "definitionEn": "In, to, or from a country across the sea.",
+    "example": "Our company is expanding overseas, starting with markets in Singapore.",
+    "collocation": "work overseas",
+    "cefr": "B1"
+  },
+  {
+    "word": "global",
+    "pos": "adjective",
+    "ipa": "/ˈɡləʊbl/",
+    "meaningVi": "toàn cầu",
+    "definitionEn": "Affecting or involving the whole world.",
+    "example": "Climate change is a global problem that needs international cooperation.",
+    "collocation": "global issue",
+    "cefr": "B1"
+  },
+  {
+    "word": "culture",
+    "pos": "noun",
+    "ipa": "/ˈkʌltʃə/",
+    "meaningVi": "văn hoá",
+    "definitionEn": "The customs, beliefs, and arts of a particular society.",
+    "example": "Visitors are often fascinated by the local culture and traditional festivals.",
+    "collocation": "local culture",
+    "cefr": "B1"
+  },
+  {
+    "word": "passport",
+    "pos": "noun",
+    "ipa": "/ˈpɑːspɔːt/",
+    "meaningVi": "hộ chiếu",
+    "definitionEn": "An official document that proves your identity and nationality when travelling.",
+    "example": "You must renew your passport before it expires if you plan to travel.",
+    "collocation": "valid passport",
+    "cefr": "B1"
+  },
+  {
+    "word": "visa",
+    "pos": "noun",
+    "ipa": "/ˈviːzə/",
+    "meaningVi": "thị thực",
+    "definitionEn": "An official permission to enter and stay in a foreign country for a set time.",
+    "example": "I need to apply for a tourist visa before my trip to Canada.",
+    "collocation": "apply for a visa",
+    "cefr": "B1"
+  },
+  {
+    "word": "tourism",
+    "pos": "noun",
+    "ipa": "/ˈtʊərɪzəm/",
+    "meaningVi": "du lịch",
+    "definitionEn": "The business of providing services for people who travel for pleasure.",
+    "example": "Tourism has become one of the largest industries in the country.",
+    "collocation": "mass tourism",
+    "cefr": "B1"
+  },
+  {
+    "word": "worldwide",
+    "pos": "adverb",
+    "ipa": "/ˌwɜːldˈwaɪd/",
+    "meaningVi": "trên toàn thế giới",
+    "definitionEn": "Across the whole world, or in every part of the world.",
+    "example": "The film was released worldwide and earned record box office receipts.",
+    "collocation": "available worldwide",
+    "cefr": "B1"
+  },
+  {
+    "word": "brand",
+    "pos": "noun",
+    "ipa": "/brænd/",
+    "meaningVi": "thương hiệu",
+    "definitionEn": "A name or design that identifies a company's products.",
+    "example": "Vietnamese coffee brands are now sold in supermarkets across Europe.",
+    "collocation": "well-known brand",
+    "cefr": "B1"
+  },
+  {
+    "word": "network",
+    "pos": "noun",
+    "ipa": "/ˈnetwɜːk/",
+    "meaningVi": "mạng lưới",
+    "definitionEn": "A group of connected people, organisations, or computers working together.",
+    "example": "Her professional network helped her find an overseas job quickly.",
+    "collocation": "professional network",
+    "cefr": "B1"
+  },
+  {
+    "word": "product",
+    "pos": "noun",
+    "ipa": "/ˈprɒdʌkt/",
+    "meaningVi": "sản phẩm",
+    "definitionEn": "Something that is made or grown to be sold to customers.",
+    "example": "Many imported products are cheaper than locally made goods.",
+    "collocation": "consumer product",
+    "cefr": "B1"
+  },
+  {
+    "word": "border",
+    "pos": "noun",
+    "ipa": "/ˈbɔːdə/",
+    "meaningVi": "biên giới",
+    "definitionEn": "The line that separates one country or region from another.",
+    "example": "Thousands of workers cross the border every day to reach their jobs.",
+    "collocation": "cross the border",
+    "cefr": "B1"
+  },
+  {
+    "word": "sanction",
+    "pos": "noun",
+    "ipa": "/ˈsæŋkʃn/",
+    "meaningVi": "lệnh trừng phạt",
+    "definitionEn": "An official penalty, such as trade restrictions, imposed on a country.",
+    "example": "The United Nations imposed economic sanctions on the regime after the invasion.",
+    "collocation": "impose sanctions",
+    "cefr": "B2"
+  },
+  {
+    "word": "embargo",
+    "pos": "noun",
+    "ipa": "/ɪmˈbɑːɡəʊ/",
+    "meaningVi": "lệnh cấm vận thương mại",
+    "definitionEn": "An official ban on trade with a particular country.",
+    "example": "The embargo on oil exports severely damaged the country's economy.",
+    "collocation": "trade embargo",
+    "cefr": "B2"
+  },
+  {
+    "word": "quota",
+    "pos": "noun",
+    "ipa": "/ˈkwəʊtə/",
+    "meaningVi": "hạn ngạch",
+    "definitionEn": "A limited number or amount of something that is officially allowed.",
+    "example": "Each member state agreed to a quota for imports of steel.",
+    "collocation": "import quota",
+    "cefr": "B2"
+  },
+  {
+    "word": "protectionism",
+    "pos": "noun",
+    "ipa": "/prəˈtekʃənɪzəm/",
+    "meaningVi": "chủ nghĩa bảo hộ mậu dịch",
+    "definitionEn": "Government policies that shield domestic industries from foreign competition.",
+    "example": "Rising protectionism threatens to slow the growth of global trade.",
+    "collocation": "economic protectionism",
+    "cefr": "B2"
+  },
+  {
+    "word": "treaty",
+    "pos": "noun",
+    "ipa": "/ˈtriːti/",
+    "meaningVi": "hiệp ước",
+    "definitionEn": "A formal written agreement between two or more countries.",
+    "example": "The two nations signed a peace treaty after many years of conflict.",
+    "collocation": "sign a treaty",
+    "cefr": "B2"
+  },
+  {
+    "word": "alliance",
+    "pos": "noun",
+    "ipa": "/əˈlaɪəns/",
+    "meaningVi": "liên minh",
+    "definitionEn": "A union or partnership formed between countries or groups for a shared purpose.",
+    "example": "The military alliance was formed to protect member countries from attack.",
+    "collocation": "military alliance",
+    "cefr": "B2"
+  },
+  {
+    "word": "diplomacy",
+    "pos": "noun",
+    "ipa": "/dɪˈpləʊməsi/",
+    "meaningVi": "ngoại giao",
+    "definitionEn": "The management of relations between countries through negotiation and dialogue.",
+    "example": "Skilful diplomacy helped the two governments resolve their border dispute peacefully.",
+    "collocation": "quiet diplomacy",
+    "cefr": "B2"
+  },
+  {
+    "word": "ambassador",
+    "pos": "noun",
+    "ipa": "/æmˈbæsədə/",
+    "meaningVi": "đại sứ",
+    "definitionEn": "An official who represents their own country in a foreign nation.",
+    "example": "The ambassador hosted a reception to celebrate the national day.",
+    "collocation": "appointed ambassador",
+    "cefr": "B2"
+  },
+  {
+    "word": "heritage",
+    "pos": "noun",
+    "ipa": "/ˈherɪtɪdʒ/",
+    "meaningVi": "di sản",
+    "definitionEn": "Traditions, buildings, and customs passed down from earlier generations.",
+    "example": "The old town is a UNESCO world heritage site visited by thousands.",
+    "collocation": "cultural heritage",
+    "cefr": "B2"
+  },
+  {
+    "word": "assimilation",
+    "pos": "noun",
+    "ipa": "/əˌsɪməˈleɪʃn/",
+    "meaningVi": "sự đồng hoá",
+    "definitionEn": "The process by which people adopt the customs of a new society.",
+    "example": "Early assimilation into the local community can be difficult for newcomers.",
+    "collocation": "cultural assimilation",
+    "cefr": "B2"
+  },
+  {
+    "word": "expansion",
+    "pos": "noun",
+    "ipa": "/ɪkˈspænʃn/",
+    "meaningVi": "sự mở rộng",
+    "definitionEn": "The growth of a business or organisation into new markets or areas.",
+    "example": "The chain's expansion into Asia has doubled its annual revenue.",
+    "collocation": "rapid expansion",
+    "cefr": "B2"
+  },
+  {
+    "word": "stereotype",
+    "pos": "noun",
+    "ipa": "/ˈsteriətaɪp/",
+    "meaningVi": "định kiến, khuôn mẫu",
+    "definitionEn": "A fixed, oversimplified idea about the characteristics of a group of people.",
+    "example": "Media coverage often reinforces harmful stereotypes about immigrants.",
+    "collocation": "harmful stereotype",
+    "cefr": "B2"
+  },
+  {
+    "word": "prejudice",
+    "pos": "noun",
+    "ipa": "/ˈpredʒədɪs/",
+    "meaningVi": "thành kiến",
+    "definitionEn": "An unfair opinion of someone formed without knowing the facts.",
+    "example": "Racial prejudice still affects some job applicants in many countries.",
+    "collocation": "deep-rooted prejudice",
+    "cefr": "B2"
+  },
+  {
+    "word": "identity",
+    "pos": "noun",
+    "ipa": "/aɪˈdentəti/",
+    "meaningVi": "bản sắc",
+    "definitionEn": "The qualities that make a person or group distinct from others.",
+    "example": "Many second-generation migrants struggle to balance their cultural identity.",
+    "collocation": "cultural identity",
+    "cefr": "B2"
+  },
+  {
+    "word": "tradition",
+    "pos": "noun",
+    "ipa": "/trəˈdɪʃn/",
+    "meaningVi": "truyền thống",
+    "definitionEn": "A custom or belief that has been passed down through generations.",
+    "example": "Lunar New Year remains an important tradition for families across the region.",
+    "collocation": "long tradition",
+    "cefr": "B2"
+  },
+  {
+    "word": "boundary",
+    "pos": "noun",
+    "ipa": "/ˈbaʊndri/",
+    "meaningVi": "ranh giới",
+    "definitionEn": "A line that marks the edge or limit of an area or concept.",
+    "example": "The boundary between the two cultures blurs when people move freely.",
+    "collocation": "blur the boundary",
+    "cefr": "B2"
+  },
+  {
+    "word": "partnership",
+    "pos": "noun",
+    "ipa": "/ˈpɑːtnəʃɪp/",
+    "meaningVi": "quan hệ đối tác",
+    "definitionEn": "A relationship in which organisations or countries cooperate toward shared goals.",
+    "example": "The partnership between the two universities has produced many joint research projects.",
+    "collocation": "strategic partnership",
+    "cefr": "B2"
+  },
+  {
+    "word": "delegation",
+    "pos": "noun",
+    "ipa": "/ˌdelɪˈɡeɪʃn/",
+    "meaningVi": "phái đoàn",
+    "definitionEn": "A group of people sent to represent others in negotiations or meetings.",
+    "example": "A trade delegation visited Brussels to discuss new export rules.",
+    "collocation": "send a delegation",
+    "cefr": "B2"
+  },
+  {
+    "word": "exchange",
+    "pos": "noun",
+    "ipa": "/ɪksˈtʃeɪndʒ/",
+    "meaningVi": "sự trao đổi",
+    "definitionEn": "The act of giving one thing and receiving another, such as ideas or students.",
+    "example": "The students benefited greatly from a year-long exchange programme abroad.",
+    "collocation": "student exchange",
+    "cefr": "B2"
+  },
+  {
+    "word": "ethnic",
+    "pos": "adjective",
+    "ipa": "/ˈeθnɪk/",
+    "meaningVi": "dân tộc",
+    "definitionEn": "Relating to a group of people sharing a common culture or origin.",
+    "example": "Vietnam is home to more than fifty ethnic groups with distinctive traditions.",
+    "collocation": "ethnic minority",
+    "cefr": "B2"
+  },
+  {
+    "word": "indigenous",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdɪdʒənəs/",
+    "meaningVi": "bản địa",
+    "definitionEn": "Originating in a particular region or country, not introduced from outside.",
+    "example": "Indigenous communities often lose their languages as cities expand.",
+    "collocation": "indigenous people",
+    "cefr": "B2"
+  },
+  {
+    "word": "nationalism",
+    "pos": "noun",
+    "ipa": "/ˈnæʃnəlɪzəm/",
+    "meaningVi": "chủ nghĩa dân tộc",
+    "definitionEn": "Strong loyalty to one's country, sometimes placing it above others.",
+    "example": "Rising nationalism has led some governments to restrict foreign investment.",
+    "collocation": "economic nationalism",
+    "cefr": "B2"
+  },
+  {
+    "word": "xenophobia",
+    "pos": "noun",
+    "ipa": "/ˌzenəˈfəʊbiə/",
+    "meaningVi": "bài ngoại, sợ người nước ngoài",
+    "definitionEn": "Fear or hostility towards people perceived as foreign.",
+    "example": "Economic anxiety has fuelled xenophobia in several European communities.",
+    "collocation": "rising xenophobia",
+    "cefr": "C1"
+  },
+  {
+    "word": "hybridity",
+    "pos": "noun",
+    "ipa": "/haɪˈbrɪdəti/",
+    "meaningVi": "tính lai ghép",
+    "definitionEn": "The mixing of different cultural elements to form something new.",
+    "example": "Scholars celebrate the hybridity of modern music that blends many traditions.",
+    "collocation": "cultural hybridity",
+    "cefr": "C1"
+  },
+  {
+    "word": "ethnocentrism",
+    "pos": "noun",
+    "ipa": "/ˌeθnəʊˈsentrɪzəm/",
+    "meaningVi": "chủ nghĩa dân tộc trung tâm",
+    "definitionEn": "The belief that one's own culture is superior to all others.",
+    "example": "Ethnocentrism can make travellers misunderstand customs that seem strange.",
+    "collocation": "cultural ethnocentrism",
+    "cefr": "C1"
+  },
+  {
+    "word": "transcend",
+    "pos": "verb",
+    "ipa": "/trænˈsend/",
+    "meaningVi": "vượt qua, vượt lên trên",
+    "definitionEn": "To go beyond the limits or boundaries of something.",
+    "example": "Great art often transcends national borders and speaks to universal human experiences.",
+    "collocation": "transcend borders",
+    "cefr": "C1"
+  },
+  {
+    "word": "proliferation",
+    "pos": "noun",
+    "ipa": "/prəˌlɪfəˈreɪʃn/",
+    "meaningVi": "sự gia tăng nhanh chóng",
+    "definitionEn": "A rapid increase in the number or spread of something.",
+    "example": "The proliferation of foreign brands has changed local shopping habits dramatically.",
+    "collocation": "rapid proliferation",
+    "cefr": "C1"
+  },
+  {
+    "word": "commodification",
+    "pos": "noun",
+    "ipa": "/kəˌmɒdɪfɪˈkeɪʃn/",
+    "meaningVi": "sự hàng hoá hoá",
+    "definitionEn": "The process of turning something valuable into a product to be bought and sold.",
+    "example": "Critics warn about the commodification of traditional festivals for tourists.",
+    "collocation": "commodification of culture",
+    "cefr": "C1"
+  },
+  {
+    "word": "hybrid",
+    "pos": "adjective",
+    "ipa": "/ˈhaɪbrɪd/",
+    "meaningVi": "lai, kết hợp",
+    "definitionEn": "Made up of two different elements or traditions combined together.",
+    "example": "The restaurant serves a hybrid cuisine that blends French and Vietnamese flavours.",
+    "collocation": "hybrid cuisine",
+    "cefr": "C1"
+  },
+  {
+    "word": "ubiquitous",
+    "pos": "adjective",
+    "ipa": "/juːˈbɪkwɪtəs/",
+    "meaningVi": "có mặt khắp nơi",
+    "definitionEn": "Seeming to be present everywhere at the same time.",
+    "example": "Smartphones have become ubiquitous, even in remote rural villages.",
+    "collocation": "ubiquitous presence",
+    "cefr": "C1"
+  },
+  {
+    "word": "entrenched",
+    "pos": "adjective",
+    "ipa": "/ɪnˈtrentʃt/",
+    "meaningVi": "ăn sâu, bám rễ",
+    "definitionEn": "Firmly established and difficult to change or remove.",
+    "example": "Entrenched attitudes towards migrants are slow to change in some regions.",
+    "collocation": "deeply entrenched",
+    "cefr": "C1"
+  },
+  {
+    "word": "deregulation",
+    "pos": "noun",
+    "ipa": "/diːˌreɡjuˈleɪʃn/",
+    "meaningVi": "bãi bỏ quy định",
+    "definitionEn": "The removal of government rules that control businesses or markets.",
+    "example": "Deregulation of the airline industry led to cheaper fares for travellers.",
+    "collocation": "financial deregulation",
+    "cefr": "C1"
+  },
+  {
+    "word": "insular",
+    "pos": "adjective",
+    "ipa": "/ˈɪnsjələ/",
+    "meaningVi": "khép kín, hẹp hòi",
+    "definitionEn": "Isolated in outlook and unwilling to accept new ideas from outside.",
+    "example": "An insular community can resist beneficial change from the wider world.",
+    "collocation": "insular attitude",
+    "cefr": "C1"
+  },
+  {
+    "word": "parochial",
+    "pos": "adjective",
+    "ipa": "/pəˈrəʊkiəl/",
+    "meaningVi": "hẹp hòi, cục bộ",
+    "definitionEn": "Having a narrow focus on local concerns rather than wider issues.",
+    "example": "His parochial views made it hard for him to appreciate foreign cultures.",
+    "collocation": "parochial outlook",
+    "cefr": "C1"
+  },
+  {
+    "word": "marginalise",
+    "pos": "verb",
+    "ipa": "/ˈmɑːdʒɪnəlaɪz/",
+    "meaningVi": "gạt ra ngoài lề",
+    "definitionEn": "To treat a group or person as unimportant and push them to the edge.",
+    "example": "Immigrant communities are often marginalised in the public debate.",
+    "collocation": "marginalise minorities",
+    "cefr": "C1"
+  },
+  {
+    "word": "disenfranchise",
+    "pos": "verb",
+    "ipa": "/ˌdɪsɪnˈfrentʃaɪz/",
+    "meaningVi": "tước quyền",
+    "definitionEn": "To deprive a person or group of their rights, especially voting rights.",
+    "example": "Strict residency rules can disenfranchise seasonal migrant workers.",
+    "collocation": "disenfranchise voters",
+    "cefr": "C1"
+  },
+  {
+    "word": "precarious",
+    "pos": "adjective",
+    "ipa": "/prɪˈkeəriəs/",
+    "meaningVi": "bấp bênh",
+    "definitionEn": "Dependent on chance or uncertain, and at risk of collapsing.",
+    "example": "Many migrant labourers hold precarious jobs with no guaranteed income.",
+    "collocation": "precarious employment",
+    "cefr": "C1"
+  },
+  {
+    "word": "nomadic",
+    "pos": "adjective",
+    "ipa": "/nəʊˈmædɪk/",
+    "meaningVi": "du mục, lang thang",
+    "definitionEn": "Moving from place to place rather than settling permanently.",
+    "example": "Their nomadic lifestyle depends on the seasonal movement of livestock.",
+    "collocation": "nomadic lifestyle",
+    "cefr": "C1"
+  },
+  {
+    "word": "sovereignty",
+    "pos": "noun",
+    "ipa": "/ˈsɒvrənti/",
+    "meaningVi": "chủ quyền",
+    "definitionEn": "The supreme authority of a state to govern itself without outside control.",
+    "example": "Some citizens worry that trade treaties threaten national sovereignty.",
+    "collocation": "national sovereignty",
+    "cefr": "C1"
+  },
+  {
+    "word": "jurisdiction",
+    "pos": "noun",
+    "ipa": "/ˌdʒʊərɪsˈdɪkʃn/",
+    "meaningVi": "thẩm quyền pháp lý",
+    "definitionEn": "The official power of a court or authority to make legal decisions.",
+    "example": "The international court has no jurisdiction over disputes between private firms.",
+    "collocation": "legal jurisdiction",
+    "cefr": "C1"
+  },
+  {
+    "word": "ratify",
+    "pos": "verb",
+    "ipa": "/ˈrætɪfaɪ/",
+    "meaningVi": "phê chuẩn",
+    "definitionEn": "To formally approve an agreement or treaty so it becomes legally binding.",
+    "example": "Parliament voted to ratify the new trade agreement after lengthy debate.",
+    "collocation": "ratify a treaty",
+    "cefr": "C1"
+  },
+  {
+    "word": "geopolitical",
+    "pos": "adjective",
+    "ipa": "/ˌdʒiːəʊpəˈlɪtɪkl/",
+    "meaningVi": "địa chính trị",
+    "definitionEn": "Relating to the way geography affects politics and international power.",
+    "example": "Geopolitical tensions in the region have disrupted global shipping routes.",
+    "collocation": "geopolitical tensions",
+    "cefr": "C1"
+  },
+  {
+    "word": "reciprocity",
+    "pos": "noun",
+    "ipa": "/ˌresɪˈprɒsəti/",
+    "meaningVi": "sự có qua có lại",
+    "definitionEn": "A mutual exchange of benefits or privileges between two parties.",
+    "example": "The agreement rests on reciprocity, with both countries lowering their tariffs equally.",
+    "collocation": "mutual reciprocity",
+    "cefr": "C1"
+  },
+  {
+    "word": "homogeneous",
+    "pos": "adjective",
+    "ipa": "/ˌhɒməˈdʒiːniəs/",
+    "meaningVi": "đồng nhất",
+    "definitionEn": "Composed of parts that are all of the same kind or character.",
+    "example": "Global markets are becoming less homogeneous as local tastes persist.",
+    "collocation": "homogeneous society",
+    "cefr": "C1"
+  },
+  {
+    "word": "vernacular",
+    "pos": "adjective",
+    "ipa": "/vəˈnækjələ/",
+    "meaningVi": "bản địa, dân dã",
+    "definitionEn": "Relating to the everyday language or local style of a particular place.",
+    "example": "Vernacular architecture reflects the climate and materials of each region.",
+    "collocation": "vernacular architecture",
+    "cefr": "C1"
+  },
+  {
+    "word": "multifaceted",
+    "pos": "adjective",
+    "ipa": "/ˌmʌltiˈfæsɪtɪd/",
+    "meaningVi": "nhiều mặt",
+    "definitionEn": "Having many different aspects, features, or dimensions.",
+    "example": "The phenomenon is multifaceted, affecting economics, culture and politics alike.",
+    "collocation": "multifaceted issue",
+    "cefr": "C1"
+  },
+  {
+    "word": "inexorable",
+    "pos": "adjective",
+    "ipa": "/ɪnˈeksərəbl/",
+    "meaningVi": "không thể ngăn cản",
+    "definitionEn": "Impossible to stop or prevent from continuing or progressing.",
+    "example": "The inexorable rise of e-commerce has transformed local retail markets.",
+    "collocation": "inexorable rise",
+    "cefr": "C1"
+  },
+  {
+    "word": "contentious",
+    "pos": "adjective",
+    "ipa": "/kənˈtenʃəs/",
+    "meaningVi": "gây tranh cãi",
+    "definitionEn": "Likely to cause heated disagreement or public argument.",
+    "example": "Foreign ownership of farmland remains a highly contentious political issue.",
+    "collocation": "contentious issue",
+    "cefr": "C1"
+  },
+  {
+    "word": "salient",
+    "pos": "adjective",
+    "ipa": "/ˈseɪliənt/",
+    "meaningVi": "nổi bật, quan trọng",
+    "definitionEn": "Most noticeable or important; standing out clearly from others.",
+    "example": "One salient feature of the report is the growing gap between regions.",
+    "collocation": "salient feature",
+    "cefr": "C1"
+  },
+  {
+    "word": "pervasive",
+    "pos": "adjective",
+    "ipa": "/pəˈveɪsɪv/",
+    "meaningVi": "lan tràn",
+    "definitionEn": "Spreading through and existing in every part of something.",
+    "example": "English has a pervasive influence on advertising in many Asian countries.",
+    "collocation": "pervasive influence",
+    "cefr": "C1"
+  },
+  {
+    "word": "burgeoning",
+    "pos": "adjective",
+    "ipa": "/ˈbɜːdʒənɪŋ/",
+    "meaningVi": "đang bùng nổ",
+    "definitionEn": "Growing or developing rapidly, especially in an expanding market.",
+    "example": "The city's burgeoning tech sector attracts talent from around the world.",
+    "collocation": "burgeoning industry",
+    "cefr": "C1"
+  },
+  {
+    "word": "arbitrary",
+    "pos": "adjective",
+    "ipa": "/ˈɑːbɪtri/",
+    "meaningVi": "tùy tiện",
+    "definitionEn": "Based on personal choice or whim rather than reason or a system.",
+    "example": "Visa decisions felt arbitrary, with similar applicants receiving different results.",
+    "collocation": "arbitrary decision",
+    "cefr": "C1"
+  },
+  {
+    "word": "ethos",
+    "pos": "noun",
+    "ipa": "/ˈiːθɒs/",
+    "meaningVi": "đặc trưng tinh thần, triết lý",
+    "definitionEn": "The set of beliefs and values that characterise a group or organisation.",
+    "example": "The company's ethos embraces diversity and respect for different cultures.",
+    "collocation": "corporate ethos",
+    "cefr": "C1"
+  },
+  {
+    "word": "paradigm",
+    "pos": "noun",
+    "ipa": "/ˈpærədaɪm/",
+    "meaningVi": "mô hình, hệ hình",
+    "definitionEn": "A typical example or pattern of how something is understood or done.",
+    "example": "The rise of digital trade has shifted the paradigm of international commerce.",
+    "collocation": "paradigm shift",
+    "cefr": "C1"
+  },
+  {
+    "word": "accord",
+    "pos": "noun",
+    "ipa": "/əˈkɔːd/",
+    "meaningVi": "hiệp định",
+    "definitionEn": "A formal agreement between countries or parties reached after negotiation.",
+    "example": "The two governments signed an accord to remove tariffs on farm products.",
+    "collocation": "bilateral accord",
+    "cefr": "C1"
+  },
+  {
+    "word": "vulnerable",
+    "pos": "adjective",
+    "ipa": "/ˈvʌlnərəbl/",
+    "meaningVi": "dễ bị tổn thương",
+    "definitionEn": "Easily harmed, attacked, or influenced by outside forces.",
+    "example": "Small farmers are especially vulnerable to sudden changes in world prices.",
+    "collocation": "highly vulnerable",
+    "cefr": "C1"
+  },
+  {
+    "word": "resilient",
+    "pos": "adjective",
+    "ipa": "/rɪˈzɪliənt/",
+    "meaningVi": "kiên cường, có sức bật",
+    "definitionEn": "Able to recover quickly from difficulties or shocks.",
+    "example": "The economy proved resilient despite the global financial crisis.",
+    "collocation": "resilient economy",
+    "cefr": "C1"
+  },
+  {
+    "word": "polarise",
+    "pos": "verb",
+    "ipa": "/ˈpəʊləraɪz/",
+    "meaningVi": "phân cực",
+    "definitionEn": "To divide people into two sharply opposed groups with extreme views.",
+    "example": "Debates about immigration have polarised public opinion across the continent.",
+    "collocation": "polarise opinion",
+    "cefr": "C1"
+  },
+  {
+    "word": "stratify",
+    "pos": "verb",
+    "ipa": "/ˈstrætɪfaɪ/",
+    "meaningVi": "phân tầng",
+    "definitionEn": "To arrange people or things into distinct layers or social classes.",
+    "example": "Global trade has stratified workers into highly paid and low-paid segments.",
+    "collocation": "stratified society",
+    "cefr": "C1"
+  },
+  {
+    "word": "obsolete",
+    "pos": "adjective",
+    "ipa": "/ˌɒbsəˈliːt/",
+    "meaningVi": "lỗi thời",
+    "definitionEn": "No longer used or useful because something newer has replaced it.",
+    "example": "Many traditional trade practices have become obsolete in the digital economy.",
+    "collocation": "become obsolete",
+    "cefr": "C1"
+  },
+  {
+    "word": "kaleidoscopic",
+    "pos": "adjective",
+    "ipa": "/kəˌlaɪdəˈskɒpɪk/",
+    "meaningVi": "nhiều màu sắc, đa dạng",
+    "definitionEn": "Constantly changing and full of varied colours, patterns, or images.",
+    "example": "The market offered a kaleidoscopic array of spices, fabrics, and languages.",
+    "collocation": "kaleidoscopic array",
+    "cefr": "C2"
+  },
+  {
+    "word": "heterogeneity",
+    "pos": "noun",
+    "ipa": "/ˌhetərədʒəˈniːəti/",
+    "meaningVi": "tính không đồng nhất",
+    "definitionEn": "The quality of being made up of many different kinds of elements.",
+    "example": "The city's heterogeneity of religions and languages shapes its daily life.",
+    "collocation": "ethnic heterogeneity",
+    "cefr": "C2"
+  },
+  {
+    "word": "anglicisation",
+    "pos": "noun",
+    "ipa": "/æŋˌɡlɪsaɪˈzeɪʃn/",
+    "meaningVi": "sự Anh hoá",
+    "definitionEn": "The process by which a foreign word or culture takes on English characteristics.",
+    "example": "The anglicisation of local place names reflected decades of colonial influence on the region.",
+    "collocation": "linguistic anglicisation",
+    "cefr": "C2"
+  },
+  {
+    "word": "americanisation",
+    "pos": "noun",
+    "ipa": "/əˌmerɪkənaɪˈzeɪʃn/",
+    "meaningVi": "sự Mỹ hoá",
+    "definitionEn": "The spread of American customs, language, and consumer habits to other countries.",
+    "example": "Critics lament the americanisation of traditional diets in rapidly growing economies.",
+    "collocation": "cultural americanisation",
+    "cefr": "C2"
+  },
+  {
+    "word": "creolisation",
+    "pos": "noun",
+    "ipa": "/ˈkriːəlaɪzeɪʃn/",
+    "meaningVi": "sự lai ghép văn hoá",
+    "definitionEn": "The blending of different cultures or languages to form a new hybrid form.",
+    "example": "Cultural creolisation produced new musical forms that spread across the Caribbean and beyond.",
+    "collocation": "cultural creolisation",
+    "cefr": "C2"
+  },
+  {
+    "word": "polyglot",
+    "pos": "noun",
+    "ipa": "/ˈpɒlɪɡlɒt/",
+    "meaningVi": "người đa ngôn ngữ",
+    "definitionEn": "A person who speaks or writes several languages fluently.",
+    "example": "The diplomat was a gifted polyglot who negotiated treaties in six languages.",
+    "collocation": "gifted polyglot",
+    "cefr": "C2"
+  },
+  {
+    "word": "exoticism",
+    "pos": "noun",
+    "ipa": "/ɪɡˈzɒtɪsɪzəm/",
+    "meaningVi": "chủ nghĩa lạ hoá",
+    "definitionEn": "The appeal of things perceived as unusual or foreign, often romanticised.",
+    "example": "Advertisers often rely on exoticism to sell products from distant and unfamiliar lands.",
+    "collocation": "cheap exoticism",
+    "cefr": "C2"
+  },
+  {
+    "word": "provincialism",
+    "pos": "noun",
+    "ipa": "/prəˈvɪnʃəlɪzəm/",
+    "meaningVi": "tính địa phương hẹp hòi",
+    "definitionEn": "Narrow-minded attitudes or behaviour typical of people with a limited outlook.",
+    "example": "His provincialism made him suspicious of anyone who arrived from abroad.",
+    "collocation": "narrow provincialism",
+    "cefr": "C2"
+  },
+  {
+    "word": "chauvinism",
+    "pos": "noun",
+    "ipa": "/ˈʃəʊvɪnɪzəm/",
+    "meaningVi": "chủ nghĩa sô vanh",
+    "definitionEn": "Excessive and aggressive patriotism or belief in the superiority of one's group.",
+    "example": "National chauvinism fuelled hostility towards minority communities living along the border regions.",
+    "collocation": "national chauvinism",
+    "cefr": "C2"
+  },
+  {
+    "word": "zeitgeist",
+    "pos": "noun",
+    "ipa": "/ˈzaɪtɡaɪst/",
+    "meaningVi": "tinh thần thời đại",
+    "definitionEn": "The defining spirit or mood of a particular period in history.",
+    "example": "Social media seems to capture the zeitgeist of a generation connected across every border.",
+    "collocation": "capture the zeitgeist",
+    "cefr": "C2"
+  },
+  {
+    "word": "vicissitudes",
+    "pos": "noun",
+    "ipa": "/vɪˈsɪsɪtjuːdz/",
+    "meaningVi": "thăng trầm",
+    "definitionEn": "Changes of fortune, especially those that cause difficulty or hardship.",
+    "example": "The family business survived the vicissitudes of two world wars and several recessions.",
+    "collocation": "vicissitudes of fortune",
+    "cefr": "C2"
+  },
+  {
+    "word": "juxtaposition",
+    "pos": "noun",
+    "ipa": "/ˌdʒʌkstəpəˈzɪʃn/",
+    "meaningVi": "sự đặt cạnh nhau tương phản",
+    "definitionEn": "The placing of two contrasting things side by side for effect or comparison.",
+    "example": "The striking juxtaposition of ancient temples and glass towers defines the modern skyline.",
+    "collocation": "striking juxtaposition",
+    "cefr": "C2"
+  },
+  {
+    "word": "lacuna",
+    "pos": "noun",
+    "ipa": "/ləˈkjuːnə/",
+    "meaningVi": "khoảng trống, chỗ thiếu sót",
+    "definitionEn": "A gap or missing part, especially in a text, record or understanding.",
+    "example": "The report exposed a serious lacuna in our understanding of cross-cultural marriage.",
+    "collocation": "serious lacuna",
+    "cefr": "C2"
+  },
+  {
+    "word": "ineluctable",
+    "pos": "adjective",
+    "ipa": "/ˌɪnɪˈlʌktəbl/",
+    "meaningVi": "không thể tránh khỏi",
+    "definitionEn": "Impossible to avoid or resist; certain to happen.",
+    "example": "Some economists believe closer integration is ineluctable for small open economies.",
+    "collocation": "ineluctable consequence",
+    "cefr": "C2"
+  },
+  {
+    "word": "insidious",
+    "pos": "adjective",
+    "ipa": "/ɪnˈsɪdiəs/",
+    "meaningVi": "ngấm ngầm, nguy hiểm",
+    "definitionEn": "Gradually and subtly causing harm without being noticed at first.",
+    "example": "The insidious influence of foreign marketing gradually reshaped local tastes and habits.",
+    "collocation": "insidious influence",
+    "cefr": "C2"
+  },
+  {
+    "word": "nebulous",
+    "pos": "adjective",
+    "ipa": "/ˈnebjələs/",
+    "meaningVi": "mơ hồ",
+    "definitionEn": "Unclear, vague, or not clearly defined.",
+    "example": "The treaty uses nebulous language that left room for conflicting interpretations.",
+    "collocation": "nebulous concept",
+    "cefr": "C2"
+  },
+  {
+    "word": "quintessential",
+    "pos": "adjective",
+    "ipa": "/ˌkwɪntɪˈsenʃl/",
+    "meaningVi": "tinh túy, điển hình",
+    "definitionEn": "Representing the most perfect or typical example of a quality or type.",
+    "example": "The bustling night market remains the quintessential image of trade in Southeast Asia.",
+    "collocation": "quintessential example",
+    "cefr": "C2"
+  },
+  {
+    "word": "ostracise",
+    "pos": "verb",
+    "ipa": "/ˈɒstrəsaɪz/",
+    "meaningVi": "tẩy chay, loại trừ",
+    "definitionEn": "To exclude someone from a group or society, often deliberately.",
+    "example": "Some communities ostracised returning migrants who had adopted foreign customs and dress.",
+    "collocation": "ostracise a group",
+    "cefr": "C2"
+  },
+  {
+    "word": "eschew",
+    "pos": "verb",
+    "ipa": "/ɪsˈtʃuː/",
+    "meaningVi": "tránh xa, kiêng",
+    "definitionEn": "To deliberately avoid or abstain from something.",
+    "example": "The local brand eschews foreign advertising and relies entirely on word of mouth.",
+    "collocation": "eschew advertising",
+    "cefr": "C2"
+  },
+  {
+    "word": "evanescent",
+    "pos": "adjective",
+    "ipa": "/ˌiːvəˈnesnt/",
+    "meaningVi": "thoáng qua, phù du",
+    "definitionEn": "Quickly fading or vanishing; lasting only for a short time.",
+    "example": "Fashion trends are often evanescent, flashing across borders before disappearing within months.",
+    "collocation": "evanescent trend",
+    "cefr": "C2"
+  },
+  {
+    "word": "conflate",
+    "pos": "verb",
+    "ipa": "/kənˈfleɪt/",
+    "meaningVi": "gộp lẫn lộn",
+    "definitionEn": "To combine two different things into one, often wrongly.",
+    "example": "Commentators often conflate cultural exchange with cultural domination, which are distinct ideas.",
+    "collocation": "conflate concepts",
+    "cefr": "C2"
+  },
+  {
+    "word": "acquiesce",
+    "pos": "verb",
+    "ipa": "/ˌækwiˈes/",
+    "meaningVi": "miễn cưỡng đồng ý",
+    "definitionEn": "To accept something reluctantly without protest.",
+    "example": "The smaller nation finally acquiesced to demands imposed by its powerful neighbour.",
+    "collocation": "acquiesce to demands",
+    "cefr": "C2"
+  },
+  {
+    "word": "labyrinthine",
+    "pos": "adjective",
+    "ipa": "/ˌlæbəˈrɪnθaɪn/",
+    "meaningVi": "rắc rối như mê cung",
+    "definitionEn": "Extremely complicated, intricate, or confusing in structure.",
+    "example": "Labyrinthine customs procedures delay international shipments for weeks at a time.",
+    "collocation": "labyrinthine bureaucracy",
+    "cefr": "C2"
+  },
+  {
+    "word": "perfunctory",
+    "pos": "adjective",
+    "ipa": "/pəˈfʌŋktəri/",
+    "meaningVi": "qua loa, hời hợt",
+    "definitionEn": "Done quickly and carelessly, with little interest or effort.",
+    "example": "The officer gave my passport a perfunctory glance before waving me through.",
+    "collocation": "perfunctory check",
+    "cefr": "C2"
+  },
+  {
+    "word": "paradoxical",
+    "pos": "adjective",
+    "ipa": "/ˌpærəˈdɒksɪkl/",
+    "meaningVi": "nghịch lý",
+    "definitionEn": "Seeming contradictory, yet possibly true or significant.",
+    "example": "It is paradoxical that global connectivity often strengthens local identity and nostalgia.",
+    "collocation": "paradoxical effect",
+    "cefr": "C2"
+  },
+  {
+    "word": "heterodox",
+    "pos": "adjective",
+    "ipa": "/ˈhetərədɒks/",
+    "meaningVi": "khác với chính thống",
+    "definitionEn": "Departing from accepted beliefs or established opinions.",
+    "example": "His heterodox views on trade challenged the orthodoxy of the economics profession.",
+    "collocation": "heterodox view",
+    "cefr": "C2"
+  },
+  {
+    "word": "bellicose",
+    "pos": "adjective",
+    "ipa": "/ˈbelɪkəʊs/",
+    "meaningVi": "hiếu chiến",
+    "definitionEn": "Eager to start a fight or war; aggressively hostile.",
+    "example": "The bellicose rhetoric of both leaders alarmed neighbouring countries and investors alike.",
+    "collocation": "bellicose rhetoric",
+    "cefr": "C2"
+  },
+  {
+    "word": "sophistry",
+    "pos": "noun",
+    "ipa": "/ˈsɒfɪstri/",
+    "meaningVi": "ngụy biện",
+    "definitionEn": "Clever but misleading argument intended to deceive rather than to reason.",
+    "example": "Her defence of the trade policy struck many observers as empty sophistry.",
+    "collocation": "empty sophistry",
+    "cefr": "C2"
+  },
+  {
+    "word": "anachronistic",
+    "pos": "adjective",
+    "ipa": "/əˌnækrəˈnɪstɪk/",
+    "meaningVi": "lạc hậu, lỗi thời",
+    "definitionEn": "Belonging to a period other than the one being depicted; out of date.",
+    "example": "Their anachronistic trade rules seemed hopelessly out of place in a connected world.",
+    "collocation": "anachronistic rules",
+    "cefr": "C2"
+  },
+  {
+    "word": "syncretism",
+    "pos": "noun",
+    "ipa": "/ˈsɪŋkrətɪzəm/",
+    "meaningVi": "sự hợp nhất hệ tư tưởng",
+    "definitionEn": "The blending of different beliefs or cultural practices into a single system.",
+    "example": "Religious syncretism is visible in temples where local and foreign deities coexist peacefully.",
+    "collocation": "religious syncretism",
+    "cefr": "C2"
+  },
+  {
+    "word": "extraterritorial",
+    "pos": "adjective",
+    "ipa": "/ˌekstrətərɪˈtɔːriəl/",
+    "meaningVi": "ngoài lãnh thổ",
+    "definitionEn": "Extending beyond the usual territorial limits of a country's law.",
+    "example": "The new regulation has extraterritorial reach, affecting companies operating entirely outside the country.",
+    "collocation": "extraterritorial reach",
+    "cefr": "C2"
+  },
+  {
+    "word": "insularity",
+    "pos": "noun",
+    "ipa": "/ˌɪnsjəˈlærəti/",
+    "meaningVi": "tính khép kín, bế quan",
+    "definitionEn": "The state of being isolated or unwilling to engage with the outside world.",
+    "example": "Cultural insularity can leave a nation unprepared for rapid changes in global markets.",
+    "collocation": "cultural insularity",
+    "cefr": "C2"
+  },
+  {
+    "word": "idiosyncrasy",
+    "pos": "noun",
+    "ipa": "/ˌɪdiəˈsɪŋkrəsi/",
+    "meaningVi": "đặc điểm riêng biệt",
+    "definitionEn": "A distinctive habit, trait, or quirk of a person, place, or culture.",
+    "example": "Every regional dish carries a cultural idiosyncrasy shaped by centuries of maritime trade.",
+    "collocation": "cultural idiosyncrasy",
+    "cefr": "C2"
+  },
+  {
+    "word": "amalgamation",
+    "pos": "noun",
+    "ipa": "/əˌmælɡəˈmeɪʃn/",
+    "meaningVi": "sự hợp nhất",
+    "definitionEn": "The combining of different organisations, companies or elements into one.",
+    "example": "The amalgamation of two rival banks created the largest lender in the entire region.",
+    "collocation": "corporate amalgamation",
+    "cefr": "C2"
+  },
+  {
+    "word": "ethnography",
+    "pos": "noun",
+    "ipa": "/eθˈnɒɡrəfi/",
+    "meaningVi": "dân tộc học",
+    "definitionEn": "The scientific study and description of different human cultures.",
+    "example": "Her ethnography of street vendors revealed how migrants build trust and local networks.",
+    "collocation": "detailed ethnography",
+    "cefr": "C2"
+  },
+  {
+    "word": "obfuscate",
+    "pos": "verb",
+    "ipa": "/ˈɒbfʌskeɪt/",
+    "meaningVi": "làm mờ, làm rối",
+    "definitionEn": "To make something unclear or harder to understand on purpose.",
+    "example": "Complicated tariff schedules often obfuscate the true cost of imported goods for consumers.",
+    "collocation": "deliberately obfuscate",
+    "cefr": "C2"
+  },
+  {
+    "word": "pastiche",
+    "pos": "noun",
+    "ipa": "/pæˈstiːʃ/",
+    "meaningVi": "sự pha trộn, bắt chước",
+    "definitionEn": "A work of art that imitates or mixes styles from different sources.",
+    "example": "The restaurant's décor is a stylish pastiche of Parisian and Hanoi street cafés.",
+    "collocation": "artistic pastiche",
+    "cefr": "C2"
+  },
+  {
+    "word": "vestige",
+    "pos": "noun",
+    "ipa": "/ˈvestɪdʒ/",
+    "meaningVi": "dấu vết còn sót lại",
+    "definitionEn": "A small remaining trace of something that no longer exists.",
+    "example": "Colonial vestiges remain visible in the architecture of many old port cities.",
+    "collocation": "faint vestige",
+    "cefr": "C2"
+  },
+  {
+    "word": "ephemeral",
+    "pos": "adjective",
+    "ipa": "/ɪˈfemərəl/",
+    "meaningVi": "phù du, ngắn ngủi",
+    "definitionEn": "Lasting for a very short time; transitory.",
+    "example": "Many online celebrities enjoy ephemeral fame before audiences move on to newer trends.",
+    "collocation": "ephemeral fame",
+    "cefr": "C2"
+  },
+  {
+    "word": "vanguard",
+    "pos": "noun",
+    "ipa": "/ˈvæŋɡɑːd/",
+    "meaningVi": "đội tiên phong",
+    "definitionEn": "The leading group or position in a movement or development.",
+    "example": "The port city stood firmly in the vanguard of international trade during the nineteenth century.",
+    "collocation": "in the vanguard",
+    "cefr": "C2"
+  },
+  {
+    "word": "subversion",
+    "pos": "noun",
+    "ipa": "/səbˈvɜːʃn/",
+    "meaningVi": "sự lật đổ, phá hoại",
+    "definitionEn": "The act of undermining the power or authority of an established system.",
+    "example": "Some scholars read popular music as a quiet form of cultural subversion.",
+    "collocation": "cultural subversion",
+    "cefr": "C2"
+  },
+  {
+    "word": "tenacity",
+    "pos": "noun",
+    "ipa": "/təˈnæsəti/",
+    "meaningVi": "sự kiên trì, bền bỉ",
+    "definitionEn": "The quality of being determined and persistent in pursuing a goal.",
+    "example": "Her remarkable tenacity helped her build an export business from a small village.",
+    "collocation": "remarkable tenacity",
+    "cefr": "C2"
+  },
+  {
+    "word": "unprecedented",
+    "pos": "adjective",
+    "ipa": "/ʌnˈpresɪdentɪd/",
+    "meaningVi": "chưa từng có",
+    "definitionEn": "Never done or known before; without precedent.",
+    "example": "The crisis caused unprecedented disruption to shipping and trade across every continent.",
+    "collocation": "unprecedented scale",
+    "cefr": "C2"
+  },
+  {
+    "word": "amorphous",
+    "pos": "adjective",
+    "ipa": "/əˈmɔːfəs/",
+    "meaningVi": "vô định hình, không rõ hình thù",
+    "definitionEn": "Lacking a clear shape, form, or defined structure.",
+    "example": "The emerging trade alliance remains amorphous, with no clear leadership or binding rules.",
+    "collocation": "amorphous structure",
+    "cefr": "C2"
+  }
+]

@@ -57,6 +57,7 @@ import {
 import {
   answerLoop,
   finishesWord,
+  loopDone,
   loopFraction,
   pickNext,
   slotOf,
@@ -67,10 +68,13 @@ import { canRecognize, startListening, type Listening } from "@/services/shadow/
 import { sfx } from "@/services/audio/sfx";
 import { useTopicStudyStore } from "@/store/useTopicStudyStore";
 import { footerLine, learnedCount, roundStats } from "@/services/vocab/progress-counters";
+import { dueBySlug } from "@/services/vocab/review-schedule";
+import { todayKey } from "@/store/persist";
 import { autoSpeakWhen } from "@/services/vocab/auto-speak";
 import { useStudyStore } from "@/store/useStudyStore";
 import { useGameStore } from "@/store/useGameStore";
-import { useOwlHint } from "@/components/game/useOwlHint";
+import { FlameBurst, STREAK_STEP, StreakBadge } from "@/components/vocab/study/StreakFlame";
+import { flushPersist } from "@/store/persist";
 import {
   diagnosePick,
   diagnoseTyped,
@@ -80,6 +84,7 @@ import { color } from "@/theme/tokens";
 import { useL } from "@/i18n/useL";
 
 const NO_STARS: string[] = [];
+const ROUND_SIZE = 10;
 const KIND_LABEL: Record<StageKind, { vi: string; en: string }> = {
   flash: { vi: "Lật thẻ", en: "Flashcard" },
   mcq: { vi: "Trắc nghiệm", en: "Multiple choice" },
@@ -134,20 +139,33 @@ export default function LearnScreen() {
       stageOf,
       new Set(st.starred[slug] ?? []),
     );
-    return pickRound(
+    const picked = pickRound(
       pool,
       stageOf,
-      10,
+      ROUND_SIZE,
       s.ordered ? undefined : seededRng(Date.now() % 100000),
       (w) => st.lapses[slug]?.[w] ?? 0,
     );
+    // Từ đến hạn ôn hôm nay vào vòng trước, để lịch ôn thật sự chạy (mỗi lần trả lời đẩy hạn xa thêm).
+    const dueSet = new Set(dueBySlug({ [slug]: st.reviews[slug] ?? {} }, todayKey())[slug] ?? []);
+    const dueFirst = pool.filter((w) => dueSet.has(w.word)).slice(0, ROUND_SIZE);
+    const rest = picked.filter((w) => !dueSet.has(w.word));
+    return [...dueFirst, ...rest].slice(0, ROUND_SIZE);
   };
-  const [round, setRound] = useState<StudyWord[]>(() => freshRound(settings));
+  // Vòng đang dở của bộ này (nếu có và còn đủ từ trong bộ): tiếp tục đúng chỗ đã dừng.
+  const [saved] = useState(() => (topic ? useTopicStudyStore.getState().activeRound[slug] ?? null : null));
+  const savedWords = useMemo(() => {
+    if (!saved || !topic) return null;
+    const byWord = new Map(topic.words.map((w) => [w.word, w] as const));
+    const list = saved.words.map((w) => byWord.get(w));
+    return list.every((w): w is StudyWord => !!w) ? list : null;
+  }, [saved, topic]);
+  const [round, setRound] = useState<StudyWord[]>(() => savedWords ?? freshRound(settings));
   // Dạng câu và kiểu xếp của vòng ĐANG CHẠY — chỉ đổi khi bắt đầu vòng mới.
   const [cfg, setCfg] = useState(() => ({ kinds: activeKinds(settings.kinds), interleave: settings.interleave }));
-  const [plan, setPlan] = useState(() => startLoop(round, Date.now() % 100000));
-  const [asked, setAsked] = useState(0);
-  const [wrong, setWrong] = useState(0);
+  const [plan, setPlan] = useState(() => (savedWords && saved ? saved.plan : startLoop(round, Date.now() % 100000)));
+  const [asked, setAsked] = useState(() => (savedWords && saved ? saved.asked : 0));
+  const [wrong, setWrong] = useState(() => (savedWords && saved ? saved.wrong : 0));
   const [picked, setPicked] = useState<number | null>(null);
   const [typed, setTyped] = useState("");
   // Phương án Cú đã loại ở câu đang mở.
@@ -161,12 +179,16 @@ export default function LearnScreen() {
   const [flipped, setFlipped] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   // Mỗi lần vào học thì hỏi chọn giao diện một lần.
-  const [entryOpen, setEntryOpen] = useState(true);
+  // Giao diện học chọn ở trang thư viện từ vựng, không hỏi lại mỗi lần vào màn học.
+  const [entryOpen, setEntryOpen] = useState(false);
   const [listening, setListening] = useState(false);
   const [micNote, setMicNote] = useState<string | null>(null);
   const [seed] = useState(() => Date.now() % 100000);
+  // Chuỗi câu đúng liên tiếp của vòng và lần bùng lửa gần nhất.
+  const [streak, setStreak] = useState(() => (savedWords && saved ? saved.streak : 0));
+  const [burst, setBurst] = useState<{ key: number; n: number } | null>(null);
   // Đếm số câu đã qua — khoá cho hiệu ứng chuyển câu, chỉ đổi khi sang câu mới.
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(() => (savedWords && saved ? saved.step : 0));
 
   // Từ nào khoét được chỗ trống trong câu ví dụ thì mới có dạng Điền chỗ trống.
   const fillable = useMemo(
@@ -232,6 +254,16 @@ export default function LearnScreen() {
     };
   }, [step]);
 
+  // Rời màn thì ghi ngay mọi thay đổi đang chờ (không đợi hết nhịp ghi 500 ms).
+  useEffect(() => () => flushPersist(), []);
+
+  // Mỗi lần trả lời là ghi vòng đang dở; vòng xong thì xoá.
+  const setActiveRound = useTopicStudyStore((s) => s.setActiveRound);
+  useEffect(() => {
+    if (loopDone(plan)) setActiveRound(slug, null);
+    else setActiveRound(slug, { words: round.map((w) => w.word), plan, asked, wrong, streak, step });
+  }, [slug, round, plan, asked, wrong, streak, step, setActiveRound]);
+
   const done = !head;
   // Mỗi đoạn một từ, đầy dần theo mức của từ trong vòng.
   const progress = round.map((w) => loopFraction(plan, w.word, opts));
@@ -252,6 +284,8 @@ export default function LearnScreen() {
     setMistake(null);
     setMistakes([]);
     setFlipped(false);
+    setStreak(0);
+    setBurst(null);
     setStep((n) => n + 1);
   };
 
@@ -289,6 +323,9 @@ export default function LearnScreen() {
       useTopicStudyStore.getState().logMistake(slug, word.word, m.kind);
     }
     record(ok);
+    const nextStreak = ok ? streak + 1 : 0;
+    setStreak(nextStreak);
+    if (ok && nextStreak % STREAK_STEP === 0) setBurst({ key: Date.now(), n: nextStreak });
     // Game khi học: đúng thì chém quái, sai thì trúng đòn — kèm tiếng. Lật thẻ tự chấm nên không tính.
     useGameStore.getState().answer(ok, "vocab", { key: `learn:${slug}:${word.word}:${head.kind}` });
   };
@@ -451,30 +488,6 @@ export default function LearnScreen() {
     }
   });
 
-  // Gợi ý của Cú: câu chọn thì loại bớt phương án sai; gõ từ thì lộ một phần ba chữ đầu.
-  useOwlHint(
-    verdict === null && word && head && head.kind !== "flash"
-      ? () => {
-          if (choice) {
-            if (hidden.length > 0) return false;
-            const wrongOnes = choice.options
-              .map((_, i) => i)
-              .filter((i) => i !== choice.correctIndex);
-            const drop = Math.min(2, wrongOnes.length - 1);
-            if (drop <= 0) return false;
-            const from = step % wrongOnes.length;
-            setHidden(
-              Array.from({ length: drop }, (_, k) => wrongOnes[(from + k) % wrongOnes.length]!),
-            );
-            return true;
-          }
-          const lead = word.word.slice(0, Math.max(1, Math.ceil(word.word.length / 3)));
-          if (typed.toLowerCase().startsWith(lead.toLowerCase())) return false;
-          setTyped(lead);
-          return true;
-        }
-      : null,
-  );
 
   if (!topic) {
     return (
@@ -577,9 +590,10 @@ export default function LearnScreen() {
               {round.map((w) => (
                 <View
                   key={w.word}
-                  className="rounded-pill bg-primary-50 px-3 py-1.5"
+                  className="rounded-pill px-3 py-1.5"
+                  style={{ backgroundColor: theme.chipBg }}
                 >
-                  <Text className="font-semi text-body text-primary-700">
+                  <Text className="font-semi text-body" style={{ color: theme.chipInk }}>
                     {w.word}
                   </Text>
                 </View>
@@ -617,10 +631,11 @@ export default function LearnScreen() {
       progress={progress}
       footer={footer}
       right={settingsButton}
-      battle
     >
       {/* Dạng câu đang làm, và vì sao từ này quay lại. */}
+      {burst ? <FlameBurst burstKey={burst.key} n={burst.n} /> : null}
       <View className="mb-4 flex-row flex-wrap items-center justify-center gap-2">
+        <StreakBadge n={streak} />
         <View className="rounded-pill px-3.5 py-1.5" style={{ backgroundColor: "#FFFFFF" }}>
           <Text className="font-strong text-label" style={{ color: color.primary }}>
             {en ? KIND_LABEL[head!.kind].en : KIND_LABEL[head!.kind].vi}

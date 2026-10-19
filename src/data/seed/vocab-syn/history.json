@@ -1,0 +1,1135 @@
+[
+  {
+    "word": "archaeology",
+    "synonyms": [
+      "archaeological science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "historiography",
+    "synonyms": [
+      "history writing",
+      "historical method"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "medieval",
+    "synonyms": [
+      "mediaeval",
+      "middle-age"
+    ],
+    "antonyms": [
+      "modern"
+    ]
+  },
+  {
+    "word": "paleontology",
+    "synonyms": [
+      "palaeontology",
+      "fossil science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "king",
+    "synonyms": [
+      "monarch",
+      "sovereign"
+    ],
+    "antonyms": [
+      "subject"
+    ]
+  },
+  {
+    "word": "queen",
+    "synonyms": [
+      "monarch",
+      "sovereign"
+    ],
+    "antonyms": [
+      "subject"
+    ]
+  },
+  {
+    "word": "war",
+    "synonyms": [
+      "conflict",
+      "warfare"
+    ],
+    "antonyms": [
+      "peace"
+    ]
+  },
+  {
+    "word": "battle",
+    "synonyms": [
+      "combat",
+      "engagement"
+    ],
+    "antonyms": [
+      "truce"
+    ]
+  },
+  {
+    "word": "castle",
+    "synonyms": [
+      "fortress",
+      "citadel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "soldier",
+    "synonyms": [
+      "warrior",
+      "fighter"
+    ],
+    "antonyms": [
+      "civilian"
+    ]
+  },
+  {
+    "word": "emperor",
+    "synonyms": [
+      "imperial ruler",
+      "tsar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kingdom",
+    "synonyms": [
+      "realm",
+      "monarchy"
+    ],
+    "antonyms": [
+      "republic"
+    ]
+  },
+  {
+    "word": "ruler",
+    "synonyms": [
+      "sovereign",
+      "governor"
+    ],
+    "antonyms": [
+      "subject"
+    ]
+  },
+  {
+    "word": "peace",
+    "synonyms": [
+      "harmony",
+      "tranquillity"
+    ],
+    "antonyms": [
+      "war",
+      "conflict"
+    ]
+  },
+  {
+    "word": "century",
+    "synonyms": [
+      "hundred years"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "empire",
+    "synonyms": [
+      "domain",
+      "dominion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "village",
+    "synonyms": [
+      "hamlet",
+      "settlement"
+    ],
+    "antonyms": [
+      "city"
+    ]
+  },
+  {
+    "word": "ancestor",
+    "synonyms": [
+      "forebear",
+      "forefather"
+    ],
+    "antonyms": [
+      "descendant"
+    ]
+  },
+  {
+    "word": "history",
+    "synonyms": [
+      "past",
+      "chronicle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "past",
+    "synonyms": [
+      "bygone times",
+      "history"
+    ],
+    "antonyms": [
+      "future"
+    ]
+  },
+  {
+    "word": "memory",
+    "synonyms": [
+      "recollection",
+      "remembrance"
+    ],
+    "antonyms": [
+      "oblivion",
+      "amnesia"
+    ]
+  },
+  {
+    "word": "museum",
+    "synonyms": [
+      "gallery",
+      "exhibition hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diary",
+    "synonyms": [
+      "journal",
+      "log"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "discover",
+    "synonyms": [
+      "find",
+      "uncover"
+    ],
+    "antonyms": [
+      "conceal",
+      "overlook"
+    ]
+  },
+  {
+    "word": "explorer",
+    "synonyms": [
+      "adventurer",
+      "voyager"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "invasion",
+    "synonyms": [
+      "incursion",
+      "attack"
+    ],
+    "antonyms": [
+      "withdrawal",
+      "retreat"
+    ]
+  },
+  {
+    "word": "treaty",
+    "synonyms": [
+      "accord",
+      "pact"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colony",
+    "synonyms": [
+      "dependency",
+      "settlement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "revolt",
+    "synonyms": [
+      "rebellion",
+      "uprising"
+    ],
+    "antonyms": [
+      "submission"
+    ]
+  },
+  {
+    "word": "conquer",
+    "synonyms": [
+      "subdue",
+      "overcome"
+    ],
+    "antonyms": [
+      "surrender",
+      "liberate"
+    ]
+  },
+  {
+    "word": "alliance",
+    "synonyms": [
+      "coalition",
+      "partnership"
+    ],
+    "antonyms": [
+      "rivalry"
+    ]
+  },
+  {
+    "word": "monarchy",
+    "synonyms": [
+      "kingship",
+      "royal rule"
+    ],
+    "antonyms": [
+      "republic"
+    ]
+  },
+  {
+    "word": "aristocrat",
+    "synonyms": [
+      "nobleman",
+      "noble"
+    ],
+    "antonyms": [
+      "commoner",
+      "peasant"
+    ]
+  },
+  {
+    "word": "peasant",
+    "synonyms": [
+      "farmer",
+      "serf"
+    ],
+    "antonyms": [
+      "aristocrat",
+      "noble"
+    ]
+  },
+  {
+    "word": "chronology",
+    "synonyms": [
+      "timeline",
+      "sequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "settlement",
+    "synonyms": [
+      "colony",
+      "community"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reform",
+    "synonyms": [
+      "improvement",
+      "overhaul"
+    ],
+    "antonyms": [
+      "regression"
+    ]
+  },
+  {
+    "word": "abolish",
+    "synonyms": [
+      "eliminate",
+      "end"
+    ],
+    "antonyms": [
+      "establish",
+      "institute"
+    ]
+  },
+  {
+    "word": "industrialisation",
+    "synonyms": [
+      "industrialization",
+      "industrial development"
+    ],
+    "antonyms": [
+      "deindustrialisation"
+    ]
+  },
+  {
+    "word": "urbanisation",
+    "synonyms": [
+      "urbanization",
+      "city growth"
+    ],
+    "antonyms": [
+      "ruralisation"
+    ]
+  },
+  {
+    "word": "excavate",
+    "synonyms": [
+      "dig up",
+      "unearth"
+    ],
+    "antonyms": [
+      "bury",
+      "backfill"
+    ]
+  },
+  {
+    "word": "ancestral",
+    "synonyms": [
+      "hereditary",
+      "inherited"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fossil",
+    "synonyms": [
+      "petrifaction",
+      "relic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manuscript",
+    "synonyms": [
+      "handwritten text",
+      "codex"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scroll",
+    "synonyms": [
+      "roll",
+      "parchment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "decline",
+    "synonyms": [
+      "decay",
+      "downturn"
+    ],
+    "antonyms": [
+      "rise",
+      "growth"
+    ]
+  },
+  {
+    "word": "uprising",
+    "synonyms": [
+      "revolt",
+      "insurrection"
+    ],
+    "antonyms": [
+      "submission"
+    ]
+  },
+  {
+    "word": "hegemony",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "subordination"
+    ]
+  },
+  {
+    "word": "insurgency",
+    "synonyms": [
+      "insurrection",
+      "guerrilla warfare"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annexation",
+    "synonyms": [
+      "incorporation",
+      "seizure"
+    ],
+    "antonyms": [
+      "secession",
+      "cession"
+    ]
+  },
+  {
+    "word": "dictatorship",
+    "synonyms": [
+      "autocracy",
+      "tyranny"
+    ],
+    "antonyms": [
+      "democracy"
+    ]
+  },
+  {
+    "word": "emancipation",
+    "synonyms": [
+      "liberation",
+      "freedom"
+    ],
+    "antonyms": [
+      "enslavement",
+      "subjugation"
+    ]
+  },
+  {
+    "word": "suffrage",
+    "synonyms": [
+      "franchise",
+      "voting rights"
+    ],
+    "antonyms": [
+      "disfranchisement"
+    ]
+  },
+  {
+    "word": "bureaucracy",
+    "synonyms": [
+      "administration",
+      "officialdom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sovereignty",
+    "synonyms": [
+      "self-rule",
+      "autonomy"
+    ],
+    "antonyms": [
+      "subjection"
+    ]
+  },
+  {
+    "word": "ideology",
+    "synonyms": [
+      "belief system",
+      "doctrine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "propaganda",
+    "synonyms": [
+      "disinformation",
+      "agitprop"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chronological",
+    "synonyms": [
+      "sequential",
+      "time-ordered"
+    ],
+    "antonyms": [
+      "random"
+    ]
+  },
+  {
+    "word": "archive",
+    "synonyms": [
+      "repository",
+      "record office"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "archival",
+    "synonyms": [
+      "documentary",
+      "record-based"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "narrative",
+    "synonyms": [
+      "account",
+      "story"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "antecedent",
+    "synonyms": [
+      "forerunner",
+      "precursor"
+    ],
+    "antonyms": [
+      "successor"
+    ]
+  },
+  {
+    "word": "precedent",
+    "synonyms": [
+      "example",
+      "authority"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reconstruction",
+    "synonyms": [
+      "rebuilding",
+      "restoration"
+    ],
+    "antonyms": [
+      "demolition",
+      "destruction"
+    ]
+  },
+  {
+    "word": "periodisation",
+    "synonyms": [
+      "periodization",
+      "division into periods"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "demographic",
+    "synonyms": [
+      "population-related",
+      "statistical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exodus",
+    "synonyms": [
+      "mass departure",
+      "migration"
+    ],
+    "antonyms": [
+      "influx",
+      "immigration"
+    ]
+  },
+  {
+    "word": "diaspora",
+    "synonyms": [
+      "dispersion",
+      "expatriate community"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "feudalism",
+    "synonyms": [
+      "feudal system",
+      "serfdom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mercantilism",
+    "synonyms": [
+      "commercialism"
+    ],
+    "antonyms": [
+      "free trade"
+    ]
+  },
+  {
+    "word": "secularism",
+    "synonyms": [
+      "worldliness",
+      "non-religious governance"
+    ],
+    "antonyms": [
+      "theocracy"
+    ]
+  },
+  {
+    "word": "nationalism",
+    "synonyms": [
+      "patriotism",
+      "chauvinism"
+    ],
+    "antonyms": [
+      "internationalism",
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "imperialism",
+    "synonyms": [
+      "empire-building",
+      "expansionism"
+    ],
+    "antonyms": [
+      "anti-colonialism"
+    ]
+  },
+  {
+    "word": "capitulation",
+    "synonyms": [
+      "surrender",
+      "submission"
+    ],
+    "antonyms": [
+      "resistance",
+      "defiance"
+    ]
+  },
+  {
+    "word": "ratify",
+    "synonyms": [
+      "approve",
+      "confirm"
+    ],
+    "antonyms": [
+      "reject",
+      "repudiate"
+    ]
+  },
+  {
+    "word": "dissent",
+    "synonyms": [
+      "disagreement",
+      "opposition"
+    ],
+    "antonyms": [
+      "consent",
+      "agreement"
+    ]
+  },
+  {
+    "word": "conscription",
+    "synonyms": [
+      "draft",
+      "compulsory enlistment"
+    ],
+    "antonyms": [
+      "volunteering"
+    ]
+  },
+  {
+    "word": "vestige",
+    "synonyms": [
+      "trace",
+      "remnant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hitherto",
+    "synonyms": [
+      "until now",
+      "previously"
+    ],
+    "antonyms": [
+      "henceforth"
+    ]
+  },
+  {
+    "word": "ascendancy",
+    "synonyms": [
+      "supremacy",
+      "dominance"
+    ],
+    "antonyms": [
+      "decline",
+      "subordination"
+    ]
+  },
+  {
+    "word": "decolonisation",
+    "synonyms": [
+      "decolonization",
+      "independence movement"
+    ],
+    "antonyms": [
+      "colonisation"
+    ]
+  },
+  {
+    "word": "garrison",
+    "synonyms": [
+      "troops",
+      "military post"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insurrection",
+    "synonyms": [
+      "rebellion",
+      "revolt"
+    ],
+    "antonyms": [
+      "submission"
+    ]
+  },
+  {
+    "word": "plebeian",
+    "synonyms": [
+      "common",
+      "commoner"
+    ],
+    "antonyms": [
+      "patrician",
+      "aristocratic"
+    ]
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "erased manuscript",
+      "overwritten text"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "incunabulum",
+    "synonyms": [
+      "incunable",
+      "early printed book"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hagiography",
+    "synonyms": [
+      "saint's biography",
+      "panegyric"
+    ],
+    "antonyms": [
+      "debunking"
+    ]
+  },
+  {
+    "word": "apocrypha",
+    "synonyms": [
+      "apocryphal texts",
+      "non-canonical writings"
+    ],
+    "antonyms": [
+      "canon"
+    ]
+  },
+  {
+    "word": "palaeography",
+    "synonyms": [
+      "paleography",
+      "ancient script study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stratigraphy",
+    "synonyms": [
+      "stratification",
+      "layer analysis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "numismatics",
+    "synonyms": [
+      "coin collecting",
+      "numismatic study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "epigraphy",
+    "synonyms": [
+      "inscription study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hermeneutics",
+    "synonyms": [
+      "interpretation theory",
+      "exegetics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "teleology",
+    "synonyms": [
+      "purpose theory",
+      "finalism"
+    ],
+    "antonyms": [
+      "mechanism"
+    ]
+  },
+  {
+    "word": "prolepsis",
+    "synonyms": [
+      "foreshadowing",
+      "anticipation"
+    ],
+    "antonyms": [
+      "analepsis"
+    ]
+  },
+  {
+    "word": "anachronism",
+    "synonyms": [
+      "chronological error",
+      "misdating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cuneiform",
+    "synonyms": [
+      "wedge-shaped script"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "papyrus",
+    "synonyms": [
+      "paper reed",
+      "sheet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vellum",
+    "synonyms": [
+      "parchment",
+      "calfskin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scriptorium",
+    "synonyms": [
+      "writing room",
+      "copying room"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tumulus",
+    "synonyms": [
+      "burial mound",
+      "barrow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "barrow",
+    "synonyms": [
+      "burial mound",
+      "tumulus"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cairn",
+    "synonyms": [
+      "stone pile",
+      "stone marker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "megalith",
+    "synonyms": [
+      "standing stone",
+      "monolith"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dolmen",
+    "synonyms": [
+      "cromlech",
+      "stone tomb"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stele",
+    "synonyms": [
+      "stela",
+      "inscribed slab"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obelisk",
+    "synonyms": [
+      "monolith",
+      "pillar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sarcophagus",
+    "synonyms": [
+      "stone coffin",
+      "tomb"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mausoleum",
+    "synonyms": [
+      "tomb",
+      "sepulchre"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lacuna",
+    "synonyms": [
+      "gap",
+      "missing portion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exegesis",
+    "synonyms": [
+      "interpretation",
+      "commentary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chthonic",
+    "synonyms": [
+      "subterranean",
+      "underworld"
+    ],
+    "antonyms": [
+      "celestial",
+      "heavenly"
+    ]
+  },
+  {
+    "word": "aetiology",
+    "synonyms": [
+      "etiology",
+      "causation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "imbroglio",
+    "synonyms": [
+      "entanglement",
+      "complicated dispute"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "jingoism",
+    "synonyms": [
+      "chauvinism",
+      "bellicose patriotism"
+    ],
+    "antonyms": [
+      "pacifism"
+    ]
+  },
+  {
+    "word": "hubris",
+    "synonyms": [
+      "arrogance",
+      "pride"
+    ],
+    "antonyms": [
+      "humility",
+      "modesty"
+    ]
+  },
+  {
+    "word": "nemesis",
+    "synonyms": [
+      "arch-enemy",
+      "adversary"
+    ],
+    "antonyms": [
+      "ally"
+    ]
+  },
+  {
+    "word": "vanquish",
+    "synonyms": [
+      "defeat",
+      "overcome"
+    ],
+    "antonyms": [
+      "surrender",
+      "yield"
+    ]
+  },
+  {
+    "word": "bellicose",
+    "synonyms": [
+      "warlike",
+      "belligerent"
+    ],
+    "antonyms": [
+      "pacific",
+      "peaceable"
+    ]
+  },
+  {
+    "word": "fresco",
+    "synonyms": [
+      "mural",
+      "wall painting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mosaic",
+    "synonyms": [
+      "tessellation",
+      "inlay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sepulchre",
+    "synonyms": [
+      "tomb",
+      "grave"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "effigy",
+    "synonyms": [
+      "statue",
+      "likeness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frieze",
+    "synonyms": [
+      "band of relief",
+      "decorative band"
+    ],
+    "antonyms": []
+  }
+]

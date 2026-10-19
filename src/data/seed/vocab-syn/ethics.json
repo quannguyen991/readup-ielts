@@ -1,0 +1,1355 @@
+[
+  {
+    "word": "utilitarianism",
+    "synonyms": [
+      "greatest happiness principle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deontology",
+    "synonyms": [
+      "duty-based ethics"
+    ],
+    "antonyms": [
+      "consequentialism"
+    ]
+  },
+  {
+    "word": "consequentialism",
+    "synonyms": [
+      "outcome-based ethics"
+    ],
+    "antonyms": [
+      "deontology"
+    ]
+  },
+  {
+    "word": "lie",
+    "synonyms": [
+      "falsehood",
+      "untruth",
+      "fib"
+    ],
+    "antonyms": [
+      "truth"
+    ]
+  },
+  {
+    "word": "steal",
+    "synonyms": [
+      "pilfer",
+      "filch",
+      "purloin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cheat",
+    "synonyms": [
+      "deceive",
+      "swindle",
+      "defraud"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "promise",
+    "synonyms": [
+      "pledge",
+      "vow",
+      "guarantee"
+    ],
+    "antonyms": [
+      "renege"
+    ]
+  },
+  {
+    "word": "trust",
+    "synonyms": [
+      "faith",
+      "confidence",
+      "reliance"
+    ],
+    "antonyms": [
+      "distrust",
+      "suspicion"
+    ]
+  },
+  {
+    "word": "respect",
+    "synonyms": [
+      "esteem",
+      "regard",
+      "admiration"
+    ],
+    "antonyms": [
+      "contempt",
+      "disrespect"
+    ]
+  },
+  {
+    "word": "rule",
+    "synonyms": [
+      "regulation",
+      "principle",
+      "guideline"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "law",
+    "synonyms": [
+      "statute",
+      "legislation"
+    ],
+    "antonyms": [
+      "lawlessness"
+    ]
+  },
+  {
+    "word": "wrong",
+    "synonyms": [
+      "immoral",
+      "unethical",
+      "wicked"
+    ],
+    "antonyms": [
+      "right",
+      "moral"
+    ]
+  },
+  {
+    "word": "right",
+    "synonyms": [
+      "correct",
+      "moral",
+      "just"
+    ],
+    "antonyms": [
+      "wrong"
+    ]
+  },
+  {
+    "word": "kind",
+    "synonyms": [
+      "benevolent",
+      "compassionate",
+      "considerate"
+    ],
+    "antonyms": [
+      "cruel",
+      "unkind"
+    ]
+  },
+  {
+    "word": "polite",
+    "synonyms": [
+      "courteous",
+      "civil",
+      "respectful"
+    ],
+    "antonyms": [
+      "rude",
+      "impolite"
+    ]
+  },
+  {
+    "word": "honest",
+    "synonyms": [
+      "truthful",
+      "sincere",
+      "candid"
+    ],
+    "antonyms": [
+      "dishonest",
+      "deceitful"
+    ]
+  },
+  {
+    "word": "share",
+    "synonyms": [
+      "distribute",
+      "divide",
+      "allocate"
+    ],
+    "antonyms": [
+      "hoard",
+      "withhold"
+    ]
+  },
+  {
+    "word": "help",
+    "synonyms": [
+      "assist",
+      "aid",
+      "support"
+    ],
+    "antonyms": [
+      "hinder",
+      "obstruct"
+    ]
+  },
+  {
+    "word": "blame",
+    "synonyms": [
+      "accuse",
+      "censure"
+    ],
+    "antonyms": [
+      "absolve",
+      "exonerate"
+    ]
+  },
+  {
+    "word": "judge",
+    "synonyms": [
+      "assess",
+      "evaluate",
+      "appraise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "belief",
+    "synonyms": [
+      "conviction",
+      "creed",
+      "tenet"
+    ],
+    "antonyms": [
+      "disbelief",
+      "scepticism"
+    ]
+  },
+  {
+    "word": "return",
+    "synonyms": [
+      "restore",
+      "give back",
+      "reinstate"
+    ],
+    "antonyms": [
+      "keep",
+      "retain"
+    ]
+  },
+  {
+    "word": "cruel",
+    "synonyms": [
+      "brutal",
+      "heartless",
+      "vicious"
+    ],
+    "antonyms": [
+      "kind",
+      "compassionate"
+    ]
+  },
+  {
+    "word": "unfair",
+    "synonyms": [
+      "unjust",
+      "inequitable",
+      "biased"
+    ],
+    "antonyms": [
+      "fair",
+      "just"
+    ]
+  },
+  {
+    "word": "loyal",
+    "synonyms": [
+      "faithful",
+      "devoted",
+      "steadfast"
+    ],
+    "antonyms": [
+      "disloyal",
+      "treacherous"
+    ]
+  },
+  {
+    "word": "greedy",
+    "synonyms": [
+      "avaricious",
+      "grasping",
+      "covetous"
+    ],
+    "antonyms": [
+      "generous",
+      "altruistic"
+    ]
+  },
+  {
+    "word": "selfish",
+    "synonyms": [
+      "egotistical",
+      "self-serving",
+      "egoistic"
+    ],
+    "antonyms": [
+      "altruistic",
+      "unselfish"
+    ]
+  },
+  {
+    "word": "generous",
+    "synonyms": [
+      "charitable",
+      "bountiful",
+      "liberal"
+    ],
+    "antonyms": [
+      "stingy",
+      "selfish"
+    ]
+  },
+  {
+    "word": "modest",
+    "synonyms": [
+      "humble",
+      "unassuming",
+      "unpretentious"
+    ],
+    "antonyms": [
+      "arrogant",
+      "boastful"
+    ]
+  },
+  {
+    "word": "arrogant",
+    "synonyms": [
+      "haughty",
+      "conceited",
+      "pompous"
+    ],
+    "antonyms": [
+      "modest",
+      "humble"
+    ]
+  },
+  {
+    "word": "corrupt",
+    "synonyms": [
+      "dishonest",
+      "crooked",
+      "venal"
+    ],
+    "antonyms": [
+      "honest",
+      "incorruptible"
+    ]
+  },
+  {
+    "word": "bribe",
+    "synonyms": [
+      "kickback",
+      "inducement",
+      "payoff"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fraud",
+    "synonyms": [
+      "deception",
+      "swindle",
+      "scam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loophole",
+    "synonyms": [
+      "gap",
+      "technicality",
+      "escape clause"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conscientious",
+    "synonyms": [
+      "diligent",
+      "meticulous",
+      "scrupulous"
+    ],
+    "antonyms": [
+      "careless",
+      "negligent"
+    ]
+  },
+  {
+    "word": "reputation",
+    "synonyms": [
+      "standing",
+      "repute",
+      "name"
+    ],
+    "antonyms": [
+      "disrepute"
+    ]
+  },
+  {
+    "word": "scandal",
+    "synonyms": [
+      "disgrace",
+      "outrage",
+      "affair"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "confess",
+    "synonyms": [
+      "admit",
+      "acknowledge",
+      "own up"
+    ],
+    "antonyms": [
+      "deny",
+      "conceal"
+    ]
+  },
+  {
+    "word": "apologise",
+    "synonyms": [
+      "say sorry",
+      "express regret"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forgive",
+    "synonyms": [
+      "pardon",
+      "absolve",
+      "excuse"
+    ],
+    "antonyms": [
+      "resent"
+    ]
+  },
+  {
+    "word": "tolerate",
+    "synonyms": [
+      "accept",
+      "endure",
+      "allow"
+    ],
+    "antonyms": [
+      "oppose",
+      "reject"
+    ]
+  },
+  {
+    "word": "exploit",
+    "synonyms": [
+      "abuse",
+      "take advantage of",
+      "manipulate"
+    ],
+    "antonyms": [
+      "protect",
+      "safeguard"
+    ]
+  },
+  {
+    "word": "oppress",
+    "synonyms": [
+      "persecute",
+      "tyrannize",
+      "subjugate"
+    ],
+    "antonyms": [
+      "liberate",
+      "free"
+    ]
+  },
+  {
+    "word": "stereotype",
+    "synonyms": [
+      "generalization",
+      "cliche",
+      "preconception"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "principled",
+    "synonyms": [
+      "upright",
+      "honourable",
+      "ethical"
+    ],
+    "antonyms": [
+      "unprincipled",
+      "unscrupulous"
+    ]
+  },
+  {
+    "word": "ruthless",
+    "synonyms": [
+      "merciless",
+      "pitiless",
+      "callous"
+    ],
+    "antonyms": [
+      "merciful",
+      "compassionate"
+    ]
+  },
+  {
+    "word": "virtuous",
+    "synonyms": [
+      "righteous",
+      "moral",
+      "upright"
+    ],
+    "antonyms": [
+      "wicked",
+      "sinful"
+    ]
+  },
+  {
+    "word": "deceive",
+    "synonyms": [
+      "mislead",
+      "delude",
+      "trick"
+    ],
+    "antonyms": [
+      "enlighten",
+      "inform"
+    ]
+  },
+  {
+    "word": "boycott",
+    "synonyms": [
+      "embargo",
+      "blacklist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypocrite",
+    "synonyms": [
+      "pretender",
+      "dissembler"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scrupulous",
+    "synonyms": [
+      "meticulous",
+      "conscientious",
+      "principled"
+    ],
+    "antonyms": [
+      "unscrupulous",
+      "careless"
+    ]
+  },
+  {
+    "word": "unscrupulous",
+    "synonyms": [
+      "unprincipled",
+      "dishonest",
+      "corrupt"
+    ],
+    "antonyms": [
+      "scrupulous",
+      "principled"
+    ]
+  },
+  {
+    "word": "malfeasance",
+    "synonyms": [
+      "misconduct",
+      "wrongdoing",
+      "corruption"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nepotism",
+    "synonyms": [
+      "favouritism",
+      "cronyism"
+    ],
+    "antonyms": [
+      "impartiality"
+    ]
+  },
+  {
+    "word": "embezzle",
+    "synonyms": [
+      "misappropriate",
+      "pilfer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coerce",
+    "synonyms": [
+      "compel",
+      "force",
+      "pressure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manipulate",
+    "synonyms": [
+      "influence",
+      "distort"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dogmatic",
+    "synonyms": [
+      "doctrinaire",
+      "inflexible",
+      "rigid"
+    ],
+    "antonyms": [
+      "open-minded",
+      "flexible"
+    ]
+  },
+  {
+    "word": "relativism",
+    "synonyms": [
+      "subjectivism",
+      "situational ethics"
+    ],
+    "antonyms": [
+      "absolutism"
+    ]
+  },
+  {
+    "word": "nihilism",
+    "synonyms": [
+      "cynicism"
+    ],
+    "antonyms": [
+      "idealism"
+    ]
+  },
+  {
+    "word": "magnanimous",
+    "synonyms": [
+      "generous",
+      "noble",
+      "big-hearted"
+    ],
+    "antonyms": [
+      "petty",
+      "mean-spirited"
+    ]
+  },
+  {
+    "word": "benevolent",
+    "synonyms": [
+      "kind",
+      "charitable",
+      "altruistic"
+    ],
+    "antonyms": [
+      "malevolent",
+      "malicious"
+    ]
+  },
+  {
+    "word": "bigotry",
+    "synonyms": [
+      "prejudice",
+      "intolerance",
+      "bias"
+    ],
+    "antonyms": [
+      "tolerance",
+      "open-mindedness"
+    ]
+  },
+  {
+    "word": "xenophobia",
+    "synonyms": [
+      "hostility to foreigners"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "culpable",
+    "synonyms": [
+      "guilty",
+      "blameworthy",
+      "responsible"
+    ],
+    "antonyms": [
+      "innocent",
+      "blameless"
+    ]
+  },
+  {
+    "word": "absolve",
+    "synonyms": [
+      "pardon",
+      "exonerate",
+      "acquit"
+    ],
+    "antonyms": [
+      "condemn",
+      "blame"
+    ]
+  },
+  {
+    "word": "vindicate",
+    "synonyms": [
+      "exonerate",
+      "justify",
+      "clear"
+    ],
+    "antonyms": [
+      "incriminate",
+      "discredit"
+    ]
+  },
+  {
+    "word": "scruple",
+    "synonyms": [
+      "qualm",
+      "misgiving",
+      "reservation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contrition",
+    "synonyms": [
+      "remorse",
+      "penitence",
+      "repentance"
+    ],
+    "antonyms": [
+      "impenitence"
+    ]
+  },
+  {
+    "word": "remorse",
+    "synonyms": [
+      "regret",
+      "contrition",
+      "guilt"
+    ],
+    "antonyms": [
+      "callousness"
+    ]
+  },
+  {
+    "word": "reprehensible",
+    "synonyms": [
+      "blameworthy",
+      "discreditable",
+      "shameful"
+    ],
+    "antonyms": [
+      "praiseworthy",
+      "commendable"
+    ]
+  },
+  {
+    "word": "duplicity",
+    "synonyms": [
+      "deceitfulness",
+      "double-dealing",
+      "deception"
+    ],
+    "antonyms": [
+      "candour",
+      "sincerity"
+    ]
+  },
+  {
+    "word": "candour",
+    "synonyms": [
+      "frankness",
+      "openness",
+      "honesty"
+    ],
+    "antonyms": [
+      "duplicity",
+      "evasiveness"
+    ]
+  },
+  {
+    "word": "probity",
+    "synonyms": [
+      "integrity",
+      "uprightness",
+      "rectitude"
+    ],
+    "antonyms": [
+      "corruption",
+      "dishonesty"
+    ]
+  },
+  {
+    "word": "ostracise",
+    "synonyms": [
+      "shun",
+      "exclude",
+      "blacklist"
+    ],
+    "antonyms": [
+      "embrace"
+    ]
+  },
+  {
+    "word": "clemency",
+    "synonyms": [
+      "mercy",
+      "leniency",
+      "forgiveness"
+    ],
+    "antonyms": [
+      "severity",
+      "harshness"
+    ]
+  },
+  {
+    "word": "iniquity",
+    "synonyms": [
+      "injustice",
+      "wickedness",
+      "sin"
+    ],
+    "antonyms": [
+      "righteousness",
+      "justice"
+    ]
+  },
+  {
+    "word": "complicity",
+    "synonyms": [
+      "collusion",
+      "involvement",
+      "connivance"
+    ],
+    "antonyms": [
+      "innocence"
+    ]
+  },
+  {
+    "word": "discretion",
+    "synonyms": [
+      "prudence",
+      "tact",
+      "judiciousness"
+    ],
+    "antonyms": [
+      "indiscretion",
+      "rashness"
+    ]
+  },
+  {
+    "word": "anathema",
+    "synonyms": [
+      "taboo",
+      "abomination",
+      "bane"
+    ],
+    "antonyms": [
+      "blessing"
+    ]
+  },
+  {
+    "word": "paragon",
+    "synonyms": [
+      "model",
+      "exemplar",
+      "epitome"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "altruistic",
+    "synonyms": [
+      "selfless",
+      "unselfish",
+      "benevolent"
+    ],
+    "antonyms": [
+      "selfish",
+      "egoistic"
+    ]
+  },
+  {
+    "word": "covert",
+    "synonyms": [
+      "secret",
+      "clandestine",
+      "stealthy"
+    ],
+    "antonyms": [
+      "overt",
+      "open"
+    ]
+  },
+  {
+    "word": "pusillanimous",
+    "synonyms": [
+      "cowardly",
+      "timid",
+      "craven"
+    ],
+    "antonyms": [
+      "brave",
+      "valiant"
+    ]
+  },
+  {
+    "word": "venal",
+    "synonyms": [
+      "corrupt",
+      "mercenary",
+      "bribable"
+    ],
+    "antonyms": [
+      "incorruptible",
+      "honest"
+    ]
+  },
+  {
+    "word": "sycophantic",
+    "synonyms": [
+      "obsequious",
+      "fawning",
+      "servile"
+    ],
+    "antonyms": [
+      "independent"
+    ]
+  },
+  {
+    "word": "mendacious",
+    "synonyms": [
+      "dishonest",
+      "deceitful",
+      "untruthful"
+    ],
+    "antonyms": [
+      "truthful",
+      "honest"
+    ]
+  },
+  {
+    "word": "perfidy",
+    "synonyms": [
+      "treachery",
+      "betrayal",
+      "disloyalty"
+    ],
+    "antonyms": [
+      "loyalty",
+      "fidelity"
+    ]
+  },
+  {
+    "word": "turpitude",
+    "synonyms": [
+      "depravity",
+      "wickedness",
+      "baseness"
+    ],
+    "antonyms": [
+      "virtue",
+      "rectitude"
+    ]
+  },
+  {
+    "word": "odious",
+    "synonyms": [
+      "hateful",
+      "detestable",
+      "repugnant"
+    ],
+    "antonyms": [
+      "admirable",
+      "pleasant"
+    ]
+  },
+  {
+    "word": "sanctimonious",
+    "synonyms": [
+      "self-righteous",
+      "holier-than-thou",
+      "preachy"
+    ],
+    "antonyms": [
+      "humble",
+      "modest"
+    ]
+  },
+  {
+    "word": "obsequious",
+    "synonyms": [
+      "servile",
+      "fawning",
+      "sycophantic"
+    ],
+    "antonyms": [
+      "assertive",
+      "independent"
+    ]
+  },
+  {
+    "word": "truculent",
+    "synonyms": [
+      "belligerent",
+      "aggressive",
+      "combative"
+    ],
+    "antonyms": [
+      "amiable",
+      "conciliatory"
+    ]
+  },
+  {
+    "word": "impeccable",
+    "synonyms": [
+      "faultless",
+      "flawless",
+      "exemplary"
+    ],
+    "antonyms": [
+      "flawed",
+      "imperfect"
+    ]
+  },
+  {
+    "word": "incorruptible",
+    "synonyms": [
+      "upright",
+      "honest",
+      "unbribable"
+    ],
+    "antonyms": [
+      "corruptible",
+      "venal"
+    ]
+  },
+  {
+    "word": "rectitude",
+    "synonyms": [
+      "integrity",
+      "uprightness",
+      "probity"
+    ],
+    "antonyms": [
+      "depravity",
+      "corruption"
+    ]
+  },
+  {
+    "word": "magnanimity",
+    "synonyms": [
+      "generosity",
+      "nobility",
+      "largesse"
+    ],
+    "antonyms": [
+      "pettiness",
+      "meanness"
+    ]
+  },
+  {
+    "word": "recompense",
+    "synonyms": [
+      "compensation",
+      "reward",
+      "restitution"
+    ],
+    "antonyms": [
+      "penalty"
+    ]
+  },
+  {
+    "word": "vindictive",
+    "synonyms": [
+      "spiteful",
+      "revengeful",
+      "vengeful"
+    ],
+    "antonyms": [
+      "forgiving",
+      "magnanimous"
+    ]
+  },
+  {
+    "word": "rancour",
+    "synonyms": [
+      "resentment",
+      "bitterness",
+      "animosity"
+    ],
+    "antonyms": [
+      "goodwill",
+      "forgiveness"
+    ]
+  },
+  {
+    "word": "invidious",
+    "synonyms": [
+      "unfair",
+      "odious",
+      "discriminatory"
+    ],
+    "antonyms": [
+      "equitable",
+      "fair"
+    ]
+  },
+  {
+    "word": "expiate",
+    "synonyms": [
+      "atone for",
+      "make amends for",
+      "redeem"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "atone",
+    "synonyms": [
+      "make amends",
+      "redeem",
+      "expiate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "abjure",
+    "synonyms": [
+      "renounce",
+      "forswear",
+      "recant"
+    ],
+    "antonyms": [
+      "embrace",
+      "profess"
+    ]
+  },
+  {
+    "word": "apostasy",
+    "synonyms": [
+      "renunciation",
+      "defection",
+      "recantation"
+    ],
+    "antonyms": [
+      "orthodoxy"
+    ]
+  },
+  {
+    "word": "heresy",
+    "synonyms": [
+      "dissent",
+      "unorthodoxy",
+      "blasphemy"
+    ],
+    "antonyms": [
+      "orthodoxy"
+    ]
+  },
+  {
+    "word": "dissemble",
+    "synonyms": [
+      "feign",
+      "pretend",
+      "dissimulate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "equivocate",
+    "synonyms": [
+      "prevaricate",
+      "hedge",
+      "waffle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disingenuous",
+    "synonyms": [
+      "insincere",
+      "dishonest",
+      "two-faced"
+    ],
+    "antonyms": [
+      "sincere",
+      "candid"
+    ]
+  },
+  {
+    "word": "mercenary",
+    "synonyms": [
+      "money-driven",
+      "profit-seeking",
+      "self-interested"
+    ],
+    "antonyms": [
+      "altruistic",
+      "idealistic"
+    ]
+  },
+  {
+    "word": "tyranny",
+    "synonyms": [
+      "despotism",
+      "oppression",
+      "autocracy"
+    ],
+    "antonyms": [
+      "democracy",
+      "freedom"
+    ]
+  },
+  {
+    "word": "tyrannical",
+    "synonyms": [
+      "despotic",
+      "autocratic",
+      "oppressive"
+    ],
+    "antonyms": [
+      "democratic",
+      "liberal"
+    ]
+  },
+  {
+    "word": "pariah",
+    "synonyms": [
+      "outcast",
+      "exile"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disdain",
+    "synonyms": [
+      "contempt",
+      "scorn",
+      "derision"
+    ],
+    "antonyms": [
+      "admiration",
+      "esteem"
+    ]
+  },
+  {
+    "word": "contemptible",
+    "synonyms": [
+      "despicable",
+      "base",
+      "ignoble"
+    ],
+    "antonyms": [
+      "admirable",
+      "honourable"
+    ]
+  },
+  {
+    "word": "exemplary",
+    "synonyms": [
+      "model",
+      "ideal",
+      "commendable"
+    ],
+    "antonyms": [
+      "reprehensible",
+      "deplorable"
+    ]
+  },
+  {
+    "word": "unconscionable",
+    "synonyms": [
+      "outrageous",
+      "unscrupulous",
+      "immoral"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gullible",
+    "synonyms": [
+      "credulous",
+      "naive",
+      "trusting"
+    ],
+    "antonyms": [
+      "sceptical",
+      "wary"
+    ]
+  },
+  {
+    "word": "hubris",
+    "synonyms": [
+      "arrogance",
+      "pride",
+      "overconfidence"
+    ],
+    "antonyms": [
+      "humility",
+      "modesty"
+    ]
+  },
+  {
+    "word": "nemesis",
+    "synonyms": [
+      "archenemy",
+      "retribution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sophistry",
+    "synonyms": [
+      "fallacy",
+      "casuistry",
+      "specious reasoning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deplorable",
+    "synonyms": [
+      "lamentable",
+      "shameful",
+      "disgraceful"
+    ],
+    "antonyms": [
+      "admirable",
+      "commendable"
+    ]
+  },
+  {
+    "word": "perfidious",
+    "synonyms": [
+      "treacherous",
+      "disloyal",
+      "faithless"
+    ],
+    "antonyms": [
+      "loyal",
+      "faithful"
+    ]
+  }
+]

@@ -1,0 +1,1053 @@
+[
+  {
+    "word": "food security",
+    "synonyms": [
+      "food availability"
+    ],
+    "antonyms": [
+      "food insecurity"
+    ]
+  },
+  {
+    "word": "greenhouse gas",
+    "synonyms": [
+      "heat-trapping gas"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pollinator",
+    "synonyms": [
+      "pollinating agent"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "food miles",
+    "synonyms": [
+      "food transport distance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "threshing",
+    "synonyms": [
+      "flailing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biochar",
+    "synonyms": [
+      "charcoal amendment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "green manure",
+    "synonyms": [
+      "green fertilizer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nitrogen fixation",
+    "synonyms": [
+      "nitrogen assimilation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agroforestry",
+    "synonyms": [
+      "agro-silviculture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "companion planting",
+    "synonyms": [
+      "interplanting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cover crop",
+    "synonyms": [
+      "catch crop",
+      "living mulch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "farm",
+    "synonyms": [
+      "ranch",
+      "homestead"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "farmer",
+    "synonyms": [
+      "grower",
+      "cultivator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "field",
+    "synonyms": [
+      "paddock",
+      "cropland"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seed",
+    "synonyms": [
+      "kernel",
+      "pip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crop",
+    "synonyms": [
+      "harvest",
+      "produce"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plant",
+    "synonyms": [
+      "sow",
+      "set out"
+    ],
+    "antonyms": [
+      "uproot"
+    ]
+  },
+  {
+    "word": "water",
+    "synonyms": [
+      "irrigate",
+      "sprinkle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "weed",
+    "synonyms": [
+      "undesirable plant"
+    ],
+    "antonyms": [
+      "cultivated plant"
+    ]
+  },
+  {
+    "word": "barn",
+    "synonyms": [
+      "shed",
+      "outbuilding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tractor",
+    "synonyms": [
+      "tiller",
+      "farm vehicle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "soil",
+    "synonyms": [
+      "earth",
+      "ground"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fruit",
+    "synonyms": [
+      "orchard produce"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vegetable",
+    "synonyms": [
+      "greens"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cow",
+    "synonyms": [
+      "bovine",
+      "cattle"
+    ],
+    "antonyms": [
+      "bull"
+    ]
+  },
+  {
+    "word": "chicken",
+    "synonyms": [
+      "fowl",
+      "hen"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fence",
+    "synonyms": [
+      "barrier",
+      "enclosure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grow",
+    "synonyms": [
+      "cultivate",
+      "raise"
+    ],
+    "antonyms": [
+      "shrink"
+    ]
+  },
+  {
+    "word": "dig",
+    "synonyms": [
+      "excavate",
+      "turn over"
+    ],
+    "antonyms": [
+      "fill in"
+    ]
+  },
+  {
+    "word": "wheat",
+    "synonyms": [
+      "triticum"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rain",
+    "synonyms": [
+      "precipitation",
+      "rainfall"
+    ],
+    "antonyms": [
+      "drought"
+    ]
+  },
+  {
+    "word": "fertile",
+    "synonyms": [
+      "fecund",
+      "productive"
+    ],
+    "antonyms": [
+      "barren"
+    ]
+  },
+  {
+    "word": "irrigate",
+    "synonyms": [
+      "water",
+      "channel water to"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cultivation",
+    "synonyms": [
+      "farming",
+      "tillage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drainage",
+    "synonyms": [
+      "drainage system"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sow",
+    "synonyms": [
+      "seed",
+      "plant"
+    ],
+    "antonyms": [
+      "reap"
+    ]
+  },
+  {
+    "word": "reap",
+    "synonyms": [
+      "harvest",
+      "gather"
+    ],
+    "antonyms": [
+      "sow"
+    ]
+  },
+  {
+    "word": "plough",
+    "synonyms": [
+      "plow",
+      "till"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "topsoil",
+    "synonyms": [
+      "surface soil"
+    ],
+    "antonyms": [
+      "subsoil"
+    ]
+  },
+  {
+    "word": "poultry",
+    "synonyms": [
+      "domestic fowl"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dairy",
+    "synonyms": [
+      "milk farm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "orchard",
+    "synonyms": [
+      "fruit garden",
+      "grove"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "greenhouse",
+    "synonyms": [
+      "glasshouse",
+      "hothouse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manure",
+    "synonyms": [
+      "dung",
+      "muck"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "erosion",
+    "synonyms": [
+      "wearing away",
+      "abrasion"
+    ],
+    "antonyms": [
+      "accretion"
+    ]
+  },
+  {
+    "word": "abundant",
+    "synonyms": [
+      "plentiful",
+      "copious"
+    ],
+    "antonyms": [
+      "scarce"
+    ]
+  },
+  {
+    "word": "agriculture",
+    "synonyms": [
+      "farming",
+      "cultivation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "seedling",
+    "synonyms": [
+      "young plant",
+      "sprout"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pasture",
+    "synonyms": [
+      "grassland",
+      "meadow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "harvester",
+    "synonyms": [
+      "combine",
+      "reaper"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "herbicide",
+    "synonyms": [
+      "weedkiller"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sprout",
+    "synonyms": [
+      "germinate",
+      "shoot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sustainability",
+    "synonyms": [
+      "long-term viability"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agrarian",
+    "synonyms": [
+      "agricultural"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smallholder",
+    "synonyms": [
+      "peasant farmer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subsistence",
+    "synonyms": [
+      "self-sufficiency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "husbandry",
+    "synonyms": [
+      "farming"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agrochemical",
+    "synonyms": [
+      "farm chemical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "degradation",
+    "synonyms": [
+      "deterioration",
+      "decline"
+    ],
+    "antonyms": [
+      "regeneration"
+    ]
+  },
+  {
+    "word": "desertification",
+    "synonyms": [
+      "aridification"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "salinity",
+    "synonyms": [
+      "salt content",
+      "saltiness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viable",
+    "synonyms": [
+      "feasible",
+      "workable"
+    ],
+    "antonyms": [
+      "unviable"
+    ]
+  },
+  {
+    "word": "productivity",
+    "synonyms": [
+      "output",
+      "yield"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mechanisation",
+    "synonyms": [
+      "automation",
+      "motorization"
+    ],
+    "antonyms": [
+      "manual labor"
+    ]
+  },
+  {
+    "word": "quota",
+    "synonyms": [
+      "allocation",
+      "allowance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tenancy",
+    "synonyms": [
+      "lease",
+      "occupancy"
+    ],
+    "antonyms": [
+      "ownership"
+    ]
+  },
+  {
+    "word": "hectare",
+    "synonyms": [
+      "ha"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cereal",
+    "synonyms": [
+      "grain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pollination",
+    "synonyms": [
+      "fertilization"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hydroponics",
+    "synonyms": [
+      "soilless culture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cropland",
+    "synonyms": [
+      "arable land",
+      "farmland"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agribusiness",
+    "synonyms": [
+      "agricultural industry",
+      "agrifood business"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commodity",
+    "synonyms": [
+      "goods",
+      "raw material"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tariff",
+    "synonyms": [
+      "duty",
+      "levy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stockpile",
+    "synonyms": [
+      "reserve",
+      "store"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "famine",
+    "synonyms": [
+      "starvation"
+    ],
+    "antonyms": [
+      "abundance"
+    ]
+  },
+  {
+    "word": "resilience",
+    "synonyms": [
+      "adaptability",
+      "robustness"
+    ],
+    "antonyms": [
+      "fragility"
+    ]
+  },
+  {
+    "word": "cultivar",
+    "synonyms": [
+      "cultivated variety"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "propagate",
+    "synonyms": [
+      "multiply",
+      "reproduce"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perennial",
+    "synonyms": [
+      "long-lived"
+    ],
+    "antonyms": [
+      "annual"
+    ]
+  },
+  {
+    "word": "annual",
+    "synonyms": [
+      "yearly"
+    ],
+    "antonyms": [
+      "perennial"
+    ]
+  },
+  {
+    "word": "rhizome",
+    "synonyms": [
+      "underground stem"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fodder",
+    "synonyms": [
+      "feed",
+      "forage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grazing",
+    "synonyms": [
+      "pasturing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allotment",
+    "synonyms": [
+      "garden plot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biomass",
+    "synonyms": [
+      "organic matter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bucolic",
+    "synonyms": [
+      "pastoral",
+      "rustic"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "agronomist",
+    "synonyms": [
+      "crop scientist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "autochthonous",
+    "synonyms": [
+      "indigenous",
+      "native"
+    ],
+    "antonyms": [
+      "allochthonous"
+    ]
+  },
+  {
+    "word": "silviculture",
+    "synonyms": [
+      "forestry",
+      "tree cultivation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viticulture",
+    "synonyms": [
+      "grape growing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "apiculture",
+    "synonyms": [
+      "beekeeping"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sericulture",
+    "synonyms": [
+      "silk farming"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pisciculture",
+    "synonyms": [
+      "fish farming",
+      "aquaculture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allelopathy",
+    "synonyms": [
+      "chemical inhibition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "edaphic",
+    "synonyms": [
+      "soil-related"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pedology",
+    "synonyms": [
+      "soil science"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gleaning",
+    "synonyms": [
+      "gathering leftovers"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mycorrhiza",
+    "synonyms": [
+      "fungal root partner"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eutrophication",
+    "synonyms": [
+      "nutrient overload"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "yeoman",
+    "synonyms": [
+      "freeholder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hinterland",
+    "synonyms": [
+      "backcountry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tilth",
+    "synonyms": [
+      "soil condition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cornucopia",
+    "synonyms": [
+      "abundance",
+      "plenty"
+    ],
+    "antonyms": [
+      "scarcity"
+    ]
+  },
+  {
+    "word": "bounty",
+    "synonyms": [
+      "abundance",
+      "largesse"
+    ],
+    "antonyms": [
+      "scarcity"
+    ]
+  },
+  {
+    "word": "pastoral",
+    "synonyms": [
+      "rural",
+      "agrarian"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "arcadian",
+    "synonyms": [
+      "idyllic",
+      "rustic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sylvan",
+    "synonyms": [
+      "wooded"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fructify",
+    "synonyms": [
+      "bear fruit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "germinate",
+    "synonyms": [
+      "sprout",
+      "shoot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sharecropper",
+    "synonyms": [
+      "tenant farmer"
+    ],
+    "antonyms": [
+      "landowner"
+    ]
+  },
+  {
+    "word": "latifundium",
+    "synonyms": [
+      "large estate"
+    ],
+    "antonyms": [
+      "minifundium"
+    ]
+  },
+  {
+    "word": "usufruct",
+    "synonyms": [
+      "right of use"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "afforestation",
+    "synonyms": [
+      "tree planting"
+    ],
+    "antonyms": [
+      "deforestation"
+    ]
+  },
+  {
+    "word": "reforestation",
+    "synonyms": [
+      "tree planting"
+    ],
+    "antonyms": [
+      "deforestation"
+    ]
+  },
+  {
+    "word": "rusticate",
+    "synonyms": [
+      "move to countryside"
+    ],
+    "antonyms": [
+      "urbanize"
+    ]
+  },
+  {
+    "word": "transhumance",
+    "synonyms": [
+      "seasonal migration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biodynamic",
+    "synonyms": [
+      "organic"
+    ],
+    "antonyms": [
+      "conventional"
+    ]
+  },
+  {
+    "word": "dormancy",
+    "synonyms": [
+      "hibernation",
+      "inactivity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "senescence",
+    "synonyms": [
+      "aging",
+      "decline"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "phenology",
+    "synonyms": [
+      "seasonal timing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scion",
+    "synonyms": [
+      "graft"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rootstock",
+    "synonyms": [
+      "understock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fecund",
+    "synonyms": [
+      "fertile",
+      "prolific"
+    ],
+    "antonyms": [
+      "barren"
+    ]
+  },
+  {
+    "word": "friable",
+    "synonyms": [
+      "crumbly",
+      "loose"
+    ],
+    "antonyms": [
+      "compacted"
+    ]
+  },
+  {
+    "word": "loam",
+    "synonyms": [
+      "fertile soil"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "marl",
+    "synonyms": [
+      "calcareous clay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "husbandman",
+    "synonyms": [
+      "farmer",
+      "tiller"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terracing",
+    "synonyms": [
+      "stepped cultivation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "xerophyte",
+    "synonyms": [
+      "drought-tolerant plant"
+    ],
+    "antonyms": [
+      "hydrophyte"
+    ]
+  },
+  {
+    "word": "halophyte",
+    "synonyms": [
+      "salt-tolerant plant"
+    ],
+    "antonyms": [
+      "glycophyte"
+    ]
+  }
+]

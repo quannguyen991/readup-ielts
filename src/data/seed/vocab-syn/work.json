@@ -1,0 +1,1099 @@
+[
+  {
+    "word": "interview",
+    "synonyms": [
+      "job interview",
+      "assessment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "job",
+    "synonyms": [
+      "position",
+      "post"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "boss",
+    "synonyms": [
+      "manager",
+      "supervisor"
+    ],
+    "antonyms": [
+      "subordinate"
+    ]
+  },
+  {
+    "word": "office",
+    "synonyms": [
+      "workplace",
+      "bureau"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meeting",
+    "synonyms": [
+      "conference",
+      "gathering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "salary",
+    "synonyms": [
+      "pay",
+      "wage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shift",
+    "synonyms": [
+      "spell",
+      "stint"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deadline",
+    "synonyms": [
+      "cut-off",
+      "due date"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "report",
+    "synonyms": [
+      "account",
+      "review"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "task",
+    "synonyms": [
+      "duty",
+      "assignment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "break",
+    "synonyms": [
+      "rest",
+      "pause"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "holiday",
+    "synonyms": [
+      "vacation",
+      "leave"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retire",
+    "synonyms": [
+      "stop working",
+      "withdraw from work"
+    ],
+    "antonyms": [
+      "continue working"
+    ]
+  },
+  {
+    "word": "hire",
+    "synonyms": [
+      "employ",
+      "engage"
+    ],
+    "antonyms": [
+      "fire"
+    ]
+  },
+  {
+    "word": "recruit",
+    "synonyms": [
+      "enlist",
+      "enrol"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "candidate",
+    "synonyms": [
+      "contender",
+      "nominee"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "applicant",
+    "synonyms": [
+      "candidate",
+      "job seeker"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reference",
+    "synonyms": [
+      "recommendation",
+      "testimonial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vacancy",
+    "synonyms": [
+      "opening",
+      "vacant post"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shortlist",
+    "synonyms": [
+      "select",
+      "pick"
+    ],
+    "antonyms": [
+      "reject"
+    ]
+  },
+  {
+    "word": "delegate",
+    "synonyms": [
+      "assign",
+      "entrust"
+    ],
+    "antonyms": [
+      "retain"
+    ]
+  },
+  {
+    "word": "deliver",
+    "synonyms": [
+      "accomplish",
+      "achieve"
+    ],
+    "antonyms": [
+      "fail"
+    ]
+  },
+  {
+    "word": "priority",
+    "synonyms": [
+      "precedence",
+      "importance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "overtime",
+    "synonyms": [
+      "extra hours",
+      "additional work"
+    ],
+    "antonyms": [
+      "regular hours"
+    ]
+  },
+  {
+    "word": "commute",
+    "synonyms": [
+      "travel to work",
+      "journey"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "multitask",
+    "synonyms": [
+      "juggle",
+      "do several things"
+    ],
+    "antonyms": [
+      "single-task"
+    ]
+  },
+  {
+    "word": "appraisal",
+    "synonyms": [
+      "evaluation",
+      "assessment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "payslip",
+    "synonyms": [
+      "pay statement",
+      "wage slip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bonus",
+    "synonyms": [
+      "incentive payment",
+      "reward"
+    ],
+    "antonyms": [
+      "penalty"
+    ]
+  },
+  {
+    "word": "overwork",
+    "synonyms": [
+      "overexert",
+      "exhaust"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "workload",
+    "synonyms": [
+      "caseload",
+      "burden"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "outsource",
+    "synonyms": [
+      "subcontract",
+      "contract out"
+    ],
+    "antonyms": [
+      "insource"
+    ]
+  },
+  {
+    "word": "negotiate",
+    "synonyms": [
+      "bargain",
+      "haggle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "agenda",
+    "synonyms": [
+      "programme",
+      "order of business"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "resign",
+    "synonyms": [
+      "quit",
+      "step down"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "proficient",
+    "synonyms": [
+      "skilled",
+      "competent"
+    ],
+    "antonyms": [
+      "incompetent"
+    ]
+  },
+  {
+    "word": "tenure",
+    "synonyms": [
+      "term",
+      "incumbency"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "incentive",
+    "synonyms": [
+      "inducement",
+      "motivation"
+    ],
+    "antonyms": [
+      "disincentive"
+    ]
+  },
+  {
+    "word": "stipulate",
+    "synonyms": [
+      "specify",
+      "require"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "delegation",
+    "synonyms": [
+      "assignment",
+      "devolution"
+    ],
+    "antonyms": [
+      "centralisation"
+    ]
+  },
+  {
+    "word": "jurisdiction",
+    "synonyms": [
+      "authority",
+      "power"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arbitration",
+    "synonyms": [
+      "adjudication",
+      "settlement"
+    ],
+    "antonyms": [
+      "litigation"
+    ]
+  },
+  {
+    "word": "grievance",
+    "synonyms": [
+      "complaint",
+      "objection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mediate",
+    "synonyms": [
+      "arbitrate",
+      "reconcile"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "unionise",
+    "synonyms": [
+      "organise",
+      "form a union"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "collective",
+    "synonyms": [
+      "joint",
+      "shared"
+    ],
+    "antonyms": [
+      "individual"
+    ]
+  },
+  {
+    "word": "attrition",
+    "synonyms": [
+      "wastage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turnover",
+    "synonyms": [
+      "staff churn",
+      "sales volume"
+    ],
+    "antonyms": [
+      "retention"
+    ]
+  },
+  {
+    "word": "headcount",
+    "synonyms": [
+      "staff numbers",
+      "workforce size"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viability",
+    "synonyms": [
+      "feasibility",
+      "practicality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "leverage",
+    "synonyms": [
+      "exploit",
+      "utilise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "diligence",
+    "synonyms": [
+      "care",
+      "conscientiousness"
+    ],
+    "antonyms": [
+      "negligence"
+    ]
+  },
+  {
+    "word": "versatility",
+    "synonyms": [
+      "adaptability",
+      "flexibility"
+    ],
+    "antonyms": [
+      "inflexibility"
+    ]
+  },
+  {
+    "word": "proactive",
+    "synonyms": [
+      "anticipatory",
+      "enterprising"
+    ],
+    "antonyms": [
+      "reactive"
+    ]
+  },
+  {
+    "word": "resilient",
+    "synonyms": [
+      "tough",
+      "robust"
+    ],
+    "antonyms": [
+      "fragile"
+    ]
+  },
+  {
+    "word": "consultancy",
+    "synonyms": [
+      "consulting firm",
+      "advisory firm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "onboarding",
+    "synonyms": [
+      "induction",
+      "orientation"
+    ],
+    "antonyms": [
+      "offboarding"
+    ]
+  },
+  {
+    "word": "sabbatical",
+    "synonyms": [
+      "career break",
+      "leave of absence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "secondment",
+    "synonyms": [
+      "temporary transfer",
+      "posting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "expedite",
+    "synonyms": [
+      "accelerate",
+      "hasten"
+    ],
+    "antonyms": [
+      "delay"
+    ]
+  },
+  {
+    "word": "benchmark",
+    "synonyms": [
+      "standard",
+      "yardstick"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conglomerate",
+    "synonyms": [
+      "holding company",
+      "corporation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subordinate",
+    "synonyms": [
+      "junior",
+      "underling"
+    ],
+    "antonyms": [
+      "superior"
+    ]
+  },
+  {
+    "word": "prerogative",
+    "synonyms": [
+      "entitlement",
+      "privilege"
+    ],
+    "antonyms": [
+      "obligation"
+    ]
+  },
+  {
+    "word": "credibility",
+    "synonyms": [
+      "trustworthiness",
+      "reliability"
+    ],
+    "antonyms": [
+      "disrepute"
+    ]
+  },
+  {
+    "word": "moonlight",
+    "synonyms": [
+      "freelance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retrenchment",
+    "synonyms": [
+      "layoffs",
+      "redundancies"
+    ],
+    "antonyms": [
+      "expansion"
+    ]
+  },
+  {
+    "word": "dismissal",
+    "synonyms": [
+      "firing",
+      "termination"
+    ],
+    "antonyms": [
+      "reinstatement"
+    ]
+  },
+  {
+    "word": "tribunal",
+    "synonyms": [
+      "panel",
+      "court"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fiduciary",
+    "synonyms": [
+      "custodial",
+      "trust-based"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "demotion",
+    "synonyms": [
+      "downgrading",
+      "relegation"
+    ],
+    "antonyms": [
+      "promotion"
+    ]
+  },
+  {
+    "word": "appointment",
+    "synonyms": [
+      "nomination",
+      "placement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "procurement",
+    "synonyms": [
+      "purchasing",
+      "sourcing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "contractor",
+    "synonyms": [
+      "vendor",
+      "subcontractor"
+    ],
+    "antonyms": [
+      "employee"
+    ]
+  },
+  {
+    "word": "sinecure",
+    "synonyms": [
+      "cushy job",
+      "soft job"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nepotism",
+    "synonyms": [
+      "favouritism",
+      "cronyism"
+    ],
+    "antonyms": [
+      "meritocracy"
+    ]
+  },
+  {
+    "word": "cronyism",
+    "synonyms": [
+      "favouritism",
+      "nepotism"
+    ],
+    "antonyms": [
+      "meritocracy"
+    ]
+  },
+  {
+    "word": "obsequious",
+    "synonyms": [
+      "servile",
+      "fawning"
+    ],
+    "antonyms": [
+      "assertive"
+    ]
+  },
+  {
+    "word": "sycophantic",
+    "synonyms": [
+      "toadying",
+      "fawning"
+    ],
+    "antonyms": [
+      "candid"
+    ]
+  },
+  {
+    "word": "diffident",
+    "synonyms": [
+      "shy",
+      "timid"
+    ],
+    "antonyms": [
+      "confident"
+    ]
+  },
+  {
+    "word": "laconic",
+    "synonyms": [
+      "terse",
+      "succinct"
+    ],
+    "antonyms": [
+      "loquacious"
+    ]
+  },
+  {
+    "word": "punctilious",
+    "synonyms": [
+      "scrupulous",
+      "meticulous"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "indefatigable",
+    "synonyms": [
+      "tireless",
+      "untiring"
+    ],
+    "antonyms": [
+      "weary"
+    ]
+  },
+  {
+    "word": "industrious",
+    "synonyms": [
+      "hardworking",
+      "diligent"
+    ],
+    "antonyms": [
+      "idle"
+    ]
+  },
+  {
+    "word": "ineffectual",
+    "synonyms": [
+      "ineffective",
+      "futile"
+    ],
+    "antonyms": [
+      "effective"
+    ]
+  },
+  {
+    "word": "mercenary",
+    "synonyms": [
+      "grasping",
+      "self-interested"
+    ],
+    "antonyms": [
+      "selfless"
+    ]
+  },
+  {
+    "word": "vocation",
+    "synonyms": [
+      "calling",
+      "mission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drudgery",
+    "synonyms": [
+      "toil",
+      "grind"
+    ],
+    "antonyms": [
+      "enjoyment"
+    ]
+  },
+  {
+    "word": "onerous",
+    "synonyms": [
+      "burdensome",
+      "demanding"
+    ],
+    "antonyms": [
+      "light"
+    ]
+  },
+  {
+    "word": "tedious",
+    "synonyms": [
+      "boring",
+      "monotonous"
+    ],
+    "antonyms": [
+      "stimulating"
+    ]
+  },
+  {
+    "word": "lacklustre",
+    "synonyms": [
+      "dull",
+      "uninspired"
+    ],
+    "antonyms": [
+      "vibrant"
+    ]
+  },
+  {
+    "word": "hubris",
+    "synonyms": [
+      "arrogance",
+      "conceit"
+    ],
+    "antonyms": [
+      "humility"
+    ]
+  },
+  {
+    "word": "nemesis",
+    "synonyms": [
+      "arch-rival",
+      "bane"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anathema",
+    "synonyms": [
+      "abomination",
+      "taboo"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bureaucracy",
+    "synonyms": [
+      "red tape",
+      "administration"
+    ],
+    "antonyms": [
+      "informality"
+    ]
+  },
+  {
+    "word": "kowtow",
+    "synonyms": [
+      "grovel",
+      "truckle"
+    ],
+    "antonyms": [
+      "defy"
+    ]
+  },
+  {
+    "word": "toady",
+    "synonyms": [
+      "flatter",
+      "curry favour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fawn",
+    "synonyms": [
+      "flatter",
+      "grovel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "machiavellian",
+    "synonyms": [
+      "scheming",
+      "cunning"
+    ],
+    "antonyms": [
+      "honest"
+    ]
+  },
+  {
+    "word": "stratagem",
+    "synonyms": [
+      "scheme",
+      "ruse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impecunious",
+    "synonyms": [
+      "penniless",
+      "poor"
+    ],
+    "antonyms": [
+      "affluent"
+    ]
+  },
+  {
+    "word": "penurious",
+    "synonyms": [
+      "destitute",
+      "stingy"
+    ],
+    "antonyms": [
+      "generous"
+    ]
+  },
+  {
+    "word": "emolument",
+    "synonyms": [
+      "remuneration",
+      "pay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perquisite",
+    "synonyms": [
+      "perk",
+      "benefit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "remonstrate",
+    "synonyms": [
+      "protest",
+      "object"
+    ],
+    "antonyms": [
+      "concede"
+    ]
+  },
+  {
+    "word": "acquiesce",
+    "synonyms": [
+      "consent",
+      "comply"
+    ],
+    "antonyms": [
+      "resist"
+    ]
+  },
+  {
+    "word": "ostensibly",
+    "synonyms": [
+      "apparently",
+      "seemingly"
+    ],
+    "antonyms": [
+      "really"
+    ]
+  },
+  {
+    "word": "mollify",
+    "synonyms": [
+      "pacify",
+      "soothe"
+    ],
+    "antonyms": [
+      "provoke"
+    ]
+  },
+  {
+    "word": "equivocate",
+    "synonyms": [
+      "prevaricate",
+      "hedge"
+    ],
+    "antonyms": [
+      "speak plainly"
+    ]
+  },
+  {
+    "word": "pusillanimous",
+    "synonyms": [
+      "cowardly",
+      "timid"
+    ],
+    "antonyms": [
+      "courageous"
+    ]
+  },
+  {
+    "word": "ingratiate",
+    "synonyms": [
+      "curry favour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "supercilious",
+    "synonyms": [
+      "haughty",
+      "condescending"
+    ],
+    "antonyms": [
+      "humble"
+    ]
+  },
+  {
+    "word": "egregious",
+    "synonyms": [
+      "flagrant",
+      "outrageous"
+    ],
+    "antonyms": [
+      "trivial"
+    ]
+  },
+  {
+    "word": "hapless",
+    "synonyms": [
+      "unlucky",
+      "luckless"
+    ],
+    "antonyms": [
+      "fortunate"
+    ]
+  },
+  {
+    "word": "ostracise",
+    "synonyms": [
+      "shun",
+      "exclude"
+    ],
+    "antonyms": [
+      "embrace"
+    ]
+  },
+  {
+    "word": "apathetic",
+    "synonyms": [
+      "indifferent",
+      "unconcerned"
+    ],
+    "antonyms": [
+      "enthusiastic"
+    ]
+  },
+  {
+    "word": "sluggish",
+    "synonyms": [
+      "slow",
+      "lethargic"
+    ],
+    "antonyms": [
+      "brisk"
+    ]
+  },
+  {
+    "word": "nonchalant",
+    "synonyms": [
+      "casual",
+      "unfazed"
+    ],
+    "antonyms": [
+      "anxious"
+    ]
+  },
+  {
+    "word": "disgruntled",
+    "synonyms": [
+      "discontented",
+      "resentful"
+    ],
+    "antonyms": [
+      "content"
+    ]
+  },
+  {
+    "word": "cajole",
+    "synonyms": [
+      "coax",
+      "wheedle"
+    ],
+    "antonyms": [
+      "coerce"
+    ]
+  },
+  {
+    "word": "vitriolic",
+    "synonyms": [
+      "caustic",
+      "venomous"
+    ],
+    "antonyms": [
+      "gentle"
+    ]
+  }
+]

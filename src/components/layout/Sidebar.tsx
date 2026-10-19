@@ -20,8 +20,6 @@ import {
   type NavItem,
   navLabel,
 } from "@/navigation/nav-items";
-import { useIeltsFocusStore } from "@/store/useIeltsFocusStore";
-import { useSatFocusStore } from "@/store/useSatFocusStore";
 import { useCityAvailable } from "@/services/city/availability";
 import { usePlan } from "@/store/useBillingStore";
 import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
@@ -83,9 +81,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
   const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
   const desktop = useCityAvailable();
-  const ieltsFeatures = useIeltsFocusStore((s) => s.features);
-  const satFeatures = useSatFocusStore((s) => s.features);
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures, satFeatures);
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
   const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
   // Thanh bên nổi: bo góc, cách mép trái/trên/dưới FLOAT_GAP. Bề rộng trừ đi FLOAT_GAP nên cả khối
   // vẫn chiếm đúng `width`, vùng nội dung (lg:pl-[248px]) không phải đổi.

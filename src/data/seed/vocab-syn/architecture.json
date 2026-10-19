@@ -1,0 +1,968 @@
+[
+  {
+    "word": "cantilever",
+    "synonyms": [
+      "overhanging beam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "open-plan",
+    "synonyms": [
+      "open layout"
+    ],
+    "antonyms": [
+      "partitioned"
+    ]
+  },
+  {
+    "word": "spatial",
+    "synonyms": [
+      "positional"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ergonomics",
+    "synonyms": [
+      "human factors"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reinforced concrete",
+    "synonyms": [
+      "ferroconcrete"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colonnade",
+    "synonyms": [
+      "row of columns"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pediment",
+    "synonyms": [
+      "gable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "balcony",
+    "synonyms": [
+      "veranda"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "staircase",
+    "synonyms": [
+      "stairway",
+      "flight of stairs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "penthouse",
+    "synonyms": [
+      "rooftop flat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mezzanine",
+    "synonyms": [
+      "entresol"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "building",
+    "synonyms": [
+      "structure",
+      "edifice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "house",
+    "synonyms": [
+      "dwelling",
+      "home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "room",
+    "synonyms": [
+      "chamber",
+      "space"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wall",
+    "synonyms": [
+      "partition",
+      "barrier"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "roof",
+    "synonyms": [
+      "roofing",
+      "covering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "window",
+    "synonyms": [
+      "casement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "door",
+    "synonyms": [
+      "doorway",
+      "entrance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "floor",
+    "synonyms": [
+      "level",
+      "deck"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brick",
+    "synonyms": [
+      "block",
+      "masonry unit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stone",
+    "synonyms": [
+      "rock"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bridge",
+    "synonyms": [
+      "span",
+      "viaduct"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tower",
+    "synonyms": [
+      "spire",
+      "steeple"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "castle",
+    "synonyms": [
+      "fortress",
+      "citadel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "church",
+    "synonyms": [
+      "chapel",
+      "kirk"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ceiling",
+    "synonyms": [
+      "overhead"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tile",
+    "synonyms": [
+      "shingle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "paint",
+    "synonyms": [
+      "coat",
+      "finish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flat",
+    "synonyms": [
+      "apartment",
+      "unit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "storey",
+    "synonyms": [
+      "level",
+      "floor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "courtyard",
+    "synonyms": [
+      "quadrangle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corridor",
+    "synonyms": [
+      "passage",
+      "passageway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pavilion",
+    "synonyms": [
+      "summerhouse",
+      "marquee"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turret",
+    "synonyms": [
+      "small tower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gable",
+    "synonyms": [
+      "pediment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "timber",
+    "synonyms": [
+      "lumber",
+      "wood"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "concrete",
+    "synonyms": [
+      "cement mixture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "glazing",
+    "synonyms": [
+      "window glass"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parapet",
+    "synonyms": [
+      "low wall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plinth",
+    "synonyms": [
+      "pedestal",
+      "base"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lintel",
+    "synonyms": [
+      "header",
+      "beam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rafter",
+    "synonyms": [
+      "roof beam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terrace",
+    "synonyms": [
+      "patio",
+      "deck"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scaffolding",
+    "synonyms": [
+      "staging",
+      "framework"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cornice",
+    "synonyms": [
+      "moulding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bay",
+    "synonyms": [
+      "compartment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hallway",
+    "synonyms": [
+      "corridor",
+      "passageway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "loft",
+    "synonyms": [
+      "attic",
+      "garret"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gatehouse",
+    "synonyms": [
+      "lodge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annex",
+    "synonyms": [
+      "extension",
+      "wing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fenestration",
+    "synonyms": [
+      "window layout"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vaulted",
+    "synonyms": [
+      "arched",
+      "domed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "apse",
+    "synonyms": [
+      "semicircular recess"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nave",
+    "synonyms": [
+      "central aisle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "transept",
+    "synonyms": [
+      "cross aisle"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "clerestory",
+    "synonyms": [
+      "high windows"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cloister",
+    "synonyms": [
+      "covered walkway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "transom",
+    "synonyms": [
+      "crossbar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mullion",
+    "synonyms": [
+      "vertical bar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spandrel",
+    "synonyms": [
+      "arch corner"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cornerstone",
+    "synonyms": [
+      "foundation stone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brutalism",
+    "synonyms": [
+      "brutalist style"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "modernism",
+    "synonyms": [
+      "modern style"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "postmodern",
+    "synonyms": [
+      "postmodernist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gothic",
+    "synonyms": [
+      "pointed-arch style"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "baroque",
+    "synonyms": [
+      "ornate",
+      "elaborate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "neoclassical",
+    "synonyms": [
+      "classical revival"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "portico",
+    "synonyms": [
+      "porch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vestibule",
+    "synonyms": [
+      "foyer",
+      "entrance hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gallery",
+    "synonyms": [
+      "balcony",
+      "exhibition hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rotunda",
+    "synonyms": [
+      "domed hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bailey",
+    "synonyms": [
+      "castle courtyard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "keep",
+    "synonyms": [
+      "donjon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moat",
+    "synonyms": [
+      "water-filled ditch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rampart",
+    "synonyms": [
+      "bulwark",
+      "embankment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embrasure",
+    "synonyms": [
+      "loophole"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brownstone",
+    "synonyms": [
+      "brown sandstone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "adobe",
+    "synonyms": [
+      "mud brick"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lattice",
+    "synonyms": [
+      "trellis",
+      "grille"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aperture",
+    "synonyms": [
+      "opening",
+      "gap"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corbel",
+    "synonyms": [
+      "bracket",
+      "console"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caisson",
+    "synonyms": [
+      "watertight chamber"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pilaster",
+    "synonyms": [
+      "engaged column",
+      "half-column"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "entablature",
+    "synonyms": [
+      "horizontal superstructure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frieze",
+    "synonyms": [
+      "decorative band"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypostyle",
+    "synonyms": [
+      "pillared hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mansard",
+    "synonyms": [
+      "french roof"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ogee",
+    "synonyms": [
+      "s-curve"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "machicolation",
+    "synonyms": [
+      "battlement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crenellation",
+    "synonyms": [
+      "battlement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "barbican",
+    "synonyms": [
+      "outwork"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypocaust",
+    "synonyms": [
+      "underfloor heating"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solarium",
+    "synonyms": [
+      "sunroom",
+      "conservatory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oriel",
+    "synonyms": [
+      "bay window"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dormer",
+    "synonyms": [
+      "roof window"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quoin",
+    "synonyms": [
+      "corner block"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rustication",
+    "synonyms": [
+      "rough stonework"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ashlar",
+    "synonyms": [
+      "dressed stone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rubble",
+    "synonyms": [
+      "debris"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "masonry",
+    "synonyms": [
+      "stonework",
+      "brickwork"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mortise",
+    "synonyms": [
+      "slot",
+      "socket"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tenon",
+    "synonyms": [
+      "tongue"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "joinery",
+    "synonyms": [
+      "woodwork",
+      "carpentry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gantry",
+    "synonyms": [
+      "crane frame"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pinnacle",
+    "synonyms": [
+      "spire",
+      "peak"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "finial",
+    "synonyms": [
+      "ornamental top"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "crocket",
+    "synonyms": [
+      "leaf ornament"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tracery",
+    "synonyms": [
+      "window stonework"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quatrefoil",
+    "synonyms": [
+      "four-leaf motif"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "groin",
+    "synonyms": [
+      "vault intersection"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "intrados",
+    "synonyms": [
+      "inner curve"
+    ],
+    "antonyms": [
+      "extrados"
+    ]
+  },
+  {
+    "word": "extrados",
+    "synonyms": [
+      "outer curve"
+    ],
+    "antonyms": [
+      "intrados"
+    ]
+  },
+  {
+    "word": "voussoir",
+    "synonyms": [
+      "wedge stone"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impost",
+    "synonyms": [
+      "springer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "abacus",
+    "synonyms": [
+      "capital slab"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "architrave",
+    "synonyms": [
+      "door frame",
+      "trim"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pergola",
+    "synonyms": [
+      "arbour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gazebo",
+    "synonyms": [
+      "garden pavilion",
+      "summerhouse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "belvedere",
+    "synonyms": [
+      "lookout tower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ziggurat",
+    "synonyms": [
+      "stepped pyramid"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stupa",
+    "synonyms": [
+      "buddhist shrine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pagoda",
+    "synonyms": [
+      "tiered tower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "minaret",
+    "synonyms": [
+      "mosque tower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "caryatid",
+    "synonyms": [
+      "female column"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "telamon",
+    "synonyms": [
+      "atlas"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cartouche",
+    "synonyms": [
+      "oval frame"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trumeau",
+    "synonyms": [
+      "central pier"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypaethral",
+    "synonyms": [
+      "open-air"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hypogeum",
+    "synonyms": [
+      "underground chamber"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cenotaph",
+    "synonyms": [
+      "empty tomb",
+      "memorial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mastaba",
+    "synonyms": [
+      "flat-roofed tomb"
+    ],
+    "antonyms": []
+  }
+]

@@ -65,7 +65,7 @@ export const VOCAB_ROADMAP_PHASES: VocabRoadmapPhase[] = [
       { n: 17, slug: 'sat-tang-2-unit-03', title: 'Từ đa nghĩa SAT (Phần 3)', count: 37, blurb: 'currency, eclipse, register, gravity…', sourceBook: 'SAT R&W 16 tuần · Tầng 2' },
       { n: 18, slug: 'sat-tang-2-unit-04', title: 'Từ đa nghĩa SAT (Phần 4)', count: 37, blurb: 'temper, observe, flag, reservation…', sourceBook: 'SAT R&W 16 tuần · Tầng 2' },
       { n: 19, slug: 'sat-tang-2-unit-05', title: 'Từ đa nghĩa SAT (Phần 5)', count: 38, blurb: 'facility, uniform, arrest, discount…', sourceBook: 'SAT R&W 16 tuần · Tầng 2' },
-      { n: 20, slug: 'sat-tang-2-unit-06', title: 'Từ đa nghĩa SAT (Phần 6)', count: 39, blurb: 'sound, pedestrian, weather, novel…', sourceBook: 'SAT R&W 16 tuần · Tầng 2' },
+      { n: 20, slug: 'sat-tang-2-unit-06', title: 'Từ đa nghĩa SAT (Phần 6)', count: 38, blurb: 'sound, pedestrian, weather, novel…', sourceBook: 'SAT R&W 16 tuần · Tầng 2' },
       { n: 21, slug: 'sat-real-tests-2025-p1', title: 'Đề thi thật SAT 2024–2025 (Phần 1)', count: 38, blurb: 'Từ vựng Words in Context trong đề thật 2024…', sourceBook: 'Springboard · Đề thi thật 2024–2025' },
       { n: 22, slug: 'sat-real-tests-2025-p2', title: 'Đề thi thật SAT 2024–2025 (Phần 2)', count: 38, blurb: 'Từ vựng Words in Context trong đề thật 2024–2025…', sourceBook: 'Springboard · Đề thi thật 2024–2025' },
       { n: 23, slug: 'sat-real-tests-2025-p3', title: 'Đề thi thật SAT 2024–2025 (Phần 3)', count: 39, blurb: 'Từ vựng Words in Context trong đề thật 2025…', sourceBook: 'Springboard · Đề thi thật 2024–2025' },

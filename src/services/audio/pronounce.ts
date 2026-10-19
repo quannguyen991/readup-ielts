@@ -4,10 +4,13 @@ import * as Speech from 'expo-speech';
 
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { englishVoice } from './voice';
-import { createClipLibrary, type Accent, type ClipVoice } from './pronounce-core';
+import { createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
 import pronunciationVoice from '@/data/pronunciation-voice.json';
 
 export type { Accent } from './pronounce-core';
+
+/** Bản ghi âm người thật từ từ điển (dictionaryapi.dev, rồi tên tệp gstatic) — dùng khi kho clip Gemini không có hoặc đã loại mục đó. */
+const dictLookup = createLookup();
 
 /**
  * PHÁT ÂM CHUNG CỦA CẢ APP.
@@ -245,7 +248,7 @@ export async function playClip(url: string, opts: { rate?: number } = {}): Promi
 }
 
 /** Giọng dự phòng cho từ CHƯA có clip giọng mặc định (Aoede): clip Alice (ElevenLabs). */
-export const FALLBACK_CLIP_VOICE: ClipVoice = "alice";
+export const FALLBACK_CLIP_VOICE: ClipVoice = 'alice';
 
 /** One default voice shared by pronunciation and clip generation. */
 export function currentClipVoice(): ClipVoice {
@@ -278,6 +281,22 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
         if (r.blocked) {
           if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
           return;
+        }
+      }
+      // Không có clip đã kiểm: thử bản ghi âm người thật từ từ điển (chỉ từ đơn) trước khi tới giọng máy.
+      if (isSingleWord(word)) {
+        const plan = await planPlayback(word, accent, dictLookup);
+        if (my !== token) return;
+        if (plan.kind === 'audio') {
+          for (const u of [plan.url, ...plan.alts]) {
+            const r = await playClipUrl(u, { rate, my });
+            if (my !== token) return;
+            if (r.ok) return;
+            if (r.blocked) {
+              if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+              return;
+            }
+          }
         }
       }
     }

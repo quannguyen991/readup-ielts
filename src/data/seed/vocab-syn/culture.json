@@ -1,0 +1,1154 @@
+[
+  {
+    "word": "cultural identity",
+    "synonyms": [
+      "cultural heritage",
+      "national character"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "minority",
+    "synonyms": [
+      "subgroup",
+      "ethnic group"
+    ],
+    "antonyms": [
+      "majority"
+    ]
+  },
+  {
+    "word": "cultural exchange",
+    "synonyms": [
+      "cultural interaction",
+      "cross-cultural exchange"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cultural relativism",
+    "synonyms": [
+      "cultural pluralism",
+      "contextual ethics"
+    ],
+    "antonyms": [
+      "ethnocentrism"
+    ]
+  },
+  {
+    "word": "oral tradition",
+    "synonyms": [
+      "spoken heritage",
+      "folk transmission"
+    ],
+    "antonyms": [
+      "written tradition"
+    ]
+  },
+  {
+    "word": "art",
+    "synonyms": [
+      "fine arts",
+      "creative work"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "music",
+    "synonyms": [
+      "melody",
+      "sound"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dance",
+    "synonyms": [
+      "routine",
+      "movement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "painting",
+    "synonyms": [
+      "artwork",
+      "picture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "song",
+    "synonyms": [
+      "tune",
+      "ballad"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "poem",
+    "synonyms": [
+      "verse",
+      "lyric"
+    ],
+    "antonyms": [
+      "prose"
+    ]
+  },
+  {
+    "word": "theatre",
+    "synonyms": [
+      "playhouse",
+      "auditorium"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "museum",
+    "synonyms": [
+      "gallery",
+      "exhibition hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "library",
+    "synonyms": [
+      "archive",
+      "reading room"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "language",
+    "synonyms": [
+      "tongue",
+      "dialect"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "book",
+    "synonyms": [
+      "volume",
+      "publication"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "film",
+    "synonyms": [
+      "movie",
+      "motion picture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "celebration",
+    "synonyms": [
+      "festivity",
+      "commemoration"
+    ],
+    "antonyms": [
+      "mourning"
+    ]
+  },
+  {
+    "word": "holiday",
+    "synonyms": [
+      "festival",
+      "public holiday"
+    ],
+    "antonyms": [
+      "workday"
+    ]
+  },
+  {
+    "word": "wedding",
+    "synonyms": [
+      "nuptials",
+      "marriage ceremony"
+    ],
+    "antonyms": [
+      "funeral"
+    ]
+  },
+  {
+    "word": "clothing",
+    "synonyms": [
+      "attire",
+      "garments"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "religion",
+    "synonyms": [
+      "faith",
+      "belief system"
+    ],
+    "antonyms": [
+      "atheism"
+    ]
+  },
+  {
+    "word": "temple",
+    "synonyms": [
+      "shrine",
+      "sanctuary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "instrument",
+    "synonyms": [
+      "musical instrument",
+      "tool"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "aesthetic",
+    "synonyms": [
+      "taste",
+      "style"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sculpture",
+    "synonyms": [
+      "statue",
+      "carving"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exhibition",
+    "synonyms": [
+      "display",
+      "show"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gallery",
+    "synonyms": [
+      "art gallery",
+      "exhibition space"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "performance",
+    "synonyms": [
+      "show",
+      "presentation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "orchestra",
+    "synonyms": [
+      "symphony orchestra",
+      "ensemble"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "novelist",
+    "synonyms": [
+      "novel writer",
+      "fiction writer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "poetry",
+    "synonyms": [
+      "verse",
+      "poems"
+    ],
+    "antonyms": [
+      "prose"
+    ]
+  },
+  {
+    "word": "literature",
+    "synonyms": [
+      "writing",
+      "letters"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "architecture",
+    "synonyms": [
+      "building design",
+      "structural art"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "craftsmanship",
+    "synonyms": [
+      "skill",
+      "artisanship"
+    ],
+    "antonyms": [
+      "amateurism"
+    ]
+  },
+  {
+    "word": "artisan",
+    "synonyms": [
+      "craftsman",
+      "craftsperson"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pottery",
+    "synonyms": [
+      "ceramics",
+      "earthenware"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embroidery",
+    "synonyms": [
+      "needlework",
+      "stitching"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "calligraphy",
+    "synonyms": [
+      "penmanship",
+      "decorative writing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tapestry",
+    "synonyms": [
+      "woven hanging",
+      "wall hanging"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lacquer",
+    "synonyms": [
+      "varnish",
+      "finish"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pilgrimage",
+    "synonyms": [
+      "journey",
+      "religious trek"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "procession",
+    "synonyms": [
+      "parade",
+      "march"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carnival",
+    "synonyms": [
+      "festival",
+      "fete"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reverence",
+    "synonyms": [
+      "veneration",
+      "awe"
+    ],
+    "antonyms": [
+      "contempt",
+      "irreverence"
+    ]
+  },
+  {
+    "word": "idiom",
+    "synonyms": [
+      "expression",
+      "phrase"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allegory",
+    "synonyms": [
+      "parable",
+      "fable"
+    ],
+    "antonyms": [
+      "literalism"
+    ]
+  },
+  {
+    "word": "motif",
+    "synonyms": [
+      "theme",
+      "recurring pattern"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "iconography",
+    "synonyms": [
+      "symbolism",
+      "imagery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "canon",
+    "synonyms": [
+      "body of works",
+      "accepted list"
+    ],
+    "antonyms": [
+      "apocrypha"
+    ]
+  },
+  {
+    "word": "avant-garde",
+    "synonyms": [
+      "experimental",
+      "pioneering"
+    ],
+    "antonyms": [
+      "conventional",
+      "traditional"
+    ]
+  },
+  {
+    "word": "bohemian",
+    "synonyms": [
+      "unconventional",
+      "free-spirited"
+    ],
+    "antonyms": [
+      "conventional",
+      "respectable"
+    ]
+  },
+  {
+    "word": "eclectic",
+    "synonyms": [
+      "diverse",
+      "varied"
+    ],
+    "antonyms": [
+      "uniform",
+      "homogeneous"
+    ]
+  },
+  {
+    "word": "lyrical",
+    "synonyms": [
+      "poetic",
+      "melodic"
+    ],
+    "antonyms": [
+      "prosaic"
+    ]
+  },
+  {
+    "word": "ornate",
+    "synonyms": [
+      "elaborate",
+      "decorative"
+    ],
+    "antonyms": [
+      "plain",
+      "austere"
+    ]
+  },
+  {
+    "word": "baroque",
+    "synonyms": [
+      "ornamental",
+      "elaborate"
+    ],
+    "antonyms": [
+      "minimalist",
+      "austere"
+    ]
+  },
+  {
+    "word": "renaissance",
+    "synonyms": [
+      "rebirth",
+      "revival"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "word": "vintage",
+    "synonyms": [
+      "classic",
+      "old-fashioned"
+    ],
+    "antonyms": [
+      "modern",
+      "contemporary"
+    ]
+  },
+  {
+    "word": "nostalgia",
+    "synonyms": [
+      "longing",
+      "reminiscence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pastoral",
+    "synonyms": [
+      "rural",
+      "idyllic"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "modernism",
+    "synonyms": [
+      "modern movement",
+      "avant-gardism"
+    ],
+    "antonyms": [
+      "traditionalism",
+      "postmodernism"
+    ]
+  },
+  {
+    "word": "epic",
+    "synonyms": [
+      "saga",
+      "heroic poem"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "elegy",
+    "synonyms": [
+      "lament",
+      "dirge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ode",
+    "synonyms": [
+      "hymn",
+      "paean"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sonnet",
+    "synonyms": [
+      "fourteen-line poem",
+      "lyric poem"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "soliloquy",
+    "synonyms": [
+      "monologue",
+      "interior monologue"
+    ],
+    "antonyms": [
+      "dialogue"
+    ]
+  },
+  {
+    "word": "protagonist",
+    "synonyms": [
+      "main character",
+      "hero"
+    ],
+    "antonyms": [
+      "antagonist"
+    ]
+  },
+  {
+    "word": "cinematic",
+    "synonyms": [
+      "filmic",
+      "visually dramatic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "choreography",
+    "synonyms": [
+      "dance arrangement",
+      "routine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "repertoire",
+    "synonyms": [
+      "repertory",
+      "collection of works"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "virtuoso",
+    "synonyms": [
+      "maestro",
+      "master"
+    ],
+    "antonyms": [
+      "amateur",
+      "novice"
+    ]
+  },
+  {
+    "word": "libretto",
+    "synonyms": [
+      "opera text",
+      "lyrics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fresco",
+    "synonyms": [
+      "mural",
+      "wall painting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mosaic",
+    "synonyms": [
+      "inlay",
+      "tessellation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frieze",
+    "synonyms": [
+      "relief band",
+      "decorative band"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kitsch",
+    "synonyms": [
+      "tacky art",
+      "tawdry design"
+    ],
+    "antonyms": [
+      "high art"
+    ]
+  },
+  {
+    "word": "pantomime",
+    "synonyms": [
+      "mime",
+      "dumb show"
+    ],
+    "antonyms": [
+      "dialogue"
+    ]
+  },
+  {
+    "word": "allusion",
+    "synonyms": [
+      "reference",
+      "hint"
+    ],
+    "antonyms": [
+      "explicit statement"
+    ]
+  },
+  {
+    "word": "pathos",
+    "synonyms": [
+      "pity",
+      "poignancy"
+    ],
+    "antonyms": [
+      "bathos"
+    ]
+  },
+  {
+    "word": "cultural capital",
+    "synonyms": [
+      "cultural assets",
+      "cultural resources"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "overwritten manuscript",
+      "layered text"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chiaroscuro",
+    "synonyms": [
+      "light and shade",
+      "tonal contrast"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trompe l'oeil",
+    "synonyms": [
+      "visual illusion",
+      "deceptive painting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pentimento",
+    "synonyms": [
+      "revealed earlier layer",
+      "visible reworking"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "objet d'art",
+    "synonyms": [
+      "art object",
+      "art piece"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ekphrasis",
+    "synonyms": [
+      "ekphrastic writing",
+      "art description"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "opulence",
+    "synonyms": [
+      "luxury",
+      "lavishness"
+    ],
+    "antonyms": [
+      "austerity",
+      "poverty"
+    ]
+  },
+  {
+    "word": "sumptuous",
+    "synonyms": [
+      "luxurious",
+      "lavish"
+    ],
+    "antonyms": [
+      "austere",
+      "spartan"
+    ]
+  },
+  {
+    "word": "resplendent",
+    "synonyms": [
+      "splendid",
+      "dazzling"
+    ],
+    "antonyms": [
+      "drab",
+      "dull"
+    ]
+  },
+  {
+    "word": "evanescent",
+    "synonyms": [
+      "fleeting",
+      "transient"
+    ],
+    "antonyms": [
+      "enduring",
+      "lasting"
+    ]
+  },
+  {
+    "word": "liminal",
+    "synonyms": [
+      "threshold",
+      "transitional"
+    ],
+    "antonyms": [
+      "settled",
+      "stable"
+    ]
+  },
+  {
+    "word": "ephemeral",
+    "synonyms": [
+      "transient",
+      "fleeting"
+    ],
+    "antonyms": [
+      "enduring",
+      "permanent"
+    ]
+  },
+  {
+    "word": "vestige",
+    "synonyms": [
+      "remnant",
+      "trace"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quintessential",
+    "synonyms": [
+      "typical",
+      "archetypal"
+    ],
+    "antonyms": [
+      "atypical"
+    ]
+  },
+  {
+    "word": "archetype",
+    "synonyms": [
+      "prototype",
+      "model"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "synecdoche",
+    "synonyms": [
+      "part-for-whole figure",
+      "figure of speech"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chthonic",
+    "synonyms": [
+      "underworld",
+      "subterranean"
+    ],
+    "antonyms": [
+      "celestial"
+    ]
+  },
+  {
+    "word": "auspicious",
+    "synonyms": [
+      "favourable",
+      "propitious"
+    ],
+    "antonyms": [
+      "inauspicious",
+      "ominous"
+    ]
+  },
+  {
+    "word": "sacrosanct",
+    "synonyms": [
+      "inviolable",
+      "sacred"
+    ],
+    "antonyms": [
+      "profane",
+      "violable"
+    ]
+  },
+  {
+    "word": "apotheosis",
+    "synonyms": [
+      "culmination",
+      "exaltation"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "zenith",
+    "synonyms": [
+      "peak",
+      "summit"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "purview",
+    "synonyms": [
+      "scope",
+      "range"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "connoisseur",
+    "synonyms": [
+      "expert",
+      "aficionado"
+    ],
+    "antonyms": [
+      "dilettante",
+      "philistine"
+    ]
+  },
+  {
+    "word": "dilettante",
+    "synonyms": [
+      "amateur",
+      "dabbler"
+    ],
+    "antonyms": [
+      "connoisseur",
+      "expert"
+    ]
+  },
+  {
+    "word": "aficionado",
+    "synonyms": [
+      "enthusiast",
+      "devotee"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cognoscente",
+    "synonyms": [
+      "connoisseur",
+      "expert"
+    ],
+    "antonyms": [
+      "layman"
+    ]
+  },
+  {
+    "word": "apostate",
+    "synonyms": [
+      "renegade",
+      "defector"
+    ],
+    "antonyms": [
+      "loyalist",
+      "believer"
+    ]
+  },
+  {
+    "word": "heterodox",
+    "synonyms": [
+      "unorthodox",
+      "heretical"
+    ],
+    "antonyms": [
+      "orthodox"
+    ]
+  },
+  {
+    "word": "iconoclasm",
+    "synonyms": [
+      "irreverence",
+      "rebelliousness"
+    ],
+    "antonyms": [
+      "traditionalism",
+      "conformity"
+    ]
+  },
+  {
+    "word": "syncretism",
+    "synonyms": [
+      "fusion",
+      "amalgamation"
+    ],
+    "antonyms": [
+      "purism"
+    ]
+  },
+  {
+    "word": "anathema",
+    "synonyms": [
+      "abomination",
+      "curse"
+    ],
+    "antonyms": [
+      "blessing"
+    ]
+  },
+  {
+    "word": "veneration",
+    "synonyms": [
+      "reverence",
+      "worship"
+    ],
+    "antonyms": [
+      "contempt",
+      "disdain"
+    ]
+  },
+  {
+    "word": "liturgy",
+    "synonyms": [
+      "ritual",
+      "rite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hagiography",
+    "synonyms": [
+      "eulogy",
+      "panegyric"
+    ],
+    "antonyms": [
+      "debunking"
+    ]
+  },
+  {
+    "word": "esoteric",
+    "synonyms": [
+      "obscure",
+      "arcane"
+    ],
+    "antonyms": [
+      "exoteric",
+      "common"
+    ]
+  },
+  {
+    "word": "arcane",
+    "synonyms": [
+      "mysterious",
+      "esoteric"
+    ],
+    "antonyms": [
+      "commonplace"
+    ]
+  },
+  {
+    "word": "recondite",
+    "synonyms": [
+      "abstruse",
+      "esoteric"
+    ],
+    "antonyms": [
+      "obvious",
+      "accessible"
+    ]
+  },
+  {
+    "word": "mellifluous",
+    "synonyms": [
+      "sweet-sounding",
+      "dulcet"
+    ],
+    "antonyms": [
+      "harsh",
+      "grating"
+    ]
+  },
+  {
+    "word": "sonorous",
+    "synonyms": [
+      "resonant",
+      "booming"
+    ],
+    "antonyms": [
+      "toneless"
+    ]
+  },
+  {
+    "word": "erudite",
+    "synonyms": [
+      "learned",
+      "scholarly"
+    ],
+    "antonyms": [
+      "ignorant",
+      "unlettered"
+    ]
+  },
+  {
+    "word": "cerebral",
+    "synonyms": [
+      "intellectual",
+      "analytical"
+    ],
+    "antonyms": [
+      "emotional",
+      "visceral"
+    ]
+  },
+  {
+    "word": "panegyric",
+    "synonyms": [
+      "eulogy",
+      "encomium"
+    ],
+    "antonyms": [
+      "diatribe",
+      "denunciation"
+    ]
+  },
+  {
+    "word": "gossamer",
+    "synonyms": [
+      "filament",
+      "gauze"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ineffable",
+    "synonyms": [
+      "indescribable",
+      "inexpressible"
+    ],
+    "antonyms": [
+      "describable"
+    ]
+  },
+  {
+    "word": "hieratic",
+    "synonyms": [
+      "priestly",
+      "ceremonial"
+    ],
+    "antonyms": [
+      "secular"
+    ]
+  }
+]

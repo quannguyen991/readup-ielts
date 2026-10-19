@@ -1,0 +1,1300 @@
+[
+  {
+    "word": "happy",
+    "synonyms": [
+      "glad",
+      "joyful"
+    ],
+    "antonyms": [
+      "sad",
+      "unhappy"
+    ]
+  },
+  {
+    "word": "sad",
+    "synonyms": [
+      "unhappy",
+      "sorrowful"
+    ],
+    "antonyms": [
+      "happy",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "angry",
+    "synonyms": [
+      "cross",
+      "irate"
+    ],
+    "antonyms": [
+      "calm",
+      "content"
+    ]
+  },
+  {
+    "word": "afraid",
+    "synonyms": [
+      "frightened",
+      "fearful"
+    ],
+    "antonyms": [
+      "brave",
+      "fearless"
+    ]
+  },
+  {
+    "word": "surprised",
+    "synonyms": [
+      "astonished",
+      "amazed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "excited",
+    "synonyms": [
+      "eager",
+      "enthusiastic"
+    ],
+    "antonyms": [
+      "bored",
+      "indifferent"
+    ]
+  },
+  {
+    "word": "bored",
+    "synonyms": [
+      "weary",
+      "uninterested"
+    ],
+    "antonyms": [
+      "interested",
+      "engaged"
+    ]
+  },
+  {
+    "word": "proud",
+    "synonyms": [
+      "honoured",
+      "satisfied"
+    ],
+    "antonyms": [
+      "ashamed",
+      "humble"
+    ]
+  },
+  {
+    "word": "lonely",
+    "synonyms": [
+      "isolated",
+      "solitary"
+    ],
+    "antonyms": [
+      "sociable",
+      "companionable"
+    ]
+  },
+  {
+    "word": "embarrassed",
+    "synonyms": [
+      "ashamed",
+      "self-conscious"
+    ],
+    "antonyms": [
+      "unashamed",
+      "composed"
+    ]
+  },
+  {
+    "word": "upset",
+    "synonyms": [
+      "distressed",
+      "troubled"
+    ],
+    "antonyms": [
+      "calm",
+      "content"
+    ]
+  },
+  {
+    "word": "glad",
+    "synonyms": [
+      "pleased",
+      "happy"
+    ],
+    "antonyms": [
+      "sorry",
+      "unhappy"
+    ]
+  },
+  {
+    "word": "hopeful",
+    "synonyms": [
+      "optimistic",
+      "expectant"
+    ],
+    "antonyms": [
+      "hopeless",
+      "despairing"
+    ]
+  },
+  {
+    "word": "confused",
+    "synonyms": [
+      "bewildered",
+      "perplexed"
+    ],
+    "antonyms": [
+      "clear-headed",
+      "lucid"
+    ]
+  },
+  {
+    "word": "disgusted",
+    "synonyms": [
+      "repelled",
+      "revolted"
+    ],
+    "antonyms": [
+      "delighted",
+      "pleased"
+    ]
+  },
+  {
+    "word": "homesick",
+    "synonyms": [
+      "nostalgic",
+      "longing for home"
+    ],
+    "antonyms": [
+      "content",
+      "settled"
+    ]
+  },
+  {
+    "word": "nervous",
+    "synonyms": [
+      "jittery",
+      "edgy"
+    ],
+    "antonyms": [
+      "calm",
+      "composed"
+    ]
+  },
+  {
+    "word": "grateful",
+    "synonyms": [
+      "thankful",
+      "appreciative"
+    ],
+    "antonyms": [
+      "ungrateful",
+      "resentful"
+    ]
+  },
+  {
+    "word": "relaxed",
+    "synonyms": [
+      "at ease",
+      "calm"
+    ],
+    "antonyms": [
+      "tense",
+      "anxious"
+    ]
+  },
+  {
+    "word": "annoyed",
+    "synonyms": [
+      "irritated",
+      "exasperated"
+    ],
+    "antonyms": [
+      "pleased",
+      "content"
+    ]
+  },
+  {
+    "word": "amused",
+    "synonyms": [
+      "entertained",
+      "diverted"
+    ],
+    "antonyms": [
+      "bored",
+      "unimpressed"
+    ]
+  },
+  {
+    "word": "delighted",
+    "synonyms": [
+      "overjoyed",
+      "pleased"
+    ],
+    "antonyms": [
+      "disappointed",
+      "dismayed"
+    ]
+  },
+  {
+    "word": "miserable",
+    "synonyms": [
+      "wretched",
+      "unhappy"
+    ],
+    "antonyms": [
+      "cheerful",
+      "content"
+    ]
+  },
+  {
+    "word": "hurt",
+    "synonyms": [
+      "wounded",
+      "offended"
+    ],
+    "antonyms": [
+      "comforted"
+    ]
+  },
+  {
+    "word": "scared",
+    "synonyms": [
+      "frightened",
+      "alarmed"
+    ],
+    "antonyms": [
+      "fearless",
+      "unafraid"
+    ]
+  },
+  {
+    "word": "cheerful",
+    "synonyms": [
+      "merry",
+      "light-hearted"
+    ],
+    "antonyms": [
+      "gloomy",
+      "sombre"
+    ]
+  },
+  {
+    "word": "calm",
+    "synonyms": [
+      "tranquil",
+      "serene"
+    ],
+    "antonyms": [
+      "agitated",
+      "restless"
+    ]
+  },
+  {
+    "word": "curious",
+    "synonyms": [
+      "inquisitive",
+      "interested"
+    ],
+    "antonyms": [
+      "indifferent",
+      "uninterested"
+    ]
+  },
+  {
+    "word": "thrilled",
+    "synonyms": [
+      "elated",
+      "ecstatic"
+    ],
+    "antonyms": [
+      "disappointed",
+      "unmoved"
+    ]
+  },
+  {
+    "word": "furious",
+    "synonyms": [
+      "enraged",
+      "livid"
+    ],
+    "antonyms": [
+      "calm",
+      "placid"
+    ]
+  },
+  {
+    "word": "terrified",
+    "synonyms": [
+      "horrified",
+      "petrified"
+    ],
+    "antonyms": [
+      "fearless",
+      "unafraid"
+    ]
+  },
+  {
+    "word": "overjoyed",
+    "synonyms": [
+      "elated",
+      "ecstatic"
+    ],
+    "antonyms": [
+      "miserable",
+      "despondent"
+    ]
+  },
+  {
+    "word": "heartbroken",
+    "synonyms": [
+      "devastated",
+      "grief-stricken"
+    ],
+    "antonyms": [
+      "elated",
+      "content"
+    ]
+  },
+  {
+    "word": "depressed",
+    "synonyms": [
+      "despondent",
+      "dejected"
+    ],
+    "antonyms": [
+      "cheerful",
+      "elated"
+    ]
+  },
+  {
+    "word": "puzzled",
+    "synonyms": [
+      "baffled",
+      "mystified"
+    ],
+    "antonyms": [
+      "enlightened"
+    ]
+  },
+  {
+    "word": "sympathetic",
+    "synonyms": [
+      "compassionate",
+      "understanding"
+    ],
+    "antonyms": [
+      "unsympathetic",
+      "indifferent"
+    ]
+  },
+  {
+    "word": "envious",
+    "synonyms": [
+      "jealous",
+      "covetous"
+    ],
+    "antonyms": [
+      "content"
+    ]
+  },
+  {
+    "word": "pleased",
+    "synonyms": [
+      "satisfied",
+      "content"
+    ],
+    "antonyms": [
+      "displeased",
+      "dissatisfied"
+    ]
+  },
+  {
+    "word": "hesitant",
+    "synonyms": [
+      "reluctant",
+      "unsure"
+    ],
+    "antonyms": [
+      "eager",
+      "resolute"
+    ]
+  },
+  {
+    "word": "enthusiastic",
+    "synonyms": [
+      "keen",
+      "zealous"
+    ],
+    "antonyms": [
+      "apathetic",
+      "reluctant"
+    ]
+  },
+  {
+    "word": "bitter",
+    "synonyms": [
+      "resentful",
+      "embittered"
+    ],
+    "antonyms": [
+      "content",
+      "forgiving"
+    ]
+  },
+  {
+    "word": "passionate",
+    "synonyms": [
+      "fervent",
+      "ardent"
+    ],
+    "antonyms": [
+      "indifferent",
+      "apathetic"
+    ]
+  },
+  {
+    "word": "uneasy",
+    "synonyms": [
+      "restless",
+      "disquieted"
+    ],
+    "antonyms": [
+      "comfortable",
+      "at ease"
+    ]
+  },
+  {
+    "word": "gloomy",
+    "synonyms": [
+      "dismal",
+      "melancholy"
+    ],
+    "antonyms": [
+      "cheerful",
+      "bright"
+    ]
+  },
+  {
+    "word": "affection",
+    "synonyms": [
+      "fondness",
+      "love"
+    ],
+    "antonyms": [
+      "hostility",
+      "dislike"
+    ]
+  },
+  {
+    "word": "admiration",
+    "synonyms": [
+      "esteem",
+      "respect"
+    ],
+    "antonyms": [
+      "contempt",
+      "disdain"
+    ]
+  },
+  {
+    "word": "bewildered",
+    "synonyms": [
+      "confused",
+      "baffled"
+    ],
+    "antonyms": [
+      "clear-headed"
+    ]
+  },
+  {
+    "word": "perturbed",
+    "synonyms": [
+      "disturbed",
+      "worried"
+    ],
+    "antonyms": [
+      "calm",
+      "unconcerned"
+    ]
+  },
+  {
+    "word": "aggrieved",
+    "synonyms": [
+      "resentful",
+      "wronged"
+    ],
+    "antonyms": [
+      "content",
+      "satisfied"
+    ]
+  },
+  {
+    "word": "disconsolate",
+    "synonyms": [
+      "desolate",
+      "inconsolable"
+    ],
+    "antonyms": [
+      "consoled",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "dejected",
+    "synonyms": [
+      "downcast",
+      "disheartened"
+    ],
+    "antonyms": [
+      "cheerful",
+      "elated"
+    ]
+  },
+  {
+    "word": "forlorn",
+    "synonyms": [
+      "abandoned",
+      "forsaken"
+    ],
+    "antonyms": [
+      "cherished"
+    ]
+  },
+  {
+    "word": "apprehensive",
+    "synonyms": [
+      "uneasy",
+      "fearful"
+    ],
+    "antonyms": [
+      "confident",
+      "unconcerned"
+    ]
+  },
+  {
+    "word": "vexed",
+    "synonyms": [
+      "irritated",
+      "annoyed"
+    ],
+    "antonyms": [
+      "content"
+    ]
+  },
+  {
+    "word": "incensed",
+    "synonyms": [
+      "infuriated",
+      "outraged"
+    ],
+    "antonyms": [
+      "placated",
+      "calm"
+    ]
+  },
+  {
+    "word": "indifferent",
+    "synonyms": [
+      "unconcerned",
+      "apathetic"
+    ],
+    "antonyms": [
+      "interested",
+      "concerned"
+    ]
+  },
+  {
+    "word": "resigned",
+    "synonyms": [
+      "accepting",
+      "stoical"
+    ],
+    "antonyms": [
+      "defiant",
+      "rebellious"
+    ]
+  },
+  {
+    "word": "mortified",
+    "synonyms": [
+      "humiliated",
+      "embarrassed"
+    ],
+    "antonyms": [
+      "unashamed"
+    ]
+  },
+  {
+    "word": "humiliated",
+    "synonyms": [
+      "shamed",
+      "degraded"
+    ],
+    "antonyms": [
+      "honoured",
+      "respected"
+    ]
+  },
+  {
+    "word": "scornful",
+    "synonyms": [
+      "contemptuous",
+      "disdainful"
+    ],
+    "antonyms": [
+      "admiring",
+      "respectful"
+    ]
+  },
+  {
+    "word": "wary",
+    "synonyms": [
+      "cautious",
+      "suspicious"
+    ],
+    "antonyms": [
+      "trusting",
+      "unguarded"
+    ]
+  },
+  {
+    "word": "unnerved",
+    "synonyms": [
+      "rattled",
+      "unsettled"
+    ],
+    "antonyms": [
+      "composed",
+      "steady"
+    ]
+  },
+  {
+    "word": "rapturous",
+    "synonyms": [
+      "ecstatic",
+      "joyous"
+    ],
+    "antonyms": [
+      "lukewarm",
+      "unenthusiastic"
+    ]
+  },
+  {
+    "word": "jubilant",
+    "synonyms": [
+      "triumphant",
+      "elated"
+    ],
+    "antonyms": [
+      "despondent",
+      "downcast"
+    ]
+  },
+  {
+    "word": "contrite",
+    "synonyms": [
+      "remorseful",
+      "repentant"
+    ],
+    "antonyms": [
+      "unrepentant",
+      "defiant"
+    ]
+  },
+  {
+    "word": "yearning",
+    "synonyms": [
+      "longing",
+      "craving"
+    ],
+    "antonyms": [
+      "contentment",
+      "satisfaction"
+    ]
+  },
+  {
+    "word": "pang",
+    "synonyms": [
+      "twinge",
+      "stab"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rankle",
+    "synonyms": [
+      "fester",
+      "irritate"
+    ],
+    "antonyms": [
+      "soothe",
+      "placate"
+    ]
+  },
+  {
+    "word": "gleeful",
+    "synonyms": [
+      "jubilant",
+      "delighted"
+    ],
+    "antonyms": [
+      "glum",
+      "miserable"
+    ]
+  },
+  {
+    "word": "nonplussed",
+    "synonyms": [
+      "baffled",
+      "flummoxed"
+    ],
+    "antonyms": [
+      "composed",
+      "unperturbed"
+    ]
+  },
+  {
+    "word": "disquiet",
+    "synonyms": [
+      "unease",
+      "anxiety"
+    ],
+    "antonyms": [
+      "tranquillity"
+    ]
+  },
+  {
+    "word": "sympathy",
+    "synonyms": [
+      "compassion",
+      "pity"
+    ],
+    "antonyms": [
+      "indifference",
+      "apathy"
+    ]
+  },
+  {
+    "word": "rueful",
+    "synonyms": [
+      "regretful",
+      "sorrowful"
+    ],
+    "antonyms": [
+      "unrepentant",
+      "unashamed"
+    ]
+  },
+  {
+    "word": "smug",
+    "synonyms": [
+      "self-satisfied",
+      "complacent"
+    ],
+    "antonyms": [
+      "humble",
+      "modest"
+    ]
+  },
+  {
+    "word": "schadenfreude",
+    "synonyms": [
+      "gloating",
+      "malicious glee"
+    ],
+    "antonyms": [
+      "sympathy",
+      "compassion"
+    ]
+  },
+  {
+    "word": "ennui",
+    "synonyms": [
+      "boredom",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm",
+      "zest"
+    ]
+  },
+  {
+    "word": "lassitude",
+    "synonyms": [
+      "languor",
+      "fatigue"
+    ],
+    "antonyms": [
+      "vigour",
+      "energy"
+    ]
+  },
+  {
+    "word": "acrimony",
+    "synonyms": [
+      "bitterness",
+      "rancour"
+    ],
+    "antonyms": [
+      "amity",
+      "goodwill"
+    ]
+  },
+  {
+    "word": "exultant",
+    "synonyms": [
+      "triumphant",
+      "elated"
+    ],
+    "antonyms": [
+      "despondent",
+      "dejected"
+    ]
+  },
+  {
+    "word": "dejection",
+    "synonyms": [
+      "despondency",
+      "gloom"
+    ],
+    "antonyms": [
+      "elation",
+      "euphoria"
+    ]
+  },
+  {
+    "word": "rancour",
+    "synonyms": [
+      "resentment",
+      "bitterness"
+    ],
+    "antonyms": [
+      "forgiveness",
+      "goodwill"
+    ]
+  },
+  {
+    "word": "enmity",
+    "synonyms": [
+      "hostility",
+      "animosity"
+    ],
+    "antonyms": [
+      "friendship",
+      "amity"
+    ]
+  },
+  {
+    "word": "vexation",
+    "synonyms": [
+      "annoyance",
+      "irritation"
+    ],
+    "antonyms": [
+      "satisfaction",
+      "gratification"
+    ]
+  },
+  {
+    "word": "chagrin",
+    "synonyms": [
+      "humiliation",
+      "mortification"
+    ],
+    "antonyms": [
+      "delight"
+    ]
+  },
+  {
+    "word": "consternation",
+    "synonyms": [
+      "dismay",
+      "alarm"
+    ],
+    "antonyms": [
+      "composure",
+      "calm"
+    ]
+  },
+  {
+    "word": "bemusement",
+    "synonyms": [
+      "puzzlement",
+      "bewilderment"
+    ],
+    "antonyms": [
+      "understanding",
+      "clarity"
+    ]
+  },
+  {
+    "word": "ire",
+    "synonyms": [
+      "anger",
+      "wrath"
+    ],
+    "antonyms": [
+      "serenity",
+      "calm"
+    ]
+  },
+  {
+    "word": "pique",
+    "synonyms": [
+      "resentment",
+      "irritation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "umbrage",
+    "synonyms": [
+      "offence",
+      "resentment"
+    ],
+    "antonyms": [
+      "pleasure",
+      "approval"
+    ]
+  },
+  {
+    "word": "animus",
+    "synonyms": [
+      "hostility",
+      "antipathy"
+    ],
+    "antonyms": [
+      "goodwill",
+      "affection"
+    ]
+  },
+  {
+    "word": "wrath",
+    "synonyms": [
+      "fury",
+      "rage"
+    ],
+    "antonyms": [
+      "mercy",
+      "forbearance"
+    ]
+  },
+  {
+    "word": "rapture",
+    "synonyms": [
+      "bliss",
+      "ecstasy"
+    ],
+    "antonyms": [
+      "misery",
+      "despair"
+    ]
+  },
+  {
+    "word": "exuberance",
+    "synonyms": [
+      "high spirits",
+      "vivacity"
+    ],
+    "antonyms": [
+      "apathy",
+      "lethargy"
+    ]
+  },
+  {
+    "word": "languor",
+    "synonyms": [
+      "lethargy",
+      "listlessness"
+    ],
+    "antonyms": [
+      "vigour",
+      "energy"
+    ]
+  },
+  {
+    "word": "misgiving",
+    "synonyms": [
+      "doubt",
+      "apprehension"
+    ],
+    "antonyms": [
+      "confidence",
+      "assurance"
+    ]
+  },
+  {
+    "word": "foreboding",
+    "synonyms": [
+      "premonition",
+      "apprehension"
+    ],
+    "antonyms": [
+      "optimism"
+    ]
+  },
+  {
+    "word": "angst",
+    "synonyms": [
+      "anxiety",
+      "dread"
+    ],
+    "antonyms": [
+      "serenity",
+      "contentment"
+    ]
+  },
+  {
+    "word": "pathos",
+    "synonyms": [
+      "poignancy",
+      "sadness"
+    ],
+    "antonyms": [
+      "levity"
+    ]
+  },
+  {
+    "word": "wretched",
+    "synonyms": [
+      "miserable",
+      "pitiful"
+    ],
+    "antonyms": [
+      "blissful",
+      "happy"
+    ]
+  },
+  {
+    "word": "aghast",
+    "synonyms": [
+      "horrified",
+      "dismayed"
+    ],
+    "antonyms": [
+      "unfazed",
+      "unmoved"
+    ]
+  },
+  {
+    "word": "bereft",
+    "synonyms": [
+      "deprived",
+      "desolate"
+    ],
+    "antonyms": [
+      "fulfilled",
+      "content"
+    ]
+  },
+  {
+    "word": "rapt",
+    "synonyms": [
+      "absorbed",
+      "spellbound"
+    ],
+    "antonyms": [
+      "distracted",
+      "inattentive"
+    ]
+  },
+  {
+    "word": "disgruntled",
+    "synonyms": [
+      "discontented",
+      "aggrieved"
+    ],
+    "antonyms": [
+      "contented",
+      "satisfied"
+    ]
+  },
+  {
+    "word": "incredulous",
+    "synonyms": [
+      "disbelieving",
+      "sceptical"
+    ],
+    "antonyms": [
+      "credulous",
+      "trusting"
+    ]
+  },
+  {
+    "word": "crestfallen",
+    "synonyms": [
+      "downcast",
+      "disappointed"
+    ],
+    "antonyms": [
+      "elated",
+      "jubilant"
+    ]
+  },
+  {
+    "word": "lovelorn",
+    "synonyms": [
+      "lovesick",
+      "yearning"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "word": "apoplectic",
+    "synonyms": [
+      "livid",
+      "incandescent"
+    ],
+    "antonyms": [
+      "calm",
+      "placid"
+    ]
+  },
+  {
+    "word": "blithe",
+    "synonyms": [
+      "carefree",
+      "untroubled"
+    ],
+    "antonyms": [
+      "anxious",
+      "troubled"
+    ]
+  },
+  {
+    "word": "buoyant",
+    "synonyms": [
+      "cheerful",
+      "chirpy"
+    ],
+    "antonyms": [
+      "despondent",
+      "gloomy"
+    ]
+  },
+  {
+    "word": "perplexed",
+    "synonyms": [
+      "puzzled",
+      "bewildered"
+    ],
+    "antonyms": [
+      "enlightened"
+    ]
+  },
+  {
+    "word": "stricken",
+    "synonyms": [
+      "afflicted",
+      "anguished"
+    ],
+    "antonyms": [
+      "unaffected",
+      "untroubled"
+    ]
+  },
+  {
+    "word": "mournful",
+    "synonyms": [
+      "sorrowful",
+      "grieving"
+    ],
+    "antonyms": [
+      "joyful",
+      "cheerful"
+    ]
+  },
+  {
+    "word": "euphoric",
+    "synonyms": [
+      "elated",
+      "rapturous"
+    ],
+    "antonyms": [
+      "despondent",
+      "miserable"
+    ]
+  },
+  {
+    "word": "smitten",
+    "synonyms": [
+      "infatuated",
+      "enamoured"
+    ],
+    "antonyms": [
+      "indifferent",
+      "unmoved"
+    ]
+  },
+  {
+    "word": "besotted",
+    "synonyms": [
+      "infatuated",
+      "doting"
+    ],
+    "antonyms": [
+      "indifferent",
+      "detached"
+    ]
+  },
+  {
+    "word": "piqued",
+    "synonyms": [
+      "offended",
+      "resentful"
+    ],
+    "antonyms": [
+      "pleased",
+      "flattered"
+    ]
+  },
+  {
+    "word": "nettled",
+    "synonyms": [
+      "irritated",
+      "provoked"
+    ],
+    "antonyms": [
+      "soothed",
+      "pacified"
+    ]
+  },
+  {
+    "word": "abject",
+    "synonyms": [
+      "wretched",
+      "miserable"
+    ],
+    "antonyms": [
+      "proud",
+      "dignified"
+    ]
+  },
+  {
+    "word": "listless",
+    "synonyms": [
+      "lethargic",
+      "languid"
+    ],
+    "antonyms": [
+      "energetic",
+      "lively"
+    ]
+  },
+  {
+    "word": "disconcerted",
+    "synonyms": [
+      "unsettled",
+      "flustered"
+    ],
+    "antonyms": [
+      "composed",
+      "unruffled"
+    ]
+  }
+]

@@ -1,0 +1,1210 @@
+[
+  {
+    "word": "meritocracy",
+    "synonyms": [
+      "merit-based system",
+      "rule by merit"
+    ],
+    "antonyms": [
+      "nepotism"
+    ]
+  },
+  {
+    "word": "racial equality",
+    "synonyms": [
+      "racial justice",
+      "racial parity"
+    ],
+    "antonyms": [
+      "racial inequality"
+    ]
+  },
+  {
+    "word": "homelessness",
+    "synonyms": [
+      "rough sleeping",
+      "destitution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "volunteerism",
+    "synonyms": [
+      "voluntary service",
+      "community service"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "social contract",
+    "synonyms": [
+      "social compact",
+      "implied agreement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "citizen",
+    "synonyms": [
+      "national",
+      "resident"
+    ],
+    "antonyms": [
+      "foreigner"
+    ]
+  },
+  {
+    "word": "population",
+    "synonyms": [
+      "populace",
+      "inhabitants"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "neighbour",
+    "synonyms": [
+      "fellow resident",
+      "local resident"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "generation",
+    "synonyms": [
+      "age group",
+      "cohort"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rural",
+    "synonyms": [
+      "country",
+      "provincial"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "urban",
+    "synonyms": [
+      "city",
+      "metropolitan"
+    ],
+    "antonyms": [
+      "rural"
+    ]
+  },
+  {
+    "word": "village",
+    "synonyms": [
+      "hamlet",
+      "settlement"
+    ],
+    "antonyms": [
+      "city"
+    ]
+  },
+  {
+    "word": "crowd",
+    "synonyms": [
+      "throng",
+      "multitude"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rule",
+    "synonyms": [
+      "regulation",
+      "principle"
+    ],
+    "antonyms": [
+      "exception"
+    ]
+  },
+  {
+    "word": "respect",
+    "synonyms": [
+      "esteem",
+      "regard"
+    ],
+    "antonyms": [
+      "contempt",
+      "disrespect"
+    ]
+  },
+  {
+    "word": "behaviour",
+    "synonyms": [
+      "conduct",
+      "demeanour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manners",
+    "synonyms": [
+      "etiquette",
+      "courtesy"
+    ],
+    "antonyms": [
+      "rudeness"
+    ]
+  },
+  {
+    "word": "friendship",
+    "synonyms": [
+      "companionship",
+      "camaraderie"
+    ],
+    "antonyms": [
+      "enmity"
+    ]
+  },
+  {
+    "word": "marriage",
+    "synonyms": [
+      "matrimony",
+      "wedlock"
+    ],
+    "antonyms": [
+      "divorce"
+    ]
+  },
+  {
+    "word": "charity",
+    "synonyms": [
+      "philanthropy",
+      "benevolence"
+    ],
+    "antonyms": [
+      "selfishness"
+    ]
+  },
+  {
+    "word": "fair",
+    "synonyms": [
+      "just",
+      "impartial"
+    ],
+    "antonyms": [
+      "unfair",
+      "biased"
+    ]
+  },
+  {
+    "word": "equal",
+    "synonyms": [
+      "equitable",
+      "uniform"
+    ],
+    "antonyms": [
+      "unequal"
+    ]
+  },
+  {
+    "word": "tolerance",
+    "synonyms": [
+      "forbearance",
+      "open-mindedness"
+    ],
+    "antonyms": [
+      "intolerance",
+      "bigotry"
+    ]
+  },
+  {
+    "word": "gossip",
+    "synonyms": [
+      "rumour",
+      "chatter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "queue",
+    "synonyms": [
+      "line",
+      "file"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stranger",
+    "synonyms": [
+      "outsider",
+      "newcomer"
+    ],
+    "antonyms": [
+      "acquaintance"
+    ]
+  },
+  {
+    "word": "duty",
+    "synonyms": [
+      "obligation",
+      "responsibility"
+    ],
+    "antonyms": [
+      "right"
+    ]
+  },
+  {
+    "word": "right",
+    "synonyms": [
+      "entitlement",
+      "liberty"
+    ],
+    "antonyms": [
+      "duty"
+    ]
+  },
+  {
+    "word": "lifestyle",
+    "synonyms": [
+      "way of life",
+      "mode of living"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "guest",
+    "synonyms": [
+      "visitor",
+      "caller"
+    ],
+    "antonyms": [
+      "host"
+    ]
+  },
+  {
+    "word": "alienation",
+    "synonyms": [
+      "estrangement",
+      "detachment"
+    ],
+    "antonyms": [
+      "belonging"
+    ]
+  },
+  {
+    "word": "isolation",
+    "synonyms": [
+      "seclusion",
+      "solitude"
+    ],
+    "antonyms": [
+      "integration",
+      "connection"
+    ]
+  },
+  {
+    "word": "stigma",
+    "synonyms": [
+      "disgrace",
+      "shame"
+    ],
+    "antonyms": [
+      "prestige"
+    ]
+  },
+  {
+    "word": "xenophobia",
+    "synonyms": [
+      "bigotry",
+      "hostility to foreigners"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "ethnicity",
+    "synonyms": [
+      "ethnic origin",
+      "ancestry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "identity",
+    "synonyms": [
+      "selfhood",
+      "individuality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obligation",
+    "synonyms": [
+      "duty",
+      "commitment"
+    ],
+    "antonyms": [
+      "exemption"
+    ]
+  },
+  {
+    "word": "backlash",
+    "synonyms": [
+      "outcry",
+      "pushback"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grassroots",
+    "synonyms": [
+      "bottom-up",
+      "popular"
+    ],
+    "antonyms": [
+      "top-down"
+    ]
+  },
+  {
+    "word": "demographic",
+    "synonyms": [
+      "population-based",
+      "statistical"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ageism",
+    "synonyms": [
+      "age discrimination",
+      "age bias"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gentrification",
+    "synonyms": [
+      "urban renewal",
+      "redevelopment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "urbanization",
+    "synonyms": [
+      "urban growth",
+      "city expansion"
+    ],
+    "antonyms": [
+      "deurbanization"
+    ]
+  },
+  {
+    "word": "dependency",
+    "synonyms": [
+      "reliance",
+      "dependence"
+    ],
+    "antonyms": [
+      "independence"
+    ]
+  },
+  {
+    "word": "deprivation",
+    "synonyms": [
+      "poverty",
+      "hardship"
+    ],
+    "antonyms": [
+      "affluence"
+    ]
+  },
+  {
+    "word": "prosperity",
+    "synonyms": [
+      "affluence",
+      "wealth"
+    ],
+    "antonyms": [
+      "poverty"
+    ]
+  },
+  {
+    "word": "neighbourhood",
+    "synonyms": [
+      "district",
+      "locality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "altruism",
+    "synonyms": [
+      "selflessness",
+      "unselfishness"
+    ],
+    "antonyms": [
+      "egoism",
+      "selfishness"
+    ]
+  },
+  {
+    "word": "loneliness",
+    "synonyms": [
+      "isolation",
+      "solitariness"
+    ],
+    "antonyms": [
+      "companionship"
+    ]
+  },
+  {
+    "word": "aspiration",
+    "synonyms": [
+      "ambition",
+      "goal"
+    ],
+    "antonyms": [
+      "complacency"
+    ]
+  },
+  {
+    "word": "mobility",
+    "synonyms": [
+      "movement",
+      "flexibility"
+    ],
+    "antonyms": [
+      "immobility"
+    ]
+  },
+  {
+    "word": "hegemony",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "subordination"
+    ]
+  },
+  {
+    "word": "stratum",
+    "synonyms": [
+      "class",
+      "layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disenfranchisement",
+    "synonyms": [
+      "exclusion",
+      "deprivation of rights"
+    ],
+    "antonyms": [
+      "enfranchisement"
+    ]
+  },
+  {
+    "word": "ostracism",
+    "synonyms": [
+      "shunning",
+      "exclusion"
+    ],
+    "antonyms": [
+      "inclusion"
+    ]
+  },
+  {
+    "word": "complicity",
+    "synonyms": [
+      "collusion",
+      "connivance"
+    ],
+    "antonyms": [
+      "innocence"
+    ]
+  },
+  {
+    "word": "apathy",
+    "synonyms": [
+      "indifference",
+      "unconcern"
+    ],
+    "antonyms": [
+      "enthusiasm"
+    ]
+  },
+  {
+    "word": "marginal",
+    "synonyms": [
+      "peripheral",
+      "fringe"
+    ],
+    "antonyms": [
+      "central",
+      "mainstream"
+    ]
+  },
+  {
+    "word": "entrenched",
+    "synonyms": [
+      "deep-rooted",
+      "ingrained"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pluralism",
+    "synonyms": [
+      "diversity",
+      "multiculturalism"
+    ],
+    "antonyms": [
+      "uniformity"
+    ]
+  },
+  {
+    "word": "paternalism",
+    "synonyms": [
+      "overprotectiveness",
+      "condescension"
+    ],
+    "antonyms": [
+      "autonomy"
+    ]
+  },
+  {
+    "word": "nepotism",
+    "synonyms": [
+      "favouritism",
+      "cronyism"
+    ],
+    "antonyms": [
+      "meritocracy"
+    ]
+  },
+  {
+    "word": "civility",
+    "synonyms": [
+      "courtesy",
+      "politeness"
+    ],
+    "antonyms": [
+      "incivility",
+      "rudeness"
+    ]
+  },
+  {
+    "word": "parochial",
+    "synonyms": [
+      "narrow-minded",
+      "provincial"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "word": "insular",
+    "synonyms": [
+      "isolated",
+      "narrow-minded"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "word": "precarious",
+    "synonyms": [
+      "unstable",
+      "insecure"
+    ],
+    "antonyms": [
+      "secure",
+      "stable"
+    ]
+  },
+  {
+    "word": "disadvantaged",
+    "synonyms": [
+      "underprivileged",
+      "deprived"
+    ],
+    "antonyms": [
+      "privileged",
+      "advantaged"
+    ]
+  },
+  {
+    "word": "sectarian",
+    "synonyms": [
+      "partisan",
+      "factional"
+    ],
+    "antonyms": [
+      "ecumenical"
+    ]
+  },
+  {
+    "word": "tribalism",
+    "synonyms": [
+      "clannishness",
+      "factionalism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "communal",
+    "synonyms": [
+      "collective",
+      "shared"
+    ],
+    "antonyms": [
+      "individual",
+      "private"
+    ]
+  },
+  {
+    "word": "galvanize",
+    "synonyms": [
+      "stimulate",
+      "rouse"
+    ],
+    "antonyms": [
+      "deter"
+    ]
+  },
+  {
+    "word": "mobilize",
+    "synonyms": [
+      "rally",
+      "organize"
+    ],
+    "antonyms": [
+      "demobilize"
+    ]
+  },
+  {
+    "word": "disparity",
+    "synonyms": [
+      "inequality",
+      "gap"
+    ],
+    "antonyms": [
+      "parity",
+      "equality"
+    ]
+  },
+  {
+    "word": "ethos",
+    "synonyms": [
+      "spirit",
+      "philosophy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dissent",
+    "synonyms": [
+      "protest",
+      "opposition"
+    ],
+    "antonyms": [
+      "consent",
+      "agreement"
+    ]
+  },
+  {
+    "word": "reciprocity",
+    "synonyms": [
+      "mutuality",
+      "exchange"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "malaise",
+    "synonyms": [
+      "unease",
+      "discontent"
+    ],
+    "antonyms": [
+      "contentment"
+    ]
+  },
+  {
+    "word": "cynicism",
+    "synonyms": [
+      "scepticism",
+      "distrust"
+    ],
+    "antonyms": [
+      "optimism",
+      "idealism"
+    ]
+  },
+  {
+    "word": "consensus",
+    "synonyms": [
+      "agreement",
+      "accord"
+    ],
+    "antonyms": [
+      "dissension",
+      "discord"
+    ]
+  },
+  {
+    "word": "discourse",
+    "synonyms": [
+      "debate",
+      "dialogue"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vilify",
+    "synonyms": [
+      "denigrate",
+      "malign"
+    ],
+    "antonyms": [
+      "praise",
+      "exalt"
+    ]
+  },
+  {
+    "word": "zeitgeist",
+    "synonyms": [
+      "prevailing mood",
+      "period spirit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ostensibly",
+    "synonyms": [
+      "apparently",
+      "seemingly"
+    ],
+    "antonyms": [
+      "actually",
+      "really"
+    ]
+  },
+  {
+    "word": "anomie",
+    "synonyms": [
+      "normlessness",
+      "social disorder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obsequious",
+    "synonyms": [
+      "servile",
+      "sycophantic"
+    ],
+    "antonyms": [
+      "assertive"
+    ]
+  },
+  {
+    "word": "sanctimonious",
+    "synonyms": [
+      "self-righteous",
+      "pious"
+    ],
+    "antonyms": [
+      "humble"
+    ]
+  },
+  {
+    "word": "parvenu",
+    "synonyms": [
+      "upstart",
+      "nouveau riche"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gentility",
+    "synonyms": [
+      "refinement",
+      "politeness"
+    ],
+    "antonyms": [
+      "vulgarity"
+    ]
+  },
+  {
+    "word": "ostentatious",
+    "synonyms": [
+      "showy",
+      "flashy"
+    ],
+    "antonyms": [
+      "modest",
+      "understated"
+    ]
+  },
+  {
+    "word": "flagrant",
+    "synonyms": [
+      "blatant",
+      "glaring"
+    ],
+    "antonyms": [
+      "subtle"
+    ]
+  },
+  {
+    "word": "insidious",
+    "synonyms": [
+      "stealthy",
+      "sly"
+    ],
+    "antonyms": [
+      "overt"
+    ]
+  },
+  {
+    "word": "pernicious",
+    "synonyms": [
+      "harmful",
+      "destructive"
+    ],
+    "antonyms": [
+      "beneficial"
+    ]
+  },
+  {
+    "word": "egregious",
+    "synonyms": [
+      "flagrant",
+      "outrageous"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "proletariat",
+    "synonyms": [
+      "working class",
+      "labouring classes"
+    ],
+    "antonyms": [
+      "bourgeoisie"
+    ]
+  },
+  {
+    "word": "bourgeoisie",
+    "synonyms": [
+      "middle class"
+    ],
+    "antonyms": [
+      "proletariat"
+    ]
+  },
+  {
+    "word": "plutocracy",
+    "synonyms": [
+      "rule by wealth"
+    ],
+    "antonyms": [
+      "democracy"
+    ]
+  },
+  {
+    "word": "oligarchy",
+    "synonyms": [
+      "oligarchic rule",
+      "elite rule"
+    ],
+    "antonyms": [
+      "democracy"
+    ]
+  },
+  {
+    "word": "demagogue",
+    "synonyms": [
+      "rabble-rouser",
+      "populist"
+    ],
+    "antonyms": [
+      "statesman"
+    ]
+  },
+  {
+    "word": "sycophant",
+    "synonyms": [
+      "toady",
+      "flatterer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "factious",
+    "synonyms": [
+      "divisive",
+      "partisan"
+    ],
+    "antonyms": [
+      "unifying"
+    ]
+  },
+  {
+    "word": "nativism",
+    "synonyms": [
+      "xenophobia",
+      "ethnic nationalism"
+    ],
+    "antonyms": [
+      "cosmopolitanism"
+    ]
+  },
+  {
+    "word": "chauvinism",
+    "synonyms": [
+      "jingoism",
+      "extreme patriotism"
+    ],
+    "antonyms": [
+      "internationalism"
+    ]
+  },
+  {
+    "word": "philistine",
+    "synonyms": [
+      "barbarian",
+      "boor"
+    ],
+    "antonyms": [
+      "aesthete"
+    ]
+  },
+  {
+    "word": "tacit",
+    "synonyms": [
+      "implicit",
+      "unspoken"
+    ],
+    "antonyms": [
+      "explicit",
+      "overt"
+    ]
+  },
+  {
+    "word": "hubris",
+    "synonyms": [
+      "arrogance",
+      "pride"
+    ],
+    "antonyms": [
+      "humility"
+    ]
+  },
+  {
+    "word": "mores",
+    "synonyms": [
+      "customs",
+      "conventions"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conviviality",
+    "synonyms": [
+      "sociability",
+      "geniality"
+    ],
+    "antonyms": [
+      "hostility"
+    ]
+  },
+  {
+    "word": "magnanimity",
+    "synonyms": [
+      "generosity",
+      "forgiveness"
+    ],
+    "antonyms": [
+      "pettiness"
+    ]
+  },
+  {
+    "word": "stoicism",
+    "synonyms": [
+      "fortitude",
+      "endurance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "probity",
+    "synonyms": [
+      "integrity",
+      "honesty"
+    ],
+    "antonyms": [
+      "corruption",
+      "dishonesty"
+    ]
+  },
+  {
+    "word": "sinecure",
+    "synonyms": [
+      "easy job",
+      "soft job"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cronyism",
+    "synonyms": [
+      "favouritism",
+      "nepotism"
+    ],
+    "antonyms": [
+      "meritocracy"
+    ]
+  },
+  {
+    "word": "misanthropy",
+    "synonyms": [
+      "hatred of mankind",
+      "antisociality"
+    ],
+    "antonyms": [
+      "philanthropy"
+    ]
+  },
+  {
+    "word": "opprobrium",
+    "synonyms": [
+      "disgrace",
+      "scorn"
+    ],
+    "antonyms": [
+      "praise",
+      "acclaim"
+    ]
+  },
+  {
+    "word": "pariah",
+    "synonyms": [
+      "outcast",
+      "untouchable"
+    ],
+    "antonyms": [
+      "favourite"
+    ]
+  },
+  {
+    "word": "vigilante",
+    "synonyms": [
+      "avenger",
+      "self-appointed enforcer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mendacity",
+    "synonyms": [
+      "dishonesty",
+      "deceit"
+    ],
+    "antonyms": [
+      "honesty",
+      "candour"
+    ]
+  },
+  {
+    "word": "impunity",
+    "synonyms": [
+      "exemption from punishment",
+      "immunity"
+    ],
+    "antonyms": [
+      "accountability"
+    ]
+  },
+  {
+    "word": "beneficence",
+    "synonyms": [
+      "kindness",
+      "charity"
+    ],
+    "antonyms": [
+      "malevolence"
+    ]
+  },
+  {
+    "word": "indigence",
+    "synonyms": [
+      "poverty",
+      "destitution"
+    ],
+    "antonyms": [
+      "affluence",
+      "opulence"
+    ]
+  },
+  {
+    "word": "ennui",
+    "synonyms": [
+      "boredom",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm",
+      "zest"
+    ]
+  },
+  {
+    "word": "gregarious",
+    "synonyms": [
+      "sociable",
+      "outgoing"
+    ],
+    "antonyms": [
+      "solitary",
+      "reclusive"
+    ]
+  },
+  {
+    "word": "altruistic",
+    "synonyms": [
+      "selfless",
+      "unselfish"
+    ],
+    "antonyms": [
+      "selfish",
+      "egoistic"
+    ]
+  },
+  {
+    "word": "perfidy",
+    "synonyms": [
+      "treachery",
+      "betrayal"
+    ],
+    "antonyms": [
+      "loyalty",
+      "fidelity"
+    ]
+  },
+  {
+    "word": "clannish",
+    "synonyms": [
+      "insular",
+      "exclusive"
+    ],
+    "antonyms": [
+      "inclusive"
+    ]
+  }
+]

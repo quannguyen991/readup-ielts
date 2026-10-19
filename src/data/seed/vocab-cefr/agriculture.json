@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "farm",
+    "pos": "noun",
+    "ipa": "/fɑːm/",
+    "meaningVi": "trang trại",
+    "definitionEn": "An area of land used for growing crops or keeping animals.",
+    "example": "My grandparents run a small farm outside the village with cows and chickens.",
+    "collocation": "run a farm",
+    "cefr": "B1"
+  },
+  {
+    "word": "farmer",
+    "pos": "noun",
+    "ipa": "/ˈfɑːmə/",
+    "meaningVi": "nông dân, chủ trang trại",
+    "definitionEn": "A person who owns or works on a farm.",
+    "example": "The farmer gets up at dawn to feed the animals every single day.",
+    "collocation": "local farmer",
+    "cefr": "B1"
+  },
+  {
+    "word": "field",
+    "pos": "noun",
+    "ipa": "/fiːld/",
+    "meaningVi": "cánh đồng",
+    "definitionEn": "A large area of open land where crops or animals are kept.",
+    "example": "Children were playing football in the field behind the old school.",
+    "collocation": "open field",
+    "cefr": "B1"
+  },
+  {
+    "word": "seed",
+    "pos": "noun",
+    "ipa": "/siːd/",
+    "meaningVi": "hạt giống",
+    "definitionEn": "A small part of a plant from which a new plant can grow.",
+    "example": "She carefully placed each seed into the damp soil before watering it.",
+    "collocation": "sow seeds",
+    "cefr": "B1"
+  },
+  {
+    "word": "crop",
+    "pos": "noun",
+    "ipa": "/krɒp/",
+    "meaningVi": "vụ mùa, cây trồng",
+    "definitionEn": "A plant grown in large amounts for food or for sale.",
+    "example": "Heavy rain destroyed most of the wheat crop in the northern provinces.",
+    "collocation": "wheat crop",
+    "cefr": "B1"
+  },
+  {
+    "word": "plant",
+    "pos": "verb",
+    "ipa": "/plɑːnt/",
+    "meaningVi": "trồng",
+    "definitionEn": "To put seeds, trees or other plants into soil so they can grow.",
+    "example": "Every spring, the family plants vegetables in the garden behind their house.",
+    "collocation": "plant trees",
+    "cefr": "B1"
+  },
+  {
+    "word": "water",
+    "pos": "verb",
+    "ipa": "/ˈwɔːtə/",
+    "meaningVi": "tưới nước",
+    "definitionEn": "To pour water on plants or land so they stay healthy.",
+    "example": "Farmers must water the fields regularly during long, dry summers.",
+    "collocation": "water the crops",
+    "cefr": "B1"
+  },
+  {
+    "word": "weed",
+    "pos": "noun",
+    "ipa": "/wiːd/",
+    "meaningVi": "cỏ dại",
+    "definitionEn": "A wild plant that grows where it is not wanted.",
+    "example": "If you leave weeds in the vegetable bed, they will steal water and nutrients.",
+    "collocation": "pull weeds",
+    "cefr": "B1"
+  },
+  {
+    "word": "barn",
+    "pos": "noun",
+    "ipa": "/bɑːn/",
+    "meaningVi": "chuồng trại, kho nông cụ",
+    "definitionEn": "A large farm building used to store hay or keep animals.",
+    "example": "The old wooden barn behind the house has been empty for years now.",
+    "collocation": "wooden barn",
+    "cefr": "B1"
+  },
+  {
+    "word": "tractor",
+    "pos": "noun",
+    "ipa": "/ˈtræktə/",
+    "meaningVi": "máy kéo",
+    "definitionEn": "A powerful vehicle used on farms to pull heavy equipment.",
+    "example": "My uncle drove the tractor across the field to plough the land.",
+    "collocation": "drive a tractor",
+    "cefr": "B1"
+  },
+  {
+    "word": "soil",
+    "pos": "noun",
+    "ipa": "/sɔɪl/",
+    "meaningVi": "đất trồng",
+    "definitionEn": "The top layer of earth in which plants grow.",
+    "example": "This dark soil is rich and perfect for growing tomatoes and beans.",
+    "collocation": "rich soil",
+    "cefr": "B1"
+  },
+  {
+    "word": "fruit",
+    "pos": "noun",
+    "ipa": "/fruːt/",
+    "meaningVi": "trái cây",
+    "definitionEn": "The sweet part of a plant that contains seeds and can be eaten.",
+    "example": "In late summer the orchard is full of ripe fruit ready to pick.",
+    "collocation": "fresh fruit",
+    "cefr": "B1"
+  },
+  {
+    "word": "vegetable",
+    "pos": "noun",
+    "ipa": "/ˈvedʒtəbl/",
+    "meaningVi": "rau củ",
+    "definitionEn": "A plant or part of a plant that people cook and eat as food.",
+    "example": "We buy fresh vegetables from the market every Sunday morning.",
+    "collocation": "fresh vegetables",
+    "cefr": "B1"
+  },
+  {
+    "word": "cow",
+    "pos": "noun",
+    "ipa": "/kaʊ/",
+    "meaningVi": "con bò",
+    "definitionEn": "A large farm animal kept for its milk or its meat.",
+    "example": "The farmer milks the cow early every morning before the sun rises.",
+    "collocation": "milk a cow",
+    "cefr": "B1"
+  },
+  {
+    "word": "chicken",
+    "pos": "noun",
+    "ipa": "/ˈtʃɪkɪn/",
+    "meaningVi": "gà",
+    "definitionEn": "A bird kept on farms for its eggs or its meat.",
+    "example": "The children collect fresh eggs from the chickens every afternoon after school.",
+    "collocation": "keep chickens",
+    "cefr": "B1"
+  },
+  {
+    "word": "fence",
+    "pos": "noun",
+    "ipa": "/fens/",
+    "meaningVi": "hàng rào",
+    "definitionEn": "A barrier of wood or wire that surrounds a field or garden.",
+    "example": "The farmer repaired the broken fence to keep the sheep from wandering away.",
+    "collocation": "build a fence",
+    "cefr": "B1"
+  },
+  {
+    "word": "grow",
+    "pos": "verb",
+    "ipa": "/ɡrəʊ/",
+    "meaningVi": "trồng, phát triển",
+    "definitionEn": "To cause plants or crops to develop by planting and caring for them.",
+    "example": "Many farmers in this valley grow rice and corn on small plots.",
+    "collocation": "grow vegetables",
+    "cefr": "B1"
+  },
+  {
+    "word": "dig",
+    "pos": "verb",
+    "ipa": "/dɪɡ/",
+    "meaningVi": "đào, xới",
+    "definitionEn": "To break up and turn over earth, usually with a spade or tool.",
+    "example": "Before planting, the gardener had to dig the soil and remove stones.",
+    "collocation": "dig the soil",
+    "cefr": "B1"
+  },
+  {
+    "word": "wheat",
+    "pos": "noun",
+    "ipa": "/wiːt/",
+    "meaningVi": "lúa mì",
+    "definitionEn": "A cereal grain used to make flour and bread.",
+    "example": "The wheat fields turned golden in the late summer sunshine.",
+    "collocation": "wheat field",
+    "cefr": "B1"
+  },
+  {
+    "word": "rain",
+    "pos": "noun",
+    "ipa": "/reɪn/",
+    "meaningVi": "mưa",
+    "definitionEn": "Water that falls from clouds in small drops.",
+    "example": "Without enough rain, the young plants will wither and die quickly.",
+    "collocation": "heavy rain",
+    "cefr": "B1"
+  },
+  {
+    "word": "fertile",
+    "pos": "adjective",
+    "ipa": "/ˈfɜːtaɪl/",
+    "meaningVi": "màu mỡ",
+    "definitionEn": "Able to produce plenty of crops or plant growth.",
+    "example": "The river valley is fertile, so farmers can grow crops twice a year.",
+    "collocation": "fertile land",
+    "cefr": "B2"
+  },
+  {
+    "word": "irrigate",
+    "pos": "verb",
+    "ipa": "/ˈɪrɪɡeɪt/",
+    "meaningVi": "tưới tiêu đồng ruộng",
+    "definitionEn": "To supply land with water through channels, pipes or sprinklers.",
+    "example": "The engineers built canals to irrigate the dry plains near the coast.",
+    "collocation": "irrigate the land",
+    "cefr": "B2"
+  },
+  {
+    "word": "cultivation",
+    "pos": "noun",
+    "ipa": "/ˌkʌltɪˈveɪʃn/",
+    "meaningVi": "sự canh tác",
+    "definitionEn": "The process of preparing land and growing crops on it.",
+    "example": "The cultivation of coffee requires warm temperatures and careful attention.",
+    "collocation": "crop cultivation",
+    "cefr": "B2"
+  },
+  {
+    "word": "drainage",
+    "pos": "noun",
+    "ipa": "/ˈdreɪnɪdʒ/",
+    "meaningVi": "hệ thống thoát nước",
+    "definitionEn": "The system that removes excess water from land or soil.",
+    "example": "Poor drainage caused the fields to flood after every heavy storm.",
+    "collocation": "poor drainage",
+    "cefr": "B2"
+  },
+  {
+    "word": "sow",
+    "pos": "verb",
+    "ipa": "/səʊ/",
+    "meaningVi": "gieo hạt",
+    "definitionEn": "To scatter or plant seeds in the ground so they can grow.",
+    "example": "Farmers sow wheat seeds in autumn so the crop grows through winter.",
+    "collocation": "sow seeds",
+    "cefr": "B2"
+  },
+  {
+    "word": "reap",
+    "pos": "verb",
+    "ipa": "/riːp/",
+    "meaningVi": "gặt",
+    "definitionEn": "To cut and gather a ripe crop from the fields.",
+    "example": "After months of hard work, the farmers finally reap their golden harvest.",
+    "collocation": "reap a harvest",
+    "cefr": "B2"
+  },
+  {
+    "word": "plough",
+    "pos": "verb",
+    "ipa": "/plaʊ/",
+    "meaningVi": "cày",
+    "definitionEn": "To turn over soil with a large tool pulled by a tractor or animal.",
+    "example": "The old farmer still ploughs his fields with two strong oxen.",
+    "collocation": "plough the field",
+    "cefr": "B2"
+  },
+  {
+    "word": "topsoil",
+    "pos": "noun",
+    "ipa": "/ˈtɒpsɔɪl/",
+    "meaningVi": "lớp đất mặt",
+    "definitionEn": "The upper layer of soil that contains most of the nutrients plants need.",
+    "example": "Heavy rain washed away the valuable topsoil from the sloping hillside.",
+    "collocation": "fertile topsoil",
+    "cefr": "B2"
+  },
+  {
+    "word": "poultry",
+    "pos": "noun",
+    "ipa": "/ˈpəʊltri/",
+    "meaningVi": "gia cầm",
+    "definitionEn": "Birds such as chickens and ducks that are kept for their meat or eggs.",
+    "example": "The poultry farm supplies eggs and meat to several supermarkets across the region.",
+    "collocation": "poultry farming",
+    "cefr": "B2"
+  },
+  {
+    "word": "dairy",
+    "pos": "noun",
+    "ipa": "/ˈdeəri/",
+    "meaningVi": "trang trại sữa, sữa và sản phẩm sữa",
+    "definitionEn": "A farm or business that produces milk and products made from milk.",
+    "example": "Our village has a dairy that sells fresh milk and cheese.",
+    "collocation": "dairy farm",
+    "cefr": "B2"
+  },
+  {
+    "word": "orchard",
+    "pos": "noun",
+    "ipa": "/ˈɔːtʃəd/",
+    "meaningVi": "vườn cây ăn quả",
+    "definitionEn": "An area of land where fruit trees are deliberately grown.",
+    "example": "We spent the afternoon picking apples in the orchard behind the farmhouse.",
+    "collocation": "apple orchard",
+    "cefr": "B2"
+  },
+  {
+    "word": "greenhouse",
+    "pos": "noun",
+    "ipa": "/ˈɡriːnhaʊs/",
+    "meaningVi": "nhà kính",
+    "definitionEn": "A glass building in which plants are grown in warm, controlled conditions.",
+    "example": "Tomatoes grow faster in a greenhouse because the temperature stays steady.",
+    "collocation": "heated greenhouse",
+    "cefr": "B2"
+  },
+  {
+    "word": "manure",
+    "pos": "noun",
+    "ipa": "/məˈnjʊə/",
+    "meaningVi": "phân chuồng",
+    "definitionEn": "Animal waste spread on soil to help plants grow.",
+    "example": "The farmers spread manure over the fields before the spring planting.",
+    "collocation": "animal manure",
+    "cefr": "B2"
+  },
+  {
+    "word": "erosion",
+    "pos": "noun",
+    "ipa": "/ɪˈrəʊʒn/",
+    "meaningVi": "xói mòn",
+    "definitionEn": "The gradual wearing away of soil by wind, water or ice.",
+    "example": "Planting trees on steep slopes can help prevent soil erosion.",
+    "collocation": "soil erosion",
+    "cefr": "B2"
+  },
+  {
+    "word": "abundant",
+    "pos": "adjective",
+    "ipa": "/əˈbʌndənt/",
+    "meaningVi": "dồi dào",
+    "definitionEn": "Existing or available in very large quantities.",
+    "example": "The region's abundant rainfall makes it ideal for growing rice.",
+    "collocation": "abundant harvest",
+    "cefr": "B2"
+  },
+  {
+    "word": "agriculture",
+    "pos": "noun",
+    "ipa": "/ˈæɡrɪkʌltʃə/",
+    "meaningVi": "nông nghiệp",
+    "definitionEn": "The science and practice of farming and producing food.",
+    "example": "Agriculture employs almost half of the workforce in this rural province.",
+    "collocation": "modern agriculture",
+    "cefr": "B2"
+  },
+  {
+    "word": "seedling",
+    "pos": "noun",
+    "ipa": "/ˈsiːdlɪŋ/",
+    "meaningVi": "cây con",
+    "definitionEn": "A young plant grown from a seed, ready to be transplanted.",
+    "example": "The gardener transplanted the seedlings into larger pots after two weeks.",
+    "collocation": "young seedlings",
+    "cefr": "B2"
+  },
+  {
+    "word": "pasture",
+    "pos": "noun",
+    "ipa": "/ˈpɑːstʃə/",
+    "meaningVi": "đồng cỏ chăn thả",
+    "definitionEn": "Grassland where cattle and sheep can graze freely.",
+    "example": "The cows spend most of the day grazing in the pasture near the river.",
+    "collocation": "green pasture",
+    "cefr": "B2"
+  },
+  {
+    "word": "harvester",
+    "pos": "noun",
+    "ipa": "/ˈhɑːvɪstə/",
+    "meaningVi": "máy gặt",
+    "definitionEn": "A machine that cuts and collects crops from the fields.",
+    "example": "A modern combine harvester can cut a large field in a single day.",
+    "collocation": "combine harvester",
+    "cefr": "B2"
+  },
+  {
+    "word": "herbicide",
+    "pos": "noun",
+    "ipa": "/ˈhɜːbɪsaɪd/",
+    "meaningVi": "thuốc diệt cỏ",
+    "definitionEn": "A chemical used to kill unwanted plants such as weeds.",
+    "example": "Some farmers use herbicide to control weeds, but it can harm wildlife.",
+    "collocation": "apply herbicide",
+    "cefr": "B2"
+  },
+  {
+    "word": "sprout",
+    "pos": "verb",
+    "ipa": "/spraʊt/",
+    "meaningVi": "nảy mầm",
+    "definitionEn": "To begin to grow, especially from a seed or bulb.",
+    "example": "The beans began to sprout within a week of being planted in wet soil.",
+    "collocation": "sprout from seeds",
+    "cefr": "B2"
+  },
+  {
+    "word": "sustainability",
+    "pos": "noun",
+    "ipa": "/səˌsteɪnəˈbɪləti/",
+    "meaningVi": "tính bền vững",
+    "definitionEn": "The ability to maintain farming practices without depleting natural resources.",
+    "example": "Long-term sustainability depends on protecting soil health and conserving water supplies.",
+    "collocation": "agricultural sustainability",
+    "cefr": "C1"
+  },
+  {
+    "word": "agrarian",
+    "pos": "adjective",
+    "ipa": "/əˈɡreəriən/",
+    "meaningVi": "thuộc nông nghiệp, ruộng đất",
+    "definitionEn": "Relating to farming, agriculture, or the ownership of agricultural land.",
+    "example": "The region retains a strongly agrarian character despite rapid urban expansion.",
+    "collocation": "agrarian society",
+    "cefr": "C1"
+  },
+  {
+    "word": "smallholder",
+    "pos": "noun",
+    "ipa": "/ˈsmɔːlhəʊldə/",
+    "meaningVi": "tiểu nông, hộ nông dân nhỏ",
+    "definitionEn": "A farmer who cultivates a small piece of land, often for subsistence.",
+    "example": "Smallholders produce much of the country's rice but earn very modest incomes.",
+    "collocation": "smallholder farmers",
+    "cefr": "C1"
+  },
+  {
+    "word": "subsistence",
+    "pos": "noun",
+    "ipa": "/səbˈsɪstəns/",
+    "meaningVi": "sự tự cung tự cấp",
+    "definitionEn": "Producing just enough food or income to meet a household's basic needs.",
+    "example": "Many families still practise subsistence farming, growing only what they eat.",
+    "collocation": "subsistence farming",
+    "cefr": "C1"
+  },
+  {
+    "word": "husbandry",
+    "pos": "noun",
+    "ipa": "/ˈhʌzbəndri/",
+    "meaningVi": "nghề chăn nuôi, canh tác",
+    "definitionEn": "The careful management and breeding of crops or livestock.",
+    "example": "Good husbandry requires attention to animal welfare as well as productivity.",
+    "collocation": "animal husbandry",
+    "cefr": "C1"
+  },
+  {
+    "word": "agrochemical",
+    "pos": "noun",
+    "ipa": "/ˌæɡrəʊˈkemɪkl/",
+    "meaningVi": "hoá chất nông nghiệp",
+    "definitionEn": "A chemical product, such as a pesticide or fertiliser, used in farming.",
+    "example": "Excessive agrochemical use can contaminate rivers and harm surrounding ecosystems.",
+    "collocation": "agrochemical runoff",
+    "cefr": "C1"
+  },
+  {
+    "word": "degradation",
+    "pos": "noun",
+    "ipa": "/ˌdeɡrəˈdeɪʃn/",
+    "meaningVi": "sự suy thoái",
+    "definitionEn": "A gradual decline in the quality of land, soil or resources.",
+    "example": "Overgrazing has caused severe soil degradation across much of the plateau.",
+    "collocation": "land degradation",
+    "cefr": "C1"
+  },
+  {
+    "word": "desertification",
+    "pos": "noun",
+    "ipa": "/dɪˌzɜːtɪfɪˈkeɪʃn/",
+    "meaningVi": "sa mạc hoá",
+    "definitionEn": "The process by which fertile land gradually turns into desert.",
+    "example": "Desertification threatens farmland as rainfall declines and temperatures continue to rise.",
+    "collocation": "combat desertification",
+    "cefr": "C1"
+  },
+  {
+    "word": "salinity",
+    "pos": "noun",
+    "ipa": "/səˈlɪnəti/",
+    "meaningVi": "độ mặn",
+    "definitionEn": "The concentration of salt present in soil or water.",
+    "example": "Rising salinity has reduced yields in coastal paddies over the past decade.",
+    "collocation": "soil salinity",
+    "cefr": "C1"
+  },
+  {
+    "word": "viable",
+    "pos": "adjective",
+    "ipa": "/ˈvaɪəbl/",
+    "meaningVi": "khả thi, có lãi",
+    "definitionEn": "Capable of succeeding or being profitable and sustainable over time.",
+    "example": "Small family farms are no longer viable without government support or diversification.",
+    "collocation": "economically viable",
+    "cefr": "C1"
+  },
+  {
+    "word": "productivity",
+    "pos": "noun",
+    "ipa": "/ˌprɒdʌkˈtɪvəti/",
+    "meaningVi": "năng suất",
+    "definitionEn": "The rate at which a farm or worker produces a given output.",
+    "example": "Better seed varieties have significantly boosted productivity in the lowland districts.",
+    "collocation": "agricultural productivity",
+    "cefr": "C1"
+  },
+  {
+    "word": "mechanisation",
+    "pos": "noun",
+    "ipa": "/ˌmekənaɪˈzeɪʃn/",
+    "meaningVi": "cơ giới hoá",
+    "definitionEn": "The introduction of machinery to replace manual labour on farms.",
+    "example": "Mechanisation has reduced the workforce needed at harvest but increased output.",
+    "collocation": "farm mechanisation",
+    "cefr": "C1"
+  },
+  {
+    "word": "quota",
+    "pos": "noun",
+    "ipa": "/ˈkwəʊtə/",
+    "meaningVi": "hạn ngạch",
+    "definitionEn": "A fixed limit on how much of a product may be produced or sold.",
+    "example": "Fishermen complained that the new catch quota would severely limit their income.",
+    "collocation": "production quota",
+    "cefr": "C1"
+  },
+  {
+    "word": "tenancy",
+    "pos": "noun",
+    "ipa": "/ˈtenənsi/",
+    "meaningVi": "quyền thuê đất canh tác",
+    "definitionEn": "The arrangement of renting land or property from its legal owner.",
+    "example": "Insecure tenancy discourages farmers from investing in long-term soil improvements.",
+    "collocation": "secure tenancy",
+    "cefr": "C1"
+  },
+  {
+    "word": "hectare",
+    "pos": "noun",
+    "ipa": "/ˈhektɑː/",
+    "meaningVi": "héc-ta",
+    "definitionEn": "A metric unit of area equal to ten thousand square metres.",
+    "example": "The cooperative manages nearly three hundred hectares of paddy fields.",
+    "collocation": "per hectare",
+    "cefr": "C1"
+  },
+  {
+    "word": "cereal",
+    "pos": "noun",
+    "ipa": "/ˈsɪəriəl/",
+    "meaningVi": "ngũ cốc",
+    "definitionEn": "A grass grown for its edible grains, such as wheat, barley or rice.",
+    "example": "Cereal crops supply most of the calories consumed by people worldwide.",
+    "collocation": "cereal crops",
+    "cefr": "C1"
+  },
+  {
+    "word": "pollination",
+    "pos": "noun",
+    "ipa": "/ˌpɒlɪˈneɪʃn/",
+    "meaningVi": "sự thụ phấn",
+    "definitionEn": "The transfer of pollen that enables plants to produce seeds and fruit.",
+    "example": "Natural pollination by bees increases the yield of many orchard fruits.",
+    "collocation": "natural pollination",
+    "cefr": "C1"
+  },
+  {
+    "word": "hydroponics",
+    "pos": "noun",
+    "ipa": "/ˌhaɪdrəˈpɒnɪks/",
+    "meaningVi": "thuỷ canh",
+    "definitionEn": "A method of growing plants in nutrient-rich water instead of soil.",
+    "example": "Hydroponics allows urban growers to produce leafy greens throughout the entire year.",
+    "collocation": "hydroponics system",
+    "cefr": "C1"
+  },
+  {
+    "word": "cropland",
+    "pos": "noun",
+    "ipa": "/ˈkrɒplənd/",
+    "meaningVi": "đất canh tác",
+    "definitionEn": "Land used mainly for growing crops rather than for grazing.",
+    "example": "Expanding cropland into forests has accelerated the loss of biodiversity.",
+    "collocation": "arable cropland",
+    "cefr": "C1"
+  },
+  {
+    "word": "agribusiness",
+    "pos": "noun",
+    "ipa": "/ˈæɡrɪbɪznəs/",
+    "meaningVi": "kinh doanh nông nghiệp",
+    "definitionEn": "Large commercial enterprises that produce, process and sell farm products.",
+    "example": "Large agribusiness firms now control much of the global grain trade.",
+    "collocation": "agribusiness corporations",
+    "cefr": "C1"
+  },
+  {
+    "word": "commodity",
+    "pos": "noun",
+    "ipa": "/kəˈmɒdəti/",
+    "meaningVi": "hàng hoá nông sản",
+    "definitionEn": "A raw agricultural or mineral product that is bought and sold in markets.",
+    "example": "Coffee is one of the most valuable agricultural commodities traded internationally.",
+    "collocation": "agricultural commodity",
+    "cefr": "C1"
+  },
+  {
+    "word": "tariff",
+    "pos": "noun",
+    "ipa": "/ˈtærɪf/",
+    "meaningVi": "thuế quan",
+    "definitionEn": "A tax imposed by a government on goods imported from abroad.",
+    "example": "New tariffs on imported fertiliser raised costs for many local farmers.",
+    "collocation": "import tariff",
+    "cefr": "C1"
+  },
+  {
+    "word": "stockpile",
+    "pos": "noun",
+    "ipa": "/ˈstɒkpaɪl/",
+    "meaningVi": "kho dự trữ",
+    "definitionEn": "A large reserve of goods or materials kept for future use.",
+    "example": "The government built a stockpile of rice to stabilise prices during the drought.",
+    "collocation": "food stockpile",
+    "cefr": "C1"
+  },
+  {
+    "word": "famine",
+    "pos": "noun",
+    "ipa": "/ˈfæmɪn/",
+    "meaningVi": "nạn đói",
+    "definitionEn": "A severe shortage of food that causes widespread hunger and starvation.",
+    "example": "Repeated crop failures led to famine in several remote highland villages.",
+    "collocation": "famine relief",
+    "cefr": "C1"
+  },
+  {
+    "word": "resilience",
+    "pos": "noun",
+    "ipa": "/rɪˈzɪliəns/",
+    "meaningVi": "khả năng chống chịu",
+    "definitionEn": "The capacity of crops or farms to recover quickly from shocks.",
+    "example": "Drought-tolerant varieties improve the resilience of farms in dry regions.",
+    "collocation": "climate resilience",
+    "cefr": "C1"
+  },
+  {
+    "word": "cultivar",
+    "pos": "noun",
+    "ipa": "/ˈkʌltɪvɑː/",
+    "meaningVi": "giống cây trồng",
+    "definitionEn": "A plant variety developed through selective breeding for desirable traits.",
+    "example": "This new cultivar matures faster and resists common fungal diseases.",
+    "collocation": "rice cultivar",
+    "cefr": "C1"
+  },
+  {
+    "word": "propagate",
+    "pos": "verb",
+    "ipa": "/ˈprɒpəɡeɪt/",
+    "meaningVi": "nhân giống",
+    "definitionEn": "To grow new plants from seeds, cuttings or other parts of existing plants.",
+    "example": "Gardeners often propagate roses by taking cuttings in early summer.",
+    "collocation": "propagate from cuttings",
+    "cefr": "C1"
+  },
+  {
+    "word": "perennial",
+    "pos": "adjective",
+    "ipa": "/pəˈreniəl/",
+    "meaningVi": "lâu năm",
+    "definitionEn": "Describing a plant that lives for several years and regrows each season.",
+    "example": "Asparagus is a perennial crop that yields for many years after planting.",
+    "collocation": "perennial crops",
+    "cefr": "C1"
+  },
+  {
+    "word": "annual",
+    "pos": "adjective",
+    "ipa": "/ˈænjuəl/",
+    "meaningVi": "hằng năm, một vụ",
+    "definitionEn": "Describing a plant that completes its life cycle within a single year.",
+    "example": "Wheat in this region is an annual crop sown in autumn and harvested in summer.",
+    "collocation": "annual crop",
+    "cefr": "C1"
+  },
+  {
+    "word": "rhizome",
+    "pos": "noun",
+    "ipa": "/ˈraɪzəʊm/",
+    "meaningVi": "thân rễ",
+    "definitionEn": "A horizontal underground plant stem that produces roots and new shoots.",
+    "example": "Ginger is grown from rhizomes, which are planted in loose, well-drained soil.",
+    "collocation": "ginger rhizome",
+    "cefr": "C1"
+  },
+  {
+    "word": "fodder",
+    "pos": "noun",
+    "ipa": "/ˈfɒdə/",
+    "meaningVi": "thức ăn gia súc",
+    "definitionEn": "Hay, straw or green plants fed to livestock during winter or shortages.",
+    "example": "Farmers stored extra fodder in the barn to feed their cattle through winter.",
+    "collocation": "winter fodder",
+    "cefr": "C1"
+  },
+  {
+    "word": "grazing",
+    "pos": "noun",
+    "ipa": "/ˈɡreɪzɪŋ/",
+    "meaningVi": "sự chăn thả",
+    "definitionEn": "The practice of letting animals feed on grass in open pasture.",
+    "example": "Unrestricted grazing has stripped the hillside of vegetation and exposed the rocks.",
+    "collocation": "grazing rights",
+    "cefr": "C1"
+  },
+  {
+    "word": "allotment",
+    "pos": "noun",
+    "ipa": "/əˈlɒtmənt/",
+    "meaningVi": "mảnh vườn cho thuê",
+    "definitionEn": "A small plot of public land rented to individuals for growing vegetables.",
+    "example": "Retired neighbours spend their mornings tending vegetables on the local allotment.",
+    "collocation": "community allotment",
+    "cefr": "C1"
+  },
+  {
+    "word": "biomass",
+    "pos": "noun",
+    "ipa": "/ˈbaɪəʊmæs/",
+    "meaningVi": "sinh khối",
+    "definitionEn": "Organic material from plants or animals, often burned or converted into fuel.",
+    "example": "Farm waste is converted into biomass to generate electricity for nearby villages.",
+    "collocation": "biomass energy",
+    "cefr": "C1"
+  },
+  {
+    "word": "bucolic",
+    "pos": "adjective",
+    "ipa": "/bjuːˈkɒlɪk/",
+    "meaningVi": "thanh bình thôn dã",
+    "definitionEn": "Relating to the peaceful, idyllic life of the countryside.",
+    "example": "The novelist romanticised a bucolic village where harvests were celebrated with music and dancing.",
+    "collocation": "bucolic countryside",
+    "cefr": "C2"
+  },
+  {
+    "word": "agronomist",
+    "pos": "noun",
+    "ipa": "/əˈɡrɒnəmɪst/",
+    "meaningVi": "nhà nông học",
+    "definitionEn": "A scientist who studies soil management and crop production.",
+    "example": "The agronomist advised the cooperative to rotate legumes and reduce chemical inputs.",
+    "collocation": "consulting agronomist",
+    "cefr": "C2"
+  },
+  {
+    "word": "autochthonous",
+    "pos": "adjective",
+    "ipa": "/ɔːˈtɒkθənəs/",
+    "meaningVi": "bản địa",
+    "definitionEn": "Originating in a particular place rather than being introduced from elsewhere.",
+    "example": "The autochthonous grape varieties of the region have adapted to its limestone soils.",
+    "collocation": "autochthonous species",
+    "cefr": "C2"
+  },
+  {
+    "word": "silviculture",
+    "pos": "noun",
+    "ipa": "/ˈsɪlvɪkʌltʃə/",
+    "meaningVi": "lâm nghiệp trồng rừng",
+    "definitionEn": "The cultivation and management of forest trees for timber and conservation.",
+    "example": "Careful silviculture balances timber production with the protection of watersheds.",
+    "collocation": "sustainable silviculture",
+    "cefr": "C2"
+  },
+  {
+    "word": "viticulture",
+    "pos": "noun",
+    "ipa": "/ˈvɪtɪkʌltʃə/",
+    "meaningVi": "nghề trồng nho",
+    "definitionEn": "The cultivation of grapevines, especially for winemaking.",
+    "example": "Viticulture has transformed the hillsides into patchworks of vineyards and orchards.",
+    "collocation": "modern viticulture",
+    "cefr": "C2"
+  },
+  {
+    "word": "apiculture",
+    "pos": "noun",
+    "ipa": "/ˈeɪpɪkʌltʃə/",
+    "meaningVi": "nghề nuôi ong",
+    "definitionEn": "The practice of keeping honeybees to produce honey and wax.",
+    "example": "Apiculture supports pollination and provides a valuable secondary income for smallholders.",
+    "collocation": "commercial apiculture",
+    "cefr": "C2"
+  },
+  {
+    "word": "sericulture",
+    "pos": "noun",
+    "ipa": "/ˌserɪˈkʌltʃə/",
+    "meaningVi": "nghề nuôi tằm",
+    "definitionEn": "The rearing of silkworms for the production of raw silk.",
+    "example": "Sericulture once employed thousands of families in the delta before synthetic fibres arrived.",
+    "collocation": "traditional sericulture",
+    "cefr": "C2"
+  },
+  {
+    "word": "pisciculture",
+    "pos": "noun",
+    "ipa": "/ˈpɪsɪkʌltʃə/",
+    "meaningVi": "nghề nuôi cá",
+    "definitionEn": "The breeding and rearing of fish in ponds, tanks or enclosures.",
+    "example": "Pisciculture in the flooded paddies provides both protein and extra income for farmers.",
+    "collocation": "freshwater pisciculture",
+    "cefr": "C2"
+  },
+  {
+    "word": "allelopathy",
+    "pos": "noun",
+    "ipa": "/ˌæləˈlɒpəθi/",
+    "meaningVi": "tác động ức chế lẫn nhau giữa thực vật",
+    "definitionEn": "The chemical inhibition of one plant's growth by compounds released by another.",
+    "example": "Allelopathy explains why some weeds suppress the germination of neighbouring crops.",
+    "collocation": "allelopathy effects",
+    "cefr": "C2"
+  },
+  {
+    "word": "edaphic",
+    "pos": "adjective",
+    "ipa": "/ɪˈdæfɪk/",
+    "meaningVi": "thuộc về đất",
+    "definitionEn": "Relating to soil, especially its influence on living organisms.",
+    "example": "Edaphic conditions, such as acidity and drainage, strongly determine which crops thrive.",
+    "collocation": "edaphic factors",
+    "cefr": "C2"
+  },
+  {
+    "word": "pedology",
+    "pos": "noun",
+    "ipa": "/piˈdɒlədʒi/",
+    "meaningVi": "thổ nhưỡng học",
+    "definitionEn": "The scientific study of soils in their natural environment.",
+    "example": "Pedology helped the surveyors map the fertile alluvial soils of the floodplain.",
+    "collocation": "applied pedology",
+    "cefr": "C2"
+  },
+  {
+    "word": "gleaning",
+    "pos": "noun",
+    "ipa": "/ˈɡliːnɪŋ/",
+    "meaningVi": "nhặt lúa sót sau gặt",
+    "definitionEn": "Collecting leftover crops from fields after the main harvest has been gathered.",
+    "example": "Gleaning was once a customary right that allowed the poor to gather grain.",
+    "collocation": "gleaning rights",
+    "cefr": "C2"
+  },
+  {
+    "word": "mycorrhiza",
+    "pos": "noun",
+    "ipa": "/ˌmaɪkəˈraɪzə/",
+    "meaningVi": "rễ nấm cộng sinh",
+    "definitionEn": "A symbiotic association between fungal threads and the roots of a plant.",
+    "example": "Mycorrhiza helps crops absorb phosphorus more efficiently from poor soils.",
+    "collocation": "mycorrhiza fungi",
+    "cefr": "C2"
+  },
+  {
+    "word": "eutrophication",
+    "pos": "noun",
+    "ipa": "/juːˌtrɒfɪˈkeɪʃn/",
+    "meaningVi": "phú dưỡng hoá",
+    "definitionEn": "Excess nutrients in water that cause algae to bloom and deplete oxygen.",
+    "example": "Fertiliser runoff has caused severe eutrophication in the lake that supplies drinking water.",
+    "collocation": "nutrient eutrophication",
+    "cefr": "C2"
+  },
+  {
+    "word": "yeoman",
+    "pos": "noun",
+    "ipa": "/ˈjəʊmən/",
+    "meaningVi": "tiểu địa chủ tự canh",
+    "definitionEn": "A small landowner who farms his own land, historically in England.",
+    "example": "The yeoman tilled his modest farm and sold surplus grain at the local market.",
+    "collocation": "yeoman farmer",
+    "cefr": "C2"
+  },
+  {
+    "word": "hinterland",
+    "pos": "noun",
+    "ipa": "/ˈhɪntəlænd/",
+    "meaningVi": "vùng nội địa",
+    "definitionEn": "The rural region lying behind a coastal area, port or major city.",
+    "example": "Fresh produce from the hinterland is trucked daily to the city's wholesale markets.",
+    "collocation": "rural hinterland",
+    "cefr": "C2"
+  },
+  {
+    "word": "tilth",
+    "pos": "noun",
+    "ipa": "/tɪlθ/",
+    "meaningVi": "độ tơi xốp của đất canh tác",
+    "definitionEn": "The condition of cultivated soil, especially its texture and suitability for planting.",
+    "example": "Good tilth allows roots to penetrate easily and water to infiltrate the soil.",
+    "collocation": "good tilth",
+    "cefr": "C2"
+  },
+  {
+    "word": "cornucopia",
+    "pos": "noun",
+    "ipa": "/ˌkɔːnjʊˈkəʊpiə/",
+    "meaningVi": "sự dồi dào, sung túc",
+    "definitionEn": "An abundant supply of good things, especially food and produce.",
+    "example": "The autumn market offered a cornucopia of pumpkins, grapes, apples and fresh cheese.",
+    "collocation": "a cornucopia of",
+    "cefr": "C2"
+  },
+  {
+    "word": "bounty",
+    "pos": "noun",
+    "ipa": "/ˈbaʊnti/",
+    "meaningVi": "sự phong phú, mùa bội thu",
+    "definitionEn": "A generous supply of something good, especially natural produce or harvest.",
+    "example": "The generous bounty of the summer harvest kept the village well fed through winter.",
+    "collocation": "nature's bounty",
+    "cefr": "C2"
+  },
+  {
+    "word": "pastoral",
+    "pos": "adjective",
+    "ipa": "/ˈpɑːstərəl/",
+    "meaningVi": "thuộc chăn nuôi đồng cỏ",
+    "definitionEn": "Relating to the countryside, or to the raising of livestock on grassland.",
+    "example": "Pastoral communities move their herds across the plateau according to the seasons.",
+    "collocation": "pastoral farming",
+    "cefr": "C2"
+  },
+  {
+    "word": "arcadian",
+    "pos": "adjective",
+    "ipa": "/ɑːˈkeɪdiən/",
+    "meaningVi": "đồng quê thanh bình lý tưởng",
+    "definitionEn": "Idyllically rural and simple, in an idealised, peaceful way.",
+    "example": "The painter depicted an arcadian landscape of shepherds and golden wheat fields.",
+    "collocation": "arcadian idyll",
+    "cefr": "C2"
+  },
+  {
+    "word": "sylvan",
+    "pos": "adjective",
+    "ipa": "/ˈsɪlvən/",
+    "meaningVi": "thuộc rừng cây",
+    "definitionEn": "Relating to woods or forests, or characterised by trees.",
+    "example": "We walked along a sylvan path shaded by oaks and beech trees.",
+    "collocation": "sylvan setting",
+    "cefr": "C2"
+  },
+  {
+    "word": "fructify",
+    "pos": "verb",
+    "ipa": "/ˈfrʌktɪfaɪ/",
+    "meaningVi": "đâm hoa kết trái",
+    "definitionEn": "To bear fruit, or to make something productive and fruitful.",
+    "example": "The orchard fructified early this year after an unusually mild spring.",
+    "collocation": "fructify abundantly",
+    "cefr": "C2"
+  },
+  {
+    "word": "germinate",
+    "pos": "verb",
+    "ipa": "/ˈdʒɜːmɪneɪt/",
+    "meaningVi": "nảy mầm",
+    "definitionEn": "To begin to grow and develop from a seed or spore.",
+    "example": "Most seeds germinate best when the soil is warm and consistently moist.",
+    "collocation": "germinate quickly",
+    "cefr": "C2"
+  },
+  {
+    "word": "sharecropper",
+    "pos": "noun",
+    "ipa": "/ˈʃeəkrɒpə/",
+    "meaningVi": "tá điền chia sản phẩm",
+    "definitionEn": "A farmer who works land owned by another and pays rent with a share of the crop.",
+    "example": "The sharecropper gave half of every harvest to the landowner as rent.",
+    "collocation": "sharecropper families",
+    "cefr": "C2"
+  },
+  {
+    "word": "latifundium",
+    "pos": "noun",
+    "ipa": "/ˌlætɪˈfʌndiəm/",
+    "meaningVi": "đại điền trang",
+    "definitionEn": "A very large agricultural estate, typically worked by dependent labourers.",
+    "example": "The latifundium dominated the valley, employing hundreds of tenants and seasonal workers.",
+    "collocation": "Roman latifundium",
+    "cefr": "C2"
+  },
+  {
+    "word": "usufruct",
+    "pos": "noun",
+    "ipa": "/ˈjuːzjʊfrʌkt/",
+    "meaningVi": "quyền hưởng dụng",
+    "definitionEn": "The legal right to use and enjoy the produce of another's property.",
+    "example": "The tenant held the usufruct of the orchard for the duration of the lease.",
+    "collocation": "usufruct rights",
+    "cefr": "C2"
+  },
+  {
+    "word": "afforestation",
+    "pos": "noun",
+    "ipa": "/əˌfɒrɪˈsteɪʃn/",
+    "meaningVi": "trồng rừng mới",
+    "definitionEn": "The planting of trees on land that has not recently been forested.",
+    "example": "Afforestation projects on the barren hills have gradually stabilised the eroded slopes.",
+    "collocation": "large-scale afforestation",
+    "cefr": "C2"
+  },
+  {
+    "word": "reforestation",
+    "pos": "noun",
+    "ipa": "/riːˌfɒrɪˈsteɪʃn/",
+    "meaningVi": "tái trồng rừng",
+    "definitionEn": "The replanting of trees in areas where forests were previously cleared.",
+    "example": "Reforestation of the watershed has improved water quality and reduced flooding downstream.",
+    "collocation": "reforestation programme",
+    "cefr": "C2"
+  },
+  {
+    "word": "rusticate",
+    "pos": "verb",
+    "ipa": "/ˈrʌstɪkeɪt/",
+    "meaningVi": "sống ở nông thôn",
+    "definitionEn": "To live in or move to the countryside, away from urban life.",
+    "example": "Retired professionals often rusticate in quiet villages to grow vegetables and keep bees.",
+    "collocation": "rusticate in the countryside",
+    "cefr": "C2"
+  },
+  {
+    "word": "transhumance",
+    "pos": "noun",
+    "ipa": "/trænsˈhjuːməns/",
+    "meaningVi": "du mục theo mùa",
+    "definitionEn": "The seasonal movement of livestock between lowland and highland pastures.",
+    "example": "Transhumance routes across the Alps were once travelled by herders every summer.",
+    "collocation": "seasonal transhumance",
+    "cefr": "C2"
+  },
+  {
+    "word": "biodynamic",
+    "pos": "adjective",
+    "ipa": "/ˌbaɪəʊdaɪˈnæmɪk/",
+    "meaningVi": "canh tác sinh học động lực",
+    "definitionEn": "Describing farming that treats the farm as a self-sustaining living system.",
+    "example": "The biodynamic vineyard uses compost preparations and follows a lunar planting calendar.",
+    "collocation": "biodynamic farming",
+    "cefr": "C2"
+  },
+  {
+    "word": "dormancy",
+    "pos": "noun",
+    "ipa": "/ˈdɔːmənsi/",
+    "meaningVi": "trạng thái ngủ nghỉ",
+    "definitionEn": "A resting state in which seeds or plants pause growth until conditions improve.",
+    "example": "Seed dormancy protects the embryo until the rains arrive and the soil softens.",
+    "collocation": "seed dormancy",
+    "cefr": "C2"
+  },
+  {
+    "word": "senescence",
+    "pos": "noun",
+    "ipa": "/sɪˈnesns/",
+    "meaningVi": "sự lão hoá, tàn lụi",
+    "definitionEn": "The gradual deterioration of a plant or leaf as it ages.",
+    "example": "Leaf senescence in autumn releases nutrients that the tree stores in its roots.",
+    "collocation": "leaf senescence",
+    "cefr": "C2"
+  },
+  {
+    "word": "phenology",
+    "pos": "noun",
+    "ipa": "/fɪˈnɒlədʒi/",
+    "meaningVi": "thời kỳ sinh học theo mùa",
+    "definitionEn": "The study of seasonal natural events such as flowering, leafing and migration.",
+    "example": "Phenology records show that spring blossoms now appear several days earlier than before.",
+    "collocation": "crop phenology",
+    "cefr": "C2"
+  },
+  {
+    "word": "scion",
+    "pos": "noun",
+    "ipa": "/ˈsaɪən/",
+    "meaningVi": "cành ghép",
+    "definitionEn": "A shoot or bud cut from one plant and grafted onto the rootstock of another.",
+    "example": "The nurseryman grafted a scion of the heritage apple onto a sturdy rootstock.",
+    "collocation": "grafting scion",
+    "cefr": "C2"
+  },
+  {
+    "word": "rootstock",
+    "pos": "noun",
+    "ipa": "/ˈruːtstɒk/",
+    "meaningVi": "gốc ghép",
+    "definitionEn": "The root system of a plant onto which another variety is grafted.",
+    "example": "Dwarf rootstock produces smaller trees that are easier to harvest by hand.",
+    "collocation": "dwarf rootstock",
+    "cefr": "C2"
+  },
+  {
+    "word": "fecund",
+    "pos": "adjective",
+    "ipa": "/ˈfiːkənd/",
+    "meaningVi": "màu mỡ, sinh sôi",
+    "definitionEn": "Producing abundant offspring, crops or new growth; highly fertile.",
+    "example": "The fecund volcanic soil supports dense forests and bountiful vegetable gardens.",
+    "collocation": "fecund soil",
+    "cefr": "C2"
+  },
+  {
+    "word": "friable",
+    "pos": "adjective",
+    "ipa": "/ˈfraɪəbl/",
+    "meaningVi": "tơi xốp",
+    "definitionEn": "Describing soil that crumbles easily and is easy to work with tools.",
+    "example": "A friable loam is ideal for root vegetables such as carrots and beetroot.",
+    "collocation": "friable soil",
+    "cefr": "C2"
+  },
+  {
+    "word": "loam",
+    "pos": "noun",
+    "ipa": "/ləʊm/",
+    "meaningVi": "đất thịt",
+    "definitionEn": "Fertile soil containing a balanced mixture of sand, silt and clay.",
+    "example": "The gardener enriched the poor clay with compost to create a crumbly loam.",
+    "collocation": "rich loam",
+    "cefr": "C2"
+  },
+  {
+    "word": "marl",
+    "pos": "noun",
+    "ipa": "/mɑːl/",
+    "meaningVi": "đất sét vôi",
+    "definitionEn": "A soft, lime-rich clay or earth often used to improve acidic farmland.",
+    "example": "Farmers spread marl over the acidic fields to raise the soil's alkalinity.",
+    "collocation": "marl deposits",
+    "cefr": "C2"
+  },
+  {
+    "word": "husbandman",
+    "pos": "noun",
+    "ipa": "/ˈhʌzbəndmən/",
+    "meaningVi": "người nông dân (cổ)",
+    "definitionEn": "An old term for a farmer who cultivates and works the land.",
+    "example": "The husbandman rose before dawn to tend his sheep and mend the fences.",
+    "collocation": "humble husbandman",
+    "cefr": "C2"
+  },
+  {
+    "word": "terracing",
+    "pos": "noun",
+    "ipa": "/ˈterəsɪŋ/",
+    "meaningVi": "làm ruộng bậc thang",
+    "definitionEn": "Shaping hillsides into level steps to grow crops and reduce soil erosion.",
+    "example": "Centuries of terracing have transformed the mountain slopes into productive rice fields.",
+    "collocation": "rice terracing",
+    "cefr": "C2"
+  },
+  {
+    "word": "xerophyte",
+    "pos": "noun",
+    "ipa": "/ˈzɪərəfaɪt/",
+    "meaningVi": "thực vật chịu hạn",
+    "definitionEn": "A plant adapted to survive in very dry environments with little water.",
+    "example": "Cacti and succulents are xerophytes that store water in thick stems and leaves.",
+    "collocation": "desert xerophyte",
+    "cefr": "C2"
+  },
+  {
+    "word": "halophyte",
+    "pos": "noun",
+    "ipa": "/ˈhæləfaɪt/",
+    "meaningVi": "thực vật chịu mặn",
+    "definitionEn": "A plant that tolerates high salt levels in soil or water.",
+    "example": "Some halophytes can be cultivated on coastal land affected by seawater intrusion.",
+    "collocation": "salt-tolerant halophyte",
+    "cefr": "C2"
+  }
+]

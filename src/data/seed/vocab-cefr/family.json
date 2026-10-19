@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "mother",
+    "pos": "noun",
+    "ipa": "/ˈmʌðə/",
+    "meaningVi": "mẹ",
+    "definitionEn": "a female parent who has raised or given birth to a child",
+    "example": "My mother cooks dinner for the whole family every Sunday.",
+    "collocation": "mother tongue",
+    "cefr": "B1"
+  },
+  {
+    "word": "relative",
+    "pos": "noun",
+    "ipa": "/ˈrelətɪv/",
+    "meaningVi": "họ hàng",
+    "definitionEn": "a person who is connected to you by blood or marriage",
+    "example": "Most of my relatives still live in the countryside.",
+    "collocation": "close relative",
+    "cefr": "B1"
+  },
+  {
+    "word": "household",
+    "pos": "noun",
+    "ipa": "/ˈhaʊshəʊld/",
+    "meaningVi": "hộ gia đình",
+    "definitionEn": "all the people who live together in one home",
+    "example": "The average household in the city now has only two members.",
+    "collocation": "household income",
+    "cefr": "B1"
+  },
+  {
+    "word": "toddler",
+    "pos": "noun",
+    "ipa": "/ˈtɒdlə/",
+    "meaningVi": "trẻ chập chững biết đi",
+    "definitionEn": "a young child who has only recently started walking",
+    "example": "The toddler giggled as she chased the ball across the living room.",
+    "collocation": "young toddler",
+    "cefr": "B1"
+  },
+  {
+    "word": "teenager",
+    "pos": "noun",
+    "ipa": "/ˈtiːneɪdʒə/",
+    "meaningVi": "thanh thiếu niên",
+    "definitionEn": "a person aged between thirteen and nineteen years old",
+    "example": "Many teenagers spend hours each day on their mobile phones.",
+    "collocation": "moody teenager",
+    "cefr": "B1"
+  },
+  {
+    "word": "divorce",
+    "pos": "noun",
+    "ipa": "/dɪˈvɔːs/",
+    "meaningVi": "ly hôn",
+    "definitionEn": "the legal ending of a marriage",
+    "example": "Their divorce was finalised after nearly two years of negotiation.",
+    "collocation": "file for divorce",
+    "cefr": "B1"
+  },
+  {
+    "word": "marriage",
+    "pos": "noun",
+    "ipa": "/ˈmærɪdʒ/",
+    "meaningVi": "hôn nhân",
+    "definitionEn": "the formal union of two people as husband and wife",
+    "example": "Their marriage has lasted more than forty years and three children.",
+    "collocation": "happy marriage",
+    "cefr": "B1"
+  },
+  {
+    "word": "grandmother",
+    "pos": "noun",
+    "ipa": "/ˈɡrænmʌðə/",
+    "meaningVi": "bà",
+    "definitionEn": "the mother of one's father or mother",
+    "example": "My grandmother still bakes bread for every family gathering.",
+    "collocation": "maternal grandmother",
+    "cefr": "B1"
+  },
+  {
+    "word": "cousin",
+    "pos": "noun",
+    "ipa": "/ˈkʌzn/",
+    "meaningVi": "anh chị em họ",
+    "definitionEn": "a child of one's uncle or aunt",
+    "example": "My cousin and I played together every summer at our grandparents' farm.",
+    "collocation": "first cousin",
+    "cefr": "B1"
+  },
+  {
+    "word": "nephew",
+    "pos": "noun",
+    "ipa": "/ˈnefjuː/",
+    "meaningVi": "cháu trai",
+    "definitionEn": "a son of one's brother or sister",
+    "example": "My nephew is learning to ride a bicycle this weekend.",
+    "collocation": "favourite nephew",
+    "cefr": "B1"
+  },
+  {
+    "word": "niece",
+    "pos": "noun",
+    "ipa": "/niːs/",
+    "meaningVi": "cháu gái",
+    "definitionEn": "a daughter of one's brother or sister",
+    "example": "My niece won first prize in the school spelling competition.",
+    "collocation": "favourite niece",
+    "cefr": "B1"
+  },
+  {
+    "word": "wedding",
+    "pos": "noun",
+    "ipa": "/ˈwedɪŋ/",
+    "meaningVi": "đám cưới",
+    "definitionEn": "a ceremony at which two people marry",
+    "example": "The wedding reception was held in a garden beside the lake.",
+    "collocation": "wedding ceremony",
+    "cefr": "B1"
+  },
+  {
+    "word": "childhood",
+    "pos": "noun",
+    "ipa": "/ˈtʃaɪldhʊd/",
+    "meaningVi": "tuổi thơ",
+    "definitionEn": "the period of life when someone is a child",
+    "example": "Her childhood was spent in a small fishing village by the sea.",
+    "collocation": "happy childhood",
+    "cefr": "B1"
+  },
+  {
+    "word": "get along",
+    "pos": "phrasal verb",
+    "ipa": "/ɡet əˈlɒŋ/",
+    "meaningVi": "hòa thuận",
+    "definitionEn": "to have a friendly relationship with someone",
+    "example": "My brothers and I get along well despite our age gap.",
+    "collocation": "get along with someone",
+    "cefr": "B1"
+  },
+  {
+    "word": "look after",
+    "pos": "phrasal verb",
+    "ipa": "/lʊk ˈɑːftə/",
+    "meaningVi": "trông nom",
+    "definitionEn": "to take care of a person or thing",
+    "example": "Grandma looks after the children while both parents are working.",
+    "collocation": "look after children",
+    "cefr": "B1"
+  },
+  {
+    "word": "grow up",
+    "pos": "phrasal verb",
+    "ipa": "/ɡrəʊ ʌp/",
+    "meaningVi": "lớn lên",
+    "definitionEn": "to change from a child into an adult",
+    "example": "Many children grow up hearing stories about their grandparents' youth.",
+    "collocation": "grow up in the countryside",
+    "cefr": "B1"
+  },
+  {
+    "word": "move out",
+    "pos": "phrasal verb",
+    "ipa": "/muːv aʊt/",
+    "meaningVi": "dọn ra ở riêng",
+    "definitionEn": "to leave the house where one lived with one's family",
+    "example": "After graduating, my sister decided to move out of the family home.",
+    "collocation": "move out of home",
+    "cefr": "B1"
+  },
+  {
+    "word": "in-laws",
+    "pos": "noun",
+    "ipa": "/ˈɪnlɔːz/",
+    "meaningVi": "họ hàng bên chồng hoặc vợ",
+    "definitionEn": "the parents and relatives of one's husband or wife",
+    "example": "My in-laws visit us every holiday and always bring homemade food.",
+    "collocation": "visit one's in-laws",
+    "cefr": "B1"
+  },
+  {
+    "word": "daughter",
+    "pos": "noun",
+    "ipa": "/ˈdɔːtə/",
+    "meaningVi": "con gái",
+    "definitionEn": "a female child of a parent",
+    "example": "Their eldest daughter started university in a city far away.",
+    "collocation": "eldest daughter",
+    "cefr": "B1"
+  },
+  {
+    "word": "family reunion",
+    "pos": "noun",
+    "ipa": "/ˈfæməli riːˈjuːnjən/",
+    "meaningVi": "buổi họp mặt gia đình",
+    "definitionEn": "a gathering of relatives who meet after being apart",
+    "example": "Every summer, our family reunion brings together more than forty relatives.",
+    "collocation": "annual family reunion",
+    "cefr": "B1"
+  },
+  {
+    "word": "childcare",
+    "pos": "noun",
+    "ipa": "/ˈtʃaɪldkeə/",
+    "meaningVi": "trông trẻ",
+    "definitionEn": "the care and supervision of children, especially while parents work",
+    "example": "Affordable childcare is essential for parents who want to return to work.",
+    "collocation": "affordable childcare",
+    "cefr": "B2"
+  },
+  {
+    "word": "chore",
+    "pos": "noun",
+    "ipa": "/tʃɔː/",
+    "meaningVi": "việc nhà",
+    "definitionEn": "a routine task, especially a household job",
+    "example": "Children should be given age-appropriate chores to build responsibility.",
+    "collocation": "daily chores",
+    "cefr": "B2"
+  },
+  {
+    "word": "estranged",
+    "pos": "adjective",
+    "ipa": "/ɪˈstreɪndʒd/",
+    "meaningVi": "xa cách, ly thân",
+    "definitionEn": "no longer in regular contact with a family member",
+    "example": "He became estranged from his father after a bitter argument over money.",
+    "collocation": "estranged from his family",
+    "cefr": "B2"
+  },
+  {
+    "word": "infancy",
+    "pos": "noun",
+    "ipa": "/ˈɪnfənsi/",
+    "meaningVi": "thời thơ ấu",
+    "definitionEn": "the earliest period of a child's life",
+    "example": "Early bonding during infancy shapes a child's emotional development.",
+    "collocation": "during infancy",
+    "cefr": "B2"
+  },
+  {
+    "word": "hand down",
+    "pos": "phrasal verb",
+    "ipa": "/hænd daʊn/",
+    "meaningVi": "truyền lại",
+    "definitionEn": "to pass something on to the next generation",
+    "example": "Many families hand down recipes that have lasted for generations.",
+    "collocation": "hand down from generation to generation",
+    "cefr": "B2"
+  },
+  {
+    "word": "come of age",
+    "pos": "idiom",
+    "ipa": "/kʌm əv eɪdʒ/",
+    "meaningVi": "đến tuổi trưởng thành",
+    "definitionEn": "to reach the age when one is legally an adult",
+    "example": "Young people often come of age when they leave home for university.",
+    "collocation": "come of age at eighteen",
+    "cefr": "B2"
+  },
+  {
+    "word": "domestic",
+    "pos": "adjective",
+    "ipa": "/dəˈmestɪk/",
+    "meaningVi": "thuộc gia đình, trong nhà",
+    "definitionEn": "relating to the home or family life",
+    "example": "Domestic responsibilities are still divided unevenly in many households.",
+    "collocation": "domestic responsibilities",
+    "cefr": "B2"
+  },
+  {
+    "word": "spoil",
+    "pos": "verb",
+    "ipa": "/spɔɪl/",
+    "meaningVi": "nuông chiều",
+    "definitionEn": "to give a child too much attention or too many gifts",
+    "example": "Doting grandparents often spoil their grandchildren with expensive gifts.",
+    "collocation": "spoil a child",
+    "cefr": "B2"
+  },
+  {
+    "word": "nag",
+    "pos": "verb",
+    "ipa": "/næɡ/",
+    "meaningVi": "càu nhàu, nhắc đi nhắc lại",
+    "definitionEn": "to repeatedly complain or ask someone to do something",
+    "example": "My mother would nag me constantly about cleaning my room.",
+    "collocation": "nag someone to do something",
+    "cefr": "B2"
+  },
+  {
+    "word": "bring up",
+    "pos": "phrasal verb",
+    "ipa": "/brɪŋ ʌp/",
+    "meaningVi": "nuôi dưỡng",
+    "definitionEn": "to care for a child until they become adults",
+    "example": "She managed to bring up three children on her own after the divorce.",
+    "collocation": "bring up children",
+    "cefr": "B2"
+  },
+  {
+    "word": "homemaker",
+    "pos": "noun",
+    "ipa": "/ˈhəʊmmeɪkə/",
+    "meaningVi": "người nội trợ",
+    "definitionEn": "a person who runs a home and looks after the family",
+    "example": "Many homemakers feel their unpaid work is undervalued by society.",
+    "collocation": "full-time homemaker",
+    "cefr": "B2"
+  },
+  {
+    "word": "dependant",
+    "pos": "noun",
+    "ipa": "/dɪˈpendənt/",
+    "meaningVi": "người được nuôi dưỡng",
+    "definitionEn": "a person who relies financially on another",
+    "example": "Tax benefits are available for parents supporting dependants at home.",
+    "collocation": "financial dependant",
+    "cefr": "B2"
+  },
+  {
+    "word": "cherish",
+    "pos": "verb",
+    "ipa": "/ˈtʃerɪʃ/",
+    "meaningVi": "trân trọng",
+    "definitionEn": "to care deeply for someone or something valuable",
+    "example": "Parents often cherish every milestone in their children's lives.",
+    "collocation": "cherish memories",
+    "cefr": "B2"
+  },
+  {
+    "word": "sacrifice",
+    "pos": "noun",
+    "ipa": "/ˈsækrɪfaɪs/",
+    "meaningVi": "sự hy sinh",
+    "definitionEn": "giving up something valuable for the sake of others",
+    "example": "Parents make countless sacrifices so their children can receive a good education.",
+    "collocation": "make sacrifices",
+    "cefr": "B2"
+  },
+  {
+    "word": "stepfamily",
+    "pos": "noun",
+    "ipa": "/ˈstepfæməli/",
+    "meaningVi": "gia đình có cha mẹ kế",
+    "definitionEn": "a family formed when a parent marries someone with children",
+    "example": "Living in a stepfamily can be challenging for teenagers at first.",
+    "collocation": "blended stepfamily",
+    "cefr": "B2"
+  },
+  {
+    "word": "guardian",
+    "pos": "noun",
+    "ipa": "/ˈɡɑːdiən/",
+    "meaningVi": "người giám hộ",
+    "definitionEn": "a person legally responsible for a child whose parents cannot care for them",
+    "example": "The court appointed her aunt as the children's legal guardian.",
+    "collocation": "legal guardian",
+    "cefr": "B2"
+  },
+  {
+    "word": "scold",
+    "pos": "verb",
+    "ipa": "/skəʊld/",
+    "meaningVi": "mắng",
+    "definitionEn": "to speak angrily to someone because they have done wrong",
+    "example": "She scolded her son for coming home late without calling.",
+    "collocation": "scold a child",
+    "cefr": "B2"
+  },
+  {
+    "word": "confide",
+    "pos": "verb",
+    "ipa": "/kənˈfaɪd/",
+    "meaningVi": "tâm sự",
+    "definitionEn": "to tell someone a secret or private feelings in trust",
+    "example": "Teenagers often confide in an older sibling rather than their parents.",
+    "collocation": "confide in someone",
+    "cefr": "B2"
+  },
+  {
+    "word": "inherit",
+    "pos": "verb",
+    "ipa": "/ɪnˈherɪt/",
+    "meaningVi": "thừa kế",
+    "definitionEn": "to receive property or qualities from a relative who has died",
+    "example": "The eldest son inherited the family farm after his father died.",
+    "collocation": "inherit property",
+    "cefr": "B2"
+  },
+  {
+    "word": "wholesome",
+    "pos": "adjective",
+    "ipa": "/ˈhəʊlsəm/",
+    "meaningVi": "lành mạnh",
+    "definitionEn": "good for health or morals, especially in family life",
+    "example": "Parents want a wholesome environment where children feel safe and loved.",
+    "collocation": "wholesome family environment",
+    "cefr": "B2"
+  },
+  {
+    "word": "bereavement",
+    "pos": "noun",
+    "ipa": "/bɪˈriːvmənt/",
+    "meaningVi": "sự mất người thân",
+    "definitionEn": "the loss of someone close through death",
+    "example": "The family received counselling support during their bereavement.",
+    "collocation": "bereavement counselling",
+    "cefr": "B2"
+  },
+  {
+    "word": "pass away",
+    "pos": "phrasal verb",
+    "ipa": "/pɑːs əˈweɪ/",
+    "meaningVi": "qua đời",
+    "definitionEn": "to die, used in a polite way",
+    "example": "Many elderly people hope to pass away peacefully at home.",
+    "collocation": "pass away peacefully",
+    "cefr": "B2"
+  },
+  {
+    "word": "sentimental",
+    "pos": "adjective",
+    "ipa": "/ˌsentɪˈmentl/",
+    "meaningVi": "đa cảm, trọng tình cảm",
+    "definitionEn": "having feelings of love and nostalgia about the past",
+    "example": "Grandmother kept every letter because she was sentimental about the past.",
+    "collocation": "sentimental value",
+    "cefr": "B2"
+  },
+  {
+    "word": "filial",
+    "pos": "adjective",
+    "ipa": "/ˈfɪliəl/",
+    "meaningVi": "thuộc về đạo hiếu",
+    "definitionEn": "showing the duty and respect a child owes to parents",
+    "example": "Filial piety has long shaped the expectations placed on eldest sons.",
+    "collocation": "filial piety",
+    "cefr": "C1"
+  },
+  {
+    "word": "matriarch",
+    "pos": "noun",
+    "ipa": "/ˈmeɪtriɑːk/",
+    "meaningVi": "người đứng đầu gia đình (nữ)",
+    "definitionEn": "a woman who holds the leading position in a family",
+    "example": "The family matriarch made every major decision for the household.",
+    "collocation": "family matriarch",
+    "cefr": "C1"
+  },
+  {
+    "word": "patriarchal",
+    "pos": "adjective",
+    "ipa": "/ˌpeɪtriˈɑːkl/",
+    "meaningVi": "mang tính gia trưởng",
+    "definitionEn": "relating to a system where men hold most of the power",
+    "example": "Patriarchal norms still influence how household labour is divided.",
+    "collocation": "patriarchal society",
+    "cefr": "C1"
+  },
+  {
+    "word": "matrimony",
+    "pos": "noun",
+    "ipa": "/ˈmætrɪməni/",
+    "meaningVi": "hôn nhân",
+    "definitionEn": "the state of being married",
+    "example": "Some couples choose to live together without entering matrimony at all.",
+    "collocation": "holy matrimony",
+    "cefr": "C1"
+  },
+  {
+    "word": "cohabit",
+    "pos": "verb",
+    "ipa": "/kəʊˈhæbɪt/",
+    "meaningVi": "sống chung",
+    "definitionEn": "to live together as partners without being married",
+    "example": "Many young couples decide to cohabit before deciding on marriage.",
+    "collocation": "cohabit before marriage",
+    "cefr": "C1"
+  },
+  {
+    "word": "progeny",
+    "pos": "noun",
+    "ipa": "/ˈprɒdʒəni/",
+    "meaningVi": "con cháu, hậu duệ",
+    "definitionEn": "the children or descendants of a person",
+    "example": "The king's progeny competed fiercely for control of the crown.",
+    "collocation": "direct progeny",
+    "cefr": "C1"
+  },
+  {
+    "word": "offspring",
+    "pos": "noun",
+    "ipa": "/ˈɒfsprɪŋ/",
+    "meaningVi": "con cái",
+    "definitionEn": "the children of a person or animal",
+    "example": "Many parents devote their entire lives to their offspring's wellbeing.",
+    "collocation": "produce offspring",
+    "cefr": "C1"
+  },
+  {
+    "word": "affinity",
+    "pos": "noun",
+    "ipa": "/əˈfɪnəti/",
+    "meaningVi": "sự gắn bó, tương đồng",
+    "definitionEn": "a natural liking or close similarity between people",
+    "example": "Siblings often share a natural affinity despite constant arguments.",
+    "collocation": "strong affinity",
+    "cefr": "C1"
+  },
+  {
+    "word": "estrangement",
+    "pos": "noun",
+    "ipa": "/ɪˈstreɪndʒmənt/",
+    "meaningVi": "sự xa cách",
+    "definitionEn": "a state of being kept apart or of unfriendly relations",
+    "example": "Long periods of estrangement can leave lasting emotional scars on families.",
+    "collocation": "family estrangement",
+    "cefr": "C1"
+  },
+  {
+    "word": "intergenerational",
+    "pos": "adjective",
+    "ipa": "/ˌɪntədʒenəˈreɪʃənl/",
+    "meaningVi": "giữa các thế hệ",
+    "definitionEn": "involving or affecting people of different generations",
+    "example": "Intergenerational living is becoming more common as housing costs rise.",
+    "collocation": "intergenerational tension",
+    "cefr": "C1"
+  },
+  {
+    "word": "paternalistic",
+    "pos": "adjective",
+    "ipa": "/pəˌtɜːnəˈlɪstɪk/",
+    "meaningVi": "gia trưởng, bao bọc quá mức",
+    "definitionEn": "controlling people by providing for them rather than letting them decide",
+    "example": "A paternalistic parenting style can limit children's ability to make decisions.",
+    "collocation": "paternalistic approach",
+    "cefr": "C1"
+  },
+  {
+    "word": "indulgent",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdʌldʒənt/",
+    "meaningVi": "nuông chiều",
+    "definitionEn": "allowing someone to have whatever they want",
+    "example": "Indulgent parents sometimes fail to set clear boundaries for their children.",
+    "collocation": "indulgent parenting",
+    "cefr": "C1"
+  },
+  {
+    "word": "aloof",
+    "pos": "adjective",
+    "ipa": "/əˈluːf/",
+    "meaningVi": "lạnh nhạt, xa cách",
+    "definitionEn": "not friendly or involved with other people",
+    "example": "Her father remained aloof, rarely showing affection in public.",
+    "collocation": "remain aloof",
+    "cefr": "C1"
+  },
+  {
+    "word": "rear",
+    "pos": "verb",
+    "ipa": "/rɪə/",
+    "meaningVi": "nuôi dạy",
+    "definitionEn": "to bring up and care for children or young animals",
+    "example": "She reared four children while working part-time as a nurse.",
+    "collocation": "rear children",
+    "cefr": "C1"
+  },
+  {
+    "word": "strained",
+    "pos": "adjective",
+    "ipa": "/streɪnd/",
+    "meaningVi": "căng thẳng",
+    "definitionEn": "difficult or tense because of disagreement",
+    "example": "Their strained relationship with their stepmother improved slowly over time.",
+    "collocation": "strained relations",
+    "cefr": "C1"
+  },
+  {
+    "word": "domesticity",
+    "pos": "noun",
+    "ipa": "/ˌdəʊmesˈtɪsəti/",
+    "meaningVi": "cuộc sống gia đình, việc nhà",
+    "definitionEn": "family life and the activities of the home",
+    "example": "She found domesticity restrictive after years of pursuing a career.",
+    "collocation": "embrace domesticity",
+    "cefr": "C1"
+  },
+  {
+    "word": "fraternal",
+    "pos": "adjective",
+    "ipa": "/frəˈtɜːnl/",
+    "meaningVi": "thuộc anh em",
+    "definitionEn": "of or like a brother or brothers",
+    "example": "Fraternal twins share only about half of their genetic material.",
+    "collocation": "fraternal twins",
+    "cefr": "C1"
+  },
+  {
+    "word": "maternal",
+    "pos": "adjective",
+    "ipa": "/məˈtɜːnl/",
+    "meaningVi": "thuộc về người mẹ",
+    "definitionEn": "relating to or typical of a mother",
+    "example": "Maternal instincts can be strong even in women who never planned children.",
+    "collocation": "maternal instinct",
+    "cefr": "C1"
+  },
+  {
+    "word": "paternal",
+    "pos": "adjective",
+    "ipa": "/pəˈtɜːnl/",
+    "meaningVi": "thuộc về người cha",
+    "definitionEn": "relating to or inherited from a father",
+    "example": "Her paternal grandparents still live in the village where he grew up.",
+    "collocation": "paternal grandmother",
+    "cefr": "C1"
+  },
+  {
+    "word": "dynasty",
+    "pos": "noun",
+    "ipa": "/ˈdɪnəsti/",
+    "meaningVi": "triều đại, dòng họ",
+    "definitionEn": "a line of rulers or a powerful family over several generations",
+    "example": "The merchant dynasty built its fortune across three centuries.",
+    "collocation": "ruling dynasty",
+    "cefr": "C1"
+  },
+  {
+    "word": "bereft",
+    "pos": "adjective",
+    "ipa": "/bɪˈreft/",
+    "meaningVi": "mất mát, thiếu vắng",
+    "definitionEn": "deprived of something important",
+    "example": "Bereft of her husband, she struggled to care for the children alone.",
+    "collocation": "bereft of support",
+    "cefr": "C1"
+  },
+  {
+    "word": "hearth",
+    "pos": "noun",
+    "ipa": "/hɑːθ/",
+    "meaningVi": "lò sưởi, tổ ấm",
+    "definitionEn": "the floor of a fireplace, used as a symbol of home",
+    "example": "Families gathered around the hearth during long winter evenings.",
+    "collocation": "warm hearth",
+    "cefr": "C1"
+  },
+  {
+    "word": "nuptial",
+    "pos": "adjective",
+    "ipa": "/ˈnʌpʃl/",
+    "meaningVi": "thuộc hôn lễ",
+    "definitionEn": "relating to marriage or a wedding",
+    "example": "The nuptial ceremony was held at the family estate in June.",
+    "collocation": "nuptial vows",
+    "cefr": "C1"
+  },
+  {
+    "word": "dowry",
+    "pos": "noun",
+    "ipa": "/ˈdaʊəri/",
+    "meaningVi": "của hồi môn",
+    "definitionEn": "money or property a bride brings to her husband's family",
+    "example": "In some cultures, a dowry is still expected from the bride's family.",
+    "collocation": "pay a dowry",
+    "cefr": "C1"
+  },
+  {
+    "word": "genealogy",
+    "pos": "noun",
+    "ipa": "/ˌdʒiːniˈælədʒi/",
+    "meaningVi": "gia phả, phả hệ",
+    "definitionEn": "the study or record of family descent",
+    "example": "Her genealogy research revealed ancestors who had emigrated from abroad.",
+    "collocation": "trace one's genealogy",
+    "cefr": "C1"
+  },
+  {
+    "word": "kindred",
+    "pos": "adjective",
+    "ipa": "/ˈkɪndrəd/",
+    "meaningVi": "cùng tâm hồn, thân thuộc",
+    "definitionEn": "sharing similar qualities or feelings with someone",
+    "example": "She felt a kindred spirit in her cousin, who shared her interests.",
+    "collocation": "kindred spirit",
+    "cefr": "C1"
+  },
+  {
+    "word": "bequest",
+    "pos": "noun",
+    "ipa": "/bɪˈkwest/",
+    "meaningVi": "di sản để lại",
+    "definitionEn": "a gift of money or property left to someone in a will",
+    "example": "The generous bequest allowed the grandchildren to attend university abroad.",
+    "collocation": "leave a bequest",
+    "cefr": "C1"
+  },
+  {
+    "word": "rift",
+    "pos": "noun",
+    "ipa": "/rɪft/",
+    "meaningVi": "rạn nứt",
+    "definitionEn": "a serious break in friendly relations",
+    "example": "A financial dispute caused a deep rift between the two brothers.",
+    "collocation": "deep rift",
+    "cefr": "C1"
+  },
+  {
+    "word": "conjugal",
+    "pos": "adjective",
+    "ipa": "/ˈkɒndʒʊɡl/",
+    "meaningVi": "thuộc vợ chồng",
+    "definitionEn": "relating to marriage or the relationship between husband and wife",
+    "example": "Conjugal rights were once legally enforced within marriage in many countries.",
+    "collocation": "conjugal rights",
+    "cefr": "C1"
+  },
+  {
+    "word": "nepotism",
+    "pos": "noun",
+    "ipa": "/ˈnepətɪzəm/",
+    "meaningVi": "ưu ái người thân",
+    "definitionEn": "favouring relatives in jobs or appointments",
+    "example": "Nepotism in the company led to resentment among more qualified staff.",
+    "collocation": "blatant nepotism",
+    "cefr": "C1"
+  },
+  {
+    "word": "co-parenting",
+    "pos": "noun",
+    "ipa": "/ˌkəʊˈpeərəntɪŋ/",
+    "meaningVi": "nuôi con chung sau ly hôn",
+    "definitionEn": "sharing the responsibility of raising children after separation",
+    "example": "Successful co-parenting requires both former partners to communicate respectfully.",
+    "collocation": "effective co-parenting",
+    "cefr": "C1"
+  },
+  {
+    "word": "consanguineous",
+    "pos": "adjective",
+    "ipa": "/ˌkɒnsæŋˈɡwɪniəs/",
+    "meaningVi": "cùng dòng máu",
+    "definitionEn": "descended from the same ancestors by blood",
+    "example": "Consanguineous marriages carry higher genetic risks for their offspring.",
+    "collocation": "consanguineous union",
+    "cefr": "C2"
+  },
+  {
+    "word": "consanguinity",
+    "pos": "noun",
+    "ipa": "/ˌkɒnsæŋˈɡwɪnəti/",
+    "meaningVi": "quan hệ cùng huyết thống",
+    "definitionEn": "the condition of being related by blood",
+    "example": "Laws restricting marriage between close relatives reflect concerns about consanguinity.",
+    "collocation": "degree of consanguinity",
+    "cefr": "C2"
+  },
+  {
+    "word": "avuncular",
+    "pos": "adjective",
+    "ipa": "/əˈvʌŋkjʊlə/",
+    "meaningVi": "như chú bác, ân cần",
+    "definitionEn": "kind and friendly in the manner of an uncle",
+    "example": "His avuncular manner made the nervous nephew feel instantly at ease.",
+    "collocation": "avuncular affection",
+    "cefr": "C2"
+  },
+  {
+    "word": "sororal",
+    "pos": "adjective",
+    "ipa": "/səˈrɔːrəl/",
+    "meaningVi": "thuộc chị em gái",
+    "definitionEn": "relating to or like a sister",
+    "example": "Their sororal bond survived decades of geographic separation.",
+    "collocation": "sororal bond",
+    "cefr": "C2"
+  },
+  {
+    "word": "progenitor",
+    "pos": "noun",
+    "ipa": "/prəʊˈdʒenɪtə/",
+    "meaningVi": "tổ tiên, người sáng lập",
+    "definitionEn": "an ancestor or the originator of something",
+    "example": "The progenitor of the family business emigrated with only a single trunk.",
+    "collocation": "common progenitor",
+    "cefr": "C2"
+  },
+  {
+    "word": "primogeniture",
+    "pos": "noun",
+    "ipa": "/ˌpraɪməʊˈdʒenɪtʃə/",
+    "meaningVi": "quyền thừa kế của con trưởng",
+    "definitionEn": "the right of the eldest child to inherit family property",
+    "example": "Primogeniture once guaranteed the eldest son the entire family estate.",
+    "collocation": "law of primogeniture",
+    "cefr": "C2"
+  },
+  {
+    "word": "prodigal",
+    "pos": "adjective",
+    "ipa": "/ˈprɒdɪɡl/",
+    "meaningVi": "hoang phí, phung phí",
+    "definitionEn": "spending money or resources in a recklessly wasteful way",
+    "example": "The prodigal heir squandered the fortune within a single decade.",
+    "collocation": "prodigal son",
+    "cefr": "C2"
+  },
+  {
+    "word": "ancestral",
+    "pos": "adjective",
+    "ipa": "/ænˈsestrəl/",
+    "meaningVi": "thuộc tổ tiên",
+    "definitionEn": "inherited from or belonging to one's ancestors",
+    "example": "They returned to the ancestral village to restore the crumbling family temple.",
+    "collocation": "ancestral home",
+    "cefr": "C2"
+  },
+  {
+    "word": "matrilineal",
+    "pos": "adjective",
+    "ipa": "/ˌmætrɪˈlɪniəl/",
+    "meaningVi": "theo dòng mẹ",
+    "definitionEn": "tracing descent and inheritance through the female line",
+    "example": "Matrilineal societies trace inheritance and descent through the mother's line.",
+    "collocation": "matrilineal descent",
+    "cefr": "C2"
+  },
+  {
+    "word": "patrilineal",
+    "pos": "adjective",
+    "ipa": "/ˌpætrɪˈlɪniəl/",
+    "meaningVi": "theo dòng cha",
+    "definitionEn": "tracing descent and inheritance through the male line",
+    "example": "Patrilineal customs once determined which family owned the ancestral land.",
+    "collocation": "patrilineal descent",
+    "cefr": "C2"
+  },
+  {
+    "word": "amity",
+    "pos": "noun",
+    "ipa": "/ˈæməti/",
+    "meaningVi": "tình hữu nghị",
+    "definitionEn": "a friendly relationship between people or nations",
+    "example": "Despite their differences, the cousins maintained a quiet amity for decades.",
+    "collocation": "mutual amity",
+    "cefr": "C2"
+  },
+  {
+    "word": "inculcate",
+    "pos": "verb",
+    "ipa": "/ˈɪnkʌlkeɪt/",
+    "meaningVi": "gieo rắc, rèn giũa",
+    "definitionEn": "to instil an idea or habit through repeated teaching",
+    "example": "Parents inculcate moral values through daily example rather than lectures.",
+    "collocation": "inculcate values",
+    "cefr": "C2"
+  },
+  {
+    "word": "solicitude",
+    "pos": "noun",
+    "ipa": "/səˈlɪsɪtjuːd/",
+    "meaningVi": "sự ân cần, chăm sóc",
+    "definitionEn": "care and concern for someone's welfare",
+    "example": "The mother's solicitude for her sick child was evident in every gesture.",
+    "collocation": "tender solicitude",
+    "cefr": "C2"
+  },
+  {
+    "word": "pater familias",
+    "pos": "phrase",
+    "ipa": "/ˌpɑːtə fəˈmɪliæs/",
+    "meaningVi": "gia trưởng",
+    "definitionEn": "the male head of a household in Roman law",
+    "example": "In Roman law, the pater familias held authority over every member of the household.",
+    "collocation": "the pater familias",
+    "cefr": "C2"
+  },
+  {
+    "word": "wean",
+    "pos": "verb",
+    "ipa": "/wiːn/",
+    "meaningVi": "cai sữa, dần thoát khỏi",
+    "definitionEn": "to gradually stop someone's reliance on something",
+    "example": "Parents often struggle to wean their teenagers off constant financial support.",
+    "collocation": "wean off dependence",
+    "cefr": "C2"
+  },
+  {
+    "word": "enmeshed",
+    "pos": "adjective",
+    "ipa": "/ɪnˈmeʃt/",
+    "meaningVi": "vướng víu, chằng chịt",
+    "definitionEn": "closely and inextricably involved with others",
+    "example": "Some families become so enmeshed that individual boundaries almost disappear.",
+    "collocation": "enmeshed relationships",
+    "cefr": "C2"
+  },
+  {
+    "word": "kinsfolk",
+    "pos": "noun",
+    "ipa": "/ˈkɪnzfəʊk/",
+    "meaningVi": "họ hàng",
+    "definitionEn": "one's relatives collectively",
+    "example": "The villagers gathered to welcome their kinsfolk returning from the city.",
+    "collocation": "distant kinsfolk",
+    "cefr": "C2"
+  },
+  {
+    "word": "scion",
+    "pos": "noun",
+    "ipa": "/ˈsaɪən/",
+    "meaningVi": "con cháu dòng dõi",
+    "definitionEn": "a descendant of a notable or wealthy family",
+    "example": "The scion of a wealthy banking family chose to work as a teacher.",
+    "collocation": "scion of a noble family",
+    "cefr": "C2"
+  },
+  {
+    "word": "hereditary",
+    "pos": "adjective",
+    "ipa": "/hɪˈredɪtri/",
+    "meaningVi": "di truyền",
+    "definitionEn": "passed on from parent to child through genes or inheritance",
+    "example": "Certain hereditary diseases can be detected through genetic screening before birth.",
+    "collocation": "hereditary trait",
+    "cefr": "C2"
+  },
+  {
+    "word": "blood ties",
+    "pos": "phrase",
+    "ipa": "/blʌd taɪz/",
+    "meaningVi": "quan hệ huyết thống",
+    "definitionEn": "close family connections based on common ancestry",
+    "example": "Blood ties often count for less than shared experience in adoptive families.",
+    "collocation": "strong blood ties",
+    "cefr": "C2"
+  },
+  {
+    "word": "disinherit",
+    "pos": "verb",
+    "ipa": "/ˌdɪsɪnˈherɪt/",
+    "meaningVi": "tước quyền thừa kế",
+    "definitionEn": "to deprive a person of an inheritance they would normally receive",
+    "example": "He threatened to disinherit his son unless he abandoned the risky venture.",
+    "collocation": "disinherit a child",
+    "cefr": "C2"
+  },
+  {
+    "word": "cosset",
+    "pos": "verb",
+    "ipa": "/ˈkɒsɪt/",
+    "meaningVi": "nuông chiều",
+    "definitionEn": "to treat someone with excessive kindness and care",
+    "example": "Doting aunts cosset their nephews with sweets and toys at every visit.",
+    "collocation": "cosset a child",
+    "cefr": "C2"
+  },
+  {
+    "word": "forebear",
+    "pos": "noun",
+    "ipa": "/ˈfɔːbeə/",
+    "meaningVi": "tổ tiên",
+    "definitionEn": "an ancestor, especially a distant one",
+    "example": "Our forebears crossed the mountains in search of fertile land.",
+    "collocation": "distant forebears",
+    "cefr": "C2"
+  },
+  {
+    "word": "abnegation",
+    "pos": "noun",
+    "ipa": "/ˌæbnɪˈɡeɪʃn/",
+    "meaningVi": "sự từ bỏ, hy sinh bản thân",
+    "definitionEn": "the rejection or sacrifice of one's own desires",
+    "example": "Her selfless abnegation for her younger brothers earned the family's lasting gratitude.",
+    "collocation": "self-abnegation",
+    "cefr": "C2"
+  },
+  {
+    "word": "tutelage",
+    "pos": "noun",
+    "ipa": "/ˈtjuːtəlɪdʒ/",
+    "meaningVi": "sự dạy dỗ, bảo trợ",
+    "definitionEn": "guidance, instruction or protection given by someone",
+    "example": "Under her grandmother's tutelage, the young girl learned to weave.",
+    "collocation": "under the tutelage of",
+    "cefr": "C2"
+  },
+  {
+    "word": "meddlesome",
+    "pos": "adjective",
+    "ipa": "/ˈmedlsəm/",
+    "meaningVi": "hay can thiệp",
+    "definitionEn": "interfering in other people's affairs",
+    "example": "Her meddlesome mother-in-law constantly criticised the way she raised the children.",
+    "collocation": "meddlesome relatives",
+    "cefr": "C2"
+  },
+  {
+    "word": "patrimony",
+    "pos": "noun",
+    "ipa": "/ˈpætrɪməni/",
+    "meaningVi": "gia sản cha truyền con nối",
+    "definitionEn": "property inherited from one's father or ancestors",
+    "example": "The estate's patrimony was divided among the heirs after the funeral.",
+    "collocation": "family patrimony",
+    "cefr": "C2"
+  },
+  {
+    "word": "mesalliance",
+    "pos": "noun",
+    "ipa": "/məˈzælɪəns/",
+    "meaningVi": "hôn nhân không môn đăng hộ đối",
+    "definitionEn": "a marriage considered beneath one's social rank",
+    "example": "Her family considered the match a mesalliance and refused to attend.",
+    "collocation": "disastrous mesalliance",
+    "cefr": "C2"
+  },
+  {
+    "word": "consort",
+    "pos": "noun",
+    "ipa": "/ˈkɒnsɔːt/",
+    "meaningVi": "vợ hoặc chồng của quốc vương",
+    "definitionEn": "the spouse of a reigning monarch",
+    "example": "The queen's consort devoted himself to charitable causes across the country.",
+    "collocation": "royal consort",
+    "cefr": "C2"
+  },
+  {
+    "word": "agnate",
+    "pos": "noun",
+    "ipa": "/ˈæɡneɪt/",
+    "meaningVi": "họ hàng bên nội",
+    "definitionEn": "a relative descended from the same male ancestor",
+    "example": "Under the old law, only male agnates could inherit the property.",
+    "collocation": "male agnate",
+    "cefr": "C2"
+  },
+  {
+    "word": "affinal",
+    "pos": "adjective",
+    "ipa": "/əˈfaɪnl/",
+    "meaningVi": "thuộc họ hàng do hôn nhân",
+    "definitionEn": "related by marriage rather than blood",
+    "example": "Affinal relatives gained a place at the table only after the wedding.",
+    "collocation": "affinal kin",
+    "cefr": "C2"
+  },
+  {
+    "word": "uxorious",
+    "pos": "adjective",
+    "ipa": "/ʌkˈsɔːriəs/",
+    "meaningVi": "quá yêu vợ",
+    "definitionEn": "excessively fond of one's wife",
+    "example": "The uxorious husband bought his wife flowers every single week.",
+    "collocation": "uxorious husband",
+    "cefr": "C2"
+  },
+  {
+    "word": "fecund",
+    "pos": "adjective",
+    "ipa": "/ˈfiːkənd/",
+    "meaningVi": "sinh sôi, nhiều con",
+    "definitionEn": "producing many offspring or new ideas",
+    "example": "Fecund families in rural areas once considered many children a blessing.",
+    "collocation": "fecund woman",
+    "cefr": "C2"
+  },
+  {
+    "word": "mollycoddle",
+    "pos": "verb",
+    "ipa": "/ˈmɒlikɒdl/",
+    "meaningVi": "nuông chiều quá mức",
+    "definitionEn": "to treat someone with excessive protection and indulgence",
+    "example": "Parents who mollycoddle their children often leave them unprepared for adulthood.",
+    "collocation": "mollycoddle a child",
+    "cefr": "C2"
+  },
+  {
+    "word": "dotage",
+    "pos": "noun",
+    "ipa": "/ˈdəʊtɪdʒ/",
+    "meaningVi": "tuổi già lẫn",
+    "definitionEn": "the period of life when a person is old and somewhat senile",
+    "example": "In his dotage, the old patriarch still ruled the household with an iron hand.",
+    "collocation": "in one's dotage",
+    "cefr": "C2"
+  },
+  {
+    "word": "pedigree",
+    "pos": "noun",
+    "ipa": "/ˈpedɪɡriː/",
+    "meaningVi": "dòng dõi",
+    "definitionEn": "a record of ancestry, especially of a noble or purebred line",
+    "example": "The horse came from a pedigree that stretched back to royal stables.",
+    "collocation": "noble pedigree",
+    "cefr": "C2"
+  },
+  {
+    "word": "genteel",
+    "pos": "adjective",
+    "ipa": "/dʒenˈtiːl/",
+    "meaningVi": "quý phái, lịch thiệp",
+    "definitionEn": "refined and polite in manner, often in an old-fashioned way",
+    "example": "The genteel household insisted on formal dinners every evening.",
+    "collocation": "genteel family",
+    "cefr": "C2"
+  },
+  {
+    "word": "ménage",
+    "pos": "noun",
+    "ipa": "/meɪˈnɑːʒ/",
+    "meaningVi": "hộ gia đình, gia nhân",
+    "definitionEn": "a household, including its members and servants",
+    "example": "Their large ménage included two cooks, a nanny and a private tutor.",
+    "collocation": "large ménage",
+    "cefr": "C2"
+  },
+  {
+    "word": "fraternity",
+    "pos": "noun",
+    "ipa": "/frəˈtɜːnəti/",
+    "meaningVi": "tình huynh đệ",
+    "definitionEn": "a close bond of brotherhood among people",
+    "example": "Membership of the fraternity bound the brothers together for life.",
+    "collocation": "close fraternity",
+    "cefr": "C2"
+  },
+  {
+    "word": "matriarchy",
+    "pos": "noun",
+    "ipa": "/ˈmeɪtriɑːki/",
+    "meaningVi": "chế độ mẫu hệ",
+    "definitionEn": "a social system in which women hold the main power",
+    "example": "Anthropologists have studied rare societies organised around matriarchy.",
+    "collocation": "rigid matriarchy",
+    "cefr": "C2"
+  },
+  {
+    "word": "ancestry",
+    "pos": "noun",
+    "ipa": "/ˈænsestri/",
+    "meaningVi": "tổ tiên, dòng dõi",
+    "definitionEn": "the family or ethnic origins of a person",
+    "example": "Her ancestry can be traced to fishermen from the northern coast.",
+    "collocation": "Irish ancestry",
+    "cefr": "C2"
+  },
+  {
+    "word": "orphanage",
+    "pos": "noun",
+    "ipa": "/ˈɔːfənɪdʒ/",
+    "meaningVi": "trại trẻ mồ côi",
+    "definitionEn": "an institution that houses and cares for orphaned children",
+    "example": "She was raised in an orphanage after losing both parents in the war.",
+    "collocation": "run an orphanage",
+    "cefr": "C2"
+  },
+  {
+    "word": "widowhood",
+    "pos": "noun",
+    "ipa": "/ˈwɪdəʊhʊd/",
+    "meaningVi": "tình trạng góa bụa",
+    "definitionEn": "the state of being a widow or widower",
+    "example": "Widowhood left her isolated, so her children moved closer to care for her.",
+    "collocation": "a life of widowhood",
+    "cefr": "C2"
+  },
+  {
+    "word": "kith and kin",
+    "pos": "phrase",
+    "ipa": "/kɪθ ənd kɪn/",
+    "meaningVi": "bạn bè và họ hàng",
+    "definitionEn": "friends and relatives",
+    "example": "She invited all her kith and kin to the anniversary celebration.",
+    "collocation": "far-flung kith and kin",
+    "cefr": "C2"
+  },
+  {
+    "word": "parturition",
+    "pos": "noun",
+    "ipa": "/ˌpɑːtjʊˈrɪʃn/",
+    "meaningVi": "sự sinh nở",
+    "definitionEn": "the act of giving birth",
+    "example": "Parturition in the village was usually attended by a trusted midwife.",
+    "collocation": "safe parturition",
+    "cefr": "C2"
+  },
+  {
+    "word": "wardship",
+    "pos": "noun",
+    "ipa": "/ˈwɔːdʃɪp/",
+    "meaningVi": "quyền giám hộ",
+    "definitionEn": "the legal right and duty to care for a minor",
+    "example": "Her wardship of the orphaned nephews lasted until they turned eighteen.",
+    "collocation": "seek wardship",
+    "cefr": "C2"
+  }
+]

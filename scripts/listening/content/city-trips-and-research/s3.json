@@ -1,0 +1,128 @@
+{
+  "n": 3,
+  "title": "Planning an air quality project",
+  "context": "A professor meets a student to review the plan for a group research project on air quality. The student is describing the plan for himself and his partner.",
+  "transcript": [
+    {
+      "speaker": "Professor Green",
+      "text": "Come in, Anh. Tell me how your air quality project is going."
+    },
+    {
+      "speaker": "Anh",
+      "text": "Chris and I have decided to compare air pollution in Bangkok and Hanoi. We've set up twelve sensors, and we've been collecting readings for three weeks."
+    },
+    {
+      "speaker": "Professor Green",
+      "text": "Good. How often are the sensors taking measurements?"
+    },
+    {
+      "speaker": "Anh",
+      "text": "Every fifteen minutes. The problem is that two of the sensors stopped working when it rained, so we lost some data from last month."
+    },
+    {
+      "speaker": "Professor Green",
+      "text": "That's frustrating, but it's common. Make sure you record the gaps in your report, because readers need to know where the data is missing."
+    },
+    {
+      "speaker": "Anh",
+      "text": "We will. For the comparison itself, we'll use government air quality reports and our own sensor readings. We decided not to use social media posts, because they're too unreliable."
+    },
+    {
+      "speaker": "Professor Green",
+      "text": "Sensible. Do you know how you'll present the results?"
+    },
+    {
+      "speaker": "Anh",
+      "text": "Chris wants to build a long video, but I think a simple chart is clearer. We'll present in three weeks, and we'll keep the talk to about twenty minutes."
+    },
+    {
+      "speaker": "Professor Green",
+      "text": "Twenty minutes is fine for a group. Could you send me the draft report?"
+    },
+    {
+      "speaker": "Anh",
+      "text": "Of course. The draft report is due on Wednesday, and we'll upload it to the shared folder that morning."
+    },
+    {
+      "speaker": "Professor Green",
+      "text": "Good. We'll meet next Tuesday to review the charts. Where will you be presenting?"
+    },
+    {
+      "speaker": "Anh",
+      "text": "We've been told we'll present in room seven, on the second floor of the science building."
+    }
+  ],
+  "groups": [
+    {
+      "type": "mcq-one",
+      "title": "Questions 21-23",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 21,
+          "prompt": "What is the main purpose of the project?",
+          "answer": "A",
+          "options": [
+            { "key": "A", "text": "to compare air pollution in two cities" },
+            { "key": "B", "text": "to design a new bus route" },
+            { "key": "C", "text": "to test a new type of filter" }
+          ]
+        },
+        {
+          "n": 22,
+          "prompt": "What problem did the sensors have?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "They were too expensive." },
+            { "key": "B", "text": "They stopped working in the rain." },
+            { "key": "C", "text": "They needed charging every hour." }
+          ]
+        },
+        {
+          "n": 23,
+          "prompt": "When will the group present the results?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "next Monday" },
+            { "key": "B", "text": "in three weeks" },
+            { "key": "C", "text": "at the end of term" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mcq-many",
+      "title": "Questions 24-25",
+      "instruction": "Choose TWO letters, A-E. Which TWO sources will the group use?",
+      "options": [
+        { "key": "A", "text": "government air quality reports" },
+        { "key": "B", "text": "social media posts" },
+        { "key": "C", "text": "hospital records" },
+        { "key": "D", "text": "their own sensor readings" },
+        { "key": "E", "text": "newspaper articles" }
+      ],
+      "questions": [{ "n": 24, "answer": ["A", "D"] }]
+    },
+    {
+      "type": "gap",
+      "title": "Questions 26-30",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "wordLimit": "ONE WORD AND/OR A NUMBER",
+      "lines": [
+        "## Air quality project notes",
+        "Cities being compared: Bangkok and {{26}}",
+        "Number of sensors: {{27}}",
+        "Readings taken every {{28}} minutes",
+        "Draft report due: {{29}}",
+        "Presentation room: {{30}}"
+      ],
+      "questions": [
+        { "n": 26, "answer": "Hanoi" },
+        { "n": 27, "answer": "twelve", "accept": ["12"] },
+        { "n": 28, "answer": "fifteen", "accept": ["15"] },
+        { "n": 29, "answer": "Wednesday" },
+        { "n": 30, "answer": "seven", "accept": ["7"] }
+      ]
+    }
+  ]
+}

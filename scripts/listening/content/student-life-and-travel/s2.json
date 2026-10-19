@@ -1,0 +1,106 @@
+{
+  "n": 2,
+  "title": "Walking tour of the Old Town",
+  "context": "A tour guide briefs a group of visitors before a morning walking tour of a historic town in Central Vietnam.",
+  "transcript": [
+    {
+      "speaker": "Guide",
+      "text": "Good morning, everyone, and welcome to the Hoi An Ancient Town walking tour. My name is Duc, and I'll be your guide for the next two hours. Please gather around me. We'll meet outside the old post office on Tran Phu Street. We're starting early this morning to avoid the afternoon heat, so let's keep moving."
+    },
+    {
+      "speaker": "Guide",
+      "text": "A few practical points before we begin. The tour price includes bottled water and entrance tickets to several of the old houses. Please bring a sun hat, because there is very little shade in the open squares, and wear comfortable shoes, since we'll be walking on uneven streets."
+    },
+    {
+      "speaker": "Guide",
+      "text": "Our first stop is the Japanese Covered Bridge. It was built several centuries ago, and it's one of the town's most recognisable landmarks. Please don't rush across it. The best photos are taken from the riverbank anyway."
+    },
+    {
+      "speaker": "Guide",
+      "text": "After that, we'll visit a lantern workshop. Many families here still make handmade lanterns, using bamboo and silk. You'll have about twenty minutes to try making one yourself."
+    },
+    {
+      "speaker": "Guide",
+      "text": "Finally, we'll walk along the old tailors' street. Many of the tailors can make a shirt in one day if you order in the morning, so if you're interested, you can ask them at the end."
+    },
+    {
+      "speaker": "Guide",
+      "text": "One more thing. The night market opens after sunset, so I suggest you come back after the tour ends. The lanterns there look lovely in the evening. Thank you, and let's begin!"
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 11-14",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Hoi An Ancient Town walking tour",
+        "Meeting point: outside the old {{11}} on Tran Phu Street",
+        "Tour length: {{12}} hours",
+        "Included in the price: {{13}}",
+        "Bring: a {{14}}"
+      ],
+      "questions": [
+        { "n": 11, "answer": "post office" },
+        { "n": 12, "answer": "two", "accept": ["2"] },
+        { "n": 13, "answer": "bottled water" },
+        { "n": 14, "answer": "sun hat", "accept": ["hat"] }
+      ]
+    },
+    {
+      "type": "mcq-one",
+      "title": "Questions 15-17",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 15,
+          "prompt": "Why does the tour start early in the morning?",
+          "answer": "A",
+          "options": [
+            { "key": "A", "text": "to avoid the afternoon heat" },
+            { "key": "B", "text": "to watch the lantern festival" },
+            { "key": "C", "text": "because most shops open late" }
+          ]
+        },
+        {
+          "n": 16,
+          "prompt": "What does the guide say about the tailors?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "They only make suits for men." },
+            { "key": "B", "text": "Many can make a shirt in one day." },
+            { "key": "C", "text": "They are more expensive than in Ho Chi Minh City." }
+          ]
+        },
+        {
+          "n": 17,
+          "prompt": "When should visitors go to the night market?",
+          "answer": "C",
+          "options": [
+            { "key": "A", "text": "in the morning" },
+            { "key": "B", "text": "before the tour starts" },
+            { "key": "C", "text": "after the tour ends" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "title": "Questions 18-20",
+      "instruction": "Match each place with what it is known for. Choose the correct letter, A-E, for Questions 18-20.",
+      "options": [
+        { "key": "A", "text": "tailoring and fabric shops" },
+        { "key": "B", "text": "a covered wooden bridge" },
+        { "key": "C", "text": "handmade lanterns" },
+        { "key": "D", "text": "a night market" },
+        { "key": "E", "text": "a riverside temple" }
+      ],
+      "questions": [
+        { "n": 18, "prompt": "The Japanese Covered Bridge", "answer": "B" },
+        { "n": 19, "prompt": "The lantern workshop", "answer": "C" },
+        { "n": 20, "prompt": "The old tailors' street", "answer": "A" }
+      ]
+    }
+  ]
+}

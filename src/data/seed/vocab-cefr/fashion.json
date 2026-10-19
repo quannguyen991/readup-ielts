@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "dress",
+    "pos": "noun",
+    "ipa": "/dres/",
+    "meaningVi": "váy, đầm",
+    "definitionEn": "A piece of clothing for women and girls, made of a top and skirt in one piece.",
+    "example": "She wore a blue dress to the wedding and looked wonderful.",
+    "collocation": "evening dress",
+    "cefr": "B1"
+  },
+  {
+    "word": "shirt",
+    "pos": "noun",
+    "ipa": "/ʃɜːt/",
+    "meaningVi": "áo sơ mi",
+    "definitionEn": "A garment with a collar, buttons and sleeves, worn on the upper body.",
+    "example": "He ironed a white shirt before the job interview this morning.",
+    "collocation": "cotton shirt",
+    "cefr": "B1"
+  },
+  {
+    "word": "shoes",
+    "pos": "noun",
+    "ipa": "/ʃuːz/",
+    "meaningVi": "giày",
+    "definitionEn": "Footwear that covers the foot, usually with a sole and a heel.",
+    "example": "My new shoes are comfortable, so I can walk all day.",
+    "collocation": "running shoes",
+    "cefr": "B1"
+  },
+  {
+    "word": "jacket",
+    "pos": "noun",
+    "ipa": "/ˈdʒækɪt/",
+    "meaningVi": "áo khoác",
+    "definitionEn": "A short coat with sleeves that is worn over other clothes.",
+    "example": "Bring a warm jacket because the evenings can be very cold.",
+    "collocation": "leather jacket",
+    "cefr": "B1"
+  },
+  {
+    "word": "skirt",
+    "pos": "noun",
+    "ipa": "/skɜːt/",
+    "meaningVi": "chân váy",
+    "definitionEn": "A piece of clothing that hangs from the waist and covers the legs.",
+    "example": "The pleated skirt swayed gently as she walked across the room.",
+    "collocation": "pleated skirt",
+    "cefr": "B1"
+  },
+  {
+    "word": "jeans",
+    "pos": "noun",
+    "ipa": "/dʒiːnz/",
+    "meaningVi": "quần jean",
+    "definitionEn": "Strong trousers made of denim, usually blue.",
+    "example": "Most students wear jeans and a simple t-shirt to class.",
+    "collocation": "denim jeans",
+    "cefr": "B1"
+  },
+  {
+    "word": "coat",
+    "pos": "noun",
+    "ipa": "/kəʊt/",
+    "meaningVi": "áo khoác dài",
+    "definitionEn": "A long outer garment with sleeves, worn for warmth over other clothes.",
+    "example": "She buttoned her long wool coat before stepping into the cold street.",
+    "collocation": "winter coat",
+    "cefr": "B1"
+  },
+  {
+    "word": "hat",
+    "pos": "noun",
+    "ipa": "/hæt/",
+    "meaningVi": "mũ",
+    "definitionEn": "A covering for the head, often worn for warmth, sun or ceremony.",
+    "example": "He pulled his woolly hat down over his ears against the icy wind.",
+    "collocation": "straw hat",
+    "cefr": "B1"
+  },
+  {
+    "word": "scarf",
+    "pos": "noun",
+    "ipa": "/skɑːf/",
+    "meaningVi": "khăn quàng",
+    "definitionEn": "A strip of fabric worn around the neck or head for warmth or decoration.",
+    "example": "A bright red scarf kept her neck warm during the winter walk.",
+    "collocation": "silk scarf",
+    "cefr": "B1"
+  },
+  {
+    "word": "belt",
+    "pos": "noun",
+    "ipa": "/belt/",
+    "meaningVi": "thắt lưng",
+    "definitionEn": "A strip of leather or cloth worn around the waist to hold clothes up.",
+    "example": "He fastened his leather belt and checked the buckle in the mirror.",
+    "collocation": "leather belt",
+    "cefr": "B1"
+  },
+  {
+    "word": "button",
+    "pos": "noun",
+    "ipa": "/ˈbʌtn/",
+    "meaningVi": "cúc áo",
+    "definitionEn": "A small round object used to fasten a garment through a small hole.",
+    "example": "A button came loose from her coat, so she sewed it back on.",
+    "collocation": "shirt button",
+    "cefr": "B1"
+  },
+  {
+    "word": "pocket",
+    "pos": "noun",
+    "ipa": "/ˈpɒkɪt/",
+    "meaningVi": "túi áo, túi quần",
+    "definitionEn": "A small bag sewn into clothing for carrying small items.",
+    "example": "He kept his phone in the front pocket of his jacket.",
+    "collocation": "back pocket",
+    "cefr": "B1"
+  },
+  {
+    "word": "sleeve",
+    "pos": "noun",
+    "ipa": "/sliːv/",
+    "meaningVi": "tay áo",
+    "definitionEn": "The part of a garment that covers the arm.",
+    "example": "The sleeves of her blouse were rolled up to her elbows.",
+    "collocation": "long sleeve",
+    "cefr": "B1"
+  },
+  {
+    "word": "colour",
+    "pos": "noun",
+    "ipa": "/ˈkʌlə/",
+    "meaningVi": "màu sắc",
+    "definitionEn": "The quality that makes objects appear red, blue, green or another hue.",
+    "example": "Her favourite colour is green, so she often wears emerald tops.",
+    "collocation": "bright colour",
+    "cefr": "B1"
+  },
+  {
+    "word": "pattern",
+    "pos": "noun",
+    "ipa": "/ˈpætn/",
+    "meaningVi": "họa tiết",
+    "definitionEn": "A repeated design or arrangement of shapes, lines or colours.",
+    "example": "The dress had a pattern of small white flowers on a navy background.",
+    "collocation": "floral pattern",
+    "cefr": "B1"
+  },
+  {
+    "word": "cotton",
+    "pos": "noun",
+    "ipa": "/ˈkɒtn/",
+    "meaningVi": "vải cotton",
+    "definitionEn": "A soft, light fabric made from the fibres of the cotton plant.",
+    "example": "Cotton shirts are cool and comfortable to wear in hot weather.",
+    "collocation": "pure cotton",
+    "cefr": "B1"
+  },
+  {
+    "word": "wool",
+    "pos": "noun",
+    "ipa": "/wʊl/",
+    "meaningVi": "len",
+    "definitionEn": "Soft, thick fibres from sheep, used to make warm clothing.",
+    "example": "Wool jumpers keep you warm in winter, even when they get damp.",
+    "collocation": "knitted wool",
+    "cefr": "B1"
+  },
+  {
+    "word": "hemline",
+    "pos": "noun",
+    "ipa": "/ˈhemlaɪn/",
+    "meaningVi": "đường viền gấu váy",
+    "definitionEn": "The lower edge of a skirt or dress, which often rises or falls with fashion.",
+    "example": "The designer raised the hemline of the dresses for the new season.",
+    "collocation": "short hemline",
+    "cefr": "B2"
+  },
+  {
+    "word": "lapel",
+    "pos": "noun",
+    "ipa": "/ləˈpel/",
+    "meaningVi": "ve áo",
+    "definitionEn": "The folded flap on the front of a jacket, next to the collar.",
+    "example": "He pinned a small red poppy to the lapel of his jacket.",
+    "collocation": "jacket lapel",
+    "cefr": "B2"
+  },
+  {
+    "word": "cuff",
+    "pos": "noun",
+    "ipa": "/kʌf/",
+    "meaningVi": "cổ tay áo, gấu tay áo",
+    "definitionEn": "The turned-back end of a sleeve, close to the wrist.",
+    "example": "Her shirt cuffs were embroidered with tiny blue stitches.",
+    "collocation": "shirt cuff",
+    "cefr": "B2"
+  },
+  {
+    "word": "hem",
+    "pos": "noun",
+    "ipa": "/hem/",
+    "meaningVi": "gấu, đường viền",
+    "definitionEn": "The bottom edge of a garment that has been folded and stitched.",
+    "example": "The tailor shortened the trousers and let down the hem by two centimetres.",
+    "collocation": "sew a hem",
+    "cefr": "B2"
+  },
+  {
+    "word": "stitch",
+    "pos": "noun",
+    "ipa": "/stɪtʃ/",
+    "meaningVi": "mũi khâu",
+    "definitionEn": "A single loop of thread made through fabric with a needle.",
+    "example": "Each neat stitch held the seam together so the dress would not tear.",
+    "collocation": "tiny stitch",
+    "cefr": "B2"
+  },
+  {
+    "word": "seam",
+    "pos": "noun",
+    "ipa": "/siːm/",
+    "meaningVi": "đường may",
+    "definitionEn": "The line where two pieces of fabric are joined together by sewing.",
+    "example": "The seam along the side of the skirt had split during the dance.",
+    "collocation": "split seam",
+    "cefr": "B2"
+  },
+  {
+    "word": "knit",
+    "pos": "verb",
+    "ipa": "/nɪt/",
+    "meaningVi": "đan len",
+    "definitionEn": "To make fabric or clothing by looping yarn together with needles.",
+    "example": "My grandmother loves to knit warm socks and scarves for the family.",
+    "collocation": "knit a jumper",
+    "cefr": "B2"
+  },
+  {
+    "word": "embroider",
+    "pos": "verb",
+    "ipa": "/ɪmˈbrɔɪdə/",
+    "meaningVi": "thêu",
+    "definitionEn": "To decorate fabric with a design sewn in coloured threads.",
+    "example": "She spent weeks embroidering flowers along the edge of the wedding veil.",
+    "collocation": "embroidered flowers",
+    "cefr": "B2"
+  },
+  {
+    "word": "denim",
+    "pos": "noun",
+    "ipa": "/ˈdenɪm/",
+    "meaningVi": "vải denim",
+    "definitionEn": "A sturdy cotton fabric, often blue, used for making jeans and jackets.",
+    "example": "Denim is hard-wearing, so it is popular for jackets and trousers.",
+    "collocation": "denim jacket",
+    "cefr": "B2"
+  },
+  {
+    "word": "suede",
+    "pos": "noun",
+    "ipa": "/sweɪd/",
+    "meaningVi": "da lộn",
+    "definitionEn": "Soft leather with a napped surface, used for shoes, jackets and bags.",
+    "example": "Suede boots look elegant, but they need careful cleaning after rain.",
+    "collocation": "suede jacket",
+    "cefr": "B2"
+  },
+  {
+    "word": "velvet",
+    "pos": "noun",
+    "ipa": "/ˈvelvɪt/",
+    "meaningVi": "nhung",
+    "definitionEn": "A soft fabric with a dense, velvety pile on one side.",
+    "example": "The evening gown was made of deep burgundy velvet that shimmered under the lights.",
+    "collocation": "crushed velvet",
+    "cefr": "B2"
+  },
+  {
+    "word": "layer",
+    "pos": "noun",
+    "ipa": "/ˈleɪə/",
+    "meaningVi": "lớp (quần áo)",
+    "definitionEn": "A single thickness of clothing worn over or under another item.",
+    "example": "Wearing several thin layers keeps you warmer than one heavy coat.",
+    "collocation": "thin layer",
+    "cefr": "B2"
+  },
+  {
+    "word": "tailor",
+    "pos": "verb",
+    "ipa": "/ˈteɪlə/",
+    "meaningVi": "may đo, sửa cho vừa người",
+    "definitionEn": "To make or adjust clothing so that it fits a particular person exactly.",
+    "example": "A skilled craftsman can tailor a suit to fit your body perfectly.",
+    "collocation": "tailor a suit",
+    "cefr": "B2"
+  },
+  {
+    "word": "fastener",
+    "pos": "noun",
+    "ipa": "/ˈfɑːsnə/",
+    "meaningVi": "khoá, cúc, móc gài",
+    "definitionEn": "A device such as a zip, clasp or button used to close a garment.",
+    "example": "The metal fastener on her handbag broke after years of heavy use.",
+    "collocation": "zip fastener",
+    "cefr": "B2"
+  },
+  {
+    "word": "haberdashery",
+    "pos": "noun",
+    "ipa": "/ˈhæbədæʃəri/",
+    "meaningVi": "đồ may vá, cửa hàng đồ may vá",
+    "definitionEn": "Small sewing items such as buttons, ribbons and thread, or the shop selling them.",
+    "example": "The old haberdashery sells ribbons, buttons and spools of thread in every colour.",
+    "collocation": "local haberdashery",
+    "cefr": "C1"
+  },
+  {
+    "word": "tulle",
+    "pos": "noun",
+    "ipa": "/tjuːl/",
+    "meaningVi": "vải voan tuyn",
+    "definitionEn": "A fine, net-like fabric often used for veils and ballet skirts.",
+    "example": "Layers of pale tulle billowed beneath the bride's delicate silk gown.",
+    "collocation": "soft tulle",
+    "cefr": "C1"
+  },
+  {
+    "word": "organza",
+    "pos": "noun",
+    "ipa": "/ɔːˈɡænzə/",
+    "meaningVi": "vải organza",
+    "definitionEn": "A crisp, sheer fabric of silk or synthetic fibres, often used for formal dresses.",
+    "example": "The sheer organza sleeves caught the light as she moved across the stage.",
+    "collocation": "silk organza",
+    "cefr": "C1"
+  },
+  {
+    "word": "chiffon",
+    "pos": "noun",
+    "ipa": "/ˈʃɪfɒn/",
+    "meaningVi": "vải chiffon",
+    "definitionEn": "A light, sheer, slightly crinkled fabric used for flowing blouses and gowns.",
+    "example": "The chiffon scarf floated behind her in the breeze as she walked.",
+    "collocation": "chiffon blouse",
+    "cefr": "C1"
+  },
+  {
+    "word": "brocade",
+    "pos": "noun",
+    "ipa": "/brəˈkeɪd/",
+    "meaningVi": "gấm thêu nổi",
+    "definitionEn": "A rich fabric woven with raised patterns, often in gold or silver threads.",
+    "example": "The emperor's robe was woven from heavy gold brocade shimmering with dragons.",
+    "collocation": "gold brocade",
+    "cefr": "C1"
+  },
+  {
+    "word": "jacquard",
+    "pos": "noun",
+    "ipa": "/ˈdʒækɑːd/",
+    "meaningVi": "vải dệt hoa văn jacquard",
+    "definitionEn": "A fabric woven on a special loom to create intricate, patterned designs.",
+    "example": "The jacquard upholstery features an intricate floral design woven into the fabric.",
+    "collocation": "jacquard weave",
+    "cefr": "C1"
+  },
+  {
+    "word": "gingham",
+    "pos": "noun",
+    "ipa": "/ˈɡɪŋəm/",
+    "meaningVi": "vải caro",
+    "definitionEn": "A lightweight cotton fabric woven in checks or stripes, often blue and white.",
+    "example": "She wore a gingham dress with a white collar on the summer picnic.",
+    "collocation": "blue gingham",
+    "cefr": "C1"
+  },
+  {
+    "word": "corduroy",
+    "pos": "noun",
+    "ipa": "/ˈkɔːdərɔɪ/",
+    "meaningVi": "vải nhung kẻ",
+    "definitionEn": "A cotton fabric with raised parallel ridges, commonly used for trousers and jackets.",
+    "example": "Corduroy trousers are warm and hard-wearing for the autumn season.",
+    "collocation": "corduroy trousers",
+    "cefr": "C1"
+  },
+  {
+    "word": "cashmere",
+    "pos": "noun",
+    "ipa": "/ˈkæʃmɪə/",
+    "meaningVi": "len cashmere",
+    "definitionEn": "A very fine, soft wool from goats, prized for its warmth and lightness.",
+    "example": "The cashmere jumper felt impossibly soft against his skin on the cold morning.",
+    "collocation": "pure cashmere",
+    "cefr": "C1"
+  },
+  {
+    "word": "linen",
+    "pos": "noun",
+    "ipa": "/ˈlɪnɪn/",
+    "meaningVi": "vải lanh",
+    "definitionEn": "A cool, crisp fabric made from the fibres of the flax plant.",
+    "example": "Linen shirts wrinkle easily, but they feel cool and breathable in summer.",
+    "collocation": "crisp linen",
+    "cefr": "C1"
+  },
+  {
+    "word": "lamé",
+    "pos": "noun",
+    "ipa": "/ˈlɑːmeɪ/",
+    "meaningVi": "vải kim tuyến",
+    "definitionEn": "A fabric woven with metallic threads that give a shimmering, reflective surface.",
+    "example": "She chose a gold lamé jacket that glittered brilliantly under the stage lights.",
+    "collocation": "gold lamé",
+    "cefr": "C1"
+  },
+  {
+    "word": "tweed",
+    "pos": "noun",
+    "ipa": "/twiːd/",
+    "meaningVi": "vải tweed",
+    "definitionEn": "A rough woollen cloth, often patterned, traditionally used for outdoor clothing.",
+    "example": "His tweed jacket with leather elbow patches looked perfect for the countryside walk.",
+    "collocation": "tweed jacket",
+    "cefr": "C1"
+  },
+  {
+    "word": "seersucker",
+    "pos": "noun",
+    "ipa": "/ˈsɪəsʌkə/",
+    "meaningVi": "vải seersucker sọc nổi",
+    "definitionEn": "A lightweight cotton fabric with a puckered, striped texture that stays cool.",
+    "example": "A seersucker suit kept him cool throughout the sweltering summer wedding.",
+    "collocation": "seersucker suit",
+    "cefr": "C1"
+  },
+  {
+    "word": "taffeta",
+    "pos": "noun",
+    "ipa": "/ˈtæfɪtə/",
+    "meaningVi": "vải taffeta",
+    "definitionEn": "A crisp, glossy fabric with a rustling sound, often used in formal gowns.",
+    "example": "The taffeta ball gown rustled with every graceful step across the marble floor.",
+    "collocation": "rustling taffeta",
+    "cefr": "C1"
+  },
+  {
+    "word": "satin",
+    "pos": "noun",
+    "ipa": "/ˈsætɪn/",
+    "meaningVi": "lụa satin",
+    "definitionEn": "A smooth, glossy fabric with a shiny front and a dull back.",
+    "example": "The bridesmaids wore satin dresses in a soft shade of champagne.",
+    "collocation": "satin finish",
+    "cefr": "C1"
+  },
+  {
+    "word": "ruching",
+    "pos": "noun",
+    "ipa": "/ˈruːʃɪŋ/",
+    "meaningVi": "dải xếp nếp trang trí",
+    "definitionEn": "A decorative band of gathered fabric used to trim a garment.",
+    "example": "Ruching along the bodice gives the gown a flattering, sculpted shape.",
+    "collocation": "side ruching",
+    "cefr": "C1"
+  },
+  {
+    "word": "pleat",
+    "pos": "noun",
+    "ipa": "/pliːt/",
+    "meaningVi": "nếp xếp",
+    "definitionEn": "A fold pressed or stitched into fabric to create a neat, regular line.",
+    "example": "Sharp pleats ran down the front of the navy trousers, crisp from the iron.",
+    "collocation": "knife pleats",
+    "cefr": "C1"
+  },
+  {
+    "word": "gusset",
+    "pos": "noun",
+    "ipa": "/ˈɡʌsɪt/",
+    "meaningVi": "miếng vải đệm ghép",
+    "definitionEn": "A small piece of fabric inserted into a garment for reinforcement or better fit.",
+    "example": "A small gusset under the arm allowed the shirt to move comfortably.",
+    "collocation": "underarm gusset",
+    "cefr": "C1"
+  },
+  {
+    "word": "bodice",
+    "pos": "noun",
+    "ipa": "/ˈbɒdɪs/",
+    "meaningVi": "phần thân áo váy",
+    "definitionEn": "The upper part of a dress that covers the torso from shoulders to waist.",
+    "example": "The embroidered bodice fitted snugly before the skirt flared out below the waist.",
+    "collocation": "lace bodice",
+    "cefr": "C1"
+  },
+  {
+    "word": "bustle",
+    "pos": "noun",
+    "ipa": "/ˈbʌsl/",
+    "meaningVi": "độ phồng sau váy",
+    "definitionEn": "A padded frame worn under a skirt to add fullness at the back of a dress.",
+    "example": "The Victorian gown had a dramatic bustle that trailed behind it on the floor.",
+    "collocation": "Victorian bustle",
+    "cefr": "C1"
+  },
+  {
+    "word": "corsage",
+    "pos": "noun",
+    "ipa": "/ˈkɔːsɑːʒ/",
+    "meaningVi": "hoa cài áo",
+    "definitionEn": "A small bouquet of flowers worn pinned to a dress or jacket.",
+    "example": "He presented her with a corsage of white roses before the dance.",
+    "collocation": "wrist corsage",
+    "cefr": "C1"
+  },
+  {
+    "word": "cravat",
+    "pos": "noun",
+    "ipa": "/krəˈvæt/",
+    "meaningVi": "khăn cổ (cravat)",
+    "definitionEn": "A decorative neckcloth worn by men, tied at the throat under a shirt collar.",
+    "example": "The Victorian gentleman wore a silk cravat knotted neatly beneath his high collar.",
+    "collocation": "silk cravat",
+    "cefr": "C1"
+  },
+  {
+    "word": "cummerbund",
+    "pos": "noun",
+    "ipa": "/ˈkʌməbʌnd/",
+    "meaningVi": "đai lưng vải lễ phục",
+    "definitionEn": "A wide fabric sash worn around the waist, typically with formal evening wear.",
+    "example": "His black tuxedo was finished with a crimson cummerbund at the waist.",
+    "collocation": "satin cummerbund",
+    "cefr": "C1"
+  },
+  {
+    "word": "fedora",
+    "pos": "noun",
+    "ipa": "/fɪˈdɔːrə/",
+    "meaningVi": "mũ fedora",
+    "definitionEn": "A soft felt hat with a brim and a creased crown, worn by men and women.",
+    "example": "He tipped his grey fedora to the ladies as he passed the cafe.",
+    "collocation": "felt fedora",
+    "cefr": "C1"
+  },
+  {
+    "word": "beret",
+    "pos": "noun",
+    "ipa": "/ˈbereɪ/",
+    "meaningVi": "mũ nồi beret",
+    "definitionEn": "A soft, round, flat cap made of wool or felt.",
+    "example": "She tilted a black beret over her curls as she stepped onto the Paris street.",
+    "collocation": "wool beret",
+    "cefr": "C1"
+  },
+  {
+    "word": "fascinator",
+    "pos": "noun",
+    "ipa": "/ˈfæsɪneɪtə/",
+    "meaningVi": "trâm cài đầu dự tiệc",
+    "definitionEn": "A decorative headpiece of feathers or flowers, worn at formal events and weddings.",
+    "example": "Her fascinator of silk feathers matched the emerald trim of her dress perfectly.",
+    "collocation": "feather fascinator",
+    "cefr": "C1"
+  },
+  {
+    "word": "espadrille",
+    "pos": "noun",
+    "ipa": "/ˈespədrɪl/",
+    "meaningVi": "giày vải đế cói",
+    "definitionEn": "A casual shoe with a canvas upper and a flat sole made of woven rope.",
+    "example": "She wore white espadrilles with ribbon ties on the beach promenade.",
+    "collocation": "canvas espadrilles",
+    "cefr": "C1"
+  },
+  {
+    "word": "loafer",
+    "pos": "noun",
+    "ipa": "/ˈləʊfə/",
+    "meaningVi": "giày lười loafer",
+    "definitionEn": "A slip-on shoe with a low heel and no laces, typically made of leather.",
+    "example": "Brown leather loafers are a comfortable choice for smart, relaxed days at work.",
+    "collocation": "leather loafers",
+    "cefr": "C1"
+  },
+  {
+    "word": "stiletto",
+    "pos": "noun",
+    "ipa": "/stɪˈletəʊ/",
+    "meaningVi": "giày gót nhọn",
+    "definitionEn": "A woman's shoe with a very thin, high heel.",
+    "example": "She clicked across the marble lobby in black stiletto heels.",
+    "collocation": "stiletto heels",
+    "cefr": "C1"
+  },
+  {
+    "word": "brogue",
+    "pos": "noun",
+    "ipa": "/brəʊɡ/",
+    "meaningVi": "giày brogue đục lỗ",
+    "definitionEn": "A sturdy leather shoe decorated with perforations and a wingtip pattern.",
+    "example": "His polished tan brogues had a neat pattern of perforated holes across the toe.",
+    "collocation": "tan brogue",
+    "cefr": "C1"
+  },
+  {
+    "word": "hosiery",
+    "pos": "noun",
+    "ipa": "/ˈhəʊziəri/",
+    "meaningVi": "hàng dệt kim (tất, vớ)",
+    "definitionEn": "Knitted goods such as stockings, tights and socks.",
+    "example": "The shop displays a wide range of hosiery, from thick woollen socks to sheer tights.",
+    "collocation": "fine hosiery",
+    "cefr": "C1"
+  },
+  {
+    "word": "lingerie",
+    "pos": "noun",
+    "ipa": "/ˈlɒnʒəreɪ/",
+    "meaningVi": "đồ lót nữ",
+    "definitionEn": "Women's underwear and nightwear, often delicate and decorative.",
+    "example": "Her lingerie drawer was filled with silk slips and lace-trimmed camisoles.",
+    "collocation": "silk lingerie",
+    "cefr": "C1"
+  },
+  {
+    "word": "monogram",
+    "pos": "noun",
+    "ipa": "/ˈmɒnəɡræm/",
+    "meaningVi": "chữ lồng ghép (monogram)",
+    "definitionEn": "A design of interlocking letters, usually initials, printed or stitched on items.",
+    "example": "Her initials were stitched in gold monogram across the handbag's flap.",
+    "collocation": "gold monogram",
+    "cefr": "C1"
+  },
+  {
+    "word": "appliqué",
+    "pos": "noun",
+    "ipa": "/əˈplikeɪ/",
+    "meaningVi": "vải đắp (appliqué)",
+    "definitionEn": "Decorative pieces of fabric stitched or fused onto a larger piece to form a pattern.",
+    "example": "The skirt bore a bold appliqué of blossoms cut from contrasting silk.",
+    "collocation": "floral appliqué",
+    "cefr": "C1"
+  },
+  {
+    "word": "sequin",
+    "pos": "noun",
+    "ipa": "/ˈsiːkwɪn/",
+    "meaningVi": "hạt kim sa",
+    "definitionEn": "A small, shiny disc sewn onto clothing to create a glittering effect.",
+    "example": "Thousands of tiny sequins shimmered across the dancer's costume under the spotlight.",
+    "collocation": "sequin dress",
+    "cefr": "C1"
+  },
+  {
+    "word": "couturier",
+    "pos": "noun",
+    "ipa": "/kuːˈtjʊərieɪ/",
+    "meaningVi": "nhà thiết kế thời trang cao cấp",
+    "definitionEn": "A designer who creates high-end, custom-made clothing for clients.",
+    "example": "The celebrated couturier presented her latest collection in a grand Paris salon.",
+    "collocation": "celebrated couturier",
+    "cefr": "C1"
+  },
+  {
+    "word": "sartorial",
+    "pos": "adjective",
+    "ipa": "/sɑːˈtɔːriəl/",
+    "meaningVi": "thuộc may đo, phong cách trang phục",
+    "definitionEn": "Relating to tailoring, clothing or the style of a person's dress.",
+    "example": "His sartorial taste was flawless, from his cufflinks to his handmade shoes.",
+    "collocation": "sartorial elegance",
+    "cefr": "C1"
+  },
+  {
+    "word": "raiment",
+    "pos": "noun",
+    "ipa": "/ˈreɪmənt/",
+    "meaningVi": "y phục (văn chương)",
+    "definitionEn": "An old-fashioned or literary word for clothing or garments.",
+    "example": "The king appeared in shimmering raiment of gold and purple thread.",
+    "collocation": "royal raiment",
+    "cefr": "C1"
+  },
+  {
+    "word": "habiliment",
+    "pos": "noun",
+    "ipa": "/həˈbɪlɪmənt/",
+    "meaningVi": "trang phục nghi thức",
+    "definitionEn": "Clothing, especially formal or distinctive garments worn for a particular occasion.",
+    "example": "The judges donned their traditional habiliments before entering the courtroom.",
+    "collocation": "ceremonial habiliments",
+    "cefr": "C1"
+  },
+  {
+    "word": "epaulette",
+    "pos": "noun",
+    "ipa": "/ˈepəlet/",
+    "meaningVi": "cầu vai quân phục",
+    "definitionEn": "A shoulder ornament on a uniform or formal jacket, often with fringed decoration.",
+    "example": "Gold epaulettes marked the rank of the colonel on his dress uniform.",
+    "collocation": "gold epaulettes",
+    "cefr": "C1"
+  },
+  {
+    "word": "frock",
+    "pos": "noun",
+    "ipa": "/frɒk/",
+    "meaningVi": "váy, áo đầm (cổ điển)",
+    "definitionEn": "A dress, especially a simple or old-fashioned one worn by a girl or woman.",
+    "example": "She wore a pale frock that swished around her ankles in the garden.",
+    "collocation": "cotton frock",
+    "cefr": "C1"
+  },
+  {
+    "word": "pashmina",
+    "pos": "noun",
+    "ipa": "/ˈpæʃmɪnə/",
+    "meaningVi": "khăn len pashmina",
+    "definitionEn": "A fine shawl made from the soft wool of Himalayan goats or cashmere.",
+    "example": "She wrapped a cream pashmina around her shoulders against the evening chill.",
+    "collocation": "silk pashmina",
+    "cefr": "C1"
+  },
+  {
+    "word": "sprezzatura",
+    "pos": "noun",
+    "ipa": "/ˌspretsəˈtʊərə/",
+    "meaningVi": "vẻ thanh lịch cố ý mà như không",
+    "definitionEn": "A studied carelessness that makes elaborate effort look effortless, especially in dress.",
+    "example": "His sprezzatura lay in a rumpled linen jacket worn with effortless, deliberate ease.",
+    "collocation": "effortless sprezzatura",
+    "cefr": "C2"
+  },
+  {
+    "word": "dandy",
+    "pos": "noun",
+    "ipa": "/ˈdændi/",
+    "meaningVi": "công tử ăn mặc bảnh bao",
+    "definitionEn": "A man who gives excessive attention to his clothing and personal appearance.",
+    "example": "The nineteenth-century dandy spent hours choosing his waistcoats and cravats.",
+    "collocation": "Regency dandy",
+    "cefr": "C2"
+  },
+  {
+    "word": "mannequin",
+    "pos": "noun",
+    "ipa": "/ˈmænɪkɪn/",
+    "meaningVi": "ma-nơ-canh",
+    "definitionEn": "A model of a human body used to display clothes, or a fashion model.",
+    "example": "The mannequin in the window wore a glittering evening gown of midnight silk.",
+    "collocation": "shop mannequin",
+    "cefr": "C2"
+  },
+  {
+    "word": "haberdasher",
+    "pos": "noun",
+    "ipa": "/ˈhæbədæʃə/",
+    "meaningVi": "người bán đồ nam và đồ may vá",
+    "definitionEn": "A person who sells men's clothing and accessories, or small sewing goods.",
+    "example": "My grandfather bought his ties from the same haberdasher for forty years.",
+    "collocation": "old haberdasher",
+    "cefr": "C2"
+  },
+  {
+    "word": "millinery",
+    "pos": "noun",
+    "ipa": "/ˈmɪlɪnəri/",
+    "meaningVi": "nghề làm mũ nữ",
+    "definitionEn": "The trade of designing, making or selling women's hats.",
+    "example": "Her millinery studio creates elaborate hats for weddings and race days.",
+    "collocation": "fine millinery",
+    "cefr": "C2"
+  },
+  {
+    "word": "modiste",
+    "pos": "noun",
+    "ipa": "/məʊˈdiːst/",
+    "meaningVi": "thợ may thời trang nữ",
+    "definitionEn": "A woman who designs, makes or sells fashionable dresses and hats.",
+    "example": "The Parisian modiste stitched each gown by hand over several weeks.",
+    "collocation": "Parisian modiste",
+    "cefr": "C2"
+  },
+  {
+    "word": "vestment",
+    "pos": "noun",
+    "ipa": "/ˈvestmənt/",
+    "meaningVi": "lễ phục, áo lễ",
+    "definitionEn": "A formal robe worn by clergy or officials during ceremonies.",
+    "example": "The priest donned an embroidered gold vestment before the procession began.",
+    "collocation": "liturgical vestment",
+    "cefr": "C2"
+  },
+  {
+    "word": "regalia",
+    "pos": "noun",
+    "ipa": "/rɪˈɡeɪliə/",
+    "meaningVi": "trang phục nghi lễ, huy hiệu",
+    "definitionEn": "The ceremonial clothing and insignia worn by people of high office or rank.",
+    "example": "The monarch's regalia, including a jewelled crown and ermine robe, gleamed in the hall.",
+    "collocation": "royal regalia",
+    "cefr": "C2"
+  },
+  {
+    "word": "damask",
+    "pos": "noun",
+    "ipa": "/ˈdæməsk/",
+    "meaningVi": "gấm damask",
+    "definitionEn": "A richly patterned fabric woven so the design shows on both sides.",
+    "example": "The dining chairs were upholstered in cream damask with a subtle floral pattern.",
+    "collocation": "silk damask",
+    "cefr": "C2"
+  },
+  {
+    "word": "moiré",
+    "pos": "noun",
+    "ipa": "/ˈmwɑːreɪ/",
+    "meaningVi": "lụa vân sóng moiré",
+    "definitionEn": "A fabric with a wavy, watered pattern that shimmers when light falls on it.",
+    "example": "The moiré taffeta shimmered with rippling silver patterns as she turned.",
+    "collocation": "moiré finish",
+    "cefr": "C2"
+  },
+  {
+    "word": "muslin",
+    "pos": "noun",
+    "ipa": "/ˈmʌzlɪn/",
+    "meaningVi": "vải muslin",
+    "definitionEn": "A fine, plain-woven cotton fabric, often used for test garments or light summer wear.",
+    "example": "She cut a muslin toile first to test the fit before cutting the expensive silk.",
+    "collocation": "cotton muslin",
+    "cefr": "C2"
+  },
+  {
+    "word": "toile",
+    "pos": "noun",
+    "ipa": "/twɑːl/",
+    "meaningVi": "bản mẫu thử may",
+    "definitionEn": "A preliminary version of a garment made in cheap fabric to test its fit and design.",
+    "example": "The designer fitted the toile on the model before cutting the final gown.",
+    "collocation": "fitting toile",
+    "cefr": "C2"
+  },
+  {
+    "word": "crepe",
+    "pos": "noun",
+    "ipa": "/kreɪp/",
+    "meaningVi": "vải crepe",
+    "definitionEn": "A fabric with a crinkled surface, woven from tightly twisted yarns.",
+    "example": "The mourning dress was made of black crepe that hung in soft, crinkled folds.",
+    "collocation": "black crepe",
+    "cefr": "C2"
+  },
+  {
+    "word": "gossamer",
+    "pos": "noun",
+    "ipa": "/ˈɡɒsəmə/",
+    "meaningVi": "vải mỏng như tơ nhện",
+    "definitionEn": "A very light, fine, filmy fabric, delicate as cobweb.",
+    "example": "A gossamer veil floated over her face, almost invisible in the sunlight.",
+    "collocation": "gossamer veil",
+    "cefr": "C2"
+  },
+  {
+    "word": "brocatelle",
+    "pos": "noun",
+    "ipa": "/ˌbrɒkəˈtel/",
+    "meaningVi": "gấm brocatelle",
+    "definitionEn": "A heavier, silk-like fabric resembling brocade, with a raised pattern.",
+    "example": "Brocatelle curtains framed the windows with heavy, shimmering folds of gold.",
+    "collocation": "gold brocatelle",
+    "cefr": "C2"
+  },
+  {
+    "word": "grosgrain",
+    "pos": "noun",
+    "ipa": "/ˈɡrəʊɡreɪn/",
+    "meaningVi": "ruy băng grosgrain",
+    "definitionEn": "A stiff ribbed fabric with a fine horizontal texture, used for ribbons and bows.",
+    "example": "A navy grosgrain ribbon tied the box and framed the neat little bow.",
+    "collocation": "grosgrain ribbon",
+    "cefr": "C2"
+  },
+  {
+    "word": "bombazine",
+    "pos": "noun",
+    "ipa": "/ˈbɒmbəziːn/",
+    "meaningVi": "vải bombazin tang",
+    "definitionEn": "A twilled fabric of silk and wool, traditionally worn for mourning.",
+    "example": "The widow wore black bombazine for a full year after her husband's death.",
+    "collocation": "black bombazine",
+    "cefr": "C2"
+  },
+  {
+    "word": "vicuña",
+    "pos": "noun",
+    "ipa": "/vɪˈkuːnjə/",
+    "meaningVi": "len vicuña",
+    "definitionEn": "A rare, extremely fine wool from a wild South American relative of the llama.",
+    "example": "A vicuña coat is prized for its softness and is among the most expensive wools.",
+    "collocation": "vicuña wool",
+    "cefr": "C2"
+  },
+  {
+    "word": "mohair",
+    "pos": "noun",
+    "ipa": "/ˈməʊheə/",
+    "meaningVi": "len mohair",
+    "definitionEn": "Soft, lustrous hair from angora goats, used for knitted and woven fabrics.",
+    "example": "The mohair cardigan felt light and fluffy, with a delicate silvery sheen.",
+    "collocation": "mohair jumper",
+    "cefr": "C2"
+  },
+  {
+    "word": "angora",
+    "pos": "noun",
+    "ipa": "/æŋˈɡɔːrə/",
+    "meaningVi": "len angora",
+    "definitionEn": "Soft, fluffy wool from angora rabbits or goats, valued for its warmth.",
+    "example": "A pale angora sweater kept her snug through the long, frosty winter mornings.",
+    "collocation": "angora sweater",
+    "cefr": "C2"
+  },
+  {
+    "word": "alpaca",
+    "pos": "noun",
+    "ipa": "/ælˈpækə/",
+    "meaningVi": "len alpaca",
+    "definitionEn": "A soft, warm wool from the alpaca, a relative of the llama from the Andes.",
+    "example": "The alpaca scarf was softer than any wool she had felt before.",
+    "collocation": "alpaca wool",
+    "cefr": "C2"
+  },
+  {
+    "word": "chenille",
+    "pos": "noun",
+    "ipa": "/ʃəˈniːl/",
+    "meaningVi": "vải chenille mềm",
+    "definitionEn": "A soft, velvety yarn or fabric with a fuzzy pile, used for blankets and sweaters.",
+    "example": "A chenille throw softened the old sofa with its plush, velvety texture.",
+    "collocation": "chenille throw",
+    "cefr": "C2"
+  },
+  {
+    "word": "ticking",
+    "pos": "noun",
+    "ipa": "/ˈtɪkɪŋ/",
+    "meaningVi": "vải sọc bọc đệm",
+    "definitionEn": "A strong, closely woven striped cotton fabric used for mattress covers and workwear.",
+    "example": "The mattress was covered in blue-and-white ticking that had faded over the years.",
+    "collocation": "striped ticking",
+    "cefr": "C2"
+  },
+  {
+    "word": "jodhpurs",
+    "pos": "noun",
+    "ipa": "/ˈdʒɒdpəz/",
+    "meaningVi": "quần cưỡi ngựa jodhpurs",
+    "definitionEn": "Close-fitting riding trousers that reach the ankle, with a reinforced seat and inner legs.",
+    "example": "She pulled on her jodhpurs and polished her boots before the morning ride.",
+    "collocation": "riding jodhpurs",
+    "cefr": "C2"
+  },
+  {
+    "word": "culottes",
+    "pos": "noun",
+    "ipa": "/kjuːˈlɒts/",
+    "meaningVi": "quần ống rộng culottes",
+    "definitionEn": "Wide-legged trousers cut to resemble a skirt when worn.",
+    "example": "Her linen culottes flowed gracefully around her ankles as she strolled.",
+    "collocation": "wide culottes",
+    "cefr": "C2"
+  },
+  {
+    "word": "jabot",
+    "pos": "noun",
+    "ipa": "/ˈʒæbəʊ/",
+    "meaningVi": "diềm ren trước áo",
+    "definitionEn": "A frilled or pleated ornamental piece worn at the front of a shirt or blouse.",
+    "example": "A white lace jabot cascaded down the front of his velvet waistcoat.",
+    "collocation": "lace jabot",
+    "cefr": "C2"
+  },
+  {
+    "word": "frogging",
+    "pos": "noun",
+    "ipa": "/ˈfrɒɡɪŋ/",
+    "meaningVi": "dây bện cài áo kiểu quân phục",
+    "definitionEn": "Decorative braided cord loops and buttons fastening military-style or ornate jackets.",
+    "example": "Frogging of gold braid decorated the front of his military-style jacket.",
+    "collocation": "braided frogging",
+    "cefr": "C2"
+  },
+  {
+    "word": "peplum",
+    "pos": "noun",
+    "ipa": "/ˈpeplʌm/",
+    "meaningVi": "phần xoè dưới eo áo",
+    "definitionEn": "A short flared section attached at the waist of a jacket or top.",
+    "example": "The peplum at the waist flares gently over her hips, creating a flattering shape.",
+    "collocation": "peplum jacket",
+    "cefr": "C2"
+  },
+  {
+    "word": "gilet",
+    "pos": "noun",
+    "ipa": "/ˈʒɪleɪ/",
+    "meaningVi": "áo gi-lê không tay",
+    "definitionEn": "A sleeveless padded or knitted waistcoat, worn over a shirt or jumper.",
+    "example": "He layered a navy gilet over his shirt for the chilly walk along the harbour.",
+    "collocation": "padded gilet",
+    "cefr": "C2"
+  },
+  {
+    "word": "pinafore",
+    "pos": "noun",
+    "ipa": "/ˈpɪnəfɔː/",
+    "meaningVi": "yếm váy, tạp dề dài",
+    "definitionEn": "A sleeveless garment worn over a dress as an apron or as a child's dress.",
+    "example": "The little girl wore a striped pinafore over her white cotton blouse.",
+    "collocation": "gingham pinafore",
+    "cefr": "C2"
+  },
+  {
+    "word": "kirtle",
+    "pos": "noun",
+    "ipa": "/ˈkɜːtl/",
+    "meaningVi": "áo váy thời trung cổ",
+    "definitionEn": "A tunic or gown worn by women in medieval times, often with a laced front.",
+    "example": "Her laced kirtle was made of crimson wool with embroidered sleeves.",
+    "collocation": "medieval kirtle",
+    "cefr": "C2"
+  },
+  {
+    "word": "doublet",
+    "pos": "noun",
+    "ipa": "/ˈdʌblɪt/",
+    "meaningVi": "áo đôi thời Phục Hưng",
+    "definitionEn": "A close-fitting jacket worn by men in the sixteenth and seventeenth centuries.",
+    "example": "The actor's velvet doublet and ruff recreated the Elizabethan court's fashions perfectly.",
+    "collocation": "velvet doublet",
+    "cefr": "C2"
+  },
+  {
+    "word": "surcoat",
+    "pos": "noun",
+    "ipa": "/ˈsɜːkəʊt/",
+    "meaningVi": "áo choàng ngoài thời trung cổ",
+    "definitionEn": "A loose outer garment worn over armour, often bearing a heraldic emblem.",
+    "example": "The knight pulled his embroidered surcoat over his chainmail before the tournament.",
+    "collocation": "embroidered surcoat",
+    "cefr": "C2"
+  },
+  {
+    "word": "chasuble",
+    "pos": "noun",
+    "ipa": "/ˈtʃæzjʊbl/",
+    "meaningVi": "áo lễ không tay",
+    "definitionEn": "A sleeveless outer vestment worn by a priest during Mass.",
+    "example": "The priest's chasuble glittered with gold thread as he raised the chalice.",
+    "collocation": "gold chasuble",
+    "cefr": "C2"
+  },
+  {
+    "word": "cassock",
+    "pos": "noun",
+    "ipa": "/ˈkæsək/",
+    "meaningVi": "áo thụng của giáo sĩ",
+    "definitionEn": "A long, close-fitting robe, usually black, worn by clergy and choristers.",
+    "example": "The choirboys processed down the aisle in red cassocks and white surplices.",
+    "collocation": "black cassock",
+    "cefr": "C2"
+  },
+  {
+    "word": "caftan",
+    "pos": "noun",
+    "ipa": "/ˈkæftæn/",
+    "meaningVi": "áo caftan",
+    "definitionEn": "A long, loose robe with wide sleeves, originating in the Middle East.",
+    "example": "She wore an embroidered silk caftan that fluttered loosely around her ankles.",
+    "collocation": "silk caftan",
+    "cefr": "C2"
+  },
+  {
+    "word": "obi",
+    "pos": "noun",
+    "ipa": "/ˈəʊbi/",
+    "meaningVi": "đai lưng kimono",
+    "definitionEn": "A broad sash tied around the waist of a Japanese kimono.",
+    "example": "The silk obi was knotted neatly at the back of the traditional kimono.",
+    "collocation": "silk obi",
+    "cefr": "C2"
+  },
+  {
+    "word": "hanbok",
+    "pos": "noun",
+    "ipa": "/ˈhænbɒk/",
+    "meaningVi": "hanbok, trang phục Hàn Quốc",
+    "definitionEn": "The traditional Korean dress with a high-waisted skirt and short, brightly coloured jacket.",
+    "example": "Children wore brightly coloured hanbok during the lunar new year celebration.",
+    "collocation": "silk hanbok",
+    "cefr": "C2"
+  },
+  {
+    "word": "ao dai",
+    "pos": "noun",
+    "ipa": "/ˌaʊ ˈdaɪ/",
+    "meaningVi": "áo dài Việt Nam",
+    "definitionEn": "The traditional Vietnamese long tunic worn over trousers, fitted closely to the body.",
+    "example": "She wore a white ao dai to the graduation ceremony and looked radiant.",
+    "collocation": "white ao dai",
+    "cefr": "C2"
+  },
+  {
+    "word": "sari",
+    "pos": "noun",
+    "ipa": "/ˈsɑːri/",
+    "meaningVi": "sari, trang phục Nam Á",
+    "definitionEn": "A long piece of coloured cloth wrapped around the body, traditionally worn by South Asian women.",
+    "example": "She draped a crimson sari over her shoulder for the festival celebration.",
+    "collocation": "silk sari",
+    "cefr": "C2"
+  },
+  {
+    "word": "cheongsam",
+    "pos": "noun",
+    "ipa": "/ˌtʃɒŋˈsæm/",
+    "meaningVi": "sườn xám",
+    "definitionEn": "A close-fitting dress with a high collar and side slit, traditionally worn in China.",
+    "example": "The silk cheongsam fitted her figure beautifully, with a high collar and embroidered flowers.",
+    "collocation": "embroidered cheongsam",
+    "cefr": "C2"
+  },
+  {
+    "word": "kente",
+    "pos": "noun",
+    "ipa": "/ˈkenteɪ/",
+    "meaningVi": "vải kente Ghana",
+    "definitionEn": "A brightly coloured, hand-woven cloth from Ghana, made in strips and stitched together.",
+    "example": "The kente cloth draped across his shoulders was woven in vivid gold, red and green.",
+    "collocation": "woven kente",
+    "cefr": "C2"
+  },
+  {
+    "word": "dashiki",
+    "pos": "noun",
+    "ipa": "/dəˈʃiːki/",
+    "meaningVi": "áo dashiki Tây Phi",
+    "definitionEn": "A loose, colourful tunic originating in West Africa, often with an embroidered neckline.",
+    "example": "He wore a vibrant dashiki with embroidered patterns at a cultural festival.",
+    "collocation": "embroidered dashiki",
+    "cefr": "C2"
+  },
+  {
+    "word": "kilt",
+    "pos": "noun",
+    "ipa": "/kɪlt/",
+    "meaningVi": "váy kilt Scotland",
+    "definitionEn": "A pleated tartan skirt-like garment traditionally worn by Scottish men.",
+    "example": "He wore a tartan kilt and sporran at the Highland games.",
+    "collocation": "tartan kilt",
+    "cefr": "C2"
+  },
+  {
+    "word": "sarong",
+    "pos": "noun",
+    "ipa": "/səˈrɒŋ/",
+    "meaningVi": "xà rông",
+    "definitionEn": "A length of cloth wrapped around the waist, worn in Southeast Asia and the Pacific.",
+    "example": "She tied a batik sarong around her waist before heading to the beach.",
+    "collocation": "batik sarong",
+    "cefr": "C2"
+  },
+  {
+    "word": "bolero",
+    "pos": "noun",
+    "ipa": "/bəˈleərəʊ/",
+    "meaningVi": "áo bolero ngắn",
+    "definitionEn": "A short open jacket that ends above the waist, often worn over a dress.",
+    "example": "A short red bolero jacket completed her elegant black evening dress.",
+    "collocation": "cropped bolero",
+    "cefr": "C2"
+  },
+  {
+    "word": "poncho",
+    "pos": "noun",
+    "ipa": "/ˈpɒntʃəʊ/",
+    "meaningVi": "áo poncho",
+    "definitionEn": "A large piece of cloth with a hole for the head, worn as a cape or outer layer.",
+    "example": "A woven poncho kept the hikers dry during the sudden mountain shower.",
+    "collocation": "woollen poncho",
+    "cefr": "C2"
+  }
+]

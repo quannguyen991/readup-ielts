@@ -1,0 +1,136 @@
+{
+  "n": 1,
+  "title": "Booking a weekend trip to Da Lat",
+  "context": "A phone call between a travel agent and a customer booking a weekend trip to Da Lat.",
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "text": "Good afternoon, Southern Travel. How can I help you?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "Hi, I'd like to book a weekend trip to Da Lat for two adults. We'd like to leave on the fourteenth of March. My surname is Nguyen. That's N-G-U-Y-E-N."
+    },
+    {
+      "speaker": "Agent",
+      "text": "Thank you. How many nights would you like to stay?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "Two nights, please, so we'd come back on the Sunday."
+    },
+    {
+      "speaker": "Agent",
+      "text": "Would you prefer the train or the coach?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "The train, please. We'd like a sleeping cabin if there are any left."
+    },
+    {
+      "speaker": "Agent",
+      "text": "Let me check. Yes, we still have two cabins on that date. Can I take a contact number?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "Of course. It ends in four, seven, two, nine."
+    },
+    {
+      "speaker": "Agent",
+      "text": "Thanks. Before I confirm, may I ask why you're travelling? Is it for a special occasion?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "It's my parents' wedding anniversary, so I'd like it to feel special. We're hoping for a relaxing break in the hills."
+    },
+    {
+      "speaker": "Agent",
+      "text": "That's lovely. Breakfast is included every day at the hotel, but lunch and dinner are not."
+    },
+    {
+      "speaker": "Customer",
+      "text": "That's fine. Are there any activities in the package?"
+    },
+    {
+      "speaker": "Agent",
+      "text": "Yes. The package includes a cable car ride and a boat trip on the lake. I'll send you the full itinerary today. Please confirm your booking by email by the tenth of March, otherwise we'll release the cabins."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Thank you. I'll confirm as soon as I get the email."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 1-5",
+      "instruction": "Complete the booking form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Da Lat weekend booking",
+        "Customer surname: {{1}}",
+        "Departure date: the {{2}} of March",
+        "Number of hotel nights: {{3}}",
+        "Travel by: {{4}}",
+        "Contact phone number ends in: {{5}}"
+      ],
+      "questions": [
+        { "n": 1, "answer": "Nguyen" },
+        { "n": 2, "answer": "fourteenth", "accept": ["14th", "14"] },
+        { "n": 3, "answer": "two", "accept": ["2"] },
+        { "n": 4, "answer": "train" },
+        { "n": 5, "answer": "4729", "accept": ["four seven two nine"] }
+      ]
+    },
+    {
+      "type": "mcq-one",
+      "title": "Questions 6-8",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 6,
+          "prompt": "Why is the customer booking this trip?",
+          "answer": "B",
+          "options": [
+            { "key": "A", "text": "for a work conference" },
+            { "key": "B", "text": "to celebrate an anniversary" },
+            { "key": "C", "text": "to visit relatives" }
+          ]
+        },
+        {
+          "n": 7,
+          "prompt": "Which meal is included in the price?",
+          "answer": "A",
+          "options": [
+            { "key": "A", "text": "breakfast" },
+            { "key": "B", "text": "lunch" },
+            { "key": "C", "text": "dinner" }
+          ]
+        },
+        {
+          "n": 8,
+          "prompt": "What must the customer do by the tenth of March?",
+          "answer": "C",
+          "options": [
+            { "key": "A", "text": "pay a deposit" },
+            { "key": "B", "text": "print the tickets" },
+            { "key": "C", "text": "confirm by email" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mcq-many",
+      "title": "Questions 9-10",
+      "instruction": "Choose TWO letters, A-E. Which TWO activities are included in the package?",
+      "options": [
+        { "key": "A", "text": "a coffee plantation visit" },
+        { "key": "B", "text": "a cable car ride" },
+        { "key": "C", "text": "a boat trip on the lake" },
+        { "key": "D", "text": "a cooking class" },
+        { "key": "E", "text": "a guided hike" }
+      ],
+      "questions": [{ "n": 9, "answer": ["B", "C"] }]
+    }
+  ]
+}

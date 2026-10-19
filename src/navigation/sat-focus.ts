@@ -23,8 +23,3 @@ export const SAT_SKILL_OF: Readonly<Record<string, SatSkill>> = {
 export function isSatFeature(key: string): boolean {
   return Object.prototype.hasOwnProperty.call(SAT_SKILL_OF, key);
 }
-
-/** Mục này có hiện không, theo lựa chọn của người học. */
-export function satShown(key: string, selected: readonly string[] | null): boolean {
-  return !isSatFeature(key) || selected === null || selected.includes(key);
-}

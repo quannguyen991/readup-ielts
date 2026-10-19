@@ -20,7 +20,6 @@ import { useCityAvailable } from '@/services/city/availability';
 import { useL } from '@/i18n/useL';
 import { haptic } from '@/services/haptics';
 import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, hiddenOnPhone, navLabel, parentNavKey, visibleGroups } from '@/navigation/nav-items';
-import { useIeltsFocusStore } from '@/store/useIeltsFocusStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useSearchStore } from '@/store/useSearchStore';
 
@@ -365,8 +364,7 @@ function RetroNavSheet({ open, onClose }: { open: boolean; onClose: () => void }
   const activeParent = parentNavKey(activeKey);
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const desktop = useCityAvailable();
-  const ieltsFeatures = useIeltsFocusStore((s) => s.features);
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures);
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
   const { L, locale, en } = useL();
   const { width } = useWindowDimensions();
 

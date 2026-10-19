@@ -3169,6 +3169,763 @@
     "source": "generated"
   },
   {
+    "id": "w-t1-line-renewable-share",
+    "task": "ielts_task1",
+    "promptText": "The line graph below shows the share of renewable energy in electricity generation in three countries, 2000–2020.",
+    "chartKind": "line",
+    "chartData": {
+      "kind": "line",
+      "title": "The share of renewable energy in electricity generation in three countries, 2000–2020",
+      "unit": "% of electricity",
+      "xLabels": [
+        "2000",
+        "2005",
+        "2010",
+        "2015",
+        "2020"
+      ],
+      "series": [
+        {
+          "name": "Denmark",
+          "values": [
+            8,
+            19,
+            28,
+            39,
+            48
+          ]
+        },
+        {
+          "name": "Germany",
+          "values": [
+            50,
+            40,
+            28,
+            19,
+            8
+          ]
+        },
+        {
+          "name": "Chile",
+          "values": [
+            29,
+            30,
+            29,
+            30,
+            28
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Denmark",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 8,
+            "to": 48
+          },
+          {
+            "subject": "Germany",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 50,
+            "to": 8
+          },
+          {
+            "subject": "Chile",
+            "direction": "fluctuating",
+            "magnitude": "small",
+            "from": 29,
+            "to": 28
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Germany",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Denmark",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Denmark",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Germany",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Denmark",
+            "other": "Germany",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Denmark",
+            "other": "Chile",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Germany",
+            "other": "Chile",
+            "nearLabel": "2010"
+          }
+        ],
+        "grouping": [
+          [
+            "Denmark"
+          ],
+          [
+            "Germany",
+            "Chile"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-line-tourist-arrivals",
+    "task": "ielts_task1",
+    "promptText": "The line graph below shows the number of international tourist arrivals in three cities, 2010–2019.",
+    "chartKind": "line",
+    "chartData": {
+      "kind": "line",
+      "title": "The number of international tourist arrivals in three cities, 2010–2019",
+      "unit": "millions of visitors",
+      "xLabels": [
+        "2010",
+        "2013",
+        "2016",
+        "2019"
+      ],
+      "series": [
+        {
+          "name": "Lisbon",
+          "values": [
+            5,
+            13,
+            18,
+            27
+          ]
+        },
+        {
+          "name": "Bangkok",
+          "values": [
+            27,
+            19,
+            13,
+            5
+          ]
+        },
+        {
+          "name": "Nairobi",
+          "values": [
+            16,
+            15,
+            16,
+            15
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Lisbon",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 5,
+            "to": 27
+          },
+          {
+            "subject": "Bangkok",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 27,
+            "to": 5
+          },
+          {
+            "subject": "Nairobi",
+            "direction": "down",
+            "magnitude": "small",
+            "from": 16,
+            "to": 15
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Bangkok",
+            "rank": "highest",
+            "at": "2010"
+          },
+          {
+            "subject": "Lisbon",
+            "rank": "highest",
+            "at": "2019"
+          },
+          {
+            "subject": "Lisbon",
+            "rank": "lowest",
+            "at": "2010"
+          },
+          {
+            "subject": "Bangkok",
+            "rank": "lowest",
+            "at": "2019"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Lisbon",
+            "other": "Bangkok",
+            "nearLabel": "2016"
+          },
+          {
+            "subject": "Lisbon",
+            "other": "Nairobi",
+            "nearLabel": "2013"
+          },
+          {
+            "subject": "Bangkok",
+            "other": "Nairobi",
+            "nearLabel": "2016"
+          }
+        ],
+        "grouping": [
+          [
+            "Lisbon"
+          ],
+          [
+            "Bangkok",
+            "Nairobi"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "society",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-bar-exam-pass-rate",
+    "task": "ielts_task1",
+    "promptText": "The bar chart below shows the pass rates in four school subjects for boys and girls.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "The pass rates in four school subjects for boys and girls",
+      "unit": "% of students passing",
+      "xLabels": [
+        "Mathematics",
+        "Science",
+        "English",
+        "History"
+      ],
+      "series": [
+        {
+          "name": "Boys",
+          "values": [
+            12,
+            29,
+            55,
+            85
+          ]
+        },
+        {
+          "name": "Girls",
+          "values": [
+            78,
+            52,
+            32,
+            12
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Boys",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 12,
+            "to": 85
+          },
+          {
+            "subject": "Girls",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 78,
+            "to": 12
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Girls",
+            "rank": "highest",
+            "at": "Mathematics"
+          },
+          {
+            "subject": "Boys",
+            "rank": "highest",
+            "at": "History"
+          },
+          {
+            "subject": "Boys",
+            "rank": "lowest",
+            "at": "Mathematics"
+          },
+          {
+            "subject": "Girls",
+            "rank": "lowest",
+            "at": "History"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Boys",
+            "other": "Girls",
+            "nearLabel": "Science"
+          }
+        ],
+        "grouping": [
+          [
+            "Boys"
+          ],
+          [
+            "Girls"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "education",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-bar-home-energy",
+    "task": "ielts_task1",
+    "promptText": "The bar chart below shows the average annual energy use of four household appliances in two regions.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "The average annual energy use of four household appliances in two regions",
+      "unit": "kWh per year",
+      "xLabels": [
+        "Heating",
+        "Lighting",
+        "Cooking",
+        "Cooling"
+      ],
+      "series": [
+        {
+          "name": "Northern region",
+          "values": [
+            185,
+            457,
+            821,
+            1124
+          ]
+        },
+        {
+          "name": "Southern region",
+          "values": [
+            1283,
+            760,
+            484,
+            189
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Northern region",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 185,
+            "to": 1124
+          },
+          {
+            "subject": "Southern region",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 1283,
+            "to": 189
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Southern region",
+            "rank": "highest",
+            "at": "Heating"
+          },
+          {
+            "subject": "Northern region",
+            "rank": "highest",
+            "at": "Cooling"
+          },
+          {
+            "subject": "Northern region",
+            "rank": "lowest",
+            "at": "Heating"
+          },
+          {
+            "subject": "Southern region",
+            "rank": "lowest",
+            "at": "Cooling"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Northern region",
+            "other": "Southern region",
+            "nearLabel": "Lighting"
+          }
+        ],
+        "grouping": [
+          [
+            "Northern region"
+          ],
+          [
+            "Southern region"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-free-time",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show how adults spent their free time in 1990 and in 2020.",
+    "chartKind": "pie",
+    "chartData": {
+      "kind": "pie",
+      "title": "How adults spent their free time in 1990 and in 2020",
+      "unit": "%",
+      "pies": [
+        {
+          "caption": "1990",
+          "slices": [
+            {
+              "label": "Watching TV",
+              "value": 38
+            },
+            {
+              "label": "Reading",
+              "value": 28
+            },
+            {
+              "label": "Sport",
+              "value": 21
+            },
+            {
+              "label": "Socialising",
+              "value": 13
+            }
+          ]
+        },
+        {
+          "caption": "2020",
+          "slices": [
+            {
+              "label": "Watching TV",
+              "value": 13
+            },
+            {
+              "label": "Reading",
+              "value": 21
+            },
+            {
+              "label": "Sport",
+              "value": 28
+            },
+            {
+              "label": "Socialising",
+              "value": 38
+            }
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Watching TV",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 38,
+            "to": 13
+          },
+          {
+            "subject": "Reading",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 28,
+            "to": 21
+          },
+          {
+            "subject": "Sport",
+            "direction": "up",
+            "magnitude": "moderate",
+            "from": 21,
+            "to": 28
+          },
+          {
+            "subject": "Socialising",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 13,
+            "to": 38
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Watching TV",
+            "rank": "highest",
+            "at": "1990"
+          },
+          {
+            "subject": "Socialising",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Socialising",
+            "rank": "lowest",
+            "at": "1990"
+          },
+          {
+            "subject": "Watching TV",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Watching TV",
+            "other": "Reading",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Watching TV",
+            "other": "Sport",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Watching TV",
+            "other": "Socialising",
+            "nearLabel": "1990"
+          },
+          {
+            "subject": "Reading",
+            "other": "Sport",
+            "nearLabel": "1990"
+          },
+          {
+            "subject": "Reading",
+            "other": "Socialising",
+            "nearLabel": "1990"
+          },
+          {
+            "subject": "Sport",
+            "other": "Socialising",
+            "nearLabel": "1990"
+          }
+        ],
+        "grouping": [
+          [
+            "Sport",
+            "Socialising"
+          ],
+          [
+            "Watching TV",
+            "Reading"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "health",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-table-phone-brand-share",
+    "task": "ielts_task1",
+    "promptText": "The table below shows the market share of four mobile phone brands, 2015–2021.",
+    "chartKind": "table",
+    "chartData": {
+      "kind": "table",
+      "title": "The market share of four mobile phone brands, 2015–2021",
+      "unit": "% of sales",
+      "headers": [
+        "",
+        "2015",
+        "2017",
+        "2019",
+        "2021"
+      ],
+      "rows": [
+        [
+          "Brand A",
+          6,
+          22,
+          37,
+          52
+        ],
+        [
+          "Brand B",
+          52,
+          36,
+          21,
+          6
+        ],
+        [
+          "Brand C",
+          21,
+          26,
+          30,
+          37
+        ],
+        [
+          "Brand D",
+          37,
+          32,
+          25,
+          21
+        ]
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Brand A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 6,
+            "to": 52
+          },
+          {
+            "subject": "Brand B",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 52,
+            "to": 6
+          },
+          {
+            "subject": "Brand C",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 21,
+            "to": 37
+          },
+          {
+            "subject": "Brand D",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 37,
+            "to": 21
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Brand B",
+            "rank": "highest",
+            "at": "2015"
+          },
+          {
+            "subject": "Brand A",
+            "rank": "highest",
+            "at": "2021"
+          },
+          {
+            "subject": "Brand A",
+            "rank": "lowest",
+            "at": "2015"
+          },
+          {
+            "subject": "Brand B",
+            "rank": "lowest",
+            "at": "2021"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Brand A",
+            "other": "Brand B",
+            "nearLabel": "2017"
+          },
+          {
+            "subject": "Brand A",
+            "other": "Brand C",
+            "nearLabel": "2017"
+          },
+          {
+            "subject": "Brand A",
+            "other": "Brand D",
+            "nearLabel": "2017"
+          },
+          {
+            "subject": "Brand B",
+            "other": "Brand C",
+            "nearLabel": "2019"
+          },
+          {
+            "subject": "Brand B",
+            "other": "Brand D",
+            "nearLabel": "2017"
+          },
+          {
+            "subject": "Brand C",
+            "other": "Brand D",
+            "nearLabel": "2019"
+          }
+        ],
+        "grouping": [
+          [
+            "Brand A",
+            "Brand C"
+          ],
+          [
+            "Brand B",
+            "Brand D"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "business",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
     "id": "w-t2-environment-0-opinion",
     "task": "ielts_task2",
     "promptText": "Some people believe that reducing plastic waste is the most effective way to improve modern life. To what extent do you agree or disagree?",
@@ -3635,5 +4392,83 @@
     "timeLimitSeconds": 2400,
     "minWords": 250,
     "source": "generated"
+  },
+  {
+    "id": "w-t2-curated-technology-opinion",
+    "task": "ielts_task2",
+    "promptText": "Some people believe that artificial intelligence will soon do most jobs better than humans. To what extent do you agree or disagree?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "opinion",
+    "topicSlug": "technology",
+    "difficultyBand": 5.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-curated-education-discussion",
+    "task": "ielts_task2",
+    "promptText": "Some people think that universities should focus mainly on preparing students for the job market, while others believe that they should focus on research and general knowledge. Discuss both views and give your own opinion.",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "discussion",
+    "topicSlug": "education",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-curated-society-advantage-disadvantage",
+    "task": "ielts_task2",
+    "promptText": "In many cities, residents are giving up private cars and using shared bicycles and electric scooters instead. Do the advantages of this trend outweigh the disadvantages?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "advantage_disadvantage",
+    "topicSlug": "society",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-curated-environment-problem-solution",
+    "task": "ielts_task2",
+    "promptText": "Despite many public campaigns, households in most countries still throw away large amounts of edible food each year. What are the main causes of this problem, and what solutions can you suggest?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "problem_solution",
+    "topicSlug": "environment",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-curated-health-two-part",
+    "task": "ielts_task2",
+    "promptText": "Many people now prefer to exercise at home using online videos rather than joining a gym. Why is this happening, and is it a positive or a negative development?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "two_part",
+    "topicSlug": "health",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-curated-science-opinion",
+    "task": "ielts_task2",
+    "promptText": "Some people believe that scientists should concentrate on solving practical problems rather than carrying out research with no immediate use. To what extent do you agree or disagree?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "opinion",
+    "topicSlug": "science",
+    "difficultyBand": 7.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
   }
 ]

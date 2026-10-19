@@ -1,0 +1,1097 @@
+[
+  {
+    "word": "literacy",
+    "synonyms": [
+      "ability to read"
+    ],
+    "antonyms": [
+      "illiteracy"
+    ]
+  },
+  {
+    "word": "numeracy",
+    "synonyms": [
+      "arithmetic skills",
+      "mathematical ability"
+    ],
+    "antonyms": [
+      "innumeracy"
+    ]
+  },
+  {
+    "word": "school",
+    "synonyms": [
+      "academy",
+      "educational institution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lesson",
+    "synonyms": [
+      "class",
+      "session"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "homework",
+    "synonyms": [
+      "assignment",
+      "schoolwork"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "classroom",
+    "synonyms": [
+      "schoolroom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "student",
+    "synonyms": [
+      "learner",
+      "scholar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "teacher",
+    "synonyms": [
+      "educator",
+      "instructor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "revise",
+    "synonyms": [
+      "review",
+      "study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exam",
+    "synonyms": [
+      "test",
+      "examination"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subject",
+    "synonyms": [
+      "course",
+      "field of study"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "university",
+    "synonyms": [
+      "college",
+      "higher education institution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "course",
+    "synonyms": [
+      "programme",
+      "module"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "attend",
+    "synonyms": [
+      "be present at",
+      "take part in"
+    ],
+    "antonyms": [
+      "skip"
+    ]
+  },
+  {
+    "word": "library",
+    "synonyms": [
+      "reading room"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "essay",
+    "synonyms": [
+      "composition",
+      "paper"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "learn",
+    "synonyms": [
+      "acquire knowledge",
+      "study"
+    ],
+    "antonyms": [
+      "forget",
+      "unlearn"
+    ]
+  },
+  {
+    "word": "knowledge",
+    "synonyms": [
+      "understanding",
+      "expertise"
+    ],
+    "antonyms": [
+      "ignorance"
+    ]
+  },
+  {
+    "word": "headteacher",
+    "synonyms": [
+      "principal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "textbook",
+    "synonyms": [
+      "coursebook",
+      "schoolbook"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "timetable",
+    "synonyms": [
+      "schedule",
+      "calendar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pass",
+    "synonyms": [
+      "succeed in",
+      "clear"
+    ],
+    "antonyms": [
+      "fail"
+    ]
+  },
+  {
+    "word": "pupil",
+    "synonyms": [
+      "schoolchild",
+      "learner"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tutor",
+    "synonyms": [
+      "coach",
+      "instructor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "enrol",
+    "synonyms": [
+      "register",
+      "sign up"
+    ],
+    "antonyms": [
+      "withdraw"
+    ]
+  },
+  {
+    "word": "research",
+    "synonyms": [
+      "study",
+      "investigation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "qualify",
+    "synonyms": [
+      "become certified",
+      "graduate"
+    ],
+    "antonyms": [
+      "disqualify"
+    ]
+  },
+  {
+    "word": "concentrate",
+    "synonyms": [
+      "focus",
+      "pay attention"
+    ],
+    "antonyms": [
+      "be distracted"
+    ]
+  },
+  {
+    "word": "motivation",
+    "synonyms": [
+      "drive",
+      "determination"
+    ],
+    "antonyms": [
+      "apathy"
+    ]
+  },
+  {
+    "word": "feedback",
+    "synonyms": [
+      "comments",
+      "response"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "practical",
+    "synonyms": [
+      "hands-on",
+      "applied"
+    ],
+    "antonyms": [
+      "theoretical"
+    ]
+  },
+  {
+    "word": "lecturer",
+    "synonyms": [
+      "academic",
+      "instructor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coursework",
+    "synonyms": [
+      "assignments",
+      "continuous assessment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "discipline",
+    "synonyms": [
+      "self-control",
+      "order"
+    ],
+    "antonyms": [
+      "disorder"
+    ]
+  },
+  {
+    "word": "keep up",
+    "synonyms": [
+      "keep pace",
+      "stay abreast"
+    ],
+    "antonyms": [
+      "fall behind"
+    ]
+  },
+  {
+    "word": "diligent",
+    "synonyms": [
+      "hardworking",
+      "industrious"
+    ],
+    "antonyms": [
+      "lazy"
+    ]
+  },
+  {
+    "word": "curious",
+    "synonyms": [
+      "inquisitive",
+      "interested"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "word": "cognitive",
+    "synonyms": [
+      "mental",
+      "intellectual"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meritocracy",
+    "synonyms": [
+      "merit-based system"
+    ],
+    "antonyms": [
+      "nepotism"
+    ]
+  },
+  {
+    "word": "scaffold",
+    "synonyms": [
+      "support",
+      "guide"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "differentiate",
+    "synonyms": [
+      "adapt",
+      "tailor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stipend",
+    "synonyms": [
+      "allowance",
+      "grant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "proficiency",
+    "synonyms": [
+      "competence",
+      "fluency"
+    ],
+    "antonyms": [
+      "incompetence"
+    ]
+  },
+  {
+    "word": "aptitude",
+    "synonyms": [
+      "talent",
+      "flair"
+    ],
+    "antonyms": [
+      "ineptitude"
+    ]
+  },
+  {
+    "word": "empirical",
+    "synonyms": [
+      "experimental",
+      "observational"
+    ],
+    "antonyms": [
+      "theoretical"
+    ]
+  },
+  {
+    "word": "consolidate",
+    "synonyms": [
+      "strengthen",
+      "reinforce"
+    ],
+    "antonyms": [
+      "weaken"
+    ]
+  },
+  {
+    "word": "substantiate",
+    "synonyms": [
+      "corroborate",
+      "verify"
+    ],
+    "antonyms": [
+      "refute"
+    ]
+  },
+  {
+    "word": "cohort",
+    "synonyms": [
+      "group",
+      "class year"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prerequisite",
+    "synonyms": [
+      "requirement",
+      "precondition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tertiary",
+    "synonyms": [
+      "higher",
+      "post-secondary"
+    ],
+    "antonyms": [
+      "primary",
+      "secondary"
+    ]
+  },
+  {
+    "word": "remediate",
+    "synonyms": [
+      "rectify",
+      "correct"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conscientious",
+    "synonyms": [
+      "diligent",
+      "thorough"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "endeavour",
+    "synonyms": [
+      "effort",
+      "attempt"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scholastic",
+    "synonyms": [
+      "academic",
+      "educational"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rubric",
+    "synonyms": [
+      "grading criteria",
+      "marking scheme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fellowship",
+    "synonyms": [
+      "scholarship",
+      "grant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pedagogical",
+    "synonyms": [
+      "educational",
+      "instructional"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "articulate",
+    "synonyms": [
+      "eloquent",
+      "fluent"
+    ],
+    "antonyms": [
+      "inarticulate"
+    ]
+  },
+  {
+    "word": "inquiry",
+    "synonyms": [
+      "investigation",
+      "examination"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meticulous",
+    "synonyms": [
+      "thorough",
+      "painstaking"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "word": "rote learning",
+    "synonyms": [
+      "memorisation",
+      "drilling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alma mater",
+    "synonyms": [
+      "old school",
+      "former university"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "constructivism",
+    "synonyms": [
+      "constructivist theory"
+    ],
+    "antonyms": [
+      "behaviourism"
+    ]
+  },
+  {
+    "word": "curricular",
+    "synonyms": [
+      "academic"
+    ],
+    "antonyms": [
+      "extracurricular"
+    ]
+  },
+  {
+    "word": "stimulate",
+    "synonyms": [
+      "encourage",
+      "provoke"
+    ],
+    "antonyms": [
+      "discourage"
+    ]
+  },
+  {
+    "word": "instil",
+    "synonyms": [
+      "inculcate",
+      "implant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pragmatic",
+    "synonyms": [
+      "practical",
+      "realistic"
+    ],
+    "antonyms": [
+      "idealistic"
+    ]
+  },
+  {
+    "word": "reflective",
+    "synonyms": [
+      "thoughtful",
+      "introspective"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "assimilate",
+    "synonyms": [
+      "absorb",
+      "digest"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bursary",
+    "synonyms": [
+      "grant",
+      "scholarship"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "intellectual",
+    "synonyms": [
+      "cerebral",
+      "academic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exemplify",
+    "synonyms": [
+      "illustrate",
+      "epitomise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lucid",
+    "synonyms": [
+      "clear",
+      "coherent"
+    ],
+    "antonyms": [
+      "obscure"
+    ]
+  },
+  {
+    "word": "plenary",
+    "synonyms": [
+      "general",
+      "full"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "erudite",
+    "synonyms": [
+      "learned",
+      "scholarly"
+    ],
+    "antonyms": [
+      "ignorant"
+    ]
+  },
+  {
+    "word": "pedantic",
+    "synonyms": [
+      "fussy",
+      "nitpicking"
+    ],
+    "antonyms": [
+      "lax"
+    ]
+  },
+  {
+    "word": "esoteric",
+    "synonyms": [
+      "obscure",
+      "arcane"
+    ],
+    "antonyms": [
+      "commonplace"
+    ]
+  },
+  {
+    "word": "obfuscate",
+    "synonyms": [
+      "confuse",
+      "obscure"
+    ],
+    "antonyms": [
+      "clarify",
+      "elucidate"
+    ]
+  },
+  {
+    "word": "perspicacious",
+    "synonyms": [
+      "perceptive",
+      "astute"
+    ],
+    "antonyms": [
+      "obtuse"
+    ]
+  },
+  {
+    "word": "sagacious",
+    "synonyms": [
+      "wise",
+      "shrewd"
+    ],
+    "antonyms": [
+      "foolish"
+    ]
+  },
+  {
+    "word": "pedagogue",
+    "synonyms": [
+      "schoolmaster",
+      "instructor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "polymath",
+    "synonyms": [
+      "genius",
+      "renaissance man"
+    ],
+    "antonyms": [
+      "specialist"
+    ]
+  },
+  {
+    "word": "savant",
+    "synonyms": [
+      "scholar",
+      "sage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exegesis",
+    "synonyms": [
+      "interpretation",
+      "explanation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hermeneutics",
+    "synonyms": [
+      "interpretation",
+      "exegesis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dilettante",
+    "synonyms": [
+      "amateur",
+      "dabbler"
+    ],
+    "antonyms": [
+      "expert",
+      "specialist"
+    ]
+  },
+  {
+    "word": "prodigious",
+    "synonyms": [
+      "extraordinary",
+      "remarkable"
+    ],
+    "antonyms": [
+      "ordinary"
+    ]
+  },
+  {
+    "word": "ratiocination",
+    "synonyms": [
+      "reasoning",
+      "logical argument"
+    ],
+    "antonyms": [
+      "intuition"
+    ]
+  },
+  {
+    "word": "discursive",
+    "synonyms": [
+      "rambling",
+      "digressive"
+    ],
+    "antonyms": [
+      "concise"
+    ]
+  },
+  {
+    "word": "sophistry",
+    "synonyms": [
+      "fallacy",
+      "casuistry"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exacting",
+    "synonyms": [
+      "demanding",
+      "rigorous"
+    ],
+    "antonyms": [
+      "lenient"
+    ]
+  },
+  {
+    "word": "pellucid",
+    "synonyms": [
+      "clear",
+      "transparent"
+    ],
+    "antonyms": [
+      "opaque"
+    ]
+  },
+  {
+    "word": "tutelage",
+    "synonyms": [
+      "guidance",
+      "tuition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "autodidact",
+    "synonyms": [
+      "self-educated person"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "precocious",
+    "synonyms": [
+      "gifted",
+      "advanced"
+    ],
+    "antonyms": [
+      "backward"
+    ]
+  },
+  {
+    "word": "recondite",
+    "synonyms": [
+      "obscure",
+      "abstruse"
+    ],
+    "antonyms": [
+      "commonplace"
+    ]
+  },
+  {
+    "word": "abstruse",
+    "synonyms": [
+      "obscure",
+      "recondite"
+    ],
+    "antonyms": [
+      "straightforward"
+    ]
+  },
+  {
+    "word": "lucubrate",
+    "synonyms": [
+      "study late",
+      "toil"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "encyclopaedic",
+    "synonyms": [
+      "comprehensive",
+      "exhaustive"
+    ],
+    "antonyms": [
+      "limited"
+    ]
+  },
+  {
+    "word": "epistemic",
+    "synonyms": [
+      "epistemological"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ruminate",
+    "synonyms": [
+      "ponder",
+      "contemplate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cerebral",
+    "synonyms": [
+      "intellectual",
+      "analytical"
+    ],
+    "antonyms": [
+      "emotional"
+    ]
+  },
+  {
+    "word": "pedantry",
+    "synonyms": [
+      "nitpicking",
+      "fussiness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "perspicuity",
+    "synonyms": [
+      "clarity",
+      "lucidity"
+    ],
+    "antonyms": [
+      "obscurity"
+    ]
+  },
+  {
+    "word": "sedulous",
+    "synonyms": [
+      "diligent",
+      "assiduous"
+    ],
+    "antonyms": [
+      "indolent"
+    ]
+  },
+  {
+    "word": "assiduous",
+    "synonyms": [
+      "diligent",
+      "meticulous"
+    ],
+    "antonyms": [
+      "negligent"
+    ]
+  },
+  {
+    "word": "acumen",
+    "synonyms": [
+      "shrewdness",
+      "insight"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cogent",
+    "synonyms": [
+      "convincing",
+      "persuasive"
+    ],
+    "antonyms": [
+      "unconvincing"
+    ]
+  },
+  {
+    "word": "elucidate",
+    "synonyms": [
+      "clarify",
+      "explain"
+    ],
+    "antonyms": [
+      "obfuscate"
+    ]
+  },
+  {
+    "word": "expound",
+    "synonyms": [
+      "explain",
+      "elaborate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "recapitulate",
+    "synonyms": [
+      "summarise",
+      "restate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "indoctrinate",
+    "synonyms": [
+      "brainwash",
+      "instil"
+    ],
+    "antonyms": [
+      "enlighten"
+    ]
+  },
+  {
+    "word": "sagacity",
+    "synonyms": [
+      "wisdom",
+      "shrewdness"
+    ],
+    "antonyms": [
+      "folly"
+    ]
+  },
+  {
+    "word": "erudition",
+    "synonyms": [
+      "learning",
+      "scholarship"
+    ],
+    "antonyms": [
+      "ignorance"
+    ]
+  },
+  {
+    "word": "obscurantism",
+    "synonyms": [
+      "obfuscation",
+      "anti-intellectualism"
+    ],
+    "antonyms": [
+      "enlightenment"
+    ]
+  },
+  {
+    "word": "dogmatic",
+    "synonyms": [
+      "rigid",
+      "doctrinaire"
+    ],
+    "antonyms": [
+      "open-minded"
+    ]
+  },
+  {
+    "word": "quintessential",
+    "synonyms": [
+      "archetypal",
+      "typical"
+    ],
+    "antonyms": [
+      "atypical"
+    ]
+  },
+  {
+    "word": "ineffable",
+    "synonyms": [
+      "indescribable",
+      "inexpressible"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pontificate",
+    "synonyms": [
+      "hold forth",
+      "sermonise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sesquipedalian",
+    "synonyms": [
+      "verbose",
+      "long-winded"
+    ],
+    "antonyms": [
+      "terse"
+    ]
+  },
+  {
+    "word": "peripatetic",
+    "synonyms": [
+      "itinerant",
+      "travelling"
+    ],
+    "antonyms": [
+      "sedentary"
+    ]
+  },
+  {
+    "word": "ponderous",
+    "synonyms": [
+      "heavy",
+      "cumbersome"
+    ],
+    "antonyms": [
+      "nimble"
+    ]
+  }
+]

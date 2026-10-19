@@ -1,0 +1,1233 @@
+[
+  {
+    "word": "win",
+    "synonyms": [
+      "triumph",
+      "succeed"
+    ],
+    "antonyms": [
+      "lose",
+      "fail"
+    ]
+  },
+  {
+    "word": "lose",
+    "synonyms": [
+      "forfeit",
+      "be defeated"
+    ],
+    "antonyms": [
+      "win",
+      "triumph"
+    ]
+  },
+  {
+    "word": "try",
+    "synonyms": [
+      "attempt",
+      "endeavour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "goal",
+    "synonyms": [
+      "aim",
+      "objective"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prize",
+    "synonyms": [
+      "award",
+      "accolade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mistake",
+    "synonyms": [
+      "error",
+      "blunder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "practice",
+    "synonyms": [
+      "training",
+      "drill"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "champion",
+    "synonyms": [
+      "victor",
+      "winner"
+    ],
+    "antonyms": [
+      "loser",
+      "runner-up"
+    ]
+  },
+  {
+    "word": "medal",
+    "synonyms": [
+      "gong",
+      "decoration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "trophy",
+    "synonyms": [
+      "cup",
+      "silverware"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "result",
+    "synonyms": [
+      "outcome",
+      "consequence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plan",
+    "synonyms": [
+      "scheme",
+      "strategy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fail",
+    "synonyms": [
+      "founder",
+      "falter"
+    ],
+    "antonyms": [
+      "succeed",
+      "prosper"
+    ]
+  },
+  {
+    "word": "score",
+    "synonyms": [
+      "tally",
+      "total"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reward",
+    "synonyms": [
+      "bonus",
+      "payoff"
+    ],
+    "antonyms": [
+      "punishment",
+      "penalty"
+    ]
+  },
+  {
+    "word": "deadline",
+    "synonyms": [
+      "cut-off",
+      "time limit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ambition",
+    "synonyms": [
+      "aspiration",
+      "aim"
+    ],
+    "antonyms": [
+      "complacency",
+      "apathy"
+    ]
+  },
+  {
+    "word": "motivation",
+    "synonyms": [
+      "drive",
+      "incentive"
+    ],
+    "antonyms": [
+      "apathy",
+      "indifference"
+    ]
+  },
+  {
+    "word": "confidence",
+    "synonyms": [
+      "self-belief",
+      "assurance"
+    ],
+    "antonyms": [
+      "self-doubt",
+      "insecurity"
+    ]
+  },
+  {
+    "word": "regret",
+    "synonyms": [
+      "remorse",
+      "contrition"
+    ],
+    "antonyms": [
+      "satisfaction"
+    ]
+  },
+  {
+    "word": "bounce back",
+    "synonyms": [
+      "recover",
+      "rally"
+    ],
+    "antonyms": [
+      "collapse",
+      "decline"
+    ]
+  },
+  {
+    "word": "give up",
+    "synonyms": [
+      "quit",
+      "abandon"
+    ],
+    "antonyms": [
+      "persevere",
+      "persist"
+    ]
+  },
+  {
+    "word": "keep going",
+    "synonyms": [
+      "persevere",
+      "persist"
+    ],
+    "antonyms": [
+      "give up",
+      "quit"
+    ]
+  },
+  {
+    "word": "pass",
+    "synonyms": [
+      "succeed",
+      "qualify"
+    ],
+    "antonyms": [
+      "fail",
+      "flunk"
+    ]
+  },
+  {
+    "word": "gamble",
+    "synonyms": [
+      "wager",
+      "bet"
+    ],
+    "antonyms": [
+      "play safe"
+    ]
+  },
+  {
+    "word": "risk",
+    "synonyms": [
+      "hazard",
+      "peril"
+    ],
+    "antonyms": [
+      "safety",
+      "security"
+    ]
+  },
+  {
+    "word": "reputation",
+    "synonyms": [
+      "standing",
+      "repute"
+    ],
+    "antonyms": [
+      "disrepute",
+      "infamy"
+    ]
+  },
+  {
+    "word": "scholarship",
+    "synonyms": [
+      "bursary",
+      "grant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "promotion",
+    "synonyms": [
+      "advancement",
+      "elevation"
+    ],
+    "antonyms": [
+      "demotion",
+      "relegation"
+    ]
+  },
+  {
+    "word": "bankrupt",
+    "synonyms": [
+      "insolvent",
+      "ruined"
+    ],
+    "antonyms": [
+      "solvent",
+      "prosperous"
+    ]
+  },
+  {
+    "word": "doubt",
+    "synonyms": [
+      "uncertainty",
+      "hesitation"
+    ],
+    "antonyms": [
+      "certainty",
+      "confidence"
+    ]
+  },
+  {
+    "word": "comeback",
+    "synonyms": [
+      "revival",
+      "resurgence"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "word": "rejection",
+    "synonyms": [
+      "refusal",
+      "dismissal"
+    ],
+    "antonyms": [
+      "acceptance",
+      "approval"
+    ]
+  },
+  {
+    "word": "flop",
+    "synonyms": [
+      "washout",
+      "disaster"
+    ],
+    "antonyms": [
+      "hit",
+      "success"
+    ]
+  },
+  {
+    "word": "underdog",
+    "synonyms": [
+      "outsider",
+      "long shot"
+    ],
+    "antonyms": [
+      "favourite",
+      "frontrunner"
+    ]
+  },
+  {
+    "word": "pressure",
+    "synonyms": [
+      "stress",
+      "strain"
+    ],
+    "antonyms": [
+      "relief",
+      "ease"
+    ]
+  },
+  {
+    "word": "accomplished",
+    "synonyms": [
+      "skilled",
+      "proficient"
+    ],
+    "antonyms": [
+      "inept",
+      "amateurish"
+    ]
+  },
+  {
+    "word": "formidable",
+    "synonyms": [
+      "daunting",
+      "powerful"
+    ],
+    "antonyms": [
+      "feeble",
+      "weak"
+    ]
+  },
+  {
+    "word": "unrivalled",
+    "synonyms": [
+      "unmatched",
+      "unequalled"
+    ],
+    "antonyms": [
+      "mediocre"
+    ]
+  },
+  {
+    "word": "illustrious",
+    "synonyms": [
+      "renowned",
+      "famous"
+    ],
+    "antonyms": [
+      "obscure",
+      "unknown"
+    ]
+  },
+  {
+    "word": "esteemed",
+    "synonyms": [
+      "respected",
+      "distinguished"
+    ],
+    "antonyms": [
+      "disreputable",
+      "despised"
+    ]
+  },
+  {
+    "word": "prevail",
+    "synonyms": [
+      "win through",
+      "triumph"
+    ],
+    "antonyms": [
+      "fail",
+      "yield"
+    ]
+  },
+  {
+    "word": "thwart",
+    "synonyms": [
+      "foil",
+      "frustrate"
+    ],
+    "antonyms": [
+      "assist",
+      "further"
+    ]
+  },
+  {
+    "word": "hamper",
+    "synonyms": [
+      "hinder",
+      "obstruct"
+    ],
+    "antonyms": [
+      "aid",
+      "facilitate"
+    ]
+  },
+  {
+    "word": "impede",
+    "synonyms": [
+      "obstruct",
+      "hinder"
+    ],
+    "antonyms": [
+      "facilitate",
+      "further"
+    ]
+  },
+  {
+    "word": "stymie",
+    "synonyms": [
+      "frustrate",
+      "obstruct"
+    ],
+    "antonyms": [
+      "facilitate"
+    ]
+  },
+  {
+    "word": "squander",
+    "synonyms": [
+      "waste",
+      "fritter"
+    ],
+    "antonyms": [
+      "conserve",
+      "save"
+    ]
+  },
+  {
+    "word": "flounder",
+    "synonyms": [
+      "struggle",
+      "falter"
+    ],
+    "antonyms": [
+      "thrive",
+      "prosper"
+    ]
+  },
+  {
+    "word": "stumble",
+    "synonyms": [
+      "trip",
+      "falter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rebound",
+    "synonyms": [
+      "recover",
+      "revive"
+    ],
+    "antonyms": [
+      "decline",
+      "slump"
+    ]
+  },
+  {
+    "word": "recover",
+    "synonyms": [
+      "recuperate",
+      "rally"
+    ],
+    "antonyms": [
+      "relapse",
+      "deteriorate"
+    ]
+  },
+  {
+    "word": "undertaking",
+    "synonyms": [
+      "enterprise",
+      "venture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "feat",
+    "synonyms": [
+      "achievement",
+      "accomplishment"
+    ],
+    "antonyms": [
+      "failure"
+    ]
+  },
+  {
+    "word": "exploit",
+    "synonyms": [
+      "heroic deed",
+      "daring act"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "landmark",
+    "synonyms": [
+      "milestone",
+      "turning point"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "honour",
+    "synonyms": [
+      "distinction",
+      "accolade"
+    ],
+    "antonyms": [
+      "disgrace",
+      "dishonour"
+    ]
+  },
+  {
+    "word": "laurels",
+    "synonyms": [
+      "glory",
+      "acclaim"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impasse",
+    "synonyms": [
+      "deadlock",
+      "stalemate"
+    ],
+    "antonyms": [
+      "breakthrough"
+    ]
+  },
+  {
+    "word": "quandary",
+    "synonyms": [
+      "dilemma",
+      "plight"
+    ],
+    "antonyms": [
+      "certainty"
+    ]
+  },
+  {
+    "word": "predicament",
+    "synonyms": [
+      "plight",
+      "difficulty"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ordeal",
+    "synonyms": [
+      "trial",
+      "hardship"
+    ],
+    "antonyms": [
+      "pleasure",
+      "relief"
+    ]
+  },
+  {
+    "word": "tribulation",
+    "synonyms": [
+      "affliction",
+      "hardship"
+    ],
+    "antonyms": [
+      "blessing",
+      "comfort"
+    ]
+  },
+  {
+    "word": "misstep",
+    "synonyms": [
+      "blunder",
+      "error"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stagnation",
+    "synonyms": [
+      "inertia",
+      "standstill"
+    ],
+    "antonyms": [
+      "growth",
+      "progress"
+    ]
+  },
+  {
+    "word": "fiasco",
+    "synonyms": [
+      "debacle",
+      "disaster"
+    ],
+    "antonyms": [
+      "triumph",
+      "success"
+    ]
+  },
+  {
+    "word": "resolve",
+    "synonyms": [
+      "determination",
+      "resolution"
+    ],
+    "antonyms": [
+      "irresolution",
+      "indecision"
+    ]
+  },
+  {
+    "word": "indomitable",
+    "synonyms": [
+      "invincible",
+      "unconquerable"
+    ],
+    "antonyms": [
+      "vulnerable",
+      "feeble"
+    ]
+  },
+  {
+    "word": "unwavering",
+    "synonyms": [
+      "firm",
+      "unshakeable"
+    ],
+    "antonyms": [
+      "irresolute",
+      "wavering"
+    ]
+  },
+  {
+    "word": "meritorious",
+    "synonyms": [
+      "praiseworthy",
+      "worthy"
+    ],
+    "antonyms": [
+      "discreditable"
+    ]
+  },
+  {
+    "word": "commendable",
+    "synonyms": [
+      "admirable",
+      "creditable"
+    ],
+    "antonyms": [
+      "blameworthy",
+      "discreditable"
+    ]
+  },
+  {
+    "word": "auspicious",
+    "synonyms": [
+      "promising",
+      "favourable"
+    ],
+    "antonyms": [
+      "inauspicious",
+      "ominous"
+    ]
+  },
+  {
+    "word": "precarious",
+    "synonyms": [
+      "insecure",
+      "unstable"
+    ],
+    "antonyms": [
+      "secure",
+      "stable"
+    ]
+  },
+  {
+    "word": "insurmountable",
+    "synonyms": [
+      "insuperable",
+      "overwhelming"
+    ],
+    "antonyms": [
+      "surmountable",
+      "manageable"
+    ]
+  },
+  {
+    "word": "dwindle",
+    "synonyms": [
+      "diminish",
+      "shrink"
+    ],
+    "antonyms": [
+      "grow",
+      "increase"
+    ]
+  },
+  {
+    "word": "deteriorate",
+    "synonyms": [
+      "decline",
+      "worsen"
+    ],
+    "antonyms": [
+      "improve",
+      "recover"
+    ]
+  },
+  {
+    "word": "vindicate",
+    "synonyms": [
+      "justify",
+      "clear"
+    ],
+    "antonyms": [
+      "condemn",
+      "incriminate"
+    ]
+  },
+  {
+    "word": "exonerate",
+    "synonyms": [
+      "acquit",
+      "absolve"
+    ],
+    "antonyms": [
+      "convict",
+      "incriminate"
+    ]
+  },
+  {
+    "word": "laudable",
+    "synonyms": [
+      "praiseworthy",
+      "admirable"
+    ],
+    "antonyms": [
+      "deplorable",
+      "reprehensible"
+    ]
+  },
+  {
+    "word": "preeminent",
+    "synonyms": [
+      "foremost",
+      "supreme"
+    ],
+    "antonyms": [
+      "inferior",
+      "second-rate"
+    ]
+  },
+  {
+    "word": "paramount",
+    "synonyms": [
+      "supreme",
+      "overriding"
+    ],
+    "antonyms": [
+      "minor",
+      "trivial"
+    ]
+  },
+  {
+    "word": "hegemony",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "subjugation"
+    ]
+  },
+  {
+    "word": "pyrrhic",
+    "synonyms": [
+      "costly",
+      "hollow"
+    ],
+    "antonyms": [
+      "decisive",
+      "clear-cut"
+    ]
+  },
+  {
+    "word": "apotheosis",
+    "synonyms": [
+      "culmination",
+      "acme"
+    ],
+    "antonyms": [
+      "nadir",
+      "low point"
+    ]
+  },
+  {
+    "word": "zenith",
+    "synonyms": [
+      "peak",
+      "summit"
+    ],
+    "antonyms": [
+      "nadir",
+      "bottom"
+    ]
+  },
+  {
+    "word": "meteoric",
+    "synonyms": [
+      "rapid",
+      "dazzling"
+    ],
+    "antonyms": [
+      "gradual",
+      "slow"
+    ]
+  },
+  {
+    "word": "unscathed",
+    "synonyms": [
+      "unharmed",
+      "unhurt"
+    ],
+    "antonyms": [
+      "injured",
+      "damaged"
+    ]
+  },
+  {
+    "word": "catastrophe",
+    "synonyms": [
+      "calamity",
+      "disaster"
+    ],
+    "antonyms": [
+      "triumph",
+      "blessing"
+    ]
+  },
+  {
+    "word": "nemesis",
+    "synonyms": [
+      "archenemy",
+      "bane"
+    ],
+    "antonyms": [
+      "ally",
+      "champion"
+    ]
+  },
+  {
+    "word": "hubris",
+    "synonyms": [
+      "arrogance",
+      "conceit"
+    ],
+    "antonyms": [
+      "humility",
+      "modesty"
+    ]
+  },
+  {
+    "word": "bathos",
+    "synonyms": [
+      "triviality",
+      "banality"
+    ],
+    "antonyms": [
+      "pathos"
+    ]
+  },
+  {
+    "word": "anticlimax",
+    "synonyms": [
+      "letdown",
+      "disappointment"
+    ],
+    "antonyms": [
+      "climax",
+      "culmination"
+    ]
+  },
+  {
+    "word": "abortive",
+    "synonyms": [
+      "unsuccessful",
+      "failed"
+    ],
+    "antonyms": [
+      "successful",
+      "fruitful"
+    ]
+  },
+  {
+    "word": "fruitless",
+    "synonyms": [
+      "unproductive",
+      "unavailing"
+    ],
+    "antonyms": [
+      "fruitful",
+      "productive"
+    ]
+  },
+  {
+    "word": "futile",
+    "synonyms": [
+      "pointless",
+      "useless"
+    ],
+    "antonyms": [
+      "worthwhile",
+      "fruitful"
+    ]
+  },
+  {
+    "word": "abysmal",
+    "synonyms": [
+      "dreadful",
+      "appalling"
+    ],
+    "antonyms": [
+      "excellent",
+      "outstanding"
+    ]
+  },
+  {
+    "word": "lamentable",
+    "synonyms": [
+      "deplorable",
+      "regrettable"
+    ],
+    "antonyms": [
+      "admirable",
+      "commendable"
+    ]
+  },
+  {
+    "word": "ignominy",
+    "synonyms": [
+      "disgrace",
+      "shame"
+    ],
+    "antonyms": [
+      "honour",
+      "glory"
+    ]
+  },
+  {
+    "word": "opprobrium",
+    "synonyms": [
+      "disgrace",
+      "condemnation"
+    ],
+    "antonyms": [
+      "praise",
+      "acclaim"
+    ]
+  },
+  {
+    "word": "obloquy",
+    "synonyms": [
+      "abuse",
+      "vilification"
+    ],
+    "antonyms": [
+      "praise",
+      "acclaim"
+    ]
+  },
+  {
+    "word": "linchpin",
+    "synonyms": [
+      "keystone",
+      "mainstay"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cornerstone",
+    "synonyms": [
+      "foundation",
+      "basis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kudos",
+    "synonyms": [
+      "acclaim",
+      "prestige"
+    ],
+    "antonyms": [
+      "criticism"
+    ]
+  },
+  {
+    "word": "plaudits",
+    "synonyms": [
+      "applause",
+      "praise"
+    ],
+    "antonyms": [
+      "criticism",
+      "censure"
+    ]
+  },
+  {
+    "word": "eminence",
+    "synonyms": [
+      "prominence",
+      "distinction"
+    ],
+    "antonyms": [
+      "obscurity",
+      "insignificance"
+    ]
+  },
+  {
+    "word": "renown",
+    "synonyms": [
+      "fame",
+      "celebrity"
+    ],
+    "antonyms": [
+      "obscurity",
+      "anonymity"
+    ]
+  },
+  {
+    "word": "ascent",
+    "synonyms": [
+      "climb",
+      "rise"
+    ],
+    "antonyms": [
+      "descent",
+      "decline"
+    ]
+  },
+  {
+    "word": "trajectory",
+    "synonyms": [
+      "path",
+      "course"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hiatus",
+    "synonyms": [
+      "break",
+      "pause"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "abyss",
+    "synonyms": [
+      "chasm",
+      "gulf"
+    ],
+    "antonyms": [
+      "summit",
+      "pinnacle"
+    ]
+  },
+  {
+    "word": "precipice",
+    "synonyms": [
+      "brink",
+      "verge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vicissitude",
+    "synonyms": [
+      "fluctuation",
+      "ups and downs"
+    ],
+    "antonyms": [
+      "stability",
+      "constancy"
+    ]
+  },
+  {
+    "word": "nadir",
+    "synonyms": [
+      "low point",
+      "rock bottom"
+    ],
+    "antonyms": [
+      "zenith",
+      "peak"
+    ]
+  },
+  {
+    "word": "tenuous",
+    "synonyms": [
+      "flimsy",
+      "shaky"
+    ],
+    "antonyms": [
+      "solid",
+      "robust"
+    ]
+  },
+  {
+    "word": "mettle",
+    "synonyms": [
+      "spirit",
+      "courage"
+    ],
+    "antonyms": [
+      "cowardice"
+    ]
+  },
+  {
+    "word": "doughty",
+    "synonyms": [
+      "bold",
+      "stout-hearted"
+    ],
+    "antonyms": [
+      "timid"
+    ]
+  },
+  {
+    "word": "valiant",
+    "synonyms": [
+      "courageous",
+      "heroic"
+    ],
+    "antonyms": [
+      "cowardly",
+      "timid"
+    ]
+  },
+  {
+    "word": "gallant",
+    "synonyms": [
+      "heroic",
+      "chivalrous"
+    ],
+    "antonyms": [
+      "cowardly",
+      "craven"
+    ]
+  },
+  {
+    "word": "intrepid",
+    "synonyms": [
+      "fearless",
+      "daring"
+    ],
+    "antonyms": [
+      "timid",
+      "fearful"
+    ]
+  },
+  {
+    "word": "inexorable",
+    "synonyms": [
+      "relentless",
+      "unstoppable"
+    ],
+    "antonyms": [
+      "avoidable",
+      "escapable"
+    ]
+  },
+  {
+    "word": "bedrock",
+    "synonyms": [
+      "foundation",
+      "groundwork"
+    ],
+    "antonyms": []
+  }
+]

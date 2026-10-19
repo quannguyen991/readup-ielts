@@ -32,17 +32,17 @@ const AI_TOOLS: {
   { title: 'Điều chỉnh giọng nói', desc: 'Nhận phản hồi và sửa trọng âm, ngữ điệu', art: (s) => <CuteHeadphones size={s} />, route: '/hub/pitch', from: '#FFF0BF', to: '#FFE08A' },
   { title: 'Video ngắn', desc: 'Xem video ngắn và nói lại cụm từ', art: (s) => <CuteRocket size={s} />, route: '/hub/short', from: '#FFD6E3', to: '#FFB8CE', tag: 'BETA' },
   { title: 'Nói đuổi', desc: 'Nói đuổi theo giọng bản ngữ, phản hồi ngay', art: (s) => <CuteChat size={s} />, route: '/hub/shadow', from: '#E3D7FF', to: '#C9B5FA', tag: 'BETA' },
+  { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại thật', art: (s) => <CuteChat size={s} />, route: '/hub/scenarios', from: '#FFE4D8', to: '#FFC7B0' },
+  { title: 'Chủ đề', desc: 'Nói theo chủ đề 1–2 phút, có gợi ý ý', art: (s) => <CuteGlobe size={s} />, route: '/hub/topics', from: '#DDF5E6', to: '#B5EBCB' },
+  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', from: '#FFF3CC', to: '#FFE49A' },
+  { title: 'Trợ lý họp', desc: 'Nhận phản hồi sau các cuộc họp', art: (s) => <CuteCalendar size={s} />, route: '/hub/meeting', from: '#F3E9FF', to: '#DCC8FA' },
 ];
 
 /** Chế độ luyện nói và các khu còn lại của Hub (trước đây nằm ở thanh tab dưới). */
 const MODES: { title: string; desc: string; art: (size: number) => React.ReactNode; route: string; bg: string }[] = [
-  { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại', art: (s) => <CuteChat size={s} />, route: '/hub/scenarios', bg: '#FFE4D8' },
-  { title: 'Chủ đề', desc: 'Nói theo chủ đề 1–2 phút', art: (s) => <CuteGlobe size={s} />, route: '/hub/topics', bg: '#DDF5E6' },
-  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', bg: '#FFF3CC' },
   { title: 'Học', desc: 'Bài học theo từng kỹ năng', art: (s) => <CuteBook size={s} />, route: '/hub/learn', bg: '#DFEEFF' },
   { title: 'Khám phá', desc: 'Tìm nội dung và bài luyện mới', art: (s) => <CuteMagnifier size={s} />, route: '/hub/explore', bg: '#EEE6FF' },
   { title: 'Từ điển', desc: 'Tra từ, nghe phát âm', art: (s) => <CuteNotebook size={s} />, route: '/hub/dictionary', bg: '#E2F7F8' },
-  { title: 'Trợ lý họp', desc: 'Nhận phản hồi sau các cuộc họp', art: (s) => <CuteCalendar size={s} />, route: '/hub/meeting', bg: '#F3E9FF' },
 ];
 
 export default function HubToday() {
@@ -164,8 +164,8 @@ export default function HubToday() {
       {/* Công cụ AI của bạn */}
       <View style={[GLASS_CARD, { padding: 16, gap: 14, borderRadius: 24 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
-          <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Công cụ AI của bạn</Text>
-          <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '600' }}>Chọn công cụ phù hợp để luyện nói hiệu quả hơn.</Text>
+          <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Luyện nói với AI</Text>
+          <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '600' }}>Tám công cụ, bấm thẻ để vào luyện ngay.</Text>
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           {AI_TOOLS.map((tool) => (
@@ -176,7 +176,7 @@ export default function HubToday() {
               onPress={() => router.push(tool.route as never)}
               style={{ flexBasis: wide ? '23.5%' : '48%', flexGrow: 1, borderRadius: 22, overflow: 'hidden' }}
             >
-              <LinearGradient colors={[tool.from, tool.to]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 14, gap: 6, minHeight: wide ? 200 : 178 }}>
+              <LinearGradient colors={[tool.from, tool.to]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 14, gap: 6, minHeight: 190 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   {tool.tag ? (
                     <View style={{ paddingHorizontal: 9, paddingVertical: 3, borderRadius: 10, backgroundColor: 'rgba(255,255,255,0.92)' }}>
@@ -201,7 +201,7 @@ export default function HubToday() {
       {/* Chế độ luyện nói */}
       <View style={{ gap: 10 }}>
         <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' }}>
-          <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Chế độ luyện nói</Text>
+          <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Khám phá thêm</Text>
           <Pressable accessibilityRole="button" onPress={() => router.push('/hub/progress' as never)}>
             <Text style={{ color: '#C2410C', fontSize: 13, fontWeight: '800' }}>Tiến độ ›</Text>
           </Pressable>

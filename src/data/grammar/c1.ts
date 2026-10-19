@@ -1,4 +1,5 @@
 import type { GrammarLessonDetail } from './types';
+import { C1_GRAMMAR_EXTRA } from './c1-2';
 
 /** Cấp C1: đảo ngữ, câu chẻ, động từ khuyết thiếu suy đoán. */
 export const C1_GRAMMAR: GrammarLessonDetail[] = [
@@ -439,4 +440,5 @@ export const C1_GRAMMAR: GrammarLessonDetail[] = [
       { q: "Choose the correct sentence.", options: ["I do loves this song!", "I do love this song!", "I does love this song!"], answer: 1, explain: "Với I dùng do cộng động từ nguyên mẫu." },
     ],
   },
+  ...C1_GRAMMAR_EXTRA,
 ];

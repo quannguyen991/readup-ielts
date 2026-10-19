@@ -1,0 +1,1148 @@
+[
+  {
+    "word": "carbon footprint",
+    "synonyms": [
+      "emissions footprint",
+      "carbon output"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ozone layer",
+    "synonyms": [
+      "ozone shield"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fossil fuel",
+    "synonyms": [
+      "hydrocarbon fuel"
+    ],
+    "antonyms": [
+      "renewable energy"
+    ]
+  },
+  {
+    "word": "runoff",
+    "synonyms": [
+      "surface water flow",
+      "drainage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "acid rain",
+    "synonyms": [
+      "acid precipitation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solar panel",
+    "synonyms": [
+      "photovoltaic panel",
+      "solar cell"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "geothermal",
+    "synonyms": [
+      "geothermic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "greenwashing",
+    "synonyms": [
+      "false environmental claims",
+      "eco-posturing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "forest",
+    "synonyms": [
+      "woodland",
+      "forested area"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "river",
+    "synonyms": [
+      "stream",
+      "waterway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "litter",
+    "synonyms": [
+      "debris",
+      "trash"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rubbish",
+    "synonyms": [
+      "trash",
+      "refuse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "waste",
+    "synonyms": [
+      "refuse",
+      "garbage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plastic",
+    "synonyms": [
+      "polymer",
+      "synthetic material"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "weather",
+    "synonyms": [
+      "atmospheric conditions",
+      "conditions"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pollute",
+    "synonyms": [
+      "contaminate",
+      "foul"
+    ],
+    "antonyms": [
+      "purify"
+    ]
+  },
+  {
+    "word": "wildlife",
+    "synonyms": [
+      "fauna",
+      "animal life"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "species",
+    "synonyms": [
+      "kind of organism",
+      "taxon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "energy",
+    "synonyms": [
+      "power",
+      "fuel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "park",
+    "synonyms": [
+      "green space",
+      "recreation ground"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flood",
+    "synonyms": [
+      "deluge",
+      "inundation"
+    ],
+    "antonyms": [
+      "drought"
+    ]
+  },
+  {
+    "word": "drought",
+    "synonyms": [
+      "dry spell",
+      "water shortage"
+    ],
+    "antonyms": [
+      "flood"
+    ]
+  },
+  {
+    "word": "planet",
+    "synonyms": [
+      "world",
+      "globe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nature",
+    "synonyms": [
+      "the natural world",
+      "wilderness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "clean",
+    "synonyms": [
+      "pure",
+      "unpolluted"
+    ],
+    "antonyms": [
+      "dirty"
+    ]
+  },
+  {
+    "word": "polluted",
+    "synonyms": [
+      "contaminated",
+      "tainted"
+    ],
+    "antonyms": [
+      "clean"
+    ]
+  },
+  {
+    "word": "sunlight",
+    "synonyms": [
+      "sunshine",
+      "daylight"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wind",
+    "synonyms": [
+      "breeze",
+      "gale"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "word": "tree",
+    "synonyms": [
+      "woody plant",
+      "timber tree"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "soil",
+    "synonyms": [
+      "earth",
+      "topsoil"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ocean",
+    "synonyms": [
+      "sea"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oxygen",
+    "synonyms": [
+      "O2",
+      "dioxygen"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "conserve",
+    "synonyms": [
+      "preserve",
+      "protect"
+    ],
+    "antonyms": [
+      "squander"
+    ]
+  },
+  {
+    "word": "habitat",
+    "synonyms": [
+      "natural environment",
+      "home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "extinct",
+    "synonyms": [
+      "died out",
+      "vanished"
+    ],
+    "antonyms": [
+      "extant"
+    ]
+  },
+  {
+    "word": "endangered",
+    "synonyms": [
+      "threatened",
+      "at risk"
+    ],
+    "antonyms": [
+      "flourishing"
+    ]
+  },
+  {
+    "word": "sustainability",
+    "synonyms": [
+      "durability",
+      "environmental responsibility"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "toxic",
+    "synonyms": [
+      "poisonous",
+      "harmful"
+    ],
+    "antonyms": [
+      "harmless"
+    ]
+  },
+  {
+    "word": "erosion",
+    "synonyms": [
+      "wearing away",
+      "degradation"
+    ],
+    "antonyms": [
+      "accretion"
+    ]
+  },
+  {
+    "word": "irrigation",
+    "synonyms": [
+      "watering",
+      "water supply"
+    ],
+    "antonyms": [
+      "drainage"
+    ]
+  },
+  {
+    "word": "scarce",
+    "synonyms": [
+      "rare",
+      "limited"
+    ],
+    "antonyms": [
+      "abundant"
+    ]
+  },
+  {
+    "word": "reforestation",
+    "synonyms": [
+      "replanting",
+      "forest regeneration"
+    ],
+    "antonyms": [
+      "deforestation"
+    ]
+  },
+  {
+    "word": "reusable",
+    "synonyms": [
+      "multi-use",
+      "durable"
+    ],
+    "antonyms": [
+      "single-use"
+    ]
+  },
+  {
+    "word": "pesticide",
+    "synonyms": [
+      "insecticide",
+      "biocide"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fertiliser",
+    "synonyms": [
+      "fertilizer",
+      "manure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "overfishing",
+    "synonyms": [
+      "overharvesting",
+      "fish depletion"
+    ],
+    "antonyms": [
+      "sustainable fishing"
+    ]
+  },
+  {
+    "word": "biofuel",
+    "synonyms": [
+      "biogas",
+      "bioethanol"
+    ],
+    "antonyms": [
+      "fossil fuel"
+    ]
+  },
+  {
+    "word": "emit",
+    "synonyms": [
+      "release",
+      "discharge"
+    ],
+    "antonyms": [
+      "absorb"
+    ]
+  },
+  {
+    "word": "dispose",
+    "synonyms": [
+      "get rid of",
+      "discard"
+    ],
+    "antonyms": [
+      "retain"
+    ]
+  },
+  {
+    "word": "biosphere",
+    "synonyms": [
+      "ecosphere",
+      "living world"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "precipitation",
+    "synonyms": [
+      "rainfall",
+      "snowfall"
+    ],
+    "antonyms": [
+      "evaporation"
+    ]
+  },
+  {
+    "word": "desertification",
+    "synonyms": [
+      "land degradation",
+      "desert expansion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eutrophication",
+    "synonyms": [
+      "nutrient enrichment",
+      "nutrient pollution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sediment",
+    "synonyms": [
+      "silt",
+      "deposit"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "permafrost",
+    "synonyms": [
+      "frozen ground"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "albedo",
+    "synonyms": [
+      "reflectivity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stewardship",
+    "synonyms": [
+      "custodianship",
+      "guardianship"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "word": "afforestation",
+    "synonyms": [
+      "tree planting",
+      "forestation"
+    ],
+    "antonyms": [
+      "deforestation"
+    ]
+  },
+  {
+    "word": "decarbonise",
+    "synonyms": [
+      "reduce emissions",
+      "cut carbon"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carbon sink",
+    "synonyms": [
+      "carbon reservoir"
+    ],
+    "antonyms": [
+      "carbon source"
+    ]
+  },
+  {
+    "word": "stakeholder",
+    "synonyms": [
+      "interested party"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lobbying",
+    "synonyms": [
+      "advocacy",
+      "campaigning"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ratify",
+    "synonyms": [
+      "approve",
+      "endorse"
+    ],
+    "antonyms": [
+      "reject"
+    ]
+  },
+  {
+    "word": "protocol",
+    "synonyms": [
+      "agreement",
+      "convention"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "accord",
+    "synonyms": [
+      "agreement",
+      "treaty"
+    ],
+    "antonyms": [
+      "discord"
+    ]
+  },
+  {
+    "word": "moratorium",
+    "synonyms": [
+      "ban",
+      "suspension"
+    ],
+    "antonyms": [
+      "resumption"
+    ]
+  },
+  {
+    "word": "remediation",
+    "synonyms": [
+      "clean-up",
+      "restoration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vulnerable",
+    "synonyms": [
+      "at risk",
+      "exposed"
+    ],
+    "antonyms": [
+      "resilient"
+    ]
+  },
+  {
+    "word": "ecocide",
+    "synonyms": [
+      "environmental destruction",
+      "ecological devastation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "biomass",
+    "synonyms": [
+      "organic matter",
+      "biological material"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "upcycle",
+    "synonyms": [
+      "repurpose",
+      "transform"
+    ],
+    "antonyms": [
+      "downcycle"
+    ]
+  },
+  {
+    "word": "circular economy",
+    "synonyms": [
+      "closed-loop economy"
+    ],
+    "antonyms": [
+      "linear economy"
+    ]
+  },
+  {
+    "word": "contamination",
+    "synonyms": [
+      "pollution",
+      "adulteration"
+    ],
+    "antonyms": [
+      "purification"
+    ]
+  },
+  {
+    "word": "marine",
+    "synonyms": [
+      "oceanic",
+      "maritime"
+    ],
+    "antonyms": [
+      "terrestrial"
+    ]
+  },
+  {
+    "word": "atmosphere",
+    "synonyms": [
+      "air",
+      "air layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lithosphere",
+    "synonyms": [
+      "earth's crust",
+      "rocky outer layer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hydrosphere",
+    "synonyms": [
+      "water bodies"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pristine",
+    "synonyms": [
+      "untouched",
+      "unspoilt"
+    ],
+    "antonyms": [
+      "degraded"
+    ]
+  },
+  {
+    "word": "dwindle",
+    "synonyms": [
+      "diminish",
+      "decline"
+    ],
+    "antonyms": [
+      "increase"
+    ]
+  },
+  {
+    "word": "conservationist",
+    "synonyms": [
+      "environmentalist",
+      "naturalist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "reclaim",
+    "synonyms": [
+      "restore",
+      "rehabilitate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turbid",
+    "synonyms": [
+      "murky",
+      "cloudy"
+    ],
+    "antonyms": [
+      "clear"
+    ]
+  },
+  {
+    "word": "ephemeral",
+    "synonyms": [
+      "fleeting",
+      "transient"
+    ],
+    "antonyms": [
+      "permanent"
+    ]
+  },
+  {
+    "word": "sylvan",
+    "synonyms": [
+      "forested",
+      "wooded"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arboreal",
+    "synonyms": [
+      "tree-dwelling",
+      "arboreous"
+    ],
+    "antonyms": [
+      "terrestrial"
+    ]
+  },
+  {
+    "word": "fecund",
+    "synonyms": [
+      "fertile",
+      "fruitful"
+    ],
+    "antonyms": [
+      "barren"
+    ]
+  },
+  {
+    "word": "verdant",
+    "synonyms": [
+      "lush",
+      "green"
+    ],
+    "antonyms": [
+      "barren"
+    ]
+  },
+  {
+    "word": "bucolic",
+    "synonyms": [
+      "rustic",
+      "pastoral"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "desiccate",
+    "synonyms": [
+      "dry out",
+      "parch"
+    ],
+    "antonyms": [
+      "moisten"
+    ]
+  },
+  {
+    "word": "effluent",
+    "synonyms": [
+      "wastewater",
+      "discharge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anthropocentric",
+    "synonyms": [
+      "human-centred"
+    ],
+    "antonyms": [
+      "ecocentric",
+      "biocentric"
+    ]
+  },
+  {
+    "word": "unremitting",
+    "synonyms": [
+      "relentless",
+      "incessant"
+    ],
+    "antonyms": [
+      "intermittent"
+    ]
+  },
+  {
+    "word": "perennial",
+    "synonyms": [
+      "enduring",
+      "recurrent"
+    ],
+    "antonyms": [
+      "annual"
+    ]
+  },
+  {
+    "word": "terrestrial",
+    "synonyms": [
+      "land-based",
+      "earthly"
+    ],
+    "antonyms": [
+      "aquatic"
+    ]
+  },
+  {
+    "word": "arid",
+    "synonyms": [
+      "dry",
+      "desert-like"
+    ],
+    "antonyms": [
+      "humid"
+    ]
+  },
+  {
+    "word": "prolific",
+    "synonyms": [
+      "abundant",
+      "fruitful"
+    ],
+    "antonyms": [
+      "sparse"
+    ]
+  },
+  {
+    "word": "deleterious",
+    "synonyms": [
+      "harmful",
+      "damaging"
+    ],
+    "antonyms": [
+      "beneficial"
+    ]
+  },
+  {
+    "word": "noxious",
+    "synonyms": [
+      "poisonous",
+      "harmful"
+    ],
+    "antonyms": [
+      "innocuous"
+    ]
+  },
+  {
+    "word": "pernicious",
+    "synonyms": [
+      "destructive",
+      "malignant"
+    ],
+    "antonyms": [
+      "benign"
+    ]
+  },
+  {
+    "word": "ameliorate",
+    "synonyms": [
+      "improve",
+      "mitigate"
+    ],
+    "antonyms": [
+      "aggravate"
+    ]
+  },
+  {
+    "word": "attenuate",
+    "synonyms": [
+      "reduce",
+      "weaken"
+    ],
+    "antonyms": [
+      "intensify"
+    ]
+  },
+  {
+    "word": "undulate",
+    "synonyms": [
+      "ripple",
+      "billow"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catchment",
+    "synonyms": [
+      "drainage basin",
+      "watershed"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "alluvial",
+    "synonyms": [
+      "sedimentary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sedimentation",
+    "synonyms": [
+      "deposition",
+      "silting"
+    ],
+    "antonyms": [
+      "erosion"
+    ]
+  },
+  {
+    "word": "indigenous",
+    "synonyms": [
+      "native",
+      "aboriginal"
+    ],
+    "antonyms": [
+      "non-native"
+    ]
+  },
+  {
+    "word": "phenology",
+    "synonyms": [
+      "seasonal biology",
+      "biological timing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "endemic",
+    "synonyms": [
+      "native",
+      "restricted"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "word": "aquatic",
+    "synonyms": [
+      "water-dwelling",
+      "marine"
+    ],
+    "antonyms": [
+      "terrestrial"
+    ]
+  },
+  {
+    "word": "effluvium",
+    "synonyms": [
+      "stench",
+      "miasma"
+    ],
+    "antonyms": [
+      "fragrance"
+    ]
+  },
+  {
+    "word": "tenebrous",
+    "synonyms": [
+      "dark",
+      "gloomy"
+    ],
+    "antonyms": [
+      "luminous"
+    ]
+  },
+  {
+    "word": "luxuriant",
+    "synonyms": [
+      "lush",
+      "dense"
+    ],
+    "antonyms": [
+      "sparse"
+    ]
+  },
+  {
+    "word": "teeming",
+    "synonyms": [
+      "swarming",
+      "crowded"
+    ],
+    "antonyms": [
+      "deserted"
+    ]
+  },
+  {
+    "word": "barren",
+    "synonyms": [
+      "infertile",
+      "sterile"
+    ],
+    "antonyms": [
+      "fertile"
+    ]
+  },
+  {
+    "word": "parched",
+    "synonyms": [
+      "dry",
+      "scorched"
+    ],
+    "antonyms": [
+      "moist"
+    ]
+  },
+  {
+    "word": "desolate",
+    "synonyms": [
+      "bleak",
+      "deserted"
+    ],
+    "antonyms": [
+      "inhabited"
+    ]
+  },
+  {
+    "word": "ravage",
+    "synonyms": [
+      "devastate",
+      "destroy"
+    ],
+    "antonyms": [
+      "preserve"
+    ]
+  },
+  {
+    "word": "denude",
+    "synonyms": [
+      "strip",
+      "deforest"
+    ],
+    "antonyms": [
+      "reforest"
+    ]
+  },
+  {
+    "word": "vitiate",
+    "synonyms": [
+      "corrupt",
+      "spoil"
+    ],
+    "antonyms": [
+      "purify"
+    ]
+  },
+  {
+    "word": "cataclysm",
+    "synonyms": [
+      "catastrophe",
+      "disaster"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inexorable",
+    "synonyms": [
+      "relentless",
+      "unstoppable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "myriad",
+    "synonyms": [
+      "countless",
+      "innumerable"
+    ],
+    "antonyms": [
+      "handful"
+    ]
+  },
+  {
+    "word": "wetland",
+    "synonyms": [
+      "marsh",
+      "swamp"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "quagmire",
+    "synonyms": [
+      "bog",
+      "morass"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "coppice",
+    "synonyms": [
+      "copse",
+      "thicket"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bramble",
+    "synonyms": [
+      "brier",
+      "blackberry bush"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dune",
+    "synonyms": [
+      "sand hill",
+      "sand bank"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "estuary",
+    "synonyms": [
+      "river mouth",
+      "tidal inlet"
+    ],
+    "antonyms": []
+  }
+]

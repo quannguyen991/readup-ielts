@@ -1,6 +1,6 @@
 import { themedHex } from '@/theme/palette-state';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -33,8 +33,10 @@ export function levelLabel(level: TheoryLesson['level'], en: boolean): string {
 }
 
 /**
- * Một bài lý thuyết: HỌC (các khối kiến thức) → LUYỆN (`check`, ba câu tự kiểm
- * tra do màn gọi truyền vào) → CHỨNG MINH (nút sang bộ đề của kỹ năng).
+ * Một bài lý thuyết, trình bày như phòng bài ngữ pháp: cột trái là mục lục các
+ * bước và tiến độ, cột phải là nội dung bước hiện tại. Thứ tự bước: mục tiêu →
+ * từng quy tắc → từng ví dụ (tự làm trước, lời giải mở sau) → bẫy & mẹo → bước
+ * cuối là kiểm tra không gợi ý, nhớ nhanh, và luyện bộ đề.
  *
  * `math` bật render công thức qua `MathText`; bài Verbal là chữ thường.
  */
@@ -65,10 +67,141 @@ export function LessonView({
 }) {
   const tone = LEVEL_TONE[lesson.level];
   const { L, en } = useL();
+  const { width } = useWindowDimensions();
+  const wide = width >= 900;
+  const [at, setAt] = React.useState(0);
+  const isMath = !!math;
+
+  const rules = rulesOf(lesson);
+  const examples = examplesOf(lesson);
+  const notes = notesOf(lesson);
+  const steps: LessonStep[] = [
+    {
+      label: L('Mục tiêu', 'Goal'),
+      title: L('Học xong làm được gì', 'What you will be able to do'),
+      content: (
+        <>
+          <Text className="font-semi text-ink" style={{ fontSize: 18, lineHeight: 26 }}>{lesson.goal}</Text>
+          {lesson.prerequisite ? (
+            <Text className="mt-3 font-sans text-body text-muted">{L('Ôn trước: ', 'Review first: ')}{lesson.prerequisite}</Text>
+          ) : null}
+          {lesson.recognize ? (
+            <View className="mt-4 flex-row items-start gap-3 rounded-2xl p-4" style={{ backgroundColor: '#FCF9F4' }}>
+              <Icon name="search" size={18} color={color.primary} />
+              <View className="min-w-0 flex-1">
+                <Text className="font-heavy text-body text-ink">{L('Nhận diện dạng bài', 'Recognize the question')}</Text>
+                <Text className="mt-1 font-sans text-body text-muted">{lesson.recognize}</Text>
+              </View>
+            </View>
+          ) : null}
+        </>
+      ),
+    },
+    ...rules.map((r, i) => ({
+      label: L(`Quy tắc ${i + 1}`, `Rule ${i + 1}`),
+      title: r.title,
+      content: (
+        <>
+          <RichText math={isMath} size={17}>{r.body}</RichText>
+          {r.formula ? (
+            <View className="mt-4 self-start rounded-xl px-4 py-3" style={{ backgroundColor: '#F8F6F1' }}>
+              <RichText math={isMath} size={18} bold>{r.formula}</RichText>
+            </View>
+          ) : null}
+        </>
+      ),
+    })),
+    ...examples.map((ex, i) => ({
+      label: L(`Ví dụ ${i + 1}`, `Example ${i + 1}`),
+      title: L('Tự làm trước, rồi mới xem lời giải', 'Try it first, then see the solution'),
+      content: <ExampleCard block={ex} math={isMath} n={i + 1} total={examples.length} />,
+    })),
+    ...(notes.length
+      ? [
+          {
+            label: L('Bẫy & mẹo', 'Traps & tips'),
+            title: L('Chỗ hay mất điểm', 'Where points are lost'),
+            content: (
+              <View className="gap-3">
+                {notes.map((n, i) => (
+                  <NoteCard key={i} block={n} math={isMath} />
+                ))}
+              </View>
+            ),
+          },
+        ]
+      : []),
+    {
+      label: L('Kiểm tra cuối', 'Final check'),
+      title: L('Tự kiểm tra, rồi luyện bộ đề', 'Check yourself, then practise'),
+      content: (
+        <>
+          {check}
+          {lesson.summary ? (
+            <View className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+              <View className="flex-row items-center gap-2">
+                <Icon name="check" size={17} color="#15803D" strokeWidth={2.4} />
+                <Text className="font-heavy text-body text-ink">{L('Nhớ nhanh', 'Remember')}</Text>
+              </View>
+              <Text className="mt-2 font-sans text-body text-ink">{lesson.summary}</Text>
+            </View>
+          ) : null}
+          <View className="mt-5 gap-3">
+            {practiceLevels?.length ? (
+              <View className="flex-row flex-wrap gap-2">
+                {practiceLevels.map((level) => (
+                  <Button key={level.key} size="sm" variant="outline" label={level.label} onPress={() => router.push(level.href as never)} />
+                ))}
+              </View>
+            ) : null}
+            <View className="flex-row flex-wrap gap-2">
+              <Button label={L('Luyện bộ đề', 'Practise sets')} iconRight="arrow-right" onPress={() => router.push(practiceHref as never)} />
+              {!done ? <Button variant="secondary" label={L('Đánh dấu đã học xong', 'Mark as completed')} iconLeft="check" onPress={onDone} /> : null}
+              {next ? <Button variant="ghost" label={L(`Bài tiếp: ${next.title}`, `Next lesson: ${next.title}`)} onPress={() => router.push(next.href as never)} /> : null}
+            </View>
+          </View>
+        </>
+      ),
+    },
+  ];
+
+  const last = steps.length - 1;
+  const idx = Math.min(at, last);
+  const current = steps[idx]!;
+  const pct = Math.round((idx / last) * 100);
+
+  const toc = (
+    <View className="gap-1">
+      {steps.map((s, i) => {
+        const active = i === idx;
+        const passed = i < idx;
+        return (
+          <Pressable
+            key={i}
+            accessibilityRole="button"
+            accessibilityState={{ selected: active }}
+            onPress={() => setAt(i)}
+            className="flex-row items-center gap-2.5 rounded-xl px-3 py-2.5"
+            style={{ backgroundColor: active ? '#FFFFFF' : 'transparent', borderWidth: active ? 1.5 : 0, borderColor: color.primary }}
+          >
+            <View
+              className="h-5 w-5 items-center justify-center rounded-pill"
+              style={{ borderWidth: 2, borderColor: passed || active ? color.primary : '#CBBFAE', backgroundColor: passed ? color.primary : 'transparent' }}
+            >
+              {passed ? <Icon name="check" size={11} color="#FFFFFF" strokeWidth={3} /> : null}
+            </View>
+            <Text className={active ? 'font-heavy text-ink' : 'font-semi text-muted'} style={{ fontSize: 14, flexShrink: 1 }}>
+              {s.label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
 
   return (
     <Screen>
-      <View className="w-full self-center" style={{ maxWidth: 860 }}>
+      <View className="w-full self-center" style={{ maxWidth: 1040 }}>
         <Pressable
           accessibilityRole="button"
           onPress={() => router.replace(backHref as never)}
@@ -104,128 +237,72 @@ export function LessonView({
                 </View>
               ) : null}
             </View>
-            <View className="mt-4 flex-row gap-3 rounded-2xl p-3.5" style={{ backgroundColor: '#FCF9F4' }}>
-              <Icon name="target" size={18} color={color.primary} />
-              <View className="min-w-0 flex-1">
-                <Text className="font-strong text-label text-muted">{L('Mục tiêu', 'Goal')}</Text>
-                <Text className="mt-0.5 font-semi text-body text-ink">{lesson.goal}</Text>
-              </View>
-            </View>
-            {lesson.prerequisite ? (
-              <View className="mt-3 flex-row gap-2">
-                <Text className="font-strong text-label text-muted">{L('Ôn trước:', 'Review:')}</Text>
-                <Text className="min-w-0 flex-1 font-sans text-label text-muted">{lesson.prerequisite}</Text>
-              </View>
-            ) : null}
           </View>
         </Appear>
 
-        {/* Một khung kiến thức, theo thứ tự đọc; công thức đi ngay dưới quy tắc. */}
-        <Section
-          icon="book"
-          title={L('Ý chính', 'Key ideas')}
-        />
-        <Appear index={1}>
-          <View className="rounded-[22px] bg-white p-4 md:p-5" style={CARD}>
-            {rulesOf(lesson).map((r, i) => (
-              <View key={i} className={i > 0 ? 'mt-3 border-t pt-3' : ''} style={{ borderColor: '#F1EDE6' }}>
-                <View className="flex-row items-start gap-3">
-                  <View className="mt-1.5 h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: RULE_TONES[i % RULE_TONES.length] }} />
-                  <View className="min-w-0 flex-1">
-                    <Text className="font-heavy text-ink" style={{ fontSize: 16, lineHeight: 22 }}>
-                      {r.title}
+        {/* Tiến độ: một thanh chạy suốt chiều rộng, luôn cho biết đang ở đâu. */}
+        <View className="mt-4 rounded-[22px] bg-white px-5 py-4" style={CARD}>
+          <View className="flex-row items-center justify-between gap-3">
+            <Text className="font-strong text-label text-muted">
+              {L(`Bước ${idx + 1} trên ${steps.length}`, `Step ${idx + 1} of ${steps.length}`)}
+            </Text>
+            <Text className="font-heavy text-label" style={{ color: color.primary }}>{pct}%</Text>
+          </View>
+          <View className="mt-2.5 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#F1EBDF' }}>
+            <View style={{ width: `${pct}%`, height: 8, borderRadius: 999, backgroundColor: color.primary }} />
+          </View>
+        </View>
+
+        <View className="mt-4" style={{ flexDirection: wide ? 'row' : 'column', gap: 16, alignItems: 'flex-start' }}>
+          {/* Cột trái: mục lục các bước */}
+          <View className="rounded-[22px] bg-white p-3" style={{ width: wide ? 260 : '100%', ...CARD }}>
+            {wide ? toc : (
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingHorizontal: 4, paddingVertical: 4 }}>
+                {steps.map((s, i) => (
+                  <Pressable
+                    key={i}
+                    accessibilityRole="button"
+                    onPress={() => setAt(i)}
+                    className="rounded-pill px-4 py-2.5"
+                    style={{ backgroundColor: i === idx ? color.primary : i < idx ? '#F4EFE6' : '#FFFFFF', borderWidth: 1, borderColor: i === idx ? color.primary : '#E8E0D2' }}
+                  >
+                    <Text className="font-semi text-label" style={{ color: i === idx ? '#FFFFFF' : color.ink }}>
+                      {i < idx ? '✓ ' : ''}{s.label}
                     </Text>
-                    <View className="mt-0.5">
-                      <RichText math={!!math}>{r.body}</RichText>
-                    </View>
-                    {r.formula ? (
-                      <View className="mt-2 self-start rounded-lg px-3 py-2" style={{ backgroundColor: '#F8F6F1' }}>
-                        <RichText math={!!math} size={17} bold>
-                          {r.formula}
-                        </RichText>
-                      </View>
-                    ) : null}
-                  </View>
+                  </Pressable>
+                ))}
+              </ScrollView>
+            )}
+          </View>
+
+          {/* Cột phải: nội dung bước hiện tại */}
+          <View className="min-w-0" style={{ flex: 1, width: wide ? undefined : '100%' }}>
+            <Appear key={idx} index={0}>
+              <View className="rounded-[22px] bg-white p-6 md:p-8" style={CARD}>
+                <View className="self-start rounded-pill px-3 py-1" style={{ backgroundColor: color.primary + '1F' }}>
+                  <Text className="font-strong text-label uppercase tracking-[1px]" style={{ color: color.primary }}>{current.label}</Text>
                 </View>
+                <Text className="mt-3 font-heavy text-ink" style={{ fontSize: 28, lineHeight: 36 }}>{current.title}</Text>
+                <View className="mt-5 border-t pt-5" style={{ borderColor: '#F1EBDF' }}>{current.content}</View>
               </View>
-            ))}
-          </View>
-        </Appear>
+            </Appear>
 
-        {/* Người học tự làm trước, lời giải chỉ mở khi chọn. */}
-        {examplesOf(lesson).length > 0 ? (
-          <>
-            <Section
-              icon="pencil"
-              title={L('Ví dụ', 'Examples')}
-            />
-            <View className="gap-3">
-              {examplesOf(lesson).map((ex, i) => (
-                <Appear key={i} index={i + 2}>
-                  <ExampleCard block={ex} math={!!math} n={i + 1} total={examplesOf(lesson).length} />
-                </Appear>
-              ))}
+            {/* Thanh điều hướng: bước trước bên trái, bước kế bên phải. */}
+            <View className="mt-4 flex-row items-center justify-between gap-3 rounded-[22px] bg-white px-4 py-3" style={CARD}>
+              <Button variant="outline" label={L('Bước trước', 'Previous')} disabled={idx === 0} onPress={() => setAt(Math.max(0, idx - 1))} />
+              {idx < last ? (
+                <View className="min-w-0 flex-shrink flex-row items-center gap-3">
+                  {wide ? (
+                    <Text className="font-sans text-label text-muted" numberOfLines={1} style={{ flexShrink: 1 }}>
+                      {L('Tiếp theo: ', 'Next: ')}{steps[idx + 1]!.label}
+                    </Text>
+                  ) : null}
+                  <Button label={L('Tiếp tục', 'Continue')} iconRight="arrow-right" onPress={() => setAt(Math.min(last, idx + 1))} />
+                </View>
+              ) : (
+                <Text className="font-strong text-body" style={{ color: '#15803D' }}>{L('Bạn đã đi hết bài', "You've reached the end")}</Text>
+              )}
             </View>
-          </>
-        ) : null}
-
-        {/* Bẫy và mẹo được gom lại thành một phần ngắn. */}
-        {notesOf(lesson).length > 0 ? (
-          <>
-            <Section
-              icon="info"
-              title={L('Bẫy & mẹo', 'Traps & tips')}
-            />
-            <View className="flex-row flex-wrap gap-3">
-              {notesOf(lesson).map((n, i) => (
-                <NoteCard key={i} block={n} math={!!math} />
-              ))}
-            </View>
-          </>
-        ) : null}
-
-        {lesson.recognize ? (
-          <View className="mt-4 flex-row items-start gap-3 rounded-[22px] border border-border bg-white p-5" style={CARD}>
-            <Icon name="search" size={18} color={color.primary} />
-            <View className="min-w-0 flex-1">
-              <Text className="font-heavy text-body text-ink">{L('Nhận diện dạng bài', 'Recognize the question')}</Text>
-              <Text className="mt-1 font-sans text-body text-muted">{lesson.recognize}</Text>
-            </View>
-          </View>
-        ) : null}
-
-        <Section
-          icon="target"
-          title={L('Tự kiểm tra', 'Check yourself')}
-        />
-        {check}
-
-        {lesson.summary ? (
-          <View className="mt-4 rounded-[22px] border border-emerald-200 bg-emerald-50 p-5">
-            <View className="flex-row items-center gap-2">
-              <Icon name="check" size={17} color="#15803D" strokeWidth={2.4} />
-              <Text className="font-heavy text-body text-ink">{L('Nhớ nhanh', 'Remember')}</Text>
-            </View>
-            <Text className="mt-2 font-sans text-body text-ink">{lesson.summary}</Text>
-          </View>
-        ) : null}
-
-        <Section
-          icon="trophy"
-          title={L('Luyện tiếp', 'Practice')}
-        />
-        <View className="rounded-[22px] bg-white p-5" style={CARD}>
-          {practiceLevels?.length ? (
-            <View className="flex-row flex-wrap gap-2">
-              {practiceLevels.map((level) => (
-                <Button key={level.key} size="sm" variant="outline" label={level.label} onPress={() => router.push(level.href as never)} />
-              ))}
-            </View>
-          ) : null}
-          <View className="mt-3 flex-row flex-wrap gap-2">
-            <Button label={L('Luyện bộ đề', 'Practise sets')} iconRight="arrow-right" onPress={() => router.push(practiceHref as never)} />
-            {!done ? <Button variant="secondary" label={L('Đánh dấu đã học xong', 'Mark as completed')} iconLeft="check" onPress={onDone} /> : null}
-            {next ? <Button variant="ghost" label={L(`Bài tiếp: ${next.title}`, `Next lesson: ${next.title}`)} onPress={() => router.push(next.href as never)} /> : null}
           </View>
         </View>
       </View>
@@ -233,7 +310,10 @@ export function LessonView({
   );
 }
 
+type LessonStep = { label: string; title: string; content: React.ReactNode };
+
 const RULE_TONES = [themedHex('#B8955A'), '#10B981', '#F59E0B', '#EC4899', '#D6B57C', '#B07A3A'];
+
 
 type RuleBlock = Extract<LessonBlock, { kind: 'rule' }>;
 type ExampleBlock = Extract<LessonBlock, { kind: 'example' }>;
@@ -242,25 +322,6 @@ type NoteBlock = Extract<LessonBlock, { kind: 'trap' | 'tip' }>;
 const rulesOf = (l: TheoryLesson) => l.blocks.filter((x): x is RuleBlock => x.kind === 'rule');
 const examplesOf = (l: TheoryLesson) => l.blocks.filter((x): x is ExampleBlock => x.kind === 'example');
 const notesOf = (l: TheoryLesson) => l.blocks.filter((x): x is NoteBlock => x.kind === 'trap' || x.kind === 'tip');
-
-/**
- * Tiêu đề một phần của bài. Bản cũ là ô số tròn "1 Học / 2 / 3" — người dùng
- * thấy bài lý thuyết khó hiểu, khó dùng (27/09/2026): luật rời từng thẻ, ví dụ
- * lộ sẵn đáp án, bẫy/mẹo lẫn giữa các luật. Giờ bài chia theo VIỆC người học
- * làm: đọc luật → tự thử ví dụ → xem bẫy → tự kiểm tra → luyện bộ đề.
- */
-function Section({ icon, title }: { icon: IconName; title: string }) {
-  return (
-    <View className="mb-2 mt-6 flex-row items-center gap-3">
-      <View className="h-9 w-9 items-center justify-center rounded-xl bg-white" style={CARD}>
-        <Icon name={icon} size={17} color={color.ink} />
-      </View>
-      <View className="min-w-0 flex-1">
-        <Text className="font-heavy text-sectionTitle text-ink">{title}</Text>
-      </View>
-    </View>
-  );
-}
 
 function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boolean; n: number; total: number }) {
   const choices = choicesIn(block.problem);

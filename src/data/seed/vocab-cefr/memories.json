@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "photo",
+    "pos": "noun",
+    "ipa": "/ˈfəʊtəʊ/",
+    "meaningVi": "bức ảnh",
+    "definitionEn": "a picture taken with a camera or phone",
+    "example": "This photo of our family was taken on the beach last summer.",
+    "collocation": "a family photo",
+    "cefr": "B1"
+  },
+  {
+    "word": "album",
+    "pos": "noun",
+    "ipa": "/ˈælbəm/",
+    "meaningVi": "cuốn album ảnh",
+    "definitionEn": "a book or collection in which photos are kept",
+    "example": "We looked through the old photo album together and laughed at the pictures.",
+    "collocation": "a photo album",
+    "cefr": "B1"
+  },
+  {
+    "word": "birthday",
+    "pos": "noun",
+    "ipa": "/ˈbɜːθdeɪ/",
+    "meaningVi": "sinh nhật",
+    "definitionEn": "the day of the year when someone was born, celebrated each year",
+    "example": "I still remember the surprise party we held for my tenth birthday.",
+    "collocation": "a birthday party",
+    "cefr": "B1"
+  },
+  {
+    "word": "holiday",
+    "pos": "noun",
+    "ipa": "/ˈhɒlədeɪ/",
+    "meaningVi": "kỳ nghỉ",
+    "definitionEn": "a period of time away from work or school for rest and travel",
+    "example": "Our holiday at the seaside was the most relaxing time I remember.",
+    "collocation": "a summer holiday",
+    "cefr": "B1"
+  },
+  {
+    "word": "diary",
+    "pos": "noun",
+    "ipa": "/ˈdaɪəri/",
+    "meaningVi": "nhật ký",
+    "definitionEn": "a book in which you write about your daily experiences",
+    "example": "She kept a diary as a child and still reads it sometimes.",
+    "collocation": "keep a diary",
+    "cefr": "B1"
+  },
+  {
+    "word": "letter",
+    "pos": "noun",
+    "ipa": "/ˈletə/",
+    "meaningVi": "bức thư",
+    "definitionEn": "a written message sent to someone by post",
+    "example": "I found a letter from my grandfather tucked inside an old book.",
+    "collocation": "a handwritten letter",
+    "cefr": "B1"
+  },
+  {
+    "word": "story",
+    "pos": "noun",
+    "ipa": "/ˈstɔːri/",
+    "meaningVi": "câu chuyện",
+    "definitionEn": "an account of events, real or imagined, told to others",
+    "example": "My father told me a bedtime story about his village every night.",
+    "collocation": "a bedtime story",
+    "cefr": "B1"
+  },
+  {
+    "word": "toy",
+    "pos": "noun",
+    "ipa": "/tɔɪ/",
+    "meaningVi": "đồ chơi",
+    "definitionEn": "an object for children to play with",
+    "example": "My favourite toy was a small wooden train that my uncle made.",
+    "collocation": "a favourite toy",
+    "cefr": "B1"
+  },
+  {
+    "word": "party",
+    "pos": "noun",
+    "ipa": "/ˈpɑːti/",
+    "meaningVi": "buổi tiệc",
+    "definitionEn": "a social event where people gather to enjoy food, music, and company",
+    "example": "We had a lovely party at school before the summer break began.",
+    "collocation": "a school party",
+    "cefr": "B1"
+  },
+  {
+    "word": "trip",
+    "pos": "noun",
+    "ipa": "/trɪp/",
+    "meaningVi": "chuyến đi",
+    "definitionEn": "a journey to a place, usually for a short time",
+    "example": "Our class trip to the museum taught me a lot about history.",
+    "collocation": "a school trip",
+    "cefr": "B1"
+  },
+  {
+    "word": "picnic",
+    "pos": "noun",
+    "ipa": "/ˈpɪknɪk/",
+    "meaningVi": "buổi dã ngoại",
+    "definitionEn": "a meal eaten outdoors, usually taken to a park or countryside",
+    "example": "We had a picnic by the lake and played games all afternoon.",
+    "collocation": "a family picnic",
+    "cefr": "B1"
+  },
+  {
+    "word": "camera",
+    "pos": "noun",
+    "ipa": "/ˈkæmərə/",
+    "meaningVi": "máy ảnh",
+    "definitionEn": "a device used for taking photographs or recording video",
+    "example": "My mother bought an old camera to capture our happy moments.",
+    "collocation": "a digital camera",
+    "cefr": "B1"
+  },
+  {
+    "word": "grandmother",
+    "pos": "noun",
+    "ipa": "/ˈɡrænmʌðə/",
+    "meaningVi": "bà",
+    "definitionEn": "the mother of your father or mother",
+    "example": "My grandmother always told me stories about her childhood in the countryside.",
+    "collocation": "my grandmother",
+    "cefr": "B1"
+  },
+  {
+    "word": "playground",
+    "pos": "noun",
+    "ipa": "/ˈpleɪɡraʊnd/",
+    "meaningVi": "sân chơi",
+    "definitionEn": "an outdoor area for children to play on",
+    "example": "The playground near my old school was full of swings and slides.",
+    "collocation": "a school playground",
+    "cefr": "B1"
+  },
+  {
+    "word": "classmate",
+    "pos": "noun",
+    "ipa": "/ˈklɑːsmeɪt/",
+    "meaningVi": "bạn cùng lớp",
+    "definitionEn": "a person who is in the same class as you",
+    "example": "My classmate and I still meet every year for coffee together.",
+    "collocation": "an old classmate",
+    "cefr": "B1"
+  },
+  {
+    "word": "lullaby",
+    "pos": "noun",
+    "ipa": "/ˈlʌləbaɪ/",
+    "meaningVi": "bài hát ru",
+    "definitionEn": "a soft song sung to help a baby go to sleep",
+    "example": "My mother used to sing a gentle lullaby every night before bed.",
+    "collocation": "a soft lullaby",
+    "cefr": "B1"
+  },
+  {
+    "word": "summer",
+    "pos": "noun",
+    "ipa": "/ˈsʌmə/",
+    "meaningVi": "mùa hè",
+    "definitionEn": "the warmest season of the year, between spring and autumn",
+    "example": "Every summer we visited our cousins in the mountains for two weeks.",
+    "collocation": "last summer",
+    "cefr": "B1"
+  },
+  {
+    "word": "bicycle",
+    "pos": "noun",
+    "ipa": "/ˈbaɪsɪkl/",
+    "meaningVi": "xe đạp",
+    "definitionEn": "a vehicle with two wheels that you ride by pedalling",
+    "example": "I learned to ride a bicycle in the park behind our house.",
+    "collocation": "ride a bicycle",
+    "cefr": "B1"
+  },
+  {
+    "word": "sweets",
+    "pos": "noun",
+    "ipa": "/swiːts/",
+    "meaningVi": "kẹo",
+    "definitionEn": "small pieces of sugary food, such as candy or chocolate",
+    "example": "Grandpa always kept a jar of sweets on the shelf for us.",
+    "collocation": "a jar of sweets",
+    "cefr": "B1"
+  },
+  {
+    "word": "remember",
+    "pos": "verb",
+    "ipa": "/rɪˈmembə/",
+    "meaningVi": "nhớ, ghi nhớ",
+    "definitionEn": "to have a memory of something that happened in the past",
+    "example": "I still remember the smell of fresh bread from my childhood kitchen.",
+    "collocation": "remember clearly",
+    "cefr": "B1"
+  },
+  {
+    "word": "souvenir",
+    "pos": "noun",
+    "ipa": "/ˌsuːvəˈnɪə/",
+    "meaningVi": "quà lưu niệm",
+    "definitionEn": "an object kept to remind you of a special place or event",
+    "example": "She brought back a small wooden elephant as a souvenir from Thailand.",
+    "collocation": "a souvenir shop",
+    "cefr": "B2"
+  },
+  {
+    "word": "anecdote",
+    "pos": "noun",
+    "ipa": "/ˈænɪkdəʊt/",
+    "meaningVi": "giai thoại, câu chuyện ngắn",
+    "definitionEn": "a short, amusing story about a real event or person",
+    "example": "He shared a funny anecdote about his first day at university.",
+    "collocation": "a funny anecdote",
+    "cefr": "B2"
+  },
+  {
+    "word": "youth",
+    "pos": "noun",
+    "ipa": "/juːθ/",
+    "meaningVi": "tuổi trẻ, thời thanh xuân",
+    "definitionEn": "the period of life between childhood and adulthood",
+    "example": "In my youth, I spent every summer working on my uncle's farm.",
+    "collocation": "in my youth",
+    "cefr": "B2"
+  },
+  {
+    "word": "adolescence",
+    "pos": "noun",
+    "ipa": "/ˌædəˈlesns/",
+    "meaningVi": "tuổi thiếu niên",
+    "definitionEn": "the period of life when a child develops into an adult",
+    "example": "Many people look back on adolescence with mixed feelings of joy and confusion.",
+    "collocation": "during adolescence",
+    "cefr": "B2"
+  },
+  {
+    "word": "reunion",
+    "pos": "noun",
+    "ipa": "/riːˈjuːniən/",
+    "meaningVi": "buổi họp mặt",
+    "definitionEn": "a meeting of people who have not seen each other for a long time",
+    "example": "Our school reunion brought back memories of many forgotten friends.",
+    "collocation": "a class reunion",
+    "cefr": "B2"
+  },
+  {
+    "word": "scrapbook",
+    "pos": "noun",
+    "ipa": "/ˈskræpbʊk/",
+    "meaningVi": "sổ lưu niệm, album cắt dán",
+    "definitionEn": "a book with pages for pasting photos, cuttings, and mementos",
+    "example": "She filled a scrapbook with tickets, postcards, and pressed flowers from the trip.",
+    "collocation": "a family scrapbook",
+    "cefr": "B2"
+  },
+  {
+    "word": "snapshot",
+    "pos": "noun",
+    "ipa": "/ˈsnæpʃɒt/",
+    "meaningVi": "bức ảnh chụp nhanh",
+    "definitionEn": "a brief glimpse or a quick photograph of a moment",
+    "example": "This snapshot captures the excitement of our first day at camp.",
+    "collocation": "a candid snapshot",
+    "cefr": "B2"
+  },
+  {
+    "word": "anniversary",
+    "pos": "noun",
+    "ipa": "/ˌænɪˈvɜːsəri/",
+    "meaningVi": "ngày kỷ niệm",
+    "definitionEn": "the date on which a special event happened in an earlier year",
+    "example": "They celebrated their twentieth wedding anniversary with a dinner by the river.",
+    "collocation": "a wedding anniversary",
+    "cefr": "B2"
+  },
+  {
+    "word": "nostalgic",
+    "pos": "adjective",
+    "ipa": "/nɒˈstældʒɪk/",
+    "meaningVi": "hoài niệm, bồi hồi nhớ lại",
+    "definitionEn": "feeling a sentimental longing for the past",
+    "example": "The old song made him feel nostalgic for his university days.",
+    "collocation": "feel nostalgic",
+    "cefr": "B2"
+  },
+  {
+    "word": "daydream",
+    "pos": "verb",
+    "ipa": "/ˈdeɪdriːm/",
+    "meaningVi": "mơ mộng ban ngày",
+    "definitionEn": "to think pleasantly about things, without paying attention to what is happening",
+    "example": "During the long lecture, I began to daydream about my summer holidays.",
+    "collocation": "daydream about",
+    "cefr": "B2"
+  },
+  {
+    "word": "memorise",
+    "pos": "verb",
+    "ipa": "/ˈmeməraɪz/",
+    "meaningVi": "ghi nhớ, học thuộc",
+    "definitionEn": "to learn something so that you can remember it exactly",
+    "example": "I try to memorise five new words every morning before breakfast.",
+    "collocation": "memorise by heart",
+    "cefr": "B2"
+  },
+  {
+    "word": "remind",
+    "pos": "verb",
+    "ipa": "/rɪˈmaɪnd/",
+    "meaningVi": "nhắc nhở, gợi nhớ",
+    "definitionEn": "to cause someone to remember something or to be reminded of it",
+    "example": "The smell of cinnamon always reminds me of my grandmother's kitchen.",
+    "collocation": "remind someone of",
+    "cefr": "B2"
+  },
+  {
+    "word": "forget",
+    "pos": "verb",
+    "ipa": "/fəˈɡet/",
+    "meaningVi": "quên",
+    "definitionEn": "to fail to remember something that you once knew",
+    "example": "I will never forget the kindness of the villagers who welcomed us.",
+    "collocation": "never forget",
+    "cefr": "B2"
+  },
+  {
+    "word": "heirloom",
+    "pos": "noun",
+    "ipa": "/ˈeəluːm/",
+    "meaningVi": "đồ gia truyền",
+    "definitionEn": "a valuable object passed down through a family for generations",
+    "example": "The silver teapot is a family heirloom that my great-grandmother owned.",
+    "collocation": "a precious heirloom",
+    "cefr": "B2"
+  },
+  {
+    "word": "nursery",
+    "pos": "noun",
+    "ipa": "/ˈnɜːsəri/",
+    "meaningVi": "nhà trẻ, phòng trẻ em",
+    "definitionEn": "a room or school for very young children",
+    "example": "My sister still remembers the songs she learned at nursery.",
+    "collocation": "a nursery rhyme",
+    "cefr": "B2"
+  },
+  {
+    "word": "teenager",
+    "pos": "noun",
+    "ipa": "/ˈtiːneɪdʒə/",
+    "meaningVi": "thiếu niên",
+    "definitionEn": "a person aged between thirteen and nineteen",
+    "example": "As a teenager, I spent hours writing letters to my pen friend abroad.",
+    "collocation": "a bored teenager",
+    "cefr": "B2"
+  },
+  {
+    "word": "adulthood",
+    "pos": "noun",
+    "ipa": "/ˈædʌlthʊd/",
+    "meaningVi": "tuổi trưởng thành",
+    "definitionEn": "the state or period of being a fully grown adult",
+    "example": "Many of my childhood dreams faded as I entered adulthood.",
+    "collocation": "reach adulthood",
+    "cefr": "B2"
+  },
+  {
+    "word": "bygone",
+    "pos": "adjective",
+    "ipa": "/ˈbaɪɡɒn/",
+    "meaningVi": "đã qua, thuở xưa",
+    "definitionEn": "belonging to a time in the past that has ended",
+    "example": "Many traditional crafts from bygone days are now being revived by young artisans.",
+    "collocation": "bygone era",
+    "cefr": "B2"
+  },
+  {
+    "word": "ritual",
+    "pos": "noun",
+    "ipa": "/ˈrɪtʃuəl/",
+    "meaningVi": "nghi lễ, thói quen nghi thức",
+    "definitionEn": "a set of actions performed regularly in a particular way",
+    "example": "Every Sunday, our family has a ritual of cooking breakfast together.",
+    "collocation": "daily ritual",
+    "cefr": "B2"
+  },
+  {
+    "word": "fondly",
+    "pos": "adverb",
+    "ipa": "/ˈfɒndli/",
+    "meaningVi": "trìu mến, với tình cảm",
+    "definitionEn": "in a loving or affectionate way",
+    "example": "She remembered her childhood home fondly, even after many years away.",
+    "collocation": "remember fondly",
+    "cefr": "B2"
+  },
+  {
+    "word": "generation",
+    "pos": "noun",
+    "ipa": "/ˌdʒenəˈreɪʃn/",
+    "meaningVi": "thế hệ",
+    "definitionEn": "all the people of about the same age within a society or family",
+    "example": "The traditions were passed down carefully through each new generation.",
+    "collocation": "the next generation",
+    "cefr": "B2"
+  },
+  {
+    "word": "reminisce",
+    "pos": "verb",
+    "ipa": "/ˌremɪˈnɪs/",
+    "meaningVi": "hồi tưởng, ôn lại kỷ niệm",
+    "definitionEn": "to talk or think about pleasant memories of the past",
+    "example": "The old friends sat together and reminisced about their university years.",
+    "collocation": "reminisce about",
+    "cefr": "C1"
+  },
+  {
+    "word": "retrospective",
+    "pos": "adjective",
+    "ipa": "/ˌretrəˈspektɪv/",
+    "meaningVi": "nhìn lại, hồi cố",
+    "definitionEn": "looking back on past events or periods",
+    "example": "The exhibition offered a retrospective view of the artist's entire career.",
+    "collocation": "a retrospective exhibition",
+    "cefr": "C1"
+  },
+  {
+    "word": "chronicle",
+    "pos": "noun",
+    "ipa": "/ˈkrɒnɪkl/",
+    "meaningVi": "biên niên sử, ghi chép",
+    "definitionEn": "a detailed record of events in the order they happened",
+    "example": "The diary is a chronicle of daily life in a small village during the war.",
+    "collocation": "a detailed chronicle",
+    "cefr": "C1"
+  },
+  {
+    "word": "amnesia",
+    "pos": "noun",
+    "ipa": "/æmˈniːziə/",
+    "meaningVi": "chứng mất trí nhớ",
+    "definitionEn": "a condition in which a person loses memories",
+    "example": "After the accident he suffered from amnesia and could not recall his name.",
+    "collocation": "temporary amnesia",
+    "cefr": "C1"
+  },
+  {
+    "word": "mnemonic",
+    "pos": "adjective",
+    "ipa": "/nɪˈmɒnɪk/",
+    "meaningVi": "giúp ghi nhớ",
+    "definitionEn": "designed to help the memory, often through a phrase or rhyme",
+    "example": "She used a mnemonic rhyme to remember the order of the planets.",
+    "collocation": "a mnemonic device",
+    "cefr": "C1"
+  },
+  {
+    "word": "embed",
+    "pos": "verb",
+    "ipa": "/ɪmˈbed/",
+    "meaningVi": "khắc sâu, gắn chặt",
+    "definitionEn": "to fix something firmly in the mind or in a surrounding structure",
+    "example": "Early childhood experiences can become deeply embedded in our personality.",
+    "collocation": "deeply embedded",
+    "cefr": "C1"
+  },
+  {
+    "word": "instil",
+    "pos": "verb",
+    "ipa": "/ɪnˈstɪl/",
+    "meaningVi": "truyền dạy, khắc ghi",
+    "definitionEn": "to gradually establish a belief or quality in someone's mind",
+    "example": "Her grandparents instilled in her a strong respect for family traditions.",
+    "collocation": "instil in",
+    "cefr": "C1"
+  },
+  {
+    "word": "ingrained",
+    "pos": "adjective",
+    "ipa": "/ɪnˈɡreɪnd/",
+    "meaningVi": "ăn sâu, bám chặt",
+    "definitionEn": "firmly established and difficult to change",
+    "example": "His love of reading was deeply ingrained from his earliest years.",
+    "collocation": "deeply ingrained",
+    "cefr": "C1"
+  },
+  {
+    "word": "erstwhile",
+    "pos": "adjective",
+    "ipa": "/ˈɜːstwaɪl/",
+    "meaningVi": "nguyên là, trước đây",
+    "definitionEn": "former; having been something in the past",
+    "example": "Her erstwhile classmates gathered for a reunion after twenty years apart.",
+    "collocation": "erstwhile classmates",
+    "cefr": "C1"
+  },
+  {
+    "word": "hallowed",
+    "pos": "adjective",
+    "ipa": "/ˈhæləʊd/",
+    "meaningVi": "thiêng liêng, được tôn kính",
+    "definitionEn": "regarded as holy or deeply respected because of history",
+    "example": "Visitors walked quietly through the hallowed halls of the old university.",
+    "collocation": "hallowed halls",
+    "cefr": "C1"
+  },
+  {
+    "word": "lineage",
+    "pos": "noun",
+    "ipa": "/ˈlɪniɪdʒ/",
+    "meaningVi": "dòng dõi, gia phả",
+    "definitionEn": "the line of descent from a particular ancestor",
+    "example": "The family can trace its lineage back to a seventeenth-century merchant.",
+    "collocation": "a noble lineage",
+    "cefr": "C1"
+  },
+  {
+    "word": "genealogy",
+    "pos": "noun",
+    "ipa": "/ˌdʒiːniˈælədʒi/",
+    "meaningVi": "gia phả, phả hệ",
+    "definitionEn": "the study or record of family descent",
+    "example": "Her genealogy project revealed that her ancestors had lived in the village for centuries.",
+    "collocation": "family genealogy",
+    "cefr": "C1"
+  },
+  {
+    "word": "posterity",
+    "pos": "noun",
+    "ipa": "/pɒˈsterəti/",
+    "meaningVi": "hậu thế, con cháu về sau",
+    "definitionEn": "future generations, considered in relation to the present",
+    "example": "The monument was built so that posterity would remember the heroes of the war.",
+    "collocation": "for posterity",
+    "cefr": "C1"
+  },
+  {
+    "word": "tribute",
+    "pos": "noun",
+    "ipa": "/ˈtrɪbjuːt/",
+    "meaningVi": "lời tri ân, sự tưởng nhớ",
+    "definitionEn": "an act or statement showing respect and gratitude",
+    "example": "The concert was a moving tribute to the composer who had died last year.",
+    "collocation": "a moving tribute",
+    "cefr": "C1"
+  },
+  {
+    "word": "vestige",
+    "pos": "noun",
+    "ipa": "/ˈvestɪdʒ/",
+    "meaningVi": "dấu tích, vết tích",
+    "definitionEn": "a trace or small remaining part of something that has disappeared",
+    "example": "Only a small vestige of the old wall remains in the city centre.",
+    "collocation": "a faint vestige",
+    "cefr": "C1"
+  },
+  {
+    "word": "palimpsest",
+    "pos": "noun",
+    "ipa": "/ˈpælɪmpsest/",
+    "meaningVi": "bản thảo chồng lớp, dấu vết chồng lên",
+    "definitionEn": "a manuscript on which earlier writing has been partly erased and overwritten",
+    "example": "The historian studied the palimpsest, where faint older words showed beneath the newer text.",
+    "collocation": "an ancient palimpsest",
+    "cefr": "C1"
+  },
+  {
+    "word": "indelible",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdelɪbl/",
+    "meaningVi": "không thể phai mờ, in sâu",
+    "definitionEn": "impossible to remove or forget",
+    "example": "The terrible events of that winter left an indelible mark on the village.",
+    "collocation": "an indelible impression",
+    "cefr": "C1"
+  },
+  {
+    "word": "hazy",
+    "pos": "adjective",
+    "ipa": "/ˈheɪzi/",
+    "meaningVi": "mờ ảo, lờ mờ",
+    "definitionEn": "not clear or precise, especially in memory",
+    "example": "My memories of the first day at school are hazy now.",
+    "collocation": "a hazy memory",
+    "cefr": "C1"
+  },
+  {
+    "word": "faint",
+    "pos": "adjective",
+    "ipa": "/feɪnt/",
+    "meaningVi": "mờ nhạt, yếu ớt",
+    "definitionEn": "barely noticeable or only just perceptible",
+    "example": "I have a faint recollection of a lighthouse near the old harbour.",
+    "collocation": "a faint memory",
+    "cefr": "C1"
+  },
+  {
+    "word": "transient",
+    "pos": "adjective",
+    "ipa": "/ˈtrænziənt/",
+    "meaningVi": "thoáng qua, tạm thời",
+    "definitionEn": "lasting only for a short time",
+    "example": "Childhood happiness is often transient, yet it leaves lasting memories.",
+    "collocation": "transient joy",
+    "cefr": "C1"
+  },
+  {
+    "word": "fleeting",
+    "pos": "adjective",
+    "ipa": "/ˈfliːtɪŋ/",
+    "meaningVi": "thoáng qua, chóng vánh",
+    "definitionEn": "lasting for a very short time",
+    "example": "She caught a fleeting glimpse of her childhood house from the train.",
+    "collocation": "a fleeting moment",
+    "cefr": "C1"
+  },
+  {
+    "word": "ephemeral",
+    "pos": "adjective",
+    "ipa": "/ɪˈfemərəl/",
+    "meaningVi": "phù du, chóng tàn",
+    "definitionEn": "lasting for a very short time, like the life of a fly",
+    "example": "The joy of the festival was ephemeral, fading quickly with the city lights.",
+    "collocation": "ephemeral beauty",
+    "cefr": "C1"
+  },
+  {
+    "word": "unforgettable",
+    "pos": "adjective",
+    "ipa": "/ˌʌnfəˈɡetəbl/",
+    "meaningVi": "không thể quên",
+    "definitionEn": "so memorable or striking that it cannot be forgotten",
+    "example": "Our trip to the mountains was an unforgettable adventure for the whole family.",
+    "collocation": "an unforgettable experience",
+    "cefr": "C1"
+  },
+  {
+    "word": "immortalise",
+    "pos": "verb",
+    "ipa": "/ɪˈmɔːtəlaɪz/",
+    "meaningVi": "bất tử hóa, lưu danh",
+    "definitionEn": "to make someone or something famous forever",
+    "example": "The poet immortalised the beauty of the river in a famous sonnet.",
+    "collocation": "immortalise in",
+    "cefr": "C1"
+  },
+  {
+    "word": "evocative",
+    "pos": "adjective",
+    "ipa": "/ɪˈvɒkətɪv/",
+    "meaningVi": "gợi nhớ, gợi cảm xúc",
+    "definitionEn": "bringing a strong feeling or memory to mind",
+    "example": "The smell of pine trees was evocative of long summers at the lake.",
+    "collocation": "an evocative smell",
+    "cefr": "C1"
+  },
+  {
+    "word": "annals",
+    "pos": "noun",
+    "ipa": "/ˈænlz/",
+    "meaningVi": "biên niên, sử sách",
+    "definitionEn": "historical records, especially of a particular field or institution",
+    "example": "His discovery will be recorded in the annals of medical history forever.",
+    "collocation": "the annals of history",
+    "cefr": "C1"
+  },
+  {
+    "word": "archive",
+    "pos": "noun",
+    "ipa": "/ˈɑːkaɪv/",
+    "meaningVi": "kho lưu trữ",
+    "definitionEn": "a collection of historical documents or records kept for future use",
+    "example": "The old letters were stored safely in the national archive for decades.",
+    "collocation": "a national archive",
+    "cefr": "C1"
+  },
+  {
+    "word": "anecdotal",
+    "pos": "adjective",
+    "ipa": "/ˌænɪkˈdəʊtl/",
+    "meaningVi": "dựa trên giai thoại, không chính thức",
+    "definitionEn": "based on personal stories rather than on scientific evidence",
+    "example": "Her claims were largely anecdotal and supported by little real evidence.",
+    "collocation": "anecdotal evidence",
+    "cefr": "C1"
+  },
+  {
+    "word": "latent",
+    "pos": "adjective",
+    "ipa": "/ˈleɪtnt/",
+    "meaningVi": "tiềm ẩn",
+    "definitionEn": "present but not yet developed or visible",
+    "example": "Many childhood memories remain latent until a familiar smell brings them back.",
+    "collocation": "latent memory",
+    "cefr": "C1"
+  },
+  {
+    "word": "dormant",
+    "pos": "adjective",
+    "ipa": "/ˈdɔːmənt/",
+    "meaningVi": "ngủ yên, tiềm tàng",
+    "definitionEn": "temporarily inactive or not developing",
+    "example": "Old memories can lie dormant for years before suddenly returning to mind.",
+    "collocation": "a dormant memory",
+    "cefr": "C1"
+  },
+  {
+    "word": "resurface",
+    "pos": "verb",
+    "ipa": "/ˌriːˈsɜːfɪs/",
+    "meaningVi": "trỗi dậy, tái xuất hiện",
+    "definitionEn": "to come back to the surface or reappear after being hidden",
+    "example": "Painful memories often resurface during quiet moments in the evening.",
+    "collocation": "resurface in",
+    "cefr": "C1"
+  },
+  {
+    "word": "wane",
+    "pos": "verb",
+    "ipa": "/weɪn/",
+    "meaningVi": "phai nhạt, suy giảm",
+    "definitionEn": "to become gradually weaker or less important over time",
+    "example": "Our childhood friendship began to wane when we moved to different cities.",
+    "collocation": "wane over time",
+    "cefr": "C1"
+  },
+  {
+    "word": "rekindle",
+    "pos": "verb",
+    "ipa": "/riːˈkɪndl/",
+    "meaningVi": "nhen lại, khơi lại",
+    "definitionEn": "to revive a feeling or memory that had faded",
+    "example": "The reunion rekindled old friendships that had almost been forgotten.",
+    "collocation": "rekindle friendship",
+    "cefr": "C1"
+  },
+  {
+    "word": "reverie",
+    "pos": "noun",
+    "ipa": "/ˈrevəri/",
+    "meaningVi": "cơn mơ màng, mộng tưởng",
+    "definitionEn": "a state of being lost in pleasant thoughts or daydreams",
+    "example": "He sank into a reverie of childhood summers by the sea.",
+    "collocation": "lost in reverie",
+    "cefr": "C2"
+  },
+  {
+    "word": "rumination",
+    "pos": "noun",
+    "ipa": "/ˌruːmɪˈneɪʃn/",
+    "meaningVi": "sự suy ngẫm kéo dài",
+    "definitionEn": "long and deep thought about something in the past",
+    "example": "Her rumination on the lost years filled many quiet evenings.",
+    "collocation": "deep rumination",
+    "cefr": "C2"
+  },
+  {
+    "word": "sepia",
+    "pos": "noun",
+    "ipa": "/ˈsiːpiə/",
+    "meaningVi": "sắc nâu cổ điển",
+    "definitionEn": "a brownish tone used in old photographs",
+    "example": "The photographs had faded into sepia over the decades.",
+    "collocation": "sepia tones",
+    "cefr": "C2"
+  },
+  {
+    "word": "hiraeth",
+    "pos": "noun",
+    "ipa": "/ˈhɪraɪθ/",
+    "meaningVi": "nỗi nhớ quê hương xa xăm",
+    "definitionEn": "a deep longing for a home or past that cannot be returned to",
+    "example": "Her hiraeth for the Welsh hills grew stronger with every passing year.",
+    "collocation": "a deep hiraeth",
+    "cefr": "C2"
+  },
+  {
+    "word": "saudade",
+    "pos": "noun",
+    "ipa": "/saʊˈdɑːdə/",
+    "meaningVi": "nỗi nhớ da diết, buồn man mác",
+    "definitionEn": "a melancholy longing for someone or something absent",
+    "example": "The old fisherman felt saudade for the friends who had sailed away long ago.",
+    "collocation": "a sense of saudade",
+    "cefr": "C2"
+  },
+  {
+    "word": "yesteryear",
+    "pos": "noun",
+    "ipa": "/ˈjestəjɪə/",
+    "meaningVi": "thời xưa cũ",
+    "definitionEn": "the recent past, or the days of long ago",
+    "example": "Stories of yesteryear were passed down by grandparents around the fire.",
+    "collocation": "the days of yesteryear",
+    "cefr": "C2"
+  },
+  {
+    "word": "relic",
+    "pos": "noun",
+    "ipa": "/ˈrelɪk/",
+    "meaningVi": "di vật cổ, di tích",
+    "definitionEn": "an object surviving from an earlier time, often valued for its age",
+    "example": "The family kept an old pocket watch as a precious relic of their ancestors.",
+    "collocation": "a family relic",
+    "cefr": "C2"
+  },
+  {
+    "word": "remembrance",
+    "pos": "noun",
+    "ipa": "/rɪˈmembrəns/",
+    "meaningVi": "sự tưởng nhớ",
+    "definitionEn": "the act of remembering someone or something with respect",
+    "example": "A minute of silence was held in remembrance of the fallen soldiers.",
+    "collocation": "in remembrance",
+    "cefr": "C2"
+  },
+  {
+    "word": "chronicler",
+    "pos": "noun",
+    "ipa": "/ˈkrɒnɪklə/",
+    "meaningVi": "người ghi chép biên niên",
+    "definitionEn": "a person who records events in order as they happen",
+    "example": "The village chronicler wrote down every festival and every harvest for fifty years.",
+    "collocation": "a village chronicler",
+    "cefr": "C2"
+  },
+  {
+    "word": "pilgrimage",
+    "pos": "noun",
+    "ipa": "/ˈpɪlɡrɪmɪdʒ/",
+    "meaningVi": "hành hương, chuyến về nguồn",
+    "definitionEn": "a journey to a place of great personal or spiritual significance",
+    "example": "Each year she made a pilgrimage to the village where she was born.",
+    "collocation": "make a pilgrimage",
+    "cefr": "C2"
+  },
+  {
+    "word": "antiquated",
+    "pos": "adjective",
+    "ipa": "/ˈæntɪkweɪtɪd/",
+    "meaningVi": "cổ lỗ, lỗi thời",
+    "definitionEn": "old-fashioned and no longer useful or relevant",
+    "example": "The antiquated typewriter on the desk reminded him of his first job.",
+    "collocation": "antiquated customs",
+    "cefr": "C2"
+  },
+  {
+    "word": "reminiscent",
+    "pos": "adjective",
+    "ipa": "/ˌremɪˈnɪsnt/",
+    "meaningVi": "gợi nhớ, giống với",
+    "definitionEn": "bringing a memory or a feeling of something else to mind",
+    "example": "The music was reminiscent of the lullabies her mother used to sing.",
+    "collocation": "reminiscent of",
+    "cefr": "C2"
+  },
+  {
+    "word": "anachronistic",
+    "pos": "adjective",
+    "ipa": "/əˌnækrəˈnɪstɪk/",
+    "meaningVi": "lạc thời, không hợp thời",
+    "definitionEn": "belonging to a time other than the one being portrayed",
+    "example": "The anachronistic clothes in the film did not suit the historical setting.",
+    "collocation": "an anachronistic detail",
+    "cefr": "C2"
+  },
+  {
+    "word": "archaic",
+    "pos": "adjective",
+    "ipa": "/ɑːˈkeɪɪk/",
+    "meaningVi": "cổ xưa, lỗi thời",
+    "definitionEn": "very old or old-fashioned in style or language",
+    "example": "The archaic language of the letter made it difficult to understand.",
+    "collocation": "archaic language",
+    "cefr": "C2"
+  },
+  {
+    "word": "vestigial",
+    "pos": "adjective",
+    "ipa": "/veˈstɪdʒiəl/",
+    "meaningVi": "còn sót lại, tàn dư",
+    "definitionEn": "remaining as a small trace of something that was once more developed",
+    "example": "Some village customs remain as vestigial traces of older religious beliefs.",
+    "collocation": "vestigial remains",
+    "cefr": "C2"
+  },
+  {
+    "word": "commemorative",
+    "pos": "adjective",
+    "ipa": "/kəˈmemərətɪv/",
+    "meaningVi": "kỷ niệm, để tưởng nhớ",
+    "definitionEn": "intended to remember and celebrate a person or event",
+    "example": "A commemorative plaque was placed on the wall of the old school.",
+    "collocation": "a commemorative stamp",
+    "cefr": "C2"
+  },
+  {
+    "word": "immemorial",
+    "pos": "adjective",
+    "ipa": "/ˌɪmɪˈmɔːriəl/",
+    "meaningVi": "từ xa xưa, không thể nhớ được",
+    "definitionEn": "existing for so long that no one can remember a beginning",
+    "example": "The villagers had farmed these fields since time immemorial.",
+    "collocation": "since time immemorial",
+    "cefr": "C2"
+  },
+  {
+    "word": "evanescent",
+    "pos": "adjective",
+    "ipa": "/ˌevəˈnesnt/",
+    "meaningVi": "mờ dần, chóng tan",
+    "definitionEn": "quickly fading from sight or memory",
+    "example": "The evanescent memory of her grandmother's voice faded with each passing year.",
+    "collocation": "evanescent memory",
+    "cefr": "C2"
+  },
+  {
+    "word": "fugitive",
+    "pos": "adjective",
+    "ipa": "/ˈfjuːdʒətɪv/",
+    "meaningVi": "thoáng qua, khó nắm bắt",
+    "definitionEn": "lasting only briefly, and hard to hold onto",
+    "example": "A fugitive memory of laughter drifted through his mind during the quiet walk.",
+    "collocation": "fugitive memory",
+    "cefr": "C2"
+  },
+  {
+    "word": "primordial",
+    "pos": "adjective",
+    "ipa": "/praɪˈmɔːdiəl/",
+    "meaningVi": "nguyên thủy, sơ khai",
+    "definitionEn": "existing from the very beginning; very ancient",
+    "example": "A primordial sense of home seemed to stir in him whenever he heard the sea.",
+    "collocation": "primordial instinct",
+    "cefr": "C2"
+  },
+  {
+    "word": "olden",
+    "pos": "adjective",
+    "ipa": "/ˈəʊldən/",
+    "meaningVi": "xưa cũ, ngày xưa",
+    "definitionEn": "belonging to a former time, often a romanticised past",
+    "example": "The children loved to hear stories of olden days from their great-grandfather.",
+    "collocation": "in olden days",
+    "cefr": "C2"
+  },
+  {
+    "word": "ruminate",
+    "pos": "verb",
+    "ipa": "/ˈruːmɪneɪt/",
+    "meaningVi": "suy ngẫm, nghiền ngẫm",
+    "definitionEn": "to think deeply and for a long time about something",
+    "example": "She liked to ruminate on the events of her childhood by the fire.",
+    "collocation": "ruminate on",
+    "cefr": "C2"
+  },
+  {
+    "word": "engrave",
+    "pos": "verb",
+    "ipa": "/ɪnˈɡreɪv/",
+    "meaningVi": "khắc sâu, khắc ghi",
+    "definitionEn": "to fix something deeply in the memory or in a surface",
+    "example": "The tragic event was engraved in her memory for the rest of her life.",
+    "collocation": "engrave on memory",
+    "cefr": "C2"
+  },
+  {
+    "word": "etch",
+    "pos": "verb",
+    "ipa": "/etʃ/",
+    "meaningVi": "khắc in, in sâu",
+    "definitionEn": "to fix a memory or image firmly in the mind",
+    "example": "The sight of the burning village was etched into his mind forever.",
+    "collocation": "etched in memory",
+    "cefr": "C2"
+  },
+  {
+    "word": "crystallise",
+    "pos": "verb",
+    "ipa": "/ˈkrɪstəlaɪz/",
+    "meaningVi": "kết tinh, định hình rõ",
+    "definitionEn": "to become clear and definite, often after a period of uncertainty",
+    "example": "Years later, the memories crystallised into a clear picture of that summer.",
+    "collocation": "crystallise into",
+    "cefr": "C2"
+  },
+  {
+    "word": "unearth",
+    "pos": "verb",
+    "ipa": "/ʌnˈɜːθ/",
+    "meaningVi": "đào lên, khơi lại",
+    "definitionEn": "to discover something hidden or forgotten, often from the past",
+    "example": "While cleaning the attic, she unearthed a box of old family letters.",
+    "collocation": "unearth old memories",
+    "cefr": "C2"
+  },
+  {
+    "word": "conjure up",
+    "pos": "phrasal verb",
+    "ipa": "/ˈkʌndʒə ʌp/",
+    "meaningVi": "gợi lên, khơi dậy",
+    "definitionEn": "to bring a memory or image into the mind",
+    "example": "The smell of fresh bread can conjure up memories of childhood mornings.",
+    "collocation": "conjure up memories",
+    "cefr": "C2"
+  },
+  {
+    "word": "call to mind",
+    "pos": "phrasal verb",
+    "ipa": "/kɔːl tə ˈmaɪnd/",
+    "meaningVi": "gợi nhớ",
+    "definitionEn": "to remind someone of something from the past",
+    "example": "The old tune helps me call to mind my first summer abroad.",
+    "collocation": "call to mind",
+    "cefr": "C2"
+  },
+  {
+    "word": "bring back",
+    "pos": "phrasal verb",
+    "ipa": "/brɪŋ ˈbæk/",
+    "meaningVi": "gợi lại",
+    "definitionEn": "to cause a memory or feeling to return to someone",
+    "example": "Old photographs always bring back memories of our childhood holidays.",
+    "collocation": "bring back memories",
+    "cefr": "C2"
+  },
+  {
+    "word": "look back on",
+    "pos": "phrasal verb",
+    "ipa": "/lʊk bæk ɒn/",
+    "meaningVi": "nhìn lại",
+    "definitionEn": "to think about a past event or period with feeling",
+    "example": "Many people look back on their school years with fondness and laughter.",
+    "collocation": "look back on",
+    "cefr": "C2"
+  },
+  {
+    "word": "dwell on",
+    "pos": "phrasal verb",
+    "ipa": "/ˈdwel ɒn/",
+    "meaningVi": "cứ mãi nghĩ về",
+    "definitionEn": "to think or talk about something for a long time, often in a negative way",
+    "example": "Try not to dwell on the mistakes of the past.",
+    "collocation": "dwell on the past",
+    "cefr": "C2"
+  },
+  {
+    "word": "cling to",
+    "pos": "phrasal verb",
+    "ipa": "/klɪŋ tə/",
+    "meaningVi": "bám víu vào",
+    "definitionEn": "to hold tightly to a memory, belief, or hope",
+    "example": "Many elderly people cling to memories of their youth.",
+    "collocation": "cling to memories",
+    "cefr": "C2"
+  },
+  {
+    "word": "stir up",
+    "pos": "phrasal verb",
+    "ipa": "/stɜː ʌp/",
+    "meaningVi": "khơi dậy",
+    "definitionEn": "to cause a memory, feeling, or emotion to become active",
+    "example": "Old letters can stir up memories you thought had been forgotten.",
+    "collocation": "stir up memories",
+    "cefr": "C2"
+  },
+  {
+    "word": "wax nostalgic",
+    "pos": "phrase",
+    "ipa": "/wæks nɒˈstældʒɪk/",
+    "meaningVi": "hoài niệm, nhớ về",
+    "definitionEn": "to talk in a sentimental way about the past",
+    "example": "Grandpa likes to wax nostalgic about his days in the army.",
+    "collocation": "wax nostalgic about",
+    "cefr": "C2"
+  },
+  {
+    "word": "go down memory lane",
+    "pos": "idiom",
+    "ipa": "/ɡəʊ daʊn ˈmeməri leɪn/",
+    "meaningVi": "ôn lại kỷ niệm xưa",
+    "definitionEn": "to remember happy or past events in a pleasant way",
+    "example": "Let's go down memory lane and look at our old school photographs together.",
+    "collocation": "go down memory lane",
+    "cefr": "C2"
+  },
+  {
+    "word": "anamnesis",
+    "pos": "noun",
+    "ipa": "/ˌænæmˈniːsɪs/",
+    "meaningVi": "sự hồi tưởng, nhớ lại",
+    "definitionEn": "the recollection of past events, especially in medical or philosophical contexts",
+    "example": "The doctor asked for a detailed anamnesis of her childhood illnesses.",
+    "collocation": "detailed anamnesis",
+    "cefr": "C2"
+  },
+  {
+    "word": "effigy",
+    "pos": "noun",
+    "ipa": "/ˈefɪdʒi/",
+    "meaningVi": "tượng hình, hình nộm",
+    "definitionEn": "a model or image of a person, often made to commemorate them",
+    "example": "A stone effigy of the king lay on the tomb in the cathedral.",
+    "collocation": "a stone effigy",
+    "cefr": "C2"
+  },
+  {
+    "word": "elegy",
+    "pos": "noun",
+    "ipa": "/ˈelədʒi/",
+    "meaningVi": "bài thơ ai điếu",
+    "definitionEn": "a poem or song expressing sorrow, especially for someone who has died",
+    "example": "He wrote an elegy for his late father, recalling their years together.",
+    "collocation": "a moving elegy",
+    "cefr": "C2"
+  },
+  {
+    "word": "evocation",
+    "pos": "noun",
+    "ipa": "/ˌevəˈkeɪʃn/",
+    "meaningVi": "sự gợi nhớ, khơi gợi",
+    "definitionEn": "the act of bringing a memory, feeling, or image to mind",
+    "example": "The novel is a vivid evocation of life in the village during the war.",
+    "collocation": "a vivid evocation",
+    "cefr": "C2"
+  },
+  {
+    "word": "tableau",
+    "pos": "noun",
+    "ipa": "/ˈtæbləʊ/",
+    "meaningVi": "cảnh tĩnh, bức tranh sống động",
+    "definitionEn": "a striking scene or picture of something from the past",
+    "example": "The old photograph is a tableau of a family gathered around the table.",
+    "collocation": "a vivid tableau",
+    "cefr": "C2"
+  },
+  {
+    "word": "vignette",
+    "pos": "noun",
+    "ipa": "/vɪnˈjet/",
+    "meaningVi": "đoạn văn ngắn, mảnh ký ức",
+    "definitionEn": "a brief, vivid description of a person, scene, or moment",
+    "example": "The memoir contains a charming vignette of her grandmother baking bread.",
+    "collocation": "a charming vignette",
+    "cefr": "C2"
+  },
+  {
+    "word": "afterglow",
+    "pos": "noun",
+    "ipa": "/ˈɑːftəɡləʊ/",
+    "meaningVi": "dư vị, ánh hồi sau",
+    "definitionEn": "a pleasant feeling that remains after a happy experience",
+    "example": "The afterglow of the wedding lingered in their hearts for many years.",
+    "collocation": "the afterglow of",
+    "cefr": "C2"
+  },
+  {
+    "word": "lingering",
+    "pos": "adjective",
+    "ipa": "/ˈlɪŋɡərɪŋ/",
+    "meaningVi": "dai dẳng, còn vương vấn",
+    "definitionEn": "continuing for a long time, remaining slowly",
+    "example": "A lingering sense of the holiday kept her smiling for weeks.",
+    "collocation": "lingering memory",
+    "cefr": "C2"
+  },
+  {
+    "word": "undimmed",
+    "pos": "adjective",
+    "ipa": "/ʌnˈdɪmd/",
+    "meaningVi": "không phai mờ",
+    "definitionEn": "not made weaker or less bright over time",
+    "example": "Her affection for her childhood home remained undimmed by the years.",
+    "collocation": "undimmed by time",
+    "cefr": "C2"
+  },
+  {
+    "word": "resonate",
+    "pos": "verb",
+    "ipa": "/ˈrezəneɪt/",
+    "meaningVi": "vang vọng, gây cộng hưởng",
+    "definitionEn": "to evoke a strong emotional response or recognition",
+    "example": "The old song continued to resonate with listeners across several generations.",
+    "collocation": "resonate with",
+    "cefr": "C2"
+  },
+  {
+    "word": "hallmark",
+    "pos": "noun",
+    "ipa": "/ˈhɔːlmɑːk/",
+    "meaningVi": "dấu hiệu đặc trưng",
+    "definitionEn": "a distinctive feature or characteristic of something",
+    "example": "Warm and simple storytelling is the hallmark of her memoirs.",
+    "collocation": "the hallmark of",
+    "cefr": "C2"
+  }
+]

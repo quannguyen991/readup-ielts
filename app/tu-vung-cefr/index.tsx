@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
@@ -128,7 +129,7 @@ export default function CefrVocab() {
                 <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE6D6', overflow: 'hidden' }}>
                   <View style={{ width: `${x.total ? Math.round((x.done / x.total) * 100) : 0}%`, height: 6, backgroundColor: ACCENT } as object} />
                 </View>
-                <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>{x.done} / {x.total} từ</Text>
+                <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>Bài {OXFORD_TOPICS.indexOf(x.t as never) + 1} · {x.done} / {x.total} từ</Text>
               </Pressable>
             </Appear>
           ))}
@@ -144,6 +145,16 @@ export default function CefrVocab() {
             </Text>
           </View>
 
+          {topic && !needle ? (
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+              <Pressable accessibilityRole="button" onPress={() => router.push(`/tu-vung-cefr/quiz/${level}-${OXFORD_TOPICS.indexOf(topic as never)}?mode=mcq` as never)} style={{ paddingHorizontal: 16, paddingVertical: 10, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: '#F2B84B' } as object}>
+                <Text className="font-strong" style={{ color: INK }}>Trắc nghiệm ABCD · 50 câu ›</Text>
+              </Pressable>
+              <Pressable accessibilityRole="button" onPress={() => router.push(`/tu-vung-cefr/quiz/${level}-${OXFORD_TOPICS.indexOf(topic as never)}?mode=fill` as never)} style={{ paddingHorizontal: 16, paddingVertical: 10, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: '#FFFFFF' } as object}>
+                <Text className="font-strong" style={{ color: INK }}>Điền từ vào ô trống ›</Text>
+              </Pressable>
+            </View>
+          ) : null}
           {list.length === 0 ? <Text className="font-sans" style={{ fontSize: 15, color: '#6B5E4E' }}>Chưa có từ nào khớp.</Text> : null}
 
           {list.slice(0, shown).map((w) => {

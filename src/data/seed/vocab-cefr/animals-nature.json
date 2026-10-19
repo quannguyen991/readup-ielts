@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "animal",
+    "pos": "noun",
+    "ipa": "/ˈænɪml/",
+    "meaningVi": "động vật",
+    "definitionEn": "A living creature, such as a dog, horse or lion, that is not a human or plant.",
+    "example": "Many children enjoy visiting the zoo to see unusual animals up close.",
+    "collocation": "wild animal",
+    "cefr": "B1"
+  },
+  {
+    "word": "bird",
+    "pos": "noun",
+    "ipa": "/bɜːd/",
+    "meaningVi": "chim",
+    "definitionEn": "A warm-blooded animal with feathers and wings that usually can fly.",
+    "example": "A small bird built its nest in the branches above our kitchen window.",
+    "collocation": "singing bird",
+    "cefr": "B1"
+  },
+  {
+    "word": "fish",
+    "pos": "noun",
+    "ipa": "/fɪʃ/",
+    "meaningVi": "cá",
+    "definitionEn": "A cold-blooded animal that lives in water and breathes through gills.",
+    "example": "Hundreds of colourful fish swim around the coral reef every morning.",
+    "collocation": "tropical fish",
+    "cefr": "B1"
+  },
+  {
+    "word": "insect",
+    "pos": "noun",
+    "ipa": "/ˈɪnsekt/",
+    "meaningVi": "côn trùng",
+    "definitionEn": "A small animal with six legs, a body in three parts, often with wings.",
+    "example": "Bees and butterflies are insects that play an important role in pollination.",
+    "collocation": "flying insect",
+    "cefr": "B1"
+  },
+  {
+    "word": "wolf",
+    "pos": "noun",
+    "ipa": "/wʊlf/",
+    "meaningVi": "sói",
+    "definitionEn": "A wild animal related to dogs that hunts in groups in forests.",
+    "example": "A lone wolf was spotted crossing the snowy valley at dawn.",
+    "collocation": "grey wolf",
+    "cefr": "B1"
+  },
+  {
+    "word": "bear",
+    "pos": "noun",
+    "ipa": "/beə/",
+    "meaningVi": "gấu",
+    "definitionEn": "A large, heavy wild animal with thick fur that eats fish, plants and honey.",
+    "example": "A brown bear wandered close to the campsite searching for food overnight.",
+    "collocation": "brown bear",
+    "cefr": "B1"
+  },
+  {
+    "word": "rabbit",
+    "pos": "noun",
+    "ipa": "/ˈræbɪt/",
+    "meaningVi": "thỏ",
+    "definitionEn": "A small furry animal with long ears that lives in holes in the ground.",
+    "example": "The rabbit darted into its hole when it heard the dog barking nearby.",
+    "collocation": "wild rabbit",
+    "cefr": "B1"
+  },
+  {
+    "word": "snake",
+    "pos": "noun",
+    "ipa": "/sneɪk/",
+    "meaningVi": "rắn",
+    "definitionEn": "A long, legless reptile that moves along the ground by sliding.",
+    "example": "The hikers were warned to watch carefully for snakes in the tall grass.",
+    "collocation": "garter snake",
+    "cefr": "B1"
+  },
+  {
+    "word": "frog",
+    "pos": "noun",
+    "ipa": "/frɒɡ/",
+    "meaningVi": "ếch",
+    "definitionEn": "A small jumping animal with smooth skin that lives near water.",
+    "example": "After the spring rain, frogs filled the pond with loud, cheerful croaking.",
+    "collocation": "green frog",
+    "cefr": "B1"
+  },
+  {
+    "word": "nest",
+    "pos": "noun",
+    "ipa": "/nest/",
+    "meaningVi": "tổ",
+    "definitionEn": "A structure built by birds or insects to hold their eggs or young.",
+    "example": "The sparrows built a nest from twigs, grass and feathers under the roof.",
+    "collocation": "build a nest",
+    "cefr": "B1"
+  },
+  {
+    "word": "feather",
+    "pos": "noun",
+    "ipa": "/ˈfeðə/",
+    "meaningVi": "lông vũ",
+    "definitionEn": "One of the light, soft growths that cover the body of a bird.",
+    "example": "She found a bright blue feather lying on the path near the lake.",
+    "collocation": "colourful feather",
+    "cefr": "B1"
+  },
+  {
+    "word": "claw",
+    "pos": "noun",
+    "ipa": "/klɔː/",
+    "meaningVi": "vuốt, móng",
+    "definitionEn": "A sharp curved nail on the foot of an animal, used for grip or hunting.",
+    "example": "The cat extended its sharp claws when it climbed the tall tree.",
+    "collocation": "sharp claws",
+    "cefr": "B1"
+  },
+  {
+    "word": "hunt",
+    "pos": "verb",
+    "ipa": "/hʌnt/",
+    "meaningVi": "săn",
+    "definitionEn": "To chase and kill wild animals for food or sport.",
+    "example": "Lions usually hunt at night when the temperature drops and prey is active.",
+    "collocation": "hunt for food",
+    "cefr": "B1"
+  },
+  {
+    "word": "swim",
+    "pos": "verb",
+    "ipa": "/swɪm/",
+    "meaningVi": "bơi",
+    "definitionEn": "To move through water by moving the arms, legs, or body.",
+    "example": "Dolphins swim in groups and communicate with each other through clicking sounds.",
+    "collocation": "swim away",
+    "cefr": "B1"
+  },
+  {
+    "word": "zoo",
+    "pos": "noun",
+    "ipa": "/zuː/",
+    "meaningVi": "sở thú",
+    "definitionEn": "A park where wild animals are kept for display and study.",
+    "example": "The zoo recently welcomed two baby pandas from a research centre in China.",
+    "collocation": "city zoo",
+    "cefr": "B1"
+  },
+  {
+    "word": "wildlife",
+    "pos": "noun",
+    "ipa": "/ˈwaɪldlaɪf/",
+    "meaningVi": "động vật hoang dã",
+    "definitionEn": "Animals and plants living freely in their natural environment.",
+    "example": "Wildlife photographers often wait for hours to capture a rare moment.",
+    "collocation": "wildlife photography",
+    "cefr": "B2"
+  },
+  {
+    "word": "fur",
+    "pos": "noun",
+    "ipa": "/fɜː/",
+    "meaningVi": "lông thú",
+    "definitionEn": "The thick, soft hair that covers the body of many mammals.",
+    "example": "The arctic fox changes the colour of its thick fur with the seasons.",
+    "collocation": "thick fur",
+    "cefr": "B2"
+  },
+  {
+    "word": "hoof",
+    "pos": "noun",
+    "ipa": "/huːf/",
+    "meaningVi": "móng guốc",
+    "definitionEn": "The hard protective covering on the foot of a horse, deer or similar animal.",
+    "example": "The deer's sharp hoof left a deep print in the muddy riverbank.",
+    "collocation": "cloven hoof",
+    "cefr": "B2"
+  },
+  {
+    "word": "tusk",
+    "pos": "noun",
+    "ipa": "/tʌsk/",
+    "meaningVi": "ngà",
+    "definitionEn": "A long, pointed tooth that projects outside the mouth of some animals.",
+    "example": "Elephant tusks have been illegally traded for centuries by ivory dealers.",
+    "collocation": "ivory tusk",
+    "cefr": "B2"
+  },
+  {
+    "word": "antler",
+    "pos": "noun",
+    "ipa": "/ˈæntlə/",
+    "meaningVi": "gạc nai",
+    "definitionEn": "A branched bony horn that grows on the head of a deer.",
+    "example": "Each autumn, the male deer sheds its antlers and grows new ones.",
+    "collocation": "deer antlers",
+    "cefr": "B2"
+  },
+  {
+    "word": "scale",
+    "pos": "noun",
+    "ipa": "/skeɪl/",
+    "meaningVi": "vảy",
+    "definitionEn": "One of the small hard plates that cover the skin of fish and reptiles.",
+    "example": "The fish's silver scales shimmered as it swam beneath the surface.",
+    "collocation": "fish scales",
+    "cefr": "B2"
+  },
+  {
+    "word": "territory",
+    "pos": "noun",
+    "ipa": "/ˈterɪtri/",
+    "meaningVi": "lãnh thổ, địa bàn",
+    "definitionEn": "An area of land that an animal defends and regards as its own.",
+    "example": "The male lion marks its territory with scent to warn rivals away.",
+    "collocation": "defend territory",
+    "cefr": "B2"
+  },
+  {
+    "word": "den",
+    "pos": "noun",
+    "ipa": "/den/",
+    "meaningVi": "hang, ổ",
+    "definitionEn": "A hidden shelter or lair where a wild animal rests or raises its young.",
+    "example": "The fox kept her cubs safe inside a den dug under the hedge.",
+    "collocation": "fox den",
+    "cefr": "B2"
+  },
+  {
+    "word": "plumage",
+    "pos": "noun",
+    "ipa": "/ˈpluːmɪdʒ/",
+    "meaningVi": "bộ lông vũ",
+    "definitionEn": "The complete set of feathers covering a bird's body.",
+    "example": "The male peacock displays its brilliant plumage to attract potential mates.",
+    "collocation": "bright plumage",
+    "cefr": "B2"
+  },
+  {
+    "word": "colony",
+    "pos": "noun",
+    "ipa": "/ˈkɒləni/",
+    "meaningVi": "đàn, bầy, quần thể",
+    "definitionEn": "A large group of animals of the same kind living together in one place.",
+    "example": "A colony of penguins huddled together against the freezing Antarctic wind.",
+    "collocation": "penguin colony",
+    "cefr": "B2"
+  },
+  {
+    "word": "roam",
+    "pos": "verb",
+    "ipa": "/rəʊm/",
+    "meaningVi": "lang thang, rong ruổi",
+    "definitionEn": "To wander freely over a wide area without a fixed route.",
+    "example": "Herds of bison once roamed the prairies in their millions across North America.",
+    "collocation": "roam freely",
+    "cefr": "B2"
+  },
+  {
+    "word": "forage",
+    "pos": "verb",
+    "ipa": "/ˈfɒrɪdʒ/",
+    "meaningVi": "kiếm ăn",
+    "definitionEn": "To search widely for food, especially plants or small animals.",
+    "example": "Squirrels forage for nuts and seeds throughout the autumn months.",
+    "collocation": "forage for food",
+    "cefr": "B2"
+  },
+  {
+    "word": "scavenge",
+    "pos": "verb",
+    "ipa": "/ˈskævɪndʒ/",
+    "meaningVi": "ăn xác thối, nhặt đồ ăn thừa",
+    "definitionEn": "To search for and eat food that others have left or that is already dead.",
+    "example": "Crows often scavenge rubbish bins for scraps of leftover food in the city.",
+    "collocation": "scavenge for food",
+    "cefr": "B2"
+  },
+  {
+    "word": "stalk",
+    "pos": "verb",
+    "ipa": "/stɔːk/",
+    "meaningVi": "rình theo, lén rình",
+    "definitionEn": "To follow an animal slowly and quietly in order to catch it.",
+    "example": "The tiger began to stalk the herd, keeping low behind the tall grass.",
+    "collocation": "stalk its prey",
+    "cefr": "B2"
+  },
+  {
+    "word": "graze",
+    "pos": "verb",
+    "ipa": "/ɡreɪz/",
+    "meaningVi": "gặm cỏ",
+    "definitionEn": "To feed on growing grass or herbs in a field or pasture.",
+    "example": "Sheep graze on the hillside, keeping the grass short throughout summer.",
+    "collocation": "graze on grass",
+    "cefr": "B2"
+  },
+  {
+    "word": "lure",
+    "pos": "verb",
+    "ipa": "/lʊə/",
+    "meaningVi": "dụ, nhử",
+    "definitionEn": "To attract an animal or person by offering something tempting.",
+    "example": "Anglers use bright lures to tempt trout into biting the hook.",
+    "collocation": "lure prey",
+    "cefr": "B2"
+  },
+  {
+    "word": "bask",
+    "pos": "verb",
+    "ipa": "/bɑːsk/",
+    "meaningVi": "phơi nắng",
+    "definitionEn": "To lie in warmth, especially sunlight, to raise body temperature.",
+    "example": "Lizards bask on warm rocks in the morning before they begin hunting insects.",
+    "collocation": "bask in the sun",
+    "cefr": "B2"
+  },
+  {
+    "word": "predation",
+    "pos": "noun",
+    "ipa": "/prɪˈdeɪʃn/",
+    "meaningVi": "sự săn mồi",
+    "definitionEn": "The act of hunting and killing other animals for food.",
+    "example": "Heavy predation by foxes has reduced the local rabbit population sharply.",
+    "collocation": "predation pressure",
+    "cefr": "B2"
+  },
+  {
+    "word": "mate",
+    "pos": "verb",
+    "ipa": "/meɪt/",
+    "meaningVi": "giao phối",
+    "definitionEn": "To come together with another animal to produce young.",
+    "example": "Frogs gather at the pond in spring to mate and lay their eggs.",
+    "collocation": "mate for life",
+    "cefr": "B2"
+  },
+  {
+    "word": "migrate",
+    "pos": "verb",
+    "ipa": "/maɪˈɡreɪt/",
+    "meaningVi": "di cư",
+    "definitionEn": "To move from one region to another, often seasonally, to find food or warmth.",
+    "example": "Swallows migrate thousands of kilometres every autumn to reach warmer climates.",
+    "collocation": "migrate south",
+    "cefr": "B2"
+  },
+  {
+    "word": "estivate",
+    "pos": "verb",
+    "ipa": "/ˈestɪveɪt/",
+    "meaningVi": "ngủ hè",
+    "definitionEn": "To enter a dormant state during hot or dry periods to conserve energy.",
+    "example": "Some desert snails estivate during the hottest months to avoid drying out.",
+    "collocation": "estivate underground",
+    "cefr": "B2"
+  },
+  {
+    "word": "spawn",
+    "pos": "verb",
+    "ipa": "/spɔːn/",
+    "meaningVi": "đẻ trứng (cá, ếch)",
+    "definitionEn": "To release eggs into water, as fish and frogs do.",
+    "example": "Salmon return to the rivers where they were born to spawn each autumn.",
+    "collocation": "spawn in rivers",
+    "cefr": "B2"
+  },
+  {
+    "word": "niche",
+    "pos": "noun",
+    "ipa": "/niːʃ/",
+    "meaningVi": "ổ sinh thái",
+    "definitionEn": "The specific role an organism plays within its ecosystem.",
+    "example": "Each bird species occupies a distinct ecological niche in the forest canopy.",
+    "collocation": "ecological niche",
+    "cefr": "C1"
+  },
+  {
+    "word": "symbiosis",
+    "pos": "noun",
+    "ipa": "/ˌsɪmbiˈəʊsɪs/",
+    "meaningVi": "cộng sinh",
+    "definitionEn": "A close, long-term interaction between two different organisms that benefits both.",
+    "example": "The relationship between cleaner fish and larger reef species is a classic symbiosis.",
+    "collocation": "mutual symbiosis",
+    "cefr": "C1"
+  },
+  {
+    "word": "parasite",
+    "pos": "noun",
+    "ipa": "/ˈpærəsaɪt/",
+    "meaningVi": "ký sinh trùng",
+    "definitionEn": "An organism that lives on or inside another organism and harms it.",
+    "example": "Ticks are external parasites that feed on the blood of deer and dogs.",
+    "collocation": "external parasite",
+    "cefr": "C1"
+  },
+  {
+    "word": "nomadic",
+    "pos": "adjective",
+    "ipa": "/nəʊˈmædɪk/",
+    "meaningVi": "du mục",
+    "definitionEn": "Moving regularly from place to place rather than settling permanently.",
+    "example": "Many nomadic herders follow seasonal grazing routes across the steppe.",
+    "collocation": "nomadic lifestyle",
+    "cefr": "C1"
+  },
+  {
+    "word": "gregarious",
+    "pos": "adjective",
+    "ipa": "/ɡrɪˈɡeəriəs/",
+    "meaningVi": "thích sống bầy đàn",
+    "definitionEn": "Tending to live in groups and enjoy the company of others.",
+    "example": "Gregarious animals such as zebras rely on the herd for protection from predators.",
+    "collocation": "gregarious species",
+    "cefr": "C1"
+  },
+  {
+    "word": "solitary",
+    "pos": "adjective",
+    "ipa": "/ˈsɒlɪtri/",
+    "meaningVi": "sống đơn độc",
+    "definitionEn": "Living or preferring to be alone rather than in a group.",
+    "example": "The solitary tiger patrols a vast territory that overlaps with several other animals.",
+    "collocation": "solitary animal",
+    "cefr": "C1"
+  },
+  {
+    "word": "venomous",
+    "pos": "adjective",
+    "ipa": "/ˈvenəməs/",
+    "meaningVi": "có nọc độc",
+    "definitionEn": "Able to inject a poison through bites or stings.",
+    "example": "The venomous snake strikes quickly, so hikers should avoid disturbing it.",
+    "collocation": "venomous bite",
+    "cefr": "C1"
+  },
+  {
+    "word": "indigenous",
+    "pos": "adjective",
+    "ipa": "/ɪnˈdɪdʒənəs/",
+    "meaningVi": "bản địa",
+    "definitionEn": "Naturally occurring in a particular region rather than introduced by humans.",
+    "example": "The indigenous frogs of the island are threatened by newly introduced predators.",
+    "collocation": "indigenous wildlife",
+    "cefr": "C1"
+  },
+  {
+    "word": "keystone",
+    "pos": "noun",
+    "ipa": "/ˈkiːstəʊn/",
+    "meaningVi": "loài then chốt",
+    "definitionEn": "A species whose presence strongly affects the structure of its whole ecosystem.",
+    "example": "Sea otters act as a keystone species by controlling sea urchin populations along the coast.",
+    "collocation": "keystone species",
+    "cefr": "C1"
+  },
+  {
+    "word": "scavenger",
+    "pos": "noun",
+    "ipa": "/ˈskævɪndʒə/",
+    "meaningVi": "loài ăn xác",
+    "definitionEn": "An animal that feeds on dead or decaying matter left by others.",
+    "example": "Vultures are efficient scavengers that clean carcasses from the African plains.",
+    "collocation": "carrion-eating scavenger",
+    "cefr": "C1"
+  },
+  {
+    "word": "carrion",
+    "pos": "noun",
+    "ipa": "/ˈkæriən/",
+    "meaningVi": "xác chết thối",
+    "definitionEn": "The decaying flesh of dead animals, eaten by some birds and insects.",
+    "example": "Vultures can detect carrion from great distances using their keen sense of smell.",
+    "collocation": "rotting carrion",
+    "cefr": "C1"
+  },
+  {
+    "word": "mimicry",
+    "pos": "noun",
+    "ipa": "/ˈmɪmɪkri/",
+    "meaningVi": "sự bắt chước màu sắc để tự vệ",
+    "definitionEn": "The resemblance of one species to another that helps it avoid being eaten.",
+    "example": "Harmless hoverflies use mimicry to resemble stinging wasps and deter predators.",
+    "collocation": "protective mimicry",
+    "cefr": "C1"
+  },
+  {
+    "word": "aposematic",
+    "pos": "adjective",
+    "ipa": "/ˌæpəˈsiːmætɪk/",
+    "meaningVi": "cảnh báo độc bằng màu sắc",
+    "definitionEn": "Having bright colours that warn predators that the animal is poisonous.",
+    "example": "The bright red colouring of the frog is aposematic, warning predators of its toxic skin.",
+    "collocation": "aposematic colouration",
+    "cefr": "C1"
+  },
+  {
+    "word": "metamorphosis",
+    "pos": "noun",
+    "ipa": "/ˌmetəˈmɔːfəsɪs/",
+    "meaningVi": "biến thái",
+    "definitionEn": "A dramatic transformation in form during the life cycle of an animal.",
+    "example": "The caterpillar undergoes metamorphosis inside the chrysalis before emerging as a butterfly.",
+    "collocation": "complete metamorphosis",
+    "cefr": "C1"
+  },
+  {
+    "word": "larva",
+    "pos": "noun",
+    "ipa": "/ˈlɑːvə/",
+    "meaningVi": "ấu trùng",
+    "definitionEn": "The young, wingless form of an insect that hatches from an egg.",
+    "example": "The larva feeds voraciously on leaves until it is ready to pupate.",
+    "collocation": "beetle larva",
+    "cefr": "C1"
+  },
+  {
+    "word": "pupa",
+    "pos": "noun",
+    "ipa": "/ˈpjuːpə/",
+    "meaningVi": "nhộng",
+    "definitionEn": "A resting stage between larva and adult in many insects, often inside a case.",
+    "example": "Inside the silk cocoon, the pupa slowly transforms into an adult moth.",
+    "collocation": "moth pupa",
+    "cefr": "C1"
+  },
+  {
+    "word": "nectar",
+    "pos": "noun",
+    "ipa": "/ˈnektə/",
+    "meaningVi": "mật hoa",
+    "definitionEn": "A sweet liquid produced by flowers to attract pollinating insects and birds.",
+    "example": "Hummingbirds hover over blossoms to drink nectar with their long, slender bills.",
+    "collocation": "sip nectar",
+    "cefr": "C1"
+  },
+  {
+    "word": "sedentary",
+    "pos": "adjective",
+    "ipa": "/ˈsedntri/",
+    "meaningVi": "ít di chuyển, định cư",
+    "definitionEn": "Staying in one place or moving very little during a particular period.",
+    "example": "Unlike its migratory cousins, this sparrow is largely sedentary throughout the year.",
+    "collocation": "sedentary species",
+    "cefr": "C1"
+  },
+  {
+    "word": "gestation",
+    "pos": "noun",
+    "ipa": "/dʒeˈsteɪʃn/",
+    "meaningVi": "thời kỳ mang thai",
+    "definitionEn": "The period during which a mother carries developing young before birth.",
+    "example": "Elephant gestation lasts nearly two years, the longest of any land mammal.",
+    "collocation": "gestation period",
+    "cefr": "C1"
+  },
+  {
+    "word": "litter",
+    "pos": "noun",
+    "ipa": "/ˈlɪtə/",
+    "meaningVi": "lứa đẻ",
+    "definitionEn": "A group of young born to an animal at the same time from one mother.",
+    "example": "The mother wolf nursed her litter of five pups in a sheltered den.",
+    "collocation": "a litter of puppies",
+    "cefr": "C1"
+  },
+  {
+    "word": "chrysalis",
+    "pos": "noun",
+    "ipa": "/ˈkrɪsəlɪs/",
+    "meaningVi": "kén nhộng bướm",
+    "definitionEn": "The hard protective case in which a caterpillar changes into a butterfly.",
+    "example": "A monarch chrysalis hangs from a leaf, glistening with a metallic green shell.",
+    "collocation": "hanging chrysalis",
+    "cefr": "C1"
+  },
+  {
+    "word": "cocoon",
+    "pos": "noun",
+    "ipa": "/kəˈkuːn/",
+    "meaningVi": "kén tơ",
+    "definitionEn": "A silky protective casing spun by many insect larvae before they change form.",
+    "example": "The moth spins a silken cocoon around itself before its transformation begins.",
+    "collocation": "silk cocoon",
+    "cefr": "C1"
+  },
+  {
+    "word": "torpor",
+    "pos": "noun",
+    "ipa": "/ˈtɔːpə/",
+    "meaningVi": "trạng thái lờ đờ, ngủ đông ngắn",
+    "definitionEn": "A state of reduced activity and metabolism, used to conserve energy.",
+    "example": "Hummingbirds can enter torpor overnight to conserve energy during cold nights.",
+    "collocation": "deep torpor",
+    "cefr": "C1"
+  },
+  {
+    "word": "brood",
+    "pos": "noun",
+    "ipa": "/bruːd/",
+    "meaningVi": "đàn con, lứa con",
+    "definitionEn": "A group of young birds or animals hatched and raised together.",
+    "example": "The hen guarded her brood of chicks closely in the tall grass.",
+    "collocation": "brood of chicks",
+    "cefr": "C1"
+  },
+  {
+    "word": "ungulate",
+    "pos": "noun",
+    "ipa": "/ˈʌŋɡjʊlət/",
+    "meaningVi": "động vật móng guốc",
+    "definitionEn": "A hoofed mammal, such as a deer, horse or cow.",
+    "example": "Antelopes and zebras are ungulates that graze across the African savanna.",
+    "collocation": "hoofed ungulate",
+    "cefr": "C1"
+  },
+  {
+    "word": "marsupial",
+    "pos": "noun",
+    "ipa": "/mɑːˈsuːpiəl/",
+    "meaningVi": "động vật có túi",
+    "definitionEn": "A mammal that carries and nurses its young in a pouch on the belly.",
+    "example": "Kangaroos are marsupials that give birth to tiny, underdeveloped young.",
+    "collocation": "marsupial pouch",
+    "cefr": "C1"
+  },
+  {
+    "word": "arachnid",
+    "pos": "noun",
+    "ipa": "/əˈræknɪd/",
+    "meaningVi": "lớp nhện",
+    "definitionEn": "An eight-legged invertebrate such as a spider, scorpion or tick.",
+    "example": "Scorpions are arachnids with pincers and a venomous sting in the tail.",
+    "collocation": "arachnid species",
+    "cefr": "C1"
+  },
+  {
+    "word": "crustacean",
+    "pos": "noun",
+    "ipa": "/krʌˈsteɪʃn/",
+    "meaningVi": "giáp xác",
+    "definitionEn": "An aquatic invertebrate with a hard shell, such as a crab, lobster or shrimp.",
+    "example": "Freshwater crustaceans provide food for many species of fish and birds.",
+    "collocation": "crustacean shells",
+    "cefr": "C1"
+  },
+  {
+    "word": "cephalopod",
+    "pos": "noun",
+    "ipa": "/ˈsefələpɒd/",
+    "meaningVi": "động vật chân đầu",
+    "definitionEn": "A marine mollusc with tentacles, such as an octopus or a squid.",
+    "example": "The cephalopod can change its skin colour within seconds to blend into rocks.",
+    "collocation": "cephalopod intelligence",
+    "cefr": "C1"
+  },
+  {
+    "word": "crepuscular",
+    "pos": "adjective",
+    "ipa": "/krɪˈpʌskjʊlə/",
+    "meaningVi": "hoạt động lúc chập choạng",
+    "definitionEn": "Active mainly during twilight at dusk or dawn.",
+    "example": "Rabbits are crepuscular, feeding most actively in the early morning and evening.",
+    "collocation": "crepuscular habits",
+    "cefr": "C1"
+  },
+  {
+    "word": "ruminant",
+    "pos": "noun",
+    "ipa": "/ˈruːmɪnənt/",
+    "meaningVi": "động vật nhai lại",
+    "definitionEn": "A hoofed animal that chews cud, such as a cow, goat or deer.",
+    "example": "Cattle and goats are ruminants that digest tough grasses in several stomach chambers.",
+    "collocation": "ruminant animals",
+    "cefr": "C1"
+  },
+  {
+    "word": "pachyderm",
+    "pos": "noun",
+    "ipa": "/ˈpækɪdɜːm/",
+    "meaningVi": "động vật da dày",
+    "definitionEn": "A large, thick-skinned mammal, such as an elephant or rhinoceros.",
+    "example": "The pachyderm wallowed in the mud to cool down under the blazing afternoon sun.",
+    "collocation": "large pachyderm",
+    "cefr": "C1"
+  },
+  {
+    "word": "apex",
+    "pos": "noun",
+    "ipa": "/ˈeɪpeks/",
+    "meaningVi": "đỉnh chuỗi thức ăn",
+    "definitionEn": "The highest-ranking predator in a food chain, with few or no natural enemies.",
+    "example": "The leopard is an apex predator, controlling populations of deer and wild pigs.",
+    "collocation": "apex predator",
+    "cefr": "C1"
+  },
+  {
+    "word": "quadruped",
+    "pos": "noun",
+    "ipa": "/ˈkwɒdrʊped/",
+    "meaningVi": "động vật bốn chân",
+    "definitionEn": "An animal that walks on four legs, such as a dog or horse.",
+    "example": "Most mammals are quadrupeds, though humans and apes often walk upright.",
+    "collocation": "quadruped locomotion",
+    "cefr": "C1"
+  },
+  {
+    "word": "amphibious",
+    "pos": "adjective",
+    "ipa": "/æmˈfɪbiəs/",
+    "meaningVi": "lưỡng cư, sống hai môi trường",
+    "definitionEn": "Able to live both on land and in water.",
+    "example": "The amphibious crocodile hunts in rivers and rests on sun-warmed banks.",
+    "collocation": "amphibious creature",
+    "cefr": "C1"
+  },
+  {
+    "word": "piscivorous",
+    "pos": "adjective",
+    "ipa": "/pɪˈsɪvərəs/",
+    "meaningVi": "ăn cá",
+    "definitionEn": "Feeding mainly on fish, as many herons, kingfishers and ospreys do.",
+    "example": "The osprey is piscivorous, diving feet-first to snatch fish from the water.",
+    "collocation": "piscivorous birds",
+    "cefr": "C1"
+  },
+  {
+    "word": "philopatry",
+    "pos": "noun",
+    "ipa": "/fɪˈlɒpətri/",
+    "meaningVi": "tính trung thành với nơi sinh",
+    "definitionEn": "The tendency of animals to return to the place where they were born.",
+    "example": "Philopatry draws salmon back to the very stream where they hatched years earlier.",
+    "collocation": "strong philopatry",
+    "cefr": "C2"
+  },
+  {
+    "word": "anadromous",
+    "pos": "adjective",
+    "ipa": "/əˈnædrəməs/",
+    "meaningVi": "sống biển, đẻ ở sông",
+    "definitionEn": "Describing fish that live in the sea but breed in fresh water.",
+    "example": "Anadromous fish such as salmon ascend rivers to spawn after years at sea.",
+    "collocation": "anadromous fish",
+    "cefr": "C2"
+  },
+  {
+    "word": "catadromous",
+    "pos": "adjective",
+    "ipa": "/kəˈtædrəməs/",
+    "meaningVi": "sống sông, đẻ ở biển",
+    "definitionEn": "Describing fish that live in fresh water but breed in the sea.",
+    "example": "Eels are catadromous, living in rivers before travelling to the ocean to breed.",
+    "collocation": "catadromous eels",
+    "cefr": "C2"
+  },
+  {
+    "word": "dimorphism",
+    "pos": "noun",
+    "ipa": "/daɪˈmɔːfɪzəm/",
+    "meaningVi": "lưỡng hình",
+    "definitionEn": "The existence of two distinct forms or appearances within one species.",
+    "example": "Sexual dimorphism makes male lions far larger and more maned than females.",
+    "collocation": "sexual dimorphism",
+    "cefr": "C2"
+  },
+  {
+    "word": "polygyny",
+    "pos": "noun",
+    "ipa": "/pəˈlɪdʒɪni/",
+    "meaningVi": "chế độ đa thê",
+    "definitionEn": "A mating system in which one male mates with several females.",
+    "example": "Polygyny is common among elephant seals, where dominant males control harems.",
+    "collocation": "polygyny system",
+    "cefr": "C2"
+  },
+  {
+    "word": "altricial",
+    "pos": "adjective",
+    "ipa": "/ælˈtrɪʃl/",
+    "meaningVi": "non nớt khi mới nở",
+    "definitionEn": "Born helpless and requiring extensive parental care, as many songbirds are.",
+    "example": "Altricial chicks depend on their parents for food and warmth for several weeks.",
+    "collocation": "altricial young",
+    "cefr": "C2"
+  },
+  {
+    "word": "precocial",
+    "pos": "adjective",
+    "ipa": "/prɪˈkəʊʃl/",
+    "meaningVi": "tự lập sớm khi mới nở",
+    "definitionEn": "Born relatively mature and mobile, able to feed themselves soon after hatching.",
+    "example": "Precocial ducklings can swim and forage within hours of leaving the egg.",
+    "collocation": "precocial chicks",
+    "cefr": "C2"
+  },
+  {
+    "word": "ectotherm",
+    "pos": "noun",
+    "ipa": "/ˈektəθɜːm/",
+    "meaningVi": "động vật biến nhiệt",
+    "definitionEn": "An animal whose body temperature depends mainly on external heat sources.",
+    "example": "As an ectotherm, the lizard must bask in sunlight to warm its muscles.",
+    "collocation": "ectotherm physiology",
+    "cefr": "C2"
+  },
+  {
+    "word": "endotherm",
+    "pos": "noun",
+    "ipa": "/ˈendəθɜːm/",
+    "meaningVi": "động vật hằng nhiệt",
+    "definitionEn": "An animal that generates its own body heat through metabolic processes.",
+    "example": "Unlike reptiles, most birds and mammals are endotherms that regulate heat internally.",
+    "collocation": "endotherm metabolism",
+    "cefr": "C2"
+  },
+  {
+    "word": "cryptic",
+    "pos": "adjective",
+    "ipa": "/ˈkrɪptɪk/",
+    "meaningVi": "ngụy trang khó thấy",
+    "definitionEn": "Hidden or concealed, especially as a form of camouflage.",
+    "example": "The moth's cryptic wings resemble dead leaves, making it nearly invisible on bark.",
+    "collocation": "cryptic coloration",
+    "cefr": "C2"
+  },
+  {
+    "word": "volant",
+    "pos": "adjective",
+    "ipa": "/ˈvəʊlənt/",
+    "meaningVi": "biết bay",
+    "definitionEn": "Capable of flight; able to fly.",
+    "example": "Volant mammals such as bats navigate in darkness using echolocation calls.",
+    "collocation": "volant species",
+    "cefr": "C2"
+  },
+  {
+    "word": "saltatorial",
+    "pos": "adjective",
+    "ipa": "/ˌsæltəˈtɔːriəl/",
+    "meaningVi": "thích nghi để nhảy xa",
+    "definitionEn": "Adapted for leaping or jumping, as in grasshoppers and kangaroos.",
+    "example": "Saltatorial locusts launch themselves across the field with powerful hind legs.",
+    "collocation": "saltatorial locomotion",
+    "cefr": "C2"
+  },
+  {
+    "word": "fossorial",
+    "pos": "adjective",
+    "ipa": "/fɒˈsɔːriəl/",
+    "meaningVi": "thích đào bới, sống dưới đất",
+    "definitionEn": "Adapted for digging and living underground, like moles or badgers.",
+    "example": "Fossorial rodents excavate elaborate tunnel systems beneath the grassland.",
+    "collocation": "fossorial mammals",
+    "cefr": "C2"
+  },
+  {
+    "word": "cursorial",
+    "pos": "adjective",
+    "ipa": "/kɜːˈsɔːriəl/",
+    "meaningVi": "thích nghi để chạy nhanh",
+    "definitionEn": "Adapted for running fast over open ground, as with cheetahs and horses.",
+    "example": "Cursorial animals such as gazelles escape predators by sprinting across plains.",
+    "collocation": "cursorial adaptation",
+    "cefr": "C2"
+  },
+  {
+    "word": "natatorial",
+    "pos": "adjective",
+    "ipa": "/ˌneɪtəˈtɔːriəl/",
+    "meaningVi": "thích nghi để bơi lội",
+    "definitionEn": "Adapted for swimming, typically through webbed feet or paddle-like limbs.",
+    "example": "Penguins display natatorial adaptations, with flipper-shaped wings that propel them underwater.",
+    "collocation": "natatorial limbs",
+    "cefr": "C2"
+  },
+  {
+    "word": "scansorial",
+    "pos": "adjective",
+    "ipa": "/skænˈsɔːriəl/",
+    "meaningVi": "leo trèo giỏi",
+    "definitionEn": "Adapted for climbing trees or rock faces with specialised claws or grip.",
+    "example": "Scansorial lizards cling effortlessly to vertical bark with their toe pads.",
+    "collocation": "scansorial lifestyle",
+    "cefr": "C2"
+  },
+  {
+    "word": "troglobite",
+    "pos": "noun",
+    "ipa": "/ˈtrɒɡləbaɪt/",
+    "meaningVi": "sinh vật hang động",
+    "definitionEn": "An animal that lives permanently in caves and has adapted to darkness.",
+    "example": "Blind cave beetles are troglobites that have lost their eyes over many generations.",
+    "collocation": "troglobite fauna",
+    "cefr": "C2"
+  },
+  {
+    "word": "vermivore",
+    "pos": "noun",
+    "ipa": "/ˈvɜːmɪvɔː/",
+    "meaningVi": "loài ăn giun",
+    "definitionEn": "An animal whose diet consists mainly of worms.",
+    "example": "Many shorebirds are vermivores, probing wet mud for worms with long beaks.",
+    "collocation": "vermivore birds",
+    "cefr": "C2"
+  },
+  {
+    "word": "frugivore",
+    "pos": "noun",
+    "ipa": "/ˈfruːdʒɪvɔː/",
+    "meaningVi": "loài ăn quả",
+    "definitionEn": "An animal that eats mainly fruit, playing a key role in seed dispersal.",
+    "example": "Many tropical bats are frugivores that scatter seeds across the rainforest.",
+    "collocation": "frugivore diet",
+    "cefr": "C2"
+  },
+  {
+    "word": "granivore",
+    "pos": "noun",
+    "ipa": "/ˈɡrænɪvɔː/",
+    "meaningVi": "loài ăn hạt",
+    "definitionEn": "An animal that feeds mainly on seeds and grain.",
+    "example": "Finches are granivores whose conical beaks are perfect for cracking seeds.",
+    "collocation": "granivore beaks",
+    "cefr": "C2"
+  },
+  {
+    "word": "hematophagous",
+    "pos": "adjective",
+    "ipa": "/ˌhiːməˈtɒfəɡəs/",
+    "meaningVi": "ăn máu",
+    "definitionEn": "Feeding on blood, as in mosquitoes, leeches and vampire bats.",
+    "example": "Hematophagous mosquitoes transmit malaria while feeding on the blood of humans.",
+    "collocation": "hematophagous insects",
+    "cefr": "C2"
+  },
+  {
+    "word": "entomophagy",
+    "pos": "noun",
+    "ipa": "/ˌentəˈmɒfədʒi/",
+    "meaningVi": "tập quán ăn côn trùng",
+    "definitionEn": "The practice of eating insects as a regular part of the diet.",
+    "example": "Entomophagy is common across Southeast Asia, where crickets and grubs are sold in markets.",
+    "collocation": "entomophagy practices",
+    "cefr": "C2"
+  },
+  {
+    "word": "parasitoid",
+    "pos": "noun",
+    "ipa": "/ˈpærəsɪtɔɪd/",
+    "meaningVi": "côn trùng ký sinh gây chết vật chủ",
+    "definitionEn": "An insect whose larvae develop inside or on a host and eventually kill it.",
+    "example": "The wasp is a parasitoid whose larvae consume the caterpillar from inside.",
+    "collocation": "parasitoid wasp",
+    "cefr": "C2"
+  },
+  {
+    "word": "commensal",
+    "pos": "adjective",
+    "ipa": "/kəˈmensl/",
+    "meaningVi": "hội sinh",
+    "definitionEn": "Describing a relationship in which one partner benefits and the other is unaffected.",
+    "example": "Barnacles living on whales form a commensal relationship that costs the host nothing.",
+    "collocation": "commensal relationship",
+    "cefr": "C2"
+  },
+  {
+    "word": "mutualism",
+    "pos": "noun",
+    "ipa": "/ˈmjuːtʃuəlɪzəm/",
+    "meaningVi": "hỗ sinh",
+    "definitionEn": "A relationship in which two species both gain benefits from each other.",
+    "example": "Mutualism between figs and wasps depends on each partner for reproduction.",
+    "collocation": "mutualism relationship",
+    "cefr": "C2"
+  },
+  {
+    "word": "allopatric",
+    "pos": "adjective",
+    "ipa": "/ˌæləˈpætrɪk/",
+    "meaningVi": "phân bố khác vùng",
+    "definitionEn": "Describing populations separated geographically, so they cannot interbreed.",
+    "example": "Allopatric populations of the same lizard evolved different colours on separate islands.",
+    "collocation": "allopatric speciation",
+    "cefr": "C2"
+  },
+  {
+    "word": "sympatric",
+    "pos": "adjective",
+    "ipa": "/sɪmˈpætrɪk/",
+    "meaningVi": "phân bố chung vùng",
+    "definitionEn": "Describing populations that live in the same area and may interbreed.",
+    "example": "Sympatric finches diverged in beak shape after competing for the same seeds.",
+    "collocation": "sympatric populations",
+    "cefr": "C2"
+  },
+  {
+    "word": "fecundity",
+    "pos": "noun",
+    "ipa": "/fɪˈkʌndəti/",
+    "meaningVi": "khả năng sinh sản",
+    "definitionEn": "The capacity of an organism to produce a large number of offspring.",
+    "example": "High fecundity allows fish to replace losses from fishing and predation quickly.",
+    "collocation": "high fecundity",
+    "cefr": "C2"
+  },
+  {
+    "word": "zoonosis",
+    "pos": "noun",
+    "ipa": "/ˌzəʊəˈnəʊsɪs/",
+    "meaningVi": "bệnh lây từ động vật",
+    "definitionEn": "A disease transmitted naturally from animals to humans.",
+    "example": "Scientists track zoonosis carefully, since many new human diseases originate in wildlife.",
+    "collocation": "zoonosis outbreak",
+    "cefr": "C2"
+  },
+  {
+    "word": "vagility",
+    "pos": "noun",
+    "ipa": "/vəˈdʒɪləti/",
+    "meaningVi": "khả năng di chuyển",
+    "definitionEn": "The ability of an organism to move freely from one place to another.",
+    "example": "Low vagility means the frog rarely crosses the road to reach the next pond.",
+    "collocation": "high vagility",
+    "cefr": "C2"
+  },
+  {
+    "word": "phylogeny",
+    "pos": "noun",
+    "ipa": "/faɪˈlɒdʒəni/",
+    "meaningVi": "phát sinh chủng loại",
+    "definitionEn": "The evolutionary history and relationships among a group of organisms.",
+    "example": "Genetic sequencing has clarified the phylogeny of the big cats over millions of years.",
+    "collocation": "phylogeny reconstruction",
+    "cefr": "C2"
+  },
+  {
+    "word": "taxon",
+    "pos": "noun",
+    "ipa": "/ˈtæksɒn/",
+    "meaningVi": "đơn vị phân loại",
+    "definitionEn": "A group of organisms classified together at any level of taxonomy.",
+    "example": "Biologists redefined the taxon after DNA evidence revealed hidden lineages.",
+    "collocation": "taxon boundaries",
+    "cefr": "C2"
+  },
+  {
+    "word": "endemic",
+    "pos": "adjective",
+    "ipa": "/enˈdemɪk/",
+    "meaningVi": "đặc hữu",
+    "definitionEn": "Found naturally in only one particular region and nowhere else.",
+    "example": "Madagascar hosts many endemic lemurs that exist nowhere else on Earth.",
+    "collocation": "endemic species",
+    "cefr": "C2"
+  },
+  {
+    "word": "lekking",
+    "pos": "noun",
+    "ipa": "/ˈlekɪŋ/",
+    "meaningVi": "tập trung biểu diễn tán tỉnh",
+    "definitionEn": "A courtship display in which males gather in one place to attract females.",
+    "example": "Lekking grouse perform elaborate dances on the same patch of ground each spring.",
+    "collocation": "lekking display",
+    "cefr": "C2"
+  },
+  {
+    "word": "stridulation",
+    "pos": "noun",
+    "ipa": "/ˌstrɪdjʊˈleɪʃn/",
+    "meaningVi": "tiếng cọ sát phát ra",
+    "definitionEn": "The production of sound by rubbing body parts together, as crickets do.",
+    "example": "Stridulation by male crickets attracts females during warm summer evenings.",
+    "collocation": "cricket stridulation",
+    "cefr": "C2"
+  },
+  {
+    "word": "echolocation",
+    "pos": "noun",
+    "ipa": "/ˌekəʊləʊˈkeɪʃn/",
+    "meaningVi": "định vị bằng tiếng vang",
+    "definitionEn": "Locating objects by emitting sounds and interpreting the returning echoes.",
+    "example": "Dolphins use echolocation to find fish in murky water where vision is limited.",
+    "collocation": "echolocation clicks",
+    "cefr": "C2"
+  },
+  {
+    "word": "vestigial",
+    "pos": "adjective",
+    "ipa": "/veˈstɪdʒɪəl/",
+    "meaningVi": "tàn dư, thoái hoá",
+    "definitionEn": "Describing a body part that has lost most of its original function.",
+    "example": "The tiny vestigial wings of the flightless beetle are hidden beneath its hard shell.",
+    "collocation": "vestigial organ",
+    "cefr": "C2"
+  },
+  {
+    "word": "chelonian",
+    "pos": "adjective",
+    "ipa": "/kɪˈləʊniən/",
+    "meaningVi": "thuộc bộ rùa",
+    "definitionEn": "Relating to turtles and tortoises, a group of reptiles with protective shells.",
+    "example": "Chelonian eggs must incubate in warm sand for several months before hatching.",
+    "collocation": "chelonian species",
+    "cefr": "C2"
+  },
+  {
+    "word": "piebald",
+    "pos": "adjective",
+    "ipa": "/ˈpaɪbɔːld/",
+    "meaningVi": "lốm đốm hai màu",
+    "definitionEn": "Having irregular patches of two colours, usually black and white.",
+    "example": "The piebald horse stood out in the meadow with its irregular black and white patches.",
+    "collocation": "piebald coat",
+    "cefr": "C2"
+  },
+  {
+    "word": "bioacoustics",
+    "pos": "noun",
+    "ipa": "/ˌbaɪəʊəˈkuːstɪks/",
+    "meaningVi": "âm sinh học",
+    "definitionEn": "The study of sounds produced by animals and how they communicate.",
+    "example": "Bioacoustics researchers record whale songs to map migration patterns across oceans.",
+    "collocation": "bioacoustics research",
+    "cefr": "C2"
+  },
+  {
+    "word": "pelagic",
+    "pos": "adjective",
+    "ipa": "/pəˈlædʒɪk/",
+    "meaningVi": "sống ngoài khơi",
+    "definitionEn": "Living in the open ocean, away from the seabed or coastal waters.",
+    "example": "Tuna and marlin are pelagic fish that roam vast distances across the open sea.",
+    "collocation": "pelagic zone",
+    "cefr": "C2"
+  },
+  {
+    "word": "benthic",
+    "pos": "adjective",
+    "ipa": "/ˈbenθɪk/",
+    "meaningVi": "sống đáy",
+    "definitionEn": "Living on or near the bottom of a sea, lake or river.",
+    "example": "Benthic worms burrow into sediment, mixing nutrients into the riverbed below.",
+    "collocation": "benthic organisms",
+    "cefr": "C2"
+  },
+  {
+    "word": "plankton",
+    "pos": "noun",
+    "ipa": "/ˈplæŋktən/",
+    "meaningVi": "sinh vật phù du",
+    "definitionEn": "Tiny organisms drifting in water, forming the base of aquatic food webs.",
+    "example": "Whales feed on plankton, straining huge quantities of water through baleen plates.",
+    "collocation": "marine plankton",
+    "cefr": "C2"
+  },
+  {
+    "word": "estuary",
+    "pos": "noun",
+    "ipa": "/ˈestʃuəri/",
+    "meaningVi": "cửa sông",
+    "definitionEn": "The wide, tidal mouth of a river where it meets the sea.",
+    "example": "Migratory birds gather in the estuary to feed on crabs and worms.",
+    "collocation": "river estuary",
+    "cefr": "C2"
+  },
+  {
+    "word": "gravid",
+    "pos": "adjective",
+    "ipa": "/ˈɡrævɪd/",
+    "meaningVi": "đang mang trứng hoặc thai",
+    "definitionEn": "Carrying developing eggs or young inside the body before birth.",
+    "example": "The gravid female lizard searched for a warm, sheltered nest site.",
+    "collocation": "gravid female",
+    "cefr": "C2"
+  },
+  {
+    "word": "ovoviviparous",
+    "pos": "adjective",
+    "ipa": "/ˌəʊvəʊvaɪˈvɪpərəs/",
+    "meaningVi": "noãn thai (trứng nở trong cơ thể)",
+    "definitionEn": "Producing eggs that hatch inside the mother, so the young are born alive.",
+    "example": "Many sharks are ovoviviparous, giving birth to fully formed young from eggs hatched internally.",
+    "collocation": "ovoviviparous sharks",
+    "cefr": "C2"
+  },
+  {
+    "word": "oviparous",
+    "pos": "adjective",
+    "ipa": "/əʊˈvɪpərəs/",
+    "meaningVi": "đẻ trứng",
+    "definitionEn": "Laying eggs that develop and hatch outside the mother's body.",
+    "example": "Most birds and reptiles are oviparous, depositing eggs in nests or sand.",
+    "collocation": "oviparous reptiles",
+    "cefr": "C2"
+  }
+]

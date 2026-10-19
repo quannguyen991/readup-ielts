@@ -1,0 +1,1170 @@
+[
+  {
+    "word": "withdrawal",
+    "synonyms": [
+      "removal of funds",
+      "drawdown"
+    ],
+    "antonyms": [
+      "deposit"
+    ]
+  },
+  {
+    "word": "spend",
+    "synonyms": [
+      "pay out",
+      "expend",
+      "lay out"
+    ],
+    "antonyms": [
+      "save",
+      "economise"
+    ]
+  },
+  {
+    "word": "price",
+    "synonyms": [
+      "cost",
+      "charge",
+      "rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cash",
+    "synonyms": [
+      "ready money",
+      "notes and coins"
+    ],
+    "antonyms": [
+      "credit"
+    ]
+  },
+  {
+    "word": "salary",
+    "synonyms": [
+      "pay",
+      "earnings",
+      "remuneration"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "earn",
+    "synonyms": [
+      "make",
+      "gain",
+      "bring in"
+    ],
+    "antonyms": [
+      "spend"
+    ]
+  },
+  {
+    "word": "receipt",
+    "synonyms": [
+      "proof of purchase",
+      "docket"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bargain",
+    "synonyms": [
+      "good deal",
+      "steal",
+      "snip"
+    ],
+    "antonyms": [
+      "rip-off"
+    ]
+  },
+  {
+    "word": "discount",
+    "synonyms": [
+      "reduction",
+      "rebate",
+      "markdown"
+    ],
+    "antonyms": [
+      "surcharge",
+      "mark-up"
+    ]
+  },
+  {
+    "word": "expensive",
+    "synonyms": [
+      "costly",
+      "dear",
+      "pricey"
+    ],
+    "antonyms": [
+      "cheap",
+      "inexpensive"
+    ]
+  },
+  {
+    "word": "afford",
+    "synonyms": [
+      "pay for",
+      "cover the cost",
+      "stretch to"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "save up",
+    "synonyms": [
+      "set aside",
+      "put by",
+      "stash away"
+    ],
+    "antonyms": [
+      "spend",
+      "splash out"
+    ]
+  },
+  {
+    "word": "borrow",
+    "synonyms": [
+      "take out",
+      "get a loan",
+      "obtain credit"
+    ],
+    "antonyms": [
+      "lend"
+    ]
+  },
+  {
+    "word": "owe",
+    "synonyms": [
+      "be in debt",
+      "be indebted"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "refund",
+    "synonyms": [
+      "reimbursement",
+      "money back"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wage",
+    "synonyms": [
+      "pay",
+      "earnings",
+      "hourly rate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "currency",
+    "synonyms": [
+      "money",
+      "legal tender"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bonus",
+    "synonyms": [
+      "extra pay",
+      "incentive payment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commission",
+    "synonyms": [
+      "brokerage",
+      "percentage",
+      "cut"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "interest",
+    "synonyms": [
+      "return",
+      "yield"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "surplus",
+    "synonyms": [
+      "excess",
+      "overage"
+    ],
+    "antonyms": [
+      "deficit",
+      "shortfall"
+    ]
+  },
+  {
+    "word": "deficit",
+    "synonyms": [
+      "shortfall",
+      "negative balance"
+    ],
+    "antonyms": [
+      "surplus"
+    ]
+  },
+  {
+    "word": "invoice",
+    "synonyms": [
+      "bill",
+      "statement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bill",
+    "synonyms": [
+      "invoice",
+      "tab"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fee",
+    "synonyms": [
+      "charge",
+      "cost",
+      "dues"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "expense",
+    "synonyms": [
+      "cost",
+      "outlay",
+      "expenditure"
+    ],
+    "antonyms": [
+      "income"
+    ]
+  },
+  {
+    "word": "shortfall",
+    "synonyms": [
+      "deficit",
+      "shortage",
+      "gap"
+    ],
+    "antonyms": [
+      "surplus"
+    ]
+  },
+  {
+    "word": "affordable",
+    "synonyms": [
+      "reasonably priced",
+      "cheap",
+      "inexpensive"
+    ],
+    "antonyms": [
+      "expensive",
+      "prohibitive"
+    ]
+  },
+  {
+    "word": "solvent",
+    "synonyms": [
+      "financially sound",
+      "in the black",
+      "creditworthy"
+    ],
+    "antonyms": [
+      "insolvent",
+      "bankrupt"
+    ]
+  },
+  {
+    "word": "liability",
+    "synonyms": [
+      "debt",
+      "obligation",
+      "commitment"
+    ],
+    "antonyms": [
+      "asset"
+    ]
+  },
+  {
+    "word": "asset",
+    "synonyms": [
+      "property",
+      "holding",
+      "possession"
+    ],
+    "antonyms": [
+      "liability"
+    ]
+  },
+  {
+    "word": "equity",
+    "synonyms": [
+      "net worth",
+      "shareholding"
+    ],
+    "antonyms": [
+      "debt"
+    ]
+  },
+  {
+    "word": "premium",
+    "synonyms": [
+      "instalment",
+      "contribution"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insurance",
+    "synonyms": [
+      "cover",
+      "protection",
+      "assurance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pawn",
+    "synonyms": [
+      "hock",
+      "pledge"
+    ],
+    "antonyms": [
+      "redeem"
+    ]
+  },
+  {
+    "word": "stock",
+    "synonyms": [
+      "share",
+      "equity"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fortune",
+    "synonyms": [
+      "wealth",
+      "riches"
+    ],
+    "antonyms": [
+      "poverty"
+    ]
+  },
+  {
+    "word": "payslip",
+    "synonyms": [
+      "pay stub",
+      "wage slip",
+      "salary statement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cheque",
+    "synonyms": [
+      "check",
+      "bank draft"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "transaction",
+    "synonyms": [
+      "deal",
+      "exchange"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "repayment",
+    "synonyms": [
+      "instalment",
+      "settlement",
+      "payback"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "overspend",
+    "synonyms": [
+      "splurge",
+      "go over budget"
+    ],
+    "antonyms": [
+      "economise",
+      "save"
+    ]
+  },
+  {
+    "word": "feel the pinch",
+    "synonyms": [
+      "be hard up",
+      "tighten belts"
+    ],
+    "antonyms": [
+      "be flush"
+    ]
+  },
+  {
+    "word": "break even",
+    "synonyms": [
+      "balance the books",
+      "cover costs"
+    ],
+    "antonyms": [
+      "make a loss",
+      "lose money"
+    ]
+  },
+  {
+    "word": "make ends meet",
+    "synonyms": [
+      "get by",
+      "scrape by"
+    ],
+    "antonyms": [
+      "be well off"
+    ]
+  },
+  {
+    "word": "in the red",
+    "synonyms": [
+      "in debt",
+      "overdrawn"
+    ],
+    "antonyms": [
+      "in the black"
+    ]
+  },
+  {
+    "word": "cost of living",
+    "synonyms": [
+      "living costs",
+      "expenses"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fiscal",
+    "synonyms": [
+      "financial",
+      "budgetary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "monetary",
+    "synonyms": [
+      "financial",
+      "pecuniary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "depreciate",
+    "synonyms": [
+      "lose value",
+      "devalue"
+    ],
+    "antonyms": [
+      "appreciate"
+    ]
+  },
+  {
+    "word": "appreciate",
+    "synonyms": [
+      "gain value",
+      "rise in value"
+    ],
+    "antonyms": [
+      "depreciate"
+    ]
+  },
+  {
+    "word": "deflation",
+    "synonyms": [
+      "falling prices",
+      "price decline"
+    ],
+    "antonyms": [
+      "inflation"
+    ]
+  },
+  {
+    "word": "stimulus",
+    "synonyms": [
+      "boost",
+      "injection"
+    ],
+    "antonyms": [
+      "austerity"
+    ]
+  },
+  {
+    "word": "austerity",
+    "synonyms": [
+      "belt-tightening",
+      "frugality"
+    ],
+    "antonyms": [
+      "extravagance"
+    ]
+  },
+  {
+    "word": "arrears",
+    "synonyms": [
+      "overdue payments",
+      "back payments"
+    ],
+    "antonyms": [
+      "advance payment"
+    ]
+  },
+  {
+    "word": "liquidate",
+    "synonyms": [
+      "wind up",
+      "close down",
+      "sell off"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "leverage",
+    "synonyms": [
+      "gearing",
+      "borrowing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "speculation",
+    "synonyms": [
+      "gambling",
+      "risk-taking"
+    ],
+    "antonyms": [
+      "investment"
+    ]
+  },
+  {
+    "word": "volatility",
+    "synonyms": [
+      "instability",
+      "unpredictability"
+    ],
+    "antonyms": [
+      "stability"
+    ]
+  },
+  {
+    "word": "mitigate",
+    "synonyms": [
+      "alleviate",
+      "reduce",
+      "lessen"
+    ],
+    "antonyms": [
+      "aggravate",
+      "exacerbate"
+    ]
+  },
+  {
+    "word": "viability",
+    "synonyms": [
+      "feasibility",
+      "practicality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "surcharge",
+    "synonyms": [
+      "extra charge",
+      "additional fee"
+    ],
+    "antonyms": [
+      "discount"
+    ]
+  },
+  {
+    "word": "levy",
+    "synonyms": [
+      "tax",
+      "duty"
+    ],
+    "antonyms": [
+      "exemption"
+    ]
+  },
+  {
+    "word": "remuneration",
+    "synonyms": [
+      "pay",
+      "compensation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "underwrite",
+    "synonyms": [
+      "guarantee",
+      "fund"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "amortise",
+    "synonyms": [
+      "pay down",
+      "repay gradually"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "solvency",
+    "synonyms": [
+      "financial health",
+      "creditworthiness"
+    ],
+    "antonyms": [
+      "insolvency"
+    ]
+  },
+  {
+    "word": "hoard",
+    "synonyms": [
+      "stockpile",
+      "store",
+      "accumulate"
+    ],
+    "antonyms": [
+      "spend"
+    ]
+  },
+  {
+    "word": "prudent",
+    "synonyms": [
+      "careful",
+      "cautious",
+      "sensible"
+    ],
+    "antonyms": [
+      "reckless",
+      "imprudent"
+    ]
+  },
+  {
+    "word": "exorbitant",
+    "synonyms": [
+      "excessive",
+      "extortionate",
+      "steep"
+    ],
+    "antonyms": [
+      "reasonable"
+    ]
+  },
+  {
+    "word": "lucrative",
+    "synonyms": [
+      "profitable",
+      "rewarding",
+      "well-paid"
+    ],
+    "antonyms": [
+      "unprofitable"
+    ]
+  },
+  {
+    "word": "ostentatious",
+    "synonyms": [
+      "showy",
+      "flashy",
+      "extravagant"
+    ],
+    "antonyms": [
+      "modest",
+      "understated"
+    ]
+  },
+  {
+    "word": "fleece",
+    "synonyms": [
+      "swindle",
+      "cheat",
+      "rip off"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "inflationary",
+    "synonyms": [
+      "inflation-boosting",
+      "price-raising"
+    ],
+    "antonyms": [
+      "deflationary"
+    ]
+  },
+  {
+    "word": "portfolio",
+    "synonyms": [
+      "holdings",
+      "investments"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fluctuation",
+    "synonyms": [
+      "variation",
+      "swing",
+      "change"
+    ],
+    "antonyms": [
+      "stability"
+    ]
+  },
+  {
+    "word": "indebtedness",
+    "synonyms": [
+      "debt",
+      "borrowing"
+    ],
+    "antonyms": [
+      "solvency"
+    ]
+  },
+  {
+    "word": "fiduciary",
+    "synonyms": [
+      "custodial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "liquidity",
+    "synonyms": [
+      "cash flow",
+      "cash on hand"
+    ],
+    "antonyms": [
+      "illiquidity"
+    ]
+  },
+  {
+    "word": "bailout",
+    "synonyms": [
+      "rescue package",
+      "financial lifeline"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pecuniary",
+    "synonyms": [
+      "financial",
+      "monetary"
+    ],
+    "antonyms": [
+      "non-monetary"
+    ]
+  },
+  {
+    "word": "mercenary",
+    "synonyms": [
+      "self-interested",
+      "greedy"
+    ],
+    "antonyms": [
+      "altruistic",
+      "selfless"
+    ]
+  },
+  {
+    "word": "parsimonious",
+    "synonyms": [
+      "stingy",
+      "miserly",
+      "frugal"
+    ],
+    "antonyms": [
+      "generous",
+      "lavish"
+    ]
+  },
+  {
+    "word": "penurious",
+    "synonyms": [
+      "impoverished",
+      "destitute",
+      "poverty-stricken"
+    ],
+    "antonyms": [
+      "wealthy",
+      "affluent"
+    ]
+  },
+  {
+    "word": "impecunious",
+    "synonyms": [
+      "poor",
+      "penniless",
+      "impoverished"
+    ],
+    "antonyms": [
+      "affluent",
+      "wealthy"
+    ]
+  },
+  {
+    "word": "profligate",
+    "synonyms": [
+      "extravagant",
+      "wasteful"
+    ],
+    "antonyms": [
+      "frugal",
+      "thrifty"
+    ]
+  },
+  {
+    "word": "sumptuous",
+    "synonyms": [
+      "lavish",
+      "luxurious",
+      "opulent"
+    ],
+    "antonyms": [
+      "spartan"
+    ]
+  },
+  {
+    "word": "opulence",
+    "synonyms": [
+      "luxury",
+      "splendour",
+      "affluence"
+    ],
+    "antonyms": [
+      "poverty"
+    ]
+  },
+  {
+    "word": "munificence",
+    "synonyms": [
+      "generosity",
+      "bounty"
+    ],
+    "antonyms": [
+      "stinginess"
+    ]
+  },
+  {
+    "word": "avarice",
+    "synonyms": [
+      "greed",
+      "rapacity"
+    ],
+    "antonyms": [
+      "generosity"
+    ]
+  },
+  {
+    "word": "cupidity",
+    "synonyms": [
+      "greed",
+      "covetousness"
+    ],
+    "antonyms": [
+      "generosity"
+    ]
+  },
+  {
+    "word": "pittance",
+    "synonyms": [
+      "trifle",
+      "peanuts"
+    ],
+    "antonyms": [
+      "fortune"
+    ]
+  },
+  {
+    "word": "stipend",
+    "synonyms": [
+      "allowance",
+      "bursary"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "emolument",
+    "synonyms": [
+      "remuneration",
+      "perquisite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chicanery",
+    "synonyms": [
+      "trickery",
+      "deception"
+    ],
+    "antonyms": [
+      "honesty"
+    ]
+  },
+  {
+    "word": "usury",
+    "synonyms": [
+      "loan-sharking"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bequest",
+    "synonyms": [
+      "legacy",
+      "inheritance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "largesse",
+    "synonyms": [
+      "generosity",
+      "bounty"
+    ],
+    "antonyms": [
+      "stinginess"
+    ]
+  },
+  {
+    "word": "sinecure",
+    "synonyms": [
+      "cushy job",
+      "soft option"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parlous",
+    "synonyms": [
+      "perilous",
+      "dire"
+    ],
+    "antonyms": [
+      "secure"
+    ]
+  },
+  {
+    "word": "indigent",
+    "synonyms": [
+      "destitute",
+      "impoverished",
+      "needy"
+    ],
+    "antonyms": [
+      "affluent"
+    ]
+  },
+  {
+    "word": "pinchpenny",
+    "synonyms": [
+      "skinflint",
+      "miser"
+    ],
+    "antonyms": [
+      "spendthrift"
+    ]
+  },
+  {
+    "word": "moneyed",
+    "synonyms": [
+      "wealthy",
+      "rich",
+      "well-off"
+    ],
+    "antonyms": [
+      "penniless"
+    ]
+  },
+  {
+    "word": "ransom",
+    "synonyms": [
+      "redemption"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exchequer",
+    "synonyms": [
+      "treasury",
+      "public purse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disbursement",
+    "synonyms": [
+      "payment",
+      "outlay"
+    ],
+    "antonyms": [
+      "receipt"
+    ]
+  },
+  {
+    "word": "extortion",
+    "synonyms": [
+      "blackmail",
+      "racketeering"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embezzle",
+    "synonyms": [
+      "misappropriate",
+      "pilfer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "squander",
+    "synonyms": [
+      "waste",
+      "fritter away"
+    ],
+    "antonyms": [
+      "save",
+      "conserve"
+    ]
+  },
+  {
+    "word": "wherewithal",
+    "synonyms": [
+      "means",
+      "funds"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mammon",
+    "synonyms": [
+      "wealth",
+      "riches"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prodigal",
+    "synonyms": [
+      "wasteful",
+      "spendthrift",
+      "extravagant"
+    ],
+    "antonyms": [
+      "frugal"
+    ]
+  },
+  {
+    "word": "niggardly",
+    "synonyms": [
+      "stingy",
+      "mean",
+      "miserly"
+    ],
+    "antonyms": [
+      "generous"
+    ]
+  },
+  {
+    "word": "tightwad",
+    "synonyms": [
+      "cheapskate",
+      "miser"
+    ],
+    "antonyms": [
+      "spendthrift"
+    ]
+  },
+  {
+    "word": "pinch pennies",
+    "synonyms": [
+      "scrimp",
+      "economise",
+      "skimp"
+    ],
+    "antonyms": [
+      "splash out"
+    ]
+  },
+  {
+    "word": "mendicant",
+    "synonyms": [
+      "beggar",
+      "panhandler"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dearth",
+    "synonyms": [
+      "shortage",
+      "scarcity",
+      "lack"
+    ],
+    "antonyms": [
+      "abundance"
+    ]
+  },
+  {
+    "word": "penury",
+    "synonyms": [
+      "poverty",
+      "destitution"
+    ],
+    "antonyms": [
+      "affluence"
+    ]
+  },
+  {
+    "word": "gratuity",
+    "synonyms": [
+      "tip"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "recompense",
+    "synonyms": [
+      "compensation",
+      "reparation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lucre",
+    "synonyms": [
+      "money",
+      "wealth"
+    ],
+    "antonyms": []
+  }
+]

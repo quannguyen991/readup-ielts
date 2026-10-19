@@ -1,0 +1,1202 @@
+[
+  {
+    "word": "bus",
+    "pos": "noun",
+    "ipa": "/bʌs/",
+    "meaningVi": "xe buýt",
+    "definitionEn": "a large road vehicle that carries passengers along fixed routes",
+    "example": "I take the bus to school every morning because it is cheap.",
+    "collocation": "catch the bus",
+    "cefr": "B1"
+  },
+  {
+    "word": "ticket",
+    "pos": "noun",
+    "ipa": "/ˈtɪkɪt/",
+    "meaningVi": "vé",
+    "definitionEn": "a printed or electronic document that allows entry or travel",
+    "example": "Please keep your ticket until you leave the train station.",
+    "collocation": "buy a ticket",
+    "cefr": "B1"
+  },
+  {
+    "word": "bicycle",
+    "pos": "noun",
+    "ipa": "/ˈbaɪsɪkl/",
+    "meaningVi": "xe đạp",
+    "definitionEn": "a two-wheeled vehicle powered by pedalling",
+    "example": "She rides her bicycle along the river every weekend.",
+    "collocation": "ride a bicycle",
+    "cefr": "B1"
+  },
+  {
+    "word": "taxi",
+    "pos": "noun",
+    "ipa": "/ˈtæksi/",
+    "meaningVi": "xe taxi",
+    "definitionEn": "a car with a driver that carries passengers for payment",
+    "example": "We called a taxi because the last bus had already left.",
+    "collocation": "call a taxi",
+    "cefr": "B1"
+  },
+  {
+    "word": "platform",
+    "pos": "noun",
+    "ipa": "/ˈplætfɔːm/",
+    "meaningVi": "sân ga",
+    "definitionEn": "the raised area beside a railway track where passengers wait",
+    "example": "The train to the north leaves from platform four in ten minutes.",
+    "collocation": "station platform",
+    "cefr": "B1"
+  },
+  {
+    "word": "delay",
+    "pos": "noun",
+    "ipa": "/dɪˈleɪ/",
+    "meaningVi": "sự chậm trễ",
+    "definitionEn": "a period of time when something happens later than planned",
+    "example": "The flight suffered a two-hour delay because of heavy fog.",
+    "collocation": "cause a delay",
+    "cefr": "B1"
+  },
+  {
+    "word": "timetable",
+    "pos": "noun",
+    "ipa": "/ˈtaɪmteɪbl/",
+    "meaningVi": "lịch trình, thời gian biểu",
+    "definitionEn": "a list showing when trains, buses or flights are scheduled",
+    "example": "Check the bus timetable before you leave, as services are reduced on Sundays.",
+    "collocation": "bus timetable",
+    "cefr": "B1"
+  },
+  {
+    "word": "drive",
+    "pos": "verb",
+    "ipa": "/draɪv/",
+    "meaningVi": "lái xe",
+    "definitionEn": "to operate a car or other vehicle",
+    "example": "My father drives to work because the office is far from home.",
+    "collocation": "drive a car",
+    "cefr": "B1"
+  },
+  {
+    "word": "walk",
+    "pos": "verb",
+    "ipa": "/wɔːk/",
+    "meaningVi": "đi bộ",
+    "definitionEn": "to travel on foot at a steady pace",
+    "example": "Many people walk to school when the weather is pleasant.",
+    "collocation": "walk to work",
+    "cefr": "B1"
+  },
+  {
+    "word": "get on",
+    "pos": "phrasal verb",
+    "ipa": "/ɡet ɒn/",
+    "meaningVi": "lên (xe, tàu)",
+    "definitionEn": "to enter a bus, train or other vehicle",
+    "example": "Passengers must get on the bus through the front door.",
+    "collocation": "get on a train",
+    "cefr": "B1"
+  },
+  {
+    "word": "tram",
+    "pos": "noun",
+    "ipa": "/træm/",
+    "meaningVi": "xe điện",
+    "definitionEn": "a passenger vehicle that runs on rails along city streets",
+    "example": "The old tram still runs along the seafront every summer.",
+    "collocation": "catch a tram",
+    "cefr": "B2"
+  },
+  {
+    "word": "shuttle",
+    "pos": "noun",
+    "ipa": "/ˈʃʌtl/",
+    "meaningVi": "xe đưa đón",
+    "definitionEn": "a vehicle that travels regularly back and forth between two points",
+    "example": "A free shuttle bus carries visitors between the car park and the terminal.",
+    "collocation": "airport shuttle",
+    "cefr": "B2"
+  },
+  {
+    "word": "layover",
+    "pos": "noun",
+    "ipa": "/ˈleɪəʊvə/",
+    "meaningVi": "điểm dừng chuyển tiếp",
+    "definitionEn": "a stop between two parts of a journey, usually at an airport",
+    "example": "Our flight had a five-hour layover in Singapore before reaching Hanoi.",
+    "collocation": "long layover",
+    "cefr": "B2"
+  },
+  {
+    "word": "boarding",
+    "pos": "noun",
+    "ipa": "/ˈbɔːdɪŋ/",
+    "meaningVi": "việc lên tàu, lên máy bay",
+    "definitionEn": "the act of getting onto a plane, train or ship",
+    "example": "Boarding for the flight will begin at gate twelve.",
+    "collocation": "boarding pass",
+    "cefr": "B2"
+  },
+  {
+    "word": "embark",
+    "pos": "verb",
+    "ipa": "/ɪmˈbɑːk/",
+    "meaningVi": "lên tàu, bắt đầu",
+    "definitionEn": "to go on board a ship or aircraft",
+    "example": "Passengers embark on the ferry from the north pier.",
+    "collocation": "embark on a journey",
+    "cefr": "B2"
+  },
+  {
+    "word": "disembark",
+    "pos": "verb",
+    "ipa": "/ˌdɪsɪmˈbɑːk/",
+    "meaningVi": "xuống tàu, xuống máy bay",
+    "definitionEn": "to leave a ship, aircraft or train after a journey",
+    "example": "Passengers were asked to disembark quickly once the ship had docked.",
+    "collocation": "disembark from a plane",
+    "cefr": "B2"
+  },
+  {
+    "word": "terminus",
+    "pos": "noun",
+    "ipa": "/ˈtɜːmɪnəs/",
+    "meaningVi": "bến cuối",
+    "definitionEn": "the final stop of a bus, train or tram route",
+    "example": "The bus terminus is located at the end of the main road.",
+    "collocation": "bus terminus",
+    "cefr": "B2"
+  },
+  {
+    "word": "tailback",
+    "pos": "noun",
+    "ipa": "/ˈteɪlbæk/",
+    "meaningVi": "hàng xe xếp dài",
+    "definitionEn": "a long queue of vehicles caused by an obstruction",
+    "example": "A tailback stretched for three miles after the lorry overturned.",
+    "collocation": "a long tailback",
+    "cefr": "B2"
+  },
+  {
+    "word": "chauffeur",
+    "pos": "noun",
+    "ipa": "/ˈʃəʊfə/",
+    "meaningVi": "tài xế riêng",
+    "definitionEn": "a person employed to drive a private car for someone",
+    "example": "The businessman was driven to the airport by his private chauffeur.",
+    "collocation": "private chauffeur",
+    "cefr": "B2"
+  },
+  {
+    "word": "hitchhike",
+    "pos": "verb",
+    "ipa": "/ˈhɪtʃhaɪk/",
+    "meaningVi": "đi nhờ xe",
+    "definitionEn": "to travel by asking drivers to give you a free lift",
+    "example": "During their gap year, the students hitchhiked across the country.",
+    "collocation": "hitchhike across the country",
+    "cefr": "B2"
+  },
+  {
+    "word": "carriage",
+    "pos": "noun",
+    "ipa": "/ˈkærɪdʒ/",
+    "meaningVi": "toa tàu",
+    "definitionEn": "a separate compartment of a train for passengers",
+    "example": "The quietest carriage is usually at the front of the train.",
+    "collocation": "railway carriage",
+    "cefr": "B2"
+  },
+  {
+    "word": "cab",
+    "pos": "noun",
+    "ipa": "/kæb/",
+    "meaningVi": "xe taxi",
+    "definitionEn": "a car that can be hired with a driver to carry passengers",
+    "example": "The cab driver took a shortcut to avoid the busy bridge.",
+    "collocation": "hail a cab",
+    "cefr": "B2"
+  },
+  {
+    "word": "bypass",
+    "pos": "noun",
+    "ipa": "/ˈbaɪpɑːs/",
+    "meaningVi": "đường vòng tránh",
+    "definitionEn": "a road built to let traffic avoid a town or busy area",
+    "example": "Lorries are now required to use the bypass around the historic town.",
+    "collocation": "build a bypass",
+    "cefr": "B2"
+  },
+  {
+    "word": "overtake",
+    "pos": "verb",
+    "ipa": "/ˌəʊvəˈteɪk/",
+    "meaningVi": "vượt xe",
+    "definitionEn": "to pass another vehicle that is moving in the same direction",
+    "example": "It is illegal to overtake on a double yellow line.",
+    "collocation": "overtake a lorry",
+    "cefr": "B2"
+  },
+  {
+    "word": "reverse",
+    "pos": "verb",
+    "ipa": "/rɪˈvɜːs/",
+    "meaningVi": "lùi xe",
+    "definitionEn": "to move a vehicle backwards",
+    "example": "He had to reverse the van into the narrow loading bay.",
+    "collocation": "reverse into a parking space",
+    "cefr": "B2"
+  },
+  {
+    "word": "commuter",
+    "pos": "noun",
+    "ipa": "/kəˈmjuːtə/",
+    "meaningVi": "người đi làm xa",
+    "definitionEn": "a person who travels regularly between home and work",
+    "example": "Thousands of commuters crowd the platform during the morning peak.",
+    "collocation": "daily commuter",
+    "cefr": "B2"
+  },
+  {
+    "word": "motorway",
+    "pos": "noun",
+    "ipa": "/ˈməʊtəweɪ/",
+    "meaningVi": "đường cao tốc",
+    "definitionEn": "a major road designed for fast traffic over long distances",
+    "example": "The motorway was closed for repairs throughout the weekend.",
+    "collocation": "motorway junction",
+    "cefr": "B2"
+  },
+  {
+    "word": "cyclist",
+    "pos": "noun",
+    "ipa": "/ˈsaɪklɪst/",
+    "meaningVi": "người đi xe đạp",
+    "definitionEn": "a person who rides a bicycle",
+    "example": "Careless drivers often put cyclists at serious risk on narrow roads.",
+    "collocation": "experienced cyclist",
+    "cefr": "B2"
+  },
+  {
+    "word": "ferry",
+    "pos": "noun",
+    "ipa": "/ˈferi/",
+    "meaningVi": "phà",
+    "definitionEn": "a boat that carries people or vehicles across a stretch of water",
+    "example": "The ferry crosses the bay twice a day during the summer.",
+    "collocation": "catch the ferry",
+    "cefr": "B2"
+  },
+  {
+    "word": "berth",
+    "pos": "noun",
+    "ipa": "/bɜːθ/",
+    "meaningVi": "bến đậu tàu",
+    "definitionEn": "a place where a ship can be moored or tied up",
+    "example": "The cruise ship was given a berth at the new harbour.",
+    "collocation": "secure a berth",
+    "cefr": "B2"
+  },
+  {
+    "word": "bottleneck",
+    "pos": "noun",
+    "ipa": "/ˈbɒtlnek/",
+    "meaningVi": "điểm nghẽn",
+    "definitionEn": "a narrow point where the flow of traffic becomes slowed",
+    "example": "The narrow bridge creates a bottleneck for traffic every evening.",
+    "collocation": "traffic bottleneck",
+    "cefr": "B2"
+  },
+  {
+    "word": "mobility",
+    "pos": "noun",
+    "ipa": "/məʊˈbɪləti/",
+    "meaningVi": "khả năng di chuyển",
+    "definitionEn": "the ability or ease with which people and goods can move",
+    "example": "Improving urban mobility should be a priority for every growing city.",
+    "collocation": "urban mobility",
+    "cefr": "C1"
+  },
+  {
+    "word": "multimodal",
+    "pos": "adjective",
+    "ipa": "/ˌmʌltiˈməʊdl/",
+    "meaningVi": "đa phương thức",
+    "definitionEn": "using or combining more than one form of transport",
+    "example": "A multimodal transport hub links trains, buses and bicycle lanes.",
+    "collocation": "multimodal transport",
+    "cefr": "C1"
+  },
+  {
+    "word": "viaduct",
+    "pos": "noun",
+    "ipa": "/ˈvaɪədʌkt/",
+    "meaningVi": "cầu cạn",
+    "definitionEn": "a long bridge carried on a series of arches over a valley",
+    "example": "The railway viaduct crosses the valley on forty stone arches.",
+    "collocation": "stone viaduct",
+    "cefr": "C1"
+  },
+  {
+    "word": "thoroughfare",
+    "pos": "noun",
+    "ipa": "/ˈθʌrəfeə/",
+    "meaningVi": "đường huyết mạch",
+    "definitionEn": "a main road or public street through a town",
+    "example": "The main thoroughfare was closed to heavy vehicles during the festival.",
+    "collocation": "busy thoroughfare",
+    "cefr": "C1"
+  },
+  {
+    "word": "arterial",
+    "pos": "adjective",
+    "ipa": "/ɑːˈtɪəriəl/",
+    "meaningVi": "huyết mạch",
+    "definitionEn": "relating to a major road that carries large volumes of traffic",
+    "example": "The arterial road carries most of the city's freight traffic.",
+    "collocation": "arterial road",
+    "cefr": "C1"
+  },
+  {
+    "word": "cumbersome",
+    "pos": "adjective",
+    "ipa": "/ˈkʌmbəsəm/",
+    "meaningVi": "rườm rà, cồng kềnh",
+    "definitionEn": "large, heavy or complicated to use or manage",
+    "example": "The cumbersome ticketing system frustrated many first-time travellers.",
+    "collocation": "cumbersome procedure",
+    "cefr": "C1"
+  },
+  {
+    "word": "curtail",
+    "pos": "verb",
+    "ipa": "/kɜːˈteɪl/",
+    "meaningVi": "cắt giảm, hạn chế",
+    "definitionEn": "to reduce or limit something in extent or duration",
+    "example": "Strikes curtailed rail services across the country for three days.",
+    "collocation": "curtail services",
+    "cefr": "C1"
+  },
+  {
+    "word": "paralysis",
+    "pos": "noun",
+    "ipa": "/pəˈræləsɪs/",
+    "meaningVi": "tê liệt, đình trệ",
+    "definitionEn": "a state in which movement or activity is completely halted",
+    "example": "A single broken signal caused paralysis across the entire network.",
+    "collocation": "traffic paralysis",
+    "cefr": "C1"
+  },
+  {
+    "word": "overhaul",
+    "pos": "noun",
+    "ipa": "/ˌəʊvəˈhɔːl/",
+    "meaningVi": "đại tu, cải tổ",
+    "definitionEn": "a thorough examination and repair or reorganisation of something",
+    "example": "The council announced a complete overhaul of the bus network.",
+    "collocation": "complete overhaul",
+    "cefr": "C1"
+  },
+  {
+    "word": "retrofit",
+    "pos": "verb",
+    "ipa": "/ˈretrəfɪt/",
+    "meaningVi": "lắp thêm thiết bị mới",
+    "definitionEn": "to add new equipment or features to an existing vehicle or building",
+    "example": "Engineers plan to retrofit older trains with energy-efficient brakes.",
+    "collocation": "retrofit existing buses",
+    "cefr": "C1"
+  },
+  {
+    "word": "decarbonise",
+    "pos": "verb",
+    "ipa": "/diːˈkɑːbənaɪz/",
+    "meaningVi": "khử carbon",
+    "definitionEn": "to reduce or remove carbon emissions from a system",
+    "example": "Governments aim to decarbonise road transport by the middle of the century.",
+    "collocation": "decarbonise transport",
+    "cefr": "C1"
+  },
+  {
+    "word": "modal shift",
+    "pos": "phrase",
+    "ipa": "/ˈməʊdl ʃɪft/",
+    "meaningVi": "chuyển đổi phương thức đi lại",
+    "definitionEn": "a change in the proportion of travellers using different transport modes",
+    "example": "A modal shift towards rail would reduce road emissions significantly.",
+    "collocation": "modal shift",
+    "cefr": "C1"
+  },
+  {
+    "word": "incentive",
+    "pos": "noun",
+    "ipa": "/ɪnˈsentɪv/",
+    "meaningVi": "khuyến khích, ưu đãi",
+    "definitionEn": "something that encourages a person to act in a particular way",
+    "example": "Tax incentives encourage businesses to adopt low-emission vehicles.",
+    "collocation": "financial incentive",
+    "cefr": "C1"
+  },
+  {
+    "word": "subsidy",
+    "pos": "noun",
+    "ipa": "/ˈsʌbsədi/",
+    "meaningVi": "trợ cấp",
+    "definitionEn": "money given by the government to reduce the cost of a service",
+    "example": "The government offers a subsidy for every commuter who uses public transport.",
+    "collocation": "government subsidy",
+    "cefr": "C1"
+  },
+  {
+    "word": "dispatch",
+    "pos": "verb",
+    "ipa": "/dɪˈspætʃ/",
+    "meaningVi": "điều động, cử đi",
+    "definitionEn": "to send a person, vehicle or item to a particular place",
+    "example": "The control centre dispatched extra buses to cope with the crowd.",
+    "collocation": "dispatch a crew",
+    "cefr": "C1"
+  },
+  {
+    "word": "onboard",
+    "pos": "adverb",
+    "ipa": "/ɒnˈbɔːd/",
+    "meaningVi": "trên tàu, trên xe",
+    "definitionEn": "on or inside a ship, aircraft or vehicle",
+    "example": "Passengers are not permitted to smoke onboard any train.",
+    "collocation": "onboard facilities",
+    "cefr": "C1"
+  },
+  {
+    "word": "scheduling",
+    "pos": "noun",
+    "ipa": "/ˈʃedjuːlɪŋ/",
+    "meaningVi": "việc lập lịch",
+    "definitionEn": "the planning of times for services or events to take place",
+    "example": "Careful scheduling reduced the waiting time at every station.",
+    "collocation": "timetable scheduling",
+    "cefr": "C1"
+  },
+  {
+    "word": "throughput",
+    "pos": "noun",
+    "ipa": "/ˈθruːpʊt/",
+    "meaningVi": "lưu lượng xử lý",
+    "definitionEn": "the amount of people or goods processed in a given time",
+    "example": "The new signalling system increased the throughput of the line.",
+    "collocation": "passenger throughput",
+    "cefr": "C1"
+  },
+  {
+    "word": "capacity",
+    "pos": "noun",
+    "ipa": "/kəˈpæsəti/",
+    "meaningVi": "sức chứa",
+    "definitionEn": "the maximum amount that can be contained or carried",
+    "example": "The train had reached full capacity before it reached the second station.",
+    "collocation": "seating capacity",
+    "cefr": "C1"
+  },
+  {
+    "word": "haulage",
+    "pos": "noun",
+    "ipa": "/ˈhɔːlɪdʒ/",
+    "meaningVi": "vận tải hàng hoá",
+    "definitionEn": "the business of transporting goods by road",
+    "example": "The haulage industry faces shortages of qualified lorry drivers.",
+    "collocation": "road haulage",
+    "cefr": "C1"
+  },
+  {
+    "word": "vehicular",
+    "pos": "adjective",
+    "ipa": "/vɪˈhɪkjʊlə/",
+    "meaningVi": "thuộc phương tiện",
+    "definitionEn": "relating to or intended for motor vehicles",
+    "example": "Vehicular access to the old town is restricted during daytime hours.",
+    "collocation": "vehicular traffic",
+    "cefr": "C1"
+  },
+  {
+    "word": "stow",
+    "pos": "verb",
+    "ipa": "/stəʊ/",
+    "meaningVi": "xếp gọn, cất giữ",
+    "definitionEn": "to put something away in a safe or convenient place",
+    "example": "Passengers must stow their luggage safely under the seat before departure.",
+    "collocation": "stow luggage",
+    "cefr": "C1"
+  },
+  {
+    "word": "kerb",
+    "pos": "noun",
+    "ipa": "/kɜːb/",
+    "meaningVi": "lề đường, mép vỉa hè",
+    "definitionEn": "the edge of a pavement where it meets the road",
+    "example": "Wheelchair users found the kerb too high to cross safely.",
+    "collocation": "raised kerb",
+    "cefr": "C1"
+  },
+  {
+    "word": "bollard",
+    "pos": "noun",
+    "ipa": "/ˈbɒlɑːd/",
+    "meaningVi": "cọc chắn",
+    "definitionEn": "a short post used to block vehicles or mark a boundary",
+    "example": "Steel bollards were installed to stop vehicles from entering the square.",
+    "collocation": "steel bollard",
+    "cefr": "C1"
+  },
+  {
+    "word": "cul-de-sac",
+    "pos": "noun",
+    "ipa": "/ˈkʌl də sæk/",
+    "meaningVi": "đường cụt",
+    "definitionEn": "a short road with houses on one side and closed at the end",
+    "example": "The children played safely in the quiet cul-de-sac behind the houses.",
+    "collocation": "quiet cul-de-sac",
+    "cefr": "C1"
+  },
+  {
+    "word": "lay-by",
+    "pos": "noun",
+    "ipa": "/ˈleɪ baɪ/",
+    "meaningVi": "chỗ dừng bên đường",
+    "definitionEn": "an area beside a road where vehicles can stop temporarily",
+    "example": "The lorry driver pulled into a lay-by to rest for an hour.",
+    "collocation": "roadside lay-by",
+    "cefr": "C1"
+  },
+  {
+    "word": "contraflow",
+    "pos": "noun",
+    "ipa": "/ˈkɒntrəfləʊ/",
+    "meaningVi": "làn đi ngược chiều tạm thời",
+    "definitionEn": "a temporary arrangement where traffic uses a lane in the opposite direction",
+    "example": "Contraflow systems were introduced on the motorway during the repairs.",
+    "collocation": "temporary contraflow",
+    "cefr": "C1"
+  },
+  {
+    "word": "sidings",
+    "pos": "noun",
+    "ipa": "/ˈsaɪdɪŋz/",
+    "meaningVi": "đường ray phụ",
+    "definitionEn": "short extra tracks beside a main railway line for storing trains",
+    "example": "Empty trains were parked on the sidings overnight.",
+    "collocation": "rail sidings",
+    "cefr": "C1"
+  },
+  {
+    "word": "axle",
+    "pos": "noun",
+    "ipa": "/ˈæksl/",
+    "meaningVi": "trục xe",
+    "definitionEn": "a rod connecting the wheels of a vehicle",
+    "example": "The heavy load strained the axle and caused the lorry to stall.",
+    "collocation": "rear axle",
+    "cefr": "C1"
+  },
+  {
+    "word": "gearbox",
+    "pos": "noun",
+    "ipa": "/ˈɡɪəbɒks/",
+    "meaningVi": "hộp số",
+    "definitionEn": "the set of gears that transmits power from an engine to the wheels",
+    "example": "The mechanic replaced the faulty gearbox before the long journey.",
+    "collocation": "manual gearbox",
+    "cefr": "C1"
+  },
+  {
+    "word": "consignment",
+    "pos": "noun",
+    "ipa": "/kənˈsaɪnmənt/",
+    "meaningVi": "lô hàng",
+    "definitionEn": "a batch of goods sent or delivered together",
+    "example": "The customs officers inspected the consignment before it left the port.",
+    "collocation": "large consignment",
+    "cefr": "C1"
+  },
+  {
+    "word": "tarmac",
+    "pos": "noun",
+    "ipa": "/ˈtɑːmæk/",
+    "meaningVi": "đường nhựa, sân đỗ máy bay",
+    "definitionEn": "a dark surface of road material or the area of an airport where planes park",
+    "example": "The aircraft waited on the tarmac for almost two hours.",
+    "collocation": "airport tarmac",
+    "cefr": "C1"
+  },
+  {
+    "word": "turnaround",
+    "pos": "noun",
+    "ipa": "/ˈtɜːnəraʊnd/",
+    "meaningVi": "thời gian quay vòng",
+    "definitionEn": "the time needed to unload, service and prepare a vehicle for its next journey",
+    "example": "The airline promised a quicker turnaround time at every airport.",
+    "collocation": "quick turnaround",
+    "cefr": "C1"
+  },
+  {
+    "word": "accessibility",
+    "pos": "noun",
+    "ipa": "/əkˌsesəˈbɪləti/",
+    "meaningVi": "khả năng tiếp cận",
+    "definitionEn": "the extent to which a place or service can be easily reached or used",
+    "example": "Improved accessibility for disabled passengers is now a legal requirement.",
+    "collocation": "wheelchair accessibility",
+    "cefr": "C1"
+  },
+  {
+    "word": "interchange",
+    "pos": "noun",
+    "ipa": "/ˈɪntətʃeɪndʒ/",
+    "meaningVi": "nút giao thông",
+    "definitionEn": "a junction where roads or railway lines meet at different levels",
+    "example": "The new interchange lets motorists join the ring road without stopping.",
+    "collocation": "major interchange",
+    "cefr": "C1"
+  },
+  {
+    "word": "corridor",
+    "pos": "noun",
+    "ipa": "/ˈkɒrɪdɔː/",
+    "meaningVi": "hành lang giao thông",
+    "definitionEn": "a route or strip of land reserved for transport",
+    "example": "A dedicated bus corridor now runs along the eastern side of the city.",
+    "collocation": "transport corridor",
+    "cefr": "C1"
+  },
+  {
+    "word": "circuitous",
+    "pos": "adjective",
+    "ipa": "/səˈkjuːɪtəs/",
+    "meaningVi": "vòng vèo",
+    "definitionEn": "taking a longer and less direct route than necessary",
+    "example": "The circuitous route added almost an hour to our journey.",
+    "collocation": "circuitous route",
+    "cefr": "C1"
+  },
+  {
+    "word": "dilapidated",
+    "pos": "adjective",
+    "ipa": "/dɪˈlæpɪdeɪtɪd/",
+    "meaningVi": "xuống cấp, đổ nát",
+    "definitionEn": "in a state of disrepair or decay",
+    "example": "The dilapidated coach was finally withdrawn from service last year.",
+    "collocation": "dilapidated carriages",
+    "cefr": "C1"
+  },
+  {
+    "word": "conveyance",
+    "pos": "noun",
+    "ipa": "/kənˈveɪəns/",
+    "meaningVi": "phương tiện vận chuyển",
+    "definitionEn": "a means of transporting people or goods from one place to another",
+    "example": "Horse-drawn conveyance was still common in rural villages a century ago.",
+    "collocation": "means of conveyance",
+    "cefr": "C1"
+  },
+  {
+    "word": "logistical",
+    "pos": "adjective",
+    "ipa": "/ləˈdʒɪstɪkl/",
+    "meaningVi": "thuộc hậu cần",
+    "definitionEn": "relating to the planning and organisation of complex operations",
+    "example": "Logistical problems delayed the opening of the new airport terminal.",
+    "collocation": "logistical challenges",
+    "cefr": "C1"
+  },
+  {
+    "word": "rolling stock",
+    "pos": "phrase",
+    "ipa": "/ˈrəʊlɪŋ stɒk/",
+    "meaningVi": "toa xe, đầu máy",
+    "definitionEn": "the locomotives and carriages used on a railway",
+    "example": "The operator is replacing its ageing rolling stock with quieter electric trains.",
+    "collocation": "rolling stock",
+    "cefr": "C1"
+  },
+  {
+    "word": "palanquin",
+    "pos": "noun",
+    "ipa": "/ˌpælənˈkiːn/",
+    "meaningVi": "kiệu",
+    "definitionEn": "an enclosed litter carried on poles by several bearers",
+    "example": "The merchant's daughter travelled to the wedding in a silk-lined palanquin.",
+    "collocation": "carry a palanquin",
+    "cefr": "C2"
+  },
+  {
+    "word": "velocipede",
+    "pos": "noun",
+    "ipa": "/vəˈlɒsɪpiːd/",
+    "meaningVi": "xe đạp cổ",
+    "definitionEn": "an early form of bicycle, powered by pushing with the feet",
+    "example": "A nineteenth-century velocipede is displayed in the transport museum.",
+    "collocation": "wooden velocipede",
+    "cefr": "C2"
+  },
+  {
+    "word": "hansom",
+    "pos": "noun",
+    "ipa": "/ˈhænsəm/",
+    "meaningVi": "xe ngựa hai bánh",
+    "definitionEn": "a light two-wheeled horse-drawn cab with the driver seated behind",
+    "example": "The hansom clattered over the cobbles toward the theatre district.",
+    "collocation": "hansom cab",
+    "cefr": "C2"
+  },
+  {
+    "word": "caravanserai",
+    "pos": "noun",
+    "ipa": "/ˌkærəˈvɑːnsəraɪ/",
+    "meaningVi": "quán trọ lữ hành",
+    "definitionEn": "a roadside inn with a courtyard where travellers rested",
+    "example": "Merchants rested overnight in the caravanserai before crossing the desert.",
+    "collocation": "ancient caravanserai",
+    "cefr": "C2"
+  },
+  {
+    "word": "sampan",
+    "pos": "noun",
+    "ipa": "/ˈsæmpæn/",
+    "meaningVi": "thuyền nan",
+    "definitionEn": "a small flat-bottomed boat used on rivers and harbours in East Asia",
+    "example": "A sampan carried the fishermen across the bay before dawn.",
+    "collocation": "wooden sampan",
+    "cefr": "C2"
+  },
+  {
+    "word": "gondola",
+    "pos": "noun",
+    "ipa": "/ˈɡɒndələ/",
+    "meaningVi": "thuyền gondola",
+    "definitionEn": "a long flat-bottomed boat propelled by a single oar, used on Venetian canals",
+    "example": "We drifted along the quiet canal in a gondola at sunset.",
+    "collocation": "traditional gondola",
+    "cefr": "C2"
+  },
+  {
+    "word": "funicular",
+    "pos": "noun",
+    "ipa": "/fjʊˈnɪkjʊlə/",
+    "meaningVi": "tàu cáp, cáp treo đường ray",
+    "definitionEn": "a railway on a steep slope, with cars pulled by a cable",
+    "example": "The funicular climbs the hillside in less than five minutes.",
+    "collocation": "mountain funicular",
+    "cefr": "C2"
+  },
+  {
+    "word": "monorail",
+    "pos": "noun",
+    "ipa": "/ˈmɒnəreɪl/",
+    "meaningVi": "tàu một ray",
+    "definitionEn": "a single-rail railway in which vehicles run on or hang from one beam",
+    "example": "The airport monorail connects the terminals to the main station.",
+    "collocation": "elevated monorail",
+    "cefr": "C2"
+  },
+  {
+    "word": "trawler",
+    "pos": "noun",
+    "ipa": "/ˈtrɔːlə/",
+    "meaningVi": "tàu lưới kéo",
+    "definitionEn": "a fishing boat that drags a large net along the sea bed",
+    "example": "The trawler returned to harbour with its nets full of cod.",
+    "collocation": "deep-sea trawler",
+    "cefr": "C2"
+  },
+  {
+    "word": "stevedore",
+    "pos": "noun",
+    "ipa": "/ˈstiːvədɔː/",
+    "meaningVi": "công nhân bốc xếp cảng",
+    "definitionEn": "a worker who loads and unloads ships at a port",
+    "example": "Stevedores worked through the night to unload the cargo before the tide turned.",
+    "collocation": "hire stevedores",
+    "cefr": "C2"
+  },
+  {
+    "word": "dredger",
+    "pos": "noun",
+    "ipa": "/ˈdredʒə/",
+    "meaningVi": "tàu nạo vét",
+    "definitionEn": "a vessel that removes mud and sand from the bottom of a waterway",
+    "example": "A dredger was brought in to deepen the channel for larger ships.",
+    "collocation": "river dredger",
+    "cefr": "C2"
+  },
+  {
+    "word": "rickshaw",
+    "pos": "noun",
+    "ipa": "/ˈrɪkʃɔː/",
+    "meaningVi": "xe kéo, xích lô",
+    "definitionEn": "a light two-wheeled cart pulled by a person on foot or bicycle",
+    "example": "We hired a rickshaw to tour the old quarter of the town.",
+    "collocation": "pedal rickshaw",
+    "cefr": "C2"
+  },
+  {
+    "word": "pedicab",
+    "pos": "noun",
+    "ipa": "/ˈpedɪkæb/",
+    "meaningVi": "xích lô đạp",
+    "definitionEn": "a bicycle with a sidecar for carrying passengers",
+    "example": "A pedicab driver offered to take us around the lake for a fair price.",
+    "collocation": "pedicab driver",
+    "cefr": "C2"
+  },
+  {
+    "word": "pilotage",
+    "pos": "noun",
+    "ipa": "/ˈpaɪlətɪdʒ/",
+    "meaningVi": "dẫn tàu, hoa tiêu",
+    "definitionEn": "the service of guiding ships through difficult or unfamiliar waters",
+    "example": "Compulsory pilotage is required for all vessels entering the harbour.",
+    "collocation": "compulsory pilotage",
+    "cefr": "C2"
+  },
+  {
+    "word": "jettison",
+    "pos": "verb",
+    "ipa": "/ˈdʒetɪsn/",
+    "meaningVi": "thải bỏ, vứt bỏ hàng",
+    "definitionEn": "to throw cargo or equipment overboard to lighten a vessel",
+    "example": "The captain ordered crews to jettison cargo to keep the ship afloat.",
+    "collocation": "jettison cargo",
+    "cefr": "C2"
+  },
+  {
+    "word": "ballast",
+    "pos": "noun",
+    "ipa": "/ˈbæləst/",
+    "meaningVi": "dằn tàu",
+    "definitionEn": "heavy material carried in a vessel to keep it stable",
+    "example": "Engineers loaded sand as ballast before the tanker sailed.",
+    "collocation": "carry ballast",
+    "cefr": "C2"
+  },
+  {
+    "word": "bilge",
+    "pos": "noun",
+    "ipa": "/bɪldʒ/",
+    "meaningVi": "khoang đáy tàu",
+    "definitionEn": "the lowest internal part of a ship's hull where water collects",
+    "example": "Seawater had collected in the bilge and needed pumping out.",
+    "collocation": "bilge water",
+    "cefr": "C2"
+  },
+  {
+    "word": "windlass",
+    "pos": "noun",
+    "ipa": "/ˈwɪndləs/",
+    "meaningVi": "tời",
+    "definitionEn": "a machine with a rotating drum used for raising anchors or heavy loads",
+    "example": "The crew turned the windlass to raise the anchor from the seabed.",
+    "collocation": "manual windlass",
+    "cefr": "C2"
+  },
+  {
+    "word": "portage",
+    "pos": "noun",
+    "ipa": "/ˈpɔːtɪdʒ/",
+    "meaningVi": "việc khiêng vác thuyền qua đoạn cạn",
+    "definitionEn": "the carrying of boats or goods overland between two waterways",
+    "example": "The expedition faced a long portage around the rapids.",
+    "collocation": "overland portage",
+    "cefr": "C2"
+  },
+  {
+    "word": "outrigger",
+    "pos": "noun",
+    "ipa": "/ˈaʊtrɪɡə/",
+    "meaningVi": "thanh chống mạn thuyền",
+    "definitionEn": "a projecting support fixed to the side of a boat to stop it tipping",
+    "example": "The islanders steered their canoe with a lightweight outrigger.",
+    "collocation": "wooden outrigger",
+    "cefr": "C2"
+  },
+  {
+    "word": "cortège",
+    "pos": "noun",
+    "ipa": "/kɔːˈteɪʒ/",
+    "meaningVi": "đoàn xe nghi thức",
+    "definitionEn": "a formal procession of vehicles or people following a funeral",
+    "example": "The funeral cortège moved slowly through the town centre.",
+    "collocation": "funeral cortège",
+    "cefr": "C2"
+  },
+  {
+    "word": "convoy",
+    "pos": "noun",
+    "ipa": "/ˈkɒnvɔɪ/",
+    "meaningVi": "đoàn xe hộ tống",
+    "definitionEn": "a group of vehicles or ships travelling together for protection",
+    "example": "A military convoy escorted the aid trucks across the mountain pass.",
+    "collocation": "military convoy",
+    "cefr": "C2"
+  },
+  {
+    "word": "dray",
+    "pos": "noun",
+    "ipa": "/dreɪ/",
+    "meaningVi": "xe kéo hàng",
+    "definitionEn": "a low cart without sides, used for carrying heavy loads",
+    "example": "A horse-drawn dray delivered barrels of beer to the tavern each morning.",
+    "collocation": "horse-drawn dray",
+    "cefr": "C2"
+  },
+  {
+    "word": "wagon",
+    "pos": "noun",
+    "ipa": "/ˈwæɡən/",
+    "meaningVi": "xe goòng, xe ngựa kéo",
+    "definitionEn": "a four-wheeled vehicle used for carrying goods",
+    "example": "The farmer loaded the wagon with hay for the winter.",
+    "collocation": "covered wagon",
+    "cefr": "C2"
+  },
+  {
+    "word": "chassis",
+    "pos": "noun",
+    "ipa": "/ˈʃæsi/",
+    "meaningVi": "khung gầm xe",
+    "definitionEn": "the frame that supports a vehicle's body and engine",
+    "example": "The engineers strengthened the chassis to carry the heavier load.",
+    "collocation": "steel chassis",
+    "cefr": "C2"
+  },
+  {
+    "word": "wayfarer",
+    "pos": "noun",
+    "ipa": "/ˈweɪfeərə/",
+    "meaningVi": "người lữ hành",
+    "definitionEn": "a traveller who journeys on foot",
+    "example": "A weary wayfarer knocked at the inn door as the snow began to fall.",
+    "collocation": "weary wayfarer",
+    "cefr": "C2"
+  },
+  {
+    "word": "jaywalk",
+    "pos": "verb",
+    "ipa": "/ˈdʒeɪwɔːk/",
+    "meaningVi": "băng đường ẩu",
+    "definitionEn": "to cross a road carelessly without using a crossing",
+    "example": "Police fined several pedestrians who jaywalked across the busy avenue.",
+    "collocation": "jaywalk across the road",
+    "cefr": "C2"
+  },
+  {
+    "word": "tailgate",
+    "pos": "verb",
+    "ipa": "/ˈteɪlɡeɪt/",
+    "meaningVi": "bám đuôi sát",
+    "definitionEn": "to drive too closely behind another vehicle",
+    "example": "Impatient drivers tailgate slow lorries on the winding mountain road.",
+    "collocation": "tailgate a lorry",
+    "cefr": "C2"
+  },
+  {
+    "word": "hydroplane",
+    "pos": "verb",
+    "ipa": "/ˈhaɪdrəpleɪn/",
+    "meaningVi": "trượt nước (lốp xe)",
+    "definitionEn": "to slide uncontrollably on a film of water on the road",
+    "example": "The car hydroplaned across the wet motorway and hit the barrier.",
+    "collocation": "hydroplane on wet roads",
+    "cefr": "C2"
+  },
+  {
+    "word": "fender",
+    "pos": "noun",
+    "ipa": "/ˈfendə/",
+    "meaningVi": "chắn bùn, đệm chắn va",
+    "definitionEn": "a protective guard on a vehicle or a bumper on a ship",
+    "example": "The fender of the ferry scraped against the stone quay.",
+    "collocation": "damaged fender",
+    "cefr": "C2"
+  },
+  {
+    "word": "headway",
+    "pos": "noun",
+    "ipa": "/ˈhedweɪ/",
+    "meaningVi": "khoảng cách giữa hai chuyến",
+    "definitionEn": "the time gap between consecutive trains or buses on the same route",
+    "example": "Reduced headway during peak hours means trains arrive every four minutes.",
+    "collocation": "short headway",
+    "cefr": "C2"
+  },
+  {
+    "word": "dwell time",
+    "pos": "phrase",
+    "ipa": "/dwel taɪm/",
+    "meaningVi": "thời gian dừng đỗ",
+    "definitionEn": "the length of time a vehicle stays at a station or stop",
+    "example": "Longer dwell time at stations slows the entire timetable.",
+    "collocation": "excessive dwell time",
+    "cefr": "C2"
+  },
+  {
+    "word": "pothole",
+    "pos": "noun",
+    "ipa": "/ˈpɒthəʊl/",
+    "meaningVi": "ổ gà",
+    "definitionEn": "a hole in a road surface caused by wear or weather",
+    "example": "A deep pothole damaged the wheel of our car on the country road.",
+    "collocation": "deep pothole",
+    "cefr": "C2"
+  },
+  {
+    "word": "gangway",
+    "pos": "noun",
+    "ipa": "/ˈɡæŋweɪ/",
+    "meaningVi": "cầu lên tàu",
+    "definitionEn": "a movable bridge used to board or leave a ship",
+    "example": "Passengers hurried across the gangway as the ship docked.",
+    "collocation": "boarding gangway",
+    "cefr": "C2"
+  },
+  {
+    "word": "locomotive",
+    "pos": "noun",
+    "ipa": "/ˌləʊkəˈməʊtɪv/",
+    "meaningVi": "đầu máy",
+    "definitionEn": "a powered vehicle that pulls trains along a railway track",
+    "example": "The steam locomotive hissed as it pulled into the station.",
+    "collocation": "steam locomotive",
+    "cefr": "C2"
+  },
+  {
+    "word": "tugboat",
+    "pos": "noun",
+    "ipa": "/ˈtʌɡbəʊt/",
+    "meaningVi": "tàu kéo",
+    "definitionEn": "a small powerful boat used to pull or push larger ships",
+    "example": "Two tugboats guided the cargo vessel into its berth.",
+    "collocation": "harbour tugboat",
+    "cefr": "C2"
+  },
+  {
+    "word": "barge",
+    "pos": "noun",
+    "ipa": "/bɑːdʒ/",
+    "meaningVi": "sà lan",
+    "definitionEn": "a flat-bottomed boat used mainly for carrying cargo on canals and rivers",
+    "example": "The coal barge moved slowly along the canal toward the power station.",
+    "collocation": "cargo barge",
+    "cefr": "C2"
+  },
+  {
+    "word": "hovercraft",
+    "pos": "noun",
+    "ipa": "/ˈhɒvəkrɑːft/",
+    "meaningVi": "tàu đệm khí",
+    "definitionEn": "a vehicle that travels over land or water on a cushion of air",
+    "example": "The hovercraft skimmed across the channel in less than half an hour.",
+    "collocation": "passenger hovercraft",
+    "cefr": "C2"
+  },
+  {
+    "word": "paddle steamer",
+    "pos": "phrase",
+    "ipa": "/ˈpædl ˈstiːmə/",
+    "meaningVi": "tàu hơi nước guồng",
+    "definitionEn": "a steamboat propelled by a large paddle wheel at its side",
+    "example": "The paddle steamer carried holidaymakers along the river each summer.",
+    "collocation": "old paddle steamer",
+    "cefr": "C2"
+  },
+  {
+    "word": "sledge",
+    "pos": "noun",
+    "ipa": "/sledʒ/",
+    "meaningVi": "xe trượt tuyết",
+    "definitionEn": "a vehicle on runners used for travelling over snow or ice",
+    "example": "Children raced down the hill on a wooden sledge.",
+    "collocation": "wooden sledge",
+    "cefr": "C2"
+  },
+  {
+    "word": "wheelbarrow",
+    "pos": "noun",
+    "ipa": "/ˈwiːlbærəʊ/",
+    "meaningVi": "xe cút kít",
+    "definitionEn": "a small cart with one wheel, pushed by hand to carry loads",
+    "example": "He filled the wheelbarrow with bricks and pushed it across the yard.",
+    "collocation": "heavy wheelbarrow",
+    "cefr": "C2"
+  },
+  {
+    "word": "carriageway",
+    "pos": "noun",
+    "ipa": "/ˈkærɪdʒweɪ/",
+    "meaningVi": "làn đường xe chạy",
+    "definitionEn": "a part of a road reserved for vehicles travelling in one direction",
+    "example": "The northbound carriageway was closed after the crash.",
+    "collocation": "dual carriageway",
+    "cefr": "C2"
+  },
+  {
+    "word": "trundle",
+    "pos": "verb",
+    "ipa": "/ˈtrʌndl/",
+    "meaningVi": "lăn bánh chậm chạp",
+    "definitionEn": "to move slowly and heavily with a rumbling noise",
+    "example": "An old bus trundled along the lane, stopping at every village.",
+    "collocation": "trundle along the road",
+    "cefr": "C2"
+  },
+  {
+    "word": "quay",
+    "pos": "noun",
+    "ipa": "/kiː/",
+    "meaningVi": "cầu cảng",
+    "definitionEn": "a platform built along the edge of a harbour for loading ships",
+    "example": "Fishermen unloaded their catch onto the quay at dawn.",
+    "collocation": "stone quay",
+    "cefr": "C2"
+  },
+  {
+    "word": "fuselage",
+    "pos": "noun",
+    "ipa": "/ˈfjuːzəlɑːʒ/",
+    "meaningVi": "thân máy bay",
+    "definitionEn": "the main body of an aircraft that holds the passengers and cargo",
+    "example": "The fuselage of the aircraft was damaged by lightning during the storm.",
+    "collocation": "aircraft fuselage",
+    "cefr": "C2"
+  },
+  {
+    "word": "undercarriage",
+    "pos": "noun",
+    "ipa": "/ˈʌndəkærɪdʒ/",
+    "meaningVi": "gầm xe, càng hạ cánh",
+    "definitionEn": "the wheels and supporting frame underneath an aircraft or vehicle",
+    "example": "The undercarriage failed to lower properly before the plane landed.",
+    "collocation": "landing undercarriage",
+    "cefr": "C2"
+  },
+  {
+    "word": "towrope",
+    "pos": "noun",
+    "ipa": "/ˈtəʊrəʊp/",
+    "meaningVi": "dây kéo",
+    "definitionEn": "a strong rope used for towing a vehicle or boat",
+    "example": "The mechanic attached a towrope to the broken-down van.",
+    "collocation": "heavy towrope",
+    "cefr": "C2"
+  },
+  {
+    "word": "gunwale",
+    "pos": "noun",
+    "ipa": "/ˈɡʌnl/",
+    "meaningVi": "mép thuyền",
+    "definitionEn": "the upper edge of the side of a boat",
+    "example": "Water splashed over the gunwale as the small boat rocked in the waves.",
+    "collocation": "low gunwale",
+    "cefr": "C2"
+  }
+]

@@ -128,6 +128,10 @@ const LISTENING_SECTION_OF = new Map(LISTENING_DECKS.map((d) => [d.slug, d.secti
 
 const WEB = Platform.OS === 'web';
 const LEARNING_PREVIEW = 6;
+/** Số bộ hiện mỗi lần: vẽ cả trăm thẻ có hiệu ứng cùng lúc làm đổi tab bị khựng. */
+const PAGE = 12;
+/** Ở tab Tất cả, mỗi nhóm chỉ xem trước bấy nhiêu bộ. */
+const PREVIEW_ALL = 8;
 
 function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string, en?: LibDeck['en']): LibDeck {
   const look = deckLook(slug);
@@ -148,7 +152,6 @@ const STATIC_DECKS: LibDeck[] = [
       icon: 'book' as const,
     },
     en: { title: t.titleEn },
-    href: `/oxford?topic=${encodeURIComponent(t.title)}`,
     cover: t.cover,
     haystack: fold(`${t.title} ${t.titleEn} oxford 3000 ${t.words.map((w) => w.word).join(' ')}`),
   })),
@@ -175,6 +178,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const known = useIntlStore((s) => s.known);
   const [filter, setFilter] = useState<LibraryFilter>(initialFilter);
   const [query, setQuery] = useState('');
+  const [limit, setLimit] = useState(PAGE);
   const now = useMemo(() => new Date(), []);
 
   const notebook = useMemo(() => notebookDeck(Object.values(entries)), [entries]);
@@ -227,24 +231,62 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
     </View>
   );
   const bySource = (s: DeckSource) => decks.filter((d) => d.look.source === s);
+  /** Nút ở cuối lưới: ở tab Tất cả thì mở hẳn tab của nhóm, ở tab lẻ thì hiện thêm bộ. */
+  const moreFor = (s: DeckSource | null, total: number, shown: number) => {
+    if (total <= shown) return null;
+    const toTab = filter === 'all' && s !== null;
+    return (
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => (toTab && s ? setFilter(s) : setLimit((n) => n + PAGE))}
+        className="mt-4 self-center rounded-pill px-4 py-2"
+        style={{ backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2' }}
+      >
+        <Text className="font-strong text-label" style={{ color: color.primary }}>
+          {toTab ? L(`Xem cả ${total} bộ →`, `See all ${total} decks →`) : L(`Xem thêm (còn ${total - shown} bộ)`, `Show more (${total - shown} left)`)}
+        </Text>
+      </Pressable>
+    );
+  };
   /** Nội dung một nhóm; bộ Nghe chia tiếp theo từng Section của đề, mỗi Section một dòng tiêu đề. */
   const sourceBody = (s: DeckSource) => {
-    if (s === 'mine') return grid([...bySource('mine').map(card), notebookHint, createCard].filter(Boolean));
-    if (s !== 'listening') return grid(bySource(s).map(card));
-    const all = bySource('listening');
-    return LISTENING_SECTIONS.map((sec) => {
-      const items = all.filter((d) => LISTENING_SECTION_OF.get(d.slug) === sec.key);
-      if (!items.length) return null;
+    const cap = filter === 'all' ? PREVIEW_ALL : limit;
+    const all = bySource(s);
+    const shown = all.slice(0, cap);
+    if (s === 'mine') {
       return (
-        <View key={String(sec.key)} className="mt-5">
-          <View className="flex-row flex-wrap items-baseline gap-x-2">
-            <Text className="font-strong text-body text-ink">{L(sec.title, sec.titleEn)}</Text>
-            <Text className="font-sans text-label text-muted">{L(sec.subtitle, sec.subtitleEn)}</Text>
-          </View>
-          {grid(items.map(card))}
-        </View>
+        <>
+          {grid([...shown.map(card), notebookHint, createCard].filter(Boolean))}
+          {moreFor(s, all.length, shown.length)}
+        </>
       );
-    });
+    }
+    if (s !== 'listening') {
+      return (
+        <>
+          {grid(shown.map(card))}
+          {moreFor(s, all.length, shown.length)}
+        </>
+      );
+    }
+    return (
+      <>
+        {LISTENING_SECTIONS.map((sec) => {
+          const items = shown.filter((d) => LISTENING_SECTION_OF.get(d.slug) === sec.key);
+          if (!items.length) return null;
+          return (
+            <View key={String(sec.key)} className="mt-5">
+              <View className="flex-row flex-wrap items-baseline gap-x-2">
+                <Text className="font-strong text-body text-ink">{L(sec.title, sec.titleEn)}</Text>
+                <Text className="font-sans text-label text-muted">{L(sec.subtitle, sec.subtitleEn)}</Text>
+              </View>
+              {grid(items.map(card))}
+            </View>
+          );
+        })}
+        {moreFor(s, all.length, shown.length)}
+      </>
+    );
   };
 
   return (
@@ -255,7 +297,10 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
           <Icon name="search" size={17} color="#94A3B8" />
           <TextInput
             value={query}
-            onChangeText={setQuery}
+            onChangeText={(t) => {
+              setQuery(t);
+              setLimit(PAGE);
+            }}
             placeholder={L('Tìm bộ từ theo tên… (gõ không dấu cũng được)', 'Search decks by name…')}
             placeholderTextColor="#94A3B8"
             accessibilityLabel={L('Tìm bộ từ', 'Search decks')}
@@ -283,6 +328,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
               onPress={() => {
                 setFilter(f.key);
                 setQuery('');
+                setLimit(PAGE);
               }}
               className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
               style={{
@@ -309,7 +355,8 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
           {needle ? (
             <View className="mt-5">
               <SectionHeader title={L('Kết quả tìm', 'Search results')} subtitle={results.length ? L(`${results.length} bộ khớp “${query.trim()}”`, `${results.length} decks match “${query.trim()}”`) : L('Không có bộ nào khớp', 'No matching decks')} icon="search" />
-              {results.length ? grid(results.map(card)) : null}
+              {results.length ? grid(results.slice(0, limit).map(card)) : null}
+              {moreFor(null, results.length, Math.min(limit, results.length))}
             </View>
           ) : filter === 'all' ? (
             <>
@@ -340,7 +387,8 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
           ) : filter === 'learning' ? (
             <View className="mt-5">
               <SectionHeader title={L('Bộ từ đang học', 'Decks in progress')} subtitle={L('Học gần nhất đứng đầu', 'Most recent first')} icon="flame" iconTone="warning" />
-              {grid(learning.map(card))}
+              {grid(learning.slice(0, limit).map(card))}
+              {moreFor(null, learning.length, Math.min(limit, learning.length))}
             </View>
           ) : (
             <View className="mt-5">

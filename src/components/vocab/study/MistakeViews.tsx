@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 
 import { GREEN } from "./StudyKit";
+import { useStudyTheme } from "./useStudyTheme";
 import { Appear } from "@/components/motion/Motion";
 import { Icon } from "@/components/ui/Icon";
 import {
@@ -81,6 +82,7 @@ export function RoundAnalysis({
   mistakes: { word: string; m: Mistake }[];
 }) {
   const { L, en } = useL();
+  const t = useStudyTheme();
   if (mistakes.length === 0) {
     return (
       <Text className="mt-4 font-semi text-bodyLg" style={{ color: GREEN }}>
@@ -95,38 +97,41 @@ export function RoundAnalysis({
     <View
       className="mt-5 rounded-2xl p-5"
       style={{
-        backgroundColor: "#FCFBF8",
+        backgroundColor: t.field,
         borderWidth: 1,
-        borderColor: "#F0EBE2",
+        borderColor: t.fieldBorder,
       }}
     >
-      <Text className="font-strong text-cardTitle text-ink">
+      <Text className="font-strong text-cardTitle" style={{ color: t.ink }}>
         {L("Phân tích vòng học", "Round review")}
       </Text>
       <View className="mt-3 flex-row flex-wrap gap-2">
-        {kinds.map((k) => (
-          <View
-            key={k.kind}
-            className="rounded-pill px-3 py-1.5"
-            style={{
-              backgroundColor: k.kind === top.kind ? "#FEF3C7" : "#F7F4EE",
-            }}
-          >
-            <Text className="font-semi text-label text-ink">
-              {en ? MISTAKE_TITLE_EN[k.kind] : k.title} × {k.count}
-            </Text>
-          </View>
-        ))}
+        {kinds.map((k) => {
+          const isTop = k.kind === top.kind;
+          return (
+            <View
+              key={k.kind}
+              className="rounded-pill px-3 py-1.5"
+              style={{
+                backgroundColor: isTop ? "#FEF3C7" : t.chipBg,
+              }}
+            >
+              <Text className="font-semi text-label" style={{ color: isTop ? "#78350F" : t.chipInk }}>
+                {en ? MISTAKE_TITLE_EN[k.kind] : k.title} × {k.count}
+              </Text>
+            </View>
+          );
+        })}
       </View>
-      <Text className="mt-3 font-sans text-body text-ink">
+      <Text className="mt-3 font-sans text-body" style={{ color: t.ink }}>
         <Text className="font-strong">
           {L("Lỗi hay gặp nhất:", "Most common mistake:")} {(en ? MISTAKE_TITLE_EN[top.kind] : top.title).toLowerCase()}.
         </Text>{" "}
         {en ? MISTAKE_ADVICE_EN[top.kind] : MISTAKE_ADVICE[top.kind]}
       </Text>
-      <Text className="mt-3 font-sans text-body text-muted">
+      <Text className="mt-3 font-sans text-body" style={{ color: t.muted }}>
         {L("Từ còn yếu", "Weak words")} ({weak.length}):{" "}
-        <Text className="font-semi text-ink">{weak.join(", ")}</Text>
+        <Text className="font-semi" style={{ color: t.ink }}>{weak.join(", ")}</Text>
         {L(". Vòng sau sẽ hỏi những từ này trước.", ". Next round will ask these first.")}
       </Text>
     </View>

@@ -1,0 +1,998 @@
+[
+  {
+    "word": "perspective",
+    "synonyms": [
+      "viewpoint",
+      "standpoint"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "expressionism",
+    "synonyms": [],
+    "antonyms": [
+      "realism"
+    ]
+  },
+  {
+    "word": "impressionism",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "paint",
+    "synonyms": [
+      "coat",
+      "depict"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "painting",
+    "synonyms": [
+      "picture",
+      "artwork"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "drawing",
+    "synonyms": [
+      "sketch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colour",
+    "synonyms": [
+      "hue",
+      "shade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "artist",
+    "synonyms": [
+      "painter",
+      "creator"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "museum",
+    "synonyms": [
+      "gallery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "brush",
+    "synonyms": [
+      "paintbrush"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "frame",
+    "synonyms": [
+      "border",
+      "mount"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "shape",
+    "synonyms": [
+      "form",
+      "figure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "design",
+    "synonyms": [
+      "pattern",
+      "layout"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photograph",
+    "synonyms": [
+      "photo",
+      "snapshot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "carve",
+    "synonyms": [
+      "sculpt",
+      "chisel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pottery",
+    "synonyms": [
+      "ceramics"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "theatre",
+    "synonyms": [
+      "playhouse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dance",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "musician",
+    "synonyms": [
+      "performer",
+      "instrumentalist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "create",
+    "synonyms": [
+      "produce",
+      "make"
+    ],
+    "antonyms": [
+      "destroy"
+    ]
+  },
+  {
+    "word": "light",
+    "synonyms": [
+      "illumination",
+      "brightness"
+    ],
+    "antonyms": [
+      "darkness"
+    ]
+  },
+  {
+    "word": "exhibit",
+    "synonyms": [
+      "display",
+      "showcase"
+    ],
+    "antonyms": [
+      "conceal",
+      "hide"
+    ]
+  },
+  {
+    "word": "landscape",
+    "synonyms": [
+      "scenery",
+      "vista"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "portrait",
+    "synonyms": [
+      "likeness"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tone",
+    "synonyms": [
+      "shade",
+      "tint"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "texture",
+    "synonyms": [
+      "surface",
+      "grain"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "style",
+    "synonyms": [
+      "manner",
+      "approach"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "theme",
+    "synonyms": [
+      "subject",
+      "topic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "symbol",
+    "synonyms": [
+      "emblem",
+      "sign"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mood",
+    "synonyms": [
+      "atmosphere",
+      "ambience"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ceramics",
+    "synonyms": [
+      "pottery"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ensemble",
+    "synonyms": [
+      "troupe",
+      "band"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rhythm",
+    "synonyms": [
+      "beat",
+      "pulse"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lyrics",
+    "synonyms": [
+      "words",
+      "verses"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "performance",
+    "synonyms": [
+      "show",
+      "production"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "choreography",
+    "synonyms": [
+      "dance arrangement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "costume",
+    "synonyms": [
+      "outfit",
+      "attire"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stage",
+    "synonyms": [
+      "platform"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "poetry",
+    "synonyms": [
+      "verse",
+      "poems"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "literature",
+    "synonyms": [
+      "writing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "creative",
+    "synonyms": [
+      "imaginative",
+      "inventive"
+    ],
+    "antonyms": [
+      "unimaginative"
+    ]
+  },
+  {
+    "word": "illustration",
+    "synonyms": [
+      "picture",
+      "image"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "juxtapose",
+    "synonyms": [
+      "contrast",
+      "compare"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "allegory",
+    "synonyms": [
+      "parable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "iconography",
+    "synonyms": [
+      "symbolism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chiaroscuro",
+    "synonyms": [
+      "light and shade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vernacular",
+    "synonyms": [
+      "local",
+      "traditional"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dissonance",
+    "synonyms": [
+      "discord"
+    ],
+    "antonyms": [
+      "harmony"
+    ]
+  },
+  {
+    "word": "cadence",
+    "synonyms": [
+      "rhythm"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "nuance",
+    "synonyms": [
+      "subtlety",
+      "shade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "interpretation",
+    "synonyms": [
+      "reading",
+      "rendition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "provenance",
+    "synonyms": [
+      "origin",
+      "pedigree"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ornate",
+    "synonyms": [
+      "elaborate",
+      "decorative"
+    ],
+    "antonyms": [
+      "plain",
+      "austere"
+    ]
+  },
+  {
+    "word": "intricate",
+    "synonyms": [
+      "complex",
+      "elaborate"
+    ],
+    "antonyms": [
+      "simple",
+      "plain"
+    ]
+  },
+  {
+    "word": "elegance",
+    "synonyms": [
+      "grace",
+      "refinement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subtle",
+    "synonyms": [
+      "delicate",
+      "understated"
+    ],
+    "antonyms": [
+      "obvious",
+      "bold"
+    ]
+  },
+  {
+    "word": "vibrant",
+    "synonyms": [
+      "bright",
+      "lively"
+    ],
+    "antonyms": [
+      "dull",
+      "muted"
+    ]
+  },
+  {
+    "word": "evoke",
+    "synonyms": [
+      "suggest",
+      "conjure"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "underscore",
+    "synonyms": [
+      "emphasise",
+      "highlight"
+    ],
+    "antonyms": [
+      "downplay"
+    ]
+  },
+  {
+    "word": "reinterpret",
+    "synonyms": [
+      "reimagine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "deconstruct",
+    "synonyms": [
+      "dissect",
+      "break down"
+    ],
+    "antonyms": [
+      "construct"
+    ]
+  },
+  {
+    "word": "pastiche",
+    "synonyms": [
+      "imitation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "prototype",
+    "synonyms": [
+      "model",
+      "mock-up"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hue",
+    "synonyms": [
+      "shade",
+      "tint"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "luminous",
+    "synonyms": [
+      "glowing",
+      "radiant"
+    ],
+    "antonyms": [
+      "dim",
+      "dark"
+    ]
+  },
+  {
+    "word": "chromatic",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "kinetic",
+    "synonyms": [
+      "moving",
+      "dynamic"
+    ],
+    "antonyms": [
+      "static",
+      "stationary"
+    ]
+  },
+  {
+    "word": "installation",
+    "synonyms": [
+      "display"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "retrospective",
+    "synonyms": [
+      "career survey"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commission",
+    "synonyms": [
+      "assignment",
+      "order"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "auction",
+    "synonyms": [
+      "sale"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "connoisseur",
+    "synonyms": [
+      "expert",
+      "aficionado"
+    ],
+    "antonyms": [
+      "novice",
+      "layman"
+    ]
+  },
+  {
+    "word": "libretto",
+    "synonyms": [
+      "script"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "symphony",
+    "synonyms": [
+      "orchestral work"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "theatrical",
+    "synonyms": [
+      "dramatic",
+      "histrionic"
+    ],
+    "antonyms": [
+      "understated",
+      "restrained"
+    ]
+  },
+  {
+    "word": "fresco",
+    "synonyms": [
+      "mural"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sfumato",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "pentimento",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "trompe l'oeil",
+    "synonyms": [
+      "illusionism"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "impasto",
+    "synonyms": [
+      "thick paint"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "grisaille",
+    "synonyms": [
+      "monochrome"
+    ],
+    "antonyms": [
+      "polychrome"
+    ]
+  },
+  {
+    "word": "vignette",
+    "synonyms": [
+      "snippet",
+      "sketch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ekphrasis",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "apotheosis",
+    "synonyms": [
+      "pinnacle",
+      "culmination"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "word": "ineffable",
+    "synonyms": [
+      "indescribable",
+      "inexpressible"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rarefied",
+    "synonyms": [
+      "exclusive",
+      "elite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "garish",
+    "synonyms": [
+      "gaudy",
+      "flashy"
+    ],
+    "antonyms": [
+      "subdued",
+      "tasteful"
+    ]
+  },
+  {
+    "word": "lugubrious",
+    "synonyms": [
+      "mournful",
+      "doleful"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "ethereal",
+    "synonyms": [
+      "otherworldly",
+      "delicate"
+    ],
+    "antonyms": [
+      "earthly"
+    ]
+  },
+  {
+    "word": "mercurial",
+    "synonyms": [
+      "volatile",
+      "capricious"
+    ],
+    "antonyms": [
+      "stable",
+      "steady"
+    ]
+  },
+  {
+    "word": "sonorous",
+    "synonyms": [
+      "resonant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cacophony",
+    "synonyms": [
+      "din",
+      "racket"
+    ],
+    "antonyms": [
+      "harmony"
+    ]
+  },
+  {
+    "word": "euphony",
+    "synonyms": [
+      "melodiousness"
+    ],
+    "antonyms": [
+      "cacophony"
+    ]
+  },
+  {
+    "word": "timbre",
+    "synonyms": [
+      "tone colour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cadenza",
+    "synonyms": [
+      "solo passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "polyphony",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "counterpoint",
+    "synonyms": [
+      "polyphony"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "leitmotif",
+    "synonyms": [
+      "motif",
+      "theme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bravura",
+    "synonyms": [
+      "virtuosity",
+      "brilliance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lacuna",
+    "synonyms": [
+      "gap",
+      "omission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "palimpsest",
+    "synonyms": [
+      "overwritten manuscript"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "metonymy",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "synecdoche",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "hyperbole",
+    "synonyms": [
+      "exaggeration",
+      "overstatement"
+    ],
+    "antonyms": [
+      "understatement"
+    ]
+  },
+  {
+    "word": "iconoclast",
+    "synonyms": [
+      "rebel",
+      "dissenter"
+    ],
+    "antonyms": [
+      "traditionalist"
+    ]
+  },
+  {
+    "word": "bohemian",
+    "synonyms": [
+      "nonconformist",
+      "free spirit"
+    ],
+    "antonyms": [
+      "conformist"
+    ]
+  },
+  {
+    "word": "dilettante",
+    "synonyms": [
+      "dabbler",
+      "amateur"
+    ],
+    "antonyms": [
+      "expert",
+      "professional"
+    ]
+  },
+  {
+    "word": "virtuoso",
+    "synonyms": [
+      "maestro",
+      "master"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "oeuvre",
+    "synonyms": [
+      "body of work"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "magnum opus",
+    "synonyms": [
+      "masterpiece"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "zeitgeist",
+    "synonyms": [
+      "climate of opinion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "denouement",
+    "synonyms": [
+      "resolution",
+      "conclusion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "catharsis",
+    "synonyms": [
+      "emotional release"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ennui",
+    "synonyms": [
+      "boredom",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm"
+    ]
+  },
+  {
+    "word": "sardonic",
+    "synonyms": [
+      "sarcastic",
+      "mocking"
+    ],
+    "antonyms": [
+      "sincere"
+    ]
+  },
+  {
+    "word": "insouciant",
+    "synonyms": [
+      "carefree",
+      "nonchalant"
+    ],
+    "antonyms": [
+      "anxious",
+      "worried"
+    ]
+  },
+  {
+    "word": "quixotic",
+    "synonyms": [
+      "idealistic",
+      "impractical"
+    ],
+    "antonyms": [
+      "pragmatic"
+    ]
+  },
+  {
+    "word": "diaphanous",
+    "synonyms": [
+      "sheer",
+      "gauzy"
+    ],
+    "antonyms": [
+      "opaque"
+    ]
+  },
+  {
+    "word": "lachrymose",
+    "synonyms": [
+      "tearful",
+      "weepy"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "word": "tenebrism",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "gouache",
+    "synonyms": [
+      "opaque watercolour"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pastoral",
+    "synonyms": [
+      "rustic",
+      "bucolic"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "cognoscente",
+    "synonyms": [
+      "connoisseur"
+    ],
+    "antonyms": []
+  }
+]

@@ -1,0 +1,934 @@
+[
+  {
+    "word": "open-plan",
+    "synonyms": [
+      "open-concept"
+    ],
+    "antonyms": [
+      "partitioned"
+    ]
+  },
+  {
+    "word": "house",
+    "synonyms": [
+      "dwelling",
+      "residence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "home",
+    "synonyms": [
+      "dwelling",
+      "residence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "room",
+    "synonyms": [
+      "chamber"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "kitchen",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "bedroom",
+    "synonyms": [
+      "bedchamber"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bathroom",
+    "synonyms": [
+      "washroom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "garden",
+    "synonyms": [
+      "yard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "door",
+    "synonyms": [
+      "entrance"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "window",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "roof",
+    "synonyms": [
+      "rooftop"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "flat",
+    "synonyms": [
+      "apartment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "wall",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "furniture",
+    "synonyms": [
+      "furnishings"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cupboard",
+    "synonyms": [
+      "cabinet"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ceiling",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "floor",
+    "synonyms": [
+      "flooring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "staircase",
+    "synonyms": [
+      "stairway"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hallway",
+    "synonyms": [
+      "corridor",
+      "passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "garage",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "fence",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "plumbing",
+    "synonyms": [
+      "pipework"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "heating",
+    "synonyms": [
+      "heating system"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "insulation",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "damp",
+    "synonyms": [
+      "moist",
+      "humid"
+    ],
+    "antonyms": [
+      "dry"
+    ]
+  },
+  {
+    "word": "spacious",
+    "synonyms": [
+      "roomy",
+      "capacious"
+    ],
+    "antonyms": [
+      "cramped"
+    ]
+  },
+  {
+    "word": "cramped",
+    "synonyms": [
+      "confined",
+      "crowded"
+    ],
+    "antonyms": [
+      "spacious",
+      "roomy"
+    ]
+  },
+  {
+    "word": "cosy",
+    "synonyms": [
+      "snug",
+      "comfortable"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "modern",
+    "synonyms": [
+      "contemporary",
+      "up-to-date"
+    ],
+    "antonyms": [
+      "old-fashioned",
+      "antiquated"
+    ]
+  },
+  {
+    "word": "rural",
+    "synonyms": [
+      "country"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "word": "decorate",
+    "synonyms": [
+      "redecorate",
+      "adorn"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "move",
+    "synonyms": [
+      "relocate"
+    ],
+    "antonyms": [
+      "stay"
+    ]
+  },
+  {
+    "word": "viewing",
+    "synonyms": [
+      "inspection",
+      "showing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tenancy",
+    "synonyms": [
+      "lease",
+      "rental agreement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eviction",
+    "synonyms": [
+      "ejection",
+      "expulsion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "utilities",
+    "synonyms": [
+      "services"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "freehold",
+    "synonyms": [
+      "outright ownership"
+    ],
+    "antonyms": [
+      "leasehold"
+    ]
+  },
+  {
+    "word": "leasehold",
+    "synonyms": [
+      "long lease"
+    ],
+    "antonyms": [
+      "freehold"
+    ]
+  },
+  {
+    "word": "conveyancing",
+    "synonyms": [
+      "property transfer"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "valuation",
+    "synonyms": [
+      "assessment",
+      "estimate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "appraisal",
+    "synonyms": [
+      "valuation",
+      "survey"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subsidence",
+    "synonyms": [
+      "settlement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dilapidated",
+    "synonyms": [
+      "run-down",
+      "decrepit"
+    ],
+    "antonyms": [
+      "well-kept",
+      "pristine"
+    ]
+  },
+  {
+    "word": "derelict",
+    "synonyms": [
+      "abandoned",
+      "ruined"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "refurbish",
+    "synonyms": [
+      "renovate",
+      "revamp"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "demolish",
+    "synonyms": [
+      "raze",
+      "knock down"
+    ],
+    "antonyms": [
+      "construct",
+      "erect"
+    ]
+  },
+  {
+    "word": "extension",
+    "synonyms": [
+      "addition"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "annexe",
+    "synonyms": [
+      "annex",
+      "outbuilding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "terrace",
+    "synonyms": [
+      "patio"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "courtyard",
+    "synonyms": [
+      "enclosed yard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vestibule",
+    "synonyms": [
+      "foyer",
+      "lobby"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mezzanine",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "parapet",
+    "synonyms": [
+      "low wall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gable",
+    "synonyms": [
+      "end wall"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cornice",
+    "synonyms": [
+      "moulding"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "skirting",
+    "synonyms": [
+      "baseboard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "plinth",
+    "synonyms": [
+      "pedestal",
+      "base"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lintel",
+    "synonyms": [
+      "header"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "eaves",
+    "synonyms": [
+      "overhang"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "commodious",
+    "synonyms": [
+      "roomy",
+      "capacious"
+    ],
+    "antonyms": [
+      "cramped"
+    ]
+  },
+  {
+    "word": "well-appointed",
+    "synonyms": [
+      "well-equipped",
+      "fully fitted"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sought-after",
+    "synonyms": [
+      "in demand",
+      "popular"
+    ],
+    "antonyms": [
+      "unwanted"
+    ]
+  },
+  {
+    "word": "prime",
+    "synonyms": [
+      "premium",
+      "choice"
+    ],
+    "antonyms": [
+      "inferior"
+    ]
+  },
+  {
+    "word": "desirable",
+    "synonyms": [
+      "attractive",
+      "appealing"
+    ],
+    "antonyms": [
+      "undesirable"
+    ]
+  },
+  {
+    "word": "unassuming",
+    "synonyms": [
+      "modest",
+      "humble"
+    ],
+    "antonyms": [
+      "ostentatious",
+      "flashy"
+    ]
+  },
+  {
+    "word": "secluded",
+    "synonyms": [
+      "isolated",
+      "remote"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bustling",
+    "synonyms": [
+      "busy",
+      "lively"
+    ],
+    "antonyms": [
+      "quiet",
+      "sleepy"
+    ]
+  },
+  {
+    "word": "tranquil",
+    "synonyms": [
+      "peaceful",
+      "serene"
+    ],
+    "antonyms": [
+      "noisy",
+      "turbulent"
+    ]
+  },
+  {
+    "word": "compact",
+    "synonyms": [
+      "small"
+    ],
+    "antonyms": [
+      "spacious",
+      "sprawling"
+    ]
+  },
+  {
+    "word": "abode",
+    "synonyms": [
+      "residence",
+      "dwelling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sanctuary",
+    "synonyms": [
+      "refuge",
+      "haven"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "habitat",
+    "synonyms": [
+      "natural environment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "relocation",
+    "synonyms": [
+      "move",
+      "removal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "urbanisation",
+    "synonyms": [
+      "urban growth"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "domicile",
+    "synonyms": [
+      "residence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hovel",
+    "synonyms": [
+      "shack",
+      "hut"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "manse",
+    "synonyms": [
+      "parsonage",
+      "rectory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "chateau",
+    "synonyms": [
+      "castle",
+      "manor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "villa",
+    "synonyms": [
+      "mansion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bungalow",
+    "synonyms": [
+      "single-storey house"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lodging",
+    "synonyms": [
+      "accommodation",
+      "digs"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tenement",
+    "synonyms": [
+      "block of flats"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "garret",
+    "synonyms": [
+      "attic"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "attic",
+    "synonyms": [
+      "loft",
+      "garret"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cellar",
+    "synonyms": [
+      "basement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pantry",
+    "synonyms": [
+      "larder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "scullery",
+    "synonyms": [
+      "back kitchen"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "antechamber",
+    "synonyms": [
+      "anteroom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parlour",
+    "synonyms": [
+      "sitting room",
+      "lounge"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fanlight",
+    "synonyms": [
+      "transom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "casement",
+    "synonyms": [
+      "hinged window"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mullion",
+    "synonyms": [
+      "window divider"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "transom",
+    "synonyms": [
+      "fanlight",
+      "crossbar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "corbel",
+    "synonyms": [
+      "bracket",
+      "console"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "buttress",
+    "synonyms": [
+      "support pillar"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rafter",
+    "synonyms": [
+      "roof beam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "joist",
+    "synonyms": [
+      "beam"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lath",
+    "synonyms": [
+      "slat"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "stucco",
+    "synonyms": [
+      "plaster",
+      "render"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pergola",
+    "synonyms": [
+      "arbour",
+      "trellis"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gazebo",
+    "synonyms": [
+      "summerhouse",
+      "belvedere"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "orangery",
+    "synonyms": [
+      "conservatory"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "arbour",
+    "synonyms": [
+      "bower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pied-à-terre",
+    "synonyms": [
+      "second home"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dormer",
+    "synonyms": [
+      "roof window"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "colonnade",
+    "synonyms": [
+      "row of columns"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "portico",
+    "synonyms": [
+      "porch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "veranda",
+    "synonyms": [
+      "verandah",
+      "porch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bailey",
+    "synonyms": [
+      "courtyard"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "turret",
+    "synonyms": [
+      "small tower"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "moat",
+    "synonyms": [
+      "ditch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parquet",
+    "synonyms": [
+      "wood flooring"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dado",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "word": "wainscot",
+    "synonyms": [
+      "panelling"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mansard",
+    "synonyms": [
+      "French roof"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tessellated",
+    "synonyms": [
+      "tiled"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ramshackle",
+    "synonyms": [
+      "rickety",
+      "tumbledown"
+    ],
+    "antonyms": [
+      "sturdy"
+    ]
+  },
+  {
+    "word": "crumbling",
+    "synonyms": [
+      "decaying",
+      "disintegrating"
+    ],
+    "antonyms": [
+      "sturdy",
+      "solid"
+    ]
+  },
+  {
+    "word": "spartan",
+    "synonyms": [
+      "austere",
+      "plain"
+    ],
+    "antonyms": [
+      "luxurious",
+      "lavish"
+    ]
+  },
+  {
+    "word": "bijou",
+    "synonyms": [
+      "dainty",
+      "petite"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vaulted",
+    "synonyms": [
+      "arched"
+    ],
+    "antonyms": []
+  }
+]

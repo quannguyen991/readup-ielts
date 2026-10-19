@@ -1,0 +1,1170 @@
+[
+  {
+    "word": "press freedom",
+    "synonyms": [
+      "press liberty",
+      "media freedom"
+    ],
+    "antonyms": [
+      "press censorship"
+    ]
+  },
+  {
+    "word": "broadsheet",
+    "synonyms": [
+      "quality newspaper",
+      "serious paper"
+    ],
+    "antonyms": [
+      "tabloid"
+    ]
+  },
+  {
+    "word": "subscription",
+    "synonyms": [
+      "membership",
+      "enrolment"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "influencer",
+    "synonyms": [
+      "content creator",
+      "social media personality"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "clickbait",
+    "synonyms": [
+      "sensational headline",
+      "teaser"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "pop-up",
+    "synonyms": [
+      "overlay ad",
+      "interstitial"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "native advertising",
+    "synonyms": [
+      "sponsored content",
+      "branded content"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "product placement",
+    "synonyms": [
+      "brand placement",
+      "embedded advertising"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "market share",
+    "synonyms": [
+      "market position",
+      "market presence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "social media",
+    "synonyms": [
+      "online networks",
+      "social networking"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hashtag",
+    "synonyms": [
+      "topic tag",
+      "keyword tag"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "news",
+    "synonyms": [
+      "current affairs",
+      "reports"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "newspaper",
+    "synonyms": [
+      "daily paper",
+      "journal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "magazine",
+    "synonyms": [
+      "periodical",
+      "journal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "radio",
+    "synonyms": [
+      "wireless",
+      "broadcasting"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "channel",
+    "synonyms": [
+      "station",
+      "network"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "story",
+    "synonyms": [
+      "article",
+      "report"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "photograph",
+    "synonyms": [
+      "photo",
+      "picture"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "camera",
+    "synonyms": [
+      "recorder",
+      "video recorder"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "screen",
+    "synonyms": [
+      "display",
+      "monitor"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "message",
+    "synonyms": [
+      "communication",
+      "statement"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "website",
+    "synonyms": [
+      "web page",
+      "online site"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "video",
+    "synonyms": [
+      "film clip",
+      "recording"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "author",
+    "synonyms": [
+      "writer",
+      "journalist"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "broadcast",
+    "synonyms": [
+      "transmission",
+      "programme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "documentary",
+    "synonyms": [
+      "factual film",
+      "non-fiction film"
+    ],
+    "antonyms": [
+      "fiction"
+    ]
+  },
+  {
+    "word": "bulletin",
+    "synonyms": [
+      "news update",
+      "briefing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "interview",
+    "synonyms": [
+      "questioning",
+      "consultation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "anchor",
+    "synonyms": [
+      "news presenter",
+      "newsreader"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "blog",
+    "synonyms": [
+      "online journal",
+      "web log"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "podcast",
+    "synonyms": [
+      "audio show",
+      "audio programme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "newsletter",
+    "synonyms": [
+      "circular",
+      "bulletin"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ratings",
+    "synonyms": [
+      "audience figures",
+      "viewing figures"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "viewership",
+    "synonyms": [
+      "audience size",
+      "viewing numbers"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "audience",
+    "synonyms": [
+      "viewers",
+      "readership"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "readership",
+    "synonyms": [
+      "readers",
+      "circulation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spokesperson",
+    "synonyms": [
+      "spokesman",
+      "representative"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "press release",
+    "synonyms": [
+      "media statement",
+      "news release"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "press conference",
+    "synonyms": [
+      "media briefing",
+      "news conference"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bias",
+    "synonyms": [
+      "prejudice",
+      "partiality"
+    ],
+    "antonyms": [
+      "impartiality",
+      "neutrality"
+    ]
+  },
+  {
+    "word": "objective",
+    "synonyms": [
+      "impartial",
+      "unbiased"
+    ],
+    "antonyms": [
+      "subjective",
+      "biased"
+    ]
+  },
+  {
+    "word": "credibility",
+    "synonyms": [
+      "trustworthiness",
+      "reliability"
+    ],
+    "antonyms": [
+      "untrustworthiness"
+    ]
+  },
+  {
+    "word": "misinformation",
+    "synonyms": [
+      "false information",
+      "inaccuracy"
+    ],
+    "antonyms": [
+      "accuracy"
+    ]
+  },
+  {
+    "word": "disinformation",
+    "synonyms": [
+      "propaganda",
+      "deliberate falsehood"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "fake news",
+    "synonyms": [
+      "false reports",
+      "hoax news"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "source",
+    "synonyms": [
+      "origin",
+      "informant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "investigation",
+    "synonyms": [
+      "inquiry",
+      "probe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cover-up",
+    "synonyms": [
+      "concealment",
+      "whitewash"
+    ],
+    "antonyms": [
+      "disclosure"
+    ]
+  },
+  {
+    "word": "gatekeeper",
+    "synonyms": [
+      "editor",
+      "filter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "sensationalism",
+    "synonyms": [
+      "yellow journalism",
+      "hype"
+    ],
+    "antonyms": [
+      "restraint"
+    ]
+  },
+  {
+    "word": "agenda",
+    "synonyms": [
+      "plan",
+      "programme"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "framing",
+    "synonyms": [
+      "presentation",
+      "slant"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "narrative",
+    "synonyms": [
+      "storyline",
+      "account"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "partisan",
+    "synonyms": [
+      "biased",
+      "factional"
+    ],
+    "antonyms": [
+      "non-partisan",
+      "impartial"
+    ]
+  },
+  {
+    "word": "polarize",
+    "synonyms": [
+      "divide",
+      "split"
+    ],
+    "antonyms": [
+      "unify",
+      "reconcile"
+    ]
+  },
+  {
+    "word": "manipulation",
+    "synonyms": [
+      "distortion",
+      "exploitation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "disseminate",
+    "synonyms": [
+      "spread",
+      "circulate"
+    ],
+    "antonyms": [
+      "suppress",
+      "withhold"
+    ]
+  },
+  {
+    "word": "fact-check",
+    "synonyms": [
+      "verify",
+      "check accuracy"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "verify",
+    "synonyms": [
+      "confirm",
+      "authenticate"
+    ],
+    "antonyms": [
+      "falsify",
+      "refute"
+    ]
+  },
+  {
+    "word": "retract",
+    "synonyms": [
+      "withdraw",
+      "recant"
+    ],
+    "antonyms": [
+      "reaffirm"
+    ]
+  },
+  {
+    "word": "retraction",
+    "synonyms": [
+      "correction",
+      "withdrawal"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "defamation",
+    "synonyms": [
+      "slander",
+      "libel"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "libel",
+    "synonyms": [
+      "written defamation",
+      "printed slander"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "slander",
+    "synonyms": [
+      "spoken defamation",
+      "calumny"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "gag order",
+    "synonyms": [
+      "reporting ban",
+      "publication ban"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "whistleblower",
+    "synonyms": [
+      "informant",
+      "insider"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "exposé",
+    "synonyms": [
+      "investigative report",
+      "expose"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "dispatch",
+    "synonyms": [
+      "report",
+      "despatch"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "syndicate",
+    "synonyms": [
+      "news agency",
+      "distribution network"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "mogul",
+    "synonyms": [
+      "tycoon",
+      "magnate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "proprietor",
+    "synonyms": [
+      "owner",
+      "proprietress"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "soundbite",
+    "synonyms": [
+      "catchphrase",
+      "slogan"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "spin",
+    "synonyms": [
+      "slant",
+      "distortion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "rhetoric",
+    "synonyms": [
+      "oratory",
+      "eloquence"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "ideology",
+    "synonyms": [
+      "belief system",
+      "doctrine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "subjectivity",
+    "synonyms": [
+      "personal bias",
+      "partiality"
+    ],
+    "antonyms": [
+      "objectivity"
+    ]
+  },
+  {
+    "word": "hyperbole",
+    "synonyms": [
+      "exaggeration",
+      "overstatement"
+    ],
+    "antonyms": [
+      "understatement"
+    ]
+  },
+  {
+    "word": "euphemism",
+    "synonyms": [
+      "softened term",
+      "polite term"
+    ],
+    "antonyms": [
+      "dysphemism"
+    ]
+  },
+  {
+    "word": "jargon",
+    "synonyms": [
+      "technical language",
+      "lingo"
+    ],
+    "antonyms": [
+      "plain language"
+    ]
+  },
+  {
+    "word": "vernacular",
+    "synonyms": [
+      "colloquial speech",
+      "everyday language"
+    ],
+    "antonyms": [
+      "formal language"
+    ]
+  },
+  {
+    "word": "editorialize",
+    "synonyms": [
+      "comment",
+      "opine"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "infotainment",
+    "synonyms": [
+      "light news",
+      "soft news"
+    ],
+    "antonyms": [
+      "hard news"
+    ]
+  },
+  {
+    "word": "exposure",
+    "synonyms": [
+      "visibility",
+      "publicity"
+    ],
+    "antonyms": [
+      "concealment"
+    ]
+  },
+  {
+    "word": "paparazzi",
+    "synonyms": [
+      "photographers",
+      "celebrity photographers"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "lampoon",
+    "synonyms": [
+      "ridicule",
+      "satirize"
+    ],
+    "antonyms": [
+      "praise",
+      "flatter"
+    ]
+  },
+  {
+    "word": "satire",
+    "synonyms": [
+      "irony",
+      "parody"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "parody",
+    "synonyms": [
+      "spoof",
+      "send-up"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "yellow journalism",
+    "synonyms": [
+      "tabloid journalism",
+      "sensationalist press"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "muckraker",
+    "synonyms": [
+      "investigative journalist",
+      "crusading reporter"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "obfuscate",
+    "synonyms": [
+      "confuse",
+      "cloud"
+    ],
+    "antonyms": [
+      "clarify",
+      "elucidate"
+    ]
+  },
+  {
+    "word": "equivocate",
+    "synonyms": [
+      "hedge",
+      "waffle"
+    ],
+    "antonyms": [
+      "commit",
+      "state plainly"
+    ]
+  },
+  {
+    "word": "prevaricate",
+    "synonyms": [
+      "equivocate",
+      "dodge"
+    ],
+    "antonyms": [
+      "speak plainly"
+    ]
+  },
+  {
+    "word": "disingenuous",
+    "synonyms": [
+      "insincere",
+      "dishonest"
+    ],
+    "antonyms": [
+      "sincere",
+      "candid"
+    ]
+  },
+  {
+    "word": "tendentious",
+    "synonyms": [
+      "biased",
+      "partisan"
+    ],
+    "antonyms": [
+      "neutral",
+      "objective"
+    ]
+  },
+  {
+    "word": "agitprop",
+    "synonyms": [
+      "propaganda",
+      "agitation"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "doctrinaire",
+    "synonyms": [
+      "dogmatic",
+      "inflexible"
+    ],
+    "antonyms": [
+      "flexible",
+      "pragmatic"
+    ]
+  },
+  {
+    "word": "polemic",
+    "synonyms": [
+      "argument",
+      "diatribe"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "invective",
+    "synonyms": [
+      "abuse",
+      "denunciation"
+    ],
+    "antonyms": [
+      "praise",
+      "eulogy"
+    ]
+  },
+  {
+    "word": "diatribe",
+    "synonyms": [
+      "tirade",
+      "harangue"
+    ],
+    "antonyms": [
+      "eulogy"
+    ]
+  },
+  {
+    "word": "philippic",
+    "synonyms": [
+      "denunciation",
+      "tirade"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vitriol",
+    "synonyms": [
+      "bitterness",
+      "venom"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "bombast",
+    "synonyms": [
+      "pomposity",
+      "grandiloquence"
+    ],
+    "antonyms": [
+      "understatement"
+    ]
+  },
+  {
+    "word": "grandstanding",
+    "synonyms": [
+      "showboating",
+      "posturing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "meretricious",
+    "synonyms": [
+      "showy",
+      "tawdry"
+    ],
+    "antonyms": [
+      "genuine",
+      "authentic"
+    ]
+  },
+  {
+    "word": "ersatz",
+    "synonyms": [
+      "imitation",
+      "artificial"
+    ],
+    "antonyms": [
+      "genuine",
+      "authentic"
+    ]
+  },
+  {
+    "word": "bowdlerize",
+    "synonyms": [
+      "censor",
+      "expurgate"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "expurgate",
+    "synonyms": [
+      "censor",
+      "bowdlerize"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "embellish",
+    "synonyms": [
+      "exaggerate",
+      "decorate"
+    ],
+    "antonyms": [
+      "simplify",
+      "understate"
+    ]
+  },
+  {
+    "word": "fabricate",
+    "synonyms": [
+      "invent",
+      "forge"
+    ],
+    "antonyms": [
+      "verify"
+    ]
+  },
+  {
+    "word": "concoct",
+    "synonyms": [
+      "invent",
+      "devise"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "hoodwink",
+    "synonyms": [
+      "deceive",
+      "mislead"
+    ],
+    "antonyms": [
+      "enlighten"
+    ]
+  },
+  {
+    "word": "duplicity",
+    "synonyms": [
+      "deceit",
+      "double-dealing"
+    ],
+    "antonyms": [
+      "candour"
+    ]
+  },
+  {
+    "word": "chicanery",
+    "synonyms": [
+      "trickery",
+      "sharp practice"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "skullduggery",
+    "synonyms": [
+      "trickery",
+      "underhand dealing"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "smear",
+    "synonyms": [
+      "slander",
+      "defamation"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "word": "calumny",
+    "synonyms": [
+      "slander",
+      "defamation"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "word": "aspersion",
+    "synonyms": [
+      "slur",
+      "disparagement"
+    ],
+    "antonyms": [
+      "praise",
+      "compliment"
+    ]
+  },
+  {
+    "word": "innuendo",
+    "synonyms": [
+      "insinuation",
+      "hint"
+    ],
+    "antonyms": [
+      "explicit statement"
+    ]
+  },
+  {
+    "word": "insinuation",
+    "synonyms": [
+      "innuendo",
+      "hint"
+    ],
+    "antonyms": [
+      "explicit statement"
+    ]
+  },
+  {
+    "word": "hearsay",
+    "synonyms": [
+      "rumour",
+      "gossip"
+    ],
+    "antonyms": [
+      "firsthand evidence"
+    ]
+  },
+  {
+    "word": "conjecture",
+    "synonyms": [
+      "speculation",
+      "guesswork"
+    ],
+    "antonyms": [
+      "proof",
+      "certainty"
+    ]
+  },
+  {
+    "word": "pastiche",
+    "synonyms": [
+      "imitation",
+      "medley"
+    ],
+    "antonyms": [
+      "original"
+    ]
+  },
+  {
+    "word": "lacuna",
+    "synonyms": [
+      "gap",
+      "omission"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "tenor",
+    "synonyms": [
+      "tone",
+      "mood"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vox populi",
+    "synonyms": [
+      "popular opinion",
+      "public opinion"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "vignette",
+    "synonyms": [
+      "sketch",
+      "snapshot"
+    ],
+    "antonyms": []
+  },
+  {
+    "word": "cavil",
+    "synonyms": [
+      "quibble",
+      "carp"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "word": "vituperation",
+    "synonyms": [
+      "abuse",
+      "vilification"
+    ],
+    "antonyms": [
+      "praise",
+      "commendation"
+    ]
+  },
+  {
+    "word": "sophistry",
+    "synonyms": [
+      "fallacious reasoning",
+      "casuistry"
+    ],
+    "antonyms": [
+      "sound reasoning"
+    ]
+  },
+  {
+    "word": "dissemble",
+    "synonyms": [
+      "pretend",
+      "dissimulate"
+    ],
+    "antonyms": [
+      "be candid",
+      "be frank"
+    ]
+  },
+  {
+    "word": "bluster",
+    "synonyms": [
+      "boast",
+      "bombast"
+    ],
+    "antonyms": [
+      "understate"
+    ]
+  }
+]
