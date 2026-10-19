@@ -202,7 +202,7 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
  * app lùi về bản ghi âm người thật rồi giọng máy như cũ.
  * ------------------------------------------------------------------ */
 
-export type ClipVoice = 'kore' | 'fenrir' | 'aoede';
+export type ClipVoice = 'kore' | 'fenrir' | 'aoede' | 'alice';
 /** Một giọng cho mọi người: Aoede, không đổi theo giới. */
 export function clipVoiceFor(_gender: 'f' | 'm'): ClipVoice {
   return 'aoede';

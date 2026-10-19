@@ -244,6 +244,9 @@ export async function playClip(url: string, opts: { rate?: number } = {}): Promi
   return r.ok;
 }
 
+/** Giọng dự phòng cho từ CHƯA có clip giọng mặc định (Aoede): clip Alice (ElevenLabs). */
+export const FALLBACK_CLIP_VOICE: ClipVoice = "alice";
+
 /** One default voice shared by pronunciation and clip generation. */
 export function currentClipVoice(): ClipVoice {
   return pronunciationVoice.id as ClipVoice;
@@ -262,9 +265,11 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   const rate = opts.rate ?? 0.9;
 
   try {
-    // Use only the configured voice; missing clips temporarily use device TTS.
+    // Giọng mặc định trước; chưa có clip thì thử giọng Alice; vẫn thiếu mới tới giọng máy.
     if (isWeb) {
-      const url = await clips.find(currentClipVoice(), word);
+      const url =
+        (await clips.find(currentClipVoice(), word)) ??
+        (await clips.find(FALLBACK_CLIP_VOICE, word));
       if (my !== token) return;
       if (url) {
         const r = await playClipUrl(url, { rate, my });
