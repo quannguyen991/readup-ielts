@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Image, Modal, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import { Image, Linking, Modal, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -20,12 +20,12 @@ export default function SpeakingLobby() {
 
   const attempts = useSpeakingStore((s) => s.attempts);
   const { current: streak } = useStreak();
+  const [weekStart] = useState(() => Date.now() - 7 * 86400000);
 
   // Thống kê
   const weekSessions = useMemo(() => {
-    const oneWeekAgo = Date.now() - 7 * 86400000;
-    return attempts.filter((a) => new Date(a.startedAt).getTime() >= oneWeekAgo).length;
-  }, [attempts]);
+    return attempts.filter((a) => new Date(a.startedAt).getTime() >= weekStart).length;
+  }, [attempts, weekStart]);
 
   const avgBand = useMemo(() => {
     const graded = attempts.filter((a) => !a.typed && a.grade?.overall != null).slice(0, 7);
@@ -36,7 +36,7 @@ export default function SpeakingLobby() {
 
   // Modal Forecast & Sample 8.0
   const [forecastModalOpen, setForecastModalOpen] = useState(false);
-  const [selectedQuarter, setSelectedQuarter] = useState<'Q3-2026' | 'Q2-2026'>('Q3-2026');
+  const [selectedQuarter, setSelectedQuarter] = useState<SpeakingSample['quarter']>('Sep-Dec-2026');
   const [selectedPart, setSelectedPart] = useState<'all' | 1 | 2 | 3>('all');
   const [activeSample, setActiveSample] = useState<SpeakingSample | null>(null);
 
@@ -150,17 +150,17 @@ export default function SpeakingLobby() {
                 FORECAST SPEAKING
               </Text>
               <Text className="mt-1 font-strong text-body text-[#6A1B2D]">
-                {L('(Quý 3 - Tháng 9–12, 2026)', '(Quarter 3 - Sep–Dec 2026)')}
+                {L('(Tháng 9–12/2026)', '(September–December 2026)')}
               </Text>
               <Text className="mt-2 font-sans text-label text-[#4A1121]/90" style={{ lineHeight: 20 }}>
-                {L('Dự đoán và cập nhật bộ đề Speaking mới nhất — kèm bộ Quý 2 để ôn lại.', 'Latest predicted Speaking topics with model 8.0 answers, plus Q2 review.')}
+                {L('72 bài forecast và dạng cue card phổ biến, có bản dịch, từ vựng và luyện đúng câu hỏi.', '72 forecast and common cue-card samples with translations, vocabulary and matching practice questions.')}
               </Text>
             </View>
 
             {/* Minh hoạ tờ forecast lịch */}
             <View className="h-32 w-28 items-center justify-center rounded-2xl bg-white p-3 shadow-md">
               <Text className="font-heavy text-[11px] uppercase text-[#6A1B2D]">FORECAST</Text>
-              <Text className="font-sans text-[9px] text-slate-500">Q3 2026</Text>
+              <Text className="font-sans text-[9px] text-slate-500">SEP–DEC 2026</Text>
               <View className="mt-2 h-1.5 w-full rounded-full bg-pink-100">
                 <View className="h-full w-3/4 rounded-full bg-pink-500" />
               </View>
@@ -368,7 +368,7 @@ export default function SpeakingLobby() {
             </View>
           </View>
           <Text className="mt-2 font-sans italic text-[11px] text-slate-600" numberOfLines={2}>
-            "where we have real conversations in easy English to help you learn."
+            “where we have real conversations in easy English to help you learn.”
           </Text>
           <View className="mt-2.5 flex-row items-center justify-between border-t border-slate-100 pt-2">
             <Text className="font-strong text-[11px] text-sky-700">{L('Vào phòng lồng tiếng', 'Enter Dubbing')}</Text>
@@ -390,7 +390,7 @@ export default function SpeakingLobby() {
                   📚 {L('FORECAST SPEAKING & BÀI MẪU 8.0+', 'FORECAST SPEAKING & BAND 8.0+ SAMPLES')}
                 </Text>
                 <Text className="font-sans text-label text-slate-500">
-                  {L('Bộ đề dự đoán theo Quý & Phân tích từ vựng, ngữ pháp ăn điểm', 'Quarterly forecast questions with comprehensive Band 8.0 analysis')}
+                  {L('Chủ đề tham khảo tháng 9–12/2026 · Bài mẫu do ReadUp biên soạn', 'Sep–Dec 2026 topic references · Original ReadUp samples')}
                 </Text>
               </View>
               <Pressable accessibilityRole="button" onPress={() => setForecastModalOpen(false)} className="rounded-full bg-slate-200 p-2">
@@ -401,7 +401,7 @@ export default function SpeakingLobby() {
             {/* Filter Controls */}
             <View className="flex-row flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-6 py-3">
               <View className="flex-row items-center gap-2">
-                {(['Q3-2026', 'Q2-2026'] as const).map((q) => (
+                {(['Sep-Dec-2026', 'Common-patterns', 'Q3-2026', 'Q2-2026'] as const).map((q) => (
                   <Pressable
                     key={q}
                     onPress={() => setSelectedQuarter(q)}
@@ -409,7 +409,7 @@ export default function SpeakingLobby() {
                     style={{ backgroundColor: selectedQuarter === q ? '#0F172A' : '#F1F5F9' }}
                   >
                     <Text className="font-strong text-label" style={{ color: selectedQuarter === q ? '#FFFFFF' : '#475569' }}>
-                      {q === 'Q3-2026' ? L('Quý 3/2026 (Mới nhất)', 'Q3 2026 (Latest)') : L('Quý 2/2026 (Ôn lại)', 'Q2 2026 (Review)')}
+                      {q === 'Sep-Dec-2026' ? L('Tháng 9–12/2026 · Mới nhất', 'Sep–Dec 2026 · Latest') : q === 'Common-patterns' ? L('Dạng cue card phổ biến', 'Common cue-card types') : q === 'Q3-2026' ? L('Bài ôn tập 2026', '2026 review') : L('Quý 2/2026 · Ôn lại', 'Q2 2026 · Review')}
                     </Text>
                   </Pressable>
                 ))}
@@ -431,6 +431,9 @@ export default function SpeakingLobby() {
               </View>
             </View>
 
+            <Text className="px-6 pt-3 font-sans text-label text-slate-600">
+              {L(`${filteredForecast.length} bài mẫu · Forecast là chủ đề được tổng hợp, không bảo đảm xuất hiện trong đề thi. Band là mục tiêu luyện tập.`, `${filteredForecast.length} samples · Forecasts are reported topic themes, not guaranteed exam questions. Bands are practice targets.`)}
+            </Text>
             {/* Content List */}
             <ScrollView style={{ maxHeight: 520 }} contentContainerStyle={{ padding: 24, gap: 16 }}>
               {filteredForecast.map((item) => (
@@ -443,10 +446,15 @@ export default function SpeakingLobby() {
                       <Text className="font-strong text-body text-slate-800">{item.topicVi} ({item.topic})</Text>
                     </View>
                     <View className="rounded-pill bg-amber-100 px-2.5 py-0.5">
-                      <Text className="font-heavy text-[11px] text-amber-900">BAND {item.targetBand.toFixed(1)}</Text>
+                      <Text className="font-heavy text-[11px] text-amber-900">{L('MỤC TIÊU', 'TARGET')} {item.targetBand.toFixed(1)}</Text>
                     </View>
                   </View>
 
+                  {item.sourceRefs?.map((source) => (
+                    <View key={source.url} className="mt-2 self-start rounded bg-slate-100 px-2 py-0.5">
+                      <Text className="font-sans text-[11px] text-slate-600">{source.title}</Text>
+                    </View>
+                  ))}
                   <Text className="mt-3 font-heavy text-bodyLg text-slate-900">
                     {item.question}
                   </Text>
@@ -496,11 +504,16 @@ export default function SpeakingLobby() {
                     </View>
                   </View>
 
+                  <View className="mt-3 gap-1 rounded-xl bg-slate-50 p-3">
+                    <Text className="font-strong text-[12px] text-slate-700">{L('Cách triển khai & ngữ pháp', 'Structure & grammar')}</Text>
+                    {item.grammarNotes.map((note, index) => <Text key={index} className="font-sans text-label text-slate-600">• {note}</Text>)}
+                    <Text className="mt-1 font-sans text-[11px] text-slate-500">{item.part === 2 ? L('1 phút chuẩn bị · Nói 1–2 phút', '1 minute preparation · Speak for 1–2 minutes') : item.part === 1 ? L('Trả lời ngắn về bản thân và trải nghiệm quen thuộc', 'Short personal answers about familiar experiences') : L('Thảo luận mở rộng · Giải thích quan điểm và ví dụ', 'Extended discussion · Explain opinions and examples')}</Text>
+                  </View>
                   <Pressable
                     accessibilityRole="button"
                     onPress={() => {
                       setForecastModalOpen(false);
-                      router.push(`/speaking/room?mode=p${item.part}` as never);
+                      router.push(`/speaking/room?mode=q&q=${encodeURIComponent(item.id)}` as never);
                     }}
                     className="mt-4 self-end rounded-pill bg-slate-900 px-4 py-2"
                   >

@@ -1,7 +1,8 @@
 /**
  * Nền TRANH NỔI TIẾNG cho màn đọc báo và màn học từ vựng (không dùng ở chế độ làm đề tính giờ).
  *
- * Ảnh gốc (public domain, Wikimedia Commons), đã nén JPEG:
+ * Ảnh gốc (tranh public domain; ảnh chụp có giấy phép CC0/CC BY/CC BY-SA từ Wikimedia Commons), đã nén JPEG.
+ *   Ghi tác giả + giấy phép ngay trong trường `artist` của mỗi mục:
  *   public/backdrops/art/<id>.jpg        (≤ 1920px — nền)
  *   public/backdrops/art/<id>.thumb.jpg  (≤ 520px — ô chọn trong cài đặt)
  * `needs` liệt kê file bắt buộc; chạy thật thì dò bằng Image onload và bỏ mục thiếu.
@@ -57,6 +58,12 @@ export const BACKDROPS: readonly Backdrop[] = [
   entry('impression', 'Ấn tượng, mặt trời mọc', 'Impression, Sunrise', 'Claude Monet', '1872', 'dark', '12,18,30', 0.5),
   entry('venus', 'Sự ra đời của thần Vệ nữ', 'The Birth of Venus', 'Sandro Botticelli', 'c. 1485', 'light', '250,244,230', 0.6, 'center 40%'),
   entry('monalisa', 'Nàng Mona Lisa', 'Mona Lisa', 'Leonardo da Vinci', 'c. 1503', 'dark', '20,14,6', 0.5, 'center 30%'),
+  entry('cute', 'Hoa anh đào và mây', 'Cherry blossom and clouds', 'Gerda Arendt · CC0', '2024', 'light', '255,240,246', 0.6),
+  entry('chill', 'Mưa tím buổi tối', 'Purple rain', 'theilr · CC BY-SA 2.0', '2010', 'dark', '20,18,36', 0.5),
+  entry('arcade', 'Cần điều khiển arcade neon', 'Neon arcade joysticks', 'PattayaPatrol · CC BY-SA 4.0', '2025', 'dark', '12,8,30', 0.5),
+  entry('meadow', 'Đồng cỏ Midden-Drenthe', 'Carved meadows, Midden-Drenthe', 'Fons Heijnsbroek · CC BY-SA 3.0', '2012', 'dark', '14,28,12', 0.5),
+  entry('candy', 'Trời hồng pastel trên mái tuyết', 'Pastel pink sky over snowy roofs', 'W.carter · CC BY-SA 4.0', '2021', 'light', '255,246,252', 0.6),
+  entry('toon', 'Bầu trời xanh và mây trắng', 'Blue sky and white clouds', 'Vyacheslav Argenberg · CC BY 4.0', '2016', 'light', '240,250,255', 0.55),
 ];
 
 export const DEFAULT_BACKDROP_ID = 'starry';

@@ -3,7 +3,7 @@ import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { GoldHighlight } from '@/components/layout/GoldHighlight';
 import { PhoneIntro } from '@/components/home/PhoneIntro';
 import { PerchCat } from '@/components/mascot/PerchCat';
-import { Image, Platform, Text, View, useWindowDimensions, type ImageSourcePropType } from 'react-native';
+import { Image, Platform, Pressable, Text, View, useWindowDimensions, type ImageSourcePropType } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -26,7 +26,6 @@ import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-dril
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
-import { bilingualStats } from '@/data/bilingual-repository';
 import { rememberInviteCode } from '@/services/referral/pending';
 import {
   MAX_REWARD_PLAN,
@@ -81,25 +80,61 @@ type Area = {
 const AREAS: Area[] = [
   {
     icon: 'letters',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/vocabulary.png'),
+    sticker: require('../assets/illustrations/cute-home/task-stickers/vocabulary.webp'),
     colors: stickerGradient.primary,
-    title: { vi: 'Học từ vựng', en: 'Learn vocabulary' },
-    lines: [{ vi: 'Học theo chủ đề IELTS, từ dễ đến khó, có phát âm', en: 'IELTS topics, easy to hard, with pronunciation' }],
+    title: { vi: 'Học từ vựng', en: 'Vocabulary' },
+    lines: [{ vi: 'Học theo chủ đề, từ dễ đến khó, có phát âm', en: 'Topics from easy to hard, with pronunciation' }],
     badge: { vi: `${VOCAB_TOPICS.length} CHỦ ĐỀ`, en: `${VOCAB_TOPICS.length} TOPICS` },
     href: '/vocabulary/topics',
   },
   {
+    icon: 'target',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/roadmap.webp'),
+    colors: stickerGradient.info,
+    title: { vi: 'IELTS', en: 'IELTS' },
+    lines: [{ vi: 'Đề, lộ trình và điểm theo band', en: 'Tests, roadmap and scores by band' }],
+    badge: { vi: 'LỘ TRÌNH', en: 'ROADMAP' },
+    href: '/ielts',
+  },
+  {
     icon: 'pencil',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/writing.png'),
+    sticker: require('../assets/illustrations/cute-home/task-stickers/writing.webp'),
     colors: stickerGradient.danger,
     title: { vi: 'Writing', en: 'Writing' },
-    lines: [{ vi: 'Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng', en: 'Flags structure mistakes as you type, even offline' }],
+    lines: [{ vi: 'Nhắc lỗi cấu trúc ngay lúc gõ', en: 'Flags structure mistakes as you type' }],
     badge: { vi: `${WRITING_PROMPTS.length} ĐỀ`, en: `${WRITING_PROMPTS.length} PROMPTS` },
     href: '/write',
   },
   {
+    icon: 'volume',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.webp'),
+    colors: stickerGradient.success,
+    title: { vi: 'Listening', en: 'Listening' },
+    lines: [{ vi: 'Bài nghe có đáp án và giải thích', en: 'Listening sets with answers and explanations' }],
+    badge: { vi: 'CÓ ĐÁP ÁN', en: 'WITH ANSWERS' },
+    href: '/listening',
+  },
+  {
+    icon: 'mic',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/writing.webp'),
+    colors: stickerGradient.rose,
+    title: { vi: 'Speaking', en: 'Speaking' },
+    lines: [{ vi: 'Nói và được AI góp ý theo tiêu chí IELTS', en: 'Speak and get IELTS-criteria feedback' }],
+    badge: { vi: 'AI HỖ TRỢ', en: 'AI COACH' },
+    href: '/speaking',
+  },
+  {
+    icon: 'clipboard',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/reading.webp'),
+    colors: stickerGradient.warning,
+    title: { vi: 'Reading', en: 'Reading' },
+    lines: [{ vi: 'Đề thi thử đúng khổ, chấm điểm', en: 'Mock tests in the real format, scored' }],
+    badge: { vi: 'THI THỬ', en: 'MOCK TEST' },
+    href: '/mock-tests',
+  },
+  {
     icon: 'grid',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/sat.png'),
+    sticker: require('../assets/illustrations/cute-home/task-stickers/sat.webp'),
     colors: stickerGradient.accent,
     title: { vi: 'SAT', en: 'SAT' },
     lines: [{ vi: 'Đáp án tính bằng code, không do AI đoán', en: 'Answers computed by code, not guessed by AI' }],
@@ -110,102 +145,15 @@ const AREAS: Area[] = [
     href: '/sat',
   },
   {
-    icon: 'volume',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.png'),
-    colors: stickerGradient.info,
+    icon: 'book',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.webp'),
+    colors: stickerGradient.primary,
     title: { vi: 'Luyện câu', en: 'Sentences' },
     lines: [{ vi: 'Chép chính tả và dịch câu, chấm từng từ', en: 'Dictation and translation, marked word by word' }],
     badge: { vi: `${sentenceCount} CÂU`, en: `${sentenceCount} SENTENCES` },
     href: '/sentence',
   },
-  {
-    icon: 'letters',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/vocabulary.png'),
-    colors: stickerGradient.success,
-    title: { vi: 'Sổ từ vựng', en: 'Word notebook' },
-    lines: [{ vi: 'Mỗi từ lưu kèm nguyên câu gặp nó', en: 'Every word saved with the sentence you found it in' }],
-    badge: { vi: 'ÔN THEO FSRS', en: 'FSRS REVIEW' },
-    href: '/vocabulary',
-  },
-  {
-    icon: 'trending',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/roadmap.png'),
-    colors: stickerGradient.warning,
-    title: { vi: 'Lộ trình', en: 'Roadmap' },
-    lines: [{ vi: `${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`, en: `${CURRICULUM_TOTALS.stages} stages, ${CURRICULUM_TOTALS.units} lessons laid out for you` }],
-    badge: { vi: `${CURRICULUM_TOTALS.stages} CHẶNG`, en: `${CURRICULUM_TOTALS.stages} STAGES` },
-    href: '/math',
-  },
-  {
-    icon: 'clipboard',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/reading.png'),
-    colors: stickerGradient.rose,
-    title: { vi: 'Thi thử Reading', en: 'Reading mock' },
-    lines: [{ vi: 'Đề thi thử đúng khổ, chấm và chấm điểm', en: 'Mock tests in the real format, scored' }],
-    badge: { vi: 'THI THỬ', en: 'MOCK TEST' },
-    href: '/mock-tests',
-  },
-  {
-    icon: 'volume',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.png'),
-    colors: stickerGradient.primary,
-    title: { vi: 'Nghe Listening', en: 'Listening' },
-    lines: [{ vi: 'Bài nghe có đáp án và giải thích từng câu', en: 'Listening sets with answers and explanations' }],
-    badge: { vi: 'CÓ ĐÁP ÁN', en: 'WITH ANSWERS' },
-    href: '/listening',
-  },
-  {
-    icon: 'mic',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/writing.png'),
-    colors: stickerGradient.danger,
-    title: { vi: 'Luyện nói', en: 'Speaking' },
-    lines: [{ vi: 'Nói và được AI góp ý theo tiêu chí IELTS', en: 'Speak and get IELTS-criteria feedback from AI' }],
-    badge: { vi: 'AI HỖ TRỢ', en: 'AI COACH' },
-    href: '/speaking',
-  },
-  {
-    icon: 'book',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/reading.png'),
-    colors: stickerGradient.accent,
-    title: { vi: 'Đọc theo VOA', en: 'Read along with VOA' },
-    lines: [{ vi: 'Vừa nghe vừa đọc theo từng câu', en: 'Listen and read along, sentence by sentence' }],
-    badge: { vi: 'NGHE · ĐỌC', en: 'LISTEN · READ' },
-    href: '/shadow',
-  },
-  {
-    icon: 'play',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/listening.png'),
-    colors: stickerGradient.info,
-    title: { vi: 'Clip tiếng Anh', en: 'English clips' },
-    lines: [{ vi: 'Xem video có sẵn và học theo từng đoạn', en: 'Watch ready-made videos and study them by segment' }],
-    badge: { vi: 'VIDEO', en: 'VIDEO' },
-    href: '/clip',
-  },
-  {
-    icon: 'target',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/sat.png'),
-    colors: stickerGradient.success,
-    title: { vi: 'TOEIC · TOEFL', en: 'TOEIC · TOEFL' },
-    lines: [{ vi: 'Thêm bài luyện cho các kỳ thi khác', en: 'Practice for other exams' }],
-    badge: { vi: 'THÊM ĐỀ', en: 'MORE TESTS' },
-    href: '/toeic',
-  },
 ];
-
-/*
-  Đọc song ngữ đứng RIÊNG một hàng rộng dưới sáu thẻ, không chen thành thẻ thứ
-  bảy: lưới ba cột mà bảy thẻ thì thẻ cuối đứng trơ trọi một mình một hàng.
-  Hàng rộng cũng hợp với nội dung — đây là mảng đọc bài dài, hai thứ tiếng.
-*/
-const BILINGUAL_AREA: Area = {
-  icon: 'languages',
-  sticker: require('../assets/illustrations/cute-home/task-stickers/reading.png'),
-  colors: stickerGradient.rose,
-  title: { vi: 'Đọc báo song ngữ', en: 'Bilingual news' },
-  lines: [{ vi: 'VOA, NASA, Global Voices và bài phân tích Band 9 · Anh–Việt · miễn phí cho mọi người', en: 'VOA, NASA, Global Voices and Band 9 analysis · English–Vietnamese · free for everyone' }],
-  badge: { vi: `${bilingualStats().articles} BÀI`, en: `${bilingualStats().articles} ARTICLES` },
-  href: '/bilingual',
-};
 /**
  * Ba bước, và ở đây đánh số là ĐÚNG chứ không phải trang trí: thứ tự mang thông
  * tin thật — không làm bài chẩn đoán trước thì lộ trình không biết xếp gì.
@@ -459,7 +407,7 @@ export default function IntroScreen() {
       <Appear index={1}>
         <Text className="mt-14 font-heavy text-sectionTitle text-ink">{L('App có gì', "What's inside")}</Text>
         <Text className="mt-1 font-sans text-body" style={{ color: '#1E293B' }}>
-          {L('Mười ba mảng học, dùng chung một sổ từ và một bảng tiến độ.', 'Thirteen study areas sharing one word notebook and one progress board.')}
+          {L('Tám mảng học chính, dùng chung một sổ từ và một bảng tiến độ.', 'Eight core study areas sharing one word notebook and one progress board.')}
         </Text>
       </Appear>
 
@@ -472,9 +420,11 @@ export default function IntroScreen() {
           ))}
         </Grid>
         <Appear index={AREAS.length + 2}>
-          <View className="mt-5">
-            <AreaCard area={BILINGUAL_AREA} chiikawaTheme={chiikawaTheme} colorIndex={0} />
-          </View>
+          <Pressable accessibilityRole="link" onPress={() => enterApp('/more')} className="mt-5 self-start">
+            <Text className="font-strong text-body" style={{ color: '#1E293B' }}>
+              {L('Các mục khác: Sổ từ vựng, Đọc theo VOA, Clip, TOEIC · TOEFL, Đọc báo song ngữ →', 'More: word notebook, read along with VOA, clips, TOEIC · TOEFL, bilingual news →')}
+            </Text>
+          </Pressable>
         </Appear>
       </View>
 
@@ -651,10 +601,12 @@ const AREA_CAT_POSE = ['sit', 'hangingPaws', 'curl', 'peeking', 'stretch', 'lie'
 
 function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaTheme: boolean; colorIndex: number }) {
   const { locale } = useL();
+  const { width } = useWindowDimensions();
+  const wide = width >= 768;
   const colors = (chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : area.colors) ?? ['#4A7FE8', '#7FA3F6'];
   return (
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
-      <StickerCard bold colors={colors} style={{ flex: 1 }} ornament={<GlowStars />}>
+      <StickerCard bold colors={colors} style={{ flex: 1 }} ornament={wide ? <GlowStars /> : undefined}>
         <View style={{ height: chiikawaTheme ? 112 : 92, position: 'relative' }}>
           <View
             className="h-12 w-12 items-center justify-center rounded-panel bg-white"
@@ -671,11 +623,13 @@ function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaThe
               style={{ position: 'absolute', top: -18, right: -12, width: 158, height: 132 }}
             />
           ) : (
-            <View pointerEvents="none" style={{ position: 'absolute', right: -4, top: -6 }}>
-              <PixelBob amplitude={7} period={1800} delay={colorIndex * 180}>
-                <CatSticker pose={AREA_CAT_POSE[colorIndex % AREA_CAT_POSE.length] ?? 'sit'} size={104} />
-              </PixelBob>
-            </View>
+            wide ? (
+              <View pointerEvents="none" style={{ position: 'absolute', right: -4, top: -6 }}>
+                <PixelBob amplitude={7} period={1800} delay={colorIndex * 180}>
+                  <CatSticker pose={AREA_CAT_POSE[colorIndex % AREA_CAT_POSE.length] ?? 'sit'} size={104} />
+                </PixelBob>
+              </View>
+            ) : null
           )}
         </View>
 

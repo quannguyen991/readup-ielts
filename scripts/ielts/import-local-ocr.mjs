@@ -89,7 +89,7 @@ const bundle = {
 // Their PDFs, audio and extracted text stay private and are never bundled.
 try {
   const existing = JSON.parse(await readFile(path.join(outDir, 'source-tests.json'), 'utf8'));
-  const driveTests = (existing.tests ?? []).filter((test) => test.externalOnly || /^cambridge-(17|18|19|20)-/.test(test.id));
+  const driveTests = (existing.tests ?? []).filter((test) => test.externalOnly || /^cambridge-(8|17|18|19|20|21)-/.test(test.id));
   const byId = new Map([...bundle.tests, ...driveTests].map((test) => [test.id, test]));
   bundle.tests = [...byId.values()];
   bundle.reviewPages = [...new Set([...bundle.reviewPages, ...(existing.reviewPages ?? [])])].sort((a, b) => a - b);

@@ -5,10 +5,14 @@ import { Motion } from '@/components/illust/CuteMore';
 import { SparkleStar } from '@/components/cute-home/Mascots';
 
 /** Subtle, non-interactive Chiikawa-inspired stickers shared by every app screen. */
+/** Dưới mốc này (điện thoại, máy bảng) không vẽ lớp trang trí chuyển động. */
+const DECOR_MIN_WIDTH = 1024;
+
 export function CuteAtmosphere({ enabled, customImage }: { enabled: boolean; customImage?: string | null }) {
   const { width } = useWindowDimensions();
   // Chờ hydrate để lượt đầu khớp HTML máy chủ (xem CatSticker).
-  if (!enabled) return null;
+  // Điện thoại và máy bảng: bỏ hẳn lớp trang trí chạy hoạt hình (sao lấp lánh, chấm, mèo nổi) cho mượt.
+  if (!enabled || width < DECOR_MIN_WIDTH) return null;
 
   const compact = width < 760;
   return (

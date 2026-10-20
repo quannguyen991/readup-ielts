@@ -90,6 +90,7 @@ export const NAV_GROUPS: NavGroup[] = [
         inBottomTabs: true,
         children: [
           { key: 'luyen-doc', label: 'Luyện đọc', href: '/luyen-doc', icon: 'book' },
+          { key: 'ielts-skills', label: 'Luyện theo dạng bài', href: '/ielts/skills', icon: 'target' },
           { key: 'mock-tests', label: 'Thi thử Reading', href: '/mock-tests', icon: 'clipboard' },
           { key: 'ielts-source-practice', label: 'Bộ đề riêng trên máy', href: '/ielts-source-practice', icon: 'list' },
           { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
@@ -297,6 +298,7 @@ export const NAV_LABEL_EN: Record<string, string> = {
   library: 'Reading library',
   bilingual: 'Bilingual news',
   writing: 'Writing',
+  'ielts-skills': 'Question type drills',
   listening: 'Listening',
   sentence: 'Listen & dictate',
   'dictation-sets': 'Dictation sets',

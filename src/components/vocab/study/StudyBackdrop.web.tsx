@@ -6,13 +6,16 @@
  * dùng đặt "giảm chuyển động". Màu chữ / thẻ nằm ở `study-theme.ts`.
  */
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 
 import { ArtBackdrop, ArtCaption, useStudyBackdrop } from '@/components/art/ArtBackdrop';
 import { WorldBackdrop } from '@/components/travel/ambient/WorldBackdrop.web';
 import { PxCityBackdrop } from '@/components/travel/pxscene/PxCityBackdrop.web';
 
 import { isArtTheme, themeOf, type StudyTheme } from './study-theme';
+
+/** Dưới mốc này (điện thoại, máy bảng) chỉ giữ nền màu, bỏ các lớp hạt và hoạt hình chạy liên tục cho mượt. */
+const DECOR_MIN_WIDTH = 1024;
 
 const STYLE_ID = 'readup-study-backdrop';
 const CSS = `
@@ -202,6 +205,8 @@ function Layers({ theme }: { theme: StudyTheme }) {
 export function StudyBackdrop({ id, children, caption = true }: { id: string; children: React.ReactNode; caption?: boolean }) {
   const theme = themeOf(id);
   const ref = React.useRef<HTMLDivElement | null>(null);
+  const { width } = useWindowDimensions();
+  const decor = width >= DECOR_MIN_WIDTH;
   useBackdropCss();
   usePauseWhenHidden(ref);
   const art = useStudyBackdrop();
@@ -219,7 +224,7 @@ export function StudyBackdrop({ id, children, caption = true }: { id: string; ch
     <View className="flex-1" style={{ backgroundColor: theme.skyBase }}>
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
         <div ref={ref} className="stbd" aria-hidden style={{ background: theme.sky }}>
-          <Layers theme={theme} />
+          {decor ? <Layers theme={theme} /> : null}
         </div>
       </View>
       {children}

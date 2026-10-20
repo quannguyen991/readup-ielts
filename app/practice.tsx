@@ -24,6 +24,40 @@ export default function PracticeScreen() {
         <IeltsFocusPicker />
       </View>
 
+      <Appear index={1}>
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => router.push('/ielts/skills' as never)}
+          className="mb-5 rounded-2xl border-2 border-primary/30 bg-primary/5 p-4 transition-colors hover:border-primary"
+        >
+          <View className="flex-row items-center justify-between">
+            <View className="flex-row items-center gap-3">
+              <View className="h-10 w-10 items-center justify-center rounded-xl bg-primary">
+                <Icon name="target" size={20} color="#FFFFFF" />
+              </View>
+              <View>
+                <Text className="font-heavy text-cardTitle text-ink">
+                  {L('Luyện theo dạng bài & kỹ năng', 'IELTS Question Type Mastery')}
+                </Text>
+                <Text className="mt-0.5 font-sans text-label text-muted">
+                  {L('13 dạng trọng điểm · 135+ câu thực chiến kèm chứng cứ & bí kíp', '13 key types · 135+ drill questions with evidence & tips')}
+                </Text>
+              </View>
+            </View>
+            <Icon name="arrow-right" size={20} color="#8F6E36" strokeWidth={2.2} />
+          </View>
+        </Pressable>
+      </Appear>
+
+      <Pressable
+        accessibilityRole="link"
+        onPress={() => router.push('/ielts/placement' as never)}
+        className="mb-5 rounded-2xl border border-border bg-surface p-4"
+      >
+        <Text className="font-heavy text-cardTitle text-ink">Kiểm tra đầu vào IELTS · Reading</Text>
+        <Text className="mt-1 font-sans text-label text-muted">40 câu · 3 bài · 60 phút, làm đúng như thi thật.</Text>
+      </Pressable>
+
       <Appear index={2}>
         <Pressable
           accessibilityRole="link"

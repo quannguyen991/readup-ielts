@@ -9,6 +9,9 @@
  *   - Part 3: 4 câu thảo luận mở rộng, gắn với đúng thẻ đề Part 2.
  */
 
+import { CURRENT_FORECAST_SETS } from '@/data/speaking-forecast-current';
+import { SPEAKING_FORECAST } from '@/data/speaking-forecast';
+
 export type SpeakingPart = 1 | 2 | 3;
 
 export type SpeakingQuestion = {
@@ -400,6 +403,10 @@ export const PART_INTRO: Record<SpeakingPart, string> = {
   3: "Thank you. Now let's discuss some broader questions connected to that topic.",
 };
 
+PART1_TOPICS.push(...CURRENT_FORECAST_SETS.map((set) => p1(`${set.id}-p1`, set.titleVi, set.title, set.part1.map((answer) => answer.question))));
+CUE_CARDS.push(...CURRENT_FORECAST_SETS.map((set) => cue(`${set.id}-p2`, set.titleVi, set.part2.question,
+  set.part2.bullets.slice(0, 3), set.part2.bullets[3]!, set.part3.map((answer) => answer.question))));
+
 const ALL_QUESTIONS: SpeakingQuestion[] = [
   ...PART1_TOPICS.flatMap((t) => t.questions),
   ...CUE_CARDS.flatMap((c) => [c.card, ...c.part3]),
@@ -411,7 +418,11 @@ export function allSpeakingQuestions(): SpeakingQuestion[] {
 }
 
 export function getSpeakingQuestion(id: string): SpeakingQuestion | undefined {
-  return BY_ID.get(id);
+  const existing = BY_ID.get(id);
+  if (existing) return existing;
+  const sample = SPEAKING_FORECAST.find((item) => item.id === id);
+  return sample ? { id: sample.id, part: sample.part, text: sample.question, topicVi: sample.topicVi,
+    ...(sample.cueBullets ? { bullets: sample.cueBullets.slice(0, 3), explain: sample.cueBullets[3] } : {}) } : undefined;
 }
 
 export function getPart1Topic(id: string): Part1Topic | undefined {

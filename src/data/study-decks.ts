@@ -28,12 +28,48 @@ export type StudyDeck = {
 
 export const NOTEBOOK_SLUG = 'so-tu';
 /** Bộ không phụ thuộc dữ liệu người dùng: chủ đề IELTS và bài từ vựng SAT. Đã bổ sung câu ví dụ và headword sạch (xem `study-deck-fill.ts`). */
+export type LevelSlice = 'all' | 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+
+const LEVEL_SUFFIX = /^(.*?)--(all|A1|A2|B1|B2|C1|C2)$/;
+const BAND_TO_LEVEL: Record<string, string> = { '5-6': 'B1', '6-7': 'B2', '7-8': 'C1', '8+': 'C2' };
+
+/** Mức của một từ: CEFR nếu có, không thì quy từ band IELTS, không thì giữ nguyên (cấp A1–C1 của Oxford). */
+export function levelOf(w: { cefr?: string; band: string }): string {
+  return w.cefr ?? BAND_TO_LEVEL[w.band] ?? w.band;
+}
+
+/** Tách `bo--B1` thành bộ gốc và mức. Không có hậu tố thì `level` là null. */
+export function splitLevelSlug(slug: string): { base: string; level: LevelSlice | null } {
+  const m = LEVEL_SUFFIX.exec(slug);
+  return m ? { base: m[1]!, level: m[2] as LevelSlice } : { base: slug, level: null };
+}
+
+/**
+ * Các mức có trong bộ gốc, theo thứ tự A1 → C2. Bộ chỉ có một mức (hoặc không có mức nào)
+ * thì trả về mảng rỗng: không cần bước chọn cấp độ.
+ */
+export function deckLevels(slug: string): string[] {
+  if (splitLevelSlug(slug).level) return [];
+  const deck = getStaticDeck(slug);
+  if (!deck) return [];
+  const set = new Set(deck.words.map((w) => levelOf(w)));
+  return ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].filter((lv) => set.has(lv));
+}
+
 export function getStaticDeck(slug: string): StudyDeck | undefined {
   const deck = rawStaticDeck(slug);
   return deck && fillStudyDeck(deck);
 }
 
 export function rawStaticDeck(slug: string): StudyDeck | undefined {
+  const { base, level } = splitLevelSlug(slug);
+  if (level) {
+    const deck = rawStaticDeck(base);
+    if (!deck) return undefined;
+    if (level === 'all') return { ...deck, slug };
+    const words = deck.words.filter((w) => levelOf(w) === level);
+    return { ...deck, slug, words, name: `${deck.name} · ${level}`, nameVi: `${deck.nameVi} · ${level}`, blurb: `${words.length} từ, cấp ${level}.` };
+  }
   const lesson = SAT_VOCAB_LESSONS.find((l) => l.slug === slug);
   if (lesson) {
     return {
@@ -48,8 +84,7 @@ export function rawStaticDeck(slug: string): StudyDeck | undefined {
   const t = getVocabTopic(slug);
   if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words };
   // Bộ Oxford 3000 dùng đúng màn học của bộ IELTS. Từ Oxford không có phiên âm hay
-  // định nghĩa tiếng Anh, nên hai trường đó để trống (màn học tự bỏ trống, không hiện rỗng);
-  // cấp độ A1–C1 đi vào trường `band` để nhóm theo mức.
+  // định nghĩa tiếng Anh, nên hai trường đó để trống; cấp A1–C1 đi vào trường `band`.
   const o = OXFORD_TOPIC_DECKS.find((d) => d.slug === slug);
   if (o)
     return {

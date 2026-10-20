@@ -154,7 +154,7 @@ export default function SatRwMixScreen() {
       onJump={run.go}
       difficulty={rwDifficulty(question)}
       isAnswered={(i) => run.picks[i] !== null}
-      passage={<RwPassagePane item={question} />}
+      passage={<RwPassagePane item={question} vocabularyTitle={`${setTitle} · SAT R&W`} />}
       topSlot={<BattleStrip />}
       onBack={() => run.go(index - 1)}
       onNext={() => (lastQ ? finish() : run.go(index + 1))}

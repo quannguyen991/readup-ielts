@@ -4470,5 +4470,110 @@
     "timeLimitSeconds": 2400,
     "minWords": 250,
     "source": "curated"
+  },
+  {
+    "id": "w-t1-process-water-filtration",
+    "task": "ielts_task1",
+    "promptText": "The diagram below illustrates the multi-stage process of municipal water treatment and filtration before distribution to households.",
+    "chartKind": "process",
+    "chartData": {
+      "kind": "process",
+      "title": "Municipal Water Treatment and Filtration Process",
+      "unit": "stages",
+      "stages": [
+        "Raw water extraction from reservoir",
+        "Coagulation and flocculation with chemical coagulants",
+        "Sedimentation in clarifier tanks",
+        "Multi-layer sand and activated carbon filtration",
+        "Chlorination and UV disinfection",
+        "Treated water storage in clean water reservoir",
+        "Pumping to municipal distribution network"
+      ],
+      "analysisKey": {
+        "totalSteps": 7,
+        "inputs": [
+          "Raw reservoir water",
+          "Chemical coagulants",
+          "Chlorine / UV"
+        ],
+        "outputs": [
+          "Drinkable tap water",
+          "Sludge for drying bed"
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "technology",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "curated"
+  },
+  {
+    "id": "w-t1-map-coastal-town-development",
+    "task": "ielts_task1",
+    "promptText": "The maps below show the redevelopment of the coastal town of Seabourne between 1995 and the present day.",
+    "chartKind": "map",
+    "chartData": {
+      "kind": "map",
+      "title": "Redevelopment of Seabourne Coastal Town (1995 vs Present)",
+      "unit": "facilities",
+      "comparison": {
+        "past": "Industrial docklands, old fish market, abandoned railway depot, single-lane access road.",
+        "present": "Modern yacht marina, pedestrianized waterfront promenade, luxury apartments, high-speed rail terminus, eco-park."
+      },
+      "analysisKey": {
+        "transformations": [
+          "Conversion of industrial dock to recreational marina",
+          "Replacement of fish market with promenade and restaurants",
+          "Modern high-speed rail line connecting to regional capital"
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "society",
+    "difficultyBand": 7.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-discussion-remote-work-cities",
+    "task": "ielts_task2",
+    "promptText": "With the rapid expansion of remote working and telecommuting, some people argue that major cities will decline in economic importance, while others believe metropolitan hubs will always remain the centers of innovation and prosperity. Discuss both views and give your own opinion.",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "discussion",
+    "topicSlug": "society",
+    "difficultyBand": 8,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-problem-solution-fast-fashion",
+    "task": "ielts_task2",
+    "promptText": "The global rise of the inexpensive \"fast fashion\" industry has led to severe environmental degradation and textile waste accumulation. What are the primary causes of this phenomenon, and what effective measures can governments and consumers take to resolve it?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "problem_solution",
+    "topicSlug": "environment",
+    "difficultyBand": 7.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-two-part-biodiversity-extinction",
+    "task": "ielts_task2",
+    "promptText": "Many plant and animal species are endangered today, and some are threatened with imminent extinction. Why is biodiversity conservation essential for human well-being, and what is the single most urgent action the international community should prioritize?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "two_part",
+    "topicSlug": "environment",
+    "difficultyBand": 8,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
   }
 ]

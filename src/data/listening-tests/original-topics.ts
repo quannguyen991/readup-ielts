@@ -101,7 +101,7 @@ function buildSection1(t: Topic): ListeningSection {
   return { n: 1, title: t.event, context: `A caller asks ${t.venue} about ${t.event}.`, audio: audioUrl(t.title, 1), durationSec: 300, transcript, groups };
 }
 
-function buildSection2(t: Topic): ListeningSection {
+function buildSection2(t: Topic, variant: number): ListeningSection {
   const facts: [string, string][] = [
     ['main meeting point', t.venue], ['starting time', '9:30'], ['group limit', String(t.groupSize)], ['entry fee', `£${t.fee}`], ['meeting room', t.room],
     ['programme length', `${t.weeks} weeks`], ['essential item', t.item], ['final output', t.result], ['meeting day', t.weekday], ['topic focus', t.focus],
@@ -118,11 +118,17 @@ function buildSection2(t: Topic): ListeningSection {
     ['Coordinator', `Please note that ${t.obstacle} can affect the activities, so check the notice board before travelling.`],
   );
   const qs = facts.map(([label, answer], i) => question(11 + i, answer, {}));
-  const group: ListeningGroup = { type: 'gap', title: 'Questions 11–20', instruction: 'Complete the programme notes. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER', lines: ['## Programme information', ...facts.map(([label], i) => `${label[0]?.toUpperCase()}${label.slice(1)}: {{${11 + i}}}`)], questions: qs };
+  const groupLines = variant % 3 === 0
+    ? ['## Programme information', ...facts.map(([label], i) => `${label[0]?.toUpperCase()}${label.slice(1)}: {{${11 + i}}}`)]
+    : variant % 3 === 1
+      ? ['## Programme details', '| Item | Information |', ...facts.map(([label], i) => `| ${label[0]?.toUpperCase()}${label.slice(1)} | {{${11 + i}}} |`)]
+      : ['## Information about the programme', `The programme focuses on {{11}} and takes place at {{12}}. It accepts {{13}} participants and costs {{14}}. The meetings use {{15}} and run for {{16}}. Participants should bring {{17}} and will produce {{18}}. Sessions are held on {{19}}, with a focus on {{20}}.`];
+  const title = variant % 3 === 1 ? 'Questions 11–20 · Table Completion' : variant % 3 === 2 ? 'Questions 11–20 · Summary Completion' : 'Questions 11–20 · Note Completion';
+  const group: ListeningGroup = { type: 'gap', title, instruction: 'Complete the notes below. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER', lines: groupLines, questions: qs };
   return { n: 2, title: `Information about ${t.title.toLowerCase()}`, context: `A coordinator explains a local programme connected with ${t.title.toLowerCase()}.`, audio: audioUrl(t.title, 2), durationSec: 300, transcript, groups: [group] };
 }
 
-function buildSection3(t: Topic): ListeningSection {
+function buildSection3(t: Topic, variant: number): ListeningSection {
   const transcript = lines(
     ['Tutor', `Let's review your project on ${t.focus}. What did you decide to investigate?`],
     ['Mina', 'At first I wanted to cover the whole district, but that would make the project too broad. We have now chosen two nearby areas that can be compared fairly.'],
@@ -150,10 +156,22 @@ function buildSection3(t: Topic): ListeningSection {
       question(30, 'B', { prompt: 'What should the final presentation include?', options: options('a full technical manual', 'evidence, limitations and a next step', 'only the questionnaire results') }),
     ] },
   ];
+  if (variant % 2 === 1) {
+    groups.splice(0, groups.length,
+      { type: 'matching', title: 'Questions 21–26', instruction: 'Match each project task with the person responsible. Choose a letter, A–E.', options: options('Mina', 'Owen', 'both students', 'the tutor', 'the participants'), questions: [
+        question(21, 'A', { prompt: 'Collect observations at the site' }), question(22, 'B', { prompt: 'Compare local records with earlier research' }),
+        question(23, 'A', { prompt: 'Conduct short interviews' }), question(24, 'B', { prompt: 'Prepare the online questionnaire' }),
+        question(25, 'C', { prompt: 'Check whether the draft chart labels are clear' }), question(26, 'D', { prompt: 'Keep interview questions neutral' }),
+      ] },
+      { type: 'gap', title: 'Questions 27–30 · Sentence Completion', instruction: 'Complete the sentences. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER', lines: [
+        `The project investigates {{27}}.`, `The main difficulty is {{28}}.`, `The sample will include {{29}} people.`, `The final presentation will explain {{30}}.`,
+      ], questions: [question(27, t.focus), question(28, t.obstacle), question(29, String(t.groupSize)), question(30, 'the evidence, its limitations and a next step')] },
+    );
+  }
   return { n: 3, title: `Project discussion: ${t.title}`, context: `Two students discuss a project about ${t.title.toLowerCase()} with their tutor.`, audio: audioUrl(t.title, 3), durationSec: 300, transcript, groups };
 }
 
-function buildSection4(t: Topic): ListeningSection {
+function buildSection4(t: Topic, variant: number): ListeningSection {
   const facts: [string, string][] = [
     ['research topic', t.focus], ['study location', t.venue], ['sample size', String(t.groupSize)], ['programme duration', `${t.weeks} weeks`], ['main barrier', t.obstacle],
     ['proposed outcome', t.result], ['recommended meeting day', t.weekday], ['required resource', t.item], ['meeting space', t.room], ['participation fee', `£${t.fee}`],
@@ -171,9 +189,14 @@ function buildSection4(t: Topic): ListeningSection {
     ['Lecturer', 'Finally, the findings will be shared with the participants before they are published. This gives the team a chance to correct factual errors, while leaving the interpretation open to discussion.'],
     ['Lecturer', 'The results should be treated as a starting point rather than proof that the same approach will work everywhere.'],
   );
+  const noteLines = ['## Lecture notes', ...facts.map(([label], i) => `${label[0]?.toUpperCase()}${label.slice(1)}: {{${31 + i}}}`)];
+  const tableLines = ['## Research summary', '| Topic | Details |', ...facts.map(([label], i) => `| ${label[0]?.toUpperCase()}${label.slice(1)} | {{${31 + i}}} |`)];
+  const summaryLines = ['## Complete the lecture summary', `The study examines {{31}} at {{32}}. It follows {{33}} participants for {{34}}. The main barrier is {{35}}, and the intended outcome is {{36}}. Meetings are recommended for {{37}}. Researchers should bring {{38}} and use {{39}}. The fee is {{40}}.`];
+  const layoutLines = variant % 3 === 1 ? tableLines : variant % 3 === 2 ? summaryLines : noteLines;
+  const title = variant % 3 === 1 ? 'Questions 31–40 · Table Completion' : variant % 3 === 2 ? 'Questions 31–40 · Summary Completion' : 'Questions 31–40 · Note Completion';
   const group: ListeningGroup = {
-    type: 'gap', title: 'Questions 31–40', instruction: 'Complete the lecture notes. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER',
-    lines: ['## Lecture notes', ...facts.map(([label], i) => `${label[0]?.toUpperCase()}${label.slice(1)}: {{${31 + i}}}`)],
+    type: 'gap', title, instruction: 'Complete the lecture notes below. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER',
+    lines: layoutLines,
     questions: facts.map(([, answer], i) => question(31 + i, answer)),
   };
   return { n: 4, title: `Lecture: ${t.title}`, context: `A short lecture reviews research connected with ${t.title.toLowerCase()}.`, audio: audioUrl(t.title, 4), durationSec: 300, transcript, groups: [group] };
@@ -193,5 +216,5 @@ export const ORIGINAL_TOPIC_TESTS: ListeningTest[] = TOPICS.map((topic, i) => ({
   source: 'Band 9 Original',
   level: i % 3 === 0 ? 'easy' : i % 3 === 1 ? 'medium' : 'hard',
   cover: { topic: topic.title, category: topic.category, hue: (28 + i * 29) % 360 },
-  sections: [buildSection1(topic), buildSection2(topic), buildSection3(topic), buildSection4(topic)],
+  sections: [buildSection1(topic), buildSection2(topic, i), buildSection3(topic, i), buildSection4(topic, i)],
 }));

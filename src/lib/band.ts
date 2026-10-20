@@ -35,3 +35,29 @@ export function bandDelta(
   if (current == null || previous == null) return null;
   return Math.round((current - previous) * 100) / 100;
 }
+
+/** Quy điểm thô 40 câu sang band IELTS Reading Academic (bảng quy đổi thông dụng). */
+export function rawScoreToBand(correct: number, total: number): number {
+  const scaled = total === 0 ? 0 : Math.round((correct / total) * 40);
+  const table: Array<[number, number]> = [
+    [39, 9],
+    [37, 8.5],
+    [35, 8],
+    [33, 7.5],
+    [30, 7],
+    [27, 6.5],
+    [23, 6],
+    [19, 5.5],
+    [15, 5],
+    [13, 4.5],
+    [10, 4],
+    [8, 3.5],
+    [6, 3],
+    [0, 2.5],
+  ];
+
+  for (const [threshold, band] of table) {
+    if (scaled >= threshold) return band;
+  }
+  return 2.5;
+}

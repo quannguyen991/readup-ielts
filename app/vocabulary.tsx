@@ -87,7 +87,7 @@ export default function VocabularyScreen() {
           </>
         }
       >
-        <View className="flex-row gap-2">
+        <View className="flex-row flex-wrap gap-2">
           <Button
             label={L('Danh sách', 'List')}
             variant={tab === 'list' ? 'primary' : 'outline'}
@@ -105,6 +105,12 @@ export default function VocabularyScreen() {
             variant="outline"
             iconLeft="target"
             onPress={() => router.push('/vocabulary/thpt' as never)}
+          />
+          <Button
+            label={L('Từ vựng theo đề IELTS · SAT', 'IELTS · SAT test vocabulary')}
+            variant="outline"
+            iconLeft="book"
+            onPress={() => router.push('/vocabulary/from-tests' as never)}
           />
         </View>
       </LightHero>
@@ -305,7 +311,10 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
 
       {open ? (
         <View className="mt-3 gap-2 border-t border-border pt-3">
-          <Field label={L('Câu gốc trong bài', 'Original sentence')} value={`“${entry.sourceSentence}”`} />
+          <Field
+            label={entry.articleTitle?.startsWith('Từ vựng theo đề ·') ? L('Ví dụ tự tạo', 'Original example') : L('Câu gốc trong bài', 'Original sentence')}
+            value={`“${entry.sourceSentence}”`}
+          />
           {entry.definitionGeneral ? (
             <Field label={L('Nghĩa tổng quát', 'General meaning')} value={entry.definitionGeneral} />
           ) : null}

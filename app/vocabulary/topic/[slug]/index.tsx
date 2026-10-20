@@ -9,7 +9,7 @@ import { Appear } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { ExampleSentence } from '@/components/vocab/ExampleSentence';
-import { groupDeckWords, NOTEBOOK_SLUG } from '@/data/study-decks';
+import { deckLevels, getStaticDeck, groupDeckWords, levelOf, NOTEBOOK_SLUG, splitLevelSlug } from '@/data/study-decks';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { isLetterWord } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
@@ -54,6 +54,61 @@ const GROUP_TONE = ['#22A06B', '#A8843F', '#F0703F', '#E0533D'] as const;
  * lúc đọc bài nằm chung một chỗ, chung một lịch ôn FSRS. Hai kho riêng là hai
  * lịch ôn riêng, và người học sẽ ôn cùng một từ hai lần.
  */
+/**
+ * Bước chọn mức trước khi học một bộ có nhiều mức (Oxford A1–C1, bộ IELTS B1–C2, các bộ band):
+ * "Tất cả" hoặc từng mức. Mỗi mức là một bộ riêng (`<bộ>--B1`), nên tiến độ và các cách luyện tách bạch theo mức.
+ */
+function LevelChooser({ slug, levels }: { slug: string; levels: string[] }) {
+  const { L, en } = useL();
+  const deck = getStaticDeck(slug);
+  if (!deck) return null;
+  const count = (lv: string) => (lv === 'all' ? deck.words.length : deck.words.filter((w) => levelOf(w) === lv).length);
+  const options = [{ lv: 'all', label: L('Tất cả', 'All levels') }, ...levels.map((lv) => ({ lv, label: lv }))];
+  return (
+    <Screen>
+      <Appear>
+        <Button
+          className="mb-3 self-start"
+          label={L('Tất cả bộ từ', 'All word sets')}
+          variant="ghost"
+          size="sm"
+          iconLeft="chevron-left"
+          onPress={() => router.push('/vocabulary/quiz' as never)}
+        />
+        <Card>
+          <Text className="font-heavy text-pageTitle text-ink">{en && deck.name !== deck.nameVi ? deck.name : deck.nameVi}</Text>
+          <Text className="mt-1 font-sans text-body text-muted">
+            {L('Chọn cấp độ để học. Mỗi cấp có tiến độ riêng.', 'Pick a level to study. Each level keeps its own progress.')}
+          </Text>
+        </Card>
+        <Text className="mt-6 font-heavy text-sectionTitle text-ink">{L('Chọn cấp độ', 'Choose a level')}</Text>
+        <View className="mt-3 flex-row flex-wrap" style={{ gap: 10 }}>
+          {options.map((o) => (
+            <Pressable
+              key={o.lv}
+              accessibilityRole="button"
+              onPress={() => router.push(`/vocabulary/topic/${slug}--${o.lv}` as never)}
+              style={({ hovered }: { hovered?: boolean }) => ({
+                flexGrow: 1,
+                flexBasis: 150,
+                padding: 16,
+                borderRadius: 18,
+                borderWidth: 1,
+                borderColor: hovered ? '#8C531B' : '#EADFCF',
+                backgroundColor: '#FFFFFF',
+                boxShadow: '0 4px 14px rgba(15,23,42,0.08)',
+              } as object)}
+            >
+              <Text className="font-heavy text-cardTitle text-ink">{o.label}</Text>
+              <Text className="mt-1 font-sans text-label text-muted">{L(`${count(o.lv)} từ`, `${count(o.lv)} words`)}</Text>
+            </Pressable>
+          ))}
+        </View>
+      </Appear>
+    </Screen>
+  );
+}
+
 export default function VocabTopicScreen() {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
   const topic = useStudyDeck(typeof slug === 'string' ? slug : '');
@@ -76,6 +131,12 @@ export default function VocabTopicScreen() {
     () => new Set(Object.values(entries).map((e) => e.lemma.toLowerCase())),
     [entries],
   );
+
+  // Bộ có nhiều mức mà chưa chọn: hiện bước chọn cấp độ trước khi vào bài.
+  if (typeof slug === 'string' && splitLevelSlug(slug).level === null) {
+    const levels = deckLevels(slug);
+    if (levels.length > 1) return <LevelChooser slug={slug} levels={levels} />;
+  }
 
   if (!topic) {
     return (
@@ -132,12 +193,12 @@ export default function VocabTopicScreen() {
       <Appear>
         <Button
           className="mb-3 self-start"
-          label={slug === NOTEBOOK_SLUG ? L('Quay lại', 'Back') : L('Tất cả bộ từ', 'All word sets')}
+          label={slug === NOTEBOOK_SLUG ? L('Quay lại', 'Back') : splitLevelSlug(slug ?? '').level !== null ? L('Đổi cấp độ', 'Change level') : L('Tất cả bộ từ', 'All word sets')}
           variant="ghost"
           size="sm"
           iconLeft="chevron-left"
           onPress={() => {
-            if (slug === NOTEBOOK_SLUG) {
+            if (slug === NOTEBOOK_SLUG || splitLevelSlug(slug ?? '').level !== null) {
               router.back();
             } else {
               router.push('/vocabulary/quiz' as never);

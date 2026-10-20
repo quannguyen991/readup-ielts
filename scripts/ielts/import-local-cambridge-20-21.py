@@ -30,7 +30,7 @@ CAM21_AUDIO_MEMBERS = {
     for number in range(1, 5)
 }
 CAM21_LISTENING_STARTS = [11, 33, 55, 76]
-CAM21_READING_STARTS = [17, 39, 61, 83]
+CAM21_READING_STARTS = [17, 39, 61, 82]
 CAM21_LISTENING_KEYS = [118, 120, 122, 124]
 CAM21_READING_KEYS = [119, 121, 123, 125]
 CAM21_WRITING_STARTS = [30, 52, 73, 95]
@@ -82,7 +82,10 @@ def extract_cam21_tests(audio_names: dict[int, str]) -> list[dict]:
         listening_start = CAM21_LISTENING_STARTS[number - 1]
         reading_start = CAM21_READING_STARTS[number - 1]
         listening_end = reading_start - 1
-        reading_end = (CAM21_LISTENING_STARTS[number] - 1) if number < 4 else 117
+        # The Reading section ends immediately before that test's Writing pages.
+        # Using the next Listening section as the boundary also pulled Writing,
+        # Speaking and (for Test 4) answer-key pages into the Reading record.
+        reading_end = CAM21_WRITING_STARTS[number - 1] - 1
 
         records.append({
             "id": f"cambridge-21-listening-{number}",

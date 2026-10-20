@@ -34,7 +34,7 @@ export default function VocabQuizHub() {
         >
           <View className="flex-row flex-wrap gap-2">
             <Pressable accessibilityRole="link" onPress={() => router.push('/vocabulary/review' as never)} style={{ alignSelf: 'flex-start', paddingVertical: 11, paddingHorizontal: 15, borderRadius: 14, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E8DFD4' }}>
-              <Text style={{ color: '#5A3B50', fontWeight: '700' }}>{L('Ôn Destination B1/B2 · phiếu 50 câu →', 'Review Destination B1/B2 · 50 questions →')}</Text>
+              <Text style={{ color: '#5A3B50', fontWeight: '700' }}>{L('Ôn Destination B1–C2 · phiếu 50 câu →', 'Review Destination B1–C2 · 50 questions →')}</Text>
             </Pressable>
             <Pressable
               accessibilityRole="button"

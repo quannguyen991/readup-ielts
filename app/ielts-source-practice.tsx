@@ -19,10 +19,12 @@ import { Icon } from '@/components/ui/Icon';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { useL } from '@/i18n/useL';
 import { ExamModeModal, type ExamMode } from '@/components/ielts/ExamModeModal';
-import { ComputerDeliveredExamRoom } from '@/components/ielts/ComputerDeliveredExamRoom';
-import { PracticeRoom } from '@/components/ielts/PracticeRoom';
+import { SourceExamRoom } from '@/components/ielts/SourceExamRoom';
+import { ExamResourceLinks } from '@/components/exam/ExamResourceLinks';
+import { ExamVocabularyPanel, type ExamTextPage } from '@/components/exam/ExamVocabularyPanel';
+import { compareSourceTests, SECTION_MINUTES, type ExamPart, type SourcePage } from '@/services/ielts/source-catalog';
 
-type Page = { page: number; text: string; reviewLines: Array<{ confidence: number; original: string }> };
+type Page = SourcePage;
 type TestSection = 'Reading' | 'Listening' | 'Writing' | 'Speaking';
 type TestMeta = {
   id: string;
@@ -40,6 +42,8 @@ type TestMeta = {
   audioCount: number;
   audioCloudUrl?: string;
   externalOnly: boolean;
+  partCount?: number;
+  missingComponents?: string[];
 };
 
 type TestContent = {
@@ -57,6 +61,8 @@ type TestContent = {
   audioFiles: string[];
   audioCloudUrl?: string;
   externalOnly: boolean;
+  parts?: ExamPart[];
+  missingComponents?: string[];
 };
 
 type Grade = {
@@ -138,6 +144,7 @@ function getBookCover(title: string, source: string): string {
  */
 function FlatCover({ kind, num, width, height, radius = 10 }: { kind: 'CAMBRIDGE' | 'ACTUAL VOL'; num: string; width: number; height: number; radius?: number }) {
   const n = parseInt(num, 10) || 0;
+  if (n === 21 || n === 0 || (kind === 'ACTUAL VOL' && n > 10)) return <FlatCoverDrawn kind={kind} num={num || 'IELTS'} width={width} height={height} radius={radius} />;
   const src = `/books/covers-2d/${kind === 'CAMBRIDGE' ? 'cam' : 'vol'}-${n}.webp`;
   return <Image source={{ uri: src }} style={{ width, height, borderRadius: radius }} resizeMode="cover" />;
 }
@@ -230,7 +237,7 @@ export default function IeltsSourcePracticeScreen() {
         return response.json() as Promise<{ tests: TestMeta[]; reviewPages: number[] }>;
       })
       .then((data) => {
-        setTests(data.tests);
+        setTests([...data.tests].sort(compareSourceTests));
         setReviewPages(data.reviewPages);
       })
       .catch(() => {
@@ -273,6 +280,7 @@ export default function IeltsSourcePracticeScreen() {
       const data = (await response.json()) as { test?: TestContent; error?: string };
       if (!response.ok || !data.test) throw new Error(data.error ?? 'Could not load test');
       setTest(data.test);
+      setTimeLeft(SECTION_MINUTES[data.test.section ?? 'Reading'] * 60);
       const saved = typeof localStorage === 'undefined' ? null : localStorage.getItem(`ielts-source-draft:${id}`);
       try {
         setAnswers(saved ? (JSON.parse(saved) as Record<string, string>) : {});
@@ -350,16 +358,14 @@ export default function IeltsSourcePracticeScreen() {
         if (!match) return false;
       }
       return true;
-    });
+    }).sort(compareSourceTests);
   }, [collectionFilter, sectionFilter, searchQuery, tests]);
 
-  // Chia đề theo kỹ năng: Reading, Listening… mỗi nhóm một khu riêng.
+  // Each source keeps its skills together; newer Cambridge/Vol books come first.
   const sectionGroups = useMemo(() => {
-    const order = ['Reading', 'Listening', 'Writing', 'Speaking'];
-    return [...order, 'other']
-      .map((k) => ({ key: k, label: k === 'other' ? L('Khác', 'Other') : k, items: filteredTests.filter((t) => (t.section ?? 'other') === k) }))
-      .filter((g) => g.items.length > 0);
-  }, [filteredTests, L]);
+    return [...new Set(filteredTests.map((item) => item.source))]
+      .map((source) => ({ key: source, label: source, items: filteredTests.filter((t) => t.source === source) }));
+  }, [filteredTests]);
 
   const currentTestMeta = useMemo(() => {
     if (!selectedId) return tests[0] ?? null;
@@ -393,7 +399,7 @@ export default function IeltsSourcePracticeScreen() {
                 }}
               >
                 <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'catalog' ? '#FFFFFF' : '#7C6552' }}>
-                  {L('Bộ đề IELTS (260)', 'IELTS Tests (260)')}
+                  {L(`Bộ đề IELTS (${tests.length})`, `IELTS sources (${tests.length})`)}
                 </Text>
               </Pressable>
 
@@ -436,9 +442,11 @@ export default function IeltsSourcePracticeScreen() {
                 art="test"
                 line1={L('Bộ đề IELTS', 'IELTS Tests')}
                 line2="Cambridge & Actual Volumes"
-                subtitle={L('Kho đề chuẩn, bám sát cấu trúc đề thi thật.', 'Standardized official test bank matching real exam structure.')}
-                footer={<HeroStat value="260" label={L('đề', 'tests')} />}
+                subtitle={L('Đề OCR có thể luyện trong app; mục chỉ có liên kết sẽ mở trang nguồn.', 'OCR sets can be practiced here; link-only entries open at their source page.')}
+                footer={<HeroStat value={String(tests.length)} label={L('nguồn đề', 'test sources')} />}
               />
+
+              <ExamResourceLinks exam="ielts" />
 
               {/* Quick Filters Row 1: Bộ đề */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -457,7 +465,7 @@ export default function IeltsSourcePracticeScreen() {
                   }}
                 >
                   <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'all' ? '#FFFFFF' : '#573E29' }}>
-                    {L('Tất cả (260)', 'All (260)')}
+                    {L(`Tất cả (${tests.length})`, `All (${tests.length})`)}
                   </Text>
                 </Pressable>
 
@@ -476,7 +484,7 @@ export default function IeltsSourcePracticeScreen() {
                   }}
                 >
                   <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#573E29' }}>
-                    {L('Cambridge IELTS (12–20)', 'Cambridge IELTS (12–20)')}
+                    Cambridge IELTS (21 → 8)
                   </Text>
                   <Text style={{ fontSize: 10, color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#573E29' }}>▼</Text>
                 </Pressable>
@@ -493,7 +501,7 @@ export default function IeltsSourcePracticeScreen() {
                   }}
                 >
                   <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'vol' ? '#FFFFFF' : '#573E29' }}>
-                    {L('Actual Tests (1–6)', 'Actual Tests (1–6)')}
+                    {L('Vol · Mới nhất trước', 'Volumes · Newest first')}
                   </Text>
                 </Pressable>
               </View>
@@ -582,14 +590,14 @@ export default function IeltsSourcePracticeScreen() {
               {/* Active Filter Chips Row */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                  <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>Cambridge (Cam 12–20)</Text>
+                  <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>{collectionFilter === 'all' ? L('Mọi bộ đề', 'All collections') : collectionFilter === 'cambridge' ? 'Cambridge (21 → 8)' : 'Volumes'}</Text>
                   <Pressable onPress={() => setCollectionFilter('all')}>
                     <Icon name="close" size={12} color="#A38F7E" />
                   </Pressable>
                 </View>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                  <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>Reading</Text>
+                  <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>{sectionFilter === 'all' ? L('Mọi kỹ năng', 'All skills') : sectionFilter}</Text>
                   <Pressable onPress={() => setSectionFilter('all')}>
                     <Icon name="close" size={12} color="#A38F7E" />
                   </Pressable>
@@ -647,9 +655,9 @@ export default function IeltsSourcePracticeScreen() {
                       {L('Bộ đề', 'Collection')}
                     </Text>
                     {[
-                      { id: 'all', label: 'Tất cả (260)' },
-                      { id: 'cambridge', label: 'Cambridge (12–20)' },
-                      { id: 'vol', label: 'Actual Tests (1–6)' },
+                      { id: 'all', label: `Tất cả (${tests.length})` },
+                      { id: 'cambridge', label: 'Cambridge IELTS' },
+                      { id: 'vol', label: 'Actual Tests' },
                     ].map((opt) => {
                       const on = collectionFilter === opt.id;
                       return (
@@ -775,7 +783,7 @@ export default function IeltsSourcePracticeScreen() {
                         </Text>
                       </View>
                       <Text style={{ fontSize: 20, fontWeight: '900', color: '#2A1808', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
-                        Cambridge IELTS 19 · Reading Test 1
+                        Cambridge IELTS 21 · Reading Test 1
                       </Text>
                       <Text style={{ fontSize: 13, color: '#7C6552' }}>
                         {L('Đề thi bám sát đề thật, chất lượng cao.', 'Authentic test format with detailed analysis.')}
@@ -791,11 +799,11 @@ export default function IeltsSourcePracticeScreen() {
                         justifyContent: 'center',
                       }}
                     >
-                      <FlatCover kind="CAMBRIDGE" num="19" width={120} height={120} radius={12} />
+                      <FlatCover kind="CAMBRIDGE" num="21" width={120} height={120} radius={12} />
                     </View>
 
                     <Pressable
-                      onPress={() => loadTest('cambridge-19-reading-1')}
+                      onPress={() => loadTest('cambridge-21-reading-1')}
                       style={{
                         paddingHorizontal: 16,
                         height: 40,
@@ -825,7 +833,7 @@ export default function IeltsSourcePracticeScreen() {
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 12, color: '#7C6552' }}>Sắp xếp:</Text>
                       <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB', flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>Mặc định</Text>
+                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>Mới nhất → cũ nhất</Text>
                         <Text style={{ fontSize: 10, color: '#7C6552' }}>▼</Text>
                       </View>
                     </View>
@@ -897,7 +905,7 @@ export default function IeltsSourcePracticeScreen() {
                                 }}
                               >
                                 <Text style={{ fontSize: 10.5, fontWeight: '800', color: isCam ? '#0369A1' : '#9D174D' }}>
-                                  {isCam ? 'CAMBRIDGE' : 'ACTUAL VOL'}
+                                  {isCam ? 'CAMBRIDGE' : item.source.toLowerCase().includes('vol') ? 'VOLUME' : 'IELTS'}
                                 </Text>
                               </View>
 
@@ -915,8 +923,10 @@ export default function IeltsSourcePracticeScreen() {
                             </Text>
 
                             <Text style={{ fontSize: 12.5, color: '#64748B', fontWeight: '500' }}>
-                              {item.questionCount} câu · {item.pageCount} trang{item.hasAnswerKey ? ' · ✓ Có đáp án' : ''}{item.answerKeyVerified ? ' · ✓ Đã kiểm' : ''}
+                              {`${item.questionCount} ${L('câu', 'questions')} · ${item.pageCount} ${L('trang đề', 'pages')}${item.hasAnswerKey ? ` · ${L('có đáp án', 'answer key')}` : ''}${item.answerKeyVerified ? ` · ${L('đã đối chiếu', 'verified')}` : ''}`}
                             </Text>
+                            {!item.externalOnly && item.missingComponents?.includes('audio') ? <Text style={{ fontSize: 12, color: '#92400E' }}>{L('Còn thiếu audio nguồn', 'Source audio missing')}</Text> : null}
+                            {!item.externalOnly && item.partCount ? <Text style={{ fontSize: 12, color: '#64748B' }}>{item.partCount} {L('phần học', 'parts')}</Text> : null}
                           </View>
 
                           {/* Arrow right button */}
@@ -1288,7 +1298,7 @@ export default function IeltsSourcePracticeScreen() {
                 </Pressable>
                 <Text style={{ color: '#A38F7E' }}>›</Text>
                 <Pressable onPress={() => setViewMode('catalog')}>
-                  <Text style={{ fontSize: 13, color: '#7C6552', fontWeight: '500' }}>Bộ đề Cam (Cambridge IELTS 12–20)</Text>
+                  <Text style={{ fontSize: 13, color: '#7C6552', fontWeight: '500' }}>{test?.source ?? currentTestMeta?.source}</Text>
                 </Pressable>
                 <Text style={{ color: '#A38F7E' }}>›</Text>
                 <Text style={{ fontSize: 13, color: '#2A1808', fontWeight: '700' }}>
@@ -1665,39 +1675,34 @@ export default function IeltsSourcePracticeScreen() {
                 </View>
               </View>
 
+              {test && !test.externalOnly ? (
+                <View style={{ gap: 10 }}>
+                  {test.parts?.length ? test.parts.map((part) => (
+                    <ExamVocabularyPanel
+                      key={`${test.id}-vocab-${part.id}`}
+                      exam="ielts"
+                      title={`${test.title} · ${part.label}`}
+                      pages={part.pages.map((page) => ({ page: page.page, text: page.text })) as ExamTextPage[]}
+                      ocrReviewCount={part.pages.reduce((sum, page) => sum + (page.reviewLines?.length ?? 0), 0)}
+                    />
+                  )) : (
+                    <ExamVocabularyPanel
+                      exam="ielts"
+                      title={test.title}
+                      pages={test.pages.map((page) => ({ page: page.page, text: page.text })) as ExamTextPage[]}
+                      ocrReviewCount={test.pages.reduce((sum, page) => sum + (page.reviewLines?.length ?? 0), 0)}
+                    />
+                  )}
+                </View>
+              ) : null}
+
               {/* SECTION: Interactive Test Practice Area (When user clicked "Bắt đầu làm bài") */}
               {isExamStarted && test ? (
                 <Modal visible animationType="fade" presentationStyle="fullScreen" onRequestClose={() => setIsExamStarted(false)}>
                 <View style={{ flex: 1, backgroundColor: '#F5F5F7' }}>
-                  {examMode === 'simulation' ? (
-                    <ComputerDeliveredExamRoom
-                      testId={test.id}
-                      testTitle={test.title}
-                      pages={test.pages}
-                      questionCount={test.questionCount}
-                      answers={answers}
-                      onAnswerChange={updateAnswer}
-                      onSubmit={submit}
-                      onExit={() => setIsExamStarted(false)}
-                      grade={grade}
-                      submitted={submitted}
-                      loading={loading}
-                    />
-                  ) : (
-                    <PracticeRoom
-                      testId={test.id}
-                      testTitle={test.title}
-                      pages={test.pages}
-                      questionCount={test.questionCount}
-                      answers={answers}
-                      onAnswerChange={updateAnswer}
-                      onSubmit={submit}
-                      onExit={() => setIsExamStarted(false)}
-                      grade={grade}
-                      submitted={submitted}
-                      loading={loading}
-                    />
-                  )}
+                  <SourceExamRoom key={`${test.id}:${examMode}`} test={test} simulation={examMode === 'simulation'}
+                    answers={answers} onAnswerChange={updateAnswer} onSubmit={submit} onExit={() => setIsExamStarted(false)}
+                    grade={grade} submitted={submitted} loading={loading} supportPages={support} />
                 </View>
                 </Modal>
               ) : null}

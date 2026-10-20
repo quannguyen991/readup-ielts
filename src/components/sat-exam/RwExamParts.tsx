@@ -2,12 +2,14 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { EvidenceTable, NotesList } from '@/components/sat-rw/ItemBody';
+import { ExamVocabularyPanel } from '@/components/exam/ExamVocabularyPanel';
 import { ExamOption } from './ExamOption';
 import { EXAM } from './exam-theme';
 import { HighlightPassage } from './HighlightPassage';
 
 /** Những trường R&W mà cả `SatRwQuestion` (bộ luyện) lẫn `MockItem` (bài thi) đều có. */
 export type RwLike = {
+  id?: string;
   passage: string;
   underline?: string;
   notes?: readonly string[];
@@ -19,12 +21,13 @@ export type RwLike = {
 };
 
 /** Cột trái: đoạn văn (tô / ghi chú được), ghi chú của đề, bảng số. */
-export function RwPassagePane({ item }: { item: RwLike }) {
+export function RwPassagePane({ item, vocabularyTitle }: { item: RwLike; vocabularyTitle?: string }) {
   return (
     <View>
       <HighlightPassage passage={item.passage} underline={item.underline} />
       {item.notes ? <NotesList notes={item.notes} /> : null}
       {item.table ? <EvidenceTable table={item.table} /> : null}
+      {vocabularyTitle ? <ExamVocabularyPanel key={`${vocabularyTitle}:${item.stem}`} exam="sat" title={`${vocabularyTitle}${item.id ? ` · ${item.id}` : ''}`} pages={[{ page: 1, text: item.passage }]} /> : null}
     </View>
   );
 }

@@ -3,7 +3,7 @@ import { Platform, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { DESTINATION_B1_DECKS, DESTINATION_B2_DECKS, type DestinationCourse } from '@/data/destination-vocab';
+import { DESTINATION_B1_DECKS, DESTINATION_B2_DECKS, DESTINATION_C1C2_DECKS, type DestinationCourse } from '@/data/destination-vocab';
 import { useL } from '@/i18n/useL';
 import { color } from '@/theme/tokens';
 import type { VocabTopicWord } from '@/data/vocab-topics';
@@ -21,7 +21,7 @@ function shuffled<T>(items: T[]): T[] {
 }
 
 function buildQuestions(course: DestinationCourse): ReviewQuestion[] {
-  const decks = course === 'b1' ? DESTINATION_B1_DECKS : DESTINATION_B2_DECKS;
+  const decks = course === 'b1' ? DESTINATION_B1_DECKS : course === 'b2' ? DESTINATION_B2_DECKS : DESTINATION_C1C2_DECKS;
   const pool = decks.flatMap((deck) => deck.words).filter((word) => Boolean(word.meaningVi?.trim() || word.definitionEn?.trim()));
   const selected = shuffled(pool).slice(0, Math.min(50, pool.length));
   return selected.map((word) => {
@@ -76,7 +76,21 @@ const READINGS: Record<DestinationCourse, Array<{ title: string; text: string; q
       questions: ['What did the media group compare?', 'What checks do they make before sharing an article?', 'What can careful research prevent?'],
     },
   ],
+  c1c2: [
+    {
+      title: 'Making a case for the city library',
+      text: 'When the council proposed cutting the library budget, residents were asked to consider what the building contributed beyond book lending. The library offered quiet workspaces, language classes and reliable internet access to people who could not afford these services at home. Its supporters gathered evidence on visitor numbers and interviewed local groups. Their report acknowledged that public funds were limited, but argued that a modest investment could prevent a much greater social cost. The council postponed its decision and commissioned an independent review.',
+      questions: ['Which services did the library provide besides lending books?', 'What evidence did supporters collect?', 'Why did the council delay its decision?'],
+    },
+    {
+      title: 'A transport plan tested in practice',
+      text: 'A regional transport authority introduced a six-month trial to reduce congestion near the city centre. It increased the frequency of buses, simplified fares and offered commuters a discount for travelling outside peak hours. Early figures suggested that some drivers had switched modes, although the effect varied between neighbourhoods. Rather than declaring the scheme a success, researchers compared travel times, costs and air-quality readings with the previous year. They concluded that lasting change would depend on dependable services and careful planning across the whole network.',
+      questions: ['What three changes were included in the trial?', 'Why did researchers compare several kinds of evidence?', 'What did they say lasting change would depend on?'],
+    },
+  ],
 };
+
+const COURSE_LABEL: Record<DestinationCourse, string> = { b1: 'B1', b2: 'B2', c1c2: 'C1/C2' };
 
 export default function DestinationReviewScreen() {
   const { L } = useL();
@@ -86,7 +100,7 @@ export default function DestinationReviewScreen() {
   const questions = useMemo(() => buildQuestions(course), [course, version]);
   const readings = READINGS[course];
   const readingTerms = useMemo(() => {
-    const decks = course === 'b1' ? DESTINATION_B1_DECKS : DESTINATION_B2_DECKS;
+    const decks = course === 'b1' ? DESTINATION_B1_DECKS : course === 'b2' ? DESTINATION_B2_DECKS : DESTINATION_C1C2_DECKS;
     return decks.flatMap((deck) => deck.words.map((word) => word.word));
   }, [course]);
   const score = questions.filter((question, index) => answers[index] === question.answer).length;
@@ -116,11 +130,11 @@ export default function DestinationReviewScreen() {
           subtitle={L('Chọn trình độ, làm đề mới hoặc in phiếu ôn tập. Các unit cũng có quiz kiểu THPT riêng.', 'Choose a level, generate a fresh set, or print a worksheet. Each unit also has its own high-school exam quiz.')}
         />
         <View className="mt-4 flex-row flex-wrap gap-2">
-          {(['b1', 'b2'] as const).map((value) => {
+          {(['b1', 'b2', 'c1c2'] as const).map((value) => {
             const active = course === value;
             return (
               <Pressable key={value} accessibilityRole="button" onPress={() => { setCourse(value); setAnswers({}); }} style={{ paddingVertical: 11, paddingHorizontal: 18, borderRadius: 14, backgroundColor: active ? color.primary : '#fff', borderWidth: 1, borderColor: active ? color.primary : '#E8DFD4' }}>
-                <Text style={{ color: active ? '#fff' : color.ink, fontWeight: '700' }}>{value.toUpperCase()} · Destination</Text>
+                <Text style={{ color: active ? '#fff' : color.ink, fontWeight: '700' }}>{COURSE_LABEL[value]} · Destination</Text>
               </Pressable>
             );
           })}
@@ -138,7 +152,7 @@ export default function DestinationReviewScreen() {
 
       <ScrollView nativeID="destination-review-sheet" className="mt-4" contentContainerStyle={{ gap: 10, paddingBottom: 36 }}>
         <View style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#E8DFD4' }}>
-          <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>Destination {course.toUpperCase()} · Vocabulary review</Text>
+          <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>Destination {COURSE_LABEL[course]} · Vocabulary review</Text>
           <Text style={{ marginTop: 4, color: '#64748B' }}>{L('Tên: ____________________     Ngày: ______________', 'Name: ____________________     Date: ______________')}</Text>
         </View>
         {questions.map((question, index) => {

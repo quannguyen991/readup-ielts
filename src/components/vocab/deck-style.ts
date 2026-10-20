@@ -131,6 +131,7 @@ const GLOBAL_SUCCESS_SLUGS = new Set(GLOBAL_SUCCESS_DECKS.map((d) => d.slug));
 const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
 export function deckLook(slug: string): DeckLook {
+  if (slug.startsWith('oxford-')) return { source: 'oxford', sourceLabel: 'Oxford 3000', sourceLabelEn: 'Oxford 3000', accent: ['#E0E7FF', '#4338CA'], icon: 'book' };
   if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', sourceLabelEn: 'Your notebook', accent: ['#FBF5EC', '#A8843F'], icon: 'book' };
   if (slug.startsWith(CUSTOM_PREFIX)) return { source: 'mine', sourceLabel: 'Bộ bạn tạo', sourceLabelEn: 'Your deck', accent: ['#D1FAE5', '#059669'], icon: 'note' };
   const subject = SAT_SUBJECT.get(slug);
@@ -143,7 +144,10 @@ export function deckLook(slug: string): DeckLook {
   const vfia = VFIA_BY_SLUG.get(slug);
   if (vfia) return { source: 'vfia', sourceLabel: 'Vocabulary for IELTS Advanced', sourceLabelEn: 'Vocabulary for IELTS Advanced', accent: PALETTE[(vfia.unit + 4) % PALETTE.length]!, icon: VFI_ICON[vfia.unit] ?? 'book' };
   const destination = DESTINATION_BY_SLUG.get(slug);
-  if (destination) return { source: 'destination', sourceLabel: `Destination ${destination.course.toUpperCase()}`, sourceLabelEn: `Destination ${destination.course.toUpperCase()}`, accent: PALETTE[destination.unit % PALETTE.length]!, icon: 'book' };
+  if (destination) {
+    const level = destination.course === 'c1c2' ? 'C1/C2' : destination.course.toUpperCase();
+    return { source: 'destination', sourceLabel: `Destination ${level}`, sourceLabelEn: `Destination ${level}`, accent: PALETTE[destination.unit % PALETTE.length]!, icon: 'book' };
+  }
   if (GLOBAL_SUCCESS_SLUGS.has(slug)) return { source: 'globalSuccess', sourceLabel: 'Global Success 10–12', sourceLabelEn: 'Global Success 10–12', accent: ['#E6F6F4', '#0D9488'], icon: 'letters' };
   const i = TOPIC_INDEX.get(slug) ?? 0;
   return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', sourceLabelEn: 'IELTS topic', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };

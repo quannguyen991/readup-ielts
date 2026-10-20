@@ -25,6 +25,7 @@ import {
   type SatPracticeForm,
 } from '@/services/sat-practice/forms';
 import { useL } from '@/i18n/useL';
+import { ExamResourceLinks } from '@/components/exam/ExamResourceLinks';
 
 /** Phông Plus Jakarta Sans hiện đại, cao cấp và sắc nét cho toàn bộ màn luyện đề SAT. */
 function fontFor(weight: unknown): string {
@@ -334,15 +335,17 @@ export default function SatPracticeTestsScreen() {
           badge="DIGITAL SAT · KHO 65 BỘ ĐỀ"
           art="home"
           line1={L('Luyện bộ đề thi thử Digital SAT', 'Digital SAT Practice Tests')}
-          line2={L('chuẩn mô phỏng giao diện Bluebook', 'authentic Bluebook adaptive test suite')}
+          line2={L('luyện Reading & Writing và Math theo mục tiêu', 'practice Reading & Writing and Math by goal')}
           footer={
             <>
-              <HeroStat value="65" label={L('bộ đề thi', 'tests')} />
-              <HeroStat value="12" label={L('đề Reading', 'reading sets')} />
-              <HeroStat value="100%" label={L('chuẩn Bluebook', 'Bluebook authentic')} />
+              <HeroStat value="65" label={L('bộ luyện', 'practice sets')} />
+              <HeroStat value="12" label={L('bộ Reading', 'Reading sets')} />
+              <HeroStat value="6" label={L('đề Bluebook chính thức', 'official Bluebook tests')} />
             </>
           }
         />
+
+        <ExamResourceLinks exam="sat" />
 
         {/* Quick Filters Row: Kỹ năng / Phần thi (matching IELTS design) */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -739,7 +742,7 @@ export default function SatPracticeTestsScreen() {
                 >
                   <Text style={{ fontSize: 13 }}>👑</Text>
                   <Text style={{ fontSize: 11, fontWeight: '800', color: '#92400E', textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                    {L('Đề xuất hôm nay · Bám sát 100% đề thi thật', 'Today recommendation · 100% Authentic')}
+                    {L('Luyện tập đề xuất hôm nay', 'Recommended practice today')}
                   </Text>
                 </View>
 

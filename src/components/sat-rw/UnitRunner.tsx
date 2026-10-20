@@ -150,7 +150,7 @@ export function UnitRunner({
       onJump={run.go}
       difficulty={rwDifficulty(question)}
       isAnswered={(i) => answers[i] !== null}
-      passage={<RwPassagePane item={question} />}
+      passage={<RwPassagePane item={question} vocabularyTitle={`${title} · SAT R&W`} />}
       topSlot={instantSolution ? <BattleStrip /> : null}
       onBack={() => run.go(index - 1)}
       onNext={() => (lastQ ? finish() : run.go(index + 1))}
