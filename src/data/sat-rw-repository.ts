@@ -5,6 +5,8 @@ import hardReading from './seed/sat-rw/hard-reading.json';
 import grammarSkills from './seed/sat-rw/grammar-skills.json';
 import grammarSkillsHard from './seed/sat-rw/grammar-skills-hard.json';
 import realTestsCraft from './seed/sat-rw/real-tests-craft.json';
+import realTests20242025 from './seed/sat-rw/real-tests-2024-2025.json';
+import officialQbankRw from './seed/sat-rw/official-qbank-rw.json';
 import { SAT_RW_ORIGINAL_READING_EXPANSION } from './seed/sat-rw/original-reading-expansion';
 import { SAT_READING_BOOK_QUESTIONS } from './seed/sat-rw/sat-reading-books';
 import type { MockItem } from '@/services/sat-rw/mock/item';
@@ -191,6 +193,8 @@ function labelOldByUnit(questions: SatRwQuestion[]): SatRwQuestion[] {
 }
 
 export const SAT_RW_REAL_TEST_CRAFT_QUESTIONS: SatRwQuestion[] = realTestsCraft as SatRwQuestion[];
+export const SAT_RW_REAL_TEST_2024_2025_QUESTIONS: SatRwQuestion[] = realTests20242025 as SatRwQuestion[];
+export const SAT_RW_OFFICIAL_QBANK_QUESTIONS: SatRwQuestion[] = officialQbankRw as SatRwQuestion[];
 
 export const SAT_RW_QUESTIONS: SatRwQuestion[] = [
   ...labelOldByUnit([...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS]),
@@ -198,6 +202,8 @@ export const SAT_RW_QUESTIONS: SatRwQuestion[] = [
   // Câu ngữ pháp mới (bổ ngữ, dạng động từ) mang sẵn bậc Dễ/Vừa; không đi qua `labelOldByUnit`.
   ...(grammarSkills as { questions: SatRwQuestion[] }).questions,
   ...SAT_RW_ORIGINAL_READING_EXPANSION,
+  ...SAT_RW_REAL_TEST_2024_2025_QUESTIONS,
+  ...SAT_RW_OFFICIAL_QBANK_QUESTIONS,
 ];
 
 export { SAT_READING_BOOK_QUESTIONS };
@@ -207,6 +213,7 @@ export const SAT_RW_TOTAL_BANK: SatRwQuestion[] = [
   ...SAT_RW_QUESTIONS,
   ...SAT_RW_REAL_TEST_CRAFT_QUESTIONS,
   ...SAT_READING_BOOK_QUESTIONS,
+  ...SAT_RW_REAL_TEST_2024_2025_QUESTIONS,
 ];
 
 /** Bậc của một câu; câu sinh lúc chạy không mang nhãn thì coi là Vừa. */
@@ -243,6 +250,13 @@ export const SAT_RW_SKILL_LABEL: Record<string, string> = {
   words: 'Words in Context',
   structure: 'Text Structure',
   crosstext: 'Cross-Text Connections',
+  synthesis: 'Tổng hợp diễn đạt',
+  'cross-text': 'Cross-Text Connections',
+  transitions: 'Từ nối',
+  'central-ideas': 'Central Ideas',
+  'evidence-text': 'Bằng chứng văn bản',
+  inferences: 'Inferences',
+  modifiers: 'Bổ ngữ & vị trí',
   central: 'Central Ideas',
   evidence: 'Command of Evidence',
   inference: 'Inferences',

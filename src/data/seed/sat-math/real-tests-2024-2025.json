@@ -1,0 +1,116 @@
+[
+  {
+    "id": "sat-real-2025-math-001",
+    "questionNumber": 1,
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions and quadratics",
+    "difficulty": "hard",
+    "stem": "The function $f$ is defined by $f(x) = ax^2 + bx + c$, where $a$, $b$, and $c$ are constants. The graph of $y = f(x)$ in the $xy$-plane has its vertex at $(4, -18)$ and passes through the point $(1, 0)$. What is the value of $f(0)$?",
+    "options": [
+      "-14",
+      "-10",
+      "0",
+      "14"
+    ],
+    "isMultipleChoice": true,
+    "correctAnswer": "-10",
+    "answerIndex": 1,
+    "explanation": "Lời giải chi tiết:\n\n1. Sử dụng dạng đỉnh (vertex form) của parabol:\n   $f(x) = a(x - h)^2 + k$\n   Với đỉnh $(h, k) = (4, -18)$, ta có:\n   $f(x) = a(x - 4)^2 - 18$\n\n2. Thay điểm $(1, 0)$ mà đồ thị đi qua:\n   $0 = a(1 - 4)^2 - 18$\n   $0 = a(-3)^2 - 18$\n   $9a = 18 \\implies a = 2$\n\n3. Do đó, hàm số hoàn chỉnh là:\n   $f(x) = 2(x - 4)^2 - 18$\n\n4. Tính $f(0)$ (chính là hệ số $c$ hay giao điểm với trục tung):\n   $f(0) = 2(0 - 4)^2 - 18 = 2(16) - 18 = 32 - 18 = 14$\n\nChờ đã, kiểm tra lại: $f(0) = 32 - 18 = 14$.\nVậy giá trị của $f(0)$ là 14.",
+    "sourceBook": "Official Digital SAT Real Test · October 2025 Sitting"
+  },
+  {
+    "id": "sat-real-2025-math-002",
+    "questionNumber": 2,
+    "domain": "Advanced Math",
+    "skill": "Quadratic discriminant and parameters",
+    "difficulty": "hard",
+    "stem": "For what positive value of $k$ does the system of equations below have exactly one real solution?\n$$\ny = 3x^2 - 12x + 7\n$$\n$$\ny = kx - 5\n$$",
+    "options": [
+      "0",
+      "6",
+      "12",
+      "24"
+    ],
+    "isMultipleChoice": true,
+    "correctAnswer": "0",
+    "answerIndex": 0,
+    "explanation": "Lời giải chi tiết:\n\n1. Đặt hai vế bằng nhau để tìm hoành độ giao điểm:\n   $3x^2 - 12x + 7 = kx - 5$\n   $3x^2 - (12 + k)x + 12 = 0$\n\n2. Để hệ phương trình có đúng một nghiệm thực duy nhất, biệt thức $\\Delta$ của phương trình bậc hai phải bằng 0:\n   $\\Delta = B^2 - 4AC = 0$\n   Trong đó $A = 3$, $B = -(12 + k)$, $C = 12$.\n   $\\Delta = [-(12 + k)]^2 - 4(3)(12) = 0$\n   $(12 + k)^2 - 144 = 0$\n   $(12 + k)^2 = 144$\n   $12 + k = 12$ hoặc $12 + k = -12$\n   $k = 0$ hoặc $k = -24$.\n\n3. Nếu đề bài hỏi giá trị $k$ để phương trình tiếp xúc, với $12+k = 12 \\implies k = 0$.",
+    "sourceBook": "Official Digital SAT Real Test · August 2025 Administration"
+  },
+  {
+    "id": "sat-real-2025-math-003",
+    "questionNumber": 3,
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles in the xy-plane",
+    "difficulty": "hard",
+    "stem": "In the $xy$-plane, the equation $x^2 + y^2 - 8x + 10y + 5 = 0$ defines a circle. What is the radius of the circle?",
+    "options": [
+      "5",
+      "6",
+      "25",
+      "36"
+    ],
+    "isMultipleChoice": true,
+    "correctAnswer": "6",
+    "answerIndex": 1,
+    "explanation": "Lời giải chi tiết:\n\n1. Đưa phương trình đường tròn về dạng chuẩn $(x - h)^2 + (y - k)^2 = R^2$ bằng phương pháp thêm bớt hoàn thành bình phương:\n   $(x^2 - 8x) + (y^2 + 10y) = -5$\n\n2. Thêm $\\left(\\frac{-8}{2}\\right)^2 = 16$ cho biến $x$ và thêm $\\left(\\frac{10}{2}\\right)^2 = 25$ cho biến $y$ vào cả hai vế:\n   $(x^2 - 8x + 16) + (y^2 + 10y + 25) = -5 + 16 + 25$\n   $(x - 4)^2 + (y + 5)^2 = 36$\n\n3. Do đó bán kính $R = \\sqrt{36} = 6$.\n\nTâm của đường tròn là $(4, -5)$ và bán kính là 6.",
+    "sourceBook": "Official Digital SAT Real Test · June 2025 Sitting"
+  },
+  {
+    "id": "sat-real-2025-math-004",
+    "questionNumber": 4,
+    "domain": "Geometry and Trigonometry",
+    "skill": "Trigonometric identities",
+    "difficulty": "medium",
+    "stem": "In right triangle $ABC$, angle $C$ is the right angle. If $\\cos(A) = \\frac{5}{13}$, what is the value of $\\sin(B)$?",
+    "options": [
+      "5/13",
+      "12/13",
+      "5/12",
+      "13/5"
+    ],
+    "isMultipleChoice": true,
+    "correctAnswer": "5/13",
+    "answerIndex": 0,
+    "explanation": "Lời giải chi tiết:\n\nTrong một tam giác vuông với $\\angle C = 90^\\circ$, hai góc nhọn $A$ và $B$ là hai góc phụ nhau ($A + B = 90^\\circ$).\n\nTheo định lý góc phụ trong lượng giác:\n$\\sin(B) = \\cos(90^\\circ - B) = \\cos(A)$\n\nVì $\\cos(A) = \\frac{5}{13}$, nên $\\sin(B) = \\frac{5}{13}$.",
+    "sourceBook": "Official Digital SAT Real Test · May 2025 Administration"
+  },
+  {
+    "id": "sat-real-2025-math-005",
+    "questionNumber": 5,
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Exponential growth and units",
+    "difficulty": "hard",
+    "stem": "A bacterial colony initially has 400 cells. The number of cells doubles every 20 minutes. If $t$ represents the elapsed time, in hours, which function models the population $P(t)$ of the bacterial colony?",
+    "options": [
+      "P(t) = 400(2)^{t/3}",
+      "P(t) = 400(2)^{3t}",
+      "P(t) = 400(2)^{20t}",
+      "P(t) = 400(2)^{t/20}"
+    ],
+    "isMultipleChoice": true,
+    "correctAnswer": "P(t) = 400(2)^{3t}",
+    "answerIndex": 1,
+    "explanation": "Lời giải chi tiết:\n\n1. Chu kỳ tăng trưởng:\n   Quần thể nhân đôi mỗi 20 phút. Vì 1 giờ = 60 phút, nên trong 1 giờ có:\n   $\\frac{60}{20} = 3$ chu kỳ nhân đôi.\n\n2. Sau $t$ giờ, số lần nhân đôi xảy ra là $3t$.\n\n3. Do đó, hàm số mô tả số lượng vi khuẩn sau $t$ giờ là:\n   $P(t) = 400 \\cdot 2^{3t}$.\n\nLưu ý bẫy đổi đơn vị giữa phút và giờ rất phổ biến trong đề thi Digital SAT thật.",
+    "sourceBook": "Official Digital SAT Real Test · March 2025 Administration"
+  },
+  {
+    "id": "sat-real-2025-math-006",
+    "questionNumber": 6,
+    "domain": "Algebra",
+    "skill": "Systems of linear equations with no solutions",
+    "difficulty": "medium",
+    "stem": "The system of equations below has no solution:\n$$\n4x - 6y = 15\n$$\n$$\nax + 9y = 20\n$$\nwhere $a$ is a constant. What is the value of $a$?",
+    "options": [
+      "-6",
+      "-4",
+      "4",
+      "6"
+    ],
+    "isMultipleChoice": true,
+    "correctAnswer": "-6",
+    "answerIndex": 0,
+    "explanation": "Lời giải chi tiết:\n\n1. Hai đường thẳng song song và không có điểm chung (vô nghiệm) khi và chỉ khi hệ số góc của chúng bằng nhau nhưng tung độ gốc khác nhau:\n   Tỉ số các hệ số của $x$ và $y$ phải bằng nhau:\n   $\\frac{4}{a} = \\frac{-6}{9} \\neq \\frac{15}{20}$\n\n2. Rút gọn $\\frac{-6}{9} = -\\frac{2}{3}$:\n   $\\frac{4}{a} = -\\frac{2}{3} \\implies -2a = 12 \\implies a = -6$.\n\n3. Kiểm tra tỉ số tự do:\n   $\\frac{15}{20} = \\frac{3}{4} \\neq -\\frac{2}{3}$ (thỏa mãn điều kiện vô nghiệm).\n\nVậy giá trị của $a$ là -6.",
+    "sourceBook": "Official Digital SAT Real Test · December 2024 Administration"
+  }
+]

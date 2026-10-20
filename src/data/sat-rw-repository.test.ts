@@ -14,8 +14,8 @@ import {
 
 test('kho có đủ 16 unit, ngân hàng hiện có và 12 câu đọc hiểu mới, id không trùng', () => {
   assert.equal(SAT_RW_UNITS.length, 16);
-  assert.equal(SAT_RW_QUESTIONS.length, 878);
-  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.id)).size, 878, 'có id bị trùng');
+  assert.equal(SAT_RW_QUESTIONS.length, 940);
+  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.id)).size, 940, 'có id bị trùng');
   assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.passage)).size >= 800, true, 'đoạn văn trùng nhiều bất thường');
 });
 

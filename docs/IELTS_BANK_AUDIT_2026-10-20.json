@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-20T04:42:27.453Z",
+  "checkedAt": "2026-10-20T14:33:37.160Z",
   "totalCatalogueEntries": 633,
   "localPapers": 212,
   "papersWithExpectedParts": 212,
@@ -9,186 +9,6 @@
   "newForecastSets": 8,
   "newSpeakingSamples": 72,
   "missingAssets": [
-    {
-      "id": "cambridge-20-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-20-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-16-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-16-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-16-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-16-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-15-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-15-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-15-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-15-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-14-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-14-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-14-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-14-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-13-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-13-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-13-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-13-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-12-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-12-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-12-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-12-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-11-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-11-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-11-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-11-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-10-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-10-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-10-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "cambridge-10-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
     {
       "id": "cambridge-9-listening-1",
       "missing": [
@@ -305,54 +125,6 @@
     },
     {
       "id": "vol-9-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-8-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-8-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-8-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-8-listening-4",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-7-listening-1",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-7-listening-2",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-7-listening-3",
-      "missing": [
-        "audio"
-      ]
-    },
-    {
-      "id": "vol-7-listening-4",
       "missing": [
         "audio"
       ]
@@ -885,7 +657,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -969,7 +741,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2061,7 +1833,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2107,7 +1879,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2153,7 +1925,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2199,7 +1971,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2245,7 +2017,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2291,7 +2063,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2337,7 +2109,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2383,7 +2155,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2429,7 +2201,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2475,7 +2247,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2521,7 +2293,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2567,7 +2339,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2613,7 +2385,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2659,7 +2431,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2705,7 +2477,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2751,7 +2523,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2797,7 +2569,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2843,7 +2615,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2889,7 +2661,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2935,7 +2707,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -2981,7 +2753,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3027,7 +2799,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3073,7 +2845,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3119,7 +2891,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3165,7 +2937,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3211,7 +2983,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3257,7 +3029,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -3303,7 +3075,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 4,
       "verifiedKey": true
     },
     {
@@ -4623,7 +4395,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4669,7 +4441,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4715,7 +4487,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4761,7 +4533,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4807,7 +4579,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4853,7 +4625,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4899,7 +4671,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {
@@ -4945,7 +4717,7 @@
           40
         ]
       ],
-      "audioFiles": 0,
+      "audioFiles": 1,
       "verifiedKey": true
     },
     {

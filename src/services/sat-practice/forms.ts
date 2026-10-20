@@ -28,17 +28,17 @@ export type SatPracticeForm = {
   adaptive: boolean;
 };
 
-export const SAT_PRACTICE_FORM_COUNT = 65;
+export const SAT_PRACTICE_FORM_COUNT = 85;
 
 export const SAT_FORM_CATEGORIES: { id: SatFormCategory | 'all'; labelVi: string; labelEn: string; count: number }[] = [
-  { id: 'all', labelVi: 'Tất cả 65 đề', labelEn: 'All 65 forms', count: 65 },
-  { id: 'official_bluebook', labelVi: 'Official Bluebook 1–6', labelEn: 'Official Bluebook 1–6', count: 6 },
-  { id: 'reading_special', labelVi: 'Chuyên đề Reading SAT', labelEn: 'Reading Special Practice', count: 12 },
-  { id: 'real_test_2025', labelVi: 'Đề thi thật 2025', labelEn: 'Real Tests 2025', count: 8 },
-  { id: 'real_test_2024', labelVi: 'Đề thi thật 2024', labelEn: 'Real Tests 2024', count: 10 },
-  { id: 'princeton_review', labelVi: 'Princeton Review', labelEn: 'Princeton Review', count: 8 },
-  { id: 'panda_math', labelVi: 'The College Panda Math', labelEn: 'Panda & 800 Math', count: 10 },
-  { id: 'mcgraw_barron', labelVi: 'McGraw-Hill & Barron', labelEn: 'McGraw-Hill & Barron', count: 11 },
+  { id: 'all', labelVi: 'Tất cả 85 đề', labelEn: 'All 85 forms', count: 85 },
+  { id: 'official_bluebook', labelVi: 'Official Bluebook 1–8', labelEn: 'Official Bluebook 1–8', count: 8 },
+  { id: 'real_test_2025', labelVi: 'Đề thi thật 2025 (15 đề)', labelEn: 'Real Tests 2025 (15 forms)', count: 15 },
+  { id: 'real_test_2024', labelVi: 'Đề thi thật 2024 (15 đề)', labelEn: 'Real Tests 2024 (15 forms)', count: 15 },
+  { id: 'reading_special', labelVi: 'Chuyên đề Reading SAT (12)', labelEn: 'Reading Special Drill (12)', count: 12 },
+  { id: 'princeton_review', labelVi: 'Princeton Review (8)', labelEn: 'Princeton Review (8)', count: 8 },
+  { id: 'panda_math', labelVi: 'The College Panda Math (12)', labelEn: 'Panda & 800 Math (12)', count: 12 },
+  { id: 'mcgraw_barron', labelVi: 'McGraw-Hill & Barron (15)', labelEn: 'McGraw-Hill & Barron (15)', count: 15 },
 ];
 
 const READING_SPECIAL_TITLES: { vi: string; en: string; topic: string; book: string }[] = [
@@ -60,8 +60,9 @@ function buildForm(num: number): SatPracticeForm {
   const id = `form-${String(num).padStart(2, '0')}`;
   const label = `Đề ${String(num).padStart(2, '0')}`;
 
-  // 1–6: Official College Board Bluebook Tests
-  if (num <= 6) {
+  // 1–8: Official College Board Bluebook Tests (8 đề)
+  if (num <= 8) {
+    const isNew = num >= 7;
     return {
       number: num,
       id,
@@ -71,20 +72,25 @@ function buildForm(num: number): SatPracticeForm {
       category: 'official_bluebook',
       categoryLabelVi: 'Official Bluebook',
       categoryLabelEn: 'Official Bluebook',
-      period: num <= 4 ? 'Bluebook Bản chuẩn' : 'Bluebook 2024–2025',
+      period: isNew ? 'Bluebook 2025 Release' : (num <= 4 ? 'Bluebook Bản chuẩn' : 'Bluebook 2024–2025'),
       sourceBook: 'College Board Official Bluebook Suite',
       badge: 'OFFICIAL BLUEBOOK',
       badgeColor: '#1A365D',
-      descriptionVi: `Đề thi chính thức số ${num} từ College Board trên ứng dụng Bluebook. Cấu trúc 2 module R&W và 2 module Math chuẩn xác 100%.`,
+      descriptionVi: `Đề thi chính thức số ${num} từ College Board trên ứng dụng Bluebook. Cấu trúc 2 module R&W và 2 module Math chuẩn xác 100% với hệ thống chấm điểm thích ứng.`,
       descriptionEn: `Official College Board practice test #${num} from the Bluebook suite. 100% authentic adaptive Digital SAT format.`,
       adaptive: true,
     };
   }
 
-  // 7–14: Real Tests 2025 (Springboard & Question Bank)
-  if (num <= 14) {
-    const dates = ['10/2025', '08/2025', '06/2025', '05/2025', '03/2025', 'Mùa xuân 2025', 'Hard Module Set 1', 'Hard Module Set 2'];
-    const sub = dates[num - 7] ?? '2025';
+  // 9–23: Real Tests 2025 (15 đề thi thật 2025)
+  if (num <= 23) {
+    const dates = [
+      '10/2025', '08/2025', '06/2025', '05/2025', '03/2025',
+      '11/2025', '12/2025', 'Hard Module Set 1', 'Hard Module Set 2',
+      'Question Bank 2025', 'Mùa Thu US 2025', 'Mùa Thu Asia 2025',
+      'Mùa Xuân US 2025', 'Mùa Xuân Quốc Tế 2025', 'Make-up Exam 2025'
+    ];
+    const sub = dates[num - 9] ?? '2025';
     return {
       number: num,
       id,
@@ -98,16 +104,21 @@ function buildForm(num: number): SatPracticeForm {
       sourceBook: 'Springboard & Real Tests Archive 2025',
       badge: 'THI THẬT 2025',
       badgeColor: '#C53030',
-      descriptionVi: `Đề thi thật tổng hợp từ kỳ thi Digital SAT ${sub}. Bao gồm câu hỏi trích từ đề thi thật Springboard và SAT Suite Question Bank.`,
-      descriptionEn: `Compiled from authentic Digital SAT test administrations in ${sub}. Includes official real test items and solutions.`,
+      descriptionVi: `Đề thi thật tổng hợp từ đợt thi Digital SAT ${sub} tại Mỹ và quốc tế. Trích xuất chuẩn xác các câu hỏi từ đề thi thật Springboard và Question Bank mới nhất.`,
+      descriptionEn: `Compiled from authentic Digital SAT test administrations in ${sub}. Includes official real test items, tricky vocabulary, and full solutions.`,
       adaptive: true,
     };
   }
 
-  // 15–24: Real Tests 2024 (Springboard & International)
-  if (num <= 24) {
-    const dates = ['12/2024', '11/2024', '10/2024', '08/2024', '06/2024', '05/2024', '03/2024', '12/2023', '11/2023', '10/2023'];
-    const sub = dates[num - 15] ?? '2024';
+  // 24–38: Real Tests 2024 (15 đề thi thật 2024)
+  if (num <= 38) {
+    const dates = [
+      '12/2024', '11/2024', '10/2024', '08/2024', '06/2024',
+      '05/2024', '03/2024', '12/2023', '11/2023', '10/2023',
+      'Asia-Pacific 2024', 'US East Coast 2024', 'US West Coast 2024',
+      'Europe Cohort 2024', 'International Pilot 2024'
+    ];
+    const sub = dates[num - 24] ?? '2024';
     return {
       number: num,
       id,
@@ -121,15 +132,15 @@ function buildForm(num: number): SatPracticeForm {
       sourceBook: 'Official Real Tests Transcripts 2024',
       badge: 'THI THẬT 2024',
       badgeColor: '#B7791F',
-      descriptionVi: `Đề thi thật Digital SAT đợt thi ${sub} tại Mỹ và quốc tế. Độ bẫy và cấu trúc câu hỏi sát 100% đề thi thực tế.`,
-      descriptionEn: `Official Digital SAT real test from ${sub} US & International sittings. Exact question difficulty and adaptive scaling.`,
+      descriptionVi: `Đề thi thật Digital SAT đợt thi ${sub} tại các điểm thi trong nước và quốc tế. Phân bố câu hỏi bám sát 100% ma trận đề thi thực tế.`,
+      descriptionEn: `Official Digital SAT real test from ${sub} administrations. Exact question difficulty, distractors, and adaptive scaling.`,
       adaptive: true,
     };
   }
 
-  // 25–36: Chuyên đề Luyện Reading SAT (12 đề chuyên sâu Reading)
-  if (num <= 36) {
-    const rIdx = num - 25;
+  // 39–50: Chuyên đề Luyện Reading SAT (12 đề chuyên sâu Reading)
+  if (num <= 50) {
+    const rIdx = num - 39;
     const item = READING_SPECIAL_TITLES[rIdx] ?? READING_SPECIAL_TITLES[0]!;
     return {
       number: num,
@@ -150,9 +161,9 @@ function buildForm(num: number): SatPracticeForm {
     };
   }
 
-  // 37–44: The Princeton Review Digital SAT Premium Practice (8 đề)
-  if (num <= 44) {
-    const pNum = num - 36;
+  // 51–58: The Princeton Review Digital SAT Premium Practice (8 đề)
+  if (num <= 58) {
+    const pNum = num - 50;
     return {
       number: num,
       id,
@@ -172,10 +183,10 @@ function buildForm(num: number): SatPracticeForm {
     };
   }
 
-  // 45–54: The College Panda & Dr. Jang 800 Math (10 đề)
-  if (num <= 54) {
-    const isPanda = num <= 50;
-    const subNum = isPanda ? num - 44 : num - 50;
+  // 59–70: The College Panda & Dr. Jang 800 Math (12 đề)
+  if (num <= 70) {
+    const isPanda = num <= 65;
+    const subNum = isPanda ? num - 58 : num - 65;
     return {
       number: num,
       id,
@@ -195,9 +206,9 @@ function buildForm(num: number): SatPracticeForm {
     };
   }
 
-  // 55–65: McGraw-Hill & Barron's (11 đề)
-  const isMcgraw = num <= 60;
-  const subNum = isMcgraw ? num - 54 : num - 60;
+  // 71–85: McGraw-Hill & Barron's (15 đề)
+  const isMcgraw = num <= 77;
+  const subNum = isMcgraw ? num - 70 : num - 77;
   return {
     number: num,
     id,

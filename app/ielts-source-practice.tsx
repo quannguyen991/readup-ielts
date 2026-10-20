@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -152,6 +152,8 @@ function FlatCover({ kind, num, width, height, radius = 10 }: { kind: 'CAMBRIDGE
 /** Màu nền bìa theo số đề: mỗi đề một màu cố định, để nhìn lướt là nhận ra. */
 const COVER_PALETTE = ['#1F3A5F', '#0F766E', '#6B3FA0', '#9F1239', '#166534', '#334155', '#92400E', '#3730A3', '#0E7490', '#7C2D12'];
 
+const SKILL_IN_ID = /-(reading|listening)(?=-|$)/;
+/** Các bản Reading và Listening của cùng một đề (cùng id, khác kỹ năng). */
 /** Số đề trong tên, ví dụ "Cambridge IELTS 19" -> "19", "VOL 10 KEY" -> "10". */
 function numOf(s: string): string {
   const m = s.match(/(\d+)/);
@@ -196,11 +198,27 @@ function FlatCoverDrawn({
 
 export default function IeltsSourcePracticeScreen() {
   const { L } = useL();
+  const mainScrollRef = useRef<ScrollView>(null);
+
+  const scrollToTop = useCallback(() => {
+    mainScrollRef.current?.scrollTo({ y: 0, animated: false });
+    if (Platform.OS === 'web' && typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   // Top level views: 'catalog' | 'collections' | 'detail'
   const [viewMode, setViewMode] = useState<'catalog' | 'collections' | 'detail'>('catalog');
 
   const [tests, setTests] = useState<TestMeta[]>([]);
+  // Bộ đề Cambridge / VOL đang bảo trì: hiện trong danh sách nhưng chưa mở được.
+  const isUnderMaintenance = (t: TestMeta) => /cambridge|vol/i.test(t.source);
+  const openTest = (id: string) => {
+    const meta = tests.find((t) => t.id === id);
+    if (meta && isUnderMaintenance(meta)) return;
+    scrollToTop();
+    void loadTest(id);
+  };
   const [reviewPages, setReviewPages] = useState<number[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [test, setTest] = useState<TestContent | null>(null);
@@ -210,6 +228,10 @@ export default function IeltsSourcePracticeScreen() {
   const [grade, setGrade] = useState<Grade | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [viewMode, scrollToTop]);
 
   // Filters for Catalog
   const [collectionFilter, setCollectionFilter] = useState<'all' | 'cambridge' | 'vol'>('all');
@@ -266,6 +288,7 @@ export default function IeltsSourcePracticeScreen() {
     setLoading(true);
     setError('');
     setViewMode('detail');
+    scrollToTop();
     setIsExamStarted(startPractice);
     setExamMode(mode);
     setShowAnswerKey(false);
@@ -382,7 +405,7 @@ export default function IeltsSourcePracticeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FAF7F2' }}>
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingVertical: 20, paddingBottom: 80 }}>
+      <ScrollView ref={mainScrollRef} contentContainerStyle={{ paddingHorizontal: 24, paddingVertical: 20, paddingBottom: 80 }}>
         <View style={{ width: '100%', maxWidth: 1360, alignSelf: 'center', gap: 20 }}>
 
           
@@ -783,7 +806,7 @@ export default function IeltsSourcePracticeScreen() {
                         </Text>
                       </View>
                       <Text style={{ fontSize: 20, fontWeight: '900', color: '#2A1808', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
-                        Cambridge IELTS 21 · Reading Test 1
+                        Cambridge IELTS 20 · Reading Test 1
                       </Text>
                       <Text style={{ fontSize: 13, color: '#7C6552' }}>
                         {L('Đề thi bám sát đề thật, chất lượng cao.', 'Authentic test format with detailed analysis.')}
@@ -799,11 +822,11 @@ export default function IeltsSourcePracticeScreen() {
                         justifyContent: 'center',
                       }}
                     >
-                      <FlatCover kind="CAMBRIDGE" num="21" width={120} height={120} radius={12} />
+                      <FlatCover kind="CAMBRIDGE" num="20" width={120} height={120} radius={12} />
                     </View>
 
                     <Pressable
-                      onPress={() => loadTest('cambridge-21-reading-1')}
+                      onPress={() => loadTest('cambridge-20-reading-1')}
                       style={{
                         paddingHorizontal: 16,
                         height: 40,
@@ -840,6 +863,12 @@ export default function IeltsSourcePracticeScreen() {
                   </View>
 
                   {/* Grid of Test Cards matching input_file_2 - Large, Balanced Covers */}
+                  {filteredTests.some(isUnderMaintenance) ? (
+                    <View style={{ padding: 14, borderRadius: 12, backgroundColor: '#FEF3C7', borderWidth: 1, borderColor: '#F59E0B', gap: 4 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '800', color: '#92400E' }}>Bộ đề Cambridge / VOL đang bảo trì</Text>
+                      <Text style={{ fontSize: 12, color: '#92400E' }}>Các đề này tạm chưa mở được. Bạn có thể làm bộ đề khác trong lúc chờ.</Text>
+                    </View>
+                  ) : null}
                   {sectionGroups.map((g) => (
                   <View key={g.key} style={{ gap: 14 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -856,8 +885,9 @@ export default function IeltsSourcePracticeScreen() {
                       return (
                         <Pressable
                           key={item.id}
-                          onPress={() => loadTest(item.id)}
+                          onPress={() => openTest(item.id)}
                           style={{
+                            opacity: isUnderMaintenance(item) ? 0.55 : 1,
                             flex: 1,
                             minWidth: 420,
                             maxWidth: 540,
@@ -1726,10 +1756,10 @@ export default function IeltsSourcePracticeScreen() {
 
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
                   {[
-                    { title: 'Reading Test 1', q: '40 câu', t: '60 phút', id: 'cambridge-20-test-1' },
-                    { title: 'Reading Test 2', q: '40 câu', t: '60 phút', id: 'cambridge-20-test-2' },
-                    { title: 'Reading Test 3', q: '40 câu', t: '60 phút', id: 'cambridge-20-test-3' },
-                    { title: 'Reading Test 4', q: '40 câu', t: '60 phút', id: 'cambridge-20-test-4' },
+                    { title: 'Reading Test 1', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-1' },
+                    { title: 'Reading Test 2', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-2' },
+                    { title: 'Reading Test 3', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-3' },
+                    { title: 'Reading Test 4', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-4' },
                   ].map((rel) => (
                     <Pressable
                       key={rel.id}

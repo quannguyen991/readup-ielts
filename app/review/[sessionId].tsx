@@ -154,7 +154,12 @@ export default function ReviewScreen() {
           </Text>
         </View>
 
-        <View className="flex-row gap-2">
+        <View className="flex-row flex-wrap gap-2">
+          <Button
+            label={L('Xem dạng đề IELTS gốc & Linearthinking', 'Open IELTS Split View')}
+            iconLeft="book"
+            onPress={() => router.push(`/read/${session.articleId}?review=${session.id}` as never)}
+          />
           <Button
             label="Review Vocabulary"
             variant="outline"
@@ -164,6 +169,7 @@ export default function ReviewScreen() {
           <Button
             label={`Retry Mistakes (${incorrect})`}
             iconLeft="refresh"
+            variant="outline"
             disabled={incorrect === 0}
             onPress={() => router.push(`/read/${session.articleId}` as never)}
           />

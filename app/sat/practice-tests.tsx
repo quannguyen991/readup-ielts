@@ -2,9 +2,7 @@ import React, { useMemo, useState } from 'react';
 import {
   Image,
   Modal,
-  Platform,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text as RNText,
   TextInput,
@@ -313,7 +311,7 @@ export default function SatPracticeTestsScreen() {
 
   const getCollectionLabel = () => {
     const f = SAT_FORM_CATEGORIES.find((c) => c.id === collectionFilter);
-    return f ? (en ? f.labelEn : f.labelVi) : 'Tất cả 50 đề';
+    return f ? (en ? f.labelEn : f.labelVi) : 'Tất cả 85 đề';
   };
 
   return (
@@ -332,15 +330,16 @@ export default function SatPracticeTestsScreen() {
 
         {/* Hero Rounded Header Card matching Image 2 */}
         <LightHero
-          badge="DIGITAL SAT · KHO 65 BỘ ĐỀ"
+          badge="DIGITAL SAT · KHO 85 BỘ ĐỀ"
           art="home"
           line1={L('Luyện bộ đề thi thử Digital SAT', 'Digital SAT Practice Tests')}
           line2={L('luyện Reading & Writing và Math theo mục tiêu', 'practice Reading & Writing and Math by goal')}
           footer={
             <>
-              <HeroStat value="65" label={L('bộ luyện', 'practice sets')} />
+              <HeroStat value="85" label={L('bộ luyện', 'practice sets')} />
               <HeroStat value="12" label={L('bộ Reading', 'Reading sets')} />
-              <HeroStat value="6" label={L('đề Bluebook chính thức', 'official Bluebook tests')} />
+              <HeroStat value="8" label={L('đề Bluebook chính thức', 'official Bluebook tests')} />
+              <HeroStat value="30" label={L('đề thi thật 2024–2025', '2024–2025 real tests')} />
             </>
           }
         />
@@ -358,8 +357,9 @@ export default function SatPracticeTestsScreen() {
             { id: 'rw', label: 'Reading & Writing' },
             { id: 'math', label: 'Math (Toán)' },
             { id: 'full', label: 'Full Digital SAT' },
-            { id: 'real2025', label: 'Thi Thật 2025' },
-            { id: 'bluebook', label: 'Official Bluebook' },
+            { id: 'real2025', label: 'Thi Thật 2025 (15)' },
+            { id: 'real2024', label: 'Thi Thật 2024 (15)' },
+            { id: 'bluebook', label: 'Official Bluebook (8)' },
           ].map((sec) => {
             const on = quickPill === sec.id;
             return (
@@ -381,6 +381,8 @@ export default function SatPracticeTestsScreen() {
                     setSectionFilter('full');
                   } else if (sec.id === 'real2025') {
                     setCollectionFilter('real_test_2025');
+                  } else if (sec.id === 'real2024') {
+                    setCollectionFilter('real_test_2024');
                   } else if (sec.id === 'bluebook') {
                     setCollectionFilter('official_bluebook');
                   }

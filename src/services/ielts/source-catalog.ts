@@ -75,7 +75,39 @@ export function hasCompleteKey(test: SourceTest): boolean {
     && Array.from({ length: 40 }, (_, i) => test.answerKey?.[String(i + 1)]).every((answer) => Array.isArray(answer) ? answer.some((s) => s.trim()) : typeof answer === 'string' && answer.trim()));
 }
 
-export function prepareSourceTest(test: SourceTest): SourceTest {
+/**
+ * Bỏ các dòng "Vị trí trong bài: …" đã bị lẫn vào nội dung bài đọc khi nhập dữ liệu.
+ * Đó là chú thích đáp án: để nguyên thì đề làm bài lộ luôn câu trả lời.
+ */
+export function stripEvidenceNotes(text: string): string {
+  return text.replace(/(^|\n\n)Vị trí trong bài:[^\n]*(?=\n\n|$)/g, '').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function cleanDeep<T>(value: T): T {
+  if (typeof value === 'string') return stripEvidenceNotes(value) as T;
+  if (Array.isArray(value)) return value.map((v) => cleanDeep(v)) as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, cleanDeep(v)])) as T;
+  }
+  return value;
+}
+
+/** Gom các chú thích "Vị trí trong bài: …" trước khi xoá khỏi bài: đây là bằng chứng để giải thích đáp án sau khi nộp. */
+export function collectEvidenceNotes(value: unknown): string[] {
+  const out: string[] = [];
+  const walk = (v: unknown): void => {
+    if (typeof v === 'string') {
+      for (const m of v.matchAll(/Vị trí trong bài:[^\n]*/g)) out.push(m[0].trim());
+    } else if (Array.isArray(v)) v.forEach(walk);
+    else if (v && typeof v === 'object') Object.values(v as Record<string, unknown>).forEach(walk);
+  };
+  walk(value);
+  return out;
+}
+
+export function prepareSourceTest(raw: SourceTest): SourceTest {
+  const evidenceNotes = collectEvidenceNotes(raw.pages ?? []).concat(collectEvidenceNotes(raw.parts ?? []));
+  const test = { ...cleanDeep(raw), evidenceNotes } as SourceTest & { evidenceNotes: string[] };
   const parts = test.parts ?? (test.section ? buildExamParts(test.pages, test.section) : []);
   const missing = [...(test.missingComponents ?? [])];
   if (test.section && parts.length !== EXPECTED_PARTS[test.section]) missing.push('parts');

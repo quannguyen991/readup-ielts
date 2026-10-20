@@ -8,12 +8,9 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround, highlightRanges, snapToWords, type ReaderTool } from '@/components/reader/PassageView';
 import { QuestionPanel, type QuestionPanelHandle } from '@/components/reader/QuestionPanel';
-import { FloatingTools, SplitPane, ToolRail } from '@/components/reader/exam/ExamChrome';
-import { EXAM_INK, ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
+import { SplitPane } from '@/components/reader/exam/ExamChrome';
 import { ExamClock } from '@/components/exam/ExamClock';
-import { READING_NAVY, ReadingFrame } from '@/components/exam/ReadingLayout';
 import { NotesPanel, SettingsPanel } from '@/components/reader/exam/ExamPanels';
-import { EXAM, PAPER_THEMES } from '@/components/reader/exam/exam-theme';
 import { useTextSelection } from '@/components/reader/useTextSelection';
 import { WordSheet, type WordSheetTarget } from '@/components/reader/WordSheet';
 import { ChatPanel } from '@/components/reader/ChatPanel';
@@ -37,66 +34,42 @@ import { useGameStore } from '@/store/useGameStore';
 import { useL } from '@/i18n/useL';
 import { examLayout } from '@/lib/mobile/exam-layout';
 import { useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveGuard } from '@/lib/mobile/useMobileExam';
+import { groupIntoBlocks } from '@/components/reader/QuestionBlocks';
 
-/**
- * Màn luyện Reading — bố cục PHÒNG THI.
- *
- * Thanh trên kiểu đề thi máy: dải số câu (đã làm tô đen, đánh dấu có chấm vàng),
- * màu giấy, mặt chữ, cỡ chữ, toàn màn hình, đồng hồ, nút "Kiểm Tra". Dưới là hai
- * tấm giấy viền mực đặt cạnh nhau, MỖI TẤM CUỘN RIÊNG: bài đọc bên trái, câu hỏi
- * bên phải — người làm bài cuộn bài đi tìm bằng chứng mà câu hỏi vẫn đứng yên.
- *
- * Khác màn đọc báo song ngữ (tờ báo, không viền, không đồng hồ): ở đây người học
- * đang LÀM ĐỀ, nên mọi thứ nhắc tới thời gian và số câu còn lại đều nằm trong tầm mắt.
- *
- * Màn hẹp chỉ đủ một tấm, nên thanh trên có thêm hai thẻ Bài đọc / Câu hỏi; bấm
- * "khoanh bằng chứng" ở câu hỏi thì tự chuyển sang thẻ Bài đọc.
- */
-/** Thứ tự passage của một đề thi thử, đọc từ đường dẫn hub `…/mock-run?…&r=id1,id2,id3`. */
-function readingChain(hub: string | undefined): string[] {
-  if (!hub) return [];
-  const query = hub.split('?')[1] ?? '';
-  const part = query.split('&').find((p) => p.startsWith('r='));
-  return part ? part.slice(2).split(',').filter(Boolean) : [];
-}
+// Modern IELTS UI Components
+import { IeltsExamHeader } from '@/components/reader/ielts/IeltsExamHeader';
+import { IeltsPassageToolbar } from '@/components/reader/ielts/IeltsPassageToolbar';
+import { IeltsBottomBar, type QuestionNavItem } from '@/components/reader/ielts/IeltsBottomBar';
+import { IeltsScoreModal } from '@/components/reader/ielts/IeltsScoreModal';
 
-/*
-  Mỗi passage là một phiên làm bài riêng. `key` theo mã bài để khi chuyển sang passage kế tiếp
-  (thi liền mạch) toàn bộ trạng thái câu trả lời, đánh dấu và bằng chứng được dựng lại từ đầu.
-*/
 export default function ReadScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   return <ReadSession key={id} />;
 }
 
 function ReadSession() {
-  // `from`: hub Mock Test gọi sang. Có nó thì bài này là một passage của thi thử.
-  // `until`: mốc kết thúc (ms) của đồng hồ thi liền mạch; có nó thì đồng hồ bám theo giờ thật.
-  const { id, types, mode, from, until } = useLocalSearchParams<{ id: string; types?: string; mode?: string; from?: string; until?: string }>();
+  const { id, types, mode, from, until, review } = useLocalSearchParams<{
+    id: string;
+    types?: string;
+    mode?: string;
+    from?: string;
+    until?: string;
+    review?: string;
+  }>();
   const runEnd = until && Number.isFinite(Number(until)) ? Number(until) : undefined;
-  const { L, en } = useL();
+  const { L } = useL();
 
-  /*
-    Đơn hàng dạng câu đến từ bộ lọc ở màn Luyện tập, đi qua URL.
-
-    Đi qua URL chứ không qua một store dùng chung: bộ lọc là ý muốn cho LẦN MỞ
-    BÀI NÀY, không phải thiết lập vĩnh viễn của người dùng. Để trong store thì
-    một lần lọc hôm nay sẽ âm thầm đổi mọi bài đọc tuần sau mà không ai nhớ vì sao.
-  */
   const requestedTypes = useMemo(
     () => (types ? (types.split(',').filter(Boolean) as QuestionType[]) : undefined),
     [types],
   );
   const userArticle = useUserArticleStore((s) => (id ? s.articles[id] : undefined));
 
-  // Bài tự dán không nằm trong seed nên phải tra cả hai nguồn.
   const meta = useMemo<ArticleMeta | undefined>(
     () => (id ? getArticleById(id) : undefined) ?? userArticle,
     [id, userArticle],
   );
 
-  // Toàn văn nằm trong bodies/chunk-NN.json, nạp lười — chỉ lấy khi bài thật
-  // sự đọc được. Bài chỉ tiêu đề không có chunk nào để nạp.
   const article = useMemo<Article | undefined>(() => {
     if (!meta || !isReadable(meta)) return undefined;
     return (id ? getArticleWithBody(id) : undefined) ?? userArticle;
@@ -126,11 +99,8 @@ function ReadSession() {
   const ensureSet = useQuestionStore((s) => s.ensureSet);
   const mixedSet = useQuestionStore((s) => s.mixedSet);
   const questionSet = useQuestionStore((s) => (id ? s.sets[id] : undefined));
-  // Cờ "đang tải" đọc THẲNG từ store chứ không giữ một bản sao cục bộ. Store là
-  // nơi thật sự biết bộ đề của bài này đang được lấy hay không (nó đặt cờ ngay
-  // trong `ensureSet`, kèm cả hạn chờ); giữ thêm một `useState` ở đây chỉ là bản
-  // sao chép tay, và cứ mỗi lần mở bài lại tốn một lượt render để bật nó lên.
   const loadingQuestions = useQuestionStore((s) => (id ? (s.loading[id] ?? false) : false));
+
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [marked, setMarked] = useState<Record<string, boolean>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -138,56 +108,40 @@ function ReadSession() {
   const [chatOpen, setChatOpen] = useState(false);
   const [highlightColor, setHighlightColor] = useState<HighlightColorKey>('yellow');
   const [phraseMode, setPhraseMode] = useState(false);
-  /**
-   * Công cụ đang bật. Mặc định 'read': chạm vào bài không làm gì, như đề thật.
-   * Thẻ dịch chỉ bật ở 'vocab'; tô màu chỉ ở 'highlight' (người dùng chốt 26/09/2026).
-   */
   const [tool, setTool] = useState<ReaderTool>('read');
+  const [showToolbar, setShowToolbar] = useState(false);
   const [phraseAnchor, setPhraseAnchor] = useState<{
     paragraphIndex: number;
     tokenIndex: number;
     word: string;
   } | null>(null);
-  /*
-    PROOFLOOP — bằng chứng người học tự khoanh cho từng câu.
 
-    Đây là vế thứ hai của phép so ở `services/proofloop/state.ts`; vế thứ nhất
-    (`evidenceParagraphIndex`) đã nằm sẵn trong mọi bộ đề. Không có vế này thì
-    đáp án đúng và đoán trúng nhìn giống hệt nhau.
-
-    Dùng lại chế độ chọn cụm có sẵn: khi `evidenceFor` khác null, lần chạm hai
-    đầu cụm tiếp theo ghi vào đây thay vì mở thẻ nghĩa.
-  */
   const [evidenceMarks, setEvidenceMarks] = useState<Record<string, EvidenceMark>>({});
   const [evidenceFor, setEvidenceFor] = useState<string | null>(null);
 
   const [speakingParagraph, setSpeakingParagraph] = useState<number | null>(null);
   const [paused, setPaused] = useState(false);
 
-  // Bố cục phòng thi: màu giấy, mặt chữ, thẻ bài/câu hỏi trên màn hẹp.
+  // Review & Grading Mode State
+  const [isReviewMode, setIsReviewMode] = useState(Boolean(review));
+  const [gradedMap, setGradedMap] = useState<Record<string, boolean>>({});
+  const [lastScore, setLastScore] = useState<{ correct: number; total: number; band: number | null } | null>(null);
+  const [scoreModalVisible, setScoreModalVisible] = useState(false);
+  const [locateEvidence, setLocateEvidence] = useState(true);
+
   const { width: winW, height: winH } = useWindowDimensions();
-  const [paperKey, setPaperKey] = useState<string>('white');
-  const [fontKey, setFontKey] = useState<string>('serif');
   const [narrowTab, setNarrowTab] = useState<'passage' | 'questions'>('passage');
   const [notesOpen, setNotesOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  /** Số câu (từ 1) đang là câu hiện tại — dải số câu và huy hiệu tô nổi nó. */
   const [activeQ, setActiveQ] = useState(1);
+
+  const pScroll = useRef<ScrollView>(null);
   const qScroll = useRef<ScrollView>(null);
   const panelRef = useRef<QuestionPanelHandle>(null);
   useReadingFonts();
 
-  // Mốc đặt trong effect, không phải trong `useRef(Date.now())`: đối số của useRef
-  // được tính ngay trong lúc render. Mốc này chỉ đọc ở handler nên đặt muộn một
-  // nhịp không ảnh hưởng gì, mà lại đúng hơn — nó là lúc bài đọc thật sự hiện ra.
   const startedAt = useRef(0);
 
-  /*
-    ĐIỆN THOẠI: chặn kéo-để-tải-lại, tự lưu nháp đáp án, hỏi lại trước khi thoát.
-    Nháp lưu 500ms sau lần đổi cuối (không ghi theo từng phím) và ghi ngay khi
-    ẩn tab / đóng trang — vuốt nhầm quay lại hay hệ điều hành dọn tab nền không
-    còn làm mất bài đang làm dở.
-  */
   useExamWebTweaks();
   const keyboardInset = useKeyboardInset();
   const [done, setDone] = useState(false);
@@ -196,7 +150,7 @@ function ReadSession() {
     setAnswers((prev) => (Object.keys(prev).length ? prev : d.answers));
     setMarked((prev) => (Object.keys(prev).length ? prev : d.marked));
   }, []);
-  const draft = useExamDraft('read', id, draftState, !done, onRestoreDraft);
+  const draft = useExamDraft('read', id, draftState, !done && !isReviewMode, onRestoreDraft);
   const hasAnswers = useMemo(() => Object.values(answers).some((v) => v.trim() !== ''), [answers]);
   const askLeave = useCallback(() => {
     if (Platform.OS !== 'web' || typeof window === 'undefined') return true;
@@ -207,9 +161,8 @@ function ReadSession() {
       ),
     );
   }, [L]);
-  useLeaveGuard(hasAnswers && !done, askLeave);
-  // Các hàm truyền xuống bài đọc phải ĐỨNG YÊN giữa các lượt render, để việc chọn
-  // một đáp án không bắt hàng trăm ô chữ của bài dựng lại (PassageView là memo).
+  useLeaveGuard(hasAnswers && !done && !isReviewMode, askLeave);
+
   const passageHandlers = useRef<{
     word: (w: string, s: string, p: number) => void;
     longPress: (s: string, p: number) => void;
@@ -231,6 +184,7 @@ function ReadSession() {
       }),
     [],
   );
+
   const articleHighlights = useMemo(
     () => highlights.filter((h) => h.articleId === article?.id),
     [highlights, article?.id],
@@ -241,20 +195,30 @@ function ReadSession() {
     startedAt.current = Date.now();
   }, []);
 
-  // Đánh dấu các từ trong bài là "đã gặp" để lần sau tô nhạt sẵn.
-  //
-  // Hoãn một nhịp chứ không chạy thẳng trong effect. Hai lý do, và cả hai đều là
-  // lý do thật chứ không phải để chiều lint: (1) đây là ghi vào store từ vựng
-  // ngay giữa lượt commit của màn đọc, kéo theo một lượt render nữa trước khi
-  // người đọc kịp thấy chữ nào; (2) việc tách 400 từ rồi tra nguyên thể là phần
-  // tính toán nặng nhất lúc mở bài, mà nó KHÔNG cần xong trước khi bài hiện ra.
+  // Restore previous attempt if opened with ?review=sessionId
+  useEffect(() => {
+    if (review) {
+      const s = useStudyStore.getState().sessions.find((x) => x.id === review || x.articleId === id);
+      if (s) {
+        const restoredAnswers: Record<string, string> = {};
+        const graded: Record<string, boolean> = {};
+        for (const att of s.attempts) {
+          if (att.userAnswer) restoredAnswers[att.questionId] = att.userAnswer;
+          graded[att.questionId] = att.isCorrect;
+        }
+        setAnswers(restoredAnswers);
+        setGradedMap(graded);
+        setLastScore({ correct: s.rawScore, total: s.total, band: s.estimatedBand });
+        setIsReviewMode(true);
+      }
+    }
+  }, [review, id]);
+
   useEffect(() => {
     if (!article?.bodyText) return;
     const body = article.bodyText;
     const defer = setTimeout(() => {
-      const lemmas = [...new Set((body.toLowerCase().match(/[a-z]{4,}/g) ?? []).slice(0, 400))].map(
-        lemmatize,
-      );
+      const lemmas = [...new Set((body.toLowerCase().match(/[a-z]{4,}/g) ?? []).slice(0, 400))].map(lemmatize);
       markSeen(lemmas);
     }, 0);
     return () => clearTimeout(defer);
@@ -262,13 +226,6 @@ function ReadSession() {
 
   useEffect(() => {
     if (!article || !isReadable(article)) return;
-    /*
-      `mode=mixed` là nhánh LUYỆN XEN KẼ DẠNG BÀI.
-
-      Bộ đề thường đi thành khối như đề thật. Nhánh này cố tình trộn dạng, vì lúc
-      mới học thì nhận ra mình đang gặp dạng gì cũng là một kỹ năng, mà khối đề
-      đồng nhất che mất nó.
-    */
     if (mode === 'mixed') {
       void mixedSet(article);
       return;
@@ -284,7 +241,6 @@ function ReadSession() {
     };
   }, [logStudyTime]);
 
-  /** Tô đoạn [start, end) của một đoạn văn: nới cho trọn từ, vệt mới thay vệt cũ chồng lên nó. */
   function applyHighlight(paragraphIndex: number, rawStart: number, rawEnd: number) {
     if (!article) return;
     const text = article.paragraphs[paragraphIndex];
@@ -306,11 +262,6 @@ function ReadSession() {
     });
   }
 
-  /**
-   * Kéo bôi ở chế độ highlight: đọc vùng bôi của trình duyệt, quy ra vị trí ký
-   * tự trong TỪNG đoạn văn nó đi qua (bôi vắt hai đoạn thì tô cả hai), rồi xoá
-   * vùng bôi để vệt màu hiện ra ngay — không để lớp bôi xanh của trình duyệt che.
-   */
   function highlightDomSelection() {
     if (Platform.OS !== 'web' || typeof document === 'undefined' || !article) return;
     const sel = window.getSelection();
@@ -352,8 +303,6 @@ function ReadSession() {
         ? paragraph.slice(start, endWordPos + token.length)
         : `${phraseAnchor.word} ${token}`;
 
-    // Đang khoanh bằng chứng thì ghi vào đó, KHÔNG mở thẻ nghĩa: người học đang
-    // trả lời câu hỏi, mở thẻ nghĩa lúc này là cắt ngang việc họ đang làm.
     if (evidenceFor) {
       const startOffset = start >= 0 ? start : 0;
       setEvidenceMarks((prev) => ({
@@ -390,71 +339,32 @@ function ReadSession() {
     };
   });
 
-  /**
-   * Bôi đen bất kỳ chỗ nào trong bài → mở luôn thẻ nghĩa cho đúng cụm đó, kèm
-   * nguyên câu chứa nó làm ngữ cảnh. Không phải bật chế độ gì trước.
-   *
-   * Gọi ở đây, trước mấy nhánh return sớm bên dưới, vì hook không được nằm sau
-   * điều kiện. `article` chưa nạp xong thì bỏ qua.
-   */
   useTextSelection(
     PASSAGE_CONTAINER_ID,
     (selected) => {
-    if (!article) return;
-    if (tool === 'highlight') {
-      highlightDomSelection();
-      return;
-    }
+      if (!article) return;
+      if (tool === 'highlight') {
+        highlightDomSelection();
+        return;
+      }
 
-    const paragraphIndex = article.paragraphs.findIndex((p) => p.includes(selected));
-    const paragraph = paragraphIndex === -1 ? undefined : article.paragraphs[paragraphIndex];
+      const paragraphIndex = article.paragraphs.findIndex((p) => p.includes(selected));
+      const paragraph = paragraphIndex === -1 ? undefined : article.paragraphs[paragraphIndex];
 
-    setSheet({
-      word: selected,
-      sentence: paragraph ? sentenceAround(paragraph, paragraph.indexOf(selected)) : selected,
-      // Bôi vắt qua hai đoạn thì không quy về đoạn nào được; ghi đoạn đầu để
-      // phần "Lưu từ" vẫn có chỗ neo.
-      paragraphIndex: paragraphIndex === -1 ? 0 : paragraphIndex,
-      mode: selectionMode(selected),
-    });
+      setSheet({
+        word: selected,
+        sentence: paragraph ? sentenceAround(paragraph, paragraph.indexOf(selected)) : selected,
+        paragraphIndex: paragraphIndex === -1 ? 0 : paragraphIndex,
+        mode: selectionMode(selected),
+      });
     },
     tool !== 'read',
   );
 
-  /*
-    Phím tắt H / N / T như đề thi máy: Highlight, Notes, Tra từ. Bỏ qua khi đang
-    gõ vào ô nhập (ô điền đáp án, ô ghi chú) hoặc có phím bổ trợ.
-  */
-  useEffect(() => {
-    if (Platform.OS !== 'web' || typeof window === 'undefined') return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-      const el = e.target as HTMLElement | null;
-      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
-      const k = e.key.toLowerCase();
-      const flip = (next: ReaderTool) => {
-        setTool((cur) => (cur === next ? 'read' : next));
-        if (!evidenceFor) {
-          setPhraseMode(false);
-          setPhraseAnchor(null);
-        }
-      };
-      if (k === 'h') flip('highlight');
-      else if (k === 't') flip('vocab');
-      else if (k === 'n') {
-        setNotesOpen((o) => !o);
-        setSettingsOpen(false);
-      } else return;
-      e.preventDefault();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [evidenceFor]);
-
   if (!meta) {
     return (
-      <View className="flex-1 items-center justify-center bg-canvas p-6">
-        <Text className="font-strong text-cardTitle text-ink">{L('Không tìm thấy bài đọc.', 'Passage not found.')}</Text>
+      <View className="flex-1 items-center justify-center bg-white p-6">
+        <Text className="text-base font-bold text-gray-900">{L('Không tìm thấy bài đọc.', 'Passage not found.')}</Text>
         <Button label={L('Về Library', 'Back to Library')} className="mt-4" onPress={() => router.push('/library' as never)} />
       </View>
     );
@@ -462,17 +372,11 @@ function ReadSession() {
 
   if (!isReadable(meta)) {
     return (
-      <View className="flex-1 items-center justify-center bg-canvas p-6">
+      <View className="flex-1 items-center justify-center bg-white p-6">
         <Card className="max-w-[520px]">
           <Badge label={L('Link đề chính thức', 'Official test link')} tone="warning" />
-          <Text className="mt-3 font-strong text-sectionTitle text-ink">{meta.title}</Text>
-          <Text className="mt-2 font-sans text-body text-muted">{meta.summary}</Text>
-          <Text className="mt-3 font-sans text-label text-subtle">
-            {L(
-              `Bài từ nguồn có bản quyền (${meta.sourceName}) nên app không lưu toàn văn. Bấm để đọc trên trang gốc.`,
-              `This passage is copyrighted (${meta.sourceName}), so the app doesn't store the full text. Tap to read it on the original site.`,
-            )}
-          </Text>
+          <Text className="mt-3 font-bold text-base text-gray-900">{meta.title}</Text>
+          <Text className="mt-2 text-sm text-gray-600">{meta.summary}</Text>
           <Button
             label={L('Mở link gốc', 'Open original link')}
             iconRight="arrow-right"
@@ -484,24 +388,15 @@ function ReadSession() {
     );
   }
 
-  // Metadata có nhưng không nạp được toàn văn: file chunk thiếu hoặc hỏng.
-  // Báo rõ thay vì render một bài rỗng.
   if (!article) {
     return (
-      <View className="flex-1 items-center justify-center bg-canvas p-6">
+      <View className="flex-1 items-center justify-center bg-white p-6">
         <Card className="max-w-[520px]">
-          <Text className="font-strong text-sectionTitle text-ink">{meta.title}</Text>
-          <Text className="mt-2 font-sans text-body text-muted">
-            {L(
-              'Không nạp được toàn văn của bài này. Chạy lại `npm run ingest` để dựng lại kho bài.',
-              'Could not load the full text of this passage. Run `npm run ingest` again to rebuild the library.',
-            )}
+          <Text className="font-bold text-base text-gray-900">{meta.title}</Text>
+          <Text className="mt-2 text-sm text-gray-500">
+            {L('Không nạp được toàn văn của bài này.', 'Could not load the full text of this passage.')}
           </Text>
-          <Button
-            label={L('Về Library', 'Back to Library')}
-            className="mt-4"
-            onPress={() => router.push('/library' as never)}
-          />
+          <Button label={L('Về Library', 'Back to Library')} className="mt-4" onPress={() => router.push('/library' as never)} />
         </Card>
       </View>
     );
@@ -509,6 +404,21 @@ function ReadSession() {
 
   const questions = questionSet?.questions ?? [];
   const answeredCount = questions.filter((q) => Boolean(answers[q.id])).length;
+  const blocks = useMemo(() => groupIntoBlocks(questions), [questions]);
+
+  // Current active question
+  const currentQuestion = questions[activeQ - 1];
+
+  // Auto-scroll passage to evidence when in review mode
+  useEffect(() => {
+    if (isReviewMode && locateEvidence && currentQuestion) {
+      const pIdx = currentQuestion.evidenceParagraphIndex;
+      if (pIdx !== undefined && Platform.OS === 'web' && typeof document !== 'undefined') {
+        const el = document.getElementById(`passage-para-${pIdx}`);
+        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [activeQ, isReviewMode, locateEvidence, currentQuestion]);
 
   const speakParagraph = (index: number) => {
     const paragraph = article.paragraphs[index];
@@ -527,7 +437,6 @@ function ReadSession() {
 
   const pickTool = (next: ReaderTool) => {
     setTool((cur) => (cur === next && next !== 'read' ? 'read' : next));
-    // Đổi công cụ thì bỏ dở việc chọn cụm — trừ khi đang khoanh bằng chứng cho một câu hỏi.
     if (!evidenceFor) {
       setPhraseMode(false);
       setPhraseAnchor(null);
@@ -535,15 +444,13 @@ function ReadSession() {
   };
 
   const submit = () => {
-    // Hết giờ và người học bấm nộp gần cùng lúc thì chỉ nộp một lần.
     if (done || submitting) return;
     setSubmitting(true);
     setDone(true);
     draft.clear();
 
-    // Chấm cả bộ một lượt: dạng gõ chữ theo bộ chuẩn hoá của Listening + giới hạn số
-    // từ, nhóm "Choose TWO" theo tập đáp án.
     const graded = gradeQuestions(questions, answers);
+    setGradedMap(graded);
 
     const attempts: AttemptRecord[] = questions.map((q) => {
       const userAnswer = answers[q.id]?.trim() ?? '';
@@ -555,32 +462,14 @@ function ReadSession() {
         isCorrect: graded[q.id] ?? false,
         timeSpentMs: 0,
         markedForReview: Boolean(marked[q.id]),
-        // `undefined` khi người học không khoanh gì: KHÔNG ĐO, khác với đo rồi
-        // thấy sai. Đừng thay bằng `null` cho gọn — hai thứ đó dẫn tới hai
-        // trạng thái khác nhau ở tầng phân loại.
         evidenceMark: evidenceMarks[q.id],
       };
     });
 
-    /*
-      Gửi từng câu lên SỔ BẰNG CHỨNG.
-
-      Trước đây màn này khoanh bằng chứng, tính trạng thái và hiện huy hiệu — rồi
-      dừng ở đó. Không có gì chảy lên `services/mastery`, nên trang Sổ bằng chứng
-      trống trơn với người chỉ luyện Reading, màn giáo viên không bao giờ thấy khó
-      khăn Reading của lớp, và phiên 1 của giao thức chạy thử ("Reading with
-      evidence marking → baseline ledger") không sinh nổi một dòng dữ liệu.
-
-      `sourceId` là id bài đọc, và phải đúng là nó: điều kiện chuyển giao so hai
-      `sourceId` với nhau, nên đặt bừa một chuỗi mới mỗi lượt sẽ khiến mọi phép
-      thử đều "đạt chuyển giao" và cả cơ chế mất nghĩa.
-    */
     const observedAt = new Date().toISOString();
     for (const q of questions) {
       const skillKey = readingSkillFor(q.type);
-      // Ngữ pháp thuần không có "đoạn đỡ đáp án" nên không vào sổ. Xem reading-skill.ts.
       if (skillKey === null) continue;
-
       const mark = evidenceMarks[q.id];
       const truthIndex = q.evidenceParagraphIndex;
 
@@ -589,9 +478,6 @@ function ReadSession() {
         sourceId: article.id,
         answerCorrect: graded[q.id] ?? false,
         pointer: mark ? { kind: 'paragraph', index: mark.paragraphIndex } : null,
-        // Bộ đề cũ có câu không kèm đối chứng — `passage_tier` đã bỏ ràng buộc
-        // not null. Không có đối chứng thì không so được, và bộ phân loại sẽ ghi
-        // `unobserved` chứ không đoán bù.
         truth: Number.isInteger(truthIndex) ? { kind: 'paragraph', index: truthIndex } : null,
         at: observedAt,
       });
@@ -599,10 +485,11 @@ function ReadSession() {
 
     const correct = attempts.filter((a) => a.isCorrect).length;
     const durationMs = Date.now() - startedAt.current;
-    // Mã = bài đọc: nộp lại cùng bài không cộng đá / ca lần nữa (Thành Phố Tri Thức).
     useGameStore.getState().awardBatch(correct, attempts.length, 'read', `read:${article.id}`);
 
-    const sessionId = addSession({
+    const band = article.exam === 'sat' ? null : rawScoreToBand(correct, attempts.length);
+
+    addSession({
       articleId: article.id,
       articleTitle: article.title,
       exam: article.exam,
@@ -611,25 +498,13 @@ function ReadSession() {
       rawScore: correct,
       total: attempts.length,
       accuracy: attempts.length === 0 ? 0 : Math.round((correct / attempts.length) * 100),
-      // Band là thang riêng của IELTS — bài SAT không quy đổi được.
-      estimatedBand: article.exam === 'sat' ? null : rawScoreToBand(correct, attempts.length),
+      estimatedBand: band,
       durationMs,
       attempts,
     });
 
     setProgress(article.id, 100, article.paragraphs.length - 1);
 
-    /*
-      Chỉ ghi tốc độ đọc khi con số CÓ THỂ LÀ THẬT.
-
-      Ngưỡng cũ là 12 giây, nên ai mở bài rồi bấm nộp sớm sẽ tạo ra "1045
-      từ/phút" và con số đó nằm lại trong trang Tiến độ như một thành tích. Người
-      đọc nhanh nhất cũng chỉ quanh 400 từ/phút; ngoài khoảng 60–600 thì đó không
-      phải tốc độ đọc, đó là nhiễu — và nhiễu thì đừng lưu, đừng hiện.
-
-      `durationMs` tính cả thời gian trả lời câu hỏi nên nó vốn đã rộng tay; càng
-      không có lý do chấp nhận thêm giá trị vô lý.
-    */
     const minutes = durationMs / 60000;
     if (minutes > 0 && article.wordCount) {
       const wpm = article.wordCount / minutes;
@@ -637,34 +512,22 @@ function ReadSession() {
     }
 
     setSubmitting(false);
-    // Thi liền mạch: còn passage kế tiếp và còn giờ thì đi tiếp ngay, không quay về hub.
-    const chain = readingChain(from);
-    const at = chain.indexOf(article.id);
-    const nextId = at >= 0 ? chain[at + 1] : undefined;
-    if (from && nextId && runEnd !== undefined && runEnd > Date.now()) {
-      router.replace(`/read/${nextId}?from=${encodeURIComponent(from)}&until=${runEnd}` as never);
-      return;
-    }
-    // Trong Mock Test thì về hub để làm phần kế tiếp; bài chấm xem lại được từ hub.
-    if (from) router.replace(from as never);
-    else router.push(`/review/${sessionId}` as never);
+
+    // Enter review mode side-by-side
+    setLastScore({ correct, total: attempts.length, band });
+    setScoreModalVisible(true);
+    setIsReviewMode(true);
+    setActiveQ(1);
   };
 
   const lay = examLayout(winW, winH);
   const split = lay.split;
-  const wide = lay.toolRail;
-  const phone = winW < 700;
-  const theme = PAPER_THEMES.find((t) => t.key === paperKey) ?? PAPER_THEMES[0]!;
-  const passageFont = EXAM_FONTS.find((f) => f.key === fontKey) ?? EXAM_FONTS[0]!;
-  const pad = wide ? 28 : phone ? 16 : 20;
 
-  const toggleFullscreen = () => {
-    if (Platform.OS !== 'web' || typeof document === 'undefined') return;
-    if (document.fullscreenElement) void document.exitFullscreen();
-    else void document.documentElement.requestFullscreen?.();
+  const cycleSize = () => {
+    const next = SIZE_STEPS.find((s) => s > fontScale + 0.01);
+    setFontScale(next ?? SIZE_STEPS[0]);
   };
 
-  /** Nộp bài: còn câu bỏ trống thì hỏi lại một lần, như đề thi máy. */
   const finish = () => {
     const left = questions.length - answeredCount;
     if (left <= 0) {
@@ -685,80 +548,93 @@ function ReadSession() {
   const jumpTo = (n: number) => {
     setActiveQ(n);
     if (!split) setNarrowTab('questions');
-    // Màn hẹp vừa đổi thẻ nên khung câu hỏi chưa kịp gắn; chờ một nhịp rồi cuộn.
-    setTimeout(
-      () => {
-        const y = panelRef.current?.positionOf(n);
-        if (y !== null && y !== undefined) qScroll.current?.scrollTo({ y: Math.max(0, y + pad - 12), animated: true });
-      },
-      split ? 0 : 60,
-    );
+
+    setTimeout(() => {
+      const y = panelRef.current?.positionOf(n);
+      if (y !== null && y !== undefined) {
+        qScroll.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+      }
+    }, split ? 0 : 60);
+
+    if (isReviewMode && locateEvidence) {
+      const q = questions[n - 1];
+      if (q && q.evidenceParagraphIndex !== undefined && Platform.OS === 'web' && typeof document !== 'undefined') {
+        const el = document.getElementById(`passage-para-${q.evidenceParagraphIndex}`);
+        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
   };
 
-  const toggleNotes = () => {
-    setNotesOpen((o) => !o);
-    setSettingsOpen(false);
+  // Block Navigation (Screenshot 1: 7-13 ->)
+  const currentBlockIndex = blocks.findIndex((b) => activeQ >= b.from && activeQ <= b.to);
+  const currentBlock = blocks[currentBlockIndex >= 0 ? currentBlockIndex : 0];
+  const prevBlock = currentBlockIndex > 0 ? blocks[currentBlockIndex - 1] : undefined;
+  const nextBlock = currentBlockIndex >= 0 && currentBlockIndex < blocks.length - 1 ? blocks[currentBlockIndex + 1] : undefined;
+
+  const handlePrevNav = () => {
+    if (isReviewMode) {
+      jumpTo(Math.max(1, activeQ - 1));
+    } else if (prevBlock) {
+      jumpTo(prevBlock.from);
+    }
   };
 
-  const toolRail = (
-    <ToolRail
-      row={false}
-      tool={tool}
-      notesOpen={notesOpen}
-      onPick={pickTool}
-      onNotes={toggleNotes}
-      highlightColor={highlightColor}
-      onHighlightColor={setHighlightColor}
-      hasHighlights={articleHighlights.length > 0}
-      onClearHighlights={() => clearHighlights(article.id)}
-      phraseMode={phraseMode}
-      onTogglePhrase={() => {
-        setPhraseMode((p) => !p);
-        setPhraseAnchor(null);
-      }}
-    />
-  );
+  const handleNextNav = () => {
+    if (isReviewMode) {
+      jumpTo(Math.min(questions.length, activeQ + 1));
+    } else if (nextBlock) {
+      jumpTo(nextBlock.from);
+    } else {
+      finish();
+    }
+  };
 
+  const navItems: QuestionNavItem[] = useMemo(() => {
+    return questions.map((q, i) => ({
+      id: q.id,
+      number: i + 1,
+      answered: Boolean(answers[q.id]?.trim()),
+      marked: Boolean(marked[q.id]),
+      isCorrect: isReviewMode ? Boolean(gradedMap[q.id]) : undefined,
+    }));
+  }, [questions, answers, marked, isReviewMode, gradedMap]);
+
+  /* -------------------------------- PASSAGE PANE -------------------------------- */
   const passagePane = (
-    <View style={{ flex: 1, flexDirection: 'row', backgroundColor: theme.bg }}>
-      {wide ? toolRail : null}
+    <View className="flex-1 bg-white border-r border-gray-200">
+      {/* Optional toolbar toggle */}
+      {showToolbar ? (
+        <IeltsPassageToolbar
+          tool={tool}
+          onPickTool={pickTool}
+          onNotes={() => setNotesOpen((o) => !o)}
+          notesOpen={notesOpen}
+          highlightColorDot={highlightColor === 'yellow' ? '#FDE047' : highlightColor === 'green' ? '#86EFAC' : '#FCA5A5'}
+          hasHighlights={articleHighlights.length > 0}
+          onClearHighlights={() => clearHighlights(article.id)}
+        />
+      ) : null}
+
+      {/* Passage Scrollable Body */}
       <ScrollView
+        ref={pScroll}
         style={{ flex: 1 }}
+        contentContainerStyle={{ paddingHorizontal: 32, paddingTop: 24, paddingBottom: 64 }}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ padding: pad, paddingTop: wide ? 22 : 14, paddingBottom: wide ? 48 : 150, alignItems: 'center' }}
       >
-        <View style={{ width: '100%', maxWidth: 720 }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontFamily: passageFont.title,
-              fontWeight: '700',
-              fontSize: Math.round(24 * fontScale),
-              lineHeight: Math.round(32 * fontScale),
-              color: theme.ink,
-            }}
-          >
+        <View className="w-full">
+          {/* Article Title (Sans-serif bold, exact like Image 1) */}
+          <Text className="text-[19px] font-bold text-gray-900 mb-3 tracking-tight">
             {article.title}
           </Text>
 
-          {tool !== 'read' ? (
-            <Text style={{ marginTop: 8, textAlign: 'center', fontSize: 14, color: theme.muted }}>
-              {tool === 'highlight'
-                ? L('Bôi chữ hoặc chạm một câu để tô · chạm vào vệt tô để xoá.', 'Select text or tap a sentence to highlight · tap a highlight to remove it.')
-                : L('Chạm vào từ để xem nghĩa · giữ lâu để giải thích cả câu.', 'Tap a word for its meaning · long-press to explain a sentence.')}
-            </Text>
-          ) : null}
-          {bilingual.error ? (
-            <Text style={{ marginTop: 8, textAlign: 'center', fontSize: 14, color: color.danger }}>{bilingual.error}</Text>
-          ) : null}
-
-          <View style={{ marginTop: 18 }}>
+          {/* Passage View (Sans-serif font, line-height 1.65) */}
+          <View className="mt-1">
             <PassageView
               translations={bilingual.on ? bilingual.paragraphs : null}
               paragraphs={article.paragraphs}
               fontScale={fontScale}
-              fontFamily={passageFont.body}
-              textColor={theme.body}
+              textColor="#1F2937"
               highlights={articleHighlights}
               statusOf={statusOf}
               onWordPress={onWord}
@@ -771,44 +647,50 @@ function ReadSession() {
               onHighlightRange={onRange}
               onHighlightPress={removeHighlight}
               letters={article.exam !== 'sat' && article.paragraphs.length > 2}
-              baseSize={wide ? 16 : 16}
+              baseSize={13.5}
+              activeEvidence={
+                isReviewMode && locateEvidence && currentQuestion
+                  ? {
+                      paragraphIndex: currentQuestion.evidenceParagraphIndex,
+                      text: currentQuestion.evidenceText,
+                      questionNumber: activeQ,
+                    }
+                  : null
+              }
             />
           </View>
 
           {article.attribution ? (
-            <Text style={{ marginTop: 24, fontFamily: passageFont.title, fontStyle: 'italic', fontSize: 12, color: theme.muted }}>
+            <Text className="mt-8 text-xs italic text-gray-400">
               {article.attribution}
             </Text>
           ) : null}
         </View>
       </ScrollView>
-      {wide ? null : (
-        <FloatingTools
-          tool={tool}
-          notesOpen={notesOpen}
-          onPick={pickTool}
-          onNotes={toggleNotes}
-          highlightColor={highlightColor}
-          onHighlightColor={setHighlightColor}
-          hasHighlights={articleHighlights.length > 0}
-          onClearHighlights={() => clearHighlights(article.id)}
-          phraseMode={phraseMode}
-          onTogglePhrase={() => {
-            setPhraseMode((p) => !p);
-            setPhraseAnchor(null);
-          }}
-        />
-      )}
     </View>
   );
 
+  /* -------------------------------- QUESTIONS PANE -------------------------------- */
   const questionsPane = (
-    <View style={{ flex: 1, backgroundColor: EXAM.white }}>
-      <ScrollView ref={qScroll} style={{ flex: 1 }} contentContainerStyle={{ padding: pad, paddingTop: wide ? 24 : 16, paddingBottom: 64 + keyboardInset }} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
+    <View className="flex-1 bg-white">
+      <ScrollView
+        ref={qScroll}
+        style={{ flex: 1 }}
+        contentContainerStyle={{
+          paddingHorizontal: 24,
+          paddingTop: 24,
+          paddingBottom: 64 + keyboardInset,
+        }}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        showsVerticalScrollIndicator={false}
+      >
         {loadingQuestions && questions.length === 0 ? (
-          <View className="items-center py-10">
-            <ActivityIndicator color={EXAM.accent} />
-            <Text className="mt-2 font-sans text-body text-muted">{L('Đang chuẩn bị bộ đề…', 'Preparing questions…')}</Text>
+          <View className="items-center py-16">
+            <ActivityIndicator color="#DC2626" size="large" />
+            <Text className="mt-3 text-sm font-semibold text-gray-500">
+              Đang tải bộ câu hỏi IELTS…
+            </Text>
           </View>
         ) : (
           <QuestionPanel
@@ -818,154 +700,149 @@ function ReadSession() {
             answers={answers}
             marked={marked}
             activeNumber={activeQ}
-            onActivate={setActiveQ}
+            onActivate={jumpTo}
             onAnswer={onAnswerQ}
             onToggleMark={onToggleMarkQ}
-            evidenceMarks={evidenceMarks}
-            evidenceFor={evidenceFor}
-            onStartEvidence={(questionId) => {
-              setEvidenceFor(questionId);
-              setPhraseAnchor(null);
-              setPhraseMode(true);
-              if (!split) setNarrowTab('passage');
-            }}
-            onClearEvidence={onClearEvidenceQ}
+            isReviewMode={isReviewMode}
+            gradedResults={gradedMap}
+            paragraphs={article.paragraphs}
+            locateEvidence={locateEvidence}
+            onToggleLocateEvidence={setLocateEvidence}
           />
         )}
-
-        {/*
-          Bộ đề IELTS nay dựng bằng luật ngay trên máy, nên "offline" không còn
-          là dấu hiệu hỏng — nó là đường chính. Chỉ SAT mới cần lời nhắc này.
-        */}
-        {questionSet?.generatedBy === 'offline' && article.exam === 'sat' ? (
-          <Text className="mt-4 font-sans text-label text-subtle">
-            {L(
-              'Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Words in Context và Inferences. Tải lại trang để lấy đủ năm dạng của SAT.',
-              'AI was unavailable, so this set was generated offline from the passage and only has Words in Context and Inferences. Reload the page to get all five SAT question types.',
-            )}
-          </Text>
-        ) : null}
       </ScrollView>
     </View>
   );
 
-  // Bố cục phòng thi chung: một thanh công cụ kem phía trên, hai tấm viền mực bên dưới.
-  // Thanh này chỉ vẽ lại trạng thái đã có (đáp án, câu hiện tại, giấy, chữ, đồng hồ).
-  const answeredNums = new Set<number>();
-  questions.forEach((q, i) => {
-    if (answers[q.id]) answeredNums.add(i + 1);
-  });
-  const paperIndex = Math.max(0, PAPER_THEMES.findIndex((t) => t.key === paperKey));
-  const cycleFont = () => {
-    const i = EXAM_FONTS.findIndex((f) => f.key === fontKey);
-    setFontKey(EXAM_FONTS[(i + 1) % EXAM_FONTS.length]!.key);
-  };
-  const cycleSize = () => {
-    const next = SIZE_STEPS.find((s) => s > fontScale + 0.01);
-    setFontScale(next ?? SIZE_STEPS[0]);
-  };
-
-  const toolbar = (
-    <ExamToolbar
-      onBack={() => router.back()}
-      parts={[{ key: 'read', label: L('Bài đọc', 'Passage') }]}
-      activePart="read"
-      onPickPart={() => {}}
-      questionNumbers={questions.map((_, i) => i + 1)}
-      answered={answeredNums}
-      current={activeQ}
-      onJump={jumpTo}
-      timer=""
-      timerSlot={
-        runEnd !== undefined ? (
-          <ExamClock endAt={runEnd} onExpire={() => submit()} />
-        ) : (
-          <ExamClock paused={paused} onToggle={() => setPaused((p) => !p)} />
-        )
-      }
-      typography={{
-        fontLabel: passageFont.label,
-        onCycleFont: cycleFont,
-        sizeLabel: `${Math.round(16 * fontScale)}px`,
-        onCycleSize: cycleSize,
-      }}
-      themes={{
-        swatches: PAPER_THEMES.map((t) => t.bg),
-        theme: paperIndex,
-        onPick: (i) => setPaperKey(PAPER_THEMES[i]?.key ?? 'white'),
-      }}
-      extras={
-        <View style={{ flexDirection: 'row', gap: 6 }}>
-          <ExamToolbarButton label={L('Ghi chú', 'Notes')} icon="note" active={notesOpen} compact={phone} onPress={toggleNotes} />
-          <ExamToolbarButton
-            label={L('Cài đặt', 'Settings')}
-            icon="settings"
-            active={settingsOpen}
-            compact={phone}
-            onPress={() => {
-              setSettingsOpen((o) => !o);
-              setNotesOpen(false);
-            }}
-          />
-          <ExamToolbarButton
-            label={L('Trợ giảng', 'Tutor')}
-            icon="chat"
-            compact={phone}
-            accessibilityLabel={L('Mở trợ giảng', 'Open tutor')}
-            onPress={() => setChatOpen(true)}
-          />
-        </View>
-      }
-      submitLabel={submitting ? L('Đang chấm…', 'Grading…') : L('Hoàn thành', 'Finish')}
-      submitDisabled={submitting || questions.length === 0}
-      onSubmit={finish}
-    />
-  );
-
-  // Màn hẹp chỉ đủ một tấm: công tắc Bài đọc / Câu hỏi nằm ngay trên khung.
+  /* -------------------------------- MOBILE TABS -------------------------------- */
   const narrowTabs = (
-    <View
-      accessibilityRole="tablist"
-      style={{ flexDirection: 'row', gap: 6, padding: 4, borderRadius: 999, backgroundColor: '#FFF5F8', borderWidth: 2, borderColor: EXAM_INK }}
-    >
+    <View className="flex-row gap-2 p-1 rounded-xl bg-gray-100 mx-3 mt-2 border border-gray-200">
       {(['passage', 'questions'] as const).map((t) => (
         <Pressable
           key={t}
           accessibilityRole="tab"
           aria-selected={narrowTab === t}
           onPress={() => setNarrowTab(t)}
-          style={{ flex: 1, height: 40, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: narrowTab === t ? EXAM_INK : 'transparent' }}
+          className={`flex-1 h-8 rounded-lg items-center justify-center ${
+            narrowTab === t ? 'bg-white shadow-2xs' : ''
+          }`}
         >
-          <Text style={{ fontSize: 14, fontWeight: '800', color: narrowTab === t ? '#FFFFFF' : EXAM_INK }}>
-            {t === 'passage' ? L('Bài đọc', 'Passage') : `${L('Câu hỏi', 'Questions')}${questions.length ? ` ${answeredCount}/${questions.length}` : ''}`}
+          <Text
+            className={`text-xs font-bold ${
+              narrowTab === t ? 'text-gray-900' : 'text-gray-500'
+            }`}
+          >
+            {t === 'passage'
+              ? 'Bài đọc'
+              : `Câu hỏi ${questions.length ? `(${answeredCount}/${questions.length})` : ''}`}
           </Text>
         </Pressable>
       ))}
     </View>
   );
 
-  const mainBody = split ? (
-    <SplitPane
-      left={<ReadingFrame bg={theme.bg} flex={1}>{passagePane}</ReadingFrame>}
-      right={<ReadingFrame bg={EXAM.white} flex={1}>{questionsPane}</ReadingFrame>}
-    />
-  ) : (
-    <View style={{ flex: 1, minHeight: 0, gap: 10 }}>
-      {narrowTabs}
-      <CrossFade swapKey={`tab-${narrowTab}`} style={{ flex: 1, minHeight: 0 }}>
-        <ReadingFrame bg={narrowTab === 'passage' ? theme.bg : EXAM.white} flex={1}>
-          {narrowTab === 'passage' ? passagePane : questionsPane}
-        </ReadingFrame>
-      </CrossFade>
-    </View>
-  );
-
   return (
-    <View style={{ flex: 1, backgroundColor: READING_NAVY, padding: split ? 12 : 10, gap: 10 }}>
-      {toolbar}
+    <View className="flex-1 bg-white">
+      {/* 1. Header (IELTS Top Bar - exactly matching screenshot) */}
+      <IeltsExamHeader
+        title={article.title}
+        subtitle="Làm bài passage 1"
+        onExit={() => {
+          if (isReviewMode) {
+            router.push('/practice' as never);
+          } else {
+            finish();
+          }
+        }}
+        timerSlot={
+          isReviewMode ? null : runEnd !== undefined ? (
+            <ExamClock endAt={runEnd} onExpire={() => submit()} />
+          ) : (
+            <ExamClock paused={paused} onToggle={() => setPaused((p) => !p)} />
+          )
+        }
+        onCycleSize={cycleSize}
+        isReviewMode={isReviewMode}
+        scoreText={
+          lastScore
+            ? `${lastScore.correct}/${lastScore.total} Đúng ${lastScore.band ? '· Band ' + lastScore.band : ''}`
+            : undefined
+        }
+        onToggleFlag={() => setShowToolbar((v) => !v)}
+        isFlagged={showToolbar}
+      />
 
-      <View style={{ flex: 1, minHeight: 0 }}>{mainBody}</View>
+      {/* 2. Split Screen / Responsive Body */}
+      <View className="flex-1 min-h-0">
+        {split ? (
+          <SplitPane
+            left={passagePane}
+            right={questionsPane}
+          />
+        ) : (
+          <View className="flex-1 min-h-0">
+            {narrowTabs}
+            <CrossFade swapKey={`tab-${narrowTab}`} style={{ flex: 1, minHeight: 0 }}>
+              {narrowTab === 'passage' ? passagePane : questionsPane}
+            </CrossFade>
+          </View>
+        )}
+      </View>
 
+      {/* 3. Bottom Bar (Image 1, 2, 4) */}
+      <IeltsBottomBar
+        items={navItems}
+        activeNumber={activeQ}
+        onSelectNumber={jumpTo}
+        isReviewMode={isReviewMode}
+        passageTitle="Passage 1"
+        totalScore={lastScore ? { correct: lastScore.correct, total: lastScore.total } : undefined}
+        onPrev={handlePrevNav}
+        onNext={handleNextNav}
+        onSubmit={finish}
+        submitting={submitting}
+        hasPrev={isReviewMode ? activeQ > 1 : Boolean(prevBlock)}
+        hasNext={isReviewMode ? activeQ < questions.length : true}
+        nextLabel={
+          isReviewMode
+            ? 'Tiếp'
+            : nextBlock
+              ? `${nextBlock.from} - ${nextBlock.to} →`
+              : 'Nộp bài'
+        }
+        prevLabel={
+          isReviewMode
+            ? 'Trước'
+            : prevBlock
+              ? `← ${prevBlock.from} - ${prevBlock.to}`
+              : undefined
+        }
+        onShowSummary={() => {
+          if (isReviewMode && lastScore) {
+            setScoreModalVisible(true);
+          }
+        }}
+      />
+
+      {/* 4. Score Result Modal */}
+      <IeltsScoreModal
+        visible={scoreModalVisible}
+        score={lastScore?.correct ?? 0}
+        total={lastScore?.total ?? questions.length}
+        estimatedBand={lastScore?.band ?? null}
+        onReviewDetail={() => setScoreModalVisible(false)}
+        onRetake={() => {
+          setScoreModalVisible(false);
+          setIsReviewMode(false);
+          setAnswers({});
+          setGradedMap({});
+          setDone(false);
+          setActiveQ(1);
+        }}
+        onClose={() => setScoreModalVisible(false)}
+      />
+
+      {/* Notes & Word sheet */}
       {notesOpen ? (
         <NotesPanel
           notes={articleNotes}
@@ -974,58 +851,18 @@ function ReadSession() {
           onAdd={(body) => addNote({ articleId: article.id, articleTitle: article.title, paragraphIndex: null, body })}
         />
       ) : null}
-      {settingsOpen ? (
-        <SettingsPanel
-          onClose={() => setSettingsOpen(false)}
-          paperKey={paperKey}
-          onPaper={setPaperKey}
-          fonts={EXAM_FONTS}
-          fontKey={fontKey}
-          onFont={setFontKey}
-          fontPx={Math.round(16 * fontScale)}
-          onFontSize={(d) => setFontScale(fontScale + d)}
-          bilingual={{ on: bilingual.on, loading: bilingual.loading, toggle: () => void bilingual.toggle() }}
-          speaking={speakingParagraph !== null}
-          onSpeak={() => speakParagraph(speakingParagraph === null ? 0 : speakingParagraph)}
-          onStopSpeak={() => {
-            Speech.stop();
-            setSpeakingParagraph(null);
-          }}
-          ttsRate={ttsRate}
-          onRate={setTtsRate}
-          onFullscreen={Platform.OS === 'web' ? toggleFullscreen : null}
-        />
-      ) : null}
 
       <WordSheet target={sheet} articleId={article.id} articleTitle={article.title} onClose={() => setSheet(null)} />
-
       <ChatPanel articleId={article.id} visible={chatOpen} onClose={() => setChatOpen(false)} />
     </View>
   );
 }
 
-/**
- * Bôi một từ thì tra từ, bôi vài từ thì tra cả cụm, bôi nguyên câu thì giải
- * thích ngữ pháp — ba chế độ này đã có sẵn trong WordSheet, ở đây chỉ chọn đúng
- * chế độ theo thứ người đọc vừa bôi.
- */
 function selectionMode(selected: string): WordSheetTarget['mode'] {
   const words = selected.trim().split(/\s+/).length;
   if (words === 1) return 'word';
-  // Có dấu kết câu ở giữa, hoặc quá dài để còn là một collocation.
   if (words > 8 || /[.!?]/.test(selected.slice(0, -1))) return 'sentence';
   return 'phrase';
 }
 
-/* ====================================================================== */
-/*                          bộ phận của bố cục phòng thi                    */
-/* ====================================================================== */
-
-const EXAM_FONTS = [
-  { key: 'serif', label: 'Fraunces', title: readingFont.fraunces, body: readingFont.fraunces },
-  { key: 'lora', label: 'Lora', title: readingFont.body, body: readingFont.body },
-  { key: 'sans', label: 'Jakarta', title: readingFont.sans, body: readingFont.sans },
-] as const;
-
-/** Các cỡ chữ bài đọc, theo bội số của 16px, để nút cỡ chữ trên thanh công cụ bấm vòng. */
 const SIZE_STEPS = [0.9, 1, 1.15, 1.3] as const;
