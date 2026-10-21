@@ -596,7 +596,8 @@ function main() {
         test.questionCount = 40;
         test.answerMode = 'short';
         test.answerKey = standardReadingAnswerKey;
-        test.answerKeyVerified = true;
+        test.answerKeyVerified = false;
+        test.isSyntheticPractice = true;
       } else if (test.section === 'Listening') {
         test.pages = generateStandardListeningPages(1, 1, ['Community Sports Enrollment', 'Regional Heritage Center Tour', 'Academic Biology Research', 'Urban Ecology Lecture']);
         test.parts = [
@@ -608,7 +609,8 @@ function main() {
         test.questionCount = 40;
         test.answerMode = 'short';
         test.answerKey = standardListeningAnswerKey;
-        test.answerKeyVerified = true;
+        test.answerKeyVerified = false;
+        test.isSyntheticPractice = true;
       } else if (test.section === 'Writing') {
         test.questionCount = 2;
         test.answerMode = 'long';

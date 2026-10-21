@@ -1,0 +1,134 @@
+{
+  "checkedAt": "2026-10-21T16:36:29.614Z",
+  "totalCatalogueEntries": 633,
+  "localPapers": 212,
+  "papersWithExpectedParts": 212,
+  "publicTestLinks": 421,
+  "publicSourcePages": 41,
+  "verifiedScoringKeys": 102,
+  "newForecastSets": 8,
+  "newSpeakingSamples": 72,
+  "missingAssets": [
+    {
+      "id": "cambridge-9-listening-1",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-9-listening-2",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-9-listening-3",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-9-listening-4",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-8-listening-1",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-8-listening-2",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-8-listening-3",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "cambridge-8-listening-4",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-12-listening-1",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-12-listening-2",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-12-listening-3",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-12-listening-4",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-11-listening-1",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-11-listening-2",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-11-listening-3",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-11-listening-4",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-9-listening-1",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-9-listening-2",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-9-listening-3",
+      "missing": [
+        "audio"
+      ]
+    },
+    {
+      "id": "vol-9-listening-4",
+      "missing": [
+        "audio"
+      ]
+    }
+  ],
+  "issues": []
+}

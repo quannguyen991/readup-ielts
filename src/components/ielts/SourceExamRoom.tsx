@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
 
@@ -61,7 +61,7 @@ function words(text: string) {
 }
 
 /** Audio player cho phần thi Listening với Web Audio API GainNode khuếch đại âm lượng to rõ */
-function SourceAudio({
+export function SourceAudio({
   files,
   simulation,
   activePartId = 1,
@@ -170,12 +170,12 @@ function SourceAudio({
 
   if (!src) {
     return (
-      <View style={{ borderRadius: 14, borderWidth: 1, borderColor: '#F59E0B', backgroundColor: '#FFFBEB', padding: 16, gap: 8 }}>
+      <View style={{ borderRadius: 14, borderWidth: 1, borderColor: '#F59E0B', backgroundColor: '#F3F0FB', padding: 16, gap: 8 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Icon name="volume" size={18} color="#D97706" />
-          <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 14, color: '#92400E' }}>IELTS Listening Audio</Text>
+          <Icon name="volume" size={18} color="#6A4BD9" />
+          <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 14, color: '#6A4BD9' }}>IELTS Listening Audio</Text>
         </View>
-        <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#78350F' }}>
+        <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#2B2350' }}>
           Đang chuẩn bị file audio cho bài này. Bạn có thể mở bản chép lời transcript để luyện nghe đọc song song.
         </Text>
       </View>
@@ -191,17 +191,17 @@ function SourceAudio({
         backgroundColor: '#FFFFFF',
         padding: 18,
         gap: 14,
-        boxShadow: '0 4px 16px rgba(143, 110, 54, 0.08)',
+        boxShadow: '0 4px 16px rgba(106, 75, 217, 0.08)',
       }}
     >
       {/* Header Bar */}
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: '#FAF3E7', alignItems: 'center', justifyContent: 'center' }}>
-            <Icon name="volume" size={16} color="#8F6E36" />
+          <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}>
+            <Icon name="volume" size={16} color="#6A4BD9" />
           </View>
           <View>
-            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 14, color: '#2A1808', letterSpacing: 0.2 }}>
+            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 14, color: '#2B2350', letterSpacing: 0.2 }}>
               {files.length > 1 ? `IELTS LISTENING · PART ${track + 1}/${files.length}` : 'IELTS LISTENING · TOÀN BÀI THI'}
             </Text>
             <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 11.5, color: '#7C6552' }}>
@@ -222,11 +222,11 @@ function SourceAudio({
               paddingVertical: 6,
               borderRadius: 8,
               borderWidth: 1,
-              borderColor: showTranscript ? '#8F6E36' : '#E6DACB',
-              backgroundColor: showTranscript ? '#8F6E36' : '#FAF7F2',
+              borderColor: showTranscript ? '#6A4BD9' : '#E6DACB',
+              backgroundColor: showTranscript ? '#6A4BD9' : '#F3F0FB',
             }}
           >
-            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: showTranscript ? '#FFFFFF' : '#8F6E36' }}>
+            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: showTranscript ? '#FFFFFF' : '#6A4BD9' }}>
               {showTranscript ? '✕ Ẩn Transcript' : '👁️ Mở Transcript tham khảo'}
             </Text>
           </Pressable>
@@ -255,8 +255,8 @@ function SourceAudio({
                   paddingVertical: 7,
                   borderRadius: 10,
                   borderWidth: 1,
-                  borderColor: active ? '#8F6E36' : '#E6DACB',
-                  backgroundColor: active ? '#8F6E36' : '#FAF7F2',
+                  borderColor: active ? '#6A4BD9' : '#E6DACB',
+                  backgroundColor: active ? '#6A4BD9' : '#F3F0FB',
                 }}
               >
                 {active && <Text style={{ fontSize: 12 }}>🔊</Text>}
@@ -264,7 +264,7 @@ function SourceAudio({
                   style={{
                     fontFamily: 'BeVietnamPro_700Bold',
                     fontSize: 12.5,
-                    color: active ? '#FFFFFF' : '#2A1808',
+                    color: active ? '#FFFFFF' : '#2B2350',
                   }}
                 >
                   Part {pIdx + 1}
@@ -279,9 +279,9 @@ function SourceAudio({
       <View
         style={{
           borderRadius: 14,
-          backgroundColor: '#FAF7F2',
+          backgroundColor: '#F3F0FB',
           borderWidth: 1,
-          borderColor: '#EFE7DC',
+          borderColor: '#F3F0FB',
           padding: 14,
           gap: 12,
         }}
@@ -299,8 +299,8 @@ function SourceAudio({
               paddingHorizontal: 18,
               height: 40,
               borderRadius: 10,
-              backgroundColor: isPlaying ? '#2A1808' : '#8F6E36',
-              shadowColor: '#8F6E36',
+              backgroundColor: isPlaying ? '#2B2350' : '#6A4BD9',
+              shadowColor: '#6A4BD9',
               shadowOpacity: 0.18,
               shadowRadius: 5,
             }}
@@ -313,7 +313,7 @@ function SourceAudio({
 
           {/* Time indicator */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13.5, color: '#2A1808' }}>
+            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13.5, color: '#2B2350' }}>
               {formatAudioTime(currentTime)}
             </Text>
             <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#7C6552' }}>
@@ -325,7 +325,7 @@ function SourceAudio({
           <View style={{ marginLeft: 'auto', flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginRight: 2 }}>
               <Text style={{ fontSize: 13 }}>🔊</Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#2A1808' }}>
+              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#2B2350' }}>
                 Âm lượng:
               </Text>
             </View>
@@ -347,8 +347,8 @@ function SourceAudio({
                     paddingVertical: 5,
                     borderRadius: 8,
                     borderWidth: 1,
-                    borderColor: active ? '#8F6E36' : '#DDD2C3',
-                    backgroundColor: active ? '#8F6E36' : '#FFFFFF',
+                    borderColor: active ? '#6A4BD9' : '#DDD2C3',
+                    backgroundColor: active ? '#6A4BD9' : '#FFFFFF',
                   }}
                 >
                   <Text
@@ -380,7 +380,7 @@ function SourceAudio({
             style={{
               height: '100%',
               width: `${duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0}%`,
-              backgroundColor: '#8F6E36',
+              backgroundColor: '#6A4BD9',
               borderRadius: 3,
             }}
           />
@@ -448,6 +448,7 @@ export type ParsedQuestionItem = {
   stem: string;
 
   options?: { letter: string; text: string }[];
+  tfngOptions?: string[];
 
 };
 
@@ -553,38 +554,26 @@ export function parsePageQuestions(text: string, qStart: number, qEnd: number): 
 
     }
 
-    // Kiểm tra TRUE / FALSE / NOT GIVEN
-
+    // Kiểm tra TRUE / FALSE / NOT GIVEN hoặc YES / NO / NOT GIVEN
+    const surroundingText = text.slice(Math.max(0, (qIndex - 8) * 50), (qIndex + 3) * 50);
+    const isYesNo = /YES\s*[/,]|claims|views/i.test(surroundingText) || /YES\s*[/,]|claims|views/i.test(currentInstruction);
     const isTfng =
-
-      /TRUE|FALSE|NOT GIVEN|YES|NO/i.test(text.slice(Math.max(0, (qIndex - 5) * 50), (qIndex + 1) * 50)) ||
-
-      /TRUE|FALSE|NOT GIVEN/i.test(qLine);
+      /TRUE|FALSE|NOT GIVEN|YES|NO/i.test(surroundingText) ||
+      /TRUE|FALSE|NOT GIVEN|YES|NO/i.test(qLine);
 
     if (choiceOptions.length >= 3) {
-
       groupQuestions.push({
-
         number: num,
-
         type: 'choice',
-
         stem: qLine,
-
         options: choiceOptions,
-
       });
-
     } else if (isTfng && !qLine.includes('____') && !qLine.includes('.....')) {
-
       groupQuestions.push({
-
         number: num,
-
         type: 'tfng',
-
         stem: qLine,
-
+        tfngOptions: isYesNo ? ['YES', 'NO', 'NOT GIVEN'] : ['TRUE', 'FALSE', 'NOT GIVEN'],
       });
 
     } else {
@@ -647,7 +636,7 @@ export function parsePageQuestions(text: string, qStart: number, qEnd: number): 
 
     if (firstType === 'choice') inst = 'Choose the correct letter, A, B, C or D.';
 
-    else if (firstType === 'tfng') inst = 'Do the following statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.';
+    else if (firstType === 'tfng') inst = chunk[0]?.tfngOptions?.[0] === 'YES' ? 'Do the following statements agree with the claims/views of the writer? Write YES, NO or NOT GIVEN.' : 'Do the following statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.';
 
     groups.push({
 
@@ -753,11 +742,93 @@ export function SourceExamRoom({
 
   // Tùy chỉnh phòng thi: cỡ chữ, màu nền, mặt chữ
 
-  const [fontSizeLevel, setFontSizeLevel] = useState<15 | 17 | 19>(16 as 17);
+  const [fontSizeLevel, setFontSizeLevel] = useState<15 | 17 | 19>(15);
 
   const [themeMode, setThemeMode] = useState<'light' | 'warm' | 'dark'>('light');
 
-  const [showTranscript, setShowTranscript] = useState(false);
+  // Audio control state for Listening Exam Room (Image 2)
+  const audioPlayerRef = useRef<HTMLAudioElement | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const audioGainRef = useRef<GainNode | null>(null);
+  const audioSourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
+  const [audioCurrentTime, setAudioCurrentTime] = useState<number>(0);
+  const [audioDuration, setAudioDuration] = useState<number>(0);
+  const [audioIsPlaying, setAudioIsPlaying] = useState<boolean>(false);
+  const [audioVolumeBoost] = useState<number>(1.8); // 180% default boost
+
+  // Get active audio track URL
+  const activeAudioTrackUrl = useMemo(() => {
+    if (!test.audioFiles || test.audioFiles.length === 0) {
+      return test.audioCloudUrl || '';
+    }
+    const idx = Math.max(0, Math.min(activePartId - 1, test.audioFiles.length - 1));
+    return assetUrl(test.audioFiles[idx] || test.audioFiles[0] || '');
+  }, [test.audioFiles, test.audioCloudUrl, activePartId]);
+
+  // Audio volume amplifier setup
+  const setupAudioGain = useCallback(() => {
+    if (Platform.OS !== 'web' || !audioPlayerRef.current) return;
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!audioContextRef.current) {
+        const ctx = new AudioCtx();
+        audioContextRef.current = ctx;
+        const gain = ctx.createGain();
+        gain.gain.value = audioVolumeBoost;
+        audioGainRef.current = gain;
+        const src = ctx.createMediaElementSource(audioPlayerRef.current);
+        audioSourceNodeRef.current = src;
+        src.connect(gain);
+        gain.connect(ctx.destination);
+      }
+      if (audioContextRef.current.state === 'suspended') {
+        void audioContextRef.current.resume();
+      }
+    } catch {
+      // Ignore if already connected
+    }
+  }, [audioVolumeBoost]);
+
+  useEffect(() => {
+    if (audioGainRef.current) {
+      audioGainRef.current.gain.value = audioVolumeBoost;
+    }
+  }, [audioVolumeBoost]);
+
+  const toggleAudioPlay = useCallback(() => {
+    setupAudioGain();
+    if (!audioPlayerRef.current) return;
+    if (audioIsPlaying) {
+      audioPlayerRef.current.pause();
+      setAudioIsPlaying(false);
+    } else {
+      audioPlayerRef.current.volume = 1.0;
+      audioPlayerRef.current.play().then(() => setAudioIsPlaying(true)).catch(() => setAudioIsPlaying(false));
+    }
+  }, [audioIsPlaying, setupAudioGain]);
+
+  const handleSeekWaveform = useCallback((percent: number) => {
+    if (!audioPlayerRef.current || !audioDuration) return;
+    const newSec = Math.max(0, Math.min(audioDuration, percent * audioDuration));
+    audioPlayerRef.current.currentTime = newSec;
+    setAudioCurrentTime(newSec);
+  }, [audioDuration]);
+
+  const formatAudioTime = (sec: number) => {
+    if (isNaN(sec) || sec < 0) return '00:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  const WAVEFORM_HEIGHTS = useMemo(() => [
+    10, 16, 24, 18, 14, 26, 32, 22, 16, 28, 36, 24, 18, 22, 30, 26, 14, 20, 32, 38,
+    22, 16, 24, 34, 26, 18, 22, 30, 24, 14, 20, 28, 36, 22, 16, 24, 32, 28, 18, 22,
+    30, 24, 14, 20, 32, 36, 22, 16, 24, 34, 26, 18, 20, 28, 22, 16, 24, 30, 26, 18,
+    14, 22, 30, 24, 16, 20, 28, 22, 14, 18,
+  ], []);
+
 
   const [timeLeft, setTimeLeft] = useState(SECTION_MINUTES[section] * 60);
 
@@ -816,11 +887,26 @@ export function SourceExamRoom({
   };
 
   const handleNextGroup = () => {
-
-    const nextQ = Math.min(qEnd, activeQuestion + 4);
-
+    const currentGroupIndex = questionGroups.findIndex(
+      (g) => activeQuestion >= (g.questions[0]?.number ?? 0) && activeQuestion <= (g.questions[g.questions.length - 1]?.number ?? 0)
+    );
+    if (currentGroupIndex >= 0 && currentGroupIndex < questionGroups.length - 1) {
+      const nextGroup = questionGroups[currentGroupIndex + 1];
+      if (nextGroup && nextGroup.questions[0]) {
+        setActiveQuestion(nextGroup.questions[0].number);
+        return;
+      }
+    }
+    if (activePartId < parts.length) {
+      const nextPart = parts[activePartId];
+      if (nextPart) {
+        setActivePartId(activePartId + 1);
+        setActiveQuestion(nextPart.questionStart);
+        return;
+      }
+    }
+    const nextQ = Math.min(qEnd, activeQuestion + 1);
     setActiveQuestion(nextQ);
-
   };
 
   const currentPartPages = currentPart?.pages ?? test.pages;
@@ -921,17 +1007,17 @@ export function SourceExamRoom({
 
       return {
 
-        bg: '#FDFBF7',
+        bg: '#F3F0FB',
 
-        surface: '#FCFAF7',
+        surface: '#F3F0FB',
 
         card: '#FFFFFF',
 
-        text: '#1F1A14',
+        text: '#2B2350',
 
-        border: '#EFE6D8',
+        border: '#F3F0FB',
 
-        toolbar: '#F7F3EB',
+        toolbar: '#F3F0FB',
 
       };
 
@@ -1016,20 +1102,13 @@ export function SourceExamRoom({
                   <View
 
                     style={{
-
-                      backgroundColor: '#FEE2E2',
-
+                      backgroundColor: themeStyles.border,
                       paddingHorizontal: 10,
-
                       paddingVertical: 3,
-
                       borderRadius: 6,
-
                     }}
-
                   >
-
-                    <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#DC2626' }}>
+                    <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>
 
                       {group.rangeLabel}
 
@@ -1083,13 +1162,13 @@ export function SourceExamRoom({
 
                           borderRadius: 12,
 
-                          backgroundColor: isCurrent ? '#FFFDF8' : 'transparent',
+                          backgroundColor: isCurrent ? '#F3F0FB' : 'transparent',
 
                           borderWidth: 1,
 
                           borderLeftWidth: isCurrent ? 3 : 1,
 
-                          borderColor: isCurrent ? '#2A1808' : themeStyles.border,
+                          borderColor: isCurrent ? '#2B2350' : themeStyles.border,
 
                           gap: 10,
 
@@ -1127,9 +1206,7 @@ export function SourceExamRoom({
 
                               editable={!submitted}
 
-                              placeholder="Nhập đáp án..."
-
-                              placeholderTextColor="#9CA3AF"
+                              
 
                               onChangeText={(text) => onAnswerChange(q.number, text)}
 
@@ -1147,7 +1224,7 @@ export function SourceExamRoom({
 
                                 borderWidth: 1.5,
 
-                                borderColor: isCurrent ? '#8F6E36' : '#D1D5DB',
+                                borderColor: isCurrent ? '#6A4BD9' : '#D1D5DB',
 
                                 backgroundColor: '#FFFFFF',
 
@@ -1225,9 +1302,9 @@ export function SourceExamRoom({
 
                                       borderWidth: 1,
 
-                                      borderColor: selected ? '#2A1808' : themeStyles.border,
+                                      borderColor: selected ? '#2B2350' : themeStyles.border,
 
-                                      backgroundColor: selected ? '#FBF7EE' : themeStyles.surface,
+                                      backgroundColor: selected ? '#F5F2FF' : themeStyles.surface,
 
                                     }}
 
@@ -1245,9 +1322,9 @@ export function SourceExamRoom({
 
                                         borderWidth: 1.5,
 
-                                        borderColor: selected ? '#2A1808' : '#9CA3AF',
+                                        borderColor: selected ? '#2B2350' : '#9CA3AF',
 
-                                        backgroundColor: selected ? '#2A1808' : 'transparent',
+                                        backgroundColor: selected ? '#2B2350' : 'transparent',
 
                                         alignItems: 'center',
 
@@ -1311,7 +1388,7 @@ export function SourceExamRoom({
 
                             <View style={{ flexDirection: 'row', marginTop: 4, borderRadius: 10, borderWidth: 1, borderColor: themeStyles.border, overflow: 'hidden' }}>
 
-                              {['TRUE', 'FALSE', 'NOT GIVEN'].map((opt, idx) => {
+                              {(q.tfngOptions || ['TRUE', 'FALSE', 'NOT GIVEN']).map((opt, idx) => {
 
                                 const selected = val.trim().toUpperCase() === opt;
 
@@ -1341,7 +1418,7 @@ export function SourceExamRoom({
 
                                       borderColor: themeStyles.border,
 
-                                      backgroundColor: selected ? '#2A1808' : themeStyles.surface,
+                                      backgroundColor: selected ? '#2B2350' : themeStyles.surface,
 
                                     }}
 
@@ -1441,11 +1518,31 @@ export function SourceExamRoom({
 
                 />
 
-                <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#6B7280' }}>
-
-                  Số từ đã viết: {words(answers[String(activePartId)] ?? '')} từ
-
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+                  <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#6B7280' }}>
+                    Số từ đã viết: <Text style={{ fontFamily: 'BeVietnamPro_700Bold', color: themeStyles.text }}>{words(answers[String(activePartId)] ?? '')}</Text> từ
+                  </Text>
+                  {currentPart?.minimumWords ? (
+                    <View style={{
+                      paddingHorizontal: 10,
+                      paddingVertical: 4,
+                      borderRadius: 6,
+                      backgroundColor: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#DCFCE7' : '#F3F0FB',
+                      borderWidth: 1,
+                      borderColor: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#86EFAC' : '#FCD34D',
+                    }}>
+                      <Text style={{
+                        fontFamily: 'BeVietnamPro_600SemiBold',
+                        fontSize: 12,
+                        color: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#15803D' : '#6A4BD9',
+                      }}>
+                        {words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords
+                          ? `✓ Đã đạt yêu cầu tối thiểu (${currentPart.minimumWords} từ)`
+                          : `⚠️ Chưa đủ số từ tối thiểu (${words(answers[String(activePartId)] ?? '')}/${currentPart.minimumWords} từ)`}
+                      </Text>
+                    </View>
+                  ) : null}
+                </View>
 
               </View>
 
@@ -1619,53 +1716,11 @@ export function SourceExamRoom({
 
           </Pressable>
 
-          {/* Logo Band 9 Gold Badge */}
-
-          <View
-
-            style={{
-
-              paddingHorizontal: 8,
-
-              paddingVertical: 3,
-
-              borderRadius: 6,
-
-              backgroundColor: '#8F6E36',
-
-            }}
-
-          >
-
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 11, color: '#FFFFFF' }}>
-
-              BAND 9
-
-            </Text>
-
-          </View>
+          
 
           <View style={{ minWidth: 0, flex: 1 }}>
 
-            <Text
-
-              numberOfLines={1}
-
-              style={{
-
-                fontFamily: 'BeVietnamPro_700Bold',
-
-                fontSize: 15,
-
-                color: themeStyles.text,
-
-              }}
-
-            >
-
-              {passageDisplayData.title}
-
-            </Text>
+            <Text numberOfLines={1} style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 15, color: themeStyles.text }}>{test.title || passageDisplayData.title}</Text>
 
             <Text
 
@@ -1683,7 +1738,7 @@ export function SourceExamRoom({
 
             >
 
-              {currentPart?.label || `Passage ${activePartId}`} · Câu {qStart}–{qEnd}
+              {currentPart?.label || `${section === 'Reading' ? 'Reading Passage' : 'Part'} ${activePartId}`} · Questions {qStart}–{qEnd}
 
             </Text>
 
@@ -1711,15 +1766,15 @@ export function SourceExamRoom({
 
             borderWidth: 1,
 
-            borderColor: timeLeft <= 300 ? '#FCA5A5' : '#8F6E36',
+            borderColor: timeLeft <= 300 ? '#FCA5A5' : '#6A4BD9',
 
-            backgroundColor: timeLeft <= 300 ? '#FEF2F2' : '#FBF7EE',
+            backgroundColor: timeLeft <= 300 ? '#FEF2F2' : '#F5F2FF',
 
           }}
 
         >
 
-          <Icon name="clock" size={16} color={timeLeft <= 300 ? '#DC2626' : '#8F6E36'} />
+          <Icon name="clock" size={16} color={timeLeft <= 300 ? '#DC2626' : '#6A4BD9'} />
 
           <Text
 
@@ -1729,7 +1784,7 @@ export function SourceExamRoom({
 
               fontSize: 15,
 
-              color: timeLeft <= 300 ? '#DC2626' : '#8F6E36',
+              color: timeLeft <= 300 ? '#DC2626' : '#6A4BD9',
 
             }}
 
@@ -1783,7 +1838,7 @@ export function SourceExamRoom({
 
             </Text>
 
-            <Text style={{ fontSize: 11, color: '#8F6E36' }}>{fontSizeLevel}px</Text>
+            <Text style={{ fontSize: 11, color: '#6A4BD9' }}>{fontSizeLevel}px</Text>
 
           </Pressable>
 
@@ -1807,7 +1862,7 @@ export function SourceExamRoom({
 
               borderColor: flagged.has(activeQuestion) ? '#F59E0B' : themeStyles.border,
 
-              backgroundColor: flagged.has(activeQuestion) ? '#FEF3C7' : themeStyles.surface,
+              backgroundColor: flagged.has(activeQuestion) ? '#F3F0FB' : themeStyles.surface,
 
               flexDirection: 'row',
 
@@ -1857,67 +1912,94 @@ export function SourceExamRoom({
 
       </View>
 
-      {/* 2. MAIN WORKSPACE (Single-column CD IELTS for Listening without transcript; 2-column split for Reading or Listening with transcript) */}
-      {section === 'Listening' && !showTranscript && !submitted ? (
-        <View style={{ flex: 1, backgroundColor: themeStyles.bg }}>
+      {/* 2. MAIN WORKSPACE (Authentic Computer-Delivered IELTS Image 2 Layout for Listening) */}
+      {section === 'Listening' ? (
+        <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
           <ScrollView
             showsVerticalScrollIndicator={true}
             contentContainerStyle={{
-              paddingHorizontal: isDesktop ? 40 : 18,
-              paddingVertical: 26,
+              paddingHorizontal: isDesktop ? 48 : 20,
+              paddingTop: 32,
+              paddingBottom: 150,
               maxWidth: 1040,
               width: '100%',
               alignSelf: 'center',
-              gap: 22,
+              gap: 20,
             }}
           >
-            {/* Top IELTS CD Audio Console */}
-            <SourceAudio
-              files={test.audioFiles.length ? test.audioFiles.map(assetUrl) : test.audioCloudUrl ? [test.audioCloudUrl] : []}
-              simulation={simulation}
-              activePartId={activePartId}
-              onPartChange={(p) => setActivePartId(p)}
-              showTranscript={showTranscript}
-              onToggleTranscript={() => setShowTranscript(true)}
-              hasTranscript={Boolean(passageDisplayData.paragraphs.length)}
-            />
-
-            {/* IELTS Part Instruction Card */}
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingHorizontal: 18,
-                paddingVertical: 14,
-                borderRadius: 14,
-                backgroundColor: themeStyles.surface,
-                borderWidth: 1,
-                borderColor: themeStyles.border,
-              }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#FAF3E7', alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 16 }}>📋</Text>
-                </View>
-                <View>
-                  <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 15, color: themeStyles.text }}>
-                    {test.parts?.[activePartId - 1]?.title || `Part ${activePartId}`} · Questions {qStart} – {qEnd}
-                  </Text>
-                  <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#6B7280' }}>
-                    Nghe bài nói và trả lời trực tiếp các câu hỏi bên dưới theo chuẩn Computer-Delivered IELTS.
-                  </Text>
-                </View>
+            {/* Top Instruction Bar (Image 2) */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+              <View
+                style={{
+                  paddingHorizontal: 14,
+                  paddingVertical: 5,
+                  borderRadius: 20,
+                  backgroundColor: '#FEE2E2',
+                  borderWidth: 1,
+                  borderColor: '#FECACA',
+                }}
+              >
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#DC2626' }}>
+                  Questions {qStart}–{qEnd}
+                </Text>
               </View>
             </View>
 
+            {/* Section Title (Image 2) */}
+            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 20, color: '#0F172A', marginTop: 4 }}>
+              {test.parts?.[activePartId - 1]?.label || `Part ${activePartId}`}
+            </Text>
+
             {/* Questions Worksheet */}
             {questionWorksheetContent}
+
+            {/* End of Section Notice (Image 2) */}
+            <View style={{ alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 40, paddingVertical: 24 }}>
+              <Text style={{ fontSize: 24, color: '#94A3B8', letterSpacing: 4 }}>• • •</Text>
+              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 16, color: '#0F172A' }}>
+                Hết câu hỏi của Part {activePartId}
+              </Text>
+              <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#64748B' }}>
+                Bạn còn {Math.max(0, partNumbers.length - answeredInPartCount)} câu chưa trả lời ở phần này. Hãy hoàn thành bài của mình nhé!
+              </Text>
+            </View>
           </ScrollView>
+
+          {/* Hidden HTML5 Audio Element for Background Playback */}
+          {Platform.OS === 'web' && activeAudioTrackUrl ? (
+            React.createElement('audio', {
+              ref: audioPlayerRef,
+              src: activeAudioTrackUrl,
+              preload: 'metadata',
+              onPlay: () => {
+                setupAudioGain();
+                setAudioIsPlaying(true);
+              },
+              onPause: () => setAudioIsPlaying(false),
+              onTimeUpdate: () => {
+                if (audioPlayerRef.current) {
+                  setAudioCurrentTime(audioPlayerRef.current.currentTime);
+                }
+              },
+              onLoadedMetadata: () => {
+                if (audioPlayerRef.current) {
+                  setAudioDuration(audioPlayerRef.current.duration || 0);
+                  audioPlayerRef.current.volume = 1.0;
+                }
+              },
+              onEnded: () => {
+                setAudioIsPlaying(false);
+                if (activePartId < parts.length) {
+                  setActivePartId(activePartId + 1);
+                }
+              },
+              style: { display: 'none' },
+            })
+          ) : null}
         </View>
       ) : (
         <View style={{ flex: 1, flexDirection: isDesktop ? 'row' : 'column' }}>
-          {/* CỘT TRÁI: BÀI ĐỌC (HOẶC TRANSCRIPT NGHE) */}
+          {/* CỘT TRÁI: BÀI ĐỌC (READING PASSAGE) */}
           <View
             style={{
               flex: isDesktop ? leftWidthPercent / 100 : 1,
@@ -1930,20 +2012,19 @@ export function SourceExamRoom({
               showsVerticalScrollIndicator={true}
               contentContainerStyle={{ paddingHorizontal: isDesktop ? 36 : 20, paddingVertical: 28, gap: 16 }}
             >
-              {section === 'Listening' && (
-                <SourceAudio
-                  files={test.audioFiles.length ? test.audioFiles.map(assetUrl) : test.audioCloudUrl ? [test.audioCloudUrl] : []}
-                  simulation={simulation}
-                  activePartId={activePartId}
-                  onPartChange={(p) => setActivePartId(p)}
-                  showTranscript={showTranscript}
-                  onToggleTranscript={() => setShowTranscript(false)}
-                  hasTranscript={Boolean(passageDisplayData.paragraphs.length)}
-                />
-              )}
-
               {/* Tiêu đề bài đọc lớn & phụ đề dẫn dắt */}
               <View className="gap-2 border-b border-border/60 pb-4">
+                <Text
+                  style={{
+                    fontFamily: 'BeVietnamPro_700Bold',
+                    fontSize: 13,
+                    letterSpacing: 1.2,
+                    textTransform: 'uppercase',
+                    color: '#6A4BD9',
+                  }}
+                >
+                  READING PASSAGE {activePartId}
+                </Text>
                 <Text
                   style={{
                     fontFamily: 'BeVietnamPro_800ExtraBold',
@@ -1968,43 +2049,23 @@ export function SourceExamRoom({
                 ) : null}
               </View>
 
-              {section === 'Listening' ? (
-                <View style={{ gap: 16 }}>
-                  {passageDisplayData.paragraphs.map((para, pIdx) => (
-                    <Text
-                      key={pIdx}
-                      selectable={true}
-                      style={{
-                        fontFamily: 'BeVietnamPro_400Regular',
-                        fontSize: fontSizeLevel,
-                        lineHeight: fontSizeLevel * 1.7,
-                        color: themeStyles.text,
-                        textAlign: 'justify',
-                      }}
-                    >
-                      {para}
-                    </Text>
-                  ))}
-                </View>
-              ) : (
-                <View style={{ gap: 16 }}>
-                  {passageDisplayData.paragraphs.map((para, pIdx) => (
-                    <Text
-                      key={pIdx}
-                      selectable={true}
-                      style={{
-                        fontFamily: 'BeVietnamPro_400Regular',
-                        fontSize: fontSizeLevel,
-                        lineHeight: fontSizeLevel * 1.7,
-                        color: themeStyles.text,
-                        textAlign: 'justify',
-                      }}
-                    >
-                      {para}
-                    </Text>
-                  ))}
-                </View>
-              )}
+              <View style={{ gap: 16 }}>
+                {passageDisplayData.paragraphs.map((para, pIdx) => (
+                  <Text
+                    key={pIdx}
+                    selectable={true}
+                    style={{
+                      fontFamily: 'BeVietnamPro_400Regular',
+                      fontSize: fontSizeLevel,
+                      lineHeight: fontSizeLevel * 1.7,
+                      color: themeStyles.text,
+                      textAlign: 'justify',
+                    }}
+                  >
+                    {para}
+                  </Text>
+                ))}
+              </View>
             </ScrollView>
           </View>
 
@@ -2025,323 +2086,410 @@ export function SourceExamRoom({
         </View>
       )}
 
-      {/* 3. BOTTOM NAVIGATION BAR (Chuẩn thanh số câu Computer-Delivered IELTS Image 1, 5) */}
-
-      <View
-
-        style={{
-
-          height: 60,
-
-          backgroundColor: themeStyles.toolbar,
-
-          borderTopWidth: 1,
-
-          borderTopColor: themeStyles.border,
-
-          flexDirection: 'row',
-
-          alignItems: 'center',
-
-          justifyContent: 'space-between',
-
-          paddingHorizontal: 16,
-
-        }}
-
-      >
-
-        {/* Bên trái: Trạng thái tiến độ & chọn Passage */}
-
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-
-          <View>
-
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>
-
-              Practice
-
-            </Text>
-
-            <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 11, color: '#6B7280' }}>
-
-              Đã làm {answeredInPartCount}/{partNumbers.length}
-
-            </Text>
-
-          </View>
-
-          {/* Nút chuyển Passage nếu có nhiều part */}
-
-          {parts.length > 1 && (
-
-            <View style={{ flexDirection: 'row', gap: 4, marginLeft: 8 }}>
-
-              {parts.map((p) => {
-
-                const active = p.id === activePartId;
-
-                return (
-
-                  <Pressable
-
-                    key={p.id}
-
-                    onPress={() => setActivePartId(p.id)}
-
-                    style={{
-
-                      paddingHorizontal: 10,
-
-                      paddingVertical: 5,
-
-                      borderRadius: 6,
-
-                      backgroundColor: active ? '#8F6E36' : themeStyles.surface,
-
-                      borderWidth: 1,
-
-                      borderColor: active ? '#8F6E36' : themeStyles.border,
-
-                    }}
-
-                  >
-
-                    <Text
-
-                      style={{
-
-                        fontFamily: 'BeVietnamPro_700Bold',
-
-                        fontSize: 11,
-
-                        color: active ? '#FFFFFF' : themeStyles.text,
-
-                      }}
-
-                    >
-
-                      P{p.id}
-
-                    </Text>
-
-                  </Pressable>
-
-                );
-
-              })}
-
-            </View>
-
-          )}
-
-        </View>
-
-        {/* Chính giữa: Dãy số câu hỏi 1 2 3 ... 13 (Ảnh 1, 5) */}
-
-        <ScrollView
-
-          horizontal={true}
-
-          showsHorizontalScrollIndicator={false}
-
-          contentContainerStyle={{ alignItems: 'center', gap: 6, paddingHorizontal: 12 }}
-
+      {/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; STANDARD FOR READING) */}
+      {section === 'Listening' ? (
+        <View
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: '#FFFFFF',
+            borderTopWidth: 1,
+            borderTopColor: '#E2E8F0',
+            zIndex: 30,
+            boxShadow: '0 -4px 16px rgba(0,0,0,0.06)',
+          }}
         >
-
-          {partNumbers.map((num) => {
-
-            const hasAnswer = Boolean(answers[String(num)]?.trim());
-
-            const isCurrent = activeQuestion === num;
-
-            const isFlag = flagged.has(num);
-
-            let boxBg = themeStyles.surface;
-
-            let textColor = themeStyles.text;
-
-            let borderColor = themeStyles.border;
-
-            if (hasAnswer) {
-
-              boxBg = '#0F172A';
-
-              textColor = '#FFFFFF';
-
-              borderColor = '#0F172A';
-
-            }
-
-            if (isCurrent) {
-
-              borderColor = '#8F6E36';
-
-            }
-
-            return (
-
-              <Pressable
-
-                key={num}
-
-                onPress={() => setActiveQuestion(num)}
-
-                style={{
-
-                  width: 34,
-
-                  height: 34,
-
-                  borderRadius: 8,
-
-                  backgroundColor: boxBg,
-
-                  borderWidth: isCurrent ? 2 : 1,
-
-                  borderColor,
-
-                  alignItems: 'center',
-
-                  justifyContent: 'center',
-
-                  position: 'relative',
-
-                }}
-
-              >
-
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: textColor }}>
-
-                  {num}
-
-                </Text>
-
-                {isFlag ? (
-
-                  <View
-
-                    style={{
-
-                      position: 'absolute',
-
-                      top: 2,
-
-                      right: 2,
-
-                      width: 6,
-
-                      height: 6,
-
-                      borderRadius: 3,
-
-                      backgroundColor: '#F59E0B',
-
-                    }}
-
-                  />
-
-                ) : null}
-
-              </Pressable>
-
-            );
-
-          })}
-
-        </ScrollView>
-
-        {/* Bên phải: Nút chuyển nhóm & Nút NỘP BÀI VÀNG ÁNH KIM BAND 9 */}
-
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-
-          <Pressable
-
-            accessibilityRole="button"
-
-            onPress={handleNextGroup}
-
+          {/* TIER 1: AUDIO WAVEFORM SCRUBBER BAR (IMAGE 2) */}
+          <View
             style={{
-
-              paddingHorizontal: 12,
-
-              paddingVertical: 7,
-
-              borderRadius: 8,
-
-              borderWidth: 1,
-
-              borderColor: themeStyles.border,
-
-              backgroundColor: themeStyles.surface,
-
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+              borderBottomWidth: 1,
+              borderBottomColor: '#F1F5F9',
+              gap: 12,
             }}
-
           >
-
-            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: themeStyles.text }}>
-
-              Tiếp →
-
-            </Text>
-
-          </Pressable>
-
-          {!submitted ? (
-
+            {/* Play/Pause Button */}
             <Pressable
-
               accessibilityRole="button"
-
-              disabled={loading}
-
-              onPress={() => setConfirmSubmit(true)}
-
-              style={({ pressed }) => ({
-
-                paddingHorizontal: 18,
-
-                paddingVertical: 8,
-
-                borderRadius: 10,
-
-                // Vàng kim Band 9 với gradient & glow
-
-                backgroundColor: '#8F6E36',
-
-                boxShadow: pressed ? '0 1px 2px rgba(143,110,54,0.3)' : '0 3px 8px rgba(143,110,54,0.4)',
-
-                transform: [{ translateY: pressed ? 1 : 0 }],
-
-              })}
-
+              onPress={toggleAudioPlay}
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 14,
+                backgroundColor: audioIsPlaying ? '#0F172A' : '#DC2626',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
             >
-
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
-
-                Nộp bài
-
-              </Text>
-
+              <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{audioIsPlaying ? '⏸' : '▶'}</Text>
             </Pressable>
 
-          ) : (
+            {/* Current Time in Red (Image 2) */}
+            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12.5, color: '#DC2626', minWidth: 42 }}>
+              {formatAudioTime(audioCurrentTime)}
+            </Text>
 
-            <View style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, backgroundColor: '#DCFCE7' }}>
+            {/* Waveform Scrubber Bars (Image 2) */}
+            <Pressable
+              style={{ flex: 1, height: 32, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 4 }}
+              onPress={(e: any) => {
+                if (Platform.OS !== 'web') return;
+                const rect = e.currentTarget?.getBoundingClientRect?.();
+                if (rect) {
+                  const clickX = e.clientX - rect.left;
+                  handleSeekWaveform(clickX / rect.width);
+                }
+              }}
+            >
+              {WAVEFORM_HEIGHTS.map((h, bIdx) => {
+                const prog = bIdx / WAVEFORM_HEIGHTS.length;
+                const curr = audioDuration > 0 ? audioCurrentTime / audioDuration : 0;
+                const isPlayed = prog <= curr;
+                return (
+                  <View
+                    key={bIdx}
+                    style={{
+                      width: 3,
+                      height: h,
+                      borderRadius: 1.5,
+                      backgroundColor: isPlayed ? '#DC2626' : '#CBD5E1',
+                    }}
+                  />
+                );
+              })}
+            </Pressable>
 
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#166534' }}>
+            {/* Total Duration in Gray (Image 2) */}
+            <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 12.5, color: '#64748B', minWidth: 42 }}>
+              {audioDuration > 0 ? formatAudioTime(audioDuration) : '--:--'}
+            </Text>
+          </View>
 
-                ✓ Đã nộp
-
-              </Text>
-
+          {/* TIER 2: SECTION STATUS & QUESTION NUMBERS NAVIGATION (IMAGE 2) */}
+          <View
+            style={{
+              height: 56,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingHorizontal: 16,
+            }}
+          >
+            {/* Left: Section progress */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, minWidth: 140 }}>
+              <Text style={{ fontSize: 18, color: '#64748B' }}>⠿</Text>
+              <View>
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#0F172A' }}>
+                  Section {activePartId}
+                </Text>
+                <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 11, color: '#64748B' }}>
+                  Đã làm {answeredInPartCount} / {partNumbers.length}
+                </Text>
+              </View>
             </View>
 
-          )}
+            {/* Center: Question Pills & Section Tabs */}
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ alignItems: 'center', gap: 6, paddingHorizontal: 12 }}
+            >
+              {/* Active Section Badge (Red Pill matching Image 2) */}
+              <View
+                style={{
+                  paddingHorizontal: 12,
+                  paddingVertical: 6,
+                  borderRadius: 6,
+                  backgroundColor: '#DC2626',
+                }}
+              >
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#FFFFFF' }}>
+                  Section {activePartId}
+                </Text>
+              </View>
 
+              {/* Numbered Question Buttons */}
+              {partNumbers.map((num) => {
+                const hasAnswer = Boolean(answers[String(num)]?.trim());
+                const isCurrent = activeQuestion === num;
+                const isFlag = flagged.has(num);
+                return (
+                  <Pressable
+                    key={num}
+                    onPress={() => setActiveQuestion(num)}
+                    style={{
+                      width: 30,
+                      height: 30,
+                      borderRadius: 6,
+                      backgroundColor: hasAnswer ? '#0F172A' : '#FFFFFF',
+                      borderWidth: isCurrent ? 2 : 1,
+                      borderColor: isCurrent ? '#DC2626' : '#E2E8F0',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontFamily: 'BeVietnamPro_700Bold',
+                        fontSize: 12,
+                        color: hasAnswer ? '#FFFFFF' : '#334155',
+                      }}
+                    >
+                      {num}
+                    </Text>
+                    {isFlag ? (
+                      <View
+                        style={{
+                          position: 'absolute',
+                          top: 2,
+                          right: 2,
+                          width: 5,
+                          height: 5,
+                          borderRadius: 2.5,
+                          backgroundColor: '#EF4444',
+                        }}
+                      />
+                    ) : null}
+                  </Pressable>
+                );
+              })}
+
+              {/* Other Section Pills (S1, S2, S3, S4 matching Image 2) */}
+              {parts.map((p) => {
+                if (p.id === activePartId) return null;
+                return (
+                  <Pressable
+                    key={p.id}
+                    onPress={() => {
+                      setActivePartId(p.id);
+                      setActiveQuestion(p.questionStart);
+                    }}
+                    style={{
+                      paddingHorizontal: 8,
+                      paddingVertical: 6,
+                      borderRadius: 6,
+                      backgroundColor: '#F1F5F9',
+                      borderWidth: 1,
+                      borderColor: '#E2E8F0',
+                    }}
+                  >
+                    <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: '#64748B' }}>
+                      S{p.id}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+
+            {/* Right: Red Section Next Button (matching Image 2) */}
+            {activePartId < parts.length ? (
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => {
+                  const nextP = activePartId + 1;
+                  setActivePartId(nextP);
+                  const pObj = parts.find((p) => p.id === nextP);
+                  if (pObj) setActiveQuestion(pObj.questionStart);
+                }}
+                style={{
+                  paddingHorizontal: 16,
+                  paddingVertical: 9,
+                  borderRadius: 8,
+                  backgroundColor: '#DC2626',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 4,
+                }}
+              >
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                  Part {activePartId + 1} →
+                </Text>
+              </Pressable>
+            ) : (
+              <Pressable
+                accessibilityRole="button"
+                disabled={loading}
+                onPress={() => setConfirmSubmit(true)}
+                style={{
+                  paddingHorizontal: 18,
+                  paddingVertical: 9,
+                  borderRadius: 8,
+                  backgroundColor: '#DC2626',
+                }}
+              >
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                  {submitted ? '✓ Đã nộp' : 'Nộp bài →'}
+                </Text>
+              </Pressable>
+            )}
+          </View>
         </View>
+      ) : (
+        <View
+          style={{
+            height: 60,
+            backgroundColor: themeStyles.toolbar,
+            borderTopWidth: 1,
+            borderTopColor: themeStyles.border,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingHorizontal: 16,
+          }}
+        >
+          {/* Bên trái: Trạng thái tiến độ & chọn Passage */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <View>
+              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>{currentPart?.label || `Reading Passage ${activePartId}`}</Text>
+              <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 11, color: '#6B7280' }}>
+                Đã làm {answeredInPartCount}/{partNumbers.length}
+              </Text>
+            </View>
 
-      </View>
+            {parts.length > 1 && (
+              <View style={{ flexDirection: 'row', gap: 4, marginLeft: 8 }}>
+                {parts.map((p) => {
+                  const active = p.id === activePartId;
+                  return (
+                    <Pressable
+                      key={p.id}
+                      onPress={() => setActivePartId(p.id)}
+                      style={{
+                        paddingHorizontal: 10,
+                        paddingVertical: 5,
+                        borderRadius: 6,
+                        backgroundColor: active ? '#6A4BD9' : themeStyles.surface,
+                        borderWidth: 1,
+                        borderColor: active ? '#6A4BD9' : themeStyles.border,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: 'BeVietnamPro_700Bold',
+                          fontSize: 11,
+                          color: active ? '#FFFFFF' : themeStyles.text,
+                        }}
+                      >
+                        Passage {p.id}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            )}
+          </View>
+
+          {/* Chính giữa: Dãy số câu hỏi */}
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ alignItems: 'center', gap: 6, paddingHorizontal: 12 }}
+          >
+            {partNumbers.map((num) => {
+              const hasAnswer = Boolean(answers[String(num)]?.trim());
+              const isCurrent = activeQuestion === num;
+              const isFlag = flagged.has(num);
+              let boxBg = themeStyles.surface;
+              let textColor = themeStyles.text;
+              let borderColor = themeStyles.border;
+              if (hasAnswer) {
+                boxBg = '#0F172A';
+                textColor = '#FFFFFF';
+                borderColor = '#0F172A';
+              }
+              if (isCurrent) {
+                borderColor = '#6A4BD9';
+              }
+              return (
+                <Pressable
+                  key={num}
+                  onPress={() => setActiveQuestion(num)}
+                  style={{
+                    width: 34,
+                    height: 34,
+                    borderRadius: 8,
+                    backgroundColor: boxBg,
+                    borderWidth: isCurrent ? 2 : 1,
+                    borderColor,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                  }}
+                >
+                  <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: textColor }}>
+                    {num}
+                  </Text>
+                  {isFlag ? (
+                    <View
+                      style={{
+                        position: 'absolute',
+                        top: 2,
+                        right: 2,
+                        width: 6,
+                        height: 6,
+                        borderRadius: 3,
+                        backgroundColor: '#F59E0B',
+                      }}
+                    />
+                  ) : null}
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+
+          {/* Bên phải: Nút chuyển nhóm & Nút NỘP BÀI VÀNG ÁNH KIM BAND 9 */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Pressable
+              accessibilityRole="button"
+              onPress={handleNextGroup}
+              style={{
+                paddingHorizontal: 12,
+                paddingVertical: 7,
+                borderRadius: 8,
+                borderWidth: 1,
+                borderColor: themeStyles.border,
+                backgroundColor: themeStyles.surface,
+              }}
+            >
+              <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: themeStyles.text }}>
+                Tiếp →
+              </Text>
+            </Pressable>
+
+            {!submitted ? (
+              <Pressable
+                accessibilityRole="button"
+                disabled={loading}
+                onPress={() => setConfirmSubmit(true)}
+                style={({ pressed }) => ({
+                  paddingHorizontal: 18,
+                  paddingVertical: 8,
+                  borderRadius: 10,
+                  backgroundColor: '#6A4BD9',
+                  boxShadow: pressed ? '0 1px 2px rgba(106, 75, 217,0.3)' : '0 3px 8px rgba(106, 75, 217,0.4)',
+                  transform: [{ translateY: pressed ? 1 : 0 }],
+                })}
+              >
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                  Nộp bài
+                </Text>
+              </Pressable>
+            ) : (
+              <View style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, backgroundColor: '#DCFCE7' }}>
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#166534' }}>
+                  ✓ Đã nộp
+                </Text>
+              </View>
+            )}
+          </View>
+        </View>
+      )}
 
       {/* MODAL XÁC NHẬN NỘP BÀI */}
 
@@ -2435,7 +2583,7 @@ export function SourceExamRoom({
 
                     borderRadius: 10,
 
-                    backgroundColor: '#8F6E36',
+                    backgroundColor: '#6A4BD9',
 
                   }}
 

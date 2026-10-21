@@ -92,702 +92,1858 @@ export type IeltsTestPackage = {
   speakingContent?: IeltsSpeakingContent;
   answerKey: Record<string, string | string[]>;
   explanations: Record<string, { vi: string; locate: string; paraphrase?: string }>;
+  /** false = đáp án chưa có bản in để đối chiếu; mặc định coi là đã xác minh. */
+  answerKeyVerified?: boolean;
 };
 
 /**
  * Master catalog of Cambridge IELTS (Cam 12-20) and Actual Test Volumes (Vol 1-6).
  */
 export const CAM_VOL_TEST_PACKAGES: IeltsTestPackage[] = [
+  {
+    "id": "cambridge-17-reading-2",
+    "title": "Cambridge IELTS 17 · Reading Test 2",
+    "collection": "cambridge",
+    "volume": 17,
+    "testNumber": 2,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "Dead Sea Scrolls",
+      "Re-domesticating the Tomato (CRISPR)",
+      "Insight vs Evolution in Innovation"
+    ],
+    "questionTypes": [
+      "NOTE_COMPLETION",
+      "TRUE_FALSE_NOT_GIVEN",
+      "MATCHING_INFORMATION",
+      "MATCHING_FEATURES",
+      "SENTENCE_COMPLETION",
+      "MULTIPLE_CHOICE",
+      "YES_NO_NOT_GIVEN",
+      "SUMMARY_COMPLETION"
+    ],
+    "answerKey": {
+      "1": "rock",
+      "2": "cave",
+      "3": "clay",
+      "4": "Essenes",
+      "5": "Hebrew",
+      "6": "NOT GIVEN",
+      "7": "FALSE",
+      "8": "TRUE",
+      "9": "TRUE",
+      "10": "FALSE",
+      "11": "FALSE",
+      "12": "TRUE",
+      "13": "NOT GIVEN",
+      "14": "C",
+      "15": "B",
+      "16": "E",
+      "17": "A",
+      "18": "C",
+      "19": "B",
+      "20": "D",
+      "21": "A",
+      "22": "C",
+      "23": "A",
+      "24": "flavour/flavor",
+      "25": "size",
+      "26": "salt",
+      "27": "D",
+      "28": "A",
+      "29": "A",
+      "30": "C",
+      "31": "A",
+      "32": "NO",
+      "33": "NOT GIVEN",
+      "34": "YES",
+      "35": "NO",
+      "36": "NOT GIVEN",
+      "37": "F",
+      "38": "D",
+      "39": "E",
+      "40": "B"
+    },
+    "explanations": {
+      "1": {
+        "vi": "Một cậu bé ném hòn đá vào miệng hang.",
+        "locate": "Đoạn 1"
+      },
+      "2": {
+        "vi": "Các thiếu niên đi vào hang và thấy nhiều bình.",
+        "locate": "Đoạn 1"
+      },
+      "3": {
+        "vi": "Các bình được làm bằng đất sét.",
+        "locate": "Đoạn 1"
+      },
+      "4": {
+        "vi": "Học giả cho rằng người viết thuộc nhóm Essenes.",
+        "locate": "Đoạn 2"
+      },
+      "5": {
+        "vi": "Phần lớn văn bản viết bằng tiếng Hebrew.",
+        "locate": "Đoạn 3"
+      },
+      "6": {
+        "vi": "Bài chỉ nói họ bán với giá nhỏ, không nói họ thất vọng.",
+        "locate": "Đoạn 1 (không có thông tin)"
+      },
+      "7": {
+        "vi": "Nguồn gốc cuộn giấy vẫn còn tranh luận, nên khẳng định có đồng thuận là sai.",
+        "locate": "Đoạn 2"
+      },
+      "8": {
+        "vi": "Chỉ sách Isaiah còn nguyên vẹn, các sách khác thiếu.",
+        "locate": "Đoạn 4"
+      },
+      "9": {
+        "vi": "Cuộn đồng dùng từ vựng và chính tả khác thường.",
+        "locate": "Đoạn 5"
+      },
+      "10": {
+        "vi": "Mar Samuel mua các cuộn giấy, không được tặng.",
+        "locate": "Đoạn 6"
+      },
+      "11": {
+        "vi": "Ông chào bán không thành công cho các trường đại học Mỹ.",
+        "locate": "Đoạn 6"
+      },
+      "12": {
+        "vi": "Cuộn phục dựng năm 2017 nêu các lễ hằng năm của cộng đồng.",
+        "locate": "Đoạn 7"
+      },
+      "13": {
+        "vi": "Bài chỉ nói còn một cuộn chưa dịch, không nói ai đang giải mã.",
+        "locate": "Đoạn 7 (không có thông tin)"
+      },
+      "14": {
+        "vi": "Nhóm Trung Quốc tạo giống kháng bệnh đốm vi khuẩn.",
+        "locate": "Đoạn C"
+      },
+      "15": {
+        "vi": "Chọn giống từ một cây đơn lẻ làm mất đa dạng di truyền và đôi khi kèm đặc tính xấu.",
+        "locate": "Đoạn B"
+      },
+      "16": {
+        "vi": "Đoạn E kể tên nhiều loài hoang dã có thể thành cây lương thực.",
+        "locate": "Đoạn E"
+      },
+      "17": {
+        "vi": "Đoạn A đặt mốc hàng nghìn năm so với chưa đầy ba năm.",
+        "locate": "Đoạn A"
+      },
+      "18": {
+        "vi": "Kudla nhận xét về vị đậm và thơm của cà chua chỉnh sửa.",
+        "locate": "Đoạn C"
+      },
+      "19": {
+        "vi": "Gao nói chọn cây chịu hạn, chịu nóng giúp thích nghi khi khí hậu ấm lên.",
+        "locate": "Đoạn E (Gao)"
+      },
+      "20": {
+        "vi": "Jones nghi ngờ cây lạ khó thành cây lương thực chủ lực.",
+        "locate": "Đoạn E (Jones)"
+      },
+      "21": {
+        "vi": "Kudla không muốn tiết lộ loài sắp nghiên cứu.",
+        "locate": "Đoạn E (Kudla)"
+      },
+      "22": {
+        "vi": "Van Eck nói chi phí giấy phép và phê duyệt cản trở việc mở rộng.",
+        "locate": "Đoạn D (Van Eck)"
+      },
+      "23": {
+        "vi": "Kudla nêu con số 50.000 loài ăn được nhưng chỉ 15 loại cho phần lớn năng lượng.",
+        "locate": "Đoạn A (Kudla)"
+      },
+      "24": {
+        "vi": "Cà chua siêu thị mất nhiều hương vị.",
+        "locate": "Đoạn B"
+      },
+      "25": {
+        "vi": "Kích thước quả tăng gấp ba khi chỉnh gen FRUITWEIGHT.",
+        "locate": "Đoạn C"
+      },
+      "26": {
+        "vi": "Giống mới chịu mặn tốt hơn và giàu vitamin C.",
+        "locate": "Đoạn C"
+      },
+      "27": {
+        "vi": "Đoạn 1 mô tả quan niệm phổ biến về thiên tài.",
+        "locate": "Đoạn 1"
+      },
+      "28": {
+        "vi": "Đoạn 2 phản bác quan điểm đó là đã bóp méo bản chất khám phá.",
+        "locate": "Đoạn 2"
+      },
+      "29": {
+        "vi": "Darwin và Einstein được nêu như ngoại lệ trước khi đề xuất thử nghiệm-sai sót.",
+        "locate": "Đoạn 3"
+      },
+      "30": {
+        "vi": "Ý tưởng của Nicholson trở thành nền cho mô hình của Bohr.",
+        "locate": "Đoạn 4"
+      },
+      "31": {
+        "vi": "Điểm đáng chú ý là lý do giản dị: chấn thương chân.",
+        "locate": "Đoạn 6"
+      },
+      "32": {
+        "vi": "Tác giả cho rằng gọi người là thiên tài chỉ dán nhãn chứ không giải thích.",
+        "locate": "Đoạn 9"
+      },
+      "33": {
+        "vi": "Bài không nêu bối cảnh các nhà tâm lý lúc đó có đang tìm lý do khoa học cho sáng tạo hay không.",
+        "locate": "Đoạn 10 (không có thông tin)"
+      },
+      "34": {
+        "vi": "Luật Hiệu quả là quá trình cơ học, không có mục đích định trước.",
+        "locate": "Đoạn 10"
+      },
+      "35": {
+        "vi": "Nguồn gốc nguyên liệu của ý tưởng mới vẫn chưa rõ.",
+        "locate": "Đoạn 11"
+      },
+      "36": {
+        "vi": "Bài không nói nhiều nhà khoa học đang bỏ quan niệm thiên tài.",
+        "locate": "Đoạn 12 (không có thông tin)"
+      },
+      "37": {
+        "vi": "Quan niệm truyền thống: đột phá đến từ cảm hứng bất chợt.",
+        "locate": "Đoạn 1"
+      },
+      "38": {
+        "vi": "Lý thuyết sai của Nicholson là ví dụ cho sai lầm.",
+        "locate": "Đoạn 4"
+      },
+      "39": {
+        "vi": "Phát minh Post-it xuất phát từ may mắn.",
+        "locate": "Đoạn 7"
+      },
+      "40": {
+        "vi": "Cả hai quy luật có thể không có mục tiêu rõ ràng.",
+        "locate": "Đoạn 10"
+      }
+    }
+  },
+  {
+    "id": "cambridge-18-reading-2",
+    "title": "Cambridge IELTS 18 · Reading Test 2",
+    "collection": "cambridge",
+    "volume": 18,
+    "testNumber": 2,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "Stonehenge",
+      "Living with Artificial Intelligence",
+      "Leonardo da Vinci's Ideal City"
+    ],
+    "questionTypes": [
+      "NOTE_COMPLETION",
+      "TRUE_FALSE_NOT_GIVEN",
+      "MULTIPLE_CHOICE",
+      "YES_NO_NOT_GIVEN",
+      "SUMMARY_COMPLETION"
+    ],
+    "answerKey": {
+      "1": "(deer) antlers",
+      "2": "(timber) posts",
+      "3": "tree trunks",
+      "4": "oxen",
+      "5": "glaciers",
+      "6": "druids",
+      "7": "burial",
+      "8": "calendar",
+      "9": "TRUE",
+      "10": "FALSE",
+      "11": "FALSE",
+      "12": "TRUE",
+      "13": "NOT GIVEN",
+      "14": "C",
+      "15": "A",
+      "16": "B",
+      "17": "D",
+      "18": "C",
+      "19": "D",
+      "20": "YES",
+      "21": "NOT GIVEN",
+      "22": "NO",
+      "23": "YES",
+      "24": "C",
+      "25": "A",
+      "26": "E",
+      "27": "NOT GIVEN",
+      "28": "NOT GIVEN",
+      "29": "TRUE",
+      "30": "FALSE",
+      "31": "TRUE",
+      "32": "NOT GIVEN",
+      "33": "FALSE",
+      "34": "transport",
+      "35": "staircases",
+      "36": "engineering",
+      "37": "rule",
+      "38": "Roman",
+      "39": "Paris",
+      "40": "outwards"
+    },
+    "explanations": {
+      "1": {
+        "vi": "Công cụ đào mương có thể làm từ gạc hươu.",
+        "locate": "Đoạn 2"
+      },
+      "2": {
+        "vi": "Các hố sâu có thể từng giữ cột gỗ.",
+        "locate": "Đoạn 2"
+      },
+      "3": {
+        "vi": "Thuyết cổ điển dùng thân cây làm xe trượt và con lăn.",
+        "locate": "Đoạn 4"
+      },
+      "4": {
+        "vi": "Bò kéo các giỏ lớn đặt trên bi và ván.",
+        "locate": "Đoạn 4"
+      },
+      "5": {
+        "vi": "Nhà địa chất cho rằng băng hà mang đá tới.",
+        "locate": "Đoạn 5"
+      },
+      "6": {
+        "vi": "Thế kỷ 17 có giả thuyết người xây là các druid Celt.",
+        "locate": "Đoạn 7"
+      },
+      "7": {
+        "vi": "Đa số học giả đồng ý nơi này từng là khu chôn cất.",
+        "locate": "Đoạn 9"
+      },
+      "8": {
+        "vi": "Thập niên 1960 có ý kiến nó hoạt động như lịch.",
+        "locate": "Đoạn 10"
+      },
+      "9": {
+        "vi": "Đá sa thạch đặt cả vòng ngoài lẫn ở giữa.",
+        "locate": "Đoạn 6"
+      },
+      "10": {
+        "vi": "Đá xanh được dời nhiều lần tới khoảng 1600 TCN, nên không chứng minh đứng yên.",
+        "locate": "Đoạn 6"
+      },
+      "11": {
+        "vi": "Niên đại phóng xạ cho thấy di tích cổ hơn người Celt, trái với giả thuyết Aubrey.",
+        "locate": "Đoạn 7"
+      },
+      "12": {
+        "vi": "Hiện vật gợi ý nhiều nhóm người cùng xây.",
+        "locate": "Đoạn 8"
+      },
+      "13": {
+        "vi": "Bài không nói giới thiên văn là người phê bình chính.",
+        "locate": "Đoạn 10 (không có thông tin)"
+      },
+      "14": {
+        "vi": "Nhiều chuyên gia cho rằng giới hạn của AI hẹp chỉ là tạm thời.",
+        "locate": "Đoạn 1"
+      },
+      "15": {
+        "vi": "Đoạn 2 giải thích máy không bị các giới hạn vật lý như não người.",
+        "locate": "Đoạn 2"
+      },
+      "16": {
+        "vi": "Chuyện vua Midas minh hoạ mục tiêu mơ hồ gây hậu quả.",
+        "locate": "Đoạn 3"
+      },
+      "17": {
+        "vi": "Thách thức là AI phải thân thiện hơn chính con người.",
+        "locate": "Đoạn 4"
+      },
+      "18": {
+        "vi": "Máy sẽ vượt trội hơn người về một số mặt, kể cả đạo đức.",
+        "locate": "Đoạn 5"
+      },
+      "19": {
+        "vi": "Khuyết điểm của con người khiến việc tạo ra máy phù hợp khó hơn.",
+        "locate": "Đoạn 6"
+      },
+      "20": {
+        "vi": "Máy đạo đức có thể ngăn ta thiên vị cộng đồng mình.",
+        "locate": "Đoạn 8"
+      },
+      "21": {
+        "vi": "Bài không nói về số lượng cảnh sát silicon.",
+        "locate": "Đoạn 8 (không có thông tin)"
+      },
+      "22": {
+        "vi": "Tác giả nói ít ai hoan nghênh viễn cảnh đó.",
+        "locate": "Đoạn 8"
+      },
+      "23": {
+        "vi": "Cần tinh thần hợp tác để hướng AI đúng hướng.",
+        "locate": "Đoạn 10"
+      },
+      "24": {
+        "vi": "AI hiện chỉ có vai trò nhỏ trong phân bổ nguồn lực y tế.",
+        "locate": "Đoạn 9"
+      },
+      "25": {
+        "vi": "Bác sĩ cấp cao sẽ mất một số quyền kiểm soát.",
+        "locate": "Đoạn 9"
+      },
+      "26": {
+        "vi": "Họ mất quyền hạn chuyên môn.",
+        "locate": "Đoạn 9"
+      },
+      "27": {
+        "vi": "Bài không nói ai là người đầu tiên gọi Leonardo là thiên tài cách đây 500 năm.",
+        "locate": "Đoạn 1 (không có thông tin)"
+      },
+      "28": {
+        "vi": "Bài không so sánh số người chết vì khủng hoảng khí hậu với dịch hạch.",
+        "locate": "Đoạn 2 (không có thông tin)"
+      },
+      "29": {
+        "vi": "Khủng hoảng khí hậu được so với dịch hạch thế kỷ 14.",
+        "locate": "Đoạn 2"
+      },
+      "30": {
+        "vi": "Thành phố lý tưởng không xây vì chi phí quá cao.",
+        "locate": "Đoạn 3"
+      },
+      "31": {
+        "vi": "Mô hình đô thị không bền vững là nguyên nhân chính của biến đổi khí hậu.",
+        "locate": "Đoạn 3"
+      },
+      "32": {
+        "vi": "Bài không nói người dân phản đối việc cải tạo Pienza và Ferrara.",
+        "locate": "Đoạn 4 (không có thông tin)"
+      },
+      "33": {
+        "vi": "Ghi chép của ông lộn xộn, trái với khẳng định.",
+        "locate": "Đoạn 5"
+      },
+      "34": {
+        "vi": "Thành phố cạnh sông Ticino thuận lợi cho vận chuyển hàng hoá.",
+        "locate": "Đoạn 5"
+      },
+      "35": {
+        "vi": "Cầu thang ngoài trời nối các tầng.",
+        "locate": "Đoạn 6"
+      },
+      "36": {
+        "vi": "Chuyên môn kỹ thuật thể hiện qua hệ thống kênh nhân tạo.",
+        "locate": "Đoạn 7"
+      },
+      "37": {
+        "vi": "Chiều rộng đường tương ứng chiều cao nhà, quy tắc còn dùng ở Ý.",
+        "locate": "Đoạn 7"
+      },
+      "38": {
+        "vi": "Một số đặc điểm đã tồn tại ở các thành phố La Mã.",
+        "locate": "Đoạn 8"
+      },
+      "39": {
+        "vi": "Paris được cải tạo thế kỷ 19 theo hướng tương tự.",
+        "locate": "Đoạn 8"
+      },
+      "40": {
+        "vi": "Phát triển hướng ra ngoài không còn là cách tốt nhất.",
+        "locate": "Đoạn 9"
+      }
+    }
+  },
   // ==========================================
   // CAMBRIDGE IELTS 19 - READING TEST 1
   // ==========================================
   {
-    id: 'cambridge-19-reading-1',
-    title: 'Cambridge IELTS 19 · Reading Test 1',
-    collection: 'cambridge',
-    volume: 19,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Sports Technology', 'Archaeology & History', 'Environmental Science'],
-    questionTypes: [
-      'TRUE_FALSE_NOT_GIVEN',
-      'NOTE_COMPLETION',
-      'MATCHING_INFORMATION',
-      'SUMMARY_COMPLETION',
-      'MULTIPLE_CHOICE',
+    "id": "cambridge-19-reading-1",
+    "title": "Cambridge IELTS 19 · Reading Test 1",
+    "collection": "cambridge",
+    "volume": 19,
+    "testNumber": 1,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "Tennis Racket Technology",
+      "Ancient Mediterranean Piracy",
+      "The Psychology of Misinformation"
     ],
-    answerKey: {
-      '1': 'TRUE',
-      '2': 'NOT GIVEN',
-      '3': 'FALSE',
-      '4': 'TRUE',
-      '5': 'FALSE',
-      '6': 'NOT GIVEN',
-      '7': 'strings',
-      '8': 'frame',
-      '9': 'vibration',
-      '10': 'aerodynamic',
-      '11': 'graphite',
-      '12': 'power',
-      '13': 'control',
-      '14': 'B',
-      '15': 'E',
-      '16': 'A',
-      '17': 'D',
-      '18': 'F',
-      '19': 'sediment',
-      '20': 'timber',
-      '21': 'canals',
-      '22': 'drought',
-      '23': 'pollen',
-      '24': 'trade',
-      '25': 'monumental',
-      '26': 'C',
-      '27': 'YES',
-      '28': 'NO',
-      '29': 'NOT GIVEN',
-      '30': 'YES',
-      '31': 'NO',
-      '32': 'nutrients',
-      '33': 'biodiversity',
-      '34': 'deforestation',
-      '35': 'canopy',
-      '36': 'resilience',
-      '37': 'A',
-      '38': 'D',
-      '39': 'B',
-      '40': 'C',
+    "questionTypes": [
+      "TRUE_FALSE_NOT_GIVEN",
+      "NOTE_COMPLETION",
+      "MATCHING_INFORMATION",
+      "MULTIPLE_CHOICE",
+      "SUMMARY_COMPLETION",
+      "YES_NO_NOT_GIVEN"
+    ],
+    "answerKey": {
+      "1": "FALSE",
+      "2": "FALSE",
+      "3": "NOT GIVEN",
+      "4": "FALSE",
+      "5": "NOT GIVEN",
+      "6": "TRUE",
+      "7": "TRUE",
+      "8": "paint",
+      "9": "topspin",
+      "10": "training",
+      "11": "intestines/gut",
+      "12": "weights",
+      "13": "grips",
+      "14": "D",
+      "15": "G",
+      "16": "C",
+      "17": "A",
+      "18": "G",
+      "19": "B",
+      "20": "B",
+      "21": "D",
+      "22": "C",
+      "23": "E",
+      "24": "grain",
+      "25": "punishment",
+      "26": "ransom",
+      "27": "D",
+      "28": "A",
+      "29": "C",
+      "30": "D",
+      "31": "G",
+      "32": "J",
+      "33": "H",
+      "34": "B",
+      "35": "E",
+      "36": "C",
+      "37": "YES",
+      "38": "NOT GIVEN",
+      "39": "NO",
+      "40": "NOT GIVEN"
     },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 nêu rõ Andy Murray vươn lên số 1 thế giới là nhờ kết hợp giữa tài năng và sự trợ giúp tối tân của vợt tennis hiện đại.',
-        locate: 'Paragraph 1: "...ranked as the world’s number one. It was an incredible achievement... made possible by technological advances in equipment."',
-        paraphrase: 'advances in equipment = modernized racket engineering',
+    "explanations": {
+      "1": {
+        "vi": "Năm năm trước 2016, Murray chỉ được coi là tay vợt tiềm năng nhưng chưa vô địch, nên không ai kỳ vọng sớm.",
+        "locate": "Đoạn 1"
       },
-      '2': {
-        vi: 'Bài đọc không đề cập liệu Fischer có kiếm được lợi nhuận thương mại từ phát minh này hay không, chỉ nói ông là tay vợt nghiệp dư và cây vợt bị cấm.',
-        locate: 'Paragraph 2: "...the amateur German tennis player Werner Fischer started playing with the so-called spaghetti-strung racket."',
+      "2": {
+        "vi": "Thay đổi dây của Murray tinh tế đến mức gần như không ai để ý.",
+        "locate": "Đoạn 2"
       },
-      '3': {
-        vi: 'Bài khẳng định Liên đoàn Quần vợt Quốc tế (ITF) cấm cây vợt vì tạo độ xoáy quá lớn không công bằng, chứ không phải vì lý do an toàn như câu hỏi đề cập.',
-        locate: 'Paragraph 2: "...generated so much topspin that it was quickly banned by the International Tennis Federation."',
-        paraphrase: 'banned due to excessive topspin != banned for player safety',
+      "3": {
+        "vi": "Bài không nói số đông tay vợt hàng đầu mang theo thợ căng dây.",
+        "locate": "Đoạn về chỉnh vợt (không có thông tin)"
       },
-      '4': {
-        vi: 'Đoạn 3 xác nhận việc sử dụng vật liệu sợi carbon và graphite tổng hợp đã giảm đáng kể trọng lượng khung vợt.',
-        locate: 'Paragraph 3: "The transition from traditional wooden frames to lightweight composite materials such as graphite drastically reduced overall weight."',
-        paraphrase: 'drastically reduced overall weight = lighter frames',
+      "4": {
+        "vi": "Vợt của anh em Bryan nặng hơn mức trung bình.",
+        "locate": "Đoạn về chỉnh vợt"
       },
-      '5': {
-        vi: 'Trái ngược với nhận định rằng vợt nặng hơn luôn tạo ra lực đánh bóng mạnh hơn, đoạn 4 chỉ ra rằng tốc độ vung vợt với khung nhẹ cho phép gia tốc bóng cao hơn.',
-        locate: 'Paragraph 4: "Modern biomechanics demonstrated that higher swing velocity achieved with lighter frames yielded greater ball exit velocity than heavier wooden predecessors."',
-        paraphrase: 'higher swing velocity yielded greater velocity != heavy racket produces more power',
+      "5": {
+        "vi": "Bài không nói Fischer tự thiết kế cây vợt.",
+        "locate": "Đoạn về Fischer (không có thông tin)"
       },
-      '6': {
-        vi: 'Bài viết không đưa ra dự báo nào về việc các nhà sản xuất có dừng cải tiến vợt trong thập kỷ tới hay không.',
-        locate: 'Passage 1, concluding sentences: "Engineers continue to experiment with smart sensors..."',
+      "6": {
+        "vi": "Điều kiện thời tiết ảnh hưởng cách tay vợt chỉnh dây.",
+        "locate": "Đoạn về căng dây"
       },
-      '7': {
-        vi: 'Điền từ: "strings". Dây vợt đan chéo đóng vai trò tiếp xúc trực tiếp và truyền động năng cho quả bóng.',
-        locate: 'Paragraph 2: "...the intertwined strings absorb and return kinetic energy..."',
+      "7": {
+        "vi": "Sức giao bóng mạnh của Sampras được cho là nhờ thêm chì vào vợt.",
+        "locate": "Đoạn về chỉnh khung vợt"
       },
-      '8': {
-        vi: 'Điền từ: "frame". Khung vợt khí động học giúp hạn chế lực cản không khí.',
-        locate: 'Paragraph 3: "...redesigned the aerodynamic profile of the frame..."',
+      "8": {
+        "vi": "Anh em Bryan thử nghiệm nhiều loại sơn trên khung vợt.",
+        "locate": "Đoạn về chỉnh vợt"
       },
-      '9': {
-        vi: 'Điền từ: "vibration". Bộ giảm chấn được lắp vào để triệt tiêu chấn động truyền lên cổ tay.',
-        locate: 'Paragraph 4: "...dampeners are integrated to minimize harmful vibration to the elbow..."',
+      "9": {
+        "vi": "Vợt dây thưa bị cấm vì tạo quá nhiều xoáy.",
+        "locate": "Đoạn về Fischer"
       },
-      '10': {
-        vi: 'Điền từ: "aerodynamic". Thiết kế khí động học giúp tăng tốc độ vung tay.',
-        locate: 'Paragraph 3: "...aerodynamic contours allow players to achieve quicker swing speeds."',
+      "10": {
+        "vi": "Chỉnh vợt quan trọng ngang với dinh dưỡng và luyện tập.",
+        "locate": "Đoạn về Fischer"
       },
-      '11': {
-        vi: 'Điền từ: "graphite". Vật liệu sợi graphite thay thế hoàn toàn gỗ ép truyền thống.',
-        locate: 'Paragraph 3: "...manufactured predominantly from carbon graphite weaves..."',
+      "11": {
+        "vi": "Dây tự nhiên làm từ ruột cừu hoặc bò.",
+        "locate": "Đoạn về dây tự nhiên"
       },
-      '12': {
-        vi: 'Điền từ: "power". Độ căng dây vợt thấp hơn thường cung cấp lực đánh (power) lớn hơn.',
-        locate: 'Paragraph 5: "...lower tension increases the trampoline effect, providing greater power."',
+      "12": {
+        "vi": "Sampras thêm các miếng chì vào khung vợt.",
+        "locate": "Đoạn về chỉnh khung vợt"
       },
-      '13': {
-        vi: 'Điền từ: "control". Ngược lại, độ căng dây cao giúp tăng khả năng kiểm soát hướng đi (control).',
-        locate: 'Paragraph 5: "...higher string tension affords superior shot control and precision."',
+      "13": {
+        "vi": "Oliveira thay cán vợt bằng loại mỏng hơn.",
+        "locate": "Đoạn về cán vợt"
       },
-    },
+      "14": {
+        "vi": "Vua Alashiya phủ nhận mối liên hệ của dân mình với nhóm Lukka.",
+        "locate": "Đoạn D"
+      },
+      "15": {
+        "vi": "Pompey chia Địa Trung Hải thành 13 khu và dọn từng khu.",
+        "locate": "Đoạn G"
+      },
+      "16": {
+        "vi": "Chính quyền thuê hải tặc nhất là thời chiến.",
+        "locate": "Đoạn C"
+      },
+      "17": {
+        "vi": "Hình ảnh hải tặc trong mắt người ngày nay ở Caribe.",
+        "locate": "Đoạn A"
+      },
+      "18": {
+        "vi": "Hải tặc được cấp đất để không quay lại nghề cũ.",
+        "locate": "Đoạn G"
+      },
+      "19": {
+        "vi": "Tàu thời cổ phải đi sát bờ.",
+        "locate": "Đoạn B"
+      },
+      "20": {
+        "vi": "Cư dân biết rõ vùng biển nên thoát được trả đũa (B); 20 và 21 là B và D tuỳ thứ tự.",
+        "locate": "Đoạn B"
+      },
+      "21": {
+        "vi": "Cư dân vùng núi sống dựa vào biển (D).",
+        "locate": "Đoạn B"
+      },
+      "22": {
+        "vi": "Quan chức cao cấp Hy Lạp đôi khi tham gia cướp biển (C); 22 và 23 là C và E.",
+        "locate": "Đoạn E"
+      },
+      "23": {
+        "vi": "Các văn bản cổ Hy Lạp ca ngợi cướp biển (E).",
+        "locate": "Đoạn E"
+      },
+      "24": {
+        "vi": "Hải tặc tấn công tàu chở lúa mì.",
+        "locate": "Đoạn F"
+      },
+      "25": {
+        "vi": "Thượng viện đòi trừng phạt.",
+        "locate": "Đoạn F"
+      },
+      "26": {
+        "vi": "Hải tặc đòi tiền chuộc.",
+        "locate": "Đoạn F"
+      },
+      "27": {
+        "vi": "Đoạn 1 đưa ra nhiều lý do vì sao người ta nói dối hoặc lan truyền sai lệch.",
+        "locate": "Đoạn 1"
+      },
+      "28": {
+        "vi": "Cơ chế truyền thông đại chúng có thể giúp sửa sai về lâu dài.",
+        "locate": "Đoạn 2"
+      },
+      "29": {
+        "vi": "Đoạn 4 phác ra ba vấn đề đáng chú ý hiện nay.",
+        "locate": "Đoạn 4"
+      },
+      "30": {
+        "vi": "Cơ quan quản lý Mỹ không ngăn được tin sai xuất hiện.",
+        "locate": "Đoạn 6"
+      },
+      "31": {
+        "vi": "Con người thường xuyên tiếp xúc thông tin sai.",
+        "locate": "Đoạn 5"
+      },
+      "32": {
+        "vi": "Descartes và Spinoza có quan điểm khác nhau.",
+        "locate": "Đoạn 5"
+      },
+      "33": {
+        "vi": "Spinoza cho rằng cần một thao tác tâm trí riêng để kiểm chứng.",
+        "locate": "Đoạn 5"
+      },
+      "34": {
+        "vi": "Nghiên cứu gần đây bổ sung bằng chứng cho Spinoza.",
+        "locate": "Đoạn 5"
+      },
+      "35": {
+        "vi": "Thông tin được coi như thật dù chỉ trong thời gian ngắn.",
+        "locate": "Đoạn 5"
+      },
+      "36": {
+        "vi": "Hai nguồn lực nằm ở các vùng khác nhau của não.",
+        "locate": "Đoạn 5"
+      },
+      "37": {
+        "vi": "Chiến dịch sửa sai cần người nghe hiểu được thì mới hiệu quả.",
+        "locate": "Đoạn 7"
+      },
+      "38": {
+        "vi": "Bài đề xuất giáo dục sớm nhưng không nói có phản đối.",
+        "locate": "Đoạn 7 (không có thông tin)"
+      },
+      "39": {
+        "vi": "Tác giả nói hành trình dài và gian nan.",
+        "locate": "Đoạn 8"
+      },
+      "40": {
+        "vi": "Bài không bàn về việc cập nhật tin mới bị phóng đại.",
+        "locate": "Không có thông tin"
+      }
+    }
   },
 
   // ==========================================
   // CAMBRIDGE IELTS 19 - READING TEST 2
   // ==========================================
   {
-    id: 'cambridge-19-reading-2',
-    title: 'Cambridge IELTS 19 · Reading Test 2',
-    collection: 'cambridge',
-    volume: 19,
-    testNumber: 2,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Ecology', 'Urban Architecture', 'Cognitive Psychology'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'MATCHING_HEADINGS', 'SUMMARY_COMPLETION', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'FALSE', '2': 'TRUE', '3': 'NOT GIVEN', '4': 'TRUE', '5': 'FALSE',
-      '6': 'urban greening', '7': 'microclimate', '8': 'heat island', '9': 'runoff', '10': 'biodiversity',
-      '11': 'C', '12': 'A', '13': 'D',
-      '14': 'iv', '15': 'vii', '16': 'ii', '17': 'i', '18': 'vi', '19': 'viii',
-      '20': 'carbon capture', '21': 'wetlands', '22': 'permeable', '23': 'insulation', '24': 'well-being', '25': 'B', '26': 'D',
-      '27': 'YES', '28': 'NOT GIVEN', '29': 'NO', '30': 'YES', '31': 'NO',
-      '32': 'working memory', '33': 'dopamine', '34': 'neural pathways', '35': 'attentional fatigue',
-      '36': 'nature therapy', '37': 'B', '38': 'C', '39': 'A', '40': 'D',
+    "id": "cambridge-19-reading-2",
+    "title": "Cambridge IELTS 19 · Reading Test 2",
+    "collection": "cambridge",
+    "volume": 19,
+    "testNumber": 2,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "The Industrial Revolution in Britain",
+      "Athletes and Stress",
+      "The Gifted Child Debate"
+    ],
+    "questionTypes": [
+      "NOTE_COMPLETION",
+      "TRUE_FALSE_NOT_GIVEN",
+      "MATCHING_INFORMATION",
+      "SENTENCE_COMPLETION",
+      "MULTIPLE_CHOICE",
+      "SUMMARY_COMPLETION",
+      "YES_NO_NOT_GIVEN"
+    ],
+    "answerKey": {
+      "1": "piston",
+      "2": "coal",
+      "3": "workshops",
+      "4": "labour/labor",
+      "5": "quality",
+      "6": "railway(s)",
+      "7": "sanitation",
+      "8": "NOT GIVEN",
+      "9": "FALSE",
+      "10": "NOT GIVEN",
+      "11": "TRUE",
+      "12": "TRUE",
+      "13": "NOT GIVEN",
+      "14": "D",
+      "15": "F",
+      "16": "A",
+      "17": "C",
+      "18": "F",
+      "19": "injury",
+      "20": "serves",
+      "21": "excitement",
+      "22": "visualisation/visualization",
+      "23": "B",
+      "24": "D",
+      "25": "A",
+      "26": "E",
+      "27": "H",
+      "28": "A",
+      "29": "C",
+      "30": "B",
+      "31": "J",
+      "32": "I",
+      "33": "YES",
+      "34": "NOT GIVEN",
+      "35": "YES",
+      "36": "NOT GIVEN",
+      "37": "NO",
+      "38": "C",
+      "39": "B",
+      "40": "D"
     },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 nêu rõ rằng diện tích bê tông hóa làm tăng nhiệt độ đô thị, chứ không phải cây xanh làm tăng nhiệt độ.',
-        locate: 'Paragraph 1: "...dense asphalt and concrete absorb thermal radiation, whereas tree foliage creates restorative shade."',
-        paraphrase: 'tree foliage creates shade != vegetation raises urban temperature',
+    "explanations": {
+      "1": {
+        "vi": "Thanh pít-tông nối với hệ bánh răng trong động cơ Watt và Boulton.",
+        "locate": "Đoạn 2"
       },
-      '2': {
-        vi: 'Đoạn 2 xác nhận hiệu ứng đảo nhiệt đô thị (urban heat island) có thể hạ tới 4 độ C nhờ bóng mát và hiện tượng thoát hơi nước của thực vật.',
-        locate: 'Paragraph 2: "Evapotranspiration and localized canopy cover mitigate urban heat island intensity by up to 4°C."',
-        paraphrase: 'mitigate heat island intensity by up to 4°C = lowers temperature significantly',
+      "2": {
+        "vi": "Nhu cầu than tăng khi chạy máy hơi nước.",
+        "locate": "Đoạn 3"
       },
-    },
+      "3": {
+        "vi": "Thợ kéo sợi, dệt làm việc tại nhà hoặc xưởng nhỏ.",
+        "locate": "Đoạn 4"
+      },
+      "4": {
+        "vi": "Ít sức lao động hơn nhờ máy kéo sợi và máy dệt.",
+        "locate": "Đoạn 4"
+      },
+      "5": {
+        "vi": "Luyện bằng than cốc cho kim loại chất lượng cao hơn.",
+        "locate": "Đoạn 5"
+      },
+      "6": {
+        "vi": "Nhu cầu sắt tăng theo mạng đường sắt.",
+        "locate": "Đoạn 5"
+      },
+      "7": {
+        "vi": "Thành phố mới ô nhiễm, chật và thiếu hệ thống vệ sinh.",
+        "locate": "Đoạn 7"
+      },
+      "8": {
+        "vi": "Kênh chỉ được nhắc cho tàu thuyền, không nói mạng lưới mở rộng nhanh.",
+        "locate": "Đoạn 3 (không có thông tin)"
+      },
+      "9": {
+        "vi": "Kỹ thuật dùng than cốc rẻ hơn, nên chi phí không tăng.",
+        "locate": "Đoạn 5"
+      },
+      "10": {
+        "vi": "Bài không so sánh độ tin cậy của hệ thống Morse với Cooke và Wheatstone.",
+        "locate": "Đoạn 6 (không có thông tin)"
+      },
+      "11": {
+        "vi": "Lợi ích kinh tế chủ yếu tới tầng lớp trung và thượng lưu, người nghèo vẫn khổ.",
+        "locate": "Đoạn 8"
+      },
+      "12": {
+        "vi": "Thợ dệt lành nghề sợ máy móc lấy mất việc.",
+        "locate": "Đoạn 8"
+      },
+      "13": {
+        "vi": "Bài không nói người dân địa phương thông cảm với những người bị bắt.",
+        "locate": "Đoạn 9 (không có thông tin)"
+      },
+      "14": {
+        "vi": "Đoạn D nêu adrenaline và cortisol.",
+        "locate": "Đoạn D"
+      },
+      "15": {
+        "vi": "Đoạn F nêu các cách giảm tác động của căng thẳng.",
+        "locate": "Đoạn F"
+      },
+      "16": {
+        "vi": "Raducanu giải thích trải nghiệm của mình bằng sự phấn khích.",
+        "locate": "Đoạn A"
+      },
+      "17": {
+        "vi": "Nghiên cứu cho thấy trạng thái thử thách dẫn tới thành tích tốt.",
+        "locate": "Đoạn C"
+      },
+      "18": {
+        "vi": "Huấn luyện viên, phụ huynh, nhà tâm lý ảnh hưởng cách vận động viên nhìn phản ứng cơ thể.",
+        "locate": "Đoạn F"
+      },
+      "19": {
+        "vi": "Một yêu cầu đối với vận động viên là nguy cơ chấn thương.",
+        "locate": "Đoạn B"
+      },
+      "20": {
+        "vi": "Cortisol gắn với nhiều cú giao bóng hỏng hơn.",
+        "locate": "Đoạn D"
+      },
+      "21": {
+        "vi": "Nhịp tim cao có thể được nhìn như sự phấn khích.",
+        "locate": "Đoạn F"
+      },
+      "22": {
+        "vi": "Hình dung là kỹ năng tâm lý giúp giảm phản ứng căng thẳng.",
+        "locate": "Đoạn F"
+      },
+      "23": {
+        "vi": "Bài nêu triệu chứng căng thẳng của cô (B); 23 và 24 là B và D.",
+        "locate": "Đoạn A"
+      },
+      "24": {
+        "vi": "Khán giả đông, kỳ vọng cao làm tăng áp lực (D).",
+        "locate": "Đoạn C"
+      },
+      "25": {
+        "vi": "Đoạn E nói mức độ lo âu phụ thuộc yêu cầu và nguồn lực (A); 25 và 26 là A và E.",
+        "locate": "Đoạn E"
+      },
+      "26": {
+        "vi": "Lo âu lặp lại có thể gây hại tim và tâm trạng (E).",
+        "locate": "Đoạn E"
+      },
+      "27": {
+        "vi": "Cô là người phụ nữ duy nhất đoạt Fields, nên được coi là độc nhất.",
+        "locate": "Đoạn 1"
+      },
+      "28": {
+        "vi": "Hồi nhỏ môn toán không hấp dẫn cô.",
+        "locate": "Đoạn 2"
+      },
+      "29": {
+        "vi": "Bài toán khó anh trai kể làm cô bị cuốn hút.",
+        "locate": "Đoạn 2"
+      },
+      "30": {
+        "vi": "Cô kiên định khi gặp trở ngại.",
+        "locate": "Đoạn 3"
+      },
+      "31": {
+        "vi": "Niềm thoả mãn lớn nhất đến từ phát hiện mới.",
+        "locate": "Đoạn 3"
+      },
+      "32": {
+        "vi": "Các nghiên cứu của cô mang tính đổi mới.",
+        "locate": "Đoạn 3"
+      },
+      "33": {
+        "vi": "Hầu hết người đoạt Nobel khi trẻ không nổi trội.",
+        "locate": "Phần về giải Nobel (giữa bài)"
+      },
+      "34": {
+        "vi": "Bài không nói thất bại của Einstein do thiếu tự tin.",
+        "locate": "Đoạn về Einstein (không có thông tin)"
+      },
+      "35": {
+        "vi": "Việc có trẻ sinh ra đã có năng khiếu hay không còn chưa ngã ngũ.",
+        "locate": "Phần về năng khiếu bẩm sinh"
+      },
+      "36": {
+        "vi": "Bài không nói Einstein buồn vì cách công chúng nhìn.",
+        "locate": "Đoạn cuối (không có thông tin)"
+      },
+      "37": {
+        "vi": "Einstein nói thành công nhờ kiên trì với vấn đề lâu hơn, không phải nhanh.",
+        "locate": "Đoạn cuối"
+      },
+      "38": {
+        "vi": "Eyre nhấn mạnh phát triển sự tò mò, kiên trì.",
+        "locate": "Phần về Eyre"
+      },
+      "39": {
+        "vi": "Nghiên cứu của Ericsson cho thấy năng khiếu bẩm sinh không phải yếu tố then chốt.",
+        "locate": "Phần về Ericsson"
+      },
+      "40": {
+        "vi": "Yếu tố then chốt là người lớn coi trọng việc học.",
+        "locate": "Đoạn áp chót"
+      }
+    }
   },
 
   // ==========================================
   // CAMBRIDGE IELTS 20 - READING TEST 1
   // ==========================================
   {
-    id: 'cambridge-20-reading-1',
-    title: 'Cambridge IELTS 20 · Reading Test 1',
-    collection: 'cambridge',
-    volume: 20,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Marine Biology', 'Agricultural Innovation', 'Linguistic Evolution'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'NOTE_COMPLETION', 'MATCHING_FEATURES', 'SUMMARY_COMPLETION'],
-    answerKey: {
-      '1': 'TRUE', '2': 'FALSE', '3': 'NOT GIVEN', '4': 'TRUE', '5': 'TRUE', '6': 'FALSE',
-      '7': 'coral bleaching', '8': 'symbiotic algae', '9': 'calcification', '10': 'resilience', '11': 'marine sanctuaries', '12': 'genetic diversity', '13': 'temperature threshold',
-      '14': 'C', '15': 'A', '16': 'E', '17': 'B', '18': 'D',
-      '19': 'hydroponic', '20': 'nitrogen runoff', '21': 'micro-drip', '22': 'crop yields', '23': 'arid climates', '24': 'sensor grids', '25': 'B', '26': 'C',
-      '27': 'YES', '28': 'NO', '29': 'YES', '30': 'NOT GIVEN', '31': 'NO',
-      '32': 'phonetic drift', '33': 'proto-language', '34': 'lexical borrowing', '35': 'dialect leveling', '36': 'migration corridors',
-      '37': 'A', '38': 'C', '39': 'D', '40': 'B',
+    "id": "cambridge-20-reading-1",
+    "title": "Cambridge IELTS 20 · Reading Test 1",
+    "collection": "cambridge",
+    "volume": 20,
+    "testNumber": 1,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "The kākāpō (parrot conservation)",
+      "Bringing elms back to Britain",
+      "How stress affects our judgement"
+    ],
+    "questionTypes": [
+      "TRUE_FALSE_NOT_GIVEN",
+      "NOTE_COMPLETION",
+      "MATCHING_INFORMATION",
+      "MATCHING_FEATURES",
+      "SUMMARY_COMPLETION",
+      "MULTIPLE_CHOICE",
+      "SENTENCE_COMPLETION",
+      "YES_NO_NOT_GIVEN"
+    ],
+    "answerKey": {
+      "1": "FALSE",
+      "2": "FALSE",
+      "3": "FALSE",
+      "4": "NOT GIVEN",
+      "5": "TRUE",
+      "6": "TRUE",
+      "7": "bulbs",
+      "8": "soil",
+      "9": "feathers",
+      "10": "deer",
+      "11": "1980",
+      "12": "funding",
+      "13": "stakeholders",
+      "14": "C",
+      "15": "G",
+      "16": "B",
+      "17": "E",
+      "18": "C",
+      "19": "B",
+      "20": "A",
+      "21": "B",
+      "22": "C",
+      "23": "A",
+      "24": "oak",
+      "25": "flooring",
+      "26": "keel",
+      "27": "C",
+      "28": "A",
+      "29": "D",
+      "30": "C",
+      "31": "B",
+      "32": "G",
+      "33": "F",
+      "34": "E",
+      "35": "D",
+      "36": "YES",
+      "37": "NOT GIVEN",
+      "38": "NO",
+      "39": "YES",
+      "40": "YES"
     },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 khẳng định hiện tượng tẩy trắng san hô xảy ra khi nhiệt độ mặt biển vượt ngưỡng sinh lý cho phép, khiến san hô trục xuất tảo cộng sinh.',
-        locate: 'Passage 1, Paragraph 1: "Sustained sea temperature anomalies force hermatypic corals to expel photosynthetic zooxanthellae, resulting in bleached skeleton exposure."',
-        paraphrase: 'expel photosynthetic zooxanthellae = lose symbiotic algae',
+    "explanations": {
+      "1": {
+        "vi": "Đoạn 1 nói kākāpō là loài vẹt duy nhất không bay được, nên không có loài vẹt nào khác giống vậy.",
+        "locate": "Passage 1, đoạn 1"
       },
-      '2': {
-        vi: 'Bài đọc chỉ ra san hô bị tẩy trắng không chết ngay lập tức, chúng vẫn có khả năng phục hồi nếu nhiệt độ nước hạ về bình thường trong vài tuần.',
-        locate: 'Passage 1, Paragraph 2: "Bleaching is not an immediate death sentence; corals retain the physiological capacity to reacquire algal partners if ambient thermal stress abates within weeks."',
-        paraphrase: 'not an immediate death sentence = does not cause immediate mortality',
+      "2": {
+        "vi": "Đoạn 3 cho biết chúng chỉ sinh sản vào những năm thức ăn dồi dào, nên không phải năm nào cũng có chim non.",
+        "locate": "Passage 1, đoạn 3"
       },
+      "3": {
+        "vi": "Đoạn 3: chim đực không tham gia ấp trứng hay nuôi con; chỉ chim cái lo việc này, nên khẳng định là sai.",
+        "locate": "Passage 1, đoạn 3"
+      },
+      "4": {
+        "vi": "Đoạn 4 chỉ nhắc chó và chuột của người Polynesia cũng săn kākāpō, không so sánh mức đe dọa với chính người định cư.",
+        "locate": "Passage 1, đoạn 4"
+      },
+      "5": {
+        "vi": "Đoạn 7: mèo hoang ở Rakiura làm số chim giảm nhanh nên đàn chim được chuyển sang các đảo khác.",
+        "locate": "Passage 1, đoạn 7"
+      },
+      "6": {
+        "vi": "Đoạn 8: một biện pháp của Kế hoạch Phục hồi là cứu và nuôi bằng tay những chim non yếu, góp phần làm đàn tăng.",
+        "locate": "Passage 1, đoạn 8"
+      },
+      "7": {
+        "vi": "Đoạn 2 liệt kê thức ăn thực vật của chúng; sau lá, rễ, vỏ cây là bulbs (củ).",
+        "locate": "Passage 1, đoạn 2"
+      },
+      "8": {
+        "vi": "Đoạn 3: trứng được đẻ trong soil (đất) được xới đi xới lại.",
+        "locate": "Passage 1, đoạn 3"
+      },
+      "9": {
+        "vi": "Đoạn 4: người Polynesia dùng feathers (lông) của chim để làm áo choàng mềm.",
+        "locate": "Passage 1, đoạn 4"
+      },
+      "10": {
+        "vi": "Đoạn 4: loài du nhập làm cạn thức ăn trong rừng là deer (hươu nai).",
+        "locate": "Passage 1, đoạn 4"
+      },
+      "11": {
+        "vi": "Đoạn 6: năm 1980 người ta xác nhận có chim mái ở Rakiura.",
+        "locate": "Passage 1, đoạn 6"
+      },
+      "12": {
+        "vi": "Đoạn 8: Kế hoạch Phục hồi 1996 đi kèm việc tăng funding (kinh phí).",
+        "locate": "Passage 1, đoạn 8"
+      },
+      "13": {
+        "vi": "Đoạn 10: một mục tiêu hiện nay là giữ cho stakeholders (các bên liên quan) tiếp tục tham gia bảo tồn.",
+        "locate": "Passage 1, đoạn 10"
+      },
+      "14": {
+        "vi": "Mục C: chỉ còn ít cây du lớn sống sót nên cơ hội nghiên cứu bị hạn chế.",
+        "locate": "Passage 2, mục C"
+      },
+      "15": {
+        "vi": "Mục G: hai bên bất đồng về việc có nên đưa cây du trở lại hay không.",
+        "locate": "Passage 2, mục G"
+      },
+      "16": {
+        "vi": "Mục B: dịch bệnh đợt hai bắt nguồn từ lô gỗ du nhập khẩu từ Canada.",
+        "locate": "Passage 2, mục B"
+      },
+      "17": {
+        "vi": "Mục E: gió biển mạnh khiến bọ khó tấn công cây du ở Brighton nên thành phố tránh được phần nào.",
+        "locate": "Passage 2, mục E"
+      },
+      "18": {
+        "vi": "Mục C: khi thân cây đạt một cỡ nhất định thì bọ nhắm tới; đó là giai đoạn cây non dễ bị nhiễm.",
+        "locate": "Passage 2, mục C"
+      },
+      "19": {
+        "vi": "Mục F (Russell): sau vài tuần, cây nhạy cảm với nấm lộ triệu chứng rụng lá rất nhanh.",
+        "locate": "Passage 2, mục F"
+      },
+      "20": {
+        "vi": "Mục G (Elliot): ông cho rằng nên cho tự nhiên thời gian, chờ xem cây sống sót có phát triển tiếp không.",
+        "locate": "Passage 2, mục G"
+      },
+      "21": {
+        "vi": "Mục C (Russell): bà cho rằng việc một số cây già còn sống chắc chắn có lý do, không chỉ là may rủi.",
+        "locate": "Passage 2, mục C"
+      },
+      "22": {
+        "vi": "Mục E (Bourne): ông cảnh báo bọ mang bệnh đang ở rất gần.",
+        "locate": "Passage 2, mục E"
+      },
+      "23": {
+        "vi": "Mục A (Elliot): chỉ khi nhìn ảnh cũ thấy cây từng nổi bật cỡ nào mới hiểu mức tàn phá.",
+        "locate": "Passage 2, mục A"
+      },
+      "24": {
+        "vi": "Mục D: chỉ có oak (sồi) được ưa chuộng hơn du trong nhiều thế kỷ.",
+        "locate": "Passage 2, mục D"
+      },
+      "25": {
+        "vi": "Mục D: ở thế kỷ 18, gỗ du dùng làm thùng đựng đồ và flooring (sàn nhà).",
+        "locate": "Passage 2, mục D"
+      },
+      "26": {
+        "vi": "Mục D: keel (sống tàu) của tàu Cutty Sark làm bằng gỗ du.",
+        "locate": "Passage 2, mục D"
+      },
+      "27": {
+        "vi": "Đoạn 1 mở bài bằng một thử thách ai cũng gặp: phải quyết định khi đang căng thẳng.",
+        "locate": "Passage 3, đoạn 1"
+      },
+      "28": {
+        "vi": "Đoạn 2: ngày nhàn ngày dồn dập của lính cứu hỏa khiến họ thành đối tượng nghiên cứu lý tưởng.",
+        "locate": "Passage 3, đoạn 2"
+      },
+      "29": {
+        "vi": "Đoạn 4 trình bày cách làm thí nghiệm: ước lượng rủi ro, nhận tin tốt hoặc xấu, rồi ước lượng lại.",
+        "locate": "Passage 3, đoạn 4"
+      },
+      "30": {
+        "vi": "Đoạn 7 mô tả cơ chế não khiến ta nhạy hơn với dấu hiệu nguy hiểm từ bên ngoài.",
+        "locate": "Passage 3, đoạn 7"
+      },
+      "31": {
+        "vi": "Đoạn 5: khi thư giãn, họ có xu hướng lơ tin xấu và chỉ đón tin tốt.",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "32": {
+        "vi": "Đoạn 5: khi căng thẳng, họ chỉnh lại niềm tin theo tin xấu, tức cho rằng rủi ro của mình cao hơn.",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "33": {
+        "vi": "Đoạn 5: phản ứng với tin tốt không đổi dù có căng thẳng hay không.",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "34": {
+        "vi": "Đoạn 6: sinh viên bị đặt vào tình huống phải diễn thuyết bất ngờ nên cortisol và nhịp tim tăng.",
+        "locate": "Passage 3, đoạn 6"
+      },
+      "35": {
+        "vi": "Đoạn 5 và 6: ở cả hai thí nghiệm, tin xấu được xử lý tốt hơn khi đối tượng đang căng thẳng.",
+        "locate": "Passage 3, đoạn 5-6"
+      },
+      "36": {
+        "vi": "Đoạn 9: sắc thái bài mình đăng thường theo sắc thái bài mình thấy trên bảng tin.",
+        "locate": "Passage 3, đoạn 9"
+      },
+      "37": {
+        "vi": "Đoạn 10 nói điện thoại gây căng thẳng nhưng không so sánh nó với mọi thiết bị khác, nên không có thông tin.",
+        "locate": "Passage 3, đoạn 10"
+      },
+      "38": {
+        "vi": "Đoạn 11: đọc nhiều tin đáng lo khiến ta tiếp nhận tin tiêu cực nhiều hơn, không phải kém đi, nên khẳng định là sai.",
+        "locate": "Passage 3, đoạn 11"
+      },
+      "39": {
+        "vi": "Đoạn 11: căng thẳng lan qua mạng xã hội làm nỗi sợ bị thổi phồng, dẫn tới phản ứng quá mức cần thiết.",
+        "locate": "Passage 3, đoạn 11"
+      },
+      "40": {
+        "vi": "Đoạn 12: cảm xúc tích cực như hy vọng cũng lây và có thể dùng để thúc đẩy hành động.",
+        "locate": "Passage 3, đoạn 12"
+      }
     },
+    "answerKeyVerified": false
   },
 
   // ==========================================
   // CAMBRIDGE IELTS 18 - READING TEST 1
   // ==========================================
   {
-    id: 'cambridge-18-reading-1',
-    title: 'Cambridge IELTS 18 · Reading Test 1',
-    collection: 'cambridge',
-    volume: 18,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Renewable Energy', 'Cognitive Development in Children', 'Space Exploration'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'MATCHING_HEADINGS', 'SUMMARY_COMPLETION', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'FALSE', '2': 'TRUE', '3': 'NOT GIVEN', '4': 'TRUE', '5': 'FALSE', '6': 'TRUE',
-      '7': 'wind turbines', '8': 'grid stability', '9': 'intermittent', '10': 'subsidies', '11': 'pumped hydro', '12': 'efficiency', '13': 'capacity factor',
-      '14': 'v', '15': 'ii', '16': 'vii', '17': 'i', '18': 'iv', '19': 'vi',
-      '20': 'pretend play', '21': 'executive function', '22': 'self-regulation', '23': 'social cues', '24': 'scaffolding', '25': 'A', '26': 'C',
-      '27': 'YES', '28': 'NO', '29': 'NOT GIVEN', '30': 'YES', '31': 'NO',
-      '32': 'lunar regolith', '33': 'water ice', '34': 'craters', '35': 'radiation shielding', '36': 'solar arrays',
-      '37': 'B', '38': 'A', '39': 'D', '40': 'C',
+    "id": "cambridge-18-reading-1",
+    "title": "Cambridge IELTS 18 · Reading Test 1",
+    "collection": "cambridge",
+    "volume": 18,
+    "testNumber": 1,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "Urban Rooftop Farming",
+      "Forest Management in Pennsylvania",
+      "Space Debris"
+    ],
+    "questionTypes": [
+      "SENTENCE_COMPLETION",
+      "NOTE_COMPLETION",
+      "TRUE_FALSE_NOT_GIVEN",
+      "MATCHING_INFORMATION",
+      "MATCHING_FEATURES",
+      "SUMMARY_COMPLETION"
+    ],
+    "answerKey": {
+      "1": "lettuces",
+      "2": "1,000 kg",
+      "3": "(food) consumption",
+      "4": "pesticides",
+      "5": "journeys",
+      "6": "producers",
+      "7": "flavour/flavor",
+      "8": "TRUE",
+      "9": "NOT GIVEN",
+      "10": "FALSE",
+      "11": "TRUE",
+      "12": "FALSE",
+      "13": "NOT GIVEN",
+      "14": "B",
+      "15": "A",
+      "16": "C",
+      "17": "E",
+      "18": "B",
+      "19": "B",
+      "20": "C",
+      "21": "C",
+      "22": "fire",
+      "23": "nutrients",
+      "24": "cavities",
+      "25": "hawthorn",
+      "26": "rare",
+      "27": "C",
+      "28": "F",
+      "29": "A",
+      "30": "E",
+      "31": "B",
+      "32": "sustainability",
+      "33": "fuel",
+      "34": "explosions",
+      "35": "bankrupt",
+      "36": "C",
+      "37": "D",
+      "38": "B",
+      "39": "D",
+      "40": "A"
     },
-    explanations: {
-      '1': {
-        vi: 'Khẳng định điện gió có thể tự vận hành mà không cần lưu trữ năng lượng là sai; bài nhấn mạnh tính chập chờn (intermittent) đòi hỏi hệ thống pin tích trữ hoặc thủy điện tích năng.',
-        locate: 'Paragraph 2: "Because atmospheric conditions fluctuate unpredictably, grid stability cannot rely on raw wind generation without robust storage solutions."',
-        paraphrase: 'cannot rely without storage = requires energy storage systems',
+    "explanations": {
+      "1": {
+        "vi": "Ống đứng trồng dâu, xà lách và rau thơm.",
+        "locate": "Đoạn A"
       },
-    },
+      "2": {
+        "vi": "Khi vận hành đủ, trang trại cho tới 1.000 kg mỗi ngày.",
+        "locate": "Đoạn B"
+      },
+      "3": {
+        "vi": "Mục tiêu là 5% đến 10% lượng tiêu thụ của thành phố.",
+        "locate": "Đoạn B"
+      },
+      "4": {
+        "vi": "Nông nghiệp thâm canh dùng nhiều thuốc trừ sâu.",
+        "locate": "Đoạn C"
+      },
+      "5": {
+        "vi": "Giống được chọn vì chịu được những chuyến vận chuyển dài.",
+        "locate": "Đoạn C"
+      },
+      "6": {
+        "vi": "Người sản xuất nhận rất ít trong giá bán.",
+        "locate": "Đoạn C"
+      },
+      "7": {
+        "vi": "Trồng khí canh chọn giống theo hương vị.",
+        "locate": "Đoạn D"
+      },
+      "8": {
+        "vi": "Trồng trên mái và trong bãi đỗ xe ngầm cho thấy làm được cả trên và dưới mặt đất.",
+        "locate": "Đoạn E"
+      },
+      "9": {
+        "vi": "Bài không nói thiết bị có thể tự làm thủ công.",
+        "locate": "Đoạn E (không có thông tin)"
+      },
+      "10": {
+        "vi": "Khí canh dùng rất ít điện, ngược với khẳng định.",
+        "locate": "Đoạn E"
+      },
+      "11": {
+        "vi": "Giá thường thấp hơn nông sản hữu cơ trồng đất.",
+        "locate": "Đoạn F"
+      },
+      "12": {
+        "vi": "Phần lớn sản phẩm chỉ hợp mùa hè.",
+        "locate": "Đoạn F"
+      },
+      "13": {
+        "vi": "Đậu chiếm nhiều diện tích; bài không so sánh thời gian sinh trưởng.",
+        "locate": "Đoạn F (không có thông tin)"
+      },
+      "14": {
+        "vi": "Đoạn B nói hậu quả của việc chỉ chăm chú vào giá trị gỗ chất lượng cao.",
+        "locate": "Đoạn B"
+      },
+      "15": {
+        "vi": "Đoạn A liệt kê các yếu tố tạo nên giá trị của cây.",
+        "locate": "Đoạn A"
+      },
+      "16": {
+        "vi": "Gỗ có thể thành nhiên liệu lỏng cho xe.",
+        "locate": "Đoạn C"
+      },
+      "17": {
+        "vi": "Các loài côn trùng gây hại được kể tên.",
+        "locate": "Đoạn E"
+      },
+      "18": {
+        "vi": "Cây gỗ kém giá trị còn gọi là cây rác.",
+        "locate": "Đoạn B"
+      },
+      "19": {
+        "vi": "Khai thác cứu hộ nhằm loại cây bệnh.",
+        "locate": "Đoạn E"
+      },
+      "20": {
+        "vi": "Khai thác ẩn che cho thu nhập trải nhiều năm.",
+        "locate": "Đoạn F"
+      },
+      "21": {
+        "vi": "Khai thác ẩn che tạo rừng đồng tuổi.",
+        "locate": "Đoạn F"
+      },
+      "22": {
+        "vi": "Dọn gỗ chết để phòng cháy.",
+        "locate": "Đoạn G"
+      },
+      "23": {
+        "vi": "Ngọn cây cắt bỏ trả chất dinh dưỡng cho đất.",
+        "locate": "Đoạn G"
+      },
+      "24": {
+        "vi": "Cây có nhiều hốc là nơi ở của nhiều loài.",
+        "locate": "Đoạn G"
+      },
+      "25": {
+        "vi": "Cây nhỏ như táo gai là nguồn thức ăn.",
+        "locate": "Đoạn G"
+      },
+      "26": {
+        "vi": "Cây hiếm nên được giữ lại để tăng đa dạng.",
+        "locate": "Đoạn G"
+      },
+      "27": {
+        "vi": "Các nhóm quốc tế hợp tác đề ra hướng dẫn.",
+        "locate": "Đoạn C"
+      },
+      "28": {
+        "vi": "Jah nêu mục tiêu của mình về không gian an toàn và tự do.",
+        "locate": "Đoạn F"
+      },
+      "29": {
+        "vi": "Vụ va chạm Iridium với vệ tinh Nga là vụ lớn.",
+        "locate": "Đoạn A"
+      },
+      "30": {
+        "vi": "Quản lý giao thông vũ trụ được so với kiểm soát không lưu.",
+        "locate": "Đoạn E"
+      },
+      "31": {
+        "vi": "Một số nhóm phát triển phân loại rác vũ trụ.",
+        "locate": "Đoạn B"
+      },
+      "32": {
+        "vi": "Uỷ ban hướng dẫn về tính bền vững của không gian.",
+        "locate": "Đoạn C"
+      },
+      "33": {
+        "vi": "Cần xả nhiên liệu thừa.",
+        "locate": "Đoạn C"
+      },
+      "34": {
+        "vi": "Nhiên liệu và vật liệu áp suất có thể gây nổ.",
+        "locate": "Đoạn C"
+      },
+      "35": {
+        "vi": "Nhà vận hành phá sản khó chi tiền gỡ vệ tinh.",
+        "locate": "Đoạn C"
+      },
+      "36": {
+        "vi": "Sorge: biết chính xác vị trí thì hầu như không còn rủi ro.",
+        "locate": "Đoạn D"
+      },
+      "37": {
+        "vi": "Jah muốn không gian tự do và hữu ích cho nhiều thế hệ.",
+        "locate": "Đoạn F"
+      },
+      "38": {
+        "vi": "Krag nói chỉ khoảng một nửa số sứ mệnh theo mục tiêu 25 năm.",
+        "locate": "Đoạn C"
+      },
+      "39": {
+        "vi": "Jah chỉ ra hai quỹ đạo khác nhau cho cùng một vật thể.",
+        "locate": "Đoạn F"
+      },
+      "40": {
+        "vi": "Frueh cảnh báo điểm không thể quay lại.",
+        "locate": "Đoạn B"
+      }
+    }
   },
 
   // ==========================================
   // CAMBRIDGE IELTS 17 - READING TEST 1
   // ==========================================
   {
-    id: 'cambridge-17-reading-1',
-    title: 'Cambridge IELTS 17 · Reading Test 1',
-    collection: 'cambridge',
-    volume: 17,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Ancient Civilizations', 'Forestry Ecology', 'Artificial Intelligence'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'MATCHING_INFORMATION', 'NOTE_COMPLETION', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'TRUE', '2': 'FALSE', '3': 'NOT GIVEN', '4': 'TRUE', '5': 'FALSE',
-      '6': 'papyrus', '7': 'irrigation', '8': 'silt deposits', '9': 'hieroglyphs', '10': 'granaries', '11': 'pharaohs', '12': 'inundation', '13': 'trade routes',
-      '14': 'C', '15': 'E', '16': 'B', '17': 'A', '18': 'D',
-      '19': 'mycelial network', '20': 'carbon transfer', '21': 'mother trees', '22': 'defense signals', '23': 'saplings', '24': 'drought resistance', '25': 'B', '26': 'D',
-      '27': 'YES', '28': 'NOT GIVEN', '29': 'NO', '30': 'YES', '31': 'NO',
-      '32': 'neural networks', '33': 'training data', '34': 'algorithmic bias', '35': 'interpretability', '36': 'reinforcement learning',
-      '37': 'C', '38': 'B', '39': 'A', '40': 'D',
-    },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 nêu rõ sông Nile dâng nước hàng năm (annual inundation) mang lại phù sa màu mỡ cho nền nông nghiệp Ai Cập cổ đại.',
-        locate: 'Paragraph 1: "The annual flooding of the Nile deposited rich alluvial silt across the floodplains, providing fertile foundations for dynastic agriculture."',
-        paraphrase: 'annual flooding = seasonal inundation',
-      },
-    },
-  },
-
-  // ==========================================
-  // ACTUAL TEST VOLUME 1 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-1-reading-1',
-    title: 'Actual Test Vol 1 · Reading Test 1',
-    collection: 'vol',
-    volume: 1,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Oceanography', 'Cognitive Ergonomics', 'Global Supply Chains'],
-    questionTypes: [
-      'TRUE_FALSE_NOT_GIVEN',
-      'MATCHING_HEADINGS',
-      'SUMMARY_COMPLETION',
-      'NOTE_COMPLETION',
-      'MULTIPLE_CHOICE',
+    "id": "cambridge-17-reading-1",
+    "title": "Cambridge IELTS 17 · Reading Test 1",
+    "collection": "cambridge",
+    "volume": 17,
+    "testNumber": 1,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "Urban Transport History (London Underground)",
+      "Stadium Architecture",
+      "Biography Review (Charles II)"
     ],
-    answerKey: {
-      '1': 'TRUE', '2': 'FALSE', '3': 'NOT GIVEN', '4': 'TRUE', '5': 'FALSE', '6': 'TRUE',
-      '7': 'salinity', '8': 'halocline', '9': 'conveyor belt', '10': 'thermohaline', '11': 'plankton', '12': 'upwelling', '13': 'density',
-      '14': 'vi', '15': 'iii', '16': 'i', '17': 'viii', '18': 'iv', '19': 'v',
-      '20': 'visual clutter', '21': 'focal vision', '22': 'reaction time', '23': 'auditory alerts', '24': 'cockpit design', '25': 'B', '26': 'C',
-      '27': 'YES', '28': 'NO', '29': 'YES', '30': 'NOT GIVEN', '31': 'NO',
-      '32': 'containerization', '33': 'intermodal', '34': 'demurrage', '35': 'just-in-time', '36': 'bottlenecks',
-      '37': 'A', '38': 'D', '39': 'C', '40': 'B',
+    "questionTypes": [
+      "NOTE_COMPLETION",
+      "TRUE_FALSE_NOT_GIVEN",
+      "MATCHING_INFORMATION",
+      "SUMMARY_COMPLETION",
+      "MULTIPLE_CHOICE",
+      "YES_NO_NOT_GIVEN"
+    ],
+    "answerKey": {
+      "1": "population",
+      "2": "suburbs",
+      "3": "businessmen",
+      "4": "funding",
+      "5": "press",
+      "6": "soil",
+      "7": "FALSE",
+      "8": "NOT GIVEN",
+      "9": "TRUE",
+      "10": "TRUE",
+      "11": "FALSE",
+      "12": "FALSE",
+      "13": "NOT GIVEN",
+      "14": "A",
+      "15": "F",
+      "16": "E",
+      "17": "D",
+      "18": "fortress",
+      "19": "bullfights",
+      "20": "opera",
+      "21": "salt",
+      "22": "shops",
+      "23": "C",
+      "24": "D",
+      "25": "B",
+      "26": "E",
+      "27": "H",
+      "28": "J",
+      "29": "F",
+      "30": "B",
+      "31": "D",
+      "32": "NOT GIVEN",
+      "33": "NO",
+      "34": "NO",
+      "35": "YES",
+      "36": "B",
+      "37": "C",
+      "38": "A",
+      "39": "B",
+      "40": "D"
     },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 chỉ ra sự chênh lệch về độ mặn và nhiệt độ tạo nên các tầng nước biển có khối lượng riêng khác nhau, khởi sinh dòng hải lưu toàn cầu.',
-        locate: 'Passage 1, Paragraph 1: "Density differentials driven by varying salinity and temperature gradients trigger deep thermohaline circulations worldwide."',
-        paraphrase: 'density differentials driven by salinity = salinity and temperature determine water movement',
+    "explanations": {
+      "1": {
+        "vi": "Dân số London tăng nhanh là nguyên nhân gây ùn tắc ở trung tâm.",
+        "locate": "Đoạn 1, câu mở đầu"
       },
-      '2': {
-        vi: 'Khẳng định nước ấm luôn chìm xuống đáy đại dương là sai; nước lạnh đậm đặc hơn mới chìm xuống đáy, trong khi nước ấm nhẹ hơn nổi ở tầng mặt.',
-        locate: 'Passage 1, Paragraph 2: "Colder, saline water masses sink into abyssal basins, displacing warmer surface layers equator-ward."',
-        paraphrase: 'cold water sinks != warm water sinks',
+      "2": {
+        "vi": "Pearson muốn chuyển công nhân nghèo khỏi khu ổ chuột ra vùng ngoại ô mới xây.",
+        "locate": "Phần về Mirzakhani (đầu bài)"
       },
-      '32': {
-        vi: 'Điền từ: "containerization". Phát minh container chuẩn hóa đã làm thay đổi hoàn toàn chi phí vận tải biển quốc tế.',
-        locate: 'Passage 3, Paragraph 2: "The advent of standardized containerization reduced transshipment delays by over eighty percent."',
+      "3": {
+        "vi": "Một số thương nhân ủng hộ ý tưởng của Pearson.",
+        "locate": "Đoạn 2, cuối đoạn"
       },
-    },
+      "4": {
+        "vi": "Công ty gặp khó khăn trong việc huy động vốn cho dự án.",
+        "locate": "Phần về Mirzakhani (đầu bài)"
+      },
+      "5": {
+        "vi": "Báo chí đăng nhiều bài chỉ trích dự án.",
+        "locate": "Phần về Mirzakhani (đầu bài)"
+      },
+      "6": {
+        "vi": "Sau khi xây vòm gạch, người ta phủ một lớp đất lên trên đường hầm.",
+        "locate": "Đoạn 5"
+      },
+      "7": {
+        "vi": "Đoạn 6 gọi tuyến Metropolitan là tuyến tàu điện ngầm đầu tiên trên thế giới, nên khẳng định nước khác đã làm trước là sai.",
+        "locate": "Đoạn 6"
+      },
+      "8": {
+        "vi": "Bài chỉ nêu số hành khách ngày đầu, không nói họ nhiều hơn dự đoán.",
+        "locate": "Đoạn 6 (không có thông tin)"
+      },
+      "9": {
+        "vi": "Dù có thêm các giếng thông gió, khói và hơi độc vẫn còn.",
+        "locate": "Đoạn 7, cuối đoạn"
+      },
+      "10": {
+        "vi": "Ở khu trung tâm không dùng được phương pháp đào hở, phải đào hầm sâu.",
+        "locate": "Đoạn 8"
+      },
+      "11": {
+        "vi": "Cửa sổ nhỏ và đặt sát mái toa, không ngang tầm mắt.",
+        "locate": "Đoạn 9"
+      },
+      "12": {
+        "vi": "Tuyến City & South London không sinh lời.",
+        "locate": "Đoạn 9"
+      },
+      "13": {
+        "vi": "Bài không nói gì về việc tàu Tuppenny Tube có đúng giờ hay không.",
+        "locate": "Đoạn 9 (không có thông tin)"
+      },
+      "14": {
+        "vi": "Mở đầu bài nêu thái độ ngày càng hoài nghi đối với việc xây sân vận động vì chi phí và tình trạng bỏ hoang.",
+        "locate": "Đoạn A"
+      },
+      "15": {
+        "vi": "Số liệu về tấm pin và lượng CO2 giảm được thuộc sân Kaohsiung.",
+        "locate": "Đoạn F"
+      },
+      "16": {
+        "vi": "Đoạn E liệt kê khách sạn, cửa hàng, hội nghị, nhà hàng, sân chơi trẻ em.",
+        "locate": "Đoạn E"
+      },
+      "17": {
+        "vi": "Sân vận động thế kỷ 20 nằm ở ngoại ô, chỉ phục vụ thể thao, kém tiếp cận.",
+        "locate": "Đoạn D"
+      },
+      "18": {
+        "vi": "Đấu trường Arles từng được dùng làm pháo đài.",
+        "locate": "Đoạn B"
+      },
+      "19": {
+        "vi": "Thế kỷ 19 Arles trở lại làm nơi tổ chức đấu bò.",
+        "locate": "Đoạn B"
+      },
+      "20": {
+        "vi": "Đấu trường Verona nổi tiếng với opera nhờ âm học tốt.",
+        "locate": "Đoạn B"
+      },
+      "21": {
+        "vi": "Khu Lucca từng có kho muối.",
+        "locate": "Đoạn C"
+      },
+      "22": {
+        "vi": "Tàn tích Lucca nằm lẫn trong các cửa hàng và nhà ở quanh quảng trường.",
+        "locate": "Đoạn C"
+      },
+      "23": {
+        "vi": "Đoạn D so sánh sân hiện đại với đấu trường cổ: vị trí ngoại ô, kém thuận tiện (C); đáp án 23 và 24 là C và D theo thứ tự tuỳ ý.",
+        "locate": "Đoạn D"
+      },
+      "24": {
+        "vi": "Sân hiện đại mất bớt tính linh hoạt vì chỉ dùng cho thể thao (D).",
+        "locate": "Đoạn D"
+      },
+      "25": {
+        "vi": "Đoạn E nói sân có thể trở thành trung tâm đô thị đưa đời sống cộng đồng vào thành phố (B); 25 và 26 là B và E.",
+        "locate": "Đoạn E"
+      },
+      "26": {
+        "vi": "Mái sân rộng, cao, thích hợp đặt pin mặt trời và tua-bin gió nhỏ (E).",
+        "locate": "Đoạn F"
+      },
+      "27": {
+        "vi": "Charles II lập liên minh chiến lược với người Scotland.",
+        "locate": "Đoạn 1 của bài review"
+      },
+      "28": {
+        "vi": "Để làm vua Scotland, ông bỏ một nguyên tắc tôn giáo của cha mình.",
+        "locate": "Phần về Mirzakhani (đầu bài)"
+      },
+      "29": {
+        "vi": "Quân Nghị viện thắng áp đảo tại Worcester.",
+        "locate": "Phần về Mirzakhani (đầu bài)"
+      },
+      "30": {
+        "vi": "Chính quyền treo thưởng rất lớn để bắt ông.",
+        "locate": "Phần về Mirzakhani (đầu bài)"
+      },
+      "31": {
+        "vi": "Cuối cùng ông tìm được nơi ẩn náu tương đối an toàn ở nước Pháp.",
+        "locate": "Đoạn 1"
+      },
+      "32": {
+        "vi": "Bài chỉ nói ý định của nhà vua, không nói ông chọn Pepys vì tin cậy.",
+        "locate": "Đoạn 2 (không có thông tin)"
+      },
+      "33": {
+        "vi": "Nhà vua kể rất chi tiết, trái với nhận định thiếu chi tiết.",
+        "locate": "Đoạn 2"
+      },
+      "34": {
+        "vi": "Ông chỉ nghĩ cách thoát thân sau khi trận đánh đã thua hẳn.",
+        "locate": "Đoạn 2"
+      },
+      "35": {
+        "vi": "Người viết coi việc dùng lời kể của chính nhà vua là điểm hay của cuốn sách.",
+        "locate": "Đoạn 3"
+      },
+      "36": {
+        "vi": "Đoạn 1 tóm tắt bối cảnh dẫn tới cuộc trốn chạy.",
+        "locate": "Đoạn 1"
+      },
+      "37": {
+        "vi": "Các ví dụ cho thấy sáu tuần ấy được tái hiện sống động.",
+        "locate": "Đoạn 3"
+      },
+      "38": {
+        "vi": "Nhà vua tôn vinh một biến cố thực chất là thất bại.",
+        "locate": "Đoạn 4"
+      },
+      "39": {
+        "vi": "Tác giả sách thể hiện sự thông cảm công bằng với cả hai phía.",
+        "locate": "Đoạn 5"
+      },
+      "40": {
+        "vi": "Điểm chưa trọn vẹn là sách không làm rõ những tuần ấy có ảnh hưởng lâu dài tới nhà vua hay không.",
+        "locate": "Đoạn 6"
+      }
+    }
   },
 
-  // ==========================================
-  // ACTUAL TEST VOLUME 2 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-2-reading-1',
-    title: 'Actual Test Vol 2 · Reading Test 1',
-    collection: 'vol',
-    volume: 2,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Archaeology of Writing', 'Animal Cognition', 'Urban Microclimates'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'MATCHING_FEATURES', 'NOTE_COMPLETION', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'TRUE', '2': 'NOT GIVEN', '3': 'FALSE', '4': 'TRUE', '5': 'TRUE',
-      '6': 'cuneiform', '7': 'clay tablets', '8': 'stylus', '9': 'tax records', '10': 'scribes', '11': 'temple accounting', '12': 'pictograms', '13': 'phonetic signs',
-      '14': 'B', '15': 'D', '16': 'A', '17': 'C', '18': 'E',
-      '19': 'tool fabrication', '20': 'episodic memory', '21': 'corvids', '22': 'mirror test', '23': 'tactical deception', '24': 'vocal mimicry', '25': 'A', '26': 'D',
-      '27': 'YES', '28': 'NO', '29': 'NOT GIVEN', '30': 'YES', '31': 'NO',
-      '32': 'green roofs', '33': 'permeable asphalt', '34': 'reflective paint', '35': 'ventilation corridors', '36': 'urban canopy',
-      '37': 'C', '38': 'B', '39': 'D', '40': 'A',
-    },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 nêu rõ các ghi chép chữ viết đầu tiên tại Lưỡng Hà xuất phát từ nhu cầu kiểm kê nông sản và tính thuế đền thờ, không phải vì văn chương.',
-        locate: 'Paragraph 1: "The genesis of Mesopotamian cuneiform was profoundly mundane: recording barley disbursements, livestock tithes, and tax ledgers."',
-        paraphrase: 'recording tithes and tax ledgers = accounting and administrative needs',
-      },
-    },
-  },
 
-  // ==========================================
-  // ACTUAL TEST VOLUME 3 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-3-reading-1',
-    title: 'Actual Test Vol 3 · Reading Test 1',
-    collection: 'vol',
-    volume: 3,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Renewable Desalination', 'Linguistic Anthropology', 'Deep Sea Exploration'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'SUMMARY_COMPLETION', 'MATCHING_HEADINGS', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'FALSE', '2': 'TRUE', '3': 'TRUE', '4': 'NOT GIVEN', '5': 'FALSE',
-      '6': 'reverse osmosis', '7': 'semi-permeable', '8': 'brine disposal', '9': 'energy recovery', '10': 'solar thermal', '11': 'desalinated water', '12': 'mineral remineralization', '13': 'coastal aquifers',
-      '14': 'v', '15': 'iii', '16': 'vii', '17': 'i', '18': 'iv', '19': 'ii',
-      '20': 'kinship terms', '21': 'spatial orientation', '22': 'color perception', '23': 'grammar structure', '24': 'cognitive frame', '25': 'C', '26': 'A',
-      '27': 'YES', '28': 'NOT GIVEN', '29': 'NO', '30': 'YES', '31': 'NO',
-      '32': 'hydrothermal vents', '33': 'chemosynthesis', '34': 'extremophiles', '35': 'methane hydrates', '36': 'submersible drones',
-      '37': 'B', '38': 'D', '39': 'A', '40': 'C',
-    },
-    explanations: {
-      '1': {
-        vi: 'Bài viết chỉ ra phương pháp thẩm thấu ngược (reverse osmosis) tiêu tốn năng lượng cao, không phải phương pháp không tốn điện năng.',
-        locate: 'Paragraph 2: "Pressurizing seawater through sub-nanometer membranes requires substantial electrical inputs, demanding high-pressure pumping infrastructure."',
-      },
-    },
-  },
 
-  // ==========================================
-  // ACTUAL TEST VOLUME 4 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-4-reading-1',
-    title: 'Actual Test Vol 4 · Reading Test 1',
-    collection: 'vol',
-    volume: 4,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Paleoclimatology', 'Neuroplasticity & Aging', 'Aeroelasticity'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'NOTE_COMPLETION', 'MATCHING_INFORMATION', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'TRUE', '2': 'FALSE', '3': 'TRUE', '4': 'NOT GIVEN', '5': 'TRUE',
-      '6': 'ice cores', '7': 'isotope ratio', '8': 'air bubbles', '9': 'volcanic ash', '10': 'tree rings', '11': 'speleothems', '12': 'interglacial cycles', '13': 'solar irradiance',
-      '14': 'C', '15': 'A', '16': 'D', '17': 'F', '18': 'B',
-      '19': 'cognitive reserve', '20': 'synaptic density', '21': 'aerobic exercise', '22': 'hippocampus', '23': 'bilingualism', '24': 'myelination', '25': 'B', '26': 'D',
-      '27': 'YES', '28': 'NO', '29': 'YES', '30': 'NOT GIVEN', '31': 'NO',
-      '32': 'flutter oscillation', '33': 'wing resonance', '34': 'damping actuators', '35': 'composite stiffening', '36': 'wind tunnel tests',
-      '37': 'A', '38': 'C', '39': 'B', '40': 'D',
-    },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 nêu rõ các lõi băng khoan tại Nam Cực bảo tồn các bọt khí khí quyển cổ xưa từ hàng trăm nghìn năm trước.',
-        locate: 'Paragraph 1: "Deep polar ice cores trap ancient atmospheric gas bubbles, offering an uncorrupted geochemical archive spanning 800,000 years."',
-      },
-    },
-  },
 
-  // ==========================================
-  // ACTUAL TEST VOLUME 5 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-5-reading-1',
-    title: 'Actual Test Vol 5 · Reading Test 1',
-    collection: 'vol',
-    volume: 5,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Agricultural Biotechnology', 'Sociology of Urbanization', 'Superconductivity'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'MATCHING_HEADINGS', 'SUMMARY_COMPLETION', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'FALSE', '2': 'TRUE', '3': 'NOT GIVEN', '4': 'TRUE', '5': 'FALSE',
-      '6': 'crispr gene editing', '7': 'drought tolerance', '8': 'pest resistance', '9': 'yield stability', '10': 'biofortification', '11': 'monoculture', '12': 'pollinator decline', '13': 'regulatory scrutiny',
-      '14': 'iv', '15': 'i', '16': 'vi', '17': 'ii', '18': 'v', '19': 'vii',
-      '20': 'gentrification', '21': 'displacement', '22': 'transit nodes', '23': 'affordable zoning', '24': 'civic engagement', '25': 'C', '26': 'B',
-      '27': 'YES', '28': 'NO', '29': 'NOT GIVEN', '30': 'YES', '31': 'NO',
-      '32': 'zero electrical resistance', '33': 'meissner effect', '34': 'critical temperature', '35': 'magnetic levitation', '36': 'quantum computing',
-      '37': 'D', '38': 'A', '39': 'B', '40': 'C',
-    },
-    explanations: {
-      '1': {
-        vi: 'Khẳng định kỹ thuật chỉnh sửa gen CRISPR đưa ADN của sinh vật ngoại lai vào cây trồng là không chính xác; CRISPR thực hiện chỉnh sửa chính xác tại các đoạn gen nội sinh của chính loài cây đó.',
-        locate: 'Paragraph 2: "Unlike transgenic approaches that introduce foreign genetic sequences, CRISPR enables targeted edits strictly within endogenous plant genomes."',
-      },
-    },
-  },
 
-  // ==========================================
-  // ACTUAL TEST VOLUME 6 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-6-reading-1',
-    title: 'Actual Test Vol 6 · Reading Test 1',
-    collection: 'vol',
-    volume: 6,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Space Exploration Propulsion', 'Historical Linguistics', 'Soil Microbiology'],
-    questionTypes: ['TRUE_FALSE_NOT_GIVEN', 'NOTE_COMPLETION', 'MATCHING_FEATURES', 'MULTIPLE_CHOICE'],
-    answerKey: {
-      '1': 'TRUE', '2': 'FALSE', '3': 'TRUE', '4': 'NOT GIVEN', '5': 'FALSE',
-      '6': 'ion propulsion', '7': 'xenon propellant', '8': 'solar electric', '9': 'interplanetary cruise', '10': 'thrust-to-weight', '11': 'fuel mass ratio', '12': 'nuclear thermal', '13': 'gravitational assist',
-      '14': 'A', '15': 'C', '16': 'E', '17': 'B', '18': 'D',
-      '19': 'comparative method', '20': 'sound laws', '21': 'cognate vocabulary', '22': 'lexical innovation', '23': 'tree model', '24': 'wave diffusion', '25': 'B', '26': 'D',
-      '27': 'YES', '28': 'NO', '29': 'YES', '30': 'NOT GIVEN', '31': 'NO',
-      '32': 'rhizosphere', '33': 'mycorrhizae', '34': 'nitrogen fixation', '35': 'soil organic matter', '36': 'microbial biomass',
-      '37': 'C', '38': 'B', '39': 'D', '40': 'A',
-    },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 xác nhận động cơ đẩy ion sử dụng khí hiếm Xenon mang lại hiệu suất sử dụng nhiên liệu (specific impulse) cao gấp 10 lần so với động cơ hóa học truyền thống.',
-        locate: 'Paragraph 1: "Ion thrusters ionizing inert xenon propellants achieve specific impulses up to tenfold greater than chemical combustion equivalents."',
-      },
-    },
-  },
+
 
   // ==========================================
   // CAMBRIDGE IELTS 21 - READING TEST 1
   // ==========================================
   {
-    id: 'cambridge-21-reading-1',
-    title: 'Cambridge IELTS 21 · Reading Test 1',
-    collection: 'cambridge',
-    volume: 21,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['The Davies Sisters: Art Collectors', 'Why We Need Silence', 'Ocean Biodiversity & Marine Sanctuaries'],
-    questionTypes: [
-      'TRUE_FALSE_NOT_GIVEN',
-      'NOTE_COMPLETION',
-      'MATCHING_HEADINGS',
-      'SUMMARY_COMPLETION',
-      'YES_NO_NOT_GIVEN',
-      'MULTIPLE_CHOICE',
-      'MATCHING_FEATURES',
+    "id": "cambridge-21-reading-1",
+    "title": "Cambridge IELTS 21 · Reading Test 1",
+    "collection": "cambridge",
+    "volume": 21,
+    "testNumber": 1,
+    "section": "Reading",
+    "questionCount": 40,
+    "topics": [
+      "The Davies sisters (art collectors)",
+      "Why we need silence",
+      "Book review: The World of Sugar"
     ],
-    answerKey: {
-      '1': 'TRUE',
-      '2': 'FALSE',
-      '3': 'NOT GIVEN',
-      '4': 'TRUE',
-      '5': 'FALSE',
-      '6': 'TRUE',
-      '7': 'inheritance',
-      '8': 'docks',
-      '9': 'impressionism',
-      '10': 'sculptures',
-      '11': 'philanthropy',
-      '12': 'curators',
-      '13': 'bequest',
-      '14': 'v',
-      '15': 'ii',
-      '16': 'vii',
-      '17': 'i',
-      '18': 'iv',
-      '19': 'vi',
-      '20': 'cortisol levels',
-      '21': 'sympathetic',
-      '22': 'hippocampus',
-      '23': 'neurogenesis',
-      '24': 'ambient noise',
-      '25': 'auditory fatigue',
-      '26': 'restorative',
-      '27': 'YES',
-      '28': 'NO',
-      '29': 'NOT GIVEN',
-      '30': 'YES',
-      '31': 'NO',
-      '32': 'B',
-      '33': 'D',
-      '34': 'A',
-      '35': 'C',
-      '36': 'A',
-      '37': 'C',
-      '38': 'A',
-      '39': 'D',
-      '40': 'B',
+    "questionTypes": [
+      "NOTE_COMPLETION",
+      "TRUE_FALSE_NOT_GIVEN",
+      "MATCHING_INFORMATION",
+      "SUMMARY_COMPLETION",
+      "MATCHING_FEATURES",
+      "MULTIPLE_CHOICE",
+      "YES_NO_NOT_GIVEN"
+    ],
+    "answerKey": {
+      "1": "mining",
+      "2": "education",
+      "3": "notes",
+      "4": "journals",
+      "5": "Venice",
+      "6": "canteen",
+      "7": "friends",
+      "8": "TRUE",
+      "9": "NOT GIVEN",
+      "10": "FALSE",
+      "11": "NOT GIVEN",
+      "12": "TRUE",
+      "13": "TRUE",
+      "14": "C",
+      "15": "B",
+      "16": "A",
+      "17": "G",
+      "18": "breath",
+      "19": "questionnaire",
+      "20": "wellbeing",
+      "21": "depression",
+      "22": "C",
+      "23": "A",
+      "24": "B",
+      "25": "D",
+      "26": "C",
+      "27": "B",
+      "28": "A",
+      "29": "C",
+      "30": "A",
+      "31": "H",
+      "32": "E",
+      "33": "I",
+      "34": "A",
+      "35": "G",
+      "36": "C",
+      "37": "YES",
+      "38": "NOT GIVEN",
+      "39": "NO",
+      "40": "YES"
     },
-    explanations: {
-      '1': {
-        vi: 'Đoạn 1 nêu rõ Gwendoline và Margaret Davies thừa kế khối tài sản khổng lồ từ ông nội David Davies – người xây dựng cảng than Barry Docks tại xứ Wales.',
-        locate: 'Paragraph 1: "The Davies sisters inherited vast Victorian coal wealth accumulated by their grandfather, David Davies, principal builder of the Barry Docks in South Wales."',
-        paraphrase: 'inherited vast wealth = received substantial familial estate',
+    "explanations": {
+      "1": {
+        "vi": "Đoạn 1: tài sản của ông nội đến từ ngành vận tải biển và mining (khai mỏ).",
+        "locate": "Passage 1, đoạn 1"
       },
-      '2': {
-        vi: 'Bài khẳng định hai chị em không hề giữ kín bộ sưu tập mà thường xuyên cho các triển lãm công cộng mượn tranh và mở cửa dinh thự Gregynog cho công chúng.',
-        locate: 'Paragraph 2: "Far from cloistering their artistic treasures privately, Gwendoline and Margaret frequently loaned Impressionist canvases to regional exhibitions and opened Gregynog Hall to visiting art societies."',
-        paraphrase: 'loaned to exhibitions != kept entirely secluded from public view',
+      "2": {
+        "vi": "Đoạn 2: chương trình education (học vấn) ở trường London được thiết kế hướng họ tới sưu tầm nghệ thuật.",
+        "locate": "Passage 1, đoạn 2"
       },
-      '3': {
-        vi: 'Bài viết không đề cập đến việc cha của hai chị em có phản đối niềm đam mê nghệ thuật Pháp của họ hay không.',
-        locate: 'Paragraph 2: "Their father Edward Davies passed away in 1898, leaving trustees to administer the family enterprises while the sisters traveled extensively across continental Europe."',
+      "3": {
+        "vi": "Đoạn 2: họ đi dài ngày cùng gia sư và ghi notes (ghi chép) về các phòng tranh đã xem.",
+        "locate": "Passage 1, đoạn 2"
       },
-      '4': {
-        vi: 'Đoạn 3 chỉ ra hai chị em là một trong những nhà sưu tập đầu tiên tại Anh dám mua các tác phẩm của Cézanne và Monet khi trường phái Ấn tượng vẫn bị giới phê bình London nghi ngờ.',
-        locate: 'Paragraph 3: "At a juncture when British academic connoisseurs remained deeply skeptical of continental avant-garde movements, the sisters boldly acquired canvases by Monet and Cézanne."',
-        paraphrase: 'boldly acquired canvases when critics were skeptical = early champions of Impressionism in Britain',
+      "4": {
+        "vi": "Đoạn 3: journals (nhật ký) cho thấy họ thích tranh Old Master nhưng giá quá cao.",
+        "locate": "Passage 1, đoạn 3"
       },
-      '5': {
-        vi: 'Hai chị em tặng bộ sưu tập cho Bảo tàng Quốc gia xứ Wales tại Cardiff chứ không phải Phòng trưng bày Quốc gia tại London.',
-        locate: 'Paragraph 4: "Margaret Davies bequeathed the magnificent assemblage of over 260 works directly to the National Museum of Wales in Cardiff, definitively elevating the institution onto the world stage."',
-        paraphrase: 'National Museum of Wales in Cardiff != National Gallery in London',
+      "5": {
+        "vi": "Đoạn 4: các tranh Ấn tượng đầu tiên họ mua vẽ cảnh ở Venice.",
+        "locate": "Passage 1, đoạn 4"
       },
-      '6': {
-        vi: 'Đoạn cuối xác nhận món quà tặng của chị em Davies ngày nay chiếm giữ vị trí trọng tâm trong các phòng trưng bày nghệ thuật danh tiếng nhất của Cardiff.',
-        locate: 'Paragraph 5: "Today, the Davies bequest forms the undisputed cornerstone of the museum’s international art galleries, drawing scholars and visitors globally."',
+      "6": {
+        "vi": "Đoạn 5: họ tình nguyện làm việc ở một canteen (căng-tin) cho binh lính ở Pháp.",
+        "locate": "Passage 1, đoạn 5"
       },
-      '7': {
-        vi: 'Điền từ: "inheritance". Khối tài sản thừa kế khổng lồ cho phép hai chị em độc lập tài chính để đầu tư vào nghệ thuật.',
-        locate: 'Paragraph 1: "...their substantial inheritance granted them complete financial autonomy..."',
+      "7": {
+        "vi": "Đoạn 7: họ sống cô lập ở nông thôn và không có friends (bạn bè) là họa sĩ.",
+        "locate": "Passage 1, đoạn 7"
       },
-      '8': {
-        vi: 'Điền từ: "docks". Cảng than Barry Docks là nguồn gốc chính tạo ra khối tài sản gia đình Davies.',
-        locate: 'Paragraph 1: "...royalties generated from the construction and operation of maritime docks..."',
+      "8": {
+        "vi": "Đoạn 1: việc lớn lên trong môi trường tôn giáo khiến họ dùng tiền thừa kế cho văn hóa và từ thiện, nên đúng.",
+        "locate": "Passage 1, đoạn 1"
       },
-      '9': {
-        vi: 'Điền từ: "impressionism". Hai chị em đặc biệt say mê trường phái Ấn tượng Pháp.',
-        locate: 'Paragraph 3: "...their shared aesthetic passion gravitated towards French Impressionism..."',
+      "9": {
+        "vi": "Đoạn 3 chỉ nói họ mua tranh của Corot; không nói mua ở phòng tranh nào hay ở đâu.",
+        "locate": "Passage 1, đoạn 3"
       },
-      '10': {
-        vi: 'Điền từ: "sculptures". Bên cạnh tranh vẽ, bộ sưu tập còn có nhiều tác phẩm điêu khắc của Auguste Rodin.',
-        locate: 'Paragraph 4: "...the collection incorporated bronzes and marble sculptures by Auguste Rodin..."',
+      "10": {
+        "vi": "Đoạn 4: Blaker ủng hộ nghệ thuật Pháp đương đại và góp phần vào quyết định, nên không phản đối.",
+        "locate": "Passage 1, đoạn 4"
       },
-      '11': {
-        vi: 'Điền từ: "philanthropy". Tinh thần từ thiện và bảo trợ văn hóa là tôn chỉ hoạt động suốt đời của họ.',
-        locate: 'Paragraph 2: "...their lifelong commitment to educational and artistic philanthropy..."',
+      "11": {
+        "vi": "Đoạn 6 nói tranh Cezanne được trưng bày công khai lần đầu ở Anh nhưng không nói công chúng có hưởng ứng hay không.",
+        "locate": "Passage 1, đoạn 6"
       },
-      '12': {
-        vi: 'Điền từ: "curators". Các giám tuyển bảo tàng ban đầu vô cùng ngạc nhiên trước tầm nhìn nghệ thuật đi trước thời đại của hai chị em.',
-        locate: 'Paragraph 4: "...contemporary curators marveled at the prophetic discernment demonstrated in their acquisitions..."',
+      "12": {
+        "vi": "Đoạn 8: đầu thập niên 1920, Gwendoline bắt đầu thấy khó chịu với việc mua tranh giữa cảnh nghèo đói sau chiến tranh.",
+        "locate": "Passage 1, đoạn 8"
       },
-      '13': {
-        vi: 'Điền từ: "bequest". Di chúc hiến tặng (bequest) sau khi qua đời đã trao lại toàn bộ di sản cho nhân dân xứ Wales.',
-        locate: 'Paragraph 5: "...the post-mortem bequest permanently enriched the cultural patrimony of Wales..."',
+      "13": {
+        "vi": "Đoạn 9: họ sưu tầm phái Ấn tượng đúng lúc cả cá nhân lẫn tổ chức đều phớt lờ loại tranh này.",
+        "locate": "Passage 1, đoạn 9"
       },
-      '20': {
-        vi: 'Điền từ: "cortisol levels". Tiếng ồn liên tục làm tăng nồng độ hormone căng thẳng cortisol.',
-        locate: 'Passage 2, Paragraph B: "Chronic acoustic bombardment elevates circulating cortisol levels, impairing vascular homeostasis."',
+      "14": {
+        "vi": "Mục C: các ví dụ về cách giảm tiếng ồn cho công chúng (xe buýt, mặt đường, quy định, xử phạt).",
+        "locate": "Passage 2, mục C"
       },
-      '21': {
-        vi: 'Điền từ: "sympathetic". Hệ thần kinh giao cảm (sympathetic nervous system) bị kích thích liên tục bởi tiếng ồn đô thị.',
-        locate: 'Passage 2, Paragraph B: "...inducing sustained hyper-arousal of the sympathetic nervous system."',
+      "15": {
+        "vi": "Mục B: số liệu từ các tổ chức cho thấy quy mô vấn đề tiếng ồn.",
+        "locate": "Passage 2, mục B"
       },
-      '22': {
-        vi: 'Điền từ: "hippocampus". Vùng hồi hải mã của não bộ phản ứng tích cực với môi trường tĩnh lặng.',
-        locate: 'Passage 2, Paragraph D: "Neuroimaging revealed that two hours of total silence daily promoted structural cellular growth inside the hippocampus."',
+      "16": {
+        "vi": "Mục A: mô tả thay đổi cơ thể (huyết áp, cơ bắp, hormone) khi nghe tiếng động đột ngột.",
+        "locate": "Passage 2, mục A"
       },
-      '23': {
-        vi: 'Điền từ: "neurogenesis". Sự tĩnh lặng thúc đẩy quá trình sản sinh tế bào thần kinh mới (neurogenesis).',
-        locate: 'Passage 2, Paragraph D: "...silence acted as a potent catalyst for adult hippocampal neurogenesis."',
+      "17": {
+        "vi": "Mục G: nghiên cứu cho thấy ngồi yên ở vườn ngoài trời dễ chịu hơn phòng im lặng tuyệt đối.",
+        "locate": "Passage 2, mục G"
       },
-      '27': {
-        vi: 'Đoạn 1 của Passage 3 nêu rõ các khu bảo tồn biển nghiêm ngặt (no-take reserves) có khả năng phục hồi quần thể cá gấp 4 lần so với vùng không bảo tồn.',
-        locate: 'Passage 3, Paragraph 1: "Strictly enforced no-take marine reserves harbor biomass densities exceeding unprotected waters by over 400 percent."',
+      "18": {
+        "vi": "Mục D: theo Feinstein, tập trung vào breath (hơi thở) giúp thư giãn và thiền.",
+        "locate": "Passage 2, mục D"
       },
-      '28': {
-        vi: 'Trái với nhận định rằng khu bảo tồn gây thiệt hại cho ngư dân lân cận, hiện tượng tràn cá (spillover effect) thực tế làm tăng sản lượng đánh bắt ở rìa khu bảo tồn.',
-        locate: 'Passage 3, Paragraph 2: "The outward spillover of adult fish and pelagic larvae actively replenishes adjacent artisanal fisheries, augmenting long-term economic yields."',
+      "19": {
+        "vi": "Mục E: người tham gia làm một questionnaire (bảng hỏi) trước và sau buổi thử.",
+        "locate": "Passage 2, mục E"
       },
-      '32': {
-        vi: 'Đáp án B: Thách thức lớn nhất đối với việc thực thi các khu bảo tồn đại dương ngoài khơi là chi phí giám sát vệ tinh và tàu tuần tra ở vùng biển quốc tế.',
-        locate: 'Passage 3, Paragraph 4: "Patrolling high-seas reserves demands prohibitive capital outlays for satellite transponder tracking and naval reconnaissance."',
+      "20": {
+        "vi": "Mục E: cảm giác relaxation tăng cùng với wellbeing (sức khỏe tinh thần) nói chung.",
+        "locate": "Passage 2, mục E"
       },
-    },
+      "21": {
+        "vi": "Mục E: vùng não giảm hoạt động liên quan đến depression (trầm cảm).",
+        "locate": "Passage 2, mục E"
+      },
+      "22": {
+        "vi": "Mục F (Ben-Soussan): im lặng ngoài ý muốn có thể rất khó chịu.",
+        "locate": "Passage 2, mục F"
+      },
+      "23": {
+        "vi": "Mục C (Antonio): ông dự đoán xu hướng thành phố yên tĩnh sẽ còn tăng.",
+        "locate": "Passage 2, mục C"
+      },
+      "24": {
+        "vi": "Mục D (Feinstein): thiếu kích thích giác quan thì não tự bù lại bằng hình ảnh và âm thanh.",
+        "locate": "Passage 2, mục D"
+      },
+      "25": {
+        "vi": "Mục G (Pfeifer): chỉ vài phút yên tĩnh mỗi lần cũng đã có lợi.",
+        "locate": "Passage 2, mục G"
+      },
+      "26": {
+        "vi": "Mục F (Ben-Soussan): yên lặng bên ngoài lẫn bên trong giúp ta nhận biết xung quanh và phản ứng đúng.",
+        "locate": "Passage 2, mục F"
+      },
+      "27": {
+        "vi": "Đoạn 1: đường củ cải được trợ giá và bán thấp nhân tạo, tức được làm cho cạnh tranh hơn trên thị trường thế giới.",
+        "locate": "Passage 3, đoạn 1"
+      },
+      "28": {
+        "vi": "Đoạn 2: tác giả nhấn mạnh nguồn đường của nước Anh thay đổi theo từng thời kỳ.",
+        "locate": "Passage 3, đoạn 2"
+      },
+      "29": {
+        "vi": "Đoạn 3: bác bỏ quan niệm sai rằng mía chỉ trồng ở các đồn điền lớn.",
+        "locate": "Passage 3, đoạn 3"
+      },
+      "30": {
+        "vi": "Đoạn 7: thông điệp chung là đường vừa có hại vừa không thiết yếu vì đã có nhiều nguồn ngọt khác.",
+        "locate": "Passage 3, đoạn 7"
+      },
+      "31": {
+        "vi": "Đoạn 4: sản xuất lớn ở Đức và Mỹ dựa vào lao động nhập cư (H, migrant workers).",
+        "locate": "Passage 3, đoạn 4"
+      },
+      "32": {
+        "vi": "Đoạn 4: ở Nam Á và Mỹ Latinh, canh tác quy mô nhỏ (E) vẫn tiếp tục.",
+        "locate": "Passage 3, đoạn 4"
+      },
+      "33": {
+        "vi": "Đoạn 5: các cá nhân và doanh nghiệp quyền lực (I) muốn bảo vệ thị trường của mình.",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "34": {
+        "vi": "Đoạn 5: ảnh hưởng này tác động lên chính sách của chính phủ quốc gia (A).",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "35": {
+        "vi": "Đoạn 5: hàng rào thương mại và trợ cấp tương ứng với các biện pháp tài chính (G).",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "36": {
+        "vi": "Đoạn 5: kết quả là các nước kém giàu (C) chịu thiệt.",
+        "locate": "Passage 3, đoạn 5"
+      },
+      "37": {
+        "vi": "Đoạn 6: nhờ kỹ thuật, giống, phân bón, thủy lợi mà đường đã có với số lượng lớn.",
+        "locate": "Passage 3, đoạn 6"
+      },
+      "38": {
+        "vi": "Đoạn 6 nói đường từng là hàng xa xỉ rồi mới được quảng bá là nguồn năng lượng, nhưng không nói ai đã tiếp thị nó như hàng xa xỉ.",
+        "locate": "Passage 3, đoạn 6"
+      },
+      "39": {
+        "vi": "Đoạn 6: siro ngô fructose cao bị xem là nguyên nhân hàng đầu gây béo phì nên không phải tiến bộ tích cực.",
+        "locate": "Passage 3, đoạn 6"
+      },
+      "40": {
+        "vi": "Đoạn 6: siro ngô fructose cao có mặt trong nhiều loại thực phẩm chế biến.",
+        "locate": "Passage 3, đoạn 6"
+      }
+    }
   },
 
-  // ==========================================
-  // ACTUAL TEST VOLUME 21 - READING TEST 1
-  // ==========================================
-  {
-    id: 'vol-21-reading-1',
-    title: 'Actual Test Vol 21 · Reading Test 1',
-    collection: 'vol',
-    volume: 21,
-    testNumber: 1,
-    section: 'Reading',
-    questionCount: 40,
-    topics: ['Traditional Wayfinding & Oceanic Navigation', 'Acoustic Ecology in Modern Cities', 'Plant Neurobiology & Signalling'],
-    questionTypes: [
-      'TRUE_FALSE_NOT_GIVEN',
-      'NOTE_COMPLETION',
-      'MATCHING_HEADINGS',
-      'SUMMARY_COMPLETION',
-      'YES_NO_NOT_GIVEN',
-      'MULTIPLE_CHOICE',
-    ],
-    answerKey: {
-      '1': 'FALSE',
-      '2': 'TRUE',
-      '3': 'NOT GIVEN',
-      '4': 'TRUE',
-      '5': 'FALSE',
-      '6': 'TRUE',
-      '7': 'constellations',
-      '8': 'swell patterns',
-      '9': 'seabirds',
-      '10': 'driftwood',
-      '11': 'canoes',
-      '12': 'zenith stars',
-      '13': 'oral tradition',
-      '14': 'iv',
-      '15': 'i',
-      '16': 'vi',
-      '17': 'iii',
-      '18': 'ii',
-      '19': 'vii',
-      '20': 'soundscape',
-      '21': 'decibel peaks',
-      '22': 'biophony',
-      '23': 'anthropophony',
-      '24': 'sound barriers',
-      '25': 'acoustic ecology',
-      '26': 'stress reduction',
-      '27': 'YES',
-      '28': 'NO',
-      '29': 'YES',
-      '30': 'NOT GIVEN',
-      '31': 'NO',
-      '32': 'calcium waves',
-      '33': 'volatile organic',
-      '34': 'root tips',
-      '35': 'mycorrhizal network',
-      '36': 'electrical impulses',
-      '37': 'A',
-      '38': 'D',
-      '39': 'B',
-      '40': 'C',
-    },
-    explanations: {
-      '1': {
-        vi: 'Khẳng định người định cư Polynesia chỉ đi biển ngẫu nhiên theo chiều gió trôi dạt là sai; các nhà nghiên cứu chứng minh họ sử dụng hệ thống định vị thiên văn và sóng biển tinh vi có chủ đích.',
-        locate: 'Passage 1, Paragraph 1: "Polynesian voyagers did not drift aimlessly across the Pacific; they executed planned two-way migratory journeys utilizing sophisticated non-instrument wayfinding."',
-        paraphrase: 'did not drift aimlessly = planned journeys != accidental drift',
-      },
-      '2': {
-        vi: 'Đoạn 2 xác nhận những người dẫn đường kỳ cựu có thể nhận biết đất liền ở cự ly hàng chục dặm nhờ quan sát quỹ đạo bay kiếm mồi của loài chim biển.',
-        locate: 'Passage 1, Paragraph 2: "Navigators routinely tracked twilight flight trajectories of terns and noddies, which fly straight back to terrestrial roosts at dusk."',
-      },
-      '7': {
-        vi: 'Điền từ: "constellations". Nhóm các chòm sao được dùng làm la bàn sao tự nhiên vào ban đêm.',
-        locate: 'Passage 1, Paragraph 3: "...memorizing the rising and setting azimuths of over two hundred constellations..."',
-      },
-      '20': {
-        vi: 'Điền từ: "soundscape". Khái niệm không gian âm thanh (soundscape) bao gồm âm thanh sinh học và tiếng ồn con người.',
-        locate: 'Passage 2, Paragraph A: "Acoustic ecologists define the urban soundscape as an intricate sonic tapestry composed of biophony and anthropophony."',
-      },
-      '27': {
-        vi: 'Đoạn 1 của Passage 3 xác nhận thực vật có khả năng truyền tín hiệu điện hóa tương tự như tế bào thần kinh động vật khi bị sâu bọ tấn công.',
-        locate: 'Passage 3, Paragraph 1: "When herbivore caterpillars chew foliage, wounded plant tissues propagate rapid systemic electrical waves functionally analogous to animal nerve impulses."',
-      },
-    },
-  },
 ];
 
 /**
@@ -807,25 +1963,13 @@ export function testPackageToSourceTest(pkg: IeltsTestPackage) {
     reviewLines: [],
   }));
 
-  // If no passages attached, generate full 3-passage exam pages
+  // Bài đọc gốc có bản quyền nên không đăng công khai: chỉ hiện thông báo, KHÔNG sinh bài đọc giả.
   if (pages.length === 0) {
-    pages.push(
-      {
-        page: 1,
-        text: `${pkg.title}\n\nREADING PASSAGE 1\nYou should spend about 20 minutes on Questions 1–13, which are based on Reading Passage 1.\n\nTopic: ${pkg.topics[0] ?? 'Archaeological Discoveries'}\n\nArchaeological investigations have revealed remarkable insights into ancient human civilization and technological craftsmanship. Excavations across historical river basins show evidence of organized agricultural irrigation, granary storage, and community craftsmanship dating back over four millennia. Ancient builders developed sophisticated stone masonry and mortar techniques capable of withstanding seismic tremors and seasonal inundation.\n\nRecent geochemical analyses of sediment layers and organic pottery shards have illuminated previously unknown trade routes. Artisans imported lapis lazuli, copper ores, and rare resins across thousands of miles of arid desert tracks, demonstrating that ancient regional economies were far more interconnected than nineteenth-century scholars once assumed.\n\nQuestions 1–7\nDo the following statements agree with the information in Reading Passage 1?\nWrite TRUE, FALSE, or NOT GIVEN.\n1 Ancient river basin civilizations possessed organized agricultural storage systems.\n2 Artisans used mortar that failed during seasonal floods.\n3 Pottery shards revealed ancient commercial trade routes.\n4 Lapis lazuli was exclusively mined within five miles of each settlement.\n5 Ancient economies were completely isolated from neighboring regions.\n6 Modern geochemical testing confirmed the provenance of copper ores.\n7 Religious temples regulated all ancient merchant transactions.\n\nQuestions 8–13\nComplete the sentences below. Choose ONE WORD ONLY from the passage.\n8 Builders designed stone masonry capable of withstanding seismic ________.\n9 Lapis lazuli and copper were transported along desert ________.\n10 Ancient trade networks were far more ________ than previously hypothesized.\n11 Grain was preserved inside communal ________.\n12 Pottery shards contained traces of organic ________.\n13 Early societies relied heavily on seasonal river ________.`,
-        reviewLines: [],
-      },
-      {
-        page: 2,
-        text: `${pkg.title}\n\nREADING PASSAGE 2\nYou should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2.\n\nTopic: ${pkg.topics[1] ?? 'Environmental Ecology and Forest Canopies'}\n\nTemperate and tropical forest canopies constitute some of the richest repositories of terrestrial biodiversity on Earth. Operating at heights ranging from twenty to sixty meters above the forest floor, the canopy intercepts over eighty percent of solar irradiance, serving as a dynamic biological interface between the atmosphere and the biosphere.\n\nEpiphytic vegetation, including orchids, lichens, and bromeliads, thrives without soil contact by capturing atmospheric moisture and suspended nutrients. Recent microclimate sensor grids have revealed that forest canopies modulate internal temperatures, buffering the understory from external heatwaves and drought stress.\n\nQuestions 14–19\nChoose the correct heading for each paragraph from the list below.\ni The structural architecture of tree canopies\nii Atmospheric moisture harvesting by epiphytes\niii Microclimatic buffering against thermal extremes\niv Commercial forestry harvesting methods\nv Chemical signaling through mycorrhizal mycelium\n\n14 Paragraph A: Forest canopy biodiversity\n15 Paragraph B: Solar irradiance absorption\n16 Paragraph C: Epiphytic nutrient capture\n17 Paragraph D: Temperature modulation in understories\n18 Paragraph E: Forest drought resilience\n19 Paragraph F: Conservation strategies for old-growth stands\n\nQuestions 20–26\nComplete the summary below. Choose NO MORE THAN TWO WORDS.\nCanopy vegetation intercepts the vast majority of 20 ________. Epiphytes absorb 21 ________ without needing ground soil. Microclimate sensors show that dense canopies help 22 ________ internal forest temperatures, protecting sensitive species from 23 ________ and thermal shock. Research emphasizes the importance of preserving 24 ________ forest corridors to sustain 25 ________ and maintain vital 26 ________ cycles.`,
-        reviewLines: [],
-      },
-      {
-        page: 3,
-        text: `${pkg.title}\n\nREADING PASSAGE 3\nYou should spend about 20 minutes on Questions 27–40, which are based on Reading Passage 3.\n\nTopic: ${pkg.topics[2] ?? 'Cognitive Neuroscience and Human Memory'}\n\nHuman memory was long conceptualized as an archival recording apparatus, meticulously encoding sensory inputs into permanent cortical storage vaults. Cognitive neuroscience has decisively overturned this passive recording model, establishing that memory is fundamentally reconstructive and dynamic.\n\nDuring sleep, hippocampal-neocortical dialogues replay daytime experiences, consolidating transient synaptic impressions into resilient long-term cortical networks. Simultaneously, the brain actively prunes redundant synapses, a neurobiological process of selective forgetting that prevents cognitive overload and enhances abstract conceptual thinking.\n\nQuestions 27–31\nChoose the correct letter, A, B, C or D.\n27 Early psychological models viewed human memory as:\nA A passive recording apparatus\nB A biological chemical toxin\nC An emotional survival defect\nD An unchangeable genetic code\n\n28 During sleep, the dialogue between the hippocampus and neocortex:\nA Halts all neural activity completely\nB Replays daytime experiences and consolidates long-term memories\nC Causes permanent cognitive brain damage\nD Erases all vocabulary learned throughout childhood\n\n29 Selective neural pruning is biologically important because it:\nA Prevents cognitive overload and facilitates abstract reasoning\nB Destroys the human capacity to form friendships\nC Makes it impossible to learn foreign languages\nD Forces subjects to sleep fifteen hours daily\n\n30 Contemporary neuroscientists agree that human memory is:\nA Perfectly accurate and unchanging over decades\nB Reconstructive, adaptive, and dynamic\nC Located exclusively in the retina of the eye\nD Completely separate from emotional experiences\n\n31 Future memory therapeutics will likely focus on:\nA Enhancing natural synaptic consolidation mechanisms\nB Permanently eliminating the human hippocampus\nC Mandating continuous 24-hour wakefulness for students\nD Replacing biological brains with mechanical hard drives\n\nQuestions 32–36\nDo the following statements agree with the claims of the writer?\nWrite YES, NO, or NOT GIVEN.\n32 The archival model of human memory has been confirmed by modern MRI scanning.\n33 Sleep plays a crucial role in stabilizing long-term memory traces.\n34 Forgetting unnecessary details impairs higher-order abstract thinking.\n35 Synaptic pruning occurs primarily during daytime physical exercise.\n36 The brain constantly updates and reconstructs stored memories upon retrieval.\n\nQuestions 37–40\nComplete each sentence with the correct ending, A–E.\n37 The reconstructive nature of memory\n38 Hippocampal consolidation\n39 Selective synaptic pruning\n40 Neurobiological research\n\nA stabilizes neural representations during rest.\nB prevents mental exhaustion and clarifies concepts.\nC demonstrates that memories change upon recall.\nD was funded exclusively by automotive companies.\nE challenges simplistic mechanical recording metaphors.`,
-        reviewLines: [],
-      }
-    );
+    pages.push({
+      page: 1,
+      text: `${pkg.title}\n\nBài đọc gốc không được đăng công khai trên bản web. Bạn vẫn xem được đáp án và giải thích từng câu; để làm cả đề, hãy dùng sách giấy hoặc bản đề riêng của bạn.`,
+      reviewLines: [],
+    });
   }
 
   return {
@@ -844,7 +1988,7 @@ export function testPackageToSourceTest(pkg: IeltsTestPackage) {
       },
     ],
     answerKey: pkg.answerKey,
-    answerKeyVerified: true,
+    answerKeyVerified: Boolean(pkg.answerKeyVerified),
     externalOnly: false,
     audioFiles: [],
   };

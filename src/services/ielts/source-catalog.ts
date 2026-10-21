@@ -7,7 +7,7 @@ export type SourceTest = {
   pages: SourcePage[]; supportPages: SourcePage[]; parts?: ExamPart[];
   answerKey?: Record<string, string | string[]>; answerKeyVerified?: boolean;
   pdfAsset?: string; sourceStartPage?: number; sourceUrl?: string;
-  audioFiles?: string[]; audioCloudUrl?: string; externalOnly?: boolean;
+  audioFiles?: string[]; audioCloudUrl?: string; externalOnly?: boolean; hidden?: boolean;
   contentVerified?: boolean; missingComponents?: string[]; sourceCheckedAt?: string;
 };
 
@@ -62,7 +62,7 @@ export function buildExamParts(pages: SourcePage[], section: TestSection): ExamP
     const start = section === 'Listening' ? (marker.part - 1) * 10 + 1 : section === 'Reading'
       ? marker.part === 1 ? 1 : readingStart : marker.part;
     return {
-      id: marker.part, label: `${section === 'Reading' ? 'Passage' : section === 'Writing' ? 'Task' : 'Part'} ${marker.part}`,
+      id: marker.part, label: `${section === 'Reading' ? 'Reading Passage' : section === 'Writing' ? 'Task' : 'Part'} ${marker.part}`,
       questionStart: start, questionEnd: section === 'Listening' ? marker.part * 10 : section === 'Reading' ? 40 : marker.part,
       pages: selected, recommendedMinutes: section === 'Reading' ? 20 : section === 'Writing' ? marker.part === 1 ? 20 : 40 : undefined,
       minimumWords: section === 'Writing' ? marker.part === 1 ? 150 : 250 : undefined,
