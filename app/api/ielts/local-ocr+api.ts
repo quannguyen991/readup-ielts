@@ -35,14 +35,22 @@ function externalSourceOnlyTests(): SourceTest[] {
 
 async function readBundle(): Promise<PrivateOcrBundle | null> {
   const externalTests = externalCatalog.tests as SourceTest[];
+  let raw: PrivateOcrBundle | null = null;
   try {
-    const raw = JSON.parse(await readFile(path.join(privateDir, 'source-tests.json'), 'utf8')) as PrivateOcrBundle;
+    raw = JSON.parse(await readFile(path.join(privateDir, 'source-tests.json'), 'utf8')) as PrivateOcrBundle;
+  } catch {
+    try {
+      raw = JSON.parse(await readFile(path.join(process.cwd(), 'src', 'data', 'ielts-source-tests.json'), 'utf8')) as PrivateOcrBundle;
+    } catch {
+      raw = null;
+    }
+  }
+  if (raw) {
     const testMap = new Map(externalTests.map((test) => [test.id, test]));
     for (const test of raw.tests) testMap.set(test.id, prepareSourceTest(test));
     return { tests: [...testMap.values()].sort(compareSourceTests), reviewPages: raw.reviewPages ?? [] };
-  } catch {
-    return { tests: [...externalTests, ...externalSourceOnlyTests()].sort(compareSourceTests), reviewPages: [] };
   }
+  return { tests: [...externalTests, ...externalSourceOnlyTests()].sort(compareSourceTests), reviewPages: [] };
 }
 
 export async function GET(request: Request): Promise<Response> {

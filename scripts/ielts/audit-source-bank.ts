@@ -7,7 +7,12 @@ import { getSpeakingQuestion } from '../../src/services/speaking/bank';
 import { compareSourceTests, EXPECTED_PARTS, hasCompleteKey, prepareSourceTest, type SourceTest } from '../../src/services/ielts/source-catalog';
 
 const privateDir = path.resolve('.local-private/ielts-ocr');
-const raw = JSON.parse(readFileSync(path.join(privateDir, 'source-tests.json'), 'utf8')) as { tests: SourceTest[] };
+let raw: { tests: SourceTest[] };
+try {
+  raw = JSON.parse(readFileSync(path.join(privateDir, 'source-tests.json'), 'utf8')) as { tests: SourceTest[] };
+} catch {
+  raw = JSON.parse(readFileSync(path.resolve('src/data/ielts-source-tests.json'), 'utf8')) as { tests: SourceTest[] };
+}
 const local = raw.tests.filter((t) => !t.externalOnly).map(prepareSourceTest).sort(compareSourceTests);
 const issues: string[] = [];
 for (const test of local) {
