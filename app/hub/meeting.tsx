@@ -215,7 +215,7 @@ export default function MeetingAssistant() {
                   >
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                        <Text style={{ color: isYou ? '#8C531B' : '#C084FC', fontSize: 12, fontWeight: '800' }}>{turn.name}</Text>
+                        <Text style={{ color: isYou ? '#6A4BD9' : '#C084FC', fontSize: 12, fontWeight: '800' }}>{turn.name}</Text>
                         <Text style={{ color: HUB.muted, fontSize: 10 }}>• {turn.role}</Text>
                       </View>
                       <Text style={{ color: HUB.muted, fontSize: 10, fontVariant: ['tabular-nums'] }}>{turn.time}</Text>
@@ -302,7 +302,7 @@ export default function MeetingAssistant() {
               {/* Metric 1: Speaking Ratio */}
               <View style={{ flexBasis: '47%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: HUB.glassStrong, gap: 2 }}>
                 <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '600' }}>Tỷ lệ thời gian bạn nói</Text>
-                <Text style={{ color: '#8C531B', fontSize: 22, fontWeight: '800' }}>34%</Text>
+                <Text style={{ color: '#6A4BD9', fontSize: 22, fontWeight: '800' }}>34%</Text>
                 <Text style={{ color: '#34D399', fontSize: 10, fontWeight: '700' }}>✓ Cân bằng lý tưởng (30-40%)</Text>
               </View>
 
@@ -370,7 +370,7 @@ export default function MeetingAssistant() {
                 </View>
 
                 <View style={{ gap: 2, paddingTop: 4 }}>
-                  <Text style={{ color: '#8C531B', fontSize: 11, fontWeight: '700' }}>Khuyên dùng (Executive Band 9):</Text>
+                  <Text style={{ color: '#6A4BD9', fontSize: 11, fontWeight: '700' }}>Khuyên dùng (Executive Band 9):</Text>
                   <Text style={{ color: '#E0F2FE', fontSize: 13, fontWeight: '600', lineHeight: 19 }}>“{item.professional}”</Text>
                 </View>
 

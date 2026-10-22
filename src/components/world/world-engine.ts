@@ -190,7 +190,7 @@ export function mountWorld(
     const r2 = rng(seed);
     for (let row = 0; row < 15; row += 1) {
       const half = Math.round(18 * Math.pow(1 - row / 15, 0.75));
-      const c = row < 2 ? '#6b4f3a' : mixHex('#4a3426', '#1f1530', row / 15);
+      const c = row < 2 ? '#6b4f3a' : mixHex('#2B2350', '#1f1530', row / 15);
       px(cx - half, cy + 2 + row, half * 2, 1, c);
       if (row > 2 && row % 3 === 0) px(cx - half + 3, cy + 2 + row, 2, 1, '#7a5a42');
       if (row > 4 && row % 4 === 1) px(cx + half - 5, cy + 2 + row, 2, 1, '#2a1d2e');
@@ -199,7 +199,7 @@ export function mountWorld(
     for (let k = 0; k < 3; k += 1) {
       const x = cx - 8 + Math.round(r2() * 16);
       const len = 3 + Math.round(r2() * 5);
-      px(x, cy + 12, 1, len, '#3b2a20');
+      px(x, cy + 12, 1, len, '#2B2350');
     }
     px(cx - 1, cy + 16, 3, 3, rgba(top, 0.9));
     px(cx, cy + 19, 1, 2, rgba(top, 0.7));
@@ -290,8 +290,8 @@ export function mountWorld(
     px(cx - 3, cy - 10, 2, 1, '#8b5e3c');
     px(cx + 1, cy - 10, 2, 1, '#8b5e3c');
     const blink = time % 4 > 3.85;
-    px(cx - 3, cy - 7, 2, blink ? 1 : 2, '#fef3c7');
-    px(cx + 1, cy - 7, 2, blink ? 1 : 2, '#fef3c7');
+    px(cx - 3, cy - 7, 2, blink ? 1 : 2, '#F3F0FB');
+    px(cx + 1, cy - 7, 2, blink ? 1 : 2, '#F3F0FB');
     if (!blink) {
       px(cx - 2, cy - 6, 1, 1, '#1f1530');
       px(cx + 2, cy - 6, 1, 1, '#1f1530');

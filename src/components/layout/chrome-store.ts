@@ -15,6 +15,6 @@ export const useChromeStore = create<ChromeState>((set) => ({
 }));
 
 /** Chiều cao thanh tab dưới, chưa tính vùng an toàn. */
-export const BOTTOM_BAR_HEIGHT = 56;
+export const BOTTOM_BAR_HEIGHT = 68;
 /** Biến CSS trên <html>: phần đáy đang bị thanh tab chiếm (0 khi ẩn). Dùng cho nút nổi, thanh dính đáy. */
 export const BOTTOM_BAR_VAR = '--bb-h';

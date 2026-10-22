@@ -4,6 +4,8 @@ import { Platform } from 'react-native';
 import { usePathname } from 'expo-router';
 
 import { useAuthStore } from '@/store/useAuthStore';
+import { rememberFirstUtm } from '@/services/analytics/utm';
+import { WELCOME_SEEN_KEY } from '@/lib/welcome-page';
 
 /**
  * Đếm lượt xem trang cho trang quản trị (`/api/track` → bảng `page_views`).
@@ -50,6 +52,18 @@ export function PageViewTracker(): null {
     if (!pathname || pathname.startsWith('/admin') || last.current === pathname) return;
     last.current = pathname;
 
+    // Khách vào bằng link sâu: đánh dấu đã xem để bỏ qua hoàn toàn màn chào 5 bước (/gioi-thieu)
+    if (pathname !== '/' && pathname !== '/gioi-thieu') {
+      try {
+        window.localStorage.setItem(WELCOME_SEEN_KEY, '1');
+      } catch {
+        /* bỏ qua nếu private mode */
+      }
+    }
+
+    // Ghi nhớ và giữ nguyên UTM lần ĐẦU khách truy cập
+    const utm = rememberFirstUtm(window.location.search, window.localStorage);
+
     // Trang giới thiệu chỉ có nghĩa ở lượt xem ĐẦU của phiên; đổi trang trong app thì không còn.
     if (firstReferrer.current === null) firstReferrer.current = document.referrer || '';
     const referrer = firstReferrer.current;
@@ -62,6 +76,10 @@ export function PageViewTracker(): null {
       referrer,
       width: window.innerWidth,
       signedIn,
+      utm_source: utm.utm_source,
+      utm_medium: utm.utm_medium,
+      utm_campaign: utm.utm_campaign,
+      utm_content: utm.utm_content,
     });
     try {
       const blob = new Blob([body], { type: 'application/json' });

@@ -1,18 +1,23 @@
+import { TileArt } from '@/components/ui/TileArt';
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { pronounce } from '@/services/audio/pronounce';
 
 import { Grid } from '@/components/layout/Grid';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
+import { useVocabCoverStore } from '@/store/useVocabCoverStore';
 import { color, wordStatusColor } from '@/theme/tokens';
 import type { WordStatusKind } from '@/types/database';
 import { CrossFade } from '@/components/motion/Motion';
+import { CuteBook, CuteGlobe } from '@/components/illust/Cute';
+import { CuteBulb, CuteNotebook } from '@/components/illust/CuteMore';
+import { useDisplayName } from '@/store/useAuthStore';
 import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
 import { bi, useL, type Bi } from '@/i18n/useL';
 
@@ -38,6 +43,12 @@ export default function VocabularyScreen() {
   // Sổ vài trăm từ: chỉ dựng từng đợt, không dựng một lượt cả danh sách (mỗi dòng là một cây view khá nặng).
   const [shown, setShown] = useState(WORDS_PER_PAGE);
   const { L, locale } = useL();
+  const { width } = useWindowDimensions();
+  const narrow = width < 768;
+  const coverOnPhone = useVocabCoverStore((s) => s.coverOnPhone);
+  const setCoverOnPhone = useVocabCoverStore((s) => s.setCoverOnPhone);
+  // Trên máy hẹp bìa chỉ hiện khi người học bật; máy rộng luôn hiện như cũ.
+  const showCover = !narrow || coverOnPhone;
 
   const entries = useVocabStore((s) => s.entries);
   const dueCards = useDueCards();
@@ -63,6 +74,13 @@ export default function VocabularyScreen() {
     return counts;
   }, [words, wordStatus]);
 
+  const [query, setQuery] = useState('');
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return q ? words.filter((w) => w.word.toLowerCase().includes(q) || (w.definitionVi ?? '').toLowerCase().includes(q)) : words;
+  }, [words, query]);
+  const name = useDisplayName().trim();
+
   const avgMastery =
     words.length === 0
       ? 0
@@ -70,53 +88,85 @@ export default function VocabularyScreen() {
 
   return (
     <Screen>
-      <LightHero
-        scene="vocab"
-        badge="VOCABULARY PRACTICE"
-        line1="Vocabulary"
-        line2={L('gặp lại đúng lúc sắp quên', 'see it again right before you forget')}
-        subtitle={L(
-          'Mỗi từ lưu kèm nguyên câu gặp nó. Ôn theo FSRS nên bạn chỉ gặp lại đúng lúc sắp quên.',
-          'Every word is saved with the sentence you found it in. FSRS reviews bring it back right before you’d forget it.',
-        )}
-        footer={
-          <>
-            <HeroStat value={String(words.length)} label={L('tổng số từ', 'total words')} />
-            <HeroStat value={String(dueCards.length)} label={L('đến hạn ôn', 'due for review')} />
-            <HeroStat value={words.length === 0 ? '—' : `${avgMastery}%`} label={L('mastery trung bình', 'avg. mastery')} />
-          </>
-        }
-      >
-        <View className="flex-row flex-wrap gap-2">
-          <Button
-            label={L('Danh sách', 'List')}
-            variant={tab === 'list' ? 'primary' : 'outline'}
-            onPress={() => setTab('list')}
-          />
-          <Button
-            label={dueCards.length > 0 ? L(`Ôn ngay (${dueCards.length})`, `Review now (${dueCards.length})`) : L('Ôn tập', 'Review')}
-            variant="outline"
-            iconLeft="refresh"
+      {/* Đầu trang kiểu ứng dụng học: lời chào, ô tìm và bốn thẻ lối vào, cùng một bảng màu pastel. */}
+      <View style={{ gap: 4, marginTop: 4 }}>
+        <Text className="font-heavy text-pageTitle text-ink">{L(`Chào ${name || 'bạn'}!`, `Hi, ${name || 'there'}!`)}</Text>
+        <Text className="font-sans text-body text-muted">{L('Mỗi từ là một lần gặp lại đúng lúc.', 'Each word comes back right on time.')}</Text>
+      </View>
+
+      <View className="mt-4 flex-row items-center gap-3 rounded-pill border border-border bg-surface px-4" style={{ height: 50 }}>
+        <Icon name="search" size={18} color={color.subtle} />
+        <TextInput
+          value={query}
+          onChangeText={setQuery}
+          placeholder={L('Tìm từ hoặc nghĩa', 'Search a word or meaning')}
+          placeholderTextColor={color.subtle}
+          className="flex-1 font-sans text-body text-ink outline-none"
+        />
+      </View>
+
+      {narrow ? (
+        <Pressable
+          accessibilityRole="switch"
+          accessibilityLabel={L('Bìa đầu trang', 'Header cover')}
+          accessibilityState={{ checked: coverOnPhone }}
+          onPress={() => setCoverOnPhone(!coverOnPhone)}
+          style={({ pressed }: { pressed: boolean }) => ({
+            marginTop: 16,
+            minHeight: 44,
+            alignSelf: 'flex-start',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 8,
+            paddingHorizontal: 16,
+            borderRadius: 999,
+            borderWidth: 1,
+            borderColor: '#EAE4F8',
+            backgroundColor: '#FFFFFF',
+            opacity: pressed ? 0.92 : 1,
+          })}
+        >
+          <Text className="font-strong text-label text-ink">{coverOnPhone ? L('Ẩn bìa', 'Hide cover') : L('Hiện bìa', 'Show cover')}</Text>
+          <Icon name={coverOnPhone ? 'chevron-up' : 'chevron-down'} size={16} color={color.subtle} />
+        </Pressable>
+      ) : null}
+
+      {showCover ? (
+        <View className="mt-5 flex-row flex-wrap justify-between" style={{ rowGap: 12 }}>
+          <VocabCategory
+            title={L('Ôn ngay', 'Review now')}
+            sub={dueCards.length > 0 ? L(`${dueCards.length} thẻ đến hạn`, `${dueCards.length} cards due`) : L('Chưa có thẻ đến hạn', 'Nothing due yet')}
+            colors={['#FFE3EC', '#FFC4D8']}
+            art={<CuteBulb size={40} />}
             disabled={words.length === 0}
             onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
           />
-          <Button
-            label={L('Trắc nghiệm THPT · 35 câu mỗi bài', 'THPT multiple choice · 35 questions per set')}
-            variant="outline"
-            iconLeft="target"
+          <VocabCategory
+            title={L('Sổ từ', 'Word book')}
+            sub={L(`${words.length} từ đã lưu`, `${words.length} saved words`)}
+            colors={['#EEE9FF', '#D9CCFF']}
+            art={<CuteBook size={40} />}
+            onPress={() => setTab('list')}
+          />
+          <VocabCategory
+            title={L('Trắc nghiệm THPT', 'THPT quiz')}
+            sub={L('35 câu mỗi bài', '35 questions per set')}
+            colors={['#E6F7EF', '#BFEBD3']}
+            art={<CuteNotebook size={40} />}
             onPress={() => router.push('/vocabulary/thpt' as never)}
           />
-          <Button
-            label={L('Từ vựng theo đề IELTS · SAT', 'IELTS · SAT test vocabulary')}
-            variant="outline"
-            iconLeft="book"
+          <VocabCategory
+            title={L('Theo đề IELTS · SAT', 'IELTS · SAT tests')}
+            sub={L('Từ trong đề thật', 'Words from real tests')}
+            colors={['#FFEFE6', '#FFD6BF']}
+            art={<CuteGlobe size={40} />}
             onPress={() => router.push('/vocabulary/from-tests' as never)}
           />
         </View>
-      </LightHero>
+      ) : null}
 
       <View className="mt-4">
-        <Grid columns={4} tabletColumns={2} mobileColumns={1}>
+        <Grid columns={4} tabletColumns={2} mobileColumns={2}>
           <StatCard label={L('Tổng số từ', 'Total words')} value={String(words.length)} icon="letters" tone="primary" />
           <StatCard
             label={L('Đến hạn ôn', 'Due for review')}
@@ -164,12 +214,12 @@ export default function VocabularyScreen() {
           />
 
           <View className="mt-4 gap-3">
-            {words.slice(0, shown).map((word) => (
+            {filtered.slice(0, shown).map((word) => (
               <View key={word.id} className="cv-auto">
                 <WordRow entry={word} status={wordStatus[word.lemma]?.status ?? 'new'} />
               </View>
             ))}
-            {words.length > shown ? (
+            {filtered.length > shown ? (
               <Pressable
                 accessibilityRole="button"
                 onPress={() => setShown((n) => n + WORDS_PER_PAGE)}
@@ -177,9 +227,9 @@ export default function VocabularyScreen() {
                 style={{ minHeight: 48 }}
               >
                 <Text className="font-semi text-body text-primary-700">
-                  {L(`Hiện thêm ${Math.min(WORDS_PER_PAGE, words.length - shown)} từ`, `Show ${Math.min(WORDS_PER_PAGE, words.length - shown)} more`)}
+                  {L(`Hiện thêm ${Math.min(WORDS_PER_PAGE, filtered.length - shown)} từ`, `Show ${Math.min(WORDS_PER_PAGE, filtered.length - shown)} more`)}
                   {' · '}
-                  {words.length - shown}
+                  {filtered.length - shown}
                   {L(' còn lại', ' left')}
                 </Text>
               </Pressable>
@@ -239,6 +289,28 @@ export default function VocabularyScreen() {
  * sổ từ của người học. Sổ dưới 4 từ thì chưa đủ làm phương án nhiễu cho trắc
  * nghiệm — nói rõ thay vì mở ra màn trống.
  */
+/** Thẻ lối vào: nền pastel, icon trong ô trắng, tên và dòng phụ. Hai cột trên điện thoại. */
+function VocabCategory({ title, sub, colors, art, onPress, disabled = false }: { title: string; sub: string; colors: [string, string]; art: React.ReactNode; onPress: () => void; disabled?: boolean }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={title}
+      disabled={disabled}
+      onPress={onPress}
+      style={({ pressed }: { pressed: boolean }) => ({ width: '48%', minHeight: 150, borderRadius: 24, overflow: 'hidden', opacity: disabled ? 0.5 : pressed ? 0.92 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] })}
+    >
+      <View style={{ flex: 1, padding: 16, justifyContent: 'space-between', overflow: 'hidden' }}>
+        <TileArt seed={'vocab-' + title} tone={colors} height={200} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, height: '100%', borderRadius: 0 }} />
+        <View style={{ width: 56, height: 56, borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.88)', alignItems: 'center', justifyContent: 'center' }}>{art}</View>
+        <View style={{ gap: 2 }}>
+          <Text className="font-heavy text-cardTitle text-ink">{title}</Text>
+          <Text className="font-sans text-label text-body">{sub}</Text>
+        </View>
+      </View>
+    </Pressable>
+  );
+}
+
 function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
   const { L, locale } = useL();
   if (entries.length === 0) return null;

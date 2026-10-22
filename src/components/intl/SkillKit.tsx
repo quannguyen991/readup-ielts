@@ -142,7 +142,7 @@ export function QaSet({ items, exam }: { items: readonly QaItem[]; exam: IntlExa
                       accessibilityState={{ selected }}
                       disabled={submitted}
                       onPress={() => setPicked((p) => ({ ...p, [item.id]: ci }))}
-                      style={{ borderWidth: 1.5, borderRadius: 10, padding: 10, borderColor: isAnswer ? '#22A06B' : selected ? '#B07A3A' : '#E4DCCB', backgroundColor: selected ? '#F7EDDA' : '#FFFFFF' }}
+                      style={{ borderWidth: 1.5, borderRadius: 10, padding: 10, borderColor: isAnswer ? '#22A06B' : selected ? '#6A4BD9' : '#E4DCCB', backgroundColor: selected ? '#F3F0FB' : '#FFFFFF' }}
                     >
                       <Text className="font-sans text-body text-ink">{`${String.fromCharCode(65 + ci)}. ${r}`}</Text>
                     </Pressable>

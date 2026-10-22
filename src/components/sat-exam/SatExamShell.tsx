@@ -540,7 +540,7 @@ export function SatExamShell(props: SatExamShellProps) {
                     t.run();
                   }}
                   className="flex-row items-center gap-3 px-5"
-                  style={{ minHeight: 52, backgroundColor: t.active ? '#F0E9DA' : 'transparent' }}
+                  style={{ minHeight: 52, backgroundColor: t.active ? '#F3F0FB' : 'transparent' }}
                 >
                   {t.glyph ?? <Icon name={t.icon ?? 'more'} size={20} color={EXAM.ink} strokeWidth={1.9} />}
                   <Text className="font-semi text-body" style={{ color: EXAM.ink, fontSize: 16 }}>
@@ -754,7 +754,7 @@ function ToolButton({
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
       style={{
-        backgroundColor: active ? '#E6DCC8' : hovered ? '#EBE3D4' : 'transparent',
+        backgroundColor: active ? '#E6DCC8' : hovered ? '#F3F0FB' : 'transparent',
         minWidth: compact ? 44 : 64,
         minHeight: 44,
       }}

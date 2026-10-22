@@ -456,9 +456,9 @@ function OptionButton({ label, tone, onPress, disabled = false }: { label: strin
 function Feedback({ tone, text }: { tone: 'ok' | 'warn'; text: string }) {
   const ok = tone === 'ok';
   return (
-    <View style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start', padding: 12, borderRadius: 12, backgroundColor: ok ? '#DCFCE7' : '#FFEDD5' }}>
-      <Icon name={ok ? 'check' : 'info'} size={16} color={ok ? '#15803D' : '#C2410C'} />
-      <Text style={{ flex: 1, color: ok ? '#166534' : '#9A3412', fontSize: 13, lineHeight: 19 }}>{text}</Text>
+    <View style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start', padding: 12, borderRadius: 12, backgroundColor: ok ? '#DCFCE7' : '#F3F0FB' }}>
+      <Icon name={ok ? 'check' : 'info'} size={16} color={ok ? '#15803D' : '#6A4BD9'} />
+      <Text style={{ flex: 1, color: ok ? '#166534' : '#6A4BD9', fontSize: 13, lineHeight: 19 }}>{text}</Text>
     </View>
   );
 }

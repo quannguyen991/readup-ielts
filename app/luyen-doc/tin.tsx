@@ -121,7 +121,7 @@ function NewsCard({ item, playing, onListen }: { item: NewsItem; playing: boolea
             playing ? 'border-primary bg-brand-soft' : 'border-primary bg-surface'
           }`}
         >
-          <Icon name={playing ? 'close' : 'volume'} size={16} color="#8F6E36" />
+          <Icon name={playing ? 'close' : 'volume'} size={16} color="#6A4BD9" />
           <Text className="font-semi text-label text-primary">{playing ? L('Dừng', 'Stop') : L('Nghe', 'Listen')}</Text>
         </Pressable>
         <Pressable onPress={() => Linking.openURL(item.sourceUrl)} accessibilityRole="link" className="flex-row items-center gap-1.5">

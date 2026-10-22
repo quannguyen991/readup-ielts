@@ -68,7 +68,7 @@ export function ParentReportCard() {
         <Button className="mt-3 self-start" variant="outline" label={L('Đăng nhập để tạo báo cáo', 'Sign in to create a report')} onPress={() => router.push('/auth/sign-in' as never)} />
       ) : url ? (
         <View className="mt-3">
-          <Text className="rounded-xl px-3 py-2 font-sans text-label text-ink" style={{ backgroundColor: '#F9F6F1' }} selectable numberOfLines={1}>
+          <Text className="rounded-xl px-3 py-2 font-sans text-label text-ink" style={{ backgroundColor: '#F3F0FB' }} selectable numberOfLines={1}>
             {url}
           </Text>
           <View className="mt-2 flex-row flex-wrap gap-2">

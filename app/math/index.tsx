@@ -299,8 +299,8 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
               onPress={() => setOpen(expanded ? '' : unit.id)}
               className="flex-row items-start gap-3 p-4"
             >
-              <View className="h-10 w-10 items-center justify-center rounded-panel" style={{ backgroundColor: unit.level ? color.accentSoft : '#FEF3C7' }}>
-                <Text className="font-heavy text-body" style={{ color: unit.level ? color.accent : '#A16207' }}>{unit.number}</Text>
+              <View className="h-10 w-10 items-center justify-center rounded-panel" style={{ backgroundColor: unit.level ? color.accentSoft : '#F3F0FB' }}>
+                <Text className="font-heavy text-body" style={{ color: unit.level ? color.accent : '#6A4BD9' }}>{unit.number}</Text>
               </View>
               <View className="min-w-0 flex-1">
                 <View className="flex-row flex-wrap items-center gap-2">

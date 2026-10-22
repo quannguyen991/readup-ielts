@@ -60,7 +60,7 @@ export function Joystick({ onDirs, label, style }: { onDirs: (dirs: readonly Sti
       onPointerCancel={release}
       onLostPointerCapture={release}
       onContextMenu={(e) => e.preventDefault()}
-      style={{ position: 'absolute', width: BASE, height: BASE, borderRadius: '50%', background: 'rgba(15,29,51,0.5)', border: '2px solid rgba(184,149,90,0.85)', touchAction: 'none', userSelect: 'none', WebkitUserSelect: 'none', zIndex: 12, ...style }}
+      style={{ position: 'absolute', width: BASE, height: BASE, borderRadius: '50%', background: 'rgba(15,29,51,0.5)', border: '2px solid rgba(139, 108, 240,0.85)', touchAction: 'none', userSelect: 'none', WebkitUserSelect: 'none', zIndex: 12, ...style }}
     >
       <div ref={knob} style={{ position: 'absolute', left: (BASE - KNOB) / 2 - 2, top: (BASE - KNOB) / 2 - 2, width: KNOB, height: KNOB, borderRadius: '50%', background: 'rgba(226,200,143,0.92)', border: '2px solid #0F1D33', boxShadow: '0 2px 8px rgba(0,0,0,0.4)', pointerEvents: 'none', willChange: 'transform' }} />
     </div>

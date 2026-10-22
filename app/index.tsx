@@ -33,7 +33,7 @@ export default function Index() {
     return chiikawa ? (
       <ChiikawaLoader label="Chờ một chút…" />
     ) : (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBF8F1' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
         <Text style={{ fontSize: 15, color: '#6E6552' }}>Chờ một chút…</Text>
       </View>
     );

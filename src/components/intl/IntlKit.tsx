@@ -26,7 +26,7 @@ export function LevelPicker({ value, onChange }: { value: LevelChoice; onChange:
             accessibilityRole="button"
             accessibilityState={{ selected: active }}
             onPress={() => onChange(opt)}
-            style={{ borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, borderColor: active ? '#B07A3A' : '#E4DCCB', backgroundColor: active ? '#F7EDDA' : '#FFFFFF' }}
+            style={{ borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, borderColor: active ? '#6A4BD9' : '#E4DCCB', backgroundColor: active ? '#F3F0FB' : '#FFFFFF' }}
           >
             <Text className="font-strong text-label text-ink">{label}</Text>
           </Pressable>
@@ -80,7 +80,7 @@ export function QuestionList({
         return (
           <Card key={q.id}>
             {q.kind || q.level ? (
-              <Text className="font-semi text-label" style={{ color: '#8A6A3A' }}>
+              <Text className="font-semi text-label" style={{ color: '#6A4BD9' }}>
                 {[q.kind ? bi(q.kind, locale) : null, q.level ? bi(LEVEL_LABEL[q.level], locale) : null].filter(Boolean).join(' · ')}
               </Text>
             ) : null}
@@ -89,14 +89,14 @@ export function QuestionList({
               {q.choices.map((c, ci) => {
                 const selected = chosen === ci;
                 const correctChoice = submitted || chosen !== null ? ci === q.answer : false;
-                const border = correctChoice ? '#22A06B' : selected ? '#B07A3A' : '#E4DCCB';
+                const border = correctChoice ? '#22A06B' : selected ? '#6A4BD9' : '#E4DCCB';
                 return (
                   <Pressable
                     key={`${q.id}:${ci}`}
                     accessibilityRole="button"
                     accessibilityState={{ selected }}
                     onPress={() => choose(qi, ci)}
-                    style={{ borderWidth: 1.5, borderColor: border, borderRadius: 10, padding: 10, backgroundColor: selected ? '#F7EDDA' : '#FFFFFF' }}
+                    style={{ borderWidth: 1.5, borderColor: border, borderRadius: 10, padding: 10, backgroundColor: selected ? '#F3F0FB' : '#FFFFFF' }}
                   >
                     <Text className="font-sans text-body text-ink">{`${String.fromCharCode(65 + ci)}. ${c}`}</Text>
                   </Pressable>

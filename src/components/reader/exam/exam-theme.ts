@@ -4,23 +4,23 @@
  * cả màn chỉ cần sửa `accent*` ở đây.
  */
 export const EXAM = {
-  page: '#F6F3EC',
+  page: '#F3F0FB',
   white: '#FFFFFF',
   ink: '#1E293B',
   body: '#334155',
   muted: '#6B7280',
-  line: '#E8E2D7',
-  accent: '#B8955A',
-  accentDeep: '#8A6A2E',
-  accentSoft: '#F6EEDD',
+  line: '#F3F0FB',
+  accent: '#8B6CF0',
+  accentDeep: '#6A4BD9',
+  accentSoft: '#F3F0FB',
   accentLine: '#E3D2AE',
   flag: '#E0A93B',
 } as const;
 
 export const PAPER_THEMES = [
-  { key: 'white', label: 'trắng', labelEn: 'White', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA' },
-  { key: 'cream', label: 'kem', labelEn: 'Cream', bg: '#FBF6E9', ink: '#1F1B12', body: '#3A3527', muted: '#8E8672', rule: '#EAE2CC' },
-  { key: 'sepia', label: 'ngà', labelEn: 'Ivory', bg: '#F3E7CF', ink: '#33281A', body: '#4A3C2A', muted: '#8F7B5E', rule: '#E2D2B2' },
+  { key: 'white', label: 'trắng', labelEn: 'White', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#F3F0FB' },
+  { key: 'cream', label: 'kem', labelEn: 'Cream', bg: '#F3F0FB', ink: '#2B2350', body: '#3A3527', muted: '#8E8672', rule: '#F3F0FB' },
+  { key: 'sepia', label: 'ngà', labelEn: 'Ivory', bg: '#F3F0FB', ink: '#2B2350', body: '#2B2350', muted: '#8F7B5E', rule: '#E2D2B2' },
   { key: 'mint', label: 'xanh nhạt', labelEn: 'Light green', bg: '#EDF3E4', ink: '#1F2A12', body: '#33402A', muted: '#76826A', rule: '#D9E3C9' },
 ] as const;
 

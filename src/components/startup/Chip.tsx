@@ -9,7 +9,7 @@ export function Chip({ label, selected, onPress, color }: { label: string; selec
       accessibilityRole="button"
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={{ minHeight: 44, paddingVertical: 8, paddingHorizontal: 11, borderRadius: 999, borderWidth: 1.5, justifyContent: 'center', borderColor: selected ? (color ?? T.goldDark) : T.line, backgroundColor: selected ? '#FBF3E2' : '#FFFFFF' }}
+      style={{ minHeight: 44, paddingVertical: 8, paddingHorizontal: 11, borderRadius: 999, borderWidth: 1.5, justifyContent: 'center', borderColor: selected ? (color ?? T.goldDark) : T.line, backgroundColor: selected ? '#F3F0FB' : '#FFFFFF' }}
     >
       <Text className="font-semi" style={{ color: T.ink, fontSize: 13 }}>{label}</Text>
     </Pressable>

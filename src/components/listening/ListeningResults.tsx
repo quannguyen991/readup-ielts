@@ -65,7 +65,7 @@ export function ListeningResults({
             </View>
           </View>
           {unanswered > 0 ? (
-            <Text className="mt-3 font-nun text-label" style={{ color: '#B26A00' }}>
+            <Text className="mt-3 font-nun text-label" style={{ color: '#6A4BD9' }}>
               {L(`${unanswered} câu bỏ trống.`, `${unanswered} unanswered.`)}
             </Text>
           ) : null}
@@ -79,7 +79,7 @@ export function ListeningResults({
         <View className="mt-4 rounded-card border border-border bg-surface p-4">
           <View className="mb-2 flex-row items-center justify-between">
             <Text className="font-nun-heavy text-ink" style={{ fontSize: 16 }}>{L('Đối chiếu từng câu', 'Answer review')}</Text>
-            <Pressable accessibilityRole="button" onPress={() => setOnlyWrong((v) => !v)} className="rounded-pill border px-3 py-1.5" style={{ borderColor: onlyWrong ? color.primary : color.borderStrong, backgroundColor: onlyWrong ? '#FBF7EE' : '#FFFFFF' }}>
+            <Pressable accessibilityRole="button" onPress={() => setOnlyWrong((v) => !v)} className="rounded-pill border px-3 py-1.5" style={{ borderColor: onlyWrong ? color.primary : color.borderStrong, backgroundColor: onlyWrong ? '#F5F2FF' : '#FFFFFF' }}>
               <Text className="font-nun-strong" style={{ fontSize: 12, color: onlyWrong ? color.primary : color.muted }}>{L('Chỉ câu sai', 'Wrong only')}</Text>
             </Pressable>
           </View>
@@ -154,7 +154,7 @@ function TranscriptPanel({ sections }: { sections: ListeningSection[] }) {
               aria-selected={i === idx}
               onPress={() => setIdx(i)}
               className="rounded-pill px-3.5 py-1.5"
-              style={{ backgroundColor: i === idx ? SECTION_COLOR[s.n] : '#F5F1E9' }}
+              style={{ backgroundColor: i === idx ? SECTION_COLOR[s.n] : '#F3F0FB' }}
             >
               <Text className="font-nun-strong" style={{ fontSize: 12, color: i === idx ? '#FFFFFF' : color.muted }}>Section {s.n}</Text>
             </Pressable>
@@ -180,7 +180,7 @@ function TranscriptPanel({ sections }: { sections: ListeningSection[] }) {
                   ys.current[i] = e.nativeEvent.layout.y;
                 }}
                 className="mb-1.5 flex-row items-start gap-2 rounded-panel px-2.5 py-2"
-                style={{ backgroundColor: on ? '#F8EBC8' : 'transparent' }}
+                style={{ backgroundColor: on ? '#F3F0FB' : 'transparent' }}
               >
                 <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe câu này', 'Play this line')} onPress={() => audio.seekLine(i)} style={{ paddingTop: 3 }}>
                   <Icon name="play" size={14} color={on ? color.primary : color.subtle} />

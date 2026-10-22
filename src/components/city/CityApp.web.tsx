@@ -12,7 +12,7 @@ export function CityApp() {
     <Suspense
       fallback={
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#CFE8F7' }}>
-          <ActivityIndicator color="#A8843F" />
+          <ActivityIndicator color="#6A4BD9" />
         </View>
       }
     >

@@ -73,12 +73,12 @@ export default function VideoHub() {
     },
     {
       key: 'mine', vi: 'Video của tôi', en: 'My videos', sub: 'Video bạn tự thêm từ YouTube', subEn: 'Videos you added from YouTube',
-      bg: '#F4CC4F', ink: '#3A2A05', icon: 'list', wide: false, stripes: true,
+      bg: '#F4CC4F', ink: '#2B2350', icon: 'list', wide: false, stripes: true,
       onPress: () => router.push('/sentence/youtube' as never),
     },
     {
       key: 'quiz', vi: 'Trắc nghiệm', en: 'Quiz', sub: 'Nghe và làm trắc nghiệm', subEn: 'Listen and answer multiple choice',
-      bg: '#F2B26B', ink: '#4A2305', icon: 'clipboard', wide: false,
+      bg: '#F2B26B', ink: '#2B2350', icon: 'clipboard', wide: false,
       onPress: () => router.push('/clip' as never),
     },
     {
@@ -94,8 +94,8 @@ export default function VideoHub() {
         style={{
           borderRadius: 26,
           padding: 24,
-          backgroundColor: '#A8481F',
-          backgroundImage: 'linear-gradient(120deg, #A8481F, #C8632E)',
+          backgroundColor: '#6A4BD9',
+          backgroundImage: 'linear-gradient(120deg, #6A4BD9, #6A4BD9)',
           boxShadow: '0 8px 22px rgba(120,50,20,0.25)',
           flexDirection: 'row',
           flexWrap: 'wrap',
@@ -106,7 +106,7 @@ export default function VideoHub() {
       >
         <View style={{ flexShrink: 1, minWidth: 0 }}>
           <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 30 }}>{L('Học qua video', 'Learn with video')}</Text>
-          <Text style={{ color: '#FCE7D6', fontSize: 15, marginTop: 4 }}>
+          <Text style={{ color: '#F3F0FB', fontSize: 15, marginTop: 4 }}>
             {L('Bốn cách học trên cùng một video. Chọn một chế độ để bắt đầu.', 'Four ways to learn from the same video. Pick a mode to start.')}
           </Text>
         </View>
@@ -182,7 +182,7 @@ function ContinueStrip({ mode, en, onOpen }: { mode: Mode | undefined; en: boole
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
         <Text style={{ fontSize: 12, fontWeight: '800', color: '#8A7F72', letterSpacing: 0.4 }}>{en ? 'CONTINUE' : 'TIẾP TỤC'}</Text>
-        <Text numberOfLines={1} style={{ fontSize: 16, fontWeight: '800', color: '#2B2118' }}>{en ? mode.en : mode.vi}</Text>
+        <Text numberOfLines={1} style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>{en ? mode.en : mode.vi}</Text>
       </View>
       <Text style={{ fontSize: 14, fontWeight: '800', color: mode.ink }}>{en ? 'Open ›' : 'Mở lại ›'}</Text>
     </Pressable>

@@ -1,3 +1,4 @@
+import { GlossOrb } from '@/components/ui/GlossOrb';
 import React from 'react';
 import { Platform, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -100,13 +101,8 @@ export function FeatureShelf() {
           {items.map((it, i) => (
             <Appear key={it.key} index={i} style={{ flex: 1 }}>
               <PressScale fill onPress={() => router.push(it.href as never)} style={{ flex: 1 }}>
-                <StickerCard colors={it.colors} style={{ flex: 1 }} ornament={<GlowStars scale={0.8} />}>
-                  <View
-                    className="h-10 w-10 items-center justify-center rounded-panel bg-white"
-                    style={Platform.OS === 'web' ? ({ boxShadow: '0 2px 6px rgba(15,23,42,0.18)' } as object) : undefined}
-                  >
-                    <Icon name={it.icon} size={19} color={it.colors[1]} strokeWidth={2} />
-                  </View>
+                <StickerCard colors={it.colors} artSeed={'feature-' + it.key} style={{ flex: 1 }} ornament={<GlowStars scale={0.8} />}>
+                  <GlossOrb icon={it.icon} tone={it.colors} size={44} />
                   <Text className="mt-3 font-heavy text-cardTitle text-white" style={STICKER_TITLE_SHADOW}>
                     {it.title}
                   </Text>

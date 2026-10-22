@@ -94,7 +94,7 @@ export function ReminderCard() {
         {PRESETS.map((p) => {
           const on = time === p;
           return (
-            <Pressable key={p} accessibilityRole="button" aria-selected={on} onPress={() => saveTime(p)} className="items-center justify-center rounded-pill px-3.5 py-2" style={{ minHeight: 44, backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F0EBE2' }}>
+            <Pressable key={p} accessibilityRole="button" aria-selected={on} onPress={() => saveTime(p)} className="items-center justify-center rounded-pill px-3.5 py-2" style={{ minHeight: 44, backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F3F0FB' }}>
               <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                 {p}
               </Text>

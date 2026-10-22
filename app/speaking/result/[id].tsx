@@ -143,7 +143,7 @@ export default function SpeakingResult() {
               </Motion>
             </View>
             <View className="min-w-0 flex-1" style={{ minWidth: 180 }}>
-              <Label text={attempt.typed ? L('Bài gõ phím', 'Typed answers') : L('Band ước lượng', 'Estimated band')} color={attempt.typed ? SPK.amberSoft : '#F3E6C8'} ink={attempt.typed ? '#92400E' : '#5A4318'} size={13} />
+              <Label text={attempt.typed ? L('Bài gõ phím', 'Typed answers') : L('Band ước lượng', 'Estimated band')} color={attempt.typed ? SPK.amberSoft : '#F3F0FB'} ink={attempt.typed ? '#6A4BD9' : '#4A3299'} size={13} />
               <Text className="mt-2 font-strong text-body text-ink" numberOfLines={2}>
                 {MODE_LABEL[attempt.mode]} · {attempt.titleVi}
               </Text>
@@ -171,7 +171,7 @@ export default function SpeakingResult() {
             {loading ? (
               <View className="flex-row items-center gap-3 rounded-2xl p-3.5" style={{ backgroundColor: SPK.blueSoft }}>
                 <ActivityIndicator color={SPK.blue} />
-                <Text className="min-w-0 flex-1 font-sans text-body" style={{ color: '#5A4318' }}>
+                <Text className="min-w-0 flex-1 font-sans text-body" style={{ color: '#4A3299' }}>
                   {L('AI đang chấm… (10–30 giây)', 'AI is grading… (10–30 s)')}
                 </Text>
               </View>
@@ -330,7 +330,7 @@ export default function SpeakingResult() {
               <View className="mt-2 flex-row flex-wrap gap-2">
                 {m.repeated.map((r) => (
                   <View key={r.word} className="rounded-pill px-3 py-1" style={{ backgroundColor: SPK.amberSoft }}>
-                    <Text className="font-semi text-label" style={{ color: '#92400E' }}>
+                    <Text className="font-semi text-label" style={{ color: '#6A4BD9' }}>
                       {r.word} ×{r.count}
                     </Text>
                   </View>
@@ -474,7 +474,7 @@ function AnswerCard({ attempt, index, previousAttempt }: { attempt: SpeakingAtte
       </View>
       <Text className="mt-2 font-strong text-bodyLg text-ink">{a.question}</Text>
       {a.notes ? (
-        <Text className="mt-2 font-sans text-label" style={{ color: '#78350F' }}>
+        <Text className="mt-2 font-sans text-label" style={{ color: '#2B2350' }}>
           {L('Ghi chú chuẩn bị: ', 'Prep notes: ')}
           {a.notes}
         </Text>
@@ -484,7 +484,7 @@ function AnswerCard({ attempt, index, previousAttempt }: { attempt: SpeakingAtte
       <Text className="mt-2 rounded-2xl p-3 font-sans text-body text-ink" style={{ backgroundColor: SPK.panel, lineHeight: 23 }}>
         {markFillers(a.transcript).map((p, i) =>
           p.filler ? (
-            <Text key={i} style={{ backgroundColor: '#FDE68A', color: '#92400E', fontWeight: '700' }}>
+            <Text key={i} style={{ backgroundColor: '#FDE68A', color: '#6A4BD9', fontWeight: '700' }}>
               {p.text}
             </Text>
           ) : (

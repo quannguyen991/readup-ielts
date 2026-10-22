@@ -329,7 +329,7 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
       ) : (
         <>
           <LinearGradient
-            colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+            colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={{ borderRadius: 28, paddingVertical: 22, paddingHorizontal: 16, alignItems: 'center', gap: 10 }}
@@ -452,7 +452,7 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
                         maxWidth: '86%',
                         padding: 12,
                         borderRadius: 16,
-                        backgroundColor: t.role === 'ai' ? HUB.glassStrong : 'rgba(143,110,54,0.14)',
+                        backgroundColor: t.role === 'ai' ? HUB.glassStrong : 'rgba(106, 75, 217,0.14)',
                       }}
                     >
                       <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '800', marginBottom: 2 }}>

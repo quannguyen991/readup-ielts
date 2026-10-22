@@ -277,7 +277,7 @@ export default function DubbingScreen() {
           </ScrollView>
 
           {/* Nút Xem cảnh bằng giọng bạn */}
-          <View className="rounded-card border border-amber-200/50 bg-[#FFFBEB] p-4 shadow-sm">
+          <View className="rounded-card border border-amber-200/50 bg-[#F3F0FB] p-4 shadow-sm">
             <View className="flex-row flex-wrap items-center gap-2.5">
               <Pressable
                 accessibilityRole="button"
@@ -468,9 +468,9 @@ export default function DubbingScreen() {
               <View className="flex-row flex-wrap gap-1.5">
                 {currentEvaluation.words.map((w, idx) => {
                   const bg =
-                    w.status === 'correct' ? '#DCFCE7' : w.status === 'fair' ? '#FEF3C7' : '#FEE2E2';
+                    w.status === 'correct' ? '#DCFCE7' : w.status === 'fair' ? '#F3F0FB' : '#FEE2E2';
                   const textColor =
-                    w.status === 'correct' ? '#15803D' : w.status === 'fair' ? '#B45309' : '#B91C1C';
+                    w.status === 'correct' ? '#15803D' : w.status === 'fair' ? '#6A4BD9' : '#B91C1C';
                   return (
                     <View key={idx} className="rounded-panel border border-border px-2 py-1" style={{ backgroundColor: bg }}>
                       <Text className="font-strong text-label" style={{ color: textColor }}>

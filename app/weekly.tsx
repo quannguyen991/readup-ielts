@@ -155,7 +155,7 @@ export default function WeeklyScreen() {
                   key={x.id}
                   onPress={() => setIndex(i)}
                   className="h-9 w-9 items-center justify-center rounded-lg"
-                  style={{ backgroundColor: i === index ? color.primary : done ? '#F3E6C8' : 'rgba(255,255,255,0.85)' }}
+                  style={{ backgroundColor: i === index ? color.primary : done ? '#F3F0FB' : 'rgba(255,255,255,0.85)' }}
                 >
                   <Text className="font-semi text-label" style={{ color: i === index ? '#FFFFFF' : color.ink }}>
                     {i + 1}
@@ -247,7 +247,7 @@ export default function WeeklyScreen() {
               ) : null
             ) : null}
             {!userId && counted ? (
-              <Text className="mt-2 font-sans text-body" style={{ color: '#B45309' }}>
+              <Text className="mt-2 font-sans text-body" style={{ color: '#6A4BD9' }}>
                 {L('Đăng nhập để có tên trên bảng cả nước.', 'Sign in to appear on the national board.')}
               </Text>
             ) : null}
@@ -275,7 +275,7 @@ export default function WeeklyScreen() {
       <Appear index={2}>
         <View className="mt-5 rounded-[22px] bg-white p-6" style={CARD}>
           <View className="flex-row items-center gap-2">
-            <Icon name="trophy" size={20} color="#D97706" />
+            <Icon name="trophy" size={20} color="#6A4BD9" />
             <Text className="font-heavy text-sectionTitle text-ink">{L(`Bảng xếp hạng tuần ${weekNo}`, `Week ${weekNo} leaderboard`)}</Text>
           </View>
           <Text className="mt-1 font-sans text-body text-muted">{L('Nhiều câu đúng hơn đứng trên; bằng câu đúng thì ai nhanh hơn.', 'More correct answers ranks higher; ties go to the faster time.')}</Text>
@@ -289,7 +289,7 @@ export default function WeeklyScreen() {
                 <View
                   key={`${row.name}-${i}`}
                   className="flex-row items-center gap-3 rounded-2xl px-4 py-3"
-                  style={{ backgroundColor: i === 0 ? '#FEF3C7' : i < 3 ? '#FCF9F4' : '#FCFBF8' }}
+                  style={{ backgroundColor: i === 0 ? '#F3F0FB' : i < 3 ? '#F3F0FB' : '#F3F0FB' }}
                 >
                   <Text className="w-8 font-heavy text-bodyLg text-ink">#{i + 1}</Text>
                   <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
@@ -342,9 +342,9 @@ function VerbalItem({ q, picked, onPick }: { q: import('@/data/sat-rw-repository
               key={i}
               onPress={() => onPick(i)}
               className="flex-row items-start gap-3 rounded-2xl px-4 py-3"
-              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#F0EBE2', backgroundColor: sel ? '#FBF6EE' : '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#F3F0FB', backgroundColor: sel ? '#F3F0FB' : '#FFFFFF' }}
             >
-              <View className="h-6 w-6 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#F7F4EE' }}>
+              <View className="h-6 w-6 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#F3F0FB' }}>
                 <Text className="font-strong text-label" style={{ color: sel ? '#FFFFFF' : color.muted }}>
                   {'ABCD'[i]}
                 </Text>

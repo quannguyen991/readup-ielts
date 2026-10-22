@@ -30,11 +30,11 @@ function Progress({ audio, seekable }: { audio: SectionAudio; seekable: boolean 
       }}
       style={{ flex: 1, height: 36, justifyContent: 'center' }}
     >
-      <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE3C8', overflow: 'hidden' }}>
-        <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: themedHex('#B8955A') }} />
+      <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EEE9FF', overflow: 'hidden' }}>
+        <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: themedHex('#8B6CF0') }} />
       </View>
       {seekable ? (
-        <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#8F6E36' }} />
+        <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#6A4BD9' }} />
       ) : null}
     </Pressable>
   );
@@ -58,7 +58,7 @@ export function PlayButton({ audio, real, size = 56 }: { audio: SectionAudio; re
       }}
       style={{
         width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center',
-        backgroundColor: disabled ? '#D9CDB4' : themedHex('#B8955A'),
+        backgroundColor: disabled ? '#D9CDB4' : themedHex('#8B6CF0'),
       }}
     >
       {playing && !disabled ? (
@@ -89,7 +89,7 @@ export function SpeedChips({ speed, onChange, disabled }: { speed: number; onCha
               onChange(v);
             }}
             className="items-center justify-center rounded-pill border px-3.5"
-            style={{ minHeight: 44, minWidth: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF', opacity: disabled ? 0.45 : 1 }}
+            style={{ minHeight: 44, minWidth: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#F5F2FF' : '#FFFFFF', opacity: disabled ? 0.45 : 1 }}
           >
             <Text className="font-nun-strong" style={{ fontSize: 14, color: on ? color.primary : color.muted }}>
               {v}x
@@ -170,7 +170,7 @@ export function AudioCard({
       ) : null}
 
       {real ? (
-        <Text className="mt-3 font-nun-mid text-label" style={{ color: '#B26A00' }}>
+        <Text className="mt-3 font-nun-mid text-label" style={{ color: '#6A4BD9' }}>
           {L('Thi thật: nghe một lần, không tạm dừng, không tua.', 'Real test: one listen, no pause, no seeking.')}
         </Text>
       ) : null}
@@ -194,9 +194,9 @@ export function FallbackNote({ audio }: { audio: SectionAudio }) {
   }
   if (audio.mode !== 'tts') return null;
   return (
-    <View className="mt-3 flex-row gap-2 rounded-panel p-2.5" style={{ backgroundColor: '#FEF4E6' }}>
-      <Icon name="info" size={15} color="#B26A00" />
-      <Text className="min-w-0 flex-1 font-nun text-label" style={{ color: '#7A4A00', lineHeight: 18 }}>
+    <View className="mt-3 flex-row gap-2 rounded-panel p-2.5" style={{ backgroundColor: '#F3F0FB' }}>
+      <Icon name="info" size={15} color="#6A4BD9" />
+      <Text className="min-w-0 flex-1 font-nun text-label" style={{ color: '#2B2350', lineHeight: 18 }}>
         {L(
           audio.ttsVoice === 'device'
             ? 'Chưa có audio gốc; đang đọc bản chữ bằng giọng máy của thiết bị. Chế độ này không tua được.'
@@ -254,7 +254,7 @@ export function AudioBar({
         ) : null}
       </View>
       {audio.mode === 'tts' ? (
-        <Text className="mt-1 font-nun-mid" style={{ fontSize: 12, color: '#B26A00' }}>
+        <Text className="mt-1 font-nun-mid" style={{ fontSize: 12, color: '#6A4BD9' }}>
           {audio.ttsVoice === 'device' ? 'Giọng thiết bị · chưa có audio gốc' : 'Aoede dự phòng · chưa có audio gốc'}
         </Text>
       ) : null}

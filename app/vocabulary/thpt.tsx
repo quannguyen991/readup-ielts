@@ -47,7 +47,7 @@ export default function VocabThptListScreen() {
               borderRadius: 16,
               backgroundColor: '#FFFFFF',
               borderWidth: 1,
-              borderColor: '#E9E2D8',
+              borderColor: '#F3F0FB',
             }}
           >
             <View style={{ flex: 1 }}>

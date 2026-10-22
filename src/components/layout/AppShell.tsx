@@ -1,9 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GridBackdrop } from './GridBackdrop';
+import { MeshBackdrop } from './MeshBackdrop';
 import { LightGrid, usePageBackground } from './LightGrid';
 import { CUTE_PALETTES } from './cute-palettes';
 import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
@@ -20,6 +21,7 @@ import { TravelBackdrop, useSentenceThemeId, useTravelActive } from '@/component
 import { isExamRoute, isFocusRoute, isImmersiveRoute, isPhoneChromelessRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
+import { useAssistantDock } from '@/store/useAssistantDock';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
 import { DomainMoveBanner } from './DomainMoveBanner';
@@ -58,6 +60,9 @@ const STUDY_NAVY = '#0F1D33';
  * thước màn thật, đo bằng JS thì điện thoại sẽ thấy layout desktop trong lúc
  * chờ hydrate.
  */
+/** Nền trang mặc định: một màu phẳng, không loang. Nền người học tự chọn bằng sao vẫn đè lên. */
+const PLAIN_PAGE_BG = '#F3F0FB';
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   // Kính của Thành Phố Tri Thức theo mốc chuỗi ngày — chạy ở mọi thiết bị.
@@ -91,7 +96,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // mặc định và không bật theme Chiikawa (bảng màu khác vẫn giữ lưới caro).
   // Giao diện pixel tự vẽ nền và thẻ riêng nên tắt nền vàng kim (và các mèo đi kèm).
   const pixel = px !== null;
-  const goldSkin = !pixel && (phone || (!chiikawaTheme && paletteKey === 'original'));
+  // Nền vàng kim loang đã tắt theo mẫu be trắng + thanh bên xám; bật lại thì đặt true.
+  const goldSkin = false;
+  // Khung trợ lý AI: cột bên phải chỉ ở màn rộng và không ở màn thi, thành phố, hub.
+  const assistantDock = useAssistantDock((st) => st.mode);
+  const { width: shellWidth } = useWindowDimensions();
+  const dockable = !(isExamRoute(pathname) || isCityRoute || pathname.startsWith('/hub'));
+  const dockChat = dockable && assistantDock === 'full' && shellWidth >= 1280;
   // Theme máy chơi điện tử (mua trong Đổi quà): Chikawa thay Leo ở bong bóng hỏi đáp.
   const arcadeTheme = useRewardStore((s) => s.theme === 'theme-arcade');
   // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
@@ -150,12 +161,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
         <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
         {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
-        {isExamRoute(pathname) || isCityRoute || pathname.startsWith('/hub') ? null : <AskBubble forceChiikawa={arcadeTheme} />}
+        {isExamRoute(pathname) || isCityRoute || pathname.startsWith('/hub') ? null : <AskBubble forceChiikawa={arcadeTheme} allowDock={false} />}
         <SelectionLookup />
         <SearchPalette />
       </FocusBackdrop>
     );
   }
+
+  // Màn rộng: cột chat AI cố định bên phải (kiểu tham chiếu), trừ màn thi, màn thành phố và trang hub.
 
   return (
     <SafeAreaView
@@ -163,7 +176,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : (pageBg?.stops[1] ?? palette.browse[1]) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
+      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : (pageBg?.stops[1] ?? PLAIN_PAGE_BG) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
@@ -183,7 +196,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           {pageBg ? (
             <GridBackdrop colors={pageBg.stops} line={pageBg.line} pattern={pageBg.pattern} blobs={pageBg.blobs} margin={pageBg.margin} cell={pageBg.cell ?? 34} />
           ) : (
-            <GridBackdrop colors={palette.browse} line={palette.browseLine} blobs={[palette.browse[0], palette.browse[2]]} />
+            <MeshBackdrop />
           )}
         </View>
       ) : null}
@@ -200,7 +213,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         >
           {retro ? <RetroSidebar /> : <Sidebar />}
         </View>
-        <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`}>
+        <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`} style={dockChat ? { paddingRight: 320 } : undefined}>
           {/* Trang Hôm nay trên điện thoại tự vẽ đầu trang riêng (xem PhoneHome), nên không có TopBar. */}
           {phone && pathname === '/dashboard' ? null : (
             <View className="lg:hidden">
@@ -217,7 +230,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </View>
       <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
       <BottomTabs />
-      {isCityRoute ? null : <AskBubble forceChiikawa={arcadeTheme} />}
+      {isCityRoute ? null : <AskBubble forceChiikawa={arcadeTheme} allowDock={dockable} />}
       <SelectionLookup />
       <ReminderRunner />
       <SearchPalette />
@@ -231,14 +244,24 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  * màn tập trung) thì trời đêm pixel — chữ trắng của bản đồ nằm trên nền lưới
  * sáng là gần như biến mất.
  */
+/** Nền lưới pastel chung của mọi màn tác vụ: một lớp nền, nội dung đặt lên trên. */
+function MeshShell({ children }: { children: React.ReactNode }) {
+  return (
+    <View className="flex-1">
+      <MeshBackdrop />
+      {children}
+    </View>
+  );
+}
+
 function FocusBackdrop({ quest, navy, light, gold, children }: { quest: boolean; navy: boolean; light: boolean; gold: boolean; children: React.ReactNode }) {
   const chiikawa = useChiikawaActive();
   // Chép chính tả / viết câu: cảnh bay qua thành phố tông sáng (tắt thì về lưới sáng như cũ).
-  if (light) return <TravelBackdrop color="#FBF6EE" tone="light">{children}</TravelBackdrop>;
+  if (light) return <TravelBackdrop color="#F3F0FB" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
   // Màn học từ: cảnh bay qua thành phố qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
   if (navy) return chiikawa ? <LightGrid>{children}</LightGrid> : <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
-  if (!quest) return gold ? <PhoneBackdrop>{children}</PhoneBackdrop> : <LightGrid>{children}</LightGrid>;
+  if (!quest) return gold ? <PhoneBackdrop>{children}</PhoneBackdrop> : <MeshShell>{children}</MeshShell>;
   return (
     <View className="flex-1 bg-[#07111F]">
       <GameBackdrop />

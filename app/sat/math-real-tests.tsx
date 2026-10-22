@@ -10,7 +10,7 @@ import { useL } from '@/i18n/useL';
 
 const DIFFICULTY_LABELS: Record<'easy' | 'medium' | 'hard', { vi: string; en: string; color: string; bg: string }> = {
   easy: { vi: 'Dễ', en: 'Easy', color: '#16814E', bg: '#E7F7EF' },
-  medium: { vi: 'Vừa', en: 'Medium', color: '#C97A9A', bg: '#FEF8EE' },
+  medium: { vi: 'Vừa', en: 'Medium', color: '#C97A9A', bg: '#F3F0FB' },
   hard: { vi: 'Khó', en: 'Hard', color: '#C53030', bg: '#FFF5F5' },
 };
 
@@ -97,9 +97,9 @@ export default function SatMathRealTestsScreen() {
                   }}
                   className="rounded-full px-4 py-1.5"
                   style={{
-                    backgroundColor: active ? '#2A241A' : '#F4EEE2',
+                    backgroundColor: active ? '#2B2350' : '#F3F0FB',
                     borderWidth: 1,
-                    borderColor: active ? '#2A241A' : '#E8E1D6',
+                    borderColor: active ? '#2B2350' : '#F3F0FB',
                   }}
                 >
                   <Text
@@ -180,11 +180,11 @@ export default function SatMathRealTestsScreen() {
                 const letter = ['A', 'B', 'C', 'D'][oIdx];
 
                 let optBg = '#FFFFFF';
-                let optBorder = '#E8E1D6';
+                let optBorder = '#F3F0FB';
                 let optTextColor = '#1E2748';
 
                 if (isSelected) {
-                  optBg = '#FBF5EC';
+                  optBg = '#F3F0FB';
                   optBorder = '#C49746';
                 }
 
@@ -214,7 +214,7 @@ export default function SatMathRealTestsScreen() {
                     <View
                       className="h-8 w-8 items-center justify-center rounded-xl"
                       style={{
-                        backgroundColor: isChecked && isCorrect ? '#22A06B' : isSelected ? '#C49746' : '#F3EEE5',
+                        backgroundColor: isChecked && isCorrect ? '#22A06B' : isSelected ? '#C49746' : '#F3F0FB',
                       }}
                     >
                       <Text
@@ -302,9 +302,9 @@ export default function SatMathRealTestsScreen() {
             const isRight = hasChecked && ans === q.answerIndex;
             const isWrong = hasChecked && ans !== undefined && ans !== q.answerIndex;
 
-            let badgeBg = '#F3EEE5';
+            let badgeBg = '#F3F0FB';
             let badgeText = '#6B6255';
-            let badgeBorder = '#E8E1D6';
+            let badgeBorder = '#F3F0FB';
 
             if (isCurrent) {
               badgeBorder = '#1E2748';
@@ -318,7 +318,7 @@ export default function SatMathRealTestsScreen() {
               badgeText = '#B91C1C';
               badgeBorder = '#EF4444';
             } else if (ans !== undefined) {
-              badgeBg = '#FEF8EE';
+              badgeBg = '#F3F0FB';
               badgeText = '#C97A9A';
               badgeBorder = '#C49746';
             }

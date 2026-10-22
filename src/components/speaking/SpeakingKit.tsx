@@ -23,20 +23,20 @@ export function nowMs(): number {
 
 /** Bảng màu phòng luyện nói — xanh app, lá, hổ phách, hồng đỏ; không tím. */
 export const SPK = {
-  blue: '#A8843F',
-  blueSoft: '#F7F0E1',
+  blue: '#6A4BD9',
+  blueSoft: '#F1ECFF',
   green: '#16A34A',
   greenSoft: '#DCFCE7',
-  amber: '#D97706',
-  amberSoft: '#FEF3C7',
+  amber: '#6A4BD9',
+  amberSoft: '#F3F0FB',
   rose: '#E11D48',
   roseSoft: '#FFE4E6',
   teal: '#0F766E',
   tealSoft: '#CCFBF1',
   ink: '#0F172A',
   muted: '#64748B',
-  line: '#F0EBE2',
-  panel: '#FCFBF8',
+  line: '#F3F0FB',
+  panel: '#F3F0FB',
 };
 
 export const SPK_CARD = (Platform.OS === 'web'
@@ -45,7 +45,7 @@ export const SPK_CARD = (Platform.OS === 'web'
 
 /** Màu theo band: dưới 5 đỏ, 5–6 hổ phách, 6,5–7 xanh app, từ 7,5 xanh lá. */
 export function bandTone(band: number | null | undefined): { fg: string; bg: string } {
-  if (band == null) return { fg: SPK.muted, bg: '#F9F6F1' };
+  if (band == null) return { fg: SPK.muted, bg: '#F3F0FB' };
   if (band < 5) return { fg: SPK.rose, bg: SPK.roseSoft };
   if (band < 6.5) return { fg: SPK.amber, bg: SPK.amberSoft };
   if (band < 7.5) return { fg: SPK.blue, bg: SPK.blueSoft };
@@ -142,12 +142,12 @@ export function BandHistory({ attempts }: { attempts: SpeakingAttempt[] }) {
 export function Notice({ tone, children, icon = 'info' }: { tone: 'info' | 'warn' | 'error' | 'ok'; children: React.ReactNode; icon?: React.ComponentProps<typeof Icon>['name'] }) {
   const c =
     tone === 'warn'
-      ? { bg: SPK.amberSoft, fg: '#92400E' }
+      ? { bg: SPK.amberSoft, fg: '#6A4BD9' }
       : tone === 'error'
         ? { bg: SPK.roseSoft, fg: '#9F1239' }
         : tone === 'ok'
           ? { bg: SPK.greenSoft, fg: '#166534' }
-          : { bg: SPK.blueSoft, fg: '#5A4318' };
+          : { bg: SPK.blueSoft, fg: '#4A3299' };
   return (
     <View className="flex-row gap-2.5 rounded-2xl p-3.5" style={{ backgroundColor: c.bg }}>
       <View style={{ paddingTop: 1 }}>

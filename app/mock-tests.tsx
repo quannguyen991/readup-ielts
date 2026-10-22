@@ -225,7 +225,7 @@ function MockTestCard({
   return (
     <View
       className="h-full overflow-hidden rounded-card bg-surface"
-      style={{ borderWidth: 1, borderColor: '#F2EEE6' }}
+      style={{ borderWidth: 1, borderColor: '#F3F0FB' }}
     >
       <View className="flex-row gap-3.5 p-4">
         <TestCover index={index} />
@@ -327,12 +327,12 @@ function MockTestCard({
  */
 function TestCover({ index }: { index: number }) {
   const tones = [
-    ['#EAD1A6', themedHex('#B8955A')],
-    ['#EEDAB7', themedHex('#CCA35B')],
+    ['#EAD1A6', themedHex('#8B6CF0')],
+    ['#D9CCFF', themedHex('#F0644F')],
     ['#6EE7A8', '#16A34A'],
-    ['#FCD34D', '#D97706'],
+    ['#FCD34D', '#6A4BD9'],
     ['#FCA5A5', '#DC2626'],
-    ['#67E8F9', '#8E6A2C'],
+    ['#67E8F9', '#6A4BD9'],
   ] as const;
   const tone = tones[index % tones.length] as readonly [string, string];
 
@@ -361,8 +361,8 @@ function TestCover({ index }: { index: number }) {
 
 /** Viên nhãn nhỏ — dùng cho cấp độ, thời lượng và chủ đề. */
 function Chip({ label, tone }: { label: string; tone: 'neutral' | 'warning' }) {
-  const bg = tone === 'warning' ? '#FEF3C7' : color.surfaceAlt;
-  const fg = tone === 'warning' ? '#92400E' : color.muted;
+  const bg = tone === 'warning' ? '#F3F0FB' : color.surfaceAlt;
+  const fg = tone === 'warning' ? '#6A4BD9' : color.muted;
   return (
     <View className="rounded-pill px-2 py-0.5" style={{ backgroundColor: bg }}>
       <Text className="font-semi" style={{ fontSize: 12, color: fg }}>

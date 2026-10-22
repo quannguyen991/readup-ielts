@@ -6,7 +6,8 @@ import { Icon } from '@/components/ui/Icon';
 import { useFocusDecks } from '@/components/travel/useTravel';
 import { GameButton, PixelPanel, T } from '@/components/travel/ui/kit';
 import { bi, useL } from '@/i18n/useL';
-import { MAX_CHOSEN_DECKS, deckCatalog, toggleDeck } from '@/services/travel/decks';
+import { deckCatalog } from '@/services/travel/deck-catalog';
+import { MAX_CHOSEN_DECKS, toggleDeck } from '@/services/travel/decks';
 import { useTravelStore } from '@/store/useTravelStore';
 
 /**

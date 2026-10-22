@@ -23,6 +23,9 @@ import { deckLook } from '@/components/vocab/deck-style';
 import { deckProgress } from '@/services/vocab/deck-library';
 import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
+import { LevelCard } from '@/components/vocab/LevelCard';
+import { LevelHeader } from '@/components/vocab/LevelHeader';
+import { useReadingFonts } from '@/lib/readingFonts';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
@@ -37,7 +40,7 @@ const GROUP_LABEL_EN: Record<string, string> = {
 };
 
 const GROUP_BADGE: readonly BadgeIcon[] = ['check', 'star', 'target', 'bolt'];
-const GROUP_TONE = ['#22A06B', '#A8843F', '#F0703F', '#E0533D'] as const;
+const GROUP_TONE = ['#22A06B', '#6A4BD9', '#F0703F', '#E0533D'] as const;
 
 /**
  * Một bộ từ vựng: 50 từ, xếp theo mức band từ dễ tới khó.
@@ -60,10 +63,11 @@ const GROUP_TONE = ['#22A06B', '#A8843F', '#F0703F', '#E0533D'] as const;
  */
 function LevelChooser({ slug, levels }: { slug: string; levels: string[] }) {
   const { L, en } = useL();
+  useReadingFonts();
   const deck = getStaticDeck(slug);
   if (!deck) return null;
   const count = (lv: string) => (lv === 'all' ? deck.words.length : deck.words.filter((w) => levelOf(w) === lv).length);
-  const options = [{ lv: 'all', label: L('Tất cả', 'All levels') }, ...levels.map((lv) => ({ lv, label: lv }))];
+  const options = [{ lv: 'all' }, ...levels.map((lv) => ({ lv }))];
   return (
     <Screen>
       <Appear>
@@ -75,33 +79,22 @@ function LevelChooser({ slug, levels }: { slug: string; levels: string[] }) {
           iconLeft="chevron-left"
           onPress={() => router.push('/vocabulary/quiz' as never)}
         />
-        <Card>
-          <Text className="font-heavy text-pageTitle text-ink">{en && deck.name !== deck.nameVi ? deck.name : deck.nameVi}</Text>
-          <Text className="mt-1 font-sans text-body text-muted">
-            {L('Chọn cấp độ để học. Mỗi cấp có tiến độ riêng.', 'Pick a level to study. Each level keeps its own progress.')}
-          </Text>
-        </Card>
+        <LevelHeader
+          eyebrow={L('Bộ từ', 'Word set')}
+          title={en && deck.name !== deck.nameVi ? deck.name : deck.nameVi}
+          subtitle={L('Chọn cấp độ để học. Mỗi cấp có tiến độ riêng.', 'Pick a level to study. Each level keeps its own progress.')}
+        />
         <Text className="mt-6 font-heavy text-sectionTitle text-ink">{L('Chọn cấp độ', 'Choose a level')}</Text>
-        <View className="mt-3 flex-row flex-wrap" style={{ gap: 10 }}>
+        <View className="mt-3 flex-row flex-wrap" style={{ gap: 14 }}>
           {options.map((o) => (
-            <Pressable
+            <LevelCard
               key={o.lv}
-              accessibilityRole="button"
+              lv={o.lv}
+              en={en}
+              title={o.lv === 'all' ? L('Tất cả', 'All levels') : o.lv}
+              sub={L(`${count(o.lv)} từ`, `${count(o.lv)} words`)}
               onPress={() => router.push(`/vocabulary/topic/${slug}--${o.lv}` as never)}
-              style={({ hovered }: { hovered?: boolean }) => ({
-                flexGrow: 1,
-                flexBasis: 150,
-                padding: 16,
-                borderRadius: 18,
-                borderWidth: 1,
-                borderColor: hovered ? '#8C531B' : '#EADFCF',
-                backgroundColor: '#FFFFFF',
-                boxShadow: '0 4px 14px rgba(15,23,42,0.08)',
-              } as object)}
-            >
-              <Text className="font-heavy text-cardTitle text-ink">{o.label}</Text>
-              <Text className="mt-1 font-sans text-label text-muted">{L(`${count(o.lv)} từ`, `${count(o.lv)} words`)}</Text>
-            </Pressable>
+            />
           ))}
         </View>
       </Appear>
@@ -233,7 +226,7 @@ export default function VocabTopicScreen() {
         <View className="mt-5">
           <View className="flex-row items-center gap-2.5">
             <View aria-hidden>
-              <SealIcon name="target" color="#A8843F" size={38} />
+              <SealIcon name="target" color="#6A4BD9" size={38} />
             </View>
             <Text className="font-heavy text-sectionTitle text-ink">{L('Cách luyện', 'Practice modes')}</Text>
           </View>
@@ -341,9 +334,9 @@ export default function VocabTopicScreen() {
                     accessibilityLabel={L(`Bỏ sao ${w.word}`, `Unstar ${w.word}`)}
                     onPress={() => typeof slug === 'string' && toggleStar(slug, w.word)}
                     className="h-7 w-7 items-center justify-center rounded-pill"
-                    style={{ backgroundColor: '#FEF3C7' }}
+                    style={{ backgroundColor: '#F3F0FB' }}
                   >
-                    <Icon name="star-fill" size={14} color="#D97706" />
+                    <Icon name="star-fill" size={14} color="#6A4BD9" />
                   </Pressable>
                 </View>
               ))}
@@ -500,11 +493,11 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
 const MODES: { key: string; label: string; labelEn: string; note: string; noteEn: string; icon: IconName; tone: string; recommended?: boolean }[] = [
-  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · chọn nghĩa ABCD · gõ từ, từ sai quay lại', noteEn: 'Flashcards · ABCD meanings · typing; missed words come back', icon: 'book', tone: themedHex('#B8955A'), recommended: true },
-  { key: 'dictation', label: 'Nghe chép', labelEn: 'Dictation', note: 'Nghe từ, viết đúng chính tả', noteEn: 'Hear the word, spell it right', icon: 'volume', tone: '#8E6A2C' },
+  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · chọn nghĩa ABCD · gõ từ, từ sai quay lại', noteEn: 'Flashcards · ABCD meanings · typing; missed words come back', icon: 'book', tone: themedHex('#8B6CF0'), recommended: true },
+  { key: 'dictation', label: 'Nghe chép', labelEn: 'Dictation', note: 'Nghe từ, viết đúng chính tả', noteEn: 'Hear the word, spell it right', icon: 'volume', tone: '#6A4BD9' },
   { key: 'cloze', label: 'Điền vào câu', labelEn: 'Fill the gap', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', noteEn: 'Pick, unscramble, type, listen — mixed', icon: 'pencil', tone: '#E0533D' },
   { key: 'speak', label: 'Phát âm', labelEn: 'Pronunciation', note: 'Đọc to, máy nghe và chấm', noteEn: 'Read aloud, the app listens and scores', icon: 'mic', tone: '#DB2777' },
-  { key: 'test', label: 'Kiểm tra', labelEn: 'Test', note: '20 câu trộn 4 dạng, chấm khi nộp', noteEn: '20 mixed questions, marked on submit', icon: 'clipboard', tone: '#D97706' },
+  { key: 'test', label: 'Kiểm tra', labelEn: 'Test', note: '20 câu trộn 4 dạng, chấm khi nộp', noteEn: '20 mixed questions, marked on submit', icon: 'clipboard', tone: '#6A4BD9' },
   { key: 'game', label: 'Bóng bay', labelEn: 'Balloons', note: 'Trò chơi, có bảng điểm', noteEn: 'A game with a leaderboard', icon: 'sparkle', tone: '#16A34A' },
   { key: 'pairs', label: 'Ghép cặp', labelEn: 'Match pairs', note: 'Ghép từ với nghĩa, nhớ vị trí các ô', noteEn: 'Match each word to its meaning and remember where tiles are', icon: 'grid', tone: '#2563EB' },
   { key: 'hangman', label: 'Đoán chữ', labelEn: 'Hangman', note: 'Đoán từ theo nghĩa, mỗi chữ sai mất một tim', noteEn: 'Guess the word from its meaning; each wrong letter costs a heart', icon: 'letters', tone: '#7C3AED' },
@@ -521,8 +514,8 @@ function modeReady(key: string, words: readonly StudyWord[]): boolean {
 
 const STATUS_TILES: { key: DeckStatus; label: string; labelEn: string; only: string; icon: IconName; tone: string; soft: string }[] = [
   { key: 'mastered', label: 'Đã nhớ', labelEn: 'Remembered', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },
-  { key: 'new', label: 'Chưa nhớ', labelEn: 'Not yet', only: 'new', icon: 'info', tone: '#CFA966', soft: '#F9F2E6' },
-  { key: 'review', label: 'Cần ôn tập', labelEn: 'Needs review', only: 'review', icon: 'refresh', tone: '#EA580C', soft: '#FFEDD5' },
+  { key: 'new', label: 'Chưa nhớ', labelEn: 'Not yet', only: 'new', icon: 'info', tone: '#CFA966', soft: '#F3F0FB' },
+  { key: 'review', label: 'Cần ôn tập', labelEn: 'Needs review', only: 'review', icon: 'refresh', tone: '#6A4BD9', soft: '#F3F0FB' },
 ];
 
 /** Một nhóm từ: số từ + bấm là vào Quiz chỉ với nhóm đó (Đã nhớ thì ôn cả bộ). */

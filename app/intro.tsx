@@ -9,6 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop } from '@/components/layout/GridBackdrop';
+import { BlueHero } from '@/components/home/BlueHero';
 import { CUTE_PALETTES } from '@/components/layout/cute-palettes';
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
 import { HistoryHomeCard } from '@/components/history/HistoryHomeCard';
@@ -18,6 +19,7 @@ import { SakuraRain } from '@/components/chiikawa/SakuraRain';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
+import { GlossOrb } from '@/components/ui/GlossOrb';
 import { INK, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
 import { GlowStars } from '@/components/ui/GlowStars';
 import { PLANS } from '@/lib/billing/plans';
@@ -39,8 +41,7 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
 import { useRewardStore } from '@/store/useRewardStore';
 import { ArcadeHome } from '@/components/arcade/ArcadeHome';
-import { CatSticker } from '@/components/mascot/CatSticker';
-import { PixelBob } from '@/components/pixel-theme/pixel-fx';
+import { AreaArt } from '@/components/home/AreaArt';
 import { WhatsNewModal } from '@/components/home/WhatsNewModal';
 import { stickerGradient } from '@/theme/tokens';
 import { bi, useL, type Bi } from '@/i18n/useL';
@@ -291,111 +292,18 @@ export default function IntroScreen() {
 
       {/* ------------------------------------------------------------- hero */}
       <Appear>
-        {/*
-          Bọc thêm một lớp HÀNG NGANG quanh nền. Nền lấy cả khung
-          bằng `flex-1`, mà `flex-1` trong một cột cao-theo-nội-dung thì co về 0
-          (flex-basis 0, không có chiều cao cha để chia). Đặt vào hàng ngang thì
-          flex-1 ăn theo BỀ NGANG, còn chiều cao vẫn do nội dung bên trong quyết.
-        */}
-        {/*
-          NỀN GIỐNG MÀN ĐỌC BÀI, không phải tinh vân tím.
-
-          Trước đây hero dùng `AuroraBackdrop` với ba màu rất tối (#080C2A → #161046
-          → #2A1152) kèm khối loang trôi chậm. Nó là một thế giới thứ ba trong cùng một
-          app: nền trang thì sáng, màn làm bài thì lưới nhạt, riêng ô này tối đen.
-
-          Giờ dùng ĐÚNG bộ màu và đúng hoạ tiết lưới của màn đọc bài. Kéo theo:
-          chữ phải lật từ trắng sang mực, và hai nút bỏ variant "trên nền tối".
-          Đổi nền mà giữ chữ trắng thì câu tiêu đề biến mất — đổi thì phải đổi cả cặp.
-        */}
-        <View style={{ position: 'relative', width: '100%', paddingTop: wide ? 92 : 0 }}>
-        <View style={HERO_FRAME}>
-          <View style={{ flex: 1, position: 'relative' }}>
-          <GridBackdrop colors={palette.study} line={palette.studyLine} blobs={[palette.study[0], palette.study[2]]} showGrid={false}>
-            {/* Ngôi sao phát sáng bên phải — chỉ trên máy tính. */}
-            {chiikawaTheme ? (
-              <Image source={CHIIKAWA_IMG.hero} resizeMode="contain" style={{ position: 'absolute', top: 0, right: '4%', width: '26%', aspectRatio: 640 / 367 }} />
-            ) : star ? (
-              <Hero3D scene="home" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '42%' }} />
-            ) : null}
-            <View
-              style={{
-                paddingHorizontal: wide ? 40 : 22,
-                paddingVertical: wide ? 52 : 30,
-                paddingRight: star ? '40%' : wide ? 40 : 22,
-              }}
-            >
-              <Badge label="IELTS · SAT" tone="neutral" shape="tag" />
-
-              <Text
-                className="mt-4 font-heavy text-paper-ink"
-                style={{ fontSize: wide ? 44 : 28, lineHeight: wide ? 52 : 36 }}
-              >
-                {L('Luyện thi bằng đề thật,', 'Practise with real tests,')}
-              </Text>
-              {/* Dòng hai nằm trên một khối sáng hơn — mắt bắt được câu chốt trước
-                  cả khi đọc hết dòng một. Lùi trái đúng bằng padding để hai dòng
-                  vẫn thẳng mép chữ. */}
-              {/*
-                Khối nền của dòng hai lật từ `white/15` sang màu chàm đặc: trên nền
-                sáng thì một lớp trắng mờ không tạo ra ranh giới nào. Chữ trong khối ấy
-                thành trắng — đây là chỗ DUY NHẤT còn chữ trắng trong hero.
-              */}
-              <GoldHighlight fontSize={wide ? 44 : 28} lineHeight={wide ? 52 : 36}>
-                {L('sai chỗ nào biết chỗ đó', 'see exactly where you slip')}
-              </GoldHighlight>
-
-              <View className="mt-6 flex-row flex-wrap gap-2">
-                <Button
-                  label={L('Bắt đầu học', 'Start learning')}
-                  variant="brand"
-                  size="lg"
-                  iconRight="arrow-right"
-                  onPress={() => enterApp('/dashboard')}
-                />
-                <Button
-                  label={L('Xem lộ trình SAT Math', 'See the SAT Math roadmap')}
-                  variant="outline"
-                  size="lg"
-                  onPress={() => enterApp('/math')}
-                />
-              </View>
-
-              <View className="mt-7 flex-row flex-wrap gap-2">
-                <StatPill value={num(readableCount)} label={L('bài đọc', 'readings')} />
-                <StatPill value={String(CURRICULUM_TOTALS.sets)} label={L('bộ đề Math', 'Math sets')} />
-                <StatPill
-                  value={num(CURRICULUM_TOTALS.questions)}
-                  label={L('câu toán', 'math questions')}
-                />
-                <StatPill value={String(WRITING_PROMPTS.length)} label={L('đề Writing', 'Writing prompts')} />
-              </View>
-            </View>
-          </GridBackdrop>
-          </View>
-          <LightSweep />
-        </View>
-        {/* Ba con bám trên viền khung: đặt NGOÀI khung (khung có overflow hidden sẽ cắt mất). Chân nằm sát mép trên của khung. */}
-        {chiikawaTheme && wide ? (
-          <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', top: 7, right: 8, width: 330, height: 110, zIndex: 4 }}>
-            <Image
-              source={require('../assets/illustrations/cute-home/task-stickers/chiikawa-climbers.png')}
-              resizeMode="contain"
-              style={{ width: 330, height: 110 }}
-            />
-          </View>
-        ) : null}
-        {wide && !chiikawaTheme ? <PerchCat pose="sit" size={100} side="right" inset={120} offset={92} /> : null}
-        {chiikawaTheme && wide ? (
-          <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', inset: 0, zIndex: 6 }}>
-            <Image
-              source={require('../assets/illustrations/cute-home/task-stickers/chiikawa-border-climbers.png')}
-              resizeMode="contain"
-              style={{ position: 'absolute', right: 18, bottom: -24, width: 360, height: 120 }}
-            />
-          </View>
-        ) : null}
-        </View>
+        <BlueHero
+          wide={wide}
+          eyebrow="IELTS · SAT · SPEAKING"
+          chip={L('Luyện thi', 'Practise')}
+          title={L('bằng đề thật.', 'with real tests.')}
+          subtitle={L(
+            'Đề như phòng thi, chấm ngay, và từng lỗi được chỉ rõ để bạn biết mình sai ở đâu.',
+            'Exam-room tests, instant marking, and every mistake explained so you know exactly where you slipped.',
+          )}
+          primary={{ label: L('Bắt đầu học', 'Start learning'), onPress: () => enterApp('/dashboard') }}
+          secondary={{ label: L('Xem lộ trình SAT Math', 'See the SAT Math roadmap'), onPress: () => enterApp('/math') }}
+        />
       </Appear>
 
       {/* ------------------------------------- Khám phá lịch sử (ẩn tới khi có cảnh xuất bản) */}
@@ -536,10 +444,10 @@ export default function IntroScreen() {
 const softCard = (Platform.OS === 'web'
   ? {
       borderWidth: 1,
-      borderColor: '#F2EEE6',
+      borderColor: '#F3F0FB',
       boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 6px 20px rgba(15,23,42,0.05)',
     }
-  : { borderWidth: 1, borderColor: '#F2EEE6', elevation: 2 }) as never;
+  : { borderWidth: 1, borderColor: '#F3F0FB', elevation: 2 }) as never;
 
 
 /**
@@ -584,11 +492,23 @@ function StatPill({ value, label }: { value: string; label: string }) {
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   return (
     <View className="flex-row items-baseline gap-1.5 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1, borderColor: chiikawaTheme ? '#F0B6C9' : '#E9D8B5' }}>
-      <Text className="font-heavy text-body" style={{ color: chiikawaTheme ? '#C64E79' : '#A8843F' }}>{value}</Text>
+      <Text className="font-heavy text-body" style={{ color: chiikawaTheme ? '#C64E79' : '#6A4BD9' }}>{value}</Text>
       <Text className="font-sans text-label text-paper-muted">{label}</Text>
     </View>
   );
 }
+
+/** Tám bảng màu, mỗi mảng một cặp riêng để lưới không lặp: sáng → đậm. */
+const AREA_TONES: readonly (readonly [string, string])[] = [
+  ['#B9A9FF', '#6A4BD9'],
+  ['#8EC5FF', '#2F6FD6'],
+  ['#FFB4A8', '#D9503E'],
+  ['#8FE0B0', '#23875E'],
+  ['#FFB8D6', '#D9568F'],
+  ['#FFD892', '#E08A1E'],
+  ['#9AE6E8', '#1F8A96'],
+  ['#A7B4FF', '#3446C8'],
+];
 
 /** Một mảng học: thẻ khối bóng lệch, chùm sao phát sáng ở góc, viên nhãn ghim đáy là con số thật của mảng đó. */
 const CHIIKAWA_AREA_COLORS: readonly (readonly [string, string])[] = [
@@ -596,24 +516,17 @@ const CHIIKAWA_AREA_COLORS: readonly (readonly [string, string])[] = [
   ['#F8D4DE', '#C65A78'], ['#F5B8CC', '#A64462'], ['#F9C6D6', '#C65A78'],
 ];
 
-/** Tư thế mèo bám lên mép trên của từng thẻ mảng (theo thứ tự thẻ). */
-const AREA_CAT_POSE = ['sit', 'hangingPaws', 'curl', 'peeking', 'stretch', 'lie'] as const;
-
 function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaTheme: boolean; colorIndex: number }) {
   const { locale } = useL();
   const { width } = useWindowDimensions();
   const wide = width >= 768;
-  const colors = (chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : area.colors) ?? ['#4A7FE8', '#7FA3F6'];
+  const colors = (chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : AREA_TONES[colorIndex % AREA_TONES.length]) ?? ['#4A7FE8', '#7FA3F6'];
   return (
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
       <StickerCard bold colors={colors} style={{ flex: 1 }} ornament={wide ? <GlowStars /> : undefined}>
-        <View style={{ height: chiikawaTheme ? 112 : 92, position: 'relative' }}>
-          <View
-            className="h-12 w-12 items-center justify-center rounded-panel bg-white"
-            style={Platform.OS === 'web' ? ({ boxShadow: '0 2px 6px rgba(15,23,42,0.18)' } as object) : undefined}
-          >
-            <Icon name={area.icon} size={22} color={colors[1]} strokeWidth={2} />
-          </View>
+        <View style={{ height: chiikawaTheme ? 112 : wide ? 150 : 92, position: 'relative' }}>
+          {wide && !chiikawaTheme ? <AreaArt tone={colors} variant={colorIndex} /> : null}
+          <GlossOrb icon={area.icon} tone={colors} size={52} />
           {chiikawaTheme ? (
             <Image
               source={area.sticker}
@@ -622,15 +535,7 @@ function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaThe
               importantForAccessibility="no"
               style={{ position: 'absolute', top: -18, right: -12, width: 158, height: 132 }}
             />
-          ) : (
-            wide ? (
-              <View pointerEvents="none" style={{ position: 'absolute', right: -4, top: -6 }}>
-                <PixelBob amplitude={7} period={1800} delay={colorIndex * 180}>
-                  <CatSticker pose={AREA_CAT_POSE[colorIndex % AREA_CAT_POSE.length] ?? 'sit'} size={104} />
-                </PixelBob>
-              </View>
-            ) : null
-          )}
+          ) : null}
         </View>
 
         <Text className="font-heavy text-sectionTitle text-white" style={[STICKER_TITLE_SHADOW, { marginTop: chiikawaTheme ? 2 : 8 }]}>

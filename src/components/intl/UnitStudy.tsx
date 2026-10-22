@@ -39,7 +39,7 @@ export function UnitStudy({ exam, entries }: { exam: IntlExam; entries: readonly
                 setMode(t.mode);
                 setSeed(String(Date.now()));
               }}
-              style={{ borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, borderColor: active ? '#B07A3A' : '#E4DCCB', backgroundColor: active ? '#F7EDDA' : '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, borderColor: active ? '#6A4BD9' : '#E4DCCB', backgroundColor: active ? '#F3F0FB' : '#FFFFFF' }}
             >
               <Text className="font-strong text-label text-ink">{t.label}</Text>
             </Pressable>

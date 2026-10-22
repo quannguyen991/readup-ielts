@@ -54,8 +54,8 @@ export function SpacedRepetitionWidget() {
     <View
       style={{
         borderRadius: 20,
-        backgroundColor: themedHex('#B8955A'),
-        backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
+        backgroundColor: themedHex('#8B6CF0'),
+        backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #6A4BD9 100%)',
         boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
         padding: 20,
         borderWidth: 1,
@@ -169,8 +169,8 @@ export function SpacedRepetitionWidget() {
           boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
         } as never}
       >
-        <Icon name="calendar" size={18} color="#A8843F" />
-        <Text style={{ fontSize: 14, fontWeight: '700', color: '#A8843F' }}>
+        <Icon name="calendar" size={18} color="#6A4BD9" />
+        <Text style={{ fontSize: 14, fontWeight: '700', color: '#6A4BD9' }}>
           {L('Lặp lại ngắt quãng', 'Spaced repetition')}
         </Text>
       </Pressable>

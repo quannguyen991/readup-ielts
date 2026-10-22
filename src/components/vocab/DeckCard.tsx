@@ -20,7 +20,7 @@ import { fontFamily } from '@/theme/tokens';
  */
 
 const WEB = Platform.OS === 'web';
-const TEXT_STRONG = '#3A2D20';
+const TEXT_STRONG = '#2B2350';
 const TEXT_SOFT = '#6E5E4B';
 const TEXT_META = '#9A8A74';
 
@@ -38,7 +38,7 @@ export function FlagVN({ size = 14 }: { size?: number }) {
 export function DeckProgressBar({ progress, color, height = 8 }: { progress: DeckProgress; color: string; height?: number }) {
   const total = Math.max(1, progress.total);
   return (
-    <View style={{ flex: 1, height, borderRadius: height, backgroundColor: '#F3EEE4', overflow: 'hidden', flexDirection: 'row' }}>
+    <View style={{ flex: 1, height, borderRadius: height, backgroundColor: '#F3F0FB', overflow: 'hidden', flexDirection: 'row' }}>
       <View style={{ width: `${(progress.mastered / total) * 100}%`, backgroundColor: color, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
       <View style={{ width: `${(progress.learning / total) * 100}%`, backgroundColor: color, opacity: 0.32, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
     </View>
@@ -105,7 +105,7 @@ export function DeckCard({
   title,
   subtitle,
   progress,
-  accent = ['#F9F2E6', '#CDA45E'],
+  accent = ['#F3F0FB', '#CDA45E'],
   icon,
   sourceLabel,
   cover,
@@ -145,7 +145,7 @@ export function DeckCard({
           overflow: 'hidden',
           backgroundColor: '#FFFFFF',
           borderWidth: 1,
-          borderColor: '#F2EEE6',
+          borderColor: '#F3F0FB',
           ...(WEB
             ? ({
                 boxShadow: hovered ? '0 12px 28px rgba(94,72,35,0.16)' : '0 1px 2px rgba(94,72,35,0.05), 0 8px 22px rgba(94,72,35,0.07)',
@@ -208,7 +208,7 @@ export function DeckActionCard({ title, detail, icon, onPress }: { title: string
         ...(WEB ? ({ transition: 'border-color 200ms ease, background-color 200ms ease' } as object) : null),
       })}
     >
-      <View style={{ width: 44, height: 44, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}>
+      <View style={{ width: 44, height: 44, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
         <Icon name={icon} size={20} color="#CDA45E" strokeWidth={2.2} />
       </View>
       <Text style={{ marginTop: 12, textAlign: 'center', fontFamily: fontFamily.semibold, color: TEXT_STRONG, fontSize: 16 }}>{title}</Text>

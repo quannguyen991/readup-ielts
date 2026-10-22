@@ -1,39 +1,44 @@
-import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View, type PressableProps } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router, usePathname } from 'expo-router';
 
 import { BOTTOM_BAR_HEIGHT, BOTTOM_BAR_VAR, useChromeStore } from './chrome-store';
-import { CoinIcon, type CoinName } from '@/components/ui/CoinIcon';
+import { Icon, type IconName } from '@/components/ui';
 import { useL } from '@/i18n/useL';
 import { useDisplayName } from '@/store/useAuthStore';
 import { haptic } from '@/services/haptics';
 import { RetroTabBar } from '@/components/profile-retro/RetroNav';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
-import { PerchCat } from '@/components/mascot/PerchCat';
 import { useRewardStore } from '@/store/useRewardStore';
 
 const IS_WEB = Platform.OS === 'web';
 const SAFE_BOTTOM = 'env(safe-area-inset-bottom, 0px)';
 /** Khoảng cách từ thanh nổi tới mép màn hình. */
-const FLOAT_MARGIN = 14;
+const FLOAT_MARGIN = 12;
+const PURPLE = '#6A4BD9';
+const INACTIVE = '#8E86B0';
+
+type TabKey = 'home' | 'vocab' | 'speak' | 'plan' | 'you';
 
 /**
- * Bốn tab của thiết kế vàng kem. Chỉ hiện icon; tên tab (`vi`/`en`) nằm trong nhãn
- * trợ năng. Mục còn lại (SAT, Từ vựng…) nằm trong bảng Khám phá ở thanh trên.
+ * Thanh tab dưới (điện thoại): năm mục, nút giữa là Nói (luyện speaking) nổi lên khỏi thanh.
+ * Mỗi mục có icon và nhãn ngắn để người học biết đang ở đâu mà không đoán.
  */
-const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; coin: CoinName | null; vi: string; en: string }[] = [
-  { key: 'home', href: '/intro', coin: 'home', vi: 'Trang chủ', en: 'Home' },
-  { key: 'learn', href: '/vocabulary/quiz', coin: 'vocab', vi: 'Từ vựng', en: 'Vocabulary' },
-  { key: 'plan', href: '/plan', coin: 'path', vi: 'Lộ trình', en: 'Plan' },
-  { key: 'you', href: '/profile', coin: null, vi: 'Bạn', en: 'You' },
+const SIDE_TABS: { key: Exclude<TabKey, 'speak'>; href: string; icon: IconName; vi: string; en: string }[] = [
+  { key: 'home', href: '/intro', icon: 'home', vi: 'Trang chủ', en: 'Home' },
+  { key: 'vocab', href: '/vocabulary', icon: 'letters', vi: 'Từ vựng', en: 'Vocabulary' },
+  { key: 'plan', href: '/lo-trinh-hoc', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
+  { key: 'you', href: '/profile', icon: 'home', vi: 'Bạn', en: 'You' },
 ];
+const SPEAK_TAB = { href: '/speaking', vi: 'Nói', en: 'Speak' };
 
-function activeTab(pathname: string): (typeof TABS)[number]['key'] {
+function activeTab(pathname: string): TabKey {
   if (pathname === '/' || pathname === '/dashboard' || pathname === '/intro') return 'home';
-  if (pathname.startsWith('/plan')) return 'plan';
+  if (pathname.startsWith('/speaking')) return 'speak';
+  if (pathname.startsWith('/plan') || pathname.startsWith('/lo-trinh-hoc')) return 'plan';
   if (pathname.startsWith('/profile') || pathname.startsWith('/progress')) return 'you';
-  return 'learn';
+  return 'vocab';
 }
 
 /**
@@ -50,7 +55,7 @@ function bottomBarSpace(visible: boolean): string {
  * ở màn làm bài / toàn khung).
  *
  * - Cố định ở đáy và luôn hiện: không ẩn khi cuộn, không trượt theo trang.
- * - Chỉ có icon. Bàn phím ảo mở (ô nhập đang focus) thì tạm ẩn, đỡ che ô đang gõ.
+ * - Bàn phím ảo mở (ô nhập đang focus) thì tạm ẩn, đỡ che ô đang gõ.
  * - Vùng an toàn bằng `env(safe-area-inset-bottom)` (cần `viewport-fit=cover`, xem `app/+html.tsx`).
  */
 export function BottomTabs() {
@@ -61,6 +66,7 @@ export function BottomTabs() {
   const retro = useRetroOn();
   const visible = !keyboardOpen;
   const chiikawaTheme = useRewardStore((s) => s.theme === 'theme-chiikawa');
+  const accent = chiikawaTheme ? '#D65E86' : PURPLE;
 
   const active = activeTab(pathname);
 
@@ -103,7 +109,53 @@ export function BottomTabs() {
   );
 
   // Bản mẫu hồ sơ kiểu retro: đổi sang thanh tab cùng phong cách (xem profile-retro/RetroNav.tsx).
-  if (retro) return <RetroTabBar active={active} />;
+  if (retro) return <RetroTabBar active={active === 'speak' || active === 'vocab' ? 'learn' : active} />;
+
+  const go = (href: string, on: boolean) => {
+    haptic();
+    if (!on) router.navigate(href as never);
+  };
+  const prefetch = (href: string, on: boolean) => {
+    if (!on) router.prefetch(href as never);
+  };
+
+  const side = (item: (typeof SIDE_TABS)[number]) => {
+    const on = active === item.key;
+    const label = L(item.vi, item.en);
+    const color = on ? accent : INACTIVE;
+    return (
+      <TabButton
+        key={item.key}
+        accessibilityRole="tab"
+        accessibilityState={{ selected: on }}
+        accessibilityLabel={label}
+        onPressIn={() => prefetch(item.href, on)}
+        onPress={() => go(item.href, on)}
+      >
+        {item.key === 'you' ? (
+          // Mục "Bạn": chữ cái đầu tên người học, khoanh màu khi đang mở.
+          <View
+            style={{
+              width: 26,
+              height: 26,
+              borderRadius: 13,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: on ? accent : '#EEE9FF',
+            }}
+          >
+            <Text style={{ fontSize: 12, lineHeight: 15, fontWeight: '700', color: on ? '#FFFFFF' : PURPLE }}>{initial}</Text>
+          </View>
+        ) : (
+          <Icon name={item.icon} size={22} color={color} strokeWidth={on ? 2.2 : 1.9} />
+        )}
+        <Text style={{ marginTop: 3, fontSize: 10.5, lineHeight: 13, fontWeight: on ? '700' : '600', color }}>{label}</Text>
+      </TabButton>
+    );
+  };
+
+  const speakOn = active === 'speak';
+  const speakLabel = L(SPEAK_TAB.vi, SPEAK_TAB.en);
 
   return (
     <View
@@ -112,85 +164,62 @@ export function BottomTabs() {
       className="lg:hidden"
       style={
         {
-          // Khối bo tròn nổi trên nội dung: kính ngà nhẹ, bóng mỏng, không dải vàng phía sau.
           position: IS_WEB ? 'fixed' : 'absolute',
           left: FLOAT_MARGIN,
           right: FLOAT_MARGIN,
           bottom: IS_WEB ? `calc(${FLOAT_MARGIN}px + ${SAFE_BOTTOM})` : FLOAT_MARGIN,
           zIndex: 45,
-          borderRadius: 28,
+          height: BOTTOM_BAR_HEIGHT,
+          borderRadius: 30,
           // Không blur: lớp mờ nằm trên nội dung đang cuộn làm điện thoại giật; nền đặc hơn thay thế.
-          backgroundColor: chiikawaTheme ? 'rgba(255,247,250,0.97)' : 'rgba(255,252,242,0.95)',
+          backgroundColor: 'rgba(255,255,255,0.97)',
           borderWidth: 1,
-          borderColor: chiikawaTheme ? '#F3C7D5' : 'rgba(255,255,255,0.85)',
-          boxShadow: chiikawaTheme ? '0 10px 24px rgba(185,74,112,0.14), inset 0 1px 0 rgba(255,255,255,0.9)' : '0 10px 24px rgba(150,110,40,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
+          borderColor: '#F1EEFB',
+          ...(IS_WEB
+            ? { boxShadow: '0 12px 28px rgba(106,75,217,0.14), inset 0 1px 0 rgba(255,255,255,0.9)' }
+            : { shadowColor: PURPLE, shadowOpacity: 0.14, shadowRadius: 18, shadowOffset: { width: 0, height: 8 }, elevation: 8 }),
           // Chỉ trượt xuống khi bàn phím mở.
-          transform: [{ translateY: visible ? 0 : '110%' }],
-          ...(IS_WEB ? { transition: 'transform 200ms ease', willChange: 'transform' } : null),
+          transform: [{ translateY: visible ? 0 : '130%' }],
+          ...(IS_WEB ? { transition: 'transform 220ms cubic-bezier(.16,1,.3,1)', willChange: 'transform' } : null),
         } as never
       }
     >
-      {/* Sáu con mèo bám lên mép trên thanh tab, chỉ trên đoạn thẳng của mép (không vào góc bo). Bàn chân hoặc mông chạm đúng mép: lift theo từng tư thế. Chỉ là trang trí, không nhận chạm. */}
-      {/* Chủ đề Chiikawa: không có mèo bám trên thanh tab. */}
-      {chiikawaTheme ? null : (
-      <>
-      <PerchCat pose="clingHang" size={42} side="left" inset="8.6%" lift={0.4} />
-      <PerchCat pose="clingWave" size={42} side="left" inset="22.8%" lift={0.52} />
-      <PerchCat pose="clingSit" size={42} side="left" inset="37%" lift={0.78} />
-      <PerchCat pose="clingLie" size={42} side="left" inset="51.2%" lift={0.62} />
-      <PerchCat pose="clingPeek" size={42} side="left" inset="65.4%" lift={0.52} />
-      <PerchCat pose="clingClimb" size={42} side="left" inset="79.6%" lift={0.42} />
-      </>
-      )}
-      <View style={{ flexDirection: 'row', height: BOTTOM_BAR_HEIGHT, alignItems: 'center' }}>
-        {TABS.map((item) => {
-          const on = active === item.key;
-          const label = L(item.vi, item.en);
-          return (
-            <TabButton
-              key={item.key}
-              accessibilityRole="tab"
-              accessibilityState={{ selected: on }}
-              accessibilityLabel={label}
-              // Tải sẵn trang khi ngón tay chạm xuống, để lúc thả ra chuyển trang gần như tức thì.
-              onPressIn={() => {
-                if (!on) router.prefetch(item.href as never);
-              }}
-              onPress={() => {
-                haptic();
-                if (!on) router.navigate(item.href as never);
-              }}
-            >
-              <View
-                style={[
-                  { width: 60, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-                  on ? { backgroundColor: chiikawaTheme ? 'rgba(214,94,134,0.14)' : 'rgba(217,164,65,0.18)' } : null,
-                  IS_WEB ? { transition: 'background-color 200ms ease' } : null,
-                ] as never}
-              >
-                {item.coin ? (
-                  // Tab đang mở to và rõ; tab khác nhỏ và mờ đi, giữ đúng màu đồng xu.
-                  <View style={{ opacity: on ? 1 : 0.55 }}>
-                    <CoinIcon name={item.coin} size={on ? 40 : 34} />
-                  </View>
-                ) : (
-                  <View
-                    style={{
-                      width: 26,
-                      height: 26,
-                      borderRadius: 13,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: on ? 'rgba(255,255,255,0.8)' : themedHex('#F4E2B0'),
-                    }}
-                  >
-                    <Text style={{ fontSize: 13, lineHeight: 16, fontWeight: '700', color: themedHex('#8C6A1F') }}>{initial}</Text>
-                  </View>
-                )}
-              </View>
-            </TabButton>
-          );
-        })}
+      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+        {side(SIDE_TABS[0]!)}
+        {side(SIDE_TABS[1]!)}
+
+        {/* Nút giữa: Nói. Nổi lên trên mép thanh, bấm là vào phòng luyện speaking. */}
+        <Pressable
+          accessibilityRole="tab"
+          accessibilityState={{ selected: speakOn }}
+          accessibilityLabel={speakLabel}
+          onPressIn={() => prefetch(SPEAK_TAB.href, speakOn)}
+          onPress={() => go(SPEAK_TAB.href, speakOn)}
+          style={({ pressed }: { pressed: boolean }) => ({ width: 84, alignItems: 'center', justifyContent: 'flex-end', height: BOTTOM_BAR_HEIGHT, paddingBottom: 6, transform: [{ scale: pressed ? 0.94 : 1 }] })}
+        >
+          <View
+            style={{
+              marginTop: -28,
+              width: 58,
+              height: 58,
+              borderRadius: 29,
+              borderWidth: 4,
+              borderColor: '#FFFFFF',
+              overflow: 'hidden',
+              ...(IS_WEB
+                ? { boxShadow: '0 10px 22px rgba(139,108,240,0.38)' }
+                : { shadowColor: '#8B6CF0', shadowOpacity: 0.38, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 8 }),
+            }}
+          >
+            <LinearGradient colors={['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Icon name="mic" size={24} color="#FFFFFF" strokeWidth={2.2} />
+            </LinearGradient>
+          </View>
+          <Text style={{ marginTop: 3, fontSize: 10.5, lineHeight: 13, fontWeight: speakOn ? '700' : '600', color: speakOn ? accent : INACTIVE }}>{speakLabel}</Text>
+        </Pressable>
+
+        {side(SIDE_TABS[2]!)}
+        {side(SIDE_TABS[3]!)}
       </View>
     </View>
   );
@@ -213,8 +242,8 @@ function TabButton({ children, ...rest }: PressableProps & { children: React.Rea
           height: BOTTOM_BAR_HEIGHT,
           alignItems: 'center',
           justifyContent: 'center',
-          opacity: pressed ? 0.7 : 1,
-          transform: [{ scale: pressed ? 0.92 : hovered ? 1.06 : 1 }],
+          opacity: pressed ? 0.75 : 1,
+          transform: [{ scale: pressed ? 0.92 : hovered ? 1.05 : 1 }],
           ...(IS_WEB ? { transition: 'transform 160ms ease, opacity 160ms ease' } : null),
         }) as never
       }

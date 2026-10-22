@@ -57,7 +57,7 @@ const TOPIC_METADATA: Record<
     titleEn: 'Food & Cooking',
     badge: 'FOOD & DINING',
     cover: '/vocab-covers/food.svg',
-    gradient: ['#F59E0B', '#B45309'],
+    gradient: ['#F59E0B', '#6A4BD9'],
     icon: '🍔',
   },
   'Nhà cửa & Đời sống': {
@@ -138,7 +138,7 @@ const TOPIC_METADATA: Record<
     titleEn: 'Media & News',
     badge: 'MEDIA',
     cover: '/vocab-covers/media.svg',
-    gradient: ['#F97316', '#C2410C'],
+    gradient: ['#F97316', '#6A4BD9'],
     icon: '📡',
   },
   'Văn hoá & Nghệ thuật': {
@@ -156,7 +156,7 @@ const TOPIC_METADATA: Record<
     titleEn: 'Sports & Leisure',
     badge: 'SPORTS & LEISURE',
     cover: '/vocab-covers/sport.svg',
-    gradient: ['#EAB308', '#A16207'],
+    gradient: ['#6A4BD9', '#6A4BD9'],
     icon: '⚽',
   },
   'Xã hội & Pháp luật': {

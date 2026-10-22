@@ -250,7 +250,7 @@ export function WordPopover({
                     className="rounded-pill px-2.5 py-1"
                     style={{ backgroundColor: 'rgba(251,191,36,0.12)', borderWidth: 1, borderColor: 'rgba(251,191,36,0.32)' }}
                   >
-                    <Text style={{ color: '#FDEBC8', fontSize: 12, fontStyle: 'italic', fontFamily: readingFont.body }}>
+                    <Text style={{ color: '#F3F0FB', fontSize: 12, fontStyle: 'italic', fontFamily: readingFont.body }}>
                       {s}
                     </Text>
                   </Pressable>

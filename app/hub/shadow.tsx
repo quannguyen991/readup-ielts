@@ -196,7 +196,7 @@ export default function ShadowPage() {
                 <Text
                   key={`${w}-${k}`}
                   style={{
-                    color: isActive ? '#8C531B' : 'rgba(248, 250, 252, 0.85)',
+                    color: isActive ? '#6A4BD9' : 'rgba(248, 250, 252, 0.85)',
                     fontWeight: isActive ? '900' : '500',
                     backgroundColor: isActive ? 'rgba(140, 83, 27, 0.3)' : 'transparent',
                   }}
@@ -251,7 +251,7 @@ export default function ShadowPage() {
               justifyContent: 'center',
               flexDirection: 'row',
               gap: 8,
-              backgroundColor: '#8C531B',
+              backgroundColor: '#6A4BD9',
             }}
           >
             <Icon name={playing ? 'close' : 'play'} size={18} color="#090A1A" strokeWidth={2.4} />
@@ -278,7 +278,7 @@ export default function ShadowPage() {
             }}
           >
             <Icon name="mic" size={18} color="#F8FAFC" />
-            <Text style={{ color: '#2A1808', fontWeight: '700' }}>
+            <Text style={{ color: '#2B2350', fontWeight: '700' }}>
               {listen.listening ? 'Dừng và chấm' : 'Nói đuổi theo'}
             </Text>
           </Pressable>

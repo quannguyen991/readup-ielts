@@ -166,15 +166,15 @@ export function reminderEmailHtml(reminder: Reminder, locale: Locale): string {
     ? 'You get this because you turned on email reminders in Band 9 settings.'
     : 'Bạn nhận thư này vì đã bật nhắc học qua email trong Cài đặt của Band 9.';
   const off = en ? 'Turn off' : 'Tắt nhắc';
-  return `<!doctype html><html><body style="margin:0;background:#F3EDE1;font-family:Arial,Helvetica,sans-serif;color:#0F1D33">
+  return `<!doctype html><html><body style="margin:0;background:#F3F0FB;font-family:Arial,Helvetica,sans-serif;color:#0F1D33">
 <div style="max-width:520px;margin:0 auto;padding:28px 20px">
 <div style="font-weight:800;font-size:18px;letter-spacing:.5px;color:#0F1D33">Band 9</div>
 <div style="margin-top:16px;background:#FFFFFF;border-radius:16px;padding:24px;border:1px solid #E6DCC8">
 <h1 style="margin:0;font-size:22px;line-height:1.3;color:#0F1D33">${escapeHtml(reminder.title)}</h1>
 <p style="margin:12px 0 20px;font-size:16px;line-height:1.5;color:#33415C">${escapeHtml(reminder.body)}</p>
-<a href="${escapeHtml(reminder.url)}" style="display:inline-block;background:#0F1D33;color:#F3EDE1;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px">${cta}</a>
+<a href="${escapeHtml(reminder.url)}" style="display:inline-block;background:#0F1D33;color:#F3F0FB;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px">${cta}</a>
 </div>
-<p style="margin-top:16px;font-size:13px;color:#6B6455">${foot} <a href="${SITE_ORIGIN}/settings" style="color:#A8843F">${off}</a></p>
+<p style="margin-top:16px;font-size:13px;color:#6B6455">${foot} <a href="${SITE_ORIGIN}/settings" style="color:#6A4BD9">${off}</a></p>
 </div></body></html>`;
 }
 

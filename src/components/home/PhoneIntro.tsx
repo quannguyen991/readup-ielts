@@ -1,4 +1,6 @@
 import React from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
+import { CTA_GRADIENT } from '@/components/layout/LightHero';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { CatSticker } from '@/components/mascot/CatSticker';
@@ -107,9 +109,11 @@ export function PhoneIntro(p: Props) {
           <Pressable
             accessibilityRole="button"
             onPress={p.onStart}
-            style={({ pressed }) => ({ marginTop: 18, alignItems: 'center', borderRadius: 999, backgroundColor: ACCENT, paddingVertical: 14, boxShadow: '0 8px 20px rgba(242,124,155,0.35)', transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
+            style={({ pressed }) => ({ marginTop: 18, borderRadius: 999, transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
           >
-            <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 16, lineHeight: 22, color: '#FFFFFF' }}>{L('Bắt đầu học', 'Start learning')}</Text>
+            <LinearGradient colors={CTA_GRADIENT} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ alignItems: 'center', borderRadius: 999, paddingVertical: 14 }}>
+              <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 16, lineHeight: 22, color: '#FFFFFF' }}>{L('Bắt đầu học', 'Start learning')}</Text>
+            </LinearGradient>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={p.onMathRoadmap} style={{ alignItems: 'center', paddingVertical: 12 }}>
             <Text style={{ fontFamily: CUTE_FONT.bold, fontSize: 14, color: CUTE.inkSoft }}>{L('Xem lộ trình SAT Math →', 'See the SAT Math roadmap →')}</Text>

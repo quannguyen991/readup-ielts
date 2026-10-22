@@ -14,7 +14,7 @@ import { useL } from '@/i18n/useL';
  */
 const TONE: Record<Difficulty, { bg: string; border: string; ink: string }> = {
   easy: { bg: '#FFF5F8', border: '#E2C88F', ink: '#B94A70' },
-  medium: { bg: '#F3EDE1', border: themedHex('#E68AAE'), ink: '#0F1D33' },
+  medium: { bg: '#F3F0FB', border: themedHex('#E68AAE'), ink: '#0F1D33' },
   hard: { bg: '#0F1D33', border: '#0F1D33', ink: '#E2C88F' },
 };
 

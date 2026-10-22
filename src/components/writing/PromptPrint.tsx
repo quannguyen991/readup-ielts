@@ -116,7 +116,7 @@ function draw(d: SimpleChartData, tone: LessonTone): React.ReactNode {
   if (d.kind !== 'map') return null;
   const panels = d.panels.slice(0, 2);
   const pw = W / panels.length;
-  const fill: Record<string, string> = { building: tone.mid, green: '#86EFAC', water: '#7DD3FC', road: '#94A3B8', sand: '#FDE68A', plain: '#F0EBE2' };
+  const fill: Record<string, string> = { building: tone.mid, green: '#86EFAC', water: '#7DD3FC', road: '#94A3B8', sand: '#FDE68A', plain: '#F3F0FB' };
   return panels.flatMap((panel, pi) =>
     panel.items.map((it, ii) => (
       <Rect key={`${pi}-${ii}`} x={pi * pw + 3 + it.x * (pw - 6)} y={it.y * H} width={Math.max(2, it.w * (pw - 6))} height={Math.max(2, it.h * H)} rx={1.5} fill={fill[it.shape] ?? tone.mid} />

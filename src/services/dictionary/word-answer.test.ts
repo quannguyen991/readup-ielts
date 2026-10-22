@@ -12,8 +12,8 @@ test('chỉ một từ mới đi đường tra từ; câu hỏi và cụm thì k
   assert.equal(isSingleWordQuestion('a'), null);
 });
 
-test('câu trả lời từ tra cứu trong máy không có dấu markdown, có nghĩa Việt', () => {
-  const r = lookupOffline('implement');
+test('câu trả lời từ tra cứu trong máy không có dấu markdown, có nghĩa Việt', async () => {
+  const r = await lookupOffline('implement');
   assert.ok(r);
   const text = formatWordAnswer(r, false);
   assert.ok(text.includes(r.definitionVi ?? '???'));

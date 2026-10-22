@@ -119,13 +119,13 @@ function fmtDate(iso: string): string {
  */
 const P = {
   /** Mực nâu ấm: chữ chính và nền tối của phiếu (thay navy cũ, lệch với nền vàng). */
-  ink: themedHex('#3B2A10'),
+  ink: themedHex('#2B2350'),
   /** Vàng đậm: nền của mục đang chọn; chữ trắng đọc rõ trên đây. */
-  deep: themedHex('#8C6A1F'),
-  gold: '#A8843F',
-  goldDeep: '#8F6E36',
+  deep: themedHex('#6A4BD9'),
+  gold: '#6A4BD9',
+  goldDeep: '#6A4BD9',
   goldLight: '#E2C88F',
-  paper: '#FFFBF0',
+  paper: '#F3F0FB',
   line: '#EADFC6',
   muted: '#6B5C3E',
   canvas: '#F7E7B8',
@@ -273,7 +273,7 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
                   accessibilityRole="checkbox"
                   aria-checked={on}
                   onPress={() => setWeak(on ? weak.filter((x) => x !== s) : [...weak, s])}
-                  style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, borderWidth: 1, borderColor: on ? P.gold : P.line, backgroundColor: on ? '#FBF3E2' : '#FFFFFF' }}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, borderWidth: 1, borderColor: on ? P.gold : P.line, backgroundColor: on ? '#F3F0FB' : '#FFFFFF' }}
                 >
                   <CheckSquare on={on} />
                   <Text className="font-strong" style={{ fontSize: 14, color: P.ink }}>
@@ -467,7 +467,7 @@ function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit
           {fmt(goal.target)}
         </Text>
         {gap !== null ? (
-          <View style={{ marginBottom: compact ? 6 : 10, borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#FBF3E2', borderWidth: 1, borderColor: P.goldLight }}>
+          <View style={{ marginBottom: compact ? 6 : 10, borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: P.goldLight }}>
             <Text className="font-strong" style={{ fontSize: 12, color: P.goldDeep }}>
               +{unit === 'band' ? gap.toFixed(1) : gap} {unit}
             </Text>
@@ -499,14 +499,14 @@ function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit
       {/* thước */}
       <View style={{ marginTop: 18 }}>
         <View style={{ height: 26, justifyContent: 'center' }}>
-          <View style={{ height: 4, borderRadius: 2, backgroundColor: '#EFE6D2' }} />
+          <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }} />
           {nPos !== null ? (
             <View style={{ position: 'absolute', left: `${nPos}%`, width: `${tPos - nPos}%`, height: 4, borderRadius: 2, backgroundColor: P.gold }} />
           ) : null}
           {nPos !== null ? (
             <View style={{ position: 'absolute', left: `${nPos}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#FFFFFF', borderWidth: 3, borderColor: P.ink }} />
           ) : null}
-          <View style={{ position: 'absolute', left: `${tPos}%`, marginLeft: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.gold, borderWidth: 3, borderColor: '#FFFFFF', boxShadow: '0 4px 10px -3px rgba(143,110,54,0.7)' } as object} />
+          <View style={{ position: 'absolute', left: `${tPos}%`, marginLeft: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.gold, borderWidth: 3, borderColor: '#FFFFFF', boxShadow: '0 4px 10px -3px rgba(106, 75, 217,0.7)' } as object} />
         </View>
         <View style={{ flexDirection: 'row' }}>
           {scale.map((v, i) => {
@@ -698,7 +698,7 @@ function StubCell({ label, value }: { label: string; value: string }) {
 
 function DateField({ value, min, onChange, disabled }: { value: string; min: string; onChange: (iso: string) => void; disabled?: boolean }) {
   const { L } = useL();
-  const style = { height: 44, borderWidth: 1, borderColor: P.line, borderRadius: 10, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: P.ink, backgroundColor: disabled ? '#F4EFE4' : '#FFFFFF', width: '100%' as const, maxWidth: 280 };
+  const style = { height: 44, borderWidth: 1, borderColor: P.line, borderRadius: 10, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: P.ink, backgroundColor: disabled ? '#F3F0FB' : '#FFFFFF', width: '100%' as const, maxWidth: 280 };
   if (Platform.OS === 'web') {
     return React.createElement('input', {
       type: 'date',

@@ -16,17 +16,17 @@ import type { AssignmentState } from '@/services/classes/assignments';
  */
 export const P = {
   navy: '#0F1D33',
-  gold: '#A8843F',
-  goldDeep: '#8F6E36',
+  gold: '#6A4BD9',
+  goldDeep: '#6A4BD9',
   goldLight: '#E2C88F',
-  paper: '#FFFDF8',
+  paper: '#F3F0FB',
   line: '#E8DCC0',
   muted: '#6B6250',
-  canvas: '#F3EDE1',
+  canvas: '#F3F0FB',
   green: '#1F7A4D',
   greenSoft: '#E6F2EA',
-  amber: '#B4690E',
-  amberSoft: '#FBF0DC',
+  amber: '#6A4BD9',
+  amberSoft: '#F3F0FB',
   red: '#B4432F',
   redSoft: '#F8E5DF',
 };
@@ -207,7 +207,7 @@ export function StateMark({ state, compact }: { state: AssignmentState; compact?
   const look: Record<AssignmentState, { fg: string; bg: string; icon: IconName | null; vi: string; en: string }> = {
     done: { fg: P.green, bg: P.greenSoft, icon: 'check', vi: 'Xong', en: 'Done' },
     started: { fg: P.amber, bg: P.amberSoft, icon: 'clock', vi: 'Đang làm', en: 'In progress' },
-    todo: { fg: P.muted, bg: '#F1EBDD', icon: null, vi: 'Chưa làm', en: 'Not started' },
+    todo: { fg: P.muted, bg: '#F3F0FB', icon: null, vi: 'Chưa làm', en: 'Not started' },
     unknown: { fg: '#9A8F78', bg: 'transparent', icon: null, vi: '—', en: '—' },
   };
   const s = look[state];

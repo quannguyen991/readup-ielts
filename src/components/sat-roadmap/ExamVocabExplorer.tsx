@@ -47,10 +47,10 @@ export function ExamVocabExplorer() {
         borderRadius: 24,
         backgroundColor: '#FFFFFF',
         borderWidth: 1.5,
-        borderColor: '#EFE7DC',
+        borderColor: '#F3F0FB',
         padding: 22,
         gap: 16,
-        shadowColor: '#784415',
+        shadowColor: '#2B2350',
         shadowOpacity: 0.05,
         shadowRadius: 14,
         shadowOffset: { width: 0, height: 4 },
@@ -93,7 +93,7 @@ export function ExamVocabExplorer() {
             paddingHorizontal: 12,
             paddingVertical: 6,
             borderRadius: 999,
-            backgroundColor: flashcardMode ? '#B94A70' : '#FAF5EE',
+            backgroundColor: flashcardMode ? '#B94A70' : '#F3F0FB',
             borderWidth: 1,
             borderColor: flashcardMode ? '#B94A70' : '#E6DACB',
           }}
@@ -111,9 +111,9 @@ export function ExamVocabExplorer() {
           alignItems: 'center',
           gap: 10,
           borderRadius: 12,
-          backgroundColor: '#FAF8F5',
+          backgroundColor: '#F3F0FB',
           borderWidth: 1,
-          borderColor: '#EFE7DC',
+          borderColor: '#F3F0FB',
           paddingHorizontal: 12,
           height: 42,
         }}
@@ -157,9 +157,9 @@ export function ExamVocabExplorer() {
                 paddingHorizontal: 10,
                 paddingVertical: 4.5,
                 borderRadius: 8,
-                backgroundColor: on ? '#2A241A' : '#FAF5EE',
+                backgroundColor: on ? '#2B2350' : '#F3F0FB',
                 borderWidth: 1,
-                borderColor: on ? '#2A241A' : '#E6DACB',
+                borderColor: on ? '#2B2350' : '#E6DACB',
               }}
             >
               <Text style={{ fontSize: 11.5, fontWeight: on ? '800' : '600', color: on ? '#FFFFFF' : '#6B6255' }}>
@@ -181,9 +181,9 @@ export function ExamVocabExplorer() {
               onPress={() => flashcardMode && toggleReveal(item.id)}
               style={{
                 borderRadius: 16,
-                backgroundColor: '#FAF8F5',
+                backgroundColor: '#F3F0FB',
                 borderWidth: 1.5,
-                borderColor: isRevealed ? '#E8E1D6' : '#FBBF24',
+                borderColor: isRevealed ? '#F3F0FB' : '#FBBF24',
                 padding: 16,
                 gap: 10,
               }}
@@ -207,7 +207,7 @@ export function ExamVocabExplorer() {
                 {/* Source Badge */}
                 <View
                   style={{
-                    backgroundColor: '#FEF3C7',
+                    backgroundColor: '#F3F0FB',
                     paddingHorizontal: 8,
                     paddingVertical: 2.5,
                     borderRadius: 6,
@@ -215,7 +215,7 @@ export function ExamVocabExplorer() {
                     borderColor: '#FDE68A',
                   }}
                 >
-                  <Text style={{ fontSize: 10.5, fontWeight: '800', color: '#92400E' }}>
+                  <Text style={{ fontSize: 10.5, fontWeight: '800', color: '#6A4BD9' }}>
                     📍 {item.examSource}
                   </Text>
                 </View>
@@ -226,7 +226,7 @@ export function ExamVocabExplorer() {
                 <View style={{ gap: 8 }}>
                   {/* Definition */}
                   <View style={{ gap: 2 }}>
-                    <Text style={{ fontSize: 14, fontWeight: '700', color: '#854D0E', lineHeight: 20 }}>
+                    <Text style={{ fontSize: 14, fontWeight: '700', color: '#2B2350', lineHeight: 20 }}>
                       🇻🇳 {item.defVi}
                     </Text>
                     <Text style={{ fontSize: 12.5, color: '#475569', lineHeight: 18, fontStyle: 'italic' }}>
@@ -243,7 +243,7 @@ export function ExamVocabExplorer() {
                       borderLeftWidth: 3.5,
                       borderLeftColor: '#B94A70',
                       borderWidth: 1,
-                      borderColor: '#EFE7DC',
+                      borderColor: '#F3F0FB',
                       gap: 4,
                     }}
                   >
@@ -282,10 +282,10 @@ export function ExamVocabExplorer() {
               ) : (
                 /* Flashcard Hidden State */
                 <View style={{ paddingVertical: 12, alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: '#B45309' }}>
+                  <Text style={{ fontSize: 13, fontWeight: '700', color: '#6A4BD9' }}>
                     👆 {L('Nhấp để lật thẻ xem nghĩa & câu trích đề thi', 'Click to reveal definition & exam context')}
                   </Text>
-                  <Text style={{ fontSize: 11, color: '#78350F' }}>
+                  <Text style={{ fontSize: 11, color: '#2B2350' }}>
                     {L('Hãy tự đoán nghĩa trước khi bấm', 'Test your recall before flipping')}
                   </Text>
                 </View>

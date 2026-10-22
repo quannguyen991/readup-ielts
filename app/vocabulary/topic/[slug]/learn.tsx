@@ -642,7 +642,7 @@ export default function LearnScreen() {
           </Text>
         </View>
         {head!.tag ? (
-          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : "#92400E") : theme.onBg }}>
+          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : "#6A4BD9") : theme.onBg }}>
             {head!.tag === "retry" ? L("↻ Gặp lại từ vừa sai", "↻ Back after a miss") : L("↻ Gặp lại cho nhớ lâu", "↻ Repeat for long-term memory")}
           </Text>
         ) : null}

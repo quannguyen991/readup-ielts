@@ -50,9 +50,9 @@ export const MATH_DOMAIN_STYLE: Record<MathDomain, DomainStyle> = {
   },
   geometry_trig: {
     solid: '#F97316',
-    soft: '#FFF0E4',
-    ink: '#C2410C',
-    gradient: ['#FB923C', '#EA580C'],
+    soft: '#F3F0FB',
+    ink: '#6A4BD9',
+    gradient: ['#FB923C', '#6A4BD9'],
     icon: 'grid',
     short: 'Hình học',
   },
@@ -100,8 +100,8 @@ export const MATH_SET_KIND_STYLE: Record<MathSetKind, SetKindStyle> = {
   checkpoint: {
     label: 'Kiểm tra',
     solid: '#F59E0B',
-    soft: '#FEF4E6',
-    ink: '#B26A00',
+    soft: '#F3F0FB',
+    ink: '#6A4BD9',
     icon: 'target',
     purpose: 'Đúng nhịp đề thật. Qua được mới tính là nắm kỹ năng này.',
   },

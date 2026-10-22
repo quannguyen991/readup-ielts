@@ -28,12 +28,12 @@ function Text(props: TextProps & { style?: unknown }) {
   return <RNText {...props} style={[{ fontFamily: fontFor(flat.fontWeight) }, props.style as never]} />;
 }
 
-const INK = '#1F1A14';
+const INK = '#2B2350';
 const MUTED = '#6B5E50';
-const LINE = '#E6DFD2';
-const PAPER = '#F5F1EA';
-const GOLD = '#B8955A';
-const GOLD_DARK = '#8F6E36';
+const LINE = '#F3F0FB';
+const PAPER = '#F3F0FB';
+const GOLD = '#8B6CF0';
+const GOLD_DARK = '#6A4BD9';
 const NAVY = '#0F1D33';
 const SERIF = Platform.OS === 'web' ? 'Georgia, serif' : undefined;
 
@@ -323,7 +323,7 @@ export function PracticeRoom({
                   placeholder="Ghi chú cho câu này..."
                   placeholderTextColor="#A39686"
                   multiline
-                  style={{ minHeight: 40, borderRadius: 8, backgroundColor: '#FFFBEB', borderWidth: 1, borderColor: '#FCD34D', paddingHorizontal: 10, paddingVertical: 8, fontSize: 13, color: INK }}
+                  style={{ minHeight: 40, borderRadius: 8, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#FCD34D', paddingHorizontal: 10, paddingVertical: 8, fontSize: 13, color: INK }}
                 />
               ) : null}
 
@@ -358,7 +358,7 @@ export function PracticeRoom({
 
 function ToolButton({ icon, label, hint, active, onPress }: { icon: IconName; label: string; hint: string; active?: boolean; onPress?: () => void }) {
   return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label} style={{ alignItems: 'center', gap: 4, paddingVertical: 8, borderRadius: 12, backgroundColor: active ? '#FBF5EA' : 'transparent', borderWidth: 1, borderColor: active ? GOLD : 'transparent' }}>
+    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label} style={{ alignItems: 'center', gap: 4, paddingVertical: 8, borderRadius: 12, backgroundColor: active ? '#F3F0FB' : 'transparent', borderWidth: 1, borderColor: active ? GOLD : 'transparent' }}>
       <View style={{ width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center', backgroundColor: PAPER }}>
         <Icon name={icon} size={16} color={GOLD_DARK} />
       </View>

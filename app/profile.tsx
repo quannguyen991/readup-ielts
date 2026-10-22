@@ -162,7 +162,7 @@ export default function ProfileScreen() {
     <Screen cat="peace">
       {/* Đầu hồ sơ: bìa, ảnh đại diện, tên và đúng hai thông tin chính. Phần còn lại nằm trong các tab. */}
       <Appear>
-        <View style={{ borderRadius: 24, overflow: 'hidden', backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: themedHex('#F0E8D8') }}>
+        <View style={{ borderRadius: 24, overflow: 'hidden', backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: themedHex('#F3F0FB') }}>
           <ProfileEffect effect={effectLook} />
           <ProfileCover cover={coverLook} height={wide ? 170 : 124}>
             <View style={{ position: 'absolute', right: 12, top: 12 }}>
@@ -209,7 +209,7 @@ export default function ProfileScreen() {
               accessibilityRole="tab"
               aria-selected={on}
               onPress={() => setTab(t.key)}
-              style={{ height: 38, paddingHorizontal: 16, borderRadius: 999, borderWidth: 1.5, borderColor: on ? '#2B2118' : '#E7DFCF', backgroundColor: on ? '#2B2118' : '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}
+              style={{ height: 38, paddingHorizontal: 16, borderRadius: 999, borderWidth: 1.5, borderColor: on ? '#2B2350' : '#F3F0FB', backgroundColor: on ? '#2B2350' : '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}
             >
               <Text className="font-strong" style={{ fontSize: 14, color: on ? '#FFFFFF' : '#4B4036' }}>{L(t.vi, t.en)}</Text>
             </Pressable>
@@ -232,7 +232,7 @@ export default function ProfileScreen() {
               {SLOTS.map((s, i) => {
                 const item = findItem(reward[s.slot]);
                 return (
-                  <View key={s.slot} className="flex-row items-center gap-3 py-3" style={{ borderTopWidth: i === 0 ? 0 : 1, borderTopColor: '#F1EBDD' }}>
+                  <View key={s.slot} className="flex-row items-center gap-3 py-3" style={{ borderTopWidth: i === 0 ? 0 : 1, borderTopColor: '#F3F0FB' }}>
                     <SlotPreview slot={s.slot} item={item} name={name} skin={skin} />
                     <View className="min-w-0 flex-1">
                       <Text className="font-sans text-label text-muted">{L(s.title, s.titleEn)}</Text>
@@ -281,11 +281,11 @@ export default function ProfileScreen() {
                     aria-selected={on}
                     onPress={() => reward.equip(slotOf(item), on ? null : item.id)}
                     className="flex-row items-center gap-2 rounded-pill py-1.5 pl-1.5 pr-3.5"
-                    style={{ backgroundColor: on ? themedHex('#FEF3C7') : '#FFFFFF', borderWidth: 2, borderColor: on ? themedHex('#F59E0B') : themedHex('#F6F3EE') }}
+                    style={{ backgroundColor: on ? themedHex('#F3F0FB') : '#FFFFFF', borderWidth: 2, borderColor: on ? themedHex('#F59E0B') : themedHex('#F3F0FB') }}
                   >
                     <MiniPreview item={item} skin={skin} />
                     <Text className="font-semi text-label text-ink">{itemName(item, locale)}</Text>
-                    {on ? <Text style={{ fontSize: 12, color: '#B45309' }}>✓</Text> : null}
+                    {on ? <Text style={{ fontSize: 12, color: '#6A4BD9' }}>✓</Text> : null}
                   </Pressable>
                 );
               })}
@@ -299,7 +299,7 @@ export default function ProfileScreen() {
           <Card>
             <SettingRow
               thumb={
-                <View style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: themedHex('#FBEFCB'), alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: themedHex('#F3F0FB'), alignItems: 'center', justifyContent: 'center' }}>
                   <Icon name="gift" size={22} color={GOLD.deep} />
                 </View>
               }
@@ -313,7 +313,7 @@ export default function ProfileScreen() {
           <Card>
             <SettingRow
               thumb={
-                <View style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: themedHex('#FBEFCB'), alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: themedHex('#F3F0FB'), alignItems: 'center', justifyContent: 'center' }}>
                   <CuteStar size={28} />
                 </View>
               }
@@ -325,7 +325,7 @@ export default function ProfileScreen() {
                   onValueChange={setCuteEffects}
                   accessibilityLabel={L('Bật hiệu ứng cute toàn app', 'Enable cute effects across the app')}
                   trackColor={{ false: '#D9D0DC', true: themedHex('#E2B54E') }}
-                  thumbColor={cuteEffects ? themedHex('#B8862B') : '#FFFFFF'}
+                  thumbColor={cuteEffects ? themedHex('#6A4BD9') : '#FFFFFF'}
                 />
               }
             />
@@ -356,7 +356,7 @@ export default function ProfileScreen() {
           <Card>
             <SettingRow
               thumb={
-                <View style={{ width: 44, height: 44, borderRadius: 12, overflow: 'hidden', borderWidth: 2, borderColor: themedHex('#E2B54E'), backgroundColor: themedHex('#FBEFCB') }}>
+                <View style={{ width: 44, height: 44, borderRadius: 12, overflow: 'hidden', borderWidth: 2, borderColor: themedHex('#E2B54E'), backgroundColor: themedHex('#F3F0FB') }}>
                   <Image
                     source={displayedMascotImage ? { uri: displayedMascotImage } : require('../assets/illustrations/cute-home/mascot-wave.png')}
                     contentFit="cover"
@@ -415,7 +415,7 @@ export default function ProfileScreen() {
                     key={a.id}
                     accessibilityLabel={L(`${a.title}${at ? ' — đã mở' : ' — chưa mở'}`, `${achievementTitle(a, locale)}${at ? ' — unlocked' : ' — locked'}`)}
                     className="items-center justify-center rounded-panel"
-                    style={{ width: 52, height: 52, backgroundColor: at ? themedHex('#FEF3C7') : themedHex('#F9F6F1') }}
+                    style={{ width: 52, height: 52, backgroundColor: at ? themedHex('#F3F0FB') : themedHex('#F3F0FB') }}
                   >
                     {at ? (
                       <Motion kind="hover">
@@ -440,7 +440,7 @@ export default function ProfileScreen() {
 /** Một dòng cài đặt: ảnh nhỏ, tên và mô tả một dòng, nút hành động bên phải. */
 function SettingRow({ thumb, title, detail, action }: { thumb: React.ReactNode; title: string; detail?: string; action: React.ReactNode }) {
   return (
-    <View className="flex-row items-center gap-3 py-3" style={{ borderTopWidth: 1, borderTopColor: '#F1EBDD' }}>
+    <View className="flex-row items-center gap-3 py-3" style={{ borderTopWidth: 1, borderTopColor: '#F3F0FB' }}>
       {thumb}
       <View className="min-w-0 flex-1">
         <Text className="font-strong text-body text-ink">{title}</Text>
@@ -453,7 +453,7 @@ function SettingRow({ thumb, title, detail, action }: { thumb: React.ReactNode; 
 
 function Stat({ seal, tone, value, label }: { seal: IconName; tone: string; value: string; label: string }) {
   return (
-    <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: themedHex('#F6F3EE') }}>
+    <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: themedHex('#F3F0FB') }}>
       <View aria-hidden>
         <SealIcon name={seal} color={tone} size={42} />
       </View>
@@ -515,7 +515,7 @@ function SlotPreview({ slot, item, name, skin }: { slot: WearSlot; item: ShopIte
   }
   const pet = item?.mascot ? MASCOTS[item.mascot] : null;
   return (
-    <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: pet ? NIGHT : themedHex('#F9F6F1'), alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: pet ? NIGHT : themedHex('#F3F0FB'), alignItems: 'center', justifyContent: 'center' }}>
       {pet ? (
         <View style={anim('rg-bob', 1100, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
           <PixelSprite name={pet.look} color={pet.color} size={42} />
@@ -552,7 +552,7 @@ function MiniPreview({ item, skin }: { item: ShopItem; skin: ReturnType<typeof s
     );
   }
   return (
-    <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: themedHex('#FBF5EC'), alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: themedHex('#F3F0FB'), alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 16 }}>{item.glyph}</Text>
     </View>
   );

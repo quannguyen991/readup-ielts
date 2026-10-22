@@ -109,8 +109,8 @@ export function ZaloPromoBanner() {
           width: 260,
           height: 70,
           borderRadius: 35,
-          backgroundColor: chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(184, 149, 90, 0.22)',
-          backgroundImage: Platform.OS === 'web' ? `radial-gradient(closest-side, ${chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(184, 149, 90, 0.22)'}, transparent)` : undefined,
+          backgroundColor: chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(139, 108, 240, 0.22)',
+          backgroundImage: Platform.OS === 'web' ? `radial-gradient(closest-side, ${chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(139, 108, 240, 0.22)'}, transparent)` : undefined,
         }}
       />
 
@@ -151,7 +151,7 @@ export function ZaloPromoBanner() {
           className="items-center justify-center active:opacity-70"
           style={{ width: 44, height: 44 }}
         >
-          <Icon name="close" size={16} color="#F0EBE2" />
+          <Icon name="close" size={16} color="#F3F0FB" />
         </Pressable>
       </View>
       ) : (
@@ -160,7 +160,7 @@ export function ZaloPromoBanner() {
         <View className="flex-1 flex-row items-center gap-3 min-w-[280px]">
           {/* Badge Icon Hộp quà */}
           <LinearGradient
-            colors={chiikawa ? (['#E78EAA', '#BD416C'] as const) : (['#F59E0B', '#D97706'] as const)}
+            colors={chiikawa ? (['#E78EAA', '#BD416C'] as const) : (['#F59E0B', '#6A4BD9'] as const)}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={{
@@ -172,7 +172,7 @@ export function ZaloPromoBanner() {
               boxShadow: chiikawa ? '0 4px 12px rgba(214, 94, 134, 0.35)' : '0 4px 12px rgba(245, 158, 11, 0.35)',
             }}
           >
-            <Icon name="gift" size={18} color={chiikawa ? '#FFFFFF' : '#451A03'} />
+            <Icon name="gift" size={18} color={chiikawa ? '#FFFFFF' : '#2B2350'} />
           </LinearGradient>
 
           {/* Text thông điệp */}
@@ -210,7 +210,7 @@ export function ZaloPromoBanner() {
             <Icon
               name={copied ? 'check' : 'clipboard'}
               size={14}
-              color={copied ? '#4ADE80' : '#F0EBE2'}
+              color={copied ? '#4ADE80' : '#F3F0FB'}
             />
             <Text className={`text-[12px] font-semi ${copied ? 'text-green-300' : 'text-slate-200'}`}>
               {copied ? L('Đã chép số!', 'Number copied!') : L('Chép SĐT', 'Copy number')}
@@ -224,8 +224,8 @@ export function ZaloPromoBanner() {
             accessibilityLabel={L('Nhắn Zalo ngay để nhận gói Max 2 tháng', 'Message on Zalo now to get 2 months of Max')}
             className="flex-row items-center gap-1.5 rounded-lg px-3 py-1.5 shadow-md shadow-blue-500/25 transition-all hover:brightness-110 active:scale-95"
             style={{
-              backgroundColor: chiikawa ? '#C64E79' : '#9C7A3A',
-              backgroundImage: Platform.OS === 'web' ? chiikawa ? 'linear-gradient(90deg, #D65E86 0%, #B83D68 100%)' : 'linear-gradient(90deg, #8F6E36 0%, #9C7A3A 100%)' : undefined,
+              backgroundColor: chiikawa ? '#C64E79' : '#6A4BD9',
+              backgroundImage: Platform.OS === 'web' ? chiikawa ? 'linear-gradient(90deg, #D65E86 0%, #B83D68 100%)' : 'linear-gradient(90deg, #6A4BD9 0%, #6A4BD9 100%)' : undefined,
             }}
           >
             <View
@@ -238,7 +238,7 @@ export function ZaloPromoBanner() {
                 justifyContent: 'center',
               }}
             >
-              <Text style={{ fontSize: 12, fontWeight: '900', color: chiikawa ? '#B83D68' : '#8F6E36' }}>Z</Text>
+              <Text style={{ fontSize: 12, fontWeight: '900', color: chiikawa ? '#B83D68' : '#6A4BD9' }}>Z</Text>
             </View>
             <Text className="text-[12px] font-strong text-white">{L('Nhắn Zalo ngay', 'Message on Zalo')}</Text>
             <Icon name="external" size={12} color="#FFFFFF" />
@@ -251,7 +251,7 @@ export function ZaloPromoBanner() {
             accessibilityLabel={L('Đóng thông báo ưu đãi', 'Dismiss offer')}
             className="ml-1 h-7 w-7 items-center justify-center rounded-full text-slate-300 hover:bg-white/15 hover:text-white active:scale-90"
           >
-            <Icon name="close" size={15} color="#F0EBE2" />
+            <Icon name="close" size={15} color="#F3F0FB" />
           </Pressable>
         </View>
       </View>

@@ -202,10 +202,10 @@ export function ComputerDeliveredExamRoom({
   const contrastOrder = ['default', 'yellow-black', 'black-yellow'] as const;
   const theme = useMemo(() => {
     if (contrastMode === 'yellow-black') {
-      return { bg: '#000000', text: '#FFFF00', border: '#FFFF00', softLine: '#7A6A00', cardBg: '#000000', panelBg: '#111111', muted: '#FDE68A' };
+      return { bg: '#000000', text: '#FFFF00', border: '#FFFF00', softLine: '#2B2350', cardBg: '#000000', panelBg: '#111111', muted: '#FDE68A' };
     }
     if (contrastMode === 'black-yellow') {
-      return { bg: '#FFF59D', text: '#000000', border: '#000000', softLine: '#B8A24A', cardBg: '#FFFDE7', panelBg: '#FFF9C4', muted: '#4B4B00' };
+      return { bg: '#FFF59D', text: '#000000', border: '#000000', softLine: '#B8A24A', cardBg: '#F3F0FB', panelBg: '#F3F0FB', muted: '#2B2350' };
     }
     return { bg: READING_NAVY, text: EXAM_INK, border: EXAM_INK, softLine: '#D8CFBD', cardBg: '#FFFFFF', panelBg: '#FFF5F8', muted: '#6B5E50' };
   }, [contrastMode]);
@@ -247,7 +247,7 @@ export function ComputerDeliveredExamRoom({
   // If submitted, show Results Screen
   if (submitted && grade) {
     return (
-      <View style={{ flex: 1, backgroundColor: '#FAF7F2', padding: 24 }}>
+      <View style={{ flex: 1, backgroundColor: '#F3F0FB', padding: 24 }}>
         <View style={{ maxWidth: 1080, width: '100%', alignSelf: 'center', gap: 20 }}>
           {/* Top Bar with Exit */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: '#E6DACB', paddingBottom: 16 }}>
@@ -255,7 +255,7 @@ export function ComputerDeliveredExamRoom({
               <View style={{ backgroundColor: '#E11D48', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 6 }}>
                 <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 16 }}>IELTS</Text>
               </View>
-              <Text style={{ fontSize: 18, fontWeight: '900', color: '#2A1808' }}>
+              <Text style={{ fontSize: 18, fontWeight: '900', color: '#2B2350' }}>
                 BẢNG KẾT QUẢ THI THỬ MÁY TÍNH (COMPUTER-DELIVERED)
               </Text>
             </View>
@@ -265,7 +265,7 @@ export function ComputerDeliveredExamRoom({
                 paddingHorizontal: 16,
                 paddingVertical: 8,
                 borderRadius: 10,
-                backgroundColor: '#8C531B',
+                backgroundColor: '#6A4BD9',
               }}
             >
               <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 13 }}>← Quay lại kho đề</Text>
@@ -310,7 +310,7 @@ export function ComputerDeliveredExamRoom({
           {/* Detailed Question Review List */}
           <ScrollView style={{ maxHeight: 650 }}>
             <View style={{ gap: 10 }}>
-              <Text style={{ fontSize: 16, fontWeight: '800', color: '#2A1808' }}>
+              <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
                 Đối chiếu chi tiết 40 câu hỏi & Giải thích:
               </Text>
               {grade.results.map((r) => (
@@ -599,8 +599,8 @@ export function ComputerDeliveredExamRoom({
                   </Pressable>
                 ))}
                 {isFlagged ? (
-                  <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: '#FEF3C7' }}>
-                    <Text style={{ fontSize: 10, fontWeight: '800', color: '#B45309' }}>FLAGGED</Text>
+                  <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: '#F3F0FB' }}>
+                    <Text style={{ fontSize: 10, fontWeight: '800', color: '#6A4BD9' }}>FLAGGED</Text>
                   </View>
                 ) : null}
               </View>
@@ -633,7 +633,7 @@ export function ComputerDeliveredExamRoom({
                   style={{
                     minHeight: 40,
                     borderRadius: 6,
-                    backgroundColor: contrastMode === 'yellow-black' ? '#000000' : '#FFFBEB',
+                    backgroundColor: contrastMode === 'yellow-black' ? '#000000' : '#F3F0FB',
                     borderWidth: 1,
                     borderColor: '#FCD34D',
                     paddingHorizontal: 10,

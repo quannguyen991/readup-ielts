@@ -40,9 +40,9 @@ const C = {
   blue: '#4A7FE8',
   brass: '#D9A441',
   amber: '#FFC24A',
-  paper: '#F8F1E2',
-  paperInk: '#2B2118',
-  wood: '#7A4E2E',
+  paper: '#F3F0FB',
+  paperInk: '#2B2350',
+  wood: '#6A4BD9',
   ok: '#2E9A5E',
   bad: '#C8402F',
 };
@@ -65,7 +65,7 @@ const CSS = `
 .tv-h{font-family:${MONO};font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:${C.muted};margin:0 0 10px;font-weight:600}
 
 /* khung trời */
-.tv-window{position:relative;border-radius:34px;padding:12px;background:linear-gradient(180deg,#F3EBDD,#D9CDB8);box-shadow:0 18px 40px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.7), inset 0 -3px 0 rgba(0,0,0,.12)}
+.tv-window{position:relative;border-radius:34px;padding:12px;background:linear-gradient(180deg,#F3F0FB,#D9CDB8);box-shadow:0 18px 40px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.7), inset 0 -3px 0 rgba(0,0,0,.12)}
 .tv-glass{position:relative;border-radius:22px;overflow:hidden;background:#000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.35)}
 .tv-glass canvas{display:block;width:100%;height:auto;aspect-ratio:384/176}
 .tv-glass::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 22%,transparent 23%,transparent 58%,rgba(255,255,255,.07) 59%,transparent 70%);mix-blend-mode:screen}
@@ -84,7 +84,7 @@ const CSS = `
 .tv-ticket::before,.tv-ticket::after{content:'';position:absolute;right:122px;width:20px;height:20px;border-radius:50%;background:${C.wall}}
 .tv-ticket::before{top:-10px}.tv-ticket::after{bottom:-10px}
 .tv-stub{border-left:2px dashed rgba(43,33,24,.25);padding:16px 14px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;justify-content:center}
-.tv-opt{appearance:none;text-align:left;font:inherit;font-size:16px;color:${C.paperInk};background:#FFFDF7;border:1.5px solid rgba(43,33,24,.18);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;transition:border-color .15s,transform .12s,box-shadow .15s}
+.tv-opt{appearance:none;text-align:left;font:inherit;font-size:16px;color:${C.paperInk};background:#F3F0FB;border:1.5px solid rgba(43,33,24,.18);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;transition:border-color .15s,transform .12s,box-shadow .15s}
 .tv-opt:hover:not([disabled]){border-color:${C.blue};transform:translateY(-1px);box-shadow:0 4px 0 rgba(74,127,232,.25)}
 .tv-opt.right{border-color:${C.ok};background:#E9F7EE}
 .tv-opt.wrong{border-color:${C.bad};background:#FCEBE8}
@@ -106,7 +106,7 @@ const CSS = `
 .tv-dot.here i{width:22px;height:22px;box-shadow:0 0 0 5px rgba(255,194,74,.25)}
 
 /* hộ chiếu */
-.tv-pass{background:linear-gradient(180deg,#F4ECDC,#EADFC8);color:${C.paperInk};border-radius:18px;padding:18px;box-shadow:inset 0 0 0 6px rgba(120,90,50,.08)}
+.tv-pass{background:linear-gradient(180deg,#F3F0FB,#F3F0FB);color:${C.paperInk};border-radius:18px;padding:18px;box-shadow:inset 0 0 0 6px rgba(120,90,50,.08)}
 .tv-st{width:100%;aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:${MONO};font-size:12px;line-height:1.2;padding:6px}
 .tv-icon{appearance:none;border:1px solid ${C.line};background:rgba(255,255,255,.05);color:${C.ink};border-radius:12px;height:42px;cursor:pointer;font:inherit;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s}
 .tv-icon.on{background:${C.blue};border-color:${C.blue}}
@@ -754,12 +754,12 @@ function Radio({ playing, track, onToggle, onSkip, onTrack }: { playing: boolean
   const { L, en } = useL();
   const st = useRailStore();
   return (
-    <div className="tv-card" style={{ background: 'linear-gradient(180deg,#5A3A24,#3E2716)', borderColor: '#6E4A30' }}>
+    <div className="tv-card" style={{ background: 'linear-gradient(180deg,#2B2350,#2B2350)', borderColor: '#6E4A30' }}>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-        <div aria-hidden style={{ width: 54, height: 54, flex: 'none', borderRadius: 12, background: 'radial-gradient(circle,#2A1A10 1.6px,transparent 1.8px) 0 0/7px 7px, #4A3020', boxShadow: 'inset 0 0 0 2px #2A1A10' }} />
+        <div aria-hidden style={{ width: 54, height: 54, flex: 'none', borderRadius: 12, background: 'radial-gradient(circle,#2B2350 1.6px,transparent 1.8px) 0 0/7px 7px, #2B2350', boxShadow: 'inset 0 0 0 2px #2B2350' }} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <h2 className="tv-h" style={{ color: '#E8C9A0', margin: 0 }}>{L('📻 Radio chuyến bay', '📻 Flight radio')}</h2>
-          <div style={{ marginTop: 6, background: '#1A120A', borderRadius: 8, padding: '6px 10px', fontFamily: MONO, fontSize: 14, color: C.amber, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <div style={{ marginTop: 6, background: '#2B2350', borderRadius: 8, padding: '6px 10px', fontFamily: MONO, fontSize: 14, color: C.amber, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {playing ? '♪ ' : ''}
             {TRACKS[track] ? trackName(TRACKS[track].name, en) : null}
           </div>
@@ -769,7 +769,7 @@ function Radio({ playing, track, onToggle, onSkip, onTrack }: { playing: boolean
         <button className="tv-icon" style={{ flex: 1 }} aria-label={L('Bài trước', 'Previous track')} onClick={() => onSkip(-1)}>
           ⏮
         </button>
-        <button className="tv-icon" style={{ flex: 2, background: playing ? C.brass : undefined, borderColor: playing ? C.brass : undefined, color: playing ? '#2A1A10' : undefined }} aria-label={playing ? L('Tắt nhạc', 'Stop music') : L('Bật nhạc', 'Play music')} onClick={onToggle}>
+        <button className="tv-icon" style={{ flex: 2, background: playing ? C.brass : undefined, borderColor: playing ? C.brass : undefined, color: playing ? '#2B2350' : undefined }} aria-label={playing ? L('Tắt nhạc', 'Stop music') : L('Bật nhạc', 'Play music')} onClick={onToggle}>
           {playing ? L('Ⅱ Tắt', 'Ⅱ Stop') : L('▶ Bật nhạc', '▶ Play music')}
         </button>
         <button className="tv-icon" style={{ flex: 1 }} aria-label={L('Bài sau', 'Next track')} onClick={() => onSkip(1)}>
@@ -785,7 +785,7 @@ function Radio({ playing, track, onToggle, onSkip, onTrack }: { playing: boolean
       </select>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginTop: 6 }} role="radiogroup" aria-label={L('Phong cách', 'Style')}>
         {(Object.keys(STYLE_LABEL) as MusicStyle[]).map((k) => (
-          <button key={k} role="radio" aria-checked={st.style === k} className="tv-icon" style={st.style === k ? { background: C.brass, borderColor: C.brass, color: '#2A1A10' } : undefined} onClick={() => st.set({ style: k })}>
+          <button key={k} role="radio" aria-checked={st.style === k} className="tv-icon" style={st.style === k ? { background: C.brass, borderColor: C.brass, color: '#2B2350' } : undefined} onClick={() => st.set({ style: k })}>
             {en ? STYLE_LABEL_EN[k] : STYLE_LABEL[k]}
           </button>
         ))}

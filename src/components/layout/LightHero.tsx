@@ -16,6 +16,7 @@ import Animated, {
 
 import { GridBackdrop } from './GridBackdrop';
 import { CUTE_PALETTES } from './cute-palettes';
+import { HeroBackdrop } from '@/components/home/HeroBackdrop';
 import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
 import { useRewardStore } from '@/store/useRewardStore';
 import { Badge } from '@/components/ui/Badge';
@@ -26,19 +27,17 @@ import { useRetroStyle } from '@/components/profile-retro/retro-scope';
 import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { RCREAM, RINK } from '@/components/profile-retro/retro-art';
 import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
-import { PerchCat } from '@/components/mascot/PerchCat';
+
+/** Màu khung và nền của hero theo phong cách trang chủ (viền gradient, nền đêm có hoạ tiết). */
+const INK = '#0B0520';
+const HERO_RING = ['#FF5FA2', '#FFD84A', '#3A8CFF', '#8A3FE0'] as unknown as [string, string, ...string[]];
+const MODERN_SUB = 'rgba(27,17,64,0.85)';
 
 /**
- * Hero nền lưới sáng — kiểu đang dùng ở trang chủ, nay dùng chung.
+ * Hero dùng chung cho mọi trang. Giao diện mặc định dùng đúng phong cách của trang chủ: nền hoạ tiết
+ * (HeroBackdrop), viền gradient, chữ trắng. Giao diện retro và pixel giữ khung riêng của họ.
  *
- * Trước đây trang Tổng quan có hero riêng: một khối gradient xanh đặc, chữ
- * trắng, kèm hình minh hoạ 3D. Đặt cạnh trang chủ thì thành hai thế giới khác
- * nhau trong cùng một app — người dùng bấm "Bắt đầu học" ở trang chủ là rơi
- * thẳng vào một trang trông như của app khác.
- *
- * DÒNG THỨ HAI NẰM TRÊN KHỐI CHÀM. Đây là chỗ duy nhất còn chữ trắng: mắt bắt
- * được câu chốt trước cả khi đọc hết dòng một. Khối lùi trái đúng bằng đệm
- * ngang để hai dòng vẫn thẳng mép chữ.
+ * DÒNG THỨ HAI NẰM TRÊN NỀN HERO. Khối lùi trái đúng bằng đệm ngang để hai dòng vẫn thẳng mép chữ.
  */
 export function LightHero({
   badge,
@@ -50,11 +49,21 @@ export function LightHero({
   scene,
   art: artScene,
   cat,
+  chip,
+  accent = 'vivid',
+  noCat = false,
+  noArt = false,
 }: {
   badge: string;
   line1: string;
-  /** Dòng chốt, in trắng trên khối chàm. Bỏ trống thì hero chỉ có một dòng. */
+  /** Dòng chốt, in trên nền hero. Bỏ trống thì hero chỉ có một dòng. */
   line2?: string;
+  /** Màu dải nhấn dòng chốt: gradient tím–san hô–cam (mặc định, cùng bảng màu toàn web) hoặc vàng kim cũ. */
+  accent?: 'gold' | 'vivid';
+  /** Không đặt mèo bám trên hero (trang IELTS bỏ sư tử trang trí). */
+  noCat?: boolean;
+  /** Không vẽ hình minh hoạ bên phải (trang luyện tập). */
+  noArt?: boolean;
   /** Đoạn mô tả dưới tiêu đề. Bỏ trống thì không hiện. */
   subtitle?: string;
   /** Hàng nút. */
@@ -67,6 +76,8 @@ export function LightHero({
   art?: ArtScene;
   /** Mèo sticker ngồi ở góc trên phải; chỉ hiện trên điện thoại, máy tính giữ nguyên minh hoạ. */
   cat?: CatPose;
+  /** Từ đầu tiêu đề đặt trong khối cầu vồng (kiểu tiêu đề AI Arena); line1 là phần còn lại. */
+  chip?: string;
 }) {
   const width = useWindowDimensions().width;
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
@@ -78,25 +89,107 @@ export function LightHero({
   const retro = useRetroStyle();
   // Giao diện pixel: khối hero là thẻ lilac có viền mực và bóng lệch đặc.
   const pixel = px !== null;
+  // Giao diện mặc định (và Chiikawa không dùng): hero theo phong cách trang chủ.
+  const modern = !retro && !pixel && !chiikawaTheme;
   // Điện thoại: khối hero gọn như đầu một màn của app, không phải một trang quảng cáo.
   const phone = width < 640;
   const size = wide ? 44 : phone ? 24 : 28;
   const line = wide ? 52 : phone ? 30 : 36;
   // Cụm minh hoạ chỉ hiện khi màn đủ rộng; máy tính bảng dựng đứng / điện
   // thoại bỏ hẳn để tiêu đề không bị ép xuống dòng (người dùng 01/10/2026).
-  const art = width >= HEADER_ART_MIN;
-  // Mèo mặc định: mọi hero đều có mèo, trừ theme Chiikawa và giao diện retro (đã có nhân vật riêng).
-  const petCat: CatPose | undefined = cat ?? (chiikawaTheme || retro ? undefined : heroCatFor(badge));
-  // Máy tính, hero không truyền `cat`: mèo bám lên mép trên khung, nên cần đệm để không bị che.
-  const perchTop = wide && !cat && !!petCat;
+  // Trang luyện tập không cần hình minh hoạ: noArt tắt hẳn hình bên phải để chữ có chỗ.
+  const art = !noArt && width >= HEADER_ART_MIN;
+  // Không còn mèo mặc định trên hero: chỉ hiện mèo khi trang truyền `cat` rõ ràng.
+  const petCat: CatPose | undefined = noCat ? undefined : cat;
+
+  // Nội dung hero, dùng chung cho cả hai giao diện nền.
+  const content = (
+    <>
+      {phone && petCat ? <CatSticker pose={petCat} size={84} style={{ position: 'absolute', top: 14, right: 14 }} /> : null}
+      {art ? (
+        <View style={{ position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' }}>
+          {/* Trang có mèo sticker thì đặt mèo vào chỗ minh hoạ, giống bản điện thoại. */}
+          {cat ? <CatSticker pose={cat} size={150} /> : <HeroArt scene={artScene ?? scene} size={150} />}
+        </View>
+      ) : null}
+      <View
+        style={{
+          paddingHorizontal: wide ? 40 : phone ? 18 : 22,
+          paddingVertical: wide ? 52 : phone ? 18 : 30,
+          // Chừa chỗ bên phải cho ngôi sao, để chữ không chạy đè lên nó.
+          paddingRight: art ? 440 : wide ? 40 : phone ? (petCat ? 104 : 18) : 22,
+        }}
+      >
+        <Badge label={badge} tone="neutral" shape="tag" />
+
+        {chip ? (
+          <View className="mt-4 flex-row flex-wrap items-center" style={{ gap: size * 0.3 }}>
+            <LinearGradient
+              colors={CHIP_RAINBOW}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={{ borderRadius: line * 0.3, paddingHorizontal: size * 0.4, paddingVertical: size * 0.08, transform: [{ skewX: '-8deg' }] }}
+            >
+              <Text style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: size, lineHeight: line, color: '#FFFFFF' }}>{chip}</Text>
+            </LinearGradient>
+            <Text style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: size, lineHeight: line, color: retro ? RINK : modern ? '#1B1140' : '#2B2350' }}>{line1}</Text>
+          </View>
+        ) : (
+          <Text className="mt-4 font-heavy text-paper-ink" style={{ fontSize: size, lineHeight: line, color: retro ? RINK : modern ? '#1B1140' : undefined }}>
+            {line1}
+          </Text>
+        )}
+
+        {line2 ? (
+          <GoldHighlight fontSize={size} lineHeight={line} tone={accent}>
+            {line2}
+          </GoldHighlight>
+        ) : null}
+
+        {subtitle ? (
+          <Text
+            className={phone ? 'mt-2 font-sans text-paper-body' : 'mt-4 font-sans text-bodyLg text-paper-body'}
+            style={phone ? { fontSize: 14, lineHeight: 20, maxWidth: 620, color: modern ? MODERN_SUB : undefined } : { maxWidth: 620, color: modern ? MODERN_SUB : undefined }}
+          >
+            {subtitle}
+          </Text>
+        ) : null}
+
+        {children ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-2' : 'mt-6 flex-row flex-wrap gap-2'}>{children}</View> : null}
+        {footer ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-1.5' : 'mt-7 flex-row flex-wrap gap-2'}>{footer}</View> : null}
+      </View>
+    </>
+  );
 
   /*
     Bọc thêm một HÀNG NGANG quanh nền: `GridBackdrop` lấy cả khung bằng
     `flex-1`, mà `flex-1` trong một cột cao-theo-nội-dung thì co về 0. Trong
     hàng ngang, flex-1 ăn theo bề ngang còn chiều cao do nội dung quyết định.
   */
-  return (
-    <View style={{ position: 'relative', paddingTop: perchTop ? 66 : 0 }}>
+  const body = modern ? (
+    <View>
+      <HeroBackdrop />
+      {content}
+    </View>
+  ) : (
+    <GridBackdrop
+      colors={retro ? ([RCREAM, RCREAM] as never) : pixel ? ([px?.paper, px?.paper] as never) : palette.study}
+      line={retro ? RINK : px ? px.line : palette.studyLine}
+      blobs={retro ? ([RCREAM, RCREAM] as never) : pixel ? ([px?.paper, px?.paper] as never) : [palette.study[0], palette.study[2]]}
+      showGrid={false}
+    >
+      {content}
+    </GridBackdrop>
+  );
+
+  const shell = modern ? (
+    <LinearGradient colors={HERO_RING} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 26, padding: 2 }}>
+      <View style={{ borderRadius: 24, overflow: 'hidden', backgroundColor: INK }}>
+        {body}
+        <LightSweep />
+      </View>
+    </LinearGradient>
+  ) : (
     <View
       style={
         retro
@@ -124,68 +217,16 @@ export function LightHero({
             : HERO_FRAME
       }
     >
-      {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
-          đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
-      <GridBackdrop
-        colors={retro ? ([RCREAM, RCREAM] as never) : pixel ? ([px?.paper, px?.paper] as never) : palette.study}
-        line={retro ? RINK : px ? px.line : palette.studyLine}
-        blobs={retro ? ([RCREAM, RCREAM] as never) : pixel ? ([px?.paper, px?.paper] as never) : [palette.study[0], palette.study[2]]}
-        showGrid={false}
-      >
-        {phone && petCat ? <CatSticker pose={petCat} size={84} style={{ position: 'absolute', top: 14, right: 14 }} /> : null}
-        {art ? (
-          <View style={{ position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' }}>
-            {/* Trang có mèo sticker thì đặt mèo vào chỗ minh hoạ, giống bản điện thoại. */}
-            {cat ? <CatSticker pose={cat} size={150} /> : <HeroArt scene={artScene ?? scene} size={150} />}
-          </View>
-        ) : null}
-        <View
-          style={{
-            paddingHorizontal: wide ? 40 : phone ? 18 : 22,
-            paddingVertical: wide ? 52 : phone ? 18 : 30,
-            // Chừa chỗ bên phải cho ngôi sao, để chữ không chạy đè lên nó.
-            paddingRight: art ? 440 : wide ? 40 : phone ? (petCat ? 104 : 18) : 22,
-          }}
-        >
-          <Badge label={badge} tone="neutral" shape="tag" />
-
-          <Text className="mt-4 font-heavy text-paper-ink" style={{ fontSize: size, lineHeight: line, color: retro ? RINK : undefined }}>
-            {line1}
-          </Text>
-
-          {line2 ? (
-            <GoldHighlight fontSize={size} lineHeight={line}>
-              {line2}
-            </GoldHighlight>
-          ) : null}
-
-          {subtitle ? (
-            <Text
-              className={phone ? 'mt-2 font-sans text-paper-body' : 'mt-4 font-sans text-bodyLg text-paper-body'}
-              style={phone ? { fontSize: 14, lineHeight: 20, maxWidth: 620 } : { maxWidth: 620 }}
-            >
-              {subtitle}
-            </Text>
-          ) : null}
-
-          {children ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-2' : 'mt-6 flex-row flex-wrap gap-2'}>{children}</View> : null}
-          {footer ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-1.5' : 'mt-7 flex-row flex-wrap gap-2'}>{footer}</View> : null}
-        </View>
-      </GridBackdrop>
+      {body}
       <LightSweep />
     </View>
-    {perchTop ? <PerchCat pose={petCat as CatPose} size={70} side="right" inset={70} offset={66} /> : null}
+  );
+
+  return (
+    <View style={{ position: 'relative' }}>
+      {shell}
     </View>
   );
-}
-
-/** Mèo mặc định của hero: cùng một trang luôn có cùng một con (chọn theo nhãn khối). */
-const HERO_CATS: CatPose[] = ['read', 'headphones', 'think', 'write', 'cheer', 'wave', 'sunglasses', 'peace'];
-
-function heroCatFor(badge: string): CatPose {
-  let h = 0;
-  for (let i = 0; i < badge.length; i += 1) h = (h * 31 + badge.charCodeAt(i)) >>> 0;
-  return HERO_CATS[h % HERO_CATS.length] ?? 'read';
 }
 
 /**
@@ -203,6 +244,12 @@ export const HERO_FRAME = {
     ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 16px 40px rgba(94, 72, 35,0.14)' } as object)
     : { elevation: 3 }),
 } as const;
+
+/** Gradient của nút chính: dải cầu vồng, cùng dải với khối "Luyện thi". */
+export const CTA_GRADIENT = ['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0'] as unknown as [string, string, ...string[]];
+
+/** Dải cầu vồng của khối tiêu đề (kiểu AI Arena). */
+const CHIP_RAINBOW = ['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0'] as unknown as [string, string, ...string[]];
 
 /** Bề ngang dải sáng. */
 const BAND = 260;

@@ -2,7 +2,7 @@ import { MATH_LESSONS } from '@/data/lessons/math-lessons';
 import { VERBAL_LESSONS } from '@/data/lessons/verbal-lessons';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { DICTATION_SETS } from '@/data/dictation-sets';
-import { VOCAB_TOPICS } from '@/data/vocab-topics';
+import { TOPIC_INDEX } from '@/data/vocab-index';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { SAT_RW_MIXED_SETS } from '@/services/sat-rw/mixed-sets';
 import { PATH_STEPS } from '@/services/writing/translation-path';
@@ -239,7 +239,7 @@ function contentFor(skill: Skill, phase: Phase, n: number, ieltsVocab: boolean):
     }
     case 'vocab': {
       if (ieltsVocab) {
-        const t = pick(VOCAB_TOPICS);
+        const t = pick(TOPIC_INDEX);
         return { title: `Từ vựng IELTS · ${t.nameVi}`, detail: 'Học xen kẽ: lật thẻ, trắc nghiệm, điền từ', href: `/vocabulary/topic/${t.slug}/learn` };
       }
       const l = pick(SAT_VOCAB_LESSONS);

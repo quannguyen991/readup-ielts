@@ -42,7 +42,7 @@ export const CITIES: Record<CityId, CityMeta> = {
     level: 1,
     band: '5–6',
     tagline: { vi: 'Sân bay Nội Bài, nơi xuất phát', en: 'Noi Bai Airport, where it starts' },
-    tint: '#B8955A',
+    tint: '#8B6CF0',
     mapAt: { x: 45, y: 13 },
     poiCount: 2,
   },

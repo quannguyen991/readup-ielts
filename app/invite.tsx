@@ -140,7 +140,7 @@ export default function InviteScreen() {
           <View className="min-w-0 flex-1">
           <View aria-hidden className="mb-2 self-start">
             <Motion kind="pop">
-              <Label text={L('Rủ bạn, nhận quà 🎁', 'Invite friends, get rewards 🎁')} color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
+              <Label text={L('Rủ bạn, nhận quà 🎁', 'Invite friends, get rewards 🎁')} color="#F2B632" ink="#2B2350" tilt={-4} size={12} />
             </Motion>
           </View>
           <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
@@ -277,7 +277,7 @@ export default function InviteScreen() {
             </View>
             <Text className="font-strong text-cardTitle text-ink">{L('Mã mời của bạn', 'Your invite code')}</Text>
             <View aria-hidden>
-              <Label text={L('Của riêng bạn ✨', 'All yours ✨')} color="#B07A3A" ink="#FFFFFF" tilt={4} size={11} />
+              <Label text={L('Của riêng bạn ✨', 'All yours ✨')} color="#6A4BD9" ink="#FFFFFF" tilt={4} size={11} />
             </View>
           </View>
           <View className="mt-2 flex-row flex-wrap items-center gap-2">

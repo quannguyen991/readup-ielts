@@ -163,7 +163,7 @@ function TagBadge({ tag }: { tag: TutorItem['tag'] }) {
     );
   }
   return (
-    <View className="rounded-full bg-[#7C2D12] px-2 py-0.5">
+    <View className="rounded-full bg-[#2B2350] px-2 py-0.5">
       <Text className="font-heavy text-[10px] text-[#FB923C] uppercase tracking-wide">HOT</Text>
     </View>
   );

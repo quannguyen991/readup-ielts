@@ -1,0 +1,143 @@
+{
+  "n": 4,
+  "title": "Talk on urban beekeeping",
+  "context": "A lecturer gives an informal talk to members of a local community group about the growth of beekeeping in cities, the rules involved and the practical challenges.",
+  "transcript": [
+    {
+      "speaker": "Lecturer",
+      "text": "Good morning, everyone, and thank you for coming. Today's talk is about urban beekeeping, which has grown quickly over the past decade. I'll cover three things: why cities have become attractive for bees, what you need to do before you start, and the practical problems that beekeepers face, especially in the summer months."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Let's start with a point that surprises many people. Cities can actually offer bees more flowers than the countryside does. Modern farmland is often covered by a single crop for much of the year, so bees have very little to feed on. Parks, gardens and balconies, by contrast, usually contain a wide range of flowering plants, and those flowers keep blooming over a longer season. That is why most of the new hives in our city are in urban areas."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Where do you put the hive? This is one of the first questions beginners ask. Most of the hives in our city are placed on rooftops, because they are out of the way of people and pets. A rooftop also gives the bees a clear flight path. If you don't have a roof, a secure corner of a large garden can work, as long as the entrance faces away from the path."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Now, the legal side. Before you bring a single colony home, you must register it with the national bee register. The registration is free and takes about ten minutes online, but it is compulsory. The register helps the authorities track disease, and it also means that your neighbours can contact you quickly if a swarm escapes. Many beginners forget this step, so please don't be one of them."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Let's talk about the bees themselves. A healthy colony in the middle of summer can contain up to sixty thousand bees, and that number can change very quickly. Most of the work is done by the workers, who are all female. They make the honey, look after the young and guard the entrance. The queen's only job is to lay eggs, so she's not really in charge of anything in the way people imagine."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Foraging is where the real journey happens. Individual bees can travel up to three kilometres from the hive in search of nectar and pollen. That's a long way for an insect that weighs less than a paperclip. In a city, this means that a hive on one side of the river can use gardens on the other side, which is one reason urban honey often has such a complex flavour."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "The position of the hive also matters for the bees' health. Hives should face south-east, so they catch the morning sun. That warms the colony early, so the bees can leave the hive sooner, and it also helps to dry out the wet conditions that encourage mould. Keep the hive away from strong winds, and make sure there is a shallow tray of water nearby, because bees need water to cool the hive in hot weather."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Inspection is the next topic. In the active season, you should check each hive every seven days. A thorough inspection takes time, but it's the only way to spot problems early, such as a queen who has stopped laying or a colony that is preparing to swarm. Keep a notebook, because it's easy to forget what you saw two weeks ago, and the notes will also help you spot patterns."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Now, the biggest threat. Many beginners expect the weather or the lack of flowers to be the main danger, but in reality it is a parasite called varroa. This mite feeds on the bees and spreads viruses from one colony to another. If you don't treat it, the colony will usually die within a couple of years. The treatments are straightforward, but you must follow the timing carefully, and you must test regularly to see whether the mite count is rising."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Finally, the reward. A good hive in a productive year can produce around twenty kilograms of honey, although the amount varies enormously from one season to the next. Most urban beekeepers don't sell their honey, they share it with neighbours or give it away. Some groups also run small projects with schools, which is a lovely way to introduce children to the natural world."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "If you'd like to learn more, we run beginners' workshops for new members. They take place at the community centre on Saturday mornings, and they include a hands-on session with a real hive. You don't need any experience, and you don't need to buy any equipment until you've decided that beekeeping is right for you. Please sign up at the front desk after the talk, and bring a notebook. Thank you for listening, and I'll take questions now."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 31-40",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Urban beekeeping: notes",
+        "Most hives in the city are placed on {{31}}.",
+        "Every hive must be registered with the {{32}}.",
+        "A summer colony can contain up to {{33}} bees.",
+        "Foraging bees can travel up to {{34}} kilometres.",
+        "Cities can offer bees more {{35}} than farmland does.",
+        "Hive entrances should face {{36}}.",
+        "Check each hive every {{37}} days during the active season.",
+        "The biggest threat to the colony is {{38}}.",
+        "A good hive can produce about {{39}} kilograms of honey.",
+        "Beginners' workshops take place at the {{40}}."
+      ],
+      "questions": [
+        {
+          "n": 31,
+          "answer": "rooftops",
+          "accept": [
+            "roofs",
+            "rooftop"
+          ]
+        },
+        {
+          "n": 32,
+          "answer": "national bee register"
+        },
+        {
+          "n": 33,
+          "answer": "60,000",
+          "accept": [
+            "60000",
+            "sixty thousand"
+          ]
+        },
+        {
+          "n": 34,
+          "answer": "3",
+          "accept": [
+            "three"
+          ]
+        },
+        {
+          "n": 35,
+          "answer": "flowers",
+          "accept": [
+            "flowering plants"
+          ]
+        },
+        {
+          "n": 36,
+          "answer": "south-east",
+          "accept": [
+            "southeast",
+            "south east"
+          ]
+        },
+        {
+          "n": 37,
+          "answer": "7",
+          "accept": [
+            "seven"
+          ]
+        },
+        {
+          "n": 38,
+          "answer": "varroa",
+          "accept": [
+            "varroa mite",
+            "varroa mites",
+            "mites"
+          ]
+        },
+        {
+          "n": 39,
+          "answer": "20",
+          "accept": [
+            "twenty"
+          ]
+        },
+        {
+          "n": 40,
+          "answer": "community centre"
+        }
+      ]
+    }
+  ]
+}

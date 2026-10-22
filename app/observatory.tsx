@@ -233,7 +233,7 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <CardTitle icon="gauge" tone="#A8843F">
+          <CardTitle icon="gauge" tone="#6A4BD9">
             {byModel.length > 1 ? 'By model' : 'Model measured'}
           </CardTitle>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>
@@ -274,7 +274,7 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <CardTitle icon="list" tone="#B07A3A">
+          <CardTitle icon="list" tone="#6A4BD9">
             By question type
           </CardTitle>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>

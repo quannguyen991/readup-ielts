@@ -133,12 +133,12 @@ export default function DestinationReviewScreen() {
           {(['b1', 'b2', 'c1c2'] as const).map((value) => {
             const active = course === value;
             return (
-              <Pressable key={value} accessibilityRole="button" onPress={() => { setCourse(value); setAnswers({}); }} style={{ paddingVertical: 11, paddingHorizontal: 18, borderRadius: 14, backgroundColor: active ? color.primary : '#fff', borderWidth: 1, borderColor: active ? color.primary : '#E8DFD4' }}>
+              <Pressable key={value} accessibilityRole="button" onPress={() => { setCourse(value); setAnswers({}); }} style={{ paddingVertical: 11, paddingHorizontal: 18, borderRadius: 14, backgroundColor: active ? color.primary : '#fff', borderWidth: 1, borderColor: active ? color.primary : '#F3F0FB' }}>
                 <Text style={{ color: active ? '#fff' : color.ink, fontWeight: '700' }}>{COURSE_LABEL[value]} · Destination</Text>
               </Pressable>
             );
           })}
-          <Pressable accessibilityRole="button" onPress={() => { setAnswers({}); setVersion((x) => x + 1); }} style={{ paddingVertical: 11, paddingHorizontal: 18, borderRadius: 14, backgroundColor: '#fff', borderWidth: 1, borderColor: '#E8DFD4' }}>
+          <Pressable accessibilityRole="button" onPress={() => { setAnswers({}); setVersion((x) => x + 1); }} style={{ paddingVertical: 11, paddingHorizontal: 18, borderRadius: 14, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
             <Text style={{ color: color.ink, fontWeight: '700' }}>{L('Tạo đề mới', 'New set')}</Text>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={printSheet} style={{ paddingVertical: 11, paddingHorizontal: 18, borderRadius: 14, backgroundColor: color.ink, borderWidth: 1, borderColor: color.ink }}>
@@ -151,21 +151,21 @@ export default function DestinationReviewScreen() {
       </View>
 
       <ScrollView nativeID="destination-review-sheet" className="mt-4" contentContainerStyle={{ gap: 10, paddingBottom: 36 }}>
-        <View style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#E8DFD4' }}>
+        <View style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
           <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>Destination {COURSE_LABEL[course]} · Vocabulary review</Text>
           <Text style={{ marginTop: 4, color: '#64748B' }}>{L('Tên: ____________________     Ngày: ______________', 'Name: ____________________     Date: ______________')}</Text>
         </View>
         {questions.map((question, index) => {
           const selected = answers[index];
           return (
-            <View key={`${version}-${course}-${index}`} className="destination-question" style={{ padding: 15, borderRadius: 16, backgroundColor: '#fff', borderWidth: 1, borderColor: '#E8DFD4' }}>
+            <View key={`${version}-${course}-${index}`} className="destination-question" style={{ padding: 15, borderRadius: 16, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
               <Text style={{ fontWeight: '800', color: color.ink }}>{index + 1}. {L('Chọn nghĩa phù hợp nhất với', 'Choose the best meaning for')} “{question.word.word}”</Text>
               <View style={{ marginTop: 8, gap: 6 }}>
                 {question.choices.map((choice, optionIndex) => {
                   const isSelected = selected === choice;
                   const isCorrect = selected && choice === question.answer;
                   return (
-                    <Pressable key={`${optionIndex}-${choice}`} accessibilityRole="button" onPress={() => setAnswers((prev) => ({ ...prev, [index]: choice }))} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start', padding: 8, borderRadius: 9, backgroundColor: isCorrect ? '#EAF7EE' : isSelected ? '#FFF3E8' : '#FAF8F4' }}>
+                    <Pressable key={`${optionIndex}-${choice}`} accessibilityRole="button" onPress={() => setAnswers((prev) => ({ ...prev, [index]: choice }))} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start', padding: 8, borderRadius: 9, backgroundColor: isCorrect ? '#EAF7EE' : isSelected ? '#F3F0FB' : '#F3F0FB' }}>
                       <Text style={{ minWidth: 20, fontWeight: '700', color: color.primary }}>{LETTERS[optionIndex]}.</Text>
                       <Text style={{ flex: 1, color: color.ink }}>{choice}</Text>
                     </Pressable>
@@ -175,7 +175,7 @@ export default function DestinationReviewScreen() {
             </View>
           );
         })}
-        <View className="destination-answer-key" style={{ padding: 18, borderRadius: 16, backgroundColor: '#fff', borderWidth: 1, borderColor: '#E8DFD4' }}>
+        <View className="destination-answer-key" style={{ padding: 18, borderRadius: 16, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
           <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>{L('Đáp án', 'Answer key')}</Text>
           <Text style={{ marginTop: 8, lineHeight: 24, color: color.ink }}>
             {questions.map((q, index) => `${index + 1}. ${LETTERS[q.choices.indexOf(q.answer)]}`).join('    ')}
@@ -184,7 +184,7 @@ export default function DestinationReviewScreen() {
         <View className="destination-no-print" style={{ padding: 18, gap: 14 }}>
           <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>{L('Luyện từ trong bài đọc', 'Practise vocabulary in readings')}</Text>
           {readings.map((reading) => (
-            <View key={reading.title} style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#E8DFD4' }}>
+            <View key={reading.title} style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
               <Text style={{ fontSize: 16, fontWeight: '800', color: color.ink }}>{reading.title}</Text>
               <Text style={{ marginTop: 8, lineHeight: 24, color: color.ink }}>{highlightReading(reading.text, readingTerms)}</Text>
               <Text style={{ marginTop: 10, fontWeight: '700', color: color.primary }}>{L('Đọc hiểu', 'Reading check')}</Text>

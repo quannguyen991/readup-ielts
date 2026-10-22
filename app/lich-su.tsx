@@ -71,12 +71,12 @@ export default function HistoryLogScreen() {
               style={{
                 minHeight: 44,
                 justifyContent: 'center',
-                backgroundColor: on ? themedHex('#FFF4CF') : '#FFFFFF',
+                backgroundColor: on ? themedHex('#F1ECFF') : '#FFFFFF',
                 borderWidth: 1,
-                borderColor: on ? themedHex('#EBC26A') : '#E5E7EB',
+                borderColor: on ? themedHex('#8B6CF0') : '#E5E7EB',
               }}
             >
-              <Text className={on ? 'font-strong text-label' : 'font-mid text-label text-muted'} style={on ? { color: themedHex('#8C6A1F') } : undefined}>
+              <Text className={on ? 'font-strong text-label' : 'font-mid text-label text-muted'} style={on ? { color: themedHex('#6A4BD9') } : undefined}>
                 {label}
               </Text>
             </Pressable>

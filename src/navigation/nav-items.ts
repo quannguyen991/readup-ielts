@@ -75,7 +75,6 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'gauge',
         inBottomTabs: true,
         children: [
-          { key: 'plan', label: 'Lộ trình của tôi', href: '/plan', icon: 'calendar' },
           { key: 'learning-path', label: 'Lộ trình học', href: '/lo-trinh-hoc', icon: 'compass' },
           { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
           { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },

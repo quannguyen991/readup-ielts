@@ -98,7 +98,7 @@ export default function MathReviewScreen() {
     acc >= 0.8
       ? { text: L('Xuất sắc 🏆', 'Excellent 🏆'), bg: '#22A06B' }
       : acc >= 0.6
-        ? { text: L('Khá lắm ⭐', 'Nice work ⭐'), bg: '#A8843F' }
+        ? { text: L('Khá lắm ⭐', 'Nice work ⭐'), bg: '#6A4BD9' }
         : { text: L('Ôn tiếp nhé 💪', 'Keep practising 💪'), bg: '#F0703F' };
 
   return (
@@ -163,7 +163,7 @@ export default function MathReviewScreen() {
             </Motion>
             <Label
               text={session.moduleTier === 'harder' ? L('Nhánh khó 🚀', 'Harder route 🚀') : L('Nhánh dễ 🎯', 'Easier route 🎯')}
-              color={session.moduleTier === 'harder' ? '#F0703F' : '#B07A3A'}
+              color={session.moduleTier === 'harder' ? '#F0703F' : '#6A4BD9'}
               ink="#FFFFFF"
               tilt={4}
               size={12}
@@ -194,7 +194,7 @@ export default function MathReviewScreen() {
         <Card className="mt-4">
           <View className="flex-row items-center gap-2.5">
             <View aria-hidden>
-              <SealIcon name="search" color="#B07A3A" size={36} />
+              <SealIcon name="search" color="#6A4BD9" size={36} />
             </View>
             <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Đọc kết quả', 'What this means')}</Text>
           </View>

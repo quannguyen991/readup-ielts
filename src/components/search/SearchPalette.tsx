@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
 import { isExamRoute } from '@/navigation/focus-routes';
-import { getCatalog, getEntry, entrySubtitle, entryTitle, levelLabel } from '@/services/search/catalog';
+import { entrySubtitle, entryTitle, levelLabel } from '@/services/search/labels';
 import { groupHits, isSearchable, searchEntries } from '@/services/search/match';
 import { shortlistIds } from '@/services/search/ai';
 import { KIND_LABEL, type SearchEntry, type SearchKind } from '@/services/search/types';
@@ -32,13 +32,13 @@ const C = {
   navy: '#0F1D33',
   navySoft: 'rgba(15,29,51,0.68)',
   navyMuted: 'rgba(15,29,51,0.5)',
-  gold: themedHex('#B8955A'),
-  goldDeep: '#8F6E36',
-  goldMid: '#A8843F',
+  gold: themedHex('#8B6CF0'),
+  goldDeep: '#6A4BD9',
+  goldMid: '#6A4BD9',
   goldLight: '#E2C88F',
-  hair: 'rgba(184,149,90,0.38)',
-  paper: '#FDFBF3',
-  active: '#F5ECD8',
+  hair: 'rgba(139, 108, 240,0.38)',
+  paper: '#F3F0FB',
+  active: '#F3F0FB',
   scrim: 'rgba(15,29,51,0.42)',
 } as const;
 
@@ -136,7 +136,38 @@ export function SearchPalette() {
   );
 }
 
+/** Chỉ mục tìm nạp ở lần mở đầu (kéo theo các bộ từ vựng); các lần sau dùng lại bản đã có. */
+let loadedCatalog: SearchEntry[] | null = null;
+
+function useSearchCatalog(): SearchEntry[] | null {
+  const [catalog, setCatalog] = useState<SearchEntry[] | null>(loadedCatalog);
+  useEffect(() => {
+    if (catalog) return;
+    let live = true;
+    void import('@/services/search/catalog').then((m) => {
+      loadedCatalog = m.getCatalog();
+      if (live) setCatalog(loadedCatalog);
+    });
+    return () => {
+      live = false;
+    };
+  }, [catalog]);
+  return catalog;
+}
+
 function PaletteBody({ onClose }: { onClose: () => void }) {
+  const catalog = useSearchCatalog();
+  if (!catalog) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(15,29,51,0.42)' }}>
+        <ActivityIndicator color="#FFFFFF" />
+      </View>
+    );
+  }
+  return <PaletteInner catalog={catalog} onClose={onClose} />;
+}
+
+function PaletteInner({ catalog, onClose }: { catalog: SearchEntry[]; onClose: () => void }) {
   const { L, locale } = useL();
   const { width } = useWindowDimensions();
   const sheet = width < 640;
@@ -167,7 +198,7 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
     return () => window.removeEventListener('mousemove', onMove);
   }, []);
 
-  const catalog = useMemo(() => getCatalog(), []);
+  const byId = useMemo(() => new Map(catalog.map((e) => [e.id, e] as const)), [catalog]);
   const trimmed = deferred.trim();
   const searching = isSearchable(trimmed);
 
@@ -177,8 +208,8 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
   );
   const groups = useMemo(() => groupHits(hits, 5), [hits]);
   const popular = useMemo(
-    () => POPULAR_IDS.map((id) => getEntry(id)).filter((e): e is SearchEntry => !!e),
-    [],
+    () => POPULAR_IDS.map((id) => byId.get(id)).filter((e): e is SearchEntry => !!e),
+    [byId],
   );
 
   // AI chỉ đúng với câu đã hỏi; gõ tiếp thì kết quả AI cũ thôi hiện.
@@ -261,7 +292,7 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
         return;
       }
       const picks = (body.picks ?? [])
-        .map((p) => ({ entry: getEntry(p.id), reason: p.reason ?? '' }))
+        .map((p) => ({ entry: byId.get(p.id), reason: p.reason ?? '' }))
         .filter((p): p is { entry: SearchEntry; reason: string } => !!p.entry);
       if (body.fallback || picks.length === 0) {
         setAi({
@@ -280,7 +311,7 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
         note: L('Mất kết nối tới AI. Đây là kết quả tìm thường.', 'Lost connection to the AI. Showing regular results.'),
       });
     }
-  }, [query, catalog, token, L]);
+  }, [query, catalog, byId, token, L]);
 
   const activate = useCallback(
     (row: NavRow | undefined) => {
@@ -652,7 +683,7 @@ function KindGlyph({ name, tone = 'plain' }: { name: IconName; tone?: 'plain' | 
         justifyContent: 'center',
         borderWidth: 1,
         borderColor: tone === 'ai' ? C.gold : C.hair,
-        backgroundColor: tone === 'ai' ? C.navy : '#FFFDF7',
+        backgroundColor: tone === 'ai' ? C.navy : '#F3F0FB',
         flexShrink: 0,
       }}
     >
@@ -810,7 +841,7 @@ function AiBlock({
         borderWidth: 1,
         borderColor: C.goldLight,
         borderRadius: 12,
-        backgroundColor: '#FFFDF6',
+        backgroundColor: '#F3F0FB',
       }}
     >
       {children}
@@ -895,7 +926,7 @@ function AiBlock({
 
 function Kbd({ label }: { label: string }) {
   return (
-    <View style={{ borderWidth: 1, borderColor: C.hair, borderRadius: 5, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#FFFDF7' }}>
+    <View style={{ borderWidth: 1, borderColor: C.hair, borderRadius: 5, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#F3F0FB' }}>
       <Text className="font-semi" style={{ fontSize: 11.5, color: C.navyMuted }}>
         {label}
       </Text>

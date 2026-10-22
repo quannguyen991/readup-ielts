@@ -12,44 +12,43 @@ import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { isWeb, SANS_5, SERIF_I } from './gallery';
 
 /** Bộ vàng kim của giao diện mặc định (PhoneBackdrop) và bản đậm hơn cho đoạn chốt. */
-export const GOLD_SKY = ['#FFFCF3', '#FAF0D6', '#F5E4B6', '#EED59C', '#F7EBCB'] as const;
-export const GOLD_SKY_DEEP = ['#FBEFCB', '#F2DCA2', '#E9C878', '#F2DCA2', '#FBEFCB'] as const;
+export const GOLD_SKY = ['#FBFAFF', '#F1ECFF', '#E8F6F1', '#FDEEF4', '#F5F2FF'] as const;
+export const GOLD_SKY_DEEP = ['#EFE9FF', '#E0D6FF', '#D5EEF9', '#FBDDEA', '#ECE6FF'] as const;
 export const GOLD_SKY_LOC = [0, 0.3, 0.6, 0.85, 1] as const;
 /** Chữ trên nền vàng: mực nâu vàng cho tiêu đề, nâu cho đoạn văn, đồng đậm cho từ nhấn. */
-export const INK_G = themedHex('#3B2A10');
-export const BODY_G = themedHex('#6E5626');
-export const MUTED_G = themedHex('#9C8552');
-export const DEEP_G = themedHex('#8C6A1F');
+export const INK_G = themedHex('#2B2350');
+export const BODY_G = themedHex('#4A4470');
+export const MUTED_G = themedHex('#7A72A0');
+export const DEEP_G = themedHex('#6A4BD9');
 
 /** CSS chỉ cho web, nối vào thẻ <style> của trang. Mọi animation nằm trong khối giảm chuyển động bên dưới. */
 export const FX_CSS = `
 @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@property --ang2{syntax:'<angle>';inherits:false;initial-value:0deg}
 @property --mx{syntax:'<percentage>';inherits:false;initial-value:50%}
 @property --my{syntax:'<percentage>';inherits:false;initial-value:50%}
 .b9-glass,.b9-lift{--rx:0deg;--ry:0deg;--lift:0px;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--lift));transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .6s,border-color .6s}
 .b9-glass{position:relative;isolation:isolate;--mx:50%;--my:50%;
-background:linear-gradient(160deg,rgba(255,252,242,.9),rgba(255,250,236,.72) 50%,rgba(240,220,160,.42));
+background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(250,248,255,.74) 50%,rgba(236,228,255,.5));
 border:1px solid rgba(255,255,255,.9);
-box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 16px 36px -18px rgba(150,110,40,.34)}
-.b9-glass::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,255,255,0) 34%,rgba(255,255,255,0) 66%,rgba(184,149,90,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 18px 40px -20px rgba(106,75,217,.38),0 0 30px -12px rgba(240,100,79,.22)}
+.b9-glass::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;pointer-events:none;background:conic-gradient(from var(--ang),rgba(255,255,255,0) 0deg,rgba(255,255,255,0) 190deg,rgba(255,255,255,.95) 300deg,rgba(255,255,255,0) 360deg),conic-gradient(from var(--ang2),#8B6CF0 0deg,#5B8DEF 70deg,#F0644F 140deg,#E8708A 200deg,#FFA66B 250deg,#8B6CF0 320deg,#8B6CF0 360deg);background-blend-mode:screen;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:b9led 4s linear infinite,b9flow 16s linear infinite}
 .b9-glass::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(255,255,255,.7),rgba(255,255,255,0) 62%)}
 .b9-blur{-webkit-backdrop-filter:blur(14px) saturate(125%);backdrop-filter:blur(14px) saturate(125%)}
 .b9-glass:hover::after{opacity:1}
 .b9-glass:hover{border-color:rgba(255,255,255,1)}
 .b9-lens{-webkit-backdrop-filter:url(#b9-lens) blur(10px) saturate(135%);backdrop-filter:url(#b9-lens) blur(10px) saturate(135%)}
-@media (hover:hover) and (pointer:fine){
-.b9-glass:hover::before{background:conic-gradient(from var(--ang),#D6B774,#FFF8E0,#B8955A,#F4DA94,#8C6A1F,#D6B774);animation:b9spin 9s linear infinite}
-}
-@keyframes b9spin{to{--ang:360deg}}
-.b9-lift:hover{--lift:-4px;box-shadow:0 34px 70px -28px rgba(150,110,40,.42)}
-.b9-cta-solid{background-color:#EBC26A;background-image:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.08) 48%,rgba(255,255,255,0) 54%,rgba(120,70,10,.08) 100%),linear-gradient(115deg,#FFF8E0 0%,#F4DA94 30%,#E6BA66 60%,#F7E4B0 82%,#EDC57C 100%);box-shadow:0 10px 26px rgba(170,120,40,.32),inset 0 1px 0 rgba(255,255,255,.85)}
+@keyframes b9led{to{--ang:360deg}}
+@keyframes b9flow{to{--ang2:360deg}}
+.b9-lift:hover{--lift:-4px;box-shadow:0 34px 70px -28px rgba(106,75,217,.4)}
+.b9-cta-solid{background-color:#F5C518;background-image:linear-gradient(180deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.05) 48%,rgba(255,255,255,0) 54%,rgba(40,20,90,.1) 100%),linear-gradient(100deg,#3F8AE0 0%,#3DBE6B 30%,#F5C518 55%,#F28C28 75%,#E85A9B 100%);box-shadow:0 12px 28px rgba(63,138,224,.3),inset 0 1px 0 rgba(255,255,255,.55)}
 .b9-cta-solid:hover{filter:brightness(1.05)}
 .b9-sheen{position:relative;overflow:hidden}
 .b9-sheen::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-60%;width:45%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.7),rgba(255,255,255,0));transform:skewX(-18deg);pointer-events:none}
 .b9-sheen:hover::after{animation:b9sheen .9s cubic-bezier(.4,0,.2,1)}
 @keyframes b9sheen{to{left:130%}}
-.b9-gold{background:linear-gradient(100deg,#6E4F14 0%,#967334 26%,#B8955A 44%,#8C6A1F 62%,#6E4F14 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:b9gold 8s linear infinite}
-.b9-rule{border-radius:2px;width:56px;background:linear-gradient(90deg,#B8955A,#F4DA94,#D6B774,#B8955A)}
+.b9-gold{display:inline-block!important;margin-top:.14em;line-height:1.06;background-image:linear-gradient(100deg,#3F8AE0 0%,#3DBE6B 18%,#F5C518 34%,#F28C28 50%,#E0413A 66%,#E85A9B 82%,#3F8AE0 100%);background-size:240% 100%;color:#FFFFFF!important;padding:.02em .2em .04em;border-radius:.22em;animation:b9gold 9s linear infinite}
+.b9-rule{border-radius:2px;width:56px;background:linear-gradient(90deg,#3F8AE0,#3DBE6B,#F5C518,#E0413A,#E85A9B)}
 @keyframes b9gold{from{background-position:100% 0}to{background-position:-100% 0}}
 .b9-rise{animation:b9rise 1s cubic-bezier(.16,1,.3,1) both}
 .b9-d1{animation-delay:.08s}.b9-d2{animation-delay:.2s}.b9-d3{animation-delay:.34s}
@@ -59,25 +58,23 @@ box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 16px 36px -18px rgba(150,110,40
 }
 @keyframes b9reveal{from{opacity:0;translate:0 56px}to{opacity:1;translate:0 0}}
 .b9-aurora{position:absolute;inset:-12%;z-index:0;pointer-events:none;will-change:transform;animation:b9aurora 22s ease-in-out infinite alternate}
-.b9-aurora-hero{background:radial-gradient(38% 34% at 16% 26%,rgba(200,144,50,.2),rgba(200,144,50,0) 70%),radial-gradient(34% 30% at 84% 18%,rgba(255,248,224,.85),rgba(255,248,224,0) 70%),radial-gradient(42% 38% at 72% 94%,rgba(184,149,90,.24),rgba(184,149,90,0) 70%)}
-.b9-aurora-close{background:radial-gradient(40% 36% at 12% 72%,rgba(200,144,50,.18),rgba(200,144,50,0) 70%),radial-gradient(40% 36% at 88% 36%,rgba(255,248,224,.8),rgba(255,248,224,0) 70%)}
+.b9-aurora-hero{background:radial-gradient(38% 34% at 16% 26%,rgba(139,108,240,.26),rgba(139,108,240,0) 70%),radial-gradient(34% 30% at 84% 18%,rgba(91,141,239,.2),rgba(91,141,239,0) 70%),radial-gradient(42% 38% at 72% 94%,rgba(240,100,79,.16),rgba(240,100,79,0) 70%)}
+.b9-aurora-close{background:radial-gradient(40% 36% at 12% 72%,rgba(139,108,240,.22),rgba(139,108,240,0) 70%),radial-gradient(40% 36% at 88% 36%,rgba(232,112,138,.16),rgba(232,112,138,0) 70%)}
 @keyframes b9aurora{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,-3%,0) scale(1.08)}}
-.b9-rays{position:absolute;left:-40%;top:-40%;width:180%;height:180%;z-index:0;pointer-events:none;background:repeating-conic-gradient(from 0deg,rgba(184,149,90,.07) 0deg 4deg,rgba(184,149,90,0) 4deg 16deg);-webkit-mask:radial-gradient(closest-side,#000 8%,transparent 72%);mask:radial-gradient(closest-side,#000 8%,transparent 72%);will-change:transform;animation:b9rays 80s linear infinite}
-@keyframes b9rays{to{transform:rotate(360deg)}}
 .b9-room{contain:paint}
 .b9-motes{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;pointer-events:none}
-.b9-mote{position:absolute;width:3px;height:3px;border-radius:50%;background:#B8955A;box-shadow:0 0 10px 3px rgba(227,190,106,.5);opacity:0;animation:b9mote 9s ease-in-out infinite}
+.b9-mote{position:absolute;width:3px;height:3px;border-radius:50%;background:#8B6CF0;box-shadow:0 0 10px 3px rgba(139,108,240,.5);opacity:0;animation:b9mote 9s ease-in-out infinite}
 @keyframes b9mote{0%,100%{opacity:0;transform:translate3d(0,0,0)}40%{opacity:.8}70%{opacity:.45;transform:translate3d(10px,-42px,0)}}
-.b9-spark{position:absolute;width:16px;height:16px;pointer-events:none;opacity:0;background:radial-gradient(circle,#B8955A 0 10%,rgba(184,149,90,0) 11%),linear-gradient(#B8955A,#B8955A) center/1.5px 100% no-repeat,linear-gradient(#B8955A,#B8955A) center/100% 1.5px no-repeat;animation:b9twinkle 3.6s ease-in-out infinite}
+.b9-spark{position:absolute;width:16px;height:16px;pointer-events:none;opacity:0;background:radial-gradient(circle,#8B6CF0 0 10%,rgba(139, 108, 240,0) 11%),linear-gradient(#8B6CF0,#8B6CF0) center/1.5px 100% no-repeat,linear-gradient(#8B6CF0,#8B6CF0) center/100% 1.5px no-repeat;animation:b9twinkle 3.6s ease-in-out infinite}
 @keyframes b9twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 @media (prefers-reduced-motion: reduce){
-.b9-gold,.b9-rise,.b9-reveal,.b9-aurora,.b9-rays,.b9-mote,.b9-spark,.b9-glass::before,.b9-sheen:hover::after{animation:none!important}
-.b9-mote,.b9-spark,.b9-rays{display:none}
+.b9-gold,.b9-rise,.b9-reveal,.b9-aurora,.b9-mote,.b9-spark,.b9-glass::before,.b9-sheen:hover::after{animation:none!important}
+.b9-mote,.b9-spark{display:none}
 .b9-glass,.b9-lift{transition:none!important}
 .b9-lift:hover{--lift:0px}
 }
 @media (prefers-reduced-transparency: reduce){
-.b9-glass,.b9-lens,.b9-blur{background:#FFFCF3!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.b9-glass,.b9-lens,.b9-blur{background:#FBFAFF!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
 `;
 
@@ -138,7 +135,7 @@ function useTilt(ref: React.RefObject<View | null>) {
   }, [ref]);
 }
 
-const NATIVE_GLASS: ViewStyle = { backgroundColor: 'rgba(255,252,242,0.6)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.9)' };
+const NATIVE_GLASS: ViewStyle = { backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.9)' };
 
 /** Tấm kính ngà: trên web là lớp CSS; trên native là nền ngà mờ tĩnh. `lens` chỉ bật khi trình duyệt hỗ trợ. */
 export function GlassPanel({
@@ -169,7 +166,6 @@ export function Aurora({ variant }: { variant: 'hero' | 'close' }) {
   return (
     <>
       <View className={`b9-aurora b9-aurora-${variant}`} />
-      {variant === 'hero' ? <View className="b9-rays" /> : null}
     </>
   );
 }

@@ -14,18 +14,18 @@ import type { NodeStatus } from '@/services/learning-path/progress';
  * hoàn thành/học tiếp rõ ràng; giữ phần chọn kỳ thi và kế hoạch gọn, dễ quét.
  */
 export const P = {
-  navy: '#0F1D33',
-  navySoft: '#24344F',
-  gold: '#A8843F',
-  goldMid: themedHex('#B8955A'),
-  goldDeep: '#8F6E36',
-  goldLight: '#E2C88F',
-  goldWash: '#FBF3E2',
-  paper: '#FFFDF8',
-  line: '#E8DCC0',
-  muted: '#6B6250',
-  faint: '#B7AC95',
-  canvas: '#F3EDE1',
+  navy: '#2B2350',
+  navySoft: '#4A4470',
+  gold: '#6A4BD9',
+  goldMid: themedHex('#8B6CF0'),
+  goldDeep: '#6A4BD9',
+  goldLight: '#D9CCFF',
+  goldWash: '#F3F0FB',
+  paper: '#F3F0FB',
+  line: '#E6E1F3',
+  muted: '#6B6590',
+  faint: '#A59CC4',
+  canvas: '#F3F0FB',
 };
 
 export const KIND_ICON: Record<PathTargetKind, IconName> = {
@@ -162,7 +162,7 @@ export function ProgressLine({ done, total, dark }: { done: number; total: numbe
       aria-valuemin={0}
       aria-valuemax={total}
       aria-valuenow={done}
-      style={{ height: 6, borderRadius: 3, backgroundColor: dark ? 'rgba(255,255,255,0.12)' : '#EFE6D2', overflow: 'hidden' }}
+      style={{ height: 6, borderRadius: 3, backgroundColor: dark ? 'rgba(255,255,255,0.12)' : '#F3F0FB', overflow: 'hidden' }}
     >
       <View style={{ width: `${pct}%`, height: 6, borderRadius: 3, backgroundColor: dark ? P.goldLight : P.gold }} />
     </View>
@@ -462,7 +462,7 @@ function NodeCard({
         onPress={onPress}
         style={{ width: '100%', alignItems: 'center', paddingHorizontal: 8, paddingVertical: 4 }}
       >
-        <View style={{ width: narrow ? 58 : 66, height: narrow ? 58 : 66, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: badge, borderWidth: dark ? 3 : 2, borderColor: border, boxShadow: dark ? '0 5px 14px rgba(143,110,54,0.22)' : '0 2px 8px rgba(15,29,51,0.09)' } as object}>
+        <View style={{ width: narrow ? 58 : 66, height: narrow ? 58 : 66, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: badge, borderWidth: dark ? 3 : 2, borderColor: border, boxShadow: dark ? '0 5px 14px rgba(106, 75, 217,0.22)' : '0 2px 8px rgba(15,29,51,0.09)' } as object}>
           <SealIcon name={done ? 'check' : KIND_ICON[node.target.kind]} color={seal} size={32} />
           {dark ? (
             <View style={{ position: 'absolute', right: -5, bottom: -3, width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: P.navy, borderWidth: 2, borderColor: '#FFFFFF' }}>

@@ -97,7 +97,7 @@ export default function LeaderboardScreen() {
   return (
     <Screen cat="cheer">
       {demo ? (
-        <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#FEF3C7' }}>
+        <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#F3F0FB' }}>
           <Text style={{ fontSize: 16 }}>🧪</Text>
           <Text className="flex-1 font-semi text-body text-ink" style={{ minWidth: 220 }}>
             {L('Dữ liệu minh hoạ, không phải học viên thật.', 'Sample data, not real learners.')}
@@ -111,7 +111,7 @@ export default function LeaderboardScreen() {
         <View className="flex-row flex-wrap items-center gap-3">
           <Text className="font-heavy text-pageTitle text-ink">{L('🏆 Xếp hạng', '🏆 Leaderboard')}</Text>
           <View className="flex-1" />
-          <View className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#FEF3C7' }} accessibilityLabel={L(`Đang có ${stars} sao`, `You have ${stars} stars`)}>
+          <View className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F3F0FB' }} accessibilityLabel={L(`Đang có ${stars} sao`, `You have ${stars} stars`)}>
             <Text style={{ fontSize: 14 }}>⭐</Text>
             <Text className="font-heavy text-body text-ink">{formatStars(stars)}</Text>
           </View>
@@ -281,8 +281,8 @@ function dayLabel(key: string, en = false): string {
   return `${(en ? WEEKDAY_EN : WEEKDAY)[date.getDay()]}, ${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
 }
 
-const GOLD_INK = '#3B2503';
-const ROW_TINT = ['#FFFBEB', '#FCFBF8', '#FFF7ED'];
+const GOLD_INK = '#2B2350';
+const ROW_TINT = ['#F3F0FB', '#F3F0FB', '#F3F0FB'];
 
 /**
  * BẢNG VÀNG HÔM NAY: sao, câu đúng và lượt ôn từ vựng của mọi người trong ngày,
@@ -307,7 +307,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
 
   return (
     <View className="mt-5 overflow-hidden rounded-[24px]" style={{ backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#FCD34D' }}>
-      <LinearGradient colors={['#FEF3C7', '#FDE68A', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: narrow ? 16 : 20 }}>
+      <LinearGradient colors={['#F3F0FB', '#FDE68A', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: narrow ? 16 : 20 }}>
         <View className="flex-row flex-wrap items-center gap-3">
           <View aria-hidden>
             <Motion kind="wobble">
@@ -320,7 +320,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
             <Text className="font-heavy" style={{ fontSize: 22, color: GOLD_INK }}>
               {L('Bảng vàng hôm nay', "Today's honour board")}
             </Text>
-            <Text className="font-semi" style={{ fontSize: 13, color: '#78350F' }}>
+            <Text className="font-semi" style={{ fontSize: 13, color: '#2B2350' }}>
               {dayLabel(data?.golden?.day ?? key, en)} · {L('sao, câu đúng, lượt ôn từ vựng · chốt lúc 0 giờ', 'stars, correct answers, vocab reviews · closes at midnight')}
             </Text>
           </View>
@@ -340,7 +340,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
             "Đổi quà · 369 ⭐" ngay cạnh "5 sao" của hôm nay — hai con số khác
             nghĩa đặt sát nhau, người dùng đọc thành số liệu sai (26/09/2026).
           */}
-          <Text className="font-semi" style={{ fontSize: 12.5, color: '#78350F' }}>
+          <Text className="font-semi" style={{ fontSize: 12.5, color: '#2B2350' }}>
             {L('Đang có ', 'Balance: ')}<Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text>{L(' tích luỹ', ' saved up')}
           </Text>
           <Pressable
@@ -363,7 +363,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
           <Text className="px-5 py-4 font-sans text-body text-muted">{L('Cần mạng và đăng nhập để xem bảng chung.', 'Sign in and go online to see the shared board.')}</Text>
         ) : !data ? (
           <View className="items-center py-6">
-            <ActivityIndicator color="#D97706" />
+            <ActivityIndicator color="#6A4BD9" />
           </View>
         ) : rows.length === 0 ? (
           <Text className="px-5 py-4 font-sans text-body text-muted">
@@ -390,9 +390,9 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
                 <View
                   key={r.id}
                   className={`${rowClass} py-2.5`}
-                  style={{ backgroundColor: mineRow ? '#FCF8F1' : (ROW_TINT[i] ?? 'transparent') }}
+                  style={{ backgroundColor: mineRow ? '#F3F0FB' : (ROW_TINT[i] ?? 'transparent') }}
                 >
-                  <Text className="text-center font-heavy text-body" style={{ width: W.rank, color: '#92400E' }}>
+                  <Text className="text-center font-heavy text-body" style={{ width: W.rank, color: '#6A4BD9' }}>
                     {MEDAL[i] ?? i + 1}
                   </Text>
                   <View className="min-w-0 flex-1 flex-row items-center gap-2.5">
@@ -401,7 +401,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
                       {mineRow ? L(`${r.name} (bạn)`, `${r.name} (you)`) : r.name}
                     </Text>
                   </View>
-                  <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#B45309' }}>
+                  <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#6A4BD9' }}>
                     {r.stars}
                   </Text>
                   <Text className="font-semi text-body text-ink" style={{ width: W.correct, textAlign: 'right' }}>
@@ -417,12 +417,12 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
               <Text className="px-5 py-3 font-sans text-label text-muted">{L('Đăng nhập để tên bạn lên bảng vàng cùng mọi người.', 'Sign in to put your name on the honour board.')}</Text>
             ) : null}
             {me && inBoard < 0 && (mine.stars > 0 || mine.correct > 0) ? (
-              <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#FCF8F1' }}>
+              <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#F3F0FB' }}>
                 <Text className="text-center font-heavy text-body text-muted" style={{ width: W.rank }}>—</Text>
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
                   {L('Bạn — số của bạn lên bảng sau vài giây đồng bộ', 'You — your numbers appear after a few seconds of syncing')}
                 </Text>
-                <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#B45309' }}>
+                <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#6A4BD9' }}>
                   {mine.stars}
                 </Text>
                 <Text className="font-semi text-body text-ink" style={{ width: W.correct, textAlign: 'right' }}>
@@ -448,7 +448,7 @@ function Stat({ icon, value, label }: { icon: string; value: number; label: stri
       <Text className="font-heavy" style={{ fontSize: 14, color: GOLD_INK }}>
         {value.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')}
       </Text>
-      <Text className="font-sans" style={{ fontSize: 12, color: '#78350F' }}>
+      <Text className="font-sans" style={{ fontSize: 12, color: '#2B2350' }}>
         {label}
       </Text>
     </View>
@@ -495,7 +495,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         {MONTH_PRIZES.map((p, i) => (
-          <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#FEF3C7' : '#FBF9F6' }}>
+          <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#F3F0FB' : '#F3F0FB' }}>
             <Text style={{ fontSize: 20 }}>{MEDAL[i] ?? '🏅'}</Text>
             <View className="min-w-0 flex-1">
               <Text className="font-strong text-label text-ink">{en ? (PRIZE_LABEL_EN[p.label] ?? p.label) : p.label}</Text>
@@ -521,7 +521,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
           <View className="flex-row flex-wrap items-center gap-2">
             <Text className="font-strong text-label text-muted">{L(`Vinh danh ${monthLabel(prev.month)}`, `Hall of fame ${monthLabel(prev.month, true)}`)}</Text>
             <View aria-hidden>
-              <Label text="Top 3 🏆" color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
+              <Label text="Top 3 🏆" color="#F2B632" ink="#2B2350" tilt={-4} size={11} />
             </View>
           </View>
           <View className="mt-1.5 flex-row flex-wrap gap-x-4 gap-y-1">
@@ -572,7 +572,7 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
 
   const shade = (minutes: number, isFrozen: boolean) => {
     if (isFrozen) return '#EAD7AE';
-    if (minutes <= 0) return '#F7F4EE';
+    if (minutes <= 0) return '#F3F0FB';
     if (minutes < 15) return '#BBF7D0';
     if (minutes < 30) return '#6EE7A8';
     if (minutes < 60) return '#34D399';
@@ -592,7 +592,7 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
       </View>
       <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
         <Text className="font-sans text-label text-subtle">{L('Ít', 'Less')}</Text>
-        {['#F7F4EE', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
+        {['#F3F0FB', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
           <View key={c} style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: c }} />
         ))}
         <Text className="font-sans text-label text-subtle">{L('Nhiều', 'More')}</Text>
@@ -605,7 +605,7 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
   );
 }
 
-const PODIUM_RING = ['#F59E0B', '#94A3B8', '#D97706'];
+const PODIUM_RING = ['#F59E0B', '#94A3B8', '#6A4BD9'];
 
 function Board({ data, error, me, you }: { data: BoardData | null; error: string | null; me: string | null; you: { name: string; points: number } }) {
   const narrow = useWindowDimensions().width < 640;
@@ -681,7 +681,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
               {first ? (
                 <View aria-hidden style={{ position: 'absolute', top: 8, left: 8, zIndex: 3, pointerEvents: 'none' }}>
                   <Motion kind="pop">
-                    <Label text="Top 1 👑" color="#F2B632" ink="#2A1B02" tilt={-6} size={narrow ? 9 : 11} />
+                    <Label text="Top 1 👑" color="#F2B632" ink="#2B2350" tilt={-6} size={narrow ? 9 : 11} />
                   </Motion>
                 </View>
               ) : null}
@@ -708,7 +708,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
           {rest.map((row, i) => {
             const mine = row.id === me;
             return (
-              <View key={row.id} className="flex-row items-center gap-3 border-b border-border px-5 py-3" style={mine ? { backgroundColor: '#FCF8F1' } : undefined}>
+              <View key={row.id} className="flex-row items-center gap-3 border-b border-border px-5 py-3" style={mine ? { backgroundColor: '#F3F0FB' } : undefined}>
                 <Text className="w-8 text-center font-heavy text-body text-muted">{i + 4}</Text>
                 <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={36} skin={skinOf(row.skin ?? null)} />
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
@@ -721,7 +721,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
             );
           })}
           {!inBoard && me ? (
-            <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#FCF8F1' }}>
+            <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#F3F0FB' }}>
               <Text className="w-8 text-center font-heavy text-body text-muted">—</Text>
               <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
                 {L(`Bạn — chưa vào top ${rows.length}`, `You — not in the top ${rows.length} yet`)}

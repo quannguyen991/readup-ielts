@@ -380,7 +380,7 @@ export function MissionStage({
         {/* Bong bóng thoại ngay trên cảnh phố */}
         {showBubble && speaker ? (
           <Pressable onPress={type.skip} accessibilityRole="text" accessibilityLiveRegion="polite" style={{ position: 'absolute', left: bubbleLeft, bottom: bubbleBottom, width: bubbleW, maxHeight: bubbleMaxH }}>
-            <View style={{ backgroundColor: line.who === 'npc' ? '#F3EDE1' : '#DDEBFF', borderWidth: 3, borderColor: T.navy, borderRadius: 4, paddingHorizontal: 14, paddingVertical: 11, gap: 4, ...(Platform.OS === 'web' ? ({ boxShadow: `0 4px 0 ${T.navy}` } as object) : null) }}>
+            <View style={{ backgroundColor: line.who === 'npc' ? '#F3F0FB' : '#DDEBFF', borderWidth: 3, borderColor: T.navy, borderRadius: 4, paddingHorizontal: 14, paddingVertical: 11, gap: 4, ...(Platform.OS === 'web' ? ({ boxShadow: `0 4px 0 ${T.navy}` } as object) : null) }}>
               <Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 1, color: T.goldDark }}>{(line.who === 'npc' ? goalName : playerName || L('Bạn', 'You')).toUpperCase()}</Text>
               {hiddenLine ? (
                 <Text className="font-semi" style={{ fontSize: 17, lineHeight: 24, color: T.ink }}>🎧 {L('Hãy lắng nghe…', 'Listen carefully…')}</Text>

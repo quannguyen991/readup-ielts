@@ -131,10 +131,10 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
         borderRadius: 20,
         backgroundColor: '#FFFFFF',
         borderWidth: 1.5,
-        borderColor: '#EFE7DC',
+        borderColor: '#F3F0FB',
         padding: 20,
         gap: 16,
-        shadowColor: '#784415',
+        shadowColor: '#2B2350',
         shadowOpacity: 0.05,
         shadowRadius: 10,
         shadowOffset: { width: 0, height: 3 },
@@ -146,7 +146,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
             <View
               style={{
-                backgroundColor: passage.category === 'sat_literature' ? '#EDE9FE' : passage.category === 'sat_science' ? '#CCFBF1' : '#FEF3C7',
+                backgroundColor: passage.category === 'sat_literature' ? '#EDE9FE' : passage.category === 'sat_science' ? '#CCFBF1' : '#F3F0FB',
                 paddingHorizontal: 8,
                 paddingVertical: 3,
                 borderRadius: 6,
@@ -156,7 +156,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
                 style={{
                   fontSize: 10.5,
                   fontWeight: '800',
-                  color: passage.category === 'sat_literature' ? '#6D28D9' : passage.category === 'sat_science' ? '#0F766E' : '#B45309',
+                  color: passage.category === 'sat_literature' ? '#6D28D9' : passage.category === 'sat_science' ? '#0F766E' : '#6A4BD9',
                   textTransform: 'uppercase',
                 }}
               >
@@ -173,7 +173,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
         </View>
 
         {/* View mode toggle pills */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#FAF5EE', padding: 3, borderRadius: 10, borderWidth: 1, borderColor: '#E6DACB' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#F3F0FB', padding: 3, borderRadius: 10, borderWidth: 1, borderColor: '#E6DACB' }}>
           {[
             { id: 'bilingual' as const, label: L('Song ngữ', 'Bilingual') },
             { id: 'en_only' as const, label: 'English' },
@@ -205,9 +205,9 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
             style={{
               padding: 14,
               borderRadius: 14,
-              backgroundColor: '#FAF8F5',
+              backgroundColor: '#F3F0FB',
               borderWidth: 1,
-              borderColor: '#F0EBE2',
+              borderColor: '#F3F0FB',
               gap: 8,
             }}
           >
@@ -232,10 +232,10 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
                 style={{
                   fontSize: 13.5,
                   lineHeight: 21,
-                  color: '#854D0E',
+                  color: '#2B2350',
                   fontWeight: '500',
                   borderTopWidth: mode === 'bilingual' ? 1 : 0,
-                  borderTopColor: '#EFE7DC',
+                  borderTopColor: '#F3F0FB',
                   paddingTop: mode === 'bilingual' ? 6 : 0,
                 }}
               >
@@ -250,7 +250,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
       {showVocab && passage.keyTerms.length > 0 && (
         <View style={{ gap: 8, paddingTop: 4 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#2A1808', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+            <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#2B2350', textTransform: 'uppercase', letterSpacing: 0.5 }}>
               📖 {L('Từ vựng học thuật quan trọng trong bài:', 'Key Academic Vocabulary:')}
             </Text>
           </View>
@@ -265,18 +265,18 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
                   paddingHorizontal: 10,
                   paddingVertical: 5,
                   borderRadius: 8,
-                  backgroundColor: '#FFFBEB',
+                  backgroundColor: '#F3F0FB',
                   borderWidth: 1,
                   borderColor: '#FDE68A',
                 }}
               >
-                <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#92400E' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#6A4BD9' }}>
                   {term.en}
                 </Text>
                 {term.phonetic && (
-                  <Text style={{ fontSize: 11, color: '#B45309' }}>{term.phonetic}</Text>
+                  <Text style={{ fontSize: 11, color: '#6A4BD9' }}>{term.phonetic}</Text>
                 )}
-                <Text style={{ fontSize: 12, color: '#451A03', fontWeight: '500' }}>
+                <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '500' }}>
                   : {term.vi}
                 </Text>
               </View>

@@ -220,7 +220,7 @@ export type HeroColors = Record<'h' | 'a' | 'A' | 'c' | 'w' | 'g' | 'b' | 'l', s
  * sao ở trang Đổi quà.
  */
 export const HERO_SKINS: Record<SkinId, { name: string; nameEn: string; colors: HeroColors }> = {
-  knight: { name: 'Hiệp sĩ xanh', nameEn: 'Blue Knight', colors: { h: '#5B3A1E', a: '#F3EDE1', A: '#1B2E55', c: '#3563B0', w: '#E8EEF7', g: '#D9B26A', b: '#6B4A2A', l: '#8F6E36' } },
+  knight: { name: 'Hiệp sĩ xanh', nameEn: 'Blue Knight', colors: { h: '#5B3A1E', a: '#F3EDE1', A: '#1B2E55', c: '#3563B0', w: '#E8EEF7', g: '#D9B26A', b: '#6B4A2A', l: '#6A4BD9' } },
   ninja: { name: 'Ninja bóng đêm', nameEn: 'Shadow Ninja', colors: { h: '#111827', a: '#374151', A: '#111827', c: '#DC2626', w: '#CBD5E1', g: '#9CA3AF', b: '#111827', l: '#DC2626' } },
   mage: { name: 'Pháp sư tím', nameEn: 'Purple Mage', colors: { h: '#E5E7EB', a: '#7C3AED', A: '#4C1D95', c: '#FACC15', w: '#F0ABFC', g: '#FDE68A', b: '#4C1D95', l: '#FACC15' } },
   samurai: { name: 'Samurai đỏ', nameEn: 'Red Samurai', colors: { h: '#0F172A', a: '#B91C1C', A: '#7F1D1D', c: '#0F172A', w: '#F1F5F9', g: '#F59E0B', b: '#1F2937', l: '#F59E0B' } },

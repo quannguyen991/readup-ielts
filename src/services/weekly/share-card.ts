@@ -83,10 +83,10 @@ export function drawShareCard(d: ShareCardData): HTMLCanvasElement {
     const label = `Top ${d.topPercent}% trong ${d.participants.toLocaleString('vi-VN')} người`;
     g.font = font(800, 48);
     const w = g.measureText(label).width + 80;
-    g.fillStyle = '#fef3c7';
+    g.fillStyle = '#F3F0FB';
     roundRect(g, S / 2 - w / 2, 610, w, 92, 46);
     g.fill();
-    g.fillStyle = '#b45309';
+    g.fillStyle = '#6A4BD9';
     g.fillText(label, S / 2, 672);
   }
 

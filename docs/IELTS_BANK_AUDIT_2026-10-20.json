@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-10-20T14:33:37.160Z",
+  "checkedAt": "2026-10-21T16:48:06.413Z",
   "totalCatalogueEntries": 633,
   "localPapers": 212,
   "papersWithExpectedParts": 212,
   "publicTestLinks": 421,
   "publicSourcePages": 41,
-  "verifiedScoringKeys": 139,
+  "verifiedScoringKeys": 102,
   "newForecastSets": 8,
   "newSpeakingSamples": 72,
   "missingAssets": [
@@ -1162,7 +1162,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "cambridge-18-reading-1",
@@ -1183,7 +1183,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "cambridge-18-writing-1",
@@ -1246,7 +1246,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "cambridge-18-reading-2",
@@ -1330,7 +1330,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "cambridge-18-reading-3",
@@ -1414,7 +1414,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "cambridge-18-reading-4",
@@ -3122,7 +3122,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-reading-1",
@@ -3143,7 +3143,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-listening-2",
@@ -3168,7 +3168,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-reading-2",
@@ -3189,7 +3189,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-listening-3",
@@ -3214,7 +3214,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-reading-3",
@@ -3235,7 +3235,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-listening-4",
@@ -3260,7 +3260,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-9-reading-4",
@@ -3281,7 +3281,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "cambridge-8-general-reading-a",
@@ -3718,7 +3718,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-reading-1",
@@ -3739,7 +3739,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-listening-2",
@@ -3764,7 +3764,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-reading-2",
@@ -3785,7 +3785,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-listening-3",
@@ -3810,7 +3810,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-reading-3",
@@ -3831,7 +3831,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-listening-4",
@@ -3856,7 +3856,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-12-reading-4",
@@ -3877,7 +3877,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-listening-1",
@@ -3902,7 +3902,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-reading-1",
@@ -3923,7 +3923,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-listening-2",
@@ -3948,7 +3948,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-reading-2",
@@ -3969,7 +3969,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-listening-3",
@@ -3994,7 +3994,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-reading-3",
@@ -4015,7 +4015,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-listening-4",
@@ -4040,7 +4040,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-11-reading-4",
@@ -4061,7 +4061,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-10-reading-1",
@@ -4082,7 +4082,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "vol-10-reading-2",
@@ -4103,7 +4103,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "vol-10-reading-3",
@@ -4124,7 +4124,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "vol-10-reading-4",
@@ -4145,7 +4145,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "vol-10-reading-5",
@@ -4166,7 +4166,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "vol-10-reading-6",
@@ -4187,7 +4187,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": false
+      "verifiedKey": true
     },
     {
       "id": "vol-9-listening-1",
@@ -4212,7 +4212,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-reading-1",
@@ -4233,7 +4233,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-listening-2",
@@ -4258,7 +4258,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-reading-2",
@@ -4279,7 +4279,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-listening-3",
@@ -4304,7 +4304,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-reading-3",
@@ -4325,7 +4325,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-listening-4",
@@ -4350,7 +4350,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-9-reading-4",
@@ -4371,7 +4371,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-listening-1",
@@ -4396,7 +4396,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-reading-1",
@@ -4417,7 +4417,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-listening-2",
@@ -4442,7 +4442,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-reading-2",
@@ -4463,7 +4463,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-listening-3",
@@ -4488,7 +4488,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-reading-3",
@@ -4509,7 +4509,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-listening-4",
@@ -4534,7 +4534,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-8-reading-4",
@@ -4555,7 +4555,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-listening-1",
@@ -4580,7 +4580,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-reading-1",
@@ -4601,7 +4601,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-listening-2",
@@ -4626,7 +4626,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-reading-2",
@@ -4647,7 +4647,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-listening-3",
@@ -4672,7 +4672,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-reading-3",
@@ -4693,7 +4693,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-listening-4",
@@ -4718,7 +4718,7 @@
         ]
       ],
       "audioFiles": 1,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "vol-7-reading-4",
@@ -4739,7 +4739,7 @@
         ]
       ],
       "audioFiles": 0,
-      "verifiedKey": true
+      "verifiedKey": false
     },
     {
       "id": "band9-master-writing-1",

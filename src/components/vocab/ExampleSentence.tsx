@@ -59,10 +59,10 @@ export function ExampleSentence({ example, word, className }: { example: string;
     backgroundColor: active
       ? theme.dark
         ? 'rgba(231,201,138,0.22)'
-        : '#F3E8D0'
+        : '#F3F0FB'
       : theme.dark
         ? theme.soft
-        : '#FBF6EC',
+        : '#F3F0FB',
   });
 
   return (

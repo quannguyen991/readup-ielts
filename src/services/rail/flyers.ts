@@ -173,7 +173,7 @@ const hash2 = (x: number, y: number) => (Math.imul(x + 17, 73856093) ^ Math.imul
 
 const GOLD = '#F2B33D';
 const NAVY = '#24385E';
-const CREAM = '#FFF1C9';
+const CREAM = '#F3F0FB';
 const SKIN = '#F4C9A4';
 const RED = '#E4574A';
 const BLUE = '#3C7BE0';
@@ -222,15 +222,15 @@ function balloon(p: PX, f: number, o: FlyerOpts) {
   // Đai trang trí quanh bụng khí cầu.
   p.recolor(21, 22, 30, 1, '#FFFFFF');
   // Dây + giỏ.
-  const rope = '#5A4026';
+  const rope = '#2B2350';
   p.line(30, 34, 32, 40, rope);
   p.line(42, 34, 40, 40, rope);
   p.line(36, 35, 36, 40, rope);
   p.rect(33, 35, 6, 2, '#6B7280');
-  p.rect(30, 40, 12, 2, '#8A5A2B');
+  p.rect(30, 40, 12, 2, '#6A4BD9');
   p.rect(31, 42, 10, 7, '#BF8444');
-  for (let y = 43; y < 49; y += 2) for (let x = 31 + (y % 4 === 1 ? 1 : 0); x < 41; x += 2) p.px(x, y, '#8F5F2E');
-  p.rect(31, 48, 10, 1, '#7A4F24');
+  for (let y = 43; y < 49; y += 2) for (let x = 31 + (y % 4 === 1 ? 1 : 0); x < 41; x += 2) p.px(x, y, '#6A4BD9');
+  p.rect(31, 48, 10, 1, '#6A4BD9');
   // Ngọn lửa đốt.
   const fl = [0, 1, 2, 1][f]!;
   p.lamp(35, 31 - fl, 2, 4 + fl, '#FF9A3C');
@@ -283,8 +283,8 @@ function hero(p: PX, f: number) {
   p.px(56, 17, '#FFFFFF');
   p.px(57, 22, '#C98A6A');
   p.rect(56, 23, 2, 1, '#B8605A');
-  p.px(46, 18, '#7A4A2A');
-  p.px(46, 19, '#7A4A2A');
+  p.px(46, 18, '#6A4BD9');
+  p.px(46, 19, '#6A4BD9');
 }
 
 function unicorn(p: PX, f: number) {

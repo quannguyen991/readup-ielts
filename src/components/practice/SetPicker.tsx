@@ -91,7 +91,7 @@ export function SetPicker({
                 <PageStickers scene={backHref.startsWith('/math') ? 'math' : 'verbal'} size={80} />
               </View>
             </View>
-            <View className="mt-4 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
+            <View className="mt-4 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
               <View className="h-2.5 rounded-pill" style={{ width: `${total ? (done / total) * 100 : 0}%`, backgroundColor: '#16A34A' }} />
             </View>
             <Button
@@ -104,7 +104,7 @@ export function SetPicker({
 
         <View className="mb-3 mt-7 flex-row items-center gap-2.5">
           <View aria-hidden>
-            <SealIcon name="grid" color="#A8843F" size={38} />
+            <SealIcon name="grid" color="#6A4BD9" size={38} />
           </View>
           <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink">{L('Chọn bộ đề', 'Choose a set')}</Text>
           {done === total && total > 0 ? (
@@ -117,7 +117,7 @@ export function SetPicker({
           <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={14}>
             {sets.map((s, i) => {
               const isNext = i === nextIndex;
-              const tone = s.ratio === null ? '#94A3B8' : s.ratio >= 0.8 ? '#16A34A' : s.ratio >= 0.5 ? '#D97706' : '#E11D48';
+              const tone = s.ratio === null ? '#94A3B8' : s.ratio >= 0.8 ? '#16A34A' : s.ratio >= 0.5 ? '#6A4BD9' : '#E11D48';
               return (
                 <Pressable
                   key={i}

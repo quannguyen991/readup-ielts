@@ -143,7 +143,7 @@ function GapBody({ group, ...common }: { group: ListeningGroup } & Common) {
     rows.push(
       <View key={key} style={{ borderWidth: 1, borderColor: color.borderStrong, borderRadius: 10, overflow: 'hidden', marginVertical: 4 }}>
         {t.map((cells, r) => (
-          <View key={r} style={{ flexDirection: 'row', borderTopWidth: r ? 1 : 0, borderColor: color.borderStrong, backgroundColor: r === 0 ? '#FBF7EE' : '#FFFFFF' }}>
+          <View key={r} style={{ flexDirection: 'row', borderTopWidth: r ? 1 : 0, borderColor: color.borderStrong, backgroundColor: r === 0 ? '#F5F2FF' : '#FFFFFF' }}>
             {cells.map((c, ci) => (
               <View key={ci} style={{ flex: 1, minWidth: 0, padding: 8, borderLeftWidth: ci ? 1 : 0, borderColor: color.borderStrong }}>
                 {r === 0 && !c.includes('{{') ? (
@@ -192,7 +192,7 @@ function OptionRow({
       disabled={disabled}
       onPress={onPress}
       className="flex-row items-center gap-3 rounded-panel border px-3 py-2.5"
-      style={{ minHeight: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF' }}
+      style={{ minHeight: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#F5F2FF' : '#FFFFFF' }}
     >
       <View
         style={{
@@ -217,7 +217,7 @@ function QuestionLabel({ q, span }: { q: ListeningQuestion; span?: number }) {
   const label = span && span > 1 ? `${q.n}-${q.n + span - 1}` : String(q.n);
   return (
     <View className="mb-2 flex-row items-start gap-2.5">
-      <View style={{ minWidth: 28, height: 28, paddingHorizontal: 6, borderRadius: 14, backgroundColor: '#FBF7EE', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ minWidth: 28, height: 28, paddingHorizontal: 6, borderRadius: 14, backgroundColor: '#F5F2FF', alignItems: 'center', justifyContent: 'center' }}>
         <Text className="font-nun-heavy" style={{ fontSize: 12, color: color.primary }}>{label}</Text>
       </View>
       {q.prompt ? (

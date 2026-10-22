@@ -155,7 +155,7 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
   return (
     <HubScreen title={topic.titleVi} subtitle={finished ? 'Tổng kết' : partLabel(step)} back padBottom={140}>
       <LinearGradient
-        colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+        colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ borderRadius: 24, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14 }}
@@ -269,7 +269,7 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
 function ProgressBar({ value }: { value: number }) {
   const pct = Math.round(Math.max(0, Math.min(1, value)) * 100);
   return (
-    <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(143,110,54,0.16)', overflow: 'hidden' }}>
+    <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.16)', overflow: 'hidden' }}>
       <View style={{ width: `${pct}%`, height: 8, borderRadius: 4, backgroundColor: HUB.blue }} />
     </View>
   );
@@ -411,7 +411,7 @@ function RecordPanel({
           borderRadius: 58,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: listening ? 'rgba(179,58,42,0.14)' : 'rgba(143,110,54,0.12)',
+          backgroundColor: listening ? 'rgba(179,58,42,0.14)' : 'rgba(106, 75, 217,0.12)',
         }}
       >
         <Pressable
@@ -467,7 +467,7 @@ function ReportCard({ report }: { report: Report }) {
           <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>TỐC ĐỘ</Text>
           <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.wpm ?? '—'}</Text>
           <Text style={{ color: HUB.muted, fontSize: 11, marginTop: -6 }}>từ/phút</Text>
-          <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(143,110,54,0.14)', overflow: 'hidden' }}>
+          <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.14)', overflow: 'hidden' }}>
             <View
               style={{
                 position: 'absolute',

@@ -55,7 +55,7 @@ function RangeBar({ low, mid, high, min, max, tone }: { low: number; mid: number
   const pct = (x: number) => `${((x - min) / (max - min)) * 100}%` as const;
   return (
     <View className="mt-3">
-      <View className="h-3.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
+      <View className="h-3.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
         <View
           className="absolute h-3.5 rounded-pill"
           style={{ left: pct(low), width: `${((high - low) / (max - min)) * 100}%`, backgroundColor: tone, opacity: 0.85 }}
@@ -74,7 +74,7 @@ export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 
   const { L } = useL();
   const all = useSatPredictions();
   const title = section === 'math' ? 'SAT Math' : section === 'verbal' ? 'SAT Verbal' : L('Tổng SAT', 'SAT total');
-  const tone = section === 'math' ? '#24375A' : section === 'verbal' ? '#EC4899' : '#A8843F';
+  const tone = section === 'math' ? '#24375A' : section === 'verbal' ? '#EC4899' : '#6A4BD9';
 
   if (section === 'total') {
     const t = all.total;
@@ -126,7 +126,7 @@ export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 
             )}
           </Text>
           {p.needMore ? (
-            <Text className="mt-2 font-semi text-body" style={{ color: '#B45309' }}>
+            <Text className="mt-2 font-semi text-body" style={{ color: '#6A4BD9' }}>
               {L(
                 `Làm thêm khoảng ${p.needMore} câu${p.widestDomain ? ` — nhất là mảng ${domainName(p.widestDomain)}` : ''} để khoảng hẹp lại còn ±30 điểm.`,
                 `Answer about ${p.needMore} more questions${p.widestDomain ? ` — especially in ${domainName(p.widestDomain)}` : ''} to narrow the range to ±30 points.`,

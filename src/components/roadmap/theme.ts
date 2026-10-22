@@ -6,21 +6,21 @@ import { themedHex } from '@/theme/palette-state';
  */
 export function rmColors() {
   return {
-    ground: themedHex('#FFF8E1'),
-    groundDeep: themedHex('#FCEBB8'),
-    ink: '#3B2A10',
-    body: '#6E5626',
+    ground: themedHex('#F3F0FB'),
+    groundDeep: themedHex('#F3F0FB'),
+    ink: '#2B2350',
+    body: '#2B2350',
     muted: '#9C8552',
-    gold: themedHex('#EBC26A'),
-    goldDeep: themedHex('#B8862A'),
-    goldSoft: themedHex('#FFF1C7'),
+    gold: themedHex('#8B6CF0'),
+    goldDeep: themedHex('#6A4BD9'),
+    goldSoft: themedHex('#F3F0FB'),
     line: themedHex('#D9B979'),
     path: themedHex('#C9A36A'),
     green: '#4CAF50',
     greenDeep: '#2E8B45',
     locked: '#BDB8AE',
     card: '#FFFFFF',
-    warn: '#A8741A',
+    warn: '#6A4BD9',
     danger: '#B33A2A',
   };
 }

@@ -53,8 +53,8 @@ export function ExamOption({
   const gold = tone === 'gold';
   const goldLine = themedHex('#E0B04E');
   const goldFill = themedHex('#D9A441');
-  const goldSoft = themedHex('#FFF8E4');
-  const goldIdle = themedHex('#F3EFE6');
+  const goldSoft = themedHex('#F3F0FB');
+  const goldIdle = themedHex('#F3F0FB');
 
   const border =
     state === 'correct'

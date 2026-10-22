@@ -3,7 +3,8 @@ import { test } from 'node:test';
 
 import { levelById } from '@/data/learning-path';
 import { getPoiContent } from '@/data/travel/pois';
-import { MAX_CHOSEN_DECKS, cleanDecks, deckCatalog, pathVocabDecks, resolveFocusDecks, toggleDeck } from './decks';
+import { deckCatalog } from './deck-catalog';
+import { MAX_CHOSEN_DECKS, cleanDecks, pathVocabDecks, resolveFocusDecks, toggleDeck } from './decks';
 import { pickCustomsQuestions, pickVisitQuestions } from './pick';
 
 const NOW = Date.parse('2026-10-02T09:00:00Z');

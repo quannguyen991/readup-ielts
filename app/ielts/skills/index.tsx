@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
+import { Grid } from '@/components/layout/Grid';
 import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
@@ -10,195 +11,127 @@ import { IELTS_DRILL_QUESTIONS } from '@/data/ielts-drill-bank';
 import { IELTS_QUESTION_TYPES, type IeltsQuestionTypeMeta, type IeltsSkill } from '@/data/ielts-question-types';
 import { useL } from '@/i18n/useL';
 
-const SKILL_THEME: Record<IeltsSkill, { labelVi: string; labelEn: string; bg: string; text: string; border: string }> = {
-  reading: { labelVi: 'Reading', labelEn: 'Reading', bg: '#EFF6FF', text: '#2563EB', border: '#BFDBFE' },
-  listening: { labelVi: 'Listening', labelEn: 'Listening', bg: '#ECFEFF', text: '#0891B2', border: '#A5F3FC' },
-  writing: { labelVi: 'Writing', labelEn: 'Writing', bg: '#FEF2F2', text: '#DC2626', border: '#FECACA' },
-  speaking: { labelVi: 'Speaking', labelEn: 'Speaking', bg: '#FAF5FF', text: '#7C3AED', border: '#E9D5FF' },
+/** Mỗi kỹ năng một màu, lấy từ bảng màu chung của web. */
+const SKILL_TONE: Record<IeltsSkill, { label: string; bg: string; fg: string }> = {
+  reading: { label: 'Reading', bg: '#F1ECFF', fg: '#6A4BD9' },
+  listening: { label: 'Listening', bg: '#EAF2FF', fg: '#2F6FD6' },
+  writing: { label: 'Writing', bg: '#FFF1EE', fg: '#D9503E' },
+  speaking: { label: 'Speaking', bg: '#FDEFF5', fg: '#C2437A' },
 };
 
-const DIFFICULTY_COLOR: Record<string, { bg: string; text: string }> = {
-  'Dễ': { bg: '#F0FDF4', text: '#16A34A' },
-  'Trung bình': { bg: '#FEFCE8', text: '#CA8A04' },
-  'Khó': { bg: '#FFF7ED', text: '#EA580C' },
-  'Rất khó': { bg: '#FEF2F2', text: '#DC2626' },
-};
+const SKILLS: IeltsSkill[] = ['reading', 'listening', 'writing', 'speaking'];
 
 export default function IeltsSkillsIndexScreen() {
   const { L } = useL();
   const [selectedSkill, setSelectedSkill] = useState<'all' | IeltsSkill>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [query, setQuery] = useState('');
 
   const questionCounts = useMemo(() => {
     const map: Record<string, number> = {};
-    for (const q of IELTS_DRILL_QUESTIONS) {
-      map[q.typeId] = (map[q.typeId] || 0) + 1;
-    }
+    for (const q of IELTS_DRILL_QUESTIONS) map[q.typeId] = (map[q.typeId] || 0) + 1;
     return map;
   }, []);
 
-  const filteredTypes = useMemo(() => {
+  const typeCounts = useMemo(() => {
+    const map: Record<string, number> = { all: IELTS_QUESTION_TYPES.length };
+    for (const s of SKILLS) map[s] = IELTS_QUESTION_TYPES.filter((t) => t.skill === s).length;
+    return map;
+  }, []);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
     return IELTS_QUESTION_TYPES.filter((item) => {
       if (selectedSkill !== 'all' && item.skill !== selectedSkill) return false;
-      if (!searchQuery.trim()) return true;
-      const q = searchQuery.toLowerCase();
-      return (
-        item.titleVi.toLowerCase().includes(q) ||
-        item.titleEn.toLowerCase().includes(q) ||
-        item.descriptionVi.toLowerCase().includes(q)
-      );
+      if (!q) return true;
+      return item.titleVi.toLowerCase().includes(q) || item.titleEn.toLowerCase().includes(q);
     });
-  }, [selectedSkill, searchQuery]);
+  }, [selectedSkill, query]);
+
+  const filters: { id: 'all' | IeltsSkill; label: string }[] = [
+    { id: 'all', label: L('Tất cả', 'All') },
+    ...SKILLS.map((s) => ({ id: s, label: SKILL_TONE[s].label })),
+  ];
 
   return (
-    <Screen cat="write">
+    <Screen>
       <Appear index={0}>
         <LightHero
-          badge="CHUYÊN SÂU DẠNG BÀI"
+          badge="IELTS"
           art="home"
-          line1={L('Luyện Dạng Bài & Kỹ Năng IELTS', 'IELTS Question Type Mastery')}
-          line2={L('Yếu dạng nào · Cày sâu dạng đó', 'Target Weaknesses · Master Strategies')}
-          subtitle={L(
-            'Học trọn bộ chiến thuật, nhận diện bẫy giám khảo và cày 135+ câu hỏi kèm trích dẫn chứng cứ trực tiếp.',
-            'Learn strategies, identify traps, and drill 135+ questions with direct evidence quotes and explanations.',
-          )}
+          line1={L('Luyện theo dạng bài', 'Practise by question type')}
+          line2={L(`${IELTS_QUESTION_TYPES.length} dạng · ${IELTS_DRILL_QUESTIONS.length} câu`, `${IELTS_QUESTION_TYPES.length} types · ${IELTS_DRILL_QUESTIONS.length} questions`)}
         />
       </Appear>
 
-      {/* Bộ lọc kỹ năng */}
       <Appear index={1}>
         <View className="mb-4 mt-6 flex-row flex-wrap gap-2">
-          {(
-            [
-              { id: 'all', label: L('Tất cả (13 dạng)', 'All (13 types)') },
-              { id: 'reading', label: L('Reading (5 dạng)', 'Reading (5 types)') },
-              { id: 'listening', label: L('Listening (3 dạng)', 'Listening (3 types)') },
-              { id: 'writing', label: L('Writing (3 dạng)', 'Writing (3 types)') },
-              { id: 'speaking', label: L('Speaking (2 dạng)', 'Speaking (2 types)') },
-            ] as const
-          ).map((filter) => {
-            const active = selectedSkill === filter.id;
+          {filters.map((f) => {
+            const active = selectedSkill === f.id;
             return (
               <Pressable
-                key={filter.id}
-                onPress={() => setSelectedSkill(filter.id)}
-                className={`rounded-full px-4 py-2 border ${
-                  active ? 'bg-primary border-primary' : 'bg-surface border-border hover:bg-canvas'
-                }`}
+                key={f.id}
+                onPress={() => setSelectedSkill(f.id)}
+                className="rounded-pill px-4 py-2"
+                style={{ backgroundColor: active ? '#6A4BD9' : '#FFFFFF', borderWidth: 1, borderColor: active ? '#6A4BD9' : '#E6E1F3' }}
               >
-                <Text className={`font-mid text-label ${active ? 'text-white' : 'text-ink'}`}>
-                  {filter.label}
+                <Text className="font-strong text-label" style={{ color: active ? '#FFFFFF' : '#2B2350' }}>
+                  {f.label} · {typeCounts[f.id]}
                 </Text>
               </Pressable>
             );
           })}
         </View>
 
-        {/* Ô tìm kiếm */}
-        <View className="mb-6 flex-row items-center rounded-2xl border border-border bg-surface px-4 py-2.5">
-          <Icon name="search" size={18} color="#94A3B8" />
+        <View className="mb-6 flex-row items-center gap-3 rounded-2xl border border-border bg-surface px-4 py-3">
+          <Icon name="search" size={18} color="#7A72A0" />
           <TextInput
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-            placeholder={L('Tìm dạng bài (ví dụ: True/False, Map, Heading, Task 1, Part 2...)', 'Search question type...')}
-            placeholderTextColor="#94A3B8"
-            className="ml-3 flex-1 font-sans text-body text-ink outline-none"
+            value={query}
+            onChangeText={setQuery}
+            placeholder={L('Tìm dạng bài', 'Search')}
+            placeholderTextColor="#A59CC4"
+            className="flex-1 font-sans text-body text-ink outline-none"
           />
-          {searchQuery ? (
-            <Pressable onPress={() => setSearchQuery('')}>
-              <Icon name="close" size={18} color="#94A3B8" />
-            </Pressable>
-          ) : null}
         </View>
       </Appear>
 
-      {/* Danh sách thẻ dạng bài */}
-      <View className="gap-4">
-        {filteredTypes.map((typeMeta: IeltsQuestionTypeMeta, index: number) => {
-          const theme = SKILL_THEME[typeMeta.skill];
-          const diff = DIFFICULTY_COLOR[typeMeta.difficultyLevel] || { bg: '#F3F4F6', text: '#4B5563' };
-          const count = questionCounts[typeMeta.id] || 0;
-
+      <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={12}>
+        {filtered.map((item: IeltsQuestionTypeMeta, index: number) => {
+          const tone = SKILL_TONE[item.skill];
+          const count = questionCounts[item.id] || 0;
           return (
-            <Appear key={typeMeta.id} index={index + 2}>
+            <Appear key={item.id} index={index + 2}>
               <Pressable
                 accessibilityRole="button"
-                onPress={() => router.push(`/ielts/skills/${typeMeta.id}` as never)}
-                className="rounded-2xl border border-border bg-surface p-5 transition-transform active:scale-[0.99] hover:border-primary/50"
-                style={{
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
-                }}
+                onPress={() => router.push(`/ielts/skills/${item.id}` as never)}
+                className="gap-2 rounded-2xl border border-border bg-surface p-5"
               >
-                <View className="flex-row items-center justify-between gap-2">
-                  <View className="flex-row items-center gap-2">
-                    <View
-                      className="rounded-lg px-2.5 py-1 border"
-                      style={{ backgroundColor: theme.bg, borderColor: theme.border }}
-                    >
-                      <Text className="font-strong text-label" style={{ color: theme.text }}>
-                        {theme.labelVi.toUpperCase()}
-                      </Text>
-                    </View>
-                    <View
-                      className="rounded-lg px-2.5 py-1"
-                      style={{ backgroundColor: diff.bg }}
-                    >
-                      <Text className="font-strong text-label" style={{ color: diff.text }}>
-                        {typeMeta.difficultyLevel}
-                      </Text>
-                    </View>
-                  </View>
-
-                  <View className="flex-row items-center gap-1.5 rounded-full bg-canvas px-3 py-1 border border-border">
-                    <Icon name="target" size={14} color="#8F6E36" />
-                    <Text className="font-mid text-label text-muted">
-                      {count} {L('câu thực chiến', 'drill questions')}
+                <View className="flex-row items-center justify-between">
+                  <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: tone.bg }}>
+                    <Text className="font-strong text-[11px]" style={{ color: tone.fg }}>
+                      {tone.label}
                     </Text>
                   </View>
+                  <Text className="font-sans text-label text-muted">
+                    {count} {L('câu', 'questions')}
+                  </Text>
                 </View>
 
-                {/* Tiêu đề */}
-                <Text className="mt-3 font-heavy text-cardTitle text-ink">
-                  {typeMeta.titleVi}
-                </Text>
-                <Text className="font-sans text-label text-muted">
-                  {typeMeta.titleEn}
+                <Text className="font-heavy text-cardTitle text-ink">{item.titleVi}</Text>
+                <Text className="font-sans text-label text-muted" numberOfLines={2}>
+                  {item.descriptionVi}
                 </Text>
 
-                {/* Tóm tắt */}
-                <Text className="mt-2.5 font-sans text-body text-body leading-relaxed">
-                  {typeMeta.descriptionVi}
-                </Text>
-
-                {/* Bẫy và mẹo tóm tắt */}
-                {typeMeta.traps.length > 0 && (
-                  <View className="mt-3 rounded-xl bg-amber-500/10 p-3 border border-amber-500/20">
-                    <Text className="font-strong text-label text-amber-800">
-                      ⚠️ {L('Bẫy giám khảo hay gài:', 'Common trap:')}
-                    </Text>
-                    <Text className="mt-0.5 font-sans text-label text-amber-900 leading-relaxed">
-                      {typeMeta.traps[0]}
-                    </Text>
-                  </View>
-                )}
-
-                {/* Nút vào luyện */}
-                <View className="mt-4 flex-row items-center justify-between border-t border-border pt-3">
-                  <Text className="font-mid text-label text-primary">
-                    Tần suất: {typeMeta.frequency}
+                <View className="mt-1 flex-row items-center gap-1">
+                  <Text className="font-strong text-label" style={{ color: '#6A4BD9' }}>
+                    {L('Luyện', 'Practise')}
                   </Text>
-                  <View className="flex-row items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2">
-                    <Text className="font-strong text-label text-white">
-                      {L('Học & Luyện tập', 'Learn & Practice')}
-                    </Text>
-                    <Icon name="arrow-right" size={14} color="#FFFFFF" strokeWidth={2.5} />
-                  </View>
+                  <Icon name="arrow-right" size={14} color="#6A4BD9" strokeWidth={2.2} />
                 </View>
               </Pressable>
             </Appear>
           );
         })}
-      </View>
+      </Grid>
     </Screen>
   );
 }

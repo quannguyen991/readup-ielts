@@ -56,9 +56,12 @@ export function DesmosEmbed() {
 
   if (!API_KEY) {
     return (
-      <View className="items-center justify-center rounded-2xl border border-dashed border-[#D7CBB4] bg-[#FBF8F1] px-5 py-10">
-        <Text className="text-center font-strong text-body text-ink">{L('Để nhúng Desmos ngay trong bài, cần cấu hình API key.', 'To embed Desmos in this panel, configure an API key.')}</Text>
-        <Text className="mt-2 text-center font-sans text-label text-muted">{L('Đăng ký key tại desmos.com/my-api rồi đặt EXPO_PUBLIC_DESMOS_API_KEY trong môi trường chạy web.', 'Request a key at desmos.com/my-api, then set EXPO_PUBLIC_DESMOS_API_KEY in the web environment.')}</Text>
+      <View style={{ width: '100%', height: 'min(72vh, 680px)', minHeight: 440, borderRadius: 16, overflow: 'hidden' }}>
+        <iframe
+          src="https://www.desmos.com/calculator?embed"
+          style={{ width: '100%', height: '100%', border: '1px solid #E5E7EB', borderRadius: 16 }}
+          title="Desmos Graphing Calculator"
+        />
       </View>
     );
   }
@@ -66,7 +69,7 @@ export function DesmosEmbed() {
   return (
     <View>
       {error ? <Text className="mb-2 font-sans text-label text-danger">{L('Chưa tải được Desmos. Hãy kiểm tra kết nối mạng và API key.', 'Could not load Desmos. Check the network and API key.')}</Text> : null}
-      <div ref={host} style={{ width: '100%', height: 'min(72vh, 680px)', minHeight: 440, borderRadius: 16, overflow: 'hidden', border: '1px solid #E7DED0' }} />
+      <div ref={host} style={{ width: '100%', height: 'min(72vh, 680px)', minHeight: 440, borderRadius: 16, overflow: 'hidden', border: '1px solid #F3F0FB' }} />
     </View>
   );
 }

@@ -33,8 +33,8 @@ export function ActivityList({ items, emptyText }: { items: FeedItem[]; emptyTex
     <View>
       {items.map((item) => (
         <View key={item.id} className="flex-row items-center gap-3 border-b border-border py-3">
-          <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: '#FFF4CF' }}>
-            <Icon name={KIND_ICON[item.kind]} size={18} color="#8C6A1F" />
+          <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: '#F1ECFF' }}>
+            <Icon name={KIND_ICON[item.kind]} size={18} color="#6A4BD9" />
           </View>
           <View className="min-w-0 flex-1 gap-0.5">
             <Text numberOfLines={1} className="font-strong text-body text-ink">

@@ -43,7 +43,7 @@ export function ExamResourceLinks({ exam }: { exam: Exam }) {
   const resources = RESOURCES[exam];
 
   return (
-    <View style={{ gap: 10, borderWidth: 1, borderColor: '#E8DFD2', borderRadius: 16, backgroundColor: '#FFFDF9', padding: 16 }}>
+    <View style={{ gap: 10, borderWidth: 1, borderColor: '#F3F0FB', borderRadius: 16, backgroundColor: '#F3F0FB', padding: 16 }}>
       <View style={{ gap: 3 }}>
         <Text style={{ fontSize: 15, fontWeight: '800', color: '#29251F' }}>{L('Kho đề và phòng thi trên Band 9', 'Official tests and practice rooms on Band 9')}</Text>
         <Text style={{ fontSize: 12, lineHeight: 18, color: '#71685D' }}>
@@ -60,16 +60,16 @@ export function ExamResourceLinks({ exam }: { exam: Exam }) {
               flex: 1,
               minWidth: 220,
               borderWidth: 1,
-              borderColor: hovered ? '#D7B764' : '#ECE6DC',
+              borderColor: hovered ? '#D7B764' : '#F3F0FB',
               borderRadius: 12,
-              backgroundColor: hovered ? '#FFFAED' : '#FFFFFF',
+              backgroundColor: hovered ? '#F3F0FB' : '#FFFFFF',
               paddingHorizontal: 12,
               paddingVertical: 10,
             })}
           >
-            <Text style={{ fontSize: 13, fontWeight: '800', color: '#3C3325' }}>{L(resource.label.vi, resource.label.en)} →</Text>
+            <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350' }}>{L(resource.label.vi, resource.label.en)} →</Text>
             <Text style={{ marginTop: 3, fontSize: 11, lineHeight: 16, color: '#71685D' }}>{L(resource.detail.vi, resource.detail.en)}</Text>
-            <Text style={{ marginTop: 5, fontSize: 10, fontWeight: '700', color: '#9A7935' }}>{resource.source}</Text>
+            <Text style={{ marginTop: 5, fontSize: 10, fontWeight: '700', color: '#6A4BD9' }}>{resource.source}</Text>
           </Pressable>
         ))}
       </View>

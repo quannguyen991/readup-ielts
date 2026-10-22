@@ -33,7 +33,7 @@ type Theme = {
 
 const THEMES: Record<IslandId, Theme> = {
   math: { sky: ['#0b1030', '#2a2a78'], far: '#1c1f55', near: '#2d2f7a', ground: '#23245e', groundTop: '#6366f1', accent: '#a5b4fc' },
-  verbal: { sky: ['#2b0f2e', '#b84a62'], far: '#4a1d3f', near: '#6e2a4f', ground: '#4b2a1e', groundTop: '#c0845a', accent: '#fda4af' },
+  verbal: { sky: ['#2b0f2e', '#b84a62'], far: '#4a1d3f', near: '#6e2a4f', ground: '#2B2350', groundTop: '#c0845a', accent: '#fda4af' },
   vocab: { sky: ['#06170f', '#14432c'], far: '#0c2a1c', near: '#123d27', ground: '#1f3d1a', groundTop: '#4ade80', accent: '#fde047' },
   listen: { sky: ['#06202e', '#1b6f8c'], far: '#0e3b4f', near: '#15546e', ground: '#1d3b3a', groundTop: '#5eead4', accent: '#7dd3fc' },
   translate: { sky: ['#0a1433', '#3b4f9a'], far: '#1b2a5c', near: '#243a78', ground: '#6b4a2f', groundTop: '#c9a36b', accent: '#fde68a' },
@@ -227,7 +227,7 @@ export function mountIsland(
 
     if (id === 'translate') {
       // Trăng + tia hải đăng quét qua bầu trời.
-      ctx.fillStyle = '#fef9c3';
+      ctx.fillStyle = '#F3F0FB';
       ctx.beginPath();
       ctx.arc(W * 0.8, H * 0.18, 9, 0, Math.PI * 2);
       ctx.fill();
@@ -270,7 +270,7 @@ export function mountIsland(
       for (let k = 0; k < W; k += 6) px(k + ((time * 10) % 6), gy + 6 + ((k / 6) % 3) * 5, 3, 1, 'rgba(191,219,254,0.6)');
       px(0, gy - 4, W, 4, theme.ground);
       px(0, gy - 4, W, 1, theme.groundTop);
-      for (let k = -((camX % 24) + 24); k < W; k += 24) px(k, gy, 2, 12, '#4a3220');
+      for (let k = -((camX % 24) + 24); k < W; k += 24) px(k, gy, 2, 12, '#2B2350');
       return;
     }
     px(0, gy, W, H - gy, theme.ground);
@@ -302,7 +302,7 @@ export function mountIsland(
           px(x - 1, gy - 5, 3, 2, k % 2 ? '#f472b6' : '#fde047');
           break;
         case 'verbal':
-          px(x, gy - 18, 1, 18, '#3b2a20');
+          px(x, gy - 18, 1, 18, '#2B2350');
           px(x - 2, gy - 21, 5, 3, rgba('#fde68a', 0.6 + 0.4 * Math.sin(time * 3 + k)));
           break;
         case 'math':

@@ -143,11 +143,11 @@ export function SceneAtmosphereToggle({ sceneId, ambience, compact = false, scre
             />
           ) : (
             <>
-              <Pressable accessibilityRole="button" accessibilityLabel={L('Giảm âm lượng nền', 'Lower ambience volume')} onPress={() => setVolume((v) => Math.max(0, Math.round((v - 0.1) * 10) / 10))} style={{ width: 28, height: 28, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EEE7D9' }}>
+              <Pressable accessibilityRole="button" accessibilityLabel={L('Giảm âm lượng nền', 'Lower ambience volume')} onPress={() => setVolume((v) => Math.max(0, Math.round((v - 0.1) * 10) / 10))} style={{ width: 28, height: 28, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
                 <Text style={{ fontFamily: readingFont.sansBold, fontSize: 16, color: '#302D25' }}>−</Text>
               </Pressable>
               <Text accessibilityLiveRegion="polite" style={{ minWidth: 29, textAlign: 'center', fontFamily: readingFont.sansSemi, fontSize: 10.5, color: '#777267' }}>{Math.round(volume * 100)}%</Text>
-              <Pressable accessibilityRole="button" accessibilityLabel={L('Tăng âm lượng nền', 'Raise ambience volume')} onPress={() => setVolume((v) => Math.min(0.7, Math.round((v + 0.1) * 10) / 10))} style={{ width: 28, height: 28, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EEE7D9' }}>
+              <Pressable accessibilityRole="button" accessibilityLabel={L('Tăng âm lượng nền', 'Raise ambience volume')} onPress={() => setVolume((v) => Math.min(0.7, Math.round((v + 0.1) * 10) / 10))} style={{ width: 28, height: 28, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
                 <Text style={{ fontFamily: readingFont.sansBold, fontSize: 16, color: '#302D25' }}>+</Text>
               </Pressable>
             </>

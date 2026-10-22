@@ -74,8 +74,8 @@ export default function HubProgress() {
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
         {[
           { label: 'Âm đã vững', value: `${Object.values(best).filter((v) => v >= 80).length}/${PHONEMES.length}`, tone: '#16A34A', bg: '#DCFCE7' },
-          { label: 'Lượt luyện âm', value: String(Object.values(tries).reduce((a, b) => a + b, 0)), tone: '#8C531B', bg: '#FDF1E0' },
-          { label: 'Cúp', value: String(trophyScore), tone: '#B45309', bg: '#FEF3C7' },
+          { label: 'Lượt luyện âm', value: String(Object.values(tries).reduce((a, b) => a + b, 0)), tone: '#6A4BD9', bg: '#F3F0FB' },
+          { label: 'Cúp', value: String(trophyScore), tone: '#6A4BD9', bg: '#F3F0FB' },
           { label: 'Đã lưu', value: String(wordBookmarks.length + saved.length), tone: '#0369A1', bg: '#E0F2FE' },
         ].map((x) => (
           <View key={x.label} style={[GLASS_CARD, { flexBasis: '47%', flexGrow: 1, padding: 14, gap: 4 }]}>
@@ -94,8 +94,8 @@ export default function HubProgress() {
             <Text style={{ color: HUB.muted, fontSize: 12 }}>Chuẩn đánh giá quốc tế CEFR & IELTS Examiner</Text>
           </View>
           <View style={{ alignItems: 'flex-end', gap: 2 }}>
-            <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: 'rgba(14, 165, 233, 0.25)', borderWidth: 1, borderColor: '#8C531B' }}>
-              <Text style={{ color: '#8C531B', fontSize: 14, fontWeight: '800' }}>IELTS 7.5 • C1</Text>
+            <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: 'rgba(14, 165, 233, 0.25)', borderWidth: 1, borderColor: '#6A4BD9' }}>
+              <Text style={{ color: '#6A4BD9', fontSize: 14, fontWeight: '800' }}>IELTS 7.5 • C1</Text>
             </View>
             <Text style={{ color: '#16A34A', fontSize: 10, fontWeight: '700' }}>EPS: 82/100</Text>
           </View>
@@ -110,7 +110,7 @@ export default function HubProgress() {
                   <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '700' }}>{dim.name}</Text>
                   <Text style={{ color: HUB.muted, fontSize: 11 }}>({dim.nameEn})</Text>
                 </View>
-                <Text style={{ color: dim.score >= 80 ? '#16A34A' : '#B45309', fontSize: 13, fontWeight: '800' }}>
+                <Text style={{ color: dim.score >= 80 ? '#16A34A' : '#6A4BD9', fontSize: 13, fontWeight: '800' }}>
                   {dim.score}%
                 </Text>
               </View>
@@ -208,7 +208,7 @@ export default function HubProgress() {
               backgroundColor: bottomTab === 'leaderboard' ? HUB.glassStrong : 'transparent',
             }}
           >
-            <Icon name="star" size={16} color={bottomTab === 'leaderboard' ? '#B45309' : HUB.muted} />
+            <Icon name="star" size={16} color={bottomTab === 'leaderboard' ? '#6A4BD9' : HUB.muted} />
             <Text style={{ color: bottomTab === 'leaderboard' ? HUB.ink : HUB.muted, fontSize: 13, fontWeight: '700' }}>
               Giải đấu Kim Cương ({trophyScore} 🏆)
             </Text>
@@ -240,7 +240,7 @@ export default function HubProgress() {
           <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Bảng Xếp Hạng Tuần Này</Text>
-              <Text style={{ color: '#B45309', fontSize: 12, fontWeight: '800' }}>🏆 Giải 10,000+</Text>
+              <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>🏆 Giải 10,000+</Text>
             </View>
 
             {[
@@ -260,18 +260,18 @@ export default function HubProgress() {
                   borderRadius: 10,
                   backgroundColor: r.isMe ? 'rgba(14, 165, 233, 0.2)' : HUB.glassStrong,
                   borderWidth: r.isMe ? 1 : 0,
-                  borderColor: '#8C531B',
+                  borderColor: '#6A4BD9',
                 }}
               >
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                  <Text style={{ color: r.rank <= 3 ? '#B45309' : HUB.muted, fontSize: 14, fontWeight: '800' }}>
+                  <Text style={{ color: r.rank <= 3 ? '#6A4BD9' : HUB.muted, fontSize: 14, fontWeight: '800' }}>
                     #{r.rank}
                   </Text>
-                  <Text style={{ color: r.isMe ? '#8C531B' : HUB.ink, fontSize: 13, fontWeight: r.isMe ? '800' : '600' }}>
+                  <Text style={{ color: r.isMe ? '#6A4BD9' : HUB.ink, fontSize: 13, fontWeight: r.isMe ? '800' : '600' }}>
                     {r.name}
                   </Text>
                 </View>
-                <Text style={{ color: '#B45309', fontSize: 13, fontWeight: '800' }}>{r.points} 🏆</Text>
+                <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '800' }}>{r.points} 🏆</Text>
               </View>
             ))}
           </View>

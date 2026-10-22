@@ -30,6 +30,10 @@ export async function POST(request: Request): Promise<Response> {
       referrer?: unknown;
       width?: unknown;
       signedIn?: unknown;
+      utm_source?: unknown;
+      utm_medium?: unknown;
+      utm_campaign?: unknown;
+      utm_content?: unknown;
     } | null;
     if (!body || typeof body.visitor !== 'string' || !ID.test(body.visitor) || typeof body.path !== 'string') return done;
 
@@ -39,6 +43,7 @@ export async function POST(request: Request): Promise<Response> {
     const country = (request.headers.get('x-vercel-ip-country') ?? '').slice(0, 2).toUpperCase() || null;
 
     const db = getSupabaseAdmin() as unknown as SupabaseClient;
+    const cleanStr = (v: unknown) => (typeof v === 'string' ? v.slice(0, 100).trim() || null : null);
     const { error } = await db.from('page_views').insert({
       visitor: body.visitor,
       session: typeof body.session === 'string' && ID.test(body.session) ? body.session : null,
@@ -49,6 +54,10 @@ export async function POST(request: Request): Promise<Response> {
       referrer: referrerHost(typeof body.referrer === 'string' ? body.referrer : null, host),
       country,
       signed_in: body.signedIn === true,
+      utm_source: cleanStr(body.utm_source),
+      utm_medium: cleanStr(body.utm_medium),
+      utm_campaign: cleanStr(body.utm_campaign),
+      utm_content: cleanStr(body.utm_content),
     });
     if (error && error.code !== 'PGRST205' && error.code !== '42P01') console.warn('[track]', error.message);
   } catch (err) {

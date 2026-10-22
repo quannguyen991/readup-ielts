@@ -68,7 +68,7 @@ function ToggleRow({ label, hint, on, disabled, busy, onPress }: { label: string
         {hint ? <Text className="mt-0.5 font-sans text-label text-muted">{hint}</Text> : null}
       </View>
       <View style={{ width: 46, height: 28, borderRadius: 999, padding: 3, backgroundColor: on ? '#0F1D33' : '#D9D2C3', justifyContent: 'center' }}>
-        <View style={{ width: 22, height: 22, borderRadius: 999, backgroundColor: on ? themedHex('#B8955A') : '#FFFFFF', alignSelf: on ? 'flex-end' : 'flex-start' }} />
+        <View style={{ width: 22, height: 22, borderRadius: 999, backgroundColor: on ? themedHex('#8B6CF0') : '#FFFFFF', alignSelf: on ? 'flex-end' : 'flex-start' }} />
       </View>
     </Pressable>
   );

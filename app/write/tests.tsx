@@ -63,7 +63,7 @@ const BAND_FILTERS = [
 
 const PAGE = 8;
 const GREEN = '#16A34A';
-const CARD_TONE = { ink: '#0F1D33', mid: '#B8955A', soft: '#FFFFFF' };
+const CARD_TONE = { ink: '#0F1D33', mid: '#8B6CF0', soft: '#FFFFFF' };
 
 export default function WritingLibraryScreen() {
   const [tab, setTab] = useState<Tab>('ielts_task1');
@@ -301,9 +301,9 @@ function StatusTab({ label, on, onPress }: { label: string; on: boolean; onPress
       accessibilityRole="tab"
       aria-selected={on}
       className="pb-2.5"
-      style={{ borderBottomWidth: 2.5, borderBottomColor: on ? '#EA580C' : 'transparent' }}
+      style={{ borderBottomWidth: 2.5, borderBottomColor: on ? '#6A4BD9' : 'transparent' }}
     >
-      <Text className="font-nun-strong" style={{ fontSize: 15, color: on ? '#EA580C' : '#6B7280' }}>{label}</Text>
+      <Text className="font-nun-strong" style={{ fontSize: 15, color: on ? '#6A4BD9' : '#6B7280' }}>{label}</Text>
     </Pressable>
   );
 }

@@ -3,6 +3,7 @@ import type { ListeningTest } from '@/services/listening/types';
 import band9T1 from './band9-t1.json';
 import sampleS1 from './sample-s1.json';
 import studentLifeAndTravel from './student-life-and-travel.json';
+import mockListening02 from './mock-listening-02.json';
 import { ORIGINAL_TOPIC_TESTS } from './original-topics';
 
 /**
@@ -14,6 +15,7 @@ export const LISTENING_TESTS: ListeningTest[] = [
   sampleS1 as ListeningTest,
   band9T1 as ListeningTest,
   studentLifeAndTravel as ListeningTest,
+  mockListening02 as ListeningTest,
   ...ORIGINAL_TOPIC_TESTS,
 ];
 

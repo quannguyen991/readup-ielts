@@ -48,8 +48,8 @@ export default function ComingSoonTutor() {
             <CuteBulb size={52} />
           </View>
           <View style={{ flex: 1, minWidth: 0, gap: 6 }}>
-            <View style={{ alignSelf: 'flex-start', paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: '#FEF3C7' }}>
-              <Text style={{ color: '#B45309', fontSize: 11, fontWeight: '800' }}>{L('ĐANG CHUẨN BỊ', 'COMING SOON')}</Text>
+            <View style={{ alignSelf: 'flex-start', paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
+              <Text style={{ color: '#6A4BD9', fontSize: 11, fontWeight: '800' }}>{L('ĐANG CHUẨN BỊ', 'COMING SOON')}</Text>
             </View>
             <Text style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>{copy.desc}</Text>
           </View>

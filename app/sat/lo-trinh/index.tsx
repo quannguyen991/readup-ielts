@@ -120,9 +120,9 @@ export default function SatRoadmapScreen() {
                   onPress={() => setTrack(t.id)}
                   className="rounded-2xl px-4 py-2.5 transition-all"
                   style={{
-                    backgroundColor: active ? '#2A241A' : '#F6F1E7',
+                    backgroundColor: active ? '#2B2350' : '#F3F0FB',
                     borderWidth: 1.5,
-                    borderColor: active ? '#2A241A' : '#E8E1D6',
+                    borderColor: active ? '#2B2350' : '#F3F0FB',
                   }}
                 >
                   <Text className="font-heavy text-label" style={{ color: active ? '#FFFFFF' : '#6B6255' }}>
@@ -223,7 +223,7 @@ export default function SatRoadmapScreen() {
                   onPress={() => setVocabPhaseFilter('all')}
                   className="rounded-full px-3.5 py-1.5"
                   style={{
-                    backgroundColor: vocabPhaseFilter === 'all' ? '#B94A70' : '#F3EEE5',
+                    backgroundColor: vocabPhaseFilter === 'all' ? '#B94A70' : '#F3F0FB',
                   }}
                 >
                   <Text
@@ -239,7 +239,7 @@ export default function SatRoadmapScreen() {
                     onPress={() => setVocabPhaseFilter(p.phase)}
                     className="rounded-full px-3.5 py-1.5"
                     style={{
-                      backgroundColor: vocabPhaseFilter === p.phase ? p.color : '#F3EEE5',
+                      backgroundColor: vocabPhaseFilter === p.phase ? p.color : '#F3F0FB',
                     }}
                   >
                     <Text
@@ -319,7 +319,7 @@ export default function SatRoadmapScreen() {
                   <View
                     key={d.key}
                     className="rounded-xl px-3 py-2"
-                    style={{ backgroundColor: '#F8F5EE', borderWidth: 1, borderColor: '#EAE2D2' }}
+                    style={{ backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F3F0FB' }}
                   >
                     <Text className="font-heavy text-label text-ink">{d.key}</Text>
                     <Text className="font-sans text-tiny text-muted">{d.labelVi} · {d.percent}</Text>
@@ -334,7 +334,7 @@ export default function SatRoadmapScreen() {
             style={{
               marginTop: 16,
               borderRadius: 22,
-              backgroundColor: '#FFFBF0',
+              backgroundColor: '#F3F0FB',
               borderWidth: 1.5,
               borderColor: '#F5DCAD',
               padding: 20,
@@ -373,7 +373,7 @@ export default function SatRoadmapScreen() {
                 <View
                   key={unit.unit}
                   className="rounded-[20px] bg-white p-5"
-                  style={{ borderWidth: 1, borderColor: '#F2EEE6', ...CARD }}
+                  style={{ borderWidth: 1, borderColor: '#F3F0FB', ...CARD }}
                 >
                   <View className="flex-row items-baseline justify-between gap-2">
                     <View className="flex-row items-center gap-2">
@@ -404,7 +404,7 @@ export default function SatRoadmapScreen() {
                     <Pressable
                       onPress={() => router.push(`/sat-rw/${unit.unit}` as never)}
                       className="rounded-xl px-4 py-2"
-                      style={{ backgroundColor: '#2A241A' }}
+                      style={{ backgroundColor: '#2B2350' }}
                     >
                       <Text className="font-heavy text-label text-white">
                         {L(`Luyện Unit ${unit.unit} (24 câu) →`, `Practice Unit ${unit.unit} →`)}
@@ -591,7 +591,7 @@ export default function SatRoadmapScreen() {
                 <View
                   key={book.id}
                   className="rounded-[20px] bg-white p-4"
-                  style={{ borderWidth: 1, borderColor: '#F2EEE6', ...CARD }}
+                  style={{ borderWidth: 1, borderColor: '#F3F0FB', ...CARD }}
                 >
                   <View className="flex-row items-baseline justify-between gap-2">
                     <View className="flex-row items-center gap-2">
@@ -644,7 +644,7 @@ function VocabUnitCard({
       className="rounded-[20px] bg-white p-5"
       style={{
         borderWidth: 1,
-        borderColor: '#F2EEE6',
+        borderColor: '#F3F0FB',
         ...CARD,
       }}
     >
@@ -679,9 +679,9 @@ function VocabUnitCard({
                 key={lv}
                 className="rounded-full px-2 py-0.5"
                 style={{
-                  backgroundColor: isPassed ? '#E7F7EF' : b ? '#FEF8EE' : '#F3EEE5',
+                  backgroundColor: isPassed ? '#E7F7EF' : b ? '#F3F0FB' : '#F3F0FB',
                   borderWidth: 1,
-                  borderColor: isPassed ? '#22A06B' : b ? '#C49746' : '#E8E1D6',
+                  borderColor: isPassed ? '#22A06B' : b ? '#C49746' : '#F3F0FB',
                 }}
               >
                 <Text
@@ -716,7 +716,7 @@ function VocabUnitCard({
         <Pressable
           onPress={() => router.push(`/vocabulary/sat-quiz/${unit.slug}` as never)}
           className="rounded-xl px-4 py-2"
-          style={{ backgroundColor: '#2A241A' }}
+          style={{ backgroundColor: '#2B2350' }}
         >
           <Text className="font-heavy text-label text-white">
             ⚡ {L('Làm Quiz 3 mức →', 'Take 3-Level Quiz →')}
@@ -761,9 +761,9 @@ function ChapterNode({
           borderRadius: 38,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: isDone ? '#E7F7EF' : isNext ? '#FFF3CD' : '#FFFFFF',
+          backgroundColor: isDone ? '#E7F7EF' : isNext ? '#F3F0FB' : '#FFFFFF',
           borderWidth: isNext ? 3 : 2,
-          borderColor: isDone ? '#22A06B' : isNext ? '#D79B22' : '#E9DFCC',
+          borderColor: isDone ? '#22A06B' : isNext ? '#6A4BD9' : '#F3F0FB',
           boxShadow: isNext ? '0 5px 12px rgba(166,115,20,0.18)' : '0 2px 7px rgba(30,41,59,0.08)',
         } as object}
       >
@@ -788,7 +788,7 @@ function ChapterNode({
           </View>
         ) : null}
       </View>
-      <Text className="mt-1 font-semi text-label uppercase" style={{ color: isNext ? '#9A6810' : '#81796D' }}>
+      <Text className="mt-1 font-semi text-label uppercase" style={{ color: isNext ? '#6A4BD9' : '#81796D' }}>
         {L(`CHỦ ĐỀ ${chapter.n}`, `TOPIC ${chapter.n}`)}
       </Text>
       <Text className="font-heavy text-center text-body text-ink" numberOfLines={2}>
@@ -799,7 +799,7 @@ function ChapterNode({
       </View>
       <Text
         className="mt-1 font-semi text-center text-label"
-        style={{ color: isDone ? '#16814E' : isNext ? '#9A6810' : '#81796D' }}
+        style={{ color: isDone ? '#16814E' : isNext ? '#6A4BD9' : '#81796D' }}
       >
         {isDone
           ? L('Hoàn thành', 'Complete')

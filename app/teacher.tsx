@@ -358,7 +358,7 @@ function CohortImport() {
       <Card className="mt-5">
         <View className="flex-row items-center gap-2.5">
           <View aria-hidden>
-            <SealIcon name="clipboard" color="#A8843F" size={36} />
+            <SealIcon name="clipboard" color="#6A4BD9" size={36} />
           </View>
           <Text className="min-w-0 flex-1 font-strong text-body text-ink">{L('Dán bản xuất của học sinh', 'Paste student exports')}</Text>
         </View>
@@ -403,7 +403,7 @@ function CohortImport() {
               {teachable.length > 0 ? (
                 <View aria-hidden>
                   <Motion kind="pop">
-                    <Label text={L('Buổi tới 🎯', 'Next lesson 🎯')} color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
+                    <Label text={L('Buổi tới 🎯', 'Next lesson 🎯')} color="#F2B632" ink="#2B2350" tilt={-4} size={11} />
                   </Motion>
                 </View>
               ) : null}
@@ -435,7 +435,7 @@ function CohortImport() {
           <View className="mt-6">
             <View className="flex-row items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="list" color="#B07A3A" size={38} />
+                <SealIcon name="list" color="#6A4BD9" size={38} />
               </View>
               <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Toàn bộ kỹ năng đã quan sát', 'All observed skills')}</Text>
             </View>

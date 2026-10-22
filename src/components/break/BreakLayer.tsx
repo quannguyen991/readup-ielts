@@ -145,7 +145,7 @@ function BreakOverlay() {
           right: 0,
           bottom: 0,
           zIndex: 95,
-          backgroundColor: '#FBF6EE',
+          backgroundColor: '#F3F0FB',
           alignItems: 'center',
           justifyContent: 'center',
           padding: 24,

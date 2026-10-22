@@ -1,9 +1,9 @@
+import { GlossOrb } from '@/components/ui/GlossOrb';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Appear } from '@/components/motion/Motion';
-import { PerchCat } from '@/components/mascot/PerchCat';
 import { Screen } from '@/components/layout/Screen';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Badge, Button, Card, Icon, StickerCard } from '@/components/ui';
@@ -187,10 +187,9 @@ function EntryCard({
       className="min-w-[260px] flex-1 rounded-[18px] border border-border bg-surface p-5"
       style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
     >
-      <PerchCat pose={tint === 'primary' ? 'sit' : 'curl'} size={56} side="right" inset={18} />
       <View
         className="h-11 w-11 items-center justify-center rounded-xl"
-        style={{ backgroundColor: tint === 'primary' ? '#FBF6EE' : '#FBF6ED' }}
+        style={{ backgroundColor: tint === 'primary' ? '#F3F0FB' : '#F3F0FB' }}
       >
         <Icon name={icon} size={20} color={strong} strokeWidth={2} />
       </View>
@@ -228,11 +227,8 @@ function ModeCard({
   const { L } = useL();
   return (
     <Pressable onPress={onPress} accessibilityRole="button">
-      <PerchCat pose="stretch" size={64} side="right" inset={20} />
-      <StickerCard colors={colors} style={{ height: '100%' }}>
-        <View className="h-12 w-12 items-center justify-center rounded-pill bg-white/90">
-          <Icon name={icon} size={22} color={colors[1]} strokeWidth={1.9} />
-        </View>
+      <StickerCard colors={colors} artSeed={'mode-' + title} style={{ height: '100%' }}>
+        <GlossOrb icon={icon} tone={colors} size={48} />
         <Text className="mt-3 font-heavy text-cardTitle text-white">{title}</Text>
         <Text className="mt-1.5 font-sans text-body text-white/85">{description}</Text>
 

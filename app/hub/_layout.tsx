@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Platform, View } from 'react-native';
 import { Slot } from 'expo-router';
 
+import { RewardWatcher } from '@/components/hub/RewardWatcher';
 import { HUB } from '@/components/hub/theme';
 
 /**
@@ -45,6 +46,7 @@ export default function HubLayout() {
   return (
     <View style={{ flex: 1, backgroundColor: HUB.bg[0] }}>
       <Slot />
+      <RewardWatcher />
     </View>
   );
 }

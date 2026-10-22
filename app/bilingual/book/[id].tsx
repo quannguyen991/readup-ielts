@@ -15,7 +15,7 @@ import { useL } from '@/i18n/useL';
 
 const INK = '#1E2748';
 const MUTED = '#68718A';
-const GOLD = '#A17C43';
+const GOLD = '#6A4BD9';
 
 export default function PersonalBookReaderScreen() {
   useReadingFonts();
@@ -114,12 +114,12 @@ export default function PersonalBookReaderScreen() {
         <Text className="font-semi" style={{ color: INK, fontSize: 14 }}>{L('Kệ sách', 'Bookshelf')}</Text>
       </Pressable>
 
-      <View className="rounded-[22px] bg-white p-5" style={{ borderWidth: 1, borderColor: '#EEE7DB', ...(PlatformShadow as object) }}>
+      <View className="rounded-[22px] bg-white p-5" style={{ borderWidth: 1, borderColor: '#F3F0FB', ...(PlatformShadow as object) }}>
         <Text className="font-heavy" style={{ color: INK, fontSize: 25, lineHeight: 32 }}>{book.title}</Text>
         {book.author ? <Text className="mt-1 font-semi" style={{ color: MUTED, fontSize: 14 }}>{book.author}</Text> : null}
         <View className="mt-4 flex-row flex-wrap items-center justify-between gap-3">
           <Text className="font-mid" style={{ color: MUTED, fontSize: 13 }}>{L(`Trang ${page + 1} / ${totalPages}`, `Page ${page + 1} / ${totalPages}`)}</Text>
-          <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F6F2EA' }}>
+          <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F3F0FB' }}>
             <ModeButton active={showParallel} label={L('Song song', 'Parallel')} onPress={() => setShowParallel(true)} />
             <ModeButton active={!showParallel} label={L('Chỉ tiếng Anh', 'English only')} onPress={() => setShowParallel(false)} />
           </View>
@@ -127,10 +127,10 @@ export default function PersonalBookReaderScreen() {
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-4">
-        <View className="rounded-[22px] bg-white p-5" style={{ flex: 1, minWidth: 290, borderWidth: 1, borderColor: '#EEE7DB', ...PlatformShadow }}>
+        <View className="rounded-[22px] bg-white p-5" style={{ flex: 1, minWidth: 290, borderWidth: 1, borderColor: '#F3F0FB', ...PlatformShadow }}>
           <View className="flex-row items-center justify-between gap-2">
             <Text className="font-heavy" style={{ color: GOLD, fontSize: 11, letterSpacing: 1.2 }}>{L('NGUYÊN TÁC · ENGLISH', 'ORIGINAL · ENGLISH')}</Text>
-            <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe trang tiếng Anh', 'Listen to English page')} onPress={speakPage} className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: '#F8F1E4' }}>
+            <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe trang tiếng Anh', 'Listen to English page')} onPress={speakPage} className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: '#F3F0FB' }}>
               <Icon name="volume" size={17} color={GOLD} strokeWidth={1.9} />
             </Pressable>
           </View>
@@ -140,7 +140,7 @@ export default function PersonalBookReaderScreen() {
         </View>
 
         {showParallel ? (
-          <View className="rounded-[22px] bg-white p-5" style={{ flex: 1, minWidth: 290, borderWidth: 1, borderColor: '#EEE7DB', ...PlatformShadow }}>
+          <View className="rounded-[22px] bg-white p-5" style={{ flex: 1, minWidth: 290, borderWidth: 1, borderColor: '#F3F0FB', ...PlatformShadow }}>
             <Text className="font-heavy" style={{ color: GOLD, fontSize: 11, letterSpacing: 1.2 }}>{L('BẢN ĐỌC TIẾNG VIỆT', 'VIETNAMESE')}</Text>
             {parallelText ? (
               <View className="mt-4">
@@ -148,7 +148,7 @@ export default function PersonalBookReaderScreen() {
                 <HoverGlossText text={parallelText} fontFamily={readingFont.body} fontSize={18} lineHeight={31} color={INK} />
               </View>
             ) : (
-              <View className="mt-4 rounded-2xl p-4" style={{ backgroundColor: '#FBF8F2' }}>
+              <View className="mt-4 rounded-2xl p-4" style={{ backgroundColor: '#F3F0FB' }}>
                 <Text className="font-sans" style={{ color: MUTED, fontSize: 14, lineHeight: 21 }}>
                   {L('Nhập bản PDF tiếng Việt của sách, hoặc dịch riêng trang đang đọc bằng AI.', 'Import the Vietnamese PDF edition, or translate the page you are reading with AI.')}
                 </Text>
@@ -165,7 +165,7 @@ export default function PersonalBookReaderScreen() {
 
       {notice ? <Text accessibilityLiveRegion="polite" className="mt-3 font-semi" style={{ color: MUTED, fontSize: 13, lineHeight: 19 }}>{notice}</Text> : null}
 
-      <View className="mt-4 flex-row items-center justify-between rounded-[20px] bg-white p-3" style={{ borderWidth: 1, borderColor: '#EEE7DB' }}>
+      <View className="mt-4 flex-row items-center justify-between rounded-[20px] bg-white p-3" style={{ borderWidth: 1, borderColor: '#F3F0FB' }}>
         <ReaderNav disabled={page <= 0} label={L('Trang trước', 'Previous')} icon="chevron-left" onPress={() => void changePage(page - 1)} />
         <Text className="font-mid" style={{ color: MUTED, fontSize: 12 }}>{L(`${Math.round(((page + 1) / totalPages) * 100)}% đã đọc`, `${Math.round(((page + 1) / totalPages) * 100)}% read`)}</Text>
         <ReaderNav disabled={page >= totalPages - 1} label={L('Trang sau', 'Next page')} icon="chevron-right" onPress={() => void changePage(page + 1)} />
@@ -189,7 +189,7 @@ function ModeButton({ active, label, onPress }: { active: boolean; label: string
 
 function ReaderNav({ disabled, label, icon, onPress }: { disabled: boolean; label: string; icon: 'chevron-left' | 'chevron-right'; onPress: () => void }) {
   return (
-    <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} className="flex-row items-center gap-1 rounded-pill px-3 py-2" style={{ backgroundColor: disabled ? '#F8F6F1' : '#F5ECD9', opacity: disabled ? 0.45 : 1 }}>
+    <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} className="flex-row items-center gap-1 rounded-pill px-3 py-2" style={{ backgroundColor: disabled ? '#F3F0FB' : '#F3F0FB', opacity: disabled ? 0.45 : 1 }}>
       {icon === 'chevron-left' ? <Icon name={icon} size={16} color={INK} strokeWidth={2.1} /> : null}
       <Text className="font-semi" style={{ color: INK, fontSize: 12 }}>{label}</Text>
       {icon === 'chevron-right' ? <Icon name={icon} size={16} color={INK} strokeWidth={2.1} /> : null}

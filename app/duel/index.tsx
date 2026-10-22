@@ -32,8 +32,8 @@ type ArcadeGame = { key: string; title: string; titleVi: string; detail: string;
 const ARCADE_GAMES: ArcadeGame[] = [
   { key: 'hack', title: 'Cyber Hack', titleVi: 'Cyber Hack', detail: 'Chọn mật mã, giải khóa kho thưởng, rồi nhắm đối thủ để lấy credit và blook.', detailEn: 'Set a password, crack reward caches, then target rivals to steal credits and blooks.', icon: '⌨️', tone: '#183A27', accent: '#65E848', category: 'solo', badge: 'Giải mã · đấu đối thủ', badgeEn: 'Hacking · rival raids', cover: require('../../assets/game-covers/cyber-hack.jpg') },
   { key: 'fishing', title: 'Fishing Frenzy', titleVi: 'Fishing Frenzy', detail: 'Thả câu, chờ cá cắn, kéo lên rồi đấu cân nặng với các đối thủ.', detailEn: 'Cast, wait for a bite, reel in your catch and race rivals by weight.', icon: '🎣', tone: '#0C5364', accent: '#89F2E8', category: 'solo', badge: 'Câu cá · sưu tầm', badgeEn: 'Fishing · collection', cover: require('../../assets/game-covers/fishing-frenzy.jpg') },
-  { key: 'forge', title: 'Spell Forge', titleVi: 'Lò Rèn Từ Ngữ', detail: 'Gõ từ, canh nhịp đập búa để rèn bùa, giữ nhiệt lò và chọn phép bổ trợ.', detailEn: 'Spell words, time hammer strikes, keep the furnace hot and choose enchantments.', icon: '🔥', tone: '#713D22', accent: '#FFC764', category: 'solo', badge: 'Canh nhịp · chế tạo bùa', badgeEn: 'Timing · charm crafting', cover: require('../../assets/game-covers/spell-forge.jpg') },
-  { key: 'dino', title: 'Dino Dig', titleVi: 'Đào Hóa Thạch', detail: 'Giải câu hỏi để đào, dùng máy dò và tự chọn ô có thể chứa xương hoặc bẫy.', detailEn: 'Answer to earn a dig, scan the grid and choose between fossils, treasure and traps.', icon: '🦕', tone: '#79502B', accent: '#F7D26B', category: 'solo', badge: 'Bản đồ · 12 ô đào', badgeEn: 'Expedition · 12 tiles', cover: require('../../assets/game-covers/dino-dig.jpg') },
+  { key: 'forge', title: 'Spell Forge', titleVi: 'Lò Rèn Từ Ngữ', detail: 'Gõ từ, canh nhịp đập búa để rèn bùa, giữ nhiệt lò và chọn phép bổ trợ.', detailEn: 'Spell words, time hammer strikes, keep the furnace hot and choose enchantments.', icon: '🔥', tone: '#2B2350', accent: '#FFC764', category: 'solo', badge: 'Canh nhịp · chế tạo bùa', badgeEn: 'Timing · charm crafting', cover: require('../../assets/game-covers/spell-forge.jpg') },
+  { key: 'dino', title: 'Dino Dig', titleVi: 'Đào Hóa Thạch', detail: 'Giải câu hỏi để đào, dùng máy dò và tự chọn ô có thể chứa xương hoặc bẫy.', detailEn: 'Answer to earn a dig, scan the grid and choose between fossils, treasure and traps.', icon: '🦕', tone: '#6A4BD9', accent: '#F7D26B', category: 'solo', badge: 'Bản đồ · 12 ô đào', badgeEn: 'Expedition · 12 tiles', cover: require('../../assets/game-covers/dino-dig.jpg') },
   { key: 'boss', title: 'Boss Raid', titleVi: 'Đột Kích Trùm', detail: 'Chọn nước đi, đỡ đòn phản công, hạ ba quái và chọn chiến lợi phẩm nâng cấp.', detailEn: 'Pick a move, block counterattacks, defeat three guardians and choose your loot upgrades.', icon: '🐉', tone: '#39275F', accent: '#E2B9FF', category: 'solo', badge: 'Đánh trùm · chiến thuật', badgeEn: 'Boss fight · strategy', cover: require('../../assets/game-covers/boss-raid.jpg') },
   { key: 'teams', title: 'Starboard Showdown', titleVi: 'Đấu đội Tinh Vân', detail: 'Các đội chọn ô bí mật, giải từ vựng và mở thưởng bất ngờ.', detailEn: 'Teams pick hidden tiles, solve vocabulary and reveal surprise bonuses.', icon: '🌌', tone: '#47316E', accent: '#F5D276', category: 'team', badge: '2–4 đội · chung màn hình', badgeEn: '2–4 teams · one screen', cover: require('../../assets/game-covers/starboard-showdown.jpg') },
   { key: 'live', title: 'Live Quiz Arena', titleVi: 'Đấu Quiz Live', detail: 'Tạo phòng, chia sẻ mã và đua trả lời cùng cả lớp.', detailEn: 'Host a room, share its code and race through questions together.', icon: '⚡', tone: '#5D2A9C', accent: '#FFD15C', category: 'live', badge: 'Trực tiếp · mã phòng', badgeEn: 'Live · room code', cover: require('../../assets/game-covers/live-quiz-arena.jpg') },
@@ -42,7 +42,7 @@ const ARCADE_GAMES: ArcadeGame[] = [
   { key: 'balloons', title: 'Balloon Dash', titleVi: 'Bóng Bay Từ Vựng', detail: 'Chọn nghĩa đúng trước khi quả bóng bay vụt khỏi màn hình.', detailEn: 'Choose the right meaning before the balloon drifts away.', icon: '🎈', tone: '#762554', accent: '#FFD4E8', category: 'solo', badge: 'Phản xạ · gợi nhớ', badgeEn: 'Reflex · recall', cover: require('../../assets/game-covers/balloon-dash.jpg') },
   { key: 'hangman', title: 'Word Vault', titleVi: 'Kho Từ Bí Ẩn', detail: 'Dựa vào gợi ý, mở từng chữ và giải từ trước khi hết tim.', detailEn: 'Use the clue, reveal letters and solve the word before hearts run out.', icon: '🔐', tone: '#4B3784', accent: '#E4D7FF', category: 'solo', badge: 'Gợi ý · chính tả', badgeEn: 'Clues · spelling', cover: require('../../assets/game-covers/word-vault.jpg') },
   { key: 'sentence', title: 'Sentence Builder', titleVi: 'Xếp Câu Thần Tốc', detail: 'Sắp xếp các ô từ để dựng lại câu ví dụ hoàn chỉnh.', detailEn: 'Rebuild example sentences from shuffled word tiles.', icon: '🪄', tone: '#12656C', accent: '#BDF4E6', category: 'solo', badge: 'Ngữ pháp · trật tự', badgeEn: 'Grammar · order', cover: require('../../assets/game-covers/sentence-builder.jpg') },
-  { key: 'cloze', title: 'Cloze Rush', titleVi: 'Điền Khuyết', detail: 'Đọc ví dụ thật rồi tìm từ phù hợp để lấp chỗ trống.', detailEn: 'Read a real example and find the word that completes the gap.', icon: '📝', tone: '#755522', accent: '#FFE7AA', category: 'solo', badge: 'Ngữ cảnh · nghĩa', badgeEn: 'Context · meaning', cover: require('../../assets/game-covers/cloze-rush.jpg') },
+  { key: 'cloze', title: 'Cloze Rush', titleVi: 'Điền Khuyết', detail: 'Đọc ví dụ thật rồi tìm từ phù hợp để lấp chỗ trống.', detailEn: 'Read a real example and find the word that completes the gap.', icon: '📝', tone: '#2B2350', accent: '#FFE7AA', category: 'solo', badge: 'Ngữ cảnh · nghĩa', badgeEn: 'Context · meaning', cover: require('../../assets/game-covers/cloze-rush.jpg') },
   { key: 'dictation', title: 'Dictation Dash', titleVi: 'Nghe Chép', detail: 'Nghe từ, viết đúng chính tả và nối dài chuỗi chuẩn.', detailEn: 'Listen, spell the word and build a clean streak.', icon: '🎧', tone: '#245D49', accent: '#CAF3D5', category: 'solo', badge: 'Nghe · chính tả', badgeEn: 'Listening · spelling', cover: require('../../assets/game-covers/dictation-dash.jpg') },
 ];
 
@@ -135,7 +135,7 @@ export default function DuelLobby() {
               placeholder={L('Tìm bộ từ…', 'Search word sets…')}
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-2.5 font-sans text-body text-ink"
-              style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8' }}
+              style={{ borderWidth: 1.5, borderColor: '#F3F0FB', backgroundColor: '#F3F0FB' }}
             />
             <View className="mt-3 flex-row flex-wrap gap-2">
               {shown.map((d) => {
@@ -145,7 +145,7 @@ export default function DuelLobby() {
                     key={d.slug}
                     onPress={() => setDeck(d.slug)}
                     className="rounded-pill px-3.5 py-2"
-                    style={{ backgroundColor: on ? color.primary : '#F9F6F1' }}
+                    style={{ backgroundColor: on ? color.primary : '#F3F0FB' }}
                   >
                     <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                       {en ? d.nameEn : d.name}
@@ -154,7 +154,7 @@ export default function DuelLobby() {
                 );
               })}
             </View>
-            {isCustomDeck ? <Text className="mt-2 font-semi text-label" style={{ color: '#9A582D' }}>{L('Bộ tự tạo chơi được trên máy này; phòng live cần bộ từ Band9 để mọi người cùng nhận câu hỏi.', 'Custom decks work on this device; live rooms need a Band9 deck so every player receives the same questions.')}</Text> : null}
+            {isCustomDeck ? <Text className="mt-2 font-semi text-label" style={{ color: '#6A4BD9' }}>{L('Bộ tự tạo chơi được trên máy này; phòng live cần bộ từ Band9 để mọi người cùng nhận câu hỏi.', 'Custom decks work on this device; live rooms need a Band9 deck so every player receives the same questions.')}</Text> : null}
             <Button
               className="mt-4 self-start"
               label={L('Tạo phòng và mời bạn', 'Create room & invite')}
@@ -169,12 +169,12 @@ export default function DuelLobby() {
           <View className="rounded-[22px] bg-white p-5" style={CARD}>
             <View className="flex-row flex-wrap items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="arrow-right" color="#B07A3A" size={40} />
+                <SealIcon name="arrow-right" color="#6A4BD9" size={40} />
               </View>
               <Text className="font-heavy text-sectionTitle text-ink">{L('Vào phòng', 'Join a room')}</Text>
               <View aria-hidden>
                 <Motion kind="pop" delay={0.2}>
-                  <Label text={L('Có mã? 🔑', 'Got a code? 🔑')} color="#F2B632" ink="#2A1B02" tilt={4} size={12} />
+                  <Label text={L('Có mã? 🔑', 'Got a code? 🔑')} color="#F2B632" ink="#2B2350" tilt={4} size={12} />
                 </Motion>
               </View>
             </View>
@@ -187,7 +187,7 @@ export default function DuelLobby() {
               placeholder={L('VD: K7Q2M', 'e.g. K7Q2M')}
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-3 text-center font-heavy text-sectionTitle text-ink"
-              style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8', letterSpacing: 6 }}
+              style={{ borderWidth: 1.5, borderColor: '#F3F0FB', backgroundColor: '#F3F0FB', letterSpacing: 6 }}
             />
             <Button className="mt-3 self-start" label={L('Vào phòng', 'Join')} disabled={!isRoomCode(joinCode)} onPress={() => router.push(`/duel/${joinCode}` as never)} />
           </View>

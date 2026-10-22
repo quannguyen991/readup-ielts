@@ -147,7 +147,7 @@ export function Flashcards<W extends StudyWord>({
             accessibilityLabel={saved ? L("Đã lưu vào sổ từ", "Saved to notebook") : L("Lưu vào sổ từ", "Save to notebook")}
             onPress={() => !saved && onSave(word)}
             className="h-10 flex-row items-center gap-1.5 rounded-pill px-3"
-            style={{ backgroundColor: saved ? "#ECFDF3" : "#F9F6F1" }}
+            style={{ backgroundColor: saved ? "#ECFDF3" : "#F3F0FB" }}
           >
             <Icon
               name={saved ? "check" : "bookmark"}
@@ -186,7 +186,7 @@ export function Flashcards<W extends StudyWord>({
           }}
           className="h-10 flex-row items-center gap-1.5 rounded-pill px-3"
           style={{
-            backgroundColor: order === "shuffled" ? "#FBF6EE" : "#F9F6F1",
+            backgroundColor: order === "shuffled" ? "#F3F0FB" : "#F3F0FB",
           }}
         >
           <Icon
@@ -214,7 +214,7 @@ export function Flashcards<W extends StudyWord>({
 
 const RATINGS: { label: string; labelEn: string; stage: WordStage; bg: string; ink: string }[] = [
   { label: "Quên", labelEn: "Forgot", stage: 0, bg: "#FDE2DF", ink: "#B42318" },
-  { label: "Mơ hồ", labelEn: "Fuzzy", stage: 1, bg: "#FDF0C8", ink: "#92400E" },
+  { label: "Mơ hồ", labelEn: "Fuzzy", stage: 1, bg: "#F3F0FB", ink: "#6A4BD9" },
   { label: "Nhớ rồi", labelEn: "Got it", stage: 2, bg: "#D9F2E3", ink: "#166534" },
 ];
 

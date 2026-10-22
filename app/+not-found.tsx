@@ -27,7 +27,7 @@ export default function NotFound() {
           <View aria-hidden style={{ alignItems: 'center' }}>
             <View style={{ marginBottom: -4, zIndex: 2 }}>
               <Motion kind="pop">
-                <Label text={L('Lạc đường rồi 🧭', 'Lost your way? 🧭')} color="#F2B632" ink="#2A1B02" tilt={-5} size={14} />
+                <Label text={L('Lạc đường rồi 🧭', 'Lost your way? 🧭')} color="#F2B632" ink="#2B2350" tilt={-5} size={14} />
               </Motion>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>

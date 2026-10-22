@@ -1,3 +1,4 @@
+import { MASCOTS_ON } from '@/components/mascot/mascot-switch';
 import React from 'react';
 
 import { CatPose, CatSticker } from './CatSticker';
@@ -31,6 +32,7 @@ export function PerchCat({
   /** Tỉ lệ chiều cao mèo nằm phía trên mép, tức chỗ chạm của mèo lên mép. Không truyền thì theo tư thế. */
   lift?: number;
 }) {
+  if (!MASCOTS_ON) return null;
   const ratio = lift ?? (CLINGING.includes(pose) ? 0.55 : 0.92);
   const edge = side === 'right' ? { right: inset } : { left: inset };
   return <CatSticker pose={pose} size={size} style={{ position: 'absolute', top: offset - size * ratio, ...edge }} />;

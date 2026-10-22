@@ -14,10 +14,10 @@ import { useL } from '@/i18n/useL';
 
 const INK = '#1E2748';
 const MUTED = '#68718A';
-const GOLD = '#A17C43';
+const GOLD = '#6A4BD9';
 const PANEL = {
   borderWidth: 1,
-  borderColor: '#EEE7DB',
+  borderColor: '#F3F0FB',
   ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 24px rgba(71,54,27,0.06)' } as object) : { elevation: 2 }),
 };
 
@@ -71,13 +71,13 @@ export default function BilingualStoryScreen() {
             <View style={{ flex: 1, minWidth: 280 }}>
               <View className="mb-2 flex-row items-center justify-between">
                 <Text className="font-heavy" style={{ color: GOLD, fontSize: 11, letterSpacing: 1.1 }}>ENGLISH · {String(index + 1).padStart(2, '0')}</Text>
-                <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe đoạn tiếng Anh', 'Listen to English paragraph')} onPress={() => speak(paragraph.en)} className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: '#F8F1E4' }}>
+                <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe đoạn tiếng Anh', 'Listen to English paragraph')} onPress={() => speak(paragraph.en)} className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: '#F3F0FB' }}>
                   <Icon name="volume" size={17} color={GOLD} strokeWidth={1.9} />
                 </Pressable>
               </View>
               <HoverGlossText text={paragraph.en} fontFamily={readingFont.body} fontSize={17} lineHeight={29} color={INK} onWordPress={(pick) => { setWordPick(pick); setWordParagraph(index); }} />
             </View>
-            <View style={{ flex: 1, minWidth: 280, borderLeftWidth: Platform.OS === 'web' ? 1 : 0, borderColor: '#F0EAE0', paddingLeft: Platform.OS === 'web' ? 16 : 0 }}>
+            <View style={{ flex: 1, minWidth: 280, borderLeftWidth: Platform.OS === 'web' ? 1 : 0, borderColor: '#F3F0FB', paddingLeft: Platform.OS === 'web' ? 16 : 0 }}>
               <Text className="mb-2 font-heavy" style={{ color: GOLD, fontSize: 11, letterSpacing: 1.1 }}>TIẾNG VIỆT · {String(index + 1).padStart(2, '0')}</Text>
               <Text style={{ color: INK, fontFamily: readingFont.body, fontSize: 17, lineHeight: 29 }}>{paragraph.vi}</Text>
             </View>

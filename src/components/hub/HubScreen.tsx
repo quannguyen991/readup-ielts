@@ -25,6 +25,7 @@ export function HubScreen({
   back,
   scroll = true,
   padBottom = 120,
+  wash = false,
 }: {
   title: string;
   subtitle?: string;
@@ -32,6 +33,8 @@ export function HubScreen({
   back?: boolean;
   scroll?: boolean;
   padBottom?: number;
+  /** Nền loang pastel (vài đốm màu mờ phía sau nội dung). Mặc định tắt để các màn khác không đổi. */
+  wash?: boolean;
 }) {
   const gems = useHubStore((s) => s.gems);
   const trophyScore = useHubStore((s) => s.trophyScore);
@@ -122,7 +125,7 @@ export function HubScreen({
             }}
           >
             <Text style={{ fontSize: 13 }}>🔥</Text>
-            <Text style={{ color: '#EA6A12', fontSize: 12, fontWeight: '800' }}>{displayStreak}</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>{displayStreak}</Text>
           </View>
 
           {/* 2. Gems 💎 */}
@@ -160,7 +163,7 @@ export function HubScreen({
             }}
           >
             <Text style={{ fontSize: 13 }}>🏆</Text>
-            <Text style={{ color: '#B45309', fontSize: 12, fontWeight: '800' }}>{displayTrophy}</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>{displayTrophy}</Text>
           </View>
         </View>
       </View>
@@ -218,7 +221,8 @@ export function HubScreen({
   );
 
   return (
-    <LinearGradient colors={COSMIC.bg as never} start={{ x: 0, y: 0 }} end={{ x: 0.8, y: 1 }} style={{ flex: 1 }}>
+    <LinearGradient colors={COSMIC.bg as never} start={{ x: 0, y: 0 }} end={{ x: 0.8, y: 1 }} style={{ flex: 1, overflow: 'hidden' }}>
+      {wash ? <WashBlobs /> : null}
       {header}
       {scroll ? (
         <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: padBottom }} showsVerticalScrollIndicator={false}>
@@ -230,3 +234,25 @@ export function HubScreen({
     </LinearGradient>
   );
 }
+
+/** Các đốm màu loang (hồng, cam, tím, xanh) vẽ bằng gradient tròn: mềm mà không tốn lớp blur. */
+function WashBlobs() {
+  const blob = (color: string, style: object) => (
+    <View
+      pointerEvents="none"
+      style={[
+        { position: 'absolute', borderRadius: 999, backgroundImage: `radial-gradient(closest-side, ${color}, rgba(255,255,255,0))` } as never,
+        style,
+      ]}
+    />
+  );
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+      {blob('rgba(255, 150, 190, 0.45)', { width: 420, height: 380, top: -120, left: -140 })}
+      {blob('rgba(255, 190, 120, 0.35)', { width: 360, height: 320, top: 180, right: -150 })}
+      {blob('rgba(170, 130, 255, 0.35)', { width: 420, height: 360, bottom: -160, left: -60 })}
+      {blob('rgba(120, 210, 255, 0.35)', { width: 320, height: 300, bottom: 40, right: -120 })}
+    </View>
+  );
+}
+

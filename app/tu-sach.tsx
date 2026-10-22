@@ -108,7 +108,7 @@ export default function BookshelfScreen() {
     <ScrollView style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} contentContainerStyle={{ paddingBottom: 48 }}>
       {isWeb ? <style>{FX_CSS}</style> : null}
       {/* Quà sách: đăng ký nhận một cuốn; học đủ thì mở toàn bộ tủ. */}
-      <View style={{ marginHorizontal: 16, marginTop: 16, padding: 16, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.35)', gap: 10 }}>
+      <View style={{ marginHorizontal: 16, marginTop: 16, padding: 16, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1, borderColor: 'rgba(139, 108, 240,0.35)', gap: 10 }}>
         <Text style={{ color: INK_G, fontFamily: SERIF, fontSize: 18 }}>{L('Quà khi học trên Band 9', 'Gifts for studying on Band 9')}</Text>
         <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 14, lineHeight: 20 }}>
           {access.state === 'guest'
@@ -123,7 +123,7 @@ export default function BookshelfScreen() {
             `Unlock the whole shelf: finish ${GIFT_QUEST_GOAL} tasks and ${GIFT_LESSON_GOAL} lessons. You have ${progress.questsDone}/${GIFT_QUEST_GOAL} tasks and ${progress.lessonsDone}/${GIFT_LESSON_GOAL} lessons.`,
           )}
         </Text>
-        <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(184,149,90,0.2)', overflow: 'hidden' }}>
+        <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(139, 108, 240,0.2)', overflow: 'hidden' }}>
           <View style={{ height: 8, width: `${Math.round(progress.ratio * 100)}%`, backgroundColor: GOLD_DEEP, borderRadius: 4 }} />
         </View>
         {progress.unlocked ? (
@@ -281,7 +281,7 @@ function BookCard({
               borderRadius: 3,
               overflow: 'hidden',
               transform: [{ translateY: hovered ? -4 : 0 }],
-              ...({ boxShadow: hovered ? '0 18px 34px rgba(60,40,10,.34)' : '0 12px 26px rgba(60,40,10,.28)', transition: 'transform .18s ease, box-shadow .18s ease' } as object),
+              ...({ boxShadow: hovered ? '0 18px 34px rgba(43,35,80,.34)' : '0 12px 26px rgba(43,35,80,.28)', transition: 'transform .18s ease, box-shadow .18s ease' } as object),
             }}
           >
             <Image source={{ uri: `/books/covers/${book.id}.jpg` }} style={{ width: '100%', aspectRatio: 480 / 680 }} resizeMode="cover" accessibilityIgnoresInvertColors />
@@ -289,7 +289,7 @@ function BookCard({
         )}
       </Pressable>
       {/* tấm ván kệ dưới chân bìa */}
-      <View style={{ height: 6, marginTop: 0, marginHorizontal: -10, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 6px 12px rgba(60,40,10,.3)' } as object) }} />
+      <View style={{ height: 6, marginTop: 0, marginHorizontal: -10, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 6px 12px rgba(43,35,80,.3)' } as object) }} />
       <Text numberOfLines={2} style={{ marginTop: 14, fontFamily: SANS_8, color: INK_G, fontSize: 15, lineHeight: 20 }}>
         {book.title}
       </Text>
@@ -323,9 +323,9 @@ function SmallButton({ label, onPress, solid = false, busy = false }: { label: s
         paddingHorizontal: 12,
         borderRadius: 999,
         alignItems: 'center',
-        backgroundColor: solid ? (hovered ? themedHex('#F4DA94') : themedHex('#EBC26A')) : hovered ? 'rgba(255,255,255,0.5)' : 'transparent',
+        backgroundColor: solid ? (hovered ? themedHex('#D9CCFF') : themedHex('#8B6CF0')) : hovered ? 'rgba(255,255,255,0.5)' : 'transparent',
         borderWidth: solid ? 0 : 1,
-        borderColor: 'rgba(140,106,31,0.45)',
+        borderColor: 'rgba(106,75,217,0.45)',
         opacity: busy ? 0.7 : 1,
       })}
     >

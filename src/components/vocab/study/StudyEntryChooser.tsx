@@ -59,7 +59,7 @@ export function StudyEntryChooser({ visible, onDone }: { visible: boolean; onDon
           <Choice
             title={L('Mặc định', 'Default')}
             desc={L('Nền phẳng, gọn, nhẹ máy.', 'Flat, clean, light on the device.')}
-            swatch={['#F8F6F1', '#E8E2D4']}
+            swatch={['#F3F0FB', '#F3F0FB']}
             on={!isChiikawa}
             onPress={pickPlain}
           />

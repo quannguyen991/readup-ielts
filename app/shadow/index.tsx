@@ -20,8 +20,8 @@ const PAGE = 24;
 /** Màu nhận diện theo trình độ — để lưới bài không là một mảng trắng đều. */
 const LEVEL_TONE: Record<string, { bg: string; fg: string }> = {
   A2: { bg: '#DCFCE7', fg: '#15803D' },
-  B1: { bg: '#F9F2E5', fg: '#7D5E27' },
-  B2: { bg: '#FBF5EC', fg: '#C3923E' },
+  B1: { bg: '#F3F0FB', fg: '#6A4BD9' },
+  B2: { bg: '#F3F0FB', fg: '#D9503E' },
   C1: { bg: '#FFE4E6', fg: '#BE123C' },
 };
 
@@ -103,7 +103,7 @@ export default function ShadowHub() {
                       key={meta.id}
                       onPress={() => router.push(`/shadow/${meta.id}` as never)}
                       className="flex-row items-center gap-3 rounded-2xl px-3 py-2.5"
-                      style={{ backgroundColor: '#FCFBF8' }}
+                      style={{ backgroundColor: '#F3F0FB' }}
                     >
                       <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: color.primary }}>
                         <Icon name="mic" size={17} color="#FFFFFF" />
@@ -150,7 +150,7 @@ export default function ShadowHub() {
       ) : null}
 
       <View className="mt-6 rounded-[22px] bg-white p-4" style={CARD}>
-        <View className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#FCFBF8', borderWidth: 1.5, borderColor: '#F0EBE2' }}>
+        <View className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#F3F0FB', borderWidth: 1.5, borderColor: '#F3F0FB' }}>
           <Icon name="search" size={16} color="#94A3B8" />
           <TextInput
             value={search}
@@ -174,7 +174,7 @@ export default function ShadowHub() {
                   setLimit(PAGE);
                 }}
                 className="rounded-pill px-3.5 py-1.5"
-                style={{ backgroundColor: on ? color.primary : '#F9F6F1' }}
+                style={{ backgroundColor: on ? color.primary : '#F3F0FB' }}
               >
                 <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                   {l === 'all' ? L('Mọi trình độ', 'All levels') : l}
@@ -212,7 +212,7 @@ export default function ShadowHub() {
 
 function LessonCard({ item, read }: { item: LibraryAudio; read: number }) {
   const { L, en } = useL();
-  const tone = LEVEL_TONE[item.level] ?? { bg: '#F9F6F1', fg: '#475569' };
+  const tone = LEVEL_TONE[item.level] ?? { bg: '#F3F0FB', fg: '#475569' };
   return (
     <Pressable
       accessibilityRole="link"

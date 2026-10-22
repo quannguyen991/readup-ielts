@@ -12,9 +12,9 @@ import { useVocabReviewStore } from '@/store/useVocabReviewStore';
  * Làm xong thì lưu điểm cao nhất của bài và liệt kê các câu sai để xem lại.
  */
 
-const INK = '#2B2118';
-const ACCENT = '#8F6E36';
-const CREAM = '#FBF6EC';
+const INK = '#2B2350';
+const ACCENT = '#6A4BD9';
+const CREAM = '#F3F0FB';
 const GREEN = '#15803D';
 const RED = '#B42318';
 const LETTERS = ['A', 'B', 'C', 'D'];
@@ -222,7 +222,7 @@ function Progress({ at, total, score }: { at: number; total: number; score: numb
   const pct = total ? Math.round((at / total) * 100) : 0;
   return (
     <View style={{ gap: 6 }}>
-      <View style={{ height: 8, borderRadius: 4, backgroundColor: '#EFE6D6', overflow: 'hidden' }}>
+      <View style={{ height: 8, borderRadius: 4, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
         <View style={{ width: `${pct}%`, height: 8, backgroundColor: ACCENT } as object} />
       </View>
       <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>Đúng {score} / {at}</Text>
@@ -240,7 +240,7 @@ function Btn({ label, onPress, disabled }: { label: string; onPress: () => void;
       accessibilityRole="button"
       disabled={disabled}
       onPress={onPress}
-      style={{ paddingHorizontal: 18, paddingVertical: 10, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: disabled ? '#E8E0D0' : '#F2B84B', opacity: disabled ? 0.6 : 1 } as object}
+      style={{ paddingHorizontal: 18, paddingVertical: 10, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: disabled ? '#F3F0FB' : '#F2B84B', opacity: disabled ? 0.6 : 1 } as object}
     >
       <Text className="font-strong" style={{ color: INK }}>{label}</Text>
     </Pressable>

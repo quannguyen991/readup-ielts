@@ -22,10 +22,10 @@ import { CHIIKAWA_IMG } from '@/components/chiikawa/chiikawa';
 export type OrbState = 'idle' | 'speaking' | 'listening' | 'thinking';
 
 const PAL: Record<OrbState, [string, string, string]> = {
-  idle: ['#EAD0A4', '#A8843F', '#AB8035'],
-  speaking: ['#E0C699', themedHex('#B8955A'), '#8F6E36'],
+  idle: ['#EAD0A4', '#6A4BD9', '#6A4BD9'],
+  speaking: ['#E0C699', themedHex('#8B6CF0'), '#6A4BD9'],
   listening: ['#86EFAC', '#14B8A6', '#0F766E'],
-  thinking: ['#FDE68A', '#F2B632', '#D97706'],
+  thinking: ['#FDE68A', '#F2B632', '#6A4BD9'],
 };
 
 const CSS_ID = 'readup-voice-orb';

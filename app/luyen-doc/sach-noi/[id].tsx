@@ -92,7 +92,7 @@ export default function SachNoiChiTietScreen() {
                 </Text>
                 <Text className="font-sans text-label text-subtle">{formatSeconds(c.seconds)}</Text>
               </View>
-              {on ? <Icon name="volume" size={16} color="#8F6E36" /> : null}
+              {on ? <Icon name="volume" size={16} color="#6A4BD9" /> : null}
             </Pressable>
           );
         })}

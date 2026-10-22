@@ -104,7 +104,7 @@ export function ExamVocabularyPanel({
   if (!safePages.length || totalChars < 70) return null;
 
   return (
-    <View style={{ marginTop: 12, overflow: 'hidden', borderWidth: 1, borderColor: '#E6DACB', borderRadius: 13, backgroundColor: '#FFFDF9' }}>
+    <View style={{ marginTop: 12, overflow: 'hidden', borderWidth: 1, borderColor: '#E6DACB', borderRadius: 13, backgroundColor: '#F3F0FB' }}>
       <Pressable
         accessibilityRole="button"
         accessibilityState={{ expanded }}
@@ -112,16 +112,16 @@ export function ExamVocabularyPanel({
         style={{ paddingHorizontal: 13, paddingVertical: 11, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}
       >
         <View style={{ flex: 1, gap: 2 }}>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: '#332719' }}>{L('Học từ ngay trong bài đọc', 'Learn vocabulary from this passage')}</Text>
+          <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350' }}>{L('Học từ ngay trong bài đọc', 'Learn vocabulary from this passage')}</Text>
           <Text style={{ fontSize: 11, color: '#766858' }}>{L('Trích cả từ dễ lẫn khó có nghĩa · collocations · cụm tóm tắt · synonyms', 'Extracts useful easy and difficult words · collocations · summary phrases · synonyms')}</Text>
         </View>
-        <Text style={{ color: '#8F6E36', fontSize: 16, fontWeight: '800' }}>{expanded ? '−' : '+'}</Text>
+        <Text style={{ color: '#6A4BD9', fontSize: 16, fontWeight: '800' }}>{expanded ? '−' : '+'}</Text>
       </Pressable>
 
       {expanded ? (
-        <View style={{ borderTopWidth: 1, borderTopColor: '#EEE7DC', padding: 13, gap: 10 }}>
+        <View style={{ borderTopWidth: 1, borderTopColor: '#F3F0FB', padding: 13, gap: 10 }}>
           {ocrReviewCount > 0 ? (
-            <Text style={{ fontSize: 11, lineHeight: 16, color: '#9A5B13' }}>
+            <Text style={{ fontSize: 11, lineHeight: 16, color: '#6A4BD9' }}>
               {L(`OCR có ${ocrReviewCount} dòng cần rà lại. Sau khi trích, hãy đối chiếu các câu đã lưu với trang gốc.`, `${ocrReviewCount} OCR lines need review. After extraction, check saved sentences against the source page.`)}
             </Text>
           ) : null}
@@ -130,7 +130,7 @@ export function ExamVocabularyPanel({
               accessibilityRole="button"
               disabled={loading}
               onPress={() => void analyze()}
-              style={{ alignSelf: 'flex-start', borderRadius: 9, backgroundColor: loading ? '#C8B78C' : '#8F6E36', paddingHorizontal: 12, paddingVertical: 9, opacity: loading ? 0.75 : 1 }}
+              style={{ alignSelf: 'flex-start', borderRadius: 9, backgroundColor: loading ? '#C8B78C' : '#6A4BD9', paddingHorizontal: 12, paddingVertical: 9, opacity: loading ? 0.75 : 1 }}
             >
               <Text style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>
                 {loading ? L('Đang trích từ và cụm từ…', 'Extracting words and phrases…') : L('Trích từ/cụm trong bài và thêm vào Sổ từ', 'Extract words and phrases into Word Book')}
@@ -140,24 +140,24 @@ export function ExamVocabularyPanel({
             <>
               {analysis.summaryVi ? (
                 <View style={{ borderLeftWidth: 3, borderLeftColor: '#D7B764', paddingLeft: 10, paddingVertical: 2 }}>
-                  <Text style={{ fontSize: 10, fontWeight: '800', color: '#8F6E36', marginBottom: 3 }}>{L('TÓM TẮT Ý CHÍNH', 'PASSAGE SUMMARY')}</Text>
+                  <Text style={{ fontSize: 10, fontWeight: '800', color: '#6A4BD9', marginBottom: 3 }}>{L('TÓM TẮT Ý CHÍNH', 'PASSAGE SUMMARY')}</Text>
                   <Text style={{ fontSize: 12, lineHeight: 18, color: '#3D352B' }}>{analysis.summaryVi}</Text>
                 </View>
               ) : null}
               <Text style={{ fontSize: 11, fontWeight: '800', color: '#267244' }}>
                 {L(`Đã trích ${analysis.items.length} mục · thêm ${savedCount} mục mới vào Sổ từ${duplicateCount ? ` · ${duplicateCount} mục đã có` : ''}.`, `${analysis.items.length} items extracted · ${savedCount} new items added to Word Book${duplicateCount ? ` · ${duplicateCount} already existed` : ''}.`)}
               </Text>
-              <Pressable accessibilityRole="button" onPress={() => router.push('/vocabulary')} style={{ alignSelf: 'flex-start', borderRadius: 8, borderWidth: 1, borderColor: '#8F6E36', paddingHorizontal: 10, paddingVertical: 7 }}>
-                <Text style={{ fontSize: 11, fontWeight: '800', color: '#8F6E36' }}>{L('Mở Sổ từ', 'Open Word Book')} →</Text>
+              <Pressable accessibilityRole="button" onPress={() => router.push('/vocabulary')} style={{ alignSelf: 'flex-start', borderRadius: 8, borderWidth: 1, borderColor: '#6A4BD9', paddingHorizontal: 10, paddingVertical: 7 }}>
+                <Text style={{ fontSize: 11, fontWeight: '800', color: '#6A4BD9' }}>{L('Mở Sổ từ', 'Open Word Book')} →</Text>
               </Pressable>
               {analysis.items.length ? (
                 <View style={{ gap: 8 }}>
                   {analysis.items.map((item, index) => (
-                    <View key={`${item.lemma}-${index}`} style={{ borderWidth: 1, borderColor: '#EEE7DC', borderRadius: 10, backgroundColor: '#FFFFFF', padding: 10, gap: 5 }}>
+                    <View key={`${item.lemma}-${index}`} style={{ borderWidth: 1, borderColor: '#F3F0FB', borderRadius: 10, backgroundColor: '#FFFFFF', padding: 10, gap: 5 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
                         <View style={{ flex: 1, gap: 2 }}>
                           <Text style={{ fontSize: 14, fontWeight: '800', color: '#29251F' }}>{item.term}</Text>
-                          <Text style={{ fontSize: 10, fontWeight: '700', color: '#8F6E36' }}>{L(CATEGORY_LABELS[item.category].vi, CATEGORY_LABELS[item.category].en)} · {item.partOfSpeech}</Text>
+                          <Text style={{ fontSize: 10, fontWeight: '700', color: '#6A4BD9' }}>{L(CATEGORY_LABELS[item.category].vi, CATEGORY_LABELS[item.category].en)} · {item.partOfSpeech}</Text>
                         </View>
                       </View>
                       <Text style={{ fontSize: 12, lineHeight: 18, color: '#433B31' }}>{item.meaningVi}</Text>
@@ -181,7 +181,7 @@ export function ExamVocabularyPanel({
             <View style={{ gap: 6 }}>
               <Text style={{ fontSize: 11, color: '#AE3E32' }}>{error}</Text>
               <Pressable accessibilityRole="button" onPress={() => void analyze()}>
-                <Text style={{ fontSize: 11, fontWeight: '800', color: '#8F6E36' }}>{L('Thử lại', 'Try again')}</Text>
+                <Text style={{ fontSize: 11, fontWeight: '800', color: '#6A4BD9' }}>{L('Thử lại', 'Try again')}</Text>
               </Pressable>
             </View>
           ) : null}

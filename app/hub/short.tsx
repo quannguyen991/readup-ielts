@@ -71,7 +71,7 @@ const SHORTS_DATA: VideoShort[] = [
     meaningVi: 'Nối âm là yếu tố tạo nên sự tự nhiên và trôi chảy trong tiếng Anh nói.',
     focusSound: '/ˈnætʃ.ər.əl ənd ˈfluː.ɪd/',
     tipVi: 'Âm /tʃ/ trong "natural" cần tròn môi và bật hơi dứt khoát.',
-    bgGradient: ['#7C2D12', '#9A3412'],
+    bgGradient: ['#2B2350', '#6A4BD9'],
   },
 ];
 

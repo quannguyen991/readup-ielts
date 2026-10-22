@@ -249,7 +249,7 @@ function PostCard({ post, token, userId, onChanged }: { post: CommunityPost; tok
           <Text className="font-semi text-label text-ink" numberOfLines={1}>{post.authorName}</Text>
           <Text className="font-sans text-label text-muted">{categoryName(post.category, L)} · {relativeTime(post.createdAt, L)}</Text>
         </View>
-        <Text className="rounded-pill px-2.5 py-1 font-semi text-label" style={{ backgroundColor: post.kind === 'question' ? '#E8F2EC' : '#F5F0E4', color: '#39705B' }}>{post.kind === 'question' ? L('Câu hỏi', 'Question') : L('Chia sẻ', 'Share')}</Text>
+        <Text className="rounded-pill px-2.5 py-1 font-semi text-label" style={{ backgroundColor: post.kind === 'question' ? '#E8F2EC' : '#F3F0FB', color: '#39705B' }}>{post.kind === 'question' ? L('Câu hỏi', 'Question') : L('Chia sẻ', 'Share')}</Text>
       </View>
       <Text className="mt-3 font-heavy text-bodyLg text-ink">{post.title}</Text>
       <Text className="mt-1 font-sans text-body text-ink" style={{ lineHeight: 23 }}>{post.body}</Text>

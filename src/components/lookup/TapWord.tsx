@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, Text, View } from 'react-native';
 
 import { Icon } from '@/components/ui/Icon';
-import { lookupOffline, resolveWord, type ResolvedWord } from '@/services/dictionary/word-lookup';
+import { resolveWord, type ResolvedWord } from '@/services/dictionary/word-lookup';
 import { pronounce } from '@/services/audio/pronounce';
 import { addMyWord, findMyWord, undoMyWord } from '@/services/vocab/my-words';
 import { useVocabStore } from '@/store/useVocabStore';
@@ -60,12 +60,12 @@ export function TappableSentence({
 
 function WordInfoModal({ word, sentence, source, onClose }: { word: string; sentence: string; source?: string; onClose: () => void }) {
   const { L } = useL();
-  const [data, setData] = useState<ResolvedWord | null>(() => lookupOffline(word));
-  const [state, setState] = useState<'loading' | 'done' | 'failed'>(data ? 'done' : 'loading');
+  const [data, setData] = useState<ResolvedWord | null>(null);
+  const [state, setState] = useState<'loading' | 'done' | 'failed'>('loading');
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-    if (lookupOffline(word)) return;
+    // resolveWord thử bộ từ của app trước, nên từ có sẵn không gọi mạng.
     let live = true;
     void resolveWord(word, sentence).then((r) => {
       if (!live) return;
@@ -122,11 +122,11 @@ function WordInfoModal({ word, sentence, source, onClose }: { word: string; sent
               accessibilityRole="button"
               accessibilityLabel={L('Nghe phát âm', 'Play pronunciation')}
               onPress={() => void pronounce(word, { rate: 0.85 })}
-              style={{ width: 36, height: 36, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}
+              style={{ width: 36, height: 36, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}
             >
               <Icon name="volume" size={18} color={color.primary} />
             </Pressable>
-            <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} style={{ width: 36, height: 36, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F9F6F1' }}>
+            <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} style={{ width: 36, height: 36, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
               <Icon name="close" size={16} color="#475569" />
             </Pressable>
           </View>

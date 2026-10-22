@@ -111,7 +111,7 @@ function TopicFeature({ bundle, scenes, done, href }: { bundle: TopicBundle; sce
           borderRadius: 26,
           borderWidth: 1,
           borderColor: hovered ? '#D9C79F' : H.rule,
-          backgroundColor: '#FFFEFA',
+          backgroundColor: '#F3F0FB',
           transform: [{ translateY: pressed ? 1 : hovered ? -3 : 0 }],
           transition: 'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease',
           ...softShadow,
@@ -131,7 +131,7 @@ function TopicFeature({ bundle, scenes, done, href }: { bundle: TopicBundle; sce
           <View style={{ position: 'absolute', left: 20, right: 20, bottom: 20, alignItems: 'flex-start' }}>
             <View style={{ maxWidth: '100%', gap: 4, paddingHorizontal: 14, paddingVertical: 10, borderRadius: 14, backgroundColor: 'rgba(18,22,18,.72)', borderWidth: 1, borderColor: 'rgba(255,255,255,.2)' }}>
               <Text style={{ fontFamily: readingFont.sansBold, fontSize: 10.5, letterSpacing: 0.75, color: '#EED9A9' }}>{L(`CẢNH ${first.n} · ${bundle.topic.periodLabel}`, `SCENE ${first.n} · ${bundle.topic.periodLabel}`)}</Text>
-              <Text numberOfLines={2} style={{ fontFamily: readingFont.sansSemi, fontSize: 14, lineHeight: 19, color: '#FFFDF5' }}>{en ? first.titleEn : first.titleVi}</Text>
+              <Text numberOfLines={2} style={{ fontFamily: readingFont.sansSemi, fontSize: 14, lineHeight: 19, color: '#F3F0FB' }}>{en ? first.titleEn : first.titleVi}</Text>
             </View>
           </View>
         ) : null}

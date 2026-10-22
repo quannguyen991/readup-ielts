@@ -10,10 +10,10 @@
 import { themed } from '@/theme/palette-state';
 
 const GOLD_BASE = {
-  ink: '#3B2A10',
-  body: '#6E5626',
+  ink: '#2B2350',
+  body: '#2B2350',
   muted: '#9C8552',
-  deep: '#8C6A1F',
+  deep: '#6A4BD9',
   pill: '#EDCB7E',
   tint: 'rgba(233,181,74,0.18)',
   avatar: '#F4E2B0',
@@ -30,12 +30,12 @@ const GOLD_CHIIKAWA = {
 };
 
 const GLASS_BASE = {
-  backgroundColor: 'rgba(255,252,242,0.5)',
+  backgroundColor: 'rgba(255,255,255,0.5)',
   backgroundImage:
-    'linear-gradient(155deg, rgba(255,255,255,0.78) 0%, rgba(255,250,236,0.45) 50%, rgba(240,220,160,0.18) 100%)',
+    'linear-gradient(155deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.45) 50%, rgba(236,228,255,0.18) 100%)',
   borderWidth: 1,
   borderColor: 'rgba(255,255,255,0.9)',
-  boxShadow: '0 14px 32px rgba(150,110,40,0.14), inset 0 1px 0 rgba(255,255,255,0.95)',
+  boxShadow: '0 14px 32px rgba(106,75,217,0.14), inset 0 1px 0 rgba(255,255,255,0.95)',
   // Bỏ blur: mỗi thẻ kính là một lớp mờ phải vẽ lại khi cuộn, điện thoại giật. Nền đặc vẫn giữ nét kính.
 };
 
@@ -48,12 +48,12 @@ const GLASS_CHIIKAWA = {
 };
 
 const GOLD_BUTTON_BASE = {
-  backgroundColor: '#EBC26A',
+  backgroundColor: '#8B6CF0',
   backgroundImage:
-    'linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.08) 48%, rgba(255,255,255,0) 54%, rgba(120,70,10,0.08) 100%), linear-gradient(115deg, #FFF8E0 0%, #F4DA94 30%, #E6BA66 60%, #F7E4B0 82%, #EDC57C 100%)',
+    'linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.08) 48%, rgba(255,255,255,0) 54%, rgba(60,40,120,0.08) 100%), linear-gradient(115deg, #F5F2FF 0%, #D9CCFF 30%, #A38BFA 60%, #E0D6FF 82%, #B8A4FF 100%)',
   borderWidth: 1,
   borderColor: 'rgba(255,246,214,0.9)',
-  boxShadow: '0 6px 14px rgba(170,120,40,0.22), inset 0 1px 0 rgba(255,255,255,0.85)',
+  boxShadow: '0 6px 14px rgba(106,75,217,0.22), inset 0 1px 0 rgba(255,255,255,0.85)',
 };
 
 const GOLD_BUTTON_CHIIKAWA = {

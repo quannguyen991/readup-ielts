@@ -15,7 +15,7 @@ import { Icon, type IconName } from '@/components/ui/Icon';
  * Màn hẹp (dưới 760px) thì dãy số câu xuống hàng riêng để các nút không bị ép.
  */
 
-export const EXAM_INK = '#1F1A14';
+export const EXAM_INK = '#2B2350';
 export const EXAM_GOLD = '#F2B84B';
 const CREAM = '#FFF5F8';
 const NARROW_BELOW = 760;

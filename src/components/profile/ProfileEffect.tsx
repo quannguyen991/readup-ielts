@@ -54,7 +54,7 @@ export const EFFECT_SPECS: Record<EffectLook, Spec> = {
   snow: { count: 30, anim: 'pe-fall', colors: ['#FFFFFF', '#E6F4FF'], shape: 'flake', size: [3, 7], duration: [5, 10], glow: 'rgba(200,230,255,0.3)', glowAt: 'top' },
   bubbles: { count: 16, anim: 'pe-rise', colors: ['rgba(120,220,255,0.9)', 'rgba(150,255,210,0.9)', themedHex('rgba(255,255,255,0.9)')], shape: 'bubble', size: [8, 20], duration: [3.5, 6.5], glow: 'rgba(80,200,255,0.3)', glowAt: 'bottom' },
   sparkle: { count: 20, anim: 'pe-twinkle', colors: ['#FFE14D', '#FFFFFF', '#FF9CF5', '#8FE3FF'], shape: 'spark', size: [8, 16], duration: [1.4, 2.8], glow: themedHex('rgba(255,225,77,0.25)'), glowAt: 'none' },
-  autumn: { count: 22, anim: 'pe-fall', colors: ['#EA580C', '#D97706', '#F59E0B', '#DC2626'], shape: 'leaf', size: [10, 18], duration: [4.5, 8], glow: 'rgba(234,88,12,0.35)', glowAt: 'top' },
+  autumn: { count: 22, anim: 'pe-fall', colors: ['#6A4BD9', '#6A4BD9', '#F59E0B', '#DC2626'], shape: 'leaf', size: [10, 18], duration: [4.5, 8], glow: 'rgba(234,88,12,0.35)', glowAt: 'top' },
   matrix: { count: 24, anim: 'pe-fall', colors: ['#00FF66', '#00F2FE', '#22C55E', '#10B981'], shape: 'matrix', size: [12, 22], duration: [1.8, 3.6], glow: 'rgba(0,255,102,0.3)', glowAt: 'top' },
   fireflies: { count: 22, anim: 'pe-rise', colors: ['#FACC15', '#A3E635', '#FEF08A'], shape: 'orb', size: [6, 11], duration: [3.5, 6.5], glow: 'rgba(250,204,21,0.35)', glowAt: 'bottom' },
   butterflies: { count: 16, anim: 'pe-rise', colors: ['#38BDF8', '#818CF8', '#C084FC', '#F472B6'], shape: 'spark', size: [10, 16], duration: [3.8, 6.5], glow: 'rgba(56,189,248,0.3)', glowAt: 'bottom' },

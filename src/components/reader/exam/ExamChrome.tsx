@@ -614,7 +614,7 @@ export function QuestionNav({
       style={{
         height: compact ? 44 : 48,
         paddingHorizontal: narrow ? 16 : 22,
-        backgroundColor: ready ? EXAM.accent : '#EFEBE2',
+        backgroundColor: ready ? EXAM.accent : '#F3F0FB',
         opacity: items.length === 0 ? 0.5 : 1,
       }}
     >
@@ -642,7 +642,7 @@ export function QuestionNav({
     <View style={[{ gap: 8, paddingHorizontal: 12, paddingTop: 8, backgroundColor: EXAM.white, borderTopWidth: 1, borderTopColor: EXAM.line }, bottomPad]}>
       {tab === 'questions' ? strip : null}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-        <View style={{ flex: 1, flexDirection: 'row', padding: 3, borderRadius: 999, backgroundColor: '#F3EFE6' }} accessibilityRole="tablist">
+        <View style={{ flex: 1, flexDirection: 'row', padding: 3, borderRadius: 999, backgroundColor: '#F3F0FB' }} accessibilityRole="tablist">
           {(['passage', 'questions'] as const).map((t) => (
             <Pressable
               key={t}

@@ -19,8 +19,8 @@ export const CG = {
     Nền gần đặc thay cho lớp kính mờ.
   */
   panel: 'rgba(255,255,255,0.965)',
-  brand: '#A8843F',
-  brandDeep: '#8F6E36',
+  brand: '#6A4BD9',
+  brandDeep: '#6A4BD9',
   brandSoft: '#FBF3E2',
   ok: '#1F9254',
   okSoft: '#E4F6EC',

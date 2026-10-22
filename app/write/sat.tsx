@@ -82,7 +82,7 @@ export default function SatWritingScreen() {
 
         <View className="mt-4 flex-row flex-wrap items-center gap-2">
           <View aria-hidden>
-            <BadgeSticker icon="target" color="#A8843F" size={28} />
+            <BadgeSticker icon="target" color="#6A4BD9" size={28} />
           </View>
           <Chip label={L('Tất cả', 'All')} active={focus === 'all'} onPress={() => switchFocus('all')} />
           {SAT_WRITING_QUESTION_TYPES.filter((t) => t !== 'sat_rhetorical_synthesis').map((t) => (

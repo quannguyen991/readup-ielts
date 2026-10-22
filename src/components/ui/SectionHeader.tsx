@@ -25,12 +25,12 @@ type SectionHeaderProps = {
 
 /** Màu huy hiệu răng cưa theo tông của tiêu đề mục. */
 const SEAL_COLOR: Record<IconTone, string> = {
-  primary: '#A8843F',
+  primary: '#6A4BD9',
   accent: '#F2B632',
   success: '#22A06B',
   warning: '#F0703F',
   danger: '#E0533D',
-  info: '#B07A3A',
+  info: '#6A4BD9',
 };
 
 export function SectionHeader({

@@ -17,7 +17,7 @@ const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 7
 
 export const LEVEL_TONE: Record<TheoryLesson['level'], { fg: string; bg: string }> = {
   'Nền tảng': { fg: '#15803D', bg: '#DCFCE7' },
-  'Trung bình': { fg: '#B45309', bg: '#FEF3C7' },
+  'Trung bình': { fg: '#6A4BD9', bg: '#F3F0FB' },
   'Nâng cao': { fg: '#BE123C', bg: '#FFE4E6' },
 };
 
@@ -86,7 +86,7 @@ export function LessonView({
             <Text className="mt-3 font-sans text-body text-muted">{L('Ôn trước: ', 'Review first: ')}{lesson.prerequisite}</Text>
           ) : null}
           {lesson.recognize ? (
-            <View className="mt-4 flex-row items-start gap-3 rounded-2xl p-4" style={{ backgroundColor: '#FCF9F4' }}>
+            <View className="mt-4 flex-row items-start gap-3 rounded-2xl p-4" style={{ backgroundColor: '#F3F0FB' }}>
               <Icon name="search" size={18} color={color.primary} />
               <View className="min-w-0 flex-1">
                 <Text className="font-heavy text-body text-ink">{L('Nhận diện dạng bài', 'Recognize the question')}</Text>
@@ -104,7 +104,7 @@ export function LessonView({
         <>
           <RichText math={isMath} size={17}>{r.body}</RichText>
           {r.formula ? (
-            <View className="mt-4 self-start rounded-xl px-4 py-3" style={{ backgroundColor: '#F8F6F1' }}>
+            <View className="mt-4 self-start rounded-xl px-4 py-3" style={{ backgroundColor: '#F3F0FB' }}>
               <RichText math={isMath} size={18} bold>{r.formula}</RichText>
             </View>
           ) : null}
@@ -248,7 +248,7 @@ export function LessonView({
             </Text>
             <Text className="font-heavy text-label" style={{ color: color.primary }}>{pct}%</Text>
           </View>
-          <View className="mt-2.5 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#F1EBDF' }}>
+          <View className="mt-2.5 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
             <View style={{ width: `${pct}%`, height: 8, borderRadius: 999, backgroundColor: color.primary }} />
           </View>
         </View>
@@ -264,7 +264,7 @@ export function LessonView({
                     accessibilityRole="button"
                     onPress={() => setAt(i)}
                     className="rounded-pill px-4 py-2.5"
-                    style={{ backgroundColor: i === idx ? color.primary : i < idx ? '#F4EFE6' : '#FFFFFF', borderWidth: 1, borderColor: i === idx ? color.primary : '#E8E0D2' }}
+                    style={{ backgroundColor: i === idx ? color.primary : i < idx ? '#F3F0FB' : '#FFFFFF', borderWidth: 1, borderColor: i === idx ? color.primary : '#F3F0FB' }}
                   >
                     <Text className="font-semi text-label" style={{ color: i === idx ? '#FFFFFF' : color.ink }}>
                       {i < idx ? '✓ ' : ''}{s.label}
@@ -283,7 +283,7 @@ export function LessonView({
                   <Text className="font-strong text-label uppercase tracking-[1px]" style={{ color: color.primary }}>{current.label}</Text>
                 </View>
                 <Text className="mt-3 font-heavy text-ink" style={{ fontSize: 28, lineHeight: 36 }}>{current.title}</Text>
-                <View className="mt-5 border-t pt-5" style={{ borderColor: '#F1EBDF' }}>{current.content}</View>
+                <View className="mt-5 border-t pt-5" style={{ borderColor: '#F3F0FB' }}>{current.content}</View>
               </View>
             </Appear>
 
@@ -312,7 +312,7 @@ export function LessonView({
 
 type LessonStep = { label: string; title: string; content: React.ReactNode };
 
-const RULE_TONES = [themedHex('#B8955A'), '#10B981', '#F59E0B', '#EC4899', '#D6B57C', '#B07A3A'];
+const RULE_TONES = [themedHex('#8B6CF0'), '#10B981', '#F59E0B', '#EC4899', '#A38BFA', '#6A4BD9'];
 
 
 type RuleBlock = Extract<LessonBlock, { kind: 'rule' }>;
@@ -348,7 +348,7 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
               accessibilityRole="button"
               onPress={() => setPicked(c)}
               className="rounded-xl px-5 py-2.5"
-              style={{ borderWidth: 1.5, borderColor: '#EEE7DC', backgroundColor: '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderColor: '#F3F0FB', backgroundColor: '#FFFFFF' }}
             >
               <Text className="font-strong text-body text-ink">{c}</Text>
             </Pressable>
@@ -377,7 +377,7 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
               <View key={i} className="flex-row gap-3">
                 <View className="items-center" style={{ width: 14 }}>
                   <View className="mt-1.5 h-2.5 w-2.5 rounded-pill" style={{ backgroundColor: color.primary }} />
-                  {i < block.steps.length - 1 ? <View style={{ width: 2, flex: 1, backgroundColor: '#F8EFDF', marginTop: 2 }} /> : null}
+                  {i < block.steps.length - 1 ? <View style={{ width: 2, flex: 1, backgroundColor: '#F3F0FB', marginTop: 2 }} /> : null}
                 </View>
                 <View className="min-w-0 flex-1 pb-3">
                   <RichText math={math}>{st}</RichText>
@@ -385,7 +385,7 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
               </View>
             ))}
           </View>
-          <View className="mt-1 flex-row flex-wrap items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: '#FBF8F4' }}>
+          <View className="mt-1 flex-row flex-wrap items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: '#F3F0FB' }}>
             <Text className="font-strong text-body text-ink">{L('Đáp án:', 'Answer:')}</Text>
             <View className="min-w-0 flex-1">
               <RichText math={math} bold>
@@ -403,10 +403,10 @@ function NoteCard({ block, math }: { block: NoteBlock; math: boolean }) {
   const trap = block.kind === 'trap';
   const { L } = useL();
   return (
-    <View className="flex-row gap-3 rounded-2xl p-4" style={{ flexGrow: 1, flexBasis: 300, backgroundColor: trap ? '#FFF1F2' : '#FFFBEB' }}>
-      <Icon name={trap ? 'info' : 'sparkle'} size={18} color={trap ? '#BE123C' : '#B45309'} />
+    <View className="flex-row gap-3 rounded-2xl p-4" style={{ flexGrow: 1, flexBasis: 300, backgroundColor: trap ? '#FFF1F2' : '#F3F0FB' }}>
+      <Icon name={trap ? 'info' : 'sparkle'} size={18} color={trap ? '#BE123C' : '#6A4BD9'} />
       <View className="min-w-0 flex-1">
-        <Text className="font-strong text-body" style={{ color: trap ? '#BE123C' : '#B45309' }}>
+        <Text className="font-strong text-body" style={{ color: trap ? '#BE123C' : '#6A4BD9' }}>
           {trap ? L('Bẫy hay gặp', 'Common trap') : L('Mẹo phòng thi', 'Exam tip')}
         </Text>
         <View className="mt-0.5">

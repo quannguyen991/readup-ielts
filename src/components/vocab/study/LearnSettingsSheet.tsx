@@ -83,7 +83,7 @@ export function LearnSettingsSheet({
         <Pressable onPress={() => {}} className="w-full rounded-[26px] bg-white" style={[{ maxWidth: 560, maxHeight: '92%', cursor: 'auto' } as object, CARD_SHADOW]}>
           <View className="flex-row items-center justify-between px-5 pb-2 pt-5 sm:px-6">
             <Text className="font-heavy text-sectionTitle text-ink">{L('Cài đặt học', 'Study settings')}</Text>
-            <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F9F6F1' }}>
+            <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
               <Icon name="close" size={18} color={color.ink} />
             </Pressable>
           </View>
@@ -163,7 +163,7 @@ export function LearnSettingsSheet({
             </Section>
           </ScrollView>
 
-          <View className="flex-row items-center justify-between gap-3 border-t px-5 py-4 sm:px-6" style={{ borderColor: '#F7F4EE' }}>
+          <View className="flex-row items-center justify-between gap-3 border-t px-5 py-4 sm:px-6" style={{ borderColor: '#F3F0FB' }}>
             <Pressable
               accessibilityRole="button"
               onPress={() => {
@@ -172,7 +172,7 @@ export function LearnSettingsSheet({
                 setConfirmReset(false);
               }}
               className="flex-row items-center gap-2 rounded-2xl px-4 py-3"
-              style={{ flexShrink: 1, backgroundColor: confirmReset ? '#FFF1F2' : '#F9F6F1' }}
+              style={{ flexShrink: 1, backgroundColor: confirmReset ? '#FFF1F2' : '#F3F0FB' }}
             >
               <Icon name="refresh" size={16} color={confirmReset ? '#E11D48' : '#475569'} />
               <Text className="flex-shrink font-semi text-body" style={{ color: confirmReset ? '#E11D48' : '#475569' }}>
@@ -184,7 +184,7 @@ export function LearnSettingsSheet({
               disabled={blocked}
               onPress={() => onApply(draft)}
               className="rounded-2xl px-6 py-3"
-              style={{ flexShrink: 0, backgroundColor: blocked ? '#F4E7D1' : color.primary }}
+              style={{ flexShrink: 0, backgroundColor: blocked ? '#F3F0FB' : color.primary }}
             >
               <Text className="font-strong text-bodyLg text-white">{L('Áp dụng', 'Apply')}</Text>
             </Pressable>
@@ -223,7 +223,7 @@ function Row({ on, onPress, disabled, children }: { on: boolean; onPress: () => 
       disabled={disabled}
       onPress={onPress}
       className="flex-row items-center gap-3 rounded-2xl px-4 py-3"
-      style={{ borderWidth: 1.5, borderColor: on ? '#E6D2A6' : '#F0EBE2', backgroundColor: on ? '#FDFAF5' : '#FFFFFF', opacity: disabled ? 0.55 : 1 }}
+      style={{ borderWidth: 1.5, borderColor: on ? '#E6D2A6' : '#F3F0FB', backgroundColor: on ? '#F3F0FB' : '#FFFFFF', opacity: disabled ? 0.55 : 1 }}
     >
       <View
         className="h-6 w-6 items-center justify-center rounded-lg"
@@ -322,7 +322,7 @@ export function ThemePicker() {
             onPick={pickArt}
             onOff={() => setArtOn(false)}
             randomLabel={L('Ngẫu nhiên mỗi lần học', 'Random each session')}
-            colors={{ ink: color.ink, muted: '#5B6678', chip: '#F7F4EE', accent: color.primary, onAccent: '#FFFFFF' }}
+            colors={{ ink: color.ink, muted: '#5B6678', chip: '#F3F0FB', accent: color.primary, onAccent: '#FFFFFF' }}
           />
         </View>
       ) : null}

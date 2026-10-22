@@ -34,7 +34,7 @@ export const VOCAB_ROADMAP_PHASES: VocabRoadmapPhase[] = [
     titleEn: 'Phase 1: Academic Foundations',
     blurbVi: '300 từ lõi xuất hiện ở mọi đề thi và 144 động từ miêu tả hành động tu từ của tác giả.',
     blurbEn: '300 universal core words appearing in all test passages and 144 function verbs.',
-    color: '#B07A3A',
+    color: '#6A4BD9',
     units: [
       { n: 1, slug: 'sat-tang-1-unit-01', title: 'Lập luận, bằng chứng, nghiên cứu', count: 30, blurb: 'assert, claim, hypothesis, evidence…', sourceBook: 'SAT R&W 16 tuần · Tầng 1' },
       { n: 2, slug: 'sat-tang-1-unit-02', title: 'Thay đổi, xu hướng, chuyển động', count: 30, blurb: 'fluctuate, accelerate, stagnate, evolve…', sourceBook: 'SAT R&W 16 tuần · Tầng 1' },
@@ -79,7 +79,7 @@ export const VOCAB_ROADMAP_PHASES: VocabRoadmapPhase[] = [
     titleEn: 'Phase 3: 12 Academic Content Domains',
     blurbVi: 'Từ vựng học thuật bao trọn 12 mảng đọc hiểu: Khoa học, Sinh học, Lịch sử, Kinh tế, Tâm lý, Văn học…',
     blurbEn: 'Academic vocabulary covering all 12 SAT reading domains: Science, Biology, History, Economics…',
-    color: '#8F6E36',
+    color: '#6A4BD9',
     units: [
       { n: 26, slug: 'sat-chude-01', title: 'Khoa học & Phương pháp nghiên cứu', count: 44, blurb: 'hypothesis, empirical, replicate, variable…', sourceBook: 'SAT R&W 16 tuần · Science' },
       { n: 27, slug: 'sat-chude-02', title: 'Sinh học & Môi trường sinh thái', count: 44, blurb: 'symbiotic, biodiversity, adaptation, flora…', sourceBook: 'SAT R&W 16 tuần · Biology' },

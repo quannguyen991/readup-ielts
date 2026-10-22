@@ -18,7 +18,7 @@ export default function LivePicker() {
   return (
     <HubScreen title="Nói cùng Leo" subtitle="Giám khảo AI hỏi, bạn trả lời bằng giọng nói" back padBottom={140}>
       <LinearGradient
-        colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+        colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ borderRadius: 24, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14 }}

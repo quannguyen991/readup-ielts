@@ -197,7 +197,7 @@ function QuestionRow({ q, value, onChange }: { q: ReadingQuestion; value: string
           onChangeText={onChange}
           placeholder="Viết đáp án"
           className="font-sans text-body text-ink"
-          style={{ borderWidth: 1, borderColor: '#EADFCF', borderRadius: 10, paddingHorizontal: 10, paddingVertical: 8 }}
+          style={{ borderWidth: 1, borderColor: '#F3F0FB', borderRadius: 10, paddingHorizontal: 10, paddingVertical: 8 }}
         />
       )}
     </View>

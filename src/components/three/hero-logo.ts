@@ -1,18 +1,15 @@
 /**
- * LOGO BAND 9 DẠNG 3D ở phần đầu trang (thay ngôi sao trắng — người dùng
- * 01/10/2026: "thử logo band 9 chạy 3d"). CHỈ CHẠY TRÊN WEB, tải lúc cần.
+ * LOGO BAND 9 DẠNG 3D ở phần đầu trang (web). Khối vuông xanh đậm phủ bóng như sơn mài, chữ B ghép từ
+ * các mảng kem nổi lên mặt khối, ô vuông vàng kim ánh kim loại. Khối xoay nhanh trọn một vòng cứ 8 giây
+ * (êm hai đầu), lắc nhẹ và nghiêng theo chuột; một vệt sáng vàng lướt qua mặt; ba khối vàng nhỏ bay trên
+ * quỹ đạo nghiêng; bụi vàng trôi lên.
  *
- * Khối vuông xanh đậm phủ bóng như sơn mài, chữ B ghép từ các mảng kem nổi
- * lên mặt khối, ô vuông vàng kim ánh kim loại. Khối lắc nhẹ, cứ vài giây xoay
- * trọn một vòng; một vệt sáng vàng lướt qua mặt; ba khối vàng nhỏ bay trên quỹ
- * đạo nghiêng — nhắc lại ô vàng của logo.
- *
- * TIẾT KIỆM MÁY như ngôi sao cũ: ngừng vẽ khi khuất khung / tab ẩn; "giảm
- * chuyển động" chỉ vẽ một khung tĩnh; độ phân giải tối đa 2x.
+ * TIẾT KIỆM MÁY: ngừng vẽ khi khuất khung / tab ẩn; "giảm chuyển động" chỉ vẽ một khung tĩnh; độ phân giải
+ * tối đa 2x.
  */
 import * as THREE from 'three';
 
-import { disposeScene, glintTexture, halo, raysSprite, releaseEnvironment, rng, studioEnvironment } from './glow-core';
+import { disposeScene, glintTexture, halo, releaseEnvironment, rng, studioEnvironment } from './glow-core';
 
 const NAVY = '#0F1D33';
 const CREAM = '#F3EDE1';
@@ -147,9 +144,6 @@ export function mountHeroLogo(host: HTMLElement): () => void {
   const back = halo('#E8B86A', 6.8, 0.5);
   back.position.set(0, 0.1, -2.4);
   stage.add(back);
-  const rays = raysSprite('#E3A94F', 7.6, 0.34);
-  rays.position.set(0, 0.1, -2);
-  stage.add(rays);
 
   const shadow = groundShadow();
   shadow.position.set(0, -2.35, -0.5);
@@ -236,7 +230,7 @@ export function mountHeroLogo(host: HTMLElement): () => void {
     const h = Math.max(1, host.clientHeight);
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    const d = Math.max(10.5, 14 / camera.aspect);
+    const d = Math.max(8.5, 9.5 / camera.aspect);
     camera.position.set(0, 0.9, d);
     camera.lookAt(0, -0.1, 0);
     camera.updateProjectionMatrix();
@@ -264,8 +258,6 @@ export function mountHeroLogo(host: HTMLElement): () => void {
 
     const pulse = 0.5 + 0.5 * Math.sin(t * 2.2);
     back.material.opacity = 0.44 + pulse * 0.16;
-    rays.material.rotation = t * 0.1;
-    rays.material.opacity = 0.28 + pulse * 0.14;
     goldMat.emissiveIntensity = 0.1 + pulse * 0.18;
     flare.scale.setScalar(Math.pow(Math.max(0, Math.sin(t * 0.8)), 14) * 0.9);
 
@@ -298,18 +290,25 @@ export function mountHeroLogo(host: HTMLElement): () => void {
     renderer.render(scene, camera);
   };
 
-  const ro = new ResizeObserver(resize);
+  // Giảm chuyển động: một khung tĩnh, không vòng lặp. Khung đổi cỡ thì vẽ lại khung đó.
+  const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  const drawStill = () => {
+    place(2.2, 0);
+    renderer.render(scene, camera);
+  };
+  if (still) drawStill();
+
+  const ro = new ResizeObserver(() => {
+    resize();
+    if (still) drawStill();
+  });
   ro.observe(host);
   const io = new IntersectionObserver((entries) => {
     visible = entries.some((e) => e.isIntersecting);
   });
   io.observe(host);
 
-  const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-  if (still) {
-    place(2.2, 0);
-    renderer.render(scene, camera);
-  } else {
+  if (!still) {
     window.addEventListener('pointermove', onPointer, { passive: true });
     frame = requestAnimationFrame(tick);
   }

@@ -15,7 +15,7 @@ const INK = '#1A1A17';
 const MUTED = '#85837A';
 const RULE = '#E8E5DC';
 const ACCENT = '#957846';
-const CHIP = '#F3F1EA';
+const CHIP = '#F3F0FB';
 
 type Props = {
   nar: Narration;
@@ -58,7 +58,7 @@ export function NarrationPlayer({ nar, scene, total, speed, onSpeed, lang, onLan
         if (noAudio) nar.startTts();
         else nar.toggle();
       }}
-      style={{ width: immersive ? 54 : 48, height: immersive ? 54 : 48, borderRadius: immersive ? 27 : 24, backgroundColor: immersive ? '#F8F7F3' : ACCENT, alignItems: 'center', justifyContent: 'center' }}
+      style={{ width: immersive ? 54 : 48, height: immersive ? 54 : 48, borderRadius: immersive ? 27 : 24, backgroundColor: immersive ? '#F3F0FB' : ACCENT, alignItems: 'center', justifyContent: 'center' }}
     >
       {nar.loading && !nar.playing ? (
         <Text style={{ color: immersive ? INK : '#fff', fontFamily: readingFont.sansBold, fontSize: 18 }}>…</Text>
@@ -207,8 +207,8 @@ export function NarrationPlayer({ nar, scene, total, speed, onSpeed, lang, onLan
       )}
 
       {failed ? (
-        <View style={{ backgroundColor: '#FBEFEA', borderRadius: 12, padding: 10, gap: 8 }}>
-          <Text style={{ fontFamily: readingFont.sansSemi, fontSize: 13, lineHeight: 19, color: '#8A3B1F' }}>
+        <View style={{ backgroundColor: '#F3F0FB', borderRadius: 12, padding: 10, gap: 8 }}>
+          <Text style={{ fontFamily: readingFont.sansSemi, fontSize: 13, lineHeight: 19, color: '#6A4BD9' }}>
             {nar.error === 'tts'
               ? L('Thiết bị này không có giọng đọc tiếng Anh khả dụng.', 'This device has no usable English voice.')
               : nar.error === 'blocked'

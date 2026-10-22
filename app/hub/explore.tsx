@@ -204,8 +204,8 @@ export default function HubExplore() {
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false} className="-mx-1">
               {[
-                { title: 'Exploring a Teaching Career', level: 'EASY', time: '3-7 minutes', bg: '#4A2810', tagColor: '#22C55E' },
-                { title: 'Teacher Gift Card Creation', level: 'EASY', time: '3-7 minutes', bg: '#3F3512', tagColor: '#22C55E' },
+                { title: 'Exploring a Teaching Career', level: 'EASY', time: '3-7 minutes', bg: '#2B2350', tagColor: '#22C55E' },
+                { title: 'Teacher Gift Card Creation', level: 'EASY', time: '3-7 minutes', bg: '#2B2350', tagColor: '#22C55E' },
                 { title: 'Unspoken Side of Teaching', level: 'HARD', time: '3-7 minutes', bg: '#4B1824', tagColor: '#EF4444' },
                 { title: 'What makes a teacher great?', level: 'HARD', time: '3-5 minutes', bg: '#3D1C36', tagColor: '#EF4444' },
                 { title: 'Teacher Appreciation Event', level: 'MEDIUM', time: '3-7 minutes', bg: '#173647', tagColor: '#0EA5E9' },

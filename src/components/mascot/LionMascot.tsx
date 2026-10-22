@@ -1,3 +1,4 @@
+import { MASCOTS_ON } from '@/components/mascot/mascot-switch';
 import React from 'react';
 import { Image } from 'react-native';
 
@@ -14,6 +15,7 @@ export type LionPose = 'wave' | 'read' | 'cheer' | 'think' | 'point' | 'sleep';
  * gom của Metro.
  */
 export function LionMascot({ pose, size = 120 }: { pose: LionPose; size?: number }) {
+  if (!MASCOTS_ON) return null;
   const chiikawa = useChiikawaActive();
   const style = { width: size, height: size };
   if (chiikawa) {

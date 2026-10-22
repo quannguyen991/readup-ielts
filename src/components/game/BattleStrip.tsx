@@ -89,7 +89,7 @@ function StepBar({ className, step, charge }: { className?: string; step: StripS
         ) : null}
       </View>
       <View style={{ height: 8, borderRadius: 999, backgroundColor: '#F0EBE2', overflow: 'hidden' }}>
-        <View style={{ width: `${pct * 100}%`, height: '100%', borderRadius: 999, backgroundColor: '#A8843F', transition: 'width 300ms ease' } as object} />
+        <View style={{ width: `${pct * 100}%`, height: '100%', borderRadius: 999, backgroundColor: '#6A4BD9', transition: 'width 300ms ease' } as object} />
       </View>
     </View>
   );

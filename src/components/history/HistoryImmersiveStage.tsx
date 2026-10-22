@@ -99,9 +99,9 @@ export function HistoryImmersiveStage(props: Props) {
             onPress={onBack}
             style={{ position: 'absolute', zIndex: 8, top: 22, left: 22, minHeight: 46, maxWidth: desktop ? panelWidth : '48%', flexDirection: 'row', alignItems: 'center', gap: 9, borderRadius: 16, paddingHorizontal: 13, backgroundColor: 'rgba(16,18,17,.58)', borderWidth: 1, borderColor: 'rgba(255,255,255,.25)' }}
           >
-            <Icon name="chevron-left" size={18} color="#FFF8EA" strokeWidth={2.5} />
+            <Icon name="chevron-left" size={18} color="#F3F0FB" strokeWidth={2.5} />
             <View style={{ minWidth: 0 }}>
-              <Text numberOfLines={1} style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: '#FFF8EA' }}>{L('Lịch sử Việt Nam', 'Vietnamese history')}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: '#F3F0FB' }}>{L('Lịch sử Việt Nam', 'Vietnamese history')}</Text>
               <Text numberOfLines={1} style={{ fontFamily: readingFont.sans, fontSize: 11.5, color: 'rgba(255,248,234,.76)' }}>{topic.periodLabel} · {topic.titleEn}</Text>
             </View>
           </Pressable>
@@ -138,7 +138,7 @@ export function HistoryImmersiveStage(props: Props) {
           </View>
           <View style={{ position: 'absolute', zIndex: 8, right: 22, bottom: desktop ? 136 : 142, maxWidth: desktop ? 360 : 184, alignItems: 'flex-end', gap: 3 }}>
             <View style={{ alignItems: 'flex-end', gap: 3, maxWidth: '100%' }}>
-              <Text numberOfLines={3} style={{ fontFamily: readingFont.sansSemi, fontSize: desktop ? 12.5 : 11, lineHeight: desktop ? 17 : 14, color: '#FFF9EC', textAlign: 'right', textShadowColor: 'rgba(0,0,0,.78)', textShadowRadius: 9 }}>
+              <Text numberOfLines={3} style={{ fontFamily: readingFont.sansSemi, fontSize: desktop ? 12.5 : 11, lineHeight: desktop ? 17 : 14, color: '#F3F0FB', textAlign: 'right', textShadowColor: 'rgba(0,0,0,.78)', textShadowRadius: 9 }}>
                 {image.captionVi}
               </Text>
               {image.isGeneralIllustration ? (
@@ -154,7 +154,7 @@ export function HistoryImmersiveStage(props: Props) {
         </HistoryImage>
       ) : (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ color: '#FFF9EC', fontFamily: readingFont.sansSemi }}>{L('Cảnh này chưa có ảnh minh hoạ.', 'This scene has no illustration yet.')}</Text>
+          <Text style={{ color: '#F3F0FB', fontFamily: readingFont.sansSemi }}>{L('Cảnh này chưa có ảnh minh hoạ.', 'This scene has no illustration yet.')}</Text>
         </View>
       )}
     </View>

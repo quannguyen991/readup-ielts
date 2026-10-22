@@ -45,7 +45,7 @@ export default function ShowLobby() {
                   accessibilityRole="radio"
                   aria-checked={on}
                   className="rounded-pill px-4 py-2"
-                  style={{ backgroundColor: on ? '#0F1D33' : '#F4EFE6' }}
+                  style={{ backgroundColor: on ? '#0F1D33' : '#F3F0FB' }}
                 >
                   <Text className="font-strong text-label" style={{ color: on ? '#FFFFFF' : '#0F1D33' }}>{en ? t.name : t.nameVi}</Text>
                 </Pressable>

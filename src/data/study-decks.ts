@@ -156,10 +156,7 @@ export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWo
   }).filter((g) => g.words.length > 0);
 }
 
-/** "noun · /ˈhæbɪtæt/" — bỏ phần trống, bộ SAT không có loại từ và phiên âm. */
-export function posIpa(w: Pick<StudyWord, 'pos' | 'ipa'>): string {
-  return [w.pos, w.ipa].filter(Boolean).join(' · ');
-}
+export { posIpa } from '@/services/vocab/pos-ipa';
 
 /** Nhãn mức của từ: "Band 5-6" với bộ IELTS, tên nhóm với bộ khác. */
 export function levelLabel(band: string): string {

@@ -5,6 +5,9 @@ import { router } from 'expo-router';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui';
+import { LevelCard } from '@/components/vocab/LevelCard';
+import { LevelHeader } from '@/components/vocab/LevelHeader';
+import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { OXFORD_3000, OXFORD_ADVANCED, OXFORD_EXTRA, OXFORD_TOPICS, type OxfordEntry, type OxfordLevel } from '@/data/oxford';
 import { isLearnedWord, useOxfordStore } from '@/store/useOxfordStore';
 
@@ -16,15 +19,16 @@ import { isLearnedWord, useOxfordStore } from '@/store/useOxfordStore';
 const LEVELS: OxfordLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1'];
 const PAGE = 40;
 
-const INK = '#2B2118';
-const ACCENT = '#8F6E36';
+const INK = '#2B2350';
+const ACCENT = '#6A4BD9';
 const NAVY = '#0F1D33';
-const CREAM = '#FBF6EC';
+const CREAM = '#F3F0FB';
 const GREEN = '#15803D';
 
 const ALL: OxfordEntry[] = [...OXFORD_3000, ...OXFORD_ADVANCED, ...OXFORD_EXTRA].filter((w) => LEVELS.includes(w.level));
 
 export default function CefrVocab() {
+  useReadingFonts();
   const { width } = useWindowDimensions();
   const wide = width >= 900;
   const [level, setLevel] = useState<OxfordLevel>('A1');
@@ -68,36 +72,19 @@ export default function CefrVocab() {
 
   return (
     <Screen>
-      <View style={{ backgroundColor: NAVY, backgroundImage: 'linear-gradient(120deg, #0F1D33, #22345A)', borderRadius: 26, borderWidth: 2, borderColor: INK, padding: 24, boxShadow: `0 5px 0 ${INK}` } as object}>
-        <Text className="font-heavy" style={{ fontSize: 30, color: '#F3D9A0' }}>Từ vựng A1 → C1</Text>
-        <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: '#E9DCC6' }}>
-          Chọn cấp, chọn chủ đề, rồi đánh dấu những từ bạn đã thuộc.
-        </Text>
-        <View style={{ marginTop: 16, height: 8, borderRadius: 4, backgroundColor: 'rgba(255,255,255,0.14)', overflow: 'hidden' }}>
-          <View style={{ width: `${pct}%`, height: 8, backgroundColor: '#F3D9A0' } as object} />
+      <LevelHeader eyebrow="Từ vựng" title="Từ vựng A1 → C1" subtitle="Chọn cấp, chọn chủ đề, rồi đánh dấu những từ bạn đã thuộc.">
+        <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(255,255,255,0.22)', overflow: 'hidden' }}>
+          <View style={{ width: `${pct}%`, height: 8, backgroundColor: '#FFE9A8' } as object} />
         </View>
-        <Text className="font-sans" style={{ marginTop: 8, fontSize: 13, color: '#D7DCE8' }}>
+        <Text style={{ marginTop: 8, fontFamily: readingFont.sansSemi, fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
           Cấp {level}: đã thuộc {doneInLevel} / {inLevel.length} từ
         </Text>
-      </View>
+      </LevelHeader>
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 16 }}>
-        {LEVELS.map((lv) => {
-          const on = lv === level;
-          return (
-            <Pressable
-              key={lv}
-              accessibilityRole="button"
-              aria-selected={on}
-              onPress={() => pickLevel(lv)}
-              style={{ paddingHorizontal: 16, paddingVertical: 9, borderRadius: 999, borderWidth: 2, borderColor: ACCENT, backgroundColor: on ? ACCENT : CREAM } as object}
-            >
-              <Text className="font-strong" style={{ color: on ? '#FFFFFF' : INK }}>
-                {lv} · {levelCount(lv)}
-              </Text>
-            </Pressable>
-          );
-        })}
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 16 }}>
+        {LEVELS.map((lv) => (
+          <LevelCard key={lv} lv={lv} title={lv} sub={`${levelCount(lv)} từ`} en={false} selected={lv === level} onPress={() => pickLevel(lv)} />
+        ))}
       </View>
 
       <View style={{ marginTop: 12 }}>
@@ -126,7 +113,7 @@ export default function CefrVocab() {
                   <Text className="font-heavy" style={{ fontSize: 17, color: INK, flexShrink: 1 }}>{x.t}</Text>
                   <Icon name="chevron-right" size={18} color={ACCENT} strokeWidth={2.2} />
                 </View>
-                <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE6D6', overflow: 'hidden' }}>
+                <View style={{ height: 6, borderRadius: 3, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
                   <View style={{ width: `${x.total ? Math.round((x.done / x.total) * 100) : 0}%`, height: 6, backgroundColor: ACCENT } as object} />
                 </View>
                 <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>Bài {OXFORD_TOPICS.indexOf(x.t as never) + 1} · {x.done} / {x.total} từ</Text>

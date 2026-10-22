@@ -10,9 +10,9 @@ export const CUTE_PALETTES: Record<CutePalette, {
   studyLine: string;
 }> = {
   original: {
-    label: 'Mặc định', labelEn: 'Default', swatch: '#C7A565',
-    browse: ['#F4EFE4', '#F0E9DA', '#EBE2CE'], study: ['#FFFDF8', '#FBF6EC', '#F5ECD9'],
-    browseLine: 'rgba(143, 110, 54, 0.10)', studyLine: 'rgba(143, 110, 54, 0.10)',
+    label: 'Mặc định', labelEn: 'Default', swatch: '#8B6CF0',
+    browse: ['#F6F4FC', '#F1EEFA', '#ECE8F8'], study: ['#FBFAFF', '#F6F4FC', '#F0EDFA'],
+    browseLine: 'rgba(124, 92, 240, 0.10)', studyLine: 'rgba(124, 92, 240, 0.10)',
   },
   strawberry: {
     label: 'Dâu sữa', labelEn: 'Strawberry milk', swatch: '#F3A8BD',

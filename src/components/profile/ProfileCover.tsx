@@ -60,7 +60,7 @@ const FILL = { position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 } as c
 
 function DefaultCover() {
   return (
-    <LinearGradient colors={[themedHex('#F6DC8E'), themedHex('#E2B54E'), themedHex('#B8862B')]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
+    <LinearGradient colors={[themedHex('#F6DC8E'), themedHex('#E2B54E'), themedHex('#6A4BD9')]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
       <View style={{ position: 'absolute', right: 18, top: 10 }}>
         <GlowStars scale={1.1} />
       </View>
@@ -131,7 +131,7 @@ const WAVE = 'M0 10 Q 12.5 4 25 10 T 50 10 T 75 10 T 100 10 T 125 10 T 150 10 T 
 function OceanCover() {
   return (
     <LinearGradient colors={['#BAE6FD', '#7DD3FC', '#0284C7']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
-      <View style={{ position: 'absolute', left: '18%', top: '16%', width: 50, height: 50, borderRadius: 50, backgroundColor: '#FEF9C3', ...loop('rp-glow', 4000) }} {...MOVE} />
+      <View style={{ position: 'absolute', left: '18%', top: '16%', width: 50, height: 50, borderRadius: 50, backgroundColor: '#F3F0FB', ...loop('rp-glow', 4000) }} {...MOVE} />
       {(
         [
           { bottom: '28%', color: 'rgba(56,189,248,0.75)', ms: 9000 },
@@ -184,8 +184,8 @@ function SakuraCover() {
 
 function MountainCover() {
   return (
-    <LinearGradient colors={[themedHex('#FEF3C7'), themedHex('#FDE68A'), themedHex('#F59E0B')]} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
-      <View style={{ position: 'absolute', left: '72%', top: '15%', width: 40, height: 40, borderRadius: 40, backgroundColor: '#FEF9C3', ...loop('rp-glow', 5000) }} {...MOVE} />
+    <LinearGradient colors={[themedHex('#F3F0FB'), themedHex('#FDE68A'), themedHex('#F59E0B')]} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: '72%', top: '15%', width: 40, height: 40, borderRadius: 40, backgroundColor: '#F3F0FB', ...loop('rp-glow', 5000) }} {...MOVE} />
       <Svg width="100%" height="70%" viewBox="0 0 200 50" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
         <Path d="M0 50 L35 15 L70 50 Z" fill="#475569" opacity="0.5" />
         <Path d="M50 50 L95 10 L140 50 Z" fill="#334155" opacity="0.7" />
@@ -210,18 +210,18 @@ function GalaxyCover() {
 
 function LibraryCover() {
   return (
-    <LinearGradient colors={['#1C130E', '#382215', '#57361E']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+    <LinearGradient colors={['#2B2350', '#2B2350', '#2B2350']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
       <View style={{ position: 'absolute', left: '15%', top: '30%', width: 14, height: 14, borderRadius: 14, backgroundColor: '#FDE047' }} />
       <Svg width="100%" height="65%" viewBox="0 0 200 40" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
-        <Rect x={10} y={10} width={8} height={30} fill="#B45309" />
-        <Rect x={20} y={6} width={9} height={34} fill="#92400E" />
-        <Rect x={31} y={12} width={7} height={28} fill="#78350F" />
-        <Rect x={40} y={8} width={10} height={32} fill="#B45309" />
-        <Rect x={140} y={8} width={9} height={32} fill="#92400E" />
-        <Rect x={151} y={12} width={8} height={28} fill="#78350F" />
-        <Rect x={161} y={6} width={11} height={34} fill="#B45309" />
-        <Rect x={174} y={10} width={9} height={30} fill="#D97706" />
-        <Rect x={0} y={36} width={200} height={4} fill="#451A03" />
+        <Rect x={10} y={10} width={8} height={30} fill="#6A4BD9" />
+        <Rect x={20} y={6} width={9} height={34} fill="#6A4BD9" />
+        <Rect x={31} y={12} width={7} height={28} fill="#2B2350" />
+        <Rect x={40} y={8} width={10} height={32} fill="#6A4BD9" />
+        <Rect x={140} y={8} width={9} height={32} fill="#6A4BD9" />
+        <Rect x={151} y={12} width={8} height={28} fill="#2B2350" />
+        <Rect x={161} y={6} width={11} height={34} fill="#6A4BD9" />
+        <Rect x={174} y={10} width={9} height={30} fill="#6A4BD9" />
+        <Rect x={0} y={36} width={200} height={4} fill="#2B2350" />
       </Svg>
     </LinearGradient>
   );
@@ -242,11 +242,11 @@ function BambooCover() {
 
 function AutumnCover() {
   return (
-    <LinearGradient colors={['#451A03', '#78350F', '#B45309']} start={{ x: 0, y: 0 }} end={{ x: 0.2, y: 1 }} style={FILL}>
+    <LinearGradient colors={['#2B2350', '#2B2350', '#6A4BD9']} start={{ x: 0, y: 0 }} end={{ x: 0.2, y: 1 }} style={FILL}>
       <View style={{ position: 'absolute', left: '78%', top: '16%', width: 38, height: 38, borderRadius: 38, backgroundColor: '#FDE68A', opacity: 0.9, ...loop('rp-sun', 6000) }} {...MOVE} />
       <Svg width="100%" height="60%" viewBox="0 0 200 40" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
         <Path d="M0 40 Q 60 22 120 32 T 200 28 V 40 H 0 Z" fill="#991B1B" opacity="0.8" />
-        <Path d="M30 40 Q 90 26 150 36 T 200 34 V 40 H 0 Z" fill="#7C2D12" />
+        <Path d="M30 40 Q 90 26 150 36 T 200 34 V 40 H 0 Z" fill="#2B2350" />
       </Svg>
     </LinearGradient>
   );

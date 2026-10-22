@@ -33,7 +33,7 @@ const DIM_LABEL: Record<DimensionScore['key'], { vi: string; en: string }> = {
 };
 
 const GOOD = '#15803D';
-const FAIR = '#B45309';
+const FAIR = '#6A4BD9';
 const POOR = '#B91C1C';
 const UNKNOWN = '#7C6552';
 
@@ -53,7 +53,7 @@ function SectionTitle({ children, aside }: { children: string; aside?: string })
 
 function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
-    <View style={{ flexBasis: '48%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: '#FAF3E8', gap: 2 }}>
+    <View style={{ flexBasis: '48%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: '#F3F0FB', gap: 2 }}>
       <Text style={{ color: COSMIC.muted, fontSize: 11, fontWeight: '700' }}>{label}</Text>
       <Text style={{ color: COSMIC.ink, fontSize: 20, fontWeight: '800', fontVariant: ['tabular-nums'] }}>{value}</Text>
       {hint ? <Text style={{ color: COSMIC.muted, fontSize: 11 }}>{hint}</Text> : null}
@@ -75,7 +75,7 @@ function DimensionRow({ dim }: { dim: DimensionScore }) {
           {measured ? `${dim.score}/100` : 'Chưa đo'}
         </Text>
       </View>
-      <View style={{ height: 6, borderRadius: 3, backgroundColor: '#F1E7D8', overflow: 'hidden' }}>
+      <View style={{ height: 6, borderRadius: 3, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
         {measured ? <View style={{ width: `${dim.score as number}%`, height: '100%', backgroundColor: color, borderRadius: 3 }} /> : null}
       </View>
       <Text style={{ color: COSMIC.muted, fontSize: 12, lineHeight: 17 }}>{dim.note}</Text>
@@ -145,7 +145,7 @@ export default function AnalyzePage() {
   return (
     <HubScreen title="Phân tích giọng nói" subtitle="Ghi âm, rồi xem bài nói của bạn được đo thế nào." back>
       {/* Chế độ: ghi âm tự do hay trả lời đề IELTS */}
-      <View style={{ flexDirection: 'row', padding: 4, borderRadius: 14, backgroundColor: '#F6EEE2', borderWidth: 1, borderColor: COSMIC.line }}>
+      <View style={{ flexDirection: 'row', padding: 4, borderRadius: 14, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: COSMIC.line }}>
         {(['free', 'topic'] as const).map((m) => {
           const on = mode === m;
           return (
@@ -174,7 +174,7 @@ export default function AnalyzePage() {
                   key={p.id}
                   accessibilityRole="button"
                   onPress={() => setSelectedPrompt(p)}
-                  style={{ paddingHorizontal: 12, paddingVertical: 7, borderRadius: 10, backgroundColor: sel ? '#F5EBDD' : '#FAF3E8', borderWidth: 1, borderColor: sel ? COSMIC.blue : COSMIC.cardBorder }}
+                  style={{ paddingHorizontal: 12, paddingVertical: 7, borderRadius: 10, backgroundColor: sel ? '#F3F0FB' : '#F3F0FB', borderWidth: 1, borderColor: sel ? COSMIC.blue : COSMIC.cardBorder }}
                 >
                   <Text style={{ color: sel ? COSMIC.blue : COSMIC.body, fontSize: 12, fontWeight: '700' }}>
                     {p.part} · {p.topic}
@@ -183,7 +183,7 @@ export default function AnalyzePage() {
               );
             })}
           </ScrollView>
-          <View style={{ backgroundColor: '#FAF3E8', padding: 14, borderRadius: 12 }}>
+          <View style={{ backgroundColor: '#F3F0FB', padding: 14, borderRadius: 12 }}>
             <Text style={{ color: COSMIC.ink, fontSize: 15, fontWeight: '600', lineHeight: 22 }}>{selectedPrompt.question}</Text>
           </View>
         </View>
@@ -284,7 +284,7 @@ export default function AnalyzePage() {
                 <Text style={{ color: COSMIC.ink, fontSize: 13, fontWeight: '700' }}>Từ lặp lại nhiều</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                   {report.repeated.slice(0, 8).map((r) => (
-                    <View key={r.word} style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, backgroundColor: '#FAF3E8', borderWidth: 1, borderColor: COSMIC.cardBorder }}>
+                    <View key={r.word} style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: COSMIC.cardBorder }}>
                       <Text style={{ color: COSMIC.body, fontSize: 12, fontWeight: '700' }}>
                         {r.word} × {r.count}
                       </Text>

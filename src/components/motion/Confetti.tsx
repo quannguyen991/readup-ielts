@@ -23,7 +23,7 @@ import { hashString, mulberry32 } from '@/services/questions/rng';
  *
  * Tắt chuyển động (prefers-reduced-motion) thì không bắn — chỉ còn tiếng chuông.
  */
-const COLORS = ['#FF3B6B', '#FFB020', '#FFE14D', '#2EE6A6', themedHex('#CCA35B'), '#DABB86', '#FF6EE7', '#FFFFFF'];
+const COLORS = ['#FF3B6B', '#FFB020', '#FFE14D', '#2EE6A6', themedHex('#F0644F'), '#DABB86', '#FF6EE7', '#FFFFFF'];
 const DURATION = 3200;
 /** Giây mô phỏng ứng với toàn bộ thời gian chạy. */
 const T = 2.6;
@@ -145,7 +145,7 @@ function Flash({ progress, W, H }: { progress: { value: number }; W: number; H: 
   return (
     <Animated.View
       style={[
-        { position: 'absolute', left: W * 0.5 - size / 2, top: H * 0.32 - size / 2, width: size, height: size, borderRadius: size / 2, backgroundColor: '#FFF4B8' },
+        { position: 'absolute', left: W * 0.5 - size / 2, top: H * 0.32 - size / 2, width: size, height: size, borderRadius: size / 2, backgroundColor: '#F3F0FB' },
         style,
       ]}
     />

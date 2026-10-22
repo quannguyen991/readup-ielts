@@ -32,12 +32,12 @@ test('ứng viên dạng gốc: chia -e, -s, -ed, -ing, -ies', () => {
   assert.deepEqual(lemmaCandidates('123'), []);
 });
 
-test('tra trong máy khớp dạng chia, có nghĩa Việt', () => {
-  const hit = lookupOffline('Implements');
+test('tra trong máy khớp dạng chia, có nghĩa Việt', async () => {
+  const hit = await lookupOffline('Implements');
   assert.ok(hit, 'implement có trong bộ từ hoặc từ điển dựng sẵn');
   assert.ok(hit.definitionVi);
   assert.equal(hit.englishOnly, false);
-  assert.equal(lookupOffline('zzzzqqq'), null);
+  assert.equal(await lookupOffline('zzzzqqq'), null);
 });
 
 test('thứ tự: máy trước, mạng chỉ khi không có; kết quả dương được nhớ', async () => {

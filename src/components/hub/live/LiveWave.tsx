@@ -28,7 +28,7 @@ export function LiveWave({ levels, active, color }: { levels: number[]; active: 
               width: 4,
               height: h,
               borderRadius: 2,
-              backgroundColor: active ? color : 'rgba(143,110,54,0.22)',
+              backgroundColor: active ? color : 'rgba(106, 75, 217,0.22)',
             }}
           />
         );

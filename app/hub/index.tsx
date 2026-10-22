@@ -1,3 +1,5 @@
+import { TileArt } from '@/components/ui/TileArt';
+import { HeroShell } from '@/components/layout/HeroShell';
 import React, { useMemo, useState } from 'react';
 import { Image, Modal, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
@@ -29,12 +31,12 @@ const AI_TOOLS: {
   tag?: string;
 }[] = [
   { title: 'Phân tích giọng nói', desc: 'Chấm phát âm, ngữ điệu, lưu loát và độ rõ ràng', art: (s) => <CuteMic size={s} />, route: '/hub/analyze', from: '#CFE3FF', to: '#A9CCFF', tag: 'MỚI' },
-  { title: 'Điều chỉnh giọng nói', desc: 'Nhận phản hồi và sửa trọng âm, ngữ điệu', art: (s) => <CuteHeadphones size={s} />, route: '/hub/pitch', from: '#FFF0BF', to: '#FFE08A' },
+  { title: 'Điều chỉnh giọng nói', desc: 'Nhận phản hồi và sửa trọng âm, ngữ điệu', art: (s) => <CuteHeadphones size={s} />, route: '/hub/pitch', from: '#F3F0FB', to: '#FFE08A' },
   { title: 'Video ngắn', desc: 'Xem video ngắn và nói lại cụm từ', art: (s) => <CuteRocket size={s} />, route: '/hub/short', from: '#FFD6E3', to: '#FFB8CE', tag: 'BETA' },
   { title: 'Nói đuổi', desc: 'Nói đuổi theo giọng bản ngữ, phản hồi ngay', art: (s) => <CuteChat size={s} />, route: '/hub/shadow', from: '#E3D7FF', to: '#C9B5FA', tag: 'BETA' },
-  { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại thật', art: (s) => <CuteChat size={s} />, route: '/hub/scenarios', from: '#FFE4D8', to: '#FFC7B0' },
+  { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại thật', art: (s) => <CuteChat size={s} />, route: '/hub/scenarios', from: '#F3F0FB', to: '#FFC7B0' },
   { title: 'Chủ đề', desc: 'Nói theo chủ đề 1–2 phút, có gợi ý ý', art: (s) => <CuteGlobe size={s} />, route: '/hub/topics', from: '#DDF5E6', to: '#B5EBCB' },
-  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', from: '#FFF3CC', to: '#FFE49A' },
+  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', from: '#F3F0FB', to: '#FFE49A' },
   { title: 'Trợ lý họp', desc: 'Nhận phản hồi sau các cuộc họp', art: (s) => <CuteCalendar size={s} />, route: '/hub/meeting', from: '#F3E9FF', to: '#DCC8FA' },
 ];
 
@@ -68,24 +70,19 @@ export default function HubToday() {
   const questDone = quests.filter((q) => q.done).length;
 
   const stats = [
-    { art: <CuteFlame size={34} />, value: String(streak), label: 'Ngày liên tiếp', bg: '#FFE9DC' },
+    { art: <CuteFlame size={34} />, value: String(streak), label: 'Ngày liên tiếp', bg: '#F3F0FB' },
     { art: <CuteNotebook size={34} />, value: String(totalDone), label: 'Nhiệm vụ đã làm', bg: '#E4EEFF' },
-    { art: <CuteCalendar size={34} />, value: `${questDone}/${quests.length}`, label: 'Hôm nay', bg: '#FFF4C7' },
+    { art: <CuteCalendar size={34} />, value: `${questDone}/${quests.length}`, label: 'Hôm nay', bg: '#F3F0FB' },
     { art: <CuteStar size={34} />, value: String(gems), label: 'Đá quý', bg: '#F0E8FF' },
   ];
 
   return (
     <HubScreen title="Hôm nay" subtitle="Luyện một chút mỗi ngày, chuỗi sẽ dài ra.">
       {/* Hero — tiêu đề lớn, linh vật, hàng chỉ số */}
-      <LinearGradient
-        colors={['#FFF8EC', '#FFE8C2']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ borderRadius: 28, padding: wide ? 28 : 20, overflow: 'hidden', gap: 6 }}
-      >
+      <HeroShell radius={28} style={{ padding: wide ? 28 : 20, gap: 6 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ color: '#C2410C', fontSize: 12, fontWeight: '800', letterSpacing: 1.6 }}>IELTS · SPEAKING</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800', letterSpacing: 1.6 }}>IELTS · SPEAKING</Text>
             <Text style={{ color: INK, fontSize: wide ? 42 : 29, fontWeight: '900', lineHeight: wide ? 48 : 35, letterSpacing: -0.4 }}>
               Luyện nói tự tin,
             </Text>
@@ -96,12 +93,6 @@ export default function HubToday() {
               <Text style={{ color: INK_SOFT, fontSize: 15, fontWeight: '600', marginTop: 6 }}>Thực hành với AI, nhận phản hồi chi tiết và cải thiện từng ngày.</Text>
             ) : null}
           </View>
-          <Image
-            source={{ uri: '/mascot/lion/lion-wave.webp' }}
-            resizeMode="contain"
-            style={{ width: wide ? 170 : 104, height: wide ? 170 : 104 }}
-            accessibilityLabel="Linh vật sư tử"
-          />
         </View>
 
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
@@ -129,7 +120,7 @@ export default function HubToday() {
             </View>
           ))}
         </View>
-      </LinearGradient>
+      </HeroShell>
 
       {/* Chuỗi 7 ngày */}
       <View style={[GLASS_CARD, { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 14, paddingHorizontal: 10, alignItems: 'center' }]}>
@@ -146,7 +137,7 @@ export default function HubToday() {
                   borderRadius: 19,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: lit ? '#FFE9DC' : '#F6F1F8',
+                  backgroundColor: lit ? '#F3F0FB' : '#F6F1F8',
                   borderWidth: 1.5,
                   borderColor: lit ? '#F4A261' : '#E9DFEF',
                 }}
@@ -155,7 +146,7 @@ export default function HubToday() {
                   <CuteFlame size={22} />
                 </View>
               </View>
-              <Text style={{ color: d.isToday ? '#C2410C' : INK_SOFT, fontSize: 11, fontWeight: d.isToday || lit ? '900' : '700' }}>{label}</Text>
+              <Text style={{ color: d.isToday ? '#6A4BD9' : INK_SOFT, fontSize: 11, fontWeight: d.isToday || lit ? '900' : '700' }}>{label}</Text>
             </View>
           );
         })}
@@ -176,7 +167,8 @@ export default function HubToday() {
               onPress={() => router.push(tool.route as never)}
               style={{ flexBasis: wide ? '23.5%' : '48%', flexGrow: 1, borderRadius: 22, overflow: 'hidden' }}
             >
-              <LinearGradient colors={[tool.from, tool.to]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 14, gap: 6, minHeight: 190 }}>
+              <View style={{ padding: 14, gap: 6, minHeight: 190, overflow: 'hidden', borderRadius: 20 }}>
+                <TileArt seed={'hub-' + tool.from + tool.to} tone={[tool.from, tool.to]} height={190} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, height: '100%', borderRadius: 0 }} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   {tool.tag ? (
                     <View style={{ paddingHorizontal: 9, paddingVertical: 3, borderRadius: 10, backgroundColor: 'rgba(255,255,255,0.92)' }}>
@@ -192,7 +184,7 @@ export default function HubToday() {
                 <View style={{ alignSelf: 'flex-end', width: 34, height: 34, borderRadius: 17, backgroundColor: 'rgba(255,255,255,0.95)', alignItems: 'center', justifyContent: 'center', marginTop: 4 }}>
                   <Icon name="arrow-right" size={14} color={INK} />
                 </View>
-              </LinearGradient>
+              </View>
             </Pressable>
           ))}
         </View>
@@ -203,7 +195,7 @@ export default function HubToday() {
         <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' }}>
           <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Khám phá thêm</Text>
           <Pressable accessibilityRole="button" onPress={() => router.push('/hub/progress' as never)}>
-            <Text style={{ color: '#C2410C', fontSize: 13, fontWeight: '800' }}>Tiến độ ›</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '800' }}>Tiến độ ›</Text>
           </Pressable>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 10, paddingRight: 4 }}>
@@ -262,7 +254,7 @@ export default function HubToday() {
               <Text numberOfLines={1} style={{ flex: 1, color: quest.done ? '#166534' : INK, fontSize: 14, fontWeight: '800' }}>
                 {quest.title}
               </Text>
-              <Text style={{ color: quest.done ? '#166534' : '#C2410C', fontSize: 12, fontWeight: '900' }}>{quest.done ? '1/1 ✓' : '0/1'}</Text>
+              <Text style={{ color: quest.done ? '#166534' : '#6A4BD9', fontSize: 12, fontWeight: '900' }}>{quest.done ? '1/1 ✓' : '0/1'}</Text>
               <Icon name="chevron-right" size={14} color={INK_SOFT} />
             </Pressable>
           ))}
@@ -277,9 +269,9 @@ export default function HubToday() {
             accessibilityRole="button"
             accessibilityLabel="Chi tiết lộ trình CEFR B2 sang C1"
             onPress={() => setInfo(true)}
-            style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, backgroundColor: '#FFF1DC', borderWidth: 1, borderColor: '#F7CF8F' }}
+            style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F7CF8F' }}
           >
-            <Text style={{ color: '#C2410C', fontSize: 12, fontWeight: '900' }}>B2 → C1 ⓘ</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '900' }}>B2 → C1 ⓘ</Text>
           </Pressable>
         </View>
 
@@ -297,7 +289,7 @@ export default function HubToday() {
         </View>
 
         <Pressable accessibilityRole="button" accessibilityLabel="Xem tiến độ chi tiết" onPress={() => router.push('/hub/progress' as never)} style={{ alignSelf: 'flex-start' }}>
-          <Text style={{ color: '#C2410C', fontSize: 13, fontWeight: '900' }}>Xem tiến độ chi tiết ›</Text>
+          <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '900' }}>Xem tiến độ chi tiết ›</Text>
         </Pressable>
       </View>
 
@@ -316,7 +308,7 @@ export default function HubToday() {
 
             <View style={{ gap: 8 }}>
               <Text style={{ color: INK, fontSize: 13, lineHeight: 20, fontWeight: '600' }}>
-                • <Text style={{ fontWeight: '900', color: '#C2410C' }}>Phát âm chuẩn xác 44 âm IPA</Text>: điểm âm vị trung bình ≥ 85%, làm chủ phụ âm cuối và trọng âm câu.
+                • <Text style={{ fontWeight: '900', color: '#6A4BD9' }}>Phát âm chuẩn xác 44 âm IPA</Text>: điểm âm vị trung bình ≥ 85%, làm chủ phụ âm cuối và trọng âm câu.
               </Text>
               <Text style={{ color: INK, fontSize: 13, lineHeight: 20, fontWeight: '600' }}>
                 • <Text style={{ fontWeight: '900', color: '#7C3AED' }}>Lưu loát & tốc độ</Text>: giữ 130–160 từ/phút, tỷ lệ từ đệm (um, uh) dưới 3%.

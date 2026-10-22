@@ -177,7 +177,7 @@ export default function IeltsSkillTypeScreen() {
             {/* Các bước làm bài chuẩn mực */}
             <View className="rounded-2xl border border-border bg-surface p-5">
               <View className="flex-row items-center gap-2 mb-4">
-                <Icon name="clipboard" size={20} color="#8F6E36" />
+                <Icon name="clipboard" size={20} color="#6A4BD9" />
                 <Text className="font-heavy text-cardTitle text-ink">
                   {L('Phương pháp làm bài từng bước', 'Step-by-step Strategy')}
                 </Text>
@@ -219,7 +219,7 @@ export default function IeltsSkillTypeScreen() {
             {/* Mẹo đạt Band điểm cao */}
             <View className="rounded-2xl border border-amber-200 bg-amber-50/60 p-5">
               <View className="flex-row items-center gap-2 mb-3">
-                <Icon name="sparkle" size={20} color="#D97706" />
+                <Icon name="sparkle" size={20} color="#6A4BD9" />
                 <Text className="font-heavy text-cardTitle text-amber-900">
                   {L('Bí kíp & Lời khuyên vàng', 'Pro Tips & Hacks')}
                 </Text>
@@ -292,7 +292,7 @@ export default function IeltsSkillTypeScreen() {
               <View className="rounded-2xl border border-border bg-surface p-5">
                 <View className="flex-row items-center justify-between mb-3 border-b border-border pb-2.5">
                   <View className="flex-row items-center gap-1.5">
-                    <Icon name="book" size={16} color="#8F6E36" />
+                    <Icon name="book" size={16} color="#6A4BD9" />
                     <Text className="font-strong text-label text-muted uppercase tracking-wider">
                       {L('Đoạn văn / Ngữ cảnh thực chiến', 'Passage / Real Context')}
                     </Text>

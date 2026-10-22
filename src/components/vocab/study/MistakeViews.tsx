@@ -56,9 +56,9 @@ export function MistakeBox({ m }: { m: Mistake }) {
         className="mt-4 flex-row gap-2.5"
         style={{ borderLeftWidth: 3, borderLeftColor: "#D9A441", paddingLeft: 12 }}
       >
-        <Icon name="sparkle" size={18} color="#B45309" />
+        <Icon name="sparkle" size={18} color="#6A4BD9" />
         <View className="flex-1">
-          <Text className="font-strong text-body" style={{ color: "#92400E" }}>
+          <Text className="font-strong text-body" style={{ color: "#6A4BD9" }}>
             {L("Phân tích lỗi", "Mistake check")} · {en ? MISTAKE_TITLE_EN[m.kind] : m.title}
           </Text>
           {m.detail ? (
@@ -113,10 +113,10 @@ export function RoundAnalysis({
               key={k.kind}
               className="rounded-pill px-3 py-1.5"
               style={{
-                backgroundColor: isTop ? "#FEF3C7" : t.chipBg,
+                backgroundColor: isTop ? "#F3F0FB" : t.chipBg,
               }}
             >
-              <Text className="font-semi text-label" style={{ color: isTop ? "#78350F" : t.chipInk }}>
+              <Text className="font-semi text-label" style={{ color: isTop ? "#2B2350" : t.chipInk }}>
                 {en ? MISTAKE_TITLE_EN[k.kind] : k.title} × {k.count}
               </Text>
             </View>

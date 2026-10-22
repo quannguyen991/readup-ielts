@@ -66,12 +66,12 @@ const LIGHT: Theme = {
   body: '#34332E',
   muted: '#85837A',
   rule: '#E8E5DC',
-  tint: '#F5F3EC',
+  tint: '#F3F0FB',
   accent: '#957846',
 };
 const DARK: Theme = {
   bg: '#1D1C19',
-  ink: '#F4F2EA',
+  ink: '#F3F0FB',
   body: '#D6D3C8',
   muted: '#8E8B80',
   rule: '#2E2D28',
@@ -79,7 +79,7 @@ const DARK: Theme = {
   accent: '#D6B66E',
 };
 /** Nền trang phẳng, không hoa văn. */
-const PAGE = { light: '#F4F2EB', dark: '#121211' };
+const PAGE = { light: '#F3F0FB', dark: '#121211' };
 
 const FONTS = [
   { key: 'literata', label: 'Literata', family: readingFont.literata },
@@ -167,7 +167,7 @@ function Reader({ article }: { article: BilingualArticle }) {
     [backdrop, baseTheme, wide],
   );
   // Chữ nằm TRỰC TIẾP trên tranh (thanh trên) theo tông tranh, không theo giấy.
-  const chromeInk = backdrop ? (backdrop.tone === 'dark' ? '#F4F2EA' : '#1A1A17') : dark ? '#F4F2EA' : '#1A1A17';
+  const chromeInk = backdrop ? (backdrop.tone === 'dark' ? '#F3F0FB' : '#1A1A17') : dark ? '#F3F0FB' : '#1A1A17';
   const fontFamily = FONTS.find((f) => f.key === fontKey)?.family ?? readingFont.literata;
   const dict = useArticleDictionary(article.id);
 
@@ -385,8 +385,8 @@ function Toolbar(props: {
         style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
       >
         <View className="h-10 flex-row items-center gap-2 rounded-pill px-4" style={{ backgroundColor: props.dark ? '#1D1C19' : '#FFFFFF', borderWidth: 1, borderColor: props.dark ? '#2E2D28' : '#E3E0D6' }}>
-          <Icon name="settings" size={16} color={props.dark ? '#F4F2EA' : '#1A1A17'} strokeWidth={2} />
-          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: props.dark ? '#F4F2EA' : '#1A1A17' }}>{L('Cài đặt', 'Settings')}</Text>
+          <Icon name="settings" size={16} color={props.dark ? '#F3F0FB' : '#1A1A17'} strokeWidth={2} />
+          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: props.dark ? '#F3F0FB' : '#1A1A17' }}>{L('Cài đặt', 'Settings')}</Text>
         </View>
       </HoverPressable>
 
@@ -395,7 +395,7 @@ function Toolbar(props: {
   );
 }
 
-const PAPER = { bg: '#FFFFFF', ink: '#1A1A17', muted: '#85837A', rule: '#E8E5DC', chip: '#F3F1EA', accent: '#957846' };
+const PAPER = { bg: '#FFFFFF', ink: '#1A1A17', muted: '#85837A', rule: '#E8E5DC', chip: '#F3F0FB', accent: '#957846' };
 
 /** Bảng cài đặt của màn đọc song ngữ: tấm hiển thị, mặt chữ, cỡ chữ, nền, toàn màn hình, từ đã lưu. */
 function ReaderSettings(
@@ -791,15 +791,15 @@ function TtsShadowBar({
           style={{
             backgroundColor: shadowMode ? 'rgba(217,119,6,0.18)' : 'transparent',
             borderWidth: 1,
-            borderColor: shadowMode ? '#D97706' : theme.rule,
+            borderColor: shadowMode ? '#6A4BD9' : theme.rule,
           }}
         >
-          <Icon name="mic" size={14} color={shadowMode ? '#D97706' : theme.muted} strokeWidth={2} />
+          <Icon name="mic" size={14} color={shadowMode ? '#6A4BD9' : theme.muted} strokeWidth={2} />
           <Text
             style={{
               fontFamily: readingFont.sansBold,
               fontSize: 12.5,
-              color: shadowMode ? '#D97706' : theme.muted,
+              color: shadowMode ? '#6A4BD9' : theme.muted,
             }}
           >
             {L('Nói đuổi (Shadowing)', 'Shadowing Mode')}
@@ -865,7 +865,7 @@ function TtsShadowBar({
                 style={{
                   fontSize: 12.5,
                   fontWeight: '800',
-                  color: shadowScore >= 80 ? '#16A34A' : shadowScore >= 60 ? '#D97706' : '#DC2626',
+                  color: shadowScore >= 80 ? '#16A34A' : shadowScore >= 60 ? '#6A4BD9' : '#DC2626',
                 }}
               >
                 {shadowScore >= 80
@@ -1312,7 +1312,7 @@ function QuestionsBody({ questions, theme, answers, checked, onAnswer, onCheck }
                   ? L('Khá lắm ⭐', 'Nice work ⭐')
                   : L('Đọc lại nhé 💪', 'Give it another read 💪')
             }
-            color={score === questions.length ? '#22A06B' : score * 2 >= questions.length ? '#A8843F' : '#F0703F'}
+            color={score === questions.length ? '#22A06B' : score * 2 >= questions.length ? '#6A4BD9' : '#F0703F'}
             ink="#FFFFFF"
             tilt={-4}
             size={12}
@@ -1426,7 +1426,7 @@ function VocabPronounceWidget({ word, meaningVi, theme }: { word: string; meanin
                 style={{
                   fontSize: 12,
                   fontWeight: '800',
-                  color: score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626',
+                  color: score >= 80 ? '#16A34A' : score >= 60 ? '#6A4BD9' : '#DC2626',
                 }}
               >
                 {score >= 80

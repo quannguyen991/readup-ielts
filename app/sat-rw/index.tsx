@@ -419,7 +419,7 @@ function OfficialSkillCard({ skill, L }: { skill: OfficialSatRwSkill; L: (vi: st
       <Text className="mt-1.5 font-sans text-label text-muted" style={{ lineHeight: 20 }}>
         {en ? skill.strategy : skill.strategy}
       </Text>
-      <Text className="mt-1 font-mid text-label" style={{ color: '#936B31' }}>
+      <Text className="mt-1 font-mid text-label" style={{ color: '#6A4BD9' }}>
         {L(`Cẩn thận: ${skill.trap}`, `Watch for: ${skill.trap}`)}
       </Text>
     </Pressable>
@@ -470,8 +470,8 @@ function PathUnitLink({
 
 /** Màu từng mảng đề — dùng cho dải "dấu vân" trên thẻ đề trộn. */
 const DOMAIN_TONE: Record<string, string> = {
-  'Information and Ideas': '#B07A3A',
-  'Craft and Structure': '#D6B57C',
+  'Information and Ideas': '#6A4BD9',
+  'Craft and Structure': '#A38BFA',
   'Expression of Ideas': '#F59E0B',
   'Standard English Conventions': '#F43F5E',
 };
@@ -508,7 +508,7 @@ function MixTile({
       className="rounded-[18px] bg-white p-3.5"
       style={{
         borderWidth: 1,
-        borderColor: hover ? '#E0D7C7' : '#F2EEE6',
+        borderColor: hover ? '#E0D7C7' : '#F3F0FB',
         ...({
           boxShadow: hover ? '0 14px 30px rgba(94, 72, 35,0.12)' : '0 1px 2px rgba(15,23,42,0.05)',
           transform: hover ? 'translateY(-2px)' : 'none',

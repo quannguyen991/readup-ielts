@@ -29,17 +29,17 @@ import { useL } from '@/i18n/useL';
 
 export const B9 = {
   navy: '#0F1D33',
-  gold: '#A8843F',
-  goldMid: themedHex('#B8955A'),
-  goldDeep: '#8F6E36',
+  gold: '#6A4BD9',
+  goldMid: themedHex('#8B6CF0'),
+  goldDeep: '#6A4BD9',
   goldLight: '#E2C88F',
-  goldWash: '#FBF3E2',
-  paper: '#FFFDF8',
+  goldWash: '#F3F0FB',
+  paper: '#F3F0FB',
   line: '#E8DCC0',
-  hair: '#F0E6D2',
+  hair: '#F3F0FB',
   muted: '#6B6250',
   faint: '#B7AC95',
-  canvas: '#F3EDE1',
+  canvas: '#F3F0FB',
 } as const;
 
 const GREEN = '#16A34A';

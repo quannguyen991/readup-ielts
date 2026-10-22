@@ -185,7 +185,7 @@ export function ArtCaption({ backdrop, phone }: { backdrop: Backdrop; phone: boo
           backgroundColor: dark ? 'rgba(10,14,32,0.72)' : 'rgba(255,255,255,0.8)',
         }}
       >
-        <Text numberOfLines={1} style={{ flexShrink: 1, fontSize: 12, color: dark ? '#E9E4D2' : '#3A382F' }}>
+        <Text numberOfLines={1} style={{ flexShrink: 1, fontSize: 12, color: dark ? '#F3F0FB' : '#3A382F' }}>
           {captionOf(backdrop, en)}
         </Text>
         <Pressable
@@ -195,7 +195,7 @@ export function ArtCaption({ backdrop, phone }: { backdrop: Backdrop; phone: boo
           hitSlop={8}
           style={{ width: 18, height: 18, alignItems: 'center', justifyContent: 'center' }}
         >
-          <Text style={{ fontSize: 13, lineHeight: 14, color: dark ? '#E9E4D2' : '#3A382F' }}>×</Text>
+          <Text style={{ fontSize: 13, lineHeight: 14, color: dark ? '#F3F0FB' : '#3A382F' }}>×</Text>
         </Pressable>
       </View>
     </View>
@@ -205,7 +205,7 @@ export function ArtCaption({ backdrop, phone }: { backdrop: Backdrop; phone: boo
 /* ---------- Bộ chọn tranh dùng chung (đọc báo + học từ vựng) ---------- */
 
 export type GalleryColors = { ink: string; muted: string; chip: string; accent: string; onAccent: string };
-const DEFAULT_COLORS: GalleryColors = { ink: '#1A1A17', muted: '#85837A', chip: '#F3F1EA', accent: '#957846', onAccent: '#FFFFFF' };
+const DEFAULT_COLORS: GalleryColors = { ink: '#1A1A17', muted: '#85837A', chip: '#F3F0FB', accent: '#957846', onAccent: '#FFFFFF' };
 
 function Chip({ on, onPress, children, c }: { on: boolean; onPress: () => void; children: React.ReactNode; c: GalleryColors }) {
   return (

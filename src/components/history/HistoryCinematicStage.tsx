@@ -87,13 +87,13 @@ export function HistoryCinematicStage({
             onPress={onBack}
             style={{ width: 44, height: 44, borderRadius: 22, borderWidth: 1, borderColor: 'rgba(244,239,225,0.42)', alignItems: 'center', justifyContent: 'center' }}
           >
-            <Text style={{ color: '#F4EFE1', fontFamily: readingFont.sansBold, fontSize: 21 }}>←</Text>
+            <Text style={{ color: '#F3F0FB', fontFamily: readingFont.sansBold, fontSize: 21 }}>←</Text>
           </Pressable>
           <View style={{ flex: 1, minWidth: 220 }}>
             <Text style={{ color: '#D5C59D', fontFamily: readingFont.sansBold, fontSize: 12, letterSpacing: 1.2 }}>
               {topic.periodLabel.toUpperCase()} · {L(`CẢNH ${scene.n}/${total}`, `SCENE ${scene.n}/${total}`)}
             </Text>
-            <Text numberOfLines={1} style={{ color: '#F4EFE1', fontFamily: readingFont.sansHeavy, fontSize: wide ? 22 : 19, marginTop: 3 }}>
+            <Text numberOfLines={1} style={{ color: '#F3F0FB', fontFamily: readingFont.sansHeavy, fontSize: wide ? 22 : 19, marginTop: 3 }}>
               {scene.titleVi}
             </Text>
           </View>
@@ -119,7 +119,7 @@ export function HistoryCinematicStage({
                     </Text>
                   </View>
                   <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: 'rgba(15,15,13,0.68)' }}>
-                    <Text style={{ color: '#F4EFE1', fontFamily: readingFont.sans, fontSize: 12, lineHeight: 17 }}>
+                    <Text style={{ color: '#F3F0FB', fontFamily: readingFont.sans, fontSize: 12, lineHeight: 17 }}>
                       {displayLang === 'vi' ? image.captionVi : image.captionEn}
                     </Text>
                     <Text style={{ color: '#D6D0C1', fontFamily: readingFont.sans, fontSize: 10.5, marginTop: 3 }}>
@@ -136,7 +136,7 @@ export function HistoryCinematicStage({
               )}
             </View>
 
-            <View style={{ paddingHorizontal: 10, paddingVertical: 8, borderRadius: 14, backgroundColor: '#F7F5EF', gap: 8 }}>
+            <View style={{ paddingHorizontal: 10, paddingVertical: 8, borderRadius: 14, backgroundColor: '#F3F0FB', gap: 8 }}>
               <SceneTimeline scenes={scenes} activeId={activeId} playingId={playingId} completed={completed} onSelect={onSceneSelect} />
               <NarrationPlayer
                 nar={nar}

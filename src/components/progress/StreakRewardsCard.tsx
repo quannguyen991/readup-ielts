@@ -58,7 +58,7 @@ export function StreakRewardsCard({ current, longest }: { current: number; longe
                 `${m.days} days, ${m.stars} stars${claimed ? ', claimed' : reached ? ', being added' : ', not reached'}`,
               )}
               className="rounded-pill border px-3 py-1.5"
-              style={{ borderColor: claimed ? '#D9A441' : '#E5E7EB', backgroundColor: claimed ? '#FFF4CF' : '#FFFFFF' }}
+              style={{ borderColor: claimed ? '#D9A441' : '#E5E7EB', backgroundColor: claimed ? '#F3F0FB' : '#FFFFFF' }}
             >
               <Badge
                 label={`${m.days} ${L('ngày', 'days')} · +${formatStars(m.stars)} ⭐${claimed ? ' ✓' : reached ? '' : ' 🔒'}`}

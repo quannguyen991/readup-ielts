@@ -323,7 +323,7 @@ export default function TutorChat() {
                 borderRadius: 8,
                 backgroundColor: 'rgba(140, 83, 27, 0.3)',
                 borderWidth: 1,
-                borderColor: '#8C531B',
+                borderColor: '#6A4BD9',
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 4,
@@ -370,7 +370,7 @@ export default function TutorChat() {
                       paddingHorizontal: 7,
                       paddingVertical: 3,
                       borderRadius: 6,
-                      backgroundColor: showTranslation ? '#8C531B' : '#F1F5F9',
+                      backgroundColor: showTranslation ? '#6A4BD9' : '#F1F5F9',
                     }}
                   >
                     <Text style={{ color: showTranslation ? '#FFFFFF' : '#475569', fontSize: 12, fontWeight: '800' }}>
@@ -398,8 +398,8 @@ export default function TutorChat() {
 
               {/* Vietnamese Translation Accordion */}
               {showTranslation && (
-                <View style={{ borderTopWidth: 1, borderTopColor: '#573E29', paddingTop: 6 }}>
-                  <Text style={{ color: '#8C531B', fontSize: 13, lineHeight: 19, fontStyle: 'italic' }}>
+                <View style={{ borderTopWidth: 1, borderTopColor: '#2B2350', paddingTop: 6 }}>
+                  <Text style={{ color: '#6A4BD9', fontSize: 13, lineHeight: 19, fontStyle: 'italic' }}>
                     {lastAssistantMsg.contentVi || 'Bản dịch tự động đang được chuẩn hóa.'}
                   </Text>
                 </View>
@@ -480,7 +480,7 @@ export default function TutorChat() {
         {/* Bottom Barge-in & Input Controls */}
         <View style={{ alignItems: 'center', gap: 4, paddingTop: 4 }}>
           {/* Label "Nhấn để ngắt" */}
-          <Text style={{ color: speaking ? '#8C531B' : HUB.muted, fontSize: 12, fontWeight: '700' }}>
+          <Text style={{ color: speaking ? '#6A4BD9' : HUB.muted, fontSize: 12, fontWeight: '700' }}>
             {listen.listening
               ? 'Đang lắng nghe bạn... Bấm để gửi'
               : speaking
@@ -503,10 +503,10 @@ export default function TutorChat() {
                 justifyContent: 'center',
                 backgroundColor: keyboardOpen ? 'rgba(140, 83, 27, 0.25)' : HUB.glassStrong,
                 borderWidth: 1,
-                borderColor: keyboardOpen ? '#8C531B' : HUB.line,
+                borderColor: keyboardOpen ? '#6A4BD9' : HUB.line,
               }}
             >
-              <Icon name="pencil" size={20} color={keyboardOpen ? '#8C531B' : HUB.ink} />
+              <Icon name="pencil" size={20} color={keyboardOpen ? '#6A4BD9' : HUB.ink} />
             </Pressable>
 
             {/* Central Big Square Barge-in & Record Button (#0EA5E9) */}
@@ -520,8 +520,8 @@ export default function TutorChat() {
                 borderRadius: 22,
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: listen.listening ? '#EF4444' : '#8C531B',
-                shadowColor: listen.listening ? '#EF4444' : '#8C531B',
+                backgroundColor: listen.listening ? '#EF4444' : '#6A4BD9',
+                shadowColor: listen.listening ? '#EF4444' : '#6A4BD9',
                 shadowOffset: { width: 0, height: 6 },
                 shadowOpacity: 0.5,
                 shadowRadius: 16,
@@ -548,7 +548,7 @@ export default function TutorChat() {
             >
               <View style={{ width: 18, height: 18, flexDirection: 'row', flexWrap: 'wrap', gap: 2, alignItems: 'center', justifyContent: 'center' }}>
                 {[...Array(9)].map((_, i) => (
-                  <View key={i} style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#8C531B' }} />
+                  <View key={i} style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#6A4BD9' }} />
                 ))}
               </View>
             </Pressable>
@@ -612,7 +612,7 @@ export default function TutorChat() {
 
             <View style={{ gap: 8 }}>
               <View style={{ padding: 10, borderRadius: 10, backgroundColor: HUB.glassStrong, gap: 4 }}>
-                <Text style={{ color: '#8C531B', fontSize: 13, fontWeight: '700' }}>Cấu trúc trọng tâm:</Text>
+                <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '700' }}>Cấu trúc trọng tâm:</Text>
                 <Text style={{ color: HUB.ink, fontSize: 13 }}>• Khẳng định: S + can + V(nguyên mẫu)</Text>
                 <Text style={{ color: HUB.ink, fontSize: 13 }}>• Phủ định: S + cannot / can't + V(nguyên mẫu)</Text>
                 <Text style={{ color: HUB.ink, fontSize: 13 }}>• Câu hỏi: Can + S + V(nguyên mẫu)...?</Text>

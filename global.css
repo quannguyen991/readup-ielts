@@ -18,20 +18,20 @@
   }
 
   body {
-    background-color: #fcfaf7;
+    background-color: #FBF9F4;
   }
 }
 
 /*
- * Nút chính: dải vàng kim của giao diện mặc định.
+ * Nút chính: dải tím – san hô – cam, cùng bảng màu toàn web.
  */
 @layer utilities {
   .bg-primary-600,
   .bg-primary-700,
   .bg-brand,
   .bg-brand-mid {
-    background-image: linear-gradient(100deg, #D6B774 0%, #B8955A 48%, #967334 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    background-image: linear-gradient(100deg, #8B6CF0 0%, #E8708A 52%, #FF9C5B 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 }
 

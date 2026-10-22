@@ -14,16 +14,16 @@ import { useL } from '@/i18n/useL';
 export const WHATS_NEW_VERSION = '2026-10-18';
 const STORAGE_KEY = 'readup:whats-new';
 
-const GOLD = '#B8955A';
-const GOLD_DEEP = '#8A6A2E';
+const GOLD = '#8B6CF0';
+const GOLD_DEEP = '#6A4BD9';
 const GOLD_LIGHT = '#F2C65E';
-const INK = '#2B2110';
-const CREAM = '#FFF6DE';
-const LINE = '#F2E6CC';
+const INK = '#2B2350';
+const CREAM = '#F3F0FB';
+const LINE = '#F3F0FB';
 
 // Chữ tiêu đề và nút: dải vàng ánh kim chạy chậm trên web. Tắt khi máy bật "giảm chuyển động".
-const TITLE_GRADIENT = 'linear-gradient(100deg, #7A5418 0%, #C9963A 30%, #F5D27A 50%, #C9963A 70%, #7A5418 100%)';
-const CTA_GRADIENT = 'linear-gradient(100deg, #B8955A 0%, #F2C65E 40%, #FFEFB8 50%, #F2C65E 60%, #B8955A 100%)';
+const TITLE_GRADIENT = 'linear-gradient(100deg, #2B2350 0%, #C9963A 30%, #F5D27A 50%, #C9963A 70%, #2B2350 100%)';
+const CTA_GRADIENT = 'linear-gradient(100deg, #8B6CF0 0%, #F2C65E 40%, #F3F0FB 50%, #F2C65E 60%, #8B6CF0 100%)';
 const CSS_ID = 'readup-whats-new';
 const CSS = `
 @keyframes wn-shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
@@ -351,13 +351,13 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     borderWidth: 1,
     borderColor: LINE,
-    backgroundColor: '#FFFBF0',
+    backgroundColor: '#F3F0FB',
     padding: 22,
     gap: 16,
     ...(Platform.OS === 'web'
       ? ({
           backgroundImage:
-            'radial-gradient(circle at 88% 0%, rgba(242,198,94,0.38), transparent 46%), linear-gradient(180deg, #FFFBF0 0%, #FFF1CC 100%)',
+            'radial-gradient(circle at 88% 0%, rgba(242,198,94,0.38), transparent 46%), linear-gradient(180deg, #F3F0FB 0%, #F3F0FB 100%)',
           boxShadow: '0 30px 80px rgba(20,14,4,0.35), 0 0 0 1px rgba(242,198,94,0.55), 0 0 56px rgba(242,198,94,0.35)',
         } as object)
       : {}),
@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
   text: { gap: 10 },
   textWide: { flex: 1, minWidth: 0 },
   title: { fontFamily: 'Nunito_900Black', fontSize: 31, lineHeight: 38, letterSpacing: -0.2 },
-  body: { fontFamily: 'BeVietnamPro_400Regular', fontSize: 15, lineHeight: 23, color: '#5B4A2A' },
+  body: { fontFamily: 'BeVietnamPro_400Regular', fontSize: 15, lineHeight: 23, color: '#2B2350' },
   bullets: { gap: 8, marginTop: 4 },
   bulletRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
   bulletIcon: {
@@ -431,7 +431,7 @@ const styles = StyleSheet.create({
       ? ({
           backgroundImage: CTA_GRADIENT,
           backgroundSize: '200% auto',
-          boxShadow: '0 10px 24px rgba(184,149,90,0.45)',
+          boxShadow: '0 10px 24px rgba(139, 108, 240,0.45)',
           transition: 'transform 180ms ease, box-shadow 180ms ease',
         } as object)
       : {}),

@@ -53,7 +53,7 @@ export function AnalysisView({
   return (
     <View style={{ gap: 14 }}>
       <LinearGradient
-        colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+        colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ borderRadius: 24, padding: 20, alignItems: 'center', gap: 12 }}
@@ -69,7 +69,7 @@ export function AnalysisView({
               height: 104,
               borderRadius: 52,
               borderWidth: 9,
-              borderColor: overall === null ? 'rgba(143,110,54,0.2)' : scoreColor(overall),
+              borderColor: overall === null ? 'rgba(106, 75, 217,0.2)' : scoreColor(overall),
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: 'rgba(120, 68, 21, 0.7)',
@@ -107,7 +107,7 @@ export function AnalysisView({
                 {d.score === null ? 'Chưa đo' : d.score}
               </Text>
             </View>
-            <View style={{ height: 10, borderRadius: 5, backgroundColor: 'rgba(143,110,54,0.14)', overflow: 'hidden' }}>
+            <View style={{ height: 10, borderRadius: 5, backgroundColor: 'rgba(106, 75, 217,0.14)', overflow: 'hidden' }}>
               {d.score === null ? null : (
                 <View
                   style={{

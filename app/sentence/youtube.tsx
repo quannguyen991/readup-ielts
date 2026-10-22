@@ -493,7 +493,7 @@ function PracticeView({
             <Icon
               name={m.icon}
               size={15}
-              color={mode === m.key ? '#152238' : '#F3E4CB'}
+              color={mode === m.key ? '#152238' : '#F3F0FB'}
               strokeWidth={2.1}
             />
             <Text
@@ -780,7 +780,7 @@ function PracticePrepView({
               <Text className="mt-1 font-sans text-body text-paper-muted">{L('Một lần chuẩn bị transcript, những lần sau vào luyện ngay.', 'Prepare the transcript once, then jump straight into practice next time.')}</Text>
             </View>
             <View className="rounded-pill border border-[#F7B955]/45 bg-[#F7B955]/10 px-3 py-1.5">
-              <Text className="font-strong text-label text-[#8C6A1F]">{L('CÂU HỎI VIDEO', 'VIDEO QUESTIONS')}</Text>
+              <Text className="font-strong text-label text-[#6A4BD9]">{L('CÂU HỎI VIDEO', 'VIDEO QUESTIONS')}</Text>
             </View>
           </View>
 
@@ -788,7 +788,7 @@ function PracticePrepView({
             <Text className="font-strong text-bodyLg text-paper-ink">{L('Chọn cách bắt đầu', 'Choose how to start')}</Text>
             <Text className="mt-2 font-sans text-body text-paper-muted">{L('Nếu video có phụ đề, hệ thống sẽ dựng ngay các câu để Shadowing, Dictation và Quiz.', 'If the video has subtitles, the app builds the sentences for Shadowing, Dictation and Quiz right away.')}</Text>
             <Button className="mt-4 self-start" variant="brand" label={loading ? L('Đang lấy phụ đề…', 'Fetching subtitles…') : L('Lấy phụ đề tự động', 'Get subtitles automatically')} iconRight="arrow-right" disabled={loading} onPress={() => void loadTranscript()} />
-            {message ? <Text className="mt-3 font-sans text-label text-[#8C6A1F]">{message}</Text> : null}
+            {message ? <Text className="mt-3 font-sans text-label text-[#6A4BD9]">{message}</Text> : null}
           </View>
 
           <Text className="mt-5 font-strong uppercase tracking-[2px] text-paper-muted" style={{ fontSize: 12 }}>{L('Hoặc dán transcript từ YouTube', 'Or paste a transcript from YouTube')}</Text>
@@ -874,12 +874,12 @@ function TranscriptView({
             onPress={() => void toggleVi()}
             className="flex-row items-center gap-2 rounded-pill border px-3 py-1.5"
             style={{
-              borderColor: showVi ? '#A8741A' : '#E4D6B5',
+              borderColor: showVi ? '#6A4BD9' : '#E4D6B5',
               backgroundColor: showVi ? 'rgba(247,185,85,0.16)' : 'transparent',
             }}
           >
-            <Icon name="chat" size={14} color={showVi ? '#A8741A' : '#6E5626'} strokeWidth={2.1} />
-            <Text className="font-strong text-label" style={{ color: showVi ? '#A8741A' : '#6E5626' }}>
+            <Icon name="chat" size={14} color={showVi ? '#6A4BD9' : '#2B2350'} strokeWidth={2.1} />
+            <Text className="font-strong text-label" style={{ color: showVi ? '#6A4BD9' : '#2B2350' }}>
               {busy
                 ? L(`Đang dịch ${busy.done}/${busy.total}`, `Translating ${busy.done}/${busy.total}`)
                 : showVi
@@ -913,7 +913,7 @@ function TranscriptView({
                 <View className="flex-row items-start gap-3">
                   <Text
                     className="font-mid text-label"
-                    style={{ color: on ? '#A8741A' : 'rgba(60,40,10,0.5)', minWidth: 42 }}
+                    style={{ color: on ? '#6A4BD9' : 'rgba(43,35,80,0.5)', minWidth: 42 }}
                   >
                     {clock(s.start)}
                   </Text>
@@ -1019,17 +1019,17 @@ function ShadowingView({
 
       {/* Ghi âm rồi chấm từng từ: đúng xanh, thiếu gạch đỏ, nói thừa gạch vàng. Chấm theo chữ, không theo âm. */}
       {!listen.supported ? (
-        <Text className="font-sans text-body text-[#A8741A]">{L('Ghi âm cần Chrome trên máy tính hoặc Android.', 'Recording needs Chrome on desktop or Android.')}</Text>
+        <Text className="font-sans text-body text-[#6A4BD9]">{L('Ghi âm cần Chrome trên máy tính hoặc Android.', 'Recording needs Chrome on desktop or Android.')}</Text>
       ) : null}
       {silent ? (
-        <Text className="font-sans text-body text-[#A8741A]">{L('Chưa nghe rõ. Thử lại gần micro hơn.', 'Could not hear you. Try again closer to the mic.')}</Text>
+        <Text className="font-sans text-body text-[#6A4BD9]">{L('Chưa nghe rõ. Thử lại gần micro hơn.', 'Could not hear you. Try again closer to the mic.')}</Text>
       ) : null}
       {result && pct !== null ? (
         <View className="gap-2 rounded-card border border-brand-soft bg-white p-4">
           <View className="flex-row items-baseline gap-3">
             <Text
               className="font-heavy text-sectionTitle"
-              style={{ color: pct >= SAY_PASS * 100 ? '#2E7D4F' : pct >= 60 ? '#A8741A' : '#B3261E' }}
+              style={{ color: pct >= SAY_PASS * 100 ? '#2E7D4F' : pct >= 60 ? '#6A4BD9' : '#B3261E' }}
             >
               {pct}%
             </Text>
@@ -1046,7 +1046,7 @@ function ShadowingView({
                     ? { color: '#2E7D4F', fontWeight: '700' }
                     : t.status === 'missing'
                       ? { color: '#B3261E', textDecorationLine: 'underline' }
-                      : { color: '#A8741A', textDecorationLine: 'line-through' }
+                      : { color: '#6A4BD9', textDecorationLine: 'line-through' }
                 }
               >
                 {t.word}
@@ -1148,7 +1148,7 @@ function YoutubeFrame({
         },
         allow: 'accelerometer; autoplay; encrypted-media; picture-in-picture',
         allowFullScreen: true,
-        style: { position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', backgroundColor: '#F3EEE2' },
+        style: { position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', backgroundColor: '#F3F0FB' },
         title: L('Video luyện chép chính tả', 'Dictation practice video'),
       })}
     </View>

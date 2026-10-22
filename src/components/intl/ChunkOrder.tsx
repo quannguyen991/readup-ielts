@@ -31,7 +31,7 @@ export function ChunkOrder({ task, exam }: { task: ChunkTask; exam: IntlExam }) 
               accessibilityRole="button"
               disabled={used || result !== null}
               onPress={() => setOrder((o) => [...o, i])}
-              style={{ borderWidth: 1.5, borderRadius: 10, padding: 10, borderColor: '#E4DCCB', backgroundColor: used ? '#EFEAE0' : '#FFFFFF', opacity: used ? 0.5 : 1 }}
+              style={{ borderWidth: 1.5, borderRadius: 10, padding: 10, borderColor: '#E4DCCB', backgroundColor: used ? '#F3F0FB' : '#FFFFFF', opacity: used ? 0.5 : 1 }}
             >
               <Text className="font-sans text-body text-ink">{chunk}</Text>
             </Pressable>

@@ -24,7 +24,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
         />
-        <meta name="theme-color" content="#FCFAF7" />
+        <meta name="theme-color" content="#F3F0FB" />
         <meta name="color-scheme" content="light" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />

@@ -95,7 +95,7 @@ const COVER_THEMES: Record<
     glow: 'rgba(225,29,72,0.35)',
   },
   panda_math: {
-    bg: ['#92400E', '#D97706', '#B45309'],
+    bg: ['#6A4BD9', '#6A4BD9', '#6A4BD9'],
     header: 'COLLEGE PANDA',
     badge: '800 MATH',
     accent: '#FDE68A',
@@ -348,7 +348,7 @@ export default function SatPracticeTestsScreen() {
 
         {/* Quick Filters Row: Kỹ năng / Phần thi (matching IELTS design) */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: '#2A1808', width: 68 }}>
+          <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', width: 68 }}>
             {L('Kỹ năng:', 'Skill:')}
           </Text>
           {[
@@ -396,7 +396,7 @@ export default function SatPracticeTestsScreen() {
                   borderColor: on ? '#B94A70' : '#E6DACB',
                 }}
               >
-                <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#573E29' }}>
+                <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#2B2350' }}>
                   {sec.label}
                 </Text>
               </Pressable>
@@ -417,18 +417,18 @@ export default function SatPracticeTestsScreen() {
               borderRadius: 14,
               paddingHorizontal: 14,
               height: 48,
-              shadowColor: '#784415',
+              shadowColor: '#2B2350',
               shadowOpacity: 0.04,
               shadowRadius: 8,
             }}
           >
-            <Icon name="search" size={18} color="#945619" />
+            <Icon name="search" size={18} color="#6A4BD9" />
             <TextInput
               value={searchQuery}
               onChangeText={setSearchQuery}
               placeholder={L('Tìm đề SAT: Bluebook 1–6, Đề thi thật 2024–2025, Princeton, Panda Math...', 'Search SAT forms...')}
               placeholderTextColor="#A38F7E"
-              style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2A1808', fontSize: 14, fontWeight: '500' }}
+              style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2B2350', fontSize: 14, fontWeight: '500' }}
             />
             {searchQuery ? (
               <Pressable onPress={() => setSearchQuery('')} style={{ padding: 4 }}>
@@ -475,7 +475,7 @@ export default function SatPracticeTestsScreen() {
                   borderColor: '#E6DACB',
                 }}
               >
-                <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>
+                <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>
                   {getCollectionLabel()}
                 </Text>
                 <Pressable onPress={() => { setCollectionFilter('all'); setQuickPill('all'); }}>
@@ -498,7 +498,7 @@ export default function SatPracticeTestsScreen() {
                   borderColor: '#E6DACB',
                 }}
               >
-                <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>
+                <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>
                   {sectionFilter === 'rw' ? 'Reading & Writing' : sectionFilter === 'math' ? 'Math' : 'Full SAT'}
                 </Text>
                 <Pressable onPress={() => { setSectionFilter('all'); setQuickPill('all'); }}>
@@ -521,7 +521,7 @@ export default function SatPracticeTestsScreen() {
                   borderColor: '#E6DACB',
                 }}
               >
-                <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>
+                <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>
                   {L('Từ khóa:', 'Keyword:')} {searchQuery}
                 </Text>
                 <Pressable onPress={() => setSearchQuery('')}>
@@ -555,24 +555,24 @@ export default function SatPracticeTestsScreen() {
                 borderRadius: 16,
                 backgroundColor: '#FFFFFF',
                 borderWidth: 1,
-                borderColor: '#EFE7DC',
+                borderColor: '#F3F0FB',
                 padding: 16,
                 gap: 16,
-                shadowColor: '#784415',
+                shadowColor: '#2B2350',
                 shadowOpacity: 0.04,
                 shadowRadius: 8,
               }}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <Icon name="filter" size={18} color="#B94A70" />
-                <Text style={{ fontSize: 16, fontWeight: '800', color: '#2A1808' }}>
+                <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
                   {L('Bộ lọc', 'Filters')}
                 </Text>
               </View>
 
               {/* Filter Group: Bộ đề */}
               <View style={{ gap: 8 }}>
-                <Text style={{ fontSize: 13, fontWeight: '700', color: '#2A1808' }}>
+                <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>
                   {L('Bộ đề', 'Collection')}
                 </Text>
                 {SAT_FORM_CATEGORIES.map((opt) => {
@@ -596,7 +596,7 @@ export default function SatPracticeTestsScreen() {
                           backgroundColor: '#FFFFFF',
                         }}
                       />
-                      <Text style={{ fontSize: 13, color: on ? '#2A1808' : '#6A5645', fontWeight: on ? '700' : '500' }}>
+                      <Text style={{ fontSize: 13, color: on ? '#2B2350' : '#6A5645', fontWeight: on ? '700' : '500' }}>
                         {en ? opt.labelEn : opt.labelVi} ({opt.count})
                       </Text>
                     </Pressable>
@@ -606,7 +606,7 @@ export default function SatPracticeTestsScreen() {
 
               {/* Filter Group: Kỹ năng / Phần thi */}
               <View style={{ gap: 8 }}>
-                <Text style={{ fontSize: 13, fontWeight: '700', color: '#2A1808' }}>
+                <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>
                   {L('Phần thi', 'Section')}
                 </Text>
                 {[
@@ -639,7 +639,7 @@ export default function SatPracticeTestsScreen() {
                       >
                         {on ? <Text style={{ color: '#fff', fontSize: 10, fontWeight: '900' }}>✓</Text> : null}
                       </View>
-                      <Text style={{ fontSize: 13, color: on ? '#2A1808' : '#6A5645', fontWeight: on ? '700' : '500' }}>
+                      <Text style={{ fontSize: 13, color: on ? '#2B2350' : '#6A5645', fontWeight: on ? '700' : '500' }}>
                         {s.label}
                       </Text>
                     </Pressable>
@@ -650,30 +650,30 @@ export default function SatPracticeTestsScreen() {
               {/* Filter Slider: Số câu & Thời lượng */}
               <View style={{ gap: 6 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>
+                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>
                     {L('Số câu hỏi', 'Questions')}
                   </Text>
                   <Text style={{ fontSize: 12, color: '#B94A70', fontWeight: '700' }}>0 – 98</Text>
                 </View>
-                <View style={{ height: 4, borderRadius: 2, backgroundColor: '#EFE7DC' }}>
+                <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }}>
                   <View style={{ width: '100%', height: '100%', backgroundColor: '#B94A70', borderRadius: 2 }} />
                 </View>
               </View>
 
               <View style={{ gap: 6 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>
+                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>
                     {L('Thời lượng', 'Duration')}
                   </Text>
                   <Text style={{ fontSize: 12, color: '#B94A70', fontWeight: '700' }}>0 – 134p</Text>
                 </View>
-                <View style={{ height: 4, borderRadius: 2, backgroundColor: '#EFE7DC' }}>
+                <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }}>
                   <View style={{ width: '100%', height: '100%', backgroundColor: '#B94A70', borderRadius: 2 }} />
                 </View>
               </View>
 
               {/* Bluebook Feature Tags */}
-              <View style={{ gap: 4, paddingTop: 4, borderTopWidth: 1, borderTopColor: '#F5EFE6' }}>
+              <View style={{ gap: 4, paddingTop: 4, borderTopWidth: 1, borderTopColor: '#F3F0FB' }}>
                 <Text style={{ fontSize: 11, fontWeight: '800', color: '#B94A70', textTransform: 'uppercase' }}>
                   CHẾ ĐỘ THI CHUẨN BLUEBOOK
                 </Text>
@@ -712,9 +712,9 @@ export default function SatPracticeTestsScreen() {
             <View
               style={{
                 borderRadius: 20,
-                backgroundColor: '#FFFDF9',
+                backgroundColor: '#F3F0FB',
                 borderWidth: 1.5,
-                borderColor: '#EFE0CD',
+                borderColor: '#F3F0FB',
                 padding: 20,
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -734,7 +734,7 @@ export default function SatPracticeTestsScreen() {
                     flexDirection: 'row',
                     alignItems: 'center',
                     gap: 6,
-                    backgroundColor: '#FEF3C7',
+                    backgroundColor: '#F3F0FB',
                     paddingHorizontal: 10,
                     paddingVertical: 3.5,
                     borderRadius: 999,
@@ -743,7 +743,7 @@ export default function SatPracticeTestsScreen() {
                   }}
                 >
                   <Text style={{ fontSize: 13 }}>👑</Text>
-                  <Text style={{ fontSize: 11, fontWeight: '800', color: '#92400E', textTransform: 'uppercase', letterSpacing: 0.6 }}>
+                  <Text style={{ fontSize: 11, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.6 }}>
                     {L('Luyện tập đề xuất hôm nay', 'Recommended practice today')}
                   </Text>
                 </View>
@@ -806,7 +806,7 @@ export default function SatPracticeTestsScreen() {
 
             {/* Results Count & Sort Dropdown */}
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-              <Text style={{ fontSize: 14, fontWeight: '700', color: '#2A1808' }}>
+              <Text style={{ fontSize: 14, fontWeight: '700', color: '#2B2350' }}>
                 {L(`Hiển thị ${filteredTests.length} kết quả cho "${searchQuery || getCollectionLabel()}"`, `Showing ${filteredTests.length} results`)}
               </Text>
 
@@ -830,7 +830,7 @@ export default function SatPracticeTestsScreen() {
                     gap: 4,
                   }}
                 >
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>
+                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>
                     {sortBy === 'default' ? 'Mặc định' : sortBy === 'newest' ? 'Mới nhất' : 'Bluebook trước'}
                   </Text>
                   <Text style={{ fontSize: 10, color: '#7C6552' }}>▼</Text>
@@ -852,24 +852,24 @@ export default function SatPracticeTestsScreen() {
                   : isReadingSpecial
                     ? '#CCFBF1'
                     : isReal2025
-                      ? '#FEF3C7'
+                      ? '#F3F0FB'
                       : isReal2024
                         ? '#EDE9FE'
                         : isPrinceton
                           ? '#FCE7F3'
-                          : '#FFEDD5';
+                          : '#F3F0FB';
 
                 const badgeFg = isBluebook
                   ? '#0369A1'
                   : isReadingSpecial
                     ? '#0F766E'
                     : isReal2025
-                      ? '#B45309'
+                      ? '#6A4BD9'
                       : isReal2024
                         ? '#6D28D9'
                         : isPrinceton
                           ? '#9D174D'
-                          : '#C2410C';
+                          : '#6A4BD9';
 
                 return (
                   <Pressable
@@ -882,12 +882,12 @@ export default function SatPracticeTestsScreen() {
                       borderRadius: 20,
                       backgroundColor: '#FFFFFF',
                       borderWidth: 1.5,
-                      borderColor: hovered ? '#D5BF9F' : '#EFE7DC',
+                      borderColor: hovered ? '#D5BF9F' : '#F3F0FB',
                       padding: 16,
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 16,
-                      shadowColor: '#784415',
+                      shadowColor: '#2B2350',
                       shadowOpacity: hovered ? 0.09 : 0.04,
                       shadowRadius: hovered ? 16 : 8,
                       shadowOffset: { width: 0, height: hovered ? 4 : 2 },
@@ -933,10 +933,10 @@ export default function SatPracticeTestsScreen() {
                             paddingHorizontal: 8,
                             paddingVertical: 3,
                             borderRadius: 6,
-                            backgroundColor: '#FEF3C7',
+                            backgroundColor: '#F3F0FB',
                           }}
                         >
-                          <Text style={{ fontSize: 10, fontWeight: '800', color: '#B45309', letterSpacing: 0.3 }}>
+                          <Text style={{ fontSize: 10, fontWeight: '800', color: '#6A4BD9', letterSpacing: 0.3 }}>
                             {item.period}
                           </Text>
                         </View>
@@ -968,9 +968,9 @@ export default function SatPracticeTestsScreen() {
                         width: 38,
                         height: 38,
                         borderRadius: 19,
-                        backgroundColor: '#FAF5EE',
+                        backgroundColor: '#F3F0FB',
                         borderWidth: 1,
-                        borderColor: '#EFE5D8',
+                        borderColor: '#F3F0FB',
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}
@@ -1009,7 +1009,7 @@ export default function SatPracticeTestsScreen() {
                   shadowRadius: 24,
                   shadowOffset: { width: 0, height: 10 },
                   borderWidth: 1,
-                  borderColor: '#EFE5D8',
+                  borderColor: '#F3F0FB',
                 }}
               >
                 {/* Header */}
@@ -1019,7 +1019,7 @@ export default function SatPracticeTestsScreen() {
                       <View style={{ backgroundColor: '#1E3A8A', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6 }}>
                         <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 13, letterSpacing: 0.5 }}>DIGITAL SAT</Text>
                       </View>
-                      <Text style={{ fontSize: 13, fontWeight: '800', color: '#945619', textTransform: 'uppercase', letterSpacing: 1 }}>
+                      <Text style={{ fontSize: 13, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 1 }}>
                         CHỌN PHƯƠNG THỨC LÀM BÀI
                       </Text>
                     </View>
@@ -1027,7 +1027,7 @@ export default function SatPracticeTestsScreen() {
                       style={{
                         fontSize: 22,
                         fontWeight: '900',
-                        color: '#2A1808',
+                        color: '#2B2350',
                         lineHeight: 28,
                       }}
                     >
@@ -1044,7 +1044,7 @@ export default function SatPracticeTestsScreen() {
                       width: 36,
                       height: 36,
                       borderRadius: 18,
-                      backgroundColor: '#FAF5EE',
+                      backgroundColor: '#F3F0FB',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}
@@ -1060,7 +1060,7 @@ export default function SatPracticeTestsScreen() {
                     onPress={() => openTestMode(modalTest, 'full')}
                     style={({ hovered }: { hovered?: boolean }) => ({
                       borderRadius: 16,
-                      backgroundColor: '#FFFBF5',
+                      backgroundColor: '#F3F0FB',
                       borderWidth: 2,
                       borderColor: '#D4AF37',
                       padding: 16,
@@ -1087,8 +1087,8 @@ export default function SatPracticeTestsScreen() {
                         <View style={{ backgroundColor: '#F1F5F9', paddingHorizontal: 8, paddingVertical: 2.5, borderRadius: 6 }}>
                           <Text style={{ fontSize: 11.5, color: '#475569', fontWeight: '700' }}>134 phút</Text>
                         </View>
-                        <View style={{ backgroundColor: '#FEF3C7', paddingHorizontal: 8, paddingVertical: 2.5, borderRadius: 6 }}>
-                          <Text style={{ fontSize: 11.5, color: '#B45309', fontWeight: '700' }}>2 Module thích ứng</Text>
+                        <View style={{ backgroundColor: '#F3F0FB', paddingHorizontal: 8, paddingVertical: 2.5, borderRadius: 6 }}>
+                          <Text style={{ fontSize: 11.5, color: '#6A4BD9', fontWeight: '700' }}>2 Module thích ứng</Text>
                         </View>
                       </View>
                     </View>
@@ -1166,7 +1166,7 @@ export default function SatPracticeTestsScreen() {
                         </View>
                       </View>
                     </View>
-                    <View style={{ paddingHorizontal: 16, height: 40, borderRadius: 10, backgroundColor: '#FAF5EE', borderWidth: 1, borderColor: '#E6DACB', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ paddingHorizontal: 16, height: 40, borderRadius: 10, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#E6DACB', alignItems: 'center', justifyContent: 'center' }}>
                       <Text style={{ color: '#B94A70', fontSize: 13, fontWeight: '700' }}>Vào thi ↗</Text>
                     </View>
                   </Pressable>
@@ -1203,7 +1203,7 @@ export default function SatPracticeTestsScreen() {
                         </View>
                       </View>
                     </View>
-                    <View style={{ paddingHorizontal: 16, height: 40, borderRadius: 10, backgroundColor: '#FAF5EE', borderWidth: 1, borderColor: '#E6DACB', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ paddingHorizontal: 16, height: 40, borderRadius: 10, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#E6DACB', alignItems: 'center', justifyContent: 'center' }}>
                       <Text style={{ color: '#B94A70', fontSize: 13, fontWeight: '700' }}>Vào thi ↗</Text>
                     </View>
                   </Pressable>

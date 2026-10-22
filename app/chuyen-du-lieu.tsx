@@ -67,7 +67,7 @@ export default function ReceiveHandoff() {
     <Screen>
       <View style={{ alignSelf: 'center', width: '100%', maxWidth: 560, marginTop: 40, borderRadius: 28, padding: 28, backgroundColor: '#0F1D33', alignItems: 'center', gap: 14 }}>
         <BrandMark size={72} />
-        <Text className="font-heavy" style={{ fontSize: 26, color: '#F3EDE1', textAlign: 'center' }}>
+        <Text className="font-heavy" style={{ fontSize: 26, color: '#F3F0FB', textAlign: 'center' }}>
           {state === 'done'
             ? L('Chào mừng về nhà mới Band 9', 'Welcome to your new home, Band 9')
             : state === 'alone'
@@ -91,7 +91,7 @@ export default function ReceiveHandoff() {
           <Pressable
             accessibilityRole="link"
             onPress={() => window.location.assign('/dashboard')}
-            style={{ marginTop: 6, borderRadius: 999, paddingHorizontal: 22, paddingVertical: 12, backgroundColor: themedHex('#B8955A') }}
+            style={{ marginTop: 6, borderRadius: 999, paddingHorizontal: 22, paddingVertical: 12, backgroundColor: themedHex('#8B6CF0') }}
           >
             <Text className="font-heavy" style={{ fontSize: 15, color: '#0F1D33' }}>
               {L('Vào Band 9 →', 'Go to Band 9 →')}

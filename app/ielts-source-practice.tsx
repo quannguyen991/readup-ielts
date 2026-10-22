@@ -14,6 +14,7 @@ import {
   type TextProps,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Svg, { Circle, Defs, G, LinearGradient as SvgGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { Icon } from '@/components/ui/Icon';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
@@ -140,17 +141,73 @@ function getBookCover(title: string, source: string): string {
 
 
 /**
+ * Bìa đề IELTS 21 vẽ lại: nền navy có ánh vàng, quyển sách mở có vầng sáng, vài ngôi sao.
+ * Hoàn toàn tự vẽ bằng SVG, không dùng ảnh bìa của nhà xuất bản.
+ */
+function Cover21({ width, height, radius = 10 }: { width: number; height: number; radius?: number }) {
+  const pad = Math.round(width * 0.1);
+  return (
+    <View style={{ width, height, borderRadius: radius, overflow: 'hidden', backgroundColor: '#0F1D33' }}>
+      <Svg width={width} height={height} viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', top: 0, left: 0 }}>
+        <Defs>
+          <SvgGradient id="c21bg" x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#1B2D4D" />
+            <Stop offset="1" stopColor="#0A1424" />
+          </SvgGradient>
+          <SvgGradient id="c21gold" x1="0" y1="0" x2="1" y2="1">
+            <Stop offset="0" stopColor="#F6E3A8" />
+            <Stop offset="0.5" stopColor="#D9B46A" />
+            <Stop offset="1" stopColor="#6A4BD9" />
+          </SvgGradient>
+          <RadialGradient id="c21glow" cx="0.5" cy="0.5" r="0.5">
+            <Stop offset="0" stopColor="#E9C978" stopOpacity="0.55" />
+            <Stop offset="1" stopColor="#E9C978" stopOpacity="0" />
+          </RadialGradient>
+        </Defs>
+        <Rect x="0" y="0" width="300" height="360" fill="url(#c21bg)" />
+        <Circle cx="210" cy="150" r="150" fill="url(#c21glow)" />
+        <G fill="none" stroke="#D9B46A" strokeOpacity="0.28" strokeWidth="1">
+          <Circle cx="210" cy="150" r="72" />
+          <Circle cx="210" cy="150" r="112" />
+          <Circle cx="210" cy="150" r="152" />
+        </G>
+        {/* quyển sách mở */}
+        <Path d="M46 222 Q98 200 150 232 L150 318 Q98 290 46 310 Z" fill="url(#c21gold)" />
+        <Path d="M254 222 Q202 200 150 232 L150 318 Q202 290 254 310 Z" fill="#F3E2B6" />
+        <Path d="M150 232 V318" stroke="#0F1D33" strokeOpacity="0.35" strokeWidth="2" />
+        <Path d="M68 248 Q104 236 136 250 M68 266 Q104 254 136 268 M68 284 Q100 274 136 286" stroke="#0F1D33" strokeOpacity="0.25" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <Path d="M164 250 Q196 236 232 248 M164 268 Q196 254 232 266 M164 286 Q196 274 232 284" stroke="#0F1D33" strokeOpacity="0.25" strokeWidth="2" fill="none" strokeLinecap="round" />
+        {/* sao lấp lánh */}
+        <Path d="M236 58 L240 72 L254 76 L240 80 L236 94 L232 80 L218 76 L232 72 Z" fill="#F6E3A8" />
+        <Path d="M64 78 L66.5 85 L74 87.5 L66.5 90 L64 97 L61.5 90 L54 87.5 L61.5 85 Z" fill="#D9B46A" />
+        <Circle cx="268" cy="124" r="2.6" fill="#F6E3A8" />
+        <Circle cx="40" cy="160" r="2" fill="#D9B46A" />
+      </Svg>
+      <View style={{ flex: 1, padding: pad, justifyContent: 'space-between' }}>
+        <Text style={{ color: 'rgba(246,227,168,0.9)', fontSize: Math.max(8, Math.round(width * 0.075)), fontWeight: '700', letterSpacing: 2 }}>IELTS</Text>
+        <View>
+          <Text style={{ color: '#FFFFFF', fontSize: Math.round(width * 0.36), fontFamily: 'InterTight_600SemiBold', lineHeight: Math.round(width * 0.38), letterSpacing: -2 }}>21</Text>
+          <Text style={{ color: '#F6E3A8', fontSize: Math.max(9, Math.round(width * 0.085)), fontWeight: '600', marginTop: 4 }}>Practice tests</Text>
+        </View>
+        <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: Math.max(7, Math.round(width * 0.068)), letterSpacing: 0.4 }}>Reading · Listening · Writing</Text>
+      </View>
+    </View>
+  );
+}
+
+/**
  * Bìa của một đề: ảnh 2D đã tạo sẵn trong public/books/covers-2d (cam-N.png, vol-N.png).
  */
 function FlatCover({ kind, num, width, height, radius = 10 }: { kind: 'CAMBRIDGE' | 'ACTUAL VOL'; num: string; width: number; height: number; radius?: number }) {
   const n = parseInt(num, 10) || 0;
-  if (n === 21 || n === 0 || (kind === 'ACTUAL VOL' && n > 10)) return <FlatCoverDrawn kind={kind} num={num || 'IELTS'} width={width} height={height} radius={radius} />;
+  if (n === 21) return <Cover21 width={width} height={height} radius={radius} />;
+  if (n === 0 || (kind === 'ACTUAL VOL' && n > 10)) return <FlatCoverDrawn kind={kind} num={num || 'IELTS'} width={width} height={height} radius={radius} />;
   const src = `/books/covers-2d/${kind === 'CAMBRIDGE' ? 'cam' : 'vol'}-${n}.webp`;
   return <Image source={{ uri: src }} style={{ width, height, borderRadius: radius }} resizeMode="cover" />;
 }
 
 /** Màu nền bìa theo số đề: mỗi đề một màu cố định, để nhìn lướt là nhận ra. */
-const COVER_PALETTE = ['#1F3A5F', '#0F766E', '#6B3FA0', '#9F1239', '#166534', '#334155', '#92400E', '#3730A3', '#0E7490', '#7C2D12'];
+const COVER_PALETTE = ['#1F3A5F', '#0F766E', '#6B3FA0', '#9F1239', '#166534', '#334155', '#6A4BD9', '#3730A3', '#0E7490', '#2B2350'];
 
 const SKILL_IN_ID = /-(reading|listening)(?=-|$)/;
 /** Các bản Reading và Listening của cùng một đề (cùng id, khác kỹ năng). */
@@ -404,7 +461,7 @@ export default function IeltsSourcePracticeScreen() {
   const answeredCount = Object.values(answers).filter((a) => a && a.trim()).length;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#FAF7F2' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#F3F0FB' }}>
       <ScrollView ref={mainScrollRef} contentContainerStyle={{ paddingHorizontal: 24, paddingVertical: 20, paddingBottom: 80 }}>
         <View style={{ width: '100%', maxWidth: 1360, alignSelf: 'center', gap: 20 }}>
 
@@ -418,7 +475,7 @@ export default function IeltsSourcePracticeScreen() {
                   paddingVertical: 6,
                   paddingHorizontal: 14,
                   borderRadius: 12,
-                  backgroundColor: viewMode === 'catalog' ? '#8F6E36' : 'transparent',
+                  backgroundColor: viewMode === 'catalog' ? '#6A4BD9' : 'transparent',
                 }}
               >
                 <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'catalog' ? '#FFFFFF' : '#7C6552' }}>
@@ -432,7 +489,7 @@ export default function IeltsSourcePracticeScreen() {
                   paddingVertical: 6,
                   paddingHorizontal: 14,
                   borderRadius: 12,
-                  backgroundColor: viewMode === 'collections' ? '#8F6E36' : 'transparent',
+                  backgroundColor: viewMode === 'collections' ? '#6A4BD9' : 'transparent',
                 }}
               >
                 <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'collections' ? '#FFFFFF' : '#7C6552' }}>
@@ -444,10 +501,10 @@ export default function IeltsSourcePracticeScreen() {
             {viewMode === 'detail' ? (
               <Pressable
                 onPress={() => setViewMode('catalog')}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 6, paddingHorizontal: 12, borderRadius: 10, backgroundColor: '#F0E6D8' }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 6, paddingHorizontal: 12, borderRadius: 10, backgroundColor: '#F3F0FB' }}
               >
-                <Icon name="chevron-left" size={16} color="#8F6E36" />
-                <Text style={{ color: '#8F6E36', fontSize: 13, fontWeight: '700' }}>
+                <Icon name="chevron-left" size={16} color="#6A4BD9" />
+                <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '700' }}>
                   {L('Quay lại kho đề', 'Back to Catalog')}
                 </Text>
               </Pressable>
@@ -473,7 +530,7 @@ export default function IeltsSourcePracticeScreen() {
 
               {/* Quick Filters Row 1: Bộ đề */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#2A1808', width: 64 }}>
+                <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', width: 64 }}>
                   {L('Bộ đề:', 'Collection:')}
                 </Text>
                 <Pressable
@@ -482,12 +539,12 @@ export default function IeltsSourcePracticeScreen() {
                     paddingHorizontal: 16,
                     paddingVertical: 7,
                     borderRadius: 20,
-                    backgroundColor: collectionFilter === 'all' ? '#8F6E36' : '#FFFFFF',
+                    backgroundColor: collectionFilter === 'all' ? '#6A4BD9' : '#FFFFFF',
                     borderWidth: 1,
-                    borderColor: collectionFilter === 'all' ? '#8F6E36' : '#E6DACB',
+                    borderColor: collectionFilter === 'all' ? '#6A4BD9' : '#E6DACB',
                   }}
                 >
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'all' ? '#FFFFFF' : '#573E29' }}>
+                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'all' ? '#FFFFFF' : '#2B2350' }}>
                     {L(`Tất cả (${tests.length})`, `All (${tests.length})`)}
                   </Text>
                 </Pressable>
@@ -498,18 +555,18 @@ export default function IeltsSourcePracticeScreen() {
                     paddingHorizontal: 16,
                     paddingVertical: 7,
                     borderRadius: 20,
-                    backgroundColor: collectionFilter === 'cambridge' ? '#8F6E36' : '#FFFFFF',
+                    backgroundColor: collectionFilter === 'cambridge' ? '#6A4BD9' : '#FFFFFF',
                     borderWidth: 1,
-                    borderColor: collectionFilter === 'cambridge' ? '#8F6E36' : '#E6DACB',
+                    borderColor: collectionFilter === 'cambridge' ? '#6A4BD9' : '#E6DACB',
                     flexDirection: 'row',
                     alignItems: 'center',
                     gap: 6,
                   }}
                 >
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#573E29' }}>
+                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#2B2350' }}>
                     Cambridge IELTS (21 → 8)
                   </Text>
-                  <Text style={{ fontSize: 10, color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#573E29' }}>▼</Text>
+                  <Text style={{ fontSize: 10, color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#2B2350' }}>▼</Text>
                 </Pressable>
 
                 <Pressable
@@ -518,12 +575,12 @@ export default function IeltsSourcePracticeScreen() {
                     paddingHorizontal: 16,
                     paddingVertical: 7,
                     borderRadius: 20,
-                    backgroundColor: collectionFilter === 'vol' ? '#8F6E36' : '#FFFFFF',
+                    backgroundColor: collectionFilter === 'vol' ? '#6A4BD9' : '#FFFFFF',
                     borderWidth: 1,
-                    borderColor: collectionFilter === 'vol' ? '#8F6E36' : '#E6DACB',
+                    borderColor: collectionFilter === 'vol' ? '#6A4BD9' : '#E6DACB',
                   }}
                 >
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'vol' ? '#FFFFFF' : '#573E29' }}>
+                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'vol' ? '#FFFFFF' : '#2B2350' }}>
                     {L('Vol · Mới nhất trước', 'Volumes · Newest first')}
                   </Text>
                 </Pressable>
@@ -531,7 +588,7 @@ export default function IeltsSourcePracticeScreen() {
 
               {/* Quick Filters Row 2: Kỹ năng */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#2A1808', width: 64 }}>
+                <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', width: 64 }}>
                   {L('Kỹ năng:', 'Skill:')}
                 </Text>
                 {['all', 'Reading', 'Listening', 'Writing', 'Speaking'].map((sec) => {
@@ -544,12 +601,12 @@ export default function IeltsSourcePracticeScreen() {
                         paddingHorizontal: 16,
                         paddingVertical: 7,
                         borderRadius: 20,
-                        backgroundColor: on ? '#8F6E36' : '#FFFFFF',
+                        backgroundColor: on ? '#6A4BD9' : '#FFFFFF',
                         borderWidth: 1,
-                        borderColor: on ? '#8F6E36' : '#E6DACB',
+                        borderColor: on ? '#6A4BD9' : '#E6DACB',
                       }}
                     >
-                      <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#573E29' }}>
+                      <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#2B2350' }}>
                         {sec === 'all' ? L('Tất cả', 'All') : sec}
                       </Text>
                     </Pressable>
@@ -570,18 +627,18 @@ export default function IeltsSourcePracticeScreen() {
                     borderRadius: 14,
                     paddingHorizontal: 14,
                     height: 48,
-                    shadowColor: '#784415',
+                    shadowColor: '#2B2350',
                     shadowOpacity: 0.04,
                     shadowRadius: 8,
                   }}
                 >
-                  <Icon name="search" size={18} color="#945619" />
+                  <Icon name="search" size={18} color="#6A4BD9" />
                   <TextInput
                     value={searchQuery}
                     onChangeText={setSearchQuery}
                     placeholder="Cam 19 Reading..."
                     placeholderTextColor="#A38F7E"
-                    style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2A1808', fontSize: 14, fontWeight: '500' }}
+                    style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2B2350', fontSize: 14, fontWeight: '500' }}
                   />
                   {searchQuery ? (
                     <Pressable onPress={() => setSearchQuery('')} style={{ padding: 4 }}>
@@ -603,8 +660,8 @@ export default function IeltsSourcePracticeScreen() {
                     borderColor: '#E6DACB',
                   }}
                 >
-                  <Icon name="filter" size={16} color="#8F6E36" />
-                  <Text style={{ fontSize: 14, fontWeight: '700', color: '#8F6E36' }}>
+                  <Icon name="filter" size={16} color="#6A4BD9" />
+                  <Text style={{ fontSize: 14, fontWeight: '700', color: '#6A4BD9' }}>
                     {L('Bộ lọc', 'Filter')}
                   </Text>
                 </Pressable>
@@ -613,14 +670,14 @@ export default function IeltsSourcePracticeScreen() {
               {/* Active Filter Chips Row */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                  <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>{collectionFilter === 'all' ? L('Mọi bộ đề', 'All collections') : collectionFilter === 'cambridge' ? 'Cambridge (21 → 8)' : 'Volumes'}</Text>
+                  <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>{collectionFilter === 'all' ? L('Mọi bộ đề', 'All collections') : collectionFilter === 'cambridge' ? 'Cambridge (21 → 8)' : 'Volumes'}</Text>
                   <Pressable onPress={() => setCollectionFilter('all')}>
                     <Icon name="close" size={12} color="#A38F7E" />
                   </Pressable>
                 </View>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                  <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>{sectionFilter === 'all' ? L('Mọi kỹ năng', 'All skills') : sectionFilter}</Text>
+                  <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>{sectionFilter === 'all' ? L('Mọi kỹ năng', 'All skills') : sectionFilter}</Text>
                   <Pressable onPress={() => setSectionFilter('all')}>
                     <Icon name="close" size={12} color="#A38F7E" />
                   </Pressable>
@@ -628,7 +685,7 @@ export default function IeltsSourcePracticeScreen() {
 
                 {searchQuery ? (
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                    <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>Từ khóa: {searchQuery}</Text>
+                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>Từ khóa: {searchQuery}</Text>
                     <Pressable onPress={() => setSearchQuery('')}>
                       <Icon name="close" size={12} color="#A38F7E" />
                     </Pressable>
@@ -642,7 +699,7 @@ export default function IeltsSourcePracticeScreen() {
                     setSearchQuery('');
                   }}
                 >
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#8F6E36', marginLeft: 4 }}>
+                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#6A4BD9', marginLeft: 4 }}>
                     {L('Xóa tất cả', 'Clear all')}
                   </Text>
                 </Pressable>
@@ -657,24 +714,24 @@ export default function IeltsSourcePracticeScreen() {
                     borderRadius: 16,
                     backgroundColor: '#FFFFFF',
                     borderWidth: 1,
-                    borderColor: '#EFE7DC',
+                    borderColor: '#F3F0FB',
                     padding: 16,
                     gap: 16,
-                    shadowColor: '#784415',
+                    shadowColor: '#2B2350',
                     shadowOpacity: 0.04,
                     shadowRadius: 8,
                   }}
                 >
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                    <Icon name="filter" size={18} color="#8F6E36" />
-                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2A1808' }}>
+                    <Icon name="filter" size={18} color="#6A4BD9" />
+                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
                       {L('Bộ lọc', 'Filters')}
                     </Text>
                   </View>
 
                   {/* Filter Group: Bộ đề */}
                   <View style={{ gap: 8 }}>
-                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#2A1808' }}>
+                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>
                       {L('Bộ đề', 'Collection')}
                     </Text>
                     {[
@@ -695,11 +752,11 @@ export default function IeltsSourcePracticeScreen() {
                               height: 16,
                               borderRadius: 8,
                               borderWidth: on ? 5 : 1.5,
-                              borderColor: on ? '#8F6E36' : '#C7B7A6',
+                              borderColor: on ? '#6A4BD9' : '#C7B7A6',
                               backgroundColor: '#FFFFFF',
                             }}
                           />
-                          <Text style={{ fontSize: 13, color: on ? '#2A1808' : '#6A5645', fontWeight: on ? '700' : '500' }}>
+                          <Text style={{ fontSize: 13, color: on ? '#2B2350' : '#6A5645', fontWeight: on ? '700' : '500' }}>
                             {opt.label}
                           </Text>
                         </Pressable>
@@ -709,7 +766,7 @@ export default function IeltsSourcePracticeScreen() {
 
                   {/* Filter Group: Kỹ năng */}
                   <View style={{ gap: 8 }}>
-                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#2A1808' }}>
+                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>
                       {L('Kỹ năng', 'Skill')}
                     </Text>
                     {['Reading', 'Listening', 'Writing', 'Speaking'].map((s) => {
@@ -725,16 +782,16 @@ export default function IeltsSourcePracticeScreen() {
                               width: 16,
                               height: 16,
                               borderRadius: 4,
-                              backgroundColor: on ? '#8F6E36' : '#FFFFFF',
+                              backgroundColor: on ? '#6A4BD9' : '#FFFFFF',
                               borderWidth: 1.5,
-                              borderColor: on ? '#8F6E36' : '#C7B7A6',
+                              borderColor: on ? '#6A4BD9' : '#C7B7A6',
                               alignItems: 'center',
                               justifyContent: 'center',
                             }}
                           >
                             {on ? <Text style={{ color: '#fff', fontSize: 10, fontWeight: '900' }}>✓</Text> : null}
                           </View>
-                          <Text style={{ fontSize: 13, color: on ? '#2A1808' : '#6A5645', fontWeight: on ? '700' : '500' }}>
+                          <Text style={{ fontSize: 13, color: on ? '#2B2350' : '#6A5645', fontWeight: on ? '700' : '500' }}>
                             {s}
                           </Text>
                         </Pressable>
@@ -745,21 +802,21 @@ export default function IeltsSourcePracticeScreen() {
                   {/* Filter Slider: Số câu & Số trang */}
                   <View style={{ gap: 6 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>Số câu</Text>
-                      <Text style={{ fontSize: 12, color: '#8F6E36', fontWeight: '700' }}>0 – 60</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Số câu</Text>
+                      <Text style={{ fontSize: 12, color: '#6A4BD9', fontWeight: '700' }}>0 – 60</Text>
                     </View>
-                    <View style={{ height: 4, borderRadius: 2, backgroundColor: '#EFE7DC' }}>
-                      <View style={{ width: '100%', height: '100%', backgroundColor: '#8F6E36', borderRadius: 2 }} />
+                    <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }}>
+                      <View style={{ width: '100%', height: '100%', backgroundColor: '#6A4BD9', borderRadius: 2 }} />
                     </View>
                   </View>
 
                   <View style={{ gap: 6 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>Số trang</Text>
-                      <Text style={{ fontSize: 12, color: '#8F6E36', fontWeight: '700' }}>0 – 40</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Số trang</Text>
+                      <Text style={{ fontSize: 12, color: '#6A4BD9', fontWeight: '700' }}>0 – 40</Text>
                     </View>
-                    <View style={{ height: 4, borderRadius: 2, backgroundColor: '#EFE7DC' }}>
-                      <View style={{ width: '100%', height: '100%', backgroundColor: '#8F6E36', borderRadius: 2 }} />
+                    <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }}>
+                      <View style={{ width: '100%', height: '100%', backgroundColor: '#6A4BD9', borderRadius: 2 }} />
                     </View>
                   </View>
 
@@ -767,7 +824,7 @@ export default function IeltsSourcePracticeScreen() {
                     style={{
                       height: 40,
                       borderRadius: 10,
-                      backgroundColor: '#8F6E36',
+                      backgroundColor: '#6A4BD9',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexDirection: 'row',
@@ -788,9 +845,9 @@ export default function IeltsSourcePracticeScreen() {
                   <View
                     style={{
                       borderRadius: 16,
-                      backgroundColor: '#FFF8ED',
+                      backgroundColor: '#F3F0FB',
                       borderWidth: 1,
-                      borderColor: '#F3E3CA',
+                      borderColor: '#F3F0FB',
                       padding: 18,
                       flexDirection: 'row',
                       alignItems: 'center',
@@ -801,11 +858,11 @@ export default function IeltsSourcePracticeScreen() {
                     <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                         <Text style={{ fontSize: 14 }}>👑</Text>
-                        <Text style={{ fontSize: 12, fontWeight: '800', color: '#B45309', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                        <Text style={{ fontSize: 12, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.5 }}>
                           {L('Đề xuất cho bạn', 'Recommended for you')}
                         </Text>
                       </View>
-                      <Text style={{ fontSize: 20, fontWeight: '900', color: '#2A1808', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
+                      <Text style={{ fontSize: 20, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
                         Cambridge IELTS 20 · Reading Test 1
                       </Text>
                       <Text style={{ fontSize: 13, color: '#7C6552' }}>
@@ -840,23 +897,23 @@ export default function IeltsSourcePracticeScreen() {
                         gap: 4,
                       }}
                     >
-                      <Text style={{ fontSize: 13, fontWeight: '700', color: '#8F6E36' }}>
+                      <Text style={{ fontSize: 13, fontWeight: '700', color: '#6A4BD9' }}>
                         {L('Xem ngay', 'View now')}
                       </Text>
-                      <Icon name="arrow-right" size={14} color="#8F6E36" />
+                      <Icon name="arrow-right" size={14} color="#6A4BD9" />
                     </Pressable>
                   </View>
 
                   {/* Results Count & Sort Dropdown */}
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={{ fontSize: 14, fontWeight: '700', color: '#2A1808' }}>
+                    <Text style={{ fontSize: 14, fontWeight: '700', color: '#2B2350' }}>
                       {L(`Hiển thị ${filteredTests.length} kết quả cho "${searchQuery || 'Tất cả'}"`, `Showing ${filteredTests.length} results`)}
                     </Text>
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 12, color: '#7C6552' }}>Sắp xếp:</Text>
                       <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB', flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>Mới nhất → cũ nhất</Text>
+                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Mới nhất → cũ nhất</Text>
                         <Text style={{ fontSize: 10, color: '#7C6552' }}>▼</Text>
                       </View>
                     </View>
@@ -864,16 +921,16 @@ export default function IeltsSourcePracticeScreen() {
 
                   {/* Grid of Test Cards matching input_file_2 - Large, Balanced Covers */}
                   {filteredTests.some(isUnderMaintenance) ? (
-                    <View style={{ padding: 14, borderRadius: 12, backgroundColor: '#FEF3C7', borderWidth: 1, borderColor: '#F59E0B', gap: 4 }}>
-                      <Text style={{ fontSize: 14, fontWeight: '800', color: '#92400E' }}>Bộ đề Cambridge / VOL đang bảo trì</Text>
-                      <Text style={{ fontSize: 12, color: '#92400E' }}>Các đề này tạm chưa mở được. Bạn có thể làm bộ đề khác trong lúc chờ.</Text>
+                    <View style={{ padding: 14, borderRadius: 12, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F59E0B', gap: 4 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '800', color: '#6A4BD9' }}>Bộ đề Cambridge / VOL đang bảo trì</Text>
+                      <Text style={{ fontSize: 12, color: '#6A4BD9' }}>Các đề này tạm chưa mở được. Bạn có thể làm bộ đề khác trong lúc chờ.</Text>
                     </View>
                   ) : null}
                   {sectionGroups.map((g) => (
                   <View key={g.key} style={{ gap: 14 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                    <Text style={{ fontSize: 20, fontWeight: '900' as never, color: '#2A1808' }}>{g.label}</Text>
-                    <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3E7D3' }}>
+                    <Text style={{ fontSize: 20, fontWeight: '900' as never, color: '#2B2350' }}>{g.label}</Text>
+                    <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
                       <Text style={{ fontSize: 12, fontWeight: '800' as never, color: '#B94A70' }}>{g.items.length}</Text>
                     </View>
                     <View style={{ flex: 1, height: 1, backgroundColor: '#E6DACB' }} />
@@ -894,12 +951,12 @@ export default function IeltsSourcePracticeScreen() {
                             borderRadius: 16,
                             backgroundColor: '#FFFFFF',
                             borderWidth: 1,
-                            borderColor: '#EFE5D8',
+                            borderColor: '#F3F0FB',
                             padding: 16,
                             flexDirection: 'row',
                             alignItems: 'center',
                             gap: 16,
-                            shadowColor: '#784415',
+                            shadowColor: '#2B2350',
                             shadowOpacity: 0.05,
                             shadowRadius: 10,
                             shadowOffset: { width: 0, height: 3 },
@@ -940,8 +997,8 @@ export default function IeltsSourcePracticeScreen() {
                               </View>
 
                               {item.section ? (
-                                <View style={{ paddingHorizontal: 8, paddingVertical: 2.5, borderRadius: 5, backgroundColor: '#FEF3C7' }}>
-                                  <Text style={{ fontSize: 10.5, fontWeight: '800', color: '#B45309' }}>
+                                <View style={{ paddingHorizontal: 8, paddingVertical: 2.5, borderRadius: 5, backgroundColor: '#F3F0FB' }}>
+                                  <Text style={{ fontSize: 10.5, fontWeight: '800', color: '#6A4BD9' }}>
                                     {item.section}
                                   </Text>
                                 </View>
@@ -955,7 +1012,7 @@ export default function IeltsSourcePracticeScreen() {
                             <Text style={{ fontSize: 12.5, color: '#64748B', fontWeight: '500' }}>
                               {`${item.questionCount} ${L('câu', 'questions')} · ${item.pageCount} ${L('trang đề', 'pages')}${item.hasAnswerKey ? ` · ${L('có đáp án', 'answer key')}` : ''}${item.answerKeyVerified ? ` · ${L('đã đối chiếu', 'verified')}` : ''}`}
                             </Text>
-                            {!item.externalOnly && item.missingComponents?.includes('audio') ? <Text style={{ fontSize: 12, color: '#92400E' }}>{L('Còn thiếu audio nguồn', 'Source audio missing')}</Text> : null}
+                            {!item.externalOnly && item.missingComponents?.includes('audio') ? <Text style={{ fontSize: 12, color: '#6A4BD9' }}>{L('Còn thiếu audio nguồn', 'Source audio missing')}</Text> : null}
                             {!item.externalOnly && item.partCount ? <Text style={{ fontSize: 12, color: '#64748B' }}>{item.partCount} {L('phần học', 'parts')}</Text> : null}
                           </View>
 
@@ -965,14 +1022,14 @@ export default function IeltsSourcePracticeScreen() {
                               width: 36,
                               height: 36,
                               borderRadius: 18,
-                              backgroundColor: '#FAF5EE',
+                              backgroundColor: '#F3F0FB',
                               borderWidth: 1,
-                              borderColor: '#F0E5D8',
+                              borderColor: '#F3F0FB',
                               alignItems: 'center',
                               justifyContent: 'center',
                             }}
                           >
-                            <Icon name="arrow-right" size={15} color="#8F6E36" />
+                            <Icon name="arrow-right" size={15} color="#6A4BD9" />
                           </View>
                         </Pressable>
                       );
@@ -993,10 +1050,10 @@ export default function IeltsSourcePracticeScreen() {
               {/* Top Banner Header with Mascot */}
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 20, paddingTop: 10 }}>
                 <View style={{ flex: 1, minWidth: 260, gap: 6 }}>
-                  <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 2, color: '#945619', textTransform: 'uppercase' }}>
+                  <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 2, color: '#6A4BD9', textTransform: 'uppercase' }}>
                     PRACTICE · PROGRESS · HIGHER BANDS
                   </Text>
-                  <Text style={{ fontSize: 32, fontWeight: '900', color: '#2A1808', fontFamily: 'BeVietnamPro_800ExtraBold', letterSpacing: -0.5 }}>
+                  <Text style={{ fontSize: 32, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold', letterSpacing: -0.5 }}>
                     {L('Bộ sưu tập của bạn', 'Your Collections')}
                   </Text>
                   <Text style={{ fontSize: 15, color: '#7C6552', lineHeight: 22 }}>
@@ -1013,7 +1070,7 @@ export default function IeltsSourcePracticeScreen() {
                     overflow: 'hidden',
                     borderWidth: 1,
                     borderColor: 'rgba(180, 140, 95, 0.25)',
-                    shadowColor: '#945619',
+                    shadowColor: '#6A4BD9',
                     shadowOpacity: 0.18,
                     shadowRadius: 16,
                     shadowOffset: { width: 0, height: 6 },
@@ -1038,20 +1095,20 @@ export default function IeltsSourcePracticeScreen() {
                   borderRadius: 14,
                   paddingHorizontal: 14,
                   height: 48,
-                  shadowColor: '#784415',
+                  shadowColor: '#2B2350',
                   shadowOpacity: 0.04,
                   shadowRadius: 8,
                 }}
               >
-                <Icon name="search" size={18} color="#945619" />
+                <Icon name="search" size={18} color="#6A4BD9" />
                 <TextInput
                   value={collectionSearch}
                   onChangeText={setCollectionSearch}
                   placeholder={L('Tìm trong bộ sưu tập của bạn...', 'Search in your collections...')}
                   placeholderTextColor="#A38F7E"
-                  style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2A1808', fontSize: 14 }}
+                  style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2B2350', fontSize: 14 }}
                 />
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6, backgroundColor: '#FAF5EE' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6, backgroundColor: '#F3F0FB' }}>
                   <Text style={{ fontSize: 12 }}>☀️</Text>
                   <Text style={{ fontSize: 11, fontWeight: '700', color: '#7C6552' }}>⌘ K</Text>
                 </View>
@@ -1076,12 +1133,12 @@ export default function IeltsSourcePracticeScreen() {
                           paddingHorizontal: 14,
                           paddingVertical: 7,
                           borderRadius: 20,
-                          backgroundColor: on ? '#8F6E36' : '#FFFFFF',
+                          backgroundColor: on ? '#6A4BD9' : '#FFFFFF',
                           borderWidth: 1,
-                          borderColor: on ? '#8F6E36' : '#E6DACB',
+                          borderColor: on ? '#6A4BD9' : '#E6DACB',
                         }}
                       >
-                        <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#573E29' }}>
+                        <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#2B2350' }}>
                           {tab.label}
                         </Text>
                       </Pressable>
@@ -1094,7 +1151,7 @@ export default function IeltsSourcePracticeScreen() {
                     paddingHorizontal: 16,
                     paddingVertical: 8,
                     borderRadius: 20,
-                    backgroundColor: '#8F6E36',
+                    backgroundColor: '#6A4BD9',
                     flexDirection: 'row',
                     alignItems: 'center',
                     gap: 6,
@@ -1108,7 +1165,7 @@ export default function IeltsSourcePracticeScreen() {
               <View style={{ gap: 12 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                   <Text style={{ fontSize: 16 }}>👑</Text>
-                  <Text style={{ fontSize: 18, fontWeight: '800', color: '#2A1808' }}>
+                  <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
                     {L('Bộ sưu tập của bạn', 'Your Collections')}
                   </Text>
                 </View>
@@ -1132,9 +1189,9 @@ export default function IeltsSourcePracticeScreen() {
                         borderRadius: 16,
                         backgroundColor: '#FFFFFF',
                         borderWidth: 1,
-                        borderColor: '#EFE7DC',
+                        borderColor: '#F3F0FB',
                         overflow: 'hidden',
-                        shadowColor: '#784415',
+                        shadowColor: '#2B2350',
                         shadowOpacity: 0.04,
                         shadowRadius: 8,
                       }}
@@ -1143,15 +1200,15 @@ export default function IeltsSourcePracticeScreen() {
                       <Image source={{ uri: col.img }} style={{ width: '100%', height: 110 }} resizeMode="cover" />
                       <View style={{ padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                          <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#FAF5EE', alignItems: 'center', justifyContent: 'center' }}>
-                            <Icon name="book" size={16} color="#8F6E36" />
+                          <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}>
+                            <Icon name="book" size={16} color="#6A4BD9" />
                           </View>
                           <View>
-                            <Text style={{ fontSize: 13, fontWeight: '800', color: '#2A1808' }}>{col.title}</Text>
+                            <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350' }}>{col.title}</Text>
                             <Text style={{ fontSize: 11, color: '#7C6552' }}>{col.desc}</Text>
                           </View>
                         </View>
-                        <Icon name="arrow-right" size={14} color="#8F6E36" />
+                        <Icon name="arrow-right" size={14} color="#6A4BD9" />
                       </View>
                     </Pressable>
                   ))}
@@ -1164,7 +1221,7 @@ export default function IeltsSourcePracticeScreen() {
                   <View style={{ gap: 2 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 16 }}>🔖</Text>
-                      <Text style={{ fontSize: 18, fontWeight: '800', color: '#2A1808' }}>
+                      <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
                         {L('Đề đã lưu', 'Saved Tests')}
                       </Text>
                     </View>
@@ -1176,7 +1233,7 @@ export default function IeltsSourcePracticeScreen() {
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                     <Text style={{ fontSize: 12, color: '#7C6552' }}>Sắp xếp:</Text>
                     <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB', flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>Mới lưu gần đây</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Mới lưu gần đây</Text>
                       <Text style={{ fontSize: 10, color: '#7C6552' }}>▼</Text>
                     </View>
                   </View>
@@ -1205,12 +1262,12 @@ export default function IeltsSourcePracticeScreen() {
                           borderRadius: 14,
                           backgroundColor: '#FFFFFF',
                           borderWidth: 1,
-                          borderColor: '#EFE7DC',
+                          borderColor: '#F3F0FB',
                           padding: 12,
                           flexDirection: 'row',
                           gap: 12,
                           alignItems: 'center',
-                          shadowColor: '#784415',
+                          shadowColor: '#2B2350',
                           shadowOpacity: 0.04,
                           shadowRadius: 8,
                         }}
@@ -1232,14 +1289,14 @@ export default function IeltsSourcePracticeScreen() {
                             </Text>
                           </View>
 
-                          <Text style={{ fontSize: 12, fontWeight: '800', color: '#2A1808' }} numberOfLines={2}>
+                          <Text style={{ fontSize: 12, fontWeight: '800', color: '#2B2350' }} numberOfLines={2}>
                             {card.title}
                           </Text>
 
                           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 }}>
                             <Text style={{ fontSize: 10, fontWeight: '700', color: '#16A34A' }}>✓ Đã lưu</Text>
                             <Pressable onPress={() => loadTest(card.id, true)}>
-                              <Text style={{ fontSize: 10, fontWeight: '800', color: '#8F6E36' }}>▶ Luyện tiếp</Text>
+                              <Text style={{ fontSize: 10, fontWeight: '800', color: '#6A4BD9' }}>▶ Luyện tiếp</Text>
                             </Pressable>
                           </View>
                         </View>
@@ -1255,7 +1312,7 @@ export default function IeltsSourcePracticeScreen() {
                   <View style={{ gap: 2 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 16 }}>💡</Text>
-                      <Text style={{ fontSize: 18, fontWeight: '800', color: '#2A1808' }}>
+                      <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
                         {L('Gợi ý theo mục tiêu band', 'Suggestions by Band Target')}
                       </Text>
                     </View>
@@ -1264,7 +1321,7 @@ export default function IeltsSourcePracticeScreen() {
                     </Text>
                   </View>
 
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: '#8F6E36' }}>
+                  <Text style={{ fontSize: 13, fontWeight: '700', color: '#6A4BD9' }}>
                     {L('Xem tất cả →', 'View all →')}
                   </Text>
                 </View>
@@ -1289,22 +1346,22 @@ export default function IeltsSourcePracticeScreen() {
                         borderRadius: 14,
                         backgroundColor: '#FFFFFF',
                         borderWidth: 1,
-                        borderColor: '#EFE7DC',
+                        borderColor: '#F3F0FB',
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-between',
                       }}
                     >
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                        <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: '#FAF5EE', alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}>
                           <Text style={{ fontSize: 18 }}>{b.icon}</Text>
                         </View>
                         <View>
-                          <Text style={{ fontSize: 14, fontWeight: '800', color: '#2A1808' }}>{b.band}</Text>
+                          <Text style={{ fontSize: 14, fontWeight: '800', color: '#2B2350' }}>{b.band}</Text>
                           <Text style={{ fontSize: 12, color: '#7C6552' }}>{b.desc}</Text>
                         </View>
                       </View>
-                      <Icon name="arrow-right" size={14} color="#8F6E36" />
+                      <Icon name="arrow-right" size={14} color="#6A4BD9" />
                     </Pressable>
                   ))}
                 </View>
@@ -1320,7 +1377,7 @@ export default function IeltsSourcePracticeScreen() {
               {/* Breadcrumb Navigation matching input_file_1 */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                 <Pressable onPress={() => setViewMode('catalog')}>
-                  <Icon name="home" size={16} color="#8F6E36" />
+                  <Icon name="home" size={16} color="#6A4BD9" />
                 </Pressable>
                 <Text style={{ color: '#A38F7E' }}>›</Text>
                 <Pressable onPress={() => setViewMode('catalog')}>
@@ -1331,7 +1388,7 @@ export default function IeltsSourcePracticeScreen() {
                   <Text style={{ fontSize: 13, color: '#7C6552', fontWeight: '500' }}>{test?.source ?? currentTestMeta?.source}</Text>
                 </Pressable>
                 <Text style={{ color: '#A38F7E' }}>›</Text>
-                <Text style={{ fontSize: 13, color: '#2A1808', fontWeight: '700' }}>
+                <Text style={{ fontSize: 13, color: '#2B2350', fontWeight: '700' }}>
                   {test?.title ?? currentTestMeta?.title ?? 'Cambridge IELTS 20 · Reading Test 1'}
                 </Text>
               </View>
@@ -1342,13 +1399,13 @@ export default function IeltsSourcePracticeScreen() {
                   borderRadius: 20,
                   backgroundColor: '#FFFFFF',
                   borderWidth: 1,
-                  borderColor: '#EFE7DC',
+                  borderColor: '#F3F0FB',
                   padding: 24,
                   flexDirection: 'row',
                   flexWrap: 'wrap',
                   alignItems: 'center',
                   gap: 28,
-                  shadowColor: '#784415',
+                  shadowColor: '#2B2350',
                   shadowOpacity: 0.06,
                   shadowRadius: 16,
                 }}
@@ -1360,8 +1417,8 @@ export default function IeltsSourcePracticeScreen() {
                     height: 280,
                     borderRadius: 22,
                     overflow: 'hidden',
-                    backgroundColor: '#F6F1EA',
-                    shadowColor: '#784415',
+                    backgroundColor: '#F3F0FB',
+                    shadowColor: '#2B2350',
                     shadowOpacity: 0.14,
                     shadowRadius: 18,
                     shadowOffset: { width: 0, height: 8 },
@@ -1380,16 +1437,16 @@ export default function IeltsSourcePracticeScreen() {
                     <Text style={{ fontSize: 11, fontWeight: '800', color: '#0369A1' }}>CAMBRIDGE</Text>
                   </View>
 
-                  <Text style={{ fontSize: 26, fontWeight: '900', color: '#2A1808', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
+                  <Text style={{ fontSize: 26, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
                     {test?.title ?? currentTestMeta?.title ?? 'Cambridge IELTS 20 · Reading Test 1'}
                   </Text>
 
                   {/* Metadata Pills */}
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-                    <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>40 câu hỏi</Text>
-                    <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>60 phút</Text>
-                    <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>Độ khó: Trung bình - Khó</Text>
-                    <Text style={{ fontSize: 12, color: '#573E29', fontWeight: '600' }}>15 trang</Text>
+                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>40 câu hỏi</Text>
+                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>60 phút</Text>
+                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>Độ khó: Trung bình - Khó</Text>
+                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>15 trang</Text>
                   </View>
 
                   <Text style={{ fontSize: 13, color: '#7C6552', lineHeight: 20 }}>
@@ -1472,12 +1529,12 @@ export default function IeltsSourcePracticeScreen() {
                         paddingHorizontal: 18,
                         height: 44,
                         borderRadius: 12,
-                        backgroundColor: '#8C531B',
+                        backgroundColor: '#6A4BD9',
                         alignItems: 'center',
                         justifyContent: 'center',
                         flexDirection: 'row',
                         gap: 6,
-                        shadowColor: '#8C531B',
+                        shadowColor: '#6A4BD9',
                         shadowOpacity: 0.25,
                         shadowRadius: 8,
                       }}
@@ -1495,7 +1552,7 @@ export default function IeltsSourcePracticeScreen() {
                         paddingHorizontal: 14,
                         height: 44,
                         borderRadius: 12,
-                        backgroundColor: '#FAF5EE',
+                        backgroundColor: '#F3F0FB',
                         borderWidth: 1,
                         borderColor: '#E6DACB',
                         alignItems: 'center',
@@ -1504,7 +1561,7 @@ export default function IeltsSourcePracticeScreen() {
                         gap: 4,
                       }}
                     >
-                      <Text style={{ color: '#8F6E36', fontSize: 12, fontWeight: '800' }}>
+                      <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>
                         {L('Tùy chọn khác ▾', 'Options ▾')}
                       </Text>
                     </Pressable>
@@ -1524,8 +1581,8 @@ export default function IeltsSourcePracticeScreen() {
                         gap: 6,
                       }}
                     >
-                      <Icon name="book" size={16} color="#8F6E36" />
-                      <Text style={{ color: '#8F6E36', fontSize: 13, fontWeight: '700' }}>
+                      <Icon name="book" size={16} color="#6A4BD9" />
+                      <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '700' }}>
                         {L('Xem đáp án', 'Answer Key')}
                       </Text>
                     </Pressable>
@@ -1558,16 +1615,16 @@ export default function IeltsSourcePracticeScreen() {
                   style={{
                     width: 220,
                     borderRadius: 16,
-                    backgroundColor: '#FAF7F2',
+                    backgroundColor: '#F3F0FB',
                     borderWidth: 1,
-                    borderColor: '#EFE7DC',
+                    borderColor: '#F3F0FB',
                     padding: 16,
                     gap: 12,
                   }}
                 >
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="trending" size={16} color="#8F6E36" />
-                    <Text style={{ fontSize: 14, fontWeight: '800', color: '#2A1808' }}>
+                    <Icon name="trending" size={16} color="#6A4BD9" />
+                    <Text style={{ fontSize: 14, fontWeight: '800', color: '#2B2350' }}>
                       {L('Tiến độ của bạn', 'Your Progress')}
                     </Text>
                   </View>
@@ -1580,12 +1637,12 @@ export default function IeltsSourcePracticeScreen() {
                         height: 80,
                         borderRadius: 40,
                         borderWidth: 6,
-                        borderColor: submitted ? '#16A34A' : answeredCount > 0 ? '#8F6E36' : '#E6DACB',
+                        borderColor: submitted ? '#16A34A' : answeredCount > 0 ? '#6A4BD9' : '#E6DACB',
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}
                     >
-                      <Text style={{ fontSize: 16, fontWeight: '900', color: '#2A1808' }}>
+                      <Text style={{ fontSize: 16, fontWeight: '900', color: '#2B2350' }}>
                         {submitted && grade ? `${Math.round((grade.score / grade.total) * 100)}%` : `${Math.round((answeredCount / (test?.questionCount || 40)) * 100)}%`}
                       </Text>
                       <Text style={{ fontSize: 9.5, color: '#7C6552' }}>
@@ -1597,11 +1654,11 @@ export default function IeltsSourcePracticeScreen() {
                   <View style={{ gap: 4 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                       <Text style={{ fontSize: 12, color: '#7C6552' }}>Số câu:</Text>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2A1808' }}>{answeredCount} / {test?.questionCount || 40} câu</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>{answeredCount} / {test?.questionCount || 40} câu</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                       <Text style={{ fontSize: 12, color: '#7C6552' }}>Thời gian:</Text>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#8F6E36' }}>{formatTimer(timeLeft)}</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#6A4BD9' }}>{formatTimer(timeLeft)}</Text>
                     </View>
                     {submitted && grade ? (
                       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -1616,10 +1673,10 @@ export default function IeltsSourcePracticeScreen() {
               {/* 2-Column: Cấu trúc bài thi & Tài liệu đi kèm */}
               <View style={{ flexDirection: 'row', gap: 20 }}>
                 {/* Left: Cấu trúc bài thi */}
-                <View style={{ flex: 1, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EFE7DC', padding: 18, gap: 12 }}>
+                <View style={{ flex: 1, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB', padding: 18, gap: 12 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="list" size={16} color="#8F6E36" />
-                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2A1808' }}>
+                    <Icon name="list" size={16} color="#6A4BD9" />
+                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
                       {L('Cấu trúc bài thi', 'Test Structure')}
                     </Text>
                   </View>
@@ -1637,14 +1694,14 @@ export default function IeltsSourcePracticeScreen() {
                         justifyContent: 'space-between',
                         padding: 12,
                         borderRadius: 10,
-                        backgroundColor: '#FAF7F2',
+                        backgroundColor: '#F3F0FB',
                       }}
                     >
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                        <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#EFE7DC', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontSize: 12, fontWeight: '800', color: '#8F6E36' }}>{row.num}</Text>
+                        <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}>
+                          <Text style={{ fontSize: 12, fontWeight: '800', color: '#6A4BD9' }}>{row.num}</Text>
                         </View>
-                        <Text style={{ fontSize: 14, fontWeight: '700', color: '#2A1808' }}>{row.title}</Text>
+                        <Text style={{ fontSize: 14, fontWeight: '700', color: '#2B2350' }}>{row.title}</Text>
                       </View>
 
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
@@ -1656,10 +1713,10 @@ export default function IeltsSourcePracticeScreen() {
                 </View>
 
                 {/* Right: Tài liệu đi kèm */}
-                <View style={{ flex: 1, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EFE7DC', padding: 18, gap: 12 }}>
+                <View style={{ flex: 1, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB', padding: 18, gap: 12 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="book" size={16} color="#8F6E36" />
-                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2A1808' }}>
+                    <Icon name="book" size={16} color="#6A4BD9" />
+                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
                       {L('Tài liệu đi kèm', 'Included Materials')}
                     </Text>
                   </View>
@@ -1667,7 +1724,7 @@ export default function IeltsSourcePracticeScreen() {
                   {[
                     { name: 'Đề thi chính thức (PDF)', ext: 'PDF • Đầy đủ đề', icon: '📄', color: '#EF4444', url: test?.sourceUrl || currentTestMeta?.hasPdf },
                     { name: 'Đáp án chuẩn (Answer Key)', ext: '40/40 câu đã đối chiếu', icon: '📄', color: '#16A34A' },
-                    { name: 'Giải thích chi tiết & Trích dẫn', ext: 'Bằng chứng trích đoạn', icon: '📄', color: '#8F6E36' },
+                    { name: 'Giải thích chi tiết & Trích dẫn', ext: 'Bằng chứng trích đoạn', icon: '📄', color: '#6A4BD9' },
                     {
                       name: 'Audio đề thi (OneDrive Cloud)',
                       ext: (test?.audioCloudUrl || currentTestMeta?.audioCloudUrl) ? 'OneDrive Stream • Không tốn dung lượng' : 'MP3 cục bộ',
@@ -1687,7 +1744,7 @@ export default function IeltsSourcePracticeScreen() {
                         justifyContent: 'space-between',
                         padding: 10,
                         borderRadius: 10,
-                        backgroundColor: '#FAF7F2',
+                        backgroundColor: '#F3F0FB',
                         borderWidth: doc.url ? 1 : 0,
                         borderColor: doc.url ? '#BFDBFE' : 'transparent',
                       }}
@@ -1695,11 +1752,11 @@ export default function IeltsSourcePracticeScreen() {
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                         <Icon name={doc.icon === '🎵' ? 'volume' : 'book'} size={18} color={doc.color} />
                         <View>
-                          <Text style={{ fontSize: 13, fontWeight: '700', color: '#2A1808' }}>{doc.name}</Text>
+                          <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>{doc.name}</Text>
                           <Text style={{ fontSize: 11, color: '#7C6552' }}>{doc.ext}</Text>
                         </View>
                       </View>
-                      <Icon name={doc.url ? "arrow-right" : "arrow-down"} size={14} color="#8F6E36" />
+                      <Icon name={doc.url ? "arrow-right" : "arrow-down"} size={14} color="#6A4BD9" />
                     </Pressable>
                   ))}
                 </View>
@@ -1741,14 +1798,14 @@ export default function IeltsSourcePracticeScreen() {
               <View style={{ gap: 12 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="book" size={16} color="#8F6E36" />
-                    <Text style={{ fontSize: 18, fontWeight: '800', color: '#2A1808' }}>
+                    <Icon name="book" size={16} color="#6A4BD9" />
+                    <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
                       {L('Đề thi liên quan', 'Related Tests')}
                     </Text>
                   </View>
 
                   <Pressable onPress={() => setViewMode('catalog')}>
-                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#8F6E36' }}>
+                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#6A4BD9' }}>
                       {L('Xem tất cả Cambridge 20 →', 'View all Cambridge 20 →')}
                     </Text>
                   </Pressable>
@@ -1771,11 +1828,11 @@ export default function IeltsSourcePracticeScreen() {
                         borderRadius: 14,
                         backgroundColor: '#FFFFFF',
                         borderWidth: 1,
-                        borderColor: '#EFE7DC',
+                        borderColor: '#F3F0FB',
                         flexDirection: 'row',
                         alignItems: 'center',
                         gap: 12,
-                        shadowColor: '#784415',
+                        shadowColor: '#2B2350',
                         shadowOpacity: 0.04,
                         shadowRadius: 8,
                       }}
@@ -1785,10 +1842,10 @@ export default function IeltsSourcePracticeScreen() {
                         <View style={{ alignSelf: 'flex-start', paddingHorizontal: 5, paddingVertical: 1, borderRadius: 4, backgroundColor: '#E0F2FE' }}>
                           <Text style={{ fontSize: 9, fontWeight: '800', color: '#0369A1' }}>CAMBRIDGE</Text>
                         </View>
-                        <Text style={{ fontSize: 13, fontWeight: '800', color: '#2A1808' }}>{rel.title}</Text>
+                        <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350' }}>{rel.title}</Text>
                         <Text style={{ fontSize: 11, color: '#7C6552' }}>{rel.q} · {rel.t}</Text>
                       </View>
-                      <Icon name="arrow-right" size={14} color="#8F6E36" />
+                      <Icon name="arrow-right" size={14} color="#6A4BD9" />
                     </Pressable>
                   ))}
                 </View>

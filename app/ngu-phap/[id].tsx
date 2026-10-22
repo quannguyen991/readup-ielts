@@ -13,9 +13,9 @@ import { useGrammarProgressStore } from '@/store/useGrammarProgressStore';
  * bước hiện tại. Bước cuối là bài kiểm tra 5 câu không gợi ý.
  */
 
-const INK = '#2B2118';
+const INK = '#2B2350';
 const ACCENT = '#B94A70';
-const CREAM = '#FBF6EC';
+const CREAM = '#F3F0FB';
 const NAVY = '0F1D33';
 
 export default function GrammarLessonScreen() {
@@ -47,7 +47,7 @@ export default function GrammarLessonScreen() {
 
       <View style={{ marginTop: 14, flexDirection: wide ? 'row' : 'column', gap: 16, alignItems: 'flex-start' }}>
         {/* Cột trái: mục lục */}
-        <View style={{ width: wide ? 300 : '100%', backgroundColor: '#F4EBDA', borderRadius: 22, borderWidth: 2, borderColor: INK, padding: 18, boxShadow: `0 5px 0 ${INK}` } as object}>
+        <View style={{ width: wide ? 300 : '100%', backgroundColor: '#F3F0FB', borderRadius: 22, borderWidth: 2, borderColor: INK, padding: 18, boxShadow: `0 5px 0 ${INK}` } as object}>
           <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
             <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, borderWidth: 1.5, borderColor: INK }}>
               <Text className="font-strong" style={{ color: INK, fontSize: 12 }}>{lesson.level}</Text>
@@ -115,7 +115,7 @@ function StepRow({ label, done, active, onPress }: { label: string; done: boolea
 function StepView({ step }: { step: GrammarStep }) {
   return (
     <View style={{ backgroundColor: '#FFFFFF', borderRadius: 22, borderWidth: 2, borderColor: INK, padding: 24, gap: 14, boxShadow: `0 5px 0 ${INK}` } as object}>
-      <View style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999, backgroundColor: '#F3E8D2' }}>
+      <View style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
         <Text className="font-strong" style={{ color: ACCENT, fontSize: 12, letterSpacing: 0.6 }}>{step.label.toUpperCase()}</Text>
       </View>
       <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: INK }}>{step.title}</Text>
@@ -150,7 +150,7 @@ function StepView({ step }: { step: GrammarStep }) {
       {step.mistakes ? (
         <View style={{ gap: 10 }}>
           {step.mistakes.map((m, i) => (
-            <View key={i} style={{ borderRadius: 14, borderWidth: 1.5, borderColor: '#E7D2A8', backgroundColor: '#FBF6EC', padding: 14, gap: 6 }}>
+            <View key={i} style={{ borderRadius: 14, borderWidth: 1.5, borderColor: '#E7D2A8', backgroundColor: '#F3F0FB', padding: 14, gap: 6 }}>
               <Text className="font-sans" style={{ color: '#B42318', fontSize: 15, textDecorationLine: 'line-through' }}>{m.wrong}</Text>
               <Text className="font-strong" style={{ color: '#15803D', fontSize: 16 }}>{m.right}</Text>
               <Text className="font-sans" style={{ color: '#4B4036', fontSize: 14, lineHeight: 20 }}>{m.why}</Text>
@@ -166,7 +166,7 @@ function StepView({ step }: { step: GrammarStep }) {
 function ExampleRow({ en, vi, mark }: { en: string; vi: string; mark?: string }) {
   const parts = mark && en.includes(mark) ? en.split(mark) : [en];
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#EFE6D6' }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#F3F0FB' }}>
       <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: ACCENT, alignItems: 'center', justifyContent: 'center' }}>
         <Icon name="volume" size={16} color="#FFFFFF" />
       </View>

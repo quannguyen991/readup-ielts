@@ -5,6 +5,7 @@ import { Image, Platform, Pressable, ScrollView, Text, View } from "react-native
 import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
+import { SidebarMosaic } from "./SidebarMosaic";
 import { LionMascot } from "@/components/mascot/LionMascot";
 import { ensureTaskMotionCss } from "@/components/motion/task-motion";
 
@@ -86,6 +87,8 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
   // Thanh bên nổi: bo góc, cách mép trái/trên/dưới FLOAT_GAP. Bề rộng trừ đi FLOAT_GAP nên cả khối
   // vẫn chiếm đúng `width`, vùng nội dung (lg:pl-[248px]) không phải đổi.
   const floating = !compact && !glass && !pixel;
+  // Lớp khối pastel theo hero chỉ cho theme mặc định; theme khác giữ nguyên.
+  const mosaic = !glass && !pixel && !chiikawaTheme && themeConfig.id === "default";
 
   return (
     <View
@@ -104,6 +107,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
     >
       {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}
       <SidebarAtmosphereOverlay effect={activeEffect} isDark={themeConfig.isDark} />
+      {mosaic ? <SidebarMosaic /> : null}
 
       <View className={collapsed ? "items-center pb-2 pt-5" : "px-5 pb-2 pt-5"}>
         <Logo compact markOnly={collapsed} />
@@ -117,7 +121,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
             text: themeConfig.textPrimary,
             muted: themeConfig.textMuted,
             hover: themeConfig.hoverBg,
-            border: themeConfig.isDark ? "rgba(255,255,255,0.16)" : chiikawaTheme ? "#F0B6C9" : "rgba(184,149,90,0.38)",
+            border: themeConfig.isDark ? "rgba(255,255,255,0.16)" : chiikawaTheme ? "#F0B6C9" : "rgba(139, 108, 240,0.38)",
             isDark: themeConfig.isDark,
           }}
         />
@@ -149,7 +153,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
                   style={{
                     backgroundColor: themeConfig.isDark
                       ? "rgba(255,255,255,0.12)"
-                      : "#F6F3EE",
+                      : "#F3F0FB",
                   }}
                 />
               ) : (
@@ -448,7 +452,7 @@ function ActiveSparkles() {
             right: s.right,
             fontSize: s.size,
             lineHeight: 1,
-            color: "#FFF6D6",
+            color: "#F3F0FB",
             textShadow: "0 0 6px #F6C453, 0 0 12px rgba(246,196,83,0.75)",
             pointerEvents: "none",
             zIndex: 7,
@@ -545,7 +549,7 @@ function AccountRow({ collapsed, themeConfig, pixel }: { collapsed: boolean; the
       className={`flex-row items-center gap-3 rounded-panel ${collapsed ? "p-1.5" : "px-3 py-2"}`}
       style={{
         borderWidth: 1,
-        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : chiikawaTheme ? "#F0B6C9" : "#F6F3EE",
+        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : chiikawaTheme ? "#F0B6C9" : "#F3F0FB",
         backgroundColor: themeConfig.hoverBg,
       }}
     >

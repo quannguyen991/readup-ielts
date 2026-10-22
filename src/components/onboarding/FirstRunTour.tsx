@@ -86,10 +86,10 @@ export function FirstRunTour() {
           {
             width: '100%',
             maxWidth: 440,
-            backgroundColor: '#FBF6EC',
+            backgroundColor: '#F3F0FB',
             borderRadius: 26,
             borderWidth: 2,
-            borderColor: '#2B2118',
+            borderColor: '#2B2350',
             padding: 26,
             gap: 16,
             boxShadow: '0 8px 0 #B94A70',
@@ -108,7 +108,7 @@ export function FirstRunTour() {
         <Appear key={at} index={0}>
           <View style={{ gap: 16, alignItems: 'center' }}>
             <Art icon={step.icon} />
-            <Text className="font-heavy" style={{ fontSize: 24, lineHeight: 30, color: '#2B2118', textAlign: 'center' }}>{step.title}</Text>
+            <Text className="font-heavy" style={{ fontSize: 24, lineHeight: 30, color: '#2B2350', textAlign: 'center' }}>{step.title}</Text>
             <Text className="font-sans" style={{ fontSize: 16, lineHeight: 24, color: '#4B4036', textAlign: 'center' }}>{step.line}</Text>
           </View>
         </Appear>
@@ -155,7 +155,7 @@ function Art({ icon }: { icon: IconName }) {
         width: 112,
         height: 112,
         borderRadius: 56,
-        backgroundColor: '#F3E8D2',
+        backgroundColor: '#F3F0FB',
         borderWidth: 2,
         borderColor: '#B94A70',
         alignItems: 'center',

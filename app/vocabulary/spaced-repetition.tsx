@@ -203,8 +203,8 @@ export default function SpacedRepetitionScreen() {
               alignItems: 'center',
               gap: 8,
               borderRadius: 14,
-              backgroundColor: themedHex('#B8955A'),
-              backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
+              backgroundColor: themedHex('#8B6CF0'),
+              backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #6A4BD9 100%)',
               boxShadow: '0 4px 14px rgba(168,132,63, 0.3)',
               paddingHorizontal: 16,
               paddingVertical: 10,
@@ -220,7 +220,7 @@ export default function SpacedRepetitionScreen() {
 
       {/* Lịch ôn 7 ngày: số từ đến hạn mỗi ngày, cộng dồn khi học thêm */}
       <View
-        style={{ marginBottom: 16, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2', paddingHorizontal: 16, paddingVertical: 14 } as never}
+        style={{ marginBottom: 16, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB', paddingHorizontal: 16, paddingVertical: 14 } as never}
         accessibilityLabel={L('Lịch ôn 7 ngày tới', 'Review plan, next 7 days')}
       >
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
@@ -238,7 +238,7 @@ export default function SpacedRepetitionScreen() {
             return (
               <View
                 key={d.day}
-                style={{ flexGrow: 1, flexBasis: 74, alignItems: 'center', borderRadius: 12, paddingVertical: 8, backgroundColor: i === 0 ? '#FBF3E2' : '#F9F6F1', borderWidth: i === 0 ? 1 : 0, borderColor: '#D9BC7F' }}
+                style={{ flexGrow: 1, flexBasis: 74, alignItems: 'center', borderRadius: 12, paddingVertical: 8, backgroundColor: i === 0 ? '#F3F0FB' : '#F3F0FB', borderWidth: i === 0 ? 1 : 0, borderColor: '#D9BC7F' }}
               >
                 <Text className="font-semi text-label text-muted">{label}</Text>
                 <Text className="font-heavy text-bodyLg text-ink">{d.count}</Text>
@@ -254,8 +254,8 @@ export default function SpacedRepetitionScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: themedHex('#B8955A'),
-            backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
+            backgroundColor: themedHex('#8B6CF0'),
+            backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #6A4BD9 100%)',
             boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
             borderRadius: 20,
             padding: 20,
@@ -289,7 +289,7 @@ export default function SpacedRepetitionScreen() {
           >
             {[
               { key: 'unmemorized', label: L('Chưa nhớ', 'Not yet'), count: levels.unmemorized, color: 'rgba(255, 255, 255, 0.45)' },
-              { key: 'needLearning', label: L('Cần học', 'To learn'), count: levels.needLearning, color: '#F2E1C5' },
+              { key: 'needLearning', label: L('Cần học', 'To learn'), count: levels.needLearning, color: '#F3F0FB' },
               { key: 'forgetful', label: L('Hay quên', 'Often forgot'), count: levels.forgetful, color: '#FECACA' },
               { key: 'temporary', label: L('Nhớ tạm', 'Short-term'), count: levels.temporary, color: '#FDE047' },
               { key: 'mastered', label: L('Nhớ sâu', 'Long-term'), count: levels.mastered, color: '#86EFAC' },
@@ -322,8 +322,8 @@ export default function SpacedRepetitionScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: themedHex('#B8955A'),
-            backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
+            backgroundColor: themedHex('#8B6CF0'),
+            backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #6A4BD9 100%)',
             boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
             borderRadius: 20,
             padding: 20,
@@ -422,7 +422,7 @@ export default function SpacedRepetitionScreen() {
               paddingHorizontal: 12,
               paddingVertical: 8,
               borderRadius: 10,
-              backgroundColor: filterMode === 'all' ? '#A8843F' : '#F9F6F1',
+              backgroundColor: filterMode === 'all' ? '#6A4BD9' : '#F3F0FB',
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'all' ? '#FFFFFF' : '#64748B' }}>
@@ -435,7 +435,7 @@ export default function SpacedRepetitionScreen() {
               paddingHorizontal: 12,
               paddingVertical: 8,
               borderRadius: 10,
-              backgroundColor: filterMode === 'due' ? '#EA580C' : '#F9F6F1',
+              backgroundColor: filterMode === 'due' ? '#6A4BD9' : '#F3F0FB',
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'due' ? '#FFFFFF' : '#64748B' }}>
@@ -448,7 +448,7 @@ export default function SpacedRepetitionScreen() {
               paddingHorizontal: 12,
               paddingVertical: 8,
               borderRadius: 10,
-              backgroundColor: filterMode === 'forgetful' ? '#EF4444' : '#F9F6F1',
+              backgroundColor: filterMode === 'forgetful' ? '#EF4444' : '#F3F0FB',
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'forgetful' ? '#FFFFFF' : '#64748B' }}>
@@ -461,7 +461,7 @@ export default function SpacedRepetitionScreen() {
               paddingHorizontal: 12,
               paddingVertical: 8,
               borderRadius: 10,
-              backgroundColor: filterMode === 'mastered' ? '#10B981' : '#F9F6F1',
+              backgroundColor: filterMode === 'mastered' ? '#10B981' : '#F3F0FB',
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'mastered' ? '#FFFFFF' : '#64748B' }}>
@@ -481,7 +481,7 @@ export default function SpacedRepetitionScreen() {
                 borderRadius: 16,
                 backgroundColor: '#FFFFFF',
                 borderWidth: 1,
-                borderColor: '#F0EBE2',
+                borderColor: '#F3F0FB',
                 boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)',
                 paddingHorizontal: 18,
                 paddingVertical: 14,
@@ -521,8 +521,8 @@ export default function SpacedRepetitionScreen() {
                 {(() => {
                   const b = dueLabel(entry);
                   return b ? (
-                    <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: b.hot ? '#FFEDD5' : '#F3EEE3' }}>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: b.hot ? '#9A3412' : '#6A5228' }}>{b.text}</Text>
+                    <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: b.hot ? '#F3F0FB' : '#F3F0FB' }}>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: b.hot ? '#6A4BD9' : '#5A3EBA' }}>{b.text}</Text>
                     </View>
                   ) : null;
                 })()}
@@ -537,10 +537,10 @@ export default function SpacedRepetitionScreen() {
                   style={{
                     padding: 8,
                     borderRadius: 999,
-                    backgroundColor: '#FCF8F2',
+                    backgroundColor: '#F3F0FB',
                   }}
                 >
-                  <Icon name="volume" size={15} color="#A8843F" />
+                  <Icon name="volume" size={15} color="#6A4BD9" />
                 </Pressable>
               </View>
             </View>

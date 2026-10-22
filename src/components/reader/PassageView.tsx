@@ -171,7 +171,7 @@ function Paragraph({
       style={
         isEvidence
           ? {
-              backgroundColor: '#FEF9C3',
+              backgroundColor: '#F3F0FB',
               borderLeftWidth: 4,
               borderLeftColor: '#E11D48',
               paddingLeft: 12,
@@ -260,7 +260,7 @@ function Paragraph({
               const background = highlightColor
                 ? highlightColors[highlightColor.color].fill
                 : inPhrase
-                  ? '#F8F0E1'
+                  ? '#F3F0FB'
                   : status !== 'new' && status !== 'ignored'
                     ? wordStatusColor[status].fill
                     : undefined;

@@ -277,7 +277,7 @@ export default function DictionaryPage() {
                   <Text style={{ color: HUB.sky, fontSize: 12, fontWeight: '800' }}>{hit.pos}</Text>
                 </View>
               </View>
-              <Text style={{ color: '#8C531B', fontSize: 16, fontWeight: '600' }}>{hit.meaningVi}</Text>
+              <Text style={{ color: '#6A4BD9', fontSize: 16, fontWeight: '600' }}>{hit.meaningVi}</Text>
             </View>
 
             {/* Bookmark button */}
@@ -417,7 +417,7 @@ export default function DictionaryPage() {
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '700' }}>{c.phrase}</Text>
                     <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: c.band === '9.0' ? 'rgba(168, 85, 247, 0.25)' : 'rgba(140, 83, 27, 0.2)' }}>
-                      <Text style={{ color: c.band === '9.0' ? '#C084FC' : '#8C531B', fontSize: 10, fontWeight: '800' }}>Band {c.band}</Text>
+                      <Text style={{ color: c.band === '9.0' ? '#C084FC' : '#6A4BD9', fontSize: 10, fontWeight: '800' }}>Band {c.band}</Text>
                     </View>
                   </View>
                   <Text style={{ color: HUB.muted, fontSize: 12 }}>{c.meaningVi}</Text>
@@ -447,19 +447,19 @@ export default function DictionaryPage() {
             {/* Camera Viewfinder Simulation */}
             <View style={{ height: 160, borderRadius: 14, backgroundColor: '#0B0D1E', borderWidth: 2, borderColor: '#7C3AED', position: 'relative', overflow: 'hidden', alignItems: 'center', justifyContent: 'center', padding: 12 }}>
               {/* Corner scan brackets */}
-              <View style={{ position: 'absolute', top: 8, left: 8, width: 16, height: 16, borderTopWidth: 2, borderLeftWidth: 2, borderColor: '#8C531B' }} />
-              <View style={{ position: 'absolute', top: 8, right: 8, width: 16, height: 16, borderTopWidth: 2, borderRightWidth: 2, borderColor: '#8C531B' }} />
-              <View style={{ position: 'absolute', bottom: 8, left: 8, width: 16, height: 16, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#8C531B' }} />
-              <View style={{ position: 'absolute', bottom: 8, right: 8, width: 16, height: 16, borderBottomWidth: 2, borderRightWidth: 2, borderColor: '#8C531B' }} />
+              <View style={{ position: 'absolute', top: 8, left: 8, width: 16, height: 16, borderTopWidth: 2, borderLeftWidth: 2, borderColor: '#6A4BD9' }} />
+              <View style={{ position: 'absolute', top: 8, right: 8, width: 16, height: 16, borderTopWidth: 2, borderRightWidth: 2, borderColor: '#6A4BD9' }} />
+              <View style={{ position: 'absolute', bottom: 8, left: 8, width: 16, height: 16, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#6A4BD9' }} />
+              <View style={{ position: 'absolute', bottom: 8, right: 8, width: 16, height: 16, borderBottomWidth: 2, borderRightWidth: 2, borderColor: '#6A4BD9' }} />
 
               {scanning ? (
                 <View style={{ alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#8C531B', fontSize: 14, fontWeight: '800' }}>Đang nhận diện quang học (OCR)...</Text>
-                  <View style={{ width: 180, height: 2, backgroundColor: '#8C531B' }} />
+                  <Text style={{ color: '#6A4BD9', fontSize: 14, fontWeight: '800' }}>Đang nhận diện quang học (OCR)...</Text>
+                  <View style={{ width: 180, height: 2, backgroundColor: '#6A4BD9' }} />
                 </View>
               ) : (
                 <View style={{ alignItems: 'center', gap: 6 }}>
-                  <Text style={{ color: '#573E29', fontSize: 13, fontWeight: '700', textAlign: 'center' }}>
+                  <Text style={{ color: '#2B2350', fontSize: 13, fontWeight: '700', textAlign: 'center' }}>
                     {OCR_SAMPLES[activeOcrSample]?.source}
                   </Text>
                   <Text style={{ color: '#94A3B8', fontSize: 12, textAlign: 'center', fontStyle: 'italic', lineHeight: 17 }} numberOfLines={3}>
@@ -519,7 +519,7 @@ export default function DictionaryPage() {
                       borderRadius: 10,
                       backgroundColor: 'rgba(140, 83, 27, 0.15)',
                       borderWidth: 1,
-                      borderColor: '#8C531B',
+                      borderColor: '#6A4BD9',
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 6,

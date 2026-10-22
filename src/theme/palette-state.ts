@@ -33,8 +33,8 @@ export function themed<T extends object>(base: T, chiikawa: { [K in keyof T]?: u
 
 /** Màu vàng viết cứng trong giao diện → màu tương ứng của bảng Chiikawa (khi đang bật). */
 const CHIIKAWA_HEX: Record<string, string> = {
-  '#B8955A': '#D65E86',
-  '#CCA35B': '#E68AAE',
+  '#8B6CF0': '#D65E86',
+  '#F0644F': '#E68AAE',
   '#8C6A1F': '#C64E79',
   '#3B2A10': '#4A2433',
   '#EBC26A': '#EE8DB1',
@@ -48,7 +48,7 @@ const CHIIKAWA_HEX: Record<string, string> = {
   '#E2B54E': '#E77AA0',
   '#E9CF9A': '#F5CADB',
   '#B8862B': '#B94A70',
-  '#A8843F': '#C64E79',
+  '#6A4BD9': '#C64E79',
   '#F2B632': '#F48FB1',
   '#FBF5EC': '#FFF5F8',
   '#F9F6F1': '#FFF5F8',
@@ -60,8 +60,8 @@ const CHIIKAWA_HEX: Record<string, string> = {
 
 /** Màu vàng kim viết cứng → tím pixel khi đang bật theme Pixel (cùng các khoá với bảng Chiikawa). */
 const PIXEL_HEX: Record<string, string> = {
-  '#B8955A': '#9D7BFF',
-  '#CCA35B': '#B79CFF',
+  '#8B6CF0': '#9D7BFF',
+  '#F0644F': '#B79CFF',
   '#8C6A1F': '#6A44D0',
   '#3B2A10': '#2B1B4E',
   '#EBC26A': '#C4B0FF',
@@ -75,7 +75,7 @@ const PIXEL_HEX: Record<string, string> = {
   '#E2B54E': '#A88BFF',
   '#E9CF9A': '#CFBFFF',
   '#B8862B': '#7B55E8',
-  '#A8843F': '#6A44D0',
+  '#6A4BD9': '#6A44D0',
   '#F2B632': '#B79CFF',
   '#FBF5EC': '#FBF7FF',
   '#F9F6F1': '#FBF7FF',
@@ -95,8 +95,8 @@ const PIXEL_RGBA: Array<[RegExp, string]> = [
 
 /** Cùng các khoá vàng với bảng Pixel, nhưng đổi sang xanh cyber: nền tối navy, chữ sáng, điểm nhấn cyan. */
 const CYBER_HEX: Record<string, string> = {
-  '#B8955A': '#00B8D9',
-  '#CCA35B': '#00D0EE',
+  '#8B6CF0': '#00B8D9',
+  '#F0644F': '#00D0EE',
   '#8C6A1F': '#0A7FB3',
   '#3B2A10': '#E6F6FF',
   '#EBC26A': '#33E0FF',
@@ -110,7 +110,7 @@ const CYBER_HEX: Record<string, string> = {
   '#E2B54E': '#22D3EE',
   '#E9CF9A': '#0F3354',
   '#B8862B': '#0891B2',
-  '#A8843F': '#0E7490',
+  '#6A4BD9': '#0E7490',
   '#F2B632': '#00E5FF',
   '#FBF5EC': '#1B2D4F',
   '#F9F6F1': '#1B2D4F',

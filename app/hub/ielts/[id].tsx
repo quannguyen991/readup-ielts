@@ -142,7 +142,7 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
               </Pressable>
             </View>
             {r ? (
-              <Text style={{ color: r.ok ? '#2E7D4F' : '#A8741A', fontSize: 13, fontWeight: '700' }}>
+              <Text style={{ color: r.ok ? '#2E7D4F' : '#6A4BD9', fontSize: 13, fontWeight: '700' }}>
                 {r.ok ? 'Đạt mục tiêu' : 'Chưa đạt'}: {r.wpm ?? '—'} từ/phút · từ đệm {Math.round(r.fillerRate * 100)}% · {r.words} từ
               </Text>
             ) : null}

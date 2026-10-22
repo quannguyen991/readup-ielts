@@ -42,7 +42,7 @@ export function Sheet({
             safeBottom,
           ]}
         >
-          {phone ? <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: '#E5DFD2' }} /> : null}
+          {phone ? <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }} /> : null}
           {children}
         </Pressable>
       </Pressable>

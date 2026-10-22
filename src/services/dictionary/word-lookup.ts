@@ -40,12 +40,12 @@ function finish(word: string, w: WordLookup, source: ResolvedWord['source']): Re
   return { ...w, word, source, englishOnly: !w.definitionVi && Boolean(w.definitionGeneral) };
 }
 
-/** Bước 1–2: không mạng, không chờ. */
-export function lookupOffline(text: string): ResolvedWord | null {
+/** Bước 1–2: không mạng. Lần đầu có thể chờ một lúc để nạp bộ từ của app. */
+export async function lookupOffline(text: string): Promise<ResolvedWord | null> {
   const clean = text.trim();
   if (!clean) return null;
 
-  const deck = findDeckWord(clean);
+  const deck = await findDeckWord(clean);
   if (deck) {
     return finish(
       clean,
@@ -129,7 +129,7 @@ export async function resolveWord(
   const clean = text.trim();
   if (!clean) return null;
 
-  const offline = lookupOffline(clean);
+  const offline = await lookupOffline(clean);
   if (offline) return offline;
 
   const store = deps.store === undefined ? defaultStore() : deps.store;

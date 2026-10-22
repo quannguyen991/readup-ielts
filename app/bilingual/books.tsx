@@ -23,7 +23,7 @@ const INK = '#1E2748';
 const MUTED = '#68718A';
 const CARD = {
   borderWidth: 1,
-  borderColor: '#EEE7DB',
+  borderColor: '#F3F0FB',
   ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 24px rgba(71,54,27,0.07)' } as object) : { elevation: 2 }),
 };
 
@@ -166,14 +166,14 @@ export default function BilingualBooksScreen() {
             <Pressable key={story.id} accessibilityRole="link" onPress={() => router.push(`/bilingual/story/${story.id}` as never)} className="rounded-[22px] bg-white p-5" style={[CARD, { flexGrow: 1, flexBasis: 420, maxWidth: 760 }]}>
               <View className="flex-row items-center justify-between gap-3">
                 <Text className="font-heavy" style={{ color: '#0C8F86', fontSize: 11, letterSpacing: 1.1 }}>{L(`TÁC PHẨM NGUYÊN BẢN · ${story.level}`, `BAND 9 ORIGINAL · ${story.level}`)}</Text>
-                <Icon name="arrow-right" size={17} color="#8A6C39" strokeWidth={2} />
+                <Icon name="arrow-right" size={17} color="#6A4BD9" strokeWidth={2} />
               </View>
               <View className="mt-3 rounded-[15px] px-4 py-3" style={{ backgroundColor: '#E7F5F2' }}>
                 <Text className="font-heavy" style={{ color: '#087F78', fontSize: 11, letterSpacing: 1 }}>{L('ĐỌC SONG SONG', 'PARALLEL READING')}</Text>
                 <Text className="mt-1 font-sans" style={{ color: '#55827F', fontSize: 12, lineHeight: 18 }}>{L('Từng đoạn nguyên tác có bản dịch tương ứng ngay bên cạnh.', 'Every original passage is paired with its translation.')}</Text>
               </View>
               <Text className="mt-4 font-heavy" style={{ color: INK, fontSize: 21, lineHeight: 28 }}>{story.titleEn}</Text>
-              <Text className="mt-1 font-semi" style={{ color: '#8A6C39', fontSize: 15 }}>{story.titleVi}</Text>
+              <Text className="mt-1 font-semi" style={{ color: '#6A4BD9', fontSize: 15 }}>{story.titleVi}</Text>
               <Text className="mt-2 font-sans" style={{ color: MUTED, fontSize: 14, lineHeight: 22 }}>{story.summaryVi}</Text>
               <Text className="mt-4 font-mid" style={{ color: MUTED, fontSize: 12 }}>{story.paragraphs.length} {L('đoạn dài', 'passages')} · {story.paragraphs.reduce((sum, paragraph) => sum + paragraph.en.trim().split(/\s+/).length, 0)} {L('từ', 'words')} · {L('đọc trên web', 'in-web reader')}</Text>
             </Pressable>
@@ -232,7 +232,7 @@ function PersonalBookCard({ book, onOpen, onRemove, onAddVietnamese }: { book: P
           <Text className="font-heavy" style={{ color: INK, fontSize: 16.5 }}>{book.title}</Text>
           <Text className="mt-1 font-sans" style={{ color: MUTED, fontSize: 12.5 }}>{book.author ?? L('Sách cá nhân', 'Personal book')} · {book.pagesEn.length} {L('trang', 'pages')}</Text>
         </View>
-        <Pressable accessibilityRole="button" accessibilityLabel={L(`Xoá ${book.title}`, `Remove ${book.title}`)} onPress={onRemove} className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: '#F8F4EC' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel={L(`Xoá ${book.title}`, `Remove ${book.title}`)} onPress={onRemove} className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: '#F3F0FB' }}>
           <Icon name="close" size={15} color={MUTED} strokeWidth={1.9} />
         </Pressable>
       </View>
@@ -246,8 +246,8 @@ function PersonalBookCard({ book, onOpen, onRemove, onAddVietnamese }: { book: P
 
 function SmallAction({ icon, label, onPress }: { icon: 'book' | 'plus'; label: string; onPress: () => void }) {
   return (
-    <Pressable accessibilityRole="button" onPress={onPress} className="flex-row items-center gap-1.5 rounded-pill px-3 py-2" style={{ backgroundColor: '#FAF7F0', borderWidth: 1, borderColor: '#EEE7DB' }}>
-      <Icon name={icon} size={14} color="#8A6C39" strokeWidth={2} />
+    <Pressable accessibilityRole="button" onPress={onPress} className="flex-row items-center gap-1.5 rounded-pill px-3 py-2" style={{ backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F3F0FB' }}>
+      <Icon name={icon} size={14} color="#6A4BD9" strokeWidth={2} />
       <Text className="font-semi" style={{ color: INK, fontSize: 12 }}>{label}</Text>
     </Pressable>
   );

@@ -149,15 +149,15 @@ export default function FishingArcade() {
               <View className="mt-4 flex-row flex-wrap gap-2">{rivals.map((r) => <Pressable key={r.id} onPress={() => setTarget(r.id)} className="rounded-pill px-4 py-2" style={{ backgroundColor: target === r.id ? '#101A36' : '#F8F5EF' }}><Text className="font-semi text-body" style={{ color: target === r.id ? '#F3EDE1' : '#1A1A33' }}>{r.glyph} {r.name} · {r.coins}🪙</Text></Pressable>)}</View>
               <Text className="mt-4 font-heavy text-bodyLg text-ink">{q.enToVi ? q.word.word : q.word.meaningVi} {q.enToVi ? q.word.ipa : ''}</Text>
               <View className="mt-3 gap-2">{q.options.map((opt, i) => <Option key={`hack-${i}`} label={opt} disabled={!target} onPress={() => hack(i)} />)}</View>
-              {notice ? <Text className="mt-3 font-semi text-body" style={{ color: '#8F6E36' }}>{notice}</Text> : null}
+              {notice ? <Text className="mt-3 font-semi text-body" style={{ color: '#6A4BD9' }}>{notice}</Text> : null}
             </View>
           ) : q ? (
             <View>
-              <View className="flex-row items-center justify-between"><Text className="font-semi text-label uppercase tracking-[1px] text-muted">{L('Câu', 'Question')} {index + 1}/{questions.length} · {L('chọn nghĩa đúng', 'choose the meaning')}</Text><Text className="font-heavy text-label" style={{ color: '#8F6E36' }}>{combo} 🔥</Text></View>
+              <View className="flex-row items-center justify-between"><Text className="font-semi text-label uppercase tracking-[1px] text-muted">{L('Câu', 'Question')} {index + 1}/{questions.length} · {L('chọn nghĩa đúng', 'choose the meaning')}</Text><Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{combo} 🔥</Text></View>
               <Text className="mt-4 font-heavy text-pageTitle text-ink">{q.enToVi ? q.word.word : q.word.meaningVi}</Text>
               {q.enToVi && q.word.example ? <Text className="mt-2 font-sans text-body text-muted">{q.word.example}</Text> : null}
               <View className="mt-5 gap-2.5">{q.options.map((opt, i) => <Option key={`${i}-${opt}`} label={`${i + 1}.  ${opt}`} selected={picked === i} correct={picked !== null && i === q.correctIndex} wrong={picked === i && i !== q.correctIndex} disabled={picked !== null} onPress={() => answer(i)} />)}</View>
-              {notice ? <Text className="mt-3 font-semi text-body" style={{ color: '#8F6E36' }}>{notice}</Text> : null}
+              {notice ? <Text className="mt-3 font-semi text-body" style={{ color: '#6A4BD9' }}>{notice}</Text> : null}
             </View>
           ) : null}
         </View>
@@ -168,7 +168,7 @@ export default function FishingArcade() {
 }
 
 function Option({ label, onPress, disabled, selected, correct, wrong }: { label: string; onPress: () => void; disabled?: boolean; selected?: boolean; correct?: boolean; wrong?: boolean }) {
-  return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} className="rounded-2xl px-4 py-3.5" style={{ borderWidth: 1.5, borderColor: correct ? '#16A34A' : wrong ? '#F04438' : selected ? '#8F6E36' : '#F0E9DC', backgroundColor: correct ? '#E8F8EE' : wrong ? '#FEECEB' : '#FFFFFF' }}><Text className="font-semi text-bodyLg text-ink">{label}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} className="rounded-2xl px-4 py-3.5" style={{ borderWidth: 1.5, borderColor: correct ? '#16A34A' : wrong ? '#F04438' : selected ? '#6A4BD9' : '#F0E9DC', backgroundColor: correct ? '#E8F8EE' : wrong ? '#FEECEB' : '#FFFFFF' }}><Text className="font-semi text-bodyLg text-ink">{label}</Text></Pressable>;
 }
 
 function FishingSpot({ title, icon, detail, onPress }: { title: string; icon: string; detail: string; onPress: () => void }) {

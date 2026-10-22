@@ -60,7 +60,7 @@ export const STAGE_MISUNDERSTOOD: Bi = {
 const B = (en: string, vi: string): Bi => ({ en, vi });
 /** Lời nhắc/gợi ý viết theo thứ tự (tiếng Việt, tiếng Anh). */
 const P = (vi: string, en: string): Bi => ({ vi, en });
-const look = (skin: string, hair: string, coat: string, accent = '#F3EDE1'): NpcLook => ({ skin, hair, coat, accent });
+const look = (skin: string, hair: string, coat: string, accent = '#F3F0FB'): NpcLook => ({ skin, hair, coat, accent });
 
 const RAVI = { name: 'Ravi', persona: 'guide' as TravelNpcPersona };
 const WEI = { name: 'Wei', persona: 'student' as TravelNpcPersona };
@@ -73,7 +73,7 @@ const give = (icon: string, en: string, vi: string) => ({ icon, label: B(en, vi)
 export const STAGE_SPECS: Record<string, StageSpec> = {
   // ===================== Singapore =====================
   arrival: {
-    spot: 'singapore-changi', persona: 'staff', look: look('#C98E64', '#1B1410', '#1F5F8B'),
+    spot: 'singapore-changi', persona: 'staff', look: look('#C98E64', '#2B2350', '#1F5F8B'),
     reaction: B('Wonderful — enjoy your semester! Please follow the signs to the taxi stand.', 'Tuyệt quá — chúc bạn một học kỳ vui! Hãy đi theo biển chỉ dẫn tới chỗ bắt taxi.'),
     starters: [B('Where can I get a taxi to the campus?', 'Tôi bắt taxi về trường ở đâu?'), B('Is it easy to buy a local SIM card here?', 'Mua SIM địa phương ở đây có dễ không?')],
     beats: [
@@ -82,7 +82,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'campus-id': {
-    spot: 'singapore-hotel', persona: 'staff', look: look('#E9B98A', '#2B1B12', '#5B4B8A'),
+    spot: 'singapore-hotel', persona: 'staff', look: look('#E9B98A', '#2B2350', '#5B4B8A'),
     reaction: B('Thank you. Everything looks complete — your student card will be ready tomorrow.', 'Cảm ơn bạn. Mọi thứ đều đầy đủ — thẻ sinh viên sẽ sẵn sàng vào ngày mai.'),
     starters: [B('Where do I collect my student card?', 'Tôi nhận thẻ sinh viên ở đâu?'), B('Could you tell me where the library is?', 'Bạn chỉ giúp thư viện ở đâu được không?')],
     beats: [
@@ -91,7 +91,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'food-order': {
-    spot: 'singapore-hawker', persona: 'vendor', look: look('#D9A074', '#15110E', '#C2410C', '#FFE8B0'),
+    spot: 'singapore-hawker', persona: 'vendor', look: look('#D9A074', '#2B2350', '#6A4BD9', '#FFE8B0'),
     reaction: B('Coming right up — one lime juice, less sugar!', 'Có ngay — một nước chanh, ít đường!'),
     starters: [B('What do you recommend besides chicken rice?', 'Ngoài cơm gà bạn gợi ý món nào?'), B('Is the food here very spicy?', 'Đồ ăn ở đây có cay lắm không?')],
     beats: [
@@ -100,7 +100,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'group-project': {
-    spot: 'singapore-kopitiam', persona: 'student', look: look('#F0C9A0', '#7A4B22', '#2F8F6B'),
+    spot: 'singapore-kopitiam', persona: 'student', look: look('#F0C9A0', '#6A4BD9', '#2F8F6B'),
     reaction: B("Good plan! I'll take the background research, and you take the data.", 'Kế hoạch hay! Mình lo phần nghiên cứu nền, bạn lo phần dữ liệu.'),
     starters: [B('When should we meet again?', 'Khi nào mình họp lại nhỉ?'), B('Which tool should we use for the slides?', 'Mình dùng công cụ nào làm slide?')],
     beats: [
@@ -119,7 +119,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'seminar-clarify': {
-    spot: 'london-stpauls', persona: 'guide', look: look('#EBC19C', '#8A8A8A', '#3B4252', '#B8955A'),
+    spot: 'london-stpauls', persona: 'guide', look: look('#EBC19C', '#8A8A8A', '#3B4252', '#8B6CF0'),
     reaction: B('Good question. Yes, please judge how reliable each source is, as well as what it claims.', 'Câu hỏi hay. Đúng vậy, hãy đánh giá độ tin cậy của từng nguồn, không chỉ nội dung nó nêu.'),
     starters: [B('Could you give an example of reliable evidence?', 'Thầy cho ví dụ về bằng chứng đáng tin được không?'), B('How long should my answer be?', 'Bài trả lời nên dài bao nhiêu ạ?')],
     beats: [
@@ -128,7 +128,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'housing-repair': {
-    spot: 'london-inn', persona: 'staff', look: look('#E2AE82', '#3A2A1E', '#4C6B3A'),
+    spot: 'london-inn', persona: 'staff', look: look('#E2AE82', '#2B2350', '#4C6B3A'),
     reaction: B("Thanks for letting me know. I'll send someone this afternoon.", 'Cảm ơn bạn đã báo. Chiều nay mình sẽ cử người tới.'),
     starters: [B('Is it safe to use the bathroom until then?', 'Trong lúc chờ dùng phòng tắm có an toàn không?'), B('Who should I contact if it happens at night?', 'Nếu xảy ra ban đêm tôi liên hệ ai?')],
     beats: [
@@ -137,7 +137,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'market-stall': {
-    spot: 'london-borough', persona: 'vendor', look: look('#E4B38A', '#6B3A1E', '#3E6E3A', '#FBF3E2'),
+    spot: 'london-borough', persona: 'vendor', look: look('#E4B38A', '#2B2350', '#3E6E3A', '#F3F0FB'),
     reaction: B('Half a kilo of apples, coming up!', 'Nửa ký táo, có ngay!'),
     starters: [B('Which apples are the sweetest?', 'Loại táo nào ngọt nhất?'), B('Do you have any local honey?', 'Bạn có mật ong địa phương không?')],
     beats: [
@@ -147,7 +147,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
   },
   // ===================== Paris =====================
   'paris-metro': {
-    spot: 'paris-station', persona: 'staff', look: look('#E9B98A', '#3A2A1E', '#1F6B4F', '#F2C94C'),
+    spot: 'paris-station', persona: 'staff', look: look('#E9B98A', '#2B2350', '#1F6B4F', '#F2C94C'),
     reaction: B('Of course. A single ticket to the Louvre — one moment, please.', 'Dĩ nhiên. Một vé lượt tới Louvre — xin chờ một chút.'),
     starters: [B('How often do the trains run?', 'Tàu chạy bao lâu một chuyến?'), B('Is there a day pass for tourists?', 'Có vé ngày cho khách du lịch không?')],
     beats: [
@@ -156,7 +156,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'paris-cafe': {
-    spot: 'paris-cafe', persona: 'staff', look: look('#D9A074', '#1B1410', '#2F3A4F', '#FFFFFF'),
+    spot: 'paris-cafe', persona: 'staff', look: look('#D9A074', '#2B2350', '#2F3A4F', '#FFFFFF'),
     reaction: B('Very good. One café au lait and one croissant.', 'Rất tốt. Một cà phê sữa và một bánh sừng bò.'),
     starters: [B('What do you recommend for breakfast?', 'Bạn gợi ý món nào cho bữa sáng?'), B('Is the terrace open all day?', 'Khu ngoài trời mở cả ngày không?')],
     beats: [
@@ -165,7 +165,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'paris-louvre': {
-    spot: 'paris-louvre', persona: 'staff', look: look('#F0C9A0', '#4A2A1A', '#7C1D3A'),
+    spot: 'paris-louvre', persona: 'staff', look: look('#F0C9A0', '#2B2350', '#7C1D3A'),
     reaction: B('A student? Wonderful. We do have a discount.', 'Sinh viên à? Tuyệt. Bên mình có giá ưu đãi.'),
     starters: [B('Where can I leave my bag?', 'Tôi gửi túi ở đâu?'), B('Which gallery should I see first?', 'Tôi nên xem phòng tranh nào trước?')],
     beats: [
@@ -174,7 +174,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'paris-directions': {
-    spot: 'paris-carousel', persona: 'local', look: look('#E2AE82', '#2B1B12', '#5B4B8A'),
+    spot: 'paris-carousel', persona: 'local', look: look('#E2AE82', '#2B2350', '#5B4B8A'),
     reaction: B('Of course! The tower is not far from here.', 'Dĩ nhiên rồi! Tháp không xa chỗ này đâu.'),
     starters: [B('Is it better to walk or take the metro?', 'Đi bộ hay đi metro thì tốt hơn?'), B('Where can I find a good bookshop?', 'Tôi tìm hiệu sách hay ở đâu?')],
     beats: [
@@ -184,7 +184,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
   },
   // ===================== Tokyo =====================
   'tokyo-ticket': {
-    spot: 'tokyo-shinjuku', persona: 'staff', look: look('#F0C9A0', '#15110E', '#1E4D8C'),
+    spot: 'tokyo-shinjuku', persona: 'staff', look: look('#F0C9A0', '#2B2350', '#1E4D8C'),
     reaction: B('No problem. Let me show you how to use the machine.', 'Không sao. Để mình chỉ bạn cách dùng máy.'),
     starters: [B('Which platform do I need?', 'Tôi cần ra sân ga nào?'), B('Can I use this card on the bus too?', 'Thẻ này đi xe buýt được không?')],
     beats: [
@@ -193,7 +193,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'tokyo-stall': {
-    spot: 'tokyo-tsukiji', persona: 'vendor', look: look('#E2AE82', '#15110E', '#C8332E', '#FFE8B0'),
+    spot: 'tokyo-tsukiji', persona: 'vendor', look: look('#E2AE82', '#2B2350', '#C8332E', '#FFE8B0'),
     reaction: B('No seaweed — got it! Six takoyaki coming up.', 'Không rong biển — hiểu rồi! Sáu viên takoyaki ra ngay.'),
     starters: [B('Which sauce do you recommend?', 'Bạn gợi ý loại sốt nào?'), B('How long have you run this stall?', 'Bạn bán quầy này lâu chưa?')],
     beats: [
@@ -211,7 +211,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'tokyo-guide': {
-    spot: 'tokyo-shibuya', persona: 'guide', look: look('#F0C9A0', '#2B1B12', '#2F8F6B', '#F2C94C'),
+    spot: 'tokyo-shibuya', persona: 'guide', look: look('#F0C9A0', '#2B2350', '#2F8F6B', '#F2C94C'),
     reaction: B('The temple is a lovely choice. It is about fifteen minutes.', 'Ngôi đền là lựa chọn tuyệt. Khoảng mười lăm phút đi bộ.'),
     starters: [B('Is there a quiet café near the temple?', 'Gần ngôi đền có quán cà phê yên tĩnh không?'), B('When is the temple busiest?', 'Đền đông nhất vào lúc nào?')],
     beats: [
@@ -221,7 +221,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
   },
   // ===================== New York =====================
   'nyc-subway': {
-    spot: 'newyork-subway', persona: 'staff', look: look('#9A6642', '#17110D', '#1D4D3C', '#F6EAD0'),
+    spot: 'newyork-subway', persona: 'staff', look: look('#9A6642', '#2B2350', '#1D4D3C', '#F3F0FB'),
     reaction: B('Good question. Let me check that for you.', 'Câu hỏi hay. Để mình kiểm tra giúp bạn.'),
     starters: [B('How much is a single ride?', 'Một lượt đi giá bao nhiêu?'), B('Is the subway safe at night?', 'Tàu điện ngầm ban đêm có an toàn không?')],
     beats: [
@@ -230,7 +230,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'nyc-taxi': {
-    spot: 'newyork-timessquare', persona: 'staff', look: look('#D39A72', '#241812', '#7C1D3A', '#F2C21B'),
+    spot: 'newyork-timessquare', persona: 'staff', look: look('#D39A72', '#2B2350', '#7C1D3A', '#F2C21B'),
     reaction: B('Sure thing. Hop in!', 'Được thôi. Lên xe nào!'),
     starters: [B('Is there much traffic today?', 'Hôm nay có kẹt xe nhiều không?'), B('Can I pay by card?', 'Tôi trả bằng thẻ được không?')],
     beats: [
@@ -239,7 +239,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'research-poster': {
-    spot: 'newyork-metmuseum', persona: 'local', look: look('#9A6642', '#17110D', '#9A3412'),
+    spot: 'newyork-metmuseum', persona: 'local', look: look('#9A6642', '#2B2350', '#6A4BD9'),
     reaction: B('Interesting! A small sample is worth mentioning — what would you do next?', 'Thú vị đấy! Mẫu nhỏ là điều đáng nêu — bạn sẽ làm gì tiếp theo?'),
     starters: [B('Would you like to see my data?', 'Bạn có muốn xem dữ liệu của mình không?'), B('How did you choose your topic?', 'Bạn chọn đề tài thế nào?')],
     beats: [
@@ -248,7 +248,7 @@ export const STAGE_SPECS: Record<string, StageSpec> = {
     ],
   },
   'final-interview': {
-    spot: 'newyork-centralpark', persona: 'guide', look: look('#D39A72', '#241812', '#7C1D3A'),
+    spot: 'newyork-centralpark', persona: 'guide', look: look('#D39A72', '#2B2350', '#7C1D3A'),
     reaction: B('That sounds like exactly the spirit we are looking for. Thank you.', 'Nghe đúng tinh thần chúng tôi tìm kiếm. Cảm ơn bạn.'),
     starters: [B('What would you like to know about my plans?', 'Cô muốn biết gì về kế hoạch của em?'), B('How can I prepare for the first week?', 'Em nên chuẩn bị gì cho tuần đầu?')],
     beats: [

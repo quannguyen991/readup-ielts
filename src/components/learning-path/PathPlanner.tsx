@@ -159,7 +159,7 @@ export function PathPlanner({ exam, level, statuses, focusExtra, plan, compact }
                 accessibilityRole="checkbox"
                 aria-checked={on}
                 onPress={() => toggleFocus(exam, o.id as FocusId)}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, borderWidth: 1, borderColor: on ? P.gold : P.line, backgroundColor: on ? '#FBF3E2' : '#FFFFFF' }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, borderWidth: 1, borderColor: on ? P.gold : P.line, backgroundColor: on ? '#F3F0FB' : '#FFFFFF' }}
               >
                 <Square on={on} />
                 <Text className="font-strong" style={{ fontSize: 14, color: P.navy }}>
@@ -353,7 +353,7 @@ function DayRow({ day, today, label, t }: { day: ScheduleDay; today: boolean; la
             accessibilityRole="link"
             disabled={!it.href}
             onPress={() => it.href && router.push(it.href as never)}
-            style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: it.extra ? P.goldLight : P.line, backgroundColor: hovered ? '#FBF6EA' : it.extra ? '#FBF3E2' : '#FFFFFF', maxWidth: '100%' })}
+            style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: it.extra ? P.goldLight : P.line, backgroundColor: hovered ? '#F3F0FB' : it.extra ? '#F3F0FB' : '#FFFFFF', maxWidth: '100%' })}
           >
             {it.extra ? <Icon name="plus" size={11} color={P.goldDeep} /> : null}
             <Text className="font-semi" numberOfLines={1} style={{ fontSize: 13, color: P.navy, flexShrink: 1 }}>

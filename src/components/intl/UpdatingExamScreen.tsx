@@ -126,7 +126,7 @@ export function UpdatingExamScreen({ initialExam = 'toeic' }: { initialExam?: Ex
       <View
         className="relative mb-6 overflow-hidden rounded-3xl border border-amber-200 p-6 md:p-8 shadow-sm"
         style={{
-          backgroundImage: 'linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 50%, #FDE68A 100%)',
+          backgroundImage: 'linear-gradient(135deg, #F3F0FB 0%, #F3F0FB 50%, #FDE68A 100%)',
         }}
       >
         <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: 'center', gap: 24 }}>
@@ -191,7 +191,7 @@ export function UpdatingExamScreen({ initialExam = 'toeic' }: { initialExam?: Ex
               className="flex-row items-start gap-4 rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm"
             >
               <View className="h-10 w-10 items-center justify-center rounded-xl bg-amber-50 border border-amber-200">
-                <Icon name={m.icon as never} size={20} color="#D97706" />
+                <Icon name={m.icon as never} size={20} color="#6A4BD9" />
               </View>
 
               <View className="flex-1">

@@ -196,7 +196,7 @@ function Player({ track, onClose }: { track: NewsTrack; onClose: () => void }) {
               accessibilityRole="button"
               accessibilityLabel={playing ? L('Tạm dừng', 'Pause') : L('Phát', 'Play')}
               onPress={toggle}
-              style={{ width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: themedHex('#B8955A') }}
+              style={{ width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: themedHex('#8B6CF0') }}
             >
               {playing ? (
                 <View style={{ flexDirection: 'row', gap: 4 }}>
@@ -208,8 +208,8 @@ function Player({ track, onClose }: { track: NewsTrack; onClose: () => void }) {
               )}
             </Pressable>
             <View className="min-w-0 flex-1">
-              <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE3C8', overflow: 'hidden' }}>
-                <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: themedHex('#B8955A') }} />
+              <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EEE9FF', overflow: 'hidden' }}>
+                <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: themedHex('#8B6CF0') }} />
               </View>
               <Text className="mt-1.5 font-sans text-label text-muted">
                 {fmtTime(current)} / {fmtTime(duration)}

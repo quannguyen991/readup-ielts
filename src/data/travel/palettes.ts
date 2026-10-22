@@ -28,7 +28,7 @@ export type CityPalette = { colors: Palette; ambient: Ambient };
 const BASE: Palette = {
   o: '#1c2438',
   k: '#0f1d33',
-  w: '#fbf7ee',
+  w: '#F5F2FF',
   W: '#efe6d2',
   g: '#a7c46e',
   G: '#8fb25f',
@@ -51,7 +51,7 @@ const BASE: Palette = {
   p: '#3d7fb5',
   P: '#265785',
   u: '#d4a94f',
-  U: '#a8843f',
+  U: '#6A4BD9',
   e: '#f0d68e',
   c: '#f1c9a0',
   C: '#c99573',

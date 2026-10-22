@@ -50,7 +50,7 @@ export function ChoiceList({ options, disabled, onPick }: { options: readonly st
               setPicked(index);
               onPick(index);
             }}
-            style={{ flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 48, paddingHorizontal: 12, paddingVertical: 9, borderRadius: 8, borderWidth: 2, borderColor: chosen ? T.gold : T.navy, backgroundColor: chosen ? '#F7EDDA' : CREAM }}
+            style={{ flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 48, paddingHorizontal: 12, paddingVertical: 9, borderRadius: 8, borderWidth: 2, borderColor: chosen ? T.gold : T.navy, backgroundColor: chosen ? '#F3F0FB' : CREAM }}
           >
             <View style={{ width: 26, height: 26, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: T.navy }}>
               <Text className="font-heavy" style={{ color: '#FFFFFF', fontSize: 12 }}>{String.fromCharCode(65 + index)}</Text>
@@ -78,7 +78,7 @@ function GiveGrid({ beat, disabled, onPick }: { beat: Extract<Beat, { kind: 'giv
             setPicked(i);
             onPick(i);
           }}
-          style={{ flexGrow: 1, flexBasis: '22%', minWidth: 120, minHeight: 84, alignItems: 'center', justifyContent: 'center', gap: 4, paddingVertical: 8, borderRadius: 10, borderWidth: 2, borderColor: picked === i ? T.gold : T.navy, backgroundColor: picked === i ? '#F7EDDA' : CREAM }}
+          style={{ flexGrow: 1, flexBasis: '22%', minWidth: 120, minHeight: 84, alignItems: 'center', justifyContent: 'center', gap: 4, paddingVertical: 8, borderRadius: 10, borderWidth: 2, borderColor: picked === i ? T.gold : T.navy, backgroundColor: picked === i ? '#F3F0FB' : CREAM }}
         >
           <Text style={{ fontSize: 34 }}>{item.icon}</Text>
           <Text className="font-semi" style={{ color: T.ink, fontSize: 13, textAlign: 'center' }}>{locale === 'en' ? item.label.en : item.label.vi}</Text>
@@ -117,7 +117,7 @@ function ArrangeBoard({ beat, disabled, onSubmit }: { beat: Extract<Beat, { kind
       <View style={{ minHeight: 52, flexDirection: 'row', flexWrap: 'wrap', gap: 6, padding: 8, borderRadius: 8, borderWidth: 2, borderStyle: 'dashed', borderColor: '#E6D9B5', backgroundColor: 'rgba(7,11,24,0.45)' }}>
         {used.length === 0 ? <Text className="font-sans" style={{ color: '#C9D1E0', fontSize: 13 }}>{L('Chạm các từ bên dưới để ghép câu…', 'Tap the words below to build the sentence…')}</Text> : null}
         {used.map((chipIndex, pos) => (
-          <Pressable key={`${chipIndex}-${pos}`} accessibilityRole="button" disabled={disabled} onPress={() => setUsed((u) => u.filter((_, p) => p !== pos))} style={{ minHeight: 38, paddingHorizontal: 11, borderRadius: 8, backgroundColor: '#F7EDDA', borderWidth: 2, borderColor: T.gold, justifyContent: 'center' }}>
+          <Pressable key={`${chipIndex}-${pos}`} accessibilityRole="button" disabled={disabled} onPress={() => setUsed((u) => u.filter((_, p) => p !== pos))} style={{ minHeight: 38, paddingHorizontal: 11, borderRadius: 8, backgroundColor: '#F3F0FB', borderWidth: 2, borderColor: T.gold, justifyContent: 'center' }}>
             <Text className="font-heavy" style={{ color: T.ink, fontSize: 15 }}>{chips[chipIndex]}</Text>
           </Pressable>
         ))}
@@ -242,9 +242,9 @@ export function PanelButton({ label, onPress, gold = false, disabled = false }: 
       accessibilityRole="button"
       disabled={disabled}
       onPress={onPress}
-      style={{ minHeight: 46, minWidth: 46, paddingHorizontal: 14, borderRadius: 8, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: gold ? '#7A5F28' : T.navy, backgroundColor: gold ? T.gold : CREAM, opacity: disabled ? 0.5 : 1 }}
+      style={{ minHeight: 46, minWidth: 46, paddingHorizontal: 14, borderRadius: 8, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: gold ? '#6A4BD9' : T.navy, backgroundColor: gold ? T.gold : CREAM, opacity: disabled ? 0.5 : 1 }}
     >
-      <Text className="font-heavy" style={{ color: gold ? '#1C1405' : T.ink, fontSize: 14 }}>{label}</Text>
+      <Text className="font-heavy" style={{ color: gold ? '#2B2350' : T.ink, fontSize: 14 }}>{label}</Text>
     </Pressable>
   );
 }

@@ -77,7 +77,7 @@ export function LessonHub({
               <Stat label={L('bài đã học', 'lessons completed')} value={`${doneCount}/${all.length}`} />
               <Stat label={L('bộ từ đã thuộc', 'vocab sets mastered')} value={`${vocabDone}/${vocab.length}`} />
             </View>
-            <View className="mt-3 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F4EFE5' }}>
+            <View className="mt-3 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
               <View style={{ height: 6, width: `${activeProgress * 100}%`, backgroundColor: color.primary }} />
             </View>
           </View>
@@ -124,12 +124,12 @@ export function LessonHub({
                             onPress={() => router.push(`${base}/${lesson.skill}` as never)}
                             style={{ alignItems: 'center', width: '100%' }}
                           >
-                            <View style={{ width: 66, height: 66, borderRadius: 33, alignItems: 'center', justifyContent: 'center', backgroundColor: isDone ? '#25A56A' : isCurrent ? '#F2B632' : '#FFF9EC', borderWidth: isCurrent ? 4 : 2, borderColor: isDone ? '#17804E' : isCurrent ? '#D79616' : '#E9D6AA', boxShadow: isCurrent ? '0 6px 14px rgba(166,115,20,0.23)' : '0 3px 8px rgba(28,36,47,0.08)' } as object}>
-                          {isDone ? <Icon name="check" size={26} color="#FFFFFF" strokeWidth={3} /> : isCurrent ? <Icon name="play" size={24} color="#422F11" /> : <Text className="font-heavy" style={{ fontSize: 21, color: '#78623A' }}>{localIndex + 1}</Text>}
+                            <View style={{ width: 66, height: 66, borderRadius: 33, alignItems: 'center', justifyContent: 'center', backgroundColor: isDone ? '#25A56A' : isCurrent ? '#F2B632' : '#F3F0FB', borderWidth: isCurrent ? 4 : 2, borderColor: isDone ? '#17804E' : isCurrent ? '#6A4BD9' : '#E9D6AA', boxShadow: isCurrent ? '0 6px 14px rgba(166,115,20,0.23)' : '0 3px 8px rgba(28,36,47,0.08)' } as object}>
+                          {isDone ? <Icon name="check" size={26} color="#FFFFFF" strokeWidth={3} /> : isCurrent ? <Icon name="play" size={24} color="#2B2350" /> : <Text className="font-heavy" style={{ fontSize: 21, color: '#78623A' }}>{localIndex + 1}</Text>}
                             </View>
                             <View style={{ alignItems: 'center', marginTop: 5, width: '100%' }}>
                               <Text className="font-heavy text-center text-body text-ink" numberOfLines={2}>{titleText}</Text>
-                              <Text className="font-semi text-center text-label" style={{ marginTop: 1, color: isDone ? '#16814E' : isCurrent ? '#9A6810' : '#7C7468' }}>
+                              <Text className="font-semi text-center text-label" style={{ marginTop: 1, color: isDone ? '#16814E' : isCurrent ? '#6A4BD9' : '#7C7468' }}>
                                 {isDone ? L('Đã học', 'Completed') : isCurrent ? L('Học tiếp', 'Up next') : `${lesson.minutes} ${L('phút', 'min')}`}
                               </Text>
                             </View>
@@ -168,11 +168,11 @@ export function LessonHub({
                         onPress={() => router.push(`/vocabulary/topic/${lesson.slug}` as never)}
                         style={{ width: '100%', alignItems: 'center' }}
                       >
-                        <View style={{ width: 66, height: 66, borderRadius: 33, alignItems: 'center', justifyContent: 'center', backgroundColor: isDone ? '#25A56A' : isCurrent ? '#F2B632' : '#FFF9EC', borderWidth: isCurrent ? 4 : 2, borderColor: isDone ? '#17804E' : isCurrent ? '#D79616' : '#E9D6AA' } as object}>
-                          {isDone ? <Icon name="check" size={26} color="#FFFFFF" strokeWidth={3} /> : <Icon name="letters" size={24} color={isCurrent ? '#422F11' : '#78623A'} />}
+                        <View style={{ width: 66, height: 66, borderRadius: 33, alignItems: 'center', justifyContent: 'center', backgroundColor: isDone ? '#25A56A' : isCurrent ? '#F2B632' : '#F3F0FB', borderWidth: isCurrent ? 4 : 2, borderColor: isDone ? '#17804E' : isCurrent ? '#6A4BD9' : '#E9D6AA' } as object}>
+                          {isDone ? <Icon name="check" size={26} color="#FFFFFF" strokeWidth={3} /> : <Icon name="letters" size={24} color={isCurrent ? '#2B2350' : '#78623A'} />}
                         </View>
                         <Text className="mt-1 font-heavy text-center text-body text-ink" numberOfLines={2}>{lesson.title}</Text>
-                        <View style={{ marginTop: 4, width: '72%', height: 5, borderRadius: 3, backgroundColor: '#F0EADF', overflow: 'hidden' }}>
+                        <View style={{ marginTop: 4, width: '72%', height: 5, borderRadius: 3, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
                           <View style={{ width: `${percent}%`, height: 5, backgroundColor: isDone ? '#25A56A' : '#C8A354' }} />
                         </View>
                         <Text className="mt-1 font-semi text-center text-label text-muted" numberOfLines={1}>
@@ -193,7 +193,7 @@ export function LessonHub({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3.5 py-1.5" style={{ backgroundColor: '#FCF9F4' }}>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3.5 py-1.5" style={{ backgroundColor: '#F3F0FB' }}>
       <Text className="font-heavy text-body text-primary-700">{value}</Text>
       <Text className="font-sans text-label text-muted">{label}</Text>
     </View>

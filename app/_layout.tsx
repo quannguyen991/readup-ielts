@@ -19,6 +19,14 @@ import {
 // Thiết kế riêng cho tiếng Việt, dấu rõ và đều ở mọi cỡ chữ.
 // Nạp từng trọng lượng theo đường dẫn riêng: gói gom tất cả (index gốc) kéo theo cả biến thể
 // Italic có file thiếu trong bản 0.4.1, làm Metro lỗi khi build.
+// Inter: phông chính của Band 9 (21/10/2026) — gọn, mỏng hơn, gần cảm giác của phông hệ Apple.
+import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
+import { Inter_500Medium } from '@expo-google-fonts/inter/500Medium';
+import { Inter_600SemiBold } from '@expo-google-fonts/inter/600SemiBold';
+import { Inter_700Bold } from '@expo-google-fonts/inter/700Bold';
+// Inter Tight: phông tiêu đề (display) — chữ to, khoảng cách hẹp, nét gọn kiểu Apple.
+import { InterTight_600SemiBold } from '@expo-google-fonts/inter-tight/600SemiBold';
+import { InterTight_500Medium } from '@expo-google-fonts/inter-tight/500Medium';
 import { BeVietnamPro_400Regular } from '@expo-google-fonts/be-vietnam-pro/400Regular';
 import { BeVietnamPro_500Medium } from '@expo-google-fonts/be-vietnam-pro/500Medium';
 import { BeVietnamPro_600SemiBold } from '@expo-google-fonts/be-vietnam-pro/600SemiBold';
@@ -34,6 +42,7 @@ import {
 } from '@expo-google-fonts/nunito';
 
 import { AppShell } from '@/components/layout/AppShell';
+import { RewardOverlay } from '@/components/gamify/RewardOverlay';
 import { MemberGate } from '@/components/access/MemberGate';
 import { GameFxLayer } from '@/components/game/GameFxLayer';
 import { BreakLayer } from '@/components/break/BreakLayer';
@@ -80,6 +89,12 @@ export default function RootLayout() {
   // keep the interface usable with platform fallbacks and swap to branded fonts
   // as soon as useFonts finishes loading them.
   useFonts({
+    InterTight_500Medium,
+    InterTight_600SemiBold,
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
     BeVietnamPro_400Regular,
     BeVietnamPro_500Medium,
     BeVietnamPro_600SemiBold,
@@ -127,6 +142,7 @@ export default function RootLayout() {
           </PageTransition>
         </AppShell>
         <GameFxLayer />
+        <RewardOverlay />
         <BreakLayer />
         <ChiikawaReact />
         <ChiikawaTapFx />

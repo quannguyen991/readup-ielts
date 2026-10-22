@@ -54,7 +54,7 @@ function Star({ size, gradient }: { size: number; gradient: string }) {
         <RadialGradient id={gradient} cx="50%" cy="50%" r="50%">
           <Stop offset="0" stopColor="#FFFFFF" />
           <Stop offset="0.55" stopColor="#FFFFFF" />
-          <Stop offset="1" stopColor="#FFF1B8" />
+          <Stop offset="1" stopColor="#F3F0FB" />
         </RadialGradient>
       </Defs>
       <Path d={STAR} fill={`url(#${gradient})`} />

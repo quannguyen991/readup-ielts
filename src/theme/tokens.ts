@@ -27,33 +27,33 @@ const CHIIKAWA_COLOR = {
 };
 
 export const color = themed({
-  canvas: '#F9F7F3',
+  canvas: '#F8F7FC',
   surface: '#FFFFFF',
-  surfaceAlt: '#FBF7F1',
-  border: '#F5F1E9',
-  borderStrong: '#F0E9DC',
+  surfaceAlt: '#F3F0FB',
+  border: '#E6E1F3',
+  borderStrong: '#D9D2EC',
 
-  ink: '#0F172A',
-  body: '#334155',
-  muted: '#64748B',
-  subtle: '#94A3B8',
+  ink: '#2B2350',
+  body: '#3F3A62',
+  muted: '#7A72A0',
+  subtle: '#A59CC4',
 
-  primary: '#8F6E36',
-  primaryDark: '#7E6230',
-  primarySoft: '#FBF7EE',
+  primary: '#7C5CF0',
+  primaryDark: '#6A4BD9',
+  primarySoft: '#F1ECFF',
 
-  accent: '#CCA35B',
-  accentDark: '#C3923E',
-  accentSoft: '#FCF9F3',
+  accent: '#F0644F',
+  accentDark: '#D9503E',
+  accentSoft: '#FFF1EE',
 
   success: '#16A34A',
   successSoft: '#E8F8EE',
   danger: '#F04438',
   dangerSoft: '#FEECEB',
   warning: '#F59E0B',
-  warningSoft: '#FEF4E6',
-  info: '#B07A3A',
-  infoSoft: '#FAF4EA',
+  warningSoft: '#F3F0FB',
+  info: '#6A4BD9',
+  infoSoft: '#F3F0FB',
 
   white: '#FFFFFF',
 } as const, CHIIKAWA_COLOR);
@@ -90,29 +90,29 @@ const CHIIKAWA_PAPER = {
 
 export const paper = themed({
   /** Tông chàm giữa của nền loang — dùng khi cần MỘT màu đại diện, không gradient. */
-  brand: '#B8955A',
-  brandDark: '#8F6E36',
+  brand: '#8B6CF0',
+  brandDark: '#6A4BD9',
   /** Chàm rất đậm — chip nổi bật, chữ nhấn trên nền sáng. */
   brandDeep: '#0F1D33',
   /** Chàm vừa — nút chính, nút phát, viền ô chữ đang nhập. */
-  brandMid: '#B8955A',
+  brandMid: '#8B6CF0',
   /** Nhạt — nền chip, viền mảnh trên nền giấy. */
-  brandSoft: '#EFE3C8',
-  brandTint: '#FAF5EA',
+  brandSoft: '#EEE9FF',
+  brandTint: '#F3F0FB',
 
   /** Giấy kem của thẻ nổi trên nền xanh tím. Cố ý giữ tông ẤM: thẻ giấy ngả
    *  vàng đặt trên nền lạnh là cách tách lớp rõ nhất mà không cần thêm viền. */
-  card: '#FDFBF3',
+  card: '#F3F0FB',
   /** Nền trang của các màn luyện tập nền sáng (chép chính tả). */
-  canvas: '#F7F4EF',
+  canvas: '#F3F0FB',
   /** Ô chữ đã điền đúng — vẫn để vàng kem như bút dạ quang, nằm trong thẻ
    *  trắng nên không chạm tới nền trang. */
-  fill: '#FBF6D0',
-  fillEdge: '#C9A227',
+  fill: '#F3F0FB',
+  fillEdge: '#6A4BD9',
 
   /** Vàng Premium. */
   gold: '#F0B429',
-  goldSoft: '#FFF4D1',
+  goldSoft: '#F3F0FB',
 
   /** Chữ trên nền giấy. */
   ink: '#1A1A33',
@@ -124,22 +124,22 @@ export const paper = themed({
 export const gradient = {
   /**
    * Khối đầu trang tối (Lộ trình, Thanh toán, Mua chung, Mời bạn, Thi thử SAT…).
-   * Từng là xanh dương → tím (#BA8B3A → #CCA35B); người dùng "rất ghét màu xanh
+   * Từng là xanh dương → tím (#6A4BD9 → #F0644F); người dùng "rất ghét màu xanh
    * kiểu này" (27/09/2026). Thử đá than thì bị chê "màu đen lạc quẻ". Chốt dải
    * xanh sáng cùng tông mục đang chọn ở thanh bên (ảnh người dùng đưa), chỉ
    * đậm hơn chút để chữ trắng còn đọc được.
    */
-  hero: ['#C9A35E', '#A8843F', '#7E6230'] as const,
-  heroSoft: ['#F7F0E1', '#FCF9F3'] as const,
-  primaryButton: ['#D6B774', '#967334'] as const,
+  hero: ['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0'] as const,
+  heroSoft: ['#F1ECFF', '#FFF1EE'] as const,
+  primaryButton: ['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0'] as const,
 } as const;
 
 /** Màu highlight 5 tông cho công cụ bôi màu trong màn hình đọc (ảnh 2). */
 export const highlightColors = {
-  yellow: { key: 'yellow', label: 'Vàng', fill: '#FEF3C7', dot: '#F5C242' },
+  yellow: { key: 'yellow', label: 'Vàng', fill: '#F3F0FB', dot: '#F5C242' },
   green: { key: 'green', label: 'Xanh lá', fill: '#DCFCE7', dot: '#3BC66B' },
-  blue: { key: 'blue', label: 'Xanh dương', fill: '#F3E6C8', dot: '#CDA55F' },
-  purple: { key: 'purple', label: 'Tím', fill: '#FBF5EC', dot: '#DCC08F' },
+  blue: { key: 'blue', label: 'Xanh dương', fill: '#F3F0FB', dot: '#CDA55F' },
+  purple: { key: 'purple', label: 'Tím', fill: '#F3F0FB', dot: '#DCC08F' },
   pink: { key: 'pink', label: 'Hồng', fill: '#FCE7F3', dot: '#EC7BB0' },
 } as const;
 
@@ -147,11 +147,11 @@ export type HighlightColorKey = keyof typeof highlightColors;
 
 /** 5 trạng thái của một từ (spec mục 6) và màu tô tương ứng trong bài đọc. */
 export const wordStatusColor = {
-  new: { fill: '#F8F0E1', ink: '#BA8B3A' },
-  learning: { fill: '#FEF4E6', ink: '#B26A00' },
-  familiar: { fill: '#FAF4E9', ink: '#C3923E' },
+  new: { fill: '#F3F0FB', ink: '#6A4BD9' },
+  learning: { fill: '#F3F0FB', ink: '#6A4BD9' },
+  familiar: { fill: '#F1ECFF', ink: '#D9503E' },
   known: { fill: '#E8F8EE', ink: '#0F7A38' },
-  ignored: { fill: '#FBF7F1', ink: '#64748B' },
+  ignored: { fill: '#F3F0FB', ink: '#64748B' },
 } as const;
 
 export const radius = {
@@ -186,24 +186,24 @@ export const fontSize = {
 } as const;
 
 export const fontFamily = {
-  regular: 'BeVietnamPro_400Regular',
-  medium: 'BeVietnamPro_500Medium',
-  semibold: 'BeVietnamPro_600SemiBold',
-  bold: 'BeVietnamPro_700Bold',
-  extrabold: 'BeVietnamPro_800ExtraBold',
+  regular: 'Inter_400Regular',
+  medium: 'Inter_500Medium',
+  semibold: 'Inter_600SemiBold',
+  bold: 'Inter_700Bold',
+  extrabold: 'Inter_700Bold',
 } as const;
 
 /** Đổ bóng rất nhẹ của card trắng trong ảnh tham chiếu. */
 export const shadow = {
   card: {
-    shadowColor: '#0F172A',
+    shadowColor: '#0F1D33',
     shadowOpacity: 0.06,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 },
     elevation: 2,
   },
   raised: {
-    shadowColor: '#9C7A3A',
+    shadowColor: '#6A4BD9',
     shadowOpacity: 0.24,
     shadowRadius: 20,
     shadowOffset: { width: 0, height: 10 },
@@ -227,12 +227,12 @@ export const layout = {
  * nhau giữa các lần tự gõ tay ở từng file.
  */
 export const stickerGradient = {
-  primary: ['#A5C0FA', '#5B8BEE'],
+  primary: ['#B9A9FF', '#6A4BD9'],
   accent: ['#C4ADF8', '#7C3AED'],
-  success: ['#6EE7A8', '#16A34A'],
-  warning: ['#FCD34D', '#D97706'],
+  success: ['#8FE0B0', '#23875E'],
+  warning: ['#FFB4A8', '#E8708A'],
   danger: ['#FCA5A5', '#DC2626'],
-  info: ['#67E8F9', '#0891B2'],
+  info: ['#8EC5FF', '#2F6FD6'],
   rose: ['#F9A8D4', '#DB2777'],
 } as const satisfies Record<string, readonly [string, string]>;
 
@@ -240,7 +240,7 @@ export const stickerGradient = {
 // Biểu đồ: mỗi chuỗi số một sắc khác hẳn nhau (vàng kim, xanh đậm, đỏ, lá,
 // trời, hồng) — màu biểu đồ là DỮ LIỆU, không được đồng tông với nhau.
 export const chartPalette = [
-  '#A8843F',
+  '#6A4BD9',
   '#24375A',
   '#E0533D',
   '#16A34A',

@@ -3,7 +3,7 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { ExampleSentence } from "@/components/vocab/ExampleSentence";
 import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Appear } from "@/components/motion/Motion";
-import { posIpa } from "@/data/study-decks";
+import { posIpa } from "@/services/vocab/pos-ipa";
 import { router, usePathname } from "expo-router";
 import { isVocabStudyRoute } from "@/navigation/focus-routes";
 import { pronounce } from "@/services/audio/pronounce";
@@ -298,7 +298,7 @@ export function SpeakButton({
       onPress={() => speak(text, { rate })}
       hitSlop={small ? 8 : 6}
       className="items-center justify-center rounded-pill"
-      style={{ width: box, height: box, backgroundColor: theme.dark ? theme.soft : "#FBF6EC" }}
+      style={{ width: box, height: box, backgroundColor: theme.dark ? theme.soft : "#F3F0FB" }}
     >
       <Icon name="volume" size={small ? 16 : size} color={theme.dark ? "#E7C98A" : theme.accent} />
     </Pressable>
@@ -326,7 +326,7 @@ export function StarButton({
       className="h-10 w-10 items-center justify-center rounded-pill"
       style={[
         inline ? null : { position: "absolute", top: 14, right: 14, zIndex: 2 },
-        { backgroundColor: on ? (theme.dark ? "rgba(245,158,11,0.22)" : "#FEF3C7") : theme.dark ? theme.soft : "#F9F6F1" },
+        { backgroundColor: on ? (theme.dark ? "rgba(245,158,11,0.22)" : "#F3F0FB") : theme.dark ? theme.soft : "#F3F0FB" },
       ]}
     >
       <Icon

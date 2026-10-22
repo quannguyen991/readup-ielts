@@ -56,14 +56,14 @@ export function CoachBubble({ coach }: { coach: VoiceCoach }) {
   const { L, en } = useL();
   useEffect(ensureWaveKeyframes, []);
   if (!coach.caption) return null;
-  const tone = coach.band === 'good' ? '#22A06B' : coach.band === 'ok' ? '#D97706' : color.primary;
+  const tone = coach.band === 'good' ? '#22A06B' : coach.band === 'ok' ? '#6A4BD9' : color.primary;
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={coach.speaking ? L('Tắt tiếng huấn luyện viên', 'Silence the coach') : L('Lời huấn luyện viên', 'Coach feedback')}
       onPress={coach.stop}
       className="mt-4 flex-row items-center gap-3 self-center rounded-pill px-4 py-2.5"
-      style={{ backgroundColor: '#FCFBF8', borderWidth: 1, borderColor: '#F0EBE2', maxWidth: '100%' }}
+      style={{ backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F3F0FB', maxWidth: '100%' }}
     >
       <Wave on={coach.speaking} tone={tone} />
       <Text className="min-w-0 shrink font-semi text-label" style={{ color: '#475569' }}>
@@ -85,7 +85,7 @@ export function CoachToggle() {
       accessibilityLabel={L('Huấn luyện viên giọng nói', 'Voice coach')}
       onPress={() => setCoach(!on)}
       className="flex-row items-center gap-2 rounded-pill py-1 pl-3 pr-1.5"
-      style={{ backgroundColor: '#F9F6F1' }}
+      style={{ backgroundColor: '#F3F0FB' }}
     >
       <Text className="font-semi text-label" style={{ color: on ? color.primary : '#64748B' }}>
         {L('Huấn luyện viên giọng nói', 'Voice coach')}

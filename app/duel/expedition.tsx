@@ -391,16 +391,16 @@ export default function ExpeditionGame() {
         <View className="overflow-hidden rounded-[28px]" style={{ backgroundColor: config.dark, borderWidth: 3, borderColor: config.accent, boxShadow: '0 18px 38px rgba(29,24,53,.22)' } as object}>
           <ImageBackground source={config.cover} resizeMode="cover" style={{ height: 168, justifyContent: 'flex-end' }}>
             <View className="px-6 pb-4 pt-14" style={{ backgroundColor: 'rgba(255, 253, 247, 0.96)' }}>
-              <Text style={{ color: '#8A5A00', fontSize: 11, fontWeight: '900', letterSpacing: 2 }}>{L('BAND9 ARCADE · CHIẾN DỊCH', 'BAND9 ARCADE · CAMPAIGN')}</Text>
-              <Text className="mt-1 font-heavy" style={{ color: '#2A1808', fontSize: 31 }}>{en ? config.title : config.titleVi}</Text>
+              <Text style={{ color: '#2B2350', fontSize: 11, fontWeight: '900', letterSpacing: 2 }}>{L('BAND9 ARCADE · CHIẾN DỊCH', 'BAND9 ARCADE · CAMPAIGN')}</Text>
+              <Text className="mt-1 font-heavy" style={{ color: '#2B2350', fontSize: 31 }}>{en ? config.title : config.titleVi}</Text>
             </View>
           </ImageBackground>
 
           <View className="p-4 sm:p-6">
             {phase === 'intro' ? (
-              <View className="rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F9F5EC' }}>
+              <View className="rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F3F0FB' }}>
                 <View className="flex-row flex-wrap items-center gap-5">
-                  <View className="items-center justify-center rounded-[22px] p-3" style={{ backgroundColor: '#E9DFCA' }}><HeroSprite size={96} mood="happy" /></View>
+                  <View className="items-center justify-center rounded-[22px] p-3" style={{ backgroundColor: '#F3F0FB' }}><HeroSprite size={96} mood="happy" /></View>
                   <View style={{ flex: 1, minWidth: 240 }}>
                     <Text className="font-heavy text-sectionTitle text-ink">{L('Nhận nhiệm vụ', 'Mission briefing')}</Text>
                     <Text className="mt-2 font-sans text-body text-muted">{en ? config.introEn : config.intro}</Text>
@@ -413,11 +413,11 @@ export default function ExpeditionGame() {
                 </View>
                 <View className="mt-5 flex-row flex-wrap gap-3">
                   <View className="flex-1 rounded-2xl p-4" style={{ minWidth: 200, backgroundColor: '#FFFFFF' }}>
-                    <Text className="font-heavy text-label" style={{ color: '#9B6C1E' }}>{L('MỤC TIÊU', 'MISSION GOAL')}</Text>
+                    <Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('MỤC TIÊU', 'MISSION GOAL')}</Text>
                     <Text className="mt-1 font-semi text-body text-ink">{en ? config.objectiveEn : config.objective}</Text>
                   </View>
                   <View className="flex-1 rounded-2xl p-4" style={{ minWidth: 200, backgroundColor: '#FFFFFF' }}>
-                    <Text className="font-heavy text-label" style={{ color: '#9B6C1E' }}>{L('CÁCH CHƠI', 'HOW TO PLAY')}</Text>
+                    <Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('CÁCH CHƠI', 'HOW TO PLAY')}</Text>
                     <Text className="mt-1 font-semi text-body text-ink">{mode === 'dino' ? L('Trả lời → dò tín hiệu → tự chọn ô đào. Đừng để bẫy lấy hết tim.', 'Answer → scan → choose a dig tile. Traps can drain your hearts.') : mode === 'forge' ? L('Gõ từ → canh nhịp vạch vàng → đập búa → hoàn thành 3 công thức bùa.', 'Spell a word → time the gold zone → hammer the blank → finish 3 charm recipes.') : L('Chọn đòn → trả lời → canh đòn phản công → chọn nâng cấp khi hạ quái.', 'Choose a move → answer → block counters → pick an upgrade after a takedown.')}</Text>
                   </View>
                 </View>
@@ -433,12 +433,12 @@ export default function ExpeditionGame() {
                     {mode === 'forge' ? <InfoPill label={`${L('NHIỆT LÒ', 'HEAT')} ${forgeHeat}%`} icon="🌡️" color="#3D3156" ink={forgeHeat > 25 ? config.accent : '#FF7C6D'} /> : mode === 'boss' ? <InfoPill label={`${L('NĂNG LƯỢNG', 'ENERGY')} ${'◆'.repeat(energy)}${'◇'.repeat(MAX_ENERGY - energy)}`} icon="⚡" color="#3D3156" ink={config.accent} /> : <InfoPill label={`${L('NĂNG LƯỢNG', 'ENERGY')} ${'◆'.repeat(energy)}${'◇'.repeat(MAX_ENERGY - energy)}`} icon="⚡" color="#3D3156" ink={config.accent} />}
                     <InfoPill label={`${L('COMBO', 'COMBO')} ×${combo}`} icon="✨" color="#3D3156" ink={config.accent} />
                   </View>
-                  <View className="rounded-2xl px-4 py-2" style={{ backgroundColor: '#FFFDF7' }}><Text className="font-heavy text-bodyLg" style={{ color: '#8A5A00' }}>⭐ {score.toLocaleString()}</Text></View>
+                  <View className="rounded-2xl px-4 py-2" style={{ backgroundColor: '#F3F0FB' }}><Text className="font-heavy text-bodyLg" style={{ color: '#2B2350' }}>⭐ {score.toLocaleString()}</Text></View>
                 </View>
                 <View className="mb-4 flex-row items-center gap-3">
                   <Text className="font-heavy text-label" style={{ color: config.accent }}>{L('NHIỆM VỤ', 'MISSION')} {completed}/{questions.length}</Text>
-                  <View className="h-3 flex-1 overflow-hidden rounded-full" style={{ backgroundColor: '#FFFDF7' }}><View style={{ height: '100%', width: `${(completed / questions.length) * 100}%`, borderRadius: 99, backgroundColor: config.accent }} /></View>
-                  <Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{mode === 'dino' ? `🦴 ${fossils}/${FOSSIL_GOAL}` : mode === 'forge' ? `🔮 ${forgedCharms}/${FORGE_CHARM_GOAL} · ${forgeSlots}/${FORGE_SLOTS_PER_CHARM}` : `${Math.min(enemyIndex + 1, encounters.length)}/${encounters.length} ${L('quái', 'guardians')}`}</Text>
+                  <View className="h-3 flex-1 overflow-hidden rounded-full" style={{ backgroundColor: '#F3F0FB' }}><View style={{ height: '100%', width: `${(completed / questions.length) * 100}%`, borderRadius: 99, backgroundColor: config.accent }} /></View>
+                  <Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{mode === 'dino' ? `🦴 ${fossils}/${FOSSIL_GOAL}` : mode === 'forge' ? `🔮 ${forgedCharms}/${FORGE_CHARM_GOAL} · ${forgeSlots}/${FORGE_SLOTS_PER_CHARM}` : `${Math.min(enemyIndex + 1, encounters.length)}/${encounters.length} ${L('quái', 'guardians')}`}</Text>
                 </View>
 
                 {mode === 'dino' ? (
@@ -450,10 +450,10 @@ export default function ExpeditionGame() {
                 )}
 
                 {phase === 'playing' && question ? (
-                  <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F9F5EC' }}>
+                  <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F3F0FB' }}>
                     {mode === 'boss' ? (
                       <>
-                        <Text className="font-heavy text-label" style={{ color: '#8A5E15' }}>{L('CHỌN NƯỚC ĐI', 'CHOOSE YOUR MOVE')}</Text>
+                        <Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('CHỌN NƯỚC ĐI', 'CHOOSE YOUR MOVE')}</Text>
                         <View className="mt-2 flex-row flex-wrap gap-2">
                           {ACTIONS.map((move) => <ActionCard key={move.key} move={move} active={action === move.key} locked={energy < move.cost} accent={config.accent} onPress={() => setAction(move.key)} en={en} />)}
                         </View>
@@ -466,14 +466,14 @@ export default function ExpeditionGame() {
                 {phase === 'strike' && outcome ? <ForgeStrikeCard accent={config.accent} position={strikePosition} focus={forgeFocus} word={question?.word.word ?? outcome.answer} onHammer={hammer} L={L} /> : null}
 
                 {phase === 'excavate' ? (
-                  <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F9F5EC' }}>
+                  <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F3F0FB' }}>
                     <View className="flex-row flex-wrap items-center justify-between gap-3">
                       <View>
                         <Text className="font-heavy text-sectionTitle text-ink">{L('Chọn ô để đào', 'Choose a tile to excavate')}</Text>
                         <Text className="mt-1 font-semi text-body text-muted">{L('Ô đã mở sẽ giữ nguyên. Dò một tín hiệu trước khi chọn.', 'Opened tiles stay visible. Spend energy to scan before choosing.')}</Text>
                       </View>
                       <Pressable accessibilityRole="button" disabled={energy <= 0 || scanned} onPress={scanForFossil} className="rounded-2xl px-4 py-3" style={{ backgroundColor: energy <= 0 || scanned ? '#D9D4CC' : '#2D5B51' }}>
-                        <Text className="font-heavy text-body" style={{ color: '#2A1808' }}>📡 {scanned ? L('Đã dò', 'Scanned') : `${scanLabel} · 1⚡`}</Text>
+                        <Text className="font-heavy text-body" style={{ color: '#2B2350' }}>📡 {scanned ? L('Đã dò', 'Scanned') : `${scanLabel} · 1⚡`}</Text>
                       </Pressable>
                     </View>
                     <View className="mt-5 flex-row flex-wrap justify-center gap-2.5">
@@ -491,7 +491,7 @@ export default function ExpeditionGame() {
                 ) : null}
 
                 {phase === 'upgrade' ? (
-                  <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F9F5EC' }}>
+                  <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F3F0FB' }}>
                     {mode === 'forge' ? <>
                       <View className="flex-row items-center gap-3"><Text style={{ fontSize: 42 }}>🔮</Text><View><Text className="font-heavy text-sectionTitle text-ink">{L('Bùa đã thành hình — chọn phép bổ trợ', 'Charm complete — choose an enchantment')}</Text><Text className="mt-1 font-semi text-body text-muted">{L('Mỗi công thức hoàn tất mở một phép giúp lò rèn tiếp.', 'Each finished recipe unlocks a gift for the next forge.')}</Text></View></View>
                       <View className="mt-5 flex-row flex-wrap gap-3">
@@ -511,7 +511,7 @@ export default function ExpeditionGame() {
                 ) : null}
 
                 {phase === 'result' ? (
-                  <View className="mt-4 rounded-[24px] p-6" style={{ backgroundColor: '#F9F5EC' }}>
+                  <View className="mt-4 rounded-[24px] p-6" style={{ backgroundColor: '#F3F0FB' }}>
                     <Text style={{ fontSize: 50 }}>{won ? '🏆' : hearts <= 0 || (mode === 'forge' && forgeHeat <= 0) ? '💫' : mode === 'dino' ? '🦴' : mode === 'forge' ? '🔥' : '⚔️'}</Text>
                     <Text className="mt-2 font-heavy text-sectionTitle text-ink">{won ? L('Nhiệm vụ hoàn thành!', 'Mission complete!') : mode === 'forge' && forgeHeat <= 0 ? L('Lò rèn đã nguội', 'The furnace has gone cold') : hearts <= 0 ? L('Đội thám hiểm cần nghỉ', 'Your party needs to recover') : L('Kết thúc chuyến đi', 'Run complete')}</Text>
                     <Text className="mt-1 font-sans text-body text-muted">{mode === 'dino' ? L(`Đã tìm thấy ${fossils}/${FOSSIL_GOAL} mảnh xương. ${won ? 'Bộ hóa thạch được phục dựng!' : 'Hang vẫn còn bí mật — thử lại nhé.'}`, `Found ${fossils}/${FOSSIL_GOAL} fossil pieces. ${won ? 'The skeleton is restored!' : 'The cave still has secrets. Try again.'}`) : mode === 'forge' ? L(`Đã rèn ${forgedCharms}/${FORGE_CHARM_GOAL} bùa · chất lượng ${forgeScore} · nhiệt lò ${forgeHeat}%.`, `Forged ${forgedCharms}/${FORGE_CHARM_GOAL} charms · quality ${forgeScore} · furnace heat ${forgeHeat}%.`) : won ? L('Ba trận thắng và những lựa chọn nâng cấp đã mở đường qua hang ổ.', 'Three guardians defeated. Your upgrades carried you through the lair.') : L(`Đã hạ ${enemyIndex}/${encounters.length} quái. Chuỗi tốt nhất: ${bestCombo}.`, `Defeated ${enemyIndex}/${encounters.length} guardians. Best combo: ${bestCombo}.`)}</Text>
@@ -521,7 +521,7 @@ export default function ExpeditionGame() {
                       <ResultStat label={L('Combo cao nhất', 'Best combo')} value={`${bestCombo}×`} />
                       <ResultStat label={mode === 'forge' ? L('Nhiệt lò', 'Furnace heat') : L('Tim còn lại', 'Hearts left')} value={mode === 'forge' ? `${forgeHeat}%` : `${hearts}/${MAX_HEARTS}`} />
                     </View>
-                    <View className="mt-5 flex-row flex-wrap gap-3"><Button label={L('Chơi lại', 'Play again')} iconLeft="refresh" onPress={start} /><Pressable accessibilityRole="button" onPress={() => router.replace('/duel' as never)} className="rounded-pill px-5 py-3" style={{ backgroundColor: '#EDE5D8' }}><Text className="font-heavy text-body text-ink">{L('Về sảnh game', 'Back to arcade')}</Text></Pressable></View>
+                    <View className="mt-5 flex-row flex-wrap gap-3"><Button label={L('Chơi lại', 'Play again')} iconLeft="refresh" onPress={start} /><Pressable accessibilityRole="button" onPress={() => router.replace('/duel' as never)} className="rounded-pill px-5 py-3" style={{ backgroundColor: '#F3F0FB' }}><Text className="font-heavy text-body text-ink">{L('Về sảnh game', 'Back to arcade')}</Text></Pressable></View>
                   </View>
                 ) : null}
               </>
@@ -552,15 +552,15 @@ function ForgeArena({ accent, dark, cover, heat, slots, charms, focus, forgeScor
   return (
     <ImageBackground source={cover} resizeMode="cover" imageStyle={{ opacity: 0.72 }} className="overflow-hidden rounded-[24px]" style={{ borderWidth: 1, borderColor: `${accent}90` }}>
     <View className="overflow-hidden rounded-[24px] p-4 sm:p-5" style={{ backgroundColor: `${dark}D9` }}>
-      <View className="flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: accent }}>{L('LÒ CỔ · BÀN RÈN BÙA', 'ANCIENT FURNACE · CHARM BENCH')}</Text><Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{log}</Text></View>
+      <View className="flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: accent }}>{L('LÒ CỔ · BÀN RÈN BÙA', 'ANCIENT FURNACE · CHARM BENCH')}</Text><Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{log}</Text></View>
       <View className="mt-4 flex-row flex-wrap items-center justify-between gap-4">
-        <View className="flex-row items-center gap-3"><View className="rounded-[20px] p-2" style={{ backgroundColor: 'rgba(255,255,255,.1)' }}><HeroSprite size={78} mood="happy" /></View><View><Text className="font-heavy text-bodyLg" style={{ color: '#2A1808' }}>{L('Bút Sĩ · thợ rèn bùa', 'Word Knight · charm smith')}</Text><Text className="mt-1 font-semi text-label" style={{ color: '#2A1808' }}>{L(`Mắt nghề +${focus} · chất lượng ${forgeScore}`, `Smith’s eye +${focus} · quality ${forgeScore}`)}</Text></View></View>
-        <View className="items-center justify-center rounded-[22px] px-5 py-3" style={{ minWidth: 118, backgroundColor: 'rgba(255,180,88,.12)', borderWidth: 1, borderColor: `${accent}77` }}><Animated.Text style={{ fontSize: 40, transform: [{ scale: flame }, { rotate: flame.interpolate({ inputRange: [0.96, 1.12], outputRange: ['-4deg', '4deg'] }) }] }}>{icons[active]}</Animated.Text><Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{names[active]}</Text></View>
+        <View className="flex-row items-center gap-3"><View className="rounded-[20px] p-2" style={{ backgroundColor: 'rgba(255,255,255,.1)' }}><HeroSprite size={78} mood="happy" /></View><View><Text className="font-heavy text-bodyLg" style={{ color: '#2B2350' }}>{L('Bút Sĩ · thợ rèn bùa', 'Word Knight · charm smith')}</Text><Text className="mt-1 font-semi text-label" style={{ color: '#2B2350' }}>{L(`Mắt nghề +${focus} · chất lượng ${forgeScore}`, `Smith’s eye +${focus} · quality ${forgeScore}`)}</Text></View></View>
+        <View className="items-center justify-center rounded-[22px] px-5 py-3" style={{ minWidth: 118, backgroundColor: 'rgba(255,180,88,.12)', borderWidth: 1, borderColor: `${accent}77` }}><Animated.Text style={{ fontSize: 40, transform: [{ scale: flame }, { rotate: flame.interpolate({ inputRange: [0.96, 1.12], outputRange: ['-4deg', '4deg'] }) }] }}>{icons[active]}</Animated.Text><Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{names[active]}</Text></View>
       </View>
       <View className="mt-4 rounded-[18px] p-4" style={{ backgroundColor: 'rgba(0,0,0,.2)' }}>
-        <View className="flex-row items-center justify-between"><Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{L('NHIỆT LÒ', 'FURNACE HEAT')}</Text><Text className="font-heavy text-label" style={{ color: heat > 25 ? accent : '#FF7C6D' }}>{heat}%</Text></View>
-        <View className="mt-2 h-3 overflow-hidden rounded-full" style={{ backgroundColor: '#FFFDF7' }}><View style={{ height: '100%', width: `${heat}%`, borderRadius: 99, backgroundColor: heat > 25 ? '#FF9E4A' : '#FF5968' }} /></View>
-        <View className="mt-4 flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: accent }}>{L('CÔNG THỨC ĐANG RÈN', 'ACTIVE RECIPE')}</Text><Text className="font-semi text-label" style={{ color: '#2A1808' }}>{L('Mỗi ô cần một lần đập búa', 'One timed strike per rune')}</Text></View>
+        <View className="flex-row items-center justify-between"><Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{L('NHIỆT LÒ', 'FURNACE HEAT')}</Text><Text className="font-heavy text-label" style={{ color: heat > 25 ? accent : '#FF7C6D' }}>{heat}%</Text></View>
+        <View className="mt-2 h-3 overflow-hidden rounded-full" style={{ backgroundColor: '#F3F0FB' }}><View style={{ height: '100%', width: `${heat}%`, borderRadius: 99, backgroundColor: heat > 25 ? '#FF9E4A' : '#FF5968' }} /></View>
+        <View className="mt-4 flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: accent }}>{L('CÔNG THỨC ĐANG RÈN', 'ACTIVE RECIPE')}</Text><Text className="font-semi text-label" style={{ color: '#2B2350' }}>{L('Mỗi ô cần một lần đập búa', 'One timed strike per rune')}</Text></View>
         <View className="mt-3 flex-row gap-2">{Array.from({ length: FORGE_SLOTS_PER_CHARM }, (_, index) => <View key={index} className="flex-1 items-center rounded-[14px] py-2" style={{ backgroundColor: index < slots ? '#E9A849' : 'rgba(255,255,255,.1)', borderWidth: 1, borderColor: index < slots ? '#FFD98A' : 'rgba(255,255,255,.18)' }}><Text style={{ fontSize: 22 }}>{index < slots ? '✦' : '◇'}</Text><Text className="font-heavy text-label" style={{ color: index < slots ? '#241B20' : '#D9D4E5' }}>{index < slots ? L('KHẮC', 'ETCHED') : `${index + 1}/3`}</Text></View>)}</View>
       </View>
     </View>
@@ -571,17 +571,17 @@ function ForgeArena({ accent, dark, cover, heat, slots, charms, focus, forgeScor
 function ForgeStrikeCard({ accent, position, focus, word, onHammer, L }: { accent: string; position: number; focus: number; word: string; onHammer: () => void; L: (vi: string, en: string) => string }) {
   const zoneWidth = 16 + Math.min(focus, 3) * 4;
   return (
-    <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F9F5EC' }}>
-      <View className="flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: '#8A5E15' }}>{L('NHỊP BÚA · CANH VÙNG VÀNG', 'HAMMER RHYTHM · HIT THE GOLD')}</Text><Text className="font-heavy text-label" style={{ color: '#8A5E15' }}>{L('TỪ ĐÃ KHẮC', 'ETCHED WORD')}</Text></View>
+    <View className="mt-4 rounded-[24px] p-5 sm:p-7" style={{ backgroundColor: '#F3F0FB' }}>
+      <View className="flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('NHỊP BÚA · CANH VÙNG VÀNG', 'HAMMER RHYTHM · HIT THE GOLD')}</Text><Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('TỪ ĐÃ KHẮC', 'ETCHED WORD')}</Text></View>
       <Text className="mt-2 font-heavy text-sectionTitle text-ink">{word}</Text>
       <Text className="mt-1 font-semi text-body text-muted">{L('Đập gần tâm để tạo bùa chất lượng cao và giữ nhiệt cho lò.', 'Strike near the center to craft a stronger charm and keep the furnace hot.')}</Text>
-      <View accessibilityLabel={L(`Vạch canh đập ở vị trí ${Math.round(position)} phần trăm`, `Hammer marker at ${Math.round(position)} percent`)} className="mt-6 h-12 justify-center overflow-hidden rounded-[16px]" style={{ backgroundColor: '#FFFDF7', borderWidth: 2, borderColor: '#51405C' }}>
+      <View accessibilityLabel={L(`Vạch canh đập ở vị trí ${Math.round(position)} phần trăm`, `Hammer marker at ${Math.round(position)} percent`)} className="mt-6 h-12 justify-center overflow-hidden rounded-[16px]" style={{ backgroundColor: '#F3F0FB', borderWidth: 2, borderColor: '#51405C' }}>
         <View className="absolute h-full" style={{ left: `${50 - zoneWidth / 2}%`, width: `${zoneWidth}%`, backgroundColor: 'rgba(244,190,76,.48)', borderLeftWidth: 2, borderRightWidth: 2, borderColor: '#FFD46B' }} />
         <View className="absolute h-full w-1" style={{ left: `${position}%`, transform: [{ translateX: -2 }], backgroundColor: '#FFFFFF', boxShadow: '0 0 12px #fff' } as object} />
         <View className="absolute self-center h-full w-px" style={{ backgroundColor: '#FFE7A1', opacity: 0.75 }} />
       </View>
-      <View className="mt-2 flex-row justify-between"><Text className="font-heavy text-label" style={{ color: '#746E79' }}>{L('SỚM', 'EARLY')}</Text><Text className="font-heavy text-label" style={{ color: '#9B6C1E' }}>{L('TÂM VÀNG', 'GOLD ZONE')}</Text><Text className="font-heavy text-label" style={{ color: '#746E79' }}>{L('MUỘN', 'LATE')}</Text></View>
-      <Pressable accessibilityRole="button" onPress={onHammer} className="mt-5 items-center rounded-[18px] px-6 py-4" style={{ backgroundColor: accent, boxShadow: '0 5px 0 #A66B29' }}><Text className="font-heavy text-bodyLg" style={{ color: '#2D2023' }}>{L('🔨 ĐẬP BÚA!', '🔨 HAMMER NOW!')}</Text></Pressable>
+      <View className="mt-2 flex-row justify-between"><Text className="font-heavy text-label" style={{ color: '#746E79' }}>{L('SỚM', 'EARLY')}</Text><Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('TÂM VÀNG', 'GOLD ZONE')}</Text><Text className="font-heavy text-label" style={{ color: '#746E79' }}>{L('MUỘN', 'LATE')}</Text></View>
+      <Pressable accessibilityRole="button" onPress={onHammer} className="mt-5 items-center rounded-[18px] px-6 py-4" style={{ backgroundColor: accent, boxShadow: '0 5px 0 #6A4BD9' }}><Text className="font-heavy text-bodyLg" style={{ color: '#2D2023' }}>{L('🔨 ĐẬP BÚA!', '🔨 HAMMER NOW!')}</Text></Pressable>
     </View>
   );
 }
@@ -619,23 +619,23 @@ function BattleArena({ config, enemy, enemyHp, damageBonus, hearts, reducedMotio
     <View className="overflow-hidden rounded-[24px] p-4 sm:p-5" style={{ backgroundColor: 'rgba(255, 253, 247, 0.96)' }}>
       <View className="flex-row flex-wrap items-center justify-between gap-2">
         <Text className="font-heavy text-label" style={{ color: accent }}>{L('HANG Ổ · PHÒNG TRÙM', 'DRAGON LAIR · CHAMBER')}</Text>
-        <Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{log}</Text>
+        <Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{log}</Text>
       </View>
       <View className="mt-4 flex-row items-center justify-between gap-2 sm:gap-6">
         <View className="items-center" style={{ width: '31%' }}>
           <Animated.View className="rounded-[20px] p-2" style={{ backgroundColor: 'rgba(255,255,255,.1)', transform: [{ translateX: heroX }] }}><HeroSprite size={90} mood="attack" /></Animated.View>
-          <Text className="mt-2 font-heavy text-label" style={{ color: '#2A1808' }}>{L('BÚT SĨ', 'WORD KNIGHT')}</Text>
-          <Text className="font-semi text-label" style={{ color: '#2A1808' }}>{en ? `Nib +${damageBonus}` : `Ngòi +${damageBonus}`}</Text>
+          <Text className="mt-2 font-heavy text-label" style={{ color: '#2B2350' }}>{L('BÚT SĨ', 'WORD KNIGHT')}</Text>
+          <Text className="font-semi text-label" style={{ color: '#2B2350' }}>{en ? `Nib +${damageBonus}` : `Ngòi +${damageBonus}`}</Text>
         </View>
         <View className="items-center" style={{ flex: 1 }}>
           <Text className="font-heavy" style={{ color: accent, fontSize: 23 }}>VS</Text>
-          <View className="mt-2 h-2.5 w-full overflow-hidden rounded-full" style={{ backgroundColor: '#FFFDF7' }}><View style={{ height: '100%', width: `${ratio * 100}%`, borderRadius: 99, backgroundColor: ratio > 0.5 ? '#EF806C' : '#F3C452' }} /></View>
-          <Text className="mt-1 font-heavy text-label" style={{ color: '#2A1808' }}>{L(`MÁU ${enemyHp}/${enemy.hp}`, `HP ${enemyHp}/${enemy.hp}`)}</Text>
+          <View className="mt-2 h-2.5 w-full overflow-hidden rounded-full" style={{ backgroundColor: '#F3F0FB' }}><View style={{ height: '100%', width: `${ratio * 100}%`, borderRadius: 99, backgroundColor: ratio > 0.5 ? '#EF806C' : '#F3C452' }} /></View>
+          <Text className="mt-1 font-heavy text-label" style={{ color: '#2B2350' }}>{L(`MÁU ${enemyHp}/${enemy.hp}`, `HP ${enemyHp}/${enemy.hp}`)}</Text>
         </View>
         <View className="items-center" style={{ width: '31%' }}>
           <View className="items-center justify-center rounded-[20px]" style={{ width: 110, height: 110, backgroundColor: `${enemy.color}35` }}><Animated.View style={{ transform: [{ translateX: enemyX }, { scale: enemyScale }] }}><PixelSprite name={enemy.sprite} size={92} color={enemy.color} flip /></Animated.View></View>
-          <Text className="mt-2 font-heavy text-label" style={{ color: '#2A1808' }}>{en ? enemy.nameEn : enemy.name}</Text>
-          <Text className="font-semi text-label" style={{ color: '#2A1808' }}>{en ? enemy.tauntEn : enemy.taunt}</Text>
+          <Text className="mt-2 font-heavy text-label" style={{ color: '#2B2350' }}>{en ? enemy.nameEn : enemy.name}</Text>
+          <Text className="font-semi text-label" style={{ color: '#2B2350' }}>{en ? enemy.tauntEn : enemy.taunt}</Text>
         </View>
       </View>
     </View>
@@ -648,11 +648,11 @@ function DinoArena({ accent, cover, log, fossils, goal }: { accent: string; cove
   return (
     <ImageBackground source={cover} resizeMode="cover" imageStyle={{ opacity: 0.78 }} className="overflow-hidden rounded-[24px]" style={{ borderWidth: 1, borderColor: '#A8A873' }}>
     <View className="overflow-hidden rounded-[24px] p-4 sm:p-5" style={{ backgroundColor: 'rgba(255, 253, 247, 0.96)' }}>
-      <View className="flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: accent }}>{L('KHU ĐÀO · HANG HỔ PHÁCH', 'DIG SITE · AMBER CAVE')}</Text><Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{log}</Text></View>
+      <View className="flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-label" style={{ color: accent }}>{L('KHU ĐÀO · HANG HỔ PHÁCH', 'DIG SITE · AMBER CAVE')}</Text><Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{log}</Text></View>
       <View className="mt-3 flex-row flex-wrap items-center gap-4">
         <View className="rounded-[18px] p-2" style={{ backgroundColor: 'rgba(255,255,255,.12)' }}><HeroSprite size={76} mood="idle" /></View>
-        <View style={{ flex: 1, minWidth: 180 }}><Text className="font-heavy text-bodyLg" style={{ color: '#2A1808' }}>{L('Bút Sĩ · nhà khảo cổ', 'Word Knight · field scholar')}</Text><Text className="mt-1 font-semi text-body" style={{ color: '#2A1808' }}>{L('Máy dò rung khi có cổ vật gần đó. Mỗi câu đúng cho bạn một lượt cuốc.', 'The scanner hums near relics. Each correct answer earns a pickaxe turn.')}</Text></View>
-        <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: 'rgba(0,0,0,.2)' }}><Text className="font-heavy text-bodyLg" style={{ color: accent }}>🦴 {fossils}/{goal}</Text><Text className="font-semi text-label" style={{ color: '#2A1808' }}>{L('mảnh xương', 'fossil pieces')}</Text></View>
+        <View style={{ flex: 1, minWidth: 180 }}><Text className="font-heavy text-bodyLg" style={{ color: '#2B2350' }}>{L('Bút Sĩ · nhà khảo cổ', 'Word Knight · field scholar')}</Text><Text className="mt-1 font-semi text-body" style={{ color: '#2B2350' }}>{L('Máy dò rung khi có cổ vật gần đó. Mỗi câu đúng cho bạn một lượt cuốc.', 'The scanner hums near relics. Each correct answer earns a pickaxe turn.')}</Text></View>
+        <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: 'rgba(0,0,0,.2)' }}><Text className="font-heavy text-bodyLg" style={{ color: accent }}>🦴 {fossils}/{goal}</Text><Text className="font-semi text-label" style={{ color: '#2B2350' }}>{L('mảnh xương', 'fossil pieces')}</Text></View>
       </View>
     </View>
     </ImageBackground>
@@ -662,7 +662,7 @@ function DinoArena({ accent, cover, log, fossils, goal }: { accent: string; cove
 function QuestionPanel({ mode, prompt, clue, question, input, setInput, onAnswer, accent, en, L }: any) {
   return (
     <View className="mt-5">
-      <View className="flex-row items-center justify-between gap-3"><Text className="font-heavy text-label" style={{ color: '#8A5E15' }}>{L('CÂU THỬ THÁCH', 'VOCAB CHALLENGE')}</Text><Text className="font-heavy text-label" style={{ color: '#8A5E15' }}>{mode === 'forge' ? L('GÕ TỪ ĐỂ NẠP LÒ', 'SPELL TO CHARGE') : L('TRẢ LỜI ĐỂ HÀNH ĐỘNG', 'ANSWER TO ACT')}</Text></View>
+      <View className="flex-row items-center justify-between gap-3"><Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{L('CÂU THỬ THÁCH', 'VOCAB CHALLENGE')}</Text><Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>{mode === 'forge' ? L('GÕ TỪ ĐỂ NẠP LÒ', 'SPELL TO CHARGE') : L('TRẢ LỜI ĐỂ HÀNH ĐỘNG', 'ANSWER TO ACT')}</Text></View>
       <Text className="mt-2 font-heavy" style={{ color: '#241F2D', fontSize: 27, lineHeight: 35 }}>{prompt}</Text>
       {clue ? <Text className="mt-1 font-semi text-body" style={{ color: '#746E79' }}>{clue}</Text> : null}
       {mode === 'forge' ? (
@@ -672,7 +672,7 @@ function QuestionPanel({ mode, prompt, clue, question, input, setInput, onAnswer
         </View>
       ) : (
         <View className="mt-4 flex-row flex-wrap gap-3">
-          {question?.options.map((option: string, index: number) => <Pressable key={`${question.word.word}-${index}`} accessibilityRole="button" onPress={() => onAnswer(index === question.correctIndex)} className="rounded-2xl p-4" style={{ flexGrow: 1, flexBasis: '47%', minWidth: 205, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#E5DDD0' }}><Text className="font-heavy text-bodyLg" style={{ color: '#342945' }}>{String.fromCharCode(65 + index)}　{option}</Text></Pressable>)}
+          {question?.options.map((option: string, index: number) => <Pressable key={`${question.word.word}-${index}`} accessibilityRole="button" onPress={() => onAnswer(index === question.correctIndex)} className="rounded-2xl p-4" style={{ flexGrow: 1, flexBasis: '47%', minWidth: 205, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#F3F0FB' }}><Text className="font-heavy text-bodyLg" style={{ color: '#342945' }}>{String.fromCharCode(65 + index)}　{option}</Text></Pressable>)}
         </View>
       )}
       <Text className="mt-3 font-semi text-label" style={{ color: '#847B7E' }}>{mode === 'dino' ? L('Câu đúng mở lượt đào; bạn tự chọn ô nào đáng thử.', 'A correct answer unlocks a dig; you decide which tile to try.') : mode === 'forge' ? L('Gõ đúng sẽ mở màn canh nhịp đập búa. Lệch nhịp làm lò mất nhiệt.', 'Spell correctly to start the hammer timing. Misspellings cool the furnace.') : L('Câu đúng gây sát thương; nước đi quyết định đòn đánh và cách đỡ phản công.', 'A correct answer deals damage; your move decides the strike and counter defense.')}</Text>
@@ -681,22 +681,22 @@ function QuestionPanel({ mode, prompt, clue, question, input, setInput, onAnswer
 }
 
 function ActionCard({ move, active, locked, accent, onPress, en }: { move: (typeof ACTIONS)[number]; active: boolean; locked: boolean; accent: string; onPress: () => void; en: boolean }) {
-  return <Pressable accessibilityRole="button" accessibilityState={{ selected: active, disabled: locked }} disabled={locked} onPress={onPress} className="flex-1 rounded-2xl px-3 py-3" style={{ minWidth: 150, backgroundColor: active ? '#342845' : locked ? '#E4DDD2' : '#FFFFFF', borderWidth: 2, borderColor: active ? accent : '#E6DED1', opacity: locked ? 0.55 : 1 }}><Text className="font-heavy text-body" style={{ color: active ? '#FFFFFF' : '#342945' }}>{move.icon}　{en ? move.labelEn : move.label}</Text><Text className="mt-1 font-semi text-label" style={{ color: active ? '#D9D4E5' : '#746E79' }}>{en ? move.hintEn : move.hint}{move.cost ? ` · ${move.cost}⚡` : ''}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityState={{ selected: active, disabled: locked }} disabled={locked} onPress={onPress} className="flex-1 rounded-2xl px-3 py-3" style={{ minWidth: 150, backgroundColor: active ? '#342845' : locked ? '#F3F0FB' : '#FFFFFF', borderWidth: 2, borderColor: active ? accent : '#F3F0FB', opacity: locked ? 0.55 : 1 }}><Text className="font-heavy text-body" style={{ color: active ? '#FFFFFF' : '#342945' }}>{move.icon}　{en ? move.labelEn : move.label}</Text><Text className="mt-1 font-semi text-label" style={{ color: active ? '#D9D4E5' : '#746E79' }}>{en ? move.hintEn : move.hint}{move.cost ? ` · ${move.cost}⚡` : ''}</Text></Pressable>;
 }
 
 function DigTileButton({ tile, scanned, onPress, en }: { tile: DigTile; scanned: boolean; onPress: () => void; en: boolean }) {
   const { L } = useL();
   const face = tile.opened ? ({ bone: '🦴', amber: '🟠', charge: '🔷', trap: '🪨', dust: '·' } as const)[tile.kind] : scanned ? '📡' : '⛏️';
   const description = tile.opened ? ({ bone: L('mảnh xương', 'fossil'), amber: L('hổ phách', 'amber'), charge: L('tinh thể', 'crystal'), trap: L('bẫy đá', 'rock trap'), dust: L('đất mềm', 'soft soil') } as const)[tile.kind] : scanned ? L('có tín hiệu', 'signal detected') : L('ô đất chưa đào', 'undug tile');
-  return <Pressable accessibilityRole="button" accessibilityLabel={`${L('Ô', 'Tile')} ${tile.id + 1}: ${description}`} accessibilityState={{ disabled: tile.opened }} disabled={tile.opened} onPress={onPress} className="items-center justify-center rounded-[16px]" style={{ width: '22.5%', minWidth: 58, height: 72, backgroundColor: tile.opened ? tile.kind === 'trap' ? '#E9C8B4' : '#E3D6B9' : scanned ? '#D3E9C6' : '#8E704A', borderWidth: scanned ? 3 : 1, borderColor: scanned ? '#4A8C62' : tile.opened ? '#C6B897' : '#634D35', transform: [{ translateY: tile.opened ? 2 : 0 }] }}><Text style={{ fontSize: tile.opened ? 25 : 21 }}>{face}</Text><Text className="mt-1 font-heavy" style={{ fontSize: 10, color: tile.opened ? '#43382B' : '#FFF5D8' }}>{tile.opened ? (en ? 'FOUND' : 'ĐÃ ĐÀO') : `${String(tile.id + 1).padStart(2, '0')} · ${en ? 'DIG' : 'ĐÀO'}`}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityLabel={`${L('Ô', 'Tile')} ${tile.id + 1}: ${description}`} accessibilityState={{ disabled: tile.opened }} disabled={tile.opened} onPress={onPress} className="items-center justify-center rounded-[16px]" style={{ width: '22.5%', minWidth: 58, height: 72, backgroundColor: tile.opened ? tile.kind === 'trap' ? '#E9C8B4' : '#E3D6B9' : scanned ? '#D3E9C6' : '#8E704A', borderWidth: scanned ? 3 : 1, borderColor: scanned ? '#4A8C62' : tile.opened ? '#C6B897' : '#2B2350', transform: [{ translateY: tile.opened ? 2 : 0 }] }}><Text style={{ fontSize: tile.opened ? 25 : 21 }}>{face}</Text><Text className="mt-1 font-heavy" style={{ fontSize: 10, color: tile.opened ? '#2B2350' : '#F3F0FB' }}>{tile.opened ? (en ? 'FOUND' : 'ĐÃ ĐÀO') : `${String(tile.id + 1).padStart(2, '0')} · ${en ? 'DIG' : 'ĐÀO'}`}</Text></Pressable>;
 }
 
 function FeedbackCard({ outcome, mode, accent, finish, onContinue, L }: { outcome: Outcome; mode: Mode; accent: string; finish: boolean; onContinue: () => void; L: (vi: string, en: string) => string }) {
-  return <View className="mt-4 rounded-[22px] p-5" style={{ backgroundColor: outcome.correct ? '#21483C' : '#523249', borderWidth: 2, borderColor: outcome.correct ? '#82D9A9' : '#D58BA1' }}><Text className="font-heavy text-sectionTitle" style={{ color: outcome.correct ? '#9EF0C8' : '#FFC1D2' }}>{outcome.correct ? L('CHÍNH XÁC!', 'NICE MOVE!') : L('CHƯA ĐÚNG', 'NOT QUITE')}</Text><Text className="mt-1 font-semi text-body" style={{ color: '#2A1808' }}>{outcome.detail}</Text>{!outcome.correct ? <Text className="mt-1 font-semi text-body" style={{ color: '#2A1808' }}>{L('Đáp án:', 'Answer:')} {outcome.answer}</Text> : null}<Pressable accessibilityRole="button" onPress={onContinue} className="mt-4 self-start rounded-pill px-5 py-3" style={{ backgroundColor: accent }}><Text className="font-heavy text-body" style={{ color: '#231B32' }}>{finish ? L('Xem kết quả', 'See results') : mode === 'dino' ? L('Lượt đào tiếp theo →', 'Next dig →') : mode === 'forge' ? L('Rèn tiếp →', 'Forge next →') : L('Đối đầu tiếp →', 'Next encounter →')}</Text></Pressable></View>;
+  return <View className="mt-4 rounded-[22px] p-5" style={{ backgroundColor: outcome.correct ? '#21483C' : '#523249', borderWidth: 2, borderColor: outcome.correct ? '#82D9A9' : '#D58BA1' }}><Text className="font-heavy text-sectionTitle" style={{ color: outcome.correct ? '#9EF0C8' : '#FFC1D2' }}>{outcome.correct ? L('CHÍNH XÁC!', 'NICE MOVE!') : L('CHƯA ĐÚNG', 'NOT QUITE')}</Text><Text className="mt-1 font-semi text-body" style={{ color: '#2B2350' }}>{outcome.detail}</Text>{!outcome.correct ? <Text className="mt-1 font-semi text-body" style={{ color: '#2B2350' }}>{L('Đáp án:', 'Answer:')} {outcome.answer}</Text> : null}<Pressable accessibilityRole="button" onPress={onContinue} className="mt-4 self-start rounded-pill px-5 py-3" style={{ backgroundColor: accent }}><Text className="font-heavy text-body" style={{ color: '#231B32' }}>{finish ? L('Xem kết quả', 'See results') : mode === 'dino' ? L('Lượt đào tiếp theo →', 'Next dig →') : mode === 'forge' ? L('Rèn tiếp →', 'Forge next →') : L('Đối đầu tiếp →', 'Next encounter →')}</Text></Pressable></View>;
 }
 
 function UpgradeCard({ icon, title, detail, onPress }: { icon: string; title: string; detail: string; onPress: () => void }) {
-  return <Pressable accessibilityRole="button" onPress={onPress} className="flex-1 rounded-[20px] p-4" style={{ minWidth: 190, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#DED3C4' }}><Text style={{ fontSize: 30 }}>{icon}</Text><Text className="mt-2 font-heavy text-bodyLg text-ink">{title}</Text><Text className="mt-1 font-semi text-body text-muted">{detail}</Text><Text className="mt-3 font-heavy text-label" style={{ color: '#8A5E15' }}>{'CHỌN NÂNG CẤP　→'}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" onPress={onPress} className="flex-1 rounded-[20px] p-4" style={{ minWidth: 190, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#DED3C4' }}><Text style={{ fontSize: 30 }}>{icon}</Text><Text className="mt-2 font-heavy text-bodyLg text-ink">{title}</Text><Text className="mt-1 font-semi text-body text-muted">{detail}</Text><Text className="mt-3 font-heavy text-label" style={{ color: '#6A4BD9' }}>{'CHỌN NÂNG CẤP　→'}</Text></Pressable>;
 }
 
 function InfoPill({ label, icon, color, ink = '#342945' }: { label: string; icon: string; color: string; ink?: string }) {

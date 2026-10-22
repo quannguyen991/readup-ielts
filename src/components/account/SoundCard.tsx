@@ -59,7 +59,7 @@ function VolumeSlider({ value, onChange, label }: { value: number; onChange: (v:
       className="justify-center"
       style={{ height: 32 }}
     >
-      <View className="h-2 rounded-pill" style={{ backgroundColor: '#E8E2D6' }}>
+      <View className="h-2 rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
         <View className="h-2 rounded-pill" style={{ width: `${value * 100}%`, backgroundColor: color.primary }} />
       </View>
       <View
@@ -83,7 +83,7 @@ export function SoundCard() {
   const hydrated = useHydrated();
   const [haptics, setHapticsState] = useState(hapticsEnabled);
   return (
-    <View className="mt-4 rounded-2xl bg-white p-4" style={{ borderWidth: 1, borderColor: '#F0EBE2' }}>
+    <View className="mt-4 rounded-2xl bg-white p-4" style={{ borderWidth: 1, borderColor: '#F3F0FB' }}>
       <Text className="font-heavy text-cardTitle text-ink">{L('Âm thanh', 'Sound')}</Text>
       <Row title={L('Hiệu ứng âm thanh', 'Sound effects')} on={sound} onToggle={() => setSound(!sound)} />
       <View style={{ opacity: sound ? 1 : 0.4 }} pointerEvents={sound ? 'auto' : 'none'}>

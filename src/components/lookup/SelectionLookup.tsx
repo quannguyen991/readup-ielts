@@ -160,16 +160,28 @@ export function SelectionLookup() {
 
 function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: number; top: number; onClose: () => void }) {
   // Từ có trong các bộ từ của app thì có sẵn đủ nghĩa — hiện ngay, không gọi mạng.
-  const local = useMemo<WordLookup | null>(() => {
-    const w = findDeckWord(picked.text);
-    return w
-      ? { word: w.word, lemma: w.word.toLowerCase(), phonetic: w.ipa || null, partOfSpeech: w.pos || null, definitionGeneral: w.definitionEn || null, definitionVi: w.meaningVi || null, definitionContext: null, examples: w.example ? [w.example] : [], audioUrl: null }
-      : null;
+  // `undefined`: đang tìm trong bộ từ (lần đầu phải nạp bộ); `null`: không có, mới hỏi mạng.
+  const [deck, setDeck] = useState<WordLookup | null | undefined>(undefined);
+  useEffect(() => {
+    let live = true;
+    setDeck(undefined);
+    void findDeckWord(picked.text).then((w) => {
+      if (!live) return;
+      setDeck(
+        w
+          ? { word: w.word, lemma: w.word.toLowerCase(), phonetic: w.ipa || null, partOfSpeech: w.pos || null, definitionGeneral: w.definitionEn || null, definitionVi: w.meaningVi || null, definitionContext: null, examples: w.example ? [w.example] : [], audioUrl: null }
+          : null,
+      );
+    });
+    return () => {
+      live = false;
+    };
   }, [picked.text]);
-  const remote = useWordLookup(local ? null : picked.text, picked.sentence);
+  const local = deck ?? null;
+  const remote = useWordLookup(deck === null ? picked.text : null, picked.sentence);
   const data = local ?? remote.data;
-  const isLoading = !local && remote.isLoading;
-  const isError = !local && remote.isError;
+  const isLoading = deck === undefined || (deck === null && remote.isLoading);
+  const isError = deck === null && remote.isError;
   const saveWord = useVocabStore((s) => s.saveWord);
   const entries = useVocabStore((s) => s.entries);
   const lemma = picked.text.includes(' ') ? picked.text.toLowerCase() : lemmatize(picked.text);
@@ -207,7 +219,7 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
         borderRadius: 18,
         backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        borderColor: '#F0EBE2',
+        borderColor: '#F3F0FB',
         ...({ boxShadow: '0 18px 44px rgba(15,23,42,0.24)' } as object),
       }}
     >
@@ -215,10 +227,10 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
         <Text className="font-heavy" numberOfLines={2} style={{ flex: 1, fontSize: 18, color: '#0F172A' }}>
           {picked.text}
         </Text>
-        <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe phát âm', 'Play pronunciation')} onPress={() => speak(picked.text, { rate: 0.85 })} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe phát âm', 'Play pronunciation')} onPress={() => speak(picked.text, { rate: 0.85 })} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
           <Icon name="volume" size={16} color={color.primary} />
         </Pressable>
-        <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F9F6F1' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
           <Icon name="close" size={15} color="#475569" />
         </Pressable>
       </View>

@@ -9,7 +9,7 @@ import Svg, { Circle, Line, Path, Rect } from 'react-native-svg';
 function OfficeWriting() {
   return (
     <>
-      <Rect x={0} y={0} width={400} height={260} fill="#F3EBDD" />
+      <Rect x={0} y={0} width={400} height={260} fill="#F3F0FB" />
       <Rect x={250} y={30} width={120} height={110} fill="#BFE0F0" stroke="#8A7A62" strokeWidth={6} />
       <Line x1={310} y1={30} x2={310} y2={140} stroke="#8A7A62" strokeWidth={4} />
       <Line x1={250} y1={85} x2={370} y2={85} stroke="#8A7A62" strokeWidth={4} />
@@ -21,7 +21,7 @@ function OfficeWriting() {
       <Rect x={110} y={158} width={60} height={10} fill="#FFFFFF" stroke="#B9AE9A" strokeWidth={1} />
       <Rect x={85} y={120} width={60} height={44} fill="#8E7B9E" />
       <Circle cx={112} cy={92} r={22} fill="#F2C9A0" />
-      <Path d="M90 86 Q112 60 134 86 L134 80 Q112 64 90 80 Z" fill="#3B2A22" />
+      <Path d="M90 86 Q112 60 134 86 L134 80 Q112 64 90 80 Z" fill="#2B2350" />
       <Path d="M92 118 L132 118 L140 170 L84 170 Z" fill="#4C78A8" />
       <Path d="M132 128 L160 150" stroke="#4C78A8" strokeWidth={10} strokeLinecap="round" />
       <Line x1={158} y1={148} x2={182} y2={142} stroke="#222222" strokeWidth={3} strokeLinecap="round" />

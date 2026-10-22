@@ -15,9 +15,9 @@ import { useL } from '@/i18n/useL';
 /** Màu nhãn trình độ: mỗi mức một màu, chữ trắng đủ tương phản. */
 const LEVEL_COLOR: Record<string, { bg: string; fg: string }> = {
   A2: { bg: '#0F766E', fg: '#FFFFFF' },
-  B1: { bg: '#8F6E36', fg: '#FFFFFF' },
+  B1: { bg: '#6A4BD9', fg: '#FFFFFF' },
   B2: { bg: '#24375A', fg: '#FFFFFF' },
-  C1: { bg: '#C2410C', fg: '#FFFFFF' },
+  C1: { bg: '#6A4BD9', fg: '#FFFFFF' },
 };
 
 export function Section({
@@ -42,7 +42,7 @@ export function Section({
         {onMore ? (
           <Pressable onPress={onMore} accessibilityRole="link" className="flex-row items-center gap-1">
             <Text className="font-semi text-body text-primary">{L('Xem tất cả', 'See all')}</Text>
-            <Icon name="chevron-right" size={14} color="#8F6E36" />
+            <Icon name="chevron-right" size={14} color="#6A4BD9" />
           </Pressable>
         ) : null}
       </View>
@@ -66,7 +66,7 @@ export function Chip({ label, active, onPress }: { label: string; active: boolea
 }
 
 /** Nhãn tĩnh. Nếu truyền `level` hợp lệ thì tự chọn màu theo trình độ. */
-export function Pill({ label, level, bg = '#EFE3C8', fg = '#7D5E27' }: { label: string; level?: string; bg?: string; fg?: string }) {
+export function Pill({ label, level, bg = '#EEE9FF', fg = '#6A4BD9' }: { label: string; level?: string; bg?: string; fg?: string }) {
   const c = level && LEVEL_COLOR[level] ? LEVEL_COLOR[level] : { bg, fg };
   return (
     <View style={{ alignSelf: 'flex-start', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: c.bg }}>
@@ -90,7 +90,7 @@ export function SourceNote({ lines, link }: { lines: string[]; link?: string }) 
   const { L } = useL();
   return (
     <View className="mt-7 flex-row items-start gap-2.5 rounded-panel border border-border bg-canvas p-3.5">
-      <Icon name="info" size={16} color="#8F6E36" />
+      <Icon name="info" size={16} color="#6A4BD9" />
       <View className="min-w-0 flex-1 gap-1">
         {lines.map((line) => (
           <Text key={line} className="font-sans text-label text-muted">
@@ -111,7 +111,7 @@ export function SourceNote({ lines, link }: { lines: string[]; link?: string }) 
 export function BookCover({ title, height = 140 }: { title: string; height?: number }) {
   return (
     <LinearGradient
-      colors={['#F6EBCB', '#D9B873', '#8F6E36']}
+      colors={['#F3F0FB', '#D9B873', '#6A4BD9']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={{ height, justifyContent: 'flex-end', padding: 12 }}
@@ -143,7 +143,7 @@ export function ActionCard({
       style={{ width: 250, gap: 8 }}
     >
       <View className="h-10 w-10 items-center justify-center rounded-pill bg-brand-soft">
-        <Icon name={icon} size={18} color="#8F6E36" />
+        <Icon name={icon} size={18} color="#6A4BD9" />
       </View>
       <Text className="font-strong text-body text-ink">{title}</Text>
       <Text className="font-sans text-label text-muted">{text}</Text>

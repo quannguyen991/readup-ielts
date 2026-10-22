@@ -20,8 +20,8 @@ const STATE_BADGE: Record<PlantState, BadgeIcon> = { thriving: 'star', ok: 'chec
 const STATE_UI: Record<PlantState, { label: string; labelEn: string; dot: string; note: string; noteEn: string }> = {
   thriving: { label: 'Xanh tốt', labelEn: 'Thriving', dot: '#22C55E', note: 'Nhớ rất chắc — chưa cần ôn.', noteEn: 'Firmly remembered — no review needed yet.' },
   ok: { label: 'Khoẻ', labelEn: 'Healthy', dot: '#84CC16', note: 'Còn nhớ tốt, sắp tới lượt ôn.', noteEn: 'Still well remembered; review coming up soon.' },
-  wilting: { label: 'Sắp héo', labelEn: 'Wilting', dot: '#EAB308', note: 'Độ nhớ đang tụt — ôn trong hôm nay.', noteEn: 'Memory is slipping — review it today.' },
-  dying: { label: 'Héo', labelEn: 'Withered', dot: '#B45309', note: 'Gần như đã quên — ôn ngay để cứu cây.', noteEn: 'Almost forgotten — review now to save the plant.' },
+  wilting: { label: 'Sắp héo', labelEn: 'Wilting', dot: '#6A4BD9', note: 'Độ nhớ đang tụt — ôn trong hôm nay.', noteEn: 'Memory is slipping — review it today.' },
+  dying: { label: 'Héo', labelEn: 'Withered', dot: '#6A4BD9', note: 'Gần như đã quên — ôn ngay để cứu cây.', noteEn: 'Almost forgotten — review now to save the plant.' },
   seed: { label: 'Hạt giống', labelEn: 'Seed', dot: '#A3E635', note: 'Mới lưu, chưa ôn lần nào.', noteEn: 'Just saved, not reviewed yet.' },
 };
 
@@ -108,7 +108,7 @@ export default function GardenScreen() {
           <Appear index={2} style={{ flexGrow: 3, flexShrink: 1, flexBasis: 480 }}>
             <View
               className="overflow-hidden rounded-[26px]"
-              style={[{ height: 480, backgroundColor: '#F9F2E5', borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.9)' }, CARD]}
+              style={[{ height: 480, backgroundColor: '#F3F0FB', borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.9)' }, CARD]}
             >
               {Platform.OS === 'web' ? (
                 <Garden3D plants={plants} selected={selected} onPick={setSelected} style={{ flex: 1 }} />
@@ -140,7 +140,7 @@ export default function GardenScreen() {
                     <Text className="mt-1 font-sans text-body text-muted">{L('Những từ độ nhớ thấp nhất. Bấm để xem trên đảo.', 'Your least-remembered words. Tap to find them on the island.')}</Text>
                     <View className="mt-3 gap-2">
                       {thirsty.slice(0, 8).map((p) => (
-                        <Pressable key={p.id} onPress={() => setSelected(p.id)} className="flex-row items-center gap-3 rounded-2xl px-3 py-2.5" style={{ backgroundColor: '#FFFBEB' }}>
+                        <Pressable key={p.id} onPress={() => setSelected(p.id)} className="flex-row items-center gap-3 rounded-2xl px-3 py-2.5" style={{ backgroundColor: '#F3F0FB' }}>
                           <View className="h-3 w-3 rounded-pill" style={{ backgroundColor: STATE_UI[p.state].dot }} />
                           <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
                             {p.word}
@@ -190,7 +190,7 @@ function PlantPanel({ plant }: { plant: Plant }) {
       <Text className="mt-2 font-heavy text-pageTitle text-ink">{plant.word}</Text>
       <Text className="mt-0.5 font-semi text-bodyLg text-ink">{plant.meaningVi}</Text>
       <Text className="mt-2 font-sans text-body text-muted">{L(ui.note, ui.noteEn)}</Text>
-      <View className="mt-4 h-3 overflow-hidden rounded-pill" style={{ backgroundColor: '#F0EBE2' }}>
+      <View className="mt-4 h-3 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
         <View className="h-3 rounded-pill" style={{ width: `${Math.round(plant.memory * 100)}%`, backgroundColor: ui.dot }} />
       </View>
       <Text className="mt-1.5 font-sans text-label text-muted">

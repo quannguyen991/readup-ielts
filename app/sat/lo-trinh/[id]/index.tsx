@@ -52,7 +52,7 @@ export default function RoadChapterScreen() {
   return (
     <Screen>
       <Pressable accessibilityRole="link" onPress={() => router.push('/sat/lo-trinh' as never)} style={{ alignSelf: 'flex-start', marginBottom: 10 }}>
-        <Text className="font-strong" style={{ fontSize: 14, color: '#8F6E36' }}>
+        <Text className="font-strong" style={{ fontSize: 14, color: '#6A4BD9' }}>
           {L('← Lộ trình SAT Math', '← SAT Math roadmap')}
         </Text>
       </Pressable>
@@ -81,7 +81,7 @@ export default function RoadChapterScreen() {
             ) : null}
             <View style={{ marginTop: 14, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
               <Label text={L(`💡 ${c.theory.length} ý lý thuyết`, `💡 ${c.theory.length} theory points`)} color="#FFFFFF" ink="#0F172A" tilt={-3} size={13} />
-              {c.bookSet?.length ? <Label text={L(`📖 ${c.bookSet.length} bài theo sách`, `📖 ${c.bookSet.length} book problems`)} color="#FACC15" ink="#2A1B02" tilt={2} size={13} /> : null}
+              {c.bookSet?.length ? <Label text={L(`📖 ${c.bookSet.length} bài theo sách`, `📖 ${c.bookSet.length} book problems`)} color="#FACC15" ink="#2B2350" tilt={2} size={13} /> : null}
               <Label text={L(`✏️ +${EXTRA_SIZE} câu luyện thêm`, `✏️ +${EXTRA_SIZE} extra questions`)} color="#0F172A" ink="#FFFFFF" tilt={-2} size={13} />
             </View>
           </View>
@@ -103,7 +103,7 @@ export default function RoadChapterScreen() {
             accessibilityRole="radio"
             aria-checked={lang === k}
             onPress={() => setLang(k)}
-            style={{ borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: lang === k ? '#0F172A' : '#FFFFFF', borderWidth: 1, borderColor: lang === k ? '#0F172A' : '#F0EBE2' }}
+            style={{ borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: lang === k ? '#0F172A' : '#FFFFFF', borderWidth: 1, borderColor: lang === k ? '#0F172A' : '#F3F0FB' }}
           >
             <Text className="font-strong" style={{ fontSize: 14, color: lang === k ? '#FFFFFF' : '#0F172A' }}>
               {label}
@@ -113,7 +113,7 @@ export default function RoadChapterScreen() {
       </View>
 
       {/* ------------------------------------------------ sơ đồ chủ đề con */}
-      <Block title={L('Sơ đồ chương.', 'Chapter map.')} kicker={L('CHỦ ĐỀ CON', 'SUBTOPICS')} art={<CuteMagnifier size={88} />} tag={{ text: L(`${c.subtopics.length} chủ đề con`, `${c.subtopics.length} subtopics`), color: '#A8843F', ink: '#FFFFFF' }}>
+      <Block title={L('Sơ đồ chương.', 'Chapter map.')} kicker={L('CHỦ ĐỀ CON', 'SUBTOPICS')} art={<CuteMagnifier size={88} />} tag={{ text: L(`${c.subtopics.length} chủ đề con`, `${c.subtopics.length} subtopics`), color: '#6A4BD9', ink: '#FFFFFF' }}>
         <MindMap
           height={c.subtopics.length > 3 ? 340 : 280}
           narrowBelow={520}
@@ -123,10 +123,10 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ lý thuyết */}
-      <Block title={L('Lý thuyết.', 'Theory.')} kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'} art={<CuteBulb size={90} />} tag={{ text: 'VI + EN', color: '#FACC15', ink: '#2A1B02' }}>
+      <Block title={L('Lý thuyết.', 'Theory.')} kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'} art={<CuteBulb size={90} />} tag={{ text: 'VI + EN', color: '#FACC15', ink: '#2B2350' }}>
         <View style={{ gap: 12 }}>
           {c.theory.map((t, i) => (
-            <View key={i} style={{ borderRadius: 20, padding: 16, backgroundColor: '#FCFBF8', borderLeftWidth: 6, borderLeftColor: color, gap: 10 }}>
+            <View key={i} style={{ borderRadius: 20, padding: 16, backgroundColor: '#F3F0FB', borderLeftWidth: 6, borderLeftColor: color, gap: 10 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Motion kind="pop" delay={i * 60}>
                   <Badge icon={THEORY_ICONS[i % THEORY_ICONS.length]!} color={color} size={38} />
@@ -137,7 +137,7 @@ export default function RoadChapterScreen() {
               </View>
               <BiText t={t.body} lang={lang} wide={wide} />
               {t.formula ? (
-                <View style={{ alignSelf: 'flex-start', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2' }}>
+                <View style={{ alignSelf: 'flex-start', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB' }}>
                   <MathText size={17} weight="semibold">
                     {t.formula}
                   </MathText>
@@ -152,8 +152,8 @@ export default function RoadChapterScreen() {
       <Block title={L('Ví dụ.', 'Examples.')} kicker={L('GIẢI TỪNG BƯỚC · WORKED EXAMPLE', 'WORKED EXAMPLE')} art={<CutePencil size={86} />} tag={{ text: L('Từng bước', 'Step by step'), color: '#22A06B', ink: '#FFFFFF' }}>
         {c.examples.map((e, i) => (
           <View key={i} style={{ gap: 10, marginTop: i ? 18 : 0 }}>
-            <Label text={L(`Ví dụ ${i + 1}`, `Example ${i + 1}`)} color={i % 2 ? '#FFD6E0' : '#FFF1B8'} ink="#0F172A" tilt={i % 2 ? 3 : -3} size={13} />
-            <View style={{ borderRadius: 16, padding: 14, backgroundColor: '#F7F0E1' }}>
+            <Label text={L(`Ví dụ ${i + 1}`, `Example ${i + 1}`)} color={i % 2 ? '#FFD6E0' : '#F3F0FB'} ink="#0F172A" tilt={i % 2 ? 3 : -3} size={13} />
+            <View style={{ borderRadius: 16, padding: 14, backgroundColor: '#F1ECFF' }}>
               <MathText size={16} weight="semibold">
                 {e.problem}
               </MathText>
@@ -285,7 +285,7 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
             <CuteBook size={64} />
           </Sticker>
         </Motion>
-        <Label text={L('Theo sách', 'From the book')} color="#FACC15" ink="#2A1B02" tilt={4} size={12} />
+        <Label text={L('Theo sách', 'From the book')} color="#FACC15" ink="#2B2350" tilt={4} size={12} />
       </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
         <Text className="font-heavy" style={{ fontSize: 22, color: '#FFFFFF' }}>
@@ -333,7 +333,7 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
   const st = levelState(best);
   const { L } = useL();
   return (
-    <View style={{ marginTop: 12, borderRadius: 24, padding: 18, backgroundColor: '#FFF6DD', borderWidth: 2, borderColor: st === 'passed' ? '#F2B632' : 'transparent', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+    <View style={{ marginTop: 12, borderRadius: 24, padding: 18, backgroundColor: '#F3F0FB', borderWidth: 2, borderColor: st === 'passed' ? '#F2B632' : 'transparent', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
       <View style={{ gap: 8, alignItems: 'center' }}>
         <Motion kind="float">
           <Sticker tilt={7}>
@@ -343,20 +343,20 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
         <Label text={L(`+${EXTRA_SIZE} câu`, `+${EXTRA_SIZE} questions`)} color="#0F172A" ink="#FFFFFF" tilt={-4} size={12} />
       </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
-        <Text className="font-heavy" style={{ fontSize: 22, color: '#2A1B02' }}>
+        <Text className="font-heavy" style={{ fontSize: 22, color: '#2B2350' }}>
           {L(`Luyện thêm ${EXTRA_SIZE} câu`, `${EXTRA_SIZE} extra questions`)} {st === 'passed' ? '🏅' : ''}
         </Text>
-        <Text className="font-semi" style={{ fontSize: 14, color: '#7A4B00' }}>
+        <Text className="font-semi" style={{ fontSize: 14, color: '#2B2350' }}>
           {L('Ngoài bộ bài theo sách · 🌱 7 dễ → 🔥 7 trung bình → 🚀 6 khó · câu mới mỗi lượt', 'Beyond the book set · 🌱 7 easy → 🔥 7 medium → 🚀 6 hard · new questions each round')}
         </Text>
-        <Text className="font-semi" style={{ fontSize: 13, color: '#7A4B00' }}>
+        <Text className="font-semi" style={{ fontSize: 13, color: '#2B2350' }}>
           {best ? L(`Tốt nhất ${best.correct}/${best.total} · ${best.rounds} lượt`, `Best ${best.correct}/${best.total} · ${best.rounds} rounds`) : L('Chưa làm', 'Not attempted')}
         </Text>
       </View>
       <Pressable
         accessibilityRole="button"
         onPress={() => router.push(`/sat/lo-trinh/${c.id}/extra` as never)}
-        style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: hovered ? '#7A4B00' : '#F2B632' })}
+        style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: hovered ? '#2B2350' : '#F2B632' })}
       >
         <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
           {best ? L('Làm lượt mới', 'New round') : L(`Làm ${EXTRA_SIZE} câu`, `Do ${EXTRA_SIZE} questions`)}
@@ -369,7 +369,7 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
 function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title: string; kicker: string; tone?: string; art?: React.ReactNode; tag?: { text: string; color: string; ink: string }; children: React.ReactNode }) {
   return (
     <Appear>
-      <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: tone, borderWidth: 1, borderColor: '#F0EBE2' }}>
+      <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: tone, borderWidth: 1, borderColor: '#F3F0FB' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 14 }}>
           <View style={{ flex: 1, gap: 2 }}>
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: '#64748B' }}>
@@ -398,7 +398,7 @@ function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title:
 
 function NavCard({ label, title, onPress, align = 'left' }: { label: string; title: string; onPress: () => void; align?: 'left' | 'right' }) {
   return (
-    <Pressable accessibilityRole="link" onPress={onPress} style={{ flex: 1, maxWidth: 360, borderRadius: 20, padding: 14, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2', alignItems: align === 'right' ? 'flex-end' : 'flex-start' }}>
+    <Pressable accessibilityRole="link" onPress={onPress} style={{ flex: 1, maxWidth: 360, borderRadius: 20, padding: 14, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB', alignItems: align === 'right' ? 'flex-end' : 'flex-start' }}>
       <Text className="font-strong" style={{ fontSize: 13, color: '#64748B' }}>
         {label}
       </Text>

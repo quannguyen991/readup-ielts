@@ -21,10 +21,10 @@ import { rwSkillLabel } from '@/components/sat-rw/skill-label';
 import { useL } from '@/i18n/useL';
 
 /** Màu huy hiệu răng cưa theo mảng (bảng màu chung, không tím). */
-const SEAL_TONE: Record<ErrorArea, string> = { math: '#A8843F', verbal: '#F472B6', vocab: '#22A06B' };
+const SEAL_TONE: Record<ErrorArea, string> = { math: '#6A4BD9', verbal: '#F472B6', vocab: '#22A06B' };
 
 const AREA: Record<ErrorArea, { label: string; labelEn: string; tone: string; bg: string; icon: IconName }> = {
-  math: { label: 'SAT Math', labelEn: 'SAT Math', tone: '#CDA45E', bg: '#FCF8F1', icon: 'grid' },
+  math: { label: 'SAT Math', labelEn: 'SAT Math', tone: '#CDA45E', bg: '#F3F0FB', icon: 'grid' },
   verbal: { label: 'SAT Verbal', labelEn: 'SAT Verbal', tone: '#DB2777', bg: '#FDF2F8', icon: 'letters' },
   vocab: { label: 'Từ vựng', labelEn: 'Vocabulary', tone: '#0D9488', bg: '#F0FDFA', icon: 'book' },
 };
@@ -33,7 +33,7 @@ const TREND: Record<ErrorItem['trend'], { text: string; textEn: string; tone: st
   up: { text: '↑ đang tăng', textEn: '↑ rising', tone: '#E11D48' },
   down: { text: '↓ đang giảm', textEn: '↓ falling', tone: '#16A34A' },
   flat: { text: '→ đứng yên', textEn: '→ steady', tone: '#64748B' },
-  new: { text: '• mới xuất hiện', textEn: '• new', tone: '#D97706' },
+  new: { text: '• mới xuất hiện', textEn: '• new', tone: '#6A4BD9' },
 };
 
 /** Nhãn nút sửa khi giao diện tiếng Anh — suy từ đường dẫn (nhãn gốc ở services giữ tiếng Việt). */

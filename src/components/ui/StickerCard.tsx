@@ -7,6 +7,7 @@ import { useRetroStyle } from '@/components/profile-retro/retro-scope';
 import { RINK } from '@/components/profile-retro/retro-art';
 import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { ensureTaskMotionCss } from '@/components/motion/task-motion';
+import { TileArt } from '@/components/ui/TileArt';
 ensureTaskMotionCss();
 
 type StickerCardProps = ViewProps & {
@@ -17,6 +18,8 @@ type StickerCardProps = ViewProps & {
   bold?: boolean;
   /** Vật trang trí ở góc trên phải (vd. `GlowStars`), nằm trên mặt thẻ, không chặn cú bấm. */
   ornament?: React.ReactNode;
+  /** Có hoạ tiết hình học ở đầu thẻ; cùng một nhãn luôn ra cùng một hình, khác nhãn thì khác hình. */
+  artSeed?: string;
 };
 
 /** Màu mực dùng cho bóng chữ và các chi tiết nhỏ trên thẻ. */
@@ -68,7 +71,7 @@ type Pose = 'rest' | 'hover' | 'press';
  * CHỈ DÙNG Ở NHỮNG CHỖ CHỌN LỰA CHỌN (chủ đề từ vựng, chế độ luyện tập, lưới
  * "App có gì", kệ tính năng) — KHÔNG thay `Card` mặc định của cả app.
  */
-export function StickerCard({ colors: colorsProp, children, className, style, bold, ornament, ...rest }: StickerCardProps) {
+export function StickerCard({ colors: colorsProp, children, className, style, bold, ornament, artSeed, ...rest }: StickerCardProps) {
   const reduced = useReducedMotion();
   const retro = useRetroStyle();
   const px = usePixelTheme();
@@ -128,6 +131,7 @@ export function StickerCard({ colors: colorsProp, children, className, style, bo
         {/* Lớp bóng quét nằm ở đây: Animated.View không nhận className trên web, còn khung trong thì nhận. */}
         <View className={['flex-1 overflow-hidden rounded-card', retro || px ? '' : 'rm-shine'].filter(Boolean).join(' ')}>
           <LinearGradient colors={face} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 16, flex: 1 }}>
+            {artSeed ? <TileArt seed={artSeed} tone={colors} height={92} style={{ marginHorizontal: -16, marginTop: -16, borderRadius: 0 }} /> : null}
             {children}
           </LinearGradient>
           {/* Vệt bóng loáng ở nửa trên — mặt khối bắt sáng, không phải một tờ giấy phẳng. */}

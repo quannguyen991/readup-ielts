@@ -25,7 +25,7 @@ import { useL, type L as LFn } from '@/i18n/useL';
  */
 
 const buildSkills = (L: LFn): RailSkill[] => [
-  { key: 'reading', label: 'Reading', icon: 'book', tint: themedHex('#B8955A'), options: [], href: '/practice' },
+  { key: 'reading', label: 'Reading', icon: 'book', tint: themedHex('#8B6CF0'), options: [], href: '/practice' },
   {
     key: 'listening',
     label: 'Listening',
@@ -52,7 +52,7 @@ const buildSkills = (L: LFn): RailSkill[] => [
     ],
   },
   { key: 'writing', label: 'Writing', icon: 'pencil', tint: '#D5B377', options: [], href: '/write' },
-  { key: 'speaking', label: 'Speaking', icon: 'chat', tint: '#B07A3A', options: [], href: '/speaking' },
+  { key: 'speaking', label: 'Speaking', icon: 'chat', tint: '#6A4BD9', options: [], href: '/speaking' },
 ];
 
 type Item = { test: ListeningTest; section: ListeningSection | null; task?: ListeningGroupType };
@@ -333,7 +333,7 @@ function CategoryChip({ label, selected, onPress }: { label: string; selected: b
       accessibilityState={{ selected }}
       onPress={() => { playSfx('tab'); onPress(); }}
       className="rounded-pill border px-3.5 py-2"
-      style={{ minHeight: 40, borderColor: selected ? color.primary : color.border, backgroundColor: selected ? '#F5EBD8' : '#FFFFFF' }}
+      style={{ minHeight: 40, borderColor: selected ? color.primary : color.border, backgroundColor: selected ? '#F3F0FB' : '#FFFFFF' }}
     >
       <Text className="font-nun-strong" style={{ fontSize: 13, color: selected ? color.primary : color.ink }}>{label}</Text>
     </Pressable>

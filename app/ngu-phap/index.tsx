@@ -5,14 +5,18 @@ import { router } from 'expo-router';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { CEFR_LEVELS, GRAMMAR_LESSONS, lessonsOfLevel, type CefrLevel } from '@/data/grammar';
+import { LevelCard } from '@/components/vocab/LevelCard';
+import { LevelHeader } from '@/components/vocab/LevelHeader';
+import { useReadingFonts } from '@/lib/readingFonts';
 import { isPassed, useGrammarProgressStore } from '@/store/useGrammarProgressStore';
 
 /** DANH SÁCH NGỮ PHÁP: chọn cấp độ A1 → C2, bấm bài để vào phòng học. */
 
-const INK = '#2B2118';
+const INK = '#2B2350';
 const ACCENT = '#B94A70';
 
 export default function GrammarIndex() {
+  useReadingFonts();
   const { width } = useWindowDimensions();
   const wide = width >= 900;
   const [level, setLevel] = useState<CefrLevel>('A1');
@@ -28,16 +32,11 @@ export default function GrammarIndex() {
 
   return (
     <Screen>
-      <View style={{ backgroundColor: '#0F1D33', backgroundImage: 'linear-gradient(120deg, #0F1D33, #22345A)', borderRadius: 26, borderWidth: 2, borderColor: INK, padding: 24, boxShadow: `0 5px 0 ${INK}` } as object}>
-        <Text className="font-heavy" style={{ fontSize: 30, color: '#F3D9A0' }}>Luyện ngữ pháp</Text>
-        <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: '#E9DCC6' }}>
-          Mỗi bài có các bước rõ ràng: định nghĩa, dùng khi nào, quy tắc, lỗi hay mắc, rồi kiểm tra cuối.
-        </Text>
-      </View>
+      <LevelHeader eyebrow="Ngữ pháp" title="Luyện ngữ pháp" subtitle="Mỗi bài có các bước rõ ràng: định nghĩa, dùng khi nào, quy tắc, lỗi hay mắc, rồi kiểm tra cuối." />
 
       <View style={{ marginTop: 18, backgroundColor: '#FFFFFF', borderRadius: 20, borderWidth: 2, borderColor: INK, padding: 18, gap: 6, boxShadow: `0 4px 0 ${INK}` } as object}>
         <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>Tiến độ của bạn: {doneCount} / {GRAMMAR_LESSONS.length} bài đã đạt</Text>
-        <View style={{ height: 8, borderRadius: 4, backgroundColor: '#EFE6D6', overflow: 'hidden' }}>
+        <View style={{ height: 8, borderRadius: 4, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
           <View style={{ width: `${Math.round((doneCount / GRAMMAR_LESSONS.length) * 100)}%`, height: 8, backgroundColor: ACCENT } as object} />
         </View>
         {next ? (
@@ -59,23 +58,18 @@ export default function GrammarIndex() {
         ) : null}
       </View>
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 18 }}>
-        {CEFR_LEVELS.map((lv) => {
-          const on = lv === level;
-          return (
-            <Pressable
-              key={lv}
-              accessibilityRole="button"
-              aria-selected={on}
-              onPress={() => setLevel(lv)}
-              style={{ paddingHorizontal: 16, paddingVertical: 9, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: on ? INK : '#FFFFFF' } as object}
-            >
-              <Text className="font-strong" style={{ color: on ? '#FFFFFF' : INK }}>
-                {lv} · {passedIn(lv)}/{counts(lv)}{lv === suggested ? ' ★' : ''}
-              </Text>
-            </Pressable>
-          );
-        })}
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 18 }}>
+        {CEFR_LEVELS.map((lv) => (
+          <LevelCard
+            key={lv}
+            lv={lv}
+            title={lv}
+            sub={`${passedIn(lv)}/${counts(lv)} bài đạt${lv === suggested ? ' · gợi ý' : ''}`}
+            en={false}
+            selected={lv === level}
+            onPress={() => setLevel(lv)}
+          />
+        ))}
       </View>
 
       {lessons.length === 0 ? (
@@ -90,7 +84,7 @@ export default function GrammarIndex() {
                 style={{ backgroundColor: '#FFFFFF', borderRadius: 22, borderWidth: 2, borderColor: INK, padding: 20, gap: 8, boxShadow: `0 5px 0 ${INK}` } as object}
               >
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3E8D2' }}>
+                  <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
                     <Text className="font-strong" style={{ color: ACCENT, fontSize: 12 }}>{l.level} · Bài {l.order}</Text>
                   </View>
                   {passed(l.id) ? <Text className="font-strong" style={{ color: '#15803D', fontSize: 13 }}>✓ Đã đạt</Text> : null}

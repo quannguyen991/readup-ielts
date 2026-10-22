@@ -1,3 +1,4 @@
+import { HeroShell } from '@/components/layout/HeroShell';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -22,6 +23,8 @@ import {
 import { filterArticles, getArticleWithBody } from '@/data/articles';
 import { ActivityList } from '@/components/progress/ActivityList';
 import { StreakRewardsCard } from '@/components/progress/StreakRewardsCard';
+import { StreakFlame } from '@/components/gamify/StreakFlame';
+import { BadgeShelf } from '@/components/gamify/BadgeShelf';
 import { useActivityFeed } from '@/services/activity/use-activity';
 import { isActiveDay } from '@/services/gamification/points';
 import { bandDelta, formatBand, latestBand } from '@/lib/band';
@@ -229,12 +232,7 @@ export default function ProgressScreen() {
         Thẻ đầu trang: linh vật đổi theo chuỗi ngày thật (chuỗi dài thì vui, chưa có chuỗi
         thì mời học). Chấm 7 ngày gần nhất cho thấy nhịp học đều hay đứt quãng.
       */}
-      <LinearGradient
-        colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ marginTop: 16, borderRadius: 24, padding: 20, borderWidth: 1, borderColor: '#FFFFFF' }}
-      >
+      <HeroShell radius={24} style={{ marginTop: 16, padding: 20 }}>
         <View className="flex-row items-center gap-4">
           <LionMascot pose={lionPose} size={104} />
           <View className="min-w-0 flex-1 gap-1">
@@ -242,6 +240,7 @@ export default function ProgressScreen() {
               {displayName || L('Bạn', 'You')}
             </Text>
             <View className="flex-row items-end gap-1.5">
+              <StreakFlame days={streak.current} size={34} />
               <Text className="font-heavy text-stat text-ink">{streak.current}</Text>
               <Text className="pb-1 font-mid text-label text-body">{L('ngày liên tiếp', 'day streak')}</Text>
             </View>
@@ -251,7 +250,7 @@ export default function ProgressScreen() {
               className="mt-1 self-start rounded-pill px-3 py-1.5"
               style={{ backgroundColor: 'rgba(255,255,255,0.75)' }}
             >
-              <Text className="font-semi text-label" style={{ color: themedHex('#8C6A1F') }}>
+              <Text className="font-semi text-label" style={{ color: themedHex('#6A4BD9') }}>
                 {goal.state === 'no-goal' ? L('Đặt mục tiêu', 'Set a goal') : L(`Mục tiêu IELTS ${goal.target.toFixed(1)}`, `IELTS goal ${goal.target.toFixed(1)}`)}
               </Text>
             </Pressable>
@@ -272,9 +271,10 @@ export default function ProgressScreen() {
             </View>
           ))}
         </View>
-      </LinearGradient>
+      </HeroShell>
 
       <StreakRewardsCard current={streak.current} longest={streak.longest} />
+      <BadgeShelf />
 
       <View
         accessibilityRole="tablist"
@@ -289,9 +289,9 @@ export default function ProgressScreen() {
               aria-selected={on}
               onPress={() => setRange(r)}
               className="flex-1 items-center rounded-pill py-2"
-              style={on ? { backgroundColor: themedHex('#FFF4CF'), borderWidth: 1, borderColor: themedHex('#EBC26A') } : undefined}
+              style={on ? { backgroundColor: themedHex('#F1ECFF'), borderWidth: 1, borderColor: themedHex('#8B6CF0') } : undefined}
             >
-              <Text className={on ? 'font-strong text-label' : 'font-mid text-label text-muted'} style={on ? { color: themedHex('#8C6A1F') } : undefined}>
+              <Text className={on ? 'font-strong text-label' : 'font-mid text-label text-muted'} style={on ? { color: themedHex('#6A4BD9') } : undefined}>
                 {rangeLabel(r)}
               </Text>
             </Pressable>
@@ -317,8 +317,8 @@ export default function ProgressScreen() {
           onPress={() => router.push('/vocabulary' as never)}
           className="flex-1 gap-3 rounded-card border border-border bg-white p-4"
         >
-          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: themedHex('#FFF4CF') }}>
-            <Icon name="book" size={18} color={themedHex('#8C6A1F')} />
+          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: themedHex('#F1ECFF') }}>
+            <Icon name="book" size={18} color={themedHex('#6A4BD9')} />
           </View>
           <View>
             <Text className="font-heavy text-stat text-ink">{words}</Text>
@@ -326,8 +326,8 @@ export default function ProgressScreen() {
           </View>
         </Pressable>
         <View className="flex-1 gap-3 rounded-card border border-border bg-white p-4">
-          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#FDEBD6' }}>
-            <Icon name="flame" size={18} color="#C77A1E" />
+          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
+            <Icon name="flame" size={18} color="#6A4BD9" />
           </View>
           <View>
             <Text className="font-heavy text-stat text-ink">{streak.longest}</Text>
@@ -362,12 +362,12 @@ export default function ProgressScreen() {
         accessibilityRole="button"
         onPress={() => router.push('/plan' as never)}
         className="mt-4 h-12 flex-row items-center justify-center gap-2 rounded-pill border bg-white"
-        style={{ borderColor: themedHex('#EBC26A') }}
+        style={{ borderColor: themedHex('#8B6CF0') }}
       >
-        <Text className="font-strong text-body" style={{ color: themedHex('#8C6A1F') }}>
+        <Text className="font-strong text-body" style={{ color: themedHex('#6A4BD9') }}>
           {L('Điều chỉnh mục tiêu', 'Adjust goal')}
         </Text>
-        <Icon name="chevron-right" size={16} color={themedHex('#8C6A1F')} />
+        <Icon name="chevron-right" size={16} color={themedHex('#6A4BD9')} />
       </Pressable>
 
       <Text className="mt-8 font-strong text-cardTitle text-ink">{L('Chi tiết', 'Details')}</Text>
@@ -686,7 +686,7 @@ function WeekBars({ days, emptyLabel }: { days: { label: string; minutes: number
                   width: '100%',
                   height,
                   borderRadius: 10,
-                  backgroundColor: top ? themedHex('#D9A441') : d.minutes > 0 ? themedHex('#F1DDA0') : '#EFE9DA',
+                  backgroundColor: top ? themedHex('#D9A441') : d.minutes > 0 ? themedHex('#F1DDA0') : '#F3F0FB',
                 }}
               />
               <Text className={top ? 'font-strong text-label text-ink' : 'font-mid text-label text-muted'}>{d.label}</Text>

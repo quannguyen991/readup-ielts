@@ -10,10 +10,10 @@ import { useVocabStore } from '@/store/useVocabStore';
 
 /** Mỗi nhóm một màu riêng, chữ trắng đủ tương phản trên nền. */
 const CATEGORY_COLOR: Record<ClipCategory, string> = {
-  inspire: '#8F6E36',
+  inspire: '#6A4BD9',
   people: '#24375A',
   life: '#0F766E',
-  words: '#C2410C',
+  words: '#6A4BD9',
 };
 
 /**
@@ -81,7 +81,7 @@ export function ClipCard({
       <View className="gap-3 p-4">
         <View className="flex-row flex-wrap items-center gap-2">
           <Pill label={category ? L(category.vi, category.en) : ''} bg={CATEGORY_COLOR[clip.category]} fg="#FFFFFF" />
-          <Pill label={video.level} bg="#EFE3C8" fg="#7D5E27" />
+          <Pill label={video.level} bg="#EEE9FF" fg="#6A4BD9" />
           {duration ? <Text className="font-sans text-label text-subtle">{duration}</Text> : null}
         </View>
 
@@ -115,7 +115,7 @@ export function ClipCard({
                   saved ? 'border-border bg-surface' : 'border-primary bg-surface'
                 }`}
               >
-                <Icon name={saved ? 'check' : 'bookmark'} size={14} color={saved ? '#64748B' : '#8F6E36'} />
+                <Icon name={saved ? 'check' : 'bookmark'} size={14} color={saved ? '#64748B' : '#6A4BD9'} />
                 <Text className={`font-semi text-label ${saved ? 'text-muted' : 'text-primary'}`}>
                   {saved ? L('Đã lưu', 'Saved') : L('Lưu', 'Save')}
                 </Text>
@@ -168,7 +168,7 @@ export function ClipCard({
           className="flex-row items-center gap-1.5 self-start"
         >
           <Text className="font-semi text-label text-primary">{L('Mở trên YouTube', 'Open on YouTube')}</Text>
-          <Icon name="arrow-right" size={14} color="#8F6E36" />
+          <Icon name="arrow-right" size={14} color="#6A4BD9" />
         </Pressable>
       </View>
     </View>

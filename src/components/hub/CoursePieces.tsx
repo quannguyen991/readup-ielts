@@ -10,9 +10,9 @@ import { HUB } from './theme';
 export const KIND_STYLE: Record<LessonKind, { bg: string; fg: string; icon: IconName }> = {
   LEARN: { bg: '#EDE9FE', fg: '#6D28D9', icon: 'book' },
   WATCH: { bg: '#E0F2FE', fg: '#0369A1', icon: 'play' },
-  MAKEOVER: { bg: '#FFEDD5', fg: '#C2410C', icon: 'sparkle' },
+  MAKEOVER: { bg: '#F3F0FB', fg: '#6A4BD9', icon: 'sparkle' },
   EYE: { bg: '#CCFBF1', fg: '#0F766E', icon: 'search' },
-  QUIZ: { bg: '#FEF3C7', fg: '#B45309', icon: 'target' },
+  QUIZ: { bg: '#F3F0FB', fg: '#6A4BD9', icon: 'target' },
   CAPSTONE: { bg: '#DCFCE7', fg: '#15803D', icon: 'trophy' },
 };
 

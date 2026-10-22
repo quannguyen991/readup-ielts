@@ -41,7 +41,7 @@ export function ChapterSticker({ art, size = 64, tilt = -6, motion = true }: { a
 
 export const LEVEL_TONE: Record<Level, { bg: string; soft: string; ink: string; emoji: string }> = {
   easy: { bg: '#22A06B', soft: '#E7F7EF', ink: '#14532D', emoji: '🌱' },
-  medium: { bg: '#F2B632', soft: '#FFF6DD', ink: '#7A4B00', emoji: '🔥' },
+  medium: { bg: '#F2B632', soft: '#F3F0FB', ink: '#2B2350', emoji: '🔥' },
   hard: { bg: '#E0533D', soft: '#FDECE9', ink: '#7F1D1D', emoji: '🚀' },
 };
 
@@ -91,7 +91,7 @@ export function BiText({ t, lang, wide, size = 15, strong = false }: { t: Bi; la
         </Text>
       </View>
       <View style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
-        <Tag text="EN" color="#A8843F" />
+        <Tag text="EN" color="#6A4BD9" />
         <Text className={font} style={{ flex: 1, fontSize: size, lineHeight: size * 1.5, color: '#334155' }} lang="en">
           {t.en}
         </Text>

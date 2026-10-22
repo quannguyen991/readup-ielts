@@ -106,7 +106,7 @@ export function PromoGiftOverlay() {
 
   const content = (
     <>
-          <LinearGradient colors={['#A8843F', themedHex('#CCA35B'), '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 20, paddingTop: compact ? 18 : 28, paddingBottom: compact ? 16 : 24, alignItems: 'center' }}>
+          <LinearGradient colors={['#6A4BD9', themedHex('#F0644F'), '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 20, paddingTop: compact ? 18 : 28, paddingBottom: compact ? 16 : 24, alignItems: 'center' }}>
             <Text style={{ fontSize: compact ? 40 : 54 }}>{done ? '🎉' : '🎁'}</Text>
             <Text className="font-strong" style={{ marginTop: 6, fontSize: 14, letterSpacing: 1.2, color: '#FDE68A' }}>
               {L('QUÀ CUỐI THÁNG 9 · BAND 9', 'END-OF-SEPTEMBER GIFT · BAND 9')}
@@ -127,9 +127,9 @@ export function PromoGiftOverlay() {
           </LinearGradient>
 
           <View style={{ padding: compact ? 16 : 22, gap: 12 }}>
-            <View style={{ flexDirection: 'row', gap: 10, borderRadius: 16, padding: 12, backgroundColor: '#FEF3C7' }}>
+            <View style={{ flexDirection: 'row', gap: 10, borderRadius: 16, padding: 12, backgroundColor: '#F3F0FB' }}>
               <Text style={{ fontSize: 20 }}>⚡</Text>
-              <Text className="font-sans" style={{ flex: 1, fontSize: 14, lineHeight: 21, color: '#78350F' }}>
+              <Text className="font-sans" style={{ flex: 1, fontSize: 14, lineHeight: 21, color: '#2B2350' }}>
                 <Text className="font-strong">{L('Mùa sao ×2 từ 30/9 đến hết 30/10:', 'Double-star season, 30 Sep – 30 Oct:')}</Text>{' '}
                 {L(
                   `mỗi ngày học được nhân đôi sao, trần mỗi ngày nâng từ 60 lên ${PROMO.dailyCap} sao.`,
@@ -157,7 +157,7 @@ export function PromoGiftOverlay() {
             )}
 
             {done ? (
-              <Pressable accessibilityRole="button" onPress={() => setHidden(true)} style={{ borderRadius: 16, minHeight: 48, justifyContent: 'center', alignItems: 'center', backgroundColor: '#A8843F' }}>
+              <Pressable accessibilityRole="button" onPress={() => setHidden(true)} style={{ borderRadius: 16, minHeight: 48, justifyContent: 'center', alignItems: 'center', backgroundColor: '#6A4BD9' }}>
                 <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
                   {L('Bắt đầu học', 'Start learning')}
                 </Text>
@@ -165,7 +165,7 @@ export function PromoGiftOverlay() {
             ) : (
               <>
                 <Pressable accessibilityRole="button" onPress={claim} style={{ borderRadius: 16, minHeight: 48, justifyContent: 'center', alignItems: 'center', backgroundColor: GOLD }}>
-                  <Text className="font-heavy" style={{ fontSize: 16, color: '#2A1B02' }}>
+                  <Text className="font-heavy" style={{ fontSize: 16, color: '#2B2350' }}>
                     {L('🎁 Nhận quà', '🎁 Claim gift')}
                   </Text>
                 </Pressable>

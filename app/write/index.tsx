@@ -82,7 +82,7 @@ export default function WritingHome() {
   bằng chữ.
 */
 const TONES = {
-  moss: { bg: '#6F5323', ink: '#FDFAF4', pattern: '#0B5265', chip: '#0B5265' },
+  moss: { bg: '#2B2350', ink: '#F3F0FB', pattern: '#0B5265', chip: '#0B5265' },
   amber: { bg: '#A7193F', ink: '#FFF5F7', pattern: '#7E1232', chip: '#7E1232' },
 } as const;
 

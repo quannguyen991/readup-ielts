@@ -22,13 +22,13 @@ import Svg, { Defs, Ellipse, LinearGradient, Pattern, Path, RadialGradient, Rect
  */
 
 /** Xanh dương đậm → chàm → tím. Đủ tối để chữ trắng và thẻ giấy sáng nổi lên. */
-const BASE_STOPS = ['#0F1D33', '#1A2B48', '#564528'] as const;
+const BASE_STOPS = ['#0F1D33', '#1A2B48', '#2B2350'] as const;
 
 /** Kem, hồng, tím nhạt: fallback dùng ở trang giới thiệu và hero sáng. */
-export const LIGHT_STOPS = ['#FFFDF8', '#FBF6EC', '#F5ECD9'] as const;
+export const LIGHT_STOPS = ['#F3F0FB', '#F3F0FB', '#F3F0FB'] as const;
 
 /** Nét kẻ cho bản sáng — hồng rất mờ, không phải trắng. */
-export const LIGHT_LINE = 'rgba(143, 110, 54, 0.10)';
+export const LIGHT_LINE = 'rgba(106, 75, 217, 0.10)';
 
 /**
  * Nền CHUNG của các màn duyệt: xanh cornflower, kẻ caro.
@@ -41,8 +41,8 @@ export const LIGHT_LINE = 'rgba(143, 110, 54, 0.10)';
  * không nổi nữa. Chữ nằm ngoài thẻ phải là `text-ink` hoặc trắng.
  */
 // Nền duyệt mặc định — bảng màu 4 lựa chọn nằm trong `cute-palettes.ts`.
-export const CANVAS_STOPS = ['#F4EFE4', '#F0E9DA', '#EBE2CE'] as const;
-export const CANVAS_LINE = 'rgba(143, 110, 54, 0.10)';
+export const CANVAS_STOPS = ['#F3F0FB', '#F3F0FB', '#F3F0FB'] as const;
+export const CANVAS_LINE = 'rgba(106, 75, 217, 0.10)';
 
 export function GridBackdrop({
   cell = 34,
@@ -50,7 +50,7 @@ export function GridBackdrop({
   line = 'rgba(255,255,255,0.12)',
   showGrid = true,
   pattern = 'grid',
-  blobs = ['#E9D3A0', '#F1E4C8'],
+  blobs = ['#E9D3A0', '#F3F0FB'],
   margin,
   children,
 }: {

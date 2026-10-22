@@ -131,7 +131,7 @@ function buildForm(num: number): SatPracticeForm {
       period: `Kỳ thi ${sub}`,
       sourceBook: 'Official Real Tests Transcripts 2024',
       badge: 'THI THẬT 2024',
-      badgeColor: '#B7791F',
+      badgeColor: '#6A4BD9',
       descriptionVi: `Đề thi thật Digital SAT đợt thi ${sub} tại các điểm thi trong nước và quốc tế. Phân bố câu hỏi bám sát 100% ma trận đề thi thực tế.`,
       descriptionEn: `Official Digital SAT real test from ${sub} administrations. Exact question difficulty, distractors, and adaptive scaling.`,
       adaptive: true,

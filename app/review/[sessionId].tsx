@@ -128,7 +128,7 @@ export default function ReviewScreen() {
   const skipped = session.attempts.filter((a) => !a.isCorrect && !a.userAnswer?.trim()).length;
   const wrong = incorrect - skipped;
   const accPct = pct(session.rawScore, session.total);
-  const cheer = accPct >= 80 ? { text: L('Xuất sắc 🏆', 'Excellent 🏆'), bg: '#22A06B' } : accPct >= 60 ? { text: L('Khá lắm ⭐', 'Nice work ⭐'), bg: '#A8843F' } : { text: L('Ôn tiếp nhé 💪', 'Keep practising 💪'), bg: '#F0703F' };
+  const cheer = accPct >= 80 ? { text: L('Xuất sắc 🏆', 'Excellent 🏆'), bg: '#22A06B' } : accPct >= 60 ? { text: L('Khá lắm ⭐', 'Nice work ⭐'), bg: '#6A4BD9' } : { text: L('Ôn tiếp nhé 💪', 'Keep practising 💪'), bg: '#F0703F' };
 
   return (
     <Screen>

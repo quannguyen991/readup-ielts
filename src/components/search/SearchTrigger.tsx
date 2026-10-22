@@ -41,10 +41,10 @@ export function SidebarSearchTrigger({
       style={{
         borderWidth: 1,
         borderColor: tone.border,
-        backgroundColor: hovered ? tone.hover : tone.isDark ? 'rgba(255,255,255,0.04)' : '#FFFDF7',
+        backgroundColor: hovered ? tone.hover : tone.isDark ? 'rgba(255,255,255,0.04)' : '#F3F0FB',
       }}
     >
-      <Icon name="search" size={collapsed ? 19 : 17} color={tone.isDark ? tone.text : '#A8843F'} strokeWidth={2} />
+      <Icon name="search" size={collapsed ? 19 : 17} color={tone.isDark ? tone.text : '#6A4BD9'} strokeWidth={2} />
       {collapsed ? null : (
         <>
           <Text numberOfLines={1} className="min-w-0 flex-1 font-semi text-[14px]" style={{ color: tone.muted }}>

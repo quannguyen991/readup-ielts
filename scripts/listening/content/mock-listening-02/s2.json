@@ -1,0 +1,207 @@
+{
+  "n": 2,
+  "title": "Orientation talk at a botanical garden",
+  "context": "A volunteer guide gives a short orientation talk to visitors before a guided tour of a botanical garden, explaining the history, the layout and practical arrangements.",
+  "transcript": [
+    {
+      "speaker": "Guide",
+      "text": "Good morning, everyone, and welcome to Greenwood Botanical Gardens. My name is Helen, and I'll be your guide for this morning's tour. Before we set off, I'd like to give you a little background and a few practical points, because some of you are new to the gardens and the layout can be a bit confusing at first."
+    },
+    {
+      "text": "The gardens were originally built in 1880 as a private estate for the Harrington family. They loved plants, and over the years they collected species from all over the world. When the last family member died, the estate was given to the city, and it opened to the public in 1923. So, as you can see, the gardens still have a very grand, old-fashioned feel in places, especially around the lake.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "The tour takes about an hour and a half and covers the four main areas. We'll start at the visitor centre, not at the main gate, so please make sure you've found us before you wander off. The tour begins at ten o'clock sharp, because the glasshouse opens for a short time at the beginning of the morning, and I want to be inside while it's quiet.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "Speaking of the glasshouse, which is in the north-west corner of the gardens and a bit of a walk from here, I need to ask you something. It's full of delicate plants, and large bags can knock the leaves and damage the displays. Could you please leave any large bags in the lockers at the visitor centre? Small handbags and cameras are fine to bring with you. The lockers are free, but they take one pound coins, so please check you have some change.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "Now, the most popular part of the tour, especially with children, is the butterfly enclosure. It's a warm, netted area, and there are around forty species flying around at this time of year. Please don't touch the butterflies, and keep the gate closed behind you. If you're interested in photography, this is the best spot on the whole tour.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "After the butterflies, we'll walk down to the lily pond by the lake. The lake is quite deep in the middle, so please keep children close to the path. The pond is home to several species of water lily, and some of them only flower at night, which is a lovely thing to see if you come back in the evening.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "You'll find the sensory garden on the way back. It's designed for visitors who are blind or partially sighted, but everyone is welcome to use it. The plants have strong scents and different textures, and there are labels in large print and in braille. It sits just behind the glasshouse, so we'll pass it on our way to the herb garden.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "Finally, the tea room is on the far side of the central lawn, directly opposite the visitor centre. It's a great place to rest your feet at the end of the tour. Most of the cakes are made with herbs from our own herb garden, which is a nice touch. Please note that the tea room closes at four, while the gardens themselves stay open until six.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "Let me finish with a few reminders. The guidebook costs four pounds, but you can borrow a free map at the desk if you don't want to buy anything. We'll finish the tour at the gift shop, which is next to the main gate. After that you're free to explore on your own. Please meet back at the visitor centre if you want to join the afternoon tour, which starts at quarter past one.",
+      "speaker": "Guide"
+    },
+    {
+      "text": "So, to recap: be at the visitor centre for ten o'clock, leave your large bags in the lockers, and keep your eyes open for the water lilies. Does anyone have any questions before we set off?",
+      "speaker": "Guide"
+    }
+  ],
+  "groups": [
+    {
+      "type": "mcq-one",
+      "title": "Questions 11-13",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 11,
+          "prompt": "Why were the gardens originally created?",
+          "answer": "B",
+          "options": [
+            {
+              "key": "A",
+              "text": "as a place for scientific research"
+            },
+            {
+              "key": "B",
+              "text": "as a private estate for one family"
+            },
+            {
+              "key": "C",
+              "text": "as a school for training gardeners"
+            }
+          ]
+        },
+        {
+          "n": 12,
+          "prompt": "Which area of the tour is most popular with children?",
+          "answer": "B",
+          "options": [
+            {
+              "key": "A",
+              "text": "the lily pond"
+            },
+            {
+              "key": "B",
+              "text": "the butterfly enclosure"
+            },
+            {
+              "key": "C",
+              "text": "the herb garden"
+            }
+          ]
+        },
+        {
+          "n": 13,
+          "prompt": "What should visitors do with large bags before the glasshouse?",
+          "answer": "C",
+          "options": [
+            {
+              "key": "A",
+              "text": "show them to the guide"
+            },
+            {
+              "key": "B",
+              "text": "pay a small fee to bring them in"
+            },
+            {
+              "key": "C",
+              "text": "leave them in the lockers at the visitor centre"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "title": "Questions 14-17",
+      "instruction": "Label the map below. Choose the correct letter, A-H, for Questions 14-17.",
+      "options": [
+        {
+          "key": "A",
+          "text": "by the main gate, on the left"
+        },
+        {
+          "key": "B",
+          "text": "in the north-west corner"
+        },
+        {
+          "key": "C",
+          "text": "beside the lake"
+        },
+        {
+          "key": "D",
+          "text": "at the far end of the central lawn"
+        },
+        {
+          "key": "E",
+          "text": "opposite the visitor centre"
+        },
+        {
+          "key": "F",
+          "text": "just behind the glasshouse"
+        },
+        {
+          "key": "G",
+          "text": "next to the herb garden"
+        },
+        {
+          "key": "H",
+          "text": "in the south, past the maze"
+        }
+      ],
+      "questions": [
+        {
+          "n": 14,
+          "prompt": "Glasshouse",
+          "answer": "B"
+        },
+        {
+          "n": 15,
+          "prompt": "Tea room",
+          "answer": "E"
+        },
+        {
+          "n": 16,
+          "prompt": "Sensory garden",
+          "answer": "F"
+        },
+        {
+          "n": 17,
+          "prompt": "Lily pond",
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "title": "Questions 18-20",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Practical information",
+        "The tour ends at the {{18}}.",
+        "A guidebook costs £{{19}}.",
+        "The afternoon tour starts at {{20}} p.m."
+      ],
+      "questions": [
+        {
+          "n": 18,
+          "answer": "gift shop"
+        },
+        {
+          "n": 19,
+          "answer": "4",
+          "accept": [
+            "four"
+          ]
+        },
+        {
+          "n": 20,
+          "answer": "1.15",
+          "accept": [
+            "quarter past one",
+            "1:15"
+          ]
+        }
+      ]
+    }
+  ]
+}

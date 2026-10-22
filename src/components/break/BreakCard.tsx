@@ -16,7 +16,7 @@ function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () 
       aria-selected={on}
       onPress={onPress}
       className="items-center justify-center rounded-pill px-3.5 py-2"
-      style={{ minHeight: 44, backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F0EBE2' }}
+      style={{ minHeight: 44, backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F3F0FB' }}
     >
       <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
         {label}

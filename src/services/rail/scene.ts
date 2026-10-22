@@ -47,7 +47,7 @@ type Mood = { sky: string[]; ambient: string; amb: number; horizon: string; lit:
 
 function mood(time: TimeOfDay, weather: Weather): Mood {
   const base: Record<TimeOfDay, Mood> = {
-    day: { sky: ['#3F86D4', '#6DAAE4', '#9CCBEF', '#CDE7F6', '#E8F4FA'], ambient: '#FFFFFF', amb: 0, horizon: '#D8EDF7', lit: 0, glow: '#FFF6D0' },
+    day: { sky: ['#3F86D4', '#6DAAE4', '#9CCBEF', '#CDE7F6', '#E8F4FA'], ambient: '#FFFFFF', amb: 0, horizon: '#D8EDF7', lit: 0, glow: '#F3F0FB' },
     sunset: { sky: ['#2E2759', '#6B3F80', '#B85A88', '#EC8A86', '#F9B77E', '#FCD89C'], ambient: '#B8577A', amb: 0.33, horizon: '#F6B488', lit: 0.3, glow: '#FFD08A' },
     night: { sky: ['#050821', '#0B1236', '#16204C', '#243264', '#34467A'], ambient: '#0A1234', amb: 0.6, horizon: '#2E3E72', lit: 0.55, glow: '#FFD27A' },
   };
@@ -164,7 +164,7 @@ function celestial(g: Ctx, m: Mood, time: TimeOfDay, weather: Weather, r: () => 
       R(g, x, y, 1, 1, r() > 0.8 ? '#FFFFFF' : '#AFC0EA');
     }
     if (weather === 'clear') {
-      disc(g, W * 0.82, 26, 9, '#F4EFD6');
+      disc(g, W * 0.82, 26, 9, '#F3F0FB');
       disc(g, W * 0.82 + 4, 23, 8, mix(m.sky[0]!, m.sky[1]!, 0.5));
     }
   } else if (time === 'sunset') {
@@ -174,8 +174,8 @@ function celestial(g: Ctx, m: Mood, time: TimeOfDay, weather: Weather, r: () => 
     disc(g, cx, cy, 13, '#FFD27E');
     disc(g, cx, cy, 10, '#FFE7A8');
   } else {
-    disc(g, W * 0.85, 22, 8, '#FFF4C4');
-    disc(g, W * 0.85, 22, 6, '#FFFBE6');
+    disc(g, W * 0.85, 22, 8, '#F3F0FB');
+    disc(g, W * 0.85, 22, 6, '#F3F0FB');
   }
 }
 
@@ -323,20 +323,20 @@ function mountains(g: Ctx, st: Station, m: Mood, weather: Weather, r: () => numb
 type Pal = { walls: string[]; roof: string[]; glass: string };
 const PALETTES: Record<string, Pal> = {
   modern: { walls: ['#8FA3B8', '#6E86A0', '#A9B7C6', '#5C7390', '#B7A48E', '#7C8FA8', '#4E6485'], roof: ['#3E4D63'], glass: '#BFD7EA' },
-  european: { walls: ['#E9D8B8', '#D9B99B', '#F1E3C8', '#C9A98A', '#E4C7A5', '#D7C3A4'], roof: ['#5F6B7A', '#8A4B3A', '#4E5B6B'], glass: '#9FB4C8' },
+  european: { walls: ['#E9D8B8', '#D9B99B', '#F3F0FB', '#C9A98A', '#E4C7A5', '#D7C3A4'], roof: ['#5F6B7A', '#8A4B3A', '#4E5B6B'], glass: '#9FB4C8' },
   asian: { walls: ['#D8CDBB', '#C9BBA4', '#E4DACA', '#BCAE98'], roof: ['#3A4252', '#2F3645', '#4A3A36'], glass: '#A6B8C6' },
   vn: { walls: ['#F2D27A', '#E8B86B', '#F0E0B0', '#E9A7A0', '#A8CFA0', '#F4C98A', '#DCC7A0'], roof: ['#A0503A', '#8E4632', '#6E4A3A'], glass: '#8FA9B8' },
-  old: { walls: ['#E6D6B8', '#D8C39C', '#EDE3CF', '#CDB590'], roof: ['#B0674A', '#9A5A40'], glass: '#8C9AA8' },
+  old: { walls: ['#E6D6B8', '#D8C39C', '#F3F0FB', '#CDB590'], roof: ['#6A4BD9', '#6A4BD9'], glass: '#8C9AA8' },
   nordic: { walls: ['#C0473A', '#E0A23A', '#E8D9B8', '#3F6E8C', '#A64234'], roof: ['#3A3F48', '#2E343C'], glass: '#9FB4C8' },
   desert: { walls: ['#E6CFA2', '#D8BC88'], roof: ['#C4A06A'], glass: '#9AA4AE' },
-  tropical: { walls: ['#EFE6D2', '#F2D8B0'], roof: ['#B0674A'], glass: '#9FB4C8' },
+  tropical: { walls: ['#F3F0FB', '#F2D8B0'], roof: ['#6A4BD9'], glass: '#9FB4C8' },
 };
 
 function windows(g: Ctx, m: Mood, x: number, y: number, w: number, h: number, r: () => number, glass: string, cell = 3) {
   for (let yy = y + 2; yy < y + h - 2; yy += cell) {
     for (let xx = x + 1; xx < x + w - 1; xx += cell - 1 + (cell > 3 ? 1 : 0)) {
       const on = r() < m.lit;
-      R(g, xx, yy, 1, 1, on ? (r() < 0.8 ? '#FFD27A' : '#FFF2C8') : shade(m, glass, 0.05));
+      R(g, xx, yy, 1, 1, on ? (r() < 0.8 ? '#FFD27A' : '#F3F0FB') : shade(m, glass, 0.05));
     }
   }
 }
@@ -397,7 +397,7 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
   const dark = shade(m, '#4A5568', 0.08);
   const mid = shade(m, '#8A95A8', 0.08);
   const light = shade(m, '#C9D1DC', 0.05);
-  const warm = t === 'day' ? shade(m, '#E7E0CF') : '#FFD27A';
+  const warm = t === 'day' ? shade(m, '#F3F0FB') : '#FFD27A';
   const red = shade(m, '#C0392B', 0.05);
   const S = (v: number) => Math.round(v * s);
   switch (kind) {
@@ -422,7 +422,7 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
       for (let y = 0; y < h; y++) {
         const k = y / h;
         const w = Math.round(S(2) + k * k * S(22));
-        const col = t === 'night' ? mix('#8C6A3A', '#FFC766', 0.6) : shade(m, '#7A5C3E');
+        const col = t === 'night' ? mix('#6A4BD9', '#FFC766', 0.6) : shade(m, '#7A5C3E');
         R(g, cx - w, b - h + y, 2, 1, col);
         R(g, cx + w - 1, b - h + y, 2, 1, col);
         if (y % 5 === 0) R(g, cx - w, b - h + y, w * 2, 1, col);
@@ -477,12 +477,12 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
       const h = S(72);
       R(g, cx - S(5), b - h, S(10), h, shade(m, '#C8A86E', 0.05));
       R(g, cx - S(6), b - h + S(8), S(12), S(12), shade(m, '#B8985E', 0.05));
-      disc(g, cx, b - h + S(14), S(4), t === 'day' ? '#F4EFD6' : '#FFE9A8');
+      disc(g, cx, b - h + S(14), S(4), t === 'day' ? '#F3F0FB' : '#FFE9A8');
       tri(g, cx, b - h - S(18), b - h, S(6), shade(m, '#5E6B6A', 0.05));
       break;
     }
     case 'dome': {
-      R(g, cx - S(18), b - S(22), S(36), S(22), shade(m, '#E7E0CF', 0.08));
+      R(g, cx - S(18), b - S(22), S(36), S(22), shade(m, '#F3F0FB', 0.08));
       for (let i = -3; i <= 3; i++) R(g, cx + i * S(5), b - S(20), 1, S(18), shade(m, '#BFB6A2', 0.08));
       R(g, cx - S(10), b - S(30), S(20), S(8), shade(m, '#D9D1BE', 0.08));
       dome(g, cx, b - S(30), S(11), S(14), shade(m, '#8FA8A0', 0.08));
@@ -529,7 +529,7 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
       ] as const) {
         for (let y = 0; y < hh; y++) {
           const w = Math.round(ww * Math.sqrt(y / hh));
-          R(g, cx + dx - w + Math.round((1 - y / hh) * 5), b - S(8) - hh + y, w, 1, shade(m, '#F6F3EA', 0.05));
+          R(g, cx + dx - w + Math.round((1 - y / hh) * 5), b - S(8) - hh + y, w, 1, shade(m, '#F3F0FB', 0.05));
         }
       }
       break;
@@ -608,7 +608,7 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
     }
     case 'stupa': {
       R(g, cx - S(14), b - S(10), S(28), S(10), shade(m, '#E8DEC8', 0.05));
-      dome(g, cx, b - S(10), S(10), S(12), shade(m, '#F2E6C8', 0.05));
+      dome(g, cx, b - S(10), S(10), S(12), shade(m, '#F3F0FB', 0.05));
       for (let y = 0; y < S(26); y++) {
         const w = Math.max(1, Math.round(S(4) * (1 - y / S(26))));
         R(g, cx - w, b - S(22) - y, w * 2 + 1, 1, t === 'day' ? shade(m, '#E0B040') : '#FFD27A');
@@ -649,7 +649,7 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
       break;
     }
     case 'coveredbridge': {
-      R(g, cx - S(18), b - S(6), S(36), S(6), shade(m, '#8A5A3A', 0.05));
+      R(g, cx - S(18), b - S(6), S(36), S(6), shade(m, '#6A4BD9', 0.05));
       R(g, cx - S(14), b - S(14), S(28), S(8), shade(m, '#E8B860', 0.05));
       R(g, cx - S(17), b - S(17), S(34), 3, shade(m, '#7A3E2E', 0.05));
       tri(g, cx, b - S(22), b - S(17), S(10), shade(m, '#7A3E2E', 0.05));
@@ -660,9 +660,9 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
       R(g, cx - S(40), b - S(16), S(80), S(16), shade(m, '#8C7E68', 0.08));
       R(g, cx - S(10), b - S(8), S(20), S(8), shade(m, '#3A3428', 0.08));
       R(g, cx - S(18), b - S(26), S(36), S(10), shade(m, '#C8A070', 0.08));
-      R(g, cx - S(22), b - S(29), S(44), 3, shade(m, '#B8862E', 0.08));
+      R(g, cx - S(22), b - S(29), S(44), 3, shade(m, '#6A4BD9', 0.08));
       R(g, cx - S(12), b - S(36), S(24), S(7), shade(m, '#C8A070', 0.08));
-      R(g, cx - S(15), b - S(38), S(30), 2, shade(m, '#B8862E', 0.08));
+      R(g, cx - S(15), b - S(38), S(30), 2, shade(m, '#6A4BD9', 0.08));
       R(g, cx + S(34), b - S(46), 1, S(30), dark);
       R(g, cx + S(35), b - S(46), S(8), S(5), shade(m, '#D63A2E'));
       break;
@@ -677,13 +677,13 @@ function landmark(g: Ctx, kind: LandmarkKind, cx: number, s: number, m: Mood, t:
         [-1, 1],
         [-1, -1],
       ] as const)
-        for (let i = 2; i < S(18); i++) R(g, hub[0] + dx * i, hub[1] + dy * i, 2, 2, shade(m, '#E8E0D0', 0.05));
+        for (let i = 2; i < S(18); i++) R(g, hub[0] + dx * i, hub[1] + dy * i, 2, 2, shade(m, '#F3F0FB', 0.05));
       break;
     }
     case 'castle': {
       R(g, cx - S(26), b - S(20), S(52), S(20), shade(m, '#E8E4DA', 0.08));
       for (let i = -3; i <= 3; i++) R(g, cx + i * S(7) - 1, b - S(22), 3, 2, shade(m, '#E8E4DA', 0.08));
-      R(g, cx - S(10), b - S(40), S(20), S(20), shade(m, '#F2EEE4', 0.08));
+      R(g, cx - S(10), b - S(40), S(20), S(20), shade(m, '#F3F0FB', 0.08));
       R(g, cx - S(14), b - S(42), S(28), 3, shade(m, '#3F6E6A', 0.08));
       tri(g, cx, b - S(52), b - S(42), S(10), shade(m, '#3F6E6A', 0.08));
       for (const dx of [-S(22), S(22)]) tri(g, cx + dx, b - S(34), b - S(20), S(5), shade(m, '#3F6E6A', 0.08));
@@ -774,7 +774,7 @@ function waterBand(g: Ctx, src: HTMLCanvasElement, m: Mood, top: number, bottom:
 }
 
 function tree(g: Ctx, veg: Vegetation, x: number, base: number, sz: number, m: Mood, r: () => number, snow: boolean) {
-  const trunk = shade(m, '#5A3E2E');
+  const trunk = shade(m, '#2B2350');
   if (veg === 'palm') {
     for (let y = 0; y < sz * 1.6; y++) R(g, x + Math.round(Math.sin(y / 6) * 1.5), base - y, 1, 1, trunk);
     const top = [x + Math.round(Math.sin((sz * 1.6) / 6) * 1.5), base - sz * 1.6] as const;
@@ -804,7 +804,7 @@ function tree(g: Ctx, veg: Vegetation, x: number, base: number, sz: number, m: M
     return;
   }
   const leaf =
-    veg === 'sakura' ? ['#F4A8C8', '#E98AB4', '#FBC8DC'] : veg === 'autumn' ? ['#D9782E', '#C65A2A', '#E8A040'] : veg === 'flowers' ? ['#4E8A4A', '#3E7A3E', '#5E9A52'] : ['#3E7A44', '#2F6A3A', '#4E8A4E'];
+    veg === 'sakura' ? ['#F4A8C8', '#E98AB4', '#FBC8DC'] : veg === 'autumn' ? ['#D9782E', '#6A4BD9', '#E8A040'] : veg === 'flowers' ? ['#4E8A4A', '#3E7A3E', '#5E9A52'] : ['#3E7A44', '#2F6A3A', '#4E8A4E'];
   R(g, x, base - sz * 0.6, 1, sz * 0.6, trunk);
   const cx = x;
   const cy = base - sz * 0.8;
@@ -1391,7 +1391,7 @@ export class RailScene {
 
   private drawParts(dt: number, k: number, m: Mood) {
     const g = this.g;
-    const puff = this.time === 'night' ? '#98A8D6' : this.time === 'sunset' ? '#FFD9CC' : '#FFFFFF';
+    const puff = this.time === 'night' ? '#98A8D6' : this.time === 'sunset' ? '#F3F0FB' : '#FFFFFF';
     const smoke = this.time === 'night' ? '#6C7898' : '#D0D5DE';
     let n = 0;
     for (const p of this.parts) {

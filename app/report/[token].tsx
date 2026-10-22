@@ -13,7 +13,7 @@ import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 import { currentLocale, useL } from '@/i18n/useL';
 
 /** Màu huy hiệu cho từng ô (bảng màu chung). */
-const SEAL: Partial<Record<IconName, string>> = { grid: '#A8843F', letters: '#F472B6', book: '#22A06B', trophy: '#F2B632' };
+const SEAL: Partial<Record<IconName, string>> = { grid: '#6A4BD9', letters: '#F472B6', book: '#22A06B', trophy: '#F2B632' };
 
 type Payload = { name: string | null; generatedAt: string; hasData: boolean; report: ParentReport };
 
@@ -116,7 +116,7 @@ export default function ParentReportScreen() {
           <View className="mt-4 rounded-[22px] bg-white p-5" style={CARD}>
             <View className="flex-row items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="calendar" color="#B07A3A" size={36} />
+                <SealIcon name="calendar" color="#6A4BD9" size={36} />
               </View>
               <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">{L('Thời gian học 7 ngày qua', 'Study time, last 7 days')}</Text>
             </View>
@@ -127,7 +127,7 @@ export default function ParentReportScreen() {
                 return (
                   <View key={d.date} className="flex-1 items-center">
                     <Text className="mb-1 font-semi text-label text-ink">{d.minutes > 0 ? d.minutes : ''}</Text>
-                    <View className="w-full rounded-t-lg" style={{ height: h, backgroundColor: d.minutes > 0 ? '#D7B67D' : '#F0EBE2' }} />
+                    <View className="w-full rounded-t-lg" style={{ height: h, backgroundColor: d.minutes > 0 ? '#D7B67D' : '#F3F0FB' }} />
                     <Text className="mt-1.5 font-sans text-label text-muted">{label}</Text>
                   </View>
                 );
@@ -171,7 +171,7 @@ export default function ParentReportScreen() {
           />
           <Tile
             icon="trophy"
-            tone="#D97706"
+            tone="#6A4BD9"
             title={L('Đề của tuần', 'Weekly challenge')}
             lines={
               r.weekly
@@ -193,7 +193,7 @@ export default function ParentReportScreen() {
               <Text className="mt-1 font-sans text-body text-muted">{L('Những lỗi hay mắc nhất ở SAT Math trong 2 tuần qua — app đã gọi tên và giao bài sửa.', 'The most common SAT Math mistakes in the past 2 weeks — the app has named them and assigned fixes.')}</Text>
               <View className="mt-3 gap-2">
                 {r.topErrors.map((e) => (
-                  <View key={e.title} className="flex-row items-center justify-between rounded-2xl px-4 py-3" style={{ backgroundColor: '#FFF7ED' }}>
+                  <View key={e.title} className="flex-row items-center justify-between rounded-2xl px-4 py-3" style={{ backgroundColor: '#F3F0FB' }}>
                     <Text className="font-semi text-body text-ink">{e.title}</Text>
                     <Text className="font-sans text-label text-muted">{L(`${e.count} lần`, `${e.count}×`)}</Text>
                   </View>

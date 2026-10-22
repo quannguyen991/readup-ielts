@@ -55,7 +55,7 @@ export function IeltsPassageToolbar({
           tool === 'highlight' ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-gray-200 bg-white hover:bg-gray-50'
         }`}
       >
-        <Icon name="pencil" size={14} color={tool === 'highlight' ? '#D97706' : '#64748B'} strokeWidth={2} />
+        <Icon name="pencil" size={14} color={tool === 'highlight' ? '#6A4BD9' : '#64748B'} strokeWidth={2} />
         <Text className={`text-xs font-semibold ${tool === 'highlight' ? 'text-amber-800' : 'text-gray-700'}`}>
           {L('Highlight', 'Highlight')}
         </Text>

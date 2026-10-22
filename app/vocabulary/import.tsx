@@ -99,7 +99,7 @@ export default function ImportDeckScreen() {
             placeholder={L('Dán một bài tiếng Anh vào đây…', 'Paste an English article here…')}
             placeholderTextColor="#94A3B8"
             className="mt-3 rounded-2xl px-4 py-3 font-sans text-body text-ink"
-            style={{ minHeight: 170, borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8', textAlignVertical: 'top' }}
+            style={{ minHeight: 170, borderWidth: 1.5, borderColor: '#F3F0FB', backgroundColor: '#F3F0FB', textAlignVertical: 'top' }}
           />
           <View className="mt-3 flex-row flex-wrap items-center gap-2">
             <Button label={L('Tìm từ đáng học', 'Find words to learn')} iconRight="arrow-right" disabled={text.trim().length < 40} onPress={() => scan(text)} />
@@ -139,7 +139,7 @@ export default function ImportDeckScreen() {
                       <View
                         key={c.word}
                         className="rounded-2xl px-4 py-3"
-                        style={{ borderWidth: 1.5, borderColor: on ? '#E6D2A6' : '#F0EBE2', backgroundColor: on ? '#FDFAF5' : '#FFFFFF' }}
+                        style={{ borderWidth: 1.5, borderColor: on ? '#E6D2A6' : '#F3F0FB', backgroundColor: on ? '#F3F0FB' : '#FFFFFF' }}
                       >
                         <Pressable accessibilityRole="checkbox" aria-checked={on} onPress={() => toggle(c.word)} className="flex-row items-center gap-3">
                           <View
@@ -162,7 +162,7 @@ export default function ImportDeckScreen() {
                             placeholder={L('Nghĩa tiếng Việt (bạn tự điền)…', 'Vietnamese meaning (fill in yourself)…')}
                             placeholderTextColor="#94A3B8"
                             className="mt-2 rounded-xl px-3 py-2 font-sans text-body text-ink"
-                            style={{ borderWidth: 1, borderColor: '#FDE68A', backgroundColor: '#FFFBEB' }}
+                            style={{ borderWidth: 1, borderColor: '#FDE68A', backgroundColor: '#F3F0FB' }}
                           />
                         ) : null}
                         <View className="mt-1.5">
@@ -188,7 +188,7 @@ export default function ImportDeckScreen() {
               placeholder={L('Tên bộ từ', 'Set name')}
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-3 font-semi text-bodyLg text-ink"
-              style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8' }}
+              style={{ borderWidth: 1.5, borderColor: '#F3F0FB', backgroundColor: '#F3F0FB' }}
             />
             <Text className="mt-2 font-sans text-body text-muted">
               {L(
@@ -207,7 +207,7 @@ export default function ImportDeckScreen() {
             <Text className="font-heavy text-sectionTitle text-ink">{L('Bộ bạn đã tạo', 'Your sets')}</Text>
             <View className="mt-3 gap-2">
               {existing.map((d) => (
-                <View key={d.id} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: '#FCFBF8' }}>
+                <View key={d.id} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: '#F3F0FB' }}>
                   <Pressable className="min-w-0 flex-1" onPress={() => router.push(`/vocabulary/topic/${CUSTOM_PREFIX}${d.id}` as never)}>
                     <Text className="font-strong text-body text-ink" numberOfLines={1}>
                       {d.name}

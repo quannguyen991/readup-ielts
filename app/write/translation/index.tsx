@@ -29,9 +29,9 @@ import { STEP_EN } from '@/components/writing/translation-step-en';
 
 /** Màu đi theo thứ tự bậc, từ lam trời lên hồng đậm — nhìn dải màu là biết đang ở đoạn nào. */
 const STEP_COLORS: readonly (readonly [string, string])[] = [
-  ['#CEA662', '#7D5E27'],
+  ['#CEA662', '#6A4BD9'],
   ['#E0C699', '#BF9243'],
-  ['#E8CD9D', '#C3923E'],
+  ['#E8CD9D', '#D9503E'],
   ['#E879F9', '#A21CAF'],
   ['#FB7185', '#BE123C'],
 ];
@@ -97,6 +97,7 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
       <StickerCard
         bold
         colors={STEP_COLORS[index] ?? STEP_COLORS[0]!}
+        artSeed={'tx-' + step.id}
         style={{ flex: 1 }}
         accessibilityRole="button"
         accessibilityLabel={L(`Bậc ${step.order}: ${step.title}`, `Step ${step.order}: ${title}`)}
@@ -148,7 +149,7 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
 
 function Pill({ value, label }: { value: string; label: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1.5, borderColor: '#F0EBE2' }}>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1.5, borderColor: '#F3F0FB' }}>
       <Text className="font-heavy text-body" style={{ color: color.primary }}>
         {value}
       </Text>

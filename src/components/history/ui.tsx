@@ -14,15 +14,15 @@ export const H = {
   body: '#34332E',
   muted: '#85837A',
   rule: '#E8E5DC',
-  tint: '#F5F3EC',
+  tint: '#F3F0FB',
   accent: '#957846',
-  accentSoft: '#F3E9D2',
+  accentSoft: '#F3F0FB',
   good: '#16794A',
   goodBg: 'rgba(22,163,74,0.10)',
   bad: '#B3261E',
   badBg: 'rgba(220,38,38,0.08)',
-  warn: '#8A5A12',
-  warnBg: '#FBF1D3',
+  warn: '#6A4BD9',
+  warnBg: '#F3F0FB',
 } as const;
 
 export const softShadow = (Platform.OS === 'web'

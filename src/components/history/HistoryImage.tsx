@@ -53,7 +53,7 @@ export function HistoryImage({ file, alt, children, immersive = false, sceneId, 
       onLayout={(e) => setBoxW(Math.round(e.nativeEvent.layout.width))}
       style={immersive
         ? { width: '100%', height: '100%', overflow: 'hidden', backgroundColor: '#25261E', alignItems: 'center', justifyContent: 'center' }
-        : { width: '100%', aspectRatio: 16 / 9, borderRadius: 14, overflow: 'hidden', backgroundColor: '#E9E4D6', alignItems: 'center', justifyContent: 'center' }}
+        : { width: '100%', aspectRatio: 16 / 9, borderRadius: 14, overflow: 'hidden', backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}
     >
       {state === 'loading' ? <Skeleton reduced={reduced} label={L('Đang tải ảnh…', 'Loading image…')} /> : null}
       {state === 'error' ? (

@@ -39,7 +39,7 @@ export default function ListeningExamScreen() {
   const test = typeof id === 'string' ? getListeningTest(id) : undefined;
   if (!test) {
     return (
-      <SafeAreaView className="flex-1" style={{ backgroundColor: '#F9F7F3' }}>
+      <SafeAreaView className="flex-1" style={{ backgroundColor: '#F3F0FB' }}>
         <View className="flex-1 items-center justify-center gap-3 p-6">
           <Text className="font-nun-heavy text-ink" style={{ fontSize: 18 }}>{L('Không tìm thấy đề này.', 'Test not found.')}</Text>
           <Button label={L('Về thư viện Listening', 'Back to Listening')} onPress={() => router.replace('/listening' as never)} />
@@ -329,7 +329,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   const unanswered = allNumbers.length - answered.size;
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: '#F9F7F3' }}>
+    <SafeAreaView className="flex-1" style={{ backgroundColor: '#F3F0FB' }}>
       {/* Thanh trên */}
       <View className="flex-row items-center gap-2 border-b border-border bg-surface px-3 py-2.5" style={{ minHeight: 52 }}>
         <Pressable accessibilityRole="button" accessibilityLabel={L('Thoát', 'Exit')} onPress={() => { playSfx('back'); exit(); }} className="items-center justify-center rounded-pill bg-canvas" style={{ width: 44, height: 44 }}>
@@ -444,7 +444,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                   aria-disabled={real && i !== secIdx}
                   onPress={() => goSection(i)}
                   className="items-center justify-center rounded-pill px-4"
-                  style={{ minHeight: 44, backgroundColor: i === secIdx ? SECTION_COLOR[sec.n] : '#F5F1E9', opacity: real && i !== secIdx ? 0.5 : 1 }}
+                  style={{ minHeight: 44, backgroundColor: i === secIdx ? SECTION_COLOR[sec.n] : '#F3F0FB', opacity: real && i !== secIdx ? 0.5 : 1 }}
                 >
                   <Text className="font-nun-strong" style={{ fontSize: 13, color: i === secIdx ? '#FFFFFF' : color.muted }}>Section {sec.n}</Text>
                 </Pressable>
@@ -466,8 +466,8 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
           ) : null}
 
           {review !== null ? (
-            <View className="flex-row flex-wrap items-center justify-center gap-3 px-3 py-2" style={{ backgroundColor: '#FEF4E6' }}>
-              <Text className="font-nun-strong" style={{ fontSize: 13, color: '#7A4A00' }}>
+            <View className="flex-row flex-wrap items-center justify-center gap-3 px-3 py-2" style={{ backgroundColor: '#F3F0FB' }}>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: '#2B2350' }}>
                 {review > 0
                   ? L(`Thời gian kiểm tra đáp án: ${review}s`, `Check your answers: ${review}s`)
                   : secIdx < sections.length - 1
@@ -475,7 +475,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                     : L('Hết thời gian kiểm tra. Bấm Hoàn thành khi sẵn sàng.', 'Check time is over. Press Finish when ready.')}
               </Text>
               {!real && review > 0 && secIdx < sections.length - 1 ? (
-                <Pressable accessibilityRole="button" onPress={() => setReview(0)} className="rounded-pill px-3" style={{ minHeight: 36, justifyContent: 'center', backgroundColor: '#7A4A00' }}>
+                <Pressable accessibilityRole="button" onPress={() => setReview(0)} className="rounded-pill px-3" style={{ minHeight: 36, justifyContent: 'center', backgroundColor: '#2B2350' }}>
                   <Text className="font-nun-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>{L('Sang section tiếp', 'Next section')}</Text>
                 </Pressable>
               ) : null}
@@ -675,7 +675,7 @@ function ModeOption({ on, title, note, onPress, disabled = false }: { on: boolea
       disabled={disabled}
       onPress={onPress}
       className="flex-row items-start gap-3 rounded-panel border p-3"
-      style={{ borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF', opacity: disabled ? 0.6 : 1 }}
+      style={{ borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#F5F2FF' : '#FFFFFF', opacity: disabled ? 0.6 : 1 }}
     >
       <View style={{ width: 18, height: 18, borderRadius: 9, marginTop: 2, borderWidth: on ? 5 : 1.5, borderColor: on ? color.primary : color.borderStrong }} />
       <View className="min-w-0 flex-1">
@@ -700,7 +700,7 @@ function ToggleRow({ label, note, on, onChange, disabled }: { label: string; not
         <Text className="font-nun-strong text-ink" style={{ fontSize: 14 }}>{label}</Text>
         {note ? <Text className="font-nun text-label text-muted">{note}</Text> : null}
       </View>
-      <View style={{ width: 42, height: 24, borderRadius: 12, padding: 2, backgroundColor: on ? color.primary : '#E5DFD2', justifyContent: 'center' }}>
+      <View style={{ width: 42, height: 24, borderRadius: 12, padding: 2, backgroundColor: on ? color.primary : '#F3F0FB', justifyContent: 'center' }}>
         <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: '#FFFFFF', alignSelf: on ? 'flex-end' : 'flex-start' }} />
       </View>
     </Pressable>

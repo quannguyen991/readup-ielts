@@ -12,7 +12,7 @@ export function HistorySceneFilm({ film }: { film: SceneVideo }) {
   const { L, en } = useL();
 
   return (
-    <View style={{ width: '100%', overflow: 'hidden', borderRadius: 20, borderWidth: 1, borderColor: '#D8D4C8', backgroundColor: '#FBFAF6', padding: 16 }}>
+    <View style={{ width: '100%', overflow: 'hidden', borderRadius: 20, borderWidth: 1, borderColor: '#D8D4C8', backgroundColor: '#F3F0FB', padding: 16 }}>
       <Text style={{ fontFamily: readingFont.sansBold, fontSize: 18, color: '#202A24' }}>
         {en ? film.title.en : film.title.vi}
       </Text>

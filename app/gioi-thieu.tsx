@@ -2,7 +2,7 @@
  * THESIS: Band 9 là một SẢNH VÀNG KIM. Không còn tranh: nền là bộ vàng kim mặc định của giao diện (kem ngà → champagne →
  *   vàng nhạt, như PhoneBackdrop), khung vàng đồng (Frame), thẻ kính ngà (GLASS của phone-theme), nút vàng kim
  *   (GOLD_BUTTON). Mỗi phần app treo như một khung vàng, có nhãn kính ngà ở chân phòng.
- * OWN-WORLD: nền sáng ấm, chữ mực nâu vàng #3B2A10, từ nhấn vàng đồng đậm #8C6A1F (tương phản đạt với nền kem). Ảnh
+ * OWN-WORLD: nền sáng ấm, chữ mực nâu vàng #2B2350, từ nhấn vàng đồng đậm #6A4BD9 (tương phản đạt với nền kem). Ảnh
  *   pixel thành phố của Du ngoạn (public/travel/maps) và bìa sách vẫn là hình thật. Phông: Playfair Display cho tiêu đề
  *   (câu thứ hai nghiêng, ánh kim) + Plus Jakarta Sans cho mọi chữ còn lại.
  * STORY: hiểu Band 9 = luyện đề như thi thật + học tiếng Anh như đi du lịch → đi một vòng năm "phòng" (phòng thi, phòng
@@ -18,6 +18,7 @@ import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { MeshBackdrop } from '@/components/layout/MeshBackdrop';
 import { router } from 'expo-router';
 import { useFonts, PlayfairDisplay_700Bold, PlayfairDisplay_600SemiBold_Italic } from '@expo-google-fonts/playfair-display';
 
@@ -60,7 +61,7 @@ import {
 } from '@/components/gallery/glass';
 import { Icon } from '@/components/ui';
 import { Confetti } from '@/components/motion/Confetti';
-import { CuteBulb, CuteChat, CuteMagnifier, CuteMic, CuteRocket, CuteStar, CuteTrophy } from '@/components/illust/CuteMore';
+import { CuteBulb, CuteCalculator, CuteChat, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CuteStar, CuteTrophy } from '@/components/illust/CuteMore';
 import { CuteBook, CuteCalendar, CuteGlobe } from '@/components/illust/Cute';
 import { FREE_SUMMARY, LOCKED_SUMMARY } from '@/lib/access/member-gate';
 import { WELCOME_DAYS } from '@/lib/billing/welcome';
@@ -97,12 +98,12 @@ const WEB_CSS = `
 .b9-marquee-track{display:flex;width:max-content;animation:b9marq 40s linear infinite}
 .b9-slow{animation-duration:80s!important}
 .b9-marquee:hover .b9-marquee-track{animation-play-state:paused}
-@keyframes b9pulse{0%{box-shadow:0 0 0 0 rgba(214,183,116,.6),0 10px 30px -12px rgba(140,106,31,.5)}70%{box-shadow:0 0 0 18px rgba(214,183,116,0),0 10px 30px -12px rgba(140,106,31,.5)}100%{box-shadow:0 0 0 0 rgba(214,183,116,0),0 10px 30px -12px rgba(140,106,31,.5)}}
+@keyframes b9pulse{0%{box-shadow:0 0 0 0 rgba(139,108,240,.6),0 10px 30px -12px rgba(106,75,217,.5)}70%{box-shadow:0 0 0 18px rgba(139,108,240,0),0 10px 30px -12px rgba(106,75,217,.5)}100%{box-shadow:0 0 0 0 rgba(139,108,240,0),0 10px 30px -12px rgba(106,75,217,.5)}}
 .b9-pulse{animation:b9pulse 2.6s ease-out infinite}
 @keyframes b9shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 .b9-shake{animation:b9shake .5s ease}
 .b9-par{overflow:hidden;border-radius:16px}
-.b9-caro{background-image:conic-gradient(rgba(140,106,31,.085) 25%,transparent 0 50%,rgba(140,106,31,.085) 0 75%,transparent 0);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,#000 30%,transparent 100%)}
+.b9-caro{background-image:conic-gradient(rgba(106,75,217,.085) 25%,transparent 0 50%,rgba(106,75,217,.085) 0 75%,transparent 0);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,#000 30%,transparent 100%)}
 @supports (animation-timeline: view()){.b9-par > *{animation:b9par linear both;animation-timeline:view();animation-range:entry 0% exit 100%}}
 @keyframes b9par{from{transform:translateY(-7%) scale(1.06)}to{transform:translateY(7%) scale(1.06)}}
 @keyframes b9drift{0%{transform:translateX(-36px)}100%{transform:translateX(56px)}}
@@ -131,8 +132,7 @@ export default function WelcomeScreen() {
   const { width, height } = useWindowDimensions();
   const [fontsLoaded, fontError] = useFonts({ PlayfairDisplay_700Bold, PlayfairDisplay_600SemiBold_Italic });
   const wide = width >= 980;
-  const sideBySide = width >= 1180;
-  const mid = width >= 640;
+    const mid = width >= 640;
   const pad = wide ? 72 : mid ? 40 : 20;
   const [prog, setProg] = useState(0);
   const [burst, setBurst] = useState(0);
@@ -171,11 +171,9 @@ export default function WelcomeScreen() {
 
       {/* ===== MÀN ĐẦU: sảnh vàng kim ===== */}
       <View style={{ minHeight: wide ? Math.min(Math.max(720, height), 960) : undefined, overflow: 'hidden' }}>
-        <LinearGradient colors={GOLD_SKY} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
+        <MeshBackdrop stickers />
         <Aurora variant="hero" />
-        {isWeb ? <CaroLayer /> : null}
         <Motes />
-        {isWeb ? <HeroScenery side={sideBySide} /> : null}
         <View style={{ flex: 1, paddingHorizontal: pad, paddingBottom: wide ? 40 : 28, zIndex: 2 }}>
           <GlassPanel
             lens={wide}
@@ -204,7 +202,7 @@ export default function WelcomeScreen() {
                 paddingVertical: 9,
                 borderRadius: 999,
                 borderWidth: 1,
-                borderColor: 'rgba(140,106,31,0.45)',
+                borderColor: 'rgba(106,75,217,0.45)',
                 backgroundColor: hovered ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.4)',
               })}
             >
@@ -212,46 +210,46 @@ export default function WelcomeScreen() {
             </Pressable>
           </GlassPanel>
 
-          <View style={{ flex: 1, flexDirection: sideBySide ? 'row' : 'column', alignItems: sideBySide ? 'flex-end' : 'stretch', gap: sideBySide ? 40 : 36 }}>
-            <View style={{ flex: sideBySide ? 1 : undefined, maxWidth: 720, alignSelf: sideBySide ? 'center' : 'auto', paddingTop: sideBySide ? 0 : 20 }}>
-              <View className="b9-rise" style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 20 }}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ width: '100%', maxWidth: 920, alignItems: 'center', paddingTop: wide ? 24 : 12 }}>
+              <View className="b9-rise" style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 20 }}>
                 <View className="b9-rule" style={{ width: 44, height: 2 }} />
                 <Text style={{ color: DEEP_G, fontFamily: SANS_7, fontSize: 13, letterSpacing: 2.2 }}>{'IELTS · SAT · SPEAKING'}</Text>
               </View>
               <Text
                 accessibilityRole="header"
                 className="b9-rise"
-                style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 92 : mid ? 66 : 46, lineHeight: wide ? 96 : mid ? 72 : 52, letterSpacing: wide ? -1.8 : -0.8 }}
+                style={{ textAlign: 'center', color: INK_G, fontFamily: SERIF, fontSize: wide ? 92 : mid ? 66 : 46, lineHeight: wide ? 96 : mid ? 72 : 52, letterSpacing: wide ? -1.8 : -0.8 }}
               >
                 {L('Luyện thi\nnhư thi thật.', 'Practise like\nthe real exam.')}
                 {'\n'}
                 <Text className="b9-gold" style={{ color: DEEP_G, fontFamily: SERIF_I }}>{L('Học tiếng Anh\nnhư đi du lịch.', 'Learn English\nlike you travel.')}</Text>
               </Text>
-              <Text className="b9-rise b9-d2" style={{ marginTop: 24, color: BODY_G, fontSize: mid ? 20 : 17, lineHeight: mid ? 31 : 27, maxWidth: 540, fontFamily: SANS_5 }}>
+              <Text className="b9-rise b9-d2" style={{ marginTop: wide ? 64 : 32, textAlign: 'center', color: BODY_G, fontSize: mid ? 20 : 17, lineHeight: mid ? 31 : 27, maxWidth: 640, fontFamily: SANS_5 }}>
                 {L(
                   'IELTS và SAT trong một app. Đề như phòng thi, chấm ngay, và cả một thế giới để bạn nói tiếng Anh mỗi ngày.',
                   'IELTS and SAT in one app. Exam-room practice, instant marking, and a whole world to speak English in every day.',
                 )}
               </Text>
-              <View className="b9-rise b9-d3" style={{ flexDirection: mid ? 'row' : 'column', gap: 12, marginTop: 34 }}>
+              <View className="b9-rise b9-d3" style={{ flexDirection: mid ? 'row' : 'column', alignItems: 'center', justifyContent: 'center', gap: 12, marginTop: 34 }}>
                 <CTA label={L('Học thử ngay', 'Try it now')} onPress={start} solid />
                 <CTA label={L('Tạo tài khoản', 'Create account')} onPress={signup} />
               </View>
-              <Text style={{ marginTop: 16, color: MUTED_G, fontSize: 14, fontFamily: SANS_5 }}>
+              <Text style={{ marginTop: 16, textAlign: 'center', color: MUTED_G, fontSize: 14, fontFamily: SANS_5 }}>
                 {L(`Miễn phí để bắt đầu · tặng ${WELCOME_DAYS} ngày Plus`, `Free to start · ${WELCOME_DAYS} days of Plus included`)}
               </Text>
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 26 }}>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 10, marginTop: 26 }}>
                 {(en ? HERO_TAGS_EN : HERO_TAGS_VI).map((t) => (
                   <Pill key={t} text={t} tone="gold" />
                 ))}
               </View>
             </View>
 
-            {mid ? <HeroStage L={L} side={sideBySide} /> : null}
+            <HeroStage L={L} card={mid ? 250 : 156} />
           </View>
 
-          <View style={{ marginTop: wide ? 0 : 40 }}>
-            <Plaque title={L('Sảnh vàng kim', 'The gold hall')} meta={L('Nền mặc định của Band 9', 'The default Band 9 ground')} align={wide ? 'right' : 'left'} />
+          <View style={{ marginTop: 48, alignItems: 'center' }}>
+            <Plaque title={L('Sảnh Band 9', 'The Band 9 hall')} meta={L('Nền chính của Band 9', 'The main Band 9 ground')} align="center" />
           </View>
         </View>
       </View>
@@ -279,13 +277,13 @@ export default function WelcomeScreen() {
       <Room wide={wide} pad={pad} plaque={{ title: L('Phòng luyện nói với AI', 'The AI speaking room'), meta: L('Phòng 2', 'Room 2') }}>
         <Exhibit
           wide={wide}
-          flip
           frameWidth={500}
           frame={<AppImage src="/intro/app-roleplay.jpg" ratio={398 / 760} />}
           title={L('Phòng luyện nói với AI', 'The AI speaking room')}
           line={L('Nhập vai đời sống, gọi điện và hội thoại, mỗi tình huống có nhiều cách đáp.', 'Role-play daily life, phone calls and dialogues, with several ways to reply.')}
           facts={L('Nhập vai · Gọi điện · Hội thoại', 'Role-play · Phone calls · Dialogues')}
         />
+        <SpeakFeatures wide={wide} mid={mid} L={L} />
       </Room>
       <Room wide={wide} pad={pad} plaque={{ title: L('Du ngoạn thế giới', 'Travel the world'), meta: L('Phòng 3', 'Room 3') }}>
         <View>
@@ -306,8 +304,8 @@ export default function WelcomeScreen() {
               </View>
             </Frame>
           </View>
-          <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 64 : 28, marginTop: wide ? 48 : 28, alignItems: wide ? 'flex-start' : 'stretch' }}>
-            <View style={{ flex: wide ? 1 : undefined }}>
+          <View style={{ alignItems: 'center', gap: wide ? 40 : 28, marginTop: wide ? 48 : 28 }}>
+            <View style={{ width: '100%', maxWidth: 640 }}>
               <Placard
                 wide={wide}
                 title={L('Du ngoạn thế giới', 'Travel the world')}
@@ -315,19 +313,11 @@ export default function WelcomeScreen() {
                 facts={L('Học speaking qua ngữ cảnh', 'Speaking in context')}
               />
             </View>
-            {wide ? (
-              <View style={{ flex: 1.2, flexDirection: 'row', gap: 14 }}>
-                {THUMBS.map(([k, name]) => (
-                  <CityThumb key={k} k={k} name={name} L={L} style={{ flex: 1 }} />
-                ))}
-              </View>
-            ) : (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 14 }}>
-                {THUMBS.map(([k, name]) => (
-                  <CityThumb key={k} k={k} name={name} L={L} style={{ width: 150 }} />
-                ))}
-              </ScrollView>
-            )}
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 14, width: '100%' }}>
+              {THUMBS.map(([k, name]) => (
+                <CityThumb key={k} k={k} name={name} L={L} style={{ width: wide ? 170 : 150 }} />
+              ))}
+            </View>
           </View>
         </View>
       </Room>
@@ -343,8 +333,7 @@ export default function WelcomeScreen() {
           />
           <Exhibit
             wide={wide}
-            flip
-            frameWidth={460}
+              frameWidth={460}
             frame={<AppImage src="/intro/app-plan.jpg" ratio={667 / 760} />}
             title={L('Lộ trình của riêng bạn', 'A plan that is yours')}
             line={L('Đặt mục tiêu band, app xếp việc học mỗi ngày.', 'Set a target band; the app plans every day.')}
@@ -369,6 +358,8 @@ export default function WelcomeScreen() {
       </Room>
 
       {/* ===== BÊN TRONG APP: dải màn hình thật, chạy ngang (web) ===== */}
+      <View style={{ overflow: 'hidden' }}>
+        <MeshBackdrop stickers />
       {isWeb ? (
         <View style={{ paddingTop: wide ? 40 : 24, paddingBottom: wide ? 24 : 16 }}>
           <View style={{ paddingHorizontal: pad, marginBottom: 34 }}>
@@ -383,28 +374,12 @@ export default function WelcomeScreen() {
         </View>
       ) : null}
       <ContentBlocks wide={wide} mid={mid} pad={pad} en={en} L={L} />
-      {/* ===== SỐ LIỆU: lấy từ màn Kho bài đọc của app, đếm lên khi cuộn tới ===== */}
-      <View style={{ paddingHorizontal: pad, paddingVertical: wide ? 120 : 72 }}>
-        <View className="mx-auto w-full" style={{ maxWidth: 1100 }}>
-          <Text accessibilityRole="header" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 52 : 38, lineHeight: wide ? 60 : 46, textAlign: 'center' }}>
-            {L('Trong kho đọc của app', 'Inside the reading library')}
-          </Text>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 18, marginTop: 44, justifyContent: 'center' }}>
-            {TALLY.map((t) => (
-              <GlassPanel key={t.vi} className="b9-lift b9-blur" style={{ padding: 24, borderRadius: 22, minWidth: 200, alignItems: 'center', gap: 6 }}>
-                <CountUp to={t.to} style={{ color: DEEP_G, fontFamily: SERIF, fontSize: wide ? 58 : 44, lineHeight: wide ? 64 : 50 }} />
-                <Text style={{ color: BODY_G, fontFamily: SANS_6, fontSize: 14.5, textAlign: 'center' }}>{L(t.vi, t.en)}</Text>
-              </GlassPanel>
-            ))}
-          </View>
-        </View>
+      <ExamSets wide={wide} pad={pad} L={L} />
       </View>
-
       {/* ===== KẾT: đoạn chốt trên nền vàng đậm hơn ===== */}
       <View style={{ overflow: 'hidden' }}>
-        <LinearGradient colors={GOLD_SKY_DEEP} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
+        <MeshBackdrop stickers />
         <Aurora variant="close" />
-        {isWeb ? <CaroLayer /> : null}
         <View style={{ paddingHorizontal: pad, paddingTop: wide ? 150 : 96, paddingBottom: 36 }}>
           <View className="mx-auto w-full" style={{ maxWidth: 820 }}>
             <Text accessibilityRole="header" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 64 : mid ? 48 : 38, lineHeight: wide ? 72 : mid ? 56 : 46, textAlign: 'center' }}>
@@ -421,14 +396,14 @@ export default function WelcomeScreen() {
             </View>
           </View>
           <View style={{ marginTop: wide ? 120 : 72 }}>
-            <Plaque title={L('Sảnh vàng kim', 'The gold hall')} meta={L('© Band 9', '© Band 9')} align="center" />
+            <Plaque title={L('Sảnh Band 9', 'The Band 9 hall')} meta={L('© Band 9', '© Band 9')} align="center" />
           </View>
         </View>
       </View>
     </ScrollView>
     {isWeb ? (
       <LinearGradient
-        colors={['#B8955A', '#F4DA94', '#D6B774']}
+        colors={['#8B6CF0', '#D9CCFF', '#A38BFA']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={{ position: 'absolute', top: 0, left: 0, height: 3, width: `${Math.round(prog * 100)}%`, zIndex: 60 }}
@@ -440,6 +415,73 @@ export default function WelcomeScreen() {
         <Confetti key={burst} seed={`start-${burst}`} pieces={120} />
       </View>
     ) : null}
+    </View>
+  );
+}
+
+/** Phòng luyện nói: bốn tính năng có icon, căn giữa; điện thoại xếp hai cột, rộng hơn thì một hàng. */
+function SpeakFeatures({ wide, mid, L }: { wide: boolean; mid: boolean; L: LFn }) {
+  const items = [
+    {
+      art: (s: number) => <CuteMic size={s} />,
+      vi: ['Chấm phát âm', 'Điểm phát âm, ngữ điệu và độ trôi chảy theo thang IELTS, sau mỗi câu nói.'],
+      en: ['Pronunciation scoring', 'Pronunciation, stress and fluency scored on the IELTS scale after each answer.'],
+    },
+    {
+      art: (s: number) => <CuteChat size={s} />,
+      vi: ['Gọi điện và hội thoại', 'Nghe, nói và đáp lại như trong cuộc gọi thật, với nhiều cách đáp để chọn.'],
+      en: ['Phone calls and dialogues', 'Listen, speak and reply as on a real call, with several ways to answer.'],
+    },
+    {
+      art: (s: number) => <CuteStar size={s} />,
+      vi: ['Rút thẻ đề', 'Rút ngẫu nhiên một thẻ Part 1, 2 hoặc 3 rồi trả lời như phòng thi.'],
+      en: ['Random exam card', 'Draw a Part 1, 2 or 3 card at random and answer as in the exam room.'],
+    },
+    {
+      art: (s: number) => <CuteHeadphones size={s} />,
+      vi: ['Shadowing và lồng tiếng', 'Nhại theo video BBC, TED-Ed và thu giọng từng câu để nghe lại.'],
+      en: ['Shadowing and dubbing', 'Repeat after BBC and TED-Ed clips and record each line to hear it back.'],
+    },
+  ];
+  const itemWidth = wide ? '23%' : '47%';
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: wide ? 64 : 40 }}>
+      {items.map((it) => (
+        <GlassPanel key={it.vi[0]} className="b9-lift" style={{ width: itemWidth, padding: 22, borderRadius: 22, alignItems: 'center', gap: 8 }}>
+          {it.art(72)}
+          <Text style={{ color: INK_G, fontFamily: SERIF, fontSize: 20, lineHeight: 26, textAlign: 'center', marginTop: 4 }}>{L(it.vi[0] ?? '', it.en[0] ?? '')}</Text>
+          <Text style={{ color: BODY_G, fontFamily: SANS_4, fontSize: 14.5, lineHeight: 22, textAlign: 'center' }}>{L(it.vi[1] ?? '', it.en[1] ?? '')}</Text>
+        </GlassPanel>
+      ))}
+    </View>
+  );
+}
+
+/** Bộ đề CAM: ảnh bìa thật của app cạnh phần giới thiệu; điện thoại xếp dọc. Không có số liệu dựng. */
+function ExamSets({ wide, pad, L }: { wide: boolean; pad: number; L: LFn }) {
+  const chips = ['Reading', 'Listening', 'Writing', 'Speaking'];
+  return (
+    <View style={{ paddingHorizontal: pad, paddingVertical: wide ? 120 : 72 }}>
+      <View className="mx-auto w-full" style={{ maxWidth: 1100 }}>
+        <GlassPanel className="b9-reveal" style={{ flexDirection: wide ? 'row' : 'column', alignItems: 'center', gap: wide ? 56 : 28, padding: wide ? 40 : 22, borderRadius: 28 }}>
+          <View style={{ width: wide ? 440 : '100%' }}>
+            <AppImage src="/intro/app-covers.jpg" ratio={800 / 720} />
+          </View>
+          <View style={{ flex: wide ? 1 : undefined, alignItems: 'center', gap: 14 }}>
+            <Text accessibilityRole="header" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 44 : 32, lineHeight: wide ? 52 : 40, textAlign: 'center' }}>
+              {L('Bộ đề CAM thật', 'Real CAM exam sets')}
+            </Text>
+            <Text style={{ color: BODY_G, fontFamily: SANS_4, fontSize: wide ? 18 : 16.5, lineHeight: wide ? 29 : 26, textAlign: 'center', maxWidth: 480 }}>
+              {L('Làm đề từ các cuốn CAM IELTS như thi thật, chấm ngay và xem lại giải thích từng câu.', 'Sit CAM IELTS sets as in the real exam, get them marked at once and review every explanation.')}
+            </Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginTop: 6 }}>
+              {chips.map((c) => (
+                <Pill key={c} text={c} tone="gold" />
+              ))}
+            </View>
+          </View>
+        </GlassPanel>
+      </View>
     </View>
   );
 }
@@ -460,14 +502,12 @@ function Room({
 }) {
   return (
     <View className="b9-room" style={{ overflow: 'hidden' }}>
-      <LinearGradient colors={GOLD_SKY} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
-      <Aurora variant="close" />
-      {isWeb ? <CaroLayer /> : null}
+      <MeshBackdrop blobs />
       <View style={{ paddingHorizontal: pad, paddingTop: wide ? 130 : 80, paddingBottom: wide ? 56 : 40 }}>
         <View className="mx-auto w-full" style={{ maxWidth: 1180 }}>
           {children}
-          <View style={{ marginTop: wide ? 110 : 64 }}>
-            <Plaque title={plaque.title} meta={plaque.meta} align={wide ? 'right' : 'left'} />
+          <View style={{ marginTop: wide ? 110 : 64, alignItems: 'center' }}>
+            <Plaque title={plaque.title} meta={plaque.meta} align="center" />
           </View>
         </View>
       </View>
@@ -478,17 +518,16 @@ function Room({
 function Placard({ wide, title, line, facts }: { wide: boolean; title: string; line: string; facts: string }) {
   return (
     <GlassPanel className="b9-reveal" style={{ padding: wide ? 34 : 24, borderRadius: 22 }}>
-      <Text accessibilityRole="header" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 44 : 32, lineHeight: wide ? 52 : 40 }}>{title}</Text>
-      <Text style={{ fontFamily: SANS_4, marginTop: 14, color: BODY_G, fontSize: wide ? 18 : 16.5, lineHeight: wide ? 29 : 26, maxWidth: 480 }}>{line}</Text>
-      <View className="b9-rule" style={{ marginTop: 22, height: isWeb ? 2 : 1, width: 56, backgroundColor: isWeb ? undefined : DEEP_G }} />
-      <Text style={{ marginTop: 12, color: DEEP_G, fontSize: 14, lineHeight: 21, fontFamily: SANS_6 }}>{facts}</Text>
+      <Text accessibilityRole="header" style={{ textAlign: 'center', color: INK_G, fontFamily: SERIF, fontSize: wide ? 44 : 32, lineHeight: wide ? 52 : 40 }}>{title}</Text>
+      <Text style={{ fontFamily: SANS_4, marginTop: 14, textAlign: 'center', alignSelf: 'center', color: BODY_G, fontSize: wide ? 18 : 16.5, lineHeight: wide ? 29 : 26, maxWidth: 480 }}>{line}</Text>
+      <View className="b9-rule" style={{ marginTop: 22, alignSelf: 'center', height: isWeb ? 2 : 1, width: 56, backgroundColor: isWeb ? undefined : DEEP_G }} />
+      <Text style={{ marginTop: 12, textAlign: 'center', color: DEEP_G, fontSize: 14, lineHeight: 21, fontFamily: SANS_6 }}>{facts}</Text>
     </GlassPanel>
   );
 }
 
 function Exhibit({
   wide,
-  flip = false,
   frameWidth,
   frame,
   title,
@@ -496,7 +535,6 @@ function Exhibit({
   facts,
 }: {
   wide: boolean;
-  flip?: boolean;
   frameWidth: number;
   frame: React.ReactNode;
   title: string;
@@ -504,13 +542,13 @@ function Exhibit({
   facts: string;
 }) {
   return (
-    <View style={{ flexDirection: wide ? (flip ? 'row-reverse' : 'row') : 'column', alignItems: wide ? 'center' : 'stretch', gap: wide ? 88 : 28 }}>
-      <View style={{ flex: wide ? 1.15 : undefined, alignItems: wide ? (flip ? 'flex-start' : 'flex-end') : 'stretch' }}>
+    <View style={{ alignItems: 'center', gap: wide ? 44 : 28 }}>
+      <View style={{ width: '100%', alignItems: 'center' }}>
         <View className="b9-lift b9-reveal" style={{ width: '100%', maxWidth: frameWidth }}>
           <Frame>{frame}</Frame>
         </View>
       </View>
-      <View style={{ flex: wide ? 1 : undefined }}>
+      <View style={{ width: '100%', maxWidth: 640 }}>
         <Placard wide={wide} title={title} line={line} facts={facts} />
       </View>
     </View>
@@ -540,7 +578,7 @@ function Bubble({ text, dark = false }: { text: string; dark?: boolean }) {
         borderRadius: 14,
         paddingHorizontal: 14,
         paddingVertical: 9,
-        ...({ boxShadow: '0 8px 20px rgba(60,40,10,0.28)' } as object),
+        ...({ boxShadow: '0 8px 20px rgba(43,35,80,0.28)' } as object),
       }}
     >
       <Text style={{ color: dark ? CREAM : INK, fontSize: 15, fontFamily: SANS_7 }}>{text}</Text>
@@ -562,7 +600,7 @@ function Shelf({ wide, width, L }: { wide: boolean; width: number; L: LFn }) {
     >
       <Image
         source={{ uri: `/books/covers/${b.id}.jpg` }}
-        style={{ width: '100%', aspectRatio: 480 / 680, borderRadius: 2, ...({ boxShadow: '0 10px 22px rgba(60,40,10,.34)' } as object) }}
+        style={{ width: '100%', aspectRatio: 480 / 680, borderRadius: 2, ...({ boxShadow: '0 10px 22px rgba(43,35,80,.34)' } as object) }}
         resizeMode="cover"
       />
     </Pressable>
@@ -576,7 +614,7 @@ function Shelf({ wide, width, L }: { wide: boolean; width: number; L: LFn }) {
           {covers}
         </ScrollView>
       )}
-      <View style={{ height: 7, marginHorizontal: -8, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 8px 16px rgba(60,40,10,.3)' } as object) }} />
+      <View style={{ height: 7, marginHorizontal: -8, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 8px 16px rgba(43,35,80,.3)' } as object) }} />
     </View>
   );
 }
@@ -606,7 +644,7 @@ function CTA({ label, onPress, solid = false }: { label: string; onPress: () => 
   );
   if (!solid) return <GlassPanel style={{ borderRadius: 999 }}>{inner}</GlassPanel>;
   return (
-    <View className="b9-sheen b9-cta-solid b9-pulse" style={{ borderRadius: 999, backgroundColor: isWeb ? undefined : themedHex('#EBC26A') }}>
+    <View className="b9-sheen b9-cta-solid b9-pulse" style={{ borderRadius: 999, backgroundColor: isWeb ? undefined : themedHex('#8B6CF0') }}>
       {inner}
     </View>
   );
@@ -631,7 +669,7 @@ function Marquee({ en }: { en: boolean }) {
     </Text>
   ));
   return (
-    <View className="b9-marquee" style={{ overflow: 'hidden', paddingVertical: 18, borderTopWidth: 1, borderBottomWidth: 1, borderColor: 'rgba(184,149,90,0.35)', backgroundColor: 'rgba(255,250,236,0.6)' }}>
+    <View className="b9-marquee" style={{ overflow: 'hidden', paddingVertical: 18, borderTopWidth: 1, borderBottomWidth: 1, borderColor: 'rgba(139, 108, 240,0.35)', backgroundColor: 'rgba(255,255,255,0.6)' }}>
       <View className="b9-marquee-track" style={{ flexDirection: 'row' }}>
         <View style={{ flexDirection: 'row' }}>{row}</View>
         <View style={{ flexDirection: 'row' }}>{row}</View>
@@ -643,36 +681,6 @@ function Marquee({ en }: { en: boolean }) {
 const HERO_TAGS_VI = ['IELTS Reading & Listening', 'Chấm ngay từng câu', 'Nói với AI mỗi ngày'];
 const HERO_TAGS_EN = ['IELTS Reading & Listening', 'Instant marking', 'Speak daily with AI'];
 
-const WALK_FRAMES = ['lion-walk-1.png', 'lion-walk-2.png', 'lion-walk-3.png', 'lion-walk-4.png'];
-
-/** Lớp nền của hero (web): sư tử đi bộ qua đáy trang và vài ngôi sao. Ảnh app nằm trong cụm cửa sổ ở hero. */
-function HeroScenery({ side }: { side: boolean }) {
-  const [frame, setFrame] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setFrame((f) => (f + 1) % WALK_FRAMES.length), 170);
-    return () => clearInterval(id);
-  }, []);
-  return (
-    <View pointerEvents="none" style={StyleSheet.absoluteFill}>
-      {side ? (
-        <>
-          <View className="b9-tw" style={{ position: 'absolute', top: 120, left: '47%' }}>
-            <CuteStar size={38} />
-          </View>
-          <View className="b9-tw2" style={{ position: 'absolute', top: 380, left: '44%' }}>
-            <CuteStar size={26} />
-          </View>
-        </>
-      ) : null}
-      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 130, overflow: 'hidden' }}>
-        <View className="b9-walk" style={{ position: 'absolute', bottom: 4, width: 120, height: 120 }}>
-          <Image source={{ uri: `/mascot/lion/${WALK_FRAMES[frame]}` }} style={{ width: 120, height: 120 }} resizeMode="contain" />
-        </View>
-      </View>
-    </View>
-  );
-}
-
 const STEPS = [
   {
     n: '01',
@@ -682,7 +690,7 @@ const STEPS = [
   },
   {
     n: '02',
-    art: (s: number) => <CuteMic size={s} />,
+    art: (s: number) => <CuteCalculator size={s} />,
     vi: ['Làm như thi thật', 'Đọc theo dạng đề thật, nói với AI trong tình huống thật, ôn từ vựng theo lịch.'],
     en: ['Practise like the real thing', 'Read in real exam formats, speak with AI in real situations, review words on a schedule.'],
   },
@@ -711,9 +719,9 @@ const FEATURES = [
     en: ['Speaking scenarios', 'Daily-life role-play, phone calls and dialogues, with several ways to reply.'],
   },
   {
-    art: (s: number) => <CuteRocket size={s} />,
-    vi: ['Bản đồ Quest', 'Sáu hòn đảo, mỗi đảo là một mảng học. Cú dẫn bạn qua từng nhiệm vụ.'],
-    en: ['Quest map', 'Six islands, each one a study area. Cú guides you through each quest.'],
+    art: (s: number) => <CuteNotebook size={s} />,
+    vi: ['Bộ đề CAM thật', 'Làm đề từ các cuốn CAM IELTS, có đáp án và giải thích từng câu.'],
+    en: ['Real CAM sets', 'Work through CAM IELTS sets, with answers and an explanation for each question.'],
   },
   {
     art: (s: number) => <CuteCalendar size={s} />,
@@ -767,7 +775,7 @@ function ContentBlocks({ wide, mid, pad, en, L }: { wide: boolean; mid: boolean;
                 className="b9-lift b9-blur"
                 style={{ flexBasis: wide ? '31%' : mid ? '47%' : '100%', flexGrow: 1, padding: 22, borderRadius: 22, flexDirection: 'row', gap: 18, alignItems: 'center' }}
               >
-                <View className="b9-bob2" style={{ width: 88, height: 88, borderRadius: 24, backgroundColor: 'rgba(255,248,224,0.85)', alignItems: 'center', justifyContent: 'center' }}>
+                <View className="b9-bob2" style={{ width: 88, height: 88, borderRadius: 24, backgroundColor: 'rgba(246,242,255,0.85)', alignItems: 'center', justifyContent: 'center' }}>
                   {ft.art(66)}
                 </View>
                 <View style={{ flex: 1, gap: 6 }}>
@@ -783,22 +791,14 @@ function ContentBlocks({ wide, mid, pad, en, L }: { wide: boolean; mid: boolean;
   );
 }
 
-const TALLY = [
-  { to: 1909, vi: 'bài đọc đầy đủ', en: 'full readings' },
-  { to: 245, vi: 'bài đọc song ngữ Anh–Việt', en: 'bilingual Eng–Vi readings' },
-  { to: 1081, vi: 'passage IELTS', en: 'IELTS passages' },
-  { to: 836, vi: 'passage SAT', en: 'SAT passages' },
-];
-
 const GALLERY = [
   { src: '/intro/app-reading.jpg', ratio: 446 / 1144, vi: 'Kho bài đọc', en: 'Reading library' },
   { src: '/intro/app-vocab.jpg', ratio: 312 / 760, vi: 'Từ vựng theo FSRS', en: 'Vocabulary with FSRS' },
-  { src: '/intro/app-roleplay.jpg', ratio: 398 / 760, vi: 'Tình huống nói', en: 'Speaking scenarios' },
+  { src: '/intro/app-roleplay.jpg', ratio: 398 / 760, vi: 'Quest du ngoạn', en: 'Travel quests' },
   { src: '/intro/app-plan.jpg', ratio: 667 / 760, vi: 'Lập lộ trình', en: 'Study plan' },
-  { src: '/intro/app-hub.jpg', ratio: 261 / 720, vi: 'Hôm nay', en: 'Today' },
-  { src: '/intro/app-practice.jpg', ratio: 407 / 720, vi: 'Chọn phần học IELTS', en: 'Pick your IELTS lessons' },
-  { src: '/intro/app-quest.jpg', ratio: 478 / 720, vi: 'Bản đồ Quest', en: 'Quest map' },
-  { src: '/intro/app-covers.jpg', ratio: 800 / 720, vi: 'Bìa đề luyện', en: 'Practice test covers' },
+  { src: '/intro/app-hub.jpg', ratio: 261 / 720, vi: 'Trang chủ', en: 'Home' },
+  { src: '/intro/app-practice.jpg', ratio: 407 / 720, vi: 'Tin tiếng Anh theo ngày', en: 'Daily English news' },
+  { src: '/intro/app-covers.jpg', ratio: 800 / 720, vi: 'Luyện đề Digital SAT', en: 'Digital SAT practice tests' },
 ];
 
 /** Dải màn hình thật chạy ngang, lặp vô hạn; rê chuột vào thì dừng. Chỉ web. */
@@ -822,7 +822,7 @@ function GalleryStrip({ en }: { en: boolean }) {
 /** Ảnh chụp màn hình thật của app, bo góc, trượt nhẹ theo cuộn (CSS b9-par). */
 function AppImage({ src, ratio }: { src: string; ratio: number }) {
   return (
-    <View className="b9-par" style={{ borderRadius: 16, backgroundColor: '#FFF9EF' }}>
+    <View className="b9-par" style={{ borderRadius: 16, backgroundColor: '#F8F5FF' }}>
       <Image source={{ uri: src }} style={{ width: '100%', aspectRatio: 1 / ratio }} resizeMode="cover" />
     </View>
   );
@@ -869,98 +869,57 @@ function CountUp({ to, style }: { to: number; style?: object }) {
   );
 }
 
-/** Cửa sổ giả trình duyệt bọc một ảnh chụp màn hình thật của app: thanh tiêu đề có ba chấm và tên màn. */
-function AppWindow({
-  src,
-  ratio,
-  title,
-  width,
-  pos,
-  rotate,
-  cls,
-}: {
-  src: string;
-  ratio: number;
-  title: string;
-  width: number;
-  pos: { top?: number | string; bottom?: number | string; left?: number | string; right?: number | string };
-  rotate: string;
-  cls: string;
-}) {
+/** Một ảnh chụp màn hình thật của app trong khung cửa sổ giả; mọi ảnh cùng chiều cao để hàng đều. */
+function ShotCard({ src, title, width }: { src: string; title: string; width: number }) {
   return (
-    <View className={cls} style={{ position: 'absolute', ...(pos as object) }}>
+    <View
+      style={{
+        width,
+        borderRadius: 18,
+        overflow: 'hidden',
+        backgroundColor: '#FFFFFF',
+        ...({ boxShadow: '0 30px 56px -28px rgba(60,40,120,0.45), 0 0 0 1px rgba(255,255,255,0.9)' } as object),
+      }}
+    >
       <View
         style={{
-          width,
-          transform: [{ rotate }],
-          borderRadius: 18,
-          overflow: 'hidden',
-          backgroundColor: '#FFFDF7',
-          ...({ boxShadow: '0 36px 60px -26px rgba(110,70,15,0.5), 0 0 0 1px rgba(255,255,255,0.9)' } as object),
+          height: 30,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 6,
+          paddingHorizontal: 12,
+          backgroundColor: '#F1ECFF',
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(106,75,217,0.14)',
         }}
       >
-        <View
-          style={{
-            height: 30,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 6,
-            paddingHorizontal: 12,
-            backgroundColor: '#F3E9D6',
-            borderBottomWidth: 1,
-            borderBottomColor: 'rgba(140,106,31,0.14)',
-          }}
-        >
-          <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: '#E9A59A' }} />
-          <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: '#EDD089' }} />
-          <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: '#A9D5A0' }} />
-          <Text numberOfLines={1} style={{ marginLeft: 8, color: MUTED_G, fontFamily: SANS_7, fontSize: 12 }}>
-            {title}
-          </Text>
-        </View>
-        <Image source={{ uri: src }} style={{ width, height: width * ratio }} resizeMode="cover" />
+        <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: '#E9A59A' }} />
+        <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: '#C9B8FF' }} />
+        <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: '#A9D5A0' }} />
+        <Text numberOfLines={1} style={{ marginLeft: 8, color: MUTED_G, fontFamily: SANS_7, fontSize: 12 }}>
+          {title}
+        </Text>
       </View>
+      <Image source={{ uri: src }} style={{ width, height: Math.round(width * 0.7) }} resizeMode="cover" accessibilityLabel={title} />
     </View>
   );
 }
 
-/** Cụm bốn cửa sổ màn hình thật của app, xếp lệch nhau quanh một vòng sáng. Chỉ web có vòng quay. */
-function HeroStage({ L, side }: { L: LFn; side: boolean }) {
+/** Bốn ảnh app xếp hàng ngang, căn giữa, cách đều và không chồng lên nhau; màn hẹp tự xuống dòng. */
+function HeroStage({ L, card }: { L: LFn; card: number }) {
   return (
-    <View style={{ width: 640, height: 620, alignSelf: side ? 'flex-end' : 'center', marginTop: side ? 0 : 36 }}>
-      {isWeb ? (
-        <View
-          pointerEvents="none"
-          className="b9-orb"
-          style={{
-            position: 'absolute',
-            left: 40,
-            top: 30,
-            width: 560,
-            height: 560,
-            borderRadius: 280,
-            ...({ backgroundImage: 'radial-gradient(circle, rgba(255,246,214,0.95) 0%, rgba(232,196,110,0.45) 42%, rgba(232,196,110,0) 70%)' } as object),
-          }}
-        />
-      ) : null}
-      {isWeb ? (
-        <View
-          pointerEvents="none"
-          className="b9-orbit"
-          style={{ position: 'absolute', left: 70, top: 60, width: 500, height: 500, borderRadius: 250, borderWidth: 1, borderStyle: 'dashed', borderColor: 'rgba(184,149,90,0.45)' }}
-        />
-      ) : null}
-      <AppWindow cls="b9-float" src="/intro/app-hub.jpg" ratio={261 / 720} title={L('Hôm nay', 'Today')} width={236} pos={{ top: 0, right: 0 }} rotate="2deg" />
-      <AppWindow cls="b9-float2" src="/intro/app-reading.jpg" ratio={446 / 1144} title={L('Kho bài đọc', 'Reading library')} width={432} pos={{ top: 96, left: 0 }} rotate="-1.2deg" />
-      <AppWindow cls="b9-float2" src="/intro/app-vocab.jpg" ratio={312 / 760} title={L('Từ vựng', 'Vocabulary')} width={286} pos={{ top: 330, right: 0 }} rotate="1.4deg" />
-      <AppWindow cls="b9-float" src="/intro/app-roleplay.jpg" ratio={398 / 760} title={L('Tình huống nói', 'Speaking scenarios')} width={300} pos={{ bottom: 0, left: 70 }} rotate="-1deg" />
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: card > 200 ? 24 : 12, marginTop: card > 200 ? 56 : 36, maxWidth: 1180, alignSelf: 'center' }}>
+      <ShotCard src="/intro/app-hub.jpg" title={L('Trang chủ', 'Home')} width={card} />
+      <ShotCard src="/intro/app-reading.jpg" title={L('Kho bài đọc', 'Reading library')} width={card} />
+      <ShotCard src="/intro/app-vocab.jpg" title={L('Từ vựng', 'Vocabulary')} width={card} />
+      <ShotCard src="/intro/app-roleplay.jpg" title={L('Quest du ngoạn', 'Travel quests')} width={card} />
     </View>
   );
 }
 
 function Pill({ text, tone = 'plain' }: { text: string; tone?: 'plain' | 'gold' }) {
   return (
-    <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: tone === 'gold' ? 'rgba(227,190,106,0.24)' : 'rgba(15,29,51,0.06)' }}>
+    <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: tone === 'gold' ? 'rgba(139,108,240,0.24)' : 'rgba(15,29,51,0.06)' }}>
       <Text style={{ color: tone === 'gold' ? DEEP_G : BODY, fontSize: 12.5, fontFamily: SANS_7 }}>{text}</Text>
     </View>
   );
@@ -982,7 +941,7 @@ function AccessRow({ label, items, free = false }: { label: string; items: strin
               paddingVertical: 7,
               borderRadius: 999,
               borderWidth: 1,
-              borderColor: free ? 'rgba(34,160,107,0.55)' : 'rgba(184,149,90,0.7)',
+              borderColor: free ? 'rgba(34,160,107,0.55)' : 'rgba(139, 108, 240,0.7)',
               backgroundColor: 'rgba(255,255,255,0.45)',
             }}
           >

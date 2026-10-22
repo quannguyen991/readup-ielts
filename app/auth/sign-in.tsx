@@ -22,6 +22,7 @@ import {
 import { color } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
 import { useL } from '@/i18n/useL';
+import { currentUserAgent, isInstagramBrowser } from '@/lib/inapp-browser';
 
 /** Bản tiếng Anh của `PHONE_ERROR_LABEL` (dữ liệu gốc giữ tiếng Việt). */
 const PHONE_ERROR_LABEL_EN: Record<PhoneError, string> = {
@@ -97,6 +98,7 @@ export default function SignInScreen() {
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const inApp = isInstagramBrowser(currentUserAgent());
   const startOAuth = async (provider: 'google' | 'facebook') => {
     setError(null);
     setBusy(provider);
@@ -202,10 +204,16 @@ export default function SignInScreen() {
           </Card>
         ) : null}
 
+        {inApp ? (
+          <Text className="mt-4 text-center font-sans text-body text-muted">
+            {L('Google không đăng nhập được trong trình duyệt của Instagram. Bấm ⋯ rồi chọn "Mở bằng trình duyệt", hoặc đăng nhập bằng email / số điện thoại.', 'Google sign-in does not work inside the Instagram browser. Tap ⋯ and choose "Open in browser", or sign in with email or phone.')}
+          </Text>
+        ) : null}
+
         <Card className="mt-4">
           {caps.google || caps.facebook ? (
             <>
-              {caps.google ? (
+              {caps.google && !inApp ? (
                 <ProviderButton
                   label={L('Tiếp tục với Google', 'Continue with Google')}
                   mark="G"

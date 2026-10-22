@@ -62,7 +62,7 @@ function monogram(name: string): string {
 
 const SOFT_CARD = {
   borderWidth: 1,
-  borderColor: '#F2EEE6',
+  borderColor: '#F3F0FB',
   ...(Platform.OS === 'web'
     ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(94, 72, 35,0.08)' } as object)
     : { elevation: 2 }),
@@ -123,8 +123,8 @@ function PortalView() {
         >
           <View className="flex-row flex-wrap items-center justify-between gap-4 rounded-[22px] bg-white p-5" style={SOFT_CARD}>
             <View className="flex-row items-center gap-4" style={{ flexShrink: 1 }}>
-              <View className="h-14 w-14 items-center justify-center rounded-2xl" style={{ backgroundColor: '#F7E7C8' }}>
-                <Icon name="book" size={25} color="#9A7439" strokeWidth={1.9} />
+              <View className="h-14 w-14 items-center justify-center rounded-2xl" style={{ backgroundColor: '#F3F0FB' }}>
+                <Icon name="book" size={25} color="#6A4BD9" strokeWidth={1.9} />
               </View>
               <View style={{ flexShrink: 1 }}>
                 <Text className="font-heavy" style={{ color: INK, fontSize: 20 }}>
@@ -299,7 +299,7 @@ function ArticleCard({ article, outlet }: { article: BilingualArticle; outlet: B
 
 function StatPill({ value, label }: { value: string; label: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#FBF7F1' }}>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F3F0FB' }}>
       <Text className="font-heavy" style={{ fontSize: 15, color: INK }}>
         {value}
       </Text>
@@ -344,7 +344,7 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
       accessibilityRole="button"
       aria-selected={active}
       className="items-center justify-center rounded-pill px-3 py-1.5"
-      style={{ minHeight: 44, borderWidth: 1, borderColor: active ? color.primary : '#F0EAE0', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
+      style={{ minHeight: 44, borderWidth: 1, borderColor: active ? color.primary : '#F3F0FB', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
     >
       <Text className="font-semi" style={{ fontSize: 13, color: active ? '#FFFFFF' : INK }}>{label}</Text>
     </Pressable>

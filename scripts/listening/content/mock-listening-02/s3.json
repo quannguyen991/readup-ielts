@@ -1,0 +1,276 @@
+{
+  "n": 3,
+  "title": "Tutorial on a library redesign project",
+  "context": "Two students meet their tutor to discuss the planning of a group project on redesigning a local library, including the survey, the presentation and the site visit.",
+  "transcript": [
+    {
+      "speaker": "Sophie",
+      "text": "Hi Dr Walsh, thanks for seeing us. We've started the library project, and we'd like to check our approach before we go any further."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Of course. Let's see where you are. Tell me about the survey first."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "We've done one, but I'm not confident in it. We asked only fifty people, and most of them were students who use the building every day."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "That's the main problem. Fifty is too small to tell you much, and if the sample is mostly students, the results won't reflect the wider community. You need to reach families, older residents and people who don't use the library at all."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "Right, we'll redo it. Tom wants to include a short video of the building in the presentation, to show its current state."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "A video can help people picture the place, but it doesn't tell the audience anything new. Something more interactive would work better."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "That's what I thought too. I'd like to run a live survey during the presentation, so the audience can vote on the options in real time."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "I like that. It makes the presentation engaging, and it gives you immediate feedback. What else are you planning?"
+    },
+    {
+      "speaker": "Sophie",
+      "text": "We want to compare the costs of the three options."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Yes, definitely. A cost comparison is essential, because the council will want to see value for money. Don't bother with a model of the building, though. It takes ages to make, and your audience won't need it."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "Agreed. We won't do a model, and the map of the bus routes isn't relevant either, so we'll leave it out."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Good. Now, the opening hours. You mentioned that the library closes at six. Have you looked at how it's used in the evenings?"
+    },
+    {
+      "speaker": "Sophie",
+      "text": "Not yet. Our assumption is that evenings are quiet, but we haven't checked."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Then look at the evening use figures before you decide anything. If evening use is high, the case for extending the hours becomes much stronger. Don't rely only on what you think."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "OK, we'll do that. We've also walked around the site and made some notes. Shall I go through the problems?"
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Please. Let's start with the entrance."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "The ground floor is the first problem. There's a side entrance, but there's no step-free access there, so wheelchair users have to go round the back."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "That's a serious issue, and it should be highlighted. What about upstairs?"
+    },
+    {
+      "speaker": "Sophie",
+      "text": "The upper floor has plenty of space, but the lighting is too dim for reading. Several people told us they avoid it for that reason."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Lighting is often cheap to fix, so that could be a quick win. What about the outside?"
+    },
+    {
+      "speaker": "Sophie",
+      "text": "The reading garden is pleasant, but it floods after heavy rain, so it can't be used for much of the winter."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "That will be expensive to fix, so present it as a separate option. And the basement?"
+    },
+    {
+      "speaker": "Sophie",
+      "text": "The basement is the children's area. It's mainly used by parents with pushchairs, and the staff think it should be bigger."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Good. Now, the report. When is the deadline?"
+    },
+    {
+      "speaker": "Sophie",
+      "text": "It's due on Friday, and we have to submit it online by then."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "Remember the word limit. The report must be no more than two thousand words, and the appendices don't count towards it."
+    },
+    {
+      "speaker": "Sophie",
+      "text": "Got it. Thanks, that's really helpful."
+    },
+    {
+      "speaker": "Tutor",
+      "text": "My pleasure. Send me the revised survey before the weekend, and we'll look at it together."
+    }
+  ],
+  "groups": [
+    {
+      "type": "mcq-many",
+      "title": "Questions 21-22",
+      "instruction": "Choose TWO letters, A-E. Which TWO things will the group include in the presentation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "a short video of the building"
+        },
+        {
+          "key": "B",
+          "text": "a live survey of the audience"
+        },
+        {
+          "key": "C",
+          "text": "a map of the bus routes"
+        },
+        {
+          "key": "D",
+          "text": "a cost comparison"
+        },
+        {
+          "key": "E",
+          "text": "a model of the building"
+        }
+      ],
+      "questions": [
+        {
+          "n": 21,
+          "answer": [
+            "B",
+            "D"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mcq-one",
+      "title": "Questions 23-24",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 23,
+          "prompt": "What is the main problem with the first survey?",
+          "answer": "A",
+          "options": [
+            {
+              "key": "A",
+              "text": "the sample was too small"
+            },
+            {
+              "key": "B",
+              "text": "it was carried out online"
+            },
+            {
+              "key": "C",
+              "text": "it was done in the winter"
+            }
+          ]
+        },
+        {
+          "n": 24,
+          "prompt": "What do the students plan to do about the opening hours?",
+          "answer": "B",
+          "options": [
+            {
+              "key": "A",
+              "text": "ask the council to extend them"
+            },
+            {
+              "key": "B",
+              "text": "check the evening use figures first"
+            },
+            {
+              "key": "C",
+              "text": "keep the current hours in their proposal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "title": "Questions 25-28",
+      "instruction": "Match each area of the library with the problem mentioned. Choose the correct letter, A-E, for Questions 25-28.",
+      "options": [
+        {
+          "key": "A",
+          "text": "there is no step-free access"
+        },
+        {
+          "key": "B",
+          "text": "the lighting is too dim"
+        },
+        {
+          "key": "C",
+          "text": "it floods after heavy rain"
+        },
+        {
+          "key": "D",
+          "text": "it is too small for the number of children"
+        },
+        {
+          "key": "E",
+          "text": "it is closed at weekends"
+        }
+      ],
+      "questions": [
+        {
+          "n": 25,
+          "prompt": "ground floor",
+          "answer": "A"
+        },
+        {
+          "n": 26,
+          "prompt": "upper floor",
+          "answer": "B"
+        },
+        {
+          "n": 27,
+          "prompt": "reading garden",
+          "answer": "C"
+        },
+        {
+          "n": 28,
+          "prompt": "basement",
+          "answer": "D"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "title": "Questions 29-30",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "wordLimit": "ONE WORD AND/OR A NUMBER",
+      "lines": [
+        "## Report notes",
+        "Report deadline: {{29}}",
+        "Word limit: {{30}} words"
+      ],
+      "questions": [
+        {
+          "n": 29,
+          "answer": "Friday"
+        },
+        {
+          "n": 30,
+          "answer": "2000",
+          "accept": [
+            "two thousand",
+            "2,000"
+          ]
+        }
+      ]
+    }
+  ]
+}

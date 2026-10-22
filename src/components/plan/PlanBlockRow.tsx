@@ -12,12 +12,12 @@ import { useL } from '@/i18n/useL';
 /** Màu và biểu tượng từng kỹ năng — dùng chung ở trang Lộ trình và Tổng quan. */
 export const SKILL_TONE: Record<Skill | 'check', { tone: string; soft: string; icon: IconName }> = {
   vocab: { tone: '#10B981', soft: '#E7F8F1', icon: 'letters' },
-  reading: { tone: '#A8843F', soft: '#FBF6EE', icon: 'book' },
+  reading: { tone: '#6A4BD9', soft: '#F3F0FB', icon: 'book' },
   listening: { tone: '#0D9488', soft: '#E6F6F4', icon: 'volume' },
-  writing: { tone: '#F0703F', soft: '#FEF0E8', icon: 'pencil' },
+  writing: { tone: '#F0703F', soft: '#F3F0FB', icon: 'pencil' },
   math: { tone: '#24375A', soft: '#EEF1F6', icon: 'grid' },
   verbal: { tone: '#F43F5E', soft: '#FEECEF', icon: 'languages' },
-  check: { tone: '#F59E0B', soft: '#FEF4E2', icon: 'target' },
+  check: { tone: '#F59E0B', soft: '#F3F0FB', icon: 'target' },
 };
 
 /** Tên kỹ năng bằng tiếng Anh (bản tiếng Việt: `SKILL_LABEL` trong services/plan). */
@@ -43,7 +43,7 @@ export function PlanBlockRow({ block, compact = false }: { block: PlanBlock; com
   return (
     <View
       className="flex-row items-center gap-3 rounded-2xl bg-white px-3 py-2.5"
-      style={{ borderWidth: 1, borderColor: done ? '#BBF7D0' : '#F2EEE6', opacity: done ? 0.75 : 1 }}
+      style={{ borderWidth: 1, borderColor: done ? '#BBF7D0' : '#F3F0FB', opacity: done ? 0.75 : 1 }}
     >
       <Pressable
         accessibilityRole="checkbox"
@@ -89,7 +89,7 @@ export function PlanBlockRow({ block, compact = false }: { block: PlanBlock; com
         accessibilityLabel={L(`Vào học: ${block.title}`, `Start: ${block.title}`)}
         onPress={() => router.push(block.href as never)}
         className="flex-row items-center gap-1 rounded-pill px-3 py-1.5"
-        style={{ backgroundColor: done ? '#FBF7F1' : color.primary }}
+        style={{ backgroundColor: done ? '#F3F0FB' : color.primary }}
       >
         <Text className="font-strong text-label" style={{ color: done ? color.ink : '#FFFFFF' }}>
           {done ? L('Học lại', 'Redo') : L('Vào học', 'Start')}

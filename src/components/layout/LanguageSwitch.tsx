@@ -25,7 +25,7 @@ export function LanguageSwitch({ tone = 'light', compact = false }: { tone?: 'li
     <View
       accessibilityRole="radiogroup"
       accessibilityLabel="Ngôn ngữ / Language"
-      style={{ flexDirection: compact ? 'column' : 'row', alignSelf: compact ? 'center' : 'flex-start', borderRadius: compact ? 22 : 999, padding: 3, gap: 2, backgroundColor: dark ? 'rgba(255,255,255,0.1)' : chiikawa ? '#FBE8EF' : 'rgba(184,149,90,0.14)' }}
+      style={{ flexDirection: compact ? 'column' : 'row', alignSelf: compact ? 'center' : 'flex-start', borderRadius: compact ? 22 : 999, padding: 3, gap: 2, backgroundColor: dark ? 'rgba(255,255,255,0.1)' : chiikawa ? '#FBE8EF' : 'rgba(139, 108, 240,0.14)' }}
     >
       {OPTIONS.map((o) => {
         const on = locale === o.code;
@@ -36,7 +36,7 @@ export function LanguageSwitch({ tone = 'light', compact = false }: { tone?: 'li
             aria-checked={on}
             accessibilityLabel={o.label}
             onPress={() => setLocale(o.code)}
-            style={{ borderRadius: 999, width: compact ? 40 : undefined, alignItems: 'center', paddingHorizontal: compact ? 0 : 12, paddingVertical: 5, backgroundColor: on ? chiikawa ? '#D65E86' : themedHex('#B8955A') : 'transparent' }}
+            style={{ borderRadius: 999, width: compact ? 40 : undefined, alignItems: 'center', paddingHorizontal: compact ? 0 : 12, paddingVertical: 5, backgroundColor: on ? chiikawa ? '#D65E86' : themedHex('#8B6CF0') : 'transparent' }}
           >
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.6, color: on ? '#FFFFFF' : dark ? 'rgba(255,255,255,0.75)' : chiikawa ? '#704B5B' : '#6E6552' }}>
               {o.short}

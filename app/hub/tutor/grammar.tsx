@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { HubScreen } from '@/components/hub/HubScreen';
 import { GLASS_CARD, HUB } from '@/components/hub/theme';
 import { Icon } from '@/components/ui/Icon';
+import { LevelCard } from '@/components/vocab/LevelCard';
 import { LEVEL_LESSONS, type GrammarLevel } from '@/services/hub/grammar-course';
 import { PASS_PERCENT } from '@/services/hub/level-test';
 import { useHubStore } from '@/store/useHubStore';
@@ -40,30 +41,10 @@ export default function GrammarLevels() {
   return (
     <HubScreen title="Làm chủ ngữ pháp tiếng Anh" subtitle="Lộ trình A1 → C · Quy tắc & Luyện nói tương tác cùng Khối cầu AI" back>
       {/* 5 Level Large Tabs */}
-      <View style={{ flexDirection: 'row', gap: 8 }}>
-        {LEVELS.map((lv) => {
-          const on = lv === level;
-          return (
-            <Pressable
-              key={lv}
-              accessibilityRole="tab"
-              accessibilityState={{ selected: on }}
-              onPress={() => setLevel(lv)}
-              style={{
-                flex: 1,
-                height: 48,
-                borderRadius: 14,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: on ? '#8C531B' : HUB.glassStrong,
-                borderWidth: 1.5,
-                borderColor: on ? '#8C531B' : HUB.line,
-              }}
-            >
-              <Text style={{ color: on ? '#fff' : HUB.ink, fontSize: 16, fontWeight: '800' }}>{lv}</Text>
-            </Pressable>
-          );
-        })}
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
+        {LEVELS.map((lv) => (
+          <LevelCard key={lv} lv={lv} title={lv} sub={`${LEVEL_LESSONS[lv].length} bài`} en={false} selected={lv === level} onPress={() => setLevel(lv)} />
+        ))}
       </View>
 
       {/* Level Summary Header */}
@@ -130,7 +111,7 @@ export default function GrammarLevels() {
                 }}
               >
                 {emojiIcon === 'abc' ? (
-                  <Text style={{ color: done ? '#34D399' : '#8C531B', fontSize: 14, fontWeight: '800' }}>abc</Text>
+                  <Text style={{ color: done ? '#34D399' : '#6A4BD9', fontSize: 14, fontWeight: '800' }}>abc</Text>
                 ) : (
                   <Text style={{ fontSize: 18 }}>{emojiIcon}</Text>
                 )}
@@ -170,7 +151,7 @@ export default function GrammarLevels() {
                   }}
                 >
                   <Icon name="mic" size={13} color="#38BDF8" />
-                  <Text style={{ color: '#8C531B', fontSize: 11, fontWeight: '800' }}>Luyện nói</Text>
+                  <Text style={{ color: '#6A4BD9', fontSize: 11, fontWeight: '800' }}>Luyện nói</Text>
                 </Pressable>
                 <Icon name="chevron-right" size={16} color={HUB.muted} />
               </View>

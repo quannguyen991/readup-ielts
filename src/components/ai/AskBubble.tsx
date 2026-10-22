@@ -1,28 +1,26 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Image, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Platform, Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { Icon } from '@/components/ui';
-import { color } from '@/theme/tokens';
 import { useRewardStore } from '@/store/useRewardStore';
-import { CHIIKAWA_IMG } from '@/components/chiikawa/chiikawa';
-import { LionMascot } from '@/components/mascot/LionMascot';
+import { useAssistantDock } from '@/store/useAssistantDock';
 import { currentLocale, pick, useL } from '@/i18n/useL';
 import { formatWordAnswer, isSingleWordQuestion } from '@/services/dictionary/word-answer';
 import { lookupOffline, resolveWord } from '@/services/dictionary/word-lookup';
 
 /**
- * Bong bóng hỏi nhanh, nổi ở góc màn.
+ * Trợ lý AI nổi ở góc màn.
  *
  * VÌ SAO NÓ NHỎ VÀ Ở GÓC. Đây không phải chỗ học, nó là chỗ gỡ một chỗ tắc rồi
  * quay lại việc đang làm. Mở thành một màn riêng là bắt người ta rời việc; để nó
  * chiếm nửa màn hình là biến một câu hỏi phụ thành trung tâm.
  *
- * GHIM CỐ ĐỊNH Ở MỌI MÀN, kể cả màn làm bài (người dùng yêu cầu 27/09/2026 —
- * màn chép chính tả trống trơn góc phải); chỉ ẩn lúc đang thi (`isExamRoute`).
- * `position: fixed` trên web để cuộn trang nó vẫn đứng yên ở góc.
+ * QUẢ CẦU: người học nhận ra trợ lý qua quả cầu ánh cầu vồng đang chuyển động
+ * (giống mẫu giao diện AI). Điện thoại: nút chỉ là quả cầu tròn; bấm là mở một tấm
+ * trượt từ đáy (bottom sheet) nằm trên thanh tab, dễ với bằng ngón cái.
  *
- * MASCOT CHIKAWA: mascot luôn nhận diện được ở góc màn hình; bong bóng vẫn giữ
- * hành vi hỏi nhanh để người học không phải rời trang đang làm.
+ * GHIM CỐ ĐỊNH Ở MỌI MÀN, kể cả màn làm bài; chỉ ẩn lúc đang thi (`isExamRoute`).
  */
 
 type Msg = { role: 'user' | 'assistant'; content: string; /** Lỗi AI: hiện nút "Thử lại". */ retry?: boolean };
@@ -37,13 +35,28 @@ const GREETING_EN =
   "Hi, I'm Leo. Ask me anything: vocabulary, grammar, how to tackle each question type, or how to use the app. I can't see your account or your writing.";
 
 const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
+const PHONE_MAX = 640;
 
-/** Chuyển động của bong bóng: Chiikawa lơ lửng, khung chat trượt lên. Tắt khi người dùng bật "giảm chuyển động". */
+/** Mặt kính trắng, viền lilac nhạt. */
+const GLASS = {
+  backgroundColor: '#FFFFFF',
+  borderColor: '#EEE9FF',
+} as const;
+
+/**
+ * Quả cầu và hoạt họa (web). Quả cầu: conic cầu vồng xoay chậm, điểm sáng trắng cố định ở
+ * trên trái, một vệt sáng quét vòng quanh; cả khối thở nhẹ. Tắt khi người dùng bật "giảm chuyển động".
+ */
 const CSS_ID = 'readup-askbubble';
 const CSS = `
-@keyframes ab-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes ab-pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){[data-ab]{animation:none!important}}
+@keyframes ab-pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes ab-spin{to{transform:rotate(360deg)}}
+@keyframes ab-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.ab-orb-wrap{border-radius:50%;animation:ab-breathe 3.6s ease-in-out infinite}
+.ab-orb{position:relative;overflow:hidden;background:conic-gradient(from 0deg,#C4B5FD,#F9A8D4,#93C5FD,#FDE68A,#C4B5FD,#A5B4FC,#C4B5FD);animation:ab-spin 7s linear infinite;box-shadow:inset -3px -5px 9px rgba(76,55,170,.28),0 5px 14px rgba(139,108,240,.34)}
+.ab-orb::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.95),rgba(255,255,255,0) 36%),radial-gradient(circle at 68% 74%,rgba(255,255,255,.4),rgba(255,255,255,0) 42%)}
+.ab-orb::after{content:"";position:absolute;inset:-35%;border-radius:50%;background:conic-gradient(from 200deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.7) 40deg,rgba(255,255,255,0) 90deg,rgba(255,255,255,0) 360deg);animation:ab-spin 3.2s linear infinite}
+@media (prefers-reduced-motion:reduce){[data-ab],.ab-orb,.ab-orb-wrap,.ab-orb::after{animation:none!important}}
 `;
 function ensureCss() {
   if (Platform.OS !== 'web' || typeof document === 'undefined' || document.getElementById(CSS_ID)) return;
@@ -52,8 +65,6 @@ function ensureCss() {
   el.textContent = CSS;
   document.head.appendChild(el);
 }
-/** Chiikawa vẫy tay — cùng ảnh với các chỗ Chiikawa khác trong app. */
-const CHIIKAWA = CHIIKAWA_IMG.wave;
 
 /**
  * Cách đáy `px` pixel, CỘNG phần thanh tab dưới đang chiếm (biến `--bb-h` do
@@ -64,15 +75,69 @@ function lift(px: number): { bottom: number; transition?: string } {
   return { bottom: `calc(${px}px + var(--bb-h, 0px))` as unknown as number, transition: 'bottom 200ms ease' } as never;
 }
 
-export function AskBubble({ forceChiikawa = false }: { /** Trang chủ chỉ có Chiikawa: dùng Chiikawa thay Leo mà không đổi theme. */ forceChiikawa?: boolean } = {}) {
+/** Quả cầu trợ lý: trên web là CSS chuyển động; trên máy khác là gradient tĩnh có điểm sáng. */
+function AiOrb({ size = 32 }: { size?: number }) {
+  if (Platform.OS !== 'web') {
+    return (
+      <LinearGradient
+        colors={['#F5F2FF', '#C4B5FD', '#F9A8D4', '#93C5FD']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{ width: size, height: size, borderRadius: size / 2 }}
+      />
+    );
+  }
+  return (
+    <View className="ab-orb-wrap" style={{ width: size, height: size }}>
+      <View className="ab-orb" style={{ width: size, height: size, borderRadius: size / 2 }} />
+    </View>
+  );
+}
+
+/** Ảnh đại diện: trợ lý là quả cầu, người học là chấm navy có chữ "Bạn". */
+function Avatar({ who, size = 32 }: { who: 'ai' | 'me'; size?: number }) {
+  if (who === 'ai') return <AiOrb size={size} />;
+  return (
+    <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: '#2B2350', alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ color: '#FFFFFF', fontSize: size * 0.36, fontWeight: '700' }}>Bạn</Text>
+    </View>
+  );
+}
+
+const SUGGESTIONS = [
+  { vi: 'Mẹo làm bài Reading', en: 'Reading tips' },
+  { vi: 'Từ vựng hôm nay', en: "Today's vocabulary" },
+  { vi: 'Giải thích một điểm ngữ pháp', en: 'Explain a grammar point' },
+];
+
+function HeaderBtn({ icon, label, onPress }: { icon: Parameters<typeof Icon>[0]['name']; label: string; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      onPress={onPress}
+      style={({ hovered }: { hovered?: boolean }) => ({ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? '#F5F2FF' : 'transparent' })}
+    >
+      <Icon name={icon} size={18} color="#7A72A0" strokeWidth={2} />
+    </Pressable>
+  );
+}
+
+export function AskBubble({ forceChiikawa = false, allowDock = false }: { /** Trang chủ chỉ có Chiikawa: đổi tên gọi mà không đổi theme. */ forceChiikawa?: boolean; /** Cho phép cột cố định bên phải ở màn rộng (không dùng ở màn thi, thành phố, hub). */ allowDock?: boolean } = {}) {
   const { L, en } = useL();
   const storeChiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
   const chiikawaTheme = forceChiikawa || storeChiikawa;
-  const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const scroller = useRef<ScrollView>(null);
+  const storedMode = useAssistantDock((st) => st.mode);
+  const setMode = useAssistantDock((st) => st.setMode);
+  const { width: winW } = useWindowDimensions();
+  const phone = winW < PHONE_MAX;
+  // Cột bên phải chỉ có khi được phép và màn đủ rộng; ngược lại `full` tự thu về viên thuốc.
+  const fullDock = allowDock && winW >= 1280;
+  const mode = storedMode === 'full' && !fullDock ? 'min' : storedMode;
 
   useEffect(ensureCss, []);
 
@@ -84,7 +149,7 @@ export function AskBubble({ forceChiikawa = false }: { /** Trang chủ chỉ có
     setBusy(true);
 
     // Từ đã có trong máy: trả lời ngay, khỏi tốn lượt AI.
-    const local = word ? lookupOffline(word) : null;
+    const local = word ? await lookupOffline(word) : null;
     if (local) {
       setMessages([...next, { role: 'assistant', content: formatWordAnswer(local, en) }]);
       setBusy(false);
@@ -157,159 +222,263 @@ export function AskBubble({ forceChiikawa = false }: { /** Trang chủ chỉ có
     void ask(base);
   }, [ask, busy, messages]);
 
-  if (!open) {
-    // Linh vật sư tử là nút hỏi: bấm vào là mở khung hỏi. Không còn nút tròn riêng.
+  const sendText = useCallback(
+    async (raw: string) => {
+      const text = raw.trim();
+      if (!text || busy) return;
+      const next: Msg[] = [...messages, { role: 'user', content: text }];
+      setMessages(next);
+      setDraft('');
+      await ask(next);
+    },
+    [ask, busy, messages],
+  );
+
+  const launchLabel = chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Hỏi AI', 'Ask AI');
+
+  if (mode === 'min') {
+    // Điện thoại: chỉ quả cầu tròn ở góc, không chữ, để không che nội dung. Máy tính: viên thuốc có nhãn.
+    if (phone) {
+      return (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={launchLabel}
+          onPress={() => setMode('pop')}
+          style={({ pressed }: { pressed: boolean }) =>
+            ({
+              position: FIXED,
+              right: 16,
+              ...lift(16),
+              zIndex: 60,
+              width: 60,
+              height: 60,
+              borderRadius: 30,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 1,
+              ...GLASS,
+              opacity: pressed ? 0.85 : 1,
+              transform: [{ scale: pressed ? 0.94 : 1 }],
+              ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 22px rgba(106,75,217,0.22)', transition: 'transform 160ms ease, opacity 160ms ease' } as object) : { shadowColor: '#6A4BD9', shadowOpacity: 0.22, shadowRadius: 14, shadowOffset: { width: 0, height: 6 }, elevation: 6 }),
+            }) as never
+          }
+        >
+          <AiOrb size={42} />
+        </Pressable>
+      );
+    }
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Hỏi Leo, trợ lý AI', 'Ask Leo, the AI helper')}
-        onPress={() => setOpen(true)}
+        accessibilityLabel={launchLabel}
+        onPress={() => setMode('pop')}
         style={({ pressed, hovered }: { pressed: boolean; hovered?: boolean }) =>
           ({
             position: FIXED,
-            right: 6,
-            ...lift(2),
+            right: 12,
+            ...lift(12),
             zIndex: 60,
-            width: 100,
-            height: 100,
+            flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'center',
-            // Rê vào nhô lên, bấm xuống: chuyển động nối tiếp, không giật.
-            transform: [{ scale: pressed ? 0.94 : hovered ? 1.06 : 1 }],
-            transition: 'transform 220ms cubic-bezier(.2,.8,.2,1), bottom 200ms ease',
+            gap: 10,
+            height: 50,
+            paddingLeft: 10,
+            paddingRight: 20,
+            borderRadius: 999,
+            ...GLASS,
+            borderWidth: 1,
+            opacity: pressed ? 0.9 : 1,
+            boxShadow: hovered ? '0 12px 28px rgba(106,75,217,0.22)' : '0 8px 22px rgba(106,75,217,0.16)',
+            transition: 'box-shadow 200ms ease, bottom 200ms ease',
           }) as never
         }
       >
-        <View
-          {...({ dataSet: { ab: '1' } } as object)}
-          pointerEvents="none"
-          style={Platform.OS === 'web' ? ({ animation: 'ab-float 3.2s ease-in-out infinite' } as object) : undefined}
-        >
-          {forceChiikawa ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 92, height: 92 }} accessibilityIgnoresInvertColors /> : <LionMascot pose="wave" size={92} />}
-        </View>
-        {chiikawaTheme ? null : (
-          <View
-            pointerEvents="none"
-            style={{ position: 'absolute', top: 6, right: 4, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 999, backgroundColor: '#B94A70' }}
-          >
-            <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '800', letterSpacing: 0.4 }}>AI</Text>
-          </View>
-        )}
+        <AiOrb size={32} />
+        <Text style={{ color: '#2B2350', fontSize: 14, fontWeight: '700' }}>{launchLabel}</Text>
       </Pressable>
     );
   }
 
+  // Khung chat: cột cố định (full), tấm trượt từ đáy (điện thoại) hoặc cửa sổ nổi (máy tính).
+  const last = messages[messages.length - 1];
+  const thinking = busy && (!last || last.role === 'user' || !last.content);
+  const isFull = mode === 'full';
+  const webAnim = Platform.OS === 'web' ? ({ animation: 'ab-pop 300ms cubic-bezier(.16,1,.3,1)' } as object) : {};
+  const panelStyle = isFull
+    ? { position: FIXED, right: 0, top: 0, bottom: 0, width: 340, zIndex: 40, ...GLASS, borderLeftWidth: 1, ...webAnim }
+    : phone
+      ? {
+          position: FIXED,
+          left: 10,
+          right: 10,
+          ...lift(12),
+          zIndex: 60,
+          height: Platform.OS === 'web' ? ('min(620px, calc(100dvh - 130px))' as unknown as number) : 560,
+          borderRadius: 26,
+          overflow: 'hidden',
+          ...GLASS,
+          borderWidth: 1,
+          ...webAnim,
+          ...(Platform.OS === 'web'
+            ? ({ boxShadow: '0 -10px 40px rgba(43,35,80,0.14)' } as object)
+            : { shadowColor: '#2B2350', shadowOpacity: 0.16, shadowRadius: 24, shadowOffset: { width: 0, height: -8 }, elevation: 12 }),
+        }
+      : {
+          position: FIXED,
+          right: 12,
+          ...lift(12),
+          zIndex: 60,
+          width: 380,
+          maxWidth: '92%',
+          height: Platform.OS === 'web' ? ('min(600px, calc(100dvh - 120px))' as unknown as number) : 600,
+          borderRadius: 26,
+          overflow: 'hidden',
+          ...GLASS,
+          borderWidth: 1,
+          ...webAnim,
+          ...(Platform.OS === 'web'
+            ? ({ boxShadow: '0 18px 46px rgba(43,35,80,0.16)' } as object)
+            : { shadowColor: '#2B2350', shadowOpacity: 0.18, shadowRadius: 24, shadowOffset: { width: 0, height: 12 }, elevation: 10 }),
+        };
+  const headerBtns = (
+    <View style={{ flexDirection: 'row', gap: 2 }}>
+      {!isFull && fullDock ? <HeaderBtn icon="chevron-left" label={L('Mở rộng', 'Expand')} onPress={() => setMode('full')} /> : null}
+      {isFull ? <HeaderBtn icon="chevron-up" label={L('Cửa sổ nổi', 'Pop out')} onPress={() => setMode('pop')} /> : null}
+      <HeaderBtn icon="close" label={L('Thu nhỏ', 'Minimize')} onPress={() => setMode('min')} />
+    </View>
+  );
   return (
-    <View
-      style={{
-        position: FIXED,
-        zIndex: 60,
-        right: 14,
-        ...lift(6),
-        ...(Platform.OS === 'web' ? ({ animation: 'ab-pop 260ms cubic-bezier(.2,.8,.2,1)', transformOrigin: 'bottom right' } as object) : null),
-        width: 340,
-        maxWidth: '92%',
-        maxHeight: Platform.OS === 'web' ? ('min(460px, calc(100dvh - 96px))' as unknown as number) : 460,
-        borderRadius: 18,
-        overflow: 'hidden',
-        backgroundColor: '#fff',
-        ...(Platform.OS === 'web'
-          ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 28px rgba(15,23,42,0.10)' } as never)
-          : {
-              shadowColor: chiikawaTheme ? '#49364B' : '#0F172A',
-              shadowOffset: { width: 0, height: 6 },
-              shadowOpacity: 0.1,
-              shadowRadius: 16,
-              elevation: 8,
-            }),
-      }}
-    >
-      <View
-        className="flex-row items-center justify-between py-0.5 pl-3 pr-1"
-        style={{ backgroundColor: chiikawaTheme ? '#C65A78' : color.primary }}
-      >
-        <View className="flex-row items-center gap-2">
-          {chiikawaTheme ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 40, height: 40 }} accessibilityIgnoresInvertColors /> : <LionMascot pose="wave" size={38} />}
-          <Text className="font-strong text-body text-white">{chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Leo · Trợ lý AI', 'Leo · AI helper')}</Text>
+    <View style={panelStyle as never} {...(Platform.OS === 'web' ? ({ dataSet: { ab: '1' } } as object) : {})}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingLeft: 16, paddingRight: 8, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#F1EEFB' }}>
+        <Avatar who="ai" size={40} />
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text style={{ fontSize: 16, fontWeight: '700', color: '#2B2350', letterSpacing: -0.2 }}>{L('Trợ lý AI', 'AI assistant')}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 }}>
+            <View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: '#16A34A' }} />
+            <Text style={{ fontSize: 12, color: '#7A72A0' }}>{L('Đang trực tuyến', 'Online')}</Text>
+          </View>
         </View>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={L('Đóng hỏi nhanh', 'Close quick ask')}
-          onPress={() => setOpen(false)}
-          className="h-11 w-11 items-center justify-center rounded-pill"
-        >
-          <Icon name="close" size={18} color="#fff" strokeWidth={2.2} />
-        </Pressable>
+        {headerBtns}
       </View>
 
       <ScrollView
         ref={scroller}
-        className="px-3 py-3"
-        style={{ maxHeight: 300 }}
+        style={{ flex: 1 }}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 16, gap: 14 }}
         onContentSizeChange={() => scroller.current?.scrollToEnd({ animated: true })}
       >
         {messages.length === 0 ? (
-          <Text className="font-sans text-label text-muted">{L(GREETING, GREETING_EN)}</Text>
-        ) : (
-          messages.map((m, i) => (
-            <View
-              key={i}
-              className={[
-                'mb-2 rounded-panel px-3 py-2',
-                m.role === 'user' ? 'self-end bg-primary-50' : 'bg-surface-muted',
-              ].join(' ')}
-              style={{ maxWidth: '92%' }}
-            >
-              <Text className="font-sans text-body text-ink">
-                {m.content || (busy ? '…' : '')}
-              </Text>
-              {m.retry && i === messages.length - 1 ? (
-                <Pressable accessibilityRole="button" disabled={busy} onPress={retry} className="mt-1.5 self-start rounded-pill bg-white px-3 py-1">
-                  <Text className="font-strong text-label text-primary-700">{L('Thử lại', 'Try again')}</Text>
-                </Pressable>
-              ) : null}
+          <View style={{ gap: 14 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
+              <Avatar who="ai" />
+              <View style={{ flex: 1, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', borderRadius: 18, borderBottomLeftRadius: 6, paddingHorizontal: 14, paddingVertical: 12 }}>
+                <Text style={{ fontSize: 14, lineHeight: 21, color: '#2B2350' }}>{L(GREETING, GREETING_EN)}</Text>
+              </View>
             </View>
-          ))
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, paddingLeft: 42 }}>
+              {SUGGESTIONS.map((sg) => (
+                <Pressable
+                  key={sg.vi}
+                  accessibilityRole="button"
+                  onPress={() => void sendText(L(sg.vi, sg.en))}
+                  style={({ hovered, pressed }: { hovered?: boolean; pressed?: boolean }) => ({
+                    paddingHorizontal: 13,
+                    paddingVertical: 8,
+                    borderRadius: 999,
+                    borderWidth: 1,
+                    borderColor: 'rgba(106, 75, 217,0.28)',
+                    backgroundColor: pressed || hovered ? '#F1ECFF' : '#FFFFFF',
+                  })}
+                >
+                  <Text style={{ fontSize: 13, color: '#6A4BD9', fontWeight: '600' }}>{L(sg.vi, sg.en)}</Text>
+                </Pressable>
+              ))}
+            </View>
+          </View>
+        ) : (
+          messages.map((m, i) => {
+            const mine = m.role === 'user';
+            return (
+              <View key={i} style={{ flexDirection: mine ? 'row-reverse' : 'row', alignItems: 'flex-end', gap: 10 }}>
+                {mine ? null : <Avatar who="ai" />}
+                <View style={{ maxWidth: '80%', gap: 6 }}>
+                  <View
+                    style={{
+                      paddingHorizontal: 14,
+                      paddingVertical: 10,
+                      borderRadius: 18,
+                      borderBottomRightRadius: mine ? 6 : 18,
+                      borderBottomLeftRadius: mine ? 18 : 6,
+                      backgroundColor: mine ? '#6A4BD9' : '#FFFFFF',
+                      borderWidth: mine ? 0 : 1,
+                      borderColor: '#EEE9FF',
+                    }}
+                  >
+                    <Text style={{ fontSize: 14, lineHeight: 21, color: mine ? '#FFFFFF' : '#2B2350' }}>{m.content || ''}</Text>
+                  </View>
+                  {m.retry && i === messages.length - 1 ? (
+                    <Pressable
+                      accessibilityRole="button"
+                      disabled={busy}
+                      onPress={retry}
+                      style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: 'rgba(106, 75, 217,0.28)' }}
+                    >
+                      <Text style={{ fontSize: 12, fontWeight: '600', color: '#6A4BD9' }}>{L('Thử lại', 'Try again')}</Text>
+                    </Pressable>
+                  ) : null}
+                </View>
+              </View>
+            );
+          })
         )}
+
+        {thinking ? (
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
+            <Avatar who="ai" />
+            <View style={{ flexDirection: 'row', gap: 5, paddingHorizontal: 14, paddingVertical: 13, borderRadius: 18, borderBottomLeftRadius: 6, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF' }}>
+              {[0.35, 0.6, 0.9].map((o, k) => (
+                <View key={k} style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: '#8B6CF0', opacity: o }} />
+              ))}
+            </View>
+          </View>
+        ) : null}
       </ScrollView>
 
-      <View className="flex-row items-end gap-2 border-t border-border px-3 py-2.5">
-        {/*
-          Ô MỘT DÒNG, KHÔNG PHẢI Ô NHIỀU DÒNG.
-
-          Bản đầu để `multiline` rồi bắt Enter trong `onKeyPress`. Đo trên web thì
-          nó không gửi: với ô nhiều dòng, react-native-web không bắn `onKeyPress`
-          cho phím Enter — Enter là xuống dòng, và ô nuốt luôn.
-
-          Ô một dòng thì `onSubmitEditing` chạy đúng trên cả web lẫn máy, và ở
-          một bong bóng hỏi nhanh thì gõ nhiều dòng vốn không phải việc thường —
-          đổi một tiện ích hiếm dùng lấy một phím Enter chạy thật là đáng.
-        */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, paddingTop: 10, paddingBottom: phone ? 14 : 12, borderTopWidth: 1, borderTopColor: '#F1EEFB' }}>
         <TextInput
           value={draft}
           onChangeText={setDraft}
-          placeholder={L('Hỏi một câu…', 'Ask a question…')}
+          placeholder={L('Nhập câu hỏi…', 'Type a question…')}
+          placeholderTextColor="#A59CC4"
           returnKeyType="send"
           enterKeyHint="send"
           autoCapitalize="sentences"
           blurOnSubmit={false}
           onSubmitEditing={() => void send()}
-          className="flex-1 rounded-panel border border-border px-3 py-2 font-sans text-body text-ink"
-          style={Platform.OS === 'web' ? ({ outlineStyle: 'none' } as never) : undefined}
+          style={{
+            flex: 1,
+            height: 44,
+            paddingHorizontal: 18,
+            borderRadius: 999,
+            borderWidth: 1,
+            borderColor: '#E6E1F3',
+            backgroundColor: '#F5F2FF',
+            fontSize: 15,
+            color: '#2B2350',
+            ...(Platform.OS === 'web' ? ({ outlineStyle: 'none' } as Record<string, unknown>) : {}),
+          }}
         />
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={L('Gửi câu hỏi', 'Send question')}
           disabled={busy || draft.trim() === ''}
           onPress={() => void send()}
-          className="h-11 w-11 items-center justify-center rounded-panel"
-          style={{ backgroundColor: busy || draft.trim() === '' ? color.border : color.primary }}
+          style={({ pressed }: { pressed: boolean }) => ({ opacity: busy || draft.trim() === '' ? 0.45 : 1, transform: [{ scale: pressed ? 0.92 : 1 }] })}
         >
-          {busy ? (
-            <ActivityIndicator size="small" color="#fff" />
-          ) : (
-            <Icon name="chevron-right" size={18} color="#fff" strokeWidth={2.2} />
-          )}
+          <LinearGradient colors={['#8B6CF0', '#6A4BD9']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' }}>
+            {busy ? <ActivityIndicator size="small" color="#FFFFFF" /> : <Icon name="arrow-up" size={18} color="#FFFFFF" strokeWidth={2.4} />}
+          </LinearGradient>
         </Pressable>
       </View>
     </View>

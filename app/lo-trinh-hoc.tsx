@@ -1,7 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
+import { CTA_GRADIENT, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { Appear } from '@/components/motion/Motion';
@@ -45,7 +47,8 @@ export default function LearningPathScreen() {
   const { L, en } = useL();
   const hydrated = useHydrated();
   const { width } = useWindowDimensions();
-  const wide = width >= 1200;
+  // Hai cột chỉ khi đủ chỗ: khung trò chuyện trợ lý chiếm thêm 340px ở máy tính.
+  const wide = width >= 1480;
   const compactPicker = width < 560;
 
   const planInput = useRoadmapStore((s) => s.input);
@@ -226,31 +229,25 @@ export default function LearningPathScreen() {
   return (
     <Screen cat="write">
       <View style={{ paddingBottom: 40 }}>
-        {/* ------------------------------------------------ đầu trang */}
+        {/* ------------------------------------------------ đầu trang: một lối vào cho cả lộ trình */}
         <Appear>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2.4, color: P.goldDeep }}>
-                {L('BAND 9 · LỘ TRÌNH HỌC', 'BAND 9 · LEARNING PATH')}
-              </Text>
-              <Text className="font-heavy" style={{ marginTop: 2, fontSize: width >= 900 ? 38 : 28, lineHeight: width >= 900 ? 44 : 34, color: P.navy }}>
-                {L('Lộ trình học theo trình độ', 'Learning path by level')}
-              </Text>
-              <Text className="font-sans" style={{ marginTop: 4, fontSize: 15, lineHeight: 22, color: P.muted }}>
-                {L(
-                  'Mỗi Part một chủ đề, đủ các kỹ năng.',
-                  'One topic per Part, every skill.',
-                )}
-              </Text>
-            </View>
-            {width >= HEADER_ART_MIN ? (
-              <Motion kind="float">
-                <Sticker tilt={8}>
-                  <CuteRocket size={72} />
-                </Sticker>
-              </Motion>
-            ) : null}
-          </View>
+          <LightHero
+            badge={L('LỘ TRÌNH HỌC', 'LEARNING PATH')}
+            line1={L('Học theo trình độ, từng Part một', 'Study level by level, one Part at a time')}
+            subtitle={L('Mỗi Part một chủ đề, đủ các kỹ năng. Lịch học của bạn đi theo nhịp đã chọn.', 'One topic per Part, every skill. Your schedule follows the rhythm you picked.')}
+            noArt
+            noCat
+          >
+            <Pressable accessibilityRole="link" onPress={() => router.push('/plan' as never)} style={({ pressed }: { pressed: boolean }) => ({ alignSelf: 'flex-start', opacity: pressed ? 0.92 : 1 })}>
+              <LinearGradient colors={CTA_GRADIENT} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, height: 52, borderRadius: 999 }}>
+                <Icon name="calendar" size={16} color="#FFFFFF" strokeWidth={2.2} />
+                <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
+                  {planInput ? L('Xem và sửa lộ trình của bạn', 'View and edit your plan') : L('Lập lộ trình của bạn', 'Build your plan')}
+                </Text>
+                <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2.2} />
+              </LinearGradient>
+            </Pressable>
+          </LightHero>
         </Appear>
 
         {wide ? (
@@ -378,9 +375,9 @@ function SidePanel({
               accessibilityRole="button"
               aria-current={here ? 'step' : undefined}
               onPress={() => onPickPart(p.id)}
-              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 11, paddingHorizontal: 10, paddingVertical: 9, backgroundColor: here ? P.goldWash : hovered ? '#FBF7EE' : 'transparent' })}
+              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 11, paddingHorizontal: 10, paddingVertical: 9, backgroundColor: here ? P.goldWash : hovered ? '#F5F2FF' : 'transparent' })}
             >
-              <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: here ? P.gold : '#FBF7EE' }}><Text className="font-heavy" style={{ fontSize: 10, color: here ? '#FFFFFF' : P.goldDeep }}>
+              <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: here ? P.gold : '#F5F2FF' }}><Text className="font-heavy" style={{ fontSize: 10, color: here ? '#FFFFFF' : P.goldDeep }}>
                 {String(i + 1).padStart(2, '0')}
               </Text></View>
               <Text className="font-semi" numberOfLines={1} style={{ flex: 1, fontSize: 13, color: P.navy }}>

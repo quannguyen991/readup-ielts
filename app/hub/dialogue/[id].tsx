@@ -7,6 +7,8 @@ import { DIFF_COLOR, GLASS_CARD, HUB } from '@/components/hub/theme';
 import { SCENE_IMAGE } from '@/data/hub/scenes';
 import { CATEGORY_LABEL } from '@/services/hub/roleplay';
 import { dialogueById, gradeDialogue } from '@/services/hub/dialogue';
+import { markTaskDone } from '@/components/hub/hooks';
+import { dayKeyOf } from '@/services/hub/daily';
 import { speak, stopSpeaking } from '@/services/hub/speak';
 import { useDialogueStore } from '@/store/useDialogueStore';
 
@@ -56,6 +58,7 @@ export default function DialoguePage() {
   const submit = () => {
     const grade = gradeDialogue(picks, dialogue.quiz);
     record(dialogue.id, grade.percent);
+    if (grade.passed) markTaskDone(dayKeyOf(new Date()), `dialogue:${dialogue.id}`);
     setSubmitted(true);
   };
 

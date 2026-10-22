@@ -7,8 +7,9 @@
  *   3. nếu cả hai trống: bộ mặc định của từng địa điểm.
  * Không biết trình độ của người học thì KHÔNG đoán — không có mục 2.
  */
-import { getVocabTopic, VOCAB_TOPICS } from '@/data/vocab-topics';
-import { LISTENING_DECKS } from '@/data/vocab-listening';
+// Chỉ dùng chỉ mục mã bộ (không kéo kho từ vào bundle): module này được nạp ngay lúc mở app.
+// Danh sách đầy đủ để chọn bộ nằm ở `deck-catalog.ts`.
+import { DECK_SLUGS } from '@/data/vocab-index';
 import type { Bi } from '@/i18n/useL';
 import type { PathLevel } from '@/data/learning-path/types';
 
@@ -18,20 +19,7 @@ export const PATH_PRESET_SIZE = 6;
 
 export type DeckOption = { slug: string; name: Bi; group: 'topic' | 'listening'; words: number };
 
-const isRealDeck = (slug: string): boolean => getVocabTopic(slug) !== undefined;
-
-let cache: DeckOption[] | null = null;
-
-/** Mọi bộ chọn được: 50 chủ đề + các bộ từ vựng Nghe. */
-export function deckCatalog(): DeckOption[] {
-  if (!cache) {
-    cache = [
-      ...VOCAB_TOPICS.map((t): DeckOption => ({ slug: t.slug, name: { vi: t.nameVi, en: t.name }, group: 'topic', words: t.words.length })),
-      ...LISTENING_DECKS.map((t): DeckOption => ({ slug: t.slug, name: { vi: t.nameVi, en: t.name }, group: 'listening', words: t.words.length })),
-    ];
-  }
-  return cache;
-}
+const isRealDeck = (slug: string): boolean => DECK_SLUGS.has(slug);
 
 /** Giữ mã còn tồn tại, bỏ trùng, cắt tối đa `MAX_CHOSEN_DECKS`. */
 export function cleanDecks(list: unknown): string[] {

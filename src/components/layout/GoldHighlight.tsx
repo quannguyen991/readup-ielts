@@ -13,7 +13,8 @@ import { useRewardStore } from '@/store/useRewardStore';
 
 const CSS_ID = 'band9-gold-highlight';
 const CSS = `
-.b9-gold{position:relative;overflow:hidden;background-image:linear-gradient(100deg,#F4E4B8 0%,#DDBE7C 28%,#B8955A 52%,#D9BA78 74%,#F1DDAA 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(120,88,36,.35),0 8px 22px -10px rgba(143,110,54,.55)}
+.b9-gold{position:relative;overflow:hidden;background-image:linear-gradient(100deg,#F4E4B8 0%,#DDBE7C 28%,#8B6CF0 52%,#D9BA78 74%,#F1DDAA 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(120,88,36,.35),0 8px 22px -10px rgba(106, 75, 217,.55)}
+.b9-vivid{background-image:linear-gradient(100deg,#E0413A 0%,#F28C28 25%,#F5C518 45%,#3DBE6B 70%,#3F8AE0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 22px -10px rgba(232,112,138,.6)}
 .b9-chikawa{background-image:linear-gradient(100deg,#F9DCE6 0%,#EBA7BD 32%,#D65E86 58%,#E78EAA 78%,#FBE6ED 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(151,54,87,.24),0 8px 22px -10px rgba(198,90,120,.36)}
 .b9-gold::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-40%;width:30%;transform:translateX(0) skewX(-20deg);will-change:transform;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));animation:b9-shine 5.5s ease-in-out infinite}
 @keyframes b9-shine{0%,55%{transform:translateX(0) skewX(-20deg)}85%,100%{transform:translateX(533%) skewX(-20deg)}}
@@ -21,9 +22,11 @@ const CSS = `
 @media (prefers-reduced-motion:reduce){.b9-gold::after{animation:none;display:none}}
 `;
 
-export function GoldHighlight({ children, fontSize, lineHeight }: { children: string; fontSize: number; lineHeight: number }) {
+/** `vivid`: dải gradient tím–san hô–cam như nút tìm trong mẫu; mặc định là vàng ánh kim của Band 9. */
+export function GoldHighlight({ children, fontSize, lineHeight, tone = 'vivid' }: { children: string; fontSize: number; lineHeight: number; tone?: 'gold' | 'vivid' }) {
   const retro = useRetroStyle();
   const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
+  const vivid = tone === 'vivid' && !retro && !chiikawa;
   useEffect(() => {
     if (Platform.OS !== 'web' || typeof document === 'undefined') return;
     // Cập nhật cả style đã được chèn từ phiên bản cũ; nếu chỉ bỏ qua style cũ
@@ -37,7 +40,7 @@ export function GoldHighlight({ children, fontSize, lineHeight }: { children: st
   return (
     <View
       {...({ dataSet: { b9gold: '1' } } as object)}
-      className={retro ? 'mt-1.5 self-start px-3 py-1' : `mt-1.5 self-start rounded-md px-3 py-1 ${chiikawa ? 'b9-chikawa' : 'b9-gold'}`}
+      className={retro ? 'mt-1.5 self-start px-3 py-1' : `mt-1.5 self-start rounded-md px-3 py-1 ${chiikawa ? 'b9-chikawa' : vivid ? 'b9-vivid' : 'b9-gold'}`}
       style={
         retro
           ? ({
@@ -48,10 +51,10 @@ export function GoldHighlight({ children, fontSize, lineHeight }: { children: st
               borderRadius: 14,
               ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}),
             } as never)
-          : { marginLeft: -10, backgroundColor: chiikawa ? '#D65E86' : BRAND.gold }
+          : { marginLeft: -10, backgroundColor: chiikawa ? '#D65E86' : vivid ? '#F28C28' : BRAND.gold }
       }
     >
-      <Text className="font-heavy" style={{ fontSize, lineHeight, color: retro || chiikawa ? '#3F2735' : BRAND.navy }}>
+      <Text className="font-heavy" style={{ fontSize, lineHeight, color: retro || chiikawa ? '#3F2735' : vivid ? '#FFFFFF' : BRAND.navy }}>
         {children}
       </Text>
     </View>

@@ -175,14 +175,14 @@ function TopicView({ bundle, scenes, sceneParam, dev }: { bundle: TopicBundle; s
     <ScrollView
       className="flex-1"
       style={[
-        { backgroundColor: '#F2F0E9' },
+        { backgroundColor: '#F3F0FB' },
         WEB ? ({
           backgroundImage: 'linear-gradient(rgba(134,116,78,.065) 1px, transparent 1px), linear-gradient(90deg, rgba(134,116,78,.065) 1px, transparent 1px)',
           backgroundSize: '36px 36px',
         } as object) : null,
       ]}
       contentContainerStyle={[
-        { paddingBottom: 36, backgroundColor: '#F2F0E9' },
+        { paddingBottom: 36, backgroundColor: '#F3F0FB' },
         WEB ? ({
           backgroundImage: 'linear-gradient(rgba(134,116,78,.065) 1px, transparent 1px), linear-gradient(90deg, rgba(134,116,78,.065) 1px, transparent 1px)',
           backgroundSize: '36px 36px',
@@ -228,8 +228,8 @@ function TopicView({ bundle, scenes, sceneParam, dev }: { bundle: TopicBundle; s
         style={[
           { height: 34, marginTop: -34 },
           WEB
-            ? ({ backgroundImage: 'linear-gradient(180deg, rgba(242,240,233,0), #F2F0E9)' } as object)
-            : { backgroundColor: '#F2F0E9' },
+            ? ({ backgroundImage: 'linear-gradient(180deg, rgba(242,240,233,0), #F3F0FB)' } as object)
+            : { backgroundColor: '#F3F0FB' },
         ]}
       />
 

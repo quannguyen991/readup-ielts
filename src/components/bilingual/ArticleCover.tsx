@@ -19,7 +19,7 @@ export type CategoryKey = 'science' | 'tech' | 'culture' | 'social' | 'health' |
 export const CATEGORIES: Record<CategoryKey, { label: string; short: string; colors: [string, string]; art: Art }> = {
   science: { label: 'Khoa học & môi trường', short: 'Khoa học', colors: ['#1E7F5C', '#7BD389'], art: CuteGlobe },
   tech: { label: 'Công nghệ & kinh tế', short: 'Công nghệ', colors: ['#1E3A8A', '#60A5FA'], art: CuteRocket },
-  culture: { label: 'Lịch sử & văn hoá', short: 'Văn hoá', colors: ['#7C2D12', '#F59E0B'], art: CuteBook },
+  culture: { label: 'Lịch sử & văn hoá', short: 'Văn hoá', colors: ['#2B2350', '#F59E0B'], art: CuteBook },
   social: { label: 'Đời sống & xã hội', short: 'Xã hội', colors: ['#9D174D', '#F9A8D4'], art: CuteChat },
   health: { label: 'Sức khoẻ', short: 'Sức khoẻ', colors: ['#B91C1C', '#FCA5A5'], art: CutePlant },
   education: { label: 'Ngôn ngữ & giáo dục', short: 'Giáo dục', colors: ['#5B21B6', '#C4B5FD'], art: CutePencil },

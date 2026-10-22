@@ -41,7 +41,7 @@ export default function VocabTopicsScreen() {
     { mode: 'vocabulary', vi: 'Từ vựng', en: 'Vocabulary', detail: '50 từ mỗi chủ đề', detailEn: '50 words per topic', icon: 'letters', tint: ['#FDF0F5', '#C64E79'] },
     { mode: 'collocations', vi: 'Collocations', en: 'Collocations', detail: 'Cụm từ tự nhiên', detailEn: 'Natural word pairs', icon: 'book', tint: ['#EEF6FF', '#2563EB'] },
     { mode: 'phrasal-verbs', vi: 'Phrasal verbs', en: 'Phrasal verbs', detail: 'Cụm động từ', detailEn: 'Phrasal verbs', icon: 'note', tint: ['#F0FDF4', '#15803D'] },
-    { mode: 'mixed', vi: 'Học trộn', en: 'Mixed practice', detail: 'Kết hợp theo chủ đề', detailEn: 'Combined by topic', icon: 'flame', tint: ['#FFF7ED', '#C2410C'] },
+    { mode: 'mixed', vi: 'Học trộn', en: 'Mixed practice', detail: 'Kết hợp theo chủ đề', detailEn: 'Combined by topic', icon: 'flame', tint: ['#F3F0FB', '#6A4BD9'] },
   ];
 
   return (
@@ -85,7 +85,7 @@ export default function VocabTopicsScreen() {
                 borderRadius: 18,
                 backgroundColor: '#FFFFFF',
                 borderWidth: 1,
-                borderColor: hovered ? item.tint[1] : '#EFE8DD',
+                borderColor: hovered ? item.tint[1] : '#F3F0FB',
                 transform: [{ scale: pressed ? 0.98 : hovered ? 1.01 : 1 }],
                 transition: 'transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease',
                 boxShadow: hovered ? `0 8px 22px ${item.tint[1]}22` : '0 1px 2px rgba(15,23,42,0.04)',

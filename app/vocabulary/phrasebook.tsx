@@ -69,7 +69,7 @@ export default function PhrasebookScreen() {
               accessibilityRole="tab"
               aria-selected={active}
               onPress={() => setMode(item.id)}
-              style={{ paddingHorizontal: 14, paddingVertical: 10, borderRadius: 999, backgroundColor: active ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: active ? color.primary : '#E9E2D8' }}
+              style={{ paddingHorizontal: 14, paddingVertical: 10, borderRadius: 999, backgroundColor: active ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: active ? color.primary : '#F3F0FB' }}
             >
               <Text className="font-semi text-label" style={{ color: active ? '#FFFFFF' : color.ink }}>{L(item.vi, item.en)}</Text>
             </Pressable>
@@ -86,7 +86,7 @@ export default function PhrasebookScreen() {
               accessibilityRole="button"
               accessibilityState={{ selected: active }}
               onPress={() => setTopicSlug(item.slug)}
-              style={{ minHeight: 42, paddingHorizontal: 14, justifyContent: 'center', borderRadius: 12, borderWidth: 1.5, borderColor: active ? color.primary : '#E9E2D8', backgroundColor: active ? '#F7EEDC' : '#FFFFFF' }}
+              style={{ minHeight: 42, paddingHorizontal: 14, justifyContent: 'center', borderRadius: 12, borderWidth: 1.5, borderColor: active ? color.primary : '#F3F0FB', backgroundColor: active ? '#F3F0FB' : '#FFFFFF' }}
             >
               <Text className="font-semi text-label" style={{ color: active ? color.primary : color.ink }}>{locale === 'en' ? item.titleEn : item.title}</Text>
             </Pressable>
@@ -109,7 +109,7 @@ export default function PhrasebookScreen() {
                   <View className="min-w-0 flex-1">
                     <View className="flex-row flex-wrap items-center gap-2">
                       <Text className="font-heavy text-cardTitle text-ink">{index + 1}. {item.term}</Text>
-                      <Text className="rounded-pill px-2 py-1 font-semi text-label" style={{ backgroundColor: '#F5F0E7', color: color.primary }}>{badge}</Text>
+                      <Text className="rounded-pill px-2 py-1 font-semi text-label" style={{ backgroundColor: '#F3F0FB', color: color.primary }}>{badge}</Text>
                     </View>
                     <Text className="mt-1 font-semi text-body text-ink">{item.meaningVi}</Text>
                     <View className="mt-2">

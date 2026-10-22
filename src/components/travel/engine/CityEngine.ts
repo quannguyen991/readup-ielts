@@ -873,12 +873,12 @@ export class CityEngine {
     if (!this.missionMode) return;
     const v = this.view;
     const me = this.toDev(this.player.x, this.player.y - this.player.footRow - 3, camX, camY);
-    pill(this.opts.locale === 'vi' ? 'Bạn' : 'You', me.x, me.y - px(6), { bg: '#B8955A', fg: '#0F1D33', border: '#0F1D33', size: 12 });
+    pill(this.opts.locale === 'vi' ? 'Bạn' : 'You', me.x, me.y - px(6), { bg: '#8B6CF0', fg: '#0F1D33', border: '#0F1D33', size: 12 });
     for (const n of this.npcs) {
       if (!n.mission) continue;
       const head = this.toDev(n.x, n.y - n.footRow - 3, camX, camY);
       if (head.x < -40 || head.x > v.devW + 40 || head.y < -40 || head.y > v.devH + 40) continue;
-      pill(n.mission.name, head.x, head.y - px(6), { bg: '#0F1D33', fg: '#F3EDE1', border: '#B8955A', size: 12 });
+      pill(n.mission.name, head.x, head.y - px(6), { bg: '#0F1D33', fg: '#F3EDE1', border: '#8B6CF0', size: 12 });
       if (this.missionGoal === n.npc.id && !this.missionTalkId) {
         const bob = this.opts.reducedMotion ? 0 : Math.sin(this.t * 5) * px(3);
         const ax = head.x;
@@ -2523,7 +2523,7 @@ export class CityEngine {
       // vòng quanh cửa: nơi nên đi (nhấp nháy) và nơi đã hoàn thành (vòng vàng mảnh)
       if (onScreen && (isRec || done) && !locked) {
         d.lineWidth = Math.max(1, px(isRec ? 2 : 1.5));
-        d.strokeStyle = isRec ? `rgba(226,200,143,${(0.55 + 0.4 * pulse).toFixed(2)})` : 'rgba(184,149,90,0.75)';
+        d.strokeStyle = isRec ? `rgba(226,200,143,${(0.55 + 0.4 * pulse).toFixed(2)})` : 'rgba(139, 108, 240,0.75)';
         d.beginPath();
         d.arc(door.x, door.y, px(isRec ? 11 + pulse * 5 : 9), 0, Math.PI * 2);
         d.stroke();
@@ -2551,7 +2551,7 @@ export class CityEngine {
       const x = Math.round(Math.max(px(4), Math.min(v.devW - w - px(4), anchor.x - w / 2)));
       const y = Math.round(Math.max(px(4), anchor.y - h - px(2)));
       const bg = locked ? '#D8D2C3' : isRec ? '#FBF1D3' : '#F3EDE1';
-      const border = locked ? '#8c8576' : done || isRec ? '#B8955A' : '#0F1D33';
+      const border = locked ? '#8c8576' : done || isRec ? '#8B6CF0' : '#0F1D33';
       d.fillStyle = border;
       d.fillRect(x - px(1), y - px(1), w + px(2), h + px(2));
       d.fillStyle = bg;
@@ -2563,7 +2563,7 @@ export class CityEngine {
       d.globalAlpha = 1;
       if (showStars) {
         for (let i = 0; i < 3; i++) {
-          d.fillStyle = i < best ? '#B8955A' : 'rgba(15,29,51,0.22)';
+          d.fillStyle = i < best ? '#8B6CF0' : 'rgba(15,29,51,0.22)';
           const sx = Math.round(x + w / 2 + (i - 1) * px(9));
           d.beginPath();
           d.arc(sx, Math.round(y + h - px(5)), px(2.4), 0, Math.PI * 2);
@@ -2603,7 +2603,7 @@ export class CityEngine {
         d.restore();
         d.globalAlpha = 1;
         const label = vi ? target.name.vi : target.name.en;
-        pill(label, Math.min(v.devW - px(60), Math.max(px(60), ax - Math.cos(ang) * px(54))), Math.min(v.devH - px(16), Math.max(px(16), ay - Math.sin(ang) * px(30))), { bg: '#FBF1D3', fg: '#0F1D33', border: '#B8955A', size: 11 });
+        pill(label, Math.min(v.devW - px(60), Math.max(px(60), ax - Math.cos(ang) * px(54))), Math.min(v.devH - px(16), Math.max(px(16), ay - Math.sin(ang) * px(30))), { bg: '#FBF1D3', fg: '#0F1D33', border: '#8B6CF0', size: 11 });
       }
     }
   }
@@ -2631,7 +2631,7 @@ export class CityEngine {
     };
 
     if (this.isImg && !this.bg) {
-      pill(this.imgFailed ? (vi ? 'Không tải được bản đồ' : 'Could not load the map') : vi ? 'Đang tải bản đồ…' : 'Loading map…', v.devW / 2, v.devH / 2, { bg: '#0F1D33', fg: '#F3EDE1', border: '#B8955A', size: 14 });
+      pill(this.imgFailed ? (vi ? 'Không tải được bản đồ' : 'Could not load the map') : vi ? 'Đang tải bản đồ…' : 'Loading map…', v.devW / 2, v.devH / 2, { bg: '#0F1D33', fg: '#F3EDE1', border: '#8B6CF0', size: 14 });
     }
 
     if (!this.interior) this.drawPoiTags(d, camX, camY, px, pill);
@@ -2644,10 +2644,10 @@ export class CityEngine {
       const vi2 = this.opts.locale === 'vi';
       if (Math.hypot(pl.x - L.host.x, pl.y - L.host.y) < 34) {
         const pp = this.toDev(L.host.x, L.host.y - 30, camX, camY);
-        pill(vi2 ? 'E · Nói chuyện' : 'E · Talk', pp.x, pp.y, { bg: '#F3EDE1', fg: '#0F1D33', border: '#B8955A' });
+        pill(vi2 ? 'E · Nói chuyện' : 'E · Talk', pp.x, pp.y, { bg: '#F3EDE1', fg: '#0F1D33', border: '#8B6CF0' });
       } else if (Math.hypot(pl.x - L.exit.x, pl.y - L.exit.y) < 30) {
         const pp = this.toDev(L.exit.x, L.exit.y - 22, camX, camY);
-        pill(vi2 ? 'E · Ra ngoài' : 'E · Exit', pp.x, pp.y, { bg: '#F3EDE1', fg: '#0F1D33', border: '#B8955A' });
+        pill(vi2 ? 'E · Ra ngoài' : 'E · Exit', pp.x, pp.y, { bg: '#F3EDE1', fg: '#0F1D33', border: '#8B6CF0' });
       }
     }
 
@@ -2677,7 +2677,7 @@ export class CityEngine {
       d.fillRect(x - px(2), y - px(2), w + px(4), h + px(4));
       d.fillStyle = '#F3EDE1';
       d.fillRect(x, y, w, h);
-      d.fillStyle = '#B8955A';
+      d.fillStyle = '#8B6CF0';
       d.fillRect(x, y + h - px(3), w, px(3));
       d.fillStyle = '#0F1D33';
       const tx = Math.round(Math.max(x + px(10), Math.min(x + w - px(10), pos.x)));
@@ -2708,7 +2708,7 @@ export class CityEngine {
       d.fillStyle = `rgba(15,29,51,${this.fade.a.toFixed(3)})`;
       d.fillRect(0, 0, v.devW, v.devH);
     }
-    if (this.toast && this.t * 1000 < this.toast.until) pill(this.toast.text, v.devW / 2, px(36), { bg: '#0F1D33', fg: '#F3EDE1', border: '#B8955A', size: 14 });
+    if (this.toast && this.t * 1000 < this.toast.until) pill(this.toast.text, v.devW / 2, px(36), { bg: '#0F1D33', fg: '#F3EDE1', border: '#8B6CF0', size: 14 });
   }
 
   // ------------------------------------------------------------------ nhập liệu

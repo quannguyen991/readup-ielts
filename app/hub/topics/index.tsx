@@ -27,7 +27,7 @@ export default function TopicsIndex() {
   return (
     <HubScreen title="Đề luyện nói" subtitle={`${SPEAKING_TOPICS.length} chủ đề · đã làm ${doneCount}`} back padBottom={140}>
       <LinearGradient
-        colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+        colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ borderRadius: 24, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14 }}
@@ -38,7 +38,7 @@ export default function TopicsIndex() {
           <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>
             Đủ ba phần như bài thi: Part 1 hỏi ngắn, Part 2 nói một cue card khoảng hai phút, Part 3 bàn sâu hơn.
           </Text>
-          <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(143,110,54,0.16)', overflow: 'hidden' }}>
+          <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.16)', overflow: 'hidden' }}>
             <View
               style={{
                 width: `${Math.round((doneCount / SPEAKING_TOPICS.length) * 100)}%`,

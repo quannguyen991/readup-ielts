@@ -497,7 +497,7 @@ function RunningView({
               còn chữ sai. Sóng âm chỉ chạy khi trình đọc đang phát, nên nó báo đúng trạng thái.
             */}
             <LinearGradient
-              colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+              colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={{ borderRadius: 22, padding: 18, alignItems: 'center' }}
@@ -508,7 +508,7 @@ function RunningView({
                 accessibilityLabel={speaking ? L('Dừng đọc', 'Stop') : L('Nghe câu', 'Play sentence')}
                 onPress={() => (speaking ? Speech.stop() : play(item.text, rate))}
                 className="-mt-9 h-[72px] w-[72px] items-center justify-center rounded-pill"
-                style={[GOLD_BUTTON as never, { boxShadow: '0 10px 24px rgba(170,120,40,0.32)' }]}
+                style={[GOLD_BUTTON as never, { boxShadow: '0 10px 24px rgba(106,75,217,0.32)' }]}
               >
                 <Icon name={speaking ? 'close' : 'play'} size={26} color="#FFFFFF" strokeWidth={2} />
               </Pressable>
@@ -539,13 +539,13 @@ function RunningView({
                     className="flex-1 items-center rounded-pill py-2"
                     style={
                       on
-                        ? { backgroundColor: themedHex('#FFF4CF'), borderWidth: 1, borderColor: themedHex('#EBC26A') }
+                        ? { backgroundColor: themedHex('#F1ECFF'), borderWidth: 1, borderColor: themedHex('#8B6CF0') }
                         : undefined
                     }
                   >
                     <Text
                       className={on ? 'font-strong text-label' : 'font-mid text-label text-paper-body'}
-                      style={on ? { color: themedHex('#8C6A1F') } : undefined}
+                      style={on ? { color: themedHex('#6A4BD9') } : undefined}
                     >
                       {r}×
                     </Text>

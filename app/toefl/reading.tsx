@@ -45,7 +45,7 @@ export default function ToeflReadingScreen() {
               accessibilityRole="button"
               accessibilityState={{ selected: active }}
               onPress={() => setIndex(i)}
-              style={{ borderWidth: 1.5, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8, borderColor: active ? '#C97A9A' : '#E4DCCB', backgroundColor: active ? '#F7EDDA' : '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8, borderColor: active ? '#C97A9A' : '#E4DCCB', backgroundColor: active ? '#F3F0FB' : '#FFFFFF' }}
             >
               <Text className="font-strong text-label text-ink">{`${bi(p.title, locale)} · ${bi(LEVEL_LABEL[p.level], locale)}`}</Text>
             </Pressable>

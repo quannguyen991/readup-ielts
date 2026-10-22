@@ -46,9 +46,9 @@ const STRUCTURE_EN: Record<string, string> = {
  */
 
 const STEP_TONES: Record<string, string> = {
-  structure: '#B07A3A',
+  structure: '#6A4BD9',
   topic: '#D7B67D',
-  'para-65': '#D6B57C',
+  'para-65': '#A38BFA',
   'para-80': '#D946EF',
   essay: '#F43F5E',
 };
@@ -101,7 +101,7 @@ export default function TranslationStepScreen() {
               className="rounded-panel px-3 py-2"
               style={{
                 borderWidth: 2,
-                borderColor: active ? t : '#F2EEE6',
+                borderColor: active ? t : '#F3F0FB',
                 backgroundColor: active ? t : '#fff',
               }}
             >

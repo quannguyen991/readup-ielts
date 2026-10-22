@@ -97,7 +97,7 @@ export function LessonCard({
       onHoverIn={() => setHover(true)}
       onHoverOut={() => setHover(false)}
       className="h-full rounded-[20px] bg-white p-4"
-      style={[{ borderWidth: 1, borderColor: hover ? tone.mid : '#F2EEE6' }, lift]}
+      style={[{ borderWidth: 1, borderColor: hover ? tone.mid : '#F3F0FB' }, lift]}
     >
       <View className="flex-row items-center gap-2.5">
         <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: tone.mid }}>

@@ -620,8 +620,8 @@ export default function SpeakingRoom() {
               onPress={() => runMain(main.act)}
               style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 26, minHeight: 56, justifyContent: 'center', backgroundColor: hovered ? '#FDE68A' : '#FACC15', transition: 'background-color 150ms ease' }) as object}
             >
-              <Icon name={main.icon} size={18} color="#1A1405" />
-              <Text className="font-heavy" style={{ fontSize: 16, color: '#1A1405' }}>
+              <Icon name={main.icon} size={18} color="#2B2350" />
+              <Text className="font-heavy" style={{ fontSize: 16, color: '#2B2350' }}>
                 {main.label}
               </Text>
             </Pressable>

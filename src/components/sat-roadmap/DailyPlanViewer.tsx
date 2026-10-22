@@ -33,10 +33,10 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
           borderRadius: 20,
           backgroundColor: '#FFFFFF',
           borderWidth: 1.5,
-          borderColor: '#EFE7DC',
+          borderColor: '#F3F0FB',
           padding: 14,
           gap: 10,
-          shadowColor: '#784415',
+          shadowColor: '#2B2350',
           shadowOpacity: 0.04,
           shadowRadius: 10,
         }}
@@ -66,9 +66,9 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
                   width: 72,
                   paddingVertical: 10,
                   borderRadius: 12,
-                  backgroundColor: isSelected ? '#2A241A' : isCompleted ? '#F0FDF4' : '#FAF5EE',
+                  backgroundColor: isSelected ? '#2B2350' : isCompleted ? '#F0FDF4' : '#F3F0FB',
                   borderWidth: 1.5,
-                  borderColor: isSelected ? '#2A241A' : isCompleted ? '#86EFAC' : '#E6DACB',
+                  borderColor: isSelected ? '#2B2350' : isCompleted ? '#86EFAC' : '#E6DACB',
                   alignItems: 'center',
                   gap: 3,
                 }}
@@ -96,10 +96,10 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
           borderRadius: 24,
           backgroundColor: '#FFFFFF',
           borderWidth: 1.5,
-          borderColor: '#EFE7DC',
+          borderColor: '#F3F0FB',
           padding: 22,
           gap: 18,
-          shadowColor: '#784415',
+          shadowColor: '#2B2350',
           shadowOpacity: 0.05,
           shadowRadius: 14,
         }}
@@ -123,7 +123,7 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
               {currentTask.titleVi}
             </Text>
             <Text style={{ fontSize: 13, color: '#64748B', fontWeight: '500' }}>
-              🎯 <Text style={{ fontWeight: '700', color: '#2A1808' }}>Mục tiêu:</Text> {currentTask.focusVi}
+              🎯 <Text style={{ fontWeight: '700', color: '#2B2350' }}>Mục tiêu:</Text> {currentTask.focusVi}
             </Text>
           </View>
 
@@ -136,7 +136,7 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
               paddingHorizontal: 14,
               height: 38,
               borderRadius: 10,
-              backgroundColor: isDone ? '#DCFCE7' : '#FAF5EE',
+              backgroundColor: isDone ? '#DCFCE7' : '#F3F0FB',
               borderWidth: 1.5,
               borderColor: isDone ? '#86EFAC' : '#E6DACB',
             }}
@@ -241,7 +241,7 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
           <View
             style={{
               borderRadius: 16,
-              backgroundColor: '#FFFBEB',
+              backgroundColor: '#F3F0FB',
               borderWidth: 1,
               borderColor: '#FDE68A',
               padding: 16,
@@ -250,10 +250,10 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                <View style={{ width: 28, height: 28, borderRadius: 8, backgroundColor: '#FEF3C7', alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 28, height: 28, borderRadius: 8, backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 14 }}>🔤</Text>
                 </View>
-                <Text style={{ fontSize: 14, fontWeight: '800', color: '#B45309' }}>
+                <Text style={{ fontSize: 14, fontWeight: '800', color: '#6A4BD9' }}>
                   Từ vựng học thuật trong ngày
                 </Text>
               </View>
@@ -263,7 +263,7 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
                   flexDirection: 'row',
                   alignItems: 'center',
                   gap: 4,
-                  backgroundColor: '#B45309',
+                  backgroundColor: '#6A4BD9',
                   paddingHorizontal: 12,
                   paddingVertical: 5,
                   borderRadius: 8,
@@ -272,13 +272,13 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
                 <Text style={{ fontSize: 11.5, fontWeight: '700', color: '#FFFFFF' }}>Ôn Quiz ↗</Text>
               </Pressable>
             </View>
-            <Text style={{ fontSize: 14, fontWeight: '800', color: '#78350F' }}>
+            <Text style={{ fontSize: 14, fontWeight: '800', color: '#2B2350' }}>
               {currentTask.vocab.unitNameVi}
             </Text>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
               {currentTask.vocab.words.map((w, wIdx) => (
                 <View key={wIdx} style={{ backgroundColor: '#FFFFFF', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6, borderWidth: 1, borderColor: '#FDE68A' }}>
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#92400E' }}>{w}</Text>
+                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#6A4BD9' }}>{w}</Text>
                 </View>
               ))}
             </View>
@@ -289,9 +289,9 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
         <View
           style={{
             borderRadius: 14,
-            backgroundColor: '#FAF5EE',
+            backgroundColor: '#F3F0FB',
             borderWidth: 1,
-            borderColor: '#EFE7DC',
+            borderColor: '#F3F0FB',
             padding: 14,
             flexDirection: 'row',
             alignItems: 'flex-start',
@@ -303,7 +303,7 @@ export function DailyPlanViewer({ initialDay = 1 }: { initialDay?: number }) {
             <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#B94A70', textTransform: 'uppercase' }}>
               Mẹo thực chiến ngày {currentTask.day}:
             </Text>
-            <Text style={{ fontSize: 12.5, color: '#573E29', lineHeight: 19 }}>
+            <Text style={{ fontSize: 12.5, color: '#2B2350', lineHeight: 19 }}>
               {currentTask.proTipVi}
             </Text>
           </View>

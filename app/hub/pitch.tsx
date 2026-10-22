@@ -117,7 +117,7 @@ export default function PitchPage() {
               backgroundColor: sentence.expect === 'rising' ? 'rgba(140, 83, 27, 0.15)' : 'rgba(16, 185, 129, 0.15)',
             }}
           >
-            <Text style={{ color: sentence.expect === 'rising' ? '#8C531B' : '#10B981', fontSize: 11, fontWeight: '800' }}>
+            <Text style={{ color: sentence.expect === 'rising' ? '#6A4BD9' : '#10B981', fontSize: 11, fontWeight: '800' }}>
               {sentence.expect === 'rising' ? 'LÊN GIỌNG ↗' : 'XUỐNG GIỌNG ↘'}
             </Text>
           </View>
@@ -141,7 +141,7 @@ export default function PitchPage() {
                 borderColor: 'rgba(120, 68, 21, 0.1)',
               }}
             >
-              <Text style={{ color: '#8C531B', fontSize: 12, fontWeight: '700' }}>{syl}</Text>
+              <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '700' }}>{syl}</Text>
             </View>
           ))}
         </View>
@@ -170,7 +170,7 @@ export default function PitchPage() {
             }}
           >
             <Icon name="volume" size={18} color="#38BDF8" />
-            <Text style={{ color: '#2A1808', fontWeight: '700' }}>Nghe mẫu</Text>
+            <Text style={{ color: '#2B2350', fontWeight: '700' }}>Nghe mẫu</Text>
           </Pressable>
 
           <Pressable
@@ -180,12 +180,12 @@ export default function PitchPage() {
               flex: 1.5,
               height: 44,
               borderRadius: 12,
-              backgroundColor: recording ? '#EF4444' : '#8C531B',
+              backgroundColor: recording ? '#EF4444' : '#6A4BD9',
               alignItems: 'center',
               justifyContent: 'center',
               flexDirection: 'row',
               gap: 8,
-              shadowColor: recording ? '#EF4444' : '#8C531B',
+              shadowColor: recording ? '#EF4444' : '#6A4BD9',
               shadowOpacity: 0.6,
               shadowRadius: 10,
             }}
@@ -226,7 +226,7 @@ export default function PitchPage() {
           </Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-              <View style={{ width: 10, height: 3, backgroundColor: '#8C531B' }} />
+              <View style={{ width: 10, height: 3, backgroundColor: '#6A4BD9' }} />
               <Text style={{ color: COSMIC.muted, fontSize: 10 }}>Giọng mẫu</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
@@ -266,7 +266,7 @@ export default function PitchPage() {
                 width: 4,
                 height: 4,
                 borderRadius: 2,
-                backgroundColor: '#8C531B',
+                backgroundColor: '#6A4BD9',
               }}
             />
           ))}
@@ -348,7 +348,7 @@ export default function PitchPage() {
                 gap: 8,
               }}
             >
-              <Text style={{ color: '#8C531B', fontSize: 13, fontWeight: '700' }}>
+              <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '700' }}>
                 HƯỚNG DẪN ĐẶT CƠ QUAN PHÁT ÂM:
               </Text>
               <Text style={{ color: COSMIC.ink, fontSize: 13, lineHeight: 20 }}>

@@ -44,7 +44,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 /**
  * Trời đêm, không phải nền xanh dương.
  *
- * Bản trước lấy xanh dương đậm → chàm → tím (#906B2C → #B58C45 → #C3923E). Nền
+ * Bản trước lấy xanh dương đậm → chàm → tím (#6A4BD9 → #6A4BD9 → #D9503E). Nền
  * ấy đủ tối cho chữ trắng, nhưng nó SÁNG NGANG với các dải sáng vẽ đè lên, nên
  * bốn dải chìm nghỉm và cả khối đọc ra thành một mảng gradient phẳng.
  *

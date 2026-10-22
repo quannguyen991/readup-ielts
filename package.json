@@ -5,6 +5,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",
     "@expo-google-fonts/be-vietnam-pro": "^0.4.1",
+    "@expo-google-fonts/inter": "^0.4.2",
+    "@expo-google-fonts/inter-tight": "^0.4.2",
     "@expo-google-fonts/nunito": "^0.4.2",
     "@expo-google-fonts/playfair-display": "^0.4.2",
     "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",

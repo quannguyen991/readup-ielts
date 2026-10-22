@@ -9,7 +9,7 @@ import { T } from '../ui/kit';
 
 export const HUD = {
   bg: 'rgba(15,29,51,0.86)',
-  border: 'rgba(184,149,90,0.85)',
+  border: 'rgba(139, 108, 240,0.85)',
   text: '#F3EDE1',
   dim: 'rgba(243,237,225,0.72)',
   gold: '#E2C88F',
@@ -33,7 +33,7 @@ export function HudBtn({ glyph, label, onPress, active, dot, size = 44 }: { glyp
       title={label}
       style={({ pressed }) => [
         hudCard,
-        { width: size, height: size, alignItems: 'center', justifyContent: 'center', backgroundColor: active ? 'rgba(184,149,90,0.95)' : HUD.bg, transform: [{ translateY: pressed ? 1 : 0 }] },
+        { width: size, height: size, alignItems: 'center', justifyContent: 'center', backgroundColor: active ? 'rgba(139, 108, 240,0.95)' : HUD.bg, transform: [{ translateY: pressed ? 1 : 0 }] },
       ]}
     >
       <Text style={{ fontSize: 20, color: active ? T.navy : HUD.gold }}>{glyph}</Text>

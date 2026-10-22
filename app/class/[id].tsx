@@ -280,7 +280,7 @@ function Attention({ members }: { members: MemberProgress[] }) {
   const flagged = members.map((m) => ({ m, reasons: reasonText(m.summary, L) })).filter((x) => x.reasons.length > 0);
 
   return (
-    <View style={[{ borderRadius: 18, backgroundColor: flagged.length ? '#FFF8EC' : P.paper, borderWidth: 1, borderColor: flagged.length ? '#E9C98C' : P.line, padding: 18 }, SHEET_SHADOW]}>
+    <View style={[{ borderRadius: 18, backgroundColor: flagged.length ? '#F3F0FB' : P.paper, borderWidth: 1, borderColor: flagged.length ? '#E9C98C' : P.line, padding: 18 }, SHEET_SHADOW]}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <View style={{ width: 30, height: 30, borderRadius: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: flagged.length ? P.amber : P.green }}>
           <Icon name={flagged.length ? 'bell' : 'check'} size={16} color="#FFFFFF" />
@@ -473,7 +473,7 @@ function AssignPicker({ classId, token, onDone, onCancel }: { classId: string; t
                     {label(it.group).toUpperCase()}
                   </Text>
                 ) : null}
-                <Pressable role="radio" aria-checked={on} onPress={() => setPicked(it)} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, paddingVertical: 7, paddingHorizontal: 6, borderRadius: 8, backgroundColor: on ? '#FBF5E8' : 'transparent' }}>
+                <Pressable role="radio" aria-checked={on} onPress={() => setPicked(it)} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, paddingVertical: 7, paddingHorizontal: 6, borderRadius: 8, backgroundColor: on ? '#F3F0FB' : 'transparent' }}>
                   <View style={{ marginTop: 1 }}>
                     <CheckSquare on={on} round />
                   </View>
@@ -672,7 +672,7 @@ function MemberDetail({ m, d, token, reload }: { m: MemberProgress; d: TeacherDe
   };
 
   return (
-    <View style={{ marginBottom: 12, padding: 12, borderRadius: 12, backgroundColor: '#FBF7EE', gap: 8 }}>
+    <View style={{ marginBottom: 12, padding: 12, borderRadius: 12, backgroundColor: '#F5F2FF', gap: 8 }}>
       <Text className="font-sans" style={{ fontSize: 12, color: P.muted }}>
         {L(`Vào lớp ${fmtDay(m.joinedAt.slice(0, 10), today)}`, `Joined ${fmtDay(m.joinedAt.slice(0, 10), today)}`)}
         {m.summary.lastActive ? L(` · học gần nhất ${fmtDay(m.summary.lastActive, today)}`, ` · last active ${fmtDay(m.summary.lastActive, today)}`) : ''}

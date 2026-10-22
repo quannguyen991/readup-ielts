@@ -18,6 +18,8 @@ import type { BillingCycle } from '@/services/payment/order';
 
 export type AppEvent =
   | { name: 'page_view'; path: string; url: string }
+  | { name: 'start_lesson'; lessonId?: string; type?: string }
+  | { name: 'complete_lesson'; lessonId?: string; score?: number }
   | { name: 'sign_up' }
   | { name: 'view_pricing' }
   | { name: 'begin_checkout'; plan: PlanId; cycle: BillingCycle; valueVnd: number; orderId: string }
@@ -51,6 +53,10 @@ export function toMeta(event: AppEvent): MetaCall {
   switch (event.name) {
     case 'page_view':
       return { event: 'PageView' };
+    case 'start_lesson':
+      return { event: 'StartTrial', params: { content_name: event.lessonId || 'lesson', content_category: event.type } };
+    case 'complete_lesson':
+      return { event: 'SubmitApplication', params: { content_name: event.lessonId || 'lesson', score: event.score } };
     case 'sign_up':
       return { event: 'CompleteRegistration', params: { status: true } };
     case 'view_pricing':
@@ -81,6 +87,10 @@ export function toGa(event: AppEvent): GaCall {
         event: 'page_view',
         params: { page_location: stripQuery(event.url), page_path: stripQuery(event.path) },
       };
+    case 'start_lesson':
+      return { event: 'level_start', params: { level_name: event.lessonId || 'lesson', character: event.type } };
+    case 'complete_lesson':
+      return { event: 'level_end', params: { level_name: event.lessonId || 'lesson', success: true, score: event.score } };
     case 'sign_up':
       return { event: 'sign_up', params: { method: 'email' } };
     case 'view_pricing':

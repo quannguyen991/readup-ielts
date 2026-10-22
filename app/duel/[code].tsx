@@ -164,7 +164,7 @@ export default function DuelRoom() {
         <View className="mt-4 rounded-[22px] bg-white p-4" style={CARD}>
           <View className="mb-3 flex-row flex-wrap items-center justify-between gap-2"><Text className="font-heavy text-bodyLg text-ink">{L('Bảng xếp hạng trực tiếp', 'Live leaderboard')}</Text><Text className="font-semi text-label text-muted">{seated.length}/{MAX_DUEL_PLAYERS} {L('người chơi', 'players')}</Text></View>
           <View className="flex-row flex-wrap gap-2">
-            {standings.length ? standings.slice(0, 12).map((row, index) => <View key={row.player.id} className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ flexGrow: 1, flexBasis: 190, backgroundColor: row.player.id === me.id ? '#FFF4D7' : '#F7F4EF', borderWidth: row.player.id === me.id ? 1.5 : 1, borderColor: row.player.id === me.id ? '#E8BE66' : '#EEE8DD' }}><Text className="font-heavy text-label" style={{ color: index === 0 ? '#A46D12' : '#7D8290' }}>{index + 1}.</Text><Text numberOfLines={1} className="min-w-0 flex-1 font-semi text-label text-ink">{row.player.name}{row.player.id === me.id ? ` ${L('(bạn)', '(you)')}` : ''}</Text><Text className="font-heavy text-body" style={{ color: '#A46D12' }}>{row.tally.score}</Text>{row.done ? <Text style={{ color: '#15945A' }}>✓</Text> : null}</View>) : <Text className="font-sans text-label text-muted">{L('Chờ người chơi vào phòng…', 'Waiting for players to join…')}</Text>}
+            {standings.length ? standings.slice(0, 12).map((row, index) => <View key={row.player.id} className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ flexGrow: 1, flexBasis: 190, backgroundColor: row.player.id === me.id ? '#F3F0FB' : '#F3F0FB', borderWidth: row.player.id === me.id ? 1.5 : 1, borderColor: row.player.id === me.id ? '#E8BE66' : '#F3F0FB' }}><Text className="font-heavy text-label" style={{ color: index === 0 ? '#6A4BD9' : '#7D8290' }}>{index + 1}.</Text><Text numberOfLines={1} className="min-w-0 flex-1 font-semi text-label text-ink">{row.player.name}{row.player.id === me.id ? ` ${L('(bạn)', '(you)')}` : ''}</Text><Text className="font-heavy text-body" style={{ color: '#6A4BD9' }}>{row.tally.score}</Text>{row.done ? <Text style={{ color: '#15945A' }}>✓</Text> : null}</View>) : <Text className="font-sans text-label text-muted">{L('Chờ người chơi vào phòng…', 'Waiting for players to join…')}</Text>}
           </View>
         </View>
 
@@ -203,7 +203,7 @@ export default function DuelRoom() {
                 <Text className="mt-2 font-sans text-bodyLg text-muted">
                   {L(`Hạng ${myRank} · ${mine.score} điểm · đúng ${mine.correct}/${questions.length}`, `Rank ${myRank} · ${mine.score} points · ${mine.correct}/${questions.length} correct`)}
                 </Text>
-                <View className="mt-4 w-full gap-2" style={{ maxWidth: 580 }}>{standings.map((row, index) => <View key={row.player.id} className="flex-row items-center gap-3 rounded-xl px-3 py-2" style={{ backgroundColor: row.player.id === me.id ? '#FFF4D7' : '#F7F4EF' }}><Text className="font-heavy text-label text-muted">{index + 1}</Text><Text className="flex-1 font-semi text-body text-ink">{row.player.name}</Text><Text className="font-heavy text-body" style={{ color: '#A46D12' }}>{row.tally.score}</Text><Text className="font-semi text-label text-muted">{row.tally.correct}/{questions.length}</Text></View>)}</View>
+                <View className="mt-4 w-full gap-2" style={{ maxWidth: 580 }}>{standings.map((row, index) => <View key={row.player.id} className="flex-row items-center gap-3 rounded-xl px-3 py-2" style={{ backgroundColor: row.player.id === me.id ? '#F3F0FB' : '#F3F0FB' }}><Text className="font-heavy text-label text-muted">{index + 1}</Text><Text className="flex-1 font-semi text-body text-ink">{row.player.name}</Text><Text className="font-heavy text-body" style={{ color: '#6A4BD9' }}>{row.tally.score}</Text><Text className="font-semi text-label text-muted">{row.tally.correct}/{questions.length}</Text></View>)}</View>
                 <View className="mt-4 flex-row flex-wrap justify-center gap-2">
                   {isHost ? <Button label={L('Đấu lại', 'Rematch')} iconLeft="refresh" onPress={() => room.begin(deckSlug)} /> : null}
                   <Button variant="outline" label={L('Về sảnh', 'Back to lobby')} onPress={() => router.replace('/duel' as never)} />
@@ -234,11 +234,11 @@ export default function DuelRoom() {
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
                     {L('Câu', 'Question')} {index + 1}/{questions.length} · {q.enToVi ? L('Chọn nghĩa đúng', 'Pick the right meaning') : L('Chọn từ tiếng Anh', 'Pick the English word')}
                   </Text>
-                  <Text className="font-strong text-label" style={{ color: '#B45309' }}>
+                  <Text className="font-strong text-label" style={{ color: '#6A4BD9' }}>
                     {Math.max(0, Math.ceil((shownAt + QUESTION_MS - clock) / 1000))}s
                   </Text>
                 </View>
-                <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F0EBE2' }}>
+                <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
                   <View className="h-1.5 rounded-pill" style={{ width: `${Math.max(0, 1 - (clock - shownAt) / QUESTION_MS) * 100}%`, backgroundColor: '#F59E0B' }} />
                 </View>
                 <Text className="mt-4 font-heavy text-pageTitle text-ink">{q.enToVi ? q.word.word : q.word.meaningVi}</Text>
@@ -253,7 +253,7 @@ export default function DuelRoom() {
                         disabled={reveal}
                         onPress={() => submit(i)}
                         className="flex-row items-center gap-3 rounded-2xl px-4 py-3.5"
-                        style={{ borderWidth: 1.5, borderColor: ok ? GREEN : bad ? RED : '#F0EBE2', backgroundColor: ok ? '#ECFDF3' : bad ? '#FFF1F2' : '#FFFFFF' }}
+                        style={{ borderWidth: 1.5, borderColor: ok ? GREEN : bad ? RED : '#F3F0FB', backgroundColor: ok ? '#ECFDF3' : bad ? '#FFF1F2' : '#FFFFFF' }}
                       >
                         <Text className="font-strong text-label text-muted">{i + 1}</Text>
                         <Text className="flex-1 font-semi text-bodyLg text-ink">{opt}</Text>
@@ -264,7 +264,7 @@ export default function DuelRoom() {
               </View>
             ) : (
               <View>
-                {room.status === 'offline' && isHost ? <Text className="mb-3 rounded-xl px-3 py-2 font-semi text-label" style={{ backgroundColor: '#FFF4D7', color: '#805D1D' }}>{L('Máy chủ live chưa kết nối. Bạn vẫn có thể mở ván thử một mình.', 'Live server is offline. You can still launch a solo test.')}</Text> : null}
+                {room.status === 'offline' && isHost ? <Text className="mb-3 rounded-xl px-3 py-2 font-semi text-label" style={{ backgroundColor: '#F3F0FB', color: '#6A4BD9' }}>{L('Máy chủ live chưa kết nối. Bạn vẫn có thể mở ván thử một mình.', 'Live server is offline. You can still launch a solo test.')}</Text> : null}
                 <View className="flex-row items-center justify-between gap-3">
                   <View className="min-w-0 flex-1">
                   <Text className="font-heavy text-sectionTitle text-ink">{seated.length > 1 ? L(`Đã vào phòng · ${seated.length} người`, `Room ready · ${seated.length} players`) : L('Mời bạn vào phòng', 'Invite players')}</Text>
@@ -286,7 +286,7 @@ export default function DuelRoom() {
                 </Text>
                 {!opponent ? (
                   <View className="mt-3 flex-row flex-wrap items-center gap-2">
-                    <Text selectable className="rounded-xl px-3 py-2 font-sans text-body text-ink" style={{ backgroundColor: '#F9F6F1' }}>
+                    <Text selectable className="rounded-xl px-3 py-2 font-sans text-body text-ink" style={{ backgroundColor: '#F3F0FB' }}>
                       {link}
                     </Text>
                     {Platform.OS === 'web' ? (
@@ -338,7 +338,7 @@ function ScoreBar({ name, t, total, tone, done }: { name: string; t: PlayerTally
             {t.score}
           </Text>
         </View>
-        <View className="mt-2 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
+        <View className="mt-2 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
           <View className="h-2.5 rounded-pill" style={{ width: `${(t.answered / Math.max(total, 1)) * 100}%`, backgroundColor: tone }} />
         </View>
         <Text className="mt-1 font-sans text-label text-muted">

@@ -14,14 +14,14 @@ import { ArticleCover, CATEGORIES, CATEGORY_ORDER, categoryOf, type CategoryKey 
 const PAGE = 24;
 const GOLD = '#C8A24A';
 /** Màu chữ ấm, không đen: tiêu đề nâu đậm, chữ phụ nâu nhạt, chữ meta xám ấm. */
-const TEXT_STRONG = '#3A2D20';
+const TEXT_STRONG = '#2B2350';
 const TEXT_SOFT = '#6E5E4B';
 const TEXT_META = '#9A8A74';
-const LINE = '#EADFCB';
+const LINE = '#F3F0FB';
 
 const CARD_SHADOW = {
   borderWidth: 1,
-  borderColor: '#F2EEE6',
+  borderColor: '#F3F0FB',
   ...(Platform.OS === 'web'
     ? ({ boxShadow: '0 1px 2px rgba(94,72,35,0.04), 0 8px 22px rgba(94, 72, 35,0.07)' } as object)
     : { elevation: 2 }),
@@ -145,8 +145,8 @@ function ArticleCard({ a, en }: { a: BilingualArticle; en: boolean }) {
         <View style={{ position: 'absolute', left: 12, top: 12, paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.94)' }}>
           <Text style={{ color: TEXT_SOFT, fontSize: 11.5, fontFamily: fontFamily.semibold }}>{CATEGORIES[categoryOf(a.topic)].short}</Text>
         </View>
-        <View style={{ position: 'absolute', right: 12, top: 12, paddingHorizontal: 9, paddingVertical: 5, borderRadius: 999, backgroundColor: '#F3E7CF' }}>
-          <Text style={{ color: '#7A5520', fontSize: 11.5, fontFamily: fontFamily.semibold }}>{a.level}</Text>
+        <View style={{ position: 'absolute', right: 12, top: 12, paddingHorizontal: 9, paddingVertical: 5, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
+          <Text style={{ color: '#6A4BD9', fontSize: 11.5, fontFamily: fontFamily.semibold }}>{a.level}</Text>
         </View>
       </View>
 
@@ -163,7 +163,7 @@ function ArticleCard({ a, en }: { a: BilingualArticle; en: boolean }) {
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', borderRadius: 999, borderWidth: 1, borderColor: LINE, overflow: 'hidden' }}>
-              <Text style={{ paddingHorizontal: 8, paddingVertical: 3, fontSize: 11, fontFamily: fontFamily.semibold, color: '#7A5520', backgroundColor: '#F3E7CF' }}>EN</Text>
+              <Text style={{ paddingHorizontal: 8, paddingVertical: 3, fontSize: 11, fontFamily: fontFamily.semibold, color: '#6A4BD9', backgroundColor: '#F3F0FB' }}>EN</Text>
               <Text style={{ paddingHorizontal: 8, paddingVertical: 3, fontSize: 11, fontFamily: fontFamily.semibold, color: TEXT_META }}>VI</Text>
             </View>
             <Text style={{ color: TEXT_META, fontSize: 12, fontFamily: fontFamily.regular }}>{L(`${a.estMinutes} phút`, `${a.estMinutes} min`)}</Text>

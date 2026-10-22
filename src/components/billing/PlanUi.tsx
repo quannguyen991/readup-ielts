@@ -35,10 +35,10 @@ import { useL } from '@/i18n/useL';
 
 /** Màu đi lên theo bậc: xám → lam → tím → cam. Nhìn thứ tự là đoán được thứ hạng. */
 const PLAN_TONE: Record<PlanId, { solid: string; soft: string; ink: string }> = {
-  free: { solid: '#64748B', soft: '#FBF7F1', ink: '#334155' },
-  plus: { solid: themedHex('#B8955A'), soft: '#F7F0E1', ink: '#A8843F' },
-  pro: { solid: '#D5B377', soft: '#FCF8F2', ink: '#B78939' },
-  max: { solid: '#F97316', soft: '#FFF0E4', ink: '#C2410C' },
+  free: { solid: '#64748B', soft: '#F3F0FB', ink: '#334155' },
+  plus: { solid: themedHex('#8B6CF0'), soft: '#F1ECFF', ink: '#6A4BD9' },
+  pro: { solid: '#D5B377', soft: '#F3F0FB', ink: '#6A4BD9' },
+  max: { solid: '#F97316', soft: '#F3F0FB', ink: '#6A4BD9' },
 };
 
 export function planTone(plan: PlanId) {
@@ -100,7 +100,7 @@ const RETRO_BOX = {
   borderRadius: 20,
   borderWidth: 3,
   borderColor: '#1F1A1D',
-  backgroundColor: '#FFFBF2',
+  backgroundColor: '#F3F0FB',
   ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}),
 };
 const RETRO_BUTTON = {
@@ -125,10 +125,10 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
       <View className={className} style={{ borderRadius: 24, padding: 16, gap: 12, ...(retro ? RETRO_BOX : GLASS) } as never}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
           <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(233,181,74,0.22)', alignItems: 'center', justifyContent: 'center' }}>
-            <Icon name="lock" size={17} color={themedHex('#8C6A1F')} />
+            <Icon name="lock" size={17} color={themedHex('#6A4BD9')} />
           </View>
           <Text className="flex-1 font-sans text-body text-ink" style={{ lineHeight: 21 }}>
-            <Text className="font-strong" style={{ color: themedHex('#8C6A1F') }}>
+            <Text className="font-strong" style={{ color: themedHex('#6A4BD9') }}>
               {L(`Tạo tài khoản mới — tặng ${WELCOME_DAYS} ngày gói Plus miễn phí.`, `Create an account — get ${WELCOME_DAYS} days of Plus free.`)}
             </Text>{' '}
             {L('Mở Du ngoạn, Du học, Speaking, Writing, Listening… (không gồm trợ giảng AI và bài mẫu). Không cần thẻ.', 'Unlocks Travel, Study Abroad, Speaking, Writing, Listening… (no AI tutor or model essays). No card needed.')}
@@ -139,7 +139,7 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
           onPress={() => router.push('/auth/sign-in?mode=signup' as never)}
           style={({ pressed }) => ({ alignSelf: 'stretch', alignItems: 'center', borderRadius: 999, paddingVertical: 13, ...(retro ? RETRO_BUTTON : GOLD_BUTTON), transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
         >
-          <Text className="font-heavy" style={{ fontSize: 15, color: retro ? '#1F1A1D' : themedHex('#3B2A10') }}>{L('Tạo tài khoản', 'Create account')}</Text>
+          <Text className="font-heavy" style={{ fontSize: 15, color: retro ? '#1F1A1D' : themedHex('#2B2350') }}>{L('Tạo tài khoản', 'Create account')}</Text>
         </Pressable>
       </View>
     );
@@ -148,10 +148,10 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   // Pro do máy chủ tặng lúc đăng ký (còn hạn): hiện số ngày còn lại.
   if (status.source === 'server' && status.plan === WELCOME_PLAN && status.daysLeft !== null && status.daysLeft <= WELCOME_DAYS) {
     return (
-      <View className={`${className} flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3`} style={{ backgroundColor: '#FCF8F2' }}>
-        <Icon name="clock" size={18} color="#B78939" />
+      <View className={`${className} flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3`} style={{ backgroundColor: '#F3F0FB' }}>
+        <Icon name="clock" size={18} color="#6A4BD9" />
         <Text className="flex-1 font-sans text-body text-ink" style={{ minWidth: 200 }}>
-          <Text className="font-strong" style={{ color: '#B78939' }}>
+          <Text className="font-strong" style={{ color: '#6A4BD9' }}>
             {L(`Plus tặng thành viên mới · còn ${status.daysLeft} ngày.`, `Welcome Plus · ${status.daysLeft} days left.`)}
           </Text>{' '}
           {L('Mở hết nội dung, 20 lượt AI chấm bài mỗi tháng; hết hạn tự về gói Free, dữ liệu học vẫn giữ nguyên.', 'All content and 20 AI gradings a month; it returns to Free when it ends and your progress stays.')}
@@ -190,8 +190,8 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
       className={`${className} overflow-hidden rounded-card`}
       // Dải xanh nhạt cùng tông thanh bên (người dùng chọn 27/09/2026), thay khối tím đậm.
       style={{
-        backgroundColor: themedHex('#B8955A'),
-        ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #D9BC7F 0%, #A8843F 100%)' } as object) : null),
+        backgroundColor: themedHex('#8B6CF0'),
+        ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #D9BC7F 0%, #6A4BD9 100%)' } as object) : null),
       }}
     >
       <View className="flex-row flex-wrap items-center gap-4 p-4 md:p-5">

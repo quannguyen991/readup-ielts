@@ -9,10 +9,11 @@ import { satHubTargets } from './sat-hub';
   là một trang lặng lẽ mất lối vào. Danh sách dưới đây là mọi đích đến từng có
   trong điều hướng; bỏ đi trang nào phải là quyết định có chủ ý, sửa ở đây.
 */
+// /plan (lập và sửa lộ trình cá nhân) nay mở từ nút trên trang Lộ trình học, không còn mục riêng.
 const MUST_STAY_REACHABLE = [
   '/intro', '/dashboard', '/practice', '/write', '/mock-tests', '/math', '/sat-rw', '/sat/full-test',
   '/sentence', '/library', '/bilingual', '/vocabulary',
-  '/vocabulary/quiz', '/vocabulary/topics', '/notes', '/bookmarks', '/plan', '/progress',
+  '/vocabulary/quiz', '/vocabulary/topics', '/notes', '/bookmarks', '/progress',
   '/leaderboard', '/shop', '/profile', '/teacher', '/quest', '/quest/hero', '/invite', '/upgrade', '/settings',
 ];
 

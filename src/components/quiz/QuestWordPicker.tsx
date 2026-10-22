@@ -17,7 +17,7 @@ type Theme = 'dark' | 'light';
 
 const T = {
   dark: { btnBg: 'rgba(255,255,255,0.08)', btnInk: '#F4EFE3', border: 'rgba(255,255,255,0.16)', sheet: '#16181F', ink: '#F4EFE3', muted: '#A9A391', row: 'rgba(255,255,255,0.05)', rowOn: '#F2B632', rowOnInk: '#1A1405' },
-  light: { btnBg: '#FFFFFF', btnInk: '#0F172A', border: '#F0EBE2', sheet: '#FFFFFF', ink: '#0F172A', muted: '#64748B', row: '#FCFBF8', rowOn: '#A8843F', rowOnInk: '#FFFFFF' },
+  light: { btnBg: '#FFFFFF', btnInk: '#0F172A', border: '#F0EBE2', sheet: '#FFFFFF', ink: '#0F172A', muted: '#64748B', row: '#FCFBF8', rowOn: '#6A4BD9', rowOnInk: '#FFFFFF' },
 };
 
 export function QuestWordPicker({ theme = 'dark', compact = false }: { theme?: Theme; compact?: boolean }) {

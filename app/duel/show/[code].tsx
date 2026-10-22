@@ -29,7 +29,7 @@ import { useL } from '@/i18n/useL';
 const TILES = [
   { color: '#E21B3C', dark: '#9E0F28', shape: '▲' },
   { color: '#1368CE', dark: '#0B4A99', shape: '◆' },
-  { color: '#D89E00', dark: '#9A6F00', shape: '●' },
+  { color: '#6A4BD9', dark: '#6A4BD9', shape: '●' },
   { color: '#26890C', dark: '#1A5E08', shape: '■' },
 ] as const;
 
@@ -108,7 +108,7 @@ export default function ShowRoute() {
         </View>
 
         {room.status === 'offline' ? (
-          <Text className="mt-4 rounded-xl px-3 py-2 font-semi text-label" style={{ backgroundColor: '#FFF4D7', color: '#805D1D' }}>
+          <Text className="mt-4 rounded-xl px-3 py-2 font-semi text-label" style={{ backgroundColor: '#F3F0FB', color: '#6A4BD9' }}>
             {L('Chưa kết nối được máy chủ thời gian thực.', 'Not connected to the live server.')}
           </Text>
         ) : null}
@@ -265,8 +265,8 @@ function Lobby({
         {players.length ? (
           players.map((name, i) => (
             <Pop key={`${name}-${i}`} from={0.2} delay={i * 60}>
-              <View className="rounded-pill px-4 py-2" style={{ ...gradient('#FFF4D7', '#F8DFA0'), boxShadow: '0 4px 12px rgba(243,217,160,0.45)' } as ViewStyle}>
-                <Text className="font-heavy text-label" style={{ color: '#5B4316' }}>{name}</Text>
+              <View className="rounded-pill px-4 py-2" style={{ ...gradient('#F3F0FB', '#F8DFA0'), boxShadow: '0 4px 12px rgba(243,217,160,0.45)' } as ViewStyle}>
+                <Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{name}</Text>
               </View>
             </Pop>
           ))
@@ -300,7 +300,7 @@ function ModeChip({ label, on, onPress }: { label: string; on: boolean; onPress:
       className="rounded-pill px-4 py-2"
       style={{ ...(on ? gradient('#F3D9A0', '#E0B45E') : { backgroundColor: 'rgba(255,255,255,0.12)' }), transform: [{ scale: on ? 1.05 : 1 }] } as ViewStyle}
     >
-      <Text className="font-strong text-label" style={{ color: on ? '#2B1D05' : '#FFFFFF' }}>{label}</Text>
+      <Text className="font-strong text-label" style={{ color: on ? '#2B2350' : '#FFFFFF' }}>{label}</Text>
     </Pressable>
   );
 }
@@ -346,7 +346,7 @@ function QuestionPanel({
           <Text className="font-heavy" style={{ fontSize: big ? 40 : 30, color: urgent ? '#E21B3C' : '#0F1D33' }}>{left}s</Text>
         </Pop>
       </View>
-      <GrowBar pct={pct} color={urgent ? '#E21B3C' : '#F59E0B'} track="#F0EBE2" height={10} />
+      <GrowBar pct={pct} color={urgent ? '#E21B3C' : '#F59E0B'} track="#F3F0FB" height={10} />
 
       <Rise key={`p-${state.index}`}>
         <Text className="text-center font-heavy text-ink" style={{ fontSize: big ? 60 : 38 }}>{prompt}</Text>
@@ -480,7 +480,7 @@ function RevealPanel({
                 </View>
               ) : null}
               <Pop from={ok ? 1.25 : 1}>
-                <View className="justify-center gap-2 rounded-2xl px-5 py-3" style={{ ...(ok ? gradient(t.color, t.dark) : { backgroundColor: '#EEE9E0' }), minHeight: big ? 100 : 80, boxShadow: ok ? `0 10px 26px ${t.dark}88` : undefined } as ViewStyle}>
+                <View className="justify-center gap-2 rounded-2xl px-5 py-3" style={{ ...(ok ? gradient(t.color, t.dark) : { backgroundColor: '#F3F0FB' }), minHeight: big ? 100 : 80, boxShadow: ok ? `0 10px 26px ${t.dark}88` : undefined } as ViewStyle}>
                   <Text className="font-heavy" style={{ color: ok ? '#FFFFFF' : '#0F1D33', fontSize: big ? 21 : 17 }}>
                     {t.shape} {opt} {ok ? '✓' : ''}
                   </Text>
@@ -533,7 +533,7 @@ function RevealPanel({
 function Podium({ names, scores, ids }: { names: Record<string, string>; scores: Record<string, number>; ids: string[] }) {
   const order = [ids[1], ids[0], ids[2]];
   const heights = [96, 136, 72];
-  const colors: [string, string][] = [['#CBD5E1', '#94A3B8'], ['#FDE68A', '#F59E0B'], ['#FDBA74', '#C2410C']];
+  const colors: [string, string][] = [['#CBD5E1', '#94A3B8'], ['#FDE68A', '#F59E0B'], ['#FDBA74', '#6A4BD9']];
   return (
     <View className="w-full flex-row items-end justify-center gap-3" style={{ minHeight: 210 }}>
       {order.map((id, col) => {
@@ -546,7 +546,7 @@ function Podium({ names, scores, ids }: { names: Record<string, string>; scores:
             {rank === 1 ? <Aura color="#FACC15" size={120} strength={1} /> : null}
             <Pop from={0.3} delay={rank === 1 ? 500 : rank === 2 ? 250 : 0}>
               <Text className="mb-1 font-heavy text-center text-label" numberOfLines={1} style={{ color: '#0F1D33' }}>{names[id] ?? '—'}</Text>
-              <Text className="mb-2 text-center font-heavy" style={{ color: '#A46D12' }}>{scores[id] ?? 0}</Text>
+              <Text className="mb-2 text-center font-heavy" style={{ color: '#6A4BD9' }}>{scores[id] ?? 0}</Text>
             </Pop>
             <GrowPillar height={h} colors={[a, b]} delay={rank === 1 ? 300 : 120} label={String(rank)} />
           </View>

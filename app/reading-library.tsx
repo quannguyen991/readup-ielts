@@ -1,3 +1,5 @@
+import { HeroBackdrop } from '@/components/home/HeroBackdrop';
+import { LinearGradient } from 'expo-linear-gradient';
 import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
@@ -347,7 +349,7 @@ export default function ReadingLibraryScreen() {
             eyebrow="IELTS · READING"
             title="Reading"
             line2={L('đọc để hiểu, không chỉ chọn đáp án', 'read to understand, not just to pick answers')}
-            subtitle={L('Chọn dạng câu, làm có giờ, xem lại kèm bằng chứng.', 'Pick a question type, work timed, review with evidence.')}
+            subtitle={L('Chọn dạng câu, làm có giờ.', 'Pick a type, work against the clock.')}
             stats={[
               { value: READABLE_TOTAL.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN'), label: L('bài đọc', 'readings') },
               { value: '15', label: L('dạng câu hỏi', 'question types') },
@@ -357,7 +359,7 @@ export default function ReadingLibraryScreen() {
             links={[
               { icon: 'clipboard', label: L('Full đề Reading', 'Full Reading test'), onPress: () => router.push('/mock-tests' as never) },
               { icon: 'refresh', label: L('Xen kẽ dạng bài', 'Mixed practice'), onPress: () => router.push('/practice-mixed' as never) },
-              { icon: 'book', label: L('Đề theo nguồn OCR cục bộ', 'Local OCR source tests'), onPress: () => router.push('/ielts-source-practice' as never) },
+              { icon: 'book', label: L('Đề tự nạp', 'My imported tests'), onPress: () => router.push('/ielts-source-practice' as never) },
             ]}
           />
         </Appear>
@@ -367,7 +369,7 @@ export default function ReadingLibraryScreen() {
           badge="IELTS · READING" art="verbal"
           line1="Reading"
           line2={L('đọc để hiểu, không chỉ chọn đáp án', 'read to understand, not just to pick answers')}
-          subtitle={L('Chọn dạng câu, làm có giờ, xem lại kèm bằng chứng.', 'Pick a question type, work timed, review with evidence.')}
+          subtitle={L('Chọn dạng câu, làm có giờ.', 'Pick a type, work against the clock.')}
           footer={
             <>
               <HeroStat value={READABLE_TOTAL.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} label={L('bài đọc', 'readings')} />
@@ -398,7 +400,7 @@ export default function ReadingLibraryScreen() {
             onPress={() => router.push('/practice-mixed' as never)}
           />
           <Button
-            label={L('Đề theo nguồn OCR cục bộ', 'Local OCR source tests')}
+            label={L('Đề tự nạp', 'My imported tests')}
             variant="outline"
             size="lg"
             iconLeft="book"
@@ -487,6 +489,9 @@ export default function ReadingLibraryScreen() {
   );
 }
 
+/** Viền gradient của hero điện thoại: cùng bảng màu với hero trang chủ. */
+const HERO_RING = ['#FF5FA2', '#FFD84A', '#3A8CFF', '#8A3FE0'] as unknown as [string, string, ...string[]];
+
 /**
  * Đầu trang Luyện tập trên điện thoại: thẻ kính, nút vàng là việc chính, các lối phụ
  * thành hàng danh sách. Máy tính và máy tính bảng vẫn dùng LightHero.
@@ -509,28 +514,30 @@ function PhoneHeroPanel({
   links: { icon: 'clipboard' | 'refresh' | 'book'; label: string; onPress: () => void }[];
 }) {
   return (
-    <View style={{ borderRadius: 28, padding: 20, ...GLASS } as never}>
-      <CatSticker pose="sunglasses" size={72} style={{ position: 'absolute', top: 4, right: 10 }} />
-      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: GOLD.deep }}>
+    <LinearGradient colors={HERO_RING} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 28, padding: 2 }}>
+      <View style={{ borderRadius: 26, overflow: 'hidden', backgroundColor: '#0B0520' }}>
+        <HeroBackdrop />
+        <View style={{ padding: 20 }}>
+      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(27,17,64,0.7)' }}>
         {eyebrow}
       </Text>
-      <Text className="font-heavy" style={{ marginTop: 4, fontSize: 30, lineHeight: 36, color: GOLD.ink }}>
+      <Text className="font-heavy" style={{ marginTop: 4, fontSize: 30, lineHeight: 36, color: '#1B1140' }}>
         {title}
       </Text>
-      <Text className="font-strong" style={{ marginTop: 6, fontSize: 16, lineHeight: 22, color: GOLD.body }}>
+      <Text className="font-strong" style={{ marginTop: 6, fontSize: 16, lineHeight: 22, color: '#1B1140' }}>
         {line2}
       </Text>
-      <Text className="font-sans" style={{ marginTop: 4, fontSize: 13, lineHeight: 19, color: GOLD.muted }}>
+      <Text className="font-sans" style={{ marginTop: 4, fontSize: 13, lineHeight: 19, color: 'rgba(27,17,64,0.75)' }}>
         {subtitle}
       </Text>
 
       <View style={{ marginTop: 16, flexDirection: 'row', borderRadius: 18, paddingVertical: 12, backgroundColor: 'rgba(255,255,255,0.45)' }}>
         {stats.map((s, i) => (
           <View key={s.label} style={{ flex: 1, alignItems: 'center', borderLeftWidth: i === 0 ? 0 : 1, borderColor: 'rgba(156,133,82,0.2)' }}>
-            <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 24, color: GOLD.ink }}>
+            <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 24, color: '#1B1140' }}>
               {s.value}
             </Text>
-            <Text className="font-sans" style={{ fontSize: 11, lineHeight: 15, color: GOLD.muted }}>
+            <Text className="font-sans" style={{ fontSize: 11, lineHeight: 15, color: 'rgba(27,17,64,0.75)' }}>
               {s.label}
             </Text>
           </View>
@@ -540,12 +547,12 @@ function PhoneHeroPanel({
       <Pressable
         accessibilityRole="button"
         onPress={primary.onPress}
-        style={({ pressed }) => ({ marginTop: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderRadius: 999, paddingVertical: 14, ...GOLD_BUTTON, transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
+        style={({ pressed }) => ({ marginTop: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderRadius: 999, paddingVertical: 14, backgroundColor: '#1B1140', transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
       >
-        <Text className="font-heavy" style={{ fontSize: 16, color: GOLD.ink }}>
+        <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
           {primary.label}
         </Text>
-        <Icon name="arrow-right" size={18} color={GOLD.ink} strokeWidth={2.2} />
+        <Icon name="arrow-right" size={18} color="#FFFFFF" strokeWidth={2.2} />
       </Pressable>
 
       <View style={{ marginTop: 12, gap: 8 }}>
@@ -556,15 +563,17 @@ function PhoneHeroPanel({
             onPress={l.onPress}
             style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 16, paddingHorizontal: 14, minHeight: 50, backgroundColor: 'rgba(255,255,255,0.55)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.9)', opacity: pressed ? 0.8 : 1 } as never)}
           >
-            <Icon name={l.icon} size={18} color={GOLD.deep} strokeWidth={2} />
-            <Text className="flex-1 font-strong" style={{ fontSize: 15, color: GOLD.ink }}>
+            <Icon name={l.icon} size={18} color={'rgba(27,17,64,0.7)'} strokeWidth={2} />
+            <Text className="flex-1 font-strong" style={{ fontSize: 15, color: '#1B1140' }}>
               {l.label}
             </Text>
-            <Icon name="chevron-right" size={16} color={GOLD.muted} strokeWidth={2.2} />
+            <Icon name="chevron-right" size={16} color={'rgba(27,17,64,0.75)'} strokeWidth={2.2} />
           </Pressable>
         ))}
       </View>
-    </View>
+        </View>
+      </View>
+    </LinearGradient>
   );
 }
 

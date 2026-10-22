@@ -222,7 +222,7 @@ export const BILINGUAL_OUTLETS: BilingualOutlet[] = [
     name: 'Wikipedia',
     tagline: 'Bài bách khoa: lịch sử, tự nhiên, văn minh — đúng chất đề IELTS',
     license: 'CC BY-SA 4.0',
-    cover: '#E9E4D4',
+    cover: '#F3F0FB',
     ink: '#1F2A12',
   },
 ];

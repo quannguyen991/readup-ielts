@@ -1,0 +1,67 @@
+{
+  "n": 1,
+  "title": "Family membership enquiry",
+  "context": "A telephone-style conversation at a sports centre. A customer asks a receptionist about a family membership and the receptionist completes the enquiry form.",
+  "transcript": [
+    { "speaker": "Receptionist", "text": "Good afternoon, Riverside Sports Centre. How can I help you?" },
+    { "speaker": "Customer", "text": "Hello. I'd like some information about family membership, please. My wife and I have two children, and we'd like to swim together at weekends." },
+    { "speaker": "Receptionist", "text": "Of course. I'll take a few details so I can fill in the enquiry form. First, can I have your family name?" },
+    { "speaker": "Customer", "text": "It's Okafor. O-K-A-F-O-R." },
+    { "speaker": "Receptionist", "text": "Thank you. And what's the best contact number for you?" },
+    { "speaker": "Customer", "text": "It's zero seven seven zero zero nine zero zero one five two. That's my mobile, so it's the best one to ring during the day." },
+    { "speaker": "Receptionist", "text": "Got it. And how many children will be joining?" },
+    { "speaker": "Customer", "text": "Two. Our daughter is nine and our son is six. Both of them can swim a little, but they're not very confident yet." },
+    { "speaker": "Receptionist", "text": "That's no problem. We have lessons for every level. The family package covers two adults and up to three children under sixteen, so you're well within that. Which day would suit you for swimming?" },
+    { "speaker": "Customer", "text": "Saturday would be best, because the children don't have school. Is there a quieter time in the day?" },
+    { "speaker": "Receptionist", "text": "The pool is quietest early in the morning. Most families arrive just before the first lesson. What time would you normally arrive?" },
+    { "speaker": "Customer", "text": "We'd aim for half past seven, so we can be in the water by eight." },
+    { "speaker": "Receptionist", "text": "Half past seven is a good time for a quiet session. The monthly fee for the family package is eighty-four pounds. That includes unlimited swimming and gym access for both adults." },
+    { "speaker": "Customer", "text": "That's reasonable. Does it include lessons for the children?" },
+    { "speaker": "Receptionist", "text": "Lessons are an extra, so the fee only covers access. But I can add the children's course at a reduced rate if you'd like it." },
+    { "speaker": "Customer", "text": "Let's leave that for now. When could we start?" },
+    { "speaker": "Receptionist", "text": "Membership can start on the first of September. If you join before then, the first week is free." },
+    { "speaker": "Customer", "text": "The first of September is perfect. Can we also choose a locker?" },
+    { "speaker": "Receptionist", "text": "Yes, lockers are assigned by number. Which one would you like?" },
+    { "speaker": "Customer", "text": "Locker twenty-two, if it's free. It's near the family changing room, which is handy with two children." },
+    { "speaker": "Receptionist", "text": "Let me check. Yes, twenty-two is available. Now, how would you like to pay?" },
+    { "speaker": "Customer", "text": "I'd prefer to pay by direct debit, so the money comes out automatically each month." },
+    { "speaker": "Receptionist", "text": "No problem. One last question: is there any medical condition we should know about for anyone in the family?" },
+    { "speaker": "Customer", "text": "Yes, our son has asthma. He carries an inhaler, and I'd like the lifeguards to know about it." },
+    { "speaker": "Receptionist", "text": "Thank you, I'll note that on the record, and the lifeguards will be informed. Is there anything else I can help you with?" },
+    { "speaker": "Customer", "text": "No, that's everything. Thanks very much." },
+    { "speaker": "Receptionist", "text": "You're welcome. We'll send you a confirmation by email this evening." }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 1-10",
+      "instruction": "Complete the form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "## Riverside Sports Centre: family membership",
+        "Family name: {{1}}",
+        "Contact number: {{2}}",
+        "Number of children: {{3}}",
+        "Preferred swimming day: {{4}}",
+        "Usual arrival time: {{5}} a.m.",
+        "Monthly fee: £{{6}}",
+        "Membership start date: {{7}}",
+        "Locker number: {{8}}",
+        "Payment method: {{9}}",
+        "Medical condition (child): {{10}}"
+      ],
+      "questions": [
+        { "n": 1, "answer": "Okafor" },
+        { "n": 2, "answer": "07700900152" },
+        { "n": 3, "answer": "2", "accept": ["two"] },
+        { "n": 4, "answer": "Saturday" },
+        { "n": 5, "answer": "7.30", "accept": ["half past seven", "7:30"] },
+        { "n": 6, "answer": "84", "accept": ["eighty-four", "eighty four"] },
+        { "n": 7, "answer": "1 September", "accept": ["1st September", "first of September", "1st of September", "September 1"] },
+        { "n": 8, "answer": "22", "accept": ["twenty-two", "twenty two"] },
+        { "n": 9, "answer": "direct debit" },
+        { "n": 10, "answer": "asthma" }
+      ]
+    }
+  ]
+}

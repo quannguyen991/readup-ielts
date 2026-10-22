@@ -154,7 +154,7 @@ const SLOT: Partial<Record<ShopItemKind, WearSlot>> = {
 };
 
 const NIGHT = '#1B1540';
-const GOLD_SOFT = '#FEF3C7';
+const GOLD_SOFT = '#F3F0FB';
 
 export default function ShopScreen() {
   const { L, locale, en } = useL();
@@ -313,7 +313,7 @@ export default function ShopScreen() {
       </View>
 
       {reward.theme || (reward.studyBg && reward.studyBg !== DEFAULT_LOOK) ? (
-        <View className="mt-4 flex-row flex-wrap items-center gap-3 rounded-card p-3.5" style={{ backgroundColor: '#FBF6EC', borderWidth: 1, borderColor: '#E9D7AE' }}>
+        <View className="mt-4 flex-row flex-wrap items-center gap-3 rounded-card p-3.5" style={{ backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#E9D7AE' }}>
           <BrandMark size={34} />
           <Text className="min-w-0 flex-1 font-semi text-body text-ink">
             {L(
@@ -470,21 +470,21 @@ function DefaultLookCard({ what, active, onPress }: { what: 'Giao diện' | 'N�
       disabled={active}
       onPress={onPress}
       className="rounded-card bg-white p-3"
-      style={{ borderWidth: active ? 2 : 1, borderColor: active ? themedHex('#B8955A') : '#E9DFC8', gap: 10, height: '100%' }}
+      style={{ borderWidth: active ? 2 : 1, borderColor: active ? themedHex('#8B6CF0') : '#E9DFC8', gap: 10, height: '100%' }}
     >
       {sidebar ? (
         // Xem trước THANH BÊN mặc định: nền kem, logo, một mục đang mở dải vàng kim.
-        <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', flexDirection: 'row', backgroundColor: '#F4EFE4' }}>
-          <View style={{ width: '46%', padding: 8, gap: 6, backgroundColor: '#FBF8F1', borderRightWidth: 1, borderRightColor: '#E9DFC8' }}>
+        <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', flexDirection: 'row', backgroundColor: '#F3F0FB' }}>
+          <View style={{ width: '46%', padding: 8, gap: 6, backgroundColor: '#F3F0FB', borderRightWidth: 1, borderRightColor: '#E9DFC8' }}>
             <BrandMark size={18} />
-            <View style={{ height: 14, borderRadius: 7, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: themedHex('#B8955A') }) }} />
+            <View style={{ height: 14, borderRadius: 7, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #C4B5FD 0%, #8B6CF0 45%, #6A4BD9 100%)' } as object) : { backgroundColor: themedHex('#8B6CF0') }) }} />
             <View style={{ height: 6, width: '70%', borderRadius: 3, backgroundColor: '#E2D6BD' }} />
             <View style={{ height: 6, width: '55%', borderRadius: 3, backgroundColor: '#E2D6BD' }} />
           </View>
         </View>
       ) : (
-        <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4EFE4' }}>
-          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 26, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: themedHex('#B8955A') }) }} />
+        <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3F0FB' }}>
+          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 26, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #C4B5FD 0%, #8B6CF0 45%, #6A4BD9 100%)' } as object) : { backgroundColor: themedHex('#8B6CF0') }) }} />
           <BrandMark size={44} />
         </View>
       )}
@@ -492,8 +492,8 @@ function DefaultLookCard({ what, active, onPress }: { what: 'Giao diện' | 'N�
         <Text className="font-heavy text-body text-ink">{L('Mặc định · Band 9', 'Default · Band 9')}</Text>
         <Text className="font-sans text-label text-muted">{sidebar ? L('Thanh bên vàng kim · miễn phí', 'Gold sidebar · free') : L('Nền kem vàng kim · miễn phí', 'Cream and gold · free')}</Text>
       </View>
-      <View className="items-center rounded-pill py-1.5" style={{ backgroundColor: active ? '#F3E6C8' : themedHex('#B8955A') }}>
-        <Text className="font-strong text-label" style={{ color: active ? '#6B5320' : '#0F1D33' }}>
+      <View className="items-center rounded-pill py-1.5" style={{ backgroundColor: active ? '#F3F0FB' : themedHex('#8B6CF0') }}>
+        <Text className="font-strong text-label" style={{ color: active ? '#2B2350' : '#0F1D33' }}>
           {active ? L('✓ Đang dùng', '✓ In use') : L('Dùng mặc định', 'Use default')}
         </Text>
       </View>
@@ -549,7 +549,7 @@ function ItemCard({
         </View>
       ) : !have && affordable ? (
         <View aria-hidden style={{ position: 'absolute', top: -10, left: 8, zIndex: 3, pointerEvents: 'none' }}>
-          <Label text={L('Đủ sao', 'Affordable')} color="#F2B632" ink="#2A1B02" tilt={-6} size={10} />
+          <Label text={L('Đủ sao', 'Affordable')} color="#F2B632" ink="#2B2350" tilt={-6} size={10} />
         </View>
       ) : null}
       <Pressable
@@ -610,7 +610,7 @@ const THEME_PREVIEWS: Record<string, { bg: string; accent: string; text: string 
   'theme-lavender': { bg: '#FAF5FF', accent: '#A855F7', text: '#581C87' },
   'theme-nord': { bg: '#2E3440', accent: '#88C0D0', text: '#ECEFF4' },
   'theme-matcha': { bg: '#F2F7F2', accent: '#16A34A', text: '#14532D' },
-  'theme-sepia': { bg: '#FAF6ED', accent: '#B45309', text: '#451A03' },
+  'theme-sepia': { bg: '#F3F0FB', accent: '#6A4BD9', text: '#2B2350' },
   'theme-emerald': { bg: '#06241D', accent: '#10B981', text: '#ECFDF5' },
 };
 
@@ -698,7 +698,7 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
     <View style={{ height: 84, borderRadius: 14, backgroundColor: item.plan ? GOLD_SOFT : '#F6F7FB', alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 40 }}>{item.glyph}</Text>
       {item.plan ? (
-        <Text className="font-heavy text-label" style={{ color: '#92400E' }}>
+        <Text className="font-heavy text-label" style={{ color: '#6A4BD9' }}>
           {PLANS[item.plan.id].name} · {item.plan.days} {L('ngày', item.plan.days === 1 ? 'day' : 'days')}
         </Text>
       ) : null}

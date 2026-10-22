@@ -48,7 +48,7 @@ function questionsLabel(q: string, en: boolean): string {
 
 const INK = '#0F172A';
 const MUTED = '#64748B';
-const LINE = '#F0EBE2';
+const LINE = '#F3F0FB';
 
 export default function SatKnowledge() {
   const { width } = useWindowDimensions();
@@ -61,7 +61,7 @@ export default function SatKnowledge() {
     <Screen>
       {/* ------------------------------------------------ khối đầu */}
       <Appear>
-        <View style={{ borderRadius: 28, padding: wide ? 32 : 20, backgroundColor: '#A8843F', overflow: 'hidden' }}>
+        <View style={{ borderRadius: 28, padding: wide ? 32 : 20, backgroundColor: '#6A4BD9', overflow: 'hidden' }}>
           <View style={{ position: 'absolute', right: -60, top: -60, width: 260, height: 260, borderRadius: 130, backgroundColor: 'rgba(255,255,255,0.10)' }} />
           <Sparkles count={7} />
           {wide ? (
@@ -114,7 +114,7 @@ export default function SatKnowledge() {
       <BigSection color="#FFFFFF" ink={INK} kicker={L('SƠ ĐỒ TƯ DUY', 'MIND MAP')} title={L('Bản đồ SAT.', 'The SAT map.')} icon={<CuteGlobe size={56} />}>
         <MindMap
           height={wide ? 480 : 420}
-          center={{ label: 'Digital SAT', sub: '400 – 1600', color: '#A8843F', icon: <CuteStar size={34} /> }}
+          center={{ label: 'Digital SAT', sub: '400 – 1600', color: '#6A4BD9', icon: <CuteStar size={34} /> }}
           branches={SAT_DOMAINS.map((d) => ({
             label: en ? d.en : d.vi,
             sub: `${d.section === 'math' ? L('Toán', 'Math') : L('Đọc & Viết', 'Reading & Writing')} · ≈${d.share}%`,
@@ -125,7 +125,7 @@ export default function SatKnowledge() {
       </BigSection>
 
       {/* ------------------------------------------------ cấu trúc đề */}
-      <BigSection color="#FFF7E6" ink="#7A4B00" kicker={L('CẤU TRÚC ĐỀ', 'TEST STRUCTURE')} title={L('Hai phần, bốn module.', 'Two sections, four modules.')} icon={<CuteClock size={56} />}>
+      <BigSection color="#F3F0FB" ink="#2B2350" kicker={L('CẤU TRÚC ĐỀ', 'TEST STRUCTURE')} title={L('Hai phần, bốn module.', 'Two sections, four modules.')} icon={<CuteClock size={56} />}>
         <Structure wide={wide} />
       </BigSection>
 
@@ -136,7 +136,7 @@ export default function SatKnowledge() {
       ))}
 
       {/* ------------------------------------------------ Đọc & Viết */}
-      <PartHeader color="#B07A3A" title={L('Đọc & Viết.', 'Reading & Writing.')} sub={L('54 câu · 64 phút · đoạn ngắn', '54 questions · 64 min · short passages')} icon={<CuteBook size={80} />} />
+      <PartHeader color="#6A4BD9" title={L('Đọc & Viết.', 'Reading & Writing.')} sub={L('54 câu · 64 phút · đoạn ngắn', '54 questions · 64 min · short passages')} icon={<CuteBook size={80} />} />
       {rw.map((d) => (
         <DomainSection key={d.id} d={d} wide={wide} />
       ))}
@@ -147,7 +147,7 @@ export default function SatKnowledge() {
       </BigSection>
 
       {/* ------------------------------------------------ phương pháp 5 bước */}
-      <BigSection color="#FCFBF8" ink={INK} kicker={L('PHƯƠNG PHÁP', 'METHODOLOGY')} title={L('Quy trình 5 bước giải mọi câu hỏi SAT.', 'Universal 5-Step SAT Method.')} icon={<CuteBulb size={56} />}>
+      <BigSection color="#F3F0FB" ink={INK} kicker={L('PHƯƠNG PHÁP', 'METHODOLOGY')} title={L('Quy trình 5 bước giải mọi câu hỏi SAT.', 'Universal 5-Step SAT Method.')} icon={<CuteBulb size={56} />}>
         <Method5StepSection wide={wide} />
       </BigSection>
 
@@ -167,7 +167,7 @@ export default function SatKnowledge() {
       </BigSection>
 
       {/* ------------------------------------------------ Lộ trình 16 tuần R&W & 20 tuần Math */}
-      <BigSection color="#FFFDF7" ink="#78350F" kicker={L('LỘ TRÌNH CHUẨN', 'MASTER ROADMAPS')} title={L('Lộ trình 16 tuần R&W & 20 tuần Math.', '16-Week R&W & 20-Week Math Plans.')} icon={<CuteRocket size={56} />}>
+      <BigSection color="#F3F0FB" ink="#2B2350" kicker={L('LỘ TRÌNH CHUẨN', 'MASTER ROADMAPS')} title={L('Lộ trình 16 tuần R&W & 20 tuần Math.', '16-Week R&W & 20-Week Math Plans.')} icon={<CuteRocket size={56} />}>
         <RoadmapPlansSection wide={wide} />
       </BigSection>
 
@@ -267,13 +267,13 @@ function DomainSection({ d, wide }: { d: Domain; wide: boolean }) {
             />
           </View>
           <View style={{ flex: wide ? 1 : undefined, gap: 12 }}>
-            <InfoCard emoji="💡" title={L('Cốt lõi', 'Core ideas')} tone="#FCF8F1">
+            <InfoCard emoji="💡" title={L('Cốt lõi', 'Core ideas')} tone="#F3F0FB">
               {(en ? d.coreEn : d.core).slice(0, 3).map((c) => (
                 <Bullet key={c} text={c} color={d.color} />
               ))}
             </InfoCard>
             {d.formulas ? (
-              <InfoCard emoji="📌" title={L('Cần thuộc', 'Must know')} tone="#FCFBF8">
+              <InfoCard emoji="📌" title={L('Cần thuộc', 'Must know')} tone="#F3F0FB">
                 {(en ? (d.formulasEn ?? d.formulas) : d.formulas).map((f) => (
                   <Text key={f} className="font-semi" style={{ fontSize: 14, lineHeight: 20, color: INK }}>
                     {f}
@@ -314,7 +314,7 @@ function Structure({ wide }: { wide: boolean }) {
       <View style={{ flexDirection: wide ? 'row' : 'column', gap: 14 }}>
         {SAT_SECTIONS.map((s) => {
           const domains = SAT_DOMAINS.filter((d) => d.section === s.id);
-          const color = s.id === 'rw' ? '#B07A3A' : '#F2B632';
+          const color = s.id === 'rw' ? '#6A4BD9' : '#F2B632';
           return (
             <View key={s.id} style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -351,11 +351,11 @@ function Structure({ wide }: { wide: boolean }) {
           );
         })}
       </View>
-      <View style={{ borderRadius: 22, padding: 18, backgroundColor: '#FFF7E6', borderWidth: 1, borderColor: '#F6D9A0' }}>
-        <Text className="font-heavy" style={{ fontSize: 16, color: '#7A4B00' }}>
+      <View style={{ borderRadius: 22, padding: 18, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F6D9A0' }}>
+        <Text className="font-heavy" style={{ fontSize: 16, color: '#2B2350' }}>
           {L('Thi thích ứng theo module', 'Module-adaptive testing')}
         </Text>
-        <Text className="font-sans" style={{ marginTop: 6, fontSize: 14, lineHeight: 21, color: '#7A4B00' }}>
+        <Text className="font-sans" style={{ marginTop: 6, fontSize: 14, lineHeight: 21, color: '#2B2350' }}>
           {L('Mỗi phần 2 module. Module 1 tốt thì module 2 khó hơn và mới đạt được điểm cao.', 'Each section has 2 modules. Do well in module 1 to unlock the harder, higher-scoring module 2.')}
         </Text>
       </View>
@@ -403,11 +403,11 @@ function DomainIcon({ id, size = 44 }: { id: string; size?: number }) {
 }
 
 const STRAT_ICON = ['clock', 'check', 'star', 'bolt', 'question', 'target'] as const;
-const STRAT_COLOR = ['#F2B632', '#22A06B', '#B07A3A', '#A8843F', '#E0533D', '#2FA3A0'];
+const STRAT_COLOR = ['#F2B632', '#22A06B', '#6A4BD9', '#6A4BD9', '#E0533D', '#2FA3A0'];
 
 function Big({ value, label }: { value: string; label: string }) {
   return (
-    <View style={{ flex: 1, borderRadius: 16, padding: 12, backgroundColor: '#FCFBF8' }}>
+    <View style={{ flex: 1, borderRadius: 16, padding: 12, backgroundColor: '#F3F0FB' }}>
       <Text className="font-heavy" style={{ fontSize: 24, color: INK }}>
         {value}
       </Text>
@@ -498,7 +498,7 @@ function Method5StepSection({ wide }: { wide: boolean }) {
           </Text>
           <View style={{ gap: 8 }}>
             {SAT_CONTEXT_CLUES.map((c, i) => (
-              <View key={i} style={{ borderRadius: 14, padding: 10, backgroundColor: '#FAF7EE' }}>
+              <View key={i} style={{ borderRadius: 14, padding: 10, backgroundColor: '#F3F0FB' }}>
                 <Text className="font-strong text-caption" style={{ color: '#B94A70' }}>
                   {c.nameVi}
                 </Text>
@@ -604,9 +604,9 @@ function RoadmapPlansSection({ wide }: { wide: boolean }) {
                 flexBasis: wide ? 280 : '100%',
                 borderRadius: 16,
                 padding: 14,
-                backgroundColor: '#FCFAF5',
+                backgroundColor: '#F3F0FB',
                 borderWidth: 1,
-                borderColor: '#F3EBD8',
+                borderColor: '#F3F0FB',
                 gap: 6,
               }}
             >
@@ -652,14 +652,14 @@ function RoadmapPlansSection({ wide }: { wide: boolean }) {
                 flexBasis: wide ? 280 : '100%',
                 borderRadius: 16,
                 padding: 14,
-                backgroundColor: '#FFFDF5',
+                backgroundColor: '#F3F0FB',
                 borderWidth: 1,
                 borderColor: '#FBE8B5',
                 gap: 6,
               }}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text className="font-heavy text-caption" style={{ color: '#B45309' }}>
+                <Text className="font-heavy text-caption" style={{ color: '#6A4BD9' }}>
                   {phase.weeks}
                 </Text>
                 <View style={{ borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#F2B632' }}>

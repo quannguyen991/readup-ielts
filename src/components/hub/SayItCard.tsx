@@ -10,7 +10,7 @@ import { useHubStore } from '@/store/useHubStore';
 import type { DictationToken } from '@/services/sentence/dictation-grade';
 
 const GREEN = '#2E7D4F';
-const AMBER = '#A8741A';
+const AMBER = '#6A4BD9';
 const RED = '#B3261E';
 
 function toneOf(pct: number): string {

@@ -36,7 +36,7 @@ const SECTION_LABELS: Record<string, string> = {
 const TASK1_KEYS = ['intro', 'overview', 'body1', 'body2'];
 const TASK2_KEYS = ['intro', 'body1', 'body2', 'conclusion'];
 
-const ORANGE = '#E8590C';
+const ORANGE = '#6A4BD9';
 const GREEN = '#16A34A';
 
 const FONTS = [
@@ -222,7 +222,7 @@ export default function WritingRoomScreen() {
                     aria-selected={fontKey === f.key}
                     onPress={() => setFontKey(f.key)}
                     className="rounded-md px-2.5 py-1"
-                    style={{ backgroundColor: fontKey === f.key ? GREEN : '#FFFFFF', borderWidth: 1, borderColor: fontKey === f.key ? GREEN : '#E5DFD2' }}
+                    style={{ backgroundColor: fontKey === f.key ? GREEN : '#FFFFFF', borderWidth: 1, borderColor: fontKey === f.key ? GREEN : '#F3F0FB' }}
                   >
                     <Text style={{ fontFamily: f.family, fontSize: 13, color: fontKey === f.key ? '#FFFFFF' : paper.muted }}>
                       {f.label}
@@ -240,7 +240,7 @@ export default function WritingRoomScreen() {
                     aria-selected={fontSize === s}
                     onPress={() => setFontSize(s)}
                     className="rounded-md px-2.5 py-1"
-                    style={{ backgroundColor: fontSize === s ? GREEN : '#FFFFFF', borderWidth: 1, borderColor: fontSize === s ? GREEN : '#E5DFD2' }}
+                    style={{ backgroundColor: fontSize === s ? GREEN : '#FFFFFF', borderWidth: 1, borderColor: fontSize === s ? GREEN : '#F3F0FB' }}
                   >
                     <Text className="font-nun-strong" style={{ fontSize: 13, color: fontSize === s ? '#FFFFFF' : paper.muted }}>{s}</Text>
                   </Pressable>
@@ -268,7 +268,7 @@ export default function WritingRoomScreen() {
                       placeholderTextColor={paper.muted}
                       className="rounded-xl border bg-white px-4 py-3 text-paper-ink"
                       style={{
-                        borderColor: '#E5DFD2',
+                        borderColor: '#F3F0FB',
                         fontFamily,
                         fontSize,
                         lineHeight: fontSize * 1.7,

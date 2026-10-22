@@ -1,3 +1,4 @@
+import { MASCOTS_ON } from '@/components/mascot/mascot-switch';
 import React from 'react';
 import { Image, View } from 'react-native';
 
@@ -111,6 +112,7 @@ const LION_FOR: Record<CatPose, LionPose> = {
 
 /** `size` là cạnh của ô vuông chứa mèo; mèo được co vừa ô, giữ đúng tỉ lệ. */
 export function CatSticker({ pose, size = 90, style }: { pose: CatPose; size?: number; style?: object }) {
+  if (!MASCOTS_ON) return null;
   // Chờ hydrate: lượt đầu phải vẽ y như HTML máy chủ (mèo), nếu không React giữ hình cũ trên trang.
   const hydrated = useHydrated();
   const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');

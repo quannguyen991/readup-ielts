@@ -173,7 +173,7 @@ export default function TestScreen() {
             key={i}
             onPress={() => setIndex(i)}
             className="h-8 w-8 items-center justify-center rounded-lg"
-            style={{ backgroundColor: i === index ? color.primary : isAnswered(answers[i] ?? null) ? '#F3E6C8' : 'rgba(255,255,255,0.8)' }}
+            style={{ backgroundColor: i === index ? color.primary : isAnswered(answers[i] ?? null) ? '#F3F0FB' : 'rgba(255,255,255,0.8)' }}
           >
             <Text className="font-semi text-label" style={{ color: i === index ? '#FFFFFF' : color.ink }}>
               {i + 1}

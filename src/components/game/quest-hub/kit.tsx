@@ -26,7 +26,7 @@ export const HUB = {
   faint: 'rgba(124, 101, 82, 0.7)',
   stage: '#FAF3E8',
   ground: '#F3E6D2',
-  blue: '#A8843F',
+  blue: '#6A4BD9',
   gold: '#FACC15',
   goldHover: '#FDE047',
   amber: '#F2B632',

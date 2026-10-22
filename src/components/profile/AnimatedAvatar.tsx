@@ -21,7 +21,7 @@ const RINGS: Record<AvatarLook, [string, string]> = {
   hero: ['#60A5FA', '#6366F1'],
   slime: ['#67E8F9', '#0EA5E9'],
   ghost: ['#C4B5FD', '#8B5CF6'],
-  owl: ['#FCD34D', '#D97706'],
+  owl: ['#FCD34D', '#6A4BD9'],
   dragon: ['#FB7185', '#DC2626'],
   star: ['#FDE68A', '#F59E0B'],
 };
@@ -47,7 +47,7 @@ export function AnimatedAvatar({ look, size, skin }: { look: AvatarLook; size: n
           </View>
         ) : look === 'owl' ? (
           <View style={loop('rp-tilt', 2200)} {...MOVE}>
-            <PixelSprite name="owl" color="#A16207" size={sprite} />
+            <PixelSprite name="owl" color="#6A4BD9" size={sprite} />
           </View>
         ) : look === 'dragon' ? (
           <View>
@@ -81,8 +81,8 @@ export function AvatarBadge({ avatarId, name, size, skin }: { avatarId: string |
   const item = findItem(avatarId);
   if (item?.avatarLook) return <AnimatedAvatar look={item.avatarLook} size={size} skin={skin} />;
   return (
-    <View style={{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center', backgroundColor: themedHex('#FBEFCB') }}>
-      <Text style={{ fontSize: item?.glyph ? size * 0.5 : size * 0.4, fontWeight: '800', color: themedHex('#8C6A1F') }}>{item?.glyph ?? (name.trim().slice(0, 1).toUpperCase() || '?')}</Text>
+    <View style={{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center', backgroundColor: themedHex('#EFE9FF') }}>
+      <Text style={{ fontSize: item?.glyph ? size * 0.5 : size * 0.4, fontWeight: '800', color: themedHex('#6A4BD9') }}>{item?.glyph ?? (name.trim().slice(0, 1).toUpperCase() || '?')}</Text>
     </View>
   );
 }

@@ -128,7 +128,7 @@ const SCENES: Scene[] = [
       },
     ],
     image: {
-      file: pixelSvg(11, { sky: '#f4d9a8', sun: '#e8743b', walls: ['#7a5c3e', '#9c7a52', '#5e4630'], ground: '#4a7a8c' }),
+      file: pixelSvg(11, { sky: '#f4d9a8', sun: '#e8743b', walls: ['#7a5c3e', '#9c7a52', '#2B2350'], ground: '#4a7a8c' }),
       altVi: 'Minh hoạ pixel giả định: dãy nhà thấp bên mặt nước lúc bình minh.',
       altEn: 'Placeholder pixel art: low houses by the water at dawn.',
       captionVi: 'Ảnh mẫu dựng giao diện (dev).',

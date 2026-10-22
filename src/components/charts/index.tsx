@@ -297,7 +297,7 @@ export function Heatmap({
                 width={cell}
                 height={cell}
                 rx={3}
-                fill={day.value === 0 ? '#F9F5ED' : color.primary}
+                fill={day.value === 0 ? '#F3F0FB' : color.primary}
                 opacity={day.value === 0 ? 1 : intensity}
               />
             );

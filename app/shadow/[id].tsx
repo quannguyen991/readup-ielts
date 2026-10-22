@@ -33,7 +33,7 @@ import { Badge as BadgeSticker, type BadgeIcon } from '@/components/illust/Cute'
 import { CuteMic, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { bi, useL, type Bi } from '@/i18n/useL';
 
-const AMBER = '#D97706';
+const AMBER = '#6A4BD9';
 const RATES: readonly { value: number; label: Bi }[] = [
   { value: 0.7, label: { vi: 'Chậm', en: 'Slow' } },
   { value: 0.85, label: { vi: 'Vừa', en: 'Medium' } },
@@ -332,7 +332,7 @@ export default function ShadowLesson() {
                 label={speaking ? L('Đang đọc mẫu…', 'Playing model…') : L('Nghe mẫu', 'Hear model')}
                 onPress={speaking ? stopVoice : playModel}
               />
-              <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F9F6F1' }}>
+              <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F3F0FB' }}>
                 {RATES.map((r) => {
                   const on = r.value === rate;
                   return (
@@ -368,8 +368,8 @@ export default function ShadowLesson() {
                 ) : null}
               </View>
             ) : (
-              <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#FFF7ED' }}>
-                <Text className="font-sans text-body" style={{ color: '#9A3412', lineHeight: 22 }}>
+              <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#F3F0FB' }}>
+                <Text className="font-sans text-body" style={{ color: '#6A4BD9', lineHeight: 22 }}>
                   {L('Trình duyệt này không chấm giọng được. Mở bằng Chrome/Edge để được chấm.', 'This browser can\'t score speech. Use Chrome or Edge.')}
                 </Text>
               </View>
@@ -379,7 +379,7 @@ export default function ShadowLesson() {
 
             {notice ? (
               <Appear>
-                <Text className="mt-4 text-center font-semi text-body" style={{ color: '#B45309' }}>
+                <Text className="mt-4 text-center font-semi text-body" style={{ color: '#6A4BD9' }}>
                   {notice}
                 </Text>
               </Appear>
@@ -435,7 +435,7 @@ function Karaoke({ sentence, tokens, marks, karaoke }: { sentence: string; token
         key={i}
         style={{
           color: current ? color.primary : ahead ? '#94A3B8' : markColor(m),
-          backgroundColor: current ? '#F9F2E6' : m === 'miss' ? '#FFF1F2' : 'transparent',
+          backgroundColor: current ? '#F3F0FB' : m === 'miss' ? '#FFF1F2' : 'transparent',
           borderRadius: 8,
           textDecorationLine: m === 'miss' ? 'underline' : 'none',
           ...(Platform.OS === 'web' ? ({ transition: 'color 180ms ease, background-color 180ms ease' } as object) : null),
@@ -467,7 +467,7 @@ function MicButton({ listening, onPress }: { listening: boolean; onPress: () => 
           ? ({
               boxShadow: listening
                 ? '0 0 0 10px rgba(225,29,72,0.14), 0 14px 30px rgba(225,29,72,0.35)'
-                : '0 6px 0 #9A7739, 0 16px 30px rgba(205, 164, 94,0.35)',
+                : '0 6px 0 #6A4BD9, 0 16px 30px rgba(205, 164, 94,0.35)',
               transition: 'box-shadow 200ms ease, background-color 200ms ease',
             } as object)
           : null),
@@ -526,7 +526,7 @@ function ResultPanel({
   const missed = [...new Map(tokens.filter((_, i) => result.marks[i] === 'miss').map((t) => [t.norm, t.text])).values()];
   return (
     <Appear>
-      <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#FCFBF8' }}>
+      <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#F3F0FB' }}>
         <View className="flex-row flex-wrap items-center gap-4">
           <View
             className="h-20 w-20 items-center justify-center rounded-pill bg-white"
@@ -669,7 +669,7 @@ function Summary({
                   ? L('Khá lắm ⭐', 'Nice work ⭐')
                   : L('Luyện tiếp nhé 💪', 'Keep practising 💪')
             }
-            color={avg >= 85 ? '#22A06B' : avg >= 60 ? '#A8843F' : '#F0703F'}
+            color={avg >= 85 ? '#22A06B' : avg >= 60 ? '#6A4BD9' : '#F0703F'}
             ink="#FFFFFF"
             tilt={-4}
             size={12}
@@ -677,7 +677,7 @@ function Summary({
         </View>
       ) : null}
       <View className="mt-5 flex-row flex-wrap gap-3">
-        <Stat value={`${scores.length}/${total}`} label={L('câu đã đọc lượt này', 'sentences read this round')} icon="check" tint="#A8843F" />
+        <Stat value={`${scores.length}/${total}`} label={L('câu đã đọc lượt này', 'sentences read this round')} icon="check" tint="#6A4BD9" />
         <Stat value={scores.length ? String(avg) : '—'} label={L('điểm trung bình', 'average score')} icon="target" tint="#F2B632" />
         <Stat value={String(clear)} label={L('câu đọc rất rõ (≥ 85)', 'very clear sentences (≥ 85)')} icon="star" tint="#22A06B" />
       </View>
@@ -688,7 +688,7 @@ function Summary({
           </Text>
           <View className="mt-2 flex-row flex-wrap gap-2">
             {top.map(([w, n]) => (
-              <View key={w} className="flex-row items-center gap-1 rounded-pill bg-white py-1 pl-3 pr-1" style={{ borderWidth: 1, borderColor: '#F0EBE2' }}>
+              <View key={w} className="flex-row items-center gap-1 rounded-pill bg-white py-1 pl-3 pr-1" style={{ borderWidth: 1, borderColor: '#F3F0FB' }}>
                 <Text className="font-semi text-body text-ink">
                   {w} <Text className="text-muted">×{n}</Text>
                 </Text>
@@ -708,7 +708,7 @@ function Summary({
 
 function Stat({ value, label, icon, tint }: { value: string; label: string; icon: BadgeIcon; tint: string }) {
   return (
-    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F9F6F1', flexGrow: 1, flexShrink: 1, flexBasis: 150 }}>
+    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F3F0FB', flexGrow: 1, flexShrink: 1, flexBasis: 150 }}>
       <View className="flex-row items-center gap-2">
         <View aria-hidden>
           <BadgeSticker icon={icon} color={tint} size={26} />

@@ -82,7 +82,7 @@ export default function ChallengeRoute() {
                   {VOCAB_TOPICS.map((t) => {
                     const on = slug === t.slug;
                     return (
-                      <Pressable key={t.slug} onPress={() => setSlug(t.slug)} accessibilityRole="radio" aria-checked={on} className="rounded-pill px-4 py-2" style={{ backgroundColor: on ? '#0F1D33' : '#F4EFE6' }}>
+                      <Pressable key={t.slug} onPress={() => setSlug(t.slug)} accessibilityRole="radio" aria-checked={on} className="rounded-pill px-4 py-2" style={{ backgroundColor: on ? '#0F1D33' : '#F3F0FB' }}>
                         <Text className="font-strong text-label" style={{ color: on ? '#FFFFFF' : '#0F1D33' }}>{en ? t.name : t.nameVi}</Text>
                       </Pressable>
                     );
@@ -178,9 +178,9 @@ function Run({ words, seed, onDone }: { words: readonly StudyWord[]; seed: strin
         <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
           {L('Câu', 'Question')} {index + 1}/{questions.length} · {tally.score} {L('điểm', 'pts')}
         </Text>
-        <Text className="font-strong text-label" style={{ color: '#B45309' }}>{left}s</Text>
+        <Text className="font-strong text-label" style={{ color: '#6A4BD9' }}>{left}s</Text>
       </View>
-      <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F0EBE2' }}>
+      <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
         <View className="h-1.5 rounded-pill" style={{ width: `${Math.max(0, 1 - (clock - shownAt) / QUESTION_MS) * 100}%`, backgroundColor: '#F59E0B' }} />
       </View>
       <View className="mt-4 items-center">
@@ -205,7 +205,7 @@ function Run({ words, seed, onDone }: { words: readonly StudyWord[]; seed: strin
               disabled={reveal}
               onPress={() => submit(i)}
               className="flex-row items-center gap-3 rounded-2xl px-4 py-3.5"
-              style={{ borderWidth: 1.5, borderColor: ok ? GREEN : bad ? RED : '#F0EBE2', backgroundColor: ok ? '#ECFDF3' : bad ? '#FFF1F2' : '#FFFFFF', boxShadow: ok ? '0 0 22px rgba(34,197,94,0.5)' : bad ? '0 0 16px rgba(239,68,68,0.35)' : undefined, transform: [{ scale: ok ? 1.02 : 1 }] } as object}
+              style={{ borderWidth: 1.5, borderColor: ok ? GREEN : bad ? RED : '#F3F0FB', backgroundColor: ok ? '#ECFDF3' : bad ? '#FFF1F2' : '#FFFFFF', boxShadow: ok ? '0 0 22px rgba(34,197,94,0.5)' : bad ? '0 0 16px rgba(239,68,68,0.35)' : undefined, transform: [{ scale: ok ? 1.02 : 1 }] } as object}
             >
               <Text className="font-strong text-label text-muted">{i + 1}</Text>
               <Text className="flex-1 font-semi text-bodyLg text-ink">{opt}</Text>
@@ -251,8 +251,8 @@ function Result({
       <View className="mt-4 overflow-hidden rounded-[22px] bg-white p-6" style={{ boxShadow: '0 12px 30px rgba(94,72,35,0.12)' } as object}>
         {verdict === 'win' ? <Confetti seed={`win-${slug}-${seed}`} pieces={140} /> : null}
         <Pop from={0.3}>
-          <Stamp color={verdict === 'win' ? '#15945A' : verdict === 'lose' ? '#B42318' : '#B45309'}>
-            <Text className="font-heavy text-hero" style={{ color: verdict === 'win' ? '#15945A' : verdict === 'lose' ? '#B42318' : '#B45309' }}>{title}</Text>
+          <Stamp color={verdict === 'win' ? '#15945A' : verdict === 'lose' ? '#B42318' : '#6A4BD9'}>
+            <Text className="font-heavy text-hero" style={{ color: verdict === 'win' ? '#15945A' : verdict === 'lose' ? '#B42318' : '#6A4BD9' }}>{title}</Text>
           </Stamp>
         </Pop>
         <Text className="mt-2 font-sans text-bodyLg text-muted">
@@ -274,7 +274,7 @@ function Result({
         <Text className="font-heavy text-hero text-ink">{result.score} {L('điểm', 'pts')}</Text>
       </Pop>
       <Text className="mt-1 font-sans text-bodyLg text-muted">{L(`Đúng ${result.correct}/${result.total} câu`, `${result.correct}/${result.total} correct`)}</Text>
-      <Text selectable className="mt-4 rounded-xl px-3 py-2 font-sans text-label text-ink" style={{ backgroundColor: '#F9F6F1' }}>{link}</Text>
+      <Text selectable className="mt-4 rounded-xl px-3 py-2 font-sans text-label text-ink" style={{ backgroundColor: '#F3F0FB' }}>{link}</Text>
       <View className="mt-3 flex-row flex-wrap gap-2">
         {Platform.OS === 'web' ? <Button label={copied ? L('Đã chép đường dẫn', 'Link copied') : L('Chép đường dẫn thách bạn', 'Copy challenge link')} onPress={share} /> : null}
         <Button variant="outline" label={L('Chơi ván khác', 'Play again')} onPress={onAgain} />

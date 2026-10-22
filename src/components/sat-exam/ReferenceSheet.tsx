@@ -11,7 +11,7 @@ import { EXAM } from './exam-theme';
  */
 
 const S = EXAM.navy;
-const F = '#F6F1E6';
+const F = '#F3F0FB';
 const T = { fontSize: 10, fill: EXAM.goldDeep, fontWeight: '700' as const };
 
 type Item = { key: string; name: [string, string]; formula: string; fig: React.ReactNode };

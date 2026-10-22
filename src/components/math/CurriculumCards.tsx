@@ -77,7 +77,7 @@ export function SetCard({
               />
               <Text
                 className="font-strong text-label"
-                style={{ color: passed ? '#0F7A38' : '#B26A00' }}
+                style={{ color: passed ? '#0F7A38' : '#6A4BD9' }}
               >
                 {Math.round(best * 100)}%
               </Text>

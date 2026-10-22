@@ -35,7 +35,7 @@ function chipStyle(theme: Theme, placed: boolean) {
     borderRadius: 14,
     borderWidth: 1.5,
     borderColor: placed ? theme.accent : theme.dark ? "rgba(255,255,255,0.12)" : "#E8DCC6",
-    backgroundColor: placed ? (theme.dark ? "rgba(231,201,138,0.18)" : "#FFF7E6") : theme.dark ? theme.soft : "#FFFFFF",
+    backgroundColor: placed ? (theme.dark ? "rgba(231,201,138,0.18)" : "#F3F0FB") : theme.dark ? theme.soft : "#FFFFFF",
   };
 }
 

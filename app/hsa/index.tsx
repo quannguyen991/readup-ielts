@@ -1,3 +1,4 @@
+import { HeroShell } from '@/components/layout/HeroShell';
 import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 import { Linking, Pressable, Text, View, useWindowDimensions } from 'react-native';
@@ -12,7 +13,7 @@ import { HSA_QUESTION_BANK } from '@/data/hsa-bank';
 import { bi, useL } from '@/i18n/useL';
 import { isKnown, useIntlStore } from '@/store/useIntlStore';
 
-const PALETTES = ['#E2C88F', '#F1DDAA', '#FBF7EE', '#EBDAB3'] as const;
+const PALETTES = ['#E2C88F', '#F1DDAA', '#F5F2FF', '#D9CCFF'] as const;
 
 export default function HsaHomeScreen() {
   const { L, locale } = useL();
@@ -26,20 +27,12 @@ export default function HsaHomeScreen() {
   return (
     <Screen cat="sit">
       <View style={{ gap: 20 }}>
-        <LinearGradient
-          colors={['#FBF7EE', '#E9D6AF', '#C7A565']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={{ minHeight: wide ? 230 : 252, borderRadius: 28, overflow: 'hidden', padding: wide ? 28 : 20, justifyContent: 'center', borderWidth: 1, borderColor: '#E9DFC8' }}
-        >
+        <HeroShell radius={28} style={{ minHeight: wide ? 230 : 252, padding: wide ? 28 : 20, justifyContent: 'center' }}>
           <View pointerEvents="none" style={{ position: 'absolute', right: -12, top: -20, width: 200, height: 200, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.24)' }} />
           <View pointerEvents="none" style={{ position: 'absolute', right: 132, bottom: -72, width: 180, height: 180, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.19)' }} />
-          <View style={{ position: 'absolute', right: wide ? 34 : 2, bottom: -12, opacity: 0.96 }}>
-            <Image source={require('../../assets/illustrations/cute-home/mascot-wave.png')} contentFit="contain" style={{ width: wide ? 194 : 150, height: wide ? 194 : 150 }} />
-          </View>
           <View style={{ maxWidth: wide ? '68%' : '78%', gap: 10 }}>
             <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 7, paddingHorizontal: 11, paddingVertical: 7, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.62)' }}>
-              <Icon name="sparkle" size={15} color="#8F6E36" />
+              <Icon name="sparkle" size={15} color="#6A4BD9" />
               <Text style={{ color: '#6B552F', fontSize: 12, fontWeight: '900', letterSpacing: 1.1 }}>HSA STUDY DESKTOP · 2026</Text>
             </View>
             <Text className="font-heavy" style={{ color: '#0F1D33', fontSize: wide ? 38 : 31, lineHeight: wide ? 45 : 38 }}>
@@ -60,7 +53,7 @@ export default function HsaHomeScreen() {
           <View pointerEvents="none" style={{ position: 'absolute', right: wide ? 218 : 140, top: 34, transform: [{ rotate: '12deg' }] }}>
             <Text style={{ fontSize: 27 }}>✦</Text>
           </View>
-        </LinearGradient>
+        </HeroShell>
 
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
           <WindowPanel
@@ -74,8 +67,8 @@ export default function HsaHomeScreen() {
               <MiniStat value={String(sessions.length)} label={L('lượt luyện', 'practice runs')} />
               <MiniStat value={recent ? `${recent.correct}/${recent.total}` : '♡'} label={L('lần gần nhất', 'last result')} />
             </View>
-            <View style={{ marginTop: 13, height: 10, backgroundColor: '#F1E8D3', borderRadius: 999, overflow: 'hidden' }}>
-              <View style={{ width: `${vocabCount ? Math.min(100, (knownCount / vocabCount) * 100) : 0}%`, height: '100%', borderRadius: 999, backgroundColor: themedHex('#B8955A') }} />
+            <View style={{ marginTop: 13, height: 10, backgroundColor: '#F3F0FB', borderRadius: 999, overflow: 'hidden' }}>
+              <View style={{ width: `${vocabCount ? Math.min(100, (knownCount / vocabCount) * 100) : 0}%`, height: '100%', borderRadius: 999, backgroundColor: themedHex('#8B6CF0') }} />
             </View>
           </WindowPanel>
 
@@ -97,11 +90,11 @@ export default function HsaHomeScreen() {
         </View>
 
         <WindowPanel title={L('Bắt đầu học', 'Choose your next step')} icon="book" subtitle={L('Chọn một chiếc hộp để bắt đầu nha', 'Pick a little window to get started')} wide={false}>
-          <LinearGradient colors={[themedHex('#B8955A'), '#8F6E36']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 20, padding: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, overflow: 'hidden' }}>
+          <LinearGradient colors={[themedHex('#8B6CF0'), '#6A4BD9']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 20, padding: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, overflow: 'hidden' }}>
             <View style={{ flex: 1, gap: 7 }}>
-              <Text style={{ color: '#FFFDF8', fontSize: 12, fontWeight: '900', letterSpacing: 1 }}>{L('ĐỀ MÔ PHỎNG HÔM NAY', 'TODAY’S PRACTICE PAPER')}</Text>
+              <Text style={{ color: '#F3F0FB', fontSize: 12, fontWeight: '900', letterSpacing: 1 }}>{L('ĐỀ MÔ PHỎNG HÔM NAY', 'TODAY’S PRACTICE PAPER')}</Text>
               <Text style={{ color: '#FFFFFF', fontSize: 21, fontWeight: '900' }}>{L('Đề số 01 · 50 câu', 'Paper 01 · 50 questions')}</Text>
-              <Text style={{ color: '#FFFDF8', fontSize: 13 }}>{L('Bấm giờ như một buổi thi thật', 'A timed, full-length practice run')}</Text>
+              <Text style={{ color: '#F3F0FB', fontSize: 13 }}>{L('Bấm giờ như một buổi thi thật', 'A timed, full-length practice run')}</Text>
               <Button className="mt-1" variant="onDarkSolid" label={L('Vào phòng thi', 'Start the paper')} iconRight="arrow-right" onPress={() => router.push('/hsa/exam' as never)} />
             </View>
             <Image source={require('../../assets/illustrations/cute-home/mascot-peace.png')} contentFit="contain" style={{ width: 92, height: 92 }} />
@@ -174,16 +167,16 @@ export default function HsaHomeScreen() {
 
 function WindowPanel({ title, subtitle, icon, wide, children }: { title: string; subtitle: string; icon: IconName; wide: boolean; children: React.ReactNode }) {
   return (
-    <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: wide ? 410 : '100%', minWidth: 0, borderRadius: 19, borderWidth: 1, borderColor: '#E8DCC0', backgroundColor: 'rgba(255,255,255,0.94)', overflow: 'hidden', shadowColor: '#8F6E36', shadowOpacity: 0.08, shadowRadius: 16, shadowOffset: { width: 0, height: 7 } }}>
-      <View style={{ minHeight: 43, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FBF3E2', borderBottomWidth: 1, borderBottomColor: '#E8DCC0' }}>
+    <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: wide ? 410 : '100%', minWidth: 0, borderRadius: 19, borderWidth: 1, borderColor: '#E8DCC0', backgroundColor: 'rgba(255,255,255,0.94)', overflow: 'hidden', shadowColor: '#6A4BD9', shadowOpacity: 0.08, shadowRadius: 16, shadowOffset: { width: 0, height: 7 } }}>
+      <View style={{ minHeight: 43, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#F3F0FB', borderBottomWidth: 1, borderBottomColor: '#E8DCC0' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <View style={{ flexDirection: 'row', gap: 4 }}>
-            {[themedHex('#B8955A'), '#D5B377', '#E2C88F'].map((dot) => <View key={dot} style={{ width: 7, height: 7, borderRadius: 999, backgroundColor: dot }} />)}
+            {[themedHex('#8B6CF0'), '#D5B377', '#E2C88F'].map((dot) => <View key={dot} style={{ width: 7, height: 7, borderRadius: 999, backgroundColor: dot }} />)}
           </View>
-          <Icon name={icon} size={15} color="#8F6E36" />
+          <Icon name={icon} size={15} color="#6A4BD9" />
           <Text numberOfLines={1} style={{ color: '#0F1D33', fontWeight: '800', fontSize: 13 }}>{title}</Text>
         </View>
-        <Text style={{ color: '#A8843F', fontSize: 12, fontWeight: '800' }}>✦</Text>
+        <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>✦</Text>
       </View>
       <View style={{ padding: 16 }}>
         <Text className="font-sans text-label text-muted" style={{ marginBottom: 12 }}>{subtitle}</Text>
@@ -195,8 +188,8 @@ function WindowPanel({ title, subtitle, icon, wide, children }: { title: string;
 
 function MiniStat({ value, label }: { value: string; label: string }) {
   return (
-    <View style={{ flexGrow: 1, flexBasis: 100, minWidth: 90, backgroundColor: '#FBF7EE', borderRadius: 14, padding: 11, borderWidth: 1, borderColor: '#E8DCC0' }}>
-      <Text style={{ fontSize: 21, fontWeight: '900', color: '#8F6E36' }}>{value}</Text>
+    <View style={{ flexGrow: 1, flexBasis: 100, minWidth: 90, backgroundColor: '#F5F2FF', borderRadius: 14, padding: 11, borderWidth: 1, borderColor: '#E8DCC0' }}>
+      <Text style={{ fontSize: 21, fontWeight: '900', color: '#6A4BD9' }}>{value}</Text>
       <Text style={{ fontSize: 12, fontWeight: '700', color: '#6B6250', marginTop: 2 }}>{label}</Text>
     </View>
   );
@@ -204,9 +197,9 @@ function MiniStat({ value, label }: { value: string; label: string }) {
 
 function BlueprintRow({ label, count }: { label: string; count: string }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FBF7EE', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 8 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#F5F2FF', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 8 }}>
       <Text style={{ color: '#0F1D33', fontWeight: '700', fontSize: 14 }}>{label}</Text>
-      <Text style={{ color: '#8F6E36', fontWeight: '900', fontSize: 14 }}>{count}</Text>
+      <Text style={{ color: '#6A4BD9', fontWeight: '900', fontSize: 14 }}>{count}</Text>
     </View>
   );
 }
@@ -217,16 +210,16 @@ function ActionTile({ icon, title, note, color: tint, onPress, compact = false }
       accessibilityRole="button"
       onPress={onPress}
       className="rounded-panel"
-      style={({ pressed }) => ({ flexGrow: 1, flexShrink: 1, flexBasis: compact ? 188 : 245, minWidth: compact ? 160 : 210, minHeight: compact ? 76 : 92, flexDirection: 'row', alignItems: 'center', gap: 11, padding: 12, backgroundColor: pressed ? '#FBF3E2' : '#FFFDF8', borderWidth: 1, borderColor: '#E8DCC0', opacity: pressed ? 0.88 : 1 })}
+      style={({ pressed }) => ({ flexGrow: 1, flexShrink: 1, flexBasis: compact ? 188 : 245, minWidth: compact ? 160 : 210, minHeight: compact ? 76 : 92, flexDirection: 'row', alignItems: 'center', gap: 11, padding: 12, backgroundColor: pressed ? '#F3F0FB' : '#F3F0FB', borderWidth: 1, borderColor: '#E8DCC0', opacity: pressed ? 0.88 : 1 })}
     >
       <View style={{ width: compact ? 38 : 46, height: compact ? 38 : 46, borderRadius: compact ? 13 : 16, alignItems: 'center', justifyContent: 'center', backgroundColor: tint }}>
-        <Icon name={icon} size={compact ? 18 : 21} color="#8F6E36" />
+        <Icon name={icon} size={compact ? 18 : 21} color="#6A4BD9" />
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
         <Text numberOfLines={2} style={{ color: '#0F1D33', fontSize: compact ? 13 : 15, lineHeight: compact ? 18 : 20, fontWeight: '800' }}>{title}</Text>
         <Text numberOfLines={2} style={{ color: '#6B6250', fontSize: 12, marginTop: 3 }}>{note}</Text>
       </View>
-      {!compact ? <Icon name="chevron-right" size={15} color="#A8843F" /> : null}
+      {!compact ? <Icon name="chevron-right" size={15} color="#6A4BD9" /> : null}
     </Pressable>
   );
 }

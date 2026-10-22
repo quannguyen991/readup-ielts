@@ -85,7 +85,7 @@ export function RoadmapView({ input, plan, onEdit }: { input: PlanInput; plan: C
             </View>
           </View>
         </View>
-        <Stat icon="flame" value={String(streak.current)} label={L('Chuỗi', 'Streak')} color="#C77A1E" />
+        <Stat icon="flame" value={String(streak.current)} label={L('Chuỗi', 'Streak')} color="#6A4BD9" />
         <Stat icon="sparkle" value={String(xp)} label="XP" color={c.goldDeep} />
         <Pressable
           accessibilityRole="button"
@@ -181,7 +181,7 @@ function StageBanner({
         <Text style={{ color: c.body, fontSize: 13 }}>
           {L(`Tuần ${stageNumbers.weekFrom}–${stageNumbers.weekTo} · còn ${stageNumbers.daysLeft} ngày tới kỳ thi`, `Weeks ${stageNumbers.weekFrom}–${stageNumbers.weekTo} · ${stageNumbers.daysLeft} days to the exam`)}
         </Text>
-        <View style={{ height: 10, borderRadius: 5, backgroundColor: 'rgba(143,110,54,0.16)', overflow: 'hidden' }}>
+        <View style={{ height: 10, borderRadius: 5, backgroundColor: 'rgba(106, 75, 217,0.16)', overflow: 'hidden' }}>
           <View style={{ width: `${Math.round(pct * 100)}%`, height: 10, borderRadius: 5, backgroundColor: c.gold }} />
         </View>
         <Text style={{ color: c.muted, fontSize: 12, fontWeight: '700' }}>

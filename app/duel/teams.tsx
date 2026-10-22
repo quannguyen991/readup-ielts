@@ -139,22 +139,22 @@ export default function TeamShowdown() {
           <Text className="font-semi text-label text-muted">{deck.nameVi} · {questions.length} {L('ô câu hỏi', 'question tiles')}</Text>
         </View>
 
-        <View className="overflow-hidden rounded-[26px]" style={{ backgroundColor: '#FFFDF7', borderWidth: 4, borderColor: '#E9BD62', boxShadow: '0 16px 36px rgba(29,24,53,.2)' } as object}>
-          <View className="flex-row flex-wrap items-center justify-between gap-3 px-5 py-4" style={{ backgroundColor: '#FFFDF7', borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,.12)' }}>
+        <View className="overflow-hidden rounded-[26px]" style={{ backgroundColor: '#F3F0FB', borderWidth: 4, borderColor: '#E9BD62', boxShadow: '0 16px 36px rgba(29,24,53,.2)' } as object}>
+          <View className="flex-row flex-wrap items-center justify-between gap-3 px-5 py-4" style={{ backgroundColor: '#F3F0FB', borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,.12)' }}>
             <View>
-              <Text style={{ color: '#8A5A00', fontSize: 11, fontWeight: '900', letterSpacing: 2 }}>{L('BAND9 CLASSROOM ARCADE', 'BAND9 CLASSROOM ARCADE')}</Text>
-              <Text className="mt-1 font-heavy" style={{ color: '#2A1808', fontSize: 26 }}>{L('ĐẤU ĐỘI · BẢNG TINH VÂN', 'TEAM SHOWDOWN · STARBOARD')}</Text>
+              <Text style={{ color: '#2B2350', fontSize: 11, fontWeight: '900', letterSpacing: 2 }}>{L('BAND9 CLASSROOM ARCADE', 'BAND9 CLASSROOM ARCADE')}</Text>
+              <Text className="mt-1 font-heavy" style={{ color: '#2B2350', fontSize: 26 }}>{L('ĐẤU ĐỘI · BẢNG TINH VÂN', 'TEAM SHOWDOWN · STARBOARD')}</Text>
             </View>
-            <View className="rounded-2xl px-4 py-2" style={{ backgroundColor: '#FFFDF7' }}>
-              <Text className="font-heavy text-bodyLg" style={{ color: '#8A5A00' }}>✦ {usedTiles.length}/{questions.length}</Text>
-              <Text className="font-semi text-label" style={{ color: '#2A1808' }}>{L('ô đã mở', 'tiles opened')}</Text>
+            <View className="rounded-2xl px-4 py-2" style={{ backgroundColor: '#F3F0FB' }}>
+              <Text className="font-heavy text-bodyLg" style={{ color: '#2B2350' }}>✦ {usedTiles.length}/{questions.length}</Text>
+              <Text className="font-semi text-label" style={{ color: '#2B2350' }}>{L('ô đã mở', 'tiles opened')}</Text>
             </View>
           </View>
 
           <View className="p-4 sm:p-6">
             {phase === 'setup' ? (
               <View className="flex-row flex-wrap gap-4">
-                <View className="rounded-[22px] p-5" style={{ flexGrow: 1, flexBasis: 300, backgroundColor: '#FBF8F2' }}>
+                <View className="rounded-[22px] p-5" style={{ flexGrow: 1, flexBasis: 300, backgroundColor: '#F3F0FB' }}>
                   <Text className="font-heavy text-sectionTitle text-ink">{L('Sắp đội và luật chơi', 'Set up teams and rules')}</Text>
                   <Text className="mt-1 font-sans text-body text-muted">{L('Chơi chung trên một màn hình. Mỗi đội lần lượt chọn ô và cùng thảo luận đáp án.', 'Play together on one screen. Teams take turns choosing a tile and discussing the answer.')}</Text>
 
@@ -165,7 +165,7 @@ export default function TeamShowdown() {
 
                   <Text className="mt-5 font-heavy text-body text-ink">{L('Đặt tên đội', 'Name the teams')}</Text>
                   <View className="mt-2 gap-2">
-                    {teams.map((team, index) => <View key={index} className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#F2EBDD' }}>
+                    {teams.map((team, index) => <View key={index} className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#F3F0FB' }}>
                       <Text style={{ fontSize: 24 }}>{team.icon}</Text>
                       <TextInput value={team.name} onChangeText={(name) => setTeams((current) => current.map((item, i) => i === index ? { ...item, name } : item))} maxLength={18} placeholder={L('Tên đội', 'Team name')} className="flex-1 py-1 font-semi text-body text-ink" />
                       <View style={{ width: 10, height: 10, borderRadius: 6, backgroundColor: team.tone }} />
@@ -195,20 +195,20 @@ export default function TeamShowdown() {
                 <View className="mb-4 flex-row flex-wrap gap-2">
                   {teams.map((team, index) => <View key={team.name + index} className="flex-row items-center gap-2 rounded-2xl px-4 py-3" style={{ flexGrow: 1, flexBasis: 180, backgroundColor: index === activeTeam ? team.tone : '#2B2851', borderWidth: index === activeTeam ? 2 : 1, borderColor: index === activeTeam ? '#FFE28A' : 'rgba(255,255,255,.12)' }}>
                     <Text style={{ fontSize: 24 }}>{team.icon}</Text>
-                    <View className="min-w-0 flex-1"><Text numberOfLines={1} className="font-heavy text-body" style={{ color: '#2A1808' }}>{team.name || L(`Đội ${index + 1}`, `Team ${index + 1}`)}</Text><Text className="font-semi text-label" style={{ color: '#8A5A00' }}>{scores[index] ?? 0} {L('điểm', 'points')}</Text></View>
+                    <View className="min-w-0 flex-1"><Text numberOfLines={1} className="font-heavy text-body" style={{ color: '#2B2350' }}>{team.name || L(`Đội ${index + 1}`, `Team ${index + 1}`)}</Text><Text className="font-semi text-label" style={{ color: '#2B2350' }}>{scores[index] ?? 0} {L('điểm', 'points')}</Text></View>
                     {index === activeTeam ? <Text style={{ fontSize: 21 }}>🎯</Text> : null}
                   </View>)}
                 </View>
-                <View className="rounded-[22px] p-4 sm:p-5" style={{ backgroundColor: '#FFFDF7', borderWidth: 1, borderColor: '#484273' }}>
-                  <Text className="font-heavy text-center text-bodyLg" style={{ color: '#8A5A00' }}>{teams[activeTeam]?.icon}  {L('Đến lượt', 'Up now')}: {teams[activeTeam]?.name || L(`Đội ${activeTeam + 1}`, `Team ${activeTeam + 1}`)}</Text>
-                  <Text className="mt-1 text-center font-sans text-label" style={{ color: '#2A1808' }}>{L('Chọn một ô chưa mở để nhận thử thách.', 'Choose an unopened tile to reveal a challenge.')}</Text>
+                <View className="rounded-[22px] p-4 sm:p-5" style={{ backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#484273' }}>
+                  <Text className="font-heavy text-center text-bodyLg" style={{ color: '#2B2350' }}>{teams[activeTeam]?.icon}  {L('Đến lượt', 'Up now')}: {teams[activeTeam]?.name || L(`Đội ${activeTeam + 1}`, `Team ${activeTeam + 1}`)}</Text>
+                  <Text className="mt-1 text-center font-sans text-label" style={{ color: '#2B2350' }}>{L('Chọn một ô chưa mở để nhận thử thách.', 'Choose an unopened tile to reveal a challenge.')}</Text>
                   <View className="mt-5 flex-row flex-wrap justify-center gap-2.5">
                     {questions.map((item, index) => {
                       const used = usedTiles.includes(index);
                       const result = tileResults[index];
-                      return <Pressable key={`${index}-${item.word.word}`} disabled={used} onPress={() => { setActiveTile(index); setPhase('question'); }} accessibilityRole="button" accessibilityLabel={used ? `${L('Ô', 'Tile')} ${index + 1}, ${result ? L('đúng', 'correct') : L('đã dùng', 'used')}` : `${L('Mở ô', 'Open tile')} ${index + 1}`} style={({ pressed }) => ({ width: '22%', minWidth: 62, maxWidth: 112, aspectRatio: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: used ? (result ? '#315D50' : '#51425A') : '#F2C665', borderColor: used ? 'rgba(255,255,255,.08)' : '#FFF0BC', borderWidth: 2, borderRadius: 17, borderBottomWidth: used ? 2 : 7, borderBottomColor: used ? 'rgba(0,0,0,.16)' : '#A87927', opacity: used ? 0.76 : 1, transform: [{ translateY: pressed && !used ? 4 : 0 }, { scale: pressed && !used ? 0.97 : 1 }], boxShadow: used ? undefined : '0 5px 14px rgba(245,195,77,.15)' } as object)}>
+                      return <Pressable key={`${index}-${item.word.word}`} disabled={used} onPress={() => { setActiveTile(index); setPhase('question'); }} accessibilityRole="button" accessibilityLabel={used ? `${L('Ô', 'Tile')} ${index + 1}, ${result ? L('đúng', 'correct') : L('đã dùng', 'used')}` : `${L('Mở ô', 'Open tile')} ${index + 1}`} style={({ pressed }) => ({ width: '22%', minWidth: 62, maxWidth: 112, aspectRatio: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: used ? (result ? '#315D50' : '#51425A') : '#F2C665', borderColor: used ? 'rgba(255,255,255,.08)' : '#F3F0FB', borderWidth: 2, borderRadius: 17, borderBottomWidth: used ? 2 : 7, borderBottomColor: used ? 'rgba(0,0,0,.16)' : '#6A4BD9', opacity: used ? 0.76 : 1, transform: [{ translateY: pressed && !used ? 4 : 0 }, { scale: pressed && !used ? 0.97 : 1 }], boxShadow: used ? undefined : '0 5px 14px rgba(245,195,77,.15)' } as object)}>
                         <Text style={{ fontSize: 26, fontWeight: '900', color: used ? '#FFFFFF' : '#302449' }}>{used ? (result ? '✓' : '×') : String(index + 1).padStart(2, '0')}</Text>
-                        <Text style={{ marginTop: 2, fontSize: 9, fontWeight: '900', letterSpacing: 1, color: used ? '#D8D0E4' : '#78551C' }}>{used ? L('XONG', 'DONE') : L('MỞ Ô', 'PICK')}</Text>
+                        <Text style={{ marginTop: 2, fontSize: 9, fontWeight: '900', letterSpacing: 1, color: used ? '#D8D0E4' : '#2B2350' }}>{used ? L('XONG', 'DONE') : L('MỞ Ô', 'PICK')}</Text>
                       </Pressable>;
                     })}
                   </View>
@@ -218,9 +218,9 @@ export default function TeamShowdown() {
             ) : null}
 
             {phase === 'question' && question ? (
-              <View className="mx-auto w-full rounded-[24px] p-5 sm:p-8" style={{ maxWidth: 850, backgroundColor: '#FCF8EE', borderWidth: 3, borderColor: '#F2CA6B' }}>
+              <View className="mx-auto w-full rounded-[24px] p-5 sm:p-8" style={{ maxWidth: 850, backgroundColor: '#F3F0FB', borderWidth: 3, borderColor: '#F2CA6B' }}>
                 <View className="flex-row flex-wrap items-center justify-between gap-3">
-                  <View className="rounded-pill px-3 py-1.5" style={{ backgroundColor: teams[activeTeam]?.tone }}><Text className="font-heavy text-label" style={{ color: '#2A1808' }}>{teams[activeTeam]?.icon} {teams[activeTeam]?.name}</Text></View>
+                  <View className="rounded-pill px-3 py-1.5" style={{ backgroundColor: teams[activeTeam]?.tone }}><Text className="font-heavy text-label" style={{ color: '#2B2350' }}>{teams[activeTeam]?.icon} {teams[activeTeam]?.name}</Text></View>
                   <Text className="font-heavy text-label text-muted">{L('Ô câu hỏi', 'TILE')} {activeTile! + 1} / {questions.length}</Text>
                 </View>
                 <Text className="mt-6 text-center font-heavy text-ink" style={{ fontSize: 30, lineHeight: 39 }}>{question.enToVi ? question.word.word : question.word.meaningVi}</Text>
@@ -248,11 +248,11 @@ export default function TeamShowdown() {
             ) : null}
 
             {phase === 'result' ? (
-              <View className="items-center rounded-[24px] px-5 py-8" style={{ backgroundColor: '#FBF8F2' }}>
+              <View className="items-center rounded-[24px] px-5 py-8" style={{ backgroundColor: '#F3F0FB' }}>
                 <Text style={{ fontSize: 60 }}>🏆</Text>
                 <Text className="mt-2 text-center font-heavy text-pageTitle text-ink">{winners.length > 1 ? L('Hòa rồi! Cả lớp cùng thắng.', 'It is a tie! Everyone wins.') : L('Nhà vô địch bảng tinh vân', 'Starboard champions')}</Text>
                 <View className="mt-5 w-full gap-2" style={{ maxWidth: 620 }}>
-                  {teams.map((team, index) => ({ team, index })).sort((a, b) => (scores[b.index] ?? 0) - (scores[a.index] ?? 0)).map(({ team, index }, rank) => <View key={team.name + index} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: winners.includes(index) ? '#FFF0C4' : '#F0ECE4' }}><Text className="font-heavy text-bodyLg text-ink">{['🥇', '🥈', '🥉', '🎖️'][rank]}</Text><Text style={{ fontSize: 24 }}>{team.icon}</Text><Text className="flex-1 font-heavy text-body text-ink">{team.name}</Text><Text className="font-heavy text-bodyLg" style={{ color: team.tone }}>{scores[index] ?? 0} {L('điểm', 'points')}</Text></View>)}
+                  {teams.map((team, index) => ({ team, index })).sort((a, b) => (scores[b.index] ?? 0) - (scores[a.index] ?? 0)).map(({ team, index }, rank) => <View key={team.name + index} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: winners.includes(index) ? '#F3F0FB' : '#F3F0FB' }}><Text className="font-heavy text-bodyLg text-ink">{['🥇', '🥈', '🥉', '🎖️'][rank]}</Text><Text style={{ fontSize: 24 }}>{team.icon}</Text><Text className="flex-1 font-heavy text-body text-ink">{team.name}</Text><Text className="font-heavy text-bodyLg" style={{ color: team.tone }}>{scores[index] ?? 0} {L('điểm', 'points')}</Text></View>)}
                 </View>
                 <Text className="mt-4 text-center font-semi text-body text-muted">{L(`${Object.values(tileResults).filter(Boolean).length}/${questions.length} câu trả lời đúng · từ đã học vẫn được ghi nhận vào Band9.`, `${Object.values(tileResults).filter(Boolean).length}/${questions.length} correct · your answers still count toward Band9 learning progress.`)}</Text>
                 <View className="mt-5 flex-row flex-wrap justify-center gap-3"><Button label={L('Chơi lại', 'Play again')} iconLeft="refresh" onPress={startGame} /><Button variant="outline" label={L('Chọn game khác', 'Choose another game')} onPress={() => router.replace('/duel' as never)} /></View>
@@ -260,9 +260,9 @@ export default function TeamShowdown() {
             ) : null}
           </View>
 
-          <View className="flex-row flex-wrap items-center justify-between gap-2 px-5 py-3" style={{ backgroundColor: '#FFFDF7', borderTopWidth: 1, borderTopColor: '#484273' }}>
-            <Text style={{ color: '#2A1808', fontFamily: 'monospace', fontSize: 10, fontWeight: '800' }}>BAND9 · {L('ĐẤU ĐỘI', 'TEAM SHOWDOWN')}</Text>
-            <Text style={{ color: '#8A5A00', fontSize: 10, fontWeight: '900' }}>{teams.length} {L('đội', 'teams')}  ·  {questions.length} {L('câu', 'questions')}</Text>
+          <View className="flex-row flex-wrap items-center justify-between gap-2 px-5 py-3" style={{ backgroundColor: '#F3F0FB', borderTopWidth: 1, borderTopColor: '#484273' }}>
+            <Text style={{ color: '#2B2350', fontFamily: 'monospace', fontSize: 10, fontWeight: '800' }}>BAND9 · {L('ĐẤU ĐỘI', 'TEAM SHOWDOWN')}</Text>
+            <Text style={{ color: '#2B2350', fontSize: 10, fontWeight: '900' }}>{teams.length} {L('đội', 'teams')}  ·  {questions.length} {L('câu', 'questions')}</Text>
           </View>
         </View>
       </View>
@@ -271,7 +271,7 @@ export default function TeamShowdown() {
 }
 
 function SetupChip({ label, selected, disabled, onPress }: { label: string; selected: boolean; disabled?: boolean; onPress: () => void }) {
-  return <Pressable accessibilityRole="button" accessibilityState={{ selected, disabled }} disabled={disabled} onPress={onPress} className="rounded-pill px-4 py-2.5" style={{ backgroundColor: selected ? '#1D1B3C' : '#F2EBDD', borderWidth: 1.5, borderColor: selected ? '#E9BD62' : 'transparent', opacity: disabled ? 0.45 : 1 }}><Text className="font-heavy text-label" style={{ color: selected ? '#FFE28A' : '#373148' }}>{label}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityState={{ selected, disabled }} disabled={disabled} onPress={onPress} className="rounded-pill px-4 py-2.5" style={{ backgroundColor: selected ? '#1D1B3C' : '#F3F0FB', borderWidth: 1.5, borderColor: selected ? '#E9BD62' : 'transparent', opacity: disabled ? 0.45 : 1 }}><Text className="font-heavy text-label" style={{ color: selected ? '#FFE28A' : '#373148' }}>{label}</Text></Pressable>;
 }
 
 function powerName(power: TeamPower, en: boolean): string {

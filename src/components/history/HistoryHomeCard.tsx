@@ -63,7 +63,7 @@ export function HistoryHomeCard({ compact = false, marginTop = 0 }: { compact?: 
       ]}
     >
       {wide ? (
-      <View style={{ width: '40%', minHeight: 220, backgroundColor: '#E9E4D6', justifyContent: 'center' }}>
+      <View style={{ width: '40%', minHeight: 220, backgroundColor: '#F3F0FB', justifyContent: 'center' }}>
         {thumb ? (
           <HistoryImage file={thumb.file} alt={L(thumb.altVi, thumb.altEn)} />
         ) : (
