@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { router, usePathname } from 'expo-router';
 
+import { HeroShell } from '@/components/layout/HeroShell';
 import { Screen } from '@/components/layout/Screen';
-import { Card, Icon } from '@/components/ui';
 import { signInWithOAuth } from '@/services/auth/session';
 import { currentUserAgent, isInstagramBrowser } from '@/lib/inapp-browser';
 import { isMemberOnlyPath, lockedFeatureName } from '@/lib/access/member-gate';
@@ -52,44 +52,52 @@ function GateScreen({ next }: { next: string }) {
 
   return (
     <Screen>
-      <View className="mx-auto mt-6 w-full" style={{ maxWidth: 440 }}>
-        <Card>
-          <View className="items-center gap-4 p-6">
-            <View className="h-12 w-12 items-center justify-center rounded-full bg-surfaceAlt">
-              <Icon name="lock" size={22} color="#6A4BD9" />
-            </View>
-            <Text className="text-center font-heavy text-pageTitle text-ink">{L(`${name} cần đăng nhập`, `${name} needs sign-in`)}</Text>
+      <View className="mx-auto mt-6 w-full" style={{ maxWidth: 480 }}>
+        {/* Cùng khuôn hero với các trang khác: viền gradient, hoạ tiết pastel, chữ mực tối. */}
+        <HeroShell radius={26} style={{ padding: 24, gap: 14 }}>
+          <Text className="font-strong text-label" style={{ color: 'rgba(27,17,64,0.75)', letterSpacing: 1.4 }}>
+            {L('KHU THÀNH VIÊN', 'MEMBERS ONLY')}
+          </Text>
+          <Text className="font-heavy text-pageTitle" style={{ color: '#1B1140' }}>
+            {L(`${name} cần đăng nhập`, `${name} needs sign-in`)}
+          </Text>
+          <Text className="font-sans text-body" style={{ color: 'rgba(27,17,64,0.85)' }}>
+            {L('Đăng nhập để lưu tiến độ và học tiếp trên mọi thiết bị.', 'Sign in to save your progress and continue on any device.')}
+          </Text>
 
-            {inApp ? (
-              <Text className="text-center font-sans text-body text-muted">
-                {L('Google không đăng nhập được trong trình duyệt của Instagram. Bấm ⋯ rồi chọn "Mở bằng trình duyệt", hoặc đăng nhập bằng email / số điện thoại bên dưới.', 'Google sign-in does not work inside the Instagram browser. Tap ⋯ and choose "Open in browser", or sign in with email or phone below.')}
-              </Text>
-            ) : (
+          {inApp ? (
+            <Text className="font-sans text-body" style={{ color: 'rgba(27,17,64,0.9)' }}>
+              {L('Google không đăng nhập được trong trình duyệt của Instagram. Bấm ⋯ rồi chọn "Mở bằng trình duyệt", hoặc đăng nhập bằng email / số điện thoại.', 'Google sign-in does not work in the Instagram browser. Tap ⋯ and choose "Open in browser", or sign in with email or phone.')}
+            </Text>
+          ) : (
             <Pressable
               accessibilityRole="button"
               disabled={busy}
               onPress={google}
-              className="w-full flex-row items-center justify-center gap-3 rounded-pill border border-borderStrong bg-white"
-              style={{ minHeight: 52, opacity: busy ? 0.6 : 1 }}
+              className="w-full flex-row items-center justify-center gap-3 rounded-pill bg-white"
+              style={{ minHeight: 52, opacity: busy ? 0.6 : 1, boxShadow: '0 8px 20px rgba(27,17,64,0.12)' } as object}
             >
               {busy ? <ActivityIndicator color="#6A4BD9" /> : <Text className="font-heavy text-cardTitle" style={{ color: '#4285F4' }}>G</Text>}
-              <Text className="font-strong text-body text-ink">{L('Tiếp tục với Google', 'Continue with Google')}</Text>
-            </Pressable>
-            )}
-
-            {error ? <Text className="text-center font-sans text-label" style={{ color: '#B42318' }}>{error}</Text> : null}
-
-            <Text className="text-center font-sans text-body text-muted">
-              {L('Chưa có tài khoản? ', "Don't have an account? ")}
-              <Text className="font-strong text-primary-700" accessibilityRole="link" onPress={() => go('signup')}>
-                {L('Đăng ký', 'Sign up')}
+              <Text className="font-strong text-body" style={{ color: '#1B1140' }}>
+                {L('Tiếp tục với Google', 'Continue with Google')}
               </Text>
-            </Text>
-            <Pressable accessibilityRole="link" onPress={() => go('signin')}>
-              <Text className="font-strong text-label text-muted">{L('Đăng nhập bằng email hoặc số điện thoại', 'Sign in with email or phone')}</Text>
             </Pressable>
-          </View>
-        </Card>
+          )}
+
+          {error ? <Text className="font-sans text-label" style={{ color: '#B42318' }}>{error}</Text> : null}
+
+          <Text className="font-sans text-body" style={{ color: 'rgba(27,17,64,0.85)' }}>
+            {L('Chưa có tài khoản? ', "Don't have an account? ")}
+            <Text className="font-strong" style={{ color: '#6A4BD9' }} accessibilityRole="link" onPress={() => go('signup')}>
+              {L('Đăng ký', 'Sign up')}
+            </Text>
+          </Text>
+          <Pressable accessibilityRole="link" onPress={() => go('signin')}>
+            <Text className="font-strong text-label" style={{ color: '#1B1140' }}>
+              {L('Đăng nhập bằng email hoặc số điện thoại', 'Sign in with email or phone')}
+            </Text>
+          </Pressable>
+        </HeroShell>
       </View>
     </Screen>
   );
