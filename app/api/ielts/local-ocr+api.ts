@@ -62,7 +62,7 @@ export async function GET(request: Request): Promise<Response> {
 
   return Response.json({
     reviewPages: bundle.reviewPages,
-    tests: bundle.tests.filter((t) => !t.hidden).map(({ id, title, source, section, questionCount, answerMode, responseLabels, pages, supportPages, answerKey, pdfAsset, sourceUrl, audioFiles, audioCloudUrl, answerKeyVerified, externalOnly, parts, missingComponents }) => ({
+    tests: bundle.tests.map(({ id, title, source, section, questionCount, answerMode, responseLabels, pages, supportPages, answerKey, pdfAsset, sourceUrl, audioFiles, audioCloudUrl, answerKeyVerified, externalOnly, parts, missingComponents }) => ({
       id, title, source, section, questionCount: questionCount ?? 40,
       answerMode, responseLabels,
       pageCount: pages.length, supportPageCount: supportPages.length,

@@ -7,7 +7,7 @@ export type SourceTest = {
   pages: SourcePage[]; supportPages: SourcePage[]; parts?: ExamPart[];
   answerKey?: Record<string, string | string[]>; answerKeyVerified?: boolean;
   pdfAsset?: string; sourceStartPage?: number; sourceUrl?: string;
-  audioFiles?: string[]; audioCloudUrl?: string; externalOnly?: boolean; hidden?: boolean;
+  audioFiles?: string[]; audioCloudUrl?: string; externalOnly?: boolean;
   contentVerified?: boolean; missingComponents?: string[]; sourceCheckedAt?: string;
 };
 
