@@ -7,13 +7,16 @@ import { Card } from '@/components/ui';
 import { useL } from '@/i18n/useL';
 import { parseIgLinks, type IgLink } from '@/services/ig/links';
 
+const DEFAULT_IG_LINKS_URL =
+  'https://qlmzjkxjfvvguwtwxnxb.supabase.co/storage/v1/object/public/band9-instagram/ig/links.json';
+
 /**
  * Trang /ig: danh sách link cho người xem từ Instagram. Đọc JSON công khai từ
  * EXPO_PUBLIC_IG_LINKS_URL (do hệ thống bên ngoài ghi), không đọc database.
  */
 export default function IgLinksScreen() {
   const { L } = useL();
-  const url = process.env.EXPO_PUBLIC_IG_LINKS_URL ?? '';
+  const url = process.env.EXPO_PUBLIC_IG_LINKS_URL || DEFAULT_IG_LINKS_URL;
   const [links, setLinks] = useState<IgLink[] | null>(null);
   const [failed, setFailed] = useState(false);
 

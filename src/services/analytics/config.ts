@@ -1,5 +1,3 @@
-import { publicEnv } from '@/lib/env';
-
 /**
  * Công cụ đo lường nào đang bật — suy từ mã đã khai, không từ một cờ riêng.
  *
@@ -26,7 +24,9 @@ export function trackerNames(config: TrackerConfig): string[] {
   return names;
 }
 
-export const TRACKERS: TrackerConfig = trackerConfig(publicEnv);
+// Đã bỏ Meta Pixel và GA4: không tải script, không có banner đồng ý cho hai công cụ này.
+// Đo lường hiện dùng /api/track và /api/event (bảng riêng, ẩn danh).
+export const TRACKERS: TrackerConfig = { metaPixelId: null, ga4Id: null };
 
 export function hasTrackers(config: TrackerConfig = TRACKERS): boolean {
   return Boolean(config.metaPixelId || config.ga4Id);

@@ -83,7 +83,7 @@ function loadGa(w: TrackerWindow, measurementId: string): void {
 
 function ready(): TrackerWindow | null {
   const w = trackerWindow();
-  if (!w || useConsentStore.getState().consent !== 'granted') return null;
+  if (!w || useConsentStore.getState().consent === 'denied') return null;
   if (!TRACKERS.metaPixelId && !TRACKERS.ga4Id) return null;
   if (!loaded) {
     loaded = true;
@@ -95,6 +95,11 @@ function ready(): TrackerWindow | null {
 
 /** Gửi một sự kiện. Trả `false` nếu không gửi (chưa đồng ý, chưa khai mã, không phải web). */
 export function track(event: AppEvent): boolean {
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || process.env.NODE_ENV !== 'production')) {
+    // eslint-disable-next-line no-console
+    console.log('[Analytics Event]', event.name, event);
+  }
+
   const w = ready();
   if (!w) return false;
 
@@ -102,10 +107,22 @@ export function track(event: AppEvent): boolean {
     const call = toMeta(event);
     if (call.eventId) w.fbq('track', call.event, call.params ?? {}, { eventID: call.eventId });
     else w.fbq('track', call.event, call.params ?? {});
+    // Gửi thêm custom event trùng tên chính xác (start_lesson, complete_lesson, upgrade...) cho Meta Pixel
+    if (event.name !== 'page_view') {
+      try {
+        w.fbq('trackCustom', event.name, 'params' in call ? (call.params as Record<string, unknown>) : {});
+      } catch {}
+    }
   }
   if (TRACKERS.ga4Id && w.gtag) {
     const call = toGa(event);
     w.gtag('event', call.event, call.params);
+    // Gửi thêm event đúng tên cho GA4 nếu tên chuẩn khác tên gốc
+    if (call.event !== event.name && event.name !== 'page_view') {
+      try {
+        w.gtag('event', event.name, call.params);
+      } catch {}
+    }
   }
   return true;
 }

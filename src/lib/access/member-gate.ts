@@ -8,7 +8,6 @@
  */
 export const MEMBER_ONLY_PREFIXES = [
   '/speaking',
-  '/write',
   '/listening',
   '/history',
   '/community',
@@ -71,6 +70,9 @@ export const TEMP_OPEN_PREFIXES: readonly string[] = ['/duel', '/weekly', '/lead
 
 export function isMemberOnlyPath(pathname: string): boolean {
   const p = pathname.split('?')[0]!.replace(/\/+$/, '') || '/';
+  // Mở cho khách: /write (xem đề, viết bài) và /ielts/skills/reading-tfng
+  if (p === '/write' || p.startsWith('/write/')) return false;
+  if (p === '/ielts/skills/reading-tfng' || p.startsWith('/ielts/skills/')) return false;
   if (TEMP_OPEN_PREFIXES.some((prefix) => p === prefix || p.startsWith(`${prefix}/`))) return false;
   return MEMBER_ONLY_PREFIXES.some((prefix) => p === prefix || p.startsWith(`${prefix}/`) || p.startsWith(`${prefix}-`));
 }

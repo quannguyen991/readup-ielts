@@ -88,7 +88,7 @@ export function BadgeShelf() {
       : L(`${r.target} lần luyện nói`, `${r.target} speaking sessions`);
 
   return (
-    <View style={{ marginTop: 16, borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', padding: 18, overflow: 'hidden' }}>
+    <View style={{ marginTop: 16, borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', padding: 18, overflow: 'hidden', boxShadow: '0 8px 22px rgba(106,75,217,0.08)' } as object}>
       {fresh ? (
         <View pointerEvents="none" style={StyleSheet.absoluteFill}>
           <Confetti seed={fresh} pieces={70} />
@@ -104,7 +104,20 @@ export function BadgeShelf() {
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 16, marginTop: 14 }}>
         {rows.map((r) => (
-          <View key={r.id} style={{ width: '31%', alignItems: 'center', gap: 6 }}>
+          <View
+            key={r.id}
+            style={{
+              width: '31%',
+              alignItems: 'center',
+              gap: 6,
+              paddingVertical: 12,
+              paddingHorizontal: 6,
+              borderRadius: 20,
+              backgroundColor: r.unlocked ? '#F5F2FF' : '#FAF9FD',
+              borderWidth: 1,
+              borderColor: r.unlocked ? '#DCD2FF' : '#F1EEFB',
+            }}
+          >
             <HexBadge icon={r.icon} tone={r.tone} locked={!r.unlocked} size={70} />
             <Text numberOfLines={2} style={{ textAlign: 'center', fontSize: 12, lineHeight: 16, fontWeight: '600', color: r.unlocked ? '#2B2350' : '#7A72A0' }}>
               {label(r)}

@@ -56,11 +56,14 @@ export function DesmosEmbed() {
 
   if (!API_KEY) {
     return (
-      <View style={{ width: '100%', height: 'min(72vh, 680px)', minHeight: 440, borderRadius: 16, overflow: 'hidden' }}>
+      <View style={{ width: '100%', height: 'min(72vh, 680px)', minHeight: 440, borderRadius: 16, overflow: 'hidden' } as object}>
+        {/* Trang máy tính đầy đủ của Desmos (không phải chế độ ?embed): có ô biểu thức, bàn phím và thanh công cụ như bản gốc. */}
         <iframe
-          src="https://www.desmos.com/calculator?embed"
+          src="https://www.desmos.com/calculator"
           style={{ width: '100%', height: '100%', border: '1px solid #E5E7EB', borderRadius: 16 }}
           title="Desmos Graphing Calculator"
+          allow="clipboard-read; clipboard-write; fullscreen"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       </View>
     );

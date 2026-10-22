@@ -3,7 +3,8 @@ import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-nati
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
-import { CTA_GRADIENT, LightHero } from '@/components/layout/LightHero';
+import { HeroShell } from '@/components/layout/HeroShell';
+import { CTA_GRADIENT } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { Appear } from '@/components/motion/Motion';
@@ -111,7 +112,7 @@ export default function LearningPathScreen() {
 
   /* ---------------------------------------------------------------- bảng chọn lộ trình */
   const selector = (
-    <View style={{ borderRadius: 24, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, padding: compactPicker ? 16 : 22, gap: 20, boxShadow: '0 10px 28px rgba(15,29,51,0.07)' } as object}>
+    <View style={{ borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', padding: compactPicker ? 16 : 22, gap: 20, boxShadow: '0 10px 28px rgba(106,75,217,0.08)' } as object}>
       <View style={{ flexDirection: compactPicker ? 'column' : 'row', alignItems: compactPicker ? 'stretch' : 'center', justifyContent: 'space-between', gap: 14 }}>
         <View style={{ flex: 1, minWidth: 0 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
@@ -231,14 +232,18 @@ export default function LearningPathScreen() {
       <View style={{ paddingBottom: 40 }}>
         {/* ------------------------------------------------ đầu trang: một lối vào cho cả lộ trình */}
         <Appear>
-          <LightHero
-            badge={L('LỘ TRÌNH HỌC', 'LEARNING PATH')}
-            line1={L('Học theo trình độ, từng Part một', 'Study level by level, one Part at a time')}
-            subtitle={L('Mỗi Part một chủ đề, đủ các kỹ năng. Lịch học của bạn đi theo nhịp đã chọn.', 'One topic per Part, every skill. Your schedule follows the rhythm you picked.')}
-            noArt
-            noCat
-          >
-            <Pressable accessibilityRole="link" onPress={() => router.push('/plan' as never)} style={({ pressed }: { pressed: boolean }) => ({ alignSelf: 'flex-start', opacity: pressed ? 0.92 : 1 })}>
+          {/* Cùng khuôn hero với các trang khác: viền gradient, hoạ tiết pastel, chữ mực tối. */}
+          <HeroShell radius={26} style={{ padding: 22, gap: 10 }}>
+            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: 'rgba(27,17,64,0.75)' }}>
+              {L('LỘ TRÌNH HỌC', 'LEARNING PATH')}
+            </Text>
+            <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: '#1B1140' }}>
+              {L('Học theo trình độ, từng Part một', 'Study level by level, one Part at a time')}
+            </Text>
+            <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: 'rgba(27,17,64,0.85)' }}>
+              {L('Mỗi Part một chủ đề, đủ các kỹ năng. Lịch học của bạn đi theo nhịp đã chọn.', 'One topic per Part, every skill. Your schedule follows the rhythm you picked.')}
+            </Text>
+            <Pressable accessibilityRole="link" onPress={() => router.push('/plan' as never)} style={({ pressed }: { pressed: boolean }) => ({ alignSelf: 'flex-start', marginTop: 4, opacity: pressed ? 0.92 : 1 })}>
               <LinearGradient colors={CTA_GRADIENT} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, height: 52, borderRadius: 999 }}>
                 <Icon name="calendar" size={16} color="#FFFFFF" strokeWidth={2.2} />
                 <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
@@ -247,7 +252,7 @@ export default function LearningPathScreen() {
                 <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2.2} />
               </LinearGradient>
             </Pressable>
-          </LightHero>
+          </HeroShell>
         </Appear>
 
         {wide ? (
@@ -338,7 +343,7 @@ function SidePanel({
   const part = partOfNode(level, node.id)!;
   const partNo = level.parts.indexOf(part) + 1;
   return (
-    <View style={{ borderRadius: 24, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, overflow: 'hidden', boxShadow: '0 12px 32px rgba(15,29,51,0.10)' } as object}>
+    <View style={{ borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', overflow: 'hidden', boxShadow: '0 12px 32px rgba(106,75,217,0.10)' } as object}>
       <View style={{ padding: 22, paddingBottom: 16 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <View style={{ borderRadius: 999, backgroundColor: P.goldWash, paddingHorizontal: 10, paddingVertical: 5 }}><Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 1.5, color: P.goldDeep }}>BAND 9</Text></View>

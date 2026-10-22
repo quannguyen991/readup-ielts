@@ -51,6 +51,7 @@ import { ChiikawaTapFx } from '@/components/chiikawa/ChiikawaTapFx';
 import { PageTransition } from '@/components/motion/Motion';
 import { PageViewTracker } from '@/services/analytics/PageViewTracker';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
+import { useAnalyticsBootstrap } from '@/services/analytics/useAnalytics';
 import { useSfxBindings } from '@/services/audio/useSfxBindings';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
@@ -84,6 +85,7 @@ export default function RootLayout() {
   useAuthBootstrap();
   useSyncBootstrap();
   useSfxBindings();
+  useAnalyticsBootstrap(pathname);
 
   // Don't block the entire app on web font downloads. If one font request stalls,
   // keep the interface usable with platform fallbacks and swap to branded fonts

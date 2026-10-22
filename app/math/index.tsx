@@ -1,9 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroShell } from '@/components/layout/HeroShell';
 import { DifficultyFilter, DomainSection, Segmented, SkillCard, type DifficultyFilterValue } from '@/components/practice/SkillBank';
 import { HubLinkRow, HubTitle, HubToolbar } from '@/components/sat-hub/SatHub';
 import { Screen } from '@/components/layout/Screen';
@@ -239,6 +241,42 @@ function PathView({
   );
 }
 
+/** Bảng màu cho từng unit: mỗi unit một cặp sáng–đậm, lặp lại theo số unit. */
+const UNIT_TONES: readonly (readonly [string, string])[] = [
+  ['#8B6CF0', '#5B3AD6'],
+  ['#F472B6', '#E23E8A'],
+  ['#4FC3A1', '#1E9E74'],
+  ['#FBBF55', '#E0891A'],
+  ['#60A5FA', '#2E6FE0'],
+];
+
+/** Nút viên của lộ trình: nền trắng viền tím nhạt, hoặc nền xanh đêm khi là nút chính. */
+function PathPill({ label, onPress, dark = false }: { label: string; onPress: () => void; dark?: boolean }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      onPress={onPress}
+      style={({ pressed }: { pressed: boolean }) => ({
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        borderRadius: 999,
+        borderWidth: 1,
+        borderColor: dark ? '#1B1140' : '#E4DCF8',
+        paddingHorizontal: 16,
+        paddingVertical: 9,
+        backgroundColor: dark ? '#1B1140' : '#FFFFFF',
+        opacity: pressed ? 0.85 : 1,
+      })}
+    >
+      <Text className="font-strong text-label" style={{ color: dark ? '#FFFFFF' : '#1B1140' }}>
+        {label}
+      </Text>
+      <Icon name="arrow-right" size={14} color={dark ? '#E23E8A' : '#6A4BD9'} strokeWidth={2.2} />
+    </Pressable>
+  );
+}
+
 function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof useMathSetProgress> }) {
   const { L, en } = useL();
   const bank = useMathBankProgress();
@@ -252,32 +290,24 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
 
   return (
     <View className="mt-4 gap-3">
-      <Card>
-        <View className="flex-row flex-wrap items-start justify-between gap-3">
-          <View className="min-w-0 flex-1">
-            <Text className="font-heavy text-cardTitle text-ink">{L('Lộ trình học SAT Math', 'SAT Math learning path')}</Text>
-            <Text className="mt-1 font-sans text-body text-muted">
-              {L(
-                'Bắt đầu với hướng dẫn, rồi học bốn mảng qua ba mức. Tiến độ tính theo lượt đã nộp; điểm thấp sẽ chỉ bạn quay lại kỹ năng cần ôn.',
-                'Start with the test guide, then work through four domains at three levels. Progress counts submitted attempts; lower scores point back to skills to review.',
-              )}
-            </Text>
-          </View>
-          <Badge label={L(`${SAT_MATH_COURSE_UNITS.length} unit`, `${SAT_MATH_COURSE_UNITS.length} units`)} tone="primary" shape="tag" />
+      <HeroShell radius={26} style={{ padding: 22, gap: 10 }}>
+        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: 'rgba(27,17,64,0.75)' }}>
+          {L(`${SAT_MATH_COURSE_UNITS.length} UNIT · 4 MẢNG · 3 MỨC`, `${SAT_MATH_COURSE_UNITS.length} UNITS · 4 DOMAINS · 3 LEVELS`)}
+        </Text>
+        <Text className="font-heavy" style={{ fontSize: 24, lineHeight: 30, color: '#1B1140' }}>
+          {L('Lộ trình học SAT Math', 'SAT Math learning path')}
+        </Text>
+        <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: 'rgba(27,17,64,0.85)' }}>
+          {L(
+            'Bắt đầu với hướng dẫn, rồi học bốn mảng qua ba mức. Tiến độ tính theo lượt đã nộp; điểm thấp sẽ chỉ bạn quay lại kỹ năng cần ôn.',
+            'Start with the test guide, then work through four domains at three levels. Progress counts submitted attempts; lower scores point back to skills to review.',
+          )}
+        </Text>
+        <View className="flex-row flex-wrap" style={{ gap: 8, marginTop: 4 }}>
+          <PathPill label={L('Chẩn đoán 19 câu', '19-question placement check')} onPress={() => router.push('/math/diagnostic' as never)} />
+          <PathPill dark label={L('Thi thử Math', 'Math mock test')} onPress={() => router.push('/math/mock' as never)} />
         </View>
-        <View className="mt-3 flex-row flex-wrap gap-2">
-          <Button
-            variant="outline"
-            label={L('Chẩn đoán 19 câu', '19-question placement check')}
-            onPress={() => router.push('/math/diagnostic' as never)}
-          />
-          <Button
-            variant="outline"
-            label={L('Thi thử Math', 'Math mock test')}
-            onPress={() => router.push('/math/mock' as never)}
-          />
-        </View>
-      </Card>
+      </HeroShell>
 
       {SAT_MATH_COURSE_UNITS.map((unit) => {
         const expanded = open === unit.id;
@@ -291,41 +321,59 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
         const unitTestScore = latestUnitTestProgress?.lastRatio;
         const needsReview = (latestUnitTestProgress?.rounds ?? 0) > 0 && unitTestScore !== undefined && unitTestScore < UNIT_TEST_PASS_THRESHOLD;
         const unitLabel = en ? unit.title.en : unit.title.vi;
+        const [toneFrom, toneTo] = UNIT_TONES[(unit.number - 1) % UNIT_TONES.length]!;
         return (
-          <Card key={unit.id} padded={false}>
+          <View
+            key={unit.id}
+            style={{
+              borderRadius: 24,
+              backgroundColor: '#FFFFFF',
+              borderWidth: 1,
+              borderColor: isActive ? toneTo : '#EEE9FF',
+              overflow: 'hidden',
+              boxShadow: '0 8px 22px rgba(106,75,217,0.07)',
+            } as object}
+          >
             <Pressable
               accessibilityRole="button"
               accessibilityState={{ expanded }}
               onPress={() => setOpen(expanded ? '' : unit.id)}
-              className="flex-row items-start gap-3 p-4"
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 16 }}
             >
-              <View className="h-10 w-10 items-center justify-center rounded-panel" style={{ backgroundColor: unit.level ? color.accentSoft : '#F3F0FB' }}>
-                <Text className="font-heavy text-body" style={{ color: unit.level ? color.accent : '#6A4BD9' }}>{unit.number}</Text>
-              </View>
-              <View className="min-w-0 flex-1">
-                <View className="flex-row flex-wrap items-center gap-2">
-                  <Text className="font-heavy text-cardTitle text-ink">{unitLabel}</Text>
+              <LinearGradient
+                colors={[toneFrom, toneTo]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{ width: 52, height: 52, borderRadius: 18, alignItems: 'center', justifyContent: 'center' }}
+              >
+                <Text className="font-heavy" style={{ color: '#FFFFFF', fontSize: 20 }}>{unit.number}</Text>
+              </LinearGradient>
+              <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
+                <View className="flex-row flex-wrap items-center" style={{ gap: 8 }}>
+                  <Text className="font-heavy text-cardTitle" style={{ color: '#1B1140' }}>{unitLabel}</Text>
                   {isActive ? (
-                    <Badge
-                      label={needsReview ? L(`Ôn lại · ${Math.round((unitTestScore ?? 0) * 100)}%`, `Review · ${Math.round((unitTestScore ?? 0) * 100)}%`) : L('Học tiếp', 'Next up')}
-                      tone={needsReview ? 'warning' : 'primary'}
-                      shape="tag"
-                    />
+                    <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 2, backgroundColor: needsReview ? '#FFF4E0' : '#F1EBFF' }}>
+                      <Text className="font-strong" style={{ fontSize: 12, color: needsReview ? '#B45309' : '#6A4BD9' }}>
+                        {needsReview ? L(`Ôn lại · ${Math.round((unitTestScore ?? 0) * 100)}%`, `Review · ${Math.round((unitTestScore ?? 0) * 100)}%`) : L('Học tiếp', 'Next up')}
+                      </Text>
+                    </View>
                   ) : null}
                 </View>
-                <Text className="mt-1 font-sans text-label text-muted">{en ? unit.blurb.en : unit.blurb.vi}</Text>
+                <Text className="font-sans text-label" style={{ color: '#6B6390', lineHeight: 18 }}>{en ? unit.blurb.en : unit.blurb.vi}</Text>
                 {current.total > 0 ? (
-                  <View className="mt-2 flex-row items-center gap-3">
-                    <View className="flex-1"><ProgressBar value={pct} tone={pct === 100 ? 'success' : 'primary'} /></View>
-                    <Text className="font-strong text-label text-muted">{current.done}/{current.total} {L('phần đã làm', 'steps done')}</Text>
+                  <View className="flex-row items-center" style={{ gap: 10, marginTop: 4 }}>
+                    <View style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: '#EFEAFB', overflow: 'hidden' }}>
+                      <LinearGradient colors={[toneFrom, toneTo]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ width: `${pct}%`, height: '100%' }} />
+                    </View>
+                    <Text className="font-strong text-label" style={{ color: '#6B6390' }}>{current.done}/{current.total} {L('phần đã làm', 'steps done')}</Text>
                   </View>
                 ) : null}
               </View>
-              <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={18} color={color.subtle} />
+              <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={18} color={toneTo} />
             </Pressable>
 
             {expanded ? (
-              <View className="gap-3 px-4 pb-4">
+              <View style={{ gap: 12, paddingHorizontal: 14, paddingBottom: 14 }}>
                 {unit.number === 1 ? <CourseOrientation /> : null}
                 {unit.level && unit.difficulty ? (
                   <>
@@ -337,32 +385,26 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
                         const doneRounds = bank[skill].doneRounds.filter((round) => tierRounds.includes(round)).length;
                         const nextRound = roundForTier(skill, unit.difficulty!, bank[skill].doneRounds);
                         return (
-                          <Card key={skill} padded={false}>
-                            <View className="p-3">
-                              <Text className="font-heavy text-body text-ink">{lesson?.title ?? MATH_SKILL_LABEL[skill]}</Text>
-                              <Text className="mt-0.5 font-sans text-label text-muted">{lesson?.englishName ?? MATH_SKILL_LABEL[skill]}</Text>
-                              {lesson ? <Text className="mt-2 font-sans text-label text-muted" numberOfLines={2}>{lesson.goal}</Text> : null}
-                              <View className="mt-2 flex-row flex-wrap items-center gap-2">
-                                <Badge
-                                  label={`${doneRounds}/${tierRounds.length} ${L('lượt đã nộp', 'rounds submitted')}`}
-                                  tone={doneRounds === tierRounds.length ? 'success' : 'neutral'}
-                                  shape="tag"
-                                />
-                              </View>
-                              <View className="mt-3 flex-row flex-wrap gap-2">
-                                {lesson ? (
-                                  <Button size="sm" variant="outline" label={L('Học bài', 'Learn')} onPress={() => router.push(`/math/learn/${skill}` as never)} />
-                                ) : null}
-                                {nextRound !== null ? (
-                                  <Button
-                                    size="sm"
-                                    label={L('Luyện', 'Practice')}
-                                    onPress={() => router.push(`/math/drill/${skill}?round=${nextRound}` as never)}
-                                  />
-                                ) : null}
+                          <View key={skill} style={{ borderRadius: 18, backgroundColor: '#FAF8FF', borderWidth: 1, borderColor: '#EEE9FF', padding: 14, gap: 6 }}>
+                            <Text className="font-heavy text-body" style={{ color: '#1B1140' }}>{lesson?.title ?? MATH_SKILL_LABEL[skill]}</Text>
+                            <Text className="font-sans text-label" style={{ color: '#7A72A0' }}>{lesson?.englishName ?? MATH_SKILL_LABEL[skill]}</Text>
+                            {lesson ? <Text className="font-sans text-label" style={{ color: '#6B6390', lineHeight: 18 }} numberOfLines={2}>{lesson.goal}</Text> : null}
+                            <View className="flex-row flex-wrap items-center" style={{ gap: 8, marginTop: 4 }}>
+                              <View style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: doneRounds === tierRounds.length ? '#E7F8F0' : '#F1EBFF' }}>
+                                <Text className="font-strong" style={{ fontSize: 12, color: doneRounds === tierRounds.length ? '#23875E' : '#6A4BD9' }}>
+                                  {`${doneRounds}/${tierRounds.length} ${L('lượt đã nộp', 'rounds submitted')}`}
+                                </Text>
                               </View>
                             </View>
-                          </Card>
+                            <View className="flex-row flex-wrap" style={{ gap: 8, marginTop: 6 }}>
+                              {lesson ? (
+                                <PathPill label={L('Học bài', 'Learn')} onPress={() => router.push(`/math/learn/${skill}` as never)} />
+                              ) : null}
+                              {nextRound !== null ? (
+                                <PathPill dark label={L('Luyện', 'Practice')} onPress={() => router.push(`/math/drill/${skill}?round=${nextRound}` as never)} />
+                              ) : null}
+                            </View>
+                          </View>
                         );
                       })}
                     </Grid>
@@ -371,7 +413,7 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
                 ) : null}
               </View>
             ) : null}
-          </Card>
+          </View>
         );
       })}
     </View>
@@ -381,14 +423,14 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
 function CourseOrientation() {
   const { L } = useL();
   return (
-    <View className="rounded-card border border-border bg-canvas p-4">
-      <Text className="font-heavy text-body text-ink">{L('Chuẩn bị trước khi học', 'Before you start')}</Text>
-      <Text className="mt-1 font-sans text-label text-muted">
+    <View style={{ borderRadius: 20, backgroundColor: '#FAF8FF', borderWidth: 1, borderColor: '#EEE9FF', padding: 14, gap: 6 }}>
+      <Text className="font-heavy text-body" style={{ color: '#1B1140' }}>{L('Chuẩn bị trước khi học', 'Before you start')}</Text>
+      <Text className="font-sans text-label" style={{ color: '#6B6390', lineHeight: 19 }}>
         {L('Unit mở đầu không có bài tập chấm điểm. Hãy xem cấu trúc đề, làm chẩn đoán nếu muốn tìm lỗ hổng, hoặc vào thử đề khi đã sẵn sàng.', 'This introductory unit is informational. Review the test format, take the placement check to spot gaps, or start a mock when ready.')}
       </Text>
-      <View className="mt-3 flex-row flex-wrap gap-2">
-        <Button size="sm" variant="outline" label={L('Kiến thức SAT', 'SAT essentials')} onPress={() => router.push('/sat/kien-thuc' as never)} />
-        <Button size="sm" label={L('Chẩn đoán đầu vào', 'Placement check')} onPress={() => router.push('/math/diagnostic' as never)} />
+      <View className="flex-row flex-wrap" style={{ gap: 8, marginTop: 6 }}>
+        <PathPill label={L('Kiến thức SAT', 'SAT essentials')} onPress={() => router.push('/sat/kien-thuc' as never)} />
+        <PathPill dark label={L('Chẩn đoán đầu vào', 'Placement check')} onPress={() => router.push('/math/diagnostic' as never)} />
       </View>
     </View>
   );
@@ -408,8 +450,8 @@ function CourseAssessments({
   if (quizzes.length === 0 || !test) return null;
   const locked = !isStageUnlocked(plan, stageIndexOfSet(test.id));
   return (
-    <View className="rounded-card border border-border bg-canvas p-3">
-      <Text className="font-heavy text-body text-ink">{L('Kiểm tra sau khi luyện', 'Check your learning')}</Text>
+    <View style={{ borderRadius: 20, backgroundColor: '#FAF8FF', borderWidth: 1, borderColor: '#EEE9FF', padding: 14 }}>
+      <Text className="font-heavy text-body" style={{ color: '#1B1140' }}>{L('Kiểm tra sau khi luyện', 'Check your learning')}</Text>
       <Text className="mt-1 font-sans text-label text-muted">
         {L('Các quiz 4 câu theo từng cụm kỹ năng; bài cuối unit rải đều câu hỏi qua những kỹ năng Band 9 đang có trong mảng này. Cần đúng ít nhất 3/4 (75%) để tính là qua unit; đây không phải nhãn mastery.', 'Take the four-question checkpoint quizzes by skill group. The unit test balances questions across the current Band 9 skills in this domain. Score at least 3/4 (75%) to pass the unit; this is not a mastery label.')}
       </Text>
@@ -426,10 +468,9 @@ function CourseAssessments({
           const attempted = (progressBySet[assessment.id]?.rounds ?? 0) > 0;
           const score = progressBySet[assessment.id]?.lastRatio;
           return (
-            <Button
+            <PathPill
               key={assessment.id}
-              size="sm"
-              variant={assessment.assessment === 'quiz' ? 'outline' : 'secondary'}
+              dark={assessment.assessment !== 'quiz'}
               label={L(
                 `${assessment.assessment === 'quiz' ? `Quiz ${assessment.quizNumber}` : 'Bài kiểm tra'} · ${assessment.count} câu${attempted && score !== undefined ? ` · ${Math.round(score * 100)}%` : ''}`,
                 `${assessment.assessment === 'quiz' ? `Quiz ${assessment.quizNumber}` : 'Unit test'} · ${assessment.count} questions${attempted && score !== undefined ? ` · ${Math.round(score * 100)}%` : ''}`,

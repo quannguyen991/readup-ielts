@@ -3,6 +3,8 @@ import { test } from 'node:test';
 
 import {
   directionFor,
+  optionOf,
+  promptOf,
   filterWords,
   clozeOf,
   isTypedCorrect,
@@ -92,6 +94,19 @@ test('điền từ không hỏi theo chiều thấy từ tiếng Anh', () => {
   }
   const seen = new Set(Array.from({ length: 6 }, (_, s) => directionFor('habitat', s, ['enToVi', 'viToEn', 'listen'], 'mcq')));
   assert.equal(seen.size, 3, 'Trắc nghiệm phải xoay đủ các chiều đang bật.');
+});
+
+test('chiều Anh → Anh: đề là từ tiếng Anh, phương án là định nghĩa tiếng Anh', () => {
+  const w = { word: 'habitat', meaningVi: 'môi trường sống', definitionEn: 'the natural home of an animal or plant' };
+  assert.equal(promptOf(w, 'enToEn'), 'habitat');
+  assert.equal(optionOf(w, 'enToEn'), 'the natural home of an animal or plant');
+  assert.equal(optionOf(w, 'enToVi'), 'môi trường sống');
+  assert.equal(optionOf(w, 'viToEn'), 'habitat');
+  assert.equal(promptOf(w, 'viToEn'), 'môi trường sống');
+  const seen = new Set(Array.from({ length: 6 }, (_, s) => directionFor('habitat', s, ['enToEn', 'viToEn'], 'mcq')));
+  assert.deepEqual([...seen].sort(), ['enToEn', 'viToEn']);
+  // Gõ từ không hỏi chiều thấy từ tiếng Anh, kể cả Anh → Anh.
+  assert.equal(directionFor('habitat', 0, ['enToEn'], 'type'), 'viToEn');
 });
 
 test('điền chỗ trống kiểu THPT: bốn từ khác nhau, ưu tiên cùng từ loại', () => {

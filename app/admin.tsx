@@ -1136,6 +1136,7 @@ function StatsPanel({ token }: { token: string | null }) {
   const { L, locale } = useL();
   const [stats, setStats] = useState<Stats | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [csvError, setCsvError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!token) return;
@@ -1154,6 +1155,23 @@ function StatsPanel({ token }: { token: string | null }) {
       cancelled = true;
     };
   }, [token]);
+
+  const downloadCsv = async () => {
+    if (!token || typeof document === 'undefined') return;
+    setCsvError(null);
+    try {
+      const res = await fetch('/api/admin/events?days=7&format=csv', { headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error(`${tr('Lỗi', 'Error')} ${res.status}`);
+      const href = URL.createObjectURL(await res.blob());
+      const a = document.createElement('a');
+      a.href = href;
+      a.download = 'readup-events-7d.csv';
+      a.click();
+      URL.revokeObjectURL(href);
+    } catch (err) {
+      setCsvError(err instanceof Error ? err.message : tr('Không tải được CSV.', 'Could not download CSV.'));
+    }
+  };
 
   if (error) {
     return (
@@ -1205,6 +1223,14 @@ function StatsPanel({ token }: { token: string | null }) {
           "Guest-mode users don't sign in, so they aren't in these numbers — see their visits in Vercel → Analytics.",
         )}
       </Text>
+      <View className="mt-3 flex-row flex-wrap items-center gap-3">
+        <Button label={L('Tải CSV sự kiện 7 ngày', '7-day events CSV')} variant="outline" size="sm" iconLeft="refresh" onPress={() => void downloadCsv()} />
+        {csvError ? (
+          <Text className="font-sans text-label" style={{ color: color.danger }}>
+            {csvError}
+          </Text>
+        ) : null}
+      </View>
     </Card>
   );
 }

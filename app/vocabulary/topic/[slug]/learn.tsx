@@ -43,6 +43,8 @@ import {
   activeKinds,
   clozeOf,
   directionFor,
+  optionOf,
+  promptOf,
   filterWords,
   isTypedCorrect,
   makeChoices,
@@ -126,6 +128,17 @@ export default function LearnScreen() {
   const resetTopic = useTopicStudyStore((s) => s.resetTopic);
   const addLapse = useTopicStudyStore((s) => s.addLapse);
   const logQuestions = useStudyStore((s) => s.logQuestions);
+  const logStudyTime = useStudyStore((s) => s.logStudyTime);
+  // Phút học của lượt: tính từ lúc vào màn tới lúc rời đi; chỉ ghi khi có ít nhất một câu đã chấm.
+  const enteredAt = useRef(Date.now());
+  const answered = useRef(0);
+  useEffect(() => {
+    return () => {
+      if (answered.current > 0) logStudyTime("review", Math.max(1, Math.round((Date.now() - enteredAt.current) / 60000)));
+    };
+    // Chỉ ghi khi rời màn; hàm ghi của store không đổi.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Chốt từ của vòng một lần lúc mở màn — chấm xong câu nào cũng không được
   // làm danh sách vòng nhảy lại.
@@ -206,15 +219,17 @@ export default function LearnScreen() {
 
   // Chiều hỏi tính theo `step` (chỉ tăng khi sang câu mới), KHÔNG theo `asked`:
   // `asked` tăng ngay lúc chấm, làm câu hỏi đổi chiều ngay dưới tay người học.
+  // Từ chưa có định nghĩa tiếng Anh thì bỏ chiều Anh → Anh, không hỏi một câu trống.
+  const dirs = word?.definitionEn ? settings.directions : settings.directions.filter((d) => d !== "enToEn");
   const dir = head
-    ? directionFor(head.word, step, settings.directions, head.kind)
+    ? directionFor(head.word, step, dirs, head.kind)
     : "enToVi";
   const mcq = useMemo(() => {
     if (!word || head?.kind !== "mcq") return null;
     return makeChoices(
       word,
       pool,
-      (w) => (dir === "viToEn" ? w.word : w.meaningVi),
+      (w) => optionOf(w, dir),
       seededRng(seed + step),
     );
   }, [word, head?.kind, pool, dir, seed, step]);
@@ -345,6 +360,7 @@ export default function LearnScreen() {
     setFlipped(false);
     setStep((n) => n + 1);
     logQuestions(1);
+    answered.current += 1;
   };
 
   const next = () => {
@@ -655,9 +671,9 @@ export default function LearnScreen() {
               <FlipCard
                 flipped={flipped}
                 onFlip={() => setFlipped((f) => !f)}
-                height={detailHeight(w, dir !== "enToVi")}
+                height={detailHeight(w, dir !== "enToVi", dir === "enToEn")}
                 front={
-                  dir === "enToVi" ? (
+                  dir === "enToVi" || dir === "enToEn" ? (
                     <WordFace word={w} hint={L("Bấm thẻ hoặc Space để lật", "Tap the card or press Space to flip")} />
                   ) : dir === "viToEn" ? (
                     <MeaningFace
@@ -671,7 +687,7 @@ export default function LearnScreen() {
                     />
                   )
                 }
-                back={<DetailFace word={w} showWord={dir !== "enToVi"} />}
+                back={<DetailFace word={w} showWord={dir !== "enToVi"} english={dir === "enToEn"} />}
               />
               <View
                 style={{ position: "absolute", top: 14, right: 14, zIndex: 2 }}
@@ -745,7 +761,9 @@ export default function LearnScreen() {
                   <Text className="font-semi text-label text-muted">
                     {dir === "viToEn"
                       ? L("Chọn từ tiếng Anh đúng", "Choose the right English word")
-                      : L("Chọn nghĩa đúng", "Choose the right meaning")}
+                      : dir === "enToEn"
+                        ? L("Chọn định nghĩa tiếng Anh đúng", "Choose the right English definition")
+                        : L("Chọn nghĩa đúng", "Choose the right meaning")}
                   </Text>
                   {star}
                 </View>
@@ -757,7 +775,7 @@ export default function LearnScreen() {
                       </Text>
                     ) : (
                       <Text className="font-heavy text-stat text-ink">
-                        {dir === "enToVi" ? w.word : w.meaningVi}
+                        {promptOf(w, dir)}
                       </Text>
                     )}
                     {dir !== "viToEn" ? (
@@ -884,6 +902,7 @@ export default function LearnScreen() {
                 // Chỉ in lại đáp án khi chưa tô sẵn ở chỗ khác (câu gõ, câu nghe); chỉ hiện nghĩa khi đề + phương án chưa có nghĩa.
                 answer={head!.kind === "type" || dir === "listen" ? w.word : undefined}
                 showMeaning={head!.kind !== "mcq" && !(head!.kind === "type" && dir === "viToEn")}
+                english={dir === "enToEn"}
                 pron={!(head!.kind === "mcq" && dir === "enToVi")}
               />
             ) : null}

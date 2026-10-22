@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 
 /**
@@ -174,8 +175,9 @@ async function fetchBase(
     // Rơi xuống đường gọi trực tiếp bên dưới.
   }
 
+  // Trên web, trình duyệt không gọi được dictionaryapi.dev (bị chặn CORS): bỏ qua đường đó để khỏi lỗi và tốn yêu cầu.
   const [english, vietnamese] = await Promise.all([
-    isPhrase
+    isPhrase || Platform.OS === 'web'
       ? Promise.resolve({} as Partial<WordLookup>)
       : fetchEnglish(lemma).catch(() => ({}) as Partial<WordLookup>),
     fetchVietnamese(word),

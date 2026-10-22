@@ -154,9 +154,11 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
  * Chiều cao thẻ đủ chứa mặt sau — mặt thẻ đặt tuyệt đối nên thẻ không tự co giãn
  * theo nội dung; tính từ những mục thật sự có.
  */
-export function detailHeight(word: StudyWord, showWord = false): number {
+export function detailHeight(word: StudyWord, showWord = false, english = false): number {
   let h = 170;
   if (showWord) h += 36;
+  // Định nghĩa tiếng Anh dài hơn nghĩa tiếng Việt, thường chiếm thêm hai đến ba dòng.
+  if (english) h += word.definitionEn.length > 60 ? 80 : 50;
   if (word.example) h += word.example.length > 80 ? 82 : 62;
   if (word.synonyms?.length) h += 40;
   if (word.antonyms?.length) h += 40;
@@ -188,7 +190,7 @@ function Chips({ words }: { words: string[] }) {
  * nghĩa, Trái nghĩa, Hay đi cùng — mục nào không có dữ liệu thì không hiện.
  * (Bản trước để câu ví dụ và cụm từ trôi không nhãn, người học không biết đó là gì.)
  */
-export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boolean }) {
+export function DetailFace({ word, showWord, english = false }: { word: StudyWord; showWord?: boolean; english?: boolean }) {
   const { L } = useL();
   return (
     <View>
@@ -200,7 +202,14 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
           <SpeakButton text={word.word} rate={0.85} size={16} />
         </View>
       ) : null}
-      <Text className="mt-1 text-center font-strong text-sectionTitle text-ink">{word.meaningVi}</Text>
+      {english ? (
+        <>
+          <Text className="mt-1 text-center font-strong text-sectionTitle text-ink">{word.definitionEn}</Text>
+          <Text className="mt-1 text-center font-sans text-body text-muted">{word.meaningVi}</Text>
+        </>
+      ) : (
+        <Text className="mt-1 text-center font-strong text-sectionTitle text-ink">{word.meaningVi}</Text>
+      )}
 
       <View className="mt-3 gap-2.5">
         {word.example ? (

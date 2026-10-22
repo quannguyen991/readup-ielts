@@ -1,6 +1,7 @@
 import { themedHex } from '@/theme/palette-state';
 import React, { useState } from 'react';
-import { Pressable, Text, View, type LayoutChangeEvent } from 'react-native';
+import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Path } from 'react-native-svg';
 
 import { SealIcon } from '@/components/illust/HeroArt';
@@ -447,9 +448,11 @@ function NodeCard({
   const started = status?.state === 'started';
   const dark = isNext;
 
-  const seal = done ? '#FFFFFF' : dark ? P.navy : started ? P.goldDeep : P.navySoft;
-  const badge = done ? '#21A56A' : dark ? P.goldLight : started ? P.goldWash : '#FFFFFF';
-  const border = done ? '#16814E' : dark ? P.gold : selected ? P.goldMid : P.line;
+  const seal = done || dark ? '#FFFFFF' : started ? P.goldDeep : P.navySoft;
+  const badge = started ? P.goldWash : '#FFFFFF';
+  const border = done ? '#16814E' : dark ? '#5B3AD6' : selected ? P.goldMid : P.line;
+  // Xong thì xanh lá, bài học tiếp thì tím đậm: cùng bảng màu với thẻ đơn vị ở trang SAT Math.
+  const fill: [string, string] = done ? ['#4FC3A1', '#1E9E74'] : ['#8B6CF0', '#5B3AD6'];
   const kicker = `${String(index).padStart(2, '0')} · ${node.minutes}'`;
 
   return (
@@ -462,7 +465,8 @@ function NodeCard({
         onPress={onPress}
         style={{ width: '100%', alignItems: 'center', paddingHorizontal: 8, paddingVertical: 4 }}
       >
-        <View style={{ width: narrow ? 58 : 66, height: narrow ? 58 : 66, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: badge, borderWidth: dark ? 3 : 2, borderColor: border, boxShadow: dark ? '0 5px 14px rgba(106, 75, 217,0.22)' : '0 2px 8px rgba(15,29,51,0.09)' } as object}>
+        <View style={{ width: narrow ? 58 : 66, height: narrow ? 58 : 66, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: badge, borderWidth: dark ? 3 : 2, borderColor: border, boxShadow: dark ? '0 6px 16px rgba(91,58,214,0.3)' : '0 2px 8px rgba(106,75,217,0.12)' } as object}>
+          {done || dark ? <LinearGradient colors={fill} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[StyleSheet.absoluteFill, { borderRadius: 40 }]} /> : null}
           <SealIcon name={done ? 'check' : KIND_ICON[node.target.kind]} color={seal} size={32} />
           {dark ? (
             <View style={{ position: 'absolute', right: -5, bottom: -3, width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: P.navy, borderWidth: 2, borderColor: '#FFFFFF' }}>

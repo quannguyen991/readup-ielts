@@ -367,7 +367,7 @@ function DayRow({ day, today, label, t }: { day: ScheduleDay; today: boolean; la
 }
 
 function Paper({ children }: { children: React.ReactNode }) {
-  return <View style={{ borderRadius: 22, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, padding: 20 }}>{children}</View>;
+  return <View style={{ borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', padding: 20, boxShadow: '0 10px 28px rgba(106,75,217,0.08)' } as object}>{children}</View>;
 }
 
 function Head({ n, title, compact }: { n: string; title: string; compact: boolean }) {

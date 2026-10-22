@@ -23,6 +23,7 @@ import { color } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
 import { useL } from '@/i18n/useL';
 import { currentUserAgent, isInstagramBrowser } from '@/lib/inapp-browser';
+import { trackAppEvent } from '@/services/analytics/app-events';
 
 /** Bản tiếng Anh của `PHONE_ERROR_LABEL` (dữ liệu gốc giữ tiếng Việt). */
 const PHONE_ERROR_LABEL_EN: Record<PhoneError, string> = {
@@ -141,6 +142,7 @@ export default function SignInScreen() {
         if (result.taken) setEmailMode('signin');
         return;
       }
+      trackAppEvent('sign_up', true);
       router.replace(next as never);
       return;
     }

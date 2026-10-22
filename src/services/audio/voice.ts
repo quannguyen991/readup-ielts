@@ -13,6 +13,7 @@ import * as Speech from 'expo-speech';
  *   - Anh–Mỹ +2, Anh–Anh +1.
  * Máy không có giọng nữ nào thì dùng giọng tiếng Anh tốt nhất còn lại (không nam).
  */
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { bestVoiceFor, type Gender, type VoiceInfo } from './voice-pick';
 
 let all: VoiceInfo[] = [];
@@ -21,8 +22,8 @@ let loading = false;
 
 /** Giới đang chọn ("Nữ / Nam" trong Cài đặt học từ), mặc định nữ. */
 export function voiceGender(): Gender {
-  // Device TTS is only a temporary fallback for the configured female clip voice.
-  return 'f';
+  // Giọng máy chỉ là phương án dự phòng; giọng clip chính vẫn là một giọng nữ cố định.
+  return useTopicStudyStore.getState().learnSettings.voiceGender;
 }
 
 /** Nạp danh sách giọng (trên web danh sách tới trễ nên hỏi lại vài lần). */

@@ -9,6 +9,8 @@ const w = (kind: StageKind, dir: QuestionDirection, flipped = false, revealed = 
 test('thẻ Anh → Việt và trắc nghiệm Anh → Việt: đọc ngay khi từ hiện ra, không đọc lại khi chấm', () => {
   assert.equal(w('flash', 'enToVi'), 'show');
   assert.equal(w('mcq', 'enToVi'), 'show');
+  assert.equal(w('flash', 'enToEn'), 'show');
+  assert.equal(w('mcq', 'enToEn'), 'show');
   assert.equal(w('mcq', 'enToVi', false, true), 'show');
 });
 

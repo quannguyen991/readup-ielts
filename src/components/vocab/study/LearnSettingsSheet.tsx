@@ -66,6 +66,7 @@ export function LearnSettingsSheet({
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
     { key: 'enToVi', label: en ? <>See the <B>English word</B>, pick the Vietnamese meaning</> : <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
+    { key: 'enToEn', label: en ? <>See the <B>English word</B>, pick its <B>English definition</B></> : <>Thấy <B>từ tiếng Anh</B>, chọn <B>định nghĩa tiếng Anh</B></> },
     { key: 'viToEn', label: en ? <>See the <B>Vietnamese meaning</B>, find the English word</> : <>Thấy <B>nghĩa tiếng Việt</B>, tìm từ tiếng Anh</> },
     { key: 'listen', label: en ? <>Just <B>listen to the audio</B>, recognise the word</> : <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
   ];
@@ -144,6 +145,18 @@ export function LearnSettingsSheet({
               <Row on={draft.autoPronounce} onPress={() => flip('autoPronounce')}>
                 <Icon name="volume" size={18} color={draft.autoPronounce ? color.primary : '#64748B'} />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự phát âm', 'Auto-pronounce')}</Text>
+              </Row>
+              <Row on={draft.accent === 'us'} onPress={() => setDraft({ ...draft, accent: 'us' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Mỹ', 'American English')}</Text>
+              </Row>
+              <Row on={draft.accent === 'uk'} onPress={() => setDraft({ ...draft, accent: 'uk' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Anh', 'British English')}</Text>
+              </Row>
+              <Row on={draft.voiceGender === 'f'} onPress={() => setDraft({ ...draft, voiceGender: 'f' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nữ', 'Female voice')}</Text>
+              </Row>
+              <Row on={draft.voiceGender === 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'm' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nam (khi thiếu bản ghi)', 'Male voice (when no recording)')}</Text>
               </Row>
             </Section>
 

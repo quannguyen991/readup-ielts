@@ -11,6 +11,7 @@ import { analyseDraft } from '@/services/writing/analyzer';
 import { useWritingStore } from '@/store/useWritingStore';
 import { color, paper } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { track } from '@/services/analytics/track';
 
 /**
  * Phòng viết, bố cục ba cột theo tham chiếu Youpass:
@@ -72,6 +73,12 @@ export default function WritingRoomScreen() {
 
   // Đồng hồ chỉ chạy khi người học bấm bắt đầu: mở trang ra để đọc đề mà đã bị
   // tính giờ thì lần luyện nào cũng bị hụt mất một hai phút.
+  useEffect(() => {
+    if (prompt?.id) {
+      track({ name: 'start_lesson', lessonId: `writing_${prompt.id}`, type: prompt.task });
+    }
+  }, [prompt?.id, prompt?.task]);
+
   useEffect(() => {
     if (!running) return;
     const id = setInterval(() => setSecondsLeft((s) => Math.max(0, s - 1)), 1000);

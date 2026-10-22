@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Circle, Path } from 'react-native-svg';
 
@@ -19,6 +19,9 @@ type Props = {
 };
 
 export function LevelHeader({ eyebrow, title, subtitle, children }: Props) {
+  // Điện thoại: hình mặt trời nhỏ ở góc, không đè lên chữ.
+  const { width } = useWindowDimensions();
+  const narrow = width < 600;
   return (
     <View
       style={{
@@ -32,8 +35,15 @@ export function LevelHeader({ eyebrow, title, subtitle, children }: Props) {
       } as object}
     >
       <LinearGradient colors={['#1B1640', '#3A2590', '#7B5CFF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }} />
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}>
-        <Svg width="100%" height="100%" viewBox="0 0 800 300" preserveAspectRatio="xMaxYMid slice">
+      <View
+        pointerEvents="none"
+        style={
+          narrow
+            ? { position: 'absolute', top: -44, right: -44, width: 190, height: 190, opacity: 0.7 }
+            : { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }
+        }
+      >
+        <Svg width="100%" height="100%" viewBox={narrow ? '560 40 240 220' : '0 0 800 300'} preserveAspectRatio="xMidYMid slice">
           {Array.from({ length: 14 }, (_, c) =>
             Array.from({ length: 6 }, (_, r) => (
               <Circle key={`h-${c}-${r}`} cx={520 + c * 22} cy={28 + r * 22} r={1.3} fill="#FFFFFF" opacity={0.18} />

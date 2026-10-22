@@ -27,6 +27,7 @@ import { Icon } from '@/components/ui/Icon';
 import { SECTION_MINUTES, type ExamPart, type SourcePage, type TestSection } from '@/services/ielts/source-catalog';
 
 import type { Grade } from './ComputerDeliveredExamRoom';
+import { trackAppEvent } from '@/services/analytics/app-events';
 
 function Text(props: TextProps) {
 
@@ -723,6 +724,14 @@ export function SourceExamRoom({
   loading?: boolean;
 
 }) {
+
+  useEffect(() => {
+    trackAppEvent('start_lesson');
+  }, []);
+
+  useEffect(() => {
+    if (submitted) trackAppEvent('complete_lesson');
+  }, [submitted]);
 
   const { width: winW } = useWindowDimensions();
 

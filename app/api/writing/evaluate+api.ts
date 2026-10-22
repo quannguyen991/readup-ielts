@@ -1,3 +1,6 @@
+// Bộ nhớ tạm lưu các lượt dùng thử chấm bài dành cho khách (1 lần / khách)
+const guestWritingTrials = new Map<string, number>();
+
 import { getWritingPromptById } from '@/data/writing-repository';
 import { countWords } from '@/lib/writing/word-count';
 import { AiError } from '@/services/ai/errors';
@@ -32,25 +35,35 @@ export async function POST(request: Request): Promise<Response> {
   let userId = '';
 
   try {
+    let isGuestTrial = false;
+    let guestKey = '';
     const header = request.headers.get('authorization') ?? '';
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
     if (!token) {
-      return Response.json(
-        {
-          error: msg(
-            request,
-            'Đăng nhập để chấm bài bằng AI. Nhận xét offline vẫn dùng được khi chưa đăng nhập.',
-            'Sign in to get AI grading. Offline feedback still works without signing in.',
-          ),
-        },
-        { status: 401 },
-      );
+      const guestTrialId = (request.headers.get('x-guest-trial-id') ?? '').trim();
+      const clientIp = request.headers.get('x-real-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? '';
+      guestKey = guestTrialId || clientIp || 'guest_device';
+      if (guestWritingTrials.has(guestKey)) {
+        return Response.json(
+          {
+            error: msg(
+              request,
+              'Bạn đã dùng hết 1 lượt chấm thử Writing AI miễn phí. Hãy đăng ký tài khoản (tặng 7 ngày Plus) để tiếp tục chấm bài và lưu tiến độ!',
+              'You have used your 1 free AI writing evaluation trial. Please sign in or create an account to continue.',
+            ),
+            code: 'guest_trial_used',
+          },
+          { status: 401 },
+        );
+      }
+      isGuestTrial = true;
+    } else {
+      const { data: auth, error: authError } = await admin.auth.getUser(token);
+      if (authError || !auth.user) {
+        return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
+      }
+      userId = auth.user.id;
     }
-    const { data: auth, error: authError } = await admin.auth.getUser(token);
-    if (authError || !auth.user) {
-      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
-    }
-    userId = auth.user.id;
 
     const body = (await request.json()) as { promptId?: string; bodyText?: string };
 
@@ -89,31 +102,38 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    // Trừ hạn mức TRƯỚC khi gọi AI. Trừ sau thì bấm rồi huỷ liên tục là cách
-    // khai thác đơn giản nhất; hỏng thật thì hoàn lại ngay bên dưới.
-    const verdict = await consumeAiCall(admin, userId, request);
-    if (!verdict.allowed) {
-      return Response.json(
-        {
-          error: verdict.message,
-          code: 'quota_exceeded',
-          used: verdict.used,
-          limit: verdict.limit,
-          plan: verdict.plan,
-        },
-        { status: 429 },
-      );
+    let verdict: { used: number; limit: number | null; plan: string } = { used: 0, limit: 1, plan: 'guest' };
+    if (!isGuestTrial) {
+      const v = await consumeAiCall(admin, userId, request);
+      if (!v.allowed) {
+        return Response.json(
+          {
+            error: v.message,
+            code: 'quota_exceeded',
+            used: v.used,
+            limit: v.limit,
+            plan: v.plan,
+          },
+          { status: 429 },
+        );
+      }
+      verdict = v;
     }
 
     try {
       const result = await evaluateWriting({ prompt, bodyText: text });
+      if (isGuestTrial && guestKey) {
+        guestWritingTrials.set(guestKey, Date.now());
+      }
       return Response.json({
         ...result,
+        isGuestTrial,
         usage: { used: verdict.used, limit: verdict.limit, plan: verdict.plan },
       });
     } catch (aiError) {
-      // Cả hai proxy hỏng là lỗi của ta, không phải của người dùng.
-      await refundAiCall(admin, userId);
+      if (!isGuestTrial) {
+        await refundAiCall(admin, userId);
+      }
       throw aiError;
     }
   } catch (err) {

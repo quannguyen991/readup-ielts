@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { router } from 'expo-router';
+import { track } from '@/services/analytics/track';
 
-/**
- * Không còn gói trả phí: app cộng đồng mở toàn bộ tính năng cho mọi người.
- * Đường dẫn cũ /upgrade chuyển về trang chủ, để liên kết còn sót không dẫn tới trang lỗi.
- */
 export default function UpgradeRedirect() {
   useEffect(() => {
+    track({ name: 'upgrade', plan: 'plus' });
     router.replace('/intro' as never);
   }, []);
   return null;

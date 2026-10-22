@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
+import { usePathname } from 'expo-router';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withSequence, withTiming } from 'react-native-reanimated';
 
 import { Appear } from '@/components/motion/Motion';
@@ -11,6 +12,9 @@ import { useL } from '@/i18n/useL';
  * Hướng dẫn lần đầu: phủ lên màn hình, vài bước ngắn, có Bỏ qua. Chỉ hiện một lần
  * trên máy này — cờ lưu localStorage, đọc/ghi bọc try/catch. Nếu trình duyệt chặn
  * storage thì coi như đã xem, để không hiện lại mỗi lần mở trang.
+ *
+ * Chỉ hiện khi người học vào trang chủ ('/'). Vào bằng link sâu (như /write,
+ * /ielts/skills/..., /ig) thì bỏ qua hoàn toàn, không ngắt quãng trải nghiệm.
  */
 
 const TOUR_KEY = 'readup:tour-seen-v1';
@@ -35,15 +39,22 @@ type TourStep = { icon: IconName; title: string; line: string };
 
 export function FirstRunTour() {
   const { L } = useL();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [at, setAt] = useState(0);
 
-  // Đọc cờ sau khi mount để bản render phía máy chủ không lệch với trình duyệt.
-  useEffect(() => {
-    if (!hasSeenTour()) setOpen(true);
-  }, []);
+  // Link sâu: bất kỳ đường dẫn nào khác '/' hoặc '/index' đều bỏ qua màn chào.
+  const isDeepLink = Boolean(pathname && pathname !== '/' && pathname !== '/index');
 
-  if (!open) return null;
+  useEffect(() => {
+    if (isDeepLink) {
+      markTourSeen();
+      return;
+    }
+    if (!hasSeenTour()) setOpen(true);
+  }, [isDeepLink]);
+
+  if (isDeepLink || !open) return null;
 
   const steps: TourStep[] = [
     { icon: 'sparkle', title: L('Chào mừng đến Band 9', 'Welcome to Band 9'), line: L('Luyện IELTS, SAT và từ vựng ở một nơi.', 'IELTS, SAT and vocabulary in one place.') },
@@ -68,7 +79,7 @@ export function FirstRunTour() {
       accessibilityLabel={L('Hướng dẫn sử dụng', 'How to use the app')}
       style={
         {
-          position: 'absolute',
+          position: Platform.OS === 'web' ? ('fixed' as never) : 'absolute',
           top: 0,
           left: 0,
           right: 0,
@@ -77,7 +88,9 @@ export function FirstRunTour() {
           backgroundColor: 'rgba(15,29,51,0.72)',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: 20,
+          padding: 16,
+          boxSizing: 'border-box',
+          overflow: 'hidden',
         } as object
       }
     >
@@ -85,14 +98,19 @@ export function FirstRunTour() {
         style={
           {
             width: '100%',
-            maxWidth: 440,
+            maxWidth: 400,
             backgroundColor: '#F3F0FB',
-            borderRadius: 26,
+            borderRadius: 24,
             borderWidth: 2,
             borderColor: '#2B2350',
-            padding: 26,
+            padding: 20,
             gap: 16,
-            boxShadow: '0 8px 0 #B94A70',
+            boxSizing: 'border-box',
+            shadowColor: '#B94A70',
+            shadowOffset: { width: 0, height: 6 },
+            shadowOpacity: 1,
+            shadowRadius: 0,
+            elevation: 4,
           } as object
         }
       >

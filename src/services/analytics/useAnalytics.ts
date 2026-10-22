@@ -62,18 +62,18 @@ export function useAnalyticsBootstrap(pathname: string): void {
   }, [enabled, consent]);
 
   useEffect(() => {
-    if (!enabled || consent !== 'granted') return;
+    if (!enabled || consent === 'denied') return;
     track({ name: 'page_view', path: pathname, url: `${window.location.origin}${pathname}` });
   }, [enabled, consent, pathname]);
 
   useEffect(() => {
-    if (!enabled || consent !== 'granted' || !userId || !createdAt) return;
+    if (!enabled || consent === 'denied' || !userId || !createdAt) return;
     if (Date.now() - Date.parse(createdAt) > SIGNUP_WINDOW_MS) return;
     trackOnce(`signup:${userId}`, { name: 'sign_up' });
   }, [enabled, consent, userId, createdAt]);
 
   useEffect(() => {
-    if (!enabled || consent !== 'granted' || !userId) return;
+    if (!enabled || consent === 'denied' || !userId) return;
     const token = useAuthStore.getState().session?.access_token;
     if (!token) return;
 

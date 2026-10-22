@@ -3,6 +3,7 @@ import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { B9 } from '@/components/practice/SkillBank';
+import { HeroShell } from '@/components/layout/HeroShell';
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
 import type { HubLink } from '@/navigation/sat-hub';
@@ -56,22 +57,23 @@ export function MoreLink({ link }: { link: HubLink }) {
 }
 
 /** Tiêu đề trang: dòng nhỏ chữ vàng giãn rộng, tên trang xanh đêm, một câu phụ. */
+/** Đầu trang SAT: cùng khuôn hero với trang chủ (viền gradient, hoạ tiết pastel, chữ mực tối). */
 export function HubTitle({ eyebrow, title, line }: { eyebrow: string; title: string; line?: string }) {
   const { width } = useWindowDimensions();
   return (
-    <View>
-      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2.4, color: B9.goldDeep }}>
+    <HeroShell radius={26} style={{ padding: width >= 900 ? 26 : 20 }}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2.2, color: 'rgba(27,17,64,0.75)' }}>
         {eyebrow}
       </Text>
-      <Text className="font-heavy" style={{ marginTop: 2, fontSize: width >= 900 ? 34 : 26, lineHeight: width >= 900 ? 40 : 32, color: B9.navy }}>
+      <Text className="font-heavy" style={{ marginTop: 4, fontSize: width >= 900 ? 34 : 26, lineHeight: width >= 900 ? 40 : 32, color: '#1B1140' }}>
         {title}
       </Text>
       {line ? (
-        <Text className="font-sans" style={{ marginTop: 4, fontSize: 15, lineHeight: 22, color: B9.muted }}>
+        <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: 'rgba(27,17,64,0.85)' }}>
           {line}
         </Text>
       ) : null}
-    </View>
+    </HeroShell>
   );
 }
 

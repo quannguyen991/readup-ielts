@@ -140,8 +140,11 @@ export function clozeOf(example: string, word: string): { before: string; answer
 export type StageKind = 'flash' | 'mcq' | 'fill' | 'type';
 export const STAGE_ORDER: readonly StageKind[] = ['flash', 'mcq', 'fill', 'type'];
 
-/** Hỏi theo chiều nào: thấy từ chọn nghĩa, thấy nghĩa ra từ, hay chỉ NGHE giọng đọc. */
-export type Direction = 'enToVi' | 'viToEn' | 'listen';
+/**
+ * Hỏi theo chiều nào: thấy từ tiếng Anh chọn nghĩa tiếng Việt (enToVi), thấy từ tiếng Anh
+ * chọn định nghĩa tiếng Anh (enToEn), thấy nghĩa tiếng Việt ra từ (viToEn), hay chỉ NGHE giọng đọc.
+ */
+export type Direction = 'enToVi' | 'enToEn' | 'viToEn' | 'listen';
 
 export type LearnSettings = {
   directions: Direction[];
@@ -226,9 +229,21 @@ export function pickRound<W extends StudyWord>(
  * không dùng cho phần này; chỉ bật mỗi chiều đó thì điền từ hỏi bằng nghĩa.
  */
 export function directionFor(word: string, step: number, dirs: readonly Direction[], kind: StageKind): Direction {
-  const allowed = kind === 'type' ? dirs.filter((d) => d !== 'enToVi') : [...dirs];
+  const allowed = kind === 'type' ? dirs.filter((d) => d !== 'enToVi' && d !== 'enToEn') : [...dirs];
   const list: Direction[] = allowed.length > 0 ? allowed : kind === 'type' ? ['viToEn'] : ['enToVi'];
   return list[(word.length + step) % list.length]!;
+}
+
+/** Chữ hiện ở ĐỀ theo chiều: nghĩa tiếng Việt khi hỏi Việt → Anh, còn lại là từ tiếng Anh. */
+export function promptOf(w: Pick<StudyWord, 'word' | 'meaningVi'>, dir: Direction): string {
+  return dir === 'viToEn' ? w.meaningVi : w.word;
+}
+
+/** Chữ của PHƯƠNG ÁN theo chiều: từ tiếng Anh, định nghĩa tiếng Anh, hoặc nghĩa tiếng Việt. */
+export function optionOf(w: Pick<StudyWord, 'word' | 'meaningVi' | 'definitionEn'>, dir: Direction): string {
+  if (dir === 'viToEn') return w.word;
+  if (dir === 'enToEn') return w.definitionEn;
+  return w.meaningVi;
 }
 
 /**

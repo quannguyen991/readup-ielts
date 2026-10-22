@@ -456,6 +456,7 @@ export function FeedbackPanel({
   answer,
   showMeaning = true,
   pron = true,
+  english = false,
 }: {
   ok: boolean;
   word: StudyWord;
@@ -470,6 +471,8 @@ export function FeedbackPanel({
   showMeaning?: boolean;
   /** Hiện loại từ + phiên âm + nút nghe ở dòng kết quả. */
   pron?: boolean;
+  /** Chiều Anh → Anh: hiện định nghĩa tiếng Anh của từ. */
+  english?: boolean;
 }) {
   const { L } = useL();
   const t = useStudyTheme();
@@ -510,6 +513,11 @@ export function FeedbackPanel({
             ) : null}
           </View>
 
+          {english && word.definitionEn ? (
+            <FbRow label={L("Định nghĩa", "Definition")}>
+              <Text className="font-sans text-body text-ink">{word.definitionEn}</Text>
+            </FbRow>
+          ) : null}
           {showMeaning ? (
             <FbRow label={L("Nghĩa", "Meaning")}>
               <Text className="font-sans text-body text-ink">{word.meaningVi}</Text>

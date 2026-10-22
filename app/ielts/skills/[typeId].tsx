@@ -7,6 +7,8 @@ import { Icon } from '@/components/ui';
 import { IELTS_DRILL_QUESTIONS, type DrillQuestion } from '@/data/ielts-drill-bank';
 import { IELTS_QUESTION_TYPES, type IeltsQuestionTypeMeta } from '@/data/ielts-question-types';
 import { useL } from '@/i18n/useL';
+import { track } from '@/services/analytics/track';
+import { useEffect } from 'react';
 
 export default function IeltsSkillTypeScreen() {
   const { typeId = '' } = useLocalSearchParams<{ typeId: string }>();
@@ -25,6 +27,12 @@ export default function IeltsSkillTypeScreen() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [textInputAnswer, setTextInputAnswer] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeId) {
+      track({ name: 'start_lesson', lessonId: `ielts_${typeId}`, type: 'drill' });
+    }
+  }, [typeId]);
   const [userAnswers, setUserAnswers] = useState<Record<number, { answer: string; isCorrect: boolean }>>({});
 
   const currentQ = questions[currentIndex];
@@ -44,6 +52,9 @@ export default function IeltsSkillTypeScreen() {
       finalAnswer.trim().toLowerCase() === currentQ.answer.trim().toLowerCase();
 
     setSubmitted(true);
+    if (currentIndex === questions.length - 1) {
+      track({ name: 'complete_lesson', lessonId: `ielts_${typeId}` });
+    }
     setUserAnswers((prev) => ({
       ...prev,
       [currentIndex]: { answer: finalAnswer, isCorrect },

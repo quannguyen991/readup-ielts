@@ -114,7 +114,7 @@ export function privacyDoc(ctx: LegalContext): LegalDoc {
           tracking
             ? {
                 kind: 'p',
-                text: `Nếu bạn bấm “Đồng ý” ở thông báo cookie, app tải thêm ${names} để đo quảng cáo nào đưa bạn tới Band 9 và bạn có mua gói hay không. Các công cụ này đặt cookie của riêng chúng. Bấm “Từ chối” thì chúng không được tải. Bạn đổi lựa chọn bất cứ lúc nào bằng nút “Cài đặt cookie” ở chân trang.`,
+                text: `Band 9 sử dụng cookie đo lường và phân tích (${names}) nhằm ghi nhận lưu lượng truy cập, đo lường tương tác học tập (như bắt đầu bài học start_lesson, hoàn thành bài tập complete_lesson, đăng ký tài khoản sign_up, nâng cấp gói học upgrade). Các công cụ này đặt cookie của riêng chúng. Bấm “Từ chối” thì chúng không được tải. Bạn đổi lựa chọn bất cứ lúc nào bằng nút “Cài đặt cookie” ở chân trang.`,
               }
             : {
                 kind: 'p',

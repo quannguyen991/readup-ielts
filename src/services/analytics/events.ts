@@ -21,6 +21,7 @@ export type AppEvent =
   | { name: 'start_lesson'; lessonId?: string; type?: string }
   | { name: 'complete_lesson'; lessonId?: string; score?: number }
   | { name: 'sign_up' }
+  | { name: 'upgrade'; plan?: string }
   | { name: 'view_pricing' }
   | { name: 'begin_checkout'; plan: PlanId; cycle: BillingCycle; valueVnd: number; orderId: string }
   | { name: 'purchase'; plan: PlanId; cycle: BillingCycle; valueVnd: number; orderId: string };
@@ -59,6 +60,8 @@ export function toMeta(event: AppEvent): MetaCall {
       return { event: 'SubmitApplication', params: { content_name: event.lessonId || 'lesson', score: event.score } };
     case 'sign_up':
       return { event: 'CompleteRegistration', params: { status: true } };
+    case 'upgrade':
+      return { event: 'InitiateCheckout', params: { content_name: 'upgrade', plan: event.plan } };
     case 'view_pricing':
       return { event: 'ViewContent', params: { content_name: 'pricing', content_category: 'plans' } };
     case 'begin_checkout':
@@ -93,6 +96,8 @@ export function toGa(event: AppEvent): GaCall {
       return { event: 'level_end', params: { level_name: event.lessonId || 'lesson', success: true, score: event.score } };
     case 'sign_up':
       return { event: 'sign_up', params: { method: 'email' } };
+    case 'upgrade':
+      return { event: 'upgrade', params: { plan: event.plan ?? 'plus' } };
     case 'view_pricing':
       return { event: 'view_item_list', params: { item_list_id: 'pricing', item_list_name: 'pricing' } };
     case 'begin_checkout':

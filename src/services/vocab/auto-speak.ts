@@ -11,7 +11,7 @@
 import type { StageKind } from './topic-study';
 
 export type AutoSpeakWhen = 'show' | 'flip' | 'reveal' | null;
-export type QuestionDirection = 'enToVi' | 'viToEn' | 'listen';
+export type QuestionDirection = 'enToVi' | 'enToEn' | 'viToEn' | 'listen';
 
 export function autoSpeakWhen(o: {
   kind: StageKind;
@@ -21,12 +21,14 @@ export function autoSpeakWhen(o: {
   revealed: boolean;
 }): AutoSpeakWhen {
   const { kind, dir, flipped, revealed } = o;
+  // Chiều "thấy từ tiếng Anh" (Anh → Việt, Anh → Anh): từ đã hiện trên đề, đọc ngay.
+  const wordFirst = dir === 'enToVi' || dir === 'enToEn';
   if (kind === 'flash') {
-    if (dir === 'enToVi') return 'show';
+    if (wordFirst) return 'show';
     if (dir === 'viToEn' && flipped) return 'flip';
     return null;
   }
-  if (dir === 'enToVi' && kind === 'mcq') return 'show';
+  if (wordFirst && kind === 'mcq') return 'show';
   if (revealed && !(dir === 'listen' && kind !== 'fill')) return 'reveal';
   return null;
 }

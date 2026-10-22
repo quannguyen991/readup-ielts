@@ -25,6 +25,7 @@ import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
 import { CuteNotebook, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { currentLocale, useL } from '@/i18n/useL';
+import { track } from '@/services/analytics/track';
 
 /**
  * Kết quả chấm bài.
@@ -155,6 +156,7 @@ export default function WritingResultScreen() {
       // vốn vẫn chạy đủ, chỉ thiếu phần nhận xét của AI.
       headers: {
         ...(tokenRef.current ? { Authorization: `Bearer ${tokenRef.current}` } : {}),
+        'x-guest-trial-id': typeof window !== 'undefined' ? (window.localStorage.getItem('readup:vid') || 'guest_device') : 'guest_device',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ promptId: prompt.id, bodyText: submission.bodyText }),
@@ -172,6 +174,7 @@ export default function WritingResultScreen() {
         });
         // Bài Writing đã được chấm → thép + 1 ca cho Thành Phố Tri Thức (mã = bài nộp, chấm lại không cộng lần hai).
         useCityStore.getState().earn({ type: 'writing_graded', id: submission.id });
+        track({ name: 'complete_lesson', lessonId: `writing_${prompt.id}` });
       })
       .catch((e: unknown) => {
         setError(e instanceof Error ? e.message : currentLocale() === 'en' ? 'Grading failed.' : 'Chấm bài thất bại.');
