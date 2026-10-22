@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, type ViewStyle } from 'react-native';
+import { StyleSheet, View, type ViewStyle } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Path } from 'react-native-svg';
 
 import { AreaArt } from '@/components/home/AreaArt';
 import { GlassSphere } from '@/components/ui/GlassSphere';
+import { LazyMount } from '@/components/ui/LazyMount';
 
 /**
  * Hoạ tiết cho các thẻ nhỏ (thẻ luyện thi, từ vựng, bìa nghe): dùng chung bộ bố cục hình học với các ô mảng
@@ -87,7 +88,13 @@ export function TileArt({ seed, tone, height = 96, style }: { seed: string; tone
 
   return (
     <View pointerEvents="none" style={{ height, borderRadius: 14, overflow: 'hidden', ...style }}>
-      <TileBody light={light} deep={deep} h={h} />
+      {/* Hoạ tiết dựng khi ô vào gần màn hình; trước đó là nền gradient cùng màu, rất nhẹ. */}
+      <LazyMount
+        style={StyleSheet.absoluteFill}
+        placeholder={<LinearGradient colors={[light, deep]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />}
+      >
+        <TileBody light={light} deep={deep} h={h} />
+      </LazyMount>
     </View>
   );
 }

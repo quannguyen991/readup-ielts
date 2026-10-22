@@ -6,6 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 import { AreaArt } from '@/components/home/AreaArt';
 import { GlossOrb } from '@/components/ui/GlossOrb';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { LazyMount } from '@/components/ui/LazyMount';
 
 const STAR4 = 'M0 -20 C2 -6 6 -2 20 0 C6 2 2 6 0 20 C-2 6 -6 2 -20 0 C-6 -2 -2 -6 0 -20 Z';
 
@@ -84,7 +85,12 @@ export function ToneTile({
 
       <View style={{ flex: 1, padding: 12, gap: 10 }}>
         <View style={{ height: artHeight, borderRadius: 18, overflow: 'hidden' }}>
-          <AreaArt tone={[lighten(deep, 0.5), deep]} variant={hash(seed) % 8} />
+          <LazyMount
+            style={StyleSheet.absoluteFill}
+            placeholder={<LinearGradient colors={[lighten(deep, 0.5), deep]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />}
+          >
+            <AreaArt tone={[lighten(deep, 0.5), deep]} variant={hash(seed) % 8} />
+          </LazyMount>
 
           <View pointerEvents="none" style={{ position: 'absolute', left: 10, top: 10 }}>
             <GlossOrb icon={icon} tone={[lighten(deep, 0.35), deep]} size={40} />
@@ -175,7 +181,12 @@ export function ToneCard({
 
       <View style={{ padding: 10, gap: 10 }}>
         <View style={{ height: 96, borderRadius: 16, overflow: 'hidden' }}>
-          <AreaArt tone={[lighten(deep, 0.5), deep]} variant={hash(seed) % 8} />
+          <LazyMount
+            style={StyleSheet.absoluteFill}
+            placeholder={<LinearGradient colors={[lighten(deep, 0.5), deep]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />}
+          >
+            <AreaArt tone={[lighten(deep, 0.5), deep]} variant={hash(seed) % 8} />
+          </LazyMount>
 
           {/* Chi tiết trang trí: vòng mảnh ở góc dưới và một sao nhỏ trên đỉnh. */}
           <View pointerEvents="none" style={{ position: 'absolute', right: -10, bottom: -10, width: 38, height: 38, borderRadius: 19, borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.7)' }} />
