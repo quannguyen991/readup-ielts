@@ -15,18 +15,20 @@ import { clozeOf, normalizeAnswer, shuffled, type StudyWord } from './topic-stud
  * Dạng chỗ trống chỉ dùng khi từ trong câu đúng NGUYÊN DẠNG của từ gốc: câu
  * dùng "adapted" mà phương án là "adapt" thì đáp án sai ngữ pháp.
  */
-export type ThptKind = 'complete' | 'closest' | 'opposite' | 'definition';
+export type ThptKind = 'complete' | 'closest' | 'opposite' | 'definition' | 'advert' | 'flyer';
 
 export type ThptQuestion = {
   kind: ThptKind;
   word: StudyWord;
   instruction: string;
   before: string;
-  /** Phần gạch chân (closest/opposite) hoặc đáp án bị khoét (complete). */
+  /** Phần gạch chân (closest/opposite) hoặc đáp án bị khoét (complete, advert, flyer). */
   focus: string;
   after: string;
   options: string[];
   correctIndex: number;
+  /** Khung quảng cáo hoặc tờ rơi bao quanh câu (chỉ có ở hai dạng advert và flyer). */
+  frame?: { headline: string; footer: string };
 };
 
 /** Số câu trong một lượt trắc nghiệm THPT của mỗi bài. */
@@ -37,6 +39,8 @@ export const THPT_INSTRUCTION: Record<ThptKind, string> = {
   closest: 'Mark the letter A, B, C, or D to indicate the word CLOSEST in meaning to the underlined word.',
   opposite: 'Mark the letter A, B, C, or D to indicate the word OPPOSITE in meaning to the underlined word.',
   definition: 'Mark the letter A, B, C, or D to indicate the word that best matches the definition.',
+  advert: 'Read the advertisement below and mark the letter A, B, C, or D to indicate the correct word to fill in the gap.',
+  flyer: 'Read the flyer below and mark the letter A, B, C, or D to indicate the correct word to fill in the gap.',
 };
 
 export const THPT_KIND_LABEL: Record<ThptKind, string> = {
@@ -44,6 +48,8 @@ export const THPT_KIND_LABEL: Record<ThptKind, string> = {
   closest: 'Gần nghĩa nhất',
   opposite: 'Trái nghĩa',
   definition: 'Đúng định nghĩa',
+  advert: 'Quảng cáo',
+  flyer: 'Tờ rơi',
 };
 
 const single = (s: string) => !/\s/.test(s.trim());
@@ -152,8 +158,51 @@ export function thptQuestionsFor(word: StudyWord, pool: readonly StudyWord[], rn
  * Một đề: mỗi từ một câu, dạng câu xoay vòng để không hai câu cùng dạng liền
  * nhau khi còn chọn được. Từ không dựng được câu nào thì bỏ qua.
  */
-export function buildThptQuiz(words: readonly StudyWord[], pool: readonly StudyWord[], rng: () => number): ThptQuestion[] {
-  const order: ThptKind[] = ['complete', 'closest', 'opposite'];
+/** Chế độ đề: xen kẽ các dạng THPT, hoặc toàn bộ là quảng cáo / tờ rơi. */
+export type ThptMode = 'mix' | 'advert' | 'flyer';
+
+const ADVERT_HEADLINES = ['SPECIAL OFFER!', 'NEW ARRIVAL!', "DON'T MISS OUT!", 'LIMITED TIME ONLY!', 'NOW OPEN!'];
+const ADVERT_FOOTERS = ['Call us today!', 'Visit our store now.', 'Hurry, while stocks last.', 'Book your place today.'];
+const FLYER_HEADLINES = ['WELCOME TO OUR CENTRE', 'JOIN OUR CLUB!', 'ENGLISH WORKSHOP', 'FREE TRIAL LESSON', 'SUMMER CAMP'];
+const FLYER_FOOTERS = ['For more details, call the number below.', 'Register at the front desk.', 'All students are welcome.'];
+
+/** Đưa câu khoét chỗ trống vào khung quảng cáo hoặc tờ rơi; đáp án và bốn phương án giữ nguyên. */
+function framed(q: ThptQuestion, mode: 'advert' | 'flyer', rng: () => number): ThptQuestion {
+  const heads = mode === 'advert' ? ADVERT_HEADLINES : FLYER_HEADLINES;
+  const foots = mode === 'advert' ? ADVERT_FOOTERS : FLYER_FOOTERS;
+  const pick = (xs: string[]) => xs[Math.floor(rng() * xs.length)] ?? xs[0]!;
+  return { ...q, kind: mode, instruction: THPT_INSTRUCTION[mode], frame: { headline: pick(heads), footer: pick(foots) } };
+}
+
+/**
+ * Mức độ đề. Theo tổng hợp các trang tham khảo về đề THPT: nhận biết (điền từ, dễ nhất), thông hiểu (điền từ
+ * và gần nghĩa), vận dụng (trái nghĩa khó hơn đồng nghĩa). Đây là cách chia của app, không phải đề chính thức.
+ */
+export type ThptDifficulty = 'easy' | 'medium' | 'hard';
+
+export const THPT_DIFFICULTY_ORDER: Record<ThptDifficulty, ThptKind[]> = {
+  easy: ['complete'],
+  medium: ['complete', 'closest'],
+  hard: ['opposite', 'closest'],
+};
+
+export function buildThptQuiz(
+  words: readonly StudyWord[],
+  pool: readonly StudyWord[],
+  rng: () => number,
+  mode: ThptMode = 'mix',
+  difficulty?: ThptDifficulty,
+): ThptQuestion[] {
+  if (mode !== 'mix') {
+    // Quảng cáo / tờ rơi: mỗi từ dựng từ câu khoét chỗ trống, bọc trong khung riêng.
+    const out: ThptQuestion[] = [];
+    for (const w of words) {
+      const c = thptQuestionsFor(w, pool, rng).find((q) => q.kind === 'complete');
+      if (c) out.push(framed(c, mode, rng));
+    }
+    return out;
+  }
+  const order: ThptKind[] = difficulty ? THPT_DIFFICULTY_ORDER[difficulty] : ['complete', 'closest', 'opposite'];
   const out: ThptQuestion[] = [];
   let turn = 0;
   for (const w of words) {

@@ -32,6 +32,7 @@ export function Flashcards<W extends StudyWord>({
   onStar,
   onRate,
   accent = color.primary,
+  tone,
 }: {
   words: W[];
   savedWords: Set<string>;
@@ -42,6 +43,8 @@ export function Flashcards<W extends StudyWord>({
   onRate?: (w: W, stage: WordStage) => void;
   /** Màu của bộ, cho nút Lật thẻ. */
   accent?: string;
+  /** Cặp màu nhạt → đậm của bộ: mặt trước thẻ vẽ hoạ tiết theo từ, cùng bảng với thẻ bộ từ. */
+  tone?: readonly [string, string];
 }) {
   const { L } = useL();
   const [order, setOrder] = useState<"original" | "shuffled">("original");
@@ -96,7 +99,7 @@ export function Flashcards<W extends StudyWord>({
             cardKey={`${order}-${seed}-${index}`}
             flipped={flipped}
             onFlip={() => setFlipped((f) => !f)}
-            front={<WordFace word={word} hint={L("Bấm thẻ hoặc Space để lật", "Tap the card or press Space to flip")} />}
+            front={<WordFace word={word} tone={tone} seed={word.word} hint={L("Bấm thẻ hoặc Space để lật", "Tap the card or press Space to flip")} />}
             back={<DetailFace word={word} />}
           />
         </CrossFade>

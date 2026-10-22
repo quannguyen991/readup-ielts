@@ -161,7 +161,7 @@ export function HeroBackdrop() {
           </G>
         ))}
       </Svg>
-      <View pointerEvents="none" className="b9-hb-grain" style={{ ...StyleSheet.absoluteFill, backgroundImage: GRAIN } as never} />
+      <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, backgroundImage: GRAIN } as never} />
     </View>
   );
 }

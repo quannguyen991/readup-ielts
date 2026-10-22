@@ -26,8 +26,10 @@ import { ProgressRing } from '@/components/vocab/DeckCard';
 import { LevelCard } from '@/components/vocab/LevelCard';
 import { LevelHeader } from '@/components/vocab/LevelHeader';
 import { useReadingFonts } from '@/lib/readingFonts';
-import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
-import { Label, Sticker } from '@/components/illust/Sticker';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Sticker } from '@/components/illust/Sticker';
+import { HeroShell } from '@/components/layout/HeroShell';
+import { ToneTile } from '@/components/vocab/ToneTile';
 import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { useL } from '@/i18n/useL';
@@ -110,6 +112,8 @@ export default function VocabTopicScreen() {
   const entries = useVocabStore((s) => s.entries);
   const saveWord = useVocabStore((s) => s.saveWord);
   const [justSaved, setJustSaved] = useState(0);
+  // Số từ đã hiện trong danh sách, tăng dần khi bấm "Hiện thêm".
+  const [listLimit, setListLimit] = useState(30);
   const stages = useTopicStudyStore((s) => (typeof slug === 'string' ? s.stages[slug] : undefined));
   const starredList = useTopicStudyStore((s) => (typeof slug === 'string' ? s.starred[slug] : undefined));
   const toggleStar = useTopicStudyStore((s) => s.toggleStar);
@@ -198,26 +202,26 @@ export default function VocabTopicScreen() {
             }
           }}
         />
-        {/* Cùng kiểu thẻ giấy có gáy màu như ở thư viện bộ từ. */}
-        <View className="flex-row overflow-hidden rounded-[20px] bg-white" style={{ boxShadow: '0 4px 14px rgba(15,23,42,0.08)' } as object}>
-          <View style={{ width: 8, backgroundColor: bg }} />
-          <View className="flex-1 flex-row flex-wrap items-center gap-4 p-5">
-            <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: look.accent[0] }}>
-              <Icon name={look.icon} size={22} color={bg} strokeWidth={2.1} />
-            </View>
-            <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
-              <Text className="font-heavy text-pageTitle text-ink">{(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}</Text>
-              <Text className="font-sans text-body text-muted">
+        {/* Đầu trang kiểu hero trang chủ: viền gradient, hoạ tiết pastel, tên bộ và vòng tiến độ. */}
+        <HeroShell radius={26} style={{ padding: 22 }}>
+          <View className="flex-row flex-wrap items-center gap-4">
+            <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
+              <Text className="font-strong text-label" style={{ color: 'rgba(27,17,64,0.75)', letterSpacing: 1.4 }}>
+                {L('BỘ TỪ', 'WORD SET')}
+              </Text>
+              <Text className="mt-1 font-heavy text-pageTitle" style={{ color: '#1B1140' }}>
+                {en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi}
+              </Text>
+              <Text className="font-sans text-body" style={{ color: 'rgba(27,17,64,0.85)' }}>
                 {!en && topic.name !== topic.nameVi ? `${topic.name} · ` : ''}
                 {L(`${topic.words.length} từ`, `${topic.words.length} words`)}
               </Text>
             </View>
-            <View aria-hidden>
-              <PageStickers scene="vocab" size={80} />
+            <View className="items-center justify-center rounded-full bg-white" style={{ width: 80, height: 80, boxShadow: '0 6px 16px rgba(27,17,64,0.12)' } as object}>
+              <ProgressRing pct={pct} color={bg} size={62} />
             </View>
-            <ProgressRing pct={pct} color={bg} size={60} />
           </View>
-        </View>
+        </HeroShell>
       </Appear>
       <DueToday slug={slug} />
 
@@ -231,9 +235,19 @@ export default function VocabTopicScreen() {
             <Text className="font-heavy text-sectionTitle text-ink">{L('Cách luyện', 'Practice modes')}</Text>
           </View>
           <View className="mt-3">
-            <Grid columns={7} tabletColumns={4} mobileColumns={2} gap={12}>
+            <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
               {MODES.filter((m) => modeReady(m.key, topic.words)).map((m) => (
-                <ModeTile key={m.key} mode={m} en={en} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
+                <ToneTile
+                  key={m.key}
+                  seed={'mode-' + m.key}
+                  tone={m.tone}
+                  icon={m.icon}
+                  title={en ? m.labelEn : m.label}
+                  sub={en ? m.noteEn : m.note}
+                  chip={m.recommended ? (en ? 'Suggested' : 'Gợi ý') : undefined}
+                  minHeight={220}
+                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.route ?? m.key}` as never)}
+                />
               ))}
             </Grid>
           </View>
@@ -242,16 +256,25 @@ export default function VocabTopicScreen() {
 
       {/* ------------------------------------------ ba nhóm từ + ôn nhanh */}
       <Appear index={1}>
-        <View className="mt-4 flex-row flex-wrap gap-3">
-          {STATUS_TILES.map((t) => (
-            <StatusTile
-              key={t.key}
-              tile={t}
-              en={en}
-              count={status[t.key].length}
-              onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz?only=${t.only}` as never)}
-            />
-          ))}
+        <View className="mt-4">
+          <Grid columns={3} tabletColumns={3} mobileColumns={3} gap={10}>
+            {STATUS_TILES.map((t) => {
+              const count = status[t.key].length;
+              return (
+                <ToneTile
+                  key={t.key}
+                  seed={'status-' + t.key}
+                  tone={t.tone}
+                  icon={t.icon}
+                  title={en ? t.labelEn : t.label}
+                  value={count}
+                  minHeight={150}
+                  disabled={count === 0 && t.key !== 'mastered'}
+                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz?only=${t.only}` as never)}
+                />
+              );
+            })}
+          </Grid>
         </View>
       </Appear>
 
@@ -266,6 +289,7 @@ export default function VocabTopicScreen() {
               starredWords={starredWords}
               onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
               accent={bg}
+              tone={look.accent}
               onRate={(w, stage) => {
                 if (typeof slug !== 'string') return;
                 setStage(slug, w.word, stage);
@@ -378,30 +402,57 @@ export default function VocabTopicScreen() {
         </View>
       )}
 
-      {groups.map((group, gi) => (
-        <Appear key={group.label} index={gi + 2}>
-          <View className="mt-5">
-            <View className="flex-row items-center gap-2">
-              <View aria-hidden>
-                <BadgeSticker icon={GROUP_BADGE[gi % GROUP_BADGE.length]!} color={GROUP_TONE[gi % GROUP_TONE.length]!} size={28} />
-              </View>
-              <Text className="font-heavy text-sectionTitle text-ink">{en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label}</Text>
-              <Text className="font-sans text-label text-muted">{L(`${group.words.length} từ`, `${group.words.length} words`)}</Text>
-            </View>
+      {/* Danh sách từ hiện từng đợt: cả bộ 170 từ dựng cùng lúc làm trang nặng và giật khi cuộn. */}
+      {(() => {
+        let budget = listLimit;
+        const total = groups.reduce((sum, g) => sum + g.words.length, 0);
+        return (
+          <>
+            {groups.map((group, gi) => {
+              const take = Math.max(0, Math.min(group.words.length, budget));
+              budget -= take;
+              if (take === 0) return null;
+              return (
+                <Appear key={group.label} index={gi + 2}>
+                  <View className="mt-5">
+                    <View className="flex-row items-center gap-2">
+                      <View aria-hidden>
+                        <BadgeSticker icon={GROUP_BADGE[gi % GROUP_BADGE.length]!} color={GROUP_TONE[gi % GROUP_TONE.length]!} size={28} />
+                      </View>
+                      <Text className="font-heavy text-sectionTitle text-ink">{en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label}</Text>
+                      <Text className="font-sans text-label text-muted">{L(`${group.words.length} từ`, `${group.words.length} words`)}</Text>
+                    </View>
 
-            <View className="mt-2 gap-2">
-              {group.words.map((word) => (
-                <WordRow
-                  key={word.word}
-                  word={word}
-                  saved={savedLemmas.has(word.word.toLowerCase())}
-                  onSave={() => save(word)}
-                />
-              ))}
-            </View>
-          </View>
-        </Appear>
-      ))}
+                    <View className="mt-2 gap-2">
+                      {group.words.slice(0, take).map((word) => (
+                        <WordRow
+                          key={word.word}
+                          word={word}
+                          saved={savedLemmas.has(word.word.toLowerCase())}
+                          onSave={() => save(word)}
+                        />
+                      ))}
+                    </View>
+                  </View>
+                </Appear>
+              );
+            })}
+
+            {total > listLimit ? (
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => setListLimit((n) => n + 30)}
+                className="mt-4 items-center rounded-pill bg-white py-3"
+                style={{ borderWidth: 1, borderColor: '#EAE4F8' }}
+              >
+                <Text className="font-strong text-body text-ink">
+                  {L(`Hiện thêm ${Math.min(30, total - listLimit)} từ (còn ${total - listLimit})`, `Show ${Math.min(30, total - listLimit)} more (${total - listLimit} left)`)}
+                </Text>
+              </Pressable>
+            ) : null}
+          </>
+        );
+      })()}
 
       <View className="h-6" />
     </Screen>
@@ -492,7 +543,7 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * Sáu cách học cùng một bộ từ. "Học" đứng đầu và được đề xuất: nó dẫn qua cả
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
-const MODES: { key: string; label: string; labelEn: string; note: string; noteEn: string; icon: IconName; tone: string; recommended?: boolean }[] = [
+const MODES: { key: string; route?: string; label: string; labelEn: string; note: string; noteEn: string; icon: IconName; tone: string; recommended?: boolean }[] = [
   { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · chọn nghĩa ABCD · gõ từ, từ sai quay lại', noteEn: 'Flashcards · ABCD meanings · typing; missed words come back', icon: 'book', tone: themedHex('#8B6CF0'), recommended: true },
   { key: 'dictation', label: 'Nghe chép', labelEn: 'Dictation', note: 'Nghe từ, viết đúng chính tả', noteEn: 'Hear the word, spell it right', icon: 'volume', tone: '#6A4BD9' },
   { key: 'cloze', label: 'Điền vào câu', labelEn: 'Fill the gap', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', noteEn: 'Pick, unscramble, type, listen — mixed', icon: 'pencil', tone: '#E0533D' },
@@ -502,11 +553,14 @@ const MODES: { key: string; label: string; labelEn: string; note: string; noteEn
   { key: 'pairs', label: 'Ghép cặp', labelEn: 'Match pairs', note: 'Ghép từ với nghĩa, nhớ vị trí các ô', noteEn: 'Match each word to its meaning and remember where tiles are', icon: 'grid', tone: '#2563EB' },
   { key: 'hangman', label: 'Đoán chữ', labelEn: 'Hangman', note: 'Đoán từ theo nghĩa, mỗi chữ sai mất một tim', noteEn: 'Guess the word from its meaning; each wrong letter costs a heart', icon: 'letters', tone: '#7C3AED' },
   { key: 'sentence', label: 'Xếp câu', labelEn: 'Build sentence', note: 'Xếp lại các từ thành câu ví dụ đúng thứ tự', noteEn: 'Rebuild the example sentence in the right order', icon: 'list', tone: '#0891B2' },
+  { key: 'quiz', label: 'Trắc nghiệm ABCD', labelEn: 'ABCD quiz', note: 'Đề THPT: điền từ, gần nghĩa, trái nghĩa · chọn 10 đến 50 câu', noteEn: 'THPT style: fill the gap, closest and opposite meaning · 10 to 50 questions', icon: 'clipboard', tone: '#E0533D', recommended: true },
+  { key: 'advert', route: 'quiz?mode=advert', label: 'Quảng cáo', labelEn: 'Advertisement', note: 'Điền từ vào đoạn quảng cáo, chọn ABCD như đề thi', noteEn: 'Fill the word into an advertisement, ABCD like the exam', icon: 'sparkle', tone: '#EA580C' },
+  { key: 'flyer', route: 'quiz?mode=flyer', label: 'Tờ rơi', labelEn: 'Flyer', note: 'Điền từ vào tờ rơi thông báo, chọn ABCD như đề thi', noteEn: 'Fill the word into a flyer notice, ABCD like the exam', icon: 'mail', tone: '#0369A1' },
 ];
 
 /** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
 function modeReady(key: string, words: readonly StudyWord[]): boolean {
-  if (key === 'cloze') return words.some((word) => Boolean(word.example));
+  if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
   if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
   if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);
   return true;
@@ -514,61 +568,8 @@ function modeReady(key: string, words: readonly StudyWord[]): boolean {
 
 const STATUS_TILES: { key: DeckStatus; label: string; labelEn: string; only: string; icon: IconName; tone: string; soft: string }[] = [
   { key: 'mastered', label: 'Đã nhớ', labelEn: 'Remembered', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },
-  { key: 'new', label: 'Chưa nhớ', labelEn: 'Not yet', only: 'new', icon: 'info', tone: '#CFA966', soft: '#F3F0FB' },
+  { key: 'new', label: 'Chưa nhớ', labelEn: 'Not yet', only: 'new', icon: 'info', tone: '#D97706', soft: '#F3F0FB' },
   { key: 'review', label: 'Cần ôn tập', labelEn: 'Needs review', only: 'review', icon: 'refresh', tone: '#6A4BD9', soft: '#F3F0FB' },
 ];
 
-/** Một nhóm từ: số từ + bấm là vào Quiz chỉ với nhóm đó (Đã nhớ thì ôn cả bộ). */
-function StatusTile({ tile, count, en, onPress }: { tile: (typeof STATUS_TILES)[number]; count: number; en: boolean; onPress: () => void }) {
-  const label = en ? tile.labelEn : tile.label;
-  const empty = count === 0 && tile.key !== 'mastered';
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={
-        en
-          ? `${label}: ${count} words. ${empty ? 'No words yet.' : 'Tap to review with a quiz.'}`
-          : `${label}: ${count} từ. ${empty ? 'Chưa có từ nào.' : 'Bấm để ôn bằng Quiz.'}`
-      }
-      disabled={empty}
-      onPress={onPress}
-      className="min-w-[180px] flex-1 flex-row items-center gap-3 rounded-2xl bg-white px-4 py-3"
-      style={{ opacity: empty ? 0.6 : 1, boxShadow: '0 3px 10px rgba(15,23,42,0.06)' } as object}
-    >
-      <View className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: tile.soft }}>
-        <Icon name={tile.icon} size={17} color={tile.tone} />
-      </View>
-      <Text className="flex-1 font-strong text-body text-ink">{label}</Text>
-      <Text className="font-heavy text-sectionTitle" style={{ color: tile.tone }}>
-        {count}
-      </Text>
-      {empty ? null : <Icon name="chevron-right" size={15} color="#94A3B8" />}
-    </Pressable>
-  );
-}
 
-function ModeTile({ mode, en, onPress }: { mode: (typeof MODES)[number]; en: boolean; onPress: () => void }) {
-  const [hovered, setHovered] = useState(false);
-  const label = en ? mode.labelEn : mode.label;
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={`${label}: ${en ? mode.noteEn : mode.note}`}
-      onPress={onPress}
-      onHoverIn={() => setHovered(true)}
-      onHoverOut={() => setHovered(false)}
-      className="items-center rounded-2xl bg-white px-3 py-4"
-      style={{ borderWidth: 1.5, borderColor: hovered ? mode.tone : 'transparent', boxShadow: '0 3px 10px rgba(15,23,42,0.06)' } as object}
-    >
-      <View className="h-11 w-11 items-center justify-center rounded-2xl" style={{ backgroundColor: `${mode.tone}1A` }}>
-        <Icon name={mode.icon} size={20} color={mode.tone} />
-      </View>
-      <Text className="mt-2 text-center font-strong text-body text-ink">{label}</Text>
-      {mode.recommended ? (
-        <View aria-hidden style={{ position: 'absolute', top: -8, right: -4 }}>
-          <Label text={en ? 'Suggested ⭐' : 'Gợi ý ⭐'} color="#F2B632" tilt={6} size={11} />
-        </View>
-      ) : null}
-    </Pressable>
-  );
-}

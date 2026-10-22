@@ -4,6 +4,7 @@ import { Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } fro
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
+import { HeroShell } from '@/components/layout/HeroShell';
 import { useNow } from '@/lib/clock';
 import { Icon } from '@/components/ui/Icon';
 import { Badge } from '@/components/ui/Badge';
@@ -168,55 +169,50 @@ export default function SpacedRepetitionScreen() {
 
   return (
     <Screen>
-      {/* Header bar */}
-      <View className="mb-4 flex-row flex-wrap items-center justify-between gap-3">
-        <View className="flex-row items-center gap-3">
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={L('Quay lại', 'Back')}
-            onPress={() => router.back()}
-            className="flex-row items-center gap-1 rounded-full bg-surfaceAlt px-3 py-1.5"
-          >
-            <Icon name="chevron-left" size={16} color="#94A3B8" />
-            <Text style={{ fontSize: 13, fontWeight: '600', color: '#94A3B8' }}>{L('Quay lại', 'Back')}</Text>
-          </Pressable>
-          <View>
-            <Text className="font-heavy text-ink" style={{ fontSize: 22 }}>
-              {L('Toàn bộ từ đã học', 'All learned words')}
-            </Text>
-            <Text style={{ fontSize: 13, color: '#64748B', marginTop: 2 }}>
-              {L(`${Object.keys(entries).length} từ`, `${Object.keys(entries).length} words`)}
-            </Text>
-          </View>
-        </View>
+      {/* Đầu trang kiểu hero trang chủ: tên trang, số từ và nút ôn. */}
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={L('Quay lại', 'Back')}
+        onPress={() => router.back()}
+        className="mb-3 flex-row items-center gap-1 self-start rounded-full bg-surfaceAlt px-3 py-1.5"
+      >
+        <Icon name="chevron-left" size={16} color="#94A3B8" />
+        <Text style={{ fontSize: 13, fontWeight: '600', color: '#94A3B8' }}>{L('Quay lại', 'Back')}</Text>
+      </Pressable>
 
-        <View className="flex-row items-center gap-3">
-          <View aria-hidden>
-            <PageStickers scene="review" size={76} />
-          </View>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={L('Ôn ngay với bộ thẻ', 'Review now with flashcards')}
-            onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 8,
-              borderRadius: 14,
-              backgroundColor: themedHex('#8B6CF0'),
-              backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #6A4BD9 100%)',
-              boxShadow: '0 4px 14px rgba(168,132,63, 0.3)',
-              paddingHorizontal: 16,
-              paddingVertical: 10,
-            } as never}
-          >
-            <Icon name="book" size={16} color="#FFFFFF" />
-            <Text style={{ fontSize: 13, fontWeight: '700', color: '#FFFFFF' }}>
-              {dueEntries.length > 0 ? L(`Ôn ngay (${dueEntries.length})`, `Review now (${dueEntries.length})`) : L('Ôn tất cả', 'Review all')}
-            </Text>
-          </Pressable>
-        </View>
-      </View>
+      <HeroShell radius={26} style={{ padding: 20, marginBottom: 16 }}>
+        <Text className="font-strong text-label" style={{ color: 'rgba(27,17,64,0.75)', letterSpacing: 1.4 }}>
+          {L('ÔN LẶP NGẮT QUÃNG', 'SPACED REVIEW')}
+        </Text>
+        <Text className="mt-1 font-heavy text-pageTitle" style={{ color: '#1B1140' }}>
+          {L('Toàn bộ từ đã học', 'All learned words')}
+        </Text>
+        <Text className="font-sans text-body" style={{ color: 'rgba(27,17,64,0.85)' }}>
+          {L(`${Object.keys(entries).length} từ`, `${Object.keys(entries).length} words`)}
+        </Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={L('Ôn ngay với bộ thẻ', 'Review now with flashcards')}
+          onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
+          style={({ pressed }: { pressed: boolean }) => ({
+            alignSelf: 'flex-start',
+            marginTop: 14,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 8,
+            height: 44,
+            paddingHorizontal: 20,
+            borderRadius: 999,
+            backgroundColor: '#1B1140',
+            opacity: pressed ? 0.92 : 1,
+          })}
+        >
+          <Icon name="book" size={16} color="#FFFFFF" />
+          <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
+            {dueEntries.length > 0 ? L(`Ôn ngay (${dueEntries.length})`, `Review now (${dueEntries.length})`) : L('Ôn tất cả', 'Review all')}
+          </Text>
+        </Pressable>
+      </HeroShell>
 
       {/* Lịch ôn 7 ngày: số từ đến hạn mỗi ngày, cộng dồn khi học thêm */}
       <View

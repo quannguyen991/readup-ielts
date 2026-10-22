@@ -52,10 +52,10 @@ const CSS = `
 @keyframes ab-pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
 @keyframes ab-spin{to{transform:rotate(360deg)}}
 @keyframes ab-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.ab-orb-wrap{border-radius:50%;animation:ab-breathe 3.6s ease-in-out infinite}
-.ab-orb{position:relative;overflow:hidden;background:conic-gradient(from 0deg,#C4B5FD,#F9A8D4,#93C5FD,#FDE68A,#C4B5FD,#A5B4FC,#C4B5FD);animation:ab-spin 7s linear infinite;box-shadow:inset -3px -5px 9px rgba(76,55,170,.28),0 5px 14px rgba(139,108,240,.34)}
+.ab-orb-wrap{border-radius:50%}
+.ab-orb{position:relative;overflow:hidden;background:conic-gradient(from 0deg,#C4B5FD,#F9A8D4,#93C5FD,#FDE68A,#C4B5FD,#A5B4FC,#C4B5FD);box-shadow:inset -3px -5px 9px rgba(76,55,170,.28),0 5px 14px rgba(139,108,240,.34)}
 .ab-orb::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.95),rgba(255,255,255,0) 36%),radial-gradient(circle at 68% 74%,rgba(255,255,255,.4),rgba(255,255,255,0) 42%)}
-.ab-orb::after{content:"";position:absolute;inset:-35%;border-radius:50%;background:conic-gradient(from 200deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.7) 40deg,rgba(255,255,255,0) 90deg,rgba(255,255,255,0) 360deg);animation:ab-spin 3.2s linear infinite}
+.ab-orb::after{content:"";position:absolute;inset:-35%;border-radius:50%;background:conic-gradient(from 200deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.7) 40deg,rgba(255,255,255,0) 90deg,rgba(255,255,255,0) 360deg);}
 @media (prefers-reduced-motion:reduce){[data-ab],.ab-orb,.ab-orb-wrap,.ab-orb::after{animation:none!important}}
 `;
 function ensureCss() {

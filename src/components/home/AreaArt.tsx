@@ -13,7 +13,6 @@ import { GlassSphere } from '@/components/ui/GlassSphere';
 const GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.22'/></svg>")`;
 
 const TILE_CSS = `
-.b9-tile-drift{animation:b9-tile-drift 10s ease-in-out infinite alternate}
 @keyframes b9-tile-drift{0%{transform:translate3d(-2px,1px,0)}100%{transform:translate3d(2px,-2px,0)}}
 @media (prefers-reduced-motion: reduce){.b9-tile-drift{animation:none}}
 @media (hover: none), (max-width: 767px){.b9-tile-drift{animation:none}}
@@ -233,7 +232,7 @@ export function AreaArt({ tone, variant }: { tone: readonly string[]; variant: n
       <View pointerEvents="none" style={{ position: 'absolute', right: '8%', bottom: '10%' }}>
         <GlassSphere color={light} size={40} />
       </View>
-      <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, backgroundImage: GRAIN } as never} />
+      <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, backgroundImage: 'radial-gradient(rgba(255,255,255,0.16) 0.8px, transparent 1px)', backgroundSize: '5px 5px' } as never} />
     </View>
   );
 }

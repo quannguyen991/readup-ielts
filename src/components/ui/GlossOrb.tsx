@@ -38,7 +38,7 @@ export function GlossOrb({ icon, tone, size = 52 }: { icon: IconName; tone: read
         <Ellipse cx={36} cy={24} rx={20} ry={9} fill="#FFFFFF" opacity={0.6} />
         <Circle cx={50} cy={50} r={48} fill="none" stroke="#FFFFFF" strokeOpacity={0.4} strokeWidth={2} />
       </Svg>
-      <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, backgroundImage: GRAIN } as never} />
+      <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, backgroundImage: 'radial-gradient(rgba(255,255,255,0.16) 0.8px, transparent 1px)', backgroundSize: '4px 4px' } as never} />
       <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, alignItems: 'center', justifyContent: 'center' }}>
         <Icon name={icon} size={Math.round(size * 0.42)} color="#FFFFFF" strokeWidth={2.2} />
       </View>

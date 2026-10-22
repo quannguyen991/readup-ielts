@@ -1,14 +1,15 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { router } from 'expo-router';
 
+import { Grid } from '@/components/layout/Grid';
 import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
+import { ToneTile } from '@/components/vocab/ToneTile';
 import { THPT_QUESTIONS_PER_BAI } from '@/services/vocab/thpt-quiz';
 import { useL } from '@/i18n/useL';
-import { color } from '@/theme/tokens';
 
 /**
  * Trắc nghiệm THPT — tính năng riêng, tách khỏi phiên học.
@@ -16,6 +17,9 @@ import { color } from '@/theme/tokens';
  * Mỗi bài (chủ đề) có {THPT_QUESTIONS_PER_BAI} câu A/B/C/D kiểu đề thi THPT: điền từ vào câu, chọn từ gần
  * nghĩa nhất, chọn từ trái nghĩa. Phiên học của từng bài chỉ còn lật thẻ, chọn nghĩa ABCD và gõ từ.
  */
+/** Màu luân phiên cho các bài THPT, cùng bảng với các thẻ khác trong app. */
+const THPT_TONES = ['#E0533D', '#6A4BD9', '#0891B2', '#16A34A', '#EA580C', '#DB2777', '#2563EB', '#7C3AED'] as const;
+
 export default function VocabThptListScreen() {
   const { L, en } = useL();
 
@@ -33,36 +37,22 @@ export default function VocabThptListScreen() {
           )}
         />
       </Appear>
-      <View className="mt-4" style={{ gap: 10 }}>
-        {VOCAB_TOPICS.map((topic) => (
-          <Pressable
-            key={topic.slug}
-            accessibilityRole="link"
-            onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz` as never)}
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 12,
-              padding: 14,
-              borderRadius: 16,
-              backgroundColor: '#FFFFFF',
-              borderWidth: 1,
-              borderColor: '#F3F0FB',
-            }}
-          >
-            <View style={{ flex: 1 }}>
-              <Text className="font-strong text-body" style={{ color: color.ink }}>
-                {en ? topic.name : topic.nameVi || topic.name}
-              </Text>
-              <Text className="mt-1 font-sans text-label text-muted">
-                {L(`${topic.words.length} từ · ${THPT_QUESTIONS_PER_BAI} câu`, `${topic.words.length} words · ${THPT_QUESTIONS_PER_BAI} questions`)}
-              </Text>
-            </View>
-            <Text className="font-strong text-label" style={{ color: color.primary }}>
-              {L('Làm bài →', 'Start →')}
-            </Text>
-          </Pressable>
-        ))}
+      <View className="mt-4">
+        <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
+          {VOCAB_TOPICS.map((topic, i) => (
+            <ToneTile
+              key={topic.slug}
+              seed={'thpt-' + topic.slug}
+              tone={THPT_TONES[i % THPT_TONES.length]!}
+              icon="clipboard"
+              title={en ? topic.name : topic.nameVi || topic.name}
+              sub={L(`${topic.words.length} từ · ${THPT_QUESTIONS_PER_BAI} câu`, `${topic.words.length} words · ${THPT_QUESTIONS_PER_BAI} questions`)}
+              chip={L('Làm bài', 'Start')}
+              minHeight={200}
+              onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz` as never)}
+            />
+          ))}
+        </Grid>
       </View>
       <View className="h-10" />
     </Screen>

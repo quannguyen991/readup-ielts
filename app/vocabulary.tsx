@@ -9,6 +9,9 @@ import { Grid } from '@/components/layout/Grid';
 import { VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
+import { GlossOrb } from '@/components/ui/GlossOrb';
+import type { IconName } from '@/components/ui/Icon';
+import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
 import { useVocabCoverStore } from '@/store/useVocabCoverStore';
@@ -38,6 +41,19 @@ const STATUS_LABEL: Record<WordStatusKind, Bi> = {
 
 const WORDS_PER_PAGE = 40;
 
+/** Bảng màu cho từng tác vụ trên điện thoại, cặp [nhạt, đậm] như các thẻ khác trong app. */
+const TASK_TONES: ReadonlyArray<readonly [string, string]> = [
+  ['#B9A9FF', '#6A4BD9'],
+  ['#8EC5FF', '#2F6FD6'],
+  ['#8FE0B0', '#23875E'],
+  ['#FFD892', '#E08A1E'],
+  ['#FFB8D6', '#D9568F'],
+  ['#9AE6E8', '#1F8A96'],
+  ['#A7B4FF', '#3446C8'],
+  ['#FFB4A8', '#D9503E'],
+  ['#C9E0FF', '#4A6FB8'],
+];
+
 export default function VocabularyScreen() {
   const [tab, setTab] = useState<'list' | 'review'>('list');
   // Sổ vài trăm từ: chỉ dựng từng đợt, không dựng một lượt cả danh sách (mỗi dòng là một cây view khá nặng).
@@ -49,6 +65,15 @@ export default function VocabularyScreen() {
   const setCoverOnPhone = useVocabCoverStore((s) => s.setCoverOnPhone);
   // Trên máy hẹp bìa chỉ hiện khi người học bật; máy rộng luôn hiện như cũ.
   const showCover = !narrow || coverOnPhone;
+  // Máy hẹp: tổng quan (bìa, số liệu, ôn tập) thu gọn sau một nút, kho từ hiện ngay bên dưới tác vụ.
+  const [overviewOpen, setOverviewOpen] = useState(false);
+  // Tác vụ lấy đúng từ mục Từ vựng của thanh bên máy tính, nên hai bên có cùng các lối vào.
+  const taskRows = [
+    { key: 'quiz', label: L('Quiz từ vựng', 'Vocabulary quiz'), href: '/vocabulary/quiz', icon: 'trophy' as IconName },
+    ...(NAV_GROUPS.flatMap((g) => g.items).find((i) => i.key === 'vocabulary')?.children ?? [])
+      .filter((c) => c.href !== '/vocabulary')
+      .map((c) => ({ key: c.key, label: navLabel(c, locale), href: c.href, icon: c.icon as IconName })),
+  ];
 
   const entries = useVocabStore((s) => s.entries);
   const dueCards = useDueCards();
@@ -105,6 +130,48 @@ export default function VocabularyScreen() {
         />
       </View>
 
+      {narrow ? (
+        <View className="mt-5 gap-3">
+          <View className="flex-row flex-wrap justify-between" style={{ rowGap: 10 }}>
+            {taskRows.map((task, index) => (
+              <VocabTask
+                key={task.key}
+                label={task.label}
+                icon={task.icon}
+                tone={TASK_TONES[index % TASK_TONES.length] ?? TASK_TONES[0]!}
+                onPress={() => router.push(task.href as never)}
+              />
+            ))}
+          </View>
+
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => setOverviewOpen((v) => !v)}
+            style={({ pressed }: { pressed: boolean }) => ({
+              marginTop: 6,
+              minHeight: 44,
+              alignSelf: 'flex-start',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 8,
+              paddingHorizontal: 16,
+              borderRadius: 999,
+              borderWidth: 1,
+              borderColor: '#EAE4F8',
+              backgroundColor: '#FFFFFF',
+              opacity: pressed ? 0.92 : 1,
+            })}
+          >
+            <Text className="font-strong text-label text-ink">
+              {overviewOpen ? L('Ẩn tổng quan', 'Hide overview') : L('Xem tổng quan', 'Show overview')}
+            </Text>
+            <Icon name={overviewOpen ? 'chevron-up' : 'chevron-down'} size={16} color={color.subtle} />
+          </Pressable>
+        </View>
+      ) : null}
+
+      {!narrow || overviewOpen ? (
+        <>
       {narrow ? (
         <Pressable
           accessibilityRole="switch"
@@ -198,10 +265,12 @@ export default function VocabularyScreen() {
           <SpacedRepetitionWidget />
         </View>
       </View>
+        </>
+      ) : null}
 
       {/* Đổi tab Danh sách / Ôn ngay: nội dung mờ dần sang, không nhảy cụt. */}
       <CrossFade swapKey={tab}>
-      {tab === 'list' ? <PracticeStrip entries={words} /> : null}
+      {tab === 'list' && !narrow ? <PracticeStrip entries={words} /> : null}
 
       {tab === 'review' ? (
         <ReviewSession />
@@ -305,6 +374,28 @@ function VocabCategory({ title, sub, colors, art, onPress, disabled = false }: {
         <View style={{ gap: 2 }}>
           <Text className="font-heavy text-cardTitle text-ink">{title}</Text>
           <Text className="font-sans text-label text-body">{sub}</Text>
+        </View>
+      </View>
+    </Pressable>
+  );
+}
+
+/** Thẻ tác vụ trên điện thoại: nền hoạ tiết pastel như thẻ máy tính, quả cầu icon và tên ngắn. Ba cột. */
+function VocabTask({ label, icon, tone, onPress }: { label: string; icon: IconName; tone: readonly [string, string]; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      onPress={onPress}
+      style={({ pressed }: { pressed: boolean }) => ({ width: '31%', minHeight: 112, borderRadius: 20, overflow: 'hidden', opacity: pressed ? 0.92 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] })}
+    >
+      <View style={{ flex: 1, padding: 12, justifyContent: 'space-between', overflow: 'hidden' }}>
+        <TileArt seed={'vocab-task-' + label} tone={tone} height={112} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, height: '100%', borderRadius: 0 }} />
+        <GlossOrb icon={icon} tone={tone} size={34} />
+        <View style={{ alignSelf: 'flex-start', maxWidth: '100%', borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.9)', paddingHorizontal: 8, paddingVertical: 5 }}>
+          <Text numberOfLines={2} className="font-heavy text-label text-ink">
+            {label}
+          </Text>
         </View>
       </View>
     </Pressable>

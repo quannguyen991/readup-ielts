@@ -10,6 +10,7 @@ import type { StudyWord } from '@/services/vocab/topic-study';
 import { useL } from '@/i18n/useL';
 import { useStudyTheme } from './useStudyTheme';
 import { playSfx } from '@/services/audio/sfx-ui';
+import { TileArt } from '@/components/ui/TileArt';
 
 /**
  * Một thẻ hai mặt, xoay quanh trục Y khi lật. Dùng chung cho dải thẻ ở trang bộ
@@ -90,7 +91,25 @@ export function FlipCard({
 }
 
 /** Mặt thẻ mang từ tiếng Anh: từ, loại từ, phiên âm. */
-export function WordFace({ word, hint }: { word: StudyWord; hint?: string }) {
+export function WordFace({ word, hint, tone, seed }: { word: StudyWord; hint?: string; tone?: readonly [string, string]; seed?: string }) {
+  if (tone) {
+    // Mặt trước có hoạ tiết theo từ; chữ nằm trên một tấm trắng mờ để đọc rõ.
+    return (
+      <>
+        <TileArt seed={seed ?? word.word} tone={tone} height={400} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, height: '100%', borderRadius: 0 }} />
+        <View style={{ alignItems: 'center', maxWidth: '100%', borderRadius: 24, backgroundColor: 'rgba(255,255,255,0.93)', paddingHorizontal: 28, paddingVertical: 22 }}>
+          <Text className="font-semi text-label text-muted">{levelLabel(word.band)}</Text>
+          <Text className="mt-2 text-center font-strong text-hero text-ink">{word.word}</Text>
+          <Text className="mt-2 font-sans text-bodyLg text-muted">{posIpa(word)}</Text>
+        </View>
+        {hint ? (
+          <View style={{ position: 'absolute', bottom: 18, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.92)', paddingHorizontal: 12, paddingVertical: 4 }}>
+            <Text className="font-sans text-label text-ink">{hint}</Text>
+          </View>
+        ) : null}
+      </>
+    );
+  }
   return (
     <>
       <Text className="font-semi text-label text-muted">{levelLabel(word.band)}</Text>

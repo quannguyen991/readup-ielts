@@ -1,11 +1,13 @@
 import React from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
+import { GlossOrb } from '@/components/ui/GlossOrb';
+import { TileArt } from '@/components/ui/TileArt';
 import { type DeckProgress } from '@/services/vocab/deck-library';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { useL } from '@/i18n/useL';
@@ -75,28 +77,26 @@ export function ProgressRing({ pct, color, size = 46 }: { pct: number; color: st
  * Rê chuột thì ảnh phóng nhẹ, chậm và mượt.
  */
 const COVER_RATIO = 0.8;
-function DeckCover({ cover, icon, soft, strong, size, hovered }: { cover?: string; icon: IconName; soft: string; strong: string; size: number; hovered: boolean }) {
-  if (cover) {
-    return (
-      <View style={{ width: '100%', aspectRatio: COVER_RATIO, overflow: 'hidden' }}>
+/**
+ * Khung hoạ tiết đầu thẻ bộ: ảnh bìa nếu có, không thì hoạ tiết pastel theo tên bộ, quả cầu icon chồng lên —
+ * cùng kiểu thẻ luyện của trang từ vựng.
+ */
+function DeckCover({ cover, icon, soft, strong, seed, hovered }: { cover?: string; icon: IconName; soft: string; strong: string; seed: string; hovered: boolean }) {
+  return (
+    <View style={{ height: 124, margin: 10, borderRadius: 18, overflow: 'hidden' }}>
+      {cover ? (
         <Image
           source={{ uri: cover }}
           style={{ width: '100%', height: '100%', transform: [{ scale: hovered ? 1.05 : 1 }], ...(WEB ? ({ transition: 'transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1)' } as object) : null) }}
           contentFit="cover"
           accessibilityIgnoresInvertColors
         />
+      ) : (
+        <TileArt seed={seed} tone={[soft, strong]} height={124} style={{ borderRadius: 0, height: '100%' }} />
+      )}
+      <View pointerEvents="none" style={{ position: 'absolute', left: 10, top: 10 }}>
+        <GlossOrb icon={icon} tone={[soft, strong]} size={40} />
       </View>
-    );
-  }
-  return (
-    <View style={{ width: '100%', aspectRatio: COVER_RATIO, overflow: 'hidden' }}>
-      <LinearGradient colors={[soft, strong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <View style={{ position: 'absolute', width: size * 1.1, height: size * 1.1, borderRadius: size, right: -size * 0.3, top: -size * 0.35, backgroundColor: 'rgba(255,255,255,0.16)' }} />
-        <View style={{ position: 'absolute', width: size * 0.55, height: size * 0.55, borderRadius: size, left: -size * 0.12, bottom: -size * 0.18, backgroundColor: 'rgba(255,255,255,0.14)' }} />
-        <View style={{ width: 56, height: 56, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.92)' }}>
-          <Icon name={icon} size={26} color={strong} strokeWidth={2} />
-        </View>
-      </LinearGradient>
     </View>
   );
 }
@@ -141,46 +141,48 @@ export function DeckCard({
       <View
         style={{
           flex: 1,
-          borderRadius: 22,
+          borderRadius: 24,
           overflow: 'hidden',
-          backgroundColor: '#FFFFFF',
-          borderWidth: 1,
-          borderColor: '#F3F0FB',
+          backgroundColor: strong,
           ...(WEB
             ? ({
-                boxShadow: hovered ? '0 12px 28px rgba(94,72,35,0.16)' : '0 1px 2px rgba(94,72,35,0.05), 0 8px 22px rgba(94,72,35,0.07)',
+                boxShadow: hovered ? '0 14px 30px rgba(40,30,80,0.28)' : '0 6px 16px rgba(40,30,80,0.16)',
                 transform: hovered ? 'translateY(-3px)' : 'none',
                 transition: 'transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease',
               } as object)
-            : { elevation: 2 }),
+            : { elevation: 3 }),
         }}
       >
-        <DeckCover cover={cover} icon={icon} soft={soft} strong={strong} size={220} hovered={hovered} />
+        <LinearGradient colors={[soft, strong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+        <DeckCover cover={cover} icon={icon} soft={soft} strong={strong} seed={title} hovered={hovered} />
 
-        <View style={{ flex: 1, padding: 16, gap: 6 }}>
+        <View style={{ flex: 1, paddingHorizontal: 16, paddingBottom: 14, gap: 6, justifyContent: 'flex-end' }}>
           <Text
             numberOfLines={2}
-            style={{ fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '600', color: TEXT_STRONG, fontSize: 18, lineHeight: 23 }}
+            style={{ fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '600', color: '#FFFFFF', fontSize: 18, lineHeight: 23 }}
           >
             {title}
           </Text>
           {subtitle ? (
-            <Text numberOfLines={1} style={{ fontFamily: fontFamily.regular, color: TEXT_SOFT, fontSize: 13 }}>
+            <Text numberOfLines={1} style={{ fontFamily: fontFamily.regular, color: 'rgba(255,255,255,0.9)', fontSize: 13 }}>
               {subtitle}
             </Text>
           ) : null}
 
-          <View style={{ flex: 1 }} />
-
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 }}>
-            <DeckProgressBar progress={progress} color={strong} height={6} />
-            <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: TEXT_SOFT }}>{pct}%</Text>
+            <DeckProgressBar progress={progress} color="#FFFFFF" height={6} />
+            <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>{pct}%</Text>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: strong }}>{sourceLabel}</Text>
-            <Text style={{ fontFamily: fontFamily.regular, fontSize: 12, color: TEXT_META }}>
-              {progress.total} {L('từ', 'words')}
-            </Text>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
+            <View style={{ borderRadius: 999, backgroundColor: 'rgba(20,10,40,0.3)', paddingHorizontal: 10, paddingVertical: 3 }}>
+              <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>
+                {`${sourceLabel} · ${progress.total} ${L('từ', 'words')}`}
+              </Text>
+            </View>
+            <View style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}>
+              <Icon name="arrow-right" size={14} color={strong} strokeWidth={2.2} />
+            </View>
           </View>
         </View>
       </View>
