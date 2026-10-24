@@ -33,7 +33,7 @@ export const MAX_VOCAB_RUNS = 200;
 export type StudyPayload = {
   sessions: { id: string; finishedAt: string }[];
   progress: Record<string, { lastReadAt: string; percentCompleted: number }>;
-  daily: Record<string, { minutes: number; questions: number; wordsReviewed: number; events?: number; byActivity?: Record<string, number> }>;
+  daily: Record<string, { minutes: number; questions: number; wordsReviewed: number; events?: number; studied?: string[]; byActivity?: Record<string, number> }>;
   bookmarks: string[];
   targetBand: number;
   dailyGoalMinutes: number;
@@ -106,6 +106,8 @@ function mergeDaily(
       questions: Math.max(l?.questions ?? 0, r?.questions ?? 0),
       wordsReviewed: Math.max(l?.wordsReviewed ?? 0, r?.wordsReviewed ?? 0),
       events: Math.max(l?.events ?? 0, r?.events ?? 0),
+      // Từ đã học trong ngày: gộp hai danh sách, không để máy này đè mất từ máy kia.
+      ...(l?.studied || r?.studied ? { studied: unionStrings(l?.studied ?? [], r?.studied ?? []) } : {}),
       byActivity: byActivity as never,
     };
   }

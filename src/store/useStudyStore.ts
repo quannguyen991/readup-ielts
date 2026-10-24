@@ -241,7 +241,8 @@ export const useStudyStore = create<StudyState>()(
           const key = `${slug}|${word}`;
           const studied = day.studied ?? [];
           if (studied.includes(key)) return state;
-          return { daily: { ...state.daily, [date]: { ...day, studied: [...studied, key] } } };
+          // Mỗi từ lần đầu học trong ngày cũng được tính vào số từ đã ôn của ngày đó.
+          return { daily: { ...state.daily, [date]: { ...day, studied: [...studied, key], wordsReviewed: day.wordsReviewed + 1 } } };
         }),
 
       logWordsReviewed: (count) =>

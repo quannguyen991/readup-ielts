@@ -41,3 +41,11 @@ test('lịch sử từ vựng hợp theo id, mới nhất trước, và không n
   assert.deepEqual(merged.vocabRuns?.map((r) => r.id), ['b', 'a']);
   assert.equal(mergeStudy(merged, remote).vocabRuns?.length, 2);
 });
+
+test('từ đã học trong ngày được gộp hai máy: không máy nào làm mất từ của máy kia', () => {
+  const local = base({ daily: { '2026-10-18': { minutes: 0, questions: 0, wordsReviewed: 2, studied: ['bo1|apple', 'bo1|pear'] } } });
+  const remote = base({ daily: { '2026-10-18': { minutes: 0, questions: 0, wordsReviewed: 3, studied: ['bo1|pear', 'bo2|fig'] } } });
+  const day = mergeStudy(local, remote).daily['2026-10-18'];
+  assert.deepEqual([...(day?.studied ?? [])].sort(), ['bo1|apple', 'bo1|pear', 'bo2|fig']);
+  assert.equal(day?.wordsReviewed, 3);
+});

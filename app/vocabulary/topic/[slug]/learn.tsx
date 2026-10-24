@@ -133,6 +133,7 @@ export default function LearnScreen() {
   const addLapse = useTopicStudyStore((s) => s.addLapse);
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const logStudyTime = useStudyStore((s) => s.logStudyTime);
+  const logVocabRun = useStudyStore((s) => s.logVocabRun);
   // Phút học của lượt: tính từ lúc vào màn tới lúc rời đi; chỉ ghi khi có ít nhất một câu đã chấm.
   const enteredAt = useRef(Date.now());
   const answered = useRef(0);
@@ -286,6 +287,13 @@ export default function LearnScreen() {
   }, [slug, round, plan, asked, wrong, streak, step, setActiveRound]);
 
   const done = !head;
+  // Hết một lượt học: ghi vào lịch sử từ vựng (một lần cho mỗi lượt, có câu đã chấm).
+  const loggedRound = useRef(false);
+  useEffect(() => {
+    if (!done || loggedRound.current || asked === 0) return;
+    loggedRound.current = true;
+    logVocabRun({ deck: slug, title: topic?.nameVi || topic?.name || slug, correct: asked - wrong, total: asked });
+  }, [done, asked, wrong, slug, topic, logVocabRun]);
   // Mỗi đoạn một từ, đầy dần theo mức của từ trong vòng.
   const progress = round.map((w) => loopFraction(plan, w.word, opts));
   const stats = roundStats(plan, round);
