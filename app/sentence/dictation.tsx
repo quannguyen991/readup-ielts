@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, Pressable, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Speech from 'expo-speech';
 
@@ -212,6 +212,17 @@ export default function DictationScreen() {
  */
 function LibraryView({ onRandom }: { onRandom: () => void }) {
   const { L } = useL();
+  // Điện thoại: nút "Bốc ngẫu nhiên" xuống dưới tiêu đề, không chen vào làm tiêu đề bị vỡ chữ.
+  const narrow = useWindowDimensions().width < 640;
+  const randomButton = (
+    <Button
+      variant="brandOutline"
+      size="sm"
+      label={L('Bốc ngẫu nhiên 10 câu', 'Random 10 sentences')}
+      iconLeft="refresh"
+      onPress={onRandom}
+    />
+  );
   return (
     <TaskShell
       backHref="/sentence"
@@ -221,16 +232,9 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
       subtitle="Listening dictation practice"
       icon="volume"
       tone="paper"
-      right={
-        <Button
-          variant="brandOutline"
-          size="sm"
-          label={L('Bốc ngẫu nhiên 10 câu', 'Random 10 sentences')}
-          iconLeft="refresh"
-          onPress={onRandom}
-        />
-      }
+      right={narrow ? undefined : randomButton}
     >
+      {narrow ? <View style={{ alignSelf: 'flex-start', marginBottom: 12 }}>{randomButton}</View> : null}
       <DictationLibrary />
     </TaskShell>
   );

@@ -55,6 +55,7 @@ export function LessonCard({
   meta,
   done,
   visual,
+  visualHeight = 52,
   onPress,
   eyebrow,
   secondary,
@@ -69,6 +70,8 @@ export function LessonCard({
   /** Số lần đã luyện bài này (0 = chưa). */
   done: number;
   visual: (tone: LessonTone, active: boolean) => React.ReactNode;
+  /** Chiều cao vùng bìa; mặc định 52 cho dải sóng nhỏ. */
+  visualHeight?: number;
   onPress: () => void;
   /** Nhãn nhỏ phía trên, mặc định "BÀI 01". */
   eyebrow?: string;
@@ -121,7 +124,7 @@ export function LessonCard({
         ) : null}
       </View>
 
-      <View className="mt-3.5 justify-center overflow-hidden rounded-xl px-3" style={{ height: 52, backgroundColor: tone.soft }}>
+      <View className="mt-3.5 justify-center overflow-hidden rounded-xl px-3" style={{ height: visualHeight, backgroundColor: tone.soft }}>
         {visual(tone, hover)}
       </View>
 

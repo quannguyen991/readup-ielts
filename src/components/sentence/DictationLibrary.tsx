@@ -3,7 +3,8 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { LessonCard, Waveform } from '@/components/sentence/LessonCard';
+import { DictationCover } from '@/components/sentence/DictationCover';
+import { LessonCard } from '@/components/sentence/LessonCard';
 import { Card, HScroll, Icon } from '@/components/ui';
 import {
   DICTATION_SET_LEVELS,
@@ -146,7 +147,8 @@ function SetCard({ set }: { set: DictationSet }) {
         { icon: 'volume', label: L(set.accentHint, ACCENT_EN[set.accentHint] ?? set.accentHint) },
       ]}
       done={doneCount}
-      visual={(tone, active) => <Waveform sentences={lines} tone={tone} active={active} />}
+      visualHeight={112}
+      visual={(tone) => <DictationCover tone={tone} topic={set.topic} sentences={lines} />}
       onPress={() => router.push(`/sentence/dictation?set=${set.id}` as never)}
     />
   );
