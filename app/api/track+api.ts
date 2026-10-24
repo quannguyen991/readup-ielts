@@ -44,7 +44,7 @@ export async function POST(request: Request): Promise<Response> {
 
     const db = getSupabaseAdmin() as unknown as SupabaseClient;
     const cleanStr = (v: unknown) => (typeof v === 'string' ? v.slice(0, 100).trim() || null : null);
-    const { error } = await db.from('page_views').insert({
+    const row = {
       visitor: body.visitor,
       session: typeof body.session === 'string' && ID.test(body.session) ? body.session : null,
       path: normalizePath(body.path),
@@ -54,11 +54,16 @@ export async function POST(request: Request): Promise<Response> {
       referrer: referrerHost(typeof body.referrer === 'string' ? body.referrer : null, host),
       country,
       signed_in: body.signedIn === true,
+    };
+    const utm = {
       utm_source: cleanStr(body.utm_source),
       utm_medium: cleanStr(body.utm_medium),
       utm_campaign: cleanStr(body.utm_campaign),
       utm_content: cleanStr(body.utm_content),
-    });
+    };
+    let { error } = await db.from('page_views').insert({ ...row, ...utm });
+    // Bảng chưa có cột UTM (migration 20261023000100 chưa chạy): vẫn ghi lượt xem, bỏ UTM.
+    if (error?.code === 'PGRST204') ({ error } = await db.from('page_views').insert(row));
     if (error && error.code !== 'PGRST205' && error.code !== '42P01') console.warn('[track]', error.message);
   } catch (err) {
     console.warn('[track]', err instanceof Error ? err.message : err);
