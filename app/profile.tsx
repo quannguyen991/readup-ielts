@@ -5,6 +5,7 @@ import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 
+import { AccountSwitch } from '@/components/account/AccountSwitch';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { anim, MOVE } from '@/components/game/game-anim';
@@ -160,6 +161,7 @@ export default function ProfileScreen() {
 
   return (
     <Screen cat="peace">
+      <AccountSwitch />
       {/* Đầu hồ sơ: bìa, ảnh đại diện, tên và đúng hai thông tin chính. Phần còn lại nằm trong các tab. */}
       <Appear>
         <View style={{ borderRadius: 24, overflow: 'hidden', backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: themedHex('#F3F0FB') }}>
