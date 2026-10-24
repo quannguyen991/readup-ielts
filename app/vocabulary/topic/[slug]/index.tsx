@@ -187,6 +187,8 @@ export default function VocabTopicScreen() {
 
   return (
     <Screen>
+      {/* Khung đọc hẹp lại trên màn rộng: thẻ cách luyện không bị kéo giãn ngang. */}
+      <View className="w-full self-center" style={{ maxWidth: 1000 }}>
       <Appear>
         <Button
           className="mb-3 self-start"
@@ -455,6 +457,7 @@ export default function VocabTopicScreen() {
       })()}
 
       <View className="h-6" />
+      </View>
     </Screen>
   );
 }

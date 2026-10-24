@@ -8,6 +8,8 @@ import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
 import { stageAfterQuiz } from '@/services/vocab/deck-status';
 import { loadByDay, nextReview, repairReviews, type ReviewEntry } from '@/services/vocab/review-schedule';
+import { backupLeitner, gradeTopicWord, leitnerToFsrs } from '@/services/vocab/topic-fsrs';
+import { useVocabStore } from './useVocabStore';
 import type { LoopState } from '@/services/vocab/learn-loop';
 import { todayKey } from './persist';
 
@@ -38,6 +40,9 @@ type TopicStudyState = {
   addLapse: (slug: string, word: string) => void;
   /** slug → từ → hộp ôn + ngày đến hạn (`services/vocab/review-schedule.ts`). */
   reviews: Record<string, Record<string, ReviewEntry>>;
+  /** Đã chuyển lịch Leitner cũ sang thẻ FSRS chung (chỉ một lần). */
+  leitnerMigrated: boolean;
+  migrateToSingleSchedule: () => void;
   /** slug → lúc bấm "Xoá tiến độ" (dấu xoá để đồng bộ nhiều máy không làm sống lại tiến độ cũ). */
   resets: Record<string, string>;
   /** Ghi một lần trả lời (đúng / sai) vào lịch ôn theo ngày. */
@@ -89,26 +94,27 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       starred: {},
       lapses: {},
       reviews: {},
+      leitnerMigrated: false,
       resets: {},
-      review: (slug, word, correct) =>
-        set((s) => {
-          const today = todayKey();
-          // Xếp ngày ôn theo tải của TẤT CẢ các bộ (không tính chính từ này) để ôn rải đều, không dồn cục.
-          const load = loadByDay(s.reviews, today, { slug, word });
-          return {
-            reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, today, load) } },
-          };
-        }),
-      practice: (slug, word, correct) =>
-        set((s) => {
-          const today = todayKey();
-          const load = loadByDay(s.reviews, today, { slug, word });
-          return {
-            reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, today, load) } },
-            stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stageAfterQuiz(s.stages[slug]?.[word], correct) } },
-            lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
-          };
-        }),
+      review: (slug, word, correct) => {
+        useVocabStore.setState((v) => gradeTopicWord(v, slug, word, correct, new Date()));
+      },
+      practice: (slug, word, correct) => {
+        useVocabStore.setState((v) => gradeTopicWord(v, slug, word, correct, new Date()));
+        set((s) => ({
+          stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stageAfterQuiz(s.stages[slug]?.[word], correct) } },
+          lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
+        }));
+      },
+      // Chuyển lịch Leitner cũ sang thẻ FSRS chung, một lần. Sao lưu trước; không sao lưu được thì không chuyển.
+      migrateToSingleSchedule: () => {
+        const s = useTopicStudyStore.getState();
+        if (s.leitnerMigrated) return;
+        if (!backupLeitner(s.reviews, s.stages, todayKey())) return;
+        const vocab = useVocabStore.getState();
+        useVocabStore.setState(leitnerToFsrs({ entries: vocab.entries, cards: vocab.cards }, s.reviews, s.stages, new Date()));
+        set({ leitnerMigrated: true });
+      },
       mistakeLog: [],
       lastAt: {},
       touch: (slug) => set((s) => ({ lastAt: { ...s.lastAt, [slug]: new Date().toISOString() } })),
@@ -176,7 +182,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx, activeRound: s.activeRound }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, leitnerMigrated: s.leitnerMigrated, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx, activeRound: s.activeRound }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.

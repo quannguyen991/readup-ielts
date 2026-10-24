@@ -26,9 +26,13 @@ import { activeKinds, type StageKind } from './topic-study';
 export const PRACTICE_ORDER: readonly StageKind[] = ['mcq', 'fill', 'type'];
 
 /** Hỏi lại một từ sau bấy nhiêu câu khác, dù đúng hay sai. */
-export const SPACING = 5;
+export const SPACING = 8;
 /** Quá hạn bấy nhiêu câu thì được ưu tiên trước mọi câu khác. */
 const OVERDUE = 3;
+/** Sau một lần quên (sai hoặc bấm "Tôi không biết"), phải hỏi lại thêm bấy nhiêu lần, dù đúng hay sai, mới được coi là nhớ. */
+export const RELEARN_ASKS = 4;
+/** Khoảng cách giữa các lần hỏi lại sau khi quên — ngắn hơn SPACING để củng cố ngay. */
+export const RELEARN_GAP = 3;
 
 export type LoopOptions = {
   kinds: readonly StageKind[];
@@ -46,6 +50,8 @@ export type Slot = {
   /** Số câu luyện làm đúng (không tính lật thẻ). */
   correct: number;
   lapses: number;
+  /** Số lần hỏi còn phải trả sau lần quên gần nhất; về 0 thì từ mới có thể xong. */
+  owe: number;
   lastKind: StageKind | null;
   lastOk: boolean | null;
   done: boolean;
@@ -97,7 +103,7 @@ export function doneLevel(o: LoopOptions, word: string): number {
 }
 
 function newSlot(word: string): Slot {
-  return { word, level: 0, due: 0, seen: 0, correct: 0, lapses: 0, lastKind: null, lastOk: null, done: false };
+  return { word, level: 0, due: 0, seen: 0, correct: 0, lapses: 0, owe: 0, lastKind: null, lastOk: null, done: false };
 }
 
 /** Dạng câu cho lần gặp này của một từ. Hàm thuần theo `slot` và `state`. */
@@ -168,7 +174,8 @@ export function slotOf(state: LoopState, word: string): Slot {
 /** Câu trả lời này (đúng) có làm xong từ không — để ghi "đã nhớ" đúng lúc. */
 export function finishesWord(state: LoopState, head: LoopItem, correct: boolean, o: LoopOptions): boolean {
   if (!correct || head.kind === 'flash') return false;
-  return slotOf(state, head.word).level + 1 >= doneLevel(o, head.word);
+  const s = slotOf(state, head.word);
+  return s.level + 1 >= doneLevel(o, head.word) && Math.max(0, s.owe - 1) === 0;
 }
 
 /** Chấm câu hiện tại (= `pickNext`) và xếp lịch gặp lại. */
@@ -182,19 +189,27 @@ export function answerLoop(state: LoopState, correct: boolean, o: LoopOptions): 
 
   let next: Slot;
   if (head.kind === 'flash') {
-    next = { ...slot, seen: slot.seen + 1, lastKind: 'flash', due: now + (correct ? 2 : 1) };
+    // Lật thẻ: "Chưa nhớ" là một lần quên; "Đã biết" là một lần hỏi lại đã trả.
+    if (correct) {
+      const owe = Math.max(0, slot.owe - 1);
+      next = { ...slot, seen: slot.seen + 1, owe, lastKind: 'flash', due: now + (owe > 0 ? RELEARN_GAP : 2) };
+    } else {
+      next = { ...slot, seen: slot.seen + 1, owe: RELEARN_ASKS, lapses: slot.lapses + 1, lastKind: 'flash', lastOk: false, due: now + RELEARN_GAP };
+    }
   } else if (correct) {
     const level = slot.level + 1;
-    const done = level >= doneLevel(o, head.word);
+    const owe = Math.max(0, slot.owe - 1);
+    const done = level >= doneLevel(o, head.word) && owe === 0;
     next = {
       ...slot,
       level,
+      owe,
       seen: slot.seen + 1,
       correct: slot.correct + 1,
       lastKind: head.kind,
       lastOk: true,
       done,
-      due: done ? Number.POSITIVE_INFINITY : now + SPACING,
+      due: done ? Number.POSITIVE_INFINITY : now + (owe > 0 ? RELEARN_GAP : SPACING),
     };
   } else {
     const lapses = slot.lapses + 1;
@@ -203,9 +218,10 @@ export function answerLoop(state: LoopState, correct: boolean, o: LoopOptions): 
       level: Math.max(0, slot.level - 1),
       seen: slot.seen + 1,
       lapses,
+      owe: RELEARN_ASKS,
       lastKind: head.kind,
       lastOk: false,
-      due: now + SPACING,
+      due: now + RELEARN_GAP,
     };
   }
 

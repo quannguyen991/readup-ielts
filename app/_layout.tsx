@@ -2,6 +2,7 @@ import '../global.css';
 import '@/lib/nativewind-interop';
 
 import React, { useEffect, useState } from 'react';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { Slot, usePathname } from 'expo-router';
 import Head from 'expo-router/head';
 import { StatusBar } from 'expo-status-bar';
@@ -119,6 +120,10 @@ export default function RootLayout() {
   // Thưởng mốc chuỗi ngày: theo dõi nhật ký học để cộng sao đúng lúc đạt mốc, kể cả khi người học không mở trang Tiến độ.
   useEffect(() => startStreakBonus(), []);
   const hydrated = useHydrated();
+  // Sau khi đọc xong dữ liệu máy: chuyển lịch Leitner cũ sang thẻ FSRS chung (một lần, có sao lưu).
+  useEffect(() => {
+    if (hydrated) useTopicStudyStore.getState().migrateToSingleSchedule();
+  }, [hydrated]);
   const themeId = useRewardStore((s) => s.theme);
   const paletteKey = hydrated && themeId === 'theme-chiikawa' ? 'chiikawa' : hydrated && themeId === 'theme-pixel' ? 'pixel' : hydrated && themeId === 'theme-cyber' ? 'cyber' : 'classic';
   setPaletteId(paletteKey);

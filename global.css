@@ -17,8 +17,11 @@
     font-family: 'BeVietnamPro_400Regular', 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  body {
+  html,
+  body,
+  #root {
     background-color: #FBF9F4;
+    min-height: 100%;
   }
 }
 

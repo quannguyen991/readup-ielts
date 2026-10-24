@@ -166,6 +166,8 @@ export type LearnSettings = {
   accent: 'us' | 'uk';
   /** Giọng đọc: một giọng nữ hoặc một giọng nam tốt nhất của máy. */
   voiceGender: 'f' | 'm';
+  /** Giọng đọc có sẵn clip: Aoede (mặc định) hoặc Adam (Kokoro). */
+  clipVoice: 'aoede' | 'adam';
 };
 
 export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
@@ -181,6 +183,7 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   autoPronounce: true,
   accent: 'us',
   voiceGender: 'f',
+  clipVoice: 'aoede',
 };
 
 /** Các phần đang bật, đúng thứ tự học. Không bật phần nào thì dùng mặc định — không để vòng rỗng. */
@@ -218,6 +221,26 @@ export function pickRound<W extends StudyWord>(
   const ordered = rng ? shuffled(source, rng) : [...source];
   // Từ hay sai lên trước; sort ổn định nên các từ bằng nhau giữ thứ tự cũ.
   return ordered.sort((a, b) => lapsesOf(b.word) - lapsesOf(a.word)).slice(0, size);
+}
+
+/**
+ * Trộn các cấp độ thành một dãy xen kẽ (A1, B1, B2, C1, C2, A1, …). Trong mỗi cấp giữ thứ tự cũ.
+ * Bộ một cấp thì dãy không đổi. Dùng cho vòng học tất cả các cấp để không gặp toàn từ dễ trước.
+ */
+export function mixByLevel<W>(words: readonly W[], levelOf: (w: W) => string): W[] {
+  const lanes = new Map<string, W[]>();
+  for (const w of words) {
+    const lv = levelOf(w);
+    const lane = lanes.get(lv);
+    if (lane) lane.push(w);
+    else lanes.set(lv, [w]);
+  }
+  const groups = [...lanes.values()];
+  const out: W[] = [];
+  for (let i = 0; out.length < words.length; i += 1) {
+    for (const lane of groups) if (i < lane.length) out.push(lane[i]!);
+  }
+  return out;
 }
 
 /**

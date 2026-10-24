@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 
-import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { englishVoice } from './voice';
 import { createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import pronunciationVoice from '@/data/pronunciation-voice.json';
 
 export type { Accent } from './pronounce-core';
@@ -250,9 +250,9 @@ export async function playClip(url: string, opts: { rate?: number } = {}): Promi
 /** Giọng dự phòng cho từ CHƯA có clip giọng mặc định (Aoede): clip Alice (ElevenLabs). */
 export const FALLBACK_CLIP_VOICE: ClipVoice = 'alice';
 
-/** One default voice shared by pronunciation and clip generation. */
+/** Giọng clip đang chọn trong Cài đặt học (Aoede hoặc Adam); mặc định là giọng chung của app. */
 export function currentClipVoice(): ClipVoice {
-  return pronunciationVoice.id as ClipVoice;
+  return useTopicStudyStore.getState().learnSettings.clipVoice ?? (pronunciationVoice.id as ClipVoice);
 }
 
 /**
@@ -272,6 +272,7 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
     if (isWeb) {
       const url =
         (await clips.find(currentClipVoice(), word)) ??
+        (currentClipVoice() !== 'aoede' ? await clips.find('aoede', word) : null) ??
         (await clips.find(FALLBACK_CLIP_VOICE, word));
       if (my !== token) return;
       if (url) {

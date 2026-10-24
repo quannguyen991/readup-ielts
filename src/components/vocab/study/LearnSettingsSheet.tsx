@@ -158,6 +158,12 @@ export function LearnSettingsSheet({
               <Row on={draft.voiceGender === 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'm' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nam (khi thiếu bản ghi)', 'Male voice (when no recording)')}</Text>
               </Row>
+              <Row on={draft.clipVoice === 'aoede'} onPress={() => setDraft({ ...draft, clipVoice: 'aoede' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Aoede (mặc định)', 'Aoede voice (default)')}</Text>
+              </Row>
+              <Row on={draft.clipVoice === 'adam'} onPress={() => setDraft({ ...draft, clipVoice: 'adam' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Adam (Kokoro, nam)', 'Adam voice (Kokoro, male)')}</Text>
+              </Row>
             </Section>
 
             <Section title={L('Nhóm từ', 'Word filter')} warn={matches === 0 && !noDir && !noKind ? L('Không còn từ nào khớp bộ lọc này.', 'No words match this filter.') : undefined}>

@@ -11,6 +11,8 @@ import {
   pickNext,
   slotOf,
   startLoop,
+  RELEARN_ASKS,
+  RELEARN_GAP,
   SPACING,
   type LoopItem,
   type LoopOptions,
@@ -117,8 +119,10 @@ test('xen kẽ: không hai câu liền nhau cùng một từ, và các dạng tr
 });
 
 test('xáo trộn: hai hạt giống cho hai thứ tự câu khác nhau', () => {
-  const a = run(ALL, () => true, words, 1).asked.map((x) => `${x.word}:${x.kind}`).join(' ');
-  const b = run(ALL, () => true, words, 2).asked.map((x) => `${x.word}:${x.kind}`).join(' ');
+  // Vòng thật có 10 từ (ROUND_SIZE); với 6 từ và giãn cách 8 câu thì thứ tự gần như cố định.
+  const round = 'abcdefghij'.split('').map((word) => ({ word }));
+  const a = run(ALL, () => true, round, 1).asked.map((x) => `${x.word}:${x.kind}`).join(' ');
+  const b = run(ALL, () => true, round, 2).asked.map((x) => `${x.word}:${x.kind}`).join(' ');
   assert.notEqual(a, b);
 });
 
@@ -146,14 +150,47 @@ test('đánh dấu xong đúng lúc, thanh tiến độ nhích theo mức', () =
   assert.equal(pickNext(s, o), null);
 });
 
-test('mọi lần hỏi lại (đúng hay sai) cách đúng 5 câu', () => {
+test('hỏi lại sau khi đúng cách SPACING câu, sau khi quên cách RELEARN_GAP câu', () => {
   const o: LoopOptions = { ...ALL, kinds: ['mcq', 'type'] };
   const s = startLoop(words.slice(0, 4), 7);
   const first = pickNext(s, o)!;
   const wrong = answerLoop(s, false, o);
-  assert.equal(slotOf(wrong, first.word).due - wrong.now, SPACING);
+  assert.equal(slotOf(wrong, first.word).due - wrong.now, RELEARN_GAP);
   const right = answerLoop(s, true, o);
   assert.equal(slotOf(right, first.word).due - right.now, SPACING);
-  assert.equal(SPACING, 5);
+  assert.equal(SPACING, 8);
+  assert.equal(RELEARN_GAP, 3);
 });
 
+test('quên rồi thì phải hỏi lại hơn 3 lần nữa mới được coi là nhớ', () => {
+  const o: LoopOptions = { kinds: ['mcq'], interleave: false, canFill: () => false };
+  let st = startLoop([{ word: 'solemn' }], 3);
+  st = answerLoop(st, false, o);
+  assert.equal(slotOf(st, 'solemn').owe, RELEARN_ASKS);
+  let asksAfterMiss = 0;
+  for (let i = 0; i < 40 && !loopDone(st); i += 1) {
+    st = answerLoop(st, true, o);
+    asksAfterMiss += 1;
+  }
+  assert.ok(loopDone(st), 'vòng phải xong');
+  assert.ok(asksAfterMiss > 3, 'sau khi quên phải hỏi thêm hơn 3 lần, thực tế: ' + asksAfterMiss);
+  assert.equal(asksAfterMiss, RELEARN_ASKS);
+});
+
+test('"Tôi không biết" (sai) cũng kích hoạt hỏi lại đủ số lần', () => {
+  const o: LoopOptions = { kinds: ['mcq'], interleave: false, canFill: () => false };
+  const st = answerLoop(startLoop([{ word: 'lucid' }], 5), false, o);
+  assert.equal(slotOf(st, 'lucid').owe, RELEARN_ASKS);
+  assert.equal(slotOf(st, 'lucid').due - st.now, RELEARN_GAP);
+});
+
+test('từ không quên thì không bị ép hỏi thêm: xong sau đúng hai lần', () => {
+  const o: LoopOptions = { kinds: ['mcq'], interleave: false, canFill: () => false };
+  let st = startLoop([{ word: 'clear' }], 9);
+  let asks = 0;
+  for (let i = 0; i < 20 && !loopDone(st); i += 1) {
+    st = answerLoop(st, true, o);
+    asks += 1;
+  }
+  assert.equal(asks, 2);
+});

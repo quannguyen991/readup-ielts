@@ -132,14 +132,17 @@ export function calculateMemoryLevels(
   let mastered = 0;
   let dueCount = 0;
 
-  const nowMs = now.getTime();
+  // "Đến hạn" là đến hạn trong ngày: tới hết hôm nay, khớp với danh sách ở màn hình.
+  const endOfDay = new Date(now);
+  endOfDay.setHours(23, 59, 59, 999);
+  const endOfDayMs = endOfDay.getTime();
 
   for (const entry of Object.values(entries)) {
     const ownCards = CARD_KINDS.map((k) => cards[cardKey(entry.id, k)]).filter(
       (c): c is StoredCard => Boolean(c),
     );
 
-    const hasDue = ownCards.some((c) => new Date(c.due).getTime() <= nowMs);
+    const hasDue = ownCards.some((c) => new Date(c.due).getTime() <= endOfDayMs);
     if (hasDue) dueCount += 1;
 
     if (ownCards.length === 0) {

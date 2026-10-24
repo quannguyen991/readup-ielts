@@ -346,6 +346,7 @@ export function ChoiceGrid({
   onPick,
   hidden = [],
   labels,
+  focused = null,
 }: {
   /** Nhãn thay cho số 1–4, vd. A B C D của đề THPT. */
   labels?: readonly string[];
@@ -355,6 +356,8 @@ export function ChoiceGrid({
   onPick: (i: number) => void;
   /** Phương án Cú đã loại — mờ đi, gạch ngang, không bấm được. */
   hidden?: number[];
+  /** Phương án đang được chọn bằng phím mũi tên (chưa chấm). */
+  focused?: number | null;
 }) {
   const { L } = useL();
   const theme = useStudyTheme();
@@ -369,6 +372,7 @@ export function ChoiceGrid({
         const border = isCorrect ? theme.good : isWrong ? theme.bad : theme.optBorder;
         const bg = isCorrect ? theme.goodBg : isWrong ? theme.badBg : theme.optBg;
         const out = hidden.includes(i) && !isCorrect;
+        const isFocus = focused === i && !revealed;
         return (
           <Pressable
             key={`${i}-${opt}`}
@@ -381,9 +385,10 @@ export function ChoiceGrid({
               flexShrink: 1, flexBasis: compact ? 220 : 300,
               flexGrow: 1,
               minHeight: 48,
-              borderWidth: isCorrect || isWrong ? 1.5 : 1,
+              // Không viền: phương án là hàng chữ có số tròn, chỉ đổi màu khi đã chấm.
+              borderWidth: 0,
               borderColor: border,
-              backgroundColor: bg,
+              backgroundColor: isCorrect || isWrong ? bg : isFocus ? theme.optNum : "transparent",
               opacity: out ? 0.38 : 1,
               ...(Platform.OS === "web" ? ({ transition: "opacity 260ms ease" } as object) : null),
             }}
@@ -611,9 +616,12 @@ export function PrimaryButton({
 export function GhostButton({
   label,
   onPress,
+  focused = false,
 }: {
   label: string;
   onPress: () => void;
+  /** Đang được chọn bằng phím mũi tên: viền sáng, Enter bấm được. */
+  focused?: boolean;
 }) {
   const theme = useStudyTheme();
   return (
@@ -621,7 +629,7 @@ export function GhostButton({
       accessibilityRole="button"
       onPress={onPress}
       className="mt-2 items-center rounded-2xl py-3"
-      style={{ backgroundColor: theme.soft }}
+      style={{ backgroundColor: theme.soft, borderWidth: focused ? 1.5 : 0, borderColor: theme.dark ? "#FFFFFF" : "#475569" }}
     >
       <Text className="font-semi text-body" style={{ color: theme.dark ? theme.muted : "#475569" }}>
         {label}

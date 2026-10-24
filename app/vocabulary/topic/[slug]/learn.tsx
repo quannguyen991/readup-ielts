@@ -39,6 +39,10 @@ import { Appear, CrossFade } from "@/components/motion/Motion";
 import { Icon } from "@/components/ui/Icon";
 import { preloadPronunciation, useAutoPronounce } from "@/services/audio/pronounce";
 import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
+import { levelOf } from "@/data/study-decks";
+import { dueTopicWords } from "@/services/vocab/topic-fsrs";
+import { useVocabStore } from "@/store/useVocabStore";
+import { mixByLevel } from "@/services/vocab/topic-study";
 import {
   activeKinds,
   clozeOf,
@@ -153,16 +157,16 @@ export default function LearnScreen() {
       new Set(st.starred[slug] ?? []),
     );
     const picked = pickRound(
-      pool,
+      mixByLevel(pool, levelOf),
       stageOf,
       ROUND_SIZE,
       s.ordered ? undefined : seededRng(Date.now() % 100000),
       (w) => st.lapses[slug]?.[w] ?? 0,
     );
     // Từ đến hạn ôn hôm nay vào vòng trước, để lịch ôn thật sự chạy (mỗi lần trả lời đẩy hạn xa thêm).
-    const dueSet = new Set(dueBySlug({ [slug]: st.reviews[slug] ?? {} }, todayKey())[slug] ?? []);
-    const dueFirst = pool.filter((w) => dueSet.has(w.word)).slice(0, ROUND_SIZE);
-    const rest = picked.filter((w) => !dueSet.has(w.word));
+    const dueSet = dueTopicWords(useVocabStore.getState(), slug, new Date());
+    const dueFirst = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase())).slice(0, ROUND_SIZE);
+    const rest = picked.filter((w) => !dueSet.has(w.word.trim().toLowerCase()));
     return [...dueFirst, ...rest].slice(0, ROUND_SIZE);
   };
   // Vòng đang dở của bộ này (nếu có và còn đủ từ trong bộ): tiếp tục đúng chỗ đã dừng.
@@ -180,6 +184,8 @@ export default function LearnScreen() {
   const [asked, setAsked] = useState(() => (savedWords && saved ? saved.asked : 0));
   const [wrong, setWrong] = useState(() => (savedWords && saved ? saved.wrong : 0));
   const [picked, setPicked] = useState<number | null>(null);
+  // Phương án đang chọn bằng mũi tên: 0–3 là đáp án, 4 là "Tôi không biết".
+  const [kbFocus, setKbFocus] = useState<number | null>(null);
   const [typed, setTyped] = useState("");
   // Phương án Cú đã loại ở câu đang mở.
   const [hidden, setHidden] = useState<number[]>([]);
@@ -352,6 +358,7 @@ export default function LearnScreen() {
     setMicNote(null);
     setPlan((p) => answerLoop(p, ok, opts));
     setPicked(null);
+    setKbFocus(null);
     setTyped("");
     setHidden([]);
     setVerdict(null);
@@ -360,6 +367,7 @@ export default function LearnScreen() {
     setFlipped(false);
     setStep((n) => n + 1);
     logQuestions(1);
+    if (head) useStudyStore.getState().logWordStudied(slug, head.word);
     answered.current += 1;
   };
 
@@ -492,6 +500,23 @@ export default function LearnScreen() {
         e.preventDefault();
         next();
       }
+      return;
+    }
+    const choice = head?.kind === "mcq" || head?.kind === "fill";
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setKbFocus((f) => (f === null ? (choice ? 0 : 4) : Math.min(4, f + 1)));
+      return;
+    }
+    if (e.key === "ArrowUp" && choice) {
+      e.preventDefault();
+      setKbFocus((f) => (f === null ? 3 : Math.max(0, f - 1)));
+      return;
+    }
+    if (e.key === "Enter" && kbFocus !== null) {
+      e.preventDefault();
+      if (kbFocus === 4) dontKnow();
+      else if (choice) pick(kbFocus);
       return;
     }
     if (head?.kind === "mcq" || head?.kind === "fill") {
@@ -749,10 +774,11 @@ export default function LearnScreen() {
                     correctIndex={fill.correctIndex}
                     onPick={pick}
                     hidden={hidden}
+                    focused={kbFocus}
                   />
                 </View>
                 {verdict === null ? (
-                  <GhostButton label={L("5 · Tôi không biết", "5 · I don't know")} onPress={dontKnow} />
+                  <GhostButton label={L("5 · Tôi không biết", "5 · I don't know")} onPress={dontKnow} focused={kbFocus === 4} />
                 ) : null}
               </View>
             ) : head!.kind === "mcq" && mcq ? (
@@ -795,10 +821,11 @@ export default function LearnScreen() {
                     correctIndex={mcq.correctIndex}
                     onPick={pick}
                     hidden={hidden}
+                    focused={kbFocus}
                   />
                 </View>
                 {verdict === null ? (
-                  <GhostButton label={L("5 · Tôi không biết", "5 · I don't know")} onPress={dontKnow} />
+                  <GhostButton label={L("5 · Tôi không biết", "5 · I don't know")} onPress={dontKnow} focused={kbFocus === 4} />
                 ) : null}
               </View>
             ) : (
@@ -879,7 +906,7 @@ export default function LearnScreen() {
                       disabled={!typed.trim()}
                       onPress={() => submitTyped()}
                     />
-                    <GhostButton label={L("Tôi không biết", "I don't know")} onPress={dontKnow} />
+                    <GhostButton label={L("Tôi không biết", "I don't know")} onPress={dontKnow} focused={kbFocus === 4} />
                   </>
                 ) : null}
               </View>

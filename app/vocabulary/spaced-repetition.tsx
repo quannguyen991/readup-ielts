@@ -76,7 +76,8 @@ export default function SpacedRepetitionScreen() {
 
   // LỊCH ÔN THẬT: lịch Leitner của bộ từ (cập nhật ở MỌI câu trả lời, lưu ngay) + thẻ FSRS của
   // những từ không nằm trong lịch Leitner. Từ nào có ngày ôn thì hiện nhãn "Đã lên lịch".
-  const leitnerDue = useMemo(() => dueDayByWord(reviews), [reviews]);
+  // Lịch Leitner cũ đã chuyển sang thẻ FSRS: màn này chỉ còn lịch chung.
+  const leitnerDue = useMemo(() => new Map<string, string>(), []);
   const fsrsDueDay = useMemo(() => {
     const out = new Map<string, string>();
     for (const e of Object.values(entries)) {
@@ -93,8 +94,8 @@ export default function SpacedRepetitionScreen() {
     () => Object.values(entries).filter((e) => !leitnerDue.has(e.lemma.trim().toLowerCase())).map((e) => fsrsDueDay.get(e.id)).filter((d): d is string => !!d),
     [entries, leitnerDue, fsrsDueDay],
   );
-  const plan = useMemo(() => unifiedLoad(reviews, extraDue, today, 7), [reviews, extraDue, today]);
-  const summary = useMemo(() => scheduleSummary(reviews, today), [reviews, today]);
+  const plan = useMemo(() => unifiedLoad({}, extraDue, today, 7), [extraDue, today]);
+  const summary = useMemo(() => scheduleSummary({}, today), [today]);
   const forecast = useMemo(
     () => plan.map((d, i) => ({ dateKey: d.day, count: d.count, isToday: i === 0, dayLabel: WEEKDAY_LABELS[new Date(`${d.day}T12:00:00Z`).getUTCDay()]! })),
     [plan],
@@ -114,10 +115,13 @@ export default function SpacedRepetitionScreen() {
 
   // Danh sách từ đến hạn ôn
   const dueEntries = useMemo(() => {
+    // Đến hạn trong ngày: tới hết hôm nay, không chỉ tới đúng giờ hiện tại.
+    const endOfDay = new Date(nowMs);
+    endOfDay.setHours(23, 59, 59, 999);
     return Object.values(entries).filter((entry) => {
       return CARD_KINDS.some((kind) => {
         const c = cards[`${entry.id}:${kind}`];
-        return c && new Date(c.due).getTime() <= nowMs;
+        return c && new Date(c.due).getTime() <= endOfDay.getTime();
       });
     });
   }, [entries, cards, nowMs]);

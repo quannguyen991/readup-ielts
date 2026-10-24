@@ -91,10 +91,15 @@ function ensureWebMotion(): void {
   const el = document.createElement('style');
   el.id = WEB_ID;
   el.textContent = `
-@keyframes rm-page-in { 0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.995); } 100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
-@keyframes rm-tab-in { 0% { opacity: 0; transform: translate3d(0, 6px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
-@keyframes rm-item-lift { 0% { opacity: 0.45; transform: translate3d(0, 4px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
-@keyframes rm-item-flat { 0% { opacity: 0.45; } 100% { opacity: 1; } }
+@keyframes rm-page-in { 0% { opacity: 0.85; transform: translate3d(0, 6px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes rm-tab-in { 0% { opacity: 0.85; transform: translate3d(0, 4px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes rm-item-lift { 0% { opacity: 0.7; transform: translate3d(0, 4px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes rm-item-flat { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+.rm-page, .rm-tab, .rm-item {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
 @media (prefers-reduced-motion: reduce) { .rm-page, .rm-tab, .rm-item { animation: none !important; } }`;
   document.head.appendChild(el);
 }

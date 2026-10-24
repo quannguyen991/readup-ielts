@@ -16,7 +16,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
   const { bodyAttributes, bodyNodes, htmlAttributes, headNodes } = useServerDocumentContext();
 
   return (
-    <html lang="vi" {...htmlAttributes}>
+    <html lang="vi" style={{ backgroundColor: '#FBF9F4' }} {...htmlAttributes}>
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -24,18 +24,29 @@ export default function Root({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
         />
-        <meta name="theme-color" content="#F3F0FB" />
+        <meta name="theme-color" content="#FBF9F4" />
         <meta name="color-scheme" content="light" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html, body, #root {
+                background-color: #FBF9F4 !important;
+                min-height: 100%;
+              }
+            `,
+          }}
+        />
 
         {/* Tắt cuộn thân trang để ScrollView hoạt động như native (bản mặc định của Expo). */}
         <ScrollViewStyleReset />
 
         {headNodes}
       </head>
-      <body {...bodyAttributes}>
+      <body style={{ backgroundColor: '#FBF9F4', minHeight: '100%' }} {...bodyAttributes}>
         {children}
         {bodyNodes}
       </body>

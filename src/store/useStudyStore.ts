@@ -93,6 +93,8 @@ export type DailyRecord = {
    * chưa có phút/câu vẫn được tính vào chuỗi. Ngày cũ không có trường này: đọc qua `?? 0`.
    */
   events?: number;
+  /** Từ đã học trong ngày, khoá dạng `bộ|từ` và không trùng: nguồn cho lịch ôn chung. */
+  studied?: string[];
   byActivity: Record<StudyActivityKind, number>;
 };
 
@@ -110,6 +112,7 @@ type StudyState = {
   addSession: (session: Omit<TestSession, 'id' | 'finishedAt'>) => string;
   logStudyTime: (activity: StudyActivityKind, minutes: number) => void;
   logQuestions: (count: number) => void;
+  logWordStudied: (slug: string, word: string) => void;
   logWordsReviewed: (count: number) => void;
   /** Ghi một việc đã hoàn thành (không có phút hay câu): chỉ để ngày đó được tính là ngày học. */
   logEvent: () => void;
@@ -229,6 +232,16 @@ export const useStudyStore = create<StudyState>()(
           const date = todayKey();
           const day = ensureDay(state, date);
           return { daily: { ...state.daily, [date]: { ...day, questions: day.questions + count } } };
+        }),
+
+      logWordStudied: (slug, word) =>
+        set((state) => {
+          const date = todayKey();
+          const day = ensureDay(state, date);
+          const key = `${slug}|${word}`;
+          const studied = day.studied ?? [];
+          if (studied.includes(key)) return state;
+          return { daily: { ...state.daily, [date]: { ...day, studied: [...studied, key] } } };
         }),
 
       logWordsReviewed: (count) =>
