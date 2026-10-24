@@ -268,11 +268,7 @@ export default function IeltsSourcePracticeScreen() {
   const [viewMode, setViewMode] = useState<'catalog' | 'collections' | 'detail'>('catalog');
 
   const [tests, setTests] = useState<TestMeta[]>([]);
-  // Bộ đề Cambridge / VOL đang bảo trì: hiện trong danh sách nhưng chưa mở được.
-  const isUnderMaintenance = (t: TestMeta) => /cambridge|vol/i.test(t.source);
   const openTest = (id: string) => {
-    const meta = tests.find((t) => t.id === id);
-    if (meta && isUnderMaintenance(meta)) return;
     scrollToTop();
     void loadTest(id);
   };
@@ -920,12 +916,7 @@ export default function IeltsSourcePracticeScreen() {
                   </View>
 
                   {/* Grid of Test Cards matching input_file_2 - Large, Balanced Covers */}
-                  {filteredTests.some(isUnderMaintenance) ? (
-                    <View style={{ padding: 14, borderRadius: 12, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F59E0B', gap: 4 }}>
-                      <Text style={{ fontSize: 14, fontWeight: '800', color: '#6A4BD9' }}>Bộ đề Cambridge / VOL đang bảo trì</Text>
-                      <Text style={{ fontSize: 12, color: '#6A4BD9' }}>Các đề này tạm chưa mở được. Bạn có thể làm bộ đề khác trong lúc chờ.</Text>
-                    </View>
-                  ) : null}
+
                   {sectionGroups.map((g) => (
                   <View key={g.key} style={{ gap: 14 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -944,7 +935,7 @@ export default function IeltsSourcePracticeScreen() {
                           key={item.id}
                           onPress={() => openTest(item.id)}
                           style={{
-                            opacity: isUnderMaintenance(item) ? 0.55 : 1,
+                            opacity: 1,
                             flex: 1,
                             minWidth: 420,
                             maxWidth: 540,
