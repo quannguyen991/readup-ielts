@@ -511,6 +511,13 @@ export default function LearnScreen() {
       return;
     }
     const choice = head?.kind === "mcq" || head?.kind === "fill";
+    // Gõ từ: Tab đổi qua lại giữa ô gõ và "Tôi không biết" (không chuyển focus trình duyệt),
+    // để Enter sau đó bấm đúng nút đang được chọn.
+    if (e.key === "Tab" && !choice) {
+      e.preventDefault();
+      setKbFocus((f) => (f === 4 ? null : 4));
+      return;
+    }
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setKbFocus((f) => (f === null ? (choice ? 0 : 4) : Math.min(4, f + 1)));
