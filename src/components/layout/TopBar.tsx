@@ -96,7 +96,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
         một tầng riêng của trang.
       */}
       <View
-        className="px-4 pb-1 pt-2 sm:px-3 sm:pt-3"
+        className="px-4 pb-1 pt-2 sm:px-4 sm:pt-2"
         style={
           fixed
             ? ({ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100 } as const)

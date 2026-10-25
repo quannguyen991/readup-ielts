@@ -93,7 +93,7 @@ export function TaskShell({
     <SafeAreaView edges={['top']} className="flex-1">
       <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
         <View
-          className="w-full self-center px-4 pb-4 pt-3 lg:px-8"
+          className="w-full self-center px-4 pb-4 pt-1 lg:px-8"
           style={{ maxWidth: layout.contentMaxWidth }}
         >
           {variant === 'compact' ? (
