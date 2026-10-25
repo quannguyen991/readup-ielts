@@ -180,7 +180,13 @@ export const useTopicStudyStore = create<TopicStudyState>()(
     {
       name: `${STORAGE_PREFIX}topic-study`,
       storage: storage<TopicStudyState>(),
-      version: 1,
+      version: 2,
+      // v2: lật thẻ + ABCD luôn bật, điền chỗ trống và gõ từ tắt mặc định — đưa lựa chọn cũ về mặc định một lần.
+      migrate: (persisted, version) => {
+        const s = (persisted ?? {}) as Partial<TopicStudyState>;
+        if (version < 2 && s.learnSettings) return { ...s, learnSettings: { ...s.learnSettings, kinds: [...DEFAULT_LEARN_SETTINGS.kinds] } } as TopicStudyState;
+        return s as TopicStudyState;
+      },
       partialize: (s) =>
         ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, leitnerMigrated: s.leitnerMigrated, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx, activeRound: s.activeRound }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.

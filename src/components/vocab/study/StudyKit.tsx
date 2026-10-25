@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 import { ExampleSentence } from "@/components/vocab/ExampleSentence";
-import { Platform, Pressable, ScrollView, Text, View } from "react-native";
+import { Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/services/vocab/pos-ipa";
 import { router, usePathname } from "expo-router";
@@ -147,6 +147,8 @@ export function StudyFrame({
   // Rời màn học (Thoát, đổi trang; đóng tab đã có `pagehide`): ghi ngay tiến độ đang chờ ghi trễ.
   useEffect(() => () => flushPersist(), []);
   const navy = isVocabStudyRoute(usePathname());
+  const { width: winW, height: winH } = useWindowDimensions();
+  const portrait = winH > winW;
   // Đang ngồi toa tàu (cảnh thành phố làm nền): bỏ trận đấu để thẻ học nằm cao, lộ cảnh.
   const travel = navy && theme.id === "scene";
   // Màn học nằm trong chế độ tập trung (không có ScrollView của Screen): không tự cuộn thì trên điện thoại
@@ -190,7 +192,8 @@ export function StudyFrame({
       {/* Trận đấu chỉ khi bật "Nền & hiệu ứng" — mặc định phẳng không dựng gì trang trí. */}
       {battle && !travel && theme.fx ? <BattleStrip className="mt-4" /> : null}
 
-      <View className="mt-5">{children}</View>
+      {/* Màn dọc: khối câu hỏi cao gần hết màn hình, nội dung trải xuống thay vì co cụm trên cùng. */}
+      <View className="mt-5" style={portrait && !travel ? { minHeight: winH * 0.72 } : undefined}>{children}</View>
 
       {footer ? (
         <Text
@@ -364,8 +367,11 @@ export function ChoiceGrid({
   const revealed = picked !== null;
   // Nền toa tàu: thẻ hẹp hơn nên phương án co lại để vẫn đủ 2 cột, đệm nhỏ hơn.
   const compact = React.useContext(TravelCompact);
+  // Màn dọc (điện thoại, máy tính bảng để đứng): mỗi phương án một hàng, chữ và ô số to hơn.
+  const { width, height } = useWindowDimensions();
+  const portrait = height > width && !compact;
   return (
-    <View className={`flex-row flex-wrap ${compact ? "gap-2" : "gap-3"}`}>
+    <View className={`flex-row flex-wrap ${compact ? "gap-2" : portrait ? "gap-3.5" : "gap-3"}`}>
       {options.map((opt, i) => {
         const isCorrect = revealed && i === correctIndex;
         const isWrong = revealed && i === picked && i !== correctIndex;
@@ -380,11 +386,11 @@ export function ChoiceGrid({
             accessibilityLabel={out ? L(`${opt} — Cú đã loại`, `${opt} — removed by Owl`) : undefined}
             disabled={revealed || out}
             onPress={() => onPick(i)}
-            className={`flex-row items-center gap-3 rounded-2xl ${compact ? "px-3 py-2.5" : "px-4 py-3"}`}
+            className={`flex-row items-center gap-3 rounded-2xl ${compact ? "px-3 py-2.5" : portrait ? "px-5 py-4" : "px-4 py-3"}`}
             style={{
-              flexShrink: 1, flexBasis: compact ? 220 : 300,
+              flexShrink: 1, flexBasis: portrait ? "100%" : compact ? 220 : 300,
               flexGrow: 1,
-              minHeight: 48,
+              minHeight: portrait ? 68 : 48,
               // Không viền: phương án là hàng chữ có số tròn, chỉ đổi màu khi đã chấm.
               borderWidth: 0,
               borderColor: border,
@@ -394,13 +400,13 @@ export function ChoiceGrid({
             }}
           >
             <View
-              className="h-7 w-7 items-center justify-center rounded-pill"
+              className={`${portrait ? "h-10 w-10" : "h-7 w-7"} items-center justify-center rounded-pill`}
               style={{
                 backgroundColor: isCorrect ? theme.goodBg : isWrong ? theme.badBg : theme.optNum,
               }}
             >
               <Text
-                className="font-strong text-label"
+                className={`font-strong ${portrait ? "text-body" : "text-label"}`}
                 style={{
                   color: isCorrect ? theme.good : isWrong ? theme.bad : theme.muted,
                 }}
@@ -409,7 +415,7 @@ export function ChoiceGrid({
               </Text>
             </View>
             <Text
-              className="flex-1 font-mid text-body text-ink"
+              className={`flex-1 font-mid ${portrait ? "text-bodyLg" : "text-body"} text-ink`}
               style={out ? { textDecorationLine: "line-through" } : undefined}
             >
               {opt}
@@ -628,10 +634,10 @@ export function GhostButton({
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
-      className="mt-2 items-center rounded-2xl py-3"
+      className="mt-3 items-center rounded-2xl py-4"
       style={{ backgroundColor: theme.soft, borderWidth: focused ? 1.5 : 0, borderColor: theme.dark ? "#FFFFFF" : "#475569" }}
     >
-      <Text className="font-semi text-body" style={{ color: theme.dark ? theme.muted : "#475569" }}>
+      <Text className="font-semi text-bodyLg" style={{ color: theme.dark ? theme.muted : "#475569" }}>
         {label}
       </Text>
     </Pressable>

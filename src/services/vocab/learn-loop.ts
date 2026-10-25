@@ -30,7 +30,7 @@ export const SPACING = 8;
 /** Quá hạn bấy nhiêu câu thì được ưu tiên trước mọi câu khác. */
 const OVERDUE = 3;
 /** Sau một lần quên (sai hoặc bấm "Tôi không biết"), phải hỏi lại thêm bấy nhiêu lần, dù đúng hay sai, mới được coi là nhớ. */
-export const RELEARN_ASKS = 4;
+export const RELEARN_ASKS = 2;
 /** Khoảng cách giữa các lần hỏi lại sau khi quên — ngắn hơn SPACING để củng cố ngay. */
 export const RELEARN_GAP = 3;
 
@@ -96,10 +96,9 @@ function practiceKinds(o: LoopOptions, word: string): StageKind[] {
   return PRACTICE_ORDER.filter((k) => on.includes(k) && (k !== 'fill' || o.canFill(word)));
 }
 
-/** Số lần làm đúng để xong một từ: bằng số dạng luyện đang bật, ít nhất 2. */
+/** Số lần làm đúng để xong một từ: mỗi dạng luyện đang bật đúng một lần (trắc nghiệm ABCD là tối thiểu). */
 export function doneLevel(o: LoopOptions, word: string): number {
-  const n = practiceKinds(o, word).length;
-  return n === 0 ? 2 : Math.max(2, n);
+  return Math.max(1, practiceKinds(o, word).length);
 }
 
 function newSlot(word: string): Slot {

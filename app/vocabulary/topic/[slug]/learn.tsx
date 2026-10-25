@@ -90,7 +90,8 @@ import { color } from "@/theme/tokens";
 import { useL } from "@/i18n/useL";
 
 const NO_STARS: string[] = [];
-const ROUND_SIZE = 10;
+/** Một lượt học tối đa 50 từ; bộ còn ít hơn thì lấy hết. */
+const ROUND_SIZE = 50;
 const KIND_LABEL: Record<StageKind, { vi: string; en: string }> = {
   flash: { vi: "Lật thẻ", en: "Flashcard" },
   mcq: { vi: "Trắc nghiệm", en: "Multiple choice" },
@@ -100,7 +101,7 @@ const KIND_LABEL: Record<StageKind, { vi: string; en: string }> = {
 const AMBER_ON_NAVY = "#FCD34D";
 
 /**
- * Học một bộ từ theo VÒNG 10 TỪ, bốn dạng câu:
+ * Học một bộ từ theo VÒNG tối đa 50 TỪ, bốn dạng câu (lật thẻ và ABCD luôn bật):
  *
  * - LẬT THẺ — gặp từ lần đầu, lật xem mặt sau, tự nói "đã biết" hay "chưa nhớ".
  * - TRẮC NGHIỆM — nhận ra đúng giữa bốn lựa chọn.

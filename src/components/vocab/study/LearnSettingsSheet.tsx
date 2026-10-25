@@ -4,7 +4,7 @@ import { Modal, Platform, Pressable, ScrollView, Text, View } from 'react-native
 import { CARD_SHADOW } from './StudyKit';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { canRecognize } from '@/services/shadow/speech';
-import type { Direction, LearnSettings, StageKind } from '@/services/vocab/topic-study';
+import { FIXED_KINDS, type Direction, type LearnSettings, type StageKind } from '@/services/vocab/topic-study';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -60,9 +60,8 @@ export function LearnSettingsSheet({
   const flip = (key: 'interleave' | 'ordered' | 'autoAdvance' | 'acceptSynonyms' | 'speakAnswer' | 'autoPronounce' | 'starredOnly' | 'unmasteredOnly') =>
     setDraft({ ...draft, [key]: !draft[key] });
   const noDir = draft.directions.length === 0;
-  const noKind = draft.kinds.length === 0;
   const matches = matchCount(draft);
-  const blocked = noDir || noKind || matches === 0;
+  const blocked = noDir || matches === 0;
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
     { key: 'enToVi', label: en ? <>See the <B>English word</B>, pick the Vietnamese meaning</> : <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
@@ -90,13 +89,17 @@ export function LearnSettingsSheet({
           </View>
 
           <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 8 }}>
-            <Section title={L('Dạng câu', 'Question types')} warn={noKind ? L('Phải bật ít nhất một dạng.', 'Turn on at least one type.') : undefined}>
+            <Section title={L('Dạng câu', 'Question types')}>
               {KINDS.map((k) => {
-                const on = draft.kinds.includes(k.key);
+                const fixed = FIXED_KINDS.includes(k.key);
+                const on = fixed || draft.kinds.includes(k.key);
                 return (
-                  <Row key={k.key} on={on} onPress={() => setDraft({ ...draft, kinds: toggleIn(draft.kinds, k.key) })}>
+                  <Row key={k.key} on={on} onPress={() => (fixed ? undefined : setDraft({ ...draft, kinds: toggleIn(draft.kinds, k.key) }))}>
                     <Icon name={k.icon} size={18} color={on ? color.primary : '#64748B'} />
-                    <Text className="flex-1 font-semi text-bodyLg text-ink">{k.label}</Text>
+                    <Text className="flex-1 font-semi text-bodyLg text-ink">
+                      {k.label}
+                      {fixed ? <Text className="text-muted">{L(' · luôn bật', ' · always on')}</Text> : null}
+                    </Text>
                   </Row>
                 );
               })}
@@ -166,7 +169,7 @@ export function LearnSettingsSheet({
               </Row>
             </Section>
 
-            <Section title={L('Nhóm từ', 'Word filter')} warn={matches === 0 && !noDir && !noKind ? L('Không còn từ nào khớp bộ lọc này.', 'No words match this filter.') : undefined}>
+            <Section title={L('Nhóm từ', 'Word filter')} warn={matches === 0 && !noDir ?L('Không còn từ nào khớp bộ lọc này.', 'No words match this filter.') : undefined}>
               <Row on={draft.starredOnly} onPress={() => flip('starredOnly')}>
                 <Icon name="star-fill" size={18} color="#F59E0B" />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">

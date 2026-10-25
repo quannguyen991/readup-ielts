@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { levelLabel, posIpa } from '@/data/study-decks';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
@@ -36,6 +36,9 @@ export function FlipCard({
   height?: number;
 }) {
   const { L } = useL();
+  // Màn dọc: thẻ cao ít nhất nửa màn hình để không để trống phía dưới.
+  const { width: winW, height: winH } = useWindowDimensions();
+  const cardHeight = winH > winW ? Math.max(height, Math.round(winH * 0.5)) : height;
   const rot = useSharedValue(flipped ? 1 : 0);
 
   useLayoutEffect(() => {
@@ -76,7 +79,7 @@ export function FlipCard({
   };
 
   return (
-    <Pressable accessibilityLabel={L('Lật thẻ', 'Flip card')} onPress={onFlip} style={{ height }}>
+    <Pressable accessibilityLabel={L('Lật thẻ', 'Flip card')} onPress={onFlip} style={{ height: cardHeight }}>
       {/* Bầu trời sáng có sao băng: mặt trước đủ, mặt sau nhạt cho dễ đọc chữ. */}
       <Animated.View style={[face, frontStyle, { alignItems: 'center', justifyContent: 'center' }]}>
         {theme.id === 'scene' ? <SkyEffect /> : null}

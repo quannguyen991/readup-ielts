@@ -176,7 +176,7 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   unmasteredOnly: false,
   ordered: true,
   autoAdvance: false,
-  kinds: ['flash', 'mcq', 'fill', 'type'],
+  kinds: ['flash', 'mcq'],
   interleave: true,
   acceptSynonyms: false,
   speakAnswer: false,
@@ -186,10 +186,12 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   clipVoice: 'aoede',
 };
 
-/** Các phần đang bật, đúng thứ tự học. Không bật phần nào thì dùng mặc định — không để vòng rỗng. */
+/** Hai dạng luôn bật: lật thẻ và trắc nghiệm nghĩa ABCD. Hai dạng còn lại (điền chỗ trống, gõ từ) là tuỳ chọn. */
+export const FIXED_KINDS: readonly StageKind[] = ['flash', 'mcq'];
+
+/** Các phần đang bật, đúng thứ tự học. Lật thẻ và trắc nghiệm luôn có mặt. */
 export function activeKinds(kinds: readonly StageKind[]): StageKind[] {
-  const k = STAGE_ORDER.filter((x) => kinds.includes(x));
-  return k.length > 0 ? k : [...DEFAULT_LEARN_SETTINGS.kinds];
+  return STAGE_ORDER.filter((x) => FIXED_KINDS.includes(x) || kinds.includes(x));
 }
 
 /** Mức thuộc của một từ trong bộ: 0 chưa học, 1 đang học, 2 đã nhớ (xong một vòng không sai). */
@@ -212,7 +214,7 @@ export function filterWords<W extends StudyWord>(
 export function pickRound<W extends StudyWord>(
   words: readonly W[],
   stageOf: (w: string) => WordStage,
-  size = 10,
+  size = 50,
   rng?: () => number,
   lapsesOf: (w: string) => number = () => 0,
 ): W[] {

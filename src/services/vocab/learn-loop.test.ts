@@ -119,19 +119,21 @@ test('xen kẽ: không hai câu liền nhau cùng một từ, và các dạng tr
 });
 
 test('xáo trộn: hai hạt giống cho hai thứ tự câu khác nhau', () => {
-  // Vòng thật có 10 từ (ROUND_SIZE); với 6 từ và giãn cách 8 câu thì thứ tự gần như cố định.
-  const round = 'abcdefghij'.split('').map((word) => ({ word }));
+  // Vòng thật tối đa 50 từ (ROUND_SIZE); với ít từ hơn thì thứ tự gần như cố định.
+  const round = Array.from({ length: 50 }, (_, i) => ({ word: `w${i}` }));
   const a = run(ALL, () => true, round, 1).asked.map((x) => `${x.word}:${x.kind}`).join(' ');
   const b = run(ALL, () => true, round, 2).asked.map((x) => `${x.word}:${x.kind}`).join(' ');
   assert.notEqual(a, b);
 });
 
-test('chỉ bật một dạng: vẫn phải làm đúng hai lần giãn cách mới xong', () => {
-  const o: LoopOptions = { ...ALL, kinds: ['mcq'] };
+test('lật thẻ và ABCD luôn bật: mỗi từ đúng một lần lật thẻ và một lần ABCD', () => {
+  const o: LoopOptions = { ...ALL, kinds: [] };
   const { asked, s } = run(o, () => true, words.slice(0, 3));
   assert.ok(loopDone(s));
   assert.equal(asked.length, 6);
-  assert.ok(asked.every((x) => x.kind === 'mcq'));
+  for (const w of words.slice(0, 3)) {
+    assert.deepEqual(asked.filter((x) => x.word === w.word).map((x) => x.kind), ['flash', 'mcq']);
+  }
 });
 
 test('đánh dấu xong đúng lúc, thanh tiến độ nhích theo mức', () => {
@@ -146,7 +148,7 @@ test('đánh dấu xong đúng lúc, thanh tiến độ nhích theo mức', () =
     if (item.word === 'a') seen.push(loopFraction(s, 'a', o));
     if (fin) assert.equal(slotOf(s, item.word).done, true);
   }
-  assert.deepEqual(seen, [0.5, 1]);
+  assert.deepEqual(seen, [0.12, 0.5, 1]);
   assert.equal(pickNext(s, o), null);
 });
 
@@ -156,13 +158,20 @@ test('hỏi lại sau khi đúng cách SPACING câu, sau khi quên cách RELEARN
   const first = pickNext(s, o)!;
   const wrong = answerLoop(s, false, o);
   assert.equal(slotOf(wrong, first.word).due - wrong.now, RELEARN_GAP);
-  const right = answerLoop(s, true, o);
+  // Lật thẻ đúng thì hỏi ABCD sau 2 câu; ABCD đúng thì giãn đúng SPACING câu.
+  let st = answerLoop(s, true, o);
+  let item = pickNext(st, o)!;
+  while (!(item.word === first.word && item.kind === 'mcq')) {
+    st = answerLoop(st, true, o);
+    item = pickNext(st, o)!;
+  }
+  const right = answerLoop(st, true, o);
   assert.equal(slotOf(right, first.word).due - right.now, SPACING);
   assert.equal(SPACING, 8);
   assert.equal(RELEARN_GAP, 3);
 });
 
-test('quên rồi thì phải hỏi lại hơn 3 lần nữa mới được coi là nhớ', () => {
+test('quên rồi thì phải hỏi lại đúng RELEARN_ASKS lần nữa mới được coi là nhớ', () => {
   const o: LoopOptions = { kinds: ['mcq'], interleave: false, canFill: () => false };
   let st = startLoop([{ word: 'solemn' }], 3);
   st = answerLoop(st, false, o);
@@ -173,7 +182,6 @@ test('quên rồi thì phải hỏi lại hơn 3 lần nữa mới được coi 
     asksAfterMiss += 1;
   }
   assert.ok(loopDone(st), 'vòng phải xong');
-  assert.ok(asksAfterMiss > 3, 'sau khi quên phải hỏi thêm hơn 3 lần, thực tế: ' + asksAfterMiss);
   assert.equal(asksAfterMiss, RELEARN_ASKS);
 });
 
