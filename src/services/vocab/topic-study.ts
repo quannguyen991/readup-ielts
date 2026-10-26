@@ -167,7 +167,7 @@ export type LearnSettings = {
   /** Giọng đọc: một giọng nữ hoặc một giọng nam tốt nhất của máy. */
   voiceGender: 'f' | 'm';
   /** Giọng đọc có sẵn clip: Aoede (mặc định) hoặc Adam (Kokoro). */
-  clipVoice: 'aoede' | 'adam';
+  clipVoice: 'aoede' | 'adam' | 'sarah';
 };
 
 export const DEFAULT_LEARN_SETTINGS: LearnSettings = {

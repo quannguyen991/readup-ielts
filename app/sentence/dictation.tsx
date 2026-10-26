@@ -7,7 +7,7 @@ import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
 import { DictationLibrary } from '@/components/sentence/DictationLibrary';
 import { LetterGrid } from '@/components/sentence/LetterGrid';
-import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
+import { pronounce, stopPronounce } from '@/services/audio/pronounce';
 import { Badge, Button, Icon, type IconName } from '@/components/ui';
 import { DICTATION_SENTENCES, type DictationItem } from '@/data/sentence-drills';
 import { DICTATION_VI } from '@/data/dictation-vi';
@@ -271,22 +271,7 @@ function RunningView({
   const [rate, setRate] = useState<number>(1);
   const [liveResult, setLiveResult] = useState(true);
   const [freeChecked, setFreeChecked] = useState(false);
-  const [voiceId, setVoiceId] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
-  const voices = useEnglishVoices();
-
-  /*
-    Chọn giọng mặc định MỘT LẦN, ngay khi danh sách giọng về tới.
-
-    Không đặt trong `useState` khởi tạo: trên web danh sách giọng tới bất đồng
-    bộ sau khi trang đã vẽ, nên lúc khởi tạo nó còn rỗng. Cờ `touched` giữ cho
-    lựa chọn của người dùng không bị ghi đè ở lần danh sách cập nhật sau.
-  */
-  const voiceTouched = useRef(false);
-  useEffect(() => {
-    if (voiceTouched.current || voices.length === 0) return;
-    setVoiceId(preferredVoice(voices));
-  }, [voices]);
 
   const inputRef = useRef<TextInput>(null);
   // Cùng lý do như `sessionStartedAt`: đặt mốc trong effect, không gọi lúc render.
@@ -345,24 +330,11 @@ function RunningView({
     };
   }, [item.id]);
 
-  const play = useCallback(
-    (text: string, speed: number, voice: string | null = voiceId) => {
-      Speech.stop();
-      setSpeaking(true);
-      Speech.speak(text, {
-        language: 'en-US',
-        rate: speed,
-        // Bỏ hẳn khoá `voice` khi chưa chọn, không truyền `undefined`: một số
-        // nền tảng coi khoá có mặt là có yêu cầu và trả về lỗi thay vì dùng
-        // giọng mặc định.
-        ...(voice ? { voice } : {}),
-        onDone: () => setSpeaking(false),
-        onStopped: () => setSpeaking(false),
-        onError: () => setSpeaking(false),
-      });
-    },
-    [voiceId],
-  );
+  // Đọc bằng giọng Sarah (clip Kokoro); thiếu clip thì máy tự lùi về giọng máy.
+  const play = useCallback((text: string, speed: number) => {
+    setSpeaking(true);
+    void pronounce(text, { rate: speed, voice: 'sarah' }).finally(() => setSpeaking(false));
+  }, []);
 
   /*
     Tab = nghe lại. Cùng phím với màn luyện theo video, nên hai màn không dạy
@@ -510,7 +482,7 @@ function RunningView({
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel={speaking ? L('Dừng đọc', 'Stop') : L('Nghe câu', 'Play sentence')}
-                onPress={() => (speaking ? Speech.stop() : play(item.text, rate))}
+                onPress={() => (speaking ? stopPronounce() : play(item.text, rate))}
                 className="-mt-9 h-[72px] w-[72px] items-center justify-center rounded-pill"
                 style={[GOLD_BUTTON as never, { boxShadow: '0 10px 24px rgba(106,75,217,0.32)' }]}
               >
@@ -556,17 +528,6 @@ function RunningView({
                   </Pressable>
                 );
               })}
-            </View>
-            <View className="mt-2 items-center">
-              <VoicePicker
-                voices={voices}
-                voiceId={voiceId}
-                onChange={(id) => {
-                  voiceTouched.current = true;
-                  setVoiceId(id);
-                }}
-                onPreview={(id) => play(item.text, rate, id)}
-              />
             </View>
 
             {/* ---------------------------------------------- chọn chế độ */}

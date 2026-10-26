@@ -16,6 +16,7 @@ import type { ListeningAnswers, ListeningAttempt, ListeningGroupType, ListeningS
 import { stopPronounce } from '@/services/audio/pronounce';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
@@ -97,10 +98,35 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   const hasPreparedAudio = test.source === 'Band 9 Original';
   const speed = real ? 1 : settings.speed;
   const localAudioFiles = useRef<Record<string, { src: string; name: string }>>({});
+  // Listening đọc bằng giọng Sarah (Kokoro) mặc định; chỉ đổi sang Adam khi chọn Adam trong Cài đặt học.
+  // Dùng bản tạo sẵn cùng thư mục; không có thì giữ audio gốc.
+  const clipVoice = useTopicStudyStore((s) => s.learnSettings.clipVoice);
+  const listenVoice = clipVoice === 'adam' ? 'adam' : 'sarah';
+  const [generated, setGenerated] = useState<{ src: string; starts: number[] } | null>(null);
+  useEffect(() => {
+    setGenerated(null);
+    const folder = (section.audio ?? '').split('/')[2];
+    if (!folder) return;
+    const base = `/listening/${folder}/${listenVoice}/s${section.n}`;
+    let alive = true;
+    fetch(`${base}.timings.json`)
+      .then((r) => (r.ok ? (r.json() as Promise<{ timings?: number[][] }>) : null))
+      .then((j) => {
+        if (alive && j?.timings && j.timings.length === section.transcript.length) setGenerated({ src: `${base}.mp3`, starts: j.timings.map((t) => t[0]!) });
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, [listenVoice, section.audio, section.n, section.transcript.length]);
+  const transcript = useMemo(
+    () => (generated ? section.transcript.map((l, i) => ({ ...l, start: generated.starts[i] })) : section.transcript),
+    [generated, section.transcript],
+  );
   const [localAudioRevision, setLocalAudioRevision] = useState(0);
   const audioKey = `${test.id}:${section.n}`;
   const localAudio = localAudioFiles.current[audioKey];
-  const audio = useSectionAudio({ src: localAudio?.src ?? section.audio, transcript: section.transcript, speed, testId: test.id, section: section.n, preferPreparedAudio: hasPreparedAudio });
+  const audio = useSectionAudio({ src: localAudio?.src ?? generated?.src ?? section.audio, transcript, speed, testId: test.id, section: section.n, preferPreparedAudio: hasPreparedAudio });
   useEffect(() => () => {
     for (const item of Object.values(localAudioFiles.current)) URL.revokeObjectURL(item.src);
   }, []);

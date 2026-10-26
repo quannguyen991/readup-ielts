@@ -3,10 +3,10 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
-import { GhostButton, PrimaryButton, StudyCard, StudyFrame, speak, useHotkeys } from '@/components/vocab/study/StudyKit';
+import { GhostButton, PrimaryButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
-import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
+import { pronounce } from '@/services/audio/pronounce';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { isTypedCorrect, letterDiff } from '@/services/vocab/topic-study';
 import { useGameStore } from '@/store/useGameStore';
@@ -35,9 +35,6 @@ export default function DictationScreen() {
   const words = topic?.words ?? [];
   const logQuestions = useStudyStore((s) => s.logQuestions);
 
-  const voices = useEnglishVoices();
-  useTopicStudyStore((s) => s.learnSettings.voiceGender); // đổi Nữ/Nam thì vẽ lại
-  const voiceId = preferredVoice(voices);
 
   const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(0.9);
   const [sentenceMode, setSentenceMode] = useState(false);
@@ -51,12 +48,12 @@ export default function DictationScreen() {
   const target = word ? (sentenceMode && sentenceAvailable ? word.example : word.word) : '';
 
   const play = () => {
-    if (target) speak(target, { rate: speed, voice: voiceId });
+    if (target) pronounce(target, { rate: speed, voice: 'sarah' });
   };
 
   // Đọc ngay khi sang câu mới.
   useEffect(() => {
-    if (target) speak(target, { rate: speed, voice: voiceId });
+    if (target) pronounce(target, { rate: speed, voice: 'sarah' });
     // Chỉ đọc lại khi đổi câu hoặc đổi chế độ — đổi tốc độ không tự đọc.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, sentenceMode]);
@@ -176,7 +173,6 @@ export default function DictationScreen() {
                 </Text>
               </Pressable>
             ))}
-            <VoicePicker voices={voices} voiceId={voiceId} onChange={() => undefined} onPreview={(id) => target && speak(target, { rate: speed, voice: id })} />
           </View>
 
           <TextInput
