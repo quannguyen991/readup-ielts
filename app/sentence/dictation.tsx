@@ -333,7 +333,7 @@ function RunningView({
   // Đọc bằng giọng Sarah (clip Kokoro); thiếu clip thì máy tự lùi về giọng máy.
   const play = useCallback((text: string, speed: number) => {
     setSpeaking(true);
-    void pronounce(text, { rate: speed, voice: 'sarah' }).finally(() => setSpeaking(false));
+    void pronounce(text, { rate: speed }).finally(() => setSpeaking(false));
   }, []);
 
   /*

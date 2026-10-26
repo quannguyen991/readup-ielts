@@ -48,12 +48,12 @@ export default function DictationScreen() {
   const target = word ? (sentenceMode && sentenceAvailable ? word.example : word.word) : '';
 
   const play = () => {
-    if (target) pronounce(target, { rate: speed, voice: 'sarah' });
+    if (target) pronounce(target, { rate: speed });
   };
 
   // Đọc ngay khi sang câu mới.
   useEffect(() => {
-    if (target) pronounce(target, { rate: speed, voice: 'sarah' });
+    if (target) pronounce(target, { rate: speed });
     // Chỉ đọc lại khi đổi câu hoặc đổi chế độ — đổi tốc độ không tự đọc.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, sentenceMode]);

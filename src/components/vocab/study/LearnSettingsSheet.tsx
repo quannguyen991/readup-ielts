@@ -155,12 +155,6 @@ export function LearnSettingsSheet({
               <Row on={draft.accent === 'uk'} onPress={() => setDraft({ ...draft, accent: 'uk' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Anh', 'British English')}</Text>
               </Row>
-              <Row on={draft.voiceGender === 'f'} onPress={() => setDraft({ ...draft, voiceGender: 'f' })}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nữ', 'Female voice')}</Text>
-              </Row>
-              <Row on={draft.voiceGender === 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'm' })}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nam (khi thiếu bản ghi)', 'Male voice (when no recording)')}</Text>
-              </Row>
               <Row on={draft.clipVoice === 'aoede'} onPress={() => setDraft({ ...draft, clipVoice: 'aoede' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Aoede (mặc định)', 'Aoede voice (default)')}</Text>
               </Row>
