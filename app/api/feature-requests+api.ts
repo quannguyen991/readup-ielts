@@ -6,13 +6,15 @@ import { displayableName } from '@/services/gamification/display-name';
 
 /**
  * API "Yêu cầu tính năng".
- *   GET  ?sort=votes|new|mine  → danh sách (không cần đăng nhập để xem; có token thì đánh dấu "đã bình chọn").
- *   POST {action:'create', title, body}  → gửi ý tưởng (cần đăng nhập).
- *   POST {action:'vote', id}             → bật/tắt "Tôi cũng muốn" (cần đăng nhập).
- * Bảng: feature_requests, feature_votes (migration 20261018000100).
+ *   GET  ?sort=votes|new|mine&kind=all|feature|improvement  → danh sách (không cần đăng nhập để xem; có token thì đánh dấu "đã bình chọn").
+ *   POST {action:'create', title, body, kind}  → gửi góp ý (cần đăng nhập). kind mặc định 'feature'.
+ *   POST {action:'vote', id}                   → bật/tắt "Tôi cũng muốn" (cần đăng nhập).
+ * Bảng: feature_requests, feature_votes (migration 20261018000100); cột kind (migration 20261029000100).
  */
 
-type Row = { id: string; author_id: string; title: string; body: string; status: string; created_at: string };
+type Kind = 'feature' | 'improvement';
+type Row = { id: string; author_id: string; title: string; body: string; status: string; kind: Kind; created_at: string };
+const KINDS: readonly Kind[] = ['feature', 'improvement'];
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function fail(request: Request, status: number, vi: string, en: string, setupNeeded = false): Response {
@@ -50,14 +52,16 @@ async function readJson(request: Request): Promise<Record<string, unknown>> {
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url);
   const sort = url.searchParams.get('sort') ?? 'votes';
+  const kindParam = url.searchParams.get('kind') ?? 'all';
   const me = await userOf(request);
   const db = getSupabaseAdmin() as unknown as SupabaseClient;
 
-  let query = db.from('feature_requests').select('id, author_id, title, body, status, created_at').eq('hidden', false).limit(300);
+  let query = db.from('feature_requests').select('id, author_id, title, body, status, kind, created_at').eq('hidden', false).limit(300);
   if (sort === 'mine') {
     if (!me) return fail(request, 401, 'Đăng nhập để xem ý tưởng của bạn.', 'Sign in to see your ideas.');
     query = query.eq('author_id', me);
   }
+  if ((KINDS as readonly string[]).includes(kindParam)) query = query.eq('kind', kindParam);
   query = query.order('created_at', { ascending: false });
   const { data, error } = await query;
   if (error) return dbFail(request, error);
@@ -87,6 +91,7 @@ export async function GET(request: Request): Promise<Response> {
     title: r.title,
     body: r.body,
     status: r.status,
+    kind: r.kind,
     createdAt: r.created_at,
     votes: votes.get(r.id) ?? 0,
     voted: mine.has(r.id),
@@ -108,7 +113,9 @@ export async function POST(request: Request): Promise<Response> {
     const body = typeof input.body === 'string' ? input.body.trim() : '';
     if (title.length < 3 || title.length > 120) return fail(request, 400, 'Tiêu đề cần từ 3 đến 120 ký tự.', 'The title needs 3 to 120 characters.');
     if (body.length > 1500) return fail(request, 400, 'Mô tả tối đa 1500 ký tự.', 'The description is at most 1500 characters.');
-    const { error } = await db.from('feature_requests').insert({ author_id: me, title, body, status: 'new' });
+    const kind = (input.kind ?? 'feature') as Kind;
+    if (!KINDS.includes(kind)) return fail(request, 400, 'Loại góp ý không hợp lệ.', 'Invalid kind of feedback.');
+    const { error } = await db.from('feature_requests').insert({ author_id: me, title, body, status: 'new', kind });
     if (error) return dbFail(request, error);
     return Response.json({ ok: true }, { status: 201 });
   }

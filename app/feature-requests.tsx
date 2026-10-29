@@ -8,17 +8,20 @@ import { useL } from '@/i18n/useL';
 import { useAuthStore } from '@/store/useAuthStore';
 
 /**
- * YÊU CẦU TÍNH NĂNG: người học gửi ý tưởng cho app, người khác bấm "Tôi cũng muốn"
- * để đẩy ý tưởng lên đầu. Dữ liệu qua app/api/feature-requests+api.ts.
+ * GÓP Ý: người học gửi tính năng mới hoặc góp ý cải thiện, người khác bấm "Tôi cũng muốn"
+ * để đẩy lên đầu. Dữ liệu qua app/api/feature-requests+api.ts.
  */
 
 type Sort = 'votes' | 'new' | 'mine';
+type Kind = 'feature' | 'improvement';
+type KindFilter = 'all' | Kind;
 type Status = 'new' | 'reviewing' | 'planned' | 'doing' | 'done';
 type Idea = {
   id: string;
   title: string;
   body: string;
   status: Status;
+  kind: Kind;
   createdAt: string;
   votes: number;
   voted: boolean;
@@ -37,6 +40,11 @@ const STATUS: Record<Status, { vi: string; en: string; bg: string; fg: string }>
   done: { vi: 'Đã xong', en: 'Done', bg: '#DCFCE7', fg: '#15803D' },
 };
 
+const KIND: Record<Kind, { vi: string; en: string; bg: string; fg: string }> = {
+  feature: { vi: 'Tính năng mới', en: 'New feature', bg: '#FFF5C2', fg: '#7A5A00' },
+  improvement: { vi: 'Cải thiện', en: 'Improvement', bg: '#FFE4E6', fg: '#9F1239' },
+};
+
 const card = {
   backgroundColor: '#FFFFFF',
   borderWidth: 2,
@@ -51,10 +59,12 @@ export default function FeatureRequests() {
   const wide = width >= 900;
   const token = useAuthStore((s) => s.session?.access_token ?? null);
   const [sort, setSort] = useState<Sort>('votes');
+  const [kindFilter, setKindFilter] = useState<KindFilter>('all');
   const [items, setItems] = useState<Idea[] | null>(null);
   const [signedIn, setSignedIn] = useState(false);
   const [error, setError] = useState<{ text: string; setup: boolean } | null>(null);
   const [formOpen, setFormOpen] = useState(false);
+  const [newKind, setNewKind] = useState<Kind>('feature');
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [busy, setBusy] = useState(false);
@@ -74,7 +84,7 @@ export default function FeatureRequests() {
 
   const load = useCallback(async () => {
     try {
-      const data = await call(`/api/feature-requests?sort=${sort}`);
+      const data = await call(`/api/feature-requests?sort=${sort}&kind=${kindFilter}`);
       setItems((data.items as Idea[]) ?? []);
       setSignedIn(!!data.signedIn);
       setError(null);
@@ -83,7 +93,7 @@ export default function FeatureRequests() {
       setError({ text: err.message, setup: !!err.setup });
       setItems([]);
     }
-  }, [call, sort]);
+  }, [call, sort, kindFilter]);
 
   useEffect(() => {
     const t = setTimeout(() => void load(), 0);
@@ -94,10 +104,11 @@ export default function FeatureRequests() {
     if (title.trim().length < 3 || busy) return;
     setBusy(true);
     try {
-      await call('/api/feature-requests', { method: 'POST', body: { action: 'create', title: title.trim(), body: body.trim() } });
+      await call('/api/feature-requests', { method: 'POST', body: { action: 'create', kind: newKind, title: title.trim(), body: body.trim() } });
       setTitle('');
       setBody('');
       setFormOpen(false);
+      setKindFilter('all');
       setSort('new');
       await load();
     } catch (e) {
@@ -123,6 +134,11 @@ export default function FeatureRequests() {
     { key: 'new', label: L('Mới nhất', 'Newest'), show: true },
     { key: 'mine', label: L('Của tôi', 'Mine'), show: signedIn },
   ];
+  const kindTabs: { key: KindFilter; label: string }[] = [
+    { key: 'all', label: L('Tất cả', 'All') },
+    { key: 'feature', label: L('Tính năng mới', 'New features') },
+    { key: 'improvement', label: L('Cải thiện', 'Improvements') },
+  ];
 
   return (
     <Screen>
@@ -145,12 +161,34 @@ export default function FeatureRequests() {
 
       {formOpen ? (
         <View style={{ ...card, marginTop: 16, padding: 18, gap: 10 } as object}>
-          <Text className="font-heavy" style={{ fontSize: 18, color: INK }}>{L('Bạn muốn app có gì?', 'What should the app have?')}</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+            {(['feature', 'improvement'] as Kind[]).map((k) => {
+              const on = newKind === k;
+              return (
+                <Pressable
+                  key={k}
+                  accessibilityRole="button"
+                  aria-selected={on}
+                  onPress={() => setNewKind(k)}
+                  style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: on ? INK : '#FFFFFF' } as object}
+                >
+                  <Text className="font-strong" style={{ color: on ? '#FFFFFF' : INK, fontSize: 14 }}>{L(KIND[k].vi, KIND[k].en)}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          <Text className="font-heavy" style={{ fontSize: 18, color: INK }}>
+            {newKind === 'feature' ? L('Bạn muốn app có gì?', 'What should the app have?') : L('Điều gì nên cải thiện hoặc sửa?', 'What should be improved or fixed?')}
+          </Text>
           <TextInput
             value={title}
             onChangeText={setTitle}
             maxLength={120}
-            placeholder={L('Tiêu đề ngắn, ví dụ: Luyện nói theo cặp', 'Short title, e.g. Speaking practice in pairs')}
+            placeholder={
+              newKind === 'feature'
+                ? L('Tiêu đề ngắn, ví dụ: Luyện nói theo cặp', 'Short title, e.g. Speaking practice in pairs')
+                : L('Tiêu đề ngắn, ví dụ: Nút nghe bị lag trên iPhone', 'Short title, e.g. Listen button lags on iPhone')
+            }
             placeholderTextColor="#8A7F72"
             style={{ borderWidth: 2, borderColor: INK, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, fontSize: 16, color: INK, backgroundColor: CREAM } as object}
           />
@@ -186,12 +224,28 @@ export default function FeatureRequests() {
           );
         })}
       </View>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 10 }}>
+        {kindTabs.map((t) => {
+          const on = kindFilter === t.key;
+          return (
+            <Pressable
+              key={t.key}
+              accessibilityRole="button"
+              aria-selected={on}
+              onPress={() => setKindFilter(t.key)}
+              style={{ paddingHorizontal: 14, paddingVertical: 7, borderRadius: 999, borderWidth: 2, borderColor: INK, backgroundColor: on ? '#F5C518' : '#FFFFFF' } as object}
+            >
+              <Text className="font-strong" style={{ color: INK, fontSize: 13 }}>{t.label}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
 
       {error ? (
         <View style={{ ...card, marginTop: 16, padding: 16, backgroundColor: '#FFF4D7' } as object}>
           <Text className="font-strong" style={{ color: INK, fontSize: 15 }}>
             {error.setup
-              ? L('Mục này chưa bật trên máy chủ. Cần áp dụng migration supabase/migrations/20261018000100_feature_requests.sql.', 'Not enabled on the server yet. Apply supabase/migrations/20261018000100_feature_requests.sql.')
+              ? L('Mục này chưa bật trên máy chủ. Cần áp dụng migration supabase/migrations/20261018000100_feature_requests.sql và 20261029000100_feature_requests_kind.sql.', 'Not enabled on the server yet. Apply supabase/migrations/20261018000100_feature_requests.sql and 20261029000100_feature_requests_kind.sql.')
               : error.text}
           </Text>
         </View>
@@ -213,8 +267,13 @@ export default function FeatureRequests() {
               <Appear key={idea.id} index={i} style={{ width: wide ? '48%' : '100%' } as object}>
                 <View style={{ ...card, padding: 18, gap: 10, minHeight: 200 } as object}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-                    <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: st.bg }}>
-                      <Text className="font-strong" style={{ color: st.fg, fontSize: 12 }}>{en ? st.en : st.vi}</Text>
+                    <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
+                      <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: st.bg }}>
+                        <Text className="font-strong" style={{ color: st.fg, fontSize: 12 }}>{en ? st.en : st.vi}</Text>
+                      </View>
+                      <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: KIND[idea.kind]?.bg ?? KIND.feature.bg }}>
+                        <Text className="font-strong" style={{ color: KIND[idea.kind]?.fg ?? KIND.feature.fg, fontSize: 12 }}>{L(KIND[idea.kind]?.vi ?? KIND.feature.vi, KIND[idea.kind]?.en ?? KIND.feature.en)}</Text>
+                      </View>
                     </View>
                     {idea.isMine ? <Text className="font-strong" style={{ color: '#8A7F72', fontSize: 12 }}>{L('Của bạn', 'Yours')}</Text> : null}
                   </View>
