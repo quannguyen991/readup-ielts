@@ -119,6 +119,8 @@ type StudyState = {
   logWpm: (wpm: number) => void;
   /** Ghi một lượt làm bộ từ vựng vào lịch sử, và tính là một việc đã làm trong ngày. */
   logVocabRun: (run: { deck: string; title: string; correct: number; total: number }) => void;
+  /** Ghi hoặc cập nhật một lượt đang học theo `id`: lần đầu tạo dòng, các lần sau chỉ sửa dòng đó. */
+  recordVocabRun: (id: string, run: { deck: string; title: string; correct: number; total: number }) => void;
   toggleBookmark: (articleId: string) => void;
   setTargetBand: (band: number) => void;
   setDailyGoal: (minutes: number) => void;
@@ -274,6 +276,20 @@ export const useStudyStore = create<StudyState>()(
           const entry: VocabRun = { ...run, id: uid(), finishedAt: new Date().toISOString() };
           return {
             vocabRuns: [entry, ...state.vocabRuns].slice(0, MAX_VOCAB_RUNS),
+            daily: { ...state.daily, [date]: { ...day, events: (day.events ?? 0) + 1 } },
+          };
+        }),
+
+      recordVocabRun: (id, run) =>
+        set((state) => {
+          const at = new Date().toISOString();
+          if (state.vocabRuns.some((v) => v.id === id)) {
+            return { vocabRuns: state.vocabRuns.map((v) => (v.id === id ? { ...v, ...run, finishedAt: at } : v)) };
+          }
+          const date = todayKey();
+          const day = ensureDay(state, date);
+          return {
+            vocabRuns: [{ ...run, id, finishedAt: at }, ...state.vocabRuns].slice(0, MAX_VOCAB_RUNS),
             daily: { ...state.daily, [date]: { ...day, events: (day.events ?? 0) + 1 } },
           };
         }),

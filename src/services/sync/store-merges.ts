@@ -1,4 +1,3 @@
-import { effectivePlan } from '@/lib/billing/entitlements';
 import { planRank, type PlanId } from '@/lib/billing/plans';
 import { mergeReviewEntry, type ReviewEntry } from '@/services/vocab/review-schedule';
 
@@ -67,8 +66,20 @@ export function mergeStudy(local: unknown, remote: unknown | null): StudyPayload
 
     readingWpm: [...(b.readingWpm ?? []), ...(a.readingWpm ?? [])].slice(-50),
 
-    vocabRuns: sortByFinishedDesc(unionByKey(a.vocabRuns ?? [], b.vocabRuns ?? [], (v) => v.id)).slice(0, MAX_VOCAB_RUNS),
+    // Một lượt đang học được cập nhật nhiều lần: giữ bản mới nhất, không để bản cũ của máy kia đè lên.
+    vocabRuns: sortByFinishedDesc(latestByKey([...(a.vocabRuns ?? []), ...(b.vocabRuns ?? [])], (v) => v.id)).slice(0, MAX_VOCAB_RUNS),
   };
+}
+
+/** Mỗi khoá giữ một dòng, dòng có `finishedAt` mới hơn thắng. */
+function latestByKey<T extends { finishedAt: string }>(items: T[], keyOf: (item: T) => string): T[] {
+  const best = new Map<string, T>();
+  for (const item of items) {
+    const key = keyOf(item);
+    const prev = best.get(key);
+    if (!prev || item.finishedAt > prev.finishedAt) best.set(key, item);
+  }
+  return [...best.values()];
 }
 
 function emptyStudy(): StudyPayload {
@@ -186,8 +197,12 @@ export function mergeBilling(local: unknown, remote: unknown | null): BillingPay
   // xa hơn (null = không hết hạn). Bản chỉ so hạng gói để một máy có vé Pro ĐÃ
   // HẾT HẠN thắng máy có vé Pro còn hạn — người dùng mất Pro ở máy kia.
   const now = new Date();
-  const rankA = planRank(effectivePlan(a.plan ?? 'free', a.expiresAt ?? null, now));
-  const rankB = planRank(effectivePlan(b.plan ?? 'free', b.expiresAt ?? null, now));
+  // Hạng theo GÓI ĐÃ LƯU và hạn của chính nó, không qua `effectivePlan`: app không thương mại đã ép mọi người về
+  // gói cao nhất, nên dùng effectivePlan ở đây làm hai máy bằng nhau và đồng bộ sẽ kéo bản Free thắng bản trả phí đã lưu.
+  const liveRank = (x: { plan?: PlanId | null; expiresAt?: string | null }) =>
+    planRank(x.expiresAt && new Date(x.expiresAt) <= now ? 'free' : (x.plan ?? 'free'));
+  const rankA = liveRank(a);
+  const rankB = liveRank(b);
   const later = (x: string | null | undefined, y: string | null | undefined) => (x === null || x === undefined ? true : y === null || y === undefined ? false : x > y);
   const winner = rankB > rankA ? b : rankA > rankB ? a : later(b.expiresAt, a.expiresAt) && !later(a.expiresAt, b.expiresAt) ? b : a;
 

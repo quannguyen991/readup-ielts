@@ -43,6 +43,7 @@ import { levelOf } from "@/data/study-decks";
 import { dueTopicWords } from "@/services/vocab/topic-fsrs";
 import { useVocabStore } from "@/store/useVocabStore";
 import { mixByLevel } from "@/services/vocab/topic-study";
+import { uid } from "@/store/persist";
 import {
   activeKinds,
   clozeOf,
@@ -53,9 +54,11 @@ import {
   isTypedCorrect,
   makeChoices,
   makeWordChoices,
+  MIN_ROUND,
   pickRound,
   seededRng,
   synonymMatch,
+  topUpRound,
   type LearnSettings,
   type StageKind,
   type StudyWord,
@@ -134,7 +137,7 @@ export default function LearnScreen() {
   const addLapse = useTopicStudyStore((s) => s.addLapse);
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const logStudyTime = useStudyStore((s) => s.logStudyTime);
-  const logVocabRun = useStudyStore((s) => s.logVocabRun);
+  const recordVocabRun = useStudyStore((s) => s.recordVocabRun);
   // Phút học của lượt: tính từ lúc vào màn tới lúc rời đi; chỉ ghi khi có ít nhất một câu đã chấm.
   const enteredAt = useRef(Date.now());
   const answered = useRef(0);
@@ -169,12 +172,14 @@ export default function LearnScreen() {
     const dueSet = dueTopicWords(useVocabStore.getState(), slug, new Date());
     const dueFirst = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase())).slice(0, ROUND_SIZE);
     const rest = picked.filter((w) => !dueSet.has(w.word.trim().toLowerCase()));
-    return [...dueFirst, ...rest].slice(0, ROUND_SIZE);
+    return topUpRound([...dueFirst, ...rest].slice(0, ROUND_SIZE), mixByLevel(pool, levelOf));
   };
   // Vòng đang dở của bộ này (nếu có và còn đủ từ trong bộ): tiếp tục đúng chỗ đã dừng.
   const [saved] = useState(() => (topic ? useTopicStudyStore.getState().activeRound[slug] ?? null : null));
   const savedWords = useMemo(() => {
     if (!saved || !topic) return null;
+    // Vòng lưu từ bản cũ (ít từ hơn mức tối thiểu hiện tại) thì bỏ, để mở vòng mới đủ 30 từ.
+    if (saved.words.length < Math.min(MIN_ROUND, topic.words.length)) return null;
     const byWord = new Map(topic.words.map((w) => [w.word, w] as const));
     const list = saved.words.map((w) => byWord.get(w));
     return list.every((w): w is StudyWord => !!w) ? list : null;
@@ -288,13 +293,17 @@ export default function LearnScreen() {
   }, [slug, round, plan, asked, wrong, streak, step, setActiveRound]);
 
   const done = !head;
-  // Hết một lượt học: ghi vào lịch sử từ vựng (một lần cho mỗi lượt, có câu đã chấm).
-  const loggedRound = useRef(false);
+  // Lịch sử từ vựng ghi ngay từ câu đầu tiên đã chấm, không đợi hết vòng: học dở vẫn có dòng.
+  // Mỗi lần mở màn là một dòng; số đếm tính từ lúc mở (vòng mới bắt đầu từ 0 thì sang dòng mới).
+  const runRef = useRef<{ id: string; asked: number; wrong: number } | null>(null);
+  const title = topic?.nameVi || topic?.name || slug;
   useEffect(() => {
-    if (!done || loggedRound.current || asked === 0) return;
-    loggedRound.current = true;
-    logVocabRun({ deck: slug, title: topic?.nameVi || topic?.name || slug, correct: asked - wrong, total: asked });
-  }, [done, asked, wrong, slug, topic, logVocabRun]);
+    if (!runRef.current || asked < runRef.current.asked) runRef.current = { id: uid(), asked, wrong };
+    const run = runRef.current;
+    const total = asked - run.asked;
+    if (total === 0) return;
+    recordVocabRun(run.id, { deck: slug, title, correct: total - (wrong - run.wrong), total });
+  }, [asked, wrong, slug, title, recordVocabRun]);
   // Mỗi đoạn một từ, đầy dần theo mức của từ trong vòng.
   const progress = round.map((w) => loopFraction(plan, w.word, opts));
   const stats = roundStats(plan, round);
