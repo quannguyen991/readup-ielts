@@ -13,6 +13,8 @@ import {
   letterDiff,
   makeChoices,
   normalizeAnswer,
+  topUpRound,
+  MIN_ROUND,
   pickRound,
   seededRng,
   type StudyWord,
@@ -133,4 +135,18 @@ test('chấp nhận từ đồng nghĩa chỉ khi khớp đúng một từ trong
   assert.equal(synonymMatch('intern', w), null);
   assert.equal(synonymMatch('', w), null);
   assert.equal(synonymMatch('anything', {}), null);
+});
+
+test('vòng học bù đủ tối thiểu 30 từ từ bộ, không trùng và giữ thứ tự vòng cũ', () => {
+  const pool = Array.from({ length: 40 }, (_, i) => ({ word: 'w' + i })) as never[];
+  const round = [pool[5], pool[2]] as never[];
+  const out = topUpRound(round, pool) as { word: string }[];
+  assert.equal(out.length, MIN_ROUND);
+  assert.deepEqual(out.slice(0, 2).map((w) => w.word), ['w5', 'w2']);
+  assert.equal(new Set(out.map((w) => w.word)).size, out.length);
+});
+
+test('bộ nhỏ hơn 30 từ thì vòng là cả bộ', () => {
+  const pool = Array.from({ length: 12 }, (_, i) => ({ word: 'w' + i })) as never[];
+  assert.equal(topUpRound([pool[0]] as never[], pool).length, 12);
 });

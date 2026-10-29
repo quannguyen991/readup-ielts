@@ -225,6 +225,28 @@ export function pickRound<W extends StudyWord>(
   return ordered.sort((a, b) => lapsesOf(b.word) - lapsesOf(a.word)).slice(0, size);
 }
 
+/** Một lượt học có ít nhất bấy nhiêu từ (khi bộ đủ từ). */
+export const MIN_ROUND = 30;
+
+/**
+ * Bù cho đủ `min` từ (hoặc cả bộ nếu bộ nhỏ hơn): thêm các từ còn thiếu theo thứ tự của `pool`,
+ * kể cả từ đã thuộc. Không đổi thứ tự các từ đã có trong vòng.
+ */
+export function topUpRound<W extends StudyWord>(round: readonly W[], pool: readonly W[], min = MIN_ROUND): W[] {
+  const out = [...round];
+  const need = Math.min(min, pool.length);
+  if (out.length >= need) return out;
+  const have = new Set(out.map((w) => w.word));
+  for (const w of pool) {
+    if (out.length >= need) break;
+    if (!have.has(w.word)) {
+      have.add(w.word);
+      out.push(w);
+    }
+  }
+  return out;
+}
+
 /**
  * Trộn các cấp độ thành một dãy xen kẽ (A1, B1, B2, C1, C2, A1, …). Trong mỗi cấp giữ thứ tự cũ.
  * Bộ một cấp thì dãy không đổi. Dùng cho vòng học tất cả các cấp để không gặp toàn từ dễ trước.
