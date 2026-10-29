@@ -236,6 +236,18 @@ export const stickerGradient = {
   rose: ['#F9A8D4', '#DB2777'],
 } as const satisfies Record<string, readonly [string, string]>;
 
+/**
+ * Vàng ánh kim cho nút và nhãn hành động trong bài làm (thay cho đỏ). `fill` là gradient web;
+ * `ink` là chữ nâu đậm trên nền vàng; `soft` / `softInk` cho nhãn nhỏ nền nhạt.
+ */
+export const goldLeaf = {
+  fill: 'linear-gradient(135deg, #FFF0B8 0%, #F6C945 42%, #E0A21A 72%, #FFE58A 100%)',
+  base: '#F0B429',
+  ink: '#3D2A04',
+  soft: '#FFF4D1',
+  softInk: '#7A5300',
+} as const;
+
 /** Bảng màu cho biểu đồ (Progress — ảnh 3). */
 // Biểu đồ: mỗi chuỗi số một sắc khác hẳn nhau (vàng kim, xanh đậm, đỏ, lá,
 // trời, hồng) — màu biểu đồ là DỮ LIỆU, không được đồng tông với nhau.

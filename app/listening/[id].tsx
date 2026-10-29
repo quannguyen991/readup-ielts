@@ -18,7 +18,7 @@ import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useStudyStore } from '@/store/useStudyStore';
-import { color } from '@/theme/tokens';
+import { color, goldLeaf } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { allowLeave, useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveGuard, useWakeLock } from '@/lib/mobile/useMobileExam';
 
@@ -105,15 +105,33 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
   useEffect(() => {
     setGenerated(null);
     const folder = (section.audio ?? '').split('/')[2];
-    if (clipVoice === 'aoede' || !folder) return;
-    const base = `/listening/${folder}/${clipVoice}/s${section.n}`;
+    if (!folder) return;
     let alive = true;
-    fetch(`${base}.timings.json`)
-      .then((r) => (r.ok ? (r.json() as Promise<{ timings?: number[][] }>) : null))
-      .then((j) => {
-        if (alive && j?.timings && j.timings.length === section.transcript.length) setGenerated({ src: `${base}.mp3`, starts: j.timings.map((t) => t[0]!) });
-      })
-      .catch(() => undefined);
+    // Bản tạo sẵn của một giọng: mp3 + mốc thời gian từng câu, chỉ dùng khi mốc khớp đúng bản chữ.
+    const load = async (voice: string) => {
+      const base = `/listening/${folder}/${voice}/s${section.n}`;
+      const j = await fetch(`${base}.timings.json`)
+        .then((r) => (r.ok ? (r.json() as Promise<{ timings?: number[][] }>) : null))
+        .catch(() => null);
+      if (!j?.timings || j.timings.length !== section.transcript.length) return null;
+      return { src: `${base}.mp3`, starts: j.timings.map((t) => t[0]!) };
+    };
+    (async () => {
+      if (clipVoice !== 'aoede') {
+        const own = await load(clipVoice);
+        if (alive && own) return setGenerated(own);
+      }
+      // Bản gốc của đề không tải được (thiếu file, máy chủ trả trang HTML): dùng bản Sarah hoặc Adam đã có sẵn
+      // cùng nhịp, để nút Phát vẫn ra tiếng thay vì rơi xuống giọng máy.
+      const baseOk = await fetch(section.audio ?? '', { method: 'HEAD' })
+        .then((r) => r.ok && !(r.headers.get('content-type') ?? '').includes('text/html'))
+        .catch(() => false);
+      if (!alive || baseOk) return;
+      for (const voice of ['sarah', 'adam']) {
+        const alt = await load(voice);
+        if (alive && alt) return setGenerated(alt);
+      }
+    })();
     return () => {
       alive = false;
     };
@@ -580,8 +598,8 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                 );
               })}
             </ScrollView>
-            <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setConfirm('submit'); }} className="items-center justify-center rounded-lg px-5" style={{ minHeight: 44, backgroundColor: '#E11D48' }}>
-              <Text className="font-nun-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>{L('Nộp bài', 'Submit')}</Text>
+            <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setConfirm('submit'); }} className="items-center justify-center rounded-lg px-5" style={{ minHeight: 44, backgroundColor: goldLeaf.base, backgroundImage: goldLeaf.fill } as object}>
+              <Text className="font-nun-heavy" style={{ fontSize: 15, color: goldLeaf.ink }}>{L('Nộp bài', 'Submit')}</Text>
             </Pressable>
           </View>
           )}

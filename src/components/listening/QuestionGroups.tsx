@@ -5,7 +5,7 @@ import { Icon } from '@/components/ui/Icon';
 import { coveredNumbers } from '@/services/listening/scoring';
 import type { ListeningAnswers, ListeningGroup, ListeningOption, ListeningQuestion } from '@/services/listening/types';
 import { playSfx } from '@/services/audio/sfx-ui';
-import { color } from '@/theme/tokens';
+import { color, goldLeaf } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { focusNextGap, registerGap, revealOnFocus } from '@/lib/mobile/gap-focus';
 
@@ -34,8 +34,8 @@ export function groupTitle(group: ListeningGroup): string {
 export const GroupBlock = memo(function GroupBlock({ group, ...common }: { group: ListeningGroup } & Common) {
   return (
     <View className="rounded-card border border-border bg-surface p-4" style={{ marginBottom: 16 }}>
-      <View style={{ alignSelf: 'flex-start', backgroundColor: '#FDE8E8', borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5 }}>
-        <Text className="font-nun-heavy" style={{ fontSize: 14, color: '#DC2626' }}>
+      <View style={{ alignSelf: 'flex-start', backgroundColor: goldLeaf.soft, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5 }}>
+        <Text className="font-nun-heavy" style={{ fontSize: 14, color: goldLeaf.softInk }}>
           {groupTitle(group)}
         </Text>
       </View>

@@ -10,6 +10,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { Icon } from '@/components/ui/Icon';
+import { goldLeaf } from '@/theme/tokens';
 import { EXAM_INK, ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
 import { ReadingShell, READING_NAVY } from '@/components/exam/ReadingLayout';
 
@@ -804,9 +805,9 @@ export function ComputerDeliveredExamRoom({
                   setShowConfirmFinish(false);
                   onSubmit();
                 }}
-                style={{ flex: 1, height: 42, borderRadius: 8, backgroundColor: '#E11D48', alignItems: 'center', justifyContent: 'center' }}
+                style={{ flex: 1, height: 42, borderRadius: 8, backgroundColor: goldLeaf.base, backgroundImage: goldLeaf.fill, alignItems: 'center', justifyContent: 'center' } as object}
               >
-                <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 13 }}>Yes, Submit Test</Text>
+                <Text style={{ color: goldLeaf.ink, fontWeight: '900', fontSize: 13 }}>Yes, Submit Test</Text>
               </Pressable>
             </View>
           </View>

@@ -23,6 +23,7 @@ import {
 } from 'react-native';
 
 import { Icon } from '@/components/ui/Icon';
+import { goldLeaf } from '@/theme/tokens';
 
 import { SECTION_MINUTES, type ExamPart, type SourcePage, type TestSection } from '@/services/ielts/source-catalog';
 
@@ -2110,6 +2111,15 @@ export function SourceExamRoom({
             boxShadow: '0 -4px 16px rgba(0,0,0,0.06)',
           }}
         >
+          {/* Đề chưa có file audio trên máy: nói rõ thay vì để nút phát chết. */}
+          {!activeAudioTrackUrl ? (
+            <View style={{ paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#F1F5F9' }}>
+              <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#64748B' }}>
+                Đề này chưa có file audio. Hãy thêm file audio của đề rồi tải lại trang.
+              </Text>
+            </View>
+          ) : null}
+
           {/* TIER 1: AUDIO WAVEFORM SCRUBBER BAR (IMAGE 2) */}
           <View
             style={{
@@ -2126,20 +2136,23 @@ export function SourceExamRoom({
             <Pressable
               accessibilityRole="button"
               onPress={toggleAudioPlay}
+              disabled={!activeAudioTrackUrl}
               style={{
+                opacity: activeAudioTrackUrl ? 1 : 0.4,
                 width: 28,
                 height: 28,
                 borderRadius: 14,
-                backgroundColor: audioIsPlaying ? '#0F172A' : '#DC2626',
+                backgroundColor: audioIsPlaying ? '#0F172A' : goldLeaf.base,
+                backgroundImage: audioIsPlaying ? undefined : goldLeaf.fill,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
             >
-              <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{audioIsPlaying ? '⏸' : '▶'}</Text>
+              <Text style={{ fontSize: 12, color: audioIsPlaying ? '#FFFFFF' : goldLeaf.ink }}>{audioIsPlaying ? '⏸' : '▶'}</Text>
             </Pressable>
 
             {/* Current Time in Red (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12.5, color: '#DC2626', minWidth: 42 }}>
+            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12.5, color: '#B7791F', minWidth: 42 }}>
               {formatAudioTime(audioCurrentTime)}
             </Text>
 
@@ -2166,7 +2179,7 @@ export function SourceExamRoom({
                       width: 3,
                       height: h,
                       borderRadius: 1.5,
-                      backgroundColor: isPlayed ? '#DC2626' : '#CBD5E1',
+                      backgroundColor: isPlayed ? goldLeaf.base : '#CBD5E1',
                     }}
                   />
                 );
@@ -2214,10 +2227,11 @@ export function SourceExamRoom({
                   paddingHorizontal: 12,
                   paddingVertical: 6,
                   borderRadius: 6,
-                  backgroundColor: '#DC2626',
+                  backgroundColor: goldLeaf.base,
+                  backgroundImage: goldLeaf.fill,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: goldLeaf.ink }}>
                   Section {activePartId}
                 </Text>
               </View>
@@ -2237,7 +2251,7 @@ export function SourceExamRoom({
                       borderRadius: 6,
                       backgroundColor: hasAnswer ? '#0F172A' : '#FFFFFF',
                       borderWidth: isCurrent ? 2 : 1,
-                      borderColor: isCurrent ? '#DC2626' : '#E2E8F0',
+                      borderColor: isCurrent ? goldLeaf.base : '#E2E8F0',
                       alignItems: 'center',
                       justifyContent: 'center',
                       position: 'relative',
@@ -2310,13 +2324,14 @@ export function SourceExamRoom({
                   paddingHorizontal: 16,
                   paddingVertical: 9,
                   borderRadius: 8,
-                  backgroundColor: '#DC2626',
+                  backgroundColor: goldLeaf.base,
+                  backgroundImage: goldLeaf.fill,
                   flexDirection: 'row',
                   alignItems: 'center',
                   gap: 4,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: goldLeaf.ink }}>
                   Part {activePartId + 1} →
                 </Text>
               </Pressable>
@@ -2329,10 +2344,11 @@ export function SourceExamRoom({
                   paddingHorizontal: 18,
                   paddingVertical: 9,
                   borderRadius: 8,
-                  backgroundColor: '#DC2626',
+                  backgroundColor: goldLeaf.base,
+                  backgroundImage: goldLeaf.fill,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: goldLeaf.ink }}>
                   {submitted ? '✓ Đã nộp' : 'Nộp bài →'}
                 </Text>
               </Pressable>

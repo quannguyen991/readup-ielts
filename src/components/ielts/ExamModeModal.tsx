@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Platform, Pressable, Text, View } from 'react-native';
 import { Icon } from '@/components/ui/Icon';
+import { goldLeaf } from '@/theme/tokens';
 
 export type ExamMode = 'simulation' | 'practice';
 
@@ -161,7 +162,8 @@ export function ExamModeModal({
                 style={{
                   height: 44,
                   borderRadius: 12,
-                  backgroundColor: '#E11D48',
+                  backgroundColor: goldLeaf.base,
+                  backgroundImage: goldLeaf.fill,
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexDirection: 'row',
@@ -169,7 +171,7 @@ export function ExamModeModal({
                   marginTop: 6,
                 }}
               >
-                <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '900' }}>
+                <Text style={{ color: goldLeaf.ink, fontSize: 14, fontWeight: '900' }}>
                   VÀO PHÒNG THI THẬT →
                 </Text>
               </View>
