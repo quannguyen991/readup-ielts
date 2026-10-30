@@ -14,12 +14,12 @@ import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-dril
 import { bilingualStats } from '@/data/bilingual-repository';
 import { satRwStats } from '@/data/sat-rw-repository';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
-import { scheduleSummary } from '@/services/vocab/review-schedule';
+import { dueEntriesToday } from '@/services/vocab/topic-fsrs';
 import { formatStars } from '@/services/gamification/shop';
 import { todayKey } from '@/store/persist';
 import { useStarBalance } from '@/store/useStarBalance';
 import { useStreak, useStudyStore } from '@/store/useStudyStore';
-import { useTopicStudyStore } from '@/store/useTopicStudyStore';
+import { useVocabStore } from '@/store/useVocabStore';
 import { isMuted, playSfx, setMuted } from './arcade-sfx';
 import { ArcadeSplash, Blink } from './ArcadeSplash';
 
@@ -123,8 +123,9 @@ export function ArcadeHome({ onEnter }: { onEnter: (href: string) => void }) {
   const cabW = Math.min(width - 32, 840);
   const today = todayKey();
   const minutes = useStudyStore((s) => s.daily[today]?.minutes ?? 0);
-  const reviews = useTopicStudyStore((s) => s.reviews);
-  const due = useMemo(() => scheduleSummary(reviews, today).dueToday, [reviews, today]);
+  const vocabEntries = useVocabStore((s) => s.entries);
+  const vocabCards = useVocabStore((s) => s.cards);
+  const due = useMemo(() => dueEntriesToday({ entries: vocabEntries, cards: vocabCards }, new Date()).length, [vocabEntries, vocabCards, today]);
   const stars = useStarBalance();
   const frame = useFrameIndex(2, 650);
   const streak = useStreak().current;

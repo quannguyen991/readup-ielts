@@ -126,18 +126,25 @@ test('xáo trộn: hai hạt giống cho hai thứ tự câu khác nhau', () => 
   assert.notEqual(a, b);
 });
 
-test('lật thẻ và ABCD luôn bật: mỗi từ đúng một lần lật thẻ và một lần ABCD', () => {
+test('lật thẻ không bắt buộc: tắt hết thì mỗi từ chỉ hiện một lần lật thẻ', () => {
   const o: LoopOptions = { ...ALL, kinds: [] };
   const { asked, s } = run(o, () => true, words.slice(0, 3));
   assert.ok(loopDone(s));
-  assert.equal(asked.length, 6);
+  assert.equal(asked.length, 3);
   for (const w of words.slice(0, 3)) {
-    assert.deepEqual(asked.filter((x) => x.word === w.word).map((x) => x.kind), ['flash', 'mcq']);
+    assert.deepEqual(asked.filter((x) => x.word === w.word).map((x) => x.kind), ['flash']);
   }
 });
 
+test('ABCD không bắt buộc: chỉ bật ABCD thì không có lật thẻ', () => {
+  const o: LoopOptions = { ...ALL, kinds: ['mcq'] };
+  const { asked, s } = run(o, () => true, words.slice(0, 3));
+  assert.ok(loopDone(s));
+  assert.ok(asked.every((x) => x.kind === 'mcq'));
+});
+
 test('đánh dấu xong đúng lúc, thanh tiến độ nhích theo mức', () => {
-  const o: LoopOptions = { ...ALL, kinds: ['mcq', 'type'] };
+  const o: LoopOptions = { ...ALL, kinds: ['flash', 'mcq', 'type'] };
   let s = startLoop(words.slice(0, 2));
   assert.equal(loopFraction(s, 'a', o), 0);
   const seen: number[] = [];
@@ -153,7 +160,7 @@ test('đánh dấu xong đúng lúc, thanh tiến độ nhích theo mức', () =
 });
 
 test('hỏi lại sau khi đúng cách SPACING câu, sau khi quên cách RELEARN_GAP câu', () => {
-  const o: LoopOptions = { ...ALL, kinds: ['mcq', 'type'] };
+  const o: LoopOptions = { ...ALL, kinds: ['flash', 'mcq', 'type'] };
   const s = startLoop(words.slice(0, 4), 7);
   const first = pickNext(s, o)!;
   const wrong = answerLoop(s, false, o);
@@ -193,7 +200,7 @@ test('"Tôi không biết" (sai) cũng kích hoạt hỏi lại đủ số lần
 });
 
 test('từ không quên thì không bị ép hỏi thêm: xong sau đúng hai lần', () => {
-  const o: LoopOptions = { kinds: ['mcq'], interleave: false, canFill: () => false };
+  const o: LoopOptions = { kinds: ['flash', 'mcq'], interleave: false, canFill: () => false };
   let st = startLoop([{ word: 'clear' }], 9);
   let asks = 0;
   for (let i = 0; i < 20 && !loopDone(st); i += 1) {

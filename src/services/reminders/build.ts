@@ -6,8 +6,9 @@
  * Dùng LẠI đúng các hàm mà giao diện đang dùng, để lời nhắc không bao giờ nói
  * khác những gì người học thấy trong app:
  *
- * - Số từ đến hạn: `dueBySlug` của lịch ôn Leitner (`services/vocab/review-schedule.ts`),
- *   trên `topic_study.reviews` — cùng con số khối "Ôn hôm nay" hiện.
+ * - Số từ đến hạn: thẻ FSRS trong payload `vocab` (`services/vocab/fsrs-due.ts`) — cùng con số
+ *   trang chủ, trang Ôn và khối "Ôn hôm nay" hiện. Chỉ khi tài khoản chưa có mục FSRS nào mới
+ *   quay về lịch Leitner cũ (`topic_study.reviews`).
  * - Chuỗi ngày: `currentStreak` (`services/gamification/points.ts`) trên
  *   `study.daily`, tính cả ngày giữ chuỗi đã mua (`reward.frozenDays`).
  *
@@ -17,6 +18,7 @@
  */
 import type { Locale } from '@/i18n/keys';
 import { currentStreak, type DayLog } from '@/services/gamification/points';
+import { dueBySlugBefore, NOTEBOOK_DECK, type VocabSlice } from '@/services/vocab/fsrs-due';
 import { dueBySlug, type ReviewEntry } from '@/services/vocab/review-schedule';
 import { SITE_ORIGIN } from '@/lib/site';
 
@@ -66,7 +68,14 @@ export function reminderFacts(payloads: ReminderPayloads, today: string): Remind
   const frozenRaw = asRecord(payloads.reward).frozenDays;
   const frozen = Array.isArray(frozenRaw) ? frozenRaw.filter((d): d is string => typeof d === 'string') : [];
 
-  const bySlug = dueBySlug(reviews, today);
+  // Hết ngày Việt Nam (`today` là ngày VN): máy chủ chạy giờ UTC nên không dùng giờ máy.
+  const endOfVnDay = Date.parse(`${today}T23:59:59.999+07:00`);
+  const vocab = asRecord(payloads.vocab);
+  const fsrs = { entries: asRecord(vocab.entries), cards: asRecord(vocab.cards) } as unknown as VocabSlice;
+  const bySlug =
+    Object.keys(fsrs.entries).length > 0
+      ? dueBySlugBefore(fsrs, endOfVnDay, (e) => (e.id.startsWith('topic_') && e.articleId ? e.articleId : NOTEBOOK_DECK))
+      : dueBySlug(reviews, today);
   const dueSlugs = Object.keys(bySlug);
   const due = dueSlugs.reduce((n, s) => n + (bySlug[s]?.length ?? 0), 0);
   const activeToday = (daily[today]?.minutes ?? 0) > 0 || frozen.includes(today);

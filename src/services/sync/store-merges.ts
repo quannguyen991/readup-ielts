@@ -246,7 +246,41 @@ export type TopicStudyPayload = {
   reviews?: Record<string, Record<string, ReviewEntry>>;
   /** slug → lúc người học bấm "Xoá tiến độ" bộ đó (dấu xoá để gộp nhiều máy không làm sống lại). */
   resets?: Record<string, string>;
+  /** slug → vòng học đang dở (hoặc dấu "đã xong"), để đổi máy vẫn học tiếp đúng chỗ. Có từ 30/10/2026. */
+  activeRound?: Record<string, RoundPayload>;
 };
+
+/** Phần của vòng đang dở mà phép gộp cần biết; còn lại (từ, lịch gặp lại…) đi nguyên khối theo vòng thắng. */
+export type RoundPayload = { at?: number; cleared?: boolean; [key: string]: unknown };
+
+/** Vòng cũ hơn mức này không còn đáng tiếp tục (và dấu xoá cũ hơn mức này không còn cần giữ). */
+const ROUND_TTL_MS = 30 * 86_400_000;
+
+/**
+ * Gộp vòng đang dở của hai máy: mỗi bộ lấy bản có `at` MỚI HƠN (cùng `at` thì lấy bản máy này). Dấu "đã xong" cũng có
+ * `at`, nên vòng cũ ở máy kia không sống lại sau khi đã xong, còn vòng mới hơn dấu thì vẫn thắng. Vòng cũ hơn lúc xoá
+ * tiến độ của bộ đó (`resets`) bị bỏ; vòng và dấu quá 30 ngày cũng bỏ.
+ */
+export function mergeActiveRounds(
+  a: Record<string, RoundPayload> | undefined,
+  b: Record<string, RoundPayload> | undefined,
+  resets: Record<string, string>,
+  nowMs: number = Date.now(),
+): Record<string, RoundPayload> {
+  const out: Record<string, RoundPayload> = {};
+  for (const slug of unionStrings(Object.keys(a ?? {}), Object.keys(b ?? {}))) {
+    const x = a?.[slug];
+    const y = b?.[slug];
+    const pick = !x ? y : !y ? x : (x.at ?? 0) >= (y.at ?? 0) ? x : y;
+    if (!pick) continue;
+    const at = pick.at ?? 0;
+    const resetAt = resets[slug] ? Date.parse(resets[slug]!) : 0;
+    if (resetAt && at <= resetAt) continue;
+    if (at > 0 && nowMs - at > ROUND_TTL_MS) continue;
+    out[slug] = pick;
+  }
+  return out;
+}
 
 /**
  * "Xoá tiến độ bộ này" phải KHÔNG sống lại khi gộp với máy khác (phép gộp là hợp + lấy lớn nhất nên nếu không có
@@ -372,6 +406,7 @@ export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicSt
     lastAt,
     reviews,
     resets,
+    activeRound: mergeActiveRounds(a.activeRound, b.activeRound, resets),
   };
 }
 

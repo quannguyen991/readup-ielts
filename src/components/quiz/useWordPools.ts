@@ -14,7 +14,8 @@ import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { getVocabTopic, VOCAB_TOPICS } from '@/data/vocab-topics';
-import { questWords, dueCount, type QuestDeck, type QuestSource, type SlugWord } from '@/services/vocab/quest-words';
+import { questWords, type QuestDeck, type QuestSource, type SlugWord } from '@/services/vocab/quest-words';
+import { dueEntriesToday, dueLemmasToday } from '@/services/vocab/topic-fsrs';
 import type { QuizWord } from '@/services/city/life';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { todayKey } from '@/store/persist';
@@ -58,11 +59,13 @@ export function useWordPools(): WordPools {
   const decks = useQuestDecks();
   const source = useQuestVocabStore((s) => s.source);
   const stages = useTopicStudyStore((s) => s.stages);
-  const reviews = useTopicStudyStore((s) => s.reviews);
+  // Từ đến hạn lấy từ lịch FSRS thật (cùng nguồn trang chủ và trang Ôn), gom theo bộ gốc.
+  const entries = useVocabStore((s) => s.entries);
+  const cards = useVocabStore((s) => s.cards);
   const { en } = useL();
   return useMemo(() => {
-    const today = todayKey();
-    const r = questWords(source, decks, stages, reviews, today);
+    const now = new Date();
+    const r = questWords(source, decks, stages, dueLemmasToday({ entries, cards }, now));
     // Nhãn tiếng Việt dựng sẵn trong services; giao diện English thì dựng lại từ cùng kết quả.
     let label = r.label;
     if (en) {
@@ -74,8 +77,10 @@ export function useWordPools(): WordPools {
             ? 'Auto · words in progress'
             : `${deck.name} · ${deck.words.length} words`;
     }
-    return { ...r, label, due: dueCount(reviews, today) };
-  }, [source, decks, stages, reviews, en]);
+    return { ...r, label, due: dueEntriesToday({ entries, cards }, now).length };
+    // `today` đổi khi qua nửa đêm: tính lại số từ đến hạn.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [source, decks, stages, entries, cards, en, todayKey()]);
 }
 
 /**

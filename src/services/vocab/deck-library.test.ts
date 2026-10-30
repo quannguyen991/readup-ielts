@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { byRecent, deckProgress, fold, isInProgress, relativeTimeVi } from './deck-library';
+import { byRecent, deckProgress, fold, isInProgress, relativeTimeVi, studiedPct, mergeLastAtByBase, mergeStagesByBase } from './deck-library';
 
 const words = [{ word: 'adopt' }, { word: 'sibling' }, { word: 'kin' }, { word: 'spouse' }];
 
@@ -45,4 +45,42 @@ test('tìm không dấu vẫn ra', () => {
   assert.equal(fold('Môi trường'), 'moi truong');
   assert.equal(fold('Động vật hoang dã'), 'dong vat hoang da');
   assert.ok(fold('Giáo dục').includes(fold('giao duc')));
+});
+
+test('trả lời sai từ chưa học vẫn tính là đang học nhờ tập từ đã hỏi (chặng vẫn 0)', () => {
+  const p = deckProgress(words, { adopt: 2 }, null, new Set(['kin', 'spouse']));
+  assert.deepEqual({ mastered: p.mastered, learning: p.learning }, { mastered: 1, learning: 2 });
+  assert.equal(deckProgress(words, { adopt: 2 }, null).learning, 0);
+});
+
+test('từ đã nhớ không bị tính hai lần khi cũng nằm trong tập đã hỏi', () => {
+  const p = deckProgress(words, { adopt: 2, sibling: 1 }, null, new Set(['adopt', 'sibling']));
+  assert.deepEqual({ mastered: p.mastered, learning: p.learning }, { mastered: 1, learning: 1 });
+});
+
+test('phần trăm đã học = đã nhớ + đang học trên tổng; bộ rỗng là 0', () => {
+  assert.equal(studiedPct({ mastered: 1, learning: 2, total: 4 }), 75);
+  assert.equal(studiedPct({ mastered: 0, learning: 0, total: 0 }), 0);
+});
+
+const baseOf = (slug: string) => slug.replace(/--(all|A1|A2|B1|B2|C1|C2)$/, '');
+
+test('gộp tiến độ các cấp về bộ gốc: lấy chặng cao nhất của từng từ', () => {
+  const merged = mergeStagesByBase(
+    { 'u1--B1': { adopt: 2, sibling: 1 }, 'u1--B2': { kin: 1 }, 'u1--all': { sibling: 2 }, other: { x: 1 } },
+    baseOf,
+  );
+  assert.deepEqual(merged.u1, { adopt: 2, sibling: 2, kin: 1 });
+  assert.deepEqual(merged.other, { x: 1 });
+});
+
+test('thẻ bộ gốc thấy tiến độ học qua cấp, trước đây luôn 0', () => {
+  const merged = mergeStagesByBase({ 'u1--B1': { adopt: 1, sibling: 1 } }, baseOf);
+  assert.equal(deckProgress(words, merged.u1, null).learning, 2);
+  assert.equal(deckProgress(words, { 'u1--B1': undefined } as never, null).learning, 0);
+});
+
+test('mốc học gần nhất của bộ gốc là mốc mới nhất trong các cấp', () => {
+  const m = mergeLastAtByBase({ 'u1--B1': '2026-10-01T00:00:00Z', 'u1--B2': '2026-10-05T00:00:00Z' }, baseOf);
+  assert.equal(m.u1, '2026-10-05T00:00:00Z');
 });

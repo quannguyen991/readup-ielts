@@ -6,14 +6,13 @@
  * học" và không ghi lại gì vào lịch ôn. Giờ người học CHỌN bộ từ:
  *
  * - `auto`: từ đang học dở ở mọi bộ (như cũ);
- * - `due`: các từ đến hạn ôn hôm nay (lịch Leitner của bộ từ);
+ * - `due`: các từ đến hạn ôn hôm nay (lịch FSRS; một từ có một mục chung nên khớp theo danh sách từ của từng bộ);
  * - `<slug bộ>`: đúng một bộ — sổ từ, bộ tự tạo, chủ đề IELTS, bài SAT.
  *
  * Mỗi từ hỏi mang theo `slug` của bộ để màn chơi ghi kết quả vào
  * `useTopicStudyStore.review(slug, word, đúng)` — trả lời trong Quest là ôn thật.
  */
 import type { QuizWord } from '@/services/city/life';
-import { dueBySlug, type ReviewEntry } from './review-schedule';
 
 export type QuestSource = 'auto' | 'due' | (string & {});
 
@@ -46,21 +45,25 @@ export function questWords(
   source: QuestSource,
   decks: readonly QuestDeck[],
   stages: Record<string, Record<string, unknown>> | undefined,
-  reviews: Record<string, Record<string, ReviewEntry>> | undefined,
-  today: string,
+  /** Mọi từ đến hạn hôm nay (chữ thường), từ `dueLemmasToday`. */
+  due: ReadonlySet<string> | undefined,
 ): QuestWords {
   const bySlug = new Map(decks.map((d) => [d.slug, d]));
 
   if (source === 'due') {
-    const due = dueBySlug(reviews, today);
     const focus: SlugWord[] = [];
     const pool: QuizWord[] = [];
-    for (const [slug, words] of Object.entries(due)) {
-      const d = bySlug.get(slug);
-      if (!d) continue;
-      pool.push(...d.words);
-      const want = new Set(words);
-      for (const w of d.words) if (want.has(w.word)) focus.push({ ...w, slug });
+    const seen = new Set<string>();
+    for (const d of decks) {
+      let hit = false;
+      for (const w of d.words) {
+        const key = w.word.trim().toLowerCase();
+        if (!due?.has(key) || seen.has(key)) continue;
+        seen.add(key);
+        focus.push({ ...w, slug: d.slug });
+        hit = true;
+      }
+      if (hit) pool.push(...d.words);
     }
     return { focus, pool: withFallback(pool, decks), label: `Ôn hôm nay · ${focus.length} từ`, source };
   }
@@ -85,9 +88,4 @@ export function questWords(
   if (focus.length === 0)
     for (const d of decks.filter((x) => x.group === 'ielts').slice(0, 3)) focus.push(...d.words.map((w) => ({ ...w, slug: d.slug })));
   return { focus, pool: withFallback(pool, decks), label: 'Tự động · từ đang học', source: 'auto' };
-}
-
-/** Số từ đến hạn hôm nay (cho nhãn "Ôn hôm nay"). */
-export function dueCount(reviews: Record<string, Record<string, ReviewEntry>> | undefined, today: string): number {
-  return Object.values(dueBySlug(reviews, today)).reduce((a, w) => a + w.length, 0);
 }

@@ -4,7 +4,7 @@ import { Modal, Platform, Pressable, ScrollView, Text, View } from 'react-native
 import { CARD_SHADOW } from './StudyKit';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { canRecognize } from '@/services/shadow/speech';
-import { FIXED_KINDS, type Direction, type LearnSettings, type StageKind } from '@/services/vocab/topic-study';
+import { type Direction, type LearnSettings, type StageKind } from '@/services/vocab/topic-study';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -59,9 +59,10 @@ export function LearnSettingsSheet({
   const toggleIn = <T,>(list: T[], v: T) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
   const flip = (key: 'interleave' | 'ordered' | 'autoAdvance' | 'acceptSynonyms' | 'speakAnswer' | 'autoPronounce' | 'starredOnly' | 'unmasteredOnly') =>
     setDraft({ ...draft, [key]: !draft[key] });
+  const noKind = draft.kinds.length === 0;
   const noDir = draft.directions.length === 0;
   const matches = matchCount(draft);
-  const blocked = noDir || matches === 0;
+  const blocked = noKind || noDir || matches === 0;
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
     { key: 'enToVi', label: en ? <>See the <B>English word</B>, pick the Vietnamese meaning</> : <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
@@ -89,17 +90,13 @@ export function LearnSettingsSheet({
           </View>
 
           <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 8 }}>
-            <Section title={L('Dạng câu', 'Question types')}>
+            <Section title={L('Dạng câu', 'Question types')} warn={noKind ? L('Phải bật ít nhất một dạng câu.', 'Turn on at least one question type.') : undefined}>
               {KINDS.map((k) => {
-                const fixed = FIXED_KINDS.includes(k.key);
-                const on = fixed || draft.kinds.includes(k.key);
+                const on = draft.kinds.includes(k.key);
                 return (
-                  <Row key={k.key} on={on} onPress={() => (fixed ? undefined : setDraft({ ...draft, kinds: toggleIn(draft.kinds, k.key) }))}>
+                  <Row key={k.key} on={on} onPress={() => setDraft({ ...draft, kinds: toggleIn(draft.kinds, k.key) })}>
                     <Icon name={k.icon} size={18} color={on ? color.primary : '#64748B'} />
-                    <Text className="flex-1 font-semi text-bodyLg text-ink">
-                      {k.label}
-                      {fixed ? <Text className="text-muted">{L(' · luôn bật', ' · always on')}</Text> : null}
-                    </Text>
+                    <Text className="flex-1 font-semi text-bodyLg text-ink">{k.label}</Text>
                   </Row>
                 );
               })}

@@ -19,19 +19,60 @@ export type DeckProgress = {
   lastAt: string | null;
 };
 
+/**
+ * `studied`: các từ (viết thường) đã được hỏi ít nhất một lần theo lịch ôn FSRS, kể cả khi trả lời sai.
+ * Trả lời sai một từ chưa học không đẩy chặng lên (vẫn 0), nên không có tập này thì từ đó không bao giờ
+ * hiện vào thanh tiến độ dù đã có lịch ôn. Từ có trong tập mà chặng 0 được tính là "đang học".
+ */
 export function deckProgress(
   words: readonly { word: string }[],
   stages: Readonly<Record<string, Stage>> | undefined,
   lastAt: string | null | undefined,
+  studied?: ReadonlySet<string>,
 ): DeckProgress {
   let mastered = 0;
   let learning = 0;
   for (const w of words) {
     const s = stages?.[w.word] ?? 0;
     if (s === 2) mastered += 1;
-    else if (s === 1) learning += 1;
+    else if (s === 1 || studied?.has(w.word.trim().toLowerCase())) learning += 1;
   }
   return { mastered, learning, total: words.length, lastAt: lastAt ?? null };
+}
+
+/**
+ * GỘP TIẾN ĐỘ CÁC CẤP VỀ BỘ GỐC. Bộ nhiều cấp (IELTS B1–C2, Oxford A1–C1) học qua từng cấp riêng, tiến độ
+ * ghi dưới mã `<bộ>--B1`, `<bộ>--all`…; thẻ của bộ gốc ở thư viện phải thấy tổng của chúng, nếu không học bao nhiêu
+ * thanh vẫn đứng yên. `baseOf` đổi mã bất kỳ về mã bộ gốc. Từ ở nhiều mã thì lấy chặng cao nhất.
+ */
+export function mergeStagesByBase<T extends number = Stage>(
+  stages: Readonly<Record<string, Readonly<Record<string, T>>>>,
+  baseOf: (slug: string) => string,
+): Record<string, Record<string, T>> {
+  const out: Record<string, Record<string, T>> = {};
+  for (const [slug, words] of Object.entries(stages)) {
+    const base = baseOf(slug);
+    const into = (out[base] ??= {});
+    for (const [word, stage] of Object.entries(words ?? {})) {
+      if ((into[word] ?? 0) < stage) into[word] = stage;
+    }
+  }
+  return out;
+}
+
+/** Mốc học gần nhất của bộ gốc = mốc mới nhất trong các cấp của nó. */
+export function mergeLastAtByBase(lastAt: Readonly<Record<string, string>>, baseOf: (slug: string) => string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [slug, at] of Object.entries(lastAt)) {
+    const base = baseOf(slug);
+    if (!out[base] || at > out[base]!) out[base] = at;
+  }
+  return out;
+}
+
+/** Phần trăm "đã học" của bộ: từ đã nhớ cộng từ đang học, trên tổng số từ. Thanh tiến độ và vòng % dùng chung số này. */
+export function studiedPct(p: Pick<DeckProgress, 'mastered' | 'learning' | 'total'>): number {
+  return p.total > 0 ? Math.round(((p.mastered + p.learning) / p.total) * 100) : 0;
 }
 
 /** Bộ đang học: đã mở một màn luyện, hoặc đã có từ nhận ra / nhớ được. */

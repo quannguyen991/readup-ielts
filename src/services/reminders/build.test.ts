@@ -109,3 +109,52 @@ test('ngày Việt Nam: +7 giờ cố định, đổi ngày lúc 17:00 UTC', () 
   // Qua năm mới.
   assert.equal(vnTodayKey(Date.parse('2026-12-31T17:30:00Z')), '2027-01-01');
 });
+
+/** Payload `vocab` kiểu FSRS: `n` từ của bộ `slug`, mọi thẻ đến hạn vào `due`. */
+function fsrsVocab(items: { id: string; articleId: string | null; due: string }[]) {
+  const entries: Record<string, unknown> = {};
+  const cards: Record<string, unknown> = {};
+  for (const it of items) {
+    entries[it.id] = { id: it.id, word: it.id, lemma: it.id, articleId: it.articleId };
+    for (const kind of ['word_to_meaning', 'meaning_to_word', 'cloze', 'multiple_choice']) cards[`${it.id}:${kind}`] = { due: it.due };
+  }
+  return { entries, cards };
+}
+
+test('FSRS: từ đến hạn lấy từ thẻ FSRS, đến hạn muộn trong ngày (giờ VN) vẫn tính', () => {
+  const vocab = fsrsVocab([
+    { id: 'topic_travel_a', articleId: 'travel', due: '2026-10-01T15:00:00+07:00' },
+    { id: 'topic_travel_b', articleId: 'travel', due: '2026-09-25T08:00:00+07:00' },
+    { id: 'topic_travel_c', articleId: 'travel', due: '2026-10-02T00:30:00+07:00' },
+  ]);
+  const r = buildReminder({ vocab }, TODAY, 'vi');
+  assert.ok(r);
+  assert.equal(r.title, 'Hôm nay bạn còn 2 từ cần ôn');
+  assert.equal(r.url, 'https://9band.com/vocabulary/topic/travel/quiz?only=due');
+});
+
+test('FSRS thắng lịch Leitner cũ khi cả hai cùng có: số từ không lấy từ Leitner đứng yên', () => {
+  const vocab = fsrsVocab([{ id: 'topic_travel_a', articleId: 'travel', due: '2026-09-30T08:00:00+07:00' }]);
+  const r = buildReminder({ vocab, topic_study: { reviews: reviews('health', 40, '2026-09-20') } }, TODAY, 'vi');
+  assert.equal(r?.title, 'Hôm nay bạn còn 1 từ cần ôn');
+});
+
+test('FSRS: từ lưu lúc đọc bài (không phải mục bộ) gộp vào sổ từ, link về danh sách', () => {
+  const vocab = fsrsVocab([
+    { id: 'topic_travel_a', articleId: 'travel', due: '2026-09-30T08:00:00+07:00' },
+    { id: 'word_x', articleId: 'article-9', due: '2026-09-30T08:00:00+07:00' },
+  ]);
+  const r = buildReminder({ vocab }, TODAY, 'vi');
+  assert.match(r?.title ?? '', /2 từ/u);
+  assert.equal(r?.url, 'https://9band.com/vocabulary/topics');
+});
+
+test('FSRS: chưa có mục nào thì quay về lịch Leitner cũ', () => {
+  const r = buildReminder({ vocab: { entries: {}, cards: {} }, topic_study: { reviews: reviews('travel', 5, TODAY) } }, TODAY, 'vi');
+  assert.match(r?.title ?? '', /5 từ/u);
+});
+
+test('FSRS: payload vocab hỏng không làm sập', () => {
+  assert.equal(buildReminder({ vocab: { entries: 'x', cards: [] } }, TODAY, 'vi'), null);
+  assert.equal(buildReminder({ vocab: { entries: { a: { id: 'a' } }, cards: { 'a:cloze': { due: '2026-09-01T00:00:00Z' } } } }, TODAY, 'vi')?.title, 'Hôm nay bạn còn 1 từ cần ôn');
+});

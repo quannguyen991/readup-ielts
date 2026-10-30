@@ -19,8 +19,8 @@ import { fetchAllPages } from '@/services/admin/fetch-all';
 
 import type { Reminder, ReminderPayloads } from './build';
 
-/** Các khoá `user_state` lời nhắc đọc tới — không kéo payload nặng khác. */
-export const REMINDER_STORE_KEYS = ['topic_study', 'study', 'reward'] as const;
+/** Các khoá `user_state` lời nhắc đọc tới — không kéo payload nặng khác. `vocab` giữ lịch ôn FSRS thật. */
+export const REMINDER_STORE_KEYS = ['topic_study', 'vocab', 'study', 'reward'] as const;
 
 export type PrefsRow = {
   user_id: string;

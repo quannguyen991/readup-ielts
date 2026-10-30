@@ -18,8 +18,8 @@ import { groupByStatus, stageAfterQuiz } from '@/services/vocab/deck-status';
 import { buildThptQuiz, THPT_KIND_LABEL, type ThptDifficulty, type ThptMode, type ThptQuestion } from '@/services/vocab/thpt-quiz';
 import { levelOf } from '@/data/study-decks';
 import { seededRng, shuffled } from '@/services/vocab/topic-study';
-import { dueBySlug } from '@/services/vocab/review-schedule';
-import { todayKey } from '@/store/persist';
+import { dueLemmasToday } from '@/services/vocab/topic-fsrs';
+import { useVocabStore } from '@/store/useVocabStore';
 import { useGameStore } from '@/store/useGameStore';
 import { useStreak, useStudyStore } from '@/store/useStudyStore';
 import { Confetti } from '@/components/motion/Confetti';
@@ -128,13 +128,12 @@ export default function QuizScreen() {
 
   const [seed, setSeed] = useState(() => Date.now() % 100000);
   // Nhóm từ chốt lúc vào màn — đề không co lại giữa chừng khi từ đổi nhóm.
-  const reviews = useTopicStudyStore((s) => s.reviews?.[slug]);
-  const [frozen] = useState(() => ({ stages, lapses, reviews }));
+  // Từ đến hạn lấy từ lịch FSRS thật, chốt lúc vào màn.
+  const [frozen] = useState(() => ({ stages, lapses, due: dueLemmasToday(useVocabStore.getState(), new Date()) }));
   const questions = useMemo<ThptQuestion[]>(() => {
     if (!topic) return [];
     const g = groupByStatus(topic.words, frozen.stages, frozen.lapses);
-    const dueNow = new Set(dueBySlug({ [slug]: frozen.reviews ?? {} }, todayKey())[slug] ?? []);
-    const pool = only === 'due' ? topic.words.filter((w) => dueNow.has(w.word)) : only === 'review' ? g.review : only === 'new' ? g.new : topic.words;
+    const pool = only === 'due' ? topic.words.filter((w) => frozen.due.has(w.word.trim().toLowerCase())) : only === 'review' ? g.review : only === 'new' ? g.new : topic.words;
     const rng = seededRng(seed);
     const deckLvls = ['B1', 'B2', 'C1', 'C2'].filter((lv) => topic.words.some((w) => levelOf(w) === lv));
     const chosen = levels.filter((lv) => deckLvls.includes(lv));

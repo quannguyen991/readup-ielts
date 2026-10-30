@@ -16,7 +16,7 @@ import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
-import { scheduleSummary } from '@/services/vocab/review-schedule';
+import { dueEntriesToday } from '@/services/vocab/topic-fsrs';
 import { todayKey } from '@/store/persist';
 import { useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -138,8 +138,10 @@ export default function HomeScreen() {
       ?? articles.find((article) => !readingProgress[article.id])
       ?? articles[0];
   }, [readingProgress]);
-  const reviews = useTopicStudyStore((s) => s.reviews);
-  const due = useMemo(() => scheduleSummary(reviews, today).dueToday, [reviews, today]);
+  // Số từ đến hạn lấy từ lịch FSRS thật (cùng định nghĩa với trang Ôn lặp ngắt quãng).
+  const vocabEntries = useVocabStore((s) => s.entries);
+  const vocabCards = useVocabStore((s) => s.cards);
+  const due = useMemo(() => dueEntriesToday({ entries: vocabEntries, cards: vocabCards }, new Date()).length, [vocabEntries, vocabCards, today]);
   const vocabCount = useVocabStore((s) => Object.keys(s.entries).length);
   const completedPassages = Object.values(readingProgress).filter((item) => item.percentCompleted >= 100).length;
   const weeklyMinutes = recentDays.reduce((sum, day) => sum + day.minutes, 0);

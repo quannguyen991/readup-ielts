@@ -1,6 +1,5 @@
 import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
-import { DueToday } from '@/components/vocab/DueToday';
 import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -20,7 +19,9 @@ import { Grid } from '@/components/layout/Grid';
 import type { IconName } from '@/components/ui/Icon';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { deckLook } from '@/components/vocab/deck-style';
-import { deckProgress } from '@/services/vocab/deck-library';
+import { deckProgress, studiedPct } from '@/services/vocab/deck-library';
+import { currentStep, stepSummary } from '@/services/vocab/level-path';
+import { studiedLemmas } from '@/services/vocab/topic-fsrs';
 import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
 import { LevelCard } from '@/components/vocab/LevelCard';
@@ -60,16 +61,40 @@ const GROUP_TONE = ['#22A06B', '#6A4BD9', '#F0703F', '#E0533D'] as const;
  * lịch ôn riêng, và người học sẽ ôn cùng một từ hai lần.
  */
 /**
- * Bước chọn mức trước khi học một bộ có nhiều mức (Oxford A1–C1, bộ IELTS B1–C2, các bộ band):
- * "Tất cả" hoặc từng mức. Mỗi mức là một bộ riêng (`<bộ>--B1`), nên tiến độ và các cách luyện tách bạch theo mức.
+ * Bước chọn mức trước khi học một bộ có nhiều mức (Oxford A1–C1, bộ IELTS B1–C2, các bộ band).
+ *
+ * Các mức là một LỘ TRÌNH đánh số: Bước 1, Bước 2, … theo thứ tự từ dễ tới khó. Tiến độ của
+ * từng bước đã lưu sẵn theo bộ `<bộ>--B1` nên lộ trình suy ra từ đó: bước đầu tiên chưa thuộc hết
+ * là bước đang học, và nút "Học tiếp" đưa thẳng vào bước đó. "Tất cả" đứng cuối, không đánh số.
  */
 function LevelChooser({ slug, levels }: { slug: string; levels: string[] }) {
   const { L, en } = useL();
   useReadingFonts();
+  const stages = useTopicStudyStore((s) => s.stages);
+  const reviews = useTopicStudyStore((s) => s.reviews);
+  const rounds = useTopicStudyStore((s) => s.activeRound);
+  const vocab = useVocabStore((s) => s);
   const deck = getStaticDeck(slug);
   if (!deck) return null;
-  const count = (lv: string) => (lv === 'all' ? deck.words.length : deck.words.filter((w) => levelOf(w) === lv).length);
-  const options = [{ lv: 'all' }, ...levels.map((lv) => ({ lv }))];
+  const studiedSet = studiedLemmas(vocab);
+  const path = levels.map((lv, i) => {
+    const key = `${slug}--${lv}`;
+    return stepSummary(
+      {
+        words: deck.words.filter((w) => levelOf(w) === lv),
+        stages: stages?.[key],
+        reviews: reviews?.[key],
+        studied: studiedSet,
+        roundAsked: rounds?.[key]?.asked ?? null,
+      },
+      i + 1,
+    );
+  });
+  const current = currentStep(path);
+  const studiedAll = path.reduce((a, p) => a + p.studied, 0);
+  const totalAll = path.reduce((a, p) => a + p.total, 0);
+  const currentPct = current && current.total > 0 ? Math.round((current.studied / current.total) * 100) : 0;
+  const levelKey = (lv: string) => `${slug}--${lv}`;
   return (
     <Screen>
       <Appear>
@@ -84,20 +109,70 @@ function LevelChooser({ slug, levels }: { slug: string; levels: string[] }) {
         <LevelHeader
           eyebrow={L('Bộ từ', 'Word set')}
           title={en && deck.name !== deck.nameVi ? deck.name : deck.nameVi}
-          subtitle={L('Chọn cấp độ để học. Mỗi cấp có tiến độ riêng.', 'Pick a level to study. Each level keeps its own progress.')}
+          subtitle={L('Đi theo lộ trình từ Bước 1, hoặc chọn một cấp bất kỳ. Mỗi cấp có tiến độ riêng.', 'Follow the path from Step 1, or pick any level. Each level keeps its own progress.')}
         />
+
+        {/* Lộ trình: bước đang học và tiến độ, để người học biết hôm nay tiếp tục ở đâu. */}
+        <View className="mt-6 rounded-2xl bg-white p-4" style={{ borderWidth: 1.5, borderColor: '#E6D2A6', gap: 8 }}>
+          <Text className="font-strong text-label text-muted">
+            {L(`LỘ TRÌNH CỦA BẠN · ĐÃ HỌC ${studiedAll}/${totalAll} TỪ`, `YOUR PATH · ${studiedAll}/${totalAll} WORDS STUDIED`)}
+          </Text>
+          {current ? (
+            <>
+              <Text className="font-heavy text-cardTitle text-ink">{L(`Bước ${current.n} · ${levels[current.n - 1]}`, `Step ${current.n} · ${levels[current.n - 1]}`)}</Text>
+              <Text className="font-sans text-body text-muted">
+                {L(
+                  `Đã học ${current.studied}/${current.total} · đã nhớ ${current.learned}`,
+                  `Studied ${current.studied}/${current.total} · remembered ${current.learned}`,
+                )}
+              </Text>
+              {current.roundAsked !== null && current.roundAsked > 0 ? (
+                <Text className="font-sans text-label text-muted">
+                  {L(`Vòng đang dở: ${current.roundAsked} câu. Vào lại sẽ tiếp tục đúng chỗ đã dừng.`, `Round in progress: ${current.roundAsked} answers. Coming back resumes where you stopped.`)}
+                </Text>
+              ) : null}
+              <View className="h-2 w-full overflow-hidden rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
+                <View className="h-2 rounded-pill" style={{ width: `${currentPct}%`, backgroundColor: color.primary }} />
+              </View>
+              <Button
+                className="mt-1 self-start"
+                label={L('Học tiếp', 'Continue')}
+                iconLeft="chevron-right"
+                onPress={() => router.push(`/vocabulary/topic/${levelKey(levels[current.n - 1]!)}/learn` as never)}
+              />
+            </>
+          ) : (
+            <Text className="font-sans text-body text-ink">{L('Bạn đã học hết mọi bước của lộ trình.', 'You have studied every step of the path.')}</Text>
+          )}
+        </View>
+
         <Text className="mt-6 font-heavy text-sectionTitle text-ink">{L('Chọn cấp độ', 'Choose a level')}</Text>
         <View className="mt-3 flex-row flex-wrap" style={{ gap: 14 }}>
-          {options.map((o) => (
-            <LevelCard
-              key={o.lv}
-              lv={o.lv}
-              en={en}
-              title={o.lv === 'all' ? L('Tất cả', 'All levels') : o.lv}
-              sub={L(`${count(o.lv)} từ`, `${count(o.lv)} words`)}
-              onPress={() => router.push(`/vocabulary/topic/${slug}--${o.lv}` as never)}
-            />
-          ))}
+          {path.map((p) => {
+            const lv = levels[p.n - 1]!;
+            return (
+              <LevelCard
+                key={lv}
+                lv={lv}
+                en={en}
+                title={lv}
+                selected={current?.n === p.n}
+                sub={
+                  p.finished
+                    ? L(`Bước ${p.n} · Đã học xong`, `Step ${p.n} · Studied`)
+                    : L(`Bước ${p.n} · ${p.studied}/${p.total} đã học`, `Step ${p.n} · ${p.studied}/${p.total} studied`)
+                }
+                onPress={() => router.push(`/vocabulary/topic/${levelKey(lv)}` as never)}
+              />
+            );
+          })}
+          <LevelCard
+            lv="all"
+            en={en}
+            title={L('Tất cả', 'All levels')}
+            sub={L(`${deck.words.length} từ · không theo thứ tự`, `${deck.words.length} words · no order`)}
+            onPress={() => router.push(`/vocabulary/topic/${slug}--all` as never)}
+          />
         </View>
       </Appear>
     </Screen>
@@ -110,6 +185,7 @@ export default function VocabTopicScreen() {
   const { L, en } = useL();
 
   const entries = useVocabStore((s) => s.entries);
+  const cards = useVocabStore((s) => s.cards);
   const saveWord = useVocabStore((s) => s.saveWord);
   const [justSaved, setJustSaved] = useState(0);
   // Số từ đã hiện trong danh sách, tăng dần khi bấm "Hiện thêm".
@@ -180,10 +256,10 @@ export default function VocabTopicScreen() {
   const groups = groupDeckWords(topic);
   const look = deckLook(topic.slug);
   const bg = look.accent[1];
-  const progress = deckProgress(topic.words, stages, lastAt);
+  const progress = deckProgress(topic.words, stages, lastAt, studiedLemmas({ entries, cards }));
   const starredEntries = topic.words.filter((w) => starredWords.has(w.word));
   const status = groupByStatus(topic.words, stages, lapseMap);
-  const pct = topic.words.length > 0 ? Math.round((progress.mastered / topic.words.length) * 100) : 0;
+  const pct = studiedPct(progress);
 
   return (
     <Screen>
@@ -225,7 +301,6 @@ export default function VocabTopicScreen() {
           </View>
         </HeroShell>
       </Appear>
-      <DueToday slug={slug} />
 
       {/* ---------------------------------------------- mọi cách luyện của bộ */}
       <Appear index={1}>

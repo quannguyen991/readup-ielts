@@ -186,12 +186,9 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   clipVoice: 'aoede',
 };
 
-/** Hai dạng luôn bật: lật thẻ và trắc nghiệm nghĩa ABCD. Hai dạng còn lại (điền chỗ trống, gõ từ) là tuỳ chọn. */
-export const FIXED_KINDS: readonly StageKind[] = ['flash', 'mcq'];
-
-/** Các phần đang bật, đúng thứ tự học. Lật thẻ và trắc nghiệm luôn có mặt. */
+/** Các dạng đang bật, đúng thứ tự học. Mọi dạng đều tắt/bật được; không dạng nào được ép bật. */
 export function activeKinds(kinds: readonly StageKind[]): StageKind[] {
-  return STAGE_ORDER.filter((x) => FIXED_KINDS.includes(x) || kinds.includes(x));
+  return STAGE_ORDER.filter((x) => kinds.includes(x));
 }
 
 /** Mức thuộc của một từ trong bộ: 0 chưa học, 1 đang học, 2 đã nhớ (xong một vòng không sai). */

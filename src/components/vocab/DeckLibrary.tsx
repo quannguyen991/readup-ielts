@@ -7,7 +7,7 @@ import { Appear, CrossFade } from '@/components/motion/Motion';
 import { Icon, SectionHeader } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { SAT_MATH_VOCAB_LESSONS, SAT_VERBAL_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
-import { NOTEBOOK_SLUG, notebookDeck } from '@/data/study-decks';
+import { NOTEBOOK_SLUG, notebookDeck, splitLevelSlug } from '@/data/study-decks';
 import { VFI_DECKS } from '@/data/vocab-for-ielts';
 import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
@@ -16,7 +16,8 @@ import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { OXFORD_TOPIC_DECKS } from '@/data/oxford-topics-decks';
 import { unitsFor } from '@/data/intl/units';
 import { DAILY_TALK_TOPICS } from '@/data/vocab-daily';
-import { byRecent, deckProgress, fold, isInProgress, type DeckProgress } from '@/services/vocab/deck-library';
+import { byRecent, deckProgress, fold, isInProgress, mergeLastAtByBase, mergeStagesByBase, type DeckProgress } from '@/services/vocab/deck-library';
+import { studiedLemmas } from '@/services/vocab/topic-fsrs';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { isKnown, useIntlStore } from '@/store/useIntlStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -169,9 +170,12 @@ const STATIC_DECKS: LibDeck[] = [
   ...DAILY_TALK_TOPICS.map((t) => ({ slug: t.slug, title: t.nameVi, subtitle: t.blurb, words: t.words, look: { source: 'daily' as const, sourceLabel: 'Giao tiếp hằng ngày', sourceLabelEn: 'Everyday talk', accent: INTL_ACCENT.daily, icon: 'letters' as const }, en: { title: t.name, subtitle: t.blurb }, cover: VOCAB_COVERS[t.slug], haystack: fold(`${t.nameVi} ${t.name} giao tiếp hằng ngày ${t.words.map((w) => w.word).join(' ')}`) })),
 ];
 
+const baseOfSlug = (slug: string) => splitLevelSlug(slug).base;
+
 export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: LibraryFilter }) {
   const { L, en } = useL();
   const entries = useVocabStore((s) => s.entries);
+  const cards = useVocabStore((s) => s.cards);
   const customMap = useCustomDeckStore((s) => s.decks);
   const stages = useTopicStudyStore((s) => s.stages);
   const lastAt = useTopicStudyStore((s) => s.lastAt);
@@ -193,11 +197,17 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
     return [...mine, ...STATIC_DECKS];
   }, [customMap, notebook, notebookReady]);
 
+  // Bộ nhiều cấp học qua `<bộ>--B1`…: gộp về bộ gốc để thẻ ở đây thấy đúng tiến độ đã học.
+  const stagesByBase = useMemo(() => mergeStagesByBase(stages, baseOfSlug), [stages]);
+  const lastAtByBase = useMemo(() => mergeLastAtByBase(lastAt ?? {}, baseOfSlug), [lastAt]);
+  const studied = useMemo(() => studiedLemmas({ entries, cards }), [entries, cards]);
   const progress = useMemo(() => {
     const map = new Map<string, DeckProgress>();
-    for (const d of decks) map.set(d.slug, deckProgress(d.words, d.knownExam ? knownStages(d, known) : stages[d.slug], lastAt?.[d.slug]));
+    for (const d of decks) {
+      map.set(d.slug, deckProgress(d.words, d.knownExam ? knownStages(d, known) : stagesByBase[d.slug], lastAtByBase[d.slug], d.knownExam ? undefined : studied));
+    }
     return map;
-  }, [decks, stages, lastAt, known]);
+  }, [decks, stagesByBase, lastAtByBase, known, studied]);
   const prog = (d: LibDeck) => progress.get(d.slug)!;
 
   const learning = useMemo(() => byRecent(decks.filter((d) => isInProgress(progress.get(d.slug)!)), (d) => progress.get(d.slug)!.lastAt), [decks, progress]);

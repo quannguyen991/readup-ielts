@@ -8,7 +8,7 @@ import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { GlossOrb } from '@/components/ui/GlossOrb';
 import { TileArt } from '@/components/ui/TileArt';
-import { type DeckProgress } from '@/services/vocab/deck-library';
+import { studiedPct, type DeckProgress } from '@/services/vocab/deck-library';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { useL } from '@/i18n/useL';
 import { fontFamily } from '@/theme/tokens';
@@ -36,13 +36,26 @@ export function FlagVN({ size = 14 }: { size?: number }) {
   );
 }
 
-/** Thanh tiến độ hai nấc: phần đã nhớ màu đậm, phần đang học cùng màu nhưng nhạt. */
-export function DeckProgressBar({ progress, color, height = 8 }: { progress: DeckProgress; color: string; height?: number }) {
+/**
+ * Thanh tiến độ hai nấc: phần đã nhớ đặc, phần đang học cùng màu nhưng nhạt hơn. Nền thanh (`track`) phải
+ * tối hơn màu thanh, nếu không phần đã học chìm vào nền (thanh trắng trên nền gần trắng trông như không đổi).
+ */
+export function DeckProgressBar({
+  progress,
+  color,
+  height = 8,
+  track = '#F3F0FB',
+}: {
+  progress: DeckProgress;
+  color: string;
+  height?: number;
+  track?: string;
+}) {
   const total = Math.max(1, progress.total);
   return (
-    <View style={{ flex: 1, height, borderRadius: height, backgroundColor: '#F3F0FB', overflow: 'hidden', flexDirection: 'row' }}>
+    <View style={{ flex: 1, height, borderRadius: height, backgroundColor: track, overflow: 'hidden', flexDirection: 'row' }}>
       <View style={{ width: `${(progress.mastered / total) * 100}%`, backgroundColor: color, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
-      <View style={{ width: `${(progress.learning / total) * 100}%`, backgroundColor: color, opacity: 0.32, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
+      <View style={{ width: `${(progress.learning / total) * 100}%`, backgroundColor: color, opacity: 0.55, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
     </View>
   );
 }
@@ -125,14 +138,17 @@ export function DeckCard({
 }) {
   useReadingFonts();
   const [soft, strong] = accent;
-  const pct = progress.total > 0 ? Math.round((progress.mastered / progress.total) * 100) : 0;
+  const pct = studiedPct(progress);
   const { L } = useL();
   const [hovered, setHovered] = React.useState(false);
 
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={L(`${title}. Thuộc ${pct}%, ${progress.total} từ.`, `${title}. ${pct}% learned, ${progress.total} words.`)}
+      accessibilityLabel={L(
+        `${title}. Đã học ${pct}% (${progress.mastered} đã nhớ, ${progress.learning} đang học), ${progress.total} từ.`,
+        `${title}. ${pct}% studied (${progress.mastered} remembered, ${progress.learning} learning), ${progress.total} words.`,
+      )}
       onPress={onPress}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
@@ -170,7 +186,7 @@ export function DeckCard({
           ) : null}
 
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 }}>
-            <DeckProgressBar progress={progress} color="#FFFFFF" height={6} />
+            <DeckProgressBar progress={progress} color="#FFFFFF" height={6} track="rgba(20,10,40,0.35)" />
             <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>{pct}%</Text>
           </View>
 

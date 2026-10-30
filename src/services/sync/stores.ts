@@ -443,6 +443,8 @@ const topicStudyStore: SyncedStore = {
       mistakeLog: s.mistakeLog,
       learnSettings: s.learnSettings,
       lastAt: s.lastAt,
+      // Vòng đang học dở: đổi máy vẫn học tiếp đúng chỗ (bản mới hơn thắng).
+      activeRound: s.activeRound,
     };
   },
   write: (payload) => {
@@ -458,6 +460,7 @@ const topicStudyStore: SyncedStore = {
       mistakeLog: (data.mistakeLog ?? []) as never,
       learnSettings: (data.learnSettings ?? useTopicStudyStore.getState().learnSettings) as never,
       lastAt: (data.lastAt ?? {}) as never,
+      activeRound: (data.activeRound ?? useTopicStudyStore.getState().activeRound) as never,
     });
   },
   // Bản trên máy chủ có thể còn mã bài SAT Math cũ: chuyển cả hai bên trước khi gộp.

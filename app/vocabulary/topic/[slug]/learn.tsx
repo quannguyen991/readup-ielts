@@ -40,7 +40,7 @@ import { Icon } from "@/components/ui/Icon";
 import { preloadPronunciation, useAutoPronounce } from "@/services/audio/pronounce";
 import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import { levelOf } from "@/data/study-decks";
-import { dueTopicWords } from "@/services/vocab/topic-fsrs";
+import { dueLemmasToday } from "@/services/vocab/topic-fsrs";
 import { useVocabStore } from "@/store/useVocabStore";
 import { mixByLevel } from "@/services/vocab/topic-study";
 import { uid } from "@/store/persist";
@@ -104,7 +104,7 @@ const KIND_LABEL: Record<StageKind, { vi: string; en: string }> = {
 const AMBER_ON_NAVY = "#FCD34D";
 
 /**
- * Học một bộ từ theo VÒNG tối đa 50 TỪ, bốn dạng câu (lật thẻ và ABCD luôn bật):
+ * Học một bộ từ theo VÒNG tối đa 50 TỪ, bốn dạng câu (người học bật tắt từng dạng trong Cài đặt):
  *
  * - LẬT THẺ — gặp từ lần đầu, lật xem mặt sau, tự nói "đã biết" hay "chưa nhớ".
  * - TRẮC NGHIỆM — nhận ra đúng giữa bốn lựa chọn.
@@ -169,13 +169,16 @@ export default function LearnScreen() {
       (w) => st.lapses[slug]?.[w] ?? 0,
     );
     // Từ đến hạn ôn hôm nay vào vòng trước, để lịch ôn thật sự chạy (mỗi lần trả lời đẩy hạn xa thêm).
-    const dueSet = dueTopicWords(useVocabStore.getState(), slug, new Date());
+    const dueSet = dueLemmasToday(useVocabStore.getState(), new Date());
     const dueFirst = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase())).slice(0, ROUND_SIZE);
     const rest = picked.filter((w) => !dueSet.has(w.word.trim().toLowerCase()));
     return topUpRound([...dueFirst, ...rest].slice(0, ROUND_SIZE), mixByLevel(pool, levelOf));
   };
   // Vòng đang dở của bộ này (nếu có và còn đủ từ trong bộ): tiếp tục đúng chỗ đã dừng.
-  const [saved] = useState(() => (topic ? useTopicStudyStore.getState().activeRound[slug] ?? null : null));
+  const [saved] = useState(() => {
+    const r = topic ? useTopicStudyStore.getState().activeRound[slug] ?? null : null;
+    return r && !r.cleared ? r : null;
+  });
   const savedWords = useMemo(() => {
     if (!saved || !topic) return null;
     // Vòng lưu từ bản cũ (ít từ hơn mức tối thiểu hiện tại) thì bỏ, để mở vòng mới đủ 30 từ.
@@ -287,8 +290,10 @@ export default function LearnScreen() {
 
   // Mỗi lần trả lời là ghi vòng đang dở; vòng xong thì xoá.
   const setActiveRound = useTopicStudyStore((s) => s.setActiveRound);
+  // Vòng mới chưa trả lời câu nào thì chưa ghi gì (mở màn rồi thoát không để lại vòng "dở"); nếu còn vòng cũ đã lưu
+  // thì bỏ nó, vì người học đã chọn bắt đầu lại.
   useEffect(() => {
-    if (loopDone(plan)) setActiveRound(slug, null);
+    if (loopDone(plan) || asked === 0) setActiveRound(slug, null);
     else setActiveRound(slug, { words: round.map((w) => w.word), plan, asked, wrong, streak, step });
   }, [slug, round, plan, asked, wrong, streak, step, setActiveRound]);
 

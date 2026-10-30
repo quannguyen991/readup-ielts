@@ -6,12 +6,13 @@
  * Mỗi từ có đúng một mục và bốn thẻ (một cho mỗi dạng); một lần trả lời ở bất kỳ dạng nào đều chấm đủ
  * bốn thẻ, và ngày ôn được phân bổ để không quá DAILY_CAP từ trong một ngày.
  */
-import { getStaticDeck } from '@/data/study-decks';
+import { getStaticDeck, NOTEBOOK_SLUG, rawStaticDeck, splitLevelSlug } from '@/data/study-decks';
 import type { VocabEntry } from '@/store/useVocabStore';
 import { applyGrade, CARD_KINDS, cardKey, emptyCard, isDue, type StoredCard } from './schedule';
 import { DAILY_CAP, type ReviewEntry } from './review-schedule';
+import { dueByBaseDeck, dueBySlugBefore, endOfDayMs, type VocabSlice } from './fsrs-due';
 
-export type VocabSlice = { entries: Record<string, VocabEntry>; cards: Record<string, StoredCard> };
+export type { VocabSlice };
 
 /** Thông tin một từ trong bộ, lấy từ dữ liệu bộ (không phụ thuộc bộ nào đã nhập sổ). */
 type TopicWordInfo = NonNullable<ReturnType<typeof getStaticDeck>>['words'][number];
@@ -127,6 +128,55 @@ export function dueTopicWords(state: VocabSlice, slug: string, now: Date): Set<s
     if (card && isDue(card, now)) out.add(e.lemma.trim().toLowerCase());
   }
   return out;
+}
+
+/**
+ * ĐẾM TỪ ĐẾN HẠN: phần thuần nằm ở `fsrs-due.ts` (máy chủ dùng chung); ở đây là các hàm bọc cần dữ liệu bộ từ để
+ * biết một mã có phải bộ học được không.
+ */
+export {
+  dueEntriesBefore,
+  dueEntriesToday,
+  dueLemmasBefore,
+  dueLemmasToday,
+  entryInWords,
+  forecastFsrs,
+  studiedLemmas,
+} from './fsrs-due';
+
+const isStudyDeck = (slug: string) => !!rawStaticDeck(slug);
+
+/** Số từ đến hạn hôm nay theo bộ. Từ không thuộc bộ học được nào (lưu lúc đọc bài…) gộp vào sổ từ. */
+export function dueBySlugToday(state: VocabSlice, now: Date, isDeck: (slug: string) => boolean = isStudyDeck): Record<string, string[]> {
+  const known = new Map<string, boolean>();
+  const isKnown = (s: string) => {
+    let k = known.get(s);
+    if (k === undefined) {
+      k = isDeck(s);
+      known.set(s, k);
+    }
+    return k;
+  };
+  return dueBySlugBefore(state, endOfDayMs(now), (e) => (e.articleId && isKnown(e.articleId) ? e.articleId : NOTEBOOK_SLUG));
+}
+
+/**
+ * Từ đến hạn hôm nay theo BỘ GỐC (mọi cấp gộp lại, chữ thường) — cho quest và du lịch, nơi chỉ biết bộ gốc.
+ * `includeNotebook`: từ không thuộc bộ nào (lưu lúc đọc bài…) gộp vào sổ từ thay vì bị bỏ.
+ */
+export function dueByBaseDeckToday(state: VocabSlice, now: Date, includeNotebook = false): Record<string, string[]> {
+  const known = new Map<string, boolean>();
+  const outside = includeNotebook ? NOTEBOOK_SLUG : null;
+  return dueByBaseDeck(state, endOfDayMs(now), (e) => {
+    if (!e.articleId) return outside;
+    const base = splitLevelSlug(e.articleId).base;
+    let k = known.get(base);
+    if (k === undefined) {
+      k = isStudyDeck(base);
+      known.set(base, k);
+    }
+    return k ? base : outside;
+  });
 }
 
 /**

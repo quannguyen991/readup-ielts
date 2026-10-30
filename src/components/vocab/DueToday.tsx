@@ -3,7 +3,6 @@
  *
  * Khối xanh kiểu bento: số từ đến hạn hôm nay, biểu đồ 7 ngày tới (mỗi cột một
  * ngày), và nút ôn từng bộ (`/vocabulary/topic/<bộ>/quiz?only=due`).
- * `slug` có giá trị thì chỉ tính một bộ (trang của bộ đó).
  * Chưa có từ nào trong lịch (chưa học) thì không hiện gì.
  */
 import React, { useMemo } from 'react';
@@ -14,30 +13,38 @@ import { CuteCalendar } from '@/components/illust/Cute';
 import { CuteFlame, Motion, Sparkles } from '@/components/illust/CuteMore';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { getVocabTopic } from '@/data/vocab-topics';
+import { NOTEBOOK_SLUG } from '@/data/study-decks';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
-import { dueBySlug, forecast } from '@/services/vocab/review-schedule';
+import { CARD_KINDS, cardKey } from '@/services/vocab/schedule';
+import { dueBySlugToday, forecastFsrs } from '@/services/vocab/topic-fsrs';
 import { todayKey } from '@/store/persist';
-import { useTopicStudyStore } from '@/store/useTopicStudyStore';
+import { useVocabStore } from '@/store/useVocabStore';
 import { useL } from '@/i18n/useL';
 
 const DAY = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
 const DAY_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function deckName(slug: string, en = false): string {
+  if (slug === NOTEBOOK_SLUG) return en ? 'Notebook' : 'Sổ từ';
   const topic = getVocabTopic(slug);
   if (topic) return en ? topic.name : topic.nameVi;
   return SAT_VOCAB_LESSONS.find((l) => l.slug === slug)?.title ?? slug;
 }
 
-export function DueToday({ slug }: { slug?: string }) {
+export function DueToday() {
   const hydrated = useHydrated();
   const { L, en } = useL();
-  const all = useTopicStudyStore((s) => s.reviews);
+  // Lịch ôn thật là thẻ FSRS của kho vocab (cùng nguồn với trang Ôn lặp ngắt quãng và trang chủ).
+  const entries = useVocabStore((s) => s.entries);
+  const cards = useVocabStore((s) => s.cards);
   const today = todayKey();
-  const reviews = useMemo(() => (slug ? (all?.[slug] ? { [slug]: all[slug]! } : {}) : all ?? {}), [all, slug]);
-  const due = useMemo(() => dueBySlug(reviews, today), [reviews, today]);
-  const days = useMemo(() => forecast(reviews, today, 7), [reviews, today]);
-  const scheduled = Object.values(reviews).reduce((a, w) => a + Object.keys(w ?? {}).length, 0);
+  const state = useMemo(() => ({ entries, cards }), [entries, cards]);
+  const due = useMemo(() => dueBySlugToday(state, new Date()), [state, today]);
+  const days = useMemo(() => forecastFsrs(state, new Date(), 7), [state, today]);
+  const scheduled = useMemo(
+    () => Object.values(entries).filter((e) => CARD_KINDS.some((k) => cards[cardKey(e.id, k)])).length,
+    [entries, cards],
+  );
   if (!hydrated || scheduled === 0) return null;
 
   const total = Object.values(due).reduce((a, w) => a + w.length, 0);
@@ -95,7 +102,7 @@ export function DueToday({ slug }: { slug?: string }) {
               style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: hovered ? '#F0FDF4' : '#FFFFFF' })}
             >
               <Text className="font-strong" style={{ fontSize: 14, color: '#14532D' }}>
-                {slug ? L('Ôn ngay', 'Review now') : deckName(s, en)}
+                {deckName(s, en)}
               </Text>
               <View style={{ borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2, backgroundColor: '#22A06B' }}>
                 <Text className="font-heavy" style={{ fontSize: 13, color: '#FFFFFF' }}>

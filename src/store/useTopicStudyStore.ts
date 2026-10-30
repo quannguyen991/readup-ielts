@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
+import { nextRounds, withoutRound } from '@/services/vocab/active-round';
 import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/services/vocab/topic-study';
 import type { MistakeKind } from '@/services/vocab/mistake';
 import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
@@ -84,7 +85,16 @@ export type SavedRound = {
   wrong: number;
   streak: number;
   step: number;
+  /** Lúc lưu (mili giây). Gộp giữa các máy: bản mới hơn thắng. Bản lưu từ trước khi có trường này là 0. */
+  at?: number;
+  /**
+   * Dấu "vòng đã xong hoặc đã bỏ". Không xoá hẳn mục: nếu xoá, lần gộp sau sẽ lấy lại vòng cũ từ máy kia.
+   * Dấu cũng có `at` nên một vòng mới (muộn hơn) vẫn thắng dấu.
+   */
+  cleared?: boolean;
 };
+
+const CLEARED_ROUND: SavedRound = { words: [], plan: { now: 0, slots: [], pending: [], lastKind: null, lastWord: null, seed: 1 }, asked: 0, wrong: 0, streak: 0, step: 0, cleared: true };
 
 export const useTopicStudyStore = create<TopicStudyState>()(
   persist(
@@ -158,10 +168,8 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       activeRound: {},
       setActiveRound: (slug, round) =>
         set((s) => {
-          const next = { ...s.activeRound };
-          if (round) next[slug] = round;
-          else delete next[slug];
-          return { activeRound: next };
+          const next = nextRounds(s.activeRound, slug, round, Date.now(), CLEARED_ROUND);
+          return next ? { activeRound: next } : s;
         }),
       resetTopic: (slug) =>
         set((s) => {
@@ -173,8 +181,9 @@ export const useTopicStudyStore = create<TopicStudyState>()(
           delete reviews[slug];
           const lastAt = { ...s.lastAt };
           delete lastAt[slug];
-          // Dấu xoá: gộp với máy khác không được làm sống lại tiến độ cũ.
-          return { stages, lapses, reviews, lastAt, resets: { ...s.resets, [slug]: new Date().toISOString() } };
+          const activeRound = withoutRound(s.activeRound, slug);
+          // Dấu xoá: gộp với máy khác không được làm sống lại tiến độ cũ (kể cả vòng đang học dở).
+          return { stages, lapses, reviews, lastAt, activeRound, resets: { ...s.resets, [slug]: new Date().toISOString() } };
         }),
     }),
     {

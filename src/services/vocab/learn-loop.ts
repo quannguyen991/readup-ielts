@@ -172,8 +172,10 @@ export function slotOf(state: LoopState, word: string): Slot {
 
 /** Câu trả lời này (đúng) có làm xong từ không — để ghi "đã nhớ" đúng lúc. */
 export function finishesWord(state: LoopState, head: LoopItem, correct: boolean, o: LoopOptions): boolean {
-  if (!correct || head.kind === 'flash') return false;
+  if (!correct) return false;
   const s = slotOf(state, head.word);
+  // Chỉ bật lật thẻ thì lật đúng là xong từ; còn dạng luyện khác thì phải làm đủ bậc.
+  if (head.kind === 'flash') return practiceKinds(o, head.word).length === 0 && Math.max(0, s.owe - 1) === 0;
   return s.level + 1 >= doneLevel(o, head.word) && Math.max(0, s.owe - 1) === 0;
 }
 
@@ -191,7 +193,9 @@ export function answerLoop(state: LoopState, correct: boolean, o: LoopOptions): 
     // Lật thẻ: "Chưa nhớ" là một lần quên; "Đã biết" là một lần hỏi lại đã trả.
     if (correct) {
       const owe = Math.max(0, slot.owe - 1);
-      next = { ...slot, seen: slot.seen + 1, owe, lastKind: 'flash', due: now + (owe > 0 ? RELEARN_GAP : 2) };
+      // Chỉ bật lật thẻ: không còn dạng nào để luyện, nên lật đúng và hết nợ là xong từ.
+      const done = practiceKinds(o, head.word).length === 0 && owe === 0;
+      next = { ...slot, seen: slot.seen + 1, owe, lastKind: 'flash', done, due: done ? Number.POSITIVE_INFINITY : now + (owe > 0 ? RELEARN_GAP : 2) };
     } else {
       next = { ...slot, seen: slot.seen + 1, owe: RELEARN_ASKS, lapses: slot.lapses + 1, lastKind: 'flash', lastOk: false, due: now + RELEARN_GAP };
     }

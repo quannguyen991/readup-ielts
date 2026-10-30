@@ -87,13 +87,13 @@ type Tiered = { ref: WordRef; tier: number; recent: boolean; lastSeen: number; l
 /** Xếp từ theo bậc ưu tiên; trong bậc thì xáo theo hạt giống. Từ vừa làm bị đẩy xuống cuối. */
 function rankWords(pool: WordRef[], snap: StudySnapshot, input: PickInput, nowMs: number, rng: () => number, focus: ReadonlySet<string> = new Set()): Tiered[] {
   const dueSet = new Map<string, Set<string>>();
-  for (const [deck, words] of Object.entries(snap.due ?? {})) dueSet.set(deck, new Set(words));
+  for (const [deck, words] of Object.entries(snap.due ?? {})) dueSet.set(deck, new Set(words.map((w) => w.trim().toLowerCase())));
   const rows: Tiered[] = shuffled(pool, rng).map((ref) => {
     const { deck, word } = ref;
     const key = wordKey(deck, word.word);
     const lapses = snap.lapses?.[deck]?.[word.word] ?? 0;
     const stage = snap.stages?.[deck]?.[word.word] ?? 0;
-    const tier = dueSet.get(deck)?.has(word.word) ? 0 : stage === 0 && lapses === 0 ? 1 : lapses > 0 ? 2 : 3;
+    const tier = dueSet.get(deck)?.has(word.word.trim().toLowerCase()) ? 0 : stage === 0 && lapses === 0 ? 1 : lapses > 0 ? 2 : 3;
     return { ref, tier, recent: seenRecently(input.seen, [key], nowMs), lastSeen: seenAt(input.seen, [key]), lapses };
   });
   // Ổn định: sort giữ thứ tự xáo trong cùng bậc.
@@ -213,7 +213,7 @@ export function pickReviewQuestions(
   for (const [deck, words] of Object.entries(input.due ?? {})) {
     const list = deckWords(deck);
     for (const w of words) {
-      const hit = list.find((x) => x.word === w);
+      const hit = list.find((x) => x.word.trim().toLowerCase() === w.trim().toLowerCase());
       if (hit) refs.push({ deck, word: hit });
     }
   }
