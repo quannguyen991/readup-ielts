@@ -15,8 +15,8 @@ thì ẩn. Không bịa.
 ## 2. Ràng buộc cứng
 
 - Không bịa đáp án, bài đọc, transcript, đề Writing hay Speaking. Thiếu nguồn thì ẩn đề.
-- Không đưa nguyên văn bài đọc hay transcript có bản quyền vào `src/`, `app/`, `public/`.
-  Dữ liệu gốc chỉ đọc từ `.local-private/` (gitignore, không deploy).
+- Được phép đưa transcript Listening và nguyên văn bài đọc Reading vào `src/`, `app/`, `public/`
+  (quy định cập nhật). `.local-private/` (gitignore, không deploy) vẫn là nơi lưu bản OCR gốc.
 - Đáp án chỉ được coi là xác nhận khi có trang đáp án in, hoặc hai trang độc lập cùng kết quả.
   Các trang sao chép nhau tính là một nguồn. Ghi URL nguồn cho từng đáp án đã sửa.
 - Không đưa khóa API vào mã, tài liệu hay commit.
