@@ -197,9 +197,9 @@ function BlockHeader({ block }: { block: QuestionBlockView }) {
 
   return (
     <View className="flex-row items-center gap-3 mb-1">
-      {/* Red Capsule Pill */}
-      <View className="rounded-full bg-[#FEF2F2] border border-[#FCA5A5] px-3 py-1 items-center justify-center">
-        <Text className="text-[12px] font-bold text-[#DC2626] leading-none">
+      {/* Gold capsule pill */}
+      <View className="rounded-full bg-gold-soft border border-gold px-3 py-1 items-center justify-center">
+        <Text className="text-[12px] font-bold text-[#8A6100] leading-none">
           {rangeText}
         </Text>
       </View>

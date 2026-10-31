@@ -102,8 +102,8 @@ export function IeltsBottomBar({
           contentContainerStyle={{ alignItems: 'center', gap: 4, paddingHorizontal: 4 }}
         >
           {/* Passage 1 pill */}
-          <View className="rounded-full border border-[#EF4444] bg-white px-2.5 py-0.5 mr-1">
-            <Text className="text-[11.5px] font-bold text-[#DC2626]">Passage 1</Text>
+          <View className="rounded-full border border-gold bg-gold-soft px-2.5 py-0.5 mr-1">
+            <Text className="text-[11.5px] font-bold text-[#8A6100]">Passage 1</Text>
           </View>
 
           {/* Question Number Circles */}
@@ -153,7 +153,7 @@ export function IeltsBottomBar({
         </ScrollView>
       </View>
 
-      {/* Right: Red solid button "7 - 13 →" or "Trước / Tiếp" */}
+      {/* Right: gold solid button "7 - 13 →" or "Trước / Tiếp" */}
       <View className="flex-row items-center gap-2">
         {isReviewMode ? (
           <>
@@ -170,20 +170,20 @@ export function IeltsBottomBar({
             <Pressable
               onPress={onNext}
               disabled={!hasNext}
-              className={`h-8 px-3.5 items-center justify-center rounded-md bg-[#DC2626] ${
-                !hasNext ? 'opacity-40' : 'hover:bg-red-700'
+              className={`h-8 px-3.5 items-center justify-center rounded-md bg-gold ${
+                !hasNext ? 'opacity-40' : 'hover:bg-[#E0A21F]'
               }`}
             >
-              <Text className="text-xs font-bold text-white">Tiếp</Text>
+              <Text className="text-xs font-bold text-ink">Tiếp</Text>
             </Pressable>
           </>
         ) : (
           <Pressable
             onPress={onNext || onSubmit}
             disabled={submitting}
-            className="h-8 px-4 items-center justify-center rounded-md bg-[#DC2626] hover:bg-red-700 active:bg-red-800"
+            className="h-8 px-4 items-center justify-center rounded-md bg-gold hover:bg-[#E0A21F] active:bg-[#C98E12]"
           >
-            <Text className="text-xs font-bold text-white tracking-wide">
+            <Text className="text-xs font-bold text-ink tracking-wide">
               {submitting ? 'Đang nộp…' : nextLabel}
             </Text>
           </Pressable>

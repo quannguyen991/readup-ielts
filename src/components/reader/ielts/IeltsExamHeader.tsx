@@ -33,7 +33,7 @@ export function IeltsExamHeader({
 }: Props) {
   return (
     <View className="h-14 w-full flex-row items-center justify-between border-b border-gray-200 bg-white px-4 select-none">
-      {/* Left: [ ✕ ] + Red swoosh logo + Title & subtitle */}
+      {/* Left: [ ✕ ] + Title & subtitle */}
       <View className="flex-row items-center gap-3">
         {/* Close button */}
         <Pressable
@@ -47,16 +47,6 @@ export function IeltsExamHeader({
             <Line x1="6" y1="6" x2="18" y2="18" />
           </Svg>
         </Pressable>
-
-        {/* IELTS red curved ribbon logo */}
-        <View className="h-7 w-7 items-center justify-center">
-          <Svg width={24} height={24} viewBox="0 0 32 32" fill="none">
-            <Path
-              d="M6 8C14 4 22 8 26 14C24 18 18 24 10 24C6 24 6 18 10 14C14 10 20 10 24 12"
-              fill="#DC2626"
-            />
-          </Svg>
-        </View>
 
         {/* Title & subtitle */}
         <View className="justify-center">
