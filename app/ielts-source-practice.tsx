@@ -21,9 +21,11 @@ import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { useL } from '@/i18n/useL';
 import { ExamModeModal, type ExamMode } from '@/components/ielts/ExamModeModal';
 import { SourceExamRoom } from '@/components/ielts/SourceExamRoom';
+import { PracticeTestDetail } from '@/components/ielts/PracticeTestDetail';
 import { ExamResourceLinks } from '@/components/exam/ExamResourceLinks';
 import { ExamVocabularyPanel, type ExamTextPage } from '@/components/exam/ExamVocabularyPanel';
 import { compareSourceTests, SECTION_MINUTES, type ExamPart, type SourcePage } from '@/services/ielts/source-catalog';
+import { color } from '@/theme/tokens';
 
 type Page = SourcePage;
 type TestSection = 'Reading' | 'Listening' | 'Writing' | 'Speaking';
@@ -147,7 +149,7 @@ function getBookCover(title: string, source: string): string {
 function Cover21({ width, height, radius = 10 }: { width: number; height: number; radius?: number }) {
   const pad = Math.round(width * 0.1);
   return (
-    <View style={{ width, height, borderRadius: radius, overflow: 'hidden', backgroundColor: '#0F1D33' }}>
+    <View style={{ width, height, borderRadius: radius, overflow: 'hidden', backgroundColor: color.ink }}>
       <Svg width={width} height={height} viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', top: 0, left: 0 }}>
         <Defs>
           <SvgGradient id="c21bg" x1="0" y1="0" x2="0" y2="1">
@@ -186,7 +188,7 @@ function Cover21({ width, height, radius = 10 }: { width: number; height: number
       <View style={{ flex: 1, padding: pad, justifyContent: 'space-between' }}>
         <Text style={{ color: 'rgba(246,227,168,0.9)', fontSize: Math.max(8, Math.round(width * 0.075)), fontWeight: '700', letterSpacing: 2 }}>IELTS</Text>
         <View>
-          <Text style={{ color: '#FFFFFF', fontSize: Math.round(width * 0.36), fontFamily: 'InterTight_600SemiBold', lineHeight: Math.round(width * 0.38), letterSpacing: -2 }}>21</Text>
+          <Text style={{ color: color.surface, fontSize: Math.round(width * 0.36), fontFamily: 'InterTight_600SemiBold', lineHeight: Math.round(width * 0.38), letterSpacing: -2 }}>21</Text>
           <Text style={{ color: '#F6E3A8', fontSize: Math.max(9, Math.round(width * 0.085)), fontWeight: '600', marginTop: 4 }}>Practice tests</Text>
         </View>
         <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: Math.max(7, Math.round(width * 0.068)), letterSpacing: 0.4 }}>Reading · Listening · Writing</Text>
@@ -207,7 +209,7 @@ function FlatCover({ kind, num, width, height, radius = 10 }: { kind: 'CAMBRIDGE
 }
 
 /** Màu nền bìa theo số đề: mỗi đề một màu cố định, để nhìn lướt là nhận ra. */
-const COVER_PALETTE = ['#1F3A5F', '#0F766E', '#6B3FA0', '#9F1239', '#166534', '#334155', '#6A4BD9', '#3730A3', '#0E7490', '#2B2350'];
+const COVER_PALETTE = [color.ink, '#0F766E', '#6B3FA0', '#9F1239', '#166534', '#334155', color.primaryDark, '#3730A3', '#0E7490', color.ink];
 
 const SKILL_IN_ID = /-(reading|listening)(?=-|$)/;
 /** Các bản Reading và Listening của cùng một đề (cùng id, khác kỹ năng). */
@@ -235,7 +237,7 @@ function FlatCoverDrawn({
   radius?: number;
 }) {
   const n = parseInt(num, 10) || 0;
-  const bg = COVER_PALETTE[n % COVER_PALETTE.length] ?? '#1F3A5F';
+  const bg = COVER_PALETTE[n % COVER_PALETTE.length] ?? color.ink;
   const pad = Math.round(width * 0.09);
   const small = Math.max(8, Math.round(width * 0.085));
   return (
@@ -243,11 +245,11 @@ function FlatCoverDrawn({
       <Text style={{ color: 'rgba(255,255,255,0.82)', fontSize: small, fontWeight: '800', letterSpacing: 1 }}>
         {kind === 'CAMBRIDGE' ? 'CAMBRIDGE' : 'ACTUAL TESTS'}
       </Text>
-      <Text style={{ color: '#FFFFFF', fontSize: Math.round(width * 0.4), fontWeight: '900', lineHeight: Math.round(width * 0.44) }}>
+      <Text style={{ color: color.surface, fontSize: Math.round(width * 0.4), fontWeight: '900', lineHeight: Math.round(width * 0.44) }}>
         {num || '—'}
       </Text>
       <View style={{ marginHorizontal: -pad, marginBottom: -pad, paddingHorizontal: pad, paddingVertical: Math.round(pad * 0.7), backgroundColor: 'rgba(0,0,0,0.18)' }}>
-        <Text style={{ color: '#FFFFFF', fontSize: small, fontWeight: '700' }}>IELTS</Text>
+        <Text style={{ color: color.surface, fontSize: small, fontWeight: '700' }}>IELTS</Text>
       </View>
     </View>
   );
@@ -457,7 +459,7 @@ export default function IeltsSourcePracticeScreen() {
   const answeredCount = Object.values(answers).filter((a) => a && a.trim()).length;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#F3F0FB' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: color.surfaceAlt }}>
       <ScrollView ref={mainScrollRef} contentContainerStyle={{ paddingHorizontal: 24, paddingVertical: 20, paddingBottom: 80 }}>
         <View style={{ width: '100%', maxWidth: 1360, alignSelf: 'center', gap: 20 }}>
 
@@ -471,10 +473,10 @@ export default function IeltsSourcePracticeScreen() {
                   paddingVertical: 6,
                   paddingHorizontal: 14,
                   borderRadius: 12,
-                  backgroundColor: viewMode === 'catalog' ? '#6A4BD9' : 'transparent',
+                  backgroundColor: viewMode === 'catalog' ? color.primaryDark : 'transparent',
                 }}
               >
-                <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'catalog' ? '#FFFFFF' : '#7C6552' }}>
+                <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'catalog' ? color.surface : color.body }}>
                   {L(`Bộ đề IELTS (${tests.length})`, `IELTS sources (${tests.length})`)}
                 </Text>
               </Pressable>
@@ -485,10 +487,10 @@ export default function IeltsSourcePracticeScreen() {
                   paddingVertical: 6,
                   paddingHorizontal: 14,
                   borderRadius: 12,
-                  backgroundColor: viewMode === 'collections' ? '#6A4BD9' : 'transparent',
+                  backgroundColor: viewMode === 'collections' ? color.primaryDark : 'transparent',
                 }}
               >
-                <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'collections' ? '#FFFFFF' : '#7C6552' }}>
+                <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'collections' ? color.surface : color.body }}>
                   {L('Bộ sưu tập của bạn (24)', 'Your Collections (24)')}
                 </Text>
               </Pressable>
@@ -1360,488 +1362,36 @@ export default function IeltsSourcePracticeScreen() {
             </View>
           ) : null}
 
-          {/* ========================================================= */}
-          {/* VIEW 3: TEST DETAIL & PRACTICE VIEW (input_file_1) */}
-          {/* ========================================================= */}
-          {viewMode === 'detail' ? (
-            <View style={{ gap: 24 }}>
-              {/* Breadcrumb Navigation matching input_file_1 */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-                <Pressable onPress={() => setViewMode('catalog')}>
-                  <Icon name="home" size={16} color="#6A4BD9" />
-                </Pressable>
-                <Text style={{ color: '#A38F7E' }}>›</Text>
-                <Pressable onPress={() => setViewMode('catalog')}>
-                  <Text style={{ fontSize: 13, color: '#7C6552', fontWeight: '500' }}>Bộ đề IELTS</Text>
-                </Pressable>
-                <Text style={{ color: '#A38F7E' }}>›</Text>
-                <Pressable onPress={() => setViewMode('catalog')}>
-                  <Text style={{ fontSize: 13, color: '#7C6552', fontWeight: '500' }}>{test?.source ?? currentTestMeta?.source}</Text>
-                </Pressable>
-                <Text style={{ color: '#A38F7E' }}>›</Text>
-                <Text style={{ fontSize: 13, color: '#2B2350', fontWeight: '700' }}>
-                  {test?.title ?? currentTestMeta?.title ?? 'Cambridge IELTS 20 · Reading Test 1'}
-                </Text>
-              </View>
-
-              {/* Hero Banner Card matching input_file_1 */}
-              <View
-                style={{
-                  borderRadius: 20,
-                  backgroundColor: '#FFFFFF',
-                  borderWidth: 1,
-                  borderColor: '#F3F0FB',
-                  padding: 24,
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: 28,
-                  shadowColor: '#2B2350',
-                  shadowOpacity: 0.06,
-                  shadowRadius: 16,
-                }}
-              >
-                {/* 3D Book on Golden Pedestal with Cute Mascot Reading beside it (100% matching input_file_1) - ENLARGED */}
-                <View
-                  style={{
-                    width: 280,
-                    height: 280,
-                    borderRadius: 22,
-                    overflow: 'hidden',
-                    backgroundColor: '#F3F0FB',
-                    shadowColor: '#2B2350',
-                    shadowOpacity: 0.14,
-                    shadowRadius: 18,
-                    shadowOffset: { width: 0, height: 8 },
-                  }}
-                >
-                  <Image
-                    source={{ uri: `/books/covers-2d/${/cambridge/i.test(currentTestMeta?.source ?? '') ? 'cam' : 'vol'}-${numOf(currentTestMeta?.source ?? '') || '20'}.webp` }}
-                    style={{ width: '100%', height: '100%' }}
-                    resizeMode="contain"
-                  />
-                </View>
-
-                {/* Center Info */}
-                <View style={{ flex: 1, minWidth: 340, gap: 10 }}>
-                  <View style={{ alignSelf: 'flex-start', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6, backgroundColor: '#E0F2FE' }}>
-                    <Text style={{ fontSize: 11, fontWeight: '800', color: '#0369A1' }}>CAMBRIDGE</Text>
-                  </View>
-
-                  <Text style={{ fontSize: 26, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
-                    {test?.title ?? currentTestMeta?.title ?? 'Cambridge IELTS 20 · Reading Test 1'}
-                  </Text>
-
-                  {/* Metadata Pills */}
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>40 câu hỏi</Text>
-                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>60 phút</Text>
-                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>Độ khó: Trung bình - Khó</Text>
-                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>15 trang</Text>
-                  </View>
-
-                  <Text style={{ fontSize: 13, color: '#7C6552', lineHeight: 20 }}>
-                    {L(
-                      'Đề thi Reading & Listening thực tế từ Cambridge IELTS, hỗ trợ nghe trực tuyến qua OneDrive / SharePoint không tốn dung lượng máy.',
-                      'Authentic Cambridge IELTS test with high-speed online OneDrive streaming audio to save disk space.'
-                    )}
-                  </Text>
-
-                  {/* Cloud Audio Direct Streaming Button */}
-                  {(test?.audioCloudUrl || currentTestMeta?.audioCloudUrl) ? (
-                    <Pressable
-                      onPress={() => Linking.openURL(test?.audioCloudUrl || currentTestMeta?.audioCloudUrl || '')}
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 8,
-                        paddingHorizontal: 14,
-                        paddingVertical: 9,
-                        borderRadius: 10,
-                        backgroundColor: '#EFF6FF',
-                        borderWidth: 1.5,
-                        borderColor: '#93C5FD',
-                        alignSelf: 'flex-start',
-                      }}
-                    >
-                      <Icon name="volume" size={16} color="#1D4ED8" />
-                      <Text style={{ fontSize: 13, fontWeight: '800', color: '#1E40AF' }}>
-                        🎵 Mở Thư Mục Audio Online (OneDrive / SharePoint)
-                      </Text>
-                      <Icon name="arrow-right" size={14} color="#1D4ED8" />
-                    </Pressable>
-                  ) : null}
-
-                  {/* Action Buttons */}
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 4, flexWrap: 'wrap' }}>
-                    {/* Primary Button 1: Thi Thử Như Thi Thật (CD-IELTS) */}
-                    <Pressable
-                      onPress={() => {
-                        const targetId = selectedId || test?.id || currentTestMeta?.id || 'cambridge-19-reading-1';
-                        if (!test || test.id !== targetId) {
-                          loadTest(targetId, true, 'simulation');
-                        } else {
-                          setExamMode('simulation');
-                          setIsExamStarted(true);
-                        }
-                      }}
-                      style={{
-                        paddingHorizontal: 18,
-                        height: 44,
-                        borderRadius: 12,
-                        backgroundColor: '#0F1D33',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        gap: 6,
-                        shadowColor: '#0F1D33',
-                        shadowOpacity: 0.3,
-                        shadowRadius: 8,
-                      }}
-                    >
-                      <Icon name="target" size={16} color="#FFFFFF" />
-                      <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '900' }}>
-                        {isExamStarted && examMode === 'simulation' ? L('Đang thi thật...', 'Exam in progress...') : L('Thi thử như thi thật', 'Real Exam Simulation')}
-                      </Text>
-                    </Pressable>
-
-                    {/* Primary Button 2: Luyện Tập Tự Do */}
-                    <Pressable
-                      onPress={() => {
-                        const targetId = selectedId || test?.id || currentTestMeta?.id || 'cambridge-19-reading-1';
-                        if (!test || test.id !== targetId) {
-                          loadTest(targetId, true, 'practice');
-                        } else {
-                          setExamMode('practice');
-                          setIsExamStarted(true);
-                        }
-                      }}
-                      style={{
-                        paddingHorizontal: 18,
-                        height: 44,
-                        borderRadius: 12,
-                        backgroundColor: '#6A4BD9',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        gap: 6,
-                        shadowColor: '#6A4BD9',
-                        shadowOpacity: 0.25,
-                        shadowRadius: 8,
-                      }}
-                    >
-                      <Icon name="book" size={16} color="#0F1D33" />
-                      <Text style={{ color: '#0F1D33', fontSize: 13, fontWeight: '900' }}>
-                        {isExamStarted && examMode === 'practice' ? L('Đang luyện tập...', 'Practicing...') : L('Luyện tập tự do', 'Practice Mode')}
-                      </Text>
-                    </Pressable>
-
-                    {/* Options Modal Trigger Button */}
-                    <Pressable
-                      onPress={() => setShowModeModal(true)}
-                      style={{
-                        paddingHorizontal: 14,
-                        height: 44,
-                        borderRadius: 12,
-                        backgroundColor: '#F3F0FB',
-                        borderWidth: 1,
-                        borderColor: '#E6DACB',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        gap: 4,
-                      }}
-                    >
-                      <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>
-                        {L('Tùy chọn khác ▾', 'Options ▾')}
-                      </Text>
-                    </Pressable>
-
-                    <Pressable
-                      onPress={() => setShowAnswerKey(!showAnswerKey)}
-                      style={{
-                        paddingHorizontal: 16,
-                        height: 44,
-                        borderRadius: 12,
-                        backgroundColor: '#FFFFFF',
-                        borderWidth: 1,
-                        borderColor: '#E6DACB',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        gap: 6,
-                      }}
-                    >
-                      <Icon name="book" size={16} color="#6A4BD9" />
-                      <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '700' }}>
-                        {L('Xem đáp án', 'Answer Key')}
-                      </Text>
-                    </Pressable>
-
-                    <Pressable
-                      onPress={() => selectedId && toggleSave(selectedId)}
-                      style={{
-                        paddingHorizontal: 16,
-                        height: 44,
-                        borderRadius: 12,
-                        backgroundColor: '#FFFFFF',
-                        borderWidth: 1,
-                        borderColor: '#E6DACB',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        gap: 6,
-                      }}
-                    >
-                      <Icon name="bookmark" size={16} color={selectedId && savedIds.has(selectedId) ? '#16A34A' : '#7C6552'} />
-                      <Text style={{ color: selectedId && savedIds.has(selectedId) ? '#16A34A' : '#7C6552', fontSize: 13, fontWeight: '700' }}>
-                        {selectedId && savedIds.has(selectedId) ? L('Đã lưu', 'Saved') : L('Lưu lại', 'Save')}
-                      </Text>
-                    </Pressable>
-                  </View>
-                </View>
-
-                {/* Right Mini-Card: Tiến độ của bạn */}
-                <View
-                  style={{
-                    width: 220,
-                    borderRadius: 16,
-                    backgroundColor: '#F3F0FB',
-                    borderWidth: 1,
-                    borderColor: '#F3F0FB',
-                    padding: 16,
-                    gap: 12,
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="trending" size={16} color="#6A4BD9" />
-                    <Text style={{ fontSize: 14, fontWeight: '800', color: '#2B2350' }}>
-                      {L('Tiến độ của bạn', 'Your Progress')}
-                    </Text>
-                  </View>
-
-                  {/* Circular progress visual */}
-                  <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 6 }}>
-                    <View
-                      style={{
-                        width: 80,
-                        height: 80,
-                        borderRadius: 40,
-                        borderWidth: 6,
-                        borderColor: submitted ? '#16A34A' : answeredCount > 0 ? '#6A4BD9' : '#E6DACB',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Text style={{ fontSize: 16, fontWeight: '900', color: '#2B2350' }}>
-                        {submitted && grade ? `${Math.round((grade.score / grade.total) * 100)}%` : `${Math.round((answeredCount / (test?.questionCount || 40)) * 100)}%`}
-                      </Text>
-                      <Text style={{ fontSize: 9.5, color: '#7C6552' }}>
-                        {submitted ? 'Đã chấm' : answeredCount > 0 ? 'Đang làm' : 'Chưa làm'}
-                      </Text>
-                    </View>
-                  </View>
-
-                  <View style={{ gap: 4 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 12, color: '#7C6552' }}>Số câu:</Text>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>{answeredCount} / {test?.questionCount || 40} câu</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 12, color: '#7C6552' }}>Thời gian:</Text>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#6A4BD9' }}>{formatTimer(timeLeft)}</Text>
-                    </View>
-                    {submitted && grade ? (
-                      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ fontSize: 12, color: '#7C6552' }}>Điểm IELTS:</Text>
-                        <Text style={{ fontSize: 13, fontWeight: '900', color: '#16A34A' }}>Band {grade.bandEstimate ?? '7.5'}</Text>
-                      </View>
-                    ) : null}
-                  </View>
-                </View>
-              </View>
-
-              {/* 2-Column: Cấu trúc bài thi & Tài liệu đi kèm */}
-              <View style={{ flexDirection: 'row', gap: 20 }}>
-                {/* Left: Cấu trúc bài thi */}
-                <View style={{ flex: 1, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB', padding: 18, gap: 12 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="list" size={16} color="#6A4BD9" />
-                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
-                      {L('Cấu trúc bài thi', 'Test Structure')}
-                    </Text>
-                  </View>
-
-                  {[
-                    { num: 1, title: 'Passage 1', q: '13 câu', p: '4–5 trang' },
-                    { num: 2, title: 'Passage 2', q: '13 câu', p: '4–5 trang' },
-                    { num: 3, title: 'Passage 3', q: '14 câu', p: '5–6 trang' },
-                  ].map((row) => (
-                    <View
-                      key={row.num}
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: 12,
-                        borderRadius: 10,
-                        backgroundColor: '#F3F0FB',
-                      }}
-                    >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                        <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#F3F0FB', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontSize: 12, fontWeight: '800', color: '#6A4BD9' }}>{row.num}</Text>
-                        </View>
-                        <Text style={{ fontSize: 14, fontWeight: '700', color: '#2B2350' }}>{row.title}</Text>
-                      </View>
-
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                        <Text style={{ fontSize: 12, color: '#7C6552' }}>{row.q}</Text>
-                        <Text style={{ fontSize: 12, color: '#7C6552' }}>{row.p}</Text>
-                      </View>
-                    </View>
-                  ))}
-                </View>
-
-                {/* Right: Tài liệu đi kèm */}
-                <View style={{ flex: 1, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F3F0FB', padding: 18, gap: 12 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="book" size={16} color="#6A4BD9" />
-                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
-                      {L('Tài liệu đi kèm', 'Included Materials')}
-                    </Text>
-                  </View>
-
-                  {[
-                    { name: 'Đề thi chính thức (PDF)', ext: 'PDF • Đầy đủ đề', icon: '📄', color: '#EF4444', url: test?.sourceUrl || currentTestMeta?.hasPdf },
-                    { name: 'Đáp án chuẩn (Answer Key)', ext: '40/40 câu đã đối chiếu', icon: '📄', color: '#16A34A' },
-                    { name: 'Giải thích chi tiết & Trích dẫn', ext: 'Bằng chứng trích đoạn', icon: '📄', color: '#6A4BD9' },
-                    {
-                      name: 'Audio đề thi (OneDrive Cloud)',
-                      ext: (test?.audioCloudUrl || currentTestMeta?.audioCloudUrl) ? 'OneDrive Stream • Không tốn dung lượng' : 'MP3 cục bộ',
-                      icon: '🎵',
-                      color: '#2563EB',
-                      url: test?.audioCloudUrl || currentTestMeta?.audioCloudUrl
-                    },
-                  ].map((doc) => (
-                    <Pressable
-                      key={doc.name}
-                      onPress={() => {
-                        if (doc.url) Linking.openURL(String(doc.url));
-                      }}
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: 10,
-                        borderRadius: 10,
-                        backgroundColor: '#F3F0FB',
-                        borderWidth: doc.url ? 1 : 0,
-                        borderColor: doc.url ? '#BFDBFE' : 'transparent',
-                      }}
-                    >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                        <Icon name={doc.icon === '🎵' ? 'volume' : 'book'} size={18} color={doc.color} />
-                        <View>
-                          <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>{doc.name}</Text>
-                          <Text style={{ fontSize: 11, color: '#7C6552' }}>{doc.ext}</Text>
-                        </View>
-                      </View>
-                      <Icon name={doc.url ? "arrow-right" : "arrow-down"} size={14} color="#6A4BD9" />
-                    </Pressable>
-                  ))}
-                </View>
-              </View>
-
-              {test && !test.externalOnly ? (
-                <View style={{ gap: 10 }}>
-                  {test.parts?.length ? test.parts.map((part) => (
-                    <ExamVocabularyPanel
-                      key={`${test.id}-vocab-${part.id}`}
-                      exam="ielts"
-                      title={`${test.title} · ${part.label}`}
-                      pages={part.pages.map((page) => ({ page: page.page, text: page.text })) as ExamTextPage[]}
-                      ocrReviewCount={part.pages.reduce((sum, page) => sum + (page.reviewLines?.length ?? 0), 0)}
-                    />
-                  )) : (
-                    <ExamVocabularyPanel
-                      exam="ielts"
-                      title={test.title}
-                      pages={test.pages.map((page) => ({ page: page.page, text: page.text })) as ExamTextPage[]}
-                      ocrReviewCount={test.pages.reduce((sum, page) => sum + (page.reviewLines?.length ?? 0), 0)}
-                    />
-                  )}
-                </View>
-              ) : null}
-
-              {/* SECTION: Interactive Test Practice Area (When user clicked "Bắt đầu làm bài") */}
-              {isExamStarted && test ? (
-                <Modal visible animationType="fade" presentationStyle="fullScreen" onRequestClose={() => setIsExamStarted(false)}>
-                <View style={{ flex: 1, backgroundColor: '#F5F5F7' }}>
-                  <SourceExamRoom key={`${test.id}:${examMode}`} test={test} simulation={examMode === 'simulation'}
-                    answers={answers} onAnswerChange={updateAnswer} onSubmit={submit} onExit={() => setIsExamStarted(false)}
-                    grade={grade} submitted={submitted} loading={loading} supportPages={support} />
-                </View>
-                </Modal>
-              ) : null}
-
-              {/* SECTION: Đề thi liên quan (Related Tests matching input_file_1) */}
-              <View style={{ gap: 12 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Icon name="book" size={16} color="#6A4BD9" />
-                    <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
-                      {L('Đề thi liên quan', 'Related Tests')}
-                    </Text>
-                  </View>
-
-                  <Pressable onPress={() => setViewMode('catalog')}>
-                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#6A4BD9' }}>
-                      {L('Xem tất cả Cambridge 20 →', 'View all Cambridge 20 →')}
-                    </Text>
-                  </Pressable>
-                </View>
-
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
-                  {[
-                    { title: 'Reading Test 1', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-1' },
-                    { title: 'Reading Test 2', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-2' },
-                    { title: 'Reading Test 3', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-3' },
-                    { title: 'Reading Test 4', q: '40 câu', t: '60 phút', id: 'cambridge-20-reading-4' },
-                  ].map((rel) => (
-                    <Pressable
-                      key={rel.id}
-                      onPress={() => loadTest(rel.id)}
-                      style={{
-                        flex: 1,
-                        minWidth: 240,
-                        padding: 12,
-                        borderRadius: 14,
-                        backgroundColor: '#FFFFFF',
-                        borderWidth: 1,
-                        borderColor: '#F3F0FB',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 12,
-                        shadowColor: '#2B2350',
-                        shadowOpacity: 0.04,
-                        shadowRadius: 8,
-                      }}
-                    >
-                      <FlatCover kind="CAMBRIDGE" num="20" width={70} height={78} radius={8} />
-                      <View style={{ flex: 1, gap: 2 }}>
-                        <View style={{ alignSelf: 'flex-start', paddingHorizontal: 5, paddingVertical: 1, borderRadius: 4, backgroundColor: '#E0F2FE' }}>
-                          <Text style={{ fontSize: 9, fontWeight: '800', color: '#0369A1' }}>CAMBRIDGE</Text>
-                        </View>
-                        <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350' }}>{rel.title}</Text>
-                        <Text style={{ fontSize: 11, color: '#7C6552' }}>{rel.q} · {rel.t}</Text>
-                      </View>
-                      <Icon name="arrow-right" size={14} color="#6A4BD9" />
-                    </Pressable>
-                  ))}
-                </View>
-              </View>
-            </View>
+            {viewMode === 'detail' ? (
+            <PracticeTestDetail
+              test={test}
+              meta={currentTestMeta}
+              related={tests}
+              L={L}
+              isSaved={Boolean(selectedId && savedIds.has(selectedId))}
+              answeredCount={answeredCount}
+              timeLabel={formatTimer(timeLeft)}
+              submitted={submitted}
+              bandEstimate={submitted && grade ? (grade.bandEstimate ?? null) : null}
+              score={submitted && grade ? grade.score : null}
+              total={submitted && grade ? grade.total : null}
+              activeMode={isExamStarted ? examMode : null}
+              showAnswerKey={showAnswerKey}
+              onBack={() => setViewMode('catalog')}
+              onStart={(mode) => {
+                const targetId = selectedId || test?.id || currentTestMeta?.id || 'cambridge-19-reading-1';
+                if (!test || test.id !== targetId) {
+                  loadTest(targetId, true, mode);
+                } else {
+                  setExamMode(mode);
+                  setIsExamStarted(true);
+                }
+              }}
+              onOpenModes={() => setShowModeModal(true)}
+              onToggleAnswerKey={() => setShowAnswerKey(!showAnswerKey)}
+              onToggleSave={() => selectedId && toggleSave(selectedId)}
+              onOpenTest={(id) => loadTest(id)}
+            />
           ) : null}
 
         </View>
