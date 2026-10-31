@@ -15,6 +15,8 @@ import {
   normalizeAnswer,
   topUpRound,
   MIN_ROUND,
+  DEFAULT_LEARN_SETTINGS,
+  needsNewRound,
   pickRound,
   seededRng,
   type StudyWord,
@@ -149,4 +151,35 @@ test('vòng học bù đủ tối thiểu 30 từ từ bộ, không trùng và g
 test('bộ nhỏ hơn 30 từ thì vòng là cả bộ', () => {
   const pool = Array.from({ length: 12 }, (_, i) => ({ word: 'w' + i })) as never[];
   assert.equal(topUpRound([pool[0]] as never[], pool).length, 12);
+});
+
+test('đổi tự phát âm, giọng, chiều hỏi… không mở vòng mới (không mất vòng đang học dở)', () => {
+  const base = DEFAULT_LEARN_SETTINGS;
+  for (const patch of [
+    { autoPronounce: !base.autoPronounce },
+    { accent: 'uk' as const },
+    { voiceGender: 'm' as const },
+    { clipVoice: 'adam' as const },
+    { speakAnswer: !base.speakAnswer },
+    { acceptSynonyms: !base.acceptSynonyms },
+    { autoAdvance: !base.autoAdvance },
+    { directions: ['enToVi' as const] },
+  ]) {
+    assert.equal(needsNewRound(base, { ...base, ...patch }), false, JSON.stringify(patch));
+  }
+});
+
+test('đổi bộ lọc, thứ tự, dạng câu hay học xen kẽ thì mở vòng mới', () => {
+  const base = DEFAULT_LEARN_SETTINGS;
+  for (const patch of [
+    { starredOnly: true },
+    { unmasteredOnly: true },
+    { ordered: !base.ordered },
+    { interleave: !base.interleave },
+    { kinds: ['flash' as const, 'mcq' as const, 'type' as const] },
+  ]) {
+    assert.equal(needsNewRound(base, { ...base, ...patch }), true, JSON.stringify(patch));
+  }
+  // Cùng các dạng nhưng khác thứ tự lưu thì không tính là đổi.
+  assert.equal(needsNewRound({ ...base, kinds: ['mcq', 'flash'] }, base), false);
 });

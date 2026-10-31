@@ -191,6 +191,22 @@ export function activeKinds(kinds: readonly StageKind[]): StageKind[] {
   return STAGE_ORDER.filter((x) => kinds.includes(x));
 }
 
+/**
+ * Đổi cài đặt này có buộc MỞ VÒNG MỚI không? Chỉ khi nó đổi tập từ hoặc cách xếp của vòng (bộ lọc sao / chưa thuộc,
+ * thứ tự, dạng câu, học xen kẽ). Các cài đặt còn lại (tự phát âm, giọng, chiều hỏi, micro, đồng nghĩa, tự qua câu)
+ * đọc trực tiếp ở mỗi câu nên có hiệu lực ngay mà không làm mất vòng đang học dở.
+ */
+export function needsNewRound(prev: LearnSettings, next: LearnSettings): boolean {
+  const same = <T,>(a: readonly T[], b: readonly T[]) => a.length === b.length && a.every((x, i) => x === b[i]);
+  return (
+    prev.starredOnly !== next.starredOnly ||
+    prev.unmasteredOnly !== next.unmasteredOnly ||
+    prev.ordered !== next.ordered ||
+    prev.interleave !== next.interleave ||
+    !same(activeKinds(prev.kinds), activeKinds(next.kinds))
+  );
+}
+
 /** Mức thuộc của một từ trong bộ: 0 chưa học, 1 đang học, 2 đã nhớ (xong một vòng không sai). */
 export type WordStage = 0 | 1 | 2;
 

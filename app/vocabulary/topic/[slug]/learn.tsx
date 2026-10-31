@@ -46,6 +46,7 @@ import { mixByLevel } from "@/services/vocab/topic-study";
 import { uid } from "@/store/persist";
 import {
   activeKinds,
+  needsNewRound,
   clozeOf,
   directionFor,
   optionOf,
@@ -601,7 +602,8 @@ export default function LearnScreen() {
       onApply={(s) => {
         setLearnSettings(s);
         setShowSettings(false);
-        restart(s);
+        // Chỉ mở vòng mới khi cài đặt đổi tập từ / cách xếp của vòng; đổi tự phát âm, giọng… thì giữ vòng đang học dở.
+        if (needsNewRound(settings, s)) restart(s);
       }}
       onReset={() => {
         resetTopic(slug);

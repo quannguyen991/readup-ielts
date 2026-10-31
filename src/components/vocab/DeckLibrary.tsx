@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
@@ -26,6 +26,7 @@ import { color } from '@/theme/tokens';
 import { bi, useL } from '@/i18n/useL';
 
 import { DeckActionCard, DeckCard } from './DeckCard';
+import { SourceCard } from './SourceCard';
 import { VOCAB_COVERS } from '@/data/vocab-covers';
 import { deckLook, type DeckLook, type DeckSource } from './deck-style';
 
@@ -74,6 +75,9 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'toeic', label: 'TOEIC', labelEn: 'TOEIC', icon: 'book' },
   { key: 'toefl', label: 'TOEFL', labelEn: 'TOEFL', icon: 'book' },
 ];
+
+const PERSONAL = FILTERS.filter((f) => f.key === 'all' || f.key === 'learning' || f.key === 'mine');
+const SOURCES = FILTERS.filter((f) => !PERSONAL.includes(f));
 
 const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
   mine: { title: 'Của bạn', titleEn: 'Yours', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', subtitleEn: 'Words you saved while reading, plus decks you made', icon: 'bookmark' },
@@ -183,6 +187,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const [filter, setFilter] = useState<LibraryFilter>(initialFilter);
   const [query, setQuery] = useState('');
   const [limit, setLimit] = useState(PAGE);
+  const contentRef = useRef<View>(null);
   const now = useMemo(() => new Date(), []);
 
   const notebook = useMemo(() => notebookDeck(Object.values(entries)), [entries]);
@@ -216,6 +221,13 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const needle = fold(query);
   const results = needle ? decks.filter((d) => d.haystack.includes(needle)) : [];
 
+  const pick = (key: LibraryFilter) => {
+    setFilter(key);
+    setQuery('');
+    setLimit(PAGE);
+    // Lưới thẻ cao: chọn một nhóm thì đưa danh sách bộ của nhóm lên đầu màn.
+    if (WEB && key !== 'all' && key !== 'learning' && key !== 'mine') requestAnimationFrame(() => (contentRef.current as unknown as HTMLElement | null)?.scrollIntoView?.({ behavior: 'smooth', block: 'start' }));
+  };
   const open = (d: LibDeck) => router.push((d.href ?? `/vocabulary/topic/${d.slug}`) as never);
   const card = (d: LibDeck, i: number) => (
     <Appear key={d.slug} index={Math.min(i, 8)} style={{ height: '100%' }}>
@@ -325,8 +337,9 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
         </View>
       </View>
 
+      {/* Bộ lọc của riêng bạn: chip nhỏ, yên tĩnh. */}
       <View className="mt-3 flex-row flex-wrap gap-2" accessibilityRole="tablist">
-        {FILTERS.map((f) => {
+        {PERSONAL.map((f) => {
           const on = !needle && filter === f.key;
           const n = count(f.key);
           if (f.key === 'learning' && n === 0) return null;
@@ -335,33 +348,37 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
               key={f.key}
               accessibilityRole="tab"
               aria-selected={on}
-              onPress={() => {
-                setFilter(f.key);
-                setQuery('');
-                setLimit(PAGE);
-              }}
+              onPress={() => pick(f.key)}
               className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
-              style={{
-                backgroundColor: on ? color.primary : '#FFFFFF',
-                borderWidth: 1,
-                borderColor: on ? color.primary : '#F3F0FB',
-                ...(WEB ? ({ transition: 'background-color 200ms ease, border-color 200ms ease' } as object) : null),
-              }}
+              style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F3F0FB' }}
             >
               <Icon name={f.icon} size={14} color={on ? '#FFFFFF' : '#64748B'} strokeWidth={2} />
-              <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
-                {L(f.label, f.labelEn)}
-              </Text>
-              <Text className="font-sans text-label" style={{ color: on ? 'rgba(255,255,255,0.8)' : '#94A3B8' }}>
-                {n}
-              </Text>
+              <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>{L(f.label, f.labelEn)}</Text>
+              <Text className="font-sans text-label" style={{ color: on ? 'rgba(255,255,255,0.8)' : '#94A3B8' }}>{n}</Text>
             </Pressable>
           );
         })}
       </View>
 
+      {/* Chọn nhóm sách: thẻ màu như lưới "App có gì"; nhóm đang xem có dấu tích. */}
+      <View className="mt-4" accessibilityRole="tablist">
+        <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
+          {SOURCES.map((f, i) => (
+            <SourceCard
+              key={f.key}
+              index={i}
+              icon={f.icon}
+              title={L(f.label, f.labelEn)}
+              badge={L(`${count(f.key)} BỘ`, `${count(f.key)} DECKS`)}
+              selected={!needle && filter === f.key}
+              onPress={() => pick(f.key)}
+            />
+          ))}
+        </Grid>
+      </View>
+
       <CrossFade swapKey={needle ? 'search' : filter}>
-        <View>
+        <View ref={contentRef}>
           {needle ? (
             <View className="mt-5">
               <SectionHeader title={L('Kết quả tìm', 'Search results')} subtitle={results.length ? L(`${results.length} bộ khớp “${query.trim()}”`, `${results.length} decks match “${query.trim()}”`) : L('Không có bộ nào khớp', 'No matching decks')} icon="search" />
