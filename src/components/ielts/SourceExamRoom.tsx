@@ -26,6 +26,7 @@ import { Icon } from '@/components/ui/Icon';
 import { goldLeaf } from '@/theme/tokens';
 
 import { SECTION_MINUTES, type ExamPart, type SourcePage, type TestSection } from '@/services/ielts/source-catalog';
+import { ieltsAudioUrl } from '@/services/ielts/audio-url';
 
 import type { Grade } from './ComputerDeliveredExamRoom';
 import { trackAppEvent } from '@/services/analytics/app-events';
@@ -36,18 +37,7 @@ function Text(props: TextProps) {
 
 }
 
-const assetUrl = (name: string) => {
-
-  if (!name) return '';
-
-  if (name.startsWith('http://') || name.startsWith('https://')) return name;
-
-  // Cambridge 21 parts are shipped in public/ so the deployed site can play them.
-  if (/^cambridge21-listening-test\d-part\d\.mp3$/.test(name)) return `/audio/ielts/cam21/${name}`;
-
-  return `/api/ielts/local-ocr?asset=${encodeURIComponent(name)}`;
-
-};
+const assetUrl = (name: string) => ieltsAudioUrl(name);
 
 function clock(seconds: number) {
 
