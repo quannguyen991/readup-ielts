@@ -42,6 +42,9 @@ const assetUrl = (name: string) => {
 
   if (name.startsWith('http://') || name.startsWith('https://')) return name;
 
+  // Cambridge 21 parts are shipped in public/ so the deployed site can play them.
+  if (/^cambridge21-listening-test\d-part\d\.mp3$/.test(name)) return `/audio/ielts/cam21/${name}`;
+
   return `/api/ielts/local-ocr?asset=${encodeURIComponent(name)}`;
 
 };
