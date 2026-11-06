@@ -5,15 +5,13 @@ import { router } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, Icon } from '@/components/ui';
+import { Badge, Card, Icon } from '@/components/ui';
 import {
-  VIDEO_CHANNELS,
   VIDEO_LEVELS,
   VIDEO_TOPICS,
   filterVideos,
   formatDuration,
   getLibraryVideo,
-  isBilingualVideo,
   thumbnailUrl,
   videoLibraryStats,
   type LibraryVideo,
@@ -47,12 +45,11 @@ const TOPIC_EN: Record<string, string> = {
 export default function VideoLibraryScreen() {
   const { L, en } = useL();
   const [level, setLevel] = useState('all');
-  const [channel, setChannel] = useState('all');
   const [topic, setTopic] = useState('all');
   const [search, setSearch] = useState('');
 
   const stats = useMemo(() => videoLibraryStats(), []);
-  const videos = useMemo(() => filterVideos({ level, channel, topic, search }), [level, channel, topic, search]);
+  const videos = useMemo(() => filterVideos({ level, topic, search }), [level, topic, search]);
 
   const saved = useVideoTranscriptStore((s) => s.videos);
   const prepared = useMemo(() => preparedList(saved), [saved]);
@@ -63,7 +60,7 @@ export default function VideoLibraryScreen() {
         badge="LISTENING VIDEO LIBRARY" art="listening"
         line1={L('Thư viện video', 'Video library')}
         line2={L('nghe câu thật, chép lại', 'hear real sentences, write them down')}
-        subtitle={L(`${stats.videos} video từ ${stats.channels} kênh, chia theo trình độ. Tích hợp sẵn video tin tức & podcast song ngữ Anh - Việt để luyện Đọc, Nghe, Chép chính tả và Shadowing ngay không cần chuẩn bị.`, `${stats.videos} videos from ${stats.channels} channels, sorted by level. Includes pre-loaded bilingual news & podcasts with full subtitles and translations for Reading, Listening, Dictation, and Shadowing.`)}
+        subtitle={L(`${stats.videos} video · ${stats.channels} kênh`, `${stats.videos} videos · ${stats.channels} channels`)}
         footer={
           <>
             <HeroStat value={String(stats.videos)} label="video" />
@@ -71,26 +68,11 @@ export default function VideoLibraryScreen() {
             <HeroStat value={String(prepared.length)} label={L('sẵn sàng học', 'ready')} />
           </>
         }
-      >
-        <Button label={L('Tìm video', 'Find a video')} variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
-      </LightHero>
-
-      <View className="mt-4 flex-row items-start gap-2.5 rounded-panel border border-[#2E7D4F]/30 bg-[#2E7D4F]/10 p-3.5">
-        <Icon name="check" size={17} color="#2E7D4F" strokeWidth={2.4} />
-        <Text className="min-w-0 flex-1 font-sans text-body text-[#1D5433]" style={{ lineHeight: 22 }}>
-          {L(
-            '✨ Đã tích hợp sẵn các video tin tức & podcast song ngữ Anh - Việt từ BBC News, CNN, Vietnam Today (VTV4), TED-Ed có đầy đủ phụ đề chuẩn và bản dịch chi tiết. Bấm vào là luyện Đọc, Nghe, Chép chính tả hoặc Shadowing ngay!',
-            '✨ Pre-loaded bilingual news & podcasts from BBC News, CNN, Vietnam Today (VTV4), TED-Ed with full timed transcripts and Vietnamese translations. Tap any video to start Reading, Listening, Dictation, or Shadowing immediately!'
-          )}
-        </Text>
-      </View>
+      />
 
       {prepared.length > 0 ? (
         <View className="mt-6">
           <Text className="font-strong text-cardTitle text-ink">{L('Đang luyện dở', 'In progress')}</Text>
-          <Text className="mt-1 font-sans text-body text-muted">
-            {L(`${prepared.length} video đã chuẩn bị phụ đề — vào là làm tiếp ngay.`, `${prepared.length} videos with subtitles ready — jump right back in.`)}
-          </Text>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
               {prepared.slice(0, 8).map((p) => {
@@ -134,32 +116,14 @@ export default function VideoLibraryScreen() {
           />
         </View>
 
-        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
-          {L('Kênh & Nguồn', 'Channel & Source')}
-        </Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View className="flex-row gap-1.5 py-0.5">
-            <Chip label={L('Tất cả kênh', 'All channels')} active={channel === 'all'} onPress={() => setChannel('all')} />
-            {VIDEO_CHANNELS.map((ch) => (
-              <Chip key={ch} label={ch} active={channel === ch} onPress={() => setChannel(channel === ch ? 'all' : ch)} />
-            ))}
-          </View>
-        </ScrollView>
-
-        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
-          {L('Trình độ', 'Level')}
-        </Text>
-        <View className="flex-row flex-wrap gap-1.5">
-          <Chip label={L('Tất cả', 'All')} active={level === 'all'} onPress={() => setLevel('all')} />
+        <View className="mt-3 flex-row flex-wrap gap-1.5">
+          <Chip label={L('Mọi trình độ', 'All levels')} active={level === 'all'} onPress={() => setLevel('all')} />
           {VIDEO_LEVELS.map((l) => (
             <Chip key={l} label={l} active={level === l} onPress={() => setLevel(level === l ? 'all' : l)} />
           ))}
         </View>
 
-        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
-          {L('Chủ đề', 'Topic')}
-        </Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 10 }}>
           <View className="flex-row gap-1.5 py-0.5">
             <Chip label={L('Tất cả', 'All')} active={topic === 'all'} onPress={() => setTopic('all')} />
             {VIDEO_TOPICS.map((t) => (
@@ -174,7 +138,7 @@ export default function VideoLibraryScreen() {
       <View className="mt-3">
         <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
           {videos.map((v) => (
-            <VideoCard key={v.id} video={v} prepared={Boolean(saved[v.id])} />
+            <VideoCard key={v.id} video={v} />
           ))}
         </Grid>
       </View>
@@ -192,11 +156,9 @@ export default function VideoLibraryScreen() {
 
 function VideoCard({
   video,
-  prepared,
   progress,
 }: {
   video: LibraryVideo;
-  prepared?: boolean;
   progress?: string;
 }) {
   const { L, en } = useL();
@@ -246,19 +208,9 @@ function VideoCard({
         <Text className="font-strong text-body text-ink" numberOfLines={2} style={{ lineHeight: 21 }}>
           {video.title}
         </Text>
-        <Text className="mt-1 font-sans text-label text-muted" numberOfLines={1}>
-          {video.channel}
-        </Text>
-
-        <View className="mt-2.5 flex-row flex-wrap items-center gap-1.5">
+        <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
           {video.level ? <Badge label={video.level} tone="neutral" /> : null}
-          {isBilingualVideo(video.id) ? (
-            <Badge label={L('Song ngữ', 'Bilingual')} tone="primary" />
-          ) : null}
           {progress ? <Badge label={progress} tone="success" /> : null}
-          {prepared && !progress && !isBilingualVideo(video.id) ? (
-            <Badge label={L('đã có phụ đề', 'subtitles ready')} tone="success" />
-          ) : null}
         </View>
       </View>
     </Pressable>
