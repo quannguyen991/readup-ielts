@@ -70,7 +70,6 @@ export default function WritingRoomScreen() {
   const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('nunito');
   const [fontSize, setFontSize] = useState<number>(16);
   const startedAt = useRef<number | null>(null);
-  const { L, en } = useL();
 
   // Đồng hồ chỉ chạy khi người học bấm bắt đầu: mở trang ra để đọc đề mà đã bị
   // tính giờ thì lần luyện nào cũng bị hụt mất một hai phút.
