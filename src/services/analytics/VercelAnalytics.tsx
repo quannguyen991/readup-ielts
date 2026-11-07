@@ -15,8 +15,10 @@ import { Platform } from 'react-native';
  */
 export function VercelAnalytics(): null {
   useEffect(() => {
+    // Tắt từ khi chuyển sang máy chủ HoaiDuc: không còn host Vercel, script luôn 404
+    // và làm console đỏ. Lượt truy cập đang đếm bằng /api/track (Supabase page_views).
     if (Platform.OS !== 'web' || typeof window === 'undefined') return;
-    // Chỉ tải thư viện trên web, lúc chạy — bản native không kéo theo gói này.
+    if (!window.location.hostname.endsWith('.vercel.app')) return;
     void import('@vercel/analytics').then(({ inject }) => inject({ framework: 'expo' }));
   }, []);
   return null;
