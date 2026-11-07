@@ -13,6 +13,8 @@ export { highlightRanges, sentenceAround, sentenceBounds, snapToWords } from './
 
 export type ReaderTool = 'read' | 'highlight' | 'vocab';
 
+export type ReaderTool = 'read' | 'highlight' | 'vocab';
+
 export type PassageViewProps = {
   paragraphs: string[];
   fontScale: number;

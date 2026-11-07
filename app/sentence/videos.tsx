@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Card, Icon } from '@/components/ui';
+import { Badge, Button, Card, Icon } from '@/components/ui';
 import {
   VIDEO_LEVELS,
   VIDEO_TOPICS,

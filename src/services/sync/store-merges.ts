@@ -1,3 +1,4 @@
+import { effectivePlan } from '@/lib/billing/entitlements';
 import { planRank, type PlanId } from '@/lib/billing/plans';
 import { mergeReviewEntry, type ReviewEntry } from '@/services/vocab/review-schedule';
 

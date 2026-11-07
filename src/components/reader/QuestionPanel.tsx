@@ -514,3 +514,169 @@ function MultiChoiceBlock({
     </View>
   );
 }
+
+function SquareChip({ label, selected, onPress, wide }: { label: string; selected: boolean; onPress: () => void; wide?: boolean }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="radio"
+      aria-checked={selected}
+      style={{
+        minWidth: 44,
+        height: 44,
+        paddingHorizontal: 10,
+        borderRadius: 10,
+        borderWidth: 1.5,
+        borderColor: selected ? EXAM.accent : EXAM.accentLine,
+        backgroundColor: selected ? EXAM.accent : EXAM.white,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Text style={{ fontSize: 15, fontWeight: '800', color: selected ? '#FFFFFF' : EXAM.accentDeep }}>{label}</Text>
+    </Pressable>
+  );
+}
+
+/** Ô trống của nối tiêu đề: thanh có số câu, hiện tiêu đề đã chọn khi có. */
+function HeadingGap({ number, value }: { number: number; value: string }) {
+  return (
+    <View
+      style={{
+        minHeight: 44,
+        borderRadius: 10,
+        borderWidth: 1.5,
+        borderStyle: value ? 'solid' : 'dashed',
+        borderColor: value ? EXAM.accent : EXAM.accentLine,
+        backgroundColor: value ? EXAM.accentSoft : '#FBF9F4',
+        justifyContent: 'center',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+      }}
+    >
+      <Text style={{ fontSize: 14.5, lineHeight: 20, fontWeight: value ? '600' : '800', color: value ? EXAM.ink : EXAM.accentDeep, textAlign: value ? 'left' : 'center' }}>
+        {value || number}
+      </Text>
+    </View>
+  );
+}
+
+/** Câu có chỗ trống ________: ô điền nằm ngay trong câu, giữa hai nửa chữ. */
+function InlineGap({ text, number, value, onChange }: { text: string; number: number; value: string; onChange: (v: string) => void }) {
+  const [before, ...rest] = text.split(BLANK);
+  const after = rest.join(' ________ ');
+  const textStyle = { fontSize: 16, lineHeight: 48, color: EXAM.ink } as const;
+  return (
+    <Text style={textStyle}>
+      {before}
+      <View style={Platform.OS === 'web' ? ({ display: 'inline-flex', verticalAlign: 'middle', marginHorizontal: 4 } as object) : { marginHorizontal: 4 }}>
+        <GapInput number={number} value={value} onChange={onChange} />
+      </View>
+      {after}
+    </Text>
+  );
+}
+
+/* ------------------------------------------------------- chọn nhiều đáp án */
+
+/**
+ * "Choose TWO letters": MỘT bảng phương án, người học tích đủ n ô. Mỗi ô tích đã
+ * chiếm một số câu của nhóm (câu 21 và 22 chung một danh sách), nên huy hiệu số
+ * câu sáng lên theo số ô đã tích. Tích quá n ô thì ô cũ nhất bị thay.
+ */
+function MultiChoiceBlock({
+  block,
+  answers,
+  activeNumber,
+  onActivate,
+  onAnswer,
+}: {
+  block: QuestionBlockView;
+  answers: Record<string, string>;
+  activeNumber?: number;
+  onActivate?: (number: number) => void;
+  onAnswer: (questionId: string, answer: string) => void;
+}) {
+  const { L } = useL();
+  const members = block.questions;
+  const options = members[0]?.options ?? [];
+  const picked = members.map((m) => answers[m.id] ?? '').filter(Boolean);
+
+  const write = (next: string[]) => {
+    // Theo thứ tự phương án cho gọn; ô còn thừa để trống.
+    const ordered = [...next].sort((a, b) => options.indexOf(a) - options.indexOf(b));
+    members.forEach((m, i) => onAnswer(m.id, ordered[i] ?? ''));
+  };
+
+  const toggle = (opt: string) => {
+    onActivate?.(block.from + Math.min(picked.length, members.length - 1));
+    if (picked.includes(opt)) return write(picked.filter((p) => p !== opt));
+    const next = picked.length >= members.length ? [...picked.slice(1), opt] : [...picked, opt];
+    write(next);
+  };
+
+  return (
+    <View style={{ gap: 6 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
+        <View style={{ gap: 4 }}>
+          {members.map((m, i) => {
+            const filled = i < picked.length;
+            const current = activeNumber === block.from + i;
+            return (
+              <View
+                key={m.id}
+                style={{
+                  minWidth: 30,
+                  height: 28,
+                  paddingHorizontal: 8,
+                  borderRadius: 999,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: filled || current ? EXAM.accent : EXAM.accentSoft,
+                }}
+              >
+                <Text style={{ fontSize: 14, fontWeight: '800', color: filled || current ? '#FFFFFF' : EXAM.accentDeep }}>{block.from + i}</Text>
+              </View>
+            );
+          })}
+        </View>
+        <Text style={{ flex: 1, fontSize: 16, lineHeight: 24, fontWeight: '600', color: EXAM.ink }}>{members[0]?.prompt}</Text>
+      </View>
+      <View style={{ paddingLeft: 40 }} accessibilityRole="list">
+        {options.map((o, i) => {
+          const on = picked.includes(o);
+          return (
+            <Pressable
+              key={o}
+              onPress={() => toggle(o)}
+              accessibilityRole="checkbox"
+              aria-checked={on}
+              style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 11, minHeight: 44 }}
+            >
+              <View
+                style={{
+                  width: 22,
+                  height: 22,
+                  marginTop: 1,
+                  borderRadius: 6,
+                  borderWidth: 2,
+                  borderColor: on ? EXAM.accent : '#C9C4B6',
+                  backgroundColor: on ? EXAM.accent : EXAM.white,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {on ? <Icon name="check" size={13} color="#FFFFFF" strokeWidth={3} /> : null}
+              </View>
+              <Text style={{ width: 20, fontSize: 15, fontWeight: '800', color: EXAM.accentDeep }}>{String.fromCharCode(65 + i)}</Text>
+              <Text style={{ flex: 1, fontSize: 15.5, lineHeight: 22, color: EXAM.ink, fontWeight: on ? '700' : '400' }}>{o}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+      <Text style={{ paddingLeft: 40, fontSize: 12.5, color: EXAM.muted }}>
+        {L(`Chọn ${members.length} đáp án (đã chọn ${picked.length}).`, `Choose ${members.length} answers (${picked.length} selected).`)}
+      </Text>
+    </View>
+  );
+}

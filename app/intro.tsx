@@ -311,6 +311,11 @@ export default function IntroScreen() {
         <HistoryHomeCard marginTop={28} />
       </Appear>
 
+      {/* ------------------------------------- Khám phá lịch sử (ẩn tới khi có cảnh xuất bản) */}
+      <Appear index={1}>
+        <HistoryHomeCard marginTop={28} />
+      </Appear>
+
       {/* ---------------------------------------------------------- sáu mảng */}
       <Appear index={1}>
         <Text className="mt-14 font-heavy text-sectionTitle text-ink">{L('App có gì', "What's inside")}</Text>

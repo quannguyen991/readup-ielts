@@ -453,6 +453,10 @@ function PracticeView({
     return <PracticePrepView videoId={videoId} onReady={onReady} onExit={onExit} />;
   }
 
+  if (sentences.length === 0) {
+    return <PracticePrepView videoId={videoId} onReady={onReady} onExit={onExit} />;
+  }
+
   return (
     <TaskShell
       backHref="/sentence"
@@ -520,7 +524,7 @@ function PracticeView({
       <View className="gap-4 rounded-panel bg-paper-canvas p-3 lg:flex-row">
         {/* ------------------------------------------------------ trình phát */}
         <View className="lg:w-[42%]">
-          <View className="overflow-hidden rounded-card border border-brand-soft bg-white">
+          <View className="overflow-hidden rounded-card border border-white/10 bg-black/35">
             <YoutubeFrame videoId={videoId} start={sentence.start} />
             <View className="flex-row flex-wrap items-center gap-2 border-t border-brand-soft p-3">
               <Button variant="brand" size="sm" label={L('Nghe lại', 'Replay')} iconLeft="refresh" onPress={replay} />

@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { anim, ensureGameKeyframes, MOVE } from '@/components/game/game-anim';
+import { PixelSprite } from '@/components/game/PixelSprite';
 import { Icon } from '@/components/ui';
 import { useRewardStore } from '@/store/useRewardStore';
 import { useAssistantDock } from '@/store/useAssistantDock';
