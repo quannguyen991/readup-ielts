@@ -307,7 +307,7 @@ export function speechCues(cues: TranscriptCue[]): TranscriptCue[] {
  * Độ dài tối đa của MỘT câu chép chính tả, tính bằng từ. Câu dài hơn thì tách ở dấu phẩy
  * (hoặc chấm phẩy, hai chấm, gạch ngang) gần giữa nhất, để người học không phải gõ một mạch quá dài.
  */
-export const MAX_DICTATION_WORDS = 18;
+export const MAX_DICTATION_WORDS = 10;
 
 /**
  * Tách một mẩu thành các CÂU RIÊNG, mỗi câu một đoạn chép chính tả.
@@ -351,7 +351,15 @@ function breakLongSentence(sentence: string, maxWords: number): string[] {
     const gap = Math.abs(at - mid);
     if (!best || gap < best.gap) best = { at, gap };
   }
-  if (!best) return [sentence];
+  if (!best) {
+    // Không có dấu ngắt hợp lệ (phụ đề máy hay thiếu dấu câu): chia đôi theo số từ.
+    const words = sentence.split(/\s+/);
+    const half = Math.ceil(words.length / 2);
+    return [
+      ...breakLongSentence(words.slice(0, half).join(' '), maxWords),
+      ...breakLongSentence(words.slice(half).join(' '), maxWords),
+    ];
+  }
 
   const left = sentence.slice(0, best.at).trim();
   const right = sentence.slice(best.at).trim();

@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 9: Earth and Space",
+ "topic": "Planets, geology, oceans and the universe",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "The Moon is moving away from the Earth at about 3.8 centimetres a year, roughly the speed at which fingernails grow. The cause is the tides: the Moon's gravity raises bulges in the oceans, and as the Earth rotates, friction drags these bulges slightly ahead of the Moon, giving it a tiny forward pull. The same process is gradually slowing the Earth's spin, so days are becoming longer.",
+   "options": [
+    "The speed at which fingernails grow",
+    "The gravity of the Moon",
+    "The length of the day in the past",
+    "Ocean bulges and rotation",
+    "How the tides are slowly pushing the Moon away",
+    "Distance between planets"
+   ],
+   "answer": "How the tides are slowly pushing the Moon away",
+   "why": "Ý chính: thủy triều khiến Mặt Trăng xa dần. Độ dài ngày chỉ là hệ quả đi kèm.",
+   "quote": "moving away from the Earth"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Earthquakes occur when stress built up along a fault is suddenly released. The Earth's crust is divided into plates that move a few centimetres each year; where they grind against one another, they often stick, then slip. The point where the rupture begins is the focus, and the point on the surface directly above it is the epicentre. Seismographs record the waves and allow scientists to measure magnitude.",
+   "options": [
+    "The movement of plates each year",
+    "Damage caused by earthquakes",
+    "The causes of earthquakes and how they are measured",
+    "The instruments used by geologists",
+    "Faults across the world",
+    "Predicting disasters"
+   ],
+   "answer": "The causes of earthquakes and how they are measured",
+   "why": "Đoạn nêu nguyên nhân động đất và cách đo. Mỗi lựa chọn khác chỉ là một phần.",
+   "quote": "stress built up along a fault"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Mars once had liquid water. Dry channels, delta-shaped deposits and minerals that form only in water show that rivers and lakes existed billions of years ago. Today the planet's thin atmosphere cannot hold liquid water at the surface, though ice remains at the poles and underground. Missions are searching for signs that simple life may once have arisen in those ancient waters.",
+   "options": [
+    "The thin atmosphere of Mars",
+    "Ice at the poles",
+    "Evidence that Mars was once wet and the search for past life",
+    "Minerals formed in water",
+    "Spacecraft sent to the planets",
+    "Life on Earth"
+   ],
+   "answer": "Evidence that Mars was once wet and the search for past life",
+   "why": "Trọng tâm: bằng chứng sao Hỏa từng có nước và việc tìm sự sống. Khí quyển mỏng chỉ là lý do khô hạn.",
+   "quote": "once had liquid water"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "A total solar eclipse happens when the Moon passes exactly between the Sun and the Earth. By coincidence the Moon is about four hundred times smaller than the Sun but also about four hundred times closer, so the two discs appear almost the same size in the sky. For a few minutes, the Sun's faint outer atmosphere, the corona, becomes visible, a sight that has astonished observers for millennia.",
+   "options": [
+    "The corona and its temperature",
+    "The alignment that produces a total solar eclipse",
+    "Ancient observers of the sky",
+    "The sizes of the Sun and Moon",
+    "Why the sky grows dark",
+    "Safe viewing of eclipses"
+   ],
+   "answer": "The alignment that produces a total solar eclipse",
+   "why": "Ý chính: sự thẳng hàng tạo ra nhật thực toàn phần. Quầng sáng chỉ là hệ quả.",
+   "quote": "passes exactly between the Sun and the Earth"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "The Great Barrier Reef is the largest structure built by living creatures, stretching more than 2,000 kilometres along the coast of Australia. It consists of thousands of individual reefs, each made by tiny animals called coral polyps secreting limestone. The reef is home to hundreds of species of fish and sea turtles, and it can be seen from space.",
+   "options": [
+    "Fish and turtles of the sea",
+    "Limestone as a building material",
+    "Photographs taken from space",
+    "The scale and structure of Australia's great reef",
+    "The coast of Australia",
+    "Tiny animals in the ocean"
+   ],
+   "answer": "The scale and structure of Australia's great reef",
+   "why": "Đoạn mô tả quy mô và cấu trúc rạn san hô. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "largest structure built by living creatures"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Comets are balls of ice and dust left over from the formation of the solar system. When one approaches the Sun, heat turns the ice to gas, which streams away as a glowing tail that always points away from the Sun, whichever direction the comet is travelling. Some comets return regularly, such as Halley's, which is visible from Earth about every seventy-six years.",
+   "options": [
+    "What comets are made of and why they develop tails",
+    "The regular return of Halley's comet",
+    "The formation of the solar system",
+    "Ice and dust in space",
+    "The glow of the Sun",
+    "The direction of comet travel"
+   ],
+   "answer": "What comets are made of and why they develop tails",
+   "why": "Ý chính: thành phần sao chổi và cách đuôi hình thành. Sao chổi Halley chỉ là ví dụ.",
+   "quote": "turns the ice to gas"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "Rocks are constantly recycled. Igneous rocks form when molten material cools; weathering breaks them into sediment; the sediment is compressed into sedimentary rock; and heat and pressure may transform that rock into metamorphic rock. Eventually, any type can be pulled deep into the Earth and melted, beginning the cycle again. The whole process takes millions of years.",
+   "options": [
+    "Volcanoes and molten material",
+    "The continuous cycle through which rocks change type",
+    "The weathering of mountains",
+    "Pressure deep underground",
+    "How long geology takes",
+    "Types of sediment"
+   ],
+   "answer": "The continuous cycle through which rocks change type",
+   "why": "Trọng tâm: vòng tuần hoàn biến đổi của đá. Các loại đá riêng lẻ chỉ là các bước.",
+   "quote": "constantly recycled"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "The ozone layer in the upper atmosphere absorbs most of the Sun's harmful ultraviolet radiation. In the 1980s scientists discovered a hole over Antarctica caused by chemicals called CFCs, once widely used in refrigerators and spray cans. An international agreement, the Montreal Protocol, banned these chemicals in 1987, and the layer is slowly recovering, with full recovery expected by around the middle of this century.",
+   "options": [
+    "The use of spray cans",
+    "Harmful ultraviolet radiation",
+    "The discovery of a hole",
+    "The temperature in Antarctica",
+    "Refrigerators and cooling",
+    "An environmental problem that international action is solving"
+   ],
+   "answer": "An environmental problem that international action is solving",
+   "why": "Ý chính: vấn đề tầng ozone đang được hành động quốc tế giải quyết. Lỗ thủng chỉ là một mốc.",
+   "quote": "slowly recovering"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "The oceans cover seventy per cent of the Earth's surface, yet the seabed remains less thoroughly mapped than the surface of Mars. Ships measure depth with sound waves, but covering such a vast area takes decades. A global project aims to complete a map of the entire floor, because accurate maps help in predicting tsunamis, laying cables and understanding currents.",
+   "options": [
+    "Sound waves used in ships",
+    "The incomplete mapping of the ocean floor and why it matters",
+    "Currents in the ocean",
+    "Mars exploration",
+    "The seventy per cent of the Earth",
+    "Tsunami prediction"
+   ],
+   "answer": "The incomplete mapping of the ocean floor and why it matters",
+   "why": "Trọng tâm: đáy đại dương chưa được vẽ bản đồ đầy đủ và lý do cần thiết. Sóng âm chỉ là phương pháp.",
+   "quote": "less thoroughly mapped than the surface of Mars"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "Black holes are regions where gravity is so strong that nothing, not even light, can escape. They form when massive stars collapse at the end of their lives. Although they cannot be seen directly, astronomers detect them through their effect on nearby stars and gas, which heat up and glow as they spiral inwards. In 2019 scientists published the first image of a black hole's shadow.",
+   "options": [
+    "The death of massive stars",
+    "How black holes form and how they are detected",
+    "Gravity and light",
+    "The first photograph of a black hole",
+    "Gas spiralling in space",
+    "The birth of the universe"
+   ],
+   "answer": "How black holes form and how they are detected",
+   "why": "Ý chính: hình thành và cách phát hiện hố đen. Bức ảnh năm 2019 chỉ là một chi tiết.",
+   "quote": "detect them through their effect"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "The seasons are caused by the tilt of the Earth's axis, not by its distance from the Sun. When the northern hemisphere tilts towards the Sun, it receives more direct sunlight and longer days, giving summer, while the southern hemisphere experiences winter. In fact, the Earth is closest to the Sun in early January, in the middle of the northern winter.",
+   "options": [
+    "Winter in the southern hemisphere",
+    "The length of days",
+    "The orbit of the Earth",
+    "Why the seasons occur, contrary to a common belief",
+    "Distance from the Sun",
+    "January temperatures"
+   ],
+   "answer": "Why the seasons occur, contrary to a common belief",
+   "why": "Trọng tâm: mùa do trục nghiêng, không phải khoảng cách. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "not by its distance from the Sun"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Deserts expand when vegetation disappears. In the Sahel region south of the Sahara, drought combined with overgrazing and the cutting of trees for fuel has stripped soil of its cover, allowing wind to carry it away. Efforts to halt the process include planting a belt of trees across the continent and teaching farmers methods that protect the soil.",
+   "options": [
+    "Trees as fuel",
+    "Winds in the Sahara",
+    "Droughts in Africa",
+    "Desertification and efforts to slow it",
+    "Soil teaching methods",
+    "Grazing animals"
+   ],
+   "answer": "Desertification and efforts to slow it",
+   "why": "Đoạn nói sa mạc hoá và nỗ lực ngăn chặn. Từng yếu tố chỉ là nguyên nhân hoặc biện pháp.",
+   "quote": "Deserts expand when vegetation disappears"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Tides are caused mainly by the Moon's gravity pulling on the oceans. Most coasts experience two high and two low tides each day. The difference between them varies: when the Sun and Moon line up at new and full moon, spring tides produce the largest ranges, while at quarter phases neap tides are smaller. In places such as the Bay of Fundy, the range can exceed fifteen metres.",
+   "options": [
+    "The gravitational pull of the Sun",
+    "The Bay of Fundy",
+    "The causes and patterns of ocean tides",
+    "Phases of the Moon",
+    "Sea level changes",
+    "Coastal fishing"
+   ],
+   "answer": "The causes and patterns of ocean tides",
+   "why": "Ý chính: nguyên nhân và quy luật thủy triều. Vịnh Fundy chỉ là ví dụ.",
+   "quote": "two high and two low tides each day"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "The first artificial satellite, Sputnik, was launched by the Soviet Union in 1957 and transmitted a simple beeping signal for three weeks. Its success shocked the United States and began the space race, leading to the creation of NASA the following year. Within twelve years, the competition had produced a landing on the Moon.",
+   "options": [
+    "The beeping signals of satellites",
+    "The founding of NASA",
+    "Soviet technology",
+    "The first people on the Moon",
+    "A satellite launch that triggered a race to the Moon",
+    "Competition in science"
+   ],
+   "answer": "A satellite launch that triggered a race to the Moon",
+   "why": "Trọng tâm: vệ tinh đầu tiên khởi đầu cuộc đua lên Mặt Trăng. Tín hiệu bíp chỉ là chi tiết.",
+   "quote": "began the space race"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Planets orbiting other stars, called exoplanets, were first confirmed in the 1990s. Today more than five thousand are known. Astronomers find them by watching for tiny dips in a star's brightness when a planet crosses its face, or for the slight wobble caused by a planet's gravity. Some lie in the habitable zone, where liquid water could exist.",
+   "options": [
+    "Methods of discovering planets beyond our solar system",
+    "The first exoplanet confirmed in the 1990s",
+    "Stars and their brightness",
+    "Habitable zones and water",
+    "Thousands of known planets",
+    "The gravity of planets"
+   ],
+   "answer": "Methods of discovering planets beyond our solar system",
+   "why": "Ý chính: các phương pháp phát hiện ngoại hành tinh. Vùng sinh sống được chỉ là chi tiết.",
+   "quote": "tiny dips in a star's brightness"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Limestone caves form over hundreds of thousands of years as slightly acidic rainwater seeps through cracks and dissolves rock. Where water drips from the ceiling, it deposits calcium carbonate, building icicle-like stalactites, while those growing upward from the floor are stalagmites. Some caves also preserve ancient bones and paintings, offering clues to early human life.",
+   "options": [
+    "The formation of caves and their contents",
+    "Acidic rain and its effects",
+    "Cave paintings by early humans",
+    "Stalactites and stalagmites",
+    "Water dripping from ceilings",
+    "The age of limestone"
+   ],
+   "answer": "The formation of caves and their contents",
+   "why": "Trọng tâm: hang động hình thành và những gì chúng lưu giữ. Nhũ đá chỉ là một phần.",
+   "quote": "dissolves rock"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "The Sun is an average star, but it contains ninety-nine per cent of the mass of the solar system. Its core fuses hydrogen into helium, releasing the energy that eventually reaches Earth as light and heat. It has been shining for about 4.6 billion years and will continue for roughly five billion more, before swelling into a red giant.",
+   "options": [
+    "Hydrogen and helium in stars",
+    "Light and heat reaching Earth",
+    "Red giants in the universe",
+    "The mass of the planets",
+    "The age of the solar system",
+    "The Sun's composition, energy and lifespan"
+   ],
+   "answer": "The Sun's composition, energy and lifespan",
+   "why": "Ý chính: tổng quan về Mặt Trời. Các lựa chọn khác chỉ là một chi tiết.",
+   "quote": "ninety-nine per cent of the mass"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "Hurricanes draw their energy from warm ocean water. When sea temperatures exceed about 26 degrees, evaporating water rises and condenses, releasing heat that powers a rotating storm. As a hurricane moves over land or cooler water, it loses its energy supply and weakens. Scientists expect warmer oceans to produce more intense storms, although the total number may not rise.",
+   "options": [
+    "How storms are named",
+    "The speed of rotating winds",
+    "The decline of storms over land",
+    "Climate forecasts",
+    "Why warm seas make hurricanes stronger",
+    "Damage to coastal towns"
+   ],
+   "answer": "Why warm seas make hurricanes stronger",
+   "why": "Trọng tâm: đại dương ấm khiến bão mạnh hơn. Bão yếu đi trên đất liền chỉ là chi tiết.",
+   "quote": "draw their energy from warm ocean water"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Fossils form when remains are buried quickly and minerals gradually replace the original material. Most organisms never become fossils, because they are eaten or decay first, so the fossil record is incomplete. Paleontologists estimate that only a tiny fraction of the species that ever lived have been found, and new discoveries regularly change ideas about evolution.",
+   "options": [
+    "Why fossils are rare and the record is incomplete",
+    "How minerals replace bone",
+    "New discoveries in evolution",
+    "Species that lived long ago",
+    "The work of paleontologists",
+    "Burial in sediment"
+   ],
+   "answer": "Why fossils are rare and the record is incomplete",
+   "why": "Ý chính: hoá thạch hiếm và hồ sơ không đầy đủ. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "incomplete"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Rainbows appear when sunlight enters raindrops, is bent as it passes into the water, reflects off the back surface and is bent again as it leaves. Because each colour bends by a slightly different angle, white light is spread into a band from red to violet. An observer sees a rainbow only when the Sun is behind them and rain falls in front, which is why rainbows are never visible at midday in the tropics.",
+   "options": [
+    "Rain and sunlight in the tropics",
+    "The colours from red to violet",
+    "The position of the observer",
+    "Water in the atmosphere",
+    "Midday sunshine",
+    "The optical process that produces a rainbow"
+   ],
+   "answer": "The optical process that produces a rainbow",
+   "why": "Ý chính: cơ chế quang học tạo cầu vồng. Vị trí người quan sát chỉ là điều kiện.",
+   "quote": "bent again as it leaves"
+  }
+ ]
+}

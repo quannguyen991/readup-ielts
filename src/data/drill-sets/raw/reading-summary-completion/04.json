@@ -1,0 +1,127 @@
+{
+ "title": "The Troubles of the Honeybee",
+ "topic": "Pollinators and agriculture",
+ "context": "Honeybees are responsible for pollinating roughly one third of the food that people eat, from almonds and apples to blueberries and coffee. In the winter of 2006, beekeepers in the United States began reporting that entire hives had been abandoned. The queen and a few young workers remained, but the thousands of adult workers had vanished, leaving no bodies behind. The phenomenon was named colony collapse disorder, and in some regions it destroyed up to ninety per cent of managed hives within weeks. Because the losses came when farmers most needed pollination, the story quickly reached newspapers and television, and governments in several countries began funding research.\n\nResearchers quickly suspected a single cause, but the evidence pointed to several pressures acting together. One was the varroa mite, a parasite that attaches itself to bees, feeds on their fat and spreads viruses through the colony. Another was a family of pesticides called neonicotinoids, which are absorbed by plants and found in pollen and nectar. At low doses they do not kill bees outright, but experiments show that they impair navigation, so that foragers fail to find their way home to the hive.\n\nNutrition also matters. Large farms that grow a single crop, such as almonds, provide abundant food for a few weeks and almost none for the rest of the year. Commercial beekeepers transport hives by lorry across the country to pollinate such crops, which exposes the bees to stress and to diseases from other colonies. A diet drawn from a variety of wild flowers is more nourishing, and bees fed on a mixture of pollens show stronger immune systems than those given only one type.\n\nWild bees face similar threats and are often overlooked. There are more than twenty thousand species worldwide, ranging from bumblebees to tiny solitary insects that nest in holes in the ground. Many are better pollinators of particular plants than honeybees are. Bumblebees, for instance, can shake pollen loose from tomato flowers by vibrating their flight muscles at high frequency, a skill that honeybees lack. Surveys in Europe and North America have recorded sharp declines in the numbers of many wild species, largely because of the loss of meadows.\n\nSolutions are being tested. Some countries have restricted the use of neonicotinoids on flowering crops. Farmers are encouraged to plant strips of wildflowers along field edges, and several cities have begun to leave verges uncut so that insects can feed there. Scientists are also breeding honeybees that groom themselves more thoroughly and remove mites. Yet the number of managed hives has in fact risen worldwide, which has led some critics to argue that the crisis for honeybees has been overstated and that wild species deserve more attention. Public awareness has grown too, and some gardeners now leave patches of lawn to grow wild and build simple nest boxes from hollow stems.",
+ "questions": [
+  {
+   "prompt": "Honeybees help to pollinate about a ____ of the food that humans consume.",
+   "answer": "third",
+   "why": "Ong mật thụ phấn cho khoảng một phần ba lương thực.",
+   "quote": "roughly one third of the food"
+  },
+  {
+   "prompt": "Reports of empty hives began in the winter of ____ in the United States.",
+   "answer": "2006",
+   "why": "Các báo cáo bắt đầu mùa đông năm 2006.",
+   "quote": "In the winter of 2006"
+  },
+  {
+   "prompt": "Inside the deserted hives, only the queen and some young ____ were left.",
+   "answer": "workers",
+   "why": "Chỉ còn ong chúa và vài ong thợ non.",
+   "quote": "a few young workers remained"
+  },
+  {
+   "prompt": "The strange loss of bees was given the name colony collapse ____.",
+   "answer": "disorder",
+   "why": "Tên hiện tượng là colony collapse disorder.",
+   "quote": "colony collapse disorder"
+  },
+  {
+   "prompt": "In certain regions as many as ____ per cent of managed hives were lost within weeks.",
+   "answer": "ninety",
+   "why": "Có nơi mất tới chín mươi phần trăm tổ ong.",
+   "quote": "up to ninety per cent"
+  },
+  {
+   "prompt": "The evidence suggested that several ____ combined to harm the bees.",
+   "answer": "pressures",
+   "why": "Nhiều áp lực cùng tác động.",
+   "quote": "several pressures acting together"
+  },
+  {
+   "prompt": "The varroa mite is a ____ that clings to bees and feeds on their fat.",
+   "answer": "parasite",
+   "why": "Ve varroa là ký sinh trùng.",
+   "quote": "a parasite that attaches itself"
+  },
+  {
+   "prompt": "Besides feeding on bees, the mite passes on ____ to the rest of the colony.",
+   "answer": "viruses",
+   "why": "Ve lây virus trong đàn.",
+   "quote": "spreads viruses"
+  },
+  {
+   "prompt": "Neonicotinoid chemicals can be found in pollen and ____.",
+   "answer": "nectar",
+   "why": "Thuốc có trong phấn hoa và mật hoa.",
+   "quote": "pollen and nectar"
+  },
+  {
+   "prompt": "Even at low doses the pesticides damage the bees' ability to ____ and find their way home.",
+   "answer": "navigation",
+   "why": "Thuốc làm suy giảm khả năng định hướng.",
+   "quote": "impair navigation"
+  },
+  {
+   "prompt": "Farms that grow only one ____ provide food for a short time each year.",
+   "answer": "crop",
+   "why": "Trang trại độc canh một loại cây.",
+   "quote": "a single crop"
+  },
+  {
+   "prompt": "Beekeepers who move hives around the country usually do so by ____.",
+   "answer": "lorry",
+   "why": "Tổ ong được chở bằng xe tải.",
+   "quote": "by lorry across the country"
+  },
+  {
+   "prompt": "Bees given a mix of pollens have stronger ____ systems than bees given one kind.",
+   "answer": "immune",
+   "why": "Hệ miễn dịch mạnh hơn khi ăn nhiều loại phấn.",
+   "quote": "stronger immune systems"
+  },
+  {
+   "prompt": "Worldwide there are more than twenty thousand bee ____.",
+   "answer": "species",
+   "why": "Hơn hai mươi nghìn loài ong.",
+   "quote": "twenty thousand species worldwide"
+  },
+  {
+   "prompt": "Many solitary bees make their nests in holes in the ____.",
+   "answer": "ground",
+   "why": "Ong đơn độc làm tổ trong hố dưới đất.",
+   "quote": "holes in the ground"
+  },
+  {
+   "prompt": "Bumblebees are able to release pollen from ____ flowers by shaking them.",
+   "answer": "tomato",
+   "why": "Ong nghệ làm rung hoa cà chua để lấy phấn.",
+   "quote": "from tomato flowers"
+  },
+  {
+   "prompt": "They achieve this by vibrating their flight ____ very quickly.",
+   "answer": "muscles",
+   "why": "Chúng rung cơ bay với tần số cao.",
+   "quote": "flight muscles"
+  },
+  {
+   "prompt": "The main reason for the decline of wild species is the disappearance of ____.",
+   "answer": "meadows",
+   "why": "Nguyên nhân chính là mất đồng cỏ.",
+   "quote": "the loss of meadows"
+  },
+  {
+   "prompt": "Farmers are urged to sow strips of ____ at the edges of their fields.",
+   "answer": "wildflowers",
+   "why": "Khuyến khích gieo dải hoa dại ven ruộng.",
+   "quote": "strips of wildflowers"
+  },
+  {
+   "prompt": "Some cities now let roadside ____ grow so that insects can feed.",
+   "answer": "verges",
+   "why": "Một số thành phố để lề đường không cắt cỏ.",
+   "quote": "leave verges uncut"
+  }
+ ]
+}

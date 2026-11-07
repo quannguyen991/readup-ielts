@@ -1,0 +1,127 @@
+{
+ "title": "The Whistling Language of La Gomera",
+ "topic": "Whistled speech and cultural heritage",
+ "context": "On La Gomera, one of the Canary Islands, shepherds and farmers have for centuries communicated across deep ravines by whistling. The whistled speech, called Silbo Gomero, can carry a message up to five kilometres across the steep valleys, far beyond the range of a shout. It is not a code but a way of speaking Spanish: whistlers reproduce the sounds of the language in two or four pitches, which listeners decode as words. A skilled whistler can send a complete sentence, from a greeting to a warning about a stray animal, in a few seconds.\n\nWhistled languages exist in more than seventy communities around the world, from the mountains of northern Turkey to villages in Mexico and the rainforests of the Amazon. They tend to arise in places where the terrain makes ordinary speech difficult, such as mountains, dense forest or islands with scattered homes. Because whistling is louder and travels farther than the voice, it allows people to talk across distances while they work in the fields, and it requires no equipment. Whistled speech is usually learned in childhood, alongside the ordinary spoken language, rather than as a separate skill taught later.\n\nScientists have studied the brain to understand how whistled speech is processed. Normally, language is handled mainly by the left hemisphere, while melodies and pitch are processed by the right. Research on whistlers in Turkey found that listeners to whistled words used both hemispheres, which suggests that the brain adapts to the type of signal it receives. In the case of Silbo, experienced whistlers can distinguish whistled vowels and consonants, showing that the process is truly linguistic rather than musical. The findings have helped neuroscientists to question the older view that language is processed in one fixed place.\n\nDespite its beauty, the tradition came close to disappearing. As roads were built and mobile phones arrived, fewer people had any need for long-distance whistling, and by the 1970s only a small number of elderly islanders could still use it. Worried by the decline, the island's government introduced Silbo into schools in 1999, and today all children on La Gomera learn it as part of the curriculum. In 2009, UNESCO recognised the whistled language as part of the world's intangible cultural heritage. Tourism has helped by creating demand for demonstrations, and local restaurants now display signs about the language.\n\nRevival has not been without controversy. Some older whistlers argue that classroom learning cannot replace the experience of using the language in real situations, and that children may come to treat it as a performance for tourists. Others reply that preserving the skill in any form is better than losing it altogether. Whatever the verdict, the story of Silbo has encouraged communities elsewhere to record their own whistled languages before the last fluent speakers are gone.",
+ "questions": [
+  {
+   "prompt": "La Gomera belongs to the group known as the ____ Islands.",
+   "answer": "Canary",
+   "why": "La Gomera thuộc quần đảo Canary.",
+   "quote": "Canary Islands"
+  },
+  {
+   "prompt": "Islanders speak to each other across steep ____ by whistling.",
+   "answer": "ravines",
+   "why": "Họ liên lạc qua các khe núi sâu.",
+   "quote": "deep ravines"
+  },
+  {
+   "prompt": "The name of the whistled language is ____.",
+   "answer": "Silbo Gomero",
+   "why": "Tên là Silbo Gomero.",
+   "quote": "called Silbo Gomero"
+  },
+  {
+   "prompt": "A message can travel as far as five ____.",
+   "answer": "kilometres",
+   "why": "Xa tới năm kilômét.",
+   "quote": "five kilometres"
+  },
+  {
+   "prompt": "Whistling reaches much further than the range of a ____.",
+   "answer": "shout",
+   "why": "Vượt xa tầm tiếng hét.",
+   "quote": "range of a shout"
+  },
+  {
+   "prompt": "Silbo is not a code but a way of speaking ____.",
+   "answer": "Spanish",
+   "why": "Đó là cách nói tiếng Tây Ban Nha.",
+   "quote": "speaking Spanish"
+  },
+  {
+   "prompt": "Whistlers use two or four ____ to represent speech sounds.",
+   "answer": "pitches",
+   "why": "Dùng hai hoặc bốn cao độ.",
+   "quote": "four pitches"
+  },
+  {
+   "prompt": "Whistled languages are found in over seventy ____ worldwide.",
+   "answer": "communities",
+   "why": "Hơn bảy mươi cộng đồng.",
+   "quote": "seventy communities"
+  },
+  {
+   "prompt": "One whistled language is used in the mountains of northern ____.",
+   "answer": "Turkey",
+   "why": "Có ở miền bắc Thổ Nhĩ Kỳ.",
+   "quote": "northern Turkey"
+  },
+  {
+   "prompt": "Another can be found in ____ villages.",
+   "answer": "Mexico",
+   "why": "Cũng có ở các làng Mexico.",
+   "quote": "villages in Mexico"
+  },
+  {
+   "prompt": "Such languages occur in mountains, dense forest and ____ with scattered homes.",
+   "answer": "islands",
+   "why": "Xuất hiện trên đảo có nhà rải rác.",
+   "quote": "islands with scattered homes"
+  },
+  {
+   "prompt": "A whistle carries ____ than the human voice.",
+   "answer": "farther",
+   "why": "Tiếng huýt truyền xa hơn giọng nói.",
+   "quote": "travels farther than the voice"
+  },
+  {
+   "prompt": "Ordinary language is mainly processed in the left ____ of the brain.",
+   "answer": "hemisphere",
+   "why": "Ngôn ngữ chủ yếu ở bán cầu trái.",
+   "quote": "left hemisphere"
+  },
+  {
+   "prompt": "Melody and pitch are normally handled by the ____ side.",
+   "answer": "right",
+   "why": "Giai điệu do bán cầu phải xử lý.",
+   "quote": "processed by the right"
+  },
+  {
+   "prompt": "Turkish listeners of whistled words used both ____ of the brain.",
+   "answer": "hemispheres",
+   "why": "Họ dùng cả hai bán cầu.",
+   "quote": "used both hemispheres"
+  },
+  {
+   "prompt": "Experienced whistlers can tell vowels from ____.",
+   "answer": "consonants",
+   "why": "Phân biệt nguyên âm và phụ âm.",
+   "quote": "vowels and consonants"
+  },
+  {
+   "prompt": "The arrival of mobile ____ reduced the need for whistling.",
+   "answer": "phones",
+   "why": "Điện thoại di động làm giảm nhu cầu.",
+   "quote": "mobile phones arrived"
+  },
+  {
+   "prompt": "By the 1970s only a few ____ islanders still whistled.",
+   "answer": "elderly",
+   "why": "Chỉ còn vài người lớn tuổi.",
+   "quote": "small number of elderly islanders"
+  },
+  {
+   "prompt": "Silbo became a school subject in ____.",
+   "answer": "1999",
+   "why": "Được đưa vào trường năm 1999.",
+   "quote": "schools in 1999"
+  },
+  {
+   "prompt": "UNESCO placed the language on its list of intangible cultural ____.",
+   "answer": "heritage",
+   "why": "Di sản văn hoá phi vật thể.",
+   "quote": "intangible cultural heritage"
+  }
+ ]
+}

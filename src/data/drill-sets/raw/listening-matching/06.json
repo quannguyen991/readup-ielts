@@ -1,0 +1,287 @@
+{
+ "title": "Power for an Island Village",
+ "topic": "Renewable energy engineering project",
+ "context": "Aisha: I have just come from the library, where I found a report on a similar island in Scotland. It was really useful for the figures.\nBen: Brilliant. We can use it as a comparison later.\nAisha: Okay, Ben, let's compare the energy options for the village before Professor Walker arrives. Solar panels first.\nBen: They'd give plenty of power from May to August, but in winter the output drops badly. So they work best in summer.\nAisha: And the wind turbine? I know you worried about the noise.\nBen: I did, but the latest models are almost silent, so I've dropped that objection. The real risk is the weather. Storms on the island are fierce and could damage the blades.\nAisha: Right. The diesel generator is what they use now.\nBen: And it's costing a fortune. The fuel has to be shipped in, so it's very expensive to run.\nAisha: What about batteries to store the power?\nBen: They're surprisingly simple. Once they're installed they need hardly any maintenance. Finally, the small hydro scheme on the stream. It's a lovely idea, but you can't build anything on the stream without a permit from the environment agency.\nProfessor Walker: Good afternoon. I like the ambition of the project, but ambition has to be backed by numbers, so I've been through your calculations. Let's start with demand. You've assumed each house uses twenty kilowatt hours a day. That's too high for a village this size. Eight to ten would be more realistic.\nAisha: Oh, I took the figure from a mainland town.\nProfessor Walker: Exactly. The panel area, though, is about right for the demand you have chosen. No change needed there.\nBen: And the batteries?\nProfessor Walker: The capacity you propose is too low. If there are three cloudy days in a row, the village would be in darkness. Increase it. The cost estimate is thorough, but present it in a table. It's hard to follow in paragraphs. As for the payback period, ten years sounds optimistic. Go back over those numbers.\nAisha: Will do.\nBen: Now, we've spoken to the community. The older residents were strongly in favour. Several of them remember the blackouts of the nineties.\nAisha: The fishermen worried about the view from the harbour, because the turbine would stand on the headland.\nBen: The café owners were concerned about the cost to them. They think their bills might rise.\nAisha: The teachers at the school wanted more information. They asked for a leaflet to share with parents.\nBen: And the farmers offered to help. One of them has a digger and said he'd lend it for the foundations.\nProfessor Walker: Excellent. Let's plan the next stages. You'll carry out the feasibility tests next week, while the weather is still calm.\nAisha: And the presentation to the community?\nProfessor Walker: In the spring. You'll order the parts in the summer, once the funding arrives, and installation will be next autumn, before the storms. We'll review the whole system after a year of use.\nProfessor Walker: Send me the revised calculations by Thursday and I will read them over the weekend.\nBen: Perfect. We will do that, and thank you for being so clear about what needs changing.",
+ "questions": [
+  {
+   "prompt": "What does Ben say about the solar panels?",
+   "options": [
+    "It works best in summer",
+    "It makes too much noise for residents",
+    "It is expensive to run",
+    "It needs hardly any maintenance",
+    "It could be damaged by storms",
+    "It needs an official permit"
+   ],
+   "answer": "It works best in summer",
+   "why": "Pin mặt trời cho nhiều điện từ tháng Năm đến tháng Tám, mùa đông giảm mạnh.",
+   "quote": "they work best in summer"
+  },
+  {
+   "prompt": "What does Ben say about the wind turbine?",
+   "options": [
+    "It works best in summer",
+    "It makes too much noise for residents",
+    "It is expensive to run",
+    "It needs hardly any maintenance",
+    "It could be damaged by storms",
+    "It needs an official permit"
+   ],
+   "answer": "It could be damaged by storms",
+   "why": "Ben bỏ lo ngại tiếng ồn vì mẫu mới gần như im lặng; rủi ro thật sự là bão làm hỏng cánh.",
+   "quote": "could damage the blades"
+  },
+  {
+   "prompt": "What does Ben say about the diesel generator?",
+   "options": [
+    "It works best in summer",
+    "It makes too much noise for residents",
+    "It is expensive to run",
+    "It needs hardly any maintenance",
+    "It could be damaged by storms",
+    "It needs an official permit"
+   ],
+   "answer": "It is expensive to run",
+   "why": "Nhiên liệu phải chở đến nên vận hành rất đắt.",
+   "quote": "very expensive to run"
+  },
+  {
+   "prompt": "What does Ben say about the batteries?",
+   "options": [
+    "It works best in summer",
+    "It makes too much noise for residents",
+    "It is expensive to run",
+    "It needs hardly any maintenance",
+    "It could be damaged by storms",
+    "It needs an official permit"
+   ],
+   "answer": "It needs hardly any maintenance",
+   "why": "Pin lưu trữ lắp xong hầu như không cần bảo trì.",
+   "quote": "hardly any maintenance"
+  },
+  {
+   "prompt": "What does Ben say about the hydro scheme?",
+   "options": [
+    "It works best in summer",
+    "It makes too much noise for residents",
+    "It is expensive to run",
+    "It needs hardly any maintenance",
+    "It could be damaged by storms",
+    "It needs an official permit"
+   ],
+   "answer": "It needs an official permit",
+   "why": "Không thể xây trên con suối nếu chưa có giấy phép của cơ quan môi trường.",
+   "quote": "without a permit from the environment agency"
+  },
+  {
+   "prompt": "What does Professor Walker say about the demand estimate?",
+   "options": [
+    "It is too low",
+    "It is too high",
+    "It is about right",
+    "It must be double-checked",
+    "It should be shown in a table",
+    "It is not relevant"
+   ],
+   "answer": "It is too high",
+   "why": "Hai mươi kWh mỗi nhà mỗi ngày là quá cao; thực tế tám đến mười.",
+   "quote": "That's too high for a village this size"
+  },
+  {
+   "prompt": "What does Professor Walker say about the panel area?",
+   "options": [
+    "It is too low",
+    "It is too high",
+    "It is about right",
+    "It must be double-checked",
+    "It should be shown in a table",
+    "It is not relevant"
+   ],
+   "answer": "It is about right",
+   "why": "Diện tích tấm pin vừa phải với mức cầu đã chọn.",
+   "quote": "about right for the demand you have chosen"
+  },
+  {
+   "prompt": "What does Professor Walker say about the battery capacity?",
+   "options": [
+    "It is too low",
+    "It is too high",
+    "It is about right",
+    "It must be double-checked",
+    "It should be shown in a table",
+    "It is not relevant"
+   ],
+   "answer": "It is too low",
+   "why": "Dung lượng quá thấp: ba ngày nhiều mây liên tiếp thì cả làng tối.",
+   "quote": "The capacity you propose is too low"
+  },
+  {
+   "prompt": "What does Professor Walker say about the cost estimate?",
+   "options": [
+    "It is too low",
+    "It is too high",
+    "It is about right",
+    "It must be double-checked",
+    "It should be shown in a table",
+    "It is not relevant"
+   ],
+   "answer": "It should be shown in a table",
+   "why": "Ước tính chi phí kỹ nhưng nên trình bày trong bảng.",
+   "quote": "present it in a table"
+  },
+  {
+   "prompt": "What does Professor Walker say about the payback period?",
+   "options": [
+    "It is too low",
+    "It is too high",
+    "It is about right",
+    "It must be double-checked",
+    "It should be shown in a table",
+    "It is not relevant"
+   ],
+   "answer": "It must be double-checked",
+   "why": "Mười năm nghe lạc quan; xem lại các con số.",
+   "quote": "Go back over those numbers"
+  },
+  {
+   "prompt": "How did the older residents react to the plan?",
+   "options": [
+    "Strongly in favour",
+    "Worried about the view",
+    "Concerned about the cost to them",
+    "Wanted more information",
+    "Not interested",
+    "Offered to help"
+   ],
+   "answer": "Strongly in favour",
+   "why": "Người lớn tuổi ủng hộ mạnh mẽ vì nhớ những lần mất điện thập niên 90.",
+   "quote": "strongly in favour"
+  },
+  {
+   "prompt": "How did the fishermen react to the plan?",
+   "options": [
+    "Strongly in favour",
+    "Worried about the view",
+    "Concerned about the cost to them",
+    "Wanted more information",
+    "Not interested",
+    "Offered to help"
+   ],
+   "answer": "Worried about the view",
+   "why": "Ngư dân lo tuabin trên mũi đất che tầm nhìn từ bến cảng.",
+   "quote": "worried about the view from the harbour"
+  },
+  {
+   "prompt": "How did the café owners react to the plan?",
+   "options": [
+    "Strongly in favour",
+    "Worried about the view",
+    "Concerned about the cost to them",
+    "Wanted more information",
+    "Not interested",
+    "Offered to help"
+   ],
+   "answer": "Concerned about the cost to them",
+   "why": "Chủ quán cà phê lo hoá đơn của họ có thể tăng.",
+   "quote": "concerned about the cost to them"
+  },
+  {
+   "prompt": "How did the teachers react to the plan?",
+   "options": [
+    "Strongly in favour",
+    "Worried about the view",
+    "Concerned about the cost to them",
+    "Wanted more information",
+    "Not interested",
+    "Offered to help"
+   ],
+   "answer": "Wanted more information",
+   "why": "Giáo viên muốn thêm thông tin và xin tờ rơi gửi phụ huynh.",
+   "quote": "wanted more information"
+  },
+  {
+   "prompt": "How did the farmers react to the plan?",
+   "options": [
+    "Strongly in favour",
+    "Worried about the view",
+    "Concerned about the cost to them",
+    "Wanted more information",
+    "Not interested",
+    "Offered to help"
+   ],
+   "answer": "Offered to help",
+   "why": "Nông dân đề nghị giúp, một người cho mượn máy đào làm móng.",
+   "quote": "offered to help"
+  },
+  {
+   "prompt": "When will the feasibility tests be carried out?",
+   "options": [
+    "Next week",
+    "In the spring",
+    "In the summer",
+    "Next autumn",
+    "After a year of use",
+    "It has not been decided"
+   ],
+   "answer": "Next week",
+   "why": "Thử nghiệm khả thi tuần sau khi thời tiết còn lặng.",
+   "quote": "the feasibility tests next week"
+  },
+  {
+   "prompt": "When will the presentation to the community take place?",
+   "options": [
+    "Next week",
+    "In the spring",
+    "In the summer",
+    "Next autumn",
+    "After a year of use",
+    "It has not been decided"
+   ],
+   "answer": "In the spring",
+   "why": "Buổi trình bày cho cộng đồng vào mùa xuân.",
+   "quote": "In the spring"
+  },
+  {
+   "prompt": "When will the parts be ordered?",
+   "options": [
+    "Next week",
+    "In the spring",
+    "In the summer",
+    "Next autumn",
+    "After a year of use",
+    "It has not been decided"
+   ],
+   "answer": "In the summer",
+   "why": "Đặt linh kiện vào mùa hè khi có kinh phí.",
+   "quote": "order the parts in the summer"
+  },
+  {
+   "prompt": "When will the installation take place?",
+   "options": [
+    "Next week",
+    "In the spring",
+    "In the summer",
+    "Next autumn",
+    "After a year of use",
+    "It has not been decided"
+   ],
+   "answer": "Next autumn",
+   "why": "Lắp đặt vào mùa thu năm sau, trước bão.",
+   "quote": "installation will be next autumn"
+  },
+  {
+   "prompt": "When will the system be reviewed?",
+   "options": [
+    "Next week",
+    "In the spring",
+    "In the summer",
+    "Next autumn",
+    "After a year of use",
+    "It has not been decided"
+   ],
+   "answer": "After a year of use",
+   "why": "Đánh giá toàn hệ thống sau một năm sử dụng.",
+   "quote": "after a year of use"
+  }
+ ]
+}

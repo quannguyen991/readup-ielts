@@ -1,0 +1,247 @@
+{
+ "title": "The Return of the Beaver",
+ "topic": "Rewilding and river management",
+ "context": "For roughly four hundred years, the beaver was missing from most of Europe. Hunters prized its dense fur, and also its castoreum, an oily secretion that was used in medicine and perfume, and by the early twentieth century only a few isolated groups survived in a handful of countries. Since the 1990s, however, a series of reintroduction projects has returned the animal to dozens of river systems, and the European population is now counted in the hundreds of thousands. Conservation bodies in several countries monitor the new colonies carefully, counting lodges each year and recording where the animals spread, because the speed of their recovery has surprised even the original supporters of the projects.\n\nBeavers are often described as ecosystem engineers, because few animals alter their surroundings so deeply. They fell trees with their teeth and use the branches, mixed with mud and stones, to build dams across streams. Behind each dam a pond forms, and the extra water spreads gradually into the neighbouring soil. Not everyone welcomes the result. Farmers have reported flooded pasture and orchards stripped of young trees, and in one Scottish valley a single dam is said to have put two hectares of grazing land under water.\n\nScientific monitoring, however, points to unexpected benefits. In a five-year study in the south-west of England, researchers measured the flow of a stream before and after a family of beavers settled there. The dams slowed the movement of water during storms, so that the peak of each flood was reduced by about a third, and a village downstream that had flooded regularly stayed dry. Hydrologists nevertheless warn against overstating the case. When the ground is already saturated, beaver ponds fill to the brim and can do little to hold back a major flood.\n\nWater quality also seems to improve. The still water in a pond allows sediment to settle, and with it much of the nitrogen and phosphorus that wash off fields treated with fertiliser, so the stream below runs clearer. Wildlife responds quickly: dragonflies, frogs and wetland birds are more numerous around beaver ponds, and in dry summers trout shelter in the deeper pools. Early fears that dams would block migrating salmon have largely proved unfounded. In most conditions the fish are able to leap or swim around the obstruction, although in very low water some are delayed for several days.\n\nThe practical challenge, therefore, lies less in ecology than in human tolerance. Compensation schemes can reimburse landowners, but money does not solve every dispute, and engineers have developed cheaper alternatives. A pipe passed through a dam can keep the pond at a fixed level, while wire mesh wrapped around the trunks protects individual trees. Only when such measures fail do authorities grant licences to remove the animals. Experience in Germany and Poland, where beavers have been present for decades, suggests that coexistence is possible provided advice is offered early, before a small problem becomes a feud.\n\nThe beaver, then, is neither the villain described by its critics nor the miracle worker promised by some enthusiasts. It is a powerful animal whose effects depend on where it settles, and the sensible approach is to decide in advance which places can accommodate it and which cannot. Such planning is already routine for other protected species, and there is no reason why it should not become routine for this one. Such planning is already routine for other protected species, and there is no reason why it should not become routine for this one.",
+ "questions": [
+  {
+   "prompt": "According to the first paragraph, why were beavers hunted in the past?",
+   "options": [
+    "For their meat, which was a common food",
+    "To stop them damaging orchards and fields",
+    "For their fur and a secretion used in medicine and perfume",
+    "Because they carried diseases that affected livestock"
+   ],
+   "answer": "For their fur and a secretion used in medicine and perfume",
+   "why": "Đoạn 1 nói thợ săn ưa lông dày và castoreum dùng trong y học, nước hoa. Các phương án còn lại không được bài nhắc tới.",
+   "quote": "Hunters prized its dense fur, and also its castoreum"
+  },
+  {
+   "prompt": "What has happened to beaver numbers in Europe since the 1990s?",
+   "options": [
+    "They have grown into hundreds of thousands because of reintroduction projects",
+    "They have recovered naturally after hunting was banned",
+    "They have stayed confined to a few isolated groups",
+    "They have returned to the level of four centuries ago"
+   ],
+   "answer": "They have grown into hundreds of thousands because of reintroduction projects",
+   "why": "Bài nói các dự án tái thả đã đưa hải ly về nhiều sông, quần thể nay hàng trăm nghìn. Bài không nói phục hồi tự nhiên, cũng không so với mức bốn thế kỷ trước.",
+   "quote": "the European population is now counted in the hundreds of thousands"
+  },
+  {
+   "prompt": "Why are beavers called 'ecosystem engineers'?",
+   "options": [
+    "They build structures that are more complex than those of other mammals",
+    "They are managed by engineers on many rivers",
+    "They are able to survive only in artificial habitats",
+    "Few other animals change their surroundings as deeply as they do"
+   ],
+   "answer": "Few other animals change their surroundings as deeply as they do",
+   "why": "Bài giải thích chính xác: ít loài làm thay đổi môi trường sâu như hải ly. Không so độ phức tạp công trình với loài khác.",
+   "quote": "few animals alter their surroundings so deeply"
+  },
+  {
+   "prompt": "The writer says that orchards were 'stripped of young trees'. This means the orchards",
+   "options": [
+    "were replanted with young trees",
+    "had their young trees taken away or destroyed",
+    "were surrounded by young trees",
+    "produced more fruit from young trees"
+   ],
+   "answer": "had their young trees taken away or destroyed",
+   "why": "'Stripped of' nghĩa là bị lấy mất; ở đây cây non bị hải ly gặm. Bẫy: các phương án khác đảo ngược nghĩa.",
+   "quote": "orchards stripped of young trees"
+  },
+  {
+   "prompt": "What is the main reason farmers object to beavers?",
+   "options": [
+    "Their ponds flood fields and they eat young trees",
+    "They scare livestock away from the streams",
+    "They reduce the amount of water in the streams",
+    "They compete with farm animals for grass"
+   ],
+   "answer": "Their ponds flood fields and they eat young trees",
+   "why": "Nông dân báo cáo đồng cỏ ngập và vườn cây mất cây non. Không có chi tiết về gia súc hay cỏ.",
+   "quote": "flooded pasture and orchards stripped of young trees"
+  },
+  {
+   "prompt": "What does the example of the Scottish valley show?",
+   "options": [
+    "Beavers prefer to build in farmland rather than woodland",
+    "Compensation is rarely paid to landowners",
+    "Beaver dams are always larger in Scotland than elsewhere",
+    "A single dam can cause real loss to an individual landowner"
+   ],
+   "answer": "A single dam can cause real loss to an individual landowner",
+   "why": "Ví dụ một con đập làm ngập hai hecta đồng cỏ cho thấy thiệt hại thực với từng chủ đất.",
+   "quote": "a single dam is said to have put two hectares of grazing land under water"
+  },
+  {
+   "prompt": "What did the study in the south-west of England find?",
+   "options": [
+    "Rainfall in the area decreased by a third",
+    "The highest flood levels were cut by about a third",
+    "The stream flowed a third faster after storms",
+    "One third of the village was protected from flooding"
+   ],
+   "answer": "The highest flood levels were cut by about a third",
+   "why": "Đỉnh lũ giảm khoảng một phần ba. Bẫy: các phương án khác dùng 'a third' nhưng gắn với đại lượng khác.",
+   "quote": "the peak of each flood was reduced by about a third"
+  },
+  {
+   "prompt": "Why do hydrologists warn against overstating the benefits of beaver dams?",
+   "options": [
+    "Beaver ponds often drain away during storms",
+    "The results came from only one village",
+    "Ponds can hold back little water when the ground is already waterlogged",
+    "Villages downstream continue to flood regularly"
+   ],
+   "answer": "Ponds can hold back little water when the ground is already waterlogged",
+   "why": "Khi đất đã bão hoà, ao hải ly đầy tràn và ít tác dụng chống lũ lớn.",
+   "quote": "can do little to hold back a major flood"
+  },
+  {
+   "prompt": "In paragraph 3, 'saturated' is closest in meaning to",
+   "options": [
+    "completely full of water",
+    "covered with ice",
+    "damaged by erosion",
+    "unusually warm"
+   ],
+   "answer": "completely full of water",
+   "why": "Đất bão hoà là đất đã thấm đầy nước nên ao 'đầy tràn'.",
+   "quote": "When the ground is already saturated"
+  },
+  {
+   "prompt": "According to paragraph 4, what happens to the chemicals from fertiliser?",
+   "options": [
+    "They are absorbed by plants growing around the ponds",
+    "They are carried quickly downstream by faster flow",
+    "They are broken down by frogs and dragonflies",
+    "Much of them settles with sediment in the ponds"
+   ],
+   "answer": "Much of them settles with sediment in the ponds",
+   "why": "Nước tĩnh cho phép trầm tích lắng, kéo theo phần lớn nitơ và phốt pho.",
+   "quote": "allows sediment to settle, and with it much of the nitrogen and phosphorus"
+  },
+  {
+   "prompt": "What does the writer say about trout?",
+   "options": [
+    "They are driven away by dams",
+    "They shelter in the deeper pools during dry summers",
+    "They feed on the dragonflies near the ponds",
+    "They are the main species harmed by beavers"
+   ],
+   "answer": "They shelter in the deeper pools during dry summers",
+   "why": "Bài nói mùa hè khô cá hồi suối trú trong các vũng sâu.",
+   "quote": "in dry summers trout shelter in the deeper pools"
+  },
+  {
+   "prompt": "What does the writer say about early fears concerning salmon?",
+   "options": [
+    "They were confirmed by the first studies",
+    "They apply only to rivers in Scotland",
+    "They have mostly turned out to be unfounded",
+    "They are the main reason dams are removed"
+   ],
+   "answer": "They have mostly turned out to be unfounded",
+   "why": "Bài: nỗi lo đập chặn cá hồi di cư phần lớn không có cơ sở.",
+   "quote": "have largely proved unfounded"
+  },
+  {
+   "prompt": "Under what condition may salmon be held up by a dam?",
+   "options": [
+    "When there is very little water in the stream",
+    "When the dam is newly built",
+    "When the water is unusually warm",
+    "When many trout are present"
+   ],
+   "answer": "When there is very little water in the stream",
+   "why": "Chỉ khi nước rất cạn, một số con bị trễ vài ngày. Bẫy: 'đập mới xây' không được nhắc.",
+   "quote": "in very low water some are delayed for several days"
+  },
+  {
+   "prompt": "What is the main point of paragraph 5?",
+   "options": [
+    "Compensation payments are the best answer to all disputes",
+    "Beavers should be removed whenever they cause harm",
+    "Engineers cannot protect trees from beavers",
+    "Practical measures can reduce conflict between beavers and people"
+   ],
+   "answer": "Practical measures can reduce conflict between beavers and people",
+   "why": "Đoạn 5 liệt kê đền bù, ống thoát nước, lưới bọc thân cây, và loại bỏ là biện pháp cuối cùng.",
+   "quote": "The practical challenge, therefore, lies less in ecology than in human tolerance."
+  },
+  {
+   "prompt": "What is the purpose of a pipe passed through a dam?",
+   "options": [
+    "To let fish swim through",
+    "To allow beavers to reach their home",
+    "To keep the water in the pond at a set level",
+    "To clean the water that leaves the pond"
+   ],
+   "answer": "To keep the water in the pond at a set level",
+   "why": "Ống xuyên đập giữ mực ao cố định, không phải cho cá hay làm sạch nước.",
+   "quote": "A pipe passed through a dam can keep the pond at a fixed level"
+  },
+  {
+   "prompt": "When do authorities allow beavers to be removed?",
+   "options": [
+    "As soon as a landowner complains",
+    "Only if other protective measures have not worked",
+    "When the number of beavers passes a fixed limit",
+    "After compensation has been paid"
+   ],
+   "answer": "Only if other protective measures have not worked",
+   "why": "Giấy phép loại bỏ chỉ cấp khi các biện pháp bảo vệ thất bại.",
+   "quote": "Only when such measures fail do authorities grant licences"
+  },
+  {
+   "prompt": "What do the examples of Germany and Poland suggest?",
+   "options": [
+    "People and beavers can live together if advice is given early",
+    "Beavers cause fewer problems after several decades",
+    "Compensation becomes unnecessary in the long term",
+    "Disputes are best settled by the authorities"
+   ],
+   "answer": "People and beavers can live together if advice is given early",
+   "why": "Bài: cùng tồn tại khả thi nếu tư vấn đến sớm, trước khi vấn đề nhỏ thành mâu thuẫn.",
+   "quote": "coexistence is possible provided advice is offered early"
+  },
+  {
+   "prompt": "In paragraph 5, 'feud' is closest in meaning to",
+   "options": [
+    "a legal procedure",
+    "a financial loss",
+    "a bitter, long-running quarrel",
+    "a scientific disagreement"
+   ],
+   "answer": "a bitter, long-running quarrel",
+   "why": "'Feud' là mối thù/xích mích kéo dài giữa các bên.",
+   "quote": "before a small problem becomes a feud"
+  },
+  {
+   "prompt": "What is the writer's attitude to the critics and the enthusiasts of beavers?",
+   "options": [
+    "The critics are mostly right about the risks",
+    "Neither side gives a completely accurate picture",
+    "The enthusiasts are mostly right about the benefits",
+    "Both sides lack scientific training"
+   ],
+   "answer": "Neither side gives a completely accurate picture",
+   "why": "Tác giả nói hải ly không phải kẻ phản diện như người chỉ trích, cũng không phải phép màu như người ủng hộ.",
+   "quote": "neither the villain described by its critics nor the miracle worker promised by some enthusiasts"
+  },
+  {
+   "prompt": "What does the writer conclude?",
+   "options": [
+    "Beavers should be introduced wherever possible",
+    "Beavers are too destructive to be tolerated",
+    "More research is needed before any further reintroduction",
+    "The effects of beavers depend on location, so places should be chosen carefully"
+   ],
+   "answer": "The effects of beavers depend on location, so places should be chosen carefully",
+   "why": "Kết luận: tác động tuỳ nơi hải ly định cư; nên quyết định trước nơi nào phù hợp.",
+   "quote": "decide in advance which places can accommodate it and which cannot"
+  }
+ ]
+}

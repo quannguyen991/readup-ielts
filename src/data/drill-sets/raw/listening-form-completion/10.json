@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #10",
+ "topic": "Coach tour booking · Evening course enrolment · Hotel booking · Library card",
+ "context": "Narrator: Conversation 1. Coach tour booking.\nGrace: Highland Day Tours, Grace speaking.\nCaller: Hi, I'd like to book a place on the castle tour.\nGrace: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nGrace: It's Z D nine one eight one.\nGrace: How many people will be coming?\nCaller: Five, I think. Actually, let me say four, it's better to be safe.\nGrace: And what's the best number to reach you on?\nCaller: It's oh seven four, six nine nine eight, one nine five five.\nGrace: What's your postcode?\nCaller: M X one, six J R.\nGrace: Which date would you like to travel?\nCaller: The twenty-second of December, please.\nGrace: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Evening course enrolment.\nPriya: Parkside College, Priya speaking.\nCaller: Hello, I'd like to enrol on an evening photography course.\nPriya: The next course begins soon. Which date is the first class?\nCaller: The nineteenth of March... no, sorry, that's a Sunday. Make it the eighteenth of March.\nPriya: And what's the best number to reach you on?\nCaller: It's oh seven eight, one four oh five, nine oh seven six.\nPriya: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nPriya: It's H W one nine five seven.\nCaller: How much is the course fee?\nPriya: It's sixty-five pounds.\nPriya: What's your postcode?\nCaller: G G two, five F Q.\nPriya: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Hotel booking.\nDaniel: Good afternoon, Lakeside Hotel, Daniel speaking.\nCaller: Hello, I'd like to book a room, please.\nDaniel: And what's the best number to reach you on?\nCaller: It's oh seven oh, oh two seven eight, oh nine two five.\nDaniel: What's your postcode?\nCaller: C P five, three M P.\nDaniel: What date would you like to arrive?\nCaller: The second of July, please.\nDaniel: And how many nights will you be staying?\nCaller: Four, I think. Actually, let me say three, it's better to be safe.\nCaller: How much is the deposit?\nDaniel: It's twenty-five pounds.\nDaniel: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Library card.\nHelen: City Library, Helen speaking.\nCaller: Hi, I've just moved to the area and I'd like a library card.\nHelen: On which date would you like the card to start?\nCaller: The twenty-first of December, please.\nHelen: How many books would you like to borrow at a time?\nCaller: Four, I think. Actually, let me say three, it's better to be safe.\nCaller: How much is the yearly fee?\nHelen: It's eighty pounds.\nHelen: What's your postcode?\nCaller: L L four, eight J T.\nHelen: Can I take your surname, please?\nCaller: It's Wetherby. That's W, E, T, H, E, R, B, Y.\nHelen: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Coach tour booking] Booking code: ____",
+   "answer": "ZD9181",
+   "why": "Người nói đọc: “Z D nine one eight one”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "Z D nine one eight one"
+  },
+  {
+   "prompt": "[Coach tour booking] Number of people: ____",
+   "answer": "4 | four",
+   "why": "Người nói đọc: “let me say four”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say four"
+  },
+  {
+   "prompt": "[Coach tour booking] Mobile number: ____",
+   "answer": "07469981955",
+   "why": "Người nói đọc: “oh seven four, six nine nine eight, one nine five five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven four, six nine nine eight, one nine five five"
+  },
+  {
+   "prompt": "[Coach tour booking] Postcode: ____",
+   "answer": "MX1 6JR",
+   "why": "Người nói đọc: “M X one, six J R”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "M X one, six J R"
+  },
+  {
+   "prompt": "[Coach tour booking] Tour date: ____",
+   "answer": "22 December | December 22 | 22th December | December 22th | twenty-second December",
+   "why": "Người nói đọc: “The twenty-second of December”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The twenty-second of December"
+  },
+  {
+   "prompt": "[Evening course enrolment] First class: ____",
+   "answer": "18 March | March 18 | 18th March | March 18th | eighteenth March",
+   "why": "Người nói đọc: “Make it the eighteenth of March”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the eighteenth of March"
+  },
+  {
+   "prompt": "[Evening course enrolment] Phone number: ____",
+   "answer": "07814059076",
+   "why": "Người nói đọc: “oh seven eight, one four oh five, nine oh seven six”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven eight, one four oh five, nine oh seven six"
+  },
+  {
+   "prompt": "[Evening course enrolment] Student ID: ____",
+   "answer": "HW1957",
+   "why": "Người nói đọc: “H W one nine five seven”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "H W one nine five seven"
+  },
+  {
+   "prompt": "[Evening course enrolment] Course fee (£): ____",
+   "answer": "£65 | 65",
+   "why": "Người nói đọc: “sixty-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "sixty-five pounds"
+  },
+  {
+   "prompt": "[Evening course enrolment] Postcode: ____",
+   "answer": "GG2 5FQ",
+   "why": "Người nói đọc: “G G two, five F Q”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "G G two, five F Q"
+  },
+  {
+   "prompt": "[Hotel booking] Contact number: ____",
+   "answer": "07002780925",
+   "why": "Người nói đọc: “oh seven oh, oh two seven eight, oh nine two five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven oh, oh two seven eight, oh nine two five"
+  },
+  {
+   "prompt": "[Hotel booking] Postcode: ____",
+   "answer": "CP5 3MP",
+   "why": "Người nói đọc: “C P five, three M P”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "C P five, three M P"
+  },
+  {
+   "prompt": "[Hotel booking] Check-in date: ____",
+   "answer": "2 July | July 2 | 2th July | July 2th | second July",
+   "why": "Người nói đọc: “The second of July”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The second of July"
+  },
+  {
+   "prompt": "[Hotel booking] Number of nights: ____",
+   "answer": "3 | three",
+   "why": "Người nói đọc: “let me say three”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say three"
+  },
+  {
+   "prompt": "[Hotel booking] Deposit (£): ____",
+   "answer": "£25 | 25",
+   "why": "Người nói đọc: “twenty-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "twenty-five pounds"
+  },
+  {
+   "prompt": "[Library card] Card start date: ____",
+   "answer": "21 December | December 21 | 21th December | December 21th | twenty-first December",
+   "why": "Người nói đọc: “The twenty-first of December”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The twenty-first of December"
+  },
+  {
+   "prompt": "[Library card] Books allowed: ____",
+   "answer": "3 | three",
+   "why": "Người nói đọc: “let me say three”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say three"
+  },
+  {
+   "prompt": "[Library card] Yearly fee (£): ____",
+   "answer": "£80 | 80",
+   "why": "Người nói đọc: “eighty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "eighty pounds"
+  },
+  {
+   "prompt": "[Library card] Postcode: ____",
+   "answer": "LL4 8JT",
+   "why": "Người nói đọc: “L L four, eight J T”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "L L four, eight J T"
+  },
+  {
+   "prompt": "[Library card] Surname: ____",
+   "answer": "Wetherby",
+   "why": "Người nói đọc: “It's Wetherby. That's W, E, T, H, E, R, B, Y.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Wetherby. That's W, E, T, H, E, R, B, Y."
+  }
+ ]
+}

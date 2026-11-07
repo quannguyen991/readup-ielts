@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 6: Historical Episodes",
+ "topic": "People, empires and turning points in the past",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "The Rosetta Stone, found in Egypt in 1799, carries the same decree written in three scripts: hieroglyphs, a cursive Egyptian script and Greek. Scholars could read the Greek, and by comparing the texts they began to decode the Egyptian. Jean-François Champollion made the decisive breakthrough in 1822, showing that hieroglyphs represent sounds as well as ideas, and opening ancient Egyptian writing to modern readers.",
+   "options": [
+    "The discovery of Egypt by European travellers",
+    "The Greek language in the ancient world",
+    "The key that unlocked ancient Egyptian writing",
+    "The life of Champollion",
+    "Government decrees in antiquity",
+    "Three alphabets compared"
+   ],
+   "answer": "The key that unlocked ancient Egyptian writing",
+   "why": "Đoạn nói về phiến đá Rosetta và việc giải mã chữ tượng hình. Cuộc đời Champollion là quá hẹp.",
+   "quote": "decode the Egyptian"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "The Black Death reached Europe in the 1340s and killed perhaps a third of the population. Labour became scarce, and surviving workers demanded higher wages and better conditions. Landowners tried to hold wages down by law, but peasants often moved to find better offers. Many historians argue that the shortage of workers weakened the feudal system and hastened social change.",
+   "options": [
+    "The origins of the plague in Asia",
+    "Medical treatments in the Middle Ages",
+    "The history of feudal law",
+    "Social consequences of a deadly epidemic",
+    "Wage disputes between landowners",
+    "The population of fourteenth-century Europe"
+   ],
+   "answer": "Social consequences of a deadly epidemic",
+   "why": "Ý chính là hậu quả xã hội của dịch hạch. Lương và luật phong kiến chỉ là chi tiết.",
+   "quote": "weakened the feudal system"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "The Inca built an empire of about ten million people without a written script or money. Instead they used knotted cords, called quipu, to record numbers, and a system of labour tax in which villages supplied workers to build roads, terraces and storehouses. A network of paved roads stretching over thirty thousand kilometres allowed runners to carry messages quickly across the Andes.",
+   "options": [
+    "The size of the Andes mountains",
+    "Terraces and farming in South America",
+    "Knotted cords as counting tools",
+    "The Spanish conquest of Peru",
+    "The speed of long-distance runners",
+    "How the Inca ran a large empire without writing or money"
+   ],
+   "answer": "How the Inca ran a large empire without writing or money",
+   "why": "Đoạn mô tả cách Inca quản lý đế chế khi không có chữ viết và tiền. Quipu chỉ là một công cụ.",
+   "quote": "without a written script or money"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "The Great Fire of London in 1666 destroyed about 13,000 houses and around eighty churches, yet only a handful of deaths were recorded. Rebuilding followed new rules requiring brick and stone rather than timber, and streets were widened to slow the spread of flames. Insurance, a rarity before, developed quickly as property owners sought protection against loss.",
+   "options": [
+    "Why timber houses burn easily",
+    "The number of people who died",
+    "The history of insurance",
+    "Churches in medieval England",
+    "Firefighting equipment of the seventeenth century",
+    "How a disaster reshaped the city and its building rules"
+   ],
+   "answer": "How a disaster reshaped the city and its building rules",
+   "why": "Ý chính: đại hoả hoạn dẫn đến thay đổi quy tắc xây dựng và đô thị. Bảo hiểm chỉ là hệ quả phụ.",
+   "quote": "new rules requiring brick and stone"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Cleopatra is remembered as a seductress, but contemporaries emphasised her intelligence. She spoke several languages, including Egyptian, which none of her Macedonian-Greek predecessors had troubled to learn, and managed the finances of her kingdom skilfully. Her alliances with Julius Caesar and Mark Antony were political moves intended to preserve Egypt's independence against Rome.",
+   "options": [
+    "The love affairs of Roman leaders",
+    "The political skill behind a famous queen's reputation",
+    "The languages of ancient Egypt",
+    "Rome's expansion in the Mediterranean",
+    "Royal finances in antiquity",
+    "The death of Julius Caesar"
+   ],
+   "answer": "The political skill behind a famous queen's reputation",
+   "why": "Trọng tâm: tài năng chính trị của Cleopatra đối lập với hình ảnh quyến rũ. Ngôn ngữ chỉ là chi tiết.",
+   "quote": "political moves"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "In 1912 the polar explorer Robert Scott and four companions reached the South Pole only to find that a Norwegian team under Roald Amundsen had arrived five weeks earlier. All five men died on the return journey, short of food and fuel. Historians contrast the two expeditions: Amundsen relied on dogs and skis learned from Arctic peoples, whereas Scott used ponies and man-hauling, which proved less effective.",
+   "options": [
+    "The deaths of the explorers",
+    "The Arctic peoples and their skills",
+    "The use of ponies in the cold",
+    "The geography of Antarctica",
+    "Contrasting methods that decided the race to the South Pole",
+    "Norwegian polar history"
+   ],
+   "answer": "Contrasting methods that decided the race to the South Pole",
+   "why": "Ý chính: so sánh phương pháp dẫn đến kết quả cuộc đua. Cái chết của đoàn Scott là hệ quả.",
+   "quote": "dogs and skis"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "The Roman Empire's road network covered more than 80,000 kilometres, linking distant provinces to the capital. Built mainly for armies, the roads were constructed in layers of stone and gravel, with drainage ditches on either side. Messengers could cover about fifty kilometres a day, and merchants, pilgrims and ideas travelled along the same routes, binding the empire together.",
+   "options": [
+    "Roman roads as a means of military and cultural unity",
+    "How roads were built in layers",
+    "The speed of messengers",
+    "Merchants and pilgrims in antiquity",
+    "Drainage in stone construction",
+    "The size of the Roman army"
+   ],
+   "answer": "Roman roads as a means of military and cultural unity",
+   "why": "Trọng tâm là mạng lưới đường nối kết đế chế. Cách xây dựng chỉ là chi tiết.",
+   "quote": "binding the empire together"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "The Industrial Revolution began in Britain in the late eighteenth century. Coal was plentiful, capital was available, and inventions such as the steam engine and the spinning machine raised output sharply. Cotton cloth production, once done by hand in cottages, moved into factories in rapidly growing towns. Wages rose slowly, but living conditions in many industrial cities were crowded and unhealthy for decades.",
+   "options": [
+    "Why Britain industrialised first and what it cost",
+    "The invention of the steam engine",
+    "Cottage industries and handwork",
+    "Slow rises in wages",
+    "The growth of cotton exports",
+    "Coal mining and safety"
+   ],
+   "answer": "Why Britain industrialised first and what it cost",
+   "why": "Đoạn nêu nguyên nhân và cái giá của cách mạng công nghiệp. Mỗi lựa chọn khác chỉ là một chi tiết.",
+   "quote": "Coal was plentiful"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "In 1215, English barons forced King John to accept Magna Carta, a charter that limited his power. Its most famous clauses promised that no free man could be imprisoned without lawful judgement and that the king could not raise certain taxes without consent. The document was soon annulled, but it was reissued repeatedly and later became a symbol of the idea that rulers are subject to law.",
+   "options": [
+    "The unpopularity of King John",
+    "A medieval charter and its lasting symbolic importance",
+    "Taxation in medieval England",
+    "The rights of free men",
+    "Barons and their castles",
+    "Legal systems of today"
+   ],
+   "answer": "A medieval charter and its lasting symbolic importance",
+   "why": "Ý chính: Magna Carta và ý nghĩa biểu tượng lâu dài. Thuế khoá là chi tiết.",
+   "quote": "subject to law"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "The Polynesians settled islands scattered across the Pacific, from Hawaii to New Zealand, using canoes and no metal instruments. Navigators memorised star paths, read swell patterns and watched the flight of birds to find land. Their skill astonished early European sailors, who initially assumed the islands had been reached by accident. Modern voyages in replica canoes have shown that deliberate navigation was possible.",
+   "options": [
+    "The navigation methods that allowed deliberate Pacific settlement",
+    "Replica canoes and modern sailors",
+    "The islands of Hawaii",
+    "The tools of early European sailors",
+    "Birds that live on islands",
+    "Accidents at sea"
+   ],
+   "answer": "The navigation methods that allowed deliberate Pacific settlement",
+   "why": "Đoạn nói về kỹ thuật hàng hải để định cư có chủ ý. Xuồng mô phỏng chỉ là bằng chứng.",
+   "quote": "memorised star paths"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Ancient Athens is often called the birthplace of democracy, but its system was limited. Adult male citizens voted directly on laws in an assembly, and many officials were chosen by lot rather than by election. Women, slaves and foreigners, who made up the majority of residents, were excluded. The Athenian example therefore shows both the appeal and the limits of early democracy.",
+   "options": [
+    "The role of the assembly in Athens",
+    "Choosing officials by lot",
+    "The status of women in ancient Greece",
+    "Slavery in the ancient world",
+    "The achievements and limits of Athenian democracy",
+    "Modern voting systems"
+   ],
+   "answer": "The achievements and limits of Athenian democracy",
+   "why": "Trọng tâm: dân chủ Athens vừa có điểm tiến bộ vừa hạn chế. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "both the appeal and the limits"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "The Mongol Empire, founded by Genghis Khan in the early thirteenth century, grew to become the largest connected land empire in history. Its armies relied on speed, with soldiers who rode several horses each, and on discipline. Once conquered, territories were often governed tolerantly: religions were respected, trade was protected, and a postal relay system carried messages across thousands of kilometres.",
+   "options": [
+    "Military speed and tolerant rule behind Mongol expansion",
+    "The childhood of Genghis Khan",
+    "Horses in medieval warfare",
+    "Religious freedom in Asia",
+    "The postal system of Asia",
+    "The collapse of the Mongol Empire"
+   ],
+   "answer": "Military speed and tolerant rule behind Mongol expansion",
+   "why": "Đoạn nói sức mạnh quân sự và cách cai trị khoan dung. Hệ thống bưu chính chỉ là một chi tiết.",
+   "quote": "governed tolerantly"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "The Panama Canal, opened in 1914, cut about 13,000 kilometres from the sea journey between New York and San Francisco by avoiding the voyage around South America. Its construction cost the lives of thousands of workers, many from disease. A French attempt had failed in the 1880s, partly because the role of mosquitoes in spreading yellow fever and malaria was not yet understood.",
+   "options": [
+    "The sea route around South America",
+    "Mosquitoes and malaria research",
+    "French engineering in the nineteenth century",
+    "The human cost and challenges of building a waterway",
+    "The economy of Panama",
+    "New York as a trading port"
+   ],
+   "answer": "The human cost and challenges of building a waterway",
+   "why": "Ý chính là khó khăn và thiệt hại khi xây kênh đào. Muỗi chỉ là một nguyên nhân.",
+   "quote": "cost the lives of thousands"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Women gained the right to vote in New Zealand in 1893, the first self-governing country to grant it. The campaign was led by Kate Sheppard, who organised a petition signed by about a quarter of adult women in the country. Opponents argued that politics was unsuitable for women, but the Liberal government eventually passed the law, though women were not allowed to stand for parliament until 1919.",
+   "options": [
+    "Kate Sheppard's family life",
+    "Arguments against women in politics",
+    "Women in parliament",
+    "How New Zealand became the first country to let women vote",
+    "Petitions in nineteenth-century politics",
+    "The Liberal Party"
+   ],
+   "answer": "How New Zealand became the first country to let women vote",
+   "why": "Trọng tâm: New Zealand là nước đầu tiên cho phụ nữ bầu cử. Kiến nghị chỉ là chi tiết.",
+   "quote": "first self-governing country"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "The Berlin Wall divided the city of Berlin from 1961 to 1989. Built by East Germany to stop its citizens leaving for the West, it was guarded by watchtowers and patrols. Hundreds of people died trying to cross. In November 1989, after weeks of protest and a confusing announcement, crowds gathered at checkpoints and the guards allowed them through, and the wall was soon dismantled.",
+   "options": [
+    "Protests in East Germany",
+    "The rise and fall of a barrier that divided a city",
+    "The guards at checkpoints",
+    "Escape attempts",
+    "The government of West Germany",
+    "The history of Berlin before 1961"
+   ],
+   "answer": "The rise and fall of a barrier that divided a city",
+   "why": "Ý chính: bức tường Berlin được dựng rồi bị phá bỏ. Nỗ lực vượt tường chỉ là chi tiết.",
+   "quote": "dismantled"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "The Vikings are remembered as raiders, yet they were also traders and settlers. They sailed in shallow-hulled longships that could cross open sea and travel far up rivers, enabling both surprise attacks and long-distance commerce. They founded towns in Ireland, established farms in Iceland and Greenland, and reached North America around the year 1000, centuries before Columbus.",
+   "options": [
+    "The design of Viking longships",
+    "Viking attacks on monasteries",
+    "Vikings as explorers and traders as well as raiders",
+    "Settlement in Iceland",
+    "The voyage of Columbus",
+    "Rivers of northern Europe"
+   ],
+   "answer": "Vikings as explorers and traders as well as raiders",
+   "why": "Đoạn chỉ ra người Viking không chỉ là cướp biển. Thiết kế tàu chỉ là một chi tiết.",
+   "quote": "traders and settlers"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Samuel Pepys, a government official in seventeenth-century London, kept a diary for nearly ten years. He recorded the Great Plague, the Great Fire and the court of Charles II, but also everyday matters such as dinners, quarrels with his wife and his fondness for the theatre. Because he wrote candidly, and in a form of shorthand, the diary remains a rich source for historians.",
+   "options": [
+    "The Great Plague of London",
+    "Charles II and his court",
+    "Shorthand writing",
+    "The office of an official",
+    "A private diary as a window on seventeenth-century life",
+    "Pepys's marriage"
+   ],
+   "answer": "A private diary as a window on seventeenth-century life",
+   "why": "Trọng tâm là cuốn nhật ký là nguồn tư liệu về đời sống thế kỷ 17. Từng sự kiện chỉ là ví dụ.",
+   "quote": "a rich source for historians"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "The Great Wall of China is not one continuous wall but a series of walls, built by different dynasties over two thousand years. The best-known sections date from the Ming dynasty, which used stone and brick to guard against northern raiders. Contrary to popular belief, the wall cannot be seen from space with the naked eye, since it is long but narrow.",
+   "options": [
+    "The Ming dynasty's building methods",
+    "Northern raiders and their weapons",
+    "Space exploration",
+    "Visiting China as a tourist",
+    "The length of Chinese walls",
+    "Myths and facts about the Great Wall"
+   ],
+   "answer": "Myths and facts about the Great Wall",
+   "why": "Ý chính: đính chính những hiểu lầm về Vạn Lý Trường Thành. Triều Minh chỉ là chi tiết.",
+   "quote": "not one continuous wall"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "The telephone was patented by Alexander Graham Bell in 1876, though others, including Elisha Gray, were working on similar devices and filed claims on the same day. Early lines carried only local calls, and few people could imagine the invention as more than a curiosity. Within a generation, however, exchanges linked cities, and the telephone had changed the way businesses operated.",
+   "options": [
+    "The rivalry between Bell and Gray",
+    "Business practices in 1900",
+    "The early history and rapid growth of the telephone",
+    "City exchanges",
+    "The definition of a patent",
+    "Local calls and long-distance rates"
+   ],
+   "answer": "The early history and rapid growth of the telephone",
+   "why": "Trọng tâm: lịch sử ban đầu và sự lan nhanh của điện thoại. Tranh chấp bằng sáng chế chỉ là chi tiết.",
+   "quote": "changed the way businesses operated"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Marie Curie was the first person to win Nobel Prizes in two different sciences, physics in 1903 and chemistry in 1911. She coined the term radioactivity and discovered the elements polonium and radium. During the First World War she organised mobile X-ray units, known as little Curies, which helped surgeons locate bullets and shrapnel in wounded soldiers. Her long exposure to radiation probably contributed to her death in 1934.",
+   "options": [
+    "The dangers of radiation",
+    "The scientific achievements and wartime service of Marie Curie",
+    "The Nobel Prize system",
+    "X-ray machines in hospitals",
+    "Women in twentieth-century science",
+    "The discovery of new elements"
+   ],
+   "answer": "The scientific achievements and wartime service of Marie Curie",
+   "why": "Trọng tâm: thành tựu khoa học và đóng góp thời chiến của Marie Curie. Mỗi lựa chọn khác chỉ là một chi tiết.",
+   "quote": "first person to win Nobel Prizes in two different sciences"
+  }
+ ]
+}

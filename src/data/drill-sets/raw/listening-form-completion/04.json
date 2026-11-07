@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #4",
+ "topic": "Clinic registration · Coach tour booking · Gym membership · Library card",
+ "context": "Narrator: Conversation 1. Clinic registration.\nOlivia: Elm Park Medical Centre, Olivia speaking.\nCaller: Hello, I'd like to register as a new patient.\nOlivia: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nOlivia: It's D S four three eight three.\nOlivia: We can see you for a check-up. Which date suits you?\nCaller: The thirteenth of March... no, sorry, that's a Sunday. Make it the twelfth of March.\nOlivia: How many years have you lived at your current address?\nCaller: Seven, I think.\nCaller: How much is the fee for the private form?\nOlivia: It's twenty pounds.\nOlivia: What's your postcode?\nCaller: D L eight, five S H.\nOlivia: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Coach tour booking.\nGrace: Highland Day Tours, Grace speaking.\nCaller: Hi, I'd like to book a place on the castle tour.\nGrace: Can I take your surname, please?\nCaller: It's Ashworth. That's A, S, H, W, O, R, T, H.\nGrace: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nGrace: It's C L six seven zero two.\nGrace: And what's the best number to reach you on?\nCaller: It's oh seven three, oh six four eight, one four seven two.\nGrace: Which date would you like to travel?\nCaller: The eighteenth of April... no, sorry, that's a Sunday. Make it the seventeenth of April.\nCaller: How much is the price per person?\nGrace: It's twenty-five pounds.\nGrace: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Gym membership.\nSam: Good morning, Riverside Fitness, Sam speaking.\nCaller: Hello, I'd like to join the gym, please.\nSam: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nSam: It's K W one six nine seven.\nSam: Can I take your surname, please?\nCaller: It's Lockhart. That's L, O, C, K, H, A, R, T.\nCaller: How much is the joining fee?\nSam: It's fifty-five pounds... oh, hold on, that's last year's price. This year it's sixty-five pounds.\nSam: And what's the best number to reach you on?\nCaller: It's oh seven one, nine five two four, oh seven nine six.\nSam: What's your postcode?\nCaller: G H seven, eight F Z.\nSam: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Library card.\nHelen: City Library, Helen speaking.\nCaller: Hi, I've just moved to the area and I'd like a library card.\nHelen: And what's the best number to reach you on?\nCaller: It's oh seven seven, four six eight eight, six six five five.\nHelen: Can I take your surname, please?\nCaller: It's Quigley. That's Q, U, I, G, L, E, Y.\nHelen: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nHelen: It's L C eight eight four zero.\nHelen: On which date would you like the card to start?\nCaller: The fifteenth of June, please.\nHelen: How many books would you like to borrow at a time?\nCaller: Nine, I think. Actually, let me say eight, it's better to be safe.\nHelen: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Clinic registration] Patient number: ____",
+   "answer": "DS4383",
+   "why": "Người nói đọc: “D S four three eight three”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "D S four three eight three"
+  },
+  {
+   "prompt": "[Clinic registration] Appointment date: ____",
+   "answer": "12 March | March 12 | 12th March | March 12th | twelfth March",
+   "why": "Người nói đọc: “Make it the twelfth of March”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the twelfth of March"
+  },
+  {
+   "prompt": "[Clinic registration] Years at this address: ____",
+   "answer": "7 | seven",
+   "why": "Người nói đọc: “seven”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "seven"
+  },
+  {
+   "prompt": "[Clinic registration] Form fee (£): ____",
+   "answer": "£20 | 20",
+   "why": "Người nói đọc: “twenty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "twenty pounds"
+  },
+  {
+   "prompt": "[Clinic registration] Postcode: ____",
+   "answer": "DL8 5SH",
+   "why": "Người nói đọc: “D L eight, five S H”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "D L eight, five S H"
+  },
+  {
+   "prompt": "[Coach tour booking] Surname: ____",
+   "answer": "Ashworth",
+   "why": "Người nói đọc: “It's Ashworth. That's A, S, H, W, O, R, T, H.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Ashworth. That's A, S, H, W, O, R, T, H."
+  },
+  {
+   "prompt": "[Coach tour booking] Booking code: ____",
+   "answer": "CL6702",
+   "why": "Người nói đọc: “C L six seven zero two”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "C L six seven zero two"
+  },
+  {
+   "prompt": "[Coach tour booking] Mobile number: ____",
+   "answer": "07306481472",
+   "why": "Người nói đọc: “oh seven three, oh six four eight, one four seven two”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven three, oh six four eight, one four seven two"
+  },
+  {
+   "prompt": "[Coach tour booking] Tour date: ____",
+   "answer": "17 April | April 17 | 17th April | April 17th | seventeenth April",
+   "why": "Người nói đọc: “Make it the seventeenth of April”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the seventeenth of April"
+  },
+  {
+   "prompt": "[Coach tour booking] Price per person (£): ____",
+   "answer": "£25 | 25",
+   "why": "Người nói đọc: “twenty-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "twenty-five pounds"
+  },
+  {
+   "prompt": "[Gym membership] Membership code: ____",
+   "answer": "KW1697",
+   "why": "Người nói đọc: “K W one six nine seven”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "K W one six nine seven"
+  },
+  {
+   "prompt": "[Gym membership] Surname: ____",
+   "answer": "Lockhart",
+   "why": "Người nói đọc: “It's Lockhart. That's L, O, C, K, H, A, R, T.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Lockhart. That's L, O, C, K, H, A, R, T."
+  },
+  {
+   "prompt": "[Gym membership] Joining fee (£): ____",
+   "answer": "£65 | 65",
+   "why": "Người nói đọc: “this year it's sixty-five pounds”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "this year it's sixty-five pounds"
+  },
+  {
+   "prompt": "[Gym membership] Mobile number: ____",
+   "answer": "07195240796",
+   "why": "Người nói đọc: “oh seven one, nine five two four, oh seven nine six”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven one, nine five two four, oh seven nine six"
+  },
+  {
+   "prompt": "[Gym membership] Postcode: ____",
+   "answer": "GH7 8FZ",
+   "why": "Người nói đọc: “G H seven, eight F Z”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "G H seven, eight F Z"
+  },
+  {
+   "prompt": "[Library card] Telephone: ____",
+   "answer": "07746886655",
+   "why": "Người nói đọc: “oh seven seven, four six eight eight, six six five five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven seven, four six eight eight, six six five five"
+  },
+  {
+   "prompt": "[Library card] Surname: ____",
+   "answer": "Quigley",
+   "why": "Người nói đọc: “It's Quigley. That's Q, U, I, G, L, E, Y.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Quigley. That's Q, U, I, G, L, E, Y."
+  },
+  {
+   "prompt": "[Library card] Card number: ____",
+   "answer": "LC8840",
+   "why": "Người nói đọc: “L C eight eight four zero”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "L C eight eight four zero"
+  },
+  {
+   "prompt": "[Library card] Card start date: ____",
+   "answer": "15 June | June 15 | 15th June | June 15th | fifteenth June",
+   "why": "Người nói đọc: “The fifteenth of June”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The fifteenth of June"
+  },
+  {
+   "prompt": "[Library card] Books allowed: ____",
+   "answer": "8 | eight",
+   "why": "Người nói đọc: “let me say eight”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say eight"
+  }
+ ]
+}

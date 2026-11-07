@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 3: Nature and Environment",
+ "topic": "Ecology, weather and natural resources",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "Wolves were removed from Yellowstone National Park in the 1920s, and for decades elk grazed freely along the rivers. Young willow and aspen trees were eaten before they could grow. After wolves were reintroduced in 1995, elk changed their behaviour and avoided open valleys. Streamside trees began to recover, and beavers, songbirds and fish are reported to have benefited, although scientists still debate how large the effect has been.",
+   "options": [
+    "The hunting of wolves in the twentieth century",
+    "The diet of elk in winter",
+    "Why beavers build dams",
+    "A predator's return and the disputed effects on a landscape",
+    "Tourism in national parks",
+    "Tree species of the American West"
+   ],
+   "answer": "A predator's return and the disputed effects on a landscape",
+   "why": "Đoạn nói về việc sói quay lại và tác động còn tranh cãi lên hệ sinh thái. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "scientists still debate"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Lightning strikes the Earth roughly forty times every second. A storm cloud builds up electric charge as ice crystals collide, and when the difference between the cloud and the ground becomes large enough, a channel of super-heated air forms and a current flows. The thunder we hear is the shock wave from that sudden heating, which is why light is seen before sound is heard.",
+   "options": [
+    "The dangers of lightning to humans",
+    "How ice crystals form in clouds",
+    "The speed of light and sound",
+    "Protecting buildings from storms",
+    "The physical causes of lightning and thunder",
+    "Seasonal changes in storm frequency"
+   ],
+   "answer": "The physical causes of lightning and thunder",
+   "why": "Trọng tâm là cơ chế vật lý của sét và sấm. Tốc độ ánh sáng và âm thanh chỉ là phần kết.",
+   "quote": "a channel of super-heated air forms"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Soil is not simply broken rock. A handful of healthy soil contains more living organisms than there are people on Earth, from bacteria and fungi to worms and insects. They break down dead plants, recycle nutrients and bind particles into a crumbly structure that holds water. Farming practices that disturb or poison this community can reduce harvests more than farmers realise.",
+   "options": [
+    "The hidden living community that sustains soil fertility",
+    "The geological formation of rocks",
+    "The use of chemicals in farming",
+    "Why worms are useful to gardeners",
+    "Water shortages on farms",
+    "The number of people on Earth"
+   ],
+   "answer": "The hidden living community that sustains soil fertility",
+   "why": "Ý chính là sinh vật sống tạo nên độ phì nhiêu của đất. Hoá chất nông nghiệp chỉ nhắc cuối đoạn.",
+   "quote": "more living organisms than there are people"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Glaciers act as natural reservoirs. They store winter snow as ice and release meltwater through summer, when rivers downstream are most needed for irrigation and drinking. As temperatures climb, many glaciers are shrinking. At first, rivers may run higher with extra meltwater, but once the ice has largely gone, flows will decline, putting pressure on the hundreds of millions of people who depend on them.",
+   "options": [
+    "How the loss of glaciers threatens future water supplies",
+    "The formation of ice in mountain regions",
+    "Winter snowfall in the Himalayas",
+    "The benefits of irrigation systems",
+    "Rising sea levels around the world",
+    "Population growth in river valleys"
+   ],
+   "answer": "How the loss of glaciers threatens future water supplies",
+   "why": "Trọng tâm là sông băng tan sẽ làm nguồn nước cạn. Tuyết mùa đông và mực nước biển không thuộc ý chính.",
+   "quote": "flows will decline"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Fireflies glow through a chemical reaction in which an enzyme helps a compound called luciferin combine with oxygen, producing light with almost no heat. Each species has its own flash pattern, which males use to attract females of the same species. Some predatory fireflies imitate other species' patterns to lure and eat the males. Artificial lighting at night is now blamed for confusing many populations.",
+   "options": [
+    "Predatory insects in the tropics",
+    "The effects of street lighting on towns",
+    "The chemistry and signals of firefly light",
+    "How males attract females in other species",
+    "The discovery of luciferin",
+    "Chemical reactions that produce heat"
+   ],
+   "answer": "The chemistry and signals of firefly light",
+   "why": "Đoạn nói cơ chế phát sáng và tín hiệu của đom đóm. Ánh sáng nhân tạo và loài săn mồi chỉ là chi tiết.",
+   "quote": "its own flash pattern"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Deserts are not always hot. The Gobi and the Antarctic interior qualify because they receive very little precipitation, whatever their temperature. Many desert animals avoid the heat of day by living underground or becoming active at dusk. Plants have adapted too: some store water in thick stems, others grow roots that spread widely near the surface to catch brief rain.",
+   "options": [
+    "Why deserts are always hot",
+    "The size of the Gobi Desert",
+    "Adaptations that allow life in very dry places",
+    "Nocturnal animals of Africa",
+    "Rainfall patterns in Antarctica",
+    "Plants that store water"
+   ],
+   "answer": "Adaptations that allow life in very dry places",
+   "why": "Ý chính là cách sinh vật thích nghi với khô hạn. Lựa chọn \"luôn nóng\" mâu thuẫn bài, còn các lựa chọn khác quá hẹp.",
+   "quote": "avoid the heat of day"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "The deep ocean floor was once assumed to be a barren plain. In 1977, however, scientists in a submersible discovered hot springs on the seabed, surrounded by tube worms, clams and crabs. Without sunlight, these communities depend on bacteria that turn chemicals from the vents into food. The discovery showed that life can flourish without the sun and raised hopes of finding it on other worlds.",
+   "options": [
+    "Exploring the seabed with submersibles",
+    "Giant worms and their habits",
+    "The search for life on other planets",
+    "Hot springs as a source of energy",
+    "The temperature of ocean water",
+    "A discovery of life that does not rely on sunlight"
+   ],
+   "answer": "A discovery of life that does not rely on sunlight",
+   "why": "Trọng tâm là sự sống không cần ánh sáng mặt trời. Khám phá hành tinh khác chỉ là hệ quả được nhắc cuối.",
+   "quote": "life can flourish without the sun"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Pollination by insects is worth billions of dollars to farmers each year, yet pollinators are in decline in many regions. Pesticides, loss of wildflower habitats and disease are the main suspects. In some orchards of China, farmers have taken to pollinating by hand, carrying pollen on brushes from tree to tree, a slow and expensive substitute for the work bees once did free of charge.",
+   "options": [
+    "How bees are bred commercially",
+    "The use of pesticides in orchards",
+    "Wildflower meadows and tourism",
+    "The decline of pollinators and its costs to farming",
+    "Hand tools used by fruit growers",
+    "Insects that carry disease"
+   ],
+   "answer": "The decline of pollinators and its costs to farming",
+   "why": "Đoạn nói sự suy giảm côn trùng thụ phấn và cái giá cho nông nghiệp. Thụ phấn bằng tay chỉ là ví dụ.",
+   "quote": "pollinators are in decline"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "Many rivers have been straightened and enclosed in concrete channels to prevent flooding, but engineers now question the approach. Straight channels speed water downstream and can worsen floods lower down. Several cities have begun restoring natural bends and floodplains, allowing rivers to spill into open land. The projects can cost less than building higher walls and bring wildlife and recreation back to the water.",
+   "options": [
+    "The construction of concrete channels",
+    "Recreation along city waterfronts",
+    "Causes of severe flooding",
+    "Wildlife habitats in wetlands",
+    "The cost of building flood walls",
+    "Restoring natural rivers as a flood-control strategy"
+   ],
+   "answer": "Restoring natural rivers as a flood-control strategy",
+   "why": "Ý chính là phục hồi sông tự nhiên để chống lũ. Xây kênh bê tông là cách cũ bị phê phán.",
+   "quote": "restoring natural bends and floodplains"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "Seeds travel in surprising ways. Some are carried inside animals that eat the fruit and drop the seeds far away; others cling with tiny hooks to fur and clothing. Maples spin on winged cases, dandelions float on parachutes of hair, and a few plants simply explode, flinging their seeds several metres. Each method helps the offspring avoid competing with the parent plant for light and water.",
+   "options": [
+    "Why plants compete for light",
+    "Varied methods by which plants spread their seeds",
+    "Animals that eat fruit",
+    "The structure of a dandelion",
+    "Exploding plants of the tropics",
+    "Gardening with native seeds"
+   ],
+   "answer": "Varied methods by which plants spread their seeds",
+   "why": "Đoạn liệt kê nhiều cách phát tán hạt. Mỗi cách chỉ là một ví dụ nên không phải tiêu đề.",
+   "quote": "Seeds travel in surprising ways"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "The monsoon brings most of South Asia's annual rainfall in a few months. When it arrives on time, farmers sow rice and other crops with confidence; when it is late or weak, harvests fail and food prices climb. Forecasters now combine satellite data with computer models to predict the monsoon's arrival, but its variations from year to year remain difficult to anticipate.",
+   "options": [
+    "Rice farming in South Asia",
+    "The monsoon's importance and the difficulty of forecasting it",
+    "The use of satellites in weather forecasting",
+    "Rising food prices worldwide",
+    "Rainfall in tropical forests",
+    "The history of climate science"
+   ],
+   "answer": "The monsoon's importance and the difficulty of forecasting it",
+   "why": "Đoạn vừa nêu tầm quan trọng của gió mùa vừa nêu khó khăn dự báo. Vệ tinh hay lúa chỉ là chi tiết.",
+   "quote": "remain difficult to anticipate"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Peat bogs cover only three per cent of the planet's land, yet they hold twice as much carbon as all the world's forests combined. Waterlogged conditions prevent dead plants from fully decaying, so carbon builds up over thousands of years. When bogs are drained for farming or fuel, that carbon escapes as carbon dioxide, which is why campaigners urge governments to protect and rewet them.",
+   "options": [
+    "Peatlands as a huge store of carbon worth protecting",
+    "The use of peat as fuel",
+    "Forests and their carbon stores",
+    "How plants decay",
+    "Drainage methods in farming",
+    "Campaigns by environmental groups"
+   ],
+   "answer": "Peatlands as a huge store of carbon worth protecting",
+   "why": "Trọng tâm là đầm than bùn chứa lượng carbon khổng lồ cần bảo vệ. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "twice as much carbon"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Whales sing songs that can last up to twenty minutes and be repeated for hours. Males of each humpback population share a song that changes gradually each season, and populations in the Pacific sometimes adopt new songs from neighbours. Researchers cannot yet say what the songs mean, but evidence suggests that they play a part in courtship or in competing with other males.",
+   "options": [
+    "How whales communicate underwater",
+    "The unexplained purpose of humpback whale songs",
+    "The migration routes of humpback whales",
+    "Differences between male and female whales",
+    "Seasonal changes in ocean temperature",
+    "Recording equipment used by scientists"
+   ],
+   "answer": "The unexplained purpose of humpback whale songs",
+   "why": "Ý chính: bài hát của cá voi vẫn chưa rõ ý nghĩa. \"Giao tiếp dưới nước\" quá rộng.",
+   "quote": "cannot yet say what the songs mean"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Cities generate heat. Dark roads and roofs absorb sunlight, cars and air conditioners release warm air, and few trees remain to provide shade, so urban centres can be several degrees warmer than surrounding countryside, especially at night. The effect worsens heatwaves and raises energy use. Planners are experimenting with pale paint on roofs, green roofs and more parks to cool neighbourhoods.",
+   "options": [
+    "The health effects of heatwaves",
+    "Why cities are warmer than their surroundings and how to cool them",
+    "Energy consumption in air conditioning",
+    "The planting of urban parks",
+    "Differences between day and night temperatures",
+    "The paint industry"
+   ],
+   "answer": "Why cities are warmer than their surroundings and how to cool them",
+   "why": "Đoạn nêu nguyên nhân đô thị nóng hơn và biện pháp làm mát. Từng lựa chọn khác chỉ là một phần.",
+   "quote": "several degrees warmer"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Salt marshes lie where land meets the sea and are flooded by the tide twice a day. Dense grasses slow incoming water and trap sediment, so marshes can build up in height as sea levels rise. They also absorb storm surges and filter pollution before it reaches open water. Many have been drained for farming or building, and conservationists argue that their value has been underestimated.",
+   "options": [
+    "Tides and their causes",
+    "Farming on coastal land",
+    "The grasses of tidal areas",
+    "Rising sea levels worldwide",
+    "The protective services provided by salt marshes",
+    "Water pollution in rivers"
+   ],
+   "answer": "The protective services provided by salt marshes",
+   "why": "Đoạn nêu các lợi ích bảo vệ của đầm lầy muối. Thủy triều và nông nghiệp chỉ là chi tiết.",
+   "quote": "absorb storm surges and filter pollution"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Termites build mounds that can rise several metres above the ground, yet the insects themselves are blind and tiny. Inside, a network of tunnels circulates air, keeping the nest at a steady temperature despite fierce heat outside. No individual termite directs the work. Instead, each follows simple rules and responds to the actions of others, and the mound emerges from their combined behaviour.",
+   "options": [
+    "The life cycle of a termite",
+    "Air conditioning in modern buildings",
+    "Blindness among insects",
+    "The height of termite mounds",
+    "How simple rules produce complex insect architecture",
+    "Leadership in animal colonies"
+   ],
+   "answer": "How simple rules produce complex insect architecture",
+   "why": "Ý chính: cấu trúc phức tạp xuất phát từ hành vi đơn giản của từng con. Chiều cao tổ chỉ là chi tiết.",
+   "quote": "No individual termite directs the work"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Volcanic eruptions can cool the planet. In 1815 the eruption of Mount Tambora threw so much ash and sulphur into the atmosphere that sunlight was partly blocked, and the following year, 1816, is remembered in Europe and North America as the year without a summer. Crops failed, food prices rose and some historians link the hardship to emigration and unrest.",
+   "options": [
+    "The danger of volcanoes to nearby villages",
+    "Summer weather in North America",
+    "Famine and emigration in the nineteenth century",
+    "A volcanic eruption that altered the climate",
+    "Ash clouds and aviation",
+    "The geology of Indonesia"
+   ],
+   "answer": "A volcanic eruption that altered the climate",
+   "why": "Trọng tâm là một vụ phun trào làm thay đổi khí hậu. Nạn đói chỉ là hệ quả.",
+   "quote": "the year without a summer"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "Coastal fog in northern California helps giant redwoods survive long dry summers. The trees absorb moisture directly through their needles and drip it onto the ground, providing as much as a third of their annual water. Scientists worry that warming oceans may reduce fog, which could threaten the oldest stands. Tree-ring records indicate that fog levels have already declined over the last century.",
+   "options": [
+    "Fog as a vital water source for redwood forests",
+    "The age of California's oldest trees",
+    "Rainfall in dry summers",
+    "Tree rings as records of climate",
+    "Warming oceans and fish",
+    "The timber industry on the west coast"
+   ],
+   "answer": "Fog as a vital water source for redwood forests",
+   "why": "Đoạn nói sương mù cung cấp nước cho rừng thông đỏ. Vòng cây chỉ là bằng chứng phụ.",
+   "quote": "as much as a third of their annual water"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Wildfires have always shaped forests, and some species depend on them. Certain pine cones open only in intense heat, and fire clears undergrowth so that new seedlings receive light. A century of suppressing every fire, however, allowed dead wood to accumulate, making modern fires larger and harder to control. Land managers now carry out controlled burns to reduce fuel and restore a healthier cycle.",
+   "options": [
+    "The species of pine that need fire",
+    "Controlled burns and their dangers",
+    "Clearing undergrowth for new growth",
+    "The cost of firefighting",
+    "Smoke and air quality",
+    "Why fire suppression made forest fires worse"
+   ],
+   "answer": "Why fire suppression made forest fires worse",
+   "why": "Ý chính: ngăn mọi đám cháy khiến cháy rừng về sau nặng hơn. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "allowed dead wood to accumulate"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Earthworms were once regarded by farmers as pests, but Charles Darwin spent decades studying them and concluded that they are essential. By dragging leaves underground and eating soil, they mix organic matter into deeper layers, create channels that let water and roots penetrate, and leave castings rich in nutrients. In a single year, a healthy field can have several tonnes of soil per hectare pass through their bodies.",
+   "options": [
+    "Darwin's many scientific interests",
+    "Pests that damage crops",
+    "The overlooked value of earthworms to the soil",
+    "The structure of plant roots",
+    "The amount of rainfall on farms",
+    "How leaves decay in autumn"
+   ],
+   "answer": "The overlooked value of earthworms to the soil",
+   "why": "Ý chính là giun đất có ích cho đất, qua nghiên cứu của Darwin. Darwin chỉ là chi tiết bối cảnh.",
+   "quote": "essential"
+  }
+ ]
+}

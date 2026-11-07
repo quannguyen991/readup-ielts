@@ -1,0 +1,127 @@
+{
+ "title": "The Story of Tea",
+ "topic": "The history and trade of tea",
+ "context": "Tea is the most widely consumed beverage in the world after water, yet its origins lie in a single plant, Camellia sinensis, native to the forests of south-west China. According to legend, the emperor Shennong discovered the drink around 2737 BC when leaves from a wild tree blew into his boiling water, but archaeologists have found evidence of tea drinking only from about the second century BC. Early on, tea was valued as a medicine rather than a pleasure, and it was often boiled with onions, ginger and orange peel.\n\nBy the Tang dynasty, tea had become a fashionable drink among scholars and monks. Monks drank it to stay awake during long hours of meditation, and Buddhist travellers carried seeds to Japan in the ninth century. Tea was compressed into hard bricks for transport, and these bricks even served as currency along the trade routes of Central Asia. Under the Song dynasty, fine powdered tea was whisked in bowls, a custom that later inspired the Japanese tea ceremony.\n\nEuropeans encountered tea in the sixteenth century, when Portuguese traders brought small quantities home. It was the Dutch who first imported it on a large scale, and from there it reached Britain, where Catherine of Braganza, the wife of Charles II, helped popularise it at court. For a long time tea was so expensive that it was kept under lock and key, and smuggling flourished, since high taxes made legal tea cost far more than it should. By 1800, the British were buying so much that the East India Company needed a way to pay for it without draining its silver reserves. Meanwhile, a new social habit grew up at home: the custom of afternoon tea emerged in the 1840s, when a duchess began asking for light refreshments to fill the long gap before dinner.\n\nThe solution was a trade in opium grown in India and sold illegally in China, which led to the Opium Wars of the nineteenth century. At the same time the company sought to break China's monopoly on tea by growing the plant elsewhere. In 1848, the botanist Robert Fortune smuggled seedlings and workers out of China, and plantations were soon established in Assam and Darjeeling. Within a few decades, India and later Sri Lanka had overtaken China as major exporters.\n\nToday the industry employs millions of workers, many of them women who pick the leaves by hand, since machines damage the delicate shoots. Wages on some plantations remain low, and campaigners have pressed companies to adopt certification schemes. Climate change is a further concern, as warmer temperatures and irregular rain are altering the flavour and yield of tea grown at high altitude. Researchers are experimenting with heat-tolerant varieties to protect the crop, although it will take years to know whether they match the taste of traditional bushes.",
+ "questions": [
+  {
+   "prompt": "All tea comes from one ____ originally found in the forests of south-west China.",
+   "answer": "plant",
+   "why": "Bài nói trà bắt nguồn từ \"a single plant\".",
+   "quote": "a single plant, Camellia sinensis"
+  },
+  {
+   "prompt": "In the legend of Shennong, ____ from a wild tree blew into hot water and created the first tea.",
+   "answer": "leaves",
+   "why": "Truyền thuyết: lá từ cây dại rơi vào nước sôi.",
+   "quote": "leaves from a wild tree"
+  },
+  {
+   "prompt": "Reliable proof that people drank tea goes back only to roughly the ____ century BC.",
+   "answer": "second",
+   "why": "Bằng chứng khảo cổ chỉ từ khoảng thế kỷ thứ hai trước Công nguyên.",
+   "quote": "from about the second century BC"
+  },
+  {
+   "prompt": "At first, people thought of tea as a kind of ____ instead of a treat.",
+   "answer": "medicine",
+   "why": "Ban đầu trà được coi là thuốc.",
+   "quote": "valued as a medicine"
+  },
+  {
+   "prompt": "The early recipe for tea included boiling it with onions, ginger and ____.",
+   "answer": "orange peel",
+   "why": "Danh sách nguyên liệu kết thúc bằng vỏ cam.",
+   "quote": "ginger and orange peel"
+  },
+  {
+   "prompt": "Monks used tea to help them keep awake while they practised ____ for long periods.",
+   "answer": "meditation",
+   "why": "Các nhà sư uống trà khi thiền nhiều giờ.",
+   "quote": "long hours of meditation"
+  },
+  {
+   "prompt": "Seeds were taken to Japan in the ninth century by Buddhist ____.",
+   "answer": "travellers",
+   "why": "Người mang hạt giống là các lữ khách Phật giáo.",
+   "quote": "Buddhist travellers carried seeds"
+  },
+  {
+   "prompt": "For easier transport, tea was pressed into hard ____, which also acted as money in Central Asia.",
+   "answer": "bricks",
+   "why": "Trà nén thành \"bricks\" và dùng như tiền tệ.",
+   "quote": "compressed into hard bricks"
+  },
+  {
+   "prompt": "In the Song dynasty, very fine tea powder was ____ in bowls before drinking.",
+   "answer": "whisked",
+   "why": "Bột trà mịn được đánh trong bát.",
+   "quote": "was whisked in bowls"
+  },
+  {
+   "prompt": "The first Europeans to bring in tea in large amounts were the ____.",
+   "answer": "Dutch",
+   "why": "Người Hà Lan là người đầu tiên nhập khẩu quy mô lớn.",
+   "quote": "It was the Dutch who first imported it"
+  },
+  {
+   "prompt": "Catherine of Braganza made tea popular among the people of the royal ____.",
+   "answer": "court",
+   "why": "Bà góp phần phổ biến trà \"at court\".",
+   "quote": "popularise it at court"
+  },
+  {
+   "prompt": "Heavy ____ made legal tea very costly and therefore encouraged smuggling.",
+   "answer": "taxes",
+   "why": "Thuế cao khiến trà hợp pháp đắt đỏ.",
+   "quote": "since high taxes made legal tea"
+  },
+  {
+   "prompt": "The East India Company did not want to use up its ____ reserves to buy tea.",
+   "answer": "silver",
+   "why": "Công ty không muốn cạn dự trữ bạc.",
+   "quote": "draining its silver reserves"
+  },
+  {
+   "prompt": "The opium used to pay for tea was grown in ____.",
+   "answer": "India",
+   "why": "Thuốc phiện trồng ở Ấn Độ rồi bán lậu ở Trung Quốc.",
+   "quote": "grown in India and sold"
+  },
+  {
+   "prompt": "Robert Fortune took seedlings out of China in the year ____.",
+   "answer": "1848",
+   "why": "Năm Fortune đưa cây giống ra khỏi Trung Quốc là 1848.",
+   "quote": "In 1848, the botanist Robert Fortune"
+  },
+  {
+   "prompt": "New plantations were created in Assam and ____.",
+   "answer": "Darjeeling",
+   "why": "Đồn điền mới ở Assam và Darjeeling.",
+   "quote": "Assam and Darjeeling"
+  },
+  {
+   "prompt": "Eventually ____ also surpassed China as a leading exporter, following India.",
+   "answer": "Sri Lanka",
+   "why": "Sri Lanka cũng vượt Trung Quốc về xuất khẩu.",
+   "quote": "later Sri Lanka had overtaken China"
+  },
+  {
+   "prompt": "Leaves are gathered manually because machines ____ the tender shoots.",
+   "answer": "damage",
+   "why": "Máy móc làm hỏng chồi non nên phải hái tay.",
+   "quote": "machines damage the delicate shoots"
+  },
+  {
+   "prompt": "Campaigners have urged firms to introduce ____ schemes to improve conditions.",
+   "answer": "certification",
+   "why": "Các nhà vận động yêu cầu áp dụng chương trình chứng nhận.",
+   "quote": "adopt certification schemes"
+  },
+  {
+   "prompt": "Scientists are trying out ____ varieties to protect tea from rising temperatures.",
+   "answer": "heat-tolerant",
+   "why": "Giống chịu nóng đang được thử nghiệm.",
+   "quote": "heat-tolerant varieties"
+  }
+ ]
+}

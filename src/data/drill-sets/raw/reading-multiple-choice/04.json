@@ -1,0 +1,247 @@
+{
+ "title": "Living Food: The Science of Fermentation",
+ "topic": "Food science and fermentation",
+ "context": "People have been fermenting food for at least nine thousand years. Chemical traces in pottery from northern China show that Neolithic villagers made a drink from rice, honey and fruit, and later civilisations discovered that milk, grain, fish and vegetables could all be transformed in a similar way. Their motive was probably practical rather than culinary. In a world without refrigerators, fermentation allowed a seasonal harvest to be stored for months. Many of these foods are still central to national cuisines, from yoghurt in the Balkans to kimchi in Korea.\n\nThe process is carried out by microorganisms, mostly bacteria, yeasts and moulds, which feed on sugars and release acids, alcohol or gases. Consider sauerkraut. When cabbage is shredded and mixed with salt, water is drawn out of the leaves, creating a brine. Harmful microbes struggle in this salty liquid, while lactic acid bacteria, which are already present on the leaves, multiply. As they feed they produce lactic acid, and once the acidity reaches a certain level few dangerous organisms can survive. This explains why many traditional ferments are safe, although it would be wrong to suppose that all of them are. Badly controlled fermentation of some meats and fish has caused serious poisoning.\n\nPreservation is only part of the story. Microbes also alter flavour and nutrition. They break down proteins into amino acids, among them glutamate, which gives soy sauce, miso and aged cheese their savoury depth. Some ferments contain additional vitamins, and in cereal doughs the activity of microbes reduces phytic acid, a compound that prevents the body from absorbing minerals such as iron and zinc. Sourdough bread is sometimes said to be more nutritious than ordinary bread for this reason, though the effect depends heavily on how long the dough is left to rise.\n\nHealth claims for fermented foods are more contentious. Supporters point to probiotics, live bacteria that may benefit the gut. In one trial, volunteers who added fermented foods to their diet for ten weeks showed a greater variety of gut bacteria and lower levels of chemical markers of inflammation than a group who ate more fibre. The study was small, however, and independent scientists urge caution. Many shop-bought products are heat-treated before sale, which kills the organisms that supposedly provide the benefit, and some researchers suspect that the compounds produced during fermentation, rather than the living microbes, may be responsible for any improvement.\n\nA different debate concerns the way fermentation is done. Large manufacturers use carefully selected starter cultures to guarantee speed, safety and a consistent taste. Artisans reply that relying on wild microbes gives richer, more varied flavours. It is often assumed that those microbes come from the region, so that bread from one city will always taste different from bread from another. A worldwide survey of sourdough starters, however, found that geography explained very little. Factors such as the type of flour and the hands of the baker proved to be more important.\n\nWhatever the truth of the individual claims, interest in fermentation shows no sign of fading. Home cooks fill jars with cabbage and carrots, and restaurants list their own house-made vinegars. The enthusiasm is understandable, since few cooking techniques are so cheap or so rewarding. Yet a little scepticism is healthy. Fermentation is a craft with a long history, not a miracle cure, and the evidence for its benefits should be judged by the same standards as any other medical claim.",
+ "questions": [
+  {
+   "prompt": "What does the writer suggest about the earliest fermentation?",
+   "options": [
+    "It was invented to produce alcohol",
+    "It was practised only in China",
+    "It began with the discovery of lactic acid",
+    "It was probably used mainly to store food"
+   ],
+   "answer": "It was probably used mainly to store food",
+   "why": "Động cơ có lẽ thực dụng hơn là ẩm thực: cho phép trữ mùa thu hoạch nhiều tháng.",
+   "quote": "Their motive was probably practical rather than culinary."
+  },
+  {
+   "prompt": "What do the chemical traces in the Chinese pottery show?",
+   "options": [
+    "Villagers stored milk in clay jars",
+    "Villagers produced a drink from rice, honey and fruit",
+    "Villagers traded fermented fish",
+    "Villagers baked bread from grain"
+   ],
+   "answer": "Villagers produced a drink from rice, honey and fruit",
+   "why": "Dấu vết hoá học cho thấy cư dân Tân thạch làm đồ uống từ gạo, mật ong, trái cây.",
+   "quote": "made a drink from rice, honey and fruit"
+  },
+  {
+   "prompt": "Why is salt important in making sauerkraut?",
+   "options": [
+    "It draws water from the leaves and makes conditions hard for harmful microbes",
+    "It kills the bacteria that cause cabbage to spoil",
+    "It provides the sugars that microbes feed on",
+    "It prevents any acid from forming"
+   ],
+   "answer": "It draws water from the leaves and makes conditions hard for harmful microbes",
+   "why": "Muối hút nước tạo nước muối, vi khuẩn có hại khó phát triển trong đó.",
+   "quote": "Harmful microbes struggle in this salty liquid"
+  },
+  {
+   "prompt": "Where do the lactic acid bacteria in sauerkraut come from?",
+   "options": [
+    "They are added as a starter",
+    "They come from the salt",
+    "They are already on the cabbage leaves",
+    "They are in the water used"
+   ],
+   "answer": "They are already on the cabbage leaves",
+   "why": "Vi khuẩn lactic có sẵn trên lá bắp cải.",
+   "quote": "which are already present on the leaves"
+  },
+  {
+   "prompt": "What does the writer say about the safety of fermented foods?",
+   "options": [
+    "All traditional ferments are safe",
+    "Acidity makes every ferment dangerous",
+    "Fish ferments are always safer than meat ones",
+    "Acidity explains why many ferments are safe, but not all are"
+   ],
+   "answer": "Acidity explains why many ferments are safe, but not all are",
+   "why": "Độ axit giải thích vì sao nhiều món lên men an toàn, nhưng một số thịt, cá lên men kém kiểm soát từng gây ngộ độc.",
+   "quote": "it would be wrong to suppose that all of them are"
+  },
+  {
+   "prompt": "What is the role of glutamate?",
+   "options": [
+    "It gives savoury depth to foods such as soy sauce and miso",
+    "It helps to preserve foods for longer",
+    "It increases the vitamin content of dough",
+    "It prevents minerals from being absorbed"
+   ],
+   "answer": "It gives savoury depth to foods such as soy sauce and miso",
+   "why": "Glutamate tạo vị đậm đà (umami) cho tương, miso, phô mai.",
+   "quote": "gives soy sauce, miso and aged cheese their savoury depth"
+  },
+  {
+   "prompt": "What is the effect of reducing phytic acid in dough?",
+   "options": [
+    "The bread rises faster",
+    "The bread contains less sugar",
+    "The body can absorb more minerals",
+    "The bread tastes more sour"
+   ],
+   "answer": "The body can absorb more minerals",
+   "why": "Phytic acid cản trở hấp thu khoáng như sắt, kẽm; giảm nó giúp hấp thu tốt hơn.",
+   "quote": "prevents the body from absorbing minerals such as iron and zinc"
+  },
+  {
+   "prompt": "What does the writer say about sourdough bread?",
+   "options": [
+    "It is always more nutritious than ordinary bread",
+    "Its advantage depends on how long the dough rises",
+    "It is less nutritious when the dough is left to rise",
+    "Its benefits have been proved in trials"
+   ],
+   "answer": "Its advantage depends on how long the dough rises",
+   "why": "Hiệu quả phụ thuộc nhiều vào thời gian ủ bột.",
+   "quote": "the effect depends heavily on how long the dough is left to rise"
+  },
+  {
+   "prompt": "In paragraph 4, 'contentious' means",
+   "options": [
+    "widely accepted",
+    "easy to prove",
+    "rarely discussed",
+    "likely to cause disagreement"
+   ],
+   "answer": "likely to cause disagreement",
+   "why": "'Contentious' là gây tranh cãi.",
+   "quote": "Health claims for fermented foods are more contentious."
+  },
+  {
+   "prompt": "What did the ten-week trial find?",
+   "options": [
+    "Those who ate fermented foods had more varied gut bacteria and lower inflammation markers than a high-fibre group",
+    "Both groups showed no difference",
+    "The high-fibre group improved more",
+    "Those who ate fermented foods lost weight"
+   ],
+   "answer": "Those who ate fermented foods had more varied gut bacteria and lower inflammation markers than a high-fibre group",
+   "why": "Nhóm ăn thực phẩm lên men có hệ vi khuẩn đa dạng hơn và chỉ dấu viêm thấp hơn nhóm ăn nhiều chất xơ.",
+   "quote": "a greater variety of gut bacteria and lower levels of chemical markers of inflammation"
+  },
+  {
+   "prompt": "Why do independent scientists urge caution about the trial?",
+   "options": [
+    "It was paid for by manufacturers",
+    "It involved few people",
+    "The volunteers did not follow the diet",
+    "It compared different countries"
+   ],
+   "answer": "It involved few people",
+   "why": "Bài nói nghiên cứu nhỏ.",
+   "quote": "The study was small, however"
+  },
+  {
+   "prompt": "Why might shop-bought products offer little benefit?",
+   "options": [
+    "They contain too much salt",
+    "They are made from unripe vegetables",
+    "They are heat-treated, which kills the live organisms",
+    "They are stored at warm temperatures"
+   ],
+   "answer": "They are heat-treated, which kills the live organisms",
+   "why": "Nhiều sản phẩm được xử lý nhiệt trước khi bán, giết các vi sinh vật được cho là có lợi.",
+   "quote": "heat-treated before sale, which kills the organisms"
+  },
+  {
+   "prompt": "What do some researchers suspect about any health improvement?",
+   "options": [
+    "It comes from the fibre in the food",
+    "It comes from the salt content",
+    "It comes from vitamins added later",
+    "It may be due to compounds made during fermentation rather than live microbes"
+   ],
+   "answer": "It may be due to compounds made during fermentation rather than live microbes",
+   "why": "Một số nhà nghiên cứu nghi hợp chất sinh ra trong lên men, không phải vi sinh sống, mới là nguyên nhân.",
+   "quote": "rather than the living microbes, may be responsible for any improvement"
+  },
+  {
+   "prompt": "What is the artisans' argument in paragraph 5?",
+   "options": [
+    "Wild microbes give richer and more varied flavours",
+    "Starter cultures are unsafe",
+    "Industrial products are cheaper",
+    "Wild ferments are quicker"
+   ],
+   "answer": "Wild microbes give richer and more varied flavours",
+   "why": "Thợ thủ công cho rằng vi sinh hoang dã tạo hương vị phong phú hơn.",
+   "quote": "relying on wild microbes gives richer, more varied flavours"
+  },
+  {
+   "prompt": "What did the survey of sourdough starters find?",
+   "options": [
+    "Starters from the same city were identical",
+    "Geography explained very little of the differences",
+    "Flour made no difference",
+    "The baker's hands made no difference"
+   ],
+   "answer": "Geography explained very little of the differences",
+   "why": "Khảo sát cho thấy địa lý giải thích rất ít; loại bột và tay thợ mới quan trọng.",
+   "quote": "geography explained very little"
+  },
+  {
+   "prompt": "Which common assumption does the survey challenge?",
+   "options": [
+    "Sourdough is healthier than yeast bread",
+    "Industrial cultures are better than wild ones",
+    "The local environment determines the microbes in bread",
+    "Bakers prefer wild yeast to starter cultures"
+   ],
+   "answer": "The local environment determines the microbes in bread",
+   "why": "Người ta thường cho rằng vi sinh đến từ vùng địa phương; khảo sát bác điều đó.",
+   "quote": "It is often assumed that those microbes come from the region"
+  },
+  {
+   "prompt": "In the last paragraph, 'a little scepticism is healthy' means that people should",
+   "options": [
+    "avoid fermented food",
+    "avoid trying new techniques",
+    "be more enthusiastic",
+    "question claims rather than accept them at once"
+   ],
+   "answer": "question claims rather than accept them at once",
+   "why": "'Scepticism' là thái độ hoài nghi, không tin ngay.",
+   "quote": "the evidence for its benefits should be judged by the same standards"
+  },
+  {
+   "prompt": "What is the writer's attitude in the final paragraph?",
+   "options": [
+    "Positive about fermentation but cautious about its claims",
+    "Dismissive of the home-fermenting trend",
+    "Convinced that it is a cure for illness",
+    "Worried about its safety"
+   ],
+   "answer": "Positive about fermentation but cautious about its claims",
+   "why": "Tác giả hiểu sự hào hứng nhưng nhắc đây không phải thuốc thần.",
+   "quote": "a craft with a long history, not a miracle cure"
+  },
+  {
+   "prompt": "What is the main point of paragraph 3?",
+   "options": [
+    "Fermentation reduces the cost of food",
+    "Fermentation changes taste and nutrition as well as preserving food",
+    "Fermented foods contain more sugar",
+    "Fermentation is unsafe for grain"
+   ],
+   "answer": "Fermentation changes taste and nutrition as well as preserving food",
+   "why": "Đoạn 3 mở bằng 'bảo quản chỉ là một phần': lên men còn đổi hương vị và dinh dưỡng.",
+   "quote": "Preservation is only part of the story."
+  },
+  {
+   "prompt": "What is the main purpose of paragraph 5?",
+   "options": [
+    "To recommend the use of starter cultures",
+    "To prove that wild fermentation is unsafe",
+    "To present a debate about methods and challenge a common assumption",
+    "To describe how bread is baked"
+   ],
+   "answer": "To present a debate about methods and challenge a common assumption",
+   "why": "Đoạn 5 nêu tranh luận công nghiệp – thủ công rồi bác bỏ giả định về vi sinh địa phương.",
+   "quote": "A different debate concerns the way fermentation is done."
+  }
+ ]
+}

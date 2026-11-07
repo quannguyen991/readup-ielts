@@ -10,6 +10,7 @@ import { Badge, Button, Icon } from '@/components/ui';
 import { useListen } from '@/components/hub/useListen';
 import { parsePastedTranscript } from '@/services/youtube/paste-transcript';
 import { parseVideoId, type TranscriptSentence } from '@/services/youtube/transcript';
+import { splitForDictation } from '@/services/youtube/dictation-drills';
 import { clock, indexAt } from '@/services/youtube/transcript-view';
 import { translateAllLines } from '@/services/youtube/translate-client';
 import { percentOf, SAY_PASS, scoreSaying, type SayResult } from '@/services/hub/say-it';
@@ -337,8 +338,11 @@ function PracticeView({
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const storedTranslations = useVideoTranscriptStore((s) => s.translations[videoId]);
 
-  const sentence = sentences[index] ?? { start: 0, end: 0, text: '' };
-  const currentTranslation = storedTranslations && storedTranslations[index] ? storedTranslations[index] : null;
+  // Mỗi lượt chép tối đa 9 từ, nên câu dài được chia thành nhiều lượt.
+  const drills = useMemo(() => splitForDictation(sentences), [sentences]);
+  const sentence = drills[index] ?? { start: 0, end: 0, text: '', parent: 0, whole: true };
+  // Bản dịch là của cả câu, nên chỉ hiện khi lượt chính là nguyên câu.
+  const currentTranslation = sentence.whole && storedTranslations ? storedTranslations[sentence.parent] ?? null : null;
   const board = useMemo(() => buildLetterBoard(sentence.text), [sentence.text]);
   const grade = useMemo(() => gradeLetters(board.answer, typed), [board.answer, typed]);
   const solved = grade.done || revealed;
@@ -397,16 +401,16 @@ function PracticeView({
   const replay = useCallback(() => play(sentence.start), [play, sentence.start]);
 
   const goNext = useCallback(() => {
-    if (index + 1 < sentences.length) {
+    if (index + 1 < drills.length) {
       setIndex(index + 1);
       setTyped('');
       setRevealed(false);
       setDoneCount((n) => n + 1);
       return;
     }
-    logQuestions(sentences.length);
-    setDoneCount(sentences.length);
-  }, [index, sentences.length, logQuestions]);
+    logQuestions(drills.length);
+    setDoneCount(drills.length);
+  }, [index, drills.length, logQuestions]);
 
   /*
     Phím tắt, đúng những phím ảnh tham chiếu dùng:
@@ -443,7 +447,7 @@ function PracticeView({
     return () => clearTimeout(timer);
   }, [index]);
 
-  const finished = doneCount >= sentences.length;
+  const finished = doneCount >= drills.length;
 
   if (sentences.length === 0) {
     return <PracticePrepView videoId={videoId} onReady={onReady} onExit={onExit} />;
@@ -462,7 +466,7 @@ function PracticeView({
         <View className="flex-row items-center gap-2">
           <View className="rounded-pill border border-brand-soft bg-white px-3.5 py-1.5">
             <Text className="font-strong text-label text-paper-body">
-              {index + 1} / {sentences.length}
+              {index + 1} / {drills.length}
             </Text>
           </View>
           <Button variant="brandOutline" size="sm" label={L('Đổi video', 'Change video')} onPress={onExit} />
@@ -531,7 +535,7 @@ function PracticeView({
               {L('Danh sách câu', 'Sentences')}
             </Text>
             <ScrollView style={{ maxHeight: 260 }}>
-              {sentences.map((s, i) => (
+              {drills.map((s, i) => (
                 <Pressable
                   key={i}
                   accessibilityRole="button"
@@ -556,13 +560,13 @@ function PracticeView({
                     >
                       {i <= index || i < doneCount ? s.text : '•••••  •••••  •••'}
                     </Text>
-                    {storedTranslations?.[i] && (i <= index || i < doneCount) ? (
+                    {s.whole && storedTranslations?.[s.parent] && (i <= index || i < doneCount) ? (
                       <Text
                         className="font-sans"
                         numberOfLines={1}
                         style={{ color: '#2E7D4F', opacity: 0.95, fontSize: 12 }}
                       >
-                        {storedTranslations[i]}
+                        {storedTranslations[s.parent]}
                       </Text>
                     ) : null}
                   </View>
@@ -579,7 +583,7 @@ function PracticeView({
 
             {/* Đường chạy cũ thành trận đấu: mặt đất là các câu của video, tia nạp đòn theo từ chép đúng. */}
             <BattleStrip
-              step={{ index, total: sentences.length }}
+              step={{ index, total: drills.length }}
               charge={{ value: solvedWordCount(board, grade), total: board.words.length, unit: L('từ', 'words') }}
             />
 
@@ -703,7 +707,7 @@ function PracticeView({
               ) : (
                 <Button
                   variant={solved ? 'brand' : 'brandOutline'}
-                  label={index + 1 < sentences.length ? L('Câu tiếp theo', 'Next sentence') : L('Xong', 'Done')}
+                  label={index + 1 < drills.length ? L('Câu tiếp theo', 'Next sentence') : L('Xong', 'Done')}
                   iconRight="arrow-right"
                   onPress={goNext}
                 />
@@ -857,7 +861,8 @@ function TranscriptView({
 
   return (
     <View className="gap-4 rounded-panel bg-paper-canvas p-3 lg:flex-row">
-      <View className="lg:w-[42%]">
+      {/* Video là phần chính của chế độ này: lớn hơn để xem rõ, phụ đề đứng cạnh để đối chiếu. */}
+      <View className="lg:w-[60%]">
         <View className="overflow-hidden rounded-card border border-brand-soft bg-white">
           <YoutubeFrame videoId={videoId} start={0} onTime={onTime} />
         </View>
@@ -891,7 +896,7 @@ function TranscriptView({
 
         {error ? <Text className="px-4 py-2 font-sans text-label text-[#B3261E]">{error}</Text> : null}
 
-        <ScrollView ref={scroller} style={{ maxHeight: 460 }} contentContainerStyle={{ padding: 8, gap: 4 }}>
+        <ScrollView ref={scroller} style={{ maxHeight: 520 }} contentContainerStyle={{ padding: 8, gap: 4 }}>
           {sentences.map((s, i) => {
             const on = i === active;
             return (

@@ -79,8 +79,8 @@ export async function generateModelEssay(input: {
       verified = { bandLow: score.bandLow, bandHigh: score.bandHigh };
       feedback =
         mid > targetBand
-          ? `Bài trước bị chấm ${score.bandLow}–${score.bandHigh}, CAO hơn mục tiêu ${targetBand}. Viết đơn giản hơn: bớt câu phức, dùng lại từ vựng nhiều hơn, để lại vài lỗi nhỏ.`
-          : `Bài trước bị chấm ${score.bandLow}–${score.bandHigh}, THẤP hơn mục tiêu ${targetBand}. Viết chắc hơn: thêm câu phức, đa dạng từ vựng, bảo đảm overview rõ.`;
+          ? `Bài trước bị chấm ${score.bandLow}, CAO hơn mục tiêu ${targetBand}. Viết đơn giản hơn: bớt câu phức, dùng lại từ vựng nhiều hơn, để lại vài lỗi nhỏ.`
+          : `Bài trước bị chấm ${score.bandLow}, THẤP hơn mục tiêu ${targetBand}. Viết chắc hơn: thêm câu phức, đa dạng từ vựng, bảo đảm overview rõ.`;
     }
 
     // Hết lượt viết lại mà vẫn lệch: trả bài cuối kèm band đo được, để màn hình

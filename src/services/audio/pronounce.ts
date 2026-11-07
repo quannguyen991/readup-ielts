@@ -105,7 +105,7 @@ function retryOnGesture(fn: () => void) {
   window.addEventListener('keydown', go, true);
 }
 
-export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean };
+export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean; /** Ghim một giọng (ví dụ Chính tả chỉ dùng Sarah): không lùi về giọng khác. */ voice?: ClipVoice };
 
 /** WAV im lặng ~0 mẫu, chỉ để "mở khoá" phần tử âm thanh trong lần chạm đầu tiên. */
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
@@ -270,10 +270,12 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   try {
     // Giọng mặc định trước; chưa có clip thì thử giọng Alice; vẫn thiếu mới tới giọng máy.
     if (isWeb) {
+      const pinned = opts.voice;
+      const voice = pinned ?? currentClipVoice();
       const url =
-        (await clips.find(currentClipVoice(), word)) ??
-        (currentClipVoice() !== 'aoede' ? await clips.find('aoede', word) : null) ??
-        (await clips.find(FALLBACK_CLIP_VOICE, word));
+        (await clips.find(voice, word)) ??
+        (!pinned && voice !== 'aoede' ? await clips.find('aoede', word) : null) ??
+        (!pinned ? await clips.find(FALLBACK_CLIP_VOICE, word) : null);
       if (my !== token) return;
       if (url) {
         const r = await playClipUrl(url, { rate, my });

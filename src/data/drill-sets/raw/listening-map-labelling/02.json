@@ -1,0 +1,205 @@
+{
+ "title": "Map labelling #2",
+ "topic": "holiday village · university campus · museum · botanical garden",
+ "context": "Narrator: Map 1. The holiday village.\nGuide: Welcome to the holiday village. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: Just inside the entrance you will find the tennis courts. It is the building straight ahead of you.\nGuide: As you come in through the main entrance, the campfire circle is the first building on your left.\nGuide: Just inside the entrance you will find the shop. It is the first building on your right.\nGuide: The games room is directly behind the shop, at the back of the site.\nGuide: The bike hire is directly behind the tennis courts, at the back of the site.\nGuide: The spa is directly behind the campfire circle, at the back of the site.\nGuide: That covers everything. Enjoy your visit.\nNarrator: Map 2. The university campus.\nGuide: Welcome to the university campus. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: Just inside the entrance you will find the canteen. It is the building straight ahead of you.\nGuide: Just inside the entrance you will find the health centre. It is the first building on your left.\nGuide: As you come in through the main entrance, the sports hall is the first building on your right.\nGuide: The language lab is directly behind the sports hall, at the back of the site.\nGuide: The art studio is directly behind the canteen, at the back of the site.\nGuide: The student union is directly behind the health centre, at the back of the site.\nGuide: That covers everything. Enjoy your visit.\nNarrator: Map 3. The museum.\nGuide: Welcome to the museum. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: Just inside the entrance you will find the archive room. It is the first building on your right.\nGuide: Just inside the entrance you will find the cinema. It is the first building on your left.\nGuide: As you come in through the main entrance, the cafeteria is the building straight ahead of you.\nGuide: The temporary exhibition is directly behind the archive room, at the back of the site.\nGuide: The maritime gallery is directly behind the cafeteria, at the back of the site.\nGuide: The costume gallery is right next to the maritime gallery, on its left side.\nGuide: That covers everything. Enjoy your visit.\nNarrator: Map 4. The botanical garden.\nGuide: Welcome to the botanical garden. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: As you come in through the main entrance, the rose garden is the building straight ahead of you.\nGuide: As you come in through the main entrance, the glasshouse is the first building on your left.\nGuide: Just inside the entrance you will find the sculpture lawn. It is the first building on your right.\nGuide: The visitor centre is directly behind the rose garden, at the back of the site.\nGuide: The tea room is right next to the visitor centre, on its left side.\nGuide: The souvenir stall is right next to the visitor centre, on its right side.\nGuide: That covers everything. Enjoy your visit.",
+ "options": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F"
+ ],
+ "maps": [
+  {
+   "title": "Map 1: Holiday village",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  },
+  {
+   "title": "Map 2: University campus",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  },
+  {
+   "title": "Map 3: Museum",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  },
+  {
+   "title": "Map 4: Botanical garden",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the tennis courts?",
+   "answer": "E",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the tennis courts. It is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "Just inside the entrance you will find the tennis courts. It is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the campfire circle?",
+   "answer": "D",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the campfire circle is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "As you come in through the main entrance, the campfire circle is the first building on your left."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the shop?",
+   "answer": "F",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the shop. It is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "Just inside the entrance you will find the shop. It is the first building on your right."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the bike hire?",
+   "answer": "B",
+   "why": "Người dẫn nói: “The bike hire is directly behind the tennis courts, at the back of the site.” → ô B (phía sau ở giữa).",
+   "quote": "The bike hire is directly behind the tennis courts, at the back of the site."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the spa?",
+   "answer": "A",
+   "why": "Người dẫn nói: “The spa is directly behind the campfire circle, at the back of the site.” → ô A (phía sau bên trái).",
+   "quote": "The spa is directly behind the campfire circle, at the back of the site."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the canteen?",
+   "answer": "E",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the canteen. It is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "Just inside the entrance you will find the canteen. It is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the health centre?",
+   "answer": "D",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the health centre. It is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "Just inside the entrance you will find the health centre. It is the first building on your left."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the sports hall?",
+   "answer": "F",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the sports hall is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "As you come in through the main entrance, the sports hall is the first building on your right."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the art studio?",
+   "answer": "B",
+   "why": "Người dẫn nói: “The art studio is directly behind the canteen, at the back of the site.” → ô B (phía sau ở giữa).",
+   "quote": "The art studio is directly behind the canteen, at the back of the site."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the student union?",
+   "answer": "A",
+   "why": "Người dẫn nói: “The student union is directly behind the health centre, at the back of the site.” → ô A (phía sau bên trái).",
+   "quote": "The student union is directly behind the health centre, at the back of the site."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the archive room?",
+   "answer": "F",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the archive room. It is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "Just inside the entrance you will find the archive room. It is the first building on your right."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the cinema?",
+   "answer": "D",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the cinema. It is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "Just inside the entrance you will find the cinema. It is the first building on your left."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the cafeteria?",
+   "answer": "E",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the cafeteria is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "As you come in through the main entrance, the cafeteria is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the temporary exhibition?",
+   "answer": "C",
+   "why": "Người dẫn nói: “The temporary exhibition is directly behind the archive room, at the back of the site.” → ô C (phía sau bên phải).",
+   "quote": "The temporary exhibition is directly behind the archive room, at the back of the site."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the costume gallery?",
+   "answer": "A",
+   "why": "Người dẫn nói: “The costume gallery is right next to the maritime gallery, on its left side.” → ô A (phía sau bên trái).",
+   "quote": "The costume gallery is right next to the maritime gallery, on its left side."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the rose garden?",
+   "answer": "E",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the rose garden is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "As you come in through the main entrance, the rose garden is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the glasshouse?",
+   "answer": "D",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the glasshouse is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "As you come in through the main entrance, the glasshouse is the first building on your left."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the sculpture lawn?",
+   "answer": "F",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the sculpture lawn. It is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "Just inside the entrance you will find the sculpture lawn. It is the first building on your right."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the visitor centre?",
+   "answer": "B",
+   "why": "Người dẫn nói: “The visitor centre is directly behind the rose garden, at the back of the site.” → ô B (phía sau ở giữa).",
+   "quote": "The visitor centre is directly behind the rose garden, at the back of the site."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the souvenir stall?",
+   "answer": "C",
+   "why": "Người dẫn nói: “The souvenir stall is right next to the visitor centre, on its right side.” → ô C (phía sau bên phải).",
+   "quote": "The souvenir stall is right next to the visitor centre, on its right side."
+  }
+ ]
+}

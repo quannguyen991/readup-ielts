@@ -1,0 +1,287 @@
+{
+ "title": "Writing About a Victorian Novel",
+ "topic": "Literature essay planning",
+ "context": "Ibrahim: I finished rereading it last night. The ending still surprised me, even the second time.\nChloe: Me too. I stayed up until two in the morning. Right, before Dr Hughes comes, let's agree what we think of the main characters in Great Expectations. Pip first.\nIbrahim: He changes the most, doesn't he? He starts as a village boy and ends up as someone completely different.\nChloe: Yes. Although I'd say Estella changes more at the end. No, on reflection it's Pip, because the whole book is about his development.\nIbrahim: And Estella?\nChloe: She's cruel, but Miss Havisham brought her up to be cruel, so it's hard to blame her.\nIbrahim: Miss Havisham herself is stuck in the past. She's still wearing her wedding dress decades later.\nChloe: Magwitch is the most interesting. First he looks frightening, then he turns out to be much more complicated. He's even kind.\nIbrahim: And Joe is the one person who never lies. He's the most honest of them all.\nChloe: I thought he was only a minor figure, but you're right, he matters a great deal.\nDr Hughes: Hello, both. I've read your essay plan. The introduction names your topic, but it doesn't state an argument. You need one clear sentence saying what you will prove.\nChloe: Should the plot summary come at the end instead?\nDr Hughes: No, drop it altogether. Now, the first body paragraph. It makes a good point, but there's hardly any evidence from the text. You need at least three quotations.\nIbrahim: We have plenty of quotations in the second paragraph.\nDr Hughes: They are far too long, some of them half a page. Trim each to a line or two. The conclusion is too general. Saying that Dickens was a great writer tells me nothing. Say what your argument has shown. The title, though, is fine as it is. Don't change it.\nIbrahim: Next, the sources. The review from 1861 is interesting, but it was written so long ago that it doesn't reflect how we read the book today.\nChloe: The biography is too general. It's mainly about his whole life, with only a few pages on this novel.\nIbrahim: The film adaptation changes the ending, so it contradicts the book. I wouldn't use it as evidence.\nChloe: There's a critic's article I like, but it only covers the first half of the novel.\nIbrahim: I wondered if she was biased, but she seems balanced. And the textbook you mentioned is lovely, but the library doesn't have it.\nDr Hughes: Let's sort out the practical side. Chloe, will you find the original review?\nChloe: I can try.\nIbrahim: Don't bother, Dr Hughes has a copy.\nDr Hughes: That's right. I'll send it to you. Chloe, book a study room for Thursday. Ibrahim, order the textbook from another library.\nIbrahim: Okay. And who reads the draft?\nDr Hughes: I will. Chloe's sister has offered to proofread it, and the librarian will print the copies for the seminar.\nDr Hughes: The seminar is on Friday at ten, so please arrive a few minutes early to set up. And remember that a good essay answers the question it is asked, not the one you wish you had been given.\nChloe: Brilliant, thank you. We will keep that in mind.",
+ "questions": [
+  {
+   "prompt": "What do the students say about Pip?",
+   "options": [
+    "She is trapped by the past",
+    "She is cruel because of how she was brought up",
+    "He is the most honest character",
+    "He changes the most",
+    "He is more complicated than he first appears",
+    "He is only a minor figure"
+   ],
+   "answer": "He changes the most",
+   "why": "Pip thay đổi nhiều nhất; Chloe từng nghĩ Estella nhưng đổi ý vì cả cuốn sách là sự trưởng thành của Pip.",
+   "quote": "it's Pip, because the whole book is about his development"
+  },
+  {
+   "prompt": "What do the students say about Estella?",
+   "options": [
+    "She is trapped by the past",
+    "She is cruel because of how she was brought up",
+    "He is the most honest character",
+    "He changes the most",
+    "He is more complicated than he first appears",
+    "He is only a minor figure"
+   ],
+   "answer": "She is cruel because of how she was brought up",
+   "why": "Estella tàn nhẫn vì được Miss Havisham nuôi dạy như vậy.",
+   "quote": "brought her up to be cruel"
+  },
+  {
+   "prompt": "What do the students say about Miss Havisham?",
+   "options": [
+    "She is trapped by the past",
+    "She is cruel because of how she was brought up",
+    "He is the most honest character",
+    "He changes the most",
+    "He is more complicated than he first appears",
+    "He is only a minor figure"
+   ],
+   "answer": "She is trapped by the past",
+   "why": "Miss Havisham mắc kẹt trong quá khứ, vẫn mặc váy cưới sau nhiều thập kỷ.",
+   "quote": "stuck in the past"
+  },
+  {
+   "prompt": "What do the students say about Magwitch?",
+   "options": [
+    "She is trapped by the past",
+    "She is cruel because of how she was brought up",
+    "He is the most honest character",
+    "He changes the most",
+    "He is more complicated than he first appears",
+    "He is only a minor figure"
+   ],
+   "answer": "He is more complicated than he first appears",
+   "why": "Ông trông đáng sợ lúc đầu nhưng hoá ra phức tạp hơn nhiều, thậm chí tốt bụng.",
+   "quote": "much more complicated"
+  },
+  {
+   "prompt": "What do the students say about Joe?",
+   "options": [
+    "She is trapped by the past",
+    "She is cruel because of how she was brought up",
+    "He is the most honest character",
+    "He changes the most",
+    "He is more complicated than he first appears",
+    "He is only a minor figure"
+   ],
+   "answer": "He is the most honest character",
+   "why": "Joe là người duy nhất không nói dối. Bẫy: Chloe từng nghĩ ông chỉ là nhân vật phụ nhưng đã sửa.",
+   "quote": "never lies"
+  },
+  {
+   "prompt": "What does Dr Hughes say about the introduction?",
+   "options": [
+    "It must state an argument clearly",
+    "It should be shorter",
+    "It needs more evidence from the text",
+    "It is too general",
+    "It is fine as it is",
+    "It should be moved to the end"
+   ],
+   "answer": "It must state an argument clearly",
+   "why": "Phần mở bài nêu chủ đề nhưng chưa nêu luận điểm.",
+   "quote": "it doesn't state an argument"
+  },
+  {
+   "prompt": "What does Dr Hughes say about the first body paragraph?",
+   "options": [
+    "It must state an argument clearly",
+    "It should be shorter",
+    "It needs more evidence from the text",
+    "It is too general",
+    "It is fine as it is",
+    "It should be moved to the end"
+   ],
+   "answer": "It needs more evidence from the text",
+   "why": "Đoạn thân bài đầu có ý hay nhưng gần như không có dẫn chứng từ văn bản.",
+   "quote": "hardly any evidence from the text"
+  },
+  {
+   "prompt": "What does Dr Hughes say about the quotations?",
+   "options": [
+    "It must state an argument clearly",
+    "It should be shorter",
+    "It needs more evidence from the text",
+    "It is too general",
+    "It is fine as it is",
+    "It should be moved to the end"
+   ],
+   "answer": "It should be shorter",
+   "why": "Các trích dẫn quá dài, có chỗ nửa trang; rút còn một hai dòng.",
+   "quote": "far too long"
+  },
+  {
+   "prompt": "What does Dr Hughes say about the conclusion?",
+   "options": [
+    "It must state an argument clearly",
+    "It should be shorter",
+    "It needs more evidence from the text",
+    "It is too general",
+    "It is fine as it is",
+    "It should be moved to the end"
+   ],
+   "answer": "It is too general",
+   "why": "Kết luận quá chung chung; nói Dickens là nhà văn vĩ đại chẳng nói lên điều gì.",
+   "quote": "The conclusion is too general"
+  },
+  {
+   "prompt": "What does Dr Hughes say about the title?",
+   "options": [
+    "It must state an argument clearly",
+    "It should be shorter",
+    "It needs more evidence from the text",
+    "It is too general",
+    "It is fine as it is",
+    "It should be moved to the end"
+   ],
+   "answer": "It is fine as it is",
+   "why": "Tiêu đề ổn, không đổi. Bẫy: chuyển tóm tắt cốt truyện xuống cuối bị bác, bỏ hẳn.",
+   "quote": "is fine as it is"
+  },
+  {
+   "prompt": "What is the problem with the review from 1861?",
+   "options": [
+    "It was written too long ago",
+    "It might be biased",
+    "It is too general",
+    "The library does not have it",
+    "It covers only part of the novel",
+    "It contradicts the book"
+   ],
+   "answer": "It was written too long ago",
+   "why": "Bài điểm sách viết quá lâu, không phản ánh cách đọc ngày nay.",
+   "quote": "written so long ago"
+  },
+  {
+   "prompt": "What is the problem with the biography?",
+   "options": [
+    "It was written too long ago",
+    "It might be biased",
+    "It is too general",
+    "The library does not have it",
+    "It covers only part of the novel",
+    "It contradicts the book"
+   ],
+   "answer": "It is too general",
+   "why": "Tiểu sử viết về cả cuộc đời, chỉ vài trang về cuốn tiểu thuyết này.",
+   "quote": "too general"
+  },
+  {
+   "prompt": "What is the problem with the film adaptation?",
+   "options": [
+    "It was written too long ago",
+    "It might be biased",
+    "It is too general",
+    "The library does not have it",
+    "It covers only part of the novel",
+    "It contradicts the book"
+   ],
+   "answer": "It contradicts the book",
+   "why": "Phim đổi kết thúc nên mâu thuẫn với sách, không dùng làm bằng chứng.",
+   "quote": "contradicts the book"
+  },
+  {
+   "prompt": "What is the problem with the critic's article?",
+   "options": [
+    "It was written too long ago",
+    "It might be biased",
+    "It is too general",
+    "The library does not have it",
+    "It covers only part of the novel",
+    "It contradicts the book"
+   ],
+   "answer": "It covers only part of the novel",
+   "why": "Bài của nhà phê bình chỉ bàn nửa đầu tiểu thuyết. Bẫy: Ibrahim nghi bà thiên vị nhưng thấy cân bằng.",
+   "quote": "only covers the first half of the novel"
+  },
+  {
+   "prompt": "What is the problem with the textbook?",
+   "options": [
+    "It was written too long ago",
+    "It might be biased",
+    "It is too general",
+    "The library does not have it",
+    "It covers only part of the novel",
+    "It contradicts the book"
+   ],
+   "answer": "The library does not have it",
+   "why": "Giáo trình hay nhưng thư viện không có.",
+   "quote": "the library doesn't have it"
+  },
+  {
+   "prompt": "What will Chloe do?",
+   "options": [
+    "Find the original review",
+    "Read the draft",
+    "Proofread the essay",
+    "Order a book from another library",
+    "Book a study room",
+    "Print the copies"
+   ],
+   "answer": "Book a study room",
+   "why": "Chloe đặt phòng học cho thứ Năm. Bẫy: đề nghị tìm bài điểm sách bị bác vì Dr Hughes có bản sao.",
+   "quote": "book a study room for Thursday"
+  },
+  {
+   "prompt": "What will Ibrahim do?",
+   "options": [
+    "Find the original review",
+    "Read the draft",
+    "Proofread the essay",
+    "Order a book from another library",
+    "Book a study room",
+    "Print the copies"
+   ],
+   "answer": "Order a book from another library",
+   "why": "Ibrahim đặt sách giáo trình từ thư viện khác.",
+   "quote": "order the textbook from another library"
+  },
+  {
+   "prompt": "What will Dr Hughes do?",
+   "options": [
+    "Find the original review",
+    "Read the draft",
+    "Proofread the essay",
+    "Order a book from another library",
+    "Book a study room",
+    "Print the copies"
+   ],
+   "answer": "Read the draft",
+   "why": "Dr Hughes sẽ đọc bản nháp.",
+   "quote": "I will"
+  },
+  {
+   "prompt": "What will Chloe's sister do?",
+   "options": [
+    "Find the original review",
+    "Read the draft",
+    "Proofread the essay",
+    "Order a book from another library",
+    "Book a study room",
+    "Print the copies"
+   ],
+   "answer": "Proofread the essay",
+   "why": "Chị gái của Chloe nhận đọc soát lỗi.",
+   "quote": "proofread it"
+  },
+  {
+   "prompt": "What will the librarian do?",
+   "options": [
+    "Find the original review",
+    "Read the draft",
+    "Proofread the essay",
+    "Order a book from another library",
+    "Book a study room",
+    "Print the copies"
+   ],
+   "answer": "Print the copies",
+   "why": "Thủ thư sẽ in các bản cho buổi seminar.",
+   "quote": "print the copies for the seminar"
+  }
+ ]
+}

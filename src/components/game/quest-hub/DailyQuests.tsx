@@ -7,18 +7,18 @@
  * hiện "—" chứ không bịa 0%.
  */
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import { useShallow } from 'zustand/react/shallow';
 
 import { Label } from '@/components/illust/Sticker';
 import { Motion } from '@/components/illust/CuteMore';
-import { Icon } from '@/components/ui/Icon';
 import { dailyQuests, EMPTY_DAY, ITEMS } from '@/services/game/rules';
 import { dateKey } from '@/services/gamification/points';
 import { useGameStore } from '@/store/useGameStore';
 import { Bar, GAP, HUB, StatBox, WEB } from './kit';
 import { useL } from '@/i18n/useL';
 import { itemKindName, questTitle } from '@/components/game/game-labels';
+import { ItemIcon } from '@/components/game/ItemIcon';
 
 function useToday() {
   const g = useGameStore(useShallow((s) => ({ day: s.day, today: s.today, claimed: s.claimed, claimQuest: s.claimQuest })));
@@ -43,7 +43,6 @@ export function DailyQuests() {
         const done = value >= q.goal;
         const got = claimed.includes(q.id);
         const ready = done && !got;
-        const reward = `+${q.rewardXp} XP${q.rewardItem ? ` · ${ITEMS[q.rewardItem].glyph} ${itemKindName(q.rewardItem, ITEMS[q.rewardItem].name, locale)}` : ''}`;
         const title = questTitle(q, locale);
         return (
           <View
@@ -73,10 +72,8 @@ export function DailyQuests() {
                 borderColor: 'rgba(205, 193, 172,0.4)',
               }}
             >
-              {got ? (
-                <Icon name="check" size={18} color="#FFFFFF" strokeWidth={3} />
-              ) : ready ? (
-                <Icon name="gift" size={17} color={HUB.ctaInk} strokeWidth={2.4} />
+              {got || ready ? (
+                <Image source={{ uri: got ? '/icons/chest-open.png' : '/icons/chest-closed.png' }} resizeMode="contain" style={{ width: 28, height: 28 }} accessible={false} />
               ) : (
                 <Text className="font-heavy" style={{ fontSize: 11, color: HUB.muted }}>
                   {Math.round((value / q.goal) * 100)}%
@@ -107,9 +104,20 @@ export function DailyQuests() {
                 <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.green : HUB.muted, fontVariant: ['tabular-nums'] }}>
                   {got ? L('Đã nhận thưởng', 'Reward claimed') : `${value}/${q.goal}${done ? L(' · xong, bấm Nhận', ' · done, tap Claim') : ''}`}
                 </Text>
-                <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>
-                  {reward}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                  <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>
+                    {`+${q.rewardXp} XP`}
+                  </Text>
+                  {q.rewardItem ? (
+                    <>
+                      <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>·</Text>
+                      <ItemIcon kind={q.rewardItem} size={16} />
+                      <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>
+                        {itemKindName(q.rewardItem, ITEMS[q.rewardItem].name, locale)}
+                      </Text>
+                    </>
+                  ) : null}
+                </View>
               </View>
             </View>
 

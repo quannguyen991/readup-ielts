@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 import Svg, { Rect } from 'react-native-svg';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
+import { ItemIcon } from './ItemIcon';
 import { PixelSprite } from './PixelSprite';
 import { HeroSprite } from './HeroSprite';
 import { ENEMY_SPRITE } from './sprites';
@@ -484,7 +485,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
                 onPress={() => tryItem(k)}
                 style={{ flexShrink: 1, flexBasis: 220, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 9, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.07)', opacity: (items[k] ?? 0) > 0 ? 1 : 0.45 }}
               >
-                <Text style={{ fontSize: 22 }}>{ITEMS[k].glyph}</Text>
+                <ItemIcon kind={k} size={34} />
                 <View style={{ flex: 1 }}>
                   <Text className="font-strong" style={{ fontSize: 13, color: '#2A1808' }}>
                     {itemKindName(k, ITEMS[k].name, locale)} <Text style={{ color: GOLD }}>×{items[k] ?? 0}</Text>

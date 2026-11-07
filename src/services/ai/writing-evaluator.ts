@@ -5,6 +5,8 @@ import { countQuoteMatches, writingReceipt, type VerificationReceipt } from './v
 import { withRetry } from './retry';
 import { anchorAnnotations, type RawAnnotation } from '@/services/writing/annotate';
 import { ieltsRound } from '@/services/speaking/grade';
+import { countWords } from '@/lib/writing/word-count';
+import { findVerbatim } from '@/lib/writing/quote-match';
 import type {
   CriterionDetail,
   CriterionKey,
@@ -102,8 +104,6 @@ ${RUBRIC}
 
 Trả về JSON THUẦN, không markdown fence, không lời dẫn:
 {
-  "bandLow": number,        // cận dưới, bội số của 0.5
-  "bandHigh": number,       // cận trên, bội số của 0.5, cách bandLow tối đa 1.0
   "criteria": {
     "task":      { "band": number, "evidenceVi": string, "gapVi": string, "nextStepVi": string, "quotes": string[] },
     "coherence": { "band": number, "evidenceVi": string, "gapVi": string, "nextStepVi": string, "quotes": string[] },
@@ -131,7 +131,7 @@ QUY TẮC CHO PHẦN CHI TIẾT — đây là phần người học đọc kỹ 
    Chép sai một ký tự là dẫn chứng vô giá trị. Nếu không tìm được thì để mảng rỗng.
 5. Viết như đang nói với một người cụ thể, xưng "bài của bạn". Không viết như báo cáo.
 
-BẮT BUỘC trả KHOẢNG band chứ không phải một số cứng: chấm tự động không đủ tin cậy để chốt một con số.`;
+Mỗi tiêu chí là MỘT số band. KHÔNG ghi band tổng: app tính band tổng từ bốn tiêu chí.`;
 
 const ANNOTATE_SYSTEM = `Bạn là giám khảo IELTS đang đánh dấu lỗi trong bài viết của học viên.
 
@@ -223,7 +223,7 @@ export async function evaluateWriting(input: {
 export function finalizeBands(result: WritingEvaluationResult, minWords: number): WritingEvaluationResult {
   const underLength = minWords > 0 && result.wordCount < minWords;
   const task = underLength ? Math.min(result.taskBand, 6) : result.taskBand;
-  const overall = ieltsRound((task + result.coherenceBand + result.lexicalBand + result.grammarBand) / 4);
+  const overall = overallOf({ ...result, taskBand: task });
   return {
     ...result,
     taskBand: task,
@@ -232,6 +232,11 @@ export function finalizeBands(result: WritingEvaluationResult, minWords: number)
     bandHigh: overall,
     minWords,
   };
+}
+
+/** Band tổng: trung bình bốn tiêu chí, làm tròn theo IELTS. Một số duy nhất. */
+function overallOf(c: Pick<WritingEvaluationResult, 'taskBand' | 'coherenceBand' | 'lexicalBand' | 'grammarBand'>): number {
+  return ieltsRound((c.taskBand + c.coherenceBand + c.lexicalBand + c.grammarBand) / 4);
 }
 
 /** Mô tả đề cho model, kèm dữ liệu biểu đồ để nó kiểm được số liệu trong bài. */
@@ -306,20 +311,16 @@ export function buildResult(
     grammarBand: detail.grammar.band,
   };
 
-  let low = band(s.bandLow);
-  let high = band(s.bandHigh);
-  if (high < low) [low, high] = [high, low];
-  // Model hay trả một số cứng dù đã bảo trả khoảng. Chấm tự động không đủ tin
-  // cậy để chốt một con số, nên tự nới ra nửa bậc.
-  if (high === low) high = Math.min(9, low + 0.5);
+  // Band tổng không đọc từ model: nó là số tính từ bốn tiêu chí.
+  const overall = overallOf(criteria);
 
   const rawAnnotations = readAnnotations(annotated);
   const anchored = anchorAnnotations(bodyText, rawAnnotations);
 
   return {
     ...criteria,
-    bandLow: low,
-    bandHigh: high,
+    bandLow: overall,
+    bandHigh: overall,
     summaryVi: typeof s.summaryVi === 'string' ? s.summaryVi : '',
     strengths: stringList(s.strengths),
     improvements: stringList(s.improvements),
@@ -405,29 +406,18 @@ function readCriteria(
  */
 function verifiedQuotes(v: unknown, bodyText: string): string[] {
   if (!Array.isArray(v)) return [];
-  const hay = bodyText.toLowerCase();
   const out: string[] = [];
   for (const item of v) {
     if (typeof item !== 'string') continue;
     const q = item.trim();
     if (q.length < 2) continue;
-    if (!hay.includes(q.toLowerCase())) continue;
-    out.push(q);
+    // Trả về đúng đoạn trong bài, không phải bản model chép lại — để người học tìm được nó.
+    const verbatim = findVerbatim(q, bodyText);
+    if (verbatim == null || out.includes(verbatim)) continue;
+    out.push(verbatim);
     if (out.length === 3) break;
   }
   return out;
-}
-
-/**
- * Đếm từ bằng code chứ không hỏi model.
- *
- * Số từ là thứ kiểm được tuyệt đối, mà nó lại quyết định trực tiếp Task Response
- * (thiếu số từ tối thiểu là trừ thẳng). Hỏi model một con số đếm được là tự chuốc
- * lấy rủi ro không có lợi ích gì.
- */
-export function countWords(text: string): number {
-  const trimmed = text.trim();
-  return trimmed === '' ? 0 : trimmed.split(/\s+/).length;
 }
 
 const CATEGORIES = new Set(['grammar', 'lexis', 'cohesion', 'expression', 'task']);

@@ -1,0 +1,127 @@
+{
+ "title": "Why Did the Classic Maya Cities Fall?",
+ "topic": "Ancient civilisation and environmental stress",
+ "context": "The Classic Maya civilisation, centred in the lowlands of present-day Mexico, Guatemala and Belize, reached its height between about AD 250 and 900. Its cities, such as Tikal and Calakmul, contained pyramids, palaces and ball courts, and supported populations of tens of thousands of people. The Maya developed a sophisticated writing system, an accurate calendar and advanced mathematics, including the concept of zero, centuries before it was widely used in Europe. Their astronomers tracked the movements of Venus with remarkable precision, and priests used this knowledge to guide religious ceremonies and the timing of wars.\n\nBetween about 800 and 950, however, many of the great southern cities were abandoned. Building ceased, monuments stopped carrying dated inscriptions, and the population fell sharply. The collapse has fascinated scholars for more than a century, and early theories blamed a single cause, such as invasion or disease. Today most researchers argue that several pressures combined. Intensive farming had stripped forests from the hills, causing soil erosion, while a growing population placed heavy demands on a fragile environment that had little room for error.\n\nDrought appears to have played a central role. Scientists have analysed sediment from Lake Chichancanab and mineral deposits in caves, which record rainfall over thousands of years. The evidence shows a series of severe dry spells during the ninth and tenth centuries, some lasting a decade. Because the Maya relied on rainfall and stored water in reservoirs rather than using large rivers, they were especially vulnerable. When harvests failed repeatedly, rulers lost their authority, since their claim to power rested on the ability to bring rain through ritual. Later droughts, including one in the sixteenth century, show that the regional climate has long been unpredictable, and farmers there still plan their planting around the arrival of the rains.\n\nWarfare added to the strain. Inscriptions record growing conflict between rival city-states, and archaeologists have found fortifications built in haste around some centres. Trade routes were disrupted, which prevented cities from importing food when local crops failed. People did not vanish overnight; instead they moved gradually to the north of the Yucatán peninsula and to the coast, where cities such as Chichen Itza flourished for another two centuries before declining in their turn. Some scholars point out that northern settlements had access to underground water sources called cenotes, which gave them an advantage during dry years.\n\nThe Maya did not disappear. About six million people in Mexico and Central America still speak Mayan languages today, and many follow traditions that date back to their ancestors. Archaeologists have also learned that earlier estimates of the ancient population were too low, since airborne laser scanning has revealed thousands of previously unknown structures hidden beneath the forest canopy, including roads, farms and fortifications. These discoveries suggest that the Maya landscape was far more densely settled than anyone had realised.",
+ "questions": [
+  {
+   "prompt": "The Classic Maya heartland was the ____ of what are now Mexico, Guatemala and Belize.",
+   "answer": "lowlands",
+   "why": "Trung tâm văn minh là vùng đất thấp.",
+   "quote": "lowlands of present-day Mexico"
+  },
+  {
+   "prompt": "Maya cities featured pyramids, palaces and ball ____.",
+   "answer": "courts",
+   "why": "Có cả sân chơi bóng (ball courts).",
+   "quote": "ball courts"
+  },
+  {
+   "prompt": "Maya mathematics included the idea of ____, long before Europe used it widely.",
+   "answer": "zero",
+   "why": "Người Maya có khái niệm số không.",
+   "quote": "concept of zero"
+  },
+  {
+   "prompt": "Maya astronomers followed the path of ____ with great accuracy.",
+   "answer": "Venus",
+   "why": "Họ theo dõi sao Kim.",
+   "quote": "movements of Venus"
+  },
+  {
+   "prompt": "Priests used astronomical knowledge to plan ceremonies and the timing of ____.",
+   "answer": "wars",
+   "why": "Kiến thức thiên văn dùng để chọn thời điểm chiến tranh.",
+   "quote": "timing of wars"
+  },
+  {
+   "prompt": "Many of the large southern cities were ____ between about 800 and 950.",
+   "answer": "abandoned",
+   "why": "Nhiều thành phố bị bỏ hoang.",
+   "quote": "were abandoned"
+  },
+  {
+   "prompt": "Monuments no longer carried dated ____ after the decline began.",
+   "answer": "inscriptions",
+   "why": "Tượng đài không còn khắc niên đại.",
+   "quote": "dated inscriptions"
+  },
+  {
+   "prompt": "Early explanations of the collapse blamed invasion or ____.",
+   "answer": "disease",
+   "why": "Giả thuyết cũ: xâm lược hoặc dịch bệnh.",
+   "quote": "invasion or disease"
+  },
+  {
+   "prompt": "Heavy farming had removed the ____ from hillsides.",
+   "answer": "forests",
+   "why": "Canh tác dồn dập phá rừng.",
+   "quote": "stripped forests"
+  },
+  {
+   "prompt": "The loss of trees led to ____ of the soil.",
+   "answer": "erosion",
+   "why": "Gây xói mòn đất.",
+   "quote": "soil erosion"
+  },
+  {
+   "prompt": "Scientists studied sediment taken from Lake ____ to learn about past climate.",
+   "answer": "Chichancanab",
+   "why": "Trầm tích hồ Chichancanab.",
+   "quote": "Lake Chichancanab"
+  },
+  {
+   "prompt": "Cave mineral deposits keep a record of ____ over thousands of years.",
+   "answer": "rainfall",
+   "why": "Khoáng vật trong hang ghi lại lượng mưa.",
+   "quote": "record rainfall"
+  },
+  {
+   "prompt": "The worst dry periods happened in the ninth and ____ centuries.",
+   "answer": "tenth",
+   "why": "Hạn hán nặng ở thế kỷ chín và mười.",
+   "quote": "ninth and tenth centuries"
+  },
+  {
+   "prompt": "The Maya kept water in ____ instead of relying on big rivers.",
+   "answer": "reservoirs",
+   "why": "Dự trữ nước trong hồ chứa.",
+   "quote": "stored water in reservoirs"
+  },
+  {
+   "prompt": "After repeated crop failures, kings lost their ____ over the people.",
+   "answer": "authority",
+   "why": "Vua mất quyền uy.",
+   "quote": "lost their authority"
+  },
+  {
+   "prompt": "Defences were put up in ____ around some cities.",
+   "answer": "haste",
+   "why": "Công sự dựng vội vàng.",
+   "quote": "built in haste"
+  },
+  {
+   "prompt": "Because ____ were disrupted, cities could not bring in food.",
+   "answer": "Trade routes",
+   "why": "Tuyến thương mại bị gián đoạn.",
+   "quote": "Trade routes were disrupted"
+  },
+  {
+   "prompt": "Many people migrated towards the north of the ____ peninsula.",
+   "answer": "Yucatán",
+   "why": "Họ di cư lên phía bắc bán đảo Yucatán.",
+   "quote": "Yucatán peninsula"
+  },
+  {
+   "prompt": "About six million people still speak ____ languages.",
+   "answer": "Mayan",
+   "why": "Khoảng sáu triệu người vẫn nói tiếng Maya.",
+   "quote": "still speak Mayan languages"
+  },
+  {
+   "prompt": "Airborne laser ____ has shown thousands of hidden structures under the trees.",
+   "answer": "scanning",
+   "why": "Quét laser từ trên không phát hiện công trình ẩn.",
+   "quote": "laser scanning"
+  }
+ ]
+}

@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 8: Language, Learning and Communication",
+ "topic": "How people learn, speak and share information",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "Children usually acquire their first language without formal teaching. By the age of one they recognise the sounds of their parents' speech, and by two many are combining words. Remarkably, they make systematic errors, such as saying goed instead of went, which shows that they are discovering rules rather than simply repeating what they hear. Adults rarely correct these mistakes explicitly, yet children correct themselves in time.",
+   "options": [
+    "The first words spoken by babies",
+    "Parents' role in teaching speech",
+    "Common mistakes in school grammar",
+    "Differences between languages",
+    "How adults learn second languages",
+    "Evidence that children discover grammatical rules for themselves"
+   ],
+   "answer": "Evidence that children discover grammatical rules for themselves",
+   "why": "Ý chính: lỗi có hệ thống chứng tỏ trẻ tự khám phá quy tắc. Các lựa chọn khác quá rộng hoặc lệch.",
+   "quote": "discovering rules"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Spaced repetition improves learning by reviewing material at increasing intervals. Instead of studying a list of words for three hours the night before a test, a learner revisits it after a day, then after three days, then after a week. Each recall strengthens memory, and difficult items appear more often. Apps now schedule these reviews automatically.",
+   "options": [
+    "A review schedule that makes memory last longer",
+    "Apps for language learners",
+    "Revising before examinations",
+    "Learning long lists of words",
+    "The difficulty of memorising",
+    "Studying at night"
+   ],
+   "answer": "A review schedule that makes memory last longer",
+   "why": "Trọng tâm: lặp lại ngắt quãng giúp nhớ lâu. Ứng dụng chỉ là công cụ.",
+   "quote": "at increasing intervals"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Idioms are difficult for learners because their meaning cannot be deduced from the words. To kick the bucket has nothing to do with buckets, and a person who spills the beans reveals a secret rather than clumsy cooking. Teachers advise learning idioms in context, through stories and conversation, because memorising lists seldom helps people use the expressions naturally.",
+   "options": [
+    "The origin of common sayings",
+    "Words connected with food",
+    "Why idioms are hard to learn and how to approach them",
+    "Stories used in language classes",
+    "Conversation skills for beginners",
+    "Different meanings of familiar words"
+   ],
+   "answer": "Why idioms are hard to learn and how to approach them",
+   "why": "Đoạn giải thích vì sao thành ngữ khó và cách học. Câu chuyện chỉ là phương pháp được gợi ý.",
+   "quote": "cannot be deduced from the words"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Pronunciation varies enormously within English. In some regions, the vowel in bath is long, in others short, and speakers of some dialects drop the letter h. These differences are not mistakes but patterns that reflect history and migration. Linguists point out that no accent is inherently better, although listeners often judge speakers by their way of speaking and may discriminate unfairly.",
+   "options": [
+    "The length of English vowels",
+    "Migration in British history",
+    "The letter h in speech",
+    "Regional accents as natural variation, with social consequences",
+    "Mistakes made by learners",
+    "Prejudice in the workplace"
+   ],
+   "answer": "Regional accents as natural variation, with social consequences",
+   "why": "Ý chính: giọng vùng miền là biến thể tự nhiên nhưng có hệ quả xã hội. Âm h chỉ là ví dụ.",
+   "quote": "no accent is inherently better"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Reading speed matters less than comprehension. Many readers try to read faster by skimming, but studies show that comprehension falls quickly once speed rises beyond a modest level. A better habit is to preview the structure of a text, pose questions and pause to summarise. Speed then increases naturally as the reader becomes more familiar with the topic.",
+   "options": [
+    "The danger of skimming news",
+    "Techniques for summarising books",
+    "Familiarity with topics",
+    "How fast people can read",
+    "Understanding, not speed, as the key to better reading",
+    "Reading habits of students"
+   ],
+   "answer": "Understanding, not speed, as the key to better reading",
+   "why": "Trọng tâm: hiểu quan trọng hơn tốc độ. Các lựa chọn khác chỉ nắm một ý nhỏ.",
+   "quote": "comprehension falls quickly"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "The invention of writing allowed knowledge to survive beyond a single lifetime. The earliest known script, cuneiform, began as clay tokens used to count grain and sheep in Mesopotamia, then developed into wedge-shaped marks pressed into tablets. Over centuries these signs came to represent sounds as well as objects, and eventually were used for laws, letters and poems.",
+   "options": [
+    "Counting animals in ancient times",
+    "The laws written on clay",
+    "Poems of Mesopotamia",
+    "Knowledge across generations",
+    "Tablets and their preservation",
+    "The development of writing from simple accounting records"
+   ],
+   "answer": "The development of writing from simple accounting records",
+   "why": "Ý chính: chữ viết phát triển từ ghi chép kế toán. Luật và thơ là các dùng về sau.",
+   "quote": "began as clay tokens"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "Online translation has improved enormously, particularly for common language pairs. Systems trained on billions of sentences produce fluent results, yet errors persist: idioms are rendered literally, tone is lost, and ambiguous words are mistranslated when context is thin. Professional translators now often use machine output as a first draft, and spend their time correcting and polishing it.",
+   "options": [
+    "How translators are trained",
+    "The training of machine systems",
+    "Mistakes in literal idioms",
+    "Language pairs in the internet age",
+    "First drafts in business writing",
+    "Machine translation: fluent but imperfect"
+   ],
+   "answer": "Machine translation: fluent but imperfect",
+   "why": "Đoạn đánh giá dịch máy: trôi chảy nhưng vẫn lỗi. Thành ngữ chỉ là một loại lỗi.",
+   "quote": "errors persist"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Body language accompanies speech, but its meaning varies between cultures. A nod means agreement in many countries, but in parts of Bulgaria and Greece it can mean the opposite. Eye contact signals honesty in some places and disrespect in others. Travellers who rely on gestures alone risk misunderstanding, so it is wise to observe local habits before assuming a meaning.",
+   "options": [
+    "The importance of nodding in conversation",
+    "How to be honest",
+    "Travel advice for tourists",
+    "Speech and gesture together",
+    "Cultural differences in the meaning of gestures",
+    "Eye contact in business"
+   ],
+   "answer": "Cultural differences in the meaning of gestures",
+   "why": "Ý chính: cử chỉ mang nghĩa khác nhau giữa các nền văn hoá. Gật đầu chỉ là ví dụ.",
+   "quote": "varies between cultures"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "Many students believe they have a single learning style, such as visual or auditory, and that teaching should match it. Yet reviews of the research have found little evidence that matching instruction to preferred style improves results. What does work is matching the method to the content: diagrams for geography, sound for music, practice for skills.",
+   "options": [
+    "Diagrams in geography teaching",
+    "Doubts about the idea of fixed learning styles",
+    "Music education",
+    "Practising skills",
+    "Students' preferences",
+    "The design of school reviews"
+   ],
+   "answer": "Doubts about the idea of fixed learning styles",
+   "why": "Trọng tâm: không có bằng chứng ủng hộ phong cách học cố định. Ví dụ chỉ để minh hoạ.",
+   "quote": "little evidence"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "Public examinations have been criticised for rewarding memory rather than understanding. Candidates sit in silence and write answers to unseen questions within a fixed time. Defenders argue that exams are fair because every candidate faces the same conditions and the marking can be checked. Alternatives, such as portfolios and projects, assess deeper skills, but they are costly to mark and open to unequal help at home.",
+   "options": [
+    "Projects completed at home",
+    "The strengths and weaknesses of examinations as assessment",
+    "Marking costs in schools",
+    "Silence in examination rooms",
+    "The memory skills of candidates",
+    "Differences between countries"
+   ],
+   "answer": "The strengths and weaknesses of examinations as assessment",
+   "why": "Đoạn cân nhắc ưu nhược của thi cử. Dự án và chấm điểm chỉ là chi tiết.",
+   "quote": "rewarding memory rather than understanding"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Podcasts have grown quickly because they fit into moments when people cannot read, such as driving or washing dishes. Without visuals, the listener forms mental images, which some say creates a more intimate bond with the speaker. Production is cheap, so niche shows on very specific topics flourish; however, finding income is hard for all but the most popular.",
+   "options": [
+    "Why podcasts have become popular and how hard they are to monetise",
+    "The cost of making a radio show",
+    "Driving and listening habits",
+    "Mental images while listening",
+    "Popular shows and their hosts",
+    "Reading on the move"
+   ],
+   "answer": "Why podcasts have become popular and how hard they are to monetise",
+   "why": "Ý chính: podcast phổ biến nhưng khó kiếm tiền. Hình ảnh trong đầu chỉ là một lý do.",
+   "quote": "finding income is hard"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Literacy rates have risen sharply over the past two centuries. In 1820, only about one in eight adults worldwide could read; today the figure is more than eight in ten. Progress has been fastest where governments expanded free primary schooling and where girls gained access to education. Still, hundreds of millions of adults remain unable to read, two thirds of them women.",
+   "options": [
+    "The history of schooling in the 1820s",
+    "Girls and their education",
+    "Global gains in literacy and the groups still left behind",
+    "Government spending on schools",
+    "Reading ability in adults",
+    "Female workers in the economy"
+   ],
+   "answer": "Global gains in literacy and the groups still left behind",
+   "why": "Trọng tâm: tỉ lệ biết chữ tăng mạnh nhưng vẫn còn nhóm bị bỏ lại. Giáo dục nữ chỉ là một yếu tố.",
+   "quote": "remain unable to read"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Taking notes during a lecture helps learning only if done thoughtfully. Students who try to record everything often write without thinking. Those who listen, identify the main ideas and rewrite them in their own words retain more. Reviewing the notes within a day further strengthens memory, which is why many teachers encourage a short, structured summary after each class.",
+   "options": [
+    "Lectures at university",
+    "Teachers' summaries",
+    "How to take notes that actually improve learning",
+    "Memory over a day",
+    "Why students write everything down",
+    "Main ideas in textbooks"
+   ],
+   "answer": "How to take notes that actually improve learning",
+   "why": "Ý chính: cách ghi chép hiệu quả. Tóm tắt và ôn trong ngày chỉ là bước phụ.",
+   "quote": "in their own words"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Debating teaches more than winning arguments. Participants must research both sides of a question, anticipate objections and respond calmly to criticism. Teachers who have introduced debating clubs report gains in confidence and in the ability to separate evidence from opinion. Some even assign students to defend positions they personally reject, to encourage empathy.",
+   "options": [
+    "The rules of formal debate",
+    "Skills developed through school debating",
+    "Winning and losing in competitions",
+    "Confidence in public speaking",
+    "Differences between evidence and opinion",
+    "Researching both sides"
+   ],
+   "answer": "Skills developed through school debating",
+   "why": "Trọng tâm: kỹ năng rèn qua tranh biện ở trường. Chỉ nhắc một kỹ năng là quá hẹp.",
+   "quote": "both sides"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Word order differs widely among languages. English places the subject before the verb and the object after; Japanese puts the verb at the end of the sentence; Welsh often begins with the verb. These patterns shape how speakers plan what they say. Learners accustomed to one order often make mistakes in another until the new pattern becomes automatic.",
+   "options": [
+    "The grammar of Japanese",
+    "Welsh and its verbs",
+    "Planning speech in advance",
+    "Automatic habits in speaking",
+    "How differences in word order affect language learners",
+    "Mistakes made by English learners"
+   ],
+   "answer": "How differences in word order affect language learners",
+   "why": "Ý chính: thứ tự từ khác nhau gây khó cho người học. Mỗi ngôn ngữ chỉ là ví dụ.",
+   "quote": "Word order differs widely"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Newspapers face declining readership as people turn to the internet for news. Advertising income has fallen sharply, leading to newsroom cuts, and in some regions towns have no local paper at all. Some publications have survived by charging for digital subscriptions, while others rely on donations or support from foundations. Many observers worry that less local reporting weakens accountability.",
+   "options": [
+    "The financial crisis of newspapers and what it means for news",
+    "Online news sites and their popularity",
+    "Subscriptions to magazines",
+    "Advertising income",
+    "Local government accountability",
+    "Donations to foundations"
+   ],
+   "answer": "The financial crisis of newspapers and what it means for news",
+   "why": "Trọng tâm: khủng hoảng tài chính của báo chí và hệ quả. Quảng cáo chỉ là nguyên nhân.",
+   "quote": "declining readership"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Calligraphy is regarded as a major art form in China, Japan and the Arab world. Each tradition values the shapes of the letters and the rhythm of the strokes. In East Asia the brush is held upright and the writer moves the whole arm, so that the pressure and speed of every line reveals personality. Students may spend years copying a master before developing a personal style.",
+   "options": [
+    "The tools of the writer",
+    "Years of student practice",
+    "Brushes and ink",
+    "Calligraphy as an expressive art in several cultures",
+    "Personality revealed in handwriting",
+    "Arabic script"
+   ],
+   "answer": "Calligraphy as an expressive art in several cultures",
+   "why": "Ý chính: thư pháp là nghệ thuật biểu đạt ở nhiều nền văn hoá. Cách cầm bút và học viên chỉ là chi tiết.",
+   "quote": "major art form"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "The rise of emoji has changed informal writing. Small pictures convey tone that plain text cannot, softening a request or signalling a joke. Linguists note that emoji function more like gestures than words, and that their meaning shifts depending on age and community. Misunderstandings occur when the same symbol carries a friendly meaning for one group and a sarcastic one for another.",
+   "options": [
+    "Emoji as a replacement for tone and gesture, with risks",
+    "The creation of new symbols",
+    "Jokes in informal text",
+    "Differences between age groups",
+    "The history of pictures in writing",
+    "Requests made politely"
+   ],
+   "answer": "Emoji as a replacement for tone and gesture, with risks",
+   "why": "Trọng tâm: biểu tượng cảm xúc thay cho giọng điệu và cử chỉ nhưng dễ hiểu lầm. Từng lựa chọn khác chỉ nắm một ý.",
+   "quote": "function more like gestures than words"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "A dictionary does not decide what is correct; it records how words are used. Lexicographers search large collections of texts to discover which meanings are current, and add entries when a word has appeared often enough over several years. Words that were once condemned as slang, such as mob or sham, now appear without comment, showing how acceptable usage shifts.",
+   "options": [
+    "The meaning of slang words",
+    "How dictionaries record changes in word use",
+    "Collections of printed text",
+    "Rules for correct grammar",
+    "The condemnation of new words",
+    "The work of lexicographers"
+   ],
+   "answer": "How dictionaries record changes in word use",
+   "why": "Ý chính: từ điển ghi lại cách dùng từ chứ không quy định. Từ lóng chỉ là ví dụ.",
+   "quote": "it records how words are used"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Storytelling is a powerful teaching tool. Facts embedded in a narrative are easier to remember than the same facts in a list, because listeners follow cause and effect and form emotional connections with characters. Teachers who turn historical events into stories report that pupils recall dates and names for longer. The risk is that the story may become more memorable than its accuracy, so teachers need to check details carefully.",
+   "options": [
+    "Historical events in the curriculum",
+    "Emotional bonds with characters",
+    "Lists as a study method",
+    "Why stories help learning, and the risk of inaccuracy",
+    "The accuracy of textbooks",
+    "Dates and names in examinations"
+   ],
+   "answer": "Why stories help learning, and the risk of inaccuracy",
+   "why": "Trọng tâm: kể chuyện giúp học nhưng có nguy cơ sai lệch. Lịch sử chỉ là ví dụ.",
+   "quote": "easier to remember than the same facts in a list"
+  }
+ ]
+}

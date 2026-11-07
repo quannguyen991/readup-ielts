@@ -1,7 +1,9 @@
-import React from 'react';
-import { Modal, Platform, Pressable, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Modal, Pressable, ScrollView, View } from 'react-native';
+
 import { Icon } from '@/components/ui/Icon';
-import { goldLeaf } from '@/theme/tokens';
+import { Text } from '@/components/ielts/SourceCover';
+import { color } from '@/theme/tokens';
 
 export type ExamMode = 'simulation' | 'practice';
 
@@ -11,254 +13,134 @@ interface ExamModeModalProps {
   onSelectMode: (mode: ExamMode) => void;
   testTitle: string;
   questionCount?: number;
+  initialMode?: ExamMode;
 }
 
-export function ExamModeModal({
-  visible,
-  onClose,
-  onSelectMode,
-  testTitle,
-  questionCount = 40,
-}: ExamModeModalProps) {
+const OPTIONS: { mode: ExamMode; title: string; sub: string; points: string[] }[] = [
+  {
+    mode: 'simulation',
+    title: 'Thi thử như thi thật',
+    sub: '',
+    points: ['Đồng hồ đếm ngược, tự nộp khi hết giờ', 'Chấm điểm theo band'],
+  },
+  {
+    mode: 'practice',
+    title: 'Luyện tập tự do',
+    sub: '',
+    points: ['Không giới hạn thời gian', 'Xem đáp án và giải thích'],
+  },
+];
+
+/** Hộp chọn chế độ làm bài: chọn một thẻ rồi bấm "Bắt đầu làm bài". */
+export function ExamModeModal({ visible, onClose, onSelectMode, testTitle, questionCount = 40, initialMode = 'simulation' }: ExamModeModalProps) {
+  const [mode, setMode] = useState<ExamMode>(initialMode);
+  useEffect(() => {
+    if (visible) setMode(initialMode);
+  }, [visible, initialMode]);
+
   if (!visible) return null;
 
   return (
-    <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'rgba(20, 15, 10, 0.65)',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: 20,
-        }}
-      >
+    <Modal visible transparent animationType="fade" onRequestClose={onClose}>
+      <View style={{ flex: 1, backgroundColor: 'rgba(30, 22, 60, 0.55)', justifyContent: 'center', alignItems: 'center', padding: 16 }}>
         <View
           style={{
             width: '100%',
-            maxWidth: 820,
-            backgroundColor: '#FFFFFF',
-            borderRadius: 24,
-            padding: 28,
-            gap: 20,
-            shadowColor: '#000',
-            shadowOpacity: 0.25,
-            shadowRadius: 24,
-            shadowOffset: { width: 0, height: 10 },
+            maxWidth: 760,
+            maxHeight: '92%',
+            borderRadius: 22,
+            backgroundColor: color.surface,
             borderWidth: 1,
-            borderColor: '#F3F0FB',
+            borderColor: color.border,
+            overflow: 'hidden',
           }}
         >
-          {/* Header */}
-          <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-            <View style={{ flex: 1, gap: 4 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                <View style={{ backgroundColor: '#E11D48', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6 }}>
-                  <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 13, letterSpacing: 0.5 }}>IELTS</Text>
-                </View>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 1 }}>
-                  CHỌN PHƯƠNG THỨC LÀM BÀI
-                </Text>
-              </View>
-              <Text
-                style={{
-                  fontSize: 22,
-                  fontWeight: '900',
-                  color: '#2B2350',
-                  fontFamily: Platform.OS === 'web' ? 'Georgia, serif' : undefined,
-                }}
-              >
-                {testTitle}
-              </Text>
-              <Text style={{ fontSize: 14, color: '#7C6552' }}>
-                Chọn hình thức bạn muốn trải nghiệm hôm nay ({questionCount} câu hỏi · Cambridge & Actual Volumes)
-              </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 22, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: color.border }}>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={{ fontSize: 17, fontWeight: '800', color: color.ink }} numberOfLines={2}>{testTitle}</Text>
+              <Text style={{ fontSize: 12, color: color.muted, fontWeight: '500' }}>{questionCount} câu</Text>
             </View>
-
             <Pressable
               onPress={onClose}
-              style={{
+              accessibilityRole="button"
+              accessibilityLabel="Đóng"
+              style={({ hovered }: { hovered?: boolean }) => ({
                 width: 36,
                 height: 36,
                 borderRadius: 18,
-                backgroundColor: '#F3F0FB',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
+                backgroundColor: hovered ? color.primarySoft : color.surfaceAlt,
+              })}
             >
-              <Icon name="close" size={18} color="#7C6552" />
+              <Icon name="close" size={16} color={color.body} />
             </Pressable>
           </View>
 
-          {/* 2 Big Choice Cards */}
-          <View style={{ flexDirection: 'row', gap: 18, flexWrap: 'wrap' }}>
-            {/* CARD 1: THI THỬ NHƯ THI THẬT */}
+          <ScrollView contentContainerStyle={{ padding: 22, gap: 16 }}>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
+              {OPTIONS.map((option) => {
+                const on = mode === option.mode;
+                return (
+                  <Pressable
+                    key={option.mode}
+                    onPress={() => setMode(option.mode)}
+                    accessibilityRole="radio"
+                    accessibilityState={{ selected: on }}
+                    style={{
+                      flex: 1,
+                      flexBasis: 280,
+                      gap: 12,
+                      padding: 18,
+                      borderRadius: 16,
+                      borderWidth: 2,
+                      borderColor: on ? color.primaryDark : color.border,
+                      backgroundColor: on ? color.primarySoft : color.surface,
+                    }}
+                  >
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                      <View
+                        style={{
+                          width: 20,
+                          height: 20,
+                          borderRadius: 10,
+                          borderWidth: on ? 6 : 2,
+                          borderColor: on ? color.primaryDark : color.borderStrong,
+                          backgroundColor: color.surface,
+                        }}
+                      />
+                      <View style={{ flex: 1 }}>
+                        <Text style={{ fontSize: 16, fontWeight: '800', color: color.ink }}>{option.title}</Text>
+                      </View>
+                    </View>
+                    <View style={{ gap: 8 }}>
+                      {option.points.map((point) => (
+                        <View key={point} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+                          <Icon name="check" size={14} color={color.success} />
+                          <Text style={{ flex: 1, fontSize: 13, lineHeight: 18, color: color.body }}>{point}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </ScrollView>
+
+          <View style={{ alignItems: 'center', padding: 16, borderTopWidth: 1, borderTopColor: color.border }}>
             <Pressable
-              onPress={() => onSelectMode('simulation')}
-              style={{
-                flex: 1,
-                minWidth: 340,
-                borderRadius: 18,
-                borderWidth: 2,
-                borderColor: '#E11D48',
-                backgroundColor: '#FFF1F2',
-                padding: 22,
-                gap: 14,
-                shadowColor: '#E11D48',
-                shadowOpacity: 0.08,
-                shadowRadius: 12,
-                shadowOffset: { width: 0, height: 4 },
-              }}
+              onPress={() => onSelectMode(mode)}
+              accessibilityRole="button"
+              style={({ hovered }: { hovered?: boolean }) => ({
+                height: 46,
+                paddingHorizontal: 32,
+                borderRadius: 999,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: hovered ? color.primary : color.primaryDark,
+              })}
             >
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <View style={{ backgroundColor: '#E11D48', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 20 }}>
-                  <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '900', letterSpacing: 0.5 }}>
-                    ★ CHUẨN THI THẬT IDP / BC
-                  </Text>
-                </View>
-                <Text style={{ fontSize: 24 }}>🎓</Text>
-              </View>
-
-              <View style={{ gap: 4 }}>
-                <Text style={{ fontSize: 19, fontWeight: '900', color: '#881337' }}>
-                  Thi Thử Như Thi Thật
-                </Text>
-                <Text style={{ fontSize: 13, color: '#9F1239', fontWeight: '600' }}>
-                  Real Computer-delivered IELTS Exam
-                </Text>
-              </View>
-
-              <View style={{ gap: 8, marginVertical: 4 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#E11D48', fontWeight: '900', fontSize: 14 }}>⏱</Text>
-                  <Text style={{ fontSize: 13, color: '#4C0519', fontWeight: '600' }}>
-                    <Text style={{ fontWeight: '800' }}>Bấm giờ chuẩn 60:00</Text> đếm ngược, tự nộp khi hết giờ
-                  </Text>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#E11D48', fontWeight: '900', fontSize: 14 }}>🖥</Text>
-                  <Text style={{ fontSize: 13, color: '#4C0519', fontWeight: '600' }}>
-                    <Text style={{ fontWeight: '800' }}>Form chuẩn 100% CD-IELTS</Text>: Top bar đen, split screen
-                  </Text>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#E11D48', fontWeight: '900', fontSize: 14 }}>📑</Text>
-                  <Text style={{ fontSize: 13, color: '#4C0519', fontWeight: '600' }}>
-                    <Text style={{ fontWeight: '800' }}>40 câu hỏi, cờ Review</Text>, chuyển Passage 1, 2, 3
-                  </Text>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#E11D48', fontWeight: '900', fontSize: 14 }}>🔒</Text>
-                  <Text style={{ fontSize: 13, color: '#4C0519', fontWeight: '600' }}>
-                    Nghiêm ngặt, không lộ đáp án, chấm điểm Band chuẩn
-                  </Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  height: 44,
-                  borderRadius: 12,
-                  backgroundColor: goldLeaf.base,
-                  backgroundImage: goldLeaf.fill,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  gap: 6,
-                  marginTop: 6,
-                }}
-              >
-                <Text style={{ color: goldLeaf.ink, fontSize: 14, fontWeight: '900' }}>
-                  VÀO PHÒNG THI THẬT →
-                </Text>
-              </View>
-            </Pressable>
-
-            {/* CARD 2: LUYỆN TẬP TỰ DO */}
-            <Pressable
-              onPress={() => onSelectMode('practice')}
-              style={{
-                flex: 1,
-                minWidth: 340,
-                borderRadius: 18,
-                borderWidth: 2,
-                borderColor: '#6A4BD9',
-                backgroundColor: '#F3F0FB',
-                padding: 22,
-                gap: 14,
-                shadowColor: '#6A4BD9',
-                shadowOpacity: 0.08,
-                shadowRadius: 12,
-                shadowOffset: { width: 0, height: 4 },
-              }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <View style={{ backgroundColor: '#6A4BD9', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 20 }}>
-                  <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '900', letterSpacing: 0.5 }}>
-                    TỰ DO · KHÔNG ÁP LỰC · HỌC SÂU
-                  </Text>
-                </View>
-                <Text style={{ fontSize: 24 }}>📚</Text>
-              </View>
-
-              <View style={{ gap: 4 }}>
-                <Text style={{ fontSize: 19, fontWeight: '900', color: '#2B2350' }}>
-                  Chế Độ Luyện Tập
-                </Text>
-                <Text style={{ fontSize: 13, color: '#7C6552', fontWeight: '600' }}>
-                  Self-paced Practice & Deep Learning
-                </Text>
-              </View>
-
-              <View style={{ gap: 8, marginVertical: 4 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#6A4BD9', fontWeight: '900', fontSize: 14 }}>⏳</Text>
-                  <Text style={{ fontSize: 13, color: '#2B2350', fontWeight: '600' }}>
-                    <Text style={{ fontWeight: '800' }}>Thời gian linh hoạt</Text>, có nút Tạm dừng & Làm tiếp
-                  </Text>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#6A4BD9', fontWeight: '900', fontSize: 14 }}>🧩</Text>
-                  <Text style={{ fontSize: 13, color: '#2B2350', fontWeight: '600' }}>
-                    <Text style={{ fontWeight: '800' }}>Tùy chọn từng bài</Text>: Làm cả đề hoặc riêng Passage 1/2/3
-                  </Text>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#6A4BD9', fontWeight: '900', fontSize: 14 }}>🔍</Text>
-                  <Text style={{ fontSize: 13, color: '#2B2350', fontWeight: '600' }}>
-                    <Text style={{ fontWeight: '800' }}>Kiểm tra đáp án ngay</Text> sau mỗi câu để đối chiếu
-                  </Text>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: '#6A4BD9', fontWeight: '900', fontSize: 14 }}>💡</Text>
-                  <Text style={{ fontSize: 13, color: '#2B2350', fontWeight: '600' }}>
-                    Xem giải thích chi tiết, trích dẫn văn bản, tra từ vựng
-                  </Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  height: 44,
-                  borderRadius: 12,
-                  backgroundColor: '#6A4BD9',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  gap: 6,
-                  marginTop: 6,
-                }}
-              >
-                <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '900' }}>
-                  BẮT ĐẦU LUYỆN TẬP →
-                </Text>
-              </View>
+              <Text style={{ fontSize: 15, fontWeight: '700', color: color.white }}>Bắt đầu làm bài</Text>
             </Pressable>
           </View>
         </View>

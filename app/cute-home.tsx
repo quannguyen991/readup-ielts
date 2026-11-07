@@ -255,6 +255,7 @@ export default function HomeScreen() {
         en={en}
         L={L}
         onSearch={showSearch}
+        due={due}
       />
     );
   }
@@ -284,6 +285,38 @@ export default function HomeScreen() {
             <HeroStat key="due" value={fmt(due)} label={L('từ đến hạn', 'words due')} />,
           ]}
         />
+
+        {/* Thanh ôn lặp ngắt quãng: luôn hiện trên trang Hôm nay, bấm là vào lịch ôn. */}
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={L('Ôn lặp ngắt quãng', 'Spaced review')}
+          onPress={() => router.push('/vocabulary/spaced-repetition' as never)}
+          style={({ pressed }: { pressed: boolean }) => ({
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 12,
+            borderRadius: 20,
+            borderWidth: 1,
+            borderColor: '#E5DDFF',
+            backgroundColor: '#FFFFFF',
+            paddingHorizontal: 18,
+            paddingVertical: 14,
+            opacity: pressed ? 0.9 : 1,
+          } as object)}
+        >
+          <View style={{ width: 40, height: 40, borderRadius: 14, backgroundColor: '#F1EBFF', alignItems: 'center', justifyContent: 'center' }}>
+            <Icon name="clock" size={20} color="#6A4BD9" />
+          </View>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text className="font-heavy text-body text-ink">{L('Ôn lặp ngắt quãng', 'Spaced review')}</Text>
+            <Text className="font-sans text-label text-muted" numberOfLines={1}>
+              {due > 0
+                ? L(`${fmt(due)} từ đến hạn hôm nay`, `${fmt(due)} words due today`)
+                : L('Chưa có từ đến hạn. Xem lịch ôn.', 'Nothing due yet. See the schedule.')}
+            </Text>
+          </View>
+          <Icon name="chevron-right" size={18} color="#6A4BD9" />
+        </Pressable>
 
         <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 28 : 20, alignItems: 'flex-start' }}>
           <View style={{ flex: wide ? 1 : undefined, width: wide ? undefined : '100%', minWidth: 0, gap: 14 }}>

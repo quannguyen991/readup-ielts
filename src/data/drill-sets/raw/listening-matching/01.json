@@ -1,0 +1,287 @@
+{
+ "title": "Surveying an Eroding Coastline",
+ "topic": "Coastal erosion fieldwork",
+ "context": "Maya: Right, Tom, before Dr Lee arrives, shall we go through the equipment for the beach survey?\nTom: Sure. First, the drone. I tried it on Tuesday and the battery only lasted about eight minutes, which is hopeless for mapping the whole bay.\nMaya: Eight? I thought it was twenty. Oh, but you were flying into the wind. Still, yes, that's a problem.\nTom: The GPS unit is fine, but we have to reserve it through the department office, and they need a week's notice. So we should book it today.\nMaya: Okay. What about the measuring poles?\nTom: I counted six, which is what we need. Hold on, no, the top section of one has snapped off, so effectively one is missing.\nMaya: Right, I'll tell the technician. And the tablet for recording data?\nTom: The tablet itself is lovely, but the mapping app is really complicated. I spent an hour just working out how to enter a location.\nMaya: Hmm, we'll need a tutorial then. And the camera?\nTom: It's waterproof, so the sea spray won't hurt it. The trouble is that it's incredibly heavy. My arm ached after ten minutes.\nDr Lee: Good morning, both. Sorry I'm late. I've read your proposal. Let's start with the aims. I was going to suggest changes, but on reflection they're perfectly clear, so leave them as they are.\nMaya: Great.\nDr Lee: The background reading is quite long, though that's not really the issue. Most of your sources are from the nineties and the field has moved on, so find some recent studies.\nTom: We'll do that.\nDr Lee: The timetable worries me. You've planned to survey the cliffs in January, but the access road is usually closed then. Those dates just aren't realistic.\nMaya: Oh, we hadn't thought of that.\nDr Lee: Next, the budget. The figures add up, but you haven't included travel. The minibus alone will cost a fair amount, so add that line. Finally, the risk assessment. It's thorough, but nothing can go ahead until the university safety officer has signed it, and she's only in on Thursdays.\nTom: Right. Now, I've been looking at last year's data for each site. At the north cliff, the retreat is about two metres a year, and it was under one a few years ago, so it's definitely accelerating.\nMaya: I thought it had slowed down. Oh, no, I was reading the wrong column. You're right.\nTom: The harbour wall is the one place where the loss is tiny, because of the barrier they installed last year.\nMaya: The dunes are interesting. Most of the loss happens during storms. Between storms the dunes actually grow a little.\nDr Lee: The river mouth is harder. I expected a pattern, but the measurements jump around, up one season and down the next, so we can't say anything definite.\nTom: And the caravan park? The cliff there is retreating fast, but I think that's because of the new car park they built behind it, which changed how rainwater drains.\nDr Lee: Hmm, could be. Worth checking. So let's plan next week. On Monday, why not pick up the GPS unit? It's free that day if you ring the office today.\nMaya: Fine. On Tuesday there's a tutorial for the mapping software, so Tom and I will go to that.\nTom: I could buy spare batteries on Tuesday too, but the shop's closed, so I'll leave that.\nMaya: Wednesday we'll revise the timetable, once we know the dates for the road.\nTom: The safety officer's in on Thursday morning, so we'll get the form signed then.\nDr Lee: Good. In the afternoon you'll have time to visit the north cliff and check the access, so do that.\nMaya: And on Friday I'll email the residents' group about the caravan park.",
+ "questions": [
+  {
+   "prompt": "Which problem is mentioned for the drone?",
+   "options": [
+    "The battery runs out too quickly",
+    "It must be reserved a week ahead",
+    "The software is difficult to use",
+    "One part is missing",
+    "It is too heavy to carry for long",
+    "It can be damaged by salt water"
+   ],
+   "answer": "The battery runs out too quickly",
+   "why": "Tom nói pin drone chỉ được khoảng tám phút. Bẫy: Maya tưởng 20 phút nhưng đó là con số sai.",
+   "quote": "the battery only lasted about eight minutes"
+  },
+  {
+   "prompt": "Which problem is mentioned for the GPS unit?",
+   "options": [
+    "The battery runs out too quickly",
+    "It must be reserved a week ahead",
+    "The software is difficult to use",
+    "One part is missing",
+    "It is too heavy to carry for long",
+    "It can be damaged by salt water"
+   ],
+   "answer": "It must be reserved a week ahead",
+   "why": "Thiết bị phải đặt qua văn phòng khoa với báo trước một tuần.",
+   "quote": "they need a week's notice"
+  },
+  {
+   "prompt": "Which problem is mentioned for the measuring poles?",
+   "options": [
+    "The battery runs out too quickly",
+    "It must be reserved a week ahead",
+    "The software is difficult to use",
+    "One part is missing",
+    "It is too heavy to carry for long",
+    "It can be damaged by salt water"
+   ],
+   "answer": "One part is missing",
+   "why": "Tom đếm đủ sáu nhưng một cây gãy phần trên nên coi như thiếu một.",
+   "quote": "effectively one is missing"
+  },
+  {
+   "prompt": "Which problem is mentioned for the tablet?",
+   "options": [
+    "The battery runs out too quickly",
+    "It must be reserved a week ahead",
+    "The software is difficult to use",
+    "One part is missing",
+    "It is too heavy to carry for long",
+    "It can be damaged by salt water"
+   ],
+   "answer": "The software is difficult to use",
+   "why": "Máy tính bảng tốt nhưng ứng dụng bản đồ phức tạp.",
+   "quote": "the mapping app is really complicated"
+  },
+  {
+   "prompt": "Which problem is mentioned for the camera?",
+   "options": [
+    "The battery runs out too quickly",
+    "It must be reserved a week ahead",
+    "The software is difficult to use",
+    "One part is missing",
+    "It is too heavy to carry for long",
+    "It can be damaged by salt water"
+   ],
+   "answer": "It is too heavy to carry for long",
+   "why": "Máy ảnh chống nước nên không lo nước biển, vấn đề là quá nặng.",
+   "quote": "it's incredibly heavy"
+  },
+  {
+   "prompt": "What does Dr Lee say about the aims?",
+   "options": [
+    "It is clear and needs no change",
+    "It should be much shorter",
+    "It needs more recent sources",
+    "Its dates are unrealistic",
+    "It should include a cost for transport",
+    "It must be signed by the safety officer"
+   ],
+   "answer": "It is clear and needs no change",
+   "why": "Dr Lee định đề nghị sửa nhưng sau đó thấy mục tiêu rõ ràng và giữ nguyên.",
+   "quote": "they're perfectly clear, so leave them as they are"
+  },
+  {
+   "prompt": "What does Dr Lee say about the background reading?",
+   "options": [
+    "It is clear and needs no change",
+    "It should be much shorter",
+    "It needs more recent sources",
+    "Its dates are unrealistic",
+    "It should include a cost for transport",
+    "It must be signed by the safety officer"
+   ],
+   "answer": "It needs more recent sources",
+   "why": "Độ dài không phải vấn đề chính; nguồn quá cũ nên cần tài liệu mới.",
+   "quote": "find some recent studies"
+  },
+  {
+   "prompt": "What does Dr Lee say about the timetable?",
+   "options": [
+    "It is clear and needs no change",
+    "It should be much shorter",
+    "It needs more recent sources",
+    "Its dates are unrealistic",
+    "It should include a cost for transport",
+    "It must be signed by the safety officer"
+   ],
+   "answer": "Its dates are unrealistic",
+   "why": "Khảo sát vách đá vào tháng Giêng nhưng đường vào thường đóng nên mốc thời gian không thực tế.",
+   "quote": "Those dates just aren't realistic"
+  },
+  {
+   "prompt": "What does Dr Lee say about the budget?",
+   "options": [
+    "It is clear and needs no change",
+    "It should be much shorter",
+    "It needs more recent sources",
+    "Its dates are unrealistic",
+    "It should include a cost for transport",
+    "It must be signed by the safety officer"
+   ],
+   "answer": "It should include a cost for transport",
+   "why": "Số liệu cộng đúng nhưng thiếu chi phí đi lại, cần thêm dòng xe buýt nhỏ.",
+   "quote": "you haven't included travel"
+  },
+  {
+   "prompt": "What does Dr Lee say about the risk assessment?",
+   "options": [
+    "It is clear and needs no change",
+    "It should be much shorter",
+    "It needs more recent sources",
+    "Its dates are unrealistic",
+    "It should include a cost for transport",
+    "It must be signed by the safety officer"
+   ],
+   "answer": "It must be signed by the safety officer",
+   "why": "Bản đánh giá rủi ro kỹ nhưng phải có chữ ký của cán bộ an toàn trước khi tiến hành.",
+   "quote": "until the university safety officer has signed it"
+  },
+  {
+   "prompt": "What do the speakers conclude about the north cliff?",
+   "options": [
+    "Erosion is speeding up",
+    "Damage is mainly caused by walkers",
+    "Most loss happens during storms",
+    "A nearby building project may be responsible",
+    "No clear pattern can be seen",
+    "A barrier has reduced the damage"
+   ],
+   "answer": "Erosion is speeding up",
+   "why": "Lùi hai mét mỗi năm so với dưới một mét trước đây nghĩa là đang tăng tốc. Maya nhầm cột số liệu rồi tự sửa.",
+   "quote": "it's definitely accelerating"
+  },
+  {
+   "prompt": "What do the speakers conclude about the harbour wall?",
+   "options": [
+    "Erosion is speeding up",
+    "Damage is mainly caused by walkers",
+    "Most loss happens during storms",
+    "A nearby building project may be responsible",
+    "No clear pattern can be seen",
+    "A barrier has reduced the damage"
+   ],
+   "answer": "A barrier has reduced the damage",
+   "why": "Mất mát rất nhỏ nhờ rào chắn lắp năm ngoái.",
+   "quote": "because of the barrier they installed last year"
+  },
+  {
+   "prompt": "What do the speakers conclude about the dunes?",
+   "options": [
+    "Erosion is speeding up",
+    "Damage is mainly caused by walkers",
+    "Most loss happens during storms",
+    "A nearby building project may be responsible",
+    "No clear pattern can be seen",
+    "A barrier has reduced the damage"
+   ],
+   "answer": "Most loss happens during storms",
+   "why": "Phần lớn mất mát xảy ra trong bão; giữa các cơn bão cồn còn lớn thêm.",
+   "quote": "Most of the loss happens during storms"
+  },
+  {
+   "prompt": "What do the speakers conclude about the river mouth?",
+   "options": [
+    "Erosion is speeding up",
+    "Damage is mainly caused by walkers",
+    "Most loss happens during storms",
+    "A nearby building project may be responsible",
+    "No clear pattern can be seen",
+    "A barrier has reduced the damage"
+   ],
+   "answer": "No clear pattern can be seen",
+   "why": "Số đo lên xuống từng mùa nên không thể kết luận chắc chắn.",
+   "quote": "we can't say anything definite"
+  },
+  {
+   "prompt": "What do the speakers conclude about the caravan park?",
+   "options": [
+    "Erosion is speeding up",
+    "Damage is mainly caused by walkers",
+    "Most loss happens during storms",
+    "A nearby building project may be responsible",
+    "No clear pattern can be seen",
+    "A barrier has reduced the damage"
+   ],
+   "answer": "A nearby building project may be responsible",
+   "why": "Tom nghĩ nguyên nhân là bãi đỗ xe mới làm đổi cách thoát nước mưa.",
+   "quote": "the new car park they built behind it"
+  },
+  {
+   "prompt": "What will the students do on Monday?",
+   "options": [
+    "Collect the GPS unit",
+    "Buy spare batteries",
+    "Revise the timetable",
+    "Go to a software tutorial",
+    "Visit the north cliff",
+    "Email the residents' group"
+   ],
+   "answer": "Collect the GPS unit",
+   "why": "Dr Lee gợi ý nhận thiết bị GPS vào thứ Hai.",
+   "quote": "why not pick up the GPS unit"
+  },
+  {
+   "prompt": "What will the students do on Tuesday?",
+   "options": [
+    "Collect the GPS unit",
+    "Buy spare batteries",
+    "Revise the timetable",
+    "Go to a software tutorial",
+    "Visit the north cliff",
+    "Email the residents' group"
+   ],
+   "answer": "Go to a software tutorial",
+   "why": "Thứ Ba có buổi hướng dẫn phần mềm bản đồ. Tom bỏ ý định mua pin vì cửa hàng đóng.",
+   "quote": "there's a tutorial for the mapping software"
+  },
+  {
+   "prompt": "What will the students do on Wednesday?",
+   "options": [
+    "Collect the GPS unit",
+    "Buy spare batteries",
+    "Revise the timetable",
+    "Go to a software tutorial",
+    "Visit the north cliff",
+    "Email the residents' group"
+   ],
+   "answer": "Revise the timetable",
+   "why": "Thứ Tư họ sửa lại thời gian biểu khi biết ngày mở đường.",
+   "quote": "Wednesday we'll revise the timetable"
+  },
+  {
+   "prompt": "What will the students do on Thursday afternoon?",
+   "options": [
+    "Collect the GPS unit",
+    "Buy spare batteries",
+    "Revise the timetable",
+    "Go to a software tutorial",
+    "Visit the north cliff",
+    "Email the residents' group"
+   ],
+   "answer": "Visit the north cliff",
+   "why": "Buổi sáng ký mẫu, buổi chiều đi vách đá phía bắc để kiểm tra đường vào.",
+   "quote": "visit the north cliff and check the access"
+  },
+  {
+   "prompt": "What will the students do on Friday?",
+   "options": [
+    "Collect the GPS unit",
+    "Buy spare batteries",
+    "Revise the timetable",
+    "Go to a software tutorial",
+    "Visit the north cliff",
+    "Email the residents' group"
+   ],
+   "answer": "Email the residents' group",
+   "why": "Maya sẽ gửi email cho nhóm cư dân về bãi caravan.",
+   "quote": "on Friday I'll email the residents' group"
+  }
+ ]
+}

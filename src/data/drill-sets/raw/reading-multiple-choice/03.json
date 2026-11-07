@@ -1,0 +1,247 @@
+{
+ "title": "How Do Birds Find Their Way?",
+ "topic": "Animal navigation and migration",
+ "context": "Every year, billions of birds travel thousands of kilometres between their breeding grounds and their winter homes, and many return to the very same tree or pond. How they find their way has fascinated scientists for centuries, and the answer, it turns out, is not a single instrument but a toolkit. Each tool has strengths and weaknesses, and birds appear to switch between them according to the weather, the time of day and the stage of the journey.\n\nThe first tool to be demonstrated was a sun compass. In the 1950s, a German researcher placed starlings in a circular cage with windows that let them see the sky but not the landscape. Whenever migration season came, the birds fluttered towards the same compass direction. When mirrors were used to shift the apparent position of the sun, the birds changed their direction by the same angle, proving that they were reading the sun. Since the sun moves across the sky during the day, the birds must also compensate for the time, which suggests that they possess an internal clock.\n\nMany species travel at night, and for them the stars take over. In a classic experiment, young indigo buntings were raised inside a planetarium where the artificial sky could be controlled. The birds learned to find north by observing the point around which the stars appeared to rotate. Crucially, they did not memorise particular constellations: when the researchers made the sky rotate around a different star, the birds simply followed the new centre. Buntings that had never seen a night sky could not orient themselves at all, which shows that this ability must be learned early in life.\n\nBirds also seem to sense the Earth's magnetic field. Robins kept in windowless rooms still hop in the direction they would normally migrate, and they become confused if the surrounding magnetic field is altered. How they detect it remains uncertain. One theory proposes that a light-sensitive protein in the eye allows birds to perceive the field as a pattern superimposed on their vision. Another suggested that tiny iron-rich particles in the beak act as a compass, but later studies found that similar particles were located in immune cells, not nerve cells, and enthusiasm for this idea has cooled.\n\nA bird's methods change with experience. Young birds on their first journey appear to follow an inherited programme, flying in a particular direction for a particular length of time. In one study, researchers captured juvenile starlings during their autumn flight and released them hundreds of kilometres to the side. The young birds continued in the original direction and ended up in the wrong place, whereas adults corrected their course and reached their usual wintering area. Experienced birds apparently build up a mental map using landmarks such as coastlines and mountain ranges and, according to some studies, smell. Seabirds whose sense of smell was temporarily blocked often failed to find their way back to their colonies.\n\nThe overall picture, therefore, is of redundancy rather than perfection. Birds do not rely on one sense, but weigh several cues, and when these conflict, they can recalibrate: for example, migrating thrushes use the pattern of light at sunset to adjust their magnetic compass. This flexibility has a cost when people interfere. Bright city lights can attract night migrants away from their route and cause them to circle until exhausted, which is why some cities now switch off non-essential lighting during peak migration weeks.",
+ "questions": [
+  {
+   "prompt": "What point does the writer make in the first paragraph?",
+   "options": [
+    "Bird navigation depends on a set of different abilities",
+    "Scientists have now fully explained how birds navigate",
+    "Most birds return to the same place each year by chance",
+    "Only a few species can travel long distances"
+   ],
+   "answer": "Bird navigation depends on a set of different abilities",
+   "why": "Tác giả nói đáp án không phải một dụng cụ duy nhất mà là cả một bộ công cụ.",
+   "quote": "not a single instrument but a toolkit"
+  },
+  {
+   "prompt": "What did the experiment with mirrors show?",
+   "options": [
+    "Starlings cannot navigate under cloudy skies",
+    "Birds prefer to travel towards the sun",
+    "Birds changed direction when the apparent position of the sun changed",
+    "Birds see better in a circular cage"
+   ],
+   "answer": "Birds changed direction when the apparent position of the sun changed",
+   "why": "Khi gương dịch vị trí mặt trời, chim đổi hướng cùng góc, chứng tỏ chúng đọc mặt trời.",
+   "quote": "the birds changed their direction by the same angle"
+  },
+  {
+   "prompt": "Why must birds that use a sun compass have an internal clock?",
+   "options": [
+    "To know when the migration season begins",
+    "To decide when to rest during the day",
+    "To tell the difference between the sun and the moon",
+    "To allow for the movement of the sun across the sky"
+   ],
+   "answer": "To allow for the movement of the sun across the sky",
+   "why": "Mặt trời di chuyển trong ngày nên chim phải bù theo thời gian.",
+   "quote": "the birds must also compensate for the time"
+  },
+  {
+   "prompt": "In paragraph 3, 'orient themselves' means",
+   "options": [
+    "recognise their parents",
+    "work out which way they should go",
+    "avoid other birds",
+    "remember the landscape"
+   ],
+   "answer": "work out which way they should go",
+   "why": "'Orient oneself' nghĩa là xác định phương hướng của mình.",
+   "quote": "could not orient themselves at all"
+  },
+  {
+   "prompt": "How did the indigo buntings learn to find north?",
+   "options": [
+    "By memorising certain constellations",
+    "By following the brightest star",
+    "By observing the point around which the stars seem to turn",
+    "By comparing the moon with the stars"
+   ],
+   "answer": "By observing the point around which the stars seem to turn",
+   "why": "Chim học tìm hướng bắc nhờ điểm mà các sao dường như quay quanh.",
+   "quote": "the point around which the stars appeared to rotate"
+  },
+  {
+   "prompt": "What happened when the researchers changed the centre of the artificial sky's rotation?",
+   "options": [
+    "The birds followed the new centre",
+    "The birds became confused and stopped moving",
+    "The birds ignored the artificial sky",
+    "The birds returned to the original north"
+   ],
+   "answer": "The birds followed the new centre",
+   "why": "Chim không nhớ chòm sao cụ thể mà đi theo tâm quay mới.",
+   "quote": "the birds simply followed the new centre"
+  },
+  {
+   "prompt": "What does the case of buntings that never saw a night sky show?",
+   "options": [
+    "The ability is inherited from parents",
+    "The ability has to be learned early in life",
+    "The ability depends on the phase of the moon",
+    "The ability develops only after the first migration"
+   ],
+   "answer": "The ability has to be learned early in life",
+   "why": "Chim chưa từng thấy bầu trời đêm không định hướng được, nên kỹ năng phải học từ nhỏ.",
+   "quote": "this ability must be learned early in life"
+  },
+  {
+   "prompt": "What suggests that robins can sense magnetic fields?",
+   "options": [
+    "They avoid windowless rooms",
+    "They sing at different times of day",
+    "They fly faster in strong fields",
+    "They try to head in their migratory direction without seeing the sky"
+   ],
+   "answer": "They try to head in their migratory direction without seeing the sky",
+   "why": "Chim cổ đỏ trong phòng không cửa sổ vẫn nhảy theo hướng di cư và rối khi từ trường bị đổi.",
+   "quote": "Robins kept in windowless rooms still hop in the direction they would normally migrate"
+  },
+  {
+   "prompt": "What is said about the theory involving a light-sensitive protein?",
+   "options": [
+    "It has been disproved by later studies",
+    "It explains how birds find food",
+    "It proposes that birds see the field as a pattern in their vision",
+    "It applies only to night migrants"
+   ],
+   "answer": "It proposes that birds see the field as a pattern in their vision",
+   "why": "Giả thuyết này cho rằng chim thấy từ trường như một hoạ tiết phủ lên thị giác. Bài không nói nó bị bác bỏ.",
+   "quote": "perceive the field as a pattern superimposed on their vision"
+  },
+  {
+   "prompt": "Why has enthusiasm for the theory about iron particles in the beak cooled?",
+   "options": [
+    "The particles were too small to measure",
+    "Later studies found similar particles in immune cells, not nerve cells",
+    "Birds with damaged beaks could still navigate",
+    "Iron is not magnetic at body temperature"
+   ],
+   "answer": "Later studies found similar particles in immune cells, not nerve cells",
+   "why": "Các hạt hoá ra nằm trong tế bào miễn dịch chứ không phải tế bào thần kinh.",
+   "quote": "similar particles were located in immune cells, not nerve cells"
+  },
+  {
+   "prompt": "What do young birds on their first journey appear to follow?",
+   "options": [
+    "An inherited programme of direction and duration",
+    "The guidance of experienced adults",
+    "Landmarks along the coast",
+    "The smell of their home colony"
+   ],
+   "answer": "An inherited programme of direction and duration",
+   "why": "Chim non theo chương trình di truyền: một hướng bay trong một khoảng thời gian.",
+   "quote": "an inherited programme, flying in a particular direction for a particular length of time"
+  },
+  {
+   "prompt": "What happened to the juvenile starlings that were moved sideways?",
+   "options": [
+    "They flew back towards where they were captured",
+    "They stopped at the release site",
+    "They found their usual wintering area",
+    "They kept to the original direction and arrived in the wrong place"
+   ],
+   "answer": "They kept to the original direction and arrived in the wrong place",
+   "why": "Chim non tiếp tục hướng cũ nên đến sai chỗ.",
+   "quote": "ended up in the wrong place"
+  },
+  {
+   "prompt": "How did the adult starlings behave differently from the juveniles?",
+   "options": [
+    "They flew faster",
+    "They refused to fly",
+    "They corrected their course and reached the usual wintering area",
+    "They followed the juveniles"
+   ],
+   "answer": "They corrected their course and reached the usual wintering area",
+   "why": "Chim trưởng thành điều chỉnh hướng và tới đúng nơi trú đông.",
+   "quote": "adults corrected their course and reached their usual wintering area"
+  },
+  {
+   "prompt": "In the last paragraph, 'redundancy' refers to",
+   "options": [
+    "unnecessary waste of energy",
+    "the presence of more than one system for the same task",
+    "loss of ability with age",
+    "failure to complete a task"
+   ],
+   "answer": "the presence of more than one system for the same task",
+   "why": "Dư thừa ở đây là nhiều tín hiệu/giác quan cùng làm một việc định hướng, đối lập với 'hoàn hảo'.",
+   "quote": "redundancy rather than perfection"
+  },
+  {
+   "prompt": "What do the experiments with seabirds suggest?",
+   "options": [
+    "Smell may help experienced birds find their way home",
+    "Seabirds cannot use the sun",
+    "Seabirds rely on sight alone",
+    "Blocking their smell improves navigation"
+   ],
+   "answer": "Smell may help experienced birds find their way home",
+   "why": "Chim biển bị bịt khứu giác thường không về được tổ.",
+   "quote": "often failed to find their way back to their colonies"
+  },
+  {
+   "prompt": "What do migrating thrushes do when cues conflict?",
+   "options": [
+    "Ignore the magnetic field at sunset",
+    "Change their time of departure",
+    "Use the stars when the sunset is cloudy",
+    "Use the pattern of light at sunset to adjust their magnetic compass"
+   ],
+   "answer": "Use the pattern of light at sunset to adjust their magnetic compass",
+   "why": "Ví dụ về hiệu chỉnh lại la bàn từ bằng mẫu ánh sáng lúc hoàng hôn.",
+   "quote": "use the pattern of light at sunset to adjust their magnetic compass"
+  },
+  {
+   "prompt": "Why does the writer say that flexibility 'has a cost'?",
+   "options": [
+    "Birds use more energy when comparing cues",
+    "Flexible birds migrate less often",
+    "Human interference such as bright lights can mislead birds",
+    "Cues conflict more often in cities than in the countryside"
+   ],
+   "answer": "Human interference such as bright lights can mislead birds",
+   "why": "Cái giá là chim dễ bị đánh lạc hướng bởi đèn đô thị.",
+   "quote": "This flexibility has a cost when people interfere."
+  },
+  {
+   "prompt": "What can happen to night migrants near bright city lights?",
+   "options": [
+    "They fly faster to escape",
+    "They may be drawn off their route and circle until exhausted",
+    "They stop migrating altogether",
+    "They lose their magnetic sense"
+   ],
+   "answer": "They may be drawn off their route and circle until exhausted",
+   "why": "Đèn sáng thu hút chim đêm khỏi lộ trình và khiến chúng bay vòng đến kiệt sức.",
+   "quote": "cause them to circle until exhausted"
+  },
+  {
+   "prompt": "Why do some cities switch off non-essential lighting?",
+   "options": [
+    "To protect migrating birds during peak weeks",
+    "To save electricity in summer",
+    "To make the stars more visible to residents",
+    "To reduce complaints from neighbours"
+   ],
+   "answer": "To protect migrating birds during peak weeks",
+   "why": "Các thành phố tắt đèn không cần thiết trong tuần cao điểm di cư.",
+   "quote": "switch off non-essential lighting during peak migration weeks"
+  },
+  {
+   "prompt": "Which statement best summarises the passage?",
+   "options": [
+    "A single sense is more reliable than a combination of cues",
+    "The sun compass is the most important tool",
+    "Navigation is mainly instinctive and cannot be learned",
+    "Birds navigate by combining several imperfect cues"
+   ],
+   "answer": "Birds navigate by combining several imperfect cues",
+   "why": "Bài kết luận chim cân nhắc nhiều tín hiệu, linh hoạt hiệu chỉnh, chứ không dựa vào một giác quan.",
+   "quote": "Birds do not rely on one sense, but weigh several cues"
+  }
+ ]
+}

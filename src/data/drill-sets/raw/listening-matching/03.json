@@ -1,0 +1,287 @@
+{
+ "title": "Does Noise Affect Concentration?",
+ "topic": "Psychology experiment design",
+ "context": "Hannah: Thanks for running the pilot, Ravi. I know it took you all afternoon. How did it go?\nRavi: Mixed. We only needed twelve people for the pilot, but just five replied to our email. I think the subject line was boring.\nHannah: Ah. And the room? I booked the quiet lab.\nRavi: Someone else was already in there when we arrived, so we had to move to the seminar room.\nHannah: Annoying. And the questionnaire?\nRavi: Question six confused everyone. Half of them asked what moderately distracted meant.\nHannah: Okay, I'll reword it. What about the consent forms?\nRavi: Three people forgot to sign theirs and left before I noticed.\nHannah: Oh no. And the timer software?\nRavi: It crashed halfway through twice, so I had to restart the whole session. People turning up late wasn't a problem, though. Everyone was on time.\nHannah: Good. Let's see what Dr Chen thinks of the design.\nDr Chen: I've read it. Participants first. You plan twenty. That's too few for the effect you want, so I'd go for forty.\nHannah: Forty? We'd run out of time.\nDr Chen: Thirty-five is workable, but aim for forty. Now the noise. You're using pop music, but people differ in taste, which muddies the results. Use recordings of traffic instead.\nRavi: And the written summaries are graded by me.\nDr Chen: Since you know which condition each person was in, you could be biased. Ask a second marker to look at them too. Also, you only have noisy conditions. Add a silent one so you can compare.\nHannah: Should we pay the participants?\nDr Chen: Not necessary. Course credit is enough. One last thing. The task is twenty minutes long. That's tiring, and people will make mistakes because of fatigue, not noise. Ten minutes is plenty.\nRavi: Right, ten minutes.\nHannah: Now, analysis. I suggest the spreadsheet. We all know it already, so no training is needed.\nRavi: True. But the statistical package can cope with big datasets, and ours could reach hundreds of rows, so that's the sensible choice if the numbers grow.\nHannah: Is it on the lab computers?\nRavi: No, sadly. We'd have to install it on our laptops.\nHannah: Okay. What about the online calculator some people use?\nRavi: It costs nothing, which is attractive, but I wouldn't use it for the final analysis.\nHannah: And doing it by hand?\nRavi: Slow, but you'd get a very precise answer because you check every step. I'd keep that as a check. Then there's the chart app. It makes the graphs for you automatically, which would save us a whole night.\nDr Chen: Let's agree deadlines. The ethics form has to be with the committee by Friday.\nRavi: I thought it was Monday.\nDr Chen: The committee meets on Monday, so you submit it by Friday. Have all the sessions booked by next Monday. I need your draft report two weeks from now.\nHannah: And the poster? We could do it when the results are ready.\nDr Chen: No, I want a fixed date. It's due at the end of the month. The presentation itself is after the holidays, but finish the slides before they start.\nRavi: Understood. Thank you. It was useful to see everything go wrong before the real experiment.\nDr Chen: Exactly what a pilot is for. Email me if anything is unclear before the weekend.",
+ "questions": [
+  {
+   "prompt": "Which problem occurred when recruiting volunteers?",
+   "options": [
+    "Too few people replied",
+    "The room was double-booked",
+    "Some questions were confusing",
+    "The program stopped working",
+    "Forms were not signed",
+    "Participants arrived late"
+   ],
+   "answer": "Too few people replied",
+   "why": "Chỉ năm người trả lời email trong khi cần mười hai.",
+   "quote": "just five replied to our email"
+  },
+  {
+   "prompt": "Which problem occurred with the quiet lab?",
+   "options": [
+    "Too few people replied",
+    "The room was double-booked",
+    "Some questions were confusing",
+    "The program stopped working",
+    "Forms were not signed",
+    "Participants arrived late"
+   ],
+   "answer": "The room was double-booked",
+   "why": "Có người khác đã ở trong phòng nên phải chuyển sang phòng hội thảo.",
+   "quote": "Someone else was already in there"
+  },
+  {
+   "prompt": "Which problem occurred with the questionnaire?",
+   "options": [
+    "Too few people replied",
+    "The room was double-booked",
+    "Some questions were confusing",
+    "The program stopped working",
+    "Forms were not signed",
+    "Participants arrived late"
+   ],
+   "answer": "Some questions were confusing",
+   "why": "Câu sáu làm mọi người bối rối.",
+   "quote": "Question six confused everyone"
+  },
+  {
+   "prompt": "Which problem occurred with the consent forms?",
+   "options": [
+    "Too few people replied",
+    "The room was double-booked",
+    "Some questions were confusing",
+    "The program stopped working",
+    "Forms were not signed",
+    "Participants arrived late"
+   ],
+   "answer": "Forms were not signed",
+   "why": "Ba người quên ký rồi bỏ đi.",
+   "quote": "forgot to sign theirs"
+  },
+  {
+   "prompt": "Which problem occurred with the timer software?",
+   "options": [
+    "Too few people replied",
+    "The room was double-booked",
+    "Some questions were confusing",
+    "The program stopped working",
+    "Forms were not signed",
+    "Participants arrived late"
+   ],
+   "answer": "The program stopped working",
+   "why": "Phần mềm treo hai lần giữa chừng. Bẫy: đến muộn không xảy ra, mọi người đúng giờ.",
+   "quote": "It crashed halfway through twice"
+  },
+  {
+   "prompt": "What does Dr Chen recommend for the number of participants?",
+   "options": [
+    "Increase the number to forty",
+    "Use traffic sounds instead of music",
+    "Shorten it to ten minutes",
+    "Have a second person mark them",
+    "Add a silent condition",
+    "Pay the participants"
+   ],
+   "answer": "Increase the number to forty",
+   "why": "Hai mươi là quá ít; Dr Chen khuyên nhắm tới bốn mươi (ba mươi lăm vẫn làm được).",
+   "quote": "aim for forty"
+  },
+  {
+   "prompt": "What does Dr Chen recommend for the type of noise?",
+   "options": [
+    "Increase the number to forty",
+    "Use traffic sounds instead of music",
+    "Shorten it to ten minutes",
+    "Have a second person mark them",
+    "Add a silent condition",
+    "Pay the participants"
+   ],
+   "answer": "Use traffic sounds instead of music",
+   "why": "Nhạc pop làm kết quả nhiễu vì gu mỗi người; dùng tiếng giao thông.",
+   "quote": "Use recordings of traffic instead"
+  },
+  {
+   "prompt": "What does Dr Chen recommend for the grading of the summaries?",
+   "options": [
+    "Increase the number to forty",
+    "Use traffic sounds instead of music",
+    "Shorten it to ten minutes",
+    "Have a second person mark them",
+    "Add a silent condition",
+    "Pay the participants"
+   ],
+   "answer": "Have a second person mark them",
+   "why": "Ravi biết điều kiện của từng người nên có thể thiên vị; nhờ người chấm thứ hai.",
+   "quote": "Ask a second marker to look at them too"
+  },
+  {
+   "prompt": "What does Dr Chen recommend for the comparison with noisy conditions?",
+   "options": [
+    "Increase the number to forty",
+    "Use traffic sounds instead of music",
+    "Shorten it to ten minutes",
+    "Have a second person mark them",
+    "Add a silent condition",
+    "Pay the participants"
+   ],
+   "answer": "Add a silent condition",
+   "why": "Chỉ có điều kiện ồn; thêm điều kiện yên lặng để so sánh.",
+   "quote": "Add a silent one so you can compare"
+  },
+  {
+   "prompt": "What does Dr Chen recommend for the length of the task?",
+   "options": [
+    "Increase the number to forty",
+    "Use traffic sounds instead of music",
+    "Shorten it to ten minutes",
+    "Have a second person mark them",
+    "Add a silent condition",
+    "Pay the participants"
+   ],
+   "answer": "Shorten it to ten minutes",
+   "why": "Hai mươi phút gây mệt; mười phút là đủ. Bẫy: trả tiền người tham gia bị bác, tín chỉ khoá học là đủ.",
+   "quote": "Ten minutes is plenty"
+  },
+  {
+   "prompt": "What is the advantage of the spreadsheet?",
+   "options": [
+    "Everyone already knows it",
+    "It makes graphs automatically",
+    "It costs nothing",
+    "It can handle large datasets",
+    "It is on the lab computers",
+    "It gives very precise answers"
+   ],
+   "answer": "Everyone already knows it",
+   "why": "Cả nhóm đã biết dùng nên không cần đào tạo.",
+   "quote": "We all know it already"
+  },
+  {
+   "prompt": "What is the advantage of the statistical package?",
+   "options": [
+    "Everyone already knows it",
+    "It makes graphs automatically",
+    "It costs nothing",
+    "It can handle large datasets",
+    "It is on the lab computers",
+    "It gives very precise answers"
+   ],
+   "answer": "It can handle large datasets",
+   "why": "Gói thống kê xử lý được bộ dữ liệu lớn, hàng trăm dòng. Bẫy: nó không có trên máy phòng lab.",
+   "quote": "can cope with big datasets"
+  },
+  {
+   "prompt": "What is the advantage of the online calculator?",
+   "options": [
+    "Everyone already knows it",
+    "It makes graphs automatically",
+    "It costs nothing",
+    "It can handle large datasets",
+    "It is on the lab computers",
+    "It gives very precise answers"
+   ],
+   "answer": "It costs nothing",
+   "why": "Máy tính trực tuyến miễn phí nhưng không dùng cho phân tích cuối.",
+   "quote": "It costs nothing"
+  },
+  {
+   "prompt": "What is the advantage of doing calculations by hand?",
+   "options": [
+    "Everyone already knows it",
+    "It makes graphs automatically",
+    "It costs nothing",
+    "It can handle large datasets",
+    "It is on the lab computers",
+    "It gives very precise answers"
+   ],
+   "answer": "It gives very precise answers",
+   "why": "Tính tay chậm nhưng cho kết quả rất chính xác vì kiểm từng bước.",
+   "quote": "a very precise answer"
+  },
+  {
+   "prompt": "What is the advantage of the chart app?",
+   "options": [
+    "Everyone already knows it",
+    "It makes graphs automatically",
+    "It costs nothing",
+    "It can handle large datasets",
+    "It is on the lab computers",
+    "It gives very precise answers"
+   ],
+   "answer": "It makes graphs automatically",
+   "why": "Ứng dụng biểu đồ tự vẽ đồ thị, tiết kiệm cả đêm.",
+   "quote": "makes the graphs for you automatically"
+  },
+  {
+   "prompt": "When must the ethics form be submitted?",
+   "options": [
+    "By Friday",
+    "By next Monday",
+    "In two weeks",
+    "At the end of the month",
+    "Before the holidays",
+    "When the results are ready"
+   ],
+   "answer": "By Friday",
+   "why": "Uỷ ban họp thứ Hai nên phải nộp trước thứ Sáu. Bẫy: Ravi tưởng là thứ Hai.",
+   "quote": "you submit it by Friday"
+  },
+  {
+   "prompt": "When must the sessions be booked?",
+   "options": [
+    "By Friday",
+    "By next Monday",
+    "In two weeks",
+    "At the end of the month",
+    "Before the holidays",
+    "When the results are ready"
+   ],
+   "answer": "By next Monday",
+   "why": "Phải đặt xong các buổi trước thứ Hai tuần sau.",
+   "quote": "booked by next Monday"
+  },
+  {
+   "prompt": "When is the draft report due?",
+   "options": [
+    "By Friday",
+    "By next Monday",
+    "In two weeks",
+    "At the end of the month",
+    "Before the holidays",
+    "When the results are ready"
+   ],
+   "answer": "In two weeks",
+   "why": "Dr Chen cần bản nháp sau hai tuần.",
+   "quote": "two weeks from now"
+  },
+  {
+   "prompt": "When is the poster due?",
+   "options": [
+    "By Friday",
+    "By next Monday",
+    "In two weeks",
+    "At the end of the month",
+    "Before the holidays",
+    "When the results are ready"
+   ],
+   "answer": "At the end of the month",
+   "why": "Dr Chen muốn hạn cố định, không đợi có kết quả: cuối tháng.",
+   "quote": "due at the end of the month"
+  },
+  {
+   "prompt": "When must the presentation slides be finished?",
+   "options": [
+    "By Friday",
+    "By next Monday",
+    "In two weeks",
+    "At the end of the month",
+    "Before the holidays",
+    "When the results are ready"
+   ],
+   "answer": "Before the holidays",
+   "why": "Bài thuyết trình sau kỳ nghỉ nhưng phải xong slide trước khi kỳ nghỉ bắt đầu.",
+   "quote": "finish the slides before they start"
+  }
+ ]
+}

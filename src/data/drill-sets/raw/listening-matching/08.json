@@ -1,0 +1,287 @@
+{
+ "title": "Launching a Reusable Cup Business",
+ "topic": "Student start-up planning",
+ "context": "Zoe: Marcus, thanks for coming early. I've finished going through the survey results, and I'd like us to agree what each customer group told us.\nMarcus: No problem. I printed all two hundred responses, so we can check anything you say. Start with students.\nZoe: Students care about price above everything. They said they'd buy a cup only if it cost less than five pounds.\nMarcus: What about office workers? I assumed they'd be our best customers.\nZoe: They like the idea, but most said they forget to bring the cup to the café. So forgetting is the real problem.\nMarcus: Tourists?\nZoe: They would happily pay extra for a stylish design, as a souvenir. One woman said she'd pay twenty pounds.\nMarcus: That is a useful idea for a special gift range, with the town name printed on the side.\nMarcus: Did anyone say they already own one?\nZoe: Lots did, actually, but that wasn't the main point for any particular group. Parents were different. They're worried about hygiene, whether the cup gets washed properly.\nMarcus: And retired people?\nZoe: They buy coffee mainly at weekends, when they meet friends. So weekend promotions might work.\nZoe: It is exciting, isn't it? A year ago this was just a joke in the kitchen.\nMs Ferreira: Good afternoon, both. Sorry I am late, the train was delayed. I have read your business plan twice, and it is promising. Let's look at your costings. Materials first.\nZoe: Bamboo fibre, about one pound twenty a cup.\nMs Ferreira: That's higher than I would expect. Most start-ups pay under a pound. Production?\nMarcus: We've been quoted fifty pence a cup.\nMs Ferreira: That's lower than I expected, well done. Packaging, then. You've listed a gift box.\nZoe: It's expensive, but the supplier said we could get a cheaper box from a different firm.\nMs Ferreira: Then change supplier. For advertising you've put three thousand pounds. That seems normal for this industry. And delivery. Put it in a separate budget line, because costs vary with distance.\nMarcus: We thought insurance wasn't needed yet.\nMs Ferreira: Actually, you do need it, so add that too.\nZoe: Now, where we sell. An online shop would be cheap to run, but it grows slowly because nobody knows us.\nMarcus: A market stall earns the most per cup, since there's no middleman, though it's tiring.\nZoe: Cafés might stock them, but only if we agree to supply at least five hundred cups upfront.\nMarcus: The university shop would reach thousands of students quickly, which is great.\nZoe: Supermarkets need us to have a special licence, and we've no idea how to get one.\nMs Ferreira: Let's decide who you'll contact this week. The bank first. You will ask about a loan for the first batch.\nMarcus: And the supplier, to get a quotation for five hundred cups.\nZoe: The lawyer, to register our brand name before someone else does.\nMarcus: The designer, to redo the logo. It looks too childish.\nZoe: And the accountant, to help with tax. We're confused about it.\nMs Ferreira: Will you test the cups at a laboratory?\nMarcus: No, we'll test them ourselves in the kitchen.\nMs Ferreira: Fine. Come back to me on Friday and tell me how it went.\nMarcus: We will email you a revised budget tomorrow, with the insurance included.",
+ "questions": [
+  {
+   "prompt": "What did the survey find about students?",
+   "options": [
+    "They would pay more for a stylish design",
+    "They care most about the price",
+    "They already own a reusable cup",
+    "They buy coffee mainly at weekends",
+    "They are worried about hygiene",
+    "They say they forget to bring it"
+   ],
+   "answer": "They care most about the price",
+   "why": "Sinh viên quan tâm giá trên hết, chỉ mua nếu dưới năm bảng.",
+   "quote": "care about price above everything"
+  },
+  {
+   "prompt": "What did the survey find about office workers?",
+   "options": [
+    "They would pay more for a stylish design",
+    "They care most about the price",
+    "They already own a reusable cup",
+    "They buy coffee mainly at weekends",
+    "They are worried about hygiene",
+    "They say they forget to bring it"
+   ],
+   "answer": "They say they forget to bring it",
+   "why": "Nhân viên văn phòng thích ý tưởng nhưng hay quên mang cốc.",
+   "quote": "they forget to bring the cup"
+  },
+  {
+   "prompt": "What did the survey find about tourists?",
+   "options": [
+    "They would pay more for a stylish design",
+    "They care most about the price",
+    "They already own a reusable cup",
+    "They buy coffee mainly at weekends",
+    "They are worried about hygiene",
+    "They say they forget to bring it"
+   ],
+   "answer": "They would pay more for a stylish design",
+   "why": "Du khách sẵn sàng trả thêm cho mẫu đẹp làm quà lưu niệm.",
+   "quote": "pay extra for a stylish design"
+  },
+  {
+   "prompt": "What did the survey find about parents?",
+   "options": [
+    "They would pay more for a stylish design",
+    "They care most about the price",
+    "They already own a reusable cup",
+    "They buy coffee mainly at weekends",
+    "They are worried about hygiene",
+    "They say they forget to bring it"
+   ],
+   "answer": "They are worried about hygiene",
+   "why": "Phụ huynh lo vệ sinh, cốc có được rửa sạch không.",
+   "quote": "worried about hygiene"
+  },
+  {
+   "prompt": "What did the survey find about retired people?",
+   "options": [
+    "They would pay more for a stylish design",
+    "They care most about the price",
+    "They already own a reusable cup",
+    "They buy coffee mainly at weekends",
+    "They are worried about hygiene",
+    "They say they forget to bring it"
+   ],
+   "answer": "They buy coffee mainly at weekends",
+   "why": "Người về hưu chủ yếu mua cà phê vào cuối tuần. Bẫy: nhiều người đã có cốc riêng nhưng không phải điểm chính của nhóm nào.",
+   "quote": "mainly at weekends"
+  },
+  {
+   "prompt": "What does Ms Ferreira say about the cost of materials?",
+   "options": [
+    "It is lower than expected",
+    "It is higher than expected",
+    "It could be reduced by changing supplier",
+    "It is normal for the industry",
+    "It should have its own budget line",
+    "It is not needed yet"
+   ],
+   "answer": "It is higher than expected",
+   "why": "Một bảng hai mươi một cốc cao hơn mức bà dự kiến; hầu hết công ty khởi nghiệp trả dưới một bảng.",
+   "quote": "higher than I would expect"
+  },
+  {
+   "prompt": "What does Ms Ferreira say about the cost of production?",
+   "options": [
+    "It is lower than expected",
+    "It is higher than expected",
+    "It could be reduced by changing supplier",
+    "It is normal for the industry",
+    "It should have its own budget line",
+    "It is not needed yet"
+   ],
+   "answer": "It is lower than expected",
+   "why": "Năm mươi penny một cốc thấp hơn bà mong đợi.",
+   "quote": "lower than I expected"
+  },
+  {
+   "prompt": "What does Ms Ferreira say about the gift box for packaging?",
+   "options": [
+    "It is lower than expected",
+    "It is higher than expected",
+    "It could be reduced by changing supplier",
+    "It is normal for the industry",
+    "It should have its own budget line",
+    "It is not needed yet"
+   ],
+   "answer": "It could be reduced by changing supplier",
+   "why": "Hộp quà đắt nhưng có thể mua rẻ hơn nếu đổi nhà cung cấp.",
+   "quote": "Then change supplier"
+  },
+  {
+   "prompt": "What does Ms Ferreira say about the advertising budget?",
+   "options": [
+    "It is lower than expected",
+    "It is higher than expected",
+    "It could be reduced by changing supplier",
+    "It is normal for the industry",
+    "It should have its own budget line",
+    "It is not needed yet"
+   ],
+   "answer": "It is normal for the industry",
+   "why": "Ba nghìn bảng là bình thường với ngành này.",
+   "quote": "That seems normal for this industry"
+  },
+  {
+   "prompt": "What does Ms Ferreira say about delivery?",
+   "options": [
+    "It is lower than expected",
+    "It is higher than expected",
+    "It could be reduced by changing supplier",
+    "It is normal for the industry",
+    "It should have its own budget line",
+    "It is not needed yet"
+   ],
+   "answer": "It should have its own budget line",
+   "why": "Chi phí giao hàng thay đổi theo khoảng cách nên đặt thành dòng ngân sách riêng. Bảo hiểm thì cần, không phải chưa cần.",
+   "quote": "Put it in a separate budget line"
+  },
+  {
+   "prompt": "What is said about the online shop?",
+   "options": [
+    "It is cheap but grows slowly",
+    "It gives the highest profit per cup",
+    "It needs a large order from the start",
+    "It reaches many customers quickly",
+    "It needs a special licence",
+    "It sells only in the summer"
+   ],
+   "answer": "It is cheap but grows slowly",
+   "why": "Cửa hàng trực tuyến rẻ nhưng tăng trưởng chậm vì chưa ai biết đến.",
+   "quote": "grows slowly because nobody knows us"
+  },
+  {
+   "prompt": "What is said about the market stall?",
+   "options": [
+    "It is cheap but grows slowly",
+    "It gives the highest profit per cup",
+    "It needs a large order from the start",
+    "It reaches many customers quickly",
+    "It needs a special licence",
+    "It sells only in the summer"
+   ],
+   "answer": "It gives the highest profit per cup",
+   "why": "Quầy chợ lãi nhiều nhất mỗi cốc vì không qua trung gian.",
+   "quote": "earns the most per cup"
+  },
+  {
+   "prompt": "What is said about selling through cafés?",
+   "options": [
+    "It is cheap but grows slowly",
+    "It gives the highest profit per cup",
+    "It needs a large order from the start",
+    "It reaches many customers quickly",
+    "It needs a special licence",
+    "It sells only in the summer"
+   ],
+   "answer": "It needs a large order from the start",
+   "why": "Quán cà phê chỉ nhập nếu cung cấp ít nhất năm trăm cốc ngay từ đầu.",
+   "quote": "at least five hundred cups upfront"
+  },
+  {
+   "prompt": "What is said about the university shop?",
+   "options": [
+    "It is cheap but grows slowly",
+    "It gives the highest profit per cup",
+    "It needs a large order from the start",
+    "It reaches many customers quickly",
+    "It needs a special licence",
+    "It sells only in the summer"
+   ],
+   "answer": "It reaches many customers quickly",
+   "why": "Cửa hàng trường tiếp cận hàng nghìn sinh viên nhanh.",
+   "quote": "reach thousands of students quickly"
+  },
+  {
+   "prompt": "What is said about supermarkets?",
+   "options": [
+    "It is cheap but grows slowly",
+    "It gives the highest profit per cup",
+    "It needs a large order from the start",
+    "It reaches many customers quickly",
+    "It needs a special licence",
+    "It sells only in the summer"
+   ],
+   "answer": "It needs a special licence",
+   "why": "Siêu thị đòi giấy phép đặc biệt mà họ chưa biết cách xin.",
+   "quote": "need us to have a special licence"
+  },
+  {
+   "prompt": "Why will the students contact the bank?",
+   "options": [
+    "To ask about a loan",
+    "To get a price for 500 cups",
+    "To register the brand name",
+    "To redesign the logo",
+    "To get help with tax",
+    "To test the product"
+   ],
+   "answer": "To ask about a loan",
+   "why": "Hỏi vay vốn cho mẻ đầu tiên.",
+   "quote": "ask about a loan for the first batch"
+  },
+  {
+   "prompt": "Why will the students contact the supplier?",
+   "options": [
+    "To ask about a loan",
+    "To get a price for 500 cups",
+    "To register the brand name",
+    "To redesign the logo",
+    "To get help with tax",
+    "To test the product"
+   ],
+   "answer": "To get a price for 500 cups",
+   "why": "Xin báo giá năm trăm cốc.",
+   "quote": "a quotation for five hundred cups"
+  },
+  {
+   "prompt": "Why will the students contact the lawyer?",
+   "options": [
+    "To ask about a loan",
+    "To get a price for 500 cups",
+    "To register the brand name",
+    "To redesign the logo",
+    "To get help with tax",
+    "To test the product"
+   ],
+   "answer": "To register the brand name",
+   "why": "Đăng ký tên thương hiệu trước khi người khác làm.",
+   "quote": "register our brand name"
+  },
+  {
+   "prompt": "Why will the students contact the designer?",
+   "options": [
+    "To ask about a loan",
+    "To get a price for 500 cups",
+    "To register the brand name",
+    "To redesign the logo",
+    "To get help with tax",
+    "To test the product"
+   ],
+   "answer": "To redesign the logo",
+   "why": "Thiết kế lại logo vì trông quá trẻ con.",
+   "quote": "redo the logo"
+  },
+  {
+   "prompt": "Why will the students contact the accountant?",
+   "options": [
+    "To ask about a loan",
+    "To get a price for 500 cups",
+    "To register the brand name",
+    "To redesign the logo",
+    "To get help with tax",
+    "To test the product"
+   ],
+   "answer": "To get help with tax",
+   "why": "Nhờ giúp việc thuế vì họ đang rối. Bẫy: kiểm tra sản phẩm họ tự làm trong bếp, không nhờ phòng thí nghiệm.",
+   "quote": "help with tax"
+  }
+ ]
+}

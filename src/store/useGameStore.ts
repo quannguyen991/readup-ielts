@@ -9,6 +9,7 @@ import { mascotOf, useRewardStore } from './useRewardStore';
 import { MASCOTS, perksOf, STAR_BONUS } from '@/services/game/mascots';
 import { isFlightSfx, setSfxMuted, sfx } from '@/services/audio/sfx';
 import { dateKey } from '@/services/gamification/points';
+import { streakTierItem, streakTierStars } from '@/services/gamification/streak-tiers';
 import {
   dailyQuests,
   EMPTY_DAY,
@@ -64,6 +65,8 @@ type GameState = GamePayload & {
   addItem: (kind: ItemKind, n?: number) => void;
   claimQuest: (id: string) => boolean;
   setEnabled: (on: boolean) => void;
+  /** Thưởng mốc chuỗi câu đúng (5, 10, 15…): sao + món kho đồ. Gọi một lần cho mỗi mốc. */
+  streakReward: (n: number) => { stars: number; item: ItemKind | null };
 };
 
 function initial(): GamePayload {
@@ -342,6 +345,17 @@ export const useGameStore = create<GameState>()(
         set({ items: { ...s.items, [kind]: (s.items[kind] ?? 0) + n } });
       },
 
+      streakReward: (n) => {
+        const stars = starGain(streakTierStars(n), `chuỗi ${n} câu đúng`);
+        const item = streakTierItem(n);
+        if (item) get().addItem(item, 1);
+        if (stars > 0) {
+          const s = get();
+          set({ today: { ...s.today, stars: s.today.stars + stars }, bonusStars: (s.bonusStars ?? 0) + stars });
+        }
+        return { stars, item };
+      },
+
       claimQuest: (id) => {
         const s = get();
         const { day, today, claimed } = rolled(s);
@@ -378,7 +392,7 @@ export const useGameStore = create<GameState>()(
       storage: storage(),
       version: 1,
       partialize: (s) => {
-        const { answer: _a, awardBatch: _b, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = s;
+        const { answer: _a, awardBatch: _b, spendItem: _u, addItem: _i, streakReward: _sr, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = s;
         return data;
       },
       // Máy đã tắt tiếng từ lần trước thì im ngay từ tiếng đầu tiên của phiên mới.
@@ -391,6 +405,6 @@ export const useGameStore = create<GameState>()(
 
 /** Dữ liệu để đồng bộ: mọi thứ trừ hai công tắc game và âm thanh (mỗi máy tự chọn). */
 export function gamePayload(): GamePayload {
-  const { enabled: _on, sound: _snd, answer: _a, awardBatch: _b, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = useGameStore.getState();
+  const { enabled: _on, sound: _snd, answer: _a, awardBatch: _b, spendItem: _u, addItem: _i, streakReward: _sr, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = useGameStore.getState();
   return data;
 }

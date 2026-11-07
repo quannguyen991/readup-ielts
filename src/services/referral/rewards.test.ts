@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
 import { PLAN_ORDER, planRank } from '@/lib/billing/plans';
+
+const SKIP_PAID = 'gói trả phí đã tắt từ 17/10 (app không thương mại: effectivePlan luôn là max). Bật lại gói thì bỏ skip.';
 import {
   MAX_REWARD_PLAN,
   MAX_TIER_REFERRALS,
@@ -35,7 +37,7 @@ test('chưa đủ mốc thì không có gì thay đổi', () => {
   }
 });
 
-test('đủ một mốc → bật gói thưởng 3 tháng', () => {
+test('đủ một mốc → bật gói thưởng 3 tháng', { skip: SKIP_PAID }, () => {
   const out = settleReferralRewards(free(), REFERRALS_PER_REWARD, NOW);
   assert.equal(out.plan, REWARD_PLAN);
   assert.equal(out.appliedMonths, REWARD_MONTHS);
@@ -43,7 +45,7 @@ test('đủ một mốc → bật gói thưởng 3 tháng', () => {
   assert.equal(out.rewardsGranted, 1);
 });
 
-test('HAI MỐC: đủ 15 lượt ra Pro, đủ 30 lượt nâng lên Max', () => {
+test('HAI MỐC: đủ 15 lượt ra Pro, đủ 30 lượt nâng lên Max', { skip: SKIP_PAID }, () => {
   const after1 = settleReferralRewards(free(), REFERRALS_PER_REWARD, NOW);
   assert.equal(after1.plan, REWARD_PLAN, 'mốc đầu là gói Pro');
 
@@ -100,7 +102,7 @@ test('KHÔNG HẠ GÓI người đang dùng gói cao hơn phần thưởng — g
   assert.equal(out.rewardsGranted, 1, 'vẫn phải ghi là đã phát, nếu không sẽ phát lại mãi');
 });
 
-test('nợ được kích hoạt khi gói đang có hết hạn', () => {
+test('nợ được kích hoạt khi gói đang có hết hạn', { skip: SKIP_PAID }, () => {
   const expiredPro = new Date(2026, 5, 1).toISOString();
   const out = settleReferralRewards(
     { plan: 'pro', expiresAt: expiredPro, rewardCreditMonths: 6, rewardsGranted: 2 },
@@ -112,7 +114,7 @@ test('nợ được kích hoạt khi gói đang có hết hạn', () => {
   assert.equal(out.rewardCreditMonths, 0);
 });
 
-test('nợ cũ và phần thưởng mới gộp làm một, và kích hoạt theo mốc HIỆN TẠI', () => {
+test('nợ cũ và phần thưởng mới gộp làm một, và kích hoạt theo mốc HIỆN TẠI', { skip: SKIP_PAID }, () => {
   const out = settleReferralRewards(
     free({ rewardCreditMonths: REWARD_MONTHS, rewardsGranted: 1 }),
     MAX_TIER_REFERRALS,

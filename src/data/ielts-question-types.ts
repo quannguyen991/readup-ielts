@@ -329,6 +329,28 @@ export const IELTS_QUESTION_TYPES: IeltsQuestionTypeMeta[] = [
     tips: [
       'Dành phần lớn thời gian (khoảng 40-50 giây) cho gạch đầu dòng cuối cùng ("and explain why...") vì đây là phần đắt giá nhất để phô diễn từ vựng trừu tượng và ngữ pháp phức tạp.'
     ]
+  },
+  {
+    id: 'speaking-part-3-discussion',
+    skill: 'speaking',
+    titleEn: 'Speaking Part 3: Abstract Discussion',
+    titleVi: 'Thảo luận chuyên sâu & lập luận (Part 3)',
+    frequency: 'Rất cao (Luôn có)',
+    difficultyLevel: 'Khó',
+    descriptionVi: 'Giám khảo hỏi các câu trừu tượng, mang tính xã hội, nối từ chủ đề Part 2. Thí sinh phải nêu quan điểm, so sánh, dự đoán và giải thích nguyên nhân – hệ quả.',
+    steps: [
+      'Trả lời thẳng quan điểm trong một câu ("I would say that...", "In my view...").',
+      'Đưa lý do, rồi một ví dụ mang tính xã hội (không chỉ chuyện cá nhân).',
+      'Mở rộng bằng so sánh (thế hệ, quốc gia, quá khứ – hiện tại) hoặc dự đoán tương lai.',
+      'Kết bằng một câu ngắn khẳng định lại ý chính, dài khoảng 25-40 giây mỗi câu.'
+    ],
+    traps: [
+      'Chỉ kể trải nghiệm bản thân trong khi câu hỏi hỏi về xã hội nói chung.',
+      'Trả lời "It depends" rồi dừng, không giải thích phụ thuộc vào điều gì.'
+    ],
+    tips: [
+      'Dùng cấu trúc đối lập: "On the one hand... on the other hand..." và các cụm giả định "If that were the case, ...".'
+    ]
   }
 ];
 

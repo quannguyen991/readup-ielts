@@ -1,0 +1,127 @@
+{
+ "title": "Stress and the Body",
+ "topic": "The physiology of stress",
+ "context": "Stress is often described as a feeling, but it is first of all a physical reaction. When the brain detects a threat, a small region called the hypothalamus triggers the adrenal glands, which sit on top of the kidneys, to release hormones. Adrenaline raises the heart rate and sends blood to the muscles, while cortisol increases the amount of sugar in the bloodstream. This response, known as fight or flight, evolved to help early humans escape predators, and it is useful in short bursts when a rapid reaction is needed. The body cannot tell the difference between a charging animal and an overflowing inbox, which is why modern worries can set off the same ancient alarm.\n\nProblems arise when the response is triggered again and again. Chronic stress keeps cortisol levels high for weeks or months, and the effects spread through the body. Blood pressure remains elevated, which strains the arteries, and digestion slows down. The immune system is suppressed, so people under prolonged pressure catch colds more often. In a well-known experiment, volunteers were deliberately exposed to a cold virus, and those who reported the highest levels of stress in the preceding weeks were significantly more likely to fall ill.\n\nStress also affects the brain. Elevated cortisol is linked to shrinkage in the hippocampus, a region involved in memory, and students often find that they forget material they knew well when they are anxious during examinations. Sleep suffers too, creating a cycle: tired people produce more cortisol, which makes it harder to sleep. Some researchers argue that this loop helps to explain why stress and depression frequently appear together in the same patients.\n\nNot all stress is harmful. Moderate challenges, such as preparing for a performance, can sharpen attention and improve results, a pattern psychologists describe as an inverted U: performance rises with pressure up to a peak and then falls away. Studies also suggest that attitude matters. People who are taught to see their racing heart as a sign that the body is preparing for action tend to perform better, and to show less anxiety, than those who try to suppress their nerves. Short, manageable pressure of this kind is sometimes called good stress, because it leaves people feeling energised rather than exhausted.\n\nCoping strategies fall into several groups. Physical activity burns off stress hormones and releases endorphins, which improve mood. Relaxation techniques, such as slow breathing, activate the parasympathetic nervous system, which slows the heart. Social support is among the most powerful buffers, since people with close friends recover from stressful events more quickly. Employers are increasingly encouraged to reduce the causes of stress, for example by limiting overtime, rather than simply offering workers advice on how to be more resilient. Few of these approaches are expensive, but all of them require regular practice to be effective.",
+ "questions": [
+  {
+   "prompt": "Before it is an emotion, stress is mainly a ____ reaction of the body.",
+   "answer": "physical",
+   "why": "Căng thẳng trước hết là phản ứng thể chất.",
+   "quote": "first of all a physical reaction"
+  },
+  {
+   "prompt": "A small brain region called the ____ starts the stress response.",
+   "answer": "hypothalamus",
+   "why": "Vùng dưới đồi khởi động phản ứng.",
+   "quote": "called the hypothalamus triggers"
+  },
+  {
+   "prompt": "The adrenal glands are located above the ____.",
+   "answer": "kidneys",
+   "why": "Tuyến thượng thận nằm trên thận.",
+   "quote": "on top of the kidneys"
+  },
+  {
+   "prompt": "Adrenaline makes the ____ rate go up.",
+   "answer": "heart",
+   "why": "Adrenaline làm tăng nhịp tim.",
+   "quote": "raises the heart rate"
+  },
+  {
+   "prompt": "Cortisol raises the level of ____ carried in the blood.",
+   "answer": "sugar",
+   "why": "Cortisol tăng đường trong máu.",
+   "quote": "amount of sugar in the bloodstream"
+  },
+  {
+   "prompt": "The fight or flight response developed to help our ancestors get away from ____.",
+   "answer": "predators",
+   "why": "Phản ứng này giúp tổ tiên thoát thú săn mồi.",
+   "quote": "escape predators"
+  },
+  {
+   "prompt": "Long-term stress leaves ____ at a high level for months.",
+   "answer": "cortisol",
+   "why": "Căng thẳng mạn tính giữ cortisol cao.",
+   "quote": "keeps cortisol levels high"
+  },
+  {
+   "prompt": "High blood pressure puts a strain on the ____.",
+   "answer": "arteries",
+   "why": "Huyết áp cao gây căng cho động mạch.",
+   "quote": "strains the arteries"
+  },
+  {
+   "prompt": "At the same time, the process of digestion ____.",
+   "answer": "slows",
+   "why": "Tiêu hoá chậm lại.",
+   "quote": "digestion slows down"
+  },
+  {
+   "prompt": "Under pressure over a long time, the immune system is ____ and people catch colds.",
+   "answer": "suppressed",
+   "why": "Hệ miễn dịch bị ức chế.",
+   "quote": "immune system is suppressed"
+  },
+  {
+   "prompt": "In one study, volunteers were given a cold ____ on purpose.",
+   "answer": "virus",
+   "why": "Tình nguyện viên bị phơi nhiễm virus cảm lạnh.",
+   "quote": "exposed to a cold virus"
+  },
+  {
+   "prompt": "High cortisol is associated with a shrinking of the ____, which handles memory.",
+   "answer": "hippocampus",
+   "why": "Hồi hải mã teo lại.",
+   "quote": "shrinkage in the hippocampus"
+  },
+  {
+   "prompt": "Anxious students may forget what they know during ____.",
+   "answer": "examinations",
+   "why": "Sinh viên lo lắng quên bài khi thi.",
+   "quote": "anxious during examinations"
+  },
+  {
+   "prompt": "Poor sleep and high cortisol create a vicious ____.",
+   "answer": "cycle",
+   "why": "Thiếu ngủ và cortisol tạo vòng luẩn quẩn.",
+   "quote": "creating a cycle"
+  },
+  {
+   "prompt": "This loop may explain why stress often occurs alongside ____.",
+   "answer": "depression",
+   "why": "Stress thường đi cùng trầm cảm.",
+   "quote": "stress and depression frequently"
+  },
+  {
+   "prompt": "In the inverted U pattern, performance increases until it reaches a ____.",
+   "answer": "peak",
+   "why": "Hiệu suất tăng tới đỉnh rồi giảm.",
+   "quote": "up to a peak"
+  },
+  {
+   "prompt": "Viewing a pounding heart as preparation for ____ improves performance.",
+   "answer": "action",
+   "why": "Coi tim đập nhanh là chuẩn bị hành động.",
+   "quote": "preparing for action"
+  },
+  {
+   "prompt": "Exercise helps mood because it releases ____.",
+   "answer": "endorphins",
+   "why": "Vận động giải phóng endorphin.",
+   "quote": "releases endorphins"
+  },
+  {
+   "prompt": "Slow breathing switches on the ____ nervous system and lowers the heart rate.",
+   "answer": "parasympathetic",
+   "why": "Thở chậm kích hoạt hệ phó giao cảm.",
+   "quote": "activate the parasympathetic nervous system"
+  },
+  {
+   "prompt": "Organisations are urged to cut stress at its source, for instance by restricting ____.",
+   "answer": "overtime",
+   "why": "Doanh nghiệp được khuyến khích hạn chế làm thêm giờ.",
+   "quote": "limiting overtime"
+  }
+ ]
+}

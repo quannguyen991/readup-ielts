@@ -6,7 +6,7 @@ import { arcPath, niceTicks, pieSlices, seriesExtent } from '@/services/writing/
 import { chartPalette, color } from '@/theme/tokens';
 import { pick, useLocale } from '@/i18n/useL';
 import type { Locale } from '@/i18n/keys';
-import type { ChartData, LineOrBarChart, PieChart, TableChart } from '@/lib/writing/types';
+import type { ChartData, LineOrBarChart, MapChart, PieChart, ProcessChart, TableChart } from '@/lib/writing/types';
 
 /**
  * Vẽ hình minh hoạ của một đề Task 1.
@@ -55,14 +55,60 @@ function renderBody(data: Exclude<ChartData, { kind: 'mixed' }>, width: number, 
       return <PieFigure data={data} width={width} />;
     case 'table':
       return <TableFigure data={data} />;
+    case 'process':
+      return <ProcessFigure data={data} />;
+    case 'map':
+      return <MapFigure data={data} />;
     default:
-      // process và map chưa dựng — nói rõ còn thiếu gì thay vì hiện khung trắng.
-      return (
-        <Text className="p-4 text-center font-sans text-body text-muted">
-          {pick(locale, 'Loại hình này sẽ được dựng ở lát sau.', "This chart type isn't available yet.")}
-        </Text>
-      );
+      return null;
   }
+}
+
+const MAP_FILL: Record<string, string> = {
+  building: '#E9D5FF', green: '#BBF7D0', water: '#BAE6FD', road: '#D6D3D1', sand: '#FDE68A', plain: '#F1F5F9',
+};
+
+/** Quy trình: các bước đánh số nối bằng mũi tên; vòng đời thì có dòng quay lại bước 1. */
+function ProcessFigure({ data }: { data: ProcessChart }) {
+  return (
+    <View className="gap-1 p-2">
+      {data.steps.map((step, i) => (
+        <View key={i} className="items-center">
+          <View className="w-full flex-row items-center gap-3 rounded-xl border border-border bg-canvas px-3 py-2.5">
+            <View className="h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: PALETTE[0] }}>
+              <Text className="font-strong text-label" style={{ color: '#FFFFFF' }}>{i + 1}</Text>
+            </View>
+            <Text className="flex-1 font-sans text-body text-ink">{step}</Text>
+          </View>
+          {i < data.steps.length - 1 ? <Text className="font-heavy text-body text-muted">↓</Text> : null}
+        </View>
+      ))}
+      {data.isCycle ? <Text className="mt-1 text-center font-mid text-label text-muted">↻ Quay lại bước 1</Text> : null}
+    </View>
+  );
+}
+
+/** Bản đồ: mỗi khung là một hình chữ nhật, ô đặt theo toạ độ tương đối 0–1. */
+function MapFigure({ data }: { data: MapChart }) {
+  return (
+    <View className="gap-3 p-2">
+      {data.panels.map((panel, pi) => (
+        <View key={pi}>
+          <Text className="mb-1 font-strong text-label text-ink">{panel.caption}</Text>
+          <View style={{ width: '100%', aspectRatio: 1.5, borderRadius: 12, borderWidth: 1, borderColor: '#CBD5E1', backgroundColor: '#FFFFFF', overflow: 'hidden' }}>
+            {panel.items.map((item, i) => (
+              <View
+                key={i}
+                style={{ position: 'absolute', left: `${item.x * 100}%`, top: `${item.y * 100}%`, width: `${item.w * 100}%`, height: `${item.h * 100}%`, backgroundColor: MAP_FILL[item.shape] ?? '#F1F5F9', borderWidth: 1, borderColor: '#94A3B8', borderRadius: 6, alignItems: 'center', justifyContent: 'center', padding: 2 }}
+              >
+                <Text className="text-center font-mid text-[11px] text-ink" numberOfLines={3}>{item.label}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      ))}
+    </View>
+  );
 }
 
 // ---------------------------------------------------------------------------

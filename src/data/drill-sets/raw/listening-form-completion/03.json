@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #3",
+ "topic": "Evening course enrolment · Lost property report · Clinic registration · Car rental",
+ "context": "Narrator: Conversation 1. Evening course enrolment.\nPriya: Parkside College, Priya speaking.\nCaller: Hello, I'd like to enrol on an evening photography course.\nPriya: What's your postcode?\nCaller: S C three, three T Z.\nPriya: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nPriya: It's F R four six eight two.\nPriya: The next course begins soon. Which date is the first class?\nCaller: The seventeenth of September... no, sorry, that's a Sunday. Make it the sixteenth of September.\nPriya: Can I take your surname, please?\nCaller: It's Whitlock. That's W, H, I, T, L, O, C, K.\nCaller: How much is the course fee?\nPriya: It's seventy-five pounds.\nPriya: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Lost property report.\nMark: Central Station lost property, Mark speaking.\nCaller: Hello, I think I left my rucksack on a train yesterday.\nCaller: How much is the handling charge?\nMark: It's forty pounds... oh, hold on, that's last year's price. This year it's fifty pounds.\nMark: What's your postcode?\nCaller: N G five, seven N P.\nMark: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nMark: It's J R eight five zero two.\nMark: And what's the best number to reach you on?\nCaller: It's oh seven six, five eight oh six, two oh one oh.\nMark: Can I take your surname, please?\nCaller: It's Yardley. That's Y, A, R, D, L, E, Y.\nMark: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Clinic registration.\nOlivia: Elm Park Medical Centre, Olivia speaking.\nCaller: Hello, I'd like to register as a new patient.\nOlivia: What's your postcode?\nCaller: M S eight, three M K.\nOlivia: How many years have you lived at your current address?\nCaller: Seven, I think. Actually, let me say six, it's better to be safe.\nOlivia: Can I take your surname, please?\nCaller: It's Quigley. That's Q, U, I, G, L, E, Y.\nOlivia: We can see you for a check-up. Which date suits you?\nCaller: The eighth of September, please.\nCaller: How much is the fee for the private form?\nOlivia: It's fifty pounds.\nOlivia: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Car rental.\nTony: Swift Car Hire, Tony speaking.\nCaller: Hello, I'd like to rent a small car for a few days.\nTony: And how many days do you need it for?\nCaller: Six, I think. Actually, let me say five, it's better to be safe.\nTony: What's your postcode?\nCaller: B M three, eight N B.\nCaller: How much is the insurance cost?\nTony: It's twenty pounds.\nTony: Can I take your surname, please?\nCaller: It's Quigley. That's Q, U, I, G, L, E, Y.\nTony: When would you like to collect it?\nCaller: The twelfth of September, please.\nTony: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Evening course enrolment] Postcode: ____",
+   "answer": "SC3 3TZ",
+   "why": "Người nói đọc: “S C three, three T Z”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "S C three, three T Z"
+  },
+  {
+   "prompt": "[Evening course enrolment] Student ID: ____",
+   "answer": "FR4682",
+   "why": "Người nói đọc: “F R four six eight two”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "F R four six eight two"
+  },
+  {
+   "prompt": "[Evening course enrolment] First class: ____",
+   "answer": "16 September | September 16 | 16th September | September 16th | sixteenth September",
+   "why": "Người nói đọc: “Make it the sixteenth of September”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the sixteenth of September"
+  },
+  {
+   "prompt": "[Evening course enrolment] Surname: ____",
+   "answer": "Whitlock",
+   "why": "Người nói đọc: “It's Whitlock. That's W, H, I, T, L, O, C, K.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Whitlock. That's W, H, I, T, L, O, C, K."
+  },
+  {
+   "prompt": "[Evening course enrolment] Course fee (£): ____",
+   "answer": "£75 | 75",
+   "why": "Người nói đọc: “seventy-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "seventy-five pounds"
+  },
+  {
+   "prompt": "[Lost property report] Handling charge (£): ____",
+   "answer": "£50 | 50",
+   "why": "Người nói đọc: “this year it's fifty pounds”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "this year it's fifty pounds"
+  },
+  {
+   "prompt": "[Lost property report] Postcode: ____",
+   "answer": "NG5 7NP",
+   "why": "Người nói đọc: “N G five, seven N P”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "N G five, seven N P"
+  },
+  {
+   "prompt": "[Lost property report] Report number: ____",
+   "answer": "JR8502",
+   "why": "Người nói đọc: “J R eight five zero two”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "J R eight five zero two"
+  },
+  {
+   "prompt": "[Lost property report] Phone number: ____",
+   "answer": "07658062010",
+   "why": "Người nói đọc: “oh seven six, five eight oh six, two oh one oh”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven six, five eight oh six, two oh one oh"
+  },
+  {
+   "prompt": "[Lost property report] Surname: ____",
+   "answer": "Yardley",
+   "why": "Người nói đọc: “It's Yardley. That's Y, A, R, D, L, E, Y.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Yardley. That's Y, A, R, D, L, E, Y."
+  },
+  {
+   "prompt": "[Clinic registration] Postcode: ____",
+   "answer": "MS8 3MK",
+   "why": "Người nói đọc: “M S eight, three M K”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "M S eight, three M K"
+  },
+  {
+   "prompt": "[Clinic registration] Years at this address: ____",
+   "answer": "6 | six",
+   "why": "Người nói đọc: “let me say six”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say six"
+  },
+  {
+   "prompt": "[Clinic registration] Surname: ____",
+   "answer": "Quigley",
+   "why": "Người nói đọc: “It's Quigley. That's Q, U, I, G, L, E, Y.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Quigley. That's Q, U, I, G, L, E, Y."
+  },
+  {
+   "prompt": "[Clinic registration] Appointment date: ____",
+   "answer": "8 September | September 8 | 8th September | September 8th | eighth September",
+   "why": "Người nói đọc: “The eighth of September”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The eighth of September"
+  },
+  {
+   "prompt": "[Clinic registration] Form fee (£): ____",
+   "answer": "£50 | 50",
+   "why": "Người nói đọc: “fifty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "fifty pounds"
+  },
+  {
+   "prompt": "[Car rental] Days of rental: ____",
+   "answer": "5 | five",
+   "why": "Người nói đọc: “let me say five”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say five"
+  },
+  {
+   "prompt": "[Car rental] Postcode: ____",
+   "answer": "BM3 8NB",
+   "why": "Người nói đọc: “B M three, eight N B”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "B M three, eight N B"
+  },
+  {
+   "prompt": "[Car rental] Insurance (£): ____",
+   "answer": "£20 | 20",
+   "why": "Người nói đọc: “twenty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "twenty pounds"
+  },
+  {
+   "prompt": "[Car rental] Surname: ____",
+   "answer": "Quigley",
+   "why": "Người nói đọc: “It's Quigley. That's Q, U, I, G, L, E, Y.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Quigley. That's Q, U, I, G, L, E, Y."
+  },
+  {
+   "prompt": "[Car rental] Pick-up date: ____",
+   "answer": "12 September | September 12 | 12th September | September 12th | twelfth September",
+   "why": "Người nói đọc: “The twelfth of September”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The twelfth of September"
+  }
+ ]
+}

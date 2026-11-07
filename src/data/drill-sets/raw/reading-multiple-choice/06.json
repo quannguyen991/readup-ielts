@@ -1,0 +1,247 @@
+{
+ "title": "Bleached Reefs and the Search for Resilience",
+ "topic": "Coral reefs and climate change",
+ "context": "Coral reefs cover less than one per cent of the ocean floor, yet they are home to about a quarter of all marine species. The builders of a reef are corals, which are animals, not plants. Each is a colony of tiny polyps whose tissues contain microscopic algae. The two live in partnership: the algae use sunlight to make sugars, supplying the coral with most of its energy, while the coral provides shelter and the chemicals the algae need. The arrangement is highly efficient, but it is also delicate. Their loss would therefore affect fisheries and coastal communities as well as divers and scientists.\n\nTrouble begins when the water stays about one degree Celsius above the normal summer maximum for several weeks. Under heat stress, the algae start to produce harmful compounds, and the coral responds by expelling them. Without the algae, the coral's transparent tissue reveals the white skeleton beneath, hence the term bleaching. A bleached coral is not necessarily dead. If temperatures fall within a few weeks, the algae can return and the colony recovers. If the heat continues, however, the coral starves. The first worldwide bleaching event was recorded in 1998, and since then such events have become more frequent. On the Great Barrier Reef, the average gap between severe episodes has shrunk from decades to roughly six years, and in 2016 and 2017 the reef was struck twice in succession, leaving too little time for recovery.\n\nYet the damage has not been uniform. Fast-growing branching corals, which provide hiding places for fish, are among the most vulnerable, whereas slow-growing boulder-shaped species often survive. Some reefs have even adapted to extraordinary conditions: those in the Persian Gulf endure summer temperatures that would kill most corals elsewhere. These exceptions have encouraged scientists to ask whether resilience can be encouraged, or even engineered.\n\nSeveral approaches are being tested. In selective breeding, researchers cross the most heat-tolerant colonies and raise their offspring in tanks, hoping to produce tougher stock. Others try exposing young corals to mild stress so that they become accustomed to it, or replacing their algae with heat-tolerant varieties. In coral gardening, fragments are grown in underwater nurseries and then attached to damaged reefs. These projects have produced encouraging results on a small scale, but a nursery that grows thousands of fragments a year is dwarfed by a reef system stretching over two thousand kilometres. Critics add that favouring a few tolerant strains may reduce genetic diversity, leaving reefs vulnerable to other threats.\n\nLocal conditions also matter. Reefs that suffer from polluted run-off or from overfishing recover more slowly than those that do not. In particular, parrotfish and other grazing species keep seaweed under control, and when they are caught in excess, seaweed can smother the young corals trying to re-establish themselves. Protecting reefs from these local pressures therefore buys valuable time, and in several regions it has measurably improved survival rates after bleaching.\n\nTime, though, is what the technology cannot ultimately provide. Climate models suggest that at 1.5 degrees of global warming, between seventy and ninety per cent of warm-water reefs would be lost, and at two degrees virtually all of them. Interventions such as breeding and gardening are best seen as emergency measures that give reefs a chance to survive until emissions fall. They are worth pursuing, but they are not a substitute for the harder task of cutting those emissions.",
+ "questions": [
+  {
+   "prompt": "What do corals receive from the algae in their tissues?",
+   "options": [
+    "Protection from predators",
+    "The chemicals needed to build skeletons",
+    "Most of their energy",
+    "Light for photosynthesis"
+   ],
+   "answer": "Most of their energy",
+   "why": "Tảo dùng ánh sáng làm đường, cung cấp phần lớn năng lượng cho san hô.",
+   "quote": "supplying the coral with most of its energy"
+  },
+  {
+   "prompt": "In paragraph 1, the writer calls the partnership 'delicate'. This means it is",
+   "options": [
+    "easily disrupted",
+    "very ancient",
+    "difficult to observe",
+    "expensive to maintain"
+   ],
+   "answer": "easily disrupted",
+   "why": "'Delicate' là mong manh, dễ bị phá vỡ; đoạn sau mô tả tảo bị đẩy ra khi nóng.",
+   "quote": "highly efficient, but it is also delicate"
+  },
+  {
+   "prompt": "What triggers coral bleaching?",
+   "options": [
+    "A sudden fall in light levels",
+    "Pollution from rivers",
+    "Competition from seaweed",
+    "Water staying about a degree above the usual summer maximum for weeks"
+   ],
+   "answer": "Water staying about a degree above the usual summer maximum for weeks",
+   "why": "Tẩy trắng bắt đầu khi nước nóng hơn mức tối đa mùa hè khoảng 1°C trong vài tuần.",
+   "quote": "about one degree Celsius above the normal summer maximum for several weeks"
+  },
+  {
+   "prompt": "Why does a bleached coral look white?",
+   "options": [
+    "Its skeleton turns white as it dies",
+    "Its transparent tissue shows the skeleton once the algae have gone",
+    "The algae produce a white pigment",
+    "Salt crystallises on its surface"
+   ],
+   "answer": "Its transparent tissue shows the skeleton once the algae have gone",
+   "why": "Mô trong suốt để lộ bộ xương trắng khi mất tảo.",
+   "quote": "the coral's transparent tissue reveals the white skeleton beneath"
+  },
+  {
+   "prompt": "What does the writer say about bleached corals?",
+   "options": [
+    "They can recover if temperatures fall within a few weeks",
+    "They are always dead",
+    "They die only if they are branching corals",
+    "They recover only after two years"
+   ],
+   "answer": "They can recover if temperatures fall within a few weeks",
+   "why": "San hô tẩy trắng chưa chắc chết; tảo trở lại nếu nhiệt độ giảm kịp.",
+   "quote": "A bleached coral is not necessarily dead."
+  },
+  {
+   "prompt": "What happened on the Great Barrier Reef in 2016 and 2017?",
+   "options": [
+    "The reef recovered fully",
+    "Bleaching struck in only one of the years",
+    "Two severe events in a row left too little time for recovery",
+    "The reef was closed to visitors"
+   ],
+   "answer": "Two severe events in a row left too little time for recovery",
+   "why": "Rạn bị tấn công hai lần liên tiếp nên không đủ thời gian hồi phục.",
+   "quote": "struck twice in succession, leaving too little time for recovery"
+  },
+  {
+   "prompt": "Which corals are among the most vulnerable?",
+   "options": [
+    "Slow-growing boulder-shaped species",
+    "Corals in the Persian Gulf",
+    "Corals grown in nurseries",
+    "Fast-growing branching corals"
+   ],
+   "answer": "Fast-growing branching corals",
+   "why": "San hô cành mọc nhanh nằm trong nhóm dễ tổn thương nhất; loại hình tảng thường sống sót.",
+   "quote": "Fast-growing branching corals, which provide hiding places for fish, are among the most vulnerable"
+  },
+  {
+   "prompt": "Why does the writer mention the reefs of the Persian Gulf?",
+   "options": [
+    "To show that heat does not harm reefs",
+    "To suggest that resilience might be encouraged because some reefs adapt to extreme conditions",
+    "To show that Gulf reefs are the largest in the world",
+    "To criticise coral gardening"
+   ],
+   "answer": "To suggest that resilience might be encouraged because some reefs adapt to extreme conditions",
+   "why": "Ngoại lệ này khiến các nhà khoa học hỏi liệu có thể khuyến khích hay tạo ra khả năng chống chịu.",
+   "quote": "These exceptions have encouraged scientists to ask whether resilience can be encouraged"
+  },
+  {
+   "prompt": "What is the aim of selective breeding?",
+   "options": [
+    "To produce corals that grow faster in cold water",
+    "To remove algae from corals",
+    "To produce tougher, heat-tolerant stock",
+    "To increase the number of fish"
+   ],
+   "answer": "To produce tougher, heat-tolerant stock",
+   "why": "Lai chọn lọc các tập đoàn chịu nhiệt tốt nhất để có giống bền hơn.",
+   "quote": "hoping to produce tougher stock"
+  },
+  {
+   "prompt": "What does coral gardening involve?",
+   "options": [
+    "Growing fragments in underwater nurseries and attaching them to damaged reefs",
+    "Moving whole reefs to cooler water",
+    "Adding algae to tanks",
+    "Removing bleached corals from reefs"
+   ],
+   "answer": "Growing fragments in underwater nurseries and attaching them to damaged reefs",
+   "why": "Mảnh san hô được nuôi trong vườn ươm dưới nước rồi gắn lên rạn bị hư.",
+   "quote": "fragments are grown in underwater nurseries and then attached to damaged reefs"
+  },
+  {
+   "prompt": "What does the writer say about the size of coral nurseries?",
+   "options": [
+    "They are large enough to cover a reef",
+    "They are small compared with a reef system",
+    "They are growing in number each year",
+    "They are banned in some countries"
+   ],
+   "answer": "They are small compared with a reef system",
+   "why": "Vườn ươm vài nghìn mảnh mỗi năm bị 'lấn át' bởi hệ rạn dài hơn hai nghìn km.",
+   "quote": "is dwarfed by a reef system stretching over two thousand kilometres"
+  },
+  {
+   "prompt": "What concern do critics raise?",
+   "options": [
+    "Nurseries attract predators",
+    "Transplanted corals do not attach",
+    "Tolerant strains grow too fast",
+    "Favouring a few strains may reduce genetic diversity"
+   ],
+   "answer": "Favouring a few strains may reduce genetic diversity",
+   "why": "Chọn ít dòng chịu nhiệt có thể làm giảm đa dạng di truyền.",
+   "quote": "may reduce genetic diversity"
+  },
+  {
+   "prompt": "Why are parrotfish important?",
+   "options": [
+    "They keep seaweed under control",
+    "They feed on live coral",
+    "They produce the algae that corals need",
+    "They eat bleached corals"
+   ],
+   "answer": "They keep seaweed under control",
+   "why": "Cá vẹt ăn rong, giữ cho rong không lấn san hô non.",
+   "quote": "keep seaweed under control"
+  },
+  {
+   "prompt": "In paragraph 5, 'smother' is closest in meaning to",
+   "options": [
+    "help",
+    "feed",
+    "cover and prevent from growing",
+    "carry away"
+   ],
+   "answer": "cover and prevent from growing",
+   "why": "Rong phủ lên san hô non, cản chúng phát triển.",
+   "quote": "seaweed can smother the young corals"
+  },
+  {
+   "prompt": "What does protecting reefs from local pressures achieve?",
+   "options": [
+    "It eliminates bleaching",
+    "It buys time and improves survival after bleaching",
+    "It lowers the sea temperature",
+    "It makes breeding unnecessary"
+   ],
+   "answer": "It buys time and improves survival after bleaching",
+   "why": "Bảo vệ khỏi ô nhiễm, đánh bắt quá mức mua thêm thời gian, cải thiện sống sót.",
+   "quote": "buys valuable time"
+  },
+  {
+   "prompt": "What do the climate models suggest about warming of two degrees?",
+   "options": [
+    "About half of reefs would be lost",
+    "Seventy per cent of reefs would be lost",
+    "Most reefs would adapt",
+    "Virtually all warm-water reefs would be lost"
+   ],
+   "answer": "Virtually all warm-water reefs would be lost",
+   "why": "Ở 2°C hầu như mọi rạn nước ấm sẽ mất; 70–90% là ở mức 1,5°C.",
+   "quote": "at two degrees virtually all of them"
+  },
+  {
+   "prompt": "How does the writer describe breeding and gardening?",
+   "options": [
+    "Permanent solutions",
+    "Unnecessary",
+    "Emergency measures",
+    "Harmful to reefs"
+   ],
+   "answer": "Emergency measures",
+   "why": "Tác giả gọi chúng là biện pháp khẩn cấp để rạn sống sót đến khi phát thải giảm.",
+   "quote": "best seen as emergency measures"
+  },
+  {
+   "prompt": "What is the main idea of paragraph 2?",
+   "options": [
+    "Heat stress can cause bleaching, and such events are becoming more frequent",
+    "Algae are harmful to corals",
+    "Bleaching is always permanent",
+    "The Great Barrier Reef has died"
+   ],
+   "answer": "Heat stress can cause bleaching, and such events are becoming more frequent",
+   "why": "Đoạn 2 giải thích cơ chế tẩy trắng và tần suất tăng.",
+   "quote": "such events have become more frequent"
+  },
+  {
+   "prompt": "What is the main purpose of paragraph 4?",
+   "options": [
+    "To criticise scientists",
+    "To explain why reefs cannot be saved",
+    "To describe the history of coral gardening",
+    "To outline methods being tested and their limitations"
+   ],
+   "answer": "To outline methods being tested and their limitations",
+   "why": "Đoạn 4 liệt kê các phương pháp và hạn chế (quy mô nhỏ, giảm đa dạng).",
+   "quote": "Several approaches are being tested."
+  },
+  {
+   "prompt": "What is the writer's overall view?",
+   "options": [
+    "Technology will soon make reefs safe",
+    "Interventions are worthwhile but cannot replace cutting emissions",
+    "Local protection is pointless",
+    "Reefs cannot be saved"
+   ],
+   "answer": "Interventions are worthwhile but cannot replace cutting emissions",
+   "why": "Tác giả nói chúng đáng theo đuổi nhưng không thay thế cắt giảm phát thải.",
+   "quote": "they are not a substitute for the harder task of cutting those emissions"
+  }
+ ]
+}

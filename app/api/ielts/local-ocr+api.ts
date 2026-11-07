@@ -33,7 +33,17 @@ function externalSourceOnlyTests(): SourceTest[] {
   }));
 }
 
-async function readBundle(): Promise<PrivateOcrBundle | null> {
+/** Bộ đề nặng ~12MB JSON: chỉ đọc và dựng một lần cho mỗi tiến trình, không đọc lại ở mỗi lần bấm. */
+let bundlePromise: Promise<PrivateOcrBundle | null> | null = null;
+function readBundle(): Promise<PrivateOcrBundle | null> {
+  bundlePromise ??= loadBundle().catch((error) => {
+    bundlePromise = null;
+    throw error;
+  });
+  return bundlePromise;
+}
+
+async function loadBundle(): Promise<PrivateOcrBundle | null> {
   const externalTests = externalCatalog.tests as SourceTest[];
   let raw: PrivateOcrBundle | null = null;
   try {

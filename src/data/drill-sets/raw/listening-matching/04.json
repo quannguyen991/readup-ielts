@@ -1,0 +1,287 @@
+{
+ "title": "A Harbour Town Exhibition",
+ "topic": "Local history museum project",
+ "context": "Nina: Okay, Omar, the exhibition opens in March, so we do not have long. Shall we review what the museum store has for our exhibition? The letters first.\nOmar: The letters from the 1890s are wonderful, but the paper is so brittle that the curator won't let us put them out. They'd have to be copies.\nNina: Shame. The maps?\nOmar: The big harbour map is the one I wanted, but it's on loan to a museum in Bristol until next year.\nNina: Hmm. Photographs?\nOmar: Hundreds, all donated by the Hargreaves family. I think we should thank them in the catalogue.\nNina: Good idea. And the tools?\nOmar: They're covered in rust. They'd need a conservator to clean them before anyone sees them.\nNina: And the clothing?\nOmar: Lovely, but there are no labels, so we don't know who wore what or when. I thought it belonged in the costume gallery's show, but the curator says it's ours.\nMs Adeyemi: Good morning. I've looked at your draft text. The title first, Our Town's Past. It's pleasant but vague. Try to name the period or the theme.\nNina: Like Harbour Life, 1850 to 1900?\nMs Adeyemi: Exactly. The opening panel is full of terms like industrialisation and demographic shift. Visitors won't follow that.\nOmar: Should we do it in two languages as well?\nMs Adeyemi: There's no need, our visitors are local. The captions run to eighty words each, and people won't read more than thirty.\nNina: And the timeline?\nMs Adeyemi: You give the date of the fire as 1887 in one place and 1878 in another. Check every date. Finally, the quotations from residents are the highlight. Don't change a word.\nNina: Now the extras. The audio tour first.\nOmar: Lovely, but somebody has to look after the headsets and hand them out, so we'd need more staff.\nNina: Right. A children's trail with a quiz?\nOmar: The museum in Exeter did one and had queues every day, so it's proven.\nNina: Workshops, for example making rope as the dockworkers did?\nOmar: We could, but only on Saturdays and Sundays, because the volunteers work during the week.\nNina: The talks by local historians?\nOmar: They'd give them for nothing, they've already offered. Mind you, I would rather not rely on volunteers for everything.\nNina: What about a short film?\nOmar: Great, but it would need its own room with the lights down, and we don't have a spare one.\nMs Adeyemi: Let's decide the layout. The photographs will be the first thing people see, so they go near the entrance.\nNina: I'd put the letter copies there too, but no, they're better in the central glass case, where people can read slowly.\nOmar: The tools are heavy. Put them along the back wall, on the strong shelves.\nMs Adeyemi: The clothing needs low light, so it goes in the small side room.\nNina: And the film? Next to the café, so people can sit?\nOmar: The café is far too noisy. Upstairs on the first floor is quiet, so it should go there.\nMs Adeyemi: Agreed. Send me the final plan on Friday, with the cost of copying the letters, and I will take it to the committee on Monday morning.\nOmar: We will have it ready. Thank you for all your help today.",
+ "questions": [
+  {
+   "prompt": "What is the problem with the letters?",
+   "options": [
+    "Too fragile to display",
+    "Donated by a local family",
+    "Needs professional cleaning",
+    "On loan to another museum",
+    "Missing a label",
+    "Belongs in a different exhibition"
+   ],
+   "answer": "Too fragile to display",
+   "why": "Giấy giòn đến mức người phụ trách không cho trưng bày bản gốc.",
+   "quote": "the paper is so brittle"
+  },
+  {
+   "prompt": "What is the problem with the harbour map?",
+   "options": [
+    "Too fragile to display",
+    "Donated by a local family",
+    "Needs professional cleaning",
+    "On loan to another museum",
+    "Missing a label",
+    "Belongs in a different exhibition"
+   ],
+   "answer": "On loan to another museum",
+   "why": "Bản đồ cảng đang cho một bảo tàng ở Bristol mượn đến năm sau.",
+   "quote": "it's on loan to a museum in Bristol"
+  },
+  {
+   "prompt": "What is said about the photographs?",
+   "options": [
+    "Too fragile to display",
+    "Donated by a local family",
+    "Needs professional cleaning",
+    "On loan to another museum",
+    "Missing a label",
+    "Belongs in a different exhibition"
+   ],
+   "answer": "Donated by a local family",
+   "why": "Hàng trăm ảnh do gia đình Hargreaves tặng.",
+   "quote": "all donated by the Hargreaves family"
+  },
+  {
+   "prompt": "What is the problem with the tools?",
+   "options": [
+    "Too fragile to display",
+    "Donated by a local family",
+    "Needs professional cleaning",
+    "On loan to another museum",
+    "Missing a label",
+    "Belongs in a different exhibition"
+   ],
+   "answer": "Needs professional cleaning",
+   "why": "Dụng cụ gỉ sét, cần chuyên gia bảo tồn làm sạch.",
+   "quote": "They'd need a conservator to clean them"
+  },
+  {
+   "prompt": "What is the problem with the clothing?",
+   "options": [
+    "Too fragile to display",
+    "Donated by a local family",
+    "Needs professional cleaning",
+    "On loan to another museum",
+    "Missing a label",
+    "Belongs in a different exhibition"
+   ],
+   "answer": "Missing a label",
+   "why": "Không có nhãn nên không biết ai mặc, khi nào. Bẫy: Omar tưởng nó thuộc triển lãm trang phục nhưng người phụ trách nói là của họ.",
+   "quote": "there are no labels"
+  },
+  {
+   "prompt": "What does Ms Adeyemi say about the title?",
+   "options": [
+    "It should be more specific",
+    "It is too long for visitors",
+    "It uses language that is too technical",
+    "It should be in two languages",
+    "It is excellent as it stands",
+    "It needs checking for mistakes"
+   ],
+   "answer": "It should be more specific",
+   "why": "Tiêu đề dễ nghe nhưng mơ hồ, nên nêu thời kỳ hoặc chủ đề.",
+   "quote": "pleasant but vague"
+  },
+  {
+   "prompt": "What does Ms Adeyemi say about the opening panel?",
+   "options": [
+    "It should be more specific",
+    "It is too long for visitors",
+    "It uses language that is too technical",
+    "It should be in two languages",
+    "It is excellent as it stands",
+    "It needs checking for mistakes"
+   ],
+   "answer": "It uses language that is too technical",
+   "why": "Có nhiều thuật ngữ khó như công nghiệp hoá, thay đổi dân số.",
+   "quote": "Visitors won't follow that"
+  },
+  {
+   "prompt": "What does Ms Adeyemi say about the captions?",
+   "options": [
+    "It should be more specific",
+    "It is too long for visitors",
+    "It uses language that is too technical",
+    "It should be in two languages",
+    "It is excellent as it stands",
+    "It needs checking for mistakes"
+   ],
+   "answer": "It is too long for visitors",
+   "why": "Mỗi chú thích dài tám mươi từ nhưng khách chỉ đọc tối đa ba mươi. Bẫy: song ngữ bị bác vì khách là người địa phương.",
+   "quote": "people won't read more than thirty"
+  },
+  {
+   "prompt": "What does Ms Adeyemi say about the timeline?",
+   "options": [
+    "It should be more specific",
+    "It is too long for visitors",
+    "It uses language that is too technical",
+    "It should be in two languages",
+    "It is excellent as it stands",
+    "It needs checking for mistakes"
+   ],
+   "answer": "It needs checking for mistakes",
+   "why": "Ngày xảy ra vụ cháy ghi 1887 ở chỗ này, 1878 ở chỗ khác, cần kiểm lại.",
+   "quote": "Check every date"
+  },
+  {
+   "prompt": "What does Ms Adeyemi say about the quotations from residents?",
+   "options": [
+    "It should be more specific",
+    "It is too long for visitors",
+    "It uses language that is too technical",
+    "It should be in two languages",
+    "It is excellent as it stands",
+    "It needs checking for mistakes"
+   ],
+   "answer": "It is excellent as it stands",
+   "why": "Trích dẫn từ cư dân là điểm nhấn, không đổi một chữ.",
+   "quote": "Don't change a word"
+  },
+  {
+   "prompt": "What do the students say about the audio tour?",
+   "options": [
+    "It would need extra staff",
+    "It would be free",
+    "It has proved popular elsewhere",
+    "It could only run at weekends",
+    "It is the cheapest option",
+    "It needs a separate room"
+   ],
+   "answer": "It would need extra staff",
+   "why": "Cần người trông và phát tai nghe nên phải thêm nhân viên.",
+   "quote": "we'd need more staff"
+  },
+  {
+   "prompt": "What do the students say about the children's trail?",
+   "options": [
+    "It would need extra staff",
+    "It would be free",
+    "It has proved popular elsewhere",
+    "It could only run at weekends",
+    "It is the cheapest option",
+    "It needs a separate room"
+   ],
+   "answer": "It has proved popular elsewhere",
+   "why": "Bảo tàng ở Exeter làm và có hàng người xếp mỗi ngày.",
+   "quote": "had queues every day"
+  },
+  {
+   "prompt": "What do the students say about the workshops?",
+   "options": [
+    "It would need extra staff",
+    "It would be free",
+    "It has proved popular elsewhere",
+    "It could only run at weekends",
+    "It is the cheapest option",
+    "It needs a separate room"
+   ],
+   "answer": "It could only run at weekends",
+   "why": "Chỉ làm được vào thứ Bảy, Chủ nhật vì tình nguyện viên đi làm trong tuần.",
+   "quote": "only on Saturdays and Sundays"
+  },
+  {
+   "prompt": "What do the students say about the talks by historians?",
+   "options": [
+    "It would need extra staff",
+    "It would be free",
+    "It has proved popular elsewhere",
+    "It could only run at weekends",
+    "It is the cheapest option",
+    "It needs a separate room"
+   ],
+   "answer": "It would be free",
+   "why": "Các nhà sử học nhận nói miễn phí. Không ai nói đây là phương án rẻ nhất.",
+   "quote": "They'd give them for nothing"
+  },
+  {
+   "prompt": "What do the students say about the film?",
+   "options": [
+    "It would need extra staff",
+    "It would be free",
+    "It has proved popular elsewhere",
+    "It could only run at weekends",
+    "It is the cheapest option",
+    "It needs a separate room"
+   ],
+   "answer": "It needs a separate room",
+   "why": "Cần phòng riêng tối ánh sáng mà họ không còn phòng trống.",
+   "quote": "it would need its own room"
+  },
+  {
+   "prompt": "Where will the photographs go?",
+   "options": [
+    "Near the entrance",
+    "In the central glass case",
+    "Along the back wall",
+    "In the small side room",
+    "Next to the café",
+    "On the first floor"
+   ],
+   "answer": "Near the entrance",
+   "why": "Ảnh là thứ khách thấy đầu tiên nên đặt gần lối vào.",
+   "quote": "near the entrance"
+  },
+  {
+   "prompt": "Where will the copies of the letters go?",
+   "options": [
+    "Near the entrance",
+    "In the central glass case",
+    "Along the back wall",
+    "In the small side room",
+    "Next to the café",
+    "On the first floor"
+   ],
+   "answer": "In the central glass case",
+   "why": "Nina định đặt gần lối vào nhưng đổi ý: tủ kính giữa phòng để đọc chậm.",
+   "quote": "in the central glass case"
+  },
+  {
+   "prompt": "Where will the tools go?",
+   "options": [
+    "Near the entrance",
+    "In the central glass case",
+    "Along the back wall",
+    "In the small side room",
+    "Next to the café",
+    "On the first floor"
+   ],
+   "answer": "Along the back wall",
+   "why": "Dụng cụ nặng nên đặt dọc tường sau, trên kệ chắc.",
+   "quote": "along the back wall"
+  },
+  {
+   "prompt": "Where will the clothing go?",
+   "options": [
+    "Near the entrance",
+    "In the central glass case",
+    "Along the back wall",
+    "In the small side room",
+    "Next to the café",
+    "On the first floor"
+   ],
+   "answer": "In the small side room",
+   "why": "Quần áo cần ánh sáng yếu nên vào phòng nhỏ bên cạnh.",
+   "quote": "low light, so it goes in the small side room"
+  },
+  {
+   "prompt": "Where will the film be shown?",
+   "options": [
+    "Near the entrance",
+    "In the central glass case",
+    "Along the back wall",
+    "In the small side room",
+    "Next to the café",
+    "On the first floor"
+   ],
+   "answer": "On the first floor",
+   "why": "Quán cà phê quá ồn nên chiếu phim ở tầng một, nơi yên tĩnh.",
+   "quote": "Upstairs on the first floor is quiet"
+  }
+ ]
+}

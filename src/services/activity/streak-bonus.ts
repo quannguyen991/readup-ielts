@@ -5,7 +5,9 @@
  * nhật ký học hoặc thẻ giữ chuỗi đổi (kể cả khi đồng bộ từ máy khác về), kiểm tra chuỗi hiện
  * tại và ghi sao cho mốc nào vừa đạt. Ghi một lần là đủ, nên mở lại app không cộng lần hai.
  */
-import { currentStreak } from '@/services/gamification/points';
+import { currentStreak, dateKey } from '@/services/gamification/points';
+import { dailyBonusStars, dailyPrizeKey, unclaimedDailyTiers } from '@/services/gamification/daily-bonus';
+import { useGameStore } from '@/store/useGameStore';
 import { streakPrizeKey, unclaimedMilestones } from '@/services/gamification/streak-rewards';
 import { useRewardStore } from '@/store/useRewardStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -26,11 +28,32 @@ export function claimStreakBonuses(now: Date = new Date()): number {
   return fresh.reduce((sum, m) => sum + m.stars, 0);
 }
 
+/** Ghi sao cho mọi mốc số từ trong ngày đã đạt (nhân theo chuỗi ngày). Trả về tổng sao vừa cộng. */
+export function claimDailyBonuses(now: Date = new Date()): number {
+  const game = useGameStore.getState();
+  const day = dateKey(now);
+  const words = game.day === day ? game.today.vocab : 0;
+  const { daily } = useStudyStore.getState();
+  const { frozenDays, prizes } = useRewardStore.getState();
+  const streak = currentStreak(daily, now, frozenDays);
+  const fresh = unclaimedDailyTiers(day, words, prizes);
+  if (fresh.length === 0) return 0;
+
+  const granted: Record<string, number> = {};
+  for (const t of fresh) granted[dailyPrizeKey(day, t.words)] = dailyBonusStars([t], streak);
+  useRewardStore.setState((s) => ({ prizes: { ...s.prizes, ...granted } }));
+  return Object.values(granted).reduce((sum, v) => sum + v, 0);
+}
+
 /** Chạy một lần lúc mở app; trả về hàm huỷ đăng ký. */
 export function startStreakBonus(): () => void {
   claimStreakBonuses();
+  claimDailyBonuses();
   const unsubStudy = useStudyStore.subscribe((s, prev) => {
     if (s.daily !== prev.daily) claimStreakBonuses();
+  });
+  const unsubGame = useGameStore.subscribe((s, prev) => {
+    if (s.today !== prev.today) claimDailyBonuses();
   });
   const unsubReward = useRewardStore.subscribe((s, prev) => {
     if (s.frozenDays !== prev.frozenDays) claimStreakBonuses();
@@ -38,5 +61,6 @@ export function startStreakBonus(): () => void {
   return () => {
     unsubStudy();
     unsubReward();
+    unsubGame();
   };
 }

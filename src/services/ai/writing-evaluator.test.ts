@@ -17,27 +17,23 @@ const SCORE = {
   improvements: ['Thêm đoạn overview'],
 };
 
-test('đọc đúng band và các trường nhận xét', () => {
+test('đọc đúng các trường nhận xét và band tổng', () => {
+  // (6 + 6 + 6,5 + 6) / 4 = 6,125 → 6
   const r = buildResult(SCORE, { annotations: [] }, TEXT, 'm');
   assert.equal(r.bandLow, 6);
-  assert.equal(r.bandHigh, 6.5);
+  assert.equal(r.bandHigh, 6);
   assert.equal(r.lexicalBand, 6.5);
   assert.equal(r.summaryVi, 'Bài đủ ý nhưng thiếu overview.');
   assert.deepEqual(r.improvements, ['Thêm đoạn overview']);
   assert.equal(r.model, 'm');
 });
 
-test('model trả một số cứng thì tự nới thành khoảng', () => {
-  // Chấm tự động không đủ tin cậy để chốt một con số.
-  const r = buildResult({ ...SCORE, bandLow: 6.5, bandHigh: 6.5 }, { annotations: [] }, TEXT, 'm');
-  assert.equal(r.bandLow, 6.5);
-  assert.equal(r.bandHigh, 7);
-});
-
-test('model trả ngược thứ tự thì đảo lại', () => {
-  const r = buildResult({ ...SCORE, bandLow: 7, bandHigh: 6 }, { annotations: [] }, TEXT, 'm');
-  assert.equal(r.bandLow, 6);
-  assert.equal(r.bandHigh, 7);
+test('band tổng là MỘT số, không lấy từ bandLow/bandHigh do model ghi', () => {
+  const khoang = buildResult({ ...SCORE, bandLow: 5, bandHigh: 8 }, { annotations: [] }, TEXT, 'm');
+  const so = buildResult({ ...SCORE, bandLow: 7, bandHigh: 7 }, { annotations: [] }, TEXT, 'm');
+  assert.equal(khoang.bandLow, khoang.bandHigh);
+  assert.equal(khoang.bandLow, 6);
+  assert.equal(so.bandLow, 6);
 });
 
 test('band lẻ hoặc ngoài thang thì kẹp về 1-9 và làm tròn 0.5', () => {

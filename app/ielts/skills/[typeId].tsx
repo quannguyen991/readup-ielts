@@ -9,6 +9,7 @@ import { IELTS_QUESTION_TYPES, type IeltsQuestionTypeMeta } from '@/data/ielts-q
 import { useL } from '@/i18n/useL';
 import { track } from '@/services/analytics/track';
 import { useEffect } from 'react';
+import { TypePractice, isCustomPractice, practiceSummary } from '@/components/ielts/TypePractice';
 
 export default function IeltsSkillTypeScreen() {
   const { typeId = '' } = useLocalSearchParams<{ typeId: string }>();
@@ -111,6 +112,7 @@ export default function IeltsSkillTypeScreen() {
     );
   }
 
+  const custom = isCustomPractice(typeId, typeMeta.skill);
   const answeredCount = Object.keys(userAnswers).length;
   const correctCount = Object.values(userAnswers).filter((a) => a.isCorrect).length;
 
@@ -140,7 +142,7 @@ export default function IeltsSkillTypeScreen() {
                 activeTab === 'drill' ? 'text-white' : 'text-muted'
               }`}
             >
-              {L(`Luyện tập thực chiến (${questions.length} câu)`, `Practice Drills (${questions.length})`)}
+              {custom ? L(`Luyện tập · ${practiceSummary(typeId, typeMeta.skill, L)}`, `Practice · ${practiceSummary(typeId, typeMeta.skill, L)}`) : L(`Luyện tập thực chiến (${questions.length} câu)`, `Practice Drills (${questions.length})`)}
             </Text>
           </Pressable>
 
@@ -253,14 +255,18 @@ export default function IeltsSkillTypeScreen() {
               className="rounded-2xl bg-primary py-3.5 items-center justify-center flex-row gap-2"
             >
               <Text className="font-strong text-body text-white">
-                {L(`Bắt đầu luyện tập ngay (${questions.length} câu) →`, `Start Drilling (${questions.length} questions) →`)}
+                {custom ? L('Bắt đầu luyện tập ngay →', 'Start practising →') : L(`Bắt đầu luyện tập ngay (${questions.length} câu) →`, `Start Drilling (${questions.length} questions) →`)}
               </Text>
             </Pressable>
           </ScrollView>
         )}
 
         {/* TAB 2: LUYỆN TẬP THỰC CHIẾN (DRILL RUNNER) */}
-        {activeTab === 'drill' && (
+        {activeTab === 'drill' && custom && (
+          <TypePractice typeId={typeId} skill={typeMeta.skill} listening={typeMeta.skill === 'listening'} />
+        )}
+
+        {activeTab === 'drill' && !custom && (
           <View className="gap-4 pb-12">
             {/* Thanh tiến độ câu hỏi */}
             <View className="flex-row items-center justify-between">

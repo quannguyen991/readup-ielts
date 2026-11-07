@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #6",
+ "topic": "Hotel booking · Car rental · Clinic registration · Lost property report",
+ "context": "Narrator: Conversation 1. Hotel booking.\nDaniel: Good afternoon, Lakeside Hotel, Daniel speaking.\nCaller: Hello, I'd like to book a room, please.\nDaniel: What's your postcode?\nCaller: C G three, two L K.\nDaniel: And how many nights will you be staying?\nCaller: Nine, I think. Actually, let me say eight, it's better to be safe.\nDaniel: And what's the best number to reach you on?\nCaller: It's oh seven four, nine three oh eight, eight eight seven six.\nDaniel: Can I take your surname, please?\nCaller: It's Dunmore. That's D, U, N, M, O, R, E.\nDaniel: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nDaniel: It's X W nine six seven five.\nDaniel: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Car rental.\nTony: Swift Car Hire, Tony speaking.\nCaller: Hello, I'd like to rent a small car for a few days.\nCaller: How much is the insurance cost?\nTony: It's seventy-five pounds.\nTony: When would you like to collect it?\nCaller: The second of February... no, sorry, that's a Sunday. Make it the first of February.\nTony: And how many days do you need it for?\nCaller: Five, I think.\nTony: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nTony: It's C L eight six zero two.\nTony: Can I take your surname, please?\nCaller: It's Dunmore. That's D, U, N, M, O, R, E.\nTony: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Clinic registration.\nOlivia: Elm Park Medical Centre, Olivia speaking.\nCaller: Hello, I'd like to register as a new patient.\nOlivia: How many years have you lived at your current address?\nCaller: Two, I think.\nOlivia: Can I take your surname, please?\nCaller: It's Yardley. That's Y, A, R, D, L, E, Y.\nOlivia: We can see you for a check-up. Which date suits you?\nCaller: The twenty-eighth of March... no, sorry, that's a Sunday. Make it the twenty-seventh of March.\nOlivia: What's your postcode?\nCaller: L T nine, six P F.\nOlivia: And what's the best number to reach you on?\nCaller: It's oh seven five, seven five oh one, six four two one.\nOlivia: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Lost property report.\nMark: Central Station lost property, Mark speaking.\nCaller: Hello, I think I left my rucksack on a train yesterday.\nCaller: How much is the handling charge?\nMark: It's sixty pounds.\nMark: What's your postcode?\nCaller: D K five, three Q L.\nMark: How many items were in the bag?\nCaller: Six, I think.\nMark: On which date did you lose it?\nCaller: The twenty-third of October... no, sorry, that's a Sunday. Make it the twenty-second of October.\nMark: Can I take your surname, please?\nCaller: It's Marsh. That's M, A, R, S, H.\nMark: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Hotel booking] Postcode: ____",
+   "answer": "CG3 2LK",
+   "why": "Người nói đọc: “C G three, two L K”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "C G three, two L K"
+  },
+  {
+   "prompt": "[Hotel booking] Number of nights: ____",
+   "answer": "8 | eight",
+   "why": "Người nói đọc: “let me say eight”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say eight"
+  },
+  {
+   "prompt": "[Hotel booking] Contact number: ____",
+   "answer": "07493088876",
+   "why": "Người nói đọc: “oh seven four, nine three oh eight, eight eight seven six”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven four, nine three oh eight, eight eight seven six"
+  },
+  {
+   "prompt": "[Hotel booking] Surname: ____",
+   "answer": "Dunmore",
+   "why": "Người nói đọc: “It's Dunmore. That's D, U, N, M, O, R, E.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Dunmore. That's D, U, N, M, O, R, E."
+  },
+  {
+   "prompt": "[Hotel booking] Booking reference: ____",
+   "answer": "XW9675",
+   "why": "Người nói đọc: “X W nine six seven five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "X W nine six seven five"
+  },
+  {
+   "prompt": "[Car rental] Insurance (£): ____",
+   "answer": "£75 | 75",
+   "why": "Người nói đọc: “seventy-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "seventy-five pounds"
+  },
+  {
+   "prompt": "[Car rental] Pick-up date: ____",
+   "answer": "1 February | February 1 | 1th February | February 1th | first February",
+   "why": "Người nói đọc: “Make it the first of February”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the first of February"
+  },
+  {
+   "prompt": "[Car rental] Days of rental: ____",
+   "answer": "5 | five",
+   "why": "Người nói đọc: “five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "five"
+  },
+  {
+   "prompt": "[Car rental] Licence number: ____",
+   "answer": "CL8602",
+   "why": "Người nói đọc: “C L eight six zero two”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "C L eight six zero two"
+  },
+  {
+   "prompt": "[Car rental] Surname: ____",
+   "answer": "Dunmore",
+   "why": "Người nói đọc: “It's Dunmore. That's D, U, N, M, O, R, E.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Dunmore. That's D, U, N, M, O, R, E."
+  },
+  {
+   "prompt": "[Clinic registration] Years at this address: ____",
+   "answer": "2 | two",
+   "why": "Người nói đọc: “two”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "two"
+  },
+  {
+   "prompt": "[Clinic registration] Surname: ____",
+   "answer": "Yardley",
+   "why": "Người nói đọc: “It's Yardley. That's Y, A, R, D, L, E, Y.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Yardley. That's Y, A, R, D, L, E, Y."
+  },
+  {
+   "prompt": "[Clinic registration] Appointment date: ____",
+   "answer": "27 March | March 27 | 27th March | March 27th | twenty-seventh March",
+   "why": "Người nói đọc: “Make it the twenty-seventh of March”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the twenty-seventh of March"
+  },
+  {
+   "prompt": "[Clinic registration] Postcode: ____",
+   "answer": "LT9 6PF",
+   "why": "Người nói đọc: “L T nine, six P F”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "L T nine, six P F"
+  },
+  {
+   "prompt": "[Clinic registration] Telephone: ____",
+   "answer": "07575016421",
+   "why": "Người nói đọc: “oh seven five, seven five oh one, six four two one”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven five, seven five oh one, six four two one"
+  },
+  {
+   "prompt": "[Lost property report] Handling charge (£): ____",
+   "answer": "£60 | 60",
+   "why": "Người nói đọc: “sixty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "sixty pounds"
+  },
+  {
+   "prompt": "[Lost property report] Postcode: ____",
+   "answer": "DK5 3QL",
+   "why": "Người nói đọc: “D K five, three Q L”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "D K five, three Q L"
+  },
+  {
+   "prompt": "[Lost property report] Number of items: ____",
+   "answer": "6 | six",
+   "why": "Người nói đọc: “six”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "six"
+  },
+  {
+   "prompt": "[Lost property report] Date lost: ____",
+   "answer": "22 October | October 22 | 22th October | October 22th | twenty-second October",
+   "why": "Người nói đọc: “Make it the twenty-second of October”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the twenty-second of October"
+  },
+  {
+   "prompt": "[Lost property report] Surname: ____",
+   "answer": "Marsh",
+   "why": "Người nói đọc: “It's Marsh. That's M, A, R, S, H.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Marsh. That's M, A, R, S, H."
+  }
+ ]
+}

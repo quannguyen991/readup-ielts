@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 4: Technology and Engineering",
+ "topic": "Inventions, machines and digital systems",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "The first mechanical clocks appeared in European towers in the fourteenth century and had no faces or hands. They simply struck a bell to mark the hours, calling monks to prayer and townspeople to work. Only later did dials appear, and with them the idea that time could be divided into equal minutes and measured by anyone, rather than announced by an authority.",
+   "options": [
+    "The role of monks in medieval towns",
+    "From bell-ringing devices to personal timekeeping",
+    "The invention of the pendulum",
+    "Why early clocks were inaccurate",
+    "Towers and their architecture",
+    "Worship and daily routines"
+   ],
+   "answer": "From bell-ringing devices to personal timekeeping",
+   "why": "Đoạn kể sự chuyển từ chuông báo giờ sang việc ai cũng đo được thời gian. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "no faces or hands"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "A search engine does not look at the web in real time. Programs called crawlers follow links from page to page and store a copy of what they find in an enormous index. When a user types a query, the engine consults the index rather than the live web, ranking results by hundreds of signals such as relevance and the number of other pages linking to a page.",
+   "options": [
+    "The growth of the internet",
+    "Why web pages link to each other",
+    "Advertising on search sites",
+    "How to type effective queries",
+    "How a search engine finds and ranks pages",
+    "The speed of broadband connections"
+   ],
+   "answer": "How a search engine finds and ranks pages",
+   "why": "Ý chính là cách công cụ tìm kiếm thu thập và xếp hạng. Liên kết chỉ là một tín hiệu xếp hạng.",
+   "quote": "ranking results by hundreds of signals"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Touchscreens work by sensing the electrical properties of the human body. A thin transparent layer carries a weak electric field, and when a finger approaches, it draws a tiny current that the device locates precisely. This is why ordinary gloves, which insulate, do not work on many phones, and why some makers sell gloves with conductive threads in the fingertips.",
+   "options": [
+    "Gloves designed for winter sports",
+    "The history of mobile phones",
+    "The materials used in thin glass",
+    "The danger of electric currents",
+    "Fingerprint recognition",
+    "The electrical principle behind touchscreens"
+   ],
+   "answer": "The electrical principle behind touchscreens",
+   "why": "Trọng tâm là nguyên lý điện của màn hình cảm ứng. Găng tay chỉ là một hệ quả được nêu.",
+   "quote": "sensing the electrical properties of the human body"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Suspension bridges can span distances that would be impossible for other designs. The deck hangs from vertical cables attached to two main cables, which pass over tall towers and are anchored firmly at each end. Most of the load is carried as tension in steel, a material that resists pulling extremely well. The Akashi Kaikyo Bridge in Japan has a main span of almost two kilometres.",
+   "options": [
+    "The history of steel production",
+    "Bridges in Japan",
+    "How suspension bridges carry loads over long spans",
+    "The tallest towers ever built",
+    "Earthquakes and bridge safety",
+    "The cost of large construction projects"
+   ],
+   "answer": "How suspension bridges carry loads over long spans",
+   "why": "Đoạn giải thích cách cầu treo chịu tải qua nhịp dài. Cầu Akashi chỉ là một ví dụ.",
+   "quote": "Most of the load is carried as tension"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "The earliest computers filled entire rooms and were operated by teams of technicians. Programs were entered by rewiring circuits or feeding punched cards, and a single error could waste a day. Because each machine cost a fortune, few organisations owned one. The invention of the transistor in 1947, and later the integrated circuit, shrank components so dramatically that computing could eventually reach homes.",
+   "options": [
+    "The jobs of early computer technicians",
+    "The cost of government machines",
+    "Programming with punched cards",
+    "How miniature components made personal computing possible",
+    "Rewiring electrical circuits",
+    "The invention of video games"
+   ],
+   "answer": "How miniature components made personal computing possible",
+   "why": "Ý chính: linh kiện thu nhỏ đưa máy tính vào gia đình. Thẻ đục lỗ và kỹ thuật viên chỉ là chi tiết lịch sử.",
+   "quote": "shrank components so dramatically"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Lithium-ion batteries power phones and electric cars because they store a lot of energy for their weight. Inside, lithium ions move between two electrodes through a liquid, releasing electrons that flow through the circuit. The cells degrade with every charge cycle, and excessive heat can damage them or, rarely, cause fires, which is why devices contain circuits that monitor temperature and voltage.",
+   "options": [
+    "The rise of electric cars",
+    "Fire safety in homes",
+    "How lithium-ion batteries work and their limitations",
+    "Metals mined for batteries",
+    "The weight of portable devices",
+    "How electrons travel in wires"
+   ],
+   "answer": "How lithium-ion batteries work and their limitations",
+   "why": "Đoạn giải thích hoạt động và giới hạn của pin. Xe điện và an toàn cháy chỉ là liên quan.",
+   "quote": "degrade with every charge cycle"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "In 1997 a chess computer defeated the reigning world champion for the first time. Its strength came from brute force: it examined around two hundred million positions per second, far more than any human. Modern programs behave differently. They learn by playing millions of games against themselves, and they sometimes make moves that look strange to grandmasters but turn out to be superior.",
+   "options": [
+    "A computer that beat a world champion",
+    "A shift from calculation power to self-taught play in chess programs",
+    "Grandmasters and their training methods",
+    "The speed of modern processors",
+    "Human mistakes in chess",
+    "The popularity of chess online"
+   ],
+   "answer": "A shift from calculation power to self-taught play in chess programs",
+   "why": "Trọng tâm là chuyển từ vét cạn sang tự học. Trận thắng 1997 chỉ là mở đầu.",
+   "quote": "learn by playing millions of games against themselves"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Wind turbines convert the movement of air into electricity, and bigger blades capture more of it. The largest offshore machines now stand taller than most skyscrapers, with blades longer than a football pitch. Transporting and installing such structures is a challenge in itself, requiring special ships. Still, offshore winds are stronger and steadier, so a single large turbine can power thousands of homes.",
+   "options": [
+    "The reasons why wind is steady at sea",
+    "Football pitches and stadium size",
+    "Electricity prices in households",
+    "Skyscrapers around the world",
+    "Larger offshore turbines and the difficulty of building them",
+    "Special ships used in shipping"
+   ],
+   "answer": "Larger offshore turbines and the difficulty of building them",
+   "why": "Đoạn nói tuabin ngoài khơi lớn hơn và việc lắp đặt khó khăn. Các lựa chọn khác chỉ nhặt từ khoá.",
+   "quote": "a challenge in itself"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "Encryption protects messages by scrambling them according to a secret key. In older systems, sender and receiver had to share the same key beforehand, which was risky. Public-key cryptography solved the problem in the 1970s: each person has a public key anyone can use to encrypt a message, and a private key that only they hold to read it. Online banking relies on this idea.",
+   "options": [
+    "The risks of online banking",
+    "The breakthrough that allows strangers to exchange secrets safely",
+    "Keeping passwords private",
+    "Military codes of the twentieth century",
+    "How scrambled messages are intercepted",
+    "Mathematical puzzles in schools"
+   ],
+   "answer": "The breakthrough that allows strangers to exchange secrets safely",
+   "why": "Ý chính là mã hoá khoá công khai giúp người lạ trao đổi an toàn. Ngân hàng chỉ là ứng dụng.",
+   "quote": "a public key anyone can use"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "Self-driving cars rely on sensors such as cameras, radar and laser scanners to build a picture of the road. Software then interprets the data, identifying vehicles, pedestrians and signs, and predicts what each is likely to do. The hardest cases are rare events, such as a mattress falling off a lorry, which the system may never have encountered during testing.",
+   "options": [
+    "The cameras used in cars",
+    "Pedestrian safety laws",
+    "How radar works",
+    "The cost of laser scanners",
+    "Mattresses on motorways",
+    "The difficulty of preparing driverless cars for unusual events"
+   ],
+   "answer": "The difficulty of preparing driverless cars for unusual events",
+   "why": "Trọng tâm: tình huống hiếm là thách thức lớn. Cảm biến chỉ được mô tả như bối cảnh.",
+   "quote": "rare events"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Optical fibres carry data as pulses of light through glass strands thinner than a human hair. Light stays inside the strand by reflecting repeatedly from its walls, so very little signal escapes. A single cable can hold hundreds of fibres, and undersea cables carry the vast majority of intercontinental internet traffic, far more than satellites do.",
+   "options": [
+    "The thickness of human hair",
+    "How satellites transmit signals",
+    "The installation of cables on the seabed",
+    "Fibre-optic cables as the backbone of global data traffic",
+    "The reflection of light in mirrors",
+    "Different types of glass"
+   ],
+   "answer": "Fibre-optic cables as the backbone of global data traffic",
+   "why": "Ý chính là cáp quang là xương sống của dữ liệu toàn cầu. Vệ tinh và gương chỉ là chi tiết.",
+   "quote": "carry the vast majority"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Robots in factories excel at repetitive, precise tasks such as welding or painting, but they struggle with objects that vary. A box that is slightly crushed, or a part resting at an unexpected angle, can confuse a machine that has been programmed for perfect conditions. Researchers are trying to give robots better vision and touch so that they can handle the untidiness of real warehouses.",
+   "options": [
+    "Welding and painting in car factories",
+    "The cost of warehouse space",
+    "Why robots find variable objects harder than repetitive tasks",
+    "Cameras and vision systems",
+    "Programming languages for robots",
+    "Jobs lost to automation"
+   ],
+   "answer": "Why robots find variable objects harder than repetitive tasks",
+   "why": "Đoạn nói robot kém với vật thể thay đổi. Hàn, sơn là các ví dụ nó làm tốt.",
+   "quote": "struggle with objects that vary"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Open-source software is released with its code visible, so anyone may inspect, modify and share it. Thousands of volunteers and companies contribute to projects such as the Linux operating system, which now runs most of the world's servers. Supporters say that many eyes make code safer, while critics note that unpaid maintainers can become overwhelmed when a project becomes critical infrastructure.",
+   "options": [
+    "The history of the Linux system",
+    "The strengths and strains of open-source development",
+    "How servers store data",
+    "The reasons companies hire programmers",
+    "Security risks in banks",
+    "Volunteers and charity work"
+   ],
+   "answer": "The strengths and strains of open-source development",
+   "why": "Đoạn đánh giá cả điểm mạnh và áp lực của phần mềm mã nguồn mở. Linux chỉ là ví dụ.",
+   "quote": "many eyes make code safer"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Water towers store treated water high above the ground, using gravity to create steady pressure in pipes. Pumps fill the tank at night when electricity is cheap, and the water flows out during the day when demand rises. The design also provides a reserve for emergencies, such as fire fighting, when pumps may fail or demand suddenly peaks.",
+   "options": [
+    "Why towns store water at height",
+    "The cost of electricity at night",
+    "Fire fighting methods",
+    "Treating drinking water",
+    "The architecture of towers",
+    "Pipes and their materials"
+   ],
+   "answer": "Why towns store water at height",
+   "why": "Ý chính: tháp nước tạo áp lực nhờ trọng lực và dự trữ. Điện giá rẻ ban đêm chỉ là chi tiết.",
+   "quote": "using gravity to create steady pressure"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Quartz watches keep time with a tiny crystal that vibrates at a precise frequency when electricity passes through it. A circuit counts the vibrations, 32,768 times per second, and turns them into one pulse per second to move the hands. Cheap quartz models appearing in the 1970s were so accurate that many traditional Swiss makers lost business in what became known as the quartz crisis.",
+   "options": [
+    "How a vibrating crystal revolutionised watchmaking",
+    "The decline of Swiss watchmaking",
+    "Counting circuits in electronics",
+    "The properties of crystals in jewellery",
+    "Electric power in watches",
+    "Accuracy in scientific instruments"
+   ],
+   "answer": "How a vibrating crystal revolutionised watchmaking",
+   "why": "Trọng tâm là tinh thể thạch anh thay đổi ngành đồng hồ. Khủng hoảng Thụy Sĩ chỉ là hậu quả.",
+   "quote": "vibrates at a precise frequency"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Online videos are compressed before they are sent, because uncompressed footage would take far too much bandwidth. Compression software discards details the eye is unlikely to notice and stores only the changes between frames rather than every image in full. The trade-off is quality: if a file is compressed too heavily, fast action appears blocky and colours blur.",
+   "options": [
+    "The compromise between file size and picture quality in video",
+    "The speed of internet connections",
+    "Making films with digital cameras",
+    "Colour in television screens",
+    "Storage of images on computers",
+    "Viewing habits of internet users"
+   ],
+   "answer": "The compromise between file size and picture quality in video",
+   "why": "Ý chính: nén video đổi chất lượng lấy dung lượng. Các lựa chọn khác lệch trọng tâm.",
+   "quote": "The trade-off is quality"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Smart home devices connect everyday objects, such as thermostats, lights and locks, to the internet so they can be controlled remotely. They bring convenience and sometimes lower energy bills, yet each connected object is a potential entry point for hackers. Security experts advise changing default passwords and updating firmware, although many manufacturers stop issuing updates after a few years.",
+   "options": [
+    "Convenience and security risks of connected household gadgets",
+    "Energy saving in modern homes",
+    "The history of door locks",
+    "Password management software",
+    "Firmware updates for computers",
+    "The expense of home renovation"
+   ],
+   "answer": "Convenience and security risks of connected household gadgets",
+   "why": "Đoạn cân nhắc tiện lợi và rủi ro an ninh. Mật khẩu và cập nhật chỉ là lời khuyên.",
+   "quote": "a potential entry point for hackers"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "The printing of banknotes involves a battle against counterfeiters. Modern notes contain several security features, including watermarks, colour-shifting ink, raised printing and threads woven into the paper. Each feature is chosen to be easy for ordinary people to check but hard for forgers to reproduce. Central banks redesign their notes every few years to stay one step ahead of criminals.",
+   "options": [
+    "The design of national currencies",
+    "Criminals and their methods",
+    "The materials used in making paper",
+    "Security features used to protect banknotes from forgery",
+    "The history of money",
+    "Redesigning notes for artistic reasons"
+   ],
+   "answer": "Security features used to protect banknotes from forgery",
+   "why": "Ý chính là các đặc điểm an ninh của tiền giấy. Thiết kế lại chỉ là chi tiết nhỏ.",
+   "quote": "security features"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Tunnel boring machines can drill through rock and soil while building their own lining. At the front, a rotating cutting wheel grinds the ground, and the debris is carried back along a conveyor. Behind the cutters, robotic arms install curved concrete segments that form the tunnel wall. The machines can advance several tens of metres a day, far faster than traditional blasting.",
+   "options": [
+    "The speed of traditional blasting",
+    "The disposal of excavated soil",
+    "Concrete used in construction",
+    "Robotics in industry",
+    "Underground railways in cities",
+    "How tunnel boring machines excavate and line a tunnel"
+   ],
+   "answer": "How tunnel boring machines excavate and line a tunnel",
+   "why": "Trọng tâm là cách máy đào hầm khoan và lát vách. Tốc độ so với nổ mìn là chi tiết phụ.",
+   "quote": "a rotating cutting wheel"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Drones were developed for military use, but they are now employed in farming, filming and rescue. A farmer can fly one over a field to spot disease in crops that is invisible from the ground, while emergency teams use them to locate missing hikers by heat. Regulators restrict where they can fly, because collisions with aircraft and invasions of privacy are real concerns.",
+   "options": [
+    "The military origins of aircraft",
+    "Disease in crops",
+    "Heat sensors and rescue",
+    "Privacy laws in cities",
+    "Everyday uses of drones and the rules that limit them",
+    "Filming techniques in cinema"
+   ],
+   "answer": "Everyday uses of drones and the rules that limit them",
+   "why": "Đoạn nói ứng dụng thường ngày của drone và các quy định. Mỗi ví dụ chỉ là một mảnh.",
+   "quote": "now employed in farming, filming and rescue"
+  }
+ ]
+}

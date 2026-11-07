@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #5",
+ "topic": "Hotel booking · Clinic registration · Lost property report · Gym membership",
+ "context": "Narrator: Conversation 1. Hotel booking.\nDaniel: Good afternoon, Lakeside Hotel, Daniel speaking.\nCaller: Hello, I'd like to book a room, please.\nDaniel: And what's the best number to reach you on?\nCaller: It's oh seven four, three five three two, oh seven nine nine.\nCaller: How much is the deposit?\nDaniel: It's ninety pounds.\nDaniel: What date would you like to arrive?\nCaller: The twenty-fourth of January... no, sorry, that's a Sunday. Make it the twenty-third of January.\nDaniel: Can I take your surname, please?\nCaller: It's Whitlock. That's W, H, I, T, L, O, C, K.\nDaniel: What's your postcode?\nCaller: L Y seven, one C H.\nDaniel: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Clinic registration.\nOlivia: Elm Park Medical Centre, Olivia speaking.\nCaller: Hello, I'd like to register as a new patient.\nCaller: How much is the fee for the private form?\nOlivia: It's forty-five pounds.\nOlivia: We can see you for a check-up. Which date suits you?\nCaller: The ninth of May, please.\nOlivia: How many years have you lived at your current address?\nCaller: Eight, I think. Actually, let me say seven, it's better to be safe.\nOlivia: And what's the best number to reach you on?\nCaller: It's oh seven five, three four eight four, oh two two oh.\nOlivia: What's your postcode?\nCaller: N H four, four X P.\nOlivia: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Lost property report.\nMark: Central Station lost property, Mark speaking.\nCaller: Hello, I think I left my rucksack on a train yesterday.\nMark: How many items were in the bag?\nCaller: Eight, I think.\nMark: And what's the best number to reach you on?\nCaller: It's oh seven four, seven eight eight six, seven oh six five.\nMark: On which date did you lose it?\nCaller: The nineteenth of July... no, sorry, that's a Sunday. Make it the eighteenth of July.\nMark: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nMark: It's T K seven six six four.\nMark: What's your postcode?\nCaller: M E one, two T B.\nMark: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Gym membership.\nSam: Good morning, Riverside Fitness, Sam speaking.\nCaller: Hello, I'd like to join the gym, please.\nSam: Can I take your surname, please?\nCaller: It's Fairbrother. That's F, A, I, R, B, R, O, T, H, E, R.\nSam: When would you like to start?\nCaller: The eleventh of June... no, sorry, that's a Sunday. Make it the tenth of June.\nCaller: How much is the joining fee?\nSam: It's eighty pounds.\nSam: How many classes a week do you think you will come to?\nCaller: Three, I think.\nSam: What's your postcode?\nCaller: C F three, six M Q.\nSam: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Hotel booking] Contact number: ____",
+   "answer": "07435320799",
+   "why": "Người nói đọc: “oh seven four, three five three two, oh seven nine nine”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven four, three five three two, oh seven nine nine"
+  },
+  {
+   "prompt": "[Hotel booking] Deposit (£): ____",
+   "answer": "£90 | 90",
+   "why": "Người nói đọc: “ninety pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "ninety pounds"
+  },
+  {
+   "prompt": "[Hotel booking] Check-in date: ____",
+   "answer": "23 January | January 23 | 23th January | January 23th | twenty-third January",
+   "why": "Người nói đọc: “Make it the twenty-third of January”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the twenty-third of January"
+  },
+  {
+   "prompt": "[Hotel booking] Surname: ____",
+   "answer": "Whitlock",
+   "why": "Người nói đọc: “It's Whitlock. That's W, H, I, T, L, O, C, K.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Whitlock. That's W, H, I, T, L, O, C, K."
+  },
+  {
+   "prompt": "[Hotel booking] Postcode: ____",
+   "answer": "LY7 1CH",
+   "why": "Người nói đọc: “L Y seven, one C H”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "L Y seven, one C H"
+  },
+  {
+   "prompt": "[Clinic registration] Form fee (£): ____",
+   "answer": "£45 | 45",
+   "why": "Người nói đọc: “forty-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "forty-five pounds"
+  },
+  {
+   "prompt": "[Clinic registration] Appointment date: ____",
+   "answer": "9 May | May 9 | 9th May | May 9th | ninth May",
+   "why": "Người nói đọc: “The ninth of May”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The ninth of May"
+  },
+  {
+   "prompt": "[Clinic registration] Years at this address: ____",
+   "answer": "7 | seven",
+   "why": "Người nói đọc: “let me say seven”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say seven"
+  },
+  {
+   "prompt": "[Clinic registration] Telephone: ____",
+   "answer": "07534840220",
+   "why": "Người nói đọc: “oh seven five, three four eight four, oh two two oh”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven five, three four eight four, oh two two oh"
+  },
+  {
+   "prompt": "[Clinic registration] Postcode: ____",
+   "answer": "NH4 4XP",
+   "why": "Người nói đọc: “N H four, four X P”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "N H four, four X P"
+  },
+  {
+   "prompt": "[Lost property report] Number of items: ____",
+   "answer": "8 | eight",
+   "why": "Người nói đọc: “eight”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "eight"
+  },
+  {
+   "prompt": "[Lost property report] Phone number: ____",
+   "answer": "07478867065",
+   "why": "Người nói đọc: “oh seven four, seven eight eight six, seven oh six five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven four, seven eight eight six, seven oh six five"
+  },
+  {
+   "prompt": "[Lost property report] Date lost: ____",
+   "answer": "18 July | July 18 | 18th July | July 18th | eighteenth July",
+   "why": "Người nói đọc: “Make it the eighteenth of July”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the eighteenth of July"
+  },
+  {
+   "prompt": "[Lost property report] Report number: ____",
+   "answer": "TK7664",
+   "why": "Người nói đọc: “T K seven six six four”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "T K seven six six four"
+  },
+  {
+   "prompt": "[Lost property report] Postcode: ____",
+   "answer": "ME1 2TB",
+   "why": "Người nói đọc: “M E one, two T B”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "M E one, two T B"
+  },
+  {
+   "prompt": "[Gym membership] Surname: ____",
+   "answer": "Fairbrother",
+   "why": "Người nói đọc: “It's Fairbrother. That's F, A, I, R, B, R, O, T, H, E, R.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Fairbrother. That's F, A, I, R, B, R, O, T, H, E, R."
+  },
+  {
+   "prompt": "[Gym membership] Start date: ____",
+   "answer": "10 June | June 10 | 10th June | June 10th | tenth June",
+   "why": "Người nói đọc: “Make it the tenth of June”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the tenth of June"
+  },
+  {
+   "prompt": "[Gym membership] Joining fee (£): ____",
+   "answer": "£80 | 80",
+   "why": "Người nói đọc: “eighty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "eighty pounds"
+  },
+  {
+   "prompt": "[Gym membership] Classes per week: ____",
+   "answer": "3 | three",
+   "why": "Người nói đọc: “three”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "three"
+  },
+  {
+   "prompt": "[Gym membership] Postcode: ____",
+   "answer": "CF3 6MQ",
+   "why": "Người nói đọc: “C F three, six M Q”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "C F three, six M Q"
+  }
+ ]
+}

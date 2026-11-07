@@ -96,7 +96,7 @@ const COVER_RATIO = 0.8;
  */
 function DeckCover({ cover, icon, soft, strong, seed, hovered }: { cover?: string; icon: IconName; soft: string; strong: string; seed: string; hovered: boolean }) {
   return (
-    <View style={{ height: 124, margin: 10, borderRadius: 18, overflow: 'hidden' }}>
+    <View style={{ aspectRatio: 1.5, overflow: 'hidden', backgroundColor: soft }}>
       {cover ? (
         <Image
           source={{ uri: cover }}
@@ -152,7 +152,7 @@ export function DeckCard({
       onPress={onPress}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
-      style={{ height: '100%', minHeight: 232 }}
+      style={{ height: '100%', minHeight: 300 }}
     >
       <View
         style={{

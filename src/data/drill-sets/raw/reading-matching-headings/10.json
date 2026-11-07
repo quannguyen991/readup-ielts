@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 10: Cities, Transport and the Arts",
+ "topic": "Urban life, travel and creativity",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "The London Underground, opened in 1863, was the world's first underground passenger railway. The earliest trains were pulled by steam locomotives, and passengers complained of smoke in the tunnels. Electric trains arrived in 1890, which allowed deeper lines and cleaner air. Today the network carries more than a billion journeys a year and has inspired subway systems in cities worldwide.",
+   "options": [
+    "Smoke in nineteenth-century tunnels",
+    "The origins and influence of the first underground railway",
+    "Electric trains and their advantages",
+    "Passenger numbers in modern cities",
+    "Steam locomotives",
+    "Complaints from commuters"
+   ],
+   "answer": "The origins and influence of the first underground railway",
+   "why": "Ý chính: nguồn gốc và ảnh hưởng của tàu điện ngầm đầu tiên. Khói và tàu điện chỉ là chi tiết.",
+   "quote": "world's first underground passenger railway"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Cycling infrastructure changes behaviour. When cities build protected lanes, separated from traffic by barriers, more people cycle, particularly women and older people who feel unsafe among cars. Copenhagen and Amsterdam, which invested for decades, now see roughly a third or more of commuting trips by bicycle. Planners argue that safety, rather than encouragement campaigns, is the decisive factor.",
+   "options": [
+    "Safe cycling lanes as the key to getting more people on bikes",
+    "The history of the bicycle",
+    "Traffic accidents in Copenhagen",
+    "Campaigns for healthy lifestyles",
+    "Older people and exercise",
+    "Investment in public transport"
+   ],
+   "answer": "Safe cycling lanes as the key to getting more people on bikes",
+   "why": "Trọng tâm: làn xe đạp an toàn là yếu tố quyết định. Chiến dịch khuyến khích là yếu tố phụ.",
+   "quote": "safety, rather than encouragement campaigns"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Pedestrian-only streets have spread across European city centres since the 1960s. Shops initially feared losing customers who arrived by car, but studies often find that footfall rises and sales are maintained or increased, as people linger. Residents benefit from cleaner air and quieter streets, although delivery access and disabled parking require careful planning.",
+   "options": [
+    "Fear of losing customers",
+    "The benefits and practical challenges of car-free streets",
+    "Parking for disabled drivers",
+    "Shopping habits in the 1960s",
+    "Clean air in cities",
+    "Delivery vehicles"
+   ],
+   "answer": "The benefits and practical challenges of car-free streets",
+   "why": "Ý chính: lợi ích và thách thức thực tế của phố đi bộ. Mỗi lựa chọn khác chỉ là chi tiết.",
+   "quote": "footfall rises"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Opera began in Italy around 1600 as an attempt to revive Greek drama. Composers set stories to music, with solo singers, a chorus and an orchestra, and the form soon spread across Europe. Opera houses became social centres where audiences gathered as much to be seen as to listen. Today, many companies rely on subsidies, since ticket sales rarely cover the high costs of productions.",
+   "options": [
+    "The origin, spread and financing of opera",
+    "Greek drama and its themes",
+    "Social life in Europe",
+    "The training of solo singers",
+    "Orchestras in theatres",
+    "The cost of tickets"
+   ],
+   "answer": "The origin, spread and financing of opera",
+   "why": "Trọng tâm: nguồn gốc, lan toả và kinh phí của opera. Kịch Hy Lạp chỉ là nguồn cảm hứng.",
+   "quote": "attempt to revive Greek drama"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Photography changed painting. Once cameras could record appearances accurately, artists no longer needed to compete in realism and began exploring other possibilities. The Impressionists painted fleeting effects of light, while later movements turned to emotion, geometry and abstraction. Some historians argue that without photography, modern art might have developed far more slowly.",
+   "options": [
+    "The realism of early cameras",
+    "The Impressionists and light",
+    "Abstract art in the twentieth century",
+    "The slow development of art",
+    "Accuracy in portraits",
+    "How the arrival of the camera pushed painters in new directions"
+   ],
+   "answer": "How the arrival of the camera pushed painters in new directions",
+   "why": "Ý chính: máy ảnh khiến hội hoạ đi theo hướng mới. Trường phái cụ thể chỉ là ví dụ.",
+   "quote": "no longer needed to compete in realism"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Skyscrapers concentrate people and activity, but critics point to drawbacks. They cast shadows, create strong winds at street level and consume large amounts of energy for lifts, heating and cooling. Supporters respond that dense building allows more people to live near jobs, reducing sprawl and the need for cars. The debate often turns on how well the surrounding streets are designed.",
+   "options": [
+    "Arguments for and against very tall buildings",
+    "Wind at street level",
+    "Energy used by lifts",
+    "Sprawl across the countryside",
+    "Jobs near homes",
+    "The design of streets"
+   ],
+   "answer": "Arguments for and against very tall buildings",
+   "why": "Đoạn nêu cả lợi và hại của nhà chọc trời. Gió và năng lượng chỉ là các mặt hại.",
+   "quote": "critics point to drawbacks"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "Airports are designed to move people smoothly, but their layout also shapes behaviour. Security checkpoints are followed by shops, so passengers walk through duty-free areas before reaching their gates. Signs reduce confusion, and gate numbers are announced late so that travellers remain in the shopping zone. Some airports earn more from retail and parking than from landing fees.",
+   "options": [
+    "Security checkpoints",
+    "Landing fees for airlines",
+    "Signs and directions",
+    "Duty-free goods",
+    "How airport layouts balance passenger flow and commercial income",
+    "Parking charges"
+   ],
+   "answer": "How airport layouts balance passenger flow and commercial income",
+   "why": "Ý chính: bố cục sân bay vừa dẫn dòng hành khách vừa tạo doanh thu. Mỗi lựa chọn khác chỉ là một yếu tố.",
+   "quote": "shapes behaviour"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Rail travel in Japan is famous for punctuality: the average delay on the high-speed Shinkansen is measured in seconds. Staff are trained to follow strict procedures, trains are inspected frequently, and the tracks are used exclusively for these services, so slow freight trains cannot block them. The system has carried billions of passengers without a fatal accident from collision or derailment.",
+   "options": [
+    "Delays on foreign railways",
+    "Freight trains and their loads",
+    "The training of staff",
+    "Safety records of airlines",
+    "Passenger numbers",
+    "The reasons behind the reliability of Japanese high-speed trains"
+   ],
+   "answer": "The reasons behind the reliability of Japanese high-speed trains",
+   "why": "Trọng tâm: lý do tàu cao tốc Nhật đúng giờ và an toàn. Đào tạo nhân viên chỉ là một lý do.",
+   "quote": "punctuality"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "Graffiti and street art can revitalise a neglected area, but they can also lead to displacement. When artists make a district fashionable, rents tend to rise, and the original residents may be forced out. The pattern, known as gentrification, is difficult to prevent because the very attraction that draws visitors raises property values.",
+   "options": [
+    "The fashion of urban districts",
+    "Rents in expensive cities",
+    "How an artistic revival can drive out the original community",
+    "Murals that attract visitors",
+    "The role of artists",
+    "The difficulty of preventing change"
+   ],
+   "answer": "How an artistic revival can drive out the original community",
+   "why": "Ý chính: nghệ thuật có thể khiến cư dân cũ bị đẩy ra. Giá thuê chỉ là cơ chế.",
+   "quote": "displacement"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "Ferries remain an important form of transport in places where bridges would be too costly. In Venice, waterbuses are the main public transport, while Istanbul's ferries link Europe and Asia across the Bosphorus every few minutes. Electric ferries are now being introduced in Norway to cut emissions, and their quiet engines are welcomed by passengers.",
+   "options": [
+    "Bridges and their cost",
+    "Water transport in Venice",
+    "The continuing role of ferries and their move towards electric power",
+    "Journeys between Europe and Asia",
+    "Quiet engines",
+    "Emissions from ships"
+   ],
+   "answer": "The continuing role of ferries and their move towards electric power",
+   "why": "Trọng tâm: phà vẫn quan trọng và đang chuyển sang điện. Venice và Istanbul chỉ là ví dụ.",
+   "quote": "remain an important form of transport"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "The cinema industry was transformed by sound. The first feature with synchronised dialogue, The Jazz Singer in 1927, drew crowds, and within a few years silent films had almost disappeared. Many actors with unsuitable voices lost their careers, and cinemas had to be fitted with expensive equipment. Yet the new medium also created opportunities for composers, writers and sound engineers.",
+   "options": [
+    "The career of The Jazz Singer",
+    "The upheaval brought to film by the arrival of sound",
+    "Actors who lost their jobs",
+    "The cost of cinema equipment",
+    "Silent films in modern times",
+    "New jobs for composers"
+   ],
+   "answer": "The upheaval brought to film by the arrival of sound",
+   "why": "Ý chính: âm thanh làm thay đổi cả ngành điện ảnh. Diễn viên mất việc chỉ là một tác động.",
+   "quote": "silent films had almost disappeared"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Traffic congestion costs cities billions each year in lost time and wasted fuel. Building more roads often fails to cure it, because new capacity attracts additional traffic, a phenomenon called induced demand. Cities including London and Stockholm have reduced congestion by charging drivers to enter the centre, using the revenue to improve buses and trains.",
+   "options": [
+    "Wasted fuel in traffic",
+    "Improvements to trains",
+    "Revenue from tolls",
+    "Why road building fails and how charging drivers can help",
+    "London's city centre",
+    "The number of cars on roads"
+   ],
+   "answer": "Why road building fails and how charging drivers can help",
+   "why": "Trọng tâm: xây thêm đường không giải quyết, thu phí mới giúp. Doanh thu chỉ là chi tiết.",
+   "quote": "induced demand"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Museums are changing from places of quiet observation to places of interaction. Visitors now touch screens, handle replicas and join workshops, and some museums stay open late for concerts. Curators say this attracts younger audiences, though traditionalists worry that entertainment is replacing serious study of the objects themselves. Whether the changes help or harm remains an open question.",
+   "options": [
+    "Concerts in museums",
+    "The role of curators",
+    "Younger audiences",
+    "Museums balancing interaction and traditional scholarship",
+    "Replicas of ancient objects",
+    "Quiet places in cities"
+   ],
+   "answer": "Museums balancing interaction and traditional scholarship",
+   "why": "Ý chính: bảo tàng tăng tương tác nhưng bị lo ngại về học thuật. Hòa nhạc chỉ là ví dụ.",
+   "quote": "places of interaction"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Public parks were created in the nineteenth century as green spaces for city dwellers suffering from overcrowding and pollution. New York's Central Park, designed in 1858, offered meadows, woods and lakes within walking distance of millions. Research shows that people who live near parks report lower stress and take more exercise, and property values nearby tend to rise.",
+   "options": [
+    "Overcrowding in cities",
+    "Central Park's design",
+    "Property prices near parks",
+    "Exercise habits",
+    "The origins and benefits of urban parks",
+    "Pollution in the nineteenth century"
+   ],
+   "answer": "The origins and benefits of urban parks",
+   "why": "Trọng tâm: nguồn gốc và lợi ích của công viên đô thị. Giá nhà chỉ là một lợi ích phụ.",
+   "quote": "green spaces for city dwellers"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "The guitar evolved from earlier stringed instruments in Spain and has since spread to nearly every musical culture. Acoustic guitars rely on a hollow body to amplify the strings, while electric guitars use magnetic pickups and amplifiers. The electric version, popular since the 1950s, shaped rock music, and players such as Jimi Hendrix pushed it into new sounds.",
+   "options": [
+    "The popularity of rock music",
+    "Jimi Hendrix's style",
+    "Spanish music traditions",
+    "The development of the guitar from acoustic to electric",
+    "Magnetic pickups",
+    "Hollow instruments"
+   ],
+   "answer": "The development of the guitar from acoustic to electric",
+   "why": "Ý chính: tiến hoá của cây đàn guitar. Hendrix và rock chỉ là ví dụ.",
+   "quote": "evolved from earlier stringed instruments"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Taxis once relied on drivers who memorised thousands of streets. In London, trainee cab drivers spend years learning the Knowledge, and brain scans show that parts of their brains linked to spatial memory are larger than average. Satellite navigation now makes such training less necessary, and researchers wonder whether skills will decline as people depend on devices.",
+   "options": [
+    "Brain scans of taxi drivers",
+    "The streets of London",
+    "Satellite navigation devices",
+    "Training for drivers",
+    "A demanding street-memory skill and the effect of navigation technology",
+    "Memory in large cities"
+   ],
+   "answer": "A demanding street-memory skill and the effect of navigation technology",
+   "why": "Trọng tâm: kỹ năng nhớ đường và ảnh hưởng của công nghệ dẫn đường. Quét não chỉ là bằng chứng.",
+   "quote": "spatial memory"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Festivals bring economic benefits to host cities. Visitors spend on accommodation, food and transport, and temporary jobs are created. The Edinburgh festivals, for example, are estimated to add hundreds of millions of pounds to the local economy each summer. Residents sometimes complain about crowds and noise, and rising costs for short-term rentals.",
+   "options": [
+    "Short-term rentals in cities",
+    "Noise and crowds",
+    "The economic gains and local costs of festivals",
+    "Temporary employment",
+    "Summer tourism",
+    "The history of Edinburgh"
+   ],
+   "answer": "The economic gains and local costs of festivals",
+   "why": "Ý chính: lợi ích kinh tế và chi phí địa phương của lễ hội. Từng lựa chọn khác chỉ nói một mặt.",
+   "quote": "economic benefits to host cities"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "Cable cars are used as urban transport in hilly cities such as La Paz in Bolivia, where steep terrain and congestion make roads slow. The lines glide above traffic, require little land and carry thousands of passengers an hour. Construction is relatively quick and costs less than building a subway, although capacity is limited compared with trains.",
+   "options": [
+    "The geography of Bolivia",
+    "Why cable cars suit steep, crowded cities",
+    "Subways and their expense",
+    "Traffic jams on hills",
+    "Land for building",
+    "Passenger capacity"
+   ],
+   "answer": "Why cable cars suit steep, crowded cities",
+   "why": "Trọng tâm: cáp treo phù hợp thành phố dốc, đông đúc. Chi phí và sức chứa chỉ là chi tiết.",
+   "quote": "steep terrain and congestion"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Street lighting transformed urban life. Gas lamps in the early nineteenth century made streets safer and encouraged evening activity, and electric lighting later extended the working day further. Modern LED lamps use far less energy, but their bright white light has been blamed for disturbing sleep and wildlife. Some cities now choose warmer tones and dim lamps late at night.",
+   "options": [
+    "Gas lamps in the nineteenth century",
+    "Energy use of lamps",
+    "Light and wildlife",
+    "Evening activities",
+    "The length of the working day",
+    "How changes in street lighting have affected cities"
+   ],
+   "answer": "How changes in street lighting have affected cities",
+   "why": "Ý chính: ánh sáng đường phố thay đổi đời sống đô thị qua các thời kỳ. Đèn LED chỉ là giai đoạn cuối.",
+   "quote": "transformed urban life"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Ballet developed in the Italian and French courts of the fifteenth and sixteenth centuries, when dance was a display of status as much as artistry. Louis XIV, who performed in ballets himself, founded a dance academy in 1661 and established the five basic positions of the feet. The vocabulary of steps remains in French today, so that dancers in Tokyo or Moscow use the same terms.",
+   "options": [
+    "The court origins of ballet and its shared vocabulary",
+    "Dance academies in modern Japan",
+    "The reign of Louis XIV",
+    "Display of status at court",
+    "The five positions of the feet",
+    "The training of dancers"
+   ],
+   "answer": "The court origins of ballet and its shared vocabulary",
+   "why": "Trọng tâm: ballet bắt nguồn từ cung đình và từ vựng chung. Louis XIV chỉ là một nhân vật trong đó.",
+   "quote": "founded a dance academy"
+  }
+ ]
+}

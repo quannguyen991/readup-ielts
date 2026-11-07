@@ -187,7 +187,10 @@ export type CriterionDetail = {
 
 export type WritingEvaluation = {
   submissionId: string;
-  /** Luôn là khoảng — chấm AI không đủ tin cậy để trả một con số band cứng. */
+  /**
+   * Band tổng là một số, tính từ bốn tiêu chí. Bản chấm mới có `bandLow === bandHigh`;
+   * bản chấm cũ lưu khoảng vẫn đọc được.
+   */
   bandLow: number;
   bandHigh: number;
   taskBand: number;

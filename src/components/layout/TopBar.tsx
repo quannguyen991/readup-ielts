@@ -175,14 +175,14 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           {/*
             Kính lúp mở bảng tìm bài. Màn điện thoại không đủ chỗ cho cả kính lúp
             lẫn chuông (thanh tràn, nút Premium bị cắt), nên dưới khổ `sm` chuông
-            nhường chỗ — nó chỉ dẫn sang Tiến độ, vẫn mở được từ bảng Khám phá.
+            nhường chỗ — nó chỉ dẫn sang Thông báo, vẫn mở được từ bảng Khám phá.
           */}
           <SearchIconButton color={paper.body} />
 
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={L('Thông báo', 'Notifications')}
-            onPress={() => router.push('/progress' as never)}
+            onPress={() => router.push('/thong-bao' as never)}
             className="hidden p-1.5 sm:flex"
           >
             <View>

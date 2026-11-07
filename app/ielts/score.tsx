@@ -42,7 +42,7 @@ export default function IeltsScoreScreen() {
     const cards: ScoreCard[] = [
       { skill: 'listening', band: listening?.band ?? null, detail: listening ? `${listening.score}/${listening.total} · ${listening.section == null ? L('full đề', 'full test') : L(`Section ${listening.section}`, `Section ${listening.section}`)}` : L('Chưa có bài đã chấm', 'No graded task yet') },
       { skill: 'reading', band: reading?.estimatedBand ?? null, detail: reading ? `${reading.rawScore}/${reading.total} · ${reading.articleTitle}` : L('Chưa có bài đã chấm', 'No graded task yet') },
-      { skill: 'writing', band: writingBand, detail: writing ? L(`${getWritingPromptById(writing.submission.promptId)?.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} · khoảng ${formatBand(writing.evaluation!.bandLow)}–${formatBand(writing.evaluation!.bandHigh)}`, `${getWritingPromptById(writing.submission.promptId)?.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} · estimated range ${formatBand(writing.evaluation!.bandLow)}–${formatBand(writing.evaluation!.bandHigh)}`) : L('Nộp và chờ chấm bài viết', 'Submit an essay and wait for grading') },
+      { skill: 'writing', band: writingBand, detail: writing ? L(`${getWritingPromptById(writing.submission.promptId)?.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} · chấm bằng AI`, `${getWritingPromptById(writing.submission.promptId)?.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} · AI graded`) : L('Nộp và chờ chấm bài viết', 'Submit an essay and wait for grading') },
       { skill: 'speaking', band: speaking?.grade?.overall ?? null, detail: speaking ? `${speaking.answers.length} ${L('câu trả lời', 'answers')} · ${speaking.titleVi}` : L('Cần bài nói đã được AI chấm', 'Needs an AI-graded speaking attempt') },
     ];
     return cards;

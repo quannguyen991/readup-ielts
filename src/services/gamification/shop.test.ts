@@ -20,14 +20,11 @@ test('đổi avatar một lần, lần hai bị chặn', () => {
   assert.deepEqual(again, { ok: false, reason: 'đã-sở-hữu' });
 });
 
-test('thẻ giữ chuỗi và vé gói đổi được nhiều lần', () => {
+test('thẻ giữ chuỗi đổi được nhiều lần', () => {
   const one = buy(empty, 'freeze-1', 500);
   assert.ok(one.ok);
   const two = buy({ owned: one.ok ? one.owned : {}, spent: 50 }, 'freeze-1', 450);
   assert.ok(two.ok && two.owned['freeze-1'] === 2 && two.spent === 100);
-  const pass = buy(empty, 'pass-pro-7', 5000);
-  assert.ok(pass.ok);
-  assert.ok(buy({ owned: pass.ok ? pass.owned : {}, spent: 1400 }, 'pass-pro-7', 3600).ok);
 });
 
 test('số sao: học + thưởng − đã đổi, không bao giờ âm', () => {
@@ -62,11 +59,9 @@ test('danh mục hợp lệ: mỗi loại mang đúng dữ liệu của nó', ()
   assert.equal(findItem(null), undefined);
 });
 
-test('vé Pro đắt hơn vé Plus, và không ai đổi nổi vé Pro trong một ngày học tối đa', () => {
-  const plus = findItem('pass-plus-7')!;
-  const pro = findItem('pass-pro-7')!;
-  assert.ok(pro.price > plus.price);
-  assert.ok(pro.price > 60 * 3, 'trần 60 điểm/ngày: vé Pro phải cần nhiều ngày học');
+test('vé gói đã gỡ khỏi cửa hàng từ 15/10: không còn món vé Plus hay vé Pro nào', () => {
+  assert.equal(findItem('pass-plus-7'), undefined);
+  assert.equal(findItem('pass-pro-7'), undefined);
 });
 
 test('gộp hai máy: không để số dư phình, đồ đeo theo máy đổi sau', () => {

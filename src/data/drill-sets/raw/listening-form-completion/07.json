@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #7",
+ "topic": "Coach tour booking · Gym membership · Evening course enrolment · Lost property report",
+ "context": "Narrator: Conversation 1. Coach tour booking.\nGrace: Highland Day Tours, Grace speaking.\nCaller: Hi, I'd like to book a place on the castle tour.\nGrace: Can I take your surname, please?\nCaller: It's Hargreaves. That's H, A, R, G, R, E, A, V, E, S.\nGrace: How many people will be coming?\nCaller: Seven, I think.\nGrace: What's your postcode?\nCaller: L N six, five J G.\nGrace: Which date would you like to travel?\nCaller: The eighteenth of November... no, sorry, that's a Sunday. Make it the seventeenth of November.\nGrace: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nGrace: It's H D five two eight nine.\nGrace: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Gym membership.\nSam: Good morning, Riverside Fitness, Sam speaking.\nCaller: Hello, I'd like to join the gym, please.\nSam: How many classes a week do you think you will come to?\nCaller: Three, I think.\nSam: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nSam: It's F G nine one six nine.\nSam: What's your postcode?\nCaller: N H two, nine B L.\nSam: And what's the best number to reach you on?\nCaller: It's oh seven oh, one one five one, two three three three.\nCaller: How much is the joining fee?\nSam: It's thirty pounds... oh, hold on, that's last year's price. This year it's forty pounds.\nSam: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Evening course enrolment.\nPriya: Parkside College, Priya speaking.\nCaller: Hello, I'd like to enrol on an evening photography course.\nPriya: What's your postcode?\nCaller: B G eight, five W K.\nPriya: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nPriya: It's C D eight nine zero five.\nPriya: The next course begins soon. Which date is the first class?\nCaller: The sixth of April, please.\nPriya: How many weeks does the course run for?\nCaller: Six, I think. Actually, let me say five, it's better to be safe.\nPriya: Can I take your surname, please?\nCaller: It's Sutcliffe. That's S, U, T, C, L, I, F, F, E.\nPriya: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Lost property report.\nMark: Central Station lost property, Mark speaking.\nCaller: Hello, I think I left my rucksack on a train yesterday.\nMark: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nMark: It's X G two eight six zero.\nMark: And what's the best number to reach you on?\nCaller: It's oh seven seven, oh nine seven four, four oh one oh.\nMark: What's your postcode?\nCaller: W C nine, one N M.\nCaller: How much is the handling charge?\nMark: It's thirty-five pounds.\nMark: On which date did you lose it?\nCaller: The sixth of May... no, sorry, that's a Sunday. Make it the fifth of May.\nMark: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Coach tour booking] Surname: ____",
+   "answer": "Hargreaves",
+   "why": "Người nói đọc: “It's Hargreaves. That's H, A, R, G, R, E, A, V, E, S.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Hargreaves. That's H, A, R, G, R, E, A, V, E, S."
+  },
+  {
+   "prompt": "[Coach tour booking] Number of people: ____",
+   "answer": "7 | seven",
+   "why": "Người nói đọc: “seven”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "seven"
+  },
+  {
+   "prompt": "[Coach tour booking] Postcode: ____",
+   "answer": "LN6 5JG",
+   "why": "Người nói đọc: “L N six, five J G”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "L N six, five J G"
+  },
+  {
+   "prompt": "[Coach tour booking] Tour date: ____",
+   "answer": "17 November | November 17 | 17th November | November 17th | seventeenth November",
+   "why": "Người nói đọc: “Make it the seventeenth of November”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the seventeenth of November"
+  },
+  {
+   "prompt": "[Coach tour booking] Booking code: ____",
+   "answer": "HD5289",
+   "why": "Người nói đọc: “H D five two eight nine”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "H D five two eight nine"
+  },
+  {
+   "prompt": "[Gym membership] Classes per week: ____",
+   "answer": "3 | three",
+   "why": "Người nói đọc: “three”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "three"
+  },
+  {
+   "prompt": "[Gym membership] Membership code: ____",
+   "answer": "FG9169",
+   "why": "Người nói đọc: “F G nine one six nine”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "F G nine one six nine"
+  },
+  {
+   "prompt": "[Gym membership] Postcode: ____",
+   "answer": "NH2 9BL",
+   "why": "Người nói đọc: “N H two, nine B L”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "N H two, nine B L"
+  },
+  {
+   "prompt": "[Gym membership] Mobile number: ____",
+   "answer": "07011512333",
+   "why": "Người nói đọc: “oh seven oh, one one five one, two three three three”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven oh, one one five one, two three three three"
+  },
+  {
+   "prompt": "[Gym membership] Joining fee (£): ____",
+   "answer": "£40 | 40",
+   "why": "Người nói đọc: “this year it's forty pounds”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "this year it's forty pounds"
+  },
+  {
+   "prompt": "[Evening course enrolment] Postcode: ____",
+   "answer": "BG8 5WK",
+   "why": "Người nói đọc: “B G eight, five W K”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "B G eight, five W K"
+  },
+  {
+   "prompt": "[Evening course enrolment] Student ID: ____",
+   "answer": "CD8905",
+   "why": "Người nói đọc: “C D eight nine zero five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "C D eight nine zero five"
+  },
+  {
+   "prompt": "[Evening course enrolment] First class: ____",
+   "answer": "6 April | April 6 | 6th April | April 6th | sixth April",
+   "why": "Người nói đọc: “The sixth of April”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The sixth of April"
+  },
+  {
+   "prompt": "[Evening course enrolment] Number of weeks: ____",
+   "answer": "5 | five",
+   "why": "Người nói đọc: “let me say five”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say five"
+  },
+  {
+   "prompt": "[Evening course enrolment] Surname: ____",
+   "answer": "Sutcliffe",
+   "why": "Người nói đọc: “It's Sutcliffe. That's S, U, T, C, L, I, F, F, E.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Sutcliffe. That's S, U, T, C, L, I, F, F, E."
+  },
+  {
+   "prompt": "[Lost property report] Report number: ____",
+   "answer": "XG2860",
+   "why": "Người nói đọc: “X G two eight six zero”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "X G two eight six zero"
+  },
+  {
+   "prompt": "[Lost property report] Phone number: ____",
+   "answer": "07709744010",
+   "why": "Người nói đọc: “oh seven seven, oh nine seven four, four oh one oh”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven seven, oh nine seven four, four oh one oh"
+  },
+  {
+   "prompt": "[Lost property report] Postcode: ____",
+   "answer": "WC9 1NM",
+   "why": "Người nói đọc: “W C nine, one N M”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "W C nine, one N M"
+  },
+  {
+   "prompt": "[Lost property report] Handling charge (£): ____",
+   "answer": "£35 | 35",
+   "why": "Người nói đọc: “thirty-five pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "thirty-five pounds"
+  },
+  {
+   "prompt": "[Lost property report] Date lost: ____",
+   "answer": "5 May | May 5 | 5th May | May 5th | fifth May",
+   "why": "Người nói đọc: “Make it the fifth of May”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "Make it the fifth of May"
+  }
+ ]
+}

@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildResult, countWords } from './writing-evaluator';
+import { countWords } from '@/lib/writing/word-count';
+
+import { buildResult } from './writing-evaluator';
 
 /**
  * Kiểm phần đọc bản chấm CHI TIẾT.
@@ -110,6 +112,16 @@ test('band lệch thang bị kẹp và làm tròn về bội số 0,5', () => {
   const r = buildResult(score, { annotations: [] }, BAI, 'model-x');
   assert.equal(r.criteria.task.band, 6.5);
   assert.equal(r.criteria.grammar.band, 9);
+});
+
+test('dẫn chứng là đoạn nguyên văn trong bài, dù model chép khác khoảng trắng và hoa thường', () => {
+  const r = buildResult(
+    { criteria: { task: { band: 6, quotes: ['in my  opinion, this is a sensible use of money'] } } },
+    { annotations: [] },
+    BAI,
+    'model-x',
+  );
+  assert.deepEqual(r.criteria.task.quotes, ['In my opinion, this is a sensible use of money']);
 });
 
 test('thiếu hẳn phần criteria cũng không ném lỗi', () => {

@@ -257,6 +257,8 @@ export default function ShopScreen() {
 
   return (
     <Screen cat="wave">
+      {/* Khung hẹp lại trên màn rộng: quà không bị kéo giãn ngang. */}
+      <View className="w-full self-center" style={{ maxWidth: 960 }}>
       <Appear>
         <View className="flex-row items-center gap-3">
         <View className="min-w-0 flex-1">
@@ -387,7 +389,7 @@ export default function ShopScreen() {
                 <SectionHeader className="mt-6" title={L(section.title, section.titleEn)} subtitle={L(section.subtitle, section.subtitleEn)} icon={section.icon} />
               </Appear>
               <View className="mt-3">
-                <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={14}>
+                <Grid columns={3} tabletColumns={3} mobileColumns={2} gap={14}>
                   {section.kind === 'theme' || section.kind === 'studyBg' ? (
                     <DefaultLookCard
                       what={section.kind === 'theme' ? 'Giao diện' : 'Nền học'}
@@ -447,6 +449,7 @@ export default function ShopScreen() {
       ) : null}
 
       <View className="h-6" />
+      </View>
     </Screen>
   );
 }

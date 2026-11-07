@@ -1,0 +1,287 @@
+{
+ "title": "Food Waste in the Canteen",
+ "topic": "Reducing food waste on campus",
+ "context": "Priya: Okay, Jack, let's start with why each food gets thrown away in the canteen. I spoke to the kitchen manager yesterday.\nJack: Great. I assumed bread would be the big one, because of the size of the loaves.\nPriya: Actually, it isn't the size. The bread goes stale by the evening and they can't sell it the next day.\nJack: Right. And rice?\nPriya: They cook it in enormous batches at noon, even when only half the tables are taken, so loads is left over.\nJack: I thought they reheated it for the next day.\nPriya: No, health rules forbid that. Now, salad. I expected the cooks to be at fault, but it's the customers. They pick out the tomatoes or onions and leave the rest, and the whole bowl goes in the bin.\nJack: Typical. What about soup?\nPriya: Anything unsold at the end of the day is thrown away. The kitchen says it can't be kept overnight. And fruit is the odd one. Staff don't buy too much, they just leave it in the storeroom until it goes soft, because nobody checks the stock.\nDr Okafor: Hello, both. Tell me about your data. Let's start with the kitchen records.\nPriya: We have them for the whole year.\nDr Okafor: Useful, but staff only log what they remember to write down, so there are gaps. I wouldn't rely on them alone.\nJack: We also weighed the bins ourselves for a week.\nDr Okafor: That's your strongest evidence, because it's direct measurement.\nJack: Should we repeat it in another month?\nDr Okafor: I did wonder, but no, one week is enough. What about the student survey?\nPriya: Two hundred replies.\nDr Okafor: People tend to overstate how much food they waste, so the figures may make the problem look bigger than it is. And the chef interviews?\nJack: We've done six.\nDr Okafor: Lovely, but transcribing and coding them takes ages, so choose three. As for the supplier invoices, I would love to see them, but the catering company won't let you publish any figures. They're confidential.\nJack: Now our ideas. Smaller plates first. I worry students will just ignore them and go back for more.\nPriya: Maybe, but a university in Leeds introduced them and cut waste by a fifth, so that's our best-supported idea.\nJack: Fair enough. Then there's the app that offers cheap food at closing time. I love it, but the developer wants thousands of pounds, which we simply don't have.\nPriya: Yes, too expensive. Compost bins, though, we could set up straight away. The porters already have spare containers.\nJack: Brilliant. What about booking meals the day before?\nPriya: Apparently they tried that three years ago, nobody used it, and it was dropped.\nJack: Ah. And donating leftovers to a charity?\nPriya: It's a lovely idea, but we can't do anything until the catering manager agrees, because of food safety.\nDr Okafor: Let's finish by planning your presentation.\nPriya: My first slide is crowded. I've got two whole paragraphs on it, so I'll cut that down.\nJack: The graphs look good on screen, but the numbers on the axes are tiny. People at the back won't see them.\nPriya: I'll make them bigger. The video clip is from a television documentary, so I need to ask for permission before we show it.\nJack: I was worried the file wouldn't open on the department computers, but I converted it yesterday, so that's fine.\nDr Okafor: Good. What about your recommendations section?\nPriya: We haven't practised it yet. We only wrote it last night.\nDr Okafor: Then rehearse it twice. And leave time for questions. Last year's group had twenty minutes of discussion and ran well over.\nJack: Understood. We'll keep it tight.",
+ "questions": [
+  {
+   "prompt": "Why is bread wasted in the canteen?",
+   "options": [
+    "It goes stale by the evening",
+    "It is cooked in very large batches",
+    "Customers leave the parts they dislike",
+    "It cannot be kept overnight",
+    "It is stored too long before use",
+    "Staff take too much home"
+   ],
+   "answer": "It goes stale by the evening",
+   "why": "Bánh mì bị khô cứng vào buổi tối và không bán được hôm sau; kích thước ổ bánh không phải lý do.",
+   "quote": "goes stale by the evening"
+  },
+  {
+   "prompt": "Why is rice wasted in the canteen?",
+   "options": [
+    "It goes stale by the evening",
+    "It is cooked in very large batches",
+    "Customers leave the parts they dislike",
+    "It cannot be kept overnight",
+    "It is stored too long before use",
+    "Staff take too much home"
+   ],
+   "answer": "It is cooked in very large batches",
+   "why": "Cơm nấu mẻ rất lớn vào buổi trưa dù chỉ nửa số bàn có khách. Bẫy: Jack tưởng được hâm lại nhưng quy định vệ sinh cấm.",
+   "quote": "They cook it in enormous batches"
+  },
+  {
+   "prompt": "Why is salad wasted in the canteen?",
+   "options": [
+    "It goes stale by the evening",
+    "It is cooked in very large batches",
+    "Customers leave the parts they dislike",
+    "It cannot be kept overnight",
+    "It is stored too long before use",
+    "Staff take too much home"
+   ],
+   "answer": "Customers leave the parts they dislike",
+   "why": "Khách nhặt bỏ cà chua, hành rồi bỏ cả bát.",
+   "quote": "They pick out the tomatoes or onions"
+  },
+  {
+   "prompt": "Why is soup wasted in the canteen?",
+   "options": [
+    "It goes stale by the evening",
+    "It is cooked in very large batches",
+    "Customers leave the parts they dislike",
+    "It cannot be kept overnight",
+    "It is stored too long before use",
+    "Staff take too much home"
+   ],
+   "answer": "It cannot be kept overnight",
+   "why": "Súp không bán hết trong ngày bị đổ vì không giữ qua đêm được.",
+   "quote": "it can't be kept overnight"
+  },
+  {
+   "prompt": "Why is fruit wasted in the canteen?",
+   "options": [
+    "It goes stale by the evening",
+    "It is cooked in very large batches",
+    "Customers leave the parts they dislike",
+    "It cannot be kept overnight",
+    "It is stored too long before use",
+    "Staff take too much home"
+   ],
+   "answer": "It is stored too long before use",
+   "why": "Nhân viên không mua quá nhiều, chỉ để quá lâu trong kho đến khi mềm.",
+   "quote": "leave it in the storeroom until it goes soft"
+  },
+  {
+   "prompt": "What does Dr Okafor say about the kitchen records?",
+   "options": [
+    "It is the most reliable source",
+    "It may exaggerate the problem",
+    "It is incomplete",
+    "It takes too long to analyse",
+    "It should be repeated in another month",
+    "It cannot be shared for confidentiality reasons"
+   ],
+   "answer": "It is incomplete",
+   "why": "Nhân viên chỉ ghi những gì nhớ nên có khoảng trống.",
+   "quote": "so there are gaps"
+  },
+  {
+   "prompt": "What does Dr Okafor say about the weighing of the bins?",
+   "options": [
+    "It is the most reliable source",
+    "It may exaggerate the problem",
+    "It is incomplete",
+    "It takes too long to analyse",
+    "It should be repeated in another month",
+    "It cannot be shared for confidentiality reasons"
+   ],
+   "answer": "It is the most reliable source",
+   "why": "Cân thùng là bằng chứng mạnh nhất vì đo trực tiếp. Cô bác ý định lặp lại: một tuần là đủ.",
+   "quote": "That's your strongest evidence"
+  },
+  {
+   "prompt": "What does Dr Okafor say about the student survey?",
+   "options": [
+    "It is the most reliable source",
+    "It may exaggerate the problem",
+    "It is incomplete",
+    "It takes too long to analyse",
+    "It should be repeated in another month",
+    "It cannot be shared for confidentiality reasons"
+   ],
+   "answer": "It may exaggerate the problem",
+   "why": "Mọi người hay nói quá lượng thức ăn bỏ phí nên số liệu làm vấn đề trông lớn hơn.",
+   "quote": "People tend to overstate how much food they waste"
+  },
+  {
+   "prompt": "What does Dr Okafor say about the chef interviews?",
+   "options": [
+    "It is the most reliable source",
+    "It may exaggerate the problem",
+    "It is incomplete",
+    "It takes too long to analyse",
+    "It should be repeated in another month",
+    "It cannot be shared for confidentiality reasons"
+   ],
+   "answer": "It takes too long to analyse",
+   "why": "Việc gỡ băng và mã hoá mất rất nhiều thời gian nên chọn ba cuộc.",
+   "quote": "transcribing and coding them takes ages"
+  },
+  {
+   "prompt": "What does Dr Okafor say about the supplier invoices?",
+   "options": [
+    "It is the most reliable source",
+    "It may exaggerate the problem",
+    "It is incomplete",
+    "It takes too long to analyse",
+    "It should be repeated in another month",
+    "It cannot be shared for confidentiality reasons"
+   ],
+   "answer": "It cannot be shared for confidentiality reasons",
+   "why": "Công ty cung cấp suất ăn không cho công bố số liệu vì bí mật.",
+   "quote": "They're confidential"
+  },
+  {
+   "prompt": "What do the students say about smaller plates?",
+   "options": [
+    "It has worked at another university",
+    "It would cost too much",
+    "It needs the catering manager's permission",
+    "It was tried before and failed",
+    "Students may ignore it",
+    "It could start immediately"
+   ],
+   "answer": "It has worked at another university",
+   "why": "Jack lo sinh viên bỏ qua, nhưng một trường ở Leeds đã dùng và giảm một phần năm lượng rác.",
+   "quote": "a university in Leeds introduced them"
+  },
+  {
+   "prompt": "What do the students say about the app for cheap food?",
+   "options": [
+    "It has worked at another university",
+    "It would cost too much",
+    "It needs the catering manager's permission",
+    "It was tried before and failed",
+    "Students may ignore it",
+    "It could start immediately"
+   ],
+   "answer": "It would cost too much",
+   "why": "Nhà phát triển đòi hàng nghìn bảng nên quá đắt.",
+   "quote": "the developer wants thousands of pounds"
+  },
+  {
+   "prompt": "What do the students say about compost bins?",
+   "options": [
+    "It has worked at another university",
+    "It would cost too much",
+    "It needs the catering manager's permission",
+    "It was tried before and failed",
+    "Students may ignore it",
+    "It could start immediately"
+   ],
+   "answer": "It could start immediately",
+   "why": "Có thể lắp ngay vì nhân viên khuân vác đã có sẵn thùng.",
+   "quote": "we could set up straight away"
+  },
+  {
+   "prompt": "What do the students say about booking meals the day before?",
+   "options": [
+    "It has worked at another university",
+    "It would cost too much",
+    "It needs the catering manager's permission",
+    "It was tried before and failed",
+    "Students may ignore it",
+    "It could start immediately"
+   ],
+   "answer": "It was tried before and failed",
+   "why": "Ba năm trước đã thử, không ai dùng nên bỏ.",
+   "quote": "nobody used it, and it was dropped"
+  },
+  {
+   "prompt": "What do the students say about donating leftovers to a charity?",
+   "options": [
+    "It has worked at another university",
+    "It would cost too much",
+    "It needs the catering manager's permission",
+    "It was tried before and failed",
+    "Students may ignore it",
+    "It could start immediately"
+   ],
+   "answer": "It needs the catering manager's permission",
+   "why": "Chưa làm được gì cho đến khi quản lý căng tin đồng ý, vì an toàn thực phẩm.",
+   "quote": "until the catering manager agrees"
+  },
+  {
+   "prompt": "What is the concern about the first slide?",
+   "options": [
+    "There is too much writing on it",
+    "It might take too long",
+    "The file might not open",
+    "It is hard to read from the back",
+    "It has not been practised",
+    "It needs permission to be used"
+   ],
+   "answer": "There is too much writing on it",
+   "why": "Slide đầu có hai đoạn văn dài, Priya sẽ cắt bớt.",
+   "quote": "two whole paragraphs on it"
+  },
+  {
+   "prompt": "What is the concern about the graphs?",
+   "options": [
+    "There is too much writing on it",
+    "It might take too long",
+    "The file might not open",
+    "It is hard to read from the back",
+    "It has not been practised",
+    "It needs permission to be used"
+   ],
+   "answer": "It is hard to read from the back",
+   "why": "Số trên trục quá nhỏ nên người ngồi cuối lớp không đọc được.",
+   "quote": "People at the back won't see them"
+  },
+  {
+   "prompt": "What is the concern about the video clip?",
+   "options": [
+    "There is too much writing on it",
+    "It might take too long",
+    "The file might not open",
+    "It is hard to read from the back",
+    "It has not been practised",
+    "It needs permission to be used"
+   ],
+   "answer": "It needs permission to be used",
+   "why": "Clip lấy từ phim tài liệu nên cần xin phép. Bẫy: Jack lo tệp không mở được nhưng đã chuyển định dạng xong.",
+   "quote": "I need to ask for permission"
+  },
+  {
+   "prompt": "What is the concern about the recommendations section?",
+   "options": [
+    "There is too much writing on it",
+    "It might take too long",
+    "The file might not open",
+    "It is hard to read from the back",
+    "It has not been practised",
+    "It needs permission to be used"
+   ],
+   "answer": "It has not been practised",
+   "why": "Hai bạn chưa tập phần khuyến nghị, mới viết đêm qua.",
+   "quote": "We haven't practised it yet"
+  },
+  {
+   "prompt": "What is the concern about the question session?",
+   "options": [
+    "There is too much writing on it",
+    "It might take too long",
+    "The file might not open",
+    "It is hard to read from the back",
+    "It has not been practised",
+    "It needs permission to be used"
+   ],
+   "answer": "It might take too long",
+   "why": "Nhóm năm ngoái thảo luận hai mươi phút và quá giờ nhiều.",
+   "quote": "ran well over"
+  }
+ ]
+}

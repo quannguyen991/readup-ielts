@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 1: Mixed Topics",
+ "topic": "Science, history and daily life",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "When ocean temperatures rise by even one or two degrees for several weeks, corals expel the algae that live in their tissues and give them both colour and most of their food. The reef turns white, a condition known as bleaching. Corals can recover if the water cools quickly, but repeated episodes leave them starved and vulnerable to disease, and some reefs have lost half their living cover within a decade.",
+   "options": [
+    "Threats facing the world's oceans",
+    "The colour of coral tissue",
+    "Algae as a source of food for fish",
+    "Recovery of corals in cool water",
+    "Tourism on tropical reefs",
+    "How rising sea temperatures starve corals"
+   ],
+   "answer": "How rising sea temperatures starve corals",
+   "why": "Đoạn nói nhiệt độ tăng khiến san hô mất tảo và đói dần. Các lựa chọn khác quá rộng, quá hẹp hoặc chỉ là chi tiết phụ.",
+   "quote": "corals expel the algae"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Before the introduction of the uniform penny post in Britain in 1840, the cost of sending a letter depended on distance and the number of sheets, and was paid by the recipient. Many people refused delivery, having read the outside of the envelope for news. Rowland Hill's reform replaced this with a flat prepaid charge, and the volume of letters roughly doubled within two years.",
+   "options": [
+    "The invention of the adhesive stamp",
+    "A pricing reform that transformed letter writing",
+    "Why people avoided receiving letters",
+    "The history of communication in Britain",
+    "Rowland Hill's early life",
+    "The decline of postal services"
+   ],
+   "answer": "A pricing reform that transformed letter writing",
+   "why": "Ý chính là cải cách giá cước làm thư tăng gấp đôi. Việc từ chối nhận thư chỉ là chi tiết phụ; tem dán không được nhắc.",
+   "quote": "a flat prepaid charge"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Streets lined with mature trees can be several degrees cooler than treeless ones on a hot afternoon. Leaves block sunlight and release water vapour, which cools the air much as sweat cools skin. Studies of cities in Europe and Asia suggest that planting trees is among the cheapest ways to reduce heat-related illness, though young trees need years of watering before they provide meaningful shade.",
+   "options": [
+    "The best species to plant in European cities",
+    "Why young trees need frequent watering",
+    "Air pollution in modern cities",
+    "Trees as a low-cost way of cooling cities",
+    "How sweating cools the human body",
+    "The role of parks in city planning"
+   ],
+   "answer": "Trees as a low-cost way of cooling cities",
+   "why": "Cả đoạn bàn về cây xanh làm mát đô thị với chi phí thấp. Mồ hôi chỉ là phép so sánh, việc tưới cây là ý phụ.",
+   "quote": "among the cheapest ways"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Sourdough bread relies on a starter, a mixture of flour and water in which wild yeasts and bacteria live together. The bacteria produce acids that give the loaf its tang and slow the growth of mould, while the yeasts make gas that lifts the dough. Because every starter harbours its own mix of microbes, bakeries often claim their bread cannot be duplicated elsewhere.",
+   "options": [
+    "Why bakeries guard their recipes",
+    "The history of bread-making",
+    "The microbial partnership behind sourdough",
+    "Mould prevention in food storage",
+    "How to maintain a flour starter at home",
+    "Yeast in beer brewing"
+   ],
+   "answer": "The microbial partnership behind sourdough",
+   "why": "Đoạn giải thích men và vi khuẩn phối hợp tạo ra bánh. Các tiêu đề khác sai trọng tâm hoặc không được bàn tới.",
+   "quote": "wild yeasts and bacteria live together"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Arctic terns travel from the northern polar region to Antarctic waters and back each year, a round trip that can exceed seventy thousand kilometres. Scientists once thought the birds followed the coast, but tiny tracking devices have shown that they take winding routes that follow prevailing winds, saving energy even though the distance is longer. The tracking results have changed how researchers view long-distance migration.",
+   "options": [
+    "The dangers faced by polar wildlife",
+    "How tracking devices are manufactured",
+    "Wind patterns across the Atlantic",
+    "The record distance flown by a single bird",
+    "Tracking evidence that overturns assumptions about a bird's route",
+    "Why birds migrate"
+   ],
+   "answer": "Tracking evidence that overturns assumptions about a bird's route",
+   "why": "Trọng tâm là dữ liệu theo dõi cho thấy tuyến đường khác với giả định. Quãng đường chỉ là chi tiết, còn lý do di cư không được bàn.",
+   "quote": "tracking devices have shown"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Each time antibiotics are used, a few bacteria may survive because of chance mutations. These survivors multiply, and the next course of treatment faces a tougher population. Overuse in hospitals and in farming speeds this process, and doctors warn that routine surgery could become dangerous again if common infections can no longer be treated. New drugs are being developed, but few companies find them profitable.",
+   "options": [
+    "The discovery of the first antibiotic",
+    "The profits of the pharmaceutical industry",
+    "Safe practice in hospital surgery",
+    "How overuse of drugs breeds untreatable infections",
+    "Farming methods in developing countries",
+    "How bacteria cause disease"
+   ],
+   "answer": "How overuse of drugs breeds untreatable infections",
+   "why": "Ý chính là lạm dụng kháng sinh tạo ra vi khuẩn kháng thuốc. Lợi nhuận hãng thuốc và phẫu thuật chỉ là ý phụ.",
+   "quote": "faces a tougher population"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "Papyrus, made from the stems of a riverside reed, was the main writing material of the ancient Mediterranean world for over three thousand years. Strips of the pith were laid crosswise, pressed and dried into sheets, which were then joined into long rolls. Although fragile in damp conditions, papyrus survives well in dry climates, which is why most surviving examples come from Egypt.",
+   "options": [
+    "The decline of reed-growing in Egypt",
+    "Making and preserving the writing material of the ancient world",
+    "The invention of the alphabet",
+    "Why ancient libraries were destroyed",
+    "Modern attempts to recreate ancient crafts",
+    "The fragility of old documents"
+   ],
+   "answer": "Making and preserving the writing material of the ancient world",
+   "why": "Đoạn nói cách làm giấy cói và vì sao nó còn tồn tại. Độ mong manh chỉ là một chi tiết nhỏ.",
+   "quote": "laid crosswise, pressed and dried"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Inflation is a general rise in prices over time, and moderate amounts are generally seen as healthy because they encourage spending and investment. Problems arise when prices rise faster than wages, since households can then afford less. Central banks respond by raising interest rates, which makes borrowing more expensive and slows demand, though this can also increase unemployment.",
+   "options": [
+    "Managing price rises: costs and trade-offs",
+    "The causes of unemployment",
+    "Why saving money is wise",
+    "A history of interest rates",
+    "The benefits of moderate wage growth",
+    "How governments print money"
+   ],
+   "answer": "Managing price rises: costs and trade-offs",
+   "why": "Đoạn bàn về lạm phát và cách ngân hàng trung ương cân bằng được mất. Thất nghiệp và lãi suất chỉ xuất hiện như một phần.",
+   "quote": "raising interest rates"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "The method of loci asks learners to imagine walking through a familiar place and to leave vivid images of items at fixed points along the route. To recall the list, they simply walk the route again. Memory champions use the technique to memorise thousands of digits, and experiments show that ordinary volunteers can double their recall after a few weeks of practice.",
+   "options": [
+    "A visual technique that dramatically improves recall",
+    "Why some people have better memories than others",
+    "The history of memory competitions",
+    "Familiar places in urban design",
+    "Digits and numbers in everyday life",
+    "Problems with mnemonic devices in schools"
+   ],
+   "answer": "A visual technique that dramatically improves recall",
+   "why": "Đoạn mô tả kỹ thuật hình dung lộ trình để nhớ tốt hơn. Các lựa chọn khác chỉ trùng từ khoá hoặc không được nhắc.",
+   "quote": "double their recall"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "The Atacama in northern Chile is often called the driest place on Earth, with some weather stations recording no rain for years. Yet it is not lifeless. Fog drifting in from the Pacific condenses on cactus spines and specially adapted plants, and microbes live beneath the surface of rocks. NASA tests equipment there because the soil resembles that of Mars.",
+   "options": [
+    "The weather of South America",
+    "The Pacific Ocean's influence on fog",
+    "Mars exploration missions",
+    "Why cacti store water",
+    "Mining activity in Chile",
+    "Life and research in an extremely dry region"
+   ],
+   "answer": "Life and research in an extremely dry region",
+   "why": "Đoạn kết hợp sự sống ở sa mạc và việc NASA thử nghiệm. Mỗi lựa chọn khác chỉ nắm một chi tiết hoặc quá rộng.",
+   "quote": "it is not lifeless"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Tall buildings only became practical after Elisha Otis demonstrated a safety brake for lifts in 1854. Before then, passengers feared that a broken rope would send the cabin crashing down. The brake held the cabin in place if the rope failed, and within decades builders were erecting offices of ten, twenty, then more than forty floors.",
+   "options": [
+    "The dangers of early lifts",
+    "The tallest buildings in the world",
+    "A safety invention that made tall buildings possible",
+    "Steel as a building material",
+    "How offices changed in the twentieth century",
+    "Elisha Otis's business career"
+   ],
+   "answer": "A safety invention that made tall buildings possible",
+   "why": "Phát minh phanh an toàn là nguyên nhân giúp nhà cao tầng khả thi. Nguy hiểm thang máy chỉ là bối cảnh.",
+   "quote": "safety brake for lifts"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "English has borrowed words from so many sources that perhaps three quarters of its vocabulary is of foreign origin. After the Norman conquest of 1066, French became the language of law and government, giving English words such as judge and court, while the common people kept words like cow and sheep. Later trade and empire added vocabulary from Arabic, Hindi and dozens of other languages.",
+   "options": [
+    "The Norman conquest and its political effects",
+    "Differences between French and English",
+    "Words used in courts of law",
+    "The many outside sources of English vocabulary",
+    "The spread of English around the world",
+    "How children learn vocabulary"
+   ],
+   "answer": "The many outside sources of English vocabulary",
+   "why": "Đoạn liệt kê nhiều nguồn vay mượn từ vựng. Cuộc chinh phục Norman chỉ là một ví dụ.",
+   "quote": "three quarters of its vocabulary"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Regular brisk walking for thirty minutes a day is associated with lower risk of heart disease, diabetes and depression. It requires no equipment, carries little risk of injury and suits people of almost all ages. Some doctors now prescribe walking groups, noting that the social contact may add to the benefits. Evidence that ten thousand steps is a magic target is weak, however.",
+   "options": [
+    "The risks of intensive exercise",
+    "The accessible health benefits of daily walking",
+    "Why ten thousand steps is the ideal target",
+    "Social clubs for older people",
+    "Equipment for outdoor sports",
+    "Diseases that affect the heart"
+   ],
+   "answer": "The accessible health benefits of daily walking",
+   "why": "Ý chính là lợi ích dễ tiếp cận của đi bộ. Mốc mười nghìn bước bị bài bác nên không thể là tiêu đề.",
+   "quote": "requires no equipment"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "The satellite navigation system used by phones and cars depends on extremely precise clocks. Each satellite broadcasts its position and the time of the signal, and a receiver calculates its distance from at least four satellites to fix its location. Because the satellites move fast and sit high above Earth's gravity, engineers must correct for small relativistic effects; otherwise errors would grow by several kilometres a day.",
+   "options": [
+    "The history of military navigation",
+    "Einstein's life and theories",
+    "Mobile phone design",
+    "Why satellites need repair",
+    "Maps and road planning",
+    "The timing principles that allow satellite positioning"
+   ],
+   "answer": "The timing principles that allow satellite positioning",
+   "why": "Đoạn giải thích vai trò của đồng hồ chính xác trong định vị. Thuyết tương đối chỉ xuất hiện như bước hiệu chỉnh.",
+   "quote": "extremely precise clocks"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "People who volunteer regularly report greater satisfaction with life, and some studies find they live longer than non-volunteers. Critics note that healthier, more sociable people may be more likely to volunteer in the first place. Experiments that randomly assign people to volunteering schemes are rare, but the few that exist suggest that the benefit is real for older adults, especially when the work involves contact with others.",
+   "options": [
+    "The kinds of charities people prefer",
+    "Is volunteering good for the volunteer? The evidence",
+    "How governments support charities",
+    "Loneliness among older people",
+    "The lifespan of different professions",
+    "Why sociable people are healthier"
+   ],
+   "answer": "Is volunteering good for the volunteer? The evidence",
+   "why": "Đoạn xem xét bằng chứng về lợi ích của việc làm tình nguyện cho chính người làm. Các lựa chọn khác lạc đề hoặc chỉ là chi tiết.",
+   "quote": "the benefit is real for older adults"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Before Gutenberg's press appeared around 1450, books were copied by hand and cost as much as a house in some cases. Movable metal type allowed printers to produce hundreds of identical copies, and the price of books fell sharply. Within fifty years, millions of volumes had been printed across Europe, and ideas, from religious reform to scientific discoveries, spread faster than any authority could control.",
+   "options": [
+    "How cheap printing accelerated the spread of ideas",
+    "Gutenberg's struggles with debt",
+    "The production of medieval manuscripts",
+    "Religious reform in sixteenth-century Europe",
+    "The metals used in type",
+    "The first books ever printed"
+   ],
+   "answer": "How cheap printing accelerated the spread of ideas",
+   "why": "Trọng tâm là sách rẻ giúp ý tưởng lan nhanh. Cải cách tôn giáo và kim loại chỉ là chi tiết phụ.",
+   "quote": "ideas spread faster"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Although plastic bottles carry recycling symbols, only a small fraction of all plastic ever made has been recycled. Different types melt at different temperatures and cannot be mixed, and food residue contaminates batches. Sorting by hand is slow and expensive, and new plastic is often cheaper than recycled. Researchers are therefore developing enzymes that break plastic back into its original chemicals.",
+   "options": [
+    "Enzymes that digest plastic",
+    "The symbols printed on bottles",
+    "Pollution in the oceans",
+    "The cost of household waste collection",
+    "The practical obstacles to recycling plastic",
+    "Why plastic was invented"
+   ],
+   "answer": "The practical obstacles to recycling plastic",
+   "why": "Phần lớn đoạn nêu các trở ngại thực tế khi tái chế. Enzyme chỉ là giải pháp nhắc ở cuối.",
+   "quote": "cannot be mixed"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "When a honeybee finds a rich source of nectar, it returns to the hive and performs a waggle dance. The angle of the dance relative to vertical shows the direction of the food in relation to the sun, and the length of the waggle shows the distance. Other workers decode the message and fly straight to the flowers. The discovery earned the Austrian scientist Karl von Frisch a Nobel Prize in 1973.",
+   "options": [
+    "The prize-winning career of Karl von Frisch",
+    "How bees make honey",
+    "The role of the sun in navigation",
+    "Flowers that attract insects",
+    "A dance language that guides bees to food",
+    "Threats to bee populations"
+   ],
+   "answer": "A dance language that guides bees to food",
+   "why": "Ý chính là điệu nhảy truyền thông tin về thức ăn. Giải Nobel và mặt trời chỉ là ý phụ.",
+   "quote": "the length of the waggle shows the distance"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Research on homework suggests that its value depends on age. For secondary students, moderate amounts are linked to better results, but for primary pupils the benefit is small and may be outweighed by stress and lost family time. Many schools are therefore rethinking the practice, replacing worksheets with reading or short projects, though parents often resist, fearing that their children will fall behind.",
+   "options": [
+    "Parents' involvement in school life",
+    "Stress among secondary students",
+    "Changing views on the value of homework",
+    "The most effective revision techniques",
+    "The history of school timetables",
+    "Reading projects in primary schools"
+   ],
+   "answer": "Changing views on the value of homework",
+   "why": "Đoạn nói quan điểm về bài tập về nhà đang thay đổi. Các lựa chọn khác quá hẹp hoặc không được bàn.",
+   "quote": "rethinking the practice"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Several cities have begun replacing diesel buses with electric ones. The vehicles are quieter and produce no exhaust where people breathe, which improves street air quality. Their main drawbacks are cost, since a battery bus can be double the price, and charging time. However, lower running costs mean the extra investment is repaid within about eight years, according to some transport agencies.",
+   "options": [
+    "Weighing the costs and benefits of electric buses",
+    "The decline of diesel engines",
+    "Air quality in big cities",
+    "How batteries are recycled",
+    "The history of public transport",
+    "Noise pollution near roads"
+   ],
+   "answer": "Weighing the costs and benefits of electric buses",
+   "why": "Đoạn cân nhắc ưu và nhược điểm xe buýt điện. Chất lượng không khí chỉ là một lợi ích, không phải cả đoạn.",
+   "quote": "repaid within about eight years"
+  }
+ ]
+}

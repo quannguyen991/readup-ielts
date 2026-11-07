@@ -1,0 +1,127 @@
+{
+ "title": "The Psychology of Colour",
+ "topic": "Colour perception, emotion and culture",
+ "context": "Colour influences how we feel more than most of us realise, yet scientists caution that the effects are smaller and more complicated than popular books claim. The perception of colour begins in the retina, where three types of cone cells respond to red, green and blue light. The brain combines their signals to create the full range of shades that we see. About one in twelve men has a form of colour blindness, usually involving difficulty in distinguishing red from green, compared with roughly one in two hundred women. Colour vision is also not perfectly stable: the same shirt can look blue in daylight and purple under a lamp, because the brain adjusts for the light around it.\n\nMany studies have examined the link between colour and emotion. Red is associated in several cultures with danger and excitement, and one well-known study found that athletes wearing red in combat sports won slightly more often than those wearing blue. Critics note that the effect is small and may depend on the sport, the referees and the audience. Blue, in contrast, is often described as calming, and it is the most frequently chosen favourite colour in surveys carried out across many different countries.\n\nCultural differences matter greatly. White is the colour of weddings in much of Europe, but in parts of East Asia it is traditionally worn at funerals. Green signifies luck in Ireland, while in some other places it is linked to illness or envy. Language may shape perception as well. Russian has separate basic words for light blue and dark blue, and Russian speakers have been shown to distinguish between the two shades slightly faster than English speakers, who use a single word for both.\n\nBusinesses make use of colour constantly. Fast food chains often use red and yellow, which are thought to stimulate appetite and create a sense of urgency, while banks favour blue to convey stability and trust. Evidence for such effects is limited, though. Brand colours seem to work chiefly by making a company recognisable, and consistency matters more than any particular shade. In hospitals, designers choose soft greens and blues to reduce anxiety, although the benefits are hard to separate from other aspects of the environment such as noise and lighting.\n\nColour may also affect performance. Some experiments suggest that exposure to red before a test can reduce results, perhaps because the colour is linked with failure through teachers' red pens. Other studies find that a view of green nature improves concentration and creativity. Replication has proved difficult for many colour studies, and researchers now emphasise larger samples and more careful controls. The emerging consensus is that colour acts as a subtle cue rather than a powerful force, and that context decides its meaning. This does not make colour unimportant to designers; it means that its effects are usually modest and easily overwhelmed by shape, texture and meaning.",
+ "questions": [
+  {
+   "prompt": "Our sense of colour starts in the ____ at the back of the eye.",
+   "answer": "retina",
+   "why": "Nhận thức màu bắt đầu ở võng mạc.",
+   "quote": "begins in the retina"
+  },
+  {
+   "prompt": "The retina contains three kinds of ____ cells that detect different colours.",
+   "answer": "cone",
+   "why": "Ba loại tế bào hình nón.",
+   "quote": "three types of cone cells"
+  },
+  {
+   "prompt": "The three types react to red, green and ____ light.",
+   "answer": "blue",
+   "why": "Nhạy với đỏ, lục, lam.",
+   "quote": "red, green and blue light"
+  },
+  {
+   "prompt": "Colour blindness affects roughly one in twelve ____.",
+   "answer": "men",
+   "why": "Khoảng một trên mười hai nam giới.",
+   "quote": "one in twelve men"
+  },
+  {
+   "prompt": "Affected people usually confuse red with ____.",
+   "answer": "green",
+   "why": "Khó phân biệt đỏ với xanh lục.",
+   "quote": "red from green"
+  },
+  {
+   "prompt": "Red has been linked in several cultures with danger and ____.",
+   "answer": "excitement",
+   "why": "Đỏ gắn với nguy hiểm và hưng phấn.",
+   "quote": "danger and excitement"
+  },
+  {
+   "prompt": "Athletes in red did slightly better in ____ sports than those in blue.",
+   "answer": "combat",
+   "why": "Trong môn đối kháng, áo đỏ thắng nhỉnh hơn.",
+   "quote": "red in combat sports"
+  },
+  {
+   "prompt": "Blue is frequently called ____ by observers.",
+   "answer": "calming",
+   "why": "Xanh lam thường được mô tả là êm dịu.",
+   "quote": "described as calming"
+  },
+  {
+   "prompt": "In East Asia white is traditionally worn at ____.",
+   "answer": "funerals",
+   "why": "Ở Đông Á màu trắng dùng trong tang lễ.",
+   "quote": "worn at funerals"
+  },
+  {
+   "prompt": "In ____, green is a sign of good luck.",
+   "answer": "Ireland",
+   "why": "Xanh lục là may mắn ở Ireland.",
+   "quote": "luck in Ireland"
+  },
+  {
+   "prompt": "Russian speakers can tell the two ____ of blue apart a little more quickly.",
+   "answer": "shades",
+   "why": "Người Nga phân biệt hai sắc xanh nhanh hơn.",
+   "quote": "the two shades slightly faster"
+  },
+  {
+   "prompt": "Fast food restaurants often choose red and ____.",
+   "answer": "yellow",
+   "why": "Màu đỏ và vàng.",
+   "quote": "red and yellow"
+  },
+  {
+   "prompt": "Those colours are believed to stimulate ____ and urgency.",
+   "answer": "appetite",
+   "why": "Kích thích cảm giác thèm ăn.",
+   "quote": "stimulate appetite"
+  },
+  {
+   "prompt": "Banks use blue to suggest stability and ____.",
+   "answer": "trust",
+   "why": "Ngân hàng dùng xanh để gợi sự tin cậy.",
+   "quote": "stability and trust"
+  },
+  {
+   "prompt": "Brand colours mainly help to make a company ____.",
+   "answer": "recognisable",
+   "why": "Màu thương hiệu giúp dễ nhận ra.",
+   "quote": "making a company recognisable"
+  },
+  {
+   "prompt": "Hospitals use soft colours to reduce patients' ____.",
+   "answer": "anxiety",
+   "why": "Giảm lo âu.",
+   "quote": "reduce anxiety"
+  },
+  {
+   "prompt": "It is hard to separate the effect of colour from noise and ____.",
+   "answer": "lighting",
+   "why": "Khó tách khỏi ánh sáng, tiếng ồn.",
+   "quote": "noise and lighting"
+  },
+  {
+   "prompt": "Seeing red may lower test results, perhaps because of teachers' red ____.",
+   "answer": "pens",
+   "why": "Liên tưởng bút đỏ của giáo viên.",
+   "quote": "teachers' red pens"
+  },
+  {
+   "prompt": "Looking at green nature may boost concentration and ____.",
+   "answer": "creativity",
+   "why": "Cảnh xanh tăng tập trung và sáng tạo.",
+   "quote": "concentration and creativity"
+  },
+  {
+   "prompt": "Researchers now call for larger ____ in colour studies.",
+   "answer": "samples",
+   "why": "Cần mẫu lớn hơn.",
+   "quote": "larger samples"
+  }
+ ]
+}

@@ -14,10 +14,8 @@ import {
   type TextProps,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, G, LinearGradient as SvgGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { Icon } from '@/components/ui/Icon';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { useL } from '@/i18n/useL';
 import { ExamModeModal, type ExamMode } from '@/components/ielts/ExamModeModal';
 import { SourceExamRoom } from '@/components/ielts/SourceExamRoom';
@@ -26,6 +24,8 @@ import { ExamResourceLinks } from '@/components/exam/ExamResourceLinks';
 import { ExamVocabularyPanel, type ExamTextPage } from '@/components/exam/ExamVocabularyPanel';
 import { compareSourceTests, SECTION_MINUTES, type ExamPart, type SourcePage } from '@/services/ielts/source-catalog';
 import { color } from '@/theme/tokens';
+import { FlatCover, numOf, Text } from '@/components/ielts/SourceCover';
+import { SourceCatalog } from '@/components/ielts/SourceCatalog';
 
 type Page = SourcePage;
 type TestSection = 'Reading' | 'Listening' | 'Writing' | 'Speaking';
@@ -84,30 +84,6 @@ type Grade = {
   }>;
 };
 
-/** Phông Be Vietnam Pro của Band 9, chọn theo độ đậm cũ của từng chữ. */
-function fontFor(weight: unknown): string {
-  switch (String(weight)) {
-    case '900':
-    case '800':
-      return 'BeVietnamPro_800ExtraBold';
-    case '700':
-    case 'bold':
-      return 'BeVietnamPro_700Bold';
-    case '600':
-      return 'BeVietnamPro_600SemiBold';
-    case '500':
-      return 'BeVietnamPro_500Medium';
-    default:
-      return 'BeVietnamPro_400Regular';
-  }
-}
-
-/** Mọi chữ trên trang bộ đề đi qua đây để dùng đúng phông Band 9. */
-function Text(props: TextProps) {
-  const flat = StyleSheet.flatten(props.style) as { fontWeight?: unknown } | undefined;
-  return <RNText {...props} style={[{ fontFamily: fontFor(flat?.fontWeight) }, props.style]} />;
-}
-
 const localAssetUrl =(name: string) => `/api/ielts/local-ocr?asset=${encodeURIComponent(name)}`;
 
 function getBookCover(title: string, source: string): string {
@@ -142,118 +118,20 @@ function getBookCover(title: string, source: string): string {
 }
 
 
-/**
- * Bìa đề IELTS 21 vẽ lại: nền navy có ánh vàng, quyển sách mở có vầng sáng, vài ngôi sao.
- * Hoàn toàn tự vẽ bằng SVG, không dùng ảnh bìa của nhà xuất bản.
- */
-function Cover21({ width, height, radius = 10 }: { width: number; height: number; radius?: number }) {
-  const pad = Math.round(width * 0.1);
+/** Đầu trang gọn và tĩnh: không đồ họa động, không vẽ lại khi gõ tìm kiếm hay đổi bộ lọc. */
+const CatalogHeader = React.memo(function CatalogHeader({ count, L }: { count: number; L: (vi: string, en: string) => string }) {
   return (
-    <View style={{ width, height, borderRadius: radius, overflow: 'hidden', backgroundColor: color.ink }}>
-      <Svg width={width} height={height} viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', top: 0, left: 0 }}>
-        <Defs>
-          <SvgGradient id="c21bg" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#1B2D4D" />
-            <Stop offset="1" stopColor="#0A1424" />
-          </SvgGradient>
-          <SvgGradient id="c21gold" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0" stopColor="#F6E3A8" />
-            <Stop offset="0.5" stopColor="#D9B46A" />
-            <Stop offset="1" stopColor="#6A4BD9" />
-          </SvgGradient>
-          <RadialGradient id="c21glow" cx="0.5" cy="0.5" r="0.5">
-            <Stop offset="0" stopColor="#E9C978" stopOpacity="0.55" />
-            <Stop offset="1" stopColor="#E9C978" stopOpacity="0" />
-          </RadialGradient>
-        </Defs>
-        <Rect x="0" y="0" width="300" height="360" fill="url(#c21bg)" />
-        <Circle cx="210" cy="150" r="150" fill="url(#c21glow)" />
-        <G fill="none" stroke="#D9B46A" strokeOpacity="0.28" strokeWidth="1">
-          <Circle cx="210" cy="150" r="72" />
-          <Circle cx="210" cy="150" r="112" />
-          <Circle cx="210" cy="150" r="152" />
-        </G>
-        {/* quyển sách mở */}
-        <Path d="M46 222 Q98 200 150 232 L150 318 Q98 290 46 310 Z" fill="url(#c21gold)" />
-        <Path d="M254 222 Q202 200 150 232 L150 318 Q202 290 254 310 Z" fill="#F3E2B6" />
-        <Path d="M150 232 V318" stroke="#0F1D33" strokeOpacity="0.35" strokeWidth="2" />
-        <Path d="M68 248 Q104 236 136 250 M68 266 Q104 254 136 268 M68 284 Q100 274 136 286" stroke="#0F1D33" strokeOpacity="0.25" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <Path d="M164 250 Q196 236 232 248 M164 268 Q196 254 232 266 M164 286 Q196 274 232 284" stroke="#0F1D33" strokeOpacity="0.25" strokeWidth="2" fill="none" strokeLinecap="round" />
-        {/* sao lấp lánh */}
-        <Path d="M236 58 L240 72 L254 76 L240 80 L236 94 L232 80 L218 76 L232 72 Z" fill="#F6E3A8" />
-        <Path d="M64 78 L66.5 85 L74 87.5 L66.5 90 L64 97 L61.5 90 L54 87.5 L61.5 85 Z" fill="#D9B46A" />
-        <Circle cx="268" cy="124" r="2.6" fill="#F6E3A8" />
-        <Circle cx="40" cy="160" r="2" fill="#D9B46A" />
-      </Svg>
-      <View style={{ flex: 1, padding: pad, justifyContent: 'space-between' }}>
-        <Text style={{ color: 'rgba(246,227,168,0.9)', fontSize: Math.max(8, Math.round(width * 0.075)), fontWeight: '700', letterSpacing: 2 }}>IELTS</Text>
-        <View>
-          <Text style={{ color: color.surface, fontSize: Math.round(width * 0.36), fontFamily: 'InterTight_600SemiBold', lineHeight: Math.round(width * 0.38), letterSpacing: -2 }}>21</Text>
-          <Text style={{ color: '#F6E3A8', fontSize: Math.max(9, Math.round(width * 0.085)), fontWeight: '600', marginTop: 4 }}>Practice tests</Text>
-        </View>
-        <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: Math.max(7, Math.round(width * 0.068)), letterSpacing: 0.4 }}>Reading · Listening · Writing</Text>
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+      <View style={{ gap: 2 }}>
+        <Text style={{ fontSize: 28, fontWeight: '800', color: color.ink }}>{L('Bộ đề IELTS', 'IELTS Tests')}</Text>
+        <Text style={{ fontSize: 14, color: color.muted, fontWeight: '500' }}>Cambridge & Actual Tests · {count}</Text>
+      </View>
+      <View style={{ flexGrow: 1, flexBasis: 360, maxWidth: 620 }}>
+        <ExamResourceLinks exam="ielts" />
       </View>
     </View>
   );
-}
-
-/**
- * Bìa của một đề: ảnh 2D đã tạo sẵn trong public/books/covers-2d (cam-N.png, vol-N.png).
- */
-function FlatCover({ kind, num, width, height, radius = 10 }: { kind: 'CAMBRIDGE' | 'ACTUAL VOL'; num: string; width: number; height: number; radius?: number }) {
-  const n = parseInt(num, 10) || 0;
-  if (n === 21) return <Cover21 width={width} height={height} radius={radius} />;
-  if (n === 0 || (kind === 'ACTUAL VOL' && n > 10)) return <FlatCoverDrawn kind={kind} num={num || 'IELTS'} width={width} height={height} radius={radius} />;
-  const src = `/books/covers-2d/${kind === 'CAMBRIDGE' ? 'cam' : 'vol'}-${n}.webp`;
-  return <Image source={{ uri: src }} style={{ width, height, borderRadius: radius }} resizeMode="cover" />;
-}
-
-/** Màu nền bìa theo số đề: mỗi đề một màu cố định, để nhìn lướt là nhận ra. */
-const COVER_PALETTE = [color.ink, '#0F766E', '#6B3FA0', '#9F1239', '#166534', '#334155', color.primaryDark, '#3730A3', '#0E7490', color.ink];
-
-const SKILL_IN_ID = /-(reading|listening)(?=-|$)/;
-/** Các bản Reading và Listening của cùng một đề (cùng id, khác kỹ năng). */
-/** Số đề trong tên, ví dụ "Cambridge IELTS 19" -> "19", "VOL 10 KEY" -> "10". */
-function numOf(s: string): string {
-  const m = s.match(/(\d+)/);
-  return m?.[1] ?? '';
-}
-
-/**
- * Bìa 2D vẽ bằng code: nền phẳng một màu, số đề lớn và một dải mờ ở đáy. Không dùng
- * ảnh bìa gốc của nhà xuất bản, nên không có bản quyền bìa nào được sao chép.
- */
-function FlatCoverDrawn({
-  kind,
-  num,
-  width,
-  height,
-  radius = 10,
-}: {
-  kind: 'CAMBRIDGE' | 'ACTUAL VOL';
-  num: string;
-  width: number;
-  height: number;
-  radius?: number;
-}) {
-  const n = parseInt(num, 10) || 0;
-  const bg = COVER_PALETTE[n % COVER_PALETTE.length] ?? color.ink;
-  const pad = Math.round(width * 0.09);
-  const small = Math.max(8, Math.round(width * 0.085));
-  return (
-    <View style={{ width, height, borderRadius: radius, backgroundColor: bg, padding: pad, justifyContent: 'space-between', overflow: 'hidden' }}>
-      <Text style={{ color: 'rgba(255,255,255,0.82)', fontSize: small, fontWeight: '800', letterSpacing: 1 }}>
-        {kind === 'CAMBRIDGE' ? 'CAMBRIDGE' : 'ACTUAL TESTS'}
-      </Text>
-      <Text style={{ color: color.surface, fontSize: Math.round(width * 0.4), fontWeight: '900', lineHeight: Math.round(width * 0.44) }}>
-        {num || '—'}
-      </Text>
-      <View style={{ marginHorizontal: -pad, marginBottom: -pad, paddingHorizontal: pad, paddingVertical: Math.round(pad * 0.7), backgroundColor: 'rgba(0,0,0,0.18)' }}>
-        <Text style={{ color: color.surface, fontSize: small, fontWeight: '700' }}>IELTS</Text>
-      </View>
-    </View>
-  );
-}
+});
 
 export default function IeltsSourcePracticeScreen() {
   const { L } = useL();
@@ -270,10 +148,11 @@ export default function IeltsSourcePracticeScreen() {
   const [viewMode, setViewMode] = useState<'catalog' | 'collections' | 'detail'>('catalog');
 
   const [tests, setTests] = useState<TestMeta[]>([]);
-  const openTest = (id: string) => {
+  const openTest = useCallback((id: string) => {
     scrollToTop();
-    void loadTest(id);
-  };
+    void loadTestRef.current(id);
+  }, [scrollToTop]);
+  const loadTestRef = useRef<(id: string, startPractice?: boolean, mode?: ExamMode) => Promise<void>>(async () => {});
   const [reviewPages, setReviewPages] = useState<number[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [test, setTest] = useState<TestContent | null>(null);
@@ -372,6 +251,8 @@ export default function IeltsSourcePracticeScreen() {
     }
   };
 
+  loadTestRef.current = loadTest;
+
   const updateAnswer = (number: number, value: string) => {
     setAnswers((current) => {
       const next = { ...current, [String(number)]: value };
@@ -412,38 +293,6 @@ export default function IeltsSourcePracticeScreen() {
       return next;
     });
   };
-
-  const filteredTests = useMemo(() => {
-    return tests.filter((item) => {
-      if (collectionFilter === 'cambridge' && !item.source.toLowerCase().includes('cambridge')) {
-        return false;
-      }
-      if (collectionFilter === 'vol' && !item.source.toLowerCase().includes('vol')) {
-        return false;
-      }
-      if (sectionFilter !== 'all' && item.section !== sectionFilter) {
-        return false;
-      }
-      if (searchQuery.trim()) {
-        const q = searchQuery.trim().toLowerCase();
-        const normQ = q.replace(/\bcam\b/g, 'cambridge');
-        const match =
-          item.title.toLowerCase().includes(q) ||
-          item.source.toLowerCase().includes(q) ||
-          item.title.toLowerCase().includes(normQ) ||
-          item.source.toLowerCase().includes(normQ) ||
-          (item.section && item.section.toLowerCase().includes(q));
-        if (!match) return false;
-      }
-      return true;
-    }).sort(compareSourceTests);
-  }, [collectionFilter, sectionFilter, searchQuery, tests]);
-
-  // Each source keeps its skills together; newer Cambridge/Vol books come first.
-  const sectionGroups = useMemo(() => {
-    return [...new Set(filteredTests.map((item) => item.source))]
-      .map((source) => ({ key: source, label: source, items: filteredTests.filter((t) => t.source === source) }));
-  }, [filteredTests]);
 
   const currentTestMeta = useMemo(() => {
     if (!selectedId) return tests[0] ?? null;
@@ -509,529 +358,22 @@ export default function IeltsSourcePracticeScreen() {
             ) : null}
           </View>
 
-          {/* ========================================================= */}
-          {/* VIEW 1: BỘ ĐỀ IELTS · CAMBRIDGE & ACTUAL VOLUMES (input_file_2) */}
-          {/* ========================================================= */}
+          {/* VIEW 1: danh mục bộ đề */}
           {viewMode === 'catalog' ? (
             <View style={{ gap: 20 }}>
-              {/* Khung đầu trang theo kiểu LightHero của Band 9 */}
-              <LightHero
-                badge="PRACTICE · PROGRESS · HIGHER BANDS"
-                art="test"
-                line1={L('Bộ đề IELTS', 'IELTS Tests')}
-                line2="Cambridge & Actual Volumes"
-                subtitle={L('Đề OCR có thể luyện trong app; mục chỉ có liên kết sẽ mở trang nguồn.', 'OCR sets can be practiced here; link-only entries open at their source page.')}
-                footer={<HeroStat value={String(tests.length)} label={L('nguồn đề', 'test sources')} />}
+              <CatalogHeader count={tests.length} L={L} />
+
+              <SourceCatalog
+                tests={tests}
+                L={L}
+                collection={collectionFilter}
+                onCollection={setCollectionFilter}
+                skill={sectionFilter}
+                onSkill={setSectionFilter}
+                query={searchQuery}
+                onQuery={setSearchQuery}
+                onOpen={openTest}
               />
-
-              <ExamResourceLinks exam="ielts" />
-
-              {/* Quick Filters Row 1: Bộ đề */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', width: 64 }}>
-                  {L('Bộ đề:', 'Collection:')}
-                </Text>
-                <Pressable
-                  onPress={() => setCollectionFilter('all')}
-                  style={{
-                    paddingHorizontal: 16,
-                    paddingVertical: 7,
-                    borderRadius: 20,
-                    backgroundColor: collectionFilter === 'all' ? '#6A4BD9' : '#FFFFFF',
-                    borderWidth: 1,
-                    borderColor: collectionFilter === 'all' ? '#6A4BD9' : '#E6DACB',
-                  }}
-                >
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'all' ? '#FFFFFF' : '#2B2350' }}>
-                    {L(`Tất cả (${tests.length})`, `All (${tests.length})`)}
-                  </Text>
-                </Pressable>
-
-                <Pressable
-                  onPress={() => setCollectionFilter('cambridge')}
-                  style={{
-                    paddingHorizontal: 16,
-                    paddingVertical: 7,
-                    borderRadius: 20,
-                    backgroundColor: collectionFilter === 'cambridge' ? '#6A4BD9' : '#FFFFFF',
-                    borderWidth: 1,
-                    borderColor: collectionFilter === 'cambridge' ? '#6A4BD9' : '#E6DACB',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: 6,
-                  }}
-                >
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#2B2350' }}>
-                    Cambridge IELTS (21 → 8)
-                  </Text>
-                  <Text style={{ fontSize: 10, color: collectionFilter === 'cambridge' ? '#FFFFFF' : '#2B2350' }}>▼</Text>
-                </Pressable>
-
-                <Pressable
-                  onPress={() => setCollectionFilter('vol')}
-                  style={{
-                    paddingHorizontal: 16,
-                    paddingVertical: 7,
-                    borderRadius: 20,
-                    backgroundColor: collectionFilter === 'vol' ? '#6A4BD9' : '#FFFFFF',
-                    borderWidth: 1,
-                    borderColor: collectionFilter === 'vol' ? '#6A4BD9' : '#E6DACB',
-                  }}
-                >
-                  <Text style={{ fontSize: 13, fontWeight: '700', color: collectionFilter === 'vol' ? '#FFFFFF' : '#2B2350' }}>
-                    {L('Vol · Mới nhất trước', 'Volumes · Newest first')}
-                  </Text>
-                </Pressable>
-              </View>
-
-              {/* Quick Filters Row 2: Kỹ năng */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', width: 64 }}>
-                  {L('Kỹ năng:', 'Skill:')}
-                </Text>
-                {['all', 'Reading', 'Listening', 'Writing', 'Speaking'].map((sec) => {
-                  const on = sectionFilter === sec;
-                  return (
-                    <Pressable
-                      key={sec}
-                      onPress={() => setSectionFilter(sec)}
-                      style={{
-                        paddingHorizontal: 16,
-                        paddingVertical: 7,
-                        borderRadius: 20,
-                        backgroundColor: on ? '#6A4BD9' : '#FFFFFF',
-                        borderWidth: 1,
-                        borderColor: on ? '#6A4BD9' : '#E6DACB',
-                      }}
-                    >
-                      <Text style={{ fontSize: 13, fontWeight: '700', color: on ? '#FFFFFF' : '#2B2350' }}>
-                        {sec === 'all' ? L('Tất cả', 'All') : sec}
-                      </Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
-
-              {/* Search Bar matching input_file_2 */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    backgroundColor: '#FFFFFF',
-                    borderWidth: 1,
-                    borderColor: '#E6DACB',
-                    borderRadius: 14,
-                    paddingHorizontal: 14,
-                    height: 48,
-                    shadowColor: '#2B2350',
-                    shadowOpacity: 0.04,
-                    shadowRadius: 8,
-                  }}
-                >
-                  <Icon name="search" size={18} color="#6A4BD9" />
-                  <TextInput
-                    value={searchQuery}
-                    onChangeText={setSearchQuery}
-                    placeholder="Cam 19 Reading..."
-                    placeholderTextColor="#A38F7E"
-                    style={{ flex: 1, height: '100%', paddingHorizontal: 10, color: '#2B2350', fontSize: 14, fontWeight: '500' }}
-                  />
-                  {searchQuery ? (
-                    <Pressable onPress={() => setSearchQuery('')} style={{ padding: 4 }}>
-                      <Icon name="close" size={16} color="#A38F7E" />
-                    </Pressable>
-                  ) : null}
-                </View>
-
-                <Pressable
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: 6,
-                    height: 48,
-                    paddingHorizontal: 18,
-                    borderRadius: 14,
-                    backgroundColor: '#FFFFFF',
-                    borderWidth: 1,
-                    borderColor: '#E6DACB',
-                  }}
-                >
-                  <Icon name="filter" size={16} color="#6A4BD9" />
-                  <Text style={{ fontSize: 14, fontWeight: '700', color: '#6A4BD9' }}>
-                    {L('Bộ lọc', 'Filter')}
-                  </Text>
-                </Pressable>
-              </View>
-
-              {/* Active Filter Chips Row */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                  <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>{collectionFilter === 'all' ? L('Mọi bộ đề', 'All collections') : collectionFilter === 'cambridge' ? 'Cambridge (21 → 8)' : 'Volumes'}</Text>
-                  <Pressable onPress={() => setCollectionFilter('all')}>
-                    <Icon name="close" size={12} color="#A38F7E" />
-                  </Pressable>
-                </View>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                  <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>{sectionFilter === 'all' ? L('Mọi kỹ năng', 'All skills') : sectionFilter}</Text>
-                  <Pressable onPress={() => setSectionFilter('all')}>
-                    <Icon name="close" size={12} color="#A38F7E" />
-                  </Pressable>
-                </View>
-
-                {searchQuery ? (
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB' }}>
-                    <Text style={{ fontSize: 12, color: '#2B2350', fontWeight: '600' }}>Từ khóa: {searchQuery}</Text>
-                    <Pressable onPress={() => setSearchQuery('')}>
-                      <Icon name="close" size={12} color="#A38F7E" />
-                    </Pressable>
-                  </View>
-                ) : null}
-
-                <Pressable
-                  onPress={() => {
-                    setCollectionFilter('all');
-                    setSectionFilter('all');
-                    setSearchQuery('');
-                  }}
-                >
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: '#6A4BD9', marginLeft: 4 }}>
-                    {L('Xóa tất cả', 'Clear all')}
-                  </Text>
-                </Pressable>
-              </View>
-
-              {/* 2-Column Layout matching input_file_2 */}
-              <View style={{ flexDirection: 'row', gap: 20, alignItems: 'flex-start' }}>
-                {/* Left Sidebar Filter */}
-                <View
-                  style={{
-                    width: 240,
-                    borderRadius: 16,
-                    backgroundColor: '#FFFFFF',
-                    borderWidth: 1,
-                    borderColor: '#F3F0FB',
-                    padding: 16,
-                    gap: 16,
-                    shadowColor: '#2B2350',
-                    shadowOpacity: 0.04,
-                    shadowRadius: 8,
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                    <Icon name="filter" size={18} color="#6A4BD9" />
-                    <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
-                      {L('Bộ lọc', 'Filters')}
-                    </Text>
-                  </View>
-
-                  {/* Filter Group: Bộ đề */}
-                  <View style={{ gap: 8 }}>
-                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>
-                      {L('Bộ đề', 'Collection')}
-                    </Text>
-                    {[
-                      { id: 'all', label: `Tất cả (${tests.length})` },
-                      { id: 'cambridge', label: 'Cambridge IELTS' },
-                      { id: 'vol', label: 'Actual Tests' },
-                    ].map((opt) => {
-                      const on = collectionFilter === opt.id;
-                      return (
-                        <Pressable
-                          key={opt.id}
-                          onPress={() => setCollectionFilter(opt.id as 'all' | 'cambridge' | 'vol')}
-                          style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 2 }}
-                        >
-                          <View
-                            style={{
-                              width: 16,
-                              height: 16,
-                              borderRadius: 8,
-                              borderWidth: on ? 5 : 1.5,
-                              borderColor: on ? '#6A4BD9' : '#C7B7A6',
-                              backgroundColor: '#FFFFFF',
-                            }}
-                          />
-                          <Text style={{ fontSize: 13, color: on ? '#2B2350' : '#6A5645', fontWeight: on ? '700' : '500' }}>
-                            {opt.label}
-                          </Text>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
-
-                  {/* Filter Group: Kỹ năng */}
-                  <View style={{ gap: 8 }}>
-                    <Text style={{ fontSize: 13, fontWeight: '700', color: '#2B2350' }}>
-                      {L('Kỹ năng', 'Skill')}
-                    </Text>
-                    {['Reading', 'Listening', 'Writing', 'Speaking'].map((s) => {
-                      const on = sectionFilter === s;
-                      return (
-                        <Pressable
-                          key={s}
-                          onPress={() => setSectionFilter(sectionFilter === s ? 'all' : s)}
-                          style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 2 }}
-                        >
-                          <View
-                            style={{
-                              width: 16,
-                              height: 16,
-                              borderRadius: 4,
-                              backgroundColor: on ? '#6A4BD9' : '#FFFFFF',
-                              borderWidth: 1.5,
-                              borderColor: on ? '#6A4BD9' : '#C7B7A6',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            {on ? <Text style={{ color: '#fff', fontSize: 10, fontWeight: '900' }}>✓</Text> : null}
-                          </View>
-                          <Text style={{ fontSize: 13, color: on ? '#2B2350' : '#6A5645', fontWeight: on ? '700' : '500' }}>
-                            {s}
-                          </Text>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
-
-                  {/* Filter Slider: Số câu & Số trang */}
-                  <View style={{ gap: 6 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Số câu</Text>
-                      <Text style={{ fontSize: 12, color: '#6A4BD9', fontWeight: '700' }}>0 – 60</Text>
-                    </View>
-                    <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }}>
-                      <View style={{ width: '100%', height: '100%', backgroundColor: '#6A4BD9', borderRadius: 2 }} />
-                    </View>
-                  </View>
-
-                  <View style={{ gap: 6 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Số trang</Text>
-                      <Text style={{ fontSize: 12, color: '#6A4BD9', fontWeight: '700' }}>0 – 40</Text>
-                    </View>
-                    <View style={{ height: 4, borderRadius: 2, backgroundColor: '#F3F0FB' }}>
-                      <View style={{ width: '100%', height: '100%', backgroundColor: '#6A4BD9', borderRadius: 2 }} />
-                    </View>
-                  </View>
-
-                  <Pressable
-                    style={{
-                      height: 40,
-                      borderRadius: 10,
-                      backgroundColor: '#6A4BD9',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexDirection: 'row',
-                      gap: 6,
-                      marginTop: 4,
-                    }}
-                  >
-                    <Icon name="filter" size={14} color="#FFFFFF" />
-                    <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '700' }}>
-                      {L('Áp dụng bộ lọc', 'Apply Filters')}
-                    </Text>
-                  </Pressable>
-                </View>
-
-                {/* Right Main Content */}
-                <View style={{ flex: 1, gap: 16 }}>
-                  {/* Highlight Recommendation Card matching input_file_2 */}
-                  <View
-                    style={{
-                      borderRadius: 16,
-                      backgroundColor: '#F3F0FB',
-                      borderWidth: 1,
-                      borderColor: '#F3F0FB',
-                      padding: 18,
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 16,
-                    }}
-                  >
-                    <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                        <Text style={{ fontSize: 14 }}>👑</Text>
-                        <Text style={{ fontSize: 12, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                          {L('Đề xuất cho bạn', 'Recommended for you')}
-                        </Text>
-                      </View>
-                      <Text style={{ fontSize: 20, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold' }}>
-                        Cambridge IELTS 20 · Reading Test 1
-                      </Text>
-                      <Text style={{ fontSize: 13, color: '#7C6552' }}>
-                        {L('Đề thi bám sát đề thật, chất lượng cao.', 'Authentic test format with detailed analysis.')}
-                      </Text>
-                    </View>
-
-                    {/* 3D Book Cover from generated asset - floating and enlarged */}
-                    <View
-                      style={{
-                        width: 120,
-                        height: 120,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <FlatCover kind="CAMBRIDGE" num="20" width={120} height={120} radius={12} />
-                    </View>
-
-                    <Pressable
-                      onPress={() => loadTest('cambridge-20-reading-1')}
-                      style={{
-                        paddingHorizontal: 16,
-                        height: 40,
-                        borderRadius: 10,
-                        backgroundColor: '#FFFFFF',
-                        borderWidth: 1,
-                        borderColor: '#E6DACB',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        gap: 4,
-                      }}
-                    >
-                      <Text style={{ fontSize: 13, fontWeight: '700', color: '#6A4BD9' }}>
-                        {L('Xem ngay', 'View now')}
-                      </Text>
-                      <Icon name="arrow-right" size={14} color="#6A4BD9" />
-                    </Pressable>
-                  </View>
-
-                  {/* Results Count & Sort Dropdown */}
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={{ fontSize: 14, fontWeight: '700', color: '#2B2350' }}>
-                      {L(`Hiển thị ${filteredTests.length} kết quả cho "${searchQuery || 'Tất cả'}"`, `Showing ${filteredTests.length} results`)}
-                    </Text>
-
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                      <Text style={{ fontSize: 12, color: '#7C6552' }}>Sắp xếp:</Text>
-                      <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6DACB', flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#2B2350' }}>Mới nhất → cũ nhất</Text>
-                        <Text style={{ fontSize: 10, color: '#7C6552' }}>▼</Text>
-                      </View>
-                    </View>
-                  </View>
-
-                  {/* Grid of Test Cards matching input_file_2 - Large, Balanced Covers */}
-
-                  {sectionGroups.map((g) => (
-                  <View key={g.key} style={{ gap: 14 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                    <Text style={{ fontSize: 20, fontWeight: '900' as never, color: '#2B2350' }}>{g.label}</Text>
-                    <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
-                      <Text style={{ fontSize: 12, fontWeight: '800' as never, color: '#B94A70' }}>{g.items.length}</Text>
-                    </View>
-                    <View style={{ flex: 1, height: 1, backgroundColor: '#E6DACB' }} />
-                  </View>
-                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
-                    {g.items.map((item) => {
-                      const isCam = item.source.toLowerCase().includes('cambridge');
-
-                      return (
-                        <Pressable
-                          key={item.id}
-                          onPress={() => openTest(item.id)}
-                          style={{
-                            opacity: 1,
-                            flex: 1,
-                            minWidth: 420,
-                            maxWidth: 540,
-                            borderRadius: 16,
-                            backgroundColor: '#FFFFFF',
-                            borderWidth: 1,
-                            borderColor: '#F3F0FB',
-                            padding: 16,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 16,
-                            shadowColor: '#2B2350',
-                            shadowOpacity: 0.05,
-                            shadowRadius: 10,
-                            shadowOffset: { width: 0, height: 3 },
-                          }}
-
-                        >
-                          {/* Large, Beautiful Book Cover Thumbnail - Further Enlarged */}
-                          <View
-                            style={{
-                              width: 122,
-                              height: 136,
-                              borderRadius: 12,
-                              overflow: 'hidden',
-                              backgroundColor: '#0A1E33',
-                              shadowColor: '#000',
-                              shadowOpacity: 0.26,
-                              shadowRadius: 10,
-                              shadowOffset: { width: 2, height: 5 },
-                            }}
-                          >
-                            <FlatCover kind={isCam ? 'CAMBRIDGE' : 'ACTUAL VOL'} num={numOf(item.source)} width={122} height={136} radius={12} />
-                          </View>
-
-                          {/* Card Content */}
-                          <View style={{ flex: 1, gap: 6 }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                              <View
-                                style={{
-                                  paddingHorizontal: 8,
-                                  paddingVertical: 2.5,
-                                  borderRadius: 5,
-                                  backgroundColor: isCam ? '#E0F2FE' : '#FCE7F3',
-                                }}
-                              >
-                                <Text style={{ fontSize: 10.5, fontWeight: '800', color: isCam ? '#0369A1' : '#9D174D' }}>
-                                  {isCam ? 'CAMBRIDGE' : item.source.toLowerCase().includes('vol') ? 'VOLUME' : 'IELTS'}
-                                </Text>
-                              </View>
-
-                              {item.section ? (
-                                <View style={{ paddingHorizontal: 8, paddingVertical: 2.5, borderRadius: 5, backgroundColor: '#F3F0FB' }}>
-                                  <Text style={{ fontSize: 10.5, fontWeight: '800', color: '#6A4BD9' }}>
-                                    {item.section}
-                                  </Text>
-                                </View>
-                              ) : null}
-                            </View>
-
-                            <Text style={{ fontSize: 15.5, fontWeight: '800', color: '#1E293B', lineHeight: 22 }} numberOfLines={2}>
-                              {item.title}
-                            </Text>
-
-                            <Text style={{ fontSize: 12.5, color: '#64748B', fontWeight: '500' }}>
-                              {`${item.questionCount} ${L('câu', 'questions')} · ${item.pageCount} ${L('trang đề', 'pages')}${item.hasAnswerKey ? ` · ${L('có đáp án', 'answer key')}` : ''}${item.answerKeyVerified ? ` · ${L('đã đối chiếu', 'verified')}` : ''}`}
-                            </Text>
-                            {!item.externalOnly && item.missingComponents?.includes('audio') ? <Text style={{ fontSize: 12, color: '#6A4BD9' }}>{L('Còn thiếu audio nguồn', 'Source audio missing')}</Text> : null}
-                            {!item.externalOnly && item.partCount ? <Text style={{ fontSize: 12, color: '#64748B' }}>{item.partCount} {L('phần học', 'parts')}</Text> : null}
-                          </View>
-
-                          {/* Arrow right button */}
-                          <View
-                            style={{
-                              width: 36,
-                              height: 36,
-                              borderRadius: 18,
-                              backgroundColor: '#F3F0FB',
-                              borderWidth: 1,
-                              borderColor: '#F3F0FB',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            <Icon name="arrow-right" size={15} color="#6A4BD9" />
-                          </View>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
-                  </View>
-                  ))}
-                </View>
-              </View>
             </View>
           ) : null}
 
@@ -1362,7 +704,13 @@ export default function IeltsSourcePracticeScreen() {
             </View>
           ) : null}
 
-            {viewMode === 'detail' ? (
+          {viewMode === 'detail' && error ? (
+            <View style={{ padding: 14, borderRadius: 12, backgroundColor: color.dangerSoft, borderWidth: 1, borderColor: color.danger }}>
+              <Text style={{ fontSize: 13, fontWeight: '600', color: color.danger }}>{error}</Text>
+            </View>
+          ) : null}
+
+          {viewMode === 'detail' ? (
             <PracticeTestDetail
               test={test}
               meta={currentTestMeta}
@@ -1396,6 +744,27 @@ export default function IeltsSourcePracticeScreen() {
 
         </View>
       </ScrollView>
+
+      {/* Phòng thi: mở khi bấm "Thi thử" hoặc "Luyện tập" ở trang chi tiết */}
+      {isExamStarted && test ? (
+        <Modal visible animationType="fade" presentationStyle="fullScreen" onRequestClose={() => setIsExamStarted(false)}>
+          <View style={{ flex: 1, backgroundColor: color.canvas }}>
+            <SourceExamRoom
+              key={`${test.id}:${examMode}`}
+              test={test}
+              simulation={examMode === 'simulation'}
+              answers={answers}
+              onAnswerChange={updateAnswer}
+              onSubmit={submit}
+              onExit={() => setIsExamStarted(false)}
+              grade={grade}
+              submitted={submitted}
+              loading={loading}
+              supportPages={support}
+            />
+          </View>
+        </Modal>
+      ) : null}
 
       {/* Mode Selection Modal */}
       <ExamModeModal

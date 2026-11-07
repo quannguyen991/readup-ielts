@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 7: Economics and Work",
+ "topic": "Money, business and the world of work",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "Barter requires a double coincidence of wants: you must find someone who has what you need and also needs what you have. Money removes this obstacle by acting as a medium of exchange, a store of value and a unit of account. Societies have used shells, salt, metal discs and, more recently, electronic entries, provided that people trust that others will accept them in return.",
+   "options": [
+    "Why money makes exchange easier than barter",
+    "The history of coins and metals",
+    "How banks store money",
+    "Trust between neighbours",
+    "Salt as a valuable commodity",
+    "The rise of electronic payments"
+   ],
+   "answer": "Why money makes exchange easier than barter",
+   "why": "Ý chính: tiền giải quyết hạn chế của hàng đổi hàng. Muối, vỏ sò chỉ là ví dụ.",
+   "quote": "double coincidence of wants"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Supermarkets arrange their stores to encourage extra purchases. Essential items such as milk and bread are placed at the back so that shoppers walk past tempting displays; sweets sit near the checkout where tired children make requests; and the most expensive products are placed at eye level. Researchers estimate that such layout decisions can raise sales by several per cent.",
+   "options": [
+    "The price of milk and bread",
+    "Behaviour of children in shops",
+    "The rise of online grocery shopping",
+    "Research methods in retail",
+    "Increasing sales through advertising",
+    "Store layouts designed to influence what shoppers buy"
+   ],
+   "answer": "Store layouts designed to influence what shoppers buy",
+   "why": "Đoạn nói bố cục siêu thị nhằm tác động mua sắm. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "encourage extra purchases"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "The gig economy offers flexibility: workers choose when to drive, deliver or complete small tasks through an app. But the arrangement often brings insecurity. Workers are usually classed as self-employed, so they may lack sick pay, holiday pay and a guaranteed minimum income. Courts in several countries have ruled that some platform workers should be treated as employees, and companies are appealing the decisions.",
+   "options": [
+    "The popularity of delivery apps",
+    "Court cases in several countries",
+    "Minimum wages around the world",
+    "Sick pay for employees",
+    "The flexibility and insecurity of app-based work",
+    "Self-employment among drivers"
+   ],
+   "answer": "The flexibility and insecurity of app-based work",
+   "why": "Trọng tâm: tính linh hoạt đi kèm bất ổn của công việc qua ứng dụng. Phán quyết toà án chỉ là một phần.",
+   "quote": "often brings insecurity"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "In 1637, tulip bulbs in the Netherlands reached prices equal to the cost of a fine house, then collapsed within weeks. Tulip mania is often cited as the first speculative bubble. Some modern historians argue that the story has been exaggerated, since few people were ruined and records are scanty, but it remains a popular warning about prices that rise because buyers expect others to pay more.",
+   "options": [
+    "The cultivation of tulips in Holland",
+    "The cost of houses in the seventeenth century",
+    "Warnings to investors",
+    "The ruin of speculators",
+    "A famous bubble and the doubts about the story",
+    "The price of flowers today"
+   ],
+   "answer": "A famous bubble and the doubts about the story",
+   "why": "Ý chính: bong bóng hoa tulip nổi tiếng nhưng câu chuyện có thể bị phóng đại. Giá nhà chỉ là so sánh.",
+   "quote": "has been exaggerated"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Comparative advantage explains why trade benefits both sides even when one country is better at producing everything. If a country is relatively more efficient at making wine than cloth, it gains by specialising in wine and importing cloth, leaving the other country to focus on cloth. Both end up with more of both goods than if each tried to make everything itself.",
+   "options": [
+    "The efficiency of wine production",
+    "Why some countries are poor",
+    "Import taxes on cloth",
+    "How specialisation allows all trading partners to gain",
+    "Self-sufficiency as a national goal",
+    "Differences in labour costs"
+   ],
+   "answer": "How specialisation allows all trading partners to gain",
+   "why": "Trọng tâm: lợi thế so sánh giúp mọi bên cùng có lợi. Rượu vang và vải chỉ là minh hoạ.",
+   "quote": "both sides"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Interns are often unpaid, particularly in creative industries and politics, and critics argue that this favours young people whose families can support them. Those without such help may not be able to accept opportunities that could lead to a career. A few countries have introduced laws requiring pay for internships beyond a short period, though enforcement is uneven.",
+   "options": [
+    "Careers in creative industries",
+    "How young people find jobs",
+    "Laws on minimum pay",
+    "Unpaid internships and the fairness of access to careers",
+    "The cost of living for students",
+    "Politics as a profession"
+   ],
+   "answer": "Unpaid internships and the fairness of access to careers",
+   "why": "Ý chính: thực tập không lương gây bất công về cơ hội. Luật trả lương chỉ là phản ứng.",
+   "quote": "favours young people whose families can support them"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "Economists measure unemployment as the share of people without work who are actively seeking it. The figure can mislead. People who have given up looking are not counted, and those working a few hours a week are classed as employed. Some governments therefore publish broader measures that include discouraged workers and part-timers who would like more hours.",
+   "options": [
+    "The definition of employment",
+    "Why headline unemployment figures can be misleading",
+    "Part-time jobs and wages",
+    "Workers who give up looking",
+    "Government statistics offices",
+    "How economists predict growth"
+   ],
+   "answer": "Why headline unemployment figures can be misleading",
+   "why": "Trọng tâm: con số thất nghiệp có thể gây hiểu lầm. Các lựa chọn khác chỉ nắm một ý.",
+   "quote": "The figure can mislead"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Franchises allow a business owner to sell the right to use a brand and system to local operators. The franchisee pays fees and follows set rules, gaining a recognised name and support, while the franchiser expands without investing in every outlet. Problems arise when the two sides disagree about fees, supplies or the right to open nearby competing branches.",
+   "options": [
+    "Famous fast-food brands",
+    "Starting a small business",
+    "The cost of renting premises",
+    "Competition between neighbouring shops",
+    "Advertising by large chains",
+    "How the franchise model works and where it causes conflict"
+   ],
+   "answer": "How the franchise model works and where it causes conflict",
+   "why": "Đoạn giải thích mô hình nhượng quyền và xung đột. Từng lựa chọn khác quá hẹp.",
+   "quote": "gaining a recognised name and support"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "Microchips are made in a few factories, mostly in East Asia, which creates a fragile supply chain. When demand surged and some plants closed temporarily in 2020 and 2021, car makers around the world had to cut production because a handful of cheap components were missing. Governments are now offering subsidies to build factories closer to home.",
+   "options": [
+    "The manufacture of cars",
+    "Dependence on a few producers and government responses",
+    "Subsidies for new businesses",
+    "East Asian economies",
+    "Demand for electronics",
+    "How chips are designed"
+   ],
+   "answer": "Dependence on a few producers and government responses",
+   "why": "Ý chính: chuỗi cung ứng mong manh vì phụ thuộc vào ít nhà máy. Ô tô chỉ là một ví dụ.",
+   "quote": "a fragile supply chain"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "A four-day working week has been trialled in several countries. In many trials, employees were paid the same for fewer hours, and most firms reported unchanged or higher productivity, along with lower burnout and fewer resignations. However, participants tend to be small, office-based businesses that volunteered, so it is unclear whether the results would apply to hospitals, factories or shops.",
+   "options": [
+    "Positive trial results for shorter weeks, with limits",
+    "The causes of employee burnout",
+    "Pay levels in office jobs",
+    "Hospital work schedules",
+    "Productivity in factories",
+    "Resignation rates among young workers"
+   ],
+   "answer": "Positive trial results for shorter weeks, with limits",
+   "why": "Đoạn nói kết quả thử nghiệm tích cực nhưng giới hạn khả năng áp dụng. Burnout chỉ là một kết quả.",
+   "quote": "unclear whether the results would apply"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Advertising seeks not only to inform but to create associations. A drink is shown with laughing friends, a car with open roads, a bank with security. Psychologists say that repeated exposure builds familiarity, which people mistake for quality. Because consumers often cannot recall seeing individual advertisements, the influence is largely unconscious.",
+   "options": [
+    "The cost of television advertising",
+    "Cars and the open road",
+    "How banks attract customers",
+    "How advertising shapes preferences without conscious attention",
+    "Memory for advertisements",
+    "Laughter and friendship"
+   ],
+   "answer": "How advertising shapes preferences without conscious attention",
+   "why": "Ý chính: quảng cáo tác động vô thức qua liên tưởng. Xe, ngân hàng chỉ là ví dụ.",
+   "quote": "largely unconscious"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Cash is declining in many countries as people switch to cards and phone payments. Sweden is the clearest example, where small shops and even churches accept electronic donations. Yet critics warn that a cashless society excludes people without bank accounts, creates risks if networks fail, and leaves users' spending habits visible to companies and governments.",
+   "options": [
+    "Risks of moving away from cash",
+    "The history of banknotes",
+    "Church donations in Sweden",
+    "Bank account fees",
+    "Convenience of phone payments",
+    "Network failures in hospitals"
+   ],
+   "answer": "Risks of moving away from cash",
+   "why": "Trọng tâm: rủi ro của xã hội không tiền mặt. Thụy Điển chỉ là ví dụ minh hoạ xu hướng.",
+   "quote": "excludes people without bank accounts"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Cooperatives are businesses owned and run by their members, who may be farmers, workers or customers. Profits are shared according to participation rather than investment. The Mondragon group in Spain employs tens of thousands of people in a federation of cooperatives, and surveys suggest its workers enjoy greater job security than average, although decision-making can be slow.",
+   "options": [
+    "Spanish industry in the twentieth century",
+    "Member-owned businesses and the example of Mondragon",
+    "Job security in large corporations",
+    "Slow decisions in organisations",
+    "Profit sharing in companies",
+    "The role of customers"
+   ],
+   "answer": "Member-owned businesses and the example of Mondragon",
+   "why": "Ý chính: hợp tác xã do thành viên sở hữu, ví dụ Mondragon. Việc ra quyết định chậm chỉ là điểm yếu nhỏ.",
+   "quote": "owned and run by their members"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Inheritance shapes inequality. Wealthy families pass on money, property and social contacts, giving children a head start. Some economists propose higher taxes on large inheritances to level the playing field; others respond that people have a right to leave their money to whom they choose, and that heavy taxes encourage the rich to hide assets abroad.",
+   "options": [
+    "The argument over taxing inherited wealth",
+    "Property prices in cities",
+    "Hidden assets abroad",
+    "How families pass on social contacts",
+    "Income differences between professions",
+    "Starting a business with help"
+   ],
+   "answer": "The argument over taxing inherited wealth",
+   "why": "Trọng tâm: tranh luận về đánh thuế thừa kế. Giấu tài sản chỉ là luận điểm phản đối.",
+   "quote": "higher taxes on large inheritances"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Seasonal tourism can strain small communities. In peak months, rents rise, roads clog and local services struggle, while in winter many businesses close and workers lose income. Some destinations now promote off-season visits through discounts and events, hoping to spread demand more evenly throughout the year. Local councils have also experimented with small tourist taxes to pay for services.",
+   "options": [
+    "Rising rents in resort towns",
+    "Discounts for travellers",
+    "Weather in winter",
+    "Job losses in small communities",
+    "Events that attract visitors",
+    "Uneven tourist demand and attempts to balance it"
+   ],
+   "answer": "Uneven tourist demand and attempts to balance it",
+   "why": "Ý chính: du lịch theo mùa gây áp lực và nỗ lực cân bằng. Giá thuê nhà chỉ là một ảnh hưởng.",
+   "quote": "spread demand more evenly"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Women are underrepresented in senior business roles in most countries. Explanations include career breaks for childcare, differences in networks and bias in promotion decisions. Some companies have tried transparent pay scales and blind recruitment, in which names are hidden from application forms, and report modest gains, though researchers say lasting change requires altering workplace culture.",
+   "options": [
+    "Childcare policies in different countries",
+    "Names on application forms",
+    "Pay differences between sectors",
+    "Networking among business leaders",
+    "Attempts to address the shortage of women in senior jobs",
+    "The culture of large firms"
+   ],
+   "answer": "Attempts to address the shortage of women in senior jobs",
+   "why": "Đoạn nói nguyên nhân và các nỗ lực khắc phục. Ẩn tên chỉ là một biện pháp.",
+   "quote": "underrepresented in senior business roles"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Auctions are used to sell everything from artwork to radio spectrum. In an English auction, bidders raise their offers openly until one remains. In a sealed-bid auction, each submits one secret offer. Economists study these formats because they influence prices; a poorly designed auction can leave the seller with far less than the goods are worth, as some national spectrum sales have shown.",
+   "options": [
+    "Artwork prices at auction houses",
+    "Different auction formats and why design matters",
+    "Selling radio spectrum",
+    "The behaviour of bidders",
+    "Secrecy in business",
+    "Economic studies of prices"
+   ],
+   "answer": "Different auction formats and why design matters",
+   "why": "Ý chính: các hình thức đấu giá và tầm quan trọng của thiết kế. Phổ tần chỉ là ví dụ.",
+   "quote": "influence prices"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "Minimum wage laws raise pay for the lowest earners, but economists have long debated their side effects. A simple model predicts that higher wages reduce the number of jobs. Yet several empirical studies in the 1990s found little loss of employment after modest increases, suggesting that employers may absorb costs through small price rises or lower turnover.",
+   "options": [
+    "Models that predict job losses",
+    "Price rises in restaurants",
+    "Evidence that minimum wage rises may not cost jobs",
+    "The lowest earners in society",
+    "Staff turnover in shops",
+    "Economic debates in the 1990s"
+   ],
+   "answer": "Evidence that minimum wage rises may not cost jobs",
+   "why": "Trọng tâm: bằng chứng cho thấy tăng lương tối thiểu có thể không mất việc. Mô hình đơn giản là quan điểm đối lập.",
+   "quote": "found little loss of employment"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Craft guilds in medieval towns controlled who could practise a trade. Members paid fees, followed standards and trained apprentices who worked for years before becoming masters. The system protected quality and prices, but it also limited competition and excluded outsiders. Many economists believe that its decline in the eighteenth century cleared the way for new industries and techniques.",
+   "options": [
+    "The training of apprentices",
+    "The rise of new industries",
+    "The benefits and drawbacks of medieval trade guilds",
+    "Quality standards in goods",
+    "Medieval towns and trade",
+    "Fees paid by members"
+   ],
+   "answer": "The benefits and drawbacks of medieval trade guilds",
+   "why": "Đoạn cân nhắc cả ưu và nhược điểm của phường hội. Học nghề chỉ là chi tiết.",
+   "quote": "limited competition and excluded outsiders"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Supply and demand explain why prices change. When more people want a product than there is available, sellers can raise prices; when stock exceeds demand, they cut them. Umbrella sellers know this well: a sudden shower will raise the price at a street stall within minutes. In practice, markets are shaped by other forces, such as taxes, regulation and the power of large firms, so prices do not always settle where simple models predict.",
+   "options": [
+    "Umbrella sales in rainy weather",
+    "Taxes on goods",
+    "How supply and demand set prices, and where the model falls short",
+    "Stock held in warehouses",
+    "The power of large companies",
+    "Shops that sell cheaply"
+   ],
+   "answer": "How supply and demand set prices, and where the model falls short",
+   "why": "Ý chính: cung cầu quyết định giá nhưng mô hình có giới hạn. Bán ô là ví dụ.",
+   "quote": "markets are shaped by other forces"
+  }
+ ]
+}

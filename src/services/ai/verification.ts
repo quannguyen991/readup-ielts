@@ -23,6 +23,8 @@
  * "đã kiểm hết" còn nguy hiểm hơn không có biên nhận nào.
  */
 
+import { findVerbatim } from '@/lib/writing/quote-match';
+
 /** Cách một khẳng định của AI được kiểm. */
 export type CheckMethod =
   /** Đối chiếu nguyên văn với văn bản gốc — máy kiểm được tuyệt đối. */
@@ -70,11 +72,10 @@ export function countQuoteMatches(
   quotes: readonly string[],
   source: string,
 ): { checked: number; rejected: number } {
-  const hay = source.toLowerCase();
   let rejected = 0;
   for (const q of quotes) {
     const trimmed = q.trim();
-    if (trimmed.length < 2 || !hay.includes(trimmed.toLowerCase())) rejected += 1;
+    if (trimmed.length < 2 || findVerbatim(trimmed, source) == null) rejected += 1;
   }
   return { checked: quotes.length, rejected };
 }

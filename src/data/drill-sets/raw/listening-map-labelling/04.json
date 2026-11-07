@@ -1,0 +1,205 @@
+{
+ "title": "Map labelling #4",
+ "topic": "university campus · wildlife park · botanical garden · holiday village",
+ "context": "Narrator: Map 1. The university campus.\nGuide: Welcome to the university campus. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: Just inside the entrance you will find the student union. It is the first building on your left.\nGuide: Just inside the entrance you will find the library. It is the building straight ahead of you.\nGuide: As you come in through the main entrance, the bike shed is the first building on your right.\nGuide: The bookshop is directly behind the library, at the back of the site.\nGuide: The health centre is directly behind the bike shed, at the back of the site.\nGuide: The art studio is right next to the bookshop, on its left side.\nGuide: That covers everything. Enjoy your visit.\nNarrator: Map 2. The wildlife park.\nGuide: Welcome to the wildlife park. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: Just inside the entrance you will find the petting farm. It is the building straight ahead of you.\nGuide: As you come in through the main entrance, the first-aid post is the first building on your right.\nGuide: Just inside the entrance you will find the café. It is the first building on your left.\nGuide: The bird aviary is directly behind the café, at the back of the site.\nGuide: The penguin pool is directly behind the petting farm, at the back of the site.\nGuide: The butterfly house is directly behind the first-aid post, at the back of the site.\nGuide: That covers everything. Enjoy your visit.\nNarrator: Map 3. The botanical garden.\nGuide: Welcome to the botanical garden. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: As you come in through the main entrance, the herb garden is the first building on your right.\nGuide: As you come in through the main entrance, the pond is the first building on your left.\nGuide: As you come in through the main entrance, the visitor centre is the building straight ahead of you.\nGuide: The play area is directly behind the visitor centre, at the back of the site.\nGuide: The souvenir stall is directly behind the pond, at the back of the site.\nGuide: The glasshouse is right next to the play area, on its right side.\nGuide: That covers everything. Enjoy your visit.\nNarrator: Map 4. The holiday village.\nGuide: Welcome to the holiday village. I will quickly show you where things are. Look at the map as I talk, and remember that you come in at the main entrance at the bottom.\nGuide: Just inside the entrance you will find the laundry. It is the building straight ahead of you.\nGuide: As you come in through the main entrance, the restaurant is the first building on your left.\nGuide: Just inside the entrance you will find the nature trail office. It is the first building on your right.\nGuide: The bike hire is directly behind the laundry, at the back of the site.\nGuide: The boat house is right next to the bike hire, on its right side.\nGuide: The spa is directly behind the restaurant, at the back of the site.\nGuide: That covers everything. Enjoy your visit.",
+ "options": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F"
+ ],
+ "maps": [
+  {
+   "title": "Map 1: University campus",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  },
+  {
+   "title": "Map 2: Wildlife park",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  },
+  {
+   "title": "Map 3: Botanical garden",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  },
+  {
+   "title": "Map 4: Holiday village",
+   "entrance": "Main entrance",
+   "cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the student union?",
+   "answer": "D",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the student union. It is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "Just inside the entrance you will find the student union. It is the first building on your left."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the library?",
+   "answer": "E",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the library. It is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "Just inside the entrance you will find the library. It is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the bike shed?",
+   "answer": "F",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the bike shed is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "As you come in through the main entrance, the bike shed is the first building on your right."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the bookshop?",
+   "answer": "B",
+   "why": "Người dẫn nói: “The bookshop is directly behind the library, at the back of the site.” → ô B (phía sau ở giữa).",
+   "quote": "The bookshop is directly behind the library, at the back of the site."
+  },
+  {
+   "mapIndex": 0,
+   "prompt": "Where is the health centre?",
+   "answer": "C",
+   "why": "Người dẫn nói: “The health centre is directly behind the bike shed, at the back of the site.” → ô C (phía sau bên phải).",
+   "quote": "The health centre is directly behind the bike shed, at the back of the site."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the petting farm?",
+   "answer": "E",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the petting farm. It is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "Just inside the entrance you will find the petting farm. It is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the first-aid post?",
+   "answer": "F",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the first-aid post is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "As you come in through the main entrance, the first-aid post is the first building on your right."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the café?",
+   "answer": "D",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the café. It is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "Just inside the entrance you will find the café. It is the first building on your left."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the bird aviary?",
+   "answer": "A",
+   "why": "Người dẫn nói: “The bird aviary is directly behind the café, at the back of the site.” → ô A (phía sau bên trái).",
+   "quote": "The bird aviary is directly behind the café, at the back of the site."
+  },
+  {
+   "mapIndex": 1,
+   "prompt": "Where is the butterfly house?",
+   "answer": "C",
+   "why": "Người dẫn nói: “The butterfly house is directly behind the first-aid post, at the back of the site.” → ô C (phía sau bên phải).",
+   "quote": "The butterfly house is directly behind the first-aid post, at the back of the site."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the herb garden?",
+   "answer": "F",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the herb garden is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "As you come in through the main entrance, the herb garden is the first building on your right."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the pond?",
+   "answer": "D",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the pond is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "As you come in through the main entrance, the pond is the first building on your left."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the visitor centre?",
+   "answer": "E",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the visitor centre is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "As you come in through the main entrance, the visitor centre is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the play area?",
+   "answer": "B",
+   "why": "Người dẫn nói: “The play area is directly behind the visitor centre, at the back of the site.” → ô B (phía sau ở giữa).",
+   "quote": "The play area is directly behind the visitor centre, at the back of the site."
+  },
+  {
+   "mapIndex": 2,
+   "prompt": "Where is the glasshouse?",
+   "answer": "C",
+   "why": "Người dẫn nói: “The glasshouse is right next to the play area, on its right side.” → ô C (phía sau bên phải).",
+   "quote": "The glasshouse is right next to the play area, on its right side."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the laundry?",
+   "answer": "E",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the laundry. It is the building straight ahead of you.” → ô E (hàng gần cổng, ở giữa).",
+   "quote": "Just inside the entrance you will find the laundry. It is the building straight ahead of you."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the restaurant?",
+   "answer": "D",
+   "why": "Người dẫn nói: “As you come in through the main entrance, the restaurant is the first building on your left.” → ô D (hàng gần cổng, bên trái).",
+   "quote": "As you come in through the main entrance, the restaurant is the first building on your left."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the nature trail office?",
+   "answer": "F",
+   "why": "Người dẫn nói: “Just inside the entrance you will find the nature trail office. It is the first building on your right.” → ô F (hàng gần cổng, bên phải).",
+   "quote": "Just inside the entrance you will find the nature trail office. It is the first building on your right."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the bike hire?",
+   "answer": "B",
+   "why": "Người dẫn nói: “The bike hire is directly behind the laundry, at the back of the site.” → ô B (phía sau ở giữa).",
+   "quote": "The bike hire is directly behind the laundry, at the back of the site."
+  },
+  {
+   "mapIndex": 3,
+   "prompt": "Where is the spa?",
+   "answer": "A",
+   "why": "Người dẫn nói: “The spa is directly behind the restaurant, at the back of the site.” → ô A (phía sau bên trái).",
+   "quote": "The spa is directly behind the restaurant, at the back of the site."
+  }
+ ]
+}

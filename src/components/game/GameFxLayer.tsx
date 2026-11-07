@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Platform, Text, View } from 'react-native';
 
+import { usePathname } from 'expo-router';
+
 import { useTravelActive } from '@/components/rail/TravelBackdrop';
+import { isVocabStudyRoute } from '@/navigation/focus-routes';
 import { CHIIKAWA_IMG, useChiikawaActive } from '@/components/chiikawa/chiikawa';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
@@ -35,13 +38,15 @@ export function GameFxLayer() {
   // Màn học từ đang dùng nền toa tàu: không có trận đấu, nên không hiện số đánh / mất tim.
   const travel = useTravelActive();
   const { L, locale } = useL();
+  // Màn học từ (học, trắc nghiệm…): chỉ còn chuỗi đúng liên tiếp, không hiện điểm XP, cấp, huy hiệu hay danh hiệu.
+  const quiet = isVocabStudyRoute(usePathname() ?? '');
   if (Platform.OS !== 'web') return null;
 
-  const fresh = events.filter((e) => e.id > since);
+  const fresh = quiet ? [] : events.filter((e) => e.id > since);
   const level = [...fresh].reverse().find((e): e is Extract<FxEvent, { kind: 'levelup' }> => e.kind === 'levelup');
   // Thẻ XP của bài chấm một lượt chỉ hiện ở đây khi không có thanh trận đấu diễn thay.
   const toasts = fresh.filter((e) => TOAST_KINDS.includes(e.kind) && (e.kind !== 'batch' || e.global)).slice(-3);
-  const chips = fresh.filter((e) => e.global && (travel ? e.kind === 'stars' : e.kind === 'hit' || e.kind === 'hurt' || e.kind === 'defeat' || e.kind === 'stars')).slice(-3);
+  const chips = fresh.filter((e) => e.global && (travel ? e.kind === 'stars' : e.kind === 'hit' || e.kind === 'hurt' || e.kind === 'stars')).slice(-3);
 
   return (
     <View pointerEvents="none" style={{ position: 'fixed' as 'absolute', left: 0, top: 0, right: 0, bottom: 0, zIndex: 80 }}>

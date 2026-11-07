@@ -1,0 +1,127 @@
+{
+ "title": "Form completion #2",
+ "topic": "Library card · Car rental · Lost property report · Gym membership",
+ "context": "Narrator: Conversation 1. Library card.\nHelen: City Library, Helen speaking.\nCaller: Hi, I've just moved to the area and I'd like a library card.\nHelen: How many books would you like to borrow at a time?\nCaller: Nine, I think. Actually, let me say eight, it's better to be safe.\nHelen: What's your postcode?\nCaller: S Y six, seven C B.\nHelen: Can I take your surname, please?\nCaller: It's Whitlock. That's W, H, I, T, L, O, C, K.\nCaller: How much is the yearly fee?\nHelen: It's twenty pounds.\nHelen: And what's the best number to reach you on?\nCaller: It's oh seven eight, two six five six, nine nine three four.\nHelen: Lovely, that's everything. Thank you.\nNarrator: Conversation 2. Car rental.\nTony: Swift Car Hire, Tony speaking.\nCaller: Hello, I'd like to rent a small car for a few days.\nTony: When would you like to collect it?\nCaller: The first of October, please.\nCaller: How much is the insurance cost?\nTony: It's fifty-five pounds... oh, hold on, that's last year's price. This year it's sixty-five pounds.\nTony: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nTony: It's L D six five one nine.\nTony: What's your postcode?\nCaller: D B five, one N P.\nTony: Can I take your surname, please?\nCaller: It's Lockhart. That's L, O, C, K, H, A, R, T.\nTony: Lovely, that's everything. Thank you.\nNarrator: Conversation 3. Lost property report.\nMark: Central Station lost property, Mark speaking.\nCaller: Hello, I think I left my rucksack on a train yesterday.\nMark: How many items were in the bag?\nCaller: Seven, I think. Actually, let me say six, it's better to be safe.\nMark: Let me give you your reference. Have you got a pen?\nCaller: Yes, go ahead.\nMark: It's H K eight three seven six.\nMark: Can I take your surname, please?\nCaller: It's Marsh. That's M, A, R, S, H.\nMark: And what's the best number to reach you on?\nCaller: It's oh seven five, one seven two nine, six five six eight.\nMark: What's your postcode?\nCaller: N L nine, five X G.\nMark: Lovely, that's everything. Thank you.\nNarrator: Conversation 4. Gym membership.\nSam: Good morning, Riverside Fitness, Sam speaking.\nCaller: Hello, I'd like to join the gym, please.\nSam: What's your postcode?\nCaller: S K seven, four N R.\nCaller: How much is the joining fee?\nSam: It's fifty pounds... oh, hold on, that's last year's price. This year it's sixty pounds.\nSam: When would you like to start?\nCaller: The thirteenth of July, please.\nSam: Can I take your surname, please?\nCaller: It's Maddox. That's M, A, D, D, O, X.\nSam: And what's the best number to reach you on?\nCaller: It's oh seven four, nine seven seven nine, six two nine five.\nSam: Lovely, that's everything. Thank you.",
+ "questions": [
+  {
+   "prompt": "[Library card] Books allowed: ____",
+   "answer": "8 | eight",
+   "why": "Người nói đọc: “let me say eight”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say eight"
+  },
+  {
+   "prompt": "[Library card] Postcode: ____",
+   "answer": "SY6 7CB",
+   "why": "Người nói đọc: “S Y six, seven C B”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "S Y six, seven C B"
+  },
+  {
+   "prompt": "[Library card] Surname: ____",
+   "answer": "Whitlock",
+   "why": "Người nói đọc: “It's Whitlock. That's W, H, I, T, L, O, C, K.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Whitlock. That's W, H, I, T, L, O, C, K."
+  },
+  {
+   "prompt": "[Library card] Yearly fee (£): ____",
+   "answer": "£20 | 20",
+   "why": "Người nói đọc: “twenty pounds”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "twenty pounds"
+  },
+  {
+   "prompt": "[Library card] Telephone: ____",
+   "answer": "07826569934",
+   "why": "Người nói đọc: “oh seven eight, two six five six, nine nine three four”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven eight, two six five six, nine nine three four"
+  },
+  {
+   "prompt": "[Car rental] Pick-up date: ____",
+   "answer": "1 October | October 1 | 1th October | October 1th | first October",
+   "why": "Người nói đọc: “The first of October”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The first of October"
+  },
+  {
+   "prompt": "[Car rental] Insurance (£): ____",
+   "answer": "£65 | 65",
+   "why": "Người nói đọc: “this year it's sixty-five pounds”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "this year it's sixty-five pounds"
+  },
+  {
+   "prompt": "[Car rental] Licence number: ____",
+   "answer": "LD6519",
+   "why": "Người nói đọc: “L D six five one nine”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "L D six five one nine"
+  },
+  {
+   "prompt": "[Car rental] Postcode: ____",
+   "answer": "DB5 1NP",
+   "why": "Người nói đọc: “D B five, one N P”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "D B five, one N P"
+  },
+  {
+   "prompt": "[Car rental] Surname: ____",
+   "answer": "Lockhart",
+   "why": "Người nói đọc: “It's Lockhart. That's L, O, C, K, H, A, R, T.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Lockhart. That's L, O, C, K, H, A, R, T."
+  },
+  {
+   "prompt": "[Lost property report] Number of items: ____",
+   "answer": "6 | six",
+   "why": "Người nói đọc: “let me say six”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "let me say six"
+  },
+  {
+   "prompt": "[Lost property report] Report number: ____",
+   "answer": "HK8376",
+   "why": "Người nói đọc: “H K eight three seven six”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "H K eight three seven six"
+  },
+  {
+   "prompt": "[Lost property report] Surname: ____",
+   "answer": "Marsh",
+   "why": "Người nói đọc: “It's Marsh. That's M, A, R, S, H.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Marsh. That's M, A, R, S, H."
+  },
+  {
+   "prompt": "[Lost property report] Phone number: ____",
+   "answer": "07517296568",
+   "why": "Người nói đọc: “oh seven five, one seven two nine, six five six eight”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven five, one seven two nine, six five six eight"
+  },
+  {
+   "prompt": "[Lost property report] Postcode: ____",
+   "answer": "NL9 5XG",
+   "why": "Người nói đọc: “N L nine, five X G”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "N L nine, five X G"
+  },
+  {
+   "prompt": "[Gym membership] Postcode: ____",
+   "answer": "SK7 4NR",
+   "why": "Người nói đọc: “S K seven, four N R”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "S K seven, four N R"
+  },
+  {
+   "prompt": "[Gym membership] Joining fee (£): ____",
+   "answer": "£60 | 60",
+   "why": "Người nói đọc: “this year it's sixty pounds”. Bẫy tự đính chính: lấy giá trị được chốt SAU CÙNG.",
+   "quote": "this year it's sixty pounds"
+  },
+  {
+   "prompt": "[Gym membership] Start date: ____",
+   "answer": "13 July | July 13 | 13th July | July 13th | thirteenth July",
+   "why": "Người nói đọc: “The thirteenth of July”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "The thirteenth of July"
+  },
+  {
+   "prompt": "[Gym membership] Surname: ____",
+   "answer": "Maddox",
+   "why": "Người nói đọc: “It's Maddox. That's M, A, D, D, O, X.”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "It's Maddox. That's M, A, D, D, O, X."
+  },
+  {
+   "prompt": "[Gym membership] Mobile number: ____",
+   "answer": "07497796295",
+   "why": "Người nói đọc: “oh seven four, nine seven seven nine, six two nine five”. Đáp án lấy đúng giá trị được nói ra.",
+   "quote": "oh seven four, nine seven seven nine, six two nine five"
+  }
+ ]
+}

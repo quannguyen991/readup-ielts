@@ -1,0 +1,287 @@
+{
+ "title": "Getting Around the City",
+ "topic": "Public transport survey",
+ "context": "Tara: Hi, Leo. Thanks for staying late. I'd like to go through the complaints from our public transport survey one route at a time before we see Dr Singh.\nLeo: No problem. I missed the last bus home yesterday, so I feel I understand the complaints better now. Route 12 first.\nTara: The main complaint is overcrowding. In the morning rush people can't even get on the bus.\nLeo: Route 34 is different. People there said the buses are often late, sometimes by twenty minutes.\nTara: Yes. And some said that drivers were rude, but only two people, so I'd ignore it. The night bus got a lot of comments about stopping so early. The last one leaves at half past eleven, which is no use if you work in a restaurant.\nLeo: The airport express was all about price. Passengers said the fare was too high for a thirty minute trip.\nTara: And finally the tram. People like it, but they complain that the stops are too far apart, especially for older passengers.\nDr Singh: Hello, you two. Sorry to keep you waiting. I have spent the morning reading your report, and it is a good start. I've looked at your methods. Your sample size is good. Four hundred responses is enough for a city this size.\nTara: Thank you.\nDr Singh: The questions are a problem, though. Several are leading. For example, you ask, don't you agree that fares are too high? That pushes people to say yes.\nLeo: Oh, we hadn't noticed.\nDr Singh: And you only handed out forms at the central station, so your results are biased towards commuters. You'd have missed students and shoppers. Next, timing. You surveyed on weekdays only, so I'd repeat it at weekends.\nTara: Is the form too complicated?\nDr Singh: No, it's quite clear. Finally, the data entry. I found three mistakes in a sample of twenty rows, so check it again.\nLeo: Right. Now, improvements. Tara, I like dedicated bus lanes. They'd cut journey times a lot.\nTara: They're expensive, though.\nDr Singh: Cost isn't the issue. They'd reduce delays, and that's what matters. Contactless payment is already being tested on two routes, as I'm sure you know.\nLeo: We didn't. And shelters with seats?\nTara: Mostly for older people, who struggle to stand for a long time at the stops.\nLeo: A real-time app showing arrivals is something we could introduce within a few weeks.\nDr Singh: Safe cycle storage at stations is a great idea, but the council must approve it first.\nTara: Okay, now the charts. Chart one shows the age of passengers. The majority are under thirty.\nLeo: Chart two, satisfaction by time of day. It drops sharply after eight in the evening.\nTara: Chart three, car ownership. People with cars hardly ever use buses.\nLeo: Chart four shows why people are unhappy. Cost comes first.\nTara: And chart five is weekend use, which has been rising each month. I thought few people knew about the app, but sixty per cent do.\nDr Singh: Good. Present it on Tuesday, and keep it to fifteen minutes. The city officials will be there, so speak slowly and avoid jargon.\nLeo: We will practise tomorrow. Thanks again for your time.",
+ "questions": [
+  {
+   "prompt": "What is the main complaint about Route 12?",
+   "options": [
+    "Buses are often late",
+    "It is too crowded in the mornings",
+    "Fares are too high",
+    "Stops are too far apart",
+    "Drivers are unhelpful",
+    "The service finishes too early"
+   ],
+   "answer": "It is too crowded in the mornings",
+   "why": "Tuyến 12 quá tải giờ cao điểm sáng.",
+   "quote": "overcrowding"
+  },
+  {
+   "prompt": "What is the main complaint about Route 34?",
+   "options": [
+    "Buses are often late",
+    "It is too crowded in the mornings",
+    "Fares are too high",
+    "Stops are too far apart",
+    "Drivers are unhelpful",
+    "The service finishes too early"
+   ],
+   "answer": "Buses are often late",
+   "why": "Tuyến 34 hay trễ, có khi hai mươi phút.",
+   "quote": "the buses are often late"
+  },
+  {
+   "prompt": "What is the main complaint about the night bus?",
+   "options": [
+    "Buses are often late",
+    "It is too crowded in the mornings",
+    "Fares are too high",
+    "Stops are too far apart",
+    "Drivers are unhelpful",
+    "The service finishes too early"
+   ],
+   "answer": "The service finishes too early",
+   "why": "Xe buýt đêm dừng quá sớm: chuyến cuối 11 giờ 30. Bẫy: tài xế thô lỗ chỉ hai người nói nên bỏ qua.",
+   "quote": "stopping so early"
+  },
+  {
+   "prompt": "What is the main complaint about the airport express?",
+   "options": [
+    "Buses are often late",
+    "It is too crowded in the mornings",
+    "Fares are too high",
+    "Stops are too far apart",
+    "Drivers are unhelpful",
+    "The service finishes too early"
+   ],
+   "answer": "Fares are too high",
+   "why": "Giá vé quá cao cho chuyến ba mươi phút.",
+   "quote": "the fare was too high"
+  },
+  {
+   "prompt": "What is the main complaint about the tram?",
+   "options": [
+    "Buses are often late",
+    "It is too crowded in the mornings",
+    "Fares are too high",
+    "Stops are too far apart",
+    "Drivers are unhelpful",
+    "The service finishes too early"
+   ],
+   "answer": "Stops are too far apart",
+   "why": "Người dân thích tàu điện nhưng các trạm cách nhau quá xa.",
+   "quote": "the stops are too far apart"
+  },
+  {
+   "prompt": "What does Dr Singh say about the sample size?",
+   "options": [
+    "It is large enough",
+    "It contained leading questions",
+    "It was biased towards commuters",
+    "It should be repeated at weekends",
+    "It needs checking for mistakes",
+    "It is too complicated"
+   ],
+   "answer": "It is large enough",
+   "why": "Bốn trăm phản hồi là đủ cho thành phố cỡ này.",
+   "quote": "Four hundred responses is enough"
+  },
+  {
+   "prompt": "What does Dr Singh say about the survey questions?",
+   "options": [
+    "It is large enough",
+    "It contained leading questions",
+    "It was biased towards commuters",
+    "It should be repeated at weekends",
+    "It needs checking for mistakes",
+    "It is too complicated"
+   ],
+   "answer": "It contained leading questions",
+   "why": "Nhiều câu mang tính dẫn dắt, ví dụ câu \"bạn có đồng ý giá vé quá cao\".",
+   "quote": "Several are leading"
+  },
+  {
+   "prompt": "What does Dr Singh say about the place where forms were handed out?",
+   "options": [
+    "It is large enough",
+    "It contained leading questions",
+    "It was biased towards commuters",
+    "It should be repeated at weekends",
+    "It needs checking for mistakes",
+    "It is too complicated"
+   ],
+   "answer": "It was biased towards commuters",
+   "why": "Chỉ phát ở ga trung tâm nên thiên về người đi làm.",
+   "quote": "biased towards commuters"
+  },
+  {
+   "prompt": "What does Dr Singh say about the timing of the survey?",
+   "options": [
+    "It is large enough",
+    "It contained leading questions",
+    "It was biased towards commuters",
+    "It should be repeated at weekends",
+    "It needs checking for mistakes",
+    "It is too complicated"
+   ],
+   "answer": "It should be repeated at weekends",
+   "why": "Khảo sát chỉ vào ngày thường nên nên lặp lại vào cuối tuần.",
+   "quote": "I'd repeat it at weekends"
+  },
+  {
+   "prompt": "What does Dr Singh say about the data entry?",
+   "options": [
+    "It is large enough",
+    "It contained leading questions",
+    "It was biased towards commuters",
+    "It should be repeated at weekends",
+    "It needs checking for mistakes",
+    "It is too complicated"
+   ],
+   "answer": "It needs checking for mistakes",
+   "why": "Có ba lỗi trong mẫu hai mươi dòng nên phải kiểm tra lại. Biểu mẫu thì rõ ràng, không rắc rối.",
+   "quote": "check it again"
+  },
+  {
+   "prompt": "What is said about dedicated bus lanes?",
+   "options": [
+    "It is too expensive for now",
+    "It would reduce journey times",
+    "It is already being tested",
+    "It would help older passengers",
+    "It could be introduced quickly",
+    "It needs the council's approval"
+   ],
+   "answer": "It would reduce journey times",
+   "why": "Làn buýt riêng giảm trễ và thời gian di chuyển; chi phí không phải vấn đề.",
+   "quote": "They'd reduce delays"
+  },
+  {
+   "prompt": "What is said about contactless payment?",
+   "options": [
+    "It is too expensive for now",
+    "It would reduce journey times",
+    "It is already being tested",
+    "It would help older passengers",
+    "It could be introduced quickly",
+    "It needs the council's approval"
+   ],
+   "answer": "It is already being tested",
+   "why": "Thanh toán không tiếp xúc đang được thử ở hai tuyến.",
+   "quote": "already being tested on two routes"
+  },
+  {
+   "prompt": "What is said about shelters with seats?",
+   "options": [
+    "It is too expensive for now",
+    "It would reduce journey times",
+    "It is already being tested",
+    "It would help older passengers",
+    "It could be introduced quickly",
+    "It needs the council's approval"
+   ],
+   "answer": "It would help older passengers",
+   "why": "Chỗ ngồi chủ yếu cho người lớn tuổi khó đứng lâu.",
+   "quote": "Mostly for older people"
+  },
+  {
+   "prompt": "What is said about the real-time app?",
+   "options": [
+    "It is too expensive for now",
+    "It would reduce journey times",
+    "It is already being tested",
+    "It would help older passengers",
+    "It could be introduced quickly",
+    "It needs the council's approval"
+   ],
+   "answer": "It could be introduced quickly",
+   "why": "Ứng dụng báo giờ xe có thể ra mắt trong vài tuần.",
+   "quote": "within a few weeks"
+  },
+  {
+   "prompt": "What is said about cycle storage at stations?",
+   "options": [
+    "It is too expensive for now",
+    "It would reduce journey times",
+    "It is already being tested",
+    "It would help older passengers",
+    "It could be introduced quickly",
+    "It needs the council's approval"
+   ],
+   "answer": "It needs the council's approval",
+   "why": "Nhà để xe đạp là ý hay nhưng hội đồng thành phố phải duyệt trước.",
+   "quote": "the council must approve it first"
+  },
+  {
+   "prompt": "What does chart one show?",
+   "options": [
+    "Most passengers are under thirty",
+    "Satisfaction falls sharply after eight",
+    "People with cars rarely use buses",
+    "Cost is the main reason for dissatisfaction",
+    "Weekend use is rising",
+    "Few people know about the app"
+   ],
+   "answer": "Most passengers are under thirty",
+   "why": "Biểu đồ một: đa số hành khách dưới ba mươi tuổi.",
+   "quote": "The majority are under thirty"
+  },
+  {
+   "prompt": "What does chart two show?",
+   "options": [
+    "Most passengers are under thirty",
+    "Satisfaction falls sharply after eight",
+    "People with cars rarely use buses",
+    "Cost is the main reason for dissatisfaction",
+    "Weekend use is rising",
+    "Few people know about the app"
+   ],
+   "answer": "Satisfaction falls sharply after eight",
+   "why": "Mức hài lòng giảm mạnh sau tám giờ tối.",
+   "quote": "It drops sharply after eight in the evening"
+  },
+  {
+   "prompt": "What does chart three show?",
+   "options": [
+    "Most passengers are under thirty",
+    "Satisfaction falls sharply after eight",
+    "People with cars rarely use buses",
+    "Cost is the main reason for dissatisfaction",
+    "Weekend use is rising",
+    "Few people know about the app"
+   ],
+   "answer": "People with cars rarely use buses",
+   "why": "Người có xe hơi hầu như không đi buýt.",
+   "quote": "hardly ever use buses"
+  },
+  {
+   "prompt": "What does chart four show?",
+   "options": [
+    "Most passengers are under thirty",
+    "Satisfaction falls sharply after eight",
+    "People with cars rarely use buses",
+    "Cost is the main reason for dissatisfaction",
+    "Weekend use is rising",
+    "Few people know about the app"
+   ],
+   "answer": "Cost is the main reason for dissatisfaction",
+   "why": "Chi phí là lý do không hài lòng hàng đầu.",
+   "quote": "Cost comes first"
+  },
+  {
+   "prompt": "What does chart five show?",
+   "options": [
+    "Most passengers are under thirty",
+    "Satisfaction falls sharply after eight",
+    "People with cars rarely use buses",
+    "Cost is the main reason for dissatisfaction",
+    "Weekend use is rising",
+    "Few people know about the app"
+   ],
+   "answer": "Weekend use is rising",
+   "why": "Việc dùng cuối tuần tăng mỗi tháng. Bẫy: Tara tưởng ít người biết ứng dụng nhưng sáu mươi phần trăm biết.",
+   "quote": "weekend use, which has been rising each month"
+  }
+ ]
+}

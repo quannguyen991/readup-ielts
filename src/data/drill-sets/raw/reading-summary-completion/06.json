@@ -1,0 +1,127 @@
+{
+ "title": "Living with Water in the Netherlands",
+ "topic": "Flood defence and land reclamation",
+ "context": "About a quarter of the Netherlands lies below sea level, and roughly half of the land is less than one metre above it. Without protection, much of the country would be flooded daily. For over a thousand years the Dutch have fought the water, first by building mounds called terpen to raise their homes above floods, and later by constructing dikes, the embankments that hold back the sea. Maintaining these defences has shaped the nation's politics, its economy and even its sense of identity.\n\nA catastrophe in 1953 transformed the country's approach. A violent North Sea storm combined with high tide broke through dikes in the south-west, flooding 150,000 hectares and killing more than 1,800 people. In response, the government launched the Delta Works, a vast system of dams, sluices and storm surge barriers, completed over four decades. The most impressive element is the Oosterscheldekering, a barrier nine kilometres long whose gates close only during storms, which allows the tidal estuary behind it to keep its salt-water ecosystem. Since then the barriers have been tested several times by severe storms, and none has failed.\n\nLand has also been created from the sea. Windmills were used from the fifteenth century to pump water out of shallow lakes into canals, producing fertile land called polders. The largest project, begun in 1920, closed off the Zuiderzee, a shallow bay, with a thirty-kilometre dam, and several sections were drained to form a new province, Flevoland. Today about one-fifth of the country's area consists of reclaimed land. Because drained peat soil shrinks and oxidises, many polders are slowly sinking, which means that the pumps must work harder every year.\n\nClimate change has led engineers to rethink the policy of simply building higher walls. Dutch planners now speak of living with water. Under the Room for the River programme, completed in 2015, dikes were moved back, floodplains were lowered and secondary channels were dug at more than thirty locations, giving rivers space to rise safely. In cities, car parks and public squares are being designed to fill with rainwater temporarily during heavy storms, a technique that relieves pressure on the drains. Residents are asked to accept that occasional flooding of designated areas is a fair price for greater safety elsewhere.\n\nDutch expertise is now an export. Engineering firms advise cities from Jakarta to New Orleans on managing flood risk, and Dutch universities train foreign specialists. Critics point out, however, that the country's success rests on money and strong institutions, namely the regional water boards, which have collected taxes and managed defences for centuries and are among the oldest democratic bodies in Europe. Copying the technology without the governance, they argue, will not work. The model also depends on public willingness to pay for protection that may rarely be needed.",
+ "questions": [
+  {
+   "prompt": "Roughly one ____ of the Netherlands is below sea level.",
+   "answer": "quarter",
+   "why": "Khoảng một phần tư lãnh thổ nằm dưới mực nước biển.",
+   "quote": "About a quarter of the Netherlands"
+  },
+  {
+   "prompt": "Early inhabitants protected their houses from floods by building mounds known as ____.",
+   "answer": "terpen",
+   "why": "Gò đất gọi là terpen.",
+   "quote": "mounds called terpen"
+  },
+  {
+   "prompt": "Dikes are embankments that keep back the ____.",
+   "answer": "sea",
+   "why": "Đê ngăn nước biển.",
+   "quote": "hold back the sea"
+  },
+  {
+   "prompt": "A disastrous storm hit the country in ____ and changed national policy.",
+   "answer": "1953",
+   "why": "Thảm hoạ năm 1953.",
+   "quote": "A catastrophe in 1953"
+  },
+  {
+   "prompt": "The 1953 flood covered an area of 150,000 ____.",
+   "answer": "hectares",
+   "why": "Đơn vị diện tích là hecta.",
+   "quote": "150,000 hectares"
+  },
+  {
+   "prompt": "More than 1,800 ____ lost their lives in the disaster.",
+   "answer": "people",
+   "why": "Hơn 1.800 người thiệt mạng.",
+   "quote": "more than 1,800 people"
+  },
+  {
+   "prompt": "In response the state began building the Delta ____.",
+   "answer": "Works",
+   "why": "Công trình Delta Works.",
+   "quote": "the Delta Works"
+  },
+  {
+   "prompt": "The Delta Works includes dams, sluices and storm surge ____.",
+   "answer": "barriers",
+   "why": "Gồm cả cửa chắn triều cường.",
+   "quote": "storm surge barriers"
+  },
+  {
+   "prompt": "The gates of the Oosterschelde barrier are shut only during ____.",
+   "answer": "storms",
+   "why": "Cửa chỉ đóng khi có bão.",
+   "quote": "close only during storms"
+  },
+  {
+   "prompt": "Leaving the gates open preserves the estuary's salt-water ____.",
+   "answer": "ecosystem",
+   "why": "Giữ hệ sinh thái nước mặn.",
+   "quote": "salt-water ecosystem"
+  },
+  {
+   "prompt": "From the fifteenth century windmills pumped water from lakes into ____.",
+   "answer": "canals",
+   "why": "Cối xay gió bơm nước vào kênh.",
+   "quote": "into canals"
+  },
+  {
+   "prompt": "The fertile land produced in this way is known as ____.",
+   "answer": "polders",
+   "why": "Vùng đất gọi là polder.",
+   "quote": "land called polders"
+  },
+  {
+   "prompt": "The Zuiderzee was a shallow ____ that was closed off by a long dam.",
+   "answer": "bay",
+   "why": "Zuiderzee là vịnh nông.",
+   "quote": "a shallow bay"
+  },
+  {
+   "prompt": "Flevoland became a new ____ after parts of the Zuiderzee were drained.",
+   "answer": "province",
+   "why": "Flevoland là tỉnh mới.",
+   "quote": "a new province"
+  },
+  {
+   "prompt": "About ____ of the Netherlands consists of land taken from the water.",
+   "answer": "one-fifth",
+   "why": "Khoảng một phần năm diện tích là đất lấn biển.",
+   "quote": "about one-fifth of the country's area"
+  },
+  {
+   "prompt": "Peat soil ____ when it is drained, so polders gradually sink.",
+   "answer": "shrinks",
+   "why": "Đất than bùn co lại khi bị rút nước.",
+   "quote": "peat soil shrinks"
+  },
+  {
+   "prompt": "The Room for the River programme was finished in ____.",
+   "answer": "2015",
+   "why": "Chương trình hoàn thành năm 2015.",
+   "quote": "completed in 2015"
+  },
+  {
+   "prompt": "One measure was to move the dikes ____ from the river.",
+   "answer": "back",
+   "why": "Đê được lùi vào trong.",
+   "quote": "dikes were moved back"
+  },
+  {
+   "prompt": "Squares and car parks are designed to hold ____ for a short time during storms.",
+   "answer": "rainwater",
+   "why": "Quảng trường chứa nước mưa tạm thời.",
+   "quote": "fill with rainwater"
+  },
+  {
+   "prompt": "Local governance is carried out by the regional water ____.",
+   "answer": "boards",
+   "why": "Các uỷ ban nước vùng quản lý hàng thế kỷ.",
+   "quote": "regional water boards"
+  }
+ ]
+}

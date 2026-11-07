@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 2: Society and Culture",
+ "topic": "Culture, society and everyday institutions",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "Public libraries began in the nineteenth century as places to lend books, but many now offer far more. Branches in several countries run job-search workshops, lend tools and musical instruments, and provide quiet rooms for students without space to study at home. Librarians say these services reflect a belief that a library's purpose is to share resources, whatever form they take.",
+   "options": [
+    "The origins of public lending in the nineteenth century",
+    "Quiet study spaces for students",
+    "The decline of reading among young people",
+    "Libraries widening their role beyond books",
+    "How librarians are trained",
+    "Tool-lending schemes in local communities"
+   ],
+   "answer": "Libraries widening their role beyond books",
+   "why": "Ý chính là thư viện mở rộng vai trò ngoài sách. Cho mượn dụng cụ hay phòng học chỉ là ví dụ.",
+   "quote": "far more"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "The Japanese tea ceremony is less about drinking than about attention. Every movement, from folding the cloth to turning the bowl, follows a pattern refined over centuries, and guests are expected to notice the season in the flowers, the scroll and the sweets. Practitioners describe the experience as a rehearsal in being fully present, which they say is harder than it sounds.",
+   "options": [
+    "The history of tea cultivation in Japan",
+    "Seasonal flowers in Japanese gardens",
+    "The correct way to hold a tea bowl",
+    "Why traditional crafts are disappearing",
+    "A ritual designed to train attention",
+    "Japanese sweets and their ingredients"
+   ],
+   "answer": "A ritual designed to train attention",
+   "why": "Đoạn nói trà đạo là sự luyện tập chú tâm. Hoa, bát, bánh chỉ là chi tiết của nghi thức.",
+   "quote": "less about drinking than about attention"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "Until the 1840s, each British town set its clocks by the sun, so noon in Bristol came ten minutes after noon in London. This caused little trouble until railways made it possible to travel between them within hours, and timetables became hopelessly confusing. Railway companies adopted a single standard time, and Parliament made it official for the whole country in 1880.",
+   "options": [
+    "How railways forced a single national time",
+    "Clocks and watches in the Victorian home",
+    "Why Bristol's noon differed from London's",
+    "The design of early timetables",
+    "The role of Parliament in transport policy",
+    "Sun-based methods of telling time"
+   ],
+   "answer": "How railways forced a single national time",
+   "why": "Đường sắt khiến cần một giờ chuẩn thống nhất. Chênh lệch Bristol–London chỉ là ví dụ minh hoạ.",
+   "quote": "adopted a single standard time"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Many museums hold objects acquired during colonial rule, and calls for their return have grown louder. Supporters of return argue that the items were taken without consent and belong to the communities that made them. Some museum directors respond that national collections allow worldwide audiences to compare cultures, while others have begun negotiating loans or shared custody as a compromise.",
+   "options": [
+    "The growth of museum attendance worldwide",
+    "Techniques for protecting fragile artefacts",
+    "Loans between museums as a source of income",
+    "Colonial rule and its economic effects",
+    "How collections are catalogued",
+    "The debate over returning colonial-era objects"
+   ],
+   "answer": "The debate over returning colonial-era objects",
+   "why": "Đoạn nêu các quan điểm về việc trả lại cổ vật thời thuộc địa. Cho mượn chỉ là một giải pháp thoả hiệp.",
+   "quote": "calls for their return"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "A volunteer-written encyclopaedia seemed unlikely to succeed. Yet Wikipedia, launched in 2001, now has articles in hundreds of languages. Its quality relies on rules: claims must cite published sources, edits are public, and disputes are settled through discussion pages. Studies comparing its science entries with those of printed encyclopaedias have found similar rates of error, though coverage of topics is uneven.",
+   "options": [
+    "The role of discussion pages in disagreements",
+    "Differences between printed and online books",
+    "The spread of languages on the internet",
+    "Why volunteers give their time",
+    "Why an open encyclopaedia works better than expected",
+    "Errors in science reporting"
+   ],
+   "answer": "Why an open encyclopaedia works better than expected",
+   "why": "Đoạn giải thích vì sao bách khoa mở hoạt động tốt nhờ các quy tắc. Trang thảo luận chỉ là một phần.",
+   "quote": "unlikely to succeed"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Murals were once treated as vandalism, but cities increasingly commission them. Officials have found that colourful walls can deter graffiti, attract visitors and give residents a sense of ownership of a neighbourhood. Artists, however, sometimes worry that official approval removes the rebellious edge that made the work meaningful, and that murals can signal rising property prices.",
+   "options": [
+    "Changing attitudes to painted walls and their mixed effects",
+    "The techniques of mural painting",
+    "Graffiti laws in major cities",
+    "Rising property prices in popular neighbourhoods",
+    "The career of a famous street artist",
+    "Tourism in European cities"
+   ],
+   "answer": "Changing attitudes to painted walls and their mixed effects",
+   "why": "Đoạn bàn thái độ thay đổi và hệ quả hai mặt của tranh tường. Giá nhà chỉ là một mối lo nhỏ.",
+   "quote": "official approval removes the rebellious edge"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "The ancient Olympic Games were held every four years at Olympia from 776 BC and continued for more than a thousand years. Wars between Greek cities were suspended so that athletes and spectators could travel safely. Only free men who spoke Greek could compete, and winners received a simple olive wreath, though their home cities often rewarded them lavishly.",
+   "options": [
+    "The modern revival of the Olympics",
+    "Olive trees in Greek culture",
+    "Greek city rivalries and warfare",
+    "Rewards given to successful athletes",
+    "Sporting facilities in Olympia",
+    "Rules and customs surrounding the ancient Games"
+   ],
+   "answer": "Rules and customs surrounding the ancient Games",
+   "why": "Đoạn liệt kê các quy tắc và tục lệ của Thế vận hội cổ đại. Phần thưởng và chiến tranh chỉ là một chi tiết.",
+   "quote": "Wars between Greek cities were suspended"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Similar folk tales appear in cultures that had no contact with each other. Cinderella-type stories, with a mistreated girl who is rescued by magical help, have been recorded in Egypt, China and Europe. Scholars disagree about why. Some propose that stories spread along trade routes, while others suggest that universal human worries, such as family rivalry, lead storytellers independently to similar plots.",
+   "options": [
+    "The Cinderella story in China",
+    "Competing explanations for similar stories worldwide",
+    "How trade routes developed",
+    "The decline of oral storytelling",
+    "Family rivalry in modern literature",
+    "Collecting folk tales in the nineteenth century"
+   ],
+   "answer": "Competing explanations for similar stories worldwide",
+   "why": "Đoạn đưa ra hai cách giải thích cho truyện giống nhau. Các đáp án khác chỉ là chi tiết hoặc không được bàn.",
+   "quote": "Scholars disagree about why"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "The Silk Road was not a single road but a web of routes linking China with the Mediterranean. Few traders travelled its full length; goods passed from merchant to merchant, rising in price at each stage. What moved along it was not only silk but also religions, inventions and diseases, and historians now stress the exchange of ideas rather than the luxury trade.",
+   "options": [
+    "A network that carried ideas as well as goods",
+    "The high price of silk in Rome",
+    "The journeys of individual merchants",
+    "The spread of disease in the medieval world",
+    "Chinese inventions such as paper",
+    "Routes across the Mediterranean"
+   ],
+   "answer": "A network that carried ideas as well as goods",
+   "why": "Ý chính: Con đường tơ lụa chuyển cả ý tưởng chứ không chỉ hàng hoá. Các lựa chọn kia là chi tiết.",
+   "quote": "not only silk but also religions"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "Many schools now spend less time on handwriting. Yet experiments suggest that students who take notes by hand tend to understand lectures better than those who type, possibly because writing slowly forces them to summarise rather than copy. Typists record more words, but often without processing them. Not all researchers accept the findings, and some studies have failed to reproduce them.",
+   "options": [
+    "The decline of handwriting lessons in schools",
+    "Speed of typing compared with writing",
+    "Is handwriting better for learning? The evidence is mixed",
+    "Tips for summarising lectures",
+    "The design of school keyboards",
+    "Why students dislike lectures"
+   ],
+   "answer": "Is handwriting better for learning? The evidence is mixed",
+   "why": "Đoạn xem xét bằng chứng không thống nhất về ghi chép tay. Tốc độ gõ và việc giảm giờ viết chỉ là chi tiết.",
+   "quote": "Not all researchers accept the findings"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Clothes production has roughly doubled since 2000 as retailers offer new styles every few weeks at low prices. Shoppers wear garments fewer times before discarding them, and millions of tonnes end up in landfill each year. Some brands now sell repaired or second-hand items, but critics say such schemes do little while the volume of new production keeps rising.",
+   "options": [
+    "Second-hand shops in city centres",
+    "The pricing strategies of retailers",
+    "Workers' conditions in garment factories",
+    "Textile recycling technologies",
+    "Changing fashion trends over centuries",
+    "The environmental cost of cheap, fast-changing clothing"
+   ],
+   "answer": "The environmental cost of cheap, fast-changing clothing",
+   "why": "Trọng tâm là tác hại môi trường của thời trang nhanh. Đồ cũ chỉ là một nỗ lực được nhắc ngắn.",
+   "quote": "end up in landfill"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Sign languages are full languages with their own grammar, not gestures that copy spoken words. British and American Sign Language are mutually unintelligible even though both countries speak English. Researchers who study new sign languages, such as the one that arose among deaf children in Nicaragua in the 1980s, have been able to observe grammar emerging in a single generation.",
+   "options": [
+    "The education of deaf children in Nicaragua",
+    "Sign languages as independent, fully developed languages",
+    "The difficulty of learning spoken English",
+    "Gestures used in everyday conversation",
+    "Why British and American signing differ",
+    "The history of hearing aids"
+   ],
+   "answer": "Sign languages as independent, fully developed languages",
+   "why": "Ý chính: ngôn ngữ ký hiệu là ngôn ngữ độc lập có ngữ pháp riêng. Nicaragua chỉ là ví dụ.",
+   "quote": "their own grammar"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Surveys show that people give more to a single named child than to a statistic about thousands. Psychologists call it the identifiable victim effect: a face triggers emotion, while large numbers feel abstract. Fundraisers use it deliberately, yet some ethicists argue that it distorts giving, directing money towards vivid stories rather than the causes that would help the most people.",
+   "options": [
+    "The most generous nations in the world",
+    "Emotional responses to large numbers",
+    "How fundraisers train staff",
+    "Children's charities and their funding",
+    "How personal stories distort charitable giving",
+    "Ethical questions in medicine"
+   ],
+   "answer": "How personal stories distort charitable giving",
+   "why": "Đoạn nói câu chuyện cá nhân làm lệch việc quyên góp. Phản ứng với con số lớn chỉ là phần giải thích.",
+   "quote": "distorts giving"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Chess reached Europe from the Middle East, where the game had arrived from India. The piece now called the queen was once a weak counsellor that could move one square; around 1500 the rules changed, giving it the great range it has today and making the game much faster. The new version soon replaced the older rules across the continent.",
+   "options": [
+    "The Indian origins of chess",
+    "The role of women in medieval Europe",
+    "Chess pieces and their names",
+    "A rule change that transformed an old game",
+    "Famous chess players in Spain",
+    "Speeding up modern tournaments"
+   ],
+   "answer": "A rule change that transformed an old game",
+   "why": "Trọng tâm là thay đổi luật quân hậu khiến cờ nhanh hơn. Nguồn gốc Ấn Độ chỉ nằm ở câu đầu.",
+   "quote": "around 1500 the rules changed"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Since the pandemic, many employees have worked from home several days a week. Surveys show that most prefer it, citing saved commuting time, while managers worry about teamwork and the training of junior staff. Evidence on productivity is mixed: individual tasks often go well, but creative collaboration seems to suffer. Many firms have settled on hybrid arrangements as a compromise.",
+   "options": [
+    "The effects of commuting on health",
+    "Training junior employees",
+    "Surveys of employee preferences",
+    "Hybrid working as a compromise between competing views",
+    "How the pandemic began",
+    "Office buildings and their rent"
+   ],
+   "answer": "Hybrid working as a compromise between competing views",
+   "why": "Đoạn cân nhắc các quan điểm và kết thúc bằng mô hình kết hợp. Các lựa chọn khác chỉ là một mảnh.",
+   "quote": "hybrid arrangements as a compromise"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "In Mexico, the Day of the Dead is not a sad occasion. Families build altars decorated with marigolds, photographs and the favourite foods of relatives who have died, and visit cemeteries to share a meal beside the graves. The celebration combines indigenous traditions with Catholic observances, and its images, such as decorated skulls, have become symbols of the country worldwide.",
+   "options": [
+    "The Catholic Church in Mexico",
+    "The popularity of Mexican food abroad",
+    "A celebration that welcomes the dead with joy",
+    "Cemetery design in Latin America",
+    "Marigolds as a commercial crop",
+    "Indigenous beliefs about nature"
+   ],
+   "answer": "A celebration that welcomes the dead with joy",
+   "why": "Đoạn mô tả lễ hội đón người đã khuất một cách vui vẻ. Công giáo và hoa chỉ là yếu tố phụ.",
+   "quote": "not a sad occasion"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Surveys regularly rank public speaking above death as a common fear, though the claim is exaggerated. Anxiety arises because speakers feel judged by a crowd. Practice helps, but so does changing how the nerves are interpreted: people told to view their racing heart as excitement rather than fear perform better in experiments than those told to calm down.",
+   "options": [
+    "Why death is feared",
+    "Reinterpreting nerves as a way to speak better",
+    "Judgement by a crowd",
+    "Practice schedules for speakers",
+    "Heart disease and anxiety",
+    "Survey methods in psychology"
+   ],
+   "answer": "Reinterpreting nerves as a way to speak better",
+   "why": "Ý chính là coi hồi hộp như phấn khích giúp nói tốt hơn. Nỗi sợ cái chết chỉ là mở đầu.",
+   "quote": "view their racing heart as excitement"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "Tattooing is far older than modern fashion. The five-thousand-year-old mummy found in the Alps carries dozens of lines on his skin, apparently placed on joints, perhaps as a treatment for pain. In Polynesian societies, patterns recorded rank and family history. Today surveys in several countries show that around a quarter of adults have at least one tattoo, though attitudes vary widely by age.",
+   "options": [
+    "The mummy discovered in the Alps",
+    "Medical uses of skin marking",
+    "Tattoos through history and today",
+    "Why young people choose tattoos",
+    "Polynesian social structure",
+    "Attitudes to body art in the workplace"
+   ],
+   "answer": "Tattoos through history and today",
+   "why": "Đoạn đi từ xưa tới nay của xăm hình. Mỗi lựa chọn khác chỉ nắm một mẩu thông tin.",
+   "quote": "far older than modern fashion"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Street food feeds millions of city dwellers every day. Stalls offer cheap meals, provide livelihoods for vendors and often preserve regional recipes that restaurants have abandoned. Governments have been ambivalent, worrying about hygiene and congestion; some cities license vendors and create designated markets, while others ban them. Visitors increasingly say that eating at a stall is the best way to experience a place.",
+   "options": [
+    "The value of street food and the mixed official response",
+    "Hygiene regulations in restaurants",
+    "Regional recipes in traditional cooking",
+    "Traffic congestion in crowded cities",
+    "Tourism and local markets",
+    "Cheap meals for families"
+   ],
+   "answer": "The value of street food and the mixed official response",
+   "why": "Đoạn nói giá trị đồ ăn đường phố và thái độ trái chiều của chính quyền. Vệ sinh hay giao thông chỉ là chi tiết.",
+   "quote": "Governments have been ambivalent"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Countries differ in the number of public holidays they observe, ranging from around five in some nations to over twenty in others. Economists find no clear link between the number of holidays and a country's wealth. Some argue that rested workers are more productive; others point out that holidays cost firms output. Whatever the effect, holidays are rarely abolished, because they are tied to shared identity.",
+   "options": [
+    "Differences between rich and poor countries",
+    "Why public holidays persist despite uncertain economics",
+    "Productivity of tired workers",
+    "Religious festivals and their origins",
+    "The cost of closing factories",
+    "Long working hours in Asia"
+   ],
+   "answer": "Why public holidays persist despite uncertain economics",
+   "why": "Ý chính: ngày lễ vẫn tồn tại dù kinh tế chưa rõ. Năng suất và chi phí nhà máy chỉ là các lập luận phụ.",
+   "quote": "rarely abolished"
+  }
+ ]
+}

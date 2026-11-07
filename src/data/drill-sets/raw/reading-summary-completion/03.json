@@ -1,0 +1,127 @@
+{
+ "title": "The Making of the Bicycle",
+ "topic": "The history of cycling technology",
+ "context": "The bicycle in its modern form is barely a century and a half old, yet it is among the most efficient machines ever built for converting human effort into movement. Its ancestor was the running machine, or draisine, invented in 1817 by the German Baron Karl von Drais. It consisted of two wheels joined by a wooden frame, and the rider pushed along the ground with his feet. The invention was prompted by a shortage of oats after a volcanic eruption in Indonesia darkened the sky and ruined harvests, making horses expensive to feed.\n\nThe next step was the addition of pedals. In the 1860s, French makers attached cranks directly to the front wheel, producing the velocipede, nicknamed the boneshaker because its wooden wheels and iron tyres made every journey uncomfortable. To travel faster, manufacturers enlarged the front wheel, since one turn of the pedals carried the rider further. This led to the penny-farthing, with a front wheel as tall as 1.5 metres. It was fast but dangerous: a rider who struck a stone could be thrown over the handlebars, and many suffered serious injuries. Despite these flaws the machines became a craze in Paris and London, and riding schools opened to teach clumsy newcomers how to stay upright.\n\nThe breakthrough came in 1885, when the English engineer John Kemp Starley introduced the Rover safety bicycle. It had two wheels of equal size and a chain that drove the rear wheel, which meant that the rider sat low and could stop with his feet on the ground. A few years later, John Boyd Dunlop reinvented the pneumatic tyre, which was filled with air and absorbed the shocks of rough roads. Together these improvements made cycling both comfortable and safe, and sales rose dramatically.\n\nThe bicycle also had social consequences. For women in the 1890s it offered a rare chance of independent travel, and campaigners such as Susan B. Anthony declared that it had done more for female emancipation than anything else. Clothing changed, as long skirts gave way to practical divided garments known as bloomers. Cyclists' clubs organised weekend excursions, and the new mobility encouraged people to marry outside their own villages, widening the pool of partners.\n\nIn the twentieth century the arrival of the motor car reduced cycling in many wealthy countries, but it remained vital in Asia and Africa, where millions of people still depend on it for work. In recent years cities have rediscovered the bicycle as a solution to congestion and pollution. Public hire schemes allow residents to pick up a bike at one station and leave it at another, and electric models with small motors are making hilly routes accessible to riders who might once have given up. The world's bicycle fleet is now estimated at well over a billion machines.",
+ "questions": [
+  {
+   "prompt": "The earliest ancestor of the bicycle was built in 1817 by a German baron called Karl von ____.",
+   "answer": "Drais",
+   "why": "Người phát minh là Nam tước Karl von Drais.",
+   "quote": "Baron Karl von Drais"
+  },
+  {
+   "prompt": "Riders of the first machine moved forward by pushing against the ground with their ____.",
+   "answer": "feet",
+   "why": "Chưa có bàn đạp; người lái đẩy bằng chân.",
+   "quote": "pushed along the ground with his feet"
+  },
+  {
+   "prompt": "Interest in the machine grew because of a lack of ____, which made horses costly to keep.",
+   "answer": "oats",
+   "why": "Thiếu yến mạch làm ngựa đắt đỏ.",
+   "quote": "a shortage of oats"
+  },
+  {
+   "prompt": "The volcanic eruption that damaged the harvests took place in ____.",
+   "answer": "Indonesia",
+   "why": "Vụ phun trào núi lửa xảy ra ở Indonesia.",
+   "quote": "volcanic eruption in Indonesia"
+  },
+  {
+   "prompt": "In the 1860s, French builders fitted ____ straight onto the front wheel.",
+   "answer": "cranks",
+   "why": "Tay quay (cranks) gắn thẳng vào bánh trước.",
+   "quote": "attached cranks directly"
+  },
+  {
+   "prompt": "Because it shook its riders so badly, the velocipede was nicknamed the ____.",
+   "answer": "boneshaker",
+   "why": "Biệt danh boneshaker do xe rất xóc.",
+   "quote": "nicknamed the boneshaker"
+  },
+  {
+   "prompt": "The velocipede's wooden wheels were covered with iron ____.",
+   "answer": "tyres",
+   "why": "Bánh gỗ bọc lốp sắt.",
+   "quote": "iron tyres"
+  },
+  {
+   "prompt": "A bigger front wheel meant the rider travelled further with each turn of the ____.",
+   "answer": "pedals",
+   "why": "Mỗi vòng đạp đi xa hơn.",
+   "quote": "one turn of the pedals"
+  },
+  {
+   "prompt": "The tallest front wheels on the penny-farthing reached about ____ metres.",
+   "answer": "1.5",
+   "why": "Bánh trước cao tới 1.5 mét.",
+   "quote": "as tall as 1.5 metres"
+  },
+  {
+   "prompt": "Hitting a stone could send a penny-farthing rider flying over the ____.",
+   "answer": "handlebars",
+   "why": "Người lái bị hất qua tay lái.",
+   "quote": "thrown over the handlebars"
+  },
+  {
+   "prompt": "The Rover safety bicycle was introduced by the engineer John Kemp ____.",
+   "answer": "Starley",
+   "why": "Starley giới thiệu xe an toàn Rover năm 1885.",
+   "quote": "John Kemp Starley"
+  },
+  {
+   "prompt": "On the Rover, a ____ transmitted power to the rear wheel.",
+   "answer": "chain",
+   "why": "Dây xích truyền lực tới bánh sau.",
+   "quote": "a chain that drove the rear wheel"
+  },
+  {
+   "prompt": "The low seat meant the rider could stop with both feet on the ____.",
+   "answer": "ground",
+   "why": "Ngồi thấp nên chân chạm đất khi dừng.",
+   "quote": "feet on the ground"
+  },
+  {
+   "prompt": "Dunlop is credited with reinventing the ____ tyre, which was filled with air.",
+   "answer": "pneumatic",
+   "why": "Lốp hơi (pneumatic).",
+   "quote": "the pneumatic tyre"
+  },
+  {
+   "prompt": "The air-filled tyre soaked up the ____ caused by rough roads.",
+   "answer": "shocks",
+   "why": "Lốp hơi hấp thụ các cú xóc.",
+   "quote": "absorbed the shocks"
+  },
+  {
+   "prompt": "In the 1890s women found in cycling a way of making independent ____.",
+   "answer": "travel",
+   "why": "Xe đạp cho phụ nữ cơ hội đi lại độc lập.",
+   "quote": "independent travel"
+  },
+  {
+   "prompt": "Susan B. Anthony claimed that cycling advanced female ____ more than anything else.",
+   "answer": "emancipation",
+   "why": "Bà nói xe đạp giúp giải phóng phụ nữ.",
+   "quote": "female emancipation"
+  },
+  {
+   "prompt": "Women replaced long skirts with practical divided garments called ____.",
+   "answer": "bloomers",
+   "why": "Trang phục mới tên bloomers.",
+   "quote": "known as bloomers"
+  },
+  {
+   "prompt": "Cyclists' clubs arranged weekend ____ into the countryside.",
+   "answer": "excursions",
+   "why": "Các câu lạc bộ tổ chức chuyến đi cuối tuần.",
+   "quote": "weekend excursions"
+  },
+  {
+   "prompt": "Modern cities offer public ____ schemes so that residents can borrow bikes at stations.",
+   "answer": "hire",
+   "why": "Chương trình cho thuê xe công cộng.",
+   "quote": "Public hire schemes"
+  }
+ ]
+}

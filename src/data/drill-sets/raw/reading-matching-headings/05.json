@@ -1,0 +1,306 @@
+{
+ "title": "Headings Practice 5: Health and the Mind",
+ "topic": "Medicine, psychology and wellbeing",
+ "questions": [
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 1)",
+   "context": "Vaccines train the immune system without causing the disease. A weakened or inactive part of a germ is introduced, and the body produces antibodies and memory cells that respond rapidly if the real germ appears later. When enough people are immunised, the germ struggles to find new hosts, and even those who cannot be vaccinated gain some protection, an effect known as herd immunity.",
+   "options": [
+    "The discovery of the first vaccine",
+    "Why some people cannot be vaccinated",
+    "The production of antibodies",
+    "Diseases spread by germs",
+    "How vaccination protects individuals and communities",
+    "Doctors and public trust"
+   ],
+   "answer": "How vaccination protects individuals and communities",
+   "why": "Đoạn giải thích cách vắc-xin bảo vệ cá nhân và cộng đồng. Phát hiện lịch sử không được nhắc.",
+   "quote": "herd immunity"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 2)",
+   "context": "Blue light from screens suppresses melatonin, the hormone that signals the body it is time to sleep. People who use phones late at night often take longer to fall asleep and feel less alert next morning. Some devices now offer a warm-toned night mode, though experiments suggest that the content of what we watch may disturb sleep as much as the colour of the screen.",
+   "options": [
+    "The role of melatonin in the body",
+    "Warm-toned filters on phones",
+    "Screens at night and their uncertain effect on sleep",
+    "Morning alertness and school results",
+    "The history of artificial lighting",
+    "Hormones that regulate appetite"
+   ],
+   "answer": "Screens at night and their uncertain effect on sleep",
+   "why": "Ý chính là màn hình đêm ảnh hưởng giấc ngủ nhưng nguyên nhân chưa chắc chắn. Melatonin chỉ là cơ chế phụ.",
+   "quote": "suppresses melatonin"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 3)",
+   "context": "A balanced diet matters, but the link between particular foods and health is hard to prove. People who eat more vegetables also tend to exercise more and smoke less, so it is difficult to separate causes. The strongest evidence comes from trials in which volunteers are randomly assigned to diets, though these are expensive, short and depend on participants following instructions honestly.",
+   "options": [
+    "The benefits of eating vegetables",
+    "Why proving the effect of diet on health is difficult",
+    "The dangers of smoking",
+    "Random trials in medical science",
+    "Honesty in research volunteers",
+    "The cost of healthy food"
+   ],
+   "answer": "Why proving the effect of diet on health is difficult",
+   "why": "Trọng tâm: khó chứng minh tác động của chế độ ăn. Thử nghiệm ngẫu nhiên chỉ là phương pháp được nhắc.",
+   "quote": "hard to prove"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 4)",
+   "context": "Pain is not simply a signal sent from an injury to the brain. The brain decides how much pain to feel by weighing the signal against context, mood and expectation. Soldiers badly wounded in battle sometimes report little pain until they are safe, and people expecting a treatment to help often feel relief even when given an inactive pill.",
+   "options": [
+    "Injuries suffered by soldiers",
+    "Painkillers and how they work",
+    "Inactive pills in medical trials",
+    "Mood and emotion",
+    "The role of the brain in shaping the experience of pain",
+    "The treatment of chronic illness"
+   ],
+   "answer": "The role of the brain in shaping the experience of pain",
+   "why": "Ý chính là não điều chỉnh cảm giác đau. Binh sĩ và thuốc giả dược chỉ là ví dụ.",
+   "quote": "The brain decides how much pain to feel"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 5)",
+   "context": "Handwashing is one of the cheapest ways to prevent illness. In the 1840s, the doctor Ignaz Semmelweis noticed that women died far less often in a maternity ward whose staff washed their hands in a chlorine solution. His colleagues rejected the idea, and he was ridiculed. Only after germ theory was established decades later was his work recognised.",
+   "options": [
+    "Why chlorine kills germs",
+    "The treatment of women in hospitals",
+    "The cost of preventing disease",
+    "The development of germ theory",
+    "Maternity care in the nineteenth century",
+    "An early discovery about hygiene that was ignored"
+   ],
+   "answer": "An early discovery about hygiene that was ignored",
+   "why": "Trọng tâm: phát hiện sớm về vệ sinh bị bác bỏ. Thuyết vi trùng chỉ nằm ở cuối đoạn.",
+   "quote": "rejected the idea"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 6)",
+   "context": "Mindfulness meditation asks people to observe thoughts and sensations without judging them. Trials suggest it can reduce symptoms of anxiety and prevent relapse in some people who have suffered repeated depression. Results are weaker when mindfulness is compared with other active treatments, and some participants report unpleasant experiences, so experts advise treating it as one option rather than a cure-all.",
+   "options": [
+    "A balanced view of the benefits of mindfulness",
+    "The origins of meditation in Asia",
+    "Treatments for anxiety disorders",
+    "Unpleasant experiences in therapy",
+    "Comparing active medicines",
+    "Thoughts that cause depression"
+   ],
+   "answer": "A balanced view of the benefits of mindfulness",
+   "why": "Đoạn đánh giá cân bằng lợi ích của chánh niệm. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "one option rather than a cure-all"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 7)",
+   "context": "The gut contains hundreds of species of bacteria that help digest food, produce vitamins and train the immune system. Antibiotics can disturb this community, and some researchers think its imbalance may play a role in allergies and obesity. The evidence so far comes largely from animal studies, and claims that special yoghurts can repair the gut are far ahead of the science.",
+   "options": [
+    "Digestion in the human body",
+    "How antibiotics work",
+    "The benefits of yoghurt",
+    "The gut's bacteria: promising but unproven claims",
+    "Allergies in young children",
+    "Vitamins in the diet"
+   ],
+   "answer": "The gut's bacteria: promising but unproven claims",
+   "why": "Ý chính: vi khuẩn đường ruột hứa hẹn nhưng bằng chứng còn thiếu. Sữa chua chỉ được nhắc để bác bỏ.",
+   "quote": "far ahead of the science"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 8)",
+   "context": "Loneliness harms health. Studies in several countries have found that people with few social contacts are more likely to develop heart disease and to die earlier than those with strong relationships, even after accounting for age and wealth. Researchers think chronic loneliness keeps the body in a state of stress, raising blood pressure and weakening the immune response.",
+   "options": [
+    "The wealth of older people",
+    "The physical damage caused by social isolation",
+    "Stress and blood pressure",
+    "Making friends as an adult",
+    "Heart disease in different countries",
+    "The role of the immune system"
+   ],
+   "answer": "The physical damage caused by social isolation",
+   "why": "Trọng tâm là cô đơn gây hại sức khoẻ thể chất. Huyết áp chỉ là cơ chế.",
+   "quote": "Loneliness harms health"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 9)",
+   "context": "Left-handed people make up around ten per cent of the population in most societies. In the past, children were often forced to write with the right hand, and the word for left in many languages has negative meanings. Research has found no consistent differences in intelligence or health, though left-handers may have a slight advantage in some fast-ball sports such as fencing and tennis.",
+   "options": [
+    "The meaning of words for left and right",
+    "Attitudes to left-handedness and what research shows",
+    "Success in fencing and tennis",
+    "Forced changes of hand in schools",
+    "The intelligence of different groups",
+    "The percentage of people with a dominant hand"
+   ],
+   "answer": "Attitudes to left-handedness and what research shows",
+   "why": "Đoạn nói thành kiến với người thuận tay trái và kết quả nghiên cứu. Các lựa chọn khác chỉ là mảnh nhỏ.",
+   "quote": "no consistent differences"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 10)",
+   "context": "A child learning a second language does not usually confuse the two. Bilingual children may mix words at first, but they soon learn to separate the systems and switch between them. Some studies suggest that managing two languages strengthens the brain's ability to focus and ignore distractions, although larger studies have been unable to confirm a strong effect.",
+   "options": [
+    "How children learn their first words",
+    "Switching between languages in conversation",
+    "Distractions in classrooms",
+    "The cognitive effects of growing up bilingual: promising but debated",
+    "Language lessons in primary schools",
+    "Words mixed by young children"
+   ],
+   "answer": "The cognitive effects of growing up bilingual: promising but debated",
+   "why": "Ý chính: học hai ngôn ngữ ảnh hưởng nhận thức nhưng còn tranh cãi. Trộn từ chỉ là chi tiết.",
+   "quote": "unable to confirm a strong effect"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 11)",
+   "context": "Many people believe that cracking the knuckles causes arthritis. In fact, the popping sound comes from gas bubbles forming in the fluid of the joint, and studies comparing habitual knucklecrackers with others have found no increased risk of arthritis. One doctor tested the idea on himself for sixty years, cracking only one hand, and found no difference between the two.",
+   "options": [
+    "Debunking a common belief about joint cracking",
+    "The causes of arthritis",
+    "Gas bubbles in liquids",
+    "A doctor's long experiment",
+    "Habits that damage the hands",
+    "Fluids in the human body"
+   ],
+   "answer": "Debunking a common belief about joint cracking",
+   "why": "Đoạn bác bỏ quan niệm sai về bẻ khớp. Thí nghiệm của bác sĩ chỉ là bằng chứng.",
+   "quote": "no increased risk of arthritis"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 12)",
+   "context": "Sunlight allows the skin to make vitamin D, which helps the body absorb calcium for strong bones. People in northern countries, those who cover their skin, and those who spend most of the day indoors are at greater risk of deficiency. Too much sun, however, raises the risk of skin cancer, so doctors recommend short exposure and, where needed, supplements.",
+   "options": [
+    "Balancing the benefits and dangers of sunlight",
+    "The causes of skin cancer",
+    "Calcium in the diet",
+    "Vitamin supplements",
+    "Living in northern countries",
+    "Strong bones in old age"
+   ],
+   "answer": "Balancing the benefits and dangers of sunlight",
+   "why": "Ý chính: cân bằng lợi và hại của ánh nắng. Mỗi lựa chọn khác chỉ nói một vế.",
+   "quote": "short exposure"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 13)",
+   "context": "Placebo effects are not merely imagination. When people are given inactive treatments, brain scans show changes in activity related to pain and mood, and the effect is stronger with larger pills, injections and treatments that are expensive. Some trials show benefits even when patients are told that the pill contains no medicine, which has surprised researchers.",
+   "options": [
+    "Large pills and injections",
+    "The cost of medicines",
+    "The real physical effects of treatments with no active ingredient",
+    "Honesty between doctors and patients",
+    "Brain scans in research",
+    "Imagination and creativity"
+   ],
+   "answer": "The real physical effects of treatments with no active ingredient",
+   "why": "Trọng tâm: giả dược có tác động sinh lý thực. Chi tiết viên lớn và giá tiền chỉ là ví dụ.",
+   "quote": "not merely imagination"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 14)",
+   "context": "Teenagers take more risks than adults, and part of the explanation lies in brain development. The regions responsible for emotion and reward mature earlier than those that control planning and restraint. As a result, adolescents are especially sensitive to rewards, particularly when peers are watching. Rather than blaming recklessness, some psychologists suggest channelling this energy into positive challenges.",
+   "options": [
+    "Peer pressure in schools",
+    "The planning abilities of adults",
+    "Positive activities for young people",
+    "Brain development and risk-taking in adolescence",
+    "Reckless driving and accidents",
+    "Rewards and motivation"
+   ],
+   "answer": "Brain development and risk-taking in adolescence",
+   "why": "Ý chính: sự phát triển não giải thích hành vi mạo hiểm của tuổi teen. Áp lực bạn bè chỉ là yếu tố phụ.",
+   "quote": "mature earlier"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 15)",
+   "context": "Allergies appear to be more common in wealthy countries. One explanation, called the hygiene hypothesis, proposes that children who grow up in very clean surroundings encounter fewer microbes, leaving their immune systems prone to overreact to harmless substances such as pollen. Evidence is mixed, and researchers now prefer to speak of a lack of microbial diversity rather than cleanliness itself.",
+   "options": [
+    "Pollen and hay fever",
+    "Wealth and health in different countries",
+    "A theory linking allergies to over-clean environments",
+    "Cleaning products at home",
+    "How the immune system fights disease",
+    "Children's play outdoors"
+   ],
+   "answer": "A theory linking allergies to over-clean environments",
+   "why": "Đoạn nêu giả thuyết vệ sinh về dị ứng và những hạn chế. Phấn hoa chỉ là ví dụ.",
+   "quote": "hygiene hypothesis"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 16)",
+   "context": "Reading aloud to young children builds vocabulary long before they can read themselves. Parents who read daily expose children to words that rarely appear in everyday conversation, such as names of animals and unusual verbs. Children who are read to also tend to start school more eager to learn, although the effect partly reflects other advantages of homes where books are plentiful.",
+   "options": [
+    "How reading aloud supports early language development",
+    "Books in family homes",
+    "Starting school at an early age",
+    "Names of animals",
+    "Conversation between parents and children",
+    "Advantages of wealthy households"
+   ],
+   "answer": "How reading aloud supports early language development",
+   "why": "Trọng tâm: đọc to cho trẻ giúp phát triển từ vựng. Nhà có nhiều sách chỉ là lưu ý.",
+   "quote": "builds vocabulary"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 17)",
+   "context": "Noise is more than an annoyance. Long exposure to loud traffic or aircraft is associated with raised blood pressure and disturbed sleep, and children in schools near airports have been found to read less well. Quiet zones, double glazing and low-noise road surfaces can all help, but measures are costly, and complaints often come only after problems are severe.",
+   "options": [
+    "The sound of aircraft",
+    "The cost of road surfaces",
+    "Reading difficulties in children",
+    "Complaints from residents",
+    "Windows and heating",
+    "The health effects of noise and ways to reduce them"
+   ],
+   "answer": "The health effects of noise and ways to reduce them",
+   "why": "Ý chính: tiếng ồn ảnh hưởng sức khoẻ và cách giảm. Các lựa chọn khác quá hẹp.",
+   "quote": "raised blood pressure"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 18)",
+   "context": "Posture advice often exaggerates. People are told that slouching causes back pain, yet studies have not found a reliable link between how someone sits and their pain. Staying in any one position for hours, whether upright or not, seems more harmful. Experts therefore recommend moving regularly, standing up to stretch and walking during breaks.",
+   "options": [
+    "Causes of back pain",
+    "Moving often matters more than sitting upright",
+    "Stretching exercises for athletes",
+    "Sitting at work",
+    "Walking as exercise",
+    "Correct posture for children"
+   ],
+   "answer": "Moving often matters more than sitting upright",
+   "why": "Trọng tâm: vận động thường xuyên quan trọng hơn ngồi thẳng. Nguyên nhân đau lưng quá rộng.",
+   "quote": "moving regularly"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 19)",
+   "context": "Humour appears to help people cope with stress. Shared laughter bonds groups and releases tension, and patients who watch comedies report less pain in some studies. Yet researchers warn that humour can be harmful when used to hide feelings or to mock others. Therapists therefore distinguish between warm humour that connects people and sarcastic humour that keeps them apart.",
+   "options": [
+    "Comedy films in hospitals",
+    "Laughter within groups",
+    "Stress at work",
+    "Sarcasm in conversation",
+    "The helpful and harmful sides of humour",
+    "The training of therapists"
+   ],
+   "answer": "The helpful and harmful sides of humour",
+   "why": "Ý chính: hài hước có mặt giúp ích và mặt gây hại. Từng lựa chọn kia chỉ là một mặt.",
+   "quote": "warm humour"
+  },
+  {
+   "prompt": "Choose the best heading for this paragraph. (Paragraph 20)",
+   "context": "Caffeine is the world's most widely used stimulant. It blocks receptors for adenosine, a chemical that builds up during the day and makes us feel tired, so alertness increases for several hours. Moderate intake, around three or four cups of coffee, appears safe for most adults. Pregnant women and people with heart rhythm problems are generally advised to limit it, and drinking it late in the day can disturb sleep.",
+   "options": [
+    "The popularity of coffee around the world",
+    "Tiredness during the day",
+    "Heart problems in older adults",
+    "Pregnancy and nutrition",
+    "Sleep disturbance in the evening",
+    "How caffeine works and who should take care"
+   ],
+   "answer": "How caffeine works and who should take care",
+   "why": "Ý chính: cơ chế của caffeine và ai nên thận trọng. Các lựa chọn khác chỉ là chi tiết.",
+   "quote": "blocks receptors for adenosine"
+  }
+ ]
+}

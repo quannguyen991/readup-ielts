@@ -1,0 +1,127 @@
+{
+ "title": "Farming Upwards",
+ "topic": "Vertical farming and food supply",
+ "context": "By 2050 the world's population is expected to reach nearly ten billion, and feeding everyone will require much more food from limited land. One response is vertical farming, in which crops are grown in stacked layers inside buildings, often without soil. Plants sit in trays or on towers, their roots bathed in water containing dissolved nutrients, a method known as hydroponics. Some systems use a fine mist instead, called aeroponics, which uses even less water and can allow roots to absorb oxygen more effectively than a flooded tray.\n\nThe advantages are considerable. Because the environment is controlled, crops can be grown all year, whatever the weather outside. Vertical farms use up to ninety per cent less water than conventional fields, since the water circulates and is recycled. They need no pesticides, as insects cannot enter sealed rooms, and they can be built in or near cities, which cuts the distance that produce must travel. Leafy vegetables and herbs, which are delicate and spoil quickly, benefit most from being grown close to the people who eat them. Growers also report that harvests are predictable, so supermarkets can plan their orders weeks ahead and waste is reduced.\n\nLight is the central challenge. Plants need specific wavelengths for photosynthesis, and farms replace sunshine with LED lamps tuned to the red and blue colours that leaves absorb best. Engineers can adjust the spectrum to change the taste, size or colour of a crop. However, the lamps consume large amounts of electricity, which accounts for as much as a quarter or more of operating costs. If the power comes from fossil fuels, much of the environmental benefit disappears, so some farms are being built next to wind or solar installations.\n\nEconomic performance has been mixed. Several high-profile companies have struggled, because buildings, equipment and energy are expensive while vegetable prices are low. A kilo of lettuce from a vertical farm usually costs more than one grown outdoors. Staple crops like wheat and rice, which supply most of the world's calories, are far too cheap and need too much space and light to be grown this way. Critics conclude that vertical farms will remain a niche supplier of premium produce for wealthy city dwellers. Several large operators have already closed sites after rising electricity prices wiped out their margins.\n\nSupporters respond that the technology is improving. Robots now plant, move and harvest trays, reducing labour, and sensors monitor plants individually so that growers can respond to problems within hours. Strawberries and tomatoes, once thought impractical, are being grown commercially in several countries. In places with little arable land or harsh climates, such as deserts and polar regions, vertical farms may offer fresh food where almost none was possible before, which could make them valuable even if they never feed the whole world. Some industry leaders now admit that their early promises were too ambitious.",
+ "questions": [
+  {
+   "prompt": "The global population is expected to approach ten ____ by 2050.",
+   "answer": "billion",
+   "why": "Dân số tiến tới gần mười tỷ.",
+   "quote": "nearly ten billion"
+  },
+  {
+   "prompt": "In a vertical farm the plants are grown in stacked ____.",
+   "answer": "layers",
+   "why": "Cây trồng theo các tầng xếp chồng.",
+   "quote": "stacked layers"
+  },
+  {
+   "prompt": "In hydroponics, roots sit in water carrying dissolved ____.",
+   "answer": "nutrients",
+   "why": "Rễ ngâm trong nước chứa chất dinh dưỡng hoà tan.",
+   "quote": "dissolved nutrients"
+  },
+  {
+   "prompt": "Growing in water without soil is called ____.",
+   "answer": "hydroponics",
+   "why": "Phương pháp gọi là thuỷ canh.",
+   "quote": "known as hydroponics"
+  },
+  {
+   "prompt": "Aeroponic systems spray a fine ____ onto the roots.",
+   "answer": "mist",
+   "why": "Aeroponics dùng sương mịn.",
+   "quote": "fine mist"
+  },
+  {
+   "prompt": "Controlled conditions mean crops can be harvested all ____.",
+   "answer": "year",
+   "why": "Trồng quanh năm.",
+   "quote": "grown all year"
+  },
+  {
+   "prompt": "Vertical farms need up to ninety per cent less ____ than normal fields.",
+   "answer": "water",
+   "why": "Tiết kiệm tới 90% nước.",
+   "quote": "ninety per cent less water"
+  },
+  {
+   "prompt": "There is no need for ____ because insects cannot get in.",
+   "answer": "pesticides",
+   "why": "Không cần thuốc trừ sâu.",
+   "quote": "need no pesticides"
+  },
+  {
+   "prompt": "Farms near cities reduce the distance that produce must ____.",
+   "answer": "travel",
+   "why": "Giảm quãng đường vận chuyển.",
+   "quote": "produce must travel"
+  },
+  {
+   "prompt": "Delicate crops such as leafy vegetables and ____ gain the most.",
+   "answer": "herbs",
+   "why": "Rau lá và rau thơm hưởng lợi nhiều nhất.",
+   "quote": "vegetables and herbs"
+  },
+  {
+   "prompt": "Plants require particular ____ of light for photosynthesis.",
+   "answer": "wavelengths",
+   "why": "Cần bước sóng ánh sáng cụ thể.",
+   "quote": "specific wavelengths"
+  },
+  {
+   "prompt": "Sunlight is substituted by ____ lamps.",
+   "answer": "LED",
+   "why": "Dùng đèn LED thay ánh nắng.",
+   "quote": "with LED lamps"
+  },
+  {
+   "prompt": "The lamps use a great deal of ____, which is expensive.",
+   "answer": "electricity",
+   "why": "Đèn tiêu thụ nhiều điện.",
+   "quote": "amounts of electricity"
+  },
+  {
+   "prompt": "Some farms are being built beside wind or ____ power plants.",
+   "answer": "solar",
+   "why": "Xây cạnh điện gió hoặc điện mặt trời.",
+   "quote": "wind or solar"
+  },
+  {
+   "prompt": "Buildings, equipment and ____ make vertical farming costly.",
+   "answer": "energy",
+   "why": "Chi phí toà nhà, thiết bị, năng lượng.",
+   "quote": "equipment and energy"
+  },
+  {
+   "prompt": "A kilo of ____ grown in a vertical farm tends to be pricier than outdoor produce.",
+   "answer": "lettuce",
+   "why": "Xà lách trồng trong nhà đắt hơn.",
+   "quote": "A kilo of lettuce"
+  },
+  {
+   "prompt": "Staple crops like wheat and ____ are not suited to this method.",
+   "answer": "rice",
+   "why": "Lúa mì và gạo không phù hợp.",
+   "quote": "wheat and rice"
+  },
+  {
+   "prompt": "Critics think vertical farms will stay a niche source of ____ produce.",
+   "answer": "premium",
+   "why": "Chỉ cung cấp nông sản cao cấp.",
+   "quote": "premium produce"
+  },
+  {
+   "prompt": "Machines now plant, move and harvest ____ so less labour is needed.",
+   "answer": "trays",
+   "why": "Robot xử lý các khay cây.",
+   "quote": "harvest trays"
+  },
+  {
+   "prompt": "Commercial growers are now producing strawberries and ____.",
+   "answer": "tomatoes",
+   "why": "Dâu và cà chua đã trồng thương mại.",
+   "quote": "Strawberries and tomatoes"
+  }
+ ]
+}

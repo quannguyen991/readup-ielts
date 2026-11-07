@@ -34,3 +34,11 @@ test('đủ từ thì giữ nguyên Task Response', () => {
   const r = finalizeBands(buildResult(score(8, 7, 7, 7), { annotations: [] }, words(260), 'm'), 250);
   assert.equal(r.taskBand, 8);
 });
+
+test('đếm số từ theo luật IELTS, giống ô đếm: gạch ngang đứng lẻ không phải từ', () => {
+  // 245 từ thật + 10 dấu gạch: đếm theo khoảng trắng là 255 (đủ 250), đếm theo IELTS là 245 (thiếu).
+  const body = `${words(245)} ${Array.from({ length: 10 }, () => '—').join(' ')}`;
+  const r = finalizeBands(buildResult(score(8, 7, 7, 7), { annotations: [] }, body, 'm'), 250);
+  assert.equal(r.wordCount, 245);
+  assert.equal(r.taskBand, 6);
+});

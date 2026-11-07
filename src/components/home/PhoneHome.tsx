@@ -35,6 +35,8 @@ export type PhoneHomeProps = {
   en: boolean;
   L: (vi: string, en: string) => string;
   onSearch: () => void;
+  /** Số từ đến hạn ôn hôm nay (lịch lặp ngắt quãng). */
+  due?: number;
 };
 
 /** Ảnh Chiikawa đang có trong repo (cùng hình với nút trợ lý khi chọn chủ đề Chiikawa). */
@@ -194,6 +196,38 @@ export function PhoneHome(p: PhoneHomeProps) {
           <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: 'rgba(156,133,82,0.2)' }} />
           <StatColumn icon="clock" value={fmt(p.minutes)} label={L('phút hôm nay', 'min today')} />
         </View>
+
+        {/* Thanh ôn lặp ngắt quãng: luôn hiện, bấm là vào lịch ôn. */}
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={p.L('Ôn lặp ngắt quãng', 'Spaced review')}
+          onPress={() => router.push('/vocabulary/spaced-repetition' as never)}
+          style={{
+            marginTop: 20,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 12,
+            borderRadius: 20,
+            borderWidth: 1,
+            borderColor: '#E5DDFF',
+            backgroundColor: '#FFFFFF',
+            paddingHorizontal: 16,
+            paddingVertical: 14,
+          }}
+        >
+          <View style={{ width: 40, height: 40, borderRadius: 14, backgroundColor: '#F1EBFF', alignItems: 'center', justifyContent: 'center' }}>
+            <Icon name="clock" size={20} color="#6A4BD9" />
+          </View>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 15, color: GOLD.ink }}>{p.L('Ôn lặp ngắt quãng', 'Spaced review')}</Text>
+            <Text numberOfLines={1} style={{ fontSize: 13, color: '#6E6A7F', marginTop: 2 }}>
+              {(p.due ?? 0) > 0
+                ? p.L(`${p.due} từ đến hạn hôm nay`, `${p.due} words due today`)
+                : p.L('Chưa có từ đến hạn. Xem lịch ôn.', 'Nothing due yet. See the schedule.')}
+            </Text>
+          </View>
+          <Icon name="chevron-right" size={18} color="#6A4BD9" />
+        </Pressable>
 
         {/* Công cụ và phần học: chọn một ô để vào đúng màn */}
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 24, marginBottom: 16 }}>

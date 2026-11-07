@@ -1,0 +1,127 @@
+{
+ "title": "Surtsey: An Island Born from the Sea",
+ "topic": "Volcanic island colonisation",
+ "context": "In November 1963, the crew of a fishing boat off the south coast of Iceland noticed smoke rising from the sea and the smell of sulphur. An undersea volcano was erupting, and within days a new island had appeared. Named Surtsey after the fire giant Surtr of Norse legend, it continued to grow for almost four years, until the eruptions stopped in 1967. At its largest, the island covered about 2.7 square kilometres. Its surface remained too hot to walk on for months afterwards, and steam still escaped from cracks in the cooling rock.\n\nAlmost at once, scientists recognised an extraordinary opportunity. Unlike most places on Earth, Surtsey had been born sterile, because the heat of the lava killed every living thing. Whatever arrived later would have come from elsewhere, and researchers could record the process of colonisation from the very beginning. To keep the experiment pure, the Icelandic government declared the island a protected reserve, and since then only a handful of scientists have been permitted to land there. Even they must wash their clothing and check their boots for seeds before they arrive.\n\nThe first colonists were microorganisms and simple plants. Bacteria and fungi appeared in the volcanic ash within months, and in 1965 the first flowering plant, a sea rocket, was found growing on the beach. Its seeds had been carried by ocean currents. Mosses and lichens followed, and about a decade later seagulls began nesting on the island. The birds proved decisive: their droppings fertilised the thin soil, allowing grasses and many other plants to take root where nothing could have survived before. Today more than seventy species of flowering plants have been recorded, although not all of them have lasted.\n\nAnimal life has also arrived. Insects were carried on the wind or on floating debris, and spiders sailed in on silk threads. Seals now breed on the beaches, and puffins have started to nest in burrows on the grassy slopes. Meanwhile, the island itself is shrinking. Waves and storms have eaten away the soft volcanic ash, and the surface area has halved. Geologists predict that within a few more centuries only the hard rock core will remain above the sea. Divers have also noted that kelp forests and fish have gradually established themselves around the island, completing a picture of a new ecosystem.\n\nThe scientific significance of Surtsey was recognised in 2008, when UNESCO placed it on the World Heritage List. Researchers say that the island offers lessons for conservation, because it shows how quickly ecosystems can form without human interference, and how important a single factor, such as the arrival of seabirds, can be. It also gives a preview of how life might establish itself on newly exposed land when glaciers retreat, a process that is becoming more common as the climate warms.",
+ "questions": [
+  {
+   "prompt": "The first sign of the eruption was ____ seen coming out of the water by fishermen.",
+   "answer": "smoke",
+   "why": "Thuyền đánh cá thấy khói bốc lên từ biển.",
+   "quote": "noticed smoke rising from the sea"
+  },
+  {
+   "prompt": "The island took its name from a fire giant in ____ mythology.",
+   "answer": "Norse",
+   "why": "Tên đặt theo người khổng lồ lửa trong truyền thuyết Bắc Âu (Norse).",
+   "quote": "fire giant Surtr of Norse legend"
+  },
+  {
+   "prompt": "The volcanic activity finally ended in ____.",
+   "answer": "1967",
+   "why": "Núi lửa ngừng hoạt động năm 1967.",
+   "quote": "until the eruptions stopped in 1967"
+  },
+  {
+   "prompt": "At its biggest the island measured roughly 2.7 square ____.",
+   "answer": "kilometres",
+   "why": "Đơn vị diện tích là kilômét vuông.",
+   "quote": "about 2.7 square kilometres"
+  },
+  {
+   "prompt": "No living things survived because the ____ was so hot.",
+   "answer": "lava",
+   "why": "Nhiệt của dung nham giết mọi sinh vật.",
+   "quote": "the heat of the lava killed every living thing"
+  },
+  {
+   "prompt": "Scientists could study how life spread, a process called ____, right from the start.",
+   "answer": "colonisation",
+   "why": "Quá trình sinh vật xâm chiếm gọi là colonisation.",
+   "quote": "the process of colonisation"
+  },
+  {
+   "prompt": "To protect the experiment, Iceland turned the island into a ____ with restricted access.",
+   "answer": "reserve",
+   "why": "Chính phủ tuyên bố đây là khu bảo tồn (reserve).",
+   "quote": "a protected reserve"
+  },
+  {
+   "prompt": "Visitors have to inspect their boots in case they carry ____ from elsewhere.",
+   "answer": "seeds",
+   "why": "Họ phải kiểm tra giày để tránh mang hạt giống.",
+   "quote": "check their boots for seeds"
+  },
+  {
+   "prompt": "Within months, bacteria and ____ were living in the ash.",
+   "answer": "fungi",
+   "why": "Vi khuẩn và nấm xuất hiện trong tro.",
+   "quote": "Bacteria and fungi appeared"
+  },
+  {
+   "prompt": "The first flowering plant was discovered growing on the ____ in 1965.",
+   "answer": "beach",
+   "why": "Cây sea rocket mọc trên bãi biển.",
+   "quote": "growing on the beach"
+  },
+  {
+   "prompt": "The seeds of that plant were brought to the island by ocean ____.",
+   "answer": "currents",
+   "why": "Hạt giống theo dòng hải lưu.",
+   "quote": "carried by ocean currents"
+  },
+  {
+   "prompt": "After the first plants came mosses and ____.",
+   "answer": "lichens",
+   "why": "Tiếp theo là rêu và địa y.",
+   "quote": "Mosses and lichens followed"
+  },
+  {
+   "prompt": "Roughly ten years afterwards, ____ started to breed on the island.",
+   "answer": "seagulls",
+   "why": "Mòng biển bắt đầu làm tổ.",
+   "quote": "seagulls began nesting"
+  },
+  {
+   "prompt": "Bird droppings acted as a natural fertiliser that ____ the poor soil.",
+   "answer": "fertilised",
+   "why": "Phân chim bón cho lớp đất mỏng.",
+   "quote": "their droppings fertilised the thin soil"
+  },
+  {
+   "prompt": "More than ____ kinds of flowering plant have been found on the island.",
+   "answer": "seventy",
+   "why": "Hơn bảy mươi loài cây có hoa.",
+   "quote": "more than seventy species"
+  },
+  {
+   "prompt": "Insects reached the island on the wind or on floating ____.",
+   "answer": "debris",
+   "why": "Côn trùng đến bằng gió hoặc mảnh trôi nổi.",
+   "quote": "floating debris"
+  },
+  {
+   "prompt": "Spiders travelled to the island on ____ made of silk.",
+   "answer": "threads",
+   "why": "Nhện bay đến trên sợi tơ.",
+   "quote": "sailed in on silk threads"
+  },
+  {
+   "prompt": "Puffins have begun to nest in ____ dug into the grassy slopes.",
+   "answer": "burrows",
+   "why": "Hải âu mỏ sừng làm tổ trong hang.",
+   "quote": "nest in burrows"
+  },
+  {
+   "prompt": "Erosion has reduced the island's area by half, so it has ____.",
+   "answer": "halved",
+   "why": "Diện tích giảm một nửa (halved).",
+   "quote": "the surface area has halved"
+  },
+  {
+   "prompt": "UNESCO added the island to its World Heritage List in ____.",
+   "answer": "2008",
+   "why": "UNESCO công nhận năm 2008.",
+   "quote": "recognised in 2008"
+  }
+ ]
+}

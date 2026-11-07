@@ -1,0 +1,287 @@
+{
+ "title": "Life in the Rock Pools",
+ "topic": "Marine biology field trip",
+ "context": "Leah: Thanks for lending me your waterproof boots yesterday, by the way. Mine leaked.\nDan: No problem. The rocks were so slippery that I was glad of them.\nLeah: Right, Dan, let's pull our field notes together before Dr Patel arrives. Start with the crabs.\nDan: They were fascinating. Every time I came close they scuttled under the nearest rock and refused to come out.\nLeah: Same for me. The anemones, then. When the tide went out they looked like blobs of jelly. They had pulled in every tentacle.\nDan: To stop themselves drying out. The limpets hardly moved at all. I marked one with a pen and it travelled only a few centimetres in an hour.\nLeah: What about the starfish?\nDan: I only found them in the deepest pool at the far end. And the hermit crabs kept fighting each other over empty shells. I read that shore crabs can change colour, but I never saw it happen.\nDr Patel: Hello, both. Let me look at how you collected your data. Your quadrat counts are fine, they're accurate enough for this kind of survey.\nLeah: Good. We took the temperature readings whenever we remembered.\nDr Patel: That's the weakness. Take them at the same time each day, otherwise you can't compare them.\nDan: We wondered whether the photographs were pointless.\nDr Patel: Not at all, they're valuable, but make sure you back them up in more than one place. And the tide times?\nLeah: We only noted them twice a day.\nDr Patel: That's too infrequent for a study like this. Check them at least hourly. Finally, your notebook. I couldn't follow it, because every page has a different layout. You need a clear system, with the same headings each time.\nDan: Okay, now the sites. We visited five pools. Pool A was the first one, simply because it's closest to the road. You can get there in two minutes.\nLeah: Pool B has by far the greatest variety of species, which is why I want to describe it in detail.\nDan: Pool C was surveyed by last year's group, so we can compare our figures with theirs.\nLeah: Pool D is where the school visits happen. It's shallow and safe for children, so we can recommend it for teaching.\nDan: And Pool E is behind the headland, so the oil spill last spring never reached it. That makes it a good clean reference.\nLeah: Let's use Pool A as well, though, since it's next to the car park.\nDan: Hmm, I'd skip that reason. Convenience isn't a scientific argument. Closest to the road is fine as a note, though.\nDr Patel: Now, your sources. Textbooks are fine for background, but use them sparingly. Most of your references should be journal articles. They are the main evidence.\nLeah: And websites?\nDr Patel: Check carefully who wrote them. If you can't tell, don't use them. If you quote the fishermen you interviewed, ask permission first.\nLeah: Should we avoid last year's report altogether?\nDr Patel: No need. You can use it, just cite it in full.\nDr Patel: One more thing. Keep your references in a single list as you write, rather than leaving them until the end. It saves hours.\nDan: Thank you. That's very clear. We will send you a draft by the end of next week.",
+ "questions": [
+  {
+   "prompt": "What did the students notice about the crabs?",
+   "options": [
+    "It hides under rocks when disturbed",
+    "It closes up when out of the water",
+    "It moves very slowly",
+    "It lives only in the deepest pool",
+    "It fights others of its own kind",
+    "It changes colour"
+   ],
+   "answer": "It hides under rocks when disturbed",
+   "why": "Cua chui xuống tảng đá gần nhất mỗi khi bị lại gần.",
+   "quote": "scuttled under the nearest rock"
+  },
+  {
+   "prompt": "What did the students notice about the anemones?",
+   "options": [
+    "It hides under rocks when disturbed",
+    "It closes up when out of the water",
+    "It moves very slowly",
+    "It lives only in the deepest pool",
+    "It fights others of its own kind",
+    "It changes colour"
+   ],
+   "answer": "It closes up when out of the water",
+   "why": "Khi thuỷ triều rút, hải quỳ thu hết xúc tu lại.",
+   "quote": "pulled in every tentacle"
+  },
+  {
+   "prompt": "What did the students notice about the limpets?",
+   "options": [
+    "It hides under rocks when disturbed",
+    "It closes up when out of the water",
+    "It moves very slowly",
+    "It lives only in the deepest pool",
+    "It fights others of its own kind",
+    "It changes colour"
+   ],
+   "answer": "It moves very slowly",
+   "why": "Ốc mũ chỉ đi được vài centimet trong một giờ.",
+   "quote": "travelled only a few centimetres in an hour"
+  },
+  {
+   "prompt": "What did the students notice about the starfish?",
+   "options": [
+    "It hides under rocks when disturbed",
+    "It closes up when out of the water",
+    "It moves very slowly",
+    "It lives only in the deepest pool",
+    "It fights others of its own kind",
+    "It changes colour"
+   ],
+   "answer": "It lives only in the deepest pool",
+   "why": "Chỉ thấy sao biển ở vũng sâu nhất cuối bãi.",
+   "quote": "only found them in the deepest pool"
+  },
+  {
+   "prompt": "What did the students notice about the hermit crabs?",
+   "options": [
+    "It hides under rocks when disturbed",
+    "It closes up when out of the water",
+    "It moves very slowly",
+    "It lives only in the deepest pool",
+    "It fights others of its own kind",
+    "It changes colour"
+   ],
+   "answer": "It fights others of its own kind",
+   "why": "Cua ẩn sĩ liên tục đánh nhau giành vỏ. Bẫy: đổi màu là của cua bờ nhưng Dan chưa thấy.",
+   "quote": "kept fighting each other over empty shells"
+  },
+  {
+   "prompt": "What does Dr Patel say about the quadrat counts?",
+   "options": [
+    "They were taken too infrequently",
+    "They need a clearer system",
+    "They are accurate enough",
+    "They should be taken at the same time each day",
+    "They should be backed up",
+    "They were not necessary"
+   ],
+   "answer": "They are accurate enough",
+   "why": "Số đếm khung vuông đủ chính xác cho khảo sát loại này.",
+   "quote": "accurate enough for this kind of survey"
+  },
+  {
+   "prompt": "What does Dr Patel say about the temperature readings?",
+   "options": [
+    "They were taken too infrequently",
+    "They need a clearer system",
+    "They are accurate enough",
+    "They should be taken at the same time each day",
+    "They should be backed up",
+    "They were not necessary"
+   ],
+   "answer": "They should be taken at the same time each day",
+   "why": "Phải đo cùng giờ mỗi ngày, nếu không không so sánh được.",
+   "quote": "Take them at the same time each day"
+  },
+  {
+   "prompt": "What does Dr Patel say about the photographs?",
+   "options": [
+    "They were taken too infrequently",
+    "They need a clearer system",
+    "They are accurate enough",
+    "They should be taken at the same time each day",
+    "They should be backed up",
+    "They were not necessary"
+   ],
+   "answer": "They should be backed up",
+   "why": "Ảnh có giá trị nhưng phải sao lưu nhiều nơi. Bà bác ý nghĩ rằng chúng vô ích.",
+   "quote": "back them up in more than one place"
+  },
+  {
+   "prompt": "What does Dr Patel say about the tide times?",
+   "options": [
+    "They were taken too infrequently",
+    "They need a clearer system",
+    "They are accurate enough",
+    "They should be taken at the same time each day",
+    "They should be backed up",
+    "They were not necessary"
+   ],
+   "answer": "They were taken too infrequently",
+   "why": "Chỉ ghi hai lần mỗi ngày là quá thưa; ít nhất mỗi giờ.",
+   "quote": "That's too infrequent"
+  },
+  {
+   "prompt": "What does Dr Patel say about the notebook?",
+   "options": [
+    "They were taken too infrequently",
+    "They need a clearer system",
+    "They are accurate enough",
+    "They should be taken at the same time each day",
+    "They should be backed up",
+    "They were not necessary"
+   ],
+   "answer": "They need a clearer system",
+   "why": "Mỗi trang một bố cục khác nên cần hệ thống rõ ràng với tiêu đề giống nhau.",
+   "quote": "You need a clear system"
+  },
+  {
+   "prompt": "Why did the students choose Pool A?",
+   "options": [
+    "It is easy to reach",
+    "It has the greatest variety of species",
+    "It was studied by an earlier group",
+    "It is safe for children",
+    "It was protected from pollution",
+    "It is next to a car park"
+   ],
+   "answer": "It is easy to reach",
+   "why": "Hồ A gần đường nhất, mất hai phút đi bộ. Bẫy: gần bãi đỗ xe bị Dan bác vì không phải lý lẽ khoa học.",
+   "quote": "closest to the road"
+  },
+  {
+   "prompt": "Why did the students choose Pool B?",
+   "options": [
+    "It is easy to reach",
+    "It has the greatest variety of species",
+    "It was studied by an earlier group",
+    "It is safe for children",
+    "It was protected from pollution",
+    "It is next to a car park"
+   ],
+   "answer": "It has the greatest variety of species",
+   "why": "Hồ B có nhiều loài nhất.",
+   "quote": "by far the greatest variety of species"
+  },
+  {
+   "prompt": "Why did the students choose Pool C?",
+   "options": [
+    "It is easy to reach",
+    "It has the greatest variety of species",
+    "It was studied by an earlier group",
+    "It is safe for children",
+    "It was protected from pollution",
+    "It is next to a car park"
+   ],
+   "answer": "It was studied by an earlier group",
+   "why": "Nhóm năm ngoái đã khảo sát hồ C nên có thể so sánh số liệu.",
+   "quote": "surveyed by last year's group"
+  },
+  {
+   "prompt": "Why did the students choose Pool D?",
+   "options": [
+    "It is easy to reach",
+    "It has the greatest variety of species",
+    "It was studied by an earlier group",
+    "It is safe for children",
+    "It was protected from pollution",
+    "It is next to a car park"
+   ],
+   "answer": "It is safe for children",
+   "why": "Hồ D nông và an toàn cho trẻ em nên đề xuất dùng để dạy học.",
+   "quote": "shallow and safe for children"
+  },
+  {
+   "prompt": "Why did the students choose Pool E?",
+   "options": [
+    "It is easy to reach",
+    "It has the greatest variety of species",
+    "It was studied by an earlier group",
+    "It is safe for children",
+    "It was protected from pollution",
+    "It is next to a car park"
+   ],
+   "answer": "It was protected from pollution",
+   "why": "Hồ E nằm sau mũi đất nên vụ tràn dầu mùa xuân năm ngoái không tới được.",
+   "quote": "the oil spill last spring never reached it"
+  },
+  {
+   "prompt": "What does Dr Patel advise about textbooks?",
+   "options": [
+    "Use them sparingly",
+    "Make them the main evidence",
+    "Check carefully who wrote them",
+    "Cite them in full",
+    "Avoid them completely",
+    "Ask permission before quoting"
+   ],
+   "answer": "Use them sparingly",
+   "why": "Giáo trình chỉ nên dùng cho nền tảng và dùng ít.",
+   "quote": "use them sparingly"
+  },
+  {
+   "prompt": "What does Dr Patel advise about journal articles?",
+   "options": [
+    "Use them sparingly",
+    "Make them the main evidence",
+    "Check carefully who wrote them",
+    "Cite them in full",
+    "Avoid them completely",
+    "Ask permission before quoting"
+   ],
+   "answer": "Make them the main evidence",
+   "why": "Phần lớn tài liệu tham khảo nên là bài báo khoa học, là bằng chứng chính.",
+   "quote": "They are the main evidence"
+  },
+  {
+   "prompt": "What does Dr Patel advise about websites?",
+   "options": [
+    "Use them sparingly",
+    "Make them the main evidence",
+    "Check carefully who wrote them",
+    "Cite them in full",
+    "Avoid them completely",
+    "Ask permission before quoting"
+   ],
+   "answer": "Check carefully who wrote them",
+   "why": "Kiểm tra kỹ ai viết; nếu không biết thì đừng dùng.",
+   "quote": "Check carefully who wrote them"
+  },
+  {
+   "prompt": "What does Dr Patel advise about the fishermen interviews?",
+   "options": [
+    "Use them sparingly",
+    "Make them the main evidence",
+    "Check carefully who wrote them",
+    "Cite them in full",
+    "Avoid them completely",
+    "Ask permission before quoting"
+   ],
+   "answer": "Ask permission before quoting",
+   "why": "Nếu trích lời ngư dân phải xin phép trước.",
+   "quote": "ask permission first"
+  },
+  {
+   "prompt": "What does Dr Patel advise about last year's report?",
+   "options": [
+    "Use them sparingly",
+    "Make them the main evidence",
+    "Check carefully who wrote them",
+    "Cite them in full",
+    "Avoid them completely",
+    "Ask permission before quoting"
+   ],
+   "answer": "Cite them in full",
+   "why": "Không cần tránh hoàn toàn; được dùng nhưng phải trích dẫn đầy đủ.",
+   "quote": "just cite it in full"
+  }
+ ]
+}

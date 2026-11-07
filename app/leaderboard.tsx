@@ -96,6 +96,8 @@ export default function LeaderboardScreen() {
 
   return (
     <Screen cat="cheer">
+      {/* Khung hẹp lại trên màn rộng: bảng xếp hạng và thẻ điểm không bị kéo giãn ngang. */}
+      <View className="w-full self-center" style={{ maxWidth: 960 }}>
       {demo ? (
         <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#F3F0FB' }}>
           <Text style={{ fontSize: 16 }}>🧪</Text>
@@ -228,6 +230,7 @@ export default function LeaderboardScreen() {
       <Board data={data} error={error} me={me} you={{ name, points: month }} />
 
       <View className="h-6" />
+      </View>
     </Screen>
   );
 }

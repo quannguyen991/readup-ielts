@@ -1,9 +1,10 @@
 import React from 'react';
-import { Image, Linking, Pressable, Text, View } from 'react-native';
+import { Linking, Pressable, View } from 'react-native';
 
 import { Icon } from '@/components/ui/Icon';
 import { ieltsAudioUrl } from '@/services/ielts/audio-url';
 import { type ExamPart, SECTION_MINUTES, type TestSection } from '@/services/ielts/source-catalog';
+import { FlatCover, numOf, SECTION_TONE, Text } from '@/components/ielts/SourceCover';
 import { color } from '@/theme/tokens';
 
 export type DetailTest = {
@@ -57,16 +58,8 @@ type Props = {
   onOpenTest: (id: string) => void;
 };
 
-const SECTION_TONE: Record<TestSection, { bg: string; fg: string }> = {
-  Listening: { bg: '#EAF2FF', fg: '#1D4ED8' },
-  Reading: { bg: color.primarySoft, fg: color.primaryDark },
-  Writing: { bg: color.successSoft, fg: color.success },
-  Speaking: { bg: color.accentSoft, fg: color.accentDark },
-};
-
-function coverFor(source: string): string {
-  const num = (source.match(/\d+/) ?? ['20'])[0];
-  return `/books/covers-2d/${/cambridge/i.test(source) ? 'cam' : 'vol'}-${num}.webp`;
+function Cover({ source, width, height, radius }: { source: string; width: number; height: number; radius: number }) {
+  return <FlatCover kind={/cambridge/i.test(source) ? 'CAMBRIDGE' : 'ACTUAL VOL'} num={numOf(source)} width={width} height={height} radius={radius} />;
 }
 
 export function PracticeTestDetail(props: Props) {
@@ -112,9 +105,7 @@ export function PracticeTestDetail(props: Props) {
           borderColor: color.border,
         }}
       >
-        <View style={{ width: 170, aspectRatio: 0.72, borderRadius: 12, overflow: 'hidden', backgroundColor: color.surfaceAlt }}>
-          <Image source={{ uri: coverFor(source) }} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
-        </View>
+        <Cover source={source} width={150} height={196} radius={14} />
 
         <View style={{ flex: 1, minWidth: 260, gap: 12 }}>
           <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
@@ -157,9 +148,6 @@ export function PracticeTestDetail(props: Props) {
               </Text>
             </Pressable>
 
-            {hasAnswerKey ? (
-              <GhostButton icon="check" label={props.showAnswerKey ? L('Ẩn đáp án', 'Hide answers') : L('Xem đáp án', 'Answers')} onPress={props.onToggleAnswerKey} />
-            ) : null}
             <GhostButton
               icon="bookmark"
               label={props.isSaved ? L('Đã lưu', 'Saved') : L('Lưu lại', 'Save')}
@@ -180,7 +168,7 @@ export function PracticeTestDetail(props: Props) {
             {props.submitted ? L('Đã chấm', 'Graded') : props.answeredCount > 0 ? L('Đang làm', 'In progress') : L('Chưa làm', 'Not started')}
           </Text>
           <Text style={{ fontSize: 12, color: color.body }}>
-            {L('Thời gian còn lại', 'Time left')}: <Text style={{ fontWeight: '800', color: color.primaryDark }}>{props.timeLabel}</Text>
+            {L('Còn lại', 'Left')}: <Text style={{ fontWeight: '800', color: color.primaryDark }}>{props.timeLabel}</Text>
           </Text>
           {props.submitted && props.bandEstimate !== null ? (
             <Text style={{ fontSize: 14, fontWeight: '900', color: color.success }}>Band {props.bandEstimate}</Text>
@@ -207,50 +195,42 @@ export function PracticeTestDetail(props: Props) {
               </Row>
             ))
           ) : (
-            <Text style={{ fontSize: 13, color: color.body }}>{L('Đề này chưa có thông tin cấu trúc từng phần.', 'Part details are not available for this test yet.')}</Text>
+            <Text style={{ fontSize: 13, color: color.body }}>{L('Chưa có', 'Not available')}</Text>
           )}
         </Panel>
 
         <Panel title={L('Tài liệu đi kèm', 'Materials')} icon="book" style={{ flex: 1, minWidth: 300 }}>
           <Row onPress={pdfUrl ? () => Linking.openURL(pdfUrl) : undefined} disabled={!pdfUrl}>
-            <MaterialLabel title={L('Đề thi gốc (PDF)', 'Original paper (PDF)')} note={hasPdf ? L('Mở để xem đề', 'Open to view') : L('Chưa có', 'Not available')} />
+            <MaterialLabel title={L('Đề thi gốc (PDF)', 'Original paper (PDF)')} note={hasPdf ? '' : L('Chưa có', 'Not available')} />
             {pdfUrl ? <Icon name="arrow-right" size={14} color={color.primaryDark} /> : null}
           </Row>
           <Row>
             <MaterialLabel
               title={L('Đáp án', 'Answer key')}
-              note={hasAnswerKey ? (verified ? L('Đã đối chiếu', 'Verified') : L('Đang kiểm tra', 'Under review')) : L('Chưa có', 'Not available')}
+              note={hasAnswerKey ? (verified ? L('Đã đối chiếu', 'Verified') : '') : L('Chưa có', 'Not available')}
             />
           </Row>
           {section === 'Listening' ? (
             audioFiles.length ? (
               audioFiles.map((file, index) => (
                 <Row key={file} onPress={() => Linking.openURL(ieltsAudioUrl(file))}>
-                  <MaterialLabel title={`${L('Audio phần', 'Audio part')} ${index + 1}`} note={L('Nhấn để nghe', 'Tap to listen')} />
+                  <MaterialLabel title={`${L('Audio phần', 'Audio part')} ${index + 1}`} note="" />
                   <Icon name="volume" size={14} color={color.primaryDark} />
                 </Row>
               ))
             ) : audioCloudUrl ? (
               <Row onPress={() => Linking.openURL(audioCloudUrl)}>
-                <MaterialLabel title={L('Audio đề thi', 'Test audio')} note={L('Mở thư mục OneDrive', 'Open OneDrive folder')} />
+                <MaterialLabel title={L('Audio đề thi', 'Test audio')} note="" />
                 <Icon name="arrow-right" size={14} color={color.primaryDark} />
               </Row>
             ) : (
               <Row disabled>
-                <MaterialLabel title={L('Audio đề thi', 'Test audio')} note={L('Chưa có audio cho đề này', 'No audio for this test yet')} />
+                <MaterialLabel title={L('Audio đề thi', 'Test audio')} note={L('Chưa có', 'Not available')} />
               </Row>
             )
           ) : null}
         </Panel>
       </View>
-
-      {props.showAnswerKey && hasAnswerKey ? (
-        <View style={{ padding: 16, borderRadius: 14, backgroundColor: color.surface, borderWidth: 1, borderColor: color.border }}>
-          <Text style={{ fontSize: 13, color: color.body }}>
-            {L('Đáp án được chấm trong phòng thi. Mở “Thi thử” hoặc “Luyện tập” rồi nộp bài để xem từng câu.', 'Answers are checked in the exam room. Start a test and submit to see each answer.')}
-          </Text>
-        </View>
-      ) : null}
 
       {/* Related */}
       {sameSection.length ? (
@@ -274,9 +254,7 @@ export function PracticeTestDetail(props: Props) {
                   borderColor: color.border,
                 }}
               >
-                <View style={{ width: 52, height: 64, borderRadius: 8, overflow: 'hidden', backgroundColor: color.surfaceAlt }}>
-                  <Image source={{ uri: coverFor(item.source) }} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
-                </View>
+                <Cover source={item.source} width={52} height={68} radius={8} />
                 <View style={{ flex: 1, gap: 2 }}>
                   <Text style={{ fontSize: 13, fontWeight: '800', color: color.ink }}>{item.title}</Text>
                   <Text style={{ fontSize: 11, color: color.body }}>{item.questionCount} {L('câu', 'questions')}</Text>
@@ -360,7 +338,7 @@ function MaterialLabel({ title, note }: { title: string; note: string }) {
   return (
     <View style={{ flex: 1, gap: 2 }}>
       <Text style={{ fontSize: 13, fontWeight: '700', color: color.ink }}>{title}</Text>
-      <Text style={{ fontSize: 12, color: color.body }}>{note}</Text>
+      {note ? <Text style={{ fontSize: 12, color: color.body }}>{note}</Text> : null}
     </View>
   );
 }

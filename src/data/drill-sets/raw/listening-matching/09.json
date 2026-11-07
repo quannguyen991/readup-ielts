@@ -1,0 +1,287 @@
+{
+ "title": "Reporting on a Summer Dig",
+ "topic": "Archaeological excavation report",
+ "context": "Grace: I still cannot believe how quickly the month went. My knees have only just recovered.\nHamid: Mine too. Okay, before Dr Moreno arrives, let's list what we found in each trench so the report is accurate.\nHamid: Trench A was the best one. We uncovered a long stone wall, nearly four metres of it.\nGrace: Trench B was mostly pottery, hundreds of small fragments, but only a few big enough to piece together.\nHamid: I remember Trench C as the one with the glass beads, but no, that was the exhibition in the museum shop. Trench C gave us animal bones, mostly sheep.\nGrace: Right. Trench D had the layer of charcoal, which suggests there was once a fire. And Trench E produced the coins. At first I thought they were washers from the machinery, but they're definitely Roman.\nHamid: Good. Here's Dr Moreno.\nDr Moreno: Morning, both. You both look rather tired, but I am told the dig went well. Let's talk about dating. Radiocarbon first. You'll have to send the samples abroad, because no lab here does it any more, and it takes about two months.\nGrace: Two months! And tree rings?\nDr Moreno: That's not possible. We found no wood at all, so there's nothing to measure.\nHamid: We could date the pottery ourselves, couldn't we?\nDr Moreno: Yes, the students can do that by comparing the styles with the reference collection. The coins will give you the most precise date, because each one carries the year it was made.\nGrace: And the soil layers?\nDr Moreno: They only show which objects are older than others. They give a relative order, not actual years. Radiocarbon may be expensive, but the department has agreed to pay for it, so don't worry about the cost.\nHamid: Now, the difficulties. The heavy rain in the second week stopped us working for seven days.\nGrace: Funding was a bigger problem. Halfway through we ran short of money, so we had to give up the plan to open a fifth trench and enlarge the first one instead.\nHamid: The volunteers from the village were a pleasant surprise. They worked all day and even brought sandwiches. They showed us where an old well used to be.\nGrace: A neighbour's cows broke through the fence one night and trampled part of Trench B. We lost some of the surface.\nHamid: And then there was the argument with the landowner about where we could park. That took three meetings. Fortunately the broken generator was fixed within an hour.\nDr Moreno: Now, the report itself. Where does everything go?\nGrace: Could the site map go on the cover?\nDr Moreno: No, put it in the introduction, so the reader sees it first. The photographs of the trenches belong in the appendix.\nHamid: What about the finds list? It's forty pages long.\nDr Moreno: Then it needs its own booklet. Keep your interpretation in the main text, of course. As for the list of volunteers, put it on the website only. It doesn't need to be in the printed version.\nDr Moreno: I need a full draft by the end of the month, and I would like to see the photographs as soon as they are labelled.\nGrace: Perfect. We'll start writing tonight, and Hamid will label the photographs tomorrow.",
+ "questions": [
+  {
+   "prompt": "What was found in Trench A?",
+   "options": [
+    "Roman coins",
+    "Animal bones",
+    "Pottery fragments",
+    "A stone wall",
+    "Charcoal from a fire",
+    "Glass beads"
+   ],
+   "answer": "A stone wall",
+   "why": "Hố A có bức tường đá dài gần bốn mét.",
+   "quote": "a long stone wall"
+  },
+  {
+   "prompt": "What was found in Trench B?",
+   "options": [
+    "Roman coins",
+    "Animal bones",
+    "Pottery fragments",
+    "A stone wall",
+    "Charcoal from a fire",
+    "Glass beads"
+   ],
+   "answer": "Pottery fragments",
+   "why": "Hố B chủ yếu là hàng trăm mảnh gốm nhỏ.",
+   "quote": "mostly pottery"
+  },
+  {
+   "prompt": "What was found in Trench C?",
+   "options": [
+    "Roman coins",
+    "Animal bones",
+    "Pottery fragments",
+    "A stone wall",
+    "Charcoal from a fire",
+    "Glass beads"
+   ],
+   "answer": "Animal bones",
+   "why": "Hố C có xương động vật, chủ yếu là cừu. Bẫy: hạt thuỷ tinh là ở cửa hàng bảo tàng, không phải hố C.",
+   "quote": "animal bones, mostly sheep"
+  },
+  {
+   "prompt": "What was found in Trench D?",
+   "options": [
+    "Roman coins",
+    "Animal bones",
+    "Pottery fragments",
+    "A stone wall",
+    "Charcoal from a fire",
+    "Glass beads"
+   ],
+   "answer": "Charcoal from a fire",
+   "why": "Hố D có lớp than củi cho thấy từng có hỏa hoạn.",
+   "quote": "the layer of charcoal"
+  },
+  {
+   "prompt": "What was found in Trench E?",
+   "options": [
+    "Roman coins",
+    "Animal bones",
+    "Pottery fragments",
+    "A stone wall",
+    "Charcoal from a fire",
+    "Glass beads"
+   ],
+   "answer": "Roman coins",
+   "why": "Hố E cho ra những đồng xu La Mã, lúc đầu Grace tưởng là vòng đệm máy.",
+   "quote": "definitely Roman"
+  },
+  {
+   "prompt": "What does Dr Moreno say about radiocarbon dating?",
+   "options": [
+    "It gives the most precise date",
+    "It is too expensive for the project",
+    "It cannot be used because material is missing",
+    "It only gives a relative order",
+    "It must be done abroad",
+    "It will be done by the students"
+   ],
+   "answer": "It must be done abroad",
+   "why": "Mẫu phải gửi ra nước ngoài vì không phòng thí nghiệm nào trong nước còn làm. Khoa đồng ý trả chi phí nên không phải quá đắt.",
+   "quote": "send the samples abroad"
+  },
+  {
+   "prompt": "What does Dr Moreno say about tree-ring dating?",
+   "options": [
+    "It gives the most precise date",
+    "It is too expensive for the project",
+    "It cannot be used because material is missing",
+    "It only gives a relative order",
+    "It must be done abroad",
+    "It will be done by the students"
+   ],
+   "answer": "It cannot be used because material is missing",
+   "why": "Không tìm thấy gỗ nên không có gì để đo.",
+   "quote": "nothing to measure"
+  },
+  {
+   "prompt": "What does Dr Moreno say about dating the pottery?",
+   "options": [
+    "It gives the most precise date",
+    "It is too expensive for the project",
+    "It cannot be used because material is missing",
+    "It only gives a relative order",
+    "It must be done abroad",
+    "It will be done by the students"
+   ],
+   "answer": "It will be done by the students",
+   "why": "Sinh viên có thể tự làm bằng cách so sánh kiểu dáng với bộ sưu tập tham chiếu.",
+   "quote": "the students can do that"
+  },
+  {
+   "prompt": "What does Dr Moreno say about the coins?",
+   "options": [
+    "It gives the most precise date",
+    "It is too expensive for the project",
+    "It cannot be used because material is missing",
+    "It only gives a relative order",
+    "It must be done abroad",
+    "It will be done by the students"
+   ],
+   "answer": "It gives the most precise date",
+   "why": "Đồng xu cho niên đại chính xác nhất vì mang năm đúc.",
+   "quote": "the most precise date"
+  },
+  {
+   "prompt": "What does Dr Moreno say about the soil layers?",
+   "options": [
+    "It gives the most precise date",
+    "It is too expensive for the project",
+    "It cannot be used because material is missing",
+    "It only gives a relative order",
+    "It must be done abroad",
+    "It will be done by the students"
+   ],
+   "answer": "It only gives a relative order",
+   "why": "Lớp đất chỉ cho biết vật nào cũ hơn, không cho số năm cụ thể.",
+   "quote": "a relative order, not actual years"
+  },
+  {
+   "prompt": "What was the effect of the heavy rain?",
+   "options": [
+    "It delayed the work for a week",
+    "It forced a change of plan",
+    "It gave unexpected help",
+    "It damaged part of the site",
+    "It caused an argument",
+    "It was solved quickly"
+   ],
+   "answer": "It delayed the work for a week",
+   "why": "Mưa lớn tuần thứ hai làm ngừng làm việc bảy ngày.",
+   "quote": "stopped us working for seven days"
+  },
+  {
+   "prompt": "What was the effect of the shortage of funding?",
+   "options": [
+    "It delayed the work for a week",
+    "It forced a change of plan",
+    "It gave unexpected help",
+    "It damaged part of the site",
+    "It caused an argument",
+    "It was solved quickly"
+   ],
+   "answer": "It forced a change of plan",
+   "why": "Hết tiền giữa chừng nên bỏ kế hoạch đào hố thứ năm, mở rộng hố đầu.",
+   "quote": "give up the plan to open a fifth trench"
+  },
+  {
+   "prompt": "What was the effect of the volunteers from the village?",
+   "options": [
+    "It delayed the work for a week",
+    "It forced a change of plan",
+    "It gave unexpected help",
+    "It damaged part of the site",
+    "It caused an argument",
+    "It was solved quickly"
+   ],
+   "answer": "It gave unexpected help",
+   "why": "Tình nguyện viên làm việc cả ngày và chỉ chỗ giếng cũ.",
+   "quote": "showed us where an old well used to be"
+  },
+  {
+   "prompt": "What was the effect of the neighbour's cows?",
+   "options": [
+    "It delayed the work for a week",
+    "It forced a change of plan",
+    "It gave unexpected help",
+    "It damaged part of the site",
+    "It caused an argument",
+    "It was solved quickly"
+   ],
+   "answer": "It damaged part of the site",
+   "why": "Bò phá hàng rào và giẫm lên một phần hố B.",
+   "quote": "trampled part of Trench B"
+  },
+  {
+   "prompt": "What was the effect of the parking issue?",
+   "options": [
+    "It delayed the work for a week",
+    "It forced a change of plan",
+    "It gave unexpected help",
+    "It damaged part of the site",
+    "It caused an argument",
+    "It was solved quickly"
+   ],
+   "answer": "It caused an argument",
+   "why": "Tranh luận với chủ đất về chỗ đỗ xe kéo dài ba cuộc họp. Máy phát điện hỏng thì được sửa trong một giờ.",
+   "quote": "the argument with the landowner"
+  },
+  {
+   "prompt": "Where will the site map go?",
+   "options": [
+    "In the appendix",
+    "On the cover",
+    "In the introduction",
+    "In a separate booklet",
+    "On the website only",
+    "In the main text"
+   ],
+   "answer": "In the introduction",
+   "why": "Grace hỏi đặt lên bìa nhưng Dr Moreno bảo đặt trong phần mở đầu.",
+   "quote": "put it in the introduction"
+  },
+  {
+   "prompt": "Where will the photographs of the trenches go?",
+   "options": [
+    "In the appendix",
+    "On the cover",
+    "In the introduction",
+    "In a separate booklet",
+    "On the website only",
+    "In the main text"
+   ],
+   "answer": "In the appendix",
+   "why": "Ảnh các hố thuộc phụ lục.",
+   "quote": "belong in the appendix"
+  },
+  {
+   "prompt": "Where will the finds list go?",
+   "options": [
+    "In the appendix",
+    "On the cover",
+    "In the introduction",
+    "In a separate booklet",
+    "On the website only",
+    "In the main text"
+   ],
+   "answer": "In a separate booklet",
+   "why": "Danh mục hiện vật dài bốn mươi trang nên cần tập riêng.",
+   "quote": "its own booklet"
+  },
+  {
+   "prompt": "Where will the interpretation go?",
+   "options": [
+    "In the appendix",
+    "On the cover",
+    "In the introduction",
+    "In a separate booklet",
+    "On the website only",
+    "In the main text"
+   ],
+   "answer": "In the main text",
+   "why": "Phần diễn giải giữ trong nội dung chính.",
+   "quote": "main text"
+  },
+  {
+   "prompt": "Where will the list of volunteers go?",
+   "options": [
+    "In the appendix",
+    "On the cover",
+    "In the introduction",
+    "In a separate booklet",
+    "On the website only",
+    "In the main text"
+   ],
+   "answer": "On the website only",
+   "why": "Danh sách tình nguyện viên chỉ đăng trên trang web, không in.",
+   "quote": "on the website only"
+  }
+ ]
+}

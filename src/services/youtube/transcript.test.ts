@@ -183,7 +183,7 @@ test('câu quá dài được tách ở dấu phẩy gần giữa, mọi đoạn
   const parts = usableSentences([{ start: 0, end: 12, text: long }]);
   assert.ok(parts.length >= 2, 'câu dài phải được tách');
   for (const p of parts) {
-    assert.ok(p.text.split(/\s+/).length <= 18, `còn quá dài: ${p.text}`);
+    assert.ok(p.text.split(/\s+/).length <= 10, `còn quá dài: ${p.text}`);
   }
 });
 

@@ -7,6 +7,7 @@ import { Appear } from '@/components/motion/Motion';
 import { Button } from '@/components/ui/Button';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
+import { useRewardStore } from '@/store/useRewardStore';
 
 /**
  * Hướng dẫn lần đầu: phủ lên màn hình, vài bước ngắn, có Bỏ qua. Chỉ hiện một lần
@@ -35,7 +36,7 @@ function markTourSeen(): void {
   }
 }
 
-type TourStep = { icon: IconName; title: string; line: string };
+type TourStep = { icon: IconName; title: string; line: string; choice?: boolean };
 
 export function FirstRunTour() {
   const { L } = useL();
@@ -56,7 +57,9 @@ export function FirstRunTour() {
 
   if (isDeepLink || !open) return null;
 
+  // Bước đầu: chọn giao diện Chiikawa hoặc mặc định. Đổi lại được bất cứ lúc nào trong Cửa hàng / Cá nhân.
   const steps: TourStep[] = [
+    { icon: 'sparkle', title: L('Chọn giao diện', 'Pick your look'), line: L('Bạn muốn học với giao diện nào? Đổi lại được bất cứ lúc nào.', 'Which look do you want to study with? You can change it any time.'), choice: true },
     { icon: 'sparkle', title: L('Chào mừng đến Band 9', 'Welcome to Band 9'), line: L('Luyện IELTS, SAT và từ vựng ở một nơi.', 'IELTS, SAT and vocabulary in one place.') },
     { icon: 'home', title: L('Đi lại dễ dàng', 'Easy to move around'), line: L('Mọi mục học nằm ở thanh điều hướng. Bấm là tới.', 'Every study area sits in the navigation. One tap away.') },
     { icon: 'target', title: L('Học theo lộ trình', 'Learn along a path'), line: L('Lộ trình gợi ý bài kế tiếp theo tiến độ của bạn.', 'Your plan suggests the next lesson from your progress.') },
@@ -72,6 +75,10 @@ export function FirstRunTour() {
     setOpen(false);
   };
   const next = () => (last ? close() : setAt((v) => v + 1));
+  const pickLook = (theme: string | null) => {
+    useRewardStore.getState().equip('theme', theme);
+    setAt((v) => v + 1);
+  };
 
   return (
     <View
@@ -140,11 +147,18 @@ export function FirstRunTour() {
           ))}
         </View>
 
-        <Button
-          label={last ? L('Bắt đầu học', 'Start learning') : L('Tiếp', 'Next')}
-          iconRight={last ? undefined : 'arrow-right'}
-          onPress={next}
-        />
+        {step.choice ? (
+          <View style={{ gap: 10 }}>
+            <Button label={L('Giao diện Chiikawa', 'Chiikawa look')} onPress={() => pickLook('theme-chiikawa')} />
+            <Button label={L('Mặc định (Band 9)', 'Default (Band 9)')} variant="ghost" onPress={() => pickLook(null)} />
+          </View>
+        ) : (
+          <Button
+            label={last ? L('Bắt đầu học', 'Start learning') : L('Tiếp', 'Next')}
+            iconRight={last ? undefined : 'arrow-right'}
+            onPress={next}
+          />
+        )}
       </View>
     </View>
   );
