@@ -208,6 +208,20 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
             </View>
           </View>
         ))}
+        {/* Góp ý tính năng: ngay dưới mục "Cá nhân". */}
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={L("Yêu cầu tính năng", "Feature requests")}
+          onPress={() => router.push("/feature-requests" as never)}
+          className={collapsed ? "mt-2 h-11 w-11 items-center justify-center rounded-panel" : "mt-2 flex-row items-center gap-2 rounded-panel px-3 py-2"}
+        >
+          <Icon name="star" size={18} color={themeConfig.textPrimary} strokeWidth={1.8} />
+          {collapsed ? null : (
+            <Text className="font-semi text-[14px]" style={{ color: themeConfig.textPrimary }}>
+              {L("Yêu cầu tính năng", "Feature requests")}
+            </Text>
+          )}
+        </Pressable>
       </ScrollView>
 
       <View
@@ -245,20 +259,6 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
             )}
           </Pressable>
         )}
-        {/* Góp ý tính năng nằm ngay trên thanh bên, không phải chôn trong "Cá nhân". */}
-        <Pressable
-          accessibilityRole="link"
-          accessibilityLabel={L("Yêu cầu tính năng", "Feature requests")}
-          onPress={() => router.push("/feature-requests" as never)}
-          className={collapsed ? "mb-2 h-11 w-11 items-center justify-center rounded-panel" : "mb-2 flex-row items-center gap-2 rounded-panel px-3 py-2"}
-        >
-          <Icon name="star" size={18} color={themeConfig.textPrimary} strokeWidth={1.8} />
-          {collapsed ? null : (
-            <Text className="font-semi text-[14px]" style={{ color: themeConfig.textPrimary }}>
-              {L("Yêu cầu tính năng", "Feature requests")}
-            </Text>
-          )}
-        </Pressable>
         <AccountRow collapsed={collapsed} themeConfig={themeConfig} pixel={pixel} />
       </View>
     </View>
