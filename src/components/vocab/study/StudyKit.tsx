@@ -496,9 +496,10 @@ export function FeedbackPanel({
         <View
           style={{
             borderRadius: 12,
-            borderLeftWidth: 3,
-            borderLeftColor: tone,
-            backgroundColor: t.soft,
+            // Đúng thì tô xanh, sai thì tô đỏ (cả khối), theo màu nền sáng/tối của chủ đề.
+            backgroundColor: ok
+              ? t.dark ? "rgba(22,163,74,0.30)" : "#DCFCE7"
+              : t.dark ? "rgba(225,29,72,0.30)" : "#FFE4E9",
             paddingVertical: 12,
             paddingHorizontal: 16,
             gap: 8,
@@ -551,7 +552,7 @@ export function FeedbackPanel({
             </FbRow>
           ) : null}
         </View>
-        <PrimaryButton label={nextLabel ?? L("Tiếp tục", "Continue")} hint="Enter" onPress={onNext} />
+        <PrimaryButton label={nextLabel ?? L("Tiếp tục", "Continue")} hint="Enter" onPress={onNext} color="#2B3A55" />
       </View>
     </Appear>
   );
@@ -592,11 +593,14 @@ export function PrimaryButton({
   onPress,
   hint,
   disabled,
+  color,
 }: {
   label: string;
   onPress: () => void;
   hint?: string;
   disabled?: boolean;
+  /** Màu nền thay cho màu chủ đề (ví dụ nút Tiếp tục sau khi chấm câu). */
+  color?: string;
 }) {
   const scrollTop = React.useContext(ScrollTop);
   const theme = useStudyTheme();
@@ -609,7 +613,7 @@ export function PrimaryButton({
         scrollTop?.();
       }}
       className="mt-3 flex-row items-center justify-center gap-2 rounded-2xl py-3"
-      style={{ backgroundColor: disabled ? theme.accentDisabled : theme.accent }}
+      style={{ backgroundColor: disabled ? theme.accentDisabled : color ?? theme.accent }}
     >
       <Text className="font-strong text-body text-white">{label}</Text>
       {hint ? (
