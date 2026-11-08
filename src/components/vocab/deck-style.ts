@@ -13,7 +13,7 @@ import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
  * viện bộ từ và phần đầu trang một bộ, để bấm vào thẻ nào thì trang bộ đó cùng màu.
  */
 
-export type DeckSource = 'mine' | 'oxford' | 'ielts' | 'globalSuccess' | 'vfi' | 'vfia' | 'listening' | 'destination' | 'satMath' | 'satVerbal' | 'toeic' | 'toefl' | 'daily';
+export type DeckSource = 'mine' | 'oxford' | 'ielts' | 'globalSuccess' | 'vfi' | 'vfia' | 'listening' | 'destination' | 'satMath' | 'satVerbal' | 'toeic' | 'toefl' | 'daily' | 'books';
 
 export type DeckLook = { source: DeckSource; sourceLabel: string; sourceLabelEn: string; accent: readonly [string, string]; icon: IconName };
 
@@ -132,6 +132,7 @@ const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
 export function deckLook(slug: string): DeckLook {
   if (slug.startsWith('oxford-')) return { source: 'oxford', sourceLabel: 'Oxford 3000', sourceLabelEn: 'Oxford 3000', accent: ['#E0E7FF', '#4338CA'], icon: 'book' };
+  if (slug.startsWith('book-')) return { source: 'books', sourceLabel: 'Sách từ vựng', sourceLabelEn: 'Vocabulary books', accent: ['#EDE9FE', '#6D28D9'], icon: 'book' };
   if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', sourceLabelEn: 'Your notebook', accent: ['#F3F0FB', '#6A4BD9'], icon: 'book' };
   if (slug.startsWith(CUSTOM_PREFIX)) return { source: 'mine', sourceLabel: 'Bộ bạn tạo', sourceLabelEn: 'Your deck', accent: ['#D1FAE5', '#059669'], icon: 'note' };
   const subject = SAT_SUBJECT.get(slug);

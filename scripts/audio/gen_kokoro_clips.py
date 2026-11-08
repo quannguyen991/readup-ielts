@@ -23,6 +23,7 @@ import os
 import re
 import shutil
 import subprocess
+import time
 from pathlib import Path
 
 import numpy as np
@@ -43,7 +44,16 @@ def load(path: Path):
 
 def save(path: Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=0), encoding="utf-8")
+    staged = path.with_name(path.name + ".pending")
+    staged.write_text(json.dumps(data, ensure_ascii=False, indent=0), encoding="utf-8")
+    for attempt in range(20):
+        try:
+            staged.replace(path)
+            return
+        except OSError:
+            if attempt == 19:
+                raise
+            time.sleep(0.25)
 
 
 def to_mp3(samples: np.ndarray, rate: int, out: Path, bitrate: str) -> None:
@@ -67,7 +77,16 @@ def clip_set(kokoro: Kokoro, voice: str, base: Path, pairs: dict) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     index_path = out_dir / "index.json"
     index = load(index_path)
-    todo = [(t, n) for t, n in pairs.items() if index.get(t) != n or not (out_dir / n).exists()]
+    indexed = {
+        re.sub(r"\s+", " ", t.strip().replace("’", "'").lower()): name
+        for t, name in index.items()
+    }
+    todo = [
+        (t, n)
+        for t, n in pairs.items()
+        if not indexed.get(re.sub(r"\s+", " ", t.strip().replace("’", "'").lower()))
+        or not (out_dir / indexed[re.sub(r"\s+", " ", t.strip().replace("’", "'").lower())]).exists()
+    ]
     if LIMIT:
         todo = todo[:LIMIT]
     print(f"{base.name}/{voice_dir_name}: {len(todo)} clip cần tạo", flush=True)
@@ -88,9 +107,12 @@ voice_dir_name = ""
 def run_words(kokoro: Kokoro, voice: str) -> None:
     global voice_dir_name
     voice_dir_name = args.voice
-    src = dict(load(ROOT / "scripts/audio/keys/aoede-words-index.json"))
-    for t in load(ROOT / ".missing-words.json").get("missing", []):
-        src.setdefault(t, hashed_name(t))
+    if args.words_file:
+        src = {t: hashed_name(t) for t in json.loads(Path(args.words_file).read_text(encoding="utf-8"))}
+    else:
+        src = dict(load(ROOT / "scripts/audio/keys/aoede-words-index.json"))
+        for t in load(ROOT / ".missing-words.json").get("missing", []):
+            src.setdefault(t, hashed_name(t))
     clip_set(kokoro, voice, ROOT / "public/audio/words", src)
 
 
@@ -142,6 +164,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--voice", choices=sorted(VOICES), required=True)
     parser.add_argument("--kind", choices=["words", "lines", "examples", "listening"], required=True)
+    parser.add_argument("--words-file", help="JSON array of explicit word/phrase keys for --kind words")
     args = parser.parse_args()
     kokoro = Kokoro(str(MODELS / "kokoro-v1.0.onnx"), str(MODELS / "voices-v1.0.bin"))
     kv = VOICES[args.voice]

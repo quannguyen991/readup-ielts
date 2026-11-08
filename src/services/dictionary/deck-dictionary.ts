@@ -29,6 +29,7 @@ async function build(): Promise<Map<string, DeckEntry>> {
     if (key && !map.has(key)) map.set(key, w);
   };
   for (const t of topics.VOCAB_TOPICS) for (const w of t.words) add(w);
+  for (const t of topics.BOOK_VOCAB_DECKS) for (const w of t.words) add(w);
   for (const t of destinations.DESTINATION_DECKS) for (const w of t.words) add(w);
   for (const t of vfi.VFI_DECKS) for (const w of t.words) add(w);
   for (const t of vfia.VFIA_DECKS) for (const w of t.words) add(w);
