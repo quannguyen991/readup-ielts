@@ -46,7 +46,11 @@ import { IeltsScoreModal } from '@/components/reader/ielts/IeltsScoreModal';
 
 export default function ReadScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  return <ReadSession key={id} />;
+  // Toàn văn tải lười: khi chunk về, khoá đổi và ReadSession dựng lại từ đầu, để số hook
+  // luôn khớp giữa các lần vẽ (trước khi có toàn văn, ReadSession dừng sớm như cũ).
+  useChunkVersion();
+  const hasBody = Boolean(id && (getArticleWithBody(id) ?? useUserArticleStore.getState().articles[id]));
+  return <ReadSession key={`${id ?? ''}:${hasBody ? 'body' : 'pending'}`} />;
 }
 
 function ReadSession() {
