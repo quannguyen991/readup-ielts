@@ -239,5 +239,10 @@ while todo and done_req < MAXREQ:
         (OUT / "_batches.log").open("a", encoding="utf-8").write(json.dumps({"n": len(chunk), "dur": round(dur, 1), "first": chunk[0], "last": chunk[-1]}, ensure_ascii=False) + "\n")
     write_retry(IDX, json.dumps(index, ensure_ascii=False, indent=0))
     print(f"  xong, {len(index)} mục")
+    # Recover throughput after a rejected large batch was split. Keep probing
+    # upward gradually so one problematic entry does not pin the rest of the
+    # run to a one-word batch for its entire lifetime.
+    if cur_batch < BATCH:
+        cur_batch = min(BATCH, max(cur_batch + 1, int(cur_batch * 1.5)))
 print("bi loai:", len(rejected))
 print("kết thúc: còn", len([w for w in todo_all if w not in index]), "mục")

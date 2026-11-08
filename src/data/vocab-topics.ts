@@ -5,6 +5,7 @@ import { VFIA_DECKS } from './vocab-for-ielts-advanced';
 import globalSuccessDecks from './seed/vocab-global-success/index.json';
 import { DESTINATION_DECKS } from './destination-vocab';
 import { DAILY_TALK_TOPICS } from './vocab-daily';
+import bookVocab from './book-vocab.json';
 
 /**
  * Bộ từ vựng IELTS soạn sẵn theo chủ đề.
@@ -52,6 +53,8 @@ export type VocabTopic = {
 export const VOCAB_TOPICS: VocabTopic[] = topics as unknown as VocabTopic[];
 /** Bộ từ nâng cao tự biên soạn theo chủ điểm Global Success; không thay cho danh sách nguyên văn trong sách. */
 export const GLOBAL_SUCCESS_DECKS: VocabTopic[] = globalSuccessDecks as unknown as VocabTopic[];
+/** Bảy bộ học độc lập lấy từ các sách người học cung cấp; mỗi sách giữ thứ tự chủ đề gốc. */
+export const BOOK_VOCAB_DECKS: VocabTopic[] = bookVocab as unknown as VocabTopic[];
 
 /**
  * Tìm bộ theo slug — cả 50 chủ đề lẫn các bộ từ vựng Nghe (`listening-*`, xem
@@ -59,7 +62,7 @@ export const GLOBAL_SUCCESS_DECKS: VocabTopic[] = globalSuccessDecks as unknown 
  * mà `VOCAB_TOPICS` (và test "50 × 50") vẫn giữ nguyên.
  */
 export function getVocabTopic(slug: string): VocabTopic | undefined {
-  return VOCAB_TOPICS.find((t) => t.slug === slug) ?? GLOBAL_SUCCESS_DECKS.find((d) => d.slug === slug) ?? LISTENING_DECKS.find((d) => d.slug === slug) ?? VFI_DECKS.find((d) => d.slug === slug) ?? VFIA_DECKS.find((d) => d.slug === slug) ?? DESTINATION_DECKS.find((d) => d.slug === slug) ?? DAILY_TALK_TOPICS.find((d) => d.slug === slug);
+  return VOCAB_TOPICS.find((t) => t.slug === slug) ?? BOOK_VOCAB_DECKS.find((d) => d.slug === slug) ?? GLOBAL_SUCCESS_DECKS.find((d) => d.slug === slug) ?? LISTENING_DECKS.find((d) => d.slug === slug) ?? VFI_DECKS.find((d) => d.slug === slug) ?? VFIA_DECKS.find((d) => d.slug === slug) ?? DESTINATION_DECKS.find((d) => d.slug === slug) ?? DAILY_TALK_TOPICS.find((d) => d.slug === slug);
 }
 
 export const VOCAB_TOPIC_TOTALS = {

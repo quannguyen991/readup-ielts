@@ -11,7 +11,7 @@ import { NOTEBOOK_SLUG, notebookDeck, splitLevelSlug } from '@/data/study-decks'
 import { VFI_DECKS } from '@/data/vocab-for-ielts';
 import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
-import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
+import { BOOK_VOCAB_DECKS, GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
 import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { OXFORD_TOPIC_DECKS } from '@/data/oxford-topics-decks';
 import { unitsFor } from '@/data/intl/units';
@@ -72,6 +72,7 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'satMath', label: 'SAT Math', labelEn: 'SAT Math', icon: 'grid' },
   { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
   { key: 'daily', label: 'Giao tiếp hằng ngày', labelEn: 'Everyday talk', icon: 'letters' },
+  { key: 'books', label: 'Sách từ vựng', labelEn: 'Vocabulary books', icon: 'book' },
   { key: 'toeic', label: 'TOEIC', labelEn: 'TOEIC', icon: 'book' },
   { key: 'toefl', label: 'TOEFL', labelEn: 'TOEFL', icon: 'book' },
 ];
@@ -91,6 +92,7 @@ const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: st
   satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
   satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
   daily: { title: 'Giao tiếp hằng ngày', titleEn: 'Everyday talk', subtitle: '20 chủ đề, mỗi từ kèm ví dụ và ngữ cảnh dùng', subtitleEn: '20 topics, each word with an example and where to use it', icon: 'letters' },
+  books: { title: 'Sách từ vựng', titleEn: 'Vocabulary books', subtitle: 'Bảy bộ học riêng, sắp từ theo chủ đề của từng sách', subtitleEn: 'Seven separate study decks, organized by each book’s topics', icon: 'book' },
   toeic: { title: 'TOEIC', titleEn: 'TOEIC', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
   toefl: { title: 'TOEFL', titleEn: 'TOEFL', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
 };
@@ -161,6 +163,7 @@ const STATIC_DECKS: LibDeck[] = [
     haystack: fold(`${t.title} ${t.titleEn} oxford 3000 ${t.words.map((w) => w.word).join(' ')}`),
   })),
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
+  ...BOOK_VOCAB_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, t.blurb, { title: t.name })),
   // Unit titles already identify the lesson; omit the long source/enrichment blurb on each card.
   ...GLOBAL_SUCCESS_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, undefined, { title: t.name })),
   ...VFI_DECKS.map((t) => lib(t.slug, t.name, t.words, t.blurb, { title: t.name })),
@@ -404,7 +407,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'daily', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'daily', 'books', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
                   <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
                   {sourceBody(s)}

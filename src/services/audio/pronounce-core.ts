@@ -194,7 +194,7 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
 }
 
 /* ------------------------------------------------------------------ *
- * KHO CLIP GIỌNG GEMINI (một giọng cho cả app: Aoede)
+ * KHO CLIP CÁC GIỌNG CỦA APP (Aoede, Adam, Sarah, Kore và giọng dự phòng)
  *
  * Mỗi bộ clip là một thư mục tĩnh có `index.json` ánh xạ NGUYÊN VĂN chuỗi
  * (từ / cụm từ / câu) → tên tệp mp3 cùng thư mục. Tải index MỘT lần (lười),

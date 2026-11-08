@@ -247,10 +247,10 @@ export async function playClip(url: string, opts: { rate?: number } = {}): Promi
   return r.ok;
 }
 
-/** Giọng dự phòng cho từ CHƯA có clip giọng mặc định (Aoede): clip Alice (ElevenLabs). */
-export const FALLBACK_CLIP_VOICE: ClipVoice = 'alice';
+/** Sarah có kho clip thật và làm giọng dự phòng cuối cho các mục còn thiếu. */
+export const FALLBACK_CLIP_VOICE: ClipVoice = 'sarah';
 
-/** Giọng clip đang chọn trong Cài đặt học (Aoede hoặc Adam); mặc định là giọng chung của app. */
+/** Giọng clip đang chọn trong Cài đặt học; mặc định là Aoede. */
 export function currentClipVoice(): ClipVoice {
   return useTopicStudyStore.getState().learnSettings.clipVoice ?? (pronunciationVoice.id as ClipVoice);
 }
@@ -275,7 +275,7 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
       const url =
         (await clips.find(voice, word)) ??
         (!pinned && voice !== 'aoede' ? await clips.find('aoede', word) : null) ??
-        (!pinned ? await clips.find(FALLBACK_CLIP_VOICE, word) : null);
+        (!pinned && voice !== FALLBACK_CLIP_VOICE ? await clips.find(FALLBACK_CLIP_VOICE, word) : null);
       if (my !== token) return;
       if (url) {
         const r = await playClipUrl(url, { rate, my });

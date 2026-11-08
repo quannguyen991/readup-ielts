@@ -18,7 +18,7 @@ import { LISTENING_TESTS } from '@/data/listening-tests';
 import { DICTATION_SETS, dictationTopicLabel } from '@/data/dictation-sets';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
-import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
+import { BOOK_VOCAB_DECKS, GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
 import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { SAT_RW_SKILL_LABEL, SAT_RW_UNITS } from '@/data/sat-rw-repository';
@@ -510,7 +510,7 @@ function buildEntries(): SearchEntry[] {
   }
 
   // ---- Từ vựng
-  for (const topic of [...VOCAB_TOPICS, ...DESTINATION_DECKS]) {
+  for (const topic of [...VOCAB_TOPICS, ...BOOK_VOCAB_DECKS, ...DESTINATION_DECKS]) {
     const course = 'course' in topic ? topic.course : null;
     const destination = Boolean(course);
     const courseStr = typeof course === 'string' ? course.toUpperCase() : '';
