@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { BodiesGate } from '@/components/article/BodiesGate';
+import { ARTICLES } from '@/data/articles';
 import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -16,7 +18,7 @@ type Phase =
   | { kind: 'module2'; tier: RwModuleTier; firstCorrect: number }
   | { kind: 'result'; tier: RwModuleTier; correct: number; total: number };
 
-export default function SatReadingWritingTestScreen() {
+function SatReadingWritingTestScreenInner() {
   const { L } = useL();
   const params = useLocalSearchParams<{ form?: string }>();
   const form = typeof params.form === 'string' ? params.form : null;
@@ -100,4 +102,12 @@ export default function SatReadingWritingTestScreen() {
   }
 
   return null;
+}
+
+export default function SatReadingWritingTestScreen() {
+  return (
+    <BodiesGate metas={ARTICLES}>
+      <SatReadingWritingTestScreenInner />
+    </BodiesGate>
+  );
 }

@@ -20,7 +20,7 @@ import {
   StatCard,
   TrendBadge,
 } from '@/components/ui';
-import { filterArticles, getArticleWithBody } from '@/data/articles';
+import { filterArticles, getArticleWithBody, loadArticleWithBody } from '@/data/articles';
 import { ActivityList } from '@/components/progress/ActivityList';
 import { StreakRewardsCard } from '@/components/progress/StreakRewardsCard';
 import { StreakFlame } from '@/components/gamify/StreakFlame';
@@ -200,7 +200,7 @@ export default function ProgressScreen() {
 
     // focusSet sinh đề từ chính nội dung bài nên cần toàn văn, mà toàn văn nằm
     // trong chunk riêng chứ không có sẵn trong index.
-    const article = getArticleWithBody(meta.id);
+    const article = await loadArticleWithBody(meta.id);
     if (!article) return;
 
     await focusSet(article, weakest.type);

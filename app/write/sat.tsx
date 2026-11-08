@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { BodiesGate } from '@/components/article/BodiesGate';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
@@ -26,8 +27,9 @@ import { useL } from '@/i18n/useL';
 
 /** Lấy vừa đủ bài để dựng một phiên luyện, không quét cả kho. */
 const ARTICLES_PER_SESSION = 40;
+const SAT_ARTICLES = ARTICLES.filter((a) => a.exam === 'sat');
 
-export default function SatWritingScreen() {
+function SatWritingScreenInner() {
   const [focus, setFocus] = useState<QuestionType | 'all'>('all');
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
@@ -223,5 +225,13 @@ function Chip({
         {label}
       </Text>
     </Pressable>
+  );
+}
+
+export default function SatWritingScreen() {
+  return (
+    <BodiesGate metas={SAT_ARTICLES}>
+      <SatWritingScreenInner />
+    </BodiesGate>
   );
 }

@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import { BodiesGate } from '@/components/article/BodiesGate';
+import { ARTICLES } from '@/data/articles';
 import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Sticker } from '@/components/illust/Sticker';
@@ -37,7 +39,7 @@ const SET_KIND_EN: Partial<Record<string, string>> = {
  * `set.id`. Thiếu khoá thì mỗi lần bấm chọn đáp án là cả bộ đề đổi câu khác ngay
  * dưới tay người đang làm.
  */
-export default function SatRwSetScreen() {
+function SatRwSetScreenInner() {
   const { setId } = useLocalSearchParams<{ setId: string }>();
   const { L, en } = useL();
   const set = typeof setId === 'string' ? getSatRwSet(setId) : undefined;
@@ -97,5 +99,13 @@ export default function SatRwSetScreen() {
       doneHref="/sat-rw"
       doneLabel={L('Về lộ trình', 'Back to roadmap')}
     />
+  );
+}
+
+export default function SatRwSetScreen() {
+  return (
+    <BodiesGate metas={ARTICLES}>
+      <SatRwSetScreenInner />
+    </BodiesGate>
   );
 }

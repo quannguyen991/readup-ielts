@@ -1,5 +1,5 @@
 import index from './seed/index.json';
-import { getArticleBody, type ArticleBody, type ArticleMeta } from './article-repository';
+import { getArticleBody, loadArticleBody, type ArticleBody, type ArticleMeta } from './article-repository';
 import type { CefrLevel, ExamKind, PassageTier, SatTextType } from '@/types/database';
 
 /**
@@ -117,6 +117,20 @@ export function getArticleWithBody(id: string): Article | undefined {
   if (!meta) return undefined;
 
   const body = getArticleBody(meta);
+  if (!body) return undefined;
+
+  return { ...meta, ...body };
+}
+
+/**
+ * Như getArticleWithBody nhưng chờ chunk tải xong. Dùng ở máy chủ (API) và
+ * ở mọi nơi cần chắc chắn có toàn văn; trên web, hàm đồng bộ có thể còn trả undefined.
+ */
+export async function loadArticleWithBody(id: string): Promise<Article | undefined> {
+  const meta = getArticleById(id);
+  if (!meta) return undefined;
+
+  const body = await loadArticleBody(meta);
   if (!body) return undefined;
 
   return { ...meta, ...body };

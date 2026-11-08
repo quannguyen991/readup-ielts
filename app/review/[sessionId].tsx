@@ -13,7 +13,8 @@ import {
   SectionHeader,
   StatCard,
 } from '@/components/ui';
-import { ARTICLES, getArticleWithBody } from '@/data/articles';
+import { ARTICLES, getArticleWithBody, loadArticleWithBody } from '@/data/articles';
+import { useChunkVersion } from '@/data/use-chunk-version';
 import { pickTransferSource } from '@/services/proofloop/transfer-source';
 import { readingSkillFor } from '@/services/mastery/reading-skill';
 import { resolveProbe } from '@/store/useMasteryStore';
@@ -58,7 +59,11 @@ export default function ReviewScreen() {
 
   // Màn này hiện lại nguyên bài để soi câu dẫn chứng, nên cần toàn văn chứ
   // không chỉ metadata.
-  const article = session ? getArticleWithBody(session.articleId) : undefined;
+  const chunkVer = useChunkVersion();
+  const article = useMemo(
+    () => (session ? getArticleWithBody(session.articleId) : undefined),
+    [session, chunkVer],
+  );
 
 
   const rows = useMemo(() => {
@@ -349,7 +354,7 @@ export default function ReviewScreen() {
                               được vẫn đúng hơn là chạy trên chính bài cũ.
                             */
                             const pick = pickTransferSource(article, ARTICLES);
-                            const transfer = pick ? getArticleWithBody(pick.id) : undefined;
+                            const transfer = pick ? await loadArticleWithBody(pick.id) : undefined;
 
                             const res = await fetch('/api/proofloop/probe', {
                               method: 'POST',

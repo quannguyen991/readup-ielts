@@ -22,6 +22,8 @@ import { CrossFade } from '@/components/motion/Motion';
 import { Badge, Button, Card } from '@/components/ui';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { getArticleById, getArticleWithBody, isReadable, type Article, type ArticleMeta } from '@/data/articles';
+import { bodiesReady } from '@/data/article-repository';
+import { useChunkVersion } from '@/data/use-chunk-version';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { gradeQuestions } from '@/services/questions/grade';
 import { useQuestionStore } from '@/store/useQuestionStore';
@@ -70,10 +72,11 @@ function ReadSession() {
     [id, userArticle],
   );
 
+  const chunkVer = useChunkVersion();
   const article = useMemo<Article | undefined>(() => {
     if (!meta || !isReadable(meta)) return undefined;
     return (id ? getArticleWithBody(id) : undefined) ?? userArticle;
-  }, [id, meta, userArticle]);
+  }, [id, meta, userArticle, chunkVer]);
 
   const fontScale = useReaderStore((s) => s.fontScale);
   const bilingual = useBilingual(id ?? '');
@@ -384,6 +387,14 @@ function ReadSession() {
             onPress={() => void WebBrowser.openBrowserAsync(meta.sourceUrl)}
           />
         </Card>
+      </View>
+    );
+  }
+
+  if (!article && !bodiesReady([meta])) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white p-6">
+        <Text className="text-sm text-gray-500">{L('Đang tải bài đọc…', 'Loading passage…')}</Text>
       </View>
     );
   }

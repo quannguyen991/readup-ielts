@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { Button, Icon, ProgressBar } from '@/components/ui';
 import { getArticleWithBody, type ArticleMeta } from '@/data/articles';
+import { useChunkVersion } from '@/data/use-chunk-version';
 import {
   IELTS_TYPE_SPECS,
   buildMix,
@@ -45,9 +46,10 @@ export function MixSheet({
 }) {
   const { L } = useL();
   const userArticle = useUserArticleStore((s) => s.articles[article.id]);
+  const chunkVer = useChunkVersion();
   const full = useMemo(
     () => (visible ? (getArticleWithBody(article.id) ?? userArticle) : undefined),
-    [visible, article.id, userArticle],
+    [visible, article.id, userArticle, chunkVer],
   );
   const shape = useMemo(
     () => ({ paragraphs: full?.paragraphs.length, words: article.wordCount }),

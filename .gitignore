@@ -79,3 +79,6 @@ supabase/.temp/
 .impeccable/
 
 .missing-words.json
+
+# Toàn văn bài đọc do scripts/sync-bodies.mjs chép từ src/data/seed/bodies (nguồn thật nằm ở đó)
+public/data/bodies/

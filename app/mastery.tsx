@@ -14,6 +14,7 @@ import { useMasteryStore } from '@/store/useMasteryStore';
 import { AuditPanel } from '@/components/ai-literacy/AuditPanel';
 import { CredentialCard } from '@/components/credential/CredentialCard';
 import { ARTICLES, getArticleWithBody } from '@/data/articles';
+import { useChunkVersion } from '@/data/use-chunk-version';
 import { pickTransferSource } from '@/services/proofloop/transfer-source';
 import { checkFeature, requiredPlanFor } from '@/lib/billing/entitlements';
 import { PLANS, type PlanId } from '@/lib/billing/plans';
@@ -328,13 +329,14 @@ function ExportCard() {
  * mất nó ngay khi chạm vào thứ khác trên màn.
  */
 function AuditSection() {
+  const chunkVer = useChunkVersion();
   const source = useMemo(() => {
     const first = ARTICLES.find((a) => a.exam === 'ielts' && a.licenseType !== 'headline_only');
     if (!first) return null;
     const pick = pickTransferSource(first, ARTICLES);
     const full = pick ? getArticleWithBody(pick.id) : undefined;
     return full ? { origin: getArticleWithBody(first.id), audit: full } : null;
-  }, []);
+  }, [chunkVer]);
 
   if (!source?.origin || !source.audit) return null;
   const { origin, audit } = source;

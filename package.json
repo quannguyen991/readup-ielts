@@ -87,7 +87,7 @@
     "ielts:audit-sources": "tsx scripts/ielts/audit-source-bank.ts",
     "build:web": "expo export -p web --max-workers 2",
     "setup:check": "tsx scripts/check-setup.ts",
-    "test": "tsx --test \"src/**/*.test.ts\"",
+    "test": "node scripts/sync-bodies.mjs && tsx --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
     "world:validate": "tsx scripts/world/validate-world.ts",
