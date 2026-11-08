@@ -23,8 +23,12 @@ type Idea = {
   status: Status;
   kind: Kind;
   createdAt: string;
+  /** Điểm ròng = up − down. */
   votes: number;
-  voted: boolean;
+  up: number;
+  down: number;
+  /** 1 = đã ủng hộ, -1 = đã chọn không cần, 0 = chưa bình chọn. */
+  myValue: number;
   isMine: boolean;
   authorName: string;
 };
@@ -118,11 +122,15 @@ export default function FeatureRequests() {
     }
   };
 
-  // Bấm "Tôi cũng muốn" cập nhật ngay trên màn, không chờ máy chủ.
-  const toggleVote = async (id: string) => {
-    setItems((list) => (list ?? []).map((i) => (i.id === id ? { ...i, voted: !i.voted, votes: i.votes + (i.voted ? -1 : 1) } : i)));
+  // Bấm ủng hộ / không cần cập nhật ngay trên màn, không chờ máy chủ. Bấm lại lựa chọn cũ sẽ bỏ bình chọn.
+  const vote = async (id: string, value: 1 | -1) => {
+    const current = (items ?? []).find((i) => i.id === id);
+    if (!current) return;
+    const prev = current.myValue;
+    const next = prev === value ? 0 : value;
+    setItems((list) => (list ?? []).map((i) => (i.id === id ? { ...i, myValue: next, votes: i.votes + (next - prev), up: i.up + (next === 1 ? 1 : 0) - (prev === 1 ? 1 : 0), down: i.down + (next === -1 ? 1 : 0) - (prev === -1 ? 1 : 0) } : i)));
     try {
-      await call('/api/feature-requests', { method: 'POST', body: { action: 'vote', id } });
+      await call('/api/feature-requests', { method: 'POST', body: { action: 'vote', id, value } });
     } catch {
       void load();
     }
@@ -146,7 +154,7 @@ export default function FeatureRequests() {
         <View style={{ flexShrink: 1, minWidth: 0 }}>
           <Text className="font-heavy" style={{ fontSize: 30, color: INK }}>{L('Yêu cầu tính năng', 'Feature requests')}</Text>
           <Text className="font-sans" style={{ fontSize: 15, color: INK, marginTop: 4 }}>
-            {L('Ý tưởng nhiều bình chọn nhất được ưu tiên làm trước.', 'The most-voted ideas get built first.')}
+            {L('Ai cũng xem và bình chọn. Ý tưởng được ủng hộ nhiều nhất làm trước; mỗi lần đổi trạng thái sẽ được đăng lên Thông báo.', 'Anyone can see and vote. The most-supported ideas get built first; every status change is posted to Notifications.')}
           </Text>
         </View>
         <Pressable
@@ -284,32 +292,63 @@ export default function FeatureRequests() {
                   <Text className="font-sans" style={{ fontSize: 12, color: '#8A7F72', marginTop: 'auto' as never }}>
                     {idea.authorName} · {new Date(idea.createdAt).toLocaleDateString(en ? 'en-GB' : 'vi-VN')}
                   </Text>
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityState={{ selected: idea.voted }}
-                    onPress={() => void toggleVote(idea.id)}
-                    disabled={!token}
-                    style={({ pressed }: { pressed: boolean }) => ({
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 10,
-                      paddingHorizontal: 14,
-                      paddingVertical: 10,
-                      borderRadius: 14,
-                      borderWidth: 2,
-                      borderColor: INK,
-                      backgroundColor: idea.voted ? '#F5C518' : '#FFFFFF',
-                      boxShadow: pressed ? 'none' : `0 3px 0 ${INK}`,
-                      transform: [{ translateY: pressed ? 3 : 0 }],
-                      opacity: token ? 1 : 0.6,
-                    }) as object}
-                  >
-                    <Icon name="arrow-up" size={16} color={INK} strokeWidth={2.6} />
-                    <Text className="font-heavy" style={{ fontSize: 16, color: INK }}>{idea.votes}</Text>
-                    <Text className="font-strong" style={{ fontSize: 14, color: INK, flexShrink: 1 }}>
-                      {idea.voted ? L('Đã bình chọn', 'Voted') : L('Tôi cũng muốn tính năng này!', 'I want this too!')}
-                    </Text>
-                  </Pressable>
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 10, marginTop: 4 }}>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityState={{ selected: idea.myValue === 1 }}
+                      onPress={() => void vote(idea.id, 1)}
+                      disabled={!token}
+                      style={({ pressed }: { pressed: boolean }) => ({
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 8,
+                        paddingHorizontal: 12,
+                        paddingVertical: 9,
+                        borderRadius: 14,
+                        borderWidth: 2,
+                        borderColor: INK,
+                        backgroundColor: idea.myValue === 1 ? '#F5C518' : '#FFFFFF',
+                        boxShadow: pressed ? 'none' : `0 3px 0 ${INK}`,
+                        transform: [{ translateY: pressed ? 3 : 0 }],
+                        opacity: token ? 1 : 0.6,
+                      }) as object}
+                    >
+                      <Icon name="arrow-up" size={16} color={INK} strokeWidth={2.6} />
+                      <Text className="font-heavy" style={{ fontSize: 15, color: INK }}>{idea.up}</Text>
+                      <Text className="font-strong" style={{ fontSize: 14, color: INK }}>
+                        {idea.myValue === 1 ? L('Đã ủng hộ', 'Supported') : L('Tôi cũng muốn!', 'I want this!')}
+                      </Text>
+                    </Pressable>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityState={{ selected: idea.myValue === -1 }}
+                      onPress={() => void vote(idea.id, -1)}
+                      disabled={!token}
+                      style={({ pressed }: { pressed: boolean }) => ({
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 8,
+                        paddingHorizontal: 12,
+                        paddingVertical: 9,
+                        borderRadius: 14,
+                        borderWidth: 2,
+                        borderColor: INK,
+                        backgroundColor: idea.myValue === -1 ? '#E5E7EB' : '#FFFFFF',
+                        boxShadow: pressed ? 'none' : `0 3px 0 ${INK}`,
+                        transform: [{ translateY: pressed ? 3 : 0 }],
+                        opacity: token ? 1 : 0.6,
+                      }) as object}
+                    >
+                      <Icon name="arrow-down" size={16} color={INK} strokeWidth={2.6} />
+                      <Text className="font-heavy" style={{ fontSize: 15, color: INK }}>{idea.down}</Text>
+                      <Text className="font-strong" style={{ fontSize: 14, color: INK }}>
+                        {idea.myValue === -1 ? L('Đã chọn không cần', 'Marked not needed') : L('Không cần', 'Not needed')}
+                      </Text>
+                    </Pressable>
+                  </View>
+                  <Text className="font-sans" style={{ fontSize: 12, color: '#8A7F72' }}>
+                    {L(`Điểm ròng ${idea.votes}`, `Net score ${idea.votes}`)}
+                  </Text>
                 </View>
               </Appear>
             );
