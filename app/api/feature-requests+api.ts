@@ -8,8 +8,8 @@ import { displayableName } from '@/services/gamification/display-name';
  * API "Yêu cầu tính năng".
  *   GET  ?sort=votes|new|mine&kind=all|feature|improvement  → danh sách (không cần đăng nhập để xem; có token thì đánh dấu "đã bình chọn").
  *   POST {action:'create', title, body, kind}  → gửi góp ý (cần đăng nhập). kind mặc định 'feature'.
- *   POST {action:'vote', id}                   → bật/tắt "Tôi cũng muốn" (cần đăng nhập).
- * Bảng: feature_requests, feature_votes (migration 20261018000100); cột kind (migration 20261029000100).
+ *   POST {action:'vote', id, value: 1|-1}      → ủng hộ (1) hoặc không cần (-1); bấm lại lựa chọn cũ để bỏ (cần đăng nhập). value mặc định 1.
+ * Bảng: feature_requests, feature_votes (migration 20261018000100); cột kind (20261029000100); cột value (20261108000100).
  */
 
 type Kind = 'feature' | 'improvement';
@@ -68,14 +68,16 @@ export async function GET(request: Request): Promise<Response> {
   const rows = (data ?? []) as Row[];
   const ids = rows.map((r) => r.id);
 
-  const votes = new Map<string, number>();
-  const mine = new Set<string>();
+  const up = new Map<string, number>();
+  const down = new Map<string, number>();
+  const myValue = new Map<string, number>();
   if (ids.length) {
-    const { data: vs, error: ve } = await db.from('feature_votes').select('request_id, user_id').in('request_id', ids);
+    const { data: vs, error: ve } = await db.from('feature_votes').select('request_id, user_id, value').in('request_id', ids);
     if (ve) return dbFail(request, ve);
-    for (const v of (vs ?? []) as { request_id: string; user_id: string }[]) {
-      votes.set(v.request_id, (votes.get(v.request_id) ?? 0) + 1);
-      if (me && v.user_id === me) mine.add(v.request_id);
+    for (const v of (vs ?? []) as { request_id: string; user_id: string; value: number }[]) {
+      if (v.value === -1) down.set(v.request_id, (down.get(v.request_id) ?? 0) + 1);
+      else up.set(v.request_id, (up.get(v.request_id) ?? 0) + 1);
+      if (me && v.user_id === me) myValue.set(v.request_id, v.value === -1 ? -1 : 1);
     }
   }
 
@@ -86,18 +88,25 @@ export async function GET(request: Request): Promise<Response> {
     for (const p of (ps ?? []) as { id: string; display_name: string | null }[]) names.set(p.id, displayableName(p.display_name));
   }
 
-  const items = rows.map((r) => ({
-    id: r.id,
-    title: r.title,
-    body: r.body,
-    status: r.status,
-    kind: r.kind,
-    createdAt: r.created_at,
-    votes: votes.get(r.id) ?? 0,
-    voted: mine.has(r.id),
-    isMine: !!me && r.author_id === me,
-    authorName: names.get(r.author_id) ?? 'Bạn học',
-  }));
+  const items = rows.map((r) => {
+    const supporters = up.get(r.id) ?? 0;
+    const opposers = down.get(r.id) ?? 0;
+    return {
+      id: r.id,
+      title: r.title,
+      body: r.body,
+      status: r.status,
+      kind: r.kind,
+      createdAt: r.created_at,
+      up: supporters,
+      down: opposers,
+      /** Điểm ròng: ủng hộ trừ không cần. Dùng để xếp hạng. */
+      votes: supporters - opposers,
+      myValue: myValue.get(r.id) ?? 0,
+      isMine: !!me && r.author_id === me,
+      authorName: names.get(r.author_id) ?? 'Bạn học',
+    };
+  });
   if (sort === 'votes') items.sort((a, b) => b.votes - a.votes || (a.createdAt < b.createdAt ? 1 : -1));
   return Response.json({ items, signedIn: !!me });
 }
@@ -123,16 +132,24 @@ export async function POST(request: Request): Promise<Response> {
   if (input.action === 'vote') {
     const id = typeof input.id === 'string' ? input.id : '';
     if (!UUID.test(id)) return fail(request, 400, 'Ý tưởng không hợp lệ.', 'Invalid idea.');
-    const { data: existing, error: se } = await db.from('feature_votes').select('user_id').eq('request_id', id).eq('user_id', me).maybeSingle();
+    // value: 1 = ủng hộ, -1 = không cần. Bấm lại đúng lựa chọn đang có thì bỏ bình chọn.
+    const value = input.value === -1 ? -1 : 1;
+    const { data: existing, error: se } = await db.from('feature_votes').select('value').eq('request_id', id).eq('user_id', me).maybeSingle();
     if (se) return dbFail(request, se);
-    if (existing) {
+    const current = (existing as { value: number } | null)?.value;
+    if (current === value) {
       const { error } = await db.from('feature_votes').delete().eq('request_id', id).eq('user_id', me);
       if (error) return dbFail(request, error);
-      return Response.json({ ok: true, voted: false });
+      return Response.json({ ok: true, myValue: 0 });
     }
-    const { error } = await db.from('feature_votes').insert({ request_id: id, user_id: me });
+    if (current !== undefined) {
+      const { error } = await db.from('feature_votes').update({ value }).eq('request_id', id).eq('user_id', me);
+      if (error) return dbFail(request, error);
+      return Response.json({ ok: true, myValue: value });
+    }
+    const { error } = await db.from('feature_votes').insert({ request_id: id, user_id: me, value });
     if (error) return dbFail(request, error);
-    return Response.json({ ok: true, voted: true });
+    return Response.json({ ok: true, myValue: value });
   }
 
   return fail(request, 400, 'Thao tác không hợp lệ.', 'Unknown action.');
