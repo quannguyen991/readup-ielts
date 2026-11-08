@@ -232,6 +232,8 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <QuickLink href="/vocabulary" icon="letters" label={L('Sổ từ', 'Word book')} />
           <QuickLink href="/progress" icon="clock" label={L('Tiến độ', 'Progress')} />
+          {/* Góp ý tính năng: đưa lên thanh để người học thấy ngay, không phải đi qua mục "Cá nhân". */}
+          <QuickLink href="/feature-requests" icon="star" label={L('Yêu cầu tính năng', 'Feature requests')} />
 
           {/*
             Lối vào Quản trị nằm THẲNG trên thanh, không chôn trong bảng "Khám phá".
