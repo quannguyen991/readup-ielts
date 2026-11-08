@@ -1,4 +1,4 @@
-import { getArticleWithBody } from '@/data/articles';
+import { loadArticleWithBody } from '@/data/articles';
 import { AiError } from '@/services/ai/errors';
 import { chatWithFallback } from '@/services/ai/fallback';
 import { errorText, msg } from '@/lib/server-locale';
@@ -56,7 +56,7 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    const article = getArticleWithBody(body.articleId);
+    const article = await loadArticleWithBody(body.articleId);
     if (!article) {
       return Response.json(
         { error: msg(request, 'Không nạp được toàn văn bài này nên không giải được.', "Couldn't load this article's full text, so it can't be explained.") },

@@ -1,4 +1,4 @@
-import { getArticleWithBody } from '@/data/articles';
+import { loadArticleWithBody } from '@/data/articles';
 import { streamWithFallback } from '@/services/ai/fallback';
 import { errorText, msg } from '@/lib/server-locale';
 
@@ -20,9 +20,9 @@ export async function POST(request: Request): Promise<Response> {
       messages?: Array<{ role: 'user' | 'assistant'; content: string }>;
     };
 
-    // getArticleWithBody trả undefined cho cả bài chỉ tiêu đề lẫn bài mất
+    // loadArticleWithBody trả undefined cho cả bài chỉ tiêu đề lẫn bài mất
     // chunk — hai trường hợp đó với trợ giảng là như nhau: không có gì để đọc.
-    const article = body.articleId ? getArticleWithBody(body.articleId) : undefined;
+    const article = body.articleId ? await loadArticleWithBody(body.articleId) : undefined;
     if (!article) {
       return new Response(
         msg(

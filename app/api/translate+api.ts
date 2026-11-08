@@ -1,5 +1,5 @@
 import { ARTICLES } from '@/data/articles';
-import { getArticleBody } from '@/data/article-repository';
+import { loadArticleBody } from '@/data/article-repository';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { TRANSLATE_BATCH, sourceHash, translateParagraphs } from '@/services/ai/translator';
 import { errorText, msg } from '@/lib/server-locale';
@@ -28,10 +28,10 @@ const LANG = 'vi';
 
 type Cached = { paragraphs: string[]; source_hash: string; model: string; created_at: string };
 
-function loadParagraphs(articleId: string): string[] | null {
+async function loadParagraphs(articleId: string): Promise<string[] | null> {
   const meta = ARTICLES.find((a) => a.id === articleId);
   if (!meta) return null;
-  const body = getArticleBody(meta);
+  const body = await loadArticleBody(meta);
   if (!body || !Array.isArray(body.paragraphs) || body.paragraphs.length === 0) return null;
   return body.paragraphs;
 }
@@ -64,7 +64,7 @@ function missingIndexes(translated: string[], total: number): number[] {
 export async function GET(request: Request): Promise<Response> {
   try {
     const articleId = new URL(request.url).searchParams.get('articleId') ?? '';
-    const paragraphs = loadParagraphs(articleId);
+    const paragraphs = await loadParagraphs(articleId);
     if (!paragraphs) {
       return Response.json({ error: msg(request, 'Bài này không có toàn văn để dịch.', 'This article has no full text to translate.') }, { status: 404 });
     }
@@ -111,7 +111,7 @@ export async function POST(request: Request): Promise<Response> {
 
     const body = (await request.json()) as { articleId?: unknown };
     const articleId = typeof body.articleId === 'string' ? body.articleId : '';
-    const paragraphs = loadParagraphs(articleId);
+    const paragraphs = await loadParagraphs(articleId);
     if (!paragraphs) {
       return Response.json({ error: msg(request, 'Bài này không có toàn văn để dịch.', 'This article has no full text to translate.') }, { status: 404 });
     }

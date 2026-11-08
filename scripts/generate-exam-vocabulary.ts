@@ -1,3 +1,5 @@
+// Đọc toàn văn từ đĩa đồng bộ (không qua HTTP) khi chạy script này.
+process.env.BAND9_SYNC_READ = '1';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 

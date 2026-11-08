@@ -5,6 +5,7 @@ import { VOCAB_FRAMES } from './frames';
 import { BLANK, buildVocabItem, hasCue, scanCandidates } from './generate';
 import { verifyVocabItem } from './verify';
 
+process.env.BAND9_SYNC_READ = '1';
 const CANDIDATES = scanCandidates();
 const ITEMS = CANDIDATES.map(buildVocabItem);
 

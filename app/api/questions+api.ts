@@ -1,4 +1,4 @@
-import { getArticleById, getArticleWithBody, isReadable } from '@/data/articles';
+import { getArticleById, isReadable, loadArticleWithBody } from '@/data/articles';
 import { AiError } from '@/services/ai/errors';
 import { generateQuestionsWithClaude } from '@/services/ai/questions';
 import { blueprintFor, type PassageBlueprint } from '@/services/questions/blueprint';
@@ -90,7 +90,7 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     // Toàn văn nằm trong chunk riêng, không nằm trong index.
-    const article = getArticleWithBody(body.articleId);
+    const article = await loadArticleWithBody(body.articleId);
     if (!article) {
       return Response.json(
         {

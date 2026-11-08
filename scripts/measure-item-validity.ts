@@ -21,6 +21,8 @@
  * KHÔNG BAO GIỜ GHI "ĐÃ ĐỖ" CHO MỘT LƯỢT CHƯA CHẠY. Lời gọi hỏng thì nhãn ghi
  * `not-run`, và `ledger.ts` để nó ra ngoài phân số. Xem `provenance/label.ts`.
  */
+// Đọc toàn văn từ đĩa đồng bộ (không qua HTTP) khi chạy script này.
+process.env.BAND9_SYNC_READ = '1';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
