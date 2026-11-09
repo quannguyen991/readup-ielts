@@ -27,7 +27,7 @@ type TabKey = 'home' | 'vocab' | 'speak' | 'plan' | 'you';
  */
 const SIDE_TABS: { key: Exclude<TabKey, 'speak'>; href: string; icon: IconName; vi: string; en: string }[] = [
   { key: 'home', href: '/intro', icon: 'home', vi: 'Trang chủ', en: 'Home' },
-  { key: 'vocab', href: '/vocabulary', icon: 'letters', vi: 'Từ vựng', en: 'Vocabulary' },
+  { key: 'vocab', href: '/vocabulary/topics', icon: 'letters', vi: 'Từ vựng', en: 'Vocabulary' },
   { key: 'plan', href: '/lo-trinh-hoc', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
   { key: 'you', href: '/profile', icon: 'home', vi: 'Bạn', en: 'You' },
 ];
