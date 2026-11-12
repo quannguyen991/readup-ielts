@@ -1,53 +1,65 @@
 import type { BookId } from './catalog';
 
 /**
- * QUÀ SÁCH CHO NGƯỜI HỌC — luật tặng, không phải luật bán.
+ * TỦ SÁCH MỞ DẦN — luật mở sách theo tiến độ học, dùng chung cho app và máy chủ.
  *
- * - Đăng ký tài khoản → nhận đúng MỘT cuốn đầy đủ (`GIFT_FIRST_BOOK`). Máy chủ
- *   kiểm tra việc này khi tải (`/api/books/pdf`), không chỉ ẩn nút ở máy.
- * - Muốn mở TOÀN BỘ tủ sách thì phải dùng app: làm đủ nhiệm vụ và học đủ bài.
- *   Hai ngưỡng dưới đây là con số tạm; chỉnh ở đây, các màn khác đọc từ đây.
+ * - Đăng ký tài khoản → nhận đúng MỘT cuốn đầy đủ (`GIFT_FIRST_BOOK`).
+ * - Các cuốn còn lại mở dần: mỗi cuốn có chỉ tiêu riêng về số nhiệm vụ đã nhận
+ *   thưởng và số bài đã học xong (`BOOK_REQUIREMENTS`). Đạt chỉ tiêu thì tải được.
+ * - Người đã trả tiền gói Max hoặc gói năm (xem `entitlement.ts`) tải được cả tủ,
+ *   không cần đạt chỉ tiêu.
  *
- * Tiến độ nhiệm vụ và bài học hiện chỉ có trên máy người dùng, nên mở toàn bộ
- * CHƯA được máy chủ kiểm tra. Khi đồng bộ tiến độ lên máy chủ, hàm `fullSetUnlocked`
- * là chỗ quyết định.
+ * Máy chủ tự đọc tiến độ từ kho đồng bộ (`user_state`, khoá `game` và `lessons`)
+ * và kiểm ở `/api/books/pdf`, không tin con số do máy gửi lên khi tải. Chỉ tiêu
+ * là con số tạm: chỉnh ở `BOOK_REQUIREMENTS`, các màn khác đọc từ đây.
  */
 
 /** Cuốn tặng khi đăng ký. Đổi ở đây nếu muốn tặng cuốn khác. */
 export const GIFT_FIRST_BOOK: BookId = 'ielts-reading';
 
-/** Số nhiệm vụ hằng ngày đã nhận thưởng để mở toàn bộ sách. */
-export const GIFT_QUEST_GOAL = 10;
+/** Chỉ tiêu để mở một cuốn: số nhiệm vụ đã nhận thưởng và số bài đã học xong. */
+export type BookRequirement = { quests: number; lessons: number };
 
-/** Số bài học đã hoàn thành để mở toàn bộ sách. */
-export const GIFT_LESSON_GOAL = 10;
-
-export type GiftProgress = {
-  questsDone: number;
-  lessonsDone: number;
-  questGoal: number;
-  lessonGoal: number;
-  /** Tỉ lệ hoàn thành 0–1, lấy phần thấp hơn của hai mục. */
-  ratio: number;
-  unlocked: boolean;
+/** Thứ tự mở của 11 cuốn. Cuốn quà mở ngay khi đăng ký (0/0). */
+export const BOOK_REQUIREMENTS: Record<BookId, BookRequirement> = {
+  'ielts-reading': { quests: 0, lessons: 0 },
+  'ielts-listening': { quests: 2, lessons: 2 },
+  'ielts-vocab': { quests: 4, lessons: 4 },
+  'ielts-task1': { quests: 6, lessons: 6 },
+  'ielts-task2': { quests: 8, lessons: 8 },
+  'ielts-speaking': { quests: 10, lessons: 10 },
+  'sat-math-20w': { quests: 12, lessons: 12 },
+  'sat-math-30u': { quests: 15, lessons: 15 },
+  'sat-rw-16w': { quests: 18, lessons: 18 },
+  'sat-rw-16u': { quests: 21, lessons: 21 },
+  bilingual: { quests: 25, lessons: 25 },
 };
 
-/** Tiến độ quà, từ số liệu đã đếm trên máy. Số âm hoặc không phải số thì coi như 0. */
-export function giftProgress(questsDone: number, lessonsDone: number): GiftProgress {
-  const q = Math.max(0, Math.floor(Number.isFinite(questsDone) ? questsDone : 0));
-  const l = Math.max(0, Math.floor(Number.isFinite(lessonsDone) ? lessonsDone : 0));
-  const ratio = Math.min(1, Math.min(q / GIFT_QUEST_GOAL, l / GIFT_LESSON_GOAL));
-  return {
-    questsDone: q,
-    lessonsDone: l,
-    questGoal: GIFT_QUEST_GOAL,
-    lessonGoal: GIFT_LESSON_GOAL,
-    ratio,
-    unlocked: q >= GIFT_QUEST_GOAL && l >= GIFT_LESSON_GOAL,
-  };
+/** Tiến độ của một người: nhiệm vụ đã nhận thưởng, bài đã học xong. */
+export type BookProgress = { quests: number; lessons: number };
+
+/** Số đếm hợp lệ: số âm, NaN hoặc không phải số thì coi như 0. */
+export function cleanCount(value: unknown): number {
+  const n = typeof value === 'number' && Number.isFinite(value) ? Math.floor(value) : 0;
+  return Math.max(0, n);
 }
 
-/** Đủ điều kiện mở toàn bộ tủ sách: đã đăng ký và đã đủ cả hai ngưỡng. */
-export function fullSetUnlocked(signedIn: boolean, questsDone: number, lessonsDone: number): boolean {
-  return signedIn && giftProgress(questsDone, lessonsDone).unlocked;
+/** Cuốn này đã đủ chỉ tiêu để mở chưa. */
+export function bookUnlocked(id: BookId, progress: BookProgress): boolean {
+  const need = BOOK_REQUIREMENTS[id];
+  return cleanCount(progress.quests) >= need.quests && cleanCount(progress.lessons) >= need.lessons;
+}
+
+/** Các cuốn đã mở theo tiến độ (chưa tính quyền trả tiền). */
+export function unlockedBooks(progress: BookProgress): BookId[] {
+  return (Object.keys(BOOK_REQUIREMENTS) as BookId[]).filter((id) => bookUnlocked(id, progress));
+}
+
+/** Tiến độ còn thiếu để mở một cuốn, dùng cho dòng hướng dẫn trên bìa. */
+export function bookGap(id: BookId, progress: BookProgress): { quests: number; lessons: number } {
+  const need = BOOK_REQUIREMENTS[id];
+  return {
+    quests: Math.max(0, need.quests - cleanCount(progress.quests)),
+    lessons: Math.max(0, need.lessons - cleanCount(progress.lessons)),
+  };
 }

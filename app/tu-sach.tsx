@@ -1,8 +1,9 @@
 /*
  * Tủ sách PDF — 11 cuốn soạn riêng cho Band 9, bày như kệ sách trong "phòng tranh" (DESIGN.md).
  * Ai cũng đọc thử được 15 trang đầu mỗi cuốn (public/books/samples, dựng bằng scripts/books/prepare-books.py).
- * Bản đầy đủ: đơn ĐÃ TRẢ TIỀN của gói Max hoặc gói năm (services/books/entitlement), tải qua /api/books/pdf —
- * máy chủ in email + mã đơn ở chân từng trang rồi trả link ký 10 phút.
+ * Mở sách: người có gói Max hoặc gói năm (services/books/entitlement) mở cả tủ; người khác mở dần theo
+ * tiến độ học (services/books/gift). Máy chủ kiểm tra khi tải /api/books/pdf, in email + mã ở chân từng
+ * trang rồi trả link ký 10 phút.
  */
 import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useState } from 'react';
@@ -15,7 +16,7 @@ import { CREAM, GOLD, GOLD_DEEP, MIST, NAVY, SANS_4, SANS_5, SANS_6, SANS_7, SAN
 import { Aurora, BODY_G, DEEP_G, FX_CSS, GOLD_SKY, GOLD_SKY_LOC, INK_G, MUTED_G, Plaque } from '@/components/gallery/glass';
 import { Icon } from '@/components/ui';
 import { BOOKS, BOOK_TOTALS, type Book, type BookId } from '@/services/books/catalog';
-import { GIFT_FIRST_BOOK, GIFT_LESSON_GOAL, GIFT_QUEST_GOAL, giftProgress } from '@/services/books/gift';
+import { BOOK_REQUIREMENTS, GIFT_FIRST_BOOK, bookGap, type BookProgress } from '@/services/books/gift';
 import { useGameStore } from '@/store/useGameStore';
 import { useLessonStore } from '@/store/useLessonStore';
 import { BOOK_BUNDLE_RULE } from '@/services/books/entitlement';
@@ -29,7 +30,16 @@ const SHELVES: { exam: Book['exam']; vi: string; en: string }[] = [
   { exam: 'Song ngữ', vi: 'Đọc thêm', en: 'Extra reading' },
 ];
 
-type Member = { state: 'member'; granted: boolean; order: string | null; downloaded: BookId[] };
+type Member = {
+  state: 'member';
+  granted: boolean;
+  order: string | null;
+  downloaded: BookId[];
+  /** Tiến độ máy chủ đếm (nhiệm vụ đã nhận thưởng, bài đã học). Null khi chưa đọc được. */
+  progress: BookProgress | null;
+  /** Các cuốn đã mở theo tiến độ. Người có gói trả tiền thì máy chủ trả đủ cả tủ. */
+  unlocked: BookId[];
+};
 type Access = { state: 'loading' } | { state: 'guest' } | Member;
 
 export default function BookshelfScreen() {
@@ -53,10 +63,19 @@ export default function BookshelfScreen() {
     let alive = true;
     fetch('/api/books/pdf', { headers: { Authorization: `Bearer ${token}` } })
       .then((r) => r.json())
-      .then((d: { granted?: boolean; order?: string | null; downloaded?: BookId[] }) => {
-        if (alive) setMember({ state: 'member', granted: Boolean(d.granted), order: d.order ?? null, downloaded: d.downloaded ?? [], token });
+      .then((d: { granted?: boolean; order?: string | null; downloaded?: BookId[]; progress?: BookProgress | null; unlocked?: BookId[] }) => {
+        if (alive)
+          setMember({
+            state: 'member',
+            granted: Boolean(d.granted),
+            order: d.order ?? null,
+            downloaded: d.downloaded ?? [],
+            progress: d.progress ?? null,
+            unlocked: d.unlocked ?? [],
+            token,
+          });
       })
-      .catch(() => alive && setMember({ state: 'member', granted: false, order: null, downloaded: [], token }));
+      .catch(() => alive && setMember({ state: 'member', granted: false, order: null, downloaded: [], progress: null, unlocked: [], token }));
     return () => {
       alive = false;
     };
@@ -95,14 +114,35 @@ export default function BookshelfScreen() {
   if (!fontsLoaded && !fontError) return <View style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} />;
 
   const granted = access.state === 'member' && access.granted;
-  // Quà khi đăng ký: một cuốn tải được với mọi tài khoản đã đăng nhập. Tiến độ mở toàn bộ đếm từ máy này.
+  // Quà khi đăng ký: một cuốn tải được với mọi tài khoản đã đăng nhập.
   const giftBook = BOOKS.find((b) => b.id === GIFT_FIRST_BOOK);
   const giftGot = access.state === 'member' && access.downloaded.includes(GIFT_FIRST_BOOK);
-  const progress = giftProgress(questsDone, lessonsDone);
+  // Tiến độ: người đã đăng nhập xem số máy chủ đếm; khách xem số tạm trên máy này để hình dung.
+  const shown: BookProgress = access.state === 'member' && access.progress ? access.progress : { quests: questsDone, lessons: lessonsDone };
+  const openIds = new Set<BookId>(access.state === 'member' ? access.unlocked : []);
+  const isOpen = (id: BookId) => granted || openIds.has(id);
+  // Cuốn kế tiếp là cuốn đầu tiên trong tủ còn khoá, theo thứ tự kệ.
+  const nextBook = BOOKS.find((b) => !isOpen(b.id)) ?? null;
+  const nextGap = nextBook ? bookGap(nextBook.id, shown) : null;
+  const nextNeed = nextBook ? BOOK_REQUIREMENTS[nextBook.id] : null;
+  const nextRatio = nextBook && nextNeed
+    ? Math.min(1, nextNeed.quests > 0 ? shown.quests / nextNeed.quests : 1, nextNeed.lessons > 0 ? shown.lessons / nextNeed.lessons : 1)
+    : 1;
   // Bìa chia đều theo bề rộng THẬT của kệ (cửa sổ trừ thanh menu): bìa ≥ 140px, IELTS 6 cuốn nằm một hàng khi đủ chỗ.
   const gap = wide ? 24 : 16;
   const cols = shelfW > 0 ? Math.max(2, Math.min(6, Math.floor((shelfW + gap) / (140 + gap)))) : 2;
   const coverW = shelfW > 0 ? Math.floor((shelfW - gap * (cols - 1)) / cols) : 140;
+
+  /** Dòng dưới bìa cuốn còn khoá: chỉ tiêu và phần còn thiếu, hoặc lời mời đăng nhập. */
+  const lockText = (id: BookId): string => {
+    if (access.state === 'guest') return L('Đăng nhập để mở sách này', 'Sign in to open this book');
+    const need = BOOK_REQUIREMENTS[id];
+    const left = bookGap(id, shown);
+    return L(
+      `Mở khi làm ${need.quests} nhiệm vụ và học ${need.lessons} bài. Còn ${left.quests} nhiệm vụ, ${left.lessons} bài.`,
+      `Opens after ${need.quests} tasks and ${need.lessons} lessons. ${left.quests} tasks, ${left.lessons} lessons to go.`,
+    );
+  };
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} contentContainerStyle={{ paddingBottom: 48 }}>
@@ -117,19 +157,28 @@ export default function BookshelfScreen() {
               ? L(`Bạn đã nhận quà: ${giftBook?.title ?? ''}.`, `You have received your gift: ${giftBook?.title ?? ''}.`)
               : L(`Quà của bạn: ${giftBook?.title ?? ''}. Bấm tải ở bìa sách.`, `Your gift: ${giftBook?.title ?? ''}. Tap download on its cover.`)}
         </Text>
+        <Text style={{ color: INK_G, fontFamily: SANS_7, fontSize: 15 }}>{L('Mở dần tủ sách', 'Unlock the shelf step by step')}</Text>
         <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 14, lineHeight: 20 }}>
           {L(
-            `Mở toàn bộ tủ sách: làm ${GIFT_QUEST_GOAL} nhiệm vụ và học ${GIFT_LESSON_GOAL} bài. Hiện có ${progress.questsDone}/${GIFT_QUEST_GOAL} nhiệm vụ và ${progress.lessonsDone}/${GIFT_LESSON_GOAL} bài.`,
-            `Unlock the whole shelf: finish ${GIFT_QUEST_GOAL} tasks and ${GIFT_LESSON_GOAL} lessons. You have ${progress.questsDone}/${GIFT_QUEST_GOAL} tasks and ${progress.lessonsDone}/${GIFT_LESSON_GOAL} lessons.`,
+            `Làm nhiệm vụ và học bài để mở từng cuốn. Hiện có ${shown.quests} nhiệm vụ và ${shown.lessons} bài đã học.`,
+            `Finish tasks and lessons to open each book. You have ${shown.quests} tasks and ${shown.lessons} lessons.`,
           )}
         </Text>
-        <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(139, 108, 240,0.2)', overflow: 'hidden' }}>
-          <View style={{ height: 8, width: `${Math.round(progress.ratio * 100)}%`, backgroundColor: GOLD_DEEP, borderRadius: 4 }} />
-        </View>
-        {progress.unlocked ? (
-          <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 13 }}>
-            {L('Bạn đã đủ điều kiện. Mở toàn bộ tủ sách đang được hoàn thiện.', 'You have met the goal. Unlocking the full shelf is being finished.')}
+        {nextBook && nextGap ? (
+          <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 14, lineHeight: 20 }}>
+            {L(
+              `Cuốn kế tiếp: ${nextBook.title}. Còn ${nextGap.quests} nhiệm vụ và ${nextGap.lessons} bài.`,
+              `Next book: ${nextBook.title}. ${nextGap.quests} tasks and ${nextGap.lessons} lessons to go.`,
+            )}
           </Text>
+        ) : (
+          <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 14, lineHeight: 20 }}>{L('Bạn đã mở đủ cả tủ sách.', 'You have unlocked the whole shelf.')}</Text>
+        )}
+        <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(139, 108, 240,0.2)', overflow: 'hidden' }}>
+          <View style={{ height: 8, width: `${Math.round(nextRatio * 100)}%`, backgroundColor: GOLD_DEEP, borderRadius: 4 }} />
+        </View>
+        {access.state === 'guest' ? (
+          <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 13 }}>{L('Đăng nhập để tiến độ được lưu và mở sách.', 'Sign in so your progress is saved and books open.')}</Text>
         ) : null}
       </View>
       {/* Đầu trang: sảnh vàng kim + tên tủ + nhãn phòng */}
@@ -181,7 +230,8 @@ export default function BookshelfScreen() {
                     width={coverW}
                     en={en}
                     L={L}
-                    granted={granted || (access.state === 'member' && book.id === GIFT_FIRST_BOOK)}
+                    available={isOpen(book.id)}
+                    lockedText={isOpen(book.id) ? null : lockText(book.id)}
                     downloaded={access.state === 'member' && access.downloaded.includes(book.id)}
                     busy={busy === book.id}
                     onSample={() => openSample(book)}
@@ -255,7 +305,8 @@ function BookCard({
   width,
   en,
   L,
-  granted,
+  available,
+  lockedText,
   downloaded,
   busy,
   onSample,
@@ -265,7 +316,10 @@ function BookCard({
   width: number;
   en: boolean;
   L: (vi: string, en: string) => string;
-  granted: boolean;
+  /** Cuốn đã mở (gói trả tiền, quà, hoặc đủ chỉ tiêu) thì mới hiện nút tải. */
+  available: boolean;
+  /** Dòng giải thích vì sao cuốn còn khoá. Null khi đã mở. */
+  lockedText: string | null;
   downloaded: boolean;
   busy: boolean;
   onSample: () => void;
@@ -299,13 +353,18 @@ function BookCard({
       <Text style={{ marginTop: 6, fontFamily: SANS_5, color: MUTED_G, fontSize: 12.5 }}>{size}</Text>
       <View style={{ marginTop: 10, gap: 8 }}>
         <SmallButton label={L(`Đọc thử ${SAMPLE_PAGES} trang`, `Preview ${SAMPLE_PAGES} pages`)} onPress={onSample} />
-        {granted ? (
+        {available ? (
           <SmallButton
             solid
             busy={busy}
             label={downloaded ? L('Tải lại', 'Download again') : L('Tải bản đầy đủ', 'Download full book')}
             onPress={onDownload}
           />
+        ) : lockedText ? (
+          <View className="flex-row items-center" style={{ gap: 6, paddingHorizontal: 4 }}>
+            <Icon name="lock" size={14} color={MUTED_G} />
+            <Text style={{ flexShrink: 1, fontFamily: SANS_5, color: MUTED_G, fontSize: 12.5, lineHeight: 17 }}>{lockedText}</Text>
+          </View>
         ) : null}
       </View>
     </View>

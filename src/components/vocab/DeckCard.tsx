@@ -8,6 +8,8 @@ import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { GlossOrb } from '@/components/ui/GlossOrb';
 import { TileArt } from '@/components/ui/TileArt';
+import { BookCover } from './BookCover';
+import type { BookCoverSpec } from '@/data/book-covers';
 import { studiedPct, type DeckProgress } from '@/services/vocab/deck-library';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { useL } from '@/i18n/useL';
@@ -94,7 +96,33 @@ const COVER_RATIO = 0.8;
  * Khung hoạ tiết đầu thẻ bộ: ảnh bìa nếu có, không thì hoạ tiết pastel theo tên bộ, quả cầu icon chồng lên —
  * cùng kiểu thẻ luyện của trang từ vựng.
  */
-function DeckCover({ cover, icon, soft, strong, seed, hovered }: { cover?: string; icon: IconName; soft: string; strong: string; seed: string; hovered: boolean }) {
+function DeckCover({
+  cover,
+  book,
+  count,
+  icon,
+  soft,
+  strong,
+  seed,
+  hovered,
+}: {
+  cover?: string;
+  book?: BookCoverSpec;
+  count: number;
+  icon: IconName;
+  soft: string;
+  strong: string;
+  seed: string;
+  hovered: boolean;
+}) {
+  if (book) {
+    // Bìa sách đứng 4:5, vẽ bằng code (xem `BookCover`), không có quả cầu icon.
+    return (
+      <View style={{ aspectRatio: COVER_RATIO, overflow: 'hidden' }}>
+        <BookCover spec={book} count={count} />
+      </View>
+    );
+  }
   return (
     <View style={{ aspectRatio: 1.5, overflow: 'hidden', backgroundColor: soft }}>
       {cover ? (
@@ -122,6 +150,7 @@ export function DeckCard({
   icon,
   sourceLabel,
   cover,
+  book,
   onPress,
 }: {
   title: string;
@@ -133,6 +162,8 @@ export function DeckCard({
   sourceLabel: string;
   /** Ảnh bìa của bộ (đường dẫn trong app). Không có thì dùng nền màu. */
   cover?: string;
+  /** Bìa sách vẽ bằng code (7 bộ sách từ vựng). Có thì thay cho ảnh bìa. */
+  book?: BookCoverSpec;
   now?: Date;
   onPress: () => void;
 }) {
@@ -170,7 +201,7 @@ export function DeckCard({
         }}
       >
         <LinearGradient colors={[soft, strong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
-        <DeckCover cover={cover} icon={icon} soft={soft} strong={strong} seed={title} hovered={hovered} />
+        <DeckCover cover={cover} book={book} count={progress.total} icon={icon} soft={soft} strong={strong} seed={title} hovered={hovered} />
 
         <View style={{ flex: 1, paddingHorizontal: 16, paddingBottom: 14, gap: 6, justifyContent: 'flex-end' }}>
           <Text

@@ -1,8 +1,8 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { msg } from '@/lib/server-locale';
-import { bookById, downloadName } from '@/services/books/catalog';
+import { BOOKS, bookById, downloadName } from '@/services/books/catalog';
 import { bookGrant, type PaymentForBooks } from '@/services/books/entitlement';
-import { GIFT_FIRST_BOOK } from '@/services/books/gift';
+import { GIFT_FIRST_BOOK, bookUnlocked, cleanCount, unlockedBooks, type BookProgress } from '@/services/books/gift';
 import { stampPdf } from '@/services/books/stamp';
 import {
   BOOKS_BUCKET,
@@ -75,6 +75,27 @@ function giftRef(userId: string): string {
   return `QUA-${userId.slice(0, 8).toUpperCase()}`;
 }
 
+/** Mã in ở chân trang cuốn mở bằng tiến độ học: không có đơn, lấy mã từ tài khoản. */
+function learnRef(userId: string): string {
+  return `HOC-${userId.slice(0, 8).toUpperCase()}`;
+}
+
+/**
+ * Tiến độ mở sách, đọc từ kho đồng bộ của CHÍNH người này: số nhiệm vụ đã nhận
+ * thưởng (`game.questsClaimed`) và số bài đã học xong (`lessons.done`). Lỗi đọc thì
+ * ném ra để người gọi từ chối, không coi như 0 rồi cho tải.
+ */
+async function readProgress(admin: Admin, userId: string): Promise<BookProgress> {
+  const { data, error } = await admin.from('user_state').select('store_key, payload').eq('user_id', userId).in('store_key', ['game', 'lessons']);
+  if (error) throw error;
+  const byKey = new Map((data ?? []).map((r) => [String(r.store_key), r.payload as Record<string, unknown> | null]));
+  const done = byKey.get('lessons')?.done;
+  return {
+    quests: cleanCount(byKey.get('game')?.questsClaimed),
+    lessons: done && typeof done === 'object' ? Object.keys(done).length : 0,
+  };
+}
+
 async function readLog(admin: Admin, userId: string): Promise<DownloadLog> {
   const { data } = await admin.storage.from(BOOKS_BUCKET).download(logPath(userId));
   return parseLog(data ? await data.text() : null);
@@ -96,7 +117,7 @@ async function sweepStale(admin: Admin, today: string) {
 }
 
 export async function GET(request: Request) {
-  if (!request.headers.get('authorization')) return Response.json({ granted: false, order: null, downloaded: [] });
+  if (!request.headers.get('authorization')) return Response.json({ granted: false, order: null, downloaded: [], progress: null, unlocked: [] });
   const who = await identify(request);
   if (!who.ok) return who.error;
   try {
@@ -104,7 +125,10 @@ export async function GET(request: Request) {
     const grant = await grantFor(admin, who.userId);
     // Sổ tải có cả lượt nhận quà, nên đọc cho mọi tài khoản đã đăng nhập.
     const downloaded = downloadedBooks(await readLog(admin, who.userId));
-    return Response.json({ granted: Boolean(grant), order: grant ? orderRef(grant) : null, downloaded });
+    const progress = await readProgress(admin, who.userId);
+    // Người có gói trả tiền mở cả tủ; người khác mở theo tiến độ.
+    const unlocked = grant ? BOOKS.map((b) => b.id) : unlockedBooks(progress);
+    return Response.json({ granted: Boolean(grant), order: grant ? orderRef(grant) : null, downloaded, progress, unlocked });
   } catch {
     return Response.json({ error: msg(request, 'Không đọc được đơn hàng, thử lại sau.', 'Could not read your orders. Try again later.') }, { status: 500 });
   }
@@ -125,11 +149,12 @@ export async function POST(request: Request) {
 
   const admin = getSupabaseAdmin();
   const grant = await grantFor(admin, who.userId).catch(() => null);
-  // Quà khi đăng ký: cuốn tặng đầu tiên tải được với mọi tài khoản đã đăng nhập.
-  const gift = !grant && bookId === GIFT_FIRST_BOOK;
-  if (!grant && !gift) {
+  // Không có gói trả tiền thì phải đạt chỉ tiêu của đúng cuốn này. Cuốn quà có chỉ tiêu 0 nên mở ngay khi đăng ký.
+  const progress = grant ? null : await readProgress(admin, who.userId).catch(() => null);
+  const byProgress = progress !== null && bookUnlocked(book.id, progress);
+  if (!grant && !byProgress) {
     return Response.json(
-      { error: msg(request, 'Bản đầy đủ kèm gói Max hoặc gói trả theo năm. Đăng ký tài khoản để nhận 1 cuốn quà.', 'The full book comes with Max or any yearly plan. Sign up to get one book as a gift.') },
+      { error: msg(request, 'Cuốn này mở khi bạn đạt chỉ tiêu học. Xem tiến độ ở Tủ sách.', 'This book opens when you reach its study goal. See your progress in the bookshelf.') },
       { status: 403 },
     );
   }
@@ -152,7 +177,8 @@ export async function POST(request: Request) {
     if (dlErr || !master) {
       return Response.json({ error: msg(request, 'Kho sách đang lỗi, thử lại sau ít phút.', 'The book store is unavailable. Try again shortly.') }, { status: 502 });
     }
-    const bytes = await stampPdf(new Uint8Array(await master.arrayBuffer()), { email: who.email, orderRef: grant ? orderRef(grant) : giftRef(who.userId), issuedAt: now });
+    const ref = grant ? orderRef(grant) : book.id === GIFT_FIRST_BOOK ? giftRef(who.userId) : learnRef(who.userId);
+    const bytes = await stampPdf(new Uint8Array(await master.arrayBuffer()), { email: who.email, orderRef: ref, issuedAt: now });
     const { error: upErr } = await storage.upload(path, bytes, { contentType: 'application/pdf', upsert: true });
     if (upErr) {
       return Response.json({ error: msg(request, 'Không chuẩn bị được bản tải, thử lại sau.', 'Could not prepare your copy. Try again later.') }, { status: 502 });
@@ -166,7 +192,8 @@ export async function POST(request: Request) {
   }
 
   // Sổ tải là căn cứ của Chính sách hoàn tiền: ghi TRƯỚC khi trả link. Ghi hỏng thì không trả link.
-  const next = appendDownload(log, { book: book.id, at: now.toISOString(), paymentId: grant ? grant.id : 'gift' });
+  const source = grant ? grant.id : book.id === GIFT_FIRST_BOOK ? 'gift' : 'progress';
+  const next = appendDownload(log, { book: book.id, at: now.toISOString(), paymentId: source });
   const { error: logErr } = await storage.upload(logPath(who.userId), JSON.stringify(next), { contentType: 'application/json', upsert: true });
   if (logErr) {
     return Response.json({ error: msg(request, 'Không ghi được lượt tải, thử lại sau.', 'Could not record the download. Try again.') }, { status: 502 });

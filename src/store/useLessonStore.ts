@@ -28,6 +28,21 @@ export const useLessonStore = create<LessonState>()(
   ),
 );
 
+/**
+ * Gộp bài đã học xong của hai máy: hợp các khoá, mỗi khoá giữ thời điểm SỚM nhất
+ * (bài đã học ở bất kỳ máy nào thì vẫn là đã học, không bị xoá bởi máy khác).
+ */
+export function mergeLessonDone(
+  local: { done?: Record<string, string> } | null | undefined,
+  remote: { done?: Record<string, string> } | null | undefined,
+): { done: Record<string, string> } {
+  const out: Record<string, string> = { ...(remote?.done ?? {}) };
+  for (const [key, at] of Object.entries(local?.done ?? {})) {
+    if (!out[key] || at < out[key]) out[key] = at;
+  }
+  return { done: out };
+}
+
 export function lessonKey(subject: 'math' | 'verbal', skill: string): string {
   return `${subject}:${skill}`;
 }

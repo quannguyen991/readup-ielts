@@ -52,6 +52,7 @@ import { mergeWriting, type WritingSyncPayload } from '@/services/writing/store-
 import { useLevelTestStore } from '@/store/useLevelTestStore';
 import { mergeLevelTests, type LevelTestRecord } from '@/services/hub/level-test';
 import { useDialogueStore } from '@/store/useDialogueStore';
+import { mergeLessonDone, useLessonStore } from '@/store/useLessonStore';
 import { mergeDialogueBest, type DialogueBest } from '@/services/hub/dialogue';
 import { mergeHub, type HubPayload } from '@/services/hub/sync';
 
@@ -337,6 +338,20 @@ const studyAbroadStore: SyncedStore = {
   merge: (local, remote) => mergeStudyAbroad(local, remote),
 };
 
+/**
+ * Bài SAT đã học xong (bấm "Đã học xong" ở cuối bài). Máy chủ đọc số bài này để mở
+ * dần tủ sách, nên phải có mặt trên máy chủ chứ không chỉ trên máy.
+ */
+const lessonsStore: SyncedStore = {
+  key: 'lessons',
+  read: () => ({ done: useLessonStore.getState().done }),
+  write: (payload) => {
+    const done = (payload as { done?: Record<string, string> } | null)?.done;
+    if (done && typeof done === 'object') useLessonStore.setState({ done });
+  },
+  merge: (local, remote) => mergeLessonDone(local as never, remote as never),
+};
+
 /** Quán khởi nghiệp: quán đã mở, sổ quán, món riêng. Vốn nằm ở sổ đồng du học (store Du học). */
 const hubStore: SyncedStore = {
   key: 'hub',
@@ -514,4 +529,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(hubStore);
   registerSyncedStore(grammarTestStore);
   registerSyncedStore(dialogueBestStore);
+  registerSyncedStore(lessonsStore);
 }

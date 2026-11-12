@@ -28,6 +28,7 @@ import { bi, useL } from '@/i18n/useL';
 import { DeckActionCard, DeckCard } from './DeckCard';
 import { SourceCard } from './SourceCard';
 import { VOCAB_COVERS } from '@/data/vocab-covers';
+import { BOOK_COVERS, type BookCoverSpec } from '@/data/book-covers';
 import { deckLook, type DeckLook, type DeckSource } from './deck-style';
 
 /**
@@ -56,6 +57,8 @@ type LibDeck = {
   knownExam?: 'toeic' | 'toefl';
   /** Ảnh bìa của bộ (nếu đã có), xem `VOCAB_COVERS`. */
   cover?: string;
+  /** Bìa sách vẽ bằng code (7 bộ sách), xem `BOOK_COVERS`. */
+  book?: BookCoverSpec;
 };
 
 const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconName }[] = [
@@ -142,7 +145,7 @@ const PREVIEW_ALL = 8;
 
 function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string, en?: LibDeck['en']): LibDeck {
   const look = deckLook(slug);
-  return { slug, title, subtitle, words, look, en, cover: VOCAB_COVERS[slug], haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
+  return { slug, title, subtitle, words, look, en, cover: VOCAB_COVERS[slug], book: BOOK_COVERS[slug], haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
 }
 
 const STATIC_DECKS: LibDeck[] = [
@@ -234,7 +237,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const open = (d: LibDeck) => router.push((d.href ?? `/vocabulary/topic/${d.slug}`) as never);
   const card = (d: LibDeck, i: number) => (
     <Appear key={d.slug} index={Math.min(i, 8)} style={{ height: '100%' }}>
-      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} cover={d.cover} now={now} onPress={() => open(d)} />
+      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} cover={d.cover} book={d.book} now={now} onPress={() => open(d)} />
     </Appear>
   );
   const createCard = (
