@@ -22,6 +22,13 @@ export type StudyWord = {
   /** Chỉ bộ có dữ liệu viết tay (SAT Verbal): từ đồng nghĩa, trái nghĩa. */
   synonyms?: string[];
   antonyms?: string[];
+  language?: 'en' | 'ja' | 'zh';
+  romanization?: string;
+  sourcePos?: string;
+  glossLanguage?: 'vi' | 'en';
+  sourcePage?: number;
+  sourceLevel?: string;
+  sourceNote?: string;
 };
 
 /** RNG gieo hạt — cùng hạt ra cùng thứ tự, để test tái lập được. */

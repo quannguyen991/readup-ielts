@@ -33,7 +33,9 @@ export function Flashcards<W extends StudyWord>({
   onRate,
   accent = color.primary,
   tone,
+  initialShuffle = false,
 }: {
+  initialShuffle?: boolean;
   words: W[];
   savedWords: Set<string>;
   onSave: (w: W) => void;
@@ -47,8 +49,8 @@ export function Flashcards<W extends StudyWord>({
   tone?: readonly [string, string];
 }) {
   const { L } = useL();
-  const [order, setOrder] = useState<"original" | "shuffled">("original");
-  const [seed, setSeed] = useState(1);
+  const [order, setOrder] = useState<"original" | "shuffled">(initialShuffle ? "shuffled" : "original");
+  const [seed, setSeed] = useState(() => Date.now() % 100000);
   const list = useMemo(
     () => (order === "original" ? words : shuffled(words, seededRng(seed))),
     [order, words, seed],
@@ -56,7 +58,7 @@ export function Flashcards<W extends StudyWord>({
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const word = list[index];
-  useAutoPronounce(word?.word, `${order}-${seed}-${index}`);
+  useAutoPronounce(word?.word, `${order}-${seed}-${index}`, word?.language);
   const nextWord = list[(index + 1) % list.length]?.word;
   useEffect(() => {
     if (nextWord) preloadPronunciation([nextWord]);
@@ -144,7 +146,7 @@ export function Flashcards<W extends StudyWord>({
       {/* Hàng điều khiển dưới thẻ. */}
       <View className="mt-4 flex-row items-center justify-between gap-2">
         <View className="flex-row items-center gap-2">
-          <SpeakButton text={word.word} />
+          <SpeakButton text={word.word} language={word.language} />
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={saved ? L("Đã lưu vào sổ từ", "Saved to notebook") : L("Lưu vào sổ từ", "Save to notebook")}

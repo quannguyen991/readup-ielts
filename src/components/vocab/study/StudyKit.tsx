@@ -48,11 +48,11 @@ export const RED = "#E11D48";
  */
 export function speak(
   text: string,
-  opts: { rate?: number; voice?: string | null } = {},
+  opts: { rate?: number; voice?: string | null; language?: 'en' | 'ja' | 'zh' } = {},
 ) {
   // MỘT giọng cho cả app: mọi tiếng đi qua một cửa (clip Gemini Aoede; giọng máy chỉ tạm khi chưa có clip).
   // `voice` (chọn giọng máy ở màn Chính tả) không còn tác dụng.
-  void pronounce(text, { rate: opts.rate });
+  void pronounce(text, { rate: opts.rate, language: opts.language === 'ja' ? 'ja-JP' : opts.language === 'zh' ? 'zh-CN' : undefined });
 }
 
 /**
@@ -285,12 +285,14 @@ export function SpeakButton({
   rate,
   size = 20,
   small = false,
+  language,
 }: {
   text: string;
   rate?: number;
   size?: number;
   /** Nút nhỏ (hàng từ / câu ví dụ trong bảng phản hồi). */
   small?: boolean;
+  language?: 'en' | 'ja' | 'zh';
 }) {
   const theme = useStudyTheme();
   const box = small ? 32 : 40;
@@ -298,7 +300,7 @@ export function SpeakButton({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={`Nghe "${text}"`}
-      onPress={() => speak(text, { rate })}
+      onPress={() => speak(text, { rate, language })}
       hitSlop={small ? 8 : 6}
       className="items-center justify-center rounded-pill"
       style={{ width: box, height: box, backgroundColor: theme.dark ? theme.soft : "#F3F0FB" }}
@@ -519,7 +521,7 @@ export function FeedbackPanel({
             {pron ? (
               <View className="flex-row items-center gap-1.5">
                 <Text className="font-sans text-label text-muted">{posIpa(word)}</Text>
-                <SpeakButton text={word.word} small />
+                <SpeakButton text={word.word} small language={word.language} />
               </View>
             ) : null}
           </View>

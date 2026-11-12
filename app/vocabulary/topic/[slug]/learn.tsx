@@ -262,17 +262,17 @@ export default function LearnScreen() {
   // Chiều nghe: đọc to ngay khi câu hiện ra.
   useEffect(() => {
     if (dir === "listen" && word && verdict === null && head?.kind !== "fill")
-      speak(word.word, { rate: 0.85 });
+      speak(word.word, { rate: 0.85, language: word.language });
     // Chỉ khi sang câu mới, không phải mỗi lần chấm.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, dir, word?.word]);
 
-  // TỰ PHÁT ÂM (quy tắc ở `services/vocab/auto-speak.ts`): đọc từ tiếng Anh đúng một lần mỗi câu,
+  // TỰ PHÁT ÂM (quy tắc ở `services/vocab/auto-speak.ts`): đọc từ đích đúng một lần mỗi câu,
   // lúc nó xuất hiện — làm đề, lật ra, hoặc lộ ra cùng đáp án (đúng hay sai đều đọc).
   const speakWhen = word && head ? autoSpeakWhen({ kind: head.kind, dir, flipped, revealed: verdict !== null }) : null;
   const shownWord: string | null = word && speakWhen ? word.word : null;
   const speakKey = `${slug}-${seed}-${step}-${speakWhen ?? ""}`;
-  useAutoPronounce(shownWord, speakKey);
+  useAutoPronounce(shownWord, speakKey, word?.language);
   useEffect(() => {
     preloadPronunciation(round.map((w) => w.word));
   }, [round]);
@@ -598,6 +598,7 @@ export default function LearnScreen() {
       matchCount={(d) =>
         filterWords(topic.words, d, stageOf, starredSet).length
       }
+      sourceLanguage={topic.language}
       onClose={() => setShowSettings(false)}
       onApply={(s) => {
         setLearnSettings(s);
@@ -818,7 +819,7 @@ export default function LearnScreen() {
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="font-semi text-label text-muted">
                     {dir === "viToEn"
-                      ? L("Chọn từ tiếng Anh đúng", "Choose the right English word")
+                      ? L(`Chọn từ ${w.language === 'ja' ? 'tiếng Nhật' : 'tiếng Anh'} đúng`, `Choose the right ${w.language === 'ja' ? 'Japanese' : 'English'} word`)
                       : dir === "enToEn"
                         ? L("Chọn định nghĩa tiếng Anh đúng", "Choose the right English definition")
                         : L("Chọn nghĩa đúng", "Choose the right meaning")}
@@ -843,7 +844,7 @@ export default function LearnScreen() {
                     ) : null}
                   </View>
                   {dir !== "viToEn" ? (
-                    <SpeakButton text={w.word} rate={0.85} />
+                    <SpeakButton text={w.word} rate={0.85} language={w.language} />
                   ) : null}
                 </View>
                 <View className="mt-6">
@@ -866,13 +867,13 @@ export default function LearnScreen() {
                   <Text className="font-semi text-label text-muted">
                     {dir === "listen"
                       ? L("Nghe rồi gõ lại từ", "Listen and type the word")
-                      : L("Gõ từ tiếng Anh", "Type the English word")}
+                      : L(`Gõ từ ${w.language === 'ja' ? 'tiếng Nhật' : 'tiếng Anh'}`, `Type the ${w.language === 'ja' ? 'Japanese' : 'English'} word`)}
                   </Text>
                   {star}
                 </View>
                 {dir === "listen" ? (
                   <View className="mt-1 flex-row items-center gap-3">
-                    <SpeakButton text={w.word} rate={0.85} size={24} />
+                    <SpeakButton text={w.word} rate={0.85} size={24} language={w.language} />
                     <Text className="font-sans text-bodyLg text-muted">
                       {[w.pos, L(`${w.word.length} chữ cái`, `${w.word.length} letters`)]
                         .filter(Boolean)

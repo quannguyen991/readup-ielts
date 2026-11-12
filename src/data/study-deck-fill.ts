@@ -38,6 +38,9 @@ const FILL = exampleFill as Record<string, Record<string, string>>;
 
 /** Bộ đã bổ sung câu ví dụ và làm sạch tên mục. Giữ nguyên các mục đã đúng. */
 export function fillStudyDeck(deck: StudyDeck): StudyDeck {
+  // Tên từ tiếng Nhật có thể chứa ngoặc và dấu phân cách như một phần của mục nguồn.
+  // Giữ nguyên dữ liệu OCR thay vì áp dụng quy tắc làm sạch headword dành cho tiếng Anh.
+  if (deck.language === 'ja' || deck.language === 'zh') return deck;
   const fills = FILL[deck.slug] ?? {};
   return {
     ...deck,

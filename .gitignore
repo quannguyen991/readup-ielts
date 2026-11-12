@@ -64,6 +64,8 @@ data/provenance/
 # Locally imported OCR for source exam books. Do not commit or include in deploys.
 .local-private/ielts-ocr/
 .local-private/books/
+.local-private/book-vocab-ocr/
+.local-private/east-asian-vocab-ocr/
 public/vendor/pdf.worker.min.mjs
 public/vendor/PDFJS-LICENSE.txt
 

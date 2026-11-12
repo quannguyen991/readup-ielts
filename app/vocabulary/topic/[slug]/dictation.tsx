@@ -46,17 +46,18 @@ export default function DictationScreen() {
   const word = words[index];
   const sentenceAvailable = words.some((entry) => Boolean(entry.example));
   const target = word ? (sentenceMode && sentenceAvailable ? word.example : word.word) : '';
+  const ttsLanguage = word?.language === 'ja' ? 'ja-JP' : word?.language === 'zh' ? 'zh-CN' : undefined;
 
   const play = () => {
-    if (target) pronounce(target, { rate: speed });
+    if (target) pronounce(target, { rate: speed, language: ttsLanguage });
   };
 
   // Đọc ngay khi sang câu mới.
   useEffect(() => {
-    if (target) pronounce(target, { rate: speed });
+    if (target) pronounce(target, { rate: speed, language: ttsLanguage });
     // Chỉ đọc lại khi đổi câu hoặc đổi chế độ — đổi tốc độ không tự đọc.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, sentenceMode]);
+  }, [index, sentenceMode, ttsLanguage]);
 
   const check = () => {
     if (verdict !== null || !typed.trim() || !word) return;

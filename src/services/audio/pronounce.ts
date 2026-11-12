@@ -64,18 +64,19 @@ function speakSoon(fn: () => void, afterStop: boolean) {
  * Giọng máy. Trình duyệt chặn nói khi chưa chạm gì vào trang (`not-allowed`):
  * nhớ lại và nói ở lần chạm / bấm phím đầu tiên, không để mất tiếng im lặng.
  */
-function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean; my?: number } = {}) {
+function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean; my?: number; language?: 'ja-JP' | 'zh-CN' } = {}) {
+  const language = opts.language ?? (accent === 'uk' ? 'en-GB' : 'en-US');
   const go = () => {
     if (opts.my !== undefined && opts.my !== token) return;
     try {
       Speech.speak(text, {
-        language: accent === 'uk' ? 'en-GB' : 'en-US',
+        language,
         rate,
-        voice: englishVoice(),
+        voice: language.startsWith('en-') ? englishVoice() : undefined,
         onError: (e: unknown) => {
           const msg = String((e as { message?: string; error?: string })?.error ?? (e as { message?: string })?.message ?? e);
           if (opts.my !== undefined && opts.my !== token) return;
-          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate, { my: opts.my }));
+          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate, { my: opts.my, language: opts.language }));
         },
       });
     } catch {
@@ -105,7 +106,7 @@ function retryOnGesture(fn: () => void) {
   window.addEventListener('keydown', go, true);
 }
 
-export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean; /** Ghim một giọng (ví dụ Chính tả chỉ dùng Sarah): không lùi về giọng khác. */ voice?: ClipVoice };
+export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean; language?: 'en-US' | 'en-GB' | 'ja-JP' | 'zh-CN'; /** Ghim một giọng (ví dụ Chính tả chỉ dùng Sarah): không lùi về giọng khác. */ voice?: ClipVoice };
 
 /** WAV im lặng ~0 mẫu, chỉ để "mở khoá" phần tử âm thanh trong lần chạm đầu tiên. */
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
@@ -266,10 +267,11 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   const my = token;
   const accent = opts.accent ?? autoPronounceSettings().accent;
   const rate = opts.rate ?? 0.9;
+  const language = opts.language;
 
   try {
     // Giọng mặc định trước; chưa có clip thì thử giọng Alice; vẫn thiếu mới tới giọng máy.
-    if (isWeb) {
+    if (isWeb && (!language || language.startsWith('en-'))) {
       const pinned = opts.voice;
       const voice = pinned ?? currentClipVoice();
       const url =
@@ -304,9 +306,9 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
       }
     }
     // Chưa có clip của mục này (kho clip đang được sinh dần): giọng máy chỉ là TẠM THỜI để không im lặng.
-    tts(word, accent, rate, { auto: opts.auto, my });
+    tts(word, accent, rate, { auto: opts.auto, my, language: language === 'ja-JP' || language === 'zh-CN' ? language : undefined });
   } catch {
-    if (my === token) tts(word, accent, rate, { auto: opts.auto, my });
+    if (my === token) tts(word, accent, rate, { auto: opts.auto, my, language: language === 'ja-JP' || language === 'zh-CN' ? language : undefined });
   }
 }
 
@@ -329,7 +331,7 @@ let lastAutoToken = 0;
  * lúc từ hiện ra và lúc đáp án lộ ra (đúng hay sai). `id` chống phát hai lần cùng một lần hiện.
  * Trả `true` khi đã gọi phát.
  */
-export function autoSpeak(word: string | null | undefined, id: string): boolean {
+export function autoSpeak(word: string | null | undefined, id: string, language?: 'en' | 'ja' | 'zh'): boolean {
   if (!word) return false;
   const { auto } = autoPronounceSettings();
   // KHÔNG xét tắt tiếng hiệu ứng game: đó là âm thanh chém quái / chuông, còn phát âm là nội dung học. Người học muốn im
@@ -340,7 +342,7 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
   if (full === lastAuto && token === lastAutoToken && now - lastAutoAt < 1500) return false;
   lastAuto = full;
   lastAutoAt = now;
-  void pronounce(word, { auto: true });
+  void pronounce(word, { auto: true, language: language === 'ja' ? 'ja-JP' : language === 'zh' ? 'zh-CN' : undefined });
   lastAutoToken = token;
   return true;
 }
@@ -349,13 +351,13 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
  * Tự đọc `word` khi nó hiện ra (đổi `word` hoặc `key` = thẻ mới). `word` rỗng/null
  * thì im. Chỉ theo công tắc "Tự phát âm" (không theo tắt tiếng hiệu ứng game).
  */
-export function useAutoPronounce(word: string | null | undefined, key: string | number = ''): void {
+export function useAutoPronounce(word: string | null | undefined, key: string | number = '', language?: 'en' | 'ja' | 'zh'): void {
   const enabled = useTopicStudyStore((s) => s.learnSettings.autoPronounce !== false);
   useEffect(() => {
     if (!word || !enabled) return;
     let ownedToken: number | undefined;
     const t = setTimeout(() => {
-      if (autoSpeak(word, String(key))) ownedToken = token;
+      if (autoSpeak(word, String(key), language)) ownedToken = token;
     }, 150);
     return () => {
       clearTimeout(t);
@@ -363,7 +365,7 @@ export function useAutoPronounce(word: string | null | undefined, key: string | 
       // A manual playback or another screen may already own the player.
       if (ownedToken === token) stopPronounce();
     };
-  }, [word, key, enabled]);
+  }, [word, key, enabled, language]);
 }
 
 /** Một câu trong chuỗi `speakLines`. */

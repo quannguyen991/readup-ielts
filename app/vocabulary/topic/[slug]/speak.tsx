@@ -222,7 +222,7 @@ export default function SpeakScreen() {
               {[posIpa(word), word.meaningVi].filter(Boolean).join(' · ')}
             </Text>
             <View className="mt-3">
-              <SpeakButton text={word.word} rate={0.8} />
+              <SpeakButton text={word.word} rate={0.8} language={word.language} />
             </View>
           </View>
 

@@ -40,6 +40,8 @@ const GROUP_LABEL_EN: Record<string, string> = {
   'Từ đã lưu': 'Saved words',
   'Từ trong bài': 'Words from the article',
   'Thuật ngữ': 'Terms',
+  'Từ tiếng Nhật': 'Japanese words',
+  'Từ tiếng Trung': 'Chinese words',
 };
 
 const GROUP_BADGE: readonly BadgeIcon[] = ['check', 'star', 'target', 'bolt'];
@@ -180,7 +182,7 @@ function LevelChooser({ slug, levels }: { slug: string; levels: string[] }) {
 }
 
 export default function VocabTopicScreen() {
-  const { slug } = useLocalSearchParams<{ slug?: string }>();
+  const { slug, shuffle } = useLocalSearchParams<{ slug?: string; shuffle?: string }>();
   const topic = useStudyDeck(typeof slug === 'string' ? slug : '');
   const { L, en } = useL();
 
@@ -294,6 +296,7 @@ export default function VocabTopicScreen() {
                 {!en && topic.name !== topic.nameVi ? `${topic.name} · ` : ''}
                 {L(`${topic.words.length} từ`, `${topic.words.length} words`)}
               </Text>
+              {topic.sourceNote ? <Text className="mt-1 font-sans text-label" style={{ color: 'rgba(27,17,64,0.78)' }}>{topic.sourceNote}</Text> : null}
             </View>
             <View className="items-center justify-center rounded-full bg-white" style={{ width: 80, height: 80, boxShadow: '0 6px 16px rgba(27,17,64,0.12)' } as object}>
               <ProgressRing pct={pct} color={bg} size={62} />
@@ -313,7 +316,7 @@ export default function VocabTopicScreen() {
           </View>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
-              {MODES.filter((m) => modeReady(m.key, topic.words)).map((m) => (
+              {MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m) => (
                 <ToneTile
                   key={m.key}
                   seed={'mode-' + m.key}
@@ -360,6 +363,7 @@ export default function VocabTopicScreen() {
         <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
           {topic.words.length > 0 ? (
             <Flashcards
+              initialShuffle={shuffle === "1"}
               words={topic.words}
               savedWords={savedLemmas}
               onSave={save}
@@ -548,7 +552,7 @@ function WordRow({
 }) {
   const [open, setOpen] = useState(false);
   const { L } = useL();
-  const hasDetails = Boolean(word.example || word.collocation || word.context);
+  const hasDetails = Boolean(word.example || word.collocation || word.context || word.romanization || word.sourcePage || word.sourceNote);
 
   return (
     <Card>
@@ -556,17 +560,17 @@ function WordRow({
         <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
           <View className="flex-row flex-wrap items-baseline gap-2">
             <Text className="font-semi text-cardTitle text-ink">{word.word}</Text>
-            <Text className="font-sans text-label text-subtle">{word.ipa}</Text>
+            <Text className="font-sans text-label text-subtle">{[word.ipa, word.romanization, word.sourcePage ? `p. ${word.sourcePage}` : ''].filter(Boolean).join(' · ')}</Text>
             {word.pos ? <Badge label={word.pos} tone="neutral" shape="tag" /> : null}
             {(word as { more?: boolean }).more ? <Badge label={L('Mở rộng', 'Extra')} tone="primary" shape="tag" /> : null}
           </View>
-          <Text className="mt-0.5 font-sans text-body text-ink">{word.meaningVi}</Text>
+          {word.meaningVi ? <Text className="mt-0.5 font-sans text-body text-ink">{word.glossLanguage === 'en' ? L('Nghĩa tiếng Anh · ', 'English gloss · ') : ''}{word.meaningVi}</Text> : null}
         </View>
 
         <View className="flex-row items-center gap-2">
           {hasDetails ? (
             <Button
-              label={open ? L('Thu gọn', 'Collapse') : L('Ví dụ', 'Example')}
+              label={open ? L('Thu gọn', 'Collapse') : word.example ? L('Ví dụ', 'Example') : L('Chi tiết', 'Details')}
               variant="ghost"
               size="sm"
               onPress={() => setOpen((v) => !v)}
@@ -597,6 +601,7 @@ function WordRow({
           ) : null}
           {word.collocation ? <Detail label={L('Cụm hay đi kèm', 'Common collocation')} value={word.collocation} /> : null}
           {word.context ? <Detail label={L('Ngữ cảnh dùng', 'Where to use it')} value={word.context} /> : null}
+          {word.sourceNote ? <Detail label={L('Ghi chú nguồn', 'Source note')} value={word.sourceNote} /> : null}
         </View>
       ) : null}
     </Card>
@@ -637,7 +642,10 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
 ];
 
 /** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
-function modeReady(key: string, words: readonly StudyWord[]): boolean {
+function modeReady(key: string, words: readonly StudyWord[], language?: StudyWord['language']): boolean {
+  const hasMeaning = words.some((word) => Boolean(word.meaningVi?.trim() || word.definitionEn?.trim()));
+  if (!hasMeaning && ['learn', 'test', 'game', 'pairs', 'hangman', 'quiz', 'advert', 'flyer'].includes(key)) return false;
+  if (language && language !== 'en' && (key === 'speak' || key === 'hangman')) return false;
   if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
   if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
   if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);

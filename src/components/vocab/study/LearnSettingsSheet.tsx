@@ -28,6 +28,7 @@ export function LearnSettingsSheet({
   starredCount,
   unmasteredCount,
   matchCount,
+  sourceLanguage,
   onApply,
   onReset,
   onClose,
@@ -38,6 +39,7 @@ export function LearnSettingsSheet({
   unmasteredCount: number;
   /** Số từ còn lại sau bộ lọc, tính theo bản nháp. */
   matchCount: (draft: LearnSettings) => number;
+  sourceLanguage?: 'en' | 'ja' | 'zh';
   onApply: (s: LearnSettings) => void;
   onReset: () => void;
   onClose: () => void;
@@ -63,11 +65,13 @@ export function LearnSettingsSheet({
   const noDir = draft.directions.length === 0;
   const matches = matchCount(draft);
   const blocked = noKind || noDir || matches === 0;
+  const sourceName = sourceLanguage === 'ja' ? L('từ tiếng Nhật', 'Japanese word') : L('từ tiếng Anh', 'English word');
+  const glossName = sourceLanguage === 'ja' ? L('nghĩa tiếng Anh', 'English gloss') : L('nghĩa tiếng Việt', 'Vietnamese meaning');
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
-    { key: 'enToVi', label: en ? <>See the <B>English word</B>, pick the Vietnamese meaning</> : <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
-    { key: 'enToEn', label: en ? <>See the <B>English word</B>, pick its <B>English definition</B></> : <>Thấy <B>từ tiếng Anh</B>, chọn <B>định nghĩa tiếng Anh</B></> },
-    { key: 'viToEn', label: en ? <>See the <B>Vietnamese meaning</B>, find the English word</> : <>Thấy <B>nghĩa tiếng Việt</B>, tìm từ tiếng Anh</> },
+    { key: 'enToVi', label: en ? <>See the <B>{sourceName}</B>, pick the {glossName}</> : <>Thấy <B>{sourceName}</B>, chọn {glossName}</> },
+    { key: 'enToEn', label: en ? <>See the <B>{sourceName}</B>, pick its <B>English definition</B></> : <>Thấy <B>{sourceName}</B>, chọn <B>định nghĩa tiếng Anh</B></> },
+    { key: 'viToEn', label: en ? <>See the <B>{glossName}</B>, find the {sourceName}</> : <>Thấy <B>{glossName}</B>, tìm {sourceName}</> },
     { key: 'listen', label: en ? <>Just <B>listen to the audio</B>, recognise the word</> : <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
   ];
   const KINDS: { key: StageKind; label: string; icon: IconName }[] = [

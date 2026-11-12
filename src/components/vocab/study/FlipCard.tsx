@@ -125,12 +125,13 @@ export function WordFace({ word, hint, tone, seed }: { word: StudyWord; hint?: s
   );
 }
 
-/** Mặt thẻ chỉ có nghĩa tiếng Việt — cho chiều Việt → Anh. */
+/** Mặt thẻ mang nghĩa / bản dịch — cho chiều nghĩa → từ. */
 export function MeaningFace({ word, hint }: { word: StudyWord; hint?: string }) {
   const { L } = useL();
+  const answerLanguage = word.language === 'ja' ? L('từ tiếng Nhật là gì?', 'What is the Japanese word?') : L('từ tiếng Anh là gì?', "What's the English word?");
   return (
     <>
-      <Text className="font-semi text-label text-muted">{L('Từ tiếng Anh là gì?', "What's the English word?")}</Text>
+      <Text className="font-semi text-label text-muted">{answerLanguage}</Text>
       <Text className="mt-3 text-center font-strong text-pageTitle text-ink">{word.meaningVi}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">{word.pos}</Text>
       {hint ? <Text className="absolute bottom-5 font-sans text-label text-subtle">{hint}</Text> : null}
@@ -145,9 +146,9 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
     <>
       <Text className="font-semi text-label text-muted">{L('Nghe và đoán từ', 'Listen and guess the word')}</Text>
       <View className="mt-4">
-        <SpeakButton text={word.word} rate={0.85} size={26} />
+        <SpeakButton text={word.word} rate={0.85} size={26} language={word.language} />
       </View>
-      <Text className="mt-3 font-sans text-sectionTitle text-muted">{word.ipa}</Text>
+      <Text className="mt-3 font-sans text-sectionTitle text-muted">{[word.ipa, word.romanization].filter(Boolean).join(' · ')}</Text>
       {hint ? <Text className="absolute bottom-5 font-sans text-label text-subtle">{hint}</Text> : null}
     </>
   );
@@ -166,6 +167,7 @@ export function detailHeight(word: StudyWord, showWord = false, english = false)
   if (word.synonyms?.length) h += 40;
   if (word.antonyms?.length) h += 40;
   if (word.collocation) h += 40;
+  if (word.romanization || word.sourcePage || word.sourceNote) h += 54;
   return Math.max(320, h);
 }
 
@@ -195,6 +197,7 @@ function Chips({ words }: { words: string[] }) {
  */
 export function DetailFace({ word, showWord, english = false }: { word: StudyWord; showWord?: boolean; english?: boolean }) {
   const { L } = useL();
+  const meaningLabel = word.glossLanguage === 'en' ? L('Nghĩa tiếng Anh', 'English gloss') : L('Nghĩa tiếng Việt', 'Vietnamese meaning');
   return (
     <View>
       {showWord ? (
@@ -202,7 +205,7 @@ export function DetailFace({ word, showWord, english = false }: { word: StudyWor
           <Text className="text-center font-strong text-sectionTitle text-primary-700">
             {word.word} <Text className="font-sans text-body text-muted">{word.ipa}</Text>
           </Text>
-          <SpeakButton text={word.word} rate={0.85} size={16} />
+      <SpeakButton text={word.word} rate={0.85} size={16} language={word.language} />
         </View>
       ) : null}
       {english ? (
@@ -211,10 +214,17 @@ export function DetailFace({ word, showWord, english = false }: { word: StudyWor
           <Text className="mt-1 text-center font-sans text-body text-muted">{word.meaningVi}</Text>
         </>
       ) : (
-        <Text className="mt-1 text-center font-strong text-sectionTitle text-ink">{word.meaningVi}</Text>
+        word.meaningVi ? (
+          <View className="mt-1 items-center">
+            {word.glossLanguage === 'en' ? <Label>{meaningLabel}</Label> : null}
+            <Text className="text-center font-strong text-sectionTitle text-ink">{word.meaningVi}</Text>
+          </View>
+        ) : null
       )}
 
       <View className="mt-3 gap-2.5">
+        {word.romanization ? <View><Label>Romaji</Label><Text className="font-mid text-body text-ink">{word.romanization}</Text></View> : null}
+        {word.sourcePos && word.sourcePos !== word.pos ? <View><Label>{L('Từ loại theo nguồn', 'Source part of speech')}</Label><Text className="font-mid text-body text-ink">{word.sourcePos}</Text></View> : null}
         {word.example ? (
           <View>
             <Label>{L('Ví dụ', 'Example')}</Label>
@@ -239,6 +249,8 @@ export function DetailFace({ word, showWord, english = false }: { word: StudyWor
             <Text className="font-mid text-body text-ink">{word.collocation}</Text>
           </View>
         ) : null}
+        {word.sourcePage ? <View><Label>{L('Trang nguồn', 'Source page')}</Label><Text className="font-mid text-body text-ink">{word.sourcePage}</Text></View> : null}
+        {word.sourceNote ? <View><Label>{L('Ghi chú nguồn', 'Source note')}</Label><Text className="font-sans text-body text-muted">{word.sourceNote}</Text></View> : null}
       </View>
     </View>
   );

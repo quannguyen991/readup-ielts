@@ -24,6 +24,8 @@ export type StudyDeck = {
   nameVi: string;
   blurb: string;
   words: StudyWord[];
+  language?: 'en' | 'ja' | 'zh';
+  sourceNote?: string;
 };
 
 export const NOTEBOOK_SLUG = 'so-tu';
@@ -82,7 +84,7 @@ export function rawStaticDeck(slug: string): StudyDeck | undefined {
     };
   }
   const t = getVocabTopic(slug);
-  if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words };
+  if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words, language: t.language, sourceNote: t.sourceNote };
   // Bộ Oxford 3000 dùng đúng màn học của bộ IELTS. Từ Oxford không có phiên âm hay
   // định nghĩa tiếng Anh, nên hai trường đó để trống; cấp A1–C1 đi vào trường `band`.
   const o = OXFORD_TOPIC_DECKS.find((d) => d.slug === slug);
@@ -140,6 +142,8 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
 
 /** Nhóm từ để hiện danh sách: bộ IELTS theo band (dễ → khó), bộ khác một nhóm. */
 export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWord[] }[] {
+  if (deck.language === 'ja') return deck.words.length ? [{ label: 'Từ tiếng Nhật', words: deck.words }] : [];
+  if (deck.language === 'zh') return deck.words.length ? [{ label: 'Từ tiếng Trung', words: deck.words }] : [];
   if (deck.kind === 'oxford') {
     const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
     return levels.map((level) => ({ label: level, words: deck.words.filter((w) => w.band === level) })).filter((g) => g.words.length > 0);
