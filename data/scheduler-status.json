@@ -6,5 +6,19 @@
     "comments_target": 10,
     "last_post_at": "2026-10-31T02:29:10.387Z"
   },
-  "updated_at": "2026-10-31T02:29:10.387Z"
+  "updated_at": "2026-11-09T16:41:37.817Z",
+  "threads": {
+    "danh.hetxuanthidechonhau": {
+      "posts_target": 3,
+      "comments_target": 7,
+      "posts_completed": 1,
+      "comments_total": 0,
+      "posts_urls": [
+        "https://www.threads.com/@danh.hetxuanthidechonhau/post/Deqy0UlkYW8"
+      ],
+      "posts_done_idx": [
+        0
+      ]
+    }
+  }
 }

@@ -24,6 +24,8 @@ const dictLookup = createLookup();
 
 /** Kho clip giọng Gemini: từ + cụm từ, rồi câu. Thiếu thư mục / index thì bỏ qua. */
 export const clips = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'] });
+/** Clip tiếng Nhật / Trung dựng sẵn (edge-tts): `/audio/east-asian/{ja,zh}/index.json`. Dùng "giọng" ja / zh làm khoá thư mục. */
+const eastAsianClips = createClipLibrary({ sets: ['/audio/east-asian/{voice}/'] });
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined' && typeof Audio !== 'undefined';
 
 let token = 0;
@@ -302,6 +304,20 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
               return;
             }
           }
+        }
+      }
+    }
+    // Tiếng Nhật / Trung: clip dựng sẵn trước, thiếu mới tới giọng máy.
+    if (isWeb && (language === 'ja-JP' || language === 'zh-CN')) {
+      const url = await eastAsianClips.find(language === 'ja-JP' ? ('ja' as ClipVoice) : ('zh' as ClipVoice), word);
+      if (my !== token) return;
+      if (url) {
+        const r = await playClipUrl(url, { rate, my });
+        if (my !== token) return;
+        if (r.ok) return;
+        if (r.blocked) {
+          if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+          return;
         }
       }
     }
