@@ -9,7 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop } from '@/components/layout/GridBackdrop';
-import { BlueHero } from '@/components/home/BlueHero';
+import { FrescoHero } from '@/components/home/FrescoHero';
 import { CUTE_PALETTES } from '@/components/layout/cute-palettes';
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
 import { HistoryHomeCard } from '@/components/history/HistoryHomeCard';
@@ -292,7 +292,7 @@ export default function IntroScreen() {
 
       {/* ------------------------------------------------------------- hero */}
       <Appear>
-        <BlueHero
+        <FrescoHero
           wide={wide}
           eyebrow="IELTS · SAT · SPEAKING"
           chip={L('Luyện thi', 'Practise')}
