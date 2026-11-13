@@ -1,4 +1,6 @@
 import sourceBooks from './east-asian-vocab.json';
+import extraZh from './east-asian-extra-zh.json';
+import extraJa from './east-asian-extra-ja.json';
 import type { BookVocabBook, BookVocabLesson, BookVocabTheme, VocabTopicWord } from './vocab-topics';
 
 type SourceWord = { w: string; p?: string; r?: string; g?: string; o?: string; s?: number; l?: string };
@@ -56,24 +58,28 @@ function translateHskPos(pos: string): string {
     .trim();
 }
 
+type Extra = { vi: string; ex: { t: string; vi: string; py?: string }; syn?: string[]; coll?: string };
+const EXTRA: Record<'zh' | 'ja', Record<string, Extra>> = { zh: extraZh as Record<string, Extra>, ja: extraJa as Record<string, Extra> };
+
 function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
   const isJapanese = book.language === 'ja';
+  const extra = EXTRA[book.language][row.w];
   return {
     word: row.w,
     pos: isJapanese ? '' : translateHskPos(row.o ?? ''),
-    sourcePos: isJapanese ? undefined : row.o,
     ipa: row.p ?? '',
-    meaningVi: row.g ?? '',
-    definitionEn: '',
-    example: '',
-    collocation: '',
+    // Nghĩa tiếng Việt là bản biên soạn thêm; nghĩa tiếng Anh của Irodori giữ ở definitionEn.
+    meaningVi: extra?.vi ?? '',
+    definitionEn: isJapanese ? row.g ?? '' : '',
+    example: extra?.ex.t ?? '',
+    exampleVi: extra?.ex.vi,
+    exampleReading: extra?.ex.py,
+    synonyms: extra?.syn?.length ? extra.syn : undefined,
+    collocation: extra?.coll ?? '',
     band: isJapanese ? IRODORI_LEVEL_LABEL[row.l ?? ''] ?? 'Irodori' : `HSK ${row.l ?? ''}`.trim(),
     language: book.language,
     romanization: row.r,
-    glossLanguage: row.g ? 'en' : undefined,
-    sourcePage: row.s,
     sourceLevel: row.l,
-    sourceNote: book.sourceNote,
   };
 }
 
@@ -82,7 +88,7 @@ function makeLesson(source: SourceLesson, book: SourceBook, topic: SourceTheme):
     slug: source.slug,
     name: source.name,
     nameVi: source.nameVi,
-    blurb: `${source.blurb} · ${book.nameVi}`,
+    blurb: `${source.rows.length} từ · ${book.nameVi}`,
     words: source.rows.map((row) => makeWord(row, book)),
     bookSlug: book.slug,
     bookName: book.name,
@@ -93,9 +99,9 @@ function makeLesson(source: SourceLesson, book: SourceBook, topic: SourceTheme):
     sourceLesson: source.sourceLesson ?? undefined,
     sourceUnit: source.sourceUnit,
     lessonTitle: source.lessonTitle ?? undefined,
-    sourcePages: source.sourcePages,
+    sourcePages: [],
     language: book.language,
-    sourceNote: book.sourceNote,
+    sourceNote: undefined,
   };
 }
 
@@ -115,10 +121,10 @@ export const EAST_ASIAN_VOCAB_BOOKS: BookVocabBook[] = (sourceBooks as unknown a
     slug: book.slug,
     name: book.name,
     nameVi: book.nameVi,
-    blurb: book.blurb,
+    blurb: book.language === 'zh' ? 'Chữ Hán, pinyin, nghĩa tiếng Việt, ví dụ và đồng nghĩa theo cấp HSK.' : 'Kana, romaji, nghĩa tiếng Việt, ví dụ và từ đồng nghĩa theo bài Irodori.',
     words: topics.flatMap((topic) => topic.words),
     language: book.language,
-    sourceNote: book.sourceNote,
+    sourceNote: undefined,
     topics,
   };
 });

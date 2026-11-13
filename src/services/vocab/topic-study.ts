@@ -14,6 +14,8 @@ export type StudyWord = {
   definitionEn: string;
   example: string;
   collocation: string;
+  exampleVi?: string;
+  exampleReading?: string;
   band: string;
   /** Mức CEFR B1–C2 (bộ IELTS sau khi ghép). */
   cefr?: 'B1' | 'B2' | 'C1' | 'C2';

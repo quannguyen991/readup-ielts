@@ -29,6 +29,10 @@ export type VocabTopicWord = {
   definitionEn: string;
   example: string;
   collocation: string;
+  /** Bản dịch tiếng Việt của câu ví dụ (bộ Trung/Nhật); bộ tiếng Anh dịch theo yêu cầu. */
+  exampleVi?: string;
+  /** Phiên âm câu ví dụ (pinyin) cho bộ tiếng Trung. */
+  exampleReading?: string;
   band: string;
   /** Mức CEFR: B1 ≈ band 5–6, B2 ≈ 6–7, C1 ≈ 7–8, C2 ≈ 8+. Có ở mọi từ sau khi ghép bộ B1–C2. */
   cefr?: 'B1' | 'B2' | 'C1' | 'C2';

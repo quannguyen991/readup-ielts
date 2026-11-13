@@ -128,7 +128,7 @@ export function WordFace({ word, hint, tone, seed }: { word: StudyWord; hint?: s
 /** Mặt thẻ mang nghĩa / bản dịch — cho chiều nghĩa → từ. */
 export function MeaningFace({ word, hint }: { word: StudyWord; hint?: string }) {
   const { L } = useL();
-  const answerLanguage = word.language === 'ja' ? L('từ tiếng Nhật là gì?', 'What is the Japanese word?') : L('từ tiếng Anh là gì?', "What's the English word?");
+  const answerLanguage = word.language === 'ja' ? L('từ tiếng Nhật là gì?', 'What is the Japanese word?') : word.language === 'zh' ? L('từ tiếng Trung là gì?', 'What is the Chinese word?') : L('từ tiếng Anh là gì?', "What's the English word?");
   return (
     <>
       <Text className="font-semi text-label text-muted">{answerLanguage}</Text>
@@ -160,6 +160,7 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
  */
 export function detailHeight(word: StudyWord, showWord = false, english = false): number {
   let h = 170;
+  if (word.language === 'ja' || word.language === 'zh') h += 70;
   if (showWord) h += 36;
   // Định nghĩa tiếng Anh dài hơn nghĩa tiếng Việt, thường chiếm thêm hai đến ba dòng.
   if (english) h += word.definitionEn.length > 60 ? 80 : 50;
@@ -167,22 +168,22 @@ export function detailHeight(word: StudyWord, showWord = false, english = false)
   if (word.synonyms?.length) h += 40;
   if (word.antonyms?.length) h += 40;
   if (word.collocation) h += 40;
-  if (word.romanization || word.sourcePage || word.sourceNote) h += 54;
+  if (word.exampleVi || word.exampleReading) h += 24;
   return Math.max(320, h);
 }
 
 /** Nhãn nhỏ của từng mục trên mặt sau. */
-function Label({ children }: { children: string }) {
-  return <Text className="mb-1 font-sans text-label text-muted">{children}</Text>;
+function Label({ children, big }: { children: string; big?: boolean }) {
+  return <Text className={`mb-1 font-sans ${big ? 'text-body' : 'text-label'} text-muted`}>{children}</Text>;
 }
 
-function Chips({ words }: { words: string[] }) {
+function Chips({ words, big }: { words: string[]; big?: boolean }) {
   const theme = useStudyTheme();
   return (
     <View className="flex-row flex-wrap gap-1.5">
       {words.map((w) => (
         <View key={w} className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.chipBg }}>
-          <Text className="font-mid text-label" style={{ color: theme.chipInk }}>{w}</Text>
+          <Text className={`font-mid ${big ? 'text-bodyLg' : 'text-label'}`} style={{ color: theme.chipInk }}>{w}</Text>
         </View>
       ))}
     </View>
@@ -197,13 +198,14 @@ function Chips({ words }: { words: string[] }) {
  */
 export function DetailFace({ word, showWord, english = false }: { word: StudyWord; showWord?: boolean; english?: boolean }) {
   const { L } = useL();
+  const big = word.language === 'ja' || word.language === 'zh';
   const meaningLabel = word.glossLanguage === 'en' ? L('Nghĩa tiếng Anh', 'English gloss') : L('Nghĩa tiếng Việt', 'Vietnamese meaning');
   return (
     <View>
       {showWord ? (
         <View className="flex-row items-center justify-center gap-2">
           <Text className="text-center font-strong text-sectionTitle text-primary-700">
-            {word.word} <Text className="font-sans text-body text-muted">{word.ipa}</Text>
+            {word.word} <Text className="font-sans text-body text-muted">{[word.ipa, word.language === 'ja' ? word.romanization : ''].filter((x) => x && x !== word.word).join(' · ')}</Text>
           </Text>
       <SpeakButton text={word.word} rate={0.85} size={16} language={word.language} />
         </View>
@@ -223,34 +225,31 @@ export function DetailFace({ word, showWord, english = false }: { word: StudyWor
       )}
 
       <View className="mt-3 gap-2.5">
-        {word.romanization ? <View><Label>Romaji</Label><Text className="font-mid text-body text-ink">{word.romanization}</Text></View> : null}
-        {word.sourcePos && word.sourcePos !== word.pos ? <View><Label>{L('Từ loại theo nguồn', 'Source part of speech')}</Label><Text className="font-mid text-body text-ink">{word.sourcePos}</Text></View> : null}
+        {word.pos ? <Text className={`text-center font-sans ${big ? 'text-body' : 'text-label'} text-muted`}>{word.pos}</Text> : null}
         {word.example ? (
           <View>
-            <Label>{L('Ví dụ', 'Example')}</Label>
-            <ExampleSentence example={word.example} word={word.word} />
+            <Label big={big}>{L('Ví dụ', 'Example')}</Label>
+            <ExampleSentence big={big} example={word.example} word={word.word} translation={word.exampleVi} reading={word.exampleReading} language={word.language} />
           </View>
         ) : null}
         {word.synonyms?.length ? (
           <View>
-            <Label>{L('Đồng nghĩa', 'Synonyms')}</Label>
-            <Chips words={word.synonyms} />
+            <Label big={big}>{L('Đồng nghĩa', 'Synonyms')}</Label>
+            <Chips words={word.synonyms} big={big} />
           </View>
         ) : null}
         {word.antonyms?.length ? (
           <View>
-            <Label>{L('Trái nghĩa', 'Antonyms')}</Label>
-            <Chips words={word.antonyms} />
+            <Label big={big}>{L('Trái nghĩa', 'Antonyms')}</Label>
+            <Chips words={word.antonyms} big={big} />
           </View>
         ) : null}
         {word.collocation ? (
           <View>
-            <Label>{L('Hay đi cùng', 'Collocations')}</Label>
-            <Text className="font-mid text-body text-ink">{word.collocation}</Text>
+            <Label big={big}>{L('Hay đi cùng', 'Collocations')}</Label>
+            <Text className={`font-mid ${big ? 'text-cardTitle' : 'text-body'} text-ink`}>{word.collocation}</Text>
           </View>
         ) : null}
-        {word.sourcePage ? <View><Label>{L('Trang nguồn', 'Source page')}</Label><Text className="font-mid text-body text-ink">{word.sourcePage}</Text></View> : null}
-        {word.sourceNote ? <View><Label>{L('Ghi chú nguồn', 'Source note')}</Label><Text className="font-sans text-body text-muted">{word.sourceNote}</Text></View> : null}
       </View>
     </View>
   );
