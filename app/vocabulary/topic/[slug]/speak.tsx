@@ -21,6 +21,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { PronounceTipCard } from '@/components/vocab/PronounceTipCard';
 import type { PronounceTip } from '@/services/vocab/pronounce-tip';
 import { requestPronounceTip } from '@/services/vocab/pronounce-tip-client';
+import { heardMatches, isEastAsian, similarity, speechLang, spoken } from '@/services/vocab/east-asian-practice';
 
 type Recognition = {
   lang: string;
@@ -71,6 +72,7 @@ export default function SpeakScreen() {
   const [heard, setHeard] = useState<string[] | null>(null);
   const [verdict, setVerdict] = useState<boolean | null>(null);
   const [correct, setCorrect] = useState(0);
+  const [sentenceMode, setSentenceMode] = useState(false);
   const recRef = useRef<Recognition | null>(null);
   const coach = useVoiceCoach();
   const [tip, setTip] = useState<PronounceTip | null>(null);
@@ -80,6 +82,9 @@ export default function SpeakScreen() {
   const tipAbortRef = useRef<AbortController | null>(null);
 
   const word = words[index];
+  const ea = isEastAsian(word);
+  const sentence = ea && sentenceMode && Boolean(word?.example);
+  const shown = word ? (sentence ? word.example : ea ? spoken(word) : word.word) : '';
 
   useEffect(
     () => () => {
@@ -151,21 +156,25 @@ export default function SpeakScreen() {
     const rec = makeRecognition();
     if (!rec) return;
     recRef.current = rec;
-    rec.lang = 'en-US';
+    rec.lang = speechLang(word);
     rec.interimResults = false;
     rec.maxAlternatives = 5;
     rec.onresult = (e) => {
       const alts = Array.from(e.results[0] ?? []).map((a) => a.transcript);
       setHeard(alts);
       const target = normalizeAnswer(word.word);
-      const ok = alts.some((a) => normalizeAnswer(a) === target || normalizeAnswer(a).split(' ').includes(target));
+      const ok = ea
+        ? sentence
+          ? alts.some((a) => similarity(a, word.example) >= 0.8)
+          : heardMatches(alts, word)
+        : alts.some((a) => normalizeAnswer(a) === target || normalizeAnswer(a).split(' ').includes(target));
       // Game khi học chỉ tính lần MÁY nghe chấm; tự bấm "giống mẫu" thì không.
       useGameStore.getState().answer(ok, 'vocab', { key: `speak:${slug}:${word.word}` });
       judge(ok);
       coach.feedback({ score: ok ? 100 : 40, missed: ok ? [] : [word.word], sentence: word.word });
       // Không có chữ nào để so thì không hỏi AI: lời giải thích không có căn cứ.
       const transcripts = alts.map((a) => a.trim()).filter(Boolean);
-      if (!ok && transcripts.length > 0) void askTip(word, transcripts, attemptRef.current);
+      if (!ok && !ea && transcripts.length > 0) void askTip(word, transcripts, attemptRef.current);
     };
     rec.onerror = (e) => {
       setHeard([e.error === 'no-speech' ? L('(không nghe thấy gì)', '(heard nothing)') : L(`(lỗi micro: ${e.error})`, `(mic error: ${e.error})`)]);
@@ -217,12 +226,21 @@ export default function SpeakScreen() {
               : L('Nghe mẫu, đọc to, rồi tự đánh giá', 'Listen to the model, say it aloud, then rate yourself')}
           </Text>
           <View className="mt-4 items-center">
-            <Text className="font-heavy text-hero text-ink">{word.word}</Text>
-            <Text className="mt-1 font-sans text-bodyLg text-muted">
-              {[posIpa(word), word.meaningVi].filter(Boolean).join(' · ')}
+            {ea ? (
+              <View className="mb-3 flex-row gap-2">
+                {[false, true].map((on) => (
+                  <Pressable key={String(on)} accessibilityRole="button" onPress={() => { setSentenceMode(on); setHeard(null); setVerdict(null); }} className="rounded-pill px-4 py-1.5" style={{ backgroundColor: sentenceMode === on ? color.primary : 'rgba(128,128,160,0.18)' }}>
+                    <Text className="font-semi text-label" style={{ color: sentenceMode === on ? '#fff' : undefined }}>{on ? L('Đọc câu', 'Sentence') : L('Đọc từ', 'Word')}</Text>
+                  </Pressable>
+                ))}
+              </View>
+            ) : null}
+            <Text className={ea ? 'text-center font-heavy text-ink' : 'font-heavy text-hero text-ink'} style={ea ? { fontSize: sentence ? 30 : 64, lineHeight: sentence ? 44 : 78 } : undefined}>{shown}</Text>
+            <Text className="mt-1 text-center font-sans text-bodyLg text-muted">
+              {sentence ? [word.exampleReading, word.exampleVi].filter(Boolean).join(' · ') : [posIpa(word), word.meaningVi].filter(Boolean).join(' · ')}
             </Text>
             <View className="mt-3">
-              <SpeakButton text={word.word} rate={0.8} language={word.language} />
+              <SpeakButton text={shown} rate={0.8} language={word.language} />
             </View>
           </View>
 

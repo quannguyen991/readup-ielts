@@ -379,7 +379,7 @@ export default function GameScreen() {
                           ? L("Điểm cao nhất của bạn ở bộ này!", "Your best score for this set!")
                           : L(`Điểm cao nhất: ${best}`, `High score: ${best}`)
                         : L(
-                            "Đọc nghĩa tiếng Việt, bấm (hoặc phím 1–4) vào quả bóng mang đúng từ tiếng Anh trước khi nó bay mất. Đúng liên tiếp được nhân điểm.",
+                            `Đọc nghĩa tiếng Việt, bấm (hoặc phím 1–4) vào quả bóng mang đúng từ ${topic?.language === "zh" ? "tiếng Trung" : topic?.language === "ja" ? "tiếng Nhật" : "tiếng Anh"} trước khi nó bay mất. Đúng liên tiếp được nhân điểm.`,
                             "Read the Vietnamese meaning, then tap (or press 1–4) the balloon with the matching English word before it floats away. Streaks multiply your score.",
                           )}
                     </Text>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
+import { typedMatches } from '@/services/vocab/east-asian-practice';
 import { useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
@@ -61,7 +62,7 @@ export default function DictationScreen() {
 
   const check = () => {
     if (verdict !== null || !typed.trim() || !word) return;
-    const ok = isTypedCorrect(typed, target);
+    const ok = isTypedCorrect(typed, target) || (!sentenceMode && typedMatches(typed, word));
     setVerdict(ok);
     if (ok) setCorrect((n) => n + 1);
     logQuestions(1);
