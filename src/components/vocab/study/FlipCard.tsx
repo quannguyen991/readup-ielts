@@ -11,6 +11,8 @@ import { useL } from '@/i18n/useL';
 import { useStudyTheme } from './useStudyTheme';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { TileArt } from '@/components/ui/TileArt';
+import { handwritingFont } from './handwriting';
+import { StrokeWord } from './StrokeWord';
 
 /**
  * Một thẻ hai mặt, xoay quanh trục Y khi lật. Dùng chung cho dải thẻ ở trang bộ
@@ -116,7 +118,11 @@ export function WordFace({ word, hint, tone, seed }: { word: StudyWord; hint?: s
   return (
     <>
       <Text className="font-semi text-label text-muted">{levelLabel(word.band)}</Text>
-      <Text className="mt-3 text-center font-strong text-hero text-ink">{word.word}</Text>
+      {word.language === 'ja' || word.language === 'zh' ? (
+        <View className="mt-3 items-center"><StrokeWord word={word.word} language={word.language} /></View>
+      ) : (
+        <Text className="mt-3 text-center font-strong text-hero text-ink">{word.word}</Text>
+      )}
       <Text className="mt-2 font-sans text-bodyLg text-muted">
         {posIpa(word)}
       </Text>
@@ -204,7 +210,8 @@ export function DetailFace({ word, showWord, english = false }: { word: StudyWor
     <View>
       {showWord ? (
         <View className="flex-row items-center justify-center gap-2">
-          <Text className="text-center font-strong text-sectionTitle text-primary-700">
+          {big ? <StrokeWord word={word.word} language={word.language as 'ja' | 'zh'} compact /> : null}
+          <Text className="text-center font-strong text-sectionTitle text-primary-700" style={big ? { fontSize: 24, lineHeight: 32 } : undefined}>
             {word.word} <Text className="font-sans text-body text-muted">{[word.ipa, word.language === 'ja' ? word.romanization : ''].filter((x) => x && x !== word.word).join(' · ')}</Text>
           </Text>
       <SpeakButton text={word.word} rate={0.85} size={16} language={word.language} />
