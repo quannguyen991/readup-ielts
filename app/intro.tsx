@@ -44,6 +44,7 @@ import { ArcadeHome } from '@/components/arcade/ArcadeHome';
 import { AreaArt } from '@/components/home/AreaArt';
 import { WhatsNewModal } from '@/components/home/WhatsNewModal';
 import { stickerGradient } from '@/theme/tokens';
+import { useSidebarTheme } from '@/components/layout/SidebarAtmosphere';
 import { bi, useL, type Bi } from '@/i18n/useL';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 
@@ -521,10 +522,95 @@ const CHIIKAWA_AREA_COLORS: readonly (readonly [string, string])[] = [
   ['#F8D4DE', '#C65A78'], ['#F5B8CC', '#A64462'], ['#F9C6D6', '#C65A78'],
 ];
 
+/** Medallion cắt từ sheet ChatGPT (public/home/emblems), mỗi mảng một biểu tượng cổ điển. */
+const FRESCO_EMBLEM: Record<string, string> = {
+  Vocabulary: 'emb-vocab',
+  IELTS: 'emb-ielts',
+  Writing: 'emb-writing',
+  Listening: 'emb-listening',
+  Speaking: 'emb-speaking',
+  Reading: 'emb-reading',
+  SAT: 'emb-sat',
+  Sentences: 'emb-sentences',
+};
+
+/** Bốn góc chạm khắc (cắt từ sheet ChatGPT), đặt sát góc trong khung vàng. */
+const FRESCO_CORNERS: [string, { top?: number; bottom?: number; left?: number; right?: number }][] = [
+  ['orn-corner-tl', { top: 4, left: 4 }],
+  ['orn-corner-tr', { top: 4, right: 4 }],
+  ['orn-corner-bl', { bottom: 4, left: 4 }],
+  ['orn-corner-br', { bottom: 4, right: 4 }],
+];
+
+/**
+ * Thẻ khu vực theo phong cách trần fresco (theme mặc định): giấy kem, khung vàng đôi, medallion
+ * cắt dán ở đầu thẻ, tiêu đề phông Playfair, đường trang trí vàng ngăn với nhãn.
+ */
+function FrescoAreaCard({ area }: { area: Area }) {
+  const { locale } = useL();
+  const { width } = useWindowDimensions();
+  const wide = width >= 768;
+  const emblem = FRESCO_EMBLEM[area.title.en] ?? 'emb-vocab';
+  const size = wide ? 116 : 88;
+  return (
+    <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#FBF5E8',
+          borderRadius: 18,
+          borderWidth: 1.5,
+          borderColor: '#B8893F',
+          paddingHorizontal: 14,
+          paddingTop: wide ? 18 : 12,
+          paddingBottom: 26,
+          alignItems: 'center',
+          overflow: 'hidden',
+        }}
+      >
+        <View
+          pointerEvents="none"
+          style={{ position: 'absolute', top: 5, left: 5, right: 5, bottom: 5, borderRadius: 13, borderWidth: 1, borderColor: 'rgba(184,137,63,0.45)' }}
+        />
+        {FRESCO_CORNERS.map(([name, pos]) => (
+          <Image
+            key={name}
+            source={{ uri: `/home/ornaments/${name}.png` }}
+            resizeMode="contain"
+            accessibilityIgnoresInvertColors
+            style={{ position: 'absolute', width: 40, height: 40, ...pos }}
+          />
+        ))}
+        <Image
+          source={{ uri: `/home/emblems/${emblem}.png` }}
+          resizeMode="contain"
+          accessibilityIgnoresInvertColors
+          style={{ width: size, height: size }}
+        />
+        <Text className="font-heavy" style={{ marginTop: 6, fontSize: wide ? 22 : 18, color: '#14213D', textAlign: 'center' }}>
+          {bi(area.title, locale)}
+        </Text>
+        <Image
+          source={{ uri: '/home/ornaments/orn-divider.png' }}
+          resizeMode="contain"
+          accessibilityIgnoresInvertColors
+          style={{ width: 96, height: 34, marginTop: 6, marginBottom: 6 }}
+        />
+        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#8F6E36', textAlign: 'center' }}>
+          {bi(area.badge, locale).toUpperCase()}
+        </Text>
+      </View>
+    </PressScale>
+  );
+}
+
 function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaTheme: boolean; colorIndex: number }) {
   const { locale } = useL();
   const { width } = useWindowDimensions();
   const wide = width >= 768;
+  // Theme mặc định (Band 9) dùng thẻ fresco; các theme khác giữ thẻ sticker cũ.
+  const fresco = useSidebarTheme().themeConfig.id === 'default' && !chiikawaTheme;
+  if (fresco) return <FrescoAreaCard area={area} />;
   const colors = (chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : AREA_TONES[colorIndex % AREA_TONES.length]) ?? ['#4A7FE8', '#7FA3F6'];
   return (
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>

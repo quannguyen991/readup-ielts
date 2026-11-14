@@ -43,16 +43,19 @@ export function BrandMark({ size = 36 }: { size?: number }) {
 export function Logo({
   compact = false,
   markOnly = false,
+  dark = false,
 }: {
   compact?: boolean;
   /** Chỉ vẽ biểu tượng, bỏ chữ — cột dọc lúc thu gọn. */
   markOnly?: boolean;
+  /** Đặt trên nền tối (thanh bên navy): chữ kem thay vì navy, nếu không chữ tối sẽ chìm vào nền. */
+  dark?: boolean;
 }) {
   return (
     <View className="flex-row items-center gap-2.5">
       <BrandMark size={compact ? 32 : 36} />
       {markOnly ? null : (
-        <Text className={`font-heavy ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`} style={{ color: themedHex(BRAND.navy), letterSpacing: 0.2 }}>
+        <Text className={`font-heavy ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`} style={{ color: dark ? BRAND.cream : themedHex(BRAND.navy), letterSpacing: 0.2 }}>
           Band 9
         </Text>
       )}

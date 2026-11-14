@@ -24,19 +24,23 @@ export type SidebarThemeConfig = {
   defaultEffect: EffectLook | null;
 };
 
+/**
+ * Theme mặc định (Band 9) — phong cách trần fresco châu Âu: nền navy sâu, chữ kem, mục đang chọn
+ * tô vàng kim như khung chạm khắc. Khớp với hero trang chủ (khung navy + vàng).
+ */
 export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
   id: 'default',
   name: 'Mặc định (Band 9)',
-  isDark: false,
-  bgStyle: { backgroundColor: '#F3EEFB', backgroundImage: 'linear-gradient(180deg, #F5F0FF 0%, #EEF6F3 50%, #F3F0FB 100%)' },
-  borderRightColor: '#E2D9F3',
-  textPrimary: '#2B2350',
-  textMuted: '#7A72A0',
-  activeFill: themedHex('#8B6CF0'),
-  activeGradient: 'linear-gradient(100deg, #8B6CF0 0%, #E8708A 52%, #FF9C5B 100%)',
-  activeTextColor: '#FFFFFF',
-  activeGlow: '0 6px 18px rgba(139,108,240,0.35), inset 0 1px 0 rgba(255,255,255,0.45)',
-  hoverBg: 'rgba(139, 108, 240, 0.12)',
+  isDark: true,
+  bgStyle: { backgroundColor: '#14213D', backgroundImage: 'linear-gradient(180deg, #1B2A4A 0%, #0F1A33 100%)' },
+  borderRightColor: '#8F6E36',
+  textPrimary: '#F3EADB',
+  textMuted: '#C9B68A',
+  activeFill: themedHex('#D9B46A'),
+  activeGradient: 'linear-gradient(100deg, #F0D38E 0%, #C99A4B 100%)',
+  activeTextColor: '#14213D',
+  activeGlow: '0 6px 18px rgba(201,154,75,0.38), inset 0 1px 0 rgba(255,255,255,0.35)',
+  hoverBg: 'rgba(230, 194, 122, 0.14)',
   defaultEffect: null,
 };
 
