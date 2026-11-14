@@ -49,6 +49,8 @@ export function FrescoHero({
         borderRadius: radius,
         overflow: 'hidden',
         backgroundColor: MOSS,
+        borderWidth: 1.5,
+        borderColor: '#C9A45C',
         ...(Platform.OS === 'web' ? { boxShadow: '0 18px 40px rgba(22,36,28,0.3)' } : { elevation: 8 }),
       } as object}
     >
@@ -70,6 +72,13 @@ export function FrescoHero({
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+        />
+        {/* Dây leo dài chạy dọc mép trên, như ảnh tham chiếu. */}
+        <Image
+          source={{ uri: '/home/foliage/vine-garland.png' }}
+          resizeMode="contain"
+          accessibilityIgnoresInvertColors
+          style={{ position: 'absolute', top: -30, left: wide ? 120 : 20, width: wide ? 560 : 300, height: wide ? 150 : 90, opacity: 0.9 }}
         />
         {/* Dây thường xuân rủ góc dưới-trái, dây cuốn góc trên-phải: cây cỏ leo lên khung hình. */}
         <Image

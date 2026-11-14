@@ -23,18 +23,34 @@ export function FrescoSidebarBackdrop() {
         style={StyleSheet.absoluteFill}
       />
       <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(16,30,22,0.6)' }]} />
-      {/* Cây cỏ leo qua thanh bên: dây thường xuân rủ dưới, cành nguyệt quế ở mép phải. */}
+      {/* Dây leo quấn theo hai mép thanh bên, dây vòm phủ đầu thanh bên, như ảnh tham chiếu. */}
       <Image
-        source={{ uri: '/home/foliage/fol-ivy-hang.png' }}
+        source={{ uri: '/home/foliage/vine-vertical.png' }}
         resizeMode="contain"
         accessibilityIgnoresInvertColors
-        style={{ position: 'absolute', left: -20, bottom: 40, width: 170, height: 170, opacity: 0.75 }}
+        style={{ position: 'absolute', left: -44, top: 110, width: 96, height: 300, opacity: 0.85 }}
       />
       <Image
-        source={{ uri: '/home/foliage/fol-laurel.png' }}
+        source={{ uri: '/home/foliage/vine-vertical.png' }}
         resizeMode="contain"
         accessibilityIgnoresInvertColors
-        style={{ position: 'absolute', right: -34, top: 120, width: 120, height: 120, opacity: 0.45 }}
+        style={{ position: 'absolute', left: -44, bottom: 80, width: 96, height: 300, opacity: 0.8 }}
+      />
+      <Image
+        source={{ uri: '/home/foliage/vine-vertical.png' }}
+        resizeMode="contain"
+        accessibilityIgnoresInvertColors
+        style={{ position: 'absolute', right: -14, top: 260, width: 96, height: 300, opacity: 0.8, transform: [{ scaleX: -1 }] }}
+      />
+      <Image
+        source={{ uri: '/home/foliage/vine-arch.png' }}
+        resizeMode="contain"
+        accessibilityIgnoresInvertColors
+        style={{ position: 'absolute', left: 10, top: -10, width: 230, height: 110, opacity: 0.9 }}
+      />
+      <View
+        pointerEvents="none"
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderWidth: 1.5, borderColor: '#C9A45C', borderRadius: 16 }}
       />
     </View>
   );

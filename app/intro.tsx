@@ -325,6 +325,7 @@ export default function IntroScreen() {
         </Text>
       </Appear>
 
+      <FrescoVineDivider />
       <View className="mt-5">
         <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
           {AREAS.map((area, index) => (
@@ -551,8 +552,8 @@ function FrescoAreaCard({ area }: { area: Area }) {
           borderRadius: 18,
           overflow: 'hidden',
           backgroundColor: '#F4EFE3',
-          borderWidth: 1,
-          borderColor: 'rgba(40,58,44,0.14)',
+          borderWidth: 1.5,
+          borderColor: '#C9A45C',
         }}
       >
         <View style={{ height: wide ? 168 : 116, overflow: 'hidden' }}>
@@ -579,6 +580,28 @@ function FrescoAreaCard({ area }: { area: Area }) {
         </View>
       </View>
     </PressScale>
+  );
+}
+
+/** Dây leo dài chạy ngang dưới tiêu đề "App có gì", chỉ hiện ở theme mặc định (vườn tàn tích). */
+function FrescoVineDivider() {
+  const fresco = useSidebarTheme().themeConfig.id === 'default';
+  if (!fresco) return null;
+  return (
+    <View style={{ flexDirection: 'row', height: 110, marginTop: 10 }}>
+      <Image
+        source={{ uri: '/home/foliage/vine-garland.png' }}
+        resizeMode="contain"
+        accessibilityIgnoresInvertColors
+        style={{ flex: 1, height: 110, opacity: 0.95 }}
+      />
+      <Image
+        source={{ uri: '/home/foliage/vine-arch.png' }}
+        resizeMode="contain"
+        accessibilityIgnoresInvertColors
+        style={{ flex: 1, height: 110, opacity: 0.95 }}
+      />
+    </View>
   );
 }
 
