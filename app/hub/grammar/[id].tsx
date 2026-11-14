@@ -79,7 +79,7 @@ export default function GrammarLessonPage() {
 
       {phase === 'quiz' && current ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu {q + 1}/{total}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu {q + 1}/{total}</Text>
           <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '700', lineHeight: 26 }}>{current.q}</Text>
           {current.options.map((opt, k) => {
             const isAnswer = k === current.answer;

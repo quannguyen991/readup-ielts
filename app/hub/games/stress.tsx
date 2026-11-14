@@ -38,7 +38,7 @@ export default function StressGame() {
         </View>
       ) : w ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Từ {i + 1}/{rounds.length} · đúng {score}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Từ {i + 1}/{rounds.length} · đúng {score}</Text>
           <Text style={{ color: HUB.ink, fontSize: 22, fontWeight: '800', textAlign: 'center' }}>{w.word}</Text>
           <Text style={{ color: HUB.muted, fontSize: 13, textAlign: 'center' }}>{w.ipa}</Text>
           <View style={{ flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', gap: 8 }}>

@@ -163,7 +163,7 @@ export default function LeaderboardScreen() {
                   </View>
                 </View>
 
-                <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
+                <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 13 }}>
                   {L('Tổng điểm tháng này', 'Total points this month')}
                 </Text>
                 <Text className="font-heavy text-ink" style={{ fontSize: 40, lineHeight: 46 }}>
@@ -343,7 +343,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
             "Đổi quà · 369 ⭐" ngay cạnh "5 sao" của hôm nay — hai con số khác
             nghĩa đặt sát nhau, người dùng đọc thành số liệu sai (26/09/2026).
           */}
-          <Text className="font-semi" style={{ fontSize: 12.5, color: '#2B2350' }}>
+          <Text className="font-semi" style={{ fontSize: 13, color: '#2B2350' }}>
             {L('Đang có ', 'Balance: ')}<Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text>{L(' tích luỹ', ' saved up')}
           </Text>
           <Pressable
@@ -447,11 +447,11 @@ function Stat({ icon, value, label }: { icon: string; value: number; label: stri
   const { locale } = useL();
   return (
     <View className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: '#FFFFFF' }}>
-      <Text style={{ fontSize: 12 }}>{icon}</Text>
+      <Text style={{ fontSize: 13 }}>{icon}</Text>
       <Text className="font-heavy" style={{ fontSize: 14, color: GOLD_INK }}>
         {value.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')}
       </Text>
-      <Text className="font-sans" style={{ fontSize: 12, color: '#2B2350' }}>
+      <Text className="font-sans" style={{ fontSize: 13, color: '#2B2350' }}>
         {label}
       </Text>
     </View>
@@ -524,7 +524,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
           <View className="flex-row flex-wrap items-center gap-2">
             <Text className="font-strong text-label text-muted">{L(`Vinh danh ${monthLabel(prev.month)}`, `Hall of fame ${monthLabel(prev.month, true)}`)}</Text>
             <View aria-hidden>
-              <Label text="Top 3 🏆" color="#F2B632" ink="#2B2350" tilt={-4} size={11} />
+              <Label text="Top 3 🏆" color="#F2B632" ink="#2B2350" tilt={-4} size={13} />
             </View>
           </View>
           <View className="mt-1.5 flex-row flex-wrap gap-x-4 gap-y-1">

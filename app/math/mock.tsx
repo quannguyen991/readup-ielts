@@ -161,7 +161,7 @@ export default function MathMockScreen() {
             </View>
             <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Trước khi bắt đầu', 'Before you start')}</Text>
             <View aria-hidden>
-              <Label text={L('Tự nộp khi hết giờ ⏱', 'Auto-submits at time-up ⏱')} color="#F2B632" tilt={4} size={11} />
+              <Label text={L('Tự nộp khi hết giờ ⏱', 'Auto-submits at time-up ⏱')} color="#F2B632" tilt={4} size={13} />
             </View>
           </View>
           <View className="mt-2 gap-2">
@@ -235,7 +235,7 @@ export default function MathMockScreen() {
                 color={phase.tier === 'harder' ? '#F0703F' : '#6A4BD9'}
                 ink="#FFFFFF"
                 tilt={4}
-                size={12}
+                size={13}
               />
             </View>
           </View>

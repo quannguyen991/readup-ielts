@@ -94,25 +94,25 @@ function TopicCard({ topic, done }: { topic: SpeakingTopic; done: boolean }) {
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <CoinIcon name={done ? 'achievements' : 'speaking'} size={46} />
         {done ? (
-          <Text style={{ color: HUB.green, fontSize: 11, fontWeight: '800' }}>ĐÃ LÀM</Text>
+          <Text style={{ color: HUB.green, fontSize: 13, fontWeight: '800' }}>ĐÃ LÀM</Text>
         ) : (
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>{questionCount(topic)} câu</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>{questionCount(topic)} câu</Text>
         )}
       </View>
 
       <View style={{ gap: 2 }}>
         <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>{topic.titleVi}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>{topic.title}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{topic.title}</Text>
       </View>
 
-      <Text style={{ color: HUB.body, fontSize: 12, lineHeight: 18 }} numberOfLines={2}>
+      <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 18 }} numberOfLines={2}>
         {topic.part2.prompt}
       </Text>
 
       <View style={{ flexDirection: 'row', gap: 6 }}>
         {[`P1 · ${topic.part1.length}`, 'P2 · 1', `P3 · ${topic.part3.length}`].map((label) => (
           <View key={label} style={{ paddingHorizontal: 8, paddingVertical: 3, borderRadius: 999, backgroundColor: HUB.glassStrong }}>
-            <Text style={{ color: HUB.blue, fontSize: 10, fontWeight: '800' }}>{label}</Text>
+            <Text style={{ color: HUB.blue, fontSize: 13, fontWeight: '800' }}>{label}</Text>
           </View>
         ))}
       </View>

@@ -378,7 +378,7 @@ const styles = StyleSheet.create({
   },
   head: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingRight: 44 },
   pill: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: INK, paddingHorizontal: 11, paddingVertical: 6, borderRadius: 999 },
-  pillText: { fontFamily: 'Nunito_900Black', fontSize: 11, letterSpacing: 1.6, color: GOLD_LIGHT },
+  pillText: { fontFamily: 'Nunito_900Black', fontSize: 13, letterSpacing: 1.6, color: GOLD_LIGHT },
   count: { fontFamily: 'Nunito_800ExtraBold', fontSize: 14, color: GOLD_DEEP, fontVariant: ['tabular-nums'] },
 
   stage: { gap: 18 },

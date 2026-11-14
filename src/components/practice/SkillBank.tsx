@@ -234,7 +234,7 @@ export function SkillCard(p: SkillCardProps) {
           </Text>
           {fresh > 0 ? (
             <View style={{ borderRadius: 999, paddingHorizontal: 7, paddingVertical: 1, backgroundColor: B9.goldWash, borderWidth: 1, borderColor: B9.goldLight }}>
-              <Text className="font-semi" style={{ fontSize: 12, color: B9.goldDeep }}>
+              <Text className="font-semi" style={{ fontSize: 13, color: B9.goldDeep }}>
                 {L(`${fresh} mới`, `${fresh} new`)}
               </Text>
             </View>
@@ -257,7 +257,7 @@ export function SkillCard(p: SkillCardProps) {
           <Count value={p.correct} tone={GREEN} mark="✓" label={L('câu đúng', 'correct')} />
           <Count value={p.wrong} tone={RED} mark="✗" label={L('câu sai', 'wrong')} />
         </View>
-        <Text className="font-sans" style={{ fontSize: 12, color: B9.muted }}>
+        <Text className="font-sans" style={{ fontSize: 13, color: B9.muted }}>
           <Text className="font-semi" style={{ color: B9.navy }}>
             {p.answered}
           </Text>

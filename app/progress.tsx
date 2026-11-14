@@ -71,7 +71,7 @@ function MathProgressCard() {
       />
 
       <View className="mt-4 flex-row flex-wrap gap-6">
-        <View className="min-w-[260px] flex-1 gap-3">
+        <View className="w-full flex-1 gap-3 lg:min-w-[260px]">
           <Text className="font-mid text-label text-muted">{L('Theo domain', 'By domain')}</Text>
           {domains.map((domain) => (
             <View key={domain}>
@@ -92,7 +92,7 @@ function MathProgressCard() {
           ))}
         </View>
 
-        <View className="min-w-[260px] flex-1 gap-2">
+        <View className="w-full flex-1 gap-2 lg:min-w-[260px]">
           <Text className="font-mid text-label text-muted">{L('Lỗi hay mắc nhất', 'Most common mistakes')}</Text>
           {errorTags.length === 0 ? (
             <Text className="font-sans text-body text-muted">
@@ -444,7 +444,7 @@ export default function ProgressScreen() {
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-4">
-        <View className="min-w-[320px] flex-[3]">
+        <View className="w-full flex-[3] lg:min-w-[320px]">
           <Card>
             <SectionHeader title="Band Score Progress" icon="trending" hint />
             <View className="mt-3">
@@ -474,7 +474,7 @@ export default function ProgressScreen() {
           </Card>
         </View>
 
-        <View className="min-w-[300px] flex-[2]">
+        <View className="w-full flex-[2] lg:min-w-[300px]">
           <Card className="h-full">
             <SectionHeader title="Performance by Question Type" icon="clipboard" hint />
 
@@ -513,7 +513,7 @@ export default function ProgressScreen() {
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-4">
-        <View className="min-w-[280px] flex-1">
+        <View className="w-full flex-1 lg:min-w-[280px]">
           <Card className="h-full">
             <SectionHeader title="Study Time Distribution" icon="clock" iconTone="accent" hint />
 
@@ -555,7 +555,7 @@ export default function ProgressScreen() {
           </Card>
         </View>
 
-        <View className="min-w-[280px] flex-1">
+        <View className="w-full flex-1 lg:min-w-[280px]">
           <Card className="h-full">
             <SectionHeader title="Weekly Practice Calendar" icon="calendar" hint />
 

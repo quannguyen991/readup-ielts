@@ -96,7 +96,7 @@ export default function SatKnowledge() {
                     <Icon size={48} />
                   </Motion>
                   <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text className="font-semi" style={{ fontSize: 12, letterSpacing: 1, color: MUTED }}>
+                    <Text className="font-semi" style={{ fontSize: 13, letterSpacing: 1, color: MUTED }}>
                       {fact.k.toUpperCase()}
                     </Text>
                     <Text className="font-heavy" style={{ marginTop: 2, fontSize: 19, color: INK }}>
@@ -188,7 +188,7 @@ function BigSection({ color, ink, kicker, title, icon, children }: { color: stri
       <View style={{ marginTop: 18, borderRadius: 28, padding: 22, backgroundColor: color, borderWidth: color === '#FFFFFF' ? 1 : 0, borderColor: LINE, overflow: 'hidden' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 16 }}>
           <View style={{ flex: 1 }}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: MUTED }}>
+            <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: MUTED }}>
               {kicker}
             </Text>
             <Text className="font-heavy" style={{ fontSize: 30, color: ink }}>
@@ -252,7 +252,7 @@ function DomainSection({ d, wide }: { d: Domain; wide: boolean }) {
             <Text className="font-heavy" style={{ fontSize: 28, color: '#FFFFFF' }}>
               ≈{d.share}%
             </Text>
-            <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)' }}>
+            <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
               {questionsLabel(d.questions, en)}
             </Text>
           </View>
@@ -411,7 +411,7 @@ function Big({ value, label }: { value: string; label: string }) {
       <Text className="font-heavy" style={{ fontSize: 24, color: INK }}>
         {value}
       </Text>
-      <Text className="font-semi" style={{ fontSize: 12, color: MUTED }}>
+      <Text className="font-semi" style={{ fontSize: 13, color: MUTED }}>
         {label}
       </Text>
     </View>
@@ -502,7 +502,7 @@ function Method5StepSection({ wide }: { wide: boolean }) {
                 <Text className="font-strong text-caption" style={{ color: '#B94A70' }}>
                   {c.nameVi}
                 </Text>
-                <Text className="font-mono text-tiny" style={{ color: MUTED, marginTop: 2 }}>
+                <Text className="font-mono text-label" style={{ color: MUTED, marginTop: 2 }}>
                   Dấu hiệu: {c.signal}
                 </Text>
                 <Text className="font-sans text-caption" style={{ color: INK, marginTop: 2 }}>
@@ -521,7 +521,7 @@ function Method5StepSection({ wide }: { wide: boolean }) {
             {SAT_TRANSITION_GROUPS.map((g, i) => (
               <View key={i} style={{ borderRadius: 14, padding: 10, backgroundColor: '#F8F9FA' }}>
                 <Text className="font-strong text-caption text-ink">{g.groupVi}</Text>
-                <Text className="font-mono text-tiny" style={{ color: '#3B82F6', marginTop: 3 }}>
+                <Text className="font-mono text-label" style={{ color: '#3B82F6', marginTop: 3 }}>
                   {g.words.join(' · ')}
                 </Text>
               </View>
@@ -562,7 +562,7 @@ function DesmosPowerSection({ wide }: { wide: boolean }) {
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <Text className="font-heavy text-body text-ink">{tech.nameVi}</Text>
               <View style={{ borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#EFF6FF' }}>
-                <Text className="font-mono text-tiny" style={{ color: '#1D4ED8' }}>
+                <Text className="font-mono text-label" style={{ color: '#1D4ED8' }}>
                   Desmos Pro
                 </Text>
               </View>
@@ -571,7 +571,7 @@ function DesmosPowerSection({ wide }: { wide: boolean }) {
               {tech.useVi}
             </Text>
             <View style={{ borderRadius: 10, padding: 8, backgroundColor: '#1E293B' }}>
-              <Text className="font-mono text-tiny" style={{ color: '#38BDF8' }}>
+              <Text className="font-mono text-label" style={{ color: '#38BDF8' }}>
                 {tech.shortcut}
               </Text>
             </View>
@@ -615,7 +615,7 @@ function RoadmapPlansSection({ wide }: { wide: boolean }) {
                   {phase.weeks}
                 </Text>
                 <View style={{ borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#B94A70' }}>
-                  <Text className="font-heavy text-tiny" style={{ color: '#FFFFFF' }}>
+                  <Text className="font-heavy text-label" style={{ color: '#FFFFFF' }}>
                     Chặng {idx + 1}
                   </Text>
                 </View>
@@ -663,7 +663,7 @@ function RoadmapPlansSection({ wide }: { wide: boolean }) {
                   {phase.weeks}
                 </Text>
                 <View style={{ borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#F2B632' }}>
-                  <Text className="font-heavy text-tiny" style={{ color: '#FFFFFF' }}>
+                  <Text className="font-heavy text-label" style={{ color: '#FFFFFF' }}>
                     Chặng {idx + 1}
                   </Text>
                 </View>
@@ -713,11 +713,11 @@ function BookCatalogSection({ wide }: { wide: boolean }) {
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <View style={{ borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#FFF4F8' }}>
-                <Text className="font-strong text-tiny" style={{ color: '#B94A70' }}>
+                <Text className="font-strong text-label" style={{ color: '#B94A70' }}>
                   {b.category}
                 </Text>
               </View>
-              <Text className="font-semi text-tiny text-muted">{b.level}</Text>
+              <Text className="font-semi text-label text-muted">{b.level}</Text>
             </View>
 
             <Text className="font-heavy text-body text-ink">{b.title}</Text>
@@ -799,7 +799,7 @@ function ReadingTrapsSection({ wide }: { wide: boolean }) {
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#EF4444', alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>{t.num}</Text>
+                <Text style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>{t.num}</Text>
               </View>
               <Text className="font-heavy text-body text-ink" style={{ flex: 1 }}>
                 {t.nameVi}
@@ -809,7 +809,7 @@ function ReadingTrapsSection({ wide }: { wide: boolean }) {
               {t.descVi}
             </Text>
             <View style={{ backgroundColor: '#FEF2F2', padding: 8, borderRadius: 8 }}>
-              <Text style={{ fontSize: 11.5, color: '#991B1B', fontWeight: '600' }}>
+              <Text style={{ fontSize: 13, color: '#991B1B', fontWeight: '600' }}>
                 💡 {t.signal}
               </Text>
             </View>
@@ -906,7 +906,7 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
                 {f.group}
               </Text>
             </View>
-            <Text style={{ fontSize: 11, color: '#15803D', fontWeight: '700' }}>
+            <Text style={{ fontSize: 13, color: '#15803D', fontWeight: '700' }}>
               Nguồn: {f.source}
             </Text>
             <View style={{ gap: 4, marginTop: 4 }}>

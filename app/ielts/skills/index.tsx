@@ -107,7 +107,7 @@ export default function IeltsSkillsIndexScreen() {
               >
                 <View className="flex-row items-center justify-between">
                   <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: tone.bg }}>
-                    <Text className="font-strong text-[11px]" style={{ color: tone.fg }}>
+                    <Text className="font-strong text-[13px]" style={{ color: tone.fg }}>
                       {tone.label}
                     </Text>
                   </View>

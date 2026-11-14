@@ -79,7 +79,7 @@ function StatColumn({ icon, value, label, onPress }: { icon: IconName; value: st
         <Icon name={icon} size={18} color={GOLD.deep} strokeWidth={2} />
       </View>
       <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 19, lineHeight: 24, color: GOLD.ink, marginTop: 2 }}>{value}</Text>
-      <Text numberOfLines={1} style={{ fontFamily: CUTE_FONT.semi, fontSize: 11, lineHeight: 15, color: GOLD.muted }}>{label}</Text>
+      <Text numberOfLines={1} style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, color: GOLD.muted }}>{label}</Text>
     </View>
   );
   return onPress ? <Pressable accessibilityRole="button" onPress={onPress} style={{ flex: 1 }}>{body}</Pressable> : <View style={{ flex: 1 }}>{body}</View>;
@@ -109,7 +109,7 @@ function ToolTile({ tool, chiikawa, L, en }: { tool: (typeof TOOLS)[number]; chi
       </View>
       <View>
         <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 17, lineHeight: 22, color: chiikawa ? PINK.deep : GOLD.ink }}>{tool.title}</Text>
-        <Text numberOfLines={2} style={{ fontFamily: CUTE_FONT.semi, fontSize: 12, lineHeight: 17, color: GOLD.body, marginTop: 3 }}>{L(tool.vi, tool.en)}</Text>
+        <Text numberOfLines={2} style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, color: GOLD.body, marginTop: 3 }}>{L(tool.vi, tool.en)}</Text>
       </View>
       <View style={{ alignSelf: 'flex-end', width: 30, height: 30, borderRadius: 15, backgroundColor: 'rgba(255,255,255,0.9)', alignItems: 'center', justifyContent: 'center' }}>
         <Icon name="chevron-right" size={14} color={chiikawa ? PINK.deep : GOLD.ink} strokeWidth={2.2} />
@@ -153,7 +153,7 @@ export function PhoneHome(p: PhoneHomeProps) {
         {/* Khối thương hiệu */}
         <View style={{ alignItems: 'center', marginTop: 16 }}>
           <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 40, lineHeight: 46, color: chiikawa ? PINK.deep : GOLD.deep, letterSpacing: -0.5 }}>Band 9</Text>
-          <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 11, lineHeight: 15, letterSpacing: 2.2, color: GOLD.muted, marginTop: 2 }}>
+          <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, letterSpacing: 2.2, color: GOLD.muted, marginTop: 2 }}>
             {L('HỌC SÁNG HƠN MỖI NGÀY', 'A BRIGHTER WAY TO LEARN')}
           </Text>
         </View>

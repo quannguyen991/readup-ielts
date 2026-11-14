@@ -43,9 +43,9 @@ export default function IeltsRoadmap() {
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Band {stage.band} · {stage.titleVi}</Text>
-                <Text style={{ color: HUB.muted, fontSize: 12, marginTop: 2 }}>{stage.goalVi}</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13, marginTop: 2 }}>{stage.goalVi}</Text>
               </View>
-              <Text style={{ color: HUB.body, fontSize: 12, fontWeight: '700' }}>{stageDone}/{lessons.length}</Text>
+              <Text style={{ color: HUB.body, fontSize: 13, fontWeight: '700' }}>{stageDone}/{lessons.length}</Text>
             </View>
             {lessons.map((l) => {
               const isDone = Boolean(done[l.id]);
@@ -63,13 +63,13 @@ export default function IeltsRoadmap() {
                     </View>
                     <View style={{ flex: 1, minWidth: 0 }}>
                       <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{l.title}</Text>
-                      <Text style={{ color: HUB.muted, fontSize: 12 }}>{l.goal}</Text>
+                      <Text style={{ color: HUB.muted, fontSize: 13 }}>{l.goal}</Text>
                     </View>
                     {isDone ? <Icon name="check" size={18} color="#2E7D4F" /> : <Icon name="chevron-right" size={18} color={HUB.muted} />}
                   </View>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                     {l.criteria.map((c) => (
-                      <Text key={c} style={{ color: HUB.body, fontSize: 11, borderWidth: 1, borderColor: HUB.line, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 }}>
+                      <Text key={c} style={{ color: HUB.body, fontSize: 13, borderWidth: 1, borderColor: HUB.line, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 }}>
                         {CRITERIA_LABEL[c]}
                       </Text>
                     ))}

@@ -64,7 +64,7 @@ export default function BossTest() {
         </View>
       ) : q ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu {i + 1}/{questions.length} · đúng {score}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu {i + 1}/{questions.length} · đúng {score}</Text>
           {q.kind === 'sound' ? (
             <Pressable accessibilityRole="button" onPress={() => speak(q.say)} style={{ height: 52, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
               <Text style={{ color: HUB.ink, fontWeight: '800' }}>Nghe rồi chọn</Text>

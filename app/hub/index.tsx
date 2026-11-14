@@ -82,7 +82,7 @@ export default function HubToday() {
       <HeroShell radius={28} style={{ padding: wide ? 28 : 20, gap: 6 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800', letterSpacing: 1.6 }}>IELTS · SPEAKING</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '800', letterSpacing: 1.6, alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.85)', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, marginBottom: 4, overflow: 'hidden' }}>IELTS · SPEAKING</Text>
             <Text style={{ color: INK, fontSize: wide ? 42 : 29, fontWeight: '900', lineHeight: wide ? 48 : 35, letterSpacing: -0.4 }}>
               Luyện nói tự tin,
             </Text>
@@ -115,7 +115,7 @@ export default function HubToday() {
               </View>
               <View style={{ flexShrink: 1 }}>
                 <Text style={{ color: INK, fontSize: 19, fontWeight: '900' }}>{st.value}</Text>
-                <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '700' }}>{st.label}</Text>
+                <Text style={{ color: INK_SOFT, fontSize: 13, fontWeight: '700' }}>{st.label}</Text>
               </View>
             </View>
           ))}
@@ -146,7 +146,7 @@ export default function HubToday() {
                   <CuteFlame size={22} />
                 </View>
               </View>
-              <Text style={{ color: d.isToday ? '#6A4BD9' : INK_SOFT, fontSize: 11, fontWeight: d.isToday || lit ? '900' : '700' }}>{label}</Text>
+              <Text style={{ color: d.isToday ? '#6A4BD9' : INK_SOFT, fontSize: 13, fontWeight: d.isToday || lit ? '900' : '700' }}>{label}</Text>
             </View>
           );
         })}
@@ -156,7 +156,7 @@ export default function HubToday() {
       <View style={[GLASS_CARD, { padding: 16, gap: 14, borderRadius: 24 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
           <Text style={{ color: INK, fontSize: 20, fontWeight: '900' }}>Luyện nói với AI</Text>
-          <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '600' }}>Tám công cụ, bấm thẻ để vào luyện ngay.</Text>
+          <Text style={{ color: INK_SOFT, fontSize: 13, fontWeight: '600' }}>Tám công cụ, bấm thẻ để vào luyện ngay.</Text>
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           {AI_TOOLS.map((tool) => (
@@ -172,7 +172,7 @@ export default function HubToday() {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   {tool.tag ? (
                     <View style={{ paddingHorizontal: 9, paddingVertical: 3, borderRadius: 10, backgroundColor: 'rgba(255,255,255,0.92)' }}>
-                      <Text style={{ color: INK, fontSize: 10, fontWeight: '900' }}>{tool.tag}</Text>
+                      <Text style={{ color: INK, fontSize: 13, fontWeight: '900' }}>{tool.tag}</Text>
                     </View>
                   ) : (
                     <View />
@@ -180,7 +180,7 @@ export default function HubToday() {
                   {tool.art(wide ? 72 : 60)}
                 </View>
                 <Text style={{ color: INK, fontSize: 15, fontWeight: '900', marginTop: 'auto' }}>{tool.title}</Text>
-                <Text style={{ color: INK, opacity: 0.75, fontSize: 12, fontWeight: '600', lineHeight: 17 }}>{tool.desc}</Text>
+                <Text style={{ color: INK, opacity: 0.75, fontSize: 13, fontWeight: '600', lineHeight: 18 }}>{tool.desc}</Text>
                 <View style={{ alignSelf: 'flex-end', width: 34, height: 34, borderRadius: 17, backgroundColor: 'rgba(255,255,255,0.95)', alignItems: 'center', justifyContent: 'center', marginTop: 4 }}>
                   <Icon name="arrow-right" size={14} color={INK} />
                 </View>
@@ -214,7 +214,7 @@ export default function HubToday() {
                 </View>
               </View>
               <Text style={{ color: INK, fontSize: 15, fontWeight: '900' }}>{m.title}</Text>
-              <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '600', lineHeight: 16 }}>{m.desc}</Text>
+              <Text style={{ color: INK_SOFT, fontSize: 13, fontWeight: '600', lineHeight: 18 }}>{m.desc}</Text>
             </Pressable>
           ))}
         </ScrollView>
@@ -224,7 +224,7 @@ export default function HubToday() {
       <View style={[GLASS_CARD, { padding: 16, gap: 12, borderRadius: 22 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
           <Text style={{ color: INK, fontSize: 18, fontWeight: '900' }}>Nhiệm vụ hôm nay</Text>
-          <Text style={{ color: INK_SOFT, fontSize: 12, fontWeight: '700' }}>
+          <Text style={{ color: INK_SOFT, fontSize: 13, fontWeight: '700' }}>
             {questDone}/{quests.length} hoàn thành · chuỗi {streak} ngày
           </Text>
         </View>
@@ -254,7 +254,7 @@ export default function HubToday() {
               <Text numberOfLines={1} style={{ flex: 1, color: quest.done ? '#166534' : INK, fontSize: 14, fontWeight: '800' }}>
                 {quest.title}
               </Text>
-              <Text style={{ color: quest.done ? '#166534' : '#6A4BD9', fontSize: 12, fontWeight: '900' }}>{quest.done ? '1/1 ✓' : '0/1'}</Text>
+              <Text style={{ color: quest.done ? '#166534' : '#6A4BD9', fontSize: 13, fontWeight: '900' }}>{quest.done ? '1/1 ✓' : '0/1'}</Text>
               <Icon name="chevron-right" size={14} color={INK_SOFT} />
             </Pressable>
           ))}
@@ -271,7 +271,7 @@ export default function HubToday() {
             onPress={() => setInfo(true)}
             style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F7CF8F' }}
           >
-            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '900' }}>B2 → C1 ⓘ</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '900' }}>B2 → C1 ⓘ</Text>
           </Pressable>
         </View>
 
@@ -283,8 +283,8 @@ export default function HubToday() {
             style={{ width: '41%', height: '100%', position: 'absolute', left: 0, top: 0 }}
           />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 12 }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '900' }}>Tiến độ CEFR B2</Text>
-            <Text style={{ color: INK, fontSize: 12, fontWeight: '900' }}>41%</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '900' }}>Tiến độ CEFR B2</Text>
+            <Text style={{ color: INK, fontSize: 13, fontWeight: '900' }}>41%</Text>
           </View>
         </View>
 

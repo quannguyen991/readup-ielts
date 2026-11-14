@@ -167,7 +167,7 @@ export default function DictionaryPage() {
   const isBookmarked = hit ? wordBookmarks.includes(hit.word.toLowerCase()) : false;
 
   return (
-    <HubScreen title="Từ điển Band 9" subtitle={`Tra phiên âm US/UK · Luyện phát âm · ${dictionarySize()}+ từ học thuật`} back>
+    <HubScreen title="Từ điển" subtitle={`Tra phiên âm US/UK · Luyện phát âm · ${dictionarySize()}+ từ học thuật`} back>
       {/* Search Bar + OCR Button */}
       <View style={{ flexDirection: 'row', gap: 8 }}>
         <View style={{ flex: 1, position: 'relative', justifyContent: 'center' }}>
@@ -236,7 +236,7 @@ export default function DictionaryPage() {
 
       {/* Suggested Quick Searches */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-        <Text style={{ color: HUB.muted, fontSize: 12, fontWeight: '600' }}>Gợi ý:</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>Gợi ý:</Text>
         {['pedagogical', 'ubiquitous', 'meticulous', 'articulate', 'menu', 'schedule'].map((w) => (
           <Pressable
             key={w}
@@ -250,7 +250,7 @@ export default function DictionaryPage() {
               borderColor: HUB.line,
             }}
           >
-            <Text style={{ color: HUB.sky, fontSize: 11, fontWeight: '700' }}>{w}</Text>
+            <Text style={{ color: HUB.sky, fontSize: 13, fontWeight: '700' }}>{w}</Text>
           </Pressable>
         ))}
       </View>
@@ -274,7 +274,7 @@ export default function DictionaryPage() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
                 <Text style={{ color: HUB.ink, fontSize: 28, fontWeight: '800' }}>{hit.word}</Text>
                 <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, backgroundColor: 'rgba(140, 83, 27, 0.2)' }}>
-                  <Text style={{ color: HUB.sky, fontSize: 12, fontWeight: '800' }}>{hit.pos}</Text>
+                  <Text style={{ color: HUB.sky, fontSize: 13, fontWeight: '800' }}>{hit.pos}</Text>
                 </View>
               </View>
               <Text style={{ color: '#6A4BD9', fontSize: 16, fontWeight: '600' }}>{hit.meaningVi}</Text>
@@ -305,13 +305,13 @@ export default function DictionaryPage() {
             {/* US IPA */}
             <View style={{ flex: 1, minWidth: 140, padding: 10, borderRadius: 12, backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line, gap: 6 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text style={{ color: '#93C5FD', fontSize: 11, fontWeight: '800' }}>🇺🇸 US (Anh-Mỹ)</Text>
+                <Text style={{ color: '#93C5FD', fontSize: 13, fontWeight: '800' }}>🇺🇸 US (Anh-Mỹ)</Text>
                 <View style={{ flexDirection: 'row', gap: 6 }}>
                   <Pressable accessibilityLabel="Nghe US thường" onPress={() => speak(hit.word, { rate: 1.0 })} style={{ padding: 4 }}>
                     <Icon name="volume" size={15} color={HUB.blue} />
                   </Pressable>
                   <Pressable accessibilityLabel="Nghe US chậm" onPress={() => speak(hit.word, { rate: 0.75 })} style={{ padding: 4 }}>
-                    <Text style={{ color: HUB.sky, fontSize: 10, fontWeight: '800' }}>0.75x</Text>
+                    <Text style={{ color: HUB.sky, fontSize: 13, fontWeight: '800' }}>0.75x</Text>
                   </Pressable>
                 </View>
               </View>
@@ -321,13 +321,13 @@ export default function DictionaryPage() {
             {/* UK IPA */}
             <View style={{ flex: 1, minWidth: 140, padding: 10, borderRadius: 12, backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line, gap: 6 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text style={{ color: '#C084FC', fontSize: 11, fontWeight: '800' }}>🇬🇧 UK (Anh-Anh)</Text>
+                <Text style={{ color: '#C084FC', fontSize: 13, fontWeight: '800' }}>🇬🇧 UK (Anh-Anh)</Text>
                 <View style={{ flexDirection: 'row', gap: 6 }}>
                   <Pressable accessibilityLabel="Nghe UK thường" onPress={() => speak(hit.word, { rate: 1.0 })} style={{ padding: 4 }}>
                     <Icon name="volume" size={15} color={HUB.violet} />
                   </Pressable>
                   <Pressable accessibilityLabel="Nghe UK chậm" onPress={() => speak(hit.word, { rate: 0.75 })} style={{ padding: 4 }}>
-                    <Text style={{ color: HUB.violet, fontSize: 10, fontWeight: '800' }}>0.75x</Text>
+                    <Text style={{ color: HUB.violet, fontSize: 13, fontWeight: '800' }}>0.75x</Text>
                   </Pressable>
                 </View>
               </View>
@@ -344,7 +344,7 @@ export default function DictionaryPage() {
               </View>
               {drillScore !== null ? (
                 <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, backgroundColor: drillScore >= 80 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)' }}>
-                  <Text style={{ color: drillScore >= 80 ? '#34D399' : '#FBBF24', fontSize: 12, fontWeight: '800' }}>{drillScore}%</Text>
+                  <Text style={{ color: drillScore >= 80 ? '#34D399' : '#FBBF24', fontSize: 13, fontWeight: '800' }}>{drillScore}%</Text>
                 </View>
               ) : null}
             </View>
@@ -372,7 +372,7 @@ export default function DictionaryPage() {
             {/* Phoneme breakdown pills */}
             {currentExtra ? (
               <View style={{ gap: 6 }}>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>Chi tiết từng âm vị (Phonemes):</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>Chi tiết từng âm vị (Phonemes):</Text>
                 <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
                   {currentExtra.phonemes.map((ph, idx) => (
                     <View
@@ -389,11 +389,11 @@ export default function DictionaryPage() {
                       }}
                     >
                       <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '700' }}>/{ph.symbol}/</Text>
-                      <Text style={{ color: ph.score >= 85 ? '#34D399' : '#FBBF24', fontSize: 11, fontWeight: '800' }}>{ph.score}%</Text>
+                      <Text style={{ color: ph.score >= 85 ? '#34D399' : '#FBBF24', fontSize: 13, fontWeight: '800' }}>{ph.score}%</Text>
                     </View>
                   ))}
                 </View>
-                <Text style={{ color: HUB.body, fontSize: 12, lineHeight: 17 }}>
+                <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 18 }}>
                   💡 {currentExtra.phonemes[0]?.tip}
                 </Text>
               </View>
@@ -403,7 +403,7 @@ export default function DictionaryPage() {
           {/* Example sentence */}
           {hit.example ? (
             <View style={{ padding: 12, borderRadius: 10, backgroundColor: HUB.glassStrong, gap: 4 }}>
-              <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700', textTransform: 'uppercase' }}>Ví dụ minh hoạ</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700', textTransform: 'uppercase' }}>Ví dụ minh hoạ</Text>
               <Text style={{ color: HUB.body, fontSize: 13, fontStyle: 'italic', lineHeight: 20 }}>“{hit.example}”</Text>
             </View>
           ) : null}
@@ -417,11 +417,11 @@ export default function DictionaryPage() {
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '700' }}>{c.phrase}</Text>
                     <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: c.band === '9.0' ? 'rgba(168, 85, 247, 0.25)' : 'rgba(140, 83, 27, 0.2)' }}>
-                      <Text style={{ color: c.band === '9.0' ? '#C084FC' : '#6A4BD9', fontSize: 10, fontWeight: '800' }}>Band {c.band}</Text>
+                      <Text style={{ color: c.band === '9.0' ? '#C084FC' : '#6A4BD9', fontSize: 13, fontWeight: '800' }}>Band {c.band}</Text>
                     </View>
                   </View>
-                  <Text style={{ color: HUB.muted, fontSize: 12 }}>{c.meaningVi}</Text>
-                  <Text style={{ color: HUB.body, fontSize: 12, fontStyle: 'italic', lineHeight: 18 }}>“{c.example}”</Text>
+                  <Text style={{ color: HUB.muted, fontSize: 13 }}>{c.meaningVi}</Text>
+                  <Text style={{ color: HUB.body, fontSize: 13, fontStyle: 'italic', lineHeight: 18 }}>“{c.example}”</Text>
                 </View>
               ))}
             </View>
@@ -462,7 +462,7 @@ export default function DictionaryPage() {
                   <Text style={{ color: '#2B2350', fontSize: 13, fontWeight: '700', textAlign: 'center' }}>
                     {OCR_SAMPLES[activeOcrSample]?.source}
                   </Text>
-                  <Text style={{ color: '#94A3B8', fontSize: 12, textAlign: 'center', fontStyle: 'italic', lineHeight: 17 }} numberOfLines={3}>
+                  <Text style={{ color: '#94A3B8', fontSize: 13, textAlign: 'center', fontStyle: 'italic', lineHeight: 18 }} numberOfLines={3}>
                     “{OCR_SAMPLES[activeOcrSample]?.excerpt}”
                   </Text>
                 </View>
@@ -471,7 +471,7 @@ export default function DictionaryPage() {
 
             {/* Test Sample Switcher */}
             <View style={{ gap: 6 }}>
-              <Text style={{ color: HUB.muted, fontSize: 12, fontWeight: '600' }}>Chọn tài liệu mẫu hoặc chụp thực tế:</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>Chọn tài liệu mẫu hoặc chụp thực tế:</Text>
               <View style={{ flexDirection: 'row', gap: 6 }}>
                 {OCR_SAMPLES.map((s, idx) => (
                   <Pressable
@@ -490,7 +490,7 @@ export default function DictionaryPage() {
                       alignItems: 'center',
                     }}
                   >
-                    <Text style={{ color: activeOcrSample === idx ? '#E9D5FF' : HUB.muted, fontSize: 11, fontWeight: '700' }}>
+                    <Text style={{ color: activeOcrSample === idx ? '#E9D5FF' : HUB.muted, fontSize: 13, fontWeight: '700' }}>
                       Mẫu {idx + 1}
                     </Text>
                   </Pressable>

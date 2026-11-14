@@ -380,7 +380,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
         </Pressable>
         <View className="min-w-0 flex-1">
           <Text className="font-nun-strong text-ink" style={{ fontSize: 14 }} numberOfLines={1}>{test.title}</Text>
-          <Text className="font-nun text-muted" style={{ fontSize: 12 }} numberOfLines={1}>
+          <Text className="font-nun text-muted" style={{ fontSize: 13 }} numberOfLines={1}>
             {sections.length === 1 ? `Section ${sections[0]?.n}` : 'Full test'}
           </Text>
         </View>
@@ -397,11 +397,11 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
           <>
             <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setShowNotes(true); }} className="flex-row items-center justify-center gap-1.5 rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 44 }}>
               <Icon name="note" size={15} color={color.muted} />
-              {width >= 480 ? <Text className="font-nun-strong text-muted" style={{ fontSize: 12 }}>{L('Xem note', 'Notes')}</Text> : null}
+              {width >= 480 ? <Text className="font-nun-strong text-muted" style={{ fontSize: 13 }}>{L('Xem note', 'Notes')}</Text> : null}
             </Pressable>
             <Pressable accessibilityRole="button" onPress={() => { playSfx('modalOpen'); setShowSettings(true); }} className="flex-row items-center justify-center gap-1.5 rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 44 }}>
               <Icon name="settings" size={15} color={color.muted} />
-              {width >= 480 ? <Text className="font-nun-strong text-muted" style={{ fontSize: 12 }}>{L('Cài đặt', 'Settings')}</Text> : null}
+              {width >= 480 ? <Text className="font-nun-strong text-muted" style={{ fontSize: 13 }}>{L('Cài đặt', 'Settings')}</Text> : null}
             </Pressable>
           </>
         ) : null}
@@ -537,7 +537,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
                   style={{ borderColor: GREEN, backgroundColor: '#F0FBF4' }}
                 >
                   <Icon name="note" size={20} color={GREEN} />
-                  <Text className="font-nun-strong text-center" style={{ fontSize: 12, color: '#0F7A38' }}>{L('Ghi chú', 'Notes')}</Text>
+                  <Text className="font-nun-strong text-center" style={{ fontSize: 13, color: '#0F7A38' }}>{L('Ghi chú', 'Notes')}</Text>
                 </Pressable>
               </View>
             ) : null}
@@ -576,7 +576,7 @@ function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: Listen
           >
             <View className="min-w-0" style={{ marginRight: 4 }}>
               <Text className="font-nun-heavy text-ink" style={{ fontSize: 15 }}>Practice</Text>
-              <Text className="font-nun-mid" style={{ fontSize: 12, color: '#6B7280' }}>{L(`Đã làm ${answered.size} / ${allNumbers.length}`, `Done ${answered.size} / ${allNumbers.length}`)}</Text>
+              <Text className="font-nun-mid" style={{ fontSize: 13, color: '#6B7280' }}>{L(`Đã làm ${answered.size} / ${allNumbers.length}`, `Done ${answered.size} / ${allNumbers.length}`)}</Text>
             </View>
             <ScrollView horizontal={!wide} showsHorizontalScrollIndicator={false} className="min-w-0 flex-1" snapToInterval={wide ? undefined : 50} decelerationRate="fast" contentContainerStyle={wide ? { flexWrap: 'wrap', flexDirection: 'row', gap: 6, justifyContent: 'center' } : { gap: 6, justifyContent: 'center' }}>
               {allNumbers.map((n) => {

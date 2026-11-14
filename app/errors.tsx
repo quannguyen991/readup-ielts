@@ -121,7 +121,7 @@ export default function ErrorsScreen() {
               </Sticker>
             </Motion>
             <Motion kind="pop" delay={0.2}>
-              <Label text={L('Sạch lỗi ✨', 'All clear ✨')} color="#22A06B" ink="#FFFFFF" tilt={-5} size={12} />
+              <Label text={L('Sạch lỗi ✨', 'All clear ✨')} color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
             </Motion>
           </View>
           <Text className="font-heavy text-sectionTitle text-ink">{L('Chưa có lỗi nào được gọi tên', 'No named mistakes yet')}</Text>
@@ -169,7 +169,7 @@ function ErrorCard({ e, rank }: { e: ErrorItem; rank: number }) {
           </Text>
           {rank <= 3 && e.last7 > 0 ? (
             <View aria-hidden>
-              <Label text="Hot 🔥" color="#F0703F" ink="#FFFFFF" tilt={-4} size={11} />
+              <Label text="Hot 🔥" color="#F0703F" ink="#FFFFFF" tilt={-4} size={13} />
             </View>
           ) : null}
         </View>

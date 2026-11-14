@@ -146,19 +146,19 @@ export default function ShortPractice() {
                   borderColor: 'rgba(255, 255, 255, 0.2)',
                 }}
               >
-                <Text style={{ color: '#38BDF8', fontSize: 10, fontWeight: '800' }}>
+                <Text style={{ color: '#38BDF8', fontSize: 13, fontWeight: '800' }}>
                   {item.sourceType}
                 </Text>
               </View>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                <Text style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 11, fontWeight: '600' }}>
+                <Text style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 13, fontWeight: '600' }}>
                   {item.speaker}
                 </Text>
               </View>
             </View>
 
-            <Text numberOfLines={1} style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: 12 }}>
+            <Text numberOfLines={1} style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: 13 }}>
               {item.source}
             </Text>
           </View>
@@ -188,10 +188,10 @@ export default function ShortPractice() {
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <Text style={{ color: '#FCD34D', fontSize: 12, fontWeight: '700' }}>
+              <Text style={{ color: '#FCD34D', fontSize: 13, fontWeight: '700' }}>
                 💡 Trọng tâm {item.focusSound}:
               </Text>
-              <Text style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: 12, flex: 1 }}>
+              <Text style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: 13, flex: 1 }}>
                 {item.tipVi}
               </Text>
             </View>
@@ -212,17 +212,17 @@ export default function ShortPractice() {
               }}
             >
               <View style={{ alignItems: 'center', gap: 2 }}>
-                <Text style={{ color: '#94A3B8', fontSize: 11, fontWeight: '700' }}>PHÁT ÂM</Text>
+                <Text style={{ color: '#94A3B8', fontSize: 13, fontWeight: '700' }}>PHÁT ÂM</Text>
                 <Text style={{ color: '#10B981', fontSize: 22, fontWeight: '900' }}>{sc.overall}%</Text>
               </View>
               <View style={{ width: 1, height: 30, backgroundColor: 'rgba(255, 255, 255, 0.15)' }} />
               <View style={{ alignItems: 'center', gap: 2 }}>
-                <Text style={{ color: '#94A3B8', fontSize: 11, fontWeight: '700' }}>NGỮ ĐIỆU</Text>
+                <Text style={{ color: '#94A3B8', fontSize: 13, fontWeight: '700' }}>NGỮ ĐIỆU</Text>
                 <Text style={{ color: '#38BDF8', fontSize: 22, fontWeight: '900' }}>{sc.intonation}%</Text>
               </View>
               <View style={{ width: 1, height: 30, backgroundColor: 'rgba(255, 255, 255, 0.15)' }} />
               <View style={{ alignItems: 'center', gap: 2 }}>
-                <Text style={{ color: '#94A3B8', fontSize: 11, fontWeight: '700' }}>KẾT QUẢ</Text>
+                <Text style={{ color: '#94A3B8', fontSize: 13, fontWeight: '700' }}>KẾT QUẢ</Text>
                 <Text style={{ color: '#FCD34D', fontSize: 14, fontWeight: '800' }}>
                   {sc.overall >= 80 ? 'Xuất sắc ✨' : 'Đạt'}
                 </Text>

@@ -228,7 +228,7 @@ export default function PresentationCoachScreen() {
                   Level 2 · Design Your Slides
                 </Text>
               </View>
-              <Text className="mt-0.5 ml-6 font-sans text-[12px] text-[#A5B4FC]">
+              <Text className="mt-0.5 ml-6 font-sans text-[13px] text-[#A5B4FC]">
                 Slides that support you — one idea each, not a wall of text
               </Text>
             </View>
@@ -249,7 +249,7 @@ export default function PresentationCoachScreen() {
                   Level 3 · Present With Your Slides
                 </Text>
               </View>
-              <Text className="mt-0.5 ml-6 font-sans text-[12px] text-[#A5B4FC]">
+              <Text className="mt-0.5 ml-6 font-sans text-[13px] text-[#A5B4FC]">
                 You carry the message — the slides just back you up
               </Text>
             </View>
@@ -293,7 +293,7 @@ function LessonRow({ item, onPress }: { item: LessonItem; onPress: () => void })
           </Text>
           <TagPill tag={item.tag} />
         </View>
-        <Text className="mt-0.5 font-sans text-[12px] text-[#94A3B8]" numberOfLines={2}>
+        <Text className="mt-0.5 font-sans text-[13px] text-[#94A3B8]" numberOfLines={2}>
           {item.desc}
         </Text>
       </View>

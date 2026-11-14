@@ -28,7 +28,7 @@ export default function MoreScreen() {
             <Text className="font-heavy text-pageTitle text-ink">More</Text>
             <View aria-hidden className="mt-1">
               <Motion kind="pop">
-                <Label text={L('Tiện ích khác ✨', 'More tools ✨')} color="#F2B632" ink="#2B2350" tilt={-4} size={12} />
+                <Label text={L('Tiện ích khác ✨', 'More tools ✨')} color="#F2B632" ink="#2B2350" tilt={-4} size={13} />
               </Motion>
             </View>
           </View>

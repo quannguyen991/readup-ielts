@@ -172,7 +172,7 @@ export default function SatHubScreen() {
           })}
         >
           <View className="min-w-0 flex-1">
-            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: B9.goldLight }}>
+            <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 1.6, color: B9.goldLight }}>
               {L('THEO TRÌNH ĐỘ', 'BY LEVEL')}
             </Text>
             <Text className="font-heavy" style={{ marginTop: 2, fontSize: 17, lineHeight: 23, color: '#FFFFFF' }}>

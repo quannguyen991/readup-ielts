@@ -112,7 +112,7 @@ export function SatFocusPicker() {
                     {navLabel(item, locale)}
                   </Text>
                   {desc ? (
-                    <Text numberOfLines={2} style={{ fontSize: 12, lineHeight: 17, fontWeight: '600', color: '#7A72A0' }}>
+                    <Text numberOfLines={2} style={{ fontSize: 13, lineHeight: 18, fontWeight: '600', color: '#7A72A0' }}>
                       {desc[locale]}
                     </Text>
                   ) : null}

@@ -144,27 +144,27 @@ function TagBadge({ tag }: { tag: TutorItem['tag'] }) {
   if (tag === 'MỚI') {
     return (
       <View className="rounded-full bg-[#1E3A8A] px-2 py-0.5">
-        <Text className="font-heavy text-[10px] text-[#60A5FA] uppercase tracking-wide">MỚI</Text>
+        <Text className="font-heavy text-[13px] text-[#60A5FA] uppercase tracking-wide">MỚI</Text>
       </View>
     );
   }
   if (tag === 'BETA') {
     return (
       <View className="rounded-full bg-[#581C87] px-2 py-0.5">
-        <Text className="font-heavy text-[10px] text-[#C084FC] uppercase tracking-wide">BETA</Text>
+        <Text className="font-heavy text-[13px] text-[#C084FC] uppercase tracking-wide">BETA</Text>
       </View>
     );
   }
   if (tag === 'BAND 8.5') {
     return (
       <View className="rounded-full bg-[#831843] px-2 py-0.5">
-        <Text className="font-heavy text-[10px] text-[#F472B6] uppercase tracking-wide">BAND 8.5</Text>
+        <Text className="font-heavy text-[13px] text-[#F472B6] uppercase tracking-wide">BAND 8.5</Text>
       </View>
     );
   }
   return (
     <View className="rounded-full bg-[#2B2350] px-2 py-0.5">
-      <Text className="font-heavy text-[10px] text-[#FB923C] uppercase tracking-wide">HOT</Text>
+      <Text className="font-heavy text-[13px] text-[#FB923C] uppercase tracking-wide">HOT</Text>
     </View>
   );
 }

@@ -39,7 +39,7 @@ export default function ScenariosHub() {
           );
         })}
       </View>
-      <Text style={{ color: HUB.muted, fontSize: 12 }}>{active.hint} · {tab === 'dialogue' ? DIALOGUES.length : ROLEPLAYS.filter((r) => r.mode === tab).length} bài</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13 }}>{active.hint} · {tab === 'dialogue' ? DIALOGUES.length : ROLEPLAYS.filter((r) => r.mode === tab).length} bài</Text>
 
       {tab === 'dialogue' ? (
         CATEGORY_ORDER.map((cat) => {
@@ -69,11 +69,11 @@ export default function ScenariosHub() {
 
       <View style={[GLASS_CARD, { padding: 14, gap: 6 }]}>
         <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '800' }}>Ghi chú ảnh</Text>
-        <Text style={{ color: HUB.muted, fontSize: 11, lineHeight: 16 }}>
+        <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>
           Ảnh minh hoạ tạo bằng ChatGPT (OpenAI).
         </Text>
         {SCENE_CREDITS.map((c) => (
-          <Text key={c.key} style={{ color: HUB.muted, fontSize: 10, lineHeight: 14 }}>
+          <Text key={c.key} style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>
             {`${c.key}: ${c.author}`}
           </Text>
         ))}
@@ -87,7 +87,7 @@ function Section({ title, count, children }: { title: string; count: number; chi
     <View style={{ gap: 10 }}>
       <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' }}>
         <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>{title}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>{count} bài</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{count} bài</Text>
       </View>
       {children}
     </View>
@@ -104,12 +104,12 @@ function ScenarioCard({ play, done }: { play: Roleplay; done: boolean }) {
     <Pressable accessibilityRole="button" accessibilityLabel={play.title} onPress={() => router.push(path as never)} style={[GLASS_CARD, { padding: 10, gap: 8 }]}>
       <Thumb setting={play.setting} />
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 4 }}>
-        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 10, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 6, paddingVertical: 1 }}>{play.difficulty}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 11 }}>{play.minutes} phút</Text>
+        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 6, paddingVertical: 1 }}>{play.difficulty}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{play.minutes} phút</Text>
         {done ? <Icon name="check" size={14} color={HUB.green} /> : null}
       </View>
       <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700', paddingHorizontal: 4 }}>{play.title}</Text>
-      <Text style={{ color: HUB.muted, fontSize: 12, paddingHorizontal: 4 }}>{play.scene}</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13, paddingHorizontal: 4 }}>{play.scene}</Text>
     </Pressable>
   );
 }
@@ -120,12 +120,12 @@ function DialogueCard({ dialogue, best }: { dialogue: Dialogue; best: number | u
     <Pressable accessibilityRole="button" accessibilityLabel={dialogue.title} onPress={() => router.push(`/hub/dialogue/${dialogue.id}` as never)} style={[GLASS_CARD, { padding: 10, gap: 8 }]}>
       <Thumb setting={dialogue.setting} />
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 4 }}>
-        <Text style={{ color: DIFF_COLOR[dialogue.difficulty], fontSize: 10, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[dialogue.difficulty], borderRadius: 999, paddingHorizontal: 6, paddingVertical: 1 }}>{dialogue.difficulty}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 11 }}>{dialogue.minutes} phút</Text>
-        {best !== undefined ? <Text style={{ color: passed ? HUB.green : HUB.muted, fontSize: 11, fontWeight: '700' }}>{`Cao nhất ${best}%`}</Text> : null}
+        <Text style={{ color: DIFF_COLOR[dialogue.difficulty], fontSize: 13, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[dialogue.difficulty], borderRadius: 999, paddingHorizontal: 6, paddingVertical: 1 }}>{dialogue.difficulty}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{dialogue.minutes} phút</Text>
+        {best !== undefined ? <Text style={{ color: passed ? HUB.green : HUB.muted, fontSize: 13, fontWeight: '700' }}>{`Cao nhất ${best}%`}</Text> : null}
       </View>
       <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700', paddingHorizontal: 4 }}>{dialogue.title}</Text>
-      <Text style={{ color: HUB.muted, fontSize: 12, paddingHorizontal: 4 }}>{dialogue.keyPhrases.slice(0, 3).join(' · ')}</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13, paddingHorizontal: 4 }}>{dialogue.keyPhrases.slice(0, 3).join(' · ')}</Text>
     </Pressable>
   );
 }

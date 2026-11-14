@@ -307,7 +307,7 @@ export default function TutorChat() {
               }}
             >
               <Icon name="book" size={12} color="#C084FC" />
-              <Text style={{ color: '#E9D5FF', fontSize: 11, fontWeight: '700' }}>Slide ({slides.length || 4})</Text>
+              <Text style={{ color: '#E9D5FF', fontSize: 13, fontWeight: '700' }}>Slide ({slides.length || 4})</Text>
             </Pressable>
           ) : null}
 
@@ -331,7 +331,7 @@ export default function TutorChat() {
               }}
             >
               <Icon name="book" size={12} color="#38BDF8" />
-              <Text style={{ color: '#E0F2FE', fontSize: 11, fontWeight: '700' }}>Hồ sơ CV</Text>
+              <Text style={{ color: '#E0F2FE', fontSize: 13, fontWeight: '700' }}>Hồ sơ CV</Text>
             </Pressable>
           ) : null}
 
@@ -373,7 +373,7 @@ export default function TutorChat() {
                       backgroundColor: showTranslation ? '#6A4BD9' : '#F1F5F9',
                     }}
                   >
-                    <Text style={{ color: showTranslation ? '#FFFFFF' : '#475569', fontSize: 12, fontWeight: '800' }}>
+                    <Text style={{ color: showTranslation ? '#FFFFFF' : '#475569', fontSize: 13, fontWeight: '800' }}>
                       文A
                     </Text>
                   </Pressable>
@@ -436,7 +436,7 @@ export default function TutorChat() {
               </View>
             );
           })}
-          {error ? <Text style={{ color: HUB.red, fontSize: 12 }}>{error}</Text> : null}
+          {error ? <Text style={{ color: HUB.red, fontSize: 13 }}>{error}</Text> : null}
         </ScrollView>
 
         {/* Optional Keyboard Input Area */}
@@ -480,7 +480,7 @@ export default function TutorChat() {
         {/* Bottom Barge-in & Input Controls */}
         <View style={{ alignItems: 'center', gap: 4, paddingTop: 4 }}>
           {/* Label "Nhấn để ngắt" */}
-          <Text style={{ color: speaking ? '#6A4BD9' : HUB.muted, fontSize: 12, fontWeight: '700' }}>
+          <Text style={{ color: speaking ? '#6A4BD9' : HUB.muted, fontSize: 13, fontWeight: '700' }}>
             {listen.listening
               ? 'Đang lắng nghe bạn... Bấm để gửi'
               : speaking
@@ -620,9 +620,9 @@ export default function TutorChat() {
 
               <View style={{ padding: 10, borderRadius: 10, backgroundColor: HUB.glassStrong, gap: 4 }}>
                 <Text style={{ color: '#A855F7', fontSize: 13, fontWeight: '700' }}>Từ vựng mở rộng Band 8.5+:</Text>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>• possess the capability to</Text>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>• be adept at / proficient in</Text>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>• struggle to execute under pressure</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>• possess the capability to</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>• be adept at / proficient in</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>• struggle to execute under pressure</Text>
               </View>
             </View>
 
@@ -652,7 +652,7 @@ export default function TutorChat() {
                 <Icon name="close" size={20} color={HUB.muted} />
               </Pressable>
             </View>
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>Mỗi trang slide cách nhau bằng một dòng "---"</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>Mỗi trang slide cách nhau bằng một dòng "---"</Text>
             <TextInput
               value={deckText}
               onChangeText={setDeckText}
@@ -694,7 +694,7 @@ export default function TutorChat() {
                 <Icon name="close" size={20} color={HUB.muted} />
               </Pressable>
             </View>
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>Dán CV, bài luận du học hoặc tóm tắt nghiên cứu của bạn:</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>Dán CV, bài luận du học hoặc tóm tắt nghiên cứu của bạn:</Text>
             <TextInput
               value={cvText}
               onChangeText={setCvText}

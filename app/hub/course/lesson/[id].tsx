@@ -121,7 +121,7 @@ function LearnBody({ lesson, finished, onComplete, en }: BodyProps<LearnLesson>)
                 backgroundColor: KIND_STYLE.LEARN.bg,
               }}
             >
-              <Text style={{ color: KIND_STYLE.LEARN.fg, fontSize: 12, fontWeight: '800' }}>{i + 1}</Text>
+              <Text style={{ color: KIND_STYLE.LEARN.fg, fontSize: 13, fontWeight: '800' }}>{i + 1}</Text>
             </View>
             <Text style={{ flex: 1, color: HUB.body, fontSize: 14, lineHeight: 21 }}>{tr(p, en)}</Text>
           </View>
@@ -248,13 +248,13 @@ function QuizBody({ lesson, finished, onComplete, en }: BodyProps<QuizLesson>) {
       ) : (
         <Panel>
           {best !== undefined ? (
-            <Text style={{ color: HUB.muted, fontSize: 12, fontWeight: '700' }}>
+            <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>
               {L(`Điểm cao nhất: ${best}%`, `Best score: ${best}%`)}
             </Text>
           ) : null}
           <ActionButton label={L('Nộp bài', 'Submit')} disabled={!allAnswered} onPress={submit} />
           {!allAnswered ? (
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>{L('Chọn đáp án cho cả năm câu để nộp.', 'Choose an answer for all five questions to submit.')}</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>{L('Chọn đáp án cho cả năm câu để nộp.', 'Choose an answer for all five questions to submit.')}</Text>
           ) : null}
         </Panel>
       )}
@@ -274,7 +274,7 @@ function CapstoneBody({ lesson, finished, onComplete, en }: BodyProps<CapstoneLe
   return (
     <View style={{ gap: 12 }}>
       <Panel>
-        <Text style={{ color: HUB.muted, fontSize: 12, lineHeight: 18 }}>
+        <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>
           {L('Đánh dấu từng mục khi bạn đã làm xong. Đây là tự kiểm, không có điểm tự động.', 'Tick each item once you have done it. This is a self-check; there is no automatic score.')}
         </Text>
         {lesson.tasks.map((t, i) => (
@@ -496,7 +496,7 @@ function ActionButton({ label, onPress, disabled = false, tone = 'primary' }: { 
 }
 
 function Label({ text }: { text: string }) {
-  return <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '800', letterSpacing: 0.6 }}>{text.toUpperCase()}</Text>;
+  return <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '800', letterSpacing: 0.6 }}>{text.toUpperCase()}</Text>;
 }
 
 function Panel({ children }: { children: React.ReactNode }) {

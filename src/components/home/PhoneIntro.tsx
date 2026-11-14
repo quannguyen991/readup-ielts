@@ -38,7 +38,7 @@ function StatChip({ value, label }: { value: string; label: string }) {
   return (
     <View style={[{ flexDirection: 'row', alignItems: 'baseline', gap: 5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8, marginRight: 8 }, GLASS] as never}>
       <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 15, color: CUTE.ink }}>{value}</Text>
-      <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 12, color: CUTE.inkSoft }}>{label}</Text>
+      <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, color: CUTE.inkSoft }}>{label}</Text>
     </View>
   );
 }
@@ -57,7 +57,7 @@ function AreaTile({ title, line, count, unit, icon, tint, onPress }: { title: st
       </View>
       <View>
         <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 18, lineHeight: 24, color: CUTE.ink }}>{title}</Text>
-        <Text numberOfLines={2} style={{ fontFamily: CUTE_FONT.semi, fontSize: 12, lineHeight: 17, color: CUTE.inkSoft, marginTop: 2 }}>{line}</Text>
+        <Text numberOfLines={2} style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, color: CUTE.inkSoft, marginTop: 2 }}>{line}</Text>
         <Text style={{ fontFamily: CUTE_FONT.bold, fontSize: 13, color: ACCENT, marginTop: 8 }}>{`${count} ${unit}`}</Text>
       </View>
     </Pressable>
@@ -99,7 +99,7 @@ export function PhoneIntro(p: Props) {
 
         {/* Giới thiệu ngắn */}
         <View style={[{ marginTop: 18, borderRadius: 30, padding: 20 }, GLASS] as never}>
-          <Text style={{ fontFamily: CUTE_FONT.bold, fontSize: 12, letterSpacing: 0.6, color: ACCENT }}>IELTS · SAT</Text>
+          <Text style={{ fontFamily: CUTE_FONT.bold, fontSize: 13, letterSpacing: 0.6, color: ACCENT }}>IELTS · SAT</Text>
           <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 25, lineHeight: 31, color: CUTE.ink, marginTop: 8 }}>
             {L('Luyện thi bằng đề thật', 'Practise with real tests')}
           </Text>

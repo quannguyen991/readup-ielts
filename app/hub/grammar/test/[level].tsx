@@ -45,7 +45,7 @@ export default function GrammarLevelTest() {
           <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>
             {`Đúng ${grade.correct}/${grade.total} câu · ${grade.passed ? 'Đạt' : 'Chưa đạt'} (ngưỡng ${PASS_PERCENT}%)`}
           </Text>
-          <Text style={{ color: HUB.muted, fontSize: 12, lineHeight: 18 }}>
+          <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>
             Ngưỡng 80% là mốc thành thạo của app. Làm lại nhiều lần, cách nhau vài ngày, sẽ đo được tiến bộ rõ hơn một lần làm dồn.
           </Text>
         </View>
@@ -60,7 +60,7 @@ export default function GrammarLevelTest() {
                 <Pressable key={id} accessibilityRole="button" onPress={() => router.push(`/hub/grammar/${id}` as never)} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 8 }}>
                   <View style={{ flex: 1, gap: 2 }}>
                     <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{lesson.title}</Text>
-                    <Text style={{ color: HUB.muted, fontSize: 12 }}>{lesson.subtitle}</Text>
+                    <Text style={{ color: HUB.muted, fontSize: 13 }}>{lesson.subtitle}</Text>
                   </View>
                   <Icon name="chevron-right" size={18} color={HUB.muted} />
                 </Pressable>

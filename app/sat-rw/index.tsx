@@ -183,7 +183,7 @@ export default function SatRwHubScreen() {
               thứ năm là đoán được đáp án mà không cần đọc — vì đã biết trước câu
               này hỏi luật gì. Đề trộn mới giống lúc thi.
             */}
-            <Text className="max-w-[640px] font-sans text-body text-muted">
+            <Text className="max-w-[640px] font-sans text-body text-muted" numberOfLines={3}>
               {L(
                 `Mỗi đề ${QUESTIONS_PER_SET} câu lấy từ cả bốn mảng, xếp xen kẽ — bạn phải tự nhận ra câu đang hỏi luật gì, giống lúc thi thật.`,
                 `Each set has ${QUESTIONS_PER_SET} questions drawn from all four domains, interleaved — you have to spot which rule each one tests, just like the real exam.`,
@@ -217,7 +217,7 @@ export default function SatRwHubScreen() {
                   </Text>
                   <Badge label={L(`${stage.units.length} bài`, `${stage.units.length} units`)} tone="primary" />
                 </View>
-                <Text className="mt-1 max-w-[760px] font-sans text-body text-muted">{stage.blurb}</Text>
+                <Text className="mt-1 max-w-[760px] font-sans text-body text-muted" numberOfLines={2}>{stage.blurb}</Text>
                 <View className="mt-3 gap-3">
                   {stage.units.map((unit) => (
                     <CurriculumUnitCard key={unit.number} unit={unit} stageIndex={stageIndex} />
@@ -251,7 +251,7 @@ function CoursePathView({
         <Text className="font-heavy text-cardTitle text-ink">
           {L('Học theo lộ trình SAT Reading & Writing', 'SAT Reading & Writing learning path')}
         </Text>
-        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }} numberOfLines={3}>
           {L(
             'Đi từ Nền tảng đến Nâng cao. Mỗi mức dùng lại bộ câu hỏi hiện có theo từng kỹ năng; mở lời giải khi luyện và làm đề trộn sau khi đã ôn các mảng.',
             'Move from Foundation to Advanced. Each tier reuses the current skill-based question sets; study with explanations, then try mixed practice across domains.',
@@ -291,7 +291,7 @@ function CoursePathView({
             </Pressable>
             {expanded ? (
               <View className="mt-4 gap-5">
-                <Text className="font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+                <Text className="font-sans text-body text-muted" style={{ lineHeight: 22 }} numberOfLines={3}>
                   {en ? tier.blurbEn : tier.blurbVi}
                 </Text>
                 {SAT_RW_STAGES.map((stage, stageIndex) => (

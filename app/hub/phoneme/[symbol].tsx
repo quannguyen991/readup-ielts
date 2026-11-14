@@ -136,7 +136,7 @@ export default function PhonemePage() {
           <View style={{ gap: 8 }}>
             <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>Điểm {result.overall}/100 (theo chữ)</Text>
             <WordLine words={result.words} />
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>Điểm theo chữ máy nghe được, dùng để luyện tập chứ không phải band chính thức.</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>Điểm theo chữ máy nghe được, dùng để luyện tập chứ không phải band chính thức.</Text>
           </View>
         ) : null}
 
@@ -186,14 +186,14 @@ function Assessed({ a }: { a: Assessment }) {
           </Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
             {w.phonemes.map((p, k) => (
-              <Text key={`${p.phoneme}-${k}`} style={{ color: color(p.accuracy), fontSize: 12, fontWeight: '700', borderWidth: 1, borderColor: color(p.accuracy), borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>
+              <Text key={`${p.phoneme}-${k}`} style={{ color: color(p.accuracy), fontSize: 13, fontWeight: '700', borderWidth: 1, borderColor: color(p.accuracy), borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>
                 {p.phoneme} {Math.round(p.accuracy)}
               </Text>
             ))}
           </View>
         </View>
       ))}
-      {a.words.length === 0 ? <Text style={{ color: HUB.muted, fontSize: 12 }}>Máy chủ không nhận ra câu này. Nói rõ và thử lại.</Text> : null}
+      {a.words.length === 0 ? <Text style={{ color: HUB.muted, fontSize: 13 }}>Máy chủ không nhận ra câu này. Nói rõ và thử lại.</Text> : null}
     </View>
   );
 }

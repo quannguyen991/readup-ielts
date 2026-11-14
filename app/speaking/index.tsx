@@ -295,7 +295,7 @@ function Badge({ label, tone }: { label: string; tone: Tone }) {
   const t = TONE[tone];
   return (
     <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: t.bg }}>
-      <Text className="font-strong text-[11px]" style={{ color: t.fg }}>
+      <Text className="font-strong text-[13px]" style={{ color: t.fg }}>
         {label}
       </Text>
     </View>

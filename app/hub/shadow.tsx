@@ -146,10 +146,10 @@ export default function ShadowPage() {
               Self-Voice Cloning Shadowing
             </Text>
             <View style={{ backgroundColor: '#4C1D95', paddingHorizontal: 6, paddingVertical: 1, borderRadius: 6 }}>
-              <Text style={{ color: '#C084FC', fontSize: 9, fontWeight: '800' }}>BAND 9</Text>
+              <Text style={{ color: '#C084FC', fontSize: 13, fontWeight: '800' }}>BAND 9</Text>
             </View>
           </View>
-          <Text style={{ color: COSMIC.muted, fontSize: 11, lineHeight: 16 }}>
+          <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 18 }}>
             Chuyển giọng đọc mẫu thành chính màu giọng của bạn nhưng đã được AI chuẩn hóa lên Band 9.0 để dễ nhại theo nối âm và nhịp điệu.
           </Text>
         </View>
@@ -208,13 +208,13 @@ export default function ShadowPage() {
           </Text>
         </View>
 
-        <Text style={{ color: '#FCD34D', fontSize: 12, fontStyle: 'italic' }}>
+        <Text style={{ color: '#FCD34D', fontSize: 13, fontStyle: 'italic' }}>
           💡 {passage.connectedTips}
         </Text>
 
         {/* Thanh chỉnh tốc độ 0.75x, 1.0x, 1.25x */}
         <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
-          <Text style={{ color: COSMIC.muted, fontSize: 12, fontWeight: '700' }}>Tốc độ:</Text>
+          <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '700' }}>Tốc độ:</Text>
           {SPEEDS.map((s) => (
             <Pressable
               key={s}
@@ -304,7 +304,7 @@ export default function ShadowPage() {
               </Text>
             ))}
           </Text>
-          <Text style={{ color: COSMIC.muted, fontSize: 11 }}>
+          <Text style={{ color: COSMIC.muted, fontSize: 13 }}>
             Xanh lá: bắt nhịp tốt · Vàng: hơi lệch nhịp · Đỏ: bị bỏ sót.
           </Text>
         </View>

@@ -46,7 +46,7 @@ function SectionTitle({ children, aside }: { children: string; aside?: string })
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
       <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '800' }}>{children}</Text>
-      {aside ? <Text style={{ color: COSMIC.muted, fontSize: 11, fontWeight: '600' }}>{aside}</Text> : null}
+      {aside ? <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '600' }}>{aside}</Text> : null}
     </View>
   );
 }
@@ -54,9 +54,9 @@ function SectionTitle({ children, aside }: { children: string; aside?: string })
 function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
     <View style={{ flexBasis: '48%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: '#F3F0FB', gap: 2 }}>
-      <Text style={{ color: COSMIC.muted, fontSize: 11, fontWeight: '700' }}>{label}</Text>
+      <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '700' }}>{label}</Text>
       <Text style={{ color: COSMIC.ink, fontSize: 20, fontWeight: '800', fontVariant: ['tabular-nums'] }}>{value}</Text>
-      {hint ? <Text style={{ color: COSMIC.muted, fontSize: 11 }}>{hint}</Text> : null}
+      {hint ? <Text style={{ color: COSMIC.muted, fontSize: 13 }}>{hint}</Text> : null}
     </View>
   );
 }
@@ -69,7 +69,7 @@ function DimensionRow({ dim }: { dim: DimensionScore }) {
     <View style={{ gap: 6, paddingVertical: 8, borderTopWidth: 1, borderTopColor: COSMIC.line }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <Text style={{ color: COSMIC.ink, fontSize: 14, fontWeight: '700' }}>
-          {label.vi} <Text style={{ color: COSMIC.muted, fontWeight: '500', fontSize: 12 }}>· {label.en}</Text>
+          {label.vi} <Text style={{ color: COSMIC.muted, fontWeight: '500', fontSize: 13 }}>· {label.en}</Text>
         </Text>
         <Text style={{ color, fontSize: 14, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
           {measured ? `${dim.score}/100` : 'Chưa đo'}
@@ -78,7 +78,7 @@ function DimensionRow({ dim }: { dim: DimensionScore }) {
       <View style={{ height: 6, borderRadius: 3, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
         {measured ? <View style={{ width: `${dim.score as number}%`, height: '100%', backgroundColor: color, borderRadius: 3 }} /> : null}
       </View>
-      <Text style={{ color: COSMIC.muted, fontSize: 12, lineHeight: 17 }}>{dim.note}</Text>
+      <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 18 }}>{dim.note}</Text>
     </View>
   );
 }
@@ -176,7 +176,7 @@ export default function AnalyzePage() {
                   onPress={() => setSelectedPrompt(p)}
                   style={{ paddingHorizontal: 12, paddingVertical: 7, borderRadius: 10, backgroundColor: sel ? '#F3F0FB' : '#F3F0FB', borderWidth: 1, borderColor: sel ? COSMIC.blue : COSMIC.cardBorder }}
                 >
-                  <Text style={{ color: sel ? COSMIC.blue : COSMIC.body, fontSize: 12, fontWeight: '700' }}>
+                  <Text style={{ color: sel ? COSMIC.blue : COSMIC.body, fontSize: 13, fontWeight: '700' }}>
                     {p.part} · {p.topic}
                   </Text>
                 </Pressable>
@@ -210,7 +210,7 @@ export default function AnalyzePage() {
           </Pressable>
         )}
 
-        <Text style={{ color: COSMIC.muted, fontSize: 12, textAlign: 'center' }}>
+        <Text style={{ color: COSMIC.muted, fontSize: 13, textAlign: 'center' }}>
           {recording ? 'Đang nghe. Bấm dừng khi nói xong để xem kết quả.' : 'Bấm mic, nói tự nhiên, rồi bấm dừng.'}
         </Text>
       </View>
@@ -233,15 +233,15 @@ export default function AnalyzePage() {
                 <Text style={{ color: report.overall === null ? COSMIC.muted : scoreColor(report.overall), fontSize: 36, fontWeight: '900', fontVariant: ['tabular-nums'] }}>
                   {report.overall === null ? '—' : report.overall}
                 </Text>
-                <Text style={{ color: COSMIC.muted, fontSize: 11, fontWeight: '700' }}>ĐIỂM / 100</Text>
+                <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '700' }}>ĐIỂM / 100</Text>
               </View>
               <View style={{ flex: 1, gap: 6 }}>
                 <View style={{ alignSelf: 'flex-start', backgroundColor: BADGE_STYLES.NEW.bg, borderColor: BADGE_STYLES.NEW.border, borderWidth: 1, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8 }}>
-                  <Text style={{ color: BADGE_STYLES.NEW.text, fontSize: 11, fontWeight: '800' }}>
+                  <Text style={{ color: BADGE_STYLES.NEW.text, fontSize: 13, fontWeight: '800' }}>
                     Band ước lượng {report.estimatedBand === null ? '—' : report.estimatedBand.toFixed(1)}
                   </Text>
                 </View>
-                <Text style={{ color: COSMIC.muted, fontSize: 11, lineHeight: 16 }}>
+                <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 18 }}>
                   Ước lượng từ số đo giọng nói, không phải điểm chấm IELTS chính thức.
                 </Text>
               </View>
@@ -276,7 +276,7 @@ export default function AnalyzePage() {
                 );
               })}
             </View>
-            <Text style={{ color: COSMIC.muted, fontSize: 11, lineHeight: 16 }}>
+            <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 18 }}>
               Màu vạch bên trái là độ tin cậy của máy nghe: xanh cao, cam trung bình, đỏ thấp, xám không có số.
             </Text>
             {report.repeated.length ? (
@@ -285,7 +285,7 @@ export default function AnalyzePage() {
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                   {report.repeated.slice(0, 8).map((r) => (
                     <View key={r.word} style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: COSMIC.cardBorder }}>
-                      <Text style={{ color: COSMIC.body, fontSize: 12, fontWeight: '700' }}>
+                      <Text style={{ color: COSMIC.body, fontSize: 13, fontWeight: '700' }}>
                         {r.word} × {r.count}
                       </Text>
                     </View>

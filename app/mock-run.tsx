@@ -169,7 +169,7 @@ export default function MockRunScreen() {
                       className="h-6 w-6 items-center justify-center rounded-pill"
                       style={{ backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: color.border }}
                     >
-                      <Text className="font-heavy text-muted" style={{ fontSize: 12 }}>
+                      <Text className="font-heavy text-muted" style={{ fontSize: 13 }}>
                         {i + 1}
                       </Text>
                     </View>

@@ -133,7 +133,7 @@ export default function CallPage() {
           <Image source={{ uri: SCENE_IMAGE[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: 110, height: 110, borderRadius: 999, backgroundColor: HUB.glassStrong }} />
         </View>
         <Text style={{ color: HUB.muted, fontSize: 13, fontVariant: ['tabular-nums'] }}>{`${mm}:${ss} · Lượt ${Math.min(step + 1, play.steps.length)}/${play.steps.length}`}</Text>
-        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 11, fontWeight: '800' }}>{play.difficulty}</Text>
+        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800' }}>{play.difficulty}</Text>
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
@@ -144,24 +144,24 @@ export default function CallPage() {
             <Text key={task} style={{ color: done ? HUB.green : HUB.body, fontSize: 13, lineHeight: 19 }}>{`${done ? '✓' : '○'}  ${task}`}</Text>
           );
         })}
-        <Text style={{ color: HUB.muted, fontSize: 11 }}>{`Đúng ${passedSoFar}/${answered} lượt đã trả lời`}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{`Đúng ${passedSoFar}/${answered} lượt đã trả lời`}</Text>
       </View>
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
         {play.vocab.map((v) => (
           <Pressable key={v.word} accessibilityRole="button" accessibilityLabel={`Nghe ${v.word}`} onPress={() => speak(v.word)} style={{ paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999, backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
-            <Text style={{ color: HUB.ink, fontSize: 12 }}>{v.word}</Text>
+            <Text style={{ color: HUB.ink, fontSize: 13 }}>{v.word}</Text>
           </Pressable>
         ))}
       </View>
 
       {current ? (
         <View style={[GLASS_CARD, { padding: 16, gap: 12 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>ĐẦU DÂY BÊN KIA</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>ĐẦU DÂY BÊN KIA</Text>
           <Pressable accessibilityRole="button" accessibilityLabel="Nghe lại" onPress={() => speak(current.ai)}>
             <Text style={{ color: HUB.ink, fontSize: 16, lineHeight: 23 }}>{current.ai}</Text>
           </Pressable>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>BẠN ĐÁP</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>BẠN ĐÁP</Text>
           {current.options.map((opt, k) => {
             const reveal = hinted && opt.good && chosen === null;
             const tone = chosen === null ? (reveal ? HUB.green : HUB.line) : opt.good ? HUB.green : chosen === k ? HUB.red : HUB.line;
@@ -183,7 +183,7 @@ export default function CallPage() {
               </Text>
             </Pressable>
           ) : null}
-          {chosen === null && voice.note ? <Text style={{ color: HUB.amber, fontSize: 12, lineHeight: 18 }}>{voice.note}</Text> : null}
+          {chosen === null && voice.note ? <Text style={{ color: HUB.amber, fontSize: 13, lineHeight: 18 }}>{voice.note}</Text> : null}
           {chosen === null ? (
             <Pressable
               accessibilityRole="button"
@@ -194,7 +194,7 @@ export default function CallPage() {
               }}
               style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, borderWidth: 1, borderColor: HUB.line, opacity: hinted ? 0.5 : 1 }}
             >
-              <Text style={{ color: HUB.amber, fontSize: 12, fontWeight: '700' }}>{hinted ? 'Đã hiện gợi ý' : 'Gợi ý'}</Text>
+              <Text style={{ color: HUB.amber, fontSize: 13, fontWeight: '700' }}>{hinted ? 'Đã hiện gợi ý' : 'Gợi ý'}</Text>
             </Pressable>
           ) : null}
           {chosen !== null ? (

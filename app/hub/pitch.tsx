@@ -106,7 +106,7 @@ export default function PitchPage() {
       {/* Thẻ câu hỏi và IPA tách âm tiết */}
       <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Text style={{ color: COSMIC.muted, fontSize: 12, fontWeight: '700' }}>
+          <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '700' }}>
             MẪU CÂU {index + 1}/{DRILLS.length}
           </Text>
           <View
@@ -117,7 +117,7 @@ export default function PitchPage() {
               backgroundColor: sentence.expect === 'rising' ? 'rgba(140, 83, 27, 0.15)' : 'rgba(16, 185, 129, 0.15)',
             }}
           >
-            <Text style={{ color: sentence.expect === 'rising' ? '#6A4BD9' : '#10B981', fontSize: 11, fontWeight: '800' }}>
+            <Text style={{ color: sentence.expect === 'rising' ? '#6A4BD9' : '#10B981', fontSize: 13, fontWeight: '800' }}>
               {sentence.expect === 'rising' ? 'LÊN GIỌNG ↗' : 'XUỐNG GIỌNG ↘'}
             </Text>
           </View>
@@ -141,7 +141,7 @@ export default function PitchPage() {
                 borderColor: 'rgba(120, 68, 21, 0.1)',
               }}
             >
-              <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '700' }}>{syl}</Text>
+              <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '700' }}>{syl}</Text>
             </View>
           ))}
         </View>
@@ -149,7 +149,7 @@ export default function PitchPage() {
         <Text style={{ color: '#C084FC', fontSize: 14, fontWeight: '600', letterSpacing: 0.3 }}>
           {sentence.ipa}
         </Text>
-        <Text style={{ color: COSMIC.muted, fontSize: 12 }}>{sentence.why}</Text>
+        <Text style={{ color: COSMIC.muted, fontSize: 13 }}>{sentence.why}</Text>
 
         {/* Nút hành động */}
         <View style={{ flexDirection: 'row', gap: 10, marginTop: 4 }}>
@@ -227,11 +227,11 @@ export default function PitchPage() {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
               <View style={{ width: 10, height: 3, backgroundColor: '#6A4BD9' }} />
-              <Text style={{ color: COSMIC.muted, fontSize: 10 }}>Giọng mẫu</Text>
+              <Text style={{ color: COSMIC.muted, fontSize: 13 }}>Giọng mẫu</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
               <View style={{ width: 10, height: 3, backgroundColor: '#10B981' }} />
-              <Text style={{ color: COSMIC.muted, fontSize: 10 }}>Giọng bạn</Text>
+              <Text style={{ color: COSMIC.muted, fontSize: 13 }}>Giọng bạn</Text>
             </View>
           </View>
         </View>
@@ -295,7 +295,7 @@ export default function PitchPage() {
           })}
 
           {!track && !recording ? (
-            <Text style={{ color: COSMIC.muted, fontSize: 12, backgroundColor: 'rgba(0,0,0,0.6)', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}>
+            <Text style={{ color: COSMIC.muted, fontSize: 13, backgroundColor: 'rgba(0,0,0,0.6)', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}>
               Bấm "Nói theo" để vẽ đường cao độ giọng bạn đè lên mẫu
             </Text>
           ) : null}
@@ -329,7 +329,7 @@ export default function PitchPage() {
             </Text>
           </View>
           <Pressable onPress={() => setShowMouthGuide(!showMouthGuide)}>
-            <Text style={{ color: COSMIC.blue, fontSize: 12, fontWeight: '700' }}>
+            <Text style={{ color: COSMIC.blue, fontSize: 13, fontWeight: '700' }}>
               {showMouthGuide ? 'Thu gọn' : 'Xem chi tiết'}
             </Text>
           </Pressable>

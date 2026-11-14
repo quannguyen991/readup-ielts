@@ -105,13 +105,13 @@ export default function HubLearn() {
       {/* Module Độc quyền: Viet-L1 Interference Coach */}
       <View style={[GLASS_CARD, { padding: 18, gap: 14, borderWidth: 1.5, borderColor: 'rgba(239, 68, 68, 0.35)' }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1, minWidth: 0 }}>
             <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(239, 68, 68, 0.2)', alignItems: 'center', justifyContent: 'center' }}>
               <Icon name="sparkle" size={18} color="#F87171" />
             </View>
-            <View style={{ gap: 2 }}>
+            <View style={{ gap: 2, flex: 1, minWidth: 0 }}>
               <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Viet-L1 Interference Coach</Text>
-              <Text style={{ color: '#FCA5A5', fontSize: 11, fontWeight: '700' }}>ĐỘC QUYỀN BAND 9 • CHỮA LỖI ĐẶC THÙ NGƯỜI VIỆT</Text>
+              <Text style={{ color: '#FCA5A5', fontSize: 13, fontWeight: '700' }}>ĐỘC QUYỀN BAND 9 • CHỮA LỖI ĐẶC THÙ NGƯỜI VIỆT</Text>
             </View>
           </View>
         </View>
@@ -138,11 +138,11 @@ export default function HubLearn() {
               }}
             >
               <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 6, backgroundColor: 'rgba(239, 68, 68, 0.2)' }}>
-                <Text style={{ color: '#F87171', fontSize: 10, fontWeight: '800' }}>{err.badge}</Text>
+                <Text style={{ color: '#F87171', fontSize: 13, fontWeight: '800' }}>{err.badge}</Text>
               </View>
               <View style={{ flex: 1, gap: 2 }}>
                 <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '700' }}>{err.title}</Text>
-                <Text style={{ color: HUB.muted, fontSize: 11 }} numberOfLines={1}>{err.subtitle}</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }} numberOfLines={1}>{err.subtitle}</Text>
               </View>
               <Icon name="chevron-right" size={16} color={HUB.muted} />
             </Pressable>
@@ -159,7 +159,7 @@ export default function HubLearn() {
             <View key={ch.key} style={[GLASS_CARD, { padding: 14, gap: 10 }]}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>{ch.vi}</Text>
-                <Text style={{ color: HUB.muted, fontSize: 11 }}>{ch.en}</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>{ch.en}</Text>
               </View>
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
                 {list.map((p) => {
@@ -183,8 +183,8 @@ export default function HubLearn() {
                       }}
                     >
                       <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '700' }}>/{p.symbol}/</Text>
-                      <Text style={{ color: tone, fontSize: 10, fontWeight: '700' }}>
-                        {score === undefined ? 'chưa luyện' : `${score}%`}
+                      <Text style={{ color: tone, fontSize: 13, fontWeight: '700' }}>
+                        {score === undefined ? 'chưa' : `${score}%`}
                       </Text>
                     </Pressable>
                   );
@@ -212,7 +212,7 @@ export default function HubLearn() {
               backgroundColor: normalMode ? 'rgba(140, 83, 27, 0.2)' : 'rgba(168, 85, 247, 0.2)',
             }}
           >
-            <Text style={{ color: normalMode ? HUB.sky : '#C084FC', fontSize: 11, fontWeight: '700' }}>
+            <Text style={{ color: normalMode ? HUB.sky : '#C084FC', fontSize: 13, fontWeight: '700' }}>
               {normalMode ? 'Chế độ Thường' : 'Chế độ Nâng cao'}
             </Text>
           </Pressable>
@@ -244,10 +244,10 @@ export default function HubLearn() {
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
                 <View style={{ gap: 2, flex: 1 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                    <Text style={{ color: '#F87171', fontSize: 11, fontWeight: '800' }}>{activeL1Error.badge}</Text>
+                    <Text style={{ color: '#F87171', fontSize: 13, fontWeight: '800' }}>{activeL1Error.badge}</Text>
                     <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>{activeL1Error.title}</Text>
                   </View>
-                  <Text style={{ color: HUB.muted, fontSize: 12 }}>{activeL1Error.subtitle}</Text>
+                  <Text style={{ color: HUB.muted, fontSize: 13 }}>{activeL1Error.subtitle}</Text>
                 </View>
                 <Pressable onPress={() => setActiveL1Error(null)} style={{ padding: 4 }}>
                   <Icon name="close" size={20} color={HUB.muted} />
@@ -260,12 +260,12 @@ export default function HubLearn() {
               {/* Before vs After comparison */}
               <View style={{ gap: 8 }}>
                 <View style={{ padding: 10, borderRadius: 10, backgroundColor: 'rgba(239, 68, 68, 0.1)', borderWidth: 1, borderColor: 'rgba(239, 68, 68, 0.25)', gap: 2 }}>
-                  <Text style={{ color: '#F87171', fontSize: 11, fontWeight: '800' }}>❌ LỖI NGƯỜI VIỆT HAY MẮC:</Text>
+                  <Text style={{ color: '#F87171', fontSize: 13, fontWeight: '800' }}>❌ LỖI NGƯỜI VIỆT HAY MẮC:</Text>
                   <Text style={{ color: HUB.ink, fontSize: 13, fontStyle: 'italic' }}>{activeL1Error.badSample}</Text>
                 </View>
 
                 <View style={{ padding: 10, borderRadius: 10, backgroundColor: 'rgba(16, 185, 129, 0.1)', borderWidth: 1, borderColor: 'rgba(16, 185, 129, 0.25)', gap: 2 }}>
-                  <Text style={{ color: '#34D399', fontSize: 11, fontWeight: '800' }}>✅ CHUẨN BẢN XỨ (BAND 9):</Text>
+                  <Text style={{ color: '#34D399', fontSize: 13, fontWeight: '800' }}>✅ CHUẨN BẢN XỨ (BAND 9):</Text>
                   <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '600' }}>{activeL1Error.goodSample}</Text>
                 </View>
               </View>
@@ -273,16 +273,16 @@ export default function HubLearn() {
               {/* Practice Sentence */}
               <View style={{ padding: 12, borderRadius: 12, backgroundColor: HUB.glassStrong, gap: 6 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>CÂU LUYỆN TẬP CHẨN ĐOÁN:</Text>
+                  <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>CÂU LUYỆN TẬP CHẨN ĐOÁN:</Text>
                   <Pressable accessibilityLabel="Nghe câu mẫu" onPress={() => speak(activeL1Error.drillSentence)} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                     <Icon name="volume" size={14} color={HUB.blue} />
-                    <Text style={{ color: HUB.sky, fontSize: 11, fontWeight: '700' }}>Nghe mẫu</Text>
+                    <Text style={{ color: HUB.sky, fontSize: 13, fontWeight: '700' }}>Nghe mẫu</Text>
                   </Pressable>
                 </View>
                 <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800', lineHeight: 22 }}>
                   “{activeL1Error.drillSentence}”
                 </Text>
-                <Text style={{ color: '#94A3B8', fontSize: 12, lineHeight: 17 }}>
+                <Text style={{ color: '#94A3B8', fontSize: 13, lineHeight: 18 }}>
                   💡 {activeL1Error.tipVi}
                 </Text>
               </View>
@@ -293,7 +293,7 @@ export default function HubLearn() {
                   <Text style={{ color: drillScore >= 85 ? '#34D399' : '#FBBF24', fontSize: 18, fontWeight: '800' }}>
                     {drillScore}% — {drillScore >= 85 ? 'Xuất sắc! Đã bật âm chuẩn xác' : 'Khá tốt! Chú ý không thả âm /ờ/ thừa'}
                   </Text>
-                  <Text style={{ color: HUB.muted, fontSize: 11 }}>AI đã kiểm tra các âm vị: {activeL1Error.targetPhonemes.map((p) => `/${p}/`).join(' ')}</Text>
+                  <Text style={{ color: HUB.muted, fontSize: 13 }}>AI đã kiểm tra các âm vị: {activeL1Error.targetPhonemes.map((p) => `/${p}/`).join(' ')}</Text>
                 </View>
               ) : null}
 
@@ -335,9 +335,9 @@ function GameRow({ title, desc, coin, route }: { title: string; desc: string; co
       <CoinIcon name={coin} size={48} />
       <View style={{ flex: 1, gap: 2 }}>
         <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{title}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>{desc}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{desc}</Text>
       </View>
-      {route ? <Icon name="chevron-right" size={18} color={HUB.muted} /> : <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '700' }}>SẮP CÓ</Text>}
+      {route ? <Icon name="chevron-right" size={18} color={HUB.muted} /> : <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>SẮP CÓ</Text>}
     </Pressable>
   );
 }

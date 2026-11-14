@@ -120,7 +120,7 @@ export default function QuestHome() {
               </Panel>
               <Panel style={wide ? { flex: 1 } : undefined}>
                 <Eyebrow text={L('SỐ LIỆU HÔM NAY', 'TODAY’S STATS')} tone={HUB.sky} />
-                <Text className="font-sans" style={{ marginTop: 6, marginBottom: GAP.sm, fontSize: 12, color: HUB.muted }}>
+                <Text className="font-sans" style={{ marginTop: 6, marginBottom: GAP.sm, fontSize: 13, color: HUB.muted }}>
                   {L('Đếm mọi câu trả lời trong ngày, ở mọi bài.', 'Counts every answer today, across all lessons.')}
                 </Text>
                 <TodayStats />

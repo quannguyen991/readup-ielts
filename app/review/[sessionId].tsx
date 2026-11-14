@@ -254,7 +254,7 @@ export default function ReviewScreen() {
 
       <View className="mt-4 flex-row flex-wrap gap-4">
         {/* Danh sách câu hỏi */}
-        <View className="min-w-[320px] flex-[3]">
+        <View className="w-full flex-[3] lg:min-w-[320px]">
           <Card>
             <View className="flex-row flex-wrap items-center gap-2">
               <FilterPill
@@ -521,7 +521,7 @@ export default function ReviewScreen() {
         </View>
 
         {/* Panel phải: toàn văn passage + evidence */}
-        <View className="min-w-[300px] flex-[2]">
+        <View className="w-full flex-[2] lg:min-w-[300px]">
           <Card>
             <SectionHeader
               title={`Passage: ${session.articleTitle}`}

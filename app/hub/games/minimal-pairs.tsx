@@ -53,7 +53,7 @@ export default function MinimalPairsGame() {
         </View>
       ) : round ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu {i + 1}/{rounds.length} · đúng {score}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu {i + 1}/{rounds.length} · đúng {score}</Text>
           <Pressable accessibilityRole="button" accessibilityLabel="Nghe từ" onPress={() => speak(round.say === 'a' ? round.pair.a : round.pair.b)} style={{ height: 56, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
             <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Nghe</Text>
           </Pressable>
@@ -65,7 +65,7 @@ export default function MinimalPairsGame() {
             return (
               <Pressable key={side} accessibilityRole="button" onPress={() => choose(side)} style={{ height: 60, borderRadius: 14, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: tone, backgroundColor: HUB.glass }}>
                 <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{word}</Text>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>{ipa}</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>{ipa}</Text>
               </Pressable>
             );
           })}

@@ -211,7 +211,7 @@ export default function DubbingScreen() {
           </Pressable>
           <View>
             <View className="flex-row items-center gap-1.5">
-              <Text className="font-strong uppercase tracking-[1.5px] text-[#2E7D4F]" style={{ fontSize: 11 }}>
+              <Text className="font-strong uppercase tracking-[1.5px] text-[#2E7D4F]" style={{ fontSize: 13 }}>
                 🎬 {L('LỒNG TIẾNG BBC · TED-ED', 'BBC & TED-ED DUBBING')}
               </Text>
             </View>
@@ -268,7 +268,7 @@ export default function DubbingScreen() {
                   <Text className="font-strong text-label" style={{ color: on ? '#4ADE80' : '#0F172A' }}>
                     CẢNH {scene.sceneIndex}
                   </Text>
-                  <Text className="font-sans" style={{ fontSize: 11, color: on ? '#A7F3D0' : '#64748B' }}>
+                  <Text className="font-sans" style={{ fontSize: 13, color: on ? '#A7F3D0' : '#64748B' }}>
                     {sceneRecCount}/{scene.sentences.length} câu
                   </Text>
                 </Pressable>
@@ -476,7 +476,7 @@ export default function DubbingScreen() {
                       <Text className="font-strong text-label" style={{ color: textColor }}>
                         {w.word}
                       </Text>
-                      <Text className="font-mono text-[10px]" style={{ color: textColor }}>
+                      <Text className="font-mono text-[13px]" style={{ color: textColor }}>
                         {w.expectedIpa}
                       </Text>
                     </View>
@@ -496,7 +496,7 @@ export default function DubbingScreen() {
                     💡 {imp}
                   </Text>
                 ))}
-                <Text className="mt-1 font-mono text-[11px] text-muted">
+                <Text className="mt-1 font-mono text-[13px] text-muted">
                   ⏱️ {currentEvaluation.nativeComparison}
                 </Text>
               </View>
@@ -542,7 +542,7 @@ export default function DubbingScreen() {
 
                     {evalData ? (
                       <View className="rounded-pill bg-emerald-100 px-2 py-0.5">
-                        <Text className="font-strong text-[11px] text-emerald-800">
+                        <Text className="font-strong text-[13px] text-emerald-800">
                           {evalData.matchPercentage}%
                         </Text>
                       </View>

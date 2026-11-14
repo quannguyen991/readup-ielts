@@ -165,7 +165,7 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
           <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{topic.title}</Text>
           <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>{topic.tipVi}</Text>
           <ProgressBar value={answered / steps.length} />
-          <Text style={{ color: HUB.muted, fontSize: 12, fontWeight: '700' }}>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>
             {answered}/{steps.length} câu đã nói
             {doneAt ? '  ·  đã hoàn thành' : ''}
           </Text>
@@ -185,7 +185,7 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
         </View>
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Nói cùng Leo</Text>
-          <Text style={{ color: HUB.body, fontSize: 12, lineHeight: 17 }}>Giám khảo AI hỏi bằng giọng nói và phân tích buổi nói.</Text>
+          <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 18 }}>Giám khảo AI hỏi bằng giọng nói và phân tích buổi nói.</Text>
         </View>
         <Icon name="chevron-right" size={18} color={HUB.muted} />
       </Pressable>
@@ -313,7 +313,7 @@ function StepRail({
             }}
           >
             {said && !on ? <Icon name="check" size={13} color={HUB.green} strokeWidth={2.6} /> : null}
-            <Text style={{ color: on ? '#fff' : said ? HUB.green : HUB.body, fontSize: 12, fontWeight: '800' }}>
+            <Text style={{ color: on ? '#fff' : said ? HUB.green : HUB.body, fontSize: 13, fontWeight: '800' }}>
               {shortLabel(s)}
             </Text>
           </Pressable>
@@ -329,7 +329,7 @@ function QuestionCard({ step }: { step: Step }) {
     <View style={[GLASS_CARD, { padding: 20, gap: 14 }]}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.blue, fontSize: 11, fontWeight: '800', letterSpacing: 0.6 }}>{partLabel(step)}</Text>
+          <Text style={{ color: HUB.blue, fontSize: 13, fontWeight: '800', letterSpacing: 0.6 }}>{partLabel(step)}</Text>
         </View>
         <Pressable
           accessibilityRole="button"
@@ -464,9 +464,9 @@ function ReportCard({ report }: { report: Report }) {
     <View style={[GLASS_CARD, { padding: 16, gap: 14 }]}>
       <View style={{ flexDirection: 'row', gap: 10 }}>
         <View style={{ flex: 1.4, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>TỐC ĐỘ</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỐC ĐỘ</Text>
           <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.wpm ?? '—'}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 11, marginTop: -6 }}>từ/phút</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, marginTop: -6 }}>từ/phút</Text>
           <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.14)', overflow: 'hidden' }}>
             <View
               style={{
@@ -482,14 +482,14 @@ function ReportCard({ report }: { report: Report }) {
           </View>
         </View>
         <View style={{ flex: 1, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>TỪ ĐỆM</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỪ ĐỆM</Text>
           <Text style={{ color: fillerTone, fontSize: 24, fontWeight: '800' }}>{report.fillers}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 11 }}>{Math.round(ratio * 100)}% số từ</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>{Math.round(ratio * 100)}% số từ</Text>
         </View>
         <View style={{ flex: 1, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>SỐ TỪ</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>SỐ TỪ</Text>
           <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.words}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 11 }}>{formatClock(report.ms)}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>{formatClock(report.ms)}</Text>
         </View>
       </View>
 
@@ -506,7 +506,7 @@ function ReportCard({ report }: { report: Report }) {
       </View>
 
       <View style={{ padding: 14, borderRadius: 14, backgroundColor: HUB.glassStrong, gap: 6 }}>
-        <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>BẢN GHI CỦA BẠN</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>BẢN GHI CỦA BẠN</Text>
         <Text style={{ color: HUB.ink, fontSize: 15, lineHeight: 23, fontStyle: 'italic' }}>“{report.transcript}”</Text>
       </View>
     </View>
@@ -585,7 +585,7 @@ function Summary({
                   backgroundColor: r && !r.silent ? 'rgba(46,125,79,0.16)' : HUB.glassStrong,
                 }}
               >
-                <Text style={{ color: r && !r.silent ? HUB.green : HUB.muted, fontSize: 12, fontWeight: '800' }}>{shortLabel(s)}</Text>
+                <Text style={{ color: r && !r.silent ? HUB.green : HUB.muted, fontSize: 13, fontWeight: '800' }}>{shortLabel(s)}</Text>
               </View>
               <Text style={{ color: HUB.body, fontSize: 13, flex: 1 }} numberOfLines={1}>
                 {r && !r.silent ? `“${r.transcript}”` : s.text}
@@ -632,7 +632,7 @@ function StatTile({ label, value }: { label: string; value: string }) {
   return (
     <View style={{ flex: 1, padding: 10, borderRadius: 14, backgroundColor: HUB.glassStrong, gap: 2 }}>
       <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{value}</Text>
-      <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '700' }}>{label}</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>{label}</Text>
     </View>
   );
 }

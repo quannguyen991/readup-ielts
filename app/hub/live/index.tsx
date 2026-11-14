@@ -46,7 +46,7 @@ export default function LivePicker() {
               <Icon name="chevron-right" size={16} color={HUB.muted} />
             </View>
             <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>{t.titleVi}</Text>
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>{t.title}</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>{t.title}</Text>
           </Pressable>
         ))}
       </View>

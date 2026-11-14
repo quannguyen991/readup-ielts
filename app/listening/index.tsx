@@ -285,14 +285,14 @@ function TestCard({ item, count }: { item: Item; count: number }) {
             <View
               style={{ position: 'absolute', left: 10, top: 10, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: 'rgba(15,23,42,0.55)' }}
             >
-              <Text className="font-nun-strong" style={{ fontSize: 11, color: '#FFFFFF' }}>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
                 {L(`${count} lượt làm bài`, `${count} ${count === 1 ? 'attempt' : 'attempts'}`)}
               </Text>
             </View>
           ) : null}
           {!section ? (
             <View style={{ position: 'absolute', left: 10, bottom: 10, borderRadius: 8, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: '#0F1D33' }}>
-              <Text className="font-nun-heavy" style={{ fontSize: 12, color: '#F3D9A0' }}>
+              <Text className="font-nun-heavy" style={{ fontSize: 13, color: '#F3D9A0' }}>
                 Full test
               </Text>
             </View>
@@ -300,7 +300,7 @@ function TestCard({ item, count }: { item: Item; count: number }) {
         </ListeningCover>
         <View className="flex-1 p-3.5">
           {test.cover.category ? (
-            <Text className="mb-1.5 font-nun-strong text-primary-700" style={{ fontSize: 11 }}>
+            <Text className="mb-1.5 font-nun-strong text-primary-700" style={{ fontSize: 13 }}>
               {test.cover.category}
             </Text>
           ) : null}
@@ -311,7 +311,7 @@ function TestCard({ item, count }: { item: Item; count: number }) {
           <View className="mt-2 flex-row flex-wrap gap-1.5">
             {types.map((t) => (
               <View key={t} className="rounded-pill bg-primary-50 px-2.5 py-1">
-                <Text className="font-nun-mid text-primary-700" style={{ fontSize: 11 }}>
+                <Text className="font-nun-mid text-primary-700" style={{ fontSize: 13 }}>
                   {t}
                 </Text>
               </View>

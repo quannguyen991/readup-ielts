@@ -69,8 +69,8 @@ export default function RoleplayPage() {
       <Image source={{ uri: SCENE_IMAGE[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 11, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{play.difficulty}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>{CATEGORY_LABEL[play.category]} · Lượt {Math.min(step + 1, play.steps.length)}/{play.steps.length}</Text>
+        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{play.difficulty}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>{CATEGORY_LABEL[play.category]} · Lượt {Math.min(step + 1, play.steps.length)}/{play.steps.length}</Text>
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
@@ -88,7 +88,7 @@ export default function RoleplayPage() {
           <Pressable key={v.word} accessibilityRole="button" accessibilityLabel={`Nghe ${v.word}`} onPress={() => speak(v.word)} style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
               <Text style={{ color: HUB.blue, fontSize: 14, fontWeight: '700' }}>{v.word}</Text>
-              <Text style={{ color: HUB.muted, fontSize: 11 }}>{v.pos}</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13 }}>{v.pos}</Text>
             </View>
             <Text style={{ color: HUB.body, fontSize: 13 }}>{v.meaning}</Text>
           </Pressable>
@@ -98,10 +98,10 @@ export default function RoleplayPage() {
       {!finished && current ? (
         <View style={[GLASS_CARD, { padding: 16, gap: 14 }]}>
           <Pressable accessibilityRole="button" accessibilityLabel="Nghe lời đối phương" onPress={() => speak(current.ai)} style={{ gap: 6 }}>
-            <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>ĐỐI PHƯƠNG</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>ĐỐI PHƯƠNG</Text>
             <Text style={{ color: HUB.ink, fontSize: 16, lineHeight: 23 }}>{current.ai}</Text>
           </Pressable>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>BẠN ĐÁP</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>BẠN ĐÁP</Text>
           {current.options.map((opt, k) => {
             const tone = chosen === null ? HUB.line : opt.good ? HUB.green : chosen === k ? HUB.red : HUB.line;
             return (
@@ -122,7 +122,7 @@ export default function RoleplayPage() {
               </Text>
             </Pressable>
           ) : null}
-          {chosen === null && voice.note ? <Text style={{ color: HUB.amber, fontSize: 12, lineHeight: 18 }}>{voice.note}</Text> : null}
+          {chosen === null && voice.note ? <Text style={{ color: HUB.amber, fontSize: 13, lineHeight: 18 }}>{voice.note}</Text> : null}
           {chosen !== null ? (
             <View style={{ gap: 10 }}>
               <Text style={{ color: current.options[chosen]!.good ? HUB.green : HUB.amber, fontSize: 13, lineHeight: 19 }}>

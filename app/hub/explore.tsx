@@ -112,7 +112,7 @@ export default function HubExplore() {
                 {L('Khóa học', 'Courses')}
               </Text>
               <View className="rounded bg-[#581C87] px-1.5 py-0.2">
-                <Text className="font-heavy text-[9px] text-[#C084FC]">PREMIUM</Text>
+                <Text className="font-heavy text-[13px] text-[#C084FC]">PREMIUM</Text>
               </View>
             </Pressable>
 
@@ -138,7 +138,7 @@ export default function HubExplore() {
           {/* SECTION 1: THỬ NGHIỆM NHẬP VAI                          */}
           {/* ======================================================== */}
           <View className="mb-7">
-            <Text className="mb-3 font-strong text-[12px] tracking-wider text-[#A5B4FC] uppercase">
+            <Text className="mb-3 font-strong text-[13px] tracking-wider text-[#A5B4FC] uppercase">
               {L('THỬ NGHIỆM NHẬP VAI', 'ROLEPLAY EXPERIMENTS')}
             </Text>
 
@@ -196,7 +196,7 @@ export default function HubExplore() {
           {/* ======================================================== */}
           <View className="mb-7">
             <View className="mb-3 flex-row items-center justify-between">
-              <Text className="font-strong text-[12px] tracking-wider text-[#A5B4FC] uppercase">
+              <Text className="font-strong text-[13px] tracking-wider text-[#A5B4FC] uppercase">
                 {L('DỰA TRÊN HOẠT ĐỘNG CỦA BẠN ✨', 'BASED ON YOUR ACTIVITY ✨')}
               </Text>
               <Icon name="chevron-right" size={16} color="#717899" />
@@ -233,14 +233,14 @@ export default function HubExplore() {
                   </View>
                   <View className="p-3">
                     <View className="self-start rounded px-1.5 py-0.2" style={{ backgroundColor: `${act.tagColor}22` }}>
-                      <Text className="font-heavy text-[9px]" style={{ color: act.tagColor }}>
+                      <Text className="font-heavy text-[13px]" style={{ color: act.tagColor }}>
                         {act.level}
                       </Text>
                     </View>
                     <Text className="mt-1.5 font-heavy text-[13px] text-white leading-4" numberOfLines={2}>
                       {act.title}
                     </Text>
-                    <Text className="mt-1 font-sans text-[11px] text-[#717899]">{act.time}</Text>
+                    <Text className="mt-1 font-sans text-[13px] text-[#717899]">{act.time}</Text>
                   </View>
                 </Pressable>
               ))}
@@ -252,7 +252,7 @@ export default function HubExplore() {
           {/* ======================================================== */}
           <View className="mb-7">
             <View className="mb-3 flex-row items-center justify-between">
-              <Text className="font-strong text-[12px] tracking-wider text-[#A5B4FC] uppercase">
+              <Text className="font-strong text-[13px] tracking-wider text-[#A5B4FC] uppercase">
                 {L('BỘ HỌC TẬP DÀNH CHO BẠN', 'STUDY SETS FOR YOU')}
               </Text>
               <Icon name="chevron-right" size={16} color="#717899" />
@@ -275,7 +275,7 @@ export default function HubExplore() {
                 >
                   <View className="flex-row items-center justify-between">
                     <View className="h-7 w-7 items-center justify-center rounded-lg" style={{ backgroundColor: set.badgeBg }}>
-                      <Text className="font-heavy text-[9px] text-white">{set.badge}</Text>
+                      <Text className="font-heavy text-[13px] text-white">{set.badge}</Text>
                     </View>
                     <Icon name="bookmark" size={14} color="#717899" />
                   </View>
@@ -283,13 +283,13 @@ export default function HubExplore() {
                   <Text className="mt-3 font-heavy text-[13px] text-white" numberOfLines={2}>
                     {set.title}
                   </Text>
-                  <Text className="mt-1 font-sans text-[11px] text-[#717899]" numberOfLines={1}>
+                  <Text className="mt-1 font-sans text-[13px] text-[#717899]" numberOfLines={1}>
                     {set.author}
                   </Text>
 
                   <View className="mt-3 flex-row items-center gap-1 border-t border-[#232552] pt-2">
-                    <Text className="text-[11px]">❤️</Text>
-                    <Text className="font-strong text-[11px] text-[#A5B4FC]">{set.likes}</Text>
+                    <Text className="text-[13px]">❤️</Text>
+                    <Text className="font-strong text-[13px] text-[#A5B4FC]">{set.likes}</Text>
                   </View>
                 </Pressable>
               ))}
@@ -301,7 +301,7 @@ export default function HubExplore() {
           {/* ======================================================== */}
           <View className="mb-4">
             <View className="mb-3 flex-row items-center justify-between">
-              <Text className="font-strong text-[12px] tracking-wider text-[#A5B4FC] uppercase">
+              <Text className="font-strong text-[13px] tracking-wider text-[#A5B4FC] uppercase">
                 {L('CÁC KHÓA HỌC DÀNH CHO BẠN', 'COURSES FOR YOU')}
               </Text>
               <Icon name="chevron-right" size={16} color="#717899" />
@@ -343,7 +343,7 @@ export default function HubExplore() {
                     <Text className="mt-2.5 font-heavy text-[13px] text-white" numberOfLines={1}>
                       {crs.title}
                     </Text>
-                    <Text className="mt-1 font-sans text-[11px] text-[#717899]">{crs.units}</Text>
+                    <Text className="mt-1 font-sans text-[13px] text-[#717899]">{crs.units}</Text>
                   </View>
                 </Pressable>
               ))}
@@ -367,8 +367,8 @@ export default function HubExplore() {
                 <Text className="font-heavy text-body text-white">{surpriseItem.title}</Text>
                 <Text className="mt-1.5 font-sans text-label text-[#94A3B8]">{surpriseItem.desc}</Text>
                 <View className="mt-3 flex-row items-center gap-1.5 border-t border-[#1F2148] pt-2">
-                  <Text className="font-strong text-[11px] text-[#38BDF8]">Đối phương AI:</Text>
-                  <Text className="font-sans text-[11px] text-white">{surpriseItem.role}</Text>
+                  <Text className="font-strong text-[13px] text-[#38BDF8]">Đối phương AI:</Text>
+                  <Text className="font-sans text-[13px] text-white">{surpriseItem.role}</Text>
                 </View>
               </View>
             ) : null}
@@ -423,7 +423,7 @@ export default function HubExplore() {
 
             <View className="mt-4 gap-3">
               <View>
-                <Text className="mb-1 font-strong text-[12px] text-[#A5B4FC]">Tên nhân vật AI</Text>
+                <Text className="mb-1 font-strong text-[13px] text-[#A5B4FC]">Tên nhân vật AI</Text>
                 <TextInput
                   value={charName}
                   onChangeText={setCharName}
@@ -434,7 +434,7 @@ export default function HubExplore() {
               </View>
 
               <View>
-                <Text className="mb-1 font-strong text-[12px] text-[#A5B4FC]">Vai trò của nhân vật</Text>
+                <Text className="mb-1 font-strong text-[13px] text-[#A5B4FC]">Vai trò của nhân vật</Text>
                 <TextInput
                   value={charRole}
                   onChangeText={setCharRole}
@@ -445,7 +445,7 @@ export default function HubExplore() {
               </View>
 
               <View>
-                <Text className="mb-1 font-strong text-[12px] text-[#A5B4FC]">Tình huống & Mục tiêu</Text>
+                <Text className="mb-1 font-strong text-[13px] text-[#A5B4FC]">Tình huống & Mục tiêu</Text>
                 <TextInput
                   value={situation}
                   onChangeText={setSituation}

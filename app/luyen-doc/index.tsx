@@ -52,20 +52,24 @@ export default function LuyenDocScreen() {
           </>
         }
       >
-        <View className="flex-row flex-wrap gap-2.5">
-          <Button
-            label={L('Đọc tin hôm nay', "Read today's news")}
-            variant="brand"
-            size="lg"
-            iconRight="arrow-right"
-            onPress={() => go('/luyen-doc/tin')}
-          />
-          <Button
-            label={L('Nghe sách nói', 'Listen to audiobooks')}
-            variant="brandOutline"
-            size="lg"
-            onPress={() => go('/luyen-doc/sach-noi')}
-          />
+        <View className="w-full flex-row flex-wrap gap-2.5">
+          <View className="min-w-[200px] flex-1">
+            <Button
+              label={L('Đọc tin hôm nay', "Read today's news")}
+              variant="brand"
+              size="lg"
+              iconRight="arrow-right"
+              onPress={() => go('/luyen-doc/tin')}
+            />
+          </View>
+          <View className="min-w-[200px] flex-1">
+            <Button
+              label={L('Nghe sách nói', 'Listen to audiobooks')}
+              variant="brandOutline"
+              size="lg"
+              onPress={() => go('/luyen-doc/sach-noi')}
+            />
+          </View>
         </View>
       </LightHero>
 

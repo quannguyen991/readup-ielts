@@ -31,16 +31,16 @@ export default function SatDesmosScreen() {
         </Text>
         <View className="mt-2 flex-row flex-wrap gap-3">
           {SAT_DESMOS_TECHNIQUES.map((tech, i) => (
-            <View key={i} className="flex-1 min-w-[280px] rounded-2xl border border-border bg-white p-4 gap-2">
+            <View key={i} className="w-full flex-1 rounded-2xl border border-border bg-white p-4 gap-2 lg:min-w-[280px]">
               <View className="flex-row items-center justify-between">
                 <Text className="font-heavy text-body text-ink">{tech.nameVi}</Text>
                 <View className="rounded-md bg-blue-50 px-2 py-0.5">
-                  <Text className="font-mono text-tiny text-blue-700 font-strong">Mẹo #{i + 1}</Text>
+                  <Text className="font-mono text-label text-blue-700 font-strong">Mẹo #{i + 1}</Text>
                 </View>
               </View>
               <Text className="font-sans text-caption text-muted" style={{ lineHeight: 18 }}>{tech.useVi}</Text>
               <View className="rounded-lg bg-slate-900 p-2.5">
-                <Text className="font-mono text-tiny text-sky-400">{tech.shortcut}</Text>
+                <Text className="font-mono text-label text-sky-400">{tech.shortcut}</Text>
               </View>
             </View>
           ))}
