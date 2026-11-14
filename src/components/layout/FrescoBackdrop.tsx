@@ -10,7 +10,7 @@ import { useSidebarTheme } from './SidebarAtmosphere';
  */
 
 const SIDEBAR_FRESCO = '/home/fresco-sidebar.jpg';
-const PAGE_FRESCO = '/home/fresco-page.jpg';
+const PAGE_FRESCO = '/home/classical-page.jpg';
 
 /** Nền thanh bên: ảnh trần phủ navy mờ, viền vàng chạm khắc chạy sát mép trong. */
 export function FrescoSidebarBackdrop() {
@@ -39,7 +39,7 @@ export function FrescoSidebarBackdrop() {
   );
 }
 
-/** Nền trang: giấy da kem với hoạ tiết trần phai màu rất nhạt để chữ mực tối vẫn đọc rõ. */
+/** Nền trang: tàn tích cổ điển đã làm mờ và phủ kem, để chữ mực tối vẫn đọc rõ. */
 export function FrescoPageBackdrop() {
   return (
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>
