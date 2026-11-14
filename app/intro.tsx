@@ -522,65 +522,58 @@ const CHIIKAWA_AREA_COLORS: readonly (readonly [string, string])[] = [
   ['#F8D4DE', '#C65A78'], ['#F5B8CC', '#A64462'], ['#F9C6D6', '#C65A78'],
 ];
 
-/** Huy hiệu men navy và viền vàng (public/home/plaques), mỗi mảng một biểu tượng khắc nét mảnh. */
-const PLAQUE: Record<string, string> = {
-  Vocabulary: 'plq-book',
-  IELTS: 'plq-column',
-  Writing: 'plq-quill',
-  Listening: 'plq-lyre',
-  Speaking: 'plq-shield',
-  Reading: 'plq-hourglass',
-  SAT: 'plq-sundial',
-  Sentences: 'plq-compass',
+/** Khung cảnh riêng cho từng mảng (public/home/scenes): cây cỏ leo lên kiến trúc La Mã và châu Âu. */
+const SCENE: Record<string, string> = {
+  Vocabulary: 'sc-vocab',
+  IELTS: 'sc-ielts',
+  Writing: 'sc-writing',
+  Listening: 'sc-listening',
+  Speaking: 'sc-speaking',
+  Reading: 'sc-reading',
+  SAT: 'sc-sat',
+  Sentences: 'sc-sentences',
 };
-const GOLD = '#B8893F';
-const GOLD_SOFT = '#D9C293';
 
 /**
- * Thẻ khu vực theo phong cách trần fresco (theme mặc định): giấy kem, khung vàng mảnh, huy hiệu
- * men navy viền vàng ở đầu thẻ, tiêu đề Playfair. Không dùng hình minh hoạ kiểu sticker.
+ * Thẻ khu vực theo phong cách vườn tàn tích: ảnh cảnh riêng ở trên, dây thường xuân leo góc thẻ,
+ * tiêu đề Cormorant và nhãn nhỏ ở dưới. Không dùng huy hiệu hay hình minh hoạ kiểu sticker.
  */
 function FrescoAreaCard({ area }: { area: Area }) {
   const { locale } = useL();
   const { width } = useWindowDimensions();
   const wide = width >= 768;
-  const plaque = PLAQUE[area.title.en] ?? 'plq-book';
-  const size = wide ? 96 : 72;
+  const scene = SCENE[area.title.en] ?? 'sc-vocab';
   return (
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
       <View
         style={{
           flex: 1,
-          backgroundColor: 'rgba(251,247,238,0.94)',
-          borderRadius: 14,
+          borderRadius: 18,
+          overflow: 'hidden',
+          backgroundColor: '#F4EFE3',
           borderWidth: 1,
-          borderColor: GOLD,
-          padding: 5,
+          borderColor: 'rgba(40,58,44,0.14)',
         }}
       >
-        <View
-          style={{
-            flex: 1,
-            borderRadius: 10,
-            borderWidth: 0.5,
-            borderColor: GOLD_SOFT,
-            paddingHorizontal: 12,
-            paddingTop: wide ? 18 : 14,
-            paddingBottom: 16,
-            alignItems: 'center',
-          }}
-        >
+        <View style={{ height: wide ? 168 : 116, overflow: 'hidden' }}>
           <Image
-            source={{ uri: `/home/plaques/${plaque}.png` }}
+            source={{ uri: `/home/scenes/${scene}.jpg` }}
+            resizeMode="cover"
+            accessibilityIgnoresInvertColors
+            style={{ width: '100%', height: '100%' }}
+          />
+          <Image
+            source={{ uri: '/home/foliage/fol-ivy-corner.png' }}
             resizeMode="contain"
             accessibilityIgnoresInvertColors
-            style={{ width: size, height: size }}
+            style={{ position: 'absolute', top: -8, right: -8, width: wide ? 96 : 76, height: wide ? 96 : 76, opacity: 0.92 }}
           />
-          <Text className="font-heavy" style={{ marginTop: 12, fontSize: wide ? 21 : 17, color: '#14213D', textAlign: 'center' }}>
+        </View>
+        <View style={{ paddingHorizontal: 16, paddingTop: 14, paddingBottom: 16 }}>
+          <Text style={{ fontFamily: 'CormorantGaramond_600SemiBold', fontSize: wide ? 27 : 22, lineHeight: wide ? 30 : 25, color: '#1E2B22' }}>
             {bi(area.title, locale)}
           </Text>
-          <View style={{ width: 40, height: 1, backgroundColor: GOLD_SOFT, marginTop: 8 }} />
-          <Text style={{ marginTop: 10, fontSize: 11, letterSpacing: 1.2, color: '#8F6E36', textAlign: 'center' }}>
+          <Text style={{ marginTop: 6, fontFamily: 'Inter_500Medium', fontSize: 11, letterSpacing: 1.4, color: '#5C6B5E' }}>
             {bi(area.badge, locale).toUpperCase()}
           </Text>
         </View>

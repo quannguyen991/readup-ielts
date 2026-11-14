@@ -9,8 +9,8 @@ import { useSidebarTheme } from './SidebarAtmosphere';
  * Các theme khác (Chiikawa, Cyber, Pixel…) vẫn giữ nền riêng của chúng.
  */
 
-const SIDEBAR_FRESCO = '/home/fresco-sidebar.jpg';
-const PAGE_FRESCO = '/home/classical-page.jpg';
+const SIDEBAR_FRESCO = '/home/sidebar-garden.jpg';
+const PAGE_FRESCO = '/home/page-garden.jpg';
 
 /** Nền thanh bên: ảnh trần phủ navy mờ, viền vàng chạm khắc chạy sát mép trong. */
 export function FrescoSidebarBackdrop() {
@@ -22,18 +22,19 @@ export function FrescoSidebarBackdrop() {
         accessibilityIgnoresInvertColors
         style={StyleSheet.absoluteFill}
       />
-      <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(15,26,51,0.58)' }]} />
-      <View
-        style={{
-          position: 'absolute',
-          top: 10,
-          left: 10,
-          right: 10,
-          bottom: 10,
-          borderWidth: 1,
-          borderColor: 'rgba(230,194,122,0.5)',
-          borderRadius: 10,
-        }}
+      <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(16,30,22,0.6)' }]} />
+      {/* Cây cỏ leo qua thanh bên: dây thường xuân rủ dưới, cành nguyệt quế ở mép phải. */}
+      <Image
+        source={{ uri: '/home/foliage/fol-ivy-hang.png' }}
+        resizeMode="contain"
+        accessibilityIgnoresInvertColors
+        style={{ position: 'absolute', left: -20, bottom: 40, width: 170, height: 170, opacity: 0.75 }}
+      />
+      <Image
+        source={{ uri: '/home/foliage/fol-laurel.png' }}
+        resizeMode="contain"
+        accessibilityIgnoresInvertColors
+        style={{ position: 'absolute', right: -34, top: 120, width: 120, height: 120, opacity: 0.45 }}
       />
     </View>
   );
