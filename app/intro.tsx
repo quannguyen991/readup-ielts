@@ -45,6 +45,7 @@ import { AreaArt } from '@/components/home/AreaArt';
 import { WhatsNewModal } from '@/components/home/WhatsNewModal';
 import { stickerGradient } from '@/theme/tokens';
 import { useSidebarTheme } from '@/components/layout/SidebarAtmosphere';
+import { VineBorder, VINE_STRIP } from '@/components/layout/VineBorder';
 import { bi, useL, type Bi } from '@/i18n/useL';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 
@@ -569,7 +570,15 @@ function FrescoAreaCard({ area }: { area: Area }) {
             accessibilityIgnoresInvertColors
             style={{ position: 'absolute', top: -8, right: -8, width: wide ? 96 : 76, height: wide ? 96 : 76, opacity: 0.92 }}
           />
+          <Image
+            source={{ uri: '/home/corners/cn-01.png' }}
+            resizeMode="contain"
+            accessibilityIgnoresInvertColors
+            style={{ position: 'absolute', top: -12, left: -12, width: wide ? 88 : 70, height: wide ? 88 : 70, opacity: 0.92 }}
+          />
         </View>
+        <VineBorder edge="left" src={VINE_STRIP.vIvyA} size={46} inset={-30} opacity={0.85} />
+        <VineBorder edge="right" src={VINE_STRIP.vIvyB} size={46} inset={-30} opacity={0.85} flip />
         <View style={{ paddingHorizontal: 16, paddingTop: 14, paddingBottom: 16 }}>
           <Text style={{ fontFamily: 'CormorantGaramond_600SemiBold', fontSize: wide ? 27 : 22, lineHeight: wide ? 30 : 25, color: '#1E2B22' }}>
             {bi(area.title, locale)}
@@ -588,19 +597,9 @@ function FrescoVineDivider() {
   const fresco = useSidebarTheme().themeConfig.id === 'default';
   if (!fresco) return null;
   return (
-    <View style={{ flexDirection: 'row', height: 110, marginTop: 10 }}>
-      <Image
-        source={{ uri: '/home/foliage/vine-garland.png' }}
-        resizeMode="contain"
-        accessibilityIgnoresInvertColors
-        style={{ flex: 1, height: 110, opacity: 0.95 }}
-      />
-      <Image
-        source={{ uri: '/home/foliage/vine-arch.png' }}
-        resizeMode="contain"
-        accessibilityIgnoresInvertColors
-        style={{ flex: 1, height: 110, opacity: 0.95 }}
-      />
+    <View style={{ position: 'relative', height: 100, marginTop: 10 }}>
+      <VineBorder edge="top" src={VINE_STRIP.hIvy} size={96} inset={0} opacity={0.95} />
+      <VineBorder edge="bottom" src={VINE_STRIP.hRose} size={52} inset={-6} opacity={0.9} />
     </View>
   );
 }

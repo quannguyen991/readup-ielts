@@ -3,6 +3,7 @@ import { Image, Platform, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Icon } from '@/components/ui/Icon';
+import { VineBorder, VINE_STRIP } from '@/components/layout/VineBorder';
 
 /**
  * Hero trang chủ: khu vườn tàn tích châu Âu – La Mã, cây cỏ leo lên kiến trúc (public/home/hero-garden.jpg).
@@ -73,13 +74,11 @@ export function FrescoHero({
           end={{ x: 0, y: 1 }}
           style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
         />
-        {/* Dây leo dài chạy dọc mép trên, như ảnh tham chiếu. */}
-        <Image
-          source={{ uri: '/home/foliage/vine-garland.png' }}
-          resizeMode="contain"
-          accessibilityIgnoresInvertColors
-          style={{ position: 'absolute', top: -30, left: wide ? 120 : 20, width: wide ? 560 : 300, height: wide ? 150 : 90, opacity: 0.9 }}
-        />
+        {/* Cây cỏ bám suốt bốn mép khung, như ảnh tham chiếu. Dây vượt mép để cảm giác leo lên khung. */}
+        <VineBorder edge="top" src={VINE_STRIP.hIvy} size={wide ? 120 : 80} inset={wide ? -34 : -22} opacity={0.95} />
+        <VineBorder edge="bottom" src={VINE_STRIP.hRose} size={wide ? 96 : 64} inset={wide ? -36 : -24} opacity={0.92} />
+        <VineBorder edge="left" src={VINE_STRIP.vIvyA} size={wide ? 96 : 66} inset={wide ? -70 : -44} opacity={0.9} />
+        <VineBorder edge="right" src={VINE_STRIP.vIvyB} size={wide ? 96 : 66} inset={wide ? -68 : -42} opacity={0.88} flip />
         {/* Dây thường xuân rủ góc dưới-trái, dây cuốn góc trên-phải: cây cỏ leo lên khung hình. */}
         <Image
           source={{ uri: '/home/foliage/fol-ivy-hang.png' }}
