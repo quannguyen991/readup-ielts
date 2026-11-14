@@ -4,7 +4,7 @@ import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GridBackdrop } from './GridBackdrop';
-import { PageBackdrop } from './FrescoBackdrop';
+import { MeshBackdrop } from './MeshBackdrop';
 import { LightGrid, usePageBackground } from './LightGrid';
 import { CUTE_PALETTES } from './cute-palettes';
 import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
@@ -196,7 +196,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           {pageBg ? (
             <GridBackdrop colors={pageBg.stops} line={pageBg.line} pattern={pageBg.pattern} blobs={pageBg.blobs} margin={pageBg.margin} cell={pageBg.cell ?? 34} />
           ) : (
-            <PageBackdrop />
+            <MeshBackdrop />
           )}
         </View>
       ) : null}
@@ -248,7 +248,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 function MeshShell({ children }: { children: React.ReactNode }) {
   return (
     <View className="flex-1">
-      <PageBackdrop />
+      <MeshBackdrop />
       {children}
     </View>
   );

@@ -5,7 +5,7 @@ import { Image, Platform, Pressable, ScrollView, Text, View } from "react-native
 import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
-import { FrescoSidebarBackdrop } from "./FrescoBackdrop";
+import { SidebarMosaic } from "./SidebarMosaic";
 import { LionMascot } from "@/components/mascot/LionMascot";
 import { ensureTaskMotionCss } from "@/components/motion/task-motion";
 
@@ -107,10 +107,10 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
     >
       {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}
       <SidebarAtmosphereOverlay effect={activeEffect} isDark={themeConfig.isDark} />
-      {mosaic ? <FrescoSidebarBackdrop /> : null}
+      {mosaic ? <SidebarMosaic /> : null}
 
       <View className={collapsed ? "items-center pb-2 pt-5" : "px-5 pb-2 pt-5"}>
-        <Logo compact markOnly={collapsed} dark={themeConfig.isDark} />
+        <Logo compact markOnly={collapsed} />
       </View>
 
       {/* Ô tìm bài (mở bảng tìm kiếm có AI) — ngay trên danh sách mục. */}
@@ -402,7 +402,7 @@ function NavRow({
             <View className="min-w-0 flex-1" style={decorated ? { paddingRight: 36 } : undefined}>
               <Text
                 numberOfLines={1}
-                className={`${child ? "text-[15px]" : "text-[16px]"} ${themeConfig.id === "default" ? "font-classic" : lit ? "font-strong" : "font-semi"}`}
+                className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
                 style={{ color: pixel ? pixel.text : filled ? themeConfig.activeTextColor : child && !active ? themeConfig.textMuted : themeConfig.textPrimary }}
               >
                 {label}

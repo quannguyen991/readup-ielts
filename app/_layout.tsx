@@ -41,17 +41,6 @@ import {
   Nunito_800ExtraBold,
   Nunito_900Black,
 } from '@expo-google-fonts/nunito';
-// Playfair Display: phông tiêu đề kiểu cổ điển châu Âu (thay Inter Tight ở tiêu đề, logo và tên mục thanh bên).
-// Có đủ dấu tiếng Việt. Nạp theo từng trọng lượng, như các phông trên.
-import { PlayfairDisplay_400Regular } from '@expo-google-fonts/playfair-display/400Regular';
-import { PlayfairDisplay_500Medium } from '@expo-google-fonts/playfair-display/500Medium';
-import { PlayfairDisplay_600SemiBold } from '@expo-google-fonts/playfair-display/600SemiBold';
-import { PlayfairDisplay_600SemiBold_Italic } from '@expo-google-fonts/playfair-display/600SemiBold_Italic';
-import { PlayfairDisplay_700Bold } from '@expo-google-fonts/playfair-display/700Bold';
-// Cormorant Garamond: phông serif mảnh, sang, dùng cho tiêu đề hero và thẻ khu vực trang chủ (14/11/2026).
-import { CormorantGaramond_500Medium } from '@expo-google-fonts/cormorant-garamond/500Medium';
-import { CormorantGaramond_600SemiBold } from '@expo-google-fonts/cormorant-garamond/600SemiBold';
-import { CormorantGaramond_600SemiBold_Italic } from '@expo-google-fonts/cormorant-garamond/600SemiBold_Italic';
 
 import { AppShell } from '@/components/layout/AppShell';
 import { RewardOverlay } from '@/components/gamify/RewardOverlay';
@@ -124,14 +113,6 @@ export default function RootLayout() {
     Nunito_700Bold,
     Nunito_800ExtraBold,
     Nunito_900Black,
-    PlayfairDisplay_400Regular,
-    PlayfairDisplay_500Medium,
-    PlayfairDisplay_600SemiBold,
-    PlayfairDisplay_600SemiBold_Italic,
-    PlayfairDisplay_700Bold,
-    CormorantGaramond_500Medium,
-    CormorantGaramond_600SemiBold,
-    CormorantGaramond_600SemiBold_Italic,
   });
 
   // Chủ đề Chiikawa: đổi bảng màu cho cả app. Chờ hydrate để lượt đầu khớp HTML máy

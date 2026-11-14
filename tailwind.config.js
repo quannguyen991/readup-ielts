@@ -90,10 +90,7 @@ module.exports = {
         mid: ['Inter_500Medium', 'system-ui', 'sans-serif'],
         semi: ['Inter_600SemiBold', 'system-ui', 'sans-serif'],
         strong: ['Inter_600SemiBold', 'system-ui', 'sans-serif'],
-        // Tiêu đề kiểu châu Âu cổ điển (Playfair Display, 14/11/2026). Tên cũ Inter Tight bị chê là xấu, không chuyên nghiệp.
-        heavy: ['PlayfairDisplay_700Bold', 'Cambria', 'Times New Roman', 'serif'],
-        // Tên mục thanh bên kiểu trang trí (chỉ theme mặc định dùng).
-        classic: ['PlayfairDisplay_600SemiBold', 'Cambria', 'Times New Roman', 'serif'],
+        heavy: ['InterTight_600SemiBold', 'Inter_600SemiBold', 'system-ui', 'sans-serif'],
         // Nunito (bo tròn): phòng Listening và Writing theo bố cục tham chiếu.
         nun: ['Nunito_400Regular', 'system-ui', 'sans-serif'],
         'nun-mid': ['Nunito_600SemiBold', 'system-ui', 'sans-serif'],
