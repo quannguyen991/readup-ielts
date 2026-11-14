@@ -570,15 +570,7 @@ function FrescoAreaCard({ area }: { area: Area }) {
             accessibilityIgnoresInvertColors
             style={{ position: 'absolute', top: -8, right: -8, width: wide ? 96 : 76, height: wide ? 96 : 76, opacity: 0.92 }}
           />
-          <Image
-            source={{ uri: '/home/corners/cn-01.png' }}
-            resizeMode="contain"
-            accessibilityIgnoresInvertColors
-            style={{ position: 'absolute', top: -12, left: -12, width: wide ? 88 : 70, height: wide ? 88 : 70, opacity: 0.92 }}
-          />
         </View>
-        <VineBorder edge="left" src={VINE_STRIP.vIvyA} size={46} inset={-30} opacity={0.85} />
-        <VineBorder edge="right" src={VINE_STRIP.vIvyB} size={46} inset={-30} opacity={0.85} flip />
         <View style={{ paddingHorizontal: 16, paddingTop: 14, paddingBottom: 16 }}>
           <Text style={{ fontFamily: 'CormorantGaramond_600SemiBold', fontSize: wide ? 27 : 22, lineHeight: wide ? 30 : 25, color: '#1E2B22' }}>
             {bi(area.title, locale)}
