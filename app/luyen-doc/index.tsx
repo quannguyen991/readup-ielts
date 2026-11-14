@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { ActionCard, BookCover, EmptyNote, Pill, Section, SourceNote } from '@/components/luyen-doc/LuyenDocParts';
 import { Button } from '@/components/ui';
 import { HScroll } from '@/components/ui/HScroll';
+import { LazyMount } from '@/components/ui/LazyMount';
 import { AUDIO_PROGRAMS } from '@/data/audio-library';
 import {
   LIBRIVOX_BOOKS,
@@ -33,7 +34,7 @@ const go = (href: string) => router.push(href as never);
 export default function LuyenDocScreen() {
   const { L } = useL();
   const today = vnTodayIso();
-  const latest = groupNewsByDay(NEWS, today)[0];
+  const latest = useMemo(() => groupNewsByDay(NEWS, today)[0], [today]);
   const latestItems = (latest?.items ?? []).slice(0, 10);
 
   return (
@@ -114,7 +115,12 @@ export default function LuyenDocScreen() {
               className="overflow-hidden rounded-card border border-border bg-surface"
               style={{ width: 240 }}
             >
-              <Image source={{ uri: thumbnailUrl(v.id) }} resizeMode="cover" style={{ width: '100%', aspectRatio: 16 / 9 }} />
+              <LazyMount
+                style={{ width: '100%', aspectRatio: 16 / 9 }}
+                placeholder={<View style={{ width: '100%', aspectRatio: 16 / 9, backgroundColor: '#EEF0F4' }} />}
+              >
+                <Image source={{ uri: thumbnailUrl(v.id) }} resizeMode="cover" style={{ width: '100%', aspectRatio: 16 / 9 }} />
+              </LazyMount>
               <View className="gap-1 p-3">
                 <Text className="font-strong text-body text-ink" numberOfLines={2}>
                   {v.title}
@@ -143,7 +149,12 @@ export default function LuyenDocScreen() {
               className="overflow-hidden rounded-card border border-border bg-surface"
               style={{ width: 240 }}
             >
-              <Image source={{ uri: thumbnailUrl(v.id) }} resizeMode="cover" style={{ width: '100%', aspectRatio: 16 / 9 }} />
+              <LazyMount
+                style={{ width: '100%', aspectRatio: 16 / 9 }}
+                placeholder={<View style={{ width: '100%', aspectRatio: 16 / 9, backgroundColor: '#EEF0F4' }} />}
+              >
+                <Image source={{ uri: thumbnailUrl(v.id) }} resizeMode="cover" style={{ width: '100%', aspectRatio: 16 / 9 }} />
+              </LazyMount>
               <View className="gap-1 p-3">
                 <Text className="font-strong text-body text-ink" numberOfLines={2}>
                   {v.title}

@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { BlueHero } from '@/components/home/BlueHero';
 import type { IconName } from '@/components/ui/Icon';
-import { PosterTile, type PickerArt } from '@/components/practice/PosterTile';
+import { PosterTile, prefetchPickerArt, type PickerArt } from '@/components/practice/PosterTile';
 import { useL } from '@/i18n/useL';
 import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
 
@@ -66,6 +66,10 @@ export function SatFocusPicker() {
     [],
   );
 
+  useEffect(() => {
+    prefetchPickerArt();
+  }, []);
+
   return (
     <View className="gap-5">
       <BlueHero
@@ -92,6 +96,7 @@ export function SatFocusPicker() {
               title={navLabel(item, locale)}
               desc={desc?.[locale]}
               wide={wide}
+              href={item.href}
               onPress={() => router.push(item.href as never)}
             />
           );

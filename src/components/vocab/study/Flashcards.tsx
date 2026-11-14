@@ -182,15 +182,14 @@ export function Flashcards<W extends StudyWord>({
           accessibilityRole="button"
           accessibilityLabel={L("Trộn thẻ", "Shuffle cards")}
           onPress={() => {
-            setOrder((o) => (o === "original" ? "shuffled" : "original"));
+            // Mỗi lần bấm xáo lại một thứ tự mới (seed tăng), không quay về thứ tự gốc.
+            setOrder("shuffled");
             setSeed((s) => s + 1);
             setIndex(0);
             setFlipped(false);
           }}
           className="h-10 flex-row items-center gap-1.5 rounded-pill px-3"
-          style={{
-            backgroundColor: order === "shuffled" ? "#F3F0FB" : "#F3F0FB",
-          }}
+          style={{ backgroundColor: "#F3F0FB" }}
         >
           <Icon
             name="refresh"
@@ -201,7 +200,7 @@ export function Flashcards<W extends StudyWord>({
             className="font-semi text-label"
             style={{ color: order === "shuffled" ? color.primary : "#475569" }}
           >
-            {order === "shuffled" ? L("Đã trộn", "Shuffled") : L("Trộn", "Shuffle")}
+            {L("Trộn", "Shuffle")}
           </Text>
         </Pressable>
       </View>

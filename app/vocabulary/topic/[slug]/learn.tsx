@@ -58,6 +58,7 @@ import {
   MIN_ROUND,
   pickRound,
   seededRng,
+  shuffled,
   synonymMatch,
   topUpRound,
   type LearnSettings,
@@ -589,6 +590,24 @@ export default function LearnScreen() {
     </Pressable>
   );
 
+  // Nút Trộn: xáo lại thứ tự các từ mới còn lại của vòng ngay tại chỗ, không phải mở lại vòng.
+  const pendingNew = plan.pending.length;
+  const shuffleButton = (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={L("Trộn thứ tự từ còn lại", "Shuffle the remaining words")}
+      disabled={pendingNew < 2}
+      onPress={() =>
+        setPlan((p) => ({ ...p, pending: shuffled(p.pending, seededRng(Date.now() % 100000)) }))
+      }
+      className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"
+      style={{ opacity: pendingNew < 2 ? 0.45 : 1 }}
+    >
+      <Icon name="refresh" size={17} color={theme.dark ? theme.ink : color.ink} />
+      <Text className="font-semi text-body text-ink">{L("Trộn", "Shuffle")}</Text>
+    </Pressable>
+  );
+
   const sheet = (
     <LearnSettingsSheet
       visible={showSettings}
@@ -703,7 +722,12 @@ export default function LearnScreen() {
       title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}
       progress={progress}
       footer={footer}
-      right={settingsButton}
+      right={
+        <View className="flex-row items-center gap-2">
+          {shuffleButton}
+          {settingsButton}
+        </View>
+      }
     >
       {/* Dạng câu đang làm, và vì sao từ này quay lại. */}
       {burst ? <FlameBurst burstKey={burst.key} n={burst.n} /> : null}

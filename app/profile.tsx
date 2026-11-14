@@ -194,6 +194,7 @@ export default function ProfileScreen() {
               </View>
               <View className="flex-row flex-wrap gap-2">
                 <Button label={L('Đổi quà', 'Rewards')} size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+                <Button label={L('Lộ trình', 'Study plan')} size="sm" variant="outline" iconLeft="compass" onPress={() => router.push('/lo-trinh-hoc' as never)} />
                 <Button label={L('Xếp hạng', 'Leaderboard')} size="sm" variant="outline" iconLeft="trophy" onPress={() => router.push('/leaderboard' as never)} />
               </View>
             </View>

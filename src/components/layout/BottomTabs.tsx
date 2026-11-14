@@ -19,16 +19,16 @@ const FLOAT_MARGIN = 12;
 const PURPLE = '#6A4BD9';
 const INACTIVE = '#8E86B0';
 
-type TabKey = 'home' | 'vocab' | 'speak' | 'plan' | 'you';
+type TabKey = 'home' | 'vocab' | 'speak' | 'you';
 
 /**
- * Thanh tab dưới (điện thoại): năm mục, nút giữa là Nói (luyện speaking) nổi lên khỏi thanh.
+ * Thanh tab dưới (điện thoại): bốn mục, nút giữa là Nói (luyện speaking) nổi lên khỏi thanh.
+ * Lộ trình gộp vào mục Bạn (trang cá nhân có lối vào Lộ trình).
  * Mỗi mục có icon và nhãn ngắn để người học biết đang ở đâu mà không đoán.
  */
 const SIDE_TABS: { key: Exclude<TabKey, 'speak'>; href: string; icon: IconName; vi: string; en: string }[] = [
   { key: 'home', href: '/intro', icon: 'home', vi: 'Trang chủ', en: 'Home' },
   { key: 'vocab', href: '/vocabulary/topics', icon: 'letters', vi: 'Từ vựng', en: 'Vocabulary' },
-  { key: 'plan', href: '/lo-trinh-hoc', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
   { key: 'you', href: '/profile', icon: 'home', vi: 'Bạn', en: 'You' },
 ];
 const SPEAK_TAB = { href: '/speaking', vi: 'Nói', en: 'Speak' };
@@ -36,8 +36,7 @@ const SPEAK_TAB = { href: '/speaking', vi: 'Nói', en: 'Speak' };
 function activeTab(pathname: string): TabKey {
   if (pathname === '/' || pathname === '/dashboard' || pathname === '/intro') return 'home';
   if (pathname.startsWith('/speaking')) return 'speak';
-  if (pathname.startsWith('/plan') || pathname.startsWith('/lo-trinh-hoc')) return 'plan';
-  if (pathname.startsWith('/profile') || pathname.startsWith('/progress')) return 'you';
+  if (pathname.startsWith('/profile') || pathname.startsWith('/progress') || pathname.startsWith('/plan') || pathname.startsWith('/lo-trinh-hoc')) return 'you';
   return 'vocab';
 }
 
@@ -219,7 +218,6 @@ export function BottomTabs() {
         </Pressable>
 
         {side(SIDE_TABS[2]!)}
-        {side(SIDE_TABS[3]!)}
       </View>
     </View>
   );

@@ -113,8 +113,9 @@ export function LearnSettingsSheet({
                   <B>{L('Học xen kẽ', 'Interleaved')}</B> <Text className="text-muted">{L('· trộn dạng câu, gặp lại cả từ đã đúng', '· mixes question types and revisits words you got right')}</Text>
                 </Text>
               </Row>
-              <Row on={draft.ordered} onPress={() => flip('ordered')}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Học theo thứ tự trong bộ (không xáo trộn)', 'Study in deck order (no shuffle)')}</Text>
+              {/* Bật = xáo trộn (cờ lưu là `ordered`, nên đảo lại khi hiển thị). */}
+              <Row on={!draft.ordered} onPress={() => flip('ordered')}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Xáo trộn thứ tự từ mới trong vòng', 'Shuffle the order of new words in a round')}</Text>
               </Row>
               <Row on={draft.autoAdvance} onPress={() => flip('autoAdvance')}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự sang câu tiếp khi trả lời đúng', 'Auto-advance after a correct answer')}</Text>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { GlossOrb } from '@/components/ui/GlossOrb';
@@ -26,6 +27,13 @@ export type PickerArt = keyof typeof PICKER_ART;
 /** Thứ tự nền khớp TONES của trang IELTS: hồng, tím, xanh lá, cam, xanh dương, đỏ san hô. */
 export const PICKER_ART_ORDER: readonly PickerArt[] = ['pink', 'violet', 'green', 'amber', 'blue', 'coral'];
 
+/** Tải sẵn sáu ảnh nền khi trang chọn task mở, để lúc cuộn tới thẻ nào ảnh đã có sẵn. */
+export function prefetchPickerArt() {
+  (Object.values(PICKER_ART) as string[]).forEach((uri) => {
+    Image.prefetch(uri).catch(() => undefined);
+  });
+}
+
 export function PosterTile({
   art,
   accent,
@@ -34,6 +42,7 @@ export function PosterTile({
   sub,
   desc,
   chip,
+  href,
   onPress,
   featured = false,
   wide = false,
@@ -48,6 +57,8 @@ export function PosterTile({
   /** Dòng mô tả ngắn dưới tiêu đề. */
   desc?: string;
   chip?: string;
+  /** Đích của thẻ: khi người dùng rê chuột hoặc nhấn xuống, route được tải trước để chuyển trang nhanh hơn. */
+  href?: string;
   onPress: () => void;
   /** Thẻ nổi bật rộng cả hàng: chữ và khung lớn hơn. */
   featured?: boolean;
@@ -64,11 +75,17 @@ export function PosterTile({
     ? ({ textShadow: `0 3px 0 ${accent}, 0 12px 24px rgba(10,6,28,0.4)` } as object)
     : { textShadowColor: 'rgba(10,6,28,0.4)', textShadowOffset: { width: 0, height: 3 }, textShadowRadius: 10 };
 
+  const prefetchRoute = () => {
+    if (href) router.prefetch(href as never);
+  };
+
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={desc ? `${title}. ${desc}` : title}
       onPress={onPress}
+      onHoverIn={prefetchRoute}
+      onPressIn={prefetchRoute}
       style={({ pressed }: { pressed: boolean }) => ({
         minHeight,
         borderRadius: radius,

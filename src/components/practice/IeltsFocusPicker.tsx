@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
@@ -6,7 +6,7 @@ import { BlueHero } from '@/components/home/BlueHero';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat } from '@/components/layout/LightHero';
 import type { IconName } from '@/components/ui/Icon';
-import { PICKER_ART_ORDER, PosterTile } from '@/components/practice/PosterTile';
+import { PICKER_ART_ORDER, PosterTile, prefetchPickerArt } from '@/components/practice/PosterTile';
 import { useL } from '@/i18n/useL';
 import { IELTS_SKILL_OF, IELTS_SKILL_ORDER, type IeltsSkill } from '@/navigation/ielts-focus';
 import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
@@ -42,6 +42,10 @@ export function IeltsFocusPicker() {
     () => NAV_GROUPS.flatMap((g) => g.items).find((i) => i.key === 'ielts')?.children ?? [],
     [],
   );
+
+  useEffect(() => {
+    prefetchPickerArt();
+  }, []);
 
   return (
     <View className="gap-5">
@@ -84,6 +88,7 @@ export function IeltsFocusPicker() {
                 chip={L('Bắt đầu tại đây', 'Start here')}
                 featured
                 wide={wide}
+                href={featured.href}
                 onPress={() => router.push(featured.href as never)}
               />
             ) : null}
@@ -100,6 +105,7 @@ export function IeltsFocusPicker() {
                     sub={SKILL_NAME[skill][locale]}
                     chip={L(`Bài ${index + 2}`, `No. ${index + 2}`)}
                     wide={wide}
+                    href={item.href}
                     onPress={() => router.push(item.href as never)}
                   />
                 ))}
