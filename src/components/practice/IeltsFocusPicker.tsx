@@ -6,7 +6,7 @@ import { BlueHero } from '@/components/home/BlueHero';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat } from '@/components/layout/LightHero';
 import type { IconName } from '@/components/ui/Icon';
-import { ToneTile } from '@/components/vocab/ToneTile';
+import { PICKER_ART_ORDER, PosterTile } from '@/components/practice/PosterTile';
 import { useL } from '@/i18n/useL';
 import { IELTS_SKILL_OF, IELTS_SKILL_ORDER, type IeltsSkill } from '@/navigation/ielts-focus';
 import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
@@ -31,7 +31,7 @@ const TONES: ReadonlyArray<readonly [string, string]> = [
 
 /**
  * Trang Luyện IELTS: mỗi thẻ là một lối vào, bấm là mở thẳng phần đó.
- * Thẻ trắng hai cột, nền pastel, vòng icon kiểu app học (mẫu ảnh tham chiếu).
+ * Thẻ kiểu poster: nền ảnh vẽ theo tông, tiêu đề lớn và đậm.
  */
 export function IeltsFocusPicker() {
   const { L, locale } = useL();
@@ -75,14 +75,15 @@ export function IeltsFocusPicker() {
             </View>
 
             {featured ? (
-              <ToneTile
-                seed={'ielts-' + featured.key}
-                tone={TONES[k % TONES.length]![1]}
+              <PosterTile
+                art={PICKER_ART_ORDER[k % PICKER_ART_ORDER.length]!}
+                accent={TONES[k % TONES.length]![1]}
                 icon={featured.icon as IconName}
                 title={navLabel(featured, locale)}
                 sub={SKILL_NAME[skill][locale]}
                 chip={L('Bắt đầu tại đây', 'Start here')}
-                minHeight={230}
+                featured
+                wide={wide}
                 onPress={() => router.push(featured.href as never)}
               />
             ) : null}
@@ -90,15 +91,15 @@ export function IeltsFocusPicker() {
             {rest.length > 0 ? (
               <Grid columns={2} tabletColumns={2} mobileColumns={2} gap={12}>
                 {rest.map((item, index) => (
-                  <ToneTile
+                  <PosterTile
                     key={item.key}
-                    seed={'ielts-' + item.key}
-                    tone={TONES[(k + index + 1) % TONES.length]![1]}
+                    art={PICKER_ART_ORDER[(k + index + 1) % PICKER_ART_ORDER.length]!}
+                    accent={TONES[(k + index + 1) % TONES.length]![1]}
                     icon={item.icon as IconName}
                     title={navLabel(item, locale)}
                     sub={SKILL_NAME[skill][locale]}
                     chip={L(`Bài ${index + 2}`, `No. ${index + 2}`)}
-                    minHeight={220}
+                    wide={wide}
                     onPress={() => router.push(item.href as never)}
                   />
                 ))}

@@ -11,7 +11,7 @@ import { LazyMount } from '@/components/ui/LazyMount';
 const STAR4 = 'M0 -20 C2 -6 6 -2 20 0 C6 2 2 6 0 20 C-2 6 -6 2 -20 0 C-6 -2 -2 -6 0 -20 Z';
 
 /** Pha màu hex với trắng theo tỉ lệ t, ra một tông nhạt cùng họ. */
-function lighten(hex: string, t: number): string {
+export function lighten(hex: string, t: number): string {
   const safe = /^#[0-9a-fA-F]{6}$/.test(hex) ? hex : '#6A4BD9';
   const n = parseInt(safe.replace('#', ''), 16);
   const ch = (shift: number) => {
