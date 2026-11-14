@@ -1,6 +1,7 @@
 import React from 'react';
 import Svg, { Circle, Path, Polyline, Rect } from 'react-native-svg';
 
+import { chiikawaRecolor } from '@/theme/chiikawa-recolor';
 import { color } from '@/theme/tokens';
 
 /**
@@ -73,9 +74,10 @@ type IconProps = {
 export function Icon({
   name,
   size = 20,
-  color: stroke = color.muted,
+  color: strokeColor = color.muted,
   strokeWidth = 1.7,
 }: IconProps) {
+  const stroke = chiikawaRecolor(strokeColor);
   const common = {
     stroke,
     strokeWidth,

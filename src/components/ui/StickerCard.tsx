@@ -8,6 +8,7 @@ import { RINK } from '@/components/profile-retro/retro-art';
 import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { ensureTaskMotionCss } from '@/components/motion/task-motion';
 import { TileArt } from '@/components/ui/TileArt';
+import { chiikawaCard } from '@/theme/chiikawa-recolor';
 ensureTaskMotionCss();
 
 type StickerCardProps = ViewProps & {
@@ -77,7 +78,7 @@ export function StickerCard({ colors: colorsProp, children, className, style, bo
   const px = usePixelTheme();
   const pixel = px !== null;
   // Pixel: mọi thẻ dùng chung một tông tím, viền mực và bóng lệch đặc.
-  const colors = px ? px.sticker : colorsProp;
+  const colors = px ? px.sticker : ([chiikawaCard(colorsProp[0]), chiikawaCard(colorsProp[1])] as const);
   const [pose, setPose] = useState<Pose>('rest');
   const ty = useSharedValue(0);
 

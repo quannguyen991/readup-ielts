@@ -6,6 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 import { AreaArt } from '@/components/home/AreaArt';
 import { GlassSphere } from '@/components/ui/GlassSphere';
 import { LazyMount } from '@/components/ui/LazyMount';
+import { chiikawaTile } from '@/theme/chiikawa-recolor';
 
 /**
  * Hoạ tiết cho các thẻ nhỏ (thẻ luyện thi, từ vựng, bìa nghe): dùng chung bộ bố cục hình học với các ô mảng
@@ -83,8 +84,8 @@ const TileBody = React.memo(function TileBody({ light, deep, h }: { light: strin
  */
 export function TileArt({ seed, tone, height = 96, style }: { seed: string; tone: readonly string[]; height?: number; style?: ViewStyle }) {
   const h = hash(seed);
-  const light = tone[0] ?? '#8B6CF0';
-  const deep = tone[1] ?? '#6A4BD9';
+  const light = chiikawaTile(tone[0] ?? '#8B6CF0');
+  const deep = chiikawaTile(tone[1] ?? '#6A4BD9');
 
   return (
     <View pointerEvents="none" style={{ height, borderRadius: 14, overflow: 'hidden', ...style }}>

@@ -1,3 +1,5 @@
+import { ChiikawaSticker } from '@/components/chiikawa/ChiikawaStickerRow';
+import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 /**
  * Minh hoạ cho các khung dùng chung (30/09/2026: "thêm các icon vào các trang
  * tác vụ khác nữa"):
@@ -181,8 +183,10 @@ const BY_ICON: Partial<Record<IconName, Art>> = {
 
 /** Hình dễ thương ứng với một biểu tượng của app (không có thì null). */
 export function CuteFor({ icon, size = 56, motion = 'float' }: { icon: IconName; size?: number; motion?: 'float' | 'wobble' | null }) {
+  const chiikawa = useChiikawaActive();
   const I = BY_ICON[icon];
   if (!I) return null;
+  if (chiikawa) return <ChiikawaSticker seed={icon} size={Math.round(size * 0.95)} />;
   if (!motion)
     return (
       <Sticker tilt={-6}>

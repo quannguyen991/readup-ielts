@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, Path, Pattern, Rect, Stop, LinearGradient as SvgLinear } from 'react-native-svg';
 import { GlassSphere } from '@/components/ui/GlassSphere';
+import { chiikawaTile } from '@/theme/chiikawa-recolor';
 
 /**
  * Ô hoạ tiết cho từng mảng học ở trang chủ (desktop), theo kiểu hình học gradient như ảnh tham chiếu:
@@ -214,8 +215,8 @@ export function AreaArt({ tone, variant }: { tone: readonly string[]; variant: n
     ensureTileCss();
   }, []);
 
-  const light = tone[0] ?? '#8B6CF0';
-  const deep = tone[1] ?? '#6A4BD9';
+  const light = chiikawaTile(tone[0] ?? '#8B6CF0');
+  const deep = chiikawaTile(tone[1] ?? '#6A4BD9');
   const palette: Palette = {
     c1: light,
     c2: mix(light, deep, 0.5),

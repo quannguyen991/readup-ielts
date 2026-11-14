@@ -4,6 +4,7 @@ import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-nativ
 
 import { Icon, type IconName } from '@/components/ui/Icon';
 import type { GeneratedCover } from '@/services/articles/cover';
+import { chiikawaTile } from '@/theme/chiikawa-recolor';
 
 /**
  * Vẽ bìa cho bài không có ảnh riêng: dải màu + hoạ tiết + icon chủ đề.
@@ -78,8 +79,8 @@ export function GeneratedCoverArt({
       >
         <Defs>
           <LinearGradient id={gid} x1={x1} y1={y1} x2={x2} y2={y2}>
-            <Stop offset="0" stopColor={cover.from} />
-            <Stop offset="1" stopColor={cover.to} />
+            <Stop offset="0" stopColor={chiikawaTile(cover.from)} />
+            <Stop offset="1" stopColor={chiikawaTile(cover.to)} />
           </LinearGradient>
         </Defs>
         <Rect x="0" y="0" width={W} height={H} fill={`url(#${gid})`} />

@@ -3,6 +3,7 @@ import { Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, RadialGradient, Stop } from 'react-native-svg';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { chiikawaTile } from '@/theme/chiikawa-recolor';
 
 /**
  * Icon kiểu quả cầu bóng kính, theo ảnh tham chiếu: loang sáng ở góc trên, vệt phản quang, viền sáng mảnh,
@@ -12,8 +13,8 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 const GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='80' height='80' filter='url(%23n)' opacity='0.22'/></svg>")`;
 
 export function GlossOrb({ icon, tone, size = 52 }: { icon: IconName; tone: readonly string[]; size?: number }) {
-  const light = tone[0] ?? '#B9A9FF';
-  const deep = tone[1] ?? '#6A4BD9';
+  const light = chiikawaTile(tone[0] ?? '#B9A9FF');
+  const deep = chiikawaTile(tone[1] ?? '#6A4BD9');
   const id = 'orb-' + (light + deep).replace(/[^a-zA-Z0-9]/g, '');
 
   return (

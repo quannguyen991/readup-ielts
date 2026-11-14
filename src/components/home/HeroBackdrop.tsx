@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, Path, Pattern, RadialGradient, Rect, Stop, LinearGradient as SvgLinear } from 'react-native-svg';
 
+import { chiikawaCard } from '@/theme/chiikawa-recolor';
+
 /**
  * Nền hero theo phong cách khối pastel, nhiều chi tiết: lưới khối gradient mờ, đường hầm kính phối cảnh
  * bên phải, vài vệt lệch kênh kiểu glitch, chấm halftone, quả cầu kính có vệt sáng và viền sáng, và hạt giấy
@@ -88,20 +90,20 @@ export function HeroBackdrop() {
   const colours = Object.keys(PAIRS);
 
   return (
-    <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, overflow: 'hidden', backgroundColor: '#FFF6E4' }}>
+    <View pointerEvents="none" style={{ ...StyleSheet.absoluteFill, overflow: 'hidden', backgroundColor: chiikawaCard('#FFF6E4') }}>
       <Svg width="100%" height="100%" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
         <Defs>
           {colours.map((k) => (
             <SvgLinear key={k} id={`hb-p-${k}`} x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor={PAIRS[k]![0]} />
-              <Stop offset="1" stopColor={PAIRS[k]![1]} />
+              <Stop offset="0" stopColor={chiikawaCard(PAIRS[k]![0])} />
+              <Stop offset="1" stopColor={chiikawaCard(PAIRS[k]![1])} />
             </SvgLinear>
           ))}
           {colours.map((k) => (
             <RadialGradient key={`s-${k}`} id={`hb-s-${k}`} cx="0.36" cy="0.3" r="0.7">
               <Stop offset="0" stopColor="#FFFFFF" stopOpacity="0.98" />
-              <Stop offset="0.3" stopColor={PAIRS[k]![1]} stopOpacity="0.9" />
-              <Stop offset="1" stopColor={PAIRS[k]![0]} />
+              <Stop offset="0.3" stopColor={chiikawaCard(PAIRS[k]![1])} stopOpacity="0.9" />
+              <Stop offset="1" stopColor={chiikawaCard(PAIRS[k]![0])} />
             </RadialGradient>
           ))}
           <Pattern id="hb-dot" width={8} height={8} patternUnits="userSpaceOnUse">
@@ -125,7 +127,7 @@ export function HeroBackdrop() {
           return A.map((p, i) => {
             const j = (i + 1) % 4;
             const d = `M${p[0]} ${p[1]} L${A[j]![0]} ${A[j]![1]} L${B[j]![0]} ${B[j]![1]} L${B[i]![0]} ${B[i]![1]} Z`;
-            return <Path key={`t-${k}-${i}`} d={d} fill={TUNNEL_FILLS[(i + k) % TUNNEL_FILLS.length]} opacity={0.32 + k * 0.1} />;
+            return <Path key={`t-${k}-${i}`} d={d} fill={chiikawaCard(TUNNEL_FILLS[(i + k) % TUNNEL_FILLS.length]!)} opacity={0.32 + k * 0.1} />;
           });
         })}
         {TUNNEL_SCALES.map((s, k) => {

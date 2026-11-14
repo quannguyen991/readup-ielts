@@ -15,6 +15,8 @@ import { AnimatedAvatar, AvatarBadge } from '@/components/profile/AnimatedAvatar
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { ProfileEffect } from '@/components/profile/ProfileEffect';
 import { useHydrated } from '@/components/layout/useHydrated';
+import { ChiikawaStickerRow } from '@/components/chiikawa/ChiikawaStickerRow';
+import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
 import { MASCOTS, STAR_BONUS } from '@/services/game/mascots';
@@ -93,6 +95,7 @@ function ProfileSignInGate({ loading }: { loading: boolean }) {
 
 export default function ProfileScreen() {
   const { L, locale } = useL();
+  const chiikawaOn = useChiikawaActive();
   const wide = useWindowDimensions().width >= 760;
   const name = useDisplayName();
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
@@ -402,6 +405,12 @@ export default function ProfileScreen() {
               {L('Số dư được tính lại từ nhật ký học.', 'Your balance is recalculated from your study log.')}
             </Text>
           </Card>
+
+          {chiikawaOn ? (
+            <Card>
+              <ChiikawaStickerRow title={L('Bộ nhãn dán Chiikawa', 'Chiikawa sticker set')} />
+            </Card>
+          ) : null}
 
           <Card>
             <SectionHeader
