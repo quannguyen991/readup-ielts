@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 import { ExampleSentence } from "@/components/vocab/ExampleSentence";
 import { Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
+import { Image } from "expo-image";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/services/vocab/pos-ipa";
 import { router, usePathname } from "expo-router";
@@ -182,6 +183,11 @@ export function StudyFrame({
         </Text>
         <View style={{ minWidth: 90, alignItems: "flex-end" }}>{right}</View>
       </View>
+      {theme.deco?.cloud ? (
+        <View pointerEvents="none" style={{ alignItems: "center", marginTop: 6 }}>
+          <Image source={theme.deco.cloud} contentFit="contain" style={{ width: 150, height: 34 }} />
+        </View>
+      ) : null}
 
       {progress ? (
         <SegmentBar fractions={progress} theme={theme} navy={navy} />
@@ -275,7 +281,21 @@ export function StudyCard({ children }: { children: React.ReactNode }) {
       ]}
     >
       {theme.id === "scene" ? <SkyEffect intensity={0.7} radius={22} /> : null}
+      {theme.deco ? <DecoCorners deco={theme.deco} /> : null}
       {children}
+    </View>
+  );
+}
+
+/** Bốn góc hoa văn của thẻ học (chủ đề tiếng Trung / Nhật). */
+function DecoCorners({ deco }: { deco: NonNullable<StudyTheme["deco"]> }) {
+  const base = { position: "absolute" as const, width: 46, height: 46 };
+  return (
+    <View pointerEvents="none" style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}>
+      <Image source={deco.corner} contentFit="contain" style={[base, { left: 3, top: 3 }]} />
+      <Image source={deco.corner} contentFit="contain" style={[base, { right: 3, top: 3, transform: [{ scaleX: -1 }] }]} />
+      <Image source={deco.corner} contentFit="contain" style={[base, { left: 3, bottom: 3, transform: [{ scaleY: -1 }] }]} />
+      <Image source={deco.corner} contentFit="contain" style={[base, { right: 3, bottom: 3, transform: [{ rotate: "180deg" }] }]} />
     </View>
   );
 }

@@ -9,6 +9,7 @@ import { DueToday } from '@/components/vocab/DueToday';
 import { Card, Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
+import { EaEntryBanners } from '@/components/vocab/eastasia/EaEntry';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
 import { color } from '@/theme/tokens';
@@ -58,6 +59,8 @@ export default function VocabTopicsScreen() {
           )}
         />
       </Appear>
+
+      <EaEntryBanners />
 
       {/* Tìm kiếm + lọc + "Tất cả" (có TOEIC/TOEFL với nhãn riêng) ở ngay đầu trang. */}
       <DeckLibrary initialFilter="all" />

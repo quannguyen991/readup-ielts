@@ -14,6 +14,8 @@ import { ZH_V4 } from './v4';
 import { HANZI_FAMILY, HEAD_FAMILY, RADIUS, ZH, ZH_TONE, toneOf } from './palette';
 import { useChineseFonts } from './useChineseFonts';
 import { ZhLevelCorners } from './ZhNineFrame';
+import { EaFrame } from '../eastasia/EaLesson';
+import { useEaSkin } from '../eastasia/EaParts';
 
 /** Một chip số liệu ở đầu bài: chấm màu, nhãn và con số đậm. */
 function StatChip({ label, n, dot, bg }: { label: string; n: number; dot: string; bg: string }) {
@@ -55,6 +57,7 @@ export function ChineseTopicPage({
   onSave,
   onStar,
   onRate,
+  bare = false,
 }: {
   slug: string;
   title: string;
@@ -67,8 +70,11 @@ export function ChineseTopicPage({
   onSave: (w: StudyWord) => void;
   onStar: (w: StudyWord) => void;
   onRate: (w: StudyWord, stage: WordStage) => void;
+  /** Chỉ vẽ khu học từng từ (danh sách + thẻ) trong khung hoa văn; đầu bài và lưới cách luyện do trang ngoài vẽ. */
+  bare?: boolean;
 }) {
   useChineseFonts();
+  const eaSkin = useEaSkin('zh');
   const { width } = useWindowDimensions();
   const wide = width >= 960;
 
@@ -301,6 +307,22 @@ export function ChineseTopicPage({
     </View>
   );
 
+  const studyInner = (
+      <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: 'stretch', borderRadius: RADIUS.block, overflow: 'hidden', borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card }}>
+      {wide ? (
+          <>
+            {listPanel}
+            {cardPanel}
+          </>
+        ) : (
+          <>
+            {cardPanel}
+            {listPanel}
+          </>
+        )}
+      </View>
+  );
+
   // Khu học từng từ: khung góc + viền vàng bao quanh; lề trong chừa chỗ cho góc khung không đè lên chữ.
   const study = (
     <View
@@ -316,22 +338,18 @@ export function ChineseTopicPage({
       }}
     >
       <View pointerEvents="none" style={{ position: 'absolute', left: 12, right: 12, top: 12, bottom: 12, borderWidth: 1, borderColor: 'rgba(184,149,90,0.75)', borderRadius: RADIUS.block }} />
-      <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: 'stretch', borderRadius: RADIUS.block, overflow: 'hidden', borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card }}>
-        {wide ? (
-          <>
-            {listPanel}
-            {cardPanel}
-          </>
-        ) : (
-          <>
-            {cardPanel}
-            {listPanel}
-          </>
-        )}
-      </View>
+      {studyInner}
       <ZhLevelCorners source={theme.frames.corner} c={wide ? 52 : 40} />
     </View>
   );
+
+  if (bare) {
+    return (
+      <EaFrame skin={eaSkin} pad={wide ? 28 : 16}>
+        {studyInner}
+      </EaFrame>
+    );
+  }
 
   return (
     <View style={{ width: '100%', maxWidth: 1180, alignSelf: 'center', gap: wide ? 28 : 20 }}>

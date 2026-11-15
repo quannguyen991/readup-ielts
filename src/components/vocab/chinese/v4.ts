@@ -6,15 +6,15 @@
 export const ZH_V4 = {
   /** Icon từng cách luyện, khớp khoá trong ZhPracticeGrid. */
   icon: {
-    learn: require('../../../../assets/chinese/v4/mode-icons/learn.png') as number,
-    abcd: require('../../../../assets/chinese/v4/mode-icons/abcd.png') as number,
-    listen: require('../../../../assets/chinese/v4/mode-icons/listen.png') as number,
-    speak: require('../../../../assets/chinese/v4/mode-icons/speak.png') as number,
-    dictation: require('../../../../assets/chinese/v4/mode-icons/dictation.png') as number,
-    cloze: require('../../../../assets/chinese/v4/mode-icons/cloze.png') as number,
-    pairs: require('../../../../assets/chinese/v4/mode-icons/pairs.png') as number,
-    test: require('../../../../assets/chinese/v4/mode-icons/test.png') as number,
-    game: require('../../../../assets/chinese/v4/mode-icons/game.png') as number,
+    learn: require('../../../../assets/chinese/v4/mode-icons/learn.webp') as number,
+    abcd: require('../../../../assets/chinese/v4/mode-icons/abcd.webp') as number,
+    listen: require('../../../../assets/chinese/v4/mode-icons/listen.webp') as number,
+    speak: require('../../../../assets/chinese/v4/mode-icons/speak.webp') as number,
+    dictation: require('../../../../assets/chinese/v4/mode-icons/dictation.webp') as number,
+    cloze: require('../../../../assets/chinese/v4/mode-icons/cloze.webp') as number,
+    pairs: require('../../../../assets/chinese/v4/mode-icons/pairs.webp') as number,
+    test: require('../../../../assets/chinese/v4/mode-icons/test.webp') as number,
+    game: require('../../../../assets/chinese/v4/mode-icons/game.webp') as number,
   } as Record<string, number>,
   /** Khung: thẻ kem, medallion đám mây, con dấu tròn, vạch ngang, nút đỏ viền vàng. */
   frame: {
@@ -56,18 +56,18 @@ export const ZH_V4 = {
   },
   /** Bộ Nhật Bản (ChatGPT vẽ, nền magenta đã tách): banner đầu sách, nền trang, sáu hoạ tiết rời. */
   ja: {
-    banner: require('../../../../assets/chinese/v4/ja/banner-ja.jpg') as number,
-    bg: require('../../../../assets/chinese/v4/ja/page-bg-ja.jpg') as number,
+    banner: require('../../../../assets/chinese/v4/ja/banner-ja.webp') as number,
+    bg: require('../../../../assets/chinese/v4/ja/page-bg-ja.webp') as number,
     /** Góc khung v2 (vẽ đúng hướng góc trên-trái, `ZhLevelCorners` lật ra bốn góc). */
-    corner: require('../../../../assets/chinese/v4/ja/ja-frame-corner-v2.png') as number,
+    corner: require('../../../../assets/chinese/v4/ja/ja-frame-corner-v2.webp') as number,
     /** Thanh ngang và thanh dọc v2: seigaiha vàng–xanh, hoa anh đào, dùng làm vạch trang trí. */
-    frameH: require('../../../../assets/chinese/v4/ja/ja-frame-hbar-v2.png') as number,
-    frameV: require('../../../../assets/chinese/v4/ja/ja-frame-vbar-v2.png') as number,
-    torii: require('../../../../assets/chinese/v4/ja/ja-torii.png') as number,
-    fan: require('../../../../assets/chinese/v4/ja/ja-fan.png') as number,
-    lantern: require('../../../../assets/chinese/v4/ja/ja-lantern.png') as number,
-    koi: require('../../../../assets/chinese/v4/ja/ja-koi.png') as number,
-    fuji: require('../../../../assets/chinese/v4/ja/ja-fuji.png') as number,
-    sakura: require('../../../../assets/chinese/v4/ja/ja-sakura.png') as number,
+    frameH: require('../../../../assets/chinese/v4/ja/ja-frame-hbar-v2.webp') as number,
+    frameV: require('../../../../assets/chinese/v4/ja/ja-frame-vbar-v2.webp') as number,
+    torii: require('../../../../assets/chinese/v4/ja/ja-torii.webp') as number,
+    fan: require('../../../../assets/chinese/v4/ja/ja-fan.webp') as number,
+    lantern: require('../../../../assets/chinese/v4/ja/ja-lantern.webp') as number,
+    koi: require('../../../../assets/chinese/v4/ja/ja-koi.webp') as number,
+    fuji: require('../../../../assets/chinese/v4/ja/ja-fuji.webp') as number,
+    sakura: require('../../../../assets/chinese/v4/ja/ja-sakura.webp') as number,
   },
 } as const;

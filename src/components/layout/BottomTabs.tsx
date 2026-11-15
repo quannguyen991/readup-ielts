@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View, type PressableProps } from 'react-native';
+import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router, usePathname } from 'expo-router';
 
@@ -11,6 +12,7 @@ import { haptic } from '@/services/haptics';
 import { RetroTabBar } from '@/components/profile-retro/RetroNav';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
 import { useRewardStore } from '@/store/useRewardStore';
+import { eaTabTone, useEaSidebar } from '@/components/vocab/eastasia/useEaSidebar';
 
 const IS_WEB = Platform.OS === 'web';
 const SAFE_BOTTOM = 'env(safe-area-inset-bottom, 0px)';
@@ -66,7 +68,11 @@ export function BottomTabs() {
   const retro = useRetroOn();
   const visible = !keyboardOpen;
   const chiikawaTheme = useRewardStore((s) => s.theme === 'theme-chiikawa');
-  const accent = chiikawaTheme ? '#D65E86' : PURPLE;
+  const ea = useEaSidebar();
+  // Khu Tiếng Trung / Nhật: thanh tab theo skin người học chọn (cùng các mục, chỉ đổi giao diện).
+  const tone = ea ? eaTabTone(ea.skin) : null;
+  const accent = tone ? tone.accent : chiikawaTheme ? '#D65E86' : PURPLE;
+  const inactive = tone ? tone.muted : INACTIVE;
 
   const active = activeTab(pathname);
 
@@ -122,7 +128,7 @@ export function BottomTabs() {
   const side = (item: (typeof SIDE_TABS)[number]) => {
     const on = active === item.key;
     const label = L(item.vi, item.en);
-    const color = on ? accent : INACTIVE;
+    const color = on ? accent : inactive;
     return (
       <TabButton
         key={item.key}
@@ -141,13 +147,15 @@ export function BottomTabs() {
               borderRadius: 13,
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: on ? accent : '#EEE9FF',
+              backgroundColor: on ? accent : tone ? tone.pill : '#EEE9FF',
             }}
           >
-            <Text style={{ fontSize: 12, lineHeight: 15, fontWeight: '700', color: on ? '#FFFFFF' : PURPLE }}>{initial}</Text>
+            <Text style={{ fontSize: 12, lineHeight: 15, fontWeight: '700', color: on ? (tone ? ea!.skin.sidebar.bg : '#FFFFFF') : tone ? tone.accent : PURPLE }}>{initial}</Text>
           </View>
         ) : (
-          <Icon name={item.icon} size={22} color={color} strokeWidth={on ? 2.2 : 1.9} />
+          <View style={tone && on ? { paddingHorizontal: 16, paddingVertical: 3, borderRadius: 14, backgroundColor: tone.pill } : null}>
+            <Icon name={item.icon} size={22} color={color} strokeWidth={on ? 2.2 : 1.9} />
+          </View>
         )}
         <Text style={{ marginTop: 3, fontSize: 10.5, lineHeight: 13, fontWeight: on ? '700' : '600', color }}>{label}</Text>
       </TabButton>
@@ -172,11 +180,11 @@ export function BottomTabs() {
           height: BOTTOM_BAR_HEIGHT,
           borderRadius: 30,
           // Không blur: lớp mờ nằm trên nội dung đang cuộn làm điện thoại giật; nền đặc hơn thay thế.
-          backgroundColor: 'rgba(255,255,255,0.97)',
-          borderWidth: 1,
-          borderColor: '#F1EEFB',
+          backgroundColor: tone ? tone.bg : 'rgba(255,255,255,0.97)',
+          borderWidth: tone ? 1.5 : 1,
+          borderColor: tone ? tone.border : '#F1EEFB',
           ...(IS_WEB
-            ? { boxShadow: '0 12px 28px rgba(106,75,217,0.14), inset 0 1px 0 rgba(255,255,255,0.9)' }
+            ? { boxShadow: tone ? `0 12px 28px ${tone.shadow}44, inset 0 1px 0 rgba(255,255,255,0.35)` : '0 12px 28px rgba(106,75,217,0.14), inset 0 1px 0 rgba(255,255,255,0.9)' }
             : { shadowColor: PURPLE, shadowOpacity: 0.14, shadowRadius: 18, shadowOffset: { width: 0, height: 8 }, elevation: 8 }),
           // Chỉ trượt xuống khi bàn phím mở.
           transform: [{ translateY: visible ? 0 : '130%' }],
@@ -184,6 +192,12 @@ export function BottomTabs() {
         } as never
       }
     >
+      {tone?.cloud ? (
+        <>
+          <Image source={tone.cloud} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: 16, top: -14, width: 52, height: 20 }} />
+          <Image source={tone.cloud} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', right: 16, top: -14, width: 52, height: 20, transform: [{ scaleX: -1 }] }} />
+        </>
+      ) : null}
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
         {side(SIDE_TABS[0]!)}
         {side(SIDE_TABS[1]!)}
@@ -204,18 +218,18 @@ export function BottomTabs() {
               height: 58,
               borderRadius: 29,
               borderWidth: 4,
-              borderColor: '#FFFFFF',
+              borderColor: tone ? tone.ring : '#FFFFFF',
               overflow: 'hidden',
               ...(IS_WEB
                 ? { boxShadow: '0 10px 22px rgba(139,108,240,0.38)' }
                 : { shadowColor: '#8B6CF0', shadowOpacity: 0.38, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 8 }),
             }}
           >
-            <LinearGradient colors={['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <LinearGradient colors={tone ? tone.gradient : ['#E0413A', '#F28C28', '#F5C518', '#3DBE6B', '#3F8AE0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <Icon name="mic" size={24} color="#FFFFFF" strokeWidth={2.2} />
             </LinearGradient>
           </View>
-          <Text style={{ marginTop: 3, fontSize: 10.5, lineHeight: 13, fontWeight: speakOn ? '700' : '600', color: speakOn ? accent : INACTIVE }}>{speakLabel}</Text>
+          <Text style={{ marginTop: 3, fontSize: 10.5, lineHeight: 13, fontWeight: speakOn ? '700' : '600', color: speakOn ? accent : inactive }}>{speakLabel}</Text>
         </Pressable>
 
         {side(SIDE_TABS[2]!)}

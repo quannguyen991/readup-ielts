@@ -8,7 +8,7 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light' | 'zh-band9';
+export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light' | 'zh-band9' | 'ea-skin';
 export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene' | 'waves' | 'snow' | 'bamboo' | 'aurora';
 
 export type StudyTheme = {
@@ -56,6 +56,8 @@ export type StudyTheme = {
   /** Nền nhỏ cho nút "Thoát" / "Cài đặt" trên nền trời. */
   pill: string;
   pillInk: string;
+  /** Hoa văn trang trí (bộ tiếng Trung/Nhật): góc khung, dải mây, màu viền. */
+  deco?: { corner: number; cloud?: number; accent: string };
 };
 
 const LIGHT_BASE = {
@@ -296,6 +298,8 @@ const ZH_BAND9_STUDY: StudyTheme = {
 export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
   chiikawa: CHIIKAWA_STUDY,
   'zh-band9': ZH_BAND9_STUDY,
+  // Chủ đề sinh từ skin (xem eastasia/eaStudyTheme.ts); bản này chỉ giữ chỗ cho kiểu Record.
+  'ea-skin': { ...ZH_BAND9_STUDY, id: 'ea-skin' },
   ...SCENE_THEMES,
   ...ART_THEMES,
   ...PX_THEMES,
@@ -436,7 +440,7 @@ export const ALL_THEMES: readonly ThemeId[] = ['plain', ...THEME_ORDER];
 
 /** Màu nhấn của nút/thanh đang chọn: giấy Band 9 dùng son đỏ của nó, các chủ đề khác giữ màu cũ (`fallback`). */
 export function accentFor(t: StudyTheme, fallback: string): string {
-  return t.id === 'zh-band9' ? t.accent : fallback;
+  return t.id === 'zh-band9' || t.id === 'ea-skin' ? t.accent : fallback;
 }
 
 export function isThemeId(v: unknown): v is ThemeId {

@@ -9,6 +9,7 @@ import { Button, Card } from '@/components/ui';
 import { BOOK_VOCAB_BOOKS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
 import { color } from '@/theme/tokens';
+import { EaBookPage } from '@/components/vocab/eastasia/EaPages';
 import { ZhBookCovers } from '@/components/vocab/chinese/ZhBookCovers';
 import { ZH } from '@/components/vocab/chinese/palette';
 import { themeForLevel } from '@/components/vocab/chinese/levels';
@@ -22,6 +23,9 @@ export default function BookVocabScreen() {
   const { L, en } = useL();
   const book = BOOK_VOCAB_BOOKS.find((item) => item.slug === slug);
 
+  // Sách tiếng Trung / Nhật: giao diện riêng theo skin (hero, thẻ chủ đề có tiến độ, họa tiết).
+  if (book && (book.language === 'zh' || book.language === 'ja')) return <EaBookPage book={book} />;
+
   return (
     <Screen>
       <Button
@@ -32,6 +36,15 @@ export default function BookVocabScreen() {
         iconLeft="chevron-left"
         onPress={() => router.push('/vocabulary/topics' as never)}
       />
+      {book && (book.language === 'zh' || book.language === 'ja') ? (
+        <Button
+          className="mb-4 self-start"
+          label={book.language === 'zh' ? L('Xem lộ trình HSK 1–6', 'See the HSK 1–6 roadmap') : L('Xem lộ trình JLPT N5–N1', 'See the JLPT N5–N1 roadmap')}
+          variant="secondary"
+          size="sm"
+          onPress={() => router.push(`/vocabulary/lo-trinh/${book.language}` as never)}
+        />
+      ) : null}
       {book ? (
         <>
           {book.language === 'zh' ? (

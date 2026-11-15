@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useL, useLocale } from "@/i18n/useL";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { Image, Platform, Pressable, ScrollView, Text, View } from "react-native";
+import { Image, Platform, Pressable, ScrollView, Text, View, type ViewStyle } from "react-native";
 import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
@@ -42,6 +42,7 @@ import { pixelPageBg, type PixelTheme } from "@/components/pixel-theme/pixel-art
 import { PT } from "@/components/pixel-theme/pixel-ui";
 import { PIXEL_NAV_ICON } from "@/components/pixel-theme/pixel-nav-icons";
 import { PixelBob } from "@/components/pixel-theme/pixel-fx";
+import { EaSidebarArt, useEaSidebar } from "@/components/vocab/eastasia/useEaSidebar";
 
 /**
  * Thanh bên trái — HIỆN ĐẦY ĐỦ TÊN, thu gọn được về dải biểu tượng.
@@ -75,7 +76,10 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
 
   const theme = useSidebarTheme();
   const chiikawaTheme = useRewardStore((s) => s.theme === "theme-chiikawa");
-  const themeConfig = glass ? GLASS_SIDEBAR_THEME : theme.themeConfig;
+  // Khu Tiếng Trung / Tiếng Nhật: thanh bên đổi theo skin người học chọn (màn làm bài và nền cảnh giữ nguyên).
+  const ea = useEaSidebar();
+  const eaOn = !!ea && !compact && !glass && !pixel;
+  const themeConfig = glass ? GLASS_SIDEBAR_THEME : eaOn ? ea!.config : theme.themeConfig;
   const activeEffect = glass || pixel ? null : theme.activeEffect;
 
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
@@ -103,14 +107,16 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
         floating ? floatingFrame(themeConfig) : null,
         pixel ? pixelPageBg(pixel) : themeConfig.bgStyle,
         Platform.OS === "web" && !glass && !pixel ? (floating ? floatingShadow(themeConfig.isDark) : webShadow) : null,
+        Platform.OS === "web" ? webWidthTransition : null,
       ]}
     >
       {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}
       <SidebarAtmosphereOverlay effect={activeEffect} isDark={themeConfig.isDark} />
+      {eaOn ? <EaSidebarArt skin={ea!.skin} /> : null}
       {mosaic ? <SidebarMosaic /> : null}
 
       <View className={collapsed ? "items-center pb-2 pt-5" : "px-5 pb-2 pt-5"}>
-        <Logo compact markOnly={collapsed} />
+        <Logo compact markOnly={collapsed} color={eaOn ? themeConfig.textPrimary : undefined} />
       </View>
 
       {/* Ô tìm bài (mở bảng tìm kiếm có AI) — ngay trên danh sách mục. */}
@@ -252,6 +258,9 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
 }
 
 const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
+
+/** Chuyển bề rộng mượt khi thu gọn / mở rộng (chỉ web; native đổi tức thì). */
+const webWidthTransition = { transition: "width 240ms cubic-bezier(0.2, 0.8, 0.2, 1)" } as unknown as ViewStyle;
 
 /** Khoảng cách từ thanh bên nổi tới mép trái, trên và dưới màn hình. */
 const FLOAT_GAP = 12;

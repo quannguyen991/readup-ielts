@@ -50,7 +50,7 @@ export function JaIntroHero({
           borderWidth: 2,
           borderColor: JA.gold,
           backgroundColor: JA.green,
-          paddingLeft: 72,
+          paddingLeft: wide ? 72 : 48,
           paddingRight: wide && side ? 290 : 52,
           paddingVertical: 26,
           minHeight: 220,
@@ -73,7 +73,7 @@ export function JaIntroHero({
             source={side}
             contentFit="cover"
             pointerEvents="none"
-            style={{ position: 'absolute', right: 40, top: 22, bottom: 22, width: 230, borderRadius: 16, borderWidth: 2, borderColor: JA.gold }}
+            style={{ position: 'absolute', right: 28, top: 22, bottom: 22, width: 240, borderRadius: 16, borderWidth: 1.5, borderColor: JA.gold }}
           />
         ) : wide ? (
           <Image source={decor ?? ZH_V4.ja.lantern} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', right: 28, top: 10, width: 96, height: 120 }} />
@@ -108,7 +108,7 @@ export function JaIntroHero({
         ) : null}
         {footer}
       </View>
-      <ZhLevelCorners source={ZH_V4.ja.corner} c={56} />
+      <ZhLevelCorners source={ZH_V4.ja.corner} c={wide ? 56 : 36} />
     </View>
   );
 }
@@ -118,14 +118,14 @@ export function JaSectionTitle({ title, subtitle }: { title: string; subtitle: s
   return (
     <View style={{ alignItems: 'center', gap: 6, marginBottom: 18 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, width: '100%' }}>
-        <Image source={ZH_V4.ja.frameH} contentFit="contain" style={{ flex: 1, height: 22 }} />
+        <View style={{ flex: 1, height: 1, backgroundColor: JA.gold, opacity: 0.7 }} />
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <Image source={ZH_V4.ja.fan} contentFit="contain" style={{ width: 40, height: 34 }} />
           <Text className="font-heavy text-sectionTitle" style={{ color: JA.green }}>
             {title}
           </Text>
         </View>
-        <Image source={ZH_V4.ja.frameH} contentFit="contain" style={{ flex: 1, height: 22, transform: [{ scaleX: -1 }] }} />
+        <View style={{ flex: 1, height: 1, backgroundColor: JA.gold, opacity: 0.7 }} />
       </View>
       <Text className="font-sans text-label" style={{ color: JA.ink2, textAlign: 'center' }}>
         {subtitle}
@@ -386,8 +386,8 @@ export function JaPageBackdrop() {
 }
 
 /**
- * Thẻ cách luyện / trạng thái kiểu Nhật: nền kem có tranh sticker ở giữa, viền vàng, bốn góc hoa anh đào,
- * vạch ngang seigaiha dưới tranh, tiêu đề xanh rừng, nhãn và mũi tên.
+ * Thẻ cách luyện / trạng thái kiểu Nhật: tranh sticker trên nền xanh rừng có quầng vàng mờ, một vạch vàng mảnh,
+ * tiêu đề xanh rừng, nhãn và mũi tên. Không có hoạ tiết lặp lại ở mỗi thẻ để tranh là điểm nhấn.
  */
 export function JaTile({
   art,
@@ -416,42 +416,42 @@ export function JaTile({
       onPress={onPress}
       style={({ hovered, pressed }: { hovered?: boolean; pressed?: boolean }) => ({
         minHeight,
-        borderRadius: 22,
-        borderWidth: 1.5,
+        borderRadius: 20,
+        borderWidth: 1,
         borderColor: hovered ? JA.gold : JA.goldLine,
         backgroundColor: JA.card,
         overflow: 'hidden',
         opacity: disabled ? 0.5 : 1,
         transform: [{ scale: pressed ? 0.98 : hovered ? 1.012 : 1 }],
         shadowColor: JA.green,
-        shadowOpacity: hovered ? 0.2 : 0.08,
-        shadowRadius: hovered ? 16 : 9,
-        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: hovered ? 0.18 : 0.07,
+        shadowRadius: hovered ? 14 : 8,
+        shadowOffset: { width: 0, height: 5 },
       })}
     >
-      <View style={{ height: Math.round(minHeight * 0.52), overflow: 'hidden' }}>
-        <LinearGradient colors={['#E6F1E0', '#F7EBCB']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+      <View style={{ height: Math.round(minHeight * 0.56), overflow: 'hidden' }}>
+        <LinearGradient colors={['#2F6A4C', '#17392B']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+        <View pointerEvents="none" style={{ position: 'absolute', left: '50%', top: '50%', width: 130, height: 130, marginLeft: -65, marginTop: -65, borderRadius: 65, backgroundColor: 'rgba(233,201,138,0.22)' }} />
         {art ? (
-          <Image source={art} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: '16%', right: '16%', top: '12%', bottom: '12%' }} />
+          <Image source={art} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: '20%', right: '20%', top: '12%', bottom: '12%' }} />
         ) : null}
-        <ZhLevelCorners source={ZH_V4.ja.corner} c={40} />
         {value !== undefined ? (
           <View style={{ position: 'absolute', right: 12, top: 12, minWidth: 40, height: 28, paddingHorizontal: 10, borderRadius: 999, backgroundColor: 'rgba(255,249,236,0.96)', borderWidth: 1, borderColor: JA.gold, alignItems: 'center', justifyContent: 'center' }}>
             <Text className="font-heavy text-label" style={{ color: JA.green2 }}>{value}</Text>
           </View>
         ) : null}
       </View>
-      <Image source={ZH_V4.ja.frameH} contentFit="contain" pointerEvents="none" style={{ width: '100%', height: 16, marginTop: 8 }} />
-      <View style={{ paddingHorizontal: 14, paddingTop: 6, paddingBottom: 14, gap: 4 }}>
+      <View style={{ paddingHorizontal: 16, paddingTop: 14, paddingBottom: 14, gap: 4 }}>
         <Text className="font-heavy text-cardTitle" style={{ color: JA.green }} numberOfLines={2}>
           {title}
         </Text>
+        <View style={{ height: 1, backgroundColor: JA.goldLine, marginVertical: 4 }} />
         {sub ? (
           <Text className="font-sans text-label" style={{ color: JA.ink2, lineHeight: 17 }} numberOfLines={2}>
             {sub}
           </Text>
         ) : null}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 6 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 8 }}>
           {chip ? (
             <View style={{ paddingHorizontal: 10, height: 24, borderRadius: 999, backgroundColor: JA.goldSoft, borderWidth: 1, borderColor: JA.gold, justifyContent: 'center' }}>
               <Text className="font-strong text-label" style={{ color: JA.green }}>{chip}</Text>

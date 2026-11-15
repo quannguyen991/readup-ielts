@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { Platform, View, useWindowDimensions, type ViewStyle } from 'react-native';
 import { usePathname } from 'expo-router';
+import { EaPageBackdrop, useEaPageSkin } from '@/components/vocab/eastasia/EaBackdrop';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GridBackdrop } from './GridBackdrop';
@@ -39,6 +40,9 @@ import { useHydrated } from './useHydrated';
 import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 import { FirstRunTour } from '@/components/onboarding/FirstRunTour';
 
+/** Nội dung lùi chỗ cho thanh bên với chuyển động mượt (chỉ web). */
+const SHIFT_TRANSITION = Platform.OS === 'web' ? ({ transition: 'padding-left 240ms cubic-bezier(0.2, 0.8, 0.2, 1)' } as unknown as ViewStyle) : undefined;
+
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#0F1D33';
 
@@ -66,7 +70,7 @@ const STUDY_NAVY = '#0F1D33';
 /** Nền trang mặc định: một màu phẳng, không loang. Nền người học tự chọn bằng sao vẫn đè lên. */
 const PLAIN_PAGE_BG = '#F3F0FB';
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+function AppShellBody({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   // Kính của Thành Phố Tri Thức theo mốc chuỗi ngày — chạy ở mọi thiết bị.
   useStreakGlass();
@@ -87,6 +91,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pageBg = usePageBackground('browse');
   // Bài từ vựng tiếng Trung: giấy kem Band 9 thay lưới pastel, thanh bên trong suốt.
   const zhRoute = isChineseVocabRoute(pathname);
+  // Màn lộ trình HSK/JLPT: nền tràn viền theo skin người học chọn.
+  const eaPage = useEaPageSkin();
   const cuteEffects = useCuteAppearanceStore((state) => state.effectsEnabled);
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   const customMascotImage = useCuteAppearanceStore((state) => state.customMascotImage);
@@ -146,18 +152,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
     */
     return (
-      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && (travelGlass || sentenceThemed)} gold={goldSkin} zh={zhRoute}>
+      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && (travelGlass || sentenceThemed)} gold={goldSkin} zh={zhRoute} ea={eaPage}>
         <View className="flex-1 lg:flex-row">
-          <View
-            className="hidden lg:flex"
-            style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
-          >
-            <Sidebar compact={!hubRoute} expanded={hubRoute} glass={travelGlass} />
-          </View>
-          <View className={`min-w-0 flex-1 ${hubRoute ? 'lg:pl-[248px]' : 'lg:pl-[76px]'}`}>
+          <View className={`min-w-0 flex-1 ${hubRoute || (!isExamRoute(pathname) && !collapsed) ? 'lg:pl-[248px]' : 'lg:pl-[76px]'}`} style={SHIFT_TRANSITION}>
             {/* Màn thi / luyện từng bài: điện thoại không có thanh đầu trang của app (màn tự có thanh riêng). */}
             {isPhoneChromelessRoute(pathname) ? null : (
-              <View className="lg:hidden">
+              <View className="lg:hidden" style={eaPage ? { backgroundColor: 'rgba(255,248,236,0.94)' } : undefined}>
                 <TopBar />
               </View>
             )}
@@ -181,7 +181,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : zhRoute ? ZH.paper : (pageBg?.stops[1] ?? PLAIN_PAGE_BG) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
+      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : eaPage ? eaPage.c.bg : zhRoute ? ZH.paper : (pageBg?.stops[1] ?? PLAIN_PAGE_BG) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
@@ -198,7 +198,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {!isQuestRoute && !retro && !pixel && !(goldSkin && !pageBg) ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
           {/* Nền học / giao diện đổi bằng sao áp dụng cho MỌI trang; không có thì nền xanh mặc định. */}
-          {zhRoute ? (
+          {eaPage ? (
+            <EaPageBackdrop skin={eaPage} />
+          ) : zhRoute ? (
             <ChineseBackdrop />
           ) : pageBg ? (
             <GridBackdrop colors={pageBg.stops} line={pageBg.line} pattern={pageBg.pattern} blobs={pageBg.blobs} margin={pageBg.margin} cell={pageBg.cell ?? 34} />
@@ -214,16 +216,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <View className="flex-1 lg:flex-row">
         {/* zIndex ở ĐÂY nữa, không chỉ trong Sidebar: thẻ bung ra nằm trong khung
             này, mà khung nội dung là anh em đứng sau nên vẽ đè lên. */}
-        <View
-          className="hidden lg:flex"
-          style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
-        >
-          {retro ? <RetroSidebar /> : <Sidebar />}
-        </View>
-        <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`} style={dockChat ? { paddingRight: 320 } : undefined}>
+        <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`} style={[SHIFT_TRANSITION, dockChat ? { paddingRight: 320 } : null]}>
           {/* Trang Hôm nay trên điện thoại tự vẽ đầu trang riêng (xem PhoneHome), nên không có TopBar. */}
           {phone && pathname === '/dashboard' ? null : (
-            <View className="lg:hidden">
+            <View className="lg:hidden" style={eaPage ? { backgroundColor: 'rgba(255,248,236,0.94)' } : undefined}>
               {retro ? <RetroTopBar /> : <TopBar />}
             </View>
           )}
@@ -247,6 +243,35 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 }
 
 /**
+ * Thanh bên được vẽ ở MỘT chỗ cố định, nằm ngoài các nhánh bố cục của AppShellBody.
+ * Trước đây thanh bên nằm trong từng nhánh (duyệt / tác vụ), mỗi lần đổi nhánh React
+ * dựng lại nó từ đầu nên chuyển trang bị giật. Giờ nó được giữ nguyên qua mọi trang;
+ * chỉ các prop (thu gọn, mở rộng, trong suốt) đổi theo trang.
+ */
+export function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const focus = isFocusRoute(pathname);
+  const hidden = pathname === '/duel/hack' || isImmersiveRoute(pathname);
+  const hubRoute = pathname.startsWith('/hub');
+  const travelGlass = useTravelActive();
+  const retro = useRetroOn();
+  return (
+    <View className="flex-1">
+      {hidden ? null : (
+        <View className="hidden lg:flex" style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}>
+          {!focus && retro ? (
+            <RetroSidebar />
+          ) : (
+            <Sidebar compact={focus && isExamRoute(pathname)} expanded={focus && hubRoute} glass={focus && travelGlass} />
+          )}
+        </View>
+      )}
+      <AppShellBody>{children}</AppShellBody>
+    </View>
+  );
+}
+
+/**
  * Nền cho màn tập trung: lưới sáng mặc định, riêng trang game (Bản đồ ReadUp là
  * màn tập trung) thì trời đêm pixel — chữ trắng của bản đồ nằm trên nền lưới
  * sáng là gần như biến mất.
@@ -261,8 +286,10 @@ function MeshShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function FocusBackdrop({ quest, navy, light, gold, zh, children }: { quest: boolean; navy: boolean; light: boolean; gold: boolean; zh: boolean; children: React.ReactNode }) {
+function FocusBackdrop({ quest, navy, light, gold, zh, ea, children }: { quest: boolean; navy: boolean; light: boolean; gold: boolean; zh: boolean; ea?: import('@/components/vocab/eastasia/skins').EaSkin | null; children: React.ReactNode }) {
   const chiikawa = useChiikawaActive();
+  // Trang bài học tiếng Trung / Nhật: nền tràn viền theo skin người học chọn.
+  if (ea) return <View className="flex-1" style={{ backgroundColor: ea.c.bg }}><EaPageBackdrop skin={ea} />{children}</View>;
   // Bài từ vựng tiếng Trung: giấy kem Band 9 với núi mực, không lưới pastel.
   if (zh) return <View className="flex-1" style={{ backgroundColor: ZH.paper }}><ChineseBackdrop />{children}</View>;
   // Chép chính tả / viết câu: cảnh bay qua thành phố tông sáng (tắt thì về lưới sáng như cũ).

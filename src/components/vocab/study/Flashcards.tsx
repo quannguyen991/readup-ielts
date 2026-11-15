@@ -144,7 +144,7 @@ export function Flashcards<W extends StudyWord>({
       ) : null}
 
       {/* Hàng điều khiển dưới thẻ. */}
-      <View className="mt-4 flex-row items-center justify-between gap-2">
+      <View className="mt-4 flex-row flex-wrap items-center justify-between gap-2">
         <View className="flex-row items-center gap-2">
           <SpeakButton text={word.word} language={word.language} />
           <Pressable

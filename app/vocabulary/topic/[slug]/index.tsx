@@ -10,7 +10,7 @@ import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { deckLevels, getStaticDeck, groupDeckWords, levelOf, NOTEBOOK_SLUG, splitLevelSlug } from '@/data/study-decks';
 import type { StudyWord, WordStage } from '@/services/vocab/topic-study';
-import { ChineseTopicPage } from '@/components/vocab/chinese/ChineseTopicPage';
+import { EaLessonScreen } from '@/components/vocab/eastasia/EaLessonScreen';
 import { isLetterWord } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
@@ -268,9 +268,9 @@ export default function VocabTopicScreen() {
   const status = groupByStatus(topic.words, stages, lapseMap);
   const pct = studiedPct(progress);
 
-  // Bài tiếng Trung: giao diện Band 9 riêng (components/vocab/chinese), dùng chung handler lưu / sao / chấm / lịch ôn.
-  if (topic.language === 'zh' && typeof slug === 'string') {
-    const rateZh = (w: StudyWord, stage: WordStage) => {
+  // Bài tiếng Trung / Nhật: giao diện theo skin (components/vocab/eastasia), dùng chung handler lưu / sao / chấm / lịch ôn.
+  if ((topic.language === 'zh' || topic.language === 'ja') && typeof slug === 'string') {
+    const rate = (w: StudyWord, stage: WordStage) => {
       setStage(slug, w.word, stage);
       if (stage === 0) addLapse(slug, w.word);
       // Tự chấm thẻ cũng vào lịch ôn FSRS, giống các bài khác.
@@ -278,23 +278,26 @@ export default function VocabTopicScreen() {
       touch(slug);
     };
     return (
-      <Screen>
-        <Appear>
-          <ChineseTopicPage
-            slug={slug}
-            title={topic.nameVi || topic.name}
-            eyebrow={L('BỘ TỪ TIẾNG TRUNG', 'CHINESE WORD SET')}
-            words={topic.words}
-            stages={stages}
-            starred={starredWords}
-            saved={savedLemmas}
-            shuffle={shuffle === '1'}
-            onSave={save}
-            onStar={(w) => toggleStar(slug, w.word)}
-            onRate={rateZh}
-          />
-        </Appear>
-      </Screen>
+      <EaLessonScreen
+        lang={topic.language}
+        slug={slug}
+        title={topic.nameVi || topic.name}
+        words={topic.words}
+        pct={pct}
+        status={status}
+        groups={groups}
+        modes={MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m) => ({ key: m.key, route: m.route, label: m.label, labelEn: m.labelEn, note: m.note, noteEn: m.noteEn, recommended: m.recommended }))}
+        stages={stages}
+        starred={starredWords}
+        saved={savedLemmas}
+        remaining={remaining.length}
+        justSaved={justSaved}
+        shuffle={shuffle === '1'}
+        onSave={save}
+        onSaveAll={saveAll}
+        onStar={(w) => toggleStar(slug, w.word)}
+        onRate={rate}
+      />
     );
   }
 
@@ -524,12 +527,25 @@ export default function VocabTopicScreen() {
 
       {remaining.length > 0 ? (
         <Appear index={1}>
-          <Button
-            className="mt-3 self-start"
-            label={L(`Thêm cả ${remaining.length} từ chưa lưu vào sổ`, `Add all ${remaining.length} unsaved words to notebook`)}
-            iconRight="plus"
-            onPress={saveAll}
-          />
+          {topic.language === 'ja' ? (
+            <Pressable
+              accessibilityRole="button"
+              onPress={saveAll}
+              style={{ marginTop: 12, alignSelf: 'flex-start', minHeight: 44, paddingHorizontal: 20, borderRadius: 999, backgroundColor: JA.green2, borderWidth: 1.5, borderColor: JA.gold, flexDirection: 'row', alignItems: 'center', gap: 10 }}
+            >
+              <Text className="font-strong text-body" style={{ color: '#FFF6E0' }}>
+                {L(`Thêm cả ${remaining.length} từ chưa lưu vào sổ`, `Add all ${remaining.length} unsaved words to notebook`)}
+              </Text>
+              <Text style={{ color: '#EFD38A', fontSize: 18, fontWeight: '700' }}>+</Text>
+            </Pressable>
+          ) : (
+        <Button
+              className="mt-3 self-start"
+              label={L(`Thêm cả ${remaining.length} từ chưa lưu vào sổ`, `Add all ${remaining.length} unsaved words to notebook`)}
+              iconRight="plus"
+              onPress={saveAll}
+            />
+          )}
         </Appear>
       ) : (
         <View className="mt-3 flex-row items-center gap-2">
