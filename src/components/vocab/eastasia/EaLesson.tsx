@@ -18,7 +18,7 @@ import { KIT } from './kit';
 import { JA_MOTIF, ZH_MOTIF } from './motifs';
 import type { EaSkin } from './skins';
 
-const hot = (skin: EaSkin) => (skin.lang === 'ja' ? '#D9463A' : skin.c.accent);
+const hot = (skin: EaSkin) => (skin.lang === 'ja' ? '#C23B2F' : skin.c.accent);
 const hotText = (skin: EaSkin) => (skin.lang === 'ja' ? '#C0392B' : skin.c.accent);
 const onHot = (skin: EaSkin) => (skin.lang === 'ja' ? '#FFFFFF' : skin.c.onAccent);
 const cornerOf = (lang: EaLang) => (lang === 'ja' ? JA_MOTIF.corner : ZH_MOTIF.corner);
@@ -54,7 +54,7 @@ export function EaModeTile({ skin, art, title, sub, chip, value, disabled, cta, 
       <Image source={cornerOf(skin.lang)} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', right: 2, bottom: 2, width: 36, height: 36, transform: [{ rotate: '180deg' }] }} />
       {chip ? (
         <View style={{ position: 'absolute', right: 10, top: 10, paddingHorizontal: 8, paddingVertical: 2, borderRadius: 999, backgroundColor: hot(skin) }}>
-          <Text style={{ color: onHot(skin), fontSize: 10.5, fontFamily: EA_FONT.heavy }}>{chip}</Text>
+          <Text style={{ color: onHot(skin), fontSize: 12, fontFamily: EA_FONT.heavy }}>{chip}</Text>
         </View>
       ) : null}
       <View style={{ width: 92, height: 92, alignItems: 'center', justifyContent: 'center' }}>
@@ -62,10 +62,10 @@ export function EaModeTile({ skin, art, title, sub, chip, value, disabled, cta, 
       </View>
       {value !== undefined ? <Text style={{ color: hotText(skin), fontSize: 30, lineHeight: 34, fontFamily: EA_FONT.heavy }}>{value}</Text> : null}
       <Text style={{ color: c.ink, fontSize: 15.5, textAlign: 'center', fontFamily: EA_FONT.heavy }}>{title}</Text>
-      {sub ? <Text style={{ color: c.ink2, fontSize: 12, lineHeight: 17, textAlign: 'center', fontFamily: EA_FONT.body }}>{sub}</Text> : null}
+      {sub ? <Text style={{ color: c.ink2, fontSize: 13, lineHeight: 17, textAlign: 'center', fontFamily: EA_FONT.body }}>{sub}</Text> : null}
       {cta ? (
         <View style={{ marginTop: 6, paddingHorizontal: 16, paddingVertical: 7, borderRadius: 999, backgroundColor: disabled ? c.border : hot(skin) }}>
-          <Text style={{ color: onHot(skin), fontSize: 12.5, fontFamily: EA_FONT.heavy }}>{cta} →</Text>
+          <Text style={{ color: onHot(skin), fontSize: 13, fontFamily: EA_FONT.heavy }}>{cta} →</Text>
         </View>
       ) : null}
     </Pressable>
@@ -117,7 +117,7 @@ export function EaWordRow({ skin, word, saved, onSave }: { skin: EaSkin; word: S
             {word.romanization ? <Text style={{ color: hotText(skin), fontSize: 13, fontFamily: EA_FONT.mid }}>{word.romanization}</Text> : null}
             {word.pos ? (
               <View style={{ paddingHorizontal: 8, height: 20, borderRadius: 999, backgroundColor: `${hot(skin)}22`, borderWidth: 1, borderColor: `${hot(skin)}55`, justifyContent: 'center' }}>
-                <Text style={{ color: hotText(skin), fontSize: 11, fontFamily: EA_FONT.heavy }}>{word.pos}</Text>
+                <Text style={{ color: hotText(skin), fontSize: 12, fontFamily: EA_FONT.heavy }}>{word.pos}</Text>
               </View>
             ) : null}
           </View>
@@ -126,14 +126,14 @@ export function EaWordRow({ skin, word, saved, onSave }: { skin: EaSkin; word: S
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           {hasDetails ? (
             <Pressable accessibilityRole="button" onPress={() => setOpen((v) => !v)} style={{ height: 30, paddingHorizontal: 12, borderRadius: 999, borderWidth: 1, borderColor: c.accent, justifyContent: 'center' }}>
-              <Text style={{ color: c.ink, fontSize: 12, fontFamily: EA_FONT.heavy }}>{open ? L('Thu gọn', 'Collapse') : L('Ví dụ', 'Example')}</Text>
+              <Text style={{ color: c.ink, fontSize: 13, fontFamily: EA_FONT.heavy }}>{open ? L('Thu gọn', 'Collapse') : L('Ví dụ', 'Example')}</Text>
             </Pressable>
           ) : null}
           {saved ? (
-            <Text style={{ color: hotText(skin), fontSize: 12.5, fontFamily: EA_FONT.heavy }}>✓ {L('Đã lưu', 'Saved')}</Text>
+            <Text style={{ color: hotText(skin), fontSize: 13, fontFamily: EA_FONT.heavy }}>✓ {L('Đã lưu', 'Saved')}</Text>
           ) : (
             <Pressable accessibilityRole="button" onPress={onSave} style={{ height: 30, paddingHorizontal: 14, borderRadius: 999, backgroundColor: hot(skin), justifyContent: 'center' }}>
-              <Text style={{ color: onHot(skin), fontSize: 12.5, fontFamily: EA_FONT.heavy }}>{L('Lưu', 'Save')}</Text>
+              <Text style={{ color: onHot(skin), fontSize: 13, fontFamily: EA_FONT.heavy }}>{L('Lưu', 'Save')}</Text>
             </Pressable>
           )}
         </View>
@@ -141,7 +141,7 @@ export function EaWordRow({ skin, word, saved, onSave }: { skin: EaSkin; word: S
       {open && hasDetails ? (
         <View style={{ borderTopWidth: 1, borderColor: c.border, paddingTop: 8, gap: 6 }}>
           {word.example ? <ExampleSentence example={word.example} word={word.word} language="ja" /> : null}
-          {word.collocation ? <Text style={{ color: c.ink2, fontSize: 12.5, fontFamily: EA_FONT.body }}>{word.collocation}</Text> : null}
+          {word.collocation ? <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }}>{word.collocation}</Text> : null}
         </View>
       ) : null}
     </View>

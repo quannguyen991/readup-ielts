@@ -61,7 +61,7 @@ export function EaLessonScreen(p: Props) {
   const unit = BOOK_VOCAB_BOOKS.flatMap((b) => b.topics.map((t) => ({ b, t }))).find(({ t }) => t.lessons.some((l) => l.slug === p.slug));
   const dialogue = isDialogueLesson(p.slug);
   const scene = lang === 'ja' ? JA_SET_ART[p.slug] ?? sceneOf(p.title) : undefined;
-  const hot = lang === 'ja' ? '#D9463A' : c.accent;
+  const hot = lang === 'ja' ? '#C23B2F' : c.accent;
   const learn = p.modes.find((m) => m.recommended) ?? p.modes[0];
   const total = p.groups.reduce((n, g) => n + g.words.length, 0);
   let budget = limit;

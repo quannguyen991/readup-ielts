@@ -94,7 +94,7 @@ export function EaRoadmap({ lang }: { lang: EaLang }) {
   const goldText: object = web
     ? { backgroundImage: 'linear-gradient(180deg, #fff3c4 0%, #ecc97e 52%, #b98a3a 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', WebkitTextFillColor: 'transparent' }
     : { color: c.accent };
-  const cta = lang === 'ja' ? '#D9463A' : c.accent;
+  const cta = lang === 'ja' ? '#C23B2F' : c.accent;
 
   return (
     <View style={{ gap: 28, paddingBottom: 10, width: '100%', maxWidth: 1080, alignSelf: 'center' }}>
@@ -109,7 +109,7 @@ export function EaRoadmap({ lang }: { lang: EaLang }) {
             {lang === 'zh' && K.latticeBL ? <Image source={K.latticeBL} contentFit="contain" contentPosition="bottom left" pointerEvents="none" style={{ position: 'absolute', left: 4, bottom: 4, width: wide ? 120 : 80, height: wide ? 150 : 100 }} /> : null}
             {lang === 'ja' ? <Image source={motif.corner} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: 6, top: 6, width: wide ? 96 : 64, height: wide ? 96 : 64 }} /> : null}
             <View style={{ paddingLeft: wide ? 64 : 34, paddingRight: wide ? 24 : 20, paddingTop: wide ? 40 : 54, paddingBottom: 38, gap: 10, maxWidth: wide ? '60%' : '90%' }}>
-              <Text style={{ color: c.accent, fontSize: 12, letterSpacing: 2.2, fontFamily: EA_FONT.heavy }}>{kicker}</Text>
+              <Text style={{ color: c.accent, fontSize: 13, letterSpacing: 2.2, fontFamily: EA_FONT.heavy }}>{kicker}</Text>
               {lang === 'zh' ? (
                 <Text accessibilityRole="header" style={[{ fontSize: wide ? 80 : 54, lineHeight: wide ? 92 : 62, fontFamily: skin.fontHan as never, fontWeight: '800' }, goldText] as never}>
                   {skin.han}
@@ -234,7 +234,7 @@ function BookCard({ skin, slug, title, blurb, words }: { skin: EaSkin; slug: str
       <View style={{ flex: 1, gap: 4 }}>
         <Text style={{ color: skin.lang === 'ja' ? '#C0392B' : c.accent, fontSize: 16, fontFamily: EA_FONT.heavy }}>{useBi(title)}</Text>
         <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }}>{useBi(blurb)}</Text>
-        {words ? <Text style={{ color: c.ink2, fontSize: 12, fontFamily: EA_FONT.mid }}>{`${words.toLocaleString('vi-VN')} ${L('từ', 'words')}`}</Text> : null}
+        {words ? <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.mid }}>{`${words.toLocaleString('vi-VN')} ${L('từ', 'words')}`}</Text> : null}
       </View>
     </Pressable>
   );
@@ -250,7 +250,7 @@ function SkinPicker({ lang, skin, onPick }: { lang: EaLang; skin: EaSkin; onPick
         {skins.map((s) => {
           const on = s.id === skin.id;
           return (
-            <Pressable key={s.id} accessibilityRole="button" accessibilityState={{ selected: on }} onPress={() => onPick(s.id)} style={({ pressed }) => ({ width: 210, borderRadius: 18, overflow: 'hidden', borderWidth: on ? 2.5 : 1, borderColor: on ? (lang === 'ja' ? '#D9463A' : skin.c.accent) : skin.c.border, backgroundColor: skin.c.panelSolid, opacity: pressed ? 0.85 : 1, ...(on ? glow(`${skin.c.accent}55`, 16) : null) })}>
+            <Pressable key={s.id} accessibilityRole="button" accessibilityState={{ selected: on }} onPress={() => onPick(s.id)} style={({ pressed }) => ({ width: 210, borderRadius: 18, overflow: 'hidden', borderWidth: on ? 2.5 : 1, borderColor: on ? (lang === 'ja' ? '#C23B2F' : skin.c.accent) : skin.c.border, backgroundColor: skin.c.panelSolid, opacity: pressed ? 0.85 : 1, ...(on ? glow(`${skin.c.accent}55`, 16) : null) })}>
               <View>
                 <Image source={s.thumb} contentFit="cover" style={{ width: '100%', height: 100 }} />
                 <Image source={lang === 'ja' ? JA_MOTIF.corner : ZH_MOTIF.corner} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: 2, top: 2, width: 34, height: 34 }} />
@@ -258,7 +258,7 @@ function SkinPicker({ lang, skin, onPick }: { lang: EaLang; skin: EaSkin; onPick
               </View>
               <View style={{ padding: 10, gap: 2 }}>
                 <Text style={{ color: skin.c.ink, fontSize: 14.5, fontFamily: EA_FONT.heavy }}>{s.name}</Text>
-                <Text style={{ color: skin.c.ink2, fontSize: 12, fontFamily: s.fontHan as never }}>{s.han}</Text>
+                <Text style={{ color: skin.c.ink2, fontSize: 13, fontFamily: s.fontHan as never }}>{s.han}</Text>
               </View>
             </Pressable>
           );
@@ -273,7 +273,7 @@ function LevelSeal({ level, skin, seal, active, done, total, onPress }: { level:
   const c = skin.c;
   const pct = total ? Math.round((done / total) * 100) : 0;
   return (
-    <Pressable accessibilityRole="button" accessibilityState={{ selected: active }} onPress={onPress} style={({ pressed }) => ({ width: 168, borderRadius: 20, padding: 12, gap: 8, backgroundColor: active ? c.panelSolid : c.panel, borderWidth: active ? 2.5 : 1, borderColor: active ? (skin.lang === 'ja' ? '#D9463A' : c.accent) : c.border, opacity: pressed ? 0.85 : 1, ...(active ? glow(`${c.accent}66`, 18) : null) })}>
+    <Pressable accessibilityRole="button" accessibilityState={{ selected: active }} onPress={onPress} style={({ pressed }) => ({ width: 168, borderRadius: 20, padding: 12, gap: 8, backgroundColor: active ? c.panelSolid : c.panel, borderWidth: active ? 2.5 : 1, borderColor: active ? (skin.lang === 'ja' ? '#C23B2F' : c.accent) : c.border, opacity: pressed ? 0.85 : 1, ...(active ? glow(`${c.accent}66`, 18) : null) })}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         {seal ? (
           <Image source={seal} contentFit="contain" style={{ width: 54, height: 54 }} />
@@ -284,11 +284,11 @@ function LevelSeal({ level, skin, seal, active, done, total, onPress }: { level:
         )}
         <View style={{ flex: 1 }}>
           <Text style={{ color: c.ink, fontSize: 17, fontFamily: EA_FONT.heavy }}>{level.label}</Text>
-          <Text style={{ color: c.ink2, fontSize: 12, fontFamily: EA_FONT.body }} numberOfLines={1}>{title}</Text>
+          <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }} numberOfLines={1}>{title}</Text>
         </View>
       </View>
       <Bar pct={pct} skin={skin} />
-      <Text style={{ color: c.ink2, fontSize: 12, fontFamily: EA_FONT.mid }}>{`${done}/${total} · ${pct}%`}</Text>
+      <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.mid }}>{`${done}/${total} · ${pct}%`}</Text>
       {KIT[skin.lang].cloud ? <Image source={KIT[skin.lang].cloud} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', right: 6, bottom: 4, width: 54, height: 20, opacity: active ? 0.95 : 0.55 }} /> : null}
     </Pressable>
   );
@@ -334,7 +334,7 @@ const PartCard = React.memo(function PartCard({ part, index, skin, icon, states,
   const ivory = open && skin.id === 'zh-a';
   const ink = ivory ? '#4A0A12' : c.ink;
   const ink2 = ivory ? '#7A4B3A' : c.ink2;
-  const hot = skin.lang === 'ja' ? '#D9463A' : c.accent;
+  const hot = skin.lang === 'ja' ? '#C23B2F' : c.accent;
   return (
     <View style={{ flexDirection: 'row', gap: 12 }}>
       {/* Đường nối + huy hiệu số thứ tự của chặng */}
@@ -347,7 +347,7 @@ const PartCard = React.memo(function PartCard({ part, index, skin, icon, states,
           )}
           <Text style={{ color: skin.lang === 'ja' ? '#FFFFFF' : complete ? c.onAccent : c.accent, fontSize: 14, fontFamily: EA_FONT.heavy }}>{complete ? '✓' : index + 1}</Text>
         </View>
-        {!last ? <View style={{ flex: 1, width: 0, borderLeftWidth: 2, borderStyle: 'dashed', borderColor: skin.lang === 'ja' ? '#D9463A88' : c.border, marginTop: 4 }} /> : null}
+        {!last ? <View style={{ flex: 1, width: 0, borderLeftWidth: 2, borderStyle: 'dashed', borderColor: skin.lang === 'ja' ? '#C23B2F88' : c.border, marginTop: 4 }} /> : null}
       </View>
       <View style={{ flex: 1, backgroundColor: ivory ? '#FBF1DC' : c.panel, borderColor: open ? hot : c.border, borderWidth: open ? 1.8 : 1, borderRadius: 20, overflow: 'hidden', ...(open ? glow(`${c.accent}33`, 14) : null) }}>
         {skin.lang === 'ja' ? (
@@ -380,10 +380,10 @@ const PartCard = React.memo(function PartCard({ part, index, skin, icon, states,
           <Image source={icon} contentFit="contain" style={{ width: 66, height: 66 }} />
           <View style={{ flex: 1, gap: 4 }}>
             <Text style={{ color: ink, fontSize: 17, fontFamily: EA_FONT.heavy }}>{en ? part.title.en : part.title.vi}</Text>
-            <Text style={{ color: ink2, fontSize: 12.5, fontFamily: EA_FONT.body }} numberOfLines={open ? 3 : 1}>{(en ? part.blurb.en : part.blurb.vi) || ''}</Text>
+            <Text style={{ color: ink2, fontSize: 13, fontFamily: EA_FONT.body }} numberOfLines={open ? 3 : 1}>{(en ? part.blurb.en : part.blurb.vi) || ''}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <View style={{ flex: 1, maxWidth: 240 }}><Bar pct={pct} skin={skin} /></View>
-              <Text style={{ color: ink2, fontSize: 12, fontFamily: EA_FONT.mid }}>{`${done}/${part.nodes.length} · ${part.words} ${L('từ', 'words')}`}</Text>
+              <Text style={{ color: ink2, fontSize: 13, fontFamily: EA_FONT.mid }}>{`${done}/${part.nodes.length} · ${part.words} ${L('từ', 'words')}`}</Text>
             </View>
           </View>
           <Text style={{ color: ivory ? '#8E1420' : skin.lang === 'ja' ? '#C0392B' : c.accent, fontSize: 20 }}>{open ? '⌄' : '›'}</Text>
@@ -405,7 +405,7 @@ const LessonChip = React.memo(function LessonChip({ node, skin, ivory, state, is
   const c = skin.c;
   const done = state === 'done';
   const started = state === 'started';
-  const hot = skin.lang === 'ja' ? '#D9463A' : ivory ? '#8E1420' : c.accent;
+  const hot = skin.lang === 'ja' ? '#C23B2F' : ivory ? '#8E1420' : c.accent;
   return (
     <Pressable
       accessibilityRole="link"
@@ -424,7 +424,7 @@ const LessonChip = React.memo(function LessonChip({ node, skin, ivory, state, is
       })}
     >
       <Text style={{ color: done ? '#FFFFFF' : ivory ? '#4A0A12' : c.ink, fontSize: 13.5, fontFamily: EA_FONT.heavy }}>{`${done ? '✓ ' : ''}${en ? node.title.en : node.title.vi}`}</Text>
-      <Text style={{ color: done ? '#FFFFFF' : ivory ? '#7A4B3A' : c.ink2, fontSize: 11.5, fontFamily: EA_FONT.body }}>{isNext ? L('Học tiếp', 'Up next') : started ? L('Đang học', 'In progress') : `${node.words} ${L('từ', 'words')} · ${node.minutes}′`}</Text>
+      <Text style={{ color: done ? '#FFFFFF' : ivory ? '#7A4B3A' : c.ink2, fontSize: 12, fontFamily: EA_FONT.body }}>{isNext ? L('Học tiếp', 'Up next') : started ? L('Đang học', 'In progress') : `${node.words} ${L('từ', 'words')} · ${node.minutes}′`}</Text>
     </Pressable>
   );
 });

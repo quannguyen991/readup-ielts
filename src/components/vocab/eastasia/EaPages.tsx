@@ -22,7 +22,7 @@ export const PART_MOTIF: Record<EaLang, readonly number[]> = {
   zh: [ZH_MOTIF.panda, ZH_MOTIF.turtle, ZH_MOTIF.koi, ZH_MOTIF.magpie, ZH_MOTIF.lion, ZH_MOTIF.orchid, ZH_MOTIF.bamboo, ZH_MOTIF.lotus, ZH_MOTIF.phoenix],
 };
 
-const hot = (skin: EaSkin) => (skin.lang === 'ja' ? '#D9463A' : skin.c.accent);
+const hot = (skin: EaSkin) => (skin.lang === 'ja' ? '#C23B2F' : skin.c.accent);
 const hotText = (skin: EaSkin) => (skin.lang === 'ja' ? '#C0392B' : skin.c.accent);
 
 /* ------------------------------------------------------------------ khung trang */
@@ -115,7 +115,7 @@ export function EaHero({ lang, skin, kicker, title, blurb, chips, pct, pctLabel,
           {lang === 'ja' ? <Image source={motif.corner} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: 6, top: 6, width: wide ? 88 : 60, height: wide ? 88 : 60 }} /> : null}
           <HeroInside lang={lang} wide={wide} />
           <View style={{ paddingLeft: wide ? 60 : 30, paddingRight: 20, paddingTop: wide ? 34 : 44, paddingBottom: 30, gap: 9, maxWidth: wide ? (side ? '56%' : '62%') : '92%' }}>
-            <Text style={{ color: c.accent, fontSize: 12, letterSpacing: 2.2, fontFamily: EA_FONT.heavy }}>{kicker}</Text>
+            <Text style={{ color: c.accent, fontSize: 13, letterSpacing: 2.2, fontFamily: EA_FONT.heavy }}>{kicker}</Text>
             <Text
               accessibilityRole="header"
               style={[{ fontSize: wide ? 42 : 30, lineHeight: wide ? 50 : 38, fontFamily: TITLE_FONT as never, fontWeight: '800', color: '#FFFFFF' }, lang === 'zh' ? goldTextStyle(c.accent) : web ? { textShadow: '0 2px 10px rgba(0,0,0,0.45)' } : null] as never}
@@ -195,13 +195,13 @@ export function EaTopicCard({ skin, title, count, meta, pct, art, motif, seal, o
         <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
           <Text style={{ flex: 1, color: c.ink, fontSize: 16, lineHeight: 21, fontFamily: EA_FONT.heavy }}>{title}</Text>
           <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: `${hot(skin)}26`, borderWidth: 1, borderColor: `${hot(skin)}66` }}>
-            <Text style={{ color: hotText(skin), fontSize: 12, fontFamily: EA_FONT.heavy }}>{count}</Text>
+            <Text style={{ color: hotText(skin), fontSize: 13, fontFamily: EA_FONT.heavy }}>{count}</Text>
           </View>
         </View>
-        <Text style={{ color: c.ink2, fontSize: 12.5, fontFamily: EA_FONT.body }}>{meta}</Text>
+        <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }}>{meta}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 2 }}>
           <View style={{ flex: 1 }}><Bar pct={pct} skin={skin} /></View>
-          <Text style={{ color: c.ink2, fontSize: 12, fontFamily: EA_FONT.mid }}>{`${pct}%`}</Text>
+          <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.mid }}>{`${pct}%`}</Text>
           <View style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: hot(skin), alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ color: skin.lang === 'ja' ? '#FFFFFF' : c.onAccent, fontSize: 16, fontFamily: EA_FONT.heavy }}>→</Text>
           </View>
@@ -235,14 +235,14 @@ export function EaLessonRow({ skin, index, title, meta, tag, pct, state, art, mo
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
           {tag ? (
             <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 999, backgroundColor: `${hot(skin)}26`, borderWidth: 1, borderColor: `${hot(skin)}55` }}>
-              <Text style={{ color: hotText(skin), fontSize: 11, fontFamily: EA_FONT.heavy }}>{tag}</Text>
+              <Text style={{ color: hotText(skin), fontSize: 12, fontFamily: EA_FONT.heavy }}>{tag}</Text>
             </View>
           ) : null}
-          <Text style={{ color: c.ink2, fontSize: 12.5, fontFamily: EA_FONT.body }}>{meta}</Text>
+          <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }}>{meta}</Text>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <View style={{ flex: 1, maxWidth: 260 }}><Bar pct={pct} skin={skin} /></View>
-          <Text style={{ color: c.ink2, fontSize: 12, fontFamily: EA_FONT.mid }}>{`${pct}%`}</Text>
+          <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.mid }}>{`${pct}%`}</Text>
         </View>
       </View>
       <Text style={{ color: hotText(skin), fontSize: 22 }}>›</Text>
@@ -339,7 +339,7 @@ export function EaBookPage({ book }: { book: BookVocabBook }) {
           {gi < groups.length - 1 ? <Divider lang={lang} skin={skin} /> : null}
         </View>
       ))}
-      {book.sourceNote ? <Text style={{ color: skin.c.ink2, fontSize: 12.5, lineHeight: 19, fontFamily: EA_FONT.body }}>{book.sourceNote}</Text> : null}
+      {book.sourceNote ? <Text style={{ color: skin.c.ink2, fontSize: 13, lineHeight: 19, fontFamily: EA_FONT.body }}>{book.sourceNote}</Text> : null}
       <Footer lang={lang} skin={skin} wide />
     </EaScreen>
   );

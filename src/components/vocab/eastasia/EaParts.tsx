@@ -91,7 +91,7 @@ export function Chip({ skin, text, icon, hero }: { skin: EaSkin; text: string; i
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: hero ? skin.c.heroPanel : skin.c.panel, borderColor: skin.c.border, borderWidth: 1, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999 }}>
       {icon ? <Image source={icon} contentFit="contain" style={{ width: 16, height: 16 }} /> : null}
-      <Text style={{ color: hero ? skin.c.heroInk : skin.c.ink, fontSize: 12.5, fontFamily: EA_FONT.heavy }}>{text}</Text>
+      <Text style={{ color: hero ? skin.c.heroInk : skin.c.ink, fontSize: 13, fontFamily: EA_FONT.heavy }}>{text}</Text>
     </View>
   );
 }
@@ -112,7 +112,7 @@ export function SectionTitle({ skin, text, sub }: { skin: EaSkin; text: string; 
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
       {skin.lang === 'ja' && K.flowerIcon ? <Image source={K.flowerIcon} contentFit="contain" style={{ width: 28, height: 28 }} /> : <View style={{ width: 4, height: 26, borderRadius: 2, backgroundColor: skin.c.accent }} />}
       <Text style={{ color: skin.c.ink, fontSize: 22, fontFamily: EA_FONT.heavy }}>{text}</Text>
-      {sub ? <Text style={{ color: skin.lang === 'ja' ? '#C0392B' : skin.c.accent, fontSize: 12.5, letterSpacing: 1.8, fontFamily: EA_FONT.heavy }}>{sub}</Text> : null}
+      {sub ? <Text style={{ color: skin.lang === 'ja' ? '#C0392B' : skin.c.accent, fontSize: 13, letterSpacing: 1.8, fontFamily: EA_FONT.heavy }}>{sub}</Text> : null}
       <View style={{ flex: 1, height: 1, backgroundColor: skin.lang === 'ja' ? '#C0392B88' : skin.c.border }} />
       {K.cloud ? <Image source={K.cloud} contentFit="contain" style={{ width: 84, height: 30 }} /> : null}
     </View>
@@ -123,7 +123,7 @@ export function SectionTitle({ skin, text, sub }: { skin: EaSkin; text: string; 
 export function Divider({ lang, skin }: { lang: EaLang; skin: EaSkin }) {
   const K = KIT[lang];
   const med = lang === 'ja' ? JA_MOTIF.kikko : ZH_MOTIF.medallion;
-  const line = lang === 'ja' ? '#D9463A88' : skin.c.border;
+  const line = lang === 'ja' ? '#C23B2F88' : skin.c.border;
   return (
     <View pointerEvents="none" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginVertical: 4 }}>
       <View style={{ flex: 1, height: 1, backgroundColor: line }} />

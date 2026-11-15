@@ -17,7 +17,7 @@ export function eaStudyTheme(skin: EaSkin): StudyTheme {
   const c = skin.c;
   const ja = skin.lang === 'ja';
   // Màu nút chính trên thẻ màu ngà: đủ đậm để chữ trắng đọc được.
-  const hot = ({ 'ja-a': '#C4372B', 'ja-b': '#D9463A', 'ja-c': '#7C4DC4', 'zh-a': '#B3262E', 'zh-b': '#B8447F', 'zh-c': '#2F55C9' } as Record<string, string>)[skin.id] ?? '#B3262E';
+  const hot = ({ 'ja-a': '#C4372B', 'ja-b': '#C23B2F', 'ja-c': '#7C4DC4', 'zh-a': '#B3262E', 'zh-b': '#B8447F', 'zh-c': '#2F55C9' } as Record<string, string>)[skin.id] ?? '#B3262E';
   const ink = ja ? '#1F2A44' : '#4A0A12';
   const t: StudyTheme = {
     ...STUDY_THEMES['ea-skin'],
