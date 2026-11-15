@@ -17,6 +17,8 @@ export type BookCoverSpec = {
   detail: string;
   /** Màu nhấn: nhãn, dải chéo, vòng số. */
   accent: string;
+  /** Tranh bìa (ChatGPT vẽ, không chữ) ở public/book-covers; chữ đè lên bằng mã. */
+  image?: string;
 };
 
 const TOP = 'Band 9 · Sách từ vựng';
@@ -86,3 +88,5 @@ export const BOOK_COVERS: Record<string, BookCoverSpec> = {
     accent: '#1FA59A',
   },
 };
+
+for (const [slug, spec] of Object.entries(BOOK_COVERS)) spec.image = `/book-covers/${slug}.webp`;

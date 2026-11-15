@@ -173,6 +173,49 @@ export function DeckCard({
   const { L } = useL();
   const [hovered, setHovered] = React.useState(false);
 
+  if (book) {
+    // Sách từ vựng: cả thẻ là một tấm bìa, chân thẻ gọn gồm số chủ đề/từ, tiến độ và mũi tên.
+    return (
+      <Pressable
+        accessibilityRole="link"
+        accessibilityLabel={L(
+          `${title}. Đã học ${pct}% (${progress.mastered} đã nhớ, ${progress.learning} đang học), ${progress.total} từ.`,
+          `${title}. ${pct}% studied (${progress.mastered} remembered, ${progress.learning} learning), ${progress.total} words.`,
+        )}
+        onPress={onPress}
+        onHoverIn={() => setHovered(true)}
+        onHoverOut={() => setHovered(false)}
+        style={{ height: '100%', minHeight: 300 }}
+      >
+        <View
+          style={{
+            flex: 1,
+            aspectRatio: COVER_RATIO,
+            borderRadius: 18,
+            overflow: 'hidden',
+            ...(WEB
+              ? ({
+                  boxShadow: hovered ? '0 16px 32px rgba(15,15,20,0.4)' : '0 8px 18px rgba(15,15,20,0.26)',
+                  transform: hovered ? 'translateY(-4px)' : 'none',
+                  transition: 'transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease',
+                } as object)
+              : { elevation: 4 }),
+          }}
+        >
+          <BookCover spec={book} count={progress.total}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <DeckProgressBar progress={progress} color={book.accent} height={6} track="rgba(255,255,255,0.18)" />
+              <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>{`${progress.total} ${L('từ', 'words')}`}</Text>
+              <View style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: book.accent, alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name="arrow-right" size={14} color="#0B1F1D" strokeWidth={2.4} />
+              </View>
+            </View>
+          </BookCover>
+        </View>
+      </Pressable>
+    );
+  }
+
   return (
     <Pressable
       accessibilityRole="link"
