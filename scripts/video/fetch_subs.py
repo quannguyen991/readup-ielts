@@ -121,7 +121,11 @@ def fetch_json(url: str) -> dict:
 
 def order(videos):
     by = defaultdict(list)
-    for v in videos:
+    # Trong mỗi kênh, video 1,5–15 phút đi trước (hợp để chép chính tả, và ít câu để dịch); video rất dài đi sau cùng.
+    def pri(v):
+        d = v.get('durationSeconds')
+        return 0 if d and 90 <= d <= 900 else 1 if d is None else 2
+    for v in sorted(videos, key=pri):
         by[v['channel']].append(v)
     chans = sorted(by, key=lambda c: -len(by[c]))
     out = []
