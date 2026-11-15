@@ -39,6 +39,8 @@ import { JA } from '@/components/vocab/japanese/ja-art';
 import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { useL } from '@/i18n/useL';
+import { vietnameseOf } from '@/services/vocab/meaning-lang';
+import { MeaningLangControl } from '@/components/vocab/study/MeaningLangControl';
 
 /** Nhãn nhóm từ không theo band (bản tiếng Việt viết sẵn trong `groupDeckWords`). */
 const GROUP_LABEL_EN: Record<string, string> = {
@@ -241,7 +243,7 @@ export default function VocabTopicScreen() {
       partOfSpeech: word.pos,
       definitionContext: word.collocation,
       definitionGeneral: word.definitionEn,
-      definitionVi: word.meaningVi,
+      definitionVi: vietnameseOf(word),
       exampleSentence: word.example,
       // Câu nguồn là chính câu ví dụ: FSRS và thẻ ôn đều cần một câu để đặt từ
       // vào ngữ cảnh, và ở đây ví dụ chính là ngữ cảnh duy nhất ta có.
@@ -361,6 +363,10 @@ export default function VocabTopicScreen() {
             <Text className="font-heavy text-sectionTitle text-ink">{L('Cách luyện', 'Practice modes')}</Text>
           </View>
           )}
+          <View className="mt-3 flex-row flex-wrap items-center gap-3">
+            <Text className="font-semi text-body text-muted">{L('Nghĩa hiển thị', 'Meaning shown')}</Text>
+            <MeaningLangControl />
+          </View>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
               {MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m, i) => topic.language === 'ja' ? (

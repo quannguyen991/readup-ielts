@@ -9,6 +9,7 @@ import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { STUDY_THEMES, THEME_ORDER } from './study-theme';
+import { MeaningLangControl } from './MeaningLangControl';
 import { ArtGallery } from '@/components/art/ArtBackdrop';
 import { useBackdropStore } from '@/store/useBackdropStore';
 
@@ -49,6 +50,7 @@ export function LearnSettingsSheet({
   const [confirmReset, setConfirmReset] = useState(false);
   const [openedWith, setOpenedWith] = useState<LearnSettings | null>(null);
   const micOk = canRecognize();
+  const meaningLang = useTopicStudyStore((s) => s.meaningLang);
 
   // Mỗi lần mở lại bảng, bản nháp lấy từ cài đặt đang dùng (điều chỉnh state
   // trong lúc render theo prop — cách React khuyên, không cần effect).
@@ -65,12 +67,14 @@ export function LearnSettingsSheet({
   const noDir = draft.directions.length === 0;
   const matches = matchCount(draft);
   const blocked = noKind || noDir || matches === 0;
-  const sourceName = sourceLanguage === 'ja' ? L('từ tiếng Nhật', 'Japanese word') : L('từ tiếng Anh', 'English word');
-  const glossName = sourceLanguage === 'ja' ? L('nghĩa tiếng Anh', 'English gloss') : L('nghĩa tiếng Việt', 'Vietnamese meaning');
+  const sourceName = sourceLanguage === 'ja' ? L('từ tiếng Nhật', 'Japanese word') : sourceLanguage === 'zh' ? L('từ tiếng Trung', 'Chinese word') : L('từ tiếng Anh', 'English word');
+  // Nghĩa hiển thị theo cài đặt "Nghĩa hiển thị": tiếng Việt (mặc định) hoặc tiếng Anh.
+  const glossName = meaningLang === 'en' ? L('nghĩa tiếng Anh', 'English meaning') : L('nghĩa tiếng Việt', 'Vietnamese meaning');
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
     { key: 'enToVi', label: en ? <>See the <B>{sourceName}</B>, pick the {glossName}</> : <>Thấy <B>{sourceName}</B>, chọn {glossName}</> },
-    { key: 'enToEn', label: en ? <>See the <B>{sourceName}</B>, pick its <B>English definition</B></> : <>Thấy <B>{sourceName}</B>, chọn <B>định nghĩa tiếng Anh</B></> },
+    // Khi đã học bằng nghĩa tiếng Anh thì chiều này trùng với chiều đầu: ẩn đi cho khỏi lặp.
+    ...(meaningLang === 'en' ? [] : [{ key: 'enToEn' as Direction, label: en ? <>See the <B>{sourceName}</B>, pick its <B>English definition</B></> : <>Thấy <B>{sourceName}</B>, chọn <B>định nghĩa tiếng Anh</B></> }]),
     { key: 'viToEn', label: en ? <>See the <B>{glossName}</B>, find the {sourceName}</> : <>Thấy <B>{glossName}</B>, tìm {sourceName}</> },
     { key: 'listen', label: en ? <>Just <B>listen to the audio</B>, recognise the word</> : <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
   ];
@@ -123,6 +127,10 @@ export function LearnSettingsSheet({
               <Row on={draft.autoAdvance} onPress={() => flip('autoAdvance')}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự sang câu tiếp khi trả lời đúng', 'Auto-advance after a correct answer')}</Text>
               </Row>
+            </Section>
+
+            <Section title={L('Nghĩa hiển thị', 'Meaning shown')}>
+              <MeaningLangControl />
             </Section>
 
             <Section title={L('Chiều hỏi', 'Question direction')} warn={noDir ? L('Phải chọn ít nhất một chiều hỏi.', 'Pick at least one direction.') : undefined}>

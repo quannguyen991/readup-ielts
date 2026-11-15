@@ -1,3 +1,4 @@
+import { DEFAULT_MEANING_LANG, isMeaningLang, type MeaningLang } from '@/services/vocab/meaning-lang';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -64,6 +65,9 @@ type TopicStudyState = {
   /** "Nền & hiệu ứng": TẮT mặc định — màn học phẳng, nhẹ, không lớp trang trí nào được dựng. */
   studyFx: boolean;
   setStudyFx: (on: boolean) => void;
+  /** Học bằng nghĩa tiếng Việt (mặc định) hay nghĩa tiếng Anh (Nhật/Trung ↔ Anh, Anh ↔ Anh). */
+  meaningLang: MeaningLang;
+  setMeaningLang: (lang: MeaningLang) => void;
   /** slug → lần cuối mở một màn luyện của bộ (thẻ "Học lần cuối" ở thư viện bộ từ). */
   lastAt: Record<string, string>;
   /** Ghi mốc "vừa học bộ này" — mỗi màn luyện gọi một lần khi mở. */
@@ -143,6 +147,8 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       setStudyTheme: (studyTheme) => set({ studyTheme }),
       studyFx: false,
       setStudyFx: (studyFx) => set({ studyFx }),
+      meaningLang: DEFAULT_MEANING_LANG,
+      setMeaningLang: (meaningLang) => set({ meaningLang }),
       toggleStar: (slug, word) =>
         set((s) => {
           const cur = s.starred[slug] ?? [];
@@ -197,7 +203,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         return s as TopicStudyState;
       },
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, leitnerMigrated: s.leitnerMigrated, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx, activeRound: s.activeRound }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, leitnerMigrated: s.leitnerMigrated, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx, meaningLang: s.meaningLang, activeRound: s.activeRound }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.
@@ -208,10 +214,12 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         if (k.length === 3 && ['flash', 'mcq', 'type'].every((x) => k.includes(x as never))) learnSettings.kinds = [...DEFAULT_LEARN_SETTINGS.kinds];
         const studyTheme = isThemeId((p as { studyTheme?: unknown }).studyTheme) ? (p as { studyTheme: ThemeId }).studyTheme : 'scene';
         const studyFx = (p as { studyFx?: unknown }).studyFx === true;
+        const rawLang = (p as { meaningLang?: unknown }).meaningLang;
+        const meaningLang = isMeaningLang(rawLang) ? rawLang : DEFAULT_MEANING_LANG;
         // Lịch ôn lưu bởi bản cũ có thể bị đẩy xa quá cửa sổ của hộp (trần 15 từ/ngày): kéo về, xếp từ hôm nay.
         const reviews = repairReviews((p as { reviews?: Record<string, Record<string, ReviewEntry>> }).reviews, todayKey());
         const resets = (p as { resets?: Record<string, string> }).resets ?? {};
-        return { ...current, ...p, reviews, resets, learnSettings, studyTheme, studyFx };
+        return { ...current, ...p, reviews, resets, learnSettings, studyTheme, studyFx, meaningLang };
       },
     },
   ),

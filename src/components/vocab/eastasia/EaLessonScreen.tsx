@@ -14,6 +14,7 @@ import { isDialogueLesson, JA_SET_ART, sceneOf } from '../japanese/ja-art';
 
 import { EaHero, EaScreen } from './EaPages';
 import { EA_FONT, Divider, Footer, SectionTitle, glow, useEaSkin } from './EaParts';
+import { MeaningLangControl } from '@/components/vocab/study/MeaningLangControl';
 import { EaFrame, EaModeTile, EaSiblings, EaTileGrid, EaWordRow, modeArt, statusArt } from './EaLesson';
 
 export type EaMode = { key: string; route?: string; label: string; labelEn: string; note: string; noteEn: string; recommended?: boolean };
@@ -86,6 +87,10 @@ export function EaLessonScreen(p: Props) {
 
       <View style={{ gap: 14 }}>
         <SectionTitle skin={skin} text={L('Cách luyện', 'Practice modes')} sub={`${p.modes.length}`} />
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+          <Text style={{ color: c.ink2, fontSize: 14, fontFamily: EA_FONT.mid }}>{L('Nghĩa hiển thị', 'Meaning shown')}</Text>
+          <MeaningLangControl tone={{ ink: c.ink, panel: c.panel, border: c.border, accent: hot, onAccent: lang === 'ja' ? '#FFFFFF' : c.onAccent }} />
+        </View>
         <EaTileGrid min={200}>
           {p.modes.map((m) => (
             <EaModeTile key={m.key} skin={skin} art={modeArt(lang, m.key)} title={en ? m.labelEn : m.label} sub={en ? m.noteEn : m.note} chip={m.recommended ? L('Gợi ý', 'Suggested') : undefined} cta={L('Bắt đầu', 'Start')} onPress={() => router.push(`/vocabulary/topic/${p.slug}/${m.route ?? m.key}` as never)} />

@@ -6,7 +6,7 @@ import type { BookVocabBook, BookVocabLesson, BookVocabTheme, VocabTopicWord } f
 
 type SourceWord = {
   w: string; p?: string; r?: string; g?: string; o?: string; s?: number; l?: string;
-  vi?: string; ex?: string; exVi?: string; exReading?: string; syn?: string[]; coll?: string;
+  vi?: string; ex?: string; exVi?: string; exEn?: string; exReading?: string; syn?: string[]; coll?: string;
 };
 type SourceLesson = {
   slug: string;
@@ -63,7 +63,7 @@ function translateHskPos(pos: string): string {
     .trim();
 }
 
-type Extra = { vi: string; ex: { t: string; vi: string; py?: string }; syn?: string[]; coll?: string };
+type Extra = { vi: string; ex: { t: string; vi: string; py?: string; en?: string }; syn?: string[]; coll?: string };
 const EXTRA: Record<'zh' | 'ja', Record<string, Extra>> = { zh: extraZh as Record<string, Extra>, ja: extraJa as Record<string, Extra> };
 
 function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
@@ -78,6 +78,8 @@ function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
     definitionEn: row.g ?? '',
     example: extra?.ex?.t ?? row.ex ?? '',
     exampleVi: extra?.ex?.vi ?? row.exVi,
+    // Câu ví dụ lấy từ bảng bổ sung thì bản dịch Anh cũng phải lấy ở đó (không lẫn với câu gốc của dòng).
+    exampleEn: extra?.ex ? extra.ex.en : row.exEn,
     exampleReading: extra?.ex?.py ?? row.exReading,
     synonyms: extra?.syn?.length ? extra.syn : row.syn?.length ? row.syn : undefined,
     collocation: extra?.coll ?? row.coll ?? '',

@@ -31,6 +31,8 @@ export type VocabTopicWord = {
   collocation: string;
   /** Bản dịch tiếng Việt của câu ví dụ (bộ Trung/Nhật); bộ tiếng Anh dịch theo yêu cầu. */
   exampleVi?: string;
+  /** Bản dịch tiếng Anh của câu ví dụ (bộ Trung/Nhật). */
+  exampleEn?: string;
   /** Phiên âm câu ví dụ (pinyin) cho bộ tiếng Trung. */
   exampleReading?: string;
   band: string;

@@ -15,6 +15,10 @@ export type StudyWord = {
   example: string;
   collocation: string;
   exampleVi?: string;
+  /** Bản dịch tiếng Anh của câu ví dụ (bộ Trung/Nhật), dùng khi học bằng nghĩa tiếng Anh. */
+  exampleEn?: string;
+  /** Nghĩa tiếng Việt GỐC, giữ lại khi `meaningVi` đang bị thay bằng nghĩa tiếng Anh (xem meaning-lang.ts). */
+  viMeaning?: string;
   exampleReading?: string;
   band: string;
   /** Mức CEFR B1–C2 (bộ IELTS sau khi ghép). */
