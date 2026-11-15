@@ -1,9 +1,13 @@
 import sourceBooks from './east-asian-vocab.json';
+import openBooks from './east-asian-open-vocab.json';
 import extraZh from './east-asian-extra-zh.json';
 import extraJa from './east-asian-extra-ja.json';
 import type { BookVocabBook, BookVocabLesson, BookVocabTheme, VocabTopicWord } from './vocab-topics';
 
-type SourceWord = { w: string; p?: string; r?: string; g?: string; o?: string; s?: number; l?: string };
+type SourceWord = {
+  w: string; p?: string; r?: string; g?: string; o?: string; s?: number; l?: string;
+  vi?: string; ex?: string; exVi?: string; exReading?: string; syn?: string[]; coll?: string;
+};
 type SourceLesson = {
   slug: string;
   name: string;
@@ -31,6 +35,7 @@ type SourceBook = {
   language: 'ja' | 'zh';
   blurb: string;
   sourceNote: string;
+  sourceUrl?: string;
   wordCount: number;
   unitCount: number;
   topics: SourceTheme[];
@@ -66,17 +71,20 @@ function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
   const extra = EXTRA[book.language][row.w];
   return {
     word: row.w,
-    pos: isJapanese ? '' : translateHskPos(row.o ?? ''),
+    pos: isJapanese ? (row.o ?? '') : translateHskPos(row.o ?? ''),
     ipa: row.p ?? '',
     // Nghĩa tiếng Việt là bản biên soạn thêm; nghĩa tiếng Anh của Irodori giữ ở definitionEn.
-    meaningVi: extra?.vi ?? '',
-    definitionEn: isJapanese ? row.g ?? '' : '',
-    example: extra?.ex.t ?? '',
-    exampleVi: extra?.ex.vi,
-    exampleReading: extra?.ex.py,
-    synonyms: extra?.syn?.length ? extra.syn : undefined,
-    collocation: extra?.coll ?? '',
-    band: isJapanese ? IRODORI_LEVEL_LABEL[row.l ?? ''] ?? 'Irodori' : `HSK ${row.l ?? ''}`.trim(),
+    meaningVi: extra?.vi ?? row.vi ?? row.g ?? '',
+    definitionEn: row.g ?? '',
+    example: extra?.ex?.t ?? row.ex ?? '',
+    exampleVi: extra?.ex?.vi ?? row.exVi,
+    exampleReading: extra?.ex?.py ?? row.exReading,
+    synonyms: extra?.syn?.length ? extra.syn : row.syn?.length ? row.syn : undefined,
+    collocation: extra?.coll ?? row.coll ?? '',
+    glossLanguage: extra?.vi || row.vi ? 'vi' : row.g ? 'en' : undefined,
+    band: isJapanese
+      ? (row.l?.startsWith('N') ? `JLPT ${row.l}` : IRODORI_LEVEL_LABEL[row.l ?? ''] ?? 'Irodori')
+      : `HSK ${row.l ?? ''}`.trim(),
     language: book.language,
     romanization: row.r,
     sourceLevel: row.l,
@@ -101,30 +109,72 @@ function makeLesson(source: SourceLesson, book: SourceBook, topic: SourceTheme):
     lessonTitle: source.lessonTitle ?? undefined,
     sourcePages: [],
     language: book.language,
-    sourceNote: undefined,
+    sourceNote: book.sourceNote,
+    sourceUrl: book.sourceUrl,
   };
 }
 
-export const EAST_ASIAN_VOCAB_BOOKS: BookVocabBook[] = (sourceBooks as unknown as SourceBook[]).map((book) => {
+/** Từ đứng riêng: một cụm kana/kanji ngắn, không có dấu câu (loại các câu hội thoại dài). */
+const STANDALONE = /^[぀-ヿ一-鿿]{1,8}$/;
+const VOCAB_CHUNK = 20;
+
+/** Bài "từ riêng lẻ" của một bộ Irodori: gom các từ đứng riêng của mọi bài hội thoại, mỗi bài tối đa 20 từ. */
+function standaloneVocabLessons(topic: SourceTheme): SourceLesson[] {
+  const seen = new Set<string>();
+  const rows: SourceWord[] = [];
+  for (const lesson of topic.lessons) {
+    for (const row of lesson.rows) {
+      const core = row.w.replace(/[（）()～〜]/g, '');
+      if (!STANDALONE.test(core) || seen.has(core)) continue;
+      seen.add(core);
+      rows.push(row);
+    }
+  }
+  const out: SourceLesson[] = [];
+  for (let i = 0, n = 1; i < rows.length; i += VOCAB_CHUNK, n++) {
+    out.push({
+      slug: `${topic.slug}-tu-${String(n).padStart(2, '0')}`,
+      name: `Words ${n}`,
+      nameVi: `Từ riêng lẻ · Phần ${n}`,
+      lessonIndex: 100 + n,
+      sourceLesson: null,
+      sourceUnit: topic.lessons[0]?.sourceUnit ?? 0,
+      lessonTitle: null,
+      sourcePages: [],
+      blurb: '',
+      rows: rows.slice(i, i + VOCAB_CHUNK),
+    });
+  }
+  return out;
+}
+
+export const EAST_ASIAN_VOCAB_BOOKS: BookVocabBook[] = ([
+  ...(sourceBooks as unknown as SourceBook[]),
+  ...(openBooks as unknown as SourceBook[]),
+]).map((book) => {
+  const isIrodori = book.language === 'ja' && (sourceBooks as unknown as SourceBook[]).includes(book);
   const topics: BookVocabTheme[] = book.topics.map((topic) => {
-    const lessons = topic.lessons.map((lesson) => makeLesson(lesson, book, topic));
+    // Từ của bộ (topic.words) chỉ tính từ bài hội thoại, để không đếm trùng từ ở bài riêng lẻ.
+    const dialogue = topic.lessons.map((lesson) => makeLesson(lesson, book, topic));
+    const vocab = isIrodori ? standaloneVocabLessons(topic).map((lesson) => makeLesson(lesson, book, topic)) : [];
     return {
       slug: topic.slug,
       name: topic.name,
       nameVi: topic.nameVi,
       blurb: `${topic.wordCount} từ · ${book.nameVi}`,
-      words: lessons.flatMap((lesson) => lesson.words),
-      lessons,
+      words: dialogue.flatMap((lesson) => lesson.words),
+      lessons: [...dialogue, ...vocab],
     };
   });
   return {
     slug: book.slug,
     name: book.name,
     nameVi: book.nameVi,
-    blurb: book.language === 'zh' ? 'Chữ Hán, pinyin, nghĩa tiếng Việt, ví dụ và đồng nghĩa theo cấp HSK.' : 'Kana, romaji, nghĩa tiếng Việt, ví dụ và từ đồng nghĩa theo bài Irodori.',
+    blurb: book.blurb,
     words: topics.flatMap((topic) => topic.words),
     language: book.language,
-    sourceNote: undefined,
+    sourceNote: book.sourceNote,
+    sourceUrl: book.sourceUrl,
     topics,
   };
 });

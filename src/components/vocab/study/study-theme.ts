@@ -8,7 +8,7 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light';
+export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light' | 'zh-band9';
 export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene' | 'waves' | 'snow' | 'bamboo' | 'aurora';
 
 export type StudyTheme = {
@@ -253,8 +253,49 @@ const SCENE_THEMES: Record<'beach' | 'snow' | 'bamboo' | 'aurora', StudyTheme> =
   },
 };
 
+/**
+ * Giấy Band 9 cho màn học tiếng Trung: giấy kem có núi mực (vẽ bởi ChineseBackdrop), thẻ kem, mực chàm,
+ * son đỏ. KHÔNG nằm trong THEME_ORDER: người học không tự chọn; màn học tiếng Trung tự áp (xem useStoreTheme).
+ * Màu lấy đúng từ src/components/vocab/chinese/palette.ts; không import ở đây vì file này chạy được trong test thuần Node.
+ */
+const ZH_BAND9_STUDY: StudyTheme = {
+  ...LIGHT_BASE,
+  id: 'zh-band9',
+  vi: 'Giấy Band 9',
+  en: 'Band 9 paper',
+  fx: false,
+  layer: 'none',
+  skyBase: '#F3EDE1',
+  skyStops: ['#FBF7EE', '#F3EDE1', '#EBE1CB'],
+  sky: 'linear-gradient(180deg,#FBF7EE 0%,#F3EDE1 55%,#EBE1CB 100%)',
+  swatch: 'linear-gradient(180deg,#FBF7EE,#EBE1CB)',
+  card: '#FFFDF7',
+  cardBorder: '#E6D9BF',
+  ink: '#0F1D33',
+  muted: '#3B4A63',
+  soft: '#FBF6EA',
+  field: '#FFFDF7',
+  fieldBorder: '#E6D9BF',
+  optBg: '#FFFDF7',
+  optBorder: '#E6D9BF',
+  optNum: '#FBF6EA',
+  chipBg: '#F5ECD9',
+  chipInk: '#3B4A63',
+  accent: '#B3412E',
+  accentDisabled: '#E9D3C9',
+  good: '#4F6E4C',
+  goodBg: '#E4EEDD',
+  bad: '#B3412E',
+  badBg: '#F8E3DE',
+  warn: '#8A5E1C',
+  onBg: '#0F1D33',
+  pill: 'rgba(255,253,247,0.9)',
+  pillInk: '#0F1D33',
+};
+
 export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
   chiikawa: CHIIKAWA_STUDY,
+  'zh-band9': ZH_BAND9_STUDY,
   ...SCENE_THEMES,
   ...ART_THEMES,
   ...PX_THEMES,
@@ -392,6 +433,11 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
 /** Chủ đề chọn được khi bật "Nền & hiệu ứng" (Mặc định phẳng là lúc tắt). */
 export const THEME_ORDER: readonly ThemeId[] = ['scene', 'px-auto', 'px-tokyo', 'px-paris', 'px-london', 'px-singapore', 'px-hanoi', 'journey', 'beach', 'snow', 'bamboo', 'aurora', 'space', 'sakura', 'forest', 'sunset', 'rain'];
 export const ALL_THEMES: readonly ThemeId[] = ['plain', ...THEME_ORDER];
+
+/** Màu nhấn của nút/thanh đang chọn: giấy Band 9 dùng son đỏ của nó, các chủ đề khác giữ màu cũ (`fallback`). */
+export function accentFor(t: StudyTheme, fallback: string): string {
+  return t.id === 'zh-band9' ? t.accent : fallback;
+}
 
 export function isThemeId(v: unknown): v is ThemeId {
   return typeof v === 'string' && Object.prototype.hasOwnProperty.call(STUDY_THEMES, v);

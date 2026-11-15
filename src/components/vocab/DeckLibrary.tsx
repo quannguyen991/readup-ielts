@@ -58,6 +58,8 @@ type LibDeck = {
   cover?: string;
   /** The deck belongs to a book and is shown inside that book's detail page. */
   isBookTopic?: boolean;
+  /** Bộ gộp nhiều buổi (cấp HSK, giáo trình tiếng Nhật): tiến độ lấy từ tổng các buổi này. */
+  lessonSlugs?: readonly string[];
 };
 
 const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconName }[] = [
@@ -75,12 +77,17 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
   { key: 'daily', label: 'Giao tiếp hằng ngày', labelEn: 'Everyday talk', icon: 'letters' },
   { key: 'books', label: 'Sách từ vựng', labelEn: 'Vocabulary books', icon: 'book' },
+  { key: 'zh', label: 'Tiếng Trung', labelEn: 'Chinese', icon: 'letters' },
+  { key: 'ja', label: 'Tiếng Nhật', labelEn: 'Japanese', icon: 'letters' },
   { key: 'toeic', label: 'TOEIC', labelEn: 'TOEIC', icon: 'book' },
   { key: 'toefl', label: 'TOEFL', labelEn: 'TOEFL', icon: 'book' },
 ];
 
 const PERSONAL = FILTERS.filter((f) => f.key === 'all' || f.key === 'learning' || f.key === 'mine');
 const SOURCES = FILTERS.filter((f) => !PERSONAL.includes(f));
+
+/** Sách tiếng Anh (tiếng Trung và tiếng Nhật có nhóm riêng). */
+const ENGLISH_BOOKS = BOOK_VOCAB_BOOKS.filter((b) => b.language !== 'zh' && b.language !== 'ja');
 
 const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
   mine: { title: 'Của bạn', titleEn: 'Yours', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', subtitleEn: 'Words you saved while reading, plus decks you made', icon: 'bookmark' },
@@ -94,7 +101,9 @@ const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: st
   satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
   satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
   daily: { title: 'Giao tiếp hằng ngày', titleEn: 'Everyday talk', subtitle: '20 chủ đề, mỗi từ kèm ví dụ và ngữ cảnh dùng', subtitleEn: '20 topics, each word with an example and where to use it', icon: 'letters' },
-  books: { title: 'Sách từ vựng', titleEn: 'Vocabulary books', subtitle: `${BOOK_VOCAB_BOOKS.length} sách tiếng Anh, Trung và Nhật; chia theo chủ đề và unit tối đa 50 từ`, subtitleEn: `${BOOK_VOCAB_BOOKS.length} English, Chinese and Japanese books, split into topics and units of up to 50 words`, icon: 'book' },
+  books: { title: 'Sách từ vựng', titleEn: 'Vocabulary books', subtitle: `${ENGLISH_BOOKS.length} sách tiếng Anh; chia theo chủ đề và unit tối đa 50 từ`, subtitleEn: `${ENGLISH_BOOKS.length} English books, split into topics and units of up to 50 words`, icon: 'book' },
+  zh: { title: 'Tiếng Trung · HSK 3.0', titleEn: 'Chinese · HSK 3.0', subtitle: '7 cấp HSK, mỗi cấp chia buổi học tối đa 50 từ', subtitleEn: 'Seven HSK levels, each split into lessons of up to 50 words', icon: 'letters' },
+  ja: { title: 'Tiếng Nhật · Irodori', titleEn: 'Japanese · Irodori', subtitle: '4 giáo trình giao tiếp, mỗi giáo trình 9 chủ đề', subtitleEn: 'Four conversation courses, 9 topics each', icon: 'letters' },
   toeic: { title: 'TOEIC', titleEn: 'TOEIC', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
   toefl: { title: 'TOEFL', titleEn: 'TOEFL', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
 };
@@ -147,6 +156,31 @@ function lib(slug: string, title: string, words: readonly { word: string }[], su
   return { slug, title, subtitle, words, look, en, cover: VOCAB_COVERS[slug], haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
 }
 
+/** Tiếng Trung: mỗi cấp HSK là một bộ, bìa công bút, bấm vào mở danh sách buổi của cấp đó. */
+function zhLevelDecks(): LibDeck[] {
+  return BOOK_VOCAB_BOOKS.filter((b) => b.language === 'zh').flatMap((book) =>
+    book.topics.map((topic) => ({
+      ...lib(topic.slug, topic.nameVi, topic.words, `${topic.words.length.toLocaleString('vi-VN')} từ · ${topic.lessons.length} buổi học`, { title: topic.name }),
+      look: deckLook(topic.slug),
+      href: `/vocabulary/book/${book.slug}/${topic.slug}`,
+      lessonSlugs: topic.lessons.map((l) => l.slug),
+    })),
+  );
+}
+
+/** Tiếng Nhật: mỗi giáo trình Irodori là một bộ, bấm vào mở danh sách chủ đề của giáo trình. */
+function jaBookDecks(): LibDeck[] {
+  return BOOK_VOCAB_BOOKS.filter((b) => b.language === 'ja').map((book) => {
+    const level = book.nameVi.split(' · ').pop() ?? book.nameVi;
+    return {
+      ...lib(book.slug, `Irodori · ${level}`, book.words, `${book.topics.length} chủ đề · ${book.words.length.toLocaleString('vi-VN')} từ`, { title: `Irodori · ${level}` }),
+      look: deckLook(book.slug),
+      href: `/vocabulary/book/${book.slug}`,
+      lessonSlugs: book.topics.flatMap((t) => t.lessons.map((l) => l.slug)),
+    };
+  });
+}
+
 const STATIC_DECKS: LibDeck[] = [
   ...OXFORD_TOPIC_DECKS.map((t) => ({
     slug: t.slug,
@@ -165,11 +199,13 @@ const STATIC_DECKS: LibDeck[] = [
     haystack: fold(`${t.title} ${t.titleEn} oxford 3000 ${t.words.map((w) => w.word).join(' ')}`),
   })),
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
-  ...BOOK_VOCAB_BOOKS.map((book) => ({
+  ...ENGLISH_BOOKS.map((book) => ({
     ...lib(book.slug, book.nameVi, book.words, `${book.topics.length} chủ đề · ${book.words.length.toLocaleString('vi-VN')} từ`, { title: book.name }),
     look: { source: 'books' as const, sourceLabel: 'Sách từ vựng', sourceLabelEn: 'Vocabulary books', accent: ['#EDE9FE', '#6A4BD9'] as const, icon: 'book' as const },
     href: `/vocabulary/book/${book.slug}`,
   })),
+  ...zhLevelDecks(),
+  ...jaBookDecks(),
   ...BOOK_VOCAB_DECKS.map((t) => ({ ...lib(t.slug, t.nameVi, t.words, t.blurb, { title: t.name }), isBookTopic: true })),
   // Unit titles already identify the lesson; omit the long source/enrichment blurb on each card.
   ...GLOBAL_SUCCESS_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, undefined, { title: t.name })),
@@ -219,6 +255,18 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const progress = useMemo(() => {
     const map = new Map<string, DeckProgress>();
     for (const d of decks) {
+      if (d.lessonSlugs) {
+        // Bộ gộp nhiều buổi: cộng tiến độ của mọi buổi, lần học gần nhất là lần muộn nhất.
+        const merged: Record<string, NonNullable<StageMap>[string]> = {};
+        let last: string | null = null;
+        for (const s of d.lessonSlugs) {
+          Object.assign(merged, stagesByBase[s] ?? {});
+          const at = lastAtByBase[s];
+          if (at && (!last || at > last)) last = at;
+        }
+        map.set(d.slug, deckProgress(d.words, merged, last, studied));
+        continue;
+      }
       map.set(d.slug, deckProgress(d.words, d.knownExam ? knownStages(d, known) : stagesByBase[d.slug], lastAtByBase[d.slug], d.knownExam ? undefined : studied));
     }
     return map;
@@ -226,7 +274,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const prog = (d: LibDeck) => progress.get(d.slug)!;
 
   const learning = useMemo(() => byRecent(decks.filter((d) => isInProgress(progress.get(d.slug)!)), (d) => progress.get(d.slug)!.lastAt), [decks, progress]);
-  const count = (f: LibraryFilter) => (f === 'all' ? decks.length : f === 'learning' ? learning.length : f === 'books' ? BOOK_VOCAB_BOOKS.length : decks.filter((d) => d.look.source === f && !d.isBookTopic).length);
+  const count = (f: LibraryFilter) => (f === 'all' ? decks.length : f === 'learning' ? learning.length : f === 'books' ? ENGLISH_BOOKS.length : decks.filter((d) => d.look.source === f && !d.isBookTopic).length);
 
   const needle = fold(query);
   const results = needle ? decks.filter((d) => d.haystack.includes(needle)) : [];
@@ -283,7 +331,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   /** Nội dung một nhóm; bộ Nghe chia tiếp theo từng Section của đề, mỗi Section một dòng tiêu đề. */
   const sourceBody = (s: DeckSource) => {
     const cap = filter === 'all' ? PREVIEW_ALL : limit;
-    const all = s === 'books' ? bySource(s).filter((d) => !d.isBookTopic) : bySource(s);
+    const all = bySource(s).filter((d) => !d.isBookTopic);
     const shown = all.slice(0, cap);
     if (s === 'mine') {
       return (
@@ -414,7 +462,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'daily', 'books', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'daily', 'books', 'zh', 'ja', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
                   <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
                   {sourceBody(s)}

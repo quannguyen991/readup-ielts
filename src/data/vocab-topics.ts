@@ -135,7 +135,7 @@ const ENGLISH_BOOK_VOCAB_BOOKS: BookVocabBook[] = (bookVocab as unknown as Vocab
   return { ...book, topics };
 });
 
-/** Gộp 7 sách tiếng Anh với toàn bộ bộ OCR tiếng Trung và tiếng Nhật. */
+/** Gộp sách tiếng Anh với dữ liệu tiếng Trung/Nhật đã OCR và các bộ ôn tập có giấy phép mở. */
 export const BOOK_VOCAB_BOOKS: BookVocabBook[] = [...ENGLISH_BOOK_VOCAB_BOOKS, ...EAST_ASIAN_VOCAB_BOOKS];
 
 /** Các buổi học của mọi sách, mỗi buổi tối đa 50 từ. */

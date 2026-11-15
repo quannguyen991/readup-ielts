@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -9,12 +9,31 @@ import { Button, Card } from '@/components/ui';
 import { BOOK_VOCAB_BOOKS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
 import { color } from '@/theme/tokens';
+import { ZhLessonList } from '@/components/vocab/chinese/ZhLessonList';
+import { JaUnitPage } from '@/components/vocab/japanese/JaBookParts';
 
 export default function BookVocabThemeScreen() {
   const { slug, topic: topicSlug } = useLocalSearchParams<{ slug?: string; topic?: string }>();
   const { L, en } = useL();
   const book = BOOK_VOCAB_BOOKS.find((item) => item.slug === slug);
   const topic = book?.topics.find((item) => item.slug === topicSlug);
+
+  // Chủ đề tiếng Nhật: tranh chủ đề, bài hội thoại và từ riêng lẻ, theo phong cách Nhật.
+  if (book && topic && book.language === 'ja') {
+    return <JaUnitPage book={book} topic={topic} />;
+  }
+
+  // Bộ từ tiếng Trung: danh sách buổi theo giấy Band 9 (không dùng lưới chung của app).
+  // Không bọc bằng Screen (nó vẽ nền riêng che mất núi mực); tự cuộn và căn lề.
+  if (book && topic && book.language === 'zh') {
+    return (
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 22, paddingBottom: 120 }}>
+        <View style={{ width: '100%', maxWidth: 1180, alignSelf: 'center' }}>
+          <ZhLessonList book={book} topic={topic} />
+        </View>
+      </ScrollView>
+    );
+  }
 
   return (
     <Screen>

@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -173,7 +174,7 @@ export default function TestScreen() {
             key={i}
             onPress={() => setIndex(i)}
             className="h-8 w-8 items-center justify-center rounded-lg"
-            style={{ backgroundColor: i === index ? color.primary : isAnswered(answers[i] ?? null) ? '#F3F0FB' : 'rgba(255,255,255,0.8)' }}
+            style={{ backgroundColor: i === index ? accentFor(theme, color.primary) : isAnswered(answers[i] ?? null) ? '#F3F0FB' : 'rgba(255,255,255,0.8)' }}
           >
             <Text className="font-semi text-label" style={{ color: i === index ? '#FFFFFF' : color.ink }}>
               {i + 1}
@@ -186,7 +187,7 @@ export default function TestScreen() {
           <View className="flex-row items-center gap-2">
             <Text className="font-semi text-label text-muted">{L('Câu', 'Question')} {index + 1}</Text>
             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.soft }}>
-              <Text className="font-strong text-label" style={{ color: color.primary }}>
+              <Text className="font-strong text-label" style={{ color: accentFor(theme, color.primary) }}>
                 {en ? KIND_EN[q.kind] : QUIZ_KIND_LABEL[q.kind]}
               </Text>
             </View>
@@ -255,7 +256,7 @@ function QuestionBody({
             <SpeakButton text={q.word.word} />
           </View>
           <Text className="mt-2 font-sans text-body text-muted">{L('nghĩa là', 'means')}</Text>
-          <Text className="mt-1 text-center font-heavy text-sectionTitle" style={{ color: color.primary }}>
+          <Text className="mt-1 text-center font-heavy text-sectionTitle" style={{ color: accentFor(theme, color.primary) }}>
             {q.shownMeaning}
           </Text>
         </View>
@@ -309,9 +310,9 @@ function QuestionBody({
               key={`${i}-${opt}`}
               onPress={() => onChoose(i)}
               className="flex-row items-center gap-3 rounded-2xl px-4 py-4"
-              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : theme.optBorder, backgroundColor: sel ? theme.soft : theme.optBg }}
+              style={{ borderWidth: 1.5, borderColor: sel ? accentFor(theme, color.primary) : theme.optBorder, backgroundColor: sel ? theme.soft : theme.optBg }}
             >
-              <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : theme.optNum }}>
+              <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? accentFor(theme, color.primary) : theme.optNum }}>
                 <Text className="font-strong text-label" style={{ color: sel ? '#FFFFFF' : theme.muted }}>
                   {i + 1}
                 </Text>

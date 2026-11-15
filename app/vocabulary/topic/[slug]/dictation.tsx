@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { typedMatches } from '@/services/vocab/east-asian-practice';
@@ -137,7 +138,7 @@ export default function DictationScreen() {
           }}
           className="flex-row items-center gap-2 rounded-pill bg-white/80 px-3 py-2"
         >
-          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : theme.fieldBorder }}>
+          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? accentFor(theme, color.primary) : theme.fieldBorder }}>
             <View className="h-4 w-4 rounded-pill bg-white" style={{ alignSelf: sentenceMode ? 'flex-end' : 'flex-start' }} />
           </View>
           <Text className="font-semi text-label text-ink">{L('Chép câu ví dụ', 'Dictate example sentence')}</Text>
@@ -156,7 +157,7 @@ export default function DictationScreen() {
               accessibilityLabel={L('Nghe lại', 'Replay')}
               onPress={play}
               className="h-24 w-24 items-center justify-center rounded-pill"
-              style={{ backgroundColor: color.primary }}
+              style={{ backgroundColor: accentFor(theme, color.primary) }}
             >
               <Icon name="volume" size={40} color="#FFFFFF" />
             </Pressable>
@@ -170,7 +171,7 @@ export default function DictationScreen() {
                 className="rounded-pill px-3 py-1.5"
                 style={{ backgroundColor: speed === s ? theme.soft : theme.soft, borderWidth: 1, borderColor: speed === s ? '#E9CE9F' : 'transparent' }}
               >
-                <Text className="font-semi text-label" style={{ color: speed === s ? color.primary : '#475569' }}>
+                <Text className="font-semi text-label" style={{ color: speed === s ? accentFor(theme, color.primary) : '#475569' }}>
                   {s}×
                 </Text>
               </Pressable>

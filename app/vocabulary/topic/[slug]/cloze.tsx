@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -321,7 +322,7 @@ export default function ClozeScreen() {
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.soft }}>
-              <Text className="font-strong text-label" style={{ color: color.primary }}>
+              <Text className="font-strong text-label" style={{ color: accentFor(theme, color.primary) }}>
                 {en ? CLOZE_KIND_EN[q.kind] : CLOZE_KIND_LABEL[q.kind]}
               </Text>
             </View>
@@ -461,7 +462,7 @@ function ScrambleBoard({
                     width: size,
                     height: size + 8,
                     borderBottomWidth: 3,
-                    borderColor: filled ? color.primary : theme.fieldBorder,
+                    borderColor: filled ? accentFor(theme, color.primary) : theme.fieldBorder,
                     backgroundColor: filled ? theme.soft : theme.field,
                   }}
                 >
@@ -511,14 +512,15 @@ function ScrambleBoard({
 }
 
 function ListenButton({ label, hint, onPress }: { label: string; hint?: string; onPress: () => void }) {
+  const theme = useStudyTheme();
   return (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
       className="flex-row items-center gap-2 rounded-pill bg-primary-50 px-4 py-2.5"
     >
-      <Icon name="volume" size={18} color={color.primary} />
-      <Text className="font-semi text-body" style={{ color: color.primary }}>
+      <Icon name="volume" size={18} color={accentFor(theme, color.primary)} />
+      <Text className="font-semi text-body" style={{ color: accentFor(theme, color.primary) }}>
         {label}
       </Text>
       {hint ? <Text className="font-sans text-label text-muted">{hint}</Text> : null}

@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, {
   useEffect,
   useLayoutEffect,
@@ -711,12 +712,12 @@ export default function LearnScreen() {
       <View className="mb-4 flex-row flex-wrap items-center justify-center gap-2">
         <StreakBadge n={streak} />
         <View className="rounded-pill px-3.5 py-1.5" style={{ backgroundColor: "#FFFFFF" }}>
-          <Text className="font-strong text-label" style={{ color: color.primary }}>
+          <Text className="font-strong text-label" style={{ color: accentFor(theme, color.primary) }}>
             {en ? KIND_LABEL[head!.kind].en : KIND_LABEL[head!.kind].vi}
           </Text>
         </View>
         {head!.tag ? (
-          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : "#6A4BD9") : theme.onBg }}>
+          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : theme.warn) : theme.onBg }}>
             {head!.tag === "retry" ? L("↻ Gặp lại từ vừa sai", "↻ Back after a miss") : L("↻ Gặp lại cho nhớ lâu", "↻ Repeat for long-term memory")}
           </Text>
         ) : null}
@@ -908,7 +909,7 @@ export default function LearnScreen() {
                     style={{
                       borderWidth: 1,
                       borderColor:
-                        verdict === null ? (listening ? color.primary : theme.fieldBorder) : verdict ? theme.good : theme.bad,
+                        verdict === null ? (listening ? accentFor(theme, color.primary) : theme.fieldBorder) : verdict ? theme.good : theme.bad,
                       backgroundColor: theme.field,
                     }}
                   />
@@ -918,14 +919,14 @@ export default function LearnScreen() {
                       accessibilityLabel={listening ? L("Dừng nghe", "Stop listening") : L("Nói từ", "Say the word")}
                       onPress={toggleMic}
                       className="h-14 w-14 items-center justify-center rounded-2xl"
-                      style={{ backgroundColor: listening ? RED : color.primary }}
+                      style={{ backgroundColor: listening ? RED : accentFor(theme, color.primary) }}
                     >
                       <Icon name="mic" size={22} color="#FFFFFF" strokeWidth={2.2} />
                     </Pressable>
                   ) : null}
                 </View>
                 {listening ? (
-                  <Text className="mt-2 text-center font-semi text-label" style={{ color: color.primary }}>
+                  <Text className="mt-2 text-center font-semi text-label" style={{ color: accentFor(theme, color.primary) }}>
                     {L("Đang nghe… nói từ tiếng Anh", "Listening… say the English word")}
                   </Text>
                 ) : micNote ? (

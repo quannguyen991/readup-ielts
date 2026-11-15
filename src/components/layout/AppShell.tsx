@@ -32,6 +32,9 @@ import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
 import { useRewardStore } from '@/store/useRewardStore';
 import { CuteAtmosphere } from './CuteAtmosphere';
 import { PhoneBackdrop, useIsPhone } from './PhoneBackdrop';
+import { ChineseBackdrop } from '@/components/vocab/chinese/ChineseBackdrop';
+import { isChineseVocabRoute } from '@/components/vocab/chinese/route';
+import { ZH } from '@/components/vocab/chinese/palette';
 import { useHydrated } from './useHydrated';
 import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 import { FirstRunTour } from '@/components/onboarding/FirstRunTour';
@@ -82,6 +85,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
   const pageBg = usePageBackground('browse');
+  // Bài từ vựng tiếng Trung: giấy kem Band 9 thay lưới pastel, thanh bên trong suốt.
+  const zhRoute = isChineseVocabRoute(pathname);
   const cuteEffects = useCuteAppearanceStore((state) => state.effectsEnabled);
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   const customMascotImage = useCuteAppearanceStore((state) => state.customMascotImage);
@@ -141,7 +146,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
     */
     return (
-      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && (travelGlass || sentenceThemed)} gold={goldSkin}>
+      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && (travelGlass || sentenceThemed)} gold={goldSkin} zh={zhRoute}>
         <View className="flex-1 lg:flex-row">
           <View
             className="hidden lg:flex"
@@ -176,7 +181,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : (pageBg?.stops[1] ?? PLAIN_PAGE_BG) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
+      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : zhRoute ? ZH.paper : (pageBg?.stops[1] ?? PLAIN_PAGE_BG) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
@@ -193,7 +198,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {!isQuestRoute && !retro && !pixel && !(goldSkin && !pageBg) ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
           {/* Nền học / giao diện đổi bằng sao áp dụng cho MỌI trang; không có thì nền xanh mặc định. */}
-          {pageBg ? (
+          {zhRoute ? (
+            <ChineseBackdrop />
+          ) : pageBg ? (
             <GridBackdrop colors={pageBg.stops} line={pageBg.line} pattern={pageBg.pattern} blobs={pageBg.blobs} margin={pageBg.margin} cell={pageBg.cell ?? 34} />
           ) : (
             <MeshBackdrop />
@@ -254,8 +261,10 @@ function MeshShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function FocusBackdrop({ quest, navy, light, gold, children }: { quest: boolean; navy: boolean; light: boolean; gold: boolean; children: React.ReactNode }) {
+function FocusBackdrop({ quest, navy, light, gold, zh, children }: { quest: boolean; navy: boolean; light: boolean; gold: boolean; zh: boolean; children: React.ReactNode }) {
   const chiikawa = useChiikawaActive();
+  // Bài từ vựng tiếng Trung: giấy kem Band 9 với núi mực, không lưới pastel.
+  if (zh) return <View className="flex-1" style={{ backgroundColor: ZH.paper }}><ChineseBackdrop />{children}</View>;
   // Chép chính tả / viết câu: cảnh bay qua thành phố tông sáng (tắt thì về lưới sáng như cũ).
   if (light) return <TravelBackdrop color="#F3F0FB" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.

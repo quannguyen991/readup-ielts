@@ -9,6 +9,7 @@ import edge_tts
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / 'src/data/east-asian-vocab.json'
+OPEN_SRC = ROOT / 'src/data/east-asian-open-vocab.json'
 OUT = ROOT / 'public/audio/east-asian'
 VOICE = {'ja': 'ja-JP-NanamiNeural', 'zh': 'zh-CN-XiaoxiaoNeural'}
 CONC = 8
@@ -47,7 +48,7 @@ async def one(sem, lang, w, text, path):
 
 async def main():
     limit = int(sys.argv[sys.argv.index('--limit') + 1]) if '--limit' in sys.argv else None
-    books = json.loads(SRC.read_text(encoding='utf8'))
+    books = json.loads(SRC.read_text(encoding='utf8')) + json.loads(OPEN_SRC.read_text(encoding='utf8'))
     items = {'ja': {}, 'zh': {}}
     for b in books:
         for t in b['topics']:

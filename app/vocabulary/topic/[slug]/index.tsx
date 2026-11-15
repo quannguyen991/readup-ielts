@@ -9,7 +9,8 @@ import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { deckLevels, getStaticDeck, groupDeckWords, levelOf, NOTEBOOK_SLUG, splitLevelSlug } from '@/data/study-decks';
-import type { StudyWord } from '@/services/vocab/topic-study';
+import type { StudyWord, WordStage } from '@/services/vocab/topic-study';
+import { ChineseTopicPage } from '@/components/vocab/chinese/ChineseTopicPage';
 import { isLetterWord } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
@@ -31,6 +32,10 @@ import { SealIcon } from '@/components/illust/HeroArt';
 import { Sticker } from '@/components/illust/Sticker';
 import { HeroShell } from '@/components/layout/HeroShell';
 import { ToneTile } from '@/components/vocab/ToneTile';
+import { JaLessonHero, JaPageBackdrop, JaSectionTitle, JaSiblingLessons, JaTile, JaWordRow } from '@/components/vocab/japanese/JaBookParts';
+import { isDialogueLesson, JA_MODE_ART, JA_SET_ART, JA_STATUS_ART, sceneOf } from '@/components/vocab/japanese/ja-art';
+import { BOOK_VOCAB_BOOKS } from '@/data/vocab-topics';
+import { JA } from '@/components/vocab/japanese/ja-art';
 import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { useL } from '@/i18n/useL';
@@ -263,10 +268,41 @@ export default function VocabTopicScreen() {
   const status = groupByStatus(topic.words, stages, lapseMap);
   const pct = studiedPct(progress);
 
+  // Bài tiếng Trung: giao diện Band 9 riêng (components/vocab/chinese), dùng chung handler lưu / sao / chấm / lịch ôn.
+  if (topic.language === 'zh' && typeof slug === 'string') {
+    const rateZh = (w: StudyWord, stage: WordStage) => {
+      setStage(slug, w.word, stage);
+      if (stage === 0) addLapse(slug, w.word);
+      // Tự chấm thẻ cũng vào lịch ôn FSRS, giống các bài khác.
+      useTopicStudyStore.getState().review(slug, w.word, stage !== 0);
+      touch(slug);
+    };
+    return (
+      <Screen>
+        <Appear>
+          <ChineseTopicPage
+            slug={slug}
+            title={topic.nameVi || topic.name}
+            eyebrow={L('BỘ TỪ TIẾNG TRUNG', 'CHINESE WORD SET')}
+            words={topic.words}
+            stages={stages}
+            starred={starredWords}
+            saved={savedLemmas}
+            shuffle={shuffle === '1'}
+            onSave={save}
+            onStar={(w) => toggleStar(slug, w.word)}
+            onRate={rateZh}
+          />
+        </Appear>
+      </Screen>
+    );
+  }
+
   return (
     <Screen>
       {/* Khung đọc hẹp lại trên màn rộng: thẻ cách luyện không bị kéo giãn ngang. */}
       <View className="w-full self-center" style={{ maxWidth: 1000 }}>
+      {topic.language === 'ja' ? <JaPageBackdrop /> : null}
       <Appear>
         <Button
           className="mb-3 self-start"
@@ -283,6 +319,9 @@ export default function VocabTopicScreen() {
           }}
         />
         {/* Đầu trang kiểu hero trang chủ: viền gradient, hoạ tiết pastel, tên bộ và vòng tiến độ. */}
+        {topic.language === 'ja' ? (
+          <JaLessonHero title={topic.nameVi} vocab={!isDialogueLesson(topic.slug)} wordCount={topic.words.length} scene={JA_SET_ART[topic.slug] ?? sceneOf(topic.nameVi)} pct={pct} />
+        ) : (
         <HeroShell radius={26} style={{ padding: 22 }}>
           <View className="flex-row flex-wrap items-center gap-4">
             <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
@@ -303,20 +342,34 @@ export default function VocabTopicScreen() {
             </View>
           </View>
         </HeroShell>
+        )}
       </Appear>
 
       {/* ---------------------------------------------- mọi cách luyện của bộ */}
       <Appear index={1}>
         <View className="mt-5">
+          {topic.language === 'ja' ? (
+            <JaSectionTitle title={L('Cách luyện', 'Practice modes')} subtitle={L('Chọn một cách học cho bộ này.', 'Pick a way to study this set.')} />
+          ) : (
           <View className="flex-row items-center gap-2.5">
             <View aria-hidden>
               <SealIcon name="target" color="#6A4BD9" size={38} />
             </View>
             <Text className="font-heavy text-sectionTitle text-ink">{L('Cách luyện', 'Practice modes')}</Text>
           </View>
+          )}
           <View className="mt-3">
             <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
-              {MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m) => (
+              {MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m, i) => topic.language === 'ja' ? (
+                <JaTile
+                  key={m.key}
+                  art={JA_MODE_ART[m.key]}
+                  title={en ? m.labelEn : m.label}
+                  sub={en ? m.noteEn : m.note}
+                  chip={m.recommended ? (en ? 'Suggested' : 'Gợi ý') : undefined}
+                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.route ?? m.key}` as never)}
+                />
+              ) : (
                 <ToneTile
                   key={m.key}
                   seed={'mode-' + m.key}
@@ -340,7 +393,17 @@ export default function VocabTopicScreen() {
           <Grid columns={3} tabletColumns={3} mobileColumns={3} gap={10}>
             {STATUS_TILES.map((t) => {
               const count = status[t.key].length;
-              return (
+              return topic.language === 'ja' ? (
+                <JaTile
+                  key={t.key}
+                  art={JA_STATUS_ART[t.key]}
+                  title={en ? t.labelEn : t.label}
+                  value={count}
+                  minHeight={200}
+                  disabled={count === 0 && t.key !== 'mastered'}
+                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz?only=${t.only}` as never)}
+                />
+              ) : (
                 <ToneTile
                   key={t.key}
                   seed={'status-' + t.key}
@@ -369,8 +432,8 @@ export default function VocabTopicScreen() {
               onSave={save}
               starredWords={starredWords}
               onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
-              accent={bg}
-              tone={look.accent}
+              accent={topic.language === 'ja' ? JA.green2 : bg}
+              tone={topic.language === 'ja' ? ['#3F7A57', '#17392B'] : look.accent}
               onRate={(w, stage) => {
                 if (typeof slug !== 'string') return;
                 setStage(slug, w.word, stage);
@@ -496,6 +559,9 @@ export default function VocabTopicScreen() {
               return (
                 <Appear key={group.label} index={gi + 2}>
                   <View className="mt-5">
+                    {topic.language === 'ja' ? (
+                      <JaSectionTitle title={en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label} subtitle={L(`${group.words.length} từ`, `${group.words.length} words`)} />
+                    ) : (
                     <View className="flex-row items-center gap-2">
                       <View aria-hidden>
                         <BadgeSticker icon={GROUP_BADGE[gi % GROUP_BADGE.length]!} color={GROUP_TONE[gi % GROUP_TONE.length]!} size={28} />
@@ -503,9 +569,17 @@ export default function VocabTopicScreen() {
                       <Text className="font-heavy text-sectionTitle text-ink">{en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label}</Text>
                       <Text className="font-sans text-label text-muted">{L(`${group.words.length} từ`, `${group.words.length} words`)}</Text>
                     </View>
+                    )}
 
                     <View className="mt-2 gap-2">
-                      {group.words.slice(0, take).map((word) => (
+                      {group.words.slice(0, take).map((word) => topic.language === 'ja' ? (
+                        <JaWordRow
+                          key={word.word}
+                          word={word}
+                          saved={savedLemmas.has(word.word.toLowerCase())}
+                          onSave={() => save(word)}
+                        />
+                      ) : (
                         <WordRow
                           key={word.word}
                           word={word}
@@ -534,6 +608,22 @@ export default function VocabTopicScreen() {
           </>
         );
       })()}
+
+      {topic.language === 'ja' ? (() => {
+        const unit = BOOK_VOCAB_BOOKS.flatMap((b) => b.topics).find((t) => t.lessons.some((l) => l.slug === topic.slug));
+        return unit ? (
+          <Appear index={6}>
+            <View className="mt-8">
+              <JaSiblingLessons
+                lessons={unit.lessons}
+                currentSlug={topic.slug}
+                title={unit.nameVi}
+                subtitle={L('Các bài khác trong chủ đề này: học tiếp hoặc quay lại bài trước.', 'Other lessons in this topic: continue or go back.')}
+              />
+            </View>
+          </Appear>
+        ) : null;
+      })() : null}
 
       <View className="h-6" />
       </View>
@@ -636,6 +726,8 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
   { key: 'pairs', label: 'Ghép cặp', labelEn: 'Match pairs', note: 'Ghép từ với nghĩa, nhớ vị trí các ô', noteEn: 'Match each word to its meaning and remember where tiles are', icon: 'grid', tone: '#2563EB' },
   { key: 'hangman', label: 'Đoán chữ', labelEn: 'Hangman', note: 'Đoán từ theo nghĩa, mỗi chữ sai mất một tim', noteEn: 'Guess the word from its meaning; each wrong letter costs a heart', icon: 'letters', tone: '#7C3AED' },
   { key: 'sentence', label: 'Xếp câu', labelEn: 'Build sentence', note: 'Xếp lại các từ thành câu ví dụ đúng thứ tự', noteEn: 'Rebuild the example sentence in the right order', icon: 'list', tone: '#0891B2' },
+  { key: 'abcd', label: 'Trắc nghiệm ABCD', labelEn: 'ABCD quiz', note: 'Chọn nghĩa, chọn từ theo nghĩa, điền từ vào câu · 20 câu', noteEn: 'Pick the meaning, pick the word, fill the gap · 20 questions', icon: 'clipboard', tone: '#E0533D', recommended: true },
+  { key: 'listen', route: 'abcd?mode=listen', label: 'Luyện nghe', labelEn: 'Listening', note: 'Nghe từ hoặc câu, chọn nghĩa đúng', noteEn: 'Hear a word or sentence, pick the meaning', icon: 'volume', tone: '#0EA5E9' },
   { key: 'quiz', label: 'Trắc nghiệm ABCD', labelEn: 'ABCD quiz', note: 'Đề THPT: điền từ, gần nghĩa, trái nghĩa · chọn 10 đến 50 câu', noteEn: 'THPT style: fill the gap, closest and opposite meaning · 10 to 50 questions', icon: 'clipboard', tone: '#E0533D', recommended: true },
   { key: 'advert', route: 'quiz?mode=advert', label: 'Quảng cáo', labelEn: 'Advertisement', note: 'Điền từ vào đoạn quảng cáo, chọn ABCD như đề thi', noteEn: 'Fill the word into an advertisement, ABCD like the exam', icon: 'sparkle', tone: '#EA580C' },
   { key: 'flyer', route: 'quiz?mode=flyer', label: 'Tờ rơi', labelEn: 'Flyer', note: 'Điền từ vào tờ rơi thông báo, chọn ABCD như đề thi', noteEn: 'Fill the word into a flyer notice, ABCD like the exam', icon: 'mail', tone: '#0369A1' },
@@ -645,7 +737,9 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
 function modeReady(key: string, words: readonly StudyWord[], language?: StudyWord['language']): boolean {
   const hasMeaning = words.some((word) => Boolean(word.meaningVi?.trim() || word.definitionEn?.trim()));
   if (!hasMeaning && ['learn', 'test', 'game', 'pairs', 'hangman', 'quiz', 'advert', 'flyer'].includes(key)) return false;
-  if (language && language !== 'en' && (key === 'speak' || key === 'hangman')) return false;
+  const eastAsian = language === 'ja' || language === 'zh';
+  if (key === 'abcd' || key === 'listen') return eastAsian && hasMeaning;
+  if (eastAsian && ['hangman', 'cloze', 'sentence', 'quiz', 'advert', 'flyer'].includes(key)) return false;
   if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
   if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
   if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);

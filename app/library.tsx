@@ -256,7 +256,7 @@ export default function LibraryScreen() {
           <Text className="font-semi text-body text-ink">{L('Bộ lọc', 'Filters')}</Text>
           {activeFilters > 0 ? (
             <View className="h-5 min-w-[20px] items-center justify-center rounded-pill bg-primary-600 px-1.5">
-              <Text className="font-strong text-white" style={{ fontSize: 12 }}>
+              <Text className="font-strong text-white" style={{ fontSize: 13 }}>
                 {activeFilters}
               </Text>
             </View>
@@ -268,7 +268,7 @@ export default function LibraryScreen() {
       {showFilters ? (
         <Card className="mt-3">
           <View className="mb-3">
-            <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
+            <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 13 }}>
               {L('Dạng bài', 'Question types')}
             </Text>
             <View className="flex-row flex-wrap gap-1.5">
@@ -449,7 +449,7 @@ export default function LibraryScreen() {
               accessibilityLabel={L(`Bỏ lọc ${shortLabel(t)}`, `Remove ${shortLabel(t)} filter`)}
               className="flex-row items-center gap-1 rounded-pill bg-primary-600 px-2.5 py-1"
             >
-              <Text className="font-semi text-white" style={{ fontSize: 12 }}>{shortLabel(t)}</Text>
+              <Text className="font-semi text-white" style={{ fontSize: 13 }}>{shortLabel(t)}</Text>
               <Icon name="close" size={11} color="#FFFFFF" strokeWidth={2.4} />
             </Pressable>
           ))}
@@ -533,7 +533,7 @@ const SORT_LABEL_EN: Record<'newest' | 'shortest' | 'easiest' | 'hardest', strin
 function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <View className="mb-3">
-      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
+      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 13 }}>
         {label}
       </Text>
       <HScroll>

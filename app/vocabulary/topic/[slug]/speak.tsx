@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, { useEffect, useRef, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { posIpa } from '@/data/study-decks';
@@ -229,7 +230,7 @@ export default function SpeakScreen() {
             {ea ? (
               <View className="mb-3 flex-row gap-2">
                 {[false, true].map((on) => (
-                  <Pressable key={String(on)} accessibilityRole="button" onPress={() => { setSentenceMode(on); setHeard(null); setVerdict(null); }} className="rounded-pill px-4 py-1.5" style={{ backgroundColor: sentenceMode === on ? color.primary : 'rgba(128,128,160,0.18)' }}>
+                  <Pressable key={String(on)} accessibilityRole="button" onPress={() => { setSentenceMode(on); setHeard(null); setVerdict(null); }} className="rounded-pill px-4 py-1.5" style={{ backgroundColor: sentenceMode === on ? accentFor(theme, color.primary) : 'rgba(128,128,160,0.18)' }}>
                     <Text className="font-semi text-label" style={{ color: sentenceMode === on ? '#fff' : undefined }}>{on ? L('Đọc câu', 'Sentence') : L('Đọc từ', 'Word')}</Text>
                   </Pressable>
                 ))}
@@ -252,7 +253,7 @@ export default function SpeakScreen() {
                 onPress={listen}
                 disabled={listening || verdict !== null}
                 className="h-24 w-24 items-center justify-center rounded-pill"
-                style={{ backgroundColor: listening ? theme.bad : color.primary, opacity: verdict !== null ? 0.5 : 1 }}
+                style={{ backgroundColor: listening ? theme.bad : accentFor(theme, color.primary), opacity: verdict !== null ? 0.5 : 1 }}
               >
                 <Icon name="mic" size={36} color="#FFFFFF" />
               </Pressable>

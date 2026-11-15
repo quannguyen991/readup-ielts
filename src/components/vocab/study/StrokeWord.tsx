@@ -51,7 +51,7 @@ function Glyph({ char, lang, size, color }: { char: string; lang: 'ja' | 'zh'; s
   return React.createElement('div', { ref: (el: HTMLElement | null) => { host.current = el; }, style: { width: size, height: size } });
 }
 
-export function StrokeWord({ word, language, color = '#e8e8ff', compact }: { word: string; language: 'ja' | 'zh'; color?: string; compact?: boolean }) {
+export function StrokeWord({ word, language, color = '#111111', compact }: { word: string; language: 'ja' | 'zh'; color?: string; compact?: boolean }) {
   const chars = Array.from(word.replace(/[\s／/（）()～〜]/g, '')).slice(0, 6);
   const size = compact ? (chars.length > 3 ? 56 : chars.length > 1 ? 72 : 96) : chars.length > 3 ? 84 : chars.length > 1 ? 112 : 150;
   if (Platform.OS !== 'web') {

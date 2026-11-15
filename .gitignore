@@ -66,6 +66,7 @@ data/provenance/
 .local-private/books/
 .local-private/book-vocab-ocr/
 .local-private/east-asian-vocab-ocr/
+.local-private/open-vocab/
 public/vendor/pdf.worker.min.mjs
 public/vendor/PDFJS-LICENSE.txt
 
