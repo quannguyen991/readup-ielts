@@ -591,17 +591,21 @@ export default function LearnScreen() {
   );
 
   // Nút Trộn: xáo lại thứ tự các từ mới còn lại của vòng ngay tại chỗ, không phải mở lại vòng.
-  const pendingNew = plan.pending.length;
+  const remainingWords = plan.pending.length + plan.slots.filter((s) => !s.done).length;
   const shuffleButton = (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={L("Trộn thứ tự từ còn lại", "Shuffle the remaining words")}
-      disabled={pendingNew < 2}
+      disabled={remainingWords < 2}
       onPress={() =>
-        setPlan((p) => ({ ...p, pending: shuffled(p.pending, seededRng(Date.now() % 100000)) }))
+        // Xáo lại cả vòng: đổi hạt giống (đổi thứ tự câu đến hạn) và xáo các từ chưa mở.
+        setPlan((p) => {
+          const s = Date.now() % 100000;
+          return { ...p, seed: s, pending: shuffled(p.pending, seededRng(s)) };
+        })
       }
       className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"
-      style={{ opacity: pendingNew < 2 ? 0.45 : 1 }}
+      style={{ opacity: remainingWords < 2 ? 0.45 : 1 }}
     >
       <Icon name="refresh" size={17} color={theme.dark ? theme.ink : color.ink} />
       <Text className="font-semi text-body text-ink">{L("Trộn", "Shuffle")}</Text>
