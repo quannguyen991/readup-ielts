@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 
 import { CrossFade } from "@/components/motion/Motion";
 import { DetailFace, detailHeight, FlipCard, WordFace } from "./FlipCard";
-import { CARD_SHADOW, SpeakButton, StarButton, useHotkeys } from "./StudyKit";
+import { CARD_SHADOW, SpeakButton, StarButton, useHotkeys, VIVID_TEXT, vividBg } from "./StudyKit";
 import { Icon } from "@/components/ui/Icon";
 import { preloadPronunciation, useAutoPronounce } from "@/services/audio/pronounce";
 import {
@@ -134,10 +134,10 @@ export function Flashcards<W extends StudyWord>({
               accessibilityRole="button"
               onPress={() => setFlipped(true)}
               className="h-12 flex-1 flex-row items-center justify-center gap-2 rounded-2xl"
-              style={{ backgroundColor: accent }}
+              style={vividBg(accent)}
             >
               <Icon name="refresh" size={17} color="#FFFFFF" />
-              <Text className="font-heavy text-body text-white">{L("Lật thẻ", "Flip card")}</Text>
+              <Text className="font-heavy text-body text-white" style={VIVID_TEXT}>{L("Lật thẻ", "Flip card")}</Text>
             </Pressable>
           )}
         </View>

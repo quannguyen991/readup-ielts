@@ -38,7 +38,7 @@ export function LanguageSwitch({ tone = 'light', compact = false }: { tone?: 'li
             onPress={() => setLocale(o.code)}
             style={{ borderRadius: 999, width: compact ? 40 : undefined, alignItems: 'center', paddingHorizontal: compact ? 0 : 12, paddingVertical: 5, backgroundColor: on ? chiikawa ? '#D65E86' : themedHex('#8B6CF0') : 'transparent' }}
           >
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.6, color: on ? '#FFFFFF' : dark ? 'rgba(255,255,255,0.75)' : chiikawa ? '#704B5B' : '#6E6552' }}>
+            <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: -0.2, color: on ? '#FFFFFF' : dark ? 'rgba(255,255,255,0.75)' : chiikawa ? '#704B5B' : '#6E6552' }}>
               {o.short}
             </Text>
           </Pressable>

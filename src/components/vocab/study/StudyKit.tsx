@@ -91,7 +91,7 @@ function themeCss(): string {
     if (!t.dark) continue;
     const r = `[data-st="${id}"]`;
     css +=
-      `${r} .text-body{color:${t.muted}!important}` +
+      `${r} .text-body:not(.text-white){color:${t.muted}!important}` +
       `${r} .text-muted,${r} .text-subtle{color:${t.muted}!important}` +
       `${r} .text-ink{color:${t.ink}!important}` +
       `${r} .text-primary-600,${r} .text-primary-700{color:#E7C98A!important}` +
@@ -610,6 +610,25 @@ function ChipRow({ label, items }: { label: string; items: readonly string[] }) 
   );
 }
 
+/**
+ * Nút chính "tím loang": nền tím phủ bốn vệt màu (hồng, cam, xanh ngọc, tím) kiểu sơn loang — rực rỡ nhưng chỉ là
+ * một ảnh nền CSS tĩnh, không tốn khung hình. Chỉ áp cho màu tím mặc định; màu riêng của chủ đề/bộ giữ nguyên.
+ * Trên app gốc (không phải web) trả về màu phẳng.
+ */
+export const VIVID_TEXT = Platform.OS === "web" ? ({ textShadow: "0 1px 2px rgba(20,8,60,0.45)" } as object) : {};
+export function vividBg(base: string): object {
+  const purple = /^#(6A4BD9|8B6CF0|6C4AE0|7C5CFF)$/i.test(base);
+  if (Platform.OS !== "web" || !purple) return { backgroundColor: base };
+  return {
+    backgroundColor: "#6A4BD9",
+    backgroundImage:
+      "radial-gradient(90% 160% at 4% 0%,#F0489C 0%,transparent 55%),radial-gradient(80% 150% at 98% 8%,#F7931E 0%,transparent 52%)," +
+      "radial-gradient(90% 150% at 96% 104%,#14B5D6 0%,transparent 55%),radial-gradient(80% 140% at 2% 110%,#8E5CF6 0%,transparent 58%)," +
+      "linear-gradient(120deg,#6A4BD9,#A24DE0)",
+    boxShadow: "0 6px 16px rgba(140,70,220,0.35), inset 0 1px 0 rgba(255,255,255,0.35)",
+  };
+}
+
 export function PrimaryButton({
   label,
   onPress,
@@ -635,9 +654,9 @@ export function PrimaryButton({
         scrollTop?.();
       }}
       className="mt-3 flex-row items-center justify-center gap-2 rounded-2xl py-3"
-      style={{ backgroundColor: disabled ? theme.accentDisabled : color ?? theme.accent }}
+      style={disabled ? { backgroundColor: theme.accentDisabled } : vividBg(color ?? theme.accent)}
     >
-      <Text className="font-strong text-body text-white">{label}</Text>
+      <Text className="font-strong text-body text-white" style={VIVID_TEXT}>{label}</Text>
       {hint ? (
         <Text className="font-sans text-label text-white/70">{hint}</Text>
       ) : null}
