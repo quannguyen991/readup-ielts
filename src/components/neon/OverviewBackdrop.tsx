@@ -3,6 +3,7 @@ import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { NeonBackdrop, NeonIcon } from '@/components/neon/Neon';
+import { softBlob } from '@/components/neon/NeonMotion';
 import type { NeonIconId } from '@/components/neon/neon-art';
 
 /**
@@ -40,10 +41,11 @@ function Sunset() {
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>
       <LinearGradient colors={['#2F7BE0', '#6B3FE0', '#C23FC9', '#FF6A8A', '#FF9A3D']} locations={[0, 0.28, 0.5, 0.72, 0.9]} style={StyleSheet.absoluteFill} />
       {/* ánh cực quang nhẹ */}
-      <View style={{ position: 'absolute', left: '-10%', top: '8%', width: '60%', height: '30%', borderRadius: 999, backgroundColor: 'rgba(40,230,200,0.35)', ...(GRID_LINES ? ({ filter: 'blur(60px)' } as object) : {}) }} />
-      <View style={{ position: 'absolute', right: '-10%', top: '2%', width: '55%', height: '34%', borderRadius: 999, backgroundColor: 'rgba(255,140,60,0.4)', ...(GRID_LINES ? ({ filter: 'blur(70px)' } as object) : {}) }} />
+      <View style={{ position: 'absolute', left: '-20%', top: '-4%', width: '80%', height: '50%', ...softBlob('rgba(40,230,200,0.55)') }} />
+      <View style={{ position: 'absolute', right: '-20%', top: '-8%', width: '75%', height: '56%', ...softBlob('rgba(255,140,60,0.6)') }} />
       {/* mặt trời */}
-      <View style={{ position: 'absolute', left: '50%', top: '18%', marginLeft: -130, width: 260, height: 260, borderRadius: 999, backgroundColor: '#FFE08A', opacity: 0.95, ...(GRID_LINES ? ({ boxShadow: '0 0 90px 40px rgba(255,170,80,0.65)' } as object) : {}) }} />
+      <View style={{ position: 'absolute', left: '50%', top: '18%', marginLeft: -130, width: 260, height: 260, borderRadius: 999, backgroundColor: '#FFE08A', opacity: 0.95 }} />
+      <View style={{ position: 'absolute', left: '50%', top: '18%', marginLeft: -260, width: 520, height: 520, marginTop: -130, ...softBlob('rgba(255,170,80,0.6)') }} />
       {/* sàn tối + lưới */}
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '38%', backgroundColor: '#1B0B52', overflow: 'hidden' }}>
         <LinearGradient colors={['#7A2BD8', '#1B0B52']} style={StyleSheet.absoluteFill} />

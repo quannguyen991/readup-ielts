@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { useFonts } from 'expo-font';
+import React from 'react';
+import { Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { NeonIcon, NeonPill } from '@/components/neon/Neon';
+import { NeonBob } from '@/components/neon/NeonMotion';
+import { useSharedFont } from '@/components/neon/useSharedFont';
+
+const SHRIKHAND = { Shrikhand_400Regular: require('../../../assets/fonts/Shrikhand_400Regular.ttf') as number };
 import type { NeonIconId } from '@/components/neon/neon-art';
 import { OverviewBackdrop, type BackdropVariant } from '@/components/neon/OverviewBackdrop';
 
@@ -24,25 +27,11 @@ const LETTERS: [string, string][] = [
 
 /** Chữ nhiều màu theo từng ký tự, đổ khối bằng nhiều lớp bóng và có vầng sáng. Phông Shrikhand (chỉ Latin: dùng cho IELTS, SAT). */
 export function RainbowTitle({ text, size }: { text: string; size: number }) {
-  const [loaded] = useFonts({ Shrikhand_400Regular: require('../../../assets/fonts/Shrikhand_400Regular.ttf') });
-  const v = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(v, { toValue: 1, duration: 2400, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web' }),
-        Animated.timing(v, { toValue: 0, duration: 2400, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web' }),
-      ]),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [v]);
+  const loaded = useSharedFont('Shrikhand_400Regular', SHRIKHAND);
   const chars = Array.from(text);
   return (
-    <Animated.View
-      accessibilityRole="header"
-      accessibilityLabel={text}
-      style={{ flexDirection: 'row', justifyContent: 'center', transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [0, -6] }) }, { rotate: '-3deg' }] }}
-    >
+    <NeonBob amp={6} tilt={0} ms={2400} style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View accessibilityRole="header" accessibilityLabel={text} style={{ flexDirection: 'row', justifyContent: 'center', transform: [{ rotate: '-3deg' }] }}>
       {chars.map((ch, i) => {
         const [c, d] = LETTERS[i % LETTERS.length]!;
         const shadow =
@@ -58,7 +47,8 @@ export function RainbowTitle({ text, size }: { text: string; size: number }) {
           </Text>
         );
       })}
-    </Animated.View>
+      </View>
+    </NeonBob>
   );
 }
 

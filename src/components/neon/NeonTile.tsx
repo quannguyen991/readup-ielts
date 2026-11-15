@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import React from 'react';
+import { Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { NeonIcon, PixelText } from '@/components/neon/Neon';
+import { NeonBob, NeonTwinkle } from '@/components/neon/NeonMotion';
 import type { NeonIconId } from '@/components/neon/neon-art';
 
 /**
@@ -22,24 +23,13 @@ export const NEON_PALETTES: Record<string, NeonPalette> = {
   berry: ['#FF7AC8', '#B03FE8', '#4D5BFF'],
 };
 
-function useBob(ms: number, delay = 0) {
-  const v = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    try {
-      if (Platform.OS === 'web' && typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    } catch {
-      /* không có matchMedia */
-    }
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(v, { toValue: 1, duration: ms, delay, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web' }),
-        Animated.timing(v, { toValue: 0, duration: ms, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web' }),
-      ]),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [v, ms, delay]);
-  return v;
+/** Nút mũi tên tròn trắng vẽ bằng khung và chữ (nhẹ hơn một ảnh cho mỗi thẻ). */
+function ArrowDot({ size }: { size: number }) {
+  return (
+    <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#2A22B5' }}>
+      <Text style={{ fontSize: size * 0.55, lineHeight: size * 0.62, fontWeight: '900', color: '#2A22B5' }}>→</Text>
+    </View>
+  );
 }
 
 type Props = {
@@ -61,15 +51,20 @@ export function NeonTile({ title, sub, chip, index, icon, palette, onPress, minH
   const [c1, c2, c3] = palette;
   const phone = useWindowDimensions().width < 640;
   const small = !featured && phone;
-  const bob = useBob(2600);
-  const bob2 = useBob(1900, 400);
   const web = Platform.OS === 'web';
 
-  const dots = web
-    ? ({ backgroundImage: 'radial-gradient(rgba(255,255,255,0.45) 1.6px, transparent 1.7px)', backgroundSize: '18px 18px' } as object)
-    : null;
-  const stripes = web
-    ? ({ backgroundImage: 'repeating-linear-gradient(135deg, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 12px, transparent 12px, transparent 26px)' } as object)
+  // Web: MỘT lớp nền gồm nhiều gradient chồng nhau (đáy tối, ánh sáng, chấm bi, sọc, ba màu rực) thay cho năm phần tử riêng.
+  const webBg = web
+    ? ({
+        backgroundImage: [
+          'linear-gradient(180deg, rgba(20,8,70,0) 35%, rgba(20,8,70,0.62) 100%)',
+          'linear-gradient(135deg, rgba(255,255,255,0.26), rgba(255,255,255,0) 60%)',
+          'radial-gradient(rgba(255,255,255,0.3) 1.6px, transparent 1.7px)',
+          'repeating-linear-gradient(135deg, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 12px, transparent 12px, transparent 26px)',
+          `linear-gradient(135deg, ${c1}, ${c2}, ${c3})`,
+        ].join(', '),
+        backgroundSize: '100% 100%, 100% 100%, 18px 18px, auto, 100% 100%',
+      } as object)
     : null;
 
   const iconH = featured ? (phone ? 112 : 150) : small ? 70 : 96;
@@ -88,13 +83,17 @@ export function NeonTile({ title, sub, chip, index, icon, palette, onPress, minH
           borderWidth: 3,
           borderColor: 'rgba(255,255,255,0.7)',
           transform: [{ translateY: pressed ? 4 : hovered ? -4 : 0 }],
-          boxShadow: pressed ? `0 2px 0 ${c3}` : `0 7px 0 ${c3}, 0 20px 36px ${c2}55`,
+          boxShadow: pressed ? `0 2px 0 ${c3}` : `0 7px 0 ${c3}`,
+          ...(webBg ?? {}),
         }) as object
       }
     >
-      <LinearGradient colors={[c1, c2, c3]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
-      {stripes ? <View pointerEvents="none" style={[StyleSheet.absoluteFill, stripes]} /> : null}
-      {dots ? <View pointerEvents="none" style={{ position: 'absolute', right: 0, top: 0, width: '60%', height: '75%', opacity: 0.55, ...dots }} /> : null}
+      {web ? null : (
+        <>
+          <LinearGradient colors={[c1, c2, c3]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+          <LinearGradient pointerEvents="none" colors={['rgba(20,8,70,0)', 'rgba(20,8,70,0.62)']} start={{ x: 0, y: 0.35 }} end={{ x: 0, y: 1 }} style={StyleSheet.absoluteFill} />
+        </>
+      )}
       {/* chữ lót dưới: số thứ tự khổng lồ */}
       {index ? (
         <View pointerEvents="none" style={{ position: 'absolute', left: 10, bottom: featured ? -34 : -22 }}>
@@ -106,29 +105,30 @@ export function NeonTile({ title, sub, chip, index, icon, palette, onPress, minH
       {/* vòng sáng quanh icon */}
       <View
         pointerEvents="none"
-        style={{ position: 'absolute', right: featured ? 26 : 8, ...(small ? { top: 8 } : { top: '50%', marginTop: -ring / 2 }), width: ring, height: ring, borderRadius: ring, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.2)', borderWidth: 2, borderColor: 'rgba(255,255,255,0.5)', ...(web ? ({ boxShadow: '0 0 50px 10px rgba(255,255,255,0.35), inset 0 0 30px rgba(255,255,255,0.35)' } as object) : {}) }}
+        style={{ position: 'absolute', right: featured ? 26 : 8, ...(small ? { top: 8 } : { top: '50%', marginTop: -ring / 2 }), width: ring, height: ring, borderRadius: ring, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.2)', borderWidth: 2, borderColor: 'rgba(255,255,255,0.5)', }}
       >
         <View style={{ position: 'absolute', width: ring + 22, height: ring + 22, borderRadius: ring + 22, borderWidth: 2, borderStyle: 'dashed', borderColor: 'rgba(255,255,255,0.45)' }} />
-        <Animated.View style={{ transform: [{ translateY: bob.interpolate({ inputRange: [0, 1], outputRange: [3, -5] }) }, { rotate: bob.interpolate({ inputRange: [0, 1], outputRange: ['-4deg', '4deg'] }) }] }}>
+        <NeonBob amp={5} tilt={3} ms={2600}>
           <NeonIcon name={icon} height={iconH} />
-        </Animated.View>
+        </NeonBob>
       </View>
       {/* hạt sáng bay quanh */}
-      <Animated.View pointerEvents="none" style={{ position: 'absolute', right: featured ? ring + 6 : ring - 6, top: featured ? 18 : 10, transform: [{ translateY: bob2.interpolate({ inputRange: [0, 1], outputRange: [0, -6] }) }, { scale: bob2.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.15] }) }] }}>
+      {featured ? (
+        <>
+      <NeonTwinkle ms={1900} delay={400} style={{ position: 'absolute', right: featured ? ring + 6 : ring - 6, top: featured ? 18 : 10, pointerEvents: 'none' }}>
         <NeonIcon name="star4" height={featured ? 34 : 24} />
-      </Animated.View>
-      <Animated.View pointerEvents="none" style={{ position: 'absolute', right: 6, bottom: featured ? 54 : 46, transform: [{ translateY: bob2.interpolate({ inputRange: [0, 1], outputRange: [0, 6] }) }, { scale: bob2.interpolate({ inputRange: [0, 1], outputRange: [1.1, 0.85] }) }] }}>
+      </NeonTwinkle>
+      <NeonTwinkle ms={2300} delay={900} style={{ position: 'absolute', right: 6, bottom: featured ? 54 : 46, pointerEvents: 'none' }}>
         <NeonIcon name="sparkle" height={featured ? 36 : 26} />
-      </Animated.View>
+      </NeonTwinkle>
+        </>
+      ) : null}
 
       {chip ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 12, left: 14, paddingHorizontal: 9, paddingTop: 1, borderRadius: 8, backgroundColor: 'rgba(20,8,70,0.55)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.45)' }}>
           <PixelText size={featured ? 20 : 18}>{chip}</PixelText>
         </View>
       ) : null}
-
-      {/* lớp tối nhẹ ở đáy để chữ luôn đọc được */}
-      <LinearGradient pointerEvents="none" colors={['rgba(20,8,70,0)', 'rgba(20,8,70,0.62)']} start={{ x: 0, y: 0.35 }} end={{ x: 0, y: 1 }} style={StyleSheet.absoluteFill} />
 
       <View style={{ flex: 1, justifyContent: 'flex-end', padding: featured ? 20 : 14, paddingTop: 48, gap: 4 }}>
         <Text
@@ -154,14 +154,14 @@ export function NeonTile({ title, sub, chip, index, icon, palette, onPress, minH
             <Text className="font-nun-heavy" style={{ fontSize: 15, color: '#2A22B5' }}>
               {cta}
             </Text>
-            <NeonIcon name="next" height={32} />
+            <ArrowDot size={32} />
           </View>
         ) : null}
       </View>
 
       {!(featured && cta) ? (
         <View pointerEvents="none" style={{ position: 'absolute', right: 12, bottom: 12 }}>
-          <NeonIcon name="next" height={40} />
+          <ArrowDot size={38} />
         </View>
       ) : null}
     </Pressable>

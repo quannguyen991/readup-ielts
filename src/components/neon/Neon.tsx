@@ -1,74 +1,57 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Easing, Image, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { useFonts } from 'expo-font';
+import React from 'react';
+import { Image, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Asset } from 'expo-asset';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { NEON_ICONS, NEON_TITLES, NEON_TITLES_EN, type NeonIconId, type NeonTitleId } from '@/components/neon/neon-art';
+import { NeonBob, NeonTwinkle, softBlob } from '@/components/neon/NeonMotion';
+import { useSharedFont } from '@/components/neon/useSharedFont';
 import { useL } from '@/i18n/useL';
 
-/** Có nên bỏ chuyển động không (người dùng chọn giảm chuyển động trên hệ điều hành). */
-function reducedMotion(): boolean {
-  try {
-    return Platform.OS === 'web' && typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  } catch {
-    return false;
-  }
-}
-
-/** Giá trị chạy qua lại 0 → 1 → 0 mãi mãi; đứng yên khi giảm chuyển động. */
-function useLoop(ms: number, delay = 0) {
-  const v = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    if (reducedMotion()) return;
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(v, { toValue: 1, duration: ms, delay, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web' }),
-        Animated.timing(v, { toValue: 0, duration: ms, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web' }),
-      ]),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [v, ms, delay]);
-  return v;
-}
+const uriCache = new Map<string, string>();
 
 export function NeonIcon({ name, height, style }: { name: NeonIconId; height: number; style?: object }) {
   const a = NEON_ICONS[name];
-  return <Image source={a.src} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={[{ height, width: (height * a.w) / a.h }, style]} resizeMode="contain" />;
+  const width = (height * a.w) / a.h;
+  if (Platform.OS === 'web') {
+    // Web: thẻ <img> thuần (một nút DOM) thay cho `Image` của react-native-web (ba nút), vì mỗi trang có hàng chục icon.
+    let uri = uriCache.get(name);
+    if (!uri) {
+      uri = Asset.fromModule(a.src as number).uri;
+      uriCache.set(name, uri);
+    }
+    return React.createElement('img', { src: uri, alt: '', draggable: false, decoding: 'async', style: { height, width, objectFit: 'contain', display: 'block', pointerEvents: 'none', userSelect: 'none', ...(StyleSheet.flatten(style) as object) } });
+  }
+  return <Image source={a.src} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={[{ height, width }, style]} resizeMode="contain" />;
 }
 
 /** Chữ tiêu đề lớn (ảnh), nhấp nhô nhẹ. `label` là chữ đọc cho trình đọc màn hình. */
 export function NeonTitle({ id, label, maxWidth = 560, bob = true }: { id: NeonTitleId; label: string; maxWidth?: number; bob?: boolean }) {
   const { en } = useL();
   const a = (en ? NEON_TITLES_EN : NEON_TITLES)[id];
-  const v = useLoop(2400);
-  const y = v.interpolate({ inputRange: [0, 1], outputRange: [0, -7] });
-  const r = v.interpolate({ inputRange: [0, 1], outputRange: ['-0.6deg', '0.6deg'] });
   return (
-    <Animated.View style={{ width: '100%', maxWidth, alignSelf: 'center', transform: bob ? [{ translateY: y }, { rotate: r }] : [] }}>
+    <NeonBob amp={7} tilt={0.6} ms={2400} style={bob ? { width: '100%', maxWidth, alignSelf: 'center' } : { width: '100%', maxWidth, alignSelf: 'center' }}>
       <View accessibilityRole="header" accessibilityLabel={label} style={{ width: '100%', aspectRatio: a.w / a.h }}>
         <Image source={a.src} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ width: '100%', height: '100%' }} resizeMode="contain" />
       </View>
-    </Animated.View>
+    </NeonBob>
   );
 }
 
 function Twinkle({ icon, size, left, top, delay }: { icon: NeonIconId; size: number; left: `${number}%`; top: `${number}%`; delay: number }) {
-  const v = useLoop(1500 + (delay % 5) * 300, delay);
   return (
-    <Animated.View pointerEvents="none" style={{ position: 'absolute', left, top, opacity: v.interpolate({ inputRange: [0, 1], outputRange: [0.55, 1] }), transform: [{ scale: v.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.1] }) }] }}>
+    <NeonTwinkle ms={1500 + (delay % 5) * 300} delay={delay} style={{ position: 'absolute', left, top, pointerEvents: 'none' }}>
       <NeonIcon name={icon} height={size} />
-    </Animated.View>
+    </NeonTwinkle>
   );
 }
 
 /** Họa tiết trôi nhẹ lên xuống, mỗi cái một nhịp riêng. */
 function Floaty({ icon, size, left, top, delay, amp, tilt }: { icon: NeonIconId; size: number; left: `${number}%`; top: `${number}%`; delay: number; amp: number; tilt: number }) {
-  const v = useLoop(2600 + (delay % 7) * 350, delay);
   return (
-    <Animated.View pointerEvents="none" style={{ position: 'absolute', left, top, transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [0, -amp] }) }, { rotate: v.interpolate({ inputRange: [0, 1], outputRange: [`${tilt - 3}deg`, `${tilt + 3}deg`] }) }] }}>
+    <NeonBob amp={amp} tilt={Math.min(3, Math.abs(tilt) / 2)} ms={2600 + (delay % 7) * 350} delay={delay} style={{ position: 'absolute', left, top, pointerEvents: 'none' }}>
       <NeonIcon name={icon} height={size} />
-    </Animated.View>
+    </NeonBob>
   );
 }
 
@@ -123,13 +106,15 @@ export function NeonBackdrop({ dense = true, scene }: { dense?: boolean; scene?:
   return (
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>
       <LinearGradient colors={['#1A1566', '#2A22B5', '#4A30D8']} start={{ x: 0.2, y: 0 }} end={{ x: 0.8, y: 1 }} style={StyleSheet.absoluteFill} />
-      <View style={{ position: 'absolute', left: '22%', top: -150, width: '56%', height: 280, borderRadius: 999, backgroundColor: 'rgba(30,215,190,0.34)', ...(Platform.OS === 'web' ? ({ filter: 'blur(70px)' } as object) : {}) }} />
-      <View style={{ position: 'absolute', right: -90, bottom: -140, width: 420, height: 320, borderRadius: 999, backgroundColor: 'rgba(214,92,255,0.45)', ...(Platform.OS === 'web' ? ({ filter: 'blur(80px)' } as object) : {}) }} />
-      <View style={{ position: 'absolute', left: -120, bottom: -120, width: 320, height: 260, borderRadius: 999, backgroundColor: 'rgba(70,110,255,0.4)', ...(Platform.OS === 'web' ? ({ filter: 'blur(70px)' } as object) : {}) }} />
+      <View style={{ position: 'absolute', left: '14%', top: -190, width: '72%', height: 380, ...softBlob('rgba(30,215,190,0.5)') }} />
+      <View style={{ position: 'absolute', right: -170, bottom: -190, width: 560, height: 420, ...softBlob('rgba(214,92,255,0.62)') }} />
+      <View style={{ position: 'absolute', left: -190, bottom: -170, width: 460, height: 380, ...softBlob('rgba(70,110,255,0.55)') }} />
       {grid ? <View style={[StyleSheet.absoluteFill, grid]} /> : null}
-      {DOTS.slice(0, dense ? DOTS.length : 8).map(([t, l, sz], i) => (
-        <View key={i} style={{ position: 'absolute', top: `${t}%`, left: `${l}%`, width: sz, height: sz, backgroundColor: 'rgba(255,255,255,0.85)' }} />
-      ))}
+      {Platform.OS === 'web' ? (
+        <View style={[StyleSheet.absoluteFill, { backgroundImage: DOTS.slice(0, dense ? DOTS.length : 8).map(([t, l]) => `radial-gradient(circle at ${l}% ${t}%, rgba(255,255,255,0.85) 2px, transparent 2.6px)`).join(', ') } as object]} />
+      ) : (
+        DOTS.slice(0, dense ? DOTS.length : 8).map(([t, l, sz], i) => <View key={i} style={{ position: 'absolute', top: `${t}%`, left: `${l}%`, width: sz, height: sz, backgroundColor: 'rgba(255,255,255,0.85)' }} />)
+      )}
       <Twinkle icon="star4" size={30} left="6%" top="14%" delay={0} />
       <Twinkle icon="sparkle" size={40} left="88%" top="66%" delay={500} />
       <Twinkle icon="star4" size={22} left="80%" top="10%" delay={900} />
@@ -185,8 +170,7 @@ const PIXEL_FONT = { VT323_400Regular: require('../../../assets/fonts/VT323_400R
 
 /** Nạp phông pixel VT323 (OFL, có đủ dấu tiếng Việt). Gọi ở mọi nơi dùng `PixelText`, nạp một lần. */
 export function usePixelFont(): boolean {
-  const [loaded] = useFonts(PIXEL_FONT);
-  return loaded;
+  return useSharedFont('VT323_400Regular', PIXEL_FONT);
 }
 
 /** Chữ pixel kiểu máy tính cũ cho nhãn và tiêu đề mục; trong lúc phông chưa nạp dùng phông thường để không nhảy chữ. */
