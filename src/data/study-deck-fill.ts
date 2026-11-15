@@ -1,4 +1,5 @@
 import type { StudyDeck } from './study-decks';
+import englishDefinitions from './english-definitions.json';
 import exampleFill from './study-example-fill.json';
 
 /**
@@ -35,6 +36,8 @@ export function headword(raw: string): string {
 }
 
 const FILL = exampleFill as Record<string, Record<string, string>>;
+/** Định nghĩa tiếng Anh (kiểu từ điển học viên) cho các từ chưa có — khoá "<từ thường>|<nghĩa Việt>". Dùng cho chế độ "Nghĩa hiển thị: Tiếng Anh". */
+const DEFINITIONS = englishDefinitions as Record<string, string>;
 
 /** Bộ đã bổ sung câu ví dụ và làm sạch tên mục. Giữ nguyên các mục đã đúng. */
 export function fillStudyDeck(deck: StudyDeck): StudyDeck {
@@ -47,7 +50,8 @@ export function fillStudyDeck(deck: StudyDeck): StudyDeck {
     words: deck.words.map((w) => {
       const word = headword(w.word);
       const example = fills[w.word] ?? w.example;
-      return word === w.word && example === w.example ? w : { ...w, word, example };
+      const definitionEn = w.definitionEn?.trim() ? w.definitionEn : (DEFINITIONS[`${word.toLowerCase()}|${w.meaningVi}`] ?? w.definitionEn);
+      return word === w.word && example === w.example && definitionEn === w.definitionEn ? w : { ...w, word, example, definitionEn };
     }),
   };
 }
