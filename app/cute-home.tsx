@@ -3,7 +3,8 @@ import { Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-na
 import Svg, { Circle } from 'react-native-svg';
 import { router } from 'expo-router';
 
-import { BlueHero } from '@/components/home/BlueHero';
+import { NEON_COLORS, NeonHeading, NeonIcon, PixelText } from '@/components/neon/Neon';
+import { TodayPlanHero, TodayProgressCard } from '@/components/today/TodayPlan';
 import { PhoneHome } from '@/components/home/PhoneHome';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat } from '@/components/layout/LightHero';
@@ -80,14 +81,15 @@ function AreaCard({ area, countText }: { area: Area; countText: string }) {
       accessibilityLabel={`${area.title}. ${area.line}`}
       onPress={() => router.push(area.href as never)}
       style={({ pressed }: { pressed: boolean }) => ({
-        borderRadius: 24,
-        borderWidth: 1,
-        borderColor: '#F1EEFB',
+        borderRadius: 22,
+        borderWidth: 2,
+        borderColor: NEON_COLORS.indigo,
         backgroundColor: '#FFFFFF',
         overflow: 'hidden',
         opacity: pressed ? 0.94 : 1,
-        transform: [{ scale: pressed ? 0.98 : 1 }],
-      })}
+        transform: [{ translateY: pressed ? 3 : 0 }],
+        boxShadow: pressed ? '0 2px 0 rgba(42,34,181,0.38)' : '0 5px 0 rgba(42,34,181,0.38)',
+      } as object)}
     >
       <View style={{ height: 112 }}>
         <TileArt seed={'home-' + area.key} tone={area.tone} height={112} style={{ borderRadius: 0 }} />
@@ -157,7 +159,7 @@ export default function HomeScreen() {
       icon: 'book',
       href: '/practice',
       title: 'Reading',
-      line: L('Bài đọc IELTS và SAT, chấm ngay', 'IELTS and SAT passages, marked at once'),
+      line: L('IELTS · SAT', 'IELTS · SAT'),
       count: READABLE,
       unit: L('bài', 'passages'),
     },
@@ -167,7 +169,7 @@ export default function HomeScreen() {
       icon: 'pencil',
       href: '/write',
       title: 'Writing',
-      line: L('AI góp ý theo tiêu chí IELTS', 'AI feedback on IELTS criteria'),
+      line: L('AI chấm bài', 'AI feedback'),
       count: WRITING_PROMPTS.length,
       unit: L('đề', 'prompts'),
     },
@@ -177,7 +179,7 @@ export default function HomeScreen() {
       icon: 'grid',
       href: '/sat',
       title: 'SAT',
-      line: L('Đáp án tính bằng code', 'Answers computed by code'),
+      line: L('Câu hỏi SAT', 'SAT questions'),
       count: SAT_QUESTIONS,
       unit: L('câu', 'questions'),
     },
@@ -187,7 +189,7 @@ export default function HomeScreen() {
       icon: 'volume',
       href: '/sentence',
       title: L('Luyện câu', 'Sentences'),
-      line: L('Chép chính tả và dịch câu', 'Dictation and translation'),
+      line: L('Chép · dịch', 'Dictate · translate'),
       count: SENTENCES,
       unit: L('câu', 'sentences'),
     },
@@ -197,7 +199,7 @@ export default function HomeScreen() {
       icon: 'letters',
       href: '/vocabulary',
       title: L('Sổ từ vựng', 'Word notebook'),
-      line: L('Mỗi từ lưu kèm câu gặp nó', 'Each word saved with its sentence'),
+      line: L('Từ kèm câu', 'Words with context'),
       count: vocabCount,
       unit: L('từ', 'words'),
     },
@@ -207,7 +209,7 @@ export default function HomeScreen() {
       icon: 'gauge',
       href: '/math',
       title: 'SAT Math',
-      line: L('Luyện Toán SAT theo từng chặng', 'SAT Math practice, one stage at a time'),
+      line: L('Toán SAT', 'SAT Math'),
       count: CURRICULUM_TOTALS.units,
       unit: L('bài', 'lessons'),
     },
@@ -217,7 +219,7 @@ export default function HomeScreen() {
       icon: 'target',
       href: '/hsa',
       title: 'HSA · English',
-      line: L('20 đề mô phỏng và luyện theo dạng', '20 mock papers and focused practice'),
+      line: L('Đề mô phỏng', 'Mock papers'),
       count: 20,
       unit: L('đề', 'papers'),
     },
@@ -227,7 +229,7 @@ export default function HomeScreen() {
       icon: 'compass',
       href: '/toeic',
       title: 'TOEIC · TOEFL',
-      line: L('Đang cập nhật nội dung mới', 'Content updating'),
+      line: L('Sắp có', 'Coming soon'),
       count: 0,
       unit: L('kỳ thi', 'exams'),
     },
@@ -252,6 +254,18 @@ export default function HomeScreen() {
         streak={streak}
         targetBand={roadmapTarget ?? profileTarget}
         recommended={recommended}
+        planSlot={
+          <TodayPlanHero
+            wide={false}
+            greeting={greeting}
+            displayName={displayName}
+            recommended={recommended ? { id: recommended.id, title: recommended.title } : null}
+            due={due}
+            minutes={minutes}
+            goal={goal}
+            streak={streak}
+          />
+        }
         en={en}
         L={L}
         onSearch={showSearch}
@@ -263,27 +277,15 @@ export default function HomeScreen() {
   return (
     <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 56 }} showsVerticalScrollIndicator={false}>
       <View style={{ width: '100%', maxWidth: 1180, alignSelf: 'center', paddingHorizontal: wide ? 32 : 16, paddingTop: wide ? 28 : 16, gap: wide ? 28 : 20 }}>
-        <BlueHero
+        <TodayPlanHero
           wide={width >= 768}
-          eyebrow={`${greeting}, ${displayName}`}
-          chip={L('Mình học', 'Ready for')}
-          title={L('tiếp nhé?', 'your next win?')}
-          subtitle={
-            recommended
-              ? L(`Bài kế tiếp: ${recommended.title}`, `Next up: ${recommended.title}`)
-              : L(`Mục tiêu hôm nay ${fmt(goal)} phút.`, `Today's goal: ${fmt(goal)} min.`)
-          }
-          primary={
-            recommended
-              ? { label: L('Học tiếp', 'Continue'), onPress: () => router.push(`/read/${recommended.id}` as never) }
-              : { label: L('Mở luyện đọc', 'Open reading'), onPress: () => router.push('/luyen-doc' as never) }
-          }
-          secondary={{ label: L('Xem tiến độ', 'View progress'), onPress: () => router.push('/progress' as never) }}
-          footer={[
-            <HeroStat key="streak" value={fmt(streak)} label={L('ngày liên tiếp', 'day streak')} />,
-            <HeroStat key="min" value={fmt(minutes)} label={L('phút hôm nay', 'min today')} />,
-            <HeroStat key="due" value={fmt(due)} label={L('từ đến hạn', 'words due')} />,
-          ]}
+          greeting={greeting}
+          displayName={displayName}
+          recommended={recommended ? { id: recommended.id, title: recommended.title } : null}
+          due={due}
+          minutes={minutes}
+          goal={goal}
+          streak={streak}
         />
 
         {/* Thanh ôn lặp ngắt quãng: luôn hiện trên trang Hôm nay, bấm là vào lịch ôn. */}
@@ -295,32 +297,33 @@ export default function HomeScreen() {
             flexDirection: 'row',
             alignItems: 'center',
             gap: 12,
-            borderRadius: 20,
-            borderWidth: 1,
-            borderColor: '#E5DDFF',
+            borderRadius: 22,
+            borderWidth: 2,
+            borderColor: NEON_COLORS.indigo,
             backgroundColor: '#FFFFFF',
-            paddingHorizontal: 18,
-            paddingVertical: 14,
-            opacity: pressed ? 0.9 : 1,
+            paddingHorizontal: 16,
+            paddingVertical: 12,
+            opacity: pressed ? 0.92 : 1,
+            boxShadow: '0 5px 0 rgba(42,34,181,0.38)',
           } as object)}
         >
-          <View style={{ width: 40, height: 40, borderRadius: 14, backgroundColor: '#F1EBFF', alignItems: 'center', justifyContent: 'center' }}>
-            <Icon name="clock" size={20} color="#6A4BD9" />
+          <View style={{ width: 48, height: 48, borderRadius: 14, backgroundColor: NEON_COLORS.indigo, alignItems: 'center', justifyContent: 'center' }}>
+            <NeonIcon name="clock" height={30} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text className="font-heavy text-body text-ink">{L('Ôn lặp ngắt quãng', 'Spaced review')}</Text>
+            <PixelText size={24} color={NEON_COLORS.indigo}>{L('Ôn từ', 'Review')}</PixelText>
             <Text className="font-sans text-label text-muted" numberOfLines={1}>
               {due > 0
-                ? L(`${fmt(due)} từ đến hạn hôm nay`, `${fmt(due)} words due today`)
-                : L('Chưa có từ đến hạn. Xem lịch ôn.', 'Nothing due yet. See the schedule.')}
+                ? L(`${fmt(due)} từ đến hạn`, `${fmt(due)} words due`)
+                : L('Chưa có từ đến hạn', 'Nothing due')}
             </Text>
           </View>
-          <Icon name="chevron-right" size={18} color="#6A4BD9" />
+          <NeonIcon name="next" height={30} />
         </Pressable>
 
         <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 28 : 20, alignItems: 'flex-start' }}>
           <View style={{ flex: wide ? 1 : undefined, width: wide ? undefined : '100%', minWidth: 0, gap: 14 }}>
-            <Text className="font-heavy text-sectionTitle text-ink">{L('Khu học', 'Study areas')}</Text>
+            <NeonHeading title={L('Khu học', 'Study areas')} icon="book" />
             <Grid columns={3} tabletColumns={2} mobileColumns={2} gap={14}>
               {areas.map((area) => (
                 <AreaCard key={area.key} area={area} countText={`${fmt(area.count)} ${area.unit}`} />
@@ -328,82 +331,18 @@ export default function HomeScreen() {
             </Grid>
           </View>
 
-          <View style={{ width: wide ? 330 : '100%', backgroundColor: '#FFFFFF', borderRadius: 24, borderWidth: 1, borderColor: '#F1EEFB', padding: 20, gap: 14 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text className="font-heavy text-cardTitle text-ink">{L('Hôm nay', 'Today')}</Text>
-              <Text className="font-sans text-label text-muted">{goalLine}</Text>
-            </View>
-
-            <View style={{ alignSelf: 'center', width: 150, height: 150, alignItems: 'center', justifyContent: 'center' }}>
-              <Ring size={150} stroke={12} pct={pct} />
-              <View style={{ position: 'absolute', alignItems: 'center' }}>
-                <Text className="font-heavy text-ink" style={{ fontSize: 34, lineHeight: 40 }}>
-                  {fmt(minutes)}
-                </Text>
-                <Text className="font-sans text-label text-muted">{L(`/ ${fmt(goal)} phút`, `/ ${fmt(goal)} min`)}</Text>
-              </View>
-            </View>
-
-            <View style={{ borderTopWidth: 1, borderTopColor: '#F1EEFB', paddingTop: 14 }}>
-              <Text className="font-strong text-label text-ink">{L('7 ngày vừa qua', 'Last 7 days')}</Text>
-              <View style={{ flexDirection: 'row', alignItems: 'flex-end', height: 72, marginTop: 10, gap: 8 }}>
-                {recentDays.map((day, index) => {
-                  const barHeight = day.minutes > 0 ? Math.max(8, (day.minutes / maxDay) * 56) : 6;
-                  const weekday = new Date(`${day.date}T12:00:00`).getDay();
-                  const isToday = index === recentDays.length - 1;
-                  return (
-                    <View key={`${day.date}-${index}`} style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end', gap: 6 }}>
-                      <View style={{ width: '100%', maxWidth: 24, height: barHeight, borderRadius: 999, backgroundColor: isToday ? '#E8708A' : '#B9A9FF' }} />
-                      <Text className="font-sans text-muted" style={{ fontSize: 11 }}>
-                        {labels[weekday]}
-                      </Text>
-                    </View>
-                  );
-                })}
-              </View>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-                <Text className="font-sans text-label text-muted">{`${fmt(weeklyMinutes)} ${L('phút học', 'study minutes')}`}</Text>
-                <Text className="font-sans text-label text-muted">{`${fmt(weeklyQuestions)} ${L('câu', 'questions')}`}</Text>
-              </View>
-            </View>
-
-            <View style={{ borderRadius: 16, backgroundColor: '#F5F2FF', padding: 12 }}>
-              <Text className="font-strong text-label text-ink">
-                {latestSession
-                  ? L(`Lượt gần nhất · ${latestSession.articleTitle}`, `Last session · ${latestSession.articleTitle}`)
-                  : L('Bài luyện đầu tiên đang chờ bạn', 'Your first practice is waiting')}
-              </Text>
-              <Text className="font-sans text-label text-muted" style={{ marginTop: 2 }}>
-                {latestSession
-                  ? L(
-                      `${latestSession.rawScore}/${latestSession.total} câu đúng · ${new Date(latestSession.finishedAt).toLocaleDateString('vi-VN')}`,
-                      `${latestSession.rawScore}/${latestSession.total} correct · ${new Date(latestSession.finishedAt).toLocaleDateString('en-US')}`,
-                    )
-                  : L('Mỗi buổi học sẽ giúp trang này hiểu bạn hơn.', 'Your dashboard will get more personal as you practise.')}
-              </Text>
-            </View>
-
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => router.push('/vocabulary/spaced-repetition' as never)}
-              style={({ pressed }: { pressed: boolean }) => ({
-                height: 48,
-                borderRadius: 999,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#1B1140',
-                opacity: pressed ? 0.92 : 1,
-              })}
-            >
-              <Text className="font-strong" style={{ fontSize: 15, color: '#FFFFFF' }}>
-                {due > 0 ? L(`Ôn ${fmt(due)} từ`, `Review ${fmt(due)} words`) : L('Xem lịch ôn', 'See review schedule')}
-              </Text>
-            </Pressable>
-          </View>
+          <TodayProgressCard
+            wide={wide}
+            minutes={minutes}
+            goal={goal}
+            recentDays={recentDays}
+            latest={latestSession ? { title: latestSession.articleTitle, correct: latestSession.rawScore, total: latestSession.total, finishedAt: latestSession.finishedAt } : null}
+            due={due}
+          />
         </View>
 
         <View style={{ gap: 12 }}>
-          <Text className="font-heavy text-cardTitle text-ink">{L('Góc học tập của bạn', 'Your study corner')}</Text>
+          <NeonHeading title={L('Góc học', 'Study corner')} icon="heart" />
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {[
               { label: L('Lộ trình cá nhân', 'My study plan'), icon: 'calendar' as const, href: '/plan' },
@@ -420,12 +359,13 @@ export default function HomeScreen() {
                   gap: 9,
                   minHeight: 46,
                   borderRadius: 999,
-                  borderWidth: 1,
-                  borderColor: '#EAE4F8',
+                  borderWidth: 2,
+                  borderColor: NEON_COLORS.indigo,
                   backgroundColor: '#FFFFFF',
                   paddingHorizontal: 16,
                   opacity: pressed ? 0.92 : 1,
-                })}
+                  boxShadow: '0 4px 0 rgba(42,34,181,0.38)',
+                } as object)}
               >
                 <Icon name={item.icon} size={17} color="#6A4BD9" strokeWidth={2.2} />
                 <Text className="font-strong text-label text-ink">{item.label}</Text>

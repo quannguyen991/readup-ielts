@@ -3,8 +3,8 @@ import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-nati
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
-import { HeroShell } from '@/components/layout/HeroShell';
-import { CTA_GRADIENT } from '@/components/layout/LightHero';
+import { NeonWindow } from '@/components/neon/Neon';
+import { DailyPlanStage } from '@/components/today/DailyPlanStage';
 import { Screen } from '@/components/layout/Screen';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { Appear } from '@/components/motion/Motion';
@@ -49,7 +49,7 @@ export default function LearningPathScreen() {
   const hydrated = useHydrated();
   const { width } = useWindowDimensions();
   // Hai cột chỉ khi đủ chỗ: khung trò chuyện trợ lý chiếm thêm 340px ở máy tính.
-  const wide = width >= 1480;
+  const wide = width >= 1100;
   const compactPicker = width < 560;
 
   const planInput = useRoadmapStore((s) => s.input);
@@ -112,17 +112,11 @@ export default function LearningPathScreen() {
 
   /* ---------------------------------------------------------------- bảng chọn lộ trình */
   const selector = (
-    <View style={{ borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', padding: compactPicker ? 16 : 22, gap: 20, boxShadow: '0 10px 28px rgba(106,75,217,0.08)' } as object}>
+    <NeonWindow title={L('Lộ trình', 'Path')} icon="rocket" padded={false}>
+    <View style={{ padding: compactPicker ? 14 : 22, gap: 20 }}>
       <View style={{ flexDirection: compactPicker ? 'column' : 'row', alignItems: compactPicker ? 'stretch' : 'center', justifyContent: 'space-between', gap: 14 }}>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
-            <View style={{ width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: P.goldLight }}>
-              <Icon name="compass" size={14} color={P.goldDeep} strokeWidth={2.4} />
-            </View>
-            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.5, color: P.goldDeep }}>{L('LỘ TRÌNH CỦA BẠN', 'YOUR LEARNING PATH')}</Text>
-          </View>
-          <Text className="font-heavy" style={{ marginTop: 7, fontSize: 20, lineHeight: 26, color: P.navy }}>{L('Chọn điểm bắt đầu', 'Choose your starting point')}</Text>
-          <Text className="font-sans" style={{ marginTop: 3, fontSize: 13, lineHeight: 19, color: P.muted }}>{L('Điều chỉnh kỳ thi và trình độ theo mục tiêu của bạn.', 'Set the exam and level that match your goal.')}</Text>
+          <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 26, color: P.navy }}>{L('Điểm bắt đầu', 'Starting point')}</Text>
         </View>
         <View style={{ width: compactPicker ? '100%' : 250 }}>
           <ExamSwitch value={exam} onChange={setExam} />
@@ -131,18 +125,17 @@ export default function LearningPathScreen() {
 
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 9 }}>
-          <Text className="font-heavy" style={{ fontSize: 15, color: P.navy }}>{L('Trình độ hiện tại', 'Current level')}</Text>
-          {planLevel ? <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 5, backgroundColor: P.goldWash }}><Icon name="target" size={12} color={P.goldDeep} /><Text className="font-strong" style={{ fontSize: 11, color: P.goldDeep }}>{L('Gợi ý cho bạn', 'Suggested for you')}</Text></View> : null}
+          <Text className="font-heavy" style={{ fontSize: 15, color: P.navy }}>{L('Trình độ', 'Level')}</Text>
+          {planLevel ? <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 5, backgroundColor: P.goldWash }}><Icon name="target" size={12} color={P.goldDeep} /><Text className="font-strong" style={{ fontSize: 11, color: P.goldDeep }}>{L('Gợi ý', 'Suggested')}</Text></View> : null}
         </View>
         <LevelPicker levels={levels} value={level.id} planLevelId={planLevel?.id ?? null} onChange={(id) => setLevel(exam, id)} compact={compactPicker} />
-        <Text className="font-sans" style={{ marginTop: 9, fontSize: 13, lineHeight: 19, color: P.muted }}>{en ? level.blurb.en : level.blurb.vi}</Text>
       </View>
 
       <View style={{ borderRadius: 17, backgroundColor: P.goldWash, borderWidth: 1, borderColor: P.line, padding: compactPicker ? 13 : 16 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' }}><Icon name="gauge" size={16} color={P.gold} strokeWidth={2.4} /></View>
-            <Text className="font-heavy" style={{ fontSize: 14, color: P.navy }}>{L('Tiến độ học', 'Your progress')}</Text>
+            <Text className="font-heavy" style={{ fontSize: 14, color: P.navy }}>{L('Tiến độ', 'Progress')}</Text>
           </View>
           <Text className="font-heavy" style={{ fontSize: 20, color: P.navy }}>{prog.done}<Text className="font-semi" style={{ fontSize: 13, color: P.muted }}> / {prog.total} {L('bài', 'lessons')}</Text></Text>
         </View>
@@ -159,40 +152,7 @@ export default function LearningPathScreen() {
         </View>
       </View>
     </View>
-  );
-
-  /* ---------------------------------------------------------------- cuống vé "học tiếp" (điện thoại) */
-  const nextStub = (
-    <View style={{ marginTop: 14, borderRadius: 20, backgroundColor: P.navy, overflow: 'hidden' }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 7, left: 7, right: 7, bottom: 7, borderRadius: 14, borderWidth: 1, borderColor: 'rgba(226,200,143,0.3)' }} />
-      <View style={{ padding: 18 }}>
-        {prog.next ? (
-          <>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: P.goldLight }}>
-              {L(`HỌC TIẾP · PART ${nextPartNo} · ${(nextPart?.title.vi ?? '').toUpperCase()}`, `UP NEXT · PART ${nextPartNo} · ${(nextPart?.title.en ?? '').toUpperCase()}`)}
-            </Text>
-            <Text className="font-heavy" style={{ marginTop: 6, fontSize: 20, lineHeight: 26, color: '#FFFFFF' }}>
-              {en ? prog.next.title.en : prog.next.title.vi}
-            </Text>
-            <Text className="font-semi" style={{ marginTop: 2, fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
-              {en ? KIND_SKILL[prog.next.target.kind].en : KIND_SKILL[prog.next.target.kind].vi} · {L(`~${prog.next.minutes} phút`, `~${prog.next.minutes} min`)}
-            </Text>
-            <Pressable
-              accessibilityRole="link"
-              onPress={() => open(prog.next!)}
-              style={{ marginTop: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderRadius: 10, paddingVertical: 12, backgroundColor: P.goldLight }}
-            >
-              <Text className="font-heavy" style={{ fontSize: 15, color: P.navy }}>
-                {primaryLabel(prog.statuses[prog.next.id], L)}
-              </Text>
-              <Icon name="arrow-right" size={16} color={P.navy} strokeWidth={2.4} />
-            </Pressable>
-          </>
-        ) : (
-          <AllDone level={level} levels={levels} onNext={(id) => setLevel(exam, id)} />
-        )}
-      </View>
-    </View>
+    </NeonWindow>
   );
 
   /* ---------------------------------------------------------------- đường mòn */
@@ -212,15 +172,7 @@ export default function LearningPathScreen() {
           renderDetail={(n, _idx, dark) => detailFor(n, dark)}
         />
       ))}
-      <View style={{ marginTop: 28, flexDirection: 'row', alignItems: 'flex-start', gap: 8, borderTopWidth: 1, borderColor: P.line, paddingTop: 14 }}>
-        <Icon name="info" size={14} color={P.goldDeep} />
-        <Text className="font-sans" style={{ flex: 1, fontSize: 13, lineHeight: 19, color: P.muted }}>
-          {L(
-            'Không bài nào bị khoá.',
-            'Nothing is locked.',
-          )}
-        </Text>
-      </View>
+
       {hydrated ? (
         <PathPlanner exam={exam} level={level} statuses={prog.statuses} focusExtra={focusExtra} plan={planRhythm} compact={compactPicker} />
       ) : null}
@@ -232,36 +184,42 @@ export default function LearningPathScreen() {
       <View style={{ paddingBottom: 40 }}>
         {/* ------------------------------------------------ đầu trang: một lối vào cho cả lộ trình */}
         <Appear>
-          {/* Cùng khuôn hero với các trang khác: viền gradient, hoạ tiết pastel, chữ mực tối. */}
-          <HeroShell radius={26} style={{ padding: 22, gap: 10 }}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: 'rgba(27,17,64,0.75)' }}>
-              {L('LỘ TRÌNH HỌC', 'LEARNING PATH')}
-            </Text>
-            <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: '#1B1140' }}>
-              {L('Học theo trình độ, từng Part một', 'Study level by level, one Part at a time')}
-            </Text>
-            <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: 'rgba(27,17,64,0.85)' }}>
-              {L('Mỗi Part một chủ đề, đủ các kỹ năng. Lịch học của bạn đi theo nhịp đã chọn.', 'One topic per Part, every skill. Your schedule follows the rhythm you picked.')}
-            </Text>
-            <Pressable accessibilityRole="link" onPress={() => router.push('/plan' as never)} style={({ pressed }: { pressed: boolean }) => ({ alignSelf: 'flex-start', marginTop: 4, opacity: pressed ? 0.92 : 1 })}>
-              <LinearGradient colors={CTA_GRADIENT} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, height: 52, borderRadius: 999 }}>
-                <Icon name="calendar" size={16} color="#FFFFFF" strokeWidth={2.2} />
-                <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
-                  {planInput ? L('Xem và sửa lộ trình của bạn', 'View and edit your plan') : L('Lập lộ trình của bạn', 'Build your plan')}
-                </Text>
-                <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2.2} />
-              </LinearGradient>
-            </Pressable>
-          </HeroShell>
+          <DailyPlanStage
+            art="lo-trinh"
+            wide={wide}
+            dateLabel={`${L('Lộ trình học', 'Learning path')} · ${level.label}`}
+            headline={prog.next ? L('Hôm nay học tiếp.', 'Pick up where you left off.') : L('Đã đi hết trình độ này.', 'You have finished this level.')}
+            chips={[
+              { label: `${prog.done}/${prog.total} · ${pct}%`, icon: 'calendar' },
+              { label: planInput ? L('Sửa lộ trình', 'Edit plan') : L('Lập lộ trình', 'Build plan'), onPress: () => router.push('/plan' as never) },
+            ]}
+            tasks={
+              prog.next
+                ? [
+                    {
+                      id: prog.next.id,
+                      tag: `PART ${nextPartNo} · ${en ? nextPart?.title.en ?? '' : nextPart?.title.vi ?? ''}`,
+                      tagColor: '#6A4BD9',
+                      title: en ? prog.next.title.en : prog.next.title.vi,
+                      why: en ? prog.next.desc.en : prog.next.desc.vi,
+                      minutes: prog.next.minutes,
+                      href: targetHref(prog.next.target) ?? '/practice',
+                      done: false,
+                    },
+                  ]
+                : []
+            }
+            empty={<AllDone level={level} levels={levels} onNext={(id) => setLevel(exam, id)} />}
+          />
         </Appear>
 
         {wide ? (
           <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'flex-start', gap: 22 }}>
-            <View style={{ flex: 1, minWidth: 0, maxWidth: 760 }}>
+            <View style={{ flex: 1, minWidth: 0 }}>
               <Appear index={1}>{selector}</Appear>
               {trail}
             </View>
-            <View style={{ width: 340, position: Platform.OS === 'web' ? 'sticky' : 'relative', top: 16 } as object}>
+            <View style={{ width: 320, position: Platform.OS === 'web' ? 'sticky' : 'relative', top: 16 } as object}>
               <Appear index={2}>
                 <SidePanel
                   level={level}
@@ -282,7 +240,6 @@ export default function LearningPathScreen() {
         ) : (
           <View style={{ marginTop: 18, width: '100%', maxWidth: 720, alignSelf: 'center' }}>
             <Appear index={1}>{selector}</Appear>
-            {nextStub}
             {trail}
           </View>
         )}
@@ -343,12 +300,12 @@ function SidePanel({
   const part = partOfNode(level, node.id)!;
   const partNo = level.parts.indexOf(part) + 1;
   return (
-    <View style={{ borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', overflow: 'hidden', boxShadow: '0 12px 32px rgba(106,75,217,0.10)' } as object}>
+    <NeonWindow title={L('Bài chọn', 'Selected')} icon="gem" padded={false}>
       <View style={{ padding: 22, paddingBottom: 16 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <View style={{ borderRadius: 999, backgroundColor: P.goldWash, paddingHorizontal: 10, paddingVertical: 5 }}><Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 1.5, color: P.goldDeep }}>BAND 9</Text></View>
           <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.2, color: P.goldDeep }}>
-            {prog.next ? (isNext ? L('HỌC TIẾP', 'UP NEXT') : L('BÀI ĐANG CHỌN', 'SELECTED')) : L('ĐÃ XONG HẾT', 'ALL DONE')}
+            {prog.next ? (isNext ? L('HỌC TIẾP', 'NEXT') : L('ĐANG CHỌN', 'SELECTED')) : L('ĐÃ XONG HẾT', 'ALL DONE')}
           </Text>
         </View>
         {!prog.next ? (
@@ -395,6 +352,6 @@ function SidePanel({
           );
         })}
       </View>
-    </View>
+    </NeonWindow>
   );
 }

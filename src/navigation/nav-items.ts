@@ -78,7 +78,6 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'learning-path', label: 'Lộ trình học', href: '/lo-trinh-hoc', icon: 'compass' },
           { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
           { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },
-          { key: 'clips', label: 'Clip tiếng Anh', href: '/clip', icon: 'play' },
         ],
       },
       {
@@ -292,7 +291,6 @@ export const NAV_LABEL_EN: Record<string, string> = {
   progress: 'Progress',
   errors: 'Mistake log',
   mastery: 'Evidence book',
-  clips: 'English clips',
   'luyen-doc': 'Reading practice',
   ielts: 'IELTS',
   'mock-tests': 'Reading mock tests',

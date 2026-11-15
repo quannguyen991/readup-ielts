@@ -4,12 +4,15 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
+import { NeonHeading, NeonIcon, NeonWindow } from '@/components/neon/Neon';
+import type { NeonIconId } from '@/components/neon/neon-art';
+import { MyRankCard, SeasonHero } from '@/components/leaderboard/SeasonStyle';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { ProfileEffect } from '@/components/profile/ProfileEffect';
-import { Badge, Button, Card, Icon, ProgressBar, SectionHeader } from '@/components/ui';
+import { Badge, Button, Card, Icon } from '@/components/ui';
 import { sfx } from '@/services/audio/sfx';
 import { demoLeaderboard } from '@/services/gamification/demo-board';
 import { goldenOf, vnToday } from '@/services/gamification/golden';
@@ -108,24 +111,7 @@ export default function LeaderboardScreen() {
         </View>
       ) : null}
       <Appear>
-        <View className="flex-row items-center gap-3">
-        <View className="min-w-0 flex-1">
-        <View className="flex-row flex-wrap items-center gap-3">
-          <Text className="font-heavy text-pageTitle text-ink">{L('🏆 Xếp hạng', '🏆 Leaderboard')}</Text>
-          <View className="flex-1" />
-          <View className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F3F0FB' }} accessibilityLabel={L(`Đang có ${stars} sao`, `You have ${stars} stars`)}>
-            <Text style={{ fontSize: 14 }}>⭐</Text>
-            <Text className="font-heavy text-body text-ink">{formatStars(stars)}</Text>
-          </View>
-          <Button label={L('Đổi quà', 'Rewards')} variant="outline" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
-          <Button label={L('Hồ sơ', 'Profile')} variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
-        </View>
-        <Text className="mt-1 font-sans text-body text-muted">
-          {L('Điểm = thời gian học + số câu. Top 10 tháng được thưởng sao.', 'Points = study time + questions. Monthly top 10 win stars.')}
-        </Text>
-        </View>
-        <PageStickers scene="progress" />
-        </View>
+        <SeasonHero stars={stars} today={today} dailyCap={dailyCapFor(todayKey)} />
       </Appear>
 
       <Appear index={1}>
@@ -135,86 +121,48 @@ export default function LeaderboardScreen() {
       <View className="mt-5">
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={16}>
           <Appear index={2} style={{ height: '100%' }}>
-            <Card className="h-full overflow-hidden" padded={false}>
-              <ProfileCover cover={findItem(coverId)?.cover ?? null} height={84} />
-              <View className="px-4 pb-4">
-                <View className="flex-row items-start justify-between gap-3">
-                  <View className="min-w-0 flex-1 flex-row items-start gap-3">
-                    <View style={{ marginTop: -30, borderRadius: 999, borderWidth: 3, borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
-                      <AvatarBadge avatarId={avatarId} name={name} size={60} skin={skin} />
-                    </View>
-                    <View className="min-w-0 flex-1 pt-2">
-                      <View className="flex-row items-center gap-2">
-                        <View aria-hidden>
-                          <SealIcon name="trophy" color="#F2B632" size={30} />
-                        </View>
-                        <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink" numberOfLines={1}>
-                          {tierName(tier, locale)}
-                        </Text>
-                      </View>
-                      <Text className="font-sans text-label text-muted">
-                        {'★'.repeat(tier.stars)}
-                        <Text style={{ color: color.subtle }}>{'★'.repeat(5 - tier.stars)}</Text>
-                      </Text>
-                    </View>
-                  </View>
-                  <View className="pt-2">
-                    <Badge label={L(`Reset sau ${daysUntilReset(today)} ngày`, `Resets in ${daysUntilReset(today)} days`)} tone="neutral" shape="tag" />
-                  </View>
-                </View>
-
-                <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 13 }}>
-                  {L('Tổng điểm tháng này', 'Total points this month')}
-                </Text>
-                <Text className="font-heavy text-ink" style={{ fontSize: 40, lineHeight: 46 }}>
-                  {month}
-                </Text>
-
-                {upcoming ? (
-                  <>
-                    <ProgressBar className="mt-2" value={upcoming.tier.from > 0 ? (month / upcoming.tier.from) * 100 : 100} tone="accent" />
-                    <Text className="mt-1.5 font-sans text-label text-muted">
-                      {L(`Còn ${upcoming.remaining} điểm nữa lên ${upcoming.tier.name}.`, `${upcoming.remaining} more points to reach ${tierName(upcoming.tier, locale)}.`)}
-                    </Text>
-                  </>
-                ) : (
-                  <Text className="mt-2 font-sans text-label text-muted">{L('Bậc cao nhất — giữ nhịp thôi.', 'Top tier — just keep it up.')}</Text>
-                )}
-
-                {/* Nói thẳng cách tính, để không ai phải đoán */}
-                <View className="mt-4 gap-1 rounded-panel bg-surfaceAlt p-3">
-                  <Text className="font-sans text-label text-muted">
-                    {L('Hệ số hôm nay:', "Today's multiplier:")} 1 + 🔥 {(multiplier - 1).toFixed(1)} = <Text className="font-heavy text-ink">{multiplier}</Text> ({L('tối đa', 'max')} {MAX_MULTIPLIER})
-                  </Text>
-                  <Text className="font-sans text-label text-muted">
-                    {L('Điểm hôm nay:', "Today's points:")} {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> ({L('tối đa', 'max')} {dailyCapFor(todayKey)})
-                  </Text>
-                  <Text className="font-sans text-label text-subtle">{L('1 điểm/phút học, 0,5 điểm/câu.', '1 pt per minute, 0.5 pt per question.')}</Text>
-                </View>
-              </View>
-            </Card>
+            <MyRankCard
+              name={name}
+              avatarId={avatarId}
+              skin={skin}
+              tierTitle={tierName(tier, locale)}
+              tierStars={tier.stars}
+              month={month}
+              rank={me && data ? data.board.findIndex((r) => r.id === me) + 1 : 0}
+              upcoming={upcoming ? { remaining: upcoming.remaining, name: tierName(upcoming.tier, locale), pct: upcoming.tier.from > 0 ? Math.min(100, (month / upcoming.tier.from) * 100) : 100 } : null}
+              multiplier={multiplier}
+              todayEffort={todayEffort}
+              todayPoints={todayPoints}
+              dailyCap={dailyCapFor(todayKey)}
+              resetDays={daysUntilReset(today)}
+            />
           </Appear>
 
           <Appear index={2} style={{ height: '100%' }}>
-            <Card className="h-full">
-              <SectionHeader title={L('Hoạt động học tập', 'Study activity')} icon="flame" iconTone="warning" />
-              <View className="mt-3 flex-row gap-6">
+            <NeonWindow title={L('Hoạt động', 'Activity')} icon="flame" style={{ height: '100%' }}>
+              <View className="flex-row gap-6">
                 <View className="items-center">
-                  <Text className="font-heavy text-ink" style={{ fontSize: 30 }}>
-                    🔥 {streak}
-                  </Text>
-                  <Text className="mt-0.5 font-sans text-label text-muted">{L('Chuỗi hiện tại', 'Current streak')}</Text>
+                  <View className="flex-row items-center gap-1.5">
+                    <NeonIcon name="flame" height={30} />
+                    <Text className="font-heavy text-ink" style={{ fontSize: 30 }}>
+                      {streak}
+                    </Text>
+                  </View>
+                  <Text className="mt-0.5 font-sans text-label text-muted">{L('Chuỗi', 'Streak')}</Text>
                 </View>
                 <View className="items-center">
-                  <Text className="font-heavy text-ink" style={{ fontSize: 30 }}>
-                    {Math.round(daily[todayKey]?.minutes ?? 0)}
-                  </Text>
-                  <Text className="mt-0.5 font-sans text-label text-muted">{L('Phút hôm nay', 'Minutes today')}</Text>
+                  <View className="flex-row items-center gap-1.5">
+                    <NeonIcon name="clock" height={28} />
+                    <Text className="font-heavy text-ink" style={{ fontSize: 30 }}>
+                      {Math.round(daily[todayKey]?.minutes ?? 0)}
+                    </Text>
+                  </View>
+                  <Text className="mt-0.5 font-sans text-label text-muted">{L('Phút', 'Minutes')}</Text>
                 </View>
               </View>
 
               <Heatmap daily={daily} frozen={frozenDays} today={today} />
-            </Card>
+            </NeonWindow>
           </Appear>
         </Grid>
       </View>
@@ -224,7 +172,9 @@ export default function LeaderboardScreen() {
       </Appear>
 
       <Appear index={4}>
-        <SectionHeader className="mt-6" title={L('Bảng xếp hạng tháng này', "This month's leaderboard")} subtitle={L('Điểm tháng này của những người đã đăng nhập', "This month's points for signed-in learners")} icon="trophy" />
+        <View className="mt-7">
+          <NeonHeading title={L('Xếp hạng tháng', 'Monthly board')} icon="crown" />
+        </View>
       </Appear>
 
       <Board data={data} error={error} me={me} you={{ name, points: month }} />
@@ -273,6 +223,7 @@ function useBoard(demo: boolean): { data: BoardData | null; error: string | null
 }
 
 const MEDAL = ['🥇', '🥈', '🥉'];
+const MEDAL_ICON: NeonIconId[] = ['crown', 'trophy', 'star5', 'star4'];
 
 const WEEKDAY = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
 const WEEKDAY_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -309,31 +260,14 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
   const rowClass = narrow ? 'flex-row items-center gap-2 px-3.5' : 'flex-row items-center gap-3 px-5';
 
   return (
-    <View className="mt-5 overflow-hidden rounded-[24px]" style={{ backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#FCD34D' }}>
-      <LinearGradient colors={['#F3F0FB', '#FDE68A', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: narrow ? 16 : 20 }}>
-        <View className="flex-row flex-wrap items-center gap-3">
-          <View aria-hidden>
-            <Motion kind="wobble">
-              <Sticker tilt={-8}>
-                <CuteTrophy size={narrow ? 44 : 54} />
-              </Sticker>
-            </Motion>
-          </View>
-          <View className="min-w-0 flex-1">
-            <Text className="font-heavy" style={{ fontSize: 22, color: GOLD_INK }}>
-              {L('Bảng vàng hôm nay', "Today's honour board")}
-            </Text>
-            <Text className="font-semi" style={{ fontSize: 13, color: '#2B2350' }}>
-              {dayLabel(data?.golden?.day ?? key, en)} · {L('sao, câu đúng, lượt ôn từ vựng · chốt lúc 0 giờ', 'stars, correct answers, vocab reviews · closes at midnight')}
-            </Text>
-          </View>
-        </View>
+    <NeonWindow title={L('Bảng vàng', 'Honour board')} icon="trophy" padded={false} style={{ marginTop: 20 }}>
+      <LinearGradient colors={['#F9F7FF', '#ECE6FF', '#DCD2FF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: narrow ? 14 : 18 }}>
+        <Text className="font-nun-strong" style={{ fontSize: 13, color: '#4A4380' }}>
+          {dayLabel(data?.golden?.day ?? key, en)}
+        </Text>
 
         {/* Số của chính mình — tính trên máy, luôn có kể cả khi chưa đăng nhập. */}
-        <View className="mt-4 flex-row flex-wrap items-center gap-2 rounded-2xl p-3" style={{ backgroundColor: 'rgba(255,255,255,0.72)' }}>
-          <Text className="font-strong" style={{ fontSize: 13, color: GOLD_INK }}>
-            {L('Hôm nay của bạn', 'Your day')}
-          </Text>
+        <View className="mt-3 flex-row flex-wrap items-center gap-2 rounded-2xl p-3" style={{ backgroundColor: 'rgba(255,255,255,0.8)', borderWidth: 2, borderColor: 'rgba(42,34,181,0.18)' }}>
           <Stat icon="⭐" value={mine.stars} label={L('sao', 'stars')} />
           <Stat icon="✅" value={mine.correct} label={L('câu đúng', 'correct')} />
           <Stat icon="📚" value={mine.vocab} label={L('lượt ôn từ', 'vocab reviews')} />
@@ -344,17 +278,17 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
             nghĩa đặt sát nhau, người dùng đọc thành số liệu sai (26/09/2026).
           */}
           <Text className="font-semi" style={{ fontSize: 13, color: '#2B2350' }}>
-            {L('Đang có ', 'Balance: ')}<Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text>{L(' tích luỹ', ' saved up')}
+            <Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text>
           </Text>
           <Pressable
             accessibilityRole="link"
             accessibilityLabel={L(`Đổi quà — đang có ${formatStars(stars)} sao tích luỹ`, `Rewards — you have ${formatStars(stars)} stars saved up`)}
             onPress={() => router.push('/shop' as never)}
             className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
-            style={{ backgroundColor: GOLD_INK }}
+            style={{ backgroundColor: '#2A22B5' }}
           >
-            <Icon name="gift" size={14} color="#FDE68A" strokeWidth={2.2} />
-            <Text className="font-strong" style={{ fontSize: 13, color: '#FDE68A' }}>
+            <Icon name="gift" size={14} color="#FFD84A" strokeWidth={2.2} />
+            <Text className="font-strong" style={{ fontSize: 13, color: '#FFD84A' }}>
               {L('Đổi quà', 'Rewards')}
             </Text>
           </Pressable>
@@ -363,14 +297,14 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
 
       <View style={{ paddingVertical: 6 }}>
         {error ? (
-          <Text className="px-5 py-4 font-sans text-body text-muted">{L('Cần mạng và đăng nhập để xem bảng chung.', 'Sign in and go online to see the shared board.')}</Text>
+          <Text className="px-5 py-4 font-sans text-body text-muted">{L('Cần mạng và đăng nhập.', 'Needs sign-in and a connection.')}</Text>
         ) : !data ? (
           <View className="items-center py-6">
             <ActivityIndicator color="#6A4BD9" />
           </View>
         ) : rows.length === 0 ? (
           <Text className="px-5 py-4 font-sans text-body text-muted">
-            {L('Hôm nay chưa ai ghi tên.', 'Nobody is on the board yet today.')} {me ? L('Làm một câu đúng là lên bảng vàng.', 'Get one answer right to make the board.') : L('Đăng nhập rồi làm một câu đúng là lên bảng vàng.', 'Sign in and get one answer right to make the board.')}
+            {L('Chưa ai ghi tên. Làm một câu đúng để lên bảng.', 'Empty so far. Get one answer right to join.')}
           </Text>
         ) : (
           <>
@@ -395,9 +329,15 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
                   className={`${rowClass} py-2.5`}
                   style={{ backgroundColor: mineRow ? '#F3F0FB' : (ROW_TINT[i] ?? 'transparent') }}
                 >
-                  <Text className="text-center font-heavy text-body" style={{ width: W.rank, color: '#6A4BD9' }}>
-                    {MEDAL[i] ?? i + 1}
-                  </Text>
+                  <View style={{ width: W.rank, alignItems: 'center' }}>
+                    {i < 3 ? (
+                      <NeonIcon name={MEDAL_ICON[i]!} height={22} />
+                    ) : (
+                      <Text className="text-center font-heavy text-body" style={{ color: '#6A4BD9' }}>
+                        {i + 1}
+                      </Text>
+                    )}
+                  </View>
                   <View className="min-w-0 flex-1 flex-row items-center gap-2.5">
                     <AvatarBadge avatarId={r.avatar ?? null} name={r.name} size={narrow ? 26 : 30} skin={skinOf(r.skin ?? null)} />
                     <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
@@ -417,13 +357,13 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
               );
             })}
             {!me ? (
-              <Text className="px-5 py-3 font-sans text-label text-muted">{L('Đăng nhập để tên bạn lên bảng vàng cùng mọi người.', 'Sign in to put your name on the honour board.')}</Text>
+              <Text className="px-5 py-3 font-sans text-label text-muted">{L('Đăng nhập để lên bảng.', 'Sign in to join.')}</Text>
             ) : null}
             {me && inBoard < 0 && (mine.stars > 0 || mine.correct > 0) ? (
               <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#F3F0FB' }}>
                 <Text className="text-center font-heavy text-body text-muted" style={{ width: W.rank }}>—</Text>
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                  {L('Bạn — số của bạn lên bảng sau vài giây đồng bộ', 'You — your numbers appear after a few seconds of syncing')}
+                  {L('Bạn', 'You')}
                 </Text>
                 <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#6A4BD9' }}>
                   {mine.stars}
@@ -439,20 +379,17 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
           </>
         )}
       </View>
-    </View>
+    </NeonWindow>
   );
 }
 
 function Stat({ icon, value, label }: { icon: string; value: number; label: string }) {
   const { locale } = useL();
   return (
-    <View className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: '#FFFFFF' }}>
-      <Text style={{ fontSize: 13 }}>{icon}</Text>
-      <Text className="font-heavy" style={{ fontSize: 14, color: GOLD_INK }}>
+    <View accessibilityLabel={`${value} ${label}`} className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: '#FFFFFF' }}>
+      <Text style={{ fontSize: 14 }}>{icon}</Text>
+      <Text className="font-heavy" style={{ fontSize: 15, color: GOLD_INK }}>
         {value.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')}
-      </Text>
-      <Text className="font-sans" style={{ fontSize: 13, color: '#2B2350' }}>
-        {label}
       </Text>
     </View>
   );
@@ -492,14 +429,12 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
   };
 
   return (
-    <Card className="mt-6">
-      <SectionHeader title={L('Giải thưởng tháng', 'Monthly prizes')} subtitle={L(`Chốt bảng sau ${daysUntilReset(today)} ngày nữa`, `Board closes in ${daysUntilReset(today)} days`)} icon="gift" iconTone="warning" />
-      <Text className="mt-2 font-sans text-label text-muted">{L('Top 10 cuối tháng được thưởng sao.', 'The month\'s top 10 win stars.')}</Text>
+    <NeonWindow title={L('Giải tháng', 'Prizes')} icon="gift" badge={L(`${daysUntilReset(today)} ngày`, `${daysUntilReset(today)}d`)} style={{ marginTop: 24 }}>
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         {MONTH_PRIZES.map((p, i) => (
           <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#F3F0FB' : '#F3F0FB' }}>
-            <Text style={{ fontSize: 20 }}>{MEDAL[i] ?? '🏅'}</Text>
+            <NeonIcon name={MEDAL_ICON[i] ?? 'star5'} height={30} />
             <View className="min-w-0 flex-1">
               <Text className="font-strong text-label text-ink">{en ? (PRIZE_LABEL_EN[p.label] ?? p.label) : p.label}</Text>
               <Text className="font-heavy text-body text-ink">+{p.stars} ⭐</Text>
@@ -509,14 +444,12 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
       </View>
 
       {me && rankNow > 0 ? (
-        <Text className="mt-3 font-sans text-body text-ink">
-          {L('Bạn đang đứng ', "You're ")}<Text className="font-heavy">{L(`hạng ${rankNow}`, `#${rankNow}`)}</Text>
-          {prizeForRank(rankNow) > 0 ? L(` — giữ tới hết tháng là nhận ${prizeForRank(rankNow)} sao.`, ` — hold on until month end to win ${prizeForRank(rankNow)} stars.`) : L(' — lọt vào top 10 để có thưởng.', ' — make the top 10 to win a prize.')}
+        <Text className="mt-3 font-heavy text-body text-ink">
+          {L(`Hạng ${rankNow}`, `#${rankNow}`)}
+          {prizeForRank(rankNow) > 0 ? ` · +${prizeForRank(rankNow)} ⭐` : ''}
         </Text>
-      ) : me && data ? (
-        <Text className="mt-3 font-sans text-body text-muted">{L('Bạn chưa có tên trên bảng tháng này. Học một buổi là có điểm.', "You're not on this month's board yet. One study session gets you points.")}</Text>
       ) : !me ? (
-        <Text className="mt-3 font-sans text-body text-muted">{L('Đăng nhập để lên bảng và nhận thưởng tháng.', 'Sign in to join the board and win monthly prizes.')}</Text>
+        <Text className="mt-3 font-sans text-body text-muted">{L('Đăng nhập để nhận thưởng.', 'Sign in to win prizes.')}</Text>
       ) : null}
 
       {prev && prev.board.length > 0 ? (
@@ -538,12 +471,12 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
           {prize > 0 ? (
             already > 0 || claimedNow ? (
               <Text className="mt-3 font-semi text-body" style={{ color: '#15803D' }}>
-                {L(`✓ Đã nhận ${already || claimedNow} sao thưởng hạng ${prevRank} ${monthLabel(prev.month)}.`, `✓ Claimed ${already || claimedNow} stars for #${prevRank} in ${monthLabel(prev.month, true)}.`)}
+                {L(`✓ Đã nhận ${already || claimedNow} ⭐`, `✓ Claimed ${already || claimedNow} ⭐`)}
               </Text>
             ) : (
               <View className="mt-3 flex-row flex-wrap items-center gap-3">
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink">
-                  {L(`${monthLabel(prev.month)} bạn đứng hạng ${prevRank}. Phần thưởng: ${prize} sao.`, `In ${monthLabel(prev.month, true)} you finished #${prevRank}. Prize: ${prize} stars.`)}
+                  {L(`Hạng ${prevRank} · +${prize} ⭐`, `#${prevRank} · +${prize} ⭐`)}
                 </Text>
                 <Button label={L(`Nhận ${prize} ⭐`, `Claim ${prize} ⭐`)} size="sm" iconLeft="gift" onPress={claim} />
               </View>
@@ -551,7 +484,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
           ) : null}
         </View>
       ) : null}
-    </Card>
+    </NeonWindow>
   );
 }
 
@@ -574,12 +507,12 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
   }
 
   const shade = (minutes: number, isFrozen: boolean) => {
-    if (isFrozen) return '#EAD7AE';
-    if (minutes <= 0) return '#F3F0FB';
-    if (minutes < 15) return '#BBF7D0';
-    if (minutes < 30) return '#6EE7A8';
-    if (minutes < 60) return '#34D399';
-    return '#16A34A';
+    if (isFrozen) return '#9FE8F0';
+    if (minutes <= 0) return '#EEEAFB';
+    if (minutes < 15) return '#D3C8FF';
+    if (minutes < 30) return '#A794FF';
+    if (minutes < 60) return '#6A4BE8';
+    return '#2A22B5';
   };
 
   return (
@@ -588,20 +521,20 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
         {columns.map((col, i) => (
           <View key={i} className="gap-1">
             {col.map((cell) => (
-              <View key={cell.key} style={{ width: 12, height: 12, borderRadius: 3, backgroundColor: shade(cell.minutes, cell.frozen) }} />
+              <View key={cell.key} style={{ width: 13, height: 13, borderRadius: 3, backgroundColor: shade(cell.minutes, cell.frozen) }} />
             ))}
           </View>
         ))}
       </View>
       <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
         <Text className="font-sans text-label text-subtle">{L('Ít', 'Less')}</Text>
-        {['#F3F0FB', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
+        {['#EEEAFB', '#D3C8FF', '#A794FF', '#6A4BE8', '#2A22B5'].map((c) => (
           <View key={c} style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: c }} />
         ))}
         <Text className="font-sans text-label text-subtle">{L('Nhiều', 'More')}</Text>
         <View className="ml-2 flex-row items-center gap-1">
-          <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: '#EAD7AE' }} />
-          <Text className="font-sans text-label text-subtle">{L('ngày dùng thẻ giữ chuỗi', 'streak freeze used')}</Text>
+          <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: '#9FE8F0' }} />
+          <Text className="font-sans text-label text-subtle">{L('thẻ giữ chuỗi', 'freeze')}</Text>
         </View>
       </View>
     </View>
@@ -617,9 +550,9 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
   if (error) {
     return (
       <Card className="mt-3">
-        <Text className="font-sans text-body text-muted">{error === 'offline' ? L('Chưa nối được máy chủ — bảng này cần đăng nhập và có mạng.', "Couldn't reach the server — this board needs sign-in and a connection.") : error}</Text>
+        <Text className="font-sans text-body text-muted">{error === 'offline' ? L('Chưa nối được máy chủ.', "Couldn't reach the server.") : error}</Text>
         <Text className="mt-2 font-sans text-label text-subtle">
-          {L('Điểm tháng này của bạn:', 'Your points this month:')} <Text className="font-heavy text-ink">{you.points}</Text>
+          {L('Điểm tháng của bạn:', 'Your points:')} <Text className="font-heavy text-ink">{you.points}</Text>
         </Text>
       </Card>
     );
@@ -645,7 +578,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
               </Sticker>
             </Motion>
           </View>
-          <Text className="min-w-0 flex-1 font-sans text-body text-muted">{L('Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.', 'Nobody has points this month yet. One study session puts you on top.')}</Text>
+          <Text className="min-w-0 flex-1 font-sans text-body text-muted">{L('Chưa ai có điểm. Học một buổi là đứng đầu.', 'No points yet. One session puts you on top.')}</Text>
         </View>
       </Card>
     );
@@ -692,7 +625,9 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
                 <View style={{ borderRadius: 999, borderWidth: 3, borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
                   <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={narrow ? (first ? 52 : 44) : first ? 64 : 52} skin={skinOf(row.skin ?? null)} />
                 </View>
-                <Text style={{ marginTop: 4, fontSize: first ? 24 : 20 }}>{MEDAL[rank]}</Text>
+                <View style={{ marginTop: 4 }}>
+                  <NeonIcon name={MEDAL_ICON[rank] ?? 'star5'} height={first ? 30 : 24} />
+                </View>
                 <Text className="text-center font-strong text-body text-ink" numberOfLines={1}>
                   {mine ? L('Bạn', 'You') : row.name}
                 </Text>
@@ -727,7 +662,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
             <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#F3F0FB' }}>
               <Text className="w-8 text-center font-heavy text-body text-muted">—</Text>
               <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                {L(`Bạn — chưa vào top ${rows.length}`, `You — not in the top ${rows.length} yet`)}
+                {L('Bạn', 'You')}
               </Text>
               <Text className="font-heavy text-body text-ink">{you.points}</Text>
             </View>

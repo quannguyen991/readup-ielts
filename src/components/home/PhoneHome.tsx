@@ -37,6 +37,8 @@ export type PhoneHomeProps = {
   onSearch: () => void;
   /** Số từ đến hạn ôn hôm nay (lịch lặp ngắt quãng). */
   due?: number;
+  /** Khung "lộ trình hôm nay"; có thì thay cho thẻ hero mặc định. */
+  planSlot?: React.ReactNode;
 };
 
 /** Ảnh Chiikawa đang có trong repo (cùng hình với nút trợ lý khi chọn chủ đề Chiikawa). */
@@ -158,7 +160,7 @@ export function PhoneHome(p: PhoneHomeProps) {
           </Text>
         </View>
 
-        {/* Thẻ hero: lời mời học tiếp, và hình chính ở góc phải (mèo đeo kính, hoặc Chiikawa khi chọn chủ đề đó) */}
+        {p.planSlot ? <View style={{ marginTop: 18 }}>{p.planSlot}</View> : (
         <View style={[{ marginTop: 18, borderRadius: 32, padding: 20, minHeight: 236 }, GLASS] as never}>
           <View style={{ width: '66%' }}>
             <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 22, lineHeight: 28, color: GOLD.ink }}>
@@ -182,6 +184,7 @@ export function PhoneHome(p: PhoneHomeProps) {
             <CatSticker pose="sunglasses" size={150} style={{ position: 'absolute', right: 0, top: 40 }} />
           )}
         </View>
+        )}
 
         {/* Dải số liệu: chuỗi ngày, mục tiêu band, phút hôm nay */}
         <View style={[{ marginTop: 14, borderRadius: 26, paddingVertical: 14, paddingHorizontal: 8, flexDirection: 'row', alignItems: 'center' }, GLASS] as never}>

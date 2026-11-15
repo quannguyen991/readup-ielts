@@ -1,20 +1,15 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { IeltsFocusPicker } from '@/components/practice/IeltsFocusPicker';
-import { Icon, type IconName } from '@/components/ui';
+import { Grid } from '@/components/layout/Grid';
+import { NEON_PALETTES, NeonTile } from '@/components/neon/NeonTile';
 import { ARTICLES, isReadable } from '@/data/articles';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { useL } from '@/i18n/useL';
-
-/** Bảng màu chung của web, cùng bộ với thẻ kỹ năng. */
-const TONE = {
-  coral: { bg: '#FFF1EE', fg: '#D9503E' },
-  sky: { bg: '#EAF2FF', fg: '#2F6FD6' },
-} as const;
 
 /**
  * Trang chủ IELTS: chỉ là nơi tổng hợp các tính năng. Bài đọc và đề Writing mở ở tác vụ
@@ -30,43 +25,32 @@ export default function PracticeScreen() {
         <IeltsFocusPicker />
       </View>
 
-      <View className="gap-3">
+      <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={14}>
         <Appear index={1}>
-          <PracticeLink
-            icon="clipboard"
-            tone="coral"
+          <NeonTile
             title={L('Kiểm tra đầu vào', 'Placement test')}
             sub={L('Reading · 40 câu · 60 phút', 'Reading · 40 questions · 60 min')}
+            chip="TEST"
+            index="40"
+            icon="gem"
+            palette={NEON_PALETTES.berry!}
+            minHeight={190}
             onPress={() => router.push('/ielts/placement' as never)}
           />
         </Appear>
         <Appear index={2}>
-          <PracticeLink
-            icon="book"
-            tone="sky"
+          <NeonTile
             title={L('Bài đọc & Writing', 'Reading & Writing')}
-            sub={L(`${readable} bài đọc · ${WRITING_PROMPTS.length} đề viết`, `${readable} reading texts · ${WRITING_PROMPTS.length} writing prompts`)}
+            sub={L(`${readable} bài đọc · ${WRITING_PROMPTS.length} đề viết`, `${readable} texts · ${WRITING_PROMPTS.length} prompts`)}
+            chip="LIB"
+            index={String(readable > 99 ? 99 : readable)}
+            icon="book"
+            palette={NEON_PALETTES.ocean!}
+            minHeight={190}
             onPress={() => router.push('/reading-library' as never)}
           />
         </Appear>
-      </View>
+      </Grid>
     </Screen>
-  );
-}
-
-/** Thẻ lối vào của trang IELTS: một kiểu duy nhất, đồng bộ với thẻ Speaking. */
-function PracticeLink({ icon, tone, title, sub, onPress }: { icon: IconName; tone: keyof typeof TONE; title: string; sub: string; onPress: () => void }) {
-  const t = TONE[tone];
-  return (
-    <Pressable accessibilityRole="link" onPress={onPress} className="flex-row items-center gap-4 rounded-2xl border border-border bg-surface p-4">
-      <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: t.bg }}>
-        <Icon name={icon} size={22} color={t.fg} />
-      </View>
-      <View className="flex-1">
-        <Text className="font-heavy text-cardTitle text-ink">{title}</Text>
-        <Text className="mt-0.5 font-sans text-label text-muted">{sub}</Text>
-      </View>
-      <Icon name="arrow-right" size={18} color={t.fg} strokeWidth={2.2} />
-    </Pressable>
   );
 }

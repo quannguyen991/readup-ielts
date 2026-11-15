@@ -3,10 +3,15 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, ProgressBar, SectionHeader } from '@/components/ui';
+import { CRITERION_COLOR, DarkButton, INK, LINE, MUTED, OptionTile, SoftButton, useWide } from '@/components/hsa/stage';
+import { Icon } from '@/components/ui/Icon';
 import { HSA_KIND_LABEL, type HsaQuestion } from '@/data/hsa';
 import { bi, useL } from '@/i18n/useL';
+import { KIND_CRITERION } from '@/services/hsa/criteria';
+import { itemsFrom } from '@/services/hsa/scoring';
+import { useHsaStore } from '@/store/useHsaStore';
 import { useIntlStore } from '@/store/useIntlStore';
+import { useStudyStore } from '@/store/useStudyStore';
 
 type Props = {
   title: string;
@@ -15,14 +20,26 @@ type Props = {
   durationSeconds?: number;
 };
 
+const ACCENT = '#6A4BD9';
+
 function clock(seconds: number) {
   return `${Math.floor(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
 }
 
-/** One-question-at-a-time HSA runner: responses and explanations stay hidden until submission. */
+/**
+ * Bộ chạy bài HSA: mỗi lần một câu, đáp án và lời giải chỉ hiện sau khi nộp.
+ * Nộp xong thì lưu chi tiết từng câu (`useHsaStore`) và chuyển sang trang kết quả `/hsa/result/[id]`,
+ * nơi có điểm theo tiêu chí, đáp án chi tiết và cách làm mẫu.
+ *
+ * Thiết kế cho điện thoại trước: đáp án là ô lớn dễ chạm, nút Trước / Tiếp nằm ngay dưới đáp án,
+ * đồng hồ và tiến độ nằm trên cùng, lưới nhảy câu để sau cùng.
+ */
 export function HsaRunner({ title, questions, activity, durationSeconds }: Props) {
   const { L, locale } = useL();
+  const wide = useWide();
   const recordSession = useIntlStore((s) => s.recordSession);
+  const recordAttempt = useHsaStore((s) => s.recordAttempt);
+  const startedAt = useRef(Date.now());
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(() => questions.map(() => null));
   const [submitted, setSubmitted] = useState(false);
@@ -40,6 +57,16 @@ export function HsaRunner({ title, questions, activity, durationSeconds }: Props
     saved.current = true;
     setSubmitted(true);
     recordSession({ exam: 'hsa', activity, correct, total: questions.length });
+    const seconds = (Date.now() - startedAt.current) / 1000;
+    const { id } = recordAttempt({ activity, items: itemsFrom(questions, answers), seconds });
+    // Điểm xếp hạng là điểm CHUNG của app: phút học và số câu đã làm vào nhật ký học, không có điểm riêng của HSA.
+    const study = useStudyStore.getState();
+    const minutes = Math.floor(seconds / 60);
+    if (minutes > 0) study.logStudyTime(activity.startsWith('mock:') ? 'mock_test' : 'practice', minutes);
+    const attempted = answers.filter((v) => v !== null).length;
+    if (attempted > 0) study.logQuestions(attempted);
+    study.logEvent();
+    router.replace(`/hsa/result/${id}` as never);
   };
 
   useEffect(() => {
@@ -58,82 +85,131 @@ export function HsaRunner({ title, questions, activity, durationSeconds }: Props
   }, [durationSeconds, submitted]);
 
   if (!questions.length) {
-    return <Screen><Text className="font-strong text-body text-ink">{L('Chưa có câu hỏi cho mục này.', 'There are no questions in this section yet.')}</Text></Screen>;
+    return (
+      <Screen>
+        <Text className="font-nun-heavy" style={{ fontSize: 18, color: INK }}>
+          {L('Chưa có câu hỏi cho mục này.', 'There are no questions in this section yet.')}
+        </Text>
+      </Screen>
+    );
   }
 
   const q = questions[current] ?? questions[0]!;
   const picked = answers[current];
   const answered = answers.filter((value) => value !== null).length;
+  const unanswered = questions.length - answered;
+  const last = current === questions.length - 1;
+  const low = !!durationSeconds && remaining < 300;
 
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
-      <View className="mt-3 flex-row flex-wrap items-center gap-2">
-        <Badge label={bi(HSA_KIND_LABEL[q.kind], locale)} tone="primary" />
-        <Badge label={q.level} tone={q.level === 'C1' ? 'danger' : q.level === 'B2' ? 'warning' : 'neutral'} />
-        {durationSeconds ? <Badge label={clock(remaining)} tone={remaining < 300 ? 'danger' : 'info'} /> : null}
-      </View>
-      <ProgressBar className="mt-4" value={(answered / questions.length) * 100} label={L('Tiến độ trả lời', 'Answer progress')} valueLabel={`${answered}/${questions.length}`} />
-
-      <Card className="mt-4">
-        <Text className="font-semi text-label text-muted">{L(`Câu ${current + 1}/${questions.length}`, `Question ${current + 1}/${questions.length}`)}</Text>
-        {q.context ? <Text className="mt-3 font-sans text-body text-ink" style={{ lineHeight: 25 }}>{q.context}</Text> : null}
-        <Text className="mt-3 font-strong text-bodyLg text-ink" style={{ lineHeight: 27 }}>{q.prompt}</Text>
-        <View className="mt-4 gap-2">
-          {q.choices.map((choice, index) => {
-            const isPicked = picked === index;
-            const isCorrect = submitted && index === q.answer;
-            const isWrongPick = submitted && isPicked && index !== q.answer;
-            const borderColor = isCorrect ? '#16835D' : isWrongPick ? '#C33D47' : isPicked ? '#6954C8' : '#E5E7EB';
-            const bgColor = isCorrect ? '#EAF7F0' : isWrongPick ? '#FFF0F0' : isPicked ? '#F2F0FF' : '#FFFFFF';
-            return (
-              <Pressable
-                key={`${q.id}-${index}`}
-                accessibilityRole="button"
-                accessibilityState={{ selected: isPicked, disabled: submitted }}
-                disabled={submitted}
-                onPress={() => setAnswers((prev) => prev.map((value, i) => i === current ? index : value))}
-                className="rounded-panel border p-3"
-                style={{ borderColor, backgroundColor: bgColor }}
-              >
-                <Text className="font-sans text-body text-ink">{String.fromCharCode(65 + index)}. {choice}</Text>
-              </Pressable>
-            );
-          })}
+      <View className="w-full self-center" style={{ maxWidth: 760, gap: 12 }}>
+        {/* ---------------------------------------------- đầu bài: tên, đồng hồ, tiến độ */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+          <Text className="font-nun-heavy" numberOfLines={2} style={{ flex: 1, fontSize: wide ? 24 : 18, lineHeight: wide ? 30 : 23, color: INK }}>
+            {title}
+          </Text>
+          {durationSeconds ? (
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, height: 36, borderRadius: 18, backgroundColor: low ? '#FFE3E3' : '#EFEAFD' }}>
+              <Icon name="clock" size={15} color={low ? '#C2272D' : ACCENT} strokeWidth={2.4} />
+              <Text className="font-nun-heavy" style={{ fontSize: 15, color: low ? '#C2272D' : ACCENT }}>
+                {clock(remaining)}
+              </Text>
+            </View>
+          ) : null}
         </View>
-        {submitted ? (
-          <View className="mt-4 rounded-panel bg-surfaceAlt p-3">
-            <Text className="font-strong text-body text-ink">{picked === q.answer ? L('Chính xác', 'Correct') : L(`Đáp án: ${String.fromCharCode(65 + q.answer)}`, `Answer: ${String.fromCharCode(65 + q.answer)}`)}</Text>
-            <Text className="mt-1 font-sans text-body text-muted" style={{ lineHeight: 22 }}>{bi(q.explanation, locale)}</Text>
+
+        <View>
+          <View style={{ height: 8, borderRadius: 4, backgroundColor: '#EFEAFD', overflow: 'hidden' }}>
+            <View style={{ width: `${(answered / questions.length) * 100}%`, height: 8, borderRadius: 4, backgroundColor: ACCENT }} />
           </View>
-        ) : null}
-      </Card>
+          <Text className="font-nun-strong" style={{ fontSize: 12, color: MUTED, marginTop: 4 }}>
+            {L(`Đã trả lời ${answered}/${questions.length}`, `Answered ${answered}/${questions.length}`)}
+          </Text>
+        </View>
 
-      <SectionHeader className="mt-5" title={L('Đi đến câu', 'Jump to question')} icon="grid" sticker={false} />
-      <View className="mt-3 flex-row flex-wrap gap-2">
-        {questions.map((question, index) => (
-          <Pressable key={question.id} accessibilityRole="button" accessibilityLabel={L(`Câu ${index + 1}`, `Question ${index + 1}`)} onPress={() => setCurrent(index)} className="h-10 min-w-10 items-center justify-center rounded-md border px-2" style={{ borderColor: index === current ? '#6954C8' : '#E4E4E7', backgroundColor: index === current ? '#F2F0FF' : answers[index] !== null ? '#EAF7F0' : '#FFFFFF' }}>
-            <Text className="font-semi text-label text-ink">{index + 1}</Text>
-          </Pressable>
-        ))}
+        {/* ---------------------------------------------- câu hỏi */}
+        <View style={{ backgroundColor: '#FFFFFF', borderRadius: 22, borderWidth: 1, borderColor: LINE, padding: wide ? 22 : 14, gap: 12 }}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
+            <Text className="font-nun-heavy" style={{ fontSize: 14, color: INK }}>
+              {L(`Câu ${current + 1}/${questions.length}`, `Question ${current + 1}/${questions.length}`)}
+            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#F3F0FB', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3 }}>
+              <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: CRITERION_COLOR[KIND_CRITERION[q.kind]] }} />
+              <Text className="font-nun-heavy" style={{ fontSize: 12, color: INK }}>
+                {bi(HSA_KIND_LABEL[q.kind], locale)} · {q.level}
+              </Text>
+            </View>
+          </View>
+          {q.context ? (
+            <View style={{ backgroundColor: '#F7F5FD', borderRadius: 14, borderLeftWidth: 4, borderColor: '#CFC6EE', padding: 12 }}>
+              <Text className="font-nun-strong" style={{ fontSize: wide ? 16 : 15, lineHeight: wide ? 26 : 24, color: '#3F356F' }}>
+                {q.context}
+              </Text>
+            </View>
+          ) : null}
+          <Text className="font-nun-heavy" style={{ fontSize: wide ? 19 : 17, lineHeight: wide ? 28 : 25, color: INK }}>
+            {q.prompt}
+          </Text>
+          <View style={{ gap: 8 }}>
+            {q.choices.map((choice, index) => (
+              <OptionTile
+                key={`${q.id}-${index}`}
+                letter={String.fromCharCode(65 + index)}
+                title={choice}
+                selected={picked === index}
+                accent={ACCENT}
+                onPress={() => setAnswers((prev) => prev.map((value, i) => (i === current ? index : value)))}
+              />
+            ))}
+          </View>
+
+          {/* Nút điều hướng nằm ngay dưới đáp án để không phải cuộn xuống tìm. */}
+          <View style={{ flexDirection: 'row', gap: 10, marginTop: 4 }}>
+            <View style={{ flex: 1 }}>
+              <SoftButton label={L('Trước', 'Previous')} icon="chevron-left" onPress={() => setCurrent((n) => Math.max(0, n - 1))} />
+            </View>
+            <View style={{ flex: 1.4 }}>
+              {last ? (
+                <DarkButton label={L('Nộp bài', 'Submit')} onPress={() => submitRef.current()} icon={null} />
+              ) : (
+                <DarkButton label={L('Tiếp', 'Next')} onPress={() => setCurrent((n) => Math.min(questions.length - 1, n + 1))} />
+              )}
+            </View>
+          </View>
+          {last && unanswered > 0 ? (
+            <Text className="font-nun-strong" style={{ fontSize: 13, color: '#C2272D', textAlign: 'center' }}>
+              {L(`Còn ${unanswered} câu chưa trả lời. Câu bỏ trống tính là bỏ qua.`, `${unanswered} unanswered. Blank questions count as skipped.`)}
+            </Text>
+          ) : null}
+        </View>
+
+        {/* ---------------------------------------------- nhảy câu */}
+        <View style={{ backgroundColor: '#FFFFFF', borderRadius: 22, borderWidth: 1, borderColor: LINE, padding: wide ? 18 : 12 }}>
+          <Text className="font-nun-heavy" style={{ fontSize: 13, color: MUTED, marginBottom: 8 }}>
+            {L('Đi đến câu', 'Jump to question')}
+          </Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {questions.map((question, index) => {
+              const on = index === current;
+              const has = answers[index] !== null;
+              return (
+                <Pressable
+                  key={question.id}
+                  accessibilityRole="button"
+                  accessibilityLabel={L(`Câu ${index + 1}`, `Question ${index + 1}`)}
+                  onPress={() => setCurrent(index)}
+                  style={{ width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: on ? ACCENT : has ? '#BFE8CF' : LINE, backgroundColor: on ? ACCENT : has ? '#EAF7F0' : '#FFFFFF' }}
+                >
+                  <Text className="font-nun-heavy" style={{ fontSize: 14, color: on ? '#FFFFFF' : INK }}>
+                    {index + 1}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </View>
       </View>
-
-      <View className="mt-5 flex-row gap-2">
-        <View className="flex-1"><Button variant="outline" label={L('Trước', 'Previous')} disabled={current === 0} onPress={() => setCurrent((n) => Math.max(0, n - 1))} /></View>
-        {current < questions.length - 1 ? (
-          <View className="flex-1"><Button label={L('Tiếp', 'Next')} onPress={() => setCurrent((n) => Math.min(questions.length - 1, n + 1))} /></View>
-        ) : !submitted ? (
-          <View className="flex-1"><Button label={L('Nộp bài', 'Submit')} onPress={() => submitRef.current()} /></View>
-        ) : null}
-      </View>
-
-      {submitted ? (
-        <Card className="mt-4">
-          <Text className="font-heavy text-cardTitle text-ink">{L(`Kết quả luyện tập: ${correct}/${questions.length}`, `Practice result: ${correct}/${questions.length}`)}</Text>
-          <Text className="mt-1 font-sans text-body text-muted">{L('Điểm này chỉ phản ánh bộ câu hỏi trong app, không quy đổi thành điểm HSA.', 'This score reflects this app practice set only and is not an official HSA score.')}</Text>
-          <Button className="mt-3" label={L('Về trang HSA', 'Back to HSA')} onPress={() => router.replace('/hsa' as never)} />
-        </Card>
-      ) : null}
     </Screen>
   );
 }
