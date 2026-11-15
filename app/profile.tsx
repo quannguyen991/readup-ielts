@@ -36,6 +36,7 @@ import { color } from '@/theme/tokens';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { CuteStar, Motion } from '@/components/illust/CuteMore';
 import type { IconName } from '@/components/ui/Icon';
+import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
 import { useL } from '@/i18n/useL';
 import { achievementTitle, itemDetail, itemName, levelTitle, mascotName, mascotPerk, tierName } from '@/services/gamification/labels-en';
 
@@ -442,6 +443,25 @@ export default function ProfileScreen() {
           </Card>
         </View>
       ) : null}
+
+      {/* Tiện ích tài khoản: các trang nhỏ từng nằm dưới mục "Cá nhân" của thanh bên, nay chọn ở đây. */}
+      <Card style={{ marginTop: 16 }}>
+        <SectionHeader title={L('Tiện ích', 'Shortcuts')} subtitle={L('Tủ sách, mời bạn, nâng cấp, cài đặt…', 'Bookshelf, invites, upgrade, settings…')} icon="grid" />
+        <View className="mt-3 flex-row flex-wrap gap-2">
+          {(NAV_GROUPS.flatMap((g) => g.items).find((i) => i.key === 'me')?.children ?? []).map((c) => (
+            <Pressable
+              key={c.key}
+              accessibilityRole="link"
+              onPress={() => router.push(c.href as never)}
+              className="flex-row items-center gap-2 rounded-panel px-3 py-2.5"
+              style={{ backgroundColor: themedHex('#F3F0FB') }}
+            >
+              <Icon name={c.icon} size={17} color={color.muted} />
+              <Text className="font-semi text-[14px]" style={{ color: color.muted }}>{navLabel(c, locale)}</Text>
+            </Pressable>
+          ))}
+        </View>
+      </Card>
 
       <View className="h-6" />
     </Screen>

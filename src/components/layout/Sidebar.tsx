@@ -6,22 +6,12 @@ import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
 import { SidebarMosaic } from "./SidebarMosaic";
-import { LionMascot } from "@/components/mascot/LionMascot";
 import { ensureTaskMotionCss } from "@/components/motion/task-motion";
 
 ensureTaskMotionCss();
-import { SidebarSearchTrigger } from "@/components/search/SearchTrigger";
 import { Icon } from "@/components/ui/Icon";
-import {
-  ADMIN_GROUP,
-  NAV_GROUPS,
-  visibleGroups,
-  activeNavKey,
-  parentNavKey,
-  type NavItem,
-  navLabel,
-} from "@/navigation/nav-items";
-import { useCityAvailable } from "@/services/city/availability";
+import { ADMIN_GROUP, NAV_ITEMS, NAV_LABEL_EN, activeNavKey, parentNavKey, navLabel } from "@/navigation/nav-items";
+import { SIDEBAR_GROUPS, activeSidebarKey, type SidebarGroup, type SidebarItem } from "@/navigation/sidebar-items";
 import { usePlan } from "@/store/useBillingStore";
 import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
 import { skinOf, useRewardStore } from "@/store/useRewardStore";
@@ -67,8 +57,10 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
   // Thanh bên pixel chỉ dùng cho theme máy chơi điện tử (mua trong Đổi quà); màn làm bài (compact) và nền cảnh (glass) giữ thanh bên cũ.
   const arcadeTheme = useRewardStore((s) => s.theme === "theme-arcade");
   const pixel = compact || glass || !arcadeTheme ? null : PT;
-  const activeKey = activeNavKey(pathname);
-  const activeParent = parentNavKey(activeKey);
+  const activeKey = activeSidebarKey(pathname);
+  // Trang con đang mở (nếu có) — in nhỏ dưới tên mục lớn.
+  const navActiveKey = activeNavKey(pathname);
+  const navActiveItem = NAV_ITEMS.find((n) => n.key === navActiveKey);
   const stored = useSidebarStore((s) => s.collapsed);
   const collapsed = compact || (!expanded && stored);
   const toggle = useSidebarStore((s) => s.toggle);
@@ -85,8 +77,16 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
   const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
-  const desktop = useCityAvailable();
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
+  const groups: (SidebarGroup & { title?: string })[] = isAdmin
+    ? [
+        ...SIDEBAR_GROUPS,
+        {
+          key: "admin",
+          title: "Quản trị",
+          items: ADMIN_GROUP.items.map((i) => ({ key: i.key, label: i.label, labelEn: NAV_LABEL_EN[i.key] ?? i.label, href: i.href, icon: i.icon, tint: "#E4E4EA" })),
+        },
+      ]
+    : SIDEBAR_GROUPS;
   const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
   // Thanh bên nổi: bo góc, cách mép trái/trên/dưới FLOAT_GAP. Bề rộng trừ đi FLOAT_GAP nên cả khối
   // vẫn chiếm đúng `width`, vùng nội dung (lg:pl-[248px]) không phải đổi.
@@ -119,20 +119,6 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
         <Logo compact markOnly={collapsed} color={eaOn ? themeConfig.textPrimary : undefined} />
       </View>
 
-      {/* Ô tìm bài (mở bảng tìm kiếm có AI) — ngay trên danh sách mục. */}
-      <View className={collapsed ? "mt-2 items-center" : "mt-2 px-[14px]"}>
-        <SidebarSearchTrigger
-          collapsed={collapsed}
-          tone={{
-            text: themeConfig.textPrimary,
-            muted: themeConfig.textMuted,
-            hover: themeConfig.hoverBg,
-            border: themeConfig.isDark ? "rgba(255,255,255,0.16)" : chiikawaTheme ? "#F0B6C9" : "rgba(139, 108, 240,0.38)",
-            isDark: themeConfig.isDark,
-          }}
-        />
-      </View>
-
       {/* Cửa sổ sticker kiểu desktop; ẩn khi thu gọn để giữ chỗ cho điều hướng. */}
       {chiikawaTheme && !collapsed && !glass && !pixel ? (
         <View className="mt-2 px-[14px]">
@@ -144,7 +130,7 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
         className="mt-2 flex-1"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingHorizontal: collapsed ? 12 : 14,
+          paddingHorizontal: collapsed ? 12 : 10,
           // Chừa chút chỗ để ngôi sao trên mục đầu tiên đang chọn không bị cắt bởi vùng cuộn.
           paddingTop: collapsed ? 0 : 12,
           paddingBottom: 12,
@@ -152,7 +138,8 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
       >
         {groups.map((group, groupIndex) => (
           <View key={group.key} className={groupIndex === 0 ? "" : "mt-4"}>
-            {group.title ? (
+            {group.key === "more" || group.key === "admin" ? <SectionDivider collapsed={collapsed} dark={themeConfig.isDark} /> : null}
+            {group.key === "admin" && group.title ? (
               collapsed ? (
                 <View
                   className="mx-2 mb-2 h-px"
@@ -175,40 +162,30 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
               )
             ) : null}
 
-            <View className="gap-1">
+            {/*
+              Danh sách PHẲNG như bản tham chiếu (AIO English): mỗi mục lớn một dòng, không xổ
+              trang con dưới mục. Trang con vẫn mở được từ nút "Khám phá" trên TopBar và từ trang
+              của mục; mục đang mở chỉ ghi nhỏ tên trang con ngay dưới tên mục.
+            */}
+            <View className="gap-0.5">
               {group.items.map((item) => {
-                const open = activeParent === item.key;
-                const activeChild = item.children?.find((c) => c.key === activeKey);
+                const active = activeKey === item.key;
+                // Tên trang con đang mở (vd. "Thi thử Reading" dưới IELTS); bỏ khi trang con chính là trang của mục.
+                const sub =
+                  active && item.navKey && navActiveItem && navActiveItem.href !== item.href && parentNavKey(navActiveKey) === item.navKey
+                    ? navLabel(navActiveItem, locale)
+                    : undefined;
                 return (
-                  <View key={item.key}>
-                    <NavRow
-                      item={item}
-                      active={activeKey === item.key}
-                      parentOfActive={open}
-                      collapsed={collapsed}
-                      subtitle={open && activeChild ? navLabel(activeChild, locale) : undefined}
-                      themeConfig={themeConfig}
-                      chiikawaTheme={chiikawaTheme}
-                      pixel={pixel}
-                    />
-                    {/* Thu gọn thì chỉ còn sáu biểu tượng lớn — không bày trang con. */}
-                    {open && !collapsed && item.children?.length ? (
-                      <View className="mb-2 ml-4 mt-1.5 gap-0.5">
-                        {item.children.map((child) => (
-                          <NavRow
-                            key={child.key}
-                            item={child}
-                            active={activeKey === child.key}
-                            collapsed={collapsed}
-                            child
-                            themeConfig={themeConfig}
-                            chiikawaTheme={chiikawaTheme}
-                            pixel={pixel}
-                          />
-                        ))}
-                      </View>
-                    ) : null}
-                  </View>
+                  <NavRow
+                    key={item.key}
+                    item={item}
+                    active={active}
+                    collapsed={collapsed}
+                    subtitle={sub}
+                    themeConfig={themeConfig}
+                    chiikawaTheme={chiikawaTheme}
+                    pixel={pixel}
+                  />
                 );
               })}
             </View>
@@ -255,6 +232,14 @@ export function Sidebar({ compact = false, expanded = false, glass = false }: { 
       </View>
     </View>
   );
+}
+
+/** Khoá icon pixel của thanh bên cũ cho các mục đổi tên. */
+const PIXEL_KEY: Record<string, string> = { today: "dashboard", vocab: "vocabulary", friends: "me" };
+
+/** Đường kẻ ngăn nhóm học với nhóm phụ (thu gọn thì ngắn lại). */
+function SectionDivider({ collapsed, dark }: { collapsed: boolean; dark: boolean }) {
+  return <View className={collapsed ? "mx-2 mb-2 h-px" : "mx-3 mb-2 h-px"} style={{ backgroundColor: dark ? "rgba(255,255,255,0.12)" : "rgba(120,96,60,0.16)" }} />;
 }
 
 const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
@@ -312,7 +297,7 @@ function NavRow({
   chiikawaTheme,
   pixel,
 }: {
-  item: NavItem;
+  item: SidebarItem;
   active: boolean;
   parentOfActive?: boolean;
   collapsed: boolean;
@@ -326,14 +311,14 @@ function NavRow({
   const [hovered, setHovered] = useState(false);
   // Mục lớn: tô khối khi chính nó hoặc một trang con của nó đang mở.
   const locale = useLocale();
-  const label = navLabel(item, locale);
+  const label = locale === "en" ? item.labelEn : item.label;
   const filled = !child && (active || parentOfActive);
   const lit = filled || active;
   const tint = filled ? themeConfig.activeTextColor : active ? themeConfig.textPrimary : themeConfig.textMuted;
   // Chỉ mục cha có icon pixel; trang con giữ icon nét mảnh cho gọn.
-  const pixelIcon = pixel && !child ? PIXEL_NAV_ICON[item.key] : undefined;
-  // Sư tử và ngôi sao chỉ cho mục lớn đang được tô (không áp dụng Chiikawa hay thanh bên pixel).
-  const decorated = filled && !collapsed && !child && !chiikawaTheme && !pixel;
+  const pixelIcon = pixel && !child ? PIXEL_NAV_ICON[PIXEL_KEY[item.key] ?? item.key] : undefined;
+  // Ô pastel sau biểu tượng mục lớn (bỏ khi theme tối / pixel).
+  const tile = !child && !pixel && !themeConfig.isDark ? item.tint : undefined;
 
   return (
     <View style={{ position: "relative" }}>
@@ -352,7 +337,7 @@ function NavRow({
               ? `justify-center ${child ? "h-10" : "h-12"}`
               : child
                 ? "gap-2.5 px-3 py-2"
-                : "gap-3 px-3 py-3",
+                : "gap-2.5 px-2 py-1.5",
           ].join(" ")}
           // Một object phẳng, KHÔNG phải hàm hay mảng: Link asChild gộp style của con bằng Slot,
           // và cách gộp đó làm mất nền của mục đang mở (thanh bên mất dấu "đang ở đâu").
@@ -375,7 +360,16 @@ function NavRow({
             } as object
           }
         >
-          <View className="relative h-7 w-7 items-center justify-center rm-ico" style={pixelIcon ? { width: pixelIcon.w, height: pixelIcon.h } : undefined}>
+          <View
+            className="relative items-center justify-center rm-ico"
+            style={
+              pixelIcon
+                ? { width: pixelIcon.w, height: pixelIcon.h }
+                : tile && !collapsed
+                  ? { width: 32, height: 32, borderRadius: 10, backgroundColor: tile }
+                  : { width: 28, height: 28 }
+            }
+          >
             {pixelIcon ? (
               active ? (
                 <PixelBob amplitude={3} period={1200}>
@@ -394,10 +388,10 @@ function NavRow({
             )}
           </View>
           {collapsed ? null : (
-            <View className="min-w-0 flex-1" style={decorated ? { paddingRight: 36 } : undefined}>
+            <View className="min-w-0 flex-1">
               <Text
                 numberOfLines={1}
-                className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
+                className={`text-[14px] ${lit ? "font-strong" : "font-semi"}`}
                 style={{ color: pixel ? pixel.text : filled ? themeConfig.activeTextColor : child && !active ? themeConfig.textMuted : themeConfig.textPrimary }}
               >
                 {label}
@@ -420,58 +414,8 @@ function NavRow({
           />
         </View>
       ) : null}
-      {/* Sư tử ngủ nằm GỌN TRONG nút đang được tô vàng, giữa chiều cao nút. */}
-      {decorated ? (
-        <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: "absolute", top: 0, bottom: 0, right: 8, justifyContent: "center", zIndex: 6 }}>
-          <LionMascot pose="sleep" size={40} />
-        </View>
-      ) : null}
-      {/* Ngôi sao nhỏ lấp lánh quanh nút đang chọn (chỉ web). */}
-      {decorated && Platform.OS === "web" ? <ActiveSparkles /> : null}
       {collapsed && hovered ? <TooltipCard label={label} /> : null}
     </View>
-  );
-}
-
-/** Vị trí và cỡ các ngôi sao quanh nút đang chọn (px; số âm là lấn ra ngoài mép nút). */
-const SPARKS: { top?: number; bottom?: number; left?: number; right?: number; size: number; delay: number }[] = [
-  { top: -8, left: -6, size: 14, delay: 0 },
-  { top: -6, right: 58, size: 9, delay: 0.9 },
-  { bottom: 6, left: -9, size: 9, delay: 1.5 },
-  { bottom: -8, right: 4, size: 12, delay: 0.5 },
-];
-
-/**
- * Các ngôi sao lấp lánh quanh mục đang chọn. Dùng thẻ `div` như SidebarAtmosphere (chỉ chạy trên web,
- * nơi có CSS keyframes). `pointerEvents: none` để sao không chặn chuột vào nút.
- */
-function ActiveSparkles() {
-  return (
-    <>
-      {SPARKS.map((s, i) => (
-        <div
-          key={i}
-          className="rm-spark"
-          aria-hidden
-          style={{
-            position: "absolute",
-            top: s.top,
-            bottom: s.bottom,
-            left: s.left,
-            right: s.right,
-            fontSize: s.size,
-            lineHeight: 1,
-            color: "#F3F0FB",
-            textShadow: "0 0 6px #F6C453, 0 0 12px rgba(246,196,83,0.75)",
-            pointerEvents: "none",
-            zIndex: 7,
-            animationDelay: `${s.delay}s`,
-          }}
-        >
-          ✦
-        </div>
-      ))}
-    </>
   );
 }
 
