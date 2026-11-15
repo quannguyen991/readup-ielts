@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 9 · Từ vựng tiếng Trung · prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;700&family=Noto+Serif+SC:wght@500;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EDE1; --paper-2:#EAE1CD; --card:#FFFDF7;
+  --ink:#0F1D33; --ink-2:#3B4A63; --mist:#8E9BAE;
+  --gold:#B8955A; --gold-soft:#D9C49A;
+  --seal:#B3412E; --seal-2:#C4553F;
+  --shadow:0 30px 60px -28px rgba(15,29,51,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  background:radial-gradient(1200px 600px at 50% -10%,#fff8ea,transparent 60%),#E4DBC8;
+  font-family:"Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;padding:32px 16px 56px;
+}
+.intro{max-width:760px;text-align:center;margin-bottom:28px}
+.intro h1{font-family:"Noto Serif",serif;font-size:26px;font-weight:700}
+.intro p{color:var(--ink-2);font-size:14px;margin-top:6px;line-height:1.5}
+.intro code{background:#fff8;padding:1px 6px;border-radius:6px;font-size:12px}
+
+.stage{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.phone{
+  width:340px;height:720px;border-radius:44px;background:var(--paper);position:relative;overflow:hidden;
+  border:2px solid var(--gold);box-shadow:0 0 0 7px #D8CCB2,var(--shadow);
+  display:flex;flex-direction:column;
+}
+.phone::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 15% 8%,#fffdf6 0,transparent 45%),radial-gradient(circle at 90% 90%,#fff3dc 0,transparent 40%)}
+.status{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 26px 0 30px;font-size:12px;font-weight:600;position:relative;z-index:2}
+.status .sig{letter-spacing:2px;font-size:10px}
+.scr{flex:1;position:relative;z-index:1;display:flex;flex-direction:column;min-height:0}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:6px 20px 8px;position:relative;z-index:2;min-height:52px}
+.hdr h2{font-family:"Noto Serif",serif;font-size:19px;font-weight:700;text-align:center;flex:1}
+.hdr .sub{display:block;font-family:"Be Vietnam Pro",sans-serif;font-size:12px;font-weight:500;color:var(--ink-2)}
+.ico-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold-soft);background:var(--card);display:grid;place-items:center;cursor:pointer;color:var(--ink);font-size:17px;position:relative;flex:none}
+.ico-btn .dot{position:absolute;top:7px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--seal);border:1.5px solid #fff}
+.ico-slot{width:36px;flex:none}
+.brand{font-family:"Noto Serif",serif;font-weight:700;font-size:19px;position:relative}
+.brand b{color:var(--seal);font-size:24px;position:relative;margin-left:4px}
+.brand b::after{content:"";position:absolute;left:-8px;top:-5px;right:-8px;bottom:-5px;border:2px solid var(--seal);border-radius:50%;border-right-color:transparent;transform:rotate(-30deg);opacity:.8}
+
+/* ---------- Home ---------- */
+.hero{position:relative;padding:8px 22px 0;height:300px;flex:none}
+.hero-art{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-txt{position:relative;z-index:1;margin-top:58px}
+.hero-txt h1{font-family:"Noto Serif",serif;font-size:31px;line-height:1.14;font-weight:700;letter-spacing:-.2px}
+.hero-txt p{color:var(--ink-2);font-size:13px;margin-top:10px;line-height:1.5;max-width:200px}
+.seal-mini{position:absolute;left:24px;top:206px;width:26px;height:26px;border:1.5px solid var(--seal);color:var(--seal);border-radius:4px;font-family:"Noto Serif SC",serif;font-size:12px;display:grid;place-items:center;transform:rotate(-4deg);z-index:1}
+
+.prog{margin:0 18px;background:rgba(255,253,247,.92);border:1px solid var(--gold-soft);border-radius:18px;padding:12px 16px;display:flex;gap:12px;align-items:center;position:relative;z-index:1;box-shadow:0 8px 18px -14px rgba(15,29,51,.4)}
+.prog .book{width:34px;height:34px;flex:none}
+.prog .row{display:flex;justify-content:space-between;font-size:13px;font-weight:500;flex:1}
+.prog .row b{font-weight:700}
+.bar{height:8px;border-radius:8px;background:#E4DACA;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#CDA96B,#B8955A);border-radius:8px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.pct{font-size:12px;color:var(--ink-2);margin-top:4px;text-align:right}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 18px;position:relative;z-index:1}
+.tile{border-radius:18px;border:1px solid var(--gold-soft);background:var(--card);min-height:112px;padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;cursor:pointer;position:relative;transition:transform .15s}
+.tile:active{transform:scale(.97)}
+.tile .ar{position:absolute;right:12px;bottom:10px;color:var(--gold);font-size:15px}
+.tile.primary{background:linear-gradient(160deg,var(--seal-2),#A3372A);color:#fff;border-color:#8c2d22;box-shadow:0 10px 20px -10px #8c2d22cc}
+.tile.primary .ar{color:#F3E3CF}
+.hanzi-ico{font-family:"Noto Serif SC",serif;font-size:30px;line-height:1;border:1.5px solid #F3E3CF;border-radius:6px;padding:4px 6px;}
+
+.toast{position:absolute;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#F3EDE1;padding:9px 16px;border-radius:99px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:6;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.nav{display:flex;justify-content:space-around;padding:8px 6px 14px;border-top:1px solid var(--gold-soft);background:#FBF6EA;position:relative;z-index:2}
+.nav button{background:none;border:0;font:inherit;font-size:10px;color:var(--mist);display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;min-width:58px;padding:2px 0}
+.nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav button.on{color:var(--seal);font-weight:700}
+.nav button.on .pill{background:#F2D9CF;border-radius:14px;padding:2px 12px}
+.nav .pill{display:inline-flex;align-items:center;justify-content:center;padding:2px 12px;border-radius:14px}
+
+/* ---------- Topics ---------- */
+.chips{display:flex;gap:6px;padding:4px 16px 12px;overflow-x:auto;position:relative;z-index:2;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:6px 11px;border-radius:99px;border:1px solid var(--gold-soft);background:var(--card);font:inherit;font-size:11.5px;font-weight:600;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--seal);color:#fff;border-color:var(--seal)}
+.topic-list{flex:1;overflow-y:auto;padding-bottom:12px;position:relative;z-index:1;scrollbar-width:none}
+.topic-list::-webkit-scrollbar{display:none}
+.topic{margin:0 16px 12px;height:112px;border-radius:20px;border:1px solid var(--gold);background:var(--card);display:flex;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 16px -14px rgba(15,29,51,.5)}
+.topic:hover{transform:translateY(-2px)}
+.topic.on{box-shadow:0 0 0 2px var(--seal) inset}
+.topic .art{width:118px;flex:none;overflow:hidden}
+.topic .art svg{width:100%;height:100%;display:block}
+.topic .txt{padding:14px;display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0}
+.topic small{color:var(--seal);font-size:11px;font-weight:600}
+.topic strong{font-family:"Noto Serif",serif;font-size:16px;line-height:1.2;margin-top:2px}
+.topic span{color:var(--ink-2);font-size:12px;margin-top:4px}
+.topic .go{align-self:center;padding-right:14px;color:var(--gold);font-size:20px}
+.empty{text-align:center;color:var(--ink-2);font-size:13px;margin-top:40px}
+.ink-bottom{position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;z-index:0;opacity:.9}
+.ink-bottom svg{width:100%;height:100%;display:block}
+
+/* ---------- Flashcard ---------- */
+.fc-prog{padding:0 20px 2px;position:relative;z-index:2}
+.fc-prog .bar{margin-top:6px}
+.fc-meta{display:flex;justify-content:space-between;align-items:center;padding:6px 22px 0;font-size:12px;color:var(--ink-2);position:relative;z-index:2}
+.fc-meta b{color:var(--ink);font-weight:700}
+.frame{
+  margin:10px 18px 0;border-radius:24px;padding:14px 16px 12px;background:var(--card);position:relative;z-index:2;
+  border:1px solid var(--gold);box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5px var(--gold-soft);cursor:pointer;user-select:none;
+}
+.fav{position:absolute;top:12px;right:14px;background:none;border:0;font-size:24px;color:var(--seal);cursor:pointer;line-height:1;z-index:3}
+.char-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:8px}
+.char-box{width:132px;height:132px;border:2px solid var(--seal);border-radius:10px;position:relative;display:grid;place-items:center;background:var(--card);flex:none}
+.char-box::before,.char-box::after{content:"";position:absolute;background:#E0C4BA}
+.char-box::before{left:50%;top:0;bottom:0;width:1px}
+.char-box::after{top:50%;left:0;right:0;height:1px}
+.char-box .hz{position:relative;z-index:1}
+.hz{font-family:"Noto Serif SC","Noto Serif",serif;font-weight:700;font-size:96px;line-height:1;color:var(--ink);animation:ink .55s ease both}
+.hz.long{font-size:58px}
+@keyframes ink{from{filter:blur(7px);opacity:0;transform:scale(1.04)}to{filter:none;opacity:1;transform:none}}
+.side{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.py{font-size:24px;color:var(--seal);font-weight:600}
+.pos{font-size:11px;color:var(--mist);letter-spacing:.3px}
+.spk{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);background:var(--card);display:grid;place-items:center;cursor:pointer;color:var(--gold);font-size:16px}
+.spk:active{transform:scale(.94)}
+.mean{text-align:center;margin-top:14px;font-size:17px;color:var(--ink-2)}
+.mean b{color:var(--ink);font-weight:600}
+.blur{filter:blur(7px);transition:filter .3s}
+.blur.off{filter:none}
+.hint{text-align:center;color:var(--mist);font-size:11px;margin-top:6px}
+.example{margin:12px 2px 0;border:1px solid var(--gold-soft);border-radius:16px;padding:12px 14px;background:#FBF6EA;position:relative}
+.tag{position:absolute;top:-10px;left:12px;background:var(--seal);color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}
+.ex-zh{font-family:"Noto Serif SC",serif;font-size:19px;margin-top:4px;padding-right:34px}
+.ex-zh em{font-style:normal;color:var(--seal);font-weight:700}
+.ex-py{font-size:12px;color:var(--mist);margin-top:4px}
+.ex-vi{font-size:13px;color:var(--ink-2);margin-top:2px}
+.example .spk{position:absolute;right:10px;top:10px;width:32px;height:32px;font-size:13px}
+
+.fc-foot{margin-top:auto;display:flex;gap:10px;padding:14px 18px 16px;position:relative;z-index:2}
+.btn{flex:1;height:46px;border-radius:14px;border:1px solid var(--gold);background:var(--card);font:inherit;font-weight:600;font-size:13px;cursor:pointer;color:var(--ink)}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.seal{flex:1.25;background:linear-gradient(160deg,var(--seal-2),#A3372A);color:#fff;border-color:#8c2d22;box-shadow:0 8px 16px -8px #8c2d22cc}
+.btn.seal.done-state{background:linear-gradient(160deg,#6F8F6B,#4F6E4C);border-color:#42603f}
+
+.done{position:absolute;inset:0;background:rgba(243,237,225,.94);display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:6;text-align:center;padding:24px}
+.done.show{display:flex}
+.done h3{font-family:"Noto Serif",serif;font-size:22px}
+.done p{color:var(--ink-2);font-size:13px;line-height:1.5}
+.stamp{width:118px;height:118px;border-radius:14px;background:var(--seal);color:#F3EDE1;font-family:"Noto Serif SC",serif;font-size:46px;display:grid;place-items:center;opacity:0;transform:rotate(-6deg) scale(1.7);box-shadow:inset 0 0 0 4px #F3EDE1,inset 0 0 0 7px var(--seal)}
+.done.show .stamp{animation:stamp .65s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes stamp{to{transform:rotate(-6deg) scale(1);opacity:1}}
+.done .btn{flex:none;width:200px}
+
+.landscape{position:absolute;left:0;right:0;bottom:0;height:150px;pointer-events:none;z-index:0}
+.landscape svg{width:100%;height:100%;display:block}
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Band 9 · Từ vựng tiếng Trung</h1>
+  <p>Prototype dựng từ mockup ChatGPT (<code>docs/design/chinese-vocab/mockup-chatgpt-v1.png</code>). Chạm vào các nút, chạm vào thẻ để hiện nghĩa, nút loa để nghe, “Đã nhớ” để đi tiếp. Dữ liệu từ mẫu, chưa nối kho HSK thật.</p>
+</div>
+
+<div class="stage">
+
+  <!-- ============ PHONE 1 · TRANG TỪ VỰNG ============ -->
+  <section class="phone" id="p1">
+    <div class="status"><span>09:41</span><span class="sig">▂▄▆ ◠ ▭</span></div>
+    <div class="scr">
+      <div class="hdr">
+        <button class="ico-btn" aria-label="Menu">☰</button>
+        <div class="brand">Band <b>9</b></div>
+        <button class="ico-btn" aria-label="Thông báo">🔔<span class="dot"></span></button>
+      </div>
+
+      <div class="hero">
+        <svg class="hero-art" viewBox="0 0 340 300" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+          <circle cx="262" cy="70" r="38" fill="#D9735A" opacity=".85"/>
+          <path d="M0 210 L70 140 L120 180 L190 100 L260 170 L340 120 L340 300 L0 300Z" fill="#8E9BAE" opacity=".42"/>
+          <path d="M0 250 L90 205 L160 240 L250 196 L340 232 L340 300 L0 300Z" fill="#0F1D33" opacity=".1"/>
+          <g transform="translate(226 96) scale(.82)">
+            <path d="M40 4 L40 18" stroke="#B8955A" stroke-width="2"/>
+            <path d="M14 30 Q40 20 66 30 L60 36 H20 Z" fill="#0F1D33"/>
+            <rect x="26" y="36" width="28" height="14" fill="#F3EDE1" stroke="#0F1D33"/>
+            <path d="M8 58 Q40 46 72 58 L66 64 H14 Z" fill="#0F1D33"/>
+            <rect x="22" y="64" width="36" height="18" fill="#F3EDE1" stroke="#0F1D33"/>
+            <rect x="0" y="82" width="80" height="5" fill="#0F1D33" opacity=".5"/>
+          </g>
+          <path d="M0 58 Q58 34 112 66 T210 40" stroke="#5A4636" stroke-width="3" fill="none"/>
+          <g fill="#B3412E"><circle cx="30" cy="48" r="6"/><circle cx="58" cy="40" r="5"/><circle cx="88" cy="56" r="6"/><circle cx="110" cy="70" r="4.5"/><circle cx="142" cy="50" r="5"/></g>
+        </svg>
+        <div class="hero-txt">
+          <h1>Học từ vựng<br>Tiếng Trung</h1>
+          <p>Xây nền tảng vững chắc, chinh phục Band 9.</p>
+        </div>
+        <div class="seal-mini">学</div>
+      </div>
+
+      <div class="prog">
+        <svg class="book" viewBox="0 0 34 34" fill="none" stroke="#B8955A" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 8c6-2 11-1 13 2 2-3 7-4 13-2v19c-6-2-11-1-13 2-2-3-7-4-13-2z"/><path d="M17 10v19"/></svg>
+        <div style="flex:1">
+          <div class="row"><span>Tiến độ hôm nay</span><b id="todayTxt">12 / 20 từ</b></div>
+          <div class="bar"><i id="todayBar"></i></div>
+          <div class="pct" id="todayPct">60%</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <button class="tile primary" id="goLearn">
+          <span class="hanzi-ico">汉</span>
+          <span>Học từ mới</span>
+          <span class="ar">›</span>
+        </button>
+        <button class="tile" id="goReview">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B8955A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg>
+          <span>Ôn tập</span>
+          <span class="ar">›</span>
+        </button>
+        <button class="tile" id="goTopics">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B8955A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span>Bộ từ theo chủ đề</span>
+          <span class="ar">›</span>
+        </button>
+        <button class="tile" id="goStats">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B8955A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M7 16V10"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg>
+          <span>Thống kê học tập</span>
+          <span class="ar">›</span>
+        </button>
+      </div>
+
+      <div class="ink-bottom" style="bottom:72px;height:90px">
+        <svg viewBox="0 0 340 90" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 90 L0 60 L60 30 L110 62 L170 18 L240 58 L300 26 L340 52 L340 90Z" fill="#8E9BAE" opacity=".35"/>
+          <path d="M0 90 L80 70 L160 84 L260 66 L340 80 L340 90Z" fill="#0F1D33" opacity=".12"/>
+        </svg>
+      </div>
+
+      <nav class="nav">
+        <button class="on" data-go="p1"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span class="pill">Trang chủ</span></button>
+        <button data-go="p2"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/></svg>Học chữ</button>
+        <button><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg>Tập viết</button>
+        <button><svg viewBox="0 0 24 24"><path d="M4 12v3M8 9v9M12 6v15M16 9v9M20 12v3"/></svg>Luyện nghe</button>
+        <button><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h16M4 18h10"/></svg>Bài tập</button>
+      </nav>
+    </div>
+    <div class="toast" id="toast">Tính năng này sẽ có ở bản sau</div>
+  </section>
+
+  <!-- ============ PHONE 2 · DANH SÁCH CHỦ ĐỀ ============ -->
+  <section class="phone" id="p2">
+    <div class="status"><span>09:41</span><span class="sig">▂▄▆ ◠ ▭</span></div>
+    <div class="scr">
+      <div class="hdr">
+        <button class="ico-btn" data-go="p1" aria-label="Quay lại">←</button>
+        <h2>Học từ vựng</h2>
+        <svg width="46" height="26" viewBox="0 0 46 26" fill="none" stroke="#B8955A" stroke-width="1.4" aria-hidden="true"><path d="M4 22c-4-6 4-12 10-8 2-6 10-7 13-1 5-4 13 0 11 6 4 1 4 6-2 7H6c-3 0-4-2-2-4z"/></svg>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip on" data-f="all">Tất cả</button>
+        <button class="chip" data-f="learning">Đang học</button>
+        <button class="chip" data-f="done">Đã thuộc</button>
+        <button class="chip" data-f="fav">Yêu thích</button>
+      </div>
+      <div class="topic-list" id="topicList"></div>
+      <div class="ink-bottom" style="height:110px">
+        <svg viewBox="0 0 340 110" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 110 L0 70 L70 40 L130 74 L200 30 L270 70 L340 46 L340 110Z" fill="#8E9BAE" opacity=".3"/>
+          <path d="M0 110 L90 88 L180 104 L280 84 L340 98 L340 110Z" fill="#0F1D33" opacity=".1"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHONE 3 · THẺ TỪ ============ -->
+  <section class="phone" id="p3">
+    <div class="status"><span>09:41</span><span class="sig">▂▄▆ ◠ ▭</span></div>
+    <div class="scr">
+      <div class="hdr">
+        <button class="ico-btn" data-go="p2" aria-label="Quay lại">←</button>
+        <h2>Học từ mới<span class="sub" id="fcTitle">Chủ đề: Gia đình</span></h2>
+        <div class="ico-slot"></div>
+      </div>
+      <div class="fc-prog"><div class="bar"><i id="fcBar"></i></div></div>
+      <div class="fc-meta"><span>Thẻ <b id="fcCount">1 / 5</b></span><span id="fcStreak">Đã thuộc 0</span></div>
+
+      <div class="frame" id="frame">
+        <button class="fav" id="fav" aria-label="Yêu thích">♡</button>
+        <div class="char-row">
+          <div class="char-box"><span class="hz" id="hz">爱</span></div>
+          <div class="side">
+            <div class="py" id="py">ài</div>
+            <div class="pos" id="pos">động từ</div>
+            <button class="spk" id="spkWord" aria-label="Nghe phát âm">🔊</button>
+          </div>
+        </div>
+        <div class="mean blur" id="meanWrap">Ý nghĩa: <b id="vi">yêu, thương</b></div>
+        <div class="hint" id="hint">Chạm vào thẻ để hiện nghĩa</div>
+
+        <div class="example">
+          <span class="tag">Ví dụ</span>
+          <div class="ex-zh" id="exZh">我<em>爱</em>我的家人。</div>
+          <button class="spk" id="spkEx" aria-label="Nghe câu ví dụ">🔊</button>
+          <div class="ex-py blur" id="exPy">Wǒ ài wǒ de jiārén.</div>
+          <div class="ex-vi blur" id="exVi">Tôi yêu gia đình của mình.</div>
+        </div>
+      </div>
+
+      <div class="fc-foot">
+        <button class="btn" id="prev">← Từ trước</button>
+        <button class="btn seal" id="known">Đã nhớ ✓</button>
+        <button class="btn" id="next">Từ tiếp →</button>
+      </div>
+
+      <div class="landscape" aria-hidden="true">
+        <svg viewBox="0 0 340 150" preserveAspectRatio="none">
+          <path d="M0 150 L0 96 L60 70 L110 92 L170 52 L230 88 L290 62 L340 84 L340 150Z" fill="#8E9BAE" opacity=".3"/>
+          <path d="M0 150 L80 124 L160 140 L260 118 L340 134 L340 150Z" fill="#0F1D33" opacity=".1"/>
+        </svg>
+      </div>
+
+      <div class="done" id="done">
+        <div class="stamp">已學</div>
+        <h3>Hoàn thành chủ đề</h3>
+        <p id="doneMsg">Bạn đã thuộc hết các từ trong chủ đề này.</p>
+        <button class="btn seal" id="doneBack">Về danh sách chủ đề</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ---------- Dữ liệu mẫu (không phải kho HSK thật) ---------- */
+const TOPICS = [
+  { name: 'Gia đình', words: [
+    { hz:'爱',  py:'ài',    pos:'động từ', vi:'yêu, thương',  ex:{ zh:'我爱我的家人。', hl:'爱',  py:'Wǒ ài wǒ de jiārén.', vi:'Tôi yêu gia đình của mình.' } },
+    { hz:'家',  py:'jiā',   pos:'danh từ', vi:'nhà, gia đình', ex:{ zh:'我家有四口人。', hl:'家',  py:'Wǒ jiā yǒu sì kǒu rén.', vi:'Nhà tôi có bốn người.' } },
+    { hz:'妈妈', py:'māma',  pos:'danh từ', vi:'mẹ',           ex:{ zh:'妈妈做饭。',     hl:'妈妈', py:'Māma zuò fàn.', vi:'Mẹ nấu cơm.' } },
+    { hz:'爸爸', py:'bàba',  pos:'danh từ', vi:'bố, ba',       ex:{ zh:'爸爸是老师。',   hl:'爸爸', py:'Bàba shì lǎoshī.', vi:'Bố là giáo viên.' } },
+    { hz:'我',  py:'wǒ',    pos:'đại từ',  vi:'tôi, tao',      ex:{ zh:'我很高兴。',     hl:'我',  py:'Wǒ hěn gāoxìng.', vi:'Tôi rất vui.' } },
+  ]},
+  { name: 'Cuộc sống hằng ngày', words: [
+    { hz:'吃',  py:'chī',   pos:'động từ', vi:'ăn',            ex:{ zh:'我吃饭。',       hl:'吃',  py:'Wǒ chī fàn.', vi:'Tôi ăn cơm.' } },
+    { hz:'喝',  py:'hē',    pos:'động từ', vi:'uống',          ex:{ zh:'我每天喝水。',   hl:'喝',  py:'Wǒ měitiān hē shuǐ.', vi:'Mỗi ngày tôi uống nước.' } },
+    { hz:'水',  py:'shuǐ',  pos:'danh từ', vi:'nước',          ex:{ zh:'请给我一杯水。', hl:'水',  py:'Qǐng gěi wǒ yì bēi shuǐ.', vi:'Làm ơn cho tôi một ly nước.' } },
+  ]},
+  { name: 'Trường học', words: [
+    { hz:'学',  py:'xué',   pos:'động từ', vi:'học',           ex:{ zh:'我在学中文。',   hl:'学',  py:'Wǒ zài xué Zhōngwén.', vi:'Tôi đang học tiếng Trung.' } },
+    { hz:'老师', py:'lǎoshī', pos:'danh từ', vi:'giáo viên',    ex:{ zh:'老师很好。',     hl:'老师', py:'Lǎoshī hěn hǎo.', vi:'Thầy/cô giáo rất tốt.' } },
+    { hz:'学生', py:'xuéshēng', pos:'danh từ', vi:'học sinh',   ex:{ zh:'我是学生。',     hl:'学生', py:'Wǒ shì xuéshēng.', vi:'Tôi là học sinh.' } },
+  ]},
+  { name: 'Thời gian', words: [
+    { hz:'今天', py:'jīntiān', pos:'danh từ', vi:'hôm nay',     ex:{ zh:'今天很热。',     hl:'今天', py:'Jīntiān hěn rè.', vi:'Hôm nay trời rất nóng.' } },
+    { hz:'明天', py:'míngtiān', pos:'danh từ', vi:'ngày mai',    ex:{ zh:'明天见！',       hl:'明天', py:'Míngtiān jiàn!', vi:'Mai gặp nhé!' } },
+    { hz:'昨天', py:'zuótiān', pos:'danh từ', vi:'hôm qua',      ex:{ zh:'昨天我很忙。',   hl:'昨天', py:'Zuótiān wǒ hěn máng.', vi:'Hôm qua tôi rất bận.' } },
+  ]},
+];
+
+const ART = [
+  '<svg viewBox="0 0 118 112" preserveAspectRatio="xMidYMid slice"><rect width="118" height="112" fill="#EADFC6"/><path d="M0 46 Q59 22 118 46 L118 54 L0 54Z" fill="#2A3A55"/><rect x="18" y="54" width="82" height="34" fill="#C9B38A"/><rect x="50" y="64" width="16" height="24" fill="#8E3B2C"/><circle cx="92" cy="68" r="7" fill="#C4553F"/><line x1="92" y1="58" x2="92" y2="61" stroke="#B8955A"/><path d="M6 100 Q60 88 112 102 L112 112 L6 112Z" fill="#8E9BAE" opacity=".5"/></svg>',
+  '<svg viewBox="0 0 118 112" preserveAspectRatio="xMidYMid slice"><rect width="118" height="112" fill="#E6EBDD"/><ellipse cx="30" cy="84" rx="22" ry="9" fill="#7E9C84"/><ellipse cx="88" cy="90" rx="24" ry="10" fill="#8FAA92"/><ellipse cx="70" cy="66" rx="10" ry="16" fill="#E7A3A0"/><ellipse cx="82" cy="60" rx="8" ry="14" fill="#F0BDB8" transform="rotate(18 82 60)"/><ellipse cx="58" cy="60" rx="8" ry="14" fill="#F0BDB8" transform="rotate(-18 58 60)"/></svg>',
+  '<svg viewBox="0 0 118 112" preserveAspectRatio="xMidYMid slice"><rect width="118" height="112" fill="#E9EEF2"/><path d="M0 60 L30 30 L52 56 L76 24 L118 62 L118 112 L0 112Z" fill="#8E9BAE" opacity=".55"/><path d="M0 84 L118 84 L118 112 L0 112Z" fill="#B9C6D3"/><path d="M40 90 L78 90 L72 97 L46 97Z" fill="#3B4A63"/><line x1="58" y1="90" x2="58" y2="76" stroke="#3B4A63"/></svg>',
+  '<svg viewBox="0 0 118 112" preserveAspectRatio="xMidYMid slice"><rect width="118" height="112" fill="#EEF0E4"/><g stroke="#6F8F6B" stroke-width="4" fill="none"><path d="M30 112 L34 8"/><path d="M62 112 L66 16"/><path d="M92 112 L88 4"/></g><g fill="#8DB08A" opacity=".85"><ellipse cx="40" cy="30" rx="16" ry="5" transform="rotate(-30 40 30)"/><ellipse cx="78" cy="40" rx="16" ry="5" transform="rotate(25 78 40)"/><ellipse cx="56" cy="62" rx="14" ry="4" transform="rotate(-20 56 62)"/></g></svg>',
+];
+
+/* ---------- Trạng thái ---------- */
+const state = {
+  topic: 0, idx: 0, revealed: false, filter: 'all',
+  known: {},          // topicIndex -> Set(hz)
+  fav: {},            // hz -> true
+  todayBase: 12, goal: 20, todayGained: 0,
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const knownSet = (ti = state.topic) => (state.known[ti] ||= new Set());
+const currentWord = () => TOPICS[state.topic].words[state.idx];
+
+function speak(text){
+  try{
+    if(!('speechSynthesis' in window)) return toast('Trình duyệt không hỗ trợ phát âm');
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = .85;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }catch(e){ /* im lặng nếu lỗi */ }
+}
+
+let toastTimer;
+function toast(msg){
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+function go(id){ document.getElementById(id).scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); }
+
+/* ---------- Render ---------- */
+function renderHome(){
+  const gained = state.todayBase + state.todayGained;
+  const pct = Math.min(100, Math.round(gained / state.goal * 100));
+  $('#todayTxt').textContent = `${gained} / ${state.goal} từ`;
+  $('#todayBar').style.width = pct + '%';
+  $('#todayPct').textContent = pct + '%';
+}
+
+function renderTopics(){
+  const list = $('#topicList'); list.innerHTML = '';
+  let shown = 0;
+  TOPICS.forEach((t, i) => {
+    const k = knownSet(i).size, n = t.words.length;
+    const favN = t.words.filter(w => state.fav[w.hz]).length;
+    const ok = state.filter === 'all'
+      || (state.filter === 'learning' && k > 0 && k < n)
+      || (state.filter === 'done' && k === n)
+      || (state.filter === 'fav' && favN > 0);
+    if(!ok) return;
+    shown++;
+    const el = document.createElement('div');
+    el.className = 'topic' + (i === state.topic ? ' on' : '');
+    el.dataset.i = i;
+    el.innerHTML = `<div class="art">${ART[i]}</div>
+      <div class="txt"><small>Chủ đề ${i+1}${k===n?' · ✓ đã thuộc':''}</small>
+      <strong>${esc(t.name)}</strong><span>${n} từ · đã thuộc ${k}</span></div>
+      <div class="go">›</div>`;
+    list.appendChild(el);
+  });
+  if(!shown) list.innerHTML = '<p class="empty">Chưa có chủ đề nào ở mục này.</p>';
+}
+
+function renderCard(){
+  const t = TOPICS[state.topic], w = currentWord(), n = t.words.length;
+  $('#fcTitle').textContent = 'Chủ đề: ' + t.name;
+  $('#fcCount').textContent = `${state.idx + 1} / ${n}`;
+  $('#fcStreak').textContent = `Đã thuộc ${knownSet().size} / ${n}`;
+  $('#fcBar').style.width = ((state.idx + 1) / n * 100) + '%';
+
+  const hz = $('#hz');
+  hz.textContent = w.hz;
+  hz.classList.toggle('long', w.hz.length > 1);
+  hz.style.animation = 'none'; void hz.offsetWidth; hz.style.animation = '';
+
+  $('#py').textContent = w.py;
+  $('#pos').textContent = w.pos;
+  $('#vi').textContent = w.vi;
+
+  const parts = w.ex.zh.split(w.ex.hl);
+  $('#exZh').innerHTML = esc(parts[0]) + '<em>' + esc(w.ex.hl) + '</em>' + esc(parts.slice(1).join(w.ex.hl));
+  $('#exPy').textContent = w.ex.py;
+  $('#exVi').textContent = w.ex.vi;
+
+  $('#meanWrap').classList.toggle('off', state.revealed);
+  $('#exPy').classList.toggle('blur', !state.revealed);
+  $('#exVi').classList.toggle('blur', !state.revealed);
+  $('#exPy').classList.toggle('off', state.revealed);
+  $('#exVi').classList.toggle('off', state.revealed);
+  $('#hint').textContent = state.revealed ? 'Chạm lại để ẩn nghĩa' : 'Chạm vào thẻ để hiện nghĩa';
+
+  const fav = !!state.fav[w.hz];
+  $('#fav').textContent = fav ? '♥' : '♡';
+  $('#fav').setAttribute('aria-pressed', fav);
+
+  const isKnown = knownSet().has(w.hz);
+  $('#known').textContent = isKnown ? 'Đã thuộc ✓' : 'Đã nhớ ✓';
+  $('#known').classList.toggle('done-state', isKnown);
+  $('#prev').disabled = state.idx === 0;
+}
+
+function renderAll(){ renderHome(); renderTopics(); renderCard(); }
+
+/* ---------- Hành động ---------- */
+function openTopic(i){
+  state.topic = i;
+  const set = knownSet();
+  const firstOpen = TOPICS[i].words.findIndex(w => !set.has(w.hz));
+  state.idx = firstOpen === -1 ? 0 : firstOpen;
+  state.revealed = false;
+  $('#done').classList.remove('show');
+  renderAll();
+  go('p3');
+}
+
+function markKnown(){
+  const w = currentWord(), set = knownSet(), n = TOPICS[state.topic].words.length;
+  if(!set.has(w.hz)){
+    set.add(w.hz);
+    state.todayGained++;
+    renderHome();
+  }
+  renderTopics();
+  if(set.size === n){
+    $('#doneMsg').textContent = `Bạn đã thuộc hết ${n} từ trong “${TOPICS[state.topic].name}”.`;
+    $('#done').classList.add('show');
+    return;
+  }
+  // chuyển sang từ chưa thuộc tiếp theo
+  let next = state.idx;
+  for(let step = 1; step <= n; step++){
+    const cand = (state.idx + step) % n;
+    if(!set.has(TOPICS[state.topic].words[cand].hz)){ next = cand; break; }
+  }
+  state.idx = next; state.revealed = false;
+  renderCard();
+}
+
+/* ---------- Gắn sự kiện ---------- */
+document.addEventListener('click', e => {
+  const goBtn = e.target.closest('[data-go]');
+  if(goBtn){ go(goBtn.dataset.go); return; }
+
+  const topic = e.target.closest('.topic');
+  if(topic){ openTopic(+topic.dataset.i); return; }
+
+  const chip = e.target.closest('.chip');
+  if(chip){
+    document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === chip));
+    state.filter = chip.dataset.f; renderTopics(); return;
+  }
+});
+
+$('#goLearn').onclick = () => { openTopic(state.topic); };
+$('#goReview').onclick = () => {
+  const due = TOPICS.findIndex((t, i) => knownSet(i).size > 0 && knownSet(i).size < t.words.length);
+  openTopic(due === -1 ? state.topic : due);
+};
+$('#goTopics').onclick = () => go('p2');
+$('#goStats').onclick = () => toast('Thống kê sẽ có ở bản sau');
+
+$('#frame').addEventListener('click', e => {
+  if(e.target.closest('button')) return;
+  state.revealed = !state.revealed; renderCard();
+});
+$('#spkWord').onclick = e => { e.stopPropagation(); speak(currentWord().hz); };
+$('#spkEx').onclick = e => { e.stopPropagation(); speak(currentWord().ex.zh); };
+$('#fav').onclick = e => {
+  e.stopPropagation();
+  const hz = currentWord().hz;
+  state.fav[hz] ? delete state.fav[hz] : (state.fav[hz] = true);
+  renderCard(); renderTopics();
+};
+$('#known').onclick = e => { e.stopPropagation(); markKnown(); };
+$('#prev').onclick = e => {
+  e.stopPropagation();
+  if(state.idx > 0){ state.idx--; state.revealed = false; renderCard(); }
+};
+$('#next').onclick = e => {
+  e.stopPropagation();
+  const n = TOPICS[state.topic].words.length;
+  state.idx = (state.idx + 1) % n; state.revealed = false; renderCard();
+};
+$('#doneBack').onclick = () => { $('#done').classList.remove('show'); go('p2'); };
+
+renderAll();
+</script>
+</body>
+</html>
