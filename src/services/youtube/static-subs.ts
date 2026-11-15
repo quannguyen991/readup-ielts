@@ -6,13 +6,14 @@ import type { TranscriptSentence } from './transcript';
  *
  * Hàm thuần theo `fetchFn` để test được; lỗi mạng / 404 / dữ liệu hỏng đều trả null (rơi xuống đường dán phụ đề cũ).
  */
-export type StaticSubs = { sentences: TranscriptSentence[]; auto: boolean };
+/** `vi`: bản dịch tiếng Việt cùng thứ tự với `sentences` (chỉ có khi đã dịch xong và đúng số câu). */
+export type StaticSubs = { sentences: TranscriptSentence[]; auto: boolean; vi?: string[] };
 
 type Fetch = (url: string) => Promise<{ ok: boolean; json(): Promise<unknown> }>;
 
 export function parseStaticSubs(raw: unknown): StaticSubs | null {
   if (!raw || typeof raw !== 'object') return null;
-  const o = raw as { source?: unknown; sentences?: unknown };
+  const o = raw as { source?: unknown; sentences?: unknown; vi?: unknown };
   if (!Array.isArray(o.sentences)) return null;
   const sentences: TranscriptSentence[] = [];
   for (const s of o.sentences) {
@@ -21,7 +22,13 @@ export function parseStaticSubs(raw: unknown): StaticSubs | null {
       sentences.push({ start: x.start, end: x.end, text: x.text.trim() });
     }
   }
-  return sentences.length >= 3 ? { sentences, auto: o.source === 'auto' } : null;
+  if (sentences.length < 3) return null;
+  // Bản dịch chỉ nhận khi KHỚP SỐ CÂU gốc (app ghép theo vị trí); lệch thì bỏ để không dịch sai chỗ.
+  const vi =
+    Array.isArray(o.vi) && sentences.length === (o.sentences as unknown[]).length && o.vi.length === sentences.length && o.vi.every((x) => typeof x === 'string' && x.trim())
+      ? (o.vi as string[]).map((x) => x.trim())
+      : undefined;
+  return { sentences, auto: o.source === 'auto', ...(vi ? { vi } : null) };
 }
 
 export async function fetchStaticSubs(videoId: string, fetchFn?: Fetch): Promise<StaticSubs | null> {

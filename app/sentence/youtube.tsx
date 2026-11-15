@@ -74,6 +74,8 @@ export default function YoutubeDictationScreen() {
   const { v } = useLocalSearchParams<{ v?: string }>();
   const savedVideos = useVideoTranscriptStore((s) => s.videos);
   const remember = useVideoTranscriptStore((s) => s.save);
+  const setStoredTranslations = useVideoTranscriptStore((s) => s.setTranslations);
+  const storedTr = useVideoTranscriptStore((s) => (typeof v === 'string' && v ? s.translations[v] : undefined));
 
   const fromLibrary = typeof v === 'string' && v ? savedVideos[v] : undefined;
   const initialVideoId = typeof v === 'string' ? parseVideoId(v) : null;
@@ -101,10 +103,16 @@ export default function YoutubeDictationScreen() {
     luyện ngay, không phải dán gì; không có thì giữ nguyên đường cũ (máy chủ lấy phụ đề, hoặc dán tay).
   */
   useEffect(() => {
-    if (!initialVideoId || fromLibrary || sentences.length > 0) return;
+    if (!initialVideoId) return;
+    const needSentences = !fromLibrary && sentences.length === 0;
+    const needVi = !storedTr;
+    if (!needSentences && !needVi) return;
     let alive = true;
     void fetchStaticSubs(initialVideoId).then((r) => {
-      if (alive && r) start(initialVideoId, r.sentences, r.auto);
+      if (!alive || !r) return;
+      if (needSentences) start(initialVideoId, r.sentences, r.auto);
+      // Bản dịch dựng sẵn: chỉ nhận khi khớp số câu đang dùng (app ghép theo vị trí).
+      if (needVi && r.vi && (needSentences || r.sentences.length === fromLibrary?.sentences.length)) setStoredTranslations(initialVideoId, r.vi);
     });
     return () => {
       alive = false;

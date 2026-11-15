@@ -28,3 +28,10 @@ test('fetchStaticSubs: 404, lỗi mạng và id lạ đều trả null', async (
   });
   assert.equal(r?.sentences.length, 3);
 });
+
+test('bản dịch chỉ nhận khi khớp số câu', () => {
+  assert.deepEqual(parseStaticSubs({ ...good, vi: ['Xin chào.', 'Bạn khoẻ không?', 'Khoẻ.'] })?.vi, ['Xin chào.', 'Bạn khoẻ không?', 'Khoẻ.']);
+  assert.equal(parseStaticSubs({ ...good, vi: ['Xin chào.'] })?.vi, undefined);
+  assert.equal(parseStaticSubs({ ...good, vi: ['a', '', 'c'] })?.vi, undefined);
+  assert.equal(parseStaticSubs(good)?.vi, undefined);
+});
