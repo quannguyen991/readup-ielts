@@ -145,7 +145,7 @@ const PREVIEW_ALL = 8;
 
 function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string, en?: LibDeck['en']): LibDeck {
   const look = deckLook(slug);
-  return { slug, title, subtitle, words, look, en, cover: VOCAB_COVERS[slug], book: BOOK_COVERS[slug], haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
+  return { slug, title, subtitle, words, look, en, cover: VOCAB_COVERS[slug], book: BOOK_COVERS[slug], href: BOOK_COVERS[slug] ? `/vocabulary/book/${slug}` : undefined, haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
 }
 
 const STATIC_DECKS: LibDeck[] = [

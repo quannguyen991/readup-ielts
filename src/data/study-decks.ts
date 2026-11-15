@@ -11,7 +11,8 @@
  *
  * Hàm thuần, không đọc store — sổ từ được dựng từ danh sách mục truyền vào.
  */
-import { BAND_ORDER, getVocabTopic } from './vocab-topics';
+import { BAND_ORDER, BOOK_VOCAB_DECKS, getVocabTopic } from './vocab-topics';
+import { bookPartRanges, splitBookPartSlug } from '@/services/vocab/book-parts';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { SAT_VOCAB_LESSONS } from './lessons/vocab-lessons';
 import { OXFORD_TOPIC_DECKS } from './oxford-topics-decks';
@@ -62,6 +63,22 @@ export function getStaticDeck(slug: string): StudyDeck | undefined {
 }
 
 export function rawStaticDeck(slug: string): StudyDeck | undefined {
+  const part = splitBookPartSlug(slug);
+  if (part) {
+    const book = BOOK_VOCAB_DECKS.find((d) => d.slug === part.base);
+    if (!book) return undefined;
+    const range = bookPartRanges(book.words.length)[part.part - 1];
+    if (!range) return undefined;
+    const words = book.words.slice(range.start, range.end);
+    return {
+      slug,
+      kind: 'topic',
+      name: `${book.name} · Phần ${part.part}`,
+      nameVi: `${book.nameVi} · Phần ${part.part}`,
+      blurb: `${words.length} từ, phần ${part.part} của ${book.nameVi}.`,
+      words,
+    };
+  }
   const { base, level } = splitLevelSlug(slug);
   if (level) {
     const deck = rawStaticDeck(base);
