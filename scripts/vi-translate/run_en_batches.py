@@ -32,7 +32,7 @@ RULES
 4. Your final answer must be ONLY the valid JSON array (UTF-8): no markdown fences, no explanation, no commands, do not read or write files."""
 
 CJK = re.compile(r"[぀-ヿ㐀-鿿]")
-VI = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)
+VI = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)  # bỏ é/è: có trong "café", "résumé"
 
 
 def validate(batch, got):

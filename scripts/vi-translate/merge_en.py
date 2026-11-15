@@ -41,16 +41,32 @@ for lang in ("zh", "ja"):
             n_ex += 1
 
 books = json.loads((DATA / "east-asian-vocab.json").read_text(encoding="utf8"))
-n_g = 0
+# nghĩa Anh sẵn có của HSK 2.0 cộng đồng, dùng lại cho từ HSK 3.0 trùng (đã được người biên soạn nguồn viết)
+hsk2_gloss = {}
+for b in json.loads((DATA / "east-asian-open-vocab.json").read_text(encoding="utf8")):
+    if b["language"] != "zh":
+        continue
+    for t in b["topics"]:
+        for l in t["lessons"]:
+            for r in l["rows"]:
+                if r.get("g"):
+                    hsk2_gloss.setdefault(r["w"], r["g"])
+n_g = n_reuse = 0
 for b in books:
     if b["slug"] != "book-hsk-3-0":
         continue
     for t in b["topics"]:
         for l in t["lessons"]:
             for r in l["rows"]:
-                if not r.get("g") and r["w"] in gloss:
+                if r.get("g"):
+                    continue
+                if r["w"] in hsk2_gloss:
+                    r["g"] = hsk2_gloss[r["w"]]
+                    n_reuse += 1
+                elif r["w"] in gloss:
                     r["g"] = gloss[r["w"]]
                     n_g += 1
+print(f"HSK 3.0: dùng lại nghĩa Anh của HSK 2.0 cho {n_reuse} dòng")
 
 need_g = sum(1 for x in todo.values() if x["needGloss"])
 need_ex = sum(1 for x in todo.values() if x["ex"])
