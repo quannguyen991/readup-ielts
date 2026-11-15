@@ -12,6 +12,7 @@ import {
   filterVideos,
   formatDuration,
   getLibraryVideo,
+  hasSubtitles,
   thumbnailUrl,
   videoLibraryStats,
   type LibraryVideo,
@@ -60,9 +61,10 @@ export default function VideoLibraryScreen() {
   const [topic, setTopic] = useState('all');
   const [search, setSearch] = useState('');
   const [limit, setLimit] = useState(PAGE);
+  const [subsOnly, setSubsOnly] = useState(false);
 
   const stats = useMemo(() => videoLibraryStats(), []);
-  const videos = useMemo(() => filterVideos({ level, topic, search }), [level, topic, search]);
+  const videos = useMemo(() => filterVideos({ level, topic, search, subsOnly }), [level, topic, search, subsOnly]);
 
   const saved = useVideoTranscriptStore((s) => s.videos);
   const prepared = useMemo(() => preparedList(saved), [saved]);
@@ -137,6 +139,7 @@ export default function VideoLibraryScreen() {
           {VIDEO_LEVELS.map((l) => (
             <Chip key={l} label={l} active={level === l} onPress={() => { setLevel(level === l ? 'all' : l); setLimit(PAGE); }} />
           ))}
+          <Chip label={L('Có phụ đề', 'With subtitles')} active={subsOnly} onPress={() => { setSubsOnly((v) => !v); setLimit(PAGE); }} />
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 10 }}>
@@ -239,6 +242,7 @@ function VideoCard({
         </Text>
         <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
           {video.level ? <Badge label={video.level} tone="neutral" /> : null}
+          {hasSubtitles(video.id) ? <Badge label={L('Có phụ đề', 'Subtitles')} tone="success" /> : null}
           {progress ? <Badge label={progress} tone="success" /> : null}
         </View>
       </View>

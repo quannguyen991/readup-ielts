@@ -9,6 +9,7 @@ import { ListeningQuiz } from '@/components/sentence/ListeningQuiz';
 import { Badge, Button, Icon } from '@/components/ui';
 import { useListen } from '@/components/hub/useListen';
 import { parsePastedTranscript } from '@/services/youtube/paste-transcript';
+import { fetchStaticSubs } from '@/services/youtube/static-subs';
 import { parseVideoId, type TranscriptSentence } from '@/services/youtube/transcript';
 import { splitForDictation } from '@/services/youtube/dictation-drills';
 import { clock, indexAt } from '@/services/youtube/transcript-view';
@@ -94,6 +95,23 @@ export default function YoutubeDictationScreen() {
     // phần đáng tiếc nhất để mất chính là công dán phụ đề.
     remember(id, list, auto);
   };
+
+  /*
+    Vào từ Thư viện video mà chưa có phụ đề trong máy: thử nạp phụ đề dựng sẵn (`/video-subs/<id>.json`) trước. Có thì vào
+    luyện ngay, không phải dán gì; không có thì giữ nguyên đường cũ (máy chủ lấy phụ đề, hoặc dán tay).
+  */
+  useEffect(() => {
+    if (!initialVideoId || fromLibrary || sentences.length > 0) return;
+    let alive = true;
+    void fetchStaticSubs(initialVideoId).then((r) => {
+      if (alive && r) start(initialVideoId, r.sentences, r.auto);
+    });
+    return () => {
+      alive = false;
+    };
+    // Chỉ chạy khi đổi video; `start` đổi mỗi lần vẽ nhưng chỉ dùng setState và `remember` ổn định.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialVideoId]);
 
   /*
     Chọn video → luyện: vào bằng nhịp chuyển trang. KHÔNG làm hiệu ứng khi sang câu
