@@ -148,6 +148,8 @@ export const NAV_GROUPS: NavGroup[] = [
         inBottomTabs: true,
         children: [
           { key: 'vocab-book', label: 'Sổ từ', href: '/vocabulary', icon: 'bookmark' },
+          { key: 'deep-dictionary', label: 'Từ điển chuyên sâu', href: '/tu-dien', icon: 'search' },
+          { key: 'vocab-by-level', label: 'Từ vựng theo mức', href: '/vocabulary/theo-muc', icon: 'target' },
           { key: 'cefr-vocab', label: 'Từ vựng A1–C1', href: '/tu-vung-cefr', icon: 'list' },
           { key: 'oxford', label: 'Oxford 3000 & 5000', href: '/oxford', icon: 'book' },
           { key: 'vocab-topics', label: 'Chủ đề IELTS', href: '/vocabulary/topics', icon: 'grid' },

@@ -1,22 +1,31 @@
-import React, { useMemo, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { View } from 'react-native';
 import { router } from 'expo-router';
 
-import { Grid } from '@/components/layout/Grid';
+import { CatalogHub, type CatalogItem } from '@/components/catalog/CatalogHub';
+import { normalizeLevel, type GroupKey } from '@/components/catalog/catalog-model';
 import { BilingualLines, LessonCard } from '@/components/sentence/LessonCard';
-import { Card } from '@/components/ui';
-import { SENTENCE_DIFFICULTY_LABEL } from '@/data/sentence-drills';
-import {
-  TRANSLATION_SET_LEVELS,
-  filterTranslationSets,
-  translationSetStats,
-  type TranslationSet,
-} from '@/data/translation-sets';
+import { SENTENCE_DIFFICULTY_LABEL, type SentenceTopic } from '@/data/sentence-drills';
+import { TRANSLATION_SETS, type TranslationSet } from '@/data/translation-sets';
 import { useSentenceStore } from '@/store/useSentenceStore';
 import { useL } from '@/i18n/useL';
 
 /** Nhãn độ khó bằng tiếng Anh (bản tiếng Việt: `SENTENCE_DIFFICULTY_LABEL`). */
 const DIFFICULTY_EN: Record<string, string> = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
+
+/** Chủ đề câu → nhóm tình huống trên trang lộ trình. */
+const TOPIC_GROUP: Record<SentenceTopic, GroupKey> = {
+  education: 'academic',
+  environment: 'ielts',
+  technology: 'ielts',
+  health: 'life',
+  work: 'work',
+  society: 'ielts',
+  travel: 'life',
+  media: 'ielts',
+  family: 'life',
+  economy: 'work',
+};
 
 /**
  * Thư viện bộ đề Dịch câu — cùng hình dáng với thư viện Chép chính tả.
@@ -27,54 +36,35 @@ const DIFFICULTY_EN: Record<string, string> = { easy: 'Easy', medium: 'Medium', 
  * nghĩ tới khi muốn ôn từ vựng của một mảng.
  */
 export function TranslationLibrary() {
-  const [level, setLevel] = useState('all');
-  const { L, en } = useL();
+  const sessions = useSentenceStore((s) => s.sessions);
+  const doneBySet = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const x of sessions) if (x.mode === 'translation' && x.setId) m.set(x.setId, (m.get(x.setId) ?? 0) + 1);
+    return m;
+  }, [sessions]);
 
-  const stats = useMemo(() => translationSetStats(), []);
-  const sets = useMemo(() => filterTranslationSets({ level }), [level]);
+  const items = useMemo<CatalogItem[]>(
+    () =>
+      TRANSLATION_SETS.map((set) => ({
+        id: set.id,
+        level: normalizeLevel(set.level),
+        topic: set.title,
+        group: TOPIC_GROUP[set.topic] ?? 'life',
+        title: set.title,
+        done: (doneBySet.get(set.id) ?? 0) > 0,
+        node: <SetCard set={set} doneCount={doneBySet.get(set.id) ?? 0} />,
+      })),
+    [doneBySet],
+  );
 
   return (
     <View>
-      <Card className="mb-5">
-        <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
-          {L('Trình độ', 'Level')}
-        </Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View className="flex-row gap-1.5 py-0.5">
-            <Chip label={L('Tất cả', 'All')} active={level === 'all'} onPress={() => setLevel('all')} />
-            {TRANSLATION_SET_LEVELS.map((l) => (
-              <Chip
-                key={l}
-                label={en ? (DIFFICULTY_EN[l] ?? SENTENCE_DIFFICULTY_LABEL[l]) : SENTENCE_DIFFICULTY_LABEL[l]}
-                active={level === l}
-                onPress={() => setLevel(level === l ? 'all' : l)}
-              />
-            ))}
-          </View>
-        </ScrollView>
-      </Card>
-
-      <Text className="font-strong text-cardTitle text-ink">
-        {L(`${sets.length} bài · ${stats.sentences} câu`, `${sets.length} sets · ${stats.sentences} sentences`)}
-      </Text>
-
-      <View className="mt-3">
-        <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={16}>
-          {sets.map((set) => (
-            <SetCard key={set.id} set={set} />
-          ))}
-        </Grid>
-      </View>
+      <CatalogHub items={items} searchHintVi="Tìm chủ đề dịch…" searchHintEn="Search a translation topic…" onStart={(it) => router.push(`/sentence/translate?set=${it.id}` as never)} />
     </View>
   );
 }
 
-function SetCard({ set }: { set: TranslationSet }) {
-  const sessions = useSentenceStore((s) => s.sessions);
-  const doneCount = useMemo(
-    () => sessions.filter((s) => s.mode === 'translation' && s.setId === set.id).length,
-    [sessions, set.id],
-  );
+const SetCard = React.memo(function SetCard({ set, doneCount }: { set: TranslationSet; doneCount: number }) {
   const { L, en } = useL();
 
   return (
@@ -91,23 +81,4 @@ function SetCard({ set }: { set: TranslationSet }) {
       onPress={() => router.push(`/sentence/translate?set=${set.id}` as never)}
     />
   );
-}
-
-function Chip({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
-  return (
-    <Pressable
-      onPress={onPress}
-      accessibilityRole="button"
-      aria-selected={active}
-      className={[
-        'items-center justify-center rounded-pill border px-3 py-1.5',
-        active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
-      ].join(' ')}
-      style={{ minHeight: 44 }}
-    >
-      <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
-        {label}
-      </Text>
-    </Pressable>
-  );
-}
+});

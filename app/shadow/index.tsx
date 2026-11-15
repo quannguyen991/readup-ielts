@@ -1,21 +1,29 @@
-import React, { useMemo, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { Grid } from '@/components/layout/Grid';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { CatalogHub, type CatalogItem } from '@/components/catalog/CatalogHub';
+import { groupOfTopic, normalizeLevel, type GroupKey } from '@/components/catalog/catalog-model';
+import { NightHero } from '@/components/catalog/NightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
-import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
 import { SpeakButton } from '@/components/vocab/study/StudyKit';
-import { AUDIO_LEVELS, AUDIO_NGUON, estimateMinutes, filterAudio, formatLength, getLibraryAudio, LIBRARY_AUDIO, type LibraryAudio } from '@/data/audio-library';
+import { AUDIO_NGUON, estimateMinutes, filterAudio, formatLength, getLibraryAudio, LIBRARY_AUDIO, type LibraryAudio } from '@/data/audio-library';
 import { useL } from '@/i18n/useL';
 import { useShadowStore } from '@/store/useShadowStore';
 import { color } from '@/theme/tokens';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
-const PAGE = 24;
+
+/** Chuyên mục VOA → nhóm tình huống (khai rõ vì tên chuyên mục không giống tên chủ đề ở các trang khác). */
+const TOPIC_GROUP: Record<string, GroupKey> = {
+  'Tiếng Anh hằng ngày': 'life',
+  'Thời sự và xã hội': 'ielts',
+  'Kiến thức phổ thông': 'academic',
+  'Khoa học': 'academic',
+  'Bài nói': 'work',
+};
 
 /** Màu nhận diện theo trình độ — để lưới bài không là một mảng trắng đều. */
 const LEVEL_TONE: Record<string, { bg: string; fg: string }> = {
@@ -36,11 +44,6 @@ export default function ShadowHub() {
   const { L } = useL();
   const best = useShadowStore((s) => s.best);
   const missed = useShadowStore((s) => s.missed);
-  const [level, setLevel] = useState('all');
-  const [search, setSearch] = useState('');
-  const [limit, setLimit] = useState(PAGE);
-
-  const items = useMemo(() => filterAudio({ level, search }), [level, search]);
   const started = useMemo(
     () =>
       Object.entries(best)
@@ -62,33 +65,43 @@ export default function ShadowHub() {
   );
   const readTotal = Object.values(best).reduce((n, s) => n + Object.keys(s).length, 0);
 
+  // Lộ trình: mức + nhóm tình huống của từng bài; "đã làm" = đã đọc theo ít nhất một câu.
+  const catalog = useMemo<CatalogItem[]>(
+    () =>
+      LIBRARY_AUDIO.map((a) => {
+        const read = Object.keys(best[a.id] ?? {}).length;
+        return {
+          id: a.id,
+          level: normalizeLevel(a.level),
+          topic: a.topic,
+          group: TOPIC_GROUP[a.topic] ?? groupOfTopic(a.topic, a.level),
+          title: `${a.title} ${a.program}`,
+          done: read > 0,
+          node: <LessonCard item={a} read={read} />,
+        };
+      }),
+    [best],
+  );
+
   return (
     <Screen>
       <Appear>
-        <LightHero
-          scene="verbal"
-          badge={L('ĐỌC THEO · SHADOWING', 'SHADOWING')} art="listening"
-          line1={L('Nghe một câu, nói lại,', 'Hear a sentence, say it back,')}
-          line2={L('máy tô từng từ bạn đọc rõ', 'see every word you said clearly')}
-          subtitle={L(
+        <NightHero
+          scene="today"
+          title={L('Đọc theo · Shadowing', 'Shadowing')}
+          sub={L(
             `${LIBRARY_AUDIO.length} bài VOA có sẵn lời. Nghe giọng mẫu, bấm micro đọc lại: từ nào máy nghe rõ thì xanh, từ nào hụt thì đỏ — thấy ngay âm nào mình hay nuốt.`,
             `${LIBRARY_AUDIO.length} VOA lessons with transcripts. Hear the model, tap the mic and read it back: words heard clearly turn green, missed ones turn red — so you spot the sounds you tend to swallow.`,
           )}
-          footer={
-            <>
-              <HeroStat value={String(LIBRARY_AUDIO.length)} label={L('bài để đọc theo', 'lessons to shadow')} />
-              <HeroStat value={String(readTotal)} label={L('câu bạn đã đọc', 'sentences read')} />
-            </>
-          }
-        >
-          <Button
-            label={started[0] ? L('Đọc tiếp bài dở', 'Continue your lesson') : L('Đọc thử một bài', 'Try a lesson')}
-            variant="brand"
-            size="lg"
-            iconRight="arrow-right"
-            onPress={() => router.push(`/shadow/${(started[0]?.meta ?? filterAudio({ level: 'A2' })[0] ?? LIBRARY_AUDIO[0]!).id}` as never)}
-          />
-        </LightHero>
+          pills={[
+            { icon: 'speaker', label: L(`${LIBRARY_AUDIO.length} bài để đọc theo`, `${LIBRARY_AUDIO.length} lessons to shadow`) },
+            { icon: 'check', label: L(`${readTotal} câu bạn đã đọc`, `${readTotal} sentences read`) },
+          ]}
+          primary={{
+            label: started[0] ? L('Đọc tiếp bài dở', 'Continue your lesson') : L('Đọc thử một bài', 'Try a lesson'),
+            onPress: () => router.push(`/shadow/${(started[0]?.meta ?? filterAudio({ level: 'A2' })[0] ?? LIBRARY_AUDIO[0]!).id}` as never),
+          }}
+        />
       </Appear>
 
       {started.length || hardWords.length ? (
@@ -149,53 +162,16 @@ export default function ShadowHub() {
         </View>
       ) : null}
 
-      <View className="mt-6 rounded-[22px] bg-white p-4" style={CARD}>
-        <View className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#F3F0FB', borderWidth: 1.5, borderColor: '#F3F0FB' }}>
-          <Icon name="search" size={16} color="#94A3B8" />
-          <TextInput
-            value={search}
-            onChangeText={(t) => {
-              setSearch(t);
-              setLimit(PAGE);
-            }}
-            placeholder={L('Tìm theo tên bài hoặc chuyên mục…', 'Search by title or program…')}
-            placeholderTextColor="#94A3B8"
-            className="min-w-0 flex-1 font-sans text-body text-ink"
-          />
-        </View>
-        <View className="mt-3 flex-row flex-wrap gap-2">
-          {['all', ...AUDIO_LEVELS].map((l) => {
-            const on = level === l;
-            return (
-              <Pressable
-                key={l}
-                onPress={() => {
-                  setLevel(l);
-                  setLimit(PAGE);
-                }}
-                className="rounded-pill px-3.5 py-1.5"
-                style={{ backgroundColor: on ? color.primary : '#F3F0FB' }}
-              >
-                <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
-                  {l === 'all' ? L('Mọi trình độ', 'All levels') : l}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </View>
+      <View className="mt-6">
+        <CatalogHub
+          items={catalog}
+          unitVi="bài"
+          unitEn="lessons"
+          searchHintVi="Tìm theo tên bài hoặc chuyên mục…"
+          searchHintEn="Search by title or program…"
+          onStart={(it) => router.push(`/shadow/${it.id}` as never)}
+        />
       </View>
-
-      <Text className="mt-5 font-strong text-cardTitle text-ink">{L(`${items.length} bài`, `${items.length} lessons`)}</Text>
-      <View className="mt-3">
-        <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
-          {items.slice(0, limit).map((a) => (
-            <LessonCard key={a.id} item={a} read={Object.keys(best[a.id] ?? {}).length} />
-          ))}
-        </Grid>
-      </View>
-      {items.length > limit ? (
-        <Button className="mt-4 self-center" variant="outline" label={L(`Xem thêm ${Math.min(PAGE, items.length - limit)} bài`, `Show ${Math.min(PAGE, items.length - limit)} more`)} onPress={() => setLimit((n) => n + PAGE)} />
-      ) : null}
 
       <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
         <Text className="font-sans text-label text-muted" style={{ lineHeight: 19 }}>

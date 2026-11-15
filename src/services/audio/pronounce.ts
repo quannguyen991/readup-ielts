@@ -3,7 +3,8 @@ import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 
 import { englishVoice } from './voice';
-import { createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
+import { createClipCache } from './clip-cache';
+import { createClipLibrary, createLookup, isSingleWord, pickAudioUrl, type Accent, type ClipVoice } from './pronounce-core';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import pronunciationVoice from '@/data/pronunciation-voice.json';
 
@@ -27,6 +28,8 @@ export const clips = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio
 /** Clip tiếng Nhật / Trung dựng sẵn (edge-tts): `/audio/east-asian/{ja,zh}/index.json`. Dùng "giọng" ja / zh làm khoá thư mục. */
 const eastAsianClips = createClipLibrary({ sets: ['/audio/east-asian/{voice}/'] });
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined' && typeof Audio !== 'undefined';
+/** Clip đã tải sẵn trong RAM: phát gần như tức thì, không chờ mạng. */
+const clipCache = createClipCache();
 
 let token = 0;
 let current: HTMLAudioElement | null = null;
@@ -191,7 +194,11 @@ export async function playClipUrl(
         /* bỏ qua */
       }
     }
-    a.src = url;
+    // Có sẵn trong RAM thì phát luôn bản đó; chưa có thì phát thẳng từ mạng và tải nền để lần sau tức thì.
+    const cached = clipCache.get(url);
+    a.preload = 'auto';
+    a.src = cached ?? url;
+    if (!cached) clipCache.prefetch(url);
     if (new URLSearchParams(window.location.search).has('audioDebug')) {
       for (const event of ['playing', 'ended', 'error']) {
         a.addEventListener(event, () => tracePlayback(playingAudio, event), { once: true });
@@ -290,19 +297,19 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
           return;
         }
       }
-      // Không có clip đã kiểm: thử bản ghi âm người thật từ từ điển (chỉ từ đơn) trước khi tới giọng máy.
+      // Không có clip trong kho: chỉ dùng bản ghi âm từ điển nếu ĐÃ biết sẵn (không chờ mạng) — chờ tra
+      // từ điển tới 1,5 giây mới có tiếng là nguồn trễ chính. Chưa biết thì giọng máy ngay, tra nền cho lần sau.
       if (isSingleWord(word)) {
-        const plan = await planPlayback(word, accent, dictLookup);
-        if (my !== token) return;
-        if (plan.kind === 'audio') {
-          for (const u of [plan.url, ...plan.alts]) {
-            const r = await playClipUrl(u, { rate, my });
-            if (my !== token) return;
-            if (r.ok) return;
-            if (r.blocked) {
-              if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
-              return;
-            }
+        const known = dictLookup.peek(word);
+        if (known === undefined) void dictLookup.urls(word);
+        const first = known ? pickAudioUrl(known, accent) : null;
+        if (first) {
+          const r = await playClipUrl(first, { rate, my });
+          if (my !== token) return;
+          if (r.ok) return;
+          if (r.blocked) {
+            if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+            return;
           }
         }
       }
@@ -332,9 +339,32 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
  * Nạp sẵn bản ghi âm của các từ sắp tới. Thử lần lượt từng đường dẫn: cái nào 404 thì
  * đánh dấu hỏng (lúc phát khỏi chờ), cái nào tải được thì giữ lại cho trình duyệt nhớ.
  */
-export function preloadPronunciation(_words?: readonly string[], _accent?: Accent): void {
+export function preloadPronunciation(words?: readonly string[], _accent?: Accent): void {
   if (!isWeb) return;
-  void clips.warm(currentClipVoice());
+  const voice = currentClipVoice();
+  void clips.warm(voice).then(() => {
+    for (const w of (words ?? []).slice(0, 24)) {
+      const text = w?.trim();
+      if (!text) continue;
+      // Tra bộ nhớ trước (đồng bộ); chưa có index của giọng thì thôi.
+      const url = clips.peek(voice, text) ?? clips.peek('aoede', text) ?? clips.peek(FALLBACK_CLIP_VOICE, text);
+      if (url) clipCache.prefetch(url);
+    }
+  });
+}
+
+/** Nạp sẵn index clip lúc mở app (rảnh tay), để lần bấm loa đầu tiên không phải chờ tải ~300 KB. */
+export function warmPronunciation(): void {
+  if (!isWeb) return;
+  const go = () => {
+    const v = currentClipVoice();
+    void clips.warm(v);
+    if (v !== 'aoede') void clips.warm('aoede');
+    void clips.warm(FALLBACK_CLIP_VOICE);
+  };
+  const ric = (window as unknown as { requestIdleCallback?: (f: () => void, o?: { timeout: number }) => void }).requestIdleCallback;
+  if (ric) ric(go, { timeout: 2500 });
+  else setTimeout(go, 800);
 }
 
 /** Mỗi khoảng này một cặp (khoá, từ) chỉ tự phát một lần — chống React dựng lại hai lần. */
@@ -374,7 +404,7 @@ export function useAutoPronounce(word: string | null | undefined, key: string | 
     let ownedToken: number | undefined;
     const t = setTimeout(() => {
       if (autoSpeak(word, String(key), language)) ownedToken = token;
-    }, 150);
+    }, 60);
     return () => {
       clearTimeout(t);
       // Leaving/hiding a card also cancels its queued autoplay retry.

@@ -13,9 +13,11 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
 import { englishVoice } from '@/services/audio/voice';
+import { pronounce } from '@/services/audio/pronounce';
 
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { HoverGlossText, type InlineGloss, type WordPick } from '@/components/reader/HoverGloss';
+import { MARK_STYLE, type MarkVocab } from '@/components/reader/vocab-marks';
 import { WordPopover } from '@/components/reader/WordPopover';
 import { Button, Icon } from '@/components/ui';
 import {
@@ -158,6 +160,10 @@ function Reader({ article }: { article: BilingualArticle }) {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [checked, setChecked] = useState(false);
   const [toolbarH, setToolbarH] = useState(56);
+  // Cột từ vựng trọng tâm thứ ba: chỉ khi màn đủ rộng cho ba cột mà chữ vẫn thoáng.
+  const threeCol = width >= 1240;
+  const [showVocab, setShowVocab] = useState(true);
+  const vocabColumn = threeCol && showVocab;
 
   const { backdrop } = useActiveBackdrop();
   const baseTheme = dark ? DARK : LIGHT;
@@ -223,10 +229,11 @@ function Reader({ article }: { article: BilingualArticle }) {
       hoverPara={hoverPara}
       onHoverPara={setHoverPara}
       onJump={(i) => {
-        if (wide && right === 'vi') jumpTo('vi', i);
+        if (wide && effRight === 'vi') jumpTo('vi', i);
       }}
       onWord={onWord}
       below={questionsBody}
+      vocab={article.vocab}
     />
   );
 
@@ -268,8 +275,10 @@ function Reader({ article }: { article: BilingualArticle }) {
 
   const vocabPane = <VocabPane vocab={article.vocab} theme={theme} article={article} />;
 
-  const current = wide ? right : narrow;
-  const rightPane = right === 'vi' ? viPane : right === 'questions' ? questionsPane : vocabPane;
+  // Đã có cột từ vựng riêng thì tấm bên phải không cần chọn "Từ vựng" nữa.
+  const effRight: View2 = vocabColumn && right === 'vocab' ? 'vi' : right;
+  const current = wide ? effRight : narrow;
+  const rightPane = effRight === 'vi' ? viPane : effRight === 'questions' ? questionsPane : vocabPane;
   const narrowPane = narrow === 'en' ? enPane : narrow === 'vi' ? viPane : narrow === 'questions' ? questionsPane : vocabPane;
 
   return (
@@ -291,17 +300,23 @@ function Reader({ article }: { article: BilingualArticle }) {
               onDark={() => setDark((d) => !d)}
               savedCount={savedCount}
               ink={chromeInk}
+              vocabToggle={threeCol ? { on: showVocab, count: article.vocab.length, onToggle: () => setShowVocab((v) => !v) } : undefined}
             />
           </View>
 
           {wide ? (
-            <View className="mt-4 flex-row gap-8" style={{ height: paneHeight }}>
+            <View className="mt-4 flex-row" style={{ height: paneHeight, gap: vocabColumn ? 20 : 32 }}>
               <View style={{ flex: 1, flexBasis: 0 }}>{enPane}</View>
               <View style={{ flex: 1, flexBasis: 0 }}>
-                <CrossFade swapKey={`right-${right}`} style={{ flex: 1 }}>
+                <CrossFade swapKey={`right-${effRight}`} style={{ flex: 1 }}>
                   {rightPane}
                 </CrossFade>
               </View>
+              {vocabColumn ? (
+                <View style={{ width: 330 }}>
+                  <VocabColumn vocab={article.vocab} theme={theme} article={article} />
+                </View>
+              ) : null}
             </View>
           ) : (
             <View className="mt-3" style={{ height: paneHeight }}>
@@ -344,6 +359,7 @@ function Toolbar(props: {
   onDark: () => void;
   savedCount: number;
   ink: string;
+  vocabToggle?: { on: boolean; count: number; onToggle: () => void };
 }) {
   const ink = props.ink;
   const [open, setOpen] = useState(false);
@@ -376,6 +392,22 @@ function Toolbar(props: {
       </Text>
 
       <View className="flex-1" />
+
+      {props.vocabToggle ? (
+        <Pressable
+          accessibilityRole="button"
+          aria-pressed={props.vocabToggle.on}
+          accessibilityLabel={L('Bật tắt cột từ vựng', 'Toggle vocabulary column')}
+          onPress={props.vocabToggle.onToggle}
+          className="h-10 flex-row items-center gap-2 rounded-pill px-4"
+          style={{ backgroundColor: props.vocabToggle.on ? '#7C5CF0' : props.dark ? '#1D1C19' : '#FFFFFF', borderWidth: 1, borderColor: props.vocabToggle.on ? '#7C5CF0' : props.dark ? '#2E2D28' : '#E3E0D6' }}
+        >
+          <Icon name="book" size={16} color={props.vocabToggle.on ? '#FFFFFF' : props.dark ? '#F3F0FB' : '#1A1A17'} strokeWidth={2} />
+          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: props.vocabToggle.on ? '#FFFFFF' : props.dark ? '#F3F0FB' : '#1A1A17' }}>
+            {L(`Từ vựng (${props.vocabToggle.count})`, `Vocabulary (${props.vocabToggle.count})`)}
+          </Text>
+        </Pressable>
+      ) : null}
 
       <HoverPressable
         accessibilityRole="button"
@@ -899,6 +931,7 @@ function EnglishPane({
   onJump,
   onWord,
   below,
+  vocab,
 }: {
   article: BilingualArticle;
   theme: Theme;
@@ -911,6 +944,7 @@ function EnglishPane({
   onJump: (i: number) => void;
   onWord: (paragraph: number | null) => (p: WordPick) => void;
   below?: React.ReactNode;
+  vocab?: readonly MarkVocab[];
 }) {
   const source = article.source;
   const { L, en } = useL();
@@ -983,7 +1017,7 @@ function EnglishPane({
           onJump={onJump}
           onMeasure={onMeasure}
         >
-          <EnglishParagraph paragraph={p} theme={theme} fontFamily={fontFamily} fontSize={fontSize} onWord={onWord(i)} />
+          <EnglishParagraph paragraph={p} theme={theme} fontFamily={fontFamily} fontSize={fontSize} onWord={onWord(i)} vocab={vocab} />
         </ParagraphBlock>
       ))}
 
@@ -996,18 +1030,20 @@ function EnglishPane({
   );
 }
 
-function EnglishParagraph({
+function EnglishParagraphInner({
   paragraph,
   theme,
   fontFamily,
   fontSize,
   onWord,
+  vocab,
 }: {
   paragraph: BilingualParagraph;
   theme: Theme;
   fontFamily: string;
   fontSize: number;
   onWord: (p: WordPick) => void;
+  vocab?: readonly MarkVocab[];
 }) {
   // Nghĩa soạn riêng cho đoạn — sát ngữ cảnh nhất, được ưu tiên khi rê chuột.
   const bundled = useMemo(() => {
@@ -1027,9 +1063,20 @@ function EnglishParagraph({
       lineHeight={fontSize * 1.75}
       color={theme.body}
       onWordPress={onWord}
+      vocab={vocab}
     />
   );
 }
+
+/**
+ * Chỉ vẽ lại khi NỘI DUNG đổi. Rê chuột qua đoạn làm `hoverPara` ở màn đọc đổi liên tục; không có memo thì mỗi lần như vậy
+ * mọi từ của cả bài (cả nghìn Pressable) bị dựng lại — đó là lý do cuộn và rê chuột trong bài bị khựng.
+ * `onWord` được bỏ qua khi so sánh vì nó chỉ khác nhau theo số thứ tự đoạn, mà số thứ tự không đổi cho cùng một khối.
+ */
+const EnglishParagraph = React.memo(
+  EnglishParagraphInner,
+  (a, b) => a.paragraph === b.paragraph && a.theme === b.theme && a.fontFamily === b.fontFamily && a.fontSize === b.fontSize && a.vocab === b.vocab,
+);
 
 function VietnamesePane({
   article,
@@ -1392,8 +1439,7 @@ function VocabPronounceWidget({ word, meaningVi, theme }: { word: string; meanin
           <View className="mt-2 flex-row items-center gap-2">
             <Pressable
               onPress={() => {
-                Speech.stop();
-                Speech.speak(word, { language: 'en-GB', rate: 0.85, voice: englishVoice() });
+                void pronounce(word, { rate: 0.85 });
               }}
               className="rounded-pill p-1.5"
               style={{ backgroundColor: theme.rule }}
@@ -1448,6 +1494,99 @@ function VocabPronounceWidget({ word, meaningVi, theme }: { word: string; meanin
   );
 }
 
+/**
+ * Cột TỪ VỰNG TRỌNG TÂM (cột thứ ba, chỉ trên màn rộng): mỗi từ một dòng gọn — từ (màu theo loại, khớp màu tô trong bài),
+ * từ loại, nghe, nghĩa, cụm kết hợp, lưu. Bản đầy đủ (ví dụ, họ từ, chấm phát âm) có ở tấm "Từ vựng".
+ */
+function VocabColumn({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: Theme; article: BilingualArticle }) {
+  const saveWord = useVocabStore((s) => s.saveWord);
+  const entries = useVocabStore((s) => s.entries);
+  const { L, en } = useL();
+  const savedLemmas = useMemo(
+    () => new Set(Object.values(entries).filter((e) => e.articleId === article.id).map((e) => e.lemma)),
+    [entries, article.id],
+  );
+
+  return (
+    <Sheet theme={theme}>
+      <Kicker theme={theme} label={L('Từ vựng trọng tâm', 'Key vocabulary')} hint={String(vocab.length)} />
+      <View className="mt-3 flex-row flex-wrap gap-x-3 gap-y-1.5">
+        {(['word', 'phrase', 'colloc'] as const).map((k) => {
+          const m = MARK_STYLE[k];
+          return (
+            <View key={k} className="flex-row items-center gap-1.5">
+              <View style={{ width: 22, height: 12, borderRadius: 3, backgroundColor: k === 'word' ? 'transparent' : m.bg, borderBottomWidth: k === 'word' ? 2 : 0, borderBottomColor: m.line }} />
+              <Text style={{ fontFamily: readingFont.sans, fontSize: 12, color: theme.muted }}>{en ? m.labelEn : m.label}</Text>
+            </View>
+          );
+        })}
+      </View>
+      <View className="mt-3">
+        {vocab.map((v, i) => {
+          const lemma = lemmatize(v.word);
+          const saved = savedLemmas.has(lemma);
+          const kind = v.word.trim().includes(' ') ? 'phrase' : 'word';
+          const m = MARK_STYLE[kind];
+          return (
+            <View key={i} className="border-b py-3" style={{ borderColor: theme.rule }}>
+              <View className="flex-row items-center gap-2">
+                <Pressable accessibilityRole="button" accessibilityLabel={L(`Nghe từ ${v.word}`, `Hear “${v.word}”`)} onPress={() => void pronounce(v.word)} hitSlop={8}>
+                  <Icon name="volume" size={15} color={theme.accent} strokeWidth={2} />
+                </Pressable>
+                <Text
+                  style={{
+                    flexShrink: 1,
+                    fontFamily: readingFont.sansHeavy,
+                    fontSize: 16,
+                    color: m.ink,
+                    ...(kind === 'phrase' ? { backgroundColor: m.bg, borderRadius: 4, paddingHorizontal: 3 } : { textDecorationLine: 'underline' as const, textDecorationColor: m.line }),
+                  }}
+                >
+                  {v.word}
+                </Text>
+                <Text style={{ fontSize: 11.5, fontWeight: '700', color: theme.accent, backgroundColor: theme.tint, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' }}>{v.pos}</Text>
+                <View className="flex-1" />
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={saved ? L('Đã lưu', 'Saved') : L('Lưu từ', 'Save word')}
+                  disabled={saved}
+                  hitSlop={8}
+                  onPress={() =>
+                    saveWord({
+                      word: v.word,
+                      lemma,
+                      phonetic: v.ipa,
+                      partOfSpeech: v.pos,
+                      definitionContext: null,
+                      definitionGeneral: null,
+                      definitionVi: v.meaningVi,
+                      exampleSentence: v.example ?? null,
+                      sourceSentence: v.example ?? v.word,
+                      articleId: article.id,
+                      articleTitle: article.titleEn,
+                      paragraphIndex: null,
+                      isCollocation: v.word.includes(' '),
+                    })
+                  }
+                >
+                  <Icon name={saved ? 'check' : 'plus'} size={16} color={saved ? '#16A34A' : theme.muted} strokeWidth={2.4} />
+                </Pressable>
+              </View>
+              <Text style={{ marginTop: 3, fontFamily: readingFont.sansMedium, fontSize: 14, lineHeight: 20, color: theme.body }}>{v.meaningVi}</Text>
+              {v.collocation ? (
+                <View className="mt-1.5 flex-row flex-wrap items-center gap-1.5">
+                  <Text style={{ fontSize: 12, color: theme.muted }}>{L('Đi với', 'With')}</Text>
+                  <Text style={{ fontFamily: readingFont.sansSemi, fontSize: 12.5, color: MARK_STYLE.colloc.ink, backgroundColor: MARK_STYLE.colloc.bg, borderRadius: 4, paddingHorizontal: 5, paddingVertical: 1, overflow: 'hidden' }}>{v.collocation}</Text>
+                </View>
+              ) : null}
+            </View>
+          );
+        })}
+      </View>
+    </Sheet>
+  );
+}
+
 function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: Theme; article: BilingualArticle }) {
   const saveWord = useVocabStore((s) => s.saveWord);
   const entries = useVocabStore((s) => s.entries);
@@ -1486,8 +1625,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                   accessibilityRole="button"
                   accessibilityLabel={L(`Nghe từ ${v.word}`, `Hear “${v.word}”`)}
                   onPress={() => {
-                    Speech.stop();
-                    Speech.speak(v.word, { language: 'en-GB', rate: 0.9, voice: englishVoice() });
+                    void pronounce(v.word);
                   }}
                   className="px-1"
                 >

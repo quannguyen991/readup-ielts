@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react';
 import { Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
+import { RoadmapStrip } from '@/components/catalog/CatalogHub';
+import { STAGE_ORDER, normalizeLevel, type StageKey } from '@/components/catalog/catalog-model';
 import { Grid } from '@/components/layout/Grid';
 import { Icon } from '@/components/ui';
 import { BILINGUAL_ARTICLES, BILINGUAL_OUTLETS, outletKeyOf, type BilingualArticle } from '@/data/bilingual-repository';
@@ -36,7 +38,13 @@ export function ArticleFeed() {
   const { L, en } = useL();
   const [category, setCategory] = useState<CategoryKey | 'all'>('all');
   const [source, setSource] = useState<string>('all');
+  const [stage, setStage] = useState<StageKey | 'all'>('all');
   const [shown, setShown] = useState(PAGE);
+
+  const stageCounts = useMemo(
+    () => STAGE_ORDER.map((k) => ({ key: k, done: 0, total: BILINGUAL_ARTICLES.filter((a) => normalizeLevel(a.level) === k).length })).filter((p) => p.total > 0),
+    [],
+  );
 
   const counts = useMemo(() => {
     const m = new Map<CategoryKey, number>();
@@ -50,13 +58,17 @@ export function ArticleFeed() {
   const list = useMemo(
     () =>
       BILINGUAL_ARTICLES.filter(
-        (a) => (category === 'all' || categoryOf(a.topic) === category) && (source === 'all' || outletKeyOf(a) === source),
+        (a) => (category === 'all' || categoryOf(a.topic) === category) && (source === 'all' || outletKeyOf(a) === source) && (stage === 'all' || normalizeLevel(a.level) === stage),
       ),
-    [category, source],
+    [category, source, stage],
   );
 
   return (
     <View style={{ gap: 16 }}>
+      <View style={{ gap: 8 }}>
+        <Text style={{ fontFamily: fontFamily.bold, fontSize: 18, color: TEXT_STRONG }}>{L('Chọn mức đọc', 'Pick a reading level')}</Text>
+        <RoadmapStrip progress={stageCounts} selected={stage} recommended={null} showProgress={false} onSelect={(k) => { setStage(stage === k ? 'all' : k); setShown(PAGE); }} />
+      </View>
       <ChipRow>
         <Chip label={L('Tất cả', 'All')} count={BILINGUAL_ARTICLES.length} on={category === 'all'} onPress={() => { setCategory('all'); setShown(PAGE); }} />
         {counts.map(([k, n]) => (
@@ -129,7 +141,7 @@ function Chip({ label, count, on, onPress, small = false }: { label: string; cou
   );
 }
 
-function ArticleCard({ a, en }: { a: BilingualArticle; en: boolean }) {
+export function ArticleCard({ a, en }: { a: BilingualArticle; en: boolean }) {
   const { L } = useL();
   const title = stripInline(a.titleEn);
   const standfirst = stripInline(en ? a.standfirstEn : a.standfirstVi);

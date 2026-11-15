@@ -371,8 +371,25 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
 
   return (
     <View>
+      {/* Lối vào học theo MỨC (CEFR / band IELTS): xếp mọi bộ có từ ở mức đã chọn. */}
+      <Pressable
+        accessibilityRole="link"
+        onPress={() => router.push('/vocabulary/theo-muc' as never)}
+        className="mt-5 flex-row items-center gap-3 rounded-2xl bg-white px-4 py-3"
+        style={{ minHeight: 64, borderWidth: 1.5, borderColor: '#E3DEF3' }}
+      >
+        <View className="h-11 w-11 items-center justify-center rounded-xl" style={{ backgroundColor: '#F1ECFF' }}>
+          <Icon name="target" size={20} color={color.primary} strokeWidth={2} />
+        </View>
+        <View className="min-w-0 flex-1">
+          <Text className="font-strong text-body text-ink">{L('Học theo mức: A1 → C2 hoặc band IELTS', 'Study by level: A1 → C2 or IELTS band')}</Text>
+          <Text className="font-sans text-label text-muted">{L('Chọn một mức, app xếp mọi bộ có từ ở mức đó.', 'Pick a level and see every deck with words at that level.')}</Text>
+        </View>
+        <Icon name="chevron-right" size={18} color={color.primary} strokeWidth={2.2} />
+      </Pressable>
+
       {/* Tìm + lọc */}
-      <View className="mt-5 flex-row items-center gap-2">
+      <View className="mt-4 flex-row items-center gap-2">
         <View className="min-w-0 flex-1 flex-row items-center gap-2 rounded-2xl bg-white px-3.5" style={{ height: 48, borderWidth: 1.5, borderColor: query ? color.primary : '#F3F0FB', ...(WEB ? ({ transition: 'border-color 200ms ease' } as object) : null) }}>
           <Icon name="search" size={17} color="#94A3B8" />
           <TextInput

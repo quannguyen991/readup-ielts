@@ -1,9 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
-import * as Speech from 'expo-speech';
-import { englishVoice } from '@/services/audio/voice';
-import { pronounce, stopPronounce } from '@/services/audio/pronounce';
-import { isSingleWord } from '@/services/audio/pronounce-core';
+import { pronounce } from '@/services/audio/pronounce';
 
 import { Badge, Button, Icon, IconButton } from '@/components/ui';
 import { useWordLookup } from '@/services/dictionary/lookup';
@@ -48,11 +45,7 @@ export function WordSheet({
   const isSentence = target.mode === 'sentence';
 
   const speak = () => {
-    if (isSingleWord(target.word)) void pronounce(target.word);
-    else {
-      stopPronounce();
-      Speech.speak(target.word, { language: 'en-US', rate: 0.9, voice: englishVoice() });
-    }
+    void pronounce(target.word);
   };
 
   const save = () => {

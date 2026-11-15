@@ -95,11 +95,8 @@ function ensureWebMotion(): void {
 @keyframes rm-tab-in { 0% { opacity: 0.85; transform: translate3d(0, 4px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
 @keyframes rm-item-lift { 0% { opacity: 0.7; transform: translate3d(0, 4px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
 @keyframes rm-item-flat { 0% { opacity: 0.7; } 100% { opacity: 1; } }
-.rm-page, .rm-tab, .rm-item {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-}
+/* KHÔNG đặt transform / backface-visibility cố định ở đây: chúng giữ MỖI khối (cả trang, từng thẻ trong lưới 50 thẻ)
+   thành một lớp GPU riêng suốt đời — cuộn và đổi trang nặng, chữ mờ. Trình duyệt tự đẩy lên GPU khi animation chạy. */
 @media (prefers-reduced-motion: reduce) { .rm-page, .rm-tab, .rm-item { animation: none !important; } }`;
   document.head.appendChild(el);
 }
@@ -112,7 +109,8 @@ function WebEnter({ kind, children, style }: { kind: 'page' | 'tab'; children: R
   return (
     <View
       className={kind === 'page' ? 'rm-page' : 'rm-tab'}
-      style={[style, { flex: 1, animationName: name, animationDuration: dur, animationTimingFunction: 'cubic-bezier(.2,.8,.2,1)', animationFillMode: 'both' } as ViewStyle]}
+      // 'backwards' (không phải 'both'): xong hoạt ảnh thì bỏ hẳn transform, trang không bị giữ thành một lớp GPU.
+      style={[style, { flex: 1, animationName: name, animationDuration: dur, animationTimingFunction: 'cubic-bezier(.2,.8,.2,1)', animationFillMode: 'backwards' } as ViewStyle]}
     >
       {children}
     </View>
@@ -223,7 +221,7 @@ function WebEnterItem({
           animationDuration: `${duration}ms`,
           animationDelay: `${delay}ms`,
           animationTimingFunction: 'cubic-bezier(.2,.8,.2,1)',
-          animationFillMode: 'both',
+          animationFillMode: 'backwards',
         } as ViewStyle,
       ]}
     >

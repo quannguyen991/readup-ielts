@@ -5,8 +5,14 @@ const { withNativeWind } = require('nativewind/metro');
 const config = getDefaultConfig(__dirname);
 
 // Block watching .git directory to prevent Windows path crashes on turn-diffs/checkpoints
+// Thư mục KHÔNG chứa mã nguồn nhưng rất nhiều tệp (public ~86 000 clip âm thanh/ảnh, dist, tmp…): bỏ khỏi bản đồ tệp của
+// Metro thì khởi động nhanh hơn nhiều và không còn hết bộ nhớ lúc quét. Web vẫn phục vụ `public/` bằng middleware riêng của
+// Expo (đọc thẳng từ ổ đĩa), nên các đường dẫn /audio/... không đổi.
+const escapeRe = (p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const SKIP_DIRS = ['public', 'dist', 'tmp', 'tmp-art', 'outputs', 'work', '.claude', 'docs', 'scratchpad', 'supabase'];
 config.resolver.blockList = [
   /\.git[\/\\].*/,
+  ...SKIP_DIRS.map((d) => new RegExp(`^${escapeRe(path.join(__dirname, d))}[\\\\/].*`)),
 ];
 
 // Giao diện Chiikawa: đổi mọi màu tím viết cứng sang hồng ngay ở chỗ thư viện chuẩn hoá màu

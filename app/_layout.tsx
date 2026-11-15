@@ -54,6 +54,7 @@ import { PageViewTracker } from '@/services/analytics/PageViewTracker';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useAnalyticsBootstrap } from '@/services/analytics/useAnalytics';
 import { useSfxBindings } from '@/services/audio/useSfxBindings';
+import { warmPronunciation } from '@/services/audio/pronounce';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
 import { installLocaleFetch } from '@/i18n/fetch-locale';
@@ -119,6 +120,8 @@ export default function RootLayout() {
   // chủ; đổi bảng thì dựng lại cả cây (key) để mọi màu trong JS được tính lại.
   // Thưởng mốc chuỗi ngày: theo dõi nhật ký học để cộng sao đúng lúc đạt mốc, kể cả khi người học không mở trang Tiến độ.
   useEffect(() => startStreakBonus(), []);
+  // Nạp sẵn index clip phát âm lúc rảnh để lần bấm loa đầu tiên không phải chờ.
+  useEffect(() => warmPronunciation(), []);
   const hydrated = useHydrated();
   // Sau khi đọc xong dữ liệu máy: chuyển lịch Leitner cũ sang thẻ FSRS chung (một lần, có sao lưu).
   useEffect(() => {
