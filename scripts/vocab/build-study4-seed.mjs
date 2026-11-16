@@ -133,7 +133,7 @@ function enrichWord(row, dictionary) {
     definitionEn: String(row.definitionEn || dictDefinition || '').trim(),
     example: String(dictExample || row.example || '').trim(),
     collocation: String(row.collocation ?? '').trim(),
-    band: 'Study4',
+    band: 'Bổ trợ',
   };
   if (synonyms.length) result.synonyms = synonyms;
   if (row.sourceSection) result.sourceLevel = String(row.sourceSection).trim();
@@ -163,7 +163,7 @@ async function main() {
     for (const row of parsedRows) {
       const deckId = Number(row.deckId);
       if (!DECK_BY_ID.has(deckId)) {
-        errors.push(`${path.relative(ROOT, file)}: unexpected Study4 deck ID ${row.deckId}`);
+        errors.push(`${path.relative(ROOT, file)}: unexpected extra-collection deck ID ${row.deckId}`);
         continue;
       }
       if (!normalizeHeadword(row.word)) {
@@ -175,7 +175,7 @@ async function main() {
   }
 
   if (errors.length) {
-    console.error(`Study4 import stopped: ${errors.length} malformed or unexpected row(s).`);
+    console.error(`Extra-collection import stopped: ${errors.length} malformed or unexpected row(s).`);
     for (const error of errors.slice(0, 20)) console.error(`- ${error}`);
     if (errors.length > 20) console.error(`- …and ${errors.length - 20} more`);
     process.exitCode = 1;
@@ -185,13 +185,13 @@ async function main() {
   const presentIds = new Set(rows.map((row) => row.deckId));
   const missingDecks = DECKS.filter((deck) => !presentIds.has(deck.id));
   if (missingDecks.length && !ALLOW_PARTIAL) {
-    console.error('Study4 import stopped; output was not written. Missing deck IDs:');
+    console.error('Extra-collection import stopped; output was not written. Missing deck IDs:');
     for (const deck of missingDecks) console.error(`- ${deck.id}: ${deck.name}`);
     process.exitCode = 1;
     return;
   }
   if (missingDecks.length) {
-    console.warn(`Building a partial Study4 seed; ${missingDecks.length} deck(s) are still missing.`);
+    console.warn(`Building a partial extra-collection seed; ${missingDecks.length} deck(s) are still missing.`);
   }
 
   const output = [];
@@ -213,11 +213,10 @@ async function main() {
       words.push(enrichWord(row, dictionary));
     }
     if (!words.length) {
-      console.error(`Study4 import stopped; deck ${deck.id} has no unique headwords. Output was not written.`);
+      console.error(`Extra-collection import stopped; deck ${deck.id} has no unique headwords. Output was not written.`);
       process.exitCode = 1;
       return;
     }
-    const sourceUrl = `https://study4.com/flashcards/lists/${deck.id}/`;
     output.push({
       slug: deck.slug,
       study4Id: deck.id,
@@ -226,7 +225,6 @@ async function main() {
       nameVi: deck.name,
       blurb: `${words.length.toLocaleString('en-US')} words · word collection`,
       category: deck.category,
-      sourceUrl,
       sourceNote: `${deck.sourceNote}`,
       words,
     });
@@ -234,11 +232,11 @@ async function main() {
 
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(OUT_PATH, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
-  console.log(`Wrote ${output.length} Study4 decks to ${path.relative(ROOT, OUT_PATH)}.`);
+  console.log(`Wrote ${output.length} extra-collection decks to ${path.relative(ROOT, OUT_PATH)}.`);
   for (const deck of output) {
     console.log(`- ${deck.name}: actual ${deck.words.length} / expected ${deck.expectedCount} words [${deck.category}]`);
     if (deck.words.length !== deck.expectedCount) {
-      console.warn(`  Count mismatch for Study4 deck ${deck.study4Id}: review source coverage and section-aware deduplication.`);
+      console.warn(`  Count mismatch for extra-collection deck ${deck.study4Id}: review source coverage and section-aware deduplication.`);
     }
   }
 }

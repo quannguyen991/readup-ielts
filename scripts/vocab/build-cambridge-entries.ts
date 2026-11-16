@@ -1,6 +1,6 @@
 /**
  * Dựng `src/data/seed/vocab-cambridge/entries.json`: nghĩa, phiên âm, ví dụ cho từ khóa của Cambridge IELTS 10–21,
- * lấy từ MỌI kho từ đã có trong app (bộ chủ đề IELTS, Oxford, Study4, từ điển song ngữ…).
+ * lấy từ MỌI kho từ đã có trong app (bộ chủ đề IELTS, Oxford, bộ bổ trợ, từ điển song ngữ…).
  * Chỉ nhận khớp NGUYÊN DẠNG: từ chia ("commissioned") không mượn nghĩa của gốc ("commission") vì phiên âm và câu ví dụ sẽ sai dạng.
  * Từ chưa có đủ nghĩa/ví dụ/phiên âm được ghi vào `tmp/cam-need-fill.json` để soạn bổ sung (xem `cam-fill.json`).
  *

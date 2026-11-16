@@ -165,7 +165,7 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
 export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWord[] }[] {
   if (deck.language === 'ja') return deck.words.length ? [{ label: 'Từ tiếng Nhật', words: deck.words }] : [];
   if (deck.language === 'zh') return deck.words.length ? [{ label: 'Từ tiếng Trung', words: deck.words }] : [];
-  if (deck.words.some((word) => word.band === 'Study4')) {
+  if (deck.words.some((word) => word.band === 'Bổ trợ')) {
     const sections = [...new Set(deck.words.map((word) => word.sourceLevel).filter((value): value is string => Boolean(value)))];
     if (sections.length > 1) {
       return sections.map((label) => ({ label, words: deck.words.filter((word) => word.sourceLevel === label) }));
@@ -192,6 +192,5 @@ export { posIpa } from '@/services/vocab/pos-ipa';
 
 /** Nhãn mức của từ: "Band 5-6" với bộ IELTS, tên nhóm với bộ khác. */
 export function levelLabel(band: string): string {
-  if (band === 'Study4') return 'Bộ bổ trợ';
   return /^\d/.test(band) ? `Band ${band}` : band;
 }

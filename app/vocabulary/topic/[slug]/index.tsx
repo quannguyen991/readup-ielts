@@ -579,7 +579,7 @@ export default function VocabTopicScreen() {
               const take = Math.max(0, Math.min(group.words.length, budget));
               budget -= take;
               if (take === 0) return null;
-              const groupTitle = topic.words.some((word) => word.band === 'Study4')
+              const groupTitle = topic.words.some((word) => word.band === 'Bổ trợ')
                 ? study4SectionLabel(group.label, en)
                 : en
                   ? (GROUP_LABEL_EN[group.label] ?? group.label)
