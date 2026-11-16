@@ -28,7 +28,7 @@ test('mọi bài trỏ tới buổi học có thật, có từ, mã bài không 
 });
 
 test('tổng số từ khớp sách nguồn', () => {
-  assert.equal(ZH_LEVELS.reduce((s, l) => s + l.words, 0), 4991);
+  assert.equal(ZH_LEVELS.reduce((s, l) => s + l.words, 0), 4997);
   assert.equal(JA_LEVELS.reduce((s, l) => s + l.words, 0), 7811);
 });
 

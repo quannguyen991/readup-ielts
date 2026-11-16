@@ -2,6 +2,7 @@ import sourceBooks from './east-asian-vocab.json';
 import openBooks from './east-asian-open-vocab.json';
 import extraZh from './east-asian-extra-zh.json';
 import extraJa from './east-asian-extra-ja.json';
+import homographZh from './east-asian-homograph-zh.json';
 import type { BookVocabBook, BookVocabLesson, BookVocabTheme, VocabTopicWord } from './vocab-topics';
 
 type SourceWord = {
@@ -69,6 +70,31 @@ const EXTRA: Record<'zh' | 'ja', Record<string, Extra>> = { zh: extraZh as Recor
 function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
   const isJapanese = book.language === 'ja';
   const extra = EXTRA[book.language][row.w];
+  // Chữ đồng tự (还 hái / huán…): bảng bổ sung khoá theo chữ nên mọi cách đọc nhận chung một nghĩa;
+  // nghĩa riêng theo "chữ|pinyin" thay thế, nghĩa Anh gộp (CC-CEDICT) bỏ đi vì lẫn các cách đọc.
+  const homograph = !isJapanese && row.p ? (homographZh as Record<string, string>)[`${row.w.replace(/\d+$/, '')}|${row.p}`] : undefined;
+  if (homograph) {
+    // Câu ví dụ trong bảng bổ sung chỉ dùng một cách đọc: giữ khi phiên âm câu có đúng cách đọc của dòng này.
+    const exOk = Boolean(extra?.ex?.py && row.p && extra.ex.py.includes(row.p));
+    return {
+      word: row.w,
+      pos: translateHskPos(row.o ?? ''),
+      ipa: row.p ?? '',
+      meaningVi: homograph,
+      definitionEn: '',
+      example: exOk ? extra!.ex.t : '',
+      exampleVi: exOk ? extra!.ex.vi : undefined,
+      exampleEn: exOk ? extra!.ex.en : undefined,
+      exampleReading: exOk ? extra!.ex.py : undefined,
+      synonyms: extra?.syn?.length ? extra.syn : undefined,
+      collocation: exOk ? (extra?.coll ?? '') : '',
+      glossLanguage: 'vi',
+      band: `HSK ${row.l ?? ''}`.trim(),
+      language: book.language,
+      romanization: row.r,
+      sourceLevel: row.l,
+    };
+  }
   return {
     word: row.w,
     pos: isJapanese ? (row.o ?? '') : translateHskPos(row.o ?? ''),
@@ -93,13 +119,29 @@ function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
   };
 }
 
+/**
+ * HSK 3.0 đánh số các chữ đồng tự ("本1", "点1"). Hiện chữ Hán thì bỏ số; chỉ giữ số khi bỏ
+ * đi sẽ trùng chữ khác trong CÙNG bài (花1/花2) — từ là khoá lưu tiến độ nên không được trùng.
+ */
+function lessonWords(rows: SourceWord[], book: SourceBook): VocabTopicWord[] {
+  const words = rows.map((row) => makeWord(row, book));
+  if (book.language !== 'zh') return words;
+  const bare = (w: string) => w.replace(/\d+$/, '');
+  const count = new Map<string, number>();
+  for (const row of rows) count.set(bare(row.w), (count.get(bare(row.w)) ?? 0) + 1);
+  return words.map((w, i) => {
+    const b = bare(rows[i]!.w);
+    return b !== rows[i]!.w && count.get(b) === 1 ? { ...w, word: b } : w;
+  });
+}
+
 function makeLesson(source: SourceLesson, book: SourceBook, topic: SourceTheme): BookVocabLesson {
   return {
     slug: source.slug,
     name: source.name,
     nameVi: source.nameVi,
     blurb: `${source.rows.length} từ · ${book.nameVi}`,
-    words: source.rows.map((row) => makeWord(row, book)),
+    words: lessonWords(source.rows, book),
     bookSlug: book.slug,
     bookName: book.name,
     themeSlug: topic.slug,

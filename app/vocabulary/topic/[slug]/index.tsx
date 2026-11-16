@@ -9,7 +9,7 @@ import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { deckLevels, getStaticDeck, groupDeckWords, levelOf, NOTEBOOK_SLUG, splitLevelSlug } from '@/data/study-decks';
-import type { StudyWord, WordStage } from '@/services/vocab/topic-study';
+import { clozeOf, type StudyWord, type WordStage } from '@/services/vocab/topic-study';
 import { EaLessonScreen } from '@/components/vocab/eastasia/EaLessonScreen';
 import { isLetterWord } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
@@ -761,7 +761,11 @@ function modeReady(key: string, words: readonly StudyWord[], language?: StudyWor
   if (!hasMeaning && ['learn', 'test', 'game', 'pairs', 'hangman', 'quiz', 'advert', 'flyer'].includes(key)) return false;
   const eastAsian = language === 'ja' || language === 'zh';
   if (key === 'abcd' || key === 'listen') return eastAsian && hasMeaning;
-  if (eastAsian && ['hangman', 'cloze', 'sentence', 'quiz', 'advert', 'flyer'].includes(key)) return false;
+const clozeableCount = (words: readonly StudyWord[]) => words.filter((w) => w.example && clozeOf(w.example, w.word)).length;
+
+  if (eastAsian && ['hangman', 'sentence', 'quiz', 'advert', 'flyer'].includes(key)) return false;
+  // Điền vào câu cho chữ Hán/kana: cần ít nhất 4 câu khoét được để có đủ 4 phương án.
+  if (eastAsian && key === 'cloze') return clozeableCount(words) >= 4;
   if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
   if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
   if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);
