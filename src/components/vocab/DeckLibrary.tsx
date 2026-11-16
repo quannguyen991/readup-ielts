@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { Platform, Pressable, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
@@ -16,6 +16,7 @@ import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { OXFORD_TOPIC_DECKS } from '@/data/oxford-topics-decks';
 import { unitsFor } from '@/data/intl/units';
 import { DAILY_TALK_TOPICS } from '@/data/vocab-daily';
+import { STUDY4_CATEGORY_INFO, STUDY4_CATEGORY_ORDER, STUDY4_DECKS, type Study4Category } from '@/data/study4-vocab';
 import { byRecent, deckProgress, fold, isInProgress, mergeLastAtByBase, mergeStagesByBase, type DeckProgress } from '@/services/vocab/deck-library';
 import { studiedLemmas } from '@/services/vocab/topic-fsrs';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
@@ -27,6 +28,9 @@ import { bi, useL } from '@/i18n/useL';
 
 import { DeckActionCard, DeckCard } from './DeckCard';
 import { SourceCard } from './SourceCard';
+import { UnitTile } from './UnitTile';
+import { BookBanner, BookGroupHead, CoverShelf } from './BookShelf';
+import { BOOK_NAMES, SOURCE_BOOKS, bookIdOfDeck, hasOwnCover } from '@/data/book-covers';
 import { VOCAB_COVERS } from '@/data/vocab-covers';
 import { deckLook, type DeckLook, type DeckSource } from './deck-style';
 
@@ -60,6 +64,7 @@ type LibDeck = {
   isBookTopic?: boolean;
   /** Bộ gộp nhiều buổi (cấp HSK, giáo trình tiếng Nhật): tiến độ lấy từ tổng các buổi này. */
   lessonSlugs?: readonly string[];
+  study4Category?: Study4Category;
 };
 
 const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconName }[] = [
@@ -81,6 +86,7 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'ja', label: 'Tiếng Nhật', labelEn: 'Japanese', icon: 'letters' },
   { key: 'toeic', label: 'TOEIC', labelEn: 'TOEIC', icon: 'book' },
   { key: 'toefl', label: 'TOEFL', labelEn: 'TOEFL', icon: 'book' },
+  { key: 'study4', label: 'Bộ bổ trợ', labelEn: 'More collections', icon: 'book' },
 ];
 
 const PERSONAL = FILTERS.filter((f) => f.key === 'all' || f.key === 'learning' || f.key === 'mine');
@@ -106,6 +112,7 @@ const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: st
   ja: { title: 'Tiếng Nhật · Irodori', titleEn: 'Japanese · Irodori', subtitle: '4 giáo trình giao tiếp, mỗi giáo trình 9 chủ đề', subtitleEn: 'Four conversation courses, 9 topics each', icon: 'letters' },
   toeic: { title: 'TOEIC', titleEn: 'TOEIC', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
   toefl: { title: 'TOEFL', titleEn: 'TOEFL', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
+  study4: { title: 'Bộ từ bổ trợ', titleEn: 'More vocabulary collections', subtitle: '11 bộ chia theo IELTS, TOEIC, SAT, học thuật và thành ngữ', subtitleEn: '11 collections grouped by IELTS, TOEIC, SAT, academic vocabulary and idioms', icon: 'book' },
 };
 
 const INTL_ACCENT: Record<'toeic' | 'toefl' | 'daily', readonly [string, string]> = {
@@ -149,7 +156,7 @@ const LEARNING_PREVIEW = 6;
 /** Số bộ hiện mỗi lần: vẽ cả trăm thẻ có hiệu ứng cùng lúc làm đổi tab bị khựng. */
 const PAGE = 12;
 /** Ở tab Tất cả, mỗi nhóm chỉ xem trước bấy nhiêu bộ. */
-const PREVIEW_ALL = 8;
+const PREVIEW_ALL = 4;
 
 function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string, en?: LibDeck['en']): LibDeck {
   const look = deckLook(slug);
@@ -199,6 +206,11 @@ const STATIC_DECKS: LibDeck[] = [
     haystack: fold(`${t.title} ${t.titleEn} oxford 3000 ${t.words.map((w) => w.word).join(' ')}`),
   })),
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
+  ...STUDY4_DECKS.map((t) => ({
+    ...lib(t.slug, t.nameVi, t.words, t.blurb, { title: t.name }),
+    study4Category: t.category,
+    haystack: fold(`${t.nameVi} ${t.name} ${t.blurb} ${STUDY4_CATEGORY_INFO[t.category].vi} ${STUDY4_CATEGORY_INFO[t.category].en} ${t.words.map((w) => w.word).join(' ')}`),
+  })),
   ...ENGLISH_BOOKS.map((book) => ({
     ...lib(book.slug, book.nameVi, book.words, `${book.topics.length} chủ đề · ${book.words.length.toLocaleString('vi-VN')} từ`, { title: book.name }),
     look: { source: 'books' as const, sourceLabel: 'Sách từ vựng', sourceLabelEn: 'Vocabulary books', accent: ['#EDE9FE', '#6A4BD9'] as const, icon: 'book' as const },
@@ -277,6 +289,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const count = (f: LibraryFilter) => (f === 'all' ? decks.length : f === 'learning' ? learning.length : f === 'books' ? ENGLISH_BOOKS.length : decks.filter((d) => d.look.source === f && !d.isBookTopic).length);
 
   const needle = fold(query);
+  const inSource = !needle && SOURCES.some((f) => f.key === filter);
   const results = needle ? decks.filter((d) => d.haystack.includes(needle)) : [];
 
   const pick = (key: LibraryFilter) => {
@@ -289,7 +302,15 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const open = (d: LibDeck) => router.push((d.href ?? `/vocabulary/topic/${d.slug}`) as never);
   const card = (d: LibDeck, i: number) => (
     <Appear key={d.slug} index={Math.min(i, 8)} style={{ height: '100%' }}>
-      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} cover={d.cover} now={now} onPress={() => open(d)} />
+      <UnitTile
+        index={i}
+        tag={inSource ? L(`Bộ ${i + 1}`, `Deck ${i + 1}`) : en ? d.look.sourceLabelEn : d.look.sourceLabel}
+        title={en && d.en ? d.en.title : d.title}
+        words={d.words.slice(0, 3).map((w) => w.word)}
+        total={d.words.length}
+        progress={prog(d)}
+        onPress={() => open(d)}
+      />
     </Appear>
   );
   const createCard = (
@@ -311,6 +332,38 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
     </View>
   );
   const bySource = (s: DeckSource) => decks.filter((d) => d.look.source === s);
+  const statsOf = (list: LibDeck[]) => {
+    let total = 0;
+    let mastered = 0;
+    for (const d of list) {
+      total += d.words.length;
+      mastered += prog(d).mastered;
+    }
+    return { total, mastered, pct: total ? Math.round((mastered / total) * 100) : 0 };
+  };
+  /** Đầu nhóm: nhóm có bìa dùng banner nền đêm (ở tab Tất cả, bấm bìa là mở nhóm); nhóm khác để tiêu đề thường. */
+  const sourceHead = (s: DeckSource, inTab: boolean) => {
+    const ids = SOURCE_BOOKS[s];
+    if (!ids) return null;
+    const list = bySource(s).filter((d) => !d.isBookTopic);
+    const st = statsOf(list);
+    const info = SECTION[s];
+    return (
+      <BookBanner
+        ids={ids}
+        eyebrow={L('Bộ sưu tập', 'Collection')}
+        title={L(info.title, info.titleEn)}
+        subtitle={L(info.subtitle, info.subtitleEn)}
+        chips={[L(`${list.length} bộ`, `${list.length} decks`), L(`${st.total.toLocaleString('vi-VN')} từ`, `${st.total.toLocaleString('en-US')} words`)]}
+        mastered={st.mastered}
+        total={st.total}
+        masteredLabel={L('đã thuộc', 'mastered')}
+        cta={inTab ? undefined : L(`Xem cả ${list.length} bộ →`, `See all ${list.length} decks →`)}
+        onCta={inTab ? undefined : () => pick(s)}
+        onCover={inTab ? undefined : () => pick(s)}
+      />
+    );
+  };
   /** Nút ở cuối lưới: ở tab Tất cả thì mở hẳn tab của nhóm, ở tab lẻ thì hiện thêm bộ. */
   const moreFor = (s: DeckSource | null, total: number, shown: number) => {
     if (total <= shown) return null;
@@ -330,14 +383,78 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   };
   /** Nội dung một nhóm; bộ Nghe chia tiếp theo từng Section của đề, mỗi Section một dòng tiêu đề. */
   const sourceBody = (s: DeckSource) => {
-    const cap = filter === 'all' ? PREVIEW_ALL : limit;
     const all = bySource(s).filter((d) => !d.isBookTopic);
+    const cap = filter === 'all' ? (s === 'study4' ? all.length : PREVIEW_ALL) : limit;
     const shown = all.slice(0, cap);
     if (s === 'mine') {
       return (
         <>
           {grid([...shown.map(card), notebookHint, createCard].filter(Boolean))}
           {moreFor(s, all.length, shown.length)}
+        </>
+      );
+    }
+    if (s === 'books') {
+      const covered = all.filter((d) => d.cover);
+      return (
+        <CoverShelf
+          items={covered.map((d) => ({
+            key: d.slug,
+            id: d.slug,
+            uri: d.cover,
+            title: en && d.en ? d.en.title : d.title,
+            meta: L(`${d.words.length.toLocaleString('vi-VN')} từ`, `${d.words.length.toLocaleString('en-US')} words`),
+            pct: statsOf([d]).pct,
+            onPress: () => open(d),
+          }))}
+        />
+      );
+    }
+    if (s === 'study4') {
+      // Mỗi bộ trong nhóm này là một cuốn riêng: một kệ bìa liền xếp theo kỳ thi, bấm bìa mở thẳng bộ.
+      const ordered = STUDY4_CATEGORY_ORDER.flatMap((category) => all.filter((deck) => deck.study4Category === category));
+      const covered = ordered.filter((d) => hasOwnCover(d.slug));
+      const plain = ordered.filter((d) => !hasOwnCover(d.slug));
+      return (
+        <>
+          {covered.length ? (
+            <CoverShelf
+              items={covered.map((d) => ({
+                key: d.slug,
+                id: d.slug,
+                title: en && d.en ? d.en.title : d.title,
+                meta: L(`${d.words.length.toLocaleString('vi-VN')} từ`, `${d.words.length.toLocaleString('en-US')} words`),
+                pct: statsOf([d]).pct,
+                onPress: () => open(d),
+              }))}
+            />
+          ) : null}
+          {plain.length ? grid(plain.map(card)) : null}
+        </>
+      );
+    }
+    if (s === 'globalSuccess' || s === 'destination') {
+      // Nhóm nhiều sách: tab Tất cả chỉ cần banner (quạt bìa); trong nhóm thì mỗi sách một đoạn có bìa nhỏ làm đầu.
+      if (filter === 'all') return null;
+      const groups = (SOURCE_BOOKS[s] ?? [])
+        .map((id) => ({ id, decks: all.filter((d) => bookIdOfDeck(d.slug) === id) }))
+        .filter((g) => g.decks.length);
+      return (
+        <>
+          {groups.map((g) => {
+            const st = statsOf(g.decks);
+            const name = BOOK_NAMES[g.id];
+            return (
+              <View key={g.id} className="mt-7">
+                <BookGroupHead
+                  id={g.id}
+                  title={name ? L(name.vi, name.en) : g.id}
+                  meta={L(`${g.decks.length} unit · ${st.total.toLocaleString('vi-VN')} từ · ${st.pct}% đã thuộc`, `${g.decks.length} units · ${st.total.toLocaleString('en-US')} words · ${st.pct}% mastered`)}
+                />
+                {grid(g.decks.map(card))}
+              </View>
+            );
+          })}
         </>
       );
     }
@@ -371,25 +488,8 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
 
   return (
     <View>
-      {/* Lối vào học theo MỨC (CEFR / band IELTS): xếp mọi bộ có từ ở mức đã chọn. */}
-      <Pressable
-        accessibilityRole="link"
-        onPress={() => router.push('/vocabulary/theo-muc' as never)}
-        className="mt-5 flex-row items-center gap-3 rounded-2xl bg-white px-4 py-3"
-        style={{ minHeight: 64, borderWidth: 1.5, borderColor: '#E3DEF3' }}
-      >
-        <View className="h-11 w-11 items-center justify-center rounded-xl" style={{ backgroundColor: '#F1ECFF' }}>
-          <Icon name="target" size={20} color={color.primary} strokeWidth={2} />
-        </View>
-        <View className="min-w-0 flex-1">
-          <Text className="font-strong text-body text-ink">{L('Học theo mức: A1 → C2 hoặc band IELTS', 'Study by level: A1 → C2 or IELTS band')}</Text>
-          <Text className="font-sans text-label text-muted">{L('Chọn một mức, app xếp mọi bộ có từ ở mức đó.', 'Pick a level and see every deck with words at that level.')}</Text>
-        </View>
-        <Icon name="chevron-right" size={18} color={color.primary} strokeWidth={2.2} />
-      </Pressable>
-
       {/* Tìm + lọc */}
-      <View className="mt-4 flex-row items-center gap-2">
+      <View className="mt-1 flex-row items-center gap-2">
         <View className="min-w-0 flex-1 flex-row items-center gap-2 rounded-2xl bg-white px-3.5" style={{ height: 48, borderWidth: 1.5, borderColor: query ? color.primary : '#F3F0FB', ...(WEB ? ({ transition: 'border-color 200ms ease' } as object) : null) }}>
           <Icon name="search" size={17} color="#94A3B8" />
           <TextInput
@@ -433,24 +533,61 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
             </Pressable>
           );
         })}
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => router.push('/vocabulary/theo-muc' as never)}
+          className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
+          style={{ backgroundColor: '#F1ECFF', borderWidth: 1, borderColor: '#DCD3F7' }}
+        >
+          <Icon name="target" size={14} color={color.primary} strokeWidth={2} />
+          <Text className="font-semi text-label" style={{ color: color.primary }}>{L('Học theo mức A1 → C2', 'Study by level A1 → C2')}</Text>
+        </Pressable>
       </View>
 
-      {/* Chọn nhóm sách: thẻ màu như lưới "App có gì"; nhóm đang xem có dấu tích. */}
-      <View className="mt-4" accessibilityRole="tablist">
-        <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
-          {SOURCES.map((f, i) => (
-            <SourceCard
-              key={f.key}
-              index={i}
-              icon={f.icon}
-              title={L(f.label, f.labelEn)}
-              badge={L(`${count(f.key)} BỘ`, `${count(f.key)} DECKS`)}
-              selected={!needle && filter === f.key}
-              onPress={() => pick(f.key)}
-            />
-          ))}
-        </Grid>
-      </View>
+      {inSource ? (
+        <View className="mt-4">
+          <Pressable accessibilityRole="button" onPress={() => pick('all')} style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, paddingVertical: 4 }}>
+            <Icon name="chevron-left" size={16} color={color.primary} strokeWidth={2.4} />
+            <Text className="font-strong text-label" style={{ color: color.primary }}>{L('Tất cả bộ sưu tập', 'All collections')}</Text>
+          </Pressable>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} accessibilityRole="tablist" contentContainerStyle={{ gap: 8, paddingVertical: 8, paddingRight: 16 }}>
+            {SOURCES.map((f) => {
+              const on = filter === f.key;
+              return (
+                <Pressable
+                  key={f.key}
+                  accessibilityRole="tab"
+                  aria-selected={on}
+                  onPress={() => pick(f.key)}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 16, height: 44, backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#E6E0F5' }}
+                >
+                  <Text className="font-strong" style={{ fontSize: 15, color: on ? '#FFFFFF' : color.ink }}>{L(f.label, f.labelEn)}</Text>
+                  <View style={{ borderRadius: 999, paddingHorizontal: 8, paddingVertical: 1, backgroundColor: on ? 'rgba(255,255,255,0.22)' : '#F1ECFF' }}>
+                    <Text className="font-strong" style={{ fontSize: 13, color: on ? '#FFFFFF' : color.primary }}>{count(f.key)}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        </View>
+      ) : (
+        /* Chọn nhóm sách: bìa màu như lưới "App có gì"; bấm một bìa để mở bộ sưu tập. */
+        <View className="mt-4" accessibilityRole="tablist">
+          <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
+            {SOURCES.map((f, i) => (
+              <SourceCard
+                key={f.key}
+                index={i}
+                icon={f.icon}
+                title={L(f.label, f.labelEn)}
+                badge={L(`${count(f.key)} BỘ`, `${count(f.key)} DECKS`)}
+                selected={false}
+                onPress={() => pick(f.key)}
+              />
+            ))}
+          </Grid>
+        </View>
+      )}
 
       <CrossFade swapKey={needle ? 'search' : filter}>
         <View ref={contentRef}>
@@ -479,9 +616,9 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'daily', 'books', 'zh', 'ja', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'daily', 'books', 'zh', 'ja', 'ielts', 'toeic', 'toefl', 'study4', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
-                  <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
+                  {sourceHead(s, false) ?? <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />}
                   {sourceBody(s)}
                 </View>
               ))}
@@ -494,7 +631,16 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
             </View>
           ) : (
             <View className="mt-5">
-              <SectionHeader title={L(SECTION[filter].title, SECTION[filter].titleEn)} subtitle={L(SECTION[filter].subtitle, SECTION[filter].subtitleEn)} icon={SECTION[filter].icon} />
+              {sourceHead(filter, true) ?? (filter !== 'mine' ? (
+                <View style={{ marginBottom: 4 }}>
+                  <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: color.ink }}>{L(SECTION[filter].title, SECTION[filter].titleEn)}</Text>
+                  <Text className="font-sans" style={{ marginTop: 2, fontSize: 14, color: '#6E5E4B' }}>
+                    {L(`${count(filter)} bộ · ${bySource(filter).reduce((n, d) => n + (d.isBookTopic ? 0 : d.words.length), 0).toLocaleString('vi-VN')} từ`, `${count(filter)} decks · ${bySource(filter).reduce((n, d) => n + (d.isBookTopic ? 0 : d.words.length), 0).toLocaleString('en-US')} words`)}
+                  </Text>
+                </View>
+              ) : (
+                <SectionHeader title={L(SECTION[filter].title, SECTION[filter].titleEn)} subtitle={L(SECTION[filter].subtitle, SECTION[filter].subtitleEn)} icon={SECTION[filter].icon} />
+              ))}
               {sourceBody(filter)}
             </View>
           )}

@@ -4,8 +4,8 @@
  */
 export const VOCAB_COVERS: Record<string, string> = {
   // Bìa trang đầu từ PDF nguồn của 7 bộ sách tiếng Anh.
-  'book-ericas-vocabulary': '/vocab-covers/book-ericas-vocabulary.webp',
-  'book-sat-power-vocab': '/vocab-covers/book-sat-power-vocab.webp',
+  'book-ericas-vocabulary': '/vocab-covers/book-ericas-vocabulary.svg',
+  'book-sat-power-vocab': '/vocab-covers/book-sat-power-vocab.svg',
   'book-vocab-in-use-elementary': '/vocab-covers/book-vocab-in-use-elementary.webp',
   'book-vocab-in-use-preintermediate': '/vocab-covers/book-vocab-in-use-preintermediate.webp',
   'book-vocab-in-use-upperintermediate': '/vocab-covers/book-vocab-in-use-upperintermediate.webp',

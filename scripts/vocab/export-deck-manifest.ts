@@ -12,6 +12,7 @@ import { LISTENING_DECKS } from '../../src/data/vocab-listening';
 import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '../../src/data/vocab-topics';
 import { DESTINATION_DECKS } from '../../src/data/destination-vocab';
 import { DAILY_TALK_TOPICS } from '../../src/data/vocab-daily';
+import { STUDY4_DECKS } from '../../src/data/study4-vocab';
 import { unitsFor } from '../../src/data/intl/units';
 
 type Row = { slug: string; source: string; en: string; vi: string };
@@ -28,6 +29,7 @@ for (const t of DESTINATION_DECKS as any[]) add(t.slug, 'destination', t.name, t
 for (const l of SAT_MATH_VOCAB_LESSONS as any[]) add(l.slug, 'satMath', l.title, l.title);
 for (const l of SAT_VERBAL_VOCAB_LESSONS as any[]) add(l.slug, 'satVerbal', l.title, l.title);
 for (const t of DAILY_TALK_TOPICS as any[]) add(t.slug, 'daily', t.name, t.nameVi);
+for (const t of STUDY4_DECKS) add(t.slug, 'study4', t.name, t.nameVi);
 for (const exam of ['toeic', 'toefl'] as const)
   for (const u of unitsFor(exam) as any[]) add(`${exam}-unit-${u.index}`, exam, `Unit ${u.index} ${u.title?.en ?? ''}`, `Unit ${u.index} ${u.title?.vi ?? u.title ?? ''}`);
 

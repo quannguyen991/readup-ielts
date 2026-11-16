@@ -39,10 +39,11 @@ function EntryCard({ lang }: { lang: EaLang }) {
     >
       <Image source={skin.thumb} contentFit="cover" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
       <LinearGradient colors={c.wash} locations={[0, 0.5, 0.95]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
+      <LinearGradient colors={['rgba(10,8,20,0.72)', 'rgba(10,8,20,0.35)', 'rgba(10,8,20,0)']} locations={[0, 0.6, 1]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
       <View style={{ flex: 1, justifyContent: 'center', paddingHorizontal: 22, gap: 4, maxWidth: '68%' }}>
-        <Text style={{color: c.accent, fontSize: 12, letterSpacing: 2, fontFamily: EA_FONT.heavy}}>{lang === 'zh' ? L('TIẾNG TRUNG', 'CHINESE') : L('TIẾNG NHẬT', 'JAPANESE')}</Text>
-        <Text style={{color: c.ink, fontSize: 26, fontFamily: EA_FONT.heavy}}>{lang === 'zh' ? L('Lộ trình HSK 1–6', 'HSK 1–6 roadmap') : L('Lộ trình JLPT N5–N1', 'JLPT N5–N1 roadmap')}</Text>
-        <Text style={{color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body}}>{`${words.toLocaleString('vi-VN')} ${L('từ', 'words')} · ${levels.length} ${L('cấp', 'levels')}`}</Text>
+        <Text style={{color: '#FFD98A', fontSize: 12, letterSpacing: 2, fontFamily: EA_FONT.heavy}}>{lang === 'zh' ? L('TIẾNG TRUNG', 'CHINESE') : L('TIẾNG NHẬT', 'JAPANESE')}</Text>
+        <Text style={{color: '#FFFFFF', fontSize: 26, fontFamily: EA_FONT.heavy}}>{lang === 'zh' ? L('Lộ trình HSK 1–6', 'HSK 1–6 roadmap') : L('Lộ trình JLPT N5–N1', 'JLPT N5–N1 roadmap')}</Text>
+        <Text style={{color: 'rgba(255,255,255,0.88)', fontSize: 14, fontFamily: EA_FONT.body}}>{`${words.toLocaleString('vi-VN')} ${L('từ', 'words')} · ${levels.length} ${L('cấp', 'levels')}`}</Text>
       </View>
       <Image source={motif} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', right: 8, top: 6, width: 120, height: 120 }} />
     </Pressable>

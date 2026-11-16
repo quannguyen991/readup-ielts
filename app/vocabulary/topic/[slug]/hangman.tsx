@@ -8,15 +8,14 @@ import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import { useStudyTheme } from "@/components/vocab/study/useStudyTheme";
 import { useL } from "@/i18n/useL";
 import { seededRng, type StudyWord } from "@/services/vocab/topic-study";
-import { isGuessSolved, isLetterWord, pickWords, revealedLetters, wrongGuessCount } from "@/services/vocab/review-games";
+import { isGuessSolved, isHangmanAnswer, pickWords, revealedLetters, wrongGuessCount } from "@/services/vocab/review-games";
 import { useGameStore } from "@/store/useGameStore";
 import { useTopicStudyStore } from "@/store/useTopicStudyStore";
 
 /**
  * Đoán chữ: gợi ý là nghĩa tiếng Việt, người học đoán từng chữ cái (bấm bàn phím
  * ảo, hoặc gõ trên máy tính). Mỗi chữ sai mất một tim; hết sáu tim là thua và từ
- * được hiện ra. Đoán ít sai thì được nhiều điểm hơn. Chỉ dùng từ viết bằng chữ cái
- * a–z, nên cụm từ và từ có gạch nối không xuất hiện.
+ * được hiện ra. Cụm từ cũng chơi được; khoảng trắng và dấu câu được mở sẵn.
  */
 
 const MAX_WRONG = 6;
@@ -35,7 +34,7 @@ export default function HangmanGame() {
   // nếu dựng lại theo `topic` thì từ đang đoán sẽ bị đổi giữa chừng.
   const [queue, setQueue] = useState<StudyWord[] | null>(null);
   useEffect(() => {
-    if (queue === null && topic) setQueue(pickWords(topic.words, 200, rng, (w) => isLetterWord(w.word)));
+    if (queue === null && topic) setQueue(pickWords(topic.words, 200, rng, (w) => isHangmanAnswer(w.word)));
   }, [topic, queue, rng]);
 
   const [index, setIndex] = useState(0);
@@ -121,8 +120,8 @@ export default function HangmanGame() {
           <Text className="font-heavy text-sectionTitle text-ink">{L("Chưa có từ để đoán", "No words to guess yet")}</Text>
           <Text className="mt-2 font-sans text-body text-muted">
             {L(
-              "Đoán chữ chỉ dùng từ viết bằng chữ cái a–z, dài 3–12 chữ. Bộ này chưa có từ như vậy.",
-              "Hangman uses plain a–z words of 3–12 letters. This set has none.",
+              "Đoán chữ dùng từ hoặc cụm từ có 3–28 chữ cái. Bộ này chưa có mục phù hợp.",
+              "Hangman uses words or phrases with 3–28 letters. This set has no suitable entries.",
             )}
           </Text>
         </StudyCard>
@@ -173,12 +172,12 @@ export default function HangmanGame() {
         <Text
           className="mt-4 text-center font-heavy"
           style={{
-            fontSize: 30,
-            letterSpacing: 4,
+            fontSize: current.word.length > 20 ? 20 : current.word.length > 12 ? 24 : 30,
+            letterSpacing: current.word.length > 12 ? 2 : 4,
             color: finished ? (phase === "won" ? GREEN : RED) : theme.ink,
           }}
         >
-          {finished ? current.word : revealed.join(" ")}
+          {finished ? current.word : revealed.map((ch) => ch === " " ? "  " : `${ch} `).join("").trimEnd()}
         </Text>
         {wrongLetters.length > 0 ? (
           <Text className="mt-3 text-center font-sans text-label" style={{ color: RED }}>

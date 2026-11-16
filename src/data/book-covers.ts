@@ -60,7 +60,7 @@ export function bookIdOfDeck(slug: string): BookCoverId | undefined {
   return undefined;
 }
 
-/** Bộ Study4 mỗi bộ là một cuốn: mã bộ chính là mã bìa. */
+/** Bộ bổ trợ mỗi bộ là một cuốn: mã bộ chính là mã bìa. */
 export function hasOwnCover(slug: string): boolean {
   return (BOOK_COVER_IDS as readonly string[]).includes(slug);
 }

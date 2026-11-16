@@ -11,7 +11,7 @@ import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { deckLevels, getStaticDeck, groupDeckWords, levelOf, NOTEBOOK_SLUG, splitLevelSlug } from '@/data/study-decks';
 import { clozeOf, type StudyWord, type WordStage } from '@/services/vocab/topic-study';
 import { EaLessonScreen } from '@/components/vocab/eastasia/EaLessonScreen';
-import { isLetterWord } from '@/services/vocab/review-games';
+import { isHangmanAnswer } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { color } from '@/theme/tokens';
@@ -35,6 +35,7 @@ import { ToneTile } from '@/components/vocab/ToneTile';
 import { JaLessonHero, JaPageBackdrop, JaSectionTitle, JaSiblingLessons, JaTile, JaWordRow } from '@/components/vocab/japanese/JaBookParts';
 import { isDialogueLesson, JA_MODE_ART, JA_SET_ART, JA_STATUS_ART, sceneOf } from '@/components/vocab/japanese/ja-art';
 import { BOOK_VOCAB_BOOKS } from '@/data/vocab-topics';
+import { study4SectionLabel } from '@/data/study4-vocab';
 import { JA } from '@/components/vocab/japanese/ja-art';
 import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
@@ -578,17 +579,22 @@ export default function VocabTopicScreen() {
               const take = Math.max(0, Math.min(group.words.length, budget));
               budget -= take;
               if (take === 0) return null;
+              const groupTitle = topic.words.some((word) => word.band === 'Study4')
+                ? study4SectionLabel(group.label, en)
+                : en
+                  ? (GROUP_LABEL_EN[group.label] ?? group.label)
+                  : group.label;
               return (
                 <Appear key={group.label} index={gi + 2}>
                   <View className="mt-5">
                     {topic.language === 'ja' ? (
-                      <JaSectionTitle title={en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label} subtitle={L(`${group.words.length} từ`, `${group.words.length} words`)} />
+                      <JaSectionTitle title={groupTitle} subtitle={L(`${group.words.length} từ`, `${group.words.length} words`)} />
                     ) : (
                     <View className="flex-row items-center gap-2">
                       <View aria-hidden>
                         <BadgeSticker icon={GROUP_BADGE[gi % GROUP_BADGE.length]!} color={GROUP_TONE[gi % GROUP_TONE.length]!} size={28} />
                       </View>
-                      <Text className="font-heavy text-sectionTitle text-ink">{en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label}</Text>
+                      <Text className="font-heavy text-sectionTitle text-ink">{groupTitle}</Text>
                       <Text className="font-sans text-label text-muted">{L(`${group.words.length} từ`, `${group.words.length} words`)}</Text>
                     </View>
                     )}
@@ -755,19 +761,19 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
   { key: 'flyer', route: 'quiz?mode=flyer', label: 'Tờ rơi', labelEn: 'Flyer', note: 'Điền từ vào tờ rơi thông báo, chọn ABCD như đề thi', noteEn: 'Fill the word into a flyer notice, ABCD like the exam', icon: 'mail', tone: '#0369A1' },
 ];
 
+const clozeableCount = (words: readonly StudyWord[]) => words.filter((w) => w.example && clozeOf(w.example, w.word)).length;
+
 /** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
 function modeReady(key: string, words: readonly StudyWord[], language?: StudyWord['language']): boolean {
   const hasMeaning = words.some((word) => Boolean(word.meaningVi?.trim() || word.definitionEn?.trim()));
   if (!hasMeaning && ['learn', 'test', 'game', 'pairs', 'hangman', 'quiz', 'advert', 'flyer'].includes(key)) return false;
   const eastAsian = language === 'ja' || language === 'zh';
   if (key === 'abcd' || key === 'listen') return eastAsian && hasMeaning;
-const clozeableCount = (words: readonly StudyWord[]) => words.filter((w) => w.example && clozeOf(w.example, w.word)).length;
-
   if (eastAsian && ['hangman', 'sentence', 'quiz', 'advert', 'flyer'].includes(key)) return false;
   // Điền vào câu cho chữ Hán/kana: cần ít nhất 4 câu khoét được để có đủ 4 phương án.
   if (eastAsian && key === 'cloze') return clozeableCount(words) >= 4;
   if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
-  if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
+  if (key === 'hangman') return words.some((word) => isHangmanAnswer(word.word));
   if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);
   return true;
 }

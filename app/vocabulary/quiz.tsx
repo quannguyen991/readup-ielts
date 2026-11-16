@@ -6,6 +6,7 @@ import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
+import { CamVocabShelf } from '@/components/vocab/CamVocabCover';
 import { StudyEntryChooser } from '@/components/vocab/study/StudyEntryChooser';
 import { useL } from '@/i18n/useL';
 
@@ -46,6 +47,7 @@ export default function VocabQuizHub() {
           </View>
         </LightHero>
       </Appear>
+      <CamVocabShelf />
       <DeckLibrary />
       <View className="h-10" />
       <StudyEntryChooser visible={lookOpen} onDone={() => setLookOpen(false)} />

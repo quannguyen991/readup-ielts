@@ -2,7 +2,9 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { LightHero } from '@/components/layout/LightHero';
+import { LinearGradient } from 'expo-linear-gradient';
+
+import { PC, useCourseFonts } from '@/components/hub/PhonemeCourse';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { DueToday } from '@/components/vocab/DueToday';
@@ -23,6 +25,7 @@ import { color } from '@/theme/tokens';
  * ngày đầu tiên nó trống trơn. Thư viện này cho người mới thứ để bắt đầu ngay.
  */
 export default function VocabTopicsScreen() {
+  useCourseFonts();
   const { L, locale } = useL();
   if (VOCAB_TOPICS.length === 0) {
     return (
@@ -48,22 +51,29 @@ export default function VocabTopicsScreen() {
   return (
     <Screen>
       <Appear>
-        <LightHero
-          scene="vocab"
-          badge={L('TỪ VỰNG', 'VOCABULARY')}
-          line1={L('Từ vựng theo chủ đề', 'Vocabulary by topic')}
-          line2={L('học trong câu, nhớ bằng ôn lặp', 'learn in context, remember with review')}
-          subtitle={L(
-            `${VOCAB_TOPIC_TOTALS.topics} chủ đề hay ra trong đề IELTS, ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ. Mỗi từ có phiên âm, nghĩa tiếng Việt, một câu ví dụ và một collocation đi kèm.`,
-            `${VOCAB_TOPIC_TOTALS.topics} common IELTS topics, ${VOCAB_TOPIC_TOTALS.words.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} words. Each word has its pronunciation, Vietnamese meaning, an example sentence and a collocation.`,
-          )}
-        />
+        <LinearGradient colors={['#E6E0FF', '#FFE5D1']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 28, padding: 20, boxShadow: '0 6px 24px rgba(60,40,120,0.08)' } as never}>
+          <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 32, lineHeight: 38, color: PC.ink }}>{L('Từ vựng', 'Vocabulary')}</Text>
+          <Text style={{ marginTop: 2, fontFamily: PC.body, fontSize: 15, color: '#5B4F8A' }}>{L('Chọn một bộ sưu tập, học trong câu, nhớ bằng ôn lặp.', 'Pick a collection, learn in context, remember by review.')}</Text>
+          <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {[
+              [VOCAB_TOPIC_TOTALS.topics.toLocaleString('vi-VN'), L('chủ đề IELTS', 'IELTS topics')],
+              [VOCAB_TOPIC_TOTALS.words.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN'), L('từ', 'words')],
+              ['1.600+', L('bộ từ', 'decks')],
+            ].map(([n, t]) => (
+              <View key={t} style={{ flexDirection: 'row', alignItems: 'baseline', gap: 5, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6, backgroundColor: 'rgba(255,255,255,0.75)' }}>
+                <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 17, color: PC.purple }}>{n}</Text>
+                <Text style={{ fontFamily: PC.body, fontSize: 14, color: PC.ink }}>{t}</Text>
+              </View>
+            ))}
+          </View>
+        </LinearGradient>
       </Appear>
 
-      <EaEntryBanners />
-
-      {/* Tìm kiếm + lọc + "Tất cả" (có TOEIC/TOEFL với nhãn riêng) ở ngay đầu trang. */}
+      <View style={{ marginTop: 14 }} />
+      {/* Tìm kiếm + lọc + bìa các bộ sưu tập; chọn một bìa thì hiện lưới ô từng bộ. */}
       <DeckLibrary initialFilter="all" />
+
+      <EaEntryBanners />
 
       <DueToday />
 

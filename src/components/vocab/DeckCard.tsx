@@ -80,7 +80,7 @@ export function ProgressRing({ pct, color, size = 46 }: { pct: number; color: st
           strokeDashoffset={c * (1 - pct / 100)}
         />
       </Svg>
-      <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color }}>{pct}%</Text>
+      <Text style={{ fontFamily: fontFamily.semibold, fontSize: 13, color }}>{pct}%</Text>
     </View>
   );
 }
@@ -187,12 +187,12 @@ export function DeckCard({
 
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 }}>
             <DeckProgressBar progress={progress} color="#FFFFFF" height={6} track="rgba(20,10,40,0.35)" />
-            <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>{pct}%</Text>
+            <Text style={{ fontFamily: fontFamily.semibold, fontSize: 13, color: '#FFFFFF' }}>{pct}%</Text>
           </View>
 
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
             <View style={{ borderRadius: 999, backgroundColor: 'rgba(20,10,40,0.3)', paddingHorizontal: 10, paddingVertical: 3 }}>
-              <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>
+              <Text style={{ fontFamily: fontFamily.semibold, fontSize: 13, color: '#FFFFFF' }}>
                 {`${sourceLabel} · ${progress.total} ${L('từ', 'words')}`}
               </Text>
             </View>
