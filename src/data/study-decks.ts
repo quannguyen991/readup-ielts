@@ -16,6 +16,8 @@ import type { StudyWord } from '@/services/vocab/topic-study';
 import { SAT_VOCAB_LESSONS } from './lessons/vocab-lessons';
 import { OXFORD_TOPIC_DECKS } from './oxford-topics-decks';
 import { fillStudyDeck } from './study-deck-fill';
+import { getCamVocabBook } from './cambridge-vocab';
+import { camStudyWord } from './cambridge-vocab-entries';
 
 export type StudyDeck = {
   slug: string;
@@ -83,6 +85,25 @@ export function rawStaticDeck(slug: string): StudyDeck | undefined {
       words: lesson.words,
     };
   }
+  const cambridgeMatch = /^cambridge-(\d+)-test-(\d+)-passage-(\d+)$/.exec(slug);
+  if (cambridgeMatch) {
+    const book = getCamVocabBook(Number(cambridgeMatch[1]));
+    const test = Number(cambridgeMatch[2]);
+    const passage = Number(cambridgeMatch[3]);
+    const reading = book?.passages.find((item) => item.test === test && item.passage === passage);
+    if (book && reading) {
+      // Chỉ từ đã có nghĩa mới vào bộ học (không có nghĩa thì không hỏi được); danh sách đủ từ vẫn nằm ở trang sách.
+      const words = reading.words.map(camStudyWord).filter((w): w is StudyWord => Boolean(w));
+      return {
+        slug,
+        kind: 'topic',
+        name: `Cambridge IELTS ${book.n} · Test ${test} · Passage ${passage}`,
+        nameVi: `Cambridge IELTS ${book.n} · Test ${test} · Passage ${passage}`,
+        blurb: `${words.length}/${reading.words.length} từ và cụm từ trích từ bài đọc.`,
+        words,
+      };
+    }
+  }
   const t = getVocabTopic(slug);
   if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words, language: t.language, sourceNote: t.sourceNote };
   // Bộ Oxford 3000 dùng đúng màn học của bộ IELTS. Từ Oxford không có phiên âm hay
@@ -144,6 +165,13 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
 export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWord[] }[] {
   if (deck.language === 'ja') return deck.words.length ? [{ label: 'Từ tiếng Nhật', words: deck.words }] : [];
   if (deck.language === 'zh') return deck.words.length ? [{ label: 'Từ tiếng Trung', words: deck.words }] : [];
+  if (deck.words.some((word) => word.band === 'Study4')) {
+    const sections = [...new Set(deck.words.map((word) => word.sourceLevel).filter((value): value is string => Boolean(value)))];
+    if (sections.length > 1) {
+      return sections.map((label) => ({ label, words: deck.words.filter((word) => word.sourceLevel === label) }));
+    }
+    return deck.words.length ? [{ label: sections[0] ?? 'Từ vựng bổ trợ', words: deck.words }] : [];
+  }
   if (deck.kind === 'oxford') {
     const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
     return levels.map((level) => ({ label: level, words: deck.words.filter((w) => w.band === level) })).filter((g) => g.words.length > 0);
@@ -164,5 +192,6 @@ export { posIpa } from '@/services/vocab/pos-ipa';
 
 /** Nhãn mức của từ: "Band 5-6" với bộ IELTS, tên nhóm với bộ khác. */
 export function levelLabel(band: string): string {
+  if (band === 'Study4') return 'Bộ bổ trợ';
   return /^\d/.test(band) ? `Band ${band}` : band;
 }
