@@ -708,7 +708,7 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
     skyStops: ['#FDE3EA', '#FBD3DF', '#F4B6CB'],
     sky: 'linear-gradient(180deg,#FDE3EA 0%,#FBD3DF 55%,#F4B6CB 100%)',
     swatch: 'linear-gradient(180deg,#FDE3EA,#F4B6CB)',
-    card: '#F3F0FB',
+    card: '#FFF8FA',
     cardBorder: 'rgba(214,120,150,0.25)',
     soft: '#FCEFF1',
     accent: '#B4436C',
@@ -746,7 +746,7 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
       'radial-gradient(70% 40% at 50% 100%, rgba(255,214,150,0.65), transparent 70%),' +
       'linear-gradient(180deg,#F3F0FB 0%,#F7B79A 38%,#E9A0B8 72%,#CDB0E6 100%)',
     swatch: 'linear-gradient(180deg,#F3F0FB,#F7B79A 40%,#E9A0B8 75%,#CDB0E6)',
-    card: '#F3F0FB',
+    card: '#FFF8F2',
     cardBorder: 'rgba(200,110,90,0.25)',
     soft: '#F3F0FB',
     accent: '#6A4BD9',
