@@ -40,6 +40,7 @@ def main() -> None:
     ap.add_argument("--kind", choices=["words", "lines"], required=True)
     ap.add_argument("--shard", default="0/1")
     ap.add_argument("--merge", action="store_true")
+    ap.add_argument("--reverse", action="store_true", help="làm từ cuối danh sách ngược lên (hai máy chia nhau một shard); ghi index.shard<N>r.json")
     args = ap.parse_args()
     src_dir = ROOT / "public/audio" / args.kind / "sarah"
     out = ROOT / "public/audio" / args.kind / "emma"
@@ -58,7 +59,9 @@ def main() -> None:
     i, n = (int(x) for x in args.shard.split("/"))
     src = load(src_dir / "index.json")
     mine = [(t, name) for k, (t, name) in enumerate(src.items()) if k % n == i]
-    shard_path = out / f"index.shard{i}.json"
+    shard_path = out / (f"index.shard{i}r.json" if args.reverse else f"index.shard{i}.json")
+    if args.reverse:
+        mine.reverse()
     index = load(shard_path)
     done = {t for t, name in index.items() if (out / name).exists()}
     done |= {t for t, name in load(out / "index.json").items() if (out / name).exists()}
@@ -94,12 +97,20 @@ def main() -> None:
         # wav tạm ngoài thư mục public: trình giám sát tệp (Metro, antivirus) khoá tệp làm unlink lỗi.
         wav = tmp_dir / (Path(name).stem + f".s{i}.wav")
         sf.write(wav, samples, rate)
-        subprocess.run(
-            [FFMPEG, "-nostdin", "-y", "-loglevel", "error", "-i", str(wav), "-af", "silenceremove=start_periods=1:start_threshold=-50dB",
-             "-codec:a", "libmp3lame", "-b:a", "64k", str(out / name)],
-            check=True,
-            stdin=subprocess.DEVNULL,
-        )
+        ok = False
+        for _try in range(3):  # ffmpeg thỉnh thoảng chết lẻ tẻ: thử lại, hỏng hẳn thì bỏ mục này, không chết cả lượt
+            r = subprocess.run(
+                [FFMPEG, "-nostdin", "-y", "-loglevel", "error", "-i", str(wav), "-af", "silenceremove=start_periods=1:start_threshold=-50dB",
+                 "-codec:a", "libmp3lame", "-b:a", "64k", str(out / name)],
+                stdin=subprocess.DEVNULL,
+            )
+            if r.returncode == 0:
+                ok = True
+                break
+            time.sleep(2)
+        if not ok:
+            print(f"  BỎ QUA (ffmpeg lỗi): {text[:60]}", flush=True)
+            continue
         try:
             wav.unlink()
         except OSError:
