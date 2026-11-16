@@ -7,7 +7,8 @@ import type { Bi, PathLevel, PathNode, PathTarget } from './types';
  * trong ngữ cảnh…). Trong một Part, bài đi theo nhịp: đọc lý thuyết → làm
  * chương / bộ câu dễ → làm bộ khó hơn → ôn từ vựng hay đọc đoạn văn liên quan.
  *
- * Toán dùng lý thuyết `/math/learn`, chương Lộ trình SAT Math 27 chủ đề và bộ
+ * Toán dùng lý thuyết `/math/learn`, chương Lộ trình SAT Math 27 chủ đề (25
+ * chủ đề cốt lõi, 2 phần mở rộng tùy chọn) và bộ
  * đề chặng 1 (chặng miễn phí — các chặng sau cần gói trả phí nên không đưa vào
  * đây). Verbal dùng lý thuyết `/sat-rw/learn` và bộ "Học" / "Luyện" của từng
  * unit; bộ "Chốt" không dùng vì nó gồm lại đúng các câu của hai bộ trước, nên
@@ -36,8 +37,8 @@ const S1000: PathLevel = {
       nodes: [
         N('s10-lin-lesson', 15, { kind: 'math-lesson', skill: 'linear_equations_one_var' },
           b('Lý thuyết: phương trình bậc nhất một ẩn', 'Lesson: linear equations in one variable'),
-          b('Ôn lại cách chuyển vế, khử mẫu và kiểm tra nghiệm. Dạng này xuất hiện ở mọi đề SAT và là chỗ dễ mất điểm vì sai dấu.',
-            'Review moving terms, clearing fractions and checking solutions. This type appears on every SAT and is where sign errors cost easy points.')),
+          b('Ôn lại cách chuyển vế, khử mẫu và kiểm tra nghiệm. Đây là kỹ năng cốt lõi của domain Algebra; chú ý dấu và kiểm tra nghiệm vào phương trình gốc.',
+            'Review moving terms, clearing fractions and checking solutions. This is a core Algebra skill; watch signs and verify the solution in the original equation.')),
         N('s10-lin-chapter', 30, { kind: 'sat-chapter', id: 'solving-equations' },
           b('Chương: giải phương trình', 'Chapter: solving equations'),
           b('Đọc lý thuyết song ngữ, xem ví dụ giải từng bước rồi làm quiz mức Dễ. Qua được 80% là bạn đã vững phần cốt lõi.',
@@ -402,14 +403,14 @@ const S1400: PathLevel = {
             'Parabolas and exponentials on a graph: vertex, axis of symmetry, growth rate. Learn to read a graph\'s shape straight from its equation.')),
         N('s14-quad-exp', 30, { kind: 'sat-chapter', id: 'exponential-vs-linear' },
           b('Chương: tăng theo hàm mũ hay tuyến tính', 'Chapter: exponential vs linear growth'),
-          b('Phân biệt tăng cộng thêm và tăng nhân lên, và viết mô hình hàm mũ từ một mô tả. Dạng này luôn có ít nhất một câu trong đề.',
-            'Tell additive from multiplicative growth and write an exponential model from a description. At least one question on every test.')),
+          b('Phân biệt tăng cộng thêm với tăng theo hệ số nhân, rồi chọn mô hình tuyến tính hoặc hàm mũ phù hợp với bảng/mô tả.',
+            'Distinguish additive from multiplicative growth, then choose a linear or exponential model that fits the table or description.')),
       ],
     },
     {
       id: 'sat-1400-algebra',
       title: b('Đại số nâng cao', 'Advanced algebra'),
-      blurb: b('Biểu thức tương đương, chia đa thức, số phức và giá trị tuyệt đối.', 'Equivalent expressions, polynomial division, complex numbers and absolute value.'),
+      blurb: b('Biểu thức, giá trị tuyệt đối và hàm phi tuyến là trọng tâm. Chia đa thức và số phức nằm cuối như phần mở rộng tùy chọn.', 'Expressions, absolute value, and nonlinear functions are core. Polynomial division and complex numbers appear at the end as optional enrichment.'),
       nodes: [
         N('s14-alg-lesson', 15, { kind: 'math-lesson', skill: 'equivalent_expressions' },
           b('Lý thuyết: biểu thức tương đương', 'Lesson: equivalent expressions'),
@@ -420,13 +421,13 @@ const S1400: PathLevel = {
           b('Lý thuyết song ngữ và ba mức quiz về biến đổi biểu thức. Đồng nhất hệ số là kỹ năng chính.',
             'Bilingual theory and three quiz levels on manipulating expressions. Matching coefficients is the key skill.')),
         N('s14-alg-division', 30, { kind: 'sat-chapter', id: 'synthetic-division' },
-          b('Chương: chia đa thức', 'Chapter: polynomial division'),
-          b('Chia đa thức và định lý số dư. Ít câu nhưng gần như chắc chắn là câu khó, nên đáng luyện cho người nhắm điểm cao.',
-            'Polynomial division and the remainder theorem. Few questions, but almost always hard ones, so worth it for high scorers.')),
+          b('Mở rộng (tùy chọn): chia đa thức', 'Optional enrichment: polynomial division'),
+          b('Chia đa thức và định lý số dư là nội dung của sách College Panda, nhưng không được nêu thành kỹ năng trong blueprint College Board hiện hành. Học thêm nếu muốn mở rộng đại số; có thể bỏ qua khi hoàn thành SAT core.',
+            'Polynomial division and the remainder theorem appear in the College Panda book but are not listed as skills in the current College Board blueprint. Study for broader algebra enrichment; this can be skipped for SAT core completion.')),
         N('s14-alg-complex', 30, { kind: 'sat-chapter', id: 'complex-numbers' },
-          b('Chương: số phức', 'Chapter: complex numbers'),
-          b('Cộng, nhân, chia số phức và lũy thừa của i. Một chương ngắn, học một lần là nắm.',
-            'Adding, multiplying and dividing complex numbers, and powers of i. A short chapter you can master in one sitting.')),
+          b('Mở rộng (tùy chọn): số phức', 'Optional enrichment: complex numbers'),
+          b('Số phức và lũy thừa của i nằm trong sách College Panda nhưng không được nêu thành kỹ năng trong blueprint College Board hiện hành. Đây không phải điều kiện để hoàn thành lộ trình SAT core.',
+            'Complex numbers and powers of i appear in College Panda but are not listed as skills in the current College Board blueprint. They are not required to complete the SAT core route.')),
         N('s14-alg-abs', 30, { kind: 'sat-chapter', id: 'absolute-value' },
           b('Chương: giá trị tuyệt đối', 'Chapter: absolute value'),
           b('Phương trình, bất phương trình và đồ thị chữ V. Nhớ tách hai trường hợp là tránh được gần hết lỗi.',

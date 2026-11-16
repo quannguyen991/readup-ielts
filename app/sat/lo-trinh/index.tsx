@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -8,6 +8,7 @@ import { Appear } from '@/components/motion/Motion';
 import { ChapterSticker, LevelDots, levelState } from '@/components/sat-roadmap/RoadmapUi';
 import { WindingTrail } from '@/components/learning-path/WindingTrail';
 import { PHASES, ROAD_CHAPTERS, type RoadChapter } from '@/data/sat-roadmap';
+import { SAT_MATH_DOMAIN_INFO, satMathChapterAlignment } from '@/data/sat-roadmap/sat-alignment';
 import { VOCAB_ROADMAP_PHASES, TOTAL_VOCAB_UNITS, TOTAL_VOCAB_WORDS, type VocabRoadmapUnit } from '@/data/sat-vocab-roadmap';
 import { SAT_RW_UNITS, SAT_RW_DOMAINS, SAT_RW_TOTAL_BANK, SAT_RW_REAL_TEST_CRAFT_QUESTIONS } from '@/data/sat-rw-repository';
 import { SAT_5_STEP_METHOD, SAT_BOOK_CATALOG, SAT_CONTEXT_CLUES, SAT_TRANSITION_GROUPS } from '@/data/sat-methods';
@@ -48,10 +49,11 @@ export default function SatRoadmapScreen() {
   );
   const nextMath =
     ROAD_CHAPTERS.find((chapter) =>
+      satMathChapterAlignment(chapter.id).scope === 'core' &&
       (['easy', 'medium', 'hard'] as const).some(
         (level) => levelState(mathProgress[chapter.id]?.[level]) !== 'passed'
       )
-    ) ?? ROAD_CHAPTERS[0]!;
+    ) ?? ROAD_CHAPTERS.find((chapter) => satMathChapterAlignment(chapter.id).scope === 'core') ?? ROAD_CHAPTERS[0]!;
 
   // Vocab stats
   const allVocabUnits = VOCAB_ROADMAP_PHASES.flatMap((p) => p.units);
@@ -83,8 +85,8 @@ export default function SatRoadmapScreen() {
               DIGITAL SAT · {L('LỘ TRÌNH TOÀN DIỆN', 'MASTER CURRICULUM ROADMAP')}
             </Text>
             <View className="rounded-full bg-emerald-50 px-3 py-1 border border-emerald-300">
-              <Text className="font-heavy text-tiny text-emerald-800">
-                {TOTAL_VOCAB_WORDS} TỪ · 1.238 CÂU HỎI
+              <Text className="font-heavy text-label text-emerald-800">
+                COLLEGE BOARD + KHAN · {ROAD_CHAPTERS.length - 2} MATH CORE
               </Text>
             </View>
           </View>
@@ -95,8 +97,8 @@ export default function SatRoadmapScreen() {
 
           <Text className="mt-1 font-sans text-body text-muted">
             {L(
-              'Toàn bộ kiến thức, từ vựng học thuật, ngân hàng câu hỏi đề thi thật và phương pháp được số hoá trực tiếp từ 27 tựa sách kinh điển và ngân hàng câu hỏi chính thức.',
-              'All academic vocabulary, question banks, and methodologies compiled from 27 classic prep books and official question banks.'
+              'Lộ trình bám khung College Board và các khóa Digital SAT của Khan Academy, có đối chiếu sách học bạn cung cấp. Từ/câu hỏi trong kho được phân biệt theo nguồn; sách cũ dùng để bổ trợ kỹ năng, không thay blueprint hiện hành.',
+              'Roadmaps follow the College Board blueprint and Khan Academy Digital SAT courses, with your supplied study books as supplements. Question sources are distinguished; older books support skills but do not replace the current blueprint.'
             )}
           </Text>
 
@@ -107,9 +109,9 @@ export default function SatRoadmapScreen() {
               { id: 'exam_vocab' as const, labelVi: '🔤 Từ vựng đề thi thật', labelEn: '🔤 Exam Vocab' },
               { id: 'bilingual' as const, labelVi: '🌐 Luyện đọc song ngữ', labelEn: '🌐 Bilingual Reading' },
               { id: 'vocab' as const, labelVi: `📚 Từ vựng (${TOTAL_VOCAB_UNITS} Units)`, labelEn: `📚 Vocab (${TOTAL_VOCAB_UNITS} Units)` },
-              { id: 'rw' as const, labelVi: `📖 Reading & Writing (16 Units)`, labelEn: `📖 Reading & Writing (16 Units)` },
-              { id: 'math' as const, labelVi: `📐 Toán học (27 Chủ đề)`, labelEn: `📐 Math (27 Topics)` },
-              { id: 'books' as const, labelVi: `🏛️ Tủ sách 27 Tài liệu`, labelEn: `🏛️ 27 Books Catalog` },
+              { id: 'rw' as const, labelVi: `📖 Verbal · 16 Units`, labelEn: `📖 Verbal · 16 Units` },
+              { id: 'math' as const, labelVi: '📐 Math · 25 Core + 2 mở rộng', labelEn: '📐 Math · 25 Core + 2 Enrichment' },
+              { id: 'books' as const, labelVi: `🏛️ Nguồn học (${SAT_BOOK_CATALOG.length})`, labelEn: `🏛️ Study Sources (${SAT_BOOK_CATALOG.length})` },
             ].map((t) => {
               const active = track === t.id;
               return (
@@ -212,7 +214,7 @@ export default function SatRoadmapScreen() {
                   </Text>
                 </View>
                 <View className="rounded-2xl bg-amber-50 px-4 py-2 border border-amber-200">
-                  <Text className="font-semi text-tiny text-amber-800">{L('Tiến độ Quiz', 'Quiz Progress')}</Text>
+                  <Text className="font-semi text-label text-amber-800">{L('Tiến độ Quiz', 'Quiz Progress')}</Text>
                   <Text className="font-heavy text-body text-amber-950">{doneVocabQuizCount}/{TOTAL_VOCAB_UNITS} Units</Text>
                 </View>
               </View>
@@ -227,7 +229,7 @@ export default function SatRoadmapScreen() {
                   }}
                 >
                   <Text
-                    className="font-heavy text-tiny"
+                    className="font-heavy text-label"
                     style={{ color: vocabPhaseFilter === 'all' ? '#FFFFFF' : '#6B6255' }}
                   >
                     {L('Tất cả 4 Chặng', 'All 4 Phases')}
@@ -243,7 +245,7 @@ export default function SatRoadmapScreen() {
                     }}
                   >
                     <Text
-                      className="font-heavy text-tiny"
+                      className="font-heavy text-label"
                       style={{ color: vocabPhaseFilter === p.phase ? '#FFFFFF' : '#6B6255' }}
                     >
                       {L(`Chặng ${p.phase} (${p.units.length} Units)`, `Phase ${p.phase} (${p.units.length})`)}
@@ -294,12 +296,12 @@ export default function SatRoadmapScreen() {
               <View className="flex-row flex-wrap items-center justify-between gap-3">
                 <View>
                   <Text className="font-heavy text-cardTitle text-ink">
-                    {L('Lộ trình Reading & Writing 16 Tuần', '16-Week SAT Reading & Writing Roadmap')}
+                    {L('Reading & Writing · 16 Units kỹ năng', 'Reading & Writing · 16 Skill Units')}
                   </Text>
                   <Text className="mt-0.5 font-sans text-label text-muted">
                     {L(
-                      'Phân bổ theo 4 miền kỹ năng chuẩn Digital SAT với 1.139+ câu hỏi trích từ SAT Suite Question Bank và đề thi thật.',
-                      'Organized into 4 official domains with 1,139+ questions from SAT Suite Question Bank & real tests.'
+                      '16 Units là cách chia nội dung, không mặc định là 16 tuần. Khóa Khan có 47 mục tiêu kỹ năng; kho Band 9 tổng hợp nhiều loại câu hỏi nên chỉ câu đã xác minh nguồn mới được gọi là câu College Board chính thức.',
+                      'The 16 units are a skill sequence, not automatically 16 weeks. Khan lists 47 skill targets; the Band 9 bank combines multiple sources, so only source-verified items are labeled official College Board questions.'
                     )}
                   </Text>
                 </View>
@@ -322,14 +324,33 @@ export default function SatRoadmapScreen() {
                     style={{ backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: '#F3F0FB' }}
                   >
                     <Text className="font-heavy text-label text-ink">{d.key}</Text>
-                    <Text className="font-sans text-tiny text-muted">{d.labelVi} · {d.percent}</Text>
+                    <Text className="font-sans text-label text-muted">{d.labelVi} · {d.percent}</Text>
                   </View>
                 ))}
+              </View>
+              <Text className="mt-3 font-sans text-label text-muted">
+                {L('54 câu · 64 phút · 2 module thích ứng. Mỗi đoạn văn ngắn có một câu hỏi; các domain được trộn trong cả hai module.', '54 questions · 64 minutes · 2 adaptive modules. Each short passage has one question; domains are mixed across both modules.')}
+              </Text>
+              <View className="mt-3 flex-row flex-wrap gap-2">
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => void Linking.openURL('https://www.khanacademy.org/sat-reading-and-writing')}
+                  className="rounded-xl bg-stone-900 px-4 py-2"
+                >
+                  <Text className="font-heavy text-label text-white">{L('Mở Khan Academy ↗', 'Open Khan Academy ↗')}</Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => void Linking.openURL('https://satsuite.collegeboard.org/practice/content-domains')}
+                  className="rounded-xl bg-amber-100 px-4 py-2 border border-amber-200"
+                >
+                  <Text className="font-heavy text-label text-amber-950">{L('College Board skills ↗', 'College Board skills ↗')}</Text>
+                </Pressable>
               </View>
             </View>
           </Appear>
 
-          {/* Real Tests Question Bank Highlight */}
+          {/* Mixed question bank provenance note */}
           <View
             style={{
               marginTop: 16,
@@ -344,23 +365,23 @@ export default function SatRoadmapScreen() {
             <View className="flex-row items-center justify-between">
               <View className="flex-row items-center gap-2">
                 <View className="rounded-full bg-amber-500 px-2.5 py-0.5">
-                  <Text className="font-heavy text-tiny text-white">ĐỀ THI THẬT 2024–2025</Text>
+                  <Text className="font-heavy text-label text-white">NGUỒN CHÍNH THỨC</Text>
                 </View>
                 <Text className="font-heavy text-cardTitle text-amber-950">
-                  {L('Kho 261 câu Real Test Craft & Structure', '261 Real Test Craft & Structure Items')}
+                  {L('Luyện câu hỏi theo domain', 'Practice by official domain')}
                 </Text>
               </View>
               <Pressable
                 onPress={() => router.push('/sat-rw' as never)}
                 className="rounded-xl bg-amber-900 px-3 py-1.5"
               >
-                <Text className="font-heavy text-tiny text-white">{L('Luyện ngay ↗', 'Practice Now ↗')}</Text>
+                <Text className="font-heavy text-label text-white">{L('Luyện ngay ↗', 'Practice Now ↗')}</Text>
               </Pressable>
             </View>
             <Text className="mt-2 font-sans text-body text-amber-900">
               {L(
-                '148 câu Words in Context, 70 câu Text Structure và 12 câu Cross-Text trích từ SAT Suite Question Bank và đề thi thật Springboard. Tất cả đều có lời giải phân tích lỗi sai (whyWrong).',
-                '148 Words in Context, 70 Text Structure, and 12 Cross-Text items with complete distractor rationales.'
+                'Dùng Student Question Bank của College Board để lấy câu hỏi chính thức theo domain và độ khó. Các bộ trong Band 9 có thể gồm câu tự viết hoặc từ nguồn bổ trợ; hãy xem nhãn nguồn của từng bộ trước khi coi đó là đề thi chính thức.',
+                'Use the College Board Student Question Bank for official items by domain and difficulty. Band 9 sets may include original or supplemental-source questions; check each set’s source label before treating it as official test material.'
               )}
             </Text>
           </View>
@@ -378,19 +399,19 @@ export default function SatRoadmapScreen() {
                   <View className="flex-row items-baseline justify-between gap-2">
                     <View className="flex-row items-center gap-2">
                       <View className="h-7 w-7 items-center justify-center rounded-lg bg-stone-900">
-                        <Text className="font-heavy text-tiny text-white">{unit.unit}</Text>
+                        <Text className="font-heavy text-label text-white">{unit.unit}</Text>
                       </View>
                       <Text className="font-heavy text-cardTitle text-ink">{unit.title}</Text>
                     </View>
                     <View className="rounded-full bg-stone-100 px-2.5 py-0.5">
-                      <Text className="font-semi text-tiny text-stone-600">{unit.domain}</Text>
+                      <Text className="font-semi text-label text-stone-600">{unit.domain}</Text>
                     </View>
                   </View>
 
                   {/* Golden Rule box */}
                   <View className="mt-3 rounded-xl bg-amber-50/70 p-3.5 border border-amber-200/60">
-                    <Text className="font-heavy text-tiny uppercase tracking-wider text-amber-900">
-                      💡 {L('LUẬT VÀNG TỪ SÁCH', 'GOLDEN RULE FROM PREP BOOKS')}
+                    <Text className="font-heavy text-label uppercase tracking-wider text-amber-900">
+                      💡 {L('MẸO TRỌNG TÂM', 'KEY STRATEGY')}
                     </Text>
                     <Text className="mt-1 font-sans text-body text-amber-950" style={{ lineHeight: 22 }}>
                       {unit.ruleVi}
@@ -419,12 +440,67 @@ export default function SatRoadmapScreen() {
       )}
 
       {/* ============================================================== */}
-      {/* TRACK 3: MATH ROADMAP & 99 REAL TEST QUESTIONS                 */}
+      {/* TRACK 3: MATH ROADMAP & CURATED PRACTICE                       */}
       {/* ============================================================== */}
       {track === 'math' && (
         <View className="mt-5">
-          {/* 99 Real Tests Questions Card */}
           <Appear index={1}>
+            <View className="rounded-[22px] bg-white p-5" style={CARD}>
+              <Text className="font-heavy text-cardTitle text-ink">
+                {L('Khung SAT Math chính thức', 'Official SAT Math blueprint')}
+              </Text>
+              <Text className="mt-1 font-sans text-body text-muted">
+                {L(
+                  '44 câu · 70 phút · 2 module thích ứng. Cả bốn domain đều có thể xuất hiện trong mỗi module. Dùng Khan làm khung kỹ năng; lộ trình 27 chương bên dưới theo thứ tự sách College Panda.',
+                  '44 questions · 70 minutes · 2 adaptive modules. All four domains can appear in each module. Use Khan as the skill framework; the 27 chapters below follow the College Panda book sequence.'
+                )}
+              </Text>
+              <View className="mt-3 flex-row flex-wrap gap-2">
+                {(['algebra', 'advanced_math', 'problem_solving_data', 'geometry_trig'] as const).map((domain) => {
+                  const info = SAT_MATH_DOMAIN_INFO[domain];
+                  return (
+                    <View key={domain} className="rounded-xl bg-violet-50 px-3 py-2 border border-violet-100">
+                      <Text className="font-heavy text-label text-ink">{en ? info.label.en : info.label.vi}</Text>
+                      <Text className="font-sans text-label text-muted">{info.weight} · {info.questionRange}</Text>
+                    </View>
+                  );
+                })}
+              </View>
+              <View className="mt-3 flex-row flex-wrap gap-2">
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => router.push('/math' as never)}
+                  className="rounded-xl bg-violet-800 px-4 py-2"
+                >
+                  <Text className="font-heavy text-label text-white">{L('Lộ trình Math theo Khan trong Band 9 →', 'Khan-shaped Math path in Band 9 →')}</Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => void Linking.openURL('https://www.khanacademy.org/test-prep/v2-sat-math?lang=en')}
+                  className="rounded-xl bg-stone-900 px-4 py-2"
+                >
+                  <Text className="font-heavy text-label text-white">{L('Mở Khan Academy ↗', 'Open Khan Academy ↗')}</Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => void Linking.openURL('https://satsuite.collegeboard.org/practice/student-question-bank/math')}
+                  className="rounded-xl bg-amber-100 px-4 py-2 border border-amber-200"
+                >
+                  <Text className="font-heavy text-label text-amber-950">{L('College Board Question Bank ↗', 'College Board Question Bank ↗')}</Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => router.push('/sat/practice-tests' as never)}
+                  className="rounded-xl bg-emerald-700 px-4 py-2"
+                >
+                  <Text className="font-heavy text-label text-white">{L('Đề đầy đủ / Bluebook →', 'Full tests / Bluebook →')}</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Appear>
+
+          {/* Curated Math question set */}
+          <Appear index={2}>
             <View
               style={{
                 borderRadius: 22,
@@ -438,10 +514,10 @@ export default function SatRoadmapScreen() {
               <View className="flex-row items-center justify-between">
                 <View className="flex-row items-center gap-2">
                   <View className="rounded-full bg-emerald-600 px-3 py-1">
-                    <Text className="font-heavy text-tiny text-white">ĐỀ THI THẬT 2025</Text>
+                    <Text className="font-heavy text-label text-white">BỘ LUYỆN TOÁN</Text>
                   </View>
                   <Text className="font-heavy text-cardTitle text-emerald-950">
-                    {L('99 Câu Geometry & Trigonometry Đề thi thật', '99 Real Test Geometry & Trigonometry Items')}
+                    {L('99 câu Geometry & Trigonometry', '99 Geometry & Trigonometry Questions')}
                   </Text>
                 </View>
                 <Pressable
@@ -455,25 +531,25 @@ export default function SatRoadmapScreen() {
               </View>
               <Text className="mt-2 font-sans text-body text-emerald-900">
                 {L(
-                  'Toàn bộ câu hỏi hình học, lượng giác, đường tròn từ đề thi thật 2025 (Springboard). Đi kèm lời giải chi tiết và mẹo bấm Desmos siêu tốc.',
-                  'Real test Geometry & Trig questions from 2025 with step-by-step solutions and Desmos speed techniques.'
+                  'Bộ luyện tập hình học, lượng giác và đường tròn có lời giải. Đây là bộ luyện trong Band 9; hãy dùng College Board Question Bank và Bluebook cho câu hỏi/đề thi chính thức.',
+                  'A Band 9 practice set for geometry, trigonometry, and circles with explanations. Use the College Board Question Bank and Bluebook for official questions and full-length tests.'
                 )}
               </Text>
               <View className="mt-3 flex-row flex-wrap gap-2">
                 <View className="rounded-lg bg-white/80 px-2.5 py-1 border border-emerald-200">
-                  <Text className="font-heavy text-tiny text-emerald-800">29 Câu Dễ</Text>
+                  <Text className="font-heavy text-label text-emerald-800">29 Câu Dễ</Text>
                 </View>
                 <View className="rounded-lg bg-white/80 px-2.5 py-1 border border-emerald-200">
-                  <Text className="font-heavy text-tiny text-emerald-800">46 Câu Vừa</Text>
+                  <Text className="font-heavy text-label text-emerald-800">46 Câu Vừa</Text>
                 </View>
                 <View className="rounded-lg bg-white/80 px-2.5 py-1 border border-emerald-200">
-                  <Text className="font-heavy text-tiny text-emerald-800">24 Câu Nâng Cao</Text>
+                  <Text className="font-heavy text-label text-emerald-800">24 Câu Nâng Cao</Text>
                 </View>
                 <Pressable
                   onPress={() => router.push('/sat/desmos' as never)}
                   className="rounded-lg bg-amber-100 px-2.5 py-1 border border-amber-300"
                 >
-                  <Text className="font-heavy text-tiny text-amber-900">⚡ Desmos Cheat Sheet ↗</Text>
+                  <Text className="font-heavy text-label text-amber-900">⚡ Desmos Cheat Sheet ↗</Text>
                 </Pressable>
               </View>
             </View>
@@ -481,8 +557,10 @@ export default function SatRoadmapScreen() {
 
           {/* Math Road chapters trail */}
           {([1, 2, 3, 4] as const).map((phase) => {
-            const chapters = ROAD_CHAPTERS.filter((chapter) => chapter.phase === phase);
-            const completed = chapters.filter((chapter) =>
+            const coreChapters = ROAD_CHAPTERS.filter(
+              (chapter) => chapter.phase === phase && satMathChapterAlignment(chapter.id).scope === 'core'
+            );
+            const completed = coreChapters.filter((chapter) =>
               (['easy', 'medium', 'hard'] as const).every(
                 (level) => levelState(mathProgress[chapter.id]?.[level]) === 'passed'
               )
@@ -504,12 +582,14 @@ export default function SatRoadmapScreen() {
                         </Text>
                       </View>
                     </View>
-                    <Text className="font-semi text-label text-muted">{completed}/{chapters.length}</Text>
+                    <Text className="font-semi text-label text-muted">
+                      {completed}/{coreChapters.length} {L('core', 'core')}
+                    </Text>
                   </View>
 
                   <View className="overflow-hidden rounded-[24px] bg-white px-2 py-5" style={CARD}>
                     <WindingTrail
-                      items={chapters.map((chapter) => ({ id: chapter.id, chapter }))}
+                      items={coreChapters.map((chapter) => ({ id: chapter.id, chapter }))}
                       rowHeight={180}
                       nodeWidth={230}
                       renderNode={({ chapter }) => (
@@ -521,6 +601,27 @@ export default function SatRoadmapScreen() {
               </Appear>
             );
           })}
+
+          <Appear index={6}>
+            <View className="mt-7 rounded-[22px] border border-amber-200 bg-amber-50 p-5" style={CARD}>
+              <Text className="font-heavy text-cardTitle text-amber-950">
+                {L('Mở rộng tùy chọn · ngoài 25 chủ đề SAT cốt lõi', 'Optional enrichment · outside the 25-topic SAT core')}
+              </Text>
+              <Text className="mt-1 font-sans text-label text-amber-900">
+                {L('Chia đa thức và số phức có trong sách College Panda nhưng không được nêu thành kỹ năng trong blueprint hiện hành. Có thể học thêm sau khi hoàn thành core.', 'Polynomial division and complex numbers appear in College Panda but are not listed as skills in the current blueprint. Study them after the core if useful.')}
+              </Text>
+              <View className="mt-3 overflow-hidden rounded-[20px] bg-white px-2 py-4">
+                <WindingTrail
+                  items={ROAD_CHAPTERS.filter((chapter) => satMathChapterAlignment(chapter.id).scope === 'extension').map((chapter) => ({ id: chapter.id, chapter }))}
+                  rowHeight={180}
+                  nodeWidth={230}
+                  renderNode={({ chapter }) => (
+                    <ChapterNode chapter={chapter} best={mathProgress[chapter.id]} nextId={nextMath.id} />
+                  )}
+                />
+              </View>
+            </View>
+          </Appear>
         </View>
       )}
 
@@ -533,10 +634,10 @@ export default function SatRoadmapScreen() {
           <Appear index={1}>
             <View className="rounded-[22px] bg-white p-5" style={CARD}>
               <Text className="font-strong text-label uppercase tracking-[1.4px]" style={{ color: '#B94A70' }}>
-                {L('PHƯƠNG PHÁP CHUẨN', 'UNIVERSAL STRATEGY')}
+                {L('PHƯƠNG PHÁP R&W', 'R&W WORKFLOW')}
               </Text>
               <Text className="mt-1 font-heavy text-pageTitle text-ink">
-                {L('Quy trình 5 bước giải mọi câu hỏi SAT R&W', '5-Step Universal SAT R&W Strategy')}
+                {L('Quy trình 5 bước gợi ý cho câu hỏi SAT R&W', 'A Flexible 5-Step SAT R&W Workflow')}
               </Text>
 
               <View className="mt-4" style={{ gap: 12 }}>
@@ -547,7 +648,7 @@ export default function SatRoadmapScreen() {
                   >
                     <View className="flex-row items-center gap-2">
                       <View className="h-6 w-6 items-center justify-center rounded-full bg-amber-600">
-                        <Text className="font-heavy text-tiny text-white">{step.step}</Text>
+                        <Text className="font-heavy text-label text-white">{step.step}</Text>
                       </View>
                       <Text className="font-heavy text-cardTitle text-ink">
                         {en ? step.titleEn : step.titleVi}
@@ -569,19 +670,19 @@ export default function SatRoadmapScreen() {
             </View>
           </Appear>
 
-          {/* 27 Classic Prep Books Catalog */}
+          {/* Audited SAT study sources */}
           <View className="mt-7">
             <View className="mb-3">
               <Text className="font-strong text-label uppercase tracking-[1.4px]" style={{ color: '#B94A70' }}>
-                TỔNG HỢP TÀI LIỆU TỪ SPREADSHEET
+                {L('NGUỒN ĐÃ ĐỐI CHIẾU', 'SOURCES REVIEWED')}
               </Text>
               <Text className="font-heavy text-sectionTitle text-ink">
-                {L('Tủ sách 27 Tài liệu SAT Kinh điển', '27 Classic SAT Prep Books & Resources')}
+                {L(`Nguồn học SAT (${SAT_BOOK_CATALOG.length})`, `SAT study sources (${SAT_BOOK_CATALOG.length})`)}
               </Text>
               <Text className="font-sans text-label text-muted">
                 {L(
-                  'Được phân loại theo chuyên đề và đúc kết phương pháp học hiệu quả nhất cho từng cuốn.',
-                  'Categorized by skill domain with actionable study advice for each title.'
+                  'College Board xác định chuẩn đề; Khan Academy làm khung kỹ năng; sách bạn cung cấp bổ sung chiến lược và chủ điểm. Sách theo format cũ được ghi rõ để không nhầm với Digital SAT hiện hành.',
+                  'College Board defines the test blueprint; Khan Academy provides the skill framework; your books add strategies and topic practice. Older-format books are identified so they are not mistaken for the current Digital SAT.'
                 )}
               </Text>
             </View>
@@ -596,20 +697,31 @@ export default function SatRoadmapScreen() {
                   <View className="flex-row items-baseline justify-between gap-2">
                     <View className="flex-row items-center gap-2">
                       <View className="h-6 w-6 items-center justify-center rounded-md bg-stone-200">
-                        <Text className="font-heavy text-tiny text-stone-700">{book.id}</Text>
+                        <Text className="font-heavy text-label text-stone-700">{book.id}</Text>
                       </View>
                       <Text className="font-heavy text-cardTitle text-ink">{book.title}</Text>
                     </View>
                     <View className="rounded-full bg-amber-100 px-2.5 py-0.5">
-                      <Text className="font-semi text-tiny text-amber-900">{book.category} · {book.level}</Text>
+                      <Text className="font-semi text-label text-amber-900">{book.category} · {book.level}</Text>
                     </View>
                   </View>
-                  <Text className="mt-1 font-semi text-tiny text-stone-500">
+                  <Text className="mt-1 font-semi text-label text-stone-500">
                     Tác giả: {book.author}
                   </Text>
                   <Text className="mt-2 font-sans text-body text-stone-700">
                     {book.note}
                   </Text>
+                  {book.url ? (
+                    <Pressable
+                      accessibilityRole="link"
+                      onPress={() => void Linking.openURL(book.url!)}
+                      className="mt-3 self-start rounded-lg bg-stone-900 px-3 py-2"
+                    >
+                      <Text className="font-heavy text-label text-white">
+                        {L('Mở nguồn chính thức ↗', 'Open source ↗')}
+                      </Text>
+                    </Pressable>
+                  ) : null}
                 </View>
               ))}
             </View>
@@ -660,7 +772,7 @@ function VocabUnitCard({
             <Text className="font-heavy text-cardTitle text-ink">
               Unit {unit.n}: {unit.title}
             </Text>
-            <Text className="font-sans text-tiny text-stone-500">
+            <Text className="font-sans text-label text-stone-500">
               {unit.sourceBook} · {unit.count} từ vựng
             </Text>
           </View>
@@ -685,7 +797,7 @@ function VocabUnitCard({
                 }}
               >
                 <Text
-                  className="font-heavy text-tiny"
+                  className="font-heavy text-label"
                   style={{ color: isPassed ? '#16814E' : b ? '#C97A9A' : '#8C827A' }}
                 >
                   {label}: {b ? `${b.score}/${b.total}` : '—'}
@@ -743,13 +855,15 @@ function ChapterNode({
   ).length;
   const isDone = passed === 3;
   const isNext = chapter.id === nextId;
+  const alignment = satMathChapterAlignment(chapter.id);
+  const alignmentInfo = SAT_MATH_DOMAIN_INFO[alignment.domain];
 
   return (
     <Pressable
       accessibilityRole="link"
       accessibilityLabel={L(
-        `Chủ đề ${chapter.n}: ${chapter.title.vi}, ${passed}/3 mức đã qua`,
-        `Topic ${chapter.n}: ${chapter.title.en}, ${passed}/3 levels passed`
+        `Chủ đề ${chapter.n}: ${chapter.title.vi}, ${alignmentInfo.label.vi}${alignment.scope === 'extension' ? ', mở rộng' : ''}, ${passed}/3 mức đã qua`,
+        `Topic ${chapter.n}: ${chapter.title.en}, ${alignmentInfo.label.en}${alignment.scope === 'extension' ? ', enrichment' : ''}, ${passed}/3 levels passed`
       )}
       onPress={() => router.push(`/sat/lo-trinh/${chapter.id}` as never)}
       style={{ width: '100%', alignItems: 'center' }}
@@ -794,6 +908,20 @@ function ChapterNode({
       <Text className="font-heavy text-center text-body text-ink" numberOfLines={2}>
         {en ? chapter.title.en : chapter.title.vi}
       </Text>
+      <View style={{ marginTop: 3, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
+        <View style={{ borderRadius: 8, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#F3F0FB' }}>
+          <Text className="font-semi text-center" style={{ fontSize: 10, lineHeight: 13, color: '#514278' }} numberOfLines={1}>
+            {en ? alignmentInfo.label.en : alignmentInfo.label.vi}
+          </Text>
+        </View>
+        {alignment.scope === 'extension' ? (
+          <View style={{ borderRadius: 8, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: '#FFF4D6' }}>
+            <Text className="font-heavy" style={{ fontSize: 10, lineHeight: 13, color: '#85580B' }}>
+              {L('Mở rộng', 'Enrichment')}
+            </Text>
+          </View>
+        ) : null}
+      </View>
       <View style={{ width: '74%', marginTop: 5 }}>
         <LevelDots best={best} />
       </View>

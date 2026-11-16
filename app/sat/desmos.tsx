@@ -27,7 +27,7 @@ export default function SatDesmosScreen() {
       <View className="mt-6 gap-3">
         <Text className="font-heavy text-cardTitle text-ink">{L('4 Tuyệt chiêu Desmos cho SAT Math', '4 Desmos Power Shortcuts for SAT')}</Text>
         <Text className="font-sans text-caption text-muted">
-          {L('Các mẹo bấm máy thực chiến trích từ giáo trình SAT Math 20 tuần giúp giải nhanh hơn 50% câu hỏi khó.', 'Practical techniques from the 20-week Math roadmap to solve over 50% of tough questions.')}
+          {L('Các thao tác Desmos này có thể hỗ trợ khi cần kiểm tra đồ thị, giao điểm hoặc dữ liệu. Hãy chọn máy tính khi nó giúp giải câu hỏi nhanh và rõ hơn.', 'These Desmos techniques can help check graphs, intersections, or data. Use the calculator when it makes a problem clearer or faster.')}
         </Text>
         <View className="mt-2 flex-row flex-wrap gap-3">
           {SAT_DESMOS_TECHNIQUES.map((tech, i) => (

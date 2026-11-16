@@ -147,7 +147,7 @@ export default function SatKnowledge() {
       </BigSection>
 
       {/* ------------------------------------------------ phương pháp 5 bước */}
-      <BigSection color="#F3F0FB" ink={INK} kicker={L('PHƯƠNG PHÁP', 'METHODOLOGY')} title={L('Quy trình 5 bước giải mọi câu hỏi SAT.', 'Universal 5-Step SAT Method.')} icon={<CuteBulb size={56} />}>
+      <BigSection color="#F3F0FB" ink={INK} kicker={L('PHƯƠNG PHÁP', 'METHODOLOGY')} title={L('Quy trình gợi ý cho câu hỏi SAT R&W.', 'A flexible SAT R&W workflow.')} icon={<CuteBulb size={56} />}>
         <Method5StepSection wide={wide} />
       </BigSection>
 
@@ -157,22 +157,22 @@ export default function SatKnowledge() {
       </BigSection>
 
       {/* ------------------------------------------------ 6 Bẫy Đọc hiểu Kinh điển */}
-      <BigSection color="#FFF5F5" ink="#991B1B" kicker={L('CHIẾN THUẬT ĐỌC HIỂU', 'READING TRAPS')} title={L('6 Bẫy đọc hiểu SAT kinh điển (Erica Meltzer & College Board).', '6 Classic SAT Reading Traps.')} icon={<CuteBulb size={56} />}>
+      <BigSection color="#FFF5F5" ink="#991B1B" kicker={L('KIỂM TRA LỰA CHỌN', 'ANSWER CHOICE CHECKS')} title={L('6 kiểu lựa chọn nhiễu thường gặp.', '6 Common Distractor Patterns.')} icon={<CuteBulb size={56} />}>
         <ReadingTrapsSection wide={wide} />
       </BigSection>
 
       {/* ------------------------------------------------ Bảng công thức vàng Math 800 */}
-      <BigSection color="#F0FDF4" ink="#166534" kicker={L('CÔNG THỨC VÀNG', 'GOLDEN FORMULAS')} title={L('Bảng công thức vàng SAT Math 800 (The College Panda & 1600.io).', 'SAT Math 800 Golden Formulas.')} icon={<CuteCalculator size={56} />}>
+      <BigSection color="#F0FDF4" ink="#166534" kicker={L('ÔN TẬP TOÁN', 'MATH REVIEW')} title={L('Công thức trọng tâm SAT Math.', 'SAT Math Formula Review.')} icon={<CuteCalculator size={56} />}>
         <MathFormulasSection wide={wide} />
       </BigSection>
 
       {/* ------------------------------------------------ Lộ trình 16 tuần R&W & 20 tuần Math */}
-      <BigSection color="#F3F0FB" ink="#2B2350" kicker={L('LỘ TRÌNH CHUẨN', 'MASTER ROADMAPS')} title={L('Lộ trình 16 tuần R&W & 20 tuần Math.', '16-Week R&W & 20-Week Math Plans.')} icon={<CuteRocket size={56} />}>
+      <BigSection color="#F3F0FB" ink="#2B2350" kicker={L('LỘ TRÌNH THAM KHẢO', 'SUGGESTED PLANS')} title={L('R&W 16 tuần · Math 20 tuần (có thể điều chỉnh).', 'R&W 16 weeks · Math 20 weeks (adjustable).')} icon={<CuteRocket size={56} />}>
         <RoadmapPlansSection wide={wide} />
       </BigSection>
 
       {/* ------------------------------------------------ Tủ sách SAT & Đề thi thật */}
-      <BigSection color="#FFFFFF" ink={INK} kicker={L('TỦ SÁCH & ĐỀ THI', 'BOOK & TEST REPOSITORY')} title={L('27 tài liệu sách SAT kinh điển & Đề thi thật.', '27 Core SAT Books & Real Test Bank.')} icon={<CuteBook size={56} />}>
+      <BigSection color="#FFFFFF" ink={INK} kicker={L('NGUỒN HỌC', 'STUDY SOURCES')} title={L('Nguồn College Board, Khan Academy và sách bổ trợ.', 'College Board, Khan Academy, and supplemental books.')} icon={<CuteBook size={56} />}>
         <BookCatalogSection wide={wide} />
       </BigSection>
 
@@ -437,8 +437,8 @@ function Method5StepSection({ wide }: { wide: boolean }) {
     <View style={{ gap: 20 }}>
       <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
         {L(
-          'Quy trình giải quyết vạn năng đúc kết từ giáo trình 16 tuần R&W và kinh nghiệm các thủ khoa 1550+: không bao giờ đọc đoạn văn một cách thụ động, luôn đi từ câu hỏi để tìm bằng chứng xác đáng.',
-          'The universal question-solving workflow extracted from the 16-week R&W curriculum: never read passively; always begin with the question stem to locate conclusive evidence.'
+          'Đây là quy trình gợi ý để xử lý nhiều dạng câu hỏi R&W; điều chỉnh theo loại câu hỏi. Câu đọc hiểu cần bằng chứng trong đoạn, còn câu ngữ pháp cần kiểm tra cấu trúc và quy tắc.',
+          'Use this as a flexible workflow for many R&W question types. Reading questions need passage evidence; grammar questions need a check of sentence structure and rules.'
         )}
       </Text>
 
@@ -515,7 +515,7 @@ function Method5StepSection({ wide }: { wide: boolean }) {
 
         <View style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE, gap: 10 }}>
           <Text className="font-heavy text-cardTitle text-ink">
-            {L('9 Nhóm Từ Nối Chuẩn SAT (Transitions)', '9 Official SAT Transition Groups')}
+            {L('9 Nhóm Từ Nối Thường Gặp', '9 Common Transition Groups')}
           </Text>
           <View style={{ gap: 8 }}>
             {SAT_TRANSITION_GROUPS.map((g, i) => (
@@ -539,8 +539,8 @@ function DesmosPowerSection({ wide }: { wide: boolean }) {
     <View style={{ gap: 14 }}>
       <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
         {L(
-          'Trong Digital SAT, Desmos được tích hợp sẵn 100% phần thi Math. Nắm vững 4 tuyệt chiêu sau sẽ giúp giải quyết hơn 50% câu hỏi hóc búa chỉ trong 10 đến 20 giây mà không lo tính nhầm.',
-          'In Digital SAT, Desmos is built-in for 100% of the Math section. Mastering these 4 core techniques solves over 50% of tough questions in 10-20 seconds without arithmetic slips.'
+          'Bluebook có máy tính đồ thị dùng trong phần Math. Desmos hữu ích khi cần xem giao điểm, đồ thị hoặc dữ liệu; chọn cách giải phù hợp với câu hỏi và kiểm tra điều kiện trong đề.',
+          'Bluebook provides a graphing calculator for Math. Desmos can help with intersections, graphs, and data; choose a method that fits the question and check the stated conditions.'
         )}
       </Text>
 
@@ -563,7 +563,7 @@ function DesmosPowerSection({ wide }: { wide: boolean }) {
               <Text className="font-heavy text-body text-ink">{tech.nameVi}</Text>
               <View style={{ borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#EFF6FF' }}>
                 <Text className="font-mono text-label" style={{ color: '#1D4ED8' }}>
-                  Desmos Pro
+                  Desmos
                 </Text>
               </View>
             </View>
@@ -586,12 +586,15 @@ function RoadmapPlansSection({ wide }: { wide: boolean }) {
   const { L } = useL();
   return (
     <View style={{ gap: 20 }}>
+      <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
+        {L('Các mốc 16/20 tuần là lịch mẫu. Sau bài chẩn đoán, dồn thêm buổi cho domain yếu và rút/ngắt lịch theo thời gian học thực tế.', 'The 16/20-week timelines are examples. After the diagnostic, add sessions for weak domains and adjust the pace to your available study time.')}
+      </Text>
       {/* 16-Week R&W */}
       <View style={{ borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE, gap: 12 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <View style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: '#C97A9A' }} />
           <Text className="font-heavy text-cardTitle text-ink">
-            {L('Lộ trình 16 tuần Reading & Writing (Chinh phục 700+)', '16-Week R&W Mastery Roadmap (Target 700+)')}
+            {L('Lộ trình tham khảo Reading & Writing · 16 tuần', 'Suggested Reading & Writing plan · 16 weeks')}
           </Text>
         </View>
 
@@ -639,7 +642,7 @@ function RoadmapPlansSection({ wide }: { wide: boolean }) {
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <View style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: '#F2B632' }} />
           <Text className="font-heavy text-cardTitle text-ink">
-            {L('Lộ trình 20 tuần SAT Math (Chinh phục 750 – 800)', '20-Week Math Mastery Roadmap (Target 750–800)')}
+            {L('Lộ trình tham khảo SAT Math · 20 tuần', 'Suggested SAT Math plan · 20 weeks')}
           </Text>
         </View>
 
@@ -691,8 +694,8 @@ function BookCatalogSection({ wide }: { wide: boolean }) {
     <View style={{ gap: 14 }}>
       <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
         {L(
-          'Danh mục 27 cuốn sách kinh điển và tài liệu đề thi thật từ Google Spreadsheet (SAT by Springboard & College Board), được tuyển chọn để tích hợp lộ trình, phương pháp và câu hỏi vào Band 9.',
-          'Catalog of 27 core SAT books and real test archives from the official spreadsheet, integrated into Band 9 with roadmaps, methods, and curated question banks.'
+          'Danh mục này gồm khung College Board, hai khóa Khan Academy và các sách SAT đã được rà từ tài liệu bạn cung cấp. Sách cũ được dùng làm nguồn bổ trợ theo kỹ năng; câu hỏi chính thức phải được xác minh từ College Board.',
+          'This catalog lists the College Board blueprint, the two Khan Academy courses, and SAT books reviewed from your supplied materials. Older books supplement skills; official questions must be verified with College Board.'
         )}
       </Text>
 
@@ -750,7 +753,7 @@ function ReadingTrapsSection({ wide }: { wide: boolean }) {
     {
       num: 3,
       nameVi: 'Từ ngữ tuyệt đối hóa (Extreme Language)',
-      descVi: 'Đoạn văn học thuật luôn giữ thái độ dè dặt, thận trọng (suggests, may, likely), nhưng phương án sai lại dùng các từ ngữ cực đoan, tuyệt đối.',
+      descVi: 'So sánh mức độ chắc chắn của lựa chọn với bằng chứng. Những từ tuyệt đối cần được hỗ trợ rõ ràng; sắc thái dè dặt cũng có thể là hợp lý nếu đúng với đoạn.',
       signal: 'Dấu hiệu: always, never, completely, impossible, solely, exclusively, proven fact.',
     },
     {
@@ -768,7 +771,7 @@ function ReadingTrapsSection({ wide }: { wide: boolean }) {
     {
       num: 6,
       nameVi: 'Nửa đúng nửa sai (Half-Right Half-Wrong)',
-      descVi: 'Bẫy tinh vi nhất của College Board: nửa đầu phương án paraphrase rất chuẩn, nhưng 2-3 từ cuối cùng lại gài một thông tin sai lệch hoặc một tính từ sai tông.',
+      descVi: 'Một lựa chọn có thể chứa chi tiết đúng nhưng vẫn sai vì thêm kết luận, đổi quan hệ hoặc không trả lời đúng mục tiêu câu hỏi.',
       signal: 'Dấu hiệu: Luôn đọc trọn vẹn cả câu của phương án đến dấu chấm cuối cùng; chỉ cần sai 1 từ là gạch bỏ!',
     },
   ];
@@ -777,8 +780,8 @@ function ReadingTrapsSection({ wide }: { wide: boolean }) {
     <View style={{ gap: 14 }}>
       <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
         {L(
-          'Đúc kết từ 27 tựa sách kinh điển (Erica Meltzer The Critical Reader, Barron’s & College Board): 3 phương án sai trong SAT Reading không phải ngẫu nhiên, mà được thiết kế theo đúng 6 công thức bẫy tâm lý sau.',
-          'Compiled from classic prep books: wrong answer choices in SAT Reading are engineered according to these 6 psychological trap archetypes.'
+          'Đây là các cách kiểm tra lựa chọn nhiễu hữu ích, không phải danh sách chính thức hay đầy đủ của College Board. Luôn quay lại đúng yêu cầu câu hỏi và bằng chứng trong đoạn.',
+          'These are useful checks for distractors, not an official or exhaustive College Board list. Always return to the question task and passage evidence.'
         )}
       </Text>
 
@@ -824,8 +827,8 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
   const { L } = useL();
   const formulas = [
     {
-      group: '1. Phương trình đường tròn & Hình quạt',
-      source: 'The College Panda Chapter 24',
+      group: '1. Đường tròn & Hình quạt',
+      source: 'Band 9 review · circle geometry',
       items: [
         'Dạng chuẩn: (x - h)² + (y - k)² = r² (tâm (h, k), bán kính r)',
         'Độ dài cung: s = (θ / 360°) · 2πr',
@@ -834,7 +837,7 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
     },
     {
       group: '2. Parabol, Đỉnh & Trục đối xứng',
-      source: '1600.io Orange Book Chapter 8',
+      source: 'Band 9 review · quadratic functions',
       items: [
         'Dạng đỉnh: y = a(x - h)² + k (Đỉnh (h, k); a > 0 thì k là min, a < 0 thì k là max)',
         'Hoành độ đỉnh & Trục đối xứng: x = -b / (2a)',
@@ -843,7 +846,7 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
     },
     {
       group: '3. Biệt thức Delta & Định lý Vi-et',
-      source: 'The College Panda Chapter 12',
+      source: 'Band 9 review · quadratic equations',
       items: [
         'Biệt thức Δ = b² - 4ac: Δ > 0 (2 nghiệm), Δ = 0 (1 nghiệm kép), Δ < 0 (vô nghiệm thực)',
         'Định lý Vi-et: x₁ + x₂ = -b / a',
@@ -852,7 +855,7 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
     },
     {
       group: '4. Lượng giác & Góc phụ nhau',
-      source: 'Barron’s Math Workbook Chapter 18',
+      source: 'Band 9 review · right-triangle trigonometry',
       items: [
         'Góc phụ nhau (Complementary): sin(x°) = cos(90° - x°)',
         'Hằng số lượng giác: sin²(x) + cos²(x) = 1',
@@ -868,11 +871,11 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
       ],
     },
     {
-      group: '6. Thống kê, Trung vị & Khoảng tin cậy',
-      source: 'McGraw-Hill SAT Math Practice',
+      group: '6. Mẫu khảo sát & suy luận thống kê',
+      source: 'Band 9 review · data analysis',
       items: [
-        'Trung vị (Median) và Tứ phân vị (IQR) không bị ảnh hưởng bởi giá trị ngoại lai (outliers)',
-        'Khoảng tin cậy: Muốn giảm Margin of Error xuống một nửa, cỡ mẫu n phải tăng gấp 4 lần (√n)',
+        'Mẫu đại diện giúp ước lượng đặc điểm tổng thể; mẫu thiên lệch không thể đại diện tốt dù có nhiều phản hồi',
+        'Cỡ mẫu lớn hơn thường làm ước lượng ổn định hơn, nhưng không tự sửa được cách chọn mẫu thiên lệch',
       ],
     },
   ];
@@ -881,8 +884,8 @@ function MathFormulasSection({ wide }: { wide: boolean }) {
     <View style={{ gap: 14 }}>
       <Text className="font-sans text-body text-paper-muted" style={{ lineHeight: 22 }}>
         {L(
-          'Tổng hợp trọn bộ công thức toán xuất hiện trong 100% đề thi Digital SAT, giúp làm chủ 44 câu hỏi phần Math với độ chính xác tuyệt đối.',
-          'Master formula sheet covering all recurring SAT Math concepts from The College Panda and 1600.io.'
+          'Bảng ôn một số công thức và quan hệ toán cốt lõi theo blueprint. Hãy nhận diện điều kiện áp dụng và kiểm tra đơn vị trước khi dùng; SAT Math cũng kiểm tra mô hình hóa và diễn giải, không chỉ nhớ công thức.',
+          'A review sheet of core formulas and relationships aligned with the blueprint. Check conditions and units before using them; SAT Math also tests modeling and interpretation, not formula recall alone.'
         )}
       </Text>
 
