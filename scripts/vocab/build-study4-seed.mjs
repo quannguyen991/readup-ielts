@@ -15,17 +15,17 @@ const OUT_PATH = path.join(OUT_DIR, 'index.json');
 const ALLOW_PARTIAL = process.argv.includes('--partial');
 
 const DECKS = [
-  { id: 383, slug: 'study4-common-ielts-listening', name: 'Most common IELTS Listening words', category: 'ielts', expectedCount: 1124, sourceNote: 'Headwords and source sections from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 329, slug: 'study4-barrons-essentials-ielts', name: "Barron's Essentials Words for IELTS", category: 'ielts', expectedCount: 750, sourceNote: 'Headwords and source sections from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 497, slug: 'study4-toeic-word-list', name: 'TOEIC Word List', category: 'toeic', expectedCount: 1194, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 361, slug: 'study4-600-toeic-words', name: '600 TOEIC words', category: 'toeic', expectedCount: 620, sourceNote: 'Headwords and source sections from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 355, slug: 'study4-barrons-sat-words', name: "Barron's SAT words", category: 'sat', expectedCount: 1467, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 352, slug: 'study4-college-panda-400-sat', name: 'The College Panda 400 SAT words', category: 'sat', expectedCount: 400, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 500, slug: 'study4-new-academic-word-list', name: 'New Academic Word List', category: 'academic', expectedCount: 924, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 499, slug: 'study4-business-word-list', name: 'Business Word List', category: 'academic', expectedCount: 1665, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 498, slug: 'study4-toefl-word-list', name: 'TOEFL Word List', category: 'academic', expectedCount: 3193, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 420, slug: 'study4-powerscore-gre-repeat-offenders', name: 'Powerscore GRE 700 Repeat Offenders', category: 'academic', expectedCount: 699, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
-  { id: 354, slug: 'study4-essential-english-idioms', name: 'Essential English Idioms', category: 'idioms', expectedCount: 468, sourceNote: 'Headwords from the source collection. Vietnamese glosses, examples, and supplementary synonyms are enriched from the local bilingual dictionary where available.' },
+  { id: 383, slug: 'study4-common-ielts-listening', name: 'Most common IELTS Listening words', category: 'ielts', expectedCount: 1124, sourceNote: '' },
+  { id: 329, slug: 'study4-barrons-essentials-ielts', name: "Barron's Essentials Words for IELTS", category: 'ielts', expectedCount: 750, sourceNote: '' },
+  { id: 497, slug: 'study4-toeic-word-list', name: 'TOEIC Word List', category: 'toeic', expectedCount: 1194, sourceNote: '' },
+  { id: 361, slug: 'study4-600-toeic-words', name: '600 TOEIC words', category: 'toeic', expectedCount: 620, sourceNote: '' },
+  { id: 355, slug: 'study4-barrons-sat-words', name: "Barron's SAT words", category: 'sat', expectedCount: 1467, sourceNote: '' },
+  { id: 352, slug: 'study4-college-panda-400-sat', name: 'The College Panda 400 SAT words', category: 'sat', expectedCount: 400, sourceNote: '' },
+  { id: 500, slug: 'study4-new-academic-word-list', name: 'New Academic Word List', category: 'academic', expectedCount: 924, sourceNote: '' },
+  { id: 499, slug: 'study4-business-word-list', name: 'Business Word List', category: 'academic', expectedCount: 1665, sourceNote: '' },
+  { id: 498, slug: 'study4-toefl-word-list', name: 'TOEFL Word List', category: 'academic', expectedCount: 3193, sourceNote: '' },
+  { id: 420, slug: 'study4-powerscore-gre-repeat-offenders', name: 'Powerscore GRE 700 Repeat Offenders', category: 'academic', expectedCount: 699, sourceNote: '' },
+  { id: 354, slug: 'study4-essential-english-idioms', name: 'Essential English Idioms', category: 'idioms', expectedCount: 468, sourceNote: '' },
 ];
 
 const DECK_BY_ID = new Map(DECKS.map((deck) => [deck.id, deck]));
