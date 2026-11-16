@@ -8,8 +8,8 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light' | 'zh-band9' | 'ea-skin' | 'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lantern' | 'seigaiha' | 'fuji' | 'bling' | 'swirl' | 'inkwash' | 'maple' | 'hanabi' | 'koi';
-export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene' | 'waves' | 'snow' | 'bamboo' | 'aurora' | 'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lantern' | 'seigaiha' | 'fuji' | 'bling' | 'swirl' | 'inkwash' | 'maple' | 'hanabi' | 'koi';
+export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'beach' | 'snow' | 'bamboo' | 'aurora' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light' | 'zh-band9' | 'ea-skin' | 'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lantern' | 'seigaiha' | 'fuji' | 'bling' | 'swirl' | 'inkwash' | 'maple' | 'hanabi' | 'koi' | 'tet' | 'firefly' | 'deepsea' | 'paris' | 'desert' | 'lavender' | 'candy' | 'torii';
+export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene' | 'waves' | 'snow' | 'bamboo' | 'aurora' | 'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lantern' | 'seigaiha' | 'fuji' | 'bling' | 'swirl' | 'inkwash' | 'maple' | 'hanabi' | 'koi' | 'tet' | 'firefly' | 'deepsea' | 'paris' | 'desert' | 'lavender' | 'candy' | 'torii';
 
 export type StudyTheme = {
   id: ThemeId;
@@ -259,7 +259,7 @@ const SCENE_THEMES: Record<'beach' | 'snow' | 'bamboo' | 'aurora', StudyTheme> =
  * Bộ NỀN MÙA & VĂN HOÁ (hoa anh đào đêm, tuyết, Noel, châu Âu, Trung Hoa, Nhật Bản, vàng kim, tím loang).
  * Toàn bằng CSS (xem StudyBackdrop.web.tsx); màu chữ/thẻ ở đây đã được test tương phản như các chủ đề khác.
  */
-const FEST_THEMES: Record<'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lantern' | 'seigaiha' | 'fuji' | 'bling' | 'swirl' | 'inkwash' | 'maple' | 'hanabi' | 'koi', StudyTheme> = {
+const FEST_THEMES: Record<'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lantern' | 'seigaiha' | 'fuji' | 'bling' | 'swirl' | 'inkwash' | 'maple' | 'hanabi' | 'koi' | 'tet' | 'firefly' | 'deepsea' | 'paris' | 'desert' | 'lavender' | 'candy' | 'torii', StudyTheme> = {
   sakuranight: {
     ...DARK_BASE,
     id: 'sakuranight',
@@ -455,6 +455,136 @@ const FEST_THEMES: Record<'sakuranight' | 'snowfall' | 'noel' | 'europe' | 'lant
     cardBorder: 'rgba(130,230,220,0.28)',
     accent: '#B8421C',
     accentDisabled: 'rgba(184,66,28,0.45)',
+  },
+  tet: {
+    ...DARK_BASE,
+    id: 'tet',
+    vi: 'Tết cổ truyền',
+    en: 'Lunar New Year',
+    layer: 'tet',
+    skyBase: '#4A0D14',
+    skyStops: ['#34070D', '#5A1019', '#7E1A22'],
+    sky: 'linear-gradient(180deg,#34070D 0%,#5A1019 55%,#7E1A22 100%)',
+    swatch: 'radial-gradient(circle at 30% 30%,#FFD65A 0 12%,transparent 13%),radial-gradient(circle at 70% 45%,#FF8FB0 0 10%,transparent 11%),linear-gradient(180deg,#34070D,#7E1A22)',
+    card: 'rgba(54,10,16,0.93)',
+    cardBorder: 'rgba(255,214,110,0.38)',
+    accent: '#B3261E',
+    accentDisabled: 'rgba(179,38,30,0.45)',
+    onBg: '#FFF4E0',
+  },
+  firefly: {
+    ...DARK_BASE,
+    id: 'firefly',
+    vi: 'Rừng đom đóm',
+    en: 'Firefly forest',
+    layer: 'firefly',
+    skyBase: '#07180F',
+    skyStops: ['#051009', '#0A2416', '#12382A'],
+    sky: 'linear-gradient(180deg,#051009 0%,#0A2416 55%,#12382A 100%)',
+    swatch: 'radial-gradient(circle at 30% 40%,#F4FF9A 0 4%,transparent 8%),radial-gradient(circle at 68% 60%,#F4FF9A 0 3%,transparent 7%),linear-gradient(180deg,#051009,#12382A)',
+    card: 'rgba(8,28,18,0.92)',
+    cardBorder: 'rgba(190,240,130,0.28)',
+    accent: '#2E7D46',
+    accentDisabled: 'rgba(46,125,70,0.45)',
+  },
+  deepsea: {
+    ...DARK_BASE,
+    id: 'deepsea',
+    vi: 'Biển sâu',
+    en: 'Deep sea',
+    layer: 'deepsea',
+    skyBase: '#06323F',
+    skyStops: ['#04202B', '#08425A', '#0C5C74'],
+    sky: 'linear-gradient(180deg,#04202B 0%,#08425A 55%,#0C5C74 100%)',
+    swatch: 'radial-gradient(circle at 30% 70%,rgba(255,255,255,.7) 0 4%,transparent 6%),radial-gradient(circle at 65% 45%,rgba(255,255,255,.6) 0 3%,transparent 5%),linear-gradient(180deg,#04202B,#0C5C74)',
+    card: 'rgba(5,36,48,0.92)',
+    cardBorder: 'rgba(130,230,255,0.3)',
+    accent: '#0F6E86',
+    accentDisabled: 'rgba(15,110,134,0.45)',
+  },
+  paris: {
+    ...DARK_BASE,
+    id: 'paris',
+    vi: 'Paris đêm',
+    en: 'Paris at night',
+    layer: 'paris',
+    skyBase: '#1A1746',
+    skyStops: ['#100E33', '#241D5C', '#5A3478'],
+    sky: 'linear-gradient(180deg,#100E33 0%,#241D5C 55%,#5A3478 100%)',
+    swatch: 'linear-gradient(180deg,#100E33,#5A3478 75%,#161235 76%)',
+    card: 'rgba(18,16,52,0.92)',
+    cardBorder: 'rgba(255,200,140,0.3)',
+    accent: '#B23B78',
+    accentDisabled: 'rgba(178,59,120,0.45)',
+  },
+  desert: {
+    ...LIGHT_BASE,
+    id: 'desert',
+    vi: 'Sa mạc hoàng hôn',
+    en: 'Desert sunset',
+    layer: 'desert',
+    skyBase: '#FBD9A8',
+    skyStops: ['#FCE6C4', '#FAD29B', '#F2B27A'],
+    sky: 'linear-gradient(180deg,#FCE6C4 0%,#FAD29B 55%,#F2B27A 100%)',
+    swatch: 'linear-gradient(180deg,#FCE6C4,#F2B27A 60%,#C97B3E 61%)',
+    card: '#FFFBF3',
+    cardBorder: 'rgba(170,100,40,0.25)',
+    soft: '#FBEFDC',
+    accent: '#A8481A',
+    accentDisabled: '#EBD3C2',
+    onBg: '#3E1D0C',
+    pill: 'rgba(255,251,243,0.88)',
+  },
+  lavender: {
+    ...LIGHT_BASE,
+    id: 'lavender',
+    vi: 'Cánh đồng oải hương',
+    en: 'Lavender fields',
+    layer: 'lavender',
+    skyBase: '#E4DAF5',
+    skyStops: ['#D6E4F7', '#E8DFF6', '#F4E6F0'],
+    sky: 'linear-gradient(180deg,#D6E4F7 0%,#E8DFF6 55%,#F4E6F0 100%)',
+    swatch: 'linear-gradient(180deg,#D6E4F7,#F4E6F0 55%,#8D70C8 56%)',
+    card: '#FEFCFF',
+    cardBorder: 'rgba(110,80,170,0.25)',
+    soft: '#F3EEFA',
+    accent: '#6A3FB5',
+    accentDisabled: '#DDD2EE',
+    onBg: '#2A1A4A',
+    pill: 'rgba(254,252,255,0.88)',
+  },
+  candy: {
+    ...LIGHT_BASE,
+    id: 'candy',
+    vi: 'Kẹo ngọt pastel',
+    en: 'Candy pastel',
+    layer: 'candy',
+    skyBase: '#FFE9F3',
+    skyStops: ['#FFE3F0', '#E8F4FF', '#FFF3D6'],
+    sky: 'linear-gradient(135deg,#FFE3F0 0%,#E8F4FF 55%,#FFF3D6 100%)',
+    swatch: 'radial-gradient(circle at 25% 30%,#FF9EC7 0 22%,transparent 50%),radial-gradient(circle at 75% 35%,#9EE6FF 0 20%,transparent 48%),radial-gradient(circle at 55% 85%,#FFE08A 0 22%,transparent 50%),#FFF6FA',
+    card: '#FFFDFE',
+    cardBorder: 'rgba(200,80,140,0.25)',
+    soft: '#FFF0F7',
+    accent: '#C2307A',
+    accentDisabled: '#F1D3E2',
+    onBg: '#4A1636',
+    pill: 'rgba(255,253,254,0.88)',
+  },
+  torii: {
+    ...DARK_BASE,
+    id: 'torii',
+    vi: 'Cổng torii hoàng hôn',
+    en: 'Torii at dusk',
+    layer: 'torii',
+    skyBase: '#2E1850',
+    skyStops: ['#2E1850', '#6E2F62', '#A84F63'],
+    sky: 'linear-gradient(180deg,#2E1850 0%,#6E2F62 55%,#A84F63 100%)',
+    swatch: 'linear-gradient(180deg,#3A1F5C,#E58A6A 70%,#1E1030 71%)',
+    card: 'rgba(36,16,52,0.93)',
+    cardBorder: 'rgba(255,190,150,0.35)',
+    accent: '#B3261E',
+    accentDisabled: 'rgba(179,38,30,0.45)',
   },
   swirl: {
     ...DARK_BASE,
@@ -653,7 +783,7 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
 };
 
 /** Chủ đề chọn được khi bật "Nền & hiệu ứng" (Mặc định phẳng là lúc tắt). */
-export const THEME_ORDER: readonly ThemeId[] = ['scene', 'sakuranight', 'snowfall', 'noel', 'europe', 'lantern', 'seigaiha', 'fuji', 'bling', 'swirl', 'inkwash', 'maple', 'hanabi', 'koi', 'px-auto', 'px-tokyo', 'px-paris', 'px-london', 'px-singapore', 'px-hanoi', 'journey', 'beach', 'snow', 'bamboo', 'aurora', 'space', 'sakura', 'forest', 'sunset', 'rain'];
+export const THEME_ORDER: readonly ThemeId[] = ['scene', 'sakuranight', 'snowfall', 'noel', 'europe', 'lantern', 'seigaiha', 'fuji', 'bling', 'swirl', 'inkwash', 'maple', 'hanabi', 'koi', 'tet', 'firefly', 'deepsea', 'paris', 'desert', 'lavender', 'candy', 'torii', 'px-auto', 'px-tokyo', 'px-paris', 'px-london', 'px-singapore', 'px-hanoi', 'journey', 'beach', 'snow', 'bamboo', 'aurora', 'space', 'sakura', 'forest', 'sunset', 'rain'];
 export const ALL_THEMES: readonly ThemeId[] = ['plain', ...THEME_ORDER];
 
 /** Màu nhấn của nút/thanh đang chọn: giấy Band 9 dùng son đỏ của nó, các chủ đề khác giữ màu cũ (`fallback`). */

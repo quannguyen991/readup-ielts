@@ -128,10 +128,21 @@ const CSS = `
 .stbd-koi::after{content:"";position:absolute;right:-22%;top:12%;width:34%;height:76%;background:linear-gradient(90deg,var(--c1),transparent);clip-path:polygon(0 50%,100% 0,70% 50%,100% 100%)}
 @keyframes stbd-swim{from{transform:translate3d(-8vw,0,0) rotate(-6deg)}to{transform:translate3d(10vw,3vh,0) rotate(5deg)}}
 .stbd-mtn{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);height:var(--h);clip-path:polygon(0 100%,0 70%,10% 52%,18% 58%,30% 30%,38% 42%,50% 8%,60% 36%,68% 26%,80% 52%,90% 44%,100% 66%,100% 100%);background:linear-gradient(180deg,var(--c1),var(--c2))}
+.stbd-rise{position:absolute;bottom:-6%;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;border:1.5px solid rgba(200,250,255,.6);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5),rgba(255,255,255,.05) 60%);will-change:transform,opacity;animation:stbd-rise var(--d) ease-in var(--dl) infinite}
+@keyframes stbd-rise{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.9}100%{transform:translate3d(14px,-108vh,0);opacity:0}}
+.stbd-fly{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:#F4FF9A;box-shadow:0 0 14px 5px rgba(220,255,120,.7);opacity:0;will-change:transform,opacity;animation:stbd-fly var(--d) ease-in-out var(--dl) infinite}
+@keyframes stbd-fly{0%{transform:translate3d(0,0,0);opacity:0}20%{opacity:1}50%{transform:translate3d(30px,-22px,0);opacity:.35}80%{opacity:1}100%{transform:translate3d(-14px,-46px,0);opacity:0}}
+.stbd-dune{position:absolute;left:-10%;width:130%;border-radius:50% 50% 0 0/100% 100% 0 0}
+.stbd-torii{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);height:calc(var(--w)*.8)}
+.stbd-torii i{position:absolute;background:#B3261E}
+.stbd-torii i:nth-child(1){left:12%;top:18%;width:8%;bottom:0}
+.stbd-torii i:nth-child(2){right:12%;top:18%;width:8%;bottom:0}
+.stbd-torii i:nth-child(3){left:0;right:0;top:6%;height:11%;border-radius:2px 2px 40% 40%/2px 2px 100% 100%;background:#8E1B15}
+.stbd-torii i:nth-child(4){left:8%;right:8%;top:28%;height:7%}
 
 @media (prefers-reduced-motion: reduce){
  .stbd *{animation:none!important}
- .stbd-petal,.stbd-flake,.stbd-fk2{display:none}
+ .stbd-petal,.stbd-flake,.stbd-fk2,.stbd-rise,.stbd-fly{display:none}
 }
 `;
 
@@ -405,6 +416,108 @@ function Layers({ theme }: { theme: StudyTheme }) {
             ['#8E5CF6', '-16%', '40%', '64vmax', '25s', '-10s'],
             ['#7CFF9B', '64%', '58%', '40vmax', '28s', '-14s'],
           ].map(([c, x, y, s, d, dl], i) => h('div', { key: i, className: 'stbd-blob', style: st({ '--c': c!, '--x': x!, '--y': y!, '--s': s!, '--d': d!, '--dl': dl! }) }))}
+        </>
+      );
+    case 'tet':
+      return (
+        <>
+          <div className="stbd-fill" style={st({ background: 'radial-gradient(50% 36% at 50% 110%, rgba(255,214,90,0.3), transparent 70%)' })} />
+          {[6, 22, 40, 60, 78, 93].map((x, i) =>
+            h('div', { key: `l${i}`, className: 'stbd-lant', style: st({ '--x': `${x}%`, '--w': `${34 + (i % 3) * 10}px`, '--len': `${24 + ((i * 41) % 110)}px`, '--d': `${4.5 + (i % 3)}s`, '--dl': `${-i}s` }) }),
+          )}
+          {[...PETALS, ...PETALS.slice(0, 8).map((p, i) => ({ ...p, x: `${(i * 13 + 5) % 100}%`, dl: `${-(i * 1.6 + 0.7).toFixed(1)}s` }))].map((p, i) =>
+            h('div', { key: i, className: 'stbd-petal', style: st({ '--x': p.x, '--s': `${p.s}px`, '--d': p.d, '--dl': p.dl, ...(i % 2 ? { '--c1': '#FFF2A6', '--c2': '#F5C518' } : { '--c1': '#FFD3DF', '--c2': '#F0668C' }) }) }),
+          )}
+          {[[20, 40], [64, 30], [84, 58], [38, 66]].map(([x, y], i) =>
+            h('div', { key: `s${i}`, className: 'stbd-spark', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--s': `${12 + (i % 3) * 5}px`, '--d': `${3 + (i % 3)}s`, '--dl': `${-i * 0.9}s` }) }),
+          )}
+        </>
+      );
+    case 'firefly':
+      return (
+        <>
+          <div className="stbd-moon" style={st({ left: '70%', top: '8%', width: 80, height: 80, opacity: 0.85 })} />
+          {[8, 20, 34, 50, 64, 80, 92].map((x, i) =>
+            h('div', { key: `t${i}`, className: 'stbd-stalk', style: st({ '--x': `${x}%`, '--w': `${12 + (i % 3) * 5}px`, '--h': `${52 + ((i * 11) % 34)}%`, '--d': `${7 + (i % 4)}s`, '--dl': `${-i * 0.8}s`, background: 'linear-gradient(90deg,#10301F,#1C4A31 45%,#0C2418)' }) }),
+          )}
+          {Array.from({ length: 22 }, (_, i) => h('div', { key: `f${i}`, className: 'stbd-fly', style: st({ '--x': `${(i * 17 + 7) % 96}%`, '--y': `${30 + ((i * 23) % 62)}%`, '--s': `${4 + (i % 3) * 2}px`, '--d': `${5 + (i % 5)}s`, '--dl': `${-i * 0.7}s` }) }))}
+        </>
+      );
+    case 'deepsea':
+      return (
+        <>
+          <div className="stbd-fill" style={st({ background: 'radial-gradient(60% 40% at 50% -8%, rgba(120,230,255,0.28), transparent 70%)' })} />
+          {h('div', { className: 'stbd-band', style: st({ top: '10%', height: '30%', '--d': '26s', background: 'radial-gradient(50% 50% at 45% 50%,rgba(90,200,255,.22),transparent 72%)' }) })}
+          {Array.from({ length: 16 }, (_, i) => h('div', { key: i, className: 'stbd-rise', style: st({ '--x': `${(i * 13 + 5) % 96}%`, '--s': `${8 + (i % 5) * 5}px`, '--d': `${9 + (i % 6) * 1.5}s`, '--dl': `${-i * 1.1}s` }) }))}
+          {[[26, 40, 120, 19, 0], [66, 62, 90, 23, -8]].map(([x, y, w, d, dl], i) =>
+            h('div', { key: `k${i}`, className: 'stbd-koi', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--w': `${w}px`, '--d': `${d}s`, '--dl': `${dl}s`, '--c1': '#5CE0E8', '--c2': '#2F7FD0', opacity: 0.7 }) }),
+          )}
+          {h('div', { className: 'stbd-dune', style: st({ bottom: '-12%', height: '22%', background: 'linear-gradient(180deg,#0E4F5E,#062B36)' }) })}
+        </>
+      );
+    case 'paris':
+      return (
+        <>
+          <div className="stbd-moon" style={st({ right: '14%', top: '10%', width: 76, height: 76 })} />
+          {BRIGHT.map(([x, y], i) => h('div', { key: i, className: 'stbd-bright', style: st({ left: `${x}%`, top: `${(y ?? 0) % 40}%`, animationDelay: `${-i * 0.8}s` }) }))}
+          <div className="stbd-skyline" style={st({ height: '48%', background: 'linear-gradient(180deg,#2C2554,#161235)', clipPath: 'polygon(0 100%,0 74%,10% 74%,10% 66%,20% 66%,20% 72%,32% 72%,32% 62%,40% 62%,45% 40%,48% 6%,50% 0,52% 6%,55% 40%,60% 62%,68% 62%,68% 70%,80% 70%,80% 64%,90% 64%,90% 74%,100% 74%,100% 100%)' })} />
+          {Array.from({ length: 16 }, (_, i) => h('div', { key: `w${i}`, className: 'stbd-win', style: st({ '--x': `${(i * 6.3 + 3) % 96}%`, '--y': `${84 + ((i * 5) % 12)}%`, '--d': `${3 + (i % 4)}s`, '--dl': `${-i * 0.6}s` }) }))}
+          {[[48, 8], [50, 20], [49, 32]].map(([x, y], i) =>
+            h('div', { key: `s${i}`, className: 'stbd-spark', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--s': `${14 + i * 4}px`, '--d': `${1.8 + i * 0.5}s`, '--dl': `${-i * 0.6}s` }) }),
+          )}
+          {PETALS.slice(0, 8).map((p, i) => h('div', { key: i, className: 'stbd-fk2', style: st({ '--x': p.x, '--s': `${5 + (p.s % 6)}px`, '--d': `${10 + (i % 5)}s`, '--dl': p.dl, opacity: 0.6 }) }))}
+        </>
+      );
+    case 'desert':
+      return (
+        <>
+          <div className="stbd-redsun" style={st({ left: '64%', top: '16%', width: 110, height: 110, background: 'radial-gradient(circle at 40% 38%,#FFF1C4,#FFB454 75%)', boxShadow: '0 0 90px 30px rgba(255,180,90,0.35)' })} />
+          {h('div', { className: 'stbd-drift', style: st({ top: '22%', height: '8%', '--d': '46s', background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent)', borderRadius: 999 }) })}
+          {h('div', { className: 'stbd-dune', style: st({ bottom: '14%', height: '24%', background: 'linear-gradient(180deg,#E9B56D,#D79A52)' }) })}
+          {h('div', { className: 'stbd-dune', style: st({ bottom: '-6%', left: '-30%', width: '110%', height: '30%', background: 'linear-gradient(180deg,#D98E4A,#BD7138)' }) })}
+          {h('div', { className: 'stbd-dune', style: st({ bottom: '-14%', left: '30%', width: '90%', height: '28%', background: 'linear-gradient(180deg,#C97B3E,#A35E2D)' }) })}
+          {h('div', { className: 'stbd-drift', style: st({ top: '70%', height: '10%', '--d': '30s', '--dl': '-6s', background: 'radial-gradient(60% 50% at 50% 50%, rgba(255,230,180,0.5), transparent 70%)' }) })}
+        </>
+      );
+    case 'lavender':
+      return (
+        <>
+          <div className="stbd-sun" style={st({ right: '16%', top: '10%', width: 120, height: 120 })} />
+          {h('div', { className: 'stbd-mtn', style: st({ '--x': '-8%', '--b': '34%', '--w': '70%', '--h': '26%', '--c1': 'rgba(170,150,215,0.55)', '--c2': 'rgba(210,200,235,0.2)' }) })}
+          {h('div', { className: 'stbd-mtn', style: st({ '--x': '40%', '--b': '34%', '--w': '70%', '--h': '20%', '--c1': 'rgba(150,130,200,0.5)', '--c2': 'rgba(210,200,235,0.2)' }) })}
+          {h('div', { className: 'stbd-hill', style: st({ bottom: '-8%', height: '34%', background: 'linear-gradient(180deg,#A58BD8,#7B5FB8)' }) })}
+          {h('div', { className: 'stbd-hill', style: st({ bottom: '-16%', left: '-30%', width: '100%', height: '30%', background: 'linear-gradient(180deg,#8D70C8,#6A4CA6)' }) })}
+          {[6, 16, 27, 38, 49, 60, 71, 82, 92].map((x, i) =>
+            h('div', { key: i, className: 'stbd-stalk', style: st({ '--x': `${x}%`, '--w': '7px', '--h': `${24 + ((i * 9) % 14)}%`, '--d': `${4 + (i % 3)}s`, '--dl': `${-i * 0.6}s`, background: 'linear-gradient(180deg,#B9A0EA,#6F9A4E 60%)' }) }),
+          )}
+          {PETALS.slice(0, 9).map((p, i) => h('div', { key: `p${i}`, className: 'stbd-petal', style: st({ '--x': p.x, '--s': `${p.s - 4}px`, '--d': p.d, '--dl': p.dl, '--c1': '#EADFFF', '--c2': '#B497E8' }) }))}
+        </>
+      );
+    case 'candy':
+      return (
+        <>
+          {[
+            ['#FF9EC7', '-10%', '-12%', '60vmax', '22s', '0s'],
+            ['#9EE6FF', '50%', '-10%', '52vmax', '26s', '-7s'],
+            ['#FFE08A', '28%', '48%', '56vmax', '24s', '-4s'],
+            ['#C9B2FF', '-14%', '44%', '50vmax', '28s', '-11s'],
+          ].map(([c, x, y, s, d, dl], i) => h('div', { key: i, className: 'stbd-blob', style: st({ '--c': c!, '--x': x!, '--y': y!, '--s': s!, '--d': d!, '--dl': dl!, opacity: 0.55 }) }))}
+          {[[12, 20], [34, 62], [58, 18], [78, 70], [90, 34], [48, 84]].map(([x, y], i) =>
+            h('div', { key: `s${i}`, className: 'stbd-spark', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--s': `${12 + (i % 3) * 6}px`, '--d': `${3 + (i % 3)}s`, '--dl': `${-i * 0.8}s`, background: '#fff' }) }),
+          )}
+        </>
+      );
+    case 'torii':
+      return (
+        <>
+          <div className="stbd-redsun" style={st({ left: '58%', top: '14%', width: 120, height: 120, background: 'radial-gradient(circle at 40% 38%,#FFE6B8,#FF9A5C 75%)', boxShadow: '0 0 90px 30px rgba(255,140,90,0.4)' })} />
+          {h('div', { className: 'stbd-mtn', style: st({ '--x': '-6%', '--b': '30%', '--w': '60%', '--h': '24%', '--c1': 'rgba(120,70,110,0.7)', '--c2': 'rgba(200,120,110,0.3)' }) })}
+          {h('div', { className: 'stbd-mtn', style: st({ '--x': '46%', '--b': '30%', '--w': '64%', '--h': '20%', '--c1': 'rgba(110,60,100,0.7)', '--c2': 'rgba(200,120,110,0.3)' }) })}
+          <div className="stbd-fill" style={st({ top: '70%', background: 'linear-gradient(180deg,#3A1F4A,#1E1030)' })} />
+          {h('div', { className: 'stbd-torii', style: st({ '--x': '12%', '--b': '22%', '--w': '150px' }) }, h('i'), h('i'), h('i'), h('i'))}
+          {h('div', { className: 'stbd-torii', style: st({ '--x': '66%', '--b': '16%', '--w': '90px', opacity: 0.85 }) }, h('i'), h('i'), h('i'), h('i'))}
+          {h('div', { className: 'stbd-drift', style: st({ top: '66%', height: '12%', '--d': '38s', background: 'radial-gradient(60% 50% at 50% 50%, rgba(255,220,200,0.45), transparent 70%)' }) })}
+          {PETALS.slice(0, 11).map((p, i) => h('div', { key: i, className: 'stbd-petal', style: st({ '--x': p.x, '--s': `${p.s}px`, '--d': p.d, '--dl': p.dl }) }))}
         </>
       );
     case 'world':
