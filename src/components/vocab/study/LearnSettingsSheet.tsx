@@ -173,6 +173,9 @@ export function LearnSettingsSheet({
               <Row on={draft.clipVoice === 'sarah'} onPress={() => setDraft({ ...draft, clipVoice: 'sarah' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Sarah (Kokoro, nữ)', 'Sarah voice (Kokoro, female)')}</Text>
               </Row>
+              <Row on={draft.clipVoice === 'emma'} onPress={() => setDraft({ ...draft, clipVoice: 'emma' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Emma (Kokoro, nữ Anh–Anh)', 'Emma voice (Kokoro, British female)')}</Text>
+              </Row>
               <Row on={draft.clipVoice === 'kore'} onPress={() => setDraft({ ...draft, clipVoice: 'kore' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Kore (Gemini · từ đơn)', 'Kore voice (Gemini · single words)')}</Text>
               </Row>

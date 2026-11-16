@@ -227,3 +227,25 @@ test('kho clip: câu dùng chung cơ chế — bộ words rồi tới bộ lines
   assert.equal(await lib.find('kore', 'lost'), '/audio/words/kore/lost.mp3');
   assert.equal(await lib.find('fenrir', 'lost'), null, 'giọng nam chưa có thư mục');
 });
+
+test('emma clip lookup resolves word files and treats a missing index as null', async () => {
+  const sets = ['/audio/words/{voice}/', '/audio/lines/{voice}/'];
+  const emma = createClipLibrary({
+    sets,
+    fetch: async (url) => {
+      if (url === '/audio/words/emma/index.json') {
+        return { ok: true, status: 200, json: async () => ({ hello: 'hello-1.mp3' }) };
+      }
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  assert.equal(await emma.find('emma', 'hello'), '/audio/words/emma/hello-1.mp3');
+
+  const missingEmma = createClipLibrary({
+    sets,
+    fetch: async () => ({ ok: false, status: 404, json: async () => ({}) }),
+  });
+  await assert.doesNotReject(async () => {
+    assert.equal(await missingEmma.find('emma', 'hello'), null);
+  });
+});
