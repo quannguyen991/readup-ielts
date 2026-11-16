@@ -140,6 +140,9 @@ const CSS = `
 .stbd-torii i:nth-child(3){left:0;right:0;top:6%;height:11%;border-radius:2px 2px 40% 40%/2px 2px 100% 100%;background:#8E1B15}
 .stbd-torii i:nth-child(4){left:8%;right:8%;top:28%;height:7%}
 
+.stbd-neon{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);border-bottom:3px solid var(--c);border-radius:0 0 50% 50%/0 0 100% 100%;box-shadow:0 6px 10px -2px var(--c),0 12px 26px -6px var(--c);opacity:.95;will-change:opacity;animation:stbd-tw 3.4s ease-in-out var(--dl,0s) infinite}
+.stbd-ring{border:3px solid var(--c);border-radius:50%;box-shadow:0 0 10px var(--c),0 0 26px var(--c),inset 0 0 12px var(--c)}
+
 @media (prefers-reduced-motion: reduce){
  .stbd *{animation:none!important}
  .stbd-petal,.stbd-flake,.stbd-fk2,.stbd-rise,.stbd-fly{display:none}
@@ -284,20 +287,34 @@ function Layers({ theme }: { theme: StudyTheme }) {
     case 'noel':
       return (
         <>
-          {[5, 15, 25, 35, 45, 55, 65, 75, 85, 95].map((x, i) =>
-            h('div', { key: `g${i}`, className: 'stbd-bulb', style: st({ '--x': `${x}%`, '--y': `${1.5 + (i % 2) * 2}%`, '--s': '9px', '--c': ['#FF4D5E', '#FFD65A', '#5CE08A', '#6CC8FF', '#FF9E4D'][i % 5]!, '--d': `${2.4 + (i % 3) * 0.7}s`, '--dl': `${-i * 0.5}s` }) }),
+          <div className="stbd-fill" style={st({ background: 'radial-gradient(60% 40% at 50% 112%, rgba(255,255,255,0.22), transparent 70%), radial-gradient(50% 30% at 18% 0%, rgba(92,224,138,0.16), transparent 70%), radial-gradient(50% 30% at 84% 0%, rgba(255,77,94,0.16), transparent 70%)' })} />
+          {[[3, 4, 44, '#FF3D6E', 0], [28, 3, 44, '#35F0FF', -0.9], [53, 4, 44, '#FFE14D', -1.8], [78, 3, 44, '#5CFF9A', -2.7]].map(([x, y, w, c, dl], i) =>
+            h('div', { key: `n${i}`, className: 'stbd-neon', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--w': `${w}%`, '--h': '9%', '--c': c as string, '--dl': `${dl}s` }) }),
           )}
-          {[8, 44, 78].map((x, i) =>
-            h('div', { key: `t${i}`, className: 'stbd-tree', style: st({ '--x': `${x}%`, '--w': `${i === 1 ? 150 : 110}px` }) },
-              h('i', { style: st({ top: '0%', width: '48%', height: '36%' }) }),
-              h('i', { style: st({ top: '24%', width: '70%', height: '40%' }) }),
-              h('i', { style: st({ top: '48%', width: '96%', height: '48%' }) }),
+          {Array.from({ length: 36 }, (_, i) => {
+            const seg = Math.floor(i / 9);
+            const t = (i % 9) / 8;
+            return h('div', { key: `g${i}`, className: 'stbd-bulb', style: st({ '--x': `${3 + seg * 25 + t * 44}%`, '--y': `${4 + Math.sin(t * Math.PI) * 9}%`, '--s': '8px', '--c': ['#FF3D6E', '#35F0FF', '#FFE14D', '#5CFF9A', '#B66BFF'][(i + seg) % 5]!, '--d': `${1.6 + (i % 4) * 0.5}s`, '--dl': `${-i * 0.35}s` }) });
+          })}
+          {[[12, 30], [88, 26]].map(([x, y], i) =>
+            h('div', { key: `r${i}`, className: 'stbd-neon stbd-ring', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--w': '84px', '--h': '84px', '--c': i ? '#FF3D6E' : '#5CFF9A', '--dl': `${-i * 1.3}s` }) }),
+          )}
+          <div className="stbd-hill" style={st({ bottom: '-12%', height: '30%', background: 'linear-gradient(180deg,#FFFFFF,#DCE9F7)' })} />
+          <div className="stbd-hill" style={st({ bottom: '-20%', left: '-35%', width: '95%', height: '30%', background: 'linear-gradient(180deg,#FFFFFF,#CFE0F2)' })} />
+          {[[4, 150], [24, 110], [44, 190], [66, 120], [82, 160]].map(([x, w], i) =>
+            h('div', { key: `t${i}`, className: 'stbd-tree', style: st({ '--x': `${x}%`, '--w': `${w}px`, bottom: '4%' }) },
+              h('i', { style: st({ top: '0%', width: '46%', height: '36%' }) }),
+              h('i', { style: st({ top: '22%', width: '68%', height: '40%' }) }),
+              h('i', { style: st({ top: '46%', width: '94%', height: '50%' }) }),
+              ...Array.from({ length: 11 }, (_, k) => {
+                const y = 14 + k * 7.2;
+                const half = 4 + y * 0.4;
+                return h('div', { key: `l${k}`, className: 'stbd-bulb', style: st({ '--x': `${50 + (k % 2 ? 1 : -1) * half * (0.35 + (k % 3) * 0.3)}%`, '--y': `${y}%`, '--s': '7px', '--c': ['#FF3D6E', '#FFE14D', '#35F0FF', '#FFFFFF', '#5CFF9A'][(k + i) % 5]!, '--d': `${1.6 + (k % 3) * 0.6}s`, '--dl': `${-k * 0.4}s` }) });
+              }),
             ),
           )}
-          {[[14, 70], [47, 62], [82, 74], [20, 82], [50, 84], [86, 84]].map(([x, y], i) =>
-            h('div', { key: `o${i}`, className: 'stbd-bulb', style: st({ '--x': `${x}%`, '--y': `${y}%`, '--s': '7px', '--c': ['#FFD65A', '#FF4D5E', '#FFFFFF'][i % 3]!, '--d': `${2 + (i % 3)}s`, '--dl': `${-i * 0.7}s` }) }),
-          )}
-          {PETALS.map((p, i) => h('div', { key: i, className: 'stbd-fk2', style: st({ '--x': p.x, '--s': `${6 + (p.s % 8)}px`, '--d': `${9 + (i % 6)}s`, '--dl': p.dl }) }))}
+          {PETALS.map((p, i) => h('div', { key: i, className: 'stbd-fk2', style: st({ '--x': p.x, '--s': `${12 + (p.s % 14)}px`, '--d': `${9 + (i % 7) * 1.3}s`, '--dl': p.dl }) }))}
+          {Array.from({ length: 44 }, (_, i) => h('div', { key: `b${i}`, className: 'stbd-fk2', style: st({ '--x': `${(i * 7.7 + 3) % 100}%`, '--s': `${5 + (i % 6)}px`, '--d': `${6 + (i % 6)}s`, '--dl': `${-(i * 1.1).toFixed(1)}s`, opacity: 0.75 }) }))}
         </>
       );
     case 'europe':
