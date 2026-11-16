@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="vi"><head><meta charset="utf-8">
 <title>Cam vocab cover generator</title>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
 <style>
   html, body { margin: 0; background: transparent; }
   #cover { width: 250px; height: 340px; }
   #cover svg { display: block; width: 250px; height: 340px; }
-  text { font-family: 'Be Vietnam Pro', 'Segoe UI', sans-serif; }
-  .num { font-family: 'Chakra Petch', 'Be Vietnam Pro', sans-serif; }
+  text { font-family: 'Inter', 'Segoe UI', sans-serif; }
+  .num { font-family: 'Chakra Petch', 'Inter', sans-serif; }
 </style></head>
 <body><div id="cover"></div>
 <script>
@@ -67,10 +67,10 @@ function coverB(d) {
   // Số đề được dựng thành lưới điểm lấy mẫu từ chữ thật.
   const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
   const cx = cv.getContext('2d');
-  cx.font = "800 150px 'Be Vietnam Pro', 'Segoe UI', sans-serif";
+  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";
   const m150 = cx.measureText(d.mark).width;
   const msize = Math.min(150, Math.floor(150 * 196 / m150));
-  cx.font = `800 ${msize}px 'Be Vietnam Pro', 'Segoe UI', sans-serif`;
+  cx.font = `800 ${msize}px 'Inter', 'Segoe UI', sans-serif`;
   const k = Math.max(.74, Math.min(1, msize / 150));
   cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = '#000';
   cx.fillText(d.mark, CX, CY);
@@ -174,7 +174,7 @@ function coverB(d) {
 (async () => {
   const id = new URLSearchParams(location.search).get('id') || BOOKS[0].id;
   const idx = Math.max(0, BOOKS.findIndex((b) => b.id === id));
-  try { await document.fonts.load("700 16px 'Chakra Petch'"); await document.fonts.load("800 150px 'Be Vietnam Pro'"); await document.fonts.ready; } catch (e) {}
+  try { await document.fonts.load("700 16px 'Chakra Petch'"); await document.fonts.load("800 150px 'Inter'"); await document.fonts.ready; } catch (e) {}
   document.getElementById('cover').innerHTML = coverB(palette(BOOKS[idx], idx));
   window.__ready = true;
 })();

@@ -32,11 +32,11 @@ palette = '''function palette(spec, idx) {
 src = src[:p_start] + palette + src[p_end:]
 
 # 2. Số lớn: vẽ đúng chữ của bộ sách, tự co cỡ chữ cho vừa bề ngang và mịn điểm theo cỡ chữ.
-sub('''  cx.font = "800 150px 'Be Vietnam Pro', 'Segoe UI', sans-serif";''',
-    '''  cx.font = "800 150px 'Be Vietnam Pro', 'Segoe UI', sans-serif";
+sub('''  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";''',
+    '''  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";
   const m150 = cx.measureText(d.mark).width;
   const msize = Math.min(150, Math.floor(150 * 196 / m150));
-  cx.font = `800 ${msize}px 'Be Vietnam Pro', 'Segoe UI', sans-serif`;
+  cx.font = `800 ${msize}px 'Inter', 'Segoe UI', sans-serif`;
   const k = Math.max(.74, Math.min(1, msize / 150));''')
 sub('cx.fillText(String(d.n), CX, CY);', 'cx.fillText(d.mark, CX, CY);')
 sub('const step = 6.5, img', 'const step = +(6.5 * k).toFixed(2), img')

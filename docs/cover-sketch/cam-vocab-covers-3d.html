@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bìa bộ từ Cambridge — Chòm sao 3D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
     margin: 0; padding: 32px 24px 56px; min-height: 100vh;
-    font-family: 'Be Vietnam Pro', 'Segoe UI', sans-serif; color: #1c1b22;
+    font-family: 'Inter', 'Segoe UI', sans-serif; color: #1c1b22;
     background: linear-gradient(180deg, #cdb7dc 0%, #e6c3d3 45%, #f6d9c9 100%);
   }
   h1 { font-size: 20px; margin: 0 0 4px; }
@@ -41,8 +41,8 @@
   .bottom { left: 0; bottom: -22px; width: 100%; height: 44px; transform: rotateX(-90deg); background: var(--deep); }
   .shine { position: absolute; inset: 0; pointer-events: none; border-radius: 3px 14px 14px 3px;
     background: linear-gradient(115deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 32%, rgba(0,0,0,0) 70%, rgba(0,0,0,.22) 100%); }
-  text { font-family: 'Be Vietnam Pro', 'Segoe UI', sans-serif; }
-  .num { font-family: 'Oxanium', 'Be Vietnam Pro', sans-serif; }
+  text { font-family: 'Inter', 'Segoe UI', sans-serif; }
+  .num { font-family: 'Oxanium', 'Inter', sans-serif; }
 </style>
 </head>
 <body>
@@ -80,7 +80,7 @@ function front(d) {
   const CX = 137, CY = 158;
   const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
   const cx = cv.getContext('2d');
-  cx.font = "800 150px 'Be Vietnam Pro', 'Segoe UI', sans-serif";
+  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";
   cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = '#000';
   cx.fillText(String(d.n), CX, CY);
   const step = 6.5, img = cx.getImageData(0, 0, W, H).data;
@@ -207,7 +207,7 @@ function book(d) {
 }
 
 async function main() {
-  try { await document.fonts.load("800 150px 'Be Vietnam Pro'"); await document.fonts.load("800 17px 'Oxanium'"); await document.fonts.ready; } catch (e) {}
+  try { await document.fonts.load("800 150px 'Inter'"); await document.fonts.load("800 17px 'Oxanium'"); await document.fonts.ready; } catch (e) {}
   document.getElementById('shelf').innerHTML = VOLS.map(book).join('');
 }
 main();

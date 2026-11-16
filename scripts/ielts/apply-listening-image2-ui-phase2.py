@@ -22,7 +22,7 @@ old_header_logo = """          {/* Logo Band 9 Gold Badge */}
 
           >
 
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 11, color: '#FFFFFF' }}>
+            <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 11, color: '#FFFFFF' }}>
 
               BAND 9
 
@@ -42,7 +42,7 @@ new_header_logo = """          {/* Logo IELTS Emblem Badge (Image 2) */}
               boxShadow: '0 2px 6px rgba(220, 38, 38, 0.3)',
             }}
           >
-            <Text style={{ fontFamily: 'BeVietnamPro_900Black', fontSize: 14, color: '#FFFFFF' }}>
+            <Text style={{ fontFamily: 'InterTight_600SemiBold', fontSize: 14, color: '#FFFFFF' }}>
               R
             </Text>
           </View>"""
@@ -87,17 +87,17 @@ new_listening_workspace = """{/* 2. MAIN WORKSPACE (Authentic Computer-Delivered
                   borderColor: '#FECACA',
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#DC2626' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#DC2626' }}>
                   Question {qStart} - {qEnd}
                 </Text>
               </View>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 14, color: '#0F172A' }}>
+              <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 14, color: '#0F172A' }}>
                 Write ONE WORD ONLY for each answer.
               </Text>
             </View>
 
             {/* Section Title (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 20, color: '#0F172A', marginTop: 4 }}>
+            <Text style={{ fontFamily: 'InterTight_600SemiBold', fontSize: 20, color: '#0F172A', marginTop: 4 }}>
               {test.parts?.[activePartId - 1]?.title || `Section ${activePartId}`}
             </Text>
 
@@ -107,10 +107,10 @@ new_listening_workspace = """{/* 2. MAIN WORKSPACE (Authentic Computer-Delivered
             {/* End of Section Notice (Image 2) */}
             <View style={{ alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 40, paddingVertical: 24 }}>
               <Text style={{ fontSize: 24, color: '#94A3B8', letterSpacing: 4 }}>• • •</Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 16, color: '#0F172A' }}>
+              <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 16, color: '#0F172A' }}>
                 Hết câu hỏi của Section {activePartId}
               </Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#64748B' }}>
+              <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 13, color: '#64748B' }}>
                 Bạn còn {Math.max(0, partNumbers.length - answeredInPartCount)} câu chưa trả lời ở phần này. Hãy hoàn thành bài của mình nhé!
               </Text>
             </View>
@@ -167,7 +167,7 @@ new_listening_workspace = """{/* 2. MAIN WORKSPACE (Authentic Computer-Delivered
               <View className="gap-2 border-b border-border/60 pb-4">
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_800ExtraBold',
+                    fontFamily: 'InterTight_600SemiBold',
                     fontSize: 24,
                     lineHeight: 32,
                     color: themeStyles.text,
@@ -178,7 +178,7 @@ new_listening_workspace = """{/* 2. MAIN WORKSPACE (Authentic Computer-Delivered
                 {passageDisplayData.subtitle ? (
                   <Text
                     style={{
-                      fontFamily: 'BeVietnamPro_500Medium',
+                      fontFamily: 'Inter_500Medium',
                       fontSize: 14,
                       lineHeight: 22,
                       color: '#4B5563',
@@ -195,7 +195,7 @@ new_listening_workspace = """{/* 2. MAIN WORKSPACE (Authentic Computer-Delivered
                     key={pIdx}
                     selectable={true}
                     style={{
-                      fontFamily: 'BeVietnamPro_400Regular',
+                      fontFamily: 'Inter_400Regular',
                       fontSize: fontSizeLevel,
                       lineHeight: fontSizeLevel * 1.7,
                       color: themeStyles.text,
@@ -278,7 +278,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
             </Pressable>
 
             {/* Current Time in Red (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12.5, color: '#DC2626', minWidth: 42 }}>
+            <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12.5, color: '#DC2626', minWidth: 42 }}>
               {formatAudioTime(audioCurrentTime)}
             </Text>
 
@@ -313,7 +313,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
             </Pressable>
 
             {/* Total Duration in Gray (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 12.5, color: '#64748B', minWidth: 42 }}>
+            <Text style={{ fontFamily: 'Inter_500Medium', fontSize: 12.5, color: '#64748B', minWidth: 42 }}>
               {formatAudioTime(audioDuration || 1800)}
             </Text>
           </View>
@@ -332,10 +332,10 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, minWidth: 140 }}>
               <Text style={{ fontSize: 18, color: '#64748B' }}>⠿</Text>
               <View>
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#0F172A' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#0F172A' }}>
                   Section {activePartId}
                 </Text>
-                <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 11, color: '#64748B' }}>
+                <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 11, color: '#64748B' }}>
                   Đã làm {answeredInPartCount} / {partNumbers.length}
                 </Text>
               </View>
@@ -356,7 +356,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                   backgroundColor: '#DC2626',
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: '#FFFFFF' }}>
                   Section {activePartId}
                 </Text>
               </View>
@@ -384,7 +384,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                   >
                     <Text
                       style={{
-                        fontFamily: 'BeVietnamPro_700Bold',
+                        fontFamily: 'Inter_600SemiBold',
                         fontSize: 12,
                         color: hasAnswer ? '#FFFFFF' : '#334155',
                       }}
@@ -427,7 +427,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                       borderColor: '#E2E8F0',
                     }}
                   >
-                    <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: '#64748B' }}>
+                    <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: '#64748B' }}>
                       S{p.id}
                     </Text>
                   </Pressable>
@@ -455,7 +455,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                   gap: 4,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#FFFFFF' }}>
                   Section {activePartId + 1} →
                 </Text>
               </Pressable>
@@ -471,7 +471,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                   backgroundColor: '#DC2626',
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#FFFFFF' }}>
                   {submitted ? '✓ Đã nộp' : 'Nộp bài →'}
                 </Text>
               </Pressable>
@@ -494,10 +494,10 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
           {/* Bên trái: Trạng thái tiến độ & chọn Passage */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <View>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>
+              <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: themeStyles.text }}>
                 Practice
               </Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 11, color: '#6B7280' }}>
+              <Text style={{ fontFamily: 'Inter_500Medium', fontSize: 11, color: '#6B7280' }}>
                 Đã làm {answeredInPartCount}/{partNumbers.length}
               </Text>
             </View>
@@ -521,7 +521,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                     >
                       <Text
                         style={{
-                          fontFamily: 'BeVietnamPro_700Bold',
+                          fontFamily: 'Inter_600SemiBold',
                           fontSize: 11,
                           color: active ? '#FFFFFF' : themeStyles.text,
                         }}
@@ -572,7 +572,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                     position: 'relative',
                   }}
                 >
-                  <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: textColor }}>
+                  <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: textColor }}>
                     {num}
                   </Text>
                   {isFlag ? (
@@ -607,7 +607,7 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                 backgroundColor: themeStyles.surface,
               }}
             >
-              <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: themeStyles.text }}>
+              <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: themeStyles.text }}>
                 Tiếp →
               </Text>
             </Pressable>
@@ -626,13 +626,13 @@ new_bottom_bar = """{/* 3. BOTTOM FOOTER BAR (IMAGE 2 MATCHING FOR LISTENING; ST
                   transform: [{ translateY: pressed ? 1 : 0 }],
                 })}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#FFFFFF' }}>
                   Nộp bài
                 </Text>
               </Pressable>
             ) : (
               <View style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, backgroundColor: '#DCFCE7' }}>
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#166534' }}>
+                <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#166534' }}>
                   ✓ Đã nộp
                 </Text>
               </View>
