@@ -73,6 +73,7 @@ import {
   pickNext,
   slotOf,
   startLoop,
+  reshuffleLoop,
   type LoopOptions,
 } from "@/services/vocab/learn-loop";
 import { canRecognize, startListening, type Listening } from "@/services/shadow/speech";
@@ -601,7 +602,7 @@ export default function LearnScreen() {
         // Xáo lại cả vòng: đổi hạt giống (đổi thứ tự câu đến hạn) và xáo các từ chưa mở.
         setPlan((p) => {
           const s = Date.now() % 100000;
-          return { ...p, seed: s, pending: shuffled(p.pending, seededRng(s)) };
+          return reshuffleLoop(p, seededRng(s), s);
         })
       }
       className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"

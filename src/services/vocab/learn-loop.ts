@@ -20,7 +20,7 @@
  *
  * Tuần tự (`interleave: false`): mỗi từ đi đúng bậc, không đổi dạng theo câu trước.
  */
-import { activeKinds, type StageKind } from './topic-study';
+import { activeKinds, shuffled, type StageKind } from './topic-study';
 
 /** Các dạng luyện (không tính lật thẻ), từ dễ tới khó. */
 export const PRACTICE_ORDER: readonly StageKind[] = ['mcq', 'fill', 'type'];
@@ -163,6 +163,19 @@ export function pickNext(state: LoopState, o: LoopOptions): LoopItem | null {
   const rest = active.filter((s) => s.word !== state.lastWord).sort(byDue);
   const pick = rest[0] ?? [...active].sort(byDue)[0];
   return pick ? item(pick) : null;
+}
+
+/**
+ * Trộn cả vòng khi người học bấm "Trộn": xáo các từ chưa mở, và hoán vị các mốc
+ * đến hạn của những từ đang học dở, nên thứ tự câu đến hạn đổi theo luôn (không còn
+ * đi theo thứ tự cũ). Số mốc giữ nguyên, nên lịch ôn vẫn chạy.
+ */
+export function reshuffleLoop(state: LoopState, rng: () => number, seed: number): LoopState {
+  const active = state.slots.filter((s) => !s.done);
+  const dues = shuffled(active.map((s) => s.due), rng);
+  const dueOf = new Map(active.map((s, i) => [s.word, dues[i]!] as const));
+  const slots = state.slots.map((s) => (dueOf.has(s.word) ? { ...s, due: dueOf.get(s.word)! } : s));
+  return { ...state, seed, slots, pending: shuffled(state.pending, rng) };
 }
 
 /** Trạng thái hiện tại của một từ trong vòng (từ chưa đưa vào thì là ô trống). */

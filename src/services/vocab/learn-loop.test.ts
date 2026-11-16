@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import {
   answerLoop,
   doneLevel,
+  reshuffleLoop,
   finishesWord,
   kindFor,
   loopDone,
@@ -208,4 +209,20 @@ test('từ không quên thì không bị ép hỏi thêm: xong sau đúng hai l�
     asks += 1;
   }
   assert.equal(asks, 2);
+});
+
+test('Trộn: đổi thứ tự cả từ chưa mở lẫn mốc đến hạn, giữ nguyên số mốc', () => {
+  const words = Array.from({ length: 12 }, (_, i) => ({ word: `t${i}` }));
+  const o = { kinds: ['flash', 'mcq'] as const, interleave: false, canFill: () => false };
+  let st = startLoop(words, 3);
+  for (let i = 0; i < 6; i++) st = answerLoop(st, true, o as never);
+  const dueBefore = st.slots.filter((s) => !s.done).map((s) => s.due).sort((a, b) => a - b);
+  const pendingBefore = st.pending.join(',');
+  let k = 0;
+  const rng = () => ((k = (k * 9301 + 49297) % 233280) / 233280);
+  const next = reshuffleLoop(st, rng, 99);
+  assert.equal(next.seed, 99);
+  assert.deepEqual(next.slots.filter((s) => !s.done).map((s) => s.due).sort((a, b) => a - b), dueBefore);
+  assert.notEqual(next.pending.join(','), pendingBefore);
+  assert.equal(next.pending.length, st.pending.length);
 });
