@@ -121,7 +121,6 @@ export default function MeetingAssistant() {
         eyebrow="WORK · MEETING"
         title="Họp bằng tiếng Anh,"
         accent="biết ngay mình nói thế nào"
-        desc="Ghi âm cuộc họp, tách giọng từng người, đo tốc độ và phong cách công sở, rồi nhận gợi ý diễn đạt chuyên nghiệp hơn."
         stats={[
           { value: 'Tách giọng', label: 'Từng người nói' },
           { value: 'WPM', label: 'Tốc độ nói' },

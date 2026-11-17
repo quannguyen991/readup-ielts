@@ -1,0 +1,62 @@
+{
+ "id": "mock-20",
+ "title": "IELTS Speaking Mock Test 20",
+ "titleVi": "Đề thi thử số 20",
+ "focusVi": "Bài thi này tập trung rèn luyện kỹ năng phát triển ý trừu tượng và sử dụng vốn từ vựng phong phú để bình luận về văn hóa truyền thống.",
+ "part1": [
+  {
+   "topic": "Science",
+   "qs": [
+    "Did you enjoy studying science subjects when you were in school?",
+    "What field of science do you find most interesting nowadays?",
+    "Have you ever visited a science museum or exhibition?",
+    "Do you think learning science is important for everyday life?"
+   ]
+  },
+  {
+   "topic": "Safety",
+   "qs": [
+    "Do you feel your hometown is generally a safe place to live?",
+    "What safety precautions do you take before leaving your home?",
+    "Were you taught about road safety when you were a child?",
+    "How do modern technologies help improve personal safety?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a traditional festival in your country that you enjoyed celebrating.",
+  "bullets": [
+   "what the festival is and when it takes place",
+   "who you celebrated it with",
+   "what activities people typically do during this event",
+   "and explain why this celebration left a lasting impression on you"
+  ]
+ },
+ "part3": [
+  "Why do you think traditional festivals are still meaningful to younger generations?",
+  "How has the commercialization of cultural holidays influenced their true value?",
+  "In what ways can governments help protect intangible cultural heritage like folk festivals?",
+  "Should schools incorporate traditional festive celebrations into their curriculum?",
+  "To what extent do international celebrations overshadow domestic cultural festivals?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, I really enjoyed science classes during secondary school because they included practical experiments. For instance, mixing chemical solutions in the laboratory made theoretical concepts instantly come alive and sparked my curiosity.",
+   "I am particularly fascinated by astronomy because exploring distant celestial bodies is awe-inspiring. Reading articles about the James Webb Space Telescope regularly keeps me updated on how our universe was originally formed.",
+   "Yes, I visited the national science museum in Hanoi last summer. It had fantastic interactive physics exhibits where visitors could test gravity and sound waves, which made learning incredibly engaging.",
+   "Definitely, because scientific literacy helps us make informed everyday choices regarding health and technology. For example, understanding basic hygiene and food preservation prevents foodborne illnesses in our daily cooking routine.",
+   "Generally speaking, yes, my neighborhood is quite secure with low crime rates. Neighbors look out for each other, and local security guards actively patrol the streets during night hours to deter theft.",
+   "I always double-check that all doors and balcony windows are securely locked before heading out. Additionally, I turn off main gas valves to avoid any potential domestic fires while away.",
+   "Yes, our primary school teachers regularly instructed us on basic road safety guidelines. They taught us how to use pedestrian crosswalks and always look both ways before crossing crowded streets.",
+   "Modern tech enhances our safety significantly through digital surveillance and emergency alerts. For instance, smartphone location-sharing features allow family members to track my commute and ensure I arrive home safely at night."
+  ],
+  "sample": "I would like to talk about the Mid-Autumn Festival, known locally as Tết Trung Thu, which is celebrated on the full moon night of the eighth lunar month. Last year, I spent the evening with my extended family and several neighborhood friends in my hometown. Leading up to the night, streets were vibrant with bright red lanterns and bustling stalls selling sweet mooncakes. During the festival, children paraded through the alleys carrying star-shaped lanterns while energetic lion dance troupes performed to the thumping beat of drums. My family gathered on our rooftop patio to share tea, taste baked lotus-seed mooncakes, and admire the luminous full moon. This celebration made a deep impression on me because it provided a rare moment of genuine connection amidst our hectic modern routines. In our fast-paced digital world, witnessing generations reconnecting over folklore stories, shared laughter, and traditional treats truly reaffirmed the warmth and enduring charm of Vietnamese cultural values.",
+  "p3": [
+   "In my view, traditional festivals provide younger generations with a vital sense of belonging and cultural identity. Amid modern globalization, youth often search for roots, and festive rituals allow them to connect with ancestral history. For example, wearing traditional attire like the ao dai during New Year festivities fosters genuine communal pride. Thus, these events remain profoundly relevant despite technological shifts.",
+   "From my perspective, heavy commercialization tends to dilute the spiritual essence of cultural holidays. When retailers prioritize profit through aggressive marketing of gifts and luxury items, the core values of gratitude and family togetherness are frequently overshadowed. For instance, Mid-Autumn celebrations now emphasize extravagant packaging rather than moon viewing. Consequently, holidays risk turning into consumer-driven spectacles rather than heartfelt cultural traditions.",
+   "I firmly believe authorities play an indispensable role in safeguarding intangible heritage by funding cultural conservation and organizing authentic community events. Financial backing enables master artisans to train younger apprentices in ancestral arts. By contrast, without state support, folk singing or traditional craft demonstrations might vanish entirely due to lack of commercial profitability. Therefore, robust government patronage ensures that living cultural customs survive for posterity.",
+   "I completely agree that educational institutions ought to integrate traditional festivities into their curricula. Experiencing folklore through interactive school pageants helps students grasp historical values far better than passive textbook memorization. Whereas rote learning makes history abstract, making traditional food or participating in folk dances creates memorable cultural engagement. In short, school-based celebrations are crucial for cultivating cultural literacy and national pride in younger learners.",
+   "While Western events like Halloween or Christmas enjoy immense popularity among city youth, I do not believe they completely eclipse domestic heritage. International festivities are primarily perceived as fun entertainment, whereas native festivals retain profound familial and spiritual resonance. For example, youngsters might attend costume parties in October, but they always return home for Lunar New Year. Ultimately, global trends coexist with indigenous traditions rather than entirely replacing them."
+  ]
+ }
+}

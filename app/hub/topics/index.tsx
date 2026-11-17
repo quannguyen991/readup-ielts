@@ -47,7 +47,6 @@ export default function TopicsIndex() {
         eyebrow="IELTS · SPEAKING"
         title="Mỗi ngày một chủ đề,"
         accent="đủ ba phần như bài thi"
-        desc="Part 1 hỏi ngắn, Part 2 nói một cue card khoảng hai phút, Part 3 bàn sâu hơn. Mỗi chủ đề có gợi ý ý và phản hồi sau khi nói."
         stats={[
           { value: `${doneCount}/${SPEAKING_TOPICS.length}`, label: 'Chủ đề đã làm' },
           { value: String(totalQ), label: 'Tổng số câu hỏi' },

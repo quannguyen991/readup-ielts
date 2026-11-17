@@ -100,7 +100,6 @@ export default function ShadowPage() {
         eyebrow="IELTS · SHADOWING"
         title="Nói đuổi theo bản ngữ,"
         accent="trễ nửa nhịp thôi"
-        desc="Nghe một câu rồi nói gần như cùng lúc. Cách này luyện nối âm, nhịp điệu và tốc độ nhanh hơn nhiều so với đọc lại."
         stats={[
           { value: '3', label: 'Bước: nghe · đuổi · chấm' },
           { value: '130–160', label: 'Từ / phút mục tiêu' },

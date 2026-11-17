@@ -1,0 +1,117 @@
+{
+ "id": "celebrities",
+ "title": "Celebrities",
+ "titleVi": "Người nổi tiếng",
+ "tipVi": "Hãy tránh việc chỉ liệt kê tiểu sử ngày tháng năm sinh của người nổi tiếng mà hãy tập trung phân tích lý do bạn ngưỡng mộ và sức ảnh hưởng xã hội của họ.",
+ "part1": [
+  "Do you follow any famous people on social media?",
+  "Who was your favorite celebrity when you were a child?",
+  "Would you like to be famous in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe a celebrity you admire who uses their fame to help others",
+  "bullets": [
+   "who this person is",
+   "what achievements they are famous for",
+   "how they use their influence to make a positive impact",
+   "and explain why you admire this particular celebrity."
+  ]
+ },
+ "part3": [
+  "Do you think celebrities have a moral responsibility to be positive role models for young people?",
+  "How has social media changed the relationship between public figures and their fans?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "in the public eye",
+    "vi": "ở trung tâm sự chú ý của công chúng",
+    "ex": "Living in the public eye can put immense psychological pressure on young performers."
+   },
+   {
+    "en": "household name",
+    "vi": "cái tên quen thuộc với mọi nhà",
+    "ex": "Thanks to his viral cooking videos, the chef has quickly become a household name."
+   },
+   {
+    "en": "claim to fame",
+    "vi": "lý do nổi tiếng, thành tựu lớn nhất",
+    "ex": "Her primary claim to fame is her breakthrough performance in an award-winning historical drama."
+   },
+   {
+    "en": "role model",
+    "vi": "hình mẫu lý tưởng để noi theo",
+    "ex": "Professional athletes often serve as role models, inspiring teenagers to lead healthy lifestyles."
+   },
+   {
+    "en": "media circus",
+    "vi": "sự săn đón quá mức và ồn ào của truyền thông",
+    "ex": "The high-profile court case quickly turned into an uncontrollable media circus."
+   },
+   {
+    "en": "pave the way for",
+    "vi": "mở đường, tạo tiền đề cho",
+    "ex": "Her philanthropic work has paved the way for more youth empowerment initiatives nationwide."
+   },
+   {
+    "en": "fall from grace",
+    "vi": "sự sa sút danh tiếng, đánh mất vị thế",
+    "ex": "The pop star suffered a swift fall from grace after the financial scandal was exposed."
+   },
+   {
+    "en": "use one's platform",
+    "vi": "tận dụng tiếng nói và sức ảnh hưởng cá nhân",
+    "ex": "Many famous artists use their platform to advocate for urgent climate action."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu diễn viên Keanu Reeves và nêu rõ vị thế ngôi sao quốc tế của ông.",
+   "Ý 1: Nêu bật các tác phẩm điện ảnh kinh điển làm nên tên tuổi như The Matrix và John Wick.",
+   "Ý 2: Miêu tả việc ông âm thầm lập quỹ hỗ trợ bệnh nhi ung thư và luôn đối xử tử tế với đoàn làm phim.",
+   "Kết: Bày tỏ sự khâm phục đối với lối sống khiêm nhường, không màng hào nhoáng và tấm lòng nhân ái của ông."
+  ],
+  "sample": "I would like to talk about Keanu Reeves, a world-renowned Canadian actor whom I truly look up to. He is best known for his stellar roles in blockbuster franchises like The Matrix and John Wick, establishing himself as an undeniable household name across the globe.\n\nDespite his immense fame and fortune, Keanu leads a remarkably modest lifestyle. What impresses me most is how he consistently uses his platform for the greater good. Having experienced severe personal tragedy, he quietly established a private charitable foundation that funds cancer research and children's hospitals, deliberately keeping his name off the organization to avoid media attention. Furthermore, there are countless documented stories of him treating film crews with genuine kindness and taking pay cuts so that crew members could receive fair compensation.\n\nI admire him immensely because he redefines what it means to be a celebrity. In an industry often dominated by vanity and sensational media circuses, he remains remarkably grounded and generous. His humility and empathy serve as a refreshing reminder that true influence comes from how you treat others rather than the glamour of fame.",
+  "p1": [
+   {
+    "q": "Do you follow any famous people on social media?",
+    "a": "Yes, I follow a few tech innovators and professional athletes on Instagram. For instance, I follow Cristiano Ronaldo because his daily workout routines and relentless discipline keep me motivated to stay fit."
+   },
+   {
+    "q": "Who was your favorite celebrity when you were a child?",
+    "a": "When I was younger, I was a massive fan of Jackie Chan. I loved his action-comedy films like Rush Hour because his stunt work was thrilling yet genuinely hilarious to watch."
+   },
+   {
+    "q": "Would you like to be famous in the future?",
+    "a": "Not really, because I deeply value my personal privacy. Being constantly scrutinized in the public eye seems overwhelming, and I would much rather achieve quiet professional success without unwanted media attention."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think celebrities have a moral responsibility to be positive role models for young people?",
+    "a": "I believe they do, to a certain extent. Because celebrities possess massive cultural influence, impressionable teenagers often emulate their behavior, fashion, and values. For instance, when a pop star promotes mental health awareness, it can destigmatize seeking therapy for thousands. However, we should not expect them to be flawless saints, as they are ultimately ordinary human beings under intense pressure."
+   },
+   {
+    "q": "How has social media changed the relationship between public figures and their fans?",
+    "a": "Social media has fundamentally bridged the gap between stars and their audience. In the past, famous people were distant and mysterious, accessible only through television or magazines. Nowadays, platforms like TikTok and Instagram allow celebrities to share unedited moments of their daily lives, creating a sense of intimacy. However, this hyper-accessibility can also fuel unhealthy parasocial relationships and toxic online harassment."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'celebrity' lặp lại liên tục thay vì dùng các từ đồng nghĩa tự nhiên như 'public figures', 'icons', 'well-known personalities' hoặc 'stars'.",
+   "Dịch chay cụm từ tiếng Việt sang tiếng Anh thiếu tự nhiên, ví dụ nói 'make scandal' thay vì các cách diễn đạt chuẩn như 'be embroiled in a scandal' hoặc 'cause public controversy'.",
+   "Dành quá nhiều thời gian liệt kê tiểu sử chi tiết (năm sinh, quê quán, danh sách tác phẩm) mà quên phân tích quan điểm cá nhân và tác động xã hội theo yêu cầu của đề bài."
+  ],
+  "p1More": [
+   "What kinds of celebrities are most popular in your country?",
+   "Have you ever met a famous person in real life?",
+   "Do you think celebrities deserve the huge salaries they receive?",
+   "Did you ever collect photos or posters of famous people when you were younger?",
+   "Would you support a brand just because a celebrity endorsed it?"
+  ],
+  "p3More": [
+   "Why do you think celebrity gossip and sensational news generate so much public interest?",
+   "To what extent should the personal lives of famous people be protected from the paparazzi?",
+   "Do you think internet influencers are replacing traditional celebrities in terms of cultural influence?",
+   "Should governments use popular celebrities to promote public health or environmental campaigns?"
+  ]
+ }
+}

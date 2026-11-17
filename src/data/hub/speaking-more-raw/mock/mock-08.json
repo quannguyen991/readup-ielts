@@ -1,0 +1,62 @@
+{
+ "id": "mock-08",
+ "title": "IELTS Speaking Mock Test 8",
+ "titleVi": "Đề thi thử số 8",
+ "focusVi": "Rèn luyện kỹ năng phân tích ưu nhược điểm và giải thích quá trình ra quyết định quan trọng.",
+ "part1": [
+  {
+   "topic": "Hobbies",
+   "qs": [
+    "What kinds of hobbies are popular among young people in your country?",
+    "Did you have any different hobbies when you were a child?",
+    "Do you think it is beneficial to turn a hobby into a full-time career?",
+    "How much free time do you usually spend on your favourite pastimes each week?"
+   ]
+  },
+  {
+   "topic": "Public Holidays",
+   "qs": [
+    "What is the most significant public holiday celebrated in your country?",
+    "Do you prefer spending holidays travelling or staying at home with family?",
+    "Do you think there should be more public holidays throughout the year?",
+    "How have holiday celebrations changed compared to when your parents were young?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an important decision you made that changed your life.",
+  "bullets": [
+   "what the decision was",
+   "when and why you had to make it",
+   "what alternatives you considered",
+   "and explain why this decision was so significant to you"
+  ]
+ },
+ "part3": [
+  "What kinds of major decisions do young adults typically have to make on their own?",
+  "Do you think people should rely on logic or intuition when making crucial life choices?",
+  "Why do some people find it difficult to make decisions even about small everyday matters?",
+  "How has access to online information influenced the way individuals make decisions today?",
+  "To what extent should parents influence the career choices of their grown-up children?"
+ ],
+ "answers": {
+  "p1": [
+   "Video gaming and outdoor sports like badminton are extremely popular among youth in Vietnam. They provide stress relief after demanding study sessions, and many students regularly gather in parks or online lobbies to socialise.",
+   "Yes, I used to collect stamps and read comic books as a kid. Now, I prefer active digital pursuits like photography because technology has made visual storytelling much more accessible and engaging.",
+   "It can be rewarding, but it often brings unexpected pressure. Once your passion becomes a source of income, strict deadlines and client demands might actually destroy the pure enjoyment you initially had.",
+   "I usually dedicate about five to six hours a week to playing acoustic guitar. I try to practice for thirty minutes every evening after work, which really helps me unwind and clear my mind.",
+   "Without doubt, the Lunar New Year, known locally as Tet, is our most crucial holiday. It brings separated families together for traditional meals, cleaning ancestors' graves, and exchanging good luck wishes.",
+   "I definitely prefer staying home with my immediate family. Public destinations are typically overcrowded and overpriced during holidays, so cooking homemade feasts and catching up together is far more relaxing.",
+   "Yes, an extra long weekend or two would be wonderful. Modern employees endure intense workplace pressure, and additional breaks would prevent burnout, giving workers essential time to recharge mentally and physically.",
+   "Celebrations used to be far more community-oriented, with neighbours preparing feasts collectively. Nowadays, people often treat holidays as vacation time, booking resort trips abroad rather than observing traditional home rituals."
+  ],
+  "sample": "I'd like to share an important decision I made about three years ago, which was switching my university major from accounting to graphic design. At the time, I had just finished my second year of business studies. Although my grades were decent, I felt completely drained and uninspired by financial ledgers. I had always possessed a creative flair, constantly doodling and designing posters for student clubs in my spare time. The dilemma was excruciating because accounting offered clear job security, and my parents strongly favoured that conventional path. I briefly considered finishing my degree first and pursuing art as a hobby, or perhaps doing a double major. However, I knew that splitting my energy would lead to mediocrity in both fields. After several heart-to-heart talks with my mentors, I took a leap of faith and transferred to design school. It proved to be a pivotal turning point in my life. Not only did I rediscover my genuine enthusiasm for learning, but it also opened doors to a fulfilling career in digital branding. Making that bold choice taught me that trusting one's instincts often outweighs simply playing it safe.",
+  "p3": [
+   "Young adults usually encounter critical choices regarding their tertiary education, career direction, and financial independence. For instance, choosing whether to move out of the family home or rent an apartment requires weighing budget against autonomy. These choices are pivotal because they set the trajectory for their adulthood, forcing them to transition from parental reliance to personal accountability.",
+   "I believe a balanced synthesis of both is ideal. Pure logic provides rational risk assessment, such as evaluating financial returns when purchasing property, whereas intuition reflects our core values and emotional comfort. Relying solely on cold data might lead to technically sound but emotionally unsatisfying outcomes, so instinct should ultimately validate what logic proposes.",
+   "This indecisiveness often stems from analysis paralysis or fear of regret. In our modern consumer society, people are inundated with endless options, whether selecting a restaurant or buying a gadget. While having choices sounds positive, overthinking minor details drains mental energy, causing individuals to second-guess themselves over inconsequential outcomes.",
+   "The internet has democratised information, allowing consumers to compare reviews, prices, and professional advice before deciding. For example, people rarely book vacations or medical treatments without reading testimonials first. However, this abundance can also spread misinformation and cause cognitive overload, making the decision process far more complicated than in pre-digital times.",
+   "Parents should act as supportive advisers rather than authoritative decision-makers. While parental wisdom and life experience offer valuable perspectives on market stability, forcing a career upon a child often breeds resentment and poor performance. Ultimately, grown-up children must bear the consequences of their vocations, so the final determination must remain in their hands."
+  ]
+ }
+}

@@ -55,7 +55,6 @@ export default function TalkHub() {
         eyebrow="IELTS · SPEAKING"
         title="Nói chuyện thật,"
         accent="không bài học, chỉ nói"
-        desc="Chọn một tình huống quen thuộc rồi nói như ngoài đời. Đối phương AI trả lời ngay, bạn nhận gợi ý cách nói tự nhiên hơn sau mỗi lượt."
         stats={[
           { value: String(talks.length), label: 'Cuộc trò chuyện' },
           { value: String(spoken), label: 'Đã nói' },

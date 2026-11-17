@@ -108,7 +108,6 @@ export default function PitchPage() {
         eyebrow="IELTS · INTONATION"
         title="Giọng lên xuống"
         accent="đúng chỗ, nghe tự nhiên"
-        desc="Nghe câu mẫu, nói lại, rồi so đường cao độ của bạn với giọng bản ngữ để sửa trọng âm và ngữ điệu."
         stats={[
           { value: '3', label: 'Bước: nghe · nói · so' },
           { value: 'Pitch', label: 'Đường cao độ' },

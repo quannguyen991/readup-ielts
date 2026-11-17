@@ -1,0 +1,117 @@
+{
+ "id": "social-media",
+ "title": "Social Media",
+ "titleVi": "Mạng xã hội",
+ "tipVi": "Hãy tránh chỉ liệt kê tên ứng dụng như Facebook hay TikTok; thay vào đó, hãy tập trung vào thói quen sử dụng, cảm xúc và tác động của nội dung số lên tâm lý cá nhân.",
+ "part1": [
+  "How often do you use social media platforms?",
+  "Which social media app do you spend the most time on?",
+  "Do you think people in your country spend too much time on social networking sites?"
+ ],
+ "part2": {
+  "prompt": "Describe an interesting social media account or channel you follow",
+  "bullets": [
+   "what platform it is on and who runs it",
+   "what kind of content they share",
+   "how often you check or interact with this account",
+   "and explain why you find this account interesting or worthwhile to follow"
+  ]
+ },
+ "part3": [
+  "How has social media transformed the way young people communicate with each other?",
+  "Do you think social media platforms should be held accountable for misleading information?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "doomscroll",
+    "vi": "lướt mạng liên tục xem tin tức tiêu cực",
+    "ex": "I often find myself doomscrolling late at night instead of getting enough sleep."
+   },
+   {
+    "en": "curate one's feed",
+    "vi": "chủ động chọn lọc nội dung trên bảng tin",
+    "ex": "She carefully curates her feed to avoid toxic discussions and stay inspired."
+   },
+   {
+    "en": "digital detox",
+    "vi": "thời gian ngắt kết nối thiết bị số / mạng xã hội",
+    "ex": "Taking a weekend digital detox helped me regain focus and reduce anxiety."
+   },
+   {
+    "en": "echo chamber",
+    "vi": "buồng vang thông tin (môi trường chỉ nghe ý kiến giống mình)",
+    "ex": "Algorithms often trap users in an echo chamber where opposing viewpoints are filtered out."
+   },
+   {
+    "en": "targeted advertising",
+    "vi": "quảng cáo nhắm mục tiêu",
+    "ex": "Many users feel uncomfortable with targeted advertising based on their browsing history."
+   },
+   {
+    "en": "fear of missing out (FOMO)",
+    "vi": "hội chứng sợ bỏ lỡ",
+    "ex": "Seeing peers traveling constantly can trigger FOMO and cause unnecessary stress."
+   },
+   {
+    "en": "user-generated content",
+    "vi": "nội dung do người dùng tự sáng tạo",
+    "ex": "Platforms like TikTok thrive largely on creative user-generated content."
+   },
+   {
+    "en": "spark meaningful discussions",
+    "vi": "khơi gợi những cuộc thảo luận ý nghĩa",
+    "ex": "His educational podcasts consistently spark meaningful discussions among university students."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu kênh YouTube khoa học hoạt hình tên Kurzgesagt do một nhóm thiết kế và nhà khoa học Đức sáng lập.",
+   "Ý 1 (Chi tiết & Nội dung): Mô tả phong cách đồ họa màu sắc, giải thích các chủ đề phức tạp từ vũ trụ học đến đạo đức học bằng cốt truyện dễ hiểu.",
+   "Ý 2 (Tần suất & Tương tác): Chia sẻ việc theo dõi thông báo mỗi hai tuần, thỉnh thoảng đọc và để lại bình luận trao đổi quan điểm.",
+   "Kết (Lý do cuốn hút): Nhấn mạnh sự khác biệt giữa kênh bổ ích này với những nội dung giải trí giật gân, mang lại kiến thức giá trị và sự tò mò lành mạnh."
+  ],
+  "sample": "I'd like to talk about an educational YouTube channel called Kurzgesagt, which is run by a talented team of German animators and educators. They produce beautifully illustrated, animated videos that break down complex scientific and philosophical topics into digestible bites. Their content spans everything from astrophysics and biotechnology to deep ethical questions about the future of humanity. Instead of dry lectures, they use vibrant minimalist graphics and clever storytelling, which makes heavy concepts remarkably engaging. I usually check their channel every couple of weeks whenever a notification pops up, and I rarely miss a single upload. I also occasionally join the comment section to read different perspectives from viewers around the globe. What makes this channel truly stand out is how it manages to make serious education feel entertaining. In an era where social media is flooded with shallow clickbait, Kurzgesagt provides genuine substance. Every video leaves me with a renewed sense of curiosity about the universe, and I honestly think it represents the very best of what online media can offer.",
+  "p1": [
+   {
+    "q": "How often do you use social media platforms?",
+    "a": "I log onto social apps practically every day, mostly in the evenings to unwind. It's my go-to way of catching up with friends' updates and keeping abreast of current news through Instagram and Threads."
+   },
+   {
+    "q": "Which social media app do you spend the most time on?",
+    "a": "Undoubtedly Instagram. I'm a visual person, so I love browsing photography and short design reels. Aside from messaging close peers, it offers endless inspiration for my personal creative projects."
+   },
+   {
+    "q": "Do you think people in your country spend too much time on social networking sites?",
+    "a": "Yes, definitely. You often see people of all ages glued to their smartphones in public spaces and cafes, doomscrolling through short videos on TikTok for hours without engaging with the real world around them."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has social media transformed the way young people communicate with each other?",
+    "a": "In my view, social media has made youth interaction vastly more immediate yet somewhat superficial. Young people can effortlessly share memes or text friends across time zones in seconds. However, this convenience often comes at the expense of face-to-face intimacy, as emotional nuances get lost behind digital screens. Ultimately, while our communication networks have expanded dramatically, the depth of interpersonal bonds has noticeably diminished."
+   },
+   {
+    "q": "Do you think social media platforms should be held accountable for misleading information?",
+    "a": "Absolutely, tech giants should bear greater responsibility because their recommendation algorithms directly amplify sensationalist fake news for profit. While complete censorship is impractical and might infringe on free speech, companies must actively fact-check viral claims and penalize accounts spreading harmful conspiracies. Leaving content entirely unchecked poses serious risks to public health and democratic processes, so stringent moderation is essential."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai giới từ: Rất nhiều thí sinh quen dùng 'in social media' thay vì giới từ chính xác là 'on social media' hoặc 'on Facebook/Instagram'.",
+   "Lẫn lộn giữa 'social media' và 'social network': 'social network' thường nói về mạng lưới quan hệ xã hội, còn 'social media' nhấn mạnh nền tảng truyền thông và chia sẻ nội dung số.",
+   "Lạm dụng từ vựng quá đơn giản như 'I surf Facebook to watch funny video' thay vì sử dụng các collocation tự nhiên như 'browse my newsfeed', 'consume short-form videos', hay 'curate content'."
+  ],
+  "p1More": [
+   "At what age do you think children should be allowed to use social media?",
+   "Have you ever considered doing a digital detox?",
+   "Do you prefer posting photos or reading text updates on social platforms?",
+   "Did you use social media more often when you were younger than you do now?",
+   "Do you think social media is a good place to find reliable news?"
+  ],
+  "p3More": [
+   "To what extent does social media influence consumer behavior and purchasing decisions?",
+   "Why do some people present an idealized version of their lives on virtual platforms?",
+   "What psychological impacts might arise from constant exposure to curated online personas?",
+   "Should governments establish international regulations to supervise major social media conglomerates?"
+  ]
+ }
+}

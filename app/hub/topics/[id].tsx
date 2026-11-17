@@ -10,7 +10,8 @@ import { GLASS_CARD, HUB } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { SpeakingWave } from '@/components/sentence/SpeakingWave';
 import { Icon } from '@/components/ui/Icon';
-import { topicById, type SpeakingTopic } from '@/data/hub/speaking-topics';
+import { ModelAnswer, PrepTimer, StudyPanel } from '@/components/hub/SpeakingStudy';
+import { topicById, topicExtra, type SpeakingExtra, type SpeakingTopic } from '@/data/hub/speaking-topics';
 import { speak } from '@/services/hub/speak';
 import { buildVoiceReport } from '@/services/hub/voice-report';
 import { useHubStore } from '@/store/useHubStore';
@@ -26,12 +27,13 @@ type Part = 'part1' | 'part2' | 'part3';
 type Step = { part: Part; index: number; total: number; text: string; bullets?: string[] };
 
 /** Một bài đủ sáu bước theo thứ tự thi: 3 câu Part 1, một cue card Part 2, 2 câu Part 3. */
-function stepsOf(topic: SpeakingTopic): Step[] {
-  return [
+function stepsOf(topic: SpeakingTopic, only?: 1 | 2 | 3): Step[] {
+  const all: Step[] = [
     ...topic.part1.map((text, index) => ({ part: 'part1' as const, index, total: topic.part1.length, text })),
     { part: 'part2' as const, index: 0, total: 1, text: topic.part2.prompt, bullets: topic.part2.bullets },
     ...topic.part3.map((text, index) => ({ part: 'part3' as const, index, total: topic.part3.length, text })),
   ];
+  return only ? all.filter((st) => st.part === `part${only}`) : all;
 }
 
 /** Kết quả một lượt nói: số liệu lấy từ `buildVoiceReport`, cùng bản ghi lời nói để đọc lại. */
@@ -43,8 +45,9 @@ type Report = { transcript: string; wpm: number | null; fillers: number; words: 
  * và bản ghi để tự đọc lại. Linh vật đổi theo tiến độ để cả trang luôn có điểm nhấn.
  */
 export default function TopicPractice() {
-  const { id = '' } = useLocalSearchParams<{ id: string }>();
+  const { id = '', part } = useLocalSearchParams<{ id: string; part?: string }>();
   const topic = topicById(id);
+  const only = part === '1' ? 1 : part === '2' ? 2 : part === '3' ? 3 : undefined;
   if (!topic) {
     return (
       <HubScreen title="Không tìm thấy chủ đề" back>
@@ -52,13 +55,14 @@ export default function TopicPractice() {
       </HubScreen>
     );
   }
-  return <Practice topic={topic} />;
+  return <Practice topic={topic} only={only} />;
 }
 
-function Practice({ topic }: { topic: SpeakingTopic }) {
+export function Practice({ topic, only, extra: extraProp, header }: { topic: SpeakingTopic; only?: 1 | 2 | 3; extra?: SpeakingExtra; header?: React.ReactNode }) {
   const listen = useListen();
   const { stop } = listen;
-  const steps = useMemo(() => stepsOf(topic), [topic]);
+  const steps = useMemo(() => stepsOf(topic, only), [topic, only]);
+  const extra = extraProp ?? topicExtra(topic.id);
   const completeTopic = useHubStore((s) => s.completeTopic);
   const doneAt = useHubStore((s) => s.topicsDone[topic.id]);
 
@@ -174,6 +178,10 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
 
       <StepRail steps={steps} at={at} reports={reports} onPick={goTo} />
 
+      {header}
+
+      {extra && !finished ? <StudyPanel extra={extra} /> : null}
+
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Nói cùng Leo, giám khảo AI"
@@ -209,6 +217,8 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
         <>
           <QuestionCard step={step} />
 
+          {step.part === 'part2' ? <PrepTimer key={`prep-${at}`} /> : null}
+
           <RecordPanel
             listening={listen.listening}
             supported={listen.supported}
@@ -220,6 +230,13 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
           />
 
           {current ? <ReportCard report={current} /> : null}
+
+          {extra && current ? (
+            <ModelAnswer
+              text={step.part === 'part2' ? extra.sample : (step.part === 'part1' ? extra.p1 : extra.p3)[step.index]?.a ?? ''}
+              label={step.part === 'part2' ? 'Bài mẫu Part 2 · Band 8' : 'Đáp án mẫu'}
+            />
+          ) : null}
 
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <Pressable

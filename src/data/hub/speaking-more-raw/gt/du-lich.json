@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-du-lich-1",
+  "level": "EASY",
+  "title": "Ordering Dinner at a Restaurant",
+  "titleVi": "Gọi món tại nhà hàng",
+  "situationVi": "Bạn đang đi du lịch nước ngoài và bước vào một nhà hàng địa phương để ăn tối. Bạn đang nói chuyện với nhân viên phục vụ bàn.",
+  "task": "You are dining at a local restaurant abroad. Greet the server, ask for their signature recommendations, and place your order clearly with drinks and a dietary preference.",
+  "mustVi": [
+   "Hỏi xin thực đơn và nhờ nhân viên gợi ý món đặc trưng của nhà hàng.",
+   "Nêu rõ sở thích hoặc yêu cầu ăn uống riêng (ví dụ: không ăn cay hoặc dị ứng đậu phộng).",
+   "Gọi món chính, đồ uống và hỏi ước tính thời gian chờ món."
+  ],
+  "phrases": [
+   {
+    "en": "Could you recommend...?",
+    "vi": "Bạn có thể gợi ý... không?",
+    "ex": "Could you recommend your best-selling dish?"
+   },
+   {
+    "en": "I'm allergic to...",
+    "vi": "Tôi bị dị ứng với...",
+    "ex": "I'm allergic to peanuts, so please make sure the dish is nut-free."
+   },
+   {
+    "en": "I'd like to order...",
+    "vi": "Tôi muốn gọi món...",
+    "ex": "I'd like to order the grilled salmon, please."
+   },
+   {
+    "en": "Could I have... instead?",
+    "vi": "Tôi có thể đổi sang... được không?",
+    "ex": "Could I have steamed vegetables instead of fries?"
+   },
+   {
+    "en": "Still or sparkling water?",
+    "vi": "Nước lọc thường hay nước có ga?",
+    "ex": "Just still water with a slice of lemon, please."
+   },
+   {
+    "en": "How long will it take?",
+    "vi": "Món này mất khoảng bao lâu?",
+    "ex": "How long will the main course take to arrive?"
+   }
+  ],
+  "sample": "Good evening! Could I see the menu, please? This is my first time here, so could you recommend your signature dish? I would love to try something local, but I am slightly allergic to peanuts, so please make sure my food is nut-free. For my main course, I would like to order the grilled chicken with roasted vegetables. To drink, just a bottle of still water with some ice, please. By the way, how long will the food take? I have tickets to a show in an hour. Thank you so much!",
+  "tipVi": "Hãy luôn bắt đầu bằng lời chào thân thiện và sử dụng cấu trúc lịch sự 'Could I have...' hoặc 'I would like...' thay vì dùng 'I want'."
+ },
+ {
+  "id": "gt-du-lich-2",
+  "level": "EASY",
+  "title": "Checking In at a Hotel",
+  "titleVi": "Làm thủ tục nhận phòng khách sạn",
+  "situationVi": "Bạn vừa đến khách sạn ở nước ngoài sau một chuyến bay dài. Bạn đang nói chuyện với nhân viên lễ tân tại quầy check-in.",
+  "task": "You have just arrived at your hotel. Provide your booking details, request specific room preferences, and ask about hotel amenities such as breakfast and Wi-Fi.",
+  "mustVi": [
+   "Nêu tên người đặt phòng và đưa hộ chiếu hoặc mã xác nhận đặt phòng.",
+   "Đưa ra yêu cầu cụ thể về phòng (ví dụ: phòng yên tĩnh, tầng cao, phòng không hút thuốc).",
+   "Hỏi thông tin về thời gian, địa điểm ăn sáng và mật khẩu Wi-Fi của khách sạn."
+  ],
+  "phrases": [
+   {
+    "en": "I have a reservation under...",
+    "vi": "Tôi có đặt phòng trước dưới tên...",
+    "ex": "I have a reservation for three nights under the name Minh Tran."
+   },
+   {
+    "en": "Here is my booking confirmation.",
+    "vi": "Đây là mã xác nhận đặt phòng của tôi.",
+    "ex": "Here is my passport and booking confirmation email."
+   },
+   {
+    "en": "Is it possible to get...?",
+    "vi": "Liệu tôi có thể lấy phòng... được không?",
+    "ex": "Is it possible to get a room on a higher floor?"
+   },
+   {
+    "en": "A quiet, non-smoking room",
+    "vi": "Phòng yên tĩnh, không hút thuốc",
+    "ex": "We requested a quiet, non-smoking room facing the garden."
+   },
+   {
+    "en": "What time is breakfast served?",
+    "vi": "Bữa sáng phục vụ lúc mấy giờ?",
+    "ex": "What time is breakfast served and where is the restaurant?"
+   },
+   {
+    "en": "Could you tell me the Wi-Fi password?",
+    "vi": "Bạn có thể cho tôi biết mật khẩu Wi-Fi không?",
+    "ex": "Could you tell me the Wi-Fi network and password for hotel guests?"
+   }
+  ],
+  "sample": "Hello, good afternoon! I would like to check in, please. I have a reservation for three nights under the name Minh Tran. Here are my passport and my booking confirmation code. If possible, could I get a quiet, non-smoking room on a higher floor with a nice city view? Also, could you let me know what time breakfast is served and where the dining hall is located? Lastly, what is the Wi-Fi network and password for hotel guests? Thank you very much for your help!",
+  "tipVi": "Chuẩn bị sẵn giấy tờ tùy thân và dùng mẫu câu 'If possible, could I...' để đưa ra nguyện vọng chọn phòng một cách nhã nhặn."
+ },
+ {
+  "id": "gt-du-lich-3",
+  "level": "MEDIUM",
+  "title": "Reporting Lost Luggage at Airport",
+  "titleVi": "Báo hành lý thất lạc tại sân bay",
+  "situationVi": "Bạn vừa đáp chuyến bay quốc tế nhưng đứng đợi ở băng chuyền rất lâu mà không thấy vali của mình. Bạn đến quầy Lost and Found để trình báo với nhân viên hãng bay.",
+  "task": "Explain your situation to the baggage service agent. Describe your missing suitcase clearly, provide your flight details, and ask about delivery procedures and emergency support.",
+  "mustVi": [
+   "Trình bày việc hành lý không xuất hiện trên băng chuyền cùng thông tin chuyến bay và thẻ gửi hành lý.",
+   "Miêu tả chi tiết đặc điểm của vali (kích thước, màu sắc, chất liệu, dấu hiệu nhận biết riêng).",
+   "Cung cấp địa chỉ khách sạn để nhận lại hành lý và hỏi về thời gian giao cũng như gói hỗ trợ đồ dùng khẩn cấp."
+  ],
+  "phrases": [
+   {
+    "en": "My baggage hasn't arrived on the carousel.",
+    "vi": "Hành lý của tôi không thấy trên băng chuyền.",
+    "ex": "I waited over an hour, but my baggage hasn't arrived on the carousel."
+   },
+   {
+    "en": "Here is my luggage claim tag.",
+    "vi": "Đây là thẻ gửi hành lý của tôi.",
+    "ex": "Here is my boarding pass along with my luggage claim tag."
+   },
+   {
+    "en": "Hard-shell suitcase with spinner wheels",
+    "vi": "Vali vỏ cứng có bánh xe xoay",
+    "ex": "It is a navy blue hard-shell suitcase with four spinner wheels."
+   },
+   {
+    "en": "Deliver it directly to my hotel",
+    "vi": "Giao thẳng hành lý tới khách sạn của tôi",
+    "ex": "Can you deliver it directly to my hotel once it is located?"
+   },
+   {
+    "en": "Emergency toiletry kit or allowance",
+    "vi": "Bộ đồ dùng cá nhân khẩn cấp hoặc trợ cấp",
+    "ex": "Does the airline provide an emergency toiletry kit for delayed bags?"
+   },
+   {
+    "en": "File a Property Irregularity Report",
+    "vi": "Lập biên bản bất thường về hành lý",
+    "ex": "I would like to file a Property Irregularity Report right now."
+   }
+  ],
+  "sample": "Excuse me, I need some help. I just arrived on flight VN652 from Hanoi, but my baggage hasn't appeared on carousel four. Here are my boarding pass and luggage claim tags. It is a medium-sized navy blue hard-shell suitcase with four spinner wheels and a bright yellow ribbon tied to the handle. I am staying at the Grand Hotel downtown, room 402. Can you deliver it directly there as soon as it arrives? Also, could you explain the tracking process, and does the airline provide emergency compensation or essential toiletries for delayed luggage?",
+  "tipVi": "Hãy giữ bình tĩnh, dùng các tính từ miêu tả vật thể thật cụ thể và nhớ yêu cầu nhân viên cung cấp mã số biên bản theo dõi (file reference number)."
+ },
+ {
+  "id": "gt-du-lich-4",
+  "level": "MEDIUM",
+  "title": "Exchanging Faulty Merchandise While Shopping",
+  "titleVi": "Đổi hàng bị lỗi khi mua sắm ở nước ngoài",
+  "situationVi": "Hôm qua bạn mua một chiếc áo khoác ở trung tâm thương mại, nhưng về khách sạn thử lại thì thấy khóa kéo bị hỏng và cỡ áo hơi chật. Bạn quay lại quầy dịch vụ khách hàng để nói chuyện với nhân viên.",
+  "task": "Explain the issue with your purchase to the store clerk. Present your receipt, ask to exchange the item for a bigger size in good condition, and inquire about their refund policy if a replacement is out of stock.",
+  "mustVi": [
+   "Chào hỏi, xuất trình hóa đơn và nêu thời điểm đã mua món đồ.",
+   "Chỉ rõ lỗi kỹ thuật của sản phẩm (khóa kéo hỏng) và vấn đề về kích cỡ (chật, muốn đổi size lớn hơn).",
+   "Yêu cầu đổi sang chiếc khác còn nguyên vẹn hoặc hỏi về chính sách hoàn tiền nếu cửa hàng hết hàng."
+  ],
+  "phrases": [
+   {
+    "en": "I bought this item here yesterday.",
+    "vi": "Tôi đã mua món đồ này ở đây ngày hôm qua.",
+    "ex": "I bought this winter jacket here yesterday afternoon."
+   },
+   {
+    "en": "The zipper is completely stuck.",
+    "vi": "Khóa kéo bị kẹt cứng hoàn toàn.",
+    "ex": "When I got back to the hotel, I found the zipper is completely stuck."
+   },
+   {
+    "en": "It runs a bit small on me.",
+    "vi": "Món này mặc hơi chật so với tôi.",
+    "ex": "Besides the zipper issue, the medium size runs a bit small on me."
+   },
+   {
+    "en": "The tags are still attached.",
+    "vi": "Tem mác vẫn còn nguyên vẹn.",
+    "ex": "The jacket is unworn and all original price tags are still attached."
+   },
+   {
+    "en": "Could I exchange it for a size L?",
+    "vi": "Tôi có thể đổi sang size L được không?",
+    "ex": "Could I exchange it for a size large in the same color?"
+   },
+   {
+    "en": "What is your refund policy?",
+    "vi": "Chính sách hoàn tiền của cửa hàng thế nào?",
+    "ex": "What is your refund policy if this style is completely out of stock?"
+   }
+  ],
+  "sample": "Hello! I bought this winter jacket here yesterday afternoon, and here is my original receipt. When I tried it on at my hotel, I realized the main zipper is stuck and won't zip up properly. Furthermore, the medium size runs a bit small on me. As you can see, it is completely unworn and all original tags are still attached. Could I please exchange this for a size large in the same olive color? If you don't have that size in stock, could you let me know your refund policy for defective items? Thank you!",
+  "tipVi": "Nhấn mạnh yếu tố sản phẩm chưa qua sử dụng và còn nguyên tem mác ('tags still attached') để nhân viên xử lý đổi trả nhanh gọn hơn."
+ },
+ {
+  "id": "gt-du-lich-5",
+  "level": "HARD",
+  "title": "Resolving Severe Hotel Room Issues",
+  "titleVi": "Giải quyết sự cố nghiêm trọng tại khách sạn",
+  "situationVi": "Bạn đang ở một khách sạn 4 sao đắt tiền nhưng phòng bị hỏng điều hòa giữa thời tiết nóng bức, phòng tắm rò rỉ nước và có tiếng ồn thi công bên cạnh. Bạn xuống quầy gặp trực tiếp Quản lý ca trực (Duty Manager) để giải quyết.",
+  "task": "Speak firmly yet diplomatically with the duty manager. Detail the unacceptable room conditions, explain how it disrupted your trip, and negotiate an immediate room upgrade along with fair compensation.",
+  "mustVi": [
+   "Liệt kê các sự cố nghiêm trọng trong phòng (điều hòa hỏng, nước rò rỉ sàn nhà tắm, tiếng ồn thi công khoan đục).",
+   "Bày tỏ sự thất vọng và nhấn mạnh trải nghiệm nghỉ dưỡng của bản thân đã bị ảnh hưởng nặng nề thế nào.",
+   "Đưa ra yêu cầu cụ thể: đổi ngay sang hạng phòng cao hơn yên tĩnh và giảm trừ chi phí hoặc bồi thường thỏa đáng."
+  ],
+  "phrases": [
+   {
+    "en": "I need to speak with the duty manager regarding...",
+    "vi": "Tôi cần nói chuyện với quản lý ca trực về việc...",
+    "ex": "I need to speak with the duty manager regarding unacceptable conditions in my room."
+   },
+   {
+    "en": "The air conditioning is completely out of order.",
+    "vi": "Hệ thống điều hòa bị hỏng hoàn toàn.",
+    "ex": "The air conditioning is completely out of order despite the heat outside."
+   },
+   {
+    "en": "This falls far below the standard expected of...",
+    "vi": "Điều này thấp hơn nhiều so với tiêu chuẩn kỳ vọng của...",
+    "ex": "This experience falls far below the standard expected of a four-star hotel."
+   },
+   {
+    "en": "It has severely disrupted our stay.",
+    "vi": "Nó đã làm gián đoạn nghiêm trọng kỳ nghỉ của chúng tôi.",
+    "ex": "The continuous drilling noise next door has severely disrupted our stay."
+   },
+   {
+    "en": "I must insist on an immediate room transfer.",
+    "vi": "Tôi buộc phải yêu cầu đổi phòng ngay lập tức.",
+    "ex": "I must insist on an immediate room transfer to an upgraded, quiet suite."
+   },
+   {
+    "en": "Provide reasonable compensation or a discount",
+    "vi": "Cung cấp bồi thường hợp lý hoặc giảm giá",
+    "ex": "We expect the hotel to provide reasonable compensation for this terrible inconvenience."
+   }
+  ],
+  "sample": "Good morning. I need to speak with you regarding serious issues in room 508. First, our air conditioner stopped working during last night's heatwave. To make matters worse, there is water leaking all over the bathroom floor, and loud renovation drilling began right next door at 7 AM. This experience falls far below the standards expected of a four-star hotel and has completely ruined our rest. I must insist on an immediate room transfer to an upgraded, quiet suite. Furthermore, considering the severe inconvenience caused, I expect a 50% discount on last night's rate and complimentary breakfast. Thank you.",
+  "tipVi": "Giữ thái độ điềm tĩnh, dùng giọng điệu kiên quyết nhưng chuyên nghiệp ('firm but polite'), và tập trung đề xuất giải pháp cụ thể thay vì chỉ bộc phát cảm xúc giận dữ."
+ }
+]

@@ -1,0 +1,117 @@
+{
+ "id": "sleep",
+ "title": "Sleep",
+ "titleVi": "Giấc ngủ",
+ "tipVi": "Hãy sử dụng các cụm từ học thuật hoặc tự nhiên về thói quen sinh hoạt (như circadian rhythm, sleep hygiene) thay vì chỉ lặp đi lặp lại 'sleep well' hay 'go to bed'.",
+ "part1": [
+  "How many hours of sleep do you usually get each night?",
+  "Do you find it easy or difficult to fall asleep?",
+  "Do you ever take naps during the middle of the day?"
+ ],
+ "part2": {
+  "prompt": "Describe an occasion when you had trouble sleeping.",
+  "bullets": [
+   "when and where this happened",
+   "what caused you to stay awake",
+   "what you did to try to sleep",
+   "and explain how you felt the next day."
+  ]
+ },
+ "part3": [
+  "How has modern technology altered people's sleeping habits in recent years?",
+  "Should employers encourage their staff to take short naps during the workday?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "toss and turn",
+    "vi": "trằn trọc, trăn trở không ngủ được",
+    "ex": "I spent the entire night tossing and turning because of the scorching summer heat."
+   },
+   {
+    "en": "drift off",
+    "vi": "chìm vào giấc ngủ từ từ",
+    "ex": "I usually listen to soft ambient sounds to help me drift off peacefully."
+   },
+   {
+    "en": "circadian rhythm",
+    "vi": "nhịp sinh học tự nhiên của cơ thể",
+    "ex": "Staring at smartphone screens before bed disrupts your natural circadian rhythm."
+   },
+   {
+    "en": "sleep deprivation",
+    "vi": "tình trạng thiếu ngủ trầm trọng",
+    "ex": "Chronic sleep deprivation can severely impair memory and cognitive performance."
+   },
+   {
+    "en": "hit the sack",
+    "vi": "đi ngủ (thành ngữ thân mật)",
+    "ex": "After an exhausting ten-hour shift, I was eager to hit the sack immediately."
+   },
+   {
+    "en": "sleep hygiene",
+    "vi": "vệ sinh giấc ngủ (các thói quen lành mạnh hỗ trợ giấc ngủ)",
+    "ex": "Practicing good sleep hygiene, such as keeping the room pitch-black, works wonders."
+   },
+   {
+    "en": "power nap",
+    "vi": "giấc ngủ trưa ngắn tái tạo năng lượng (15-20 phút)",
+    "ex": "A quick power nap right after lunch sharpens my concentration for the rest of the day."
+   },
+   {
+    "en": "sleep-deprived",
+    "vi": "thiếu ngủ, phờ phạc vì mất ngủ",
+    "ex": "Many high school students arrive at early classes looking utterly sleep-deprived."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn về đêm mất ngủ đáng nhớ nhất trước ngày bảo vệ khóa luận tốt nghiệp năm ngoái.",
+   "Ý 1: Mô tả bối cảnh thời gian và địa điểm tại phòng trọ oi bức giữa mùa hè nóng đỉnh điểm ở Hà Nội.",
+   "Ý 2: Nêu nguyên nhân gồm sự lo lắng tột độ xen lẫn tiếng ồn xe cộ, kèm nỗ lực nghe nhạc dịu nhẹ nhưng không thành.",
+   "Kết: Miêu tả cảm giác kiệt sức, choáng váng vào sáng hôm sau và bài học sâu sắc về việc kiềm chế căng thẳng."
+  ],
+  "sample": "I'd like to talk about a night when I could barely get any shut-eye, which happened about a year ago right before my university thesis defense. I was staying in my small rented room in Hanoi during a sweltering summer heatwave. What kept me awake was a toxic combination of physical discomfort and intense psychological anxiety. The room felt like an oven because my air conditioner had malfunctioned, and every time I tried to drift off, my mind raced with worst-case scenarios about stumbling over my presentation. To induce sleep, I tried drinking warm water, reading a dense textbook, and playing ambient rain sounds, but nothing seemed to quiet my racing thoughts. I spent hours tossing and turning, repeatedly checking the glowing alarm clock. By sunrise, I had managed perhaps an hour of restless dozing. The next morning, I felt completely drained and lightheaded, with a pounding headache and stinging eyes. I had to chug a double espresso just to stay upright. Fortunately, the defense went well, but that grueling experience taught me that catastrophic thinking before bedtime is entirely counterproductive.",
+  "p1": [
+   {
+    "q": "How many hours of sleep do you usually get each night?",
+    "a": "I typically get around seven hours of uninterrupted rest. On weekdays, I try to turn in by eleven so that I can wake up refreshed at six for my morning jog, though tight deadlines occasionally cut that short."
+   },
+   {
+    "q": "Do you find it easy or difficult to fall asleep?",
+    "a": "Generally, I fall asleep quite effortlessly because I maintain an active routine and put away gadgets early. However, if I consume strong coffee in the late afternoon, I definitely struggle to nod off."
+   },
+   {
+    "q": "Do you ever take naps during the middle of the day?",
+    "a": "Yes, I regularly take a twenty-minute power nap right after lunch. It recharges my mental batteries effectively, preventing the dreaded mid-afternoon slump and keeping my focus sharp until the workday finishes."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has modern technology altered people's sleeping habits in recent years?",
+    "a": "In my view, modern tech has severely compromised global sleep patterns. Digital screens emit blue light that suppresses melatonin, which delays our body's natural sleep signals. Furthermore, social media algorithms encourage mindless scrolling late into the night. While our ancestors woke and slept with the sun, contemporary society treats rest as optional, creating widespread sleep deficits and chronic exhaustion."
+   },
+   {
+    "q": "Should employers encourage their staff to take short naps during the workday?",
+    "a": "I firmly believe they should, because midday naps directly boost cognitive stamina and creative problem-solving. A brief twenty-minute rest restores concentration and substantially minimizes costly workplace errors. While conservative managers may equate napping with laziness, progressive tech corporations have proven that designated nap spaces actually yield higher daily productivity and job satisfaction, creating mutual benefits for both sides."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng nhầm 'I sleep late' khi muốn nói 'thức khuya'. Trong tiếng Anh, 'sleep late' mang nghĩa 'ngủ nướng/dậy muộn', còn muốn nói thức khuya phải dùng 'stay up late' hoặc 'go to bed late'.",
+   "Dịch từng từ tiếng Việt 'take a sleep' thay vì dùng các cụm tự nhiên như 'get some sleep', 'take a nap' (ngủ trưa), hoặc 'fall asleep' (chìm vào giấc ngủ).",
+   "Lặp lại quá nhiều lần tính từ 'tired' hoặc cụm 'sleep well' thay vì dùng các từ vựng Band 7+ miêu tả chính xác trạng thái như 'sleep-deprived', 'exhausted', hay 'uninterrupted sleep'."
+  ],
+  "p1More": [
+   "What is your typical bedtime routine before going to sleep?",
+   "Do you think you sleep more now compared to when you were a child?",
+   "Can you sleep easily in unfamiliar places like hotels or tents?",
+   "Do you prefer waking up early or sleeping in on weekends?",
+   "Have you ever used a smartwatch or mobile app to track your sleep quality?"
+  ],
+  "p3More": [
+   "Why do some people in modern society consider sleep deprivation as a badge of honor?",
+   "To what extent should national health authorities promote sleep hygiene alongside diet and exercise?",
+   "How might shifting to remote work permanently affect human circadian rhythms?",
+   "Do you think secondary schools should start later in the morning to accommodate teenagers' biological clocks?"
+  ]
+ }
+}

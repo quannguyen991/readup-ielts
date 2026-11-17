@@ -1,0 +1,62 @@
+{
+ "id": "mock-02",
+ "title": "IELTS Speaking Mock Test 2",
+ "titleVi": "Đề thi thử số 2",
+ "focusVi": "Rèn luyện kỹ năng so sánh quá khứ - hiện tại và phát triển lập luận đa chiều trong phần thảo luận.",
+ "part1": [
+  {
+   "topic": "Home and Accommodation",
+   "qs": [
+    "Do you live in a house or an apartment?",
+    "What is your favourite room in your home?",
+    "How long have you lived there?",
+    "Would you like to move to a different home in the future?"
+   ]
+  },
+  {
+   "topic": "Daily Routine",
+   "qs": [
+    "What is the busiest part of your day?",
+    "Do you usually follow the same routine every day?",
+    "Did you have a different daily routine when you were younger?",
+    "What would you like to change about your current routine?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a memorable place you visited that you would like to return to",
+  "bullets": [
+   "where this place is",
+   "when and with whom you went there",
+   "what you did while you were there",
+   "and explain why you would like to visit this place again"
+  ]
+ },
+ "part3": [
+  "Why do some people prefer revisiting familiar holiday destinations rather than exploring new ones?",
+  "How has international travel changed compared to several decades ago?",
+  "Do you think excessive tourism can destroy the unique charm of historic destinations?",
+  "In what ways can local governments balance economic gains from tourism with environmental conservation?",
+  "Will virtual reality travel ever completely replace actual physical journeys?"
+ ],
+ "answers": {
+  "p1": [
+   "Currently, I live in a modest apartment on the tenth floor of a high-rise. I love it because it offers quiet surroundings and a fantastic panoramic view of the bustling city skyline below.",
+   "My bedroom is definitely my favourite space because it serves as my private sanctuary. I have set up a cosy reading corner by the window where I unwind with fiction novels every evening.",
+   "I have resided there for nearly four years now, ever since my family relocated for my university studies. It has truly become a familiar and welcoming home filled with warm personal memories.",
+   "Yes, eventually I would love to move into a suburban detached house with a spacious backyard garden. Having some greenery and fresh air would be ideal for hosting weekend barbecues with friends.",
+   "The morning rush between eight and ten is certainly my most hectic period. That is when I commute through heavy traffic and prepare my daily schedule before tackling demanding work assignments.",
+   "For the most part, yes, my weekdays follow a strict schedule to maintain productivity. However, on weekends I intentionally abandon set timetables so I can sleep in and catch up on personal hobbies.",
+   "Certainly, my childhood routine was far more relaxed and carefree. Back then, my primary responsibility was attending school, leaving plenty of free daylight hours to ride bicycles with neighbouring friends after classes.",
+   "I would definitely like to incorporate regular physical exercise into my morning hours. At the moment, I often skip workouts due to waking up late, which leaves me feeling sluggish by afternoon."
+  ],
+  "sample": "I would like to talk about Ninh Binh, a stunning province in northern Vietnam that left an indelible impression on me. I took a weekend trip there about two years ago with two of my closest university friends after finishing our final exams. During our three-day stay, we rented scooters to explore the tranquil countryside, marveling at the towering limestone karsts rising dramatically from emerald rice paddies. One of the highlights was taking a traditional wooden boat ride through Trang An, drifting quietly through mystical flooded caves and ancient temples nestled amidst towering cliffs. We also hiked up hundreds of stone steps to the peak of Mua Cave, which rewarded us with an awe-inspiring panoramic view of the valley below at sunset. The primary reason I am eager to return is its peaceful, untouched ambiance, which provided a much-needed respite from chaotic city life. Although it has gained popularity among international backpackers, many corners remain serene and authentic. Next time, I hope to stay for an entire week at a local homestay, simply reading books, cycling through misty valleys, and immersing myself in the local culture once again.",
+  "p3": [
+   "In my opinion, people return to familiar spots primarily because it guarantees relaxation without unexpected stress. When visiting a known destination, travellers already understand the local transport, cuisine, and accommodation standards. In contrast, venturing into uncharted territory requires extensive planning and carries potential risks of disappointment. Therefore, those seeking pure comfort often gravitate towards places where fond memories are already established.",
+   "Undeniably, international tourism has become far more accessible and democratised than in the past. Decades ago, overseas holidays were exclusive luxury privileges reserved for affluent demographics. Today, budget airlines, online booking platforms, and digital navigation make global travel affordable and straightforward for ordinary citizens. As a result, cross-border journeys have transformed from rare once-in-a-lifetime adventures into routine annual leisure activities for millions worldwide.",
+   "Yes, uncontrolled overtourism can undoubtedly erode the cultural authenticity and heritage of historic towns. When sites are overwhelmed by massive tour groups, local shops frequently get replaced by generic souvenir stalls and international chains, stripping away regional identity. Venice and Hoi An exemplify how overcrowding can strain infrastructure and alienate native residents. Ultimately, unregulated commercialisation risks turning authentic communities into superficial tourist spectacles.",
+   "Authorities should enforce strict sustainability policies while using tourism revenues to finance ecological protection. Specifically, governments can impose daily visitor quotas on vulnerable sites and levy eco-taxes on visitors to subsidise conservation initiatives. For instance, Bhutan limits visitor arrivals through daily tariffs, safeguarding its fragile Himalayan ecosystem while ensuring high-value revenue. Consequently, such measured approaches guarantee steady economic income without sacrificing natural habitats.",
+   "Personally, I highly doubt virtual simulations will ever make physical travel obsolete. While advanced VR technology offers remarkable 3D visuals and immersive walkthroughs of distant landmarks, it cannot replicate tangible sensory experiences such as tasting local street food, feeling sea breezes, or connecting warmly with hospitable locals. Thus, virtual reality will remain a convenient supplementary preview rather than a genuine substitute for real-world exploration."
+  ]
+ }
+}

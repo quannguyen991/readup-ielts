@@ -9,6 +9,9 @@
  * tiếng Việt, cùng một ý với phần ghi chú của từng bài IELTS.
  */
 
+import MORE_TOPICS from './speaking-topics-new.json';
+import EXTRA_JSON from './speaking-extra.json';
+
 export type SpeakingPart2 = {
   prompt: string;
   bullets: string[];
@@ -24,7 +27,7 @@ export type SpeakingTopic = {
   part3: string[];
 };
 
-export const SPEAKING_TOPICS: SpeakingTopic[] = [
+export const BASE_TOPICS: SpeakingTopic[] = [
   {
     id: 'hometown',
     title: 'Hometown',
@@ -221,6 +224,25 @@ export const SPEAKING_TOPICS: SpeakingTopic[] = [
     part3: ['Is it harder to make close friends as an adult?', 'Can online friendships be as strong as real-life ones?'],
   },
 ];
+
+/** Nội dung học kèm mỗi chủ đề: từ vựng, dàn ý, bài mẫu Band 8, đáp án mẫu và câu hỏi mở rộng. */
+export type SpeakingExtra = {
+  vocab: { en: string; vi: string; ex: string }[];
+  outlineVi: string[];
+  sample: string;
+  p1: { q: string; a: string }[];
+  p3: { q: string; a: string }[];
+  mistakesVi: string[];
+  p1More: string[];
+  p3More: string[];
+};
+
+/** Chủ đề mở rộng (sinh bằng scripts/hub/gen-speaking.mjs, gộp bằng merge-speaking.mjs). */
+export const SPEAKING_TOPICS: SpeakingTopic[] = [...BASE_TOPICS, ...(MORE_TOPICS as unknown as SpeakingTopic[])];
+
+export function topicExtra(id: string): SpeakingExtra | undefined {
+  return (EXTRA_JSON as unknown as Record<string, SpeakingExtra>)[id];
+}
 
 export function topicById(id: string): SpeakingTopic | undefined {
   return SPEAKING_TOPICS.find((t) => t.id === id);

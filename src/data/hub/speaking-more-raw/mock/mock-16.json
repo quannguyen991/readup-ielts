@@ -1,0 +1,62 @@
+{
+ "id": "mock-16",
+ "title": "IELTS Speaking Mock Test 16",
+ "titleVi": "Đề thi thử số 16",
+ "focusVi": "Rèn luyện kỹ năng kể chuyện có mở-thân-kết và sử dụng linh hoạt các liên từ chỉ nguyên nhân, giải pháp khi nói về thử thách.",
+ "part1": [
+  {
+   "topic": "Teachers and School",
+   "qs": [
+    "Did you have a favorite teacher when you were at school?",
+    "What qualities do you think make a good teacher?",
+    "Do you still keep in touch with any of your former schoolmates?",
+    "Would you like to become a teacher in the future?"
+   ]
+  },
+  {
+   "topic": "Nature and Parks",
+   "qs": [
+    "Do you often visit parks or natural spaces in your area?",
+    "What do people usually do when they visit parks in your country?",
+    "Did you spend much time outdoors when you were a child?",
+    "Do you think cities need more green spaces?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a difficult task you completed at work or school",
+  "bullets": [
+   "what the task was",
+   "why it was challenging",
+   "what steps you took to complete it",
+   "and explain how you felt after you successfully finished it"
+  ]
+ },
+ "part3": [
+  "Why do some people prefer easy tasks over challenging ones?",
+  "How can parents or teachers encourage young people to persevere when facing difficulties?",
+  "Do you think modern technology has made people less resilient when solving problems?",
+  "What kinds of challenges are employees most likely to encounter in the modern workplace?",
+  "Is it better to tackle a difficult problem individually or collaborate with a team?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, my high school literature teacher was truly inspirational. She brought ancient poems to life through storytelling, which genuinely sparked my passion for reading novels and writing essays.",
+   "In my view, patience and empathy are paramount. A great instructor must understand varying learning paces; for instance, my math teacher always stayed back after class to guide struggling students.",
+   "Definitely, I regularly catch up with my closest secondary school friends. Even though we lead hectic lives now, we still gather once a month for coffee or dinner to reminisce.",
+   "Not really, because teaching demands immense patience and public speaking skills. I tend to thrive in technical work behind a desk, so managing an entire classroom feels quite daunting to me.",
+   "Yes, I try to jog in a nearby botanical garden every weekend. Breathing the crisp morning air among lush trees really helps me decompress after long hours at my office desk.",
+   "Most folks engage in light exercise like jogging, tai chi, or badminton. In the evenings, young families often stroll around the lakes while elderly residents gather on benches to chat together.",
+   "Absolutely, my childhood was filled with outdoor games. My friends and I would ride bicycles around the neighborhood or fly paper kites in open fields until dusk every single weekend.",
+   "Certainly, urban greenery is crucial for purifying polluted air and cooling concrete environments. Besides, visiting verdant spaces significantly reduces stress levels for metropolitan dwellers who endure high-pressure lifestyles."
+  ],
+  "sample": "I would like to talk about a challenging assignment I tackled during my final year at university, which was compiling a comprehensive market research report on consumer behavior in the organic food sector. This task was particularly demanding because of the strict three-week deadline and a severe lack of localized data. Most published studies were outdated, so our four-person group had to collect primary data from scratch. To make matters worse, two teammates fell ill right in the middle of our fieldwork. To overcome these hurdles, I stepped up as project coordinator. First, I restructured our timeline and designed an online survey that gathered over four hundred responses within five days. Next, I took charge of the statistical analysis using SPSS, working late into the night to clean the data and visualize the trends. My remaining partner conducted follow-up interviews with local grocery managers to provide qualitative depth. When we finally submitted the thirty-page document and received the highest mark in the cohort, I felt an immense sense of relief and pride. It taught me how to stay composed under intense pressure and dramatically boosted my confidence in solving complex problems.",
+  "p3": [
+   "Many individuals naturally gravitate toward simple chores because they offer immediate gratification and minimal risk of failure. Sticking to familiar routines provides psychological comfort, whereas daunting tasks trigger anxiety and self-doubt. For instance, people often choose quick administrative work over strategic planning. Ultimately, avoiding difficult endeavors preserves self-esteem in the short term, though it ultimately stunts long-term personal and professional growth.",
+   "In my view, adults should praise effort and strategy rather than innate talent. When children understand that mistakes are normal stepping stones, they develop a growth mindset. For example, instead of scolding a student for a poor math grade, a teacher can dissect the errors collaboratively. Consequently, framing setbacks as learning opportunities instills resilience and teaches youths never to surrender easily.",
+   "To some extent, yes. Instant access to search engines and automated tools has fostered a culture of impatience, where individuals expect instantaneous answers. When confronted with ambiguous, real-world dilemmas that lack algorithmic solutions, many become easily frustrated. However, technology also provides powerful analytical tools that help determined thinkers solve unprecedented issues. Overall, while tech promotes quick convenience, deep resilience still depends on individual mindset.",
+   "Nowadays, professionals primarily struggle with rapid technological disruption and information overload. Workers must continuously upskill to keep pace with digital tools, which frequently causes chronic burnout. For example, software engineers must master new programming frameworks every couple of years just to remain employable. Therefore, adapting to unpredictable job requirements while maintaining mental equilibrium has become the paramount challenge in contemporary careers.",
+   "I believe collaboration is generally superior when dealing with intricate dilemmas. Teamwork combines diverse perspectives and specialized skills, making it easier to identify blind spots that an individual might overlook. While working alone can avoid interpersonal conflicts and speed up basic decision-making, multifaceted problems usually require collective brainpower. Thus, pooling resources and brainstorming collectively almost always yields more robust and innovative solutions."
+  ]
+ }
+}

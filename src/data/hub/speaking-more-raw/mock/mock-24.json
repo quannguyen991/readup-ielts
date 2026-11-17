@@ -1,0 +1,62 @@
+{
+ "id": "mock-24",
+ "title": "IELTS Speaking Mock Test 24",
+ "titleVi": "Đề thi thử số 24",
+ "focusVi": "Rèn luyện kỹ năng miêu tả đồ vật mang giá trị kỷ niệm và phát triển lập luận trừu tượng về xu hướng tiêu dùng, bảo tồn di sản.",
+ "part1": [
+  {
+   "topic": "Health and Diet",
+   "qs": [
+    "Do you usually maintain a balanced diet every day?",
+    "What kind of healthy food do you enjoy eating most?",
+    "Did you have healthier eating habits when you were a child?",
+    "Do you think people in your country are becoming more health-conscious?"
+   ]
+  },
+  {
+   "topic": "Technology at Home",
+   "qs": [
+    "What household electronic device do you use the most often?",
+    "Has modern technology made domestic chores significantly easier for you?",
+    "Is there any home appliance you would like to purchase in the near future?",
+    "Do you believe children spend too much time using electronic devices at home?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an old object that you have kept for a long time",
+  "bullets": [
+   "what the object is",
+   "how you got it",
+   "what it looks like",
+   "and explain why you have kept it for such a long time"
+  ]
+ },
+ "part3": [
+  "Why do some people hold on to old possessions while others prefer to throw them away?",
+  "What are the advantages and disadvantages of collecting antiques?",
+  "How has consumer culture changed our attitudes toward keeping possessions compared to previous generations?",
+  "Do you think museums are the best places to preserve historical artifacts?",
+  "To what extent can personal keepsakes help individuals maintain a connection with their past?"
+ ],
+ "answers": {
+  "p1": [
+   "To be honest, I make a conscious effort to eat balanced meals by including lots of vegetables and lean proteins. However, during busy workdays, I occasionally grab quick street food instead.",
+   "I'm really fond of fresh tropical fruits, especially dragon fruit and papayas. They are not only packed with vital vitamins, but they also taste wonderfully sweet and refreshing in our warm climate.",
+   "Actually, my diet was much simpler back then because my mother cooked fresh home meals every day. In contrast, these days I frequently order processed takeout due to my hectic working schedule.",
+   "Definitely, yes. Many urban Vietnamese now pay closer attention to nutritional labels and organic groceries. For instance, my colleagues regularly swap bubble tea for sugar-free herbal drinks to stay fit.",
+   "Without a doubt, it is my laptop. Aside from using it for remote professional tasks, I also stream music and catch up on international news through it almost every single evening.",
+   "Absolutely, smart appliances have transformed my daily life. Our automated robotic vacuum cleaner, for example, sweeps the floors thoroughly while I am at work, saving me at least an hour every day.",
+   "I would love to invest in an air fryer quite soon. Cooking roasted vegetables and fish would become much healthier because it requires virtually no oil compared to conventional frying pans.",
+   "Yes, I strongly believe so. Young children frequently stare at iPads or televisions for long stretches instead of playing outdoor games, which can harm their eyesight and hinder social interactions."
+  ],
+  "sample": "I would like to talk about an old mechanical wristwatch that once belonged to my grandfather. He gave it to me on my eighteenth birthday as a symbolic gesture of stepping into adulthood. The watch is a classic vintage piece with a stainless-steel case and an authentic brown leather strap that shows signs of aging. The dial has a subtle ivory hue with delicate gold-plated numerals and luminous hands. Even though it is completely mechanical and lacks modern digital features, its craftsmanship is extraordinary. I have kept this timepiece carefully for over seven years, mainly because of its profound sentimental value. My grandfather wore it every single day during his career as a high school mathematics teacher. Whenever I hold it or wind the crown, I am immediately reminded of his discipline, wisdom, and warm encouragement. Additionally, in our fast-paced era dominated by disposable gadgets, this enduring heirloom serves as a grounding reminder to cherish the passage of time and honor our family heritage. I only wear it on momentous occasions, and I genuinely hope to pass it down to future generations.",
+  "p3": [
+   "In my view, sentimental attachment is the primary factor. Nostalgic individuals often view aged belongings as tangible memories connecting them to meaningful milestones or loved ones. Conversely, minimalist people prioritize practicality and tidy living spaces, viewing clutter as an unnecessary burden. Therefore, whether someone retains old possessions largely hinges on their personal philosophy regarding emotional value versus everyday utility.",
+   "Collecting antiques offers significant financial returns and cultural appreciation, as rare relics often appreciate substantially in value over time. Furthermore, owners gain immense aesthetic satisfaction from possessing unique historical craftsmanship. On the flip side, maintaining antique items demands considerable expense, specialized preservation knowledge, and constant protection against fraud or structural degradation. Thus, while deeply rewarding, it requires both expertise and sustained financial commitment.",
+   "Modern consumer culture has undeniably fostered a throwaway mentality. Mass manufacturing and rapid technological upgrades encourage consumers to replace working goods with newer versions almost annually. In contrast, older generations lived through economic hardship, compelling them to repair and cherish goods for decades. Consequently, people nowadays value novelty and convenience far more than durability and long-term sentimental connection.",
+   "I generally agree because national museums possess climate-controlled environments and trained conservationists capable of preventing decay. They also provide broad public access, allowing citizens and researchers to study historical treasures safely. Nevertheless, keeping cultural relics entirely in institutions can detach them from local communities where their spiritual significance originated. While museums are superior for physical preservation, community engagement remains equally vital.",
+   "Personal keepsakes serve as powerful psychological anchors to our personal history. Physical objects like family photo albums or handmade gifts instantly trigger vivid recollections that abstract memory alone cannot easily recall. Even when individuals relocate or experience major life transitions, these tangible mementos provide continuity and emotional security. Ultimately, they act as indispensable bridges that link our present identity with our roots."
+  ]
+ }
+}

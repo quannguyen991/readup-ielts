@@ -1,0 +1,117 @@
+{
+ "id": "art",
+ "title": "Art",
+ "titleVi": "Nghệ thuật",
+ "tipVi": "Đừng ngần ngại thừa nhận nếu bạn không am hiểu nghệ thuật; hãy tập trung mô tả cảm xúc cá nhân và tác động thị giác thay vì cố dùng thuật ngữ chuyên môn quá phức tạp.",
+ "part1": [
+  "Do you enjoy visiting art galleries or exhibitions?",
+  "Did you learn how to draw or paint when you were a child?",
+  "Do you have any artwork displayed on the walls of your home?"
+ ],
+ "part2": {
+  "prompt": "Describe a piece of art that left a strong impression on you",
+  "bullets": [
+   "what it was and where you saw it",
+   "what it looked like",
+   "who created it",
+   "and explain why it left such a strong impression on you"
+  ]
+ },
+ "part3": [
+  "Why do some people consider traditional art forms more valuable than digital artwork?",
+  "Should governments allocate significant public funds to support artists and cultural institutions?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "aesthetic appeal",
+    "vi": "sức hút về mặt thẩm mỹ",
+    "ex": "The painting's aesthetic appeal lies in its delicate balance of warm colors."
+   },
+   {
+    "en": "evoke emotions",
+    "vi": "gợi lên nhiều cảm xúc",
+    "ex": "Abstract sculptures often evoke strong emotions that are difficult to put into words."
+   },
+   {
+    "en": "stand the test of time",
+    "vi": "trường tồn với thời gian",
+    "ex": "True masterpieces always stand the test of time, captivating generation after generation."
+   },
+   {
+    "en": "striking visual impact",
+    "vi": "tác động thị giác mạnh mẽ",
+    "ex": "The massive mural creates a striking visual impact as soon as you enter the courtyard."
+   },
+   {
+    "en": "a burst of creativity",
+    "vi": "sự bùng nổ sáng tạo",
+    "ex": "Whenever I feel stressed, picking up a paintbrush gives me a sudden burst of creativity."
+   },
+   {
+    "en": "thought-provoking",
+    "vi": "gợi mở nhiều suy ngẫm",
+    "ex": "The contemporary photography exhibition was deeply thought-provoking, addressing urban isolation."
+   },
+   {
+    "en": "intricate detail",
+    "vi": "chi tiết phức tạp, tinh xảo",
+    "ex": "The artisan carved the wooden panel with such intricate detail that it took months to complete."
+   },
+   {
+    "en": "feast for the eyes",
+    "vi": "bữa tiệc mãn nhãn",
+    "ex": "The vibrant landscape painting was an absolute feast for the eyes."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn tác phẩm bạn muốn nhắc đến (tranh sơn dầu 'Bình minh trên ruộng bậc thang', tình cờ thấy trong một triển lãm nhỏ tại Hà Nội).",
+   "Ý 1: Mô tả diện mạo tác phẩm (gam màu vàng óng và xanh ngọc, lớp sương sớm mờ ảo, nét vẽ gồ ghề tạo chiều sâu chân thực).",
+   "Ý 2: Nêu thông tin về tác giả và bối cảnh (một họa sĩ địa phương tên Hoàng Vũ, khắc họa vẻ đẹp thiên nhiên vùng cao phía Bắc).",
+   "Kết: Giải thích lý do để lại ấn tượng sâu sắc (mang lại cảm giác an yên giữa phố thị ồn ào, khơi dậy tình yêu với cảnh sắc quê hương)."
+  ],
+  "sample": "I'd like to share an encounter with a mesmerizing piece of art that truly stood out to me. It is an oil painting titled 'Dawn over the Terraces', created by a local contemporary painter named Hoang Vu. I stumbled upon it about two years ago while exploring a cozy art boutique in downtown Hanoi. Visually, the canvas captures the cascading rice terraces of northern Vietnam right at sunrise. It is dominated by a rich palette of golden yellows and lush emerald greens, contrasted by the soft, diffused morning mist drifting between the valleys. What captivated me most was the artist's textured brushwork; you could almost feel the cool morning dew and the gentle breeze sweeping across the fields. The reason this painting left such an indelible mark on me is the overwhelming sense of serenity it conveyed. Living in a bustling, high-stress city, standing before that artwork felt like an emotional retreat. It wasn't merely a technical triumph with intricate detail, but a thought-provoking celebration of rural tranquility that instantly lowered my heart rate and made me appreciate the simple beauty of nature.",
+  "p1": [
+   {
+    "q": "Do you enjoy visiting art galleries or exhibitions?",
+    "a": "Honestly, yes. I find wandering through exhibitions quite therapeutic, as it offers a creative escape from daily routines. Just last month, I visited an impressionist gallery, and the dynamic use of light totally fascinated me."
+   },
+   {
+    "q": "Did you learn how to draw or paint when you were a child?",
+    "a": "Yes, we had mandatory art classes in primary school where we sketched basic objects like fruits and landscapes. Although I lacked natural talent, mixing watercolors was always the highlight of my week."
+   },
+   {
+    "q": "Do you have any artwork displayed on the walls of your home?",
+    "a": "We do have a couple of minimalist canvas prints in our living room. They feature abstract geometric patterns that complement our modern furniture and bring a welcoming, aesthetic vibe to the entire space."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people consider traditional art forms more valuable than digital artwork?",
+    "a": "I think traditional art is often seen as more authentic because it requires physical mastery of tangible materials, like canvas and clay. Each piece is unique and impossible to replicate identically. In contrast, digital art can be duplicated with a single click, which sometimes diminishes its perceived rarity. Consequently, collectors are willing to pay a premium for physical works that represent irreversible craftsmanship."
+   },
+   {
+    "q": "Should governments allocate significant public funds to support artists and cultural institutions?",
+    "a": "Without question, government funding is essential for preserving a nation's cultural heritage and fostering creativity. While some argue that public money should prioritize healthcare or infrastructure, art institutions enrich society spiritually and attract tourism. Without state subsidies, independent artists would struggle to survive financially, potentially leading to the decline of traditional cultural expressions that define national identity."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'picture' để chỉ mọi tác phẩm nghệ thuật; nên dùng từ vựng chính xác hơn như 'painting' (tranh vẽ màu), 'sketch' (bản phác thảo), 'portrait' (chân dung) hay 'sculpture' (tác phẩm điêu khắc).",
+   "Nhầm lẫn giữa tính từ 'artistic' (có tính nghệ thuật, khéo léo) và 'artificial' (nhân tạo, không tự nhiên).",
+   "Cố ép bản thân dùng thuật ngữ chuyên môn quá hàn lâm (như chiaroscuro, cubism) khi chưa hiểu sâu, dẫn đến ấp úng; thay vào đó hãy mô tả màu sắc, đường nét và cảm xúc cá nhân một cách tự nhiên."
+  ],
+  "p1More": [
+   "What kinds of art are most popular among young people in your country?",
+   "Have you ever purchased a piece of handmade art or craft?",
+   "Do you think art classes are beneficial for children's cognitive development?",
+   "Have you ever tried creating digital art on a tablet or computer?",
+   "Would you consider pursuing a career in the creative arts?"
+  ],
+  "p3More": [
+   "How has artificial intelligence impacted the way society values human artistic expression?",
+   "In what ways can public street art contribute to urban regeneration and community identity?",
+   "To what extent does a country's artistic output reflect its political and social climate?",
+   "Do you believe commercial success is an accurate measure of an artist's true talent?"
+  ]
+ }
+}

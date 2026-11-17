@@ -1,0 +1,117 @@
+{
+ "id": "nature",
+ "title": "Nature and Parks",
+ "titleVi": "Thiên nhiên và công viên",
+ "tipVi": "Khi nói về thiên nhiên, hãy linh hoạt miêu tả các giác quan (âm thanh, mùi hương, cảnh sắc) và cảm xúc thư giãn cá nhân thay vì chỉ liệt kê đơn điệu tên các loại cây hay địa danh.",
+ "part1": [
+  "Do you often visit parks or botanical gardens?",
+  "What do you usually like to do when you are in natural surroundings?",
+  "Did you spend much time outdoors when you were a child?"
+ ],
+ "part2": {
+  "prompt": "Describe an impressive natural park or green space you have visited",
+  "bullets": [
+   "where this place is located",
+   "what it looks like and what activities you did there",
+   "who accompanied you on the trip",
+   "and explain why this natural park left such a strong impression on you"
+  ]
+ },
+ "part3": [
+  "Why is it important for cities to incorporate public green spaces into urban planning?",
+  "How might modern technology affect younger generations' connection with the natural world?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "lush greenery",
+    "vi": "cây cối xanh tươi rậm rạp",
+    "ex": "The botanical garden is filled with lush greenery, providing a soothing escape from concrete high-rises."
+   },
+   {
+    "en": "bask in the sun",
+    "vi": "tắm mình trong ánh nắng",
+    "ex": "Locals often gather on the central lawn on weekends to bask in the warm afternoon sun."
+   },
+   {
+    "en": "commune with nature",
+    "vi": "hòa mình vào thiên nhiên",
+    "ex": "Whenever urban life becomes overwhelming, I head to the mountains to commune with nature."
+   },
+   {
+    "en": "concrete jungle",
+    "vi": "rừng bê tông (ám chỉ đô thị ngột ngạt)",
+    "ex": "City dwellers desperately need public parks to recharge and escape the oppressive concrete jungle."
+   },
+   {
+    "en": "unwind",
+    "vi": "thư giãn, xả hơi",
+    "ex": "A brisk stroll through the neighborhood park helps me unwind after an intense workday."
+   },
+   {
+    "en": "breath of fresh air",
+    "vi": "luồng không khí trong lành",
+    "ex": "Taking a mountain hike was a literal breath of fresh air compared to downtown pollution."
+   },
+   {
+    "en": "flora and fauna",
+    "vi": "hệ thực vật và động vật",
+    "ex": "The national sanctuary is renowned for its diverse flora and fauna, including rare bird species."
+   },
+   {
+    "en": "tranquil atmosphere",
+    "vi": "bầu không khí thanh bình, tĩnh lặng",
+    "ex": "What I cherish most about the lakeside park is its tranquil atmosphere early in the morning."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên công viên hoặc khu bảo tồn thiên nhiên (ví dụ: Vườn quốc gia Ba Vì) cùng thời điểm bạn đến thăm.",
+   "Ý 1 (Vị trí & Cảnh sắc): Mô tả vị trí địa lý và cảnh quan thiên nhiên đặc trưng (không khí trong lành, sương mù bảng lảng, thảm thực vật xanh mướt).",
+   "Ý 2 (Hoạt động & Bạn đồng hành): Kể lại chuyến đi cùng ai (bạn bè hoặc người thân) và những trải nghiệm thực tế (đi bộ đường dài, cắm trại dã ngoại).",
+   "Kết (Cảm nhận & Dấu ấn): Giải thích lý do nơi đây gây ấn tượng mạnh mẽ (giúp xua tan mệt mỏi nơi phố thị, tái tạo năng lượng tinh thần)."
+  ],
+  "sample": "I'd like to share my experience visiting Ba Vi National Park, a stunning mountainous sanctuary nestled just outside Hanoi. I traveled there last autumn with a couple of close friends to take a weekend break from university life. The landscape was genuinely breathtaking, surrounded by mist-shrouded peaks and dense, lush greenery. As soon as we arrived, the cool, crisp mountain breeze felt like an instant breath of fresh air. We spent the morning trekking along winding stone trails, marveling at the rich flora and fauna and visiting an old French colonial church wrapped in moss. In the afternoon, we pitched a small tent near a pine forest and had a picnic while basking in the gentle sunlight. This trip made an indelible impression on me primarily because of the tranquil atmosphere. Living in a noisy concrete jungle, I constantly battle traffic and screen fatigue. Being able to commune with nature in such a serene environment completely recharged my mental batteries. It reminded me how vital untouched green spaces are for our emotional well-being.",
+  "p1": [
+   {
+    "q": "Do you often visit parks or botanical gardens?",
+    "a": "Yes, definitely. I make a habit of strolling through a nearby park every weekend morning to get some fresh air. It provides a peaceful retreat where I can stretch my legs and decompress after a hectic week."
+   },
+   {
+    "q": "What do you usually like to do when you are in natural surroundings?",
+    "a": "I usually prefer brisk walking or simply sitting on a bench listening to natural sounds like birds chirping. Immersing myself in scenic landscapes helps clear my mind, especially when I listen to instrumental music on my headphones."
+   },
+   {
+    "q": "Did you spend much time outdoors when you were a child?",
+    "a": "Yes, absolutely. Growing up in the countryside, I spent almost every afternoon playing football in open fields with neighborhood kids. We used to climb fruit trees and explore small streams, which kept us active and connected with nature."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why is it important for cities to incorporate public green spaces into urban planning?",
+    "a": "I believe urban green spaces are indispensable for both public health and environmental balance. Dense cities frequently suffer from severe air pollution and the urban heat island effect, which lush parks can actively mitigate by absorbing carbon dioxide. Moreover, these spaces offer residents essential recreational areas to exercise and socialize, significantly reducing stress levels compared to overcrowded indoor shopping malls. Therefore, green urban planning fosters healthier communities."
+   },
+   {
+    "q": "How might modern technology affect younger generations' connection with the natural world?",
+    "a": "Undoubtedly, pervasive technology has created a widening gap between young people and the outdoors. Sedentary indoor habits, driven by video games and social media, often discourage teenagers from exploring natural parks. However, if used thoughtfully, digital tools like wildlife identification apps or nature vlogs can spark genuine curiosity about biodiversity. Ultimately, while screens pose an obvious distraction, they can also serve as educational catalysts if balanced properly."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'nature' sai ngữ pháp: Thường dùng nhầm 'nature park' thay vì 'natural park', hoặc quên mất 'nature' là danh từ không đếm được và không đi kèm mạo từ 'the' khi nói về thiên nhiên nói chung.",
+   "Lỗi phát âm các từ quen thuộc: Rất nhiều thí sinh phát âm sai trọng âm của từ 'atmosphere' (/ˈætməsfɪər/ nhấn âm 1) hoặc đọc sai nguyên âm của 'fauna' (/ˈfɔːnə/).",
+   "Diễn đạt ý quá đơn giản và lặp từ: Thường xuyên lặp lại cụm 'it makes me feel relaxed' thay vì dùng các cụm diễn đạt tự nhiên, giàu hình ảnh hơn như 'unwind', 'recharge my mental batteries' hay 'commune with nature'."
+  ],
+  "p1More": [
+   "Are there many parks or gardens where you live?",
+   "Do you think people of all ages enjoy visiting parks equally?",
+   "Would you like to live near a large park in the future?",
+   "Do you prefer visiting natural landscapes like forests or coastal beaches?",
+   "Have you ever planted trees or flowers yourself?"
+  ],
+  "p3More": [
+   "Should governments prioritize economic development over the conservation of natural habitats?",
+   "In what ways can schools foster an appreciation for nature in children from an early age?",
+   "How has ecotourism changed the way people interact with fragile natural environments?",
+   "Do you think individuals or large corporations bear greater responsibility for protecting natural ecosystems?"
+  ]
+ }
+}

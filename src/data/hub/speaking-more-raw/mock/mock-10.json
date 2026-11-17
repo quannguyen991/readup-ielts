@@ -1,0 +1,62 @@
+{
+ "id": "mock-10",
+ "title": "IELTS Speaking Mock Test 10",
+ "titleVi": "Đề thi thử số 10",
+ "focusVi": "Luyện tập kỹ năng kể chuyện có cấu trúc rõ ràng ở thì quá khứ và phát triển lập luận phản biện đa góc nhìn về lối sống hiện đại.",
+ "part1": [
+  {
+   "topic": "Health",
+   "qs": [
+    "Do you engage in any regular physical exercise to stay healthy?",
+    "What is your favorite kind of healthy food?",
+    "Did your family teach you healthy habits when you were young?",
+    "Do you think modern life makes it harder for people to stay fit?"
+   ]
+  },
+  {
+   "topic": "Weekends",
+   "qs": [
+    "How do you usually spend your weekend mornings?",
+    "Do you prefer spending your weekends at home or outdoors?",
+    "Did you enjoy your weekends more when you were a child?",
+    "Do you ever have to work or study during your weekends?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a period of time when you were extremely busy",
+  "bullets": [
+   "when this time was",
+   "what you had to do during this period",
+   "how you managed your daily schedule",
+   "and say how you felt after this busy period ended"
+  ]
+ },
+ "part3": [
+  "Why do many people nowadays seem to have much busier lifestyles than in the past?",
+  "Does advanced technology help people save time, or does it actually make them busier?",
+  "What negative consequences can occur when individuals fail to balance work and personal life?",
+  "Do you believe children these days have too many structured activities outside school?",
+  "How might working hours and workplace expectations change in the coming decades?"
+ ],
+ "answers": {
+  "p1": [
+   "To be honest, I jog three times a week around a nearby lake. Running boosts my cardiovascular stamina and helps clear my head after sitting in front of a computer all day.",
+   "I really enjoy fresh avocado smoothies without added sugar. They are packed with nutritious fats and vitamins, which provide long-lasting energy throughout my busy mornings without feeling heavy.",
+   "Yes, definitely. My mother always insisted on drinking warm water every morning and eating fresh vegetables with dinner, which instilled a lifelong discipline of mindful eating in me.",
+   "Certainly, because sedentary desk jobs and food delivery apps discourage physical activity. Most office workers spend eight hours seated and then order fast food instead of cooking nutritious meals.",
+   "I typically wake up a bit later than usual and brew some specialty coffee. Then, I read a fiction book or listen to calming podcasts before starting any chores.",
+   "I definitely prefer staying indoors. My weekdays are quite hectic, so relaxing on the couch with a good film provides the mental tranquility I desperately need to recharge.",
+   "Undoubtedly, childhood weekends were magical because I had zero academic pressure. My siblings and I would ride bicycles around the neighborhood all day until sunset without any worries.",
+   "Occasionally, yes. Whenever major deadlines approach at work, I dedicate Sunday afternoons to answering pending emails and organizing my weekly schedule, although I try to avoid making it a habit."
+  ],
+  "sample": "I would like to talk about a particularly hectic period last autumn when I was preparing for my university graduation thesis while simultaneously working part-time at a marketing firm. For about two solid months, my schedule was packed to the brim. Every weekday, I had to attend client meetings and write promotional copy from eight to twelve, and then spend the remaining hours in the university library conducting qualitative interviews and analyzing survey data for my paper. To keep my head above water, I had to master time management. I used digital calendars, prepared simple meal-prep boxes on Sundays, and strictly prioritized urgent tasks using the Pomodoro technique. I even cut down on social media and sacrificed my leisure outings. When I finally submitted the manuscript and delivered my final presentation, an immense wave of relief washed over me. I felt thoroughly drained, but also profoundly proud. Pulling through that grueling challenge taught me resilience and proved that I could perform under pressure, which was immensely rewarding.",
+  "p3": [
+   "In my view, hyper-competitiveness in the modern job market drives this trend. To maintain job security and afford rising living expenses, individuals often take on supplementary side projects or work overtime. Furthermore, consumerism encourages people to chase material milestones continuously. Consequently, downtime is frequently viewed as unproductive laziness rather than a necessity, compelling workers to remain perpetually occupied.",
+   "It is definitely a double-edged sword. While automation tools accelerate communication and streamline administrative duties, they also blur boundaries between professional and private life. With instant messaging and email alerts on smartphones, employees are expected to respond around the clock. Thus, rather than liberating people, technology often chains them to continuous engagement and increases overall cognitive strain.",
+   "Chronic imbalance between career and personal life leads to severe physical burnout, emotional fatigue, and clinical anxiety. On a personal level, neglected relationships often dissolve because family members feel ignored or unsupported. Professionally, exhausted workers experience declining productivity and impaired decision-making. Therefore, neglecting equilibrium ultimately damages both individual well-being and organizational performance in the long term.",
+   "I strongly believe that modern children are overburdened with extracurriculars. Well-meaning parents frequently schedule continuous tutoring, musical instruments, and competitive sports, leaving children with practically no unstructured playtime. While these classes foster valuable skills, constant scheduling restricts imaginative play and independent problem-solving. Children need quiet time simply to daydream, explore their surroundings, and develop emotional resilience organically.",
+   "I foresee a major shift toward flexible, output-oriented working arrangements rather than rigid office hours. With artificial intelligence handling repetitive tasks, four-day workweeks and asynchronous collaboration will likely become standard practice. Companies that enforce inflexible schedules will struggle to attract top talent. Ultimately, workplace success will be judged by actual output and creative impact, fostering healthier autonomy for professional employees."
+  ]
+ }
+}

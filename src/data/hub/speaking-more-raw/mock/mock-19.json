@@ -1,0 +1,62 @@
+{
+ "id": "mock-19",
+ "title": "IELTS Speaking Mock Test 19",
+ "titleVi": "Đề thi thử số 19",
+ "focusVi": "Luyện tập kỹ năng phân tích lợi ích kinh tế - xã hội và đánh giá xu hướng khởi nghiệp hiện đại.",
+ "part1": [
+  {
+   "topic": "Environment",
+   "qs": [
+    "Do you think your hometown is an environmentally friendly place to live?",
+    "What do you personally do to reduce waste in your daily life?",
+    "Have you noticed any environmental changes in your neighborhood recently?",
+    "Would you like to take part in an ecological project in the future?"
+   ]
+  },
+  {
+   "topic": "Celebrities",
+   "qs": [
+    "Do you often follow news about celebrities in your country?",
+    "What qualities make a public figure a positive role model?",
+    "Would you want to become famous if you had the opportunity?",
+    "Do you think famous people deserve to have their private lives protected?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a successful small business you know.",
+  "bullets": [
+   "what the business is and where it is located",
+   "what products or services it provides",
+   "how you first found out about it",
+   "and explain why you think this business has been successful"
+  ]
+ },
+ "part3": [
+  "What are the main challenges that independent shop owners face when competing with large retail chains?",
+  "In what ways do small enterprises contribute to their local communities?",
+  "Should local authorities provide financial subsidies to encourage young entrepreneurs?",
+  "How has e-commerce changed the operational strategies of traditional brick-and-mortar stores?",
+  "Do you believe consumers have a moral obligation to support local neighborhood shops over global corporations?"
+ ],
+ "answers": {
+  "p1": [
+   "Honestly, not entirely. While my city has planted more trees lately, air pollution from heavy traffic remains a serious issue, especially during morning rush hours when exhaust fumes become overwhelming.",
+   "I always carry a reusable canvas bag when shopping for groceries. Additionally, I avoid single-use plastic bottles by bringing my own stainless steel flask to work every day.",
+   "Yes, our local authority recently established designated recycling bins on every street corner. As a result, communal areas look noticeably tidier and residents seem more conscious of sorting trash.",
+   "Certainly. I would love to join a community tree-planting initiative because it directly enhances urban biodiversity and offers a meaningful way to connect with like-minded environmental volunteers.",
+   "Not really, because celebrity gossip rarely catches my interest. I prefer reading about technological innovations or business updates rather than tracking the personal lives of pop stars and actors.",
+   "Integrity and humility are paramount. When well-known figures use their influential platform to advocate for social causes, such as charity work or climate action, they inspire fans constructively.",
+   "No, I value my personal privacy too much. Being constantly scrutinized by media cameras and online commentators sounds thoroughly exhausting, so I prefer leading a quiet, normal life.",
+   "Definitely. Despite their public careers, famous individuals are still human beings entitled to boundaries. Relentless paparazzi intrusion into someone's family life is unethical and should never be normalized."
+  ],
+  "sample": "I would like to talk about an artisanal bakery called The Daily Crust, located in a quiet alley near my neighborhood in Hanoi. It specializes in freshly baked sourdough bread, organic pastries, and specialty roasted coffee. I first stumbled upon this shop two years ago while taking an alternative shortcut home from university. The irresistible aroma of warm cinnamon rolls immediately drew me inside, and I have been a loyal patron ever since. What makes this small enterprise exceptionally successful is its uncompromising dedication to quality and personalized customer care. Unlike commercial industrial bakeries that rely on artificial preservatives, the owner sources organic whole grains from local farmers and ferments the dough naturally for twenty-four hours. Furthermore, the staff genuinely remember regular customers by name and often offer complimentary cookie samples to newcomers. Through word-of-mouth recommendations and clever Instagram marketing, the bakery has cultivated a devoted following. Even during economic downturns, people queue up every morning because the business delivers consistent culinary excellence alongside a warm, welcoming community atmosphere.",
+  "p3": [
+   "Small retailers primarily struggle with economies of scale. Major supermarket chains purchase inventory in massive bulk, enabling them to offer aggressive discounts that independent shops cannot match. Additionally, multinational corporations possess expansive marketing budgets and sophisticated distribution networks. Consequently, independent shopkeepers must focus on distinctive craftsmanship and tailored service to survive, as engaging in a straightforward price war is virtually impossible.",
+   "Small enterprises serve as vital economic and social anchors. Financially, they generate neighborhood employment and keep monetary circulation within the domestic area rather than siphoning profits to overseas shareholders. Socially, these family-run businesses foster interpersonal connections, creating familiar gathering spaces where neighbors converse regularly. Therefore, they preserve unique neighborhood character and strengthen community cohesion far more effectively than faceless corporate outlets.",
+   "Yes, public investment in fledgling business founders is crucial. Young innovators frequently possess groundbreaking commercial concepts yet lack adequate collateral to secure conventional commercial bank loans. By offering seed funding, low-interest microloans, or subsidized incubation spaces, governments can mitigate early financial vulnerability. Although some start-ups inevitably fail, the successful ventures drive regional innovation, create jobs, and stimulate long-term economic growth.",
+   "Digital commerce has forced physical storefronts to shift from mere transaction hubs to experiential destinations. Instead of simply stocking shelves, successful retail stores now host interactive workshops, provide product demonstrations, and curate immersive aesthetic environments. Moreover, many have adopted hybrid omnichannel models, allowing customers to browse online and collect purchases in-store. Ultimately, physical spaces must deliver tactile engagement that digital interfaces cannot replicate.",
+   "While consumer choice should remain autonomous, I believe people bear a civic responsibility to patronize neighborhood stores. When consumers blindly prioritize the convenience of digital conglomerates, diverse high-street businesses collapse, leading to economic homogenization. Spending locally preserves artisan traditions and revitalizes community public spaces. Thus, conscious consumerism is not merely an economic decision, but an ethical investment in the vitality of one's own living environment."
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "friends",
+ "extra": {
+  "vocab": [
+   {
+    "en": "through thick and thin",
+    "vi": "vượt qua mọi thăng trầm cùng nhau",
+    "ex": "True friends always stick by each other through thick and thin."
+   },
+   {
+    "en": "a shoulder to cry on",
+    "vi": "một điểm tựa tinh thần để giãi bày tâm sự",
+    "ex": "Whenever I am overwhelmed with stress, she is always a dependable shoulder to cry on."
+   },
+   {
+    "en": "hit it off",
+    "vi": "nhanh chóng hòa hợp, tâm đầu ý hợp ngay lần đầu gặp",
+    "ex": "We hit it off immediately during our first orientation day at university."
+   },
+   {
+    "en": "drift apart",
+    "vi": "dần xa cách, phai nhạt tình bạn theo thời gian",
+    "ex": "After graduation, many classmates drifted apart because of hectic work schedules."
+   },
+   {
+    "en": "bail someone out",
+    "vi": "cứu nguy, giúp đỡ ai vượt qua tình huống ngặt nghèo",
+    "ex": "He bailed me out when my motorbike broke down right before an important interview."
+   },
+   {
+    "en": "lend a sympathetic ear",
+    "vi": "lắng nghe một cách chân thành và thấu cảm",
+    "ex": "Sometimes you do not need practical solutions; you just need a friend to lend a sympathetic ear."
+   },
+   {
+    "en": "weather the storm",
+    "vi": "kiên cường cùng nhau vượt qua giông bão thử thách",
+    "ex": "Her encouragement gave me the mental strength to weather the storm during finals."
+   },
+   {
+    "en": "see eye to eye",
+    "vi": "có cùng quan điểm hoặc đồng thuận với nhau",
+    "ex": "Even though we do not always see eye to eye, we deeply respect our differences."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người bạn thân thiết (tên, tính cách) và cơ duyên hai người gặp gỡ nhau (tuần định hướng đại học hoặc nơi làm việc).",
+   "Ý 1: Trình bày bối cảnh xảy ra giai đoạn khó khăn (khủng hoảng học tập, thi rớt môn, áp lực đi làm thêm quá tải).",
+   "Ý 2: Miêu tả chi tiết người bạn đó đã hành động thế nào để giúp đỡ (lắng nghe tâm sự, cùng lập thời gian biểu ôn thi mỗi tối, kèm cặp kiến thức).",
+   "Kết: Bày tỏ sự biết ơn sâu sắc, cảm xúc nhẹ nhõm khi vượt qua sóng gió và tình bạn trở nên bền chặt hơn bao giờ hết."
+  ],
+  "sample": "I would like to talk about Minh, my closest friend from university. We first met during our freshman orientation week and hit it off almost immediately thanks to our shared love for badminton.\n\nA couple of years ago, I went through a very rough patch when I failed a crucial semester exam while juggling a stressful part-time job. I was on the verge of burning out and seriously contemplated dropping out. Minh noticed I was unusually withdrawn and stepped in without hesitation. Not only did he lend a sympathetic ear when I vented my frustrations, but he also created a structured study plan for me. Every evening for three straight weeks, he patiently walked me through complex accounting concepts and tested my revision.\n\nHis generous support bailed me out of academic probation, but more importantly, it restored my shattered self-confidence. I felt deeply indebted and profoundly grateful for his unwavering patience. Knowing that someone believed in me when I doubted myself meant the world. That experience cemented our bond, proving to me that true friends truly stick together through thick and thin.",
+  "p1": [
+   {
+    "q": "Do you have a close friend?",
+    "a": "Yes, definitely. My childhood friend Nam has been my confidant for over a decade. We share almost everything from daily trivial gossip to major career plans, and he always supports me whenever I face dilemmas."
+   },
+   {
+    "q": "How often do you meet your friends?",
+    "a": "I try to catch up with them at least once or twice a week. We usually hang out at a local café on weekends to unwind, chat about our work, and blow off some steam together."
+   },
+   {
+    "q": "Do you prefer meeting friends in person or online?",
+    "a": "I certainly prefer meeting in person because physical presence allows for genuine emotional connection. You can read body language and share laughs over a meal, whereas texting or video calls often feel somewhat detached."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Is it harder to make close friends as an adult?",
+    "a": "I firmly believe it is. When we are young, shared environments like school create effortless opportunities to bond. As adults, however, people are constrained by heavy workloads and family duties, leaving little spare time. Furthermore, adults naturally become more guarded and cautious about opening up emotionally compared to carefree children. Therefore, cultivating deep, authentic bonds in adulthood demands substantially more intentional effort."
+   },
+   {
+    "q": "Can online friendships be as strong as real-life ones?",
+    "a": "In my view, while online friendships can be remarkably supportive, they rarely match the depth of real-world relationships. Virtual communication allows people to connect over niche interests regardless of distance, which is wonderful. However, without experiencing shared physical realities and weathering real-life crises side by side, it is harder to build rock-solid trust. Thus, face-to-face interactions still provide a stronger foundation for lifelong camaraderie."
+   }
+  ],
+  "mistakesVi": [
+   "Dịch chay từ tiếng Việt 'chơi với bạn' thành 'play with my friends' khi nói về người lớn; nên dùng 'hang out with', 'spend time with' hoặc 'keep company with'.",
+   "Quên chia số nhiều trong cụm 'make friends with someone' (thường nói sai thành 'make friend').",
+   "Nhầm lẫn từ loại giữa tính từ 'friendly' (thân thiện) và danh từ 'friendship' (tình bạn), dẫn đến lỗi như 'We have a good friendly'."
+  ],
+  "p1More": [
+   "What qualities do you value most in a friend?",
+   "Do you still keep in touch with your childhood friends?",
+   "What do you usually do when you hang out with your friends?",
+   "Do you have many friends or just a few close ones?",
+   "Where do you usually go when you meet your friends?"
+  ],
+  "p3More": [
+   "How has modern technology influenced the way people maintain long-distance friendships?",
+   "Do you think friendships between colleagues can complicate professional relationships in the workplace?",
+   "Why do some people find it difficult to maintain friendships over long periods?",
+   "In what ways do societal expectations of friendship differ between older and younger generations?"
+  ]
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "id": "mock-22",
+ "title": "IELTS Speaking Mock Test 22",
+ "titleVi": "Đề thi thử số 22",
+ "focusVi": "Luyện tập kỹ năng mở rộng câu trả lời bằng ví dụ thực tế và phát triển lập luận mạch lạc trong chủ đề làm việc nhóm.",
+ "part1": [
+  {
+   "topic": "Jobs and Careers",
+   "qs": [
+    "Do you currently work, or are you a student?",
+    "What qualities do you think make someone successful in their career?",
+    "Would you like to change your job or field of study in the future?",
+    "Do you prefer working independently or as part of a team?"
+   ]
+  },
+  {
+   "topic": "Weather and Seasons",
+   "qs": [
+    "What kind of weather do you enjoy the most?",
+    "Does the weather in your hometown affect your daily routine?",
+    "Do you prefer hot summer days or cold winter days?",
+    "Have you noticed any changes in the weather patterns in your country recently?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a team or group project you were part of",
+  "bullets": [
+   "what the team or project was",
+   "who the other members were",
+   "what role you played in this group",
+   "and explain why this group experience was successful or challenging"
+  ]
+ },
+ "part3": [
+  "What makes a person an effective leader in a team environment?",
+  "Why do some people find it difficult to collaborate with others?",
+  "Should schools focus more on encouraging competition or fostering teamwork among students?",
+  "How has modern technology influenced the way teams communicate and work together?",
+  "Do you think large teams are generally more productive than small teams?"
+ ],
+ "answers": {
+  "p1": [
+   "At the moment, I am working as a digital marketer for a tech startup. I really enjoy it because I get to design creative campaigns, such as launching social media ads for new software apps.",
+   "I believe adaptability and effective communication are crucial for career growth. In dynamic fields like business, professionals who quickly embrace changes and express ideas clearly tend to advance much faster than others.",
+   "Yes, I am actually planning to transition into project management within the next few years. That is why I am currently studying for professional certifications like Agile and PMP in my spare time.",
+   "I definitely prefer teamwork because pooling diverse perspectives usually leads to better solutions. For example, during complex assignments, collaborating with colleagues helps us solve bottlenecks much quicker than working alone.",
+   "I really love cool, breezy autumn weather. It is refreshing and comfortable for outdoor activities, like cycling around the local park or sitting outside at a cafe without sweating.",
+   "Definitely, especially during the heavy monsoon season. Torrential downpours often cause terrible traffic jams in my city, forcing me to leave home an hour earlier or work remotely instead.",
+   "I much prefer cold winter days to scorching summers. When it is chilly, I can simply put on a warm coat and enjoy hot soup, whereas extreme heat feels suffocating and draining.",
+   "Yes, summers seem to be getting significantly hotter and drier each year. For instance, last summer saw record-breaking heatwaves in northern regions, which disrupted daily life and pushed air-conditioning demand sky-high."
+  ],
+  "sample": "I would like to talk about a university project where my team designed a charity fundraising campaign during our final year. Our group consisted of four classmates from diverse backgrounds, including an aspiring graphic designer, a finance major, a research specialist, and myself. My primary role was project coordinator. I was responsible for scheduling weekly milestones, delegating tasks, and ensuring our messaging stayed aligned with the charity's mission. I also took the lead in pitching our concept to local community sponsors. Overall, this experience was both challenging and incredibly rewarding. The main difficulty lay in balancing our contrasting working styles and hectic schedules, as we were all juggling exams simultaneously. Misunderstandings occasionally cropped up regarding project deadlines. However, by establishing transparent communication channels on Slack and holding brief daily check-ins, we overcame these obstacles effectively. In the end, our initiative raised over two thousand dollars for an underprivileged children's shelter. It proved to be a resounding success, teaching me invaluable lessons about mutual accountability, conflict resolution, and the undeniable power of collaborative effort.",
+  "p3": [
+   "In my view, active listening and emotional intelligence are the hallmarks of a great leader. Rather than merely dictating orders, an inspiring manager values diverse input and motivates subordinates according to their individual strengths. In contrast, authoritarian leaders often stifle innovation and breed workplace resentment. Therefore, true leadership is rooted in fostering psychological safety and empowering colleagues rather than asserting dominance.",
+   "I think personality clashes and an unwillingness to compromise are the primary culprits. Many individuals possess competitive mindsets, prioritizing personal recognition over shared objectives. For instance, perfectionists often struggle to delegate responsibilities because they lack trust in their teammates' competencies. Consequently, these behavioral tendencies create friction and disrupt productivity, preventing teams from realizing their collective potential unless interpersonal communication is improved.",
+   "Schools should prioritize teamwork while still acknowledging individual excellence. Although healthy competition can motivate pupils to surpass their personal limits, modern workplaces overwhelmingly demand interpersonal synergy and collaborative problem-solving. When institutions assign group projects instead of solely ranking students, children learn vital social skills like negotiation and empathy. Thus, cultivating a cooperative mindset prepares youth far better for future professional environments.",
+   "Technology has undeniably revolutionized collaboration by breaking down geographical barriers. Tools like Zoom and collaborative cloud platforms allow remote teams to coordinate seamlessly across international borders in real time. Nevertheless, virtual interactions can occasionally lack non-verbal cues and informal warmth, which sometimes leads to miscommunication. Overall, while digital tools maximize operational efficiency, groups must make deliberate efforts to maintain meaningful personal connections.",
+   "Generally speaking, smaller teams tend to be far more agile and productive. In oversized groups, communication becomes fragmented, and a phenomenon known as social loafing often occurs, where certain individuals contribute less. Conversely, compact groups of four to six members enjoy streamlined decision-making and clearer individual accountability. Hence, keeping team sizes relatively small usually maximizes output without sacrificing coherence or morale."
+  ]
+ }
+}

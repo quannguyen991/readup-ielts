@@ -1,0 +1,62 @@
+{
+ "id": "mock-23",
+ "title": "IELTS Speaking Mock Test 23",
+ "titleVi": "Đề thi thử số 23",
+ "focusVi": "Rèn luyện kỹ năng miêu tả chi tiết không gian và phát triển lập luận trừu tượng về tác động của sự yên tĩnh đối với sức khỏe tinh thần.",
+ "part1": [
+  {
+   "topic": "Shopping Online",
+   "qs": [
+    "Do you often purchase items over the internet?",
+    "What kinds of products do you prefer buying online rather than in physical stores?",
+    "Have you ever had any unpleasant experiences with online shopping?",
+    "Do you think online shopping will completely replace traditional markets in the future?"
+   ]
+  },
+  {
+   "topic": "Free Time",
+   "qs": [
+    "How do you usually spend your leisure time on weekends?",
+    "Did you have more free time when you were younger than you do now?",
+    "Do you prefer spending your spare time alone or with other people?",
+    "What new hobby would you like to take up if you had more free time?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a quiet place that you enjoy visiting.",
+  "bullets": [
+   "where this place is located",
+   "how often you go there",
+   "what you usually do when you are there",
+   "and explain why you enjoy visiting this quiet place"
+  ]
+ },
+ "part3": [
+  "Why do many people find it difficult to locate quiet places in modern cities?",
+  "In what ways can excessive noise pollution impact people's physical and mental health?",
+  "Should city planners prioritize creating silent zones in urban development projects?",
+  "Do you believe older generations value peace and quiet more than younger people do?",
+  "How has technological advancement affected our ability to appreciate silence?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, I shop online almost every week because it saves me a great deal of time. I mostly use mobile apps like Shopee to buy everyday essentials without traveling.",
+   "I prefer buying books and electronic accessories online since prices are usually much lower. For instance, I recently ordered a wireless mouse with a massive discount that retail stores couldn't match.",
+   "Unfortunately, yes. Last month, I ordered a winter jacket, but the fabric was terrible and didn't match the promotional pictures at all, so I had to request a refund.",
+   "I doubt that will happen. While e-commerce is incredibly convenient, people still enjoy traditional markets for fresh groceries and social interactions, which an app simply cannot replicate.",
+   "I typically unwind by cooking a nice meal and reading novels at home. It helps me recharge my batteries after a stressful working week, especially on quiet Sunday mornings.",
+   "Definitely. As a schoolchild, I had long summer breaks and virtually zero adult responsibilities, whereas nowadays my schedule is constantly packed with work commitments and household chores.",
+   "It depends on my mood, but I mostly lean towards solitude. Being alone allows me to clear my head, although I occasionally grab coffee with close friends on Saturday evenings.",
+   "I'd love to learn pottery. Crafting ceramic bowls with my own hands seems therapeutic, and it would be rewarding to create functional home decor from scratch."
+  ],
+  "sample": "I’d like to talk about a hidden rooftop café called The Green Corner, nestled in a small alley just behind my university campus. It is tucked away from the chaotic hustle and bustle of the city traffic. I usually go there once or twice a week, particularly on weekday afternoons when deadlines start piling up. It features open-air wooden seating, surrounded by lush potted plants and soft instrumental jazz playing in the background. Whenever I visit, I order an iced black coffee and settle into a corner seat overlooking the tree canopy. Sometimes I bring my laptop to do focused study sessions, but more often than not, I just sit back with a novel or write in my journal. What makes this sanctuary so special to me is its peaceful atmosphere. Living in a vibrant metropolitan area, finding absolute stillness is rare. Being up on that terrace allows me to escape the sensory overload, slow down my thoughts, and rejuvenate my mental energy before tackling the rest of my busy week.",
+  "p3": [
+   "Rapid urbanization has led to dense populations, continuous construction, and rampant vehicular traffic, leaving very little space for natural buffer zones. Commercial enterprises also saturate public areas with amplified music and advertisements to draw foot traffic. Consequently, green parks or quiet spots are often squeezed out, forcing urban residents to travel far out into suburbs just to enjoy a moment of peace.",
+   "Persistent noise triggers continuous stress responses in the body, which can elevate blood pressure and disrupt normal sleep cycles. Mentally, individuals subjected to constant acoustic clutter frequently suffer from irritability, cognitive fatigue, and impaired concentration. Over time, chronic noise exposure can even precipitate clinical anxiety and hearing impairments, significantly reducing a person's overall quality of life.",
+   "Undoubtedly, yes. Integrating soundproofed public libraries, botanical gardens, and designated quiet public squares is crucial for citizen well-being. While economic infrastructure typically takes precedence, neglecting quiet communal spaces risks exacerbating urban stress and mental health crises. A balanced metropolis must incorporate tranquil spaces where residents can decompress, which ultimately fosters a healthier, more productive population.",
+   "Broadly speaking, yes, because their lifestyles and priorities naturally shift. Seniors often seek calm environments to rest and reflect, whereas young adults thrive on excitement, social networking, and dynamic venues. However, I believe today's youth are increasingly recognizing the value of serenity, given the overwhelming digital noise they experience daily, though they might pursue quiet differently, such as through mindfulness apps.",
+   "Technology has fostered an addiction to constant stimulation. With smartphones and smart devices providing instant entertainment, complete silence is often perceived as uncomfortable or unproductive. Many people now feel compelled to fill every quiet moment with podcasts or video feeds. Thus, our tolerance for genuine stillness has diminished, making modern individuals much less adept at sitting quietly with their own thoughts."
+  ]
+ }
+}

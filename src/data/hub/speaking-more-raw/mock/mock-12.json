@@ -1,0 +1,62 @@
+{
+ "id": "mock-12",
+ "title": "IELTS Speaking Mock Test 12",
+ "titleVi": "Đề thi thử số 12",
+ "focusVi": "Luyện tập kỹ năng miêu tả chi tiết di tích lịch sử và phát triển lập luận đa chiều về bảo tồn di sản văn hóa.",
+ "part1": [
+  {
+   "topic": "Travel",
+   "qs": [
+    "Do you prefer travelling alone or in a group?",
+    "What kind of places do you usually like to visit on holiday?",
+    "Have your travel habits changed compared to when you were younger?",
+    "Is there any place you would love to travel to in the future?"
+   ]
+  },
+  {
+   "topic": "Sleep",
+   "qs": [
+    "How many hours of sleep do you typically get each night?",
+    "Do you ever take afternoon naps?",
+    "What do you do if you have trouble falling asleep?",
+    "Do you think sleep patterns differ between older and younger people?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an impressive historical place you have visited.",
+  "bullets": [
+   "where this place is",
+   "what it looks like",
+   "what you did while you were there",
+   "and explain why you found this historical place so impressive"
+  ]
+ },
+ "part3": [
+  "Why do you think it is important for governments to preserve historical sites?",
+  "How can tourism negatively affect historical landmarks?",
+  "Do you think schools should organize more field trips to historical places for students?",
+  "Should entrance fees be charged at public heritage monuments?",
+  "How might digital technology change the way people experience history in the future?"
+ ],
+ "answers": {
+  "p1": [
+   "I definitely prefer travelling in a small group of friends because sharing experiences makes trips much more memorable. For instance, exploring Da Nang together last summer was far more fun than going solo.",
+   "I'm drawn to coastal destinations with quiet beaches because they help me unwind from city stress. Whenever I have a break, I usually head down to coastal towns like Vung Tau to recharge.",
+   "Yes, quite a lot. In the past, I used to prioritize fast-paced sightseeing, whereas now I prefer slow travel, spending several days immersing myself in one neighbourhood, like the Old Quarter in Hanoi.",
+   "I've always dreamed of visiting Iceland to witness the northern lights and dramatic volcanic landscapes. Seeing such rare natural phenomena in person has been at the top of my bucket list for years.",
+   "I usually get around seven hours of sleep every night, which is just enough to keep me productive. If I sleep less than that, especially on busy weekdays, I feel quite sluggish.",
+   "Yes, I try to take a quick twenty-minute power nap after lunch whenever possible. It really refreshes my mind and boosts my concentration during long, demanding work afternoons.",
+   "Whenever insomnia strikes, I avoid looking at screens and listen to ambient acoustic music or read a novel. Doing this calms my racing thoughts and helps me drift off within minutes.",
+   "Certainly. Young people tend to stay up late browsing social media, while older generations wake up remarkably early. My grandparents, for example, are always up by five in the morning for exercise."
+  ],
+  "sample": "I'd like to talk about the ancient town of Hoi An, an exceptionally well-preserved trading port located in central Vietnam that dates back to the fifteenth century. Visually, the town is absolutely stunning. It features narrow pedestrian streets lined with weathered yellow shophouses, ornate wooden Chinese assembly halls, and the iconic Japanese Covered Bridge. At dusk, hundreds of colourful silk lanterns illuminate the riverbanks, casting a magical glow over the water. When I visited last autumn, I spent hours strolling through the alleyways, admiring the centuries-old timber architecture and exploring traditional tea houses. I also took a wooden boat ride along the Thu Bon River during the lantern festival, releasing a small floating candle onto the water. What impressed me most was how seamlessly history blends with daily life there. Unlike sterile open-air museums, Hoi An is still vibrant with local residents living, cooking, and running traditional craft workshops in these ancient buildings. Experiencing such living history and tangible cultural preservation made a profound and lasting impression on me.",
+  "p3": [
+   "In my view, safeguarding historical sites is crucial because they serve as tangible anchors to a nation's cultural identity. These monuments teach citizens about their architectural and social roots. Without adequate state preservation, commercial development would quickly replace irreplaceable heritage with modern high-rises. Therefore, public funding is essential to maintain this vital connection across generations.",
+   "Mass tourism often poses severe threats to structural integrity and local environments. Overcrowding can accelerate physical erosion of fragile masonry, and careless visitors might leave litter or graffiti. For instance, excessive foot traffic at ancient temples frequently causes irreversible foundation wear. Thus, unregulated visitor numbers can degrade the very attractions people come to admire.",
+   "I strongly believe schools should prioritize educational excursions to historic sites. Reading textbooks can feel dry, but standing inside a centuries-old fortress makes historical narratives tangible and engaging for young learners. While virtual resources are convenient, they cannot replicate the sensory impact of experiencing authentic artefacts in person. Hence, field trips offer unmatched educational value.",
+   "Charging reasonable admission fees is justifiable, provided the revenue directly funds conservation and site maintenance. Restoring ancient structures demands skilled craftsmen and expensive materials that municipal budgets cannot always cover. In contrast, making entry entirely free often leads to underfunded facilities and faster degradation. Consequently, modest fees strike the right balance between accessibility and preservation.",
+   "Emerging technologies like virtual reality and 3D reconstructions will fundamentally revolutionize historical engagement. Users will be able to step inside accurately restored digital replicas of ruined monuments from their own living rooms, making history globally accessible. While physical visits remain special, digital exhibits can protect vulnerable sites from foot traffic. Ultimately, technology will democratize and preserve our heritage."
+  ]
+ }
+}

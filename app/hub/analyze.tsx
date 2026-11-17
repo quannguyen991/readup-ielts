@@ -162,7 +162,6 @@ export default function AnalyzePage() {
         eyebrow="IELTS · SPEAKING"
         title="Nói một lần,"
         accent="đo được sáu chiều"
-        desc="Ghi âm tự do hoặc trả lời một đề IELTS. Sau khi dừng, báo cáo chỉ dùng số đo thật từ bài nói: tốc độ, từ đệm, ngập ngừng, độ rõ, ngữ điệu."
         stats={[
           { value: '6', label: 'Chiều được chấm' },
           { value: String(IELTS_PROMPTS.length), label: 'Đề có sẵn' },

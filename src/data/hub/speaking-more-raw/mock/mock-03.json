@@ -1,0 +1,62 @@
+{
+ "id": "mock-03",
+ "title": "IELTS Speaking Mock Test 3",
+ "titleVi": "Đề thi thử số 3",
+ "focusVi": "Luyện tập kỹ năng mở rộng câu trả lời tự nhiên, cấu trúc bài nói mạch lạc và phân tích đa chiều về tác động của công nghệ.",
+ "part1": [
+  {
+   "topic": "Food and Cooking",
+   "qs": [
+    "What kinds of food do you enjoy eating the most?",
+    "Do you prefer eating at home or dining out?",
+    "Did you learn how to cook when you were younger?",
+    "Is it important for children to learn basic cooking skills?"
+   ]
+  },
+  {
+   "topic": "Friends",
+   "qs": [
+    "How often do you spend time with your close friends?",
+    "What qualities do you value most in a good friend?",
+    "Do you prefer having many casual acquaintances or a few close friends?",
+    "Has your friendship circle changed much since childhood?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a piece of technology you find useful in your daily life",
+  "bullets": [
+   "what device or application it is",
+   "how long you have been using it",
+   "what you mainly use it for",
+   "and explain why you find it so useful to you."
+  ]
+ },
+ "part3": [
+  "How has modern technology changed the way people communicate with each other?",
+  "Do you think older generations face significant difficulties in adapting to new technologies?",
+  "To what extent has the reliance on smart devices affected people's cognitive abilities or memory?",
+  "What impact might artificial intelligence have on future employment opportunities?",
+  "Should governments establish stricter regulations on data privacy and technological surveillance?"
+ ],
+ "answers": {
+  "p1": [
+   "I'm a massive fan of traditional home-cooked meals, especially noodle soups like pho. They are nutritious and comforting, and I usually have a bowl at my local eatery every weekend.",
+   "I definitely prefer home-cooked food because it's much healthier and cost-effective. Even though dining out saves time during busy weekdays, preparing dinner at home gives me total control over ingredients.",
+   "Yes, my mother taught me basic kitchen skills around age ten. I started by boiling rice and frying eggs, which really helped me become self-reliant when I went to college.",
+   "Absolutely, cooking is an essential life skill rather than just a chore. Learning simple recipes early fosters independence and helps youngsters make healthier dietary choices instead of relying on fast food.",
+   "I catch up with my closest mates at least once a week. We usually hang out at a quiet café on Sunday afternoons to unwind and chat about our daily routines.",
+   "For me, genuine loyalty and honesty matter the most. A true friend should be someone who offers sincere advice rather than empty flattery, especially when you face difficult challenges in life.",
+   "I much prefer having a tight-knit circle of three or four trustworthy friends. Broad networks are nice for networking, but deep emotional connections require genuine time and energy to maintain.",
+   "Quite significantly, to be honest. While I lost touch with most of my primary school peers due to relocating, I've developed deeper, lasting bonds with friends made during university."
+  ],
+  "sample": "I'd like to talk about an electronic tablet that has become completely indispensable in my everyday life, namely the iPad Air with a stylus pen. I bought this device about two years ago when I started my master's degree, and since then, it has virtually replaced all my paper notebooks. Primarily, I utilize it for annotating digital documents, organizing study schedules, and reading academic journals. Whenever I attend seminars or lectures, I can quickly jot down handwritten notes directly onto PDFs without printing hundreds of sheets. Aside from academic work, I also rely on it for video editing and catching up on educational podcasts in the evening. What makes this piece of technology so remarkably useful to me is its seamless portability combined with incredible efficiency. Instead of lugging around heavy binders, everything I need is synchronized across cloud storage. Furthermore, the ability to search through handwritten text saves me immense time during revision periods. Ultimately, it has streamlined both my productivity and workflow, making learning far more engaging and organized than ever before.",
+  "p3": [
+   "Modern technology has undeniably accelerated interpersonal communication by making it instantaneous regardless of geographical distances. Platforms like messaging apps enable instant sharing of thoughts and media. However, this convenience often comes at the cost of genuine emotional depth, as text messages cannot fully convey tone or body language. Consequently, while our connectivity has expanded exponentially, the intimacy of face-to-face dialogue has somewhat diminished.",
+   "In my view, many seniors do struggle with contemporary devices due to rapid interface changes and steep learning curves. While young digital natives grasp intuitive gestures effortlessly, older individuals frequently worry about making irreversible technical mistakes or falling victim to online scams. Therefore, designing more accessible user interfaces and offering community digital literacy programs are crucial steps to prevent their marginalization.",
+   "Excessive dependence on smart gadgets has noticeably weakened our ability to retain information independently. Since algorithms and search engines store contacts and solve queries instantly, people rarely exercise their memory. For instance, hardly anyone remembers phone numbers today compared to a couple of decades ago. While this frees up mental bandwidth for complex tasks, it undeniably makes everyday recall significantly lazier.",
+   "Artificial intelligence will undoubtedly disrupt the job market by automating routine analytical and clerical duties. Traditional roles in data entry or basic customer support may disappear completely. Nonetheless, this transformation will likely create fresh demand for professionals who can oversee, refine, and ethically manage these automated systems. Thus, workers must continually reskill to remain competitive rather than fear complete obsolescence.",
+   "I firmly believe stricter legal frameworks are urgent to curb unchecked data harvesting by tech conglomerates. Without rigorous oversight, personal information is routinely commercialized or exploited for targeted manipulation without informed consent. Although tech companies often argue that heavy regulation stifles digital innovation, safeguarding citizen privacy must take precedence. Hence, robust legislation like strict privacy laws is essential for maintaining democratic trust."
+  ]
+ }
+}

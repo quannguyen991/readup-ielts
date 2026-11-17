@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-nho-giup-1",
+  "level": "EASY",
+  "title": "Asking a Neighbor for Help",
+  "titleVi": "Nhờ hàng xóm nhận bưu phẩm hộ",
+  "situationVi": "Bạn chuẩn bị phải ra ngoài có việc gấp nhưng người giao hàng sắp mang một kiện hàng quan trọng đến. Bạn sang gặp bác hàng xóm cạnh nhà để nhờ bác nhận giúp.",
+  "task": "You are speaking to your next-door neighbor before leaving your house. Explain why you have to go, politely ask them to receive a package for you, and tell them when you will come pick it up.",
+  "mustVi": [
+   "Giải thích lý do bạn phải ra ngoài đột xuất và thông tin về bưu phẩm",
+   "Lịch sự nhờ hàng xóm nhận và giữ hộ kiện hàng",
+   "Hẹn thời gian cụ thể bạn sẽ qua lấy và cảm ơn họ"
+  ],
+  "phrases": [
+   {
+    "en": "Could you do me a favor?",
+    "vi": "Bác/bạn có thể giúp cháu/tôi một việc được không?",
+    "ex": "Could you do me a quick favor this afternoon?"
+   },
+   {
+    "en": "I was wondering if you could...",
+    "vi": "Cháu đang tự hỏi liệu bác có thể...",
+    "ex": "I was wondering if you could take in a parcel for me."
+   },
+   {
+    "en": "Something urgent came up",
+    "vi": "Có việc đột xuất phát sinh",
+    "ex": "I have to leave right now because something urgent came up."
+   },
+   {
+    "en": "It has already been paid for",
+    "vi": "Hàng này đã được thanh toán trước rồi",
+    "ex": "Don't worry, the delivery has already been paid for."
+   },
+   {
+    "en": "I'll drop by to pick it up",
+    "vi": "Cháu sẽ ghé qua lấy",
+    "ex": "I'll drop by to pick it up around 6 PM."
+   },
+   {
+    "en": "I really appreciate your help",
+    "vi": "Cháu thực sự rất cảm kích sự giúp đỡ của bác",
+    "ex": "Thank you so much, I really appreciate your help."
+   }
+  ],
+  "sample": "Hi Mrs. Green, good morning! I'm really sorry to bother you, but could you do me a quick favor? Something urgent came up at work, so I have to leave right now. However, I'm expecting an important delivery in about an hour. The item has already been paid for, so you just need to sign for it if necessary. Would you mind keeping it inside your hallway until I get back? I should be home by 6 PM, and I'll drop by immediately to pick it up. I truly appreciate your help!",
+  "tipVi": "Khi nhờ vả việc cá nhân, luôn bắt đầu bằng lời xin lỗi vì đã làm phiền và nói rõ hàng đã thanh toán để người nhận hộ an tâm."
+ },
+ {
+  "id": "gt-nho-giup-2",
+  "level": "EASY",
+  "title": "Offering Assistance to a Colleague",
+  "titleVi": "Chủ động đề nghị giúp đỡ đồng nghiệp mới",
+  "situationVi": "Một đồng nghiệp mới vào công ty đang loay hoay in ấn và sắp xếp tài liệu trước giờ họp quan trọng. Bạn tiến lại gần và chủ động ngỏ lời hỗ trợ.",
+  "task": "You see a new colleague struggling with the office equipment before an upcoming meeting. Approach them warmly, offer your help, and suggest specific ways you can assist them.",
+  "mustVi": [
+   "Chào hỏi thân thiện và nhận biết khó khăn người đó đang gặp phải",
+   "Đưa ra lời đề nghị giúp đỡ lịch sự, tạo cảm giác thoải mái",
+   "Chỉ ra việc cụ thể bạn có thể làm giúp để tiết kiệm thời gian"
+  ],
+  "phrases": [
+   {
+    "en": "Do you need a hand with that?",
+    "vi": "Bạn có cần mình phụ một tay không?",
+    "ex": "Do you need a hand with that printer?"
+   },
+   {
+    "en": "I couldn't help but notice...",
+    "vi": "Mình vô tình để ý thấy...",
+    "ex": "I couldn't help but notice you're having trouble with the scanner."
+   },
+   {
+    "en": "Would you like me to...?",
+    "vi": "Bạn có muốn mình... giúp không?",
+    "ex": "Would you like me to make those photocopies for you?"
+   },
+   {
+    "en": "It can be a bit tricky at first",
+    "vi": "Lúc đầu cái này hơi khó dùng một chút",
+    "ex": "This machine can be a bit tricky at first."
+   },
+   {
+    "en": "Feel free to let me know",
+    "vi": "Cứ thoải mái nói với mình nhé",
+    "ex": "If you need anything else, feel free to let me know."
+   },
+   {
+    "en": "Why don't I take care of...?",
+    "vi": "Để mình phụ trách phần... cho nhé?",
+    "ex": "Why don't I take care of the binding while you double-check the slides?"
+   }
+  ],
+  "sample": "Hi John, welcome to the team! I couldn't help but notice that you're working on the handouts for the 10 o'clock meeting. Do you need a hand with that printer? This old machine can be a bit tricky at first, especially when switching paper trays. Would you like me to show you how to scan these double-sided pages? Or better yet, why don't I take care of printing and stapling the handouts while you double-check your presentation notes? Feel free to let me know if you need any other help!",
+  "tipVi": "Hãy dùng các câu hỏi mang tính gợi ý nhẹ nhàng như 'Do you need a hand?' thay vì khẳng định họ đang làm sai để tránh gây bối rối."
+ },
+ {
+  "id": "gt-nho-giup-3",
+  "level": "MEDIUM",
+  "title": "Declining an After-Work Invitation",
+  "titleVi": "Từ chối khéo lời mời liên hoan sau giờ làm",
+  "situationVi": "Đồng nghiệp rủ bạn đi liên hoan ăn uống vào tối nay để ăn mừng dự án thành công. Bạn không thể đi vì đã có hẹn ăn tối mừng sinh nhật mẹ.",
+  "task": "You are talking to a teammate who just invited you to celebratory drinks tonight. Thank them sincerely, decline politely with a clear reason, and propose a specific alternative time to catch up.",
+  "mustVi": [
+   "Cảm ơn vì lời mời và chúc mừng thành quả dự án của cả nhóm",
+   "Khéo léo từ chối và giải thích lý do cá nhân chính đáng",
+   "Đưa ra đề xuất hẹn lại vào một dịp cụ thể khác (rain check)"
+  ],
+  "phrases": [
+   {
+    "en": "I'd love to, but unfortunately...",
+    "vi": "Mình rất muốn tham gia, nhưng tiếc là...",
+    "ex": "I'd love to join, but unfortunately I have a prior commitment."
+   },
+   {
+    "en": "Thank you so much for inviting me",
+    "vi": "Cảm ơn bạn rất nhiều vì đã rủ mình",
+    "ex": "Thank you so much for inviting me to dinner tonight."
+   },
+   {
+    "en": "I already have plans with...",
+    "vi": "Mình đã có kế hoạch từ trước với...",
+    "ex": "I already have plans with my family tonight."
+   },
+   {
+    "en": "Can I take a rain check?",
+    "vi": "Cho mình hẹn dịp khác được không?",
+    "ex": "Can I take a rain check on the drinks this evening?"
+   },
+   {
+    "en": "How about we grab lunch next week?",
+    "vi": "Hay là tuần sau tụi mình cùng đi ăn trưa nhé?",
+    "ex": "How about we grab lunch next Tuesday instead?"
+   },
+   {
+    "en": "Have a wonderful time tonight",
+    "vi": "Chúc mọi người tối nay đi chơi thật vui vẻ",
+    "ex": "Have a wonderful time tonight and celebrate hard!"
+   }
+  ],
+  "sample": "Thanks so much for inviting me, Sarah! You guys did an incredible job on the project launch today. I'd love to celebrate with the team, but unfortunately, I won't be able to make it tonight. It's actually my mother's birthday, and we planned a family dinner weeks ago, so I have to head straight home after work. Can I take a rain check this time? How about we grab lunch together next Tuesday? My treat! Have a wonderful time with everyone tonight, and please toast a drink for me!",
+  "tipVi": "Áp dụng công thức 'khen ngợi - từ chối kèm lý do - đề xuất thời gian khác' để giữ mối quan hệ đồng nghiệp luôn gắn kết."
+ },
+ {
+  "id": "gt-nho-giup-4",
+  "level": "MEDIUM",
+  "title": "Requesting a Project Deadline Extension",
+  "titleVi": "Xin gia hạn thời hạn nộp dự án",
+  "situationVi": "Bạn đang làm báo cáo phân tích số liệu cho quản lý trực tiếp, nhưng bên đối tác thứ ba cung cấp dữ liệu bị chậm và có sai sót. Bạn cần xin gia hạn thêm hai ngày.",
+  "task": "You are speaking directly with your manager. Explain your current progress and the unexpected technical issue, ask politely for a deadline extension, and present a clear plan for final submission.",
+  "mustVi": [
+   "Báo cáo tiến độ hiện tại và giải thích sự cố khách quan gây chậm trễ",
+   "Lịch sự đề xuất lùi hạn nộp thêm hai ngày và nêu lý do về chất lượng công việc",
+   "Cam kết thời điểm bàn giao chính xác cùng kế hoạch hoàn thành cụ thể"
+  ],
+  "phrases": [
+   {
+    "en": "I was hoping to discuss the deadline",
+    "vi": "Em muốn xin phép trao đổi về thời hạn nộp bài",
+    "ex": "I was hoping to discuss the deadline for the market report."
+   },
+   {
+    "en": "We ran into an unexpected delay",
+    "vi": "Bên mình gặp phải sự chậm trễ ngoài dự tính",
+    "ex": "We ran into an unexpected delay with our third-party data provider."
+   },
+   {
+    "en": "Would it be possible to get an extension until...?",
+    "vi": "Liệu có thể lùi thời hạn đến... được không ạ?",
+    "ex": "Would it be possible to get an extension until Friday afternoon?"
+   },
+   {
+    "en": "To ensure the highest accuracy",
+    "vi": "Để đảm bảo tính chính xác cao nhất",
+    "ex": "To ensure the highest accuracy, we need another day to verify these metrics."
+   },
+   {
+    "en": "The draft is roughly 80% complete",
+    "vi": "Bản nháp hiện đã hoàn thành khoảng 80%",
+    "ex": "The draft is roughly 80% complete right now."
+   },
+   {
+    "en": "I'm fully committed to delivering...",
+    "vi": "Em hoàn toàn cam kết sẽ bàn giao...",
+    "ex": "I'm fully committed to delivering the finalized report by Friday at 3 PM."
+   }
+  ],
+  "sample": "Good morning, David. I was hoping to discuss the deadline for the quarterly market report. The draft is roughly 80% complete, but we ran into an unexpected delay receiving raw analytics from our external vendor. A few numbers also look inconsistent, so to ensure the highest data accuracy before presenting to the client, would it be possible to get a two-day extension until Friday afternoon? I will spend tomorrow cross-checking the statistics and finalizing the slides. I'm fully committed to delivering a flawless report by Friday at 3 PM. Thank you for your understanding.",
+  "tipVi": "Nhấn mạnh rằng việc lùi hạn là nhằm đảm bảo tính chính xác và chất lượng đầu ra cho công ty, tránh trình bày như một sự chậm trễ cá nhân."
+ },
+ {
+  "id": "gt-nho-giup-5",
+  "level": "HARD",
+  "title": "Declining an Unreasonable Workplace Favor",
+  "titleVi": "Từ chối khéo lời nhờ vả làm hộ việc của đồng nghiệp",
+  "situationVi": "Một đồng nghiệp thân cùng nhóm muốn nhờ bạn gánh toàn bộ phần việc làm slide và báo cáo tài chính cuối tuần này để họ có thể đi du lịch nghỉ dưỡng cá nhân.",
+  "task": "You are speaking with a close coworker who wants you to take over their heavy weekend assignment. Decline their request firmly yet politely, explain your own constraints, and offer constructive alternative advice.",
+  "mustVi": [
+   "Thể hiện sự lắng nghe nhưng từ chối một cách rõ ràng, dứt khoát",
+   "Nêu rõ giới hạn công việc của bản thân và tính chất công bằng trong công việc",
+   "Đưa ra giải pháp mang tính xây dựng thay vì gánh vác hộ toàn bộ"
+  ],
+  "phrases": [
+   {
+    "en": "I completely understand why you're asking, but...",
+    "vi": "Mình rất hiểu lý do bạn nhờ, nhưng...",
+    "ex": "I completely understand why you're asking, but I won't be able to take that on."
+   },
+   {
+    "en": "I'm simply not in a position to...",
+    "vi": "Mình thật sự không ở trong hoàn cảnh có thể...",
+    "ex": "I'm simply not in a position to do the slides for you this weekend."
+   },
+   {
+    "en": "My plate is completely full",
+    "vi": "Lịch làm việc của mình đã kín mít rồi",
+    "ex": "My plate is completely full with my own project deliverables."
+   },
+   {
+    "en": "It wouldn't be fair to either of us",
+    "vi": "Làm vậy sẽ không công bằng cho cả hai chúng ta",
+    "ex": "Taking over your financial deck wouldn't be fair to either of us."
+   },
+   {
+    "en": "What I can offer is to...",
+    "vi": "Điều mình có thể hỗ trợ là...",
+    "ex": "What I can offer is to review your draft for thirty minutes on Monday morning."
+   },
+   {
+    "en": "Your best bet would be to...",
+    "vi": "Phương án tốt nhất cho bạn lúc này là...",
+    "ex": "Your best bet would be to notify the manager early and ask for an extension."
+   }
+  ],
+  "sample": "Listen, Mark, I completely understand that you've been looking forward to this trip, but I'm really sorry, I won't be able to take over your presentation and financial slides this weekend. My own plate is completely full with the audit preparation, and it wouldn't be fair to take on your core deliverables when you know the figures best. What I can offer is to spend thirty minutes reviewing your outline on Friday afternoon before you leave, or your best bet would be talking directly to Amanda to renegotiate the deadline. I hope you understand my position.",
+  "tipVi": "Giữ giọng điệu bình tĩnh, biểu đạt sự thấu hiểu trước nhưng tuyệt đối không dùng từ ngữ mập mờ (như 'maybe', 'I'll try') để thiết lập ranh giới rõ ràng."
+ }
+]

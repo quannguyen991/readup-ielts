@@ -99,7 +99,6 @@ export default function HubExplore() {
         eyebrow="IELTS · SPEAKING"
         title="Khám phá bài nói mới,"
         accent="hợp với những gì bạn đã luyện"
-        desc="Gợi ý theo chủ đề bạn từng nói, tám công cụ AI, các bộ học tập có tiến độ, và tình huống do chính bạn đặt."
         stats={[
           { value: String(talks.length), label: 'Cuộc trò chuyện' },
           { value: String(TOOLS.length), label: 'Công cụ AI' },
@@ -113,12 +112,10 @@ export default function HubExplore() {
           <Pressable accessibilityRole="button" onPress={pickSurprise} style={({ hovered }: Hover) => ({ flexBasis: 260, flexGrow: 1, gap: 8, padding: 16, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#F3E9FF', ...hubLift(hovered) }) as never}>
             <Text style={{ fontSize: 34 }}>🎁</Text>
             <Text style={{ color: HUB_UI.navy, fontSize: 17, fontWeight: '900' }}>{L('Làm tôi ngạc nhiên', 'Surprise me')}</Text>
-            <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }}>{L('Máy chọn ngẫu nhiên một tình huống công sở hoặc đời sống để bạn xử lý.', 'A random work or daily-life situation to handle.')}</Text>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={() => setCreatorOpen(true)} style={({ hovered }: Hover) => ({ flexBasis: 260, flexGrow: 1, gap: 8, padding: 16, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#E4EEFF', ...hubLift(hovered) }) as never}>
             <Text style={{ fontSize: 34 }}>🔮</Text>
             <Text style={{ color: HUB_UI.navy, fontSize: 17, fontWeight: '900' }}>{L('Tạo của riêng tôi', 'Create my own')}</Text>
-            <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }}>{L('Đặt tên nhân vật AI, vai trò và bối cảnh, rồi nhập vai ngay.', 'Name the AI character, role and setting, then start.')}</Text>
           </Pressable>
         </View>
       </HubPanel>
@@ -144,7 +141,6 @@ export default function HubExplore() {
                 {t.tag ? <HubTag label={t.tag} color="#7C3AED" bg="#EDE9FE" /> : null}
               </View>
               <Text style={{ color: HUB_UI.navy, fontSize: 15.5, fontWeight: '900' }}>{t.title}</Text>
-              <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }}>{t.desc}</Text>
             </Pressable>
           ))}
         </ScrollView>
@@ -160,7 +156,6 @@ export default function HubExplore() {
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <Text style={{ color: HUB_UI.navy, fontSize: 15.5, fontWeight: '900' }}>{st.title}</Text>
-                  <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '600' }}>{st.note}</Text>
                 </View>
                 <Icon name="chevron-right" size={16} color={HUB_UI.muted} />
               </View>

@@ -42,7 +42,10 @@ const AI_TOOLS: {
 
 /** Chế độ luyện nói và các khu còn lại của Hub (trước đây nằm ở thanh tab dưới). */
 const MODES: { title: string; desc: string; art: (size: number) => React.ReactNode; route: string; bg: string }[] = [
-  { title: 'Học', desc: 'Bài học theo từng kỹ năng', art: (s) => <CuteBook size={s} />, route: '/hub/learn', bg: '#DFEEFF' },
+  { title: 'Học', desc: '', art: (s) => <CuteBook size={s} />, route: '/hub/learn', bg: '#DFEEFF' },
+  { title: 'Đề thi thử', desc: '', art: (s) => <CuteStar size={s} />, route: '/hub/mock', bg: '#FFE9E0' },
+  { title: 'Nói giao tiếp', desc: '', art: (s) => <CuteChat size={s} />, route: '/hub/giao-tiep', bg: '#DDF7E8' },
+  { title: 'Luyện theo Part', desc: 'Part 1, 2, 3 đúng như thi', art: (s) => <CuteMic size={s} />, route: '/hub/parts', bg: '#E4EEFF' },
   { title: 'Nói chuyện', desc: 'Trò chuyện thật, không bài học', art: (s) => <CuteChat size={s} />, route: '/hub/talk', bg: '#FFE9E0' },
   { title: 'Gia sư', desc: 'Hơn 25 gia sư AI theo mục tiêu', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', bg: '#FFF3CF' },
   { title: 'Khám phá', desc: 'Tìm nội dung và bài luyện mới', art: (s) => <CuteMagnifier size={s} />, route: '/hub/explore', bg: '#EEE6FF' },
@@ -182,7 +185,6 @@ export default function HubToday() {
                   {tool.art(wide ? 72 : 60)}
                 </View>
                 <Text style={{ color: INK, fontSize: 15, fontWeight: '900', marginTop: 'auto' }}>{tool.title}</Text>
-                <Text style={{ color: INK, opacity: 0.75, fontSize: 13, fontWeight: '600', lineHeight: 18 }}>{tool.desc}</Text>
                 <View style={{ alignSelf: 'flex-end', width: 34, height: 34, borderRadius: 17, backgroundColor: 'rgba(255,255,255,0.95)', alignItems: 'center', justifyContent: 'center', marginTop: 4 }}>
                   <Icon name="arrow-right" size={14} color={INK} />
                 </View>
@@ -216,7 +218,6 @@ export default function HubToday() {
                 </View>
               </View>
               <Text style={{ color: INK, fontSize: 15, fontWeight: '900' }}>{m.title}</Text>
-              <Text style={{ color: INK_SOFT, fontSize: 13, fontWeight: '600', lineHeight: 18 }}>{m.desc}</Text>
             </Pressable>
           ))}
         </ScrollView>

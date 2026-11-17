@@ -1,0 +1,62 @@
+{
+ "id": "mock-14",
+ "title": "IELTS Speaking Mock Test 14",
+ "titleVi": "Đề thi thử số 14",
+ "focusVi": "Luyện tập kỹ năng kể chuyện giàu cảm xúc ở Part 2 và thảo luận trừu tượng đa chiều về chủ đề hạnh phúc ở Part 3.",
+ "part1": [
+  {
+   "topic": "Money",
+   "qs": [
+    "Do you prefer paying for things with cash or card?",
+    "Did you save money when you were a child?",
+    "Do you think people in your country spend too much money on shopping?",
+    "What was the last thing you bought that was quite expensive?"
+   ]
+  },
+  {
+   "topic": "News",
+   "qs": [
+    "How do you usually get your daily news?",
+    "Do you prefer reading local news or international news?",
+    "Did you read the newspaper often when you were younger?",
+    "Do you think information in the news is always trustworthy?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an event that made you feel really happy",
+  "bullets": [
+   "what the event was",
+   "when and where it happened",
+   "who you were with",
+   "and explain why this event brought you so much happiness."
+  ]
+ },
+ "part3": [
+  "What kinds of events usually make people happy in your culture?",
+  "Do you think money can buy lasting happiness?",
+  "Why do some people find it difficult to stay positive nowadays?",
+  "How has the way people celebrate milestones changed compared to the past?",
+  "Do you believe older generations are generally happier than younger ones?"
+ ],
+ "answers": {
+  "p1": [
+   "I definitely prefer card payments because they are far more convenient and secure. Carrying physical banknotes feels risky nowadays, especially when commuting around busy cities like Hanoi on crowded buses.",
+   "Yes, I did. My parents bought me a ceramic piggy bank, and I regularly dropped spare change into it to buy comic books, which taught me the value of delayed gratification early on.",
+   "To some extent, yes, particularly young individuals who follow online shopping trends. Many people frequently purchase fast fashion items through e-commerce apps simply because flash sales create an artificial sense of urgency.",
+   "A couple of months ago, I invested in a premium noise-cancelling headset. It cost a substantial portion of my monthly salary, but it significantly boosts my concentration when working in noisy cafes.",
+   "I mostly rely on digital news aggregators and social media feeds on my smartphone. Scrolling through verified channels during my morning commute allows me to catch up on breaking headlines within minutes.",
+   "I generally lean towards international news because global affairs give me a broader perspective on economics. However, I still check local updates regarding city traffic and weather conditions before stepping out.",
+   "Hardly ever, to be honest. As a child, I found traditional print newspapers quite dry and text-heavy, so I only glanced at the entertainment section or sports photos on weekend editions.",
+   "Not always, unfortunately. Due to the rise of sensationalist journalism and unverified online posts, readers can easily be misled unless they cross-reference information across multiple reputable, mainstream news outlets."
+  ],
+  "sample": "I'd like to share a story about a memorable celebration that filled me with immense joy—my sister’s university graduation ceremony last summer in Da Nang. The event took place in July at her university auditorium. My entire family had booked flights weeks in advance to be there in person. We gathered in the main hall alongside hundreds of proud parents and excited graduates. Seeing my sister walk across the stage in her graduation gown to receive her engineering degree was deeply moving. She had faced numerous setbacks during her academic journey, including balancing part-time jobs with grueling exam sessions, so reaching this milestone was a huge personal triumph for her. What made me truly ecstatic was seeing the sheer relief and radiant pride on her face as she looked toward our seats and waved. Afterwards, we enjoyed a delightful seafood dinner by My Khe Beach, reminiscing about her early school days and laughing together. That heartfelt family reunion and witnessing my sister's hard work finally pay off created a warm, unforgettable memory that I will always cherish.",
+  "p3": [
+   "In Vietnam, collective celebrations that bring families together typically bring the greatest happiness. Major occasions such as Lunar New Year, weddings, or longevity parties for grandparents hold profound cultural significance. Unlike individual triumphs, these community gatherings allow relatives to bond, share blessings, and reaffirm family solidarity, which creates a deep and lasting sense of emotional security for everyone involved.",
+   "In my view, money provides comfort and eliminates financial anxiety, but it cannot purchase authentic, long-term contentment. While wealth allows people to buy luxury goods or travel comfortably, true fulfillment stems from meaningful relationships and personal growth. Without deep connections or purpose, material wealth often produces fleeting satisfaction rather than genuine joy, meaning financial security is merely a foundation, not the ultimate source of happiness.",
+   "A primary factor is constant exposure to curated, unrealistic lifestyles on social media, which fosters unhealthy comparisons and inadequacy. Furthermore, modern urban life imposes heavy workplace competition and escalating living costs, resulting in chronic stress. When individuals continuously juggle intense deadlines without adequate downtime or real-life social support, maintaining an optimistic mindset becomes remarkably challenging for many city dwellers.",
+   "Celebrations have become noticeably more lavish and individualized. Decades ago, milestones like birthdays or promotions were intimate home gatherings with home-cooked meals and close relatives. Nowadays, influenced by digital media, people often rent banquet venues or travel to resort destinations to stage photogenic events. While modern festivities are undeniably more spectacular, they sometimes lack the simple warmth and close intimacy of traditional family feasts.",
+   "Generally speaking, seniors often report higher emotional stability because they have overcome major life hurdles and learned acceptance. In contrast, younger generations face fierce career competition, housing affordability crises, and digital distractions that induce persistent anxiety. Of course, elderly individuals may suffer from physical ailments or isolation, but their simpler expectations and emotional maturity usually grant them greater peace of mind than restless youth."
+  ]
+ }
+}

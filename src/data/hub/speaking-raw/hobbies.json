@@ -1,0 +1,117 @@
+{
+ "id": "hobbies",
+ "title": "Hobbies",
+ "titleVi": "Sở thích",
+ "tipVi": "Thay vì lặp lại cấu trúc 'In my free time, I like...', hãy dùng các diễn đạt linh hoạt như 'I tend to unwind by...' hoặc 'I am keen on...' kết hợp làm rõ cảm xúc và lợi ích tinh thần.",
+ "part1": [
+  "Do you have any hobbies that you prefer doing alone rather than with others?",
+  "Did you spend your leisure time differently when you were a child?",
+  "Is there a new hobby or creative pursuit you would like to take up soon?"
+ ],
+ "part2": {
+  "prompt": "Describe a hobby or leisure activity you recently took up",
+  "bullets": [
+   "what the activity is",
+   "how you first learned about it",
+   "how often you engage in it",
+   "and explain why this hobby has become meaningful to you"
+  ]
+ },
+ "part3": [
+  "Why do some people find it difficult to maintain a regular hobby in modern society?",
+  "To what extent can hobbies influence an individual's personal or professional growth?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "take up",
+    "vi": "bắt đầu tham gia một sở thích hoặc thói quen mới",
+    "ex": "I decided to take up indoor climbing to build upper body strength."
+   },
+   {
+    "en": "unwind after a long day",
+    "vi": "thư giãn sau một ngày dài làm việc",
+    "ex": "Listening to jazz vinyl records helps me unwind after a long day at the office."
+   },
+   {
+    "en": "an avid reader",
+    "vi": "người say mê đọc sách",
+    "ex": "Being an avid reader, she finishes at least two novels every month."
+   },
+   {
+    "en": "blow off steam",
+    "vi": "giải tỏa áp lực, xả hơi",
+    "ex": "Jogging around the lake is my favorite way to blow off steam on weekends."
+   },
+   {
+    "en": "lose track of time",
+    "vi": "mải mê đến mức quên hết thời gian",
+    "ex": "Whenever I paint with watercolours, I completely lose track of time."
+   },
+   {
+    "en": "creative outlet",
+    "vi": "lối thoát sáng tạo, kênh thể hiện sự sáng tạo",
+    "ex": "Baking artisan sourdough bread serves as an essential creative outlet for him."
+   },
+   {
+    "en": "dabble in",
+    "vi": "tập tành, tham gia thử nghiệm một lĩnh vực nhưng không quá chuyên sâu",
+    "ex": "I like to dabble in film photography, though I still use automatic settings."
+   },
+   {
+    "en": "therapeutic",
+    "vi": "mang tính trị liệu, giúp thư thái tâm trí",
+    "ex": "Tending to my miniature balcony garden has a remarkably therapeutic effect on my mood."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu sở thích mới bắt đầu gần đây (làm gốm thủ công - pottery) và thời điểm bắt đầu thử sức.",
+   "Ý 1: Hoàn cảnh biết đến bộ môn này (xem một đoạn phóng sự thủ công trên mạng) và buổi học thử nghiệm đầu tiên tại xưởng.",
+   "Ý 2: Tần suất tham gia (sáng thứ Bảy hàng tuần) và các công đoạn cụ thể bạn thực hiện (xoay bàn gốm, tạo hình cốc, tráng men).",
+   "Kết: Lý do sở thích này trở nên ý nghĩa (tách biệt khỏi màn hình điện tử, rèn luyện tính kiên nhẫn và niềm tự hào khi tạo ra sản phẩm thực tế)."
+  ],
+  "sample": "About six months ago, I decided to take up pottery making, which has surprisingly become my favorite pastime. I first stumbled upon it while watching an artisanal craft documentary on YouTube, and seeing the potter transform wet clay into elegant ceramics completely captivated me. I signed up for a beginner workshop at a local studio the very next weekend.\n\nNowadays, I carve out three hours every Saturday morning to attend studio sessions. During these classes, I practice wheel throwing and hand-building techniques, crafting simple items like coffee mugs and small plant pots.\n\nThis hobby has become deeply meaningful to me for a couple of key reasons. Firstly, it offers a wonderful creative outlet away from digital screens. Working with my hands requires absolute concentration, which helps me completely lose track of time and blow off steam after stressful workweeks. More importantly, pottery has taught me patience; clay is unforgiving, and when a pot collapses, you simply have to center yourself and begin anew. Taking home a finished, glazed cup that I crafted with my own hands gives me an immense sense of fulfillment.",
+  "p1": [
+   {
+    "q": "Do you have any hobbies that you prefer doing alone rather than with others?",
+    "a": "Definitely. I really enjoy sketching architectural buildings in my sketchbook by myself. It requires deep focus, and being alone allows me to immerse myself fully in the process without feeling self-conscious or distracted by conversation."
+   },
+   {
+    "q": "Did you spend your leisure time differently when you were a child?",
+    "a": "Yes, quite drastically. As a kid, I spent countless hours playing traditional street games with neighborhood friends, whereas nowadays my downtime revolves around solitary indoor pastimes like reading or listening to podcasts after tiring workdays."
+   },
+   {
+    "q": "Is there a new hobby or creative pursuit you would like to take up soon?",
+    "a": "I would love to learn sourdough baking in the coming months. Crafting naturally fermented bread seems incredibly satisfying, and I really want to master the art of kneading dough to make fresh breakfasts at home."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people find it difficult to maintain a regular hobby in modern society?",
+    "a": "In my opinion, the frantic pace of modern life is the main culprit. Many professionals juggle heavy workloads with domestic chores, leaving little mental energy for personal pursuits. Moreover, the prevalence of smartphones tempts people into passive entertainment like scrolling social media rather than actively cultivating a hobby. Consequently, meaningful leisure activities are often sidelined due to sheer cognitive fatigue and lack of disciplined schedule management."
+   },
+   {
+    "q": "To what extent can hobbies influence an individual's personal or professional growth?",
+    "a": "I believe personal pastimes have a profound impact on one's development. Engaging in team sports or strategy games fosters critical soft skills like teamwork, problem-solving, and adaptability, which directly translate to the workplace. Furthermore, creative hobbies like painting or photography promote lateral thinking and emotional resilience. While some view leisure as unproductive downtime, it actually builds a well-rounded mindset that enhances professional competence over the long run."
+   }
+  ],
+  "mistakesVi": [
+   "Dịch nghĩa đen 'chơi sở thích' thành 'play a hobby' (sai ngữ pháp); cần dùng 'take up a hobby', 'pursue a pastime' hoặc 'engage in a leisure activity'.",
+   "Lặp lại từ 'hobby' quá nhiều lần trong một câu trả lời thay vì linh hoạt dùng các từ đồng nghĩa như 'recreational activity', 'pursuit', 'downtime' hoặc 'pastime'.",
+   "Kể tên những thói quen thụ động đơn thuần như 'sleeping' hay 'surfing Facebook' như một hobby thực thụ mà thiếu đi sự phân tích về mục đích, kỹ năng hoặc giá trị tinh thần."
+  ],
+  "p1More": [
+   "What do you usually do when you have free time on the weekend?",
+   "Which hobby did you enjoy the most during your teenage years?",
+   "Do you think hobbies should be relaxing or mentally challenging?",
+   "Have you ever shared a hobby with a family member?",
+   "Are there any hobbies that are particularly popular among young people in your country?"
+  ],
+  "p3More": [
+   "How has technological advancement transformed the way people spend their spare time?",
+   "Should schools allocate more time and resources toward helping children discover personal hobbies?",
+   "Why do some people turn their personal hobbies into full-time businesses, and what are the drawbacks?",
+   "Do you agree that modern society places too much emphasis on productivity at the expense of leisure?"
+  ]
+ }
+}

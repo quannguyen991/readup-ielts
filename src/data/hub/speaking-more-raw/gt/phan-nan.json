@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-phan-nan-1",
+  "level": "EASY",
+  "title": "Wrong Order at Coffee Shop",
+  "titleVi": "Đổi đồ uống bị nhầm ở quán cà phê",
+  "situationVi": "Bạn gọi một ly trà đào ít đường mang đi, nhưng nhân viên lại đưa nhầm một ly trà sữa trân châu. Hãy nói chuyện trực tiếp với nhân viên pha chế để đổi lại.",
+  "task": "Excuse yourself politely and inform the barista that you received the wrong drink. State clearly what you originally ordered and ask them to remake it for you.",
+  "mustVi": [
+   "Lịch sự chỉ ra nhân viên đã đưa nhầm đồ uống so với món bạn gọi.",
+   "Nêu rõ món bạn đã đặt ban đầu (loại nước, lượng đường hoặc đá).",
+   "Đề nghị nhân viên làm lại hoặc đổi sang món đúng cho bạn."
+  ],
+  "phrases": [
+   {
+    "en": "Excuse me, I think there has been a mix-up.",
+    "vi": "Xin lỗi, tôi nghĩ có chút nhầm lẫn ở đây.",
+    "ex": "Excuse me, I think there has been a mix-up with my order."
+   },
+   {
+    "en": "This isn't what I ordered.",
+    "vi": "Đây không phải món tôi đã gọi.",
+    "ex": "I'm sorry, but this isn't what I ordered just now."
+   },
+   {
+    "en": "I actually ordered...",
+    "vi": "Thực ra tôi đã gọi món...",
+    "ex": "I actually ordered an iced peach tea with less sugar."
+   },
+   {
+    "en": "Would you mind checking the receipt?",
+    "vi": "Bạn có phiền kiểm tra lại hóa đơn không?",
+    "ex": "Would you mind checking the receipt to confirm my order?"
+   },
+   {
+    "en": "Could you remake this for me?",
+    "vi": "Bạn có thể làm lại món này giúp tôi được không?",
+    "ex": "Could you remake this for me when you have a moment?"
+   },
+   {
+    "en": "Thank you, I appreciate your help.",
+    "vi": "Cảm ơn bạn, tôi rất cảm kích sự giúp đỡ của bạn.",
+    "ex": "Thank you, I appreciate your help and quick response."
+   }
+  ],
+  "sample": "Excuse me, sorry to bother you, but I think there has been a slight mix-up with my order. I just picked this cup up from the counter, but it looks like brown sugar milk tea. I actually ordered an iced peach tea with 50% sugar and less ice for takeaway. Here is my receipt from a few minutes ago. I understand the cafe is quite crowded right now, but would you mind remaking it for me according to my ticket? I have to catch a bus soon, so I'd really appreciate your quick help. Thank you so much!",
+  "tipVi": "Hãy giữ thái độ nhẹ nhàng và dùng từ đệm như 'Excuse me' hoặc 'I think there has been a mix-up' thay vì đổ lỗi ngay cho nhân viên."
+ },
+ {
+  "id": "gt-phan-nan-2",
+  "level": "EASY",
+  "title": "Apologising for Delayed Delivery",
+  "titleVi": "Xin lỗi khách hàng vì đơn giao trễ",
+  "situationVi": "Khách hàng gọi điện phàn nàn vì đơn hàng quần áo mua online đã trễ hai ngày so với lịch hẹn. Bạn là nhân viên chăm sóc khách hàng, hãy giải thích và đưa ra giải pháp.",
+  "task": "You are a customer support agent answering an upset customer. Acknowledge the delay sincerely, explain the cause briefly, and offer a clear resolution to satisfy them.",
+  "mustVi": [
+   "Chân thành gửi lời xin lỗi vì sự bất tiện do đơn hàng bị chậm trễ.",
+   "Giải thích ngắn gọn lý do giao hàng trễ (thời tiết hoặc đơn vị vận chuyển quá tải).",
+   "Đưa ra giải pháp cụ thể (thúc đẩy giao ngay trong ngày, tặng mã giảm giá)."
+  ],
+  "phrases": [
+   {
+    "en": "I truly apologise for the inconvenience.",
+    "vi": "Tôi thành thật xin lỗi vì sự bất tiện này.",
+    "ex": "I truly apologise for the inconvenience caused by this delay."
+   },
+   {
+    "en": "Let me check your tracking number.",
+    "vi": "Để tôi kiểm tra mã vận đơn của quý khách.",
+    "ex": "Let me check your tracking number in our delivery database."
+   },
+   {
+    "en": "Due to unexpected delivery backlog...",
+    "vi": "Do đơn vị vận chuyển bị ùn ứ ngoài dự kiến...",
+    "ex": "Due to unexpected delivery backlog, packages were held up."
+   },
+   {
+    "en": "We are expediting your parcel today.",
+    "vi": "Chúng tôi đang thúc đẩy gửi kiện hàng của bạn ngay hôm nay.",
+    "ex": "We are expediting your parcel today via express courier."
+   },
+   {
+    "en": "As a gesture of goodwill...",
+    "vi": "Như một món quà thiện chí / cử chỉ chuộc lỗi...",
+    "ex": "As a gesture of goodwill, we will waive your delivery charge."
+   },
+   {
+    "en": "Thank you for your patience.",
+    "vi": "Cảm ơn sự kiên nhẫn của quý khách.",
+    "ex": "Thank you for your patience while we resolve this issue."
+   }
+  ],
+  "sample": "Good morning, Ms. Lan. I truly apologise for the inconvenience caused by the delay of your order. I completely understand your frustration since you expected it two days ago. I just checked our system, and due to an unexpected courier backlog, several parcels in your area were delayed. However, we have already contacted the delivery team to expedite your package as high priority, so it will reach your address before 4 PM today. Furthermore, as a gesture of goodwill, I have added a 15% discount voucher to your account for your next purchase. Thank you so much for your patience.",
+  "tipVi": "Bắt đầu bằng lời xin lỗi và sự đồng cảm trước khi giải thích lý do, tránh đổ hết lỗi cho phía shipper."
+ },
+ {
+  "id": "gt-phan-nan-3",
+  "level": "MEDIUM",
+  "title": "Demanding Replacement for Defective Device",
+  "titleVi": "Khiếu nại tai nghe mới mua bị lỗi",
+  "situationVi": "Chiếc tai nghe không dây bạn mua tuần trước tại cửa hàng điện máy bị mất tiếng một bên và pin tụt rất nhanh. Bạn mang sản phẩm đến quầy bảo hành để khiếu nại.",
+  "task": "Explain the technical issues you are experiencing with your recently purchased headphones. Express your disappointment firmly but politely, and ask for a brand-new replacement or a full refund under the store policy.",
+  "mustVi": [
+   "Trình bày chi tiết các lỗi kỹ thuật của sản phẩm và xuất trình hóa đơn/bảo hành.",
+   "Thể hiện sự thất vọng nhưng giữ thái độ lịch sự, kiên quyết.",
+   "Đưa ra yêu cầu cụ thể (đổi một bộ mới nguyên hộp hoặc hoàn tiền toàn bộ)."
+  ],
+  "phrases": [
+   {
+    "en": "I am here to complain about...",
+    "vi": "Tôi đến đây để khiếu nại về...",
+    "ex": "I am here to complain about this faulty wireless headset."
+   },
+   {
+    "en": "It stopped working properly after...",
+    "vi": "Nó ngừng hoạt động bình thường sau...",
+    "ex": "It stopped working properly after only three days of normal use."
+   },
+   {
+    "en": "Here is the original purchase receipt.",
+    "vi": "Đây là hóa đơn mua hàng gốc.",
+    "ex": "Here is the original purchase receipt and warranty slip."
+   },
+   {
+    "en": "This does not meet expected quality.",
+    "vi": "Sản phẩm này không đạt chất lượng như kỳ vọng.",
+    "ex": "This device does not meet the expected quality for this price."
+   },
+   {
+    "en": "I would like to request an exchange.",
+    "vi": "Tôi muốn yêu cầu đổi sản phẩm khác.",
+    "ex": "I would like to request an exchange for a brand-new unit."
+   },
+   {
+    "en": "According to your seven-day return policy...",
+    "vi": "Theo chính sách đổi trả trong vòng 7 ngày của quý cửa hàng...",
+    "ex": "According to your seven-day return policy, I am entitled to a full refund."
+   }
+  ],
+  "sample": "Hello, I need to speak to you regarding these wireless headphones I purchased here last Friday. Here is my original receipt and warranty card. Unfortunately, after only three days, the left earbud stopped producing any sound, and the battery completely drains within twenty minutes. For a brand-new device at this price point, this quality is very disappointing. Since this is clearly a factory defect and I am still within your seven-day exchange window, I would like to request an immediate brand-new replacement in a sealed box. If that model is unavailable, I expect a full refund. How can we resolve this right now?",
+  "tipVi": "Mô tả triệu chứng lỗi một cách cụ thể, khách quan và trích dẫn chính sách đổi trả của cửa hàng để tăng sức nặng cho lời yêu cầu."
+ },
+ {
+  "id": "gt-phan-nan-4",
+  "level": "MEDIUM",
+  "title": "Handling an Upset Hotel Guest",
+  "titleVi": "Xử lý phàn nàn của khách lưu trú",
+  "situationVi": "Bạn là nhân viên lễ tân ca tối tại một khách sạn quốc tế. Một vị khách du lịch đang rất bực tức vì điều hòa trong phòng bị rỉ nước và nhân viên buồng phòng quên thay khăn tắm.",
+  "task": "You are a hotel front-desk agent facing an angry guest. Listen to their complaint attentively, apologise professionally on behalf of the hotel, and take immediate steps to resolve the problem and compensate them.",
+  "mustVi": [
+   "Thể hiện thái độ lắng nghe tích cực và gửi lời xin lỗi chân thành đại diện cho khách sạn.",
+   "Thừa nhận mức độ nghiêm trọng của sự cố và giải thích cách khắc phục ngay lập tức.",
+   "Đề xuất nâng cấp hạng phòng miễn phí hoặc tặng dịch vụ tiện ích để bù đắp trải nghiệm của khách."
+  ],
+  "phrases": [
+   {
+    "en": "I completely understand your frustration.",
+    "vi": "Tôi hoàn toàn thấu hiểu sự bực bội của quý khách.",
+    "ex": "I completely understand your frustration after travelling all day."
+   },
+   {
+    "en": "Please accept our sincere apologies for this.",
+    "vi": "Xin quý khách nhận lời xin lỗi chân thành từ chúng tôi về việc này.",
+    "ex": "Please accept our sincere apologies for this unacceptable oversight."
+   },
+   {
+    "en": "This falls far below our standard.",
+    "vi": "Điều này thấp hơn rất nhiều so với tiêu chuẩn phục vụ của chúng tôi.",
+    "ex": "The cleanliness of your room falls far below our standard."
+   },
+   {
+    "en": "I will arrange an immediate room change.",
+    "vi": "Tôi sẽ sắp xếp đổi phòng cho quý khách ngay lập tức.",
+    "ex": "I will arrange an immediate room change to a quieter floor."
+   },
+   {
+    "en": "We would like to upgrade you to...",
+    "vi": "Chúng tôi muốn nâng hạng phòng cho quý khách lên...",
+    "ex": "We would like to upgrade you to an Executive Suite tonight."
+   },
+   {
+    "en": "Complimentary breakfast will be provided.",
+    "vi": "Bữa sáng miễn phí sẽ được phục vụ cho quý khách.",
+    "ex": "Complimentary breakfast will be provided throughout your stay."
+   }
+  ],
+  "sample": "Good evening, Mr. Davis. I completely understand your frustration, and please accept our sincere apologies for this unacceptable situation. Coming back to your room to find a leaking air conditioner and uncleaned towels falls far below our four-star hospitality standards. You should never have had to deal with this after a long journey. I will not make you wait for repairs tonight; instead, I am immediately upgrading you to our Executive Suite on the tenth floor at no extra charge. Our bellman will help transfer your luggage right now. We also invite you to enjoy complimentary buffet breakfast tomorrow morning as our apology.",
+  "tipVi": "Tuân thủ quy tắc dịch vụ: lắng nghe không ngắt lời, dùng danh xưng lịch thiệp và hành động ngay để biến trải nghiệm tiêu cực thành tích cực."
+ },
+ {
+  "id": "gt-phan-nan-5",
+  "level": "HARD",
+  "title": "Negotiating Delay with Enterprise Client",
+  "titleVi": "Đàm phán đền bù do trễ dự án",
+  "situationVi": "Bạn là Giám đốc phụ trách khách hàng tại một công ty phần mềm. Nền tảng bán hàng của đối tác bị chậm tiến độ bàn giao 2 tuần do sự cố tích hợp hệ thống. Bạn gặp đối tác để xin lỗi và đàm phán giải pháp.",
+  "task": "Address the client's management team regarding the critical project delay. Take full accountability without making excuses, summarize the technical bottleneck, and present a recovery roadmap along with financial concessions to restore their confidence.",
+  "mustVi": [
+   "Chính thức nhận toàn bộ trách nhiệm về việc trễ hạn và bày tỏ sự thấu hiểu về thiệt hại của đối tác.",
+   "Báo cáo ngắn gọn, khách quan về nguyên nhân kỹ thuật (sự cố tích hợp cơ sở dữ liệu) và cam kết thời hạn bàn giao cuối cùng.",
+   "Đề xuất phương án bồi thường thỏa đáng (giảm phí hợp đồng, gia hạn hỗ trợ kỹ thuật miễn phí 6 tháng)."
+  ],
+  "phrases": [
+   {
+    "en": "I take full accountability for this delay.",
+    "vi": "Tôi xin nhận toàn bộ trách nhiệm về sự chậm trễ này.",
+    "ex": "On behalf of our firm, I take full accountability for this delay."
+   },
+   {
+    "en": "We deeply regret the disruption caused.",
+    "vi": "Chúng tôi vô cùng lấy làm tiếc về sự gián đoạn đã gây ra.",
+    "ex": "We deeply regret the disruption caused to your product launch."
+   },
+   {
+    "en": "During final system integration, we detected...",
+    "vi": "Trong quá trình tích hợp hệ thống cuối cùng, chúng tôi phát hiện...",
+    "ex": "During final system integration, we detected critical data migration flaws."
+   },
+   {
+    "en": "We have mobilised our senior engineering squad.",
+    "vi": "Chúng tôi đã huy động đội ngũ kỹ sư cấp cao nhất.",
+    "ex": "We have mobilised our senior engineering squad to resolve the bug."
+   },
+   {
+    "en": "To offset your commercial losses...",
+    "vi": "Để bù đắp những thiệt hại về mặt thương mại của quý công ty...",
+    "ex": "To offset your commercial losses, we propose a 15% invoice rebate."
+   },
+   {
+    "en": "We are determined to regain your confidence.",
+    "vi": "Chúng tôi quyết tâm giành lại sự tin tưởng của quý đối tác.",
+    "ex": "We are determined to regain your confidence through flawless execution."
+   }
+  ],
+  "sample": "Thank you for your time today, Mr. Henderson. On behalf of our executive team, I take full accountability for missing the agreed deployment deadline. We deeply regret the disruption this delay causes to your scheduled marketing campaign. During final system integration last weekend, our engineers detected data synchronisation vulnerabilities that posed severe security risks if deployed. We have mobilised our senior engineering squad around the clock, guaranteeing a fully patched release by next Thursday. To offset your commercial losses, we will apply a 15% deduction to the final contract milestone and provide six months of premium maintenance free of charge. We are determined to regain your trust.",
+  "tipVi": "Trong giao tiếp B2B cấp cao, không bao biện hay đổ lỗi cho hoàn cảnh; hãy tập trung vào trách nhiệm giải trình (accountability), mốc thời gian rõ ràng và phương án tài chính cụ thể."
+ }
+]

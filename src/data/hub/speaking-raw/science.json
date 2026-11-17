@@ -1,0 +1,117 @@
+{
+ "id": "science",
+ "title": "Science",
+ "titleVi": "Khoa học",
+ "tipVi": "Đừng biến câu trả lời thành bài giảng lý thuyết khô khan; hãy liên hệ kiến thức khoa học với trải nghiệm cá nhân hoặc ứng dụng thực tiễn trong đời sống để tạo cảm giác tự nhiên.",
+ "part1": [
+  "Did you enjoy learning science subjects when you were in school?",
+  "What area of science do you find most interesting nowadays?",
+  "Do you often watch science documentaries or read science news?"
+ ],
+ "part2": {
+  "prompt": "Describe an interesting scientific experiment or theory you learned about",
+  "bullets": [
+   "what it is about",
+   "when and where you first learned about it",
+   "how it works or how it is conducted",
+   "and explain why you found it particularly fascinating"
+  ]
+ },
+ "part3": [
+  "To what extent should scientific research be funded by the government rather than private corporations?",
+  "How can schools encourage more young people, especially girls, to pursue careers in science?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "empirical evidence",
+    "vi": "bằng chứng thực nghiệm",
+    "ex": "Scientists rely on empirical evidence rather than speculation to support their hypotheses."
+   },
+   {
+    "en": "breakthrough discovery",
+    "vi": "phát hiện mang tính đột phá",
+    "ex": "The development of mRNA vaccines was considered a breakthrough discovery in modern medicine."
+   },
+   {
+    "en": "hands-on experiment",
+    "vi": "thí nghiệm thực hành trực tiếp",
+    "ex": "Doing hands-on experiments helps students grasp complex scientific principles much faster."
+   },
+   {
+    "en": "demystify",
+    "vi": "làm sáng tỏ, đơn giản hóa vấn đề khó hiểu",
+    "ex": "The science educator managed to demystify quantum physics for curious primary school pupils."
+   },
+   {
+    "en": "cutting-edge technology",
+    "vi": "công nghệ tiên tiến, mũi nhọn",
+    "ex": "Cutting-edge technology has allowed geneticists to edit DNA with unprecedented precision."
+   },
+   {
+    "en": "push the boundaries",
+    "vi": "mở rộng giới hạn hiểu biết",
+    "ex": "Space exploration continues to push the boundaries of human knowledge and endurance."
+   },
+   {
+    "en": "stem from",
+    "vi": "bắt nguồn từ",
+    "ex": "Many modern technological inventions actually stem from fundamental physics research."
+   },
+   {
+    "en": "paradigm shift",
+    "vi": "bước chuyển biến sâu sắc về tư duy",
+    "ex": "Einstein's theory of general relativity caused a huge paradigm shift in classical physics."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu thí nghiệm lăng kính của Isaac Newton chứng minh ánh sáng trắng gồm bảy sắc cầu vồng.",
+   "Ý 1 (Khi nào & Ở đâu): Kể về tiết Vật lý lớp bảy tại phòng thí nghiệm trường học với sự hỗ trợ của giáo viên.",
+   "Ý 2 (Cách thực hiện): Miêu tả căn phòng tối, khe hẹp cho tia sáng mặt trời đi qua lăng kính thủy tinh và tán sắc trên bức tường trắng.",
+   "Kết (Lý do hấp dẫn): Giải thích sự ngạc nhiên khi thấy điều quen thuộc được lý giải khoa học, làm thay đổi góc nhìn về thế giới xung quanh."
+  ],
+  "sample": "I would like to talk about Isaac Newton's famous prism experiment, which completely revolutionized our understanding of light. I first encountered it during a middle school physics class when our teacher brought a triangular glass prism into the laboratory. The setup was remarkably simple yet profound. Our teacher darkened the entire classroom, made a tiny pinhole in the window blind to let a single narrow beam of sunlight penetrate, and placed the prism right in its path. Instantly, the ray of white light refracted and fanned out into a vibrant spectrum of seven distinct colours across the far wall, creating an artificial rainbow. What fascinated me even more was when he placed a second, inverted prism right after the first, recombining those colourful rays back into pure white light. This demonstration blew my mind because it disproved the prevailing belief that colour was merely an alteration of light caused by darkness. Instead, it provided undeniable empirical evidence that white light is actually a composite of all spectral colours. It completely demystified everyday natural phenomena like rainbows and ignited my lifelong curiosity about physical science.",
+  "p1": [
+   {
+    "q": "Did you enjoy learning science subjects when you were in school?",
+    "a": "To be honest, I was really keen on biology because our teacher often let us examine plant cells under microscopes, which felt magical. However, I struggled quite a bit with theoretical physics and complicated mathematical formulas."
+   },
+   {
+    "q": "What area of science do you find most interesting nowadays?",
+    "a": "I'm genuinely drawn to neuroscience at the moment. It is deeply fascinating to explore how neural pathways affect our daily habits, cognitive functions, and emotional responses, especially through science podcasts hosted by academic experts."
+   },
+   {
+    "q": "Do you often watch science documentaries or read science news?",
+    "a": "Yes, fairly regularly. Whenever I have some downtime on weekends, I enjoy watching astronomy and wildlife documentaries on streaming platforms because they are visually breathtaking and present complex discoveries in an accessible, engaging format."
+   }
+  ],
+  "p3": [
+   {
+    "q": "To what extent should scientific research be funded by the government rather than private corporations?",
+    "a": "In my view, fundamental and life-saving research must predominantly receive public funding. While private corporations bring capital and operational speed, their primary driver is commercial profit, which often sidelines non-remunerative sectors such as rare disease therapies. In contrast, government-sponsored research protects scientific objectivity and ensures discoveries remain accessible public goods. Therefore, while corporate collaboration is valuable, public oversight is vital."
+   },
+   {
+    "q": "How can schools encourage more young people, especially girls, to pursue careers in science?",
+    "a": "Schools ought to abandon passive textbook memorization and introduce interactive, project-based laboratory work from an early age. Moreover, actively showcasing female role models, such as inviting women working in aerospace engineering or biotechnology for guest lectures, can dismantle persistent gender stereotypes. When young girls interact with relatable mentors, their confidence increases, fostering long-term interest in STEM careers."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng từ 'science' một cách chung chung lặp đi lặp lại thay vì gọi tên cụ thể các phân ngành như physics, biology, chemistry, hoặc neuroscience.",
+   "Dịch từ 'làm thí nghiệm' thành 'make an experiment' sai ngữ pháp; cần sử dụng đúng collocation 'conduct / carry out an experiment'.",
+   "Biến câu trả lời Part 1 thành phần trình bày lý thuyết học thuật khô cứng, thiếu đi cảm nhận cá nhân và tính tương tác đàm thoại tự nhiên."
+  ],
+  "p1More": [
+   "Is there any science museum in your hometown?",
+   "Do you think children should start learning science at an early age?",
+   "Have you ever visited a planetarium or an observatory?",
+   "Do you prefer studying natural sciences or social sciences?",
+   "Has science changed your daily routine in any noticeable way?"
+  ],
+  "p3More": [
+   "Why do some people remain skeptical about scientific consensus such as climate change or vaccines?",
+   "What are the ethical implications of using artificial intelligence in scientific research?",
+   "Should scientists be held legally responsible for the unintended consequences of their inventions?",
+   "How has international collaboration accelerated scientific progress in recent decades?"
+  ]
+ }
+}

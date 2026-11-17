@@ -1,0 +1,62 @@
+{
+ "id": "mock-05",
+ "title": "IELTS Speaking Mock Test 5",
+ "titleVi": "Đề thi thử số 5",
+ "focusVi": "Luyện tập kỹ năng kể chuyện có cấu trúc rõ ràng và phát triển lập luận đa chiều về trách nhiệm cộng đồng.",
+ "part1": [
+  {
+   "topic": "Transport",
+   "qs": [
+    "How do you usually travel to work or study?",
+    "Do you prefer using public transport or private vehicles?",
+    "Has the transport system in your hometown changed much recently?",
+    "Do you think traffic congestion will be solved in the future?"
+   ]
+  },
+  {
+   "topic": "Shopping",
+   "qs": [
+    "Do you enjoy going shopping for clothes?",
+    "Where do you usually go when you want to buy groceries?",
+    "Do you prefer shopping online or in traditional stores?",
+    "Have your shopping habits changed compared to the past?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a time you helped someone with an important task",
+  "bullets": [
+   "who this person was and what they needed",
+   "when and where you offered your assistance",
+   "how you helped them complete the task",
+   "and explain why your help was meaningful to both of you"
+  ]
+ },
+ "part3": [
+  "Why do some people hesitate to help strangers in public situations?",
+  "Do you think children should be taught to do volunteer work from an early age?",
+  "Should governments rely on charitable organizations to solve social welfare issues?",
+  "How has modern technology changed the way people offer and receive help?",
+  "In what ways can helping others contribute to a person's psychological well-being?"
+ ],
+ "answers": {
+  "p1": [
+   "I usually commute to university by motorbike because it is the most flexible option. Navigating narrow alleyways in Hanoi is much faster this way, especially during the chaotic morning rush hour.",
+   "I definitely lean towards private vehicles like scooters. Although public buses are cheaper and eco-friendly, my motorbike allows me to take spontaneous detours without waiting at crowded bus stops in hot weather.",
+   "Yes, it has improved significantly over the past few years. The city has introduced elevated metro lines and widened several arterial roads, which has eased traffic bottlenecks considerably during peak times.",
+   "I am cautiously optimistic. With upcoming investments in smart traffic management and modern mass transit systems like sky trains, gridlocks should decrease, though rapid urbanization might slow down that progress.",
+   "To be honest, not really because finding the right fit can be exhausting. I only browse boutique stores when I urgently need something specific, such as a formal blazer for a presentation.",
+   "I typically head to the wet market near my neighborhood every weekend. The leafy vegetables and fish are remarkably fresher there compared to supermarkets, and I can negotiate prices directly with local vendors.",
+   "I favor e-commerce platforms like Shopee because of convenience and competitive pricing. I can compare customer reviews and buy electronic accessories in just a few clicks instead of traveling across town.",
+   "Certainly. In the past, I bought clothes impulsively based on fleeting trends. Nowadays, I am far more budget-conscious, prioritizing durable staples and waiting for seasonal discounts before making any major purchase."
+  ],
+  "sample": "I would like to talk about a time I assisted my elderly neighbor, Mr. Binh, in setting up a smartphone to connect with his family overseas. This happened around six months ago during the pandemic restrictions when he felt quite isolated. Mr. Binh had just received an iPhone from his daughter living in Australia, but being unfamiliar with modern technology, he was completely overwhelmed by the touchscreen and apps. Seeing his struggle, I offered to visit his apartment over the weekend. I spent several hours patiently installing messaging apps, configuring large fonts, and creating a step-by-step notebook with hand-drawn diagrams so he could practice independently. To make sure he was comfortable, I also simulated video calls with him across the room until he mastered answering and muting. When he successfully connected with his young grandson in Sydney for the first time, tears came to his eyes. Witnessing his sheer joy was incredibly heartwarming. It made me realize how a small investment of my time could bridge an enormous emotional distance and alleviate someone's loneliness.",
+  "p3": [
+   "In my view, bystander apathy and fear of liability are the primary deterrents. Many people worry about falling victim to scams or being wrongfully blamed if medical emergencies worsen. For instance, in fast-paced cities, commuters often assume someone else will intervene, so nobody acts. Consequently, self-preservation frequently outweighs altruistic instincts in crowded public environments.",
+   "I strongly believe community service should be embedded into early schooling. Engaging in charity fosters empathy and civic responsibility, helping young learners look beyond their personal bubbles. Unlike passive classroom lectures on ethics, cleaning a neighborhood park or distributing food gives children hands-on experience with social inequality. Ultimately, early exposure creates more compassionate and proactive future citizens.",
+   "From my perspective, charities should supplement rather than replace official social safety nets. While non-profits can mobilize rapid grassroots relief during crises like floods, only state authorities possess the resources and legislative mandate to tackle systemic poverty. Over-relying on voluntary philanthropy makes vulnerable groups susceptible to funding fluctuations. Therefore, governments must bear core welfare duties permanently.",
+   "Digital innovations have revolutionized philanthropy by eliminating geographical boundaries. Online crowdfunding campaigns and mobile micro-donations allow anyone to transfer funds instantly to disaster victims across the globe. By contrast, traditional assistance required physical presence or cumbersome banking procedures. This hyper-connectivity dramatically accelerates humanitarian interventions, making support far more immediate and democratic than ever before.",
+   "Assisting others triggers what psychologists call a 'helper's high', which releases endorphins and reduces stress hormones. When individuals alleviate someone else's burden, they experience heightened self-worth and purpose, buffering against loneliness. Unlike solitary achievements that yield short-lived satisfaction, fostering reciprocal human bonds builds long-term mental resilience. Hence, prosocial behavior directly nurtures personal happiness and emotional stability."
+  ]
+ }
+}

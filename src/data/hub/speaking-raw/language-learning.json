@@ -1,0 +1,117 @@
+{
+ "id": "language-learning",
+ "title": "Language Learning",
+ "titleVi": "Học ngoại ngữ",
+ "tipVi": "Khi nói về việc học ngoại ngữ, hãy chia sẻ trải nghiệm thực tế kèm phương pháp cụ thể thay vì chỉ liệt kê các lợi ích chung chung.",
+ "part1": [
+  "How many languages can you speak?",
+  "What do you find most challenging about learning a new language?",
+  "Do you prefer learning a language independently or in a classroom?"
+ ],
+ "part2": {
+  "prompt": "Describe a foreign language you would like to learn in the future",
+  "bullets": [
+   "what language it is",
+   "how you plan to learn it",
+   "what difficulties you might encounter",
+   "and explain why you want to learn this particular language"
+  ]
+ },
+ "part3": [
+  "Do you think artificial intelligence and translation tools will make language learning obsolete?",
+  "Why do children often pick up foreign languages more quickly than adults?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "mother tongue",
+    "vi": "tiếng mẹ đẻ",
+    "ex": "Even after living abroad for decades, he still feels most comfortable speaking his mother tongue."
+   },
+   {
+    "en": "pick up a language",
+    "vi": "học lỏm hoặc tiếp thu ngôn ngữ một cách tự nhiên",
+    "ex": "Children tend to pick up new languages effortlessly just by playing with local peers."
+   },
+   {
+    "en": "linguistic barrier",
+    "vi": "rào cản ngôn ngữ",
+    "ex": "Effective translation software has helped travelers overcome linguistic barriers across the globe."
+   },
+   {
+    "en": "conversational fluency",
+    "vi": "sự lưu loát trong giao tiếp thường nhật",
+    "ex": "My immediate target is reaching conversational fluency rather than mastering complex literary texts."
+   },
+   {
+    "en": "immerse oneself in",
+    "vi": "đắm chìm hoàn toàn vào môi trường ngôn ngữ",
+    "ex": "The fastest way to improve speaking skills is to immerse yourself in an environment where everyone speaks the target language."
+   },
+   {
+    "en": "broaden one's horizons",
+    "vi": "mở rộng tầm nhìn và hiểu biết",
+    "ex": "Studying a foreign language certainly broadens your cultural horizons in unexpected ways."
+   },
+   {
+    "en": "rusty",
+    "vi": "mai một do lâu không dùng",
+    "ex": "My French has gotten a bit rusty because I haven't practiced it since university."
+   },
+   {
+    "en": "dedicated practice",
+    "vi": "sự luyện tập kiên trì, tập trung",
+    "ex": "Mastering nuanced pronunciation requires regular and dedicated practice over many months."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngôn ngữ bạn ấp ủ muốn học (ví dụ: tiếng Nhật) và bối cảnh bạn bắt đầu say mê nó.",
+   "Ý 1: Kế hoạch học tập cụ thể (kết hợp tự học qua ứng dụng số và luyện giao tiếp định kỳ với người bản xứ).",
+   "Ý 2: Những rào cản bạn lường trước (hệ thống chữ viết phức tạp như Kanji, các cấp độ kính ngữ trong giao tiếp).",
+   "Kết: Lý do muốn chinh phục ngôn ngữ này (du lịch tự túc, thưởng thức văn hóa nguyên bản và mở rộng sự nghiệp)."
+  ],
+  "sample": "If I had the opportunity to pick up another foreign language, I would definitely choose Japanese. I've always been fascinated by Japanese culture, from its traditional arts to modern anime and gaming. To master it, my plan is to adopt a blended learning approach. Initially, I'd rely on language apps and podcasts to grasp the fundamentals of vocabulary and basic grammar. Afterwards, I would hire a native tutor online for weekly conversational practice to sharpen my speaking fluency. Of course, I know it won't be a walk in the park. The biggest hurdle will likely be mastering the complex writing systems, especially Kanji characters, which require immense memorization. Besides, Japanese honorifics and polite speech levels can be quite tricky for beginners. Nevertheless, I am keen on learning it because I want to travel across Japan without relying on translation apps, and perhaps even collaborate with Japanese partners in my future career. Experiencing a culture through its own tongue would be immensely rewarding.",
+  "p1": [
+   {
+    "q": "How many languages can you speak?",
+    "a": "Aside from my mother tongue, Vietnamese, I can speak English fluently. I use it every day for study and work, and I've also picked up a few basic Korean phrases from watching dramas."
+   },
+   {
+    "q": "What do you find most challenging about learning a new language?",
+    "a": "I'd say mastering natural pronunciation and colloquial expressions is the hardest part. You can easily memorize grammar rules from textbooks, but sounding natural in everyday dialogue requires constant exposure and practice."
+   },
+   {
+    "q": "Do you prefer learning a language independently or in a classroom?",
+    "a": "I prefer self-study because it allows me to progress at my own pace. Using podcasts and digital flashcards suits my schedule better than rigid classroom sessions, although classes are great for practicing speaking."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think artificial intelligence and translation tools will make language learning obsolete?",
+    "a": "I don't think automated tools will ever completely replace language learning. While AI can instantly translate texts and speech with impressive accuracy, it often misses cultural nuances, humor, and emotional depth. Furthermore, learning a language isn't just about exchanging practical information; it's about forming genuine human connections. Therefore, people will still want to speak foreign languages to build empathy and immerse themselves in different cultures."
+   },
+   {
+    "q": "Why do children often pick up foreign languages more quickly than adults?",
+    "a": "In my view, children benefit from brain plasticity and an instinctive way of acquiring language through play and social interaction. Unlike adults, they are generally less self-conscious about making mistakes or mispronouncing words. In contrast, adults often overanalyze grammatical structures and feel anxious about sounding silly, which slows down their progress. Hence, an uninhibited mindset gives young learners a distinct advantage."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp lại từ 'language' quá nhiều lần thay vì dùng các từ thay thế tự nhiên như 'mother tongue', 'target language', 'second language' hoặc dùng đại từ.",
+   "Dùng cách diễn đạt gượng gạo do dịch trực tiếp từ tiếng Việt, chẳng hạn nói 'talk English' thay vì 'speak English', hoặc 'know a language' thay vì 'achieve fluency in a language'.",
+   "Trả lời quá ngắn và chỉ nêu lợi ích sáo rỗng (như 'to get a good job') mà quên bàn sâu về khía cạnh ngôn ngữ như ngữ pháp, phát âm hay sự thấu cảm văn hóa."
+  ],
+  "p1More": [
+   "At what age did you start learning English?",
+   "Do you think English is a difficult language to master?",
+   "What methods do you use to remember new vocabulary?",
+   "Have you ever used a mobile app to study a foreign language?",
+   "Would you like to learn a third language in the future?"
+  ],
+  "p3More": [
+   "Should governments prioritize native languages over global languages in primary education?",
+   "How does learning a new language change the way a person thinks or perceives the world?",
+   "What impact does the dominance of English have on minority languages worldwide?",
+   "Do you believe immersion programs are more effective than traditional grammar-based schooling?"
+  ]
+ }
+}

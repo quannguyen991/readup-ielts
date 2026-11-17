@@ -1,0 +1,117 @@
+{
+ "id": "news",
+ "title": "News",
+ "titleVi": "Tin tức",
+ "tipVi": "Hãy tránh chỉ liệt kê các kênh tin tức; thay vào đó, hãy tập trung vào thói quen tiếp nhận thông tin, tính xác thực của tin tức và tác động tâm lý của các bản tin giật gân.",
+ "part1": [
+  "How do you usually get your daily news?",
+  "Do you prefer reading international news or domestic news?",
+  "Did you follow the news much when you were younger?"
+ ],
+ "part2": {
+  "prompt": "Describe an interesting piece of news you recently read or watched.",
+  "bullets": [
+   "what the news was about",
+   "where and when you learned about it",
+   "why you found it interesting",
+   "and explain how you felt after hearing this news"
+  ]
+ },
+ "part3": [
+  "Why do many people prefer getting news from social media rather than traditional newspapers?",
+  "To what extent should governments regulate fake news on digital platforms?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "keep abreast of",
+    "vi": "cập nhật, theo kịp (thông tin/thời sự)",
+    "ex": "I read online editorials every morning to keep abreast of current affairs."
+   },
+   {
+    "en": "sensationalist journalism",
+    "vi": "báo chí giật gân, câu khách",
+    "ex": "A lot of tabloid websites resort to sensationalist journalism just to attract clicks."
+   },
+   {
+    "en": "clickbait headline",
+    "vi": "tiêu đề giật gân câu tương tác",
+    "ex": "I often avoid articles with obvious clickbait headlines because they rarely contain factual information."
+   },
+   {
+    "en": "unverified rumors",
+    "vi": "tin đồn chưa được kiểm chứng",
+    "ex": "Social media users tend to share unverified rumors before fact-checkers can intervene."
+   },
+   {
+    "en": "reliable source of information",
+    "vi": "nguồn thông tin đáng tin cậy",
+    "ex": "Established national broadcasters are generally seen as a reliable source of information."
+   },
+   {
+    "en": "breaking news",
+    "vi": "tin nóng, tin mới phát sóng",
+    "ex": "My phone alerted me to the breaking news regarding the sudden trade agreement."
+   },
+   {
+    "en": "take something with a grain of salt",
+    "vi": "nghi ngờ hoặc không tin tưởng hoàn toàn điều gì",
+    "ex": "When reading anonymous posts online, it is wise to take them with a grain of salt."
+   },
+   {
+    "en": "media literacy",
+    "vi": "năng lực hiểu và phân tích truyền thông",
+    "ex": "Schools should teach media literacy so that students can differentiate between objective reports and bias."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn bản tin thú vị gần đây bạn đọc được (ví dụ: phát minh đột phá về công nghệ làm sạch rác thải nhựa đại dương của một nhóm kỹ sư trẻ).",
+   "Ý 1 (Nguồn & Thời điểm): Nêu rõ bạn tình cờ đọc được tin này ở đâu (trên trang tin tức khoa học uy tín) và vào thời gian nào (khoảng vài tuần trước khi lướt mạng buổi sáng).",
+   "Ý 2 (Nội dung chi tiết & Lý do thú vị): Giải thích nguyên lý hoạt động tóm tắt của sáng kiến, tại sao nó vượt trội so với các giải pháp trước đây và lý do thông tin này thu hút bạn.",
+   "Kết (Cảm xúc & Tác động): Chia sẻ cảm giác lạc quan và hy vọng về tương lai của môi trường sống, đồng thời truyền cảm hứng để bạn tự thay đổi thói quen dùng đồ nhựa."
+  ],
+  "sample": "A few weeks ago, while browsing a science journalism website, I stumbled across a truly fascinating piece of breaking news about a breakthrough in environmental engineering. The report highlighted an autonomous solar-powered vessel designed by a group of young Dutch engineers to capture plastic debris in rivers before it reaches the open ocean.\n\nWhat caught my attention immediately was the practical ingenuity of the invention. Rather than deploying massive vessels that consume heavy fossil fuels, this system operates entirely on renewable energy and runs round the clock with minimal human intervention. Furthermore, initial trial runs in Southeast Asia showed that it could extract tons of synthetic waste within days.\n\nI found this news extraordinarily encouraging. In an era dominated by alarming headlines about global warming and ecological crises, hearing about tangible, practical solutions felt like a breath of fresh air. It filled me with genuine optimism about our ability to reverse ecological damage through innovation, and it even inspired me to be more conscious of my own single-use plastic consumption.",
+  "p1": [
+   {
+    "q": "How do you usually get your daily news?",
+    "a": "I predominantly get my news through digital news aggregator apps on my smartphone. They provide concise digests and real-time alerts from reputable publishers, which fits neatly into my busy morning commute."
+   },
+   {
+    "q": "Do you prefer reading international news or domestic news?",
+    "a": "I lean towards international news because I'm fascinated by global geopolitics and economic trends. However, I still glance through local headlines daily to stay informed about community developments and domestic public policies."
+   },
+   {
+    "q": "Did you follow the news much when you were younger?",
+    "a": "Not really, as I found conventional newspapers rather tedious and abstract as a child. I mostly watched cartoons, only catching glimpses of the evening television news when my parents had it on."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do many people prefer getting news from social media rather than traditional newspapers?",
+    "a": "Social media platforms offer immediacy and personalized algorithmic feeds that conventional newspapers simply cannot rival. Users receive bite-sized updates within seconds of an incident, accompanied by interactive commentary. However, this convenience often comes at the expense of journalistic rigor and objective fact-checking, making users vulnerable to sensationalism. Nonetheless, the fast-paced nature of modern life drives audiences toward these instant digital streams."
+   },
+   {
+    "q": "To what extent should governments regulate fake news on digital platforms?",
+    "a": "In my view, state intervention is necessary to curb malicious misinformation, especially regarding public health or civil safety. Unchecked falsehoods can easily incite panic and erode social trust. Nevertheless, strict state oversight risks sliding into censorship and suppressing legitimate dissent. Therefore, rather than outright bans, authorities should mandate algorithmic transparency from tech giants while investing heavily in citizens' media literacy."
+   }
+  ],
+  "mistakesVi": [
+   "Lỗi từ vựng và ngữ pháp: Nhầm lẫn giữa 'news' (danh từ không đếm được, luôn chia động từ số ít: 'The news is interesting') với danh từ đếm được, dẫn đến việc dùng sai như 'a news' hoặc 'many news' thay vì 'a piece of news' hay 'news stories'.",
+   "Lỗi diễn đạt thô: Dịch nguyên xi từ tiếng Việt 'xem tin tức trên tivi/mạng' thành 'see news' thay vì sử dụng các collocation tự nhiên như 'watch the news', 'read the news', hoặc 'follow current affairs'.",
+   "Lỗi hạn chế trường từ vựng: Lạm dụng cụm từ 'fake news' một cách tùy tiện mà không biết dùng các từ học thuật chuẩn xác hơn như 'misinformation' (tin sai lệch vô ý), 'disinformation' (tin sai lệch có chủ đích) hay 'sensationalism'."
+  ],
+  "p1More": [
+   "Do you think news is important in daily life?",
+   "Do you and your friends often discuss current events?",
+   "Have you ever shared a news article on social media?",
+   "Do you prefer reading printed newspapers or reading news online?",
+   "What kind of news do you usually dislike reading?"
+  ],
+  "p3More": [
+   "How has citizen journalism changed the way news is produced and reported?",
+   "Do you believe news organizations can ever be completely unbiased?",
+   "What psychological impacts can constant exposure to negative news have on individuals?",
+   "Should public broadcasting services be funded entirely by the state or by commercial advertisements?"
+  ]
+ }
+}

@@ -84,7 +84,6 @@ export default function TutorList() {
         eyebrow="IELTS · AI TUTORS"
         title={L('Mỗi mục tiêu,', 'One tutor')}
         accent={L('một gia sư riêng', 'for every goal')}
-        desc={L('AI đóng vai người đối diện, nghe bạn nói, rồi chỉ ra lỗi phát âm, ngữ pháp và cách diễn đạt tự nhiên hơn.', 'AI plays the other person, listens, then points out pronunciation, grammar and more natural phrasing.')}
         stats={[
           { value: String(all.length), label: L('Gia sư', 'Tutors') },
           { value: String(GROUPS.length), label: L('Nhóm mục tiêu', 'Goal groups') },
@@ -130,8 +129,7 @@ export default function TutorList() {
                         <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', flexShrink: 1 }}>{tutor.name}</Text>
                         {tutor.tag ? <HubTag label={tutor.tag === 'BAND 9 EXCLUSIVE' ? 'BAND 9' : tutor.tag} color={(TAG_STYLE[tutor.tag] ?? TAG_STYLE.BETA!).fg} bg={(TAG_STYLE[tutor.tag] ?? TAG_STYLE.BETA!).bg} /> : null}
                       </View>
-                      <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }} numberOfLines={2}>{tutor.desc}</Text>
-                      <Text style={{ color: HUB_UI.purple, fontSize: 13, fontWeight: '800' }}>{m.does}</Text>
+                      <Text style={{ color: HUB_UI.muted, fontSize: 14, fontWeight: '700', lineHeight: 20 }} numberOfLines={2}>{m.does}</Text>
                     </View>
                     <Icon name="chevron-right" size={16} color={HUB_UI.muted} />
                   </Pressable>

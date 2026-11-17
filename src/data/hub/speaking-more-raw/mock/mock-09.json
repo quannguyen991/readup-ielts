@@ -1,0 +1,62 @@
+{
+ "id": "mock-09",
+ "title": "IELTS Speaking Mock Test 9",
+ "titleVi": "Đề thi thử số 9",
+ "focusVi": "Rèn luyện kỹ năng miêu tả chi tiết công trình kiến trúc và lập luận đa chiều về bảo tồn di sản đô thị.",
+ "part1": [
+  {
+   "topic": "Family",
+   "qs": [
+    "Do you spend a lot of time with your family?",
+    "What activities do you usually enjoy doing together?",
+    "Who are you closest to in your family?",
+    "Has your family dynamic changed much since you were a child?"
+   ]
+  },
+  {
+   "topic": "Clothes",
+   "qs": [
+    "What kind of clothes do you normally prefer wearing?",
+    "Do you wear different clothes on weekends compared to weekdays?",
+    "How important is fashion or style to you?",
+    "Have you ever bought clothes online?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a building you really like.",
+  "bullets": [
+   "where this building is located",
+   "what it looks like from the outside and inside",
+   "what purpose it is used for",
+   "and explain why you like this building so much"
+  ]
+ },
+ "part3": [
+  "How do traditional architectural styles differ from modern building designs?",
+  "Should governments allocate public funds to preserve old, historical buildings?",
+  "In what ways does the design of a building affect the wellbeing of its occupants?",
+  "Do you think high-rise apartments are a sustainable solution to urban overcrowding?",
+  "How will architectural trends likely evolve over the next few decades?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, definitely. I try to share meals with my family every evening because we all lead busy lives. It gives us a great chance to catch up and unwind together after work.",
+   "We usually cook Sunday dinners together or go for weekend picnics in the park. Preparing meals as a team is really bonding, especially when trying out new traditional recipes.",
+   "I am closest to my mother because she is an empathetic listener. Whenever I face challenges at work, I turn to her for pragmatic advice, and she always understands me.",
+   "Yes, significantly. As children, my siblings and I depended entirely on our parents, but now we relate more as independent adults, supporting one another emotionally and financially as equals.",
+   "I definitely lean towards casual and breathable outfits like cotton t-shirts and jeans. Comfort is my top priority, especially given the hot and humid climate here in Vietnam.",
+   "Absolutely. During the workweek, I must dress in formal business attire, whereas on weekends, I swap stiff collared shirts for relaxed polo shirts, oversized hoodies, or comfortable shorts.",
+   "Not exceptionally important, to be honest. While I prefer looking tidy and presentable for social gatherings, I rarely chase seasonal trends or spend a fortune on high-end designer brands.",
+   "Yes, quite frequently, mainly because it is extremely convenient and cost-effective. Just last month, I ordered several linen shirts from an online boutique, and they fitted me perfectly."
+  ],
+  "sample": "I would like to talk about the Hanoi Opera House, an exquisite historic building situated right in the heart of the capital. Constructed during the French colonial era, it stands out with its neoclassical architecture, featuring pale yellow facades, grand arched windows, and a striking black slate roof. Inside, the auditorium is breathtaking, adorned with velvet upholstery, crystal chandeliers, and ornate gilded ceilings, creating an aura of timeless elegance. The venue serves primarily as a premier cultural hub for classical concerts, ballet performances, and major national ceremonies. I have had the privilege of attending a symphony performance there, and the acoustic quality was simply phenomenal. What captivates me most about this building is how harmoniously it blends historical nostalgia with living culture. Unlike modern concrete skyscrapers that often feel sterile and identical, this monument has genuine character and soul. Standing in front of it transports you back in time, yet inside it continues to inspire modern audiences. It remains a proud landmark that reflects our city's multifaceted history, which is why it holds such a special place in my heart.",
+  "p3": [
+   "In my view, traditional architecture prioritizes craftsmanship and cultural symbolism, often using natural materials like timber, stone, and decorative carvings that reflect local heritage. In contrast, modern architecture emphasizes minimalism, functional efficiency, and innovative industrial materials such as tempered glass and reinforced concrete. While modern designs maximize space and energy performance, traditional buildings evoke a profound sense of cultural identity that sleek contemporary skyscrapers often lack.",
+   "I strongly believe governments should invest in preserving historic structures because they embody a nation's collective memory and cultural heritage. Demolishing them for commercial developments permanently erases tangible history. For example, conserving ancient temples or colonial landmarks attracts cultural tourism and fosters civic pride. Although restoration can be costly, the long-term educational, cultural, and economic benefits far outweigh the financial expenditure, making public funding completely justifiable.",
+   "Architectural design profoundly influences physical and psychological wellbeing. Buildings with ample natural light, proper ventilation, and green spaces significantly lower stress levels and boost productivity. Conversely, cramped, windowless environments with poor air circulation can trigger fatigue and depression, as commonly observed in dense office cubicles. Ultimately, human-centric design is crucial because our immediate built surroundings directly dictate our mood, daily comfort, and long-term mental health.",
+   "To a large extent, vertical living is the most practical solution for densely populated megacities facing severe land scarcity. High-rise developments accommodate thousands of residents on relatively small footprints, curbing urban sprawl. However, without adequate accompanying infrastructure like public transit, green parks, and waste management, towering residential blocks can worsen congestion and foster social isolation. Therefore, high-rises are only sustainable when integrated into holistic urban planning.",
+   "I anticipate future architecture will pivot heavily towards ecological sustainability and smart technology. Architects will likely integrate living biophilic facades, solar harvesting glass, and automated energy management systems directly into structural designs to achieve net-zero carbon emissions. Rather than merely constructing aesthetic marvels, future builders will prioritize regenerative structures that actively purify air, conserve water, and coexist harmoniously with the surrounding natural ecosystem."
+  ]
+ }
+}

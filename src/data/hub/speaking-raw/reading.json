@@ -1,0 +1,96 @@
+{
+ "id": "reading",
+ "extra": {
+  "vocab": [
+   {
+    "en": "an avid reader",
+    "vi": "người say mê đọc sách",
+    "ex": "My grandfather has been an avid reader his entire life, finishing at least two novels a week."
+   },
+   {
+    "en": "page-turner",
+    "vi": "cuốn sách hấp dẫn, lôi cuốn khó dời mắt",
+    "ex": "His latest thriller is an absolute page-turner that kept me up until three in the morning."
+   },
+   {
+    "en": "flick through",
+    "vi": "lướt nhanh qua các trang sách",
+    "ex": "I like to flick through the introductory chapters in a bookstore before deciding whether to buy a book."
+   },
+   {
+    "en": "curl up with a book",
+    "vi": "cuộn mình thoải mái đọc một cuốn sách",
+    "ex": "On rainy Sunday afternoons, there is nothing better than curling up with a good book and a hot cup of tea."
+   },
+   {
+    "en": "broaden one's horizons",
+    "vi": "mở rộng tầm nhìn và vốn hiểu biết",
+    "ex": "Reading non-fiction literature about different cultures genuinely broadens your horizons."
+   },
+   {
+    "en": "lose oneself in",
+    "vi": "đắm chìm hoàn toàn vào thế giới nào đó",
+    "ex": "Whenever I am stressed, I lose myself in a gripping fantasy novel for a couple of hours."
+   },
+   {
+    "en": "thought-provoking",
+    "vi": "gợi nhiều suy ngẫm sâu sắc",
+    "ex": "The author raises some thought-provoking questions regarding the ethics of artificial intelligence."
+   },
+   {
+    "en": "a heavy read",
+    "vi": "cuốn sách nặng nề, khó đọc hoặc nặng tính học thuật",
+    "ex": "Philosophy texts can be a bit of a heavy read after a long day at the office."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên tác phẩm 'Atomic Habits' của James Clear, thể loại phát triển bản thân (self-help) và ấn tượng tổng quan.",
+   "Ý 1 (Nội dung & Tác giả): Tóm tắt nội dung về sức mạnh của những thói quen nhỏ tích lũy theo thời gian và giải thích dựa trên tâm lý học hành vi thực tiễn.",
+   "Ý 2 (Thời điểm & Lý do đọc): Đọc cách đây hai năm trong giai đoạn năm cuối đại học khi gặp bế tắc vì thói quen trì hoãn và áp lực thi cử.",
+   "Kết (Lý do gợi ý): Khuyên mọi người đọc vì tính ứng dụng cao, chiến lược cụ thể dễ làm theo thay vì những lời cổ động sáo rỗng."
+  ],
+  "sample": "I would like to talk about Atomic Habits, an inspiring personal development book written by James Clear. It centers around the profound idea that making tiny, incremental improvements in our daily routines can compound into remarkable life changes over time.\n\nI picked up this book about two years ago during my final year at university. Back then, I was struggling with chronic procrastination and feeling constantly overwhelmed by assignment deadlines, so I desperately needed a practical framework to regain discipline.\n\nWhat sets this book apart is Clear's accessible and evidence-based approach. Rather than relying on vague motivational clichés, he offers tangible concepts such as habit stacking and environmental redesign. I personally applied his 'two-minute rule' to build a consistent study schedule, which genuinely transformed my productivity and mindset.\n\nI would wholeheartedly recommend this book to anyone striving for self-improvement. It is not just an entertaining read, but an invaluable toolkit that provides practical solutions for breaking bad habits and achieving long-term goals.",
+  "p1": [
+   {
+    "q": "Do you like reading?",
+    "a": "Yes, absolutely. I consider myself an avid reader because diving into a good book helps me decompress after hectic work hours. For instance, I always set aside thirty minutes before bed to read fiction."
+   },
+   {
+    "q": "What kind of books do you read?",
+    "a": "I have fairly eclectic tastes, but I lean heavily towards non-fiction, particularly psychology and memoirs. Occasionally, I pick up detective stories like Sherlock Holmes just to keep my analytical thinking sharp and entertained."
+   },
+   {
+    "q": "Do you prefer reading on paper or on a screen?",
+    "a": "I definitely prefer physical paper books. There is an irreplaceable charm to turning real pages and feeling paper textures. In contrast, staring at digital screens for hours tends to strain my eyes and cause fatigue."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Are printed books going to disappear?",
+    "a": "I highly doubt paper books will ever vanish entirely. Even though e-books offer unmatched portability and instant accessibility, physical books carry an emotional and tactile value that screens simply cannot replicate. Many people take genuine pride in curating home bookshelves. Therefore, while digital reading will certainly hold a dominant share, printed volumes will endure as treasured keepsakes."
+   },
+   {
+    "q": "Should children be encouraged to read fiction?",
+    "a": "Without a doubt, children ought to be actively encouraged to explore fictional stories. Reading fiction sparks creativity and helps young minds develop empathy by walking in the shoes of diverse characters. For example, imaginative tales like Harry Potter teach resilience and friendship far more vividly than dry textbooks. Ultimately, fiction cultivates emotional depth and a lifelong passion for learning."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai cụm từ 'read book': Thí sinh thường dịch nguyên văn tiếng Việt thành 'I like read book' hoặc 'I read book every day'. Danh từ đếm được 'book' phải ở dạng số nhiều ('read books') hoặc dùng danh động từ 'reading'.",
+   "Lạm dụng từ 'novel' cho mọi thể loại sách: Nhiều bạn gọi cả sách kỹ năng, sách khoa học hay sách giáo khoa là 'novel'. Cần phân biệt rõ: 'novel' chỉ dành riêng cho tiểu thuyết hư cấu, còn thể loại chung là 'book' hoặc 'non-fiction'.",
+   "Lặp từ 'convenient' khi nói về sách điện tử: Thay vì chỉ nói 'E-books are very convenient', hãy mở rộng bằng các từ vựng Band cao như 'space-saving', 'portability', 'instant accessibility' hoặc nói về nhược điểm như 'eye strain'."
+  ],
+  "p1More": [
+   "Did you read many books when you were a child?",
+   "Do you have a favorite place where you like to read?",
+   "Have you ever given a book to someone as a gift?",
+   "Do you ever re-read books that you have already finished?",
+   "How often do you visit bookstores or public libraries?"
+  ],
+  "p3More": [
+   "How has modern technology influenced people's reading attention spans?",
+   "What are the benefits of reading a book compared to watching its film adaptation?",
+   "Do you think governments should invest more money into public libraries?",
+   "Why do many people find it difficult to maintain a consistent reading habit nowadays?"
+  ]
+ }
+}

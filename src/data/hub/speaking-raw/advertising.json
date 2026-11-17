@@ -1,0 +1,117 @@
+{
+ "id": "advertising",
+ "title": "Advertising",
+ "titleVi": "Quảng cáo",
+ "tipVi": "Hãy liên hệ đến trải nghiệm thực tế trên mạng xã hội và linh hoạt sử dụng các từ đồng nghĩa như 'commercial', 'sponsored post' hay 'marketing campaign' thay vì lặp lại từ 'advertisement'.",
+ "part1": [
+  "Do you often see advertisements when you browse the internet?",
+  "Have you ever bought something directly because of an advert?",
+  "What kind of advertisements do you find most annoying?"
+ ],
+ "part2": {
+  "prompt": "Describe an impressive advertisement that you remember well",
+  "bullets": [
+   "what the advertisement was for",
+   "where and when you saw it",
+   "what happened in the advertisement",
+   "and explain why you found it so memorable"
+  ]
+ },
+ "part3": [
+  "In what ways has digital advertising transformed consumer behavior in recent years?",
+  "Should governments introduce stricter regulations on advertisements aimed at children?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "targeted advertising",
+    "vi": "quảng cáo nhắm mục tiêu chuẩn xác",
+    "ex": "Social media platforms heavily rely on targeted advertising to generate their revenue."
+   },
+   {
+    "en": "catchy jingle",
+    "vi": "giai điệu quảng cáo ngắn gọn, bắt tai",
+    "ex": "That beverage commercial went viral primarily thanks to its catchy jingle."
+   },
+   {
+    "en": "endorse a product",
+    "vi": "quảng bá / làm gương mặt đại diện cho sản phẩm",
+    "ex": "Celebrities are often paid millions to endorse luxury cosmetic brands."
+   },
+   {
+    "en": "impulse buying",
+    "vi": "mua sắm bốc đồng, không tính toán trước",
+    "ex": "Flash sales on e-commerce applications are deliberately engineered to trigger impulse buying."
+   },
+   {
+    "en": "manipulate consumer perceptions",
+    "vi": "thao túng nhận thức của người tiêu dùng",
+    "ex": "Clever marketing campaigns can manipulate consumer perceptions of what constitutes an essential item."
+   },
+   {
+    "en": "brand awareness",
+    "vi": "mức độ nhận diện thương hiệu",
+    "ex": "Sponsoring international sporting tournaments is a proven tactic to boost global brand awareness."
+   },
+   {
+    "en": "fall for deceptive claims",
+    "vi": "mắc bẫy những lời quảng cáo sai sự thật",
+    "ex": "Gullible customers easily fall for deceptive claims made by unverified online supplement stores."
+   },
+   {
+    "en": "intrusive pop-up ad",
+    "vi": "quảng cáo dạng cửa sổ bật lên gây phiền toái",
+    "ex": "Nothing ruins an online reading experience faster than an intrusive pop-up ad covering the screen."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu đó là quảng cáo về cái gì (ví dụ: một chiến dịch nâng cao an toàn giao thông), xem ở đâu và vào thời gian nào.",
+   "Ý 1: Thuật lại kịch bản quảng cáo (tình huống kịch tính, cách thời gian ngưng đọng và cuộc trò chuyện giữa hai tài xế trước vụ va chạm).",
+   "Ý 2: Miêu tả cảm xúc khi xem (ấn tượng mạnh bởi tính nhân văn, hình ảnh chân thực và không dùng chiêu trò giật gân rẻ tiền).",
+   "Kết: Lý giải vì sao nó khó phai trong tâm trí (thông điệp sâu sắc về trách nhiệm cá nhân, thay đổi hành vi lái xe của bản thân)."
+  ],
+  "sample": "I would like to talk about an unforgettable public service commercial about road safety that I encountered a couple of years ago on YouTube. It was launched by a transport authority to deter reckless speeding.\n\nThe advert depicted a split-second right before a horrific head-on collision between two vehicles. Miraculously, time froze, allowing both motorists to step out and talk. One driver remorsefully admitted he had misjudged the intersection, while the other pleaded that his young boy was in the back seat and there was no time to brake. After realizing the collision was unavoidable, they silently stepped back inside, and time resumed with a devastating impact.\n\nWhat made this commercial exceptionally memorable was its emotional gravity and masterful storytelling. Instead of relying on gratuitous gore or cheap shock tactics, it focused purely on human vulnerability and regret. It powerfully conveyed that a momentary lapse in concentration can irreversibly destroy innocent lives. That haunting scene genuinely changed my driving habits, constantly reminding me to remain vigilant whenever I take the wheel.",
+  "p1": [
+   {
+    "q": "Do you often see advertisements when you browse the internet?",
+    "a": "Constantly, to be honest. Whenever I scroll through Instagram feeds or read digital newspapers, targeted banners and sponsored posts appear everywhere. For instance, right after researching wireless headphones, related ads instantly flooded my screen."
+   },
+   {
+    "q": "Have you ever bought something directly because of an advert?",
+    "a": "Yes, on a few occasions. A while back, I purchased an ergonomic desk chair after seeing a persuasive video clip on TikTok explaining its lumbar support benefits. Fortunately, the product actually lived up to its promises."
+   },
+   {
+    "q": "What kind of advertisements do you find most annoying?",
+    "a": "I thoroughly detest unskippable video ads that abruptly disrupt music streams or instructional videos. They completely break my concentration and, paradoxically, make me develop an aversion toward whatever brand is being aggressively promoted."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what ways has digital advertising transformed consumer behavior in recent years?",
+    "a": "Digital advertising has fostered a culture of immediate gratification. Through sophisticated algorithms and frictionless one-click purchasing, marketing messages now induce frequent impulse buying rather than calculated shopping. For example, personalized promotions on social media nudge individuals toward acquiring products they never originally intended to possess. Consequently, modern consumption has noticeably transitioned from being strictly necessity-driven to predominantly emotionally charged."
+   },
+   {
+    "q": "Should governments introduce stricter regulations on advertisements aimed at children?",
+    "a": "Definitely, as young minds lack the critical faculties required to distinguish promotional hyperbole from reality. Unchecked commercials promoting sugary confectionery or violent merchandise frequently distort children's dietary habits and behavioral patterns. While businesses might lament the loss of commercial freedom, safeguarding child well-being must always take precedence over corporate profits. Therefore, enacting strict bans on deceptive promotional tactics targeting minors is thoroughly justified."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp đi lặp lại danh từ 'advertisement' thay vì sử dụng đa dạng các từ như 'commercial', 'billboard', 'sponsored content', hoặc 'ad campaign'.",
+   "Dùng sai kết hợp từ phổ biến, chẳng hạn nói 'make an advertisement' thay vì 'run an ad' hay 'launch an advertising campaign'.",
+   "Phát âm sai trọng âm của từ 'advertisement' (chuẩn Anh-Anh là /ədˈvɜː.tɪs.mənt/, chuẩn Anh-Mỹ là /ˌæd.vɚˈtaɪz.mənt/), dẫn đến việc ấp úng mất điểm phát âm."
+  ],
+  "p1More": [
+   "Do you prefer watching adverts on television or on social media?",
+   "Did you enjoy commercials when you were a young child?",
+   "Have you ever shared an entertaining advertisement with your friends?",
+   "Do you think there are too many outdoor billboards in your city?",
+   "Would you ever be interested in working in the advertising sector?"
+  ],
+  "p3More": [
+   "Why do international corporations invest massive budgets in celebrity endorsements?",
+   "To what extent does ubiquitous advertising contribute to consumerist culture?",
+   "Do massive outdoor digital billboards compromise the aesthetic charm of urban areas?",
+   "How might artificial intelligence completely revolutionize future advertising strategies?"
+  ]
+ }
+}

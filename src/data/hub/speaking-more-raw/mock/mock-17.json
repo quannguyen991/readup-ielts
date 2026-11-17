@@ -1,0 +1,62 @@
+{
+ "id": "mock-17",
+ "title": "IELTS Speaking Mock Test 17",
+ "titleVi": "Đề thi thử số 17",
+ "focusVi": "Luyện tập miêu tả không gian thư giãn kết hợp từ vựng chỉ cảm xúc và phân tích xu hướng nghỉ ngơi trong xã hội hiện đại.",
+ "part1": [
+  {
+   "topic": "Friends",
+   "qs": [
+    "How often do you usually spend time with your close friends?",
+    "What kinds of activities do you enjoy doing together?",
+    "Do you prefer having a large social circle or just a few close friends?",
+    "Is it easy for you to maintain long-distance friendships?"
+   ]
+  },
+  {
+   "topic": "Advertising",
+   "qs": [
+    "What kind of advertisements do you encounter most often each day?",
+    "Have you ever bought something simply because of an advertisement?",
+    "Do you find online pop-up ads annoying?",
+    "Where do you think is the most effective place to put advertisements?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a place where you like to go to relax.",
+  "bullets": [
+   "where this place is located",
+   "what it looks like and what you do there",
+   "how often you visit this place",
+   "and explain why this place helps you unwind so effectively"
+  ]
+ },
+ "part3": [
+  "Why do you think modern people find it harder to relax than previous generations did?",
+  "Should municipal governments invest more funds into public parks and recreation centres?",
+  "Do you believe individuals relax better alone or in the company of others?",
+  "How have technological advancements influenced the way people spend their leisure time?",
+  "Is it the responsibility of employers to ensure their workers have adequate relaxation time?"
+ ],
+ "answers": {
+  "p1": [
+   "I catch up with my closest friends roughly twice a week. We are quite busy with work, but we always make time for weekend coffee chats or quick dinners on Friday evenings.",
+   "We usually hang out at quiet cafes, chat about our weekly experiences, or cook together. For instance, last Saturday we gathered at my apartment to make traditional spring rolls, which was wonderful.",
+   "I definitely prefer having a small circle of dependable friends. Meaningful connections matter much more to me than superficial popularity, so I only invest my energy into three or four lifelong companions.",
+   "Honestly, it requires deliberate effort. Because life gets hectic, we sometimes lose touch, but modern video calls and social media messaging make it feasible to share updates across different time zones regularly.",
+   "I encounter social media video ads most frequently, especially on Instagram and YouTube. Whenever I scroll through my feeds or watch tutorials, sponsored posts pop up every few minutes without fail.",
+   "Yes, I recently bought a mechanical keyboard after watching an aesthetic desk setup advertisement. The visuals were so persuasive and satisfying that I placed an order online that very evening.",
+   "Absolutely, I find them incredibly disruptive, especially when they block crucial website content. Just yesterday, an intrusive pop-up prevented me from reading a news article until I manually closed it.",
+   "I think targeted digital ads on mobile apps are most effective because algorithms tailor products directly to individual interests, unlike roadside billboards which reach a broad, often disinterested audience."
+  ],
+  "sample": "Whenever I feel overwhelmed by my daily routine, I head over to a charming rooftop cafe called 'The Green Attic', which is tucked away in a quiet alley right in the heart of my city. The venue is filled with lush potted plants, rustic wooden benches, and warm fairy lights that create an incredibly cozy ambience. From the edge of the terrace, you can enjoy a panoramic view of the skyline. Usually, I sit in a secluded corner with an iced peach tea and read a novel or simply gaze at the clouds. I try to visit this hideaway at least once a fortnight, particularly on Sunday afternoons when I need to recharge my mental batteries for the upcoming week. What makes this place ideal for unwinding is its absolute serenity. Even though it is located downtown, the rooftop elevation filters out the chaotic traffic noise below. The gentle breeze, soothing acoustic background music, and pleasant botanical scent instantly melt away my stress, allowing me to completely clear my head and find inner peace.",
+  "p3": [
+   "In my opinion, the constant connectivity of digital devices is the primary culprit. Earlier generations could easily leave their work duties at the office, whereas modern professionals receive work emails and notifications round the clock. Consequently, people rarely experience genuine mental downtime, as their brains remain in a perpetual state of alert readiness even during holidays.",
+   "Yes, local authorities definitely ought to allocate substantial budgets to green spaces and community sports facilities. High-density urban living frequently causes chronic stress, so accessible parks provide vital sanctuaries for physical exercise and psychological relief. Without such public amenities, city dwellers often become cooped up in cramped apartments, which inevitably harms overall public health and well-being.",
+   "I believe that depends entirely on personal temperament. Extroverted people recharge their energy through social gatherings and shared laughter with peers. In contrast, introverts generally need solitary environments, such as reading alone at home, to decompress without feeling social pressure. Therefore, neither method is objectively superior, as true rest is deeply subjective and individualistic.",
+   "Technology has shifted leisure activities from active outdoor pursuits toward sedentary screen-based consumption. Instead of playing sports or walking outdoors, many individuals now spend their downtime streaming television series or browsing social media feeds. While digital entertainment offers unparalleled convenience and variety, it often deprives people of real-world interactions and physical movement, creating a more passive lifestyle.",
+   "Certainly, employers bear a corporate duty to safeguard their workforce against severe burnout. Implementing reasonable working hours, discouraging after-hours emails, and providing generous paid leave ultimately boosts staff productivity and job retention. If companies push staff relentlessly without restorative breaks, performance drops sharply and turnover spikes, proving that supporting employee rest benefits the entire organization."
+  ]
+ }
+}

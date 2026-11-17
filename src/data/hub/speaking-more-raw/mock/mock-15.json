@@ -1,0 +1,62 @@
+{
+ "id": "mock-15",
+ "title": "IELTS Speaking Mock Test 15",
+ "titleVi": "Đề thi thử số 15",
+ "focusVi": "Bài thi này rèn luyện kỹ năng kết hợp miêu tả trải nghiệm cá nhân với khả năng phân tích các xu hướng văn hóa và thời trang trong xã hội hiện đại.",
+ "part1": [
+  {
+   "topic": "Photography",
+   "qs": [
+    "Do you prefer taking photos with a smartphone or a dedicated camera?",
+    "How often do you look back at old photographs you have taken?",
+    "Do you enjoy having your photo taken by other people?",
+    "In what situations do you think people should avoid taking pictures?"
+   ]
+  },
+  {
+   "topic": "Time Management",
+   "qs": [
+    "How do you usually organize your daily schedule?",
+    "Have you ever missed an important appointment because of poor planning?",
+    "What is the hardest part of managing your time effectively?",
+    "Did your parents teach you how to be punctual when you were younger?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a piece of clothing you really like wearing",
+  "bullets": [
+   "what item of clothing it is",
+   "where and when you obtained it",
+   "how often you wear it",
+   "and explain why you like wearing it so much"
+  ]
+ },
+ "part3": [
+  "How do people's clothing choices reflect their personal identity?",
+  "In what ways have fast fashion brands altered consumer shopping habits?",
+  "Do you think traditional cultural garments are losing popularity among younger generations?",
+  "Should companies enforce strict dress codes in contemporary workplaces?",
+  "To what extent does advertising influence the clothes that people buy?"
+ ],
+ "answers": {
+  "p1": [
+   "I definitely lean towards using my smartphone because it is incredibly portable and convenient. Whenever I see a breathtaking sunset on my commute home, I can just snap a clear shot instantly without carrying heavy lenses.",
+   "I actually browse through my digital gallery once or twice a month. It gives me a wave of nostalgia, especially when I revisit candid snapshots from college trips with my closest friends.",
+   "To be completely honest, I feel somewhat self-conscious in front of a lens. I usually freeze up and give an awkward smile, so I much prefer being behind the camera capturing other people.",
+   "People should certainly refrain from taking photos during solemn occasions like funerals or inside places of worship. Flashing cameras in those settings can be deeply disrespectful to mourners or worshippers seeking quiet contemplation.",
+   "I rely heavily on a digital calendar app on my phone to map out my tasks. Every morning, I set reminders for key deadlines, which keeps me focused during chaotic workdays.",
+   "Yes, unfortunately I once double-booked two meetings because I forgot to log one into my calendar. I ended up showing up forty minutes late to a dentist appointment and had to reschedule.",
+   "The trickiest aspect is resisting digital distractions like social media notifications. When I get sidetracked by incoming messages, my entire timeline for the afternoon often gets disrupted, leading to late-night cramming.",
+   "Yes, my father was particularly strict about punctuality. He always insisted that arriving ten minutes early was equivalent to being on time, especially for family gatherings or school events."
+  ],
+  "sample": "I would like to talk about an indigo linen blazer that has become my absolute favorite garment. I picked it up roughly two years ago at a bespoke tailor shop in Hoi An during a summer getaway. I had been looking for a versatile piece that could bridge the gap between formal and smart-casual, and this caught my eye immediately. Because it is tailored specifically to my frame and crafted from breathable linen, I tend to wear it quite frequently, especially to networking events, academic conferences, or celebratory weekend dinners. Even in warmer tropical weather, it keeps me cool while maintaining a polished silhouette. What I appreciate most about this blazer is its balance of elegance and effortless comfort. Unlike rigid synthetic suits that feel restrictive, this jacket allows complete freedom of movement. Moreover, the deep blue shade pairs seamlessly with almost anything, from tailored trousers to casual chinos. Whenever I put it on, it gives me a genuine boost of confidence, helping me feel poised without appearing overly stiff.",
+  "p3": [
+   "Attire often acts as an unspoken form of communication that signals an individual's values, profession, and creative flair. When someone opts for vibrant, eccentric outfits, they usually project unconventionality and confidence, whereas minimalist wardrobes suggest an affinity for practicality. Although appearances can occasionally be misleading, clothing generally provides a window into how individuals wish to be perceived by broader society.",
+   "Fast fashion has undeniably fostered a disposable mindset toward apparel. Because retailers churn out affordable, trend-driven collections almost weekly, consumers now purchase garments on impulse rather than out of necessity. Consequently, clothes are discarded after only a few wears, creating severe environmental waste. Ultimately, this business model prioritizes short-lived novelty over longevity and conscious consumerism.",
+   "Not necessarily, though their regular usage has definitely shifted. While young people rarely wear elaborate heritage outfits in daily life due to convenience, many are enthusiastically reviving traditional attire on holidays or graduation ceremonies. Modern designers also modernize folk motifs into contemporary street wear, proving that cultural attire is simply evolving rather than fading away.",
+   "I believe rigid dress codes are becoming somewhat obsolete in modern offices. Demanding corporate suits often stifles individuality and causes physical discomfort without necessarily boosting productivity. While a neat, business-casual standard is reasonable for client-facing meetings, allowing employees greater flexibility in their attire tends to foster a more relaxed and innovative working environment.",
+   "Advertising exerts a profound psychological impact by associating garments with desirable lifestyles and social status. Social media influencers, in particular, create subtle endorsements that make certain brands appear essential for belonging to trendy peer groups. Even when consumers believe they are making independent sartorial choices, targeted marketing algorithms have frequently preconditioned their preferences behind the scenes."
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "technology",
+ "extra": {
+  "vocab": [
+   {
+    "en": "a double-edged sword",
+    "vi": "con dao hai lưỡi",
+    "ex": "Smartphones are a double-edged sword because they keep us connected but can also be terribly addictive."
+   },
+   {
+    "en": "game-changer",
+    "vi": "yếu tố làm thay đổi hoàn toàn cục diện",
+    "ex": "High-speed internet has been a real game-changer for people working remotely."
+   },
+   {
+    "en": "glued to the screen",
+    "vi": "dán mắt vào màn hình",
+    "ex": "Children these days spend hours glued to the screen instead of playing outdoors."
+   },
+   {
+    "en": "overly reliant on",
+    "vi": "quá phụ thuộc vào",
+    "ex": "Society has become overly reliant on navigation apps to find even familiar routes."
+   },
+   {
+    "en": "streamline the process",
+    "vi": "tối ưu hóa quy trình",
+    "ex": "Using project management software helps streamline the process of team collaboration."
+   },
+   {
+    "en": "technological breakthrough",
+    "vi": "đột phá công nghệ",
+    "ex": "The development of generative artificial intelligence is seen as a major technological breakthrough."
+   },
+   {
+    "en": "take a back seat",
+    "vi": "bị đẩy xuống hàng thứ yếu",
+    "ex": "Memorizing phone numbers has taken a back seat since smartphones store everything for us."
+   },
+   {
+    "en": "state-of-the-art",
+    "vi": "tân tiến nhất, hiện đại nhất",
+    "ex": "Our research laboratory was upgraded with state-of-the-art equipment to boost productivity."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu thiết bị công nghệ làm cuộc sống tiện lợi hơn - robot hút bụi tự động (robotic vacuum cleaner).",
+   "Ý 1: Thời điểm bắt đầu dùng - khoảng 2 năm trước khi chuyển ra ở riêng tại một căn hộ chung cư và bận rộn với công việc.",
+   "Ý 2: Cách thiết bị hỗ trợ - tự lập bản đồ sàn nhà, quét và lau dọn tự động qua ứng dụng điện thoại, tiết kiệm nhiều giờ làm việc nhà mỗi tuần.",
+   "Kết: Nhược điểm - thỉnh thoảng bị kẹt vào dây điện/thảm dày và chi phí thay linh kiện định kỳ tương đối tốn kém."
+  ],
+  "sample": "I'd like to talk about my robotic vacuum cleaner, a gadget that has genuinely transformed my daily routine. I purchased it about two years ago when I moved into my own apartment and found myself completely swamped with work, leaving little time for household chores. This little device is an absolute game-changer. It automatically maps out my floor plan and navigates around furniture to sweep and mop every single day. I can easily schedule cleanings via a mobile app, meaning I often return home to spotless floors without lifting a finger. It has freed up at least three to four hours a week, allowing me to unwind or focus on my studies instead of constantly dusting. That being said, it isn't entirely flawless. One minor drawback is that it occasionally gets trapped in stray charging cables or thick carpets, which means I have to untangle it manually. Also, replacement filters and maintenance can be quite pricey over time. Nevertheless, the sheer convenience it provides far outweighs these trivial hassles, and I can hardly imagine my life without it.",
+  "p1": [
+   {
+    "q": "How often do you use your phone?",
+    "a": "Practically around the clock. Aside from sleeping, I constantly check it for work emails, messaging apps, and navigation. For instance, I use Google Maps almost every morning to dodge traffic jams on my way to the office."
+   },
+   {
+    "q": "What do you use your phone for most?",
+    "a": "Mainly for productivity and communication. I handle team chats on Slack and organize my schedule via digital calendars. In fact, without these apps, keeping up with daily project deadlines would be nearly impossible."
+   },
+   {
+    "q": "Do you think people rely on technology too much?",
+    "a": "Definitely. Many of us have become overly dependent on gadgets for basic tasks. For example, hardly anyone memorizes phone numbers or navigates without GPS nowadays, which shows how our cognitive skills are taking a back seat."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Does technology make people less social?",
+    "a": "In my view, it's a double-edged sword. On one hand, social media and messaging platforms allow us to stay connected across long distances. However, in real life, face-to-face interactions are noticeably dwindling because people are glued to their screens, even during dinner parties. So while we may appear more virtually connected, our meaningful, in-person social bonds are definitely weakening."
+   },
+   {
+    "q": "What technology do you think will be common in 20 years?",
+    "a": "I believe autonomous vehicles and advanced artificial intelligence will become part of everyday life. Currently, self-driving cars are still in testing phases and quite costly, but in two decades, they could completely replace human drivers to reduce road accidents. Ultimately, AI assistants will likely manage everything from domestic chores to complex workplace decisions seamlessly."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh từ 'technology' ở dạng số nhiều: Nhiều thí sinh nói 'many technologies' khi muốn chỉ thiết bị. Nên dùng 'technological devices', 'gadgets' hoặc dùng 'technology' như danh từ không đếm được.",
+   "Phát âm sai trọng âm của các từ cơ bản: Từ 'technology' nhấn âm 2 (/tekˈnɒl.ə.dʒi/) thường bị phát âm sai thành 'tếch-nô-lô-di', hoặc 'device' (/dɪˈvaɪs/) bị đọc thành 'đê-vít'.",
+   "Dùng sai cấu trúc với tính từ 'convenient': Người học hay dịch từ tiếng Việt sang câu 'I am very convenient with my phone', trong khi cấu trúc chuẩn phải là 'My phone is very convenient' hoặc 'It is convenient for me to use my phone'."
+  ],
+  "p1More": [
+   "What kinds of apps do you use most frequently?",
+   "Did you use any technology when you were a child?",
+   "Have you ever bought something online using your phone?",
+   "Do you prefer reading books on paper or on a screen?",
+   "Can you manage a full day without using the internet?"
+  ],
+  "p3More": [
+   "How has artificial intelligence changed the way people work in recent years?",
+   "Do older generations struggle more with adopting modern technology compared to younger ones?",
+   "Should governments introduce stricter regulations on data privacy and social media algorithms?",
+   "In what ways might excessive automation affect global employment rates?"
+  ]
+ }
+}

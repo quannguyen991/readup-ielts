@@ -59,7 +59,6 @@ export default function ScenariosHub() {
         eyebrow="IELTS · SPEAKING"
         title="Nói như ngoài đời,"
         accent="từng tình huống một"
-        desc="Đối phương nói trước, bạn chọn cách đáp. Mỗi tình huống có từ mục tiêu, phản hồi sau khi nói và điểm cao nhất được lưu lại."
         stats={[
           { value: `${doneAll}/${total}`, label: 'Đã hoàn thành' },
           { value: `${doneRp}`, label: 'Nhập vai & gọi điện' },
@@ -168,7 +167,6 @@ function ScenarioCard({ play, done, wide }: { play: Roleplay; done: boolean; wid
         {done ? <HubTag label="Đã làm ✓" color={HUB_UI.green} bg="#DDF7E8" /> : null}
       </View>
       <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', paddingHorizontal: 4 }}>{play.title}</Text>
-      <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19, paddingHorizontal: 4 }}>{play.scene}</Text>
     </CardShell>
   );
 }
@@ -184,7 +182,6 @@ function DialogueCard({ dialogue, best, wide }: { dialogue: Dialogue; best: numb
         {best !== undefined ? <HubTag label={`Cao nhất ${best}%`} color={passed ? HUB_UI.green : HUB_UI.muted} bg={passed ? '#DDF7E8' : HUB_UI.wash} /> : null}
       </View>
       <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', paddingHorizontal: 4 }}>{dialogue.title}</Text>
-      <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19, paddingHorizontal: 4 }}>{dialogue.keyPhrases.slice(0, 3).join(' · ')}</Text>
     </CardShell>
   );
 }

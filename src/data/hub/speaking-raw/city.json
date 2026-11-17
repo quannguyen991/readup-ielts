@@ -1,0 +1,96 @@
+{
+ "id": "city",
+ "extra": {
+  "vocab": [
+   {
+    "en": "hustle and bustle",
+    "vi": "sự hối hả và nhộn nhịp",
+    "ex": "I sometimes take a weekend trip just to escape the hustle and bustle of city life."
+   },
+   {
+    "en": "concrete jungle",
+    "vi": "khu đô thị ngột ngạt toàn nhà cao tầng",
+    "ex": "Without enough green spaces, downtown districts can easily turn into an oppressive concrete jungle."
+   },
+   {
+    "en": "amenities on one's doorstep",
+    "vi": "tiện ích ngay sát nhà, rất thuận tiện",
+    "ex": "One major perk of living in an urban centre is having all essential amenities right on your doorstep."
+   },
+   {
+    "en": "bumper-to-bumper traffic",
+    "vi": "giao thông ùn tắc kéo dài, xe nối đuôi nhau",
+    "ex": "Commuters in Hanoi face bumper-to-bumper traffic almost every weekday evening."
+   },
+   {
+    "en": "packed to the rafters",
+    "vi": "chật ních, đông nghẹt người",
+    "ex": "The central night market is always packed to the rafters on Saturday nights."
+   },
+   {
+    "en": "soak up the atmosphere",
+    "vi": "hòa mình và tận hưởng bầu không khí",
+    "ex": "I love sitting at a roadside café on the weekend to sip coffee and soak up the atmosphere."
+   },
+   {
+    "en": "hectic pace of life",
+    "vi": "nhịp sống hối hả, tất bật",
+    "ex": "It took me several months to adjust to the hectic pace of life when I first moved here."
+   },
+   {
+    "en": "urban sprawl",
+    "vi": "sự mở rộng đô thị tự phát",
+    "ex": "Uncontrolled urban sprawl has put immense pressure on local public transport networks."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu địa điểm đông đúc quen thuộc (Phố đi bộ Nguyễn Huệ tại TP.HCM) và vị trí đắc địa ngay trung tâm.",
+   "Ý 1: Mô tả đối tượng thường lui tới (giới trẻ, nghệ sĩ đường phố, các gia đình và du khách quốc tế) cùng tần suất bạn đến đây.",
+   "Ý 2: Nêu các hoạt động diễn ra tại đó (trượt ván, biểu diễn âm nhạc, chụp ảnh, thưởng thức đồ ăn vặt và ghé chung cư cà phê).",
+   "Kết: Bày tỏ cảm xúc yêu thích vì năng lượng sôi động nhưng cũng e ngại sự ồn ào và quá tải vào cuối tuần."
+  ],
+  "sample": "A bustling location in my city that I know like the back of my hand is Nguyen Hue Pedestrian Street, situated right in the heart of District 1, Ho Chi Minh City. This vibrant promenade attracts an eclectic mix of people. On any given evening, you’ll see local teenagers hanging out, buskers showcasing their talents, and foreign tourists soaking up the nightlife. Families with young children also flock there to take leisurely strolls. People engage in a variety of activities here. Youngsters often gather to skate or record dance videos, while others pop into the trendy cafes housed in the famous vintage apartment building nearby. Food vendors dot the perimeter, offering popular street snacks like grilled rice paper. Personally, I have a love-hate relationship with this place. On the one hand, I’m drawn to its infectious energy, which makes it an ideal spot to unwind after a gruelling week. On the other hand, it gets packed to the rafters on weekends, and the sheer volume of noise can sometimes be overwhelming. Nevertheless, it remains the beating heart of the city.",
+  "p1": [
+   {
+    "q": "Do you live in a city or in the countryside?",
+    "a": "I currently live in a bustling city, specifically Hanoi. I really appreciate the convenience here because modern amenities like shopping malls and hospitals are virtually on my doorstep, even though the air quality can occasionally be a downside."
+   },
+   {
+    "q": "What is your favourite place in your city?",
+    "a": "My go-to spot is definitely West Lake. It offers a peaceful escape from downtown noise, and I love cycling around the water at sunset while grabbing an iced coffee with friends to unwind."
+   },
+   {
+    "q": "Is it easy to get around where you live?",
+    "a": "Generally, yes, because ride-hailing apps and bus routes are readily accessible and affordable. However, during rush hour, navigating the streets becomes a nightmare due to bumper-to-bumper traffic jams along major intersections."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Will more people move to cities in the future?",
+    "a": "I believe urbanisation will definitely accelerate in the coming decades. Cities offer superior employment prospects, state-of-the-art healthcare, and premier educational institutions that rural areas simply lack. While living costs and housing shortages in metropolitan areas are rising steeply, the promise of higher living standards and career growth will continue to lure young professionals away from the countryside."
+   },
+   {
+    "q": "How can cities reduce traffic jams?",
+    "a": "Governments should primarily invest heavily in comprehensive public transit networks, such as underground metro lines and electric buses, to make collective transport more enticing than private vehicles. Additionally, implementing congestion charges for cars entering central districts during peak hours could discourage unnecessary driving. Combining reliable infrastructure with financial disincentives is crucial to unclogging urban roads."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'busy' hoặc 'crowded': Người học hay lặp lại các từ đơn giản này; nên thay bằng 'packed to the rafters', 'bustling', hoặc 'swarming with people'.",
+   "Dịch 'kẹt xe' theo kiểu tiếng Việt: Dùng sai thành 'have traffic jam' hoặc 'traffic is stuck'; cách diễn đạt chuẩn là 'get stuck in traffic' hoặc 'experience gridlock'.",
+   "Nhầm lẫn giữa 'convenient' và 'comfortable': Nhiều bạn nói 'City life is comfortable' khi muốn khen cuộc sống tiện nghi, dễ mua sắm, nhưng từ chính xác cần dùng là 'convenient'."
+  ],
+  "p1More": [
+   "Do you prefer living in a house or an apartment in the city?",
+   "What do you dislike most about living in your city?",
+   "Has your city changed much since you were a child?",
+   "Do you think your city is a good place for young people to live?",
+   "How do you usually spend your weekends in the city?"
+  ],
+  "p3More": [
+   "What are the main social challenges caused by rapid urbanisation?",
+   "Should governments encourage businesses to relocate to smaller towns?",
+   "How does urban living affect people's mental well-being compared to rural life?",
+   "In what ways might smart city technology transform urban living in the future?"
+  ]
+ }
+}

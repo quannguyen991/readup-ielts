@@ -1,0 +1,117 @@
+{
+ "id": "photography",
+ "title": "Photography",
+ "titleVi": "Nhiếp ảnh",
+ "tipVi": "Hãy kết hợp từ vựng miêu tả cảm xúc, ánh sáng và bố cục thay vì chỉ lặp đi lặp lại những cụm từ đơn giản như 'take photos' hay 'nice pictures'.",
+ "part1": [
+  "Do you enjoy taking photos in your daily life?",
+  "How often do you look back at old photographs?",
+  "Do you prefer taking photos with a smartphone or a digital camera?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable photograph you have taken",
+  "bullets": [
+   "when and where you took it",
+   "what or who was in the photo",
+   "what equipment or settings you used",
+   "and explain why this photograph is particularly meaningful to you"
+  ]
+ },
+ "part3": [
+  "Why do some people prefer to capture moments on camera rather than simply enjoying them in the present?",
+  "How has digital photography altered the way society preserves history and memories?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "capture a fleeting moment",
+    "vi": "bắt trọn khoảnh khắc thoáng qua",
+    "ex": "Street photographers excel at capturing fleeting moments before they disappear forever."
+   },
+   {
+    "en": "golden hour",
+    "vi": "giờ vàng (khoảng thời gian ánh sáng tự nhiên đẹp nhất lúc rạng đông hoặc hoàng hôn)",
+    "ex": "We waited patiently until golden hour to take our graduation portraits in soft, warm light."
+   },
+   {
+    "en": "candid shot",
+    "vi": "bức ảnh chụp tự nhiên không tạo dáng",
+    "ex": "I much prefer candid shots of people laughing over stiff, formal portraits."
+   },
+   {
+    "en": "photogenic",
+    "vi": "ăn ảnh",
+    "ex": "My younger sister is exceptionally photogenic; she looks effortless in almost every frame."
+   },
+   {
+    "en": "evoke nostalgic memories",
+    "vi": "gợi lại những ký ức hoài niệm",
+    "ex": "Flipping through that yellowed album always evokes nostalgic memories of my childhood."
+   },
+   {
+    "en": "frame a shot",
+    "vi": "căn chỉnh bố cục khung hình",
+    "ex": "He carefully framed the shot using the ancient stone doorway as a natural border."
+   },
+   {
+    "en": "depth of field",
+    "vi": "độ sâu trường ảnh (hiệu ứng làm mờ hậu cảnh để làm nổi bật chủ thể)",
+    "ex": "Using a shallow depth of field helps isolate the subject from a distracting background."
+   },
+   {
+    "en": "photo manipulation",
+    "vi": "chỉnh sửa ảnh kỹ thuật số (hậu kỳ)",
+    "ex": "Excessive photo manipulation on social media can project unrealistic beauty standards."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu bức ảnh chụp cảnh hoàng hôn tại đảo Phú Quốc cùng nhóm bạn thân vào mùa hè hai năm trước.",
+   "Ý 1 (Thời gian, địa điểm, nhân vật): Chụp vào buổi xế chiều trên bãi biển hoang sơ, bắt trọn hình bóng ba người bạn đang nhảy lên đón sóng.",
+   "Ý 2 (Thiết bị và cách chụp): Dùng điện thoại thông minh chụp liên tục ngược sáng đúng vào 'giờ vàng' để tạo hiệu ứng bóng đổ silhouette.",
+   "Kết (Lý do ý nghĩa): Bức ảnh ghi lại tình bạn thuần khiết trước khi mỗi người đi du học một nơi, luôn gợi lại sự ấm áp mỗi khi nhìn lại."
+  ],
+  "sample": "I would like to talk about a memorable photograph I took roughly two years ago during a summer holiday on Phu Quoc island with my closest friends. It was taken late in the afternoon on a tranquil stretch of beach. The photo captured three of my companions leaping into the air against a blazing orange sunset, creating a striking silhouette effect as gentle waves broke around their feet. At the time, I didn't own a high-end camera, so I simply relied on my smartphone. However, I lowered the exposure slightly and fired off a burst of candid shots right during the golden hour to freeze their figures mid-air. The composition turned out remarkably well, with golden reflections shimmering across the wet sand. This picture holds immense sentimental value for me because it was our final trip together before two of them moved abroad for their master's degrees. Whenever life gets overwhelming, glancing at that snapshot instantly evokes fond memories of our youth and reminds me of a bond that remains unbroken despite the physical distance.",
+  "p1": [
+   {
+    "q": "Do you enjoy taking photos in your daily life?",
+    "a": "Yes, definitely. I love taking candid shots of spontaneous moments, like an impromptu coffee with friends or an unusual sunset. It is an effortless way to document daily life without having to write a diary."
+   },
+   {
+    "q": "How often do you look back at old photographs?",
+    "a": "I usually scroll through my cloud gallery every couple of months, especially when I feel nostalgic. Looking at old snapshots always brings back warm memories and shows me how much my life has evolved."
+   },
+   {
+    "q": "Do you prefer taking photos with a smartphone or a digital camera?",
+    "a": "I lean towards smartphones because of sheer convenience. While a digital camera produces superior image quality, modern phone cameras are remarkably advanced and allow me to capture fleeting moments instantly without carrying heavy lenses."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people prefer to capture moments on camera rather than simply enjoying them in the present?",
+    "a": "I believe many people focus on their lenses out of an anxiety about forgetting precious milestones. Photographs offer tangible proof of an experience that can be revisited or shared on social media later. However, obsessing over getting the perfect shot often detracts from genuine presence, causing individuals to view events as mere content rather than living them fully. Balancing both is crucial."
+   },
+   {
+    "q": "How has digital photography altered the way society preserves history and memories?",
+    "a": "Digital technology has democratized photography, meaning virtually anyone can document historical shifts or everyday life in real time. Unlike fragile printed albums, digital archives store vast volumes effortlessly. On the flip side, this sheer abundance often devalues individual images; people take thousands of throwaway snapshots that are rarely revisited, whereas physical photographs in the past carried deeper emotional weight and permanence."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai kết hợp từ: dịch nguyên văn tiếng Việt thành 'make a photo' hoặc 'do photography' thay vì các cụm tự nhiên như 'take a photo', 'snap a picture', hay 'pursue photography'.",
+   "Phát âm sai trọng âm của họ từ này: nhầm lẫn trọng âm giữa danh từ 'PHOtograph' (/ˈfoʊ.tə.ɡræf/), người chụp 'phoTOGrapher' (/fəˈtɑː.ɡrə.fɚ/), và lĩnh vực 'phoTOgraphy' (/fəˈtɑː.ɡrə.fi/).",
+   "Lạm dụng từ mô tả chung chung: liên tục dùng 'nice' hoặc 'beautiful' để khen ảnh thay vì các tính từ chuẩn xác như 'vibrant', 'striking', 'poignant', hoặc 'well-composed'."
+  ],
+  "p1More": [
+   "What kinds of photos do you post on social media?",
+   "Have you ever taken a photography course or workshop?",
+   "Do you feel comfortable having your picture taken by strangers?",
+   "Do you keep any framed photographs in your living room?",
+   "Has your taste in photography changed since your childhood?"
+  ],
+  "p3More": [
+   "To what extent can documentary photographs be trusted as objective representations of reality?",
+   "Do you think professional photographers will eventually be replaced by artificial intelligence and automated editing tools?",
+   "Why do certain iconic photographs possess the power to sway public opinion on global issues?",
+   "In what ways has the widespread culture of photo editing influenced young people's self-esteem?"
+  ]
+ }
+}

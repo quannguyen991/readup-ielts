@@ -1,0 +1,117 @@
+{
+ "id": "teachers",
+ "title": "Teachers",
+ "titleVi": "Thầy cô",
+ "tipVi": "Khi nói về thầy cô, hãy tránh lặp lại các tính từ cơ bản như 'good' hay 'kind', thay vào đó hãy miêu tả cụ thể phương pháp giảng dạy và tác động lâu dài của họ đối với tư duy của bạn.",
+ "part1": [
+  "Do you remember your first teacher from primary school?",
+  "What qualities do you think make a good teacher?",
+  "Would you ever consider becoming a teacher in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe a teacher who had a significant influence on your education",
+  "bullets": [
+   "who this teacher was and what subject they taught",
+   "when and where you were taught by them",
+   "what made their teaching style special or unique",
+   "and explain why this teacher had such a lasting impact on you"
+  ]
+ },
+ "part3": [
+  "How has the role of teachers changed with the rise of modern educational technology?",
+  "Should teachers be primarily responsible for teaching academic subjects or moral values to children?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "instill a passion for",
+    "vi": "truyền cảm hứng và đam mê về điều gì",
+    "ex": "My high school biology teacher really instilled a passion for scientific research in me."
+   },
+   {
+    "en": "command respect",
+    "vi": "khiến người khác kính nể một cách tự nhiên",
+    "ex": "She never had to raise her voice because her profound expertise made her command respect effortlessly."
+   },
+   {
+    "en": "impart knowledge",
+    "vi": "truyền đạt kiến thức",
+    "ex": "A truly inspiring educator does far more than just impart knowledge from textbook pages."
+   },
+   {
+    "en": "lead by example",
+    "vi": "làm gương, dẫn dắt bằng hành động",
+    "ex": "He always led by example, demonstrating punctuality and dedication every single day."
+   },
+   {
+    "en": "think outside the box",
+    "vi": "tư duy sáng tạo, đột phá",
+    "ex": "Our English tutor regularly prompted us to think outside the box during open debates."
+   },
+   {
+    "en": "patient and approachable",
+    "vi": "kiên nhẫn và dễ gần",
+    "ex": "Being patient and approachable helps students feel safe enough to ask challenging questions."
+   },
+   {
+    "en": "tailor teaching methods",
+    "vi": "điều chỉnh phương pháp giảng dạy cho phù hợp",
+    "ex": "Exceptional tutors always tailor their teaching methods to suit different learning paces."
+   },
+   {
+    "en": "leave a lasting impression",
+    "vi": "để lại ấn tượng sâu đậm",
+    "ex": "Her words of encouragement left a lasting impression on my self-confidence."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người thầy/cô bạn muốn nói đến (tên, dạy môn gì, vào giai đoạn nào ở trường).",
+   "Ý 1: Nêu bối cảnh học tập và phong cách giảng dạy nổi bật (cách tương tác, ứng dụng thực tế thay vì học vẹt).",
+   "Ý 2: Chia sẻ một chi tiết hoặc kỷ niệm cụ thể chứng minh sự tận tâm và kiên nhẫn của người thầy/cô đó.",
+   "Kết: Giải thích lý do vì sao người đó có ảnh hưởng lớn (truyền đam mê, định hình định hướng học tập hoặc nghề nghiệp)."
+  ],
+  "sample": "I would like to talk about Mr. Hoang, my high school English teacher who made a profound impact on my educational journey. I attended his classes during tenth grade at a public secondary school in Hanoi. Back then, English felt like a chore filled with dry grammar exercises. However, Mr. Hoang transformed that perception completely. Instead of relying on rote memorization, he tailored his teaching methods by introducing debate sessions, pop songs, and movie scripts into the curriculum. He was exceptionally patient and approachable, which encouraged even the most introverted students to speak up without fear of making mistakes. What made him unique was his dedication to leading by example; whenever we struggled with academic writing, he spent hours offering personalized feedback rather than merely pointing out grammatical errors. He had such a lasting influence on me because he instilled a genuine passion for foreign languages that persists today. Thanks to his constant encouragement, I built the confidence to pursue international studies, which fundamentally altered my career direction.",
+  "p1": [
+   {
+    "q": "Do you remember your first teacher from primary school?",
+    "a": "Yes, vividly. Her name was Mrs. Lan, and she taught my first-grade class. She was exceptionally gentle and patient, which completely eased my anxiety when I was terrified of being separated from my parents."
+   },
+   {
+    "q": "What qualities do you think make a good teacher?",
+    "a": "In my view, empathy and enthusiasm are paramount. A great instructor does not just impart knowledge, but actively connects with learners and stimulates curiosity, much like my high school literature teacher did."
+   },
+   {
+    "q": "Would you ever consider becoming a teacher in the future?",
+    "a": "Honestly, no, because I lack the patience required for effective classroom management. Educating energetic teenagers demands extraordinary resilience, which I observed firsthand while watching my mother work as a high school instructor."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has the role of teachers changed with the rise of modern educational technology?",
+    "a": "I believe teachers have transitioned from being the sole distributors of information to facilitators of active learning. Historically, students relied almost exclusively on teacher lectures and textbooks, whereas today, online platforms and artificial intelligence offer instantaneous answers. Consequently, modern educators must concentrate on teaching students how to critically evaluate sources and solve problems collaboratively, ensuring technology enhances rather than replaces human mentorship."
+   },
+   {
+    "q": "Should teachers be primarily responsible for teaching academic subjects or moral values to children?",
+    "a": "I believe both dimensions are essential, but moral development should not rest entirely on teachers. While educators must definitely model ethical behavior and integrity at school, parents remain the foundational role models for a child's character. If schools carry the full burden of moral upbringing alongside rigid academic syllabuses, pedagogical quality inevitably declines. Therefore, a shared partnership between families and institutions is imperative."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng từ xưng hô 'teacher' trực tiếp như danh xưng tiếng Việt (ví dụ: 'Teacher said to me...' thay vì 'My teacher said...' hoặc gọi tên 'Mr./Ms. Smith').",
+   "Lạm dụng các tính từ quá chung chung và đơn giản như 'good', 'kind', 'friendly' thay vì sử dụng từ vựng chỉ kỹ năng sư phạm như 'dedicated', 'approachable', 'inspiring'.",
+   "Nhầm lẫn cấu trúc giữa 'teach' và 'learn' (ví dụ nói sai: 'He learned me English' thay vì 'He taught me English') hoặc nhầm 'explain me' thay vì 'explain to me'."
+  ],
+  "p1More": [
+   "Did you have a favorite teacher when you were younger?",
+   "Do you prefer strict teachers or easygoing ones?",
+   "Do you still keep in touch with any of your former teachers?",
+   "How do schools in your country usually celebrate Teacher's Day?",
+   "What subject did you find hardest to learn because of the teaching style?"
+  ],
+  "p3More": [
+   "Do you think artificial intelligence will ever completely replace human educators?",
+   "Why do you think teaching is often undervalued and underpaid in many societies?",
+   "How can governments attract more talented individuals into the teaching profession?",
+   "To what extent should students have the freedom to evaluate their teachers' performance?"
+  ]
+ }
+}

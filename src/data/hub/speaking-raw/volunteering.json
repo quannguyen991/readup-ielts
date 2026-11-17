@@ -1,0 +1,117 @@
+{
+ "id": "volunteering",
+ "title": "Volunteering",
+ "titleVi": "Tình nguyện",
+ "tipVi": "Hãy chia sẻ một trải nghiệm thực tế cụ thể và làm nổi bật sự tác động tích cực thay vì chỉ nói lý thuyết chung chung về lòng nhân ái.",
+ "part1": [
+  "Have you ever done any voluntary work?",
+  "Would you like to volunteer in the future?",
+  "What kinds of volunteer activities are popular among young people in your country?"
+ ],
+ "part2": {
+  "prompt": "Describe a voluntary activity you took part in or would like to join",
+  "bullets": [
+   "what the activity was",
+   "where and when it took place (or would take place)",
+   "who you did it with (or would do it with)",
+   "and explain why you decided to join (or want to join) this activity"
+  ]
+ },
+ "part3": [
+  "Should voluntary work be compulsory for high school students before graduation?",
+  "How can non-profit organizations encourage more people to participate in community service?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "lend a helping hand",
+    "vi": "giúp đỡ một tay",
+    "ex": "Whenever local shelters face shortages of food, many university students step in to lend a helping hand."
+   },
+   {
+    "en": "give back to the community",
+    "vi": "đóng góp ngược lại cho cộng đồng",
+    "ex": "Volunteering on weekends is an effective way for working professionals to give back to the community."
+   },
+   {
+    "en": "underprivileged children",
+    "vi": "trẻ em có hoàn cảnh khó khăn",
+    "ex": "The initiative aims to provide warm clothes and learning materials for underprivileged children in rural schools."
+   },
+   {
+    "en": "raise awareness of",
+    "vi": "nâng cao nhận thức về",
+    "ex": "Our campaign helped raise awareness of plastic recycling among urban residents."
+   },
+   {
+    "en": "hands-on experience",
+    "vi": "kinh nghiệm thực tế",
+    "ex": "Working at an animal rescue center gave her valuable hands-on experience in veterinary care."
+   },
+   {
+    "en": "make a meaningful contribution",
+    "vi": "đóng góp có ý nghĩa",
+    "ex": "Every donor wants to ensure that their time and money make a meaningful contribution to society."
+   },
+   {
+    "en": "altruistic motive",
+    "vi": "động cơ vị tha, không vụ lợi",
+    "ex": "True community advocates act out of altruistic motives rather than a desire for public recognition."
+   },
+   {
+    "en": "rally support",
+    "vi": "kêu gọi sự ủng hộ",
+    "ex": "Organizers used social media channels to rally support for flood victims across the central region."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn hoạt động tình nguyện đã tham gia (hoặc mong muốn tham gia) - dự án dạy học miễn phí cho trẻ em vùng cao.",
+   "Ý 1: Nêu rõ địa điểm, thời gian diễn ra chiến dịch và những người cùng đồng hành (nhóm tình nguyện viên cùng trường đại học).",
+   "Ý 2: Miêu tả chi tiết công việc cụ thể đã làm (chuẩn bị bài giảng trực quan, trao tặng sách vở, tổ chức hoạt động ngoại khóa).",
+   "Kết: Nêu lý do tham gia và cảm xúc đọng lại (cảm nhận rõ giá trị của sự sẻ chia và lòng biết ơn đối với những gì mình đang có)."
+  ],
+  "sample": "I would like to talk about a volunteer project I joined last summer, which involved teaching basic English to underprivileged children in a remote mountainous village in northern Vietnam. It took place over two weeks in Ha Giang province, organized by an independent youth charity. I teamed up with around ten university peers who shared a common passion for community development. Our daily routine included planning interactive language lessons, teaching conversational phrases, and organizing outdoor games to boost the children's confidence. We also helped distribute donated stationery and storybooks to set up a modest community reading room. The main reason I decided to sign up was that I wanted to give back to the community and put my academic skills to meaningful use during the holiday. Witnessing the children's genuine smiles and enthusiasm despite their harsh living conditions deeply moved me. It was an eye-opening journey that helped me appreciate my own privileges while making a tangible, positive difference in those young learners' lives.",
+  "p1": [
+   {
+    "q": "Have you ever done any voluntary work?",
+    "a": "Yes, definitely. During my second year at university, I participated in a blood donation drive on campus. It was a rewarding experience because I knew my small contribution could potentially save someone's life in an emergency."
+   },
+   {
+    "q": "Would you like to volunteer in the future?",
+    "a": "Certainly, I would love to join environmental cleanup campaigns in my city. With plastic pollution worsening, spending my weekends picking up litter alongside fellow volunteers would be a very practical way to make an impact."
+   },
+   {
+    "q": "What kinds of volunteer activities are popular among young people in your country?",
+    "a": "In Vietnam, youth often take part in Green Summer campaigns, teaching children in rural areas or renovating local schools. Tree planting and charity fund-raising for disaster-hit regions are also extremely common."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should voluntary work be compulsory for high school students before graduation?",
+    "a": "In my opinion, community service should not be mandatory. While it instills social responsibility and builds empathy, forcing teenagers can make it feel like an academic chore rather than an act of kindness. Instead, schools ought to offer incentives like leadership awards or course credits. That way, students participate with genuine altruistic motives rather than simply ticking a graduation box."
+   },
+   {
+    "q": "How can non-profit organizations encourage more people to participate in community service?",
+    "a": "Non-profit groups can leverage social media to showcase the tangible outcomes of their projects, which inspires trust and engagement. Collaborating with universities or corporate sponsors to offer flexible, micro-volunteering tasks also helps busy individuals get involved. By lowering participation barriers and celebrating volunteers' efforts publicly, organizations can foster a much stronger culture of giving back across different demographics."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai từ loại của 'volunteer': nói nhầm 'I volunteer work' thay vì 'I do volunteer work' hoặc dùng 'volunteer' như một nội động từ ('I volunteered to teach').",
+   "Lạm dụng cụm từ 'do charity' lặp đi lặp lại một cách gượng gạo, thiếu tự nhiên thay vì linh hoạt dùng 'engage in community service' hoặc 'support humanitarian causes'.",
+   "Chỉ đưa ra cảm xúc chung chung như 'it is very meaningful' mà quên mô tả hành động cụ thể hay kết quả đo lường được của hoạt động tình nguyện đó."
+  ],
+  "p1More": [
+   "Do you prefer volunteering alone or in a group?",
+   "Did you take part in any community work when you were at school?",
+   "What benefits can people get from doing unpaid work?",
+   "Do you think volunteering is suitable for elderly people?",
+   "How do people in your hometown usually find out about volunteer opportunities?"
+  ],
+  "p3More": [
+   "To what extent do corporations engage in charity work merely for public relations benefits?",
+   "Why do some people argue that governments, rather than charities, should solve social inequalities?",
+   "How has international volunteering, often called 'voluntourism', impacted local communities in developing nations?",
+   "Will technological advancements change the nature of community service in the coming decades?"
+  ]
+ }
+}

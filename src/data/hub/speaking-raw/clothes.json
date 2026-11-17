@@ -1,0 +1,117 @@
+{
+ "id": "clothes",
+ "title": "Clothes and Fashion",
+ "titleVi": "Trang phục",
+ "tipVi": "Hãy chú ý mô tả chất liệu, phom dáng và ngữ cảnh sử dụng thay vì chỉ lặp lại các tính từ chung chung như 'beautiful' hay 'nice'.",
+ "part1": [
+  "What kinds of clothes do you usually like to wear?",
+  "Do you prefer shopping for clothes online or in physical stores?",
+  "Did you have to wear a school uniform when you were younger?"
+ ],
+ "part2": {
+  "prompt": "Describe an item of clothing you wear on special occasions",
+  "bullets": [
+   "what it looks like and where you got it",
+   "when and where you wear it",
+   "how often you wear it",
+   "and explain why you enjoy wearing it"
+  ]
+ },
+ "part3": [
+  "Why do some people spend an excessive amount of money on designer brands?",
+  "How has the rise of fast fashion impacted the environment and consumer behavior?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "dress up to the nines",
+    "vi": "ăn mặc lộng lẫy, chỉn chu",
+    "ex": "Guests at the annual charity banquet dressed up to the nines in tuxedoes and evening gowns."
+   },
+   {
+    "en": "tailor-made",
+    "vi": "may đo theo kích thước riêng, vừa vặn",
+    "ex": "He prefers tailor-made suits because off-the-rack garments never fit his broad shoulders."
+   },
+   {
+    "en": "a fashion victim",
+    "vi": "người chạy theo trào lưu mù quáng",
+    "ex": "She spent half her paycheck on uncomfortable footwear simply because an influencer endorsed it, like a true fashion victim."
+   },
+   {
+    "en": "stand out from the crowd",
+    "vi": "nổi bật giữa đám đông",
+    "ex": "Adding a colorful scarf to a monochrome outfit helps her stand out from the crowd."
+   },
+   {
+    "en": "timeless classic",
+    "vi": "trang phục kinh điển, không bao giờ lỗi thời",
+    "ex": "A crisp white cotton shirt paired with well-fitted trousers remains a timeless classic."
+   },
+   {
+    "en": "dress down",
+    "vi": "mặc đồ giản dị, thoải mái hơn thường lệ",
+    "ex": "Our corporate office allows staff to dress down on Fridays by wearing polo shirts and sneakers."
+   },
+   {
+    "en": "mix and match",
+    "vi": "phối đồ linh hoạt",
+    "ex": "Building a capsule wardrobe allows you to mix and match staple pieces without spending much."
+   },
+   {
+    "en": "cost an arm and a leg",
+    "vi": "cực kỳ đắt đỏ",
+    "ex": "Authentic designer handbags cost an arm and a leg primarily due to brand prestige rather than raw materials."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu trực tiếp món đồ đặc biệt (bộ vest may đo navy hoặc bộ áo dài lụa) và nguồn gốc (quà tốt nghiệp từ gia đình).",
+   "Ý 1 (Thiết kế & Nguồn gốc): Mô tả kiểu dáng hiện đại, chất liệu len pha thoáng mát hoặc lụa tơ tằm, cùng sự vừa vặn hoàn hảo từ thợ may.",
+   "Ý 2 (Dịp mặc & Tần suất): Liệt kê các dịp trang trọng như tiệc cưới, lễ tốt nghiệp, Tết, và nhấn mạnh tần suất hiếm hoi chỉ vài lần mỗi năm.",
+   "Kết (Cảm xúc & Lý do yêu thích): Giải thích sự tự tin, lịch lãm khi khoác lên mình và giá trị kỷ niệm vô giá từ tình cảm gia đình."
+  ],
+  "sample": "I would like to talk about a tailor-made navy blue suit that I reserve exclusively for milestone celebrations. I received it as a university graduation gift from my parents two years ago, handcrafted by a reputable tailor in downtown Hanoi. Aesthetically, it boasts a sleek, modern cut crafted from breathable wool-blend fabric, featuring subtle satin lapels that add a touch of understated elegance. Unlike mass-produced off-the-rack garments, this suit fits like a glove and feels remarkably comfortable throughout long events. I generally slip into this suit on high-profile occasions, such as formal family weddings, high-stakes job interviews, and annual Tet banquets. Because it requires delicate dry cleaning, I only wear it perhaps three or four times each year. There are two primary reasons why I truly cherish this outfit. First, putting it on gives me an instant boost of confidence, helping me present myself with poise and maturity. More importantly, it holds immense sentimental value, constantly reminding me of my family's unwavering encouragement as I stepped out into the professional world.",
+  "p1": [
+   {
+    "q": "What kinds of clothes do you usually like to wear?",
+    "a": "I tend to gravitate towards casual and minimalist attire. On a typical day, I usually opt for breathable cotton T-shirts paired with relaxed-fit chinos, mainly because comfort is my top priority when commuting or working."
+   },
+   {
+    "q": "Do you prefer shopping for clothes online or in physical stores?",
+    "a": "I definitely prefer brick-and-mortar shops. Being able to try garments on and feel the fabric firsthand prevents sizing blunders, like when I once bought an oversized jumper online that looked completely unflattering in real life."
+   },
+   {
+    "q": "Did you have to wear a school uniform when you were younger?",
+    "a": "Yes, throughout my secondary school years, we were mandated to wear white button-downs and navy trousers. Although it felt somewhat rigid back then, it genuinely eliminated peer pressure regarding trendy branded clothes."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people spend an excessive amount of money on designer brands?",
+    "a": "In my view, many individuals splurge on luxury fashion primarily to project social status and success. Wearing recognizable designer logos acts as a badge of prestige, boosting their self-esteem in social circles. While a minority might genuinely appreciate exceptional craftsmanship, the majority are driven by peer validation and materialism. Consequently, aggressive brand marketing capitalizes heavily on this desire to display wealth."
+   },
+   {
+    "q": "How has the rise of fast fashion impacted the environment and consumer behavior?",
+    "a": "Fast fashion has drastically accelerated textile waste and environmental pollution through cheap, synthetic fabrics. Furthermore, it has cultivated an unhealthy throwaway culture among consumers, where garments are discarded after just a few wears rather than repaired. Although low prices democratize trendy clothing, the ecological consequences—ranging from microplastics to water contamination—are simply unsustainable. Therefore, embracing sustainable, circular fashion has become critical."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai ngữ pháp từ 'clothes': Từ này luôn ở dạng số nhiều và không có 'a clothe'. Để chỉ một chiếc áo/quần, phải dùng 'an item of clothing', 'a piece of clothing' hoặc 'a garment'.",
+   "Nhầm lẫn giữa 'wear', 'put on' và 'dress up': 'wear' chỉ trạng thái đang mặc đồ trên người, 'put on' là hành động mặc vào, còn 'dress up' là ăn mặc sang trọng/hóa trang.",
+   "Thiếu từ vựng miêu tả chất liệu và kiểu dáng: Học viên thường chỉ dùng tính từ mơ hồ như 'nice', 'good' thay vì các thuật ngữ ghi điểm như 'breathable', 'crease-resistant', 'loose-fitting' hay 'flattering'."
+  ],
+  "p1More": [
+   "How much time do you spend choosing what to wear in the morning?",
+   "Do you enjoy wearing bright colours or neutral tones?",
+   "Has your fashion style changed significantly compared to when you were a teenager?",
+   "Do you ever ask for fashion advice from your friends or family?",
+   "Would you ever consider buying second-hand or vintage clothes?"
+  ],
+  "p3More": [
+   "To what extent does a person's choice of clothing influence professional first impressions?",
+   "Do you believe traditional costumes will gradually vanish in modern globalized societies?",
+   "Should public schools and workplaces enforce strict dress codes, or should personal expression be prioritized?",
+   "How might technological advancements, such as smart fabrics or 3D-printed garments, reshape the future of fashion?"
+  ]
+ }
+}

@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-dien-thoai-1",
+  "level": "EASY",
+  "title": "Reserving a Table for Dinner",
+  "titleVi": "Đặt bàn ăn tối tại nhà hàng",
+  "situationVi": "Bạn muốn tổ chức sinh nhật cho bạn bè và đang gọi điện cho một nhà hàng để đặt bàn trước cho cuối tuần này.",
+  "task": "You are calling an Italian restaurant to reserve a table for a small group. State your party size and desired date and time, request a specific seating area, and ask about bringing your own birthday cake.",
+  "mustVi": [
+   "Nêu rõ số lượng người, ngày và giờ muốn đặt bàn",
+   "Yêu cầu vị trí ngồi cụ thể (ví dụ: gần cửa sổ hoặc góc yên tĩnh)",
+   "Hỏi về việc mang bánh sinh nhật từ ngoài vào và phí liên quan nếu có"
+  ],
+  "phrases": [
+   {
+    "en": "I'd like to book a table for...",
+    "vi": "Tôi muốn đặt một bàn cho...",
+    "ex": "I'd like to book a table for four this Friday."
+   },
+   {
+    "en": "Do you have any availability around...?",
+    "vi": "Bên bạn còn chỗ trống vào khoảng... không?",
+    "ex": "Do you have any availability around 7 PM?"
+   },
+   {
+    "en": "Could we have a table near...?",
+    "vi": "Chúng tôi có thể ngồi bàn gần... được không?",
+    "ex": "Could we have a table near the window, please?"
+   },
+   {
+    "en": "We are celebrating a...",
+    "vi": "Chúng tôi đang tổ chức ăn mừng...",
+    "ex": "We are celebrating my friend's birthday that night."
+   },
+   {
+    "en": "Is it okay if we bring...?",
+    "vi": "Liệu chúng tôi có thể mang... được không?",
+    "ex": "Is it okay if we bring our own birthday cake?"
+   },
+   {
+    "en": "Could you confirm under the name...?",
+    "vi": "Bạn có thể xác nhận dưới tên... giúp tôi không?",
+    "ex": "Could you confirm the reservation under the name Minh?"
+   }
+  ],
+  "sample": "Hello! I'd like to book a table for six people this coming Saturday, June 10th, around 7:30 PM. We are celebrating my best friend's birthday, so if possible, could we have a table near the window in a quiet corner? Also, is it okay if we bring our own birthday cake? We were wondering if you charge any cake-cutting fee. Please confirm the reservation under the name Linh Nguyen, and my phone number is 0912-345-678. Thank you very much, and see you this weekend!",
+  "tipVi": "Khi đặt bàn qua điện thoại, hãy nói rõ ràng từng con số ngày giờ và nhớ nhắc lại tên người đặt để nhân viên ghi nhận chính xác."
+ },
+ {
+  "id": "gt-dien-thoai-2",
+  "level": "EASY",
+  "title": "Scheduling a Dental Appointment",
+  "titleVi": "Đặt lịch hẹn khám nha khoa",
+  "situationVi": "Bạn bị đau răng mấy hôm nay và đang gọi điện đến một phòng khám nha khoa quốc tế để đặt lịch hẹn khám bệnh.",
+  "task": "You are calling a dental clinic to book an appointment with a dentist. Describe your issue briefly, ask for available slots on a specific day, and check what documents you need to bring along.",
+  "mustVi": [
+   "Nêu lý do gọi điện và mô tả ngắn gọn triệu chứng đau răng",
+   "Đề xuất ngày hoặc khung giờ mong muốn và hỏi lịch trống của bác sĩ",
+   "Hỏi xem cần mang theo giấy tờ hay thẻ bảo hiểm gì khi đến khám lần đầu"
+  ],
+  "phrases": [
+   {
+    "en": "I'd like to schedule an appointment for...",
+    "vi": "Tôi muốn đặt một lịch hẹn để...",
+    "ex": "I'd like to schedule an appointment for a dental check-up."
+   },
+   {
+    "en": "I've been experiencing some pain in...",
+    "vi": "Tôi bị đau ở...",
+    "ex": "I've been experiencing severe pain in my upper tooth."
+   },
+   {
+    "en": "Do you have any openings on...?",
+    "vi": "Bên bạn còn khung giờ trống nào vào... không?",
+    "ex": "Do you have any openings on Thursday afternoon?"
+   },
+   {
+    "en": "The sooner, the better.",
+    "vi": "Càng sớm càng tốt.",
+    "ex": "It hurts quite badly, so the sooner, the better."
+   },
+   {
+    "en": "What do I need to bring along?",
+    "vi": "Tôi cần mang theo những gì?",
+    "ex": "What do I need to bring along for my first visit?"
+   },
+   {
+    "en": "Do you accept private insurance?",
+    "vi": "Bên bạn có chấp nhận bảo hiểm tư nhân không?",
+    "ex": "Do you accept private health insurance cards?"
+   }
+  ],
+  "sample": "Good morning! I'd like to schedule an appointment with Dr. Johnson if possible. I've been experiencing a sharp toothache in my lower back tooth for the past two days, so the sooner, the better. Do you have any openings tomorrow afternoon, perhaps after 4 PM? If not, Friday morning would also work for me. Since this is my first visit to your clinic, could you please tell me what documents I need to bring? Do you accept private health insurance cards directly? My full name is Nam Tran. Thank you!",
+  "tipVi": "Hãy dùng các câu hỏi gián tiếp như 'Could you please tell me...' để tạo cảm giác lịch sự và chuyên nghiệp khi trao đổi với nhân viên lễ tân."
+ },
+ {
+  "id": "gt-dien-thoai-3",
+  "level": "MEDIUM",
+  "title": "Leaving a Professional Voicemail Message",
+  "titleVi": "Để lại tin nhắn thoại công việc",
+  "situationVi": "Bạn gọi điện cho đối tác kinh doanh để thảo luận về hợp đồng mới nhưng đối phương không bắt máy và cuộc gọi chuyển sang hộp thư thoại.",
+  "task": "You are leaving a clear voicemail message for a business partner. Introduce yourself and your company, explain why you are calling regarding project deadlines, and propose convenient times for a callback.",
+  "mustVi": [
+   "Giới thiệu họ tên, chức danh và tên công ty bạn đang làm việc",
+   "Trình bày lý do gọi điện liên quan đến tiến độ dự án hoặc điều khoản hợp đồng",
+   "Đề xuất khung giờ đối tác có thể gọi lại và để lại số điện thoại liên lạc rõ ràng"
+  ],
+  "phrases": [
+   {
+    "en": "This is [Name] calling from [Company].",
+    "vi": "Tôi là [Tên] gọi đến từ [Công ty].",
+    "ex": "This is Minh Anh calling from Lotus Logistics."
+   },
+   {
+    "en": "I'm calling in regards to...",
+    "vi": "Tôi gọi điện liên quan đến...",
+    "ex": "I'm calling in regards to the revised marketing contract."
+   },
+   {
+    "en": "I was hoping to touch base with you on...",
+    "vi": "Tôi muốn trao đổi nhanh với bạn về...",
+    "ex": "I was hoping to touch base with you on the delivery schedule."
+   },
+   {
+    "en": "Could you please give me a call back when...?",
+    "vi": "Bạn có thể gọi lại cho tôi khi... được không?",
+    "ex": "Could you please give me a call back when you get a chance?"
+   },
+   {
+    "en": "You can reach me directly at...",
+    "vi": "Bạn có thể liên hệ trực tiếp với tôi qua số...",
+    "ex": "You can reach me directly at 0903-888-999."
+   },
+   {
+    "en": "I will follow up with an email as well.",
+    "vi": "Tôi cũng sẽ gửi thêm email theo dõi.",
+    "ex": "I will follow up with a quick email as well."
+   }
+  ],
+  "sample": "Hello Ms. Jenkins, this is Minh Anh calling from Lotus Logistics. I'm calling in regards to our contract renewal and the upcoming project deadline next month. We have updated a few delivery terms, and I was hoping to touch base with you to get your feedback before final approval. Could you please give me a call back when you get a chance? I will be free this afternoon between 2 PM and 4 PM, or tomorrow morning from 9 to 11. You can reach me directly at 0903-888-999. I look forward to speaking with you soon. Goodbye!",
+  "tipVi": "Khi để lại tin nhắn thoại, hãy nói chậm rãi ở phần số điện thoại và nêu rõ khung giờ bạn rảnh để đối phương dễ dàng sắp xếp gọi lại."
+ },
+ {
+  "id": "gt-dien-thoai-4",
+  "level": "MEDIUM",
+  "title": "Rescheduling a Hotel Reservation",
+  "titleVi": "Thay đổi ngày đặt phòng khách sạn",
+  "situationVi": "Bạn đã đặt phòng khách sạn cho kỳ nghỉ cuối tuần này, nhưng vì chuyến công tác đột xuất nên bạn cần gọi điện xin đổi ngày lưu trú sang tuần sau.",
+  "task": "You are calling the front desk of a hotel to reschedule your stay. Provide your booking details, explain your reason politely, and ask about room availability and possible modification fees.",
+  "mustVi": [
+   "Cung cấp tên và mã đặt phòng, giải thích lý do cần dời ngày lưu trú",
+   "Đề xuất ngày nhận phòng và trả phòng mới cụ thể",
+   "Hỏi rõ về việc có phát sinh phí đổi ngày hoặc chênh lệch giá phòng hay không"
+  ],
+  "phrases": [
+   {
+    "en": "I currently have a booking under the name...",
+    "vi": "Tôi hiện có một đặt phòng dưới tên...",
+    "ex": "I currently have a booking under the name David Nguyen."
+   },
+   {
+    "en": "Due to an unexpected change of plans,...",
+    "vi": "Do có sự thay đổi kế hoạch đột xuất,...",
+    "ex": "Due to an unexpected change of plans, I won't be able to travel this Friday."
+   },
+   {
+    "en": "I was wondering if I could push back my dates to...",
+    "vi": "Tôi muốn hỏi liệu mình có thể lùi ngày sang... không?",
+    "ex": "I was wondering if I could push back my dates to next weekend."
+   },
+   {
+    "en": "Would there be any penalty fee for...?",
+    "vi": "Liệu có bị tính phí phạt cho việc... không?",
+    "ex": "Would there be any penalty fee for modifying this reservation?"
+   },
+   {
+    "en": "Does the new date carry a rate difference?",
+    "vi": "Ngày mới có chênh lệch giá phòng không?",
+    "ex": "Does the new date carry a rate difference for the deluxe room?"
+   },
+   {
+    "en": "Could you send an updated confirmation to my email?",
+    "vi": "Bạn có thể gửi xác nhận mới vào email của tôi không?",
+    "ex": "Could you send an updated confirmation to my email address?"
+   }
+  ],
+  "sample": "Good afternoon! I currently have a reservation under the name Phuong Tran, booking reference DN-4821, for this Friday, October 6th. Due to an unexpected business trip, I won't be able to arrive this weekend. I was wondering if I could push back my stay to next weekend, checking in on October 13th and checking out on the 15th instead. Could you check if the same deluxe double room is available for those dates? Also, will there be any penalty fee for modifying the booking, or any price difference I need to pay? Thank you for your help!",
+  "tipVi": "Khi cần thay đổi đặt chỗ, luôn chuẩn bị sẵn mã đặt phòng (booking reference) trước khi bấm máy để cuộc trao đổi diễn ra nhanh chóng và thuận tiện."
+ },
+ {
+  "id": "gt-dien-thoai-5",
+  "level": "HARD",
+  "title": "Inquiring About an Incorrect Charge",
+  "titleVi": "Khiếu nại về khoản phí thanh toán sai",
+  "situationVi": "Bạn phát hiện thẻ tín dụng bị tự động trừ tiền cho một gói dịch vụ mà bạn đã hủy tháng trước, và đang gọi điện lên tổng đài hỗ trợ để khiếu nại.",
+  "task": "You are calling customer support to dispute an unauthorized charge on your account. Explain the discrepancy clearly with specific dates and amounts, request an investigation, and insist on a full refund in a firm yet polite tone.",
+  "mustVi": [
+   "Nêu rõ việc thẻ bị trừ tiền sai dù đã hủy dịch vụ trước đó kèm số tiền và ngày trừ",
+   "Yêu cầu nhân viên kiểm tra lịch sử hủy trên hệ thống và làm rõ nguyên nhân bị trừ tiền",
+   "Đề nghị hoàn tiền đầy đủ vào tài khoản và yêu cầu gửi email xác nhận bằng văn bản"
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling to dispute a charge on my latest statement.",
+    "vi": "Tôi gọi điện để khiếu nại một khoản phí trên sao kê gần nhất.",
+    "ex": "I'm calling to dispute an unexpected charge of fifty dollars."
+   },
+   {
+    "en": "According to my records, I already cancelled...",
+    "vi": "Theo hồ sơ của tôi, tôi đã hủy...",
+    "ex": "According to my records, I already cancelled this subscription last month."
+   },
+   {
+    "en": "Could you please pull up my account history and check...?",
+    "vi": "Bạn có thể mở lịch sử tài khoản của tôi và kiểm tra... được không?",
+    "ex": "Could you please pull up my account history and check the cancellation date?"
+   },
+   {
+    "en": "I would like a full refund credited back to...",
+    "vi": "Tôi muốn được hoàn tiền toàn bộ vào...",
+    "ex": "I would like a full refund credited back to my credit card."
+   },
+   {
+    "en": "How long will it take for the refund to process?",
+    "vi": "Sẽ mất bao lâu để khoản hoàn tiền được xử lý?",
+    "ex": "Could you tell me how long it will take for the refund to process?"
+   },
+   {
+    "en": "I would appreciate a written confirmation sent to...",
+    "vi": "Tôi muốn có xác nhận bằng văn bản gửi đến...",
+    "ex": "I would appreciate a written confirmation sent to my email today."
+   }
+  ],
+  "sample": "Hello, I'm calling to dispute an incorrect charge on my latest billing statement. Yesterday, on November 4th, an amount of $65 was debited from my card for a premium subscription. However, according to my records, I already cancelled this service on October 15th and received a confirmation code. Could you please pull up my account history and investigate why this automated payment went through? Since this charge was an error on your system, I would like a full refund credited back to my card. Please let me know how long this refund takes to process, and kindly send a written confirmation to my registered email address.",
+  "tipVi": "Khi khiếu nại qua điện thoại, hãy giữ thái độ bình tĩnh nhưng dứt khoát, dùng các cụm từ khách quan như 'according to my records' thay vì công kích cá nhân nhân viên chăm sóc khách hàng."
+ }
+]

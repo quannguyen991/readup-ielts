@@ -1,0 +1,62 @@
+{
+ "id": "mock-04",
+ "title": "IELTS Speaking Mock Test 4",
+ "titleVi": "Đề thi thử số 4",
+ "focusVi": "Rèn luyện kỹ năng kết hợp tự sự với đánh giá cá nhân và phát triển luận điểm trừu tượng trong phần thảo luận.",
+ "part1": [
+  {
+   "topic": "Sports and Exercise",
+   "qs": [
+    "Do you frequently take part in physical activities?",
+    "What kind of sports are most popular among young people in your country?",
+    "Did you enjoy physical education classes when you were in school?",
+    "Do you prefer exercising alone or working out with others?"
+   ]
+  },
+  {
+   "topic": "Weather",
+   "qs": [
+    "What kind of weather do you enjoy the most?",
+    "Does the climate in your area change dramatically throughout the year?",
+    "How does bad weather usually affect your daily routine?",
+    "Do you regularly check the weather forecast before heading out?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a book or film that had a strong influence on your thinking",
+  "bullets": [
+   "what the title of the book or film was",
+   "when and where you first read or watched it",
+   "what key themes or message it explored",
+   "and explain why it had such a lasting impact on you"
+  ]
+ },
+ "part3": [
+  "How do films and literature shape societal values over time?",
+  "Do you think reading books offers deeper intellectual benefits than watching cinema?",
+  "Why do some stories maintain their relevance across multiple generations?",
+  "Should filmmakers and authors feel an ethical responsibility toward younger audiences?",
+  "In what ways has digital media changed how people consume written and visual narratives?"
+ ],
+ "answers": {
+  "p1": [
+   "Honestly, I try to stay active by jogging three times a week around my local lake. It helps relieve academic stress and keeps my stamina up after long hours of sitting at a desk.",
+   "Football is indisputably the top choice here. You can see teenagers kicking balls on almost every street corner or turf pitch every weekend because it's both social and affordable.",
+   "Not really, to be honest. Our classes were overly rigid and focused heavily on repetitive drills like shuttle runs, rather than letting us play engaging team sports like badminton or basketball.",
+   "I definitely lean towards solo sessions. Working out alone at the gym lets me listen to my favourite podcasts and progress at my own pace without having to coordinate schedules with friends.",
+   "I'm particularly fond of crisp, overcast mornings. The mild temperature makes it pleasant to walk outside without breaking into a sweat, especially during the transitional weeks of autumn.",
+   "Yes, quite substantially. Where I live, summers are scorching and humid with sudden downpours, while winters turn remarkably chilly and dry, requiring heavy jackets and heaters.",
+   "Heavy rain invariably disrupts my commute. Flooded streets slow traffic to a crawl, so I usually postpone non-essential outdoor errands and switch to working from home instead.",
+   "Yes, it has become second nature. I glance at a weather app every morning to decide whether I need to pack an umbrella or pick lightweight clothing for the day."
+  ],
+  "sample": "I'd like to talk about a film that genuinely reshaped my worldview, which is the biographical drama 'The Pursuit of Happyness'. I first watched it during my senior year of high school on a quiet Sunday afternoon at home, at a time when I was feeling quite anxious about upcoming university entrance exams. The narrative centres around Chris Gardner, a struggling salesman in San Francisco who faces severe financial hardship and eventual homelessness while raising his young son. At its core, the movie explores resilience, paternal devotion, and the unyielding pursuit of dignity against overwhelming odds. What made this film so profoundly impactful for me was its sheer authenticity. Unlike typical Hollywood success stories, it didn't sugarcoat the painful reality of failure and emotional exhaustion. Watching the protagonist endure relentless setbacks without surrendering his integrity made me realize that perseverance isn't merely about working hard; it's about staying composed when everything seems stacked against you. Whenever I encounter professional obstacles today, remembering Gardner's resolve gives me the psychological fortitude to keep pushing forward.",
+  "p3": [
+   "In my view, creative works act as a mirror that both reflects and guides public consciousness. When stories portray marginalized groups with nuance or highlight pressing ethical dilemmas, they prompt viewers to reassess ingrained prejudices. For instance, films addressing mental health have substantially reduced social stigma in recent years. Thus, art often precedes broader cultural shifts by humanizing complex issues.",
+   "I believe written texts generally foster deeper analytical thinking. Reading demands active cognitive involvement because individuals must visualize characters, interpret subtext, and construct entire worlds mentally. Conversely, cinema spoon-feeds sensory details through imagery and sound design, which can make viewing a relatively passive affair. Therefore, while both stimulate creativity, literature cultivates superior concentration and imaginative depth.",
+   "Timeless stories invariably address universal human conditions rather than fleeting social trends. Masterpieces explore enduring motifs like love, ambition, mortality, and justice, which resonate regardless of historical context. For example, Shakespearean plays like 'Macbeth' remain compelling today because the pitfalls of unchecked ambition are just as relevant in modern corporate culture. Ultimately, stories survive when their core moral truths transcend temporal boundaries.",
+   "Without a doubt, creators targeting impressionable audiences bear a substantial moral duty. Children and teenagers naturally emulate the behaviors, language, and moral compasses showcased by fictional protagonists. If media glamorizes antisocial behavior without presenting the accompanying consequences, it can distort youthful perceptions. Therefore, storytellers should strive to entertain while embedding constructive ethical frameworks that foster empathy rather than cynicism.",
+   "Digital platforms have fundamentally shortened attention spans and fragmented how we consume narratives. People now gravitate toward bite-sized video clips or serialized streaming episodes rather than lengthy novels or epic cinema. While this provides unprecedented convenience and accessibility, it often diminishes our patience for slow-paced, reflective storytelling. Consequently, contemporary narrative consumption has prioritized immediate gratification over immersive, contemplative engagement."
+  ]
+ }
+}

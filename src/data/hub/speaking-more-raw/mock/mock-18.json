@@ -1,0 +1,62 @@
+{
+ "id": "mock-18",
+ "title": "IELTS Speaking Mock Test 18",
+ "titleVi": "Đề thi thử số 18",
+ "focusVi": "Luyện tập kỹ năng kể chuyện theo trình tự thời gian kết hợp miêu tả sự thay đổi cảm xúc và biểu đạt tính kiên nhẫn trong các ngữ cảnh đời sống.",
+ "part1": [
+  {
+   "topic": "Languages",
+   "qs": [
+    "How many languages can you speak?",
+    "Do you think it is difficult to learn a new language?",
+    "What language would you like to learn in the future?",
+    "Did you enjoy learning foreign languages when you were a child?"
+   ]
+  },
+  {
+   "topic": "Birthdays",
+   "qs": [
+    "How do you usually celebrate your birthday?",
+    "Do you think birthdays are more important for children or adults?",
+    "What was the most memorable birthday gift you ever received?",
+    "How do people in your country typically celebrate birthdays?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an occasion when you had to wait a long time for someone or something.",
+  "bullets": [
+   "who or what you were waiting for",
+   "how long you had to wait",
+   "what you did while waiting",
+   "and explain how you felt during and after the wait"
+  ]
+ },
+ "part3": [
+  "Why do many people find it difficult to be patient in today's society?",
+  "In what situations do people usually have to wait the longest in daily life?",
+  "How has modern technology influenced our willingness to wait?",
+  "Do you think children should be taught how to be patient from an early age?",
+  "Can delays sometimes produce positive outcomes for individuals?"
+ ],
+ "answers": {
+  "p1": [
+   "Currently, I speak two languages: Vietnamese, which is my mother tongue, and English. I use English daily for my studies, and I am also attempting to pick up basic Korean phrases through music and TV shows.",
+   "Yes, definitely, because mastering grammar nuances and native pronunciation takes tremendous perseverance. For instance, getting used to English intonation patterns was particularly challenging for me when I first started learning.",
+   "I would love to learn Japanese because I am fascinated by traditional Japanese architecture and anime. Being able to converse with locals during trips to Tokyo would be an incredible personal achievement.",
+   "Honestly, not really, as the teaching methods back then focused heavily on rote memorization and grammar drills. It felt tedious compared to the interactive multimedia resources students enjoy today.",
+   "I usually prefer keeping things low-key by sharing an intimate dinner with my closest friends or family. We often enjoy home-cooked hotpot and share a simple birthday cake together.",
+   "I believe birthdays matter more to children because they eagerly look forward to presents and parties. Adults, on the other hand, often view them as reminders of responsibilities and aging.",
+   "It was a second-hand acoustic guitar my father gifted me on my sixteenth birthday. Although it was not brand new, it sparked my lifelong passion for playing acoustic music.",
+   "In Vietnam, young people usually gather at local restaurants or trendy cafes to celebrate with friends, while older generations often host family banquets featuring traditional dishes."
+  ],
+  "sample": "I would like to talk about a memorable occasion when I had to wait almost four hours at Noi Bai International Airport for a delayed domestic flight to Da Nang. I was traveling during peak summer season with two close friends, and our scheduled morning flight was repeatedly pushed back due to sudden torrential rain and severe air traffic congestion. While waiting, we tried to make the best of a tedious situation. Initially, we wandered through the terminal duty-free shops, but once fatigue set in, we settled at a quiet coffee stall. I killed time by reading an e-book on my phone and chatting with fellow stranded passengers who shared travel recommendations. To be honest, I felt intensely frustrated and restless at first, especially since our carefully planned holiday itinerary was being ruined. The lack of clear communication from the airline only heightened my anxiety. However, once boarding was finally announced, my irritation instantly evaporated, replaced by immense relief and renewed excitement. Although the delay tested my patience severely, it taught me to adapt flexibly when travel disruptions inevitably happen.",
+  "p3": [
+   "In my view, our culture of instant gratification is the primary culprit. Thanks to high-speed internet and on-demand delivery apps, people expect immediate results with a single tap. Consequently, when forced to queue up at banks or wait for public transit, individuals quickly become irritable because their tolerance for delay has significantly diminished compared to previous generations.",
+   "People typically experience the longest delays in healthcare settings and during peak-hour traffic commutes. For instance, public hospitals in urban centers are frequently overwhelmed, forcing patients to sit in waiting rooms for hours just to see a specialist. Similarly, severe road bottlenecks during rush hour trap motorists for prolonged periods, making daily travel an exhausting test of endurance.",
+   "Technology has drastically shortened people's attention spans and tolerance for waiting. With streaming services and instant messaging, responses are expected within seconds. In contrast to past eras when people patiently waited weeks for postal letters, modern consumers now abandon websites that take more than three seconds to load. Therefore, digital convenience has inadvertently made us far more impatient.",
+   "Undoubtedly, cultivating patience during childhood is vital for long-term emotional resilience. Children who learn delayed gratification tend to perform better academically and manage interpersonal conflicts more constructively. For example, teaching a child to wait for their turn in games prevents impulsive behavior. Ultimately, patience helps young people develop the discipline required to overcome inevitable adult challenges.",
+   "Yes, unexpected delays can actually offer valuable moments of reflection and mindfulness. In our hectic routines, an involuntary pause, such as a delayed train, gives people a chance to unwind, read, or contemplate important decisions without distraction. Furthermore, avoiding a journey due to a postponement might prevent accidents or mishaps, turning a frustrating inconvenience into a blessing in disguise."
+  ]
+ }
+}
