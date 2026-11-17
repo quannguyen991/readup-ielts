@@ -1,14 +1,13 @@
 import { BOOK_VOCAB_BOOKS, type BookVocabTheme, type VocabTopicWord } from '@/data/vocab-topics';
 
 /**
- * Chủ đề của từng từ tiếng Trung. Sách HSK 3.0 không ghi chủ đề, nên tra ngược từ sách HSK 2.0 cộng đồng
- * (đã chia theo cấp và chủ đề, ví dụ "HSK 1 · Con người, gia đình và quan hệ"). Từ không có trong sách đó
- * được xếp vào nhóm "Chưa phân chủ đề".
+ * Chủ đề của từ tiếng Trung. Với HSK 3.0 và Hán ngữ 2006, khớp từ với taxonomy HSK 2.0 cộng đồng;
+ * từ Hán ngữ không khớp được giữ theo bài nguồn để người học vẫn tìm đủ danh sách.
  */
 
 export const UNSORTED_THEME = 'Chưa phân chủ đề';
 
-export type ThemeGroup = { theme: string; words: VocabTopicWord[] };
+export type ThemeGroup = { theme: string; words: VocabTopicWord[]; sourceLesson?: boolean };
 
 type Entry = { theme: string; level: number };
 
@@ -47,20 +46,25 @@ export function themeOfWord(word: string, level: number | null): string | null {
 /** Gom các từ của một cấp theo chủ đề, nhóm nhiều từ nhất đứng trước; "Chưa phân chủ đề" luôn đứng cuối. */
 export function groupWordsByTheme(topic: BookVocabTheme): ThemeGroup[] {
   const level = levelOfName(topic.nameVi);
-  const groups = new Map<string, VocabTopicWord[]>();
+  const isHanyuCourse = topic.lessons.some((lesson) => lesson.slug.startsWith('book-hanyu-revised-2006-'));
+  const groups = new Map<string, ThemeGroup>();
   for (const lesson of topic.lessons) {
     for (const w of lesson.words) {
-      const theme = themeOfWord(w.word, level) ?? UNSORTED_THEME;
-      const list = groups.get(theme) ?? [];
-      list.push(w);
-      groups.set(theme, list);
+      const matchedTheme = themeOfWord(w.word, level);
+      // Hán ngữ 2006 không có taxonomy HSK trong dữ liệu gốc. Từ chưa khớp một
+      // chủ đề HSK vẫn được phân loại theo bài nguồn, thay vì dồn vào nhóm "khác".
+      const sourceLesson = isHanyuCourse && !matchedTheme;
+      const theme = matchedTheme ?? (sourceLesson ? `Theo bài · ${lesson.nameVi}` : UNSORTED_THEME);
+      const key = sourceLesson ? `lesson:${lesson.slug}` : `theme:${theme}`;
+      const group: ThemeGroup = groups.get(key) ?? { theme, words: [], ...(sourceLesson ? { sourceLesson: true } : {}) };
+      group.words.push(w);
+      groups.set(key, group);
     }
   }
-  return [...groups.entries()]
-    .map(([theme, words]) => ({ theme, words }))
-    .sort((a, b) => {
-      if (a.theme === UNSORTED_THEME) return 1;
-      if (b.theme === UNSORTED_THEME) return -1;
-      return b.words.length - a.words.length;
-    });
+  return [...groups.values()].sort((a, b) => {
+    if (a.sourceLesson !== b.sourceLesson) return a.sourceLesson ? 1 : -1;
+    if (a.theme === UNSORTED_THEME) return 1;
+    if (b.theme === UNSORTED_THEME) return -1;
+    return a.sourceLesson ? 0 : b.words.length - a.words.length;
+  });
 }

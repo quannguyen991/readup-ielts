@@ -52,7 +52,7 @@ if (mode === '--manifest') {
     const name = id.replace(/-(\w)/g, (_, c) => c.toUpperCase());
     if (src.includes(`'./${id}.json'`)) continue;
     src = src.replace(`import { ORIGINAL_TOPIC_TESTS }`, `import ${name} from './${id}.json';${nl}import { ORIGINAL_TOPIC_TESTS }`);
-    src = src.replace(`  ...ORIGINAL_TOPIC_TESTS,`, `  ${name} as ListeningTest,${nl}  ...ORIGINAL_TOPIC_TESTS,`);
+    src = src.replace(`  ...(SHOW_TEMPLATE_TOPICS ? ORIGINAL_TOPIC_TESTS : []),`, `  ${name} as ListeningTest,${nl}  ...(SHOW_TEMPLATE_TOPICS ? ORIGINAL_TOPIC_TESTS : []),`);
   }
   fs.writeFileSync(indexPath, src);
   console.log(`đã cài ${ready.length}/${ids.length} đề: ${ready.join(', ')}`);

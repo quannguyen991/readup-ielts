@@ -230,6 +230,20 @@ export const CHINESE_OPEN_COURSE = {
 /** Public courses linked as supplementary learning material; license restrictions stay visible. */
 export const CHINESE_ADDITIONAL_COURSES = [
   {
+    title: 'Coyote Chinese · Mandarin Courses One & Two',
+    detail: '54 bài từ sơ cấp đến trung cấp; tài liệu PDF và audio theo bài, dựa trên giáo trình DLI/FSI thuộc phạm vi công cộng. Phần tài liệu do Coyote Chinese biên soạn được phát hành theo CC BY-SA 3.0.',
+    license: 'Nguồn DLI/FSI: public domain · phần Coyote: CC BY-SA 3.0',
+    accessNote: 'Bộ bài và tệp tải công khai; audio có dung lượng lớn và cách dạy dựa nhiều vào tiếng Anh.',
+    url: 'https://cytchinese.tuxfamily.org/',
+  },
+  {
+    title: 'Getting started with Chinese 1 · OpenLearn',
+    detail: 'Khóa nhập môn 8 giờ của The Open University, có hoạt động tương tác, phát âm, thanh điệu, hội thoại, bài tập và bản PDF/EPUB tải về.',
+    license: 'CC BY-NC-SA 4.0 · có một số tư liệu bên thứ ba ngoại lệ',
+    accessNote: 'Học và tải miễn phí; giấy phép phi thương mại nên ReadUp chỉ liên kết tới nguồn.',
+    url: 'https://www.open.edu/openlearn/languages/getting-started-chinese-1/content-section-overview',
+  },
+  {
     title: 'A Course in Mandarin Chinese · Wikibooks',
     detail: '17 chương; phát âm, hội thoại, từ vựng, ngữ pháp và bài tập.',
     license: 'CC BY-SA 4.0',

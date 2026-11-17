@@ -9,7 +9,7 @@ import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { deckLevels, getStaticDeck, groupDeckWords, levelOf, NOTEBOOK_SLUG, splitLevelSlug } from '@/data/study-decks';
-import { clozeOf, type StudyWord, type WordStage } from '@/services/vocab/topic-study';
+import { clozeOf, normalizeAnswer, type StudyWord, type WordStage } from '@/services/vocab/topic-study';
 import { EaLessonScreen } from '@/components/vocab/eastasia/EaLessonScreen';
 import { isHangmanAnswer } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
@@ -772,6 +772,7 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
 ];
 
 const clozeableCount = (words: readonly StudyWord[]) => words.filter((w) => w.example && clozeOf(w.example, w.word)).length;
+const distinctHeadwordCount = (words: readonly StudyWord[]) => new Set(words.map((word) => normalizeAnswer(word.word)).filter(Boolean)).size;
 
 /** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
 function modeReady(key: string, words: readonly StudyWord[], language?: StudyWord['language']): boolean {
@@ -782,9 +783,15 @@ function modeReady(key: string, words: readonly StudyWord[], language?: StudyWor
   if (eastAsian && ['hangman', 'sentence', 'quiz', 'advert', 'flyer'].includes(key)) return false;
   // Điền vào câu cho chữ Hán/kana: cần ít nhất 4 câu khoét được để có đủ 4 phương án.
   if (eastAsian && key === 'cloze') return clozeableCount(words) >= 4;
-  if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
+  if (['test', 'game', 'quiz', 'advert', 'flyer'].includes(key) && distinctHeadwordCount(words) < 4) return false;
+  if (key === 'pairs' && distinctHeadwordCount(words) < 2) return false;
+  if (key === 'cloze') return clozeableCount(words) > 0;
+  if (key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
   if (key === 'hangman') return words.some((word) => isHangmanAnswer(word.word));
-  if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);
+  if (key === 'sentence') return words.some((word) => {
+    const tokens = (word.example ?? '').trim().split(/\s+/).filter(Boolean).length;
+    return tokens >= 4 && tokens <= 12;
+  });
   return true;
 }
 

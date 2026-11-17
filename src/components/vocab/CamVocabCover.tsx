@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Card, SectionHeader } from '@/components/ui';
-import { CAM_VOCAB_BOOKS, CAM_VOCAB_PASSAGES, CAM_VOCAB_TOTAL, camVocabCount, camVocabCoverUri } from '@/data/cambridge-vocab';
+import { CAM_VOCAB_ALL_BOOKS, CAM_VOCAB_ANKI_BOOK_COUNT, CAM_VOCAB_ANKI_TOTAL, CAM_VOCAB_PASSAGES, CAM_VOCAB_TOTAL, camVocabBookCount, camVocabCoverUri } from '@/data/cambridge-vocab';
 import { useL } from '@/i18n/useL';
 
 import { BookCover } from './BookShelf';
@@ -18,14 +18,14 @@ export function CamVocabCover({ n, words, onPress }: { n: number; words: number;
   return (
     <BookCover
       uri={camVocabCoverUri(n)}
-      label={L(`Cambridge IELTS ${n}, ${words.toLocaleString('vi-VN')} từ`, `Cambridge IELTS ${n}, ${words.toLocaleString('en-US')} words`)}
+      label={L(`Cambridge IELTS ${n}, ${words.toLocaleString('vi-VN')} mục từ`, `Cambridge IELTS ${n}, ${words.toLocaleString('en-US')} vocabulary items`)}
       onPress={onPress}
       maxWidth={280}
     />
   );
 }
 
-/** Kệ 12 sách Cambridge IELTS 10–21; bấm một sách để xem danh sách từ theo từng bài đọc. */
+/** Kệ sách Cambridge IELTS; bấm để xem Reading index và các thẻ Anki đã nhập. */
 export function CamVocabShelf() {
   const { L } = useL();
   return (
@@ -33,15 +33,15 @@ export function CamVocabShelf() {
       <SectionHeader
         title={L('Từ vựng theo sách Cambridge', 'Vocabulary by Cambridge book')}
         subtitle={L(
-          `Cambridge IELTS 10–21 · ${CAM_VOCAB_BOOKS.length} sách · ${CAM_VOCAB_PASSAGES} bài đọc · ${CAM_VOCAB_TOTAL.toLocaleString('vi-VN')} từ và cụm từ`,
-          `Cambridge IELTS 10–21 · ${CAM_VOCAB_BOOKS.length} books · ${CAM_VOCAB_PASSAGES} passages · ${CAM_VOCAB_TOTAL.toLocaleString('en-US')} words and phrases`,
+          `Cambridge IELTS 09–21 · ${CAM_VOCAB_ALL_BOOKS.length} sách · ${CAM_VOCAB_ANKI_BOOK_COUNT}/12 bộ Anki · ${CAM_VOCAB_PASSAGES} bài đọc · ${(CAM_VOCAB_TOTAL + CAM_VOCAB_ANKI_TOTAL).toLocaleString('vi-VN')} mục`,
+          `Cambridge IELTS 09–21 · ${CAM_VOCAB_ALL_BOOKS.length} books · ${CAM_VOCAB_ANKI_BOOK_COUNT}/12 Anki decks · ${CAM_VOCAB_PASSAGES} passages · ${(CAM_VOCAB_TOTAL + CAM_VOCAB_ANKI_TOTAL).toLocaleString('en-US')} items`,
         )}
         icon="book"
       />
       <View style={{ marginTop: 20, paddingTop: 6 }}>
         <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={26}>
-          {CAM_VOCAB_BOOKS.map((b) => (
-            <CamVocabCover key={b.n} n={b.n} words={camVocabCount(b)} onPress={() => router.push(`/vocabulary/cambridge/${b.n}` as never)} />
+          {CAM_VOCAB_ALL_BOOKS.map((b) => (
+            <CamVocabCover key={b.n} n={b.n} words={camVocabBookCount(b.n)} onPress={() => router.push(`/vocabulary/cambridge/${b.n}` as never)} />
           ))}
         </Grid>
       </View>

@@ -85,6 +85,7 @@ export function ZhLessonList({ book, topic }: { book: BookVocabBook; topic: Book
   const showThemes = !book.slug.includes('community');
   const groups = showThemes ? groupWordsByTheme(topic) : [];
   const realThemes = groups.filter((g) => g.theme !== UNSORTED_THEME).length;
+  const sourceLessonGroups = groups.filter((g) => g.sourceLesson).length;
 
   // Từ → buổi chứa nó (để bấm chủ đề mở đúng buổi) và trạng thái đã nhớ của từ đó.
   const lessonOf = new Map<string, string>();
@@ -111,7 +112,7 @@ export function ZhLessonList({ book, topic }: { book: BookVocabBook; topic: Book
           {[
             `${total.toLocaleString('vi-VN')} từ`,
             `${topic.lessons.length} buổi học`,
-            ...(realThemes ? [`${realThemes} chủ đề`] : []),
+            ...(realThemes ? [`${realThemes} nhóm từ`] : []),
             `${mastered} đã nhớ`,
           ].map((label) => (
             <Tag key={label} label={label} />
@@ -127,10 +128,10 @@ export function ZhLessonList({ book, topic }: { book: BookVocabBook; topic: Book
         <View style={{ gap: 14 }}>
           <View style={{ gap: 4 }}>
             <Text className="font-heavy text-sectionTitle" style={{ color: ZH.onPage }}>
-              Chủ đề trong HSK {level}
+              {level ? `Chủ đề trong HSK ${level}` : 'Chủ đề từ vựng'}
             </Text>
             <Text className="font-sans text-label" style={{ color: ZH.onPageSoft }}>
-              Bấm một chủ đề để mở buổi có từ đầu tiên của chủ đề đó.
+              Bấm một nhóm để mở bài chứa từ đầu tiên. {sourceLessonGroups ? `${sourceLessonGroups} nhóm chưa khớp chủ đề HSK được giữ theo bài nguồn.` : ''}
             </Text>
           </View>
           <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>

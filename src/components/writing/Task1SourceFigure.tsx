@@ -19,7 +19,12 @@ export function Task1SourceFigure({ charts, compact = false, english = true }: {
           {chart.assetUrl ? (
             <View
               className="w-full items-center justify-center overflow-hidden bg-white"
-              style={{ aspectRatio: compact ? 1.45 : 1.7, maxWidth: compact ? 460 : 560, alignSelf: 'center' }}
+              style={{
+                aspectRatio: imageAspectRatio(chart.imageDimensions, compact ? 1.45 : 1.7),
+                maxWidth: compact ? 460 : 560,
+                maxHeight: compact ? 420 : 620,
+                alignSelf: 'center',
+              }}
             >
               <Image
                 source={{ uri: chart.assetUrl }}
@@ -176,6 +181,11 @@ export function Task1SourceFigure({ charts, compact = false, english = true }: {
       ))}
     </View>
   );
+}
+
+function imageAspectRatio(dimensions: { width: number; height: number } | undefined, fallback: number): number {
+  if (!dimensions || dimensions.width <= 0 || dimensions.height <= 0) return fallback;
+  return Math.max(0.62, Math.min(2.2, dimensions.width / dimensions.height));
 }
 
 function isPieChart(chart: WritingPromptSourceChart): boolean {

@@ -6,7 +6,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Grid } from '@/components/layout/Grid';
 import { CamVocabCover } from '@/components/vocab/CamVocabCover';
 import { Badge, Button, Card } from '@/components/ui';
-import { CAM_VOCAB_BOOKS, camVocabCount, getCamVocabBook } from '@/data/cambridge-vocab';
+import { CAM_VOCAB_ALL_BOOKS, camVocabBookCount, camVocabCount, getCambridgeAnkiGroups, getCamVocabBook, type CambridgeAnkiEntry, type CambridgeAnkiGroup } from '@/data/cambridge-vocab';
 import { getCambridgeOcrSections, getCambridgeOcrVocabulary, type CambridgeOcrSection, type CambridgeOcrVocabularyTerm } from '@/data/cambridge-vocabulary-ocr';
 import { useL } from '@/i18n/useL';
 
@@ -16,9 +16,12 @@ export default function CambridgeVocabBookScreen() {
   const { L } = useL();
   const n = Number(bookParam);
   const book = getCamVocabBook(n);
+  const hasBook = Number.isInteger(n) && CAM_VOCAB_ALL_BOOKS.some((item) => item.n === n);
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState<Record<string, boolean>>({ '1.1': true });
   const [ocrSection, setOcrSection] = useState<CambridgeOcrSection | 'All'>('All');
+  const [ankiSection, setAnkiSection] = useState<'All' | 'Reading' | 'Listening' | 'Other'>('All');
+  const [openAnki, setOpenAnki] = useState<Record<string, boolean>>({});
 
   const needle = query.trim().toLocaleLowerCase();
   const passages = useMemo(() => {
@@ -34,7 +37,7 @@ export default function CambridgeVocabBookScreen() {
   const tests = [1, 2, 3, 4].map((test) => ({
     test,
     passages: passages.filter((p) => p.test === test),
-  }));
+  })).filter((test) => test.passages.length > 0);
   const ocrSections = book ? getCambridgeOcrSections(book.n) : [];
   const ocrSectionGroups = useMemo(() => {
     if (!book) return [];
@@ -47,10 +50,39 @@ export default function CambridgeVocabBookScreen() {
   }, [book?.n, needle, ocrSection]);
   const ocrMatchCount = ocrSectionGroups.reduce((sum, group) => sum + group.terms.length, 0);
   const ocrTotalCount = ocrSections.reduce((sum, section) => sum + getCambridgeOcrVocabulary(n, section).length, 0);
+  const allAnkiGroups = useMemo(() => getCambridgeAnkiGroups(n), [n]);
+  const ankiTotalCount = allAnkiGroups.reduce((sum, group) => sum + group.entries.length, 0);
+  const ankiGroups = useMemo(() => allAnkiGroups
+    .filter((group) => ankiSection === 'All' || group.section === ankiSection)
+    .map((group) => ({
+      ...group,
+      shown: needle ? group.entries.filter((entry) => matchesAnkiEntry(entry, needle)) : group.entries,
+    }))
+    .filter((group) => group.shown.length > 0), [allAnkiGroups, ankiSection, needle]);
+  const ankiMatchCount = ankiGroups.reduce((sum, group) => sum + group.shown.length, 0);
+  const ankiAllOpen = ankiGroups.length > 0 && ankiGroups.every((group) => openAnki[group.key]);
+  const ankiReadingCount = allAnkiGroups.filter((group) => group.section === 'Reading').reduce((sum, group) => sum + group.entries.length, 0);
+  const ankiListeningCount = allAnkiGroups.filter((group) => group.section === 'Listening').reduce((sum, group) => sum + group.entries.length, 0);
+  const ankiOtherCount = allAnkiGroups.filter((group) => group.section === 'Other').reduce((sum, group) => sum + group.entries.length, 0);
 
   const lookup = (word: string) => router.push(`/tu-dien?q=${encodeURIComponent(word)}` as never);
   const study = (test: number, passage: number) => router.push(`/vocabulary/topic/cambridge-${n}-test-${test}-passage-${passage}` as never);
   const lookupOcr = (term: CambridgeOcrVocabularyTerm) => router.push(`/tu-dien?q=${encodeURIComponent(term.term)}` as never);
+  const studyAnki = (group: CambridgeAnkiGroup) => {
+    if (group.section === 'Reading' && group.test && group.passage) {
+      router.push(`/vocabulary/topic/cambridge-${n}-anki-reading-${group.test}-${group.passage}` as never);
+    } else if (group.section === 'Reading' && group.test) {
+      router.push(`/vocabulary/topic/cambridge-${n}-anki-reading-test-${group.test}` as never);
+    } else if (group.section === 'Listening' && group.part) {
+      router.push(`/vocabulary/topic/cambridge-${n}-anki-listening-${group.part}` as never);
+    } else if (group.section === 'Listening' && group.test) {
+      router.push(`/vocabulary/topic/cambridge-${n}-anki-listening-test-${group.test}` as never);
+    } else if (group.section === 'Listening') {
+      router.push(`/vocabulary/topic/cambridge-${n}-anki-listening-unassigned` as never);
+    } else if (group.section === 'Other') {
+      router.push(`/vocabulary/topic/cambridge-${n}-anki-other` as never);
+    }
+  };
 
   return (
     <Screen>
@@ -63,37 +95,37 @@ export default function CambridgeVocabBookScreen() {
         onPress={() => router.push('/vocabulary/from-tests' as never)}
       />
 
-      {!book ? (
+      {!hasBook ? (
         <Card>
           <Text className="font-strong text-cardTitle text-ink">{L('Không tìm thấy sách này', 'Book not found')}</Text>
-          <Text className="mt-1 font-sans text-body text-muted">{L('Từ vựng có cho Cambridge IELTS 10 đến 21.', 'Vocabulary is available for Cambridge IELTS 10 to 21.')}</Text>
+          <Text className="mt-1 font-sans text-body text-muted">{L('Từ vựng có cho Cambridge IELTS 09 đến 21.', 'Vocabulary is available for Cambridge IELTS 09 to 21.')}</Text>
         </Card>
       ) : (
         <>
           <View className="flex-row items-center gap-4">
             <View style={{ width: 132 }}>
-              <CamVocabCover n={book.n} words={camVocabCount(book)} />
+              <CamVocabCover n={n} words={camVocabBookCount(n)} />
             </View>
             <View className="flex-1">
-              <Text className="font-heavy text-pageTitle text-ink">{`Cambridge IELTS ${book.n}`}</Text>
+              <Text className="font-heavy text-pageTitle text-ink">{`Cambridge IELTS ${n}`}</Text>
               <Text className="mt-1 font-sans text-body text-muted">
                 {L(
-                  `${camVocabCount(book).toLocaleString('vi-VN')} từ và cụm từ trong ${book.passages.length} bài đọc. Bấm một từ để tra trong Từ điển.`,
-                  `${camVocabCount(book).toLocaleString('en-US')} words and phrases across ${book.passages.length} passages. Tap a word to look it up in the dictionary.`,
+                  `${ankiTotalCount.toLocaleString('vi-VN')} thẻ Anki · ${camVocabCount(book ?? { n, passages: [] }).toLocaleString('vi-VN')} mục Reading · ${book?.passages.length ?? 0} bài đọc.`,
+                  `${ankiTotalCount.toLocaleString('en-US')} Anki cards · ${camVocabCount(book ?? { n, passages: [] }).toLocaleString('en-US')} Reading items · ${book?.passages.length ?? 0} passages.`,
                 )}
               </Text>
             </View>
           </View>
 
           <View className="mt-4 flex-row flex-wrap gap-2">
-            {CAM_VOCAB_BOOKS.map((b) => {
-              const selected = b.n === book.n;
+            {CAM_VOCAB_ALL_BOOKS.map((b) => {
+              const selected = b.n === n;
               return (
                 <Pressable
                   key={b.n}
                   accessibilityRole="button"
                   accessibilityState={{ selected }}
-                  onPress={() => { setQuery(''); setOcrSection('All'); setOpen({ '1.1': true }); router.replace(`/vocabulary/cambridge/${b.n}` as never); }}
+                  onPress={() => { setQuery(''); setOcrSection('All'); setAnkiSection('All'); setOpen({ '1.1': true }); setOpenAnki({}); router.replace(`/vocabulary/cambridge/${b.n}` as never); }}
                   className={`rounded-pill px-3 py-2 ${selected ? 'bg-primary-700' : 'border border-borderStrong bg-surface'}`}
                 >
                   <Text className={`font-semi text-label ${selected ? 'text-white' : 'text-muted'}`}>{`Cam ${b.n}`}</Text>
@@ -106,14 +138,14 @@ export default function CambridgeVocabBookScreen() {
             <TextInput
               value={query}
               onChangeText={setQuery}
-              placeholder={L('Tìm trong từ vựng Reading và OCR…', 'Search Reading and OCR vocabulary…')}
+              placeholder={L('Tìm trong từ vựng Reading, OCR và Anki…', 'Search Reading, OCR and Anki vocabulary…')}
               placeholderTextColor="#8B8175"
               accessibilityLabel={L('Tìm từ vựng trong sách', 'Search vocabulary in this book')}
               className="rounded-panel border border-border bg-surface px-3 py-3 font-sans text-body text-ink"
             />
             <View className="mt-3 flex-row items-center justify-between gap-2">
               <Text className="font-mid text-label text-muted">
-                {needle ? L(`${matches} từ Reading · ${ocrMatchCount} từ OCR khớp`, `${matches} Reading · ${ocrMatchCount} OCR matches`) : L(`${passages.length} bài đọc · ${ocrTotalCount} mục OCR`, `${passages.length} passages · ${ocrTotalCount} OCR terms`)}
+                {needle ? L(`${matches} từ Reading · ${ocrMatchCount} từ OCR · ${ankiMatchCount} thẻ Anki khớp`, `${matches} Reading · ${ocrMatchCount} OCR · ${ankiMatchCount} Anki matches`) : L(`${passages.length} bài đọc · ${ocrTotalCount} mục OCR · ${ankiTotalCount} thẻ Anki`, `${passages.length} passages · ${ocrTotalCount} OCR terms · ${ankiTotalCount} Anki cards`)}
               </Text>
               <Pressable
                 accessibilityRole="button"
@@ -184,6 +216,76 @@ export default function CambridgeVocabBookScreen() {
             <View className="flex-row flex-wrap items-end justify-between gap-2 border-b border-borderStrong pb-3">
               <View className="flex-1">
                 <View className="flex-row flex-wrap items-center gap-2">
+                  <Text className="font-heavy text-sectionTitle text-ink">{L('Từ vựng từ bộ Anki Cambridge', 'Vocabulary from Cambridge Anki decks')}</Text>
+                  <Badge label={L(`${ankiTotalCount} thẻ`, `${ankiTotalCount} cards`)} tone="primary" />
+                </View>
+                <Text className="mt-1 font-sans text-body text-muted">
+                  {L('Từ, nghĩa, phiên âm và ví dụ; chia theo Reading/Listening khi deck có ghi vị trí. Các thẻ không có vị trí vẫn nằm trong nhóm riêng. Nguồn: Daniel (Đăng Ngô VN), AnkiWeb.', 'Words, Vietnamese meanings, pronunciation and examples, grouped by Reading/Listening when the deck supplies a source location. Untagged cards remain in a separate group. Source: Daniel (Đăng Ngô VN), AnkiWeb.')}
+                </Text>
+              </View>
+              <Text className="font-mid text-label text-muted">{needle ? L(`${ankiMatchCount} thẻ khớp`, `${ankiMatchCount} matches`) : ''}</Text>
+            </View>
+
+            <View className="flex-row flex-wrap gap-2">
+              <OcrFilter label={L('Tất cả', 'All')} count={ankiTotalCount} selected={ankiSection === 'All'} onPress={() => setAnkiSection('All')} />
+              <OcrFilter label="Reading" count={ankiReadingCount} selected={ankiSection === 'Reading'} onPress={() => setAnkiSection('Reading')} />
+              <OcrFilter label="Listening" count={ankiListeningCount} selected={ankiSection === 'Listening'} onPress={() => setAnkiSection('Listening')} />
+              <OcrFilter label={L('Chưa gắn vị trí', 'No location')} count={ankiOtherCount} selected={ankiSection === 'Other'} onPress={() => setAnkiSection('Other')} />
+            </View>
+
+            {ankiGroups.length ? (
+              <>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => setOpenAnki(ankiAllOpen ? {} : Object.fromEntries(ankiGroups.map((group) => [group.key, true])))}
+                  className="self-start"
+                >
+                  <Text className="font-semi text-label text-primary-700">{ankiAllOpen ? L('Thu gọn các nhóm Anki', 'Collapse Anki groups') : L('Mở các nhóm Anki', 'Expand Anki groups')}</Text>
+                </Pressable>
+                {ankiGroups.map((group) => {
+                  const isOpen = needle ? true : !!openAnki[group.key];
+                  const studyable = (group.section === 'Reading' && !!group.test) || group.section === 'Listening' || group.section === 'Other';
+                  return (
+                    <View key={group.key} className="rounded-panel border border-border bg-surface p-3">
+                      <View className="flex-row flex-wrap items-center gap-2">
+                        <Pressable
+                          accessibilityRole="button"
+                          accessibilityState={{ expanded: isOpen }}
+                          onPress={() => setOpenAnki((current) => ({ ...current, [group.key]: !current[group.key] }))}
+                          className="min-w-0 flex-1 flex-row items-center gap-2"
+                        >
+                          <Text className="font-strong text-body text-ink">{ankiGroupLabel(group, L)}</Text>
+                          <Badge label={`${group.shown.length} ${L('từ', 'words')}`} tone="neutral" />
+                          <Text className="font-semi text-label text-primary-700">{isOpen ? '−' : '+'}</Text>
+                        </Pressable>
+                        {studyable ? (
+                          <Pressable accessibilityRole="link" onPress={() => studyAnki(group)} className="rounded-lg bg-primary-700 px-3 py-2">
+                            <Text className="font-semi text-label text-white">{L('Mở cách học Band 9 →', 'Open Band 9 study modes →')}</Text>
+                          </Pressable>
+                        ) : null}
+                      </View>
+                      {isOpen ? (
+                        <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={12}>
+                          {group.shown.map((entry) => (
+                            <AnkiTermCard key={`${entry.id}-${group.key}`} entry={entry} onPress={() => lookup(entry.word)} L={L} />
+                          ))}
+                        </Grid>
+                      ) : null}
+                    </View>
+                  );
+                })}
+              </>
+            ) : (
+              <Card>
+                <Text className="font-mid text-body text-muted">{ankiTotalCount ? L('Không có thẻ Anki nào khớp bộ lọc này.', 'No Anki cards match this filter.') : L('Chưa có dữ liệu Anki cho cuốn này.', 'Anki vocabulary is not available for this book yet.')}</Text>
+              </Card>
+            )}
+          </View>
+
+          <View className="mt-9 gap-4">
+            <View className="flex-row flex-wrap items-end justify-between gap-2 border-b border-borderStrong pb-3">
+              <View className="flex-1">
+                <View className="flex-row flex-wrap items-center gap-2">
                   <Text className="font-heavy text-sectionTitle text-ink">{L('Từ vựng OCR từ đề Cambridge', 'OCR vocabulary from Cambridge tests')}</Text>
                   <Badge label={L(`${ocrTotalCount} mục`, `${ocrTotalCount} terms`)} tone="primary" />
                 </View>
@@ -200,7 +302,7 @@ export default function CambridgeVocabBookScreen() {
                 <OcrFilter
                   key={section}
                   label={sectionLabel(section, L)}
-                  count={getCambridgeOcrVocabulary(book.n, section).length}
+                  count={getCambridgeOcrVocabulary(n, section).length}
                   selected={ocrSection === section}
                   onPress={() => setOcrSection(section)}
                 />
@@ -250,6 +352,33 @@ function matchesOcrTerm(term: CambridgeOcrVocabularyTerm, needle: string): boole
   return searchable.includes(needle);
 }
 
+function matchesAnkiEntry(entry: CambridgeAnkiEntry, needle: string): boolean {
+  return [
+    entry.word,
+    entry.meaningVi,
+    entry.definitionEn,
+    entry.pos,
+    entry.example,
+    entry.exampleVi,
+    entry.forms,
+    entry.ipa,
+    ...entry.synonyms,
+    ...entry.antonyms,
+  ].filter(Boolean).join(' ').toLocaleLowerCase().includes(needle);
+}
+
+function ankiGroupLabel(group: CambridgeAnkiGroup, L: (vi: string, en: string) => string): string {
+  if (group.section === 'Reading') {
+    if (group.test && group.passage) return `Reading · Test ${group.test} · Passage ${group.passage}`;
+    return group.test ? `Reading · Test ${group.test}` : L('Reading · chưa rõ test', 'Reading · test not specified');
+  }
+  if (group.section === 'Listening') {
+    if (group.part) return `Listening · Part ${group.part}`;
+    return group.test ? `Listening · Test ${group.test}` : L('Listening · chưa rõ part', 'Listening · part not specified');
+  }
+  return L('Chưa gắn vị trí bài', 'Source section not tagged');
+}
+
 function sectionLabel(section: CambridgeOcrSection, L: (vi: string, en: string) => string): string {
   const labels: Record<CambridgeOcrSection, [string, string]> = {
     Listening: ['Listening', 'Listening'],
@@ -272,6 +401,38 @@ function OcrFilter({ label, count, selected, onPress }: { label: string; count: 
       <Text className={`font-semi text-label ${selected ? 'text-white' : 'text-muted'}`}>{label}</Text>
       <Text className={`font-mid text-[11px] ${selected ? 'text-white' : 'text-subtle'}`}>{count}</Text>
     </Pressable>
+  );
+}
+
+function AnkiTermCard({ entry, onPress, L }: {
+  entry: CambridgeAnkiEntry;
+  onPress: () => void;
+  L: (vi: string, en: string) => string;
+}) {
+  return (
+    <View className="rounded-panel border border-border bg-white p-4">
+      <View className="flex-row flex-wrap items-start gap-2">
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={L(`Tra từ ${entry.word}`, `Look up ${entry.word}`)}
+          onPress={onPress}
+          className="min-w-0 flex-1"
+        >
+          <Text className="font-strong text-bodyLg text-ink">{entry.word}</Text>
+        </Pressable>
+        {entry.pos ? <Badge label={entry.pos} tone="neutral" /> : null}
+        {entry.markedDuplicate ? <Badge label={L('Lặp trong deck', 'Deck duplicate')} tone="neutral" /> : null}
+      </View>
+      {entry.ipa ? <Text className="mt-1 font-mid text-label text-subtle">{entry.ipa}</Text> : null}
+      {entry.meaningVi ? <Text className="mt-2 font-mid text-body text-ink">{entry.meaningVi}</Text> : null}
+      {entry.definitionEn ? <Text className="mt-2 font-sans text-label text-muted">{entry.definitionEn}</Text> : null}
+      {entry.example ? <Text className="mt-3 font-sans text-label text-ink">{entry.example}</Text> : null}
+      {entry.exampleVi ? <Text className="mt-1 font-sans text-label text-muted">{entry.exampleVi}</Text> : null}
+      {entry.forms ? <Text className="mt-2 font-mid text-label text-primary-700">{L('Dạng từ', 'Forms')}: {entry.forms}</Text> : null}
+      {entry.synonyms.length ? <Text className="mt-2 font-mid text-label text-muted">{L('Đồng nghĩa', 'Synonyms')}: {entry.synonyms.join(' · ')}</Text> : null}
+      {entry.antonyms.length ? <Text className="mt-1 font-mid text-label text-muted">{L('Trái nghĩa', 'Antonyms')}: {entry.antonyms.join(' · ')}</Text> : null}
+      {entry.sourceTags.length ? <Text className="mt-2 font-mid text-[11px] text-subtle">{entry.sourceTags.join(' · ')}</Text> : null}
+    </View>
   );
 }
 

@@ -128,6 +128,7 @@ export type WritingPromptSourceChart = {
   unit?: string;
   imageAlt?: string;
   assetUrl?: string | null;
+  imageDimensions?: { width: number; height: number };
   type?: string;
   kind?: string;
   series?: string[];

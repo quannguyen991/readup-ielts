@@ -86,6 +86,7 @@
     "ielts:import-local-ocr": "node scripts/ielts/import-local-ocr.mjs",
     "ielts:rebuild-sources": "python scripts/ielts/rebuild-source-bank.py",
     "ielts:crawl-catalog": "python scripts/ielts/crawl-public-catalog.py",
+    "cambridge:anki-import": "python scripts/cambridge/import-anki-vocabulary.py",
     "ielts:audit-sources": "tsx scripts/ielts/audit-source-bank.ts",
     "build:web": "expo export -p web --max-workers 2",
     "setup:check": "tsx scripts/check-setup.ts",

@@ -281,6 +281,7 @@ function sealIndex(lang: EaLang, name: string): number {
 export function EaBookPage({ book }: { book: BookVocabBook }) {
   const { L, en } = useL();
   const lang = book.language as EaLang;
+  const isHanyuCourse = book.slug.startsWith('book-hanyu-');
   const skin = useEaSkin(lang);
   const progress = useLessonProgress();
   const allLessons = useMemo(() => book.topics.flatMap(lessonsOf), [book]);
@@ -301,7 +302,9 @@ export function EaBookPage({ book }: { book: BookVocabBook }) {
     const seal = si >= 0 ? K[SEALS[lang][Math.min(si, SEALS[lang].length - 1)] ?? ''] : undefined;
     const dlg = t.lessons.filter((l) => isDialogueLesson(l.slug)).length;
     const meta = lang === 'ja' && dlg ? L(`${dlg} bài hội thoại · ${t.lessons.length - dlg} bài từ riêng lẻ`, `${dlg} dialogues · ${t.lessons.length - dlg} word sets`) : L(`${t.lessons.length} buổi học · tối đa 50 từ/buổi`, `${t.lessons.length} lessons · up to 50 words each`);
-    const label = (en ? t.name : t.nameVi).replace(/^(HSK \d(?:-9)?|JLPT N\d) · /, '');
+    const label = isHanyuCourse
+      ? (t.slug.endsWith('-shang') ? L('Tập trên', 'Upper volume') : L('Tập dưới', 'Lower volume'))
+      : (en ? t.name : t.nameVi).replace(/^(HSK \d(?:-9)?|JLPT N\d) · /, '');
     return (
       <View key={t.slug} style={{ flexGrow: 1, flexBasis: 240, maxWidth: '100%' }}>
       <Appear index={Math.min(i, 8)}>
@@ -315,7 +318,7 @@ export function EaBookPage({ book }: { book: BookVocabBook }) {
       lang={lang}
       backLabel={L('Tất cả sách từ vựng', 'All vocabulary books')}
       onBack={() => router.push('/vocabulary/topics' as never)}
-      actions={<EaPill skin={skin} label={lang === 'zh' ? L('Xem lộ trình HSK 1–6', 'See the HSK 1–6 roadmap') : L('Xem lộ trình JLPT N5–N1', 'See the JLPT N5–N1 roadmap')} onPress={() => router.push(`/vocabulary/lo-trinh/${lang}` as never)} />}
+      actions={!isHanyuCourse ? <EaPill skin={skin} label={lang === 'zh' ? L('Xem lộ trình HSK 1–6', 'See the HSK 1–6 roadmap') : L('Xem lộ trình JLPT N5–N1', 'See the JLPT N5–N1 roadmap')} onPress={() => router.push(`/vocabulary/lo-trinh/${lang}` as never)} /> : undefined}
     >
       <EaHero
         lang={lang}
@@ -324,7 +327,7 @@ export function EaBookPage({ book }: { book: BookVocabBook }) {
         title={title}
         blurb={book.blurb}
         chips={[
-          L(`${book.topics.length} bộ`, `${book.topics.length} sets`),
+          isHanyuCourse ? L(`${book.topics.length} tập sách`, `${book.topics.length} volumes`) : L(`${book.topics.length} bộ`, `${book.topics.length} sets`),
           L(`${words.toLocaleString('vi-VN')} từ`, `${words.toLocaleString('en-US')} words`),
           lang === 'ja' && dialogues ? L(`${dialogues} bài hội thoại`, `${dialogues} dialogues`) : L(`${allLessons.length} buổi học`, `${allLessons.length} lessons`),
         ]}
@@ -350,6 +353,7 @@ export function EaBookPage({ book }: { book: BookVocabBook }) {
 export function EaUnitPage({ book, topic }: { book: BookVocabBook; topic: BookVocabTheme }) {
   const { L, en } = useL();
   const lang = book.language as EaLang;
+  const isHanyuCourse = book.slug.startsWith('book-hanyu-');
   const skin = useEaSkin(lang);
   const progress = useLessonProgress();
   const ps = topic.lessons.map((l) => progress(l.slug));
@@ -359,7 +363,9 @@ export function EaUnitPage({ book, topic }: { book: BookVocabBook; topic: BookVo
   const thumb = JA_THUMB[topic.nameVi];
   const dialogues = topic.lessons.filter((l) => isDialogueLesson(l.slug));
   const others = topic.lessons.filter((l) => !isDialogueLesson(l.slug));
-  const label = (en ? topic.name : topic.nameVi).replace(/^(HSK \d(?:-9)?|JLPT N\d) · /, '');
+  const label = isHanyuCourse
+    ? (topic.slug.endsWith('-shang') ? L('Tập trên', 'Upper volume') : L('Tập dưới', 'Lower volume'))
+    : (en ? topic.name : topic.nameVi).replace(/^(HSK \d(?:-9)?|JLPT N\d) · /, '');
   const row = (l: BookVocabLesson, i: number, kind: 'dialogue' | 'words') => {
     const p = progress(l.slug);
     const idx = topic.lessons.indexOf(l);

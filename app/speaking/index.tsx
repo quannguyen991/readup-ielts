@@ -87,6 +87,13 @@ export default function SpeakingLobby() {
       },
     },
     {
+      icon: 'book',
+      tone: 'violet',
+      title: L('Bài mẫu tham chiếu', 'Reference samples'),
+      sub: L('Part 1–3 · đồng nghĩa, paraphrase', 'Parts 1–3 · synonyms, paraphrases'),
+      onPress: () => router.push('/speaking/mau' as never),
+    },
+    {
       icon: 'refresh',
       tone: 'mint',
       title: L('Rút thẻ ngẫu nhiên', 'Random card'),

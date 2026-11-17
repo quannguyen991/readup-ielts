@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { useLocalSearchParams } from 'expo-router';
+
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
 import { ExamModeModal, type ExamMode } from '@/components/ielts/ExamModeModal';
@@ -252,6 +254,15 @@ export default function IeltsSourcePracticeScreen() {
   };
 
   loadTestRef.current = loadTest;
+
+  // Mở thẳng một đề từ trang Listening: /ielts-source-practice?test=<id>
+  const { test: deepLinkTest } = useLocalSearchParams<{ test?: string }>();
+  const deepLinkDone = useRef(false);
+  useEffect(() => {
+    if (deepLinkDone.current || typeof deepLinkTest !== 'string' || tests.length === 0) return;
+    deepLinkDone.current = true;
+    void loadTestRef.current(deepLinkTest);
+  }, [deepLinkTest, tests.length]);
 
   const updateAnswer = (number: number, value: string) => {
     setAnswers((current) => {
