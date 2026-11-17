@@ -32,7 +32,7 @@ test('đáp án đúng là đúng theo dữ liệu từ điển của chính t�
         if (it.kind === 'antonym') assert.ok(it.word.antonyms!.includes(ans));
         if (it.kind === 'cloze') {
           assert.ok(it.context!.includes('______'));
-          assert.ok(!/an ______/i.test(it.context!), `${it.id}: mạo từ lộ đáp án`);
+          assert.ok(!/(?<!\p{L})an ______/iu.test(it.context!), `${it.id}: mạo từ lộ đáp án`);
         }
       }
     }

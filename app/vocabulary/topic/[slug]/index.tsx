@@ -24,6 +24,7 @@ import { currentStep, stepSummary } from '@/services/vocab/level-path';
 import { studiedLemmas } from '@/services/vocab/topic-fsrs';
 import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
+import { chapterPracticeReady, satQuizLesson } from '@/services/vocab/sat-quiz';
 import { LevelCard } from '@/components/vocab/LevelCard';
 import { LevelHeader } from '@/components/vocab/LevelHeader';
 import { useReadingFonts } from '@/lib/readingFonts';
@@ -313,19 +314,26 @@ export default function VocabTopicScreen() {
           </View>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
-              {MODES.filter((m) => modeReady(m.key, topic.words)).map((m) => (
-                <ToneTile
-                  key={m.key}
-                  seed={'mode-' + m.key}
-                  tone={m.tone}
-                  icon={m.icon}
-                  title={en ? m.labelEn : m.label}
-                  sub={en ? m.noteEn : m.note}
-                  chip={m.recommended ? (en ? 'Suggested' : 'Gợi ý') : undefined}
-                  minHeight={220}
-                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.route ?? m.key}` as never)}
-                />
-              ))}
+              {MODES.filter((m) => modeReady(m.key, topic.words, topic.slug)).map((m) => {
+                // Luyện đề SAT mở khi đã nhớ hết từ của chủ điểm.
+                const locked = m.key === 'satpractice' && !topic.words.every((w) => (stages?.[w.word] ?? 0) >= 2);
+                return (
+                  <ToneTile
+                    key={m.key}
+                    seed={'mode-' + m.key}
+                    tone={m.tone}
+                    icon={m.icon}
+                    title={en ? m.labelEn : m.label}
+                    sub={locked ? (en ? 'Remember every word in this chapter to unlock' : 'Nhớ hết từ trong chủ điểm này để mở') : en ? m.noteEn : m.note}
+                    chip={m.recommended ? (en ? 'Suggested' : 'Gợi ý') : undefined}
+                    minHeight={220}
+                    onPress={() => {
+                      if (locked) return;
+                      router.push((m.key === 'satpractice' ? `/vocabulary/sat-practice?lesson=${topic.slug}` : `/vocabulary/topic/${topic.slug}/${m.route ?? m.key}`) as never);
+                    }}
+                  />
+                );
+              })}
             </Grid>
           </View>
         </View>
@@ -633,11 +641,13 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
   { key: 'sentence', label: 'Xếp câu', labelEn: 'Build sentence', note: 'Xếp lại các từ thành câu ví dụ đúng thứ tự', noteEn: 'Rebuild the example sentence in the right order', icon: 'list', tone: '#0891B2' },
   { key: 'quiz', label: 'Trắc nghiệm ABCD', labelEn: 'ABCD quiz', note: 'Đề THPT: điền từ, gần nghĩa, trái nghĩa · chọn 10 đến 50 câu', noteEn: 'THPT style: fill the gap, closest and opposite meaning · 10 to 50 questions', icon: 'clipboard', tone: '#E0533D', recommended: true },
   { key: 'advert', route: 'quiz?mode=advert', label: 'Quảng cáo', labelEn: 'Advertisement', note: 'Điền từ vào đoạn quảng cáo, chọn ABCD như đề thi', noteEn: 'Fill the word into an advertisement, ABCD like the exam', icon: 'sparkle', tone: '#EA580C' },
+  { key: 'satpractice', label: 'Luyện đề SAT', labelEn: 'SAT practice', note: 'Đề kiểu SAT: điền từ vào câu, nghĩa của từ trong câu · 20–40 câu', noteEn: 'SAT style: fill the blank, meaning in context · 20–40 questions', icon: 'clipboard', tone: '#D97706' },
   { key: 'flyer', route: 'quiz?mode=flyer', label: 'Tờ rơi', labelEn: 'Flyer', note: 'Điền từ vào tờ rơi thông báo, chọn ABCD như đề thi', noteEn: 'Fill the word into a flyer notice, ABCD like the exam', icon: 'mail', tone: '#0369A1' },
 ];
 
 /** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
-function modeReady(key: string, words: readonly StudyWord[]): boolean {
+function modeReady(key: string, words: readonly StudyWord[], slug = ''): boolean {
+  if (key === 'satpractice') return chapterPracticeReady(satQuizLesson(slug));
   if (key === 'cloze' || key === 'quiz' || key === 'advert' || key === 'flyer') return words.some((word) => Boolean(word.example));
   if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
   if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);

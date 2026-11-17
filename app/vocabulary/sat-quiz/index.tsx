@@ -90,6 +90,24 @@ export default function SatQuizHub() {
         </View>
       </Appear>
 
+      <Appear index={1}>
+        <View className="mt-4 flex-row flex-wrap gap-2">
+          {(['verbal', 'math'] as const).map((subj) => (
+            <Pressable
+              key={subj}
+              accessibilityRole="button"
+              onPress={() => router.push(`/vocabulary/sat-practice?subject=${subj}` as never)}
+              className="flex-row items-center gap-2 rounded-pill bg-white px-4 py-2"
+              style={{ borderWidth: 1, borderColor: '#F3F0FB' }}
+            >
+              <Text className="font-strong text-label" style={{ color: INK }}>
+                {en ? `Practice test · ${subj === 'verbal' ? 'Verbal' : 'Math'} (20–40 Q)` : `Luyện đề SAT · ${subj === 'verbal' ? 'Verbal' : 'Math'} (20–40 câu)`}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      </Appear>
+
       {SAT_QUIZ_TOPICS.map((group, gi) => (
         <Appear key={group.subject} index={gi + 2}>
           <View className="mb-3 mt-7 flex-row items-center gap-2.5">

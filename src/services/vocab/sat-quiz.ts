@@ -1,5 +1,5 @@
 import { SAT_MATH_VOCAB_LESSONS, SAT_VERBAL_VOCAB_LESSONS, type VocabLesson } from '@/data/lessons/vocab-lessons';
-import { shuffled, type StudyWord } from '@/services/vocab/topic-study';
+import { seededRng, shuffled, type StudyWord } from '@/services/vocab/topic-study';
 
 /**
  * QUIZ ÔN TỪ VỰNG SAT — theo chủ đề, mỗi chủ đề ba mức từ dễ đến khó.
@@ -103,6 +103,8 @@ function distractors(
       out.push(t);
     }
   };
+  // Đề thật đưa các phương án cùng từ loại: ưu tiên nhiễu cùng từ loại trong bài trước.
+  take(lesson.words.filter((w) => w.pos === answer.pos));
   take(lesson.words);
   take(pool);
   return out;
@@ -167,4 +169,64 @@ export function buildSatQuiz(lesson: VocabLesson, level: SatQuizLevel, rng: () =
 /** Đạt mức này chưa: đúng từ 80% trở lên. */
 export function passed(score: number, total: number): boolean {
   return total > 0 && score / total >= 0.8;
+}
+
+/** Bài luyện đề SAT: 20–40 câu, mỗi câu một từ đặt trong ngữ cảnh (kiểu Words in Context). */
+export const SAT_PRACTICE_MIN = 20;
+export const SAT_PRACTICE_MAX = 40;
+
+/**
+ * Gộp mọi từ của các bài đã chọn thành một đề: mỗi từ một câu ở mức Khó (điền
+ * vào câu, gần nghĩa, trái nghĩa), xáo đều, lấy tối đa 40 câu. Có thể ít hơn 20
+ * nếu các bài chưa đủ từ — khi đó trang luyện báo cho người học biết.
+ */
+export function buildSatPractice(lessons: readonly VocabLesson[], rng: () => number): SatQuizItem[] {
+  const all: SatQuizItem[] = [];
+  for (const lesson of lessons) all.push(...buildSatQuiz(lesson, 3, rng));
+  return shuffled(all, rng).slice(0, SAT_PRACTICE_MAX);
+}
+
+/** Đề thật: "Which choice completes the text…" — điền từ hợp ngữ cảnh và chính xác nhất. */
+export const SAT_STEM_COMPLETE = 'Which choice completes the text with the most logical and precise word or phrase?';
+
+/** Đề thật: "As used in the text, what does the word … most nearly mean?" — nghĩa của từ trong câu. */
+export const satStemMean = (word: string) => `As used in the text, what does the word “${word}” most nearly mean?`;
+
+/**
+ * Đề luyện của MỘT chủ điểm SAT (kiểu Words in Context): mỗi từ có hai dạng câu
+ * — điền từ vào chỗ trống trong câu ví dụ (mọi từ có câu ví dụ), và chọn nghĩa
+ * gần nhất của từ như dùng trong câu (từ có đồng nghĩa ghi sẵn). Xáo, lấy tối đa 40 câu.
+ */
+export function buildChapterPractice(lesson: VocabLesson, rng: () => number): SatQuizItem[] {
+  const pool = subjectPool(lesson);
+  const items: SatQuizItem[] = [];
+  for (const w of lesson.words) {
+    if (w.example) {
+      const context = clozeOf(w.word, w.example);
+      if (context) {
+        const m = mcq(rng, w.word, distractors(w, lesson, pool, rng, (x) => x.word, (x) => clozeOf(x.word, w.example) !== null));
+        if (m) items.push({ id: `${lesson.slug}:cloze:${w.word}`, kind: 'cloze', word: w, prompt: SAT_STEM_COMPLETE, context, ...m });
+      }
+    }
+    const syn = w.synonyms?.[0];
+    // Dạng nghĩa-trong-câu cần từ đứng nguyên văn trong câu (không phải dạng biến đổi).
+    if (syn && w.example && clozeOf(w.word, w.example) !== null) {
+      const synWords = new Set((w.synonyms ?? []).map(norm));
+      const m = mcq(
+        rng,
+        syn,
+        distractors(w, lesson, pool, rng, (x) => x.synonyms?.[0] ?? '', (x) => {
+          const s = x.synonyms?.[0];
+          return !s || synWords.has(norm(s)) || norm(s) === norm(w.word) || (x.synonyms ?? []).map(norm).includes(norm(w.word));
+        }),
+      );
+      if (m) items.push({ id: `${lesson.slug}:mean:${w.word}`, kind: 'synonym', word: w, prompt: satStemMean(w.word), context: w.example, ...m });
+    }
+  }
+  return shuffled(items, rng).slice(0, SAT_PRACTICE_MAX);
+}
+
+/** Chủ điểm có đủ câu để dựng đề luyện (ít nhất 20 câu) không. Chủ điểm thiếu câu ví dụ thật thì phải bổ sung dữ liệu trước. */
+export function chapterPracticeReady(lesson: VocabLesson | undefined): boolean {
+  return !!lesson && buildChapterPractice(lesson, seededRng(1)).length >= SAT_PRACTICE_MIN;
 }

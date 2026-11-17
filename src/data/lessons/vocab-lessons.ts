@@ -17,6 +17,7 @@ import { THEME_ADDITIONS as ADD_B } from '../sat-rw-lexicon-more-b';
 import { THEME_ADDITIONS as ADD_C } from '../sat-rw-lexicon-more-c';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import satBookVocab from './sat-book-vocab.json';
+import satTangSentences from './sat-tang-sentences.json';
 
 export type VocabLesson = {
   slug: string;
@@ -146,7 +147,13 @@ const verbalLessons: VocabLesson[] = VERBAL_THEMES.map((theme, i) => ({
 }));
 
 export const SAT_MATH_VOCAB_LESSONS = mathLessons;
-const satBookVocabLessons = satBookVocab as unknown as VocabLesson[];
+/** Câu ví dụ thật cho các chủ điểm sat-tang còn chỉ có ghi chú ngắn (đề dựng từ câu này). */
+const tangSentences = satTangSentences as Record<string, Record<string, string>>;
+const satBookVocabLessons = (satBookVocab as unknown as VocabLesson[]).map((l) => {
+  const over = tangSentences[l.slug];
+  if (!over) return l;
+  return { ...l, words: l.words.map((w) => (over[w.word] ? { ...w, example: over[w.word]! } : w)) };
+});
 export const SAT_VERBAL_VOCAB_LESSONS = [...verbalLessons, ...satBookVocabLessons];
 export const SAT_VOCAB_LESSONS: VocabLesson[] = [...SAT_MATH_VOCAB_LESSONS, ...SAT_VERBAL_VOCAB_LESSONS];
 
