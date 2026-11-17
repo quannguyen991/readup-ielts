@@ -5,7 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { HubScreen } from '@/components/hub/HubScreen';
 import { GLASS_CARD, DIFF_COLOR, HUB } from '@/components/hub/theme';
 import { markTaskDone } from '@/components/hub/hooks';
-import { SCENE_IMAGE } from '@/data/hub/scenes';
+import { SCENE_THUMB } from '@/data/hub/scenes';
 import { dayKeyOf } from '@/services/hub/daily';
 import { gradeRoleplay, roleplayById } from '@/services/hub/roleplay';
 import { speak, stopSpeaking } from '@/services/hub/speak';
@@ -130,7 +130,7 @@ export default function CallPage() {
               style={{ position: 'absolute', width: 120 * scale, height: 120 * scale, borderRadius: 999, borderWidth: 1.5, borderColor: `rgba(46,125,79,${0.5 - i * 0.14})` }}
             />
           ))}
-          <Image source={{ uri: SCENE_IMAGE[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: 110, height: 110, borderRadius: 999, backgroundColor: HUB.glassStrong }} />
+          <Image source={{ uri: SCENE_THUMB[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: 110, height: 110, borderRadius: 999, backgroundColor: HUB.glassStrong }} />
         </View>
         <Text style={{ color: HUB.muted, fontSize: 13, fontVariant: ['tabular-nums'] }}>{`${mm}:${ss} · Lượt ${Math.min(step + 1, play.steps.length)}/${play.steps.length}`}</Text>
         <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800' }}>{play.difficulty}</Text>

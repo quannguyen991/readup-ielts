@@ -37,6 +37,7 @@ import { SAT_DOMAINS } from '@/data/sat-knowledge';
 import { MATH_DOMAIN_LABEL, MATH_SKILL_DOMAIN, MATH_SKILL_LABEL, type MathSkill } from '@/lib/math/types';
 import { NAV_GROUPS, NAV_LABEL_EN, type NavItem, visibleGroups } from '@/navigation/nav-items';
 import { CUE_CARDS, PART1_TOPICS } from '@/services/speaking/bank';
+import { hubSpeakingEntries } from './hub-entries';
 import { PATH_STEPS } from '@/services/writing/translation-path';
 import { STEP_EN } from '@/components/writing/translation-step-en';
 import { SAT_RW_SKILL_LABEL_EN } from '@/components/sat-rw/skill-label-en';
@@ -777,6 +778,9 @@ function buildEntries(): SearchEntry[] {
       href: `/speaking/room?mode=p2&cue=${encodeURIComponent(card.id)}&exam=1`,
     });
   }
+
+  // ---- Khu Luyện nói AI (Hub): trang, chủ đề, đề thi thử, đề giao tiếp, gia sư
+  out.push(...hubSpeakingEntries());
 
   // ---- Gắn từ khoá kỹ năng / kỳ thi, bỏ từ khoá rỗng và trùng
   for (const entry of out) {

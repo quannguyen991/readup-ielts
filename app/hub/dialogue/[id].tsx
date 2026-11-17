@@ -4,7 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
 import { DIFF_COLOR, GLASS_CARD, HUB } from '@/components/hub/theme';
-import { SCENE_IMAGE } from '@/data/hub/scenes';
+import { SCENE_THUMB } from '@/data/hub/scenes';
 import { CATEGORY_LABEL } from '@/services/hub/roleplay';
 import { dialogueById, gradeDialogue } from '@/services/hub/dialogue';
 import { markTaskDone } from '@/components/hub/hooks';
@@ -67,7 +67,7 @@ export default function DialoguePage() {
 
   return (
     <HubScreen title={dialogue.title} subtitle={`${CATEGORY_LABEL[dialogue.category]} · ${dialogue.minutes} phút`} back>
-      <Image source={{ uri: SCENE_IMAGE[dialogue.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
+      <Image source={{ uri: SCENE_THUMB[dialogue.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <Text style={{ color: DIFF_COLOR[dialogue.difficulty], fontSize: 13, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[dialogue.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{dialogue.difficulty}</Text>

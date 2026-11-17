@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import { HUB_UI, hubLift } from '@/components/hub/HubUi';
 import { DIFF_COLOR } from '@/components/hub/theme';
 import { DIALOGUES } from '@/data/hub/dialogues';
-import { SCENE_IMAGE, type SceneKey } from '@/data/hub/scenes';
+import { SCENE_THUMB, type SceneKey } from '@/data/hub/scenes';
 import { ROLEPLAYS, type ScenarioCategory } from '@/services/hub/roleplay';
 
 const LEVEL_VI = { EASY: 'Dễ', MEDIUM: 'Trung bình', HARD: 'Khó' } as const;
@@ -60,7 +60,7 @@ export function TalkPoster({ talk, rank, done }: { talk: Talk; rank?: number; do
       style={({ hovered }: Hover) => ({ width: 220, gap: 8, padding: 8, borderRadius: 20, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
     >
       <View style={{ height: 150, borderRadius: 14, overflow: 'hidden', backgroundColor: HUB_UI.wash }}>
-        <Image source={{ uri: SCENE_IMAGE[talk.setting] }} accessibilityIgnoresInvertColors style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+        <Image source={{ uri: SCENE_THUMB[talk.setting] }} accessibilityIgnoresInvertColors style={{ width: '100%', height: '100%' }} resizeMode="cover" />
         {rank ? <Text style={{ position: 'absolute', left: 10, bottom: -4, color: '#FFFFFF', fontSize: 64, fontWeight: '900', lineHeight: 70, textShadowColor: 'rgba(43,35,80,0.7)', textShadowRadius: 8 }}>{rank}</Text> : null}
         <View style={{ position: 'absolute', right: 8, bottom: 8, flexDirection: 'row', alignItems: 'center', gap: 5, paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: 'rgba(43,35,80,0.78)' }}>
           <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: DIFF_COLOR[talk.difficulty] }} />

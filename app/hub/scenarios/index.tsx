@@ -6,7 +6,7 @@ import { HubScreen } from '@/components/hub/HubScreen';
 import { HUB_UI, HubBar, HubChips, HubHero, HubPanel, HubTag, hubLift } from '@/components/hub/HubUi';
 import { DIFF_COLOR } from '@/components/hub/theme';
 import { DIALOGUES, type Dialogue } from '@/data/hub/dialogues';
-import { SCENE_CREDITS, SCENE_IMAGE } from '@/data/hub/scenes';
+import { SCENE_CREDITS, SCENE_THUMB } from '@/data/hub/scenes';
 import { dayHash, dayKeyOf } from '@/services/hub/daily';
 import { DIALOGUE_PASS_RATIO } from '@/services/hub/dialogue';
 import { CATEGORY_LABEL, ROLEPLAYS, type Roleplay, type ScenarioCategory, type RoleplayMode } from '@/services/hub/roleplay';
@@ -139,8 +139,8 @@ export default function ScenariosHub() {
   );
 }
 
-function Thumb({ setting, tall }: { setting: keyof typeof SCENE_IMAGE; tall?: boolean }) {
-  return <Image source={{ uri: SCENE_IMAGE[setting] }} accessibilityIgnoresInvertColors style={{ width: '100%', height: tall ? 190 : 128, borderRadius: 14, backgroundColor: HUB_UI.wash }} resizeMode="cover" />;
+function Thumb({ setting, tall }: { setting: keyof typeof SCENE_THUMB; tall?: boolean }) {
+  return <Image source={{ uri: SCENE_THUMB[setting] }} accessibilityIgnoresInvertColors style={{ width: '100%', height: tall ? 190 : 128, borderRadius: 14, backgroundColor: HUB_UI.wash }} resizeMode="cover" />;
 }
 
 function CardShell({ label, onPress, wide, children }: { label: string; onPress: () => void; wide?: boolean; children: React.ReactNode }) {

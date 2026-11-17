@@ -9,7 +9,7 @@ import { CATEGORY_LABEL, gradeRoleplay, roleplayById } from '@/services/hub/role
 import { dayKeyOf } from '@/services/hub/daily';
 import { useVoiceReply } from '@/components/hub/useVoiceReply';
 import { speak } from '@/services/hub/speak';
-import { SCENE_IMAGE } from '@/data/hub/scenes';
+import { SCENE_THUMB } from '@/data/hub/scenes';
 import { useHubStore } from '@/store/useHubStore';
 
 /** Kịch bản nhập vai ba lượt: nghe lời đối phương, chọn cách đáp, xem vì sao. */
@@ -66,7 +66,7 @@ export default function RoleplayPage() {
 
   return (
     <HubScreen title={play.title} subtitle={play.scene} back>
-      <Image source={{ uri: SCENE_IMAGE[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
+      <Image source={{ uri: SCENE_THUMB[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{play.difficulty}</Text>
