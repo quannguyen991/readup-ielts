@@ -1,0 +1,128 @@
+{
+ "title": "Scholarly Perspectives on the Typographical Revolution",
+ "topic": "the invention of the printing press",
+ "context": "A. The mid-fifteenth-century advent of movable type in Mainz revolutionized European communication. Dr Thomas Vance, a specialist in material culture, argues that this technological leap relied heavily on adapting existing agrarian machinery, noting how Gutenberg modified the mechanical presses used in winemaking. Vance also demonstrates that conventional water-based calligraphic inks proved ineffective on metal surfaces, forcing printers to synthesize oil-based varnish pigments. Furthermore, Vance contends that early printers deliberately mimicked scribal manuscript aesthetics to appease conservative bibliophiles wary of mechanical fabrication. Finally, Vance underscores that the expansion of printing depended entirely on an established continental supply chain of rag paper.\n\nB. Economic historians focus on the profound financial risks of early printing. Professor Clara Mendez asserts that printing ventures required unprecedented capital investment from speculative mercantile syndicates willing to absorb massive liabilities. According to Mendez, pioneering workshops faced constant insolvency because exorbitant upfront expenditures on type metal, paper, and skilled wages occurred long before any revenues materialized. Mendez also highlights that the sudden abundance of texts precipitated a dramatic decline in book prices, transforming an aristocratic luxury into an affordable middle-class commodity. Additionally, Mendez observes that print workshops diffused geographically by following established fluvial and maritime trading routes.\n\nC. The mechanical execution of movable type required remarkable precision. Dr Henrik Lindqvist, a typographical engineer, argues that Gutenberg's training in goldsmithing provided the metallurgical expertise needed to carve steel letter punches. Most critically, Lindqvist designates the two-part adjustable hand mould as the central mechanical breakthrough of typography, enabling rapid casting of uniform letterforms. Lindqvist further details how Gutenberg engineered a unique alloy of lead, tin, and antimony, preventing metal shrinkage during solidification to maintain sharp impressions. Lastly, Lindqvist notes that maximizing print output necessitated an unprecedented division of workshop labor among specialized compositors, inkers, and pressmen.\n\nD. The cultural effects of typography were intrinsically linguistic. Sociolinguist Dr Eleanor Ashby claims that commercial incentives pushed printers to favor prominent regional dialects, accelerating the standardization of modern national grammars. Moreover, Ashby explains that publishing extensively in vernacular tongues irreversibly fractured the historical educational hegemony of Latin. Ashby also identifies an epistemological transition in reading culture, observing that portable printed editions fostered private, silent reading at the expense of collective oral recitations. Furthermore, Ashby emphasizes that print democratized literacy across gender lines by disseminating vernacular domestic and religious guides tailored to female readers.\n\nE. Print also radically transformed the political sphere. Professor Julian Thorne, an intellectual historian, contends that the torrent of inexpensive political pamphlets democratized civic debate by drawing ordinary citizens into national controversies. Thorne emphasizes that the widespread dispersion of printing presses rendered ecclesiastical censorship futile, as banned manuscripts were easily reproduced across neighboring jurisdictions. Furthermore, Thorne maintains that mass textual dissemination decentralized institutional power by allowing citizens to independently evaluate official declarations. Finally, Thorne identifies the printing trade as the origin of intellectual property, as commercial competition spurred legal demands for authorial attribution and printing monopolies.\n\nF. Contemporary scholarship reveals the print revolution as a confluence of diverse forces. Rather than a sudden rupture, movable type flourished through material adaptation, aggressive venture financing, mechanical ingenuity, vernacular standardization, and shifting political dynamics. In examining these historical currents, researchers show that the printing press did not simply reproduce texts; it reordered the institutional and cognitive patterns of early modern civilization.",
+ "options": [
+  "A. Dr Thomas Vance",
+  "B. Professor Clara Mendez",
+  "C. Dr Henrik Lindqvist",
+  "D. Dr Eleanor Ashby",
+  "E. Professor Julian Thorne"
+ ],
+ "questions": [
+  {
+   "prompt": "Agricultural machinery associated with wine production served as a technical prototype for early printing equipment.",
+   "answer": "A. Dr Thomas Vance",
+   "why": "Đoạn A nêu rõ Dr Thomas Vance chỉ ra Gutenberg đã sửa đổi các máy ép cơ học dùng trong sản xuất rượu vang ('modified the mechanical presses used in winemaking').",
+   "quote": "noting how Gutenberg modified the mechanical presses used in winemaking."
+  },
+  {
+   "prompt": "Hefty preliminary expenditures on labor and materials frequently brought early printing businesses close to bankruptcy.",
+   "answer": "B. Professor Clara Mendez",
+   "why": "Đoạn B khẳng định Giáo sư Clara Mendez phân tích rằng các xưởng in đầu tiên đối mặt với nguy cơ phá sản ('faced constant insolvency') do chi phí ban đầu rất lớn ('exorbitant upfront expenditures').",
+   "quote": "pioneering workshops faced constant insolvency because exorbitant upfront expenditures on type metal, paper, and skilled wages occurred long before any revenues materialized."
+  },
+  {
+   "prompt": "Prior experience in metal craftsmanship provided the technical skills needed to engrave steel character punches.",
+   "answer": "C. Dr Henrik Lindqvist",
+   "why": "Đoạn C đề cập đến nhận định của Dr Henrik Lindqvist rằng kinh nghiệm thợ kim hoàn ('training in goldsmithing') của Gutenberg đã mang lại chuyên môn luyện kim để chạm khắc các con dấu chữ bằng thép.",
+   "quote": "Lindqvist, a typographical engineer, argues that Gutenberg's training in goldsmithing provided the metallurgical expertise needed to carve steel letter punches."
+  },
+  {
+   "prompt": "Market pressures motivated printers to prioritize major regional vernaculars, leading to standardized grammars.",
+   "answer": "D. Dr Eleanor Ashby",
+   "why": "Đoạn D giải thích rằng Dr Eleanor Ashby cho rằng động lực thương mại đã thúc đẩy thợ in ưu tiên các phương ngữ lớn, qua đó đẩy nhanh việc chuẩn hóa ngữ pháp quốc gia.",
+   "quote": "commercial incentives pushed printers to favor prominent regional dialects, accelerating the standardization of modern national grammars."
+  },
+  {
+   "prompt": "A surge of low-cost political tracts expanded public involvement in state controversies.",
+   "answer": "E. Professor Julian Thorne",
+   "why": "Đoạn E nêu rõ Giáo sư Julian Thorne nhận định rằng sự bùng nổ của các ấn phẩm chính trị giá rẻ đã dân chủ hóa các cuộc tranh luận dân sự, lôi cuốn người dân vào các tranh chấp quốc gia.",
+   "quote": "the torrent of inexpensive political pamphlets democratized civic debate by drawing ordinary citizens into national controversies."
+  },
+  {
+   "prompt": "The spread of printing workshops closely mirrored established waterway and ocean trade channels.",
+   "answer": "B. Professor Clara Mendez",
+   "why": "Đoạn B chỉ ra rằng Giáo sư Clara Mendez nhận thấy các xưởng in lan rộng theo các tuyến thương mại đường sông ('fluvial') và đường biển ('maritime').",
+   "quote": "Mendez observes that print workshops diffused geographically by following established fluvial and maritime trading routes."
+  },
+  {
+   "prompt": "Early printers deliberately replicated the visual appearance of handwritten manuscripts to reassure cautious collectors.",
+   "answer": "A. Dr Thomas Vance",
+   "why": "Đoạn A nêu quan điểm của Dr Thomas Vance rằng thợ in ban đầu cố tình sao chép hình thức bản thảo viết tay ('mimicked scribal manuscript aesthetics') để làm hài lòng những độc giả bảo thủ.",
+   "quote": "Vance contends that early printers deliberately mimicked scribal manuscript aesthetics to appease conservative bibliophiles"
+  },
+  {
+   "prompt": "The development of a variable casting apparatus was the foremost technical innovation of typographic printing.",
+   "answer": "C. Dr Henrik Lindqvist",
+   "why": "Đoạn C dẫn lời Dr Henrik Lindqvist khi ông coi khuôn đúc tay có thể điều chỉnh gồm hai phần ('adjustable hand mould') là bước đột phá cơ học quan trọng nhất.",
+   "quote": "Lindqvist designates the two-part adjustable hand mould as the central mechanical breakthrough of typography"
+  },
+  {
+   "prompt": "The rise of vernacular publications permanently broke the longstanding educational dominance of Latin.",
+   "answer": "D. Dr Eleanor Ashby",
+   "why": "Đoạn D chứng minh Dr Eleanor Ashby đã giải thích việc xuất bản bằng tiếng bản xứ đã phá vỡ thế độc quyền giáo dục lịch sử của tiếng Latinh ('educational hegemony of Latin').",
+   "quote": "Ashby explains that publishing extensively in vernacular tongues irreversibly fractured the historical educational hegemony of Latin."
+  },
+  {
+   "prompt": "The widespread geographical distribution of presses made attempts at religious censorship ineffective.",
+   "answer": "E. Professor Julian Thorne",
+   "why": "Đoạn E nêu rõ Giáo sư Julian Thorne chỉ ra rằng sự phân tán rộng rãi của các xưởng in đã khiến cho các biện pháp kiểm duyệt của giáo hội trở nên vô hiệu ('rendered ecclesiastical censorship futile').",
+   "quote": "the widespread dispersion of printing presses rendered ecclesiastical censorship futile, as banned manuscripts were easily reproduced across neighboring jurisdictions."
+  },
+  {
+   "prompt": "The sustained growth of the printing industry depended on pre-existing networks of rag paper production.",
+   "answer": "A. Dr Thomas Vance",
+   "why": "Đoạn A dẫn lời Dr Thomas Vance nhấn mạnh sự mở rộng của in ấn phụ thuộc hoàn toàn vào chuỗi cung ứng giấy giẻ rách sẵn có ở châu Âu.",
+   "quote": "Vance underscores that the expansion of printing depended entirely on an established continental supply chain of rag paper."
+  },
+  {
+   "prompt": "The rapid expansion of print lowered book prices enough to turn elite luxuries into goods affordable to the middle class.",
+   "answer": "B. Professor Clara Mendez",
+   "why": "Đoạn B khẳng định Giáo sư Clara Mendez nhận xét rằng sự sụt giảm mạnh về giá sách đã biến một món đồ xa xỉ của giới quý tộc thành hàng hóa mà tầng lớp trung lưu có thể mua được.",
+   "quote": "Mendez also highlights that the sudden abundance of texts precipitated a dramatic decline in book prices, transforming an aristocratic luxury into an affordable middle-class commodity."
+  },
+  {
+   "prompt": "A specialized combination of metals was formulated to stop contraction when type cooled in the mould.",
+   "answer": "C. Dr Henrik Lindqvist",
+   "why": "Đoạn C ghi nhận phân tích của Dr Henrik Lindqvist về việc Gutenberg phối trộn hợp kim đặc biệt gồm chì, thiếc và antimon để chống co ngót ('preventing metal shrinkage') khi nguội.",
+   "quote": "Lindqvist further details how Gutenberg engineered a unique alloy of lead, tin, and antimony, preventing metal shrinkage during solidification"
+  },
+  {
+   "prompt": "The widespread availability of identical documents reduced the centralized control of ruling institutions.",
+   "answer": "E. Professor Julian Thorne",
+   "why": "Đoạn E khẳng định Giáo sư Julian Thorne cho rằng sự phổ biến rộng rãi của các văn bản giống hệt nhau đã phân quyền quyền lực thể chế ('decentralized institutional power').",
+   "quote": "Thorne maintains that mass textual dissemination decentralized institutional power by allowing citizens to independently evaluate official declarations."
+  },
+  {
+   "prompt": "Pioneering printing initiatives required substantial backing from commercial syndicates willing to shoulder major financial risks.",
+   "answer": "B. Professor Clara Mendez",
+   "why": "Đoạn B ghi nhận nhận định của Giáo sư Clara Mendez rằng các dự án in ấn đòi hỏi sự đầu tư vốn chưa từng có từ các nhóm thương nhân dám chấp nhận rủi ro lớn ('speculative mercantile syndicates').",
+   "quote": "Professor Clara Mendez asserts that printing ventures required unprecedented capital investment from speculative mercantile syndicates willing to absorb massive liabilities."
+  },
+  {
+   "prompt": "Liquid inks intended for quill-and-paper writing had to be substituted with oil-based formulations for metal type.",
+   "answer": "A. Dr Thomas Vance",
+   "why": "Đoạn A trích quan điểm của Dr Thomas Vance rằng mực viết gốc nước truyền thống không hiệu quả trên bề mặt kim loại, buộc thợ in phải tổng hợp mực gốc dầu.",
+   "quote": "Vance also demonstrates that conventional water-based calligraphic inks proved ineffective on metal surfaces, forcing printers to synthesize oil-based varnish pigments."
+  },
+  {
+   "prompt": "Achieving peak production volumes required segregating printshop workers into distinct, specialized functions.",
+   "answer": "C. Dr Henrik Lindqvist",
+   "why": "Đoạn C nêu rõ quan điểm của Dr Henrik Lindqvist rằng việc tối đa hóa sản lượng đòi hỏi sự phân công lao động chặt chẽ giữa người xếp chữ, người bôi mực và thợ dập máy in.",
+   "quote": "Lindqvist notes that maximizing print output necessitated an unprecedented division of workshop labor among specialized compositors, inkers, and pressmen."
+  },
+  {
+   "prompt": "The production of domestic manuals and vernacular religious works helped expand reading abilities among women.",
+   "answer": "D. Dr Eleanor Ashby",
+   "why": "Đoạn D đề cập đến nghiên cứu của Dr Eleanor Ashby chỉ ra rằng in ấn đã thúc đẩy việc biết chữ của phụ nữ nhờ việc lưu hành các sách hướng dẫn gia đình và tôn giáo bằng tiếng địa phương.",
+   "quote": "Ashby emphasizes that print democratized literacy across gender lines by disseminating vernacular domestic and religious guides tailored to female readers."
+  },
+  {
+   "prompt": "Commercial rivalries in the book industry laid the groundwork for modern concepts of authorial rights and exclusive reproduction.",
+   "answer": "E. Professor Julian Thorne",
+   "why": "Đoạn E giải thích Giáo sư Julian Thorne xác định ngành in chính là nguồn gốc của sở hữu trí tuệ ('origin of intellectual property') bắt nguồn từ sự cạnh tranh thương mại đòi hỏi quyền tác giả.",
+   "quote": "Thorne identifies the printing trade as the origin of intellectual property, as commercial competition spurred legal demands for authorial attribution and printing monopolies."
+  }
+ ]
+}

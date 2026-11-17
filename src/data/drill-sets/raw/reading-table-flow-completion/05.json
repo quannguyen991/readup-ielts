@@ -1,0 +1,127 @@
+{
+ "title": "The Architecture of Medieval Higher Education",
+ "topic": "medieval universities",
+ "context": "A. During the twelfth century, Western Europe witnessed the emergence of the studia generalia, the institutional predecessors to modern universities. Prior to this urban revival, advanced scholarship was primarily confined to secluded monastic cloisters and cathedral schools. As municipal growth accelerated, scholarly communities coalesced in key European centers. To protect itinerant scholars from arbitrary civic courts, monarchs and popes granted protective charters. Emperor Frederick I Barbarossa established an early precedent with the Authentica Habita, granting scholars legal immunity. Subsequent papal bulls confirmed university autonomy and the ius ubique docendi, which entitled graduates to teach across Christendom without undergoing supplementary local examinations.\n\nB. Institutional governance followed two distinct regional archetypes: the student-dominated guild of Bologna and the magisterial guild of Paris. In Bologna, student collectives studying civil and canon law retained ultimate administrative authority. These student nations elected an undergraduate rector, negotiated employment contracts with professors, and imposed financial penalties on lecturers who arrived late or omitted difficult passages. Conversely, the University of Paris functioned as a guild of master teachers. Faculty members governed admissions, set tuition fees, and enforced institutional statutes, while younger students in the elementary arts faculty remained strictly subordinate.\n\nC. Academic progression commenced within the faculty of arts, the compulsory prerequisite for higher learning. The curriculum centered on the Seven Liberal Arts, divided into the introductory trivium (grammar, rhetoric, and logic) and the advanced quadrivium (arithmetic, geometry, music, and astronomy). Instruction prioritized Aristotelian dialectic, emphasizing formal logical deduction. After three or four years, a candidate completed an oral examination to become a determiner. Defending a thesis during the annual Lenten disputations yielded the baccalaureus artium, certifying fundamental scholarly competence and permitting the holder to deliver supplementary lectures as an apprentice.\n\nD. Baccalaureate holders could enter three postgraduate faculties: medicine, jurisprudence, or theology, the crowning discipline of academic life. Advanced study was exceptionally arduous; theology scholars often spent over a decade analyzing scripture and the Sentences of Peter Lombard. Achieving the rank of magister or doctor culminated in the inceptio, a formal ceremonial investiture. The candidate defended a final disputation before receiving the licentia docendi. Newly admitted masters were invested with the insignia of scholarly authority: an open book, a gold ring, and the doctoral biretta.\n\nE. Daily classroom instruction relied upon two pedagogical methods: the lectio and the disputatio. During the lectio, a master read authoritative texts aloud, dictating explanatory commentaries, termed glosses, for students lacking personal manuscripts. By contrast, the disputatio was an interactive, highly public debate. The presiding master posed a controversial question; a bachelor defended the proposition against aggressive counterarguments from the audience. On the following day, the master concluded with the determinatio, systematically summarizing opposing arguments before delivering his definitive judgment.\n\nF. Academic publishing was accelerated by the pecia system. Supervised by licensed university stationers, approved master manuscripts were divided into separate unbound quires, or peciae. Scribes rented these sections simultaneously, multiplying book output and reducing copy errors. Meanwhile, to shelter impoverished students facing steep urban rents, benefactors endowed residential colleges. Exemplified by Robert de Sorbon’s foundation in Paris, these establishments gradually evolved from simple boarding houses into thriving collegiate environments providing internal academic tutorials.",
+ "questions": [
+  {
+   "prompt": "Chart: Legal Foundations of Universities | Imperial Decree: Authentica Habita | Conferred ____ to academics, protecting them from civic courts",
+   "answer": "legal immunity",
+   "why": "Đoạn A nêu rõ rằng Hoàng đế Frederick I Barbarossa đã lập tiền lệ qua chiếu chỉ Authentica Habita nhằm trao cho giới học giả quyền miễn trừ tư pháp ('legal immunity').",
+   "quote": "Emperor Frederick I Barbarossa established an early precedent with the Authentica Habita, granting scholars legal immunity."
+  },
+  {
+   "prompt": "Chart: Legal Foundations of Universities | Papal Bull: ius ubique docendi | Validated teaching rights across ____ without further exams",
+   "answer": "Christendom",
+   "why": "Đoạn A giải thích rằng chứng chỉ ius ubique docendi cho phép người tốt nghiệp có quyền giảng dạy trên toàn cõi Kitô giáo ('Christendom') mà không phải thi bổ sung.",
+   "quote": "Subsequent papal bulls confirmed university autonomy and the ius ubique docendi, which entitled graduates to teach across Christendom without undergoing supplementary local examinations."
+  },
+  {
+   "prompt": "Table: Governance Models | Bologna Model: Leadership | Students elected an undergraduate ____ to manage administration",
+   "answer": "rector",
+   "why": "Đoạn B chỉ ra rằng các hội sinh viên tại Bologna tự bầu ra một người quản lý mang cấp bậc hiệu trưởng là sinh viên đại học ('rector').",
+   "quote": "These student nations elected an undergraduate rector, negotiated employment contracts with professors, and imposed financial penalties on lecturers who arrived late or omitted difficult passages."
+  },
+  {
+   "prompt": "Table: Governance Models | Bologna Model: Faculty Control | Teachers were subject to ____ if they skipped difficult content or were tardy",
+   "answer": "financial penalties",
+   "why": "Đoạn B xác nhận giáo sư tại Bologna phải chịu các hình phạt tài chính ('financial penalties') nếu đến muộn hoặc bỏ qua các đoạn văn hóc búa.",
+   "quote": "These student nations elected an undergraduate rector, negotiated employment contracts with professors, and imposed financial penalties on lecturers who arrived late or omitted difficult passages."
+  },
+  {
+   "prompt": "Table: Governance Models | Paris Model: Authority | Administered by an established corporation of ____",
+   "answer": "master teachers",
+   "why": "Đoạn B nêu rõ Đại học Paris vận hành như một nghiệp đoàn/phường hội của các giảng viên bậc thầy ('master teachers').",
+   "quote": "Conversely, the University of Paris functioned as a guild of master teachers."
+  },
+  {
+   "prompt": "Table: Governance Models | Paris Model: Junior Members | Younger learners were placed under strict control in the ____",
+   "answer": "elementary arts faculty",
+   "why": "Đoạn B nhấn mạnh rằng các học viên trẻ hơn theo học tại khoa nghệ thuật cơ sở ('elementary arts faculty') hoàn toàn chịu sự phục tùng và giám sát nghiêm ngặt.",
+   "quote": "Faculty members governed admissions, set tuition fees, and enforced institutional statutes, while younger students in the elementary arts faculty remained strictly subordinate."
+  },
+  {
+   "prompt": "Curriculum Table: Seven Liberal Arts | Phase 1: the ____ | Included grammar, rhetoric, and logic",
+   "answer": "trivium",
+   "why": "Đoạn C giải thích giai đoạn nhập môn của Bảy Môn Khai phóng gồm ngữ pháp, tu từ và logic được gọi là 'trivium'.",
+   "quote": "The curriculum centered on the Seven Liberal Arts, divided into the introductory trivium (grammar, rhetoric, and logic) and the advanced quadrivium (arithmetic, geometry, music, and astronomy)."
+  },
+  {
+   "prompt": "Curriculum Table: Seven Liberal Arts | Phase 2: the ____ | Covered arithmetic, geometry, music, and astronomy",
+   "answer": "quadrivium",
+   "why": "Đoạn C chỉ ra giai đoạn nâng cao bao gồm 4 môn toán học (số học, hình học, âm nhạc và thiên văn học) được gọi là 'quadrivium'.",
+   "quote": "The curriculum centered on the Seven Liberal Arts, divided into the introductory trivium (grammar, rhetoric, and logic) and the advanced quadrivium (arithmetic, geometry, music, and astronomy)."
+  },
+  {
+   "prompt": "Curriculum Table: Seven Liberal Arts | Pedagogical Focus | Placed special emphasis on ____ for deduction",
+   "answer": "Aristotelian dialectic",
+   "why": "Đoạn C khẳng định việc đào tạo ưu tiên phương pháp biện chứng theo triết học Aristotle ('Aristotelian dialectic') nhằm rèn luyện tư duy diễn dịch.",
+   "quote": "Instruction prioritized Aristotelian dialectic, emphasizing formal logical deduction."
+  },
+  {
+   "prompt": "Flow-chart: Journey to the Baccalaureate | Stage 1: Pass an oral assessment after 3-4 years to become a ____",
+   "answer": "determiner",
+   "why": "Theo đoạn C, sau 3 đến 4 năm học, sinh viên trải qua bài kiểm tra vấn đáp để đạt tư cách một 'determiner'.",
+   "quote": "After three or four years, a candidate completed an oral examination to become a determiner."
+  },
+  {
+   "prompt": "Flow-chart: Journey to the Baccalaureate | Stage 2: Present and defend a thesis during the yearly ____",
+   "answer": "Lenten disputations",
+   "why": "Đoạn C nêu rõ việc bảo vệ luận điểm diễn ra trong các cuộc tranh biện Mùa Chay hàng năm ('Lenten disputations').",
+   "quote": "Defending a thesis during the annual Lenten disputations yielded the baccalaureus artium, certifying fundamental scholarly competence and permitting the holder to deliver supplementary lectures as an apprentice."
+  },
+  {
+   "prompt": "Flow-chart: Journey to the Baccalaureate | Outcome: Attain the baccalaureus artium, granting permission to give ____ as an apprentice",
+   "answer": "supplementary lectures",
+   "why": "Đoạn C nêu rằng bằng cử nhân nghệ thuật cho phép người sở hữu được giảng dạy các bài giảng phụ trợ ('supplementary lectures') dưới dạng thực tập.",
+   "quote": "Defending a thesis during the annual Lenten disputations yielded the baccalaureus artium, certifying fundamental scholarly competence and permitting the holder to deliver supplementary lectures as an apprentice."
+  },
+  {
+   "prompt": "Table: Postgraduate Faculties | Subject considered the supreme discipline of all studies: ____",
+   "answer": "theology",
+   "why": "Đoạn D mô tả thần học ('theology') là môn học đỉnh cao ('crowning discipline') trong số ba khoa đào tạo sau đại học.",
+   "quote": "Baccalaureate holders could enter three postgraduate faculties: medicine, jurisprudence, or theology, the crowning discipline of academic life."
+  },
+  {
+   "prompt": "Table: Postgraduate Faculties | Key Textbook: Besides scriptures, scholars studied the ____ compiled by Peter Lombard",
+   "answer": "Sentences",
+   "why": "Đoạn D nhắc tới hai văn bản chính mà học giả thần học phải mổ xẻ là kinh thánh và bộ sách 'Sentences' của Peter Lombard.",
+   "quote": "Advanced study was exceptionally arduous; theology scholars often spent over a decade analyzing scripture and the Sentences of Peter Lombard."
+  },
+  {
+   "prompt": "Flow-chart: Advanced Degree Completion | Ceremony: The candidate underwent an investiture ritual called the ____",
+   "answer": "inceptio",
+   "why": "Đoạn D giải thích rằng việc thăng lên học vị thạc sĩ hay tiến sĩ được kết thúc bằng một nghi lễ tấn phong trang trọng gọi là 'inceptio'.",
+   "quote": "Achieving the rank of magister or doctor culminated in the inceptio, a formal ceremonial investiture."
+  },
+  {
+   "prompt": "Flow-chart: Advanced Degree Completion | Accreditation: Defending the disputation resulted in acquiring the ____",
+   "answer": "licentia docendi",
+   "why": "Đoạn D nêu rằng ứng viên phải bảo vệ thành công cuộc tranh biện cuối cùng trước khi chính thức nhận được giấy phép giảng dạy ('licentia docendi').",
+   "quote": "The candidate defended a final disputation before receiving the licentia docendi."
+  },
+  {
+   "prompt": "Table: Medieval Teaching Methods | Method: Lectio | Teacher dictated explanatory marginal notes known as ____",
+   "answer": "glosses",
+   "why": "Đoạn E giải thích rằng trong giờ Lectio, giảng viên đọc bài bình giải giải thích văn bản, được gọi là 'glosses'.",
+   "quote": "During the lectio, a master read authoritative texts aloud, dictating explanatory commentaries, termed glosses, for students lacking personal manuscripts."
+  },
+  {
+   "prompt": "Table: Medieval Teaching Methods | Method: Disputatio | A bachelor had to refute ____ raised by members of the audience",
+   "answer": "aggressive counterarguments | counterarguments",
+   "why": "Đoạn E ghi nhận rằng trong buổi Disputatio, cử nhân phải bảo vệ mệnh đề trước các lập luận phản biện gay gắt ('aggressive counterarguments' hoặc 'counterarguments') từ người nghe.",
+   "quote": "The presiding master posed a controversial question; a bachelor defended the proposition against aggressive counterarguments from the audience."
+  },
+  {
+   "prompt": "Table: Medieval Teaching Methods | Method: Disputatio | Concluding step: The master delivered his final decision through the ____",
+   "answer": "determinatio",
+   "why": "Đoạn E chỉ rõ sang ngày hôm sau, vị thầy sẽ tổng kết và đưa ra phán quyết kết luận mang tên 'determinatio'.",
+   "quote": "On the following day, the master concluded with the determinatio, systematically summarizing opposing arguments before delivering his definitive judgment."
+  },
+  {
+   "prompt": "Notes: Text Production and Accommodation | Pecia system: Stations split exemplars into ____ so multiple scribes could copy them",
+   "answer": "unbound quires | peciae",
+   "why": "Đoạn F cho biết các bản thảo chính thức được phân chia thành các tập rời rạc ('unbound quires' hoặc 'peciae') để nhiều thợ chép có thể thuê sao chép cùng lúc.",
+   "quote": "Supervised by licensed university stationers, approved master manuscripts were divided into separate unbound quires, or peciae."
+  }
+ ]
+}

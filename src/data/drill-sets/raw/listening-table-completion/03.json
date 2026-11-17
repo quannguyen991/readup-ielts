@@ -1,0 +1,127 @@
+{
+ "title": "Urban Fox Survey and Research Opportunities",
+ "topic": "urban foxes",
+ "context": "Narrator: You will hear a project coordinator, Marcus, discussing volunteer duties and specialised urban fox research tracks with a trainee named Elena.\nMarcus: Welcome to the City Wildlife Trust, Elena. We're delighted you're helping with our urban fox survey programme this autumn.\nElena: Thanks, Marcus. I've read the general introduction, but I'd like to go over how our field monitoring is organized across the three municipal sectors first.\nMarcus: Certainly. Let's look at the sectors where our baseline monitoring happens. In the Northern Sector, volunteers meet at the Rowan Centre. That serves as our base depot. The main task assigned to that team is setting up scat collection trays along known feeding trails.\nElena: What time does that shift commence?\nMarcus: They start early at 05:30 am to avoid early commuters. In terms of essential kit, apart from high-visibility jackets, everyone must carry a safety whistle at all times.\nElena: Right, noted. What about the Central Sector?\nMarcus: The Central team operates directly from the Old Foundry workshop near the canal. Their primary duty is inspecting perimeter fences alongside railway sidings, where foxes dig access holes.\nElena: Do they need any particular equipment there?\nMarcus: Yes, because foxes move through dark industrial tunnels, volunteers are issued a thermal viewer to spot heat signatures. Shifts there run exclusively on Thursday evenings, usually from seven to ten.\nElena: Understood. And what happens in the Southern Sector?\nMarcus: That team is headquartered at Kingsbury Hall. In that area, foxes frequent residential allotments and municipal parks, so our volunteers concentrate on locating and logging den sites. Because private gardens are nearby, volunteers work alongside a dedicated liaison officer to handle resident inquiries.\nElena: That sounds very thorough. Could you tell me more about the specialised research tracks we can choose from for our advanced modules?\nMarcus: Absolutely. We have four advanced tracks starting next month, each focusing on a specific research problem.\nMarcus: The first one is our Nighttime Movement Tracking track. It's led by Dr Harrison from the Zoology Department. His team uses lightweight GPS collars to understand how urban foxes navigate artificial barriers. The main focus is examining how major traffic corridors restrict or redirect their territory borders. Field sessions are held twice weekly, and researchers require a time commitment of at least six weeks from each volunteer. Also, due to working near roads, you must submit a valid medical clearance before attending fieldwork.\nElena: That sounds fascinating. What does the second track involve?\nMarcus: That is our Diet and Scavenging Ecology project, coordinated by Professor Vance. Volunteers analyse stomach contents and food scrap samples retrieved from urban gardens. The main aim is determining the exact proportion of commercial pet food foxes consume relative to rodents and discarded takeaway items. The laboratory analysis takes place every Saturday morning in the life sciences building.\nElena: Great. And the third project?\nMarcus: That's our Disease and Health Screening programme, aimed at assessing urban fox welfare. Urban populations frequently suffer from sarcoptic mange and fungal infections. Volunteers assist veterinary staff with taking skin scrapings from sedated animals. For biosecurity, field workers must always wear sterile gloves when handling specimen jars and equipment. You'll also be recording ambient temperature and humidity during inspections.\nElena: And what about the fourth research option?\nMarcus: That's our Community Engagement and Citizen Science initiative, supervised by Sarah Jenkins. We recently launched a community smartphone app where locals report sightings. Volunteers on this track review incoming photo submissions and verify reports of breeding dens. A key component of the fieldwork involves measuring the precise distance from primary schools to active breeding dens, which helps the council plan educational outreach and manage public concerns.\nElena: That gives me plenty of options to consider. Thanks, Marcus!",
+ "questions": [
+  {
+   "prompt": "Northern Sector | Meeting base: the ____",
+   "answer": "Rowan Centre",
+   "why": "Người nói chỉ rõ địa điểm tập trung của nhóm tình nguyện viên khu vực phía Bắc là 'Rowan Centre'.",
+   "quote": "In the Northern Sector, volunteers meet at the Rowan Centre."
+  },
+  {
+   "prompt": "Northern Sector | Core responsibility: placing ____",
+   "answer": "scat collection trays",
+   "why": "Marcus giải thích nhiệm vụ chính của nhóm này là đặt các khay thu thập mẫu phân ('scat collection trays') dọc các lối mòn kiếm ăn.",
+   "quote": "The main task assigned to that team is setting up scat collection trays along known feeding trails."
+  },
+  {
+   "prompt": "Northern Sector | Shift starts: at ____",
+   "answer": "05:30 am | 5:30 am",
+   "why": "Khi Elena hỏi về giờ bắt đầu ca trực, Marcus trả lời chính xác là '05:30 am'.",
+   "quote": "They start early at 05:30 am to avoid early commuters."
+  },
+  {
+   "prompt": "Northern Sector | Compulsory safety equipment: a ____",
+   "answer": "safety whistle",
+   "why": "Marcus lưu ý rằng ngoài áo phản quang, mọi người bắt buộc phải mang theo còi an toàn ('safety whistle') vào mọi thời điểm.",
+   "quote": "apart from high-visibility jackets, everyone must carry a safety whistle at all times."
+  },
+  {
+   "prompt": "Central Sector | Operating base: the ____ workshop",
+   "answer": "Old Foundry",
+   "why": "Khu vực Trung tâm hoạt động trực tiếp từ xưởng có tên là 'Old Foundry'.",
+   "quote": "The Central team operates directly from the Old Foundry workshop near the canal."
+  },
+  {
+   "prompt": "Central Sector | Core responsibility: inspecting ____",
+   "answer": "perimeter fences",
+   "why": "Nhiệm vụ chính được nhắc đến là kiểm tra hàng rào bao quanh ('perimeter fences') dọc theo đường tránh xe lửa.",
+   "quote": "Their primary duty is inspecting perimeter fences alongside railway sidings, where foxes dig access holes."
+  },
+  {
+   "prompt": "Central Sector | Issued equipment: a ____",
+   "answer": "thermal viewer",
+   "why": "Tình nguyện viên ở khu vực này được cấp ống ngắm tầm nhiệt ('thermal viewer') để phát hiện dấu vết nhiệt của cáo trong bóng tối.",
+   "quote": "volunteers are issued a thermal viewer to spot heat signatures."
+  },
+  {
+   "prompt": "Central Sector | Scheduled time: ____",
+   "answer": "Thursday evenings",
+   "why": "Marcus nêu rõ các ca trực ở khu vực này chỉ diễn ra vào các buổi tối thứ Năm ('Thursday evenings').",
+   "quote": "Shifts there run exclusively on Thursday evenings, usually from seven to ten."
+  },
+  {
+   "prompt": "Southern Sector | Base headquarters: ____",
+   "answer": "Kingsbury Hall",
+   "why": "Trụ sở của đội khu vực phía Nam được Marcus xác định là 'Kingsbury Hall'.",
+   "quote": "That team is headquartered at Kingsbury Hall."
+  },
+  {
+   "prompt": "Southern Sector | Primary task: logging ____",
+   "answer": "den sites",
+   "why": "Tại khu vực này, tình nguyện viên tập trung vào việc định vị và ghi nhận các vị trí hang ổ của cáo ('den sites').",
+   "quote": "our volunteers concentrate on locating and logging den sites."
+  },
+  {
+   "prompt": "Southern Sector | Accompanying staff: a dedicated ____",
+   "answer": "liaison officer",
+   "why": "Tình nguyện viên sẽ làm việc cùng một cán bộ liên lạc ('liaison officer') chuyên trách để giải đáp các thắc mắc của cư dân.",
+   "quote": "volunteers work alongside a dedicated liaison officer to handle resident inquiries."
+  },
+  {
+   "prompt": "Track 1: Movement Tracking | Lead researcher: ____",
+   "answer": "Dr Harrison",
+   "why": "Marcus giới thiệu người đứng đầu hướng nghiên cứu theo dõi di chuyển ban đêm là 'Dr Harrison'.",
+   "quote": "It's led by Dr Harrison from the Zoology Department."
+  },
+  {
+   "prompt": "Track 1: Movement Tracking | Focus: impact of major ____",
+   "answer": "traffic corridors",
+   "why": "Mục tiêu trọng tâm là kiểm tra cách các hành lang giao thông lớn ('traffic corridors') hạn chế hoặc chuyển hướng ranh giới lãnh thổ của cáo.",
+   "quote": "The main focus is examining how major traffic corridors restrict or redirect their territory borders."
+  },
+  {
+   "prompt": "Track 1: Movement Tracking | Time commitment: at least ____",
+   "answer": "six weeks | 6 weeks",
+   "why": "Các nhà nghiên cứu yêu cầu mức cam kết thời gian tối thiểu từ mỗi tình nguyện viên là sáu tuần ('six weeks').",
+   "quote": "researchers require a time commitment of at least six weeks from each volunteer."
+  },
+  {
+   "prompt": "Track 1: Movement Tracking | Requirement: submit a valid ____",
+   "answer": "medical clearance",
+   "why": "Do phải làm việc gần đường sá, tình nguyện viên bắt buộc phải nộp giấy khám sức khỏe đạt yêu cầu ('medical clearance').",
+   "quote": "you must submit a valid medical clearance before attending fieldwork."
+  },
+  {
+   "prompt": "Track 2: Diet Ecology | Coordinator: ____",
+   "answer": "Professor Vance",
+   "why": "Dự án về sinh thái học chế độ ăn uống do Giáo sư Vance ('Professor Vance') điều phối.",
+   "quote": "That is our Diet and Scavenging Ecology project, coordinated by Professor Vance."
+  },
+  {
+   "prompt": "Track 2: Diet Ecology | Objective: determine the proportion of ____ consumed",
+   "answer": "commercial pet food",
+   "why": "Mục tiêu nghiên cứu là xác định tỷ lệ thức ăn thú cưng bán sẵn trên thị trường ('commercial pet food') mà cáo thành thị tiêu thụ.",
+   "quote": "The main aim is determining the exact proportion of commercial pet food foxes consume relative to rodents and discarded takeaway items."
+  },
+  {
+   "prompt": "Track 2: Diet Ecology | Lab timing: every ____",
+   "answer": "Saturday morning",
+   "why": "Công việc phân tích trong phòng thí nghiệm diễn ra cố định vào mỗi sáng thứ Bảy ('Saturday morning').",
+   "quote": "The laboratory analysis takes place every Saturday morning in the life sciences building."
+  },
+  {
+   "prompt": "Track 3: Health Screening | Mandatory protection: wear ____",
+   "answer": "sterile gloves",
+   "why": "Để đảm bảo an toàn sinh học khi tiếp xúc mẫu và dụng cụ, người làm việc ngoài hiện trường phải luôn đeo găng tay vô trùng ('sterile gloves').",
+   "quote": "field workers must always wear sterile gloves when handling specimen jars and equipment."
+  },
+  {
+   "prompt": "Track 4: Citizen Science | Field measurement: distance from ____",
+   "answer": "primary schools",
+   "why": "Nhiệm vụ thực địa quan trọng là đo khoảng cách chính xác từ các trường tiểu học ('primary schools') tới các hang cáo sinh sản.",
+   "quote": "measuring the precise distance from primary schools to active breeding dens, which helps the council plan educational outreach and manage public concerns."
+  }
+ ]
+}

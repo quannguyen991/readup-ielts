@@ -1,0 +1,127 @@
+{
+ "title": "The Price of Getting Around",
+ "topic": "Public transport pricing",
+ "context": "Narrator: At a neighbourhood transport meeting, a passenger asks a ticket officer about the new fares before a planning adviser explains how the city set them.\nSection One\nMaya: Excuse me, does the new fare start on Monday, or is that just when the posters go up?\nOfficer: The posters go up on Monday. The fare itself changes on the first of June, which is a Saturday.\nMaya: And the ordinary single ticket will be two pounds forty, won't it?\nOfficer: Two pounds thirty-five. It was two pounds twenty, so that's a fifteen-pence increase.\nMaya: I usually take the number 18 bus and then the tram. Do I have to buy two tickets?\nOfficer: Not if you use a transfer ticket. It costs three pounds ten and covers both services, as long as you change within forty-five minutes.\nMaya: Does that include the airport bus?\nOfficer: No, airport services are excluded. They have a separate fare, and the transfer ticket won't open the airport gate.\nMaya: What about a weekly pass? The website says thirty pounds.\nOfficer: That's the old price. From June, a weekly pass costs twenty-eight pounds fifty. The website will be corrected tomorrow morning.\nMaya: Is there still a discount for students?\nOfficer: Yes. Bring your student card to a travel shop, and they'll issue a card with a photograph. The student single is one pound sixty, but the discount doesn't apply to airport buses.\nMaya: I bought tickets on my phone last year. Can I still do that?\nOfficer: Certainly. In fact, the phone app is the only place you can buy the new late-evening ticket. It costs one pound eighty after nine thirty.\nMaya: And if my phone battery dies?\nOfficer: Then use a ticket machine or a staffed counter for a standard ticket. Just remember, the late-evening offer is app-only.\nMaya: Thanks. I'll check the date and update my travel budget.\nSection Two\nAdviser: The changes are part of a two-year trial, not a permanent redesign. We want to keep everyday journeys affordable while helping pay for more frequent service. At present, the busiest bus routes run every twelve minutes at peak times. The trial aims to bring that interval down to ten minutes, beginning with the central corridor.\nMaya: So the extra money goes straight into buses?\nAdviser: Most of it supports operations, including driver hours. A smaller portion funds new ticket machines. We considered raising fares by a flat amount, but that would have affected short trips more heavily as a percentage of their cost. Instead, the basic single rises by fifteen pence, while the day cap rises by only twenty pence, to six pounds twenty.\nMaya: What does the day cap do?\nAdviser: Once your eligible bus and tram journeys add up to that limit, you pay no more for those services until the end of the day. It does not cover the regional rail line. That distinction caused confusion in our first public leaflet, so the revised leaflet now gives rail its own heading.\nMaya: Is there any help for people on low incomes?\nAdviser: Yes. Residents receiving housing support can apply for a travel credit of twelve pounds a month. It is loaded onto a smartcard, and applications must be made at the library—not at the bus station, as some people assumed. We chose the library because its advisers can help with the form.\nMaya: Does the credit cover every journey?\nAdviser: It can be used on local buses and trams, but not on airport services or regional rail. We tested a larger credit, but the budget could not sustain it. We will review take-up after six months, using anonymous card data. Names are not included in that analysis.\nMaya: And visitors who don't have a smartcard?\nAdviser: They can tap a contactless bank card. The system calculates the cheapest combination of single fares, up to the same day cap. However, a group travelling together should each tap with a separate card; tapping once for several people records only one passenger.\nMaya: When will we know whether the trial worked?\nAdviser: In November next year, the council will publish a report comparing journey numbers, passenger feedback, and operating costs. If passenger numbers rise but buses become less reliable, we won't call that a success. We will also compare evening use, because the discounted late ticket is intended to encourage travel after the main rush.\nMaya: So the discount is mainly about spreading demand?\nAdviser: Exactly. We hope some flexible journeys shift later, leaving more room for people who must travel at peak time. The trial is not designed to make every ticket cheaper; it's meant to make the network more useful and predictable. We'll hold another public meeting in September, and the revised fare table will be available at the library from next week.\nMaya: I'll bring my neighbours. They had questions about the transfer window.\nAdviser: Good idea. We can explain that the forty-five minutes begins when the first ticket is validated, not when the passenger boards the second service.",
+ "questions": [
+  {
+   "prompt": "The new fare begins on the ____ of June.",
+   "answer": "first",
+   "why": "Nhân viên nói giá mới thay đổi vào ngày đầu tiên của tháng Sáu; thứ Bảy chỉ là ngày áp dụng lịch.",
+   "quote": "The fare itself changes on the first of June, which is a Saturday."
+  },
+  {
+   "prompt": "An ordinary single ticket will cost ____ pounds.",
+   "answer": "two pounds thirty-five",
+   "why": "Giá vé đơn thông thường được nêu là hai pounds thirty-five, không phải mức giá cũ two pounds twenty.",
+   "quote": "Two pounds thirty-five. It was two pounds twenty, so that's a fifteen-pence increase."
+  },
+  {
+   "prompt": "The transfer ticket is valid if the passenger changes within ____ minutes.",
+   "answer": "forty-five",
+   "why": "Vé chuyển tuyến áp dụng cho cả hai dịch vụ khi hành khách đổi tuyến trong vòng forty-five minutes.",
+   "quote": "It costs three pounds ten and covers both services, as long as you change within forty-five minutes."
+  },
+  {
+   "prompt": "The transfer ticket does not cover ____ services.",
+   "answer": "airport",
+   "why": "Nhân viên nói rõ các dịch vụ sân bay bị loại trừ; vé này cũng không mở được cổng sân bay.",
+   "quote": "No, airport services are excluded. They have a separate fare, and the transfer ticket won't open the airport gate."
+  },
+  {
+   "prompt": "From June, the weekly pass will cost ____ pounds.",
+   "answer": "twenty-eight pounds fifty",
+   "why": "Giá vé tuần mới từ tháng Sáu là twenty-eight pounds fifty; thirty pounds là mức cũ được đăng trên trang web.",
+   "quote": "From June, a weekly pass costs twenty-eight pounds fifty. The website will be corrected tomorrow morning."
+  },
+  {
+   "prompt": "Students must show their student card at a ____ to get a discounted card.",
+   "answer": "travel shop",
+   "why": "Học sinh, sinh viên mang thẻ đến travel shop để được cấp thẻ có ảnh; không phải mua vé tại quầy bất kỳ.",
+   "quote": "Bring your student card to a travel shop, and they'll issue a card with a photograph."
+  },
+  {
+   "prompt": "The discounted student single costs ____ pounds.",
+   "answer": "one pound sixty",
+   "why": "Nhân viên nêu trực tiếp giá vé đơn sinh viên là one pound sixty.",
+   "quote": "The student single is one pound sixty, but the discount doesn't apply to airport buses."
+  },
+  {
+   "prompt": "The late-evening ticket is available only through the _____.",
+   "answer": "phone app",
+   "why": "Vé giảm giá buổi tối muộn chỉ bán trên ứng dụng điện thoại; máy bán vé và quầy chỉ bán vé tiêu chuẩn.",
+   "quote": "In fact, the phone app is the only place you can buy the new late-evening ticket."
+  },
+  {
+   "prompt": "The discounted late-evening ticket applies after _____.",
+   "answer": "nine thirty",
+   "why": "Thời điểm áp dụng được nói là sau nine thirty, không phải lúc bắt đầu giờ cao điểm.",
+   "quote": "It costs one pound eighty after nine thirty."
+  },
+  {
+   "prompt": "The fare changes are part of a ____ trial.",
+   "answer": "two-year",
+   "why": "Cố vấn xác nhận đây là thử nghiệm kéo dài hai năm, chứ không phải thay đổi vĩnh viễn.",
+   "quote": "The changes are part of a two-year trial, not a permanent redesign."
+  },
+  {
+   "prompt": "At peak times, the busiest bus routes currently run every ____ minutes.",
+   "answer": "twelve",
+   "why": "Khoảng cách hiện tại giữa các chuyến trên tuyến đông nhất là twelve minutes; mục tiêu là giảm xuống ten.",
+   "quote": "At present, the busiest bus routes run every twelve minutes at peak times."
+  },
+  {
+   "prompt": "The trial aims to reduce the bus interval to ____ minutes.",
+   "answer": "ten",
+   "why": "Mục tiêu của thử nghiệm là rút khoảng cách giữa các chuyến xuống ten minutes.",
+   "quote": "The trial aims to bring that interval down to ten minutes, beginning with the central corridor."
+  },
+  {
+   "prompt": "The day cap will rise to ____ pounds.",
+   "answer": "six pounds twenty",
+   "why": "Cố vấn cho biết mức trần vé ngày tăng hai mươi pence, lên six pounds twenty.",
+   "quote": "Instead, the basic single rises by fifteen pence, while the day cap rises by only twenty pence, to six pounds twenty."
+  },
+  {
+   "prompt": "The day cap does not cover the ____ line.",
+   "answer": "regional rail",
+   "why": "Giới hạn chi tiêu trong ngày áp dụng cho xe buýt và tàu điện, nhưng không bao gồm tuyến regional rail.",
+   "quote": "It does not cover the regional rail line. That distinction caused confusion in our first public leaflet, so the revised leaflet now gives rail its own heading."
+  },
+  {
+   "prompt": "Residents receiving housing support can apply for monthly travel credit of ____ pounds.",
+   "answer": "twelve",
+   "why": "Mức tín dụng đi lại được nêu là twelve pounds một tháng dành cho cư dân nhận hỗ trợ nhà ở.",
+   "quote": "Residents receiving housing support can apply for a travel credit of twelve pounds a month."
+  },
+  {
+   "prompt": "Applications for the travel credit must be made at the _____.",
+   "answer": "library",
+   "why": "Đơn phải nộp tại thư viện, nơi có nhân viên hỗ trợ điền mẫu; bến xe là lựa chọn mà một số người nhầm tưởng.",
+   "quote": "It is loaded onto a smartcard, and applications must be made at the library—not at the bus station, as some people assumed."
+  },
+  {
+   "prompt": "The council will review take-up after ____ months.",
+   "answer": "six",
+   "why": "Việc sử dụng khoản tín dụng sẽ được đánh giá sau six months bằng dữ liệu thẻ ẩn danh.",
+   "quote": "We will review take-up after six months, using anonymous card data."
+  },
+  {
+   "prompt": "A group travelling together should each tap with a ____ card.",
+   "answer": "separate",
+   "why": "Mỗi người trong nhóm cần chạm bằng một thẻ riêng; chạm một lần cho nhiều người chỉ ghi nhận một hành khách.",
+   "quote": "However, a group travelling together should each tap with a separate card; tapping once for several people records only one passenger."
+  },
+  {
+   "prompt": "The council will publish its trial report in ____ next year.",
+   "answer": "November",
+   "why": "Cố vấn nói báo cáo so sánh số chuyến, phản hồi và chi phí sẽ được công bố vào November năm sau.",
+   "quote": "In November next year, the council will publish a report comparing journey numbers, passenger feedback, and operating costs."
+  },
+  {
+   "prompt": "The next public meeting will take place in _____.",
+   "answer": "September",
+   "why": "Cuộc họp công khai tiếp theo được lên lịch vào September; bảng giá sửa đổi sẽ có ở thư viện từ tuần sau.",
+   "quote": "We'll hold another public meeting in September, and the revised fare table will be available at the library from next week."
+  }
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "title": "Salt Marshes as Natural Flood Defences",
+ "topic": "salt marshes and flood defence",
+ "context": "Narrator: You will hear a discussion between two environmental science students, Liam and Clara, and their university tutor, Dr Henderson, about their research project on salt marshes and flood defence.\nDr Henderson: Morning Liam, Clara. Come in. Before we dissect your preliminary findings, a quick administrative reminder. The funding body, the Tidewater Trust, needs a mid-term progress update by the fifteenth of November.\nClara: Thanks, Dr Henderson, we have marked that date in our calendars. We've compiled our baseline data from the primary study site at Tollesbury Haven.\nLiam: Yes, it was fascinating to see how the managed realignment area functions. When the original defence line was intentionally opened, engineers cut a sixty metres wide gap in the outer embankment to let seawater flood the former farmland.\nClara: We checked the vegetation recolonisation immediately behind that breach. In the pioneer low marsh zone, glasswort has established itself as the dominant species, creating thick mats across the mudflats.\nDr Henderson: Excellent start. Now, let's examine the hydrodynamic measurements. Did you capture the extent of wave attenuation?\nLiam: We did. Our sensor arrays confirmed that an eighty-metre width of established marsh can absorb around sixty percent of wave energy before water reaches the interior dyke.\nClara: And the long-term survival of the defence relies on sediment accretion. As tides carry suspended mineral particles, the stems and foliage slow water movement, allowing silt to drop out of suspension. That builds marsh elevation vertically.\nDr Henderson: How did you measure that flow reduction across the tidal cycles?\nClara: We deployed an acoustic Doppler profiler at three points along the main channel, recording three-dimensional velocities during both neap and spring tides.\nLiam: Interestingly, during spring tides, high turbulence significantly reduced sediment settling rates, because the sheer stress over the seabed kept fine silt particles suspended for longer.\nDr Henderson: That aligns with hydrodynamic models. How does this natural protection compare economically with hard infrastructure?\nClara: Standard concrete seawalls need frequent repairs, particularly to their seaward foundations, which erode quickly under scouring wave forces.\nLiam: In terms of overall expenditure, the managed marsh system delivered a cost saving of roughly forty-five percent over a twenty-year lifecycle compared with reinforced concrete.\nDr Henderson: And ecological co-benefits?\nClara: The ecological rebound was remarkable. Avocet populations showed the sharpest increase among shorebirds, using the newly formed intertidal lagoons for foraging and nesting.\nLiam: However, there are management risks. The spread of Spartina anglica is a growing concern because it outcompetes native flora and alters the natural creek geometry.\nClara: Despite that, core sampling revealed remarkable sediment accumulation. Near the main creek mouth, we recorded an annual silt deposition of twelve millimetres, which is well above local sea level rise rates.\nDr Henderson: Did you find any evidence that human interventions accelerated plant establishment?\nLiam: Definitely. Placing brushwood groynes on the outer tidal mudflats sheltered young seedlings from intense wave battering, allowing pioneer species to anchor firmly.\nClara: To monitor ground elevation changes accurately without disturbing the delicate marsh surface, we installed a permanent surface elevation table at four benchmark locations.\nDr Henderson: Did you also examine blue carbon storage capabilities?\nLiam: We did. Laboratory testing of core samples proved that decaying roots provide the primary source of trapped organic carbon, locking it safely in the anaerobic mud for centuries.\nClara: One environmental threat we observed was runoff from adjacent crop fields. High concentrations of excess nitrate caused root systems to weaken, making the marsh edges more susceptible to bank collapse.\nDr Henderson: A vital point to highlight in your report. And remember, you've both been invited to present your findings at the Maritime Science Centre next month.\nLiam: We are looking forward to that. For the final submission, how should we deliver the raw sensor measurements?\nDr Henderson: Please submit the full data appendix as a digital spreadsheet rather than a printed document, so the external assessors can verify your statistical calculations.",
+ "questions": [
+  {
+   "prompt": "Which organisation provided the funding for the research project?",
+   "answer": "Tidewater Trust",
+   "why": "Dr Henderson nêu rõ tổ chức cấp kinh phí là 'the Tidewater Trust'.",
+   "quote": "The funding body, the Tidewater Trust, needs a mid-term progress update by the fifteenth of November."
+  },
+  {
+   "prompt": "By what date must the students submit their mid-term progress update?",
+   "answer": "15th November | fifteenth of November",
+   "why": "Dr Henderson thông báo hạn nộp báo cáo tiến độ giữa kỳ là ngày 15 tháng 11 ('fifteenth of November').",
+   "quote": "The funding body, the Tidewater Trust, needs a mid-term progress update by the fifteenth of November."
+  },
+  {
+   "prompt": "What is the name of the main location surveyed by the students?",
+   "answer": "Tollesbury Haven",
+   "why": "Clara nhắc đến địa điểm khảo sát chính là 'Tollesbury Haven'.",
+   "quote": "We've compiled our baseline data from the primary study site at Tollesbury Haven."
+  },
+  {
+   "prompt": "How wide was the gap created in the outer embankment?",
+   "answer": "60 metres | sixty metres",
+   "why": "Liam giải thích rằng các kỹ sư đã cắt một khoảng trống rộng 60 mét ('sixty metres') trên bờ kè bao ngoài.",
+   "quote": "engineers cut a sixty metres wide gap in the outer embankment to let seawater flood the former farmland."
+  },
+  {
+   "prompt": "Which plant species has become dominant in the pioneer low marsh zone?",
+   "answer": "glasswort",
+   "why": "Clara chỉ ra loài thực vật chiếm ưu thế ở khu vực đầm lầy thấp là 'glasswort'. Cần lưu ý không nhầm với Spartina anglica được nhắc đến ở phần sau.",
+   "quote": "In the pioneer low marsh zone, glasswort has established itself as the dominant species, creating thick mats across the mudflats."
+  },
+  {
+   "prompt": "What proportion of wave energy can an 80-metre stretch of marsh absorb?",
+   "answer": "60% | 60 percent | sixty percent",
+   "why": "Liam cho biết dải đầm lầy rộng 80 mét có thể hấp thụ khoảng 60% năng lượng sóng ('sixty percent'). Tránh nhầm lẫn con số 80 mét với tỷ lệ phần trăm.",
+   "quote": "Our sensor arrays confirmed that an eighty-metre width of established marsh can absorb around sixty percent of wave energy before water reaches the interior dyke."
+  },
+  {
+   "prompt": "What process allows the salt marsh to increase its elevation vertically?",
+   "answer": "sediment accretion",
+   "why": "Clara giải thích rằng sự tích tụ phù sa/trầm tích ('sediment accretion') giúp đầm lầy nâng cao độ tự nhiên theo chiều thẳng đứng.",
+   "quote": "And the long-term survival of the defence relies on sediment accretion."
+  },
+  {
+   "prompt": "What instrument was set up in the main channel to measure water velocity?",
+   "answer": "acoustic Doppler profiler",
+   "why": "Clara cho biết nhóm đã triển khai máy đo 'acoustic Doppler profiler' để đo vận tốc dòng chảy 3 chiều.",
+   "quote": "We deployed an acoustic Doppler profiler at three points along the main channel, recording three-dimensional velocities during both neap and spring tides."
+  },
+  {
+   "prompt": "What hydrodynamic condition reduced sediment settling rates during spring tides?",
+   "answer": "high turbulence",
+   "why": "Liam nói rằng hiện tượng 'high turbulence' (độ nhiễu loạn cao) trong các kỳ triều cường đã làm giảm tỷ lệ lắng đọng trầm tích.",
+   "quote": "Interestingly, during spring tides, high turbulence significantly reduced sediment settling rates, because the sheer stress over the seabed kept fine silt particles suspended for longer."
+  },
+  {
+   "prompt": "Which part of traditional concrete seawalls is most susceptible to erosion from waves?",
+   "answer": "seaward foundations",
+   "why": "Clara giải thích rằng đê bê tông thường xuyên phải sửa chữa, đặc biệt là phần móng hướng ra biển ('seaward foundations').",
+   "quote": "Standard concrete seawalls need frequent repairs, particularly to their seaward foundations, which erode quickly under scouring wave forces."
+  },
+  {
+   "prompt": "What percentage of costs was saved by using the marsh system over concrete walls?",
+   "answer": "45% | 45 percent | forty-five percent",
+   "why": "Liam cung cấp số liệu tiết kiệm chi phí là khoảng 45% ('forty-five percent') so với tường bê tông kiên cố.",
+   "quote": "the managed marsh system delivered a cost saving of roughly forty-five percent over a twenty-year lifecycle compared with reinforced concrete."
+  },
+  {
+   "prompt": "Which bird species experienced the sharpest population increase in the area?",
+   "answer": "avocet | avocets",
+   "why": "Clara nhắc trực tiếp loài chim có sự gia tăng mạnh mẽ nhất là 'avocet'.",
+   "quote": "Avocet populations showed the sharpest increase among shorebirds, using the newly formed intertidal lagoons for foraging and nesting."
+  },
+  {
+   "prompt": "Which invasive plant species poses a management risk to native vegetation?",
+   "answer": "Spartina anglica",
+   "why": "Liam cảnh báo về sự xâm lấn của loài cỏ 'Spartina anglica' cạnh tranh với thực vật bản địa.",
+   "quote": "The spread of Spartina anglica is a growing concern because it outcompetes native flora and alters the natural creek geometry."
+  },
+  {
+   "prompt": "How much silt was deposited each year near the mouth of the creek?",
+   "answer": "12 mm | 12 millimetres | twelve millimetres",
+   "why": "Clara cho biết độ dày lớp bùn lắng đọng hàng năm ghi nhận được tại cửa rạch là 12 milimét ('twelve millimetres').",
+   "quote": "Near the main creek mouth, we recorded an annual silt deposition of twelve millimetres, which is well above local sea level rise rates."
+  },
+  {
+   "prompt": "What structures were positioned on the mudflats to protect young seedlings from waves?",
+   "answer": "brushwood groynes",
+   "why": "Liam giải thích việc đặt kè mỏ hàn bằng cành cây bện ('brushwood groynes') đã che chắn cho cây non khỏi sóng mạnh.",
+   "quote": "Placing brushwood groynes on the outer tidal mudflats sheltered young seedlings from intense wave battering, allowing pioneer species to anchor firmly."
+  },
+  {
+   "prompt": "What device was installed to monitor ground elevation changes without damaging the marsh?",
+   "answer": "surface elevation table",
+   "why": "Clara nêu tên thiết bị chuyên dụng là 'surface elevation table' được lắp đặt tại bốn vị trí chuẩn.",
+   "quote": "we installed a permanent surface elevation table at four benchmark locations."
+  },
+  {
+   "prompt": "What forms the primary source of organic carbon preserved in the marsh soil?",
+   "answer": "decaying roots",
+   "why": "Liam nhấn mạnh các rễ cây mục nát ('decaying roots') là nguồn chính cung cấp lượng các-bon hữu cơ bị giữ lại trong bùn đầm lầy.",
+   "quote": "Laboratory testing of core samples proved that decaying roots provide the primary source of trapped organic carbon, locking it safely in the anaerobic mud for centuries."
+  },
+  {
+   "prompt": "What chemical from agricultural runoff weakened the marsh plant root systems?",
+   "answer": "excess nitrate | nitrate",
+   "why": "Clara cảnh báo hàm lượng nitrat dư thừa ('excess nitrate') từ nước chảy tràn đồng ruộng làm suy yếu bộ rễ cây.",
+   "quote": "High concentrations of excess nitrate caused root systems to weaken, making the marsh edges more susceptible to bank collapse."
+  },
+  {
+   "prompt": "Where are the students invited to present their research findings next month?",
+   "answer": "Maritime Science Centre",
+   "why": "Dr Henderson nhắc cả hai về lời mời thuyết trình tại 'Maritime Science Centre'.",
+   "quote": "And remember, you've both been invited to present your findings at the Maritime Science Centre next month."
+  },
+  {
+   "prompt": "What format must the raw sensor data appendix be submitted in?",
+   "answer": "digital spreadsheet",
+   "why": "Dr Henderson yêu cầu gửi phụ lục dữ liệu dưới dạng bảng tính kỹ thuật số ('digital spreadsheet'), tránh nộp bản in giấy.",
+   "quote": "Please submit the full data appendix as a digital spreadsheet rather than a printed document, so the external assessors can verify your statistical calculations."
+  }
+ ]
+}

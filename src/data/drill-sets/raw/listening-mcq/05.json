@@ -1,0 +1,227 @@
+{
+ "title": "Sustainable Aggregate Procurement and Sand Dynamics",
+ "topic": "sand and construction",
+ "context": "Narrator: You will hear a project manager and an environmental specialist discussing sand supplies for a construction project, followed by a briefing on sand sustainability.\nMark: Good morning, Clara. Thanks for meeting on short notice. We had to postpone the concrete pour originally scheduled for yesterday. Our team thought the batch plant had broken down, and the council had threatened to withhold our permit, but the real issue was that the initial aggregate sample failed the purity test.\nClara: That is frustrating, Mark, but safety comes first. Where had your old supplier been extracting their river sand?\nMark: They claimed it came from Redstone Creek, though their transport logs actually showed Grange Valley. We later discovered it was dredged from Blackwood Quarry, which has high silt contamination.\nClara: Right, well, we can provide certified alluvial sand. How much fine sand do you need for the internal plastering work?\nMark: Well, the subcontractor initially asked for eighty tonnes, and our engineer revised that down to sixty tonnes, but taking into account the storage space on site, we only require forty-five tonnes for this stage.\nClara: Understood. Our logistics department proposed Friday the fifteenth, but our trucks are already booked. We could push it to Monday the eighteenth, yet I know you are under time pressure, so we have arranged for delivery on Thursday the fourteenth.\nMark: Perfect. Now, regarding site protocols, what test must our site engineer conduct prior to unloading?\nClara: Many sites check moisture levels or measure silt particles, but our protocol requires a mandatory chloride concentration test to prevent steel rebar corrosion.\nMark: Fair enough. And regarding the third-party laboratory verification fee, who covers that?\nClara: Normally, the local council insists the aggregate supplier absorbs it, but under our agreement, the main contractor is responsible for covering that specific cost.\nNarrator: Now listen to the second part of the recording, in which Clara presents a seminar on global sand sustainability in construction.\nClara: Welcome everyone. Sand is the world's most consumed natural resource after water, surpassing even crude oil in terms of volume. When I first looked at the figures, what really astonished me was that global sand consumption exceeds oil consumption by an enormous margin. Most people assume sand is an infinite resource, but construction requires very specific types.\nDesert sand, for instance, is virtually useless for structural concrete. While some think the issue is organic matter or salt, it is actually because wind erosion creates rounded smooth grains that fail to interlock, whereas water-eroded sand has rough, angular edges.\nConsequently, marine and river systems bear the brunt of extraction. The primary ecological threat when dredging riverbeds is the rapid lowering of water tables, which desiccates adjacent farmland, though riverbank collapse and fisheries collapse soon follow.\nIn terms of illegal sand mining syndicates, the crisis is particularly acute across Southeast Asia, although instances in North Africa and parts of Latin America have also drawn international scrutiny. In Indonesia, aggressive seabed dredging caused more than twenty small uninhabited islands to completely submerge beneath the sea.\nTo make marine sand usable in buildings, it must undergo thorough freshwater washing. This is not primarily to remove silt or mud, but to eliminate corrosive chlorides, which would otherwise degrade the steel reinforcements inside the concrete.\nLooking forward, we must adopt sustainable substitutes. For our foundation backfilling on this development, we intend to pilot pulverized glass cullet, rather than crushed quarry dust or blast furnace slag.\nOf course, manufactured sand made from crushed granite is gaining popularity, but its main drawback is that its highly angular particle shape reduces workability, demanding extra cement paste to flow smoothly.\nStudies indicate that we can safely replace conventional aggregate with up to twenty-five percent recycled concrete aggregate without suffering any loss of compressive strength, though forty percent leads to noticeable micro-cracking.\nPolicy is also changing. Cambodia famously banned all exports of unprocessed river sand in twenty-seventeen, following similar temporary restrictions in neighboring states.\nAnother promising substitute is copper slag aggregate, but the primary barrier preventing widespread adoption is toxicity leaching concerns, which regulatory bodies are still evaluating.\nMeanwhile, researchers are developing polymer binder coating methods that allow desert sand to be bound into load-bearing blocks without water.\nFinally, our design team will submit a concrete mix design proposal next week for client approval. Before Thursday's meeting, I would like all team leaders to review the technical specifications datasheet so we can finalize the purchase orders. Thank you.",
+ "questions": [
+  {
+   "prompt": "Why was the concrete pour originally postponed?",
+   "answer": "The aggregate sample failed a purity test.",
+   "why": "Mark làm rõ nguyên nhân thực sự khiến việc đổ bê tông bị hoãn là do mẫu cát/cốt liệu không vượt qua bài kiểm tra độ tinh khiết. Chi tiết trạm trộn hỏng hay nguy cơ bị rút giấy phép chỉ là suy đoán ban đầu hoặc yếu tố phụ nhằm gây nhiễu.",
+   "quote": "the real issue was that the initial aggregate sample failed the purity test",
+   "options": [
+    "The batch plant broke down unexpectedly.",
+    "The aggregate sample failed a purity test.",
+    "The local council refused to grant a permit."
+   ]
+  },
+  {
+   "prompt": "Where was the sand actually extracted from by the previous supplier?",
+   "answer": "Blackwood Quarry",
+   "why": "Mặc dù nhà cung cấp khai rằng lấy cát từ Redstone Creek và giấy tờ ghi Grange Valley, nhưng thực tế cát được nạo vét từ Blackwood Quarry.",
+   "quote": "We later discovered it was dredged from Blackwood Quarry, which has high silt contamination.",
+   "options": [
+    "Redstone Creek",
+    "Grange Valley",
+    "Blackwood Quarry"
+   ]
+  },
+  {
+   "prompt": "How much fine sand does Mark need for the current phase?",
+   "answer": "forty-five tonnes",
+   "why": "Nhà thầu phụ yêu cầu 80 tấn và kỹ sư điều chỉnh xuống 60 tấn, nhưng do không gian bãi chứa hạn chế nên họ chốt chỉ cần 45 tấn cho giai đoạn này.",
+   "quote": "we only require forty-five tonnes for this stage",
+   "options": [
+    "forty-five tonnes",
+    "sixty tonnes",
+    "eighty tonnes"
+   ]
+  },
+  {
+   "prompt": "When is the sand delivery scheduled to arrive?",
+   "answer": "Thursday the fourteenth",
+   "why": "Hậu cần đề xuất thứ Sáu ngày 15 và có phương án lùi sang thứ Hai ngày 18, nhưng để kịp tiến độ gấp, hai bên đã thống nhất giao vào thứ Năm ngày 14.",
+   "quote": "we have arranged for delivery on Thursday the fourteenth",
+   "options": [
+    "Friday the fifteenth",
+    "Thursday the fourteenth",
+    "Monday the eighteenth"
+   ]
+  },
+  {
+   "prompt": "Which test is mandatory before the sand can be unloaded on site?",
+   "answer": "a chloride concentration test",
+   "why": "Clara giải thích rằng dù nhiều công trường đo độ ẩm hoặc hàm lượng hạt bùn, quy trình bắt buộc ở đây là kiểm tra nồng độ clorua nhằm ngăn ngừa ăn mòn cốt thép.",
+   "quote": "our protocol requires a mandatory chloride concentration test to prevent steel rebar corrosion",
+   "options": [
+    "a silt particle test",
+    "a moisture level test",
+    "a chloride concentration test"
+   ]
+  },
+  {
+   "prompt": "Who is responsible for paying the third-party laboratory verification fee?",
+   "answer": "the main contractor",
+   "why": "Hội đồng địa phương thường muốn nhà cung cấp chi trả, nhưng thỏa thuận của hợp đồng này quy định nhà thầu chính là bên chịu khoản phí kiểm định phòng thí nghiệm độc lập.",
+   "quote": "under our agreement, the main contractor is responsible for covering that specific cost",
+   "options": [
+    "the main contractor",
+    "the local council",
+    "the aggregate supplier"
+   ]
+  },
+  {
+   "prompt": "What fact regarding global sand usage surprised Clara?",
+   "answer": "global sand consumption exceeds oil consumption",
+   "why": "Clara cho biết điều khiến bà thực sự ngạc nhiên là lượng cát tiêu thụ toàn cầu vượt qua cả lượng dầu mỏ với khoảng cách rất lớn. Nước vẫn là tài nguyên được dùng nhiều nhất, cát đứng thứ hai.",
+   "quote": "what really astonished me was that global sand consumption exceeds oil consumption by an enormous margin",
+   "options": [
+    "sand is consumed more than water worldwide",
+    "global sand consumption exceeds oil consumption",
+    "sand for construction is predominantly sourced from deserts"
+   ]
+  },
+  {
+   "prompt": "Desert sand cannot be used in structural concrete because of its",
+   "answer": "rounded smooth grains from wind erosion",
+   "why": "Clara giải thích lý do thực sự là do gió bào mòn tạo thành các hạt tròn nhẵn không thể lồng vào nhau, bác bỏ lầm tưởng phổ biến về muối hay chất hữu cơ.",
+   "quote": "it is actually because wind erosion creates rounded smooth grains that fail to interlock",
+   "options": [
+    "the presence of high salt levels",
+    "organic matter mixed with the sand",
+    "rounded smooth grains from wind erosion"
+   ]
+  },
+  {
+   "prompt": "What does Clara describe as the primary ecological impact of riverbed dredging?",
+   "answer": "the rapid lowering of water tables",
+   "why": "Mối đe dọa sinh thái hàng đầu được chỉ rõ là sự sụt giảm nhanh chóng của mực nước ngầm, sau đó mới kéo theo sạt lở bờ sông và suy giảm nguồn lợi thủy sản.",
+   "quote": "The primary ecological threat when dredging riverbeds is the rapid lowering of water tables",
+   "options": [
+    "the rapid lowering of water tables",
+    "the destruction of fisheries",
+    "the collapse of riverbanks"
+   ]
+  },
+  {
+   "prompt": "In which part of the world does Clara say illegal sand mining syndicates are most severe?",
+   "answer": "Southeast Asia",
+   "why": "Clara nhấn mạnh cuộc khủng hoảng cát lậu đặc biệt nghiêm trọng ở Đông Nam Á, dù Bắc Phi và Mỹ Latinh cũng được nhắc tới nhưng không phải mức nhức nhối nhất.",
+   "quote": "In terms of illegal sand mining syndicates, the crisis is particularly acute across Southeast Asia",
+   "options": [
+    "Southeast Asia",
+    "North Africa",
+    "Latin America"
+   ]
+  },
+  {
+   "prompt": "What occurred to some uninhabited islands in Indonesia?",
+   "answer": "They completely submerged beneath the sea.",
+   "why": "Do tình trạng nạo vét đáy biển quá mức ở Indonesia, hơn 20 hòn đảo nhỏ không người ở đã bị chìm hoàn toàn dưới mặt biển.",
+   "quote": "aggressive seabed dredging caused more than twenty small uninhabited islands to completely submerge beneath the sea",
+   "options": [
+    "They were privatized by real estate firms.",
+    "They completely submerged beneath the sea.",
+    "They suffered severe deforestation."
+   ]
+  },
+  {
+   "prompt": "Why does marine sand need to be thoroughly washed with fresh water?",
+   "answer": "to eliminate corrosive chlorides",
+   "why": "Mục đích chính của việc rửa bằng nước ngọt là loại bỏ các ion clorua ăn mòn thép bên trong bê tông, chứ không chỉ đơn thuần là rửa trôi bùn đất.",
+   "quote": "This is not primarily to remove silt or mud, but to eliminate corrosive chlorides",
+   "options": [
+    "to wash away fine silt and mud",
+    "to decrease high moisture content",
+    "to eliminate corrosive chlorides"
+   ]
+  },
+  {
+   "prompt": "What alternative material does Clara's team plan to use for foundation backfilling?",
+   "answer": "pulverized glass cullet",
+   "why": "Clara nêu rõ dự án dự định thí điểm sử dụng bột thủy tinh nghiền vụn, thay vì dùng bụi đá khai thác từ mỏ hoặc xỉ lò cao.",
+   "quote": "we intend to pilot pulverized glass cullet, rather than crushed quarry dust or blast furnace slag",
+   "options": [
+    "crushed quarry dust",
+    "pulverized glass cullet",
+    "blast furnace slag"
+   ]
+  },
+  {
+   "prompt": "What is the main disadvantage of manufactured sand made from granite?",
+   "answer": "its angular particle shape reducing workability",
+   "why": "Nhược điểm chủ yếu của cát nhân tạo từ đá granite là các hạt có hình dạng góc cạnh sắc nhọn làm giảm độ linh động và độ dẻo khi thi công bê tông.",
+   "quote": "its main drawback is that its highly angular particle shape reduces workability",
+   "options": [
+    "its high processing cost",
+    "its angular particle shape reducing workability",
+    "excessive silica emissions during production"
+   ]
+  },
+  {
+   "prompt": "What proportion of conventional aggregate can be replaced with recycled concrete without reducing strength?",
+   "answer": "up to twenty-five percent",
+   "why": "Nghiên cứu chỉ ra mức thay thế tối đa an toàn không làm giảm cường độ nén là 25%; mức 40% được nhắc đến là gây nứt tế vi.",
+   "quote": "we can safely replace conventional aggregate with up to twenty-five percent recycled concrete aggregate without suffering any loss of compressive strength",
+   "options": [
+    "up to twenty-five percent",
+    "up to forty percent",
+    "up to ten percent"
+   ]
+  },
+  {
+   "prompt": "Which country placed a complete ban on exporting unprocessed river sand in 2017?",
+   "answer": "Cambodia",
+   "why": "Campuchia là quốc gia đã ban hành lệnh cấm xuất khẩu cát sông thô vào năm 2017.",
+   "quote": "Cambodia famously banned all exports of unprocessed river sand in twenty-seventeen",
+   "options": [
+    "Vietnam",
+    "Cambodia",
+    "Indonesia"
+   ]
+  },
+  {
+   "prompt": "What is currently preventing the widespread use of copper slag as aggregate?",
+   "answer": "toxicity leaching concerns",
+   "why": "Rào cản lớn nhất cản trở việc dùng xỉ đồng là mối lo ngại về khả năng rò rỉ các chất độc hại ra môi trường đang chờ cơ quan quản lý thẩm định.",
+   "quote": "the primary barrier preventing widespread adoption is toxicity leaching concerns",
+   "options": [
+    "toxicity leaching concerns",
+    "prohibitive transport expenses",
+    "unstable material supply"
+   ]
+  },
+  {
+   "prompt": "What new technology is being researched to make desert sand usable?",
+   "answer": "polymer binder coating methods",
+   "why": "Các nhà khoa học đang phát triển phương pháp phủ chất kết dính polyme để liên kết các hạt cát sa mạc thành khối chịu tải mà không cần nước.",
+   "quote": "researchers are developing polymer binder coating methods that allow desert sand to be bound into load-bearing blocks",
+   "options": [
+    "high-temperature kiln melting",
+    "plasma gas vitrification",
+    "polymer binder coating methods"
+   ]
+  },
+  {
+   "prompt": "What will the architectural and design team submit next week?",
+   "answer": "a concrete mix design proposal",
+   "why": "Đội ngũ thiết kế sẽ nộp đề xuất thiết kế cấp phối bê tông vào tuần tới để xin phê duyệt từ khách hàng.",
+   "quote": "our design team will submit a concrete mix design proposal next week for client approval",
+   "options": [
+    "a revised aggregate life-cycle assessment",
+    "a concrete mix design proposal",
+    "a material safety data sheet"
+   ]
+  },
+  {
+   "prompt": "What are team leaders expected to do before Thursday's meeting?",
+   "answer": "review the technical specifications datasheet",
+   "why": "Clara yêu cầu các trưởng nhóm xem lại bảng thông số kỹ thuật trước cuộc họp để họ có thể hoàn tất đơn đặt hàng sau đó.",
+   "quote": "I would like all team leaders to review the technical specifications datasheet so we can finalize the purchase orders",
+   "options": [
+    "finalize the purchase orders",
+    "inspect the test batching plant",
+    "review the technical specifications datasheet"
+   ]
+  }
+ ]
+}

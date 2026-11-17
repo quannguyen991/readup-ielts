@@ -1,0 +1,227 @@
+{
+ "title": "Return of the Wolves to Blackwood Forest",
+ "topic": "the return of wolves to forests (set 6)",
+ "context": "Narrator: You will hear a wildlife coordinator, Dr Thorne, discussing a conservation project with an assistant, Clara, followed by Dr Thorne giving a briefing to field volunteers.\nClara: Good morning, Dr Thorne. Have we finally confirmed the exact timeline for releasing the wolves into Blackwood Forest? I know our team initially aimed for September, but the district council delayed our transit permits, so we pushed it back to October.\nDr Thorne: Actually, Clara, the comprehensive veterinary clearance took even longer than expected, so the official release date is now firmly set for November.\nClara: Understood. And how many wolves are currently in this pioneer pack? We had originally prepared secure holding crates for eight animals.\nDr Thorne: Two could not be transported due to minor injuries during capture, so we are definitely beginning with just six individuals.\nClara: Right. Are they going directly to the acclimation enclosure that was proposed near Pine Creek?\nDr Thorne: We considered Pine Creek, and even surveyed Alder Valley, but neither had sufficient natural shelter or water. The enclosure has therefore been constructed at Miller Ridge.\nClara: Excellent. Now, regarding the project budget, did the regional forestry board approve our grant application?\nDr Thorne: No, that formal application fell through, as did our university subsidy. Fortunately, an anonymous private benefactor stepped forward and covered the entire cost of the facility.\nClara: That is a tremendous relief. What specific task would you like me to prioritize before the arrival? I can print the hazard maps or organize the frozen meat reserves.\nDr Thorne: Please leave those routine duties to the logistics crew. I need you to calibrate the transmitter frequencies for each individual monitoring unit.\nNarrator: Dr Thorne now addresses the group of volunteer field monitors.\nDr Thorne: Welcome, everyone. Thank you for volunteering your time. The return of apex predators to Blackwood Forest will profoundly reshape this entire ecosystem. Our primary management target is curbing the overpopulated red deer, which have severely devastated native saplings, though we will also keep an eye on roe deer and wild boar.\nTo monitor the pack, each wolf is fitted with a GPS satellite collar rather than standard VHF radio telemetry or static camera traps, ensuring continuous real-time data. These advanced units were advertised with a two-year lifespan, and while cheaper models survive only six months, under cold conditions the manufacturer confirms our batteries last eighteen months.\nWe anticipate significant ecological restoration. Historically, heavy overgrazing along riverbanks decimated vegetation. Now, we expect native willow to regenerate rapidly, followed later by aspen and birch stands.\nSome observers feared waterways might become blocked by fallen timber, or that soil loss would accelerate, but as root systems re-establish, stream bank erosion will drop sharply, which clears up the murky water.\nRather than abandoning old lodges or digging simple channels, beavers are likely to construct secondary dams, creating expansive wetland habitats.\nWolf presence will also reshape complex mesopredator dynamics across the landscape. We project that coyote numbers will decline significantly due to direct territorial competition, even though red foxes and badgers may adapt successfully.\nFurthermore, scavengers will thrive on leftover carcasses. Field data from other reserves indicate ravens benefit far more quickly and consistently than golden eagles or buzzards.\nNow, turning to local farming communities. Ranchers are understandably concerned about livestock. Our policy includes a compensation fund covering confirmed losses, provided incidents are reported within forty-eight hours rather than the standard seventy-two or the previously suggested twenty-four.\nAdditionally, we are supplying local livestock owners with free electric fencing; while guard dogs and visual fladry lines were proposed, electric fences proved far more reliable in preliminary field trials.\nFor recreationists, the public hiking trails across the Northern Ridge and River Valley remain open, but the Western Slope trail will be closed completely during this introductory phase.\nWhen you are on patrol, please log all observations directly into the mobile application rather than writing paper forms or calling the emergency dispatch line.\nShould you stumble upon an active feeding site, do not approach to take photographs from fifty metres or make loud distress calls. You must back away quietly, maintaining a distance of at least two hundred metres.\nLooking ahead, we invite you all to our community exhibition on Saturday the fourteenth; we considered Friday the thirteenth, while Sunday the fifteenth is reserved strictly for administrative staff.\nFinally, tomorrow evening I will present a seminar in the main hall. While many requested a talk on wolf genetics or hunting strategies, the session will focus exclusively on trophic cascades. Thank you.",
+ "questions": [
+  {
+   "prompt": "When will the wolf pack officially be released into the forest?",
+   "options": [
+    "September",
+    "October",
+    "November"
+   ],
+   "answer": "November",
+   "why": "Tháng 9 là mục tiêu ban đầu và tháng 10 là thời gian bị hoãn do giấy phép, nhưng thời điểm chốt chính thức là tháng 11 vì thủ tục thú y kéo dài.",
+   "quote": "the official release date is now firmly set for November."
+  },
+  {
+   "prompt": "How many wolves will be released in the initial group?",
+   "options": [
+    "six",
+    "eight",
+    "two"
+   ],
+   "answer": "six",
+   "why": "Ban đầu đội ngũ chuẩn bị 8 lồng nhốt và có 2 con bị thương khi bẫy bắt, nên đàn tiên phong chỉ bắt đầu với 6 cá thể.",
+   "quote": "we are definitely beginning with just six individuals."
+  },
+  {
+   "prompt": "Where was the wolf acclimation enclosure finally built?",
+   "options": [
+    "Pine Creek",
+    "Alder Valley",
+    "Miller Ridge"
+   ],
+   "answer": "Miller Ridge",
+   "why": "Pine Creek và Alder Valley đều từng được cân nhắc nhưng không đủ chỗ trú và nước, vì vậy chuồng thích nghi được xây tại Miller Ridge.",
+   "quote": "The enclosure has therefore been constructed at Miller Ridge."
+  },
+  {
+   "prompt": "Who provided the funding for the enclosure facility?",
+   "options": [
+    "the regional forestry board",
+    "a university subsidy",
+    "an anonymous private benefactor"
+   ],
+   "answer": "an anonymous private benefactor",
+   "why": "Hội đồng kiểm lâm vùng và trợ cấp đại học đều không thành công, thay vào đó một nhà hảo tâm tư nhân ẩn danh đã đài thọ toàn bộ chi phí.",
+   "quote": "Fortunately, an anonymous private benefactor stepped forward and covered the entire cost of the facility."
+  },
+  {
+   "prompt": "Which preparation task has been assigned to Clara?",
+   "options": [
+    "calibrating the transmitter frequencies",
+    "printing the hazard maps",
+    "organizing the meat reserves"
+   ],
+   "answer": "calibrating the transmitter frequencies",
+   "why": "In bản đồ và sắp xếp thịt được giao cho đội hậu cần, trong khi Clara được giao nhiệm vụ hiệu chỉnh tần số máy phát.",
+   "quote": "I need you to calibrate the transmitter frequencies for each individual monitoring unit."
+  },
+  {
+   "prompt": "Which species is the reintroduction project primarily intended to manage?",
+   "options": [
+    "red deer",
+    "roe deer",
+    "wild boar"
+   ],
+   "answer": "red deer",
+   "why": "Hươu đỏ (red deer) là mục tiêu quản lý chính nhằm giảm tình trạng quá tải số lượng, còn hoẵng và lợn rừng chỉ được theo dõi phụ thêm.",
+   "quote": "Our primary management target is curbing the overpopulated red deer"
+  },
+  {
+   "prompt": "What equipment is being used to track the wolves?",
+   "options": [
+    "static camera traps",
+    "GPS satellite collars",
+    "VHF radio telemetry"
+   ],
+   "answer": "GPS satellite collars",
+   "why": "Dự án sử dụng vòng đeo cổ vệ tinh GPS thay vì thiết bị đo xa vô tuyến VHF chuẩn hay bẫy máy ảnh tĩnh.",
+   "quote": "each wolf is fitted with a GPS satellite collar rather than standard VHF radio telemetry or static camera traps"
+  },
+  {
+   "prompt": "How long will the tracking collar batteries last in cold weather?",
+   "options": [
+    "six months",
+    "eighteen months",
+    "two years"
+   ],
+   "answer": "eighteen months",
+   "why": "Thời lượng 2 năm là quảng cáo lý thuyết và 6 tháng là của loại rẻ tiền; trong thời tiết lạnh, nhà sản xuất xác nhận pin kéo dài 18 tháng.",
+   "quote": "under cold conditions the manufacturer confirms our batteries last eighteen months."
+  },
+  {
+   "prompt": "Which riverside plant is predicted to regrow most quickly?",
+   "options": [
+    "native willow",
+    "aspen",
+    "birch"
+   ],
+   "answer": "native willow",
+   "why": "Cây liễu bản địa được dự đoán sẽ tái sinh nhanh chóng đầu tiên, theo sau mới đến cây dương (aspen) và bạch dương (birch).",
+   "quote": "we expect native willow to regenerate rapidly, followed later by aspen and birch stands."
+  },
+  {
+   "prompt": "What positive physical change will occur along the waterways?",
+   "options": [
+    "waterways might become blocked",
+    "stream bank erosion will drop sharply",
+    "soil loss would accelerate"
+   ],
+   "answer": "stream bank erosion will drop sharply",
+   "why": "Những lo ngại về dòng nước bị chặn hay xói mòn đất tăng nhanh bị bác bỏ; thực tế xói mòn bờ suối sẽ giảm mạnh khi rễ cây bám chắc.",
+   "quote": "stream bank erosion will drop sharply, which clears up the murky water."
+  },
+  {
+   "prompt": "How are beavers expected to alter the local aquatic environment?",
+   "options": [
+    "abandoning old lodges",
+    "digging simple channels",
+    "constructing secondary dams"
+   ],
+   "answer": "constructing secondary dams",
+   "why": "Hải ly sẽ không bỏ tổ hay chỉ đào mương rãnh đơn giản, mà có xu hướng xây dựng các đập phụ tạo vùng ngập nước rộng lớn.",
+   "quote": "beavers are likely to construct secondary dams, creating expansive wetland habitats."
+  },
+  {
+   "prompt": "Which mesopredator population is expected to decrease due to wolf presence?",
+   "options": [
+    "coyote numbers",
+    "red foxes",
+    "badgers"
+   ],
+   "answer": "coyote numbers",
+   "why": "Chó sói đồng cỏ (coyotes) được dự báo sẽ sụt giảm số lượng đáng kể do cạnh tranh trực tiếp, trong khi cáo đỏ và lửng thích nghi tốt.",
+   "quote": "We project that coyote numbers will decline significantly due to direct territorial competition"
+  },
+  {
+   "prompt": "Which scavenger species will experience the fastest and most consistent gains?",
+   "options": [
+    "golden eagles",
+    "ravens",
+    "buzzards"
+   ],
+   "answer": "ravens",
+   "why": "Dữ liệu cho thấy loài quạ đen (ravens) hưởng lợi nhanh chóng và đều đặn hơn nhiều so với đại bàng vàng hay chim ó.",
+   "quote": "ravens benefit far more quickly and consistently than golden eagles or buzzards."
+  },
+  {
+   "prompt": "Within what timeframe must farmers report livestock losses to claim compensation?",
+   "options": [
+    "twenty-four hours",
+    "forty-eight hours",
+    "seventy-two hours"
+   ],
+   "answer": "forty-eight hours",
+   "why": "Quy định yêu cầu báo cáo trong vòng 48 giờ thay vì 72 giờ tiêu chuẩn hay 24 giờ như đề xuất trước đó.",
+   "quote": "provided incidents are reported within forty-eight hours rather than the standard seventy-two or the previously suggested twenty-four."
+  },
+  {
+   "prompt": "What deterrent is being supplied free of charge to livestock owners?",
+   "options": [
+    "visual fladry lines",
+    "electric fencing",
+    "guard dogs"
+   ],
+   "answer": "electric fencing",
+   "why": "Dù chó bảo vệ và cờ xua đuổi fladry từng được đề cập, hàng rào điện mới là thiết bị được cấp miễn phí vì độ tin cậy vượt trội.",
+   "quote": "we are supplying local livestock owners with free electric fencing"
+  },
+  {
+   "prompt": "Which trail will be fully shut down during the wolves' introduction period?",
+   "options": [
+    "the Northern Ridge trail",
+    "the Western Slope trail",
+    "the River Valley trail"
+   ],
+   "answer": "the Western Slope trail",
+   "why": "Các đường mòn Northern Ridge và River Valley vẫn mở, duy chỉ có tuyến Western Slope bị đóng cửa hoàn toàn.",
+   "quote": "the Western Slope trail will be closed completely during this introductory phase."
+  },
+  {
+   "prompt": "How should volunteers record their wolf sightings while on patrol?",
+   "options": [
+    "the mobile application",
+    "paper forms",
+    "the emergency dispatch line"
+   ],
+   "answer": "the mobile application",
+   "why": "Người đi tuần được dặn nhập trực tiếp vào ứng dụng di động thay vì ghi phiếu giấy hay gọi cho đường dây khẩn cấp.",
+   "quote": "please log all observations directly into the mobile application rather than writing paper forms or calling the emergency dispatch line."
+  },
+  {
+   "prompt": "What are field volunteers instructed to do if they find an active feeding site?",
+   "options": [
+    "take photographs from fifty metres",
+    "make loud distress calls",
+    "maintain a distance of at least two hundred metres"
+   ],
+   "answer": "maintain a distance of at least two hundred metres",
+   "why": "Tình nguyện viên không được chụp ảnh từ cự ly 50 mét hay gây ồn, mà phải lặng lẽ lùi lại giữ khoảng cách tối thiểu 200 mét.",
+   "quote": "maintaining a distance of at least two hundred metres."
+  },
+  {
+   "prompt": "On what date is the community exhibition scheduled to take place?",
+   "options": [
+    "Friday the thirteenth",
+    "Saturday the fourteenth",
+    "Sunday the fifteenth"
+   ],
+   "answer": "Saturday the fourteenth",
+   "why": "Triển lãm cộng đồng được ấn định vào thứ Bảy ngày 14; thứ Sáu ngày 13 chỉ là phương án cân nhắc, còn Chủ nhật ngày 15 dành riêng cho nhân viên hành chính.",
+   "quote": "we invite you all to our community exhibition on Saturday the fourteenth"
+  },
+  {
+   "prompt": "What is the designated subject of Dr Thorne's evening seminar?",
+   "options": [
+    "trophic cascades",
+    "wolf genetics",
+    "hunting strategies"
+   ],
+   "answer": "trophic cascades",
+   "why": "Mặc dù nhiều người yêu cầu nói về di truyền học hay chiến lược săn mồi, buổi hội thảo chỉ tập trung duy nhất vào các tầng bậc dinh dưỡng (trophic cascades).",
+   "quote": "the session will focus exclusively on trophic cascades."
+  }
+ ]
+}

@@ -1,0 +1,227 @@
+{
+ "title": "Night-Shift Wellness Briefing",
+ "topic": "night-shift work and health",
+ "context": "Narrator: You will hear an occupational health nurse discussing a wellness program for night-shift hospital staff. First, you have some time to look at questions one to six.\nMarcus: Hello Fiona. Thanks for dropping by the personnel office. We need to finalize the schedule for the night-shift wellness workshop.\nFiona: Good morning Marcus. I understand we originally penciled it in for Tuesday, but with the intensive care handover on Wednesday, we settled on Thursday evening.\nMarcus: That is correct. In terms of turnout, fifteen nurses initially expressed interest, though three withdrew due to leave. However, six surgical assistants joined yesterday, bringing our confirmed total to eighteen.\nFiona: That is a manageable group. Now, concerning equipment, the seminar room already possesses an interactive screen, so I will not need a projector or lapel microphone. Could you, however, supply two heavy-duty extension leads? The wall sockets near the podium are out of order.\nMarcus: Certainly, our facilities team can supply those. Just to confirm the venue: the library annex was suggested, and someone asked about the ground-floor cafeteria, but we reserved Seminar Room B on the third floor.\nFiona: Excellent. I had thought about preparing fifty pamphlets, but to reduce paper waste, I have printed precisely twenty-five summary booklets.\nMarcus: Perfect. Regarding catering, we usually provide instant coffee and canned soda, but I ordered herbal infusions and sparkling water instead, keeping in line with your guidelines.\nFiona: Wonderful. That sets a good tone before we even start.\nNarrator: Now listen to the second part of the recording and answer questions seven to twenty.\nFiona: Welcome everyone to tonight's session on managing night-shift health. Working against the natural day-night cycle creates distinct biological hurdles. First, our core body temperature naturally reaches its lowest point around four thirty in the morning. This drop produces an intense wave of sluggishness and diminished focus, so recognizing this circadian dip helps staff plan critical tasks earlier in the shift.\nRegarding metabolism, research demonstrates that night workers face an elevated risk of insulin resistance, rather than simple vitamin deficiency or thyroid malfunction. At night, the pancreas processes glucose less efficiently.\nOn the cardiovascular front, healthy day workers experience a nocturnal drop in arterial tension. In contrast, nocturnal workers often exhibit non-dipping blood pressure, meaning their circulatory system endures sustained daytime stress throughout the twenty-four-hour cycle.\nWhen you finish your shift and head home, optimizing your sleep chamber is essential. While heavy drapes help, ambient cracks of sunlight remain problematic; therefore, I strongly advise wearing a contoured eye mask with molded cups to eliminate light penetration completely.\nFor acoustic control, complete silence is nearly impossible in urban areas, and classical music can stimulate mental alertness. Instead, running a continuous white noise fan generates steady sound masking that prevents daytime traffic disturbances from waking you.\nLet us talk about dietary choices during your hours on duty. Consuming starchy carbohydrates after one in the morning causes rapid blood sugar crashes. Staff should instead consume protein-rich snacks, such as boiled eggs or natural yoghurt, to sustain steady energy.\nCaffeine is another crucial factor. While an early-shift espresso helps alertness, you must observe a strict cut-off point. Do not ingest caffeine within six hours of your intended sleep time; if you plan to sleep at nine in the morning, stop drinking coffee by three.\nIf your department allows a scheduled rest break, a twenty-minute power nap provides substantial mental restoration without causing sleep inertia, whereas forty-five minutes leaves you groggy and ninety minutes disrupts your post-shift sleep.\nDuring your journey home at dawn, sunlight exposure signals the brain to halt sleep hormones. To counteract this, always wear wrap-around polarized sunglasses while traveling home, especially if you are driving.\nExercise timing also requires care. Exercising right before bed elevates adrenaline, and working out immediately upon waking leaves muscles stiff. The ideal window for aerobic training is late afternoon, just prior to reporting for your evening shift.\nIn our hospital screenings, seventy percent of night staff displayed severe vitamin D deficiency, which impacts bone density and immune defense; daily supplementation is strongly advised.\nMaintaining family connections is equally vital. Rather than attempting exhausting weekend marathons of socialising, schedule a dedicated evening meal with family members on your non-working weekdays.\nFinally, drink plain room-temperature water throughout the shift. Many staff reach for iced energy drinks to combat heat or fatigue, but cold beverages often provoke stomach cramps during nocturnal hours.\nIf you desire personalized guidance, I will be hosting individual health consultations in the occupational clinic on the first Monday of each month. Thank you for your time.",
+ "questions": [
+  {
+   "prompt": "On which day will the night-shift wellness workshop take place?",
+   "answer": "Thursday",
+   "why": "Fiona nhắc lại rằng lịch ban đầu dự định là thứ Ba và vướng ca trực thứ Tư, nên hai người đã thống nhất tổ chức vào tối thứ Năm.",
+   "quote": "with the intensive care handover on Wednesday, we settled on Thursday evening.",
+   "options": [
+    "Tuesday",
+    "Wednesday",
+    "Thursday"
+   ]
+  },
+  {
+   "prompt": "How many participants are currently registered for the workshop?",
+   "answer": "eighteen",
+   "why": "Marcus giải thích ban đầu có 15 người đăng ký, 3 người rút nhưng sau đó có thêm 6 người tham gia, nâng tổng số người xác nhận lên 18.",
+   "quote": "bringing our confirmed total to eighteen.",
+   "options": [
+    "eighteen",
+    "fifteen",
+    "twelve"
+   ]
+  },
+  {
+   "prompt": "What equipment does Fiona specifically ask Marcus to provide?",
+   "answer": "extension leads",
+   "why": "Fiona cho biết phòng đã có màn hình tương tác và cô không cần máy chiếu hay micro, nhưng cô cần hai dây nối dài nguồn điện vì các ổ cắm trên tường bị hỏng.",
+   "quote": "Could you, however, supply two heavy-duty extension leads?",
+   "options": [
+    "extension leads",
+    "a lapel microphone",
+    "an interactive screen"
+   ]
+  },
+  {
+   "prompt": "Where will the wellness workshop be held?",
+   "answer": "Seminar Room B",
+   "why": "Marcus xác nhận phòng hội thảo B trên tầng 3 đã được đặt trước, loại bỏ các gợi ý trước đó về nhà phụ thư viện hay căng tin tầng trệt.",
+   "quote": "we reserved Seminar Room B on the third floor.",
+   "options": [
+    "Seminar Room B",
+    "the library annex",
+    "the ground-floor cafeteria"
+   ]
+  },
+  {
+   "prompt": "How many summary booklets has Fiona produced?",
+   "answer": "twenty-five",
+   "why": "Fiona từng tính in 50 bản nhưng để tránh lãng phí giấy, cô đã in chính xác 25 cuốn tài liệu tóm tắt.",
+   "quote": "I have printed precisely twenty-five summary booklets.",
+   "options": [
+    "twenty-five",
+    "fifty",
+    "seventy"
+   ]
+  },
+  {
+   "prompt": "What beverage has Marcus ordered for the session?",
+   "answer": "herbal infusions",
+   "why": "Marcus thông báo ông đã đặt trà thảo mộc thay vì cà phê hòa tan hay nước ngọt có ga như thường lệ.",
+   "quote": "I ordered herbal infusions and sparkling water instead",
+   "options": [
+    "instant coffee",
+    "canned soda",
+    "herbal infusions"
+   ]
+  },
+  {
+   "prompt": "At what time does human core body temperature drop to its lowest level?",
+   "answer": "four thirty in the morning",
+   "why": "Fiona cho biết thân nhiệt tự nhiên chạm đáy vào khoảng 4 giờ 30 sáng, dẫn đến cảm giác mệt mỏi và mất tập trung trầm trọng.",
+   "quote": "core body temperature naturally reaches its lowest point around four thirty in the morning.",
+   "options": [
+    "one in the morning",
+    "three in the morning",
+    "four thirty in the morning"
+   ]
+  },
+  {
+   "prompt": "Which health condition is specifically linked to nocturnal work in Fiona's presentation?",
+   "answer": "insulin resistance",
+   "why": "Fiona giải thích công nhân làm ca đêm đối mặt với nguy cơ kháng insulin cao hơn, chứ không phải rối loạn tuyến giáp hay thiếu hụt vitamin.",
+   "quote": "night workers face an elevated risk of insulin resistance",
+   "options": [
+    "thyroid malfunction",
+    "insulin resistance",
+    "vitamin deficiency"
+   ]
+  },
+  {
+   "prompt": "What blood pressure pattern is typical among night-shift staff?",
+   "answer": "non-dipping",
+   "why": "Người làm ca đêm thường gặp tình trạng huyết áp không hạ vào ban đêm (non-dipping), khiến mạch máu chịu căng thẳng suốt cả ngày lẫn đêm.",
+   "quote": "nocturnal workers often exhibit non-dipping blood pressure",
+   "options": [
+    "non-dipping",
+    "sudden spiking",
+    "daytime dropping"
+   ]
+  },
+  {
+   "prompt": "What does Fiona recommend using to block light while sleeping at home?",
+   "answer": "a contoured eye mask",
+   "why": "Dù rèm dày giúp cản sáng nhưng nắng vẫn có thể lọt vào, nên Fiona khuyên dùng mặt nạ che mắt chuyên dụng có phần đệm cong.",
+   "quote": "strongly advise wearing a contoured eye mask with molded cups",
+   "options": [
+    "heavy drapes",
+    "a contoured eye mask",
+    "window film"
+   ]
+  },
+  {
+   "prompt": "What does Fiona suggest using to manage noise during daytime sleep?",
+   "answer": "a white noise fan",
+   "why": "Fiona khuyên dùng quạt tạo tiếng ồn trắng liên tục để át tiếng ồn đường phố, thay vì cố tìm sự yên tĩnh tuyệt đối hay nghe nhạc cổ điển.",
+   "quote": "running a continuous white noise fan generates steady sound masking",
+   "options": [
+    "soundproof earplugs",
+    "classical music",
+    "a white noise fan"
+   ]
+  },
+  {
+   "prompt": "What dietary item should night workers choose for sustained energy after one in the morning?",
+   "answer": "protein-rich snacks",
+   "why": "Fiona khuyên tránh tinh bột sau 1 giờ sáng vì gây sụt giảm đường huyết nhanh, thay vào đó nên dùng các món ăn nhẹ giàu protein.",
+   "quote": "Staff should instead consume protein-rich snacks, such as boiled eggs or natural yoghurt",
+   "options": [
+    "protein-rich snacks",
+    "starchy carbohydrates",
+    "sugary desserts"
+   ]
+  },
+  {
+   "prompt": "When should night workers stop drinking caffeinated drinks?",
+   "answer": "six hours before sleep",
+   "why": "Fiona nhấn mạnh giới hạn nghiêm ngặt là không được nạp caffeine trong vòng 6 tiếng trước giờ dự kiến đi ngủ.",
+   "quote": "Do not ingest caffeine within six hours of your intended sleep time",
+   "options": [
+    "two hours before sleep",
+    "four hours before sleep",
+    "six hours before sleep"
+   ]
+  },
+  {
+   "prompt": "What is the recommended duration for a workplace power nap?",
+   "answer": "twenty minutes",
+   "why": "Giấc ngủ ngắn 20 phút đem lại hiệu quả phục hồi tinh thần tối ưu, trong khi ngủ 45 hay 90 phút sẽ gây uể oải hoặc phá vỡ giấc ngủ chính sau ca trực.",
+   "quote": "a twenty-minute power nap provides substantial mental restoration",
+   "options": [
+    "twenty minutes",
+    "forty-five minutes",
+    "ninety minutes"
+   ]
+  },
+  {
+   "prompt": "What should workers wear on their morning journey home?",
+   "answer": "wrap-around polarized sunglasses",
+   "why": "Fiona khuyên đeo kính mát phân cực ôm sát mắt trên đường về để tránh ánh sáng mặt trời làm ngắt hormone gây buồn ngủ.",
+   "quote": "wear wrap-around polarized sunglasses while traveling home",
+   "options": [
+    "clear safety glasses",
+    "wrap-around polarized sunglasses",
+    "tinted reading spectacles"
+   ]
+  },
+  {
+   "prompt": "What is the optimal time for night workers to perform aerobic exercise?",
+   "answer": "late afternoon",
+   "why": "Fiona cho biết thời điểm lý tưởng nhất để tập thể dục là vào cuối buổi chiều trước ca trực, thay vì ngay trước lúc ngủ hay ngay sau khi thức dậy.",
+   "quote": "The ideal window for aerobic training is late afternoon",
+   "options": [
+    "late afternoon",
+    "right before bed",
+    "immediately upon waking"
+   ]
+  },
+  {
+   "prompt": "Which nutrient was found to be deficient in seventy percent of the hospital's night staff?",
+   "answer": "vitamin D",
+   "why": "Kết quả kiểm tra tại bệnh viện cho thấy 70% nhân viên trực đêm bị thiếu hụt vitamin D nghiêm trọng.",
+   "quote": "seventy percent of night staff displayed severe vitamin D deficiency",
+   "options": [
+    "vitamin B twelve",
+    "vitamin C",
+    "vitamin D"
+   ]
+  },
+  {
+   "prompt": "How does Fiona recommend maintaining social contact with family?",
+   "answer": "scheduling a dedicated evening meal",
+   "why": "Fiona khuyên nên xếp lịch ăn một bữa tối trọn vẹn cùng gia đình vào ngày thường không trực, thay vì các buổi tụ tập quá sức vào cuối tuần.",
+   "quote": "schedule a dedicated evening meal with family members on your non-working weekdays.",
+   "options": [
+    "planning weekend marathons",
+    "scheduling a dedicated evening meal",
+    "taking midday phone calls"
+   ]
+  },
+  {
+   "prompt": "What liquid should staff consume during their shift to prevent stomach cramps?",
+   "answer": "plain room-temperature water",
+   "why": "Fiona khuyên uống nước lọc ở nhiệt độ phòng vì đồ uống lạnh như nước tăng lực ướp đá dễ gây co thắt dạ dày về đêm.",
+   "quote": "drink plain room-temperature water throughout the shift.",
+   "options": [
+    "plain room-temperature water",
+    "iced energy drinks",
+    "chilled fruit juice"
+   ]
+  },
+  {
+   "prompt": "When does Fiona hold individual health consultations?",
+   "answer": "the first Monday of each month",
+   "why": "Fiona thông báo các buổi tư vấn sức khỏe cá nhân sẽ diễn ra vào thứ Hai đầu tiên của mỗi tháng tại phòng khám sức khỏe nghề nghiệp.",
+   "quote": "individual health consultations in the occupational clinic on the first Monday of each month.",
+   "options": [
+    "every Friday afternoon",
+    "the first Monday of each month",
+    "the last Wednesday of each month"
+   ]
+  }
+ ]
+}

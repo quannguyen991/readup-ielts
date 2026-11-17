@@ -1,0 +1,127 @@
+{
+ "title": "The Evolution of Glass-Making Through the Ages",
+ "topic": "glass-making through history",
+ "context": "A. Archaeological evidence suggests that humanity's relationship with artificial glass began around the third millennium BCE in Mesopotamia and Egypt. Prior to synthetic vitreous materials, prehistoric artisans utilized obsidian, a naturally occurring volcanic glass, to fashion razor-sharp cutting tools. Early manufactured glass, however, was neither transparent nor easily manipulated. Craftsmen combined crushed quartz or silica sand with an alkaline flux—frequently natron or plant ash—to lower melting temperatures. Using a laborious technique known as core-forming, artisans shaped molten paste around a removable clay core, creating small beads, amulets, and rudimentary perfume flasks primarily reserved for ruling elites.\n\nB. The pivotal technological breakthrough in glass production occurred during the first century BCE along the Syro-Palestinian coast with the invention of glassblowing. By gathering a gob of molten glass on the tip of a hollow iron blowpipe and inflating it, artisans could produce vessels of unprecedented thinness and varied geometry in a fraction of the time required by core-forming. This innovation spread rapidly across the Roman Empire, democratizing what had previously been an exclusive luxury. The Romans also pioneered the architectural application of glass, casting thick panes to create the earliest known glazed windows, which transformed residential lighting and bathhouse insulation.\n\nC. Following the decline of the Western Roman Empire, the locus of glassmaking expertise shifted eastward to the Islamic world. Between the eighth and fourteenth centuries, Islamic glassworkers refined decorative methodologies, mastering techniques such as relief cutting, luster painting, and vibrant enamelling. Cities like Damascus and Aleppo became celebrated centers for producing ornate mosque lamps and gilded beakers. Furthermore, Islamic scholars advanced chemical treatises that systematically documented flux purifications and metal oxide colorants, safeguarding and refining glass formulas that would subsequently influence European revivals.\n\nD. By the late Middle Ages, the epicenter of fine glass production relocated to Venice. To mitigate catastrophic fire risks and safeguard industrial secrets, the Venetian Republic decreed in 1291 that all furnaces be relocated to the island of Murano. There, artisan Angelo Barovier formulated cristallo, an astonishingly clear, colorless glass achieved by treating plant ashes with manganese dioxide to neutralize iron impurities. Venice established a virtual European monopoly, implementing draconian laws that prohibited glassmakers from emigrating under penalty of treason, although skilled defectors gradually seeded Venetian techniques throughout northern Europe.\n\nE. The seventeenth century initiated a scientific transformation in glass chemistry. In England, George Ravenscroft patented lead crystal in 1674 by introducing lead oxide into the batch, yielding a denser, highly refractive glass ideal for intricate wheel cutting. As the Industrial Revolution gained momentum, manufacturing shifted from artisanal workshops to mechanized factories. The nineteenth century witnessed the invention of the cylinder process for broad window glass, followed in 1903 by Michael Owens’ automated bottle machine, which could churn out thousands of identical containers per hour, fundamentally altering the packaging industry.\n\nF. The mid-twentieth century brought the definitive innovation of modern flat glass: the float glass process. Developed in the 1950s by Sir Alastair Pilkington, this method involved pouring molten glass across a bath of molten tin, allowing gravity and surface tension to form perfectly flat, distortion-free sheets without mechanical grinding. Today, the float process supplies the vast majority of architectural and automotive glazing. Contemporary glass technology continues to evolve, extending beyond utilitarian containers to specialized engineered materials, including ultra-thin chemically strengthened glass for touchscreens and low-loss silica optical fibers underpinning global telecommunications.",
+ "questions": [
+  {
+   "prompt": "Before synthetic glass existed, early human toolmakers utilized ____ to create extremely sharp instruments.",
+   "answer": "obsidian",
+   "why": "Đoạn A nêu rõ rằng trước khi có vật liệu thủy tinh nhân tạo, các thợ thủ công tiền sử đã sử dụng 'obsidian' (thủy tinh núi lửa tự nhiên) để chế tác các công cụ cắt sắc bén.",
+   "quote": "prehistoric artisans utilized obsidian, a naturally occurring volcanic glass, to fashion razor-sharp cutting tools"
+  },
+  {
+   "prompt": "In the earliest recipes for glass, quartz or silica sand was mixed with an alkaline substance such as natron or ____.",
+   "answer": "plant ash",
+   "why": "Đoạn A chỉ ra rằng thợ thủ công kết hợp cát silica với chất trợ chảy kiềm, thường là natron hoặc 'plant ash' (tro thực vật) để hạ nhiệt độ nóng chảy.",
+   "quote": "Craftsmen combined crushed quartz or silica sand with an alkaline flux—frequently natron or plant ash—to lower melting temperatures."
+  },
+  {
+   "prompt": "The ancient production method known as ____ required workers to shape hot paste around a temporary center made of clay.",
+   "answer": "core-forming",
+   "why": "Đoạn A mô tả kỹ thuật tốn nhiều công sức mang tên 'core-forming', trong đó thợ thủ công tạo hình bột thủy tinh nóng chảy quanh một lõi đất sét có thể tháo rời.",
+   "quote": "Using a laborious technique known as core-forming, artisans shaped molten paste around a removable clay core"
+  },
+  {
+   "prompt": "Early glass artefacts, including small vessels and decorative beads, were mainly intended for ____.",
+   "answer": "ruling elites",
+   "why": "Đoạn A nêu rõ các sản phẩm thủy tinh sơ khai như hạt cườm, bùa hộ mệnh và lọ nước hoa thô sơ chủ yếu được dành riêng cho 'ruling elites' (tầng lớp cai trị).",
+   "quote": "creating small beads, amulets, and rudimentary perfume flasks primarily reserved for ruling elites."
+  },
+  {
+   "prompt": "Glassblowing was carried out by collecting hot glass on a ____ before blowing air through it.",
+   "answer": "hollow iron blowpipe",
+   "why": "Đoạn B giải thích kỹ thuật thổi thủy tinh thực hiện bằng cách gom một khối thủy tinh nóng chảy ở đầu của một chiếc 'hollow iron blowpipe' (ống thổi sắt rỗng) rồi thổi phồng lên.",
+   "quote": "By gathering a gob of molten glass on the tip of a hollow iron blowpipe and inflating it"
+  },
+  {
+   "prompt": "The rapid spread of glassblowing across the ____ made glass accessible to everyday consumers rather than just the wealthy.",
+   "answer": "Roman Empire",
+   "why": "Đoạn B khẳng định sự đổi mới này lan rộng khắp 'Roman Empire' (Đế chế La Mã), biến mặt hàng vốn là xa xỉ phẩm độc quyền thành vật dụng phổ biến.",
+   "quote": "This innovation spread rapidly across the Roman Empire, democratizing what had previously been an exclusive luxury."
+  },
+  {
+   "prompt": "By casting ____, the Romans successfully created the earliest recorded glass windows.",
+   "answer": "thick panes",
+   "why": "Đoạn B chỉ ra rằng người La Mã tiên phong ứng dụng thủy tinh trong kiến trúc bằng cách đúc 'thick panes' (các tấm kính dày) để làm cửa sổ.",
+   "quote": "The Romans also pioneered the architectural application of glass, casting thick panes to create the earliest known glazed windows"
+  },
+  {
+   "prompt": "Following the collapse of the Western Roman Empire, advanced glass production became concentrated in the ____.",
+   "answer": "Islamic world",
+   "why": "Đoạn C giải thích rằng sau khi Đế chế Tây La Mã suy tàn, trung tâm chuyên môn chế tác thủy tinh đã dịch chuyển về phía đông sang 'Islamic world' (thế giới Hồi giáo).",
+   "quote": "Following the decline of the Western Roman Empire, the locus of glassmaking expertise shifted eastward to the Islamic world."
+  },
+  {
+   "prompt": "Craftspeople in Syrian cities gained fame for making decorated ____ alongside gilded drinking vessels.",
+   "answer": "mosque lamps",
+   "why": "Đoạn C ghi nhận Damascus và Aleppo trở thành những trung tâm nổi tiếng về sản xuất 'mosque lamps' (đèn nhà thờ Hồi giáo) lộng lẫy cùng các cốc mạ vàng.",
+   "quote": "Cities like Damascus and Aleppo became celebrated centers for producing ornate mosque lamps and gilded beakers."
+  },
+  {
+   "prompt": "Comprehensive records on flux purification and coloring agents were detailed in ____ written by Islamic scholars.",
+   "answer": "chemical treatises",
+   "why": "Đoạn C đề cập việc các học giả Hồi giáo đã viết các 'chemical treatises' (chuyên luận hóa học) ghi chép có hệ thống về tinh chế chất trợ chảy và oxit kim loại tạo màu.",
+   "quote": "Furthermore, Islamic scholars advanced chemical treatises that systematically documented flux purifications and metal oxide colorants"
+  },
+  {
+   "prompt": "In 1291, Venetian authorities ordered glass workshops to move to the ____ to prevent fires and protect craft secrets.",
+   "answer": "island of Murano",
+   "why": "Đoạn D cho biết chính quyền Venice năm 1291 đã ra sắc lệnh dời toàn bộ lò nung ra 'island of Murano' (đảo Murano) nhằm giảm rủi ro hỏa hoạn và bảo vệ bí mật nghề.",
+   "quote": "the Venetian Republic decreed in 1291 that all furnaces be relocated to the island of Murano."
+  },
+  {
+   "prompt": "A remarkably clear type of glass known as ____ was developed in Venice by Angelo Barovier.",
+   "answer": "cristallo",
+   "why": "Đoạn D nêu rằng nghệ nhân Angelo Barovier đã sáng chế ra 'cristallo', một loại thủy tinh không màu trong suốt đến kinh ngạc.",
+   "quote": "There, artisan Angelo Barovier formulated cristallo, an astonishingly clear, colorless glass"
+  },
+  {
+   "prompt": "To clear glass of unwanted iron tints, Venetian glassmakers added ____ to the plant ash.",
+   "answer": "manganese dioxide",
+   "why": "Đoạn D giải thích rằng người làm kính xử lý tro thực vật bằng 'manganese dioxide' để khử các tạp chất sắt gây ngả màu.",
+   "quote": "treating plant ashes with manganese dioxide to neutralize iron impurities."
+  },
+  {
+   "prompt": "Under Venetian law, glass artisans who attempted to relocate abroad were threatened with punishment for ____.",
+   "answer": "treason",
+   "why": "Đoạn D chỉ ra rằng Venice ban hành luật cấm thợ làm kính di cư dưới hình phạt dành cho tội 'treason' (tội phản quốc).",
+   "quote": "implementing draconian laws that prohibited glassmakers from emigrating under penalty of treason"
+  },
+  {
+   "prompt": "In 1674, George Ravenscroft obtained a patent for ____ after adding lead oxide into the glass mixture.",
+   "answer": "lead crystal",
+   "why": "Đoạn E xác nhận tại Anh, George Ravenscroft đã được cấp bằng sáng chế cho 'lead crystal' (pha lê chì) vào năm 1674 khi đưa oxit chì vào mẻ nấu.",
+   "quote": "In England, George Ravenscroft patented lead crystal in 1674 by introducing lead oxide into the batch"
+  },
+  {
+   "prompt": "During the nineteenth century, the creation of the ____ facilitated the production of wide sheets of window glass.",
+   "answer": "cylinder process",
+   "why": "Đoạn E nêu rõ thế kỷ 19 chứng kiến sự ra đời của 'cylinder process' (quy trình ống trụ) dùng để chế tạo kính cửa sổ bản rộng.",
+   "quote": "The nineteenth century witnessed the invention of the cylinder process for broad window glass"
+  },
+  {
+   "prompt": "The glass packaging sector was transformed in 1903 following the development of an ____ by Michael Owens.",
+   "answer": "automated bottle machine",
+   "why": "Đoạn E chỉ ra ngành đóng gói bao bì thủy tinh bị biến đổi căn bản nhờ 'automated bottle machine' (máy làm chai tự động) của Michael Owens vào năm 1903.",
+   "quote": "followed in 1903 by Michael Owens’ automated bottle machine, which could churn out thousands of identical containers per hour"
+  },
+  {
+   "prompt": "The modern technique known as the ____ was invented in the 1950s by Sir Alastair Pilkington.",
+   "answer": "float glass process",
+   "why": "Đoạn F khẳng định quy trình kính tấm phẳng hiện đại mang tên 'float glass process' (quy trình kính nổi) được Sir Alastair Pilkington phát minh vào thập niên 1950.",
+   "quote": "The mid-twentieth century brought the definitive innovation of modern flat glass: the float glass process. Developed in the 1950s by Sir Alastair Pilkington"
+  },
+  {
+   "prompt": "In Pilkington's method, liquid glass is poured over a bath of ____ so that it flattens naturally.",
+   "answer": "molten tin",
+   "why": "Đoạn F mô tả phương pháp kính nổi bao gồm việc rót thủy tinh lỏng lên một bể 'molten tin' (thiếc nóng chảy) để lực căng bề mặt và trọng lực tự làm phẳng.",
+   "quote": "this method involved pouring molten glass across a bath of molten tin, allowing gravity and surface tension to form perfectly flat, distortion-free sheets"
+  },
+  {
+   "prompt": "Modern international communications rely heavily on glass through the use of ____.",
+   "answer": "silica optical fibers",
+   "why": "Đoạn F nêu rõ mạng viễn thông toàn cầu ngày nay được nâng đỡ bởi các 'silica optical fibers' (sợi quang silica) có độ suy hao thấp.",
+   "quote": "and low-loss silica optical fibers underpinning global telecommunications."
+  }
+ ]
+}

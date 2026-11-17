@@ -293,13 +293,13 @@ export function answeredNumbers(sections: ListeningSection[], answers: Listening
 // ---------------------------------------------------------------------------
 
 /** Bảng quy đổi Listening 40 câu -> band (bảng IELTS chuẩn). */
-const BAND_TABLE: [number, number][] = [
+export const LISTENING_BAND_TABLE: [number, number][] = [
   [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6], [18, 5.5],
   [16, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [4, 2.5], [2, 2], [1, 1],
 ];
 
 export function bandFromRaw40(raw: number): number {
-  for (const [min, band] of BAND_TABLE) if (raw >= min) return band;
+  for (const [min, band] of LISTENING_BAND_TABLE) if (raw >= min) return band;
   return 0;
 }
 

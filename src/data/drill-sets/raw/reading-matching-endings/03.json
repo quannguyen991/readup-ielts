@@ -1,0 +1,267 @@
+{
+ "title": "Principles and Innovations in Earthquake-Resistant Structural Engineering",
+ "topic": "earthquake-resistant buildings",
+ "context": "A. When tectonic faults rupture, ground acceleration imparts violent kinetic energy into building foundations. Historically, engineers attempted to counteract these forces through rigid structural reinforcement. However, if a building's natural vibrational frequency synchronises with the seismic wave spectrum, resonance occurs, amplifying swaying and often triggering catastrophic failure. Modern seismic engineering therefore prioritises energy dissipation over brute resistance, designing structures that deform predictably or deflect ground motion altogether.\n\nB. Among the most prevalent defensive mechanisms is base isolation, which decouples the superstructure from the substructure using flexible pads. Elastomeric bearings containing alternating layers of steel plates and rubber absorb horizontal displacement, while integrated lead plugs yield plastically to absorb vibrational energy. Alternatively, friction pendulum systems allow buildings to glide along curved sliders. Nevertheless, base isolation exhibits severe limitations when deployed on deep, soft-soil basins, as low-frequency ground motions can coincide with the extended natural period of isolated buildings, potentially escalating lateral drift.\n\nC. For skyscrapers where base isolation proves structurally impractical, engineers install mechanical damping devices. Tuned mass dampers (TMDs), comprising massive pendulums suspended in upper storeys, generate counteracting inertial movements that attenuate wind- and quake-induced oscillations. In contrast, distributed fluid viscous dampers operate like automotive shock absorbers, converting kinetic shear forces into thermal energy across individual structural bays. Unlike TMDs, which primarily protect slender towers from resonance, viscous dampers effectively mitigate broad-spectrum shocks across low- and mid-rise frameworks, provided that hydraulic seals are systematically inspected to prevent fluid degradation.\n\nD. Material science has fundamentally altered structural resilience by substituting brittle materials with ductile alternatives. Conventional reinforced concrete often suffers irreversible internal fracturing during severe tremors. Conversely, engineered cementitious composites (ECC), reinforced with microscopic polymer fibres, can bend under extreme tensile stresses without macroscopic cracking. Furthermore, superelastic shape-memory alloys like nitinol can undergo substantial strain yet spontaneously recover their initial shape once seismic stresses subside. Supplementing these are cross-laminated timber assemblies, which offer remarkable strength-to-weight ratios, thereby substantially diminishing the inertial loads generated during ground shaking.\n\nE. Architects increasingly draw inspiration from ancient vernacular architecture and biomimetic principles to resolve torsional stress. Traditional East Asian timber pagodas, for example, have survived centuries of tremors due to a disconnected central pillar known as a shinbashira, which acts as an independent pendulum damping inter-storey drift. Modern bio-inspired designs emulate this phenomenon through interlocking, modular joints that mimic human vertebrae, allowing buildings to flex sequentially rather than snap under lateral loads. Similarly, hollow, nodal structural columns derived from bamboo morphology distribute rotational forces more evenly than uniform cylindrical profiles.\n\nF. Contemporary building codes are shifting from traditional collapse-prevention mandates toward performance-based seismic design. While conventional life-safety standards ensure occupants can evacuate safely, they frequently leave structures damaged beyond economic repair. Performance-based criteria, by comparison, aim for immediate occupancy by restricting plastic deformation to replaceable fuse elements. Although incorporating sacrificial damping components and real-time structural health monitoring sensors escalates initial capital expenditure, it significantly mitigates long-term post-disaster downtime and demolition costs for municipal infrastructure.",
+ "questions": [
+  {
+   "prompt": "Historical approaches to seismic mitigation",
+   "options": [
+    "relied heavily on rigid structural reinforcement.",
+    "prevented buildings from absorbing kinetic energy.",
+    "eliminated resonance between structures and ground motion.",
+    "prioritised energy dissipation over stiff materials.",
+    "decoupled the superstructure from the foundation."
+   ],
+   "answer": "relied heavily on rigid structural reinforcement.",
+   "why": "Đoạn A chỉ ra rằng trong quá khứ, các kỹ sư đã cố gắng chống lại lực địa chấn bằng cách gia cố kết cấu một cách cứng nhắc ('rigid structural reinforcement'). Các lựa chọn khác mô tả các giải pháp hiện đại như tiêu tán năng lượng hoặc cách ly đáy.",
+   "quote": "engineers attempted to counteract these forces through rigid structural reinforcement."
+  },
+  {
+   "prompt": "A catastrophic resonance disaster is triggered when",
+   "options": [
+    "a building's natural vibrational frequency synchronises with seismic waves.",
+    "horizontal displacement is absorbed by elastomeric bearings.",
+    "structural foundations are isolated from ground acceleration.",
+    "low-frequency waves are eliminated by mechanical dampers.",
+    "kinetic energy transforms into thermal energy across lower frames."
+   ],
+   "answer": "a building's natural vibrational frequency synchronises with seismic waves.",
+   "why": "Đoạn A nêu rõ rằng hiện tượng cộng hưởng dẫn đến thảm họa xảy ra khi tần số dao động tự nhiên của tòa nhà đồng pha (synchronises) với phổ sóng địa chấn.",
+   "quote": "a building's natural vibrational frequency synchronises with the seismic wave spectrum, resonance occurs"
+  },
+  {
+   "prompt": "Contemporary structural engineering focuses on",
+   "options": [
+    "designing structures that deform predictably or deflect ground motion.",
+    "increasing the stiffness of structural frames to prevent all deformation.",
+    "synchronising the natural period of buildings with ground acceleration.",
+    "replacing all flexible elements with solid concrete barriers.",
+    "preventing kinetic energy from entering fluid viscous dampers."
+   ],
+   "answer": "designing structures that deform predictably or deflect ground motion.",
+   "why": "Đoạn A khẳng định kỹ thuật hiện đại ưu tiên việc tiêu tán năng lượng, thiết kế các công trình biến dạng có dự đoán trước hoặc làm chệch hoàn toàn chuyển động của mặt đất.",
+   "quote": "designing structures that deform predictably or deflect ground motion altogether."
+  },
+  {
+   "prompt": "The primary objective of base isolation is",
+   "options": [
+    "to decouple the superstructure from the substructure using flexible pads.",
+    "to convert rotational forces into thermal energy across upper storeys.",
+    "to eliminate the need for horizontal displacement in foundations.",
+    "to increase the overall weight of the upper floors.",
+    "to prevent seismic waves from travelling through bedrock."
+   ],
+   "answer": "to decouple the superstructure from the substructure using flexible pads.",
+   "why": "Đoạn B mô tả cách ly đáy (base isolation) là cơ chế tách biệt phần kết cấu thân trên khỏi phần móng bên dưới bằng các đệm đàn hồi linh hoạt.",
+   "quote": "decouples the superstructure from the substructure using flexible pads."
+  },
+  {
+   "prompt": "Integrated lead plugs within elastomeric bearings are designed to",
+   "options": [
+    "yield plastically to absorb vibrational energy.",
+    "slide along curved pendulums during high-frequency tremors.",
+    "prevent the superstructure from moving in any direction.",
+    "replace traditional hydraulic fluids in mechanical dampers.",
+    "stiffen the building frame against extreme wind shear."
+   ],
+   "answer": "yield plastically to absorb vibrational energy.",
+   "why": "Đoạn B nêu rõ các lõi chì (lead plugs) có nhiệm vụ biến dạng dẻo (yield plastically) để hấp thụ năng lượng dao động của động đất.",
+   "quote": "lead plugs yield plastically to absorb vibrational energy."
+  },
+  {
+   "prompt": "Friction pendulum systems safeguard buildings by",
+   "options": [
+    "allowing buildings to glide along curved sliders.",
+    "generating opposing inertial forces from upper storeys.",
+    "relying on flexible bamboo-like interlocking joints.",
+    "monitoring structural health using real-time IoT sensors.",
+    "absorbing kinetic shocks through microscopic polymer fibres."
+   ],
+   "answer": "allowing buildings to glide along curved sliders.",
+   "why": "Đoạn B khẳng định hệ thống con lắc ma sát bảo vệ công trình bằng cách cho phép các tòa nhà trượt trên các bề mặt trượt cong.",
+   "quote": "friction pendulum systems allow buildings to glide along curved sliders."
+  },
+  {
+   "prompt": "Installing base isolation systems in deep soft-soil basins",
+   "options": [
+    "can cause low-frequency ground motions to escalate lateral drift.",
+    "eliminates the danger of resonance with long-period seismic waves.",
+    "provides superior protection compared to locations on hard bedrock.",
+    "reduces the natural vibrational period of the superstructure.",
+    "completely protects tall buildings against high-frequency shaking."
+   ],
+   "answer": "can cause low-frequency ground motions to escalate lateral drift.",
+   "why": "Đoạn B cảnh báo việc lắp đặt cách ly đáy trên nền đất mềm sâu có thể dẫn đến việc sóng tần số thấp trùng với chu kỳ của tòa nhà, làm gia tăng chuyển vị ngang (lateral drift).",
+   "quote": "low-frequency ground motions can coincide with the extended natural period of isolated buildings, potentially escalating lateral drift."
+  },
+  {
+   "prompt": "Tuned mass dampers installed in upper storeys function by",
+   "options": [
+    "generating counteracting inertial movements that attenuate oscillations.",
+    "absorbing shear forces through alternating steel and rubber layers.",
+    "bending under severe tensile stress without structural cracking.",
+    "detaching the upper floors from the primary load-bearing columns.",
+    "converting kinetic energy directly into electricity."
+   ],
+   "answer": "generating counteracting inertial movements that attenuate oscillations.",
+   "why": "Đoạn C giải thích con lắc giảm chấn khối lượng (TMD) ở các tầng trên hoạt động bằng cách tạo ra các chuyển động quán tính ngược chiều để dập tắt dao động do gió và động đất.",
+   "quote": "generate counteracting inertial movements that attenuate wind- and quake-induced oscillations."
+  },
+  {
+   "prompt": "Fluid viscous dampers mitigate ground shaking by",
+   "options": [
+    "converting kinetic shear forces into thermal energy across structural bays.",
+    "shifting the building's centre of gravity towards the foundation.",
+    "decoupling the lower storeys from the substructure completely.",
+    "releasing pressurized fluid into the building's joints during tremors.",
+    "acting as independent pendulums that swing in unison with ground waves."
+   ],
+   "answer": "converting kinetic shear forces into thermal energy across structural bays.",
+   "why": "Đoạn C cho biết các thiết bị giảm chấn chất lỏng nhớt hoạt động như bộ giảm xóc ô tô, chuyển đổi lực cắt động năng thành nhiệt năng giữa các khoang kết cấu.",
+   "quote": "converting kinetic shear forces into thermal energy across individual structural bays."
+  },
+  {
+   "prompt": "In comparison to tuned mass dampers, distributed fluid dampers",
+   "options": [
+    "effectively mitigate broad-spectrum shocks across low- and mid-rise frameworks.",
+    "are exclusively utilised in exceptionally slender high-rise towers.",
+    "depend solely on gravitational pendulum motion to dissipate energy.",
+    "eliminate the requirement for routine post-disaster maintenance.",
+    "can only protect structures against wind-induced vibrations."
+   ],
+   "answer": "effectively mitigate broad-spectrum shocks across low- and mid-rise frameworks.",
+   "why": "Đoạn C làm rõ sự khác biệt: trong khi TMD bảo vệ các tháp cao khỏi cộng hưởng, giảm chấn nhớt phân tán có khả năng giảm xung chấn dải rộng hiệu quả cho các khung nhà thấp và trung tầng.",
+   "quote": "viscous dampers effectively mitigate broad-spectrum shocks across low- and mid-rise frameworks"
+  },
+  {
+   "prompt": "The ongoing effectiveness of fluid viscous dampers depends on",
+   "options": [
+    "systematically inspecting hydraulic seals to prevent fluid degradation.",
+    "replacing the internal lead cores after every moderate tremor.",
+    "ensuring that the building's sway matches the seismic frequency.",
+    "continuously heating the shock-absorbing oil during cold weather.",
+    "keeping structural frames entirely rigid under shear forces."
+   ],
+   "answer": "systematically inspecting hydraulic seals to prevent fluid degradation.",
+   "why": "Đoạn C lưu ý thiết bị giảm chấn nhớt hoạt động hiệu quả với điều kiện các vòng đệm thủy lực được kiểm tra định kỳ để ngăn ngừa suy giảm/rò rỉ chất lỏng.",
+   "quote": "hydraulic seals are systematically inspected to prevent fluid degradation."
+  },
+  {
+   "prompt": "During intense seismic tremors, traditional reinforced concrete",
+   "options": [
+    "often suffers irreversible internal fracturing.",
+    "recovers its original shape spontaneously after ground motion stops.",
+    "bends flexibly without producing any macroscopic cracks.",
+    "generates counteracting inertial forces to stabilize the frame.",
+    "absorbs tensile stress through microscopic polymer fibres."
+   ],
+   "answer": "often suffers irreversible internal fracturing.",
+   "why": "Đoạn D chỉ ra nhược điểm của bê tông cốt thép truyền thống là dễ bị nứt vỡ nội bộ không thể phục hồi (irreversible internal fracturing) khi xảy ra rung chấn dữ dội.",
+   "quote": "Conventional reinforced concrete often suffers irreversible internal fracturing during severe tremors."
+  },
+  {
+   "prompt": "Engineered cementitious composites are distinguished by their ability to",
+   "options": [
+    "bend under extreme tensile stresses without macroscopic cracking.",
+    "withstand fire damage better than any metallic alloy.",
+    "eliminate all seismic energy before it reaches the upper floors.",
+    "slide along curved bearings during low-frequency vibrations.",
+    "replace load-bearing steel reinforcements entirely in foundations."
+   ],
+   "answer": "bend under extreme tensile stresses without macroscopic cracking.",
+   "why": "Đoạn D nêu rõ đặc tính nổi bật của composite xi măng kỹ thuật (ECC) là có thể uốn cong dưới ứng suất kéo cực đại mà không xuất hiện các vết nứt vĩ mô.",
+   "quote": "bend under extreme tensile stresses without macroscopic cracking."
+  },
+  {
+   "prompt": "Superelastic shape-memory alloys like nitinol are notable because they",
+   "options": [
+    "spontaneously recover their initial shape once seismic stresses subside.",
+    "fracture predictably to dissipate kinetic energy in sacrificial zones.",
+    "reduce building construction costs below conventional concrete.",
+    "prevent any movement between interlocking structural joints.",
+    "expand permanently to lock structural columns into place."
+   ],
+   "answer": "spontaneously recover their initial shape once seismic stresses subside.",
+   "why": "Đoạn D khẳng định hợp kim nhớ hình siêu đàn hồi như nitinol có khả năng chịu biến dạng lớn và tự động trở lại hình dạng ban đầu sau khi ứng suất địa chấn qua đi.",
+   "quote": "spontaneously recover their initial shape once seismic stresses subside."
+  },
+  {
+   "prompt": "Utilizing cross-laminated timber in earthquake-resistant construction",
+   "options": [
+    "substantially diminishes the inertial loads generated during ground shaking.",
+    "prevents low-frequency resonance from occurring on soft soil.",
+    "eliminates the need for any dynamic damping devices.",
+    "increases the overall mass of the building's foundation.",
+    "allows the superstructure to glide freely over the terrain."
+   ],
+   "answer": "substantially diminishes the inertial loads generated during ground shaking.",
+   "why": "Đoạn D giải thích rằng gỗ ghép thanh nhiều lớp (CLT) có tỷ lệ độ bền trên khối lượng vượt trội, nhờ đó làm giảm đáng kể tải trọng quán tính sinh ra khi rung lắc.",
+   "quote": "substantially diminishing the inertial loads generated during ground shaking."
+  },
+  {
+   "prompt": "East Asian pagodas have historically resisted collapse because their shinbashira",
+   "options": [
+    "acts as an independent pendulum damping inter-storey drift.",
+    "rigidly anchors every individual floor to the underlying bedrock.",
+    "converts seismic energy into heat through internal hydraulic fluid.",
+    "prevents the wooden structure from twisting or swaying in any direction.",
+    "expands under tension to lock the outer walls together."
+   ],
+   "answer": "acts as an independent pendulum damping inter-storey drift.",
+   "why": "Đoạn E giải thích các ngôi chùa gỗ Đông Á đứng vững qua hàng thế kỷ nhờ cột trung tâm (shinbashira) đóng vai trò như một con lắc độc lập giúp triệt tiêu độ lệch tầng.",
+   "quote": "acts as an independent pendulum damping inter-storey drift."
+  },
+  {
+   "prompt": "Modern building joints that mimic the human spine",
+   "options": [
+    "allow buildings to flex sequentially rather than snap under lateral loads.",
+    "prevent all inter-storey movement during multi-directional shaking.",
+    "require continuous lubrication to maintain structural flexibility.",
+    "are designed to break intentionally to protect the building's core.",
+    "reduce construction expenditures by utilizing synthetic bone materials."
+   ],
+   "answer": "allow buildings to flex sequentially rather than snap under lateral loads.",
+   "why": "Đoạn E mô tả các khớp nối mô phỏng đốt sống người giúp công trình có thể uốn dẻo tuần tự thay vì bị gãy đột ngột dưới tải trọng ngang.",
+   "quote": "allowing buildings to flex sequentially rather than snap under lateral loads."
+  },
+  {
+   "prompt": "Structural columns shaped after bamboo morphology are advantageous because they",
+   "options": [
+    "distribute rotational forces more evenly than uniform cylindrical profiles.",
+    "weigh significantly more than traditional reinforced concrete pillars.",
+    "prevent high-frequency ground acceleration from entering the superstructure.",
+    "eliminate torsional stress by rotating independently of the floor slabs.",
+    "can be constructed exclusively using organic timber materials."
+   ],
+   "answer": "distribute rotational forces more evenly than uniform cylindrical profiles.",
+   "why": "Đoạn E chỉ ra cột rỗng có đốt dựa trên hình thái cây tre giúp phân bổ lực xoắn đều hơn nhiều so với các cột hình trụ đặc đồng nhất.",
+   "quote": "distribute rotational forces more evenly than uniform cylindrical profiles."
+  },
+  {
+   "prompt": "A significant disadvantage of traditional life-safety standards is that they",
+   "options": [
+    "frequently leave structures damaged beyond economic repair.",
+    "fail to prevent the loss of life during moderate tremors.",
+    "prevent occupants from evacuating the building in time.",
+    "require excessive post-disaster structural health monitoring.",
+    "cannot be applied to modern high-rise or mid-rise towers."
+   ],
+   "answer": "frequently leave structures damaged beyond economic repair.",
+   "why": "Đoạn F nêu rõ hạn chế của tiêu chuẩn an toàn tính mạng truyền thống: dù đảm bảo người bên trong sơ tán an toàn, chúng thường khiến công trình bị hư hại nặng đến mức không thể sửa chữa hiệu quả về mặt kinh tế.",
+   "quote": "frequently leave structures damaged beyond economic repair."
+  },
+  {
+   "prompt": "Performance-based seismic design aims to achieve immediate occupancy by",
+   "options": [
+    "restricting plastic deformation to replaceable fuse elements.",
+    "constructing entirely rigid structures that do not deform at all.",
+    "avoiding the installation of costly digital monitoring sensors.",
+    "relying solely on traditional reinforced concrete columns.",
+    "eliminating all maintenance costs throughout a building's lifespan."
+   ],
+   "answer": "restricting plastic deformation to replaceable fuse elements.",
+   "why": "Đoạn F cho thấy tiêu chuẩn thiết kế theo hiệu năng hướng tới mục tiêu cho phép tái sử dụng ngay bằng cách giới hạn biến dạng dẻo trong các cấu kiện cầu chì có thể thay thế.",
+   "quote": "restricting plastic deformation to replaceable fuse elements."
+  }
+ ]
+}

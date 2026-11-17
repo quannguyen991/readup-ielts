@@ -1,0 +1,267 @@
+{
+ "title": "The Political Economy and Global Trade of Coffee",
+ "topic": "coffee and global trade",
+ "context": "A. Coffee's evolution from an indigenous shrub in the Ethiopian highlands into the world’s most traded agricultural commodity highlights the complex dynamics of global commerce. During the colonial era, European powers established extensive monoculture plantations across Latin America and Asia, displacing domestic agrarian systems. Unlike modern deregulated exchanges where prices fluctuate on international futures markets, earlier mercantilist networks operated through state-enforced monopolies designed to extract raw beans for European processing. This model laid the groundwork for contemporary structural disparities, as roasting remained concentrated in consumer nations while agricultural risks stayed localized.\n\nB. Today, commercial trade relies almost entirely on two botanical species: Coffea arabica and Coffea canephora, commonly termed Robusta. Arabica commands substantial price premiums because of its nuanced sensory profile, yet it demands strict climatic parameters, thriving only at higher altitudes with stable temperatures. In contrast, Robusta displays formidable resilience against pests and thermal stress, yielding considerably greater volume per hectare. Consequently, when low-altitude growers face unpredictable weather, economic practicalities often compel them to cultivate Robusta despite its lower market valuation, demonstrating how environmental conditions dictate commercial cultivation choices.\n\nC. The vulnerability of producing nations became acutely visible following the collapse of the International Coffee Agreement’s regulatory framework in 1989. For decades, the pact had stabilized global export volumes through strict national quotas, preventing catastrophic price dips. Once deregulation dismantled these export caps, emerging producers—most notably Vietnam—rapidly scaled up Robusta production by converting vast landscapes into intensive plantations. This sudden influx triggered chronic oversupply across international markets. As an immediate consequence, benchmark commodity prices plunged below the marginal cost of harvesting, forcing millions of unhedged smallholder farmers into profound economic distress.\n\nD. An enduring structural issue within modern coffee trade is the severe asymmetry of value distribution along the supply chain. Although developing nations shoulder the extensive environmental burdens and labour of harvesting, they capture an insignificant fraction of total retail expenditure. Multinational roasting conglomerates and retail chains extract the lion’s share of profits because industrial roasting, packaging, and proprietary branding create far higher margins than primary cultivation. Furthermore, if smallholder cooperatives lack sufficient capital to establish domestic milling facilities, they are forced to export low-value raw green beans rather than refined coffee, perpetuating economic dependency.\n\nE. In response to consumer concerns regarding trade inequities, ethical certification schemes such as Fairtrade and Rainforest Alliance expanded rapidly. These frameworks offer ethical premiums and guaranteed price floors, theoretically shielding small producers from volatile futures exchanges. Nevertheless, comparative field assessments indicate that certification benefits are distributed unevenly. Because the administrative costs of annual audits and compliance fees are steep, larger agricultural estates absorb these overheads far more efficiently than isolated smallholders. Unless small producers form extensive regional federations, the gross returns from certified sales are frequently eroded by the continuous expense of maintaining compliance.\n\nF. Looking forward, anthropogenic climate change threatens to redraw the global geography of coffee production. Climatologists project that up to half of current Arabica-suitable land could become unviable by mid-century, forcing cultivation toward higher elevations and sparking conservation conflicts in protected mountain ecosystems. While laboratory-developed climate-resilient cultivars and sensor-driven irrigation systems offer potential remedies, their adoption remains strictly conditional upon substantial capital liquidity. Therefore, unless international financing programs assist vulnerable agrarian communities, technological modernization will predominantly benefit well-capitalized agribusinesses, exacerbating existing global socioeconomic inequalities.",
+ "questions": [
+  {
+   "prompt": "The transformation of coffee into a major global commodity",
+   "answer": "illustrates the intricate workings of international commerce.",
+   "why": "Đoạn A nêu rõ sự phát triển của cà phê từ một loài cây bản địa thành mặt hàng nông sản giao dịch nhiều nhất thế giới làm nổi bật các động lực phức tạp của thương mại toàn cầu. Lựa chọn nhắc đến suy đoán thị trường tương lai hiện đại là sai ngữ cảnh lịch sử ở câu đầu.",
+   "quote": "highlights the complex dynamics of global commerce",
+   "options": [
+    "resulted directly from modern futures market speculation.",
+    "illustrates the intricate workings of international commerce.",
+    "occurred without disrupting existing agricultural traditions.",
+    "prompted European powers to abandon domestic agrarian practices.",
+    "eliminated financial disparities between growing and roasting countries."
+   ]
+  },
+  {
+   "prompt": "Colonial powers developed extensive monoculture plantations that",
+   "answer": "supplanted traditional local farming practices across multiple continents.",
+   "why": "Đoạn A đề cập rằng các cường quốc thực dân đã lập các đồn điền độc canh rộng lớn khắp Mỹ Latinh và châu Á, thay thế ('displacing') các hệ thống nông nghiệp bản địa.",
+   "quote": "established extensive monoculture plantations across Latin America and Asia, displacing domestic agrarian systems",
+   "options": [
+    "depended primarily on equitable partnerships with indigenous growers.",
+    "prevented raw coffee beans from being transported to European markets.",
+    "supplanted traditional local farming practices across multiple continents.",
+    "failed to generate substantial profits due to climatic volatility.",
+    "focused on developing domestic roasting industries within colonized territories."
+   ]
+  },
+  {
+   "prompt": "Early mercantilist trading frameworks relied on state-backed monopolies which",
+   "answer": "were established to procure raw produce for processing in consumer nations.",
+   "why": "Đoạn A chỉ ra rằng các mạng lưới trọng thương trước đây hoạt động qua các độc quyền do nhà nước thực thi nhằm khai thác hạt thô để đưa về châu Âu chế biến. Các phương án khác nói về việc giá cả thả nổi hay bảo vệ nông dân là sai với bản chất bóc lột của mô hình này.",
+   "quote": "operated through state-enforced monopolies designed to extract raw beans for European processing",
+   "options": [
+    "were established to procure raw produce for processing in consumer nations.",
+    "allowed international prices to float freely according to market demand.",
+    "encouraged the construction of advanced roasting facilities in producing regions.",
+    "shielded local growers from the financial hazards of harvest failures.",
+    "prevented raw coffee exports by prioritizing domestic African consumption."
+   ]
+  },
+  {
+   "prompt": "The superior market prices paid for Arabica are attributable to",
+   "answer": "its subtle flavor characteristics despite its demanding climate requirements.",
+   "why": "Đoạn B khẳng định Arabica hưởng mức giá cao hơn ('price premiums') nhờ hồ sơ cảm quan tinh tế ('nuanced sensory profile') mặc dù đòi hỏi các điều kiện khí hậu khắt khe. Các bẫy về việc nó chống chịu sâu bệnh hay cho năng suất cao thực chất là đặc điểm của Robusta.",
+   "quote": "commands substantial price premiums because of its nuanced sensory profile, yet it demands strict climatic parameters",
+   "options": [
+    "its exceptional resistance to severe temperature shifts.",
+    "its ability to generate much higher harvests per hectare than Robusta.",
+    "its subtle flavor characteristics despite its demanding climate requirements.",
+    "its widespread adaptability to low-altitude coastal farming conditions.",
+    "its total immunity to destructive agricultural pests."
+   ]
+  },
+  {
+   "prompt": "Robusta coffee is characterized by an ability to",
+   "answer": "withstand insect infestations and generate larger crop volumes per hectare.",
+   "why": "Đoạn B chỉ ra Robusta có khả năng phục hồi ấn tượng trước sâu bệnh và sốc nhiệt, đồng thời mang lại sản lượng trên mỗi hecta lớn hơn đáng kể ('yielding considerably greater volume per hectare').",
+   "quote": "displays formidable resilience against pests and thermal stress, yielding considerably greater volume per hectare",
+   "options": [
+    "command higher monetary premiums than delicate Arabica beans.",
+    "prosper exclusively in high-elevation ecosystems with stable temperatures.",
+    "surpass Arabica in complex sensory profiles and refined acidity.",
+    "withstand insect infestations and generate larger crop volumes per hectare.",
+    "decay rapidly when exposed to prolonged periods of thermal stress."
+   ]
+  },
+  {
+   "prompt": "When confronted with unstable weather patterns, farmers at lower elevations",
+   "answer": "are frequently driven by economic realism to plant Robusta instead of Arabica.",
+   "why": "Cuối đoạn B giải thích rằng khi gặp thời tiết khó lường, tính thực tế về kinh tế buộc những người trồng ở vùng trũng phải trồng giống Robusta dù giá bán thấp hơn. Lựa chọn chuyển lên vùng bảo tồn núi cao là suy diễn vô căn cứ.",
+   "quote": "economic practicalities often compel them to cultivate Robusta despite its lower market valuation",
+   "options": [
+    "are frequently driven by economic realism to plant Robusta instead of Arabica.",
+    "relocate their entire operations to mountainous conservation territories.",
+    "demand increased government subsidies to offset their total crop losses.",
+    "refuse to sell their harvests until international market prices rebound.",
+    "switch exclusively to cultivating indigenous shrubs for regional markets."
+   ]
+  },
+  {
+   "prompt": "Before its termination, the International Coffee Agreement had",
+   "answer": "maintained market stability by assigning strict export limits to member states.",
+   "why": "Đoạn C nêu rõ trong nhiều thập kỷ, hiệp định này đã ổn định khối lượng xuất khẩu toàn cầu thông qua hạn ngạch quốc gia nghiêm ngặt, từ đó ngăn chặn sự sụt giá thảm khốc.",
+   "quote": "stabilized global export volumes through strict national quotas, preventing catastrophic price dips",
+   "options": [
+    "encouraged unlimited production of Robusta across emerging economies.",
+    "penalized consumer countries that operated industrial roasting facilities.",
+    "maintained market stability by assigning strict export limits to member states.",
+    "guaranteed that smallholder farmers received the majority of retail profits.",
+    "mandated the transition toward certified organic agricultural practices."
+   ]
+  },
+  {
+   "prompt": "The removal of regulatory export ceilings prompted Vietnam to",
+   "answer": "dramatically expand Robusta cultivation across large converted land areas.",
+   "why": "Đoạn C trình bày rằng khi trần xuất khẩu bị bãi bỏ, Việt Nam đã nhanh chóng mở rộng quy mô sản xuất Robusta bằng cách chuyển đổi những vùng đất rộng lớn thành các đồn điền chuyên canh tập trung.",
+   "quote": "rapidly scaled up Robusta production by converting vast landscapes into intensive plantations",
+   "options": [
+    "focus solely on producing high-grade Arabica at elevated altitudes.",
+    "enforce strict environmental protections against industrial monocultures.",
+    "dramatically expand Robusta cultivation across large converted land areas.",
+    "restrict export shipments in order to drive up benchmark world prices.",
+    "subsidize smallholder cooperatives to process green beans domestically."
+   ]
+  },
+  {
+   "prompt": "The massive increase in global coffee output led directly to",
+   "answer": "a prolonged state of excess supply in international commodity markets.",
+   "why": "Đoạn C giải thích dòng cung tăng đột ngột này đã gây ra tình trạng dư thừa nguồn cung kéo dài ('chronic oversupply') trên các thị trường quốc tế.",
+   "quote": "triggered chronic oversupply across international markets",
+   "options": [
+    "immediate shortages of raw beans in major roasting facilities.",
+    "a global ban on Robusta imports by European consumer nations.",
+    "the restoration of historical trade quotas by producing countries.",
+    "a prolonged state of excess supply in international commodity markets.",
+    "widespread diversification of agricultural land into other cash crops."
+   ]
+  },
+  {
+   "prompt": "When benchmark commodity prices fell below production expenses, smallholders",
+   "answer": "endured severe financial hardship because their yields were unprotected by hedging.",
+   "why": "Cuối đoạn C nói rõ giá giảm sâu dưới chi phí thu hoạch đã đẩy hàng triệu nông hộ nhỏ không có công cụ phòng hộ tài chính ('unhedged') vào cảnh kiệt quệ kinh tế cùng cực.",
+   "quote": "forcing millions of unhedged smallholder farmers into profound economic distress",
+   "options": [
+    "successfully demanded that international roasters absorb their operational losses.",
+    "endured severe financial hardship because their yields were unprotected by hedging.",
+    "formed multinational alliances to renegotiate the terms of global futures trading.",
+    "relocated their processing operations to industrialized consumer countries.",
+    "benefited from automatic compensatory payouts from multilateral agencies."
+   ]
+  },
+  {
+   "prompt": "Developing nations that bear the heavy ecological and physical costs of farming",
+   "answer": "receive only a tiny proportion of the final revenues generated by coffee sales.",
+   "why": "Đoạn D nêu rằng dù các nước đang phát triển gánh chịu chi phí môi trường và lao động thu hoạch nặng nề, họ chỉ thu về một tỷ lệ không đáng kể ('insignificant fraction') trong tổng chi tiêu bán lẻ.",
+   "quote": "they capture an insignificant fraction of total retail expenditure",
+   "options": [
+    "dominate the lucrative sectors of industrial processing and commercial roasting.",
+    "receive only a tiny proportion of the final revenues generated by coffee sales.",
+    "retain enough capital to insulate their rural populations from market volatility.",
+    "impose substantial export tariffs on multinational packaging corporations.",
+    "control the majority of retail branding strategies in consumer markets."
+   ]
+  },
+  {
+   "prompt": "Commercial roasters and retailers secure the greatest share of financial returns because",
+   "answer": "post-harvest industrial processing and marketing yield substantially greater profit margins.",
+   "why": "Đoạn D chỉ ra các tập đoàn rang xay và bán lẻ chiếm phần lớn lợi nhuận vì các khâu chế biến công nghiệp, đóng gói và xây dựng thương hiệu tạo ra biên lợi nhuận cao hơn nhiều so với canh tác thô.",
+   "quote": "industrial roasting, packaging, and proprietary branding create far higher margins than primary cultivation",
+   "options": [
+    "post-harvest industrial processing and marketing yield substantially greater profit margins.",
+    "they assume all agricultural hazards associated with changing weather patterns.",
+    "they are required by law to reinvest their gross revenues into producing regions.",
+    "international trade treaties exempt them from all corporate taxation.",
+    "consumers refuse to purchase raw coffee beans that have not been certified."
+   ]
+  },
+  {
+   "prompt": "Smallholder cooperatives that cannot afford their own processing plants",
+   "answer": "must ship unprocessed green beans abroad, reinforcing their economic reliance.",
+   "why": "Cuối đoạn D giải thích nếu các hợp tác xã thiếu vốn xây dựng cơ sở chế biến nội địa, họ buộc phải xuất khẩu hạt cà phê nhân xanh giá trị thấp thay vì cà phê thành phẩm, kéo dài tình trạng phụ thuộc kinh tế.",
+   "quote": "forced to export low-value raw green beans rather than refined coffee, perpetuating economic dependency",
+   "options": [
+    "receive premium valuations from multinational roasting conglomerates.",
+    "bypass international futures markets to sell directly to local consumers.",
+    "must ship unprocessed green beans abroad, reinforcing their economic reliance.",
+    "are exempted from environmental standards imposed by consumer nations.",
+    "shift their collective focus entirely toward high-altitude organic Arabica."
+   ]
+  },
+  {
+   "prompt": "Ethical certification programs are primarily intended to",
+   "answer": "protect small-scale growers against volatile market swings via minimum prices.",
+   "why": "Đoạn E giải thích các chương trình chứng nhận đưa ra mức giá sàn và phụ phí đạo đức, về mặt lý thuyết giúp che chắn các nhà sản xuất nhỏ trước những biến động khó lường của sàn giao dịch kỳ hạn.",
+   "quote": "shielding small producers from volatile futures exchanges",
+   "options": [
+    "protect small-scale growers against volatile market swings via minimum prices.",
+    "eliminate the need for third-party auditing and regular inspections.",
+    "replace traditional futures exchanges with centralized state monopolies.",
+    "compel multinational roasters to relocate packaging facilities to the tropics.",
+    "restrict international trade exclusively to certified organic Arabica beans."
+   ]
+  },
+  {
+   "prompt": "Empirical evaluations of ethical certification initiatives demonstrate that",
+   "answer": "the financial and social advantages are not shared equally among producers.",
+   "why": "Đoạn E chỉ ra các đánh giá thực địa cho thấy lợi ích của chứng nhận được phân bổ không đồng đều ('distributed unevenly'). Các phương án nói người tiêu dùng không còn quan tâm hay trang trại lớn bị cấm tham gia đều sai.",
+   "quote": "indicate that certification benefits are distributed unevenly",
+   "options": [
+    "participating farms experience immediate decreases in overall crop yields.",
+    "the financial and social advantages are not shared equally among producers.",
+    "unregulated smallholders consistently earn higher profits than certified estates.",
+    "consumer interest in ethically sourced commodities has completely vanished.",
+    "large corporate farms are prohibited from entering fair-trade frameworks."
+   ]
+  },
+  {
+   "prompt": "Substantial auditing expenses and recurring compliance charges",
+   "answer": "can be handled much more easily by sizable estates than by individual farmers.",
+   "why": "Đoạn E giải thích chi phí kiểm toán và tuân thủ rất đắt đỏ, do đó các trang trại quy mô lớn hấp thụ các chi phí gián tiếp này hiệu quả hơn nhiều so với nông hộ nhỏ lẻ.",
+   "quote": "larger agricultural estates absorb these overheads far more efficiently than isolated smallholders",
+   "options": [
+    "are fully reimbursed by ethical certification bodies upon verification.",
+    "prevent well-funded corporate plantations from qualifying for fair-trade labels.",
+    "can be handled much more easily by sizable estates than by individual farmers.",
+    "dissuade roasters from advertising ethically sourced products to consumers.",
+    "are calculated according to the fluctuating prices of international futures markets."
+   ]
+  },
+  {
+   "prompt": "Without establishing broader collective federations, smallholders find that",
+   "answer": "their earnings from certified crops are often consumed by recurring administrative fees.",
+   "why": "Cuối đoạn E nêu rõ nếu không lập liên minh khu vực, doanh thu gộp từ việc bán sản phẩm chứng nhận sẽ liên tục bị bào mòn bởi chi phí duy trì việc tuân thủ các tiêu chuẩn.",
+   "quote": "the gross returns from certified sales are frequently eroded by the continuous expense of maintaining compliance",
+   "options": [
+    "their earnings from certified crops are often consumed by recurring administrative fees.",
+    "they are forbidden from using modern agricultural machinery on their land.",
+    "international buyers refuse to purchase any of their non-certified output.",
+    "they are forced to abandon coffee cultivation in favor of food staples.",
+    "climate change impacts their farms much more severely than organized estates."
+   ]
+  },
+  {
+   "prompt": "The future migration of coffee farms to higher altitudes is expected to",
+   "answer": "cause ecological disputes within environmentally sensitive mountain areas.",
+   "why": "Đoạn F dự báo biến đổi khí hậu buộc vùng canh tác dịch chuyển lên cao hơn, từ đó làm bùng phát các xung đột bảo tồn tại các hệ sinh thái miền núi được bảo vệ.",
+   "quote": "sparking conservation conflicts in protected mountain ecosystems",
+   "options": [
+    "dramatically lower production costs for smallholder farming families.",
+    "eliminate the need for developing heat-tolerant genetic cultivars.",
+    "cause ecological disputes within environmentally sensitive mountain areas.",
+    "reverse historical value chain imbalances between roasters and growers.",
+    "stabilize benchmark prices across all international trading platforms."
+   ]
+  },
+  {
+   "prompt": "Deploying high-tech adaptations like drought-resistant hybrids and smart irrigation",
+   "answer": "depends entirely on whether agricultural producers have access to sufficient capital.",
+   "why": "Đoạn F khẳng định việc ứng dụng giống chống chịu khí hậu và hệ thống tưới thông minh hoàn toàn phụ thuộc vào điều kiện tiên quyết là khả năng thanh khoản vốn đáng kể ('substantial capital liquidity').",
+   "quote": "their adoption remains strictly conditional upon substantial capital liquidity",
+   "options": [
+    "depends entirely on whether agricultural producers have access to sufficient capital.",
+    "has already eradicated the threat posed by rising tropical temperatures.",
+    "guarantees immediate admission into premium fair-trade certification networks.",
+    "can be achieved without requiring external financial investment.",
+    "is currently restricted to smallholder cooperatives in developing countries."
+   ]
+  },
+  {
+   "prompt": "If global funding mechanisms fail to support resource-poor farmers, new technologies",
+   "answer": "will mainly advantage wealthy corporate enterprises and widen social divides.",
+   "why": "Câu cuối đoạn F cảnh báo nếu thiếu các chương trình tài chính hỗ trợ cộng đồng nông nghiệp dễ bị tổn thương, hiện đại hóa công nghệ sẽ chủ yếu làm lợi cho các doanh nghiệp nông nghiệp nhiều vốn và làm trầm trọng thêm bất bình đẳng kinh tế xã hội.",
+   "quote": "technological modernization will predominantly benefit well-capitalized agribusinesses, exacerbating existing global socioeconomic inequalities",
+   "options": [
+    "will become obsolete as climatic conditions continue to deteriorate.",
+    "will force multinational roasters to relinquish control of branding.",
+    "will lead to an immediate global ban on high-altitude Arabica farming.",
+    "will enable smallholders to unilaterally dictate international export prices.",
+    "will mainly advantage wealthy corporate enterprises and widen social divides."
+   ]
+  }
+ ]
+}

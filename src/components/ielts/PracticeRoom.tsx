@@ -5,21 +5,21 @@ import { ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
 import { ReadingShell } from '@/components/exam/ReadingLayout';
 import { readLS, writeLS, type Page, type Grade } from './ComputerDeliveredExamRoom';
 
-/** Phông Be Vietnam Pro của Band 9, chọn theo độ đậm cũ của từng chữ. */
+/** Phông Inter của Band 9, chọn theo độ đậm cũ của từng chữ. */
 function fontFor(weight: unknown): string {
   switch (String(weight)) {
     case '900':
     case '800':
-      return 'BeVietnamPro_800ExtraBold';
+      return 'Inter_700Bold';
     case '700':
     case 'bold':
-      return 'BeVietnamPro_700Bold';
+      return 'Inter_700Bold';
     case '600':
-      return 'BeVietnamPro_600SemiBold';
+      return 'Inter_600SemiBold';
     case '500':
-      return 'BeVietnamPro_500Medium';
+      return 'Inter_500Medium';
     default:
-      return 'BeVietnamPro_400Regular';
+      return 'Inter_400Regular';
   }
 }
 

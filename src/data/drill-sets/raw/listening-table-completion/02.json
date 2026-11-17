@@ -1,0 +1,127 @@
+{
+ "title": "Bridge Lifespans and Structural Durability",
+ "topic": "the lifespan of bridges (set 2)",
+ "context": "Narrator: You will hear an engineering tutor, Dr Aris Thorne, discussing a bridge lifespan field module with his teaching assistant Fiona Miller, followed by his lecture comparing the durability and lifespan of various structural bridge types.\nFiona: Good morning, Dr Thorne. Have we finalised the logistical itinerary for next month’s postgraduate field study on bridge longevity?\nDr Thorne: Yes, Fiona, everything has been cleared by the university safety board and the local council. We'll be taking the civil engineering cohort down to the River Ouse basin to inspect several multi-span structures that have experienced significant seasonal flooding.\nFiona: That sounds promising. What benchmark design life are the students expected to assess for our regional bridge database?\nDr Thorne: They’ll be evaluating structures originally commissioned with a target lifespan of 120 years, though many have already surpassed that figure through continuous retrofitting and deck strengthening.\nFiona: Understood. And what non-destructive testing kit should our technical officer prepare in the inspection van for tomorrow?\nDr Thorne: Ensure they pack the high-precision ultrasonic scanner for subsurface concrete integrity assessments, alongside the usual digital callipers and surface thermometers.\nFiona: Right, I will verify that checklist with the lab manager. What specific structural vulnerability should students concentrate on during the on-site survey?\nDr Thorne: Given the high-amplitude vibration from local commuter trains, fatigue cracking represents their primary concern during the pier evaluations, especially near steel bearing plates.\nFiona: That will provide excellent data for their coursework. What is the maximum student capacity per field vehicle for health and safety compliance?\nDr Thorne: The transport safety coordinator confirmed a ceiling of 14 students per minibus, so we must adhere strictly to that limitation to avoid overcrowding.\nFiona: Noted. And what about the final project submission date for their structural health portfolios?\nDr Thorne: All completed portfolios must be submitted to the online portal by the 18th November. Late submissions will face the standard academic deduction.\nFiona: Perfect. I'll make sure the students receive these instructions before your lecture begins.\nNarrator: Dr Thorne then delivers his lecture on bridge lifespans and structural preservation methods.\nDr Thorne: Good afternoon, everyone. In today's session, we are going to explore how material choices and structural topologies directly determine the lifespan of modern and historic bridges.\nTo begin, let us look at traditional masonry arch bridges. Built from locally sourced granite or limestone, these classical structures have proven remarkably durable, frequently offering an operational service life of over 200 years. Their principal vulnerability does not lie in the stone blocks themselves, but rather in mortar washout, which occurs when percolating groundwater leaches out the binding matrix between the voussoirs. To remedy this issue without compromising the historic fabric, conservation specialists now inject lime grouting under moderate pressure to stabilize the interior core.\nNext, we must consider timber trestle bridges, which were heavily deployed throughout the nineteenth century and remain in service across many freight routes. Under typical operational loads, these timber assemblies yield an average working life of roughly 40 years. Their primary environmental vulnerability is fungal decay, which develops inside the damp internal grain of the pilings. While industrial coal-tar creosote was traditionally applied, modern environmental regulations require operators to coat structural members with an advanced creosote alternative derived from bio-based polymers.\nOur third category involves steel truss bridges, renowned for their high strength-to-weight ratio. Under standard highway design codes, engineers plan for an operational design life of 100 years. However, fluctuating dynamic loads and cyclic stresses frequently induce micro-fissuring around welded joints, making these connections exceptionally prone to sudden failure. To protect the vast exposed surface area from severe oxidation, modern maintenance regimes rely on thermal spraying using molten zinc and aluminium rather than conventional solvent-based paints.\nMoving on to reinforced concrete beam bridges, which proliferated during the postwar highway building boom. Most highway authorities planned these installations around a projected design life of 75 years. The most destructive mechanism degrading these decks is chloride ingress, largely stemming from winter de-icing chemicals penetrating through porous cover concrete to corrode the internal rebar. To detect this sub-surface electrochemical reaction before delamination occurs, highway agencies now install embedded sensors directly inside the casting to provide real-time corrosion telemetry.\nFinally, let us examine modern cable-stayed bridges, celebrated for their architectural elegance and long-span efficiency. While the massive concrete pylons are engineered to endure for centuries, the sensitive tension cables possess a design life of only 35 years before dynamic fatigue and corrosion necessitate total replacement. To defer this costly intervention, bridge operators now fit automated dehumidification systems inside the anchorage enclosures, continuously circulating dry air to halt corrosion.",
+ "questions": [
+  {
+   "prompt": "Field Study Details | Survey location: ____ basin",
+   "answer": "River Ouse",
+   "why": "TS. Thorne xác nhận địa điểm đưa sinh viên đi khảo sát là lưu vực 'River Ouse'.",
+   "quote": "We'll be taking the civil engineering cohort down to the River Ouse basin to inspect several multi-span structures that have experienced significant seasonal flooding."
+  },
+  {
+   "prompt": "Field Study Details | Baseline bridge design lifespan: ____",
+   "answer": "120 years",
+   "why": "TS. Thorne nêu rõ chỉ số tuổi thọ thiết kế mục tiêu ban đầu để đánh giá là '120 years'.",
+   "quote": "They’ll be evaluating structures originally commissioned with a target lifespan of 120 years, though many have already surpassed that figure"
+  },
+  {
+   "prompt": "Field Study Details | Diagnostic testing device required: ____",
+   "answer": "ultrasonic scanner",
+   "why": "Thiết bị kiểm tra không phá hủy được yêu cầu mang theo là 'ultrasonic scanner' (máy quét siêu âm).",
+   "quote": "Ensure they pack the high-precision ultrasonic scanner for subsurface concrete integrity assessments, alongside the usual digital callipers"
+  },
+  {
+   "prompt": "Field Study Details | Main structural defect to examine: ____",
+   "answer": "fatigue cracking",
+   "why": "Do rung lắc từ tàu hỏa, khiếm khuyết kết cấu chính mà sinh viên cần tập trung khảo sát là 'fatigue cracking' (nứt do mỏi).",
+   "quote": "fatigue cracking represents their primary concern during the pier evaluations, especially near steel bearing plates."
+  },
+  {
+   "prompt": "Field Study Details | Maximum capacity per minibus: ____",
+   "answer": "14 | 14 students",
+   "why": "Người điều phối an toàn giới hạn tối đa '14' (hoặc '14 students') trên mỗi xe buýt nhỏ.",
+   "quote": "The transport safety coordinator confirmed a ceiling of 14 students per minibus, so we must adhere strictly to that limitation"
+  },
+  {
+   "prompt": "Field Study Details | Final portfolio submission deadline: ____",
+   "answer": "18th November | November 18th",
+   "why": "Hạn chót nộp báo cáo tổng hợp trực tuyến là ngày '18th November'.",
+   "quote": "All completed portfolios must be submitted to the online portal by the 18th November."
+  },
+  {
+   "prompt": "Masonry Arch Bridges | Typical operational service life: over ____",
+   "answer": "200 years",
+   "why": "Cầu vòm đá xây có tuổi thọ khai thác thực tế thường đạt trên '200 years'.",
+   "quote": "frequently offering an operational service life of over 200 years."
+  },
+  {
+   "prompt": "Masonry Arch Bridges | Primary cause of structural deterioration: ____",
+   "answer": "mortar washout",
+   "why": "Yếu điểm chính của cầu vòm đá là hiện tượng 'mortar washout' (rửa trôi vữa) do nước ngầm rò rỉ.",
+   "quote": "Their principal vulnerability does not lie in the stone blocks themselves, but rather in mortar washout, which occurs when percolating groundwater"
+  },
+  {
+   "prompt": "Masonry Arch Bridges | Modern stabilization method: injection of ____",
+   "answer": "lime grouting",
+   "why": "Phương pháp gia cố bảo tồn hiện đại là bơm 'lime grouting' (vữa vôi lỏng) vào các khoảng rỗng.",
+   "quote": "conservation specialists now inject lime grouting under moderate pressure to stabilize the interior core."
+  },
+  {
+   "prompt": "Timber Trestle Bridges | Average working life: roughly ____",
+   "answer": "40 years",
+   "why": "Cầu giàn gỗ dùng cho đường sắt có tuổi thọ hoạt động trung bình khoảng '40 years'.",
+   "quote": "these timber assemblies yield an average working life of roughly 40 years."
+  },
+  {
+   "prompt": "Timber Trestle Bridges | Major environmental threat: ____",
+   "answer": "fungal decay",
+   "why": "Mối đe dọa môi trường nguy hiểm nhất đối với cọc gỗ chịu lực là 'fungal decay' (mục do nấm).",
+   "quote": "Their primary environmental vulnerability is fungal decay, which develops inside the damp internal grain of the pilings."
+  },
+  {
+   "prompt": "Timber Trestle Bridges | Protective coating used today: a bio-based ____",
+   "answer": "creosote alternative",
+   "why": "Thay vì chất độc hại cũ, quy định hiện nay đòi hỏi dùng 'creosote alternative' (chất thay thế creosote).",
+   "quote": "modern environmental regulations require operators to coat structural members with an advanced creosote alternative derived from bio-based polymers."
+  },
+  {
+   "prompt": "Steel Truss Bridges | Standard highway design lifespan: ____",
+   "answer": "100 years",
+   "why": "Tiêu chuẩn thiết kế cầu giàn thép đường cao tốc quy định tuổi thọ vận hành là '100 years'.",
+   "quote": "engineers plan for an operational design life of 100 years."
+  },
+  {
+   "prompt": "Steel Truss Bridges | Most vulnerable areas under cyclic stress: ____",
+   "answer": "welded joints",
+   "why": "Ứng suất tuần hoàn gây ra các vết nứt vi mô tập trung ở các 'welded joints' (mối hàn liên kết).",
+   "quote": "cyclic stresses frequently induce micro-fissuring around welded joints, making these connections exceptionally prone to sudden failure."
+  },
+  {
+   "prompt": "Steel Truss Bridges | Long-term corrosion protection: ____ with zinc and aluminium",
+   "answer": "thermal spraying",
+   "why": "Kỹ thuật bảo vệ bề mặt thép chống oxy hóa lâu dài là 'thermal spraying' (phun phủ nhiệt).",
+   "quote": "modern maintenance regimes rely on thermal spraying using molten zinc and aluminium rather than conventional solvent-based paints."
+  },
+  {
+   "prompt": "Reinforced Concrete Beam Bridges | Projected original design life: ____",
+   "answer": "75 years",
+   "why": "Các cơ quan quản lý đường bộ thiết kế các cầu dầm bê tông cốt thép với tuổi thọ dự kiến là '75 years'.",
+   "quote": "highway authorities planned these installations around a projected design life of 75 years."
+  },
+  {
+   "prompt": "Reinforced Concrete Beam Bridges | Primary chemical degradation process: ____",
+   "answer": "chloride ingress",
+   "why": "Cơ chế phá hủy nguy hiểm nhất do muối làm tan băng xâm nhập vào bê tông là 'chloride ingress' (sự xâm thực ion clorua).",
+   "quote": "The most destructive mechanism degrading these decks is chloride ingress, largely stemming from winter de-icing chemicals"
+  },
+  {
+   "prompt": "Reinforced Concrete Beam Bridges | Diagnostic monitoring tool: ____ placed inside concrete",
+   "answer": "embedded sensors",
+   "why": "Để giám sát ăn mòn trước khi nứt vỡ, người ta lắp đặt 'embedded sensors' (cảm biến gắn chìm) bên trong bê tông.",
+   "quote": "highway agencies now install embedded sensors directly inside the casting to provide real-time corrosion telemetry."
+  },
+  {
+   "prompt": "Cable-Stayed Bridges | Design life of high-tensile stay cables: ____",
+   "answer": "35 years",
+   "why": "Dù trụ tháp bê tông bền hàng thế kỷ, các dây văng căng lực chỉ có tuổi thọ thiết kế là '35 years'.",
+   "quote": "the sensitive tension cables possess a design life of only 35 years before dynamic fatigue and corrosion necessitate total replacement."
+  },
+  {
+   "prompt": "Cable-Stayed Bridges | Lifespan extension measure: installation of ____ in anchorages",
+   "answer": "dehumidification systems",
+   "why": "Để ngăn ăn mòn và kéo dài tuổi thọ dây cáp, người ta gắn 'dehumidification systems' (hệ thống hút ẩm) trong hốc neo cáp.",
+   "quote": "bridge operators now fit automated dehumidification systems inside the anchorage enclosures, continuously circulating dry air to halt corrosion."
+  }
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "title": "Volunteer Tourism Programme Orientation",
+ "topic": "Volunteer tourism briefing and field guidelines",
+ "context": "Narrator: You will hear a briefing about an international volunteer tourism programme.\nMartin: Good morning everyone, and welcome to our annual induction seminar for prospective overseas volunteers. My name is Martin Cross, and before we begin our detailed presentation, I need to confirm a few individual registration details. Elena, let's start with your file.\nElena: Thanks Martin. I have my paperwork right here.\nMartin: Perfect. Looking at your confirmation slip, your assigned registration code is VT-482, and your chosen placement is marine conservation in Costa Rica, correct?\nElena: Yes, that is right. I originally thought about wildlife rescue last month, but decided on the coast.\nMartin: Excellent. Your placement is scheduled to begin on 14th October. Please ensure you arrive in the capital at least two days early for airport pickup and orientation.\nElena: Got it. And regarding accommodation, am I in the shared cabins?\nMartin: Actually, for this specific project, all volunteers stay in a family homestay so you can fully immerse yourself in daily traditions and local cuisine.\nElena: Wonderful! I brought my police background check, but did you receive my medical clearance as well?\nMartin: Yes, your physician emailed that over yesterday, so your file is almost complete. You just need to settle the remaining balance after deducting your initial deposit of 250 pounds.\nElena: Perfect, I will handle that online directly this afternoon.\nMartin: Now, let's move on to the core briefing. Volunteer tourism has expanded remarkably over recent years, but our organisation insists on an ethical, responsible approach. Our primary objective across every single overseas destination is sustainable development, rather than superficial, short-term charity work. We work in direct partnership with local community councils to prevent our presence from creating economic dependency among local residents.\nElena: How do you prepare us before we fly out to the site?\nMartin: Well, three weeks prior to departure, every participant is required to complete an online cultural module. This interactive training ensures you understand local social etiquette, non-verbal communication styles, and community expectations. Once on site, your structured working commitment is strictly capped at 25 hours per week, leaving you ample personal time for rest, study, and regional travel.\nNow, let us discuss the practical aspects of the physical work. For those assigned to the rural infrastructure team, your initial practical task involves digging irrigation channels to support organic farming cooperatives during the dry season. The terrain can be quite rough, so while heavy tools are stored and provided locally, we supply everyone with durable leather gloves for essential hand safety.\nElena: Who will be supervising our daily assignments on the ground?\nMartin: In Costa Rica, your on-site operations manager will be Mr Bandara, who has successfully overseen community initiatives for over a decade. He will meet you every morning at eight to outline the schedule.\nNext, ethical conduct is vital, especially regarding personal privacy. If you wish to take photographs of local people, particularly children, or their private homes, you must always obtain written consent first. Casual verbal permission is simply not sufficient under our child protection and privacy guidelines.\nDuring weekends, you are completely free to join recreational trips. Our most popular guided excursion is a trek into the cloud forest, led by certified local naturalists who know the flora and fauna intimately.\nHealth and safety remains our paramount concern throughout your journey. Should anyone fall ill or suffer a minor injury, the primary emergency contact point is the community clinic situated right near the town square. For daily health maintenance, tap water is not potable in rural quarters, so we urge you to carry a reliable filtration bottle at all times rather than buying disposable plastic.\nIn the evenings, social integration is warmly encouraged. You can take part in informal Spanish language practice held at the village hall twice a week, where villagers and volunteers exchange stories.\nFinally, measuring our collective impact is crucial for long-term project grant funding. Towards the final fortnight of your stay, you will assist researchers by conducting household interviews to record tangible changes in living standards. Afterwards, during your formal debriefing session back at headquarters, you will submit a reflective journal documenting your personal development, ethical dilemmas, and observations. Does anyone have any initial questions so far?",
+ "questions": [
+  {
+   "prompt": "The briefing is taking place during an annual ____ for new overseas volunteers.",
+   "answer": "induction seminar",
+   "why": "Martin chào đón mọi người đến tham dự sự kiện 'annual induction seminar' (hội thảo định hướng thường niên) cho các tình nguyện viên mới.",
+   "quote": "welcome to our annual induction seminar for prospective overseas volunteers."
+  },
+  {
+   "prompt": "Elena's chosen volunteer placement will focus on ____ in Costa Rica.",
+   "answer": "marine conservation",
+   "why": "Martin xác nhận vị trí Elena đã chọn là 'marine conservation'. Bẫy: 'wildlife rescue' là lựa chọn trước đây của cô nhưng đã bị đổi.",
+   "quote": "your chosen placement is marine conservation in Costa Rica, correct?"
+  },
+  {
+   "prompt": "The starting date of Elena's volunteer placement is ____.",
+   "answer": "14th October | October 14th | 14 October | October 14",
+   "why": "Martin nêu rõ lịch bắt đầu của đợt tình nguyện là vào ngày '14th October'.",
+   "quote": "Your placement is scheduled to begin on 14th October."
+  },
+  {
+   "prompt": "Volunteers on this project will be accommodated in a ____ to experience local culture.",
+   "answer": "family homestay",
+   "why": "Martin giải thích rằng tình nguyện viên của dự án này sẽ ở tại 'family homestay', bác bỏ suy nghĩ của Elena về 'shared cabins'.",
+   "quote": "for this specific project, all volunteers stay in a family homestay so you can fully immerse yourself"
+  },
+  {
+   "prompt": "Elena's physician has already sent her ____ directly to the organisation.",
+   "answer": "medical clearance",
+   "why": "Martin xác nhận bác sĩ đã gửi 'medical clearance' (giấy khám sức khỏe/xác nhận y tế) của Elena vào ngày hôm qua. Bẫy: 'police background check' do chính Elena tự mang theo chứ không phải do bác sĩ gửi.",
+   "quote": "did you receive my medical clearance as well? Martin: Yes, your physician emailed that over yesterday"
+  },
+  {
+   "prompt": "The initial deposit already paid by Elena amounts to ____.",
+   "answer": "250 pounds | £250 | 250",
+   "why": "Martin thông báo số tiền cọc ban đầu được khấu trừ khỏi số dư là '250 pounds'.",
+   "quote": "settle the remaining balance after deducting your initial deposit of 250 pounds."
+  },
+  {
+   "prompt": "The main goal of all the organisation's volunteer destinations is ____.",
+   "answer": "sustainable development",
+   "why": "Martin khẳng định mục tiêu cốt lõi của tổ chức ở mọi địa điểm là 'sustainable development', trái ngược với từ thiện ngắn hạn.",
+   "quote": "Our primary objective across every single overseas destination is sustainable development, rather than superficial"
+  },
+  {
+   "prompt": "Projects are designed in partnership with councils to avoid creating ____ among local people.",
+   "answer": "economic dependency",
+   "why": "Martin nhấn mạnh việc cộng tác với hội đồng địa phương nhằm ngăn chặn việc tạo ra 'economic dependency' (sự phụ thuộc kinh tế).",
+   "quote": "prevent our presence from creating economic dependency among local residents."
+  },
+  {
+   "prompt": "Volunteers must finish an ____ three weeks before they travel overseas.",
+   "answer": "online cultural module",
+   "why": "Người tham gia bắt buộc phải hoàn thành một 'online cultural module' ba tuần trước ngày lên đường.",
+   "quote": "every participant is required to complete an online cultural module."
+  },
+  {
+   "prompt": "The scheduled working time for volunteers is limited to a maximum of ____ each week.",
+   "answer": "25 hours",
+   "why": "Thời gian làm việc theo kế hoạch của tình nguyện viên bị giới hạn tối đa ở mức '25 hours' một tuần.",
+   "quote": "your structured working commitment is strictly capped at 25 hours per week"
+  },
+  {
+   "prompt": "The infrastructure team's first assignment will involve digging ____ for organic farms.",
+   "answer": "irrigation channels",
+   "why": "Nhiệm vụ thực tế đầu tiên của nhóm cơ sở hạ tầng là đào 'irrigation channels' (các kênh mương tưới tiêu).",
+   "quote": "your initial practical task involves digging irrigation channels to support organic farming cooperatives"
+  },
+  {
+   "prompt": "To protect their hands, volunteers will be provided with durable ____.",
+   "answer": "leather gloves",
+   "why": "Martin thông báo tổ chức cung cấp 'leather gloves' (găng tay da) để đảm bảo an toàn cho tay khi lao động.",
+   "quote": "we supply everyone with durable leather gloves for essential hand safety."
+  },
+  {
+   "prompt": "The on-site operations manager overseeing the volunteers will be ____.",
+   "answer": "Mr Bandara | Bandara",
+   "why": "Người quản lý trực tiếp tại Costa Rica giám sát các hoạt động của nhóm là 'Mr Bandara'.",
+   "quote": "your on-site operations manager will be Mr Bandara, who has successfully overseen community initiatives"
+  },
+  {
+   "prompt": "Volunteers are strictly required to secure ____ before taking photographs of residents.",
+   "answer": "written consent",
+   "why": "Quy định nêu rõ phải có 'written consent' (sự đồng ý bằng văn bản) trước khi chụp ảnh; sự đồng ý bằng lời nói (verbal permission) không được chấp nhận.",
+   "quote": "you must always obtain written consent first. Casual verbal permission is simply not sufficient"
+  },
+  {
+   "prompt": "The most popular weekend trip offered is a trek into the ____.",
+   "answer": "cloud forest",
+   "why": "Chuyến dã ngoại có hướng dẫn viên được yêu thích nhất vào cuối tuần là chuyến đi bộ vào 'cloud forest' (rừng mây).",
+   "quote": "Our most popular guided excursion is a trek into the cloud forest, led by certified local"
+  },
+  {
+   "prompt": "In the event of illness or minor injury, volunteers should go to the ____.",
+   "answer": "community clinic",
+   "why": "Martin nêu rõ điểm liên lạc y tế khẩn cấp ban đầu là 'community clinic' (phòng khám cộng đồng).",
+   "quote": "the primary emergency contact point is the community clinic situated right near the town square."
+  },
+  {
+   "prompt": "Because tap water is unsafe to drink, volunteers are urged to carry a ____.",
+   "answer": "filtration bottle | reliable filtration bottle",
+   "why": "Do nước máy không uống trực tiếp được, tình nguyện viên được khuyên luôn mang theo 'filtration bottle' (bình lọc nước).",
+   "quote": "we urge you to carry a reliable filtration bottle at all times rather than buying disposable"
+  },
+  {
+   "prompt": "Volunteers can practice their Spanish twice a week at the ____.",
+   "answer": "village hall",
+   "why": "Các buổi luyện nói tiếng Tây Ban Nha không chính thức được tổ chức định kỳ tại 'village hall' (nhà văn hóa/hội trường làng).",
+   "quote": "Spanish language practice held at the village hall twice a week, where villagers and"
+  },
+  {
+   "prompt": "Researchers will be assisted by volunteers conducting ____ to assess changes in living standards.",
+   "answer": "household interviews",
+   "why": "Tình nguyện viên sẽ hỗ trợ các nhà nghiên cứu thông qua việc thực hiện 'household interviews' (các cuộc phỏng vấn hộ gia đình).",
+   "quote": "you will assist researchers by conducting household interviews to record tangible changes in living"
+  },
+  {
+   "prompt": "At the debriefing session, participants are expected to hand in a ____.",
+   "answer": "reflective journal",
+   "why": "Trong buổi tổng kết tại trụ sở, tình nguyện viên phải nộp lại một 'reflective journal' (nhật ký tự suy ngẫm ghi lại trải nghiệm).",
+   "quote": "you will submit a reflective journal documenting your personal development, ethical dilemmas, and"
+  }
+ ]
+}

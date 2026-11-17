@@ -1,0 +1,121 @@
+{
+ "title": "Ice Cores and Climate History Tour",
+ "topic": "ice cores and climate history (set 5)",
+ "context": "Narrator: You will hear the research coordinator welcoming a group of university students to the Polar Archive Facility, followed by an introductory lecture on ice core paleoclimatology.\nCoordinator: Welcome to the National Polar Archive, everyone. It is wonderful to host your university group today. Before Dr Henderson begins our tour of the examination suites, I have a few essential safety protocols. The central repository is maintained at minus twenty-eight degrees Celsius, so each of you must collect an insulated parka from locker room B. Please make sure you zip it up fully. Also, remember to log your visitor badge at the security turnstile before stepping into the airlock chamber. Right, Dr Henderson, the floor is yours.\nDr Henderson: Thank you, Marcus. Good morning, students. Today we are exploring how cylindrical ice cores provide an unparalleled archive of our planet's past atmosphere and climate systems. When our field teams travel to polar ice sheets, deep drilling operations rely on an electro-mechanical drill fitted with a hollow cutting head to extract long cylinders of ice, typically spanning several meters each during individual runs. In polar regions with perpetual freezing, fresh precipitation never completely melts away. Instead, subsequent snowfalls compress earlier layers into an intermediate granular material known as firn. As firn undergoes further compaction over decades, it seals tiny ambient air bubbles, creating a pristine atmospheric capsule that preserves ancient tropospheric gases.\nStudent 1: Excuse me, Dr Henderson, does the gas composition trapped in the ice remain completely unchanged over millennia?\nDr Henderson: Yes, for non-reactive atmospheric gases, it is remarkably well preserved. For example, greenhouse gas trapped within these bubbles allows us to directly quantify past carbon dioxide concentrations over complete glacial cycles. Meanwhile, to deduce ambient temperatures, we rely on stable water isotopes, specifically the ratio of oxygen-18 to oxygen-16. Because molecules containing heavier isotopes condense at slightly higher temperatures, precipitation during colder glacial epochs shows a marked isotopic depletion compared to warmer interglacial periods.\nStudent 2: What about airborne dust or solid contaminants carried over long distances by the wind?\nDr Henderson: Excellent question. The ice also traps atmospheric dust, which originates from remote arid zones. High dust levels in polar layers typically reflect periods of vigorous atmospheric circulation and extensive continental dryness across the globe. In addition, microscopic volcanic ash, technically termed tephra, forms distinct visual markers across the core column. These volcanic layers serve as critical chronohorizons, allowing researchers to synchronize ice records from different polar stations and tie them to oceanic sediment cores. To pinpoint these volcanic episodes quickly without destroying the sample, we use an electrical conductivity detector. This device scans along the smoothed core surface to measure electrical impedance, which spikes whenever acidic fallout is present. For chemical analysis at millimetre resolution, we often apply laser ablation, which vaporizes minuscule amounts of ice and delivers the aerosol directly into an inductively coupled plasma mass spectrometer. Looking at our longest continuous records, the EPICA project at Dome C in Antarctica successfully retrieved ice extending back eight hundred thousand years. In contrast, Greenland cores, such as NGRIP, preserve higher accumulation rates, which revealed rapid climate flickers termed Dansgaard-Oeschger events during the last ice age.\nStudent 1: Is drilling straight down through those enormous ice sheets relatively straightforward?\nDr Henderson: Far from it. Between six hundred and one thousand two hundred meters, ice drillers encounter the brittle ice zone, where high hydrostatic pressure forces air bubbles into clathrate hydrates. In this zone, cores are vulnerable to spontaneous fracturing upon extraction, requiring gentle handling and prolonged relaxation on site. Once cores are retrieved and catalogued, they are packaged inside specialized polyethylene sleeves and laid horizontally inside protective aluminum trays. Even inside cold rooms, we must prevent sublimation, so we maintain relative humidity above ninety percent at all times. Beyond carbon dioxide, analyzing trapped methane offers profound insights, as its global concentrations closely track tropical wetland extent. Furthermore, rare cosmogenic isotopes, particularly beryllium-ten, act as proxies for past solar activity variations and geomagnetic field shifts. Finally, our greatest technical frontier lies near the bedrock, where basal friction and geothermal heat can cause basal melting, potentially distorting the oldest stratigraphy. International teams are currently searching for sites with stagnant basal conditions to recover continuous two-million-year-old ice.",
+ "questions": [
+  {
+   "prompt": "Visitors entering the repository must collect an ____ from locker room B.",
+   "answer": "insulated parka",
+   "why": "Người điều phối Marcus yêu cầu sinh viên phải lấy 'insulated parka' (áo khoác cách nhiệt) từ phòng thay đồ B vì nhiệt độ bên trong kho lưu trữ rất thấp (-28 độ C).",
+   "quote": "each of you must collect an insulated parka from locker room B."
+  },
+  {
+   "prompt": "Before entering the airlock chamber, visitors have to register their ____ at the turnstile.",
+   "answer": "visitor badge",
+   "why": "Marcus nhắc sinh viên phải quẹt hoặc quét 'visitor badge' (thẻ khách tham quan) ở cổng quay an ninh trước khi vào phòng đệm khí.",
+   "quote": "remember to log your visitor badge at the security turnstile before stepping into the airlock chamber."
+  },
+  {
+   "prompt": "Deep drilling is conducted using an electro-mechanical drill with a ____ attached to it.",
+   "answer": "hollow cutting head",
+   "why": "Tiến sĩ Henderson cho biết giàn khoan cơ điện được gắn một 'hollow cutting head' (đầu cắt rỗng) để cắt và lấy các trụ băng dài.",
+   "quote": "drill fitted with a hollow cutting head to extract long cylinders of ice"
+  },
+  {
+   "prompt": "Snow layers are gradually compressed into a granular intermediate substance called ____.",
+   "answer": "firn",
+   "why": "Tuyết rơi tích tụ dần nén các lớp tuyết trước đó thành một vật liệu dạng hạt trung gian có tên gọi là 'firn'.",
+   "quote": "compress earlier layers into an intermediate granular material known as firn."
+  },
+  {
+   "prompt": "When firn compacts further, it encloses small ____ that preserve ancient gases.",
+   "answer": "ambient air bubbles | air bubbles",
+   "why": "Khi tuyết hạt firn tiếp tục bị nén qua nhiều thập kỷ, nó sẽ bịt kín các 'ambient air bubbles' (bọt khí môi trường xung quanh), giữ lại mẫu khí cổ đại.",
+   "quote": "As firn undergoes further compaction over decades, it seals tiny ambient air bubbles, creating a pristine atmospheric capsule"
+  },
+  {
+   "prompt": "Ancient temperatures are determined by calculating the proportion of ____ compared to oxygen-16.",
+   "answer": "oxygen-18",
+   "why": "Để xác định nhiệt độ cổ xưa, các nhà khoa học tính toán tỷ lệ giữa đồng vị 'oxygen-18' và oxygen-16 trong phân tử nước.",
+   "quote": "specifically the ratio of oxygen-18 to oxygen-16."
+  },
+  {
+   "prompt": "Precipitation that fell during colder glacial epochs demonstrates significant ____.",
+   "answer": "isotopic depletion",
+   "why": "Do các đồng vị nặng ngưng tụ sớm hơn ở nhiệt độ ấm hơn, lượng mưa trong các kỷ băng hà lạnh giá biểu hiện sự thiếu hụt đồng vị rõ rệt ('isotopic depletion').",
+   "quote": "precipitation during colder glacial epochs shows a marked isotopic depletion compared to warmer interglacial periods."
+  },
+  {
+   "prompt": "Dust trapped in the ice layers comes from distant ____.",
+   "answer": "arid zones",
+   "why": "Tiến sĩ Henderson giải thích rằng bụi khí quyển bị giữ lại trong băng có nguồn gốc từ các vùng khô hạn xa xôi ('arid zones').",
+   "quote": "traps atmospheric dust, which originates from remote arid zones."
+  },
+  {
+   "prompt": "Layers of volcanic tephra act as essential ____ that allow researchers to match records from different sites.",
+   "answer": "chronohorizons",
+   "why": "Các lớp tro núi lửa (tephra) đóng vai trò là các 'chronohorizons' (mốc ranh giới thời gian) quan trọng để đồng bộ hóa dữ liệu giữa các trạm khác nhau.",
+   "quote": "These volcanic layers serve as critical chronohorizons, allowing researchers to synchronize ice records from different polar stations"
+  },
+  {
+   "prompt": "Volcanic events can be identified quickly and non-destructively by utilizing an ____.",
+   "answer": "electrical conductivity detector",
+   "why": "Để phát hiện nhanh các đợt núi lửa mà không làm hỏng mẫu, nhóm nghiên cứu dùng thiết bị đo độ dẫn điện ('electrical conductivity detector').",
+   "quote": "To pinpoint these volcanic episodes quickly without destroying the sample, we use an electrical conductivity detector."
+  },
+  {
+   "prompt": "The detector identifies a surge in electrical impedance caused by the presence of ____.",
+   "answer": "acidic fallout",
+   "why": "Trở kháng điện của bề mặt băng sẽ tăng vọt mỗi khi có sự xuất hiện của 'acidic fallout' (bụi lắng axit từ hoạt động núi lửa).",
+   "quote": "measure electrical impedance, which spikes whenever acidic fallout is present."
+  },
+  {
+   "prompt": "For fine-scale chemical analysis, a method known as ____ is used to vaporize tiny sections of ice.",
+   "answer": "laser ablation",
+   "why": "Để phân tích hóa học ở độ phân giải milimet, kỹ thuật bốc hơi bằng tia laser ('laser ablation') được dùng để làm bốc hơi một lượng băng cực nhỏ.",
+   "quote": "we often apply laser ablation, which vaporizes minuscule amounts of ice"
+  },
+  {
+   "prompt": "Ice recovered by the EPICA project at Dome C provides climate records dating back ____.",
+   "answer": "800,000 years | eight hundred thousand years",
+   "why": "Lõi băng thu được từ dự án EPICA tại Dome C ở Nam Cực đã ghi lại lịch sử khí hậu lên tới 800.000 năm ('800,000 years').",
+   "quote": "the EPICA project at Dome C in Antarctica successfully retrieved ice extending back eight hundred thousand years."
+  },
+  {
+   "prompt": "Ice cores from Greenland revealed sudden climate variations called ____ during the last ice age.",
+   "answer": "Dansgaard-Oeschger events",
+   "why": "Các lõi băng ở Greenland với tốc độ tích tụ cao đã phát hiện ra các biến động khí hậu nhanh chóng trong kỷ băng hà cuối cùng, gọi là 'Dansgaard-Oeschger events'.",
+   "quote": "which revealed rapid climate flickers termed Dansgaard-Oeschger events during the last ice age."
+  },
+  {
+   "prompt": "Drillers pass through the ____ between depths of 600 and 1,200 meters.",
+   "answer": "brittle ice zone",
+   "why": "Ở độ sâu từ 600 đến 1.200 mét, nhóm khoan gặp phải 'brittle ice zone' (vùng băng giòn), nơi lõi băng rất dễ bị nứt vỡ tự phát do áp suất thủy tĩnh cao.",
+   "quote": "Between six hundred and one thousand two hundred meters, ice drillers encounter the brittle ice zone"
+  },
+  {
+   "prompt": "To prevent sublimation, the facility maintains a relative humidity level greater than ____.",
+   "answer": "90% | 90 percent | ninety percent",
+   "why": "Để tránh hiện tượng thăng hoa làm hao hụt băng, cơ sở duy trì độ ẩm tương đối trên 90% ('ninety percent' / '90%').",
+   "quote": "we must prevent sublimation, so we maintain relative humidity above ninety percent at all times."
+  },
+  {
+   "prompt": "Historical concentrations of trapped methane correspond directly to the past ____.",
+   "answer": "tropical wetland extent",
+   "why": "Hàm lượng khí mê-tan cổ đại bị giữ lại trong bọt khí phản ánh và tương ứng chặt chẽ với diện tích đất ngập nước nhiệt đới ('tropical wetland extent').",
+   "quote": "as its global concentrations closely track tropical wetland extent."
+  },
+  {
+   "prompt": "Past changes in solar activity can be monitored using cosmogenic isotopes such as ____.",
+   "answer": "beryllium-10 | beryllium-ten",
+   "why": "Sự biến thiên hoạt động của mặt trời trong quá khứ được xác định nhờ vào các đồng vị có nguồn gốc từ tia vũ trụ, đặc biệt là 'beryllium-10' (hoặc 'beryllium-ten').",
+   "quote": "rare cosmogenic isotopes, particularly beryllium-ten, act as proxies for past solar activity variations"
+  },
+  {
+   "prompt": "Close to the bedrock, friction combined with geothermal heat can lead to ____.",
+   "answer": "basal melting",
+   "why": "Gần lớp đá nền, ma sát đáy cùng với địa nhiệt có thể gây ra hiện tượng tan chảy đáy ('basal melting'), làm xáo trộn các tầng băng cổ nhất.",
+   "quote": "where basal friction and geothermal heat can cause basal melting, potentially distorting the oldest stratigraphy."
+  }
+ ]
+}

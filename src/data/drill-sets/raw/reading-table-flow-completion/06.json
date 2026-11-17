@@ -1,0 +1,127 @@
+{
+ "title": "Resource Recovery Pipelines in Island Environments",
+ "topic": "recycling in small island nations",
+ "context": "A. Small Island Developing States (SIDS) confront acute waste vulnerabilities, marked by geographic isolation, restricted land, and high import dependence. Traditional landfilling has rapidly exhausted vacant land, prompting archipelagic governments to establish integrated recovery systems. The cycle begins at municipal sorting sheds, where mixed refuse undergoes preliminary manual separation. Trained sorters extract hazardous items, electronic discards, and bulk contaminants before the remaining mass moves along slow-moving conveyor platforms.\n\nB. Following pre-sorting, materials are segregated into three primary streams: rigid polymers, glass containers, and organic matter. Rigid plastics, mainly polyethylene terephthalate (PET) and high-density polyethylene (HDPE), are classified by color and resin code. Glass bottles are diverted into separate holding bunkers to prevent fragmentation, while wet organic discards are isolated to prevent cross-contamination. On isolated atolls lacking road infrastructure, community eco-chambers act as regional hubs, using solar-powered balance scales to log household contributions before inter-island barge transport.\n\nC. The handling of plastics focuses on optimizing freight efficiency for overseas transport, as islands lack domestic remanufacturing mills. In processing bays, bottles undergo label stripping and mechanical washing. Automated rotary blades then granulate cleaned containers into irregular flakes. These plastic fragments pass through hot-wash basins filled with caustic soda to eliminate residual adhesives. Once dried by centrifugal blowers, flakes are compacted by high-pressure baling presses into dense cubic bundles, ready for reverse logistics aboard commercial vessels.\n\nD. Conversely, glass is predominantly repurposed locally due to its prohibitive export weight. Cleaned bottles enter mechanical hammer-mill pulverizers, which grind containers into fine particles known as glass cullet. This material acts as an effective substitute for dredged marine sediment in civic construction. Island engineers blend this cullet into permeable paving blocks and seawall reinforcement mortars. Local glass conversion substantially reduces coastal lagoon sand-mining, protecting vulnerable shorelines from tidal erosion.\n\nE. Organic discards, comprising nearly half of all island municipal waste, undergo biological transformation to curtail methane emissions. Solid food wastes are blended with carbonaceous coconut husks before entering enclosed rotating drum bioreactors. Inside, thermophilic digestion stabilizes the organic matrix over fourteen days. The processed sludge then migrates to outdoor vermiculture beds populated by native earthworm colonies. These worms convert the compost into nutrient-rich bio-humus, which local farming cooperatives utilize for soil enrichment.\n\nF. Financial sustainability for these recovery schemes hinges on legislative frameworks. A mandatory container deposit framework stimulates consumer return rates by levying a refundable environmental fee during maritime importation. Additionally, extended producer responsibility mandates oblige commercial distributors to subsidize maritime transport for exported plastics. Advanced facilities now affix digital tracking tags onto baled exports, granting customs officials real-time verification of consignment destinations and eliminating illegal maritime dumping.",
+ "questions": [
+  {
+   "prompt": "Preliminary sorting | Workers manually take out hazardous goods, ____, and large contaminants.",
+   "answer": "electronic discards",
+   "why": "Đoạn A nêu rõ những người phân loại loại bỏ 'hazardous items, electronic discards, and bulk contaminants'. Từ đồng nghĩa: 'hazardous goods' = 'hazardous items', 'take out' = 'extract'.",
+   "quote": "Trained sorters extract hazardous items, electronic discards, and bulk contaminants before the remaining mass moves along slow-moving conveyor platforms."
+  },
+  {
+   "prompt": "Preliminary sorting | Sorted refuse moves along ____ platforms.",
+   "answer": "slow-moving conveyor",
+   "why": "Đoạn A chỉ ra khối rác còn lại di chuyển dọc theo 'slow-moving conveyor platforms'. Cụm từ cần điền bổ nghĩa cho 'platforms'.",
+   "quote": "before the remaining mass moves along slow-moving conveyor platforms."
+  },
+  {
+   "prompt": "Plastics categorization | Rigid plastics are classified by resin code and ____.",
+   "answer": "color",
+   "why": "Đoạn B chỉ rõ nhựa cứng được phân loại dựa vào 'color and resin code'.",
+   "quote": "Rigid plastics, mainly polyethylene terephthalate (PET) and high-density polyethylene (HDPE), are classified by color and resin code."
+  },
+  {
+   "prompt": "Glass storage | Bottles are placed in distinct ____ to prevent them breaking.",
+   "answer": "holding bunkers",
+   "why": "Đoạn B khẳng định chai thủy tinh được đưa vào 'separate holding bunkers' nhằm tránh vỡ vụn ('prevent fragmentation').",
+   "quote": "Glass bottles are diverted into separate holding bunkers to prevent fragmentation, while wet organic discards are isolated to prevent cross-contamination."
+  },
+  {
+   "prompt": "Remote atoll collection | Isolated islands rely on ____ as regional collection centers.",
+   "answer": "community eco-chambers",
+   "why": "Đoạn B đề cập trên các đảo san hô hẻo lánh không có đường sá, 'community eco-chambers' đóng vai trò là các trung tâm khu vực ('regional hubs').",
+   "quote": "On isolated atolls lacking road infrastructure, community eco-chambers act as regional hubs, using solar-powered balance scales to log household contributions before inter-island barge transport."
+  },
+  {
+   "prompt": "Remote atoll collection | Household deposits are measured on ____.",
+   "answer": "solar-powered balance scales",
+   "why": "Đoạn B ghi nhận việc ghi lại phần đóng góp của các hộ gia đình bằng 'solar-powered balance scales'.",
+   "quote": "community eco-chambers act as regional hubs, using solar-powered balance scales to log household contributions before inter-island barge transport."
+  },
+  {
+   "prompt": "Plastic processing: Step 1 | Bottles undergo label removal and ____ inside processing bays.",
+   "answer": "mechanical washing",
+   "why": "Đoạn C liệt kê hai bước xử lý sơ bộ chai nhựa trong vịnh xử lý là 'label stripping' (gỡ nhãn) và 'mechanical washing'.",
+   "quote": "In processing bays, bottles undergo label stripping and mechanical washing."
+  },
+  {
+   "prompt": "Plastic processing: Step 2 | Units are chopped into pieces by ____.",
+   "answer": "automated rotary blades",
+   "why": "Đoạn C giải thích các lưỡi dao quay tự động ('automated rotary blades') nghiền nhỏ chai nhựa đã làm sạch thành các mảnh nhỏ vỡ vụn ('flakes').",
+   "quote": "Automated rotary blades then granulate cleaned containers into irregular flakes."
+  },
+  {
+   "prompt": "Plastic processing: Step 3 | Adhesive residues are dissolved in wash basins containing ____.",
+   "answer": "caustic soda",
+   "why": "Đoạn C cho biết các mảnh nhựa đi qua các bồn rửa nóng chứa 'caustic soda' để loại bỏ keo dính sót lại ('residual adhesives').",
+   "quote": "These plastic fragments pass through hot-wash basins filled with caustic soda to eliminate residual adhesives."
+  },
+  {
+   "prompt": "Plastic processing: Step 4 | Plastic pieces are dried using ____.",
+   "answer": "centrifugal blowers",
+   "why": "Đoạn C ghi rõ các mảnh nhựa sau khi rửa được làm khô bằng 'centrifugal blowers' (quạt thổi ly tâm).",
+   "quote": "Once dried by centrifugal blowers, flakes are compacted by high-pressure baling presses into dense cubic bundles, ready for reverse logistics aboard commercial vessels."
+  },
+  {
+   "prompt": "Plastic processing: Step 5 | Dense bundles are formed by ____.",
+   "answer": "high-pressure baling presses",
+   "why": "Đoạn C chỉ ra rằng các mảnh nhựa được nén thành các kiện khối đặc bởi 'high-pressure baling presses'.",
+   "quote": "flakes are compacted by high-pressure baling presses into dense cubic bundles, ready for reverse logistics aboard commercial vessels."
+  },
+  {
+   "prompt": "Plastic processing: Step 6 | Bundled plastics are exported via ____ on commercial vessels.",
+   "answer": "reverse logistics",
+   "why": "Đoạn C nêu rõ các kiện nhựa sẵn sàng cho hoạt động 'reverse logistics' trên các tàu hàng thương mại quay về.",
+   "quote": "dense cubic bundles, ready for reverse logistics aboard commercial vessels."
+  },
+  {
+   "prompt": "Local glass reprocessing | Glass is pulverized into powder using ____.",
+   "answer": "mechanical hammer-mill pulverizers",
+   "why": "Đoạn D giải thích chai thủy tinh được đưa vào 'mechanical hammer-mill pulverizers' để nghiền nát thành hạt mịn.",
+   "quote": "Cleaned bottles enter mechanical hammer-mill pulverizers, which grind containers into fine particles known as glass cullet."
+  },
+  {
+   "prompt": "Local glass reprocessing | Pulverized glass yields a product called ____.",
+   "answer": "glass cullet",
+   "why": "Đoạn D nêu tên vật liệu hạt mịn sau khi nghiền thủy tinh là 'glass cullet'.",
+   "quote": "grind containers into fine particles known as glass cullet."
+  },
+  {
+   "prompt": "Construction usage | The recycled cullet replaces ____ in civic building projects.",
+   "answer": "dredged marine sediment",
+   "why": "Đoạn D khẳng định vật liệu này hoạt động như một chất thay thế hữu hiệu cho 'dredged marine sediment' trong ngành xây dựng đô thị.",
+   "quote": "This material acts as an effective substitute for dredged marine sediment in civic construction."
+  },
+  {
+   "prompt": "Environmental gain | Repurposing glass reduces local ____ in coastal lagoons.",
+   "answer": "lagoon sand-mining",
+   "why": "Đoạn D chỉ rõ việc chuyển đổi thủy tinh giúp giảm đáng kể hoạt động 'coastal lagoon sand-mining' (khai thác cát đầm phá ven biển).",
+   "quote": "Local glass conversion substantially reduces coastal lagoon sand-mining, protecting vulnerable shorelines from tidal erosion."
+  },
+  {
+   "prompt": "Organic waste processing: Phase 1 | Food refuse is mixed with ____ to supply carbon.",
+   "answer": "coconut husks",
+   "why": "Đoạn E nêu chất thải thực phẩm được trộn cùng vỏ dừa giàu cacbon ('carbonaceous coconut husks').",
+   "quote": "Solid food wastes are blended with carbonaceous coconut husks before entering enclosed rotating drum bioreactors."
+  },
+  {
+   "prompt": "Organic waste processing: Phase 2 | Initial breakdown occurs within sealed ____.",
+   "answer": "rotating drum bioreactors | enclosed rotating drum bioreactors",
+   "why": "Đoạn E nêu rõ hỗn hợp đi vào 'enclosed rotating drum bioreactors' (thùng phản ứng sinh học quay khép kín) để ổn định trong 14 ngày.",
+   "quote": "Solid food wastes are blended with carbonaceous coconut husks before entering enclosed rotating drum bioreactors."
+  },
+  {
+   "prompt": "Organic waste processing: Phase 3 | Vermiculture beds house ____ to convert the compost.",
+   "answer": "native earthworm colonies",
+   "why": "Đoạn E cho thấy bùn thải chuyển sang các luống nuôi trùn chứa các đàn giun bản địa ('native earthworm colonies') để tạo mùn hữu cơ.",
+   "quote": "The processed sludge then migrates to outdoor vermiculture beds populated by native earthworm colonies."
+  },
+  {
+   "prompt": "Policy & oversight | Outbound plastic bales are tracked using ____ to prevent illicit dumping.",
+   "answer": "digital tracking tags",
+   "why": "Đoạn F khẳng định các cơ sở gắn 'digital tracking tags' lên các kiện hàng xuất khẩu để hải quan giám sát và ngăn chặn xả thải trái phép.",
+   "quote": "Advanced facilities now affix digital tracking tags onto baled exports, granting customs officials real-time verification of consignment destinations and eliminating illegal maritime dumping."
+  }
+ ]
+}

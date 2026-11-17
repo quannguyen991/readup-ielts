@@ -1,0 +1,127 @@
+{
+ "title": "The Quest for Precision: A History of Chronometry",
+ "topic": "the history of timekeeping (set 4)",
+ "context": "A. For centuries, the inability to calculate longitude at sea caused catastrophic maritime disasters, notably the Scilly naval disaster of 1707, which claimed four British warships and roughly 1,400 sailors. In response, the British Parliament passed the Longitude Act in July 1714. This legislation established the Board of Longitude and offered a prize of £20,000 for any method determining longitude within thirty nautical miles after a six-week voyage. While astronomers advocated lunar distance observations, horologists sought mechanical clocks capable of maintaining accuracy despite rolling swells and fluctuating temperatures.\n\nB. A self-taught Yorkshire carpenter named John Harrison took up the challenge, devoting decades to perfecting marine timekeepers. After completing his bulky H1 machine in 1735, Harrison realized smaller mechanisms offered superior stability. His breakthrough arrived in 1759 with the H4, a pocket-watch-sized device encased in silver that incorporated a high-frequency balance wheel and diamond pallets. During a transatlantic trial to Jamaica aboard HMS Deptford in 1761, monitored by Harrison’s son William, the H4 lost merely 5.1 seconds over eighty-one days. Despite opposition from Astronomer Royal Nevil Maskelyne, King George III intervened, ensuring Harrison received his monetary reward in 1773.\n\nC. By the mid-nineteenth century, the expansion of steam locomotion necessitated unprecedented chronological uniformity across land networks. Historically, each municipality observed local solar time based on the sun's zenith, creating chaotic scheduling discrepancies. In November 1840, the Great Western Railway became the first enterprise to mandate a singular standard, adopting Greenwich Mean Time across its tracks. Across the Atlantic, American railroad lines operated under more than fifty conflicting regional times until November 18, 1883, known as \"The Day of Two Noons.\" Guided by railroad organizer William F. Allen, railway authorities instituted four standardized continental time zones.\n\nD. The proliferation of the electric telegraph in the 1850s enabled instantaneous transmission of time signals over vast distances. In August 1852, Astronomer Royal George Airy instituted an electric clock network at Greenwich, transmitting hourly pulses to London's telegraph exchange and triggering time-guns in ports such as Newcastle. Global consensus soon followed; in October 1884, delegates from twenty-five nations gathered at the International Meridian Conference in Washington, D.C. They selected the Royal Observatory at Greenwich as the prime meridian for longitude and the universal zero-point for worldwide solar day calculations.\n\nE. Mechanical regulators were eventually superseded by electronic resonators harnessing the piezoelectric properties of quartz. In October 1927, telecommunications engineer Warren Marrison, alongside J.W. Horton at Bell Telephone Laboratories, developed the first quartz clock. By applying alternating currents to a cut quartz crystal, the mineral vibrated at a stable frequency of 100 kilohertz. These crystalline timepieces eliminated friction errors and thermal expansion problems inherent in metal pendulums, allowing astronomical observatories to detect subtle irregularities in the Earth's rotational speed for the first time.\n\nF. The ultimate leap in precision occurred with quantum standards. In 1949, American physicist Harold Lyons constructed the earliest molecular clock utilizing ammonia at the National Bureau of Standards. However, practical atomic precision arrived in June 1955 when Louis Essen and Jack Parry built the first caesium beam clock at the National Physical Laboratory in Teddington. Their device tracked the microwave resonance frequency of caesium-133 atoms, measuring exactly 9,192,631,770 cycles per second. Consequently, the 13th General Conference on Weights and Measures redefined the SI second in 1967 based on this atomic vibration, severing timekeeping from astronomical movements.",
+ "questions": [
+  {
+   "prompt": "Which maritime disaster in 1707 led British authorities to seek improved longitude calculations?",
+   "answer": "Scilly naval disaster",
+   "why": "Đoạn A nêu rõ thảm họa chìm tàu năm 1707 thúc đẩy nỗ lực tìm kiếm giải pháp đo kinh độ là 'Scilly naval disaster'.",
+   "quote": "notably the Scilly naval disaster of 1707, which claimed four British warships"
+  },
+  {
+   "prompt": "How many sailors lost their lives during the 1707 naval disaster?",
+   "answer": "roughly 1,400 | 1,400",
+   "why": "Đoạn A ghi nhận thảm họa này đã cướp đi sinh mạng của khoảng 1.400 thủy thủ ('roughly 1,400 sailors').",
+   "quote": "claimed four British warships and roughly 1,400 sailors."
+  },
+  {
+   "prompt": "What official body was created following the passage of the 1714 Longitude Act?",
+   "answer": "Board of Longitude",
+   "why": "Đoạn A chỉ ra rằng đạo luật Longitude Act năm 1714 đã thành lập cơ quan 'Board of Longitude' để thẩm định và trao thưởng.",
+   "quote": "This legislation established the Board of Longitude and offered a prize of £20,000"
+  },
+  {
+   "prompt": "Which alternative celestial approach did astronomers support for calculating longitude?",
+   "answer": "lunar distance observations",
+   "why": "Đoạn A đối lập phương pháp đồng hồ cơ học với phương pháp quan sát thiên văn được các nhà thiên văn học ủng hộ là 'lunar distance observations'.",
+   "quote": "While astronomers advocated lunar distance observations, horologists sought mechanical clocks capable of maintaining accuracy"
+  },
+  {
+   "prompt": "In what year did John Harrison construct his first timekeeping device, the H1?",
+   "answer": "1735",
+   "why": "Đoạn B xác nhận Harrison hoàn thành cỗ máy đo thời gian H1 đầu tiên vào năm 1735.",
+   "quote": "After completing his bulky H1 machine in 1735, Harrison realized smaller mechanisms offered superior stability."
+  },
+  {
+   "prompt": "Which material formed the outer casing of the H4 timekeeper?",
+   "answer": "silver",
+   "why": "Đoạn B mô tả chiếc đồng hồ H4 được bọc bằng bạc ('encased in silver').",
+   "quote": "the H4, a pocket-watch-sized device encased in silver that incorporated a high-frequency balance wheel"
+  },
+  {
+   "prompt": "Which vessel transported the H4 clock during its 1761 transatlantic trial?",
+   "answer": "HMS Deptford | Deptford",
+   "why": "Đoạn B nêu rõ chuyến thử nghiệm xuyên Đại Tây Dương tới Jamaica được tiến hành trên tàu 'HMS Deptford'.",
+   "quote": "transatlantic trial to Jamaica aboard HMS Deptford in 1761, monitored by Harrison’s son William"
+  },
+  {
+   "prompt": "Who was the Astronomer Royal that resisted John Harrison’s achievement?",
+   "answer": "Nevil Maskelyne",
+   "why": "Đoạn B cho biết người phản đối thành tựu của Harrison là Nhà thiên văn Hoàng gia Nevil Maskelyne.",
+   "quote": "Despite opposition from Astronomer Royal Nevil Maskelyne, King George III intervened"
+  },
+  {
+   "prompt": "What mode of transport necessitated chronological uniformity across land networks?",
+   "answer": "steam locomotion",
+   "why": "Đoạn C giải thích sự bùng nổ của giao thông đường sắt/đầu máy hơi nước ('steam locomotion') đã đòi hỏi sự đồng bộ giờ giấc trên đất liền.",
+   "quote": "the expansion of steam locomotion necessitated unprecedented chronological uniformity across land networks."
+  },
+  {
+   "prompt": "Which company was the first to implement Greenwich Mean Time throughout its lines?",
+   "answer": "Great Western Railway",
+   "why": "Đoạn C xác nhận 'Great Western Railway' là đơn vị đầu tiên quy định áp dụng giờ GMT trên toàn bộ hệ thống vào tháng 11 năm 1840.",
+   "quote": "In November 1840, the Great Western Railway became the first enterprise to mandate a singular standard, adopting Greenwich Mean Time across its tracks."
+  },
+  {
+   "prompt": "How many conflicting regional times were used by North American rail systems before standardization?",
+   "answer": "more than fifty | fifty",
+   "why": "Đoạn C nêu rõ trước khi chuẩn hóa múi giờ vào năm 1883, các tuyến đường sắt Bắc Mỹ hoạt động dựa trên hơn 50 múi giờ địa phương ('more than fifty').",
+   "quote": "American railroad lines operated under more than fifty conflicting regional times until November 18, 1883"
+  },
+  {
+   "prompt": "Who coordinated the establishment of four standard time zones in North America?",
+   "answer": "William F. Allen",
+   "why": "Đoạn C nhắc đến 'William F. Allen' là người tổ chức ngành đường sắt đã chỉ đạo thiết lập 4 múi giờ tiêu chuẩn ở Bắc Mỹ.",
+   "quote": "Guided by railroad organizer William F. Allen, railway authorities instituted four standardized continental time zones."
+  },
+  {
+   "prompt": "Which port city had time-guns triggered by signals from the Greenwich observatory?",
+   "answer": "Newcastle",
+   "why": "Đoạn D nêu ví dụ về cảng Newcastle là nơi có súng báo giờ được kích hoạt tự động qua tín hiệu điện từ Greenwich.",
+   "quote": "transmitting hourly pulses to London's telegraph exchange and triggering time-guns in ports such as Newcastle."
+  },
+  {
+   "prompt": "How many countries participated in the 1884 International Meridian Conference?",
+   "answer": "twenty-five | 25",
+   "why": "Đoạn D cho biết đại biểu từ 25 quốc gia ('twenty-five') đã tham gia hội nghị kinh tuyến quốc tế tại Washington, D.C.",
+   "quote": "in October 1884, delegates from twenty-five nations gathered at the International Meridian Conference in Washington, D.C."
+  },
+  {
+   "prompt": "What global status was assigned to the Royal Observatory at Greenwich in 1884?",
+   "answer": "prime meridian",
+   "why": "Đoạn D khẳng định Đài thiên văn Greenwich được chọn làm kinh tuyến gốc ('prime meridian') cho toàn thế giới.",
+   "quote": "They selected the Royal Observatory at Greenwich as the prime meridian for longitude and the universal zero-point"
+  },
+  {
+   "prompt": "Who collaborated with J.W. Horton at Bell Telephone Laboratories to invent the quartz clock?",
+   "answer": "Warren Marrison",
+   "why": "Đoạn E nêu rõ kỹ sư viễn thông Warren Marrison đã cùng J.W. Horton chế tạo ra chiếc đồng hồ thạch anh đầu tiên vào năm 1927.",
+   "quote": "telecommunications engineer Warren Marrison, alongside J.W. Horton at Bell Telephone Laboratories, developed the first quartz clock."
+  },
+  {
+   "prompt": "At what frequency did the quartz crystal vibrate in the 1927 timepiece?",
+   "answer": "100 kilohertz",
+   "why": "Đoạn E xác nhận tinh thể thạch anh dao động ở tần số ổn định 100 kilohertz.",
+   "quote": "By applying alternating currents to a cut quartz crystal, the mineral vibrated at a stable frequency of 100 kilohertz."
+  },
+  {
+   "prompt": "What traditional clock parts caused thermal expansion issues that quartz resonators solved?",
+   "answer": "metal pendulums",
+   "why": "Đoạn E giải thích đồng hồ thạch anh đã khắc phục được lỗi giãn nở nhiệt vốn có ở các con lắc kim loại ('metal pendulums').",
+   "quote": "eliminated friction errors and thermal expansion problems inherent in metal pendulums, allowing astronomical observatories"
+  },
+  {
+   "prompt": "What chemical substance did Harold Lyons use to create the first molecular clock in 1949?",
+   "answer": "ammonia",
+   "why": "Đoạn F chỉ rõ cỗ máy đồng hồ phân tử đầu tiên năm 1949 của Harold Lyons sử dụng phân tử amoniac ('ammonia').",
+   "quote": "Harold Lyons constructed the earliest molecular clock utilizing ammonia at the National Bureau of Standards."
+  },
+  {
+   "prompt": "In what English town was the first caesium beam clock constructed in 1955?",
+   "answer": "Teddington",
+   "why": "Đoạn F nêu địa điểm chế tạo chiếc đồng hồ chùm tia caesium đầu tiên là tại Teddington (nơi đặt Phòng thí nghiệm Vật lý Quốc gia).",
+   "quote": "built the first caesium beam clock at the National Physical Laboratory in Teddington."
+  }
+ ]
+}

@@ -1,0 +1,134 @@
+{
+ "title": "The Vanishing Voices: Perspectives on Global Language Loss",
+ "topic": "language extinction (set 3)",
+ "context": "A. The accelerating disappearance of minority idioms represents an irreversible intellectual catastrophe. As global trade expands, dominant tongues subsume regional speech, placing roughly half of humanity's 7,000 languages at risk of silence. Dr Alistair Vance, a computational linguist, has quantified this attrition through predictive algorithms. Vance asserts that linguistic extinction currently outpaces biological species loss by a factor of three. Furthermore, he warns that modern search engine architectures actively accelerate this decay because web crawlers prioritize content generated in only a handful of dominant languages. Vance contends that without automated translation protocols engineered for non-standardized syntax, digital exclusion will inevitably condemn unrecorded speech varieties to total erasure.\n\nB. While Vance tracks computational patterns, Dr Elena Rostova examines the crisis through an anthropological lens, highlighting the irreplaceable environmental knowledge embedded within vulnerable tongues. Rostova observes that indigenous taxonomies categorize local flora and fauna with empirical precision that modern science cannot replicate. Her field investigations reveal that the death of a dialect obliterates centuries of botanical pharmacology that cannot survive translation into major tongues. Rostova maintains that idioms serve as intellectual blueprints for regional ecosystems, arguing that ecological conservation is indivisible from the survival of indigenous linguistic systems.\n\nC. Socioeconomic coercion constitutes another decisive driver of linguistic decline, an issue analyzed by sociolinguist Professor Kwame Osei. Osei argues that language abandonment is rarely voluntary; instead, it is driven by formal educational curricula that stigmatize ancestral tongues as obstacles to prosperity. His research shows that rural families suppress mother tongues at home to ensure children acquire national languages necessary for urban jobs. Osei asserts that economic centralization creates structural pressures that make bilingualism seem economically unviable for impoverished families. Consequently, he posits that legal recognition remains ineffective unless state authorities subsidize rural communities to mitigate the financial penalties of retaining ancestral speech.\n\nD. Focusing on internal processes, Dr Siobhan Gallagher investigates the cognitive ramifications of language loss. Gallagher's neuroimaging experiments indicate that speakers of tongues utilizing absolute directional markers possess superior spatial memory compared to monolinguals reliant on relative concepts like \"left\" and \"right.\" She claims that grammatical diversity fosters unique mental pathways, warning that linguistic homogenization will diminish the human brain's problem-solving flexibility. Gallagher also discovered that regular use of typologically rare grammatical structures boosts neuroplasticity, offering older adults greater resilience against cognitive decline. She insists that linguistic preservation directly safeguards human cognitive diversity.\n\nE. Grassroots intervention is essential to halt these losses, according to field lexicographer Dr Marcus Thorne. Thorne rejects passive archiving by outside researchers, arguing that static audio repositories do nothing to foster intergenerational transmission. Instead, he champions community-led orthography design, wherein indigenous elders and youths collaborate to create intuitive writing systems. Thorne’s fieldwork demonstrates that when local communities develop their own educational primers and mobile recording tools, youth engagement rises significantly. He maintains that revitalisation succeeds only when speakers hold complete ownership over their verbal heritage rather than depending on external academic patrons.\n\nF. Together, these complementary perspectives demonstrate that combating linguistic homogenization requires diverse approaches. Vance's work exposes how automated internet algorithms disadvantage low-resource languages, while Rostova links speech loss directly to the destruction of environmental knowledge. Gallagher provides biological urgency by linking syntactic variety to cognitive resilience, and Osei demonstrates how urban economic realities compel parents to abandon heritage tongues. Finally, Thorne shows that sustainable recovery depends on grassroots technological and educational autonomy. Addressing this crisis requires recognizing language as an ecosystem, a socioeconomic condition, a cognitive asset, and an ancestral inheritance.",
+ "options": [
+  "A. Dr Alistair Vance",
+  "B. Dr Elena Rostova",
+  "C. Professor Kwame Osei",
+  "D. Dr Siobhan Gallagher",
+  "E. Dr Marcus Thorne"
+ ],
+ "questions": [
+  {
+   "prompt": "Parents in non-urban areas intentionally avoid speaking native dialects with their children to help them secure city-based employment.",
+   "answer": "C. Professor Kwame Osei",
+   "why": "Kwame Osei chỉ ra rằng các gia đình nông thôn chủ động không nói tiếng mẹ đẻ ở nhà để con cái thông thạo ngôn ngữ quốc gia phục vụ cho việc làm tại đô thị. Các nhà nghiên cứu khác không bàn về động cơ kinh tế gia đình đối với việc chuyển đổi ngôn ngữ này.",
+   "quote": "rural families suppress mother tongues at home to ensure children acquire national languages necessary for urban jobs."
+  },
+  {
+   "prompt": "The rate at which spoken idioms are disappearing exceeds the rate of species decline in nature.",
+   "answer": "A. Dr Alistair Vance",
+   "why": "Alistair Vance là người so sánh tốc độ tuyệt chủng của ngôn ngữ và khẳng định nó nhanh gấp ba lần tốc độ tuyệt chủng sinh học. Nhận định này mang tính định lượng tính toán chứ không thuộc về nhân học hay nhận thức luận.",
+   "quote": "Vance asserts that linguistic extinction currently outpaces biological species loss by a factor of three."
+  },
+  {
+   "prompt": "Effective preservation involves partnerships between older and younger community members to develop practical spelling systems.",
+   "answer": "E. Dr Marcus Thorne",
+   "why": "Marcus Thorne ủng hộ việc thế hệ người già và thanh thiếu niên bản địa cùng hợp tác để thiết kế hệ thống chữ viết thực tế. Ông tập trung vào sự tự chủ và tham gia của cộng đồng cơ sở thay vì nghiên cứu thụ động từ bên ngoài.",
+   "quote": "indigenous elders and youths collaborate to create intuitive writing systems."
+  },
+  {
+   "prompt": "Native naming systems classify regional plants and animals with a degree of accuracy unmatched by modern scientific methods.",
+   "answer": "B. Dr Elena Rostova",
+   "why": "Elena Rostova quan sát thấy hệ thống phân loại bản địa ghi chép động thực vật với độ chính xác thực nghiệm cao mà khoa học hiện đại không thể sao chép. Bẫy có thể là Thorne vì ông cũng làm việc với người bản địa, nhưng Rostova mới là người nghiên cứu tri thức sinh thái học.",
+   "quote": "indigenous taxonomies categorize local flora and fauna with empirical precision that modern science cannot replicate."
+  },
+  {
+   "prompt": "Individuals who speak idioms using cardinal directions show better memory for physical locations than those using terms based on their own viewpoint.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Siobhan Gallagher dùng thí nghiệm thần kinh chứng minh người dùng ngôn ngữ có tọa độ tuyệt đối sở hữu trí nhớ không gian tốt hơn người dựa vào các từ tương đối như trái/phải. Đây là nghiên cứu về chức năng não bộ và nhận thức.",
+   "quote": "speakers of tongues utilizing absolute directional markers possess superior spatial memory compared to monolinguals reliant on relative concepts like \"left\" and \"right.\""
+  },
+  {
+   "prompt": "Online indexing systems contribute to language loss by giving preference to widely spoken tongues.",
+   "answer": "A. Dr Alistair Vance",
+   "why": "Alistair Vance phân tích việc các công cụ tìm kiếm trực tuyến ưu tiên ngôn ngữ phổ biến và làm trầm trọng thêm sự biến mất của các tiếng thiểu số. Điều này liên quan trực tiếp đến chuyên môn tính toán ngôn ngữ của ông.",
+   "quote": "modern search engine architectures actively accelerate this decay because web crawlers prioritize content generated in only a handful of dominant languages."
+  },
+  {
+   "prompt": "The concentration of economic activity in major centers makes retaining two languages appear financially impractical for poorer households.",
+   "answer": "C. Professor Kwame Osei",
+   "why": "Kwame Osei giải thích rằng sự tập trung kinh tế tạo áp lực khiến các gia đình nghèo thấy việc duy trì song ngữ là không khả thi về mặt tài chính. Các chuyên gia khác không phân tích cơ cấu kinh tế tập trung.",
+   "quote": "economic centralization creates structural pressures that make bilingualism seem economically unviable for impoverished families."
+  },
+  {
+   "prompt": "Simply storing audio recordings created by external academics fails to encourage the passage of a language across generations.",
+   "answer": "E. Dr Marcus Thorne",
+   "why": "Marcus Thorne phê phán việc lưu trữ tài liệu thụ động bởi học giả bên ngoài vì các kho âm thanh này không giúp ích cho việc truyền dạy ngôn ngữ giữa các thế hệ.",
+   "quote": "static audio repositories do nothing to foster intergenerational transmission."
+  },
+  {
+   "prompt": "Critical traditional knowledge regarding herbal medicines is irretrievably lost when a speech variety dies out.",
+   "answer": "B. Dr Elena Rostova",
+   "why": "Elena Rostova nhấn mạnh rằng khi một ngôn ngữ biến mất, kiến thức dược lý thực vật học được tích lũy qua nhiều thế kỷ cũng sẽ bị tiêu hủy hoàn toàn.",
+   "quote": "the death of a dialect obliterates centuries of botanical pharmacology that cannot survive translation into major tongues."
+  },
+  {
+   "prompt": "A reduction in the variety of world grammars is likely to impair our general capacity for flexible problem-solving.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Siobhan Gallagher cảnh báo sự suy giảm tính đa dạng ngữ pháp sẽ làm giảm tính linh hoạt trong giải quyết vấn đề của não bộ con người.",
+   "quote": "linguistic homogenization will diminish the human brain's problem-solving flexibility."
+  },
+  {
+   "prompt": "Automated web mechanisms put languages with fewer recorded resources at an unfair disadvantage.",
+   "answer": "A. Dr Alistair Vance",
+   "why": "Alistair Vance chỉ ra rằng các thuật toán tự động trên mạng internet tạo ra bất lợi lớn cho các ngôn ngữ nghèo tài nguyên dữ liệu.",
+   "quote": "Vance's work exposes how automated internet algorithms disadvantage low-resource languages"
+  },
+  {
+   "prompt": "Giving up a native language is seldom a free choice, as formal schooling often depicts heritage speech as a barrier to advancement.",
+   "answer": "C. Professor Kwame Osei",
+   "why": "Kwame Osei lập luận rằng việc từ bỏ tiếng mẹ đẻ xuất phát từ chương trình giáo dục chính quy vốn kỳ thị các ngôn ngữ tổ tiên là rào cản đối với sự thịnh vượng.",
+   "quote": "language abandonment is rarely voluntary; instead, it is driven by formal educational curricula that stigmatize ancestral tongues as obstacles to prosperity."
+  },
+  {
+   "prompt": "Younger generations participate far more enthusiastically when educational texts and digital voice tools are produced locally.",
+   "answer": "E. Dr Marcus Thorne",
+   "why": "Marcus Thorne nhận thấy giới trẻ tham gia hào hứng hơn hẳn khi chính cộng đồng bản địa tự phát triển sách giáo khoa và công cụ ghi âm kỹ thuật số.",
+   "quote": "when local communities develop their own educational primers and mobile recording tools, youth engagement rises significantly."
+  },
+  {
+   "prompt": "The protection of natural environments is deeply intertwined with the preservation of native languages.",
+   "answer": "B. Dr Elena Rostova",
+   "why": "Elena Rostova khẳng định việc bảo tồn sinh thái và đa dạng sinh học không thể tách rời khỏi sự sinh tồn của các hệ thống ngôn ngữ bản địa.",
+   "quote": "ecological conservation is indivisible from the survival of indigenous linguistic systems."
+  },
+  {
+   "prompt": "Practicing uncommonly structured speech patterns helps the brain maintain its adaptability and shield aging speakers from mental deterioration.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Siobhan Gallagher phát hiện việc sử dụng các cấu trúc ngữ pháp hiếm giúp tăng cường độ dẻo dai của não và bảo vệ người lớn tuổi trước sự suy giảm nhận thức.",
+   "quote": "regular use of typologically rare grammatical structures boosts neuroplasticity, offering older adults greater resilience against cognitive decline."
+  },
+  {
+   "prompt": "Minor dialects will disappear from the digital world unless specialized machine translation tools are created for unusual sentence structures.",
+   "answer": "A. Dr Alistair Vance",
+   "why": "Alistair Vance khẳng định các phương ngữ thiểu số cần các giao thức dịch tự động dành riêng cho cú pháp phi chuẩn để không bị xóa sổ trong không gian số.",
+   "quote": "without automated translation protocols engineered for non-standardized syntax, digital exclusion will inevitably condemn unrecorded speech varieties to total erasure."
+  },
+  {
+   "prompt": "Passing laws to protect vanishing idioms is insufficient unless governments provide financial aid to offset the economic costs of speaking them.",
+   "answer": "C. Professor Kwame Osei",
+   "why": "Kwame Osei chỉ ra rằng các biện pháp công nhận trên mặt luật pháp sẽ vô dụng nếu chính phủ không hỗ trợ tài chính cho cộng đồng nông thôn để bù đắp thiệt thòi kinh tế.",
+   "quote": "legal recognition remains ineffective unless state authorities subsidize rural communities to mitigate the financial penalties of retaining ancestral speech."
+  },
+  {
+   "prompt": "Local idioms act as mental maps that explain and interpret their native surroundings.",
+   "answer": "B. Dr Elena Rostova",
+   "why": "Elena Rostova xem các thành ngữ và ngôn ngữ bản địa như những bản thiết kế trí tuệ giúp nhận thức và bảo tồn hệ sinh thái địa phương.",
+   "quote": "idioms serve as intellectual blueprints for regional ecosystems"
+  },
+  {
+   "prompt": "Language revival efforts will only achieve lasting success if native populations maintain absolute control over their linguistic resources.",
+   "answer": "E. Dr Marcus Thorne",
+   "why": "Marcus Thorne khẳng định việc hồi sinh ngôn ngữ chỉ thành công khi cộng đồng người bản địa nắm giữ quyền sở hữu hoàn toàn đối với di sản của mình thay vì phụ thuộc vào các học giả bên ngoài.",
+   "quote": "revitalisation succeeds only when speakers hold complete ownership over their verbal heritage rather than depending on external academic patrons."
+  },
+  {
+   "prompt": "Protecting disappearing idioms is an essential step in maintaining the full range of human mental capabilities.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Siobhan Gallagher lập luận rằng bảo tồn ngôn ngữ chính là bảo vệ sự phong phú trong năng lực và nhận thức trí tuệ của loài người.",
+   "quote": "linguistic preservation directly safeguards human cognitive diversity."
+  }
+ ]
+}

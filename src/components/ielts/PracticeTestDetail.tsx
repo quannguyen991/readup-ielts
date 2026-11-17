@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linking, Pressable, View } from 'react-native';
 
+import { NeonWindow } from '@/components/neon/Neon';
 import { Icon } from '@/components/ui/Icon';
 import { ieltsAudioUrl } from '@/services/ielts/audio-url';
 import { type ExamPart, SECTION_MINUTES, type TestSection } from '@/services/ielts/source-catalog';
@@ -93,18 +94,8 @@ export function PracticeTestDetail(props: Props) {
       </View>
 
       {/* Hero */}
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: 24,
-          padding: 20,
-          borderRadius: 18,
-          backgroundColor: color.surface,
-          borderWidth: 1,
-          borderColor: color.border,
-        }}
-      >
+      <NeonWindow title={title} icon="trophy" padded={false}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 24, padding: 20 }}>
         <Cover source={source} width={150} height={196} radius={14} />
 
         <View style={{ flex: 1, minWidth: 260, gap: 12 }}>
@@ -175,6 +166,7 @@ export function PracticeTestDetail(props: Props) {
           ) : null}
         </View>
       </View>
+      </NeonWindow>
 
       {/* Structure + materials */}
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
@@ -302,12 +294,10 @@ function GhostButton({ icon, label, onPress, tone }: { icon: 'check' | 'bookmark
 
 function Panel({ title, icon, children, style }: { title: string; icon: 'list' | 'book'; children: React.ReactNode; style?: object }) {
   return (
-    <View style={[{ padding: 18, borderRadius: 16, backgroundColor: color.surface, borderWidth: 1, borderColor: color.border, gap: 10 }, style]}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-        <Icon name={icon} size={16} color={color.primaryDark} />
-        <Text style={{ fontSize: 15, fontWeight: '800', color: color.ink }}>{title}</Text>
-      </View>
-      {children}
+    <View style={style}>
+      <NeonWindow title={title} icon="book" padded={false}>
+        <View style={{ padding: 16, gap: 10 }}>{children}</View>
+      </NeonWindow>
     </View>
   );
 }

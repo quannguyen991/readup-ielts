@@ -1,0 +1,134 @@
+{
+ "title": "Chromatics in Mind: Exploring Theories of Colour Psychology",
+ "topic": "The psychology of colour (set 1)",
+ "context": "A. Colour psychology explores how spectral wavelengths influence human cognition, emotion, and behaviour. Dr Henrik Vanger, an evolutionary biologist, argues that chromatic responses are fundamentally rooted in primordial survival mechanisms. Focusing on the wavelength of red, Vanger demonstrated that exposure to crimson tones automatically elevates galvanic skin response and accelerates cardiovascular rhythm. According to Vanger, this reaction reflects an ancient dual-coding system: red signals imminent danger or predatory threat in adversarial contexts, yet simultaneously denotes reproductive readiness and vitality during mate selection. Consequently, he maintains that human physiological reactivity to red bypasses deliberate cognitive evaluation, operating via rapid subcortical neural pathways designed for immediate somatic readiness.\n\nB. In contrast to biological determinism, Professor Elena Rostova contends that colour perception is predominantly mediated by linguistic conventions and sociocultural learning. Rostova conducted cross-cultural field trials evaluating how distinct speech communities categorize the blue-green spectral continuum. Her findings revealed that populations whose vocabularies lack separate lexical terms for green and blue exhibit slower reaction times when sorting borderline swatches. Conversely, communities possessing rich, nuanced chromatic lexicons distinguish subtle tonal gradations far more rapidly. Rostova concluded that semantic framing actively reshapes early perceptual processing, suggesting that societal nomenclature, rather than hardwired ocular architecture, establishes the functional boundaries of everyday colour cognition.\n\nC. Shifting the inquiry toward built environments, Dr Marcus Thorne investigated the restorative properties of specific hues within modern occupational settings. Drawing upon attention restoration frameworks, Thorne assessed the cognitive stamina of office workers exposed to various interior wall colours. His data revealed that verdant environments—specifically those featuring muted olive and sage tones—substantially reduced mental exhaustion during data-intensive clerical tasks. Thorne observed that green wavelengths trigger involuntary, low-effort attention, thereby allowing depleted neurocognitive mechanisms responsible for executive focus to recover. Furthermore, Thorne established that artificial representations of botanical greenery yield psychological benefits comparable to genuine vegetation, provided the chromatic saturation mirrors natural foliage.\n\nD. In the commercial sphere, Dr Siobhan Gallagher examined the ambivalent psychological effects of warm chromatic tones on retail consumers. Gallagher discovered that yellow evokes divergent behavioural responses depending on spatial density and ambient exposure time. In brief retail encounters, moderate yellow accents foster perceptions of warmth and prompt spontaneous purchasing decisions by temporarily elevating dopamine production. However, prolonged confinement within intensely yellow environments induces mild irritability and prompts shoppers to perceive retail merchandise as low-grade or disposable. Gallagher therefore posits that commercial designers must calibrate chromatic intensity to avoid turning initial consumer cheerfulness into brand depreciation and environmental discomfort.\n\nE. Examining chromatic cognition from an ontogenetic viewpoint, Professor Kenji Sato tracked how colour discernment develops from early infancy through early childhood. Utilizing infrared eye-tracking technology, Sato demonstrated that neonates show negligible interest in subtle pastel shades, prioritizing high-contrast, saturated primaries such as vermilion and cobalt. Sato discovered that this early preference is governed by the structural immaturity of retinal foveal cones rather than aesthetic impulse. As myelination of the visual cortex progresses around nine months, infants begin attending to intermediate chromatic blends. Sato asserts that children develop an affinity for desaturated and secondary tones only after neural systems for complex chromatic discrimination achieve full physiological maturation.\n\nF. Synthesizing these divergent paradigms, scholars acknowledge that chromatic psychology cannot be reduced to a single biological or cultural axis. While Vanger and Sato provide compelling evidence for hardwired somatic responses and developmental thresholds, Rostova’s linguistic paradigms illustrate the plastic nature of perceptual categorization. Concurrently, applied findings from Thorne and Gallagher underscore that context dictates whether a hue restores cognitive clarity or triggers sensory aversion. Emerging research into digital displays suggests these classical chromatic interactions are currently undergoing unprecedented reconfiguration as humans spend more waking hours processing synthetic light.",
+ "options": [
+  "A. Dr Henrik Vanger",
+  "B. Professor Elena Rostova",
+  "C. Dr Marcus Thorne",
+  "D. Dr Siobhan Gallagher",
+  "E. Professor Kenji Sato"
+ ],
+ "questions": [
+  {
+   "prompt": "Exposure to tones resembling plant life allows exhausted executive cognitive faculties to recuperate.",
+   "answer": "C. Dr Marcus Thorne",
+   "why": "Đoạn C giải thích nghiên cứu của Dr Marcus Thorne chỉ ra rằng bước sóng màu xanh lá giúp các cơ chế thần kinh nhận thức chịu trách nhiệm tập trung điều hành (executive focus) được phục hồi.",
+   "quote": "green wavelengths trigger involuntary, low-effort attention, thereby allowing depleted neurocognitive mechanisms responsible for executive focus to recover."
+  },
+  {
+   "prompt": "The speed at which people distinguish between shades is affected by the richness of their community's vocabulary.",
+   "answer": "B. Professor Elena Rostova",
+   "why": "Đoạn B khẳng định Professor Elena Rostova nhận thấy các cộng đồng có vốn từ vựng phong phú và chi tiết về màu sắc phân biệt các sắc độ tinh tế nhanh hơn rất nhiều.",
+   "quote": "communities possessing rich, nuanced chromatic lexicons distinguish subtle tonal gradations far more rapidly."
+  },
+  {
+   "prompt": "An automatic bodily readiness is provoked by a particular hue without conscious cognitive processing.",
+   "answer": "A. Dr Henrik Vanger",
+   "why": "Đoạn A nêu quan điểm của Dr Henrik Vanger rằng phản ứng sinh lý đối với màu đỏ bỏ qua sự đánh giá nhận thức có chủ đích, trực tiếp chuẩn bị trạng thái sẵn sàng cho cơ thể.",
+   "quote": "human physiological reactivity to red bypasses deliberate cognitive evaluation, operating via rapid subcortical neural pathways designed for immediate somatic readiness."
+  },
+  {
+   "prompt": "Spending excessive time in surroundings painted in a specific warm hue can produce feelings of annoyance.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Đoạn D chỉ ra Dr Siobhan Gallagher phát hiện việc ở quá lâu trong không gian màu vàng đậm sẽ gây ra cảm giác bực bội nhẹ (mild irritability).",
+   "quote": "prolonged confinement within intensely yellow environments induces mild irritability"
+  },
+  {
+   "prompt": "Very young infants show little enthusiasm for soft, pale shades due to underdeveloped ocular structures.",
+   "answer": "E. Professor Kenji Sato",
+   "why": "Đoạn E giải thích theo Professor Kenji Sato, trẻ sơ sinh hầu như không chú ý đến các tông màu pastel nhạt do các tế bào nón ở mắt chưa hoàn thiện về mặt cấu trúc.",
+   "quote": "neonates show negligible interest in subtle pastel shades, prioritizing high-contrast, saturated primaries such as vermilion and cobalt."
+  },
+  {
+   "prompt": "A lack of separate terms for different colours results in slower differentiation of intermediate shades.",
+   "answer": "B. Professor Elena Rostova",
+   "why": "Đoạn B nêu phát hiện của Professor Elena Rostova rằng các nhóm ngôn ngữ thiếu từ riêng biệt cho màu xanh lá và xanh dương mất nhiều thời gian hơn để phân loại các mẫu màu trung gian.",
+   "quote": "populations whose vocabularies lack separate lexical terms for green and blue exhibit slower reaction times when sorting borderline swatches."
+  },
+  {
+   "prompt": "Subdued shades of green significantly decrease mental fatigue during prolonged office assignments.",
+   "answer": "C. Dr Marcus Thorne",
+   "why": "Đoạn C đề cập đến dữ liệu của Dr Marcus Thorne chứng minh rằng các tông màu xanh dịu như ô liu và xô thơm làm giảm đáng kể sự kiệt sức về tinh thần trong công việc văn phòng kéo dài.",
+   "quote": "verdant environments—specifically those featuring muted olive and sage tones—substantially reduced mental exhaustion during data-intensive clerical tasks."
+  },
+  {
+   "prompt": "A single colour can indicate either environmental hazard or reproductive fitness depending on circumstance.",
+   "answer": "A. Dr Henrik Vanger",
+   "why": "Đoạn A nêu học thuyết của Dr Henrik Vanger về mã kép của màu đỏ: vừa báo hiệu hiểm họa kẻ thù, vừa biểu thị khả năng sinh sản và sinh lực tùy theo hoàn cảnh.",
+   "quote": "red signals imminent danger or predatory threat in adversarial contexts, yet simultaneously denotes reproductive readiness and vitality during mate selection."
+  },
+  {
+   "prompt": "Fleeting encounters with warm decorative details can stimulate impulsive consumer purchases.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Đoạn D trích dẫn nghiên cứu thương mại của Dr Siobhan Gallagher, cho thấy các điểm nhấn màu vàng vừa phải trong thời gian tiếp xúc ngắn thúc đẩy quyết định mua sắm ngẫu hứng.",
+   "quote": "moderate yellow accents foster perceptions of warmth and prompt spontaneous purchasing decisions by temporarily elevating dopamine production."
+  },
+  {
+   "prompt": "Children only begin to appreciate complex, mixed colours once their neural visual mechanisms have fully matured.",
+   "answer": "E. Professor Kenji Sato",
+   "why": "Đoạn E khẳng định Professor Kenji Sato nhận thấy trẻ chỉ hình thành sở thích với các sắc thái pha trộn, thứ cấp khi hệ thần kinh thị giác đạt đến độ hoàn thiện sinh lý.",
+   "quote": "children develop an affinity for desaturated and secondary tones only after neural systems for complex chromatic discrimination achieve full physiological maturation."
+  },
+  {
+   "prompt": "Physiological indicators like heart rate increase immediately upon viewing a certain chromatic shade.",
+   "answer": "A. Dr Henrik Vanger",
+   "why": "Đoạn A chỉ ra Dr Henrik Vanger đã chứng minh việc nhìn thấy sắc đỏ thẫm sẽ tự động kích thích phản xạ da galvanic và làm tăng nhịp tim.",
+   "quote": "exposure to crimson tones automatically elevates galvanic skin response and accelerates cardiovascular rhythm."
+  },
+  {
+   "prompt": "Synthetic depictions of nature can offer psychological rejuvenation equivalent to living flora if colour intensity matches.",
+   "answer": "C. Dr Marcus Thorne",
+   "why": "Đoạn C nêu kết luận của Dr Marcus Thorne rằng cây cối nhân tạo mô phỏng mang lại lợi ích tâm lý tương tự cây thật nếu độ bão hòa màu sắc phản ánh chính xác tự nhiên.",
+   "quote": "artificial representations of botanical greenery yield psychological benefits comparable to genuine vegetation, provided the chromatic saturation mirrors natural foliage."
+  },
+  {
+   "prompt": "An uplifting colour can paradoxically cause consumers to view products as being of inferior quality.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Đoạn D giải thích theo Dr Siobhan Gallagher, màu vàng dù ban đầu tạo sự vui tươi nhưng nếu lạm dụng sẽ khiến người mua hàng cảm nhận sản phẩm là rẻ tiền hoặc chỉ dùng một lần.",
+   "quote": "prompts shoppers to perceive retail merchandise as low-grade or disposable."
+  },
+  {
+   "prompt": "Linguistic terminology, rather than biological eye structure, determines how humans categorize colours.",
+   "answer": "B. Professor Elena Rostova",
+   "why": "Đoạn B cho biết kết luận của Professor Elena Rostova rằng danh pháp xã hội (từ ngữ), chứ không phải cấu trúc mắt sinh học, thiết lập ranh giới cho nhận thức màu sắc.",
+   "quote": "societal nomenclature, rather than hardwired ocular architecture, establishes the functional boundaries of everyday colour cognition."
+  },
+  {
+   "prompt": "Early infant colour choices are driven by biological limitations rather than personal stylistic taste.",
+   "answer": "E. Professor Kenji Sato",
+   "why": "Đoạn E dẫn lời Professor Kenji Sato giải thích rằng sự ưu tiên màu sắc ban đầu của trẻ bị quyết định bởi sự chưa trưởng thành của tế bào nón mắt chứ không phải sở thích thẩm mỹ.",
+   "quote": "this early preference is governed by the structural immaturity of retinal foveal cones rather than aesthetic impulse."
+  },
+  {
+   "prompt": "Certain workplace wall colours engage effortless attention rather than demanding mental energy.",
+   "answer": "C. Dr Marcus Thorne",
+   "why": "Đoạn C chỉ ra Dr Marcus Thorne phát hiện màu xanh lá kích thích cơ chế chú ý không cần gắng sức, giúp giải tỏa năng lượng tinh thần cho nhân viên.",
+   "quote": "green wavelengths trigger involuntary, low-effort attention"
+  },
+  {
+   "prompt": "Modern human reactions to colour are rooted in basic survival strategies of distant ancestors.",
+   "answer": "A. Dr Henrik Vanger",
+   "why": "Đoạn A khẳng định quan điểm của nhà sinh học tiến hóa Dr Henrik Vanger rằng các phản ứng màu sắc bắt nguồn sâu xa từ các cơ chế sinh tồn nguyên thủy.",
+   "quote": "chromatic responses are fundamentally rooted in primordial survival mechanisms."
+  },
+  {
+   "prompt": "Retail environments require careful regulation of colour strength to avoid unintended negative impressions.",
+   "answer": "D. Dr Siobhan Gallagher",
+   "why": "Đoạn D ghi nhận khuyến cáo của Dr Siobhan Gallagher rằng các nhà thiết kế không gian bán lẻ phải định lượng cường độ màu sắc cẩn thận để tránh làm giảm giá trị thương hiệu.",
+   "quote": "commercial designers must calibrate chromatic intensity to avoid turning initial consumer cheerfulness into brand depreciation and environmental discomfort."
+  },
+  {
+   "prompt": "Language systems play an active role in shaping early visual perception.",
+   "answer": "B. Professor Elena Rostova",
+   "why": "Đoạn B nêu kết luận của Professor Elena Rostova rằng cấu trúc ngữ nghĩa (ngôn ngữ) trực tiếp định hình và tác động lên các quá trình tri giác thị giác sơ cấp.",
+   "quote": "semantic framing actively reshapes early perceptual processing"
+  },
+  {
+   "prompt": "Tracking technology demonstrates that infants shift their gaze towards intermediate colour mixtures only after several months.",
+   "answer": "E. Professor Kenji Sato",
+   "why": "Đoạn E nêu rõ Professor Kenji Sato sử dụng công nghệ theo dõi mắt để chứng minh trẻ chỉ bắt đầu chú ý đến các tông màu pha trộn khi đạt khoảng chín tháng tuổi.",
+   "quote": "As myelination of the visual cortex progresses around nine months, infants begin attending to intermediate chromatic blends."
+  }
+ ]
+}

@@ -123,8 +123,8 @@ const CatalogHeader = React.memo(function CatalogHeader({ count, L }: { count: n
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
       <View style={{ gap: 2 }}>
-        <Text style={{ fontSize: 28, fontWeight: '800', color: color.ink }}>{L('Bộ đề IELTS', 'IELTS Tests')}</Text>
-        <Text style={{ fontSize: 14, color: color.muted, fontWeight: '500' }}>Cambridge & Actual Tests · {count}</Text>
+        <Text style={{ fontSize: 30, lineHeight: 36, fontWeight: '800', color: '#2B2350' }}>{L('Bộ đề IELTS', 'IELTS Tests')}</Text>
+        <Text style={{ fontSize: 14, fontWeight: '600', color: '#6B6590' }}>Cambridge & Actual Tests · {count}</Text>
       </View>
       <View style={{ flexGrow: 1, flexBasis: 360, maxWidth: 620 }}>
         <ExamResourceLinks exam="ielts" />
@@ -388,7 +388,7 @@ export default function IeltsSourcePracticeScreen() {
                   <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 2, color: '#6A4BD9', textTransform: 'uppercase' }}>
                     PRACTICE · PROGRESS · HIGHER BANDS
                   </Text>
-                  <Text style={{ fontSize: 32, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold', letterSpacing: -0.5 }}>
+                  <Text style={{ fontSize: 32, fontWeight: '900', color: '#2B2350', fontFamily: 'Inter_700Bold', letterSpacing: -0.5 }}>
                     {L('Bộ sưu tập của bạn', 'Your Collections')}
                   </Text>
                   <Text style={{ fontSize: 15, color: '#7C6552', lineHeight: 22 }}>

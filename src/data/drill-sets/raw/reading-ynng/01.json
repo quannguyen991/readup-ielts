@@ -1,0 +1,127 @@
+{
+ "title": "The False Promise of Rooftop Hives",
+ "topic": "urban beekeeping",
+ "context": "A. In recent years, apiaries have proliferated across global metropolitan skylines, from rooftop terraces in London to community gardens in Melbourne. Celebrated by municipal authorities and eco-conscious citizens as a triumphant revival of urban ecology, this trend is frequently framed as a grassroots remedy for global pollinator decline. Enthusiasts maintain that transforming concrete jungles into nectar-rich sanctuaries demonstrates how human ingenuity can integrate with natural systems. However, this romanticised narrative conflates apiculture with conservation. In reality, the uncritical enthusiasm for domestic honeybees represents a well-intentioned but fundamentally misguided form of environmentalism, masking serious ecological disruptions beneath a facade of green stewardship.\n\nB. Central to this issue is the crucial distinction between managed livestock and wild biodiversity. The European honeybee (Apis mellifera) is not an imperilled species facing extinction; rather, it is a domesticated agricultural animal, bred for honey production and crop pollination. When thousands of urban hives are established without ecological auditing, they unleash intense competition for floral resources. Several urban ecologists argue that abundant floral plantings in metropolitan parks can support both domestic and wild visitors. Yet empirical observations reveal that densely populated colonies systematically deplete high-quality pollen and nectar, starving native solitary bees, bumblebees, and hoverflies that have co-evolved with regional flora.\n\nC. The perils of hyper-dense apiculture extend beyond resource competition to epidemiological risks. Confining numerous colonies within limited geographic radiuses creates ideal breeding grounds for debilitating pathogens, notably deformed wing virus and Nosema parasites. While some hobbyists contend that city environments act as vital refuges shielding bees from agricultural insecticides, this perceived benefit is illusory. In reality, the high concentration of managed hives facilitates the horizontal transmission of virulent parasites, which subsequently spill over onto foraging wild insects visiting the same blossoms. Far from serving as disease-free havens, saturated metropolitan centres function as ecological traps that accelerate the decline of vulnerable indigenous species.\n\nD. Furthermore, the modern obsession with urban beekeeping has been co-opted as a convenient vehicle for corporate greenwashing. Multinational corporations enthusiastically install branded hives on office balconies, boasting about their ecological credentials in sustainability reports. Spokespersons often assert that such initiatives actively counteract habitat fragmentation and engage employees with nature. Nevertheless, these superficial displays offer minimal conservation value. They merely provide an inexpensive public relations veneer, allowing commercial enterprises to project an environmentally benevolent image while diverting institutional funding and civic enthusiasm away from complex, long-term interventions, such as restoring native grasslands or creating pesticide-free biological corridors.\n\nE. Municipal governance has largely failed to curb this unregulated expansion. In many world cities, local councils have actively deregulated beekeeping or maintained an entirely laissez-faire approach, assuming that private hobbyism will naturally balance itself through market mechanisms. Certain urban planners even suggest that introducing statutory restrictions would dampen civic enthusiasm for municipal greening. This hands-off approach is dangerously shortsighted. Without mandatory hive registries, maximum density quotas, and rigorous spatial mapping based on available floral biomass, city administrations are effectively permitting the unmanaged exploitation of public commons, directly undermining their own stated municipal biodiversity strategies.\n\nF. To salvage urban ecosystems, a fundamental shift in perception is imperative. Urban beekeeping should not be demonised or eradicated entirely, for it retains educational and modest commercial value when responsibly managed. However, civic authorities and the public must cease viewing apiculture as an authentic conservation strategy. Genuine urban biodiversity requires fostering complex habitats that cater to thousands of obscure native pollinators rather than flooding skylines with a single commercial species. Until municipal planning prioritises the protection of indigenous fauna over the photogenic allure of managed hives, urban biodiversity agendas will remain profoundly compromised.",
+ "questions": [
+  {
+   "prompt": "The popular belief that urban beekeeping restores natural ecosystems is accurate.",
+   "answer": "NO",
+   "why": "Tác giả phản bác trực tiếp quan niệm phổ biến này, cho rằng câu chuyện lãng mạn hóa đó đã đánh đồng việc nuôi ong với bảo tồn thiên nhiên (conflates apiculture with conservation) và thực chất là một hình thức bảo vệ môi trường sai lầm. Thí sinh dễ bị bẫy nếu chỉ đọc các lời ca ngợi ở câu đầu đoạn A mà bỏ qua từ nối 'However' thể hiện quan điểm của tác giả.",
+   "quote": "However, this romanticised narrative conflates apiculture with conservation."
+  },
+  {
+   "prompt": "Rooftop apiaries are more successful in London than in Melbourne.",
+   "answer": "NOT GIVEN",
+   "why": "Tác giả chỉ đề cập đến London và Melbourne như hai ví dụ minh họa cho sự gia tăng nhanh chóng của các tổ ong đô thị, hoàn toàn không so sánh mức độ thành công giữa hai thành phố này.",
+   "quote": "In recent years, apiaries have proliferated across global metropolitan skylines, from rooftop terraces in London to community gardens in Melbourne."
+  },
+  {
+   "prompt": "Present enthusiasm for domestic honeybees obscures the ecological damage it causes.",
+   "answer": "YES",
+   "why": "Tác giả nêu rõ rằng sự hào hứng thiếu suy xét dành cho ong mật đô thị đang che giấu những xáo trộn sinh thái nghiêm trọng dưới lớp vỏ bọc quản lý xanh (masking serious ecological disruptions beneath a facade of green stewardship). Nhận định hoàn toàn trùng khớp với quan điểm của tác giả.",
+   "quote": "masking serious ecological disruptions beneath a facade of green stewardship."
+  },
+  {
+   "prompt": "The European honeybee is currently under threat of global extinction.",
+   "answer": "NO",
+   "why": "Tác giả khẳng định dứt khoát rằng ong mật châu Âu không phải là một loài đang gặp hiểm họa tuyệt chủng mà thực chất là gia súc nông nghiệp được thuần hóa. Bẫy ở đây là người đọc dễ đồng nhất sự suy giảm của các loài côn trùng thụ phấn hoang dã với ong mật nuôi.",
+   "quote": "The European honeybee (Apis mellifera) is not an imperilled species facing extinction; rather, it is a domesticated agricultural animal"
+  },
+  {
+   "prompt": "Domestic honeybees have been selectively bred to maximise their adaptability to urban climates.",
+   "answer": "NOT GIVEN",
+   "why": "Đoạn văn có đề cập ong mật được lai tạo qua nhiều thế kỷ để sản xuất mật và phục vụ thụ phấn cây trồng, nhưng hoàn toàn không nói đến việc chọn giống để thích nghi với khí hậu đô thị.",
+   "quote": "rather, it is a domesticated agricultural animal, bred for honey production and crop pollination."
+  },
+  {
+   "prompt": "Floral plantings in metropolitan parks successfully prevent food competition between domestic honeybees and wild insects.",
+   "answer": "NO",
+   "why": "Một số nhà sinh thái học đô thị cho rằng hoa trong công viên nuôi đủ cả hai nhóm, nhưng tác giả phản bác bằng việc chỉ ra quan sát thực nghiệm cho thấy các đàn ong nuôi đông đúc đã bòn rút hết mật và phấn chất lượng cao. Ý của đề bài mâu thuẫn với nhận định của tác giả.",
+   "quote": "empirical observations reveal that densely populated colonies systematically deplete high-quality pollen and nectar"
+  },
+  {
+   "prompt": "Densely installed beehives deprive indigenous insect species of essential nutrients.",
+   "answer": "YES",
+   "why": "Tác giả nhận định rằng mật độ đàn ong quá lớn sẽ làm cạn kiệt nguồn phấn và mật hoa, trực tiếp làm bỏ đói (starving) các loài ong đơn độc, ong nghệ và ruồi giả ong bản địa. Điều này khẳng định nhận định của câu hỏi là đúng với quan điểm tác giả.",
+   "quote": "starving native solitary bees, bumblebees, and hoverflies that have co-evolved with regional flora."
+  },
+  {
+   "prompt": "Deformed wing virus causes greater mortality in native bees than Nosema parasites do.",
+   "answer": "NOT GIVEN",
+   "why": "Tác giả liệt kê cả virus làm biến dạng cánh lẫn ký sinh trùng Nosema như những mầm bệnh gây suy nhược, nhưng không hề đưa ra bất kỳ so sánh nào về tỷ lệ gây tử vong giữa hai loại này.",
+   "quote": "Confining numerous colonies within limited geographic radiuses creates ideal breeding grounds for debilitating pathogens, notably deformed wing virus and Nosema parasites."
+  },
+  {
+   "prompt": "Cities serve as genuine safe havens that protect honeybees from agricultural toxins.",
+   "answer": "NO",
+   "why": "Tác giả nêu rõ quan điểm cho rằng thành phố là nơi trú ẩn an toàn khỏi thuốc trừ sâu chỉ là ngộ nhận của người nuôi ong nghiệp dư, và gọi lợi ích này là ảo tưởng ('this perceived benefit is illusory'). Do đó nhận định này đi ngược lại quan điểm của tác giả.",
+   "quote": "While some hobbyists contend that city environments act as vital refuges shielding bees from agricultural insecticides, this perceived benefit is illusory."
+  },
+  {
+   "prompt": "Pathogens can spread from managed beehives to wild insects that feed on the same flowers.",
+   "answer": "YES",
+   "why": "Tác giả giải thích rằng việc tập trung nhiều tổ ong nuôi thúc đẩy sự lây truyền mầm bệnh, sau đó tràn sang (spill over) các loài côn trùng hoang dã cùng tìm kiếm mật trên những bông hoa đó. Nhận định này đồng nhất với quan điểm của tác giả.",
+   "quote": "the high concentration of managed hives facilitates the horizontal transmission of virulent parasites, which subsequently spill over onto foraging wild insects visiting the same blossoms."
+  },
+  {
+   "prompt": "Densely populated urban hives have caused the complete extinction of several solitary bee species.",
+   "answer": "NOT GIVEN",
+   "why": "Tác giả chỉ nói rằng các đô thị quá tải tổ ong đẩy nhanh đà suy giảm số lượng của các loài bản địa dễ bị tổn thương, chứ chưa từng tuyên bố chúng đã gây ra sự tuyệt chủng hoàn toàn cho bất kỳ loài ong đơn độc nào.",
+   "quote": "saturated metropolitan centres function as ecological traps that accelerate the decline of vulnerable indigenous species."
+  },
+  {
+   "prompt": "Rooftop hives installed by corporations make a substantial contribution to wildlife preservation.",
+   "answer": "NO",
+   "why": "Tác giả bác bỏ các tuyên bố về môi trường của doanh nghiệp, khẳng định những hành động phô trương bề nổi này chỉ mang lại giá trị bảo tồn tối thiểu ('minimal conservation value'). Vì vậy câu khẳng định đóng góp to lớn là sai lệch với quan điểm tác giả.",
+   "quote": "Nevertheless, these superficial displays offer minimal conservation value."
+  },
+  {
+   "prompt": "Installing branded hives allows companies to project an eco-friendly image at relatively low expense.",
+   "answer": "YES",
+   "why": "Tác giả nhận xét rằng những tổ ong thương hiệu chỉ đóng vai trò như một lớp vỏ bọc quan hệ công chúng ít tốn kém (inexpensive public relations veneer) để doanh nghiệp phô trương hình ảnh thân thiện với tự nhiên. Nhận định hoàn toàn khớp với ý tác giả.",
+   "quote": "They merely provide an inexpensive public relations veneer, allowing commercial enterprises to project an environmentally benevolent image"
+  },
+  {
+   "prompt": "Corporate apiary projects deflect resources and focus from more impactful conservation initiatives.",
+   "answer": "YES",
+   "why": "Tác giả chỉ rõ trào lưu nuôi ong của các công ty làm chuyển hướng dòng vốn tổ chức và sự quan tâm của công chúng khỏi những dự án can thiệp dài hạn, phức tạp hơn như phục hồi đồng cỏ hay tạo hành lang sinh thái. Nhận định phản ánh chính xác lập luận của tác giả.",
+   "quote": "diverting institutional funding and civic enthusiasm away from complex, long-term interventions, such as restoring native grasslands or creating pesticide-free biological corridors."
+  },
+  {
+   "prompt": "Restoring native grasslands is more expensive than creating pesticide-free biological corridors.",
+   "answer": "NOT GIVEN",
+   "why": "Cả hai biện pháp trên đều được tác giả nêu ra như những ví dụ về giải pháp can thiệp phức tạp và dài hạn, nhưng tác giả không hề so sánh mức chi phí giữa hai biện pháp này.",
+   "quote": "restoring native grasslands or creating pesticide-free biological corridors."
+  },
+  {
+   "prompt": "Local authorities have generally introduced strict regulations to control urban hive numbers.",
+   "answer": "NO",
+   "why": "Tác giả chỉ ra rằng chính quyền đô thị phần lớn đã thất bại trong việc kiểm soát, thậm chí còn bãi bỏ quy định và áp dụng phương thức buông lỏng hoàn toàn (laissez-faire). Nhận định cho rằng chính quyền ban hành quy định nghiêm ngặt là trái ngược với thông tin trong bài.",
+   "quote": "In many world cities, local councils have actively deregulated beekeeping or maintained an entirely laissez-faire approach"
+  },
+  {
+   "prompt": "The current lack of municipal intervention in urban beekeeping is an ill-advised approach.",
+   "answer": "YES",
+   "why": "Tác giả chỉ trích gay gắt cách quản lý buông lỏng (hands-off approach) của các thành phố hiện nay, gọi đó là sự thiển cận một cách nguy hiểm (dangerously shortsighted). Nhận định hoàn toàn phù hợp với đánh giá của tác giả.",
+   "quote": "This hands-off approach is dangerously shortsighted."
+  },
+  {
+   "prompt": "Establishing mandatory hive registries requires more funding than most city councils possess.",
+   "answer": "NOT GIVEN",
+   "why": "Tác giả nhấn mạnh sự cần thiết của việc đăng ký tổ ong bắt buộc, song không hề đề cập đến chi phí thiết lập hệ thống này hay khả năng tài chính của các hội đồng thành phố.",
+   "quote": "Without mandatory hive registries, maximum density quotas, and rigorous spatial mapping based on available floral biomass, city administrations are effectively permitting the unmanaged exploitation of public commons"
+  },
+  {
+   "prompt": "Municipalities should enforce an outright ban on all urban beekeeping.",
+   "answer": "NO",
+   "why": "Tác giả khẳng định không nên bài trừ hoặc cấm đoán hoàn toàn (not be demonised or eradicated entirely) nghề nuôi ong đô thị vì nó vẫn mang lại giá trị giáo dục và thương mại nhất định. Đề bài tuyên bố cần cấm hoàn toàn nên mâu thuẫn với ý kiến tác giả.",
+   "quote": "Urban beekeeping should not be demonised or eradicated entirely, for it retains educational and modest commercial value when responsibly managed."
+  },
+  {
+   "prompt": "Effective urban biodiversity conservation requires focusing on diverse habitats for native species rather than promoting a single managed insect.",
+   "answer": "YES",
+   "why": "Tác giả kết luận rằng đa dạng sinh học đô thị thực sự đòi hỏi phải phát triển các sinh cảnh phức tạp phục vụ hàng ngàn loài thụ phấn bản địa, thay vì tập trung thả ồ ạt một loài ong thương phẩm duy nhất. Nhận định thể hiện chính xác quan điểm cốt lõi của tác giả.",
+   "quote": "Genuine urban biodiversity requires fostering complex habitats that cater to thousands of obscure native pollinators rather than flooding skylines with a single commercial species."
+  }
+ ]
+}
