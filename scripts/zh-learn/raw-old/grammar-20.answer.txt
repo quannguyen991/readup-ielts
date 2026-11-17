@@ -1,0 +1,550 @@
+[
+  {
+    "id": "zh-g-h3-24",
+    "level": 3,
+    "order": 24,
+    "title": "Diễn tả nhượng bộ với 虽然……可是……",
+    "titleZh": "虽然可是复句",
+    "summary": "Bạn sẽ biết dùng 虽然……可是…… để nêu một điều trái với dự đoán.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu điều trái với dự đoán",
+        "body": "虽然 nêu một sự thật hoặc trở ngại; 可是 dẫn vào kết quả trái với điều người nghe có thể dự đoán.",
+        "examples": [
+          {
+            "zh": "虽然今天很冷，可是我还是想出去。",
+            "py": "suīrán jīntiān hěn lěng kěshì wǒ háishi xiǎng chūqù",
+            "vi": "Tuy hôm nay rất lạnh nhưng tôi vẫn muốn ra ngoài."
+          },
+          {
+            "zh": "虽然他每天很忙，可是常常帮助我。",
+            "py": "suīrán tā měitiān hěn máng kěshì chángcháng bāngzhù wǒ",
+            "vi": "Tuy ngày nào anh ấy cũng bận nhưng anh ấy thường giúp tôi."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi hai ý có sự tương phản",
+        "body": "Dùng cặp này khi muốn thừa nhận một tình huống rồi nói điều vẫn xảy ra, hoặc nêu một đặc điểm nhưng kết quả khác dự đoán.",
+        "examples": [
+          {
+            "zh": "虽然我不认识他，可是我们常常见面。",
+            "py": "suīrán wǒ bú rènshi tā kěshì wǒmen chángcháng jiànmiàn",
+            "vi": "Tuy tôi không quen anh ấy nhưng chúng tôi thường gặp nhau."
+          },
+          {
+            "zh": "虽然这家饭店不大，可是东西很好吃。",
+            "py": "suīrán zhè jiā fàndiàn bú dà kěshì dōngxi hěn hǎochī",
+            "vi": "Tuy quán ăn này không lớn nhưng đồ ăn rất ngon."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt đúng hai vế",
+        "body": "虽然 đứng trước điều được thừa nhận, còn 可是 đứng trước ý tương phản. Hai từ này thường mở đầu hai vế câu.",
+        "formula": "虽然 + vế nhượng bộ，可是 + vế tương phản",
+        "examples": [
+          {
+            "zh": "虽然他没有很多钱，可是他很快乐。",
+            "py": "suīrán tā méiyǒu hěn duō qián kěshì tā hěn kuàilè",
+            "vi": "Tuy anh ấy không có nhiều tiền nhưng anh ấy rất vui."
+          },
+          {
+            "zh": "虽然今天下雨，可是我们还是去学校。",
+            "py": "suīrán jīntiān xiàyǔ kěshì wǒmen háishi qù xuéxiào",
+            "vi": "Tuy hôm nay trời mưa nhưng chúng tôi vẫn đến trường."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không ghép thêm từ nối thừa",
+        "body": "Chỉ cần dùng 可是 để nối vế tương phản trong mẫu này. Tránh thêm một từ nối khác có cùng chức năng hoặc làm câu chuyển sang quan hệ nguyên nhân.",
+        "mistakes": [
+          {
+            "wrong": "虽然今天很冷，可是但是我还是出去。",
+            "right": "虽然今天很冷，可是我还是出去。",
+            "why": "可是 và 但是 đều nối ý tương phản, nên dùng cả hai ở cùng vị trí là thừa."
+          },
+          {
+            "wrong": "虽然他很累，可是所以他回家休息。",
+            "right": "虽然他很累，可是他还在工作。",
+            "why": "所以 diễn tả kết quả theo nguyên nhân, không phù hợp với ý tương phản mà câu này muốn nói."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Cặp từ nào diễn tả một sự thật rồi nêu ý trái với dự đoán?",
+        "options": [
+          "虽然……可是……",
+          "如果……就……",
+          "只有……才……",
+          "为了……"
+        ],
+        "answer": 0,
+        "explain": "虽然 nêu điều được thừa nhận, còn 可是 dẫn vào ý tương phản."
+      },
+      {
+        "q": "Điền cặp từ phù hợp: _____今天很冷，_____我还是想出去。",
+        "options": [
+          "如果……就……",
+          "虽然……可是……",
+          "只要……就……",
+          "为了……"
+        ],
+        "answer": 1,
+        "explain": "Câu này thừa nhận trời lạnh rồi nêu việc vẫn muốn ra ngoài."
+      },
+      {
+        "q": "Câu nào dùng đúng 虽然……可是…… để nói trời mưa nhưng vẫn đi học?",
+        "options": [
+          "如果今天下雨，可是我们还是去学校。",
+          "只有今天下雨，可是我们还是去学校。",
+          "虽然今天下雨，可是我们还是去学校。",
+          "为了今天下雨，可是我们还是去学校。"
+        ],
+        "answer": 2,
+        "explain": "虽然……可是…… nối tình huống trời mưa với việc vẫn đi học."
+      },
+      {
+        "q": "Vế sau của 虽然……可是…… thường nêu ý gì?",
+        "options": [
+          "Một nguyên nhân",
+          "Một điều kiện",
+          "Một mục đích",
+          "Điều trái với dự đoán"
+        ],
+        "answer": 3,
+        "explain": "Vế sau đưa ra sự việc vẫn xảy ra dù vế trước có thể khiến ta nghĩ khác."
+      },
+      {
+        "q": "Chọn từ thích hợp: 虽然他很累，_____他还在工作。",
+        "options": [
+          "可是",
+          "如果",
+          "为了",
+          "只有"
+        ],
+        "answer": 0,
+        "explain": "可是 nối ý mệt với việc anh ấy vẫn đang làm."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h3-25",
+    "level": 3,
+    "order": 25,
+    "title": "Nói điều kiện với 如果……就…… và ……的话",
+    "titleZh": "如果条件句",
+    "summary": "Bạn sẽ biết nêu điều kiện và kết quả bằng 如果……就…… hoặc ……的话.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu điều kiện và kết quả",
+        "body": "Nếu một việc chỉ có thể xảy ra khi có điều kiện nào đó, bạn có thể dùng 如果……就…… hoặc đặt 的话 sau phần điều kiện.",
+        "examples": [
+          {
+            "zh": "如果明天有时间，我就去看你。",
+            "py": "rúguǒ míngtiān yǒu shíjiān wǒ jiù qù kàn nǐ",
+            "vi": "Nếu ngày mai có thời gian, tôi sẽ đến thăm bạn."
+          },
+          {
+            "zh": "你今天不舒服的话，就在家休息吧。",
+            "py": "nǐ jīntiān bù shūfu dehuà jiù zài jiā xiūxi ba",
+            "vi": "Nếu hôm nay bạn không khỏe thì hãy nghỉ ở nhà nhé."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi muốn nói “nếu”",
+        "body": "Dùng mẫu này để nói kết quả sẽ xảy ra nếu điều kiện được đáp ứng. ……的话 thường đặt sau cụm điều kiện, còn 如果 thường đứng đầu vế điều kiện.",
+        "examples": [
+          {
+            "zh": "如果你想学中文，就每天读一会儿。",
+            "py": "rúguǒ nǐ xiǎng xué Zhōngwén jiù měitiān dú yíhuìr",
+            "vi": "Nếu bạn muốn học tiếng Trung thì hãy đọc mỗi ngày một lúc."
+          },
+          {
+            "zh": "你下班以后有空的话，我们一起吃饭。",
+            "py": "nǐ xiàbān yǐhòu yǒu kòng dehuà wǒmen yìqǐ chīfàn",
+            "vi": "Nếu sau giờ làm bạn rảnh thì chúng ta cùng ăn nhé."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt 就 trước kết quả",
+        "body": "Trong mẫu 如果……就……, 就 đứng ở vế kết quả, thường trước động từ. Với ……的话, phần điều kiện kết thúc bằng 的话 rồi mới đến vế kết quả.",
+        "formula": "如果 + điều kiện，就 + kết quả；điều kiện + 的话，就 + kết quả",
+        "examples": [
+          {
+            "zh": "如果你坐公共汽车，就在这里下车。",
+            "py": "rúguǒ nǐ zuò gōnggòng qìchē jiù zài zhèlǐ xiàchē",
+            "vi": "Nếu bạn đi xe buýt thì xuống xe ở đây."
+          },
+          {
+            "zh": "你今天有时间的话，就来我家吧。",
+            "py": "nǐ jīntiān yǒu shíjiān dehuà jiù lái wǒ jiā ba",
+            "vi": "Nếu hôm nay bạn có thời gian thì đến nhà tôi nhé."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đặt 就 trong vế kết quả",
+        "body": "Đừng đặt 就 trước chủ ngữ của vế kết quả. Nếu đã dùng 的话 sau điều kiện thì không lặp lại từ này.",
+        "mistakes": [
+          {
+            "wrong": "如果你明天来，就我在家等你。",
+            "right": "如果你明天来，我就在家等你。",
+            "why": "Chủ ngữ 我 đứng trước 就; 就 đứng trước phần hành động hoặc kết quả."
+          },
+          {
+            "wrong": "如果你有时间的话的话，我们一起吃饭。",
+            "right": "如果你有时间的话，我们一起吃饭。",
+            "why": "的话 chỉ cần xuất hiện một lần ở cuối phần điều kiện."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Cặp từ nào thường nối điều kiện với kết quả?",
+        "options": [
+          "虽然……可是……",
+          "如果……就……",
+          "只有……才……",
+          "为了……"
+        ],
+        "answer": 1,
+        "explain": "如果 nêu điều kiện và 就 dẫn vào kết quả."
+      },
+      {
+        "q": "Chọn câu dùng đúng mẫu 如果……就……",
+        "options": [
+          "如果你有时间，可是我去看你。",
+          "如果你有时间，为了我去看你。",
+          "如果你有时间，我就去看你。",
+          "如果你有时间，只有我去看你。"
+        ],
+        "answer": 2,
+        "explain": "就 đứng ở vế kết quả: nếu bạn có thời gian thì tôi sẽ đến thăm bạn."
+      },
+      {
+        "q": "Câu nào đặt 的话 đúng sau phần điều kiện?",
+        "options": [
+          "你今天有时间就的话，来我家吧。",
+          "你今天的话有时间，就来我家吧。",
+          "你今天有时间的话的话，就来我家吧。",
+          "你今天有时间的话，就来我家吧。"
+        ],
+        "answer": 3,
+        "explain": "的话 đặt sau cụm điều kiện 有时间."
+      },
+      {
+        "q": "Điền từ thích hợp: 你今天有时间，_____来我家吧。",
+        "options": [
+          "就",
+          "可是",
+          "为了",
+          "虽然"
+        ],
+        "answer": 0,
+        "explain": "就 đứng ở vế kết quả để nói việc sẽ làm nếu có thời gian."
+      },
+      {
+        "q": "Câu nào có nghĩa “Nếu ngày mai trời mưa thì tôi sẽ ở nhà”?",
+        "options": [
+          "虽然明天下雨，我就在家。",
+          "如果明天下雨，我就在家。",
+          "只有明天下雨，我就在家。",
+          "为了明天下雨，我就在家。"
+        ],
+        "answer": 1,
+        "explain": "如果明天下雨 nêu điều kiện, còn 我就在家 nêu kết quả."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h3-26",
+    "level": 3,
+    "order": 26,
+    "title": "Phân biệt 只有……才…… và 只要……就……",
+    "titleZh": "只有只要",
+    "summary": "Bạn sẽ biết phân biệt điều kiện cần với điều kiện chỉ cần có là đủ.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Phân biệt hai kiểu điều kiện",
+        "body": "只有……才…… nêu điều kiện cần để kết quả xảy ra. 只要……就…… nhấn mạnh rằng chỉ cần có điều kiện ấy thì kết quả có thể xảy ra.",
+        "examples": [
+          {
+            "zh": "只有你每天练习，才能说好中文。",
+            "py": "zhǐyǒu nǐ měitiān liànxí cái néng shuō hǎo Zhōngwén",
+            "vi": "Chỉ khi bạn luyện tập mỗi ngày thì mới có thể nói tiếng Trung tốt."
+          },
+          {
+            "zh": "只要我们现在出发，就能早点到家。",
+            "py": "zhǐyào wǒmen xiànzài chūfā jiù néng zǎodiǎn dào jiā",
+            "vi": "Chỉ cần chúng ta xuất phát ngay bây giờ thì có thể về nhà sớm."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Chọn theo ý muốn nhấn mạnh",
+        "body": "Dùng 只有……才…… khi điều kiện là cần thiết để đạt kết quả. Dùng 只要……就…… khi muốn nói điều kiện đó đã đủ để kết quả xảy ra.",
+        "examples": [
+          {
+            "zh": "只有大家一起努力，才能完成工作。",
+            "py": "zhǐyǒu dàjiā yìqǐ nǔlì cái néng wánchéng gōngzuò",
+            "vi": "Chỉ khi mọi người cùng cố gắng thì mới có thể hoàn thành công việc."
+          },
+          {
+            "zh": "只要你愿意帮我，我就很高兴。",
+            "py": "zhǐyào nǐ yuànyì bāng wǒ wǒ jiù hěn gāoxìng",
+            "vi": "Chỉ cần bạn sẵn lòng giúp tôi thì tôi đã rất vui rồi."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Ghép đúng cặp từ",
+        "body": "只有 đi cùng 才, còn 只要 đi cùng 就. Hãy chọn đúng cặp theo ý nghĩa của điều kiện trong câu.",
+        "formula": "只有 + điều kiện，才 + kết quả；只要 + điều kiện，就 + kết quả",
+        "examples": [
+          {
+            "zh": "只有先买票，我们才能进去。",
+            "py": "zhǐyǒu xiān mǎi piào wǒmen cái néng jìnqù",
+            "vi": "Chỉ khi mua vé trước thì chúng tôi mới có thể vào."
+          },
+          {
+            "zh": "只要今天不下雨，我们就去公园玩。",
+            "py": "zhǐyào jīntiān bú xiàyǔ wǒmen jiù qù gōngyuán wán",
+            "vi": "Chỉ cần hôm nay trời không mưa thì chúng tôi sẽ đi chơi ở công viên."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không đổi chéo cặp từ",
+        "body": "Người học thường ghép 只有 với 就 hoặc 只要 với 才. Hãy nhớ 只有……才…… và 只要……就……",
+        "mistakes": [
+          {
+            "wrong": "只有你每天练习，就能说好中文。",
+            "right": "只有你每天练习，才能说好中文。",
+            "why": "只有 thường đi với 才 để nhấn mạnh điều kiện cần."
+          },
+          {
+            "wrong": "只要你有时间，才来我家吧。",
+            "right": "只要你有时间，就来我家吧。",
+            "why": "只要 đi với 就 khi điều kiện được nêu là đủ để dẫn đến kết quả."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Cặp nào nhấn mạnh điều kiện cần để đạt kết quả?",
+        "options": [
+          "虽然……可是……",
+          "如果……就……",
+          "只有……才……",
+          "为了……"
+        ],
+        "answer": 2,
+        "explain": "只有……才…… nhấn mạnh rằng phải có điều kiện ấy thì kết quả mới xảy ra."
+      },
+      {
+        "q": "Chọn cặp từ hợp với ý “chỉ cần có thời gian thì hãy đến nhà tôi”",
+        "options": [
+          "只有……就……",
+          "只要……就……",
+          "虽然……可是……",
+          "为了……才……"
+        ],
+        "answer": 3,
+        "explain": "Ý “chỉ cần” dùng 只要……就……"
+      },
+      {
+        "q": "Câu nào nói rằng luyện tập mỗi ngày giúp ta có thể nói tiếng Trung tốt?",
+        "options": [
+          "只要你每天练习，就能说好中文。",
+          "虽然你每天练习，可是能说好中文。",
+          "为了你每天练习，就能说好中文。",
+          "如果你每天练习，只有能说好中文。"
+        ],
+        "answer": 0,
+        "explain": "只要……就…… diễn tả điều kiện luyện tập và kết quả có thể đạt được."
+      },
+      {
+        "q": "只有……才…… diễn tả quan hệ nào?",
+        "options": [
+          "Chỉ cần có điều kiện là kết quả xảy ra",
+          "Điều kiện cần để kết quả xảy ra",
+          "Một sự thật trái với dự đoán",
+          "Mục đích của hành động"
+        ],
+        "answer": 1,
+        "explain": "只有……才…… nhấn mạnh điều kiện cần."
+      },
+      {
+        "q": "Chọn câu ghép đúng theo cặp 只有……才……",
+        "options": [
+          "只有你有时间，就来我家吧。",
+          "只要你有时间，才来我家吧。",
+          "只有你有时间，才来我家吧。",
+          "只要你有时间，可是来我家吧。"
+        ],
+        "answer": 2,
+        "explain": "只有 đi với 才 để nói có điều kiện này thì mới có kết quả."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h3-27",
+    "level": 3,
+    "order": 27,
+    "title": "Nêu mục đích với 为了",
+    "titleZh": "为了句式",
+    "summary": "Bạn sẽ biết dùng 为了 để nói mục đích của một hành động.",
+    "minutes": 6,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nói một việc được làm để làm gì",
+        "body": "为了 đứng trước mục đích, giúp người nghe hiểu vì sao một hành động được thực hiện.",
+        "examples": [
+          {
+            "zh": "为了早点到学校，我今天坐公共汽车。",
+            "py": "wèile zǎodiǎn dào xuéxiào wǒ jīntiān zuò gōnggòng qìchē",
+            "vi": "Để đến trường sớm hơn, hôm nay tôi đi xe buýt."
+          },
+          {
+            "zh": "为了让妈妈高兴，我每天帮她做饭。",
+            "py": "wèile ràng māma gāoxìng wǒ měitiān bāng tā zuòfàn",
+            "vi": "Để mẹ vui, ngày nào tôi cũng giúp mẹ nấu cơm."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi muốn giải thích mục đích",
+        "body": "Dùng 为了 trước một việc muốn đạt được hoặc một người muốn giúp đỡ. Sau đó nêu hành động được làm để đạt mục đích ấy.",
+        "examples": [
+          {
+            "zh": "为了学好中文，她每天晚上都看书。",
+            "py": "wèile xué hǎo Zhōngwén tā měitiān wǎnshang dōu kàn shū",
+            "vi": "Để học tốt tiếng Trung, tối nào cô ấy cũng đọc sách."
+          },
+          {
+            "zh": "为了买一本书，我今天去了书店。",
+            "py": "wèile mǎi yì běn shū wǒ jīntiān qù le shūdiàn",
+            "vi": "Để mua một quyển sách, hôm nay tôi đã đến hiệu sách."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Nêu mục đích trước hành động",
+        "body": "Thường đặt 为了 và phần mục đích ở đầu câu, rồi nêu hành động chính ở vế sau. Cũng có thể đưa mục đích ra sau hành động để bổ sung lý do.",
+        "formula": "为了 + mục đích，+ chủ ngữ + hành động",
+        "examples": [
+          {
+            "zh": "为了身体健康，我每天早上都走路。",
+            "py": "wèile shēntǐ jiànkāng wǒ měitiān zǎoshang dōu zǒulù",
+            "vi": "Để có sức khỏe tốt, sáng nào tôi cũng đi bộ."
+          },
+          {
+            "zh": "我每天学习中文，为了以后能找到工作。",
+            "py": "wǒ měitiān xuéxí Zhōngwén wèile yǐhòu néng zhǎodào gōngzuò",
+            "vi": "Tôi học tiếng Trung mỗi ngày để sau này có thể tìm được việc làm."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Dùng cụm mục đích sau 为了",
+        "body": "Sau 为了 nên nêu mục đích bằng một cụm từ hoặc hành động. Tránh đặt một câu hoàn chỉnh có chủ ngữ riêng ngay sau từ này.",
+        "mistakes": [
+          {
+            "wrong": "为了我想学好中文，我每天看书。",
+            "right": "为了学好中文，我每天看书。",
+            "why": "Sau 为了 dùng mục đích muốn đạt được, không đặt nguyên mệnh đề 我想学好中文 vào vị trí đó."
+          },
+          {
+            "wrong": "为了我每天学习中文。",
+            "right": "为了学好中文，我每天都学习。",
+            "why": "Câu cần nêu mục đích sau 为了 rồi thêm hành động chính ở vế sau."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "为了 thường được dùng để nêu điều gì?",
+        "options": [
+          "Một sự thật trái với dự đoán",
+          "Một điều kiện đủ",
+          "Một điều kiện cần",
+          "Mục đích của hành động"
+        ],
+        "answer": 3,
+        "explain": "为了 giới thiệu mục đích mà người nói muốn đạt được."
+      },
+      {
+        "q": "Điền vào câu: 为了学好中文，我每天_____。",
+        "options": [
+          "都看书",
+          "可是看书",
+          "才看书",
+          "的话看书"
+        ],
+        "answer": 0,
+        "explain": "都看书 nêu hành động được làm để học tốt tiếng Trung."
+      },
+      {
+        "q": "Câu nào nêu mục đích trước rồi đến hành động?",
+        "options": [
+          "我今天坐公共汽车，虽然早点到学校。",
+          "为了早点到学校，我今天坐公共汽车。",
+          "我今天下雨，为了我坐公共汽车。",
+          "为了我今天有时间，坐公共汽车。"
+        ],
+        "answer": 1,
+        "explain": "为了早点到学校 nêu mục đích, còn việc đi xe buýt là hành động."
+      },
+      {
+        "q": "Chọn câu tự nhiên để nói “để học tốt tiếng Trung, ngày nào tôi cũng đọc sách”",
+        "options": [
+          "虽然学好中文，我每天都看书。",
+          "如果学好中文，我每天都看书。",
+          "为了学好中文，我每天都看书。",
+          "只有学好中文，我每天都看书。"
+        ],
+        "answer": 2,
+        "explain": "为了学好中文 nêu mục đích của việc đọc sách mỗi ngày."
+      },
+      {
+        "q": "Trong mẫu 为了……，……, phần mục đích thường đứng ở đâu?",
+        "options": [
+          "Sau chủ ngữ của vế kết quả",
+          "Ở cuối câu",
+          "Sau một từ chỉ tương phản",
+          "Ngay sau 为了, trước hành động chính"
+        ],
+        "answer": 3,
+        "explain": "为了 đứng trước mục đích, sau đó câu nêu hành động chính."
+      }
+    ]
+  }
+]

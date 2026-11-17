@@ -4,7 +4,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
-import { GhostButton, PrimaryButton, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
+import { GhostButton, PrimaryButton, SpeakButton, StudyCard, StudyFrame, useHotkeys, exitStudy } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { buildQuiz, isAnswered, isQuizCorrect, QUIZ_KIND_LABEL, type QuizAnswer, type QuizQuestion } from '@/services/vocab/quiz';
@@ -154,7 +154,7 @@ export default function TestScreen() {
               ) : null}
             </View>
             <PrimaryButton label={L('Làm bài khác', 'New test')} onPress={retry} />
-            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => router.replace(backHref as never)} />
+            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => exitStudy(backHref)} />
           </StudyCard>
         </CrossFade>
       </StudyFrame>

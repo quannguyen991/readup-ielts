@@ -23,8 +23,8 @@ import {
 const VI_DAU =
   /[àáâãèéêìíòóôõùúýăđĩũơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i;
 
-test('có đủ 50 bộ đề', () => {
-  assert.equal(TRANSLATION_SETS.length, 50, '10 bộ gom từ kho câu gốc + 40 bộ soạn thêm');
+test('có đủ 66 bộ đề', () => {
+  assert.equal(TRANSLATION_SETS.length, 116, '10 bộ gom từ kho câu gốc + 40 bộ soạn thêm + 16 bộ mới + 30 bộ nữa + 20 bộ nữa');
 });
 
 test('mỗi bộ đều có câu, và tổng số câu khớp phần thống kê', () => {

@@ -3,7 +3,8 @@ import { Pressable, Text, View } from 'react-native';
 
 import { Button, Icon } from '@/components/ui';
 import { speak } from '@/components/vocab/study/StudyKit';
-import { ZH } from '@/components/vocab/chinese/palette';
+import { HANZI_FAMILY, ZH } from '@/components/vocab/chinese/palette';
+import { useChineseFonts } from '@/components/vocab/chinese/useChineseFonts';
 import type { ZhLine, ZhQuizItem } from '@/data/zh-learn';
 import { useGrammarProgressStore } from '@/store/useGrammarProgressStore';
 
@@ -19,9 +20,10 @@ export const paper = {
 
 /** Chữ Hán có đoạn `mark` tô son. */
 export function ZhText({ zh, mark, size = 22, color = ZH.ink }: { zh: string; mark?: string; size?: number; color?: string }) {
+  useChineseFonts();
   const parts = mark && zh.includes(mark) ? zh.split(mark) : [zh];
   return (
-    <Text style={{ fontSize: size, lineHeight: size * 1.45, color }}>
+    <Text style={{ fontFamily: HANZI_FAMILY, fontSize: size, lineHeight: size * 1.45, color }}>
       {parts.map((p, i) => (
         <Text key={i}>
           {p}

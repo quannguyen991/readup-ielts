@@ -7,7 +7,8 @@ import { groupOfTopic, normalizeLevel } from '@/components/catalog/catalog-model
 import { DictationCover } from '@/components/sentence/DictationCover';
 import { LessonCard } from '@/components/sentence/LessonCard';
 import { DICTATION_SETS, dictationSetStats, positionOf, type DictationSet } from '@/data/dictation-sets';
-import { useSentenceStore } from '@/store/useSentenceStore';
+import { useLearnStats, useSentenceStore } from '@/store/useSentenceStore';
+import { setProgress, type SetProgress } from '@/services/sentence/learn-status';
 import { useL } from '@/i18n/useL';
 
 /**
@@ -25,7 +26,7 @@ import { useL } from '@/i18n/useL';
  * `heading=false` cho chỗ nào đã có tiêu đề trang riêng (trang thư viện hai tab):
  * hai tiêu đề chồng nhau đọc như lỗi bố cục chứ không như hai tầng thông tin.
  */
-export function DictationLibrary({ heading = true }: { heading?: boolean }) {
+export function DictationLibrary({ heading = true, express = false }: { heading?: boolean; express?: boolean }) {
   const { L } = useL();
   const stats = useMemo(() => dictationSetStats(), []);
   const sessions = useSentenceStore((s) => s.sessions);
@@ -37,6 +38,15 @@ export function DictationLibrary({ heading = true }: { heading?: boolean }) {
     return m;
   }, [sessions]);
 
+  const learnStats = useLearnStats();
+  const statusBySet = useMemo(() => {
+    const m = new Map<string, SetProgress>();
+    for (const set of DICTATION_SETS) {
+      m.set(set.id, setProgress(learnStats, express ? 'express' : 'dictation', set.sentences.map((_, i) => `${set.id}-${String(i + 1).padStart(2, '0')}`)));
+    }
+    return m;
+  }, [learnStats, express]);
+
   const items = useMemo<CatalogItem[]>(
     () =>
       DICTATION_SETS.map((set) => ({
@@ -45,10 +55,11 @@ export function DictationLibrary({ heading = true }: { heading?: boolean }) {
         topic: set.topic,
         group: groupOfTopic(set.topic, set.level),
         title: set.title,
-        done: (doneBySet.get(set.id) ?? 0) > 0,
-        node: <SetCard set={set} doneCount={doneBySet.get(set.id) ?? 0} />,
+        done: statusBySet.get(set.id)?.state === 'learned',
+        state: statusBySet.get(set.id)?.state,
+        node: <SetCard set={set} doneCount={doneBySet.get(set.id) ?? 0} status={statusBySet.get(set.id)} express={express} />,
       })),
-    [doneBySet],
+    [doneBySet, statusBySet, express],
   );
 
   return (
@@ -64,7 +75,7 @@ export function DictationLibrary({ heading = true }: { heading?: boolean }) {
           </Text>
         </View>
       ) : null}
-      <CatalogHub items={items} onStart={(it) => router.push(`/sentence/dictation?set=${it.id}` as never)} />
+      <CatalogHub items={items} onStart={(it) => router.push(`/sentence/${express ? 'express' : 'dictation'}?set=${it.id}` as never)} />
     </View>
   );
 }
@@ -78,7 +89,7 @@ const LEVEL_NAME: Record<string, { vi: string; en: string }> = {
 
 const ACCENT_EN: Record<string, string> = { 'Anh – Mỹ': 'US English', 'Anh – Anh': 'UK English' };
 
-const SetCard = React.memo(function SetCard({ set, doneCount }: { set: DictationSet; doneCount: number }) {
+const SetCard = React.memo(function SetCard({ set, doneCount, status, express }: { set: DictationSet; doneCount: number; status?: SetProgress; express: boolean }) {
   const lines = useMemo(() => set.sentences.map((s) => s.en), [set]);
   const { L, locale } = useL();
   const levelName = LEVEL_NAME[set.level];
@@ -96,9 +107,11 @@ const SetCard = React.memo(function SetCard({ set, doneCount }: { set: Dictation
         { icon: 'volume', label: L(set.accentHint, ACCENT_EN[set.accentHint] ?? set.accentHint) },
       ]}
       done={doneCount}
+      status={status}
       visualHeight={112}
-      visual={(tone) => <DictationCover tone={tone} topic={set.topic} sentences={lines} />}
-      onPress={() => router.push(`/sentence/dictation?set=${set.id}` as never)}
+      bleed
+      visual={(tone) => <DictationCover tone={tone} topic={set.topic} sentences={lines} level={set.level} seed={set.order} />}
+      onPress={() => router.push(`/sentence/${express ? 'express' : 'dictation'}?set=${set.id}` as never)}
     />
   );
 });

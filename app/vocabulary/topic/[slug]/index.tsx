@@ -22,7 +22,7 @@ import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { deckLook } from '@/components/vocab/deck-style';
 import { deckProgress, studiedPct } from '@/services/vocab/deck-library';
 import { currentStep, stepSummary } from '@/services/vocab/level-path';
-import { studiedLemmas } from '@/services/vocab/topic-fsrs';
+import { dueLemmasToday, studiedLemmas } from '@/services/vocab/topic-fsrs';
 import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
 import { LevelCard } from '@/components/vocab/LevelCard';
@@ -214,6 +214,16 @@ export default function VocabTopicScreen() {
     () => new Set(Object.values(entries).map((e) => e.lemma.toLowerCase())),
     [entries],
   );
+
+  // Nút "Trộn thẻ để ôn": gom MỌI từ đến hạn ôn của mọi unit rồi xáo chung; hết từ đến hạn thì xáo cả bộ.
+  // useMemo để danh sách đứng yên giữa các lần vẽ (thẻ không bị xáo lại mỗi lần).
+  const flashWords = useMemo(() => {
+    const all = topic?.words ?? [];
+    if (shuffle !== '1') return all;
+    const due = dueLemmasToday({ entries, cards }, new Date());
+    const dueWords = all.filter((w) => due.has(w.word.trim().toLowerCase()));
+    return dueWords.length > 0 ? dueWords : all;
+  }, [topic, shuffle, entries, cards]);
 
   // Bộ có nhiều mức mà chưa chọn: hiện bước chọn cấp độ trước khi vào bài.
   if (typeof slug === 'string' && splitLevelSlug(slug).level === null) {
@@ -437,7 +447,7 @@ export default function VocabTopicScreen() {
           {topic.words.length > 0 ? (
             <Flashcards
               initialShuffle={shuffle === "1"}
-              words={topic.words}
+              words={flashWords}
               savedWords={savedLemmas}
               onSave={save}
               starredWords={starredWords}

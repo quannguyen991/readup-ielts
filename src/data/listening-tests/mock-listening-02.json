@@ -16,7 +16,7 @@
     {
      "speaker": "Receptionist",
      "text": "Good afternoon, Riverside Sports Centre. How can I help you?",
-     "start": 0.0,
+     "start": 0,
      "end": 2.92
     },
     {
@@ -202,7 +202,11 @@
       },
       {
        "n": 2,
-       "answer": "07700900152"
+       "answer": "07700900152",
+       "accept": [
+        "07700 900152",
+        "zero seven seven zero zero nine zero zero one five two"
+       ]
       },
       {
        "n": 3,
@@ -888,7 +892,11 @@
       },
       {
        "n": 32,
-       "answer": "national bee register"
+       "answer": "bee register",
+       "accept": [
+        "national bee register",
+        "the national bee register"
+       ]
       },
       {
        "n": 33,

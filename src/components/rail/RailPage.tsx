@@ -47,10 +47,10 @@ const C = {
   bad: '#C8402F',
 };
 const MONO = "'IBM Plex Mono', ui-monospace, Menlo, monospace";
-const SERIF = "'Fraunces', 'Be Vietnam Pro', serif";
+const SERIF = "'Fraunces', Inter, serif";
 
 const CSS = `
-.tv-root{position:absolute;inset:0;overflow-y:auto;color:${C.ink};font-family:'Be Vietnam Pro',system-ui,sans-serif;
+.tv-root{position:absolute;inset:0;overflow-y:auto;color:${C.ink};font-family:Inter,system-ui,sans-serif;
   background:
     linear-gradient(180deg, rgba(0,0,0,.25), transparent 180px),
     repeating-linear-gradient(90deg, transparent 0 118px, rgba(255,255,255,.035) 118px 120px),
@@ -113,7 +113,7 @@ const CSS = `
 .tv-range{width:100%;accent-color:${C.amber}}
 .tv-pop{animation:tv-pop .32s cubic-bezier(.2,.9,.3,1.2) both}
 @keyframes tv-pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
-.tv-imm{position:fixed;inset:0;z-index:1000;background:#000;color:${C.ink};font-family:'Be Vietnam Pro',system-ui,sans-serif}
+.tv-imm{position:fixed;inset:0;z-index:1000;background:#000;color:${C.ink};font-family:Inter,system-ui,sans-serif}
 .tv-imm canvas{width:100vw;height:100vh;object-fit:cover}
 .tv-routes{flex-wrap:wrap}
 .tv-main{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:start}

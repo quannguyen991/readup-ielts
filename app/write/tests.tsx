@@ -5,18 +5,21 @@ import { router } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Button, Card, Icon } from '@/components/ui';
-import { ChartPrint, EssayPrint } from '@/components/writing/PromptPrint';
+import { EssayPrint } from '@/components/writing/PromptPrint';
+import { ChartFigure } from '@/components/writing/ChartFigure';
+import { Task1SourceFigure } from '@/components/writing/Task1SourceFigure';
 import {
   filterWritingPrompts,
   type WritingPromptFilters,
 } from '@/data/writing-repository';
-import { TOPICS } from '@/data/articles';
+import { WRITING_TOPICS } from '@/data/writing-topics';
 import { useWritingStore } from '@/store/useWritingStore';
 import type { Task2Essay, WritingPrompt, WritingTask } from '@/lib/writing/types';
 import { CrossFade } from '@/components/motion/Motion';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { CutePencil } from '@/components/illust/Cute';
 import { useL } from '@/i18n/useL';
+import { writingTopicName } from '@/data/writing-topics';
 
 /**
  * Kho đề Writing, bố cục theo tham chiếu Youpass:
@@ -112,6 +115,16 @@ export default function WritingLibraryScreen() {
       .filter((k) => k.count > 0);
   }, [tab]);
 
+  const topicCounts = useMemo(() => {
+    if (tab === 'sat') return [] as { key: string; count: number }[];
+    return filterWritingPrompts({ task: tab }).reduce((counts, prompt) => {
+      const current = counts.find((item) => item.key === prompt.topicSlug);
+      if (current) current.count += 1;
+      else counts.push({ key: prompt.topicSlug, count: 1 });
+      return counts;
+    }, [] as { key: string; count: number }[]);
+  }, [tab]);
+
   /** Đổi tab thì bỏ bộ lọc con: giữ lại dễ rơi vào tổ hợp rỗng khó hiểu. */
   const selectTab = (next: Tab) => {
     setTab(next);
@@ -147,10 +160,11 @@ export default function WritingLibraryScreen() {
       {tab !== 'sat' ? (
         <FilterGroup title={L('Chủ đề', 'Topic')}>
           <Radio label={L('Tất cả', 'All')} on={topic === undefined} onPress={() => setTopic(undefined)} />
-          {TOPICS.map((t) => (
+          {WRITING_TOPICS.filter((t) => topicCounts.some((item) => item.key === t.slug)).map((t) => (
             <Radio
               key={t.slug}
-              label={t.name}
+              label={en ? t.en : t.vi}
+              count={topicCounts.find((item) => item.key === t.slug)?.count}
               on={topic === t.slug}
               onPress={() => { setTopic(topic === t.slug ? undefined : t.slug); setVisible(PAGE); }}
             />
@@ -177,6 +191,7 @@ export default function WritingLibraryScreen() {
             {L('Chọn đề, đọc hướng dẫn viết, rồi làm bài theo từng phần.', 'Pick a prompt, read the writing guide, then write part by part.')}
           </Text>
         </View>
+        <Button variant="outline" label={L('Thư viện bài mẫu', 'Model essay library')} onPress={() => router.push('/write/samples' as never)} />
       </View>
 
       <CrossFade swapKey={tab}>
@@ -313,7 +328,8 @@ function StatusTab({ label, on, onPress }: { label: string; on: boolean; onPress
  * kết) và đoạn mô tả. Một thẻ là một đề; bấm vào là vào phòng viết.
  */
 function PromptCard({ prompt }: { prompt: WritingPrompt }) {
-  const { L } = useL();
+  const { L, en } = useL();
+  const { width } = useWindowDimensions();
   const task1 = prompt.task === 'ielts_task1';
   const kindLabel = task1
     ? (CHART_LABEL[prompt.chartKind ?? ''] ?? 'Task 1')
@@ -321,32 +337,57 @@ function PromptCard({ prompt }: { prompt: WritingPrompt }) {
       ? ESSAY_LABEL[prompt.essayKind]
       : 'Task 2';
   const title = task1 && prompt.chartData ? prompt.chartData.title : prompt.promptText;
-  const blurb = task1 ? prompt.promptText : L(`Dạng ${kindLabel}. Viết ít nhất ${prompt.minWords} từ.`, `${kindLabel} essay. Write at least ${prompt.minWords} words.`);
+  const figureWidth = Math.min(460, Math.max(250, width >= 1024 ? (width - 420) / 2 : width >= 640 ? (width - 120) / 2 : width - 56));
 
   return (
     <Pressable
       onPress={() => router.push(`/write/${prompt.id}` as never)}
       accessibilityRole="link"
-      className="flex-row gap-3 overflow-hidden rounded-card border border-border bg-surface p-3"
+      className="overflow-hidden rounded-card border border-border bg-surface"
+      style={{ borderColor: '#DDE4EA', shadowColor: '#162B3A', shadowOpacity: 0.05, shadowRadius: 10, shadowOffset: { width: 0, height: 4 }, elevation: 2 }}
     >
-      <View className="items-center justify-center overflow-hidden rounded-lg bg-white" style={{ width: 128, minHeight: 112 }}>
-        {prompt.chartData ? (
-          <ChartPrint data={prompt.chartData} tone={CARD_TONE} active={false} />
-        ) : (
-          <EssayPrint kind={prompt.essayKind} tone={CARD_TONE} active={false} />
-        )}
+      <View
+        className="items-center justify-center overflow-hidden border-b border-border"
+        style={{ minHeight: 172, backgroundColor: '#F8FAFC', paddingVertical: 8 }}
+      >
+        {prompt.chartData ? <ChartFigure data={prompt.chartData} width={figureWidth} /> : task1 && prompt.sourceCharts?.length ? (
+          <View className="w-full items-center justify-center px-3" style={{ minHeight: 142 }}>
+            <Task1SourceFigure charts={prompt.sourceCharts} compact english={en} />
+          </View>
+        ) : !task1 ? (
+          <View className="w-full items-center justify-center px-5" style={{ minHeight: 142 }}>
+            <EssayPrint
+              kind={prompt.essayKind}
+              tone={CARD_TONE}
+              active={false}
+              promptText={prompt.promptText}
+              topic={writingTopicName(prompt.topicSlug, en ? 'en' : 'vi')}
+              english={en}
+            />
+          </View>
+        ) : null}
       </View>
-      <View className="min-w-0 flex-1 gap-1.5">
-        <View className="self-start rounded-md px-2 py-0.5" style={{ backgroundColor: '#0F1D33' }}>
-          <Text className="font-nun-strong text-white" style={{ fontSize: 11 }}>{kindLabel}</Text>
+      <View className="gap-2.5 p-4">
+        <View className="flex-row flex-wrap items-center gap-2">
+          <View className="rounded-md px-2.5 py-1" style={{ backgroundColor: task1 ? '#EAF2FF' : '#FFF0E6' }}>
+            <Text className="font-nun-strong" style={{ fontSize: 11, color: task1 ? '#285CA8' : '#A74F18' }}>
+              {task1 ? 'TASK 1' : 'TASK 2'} · {kindLabel}
+            </Text>
+          </View>
+          <Text className="font-nun-mid text-label text-muted">{writingTopicName(prompt.topicSlug, en ? 'en' : 'vi')}</Text>
         </View>
-        <Text className="font-nun-strong" numberOfLines={2} style={{ fontSize: 14, lineHeight: 19, color: '#1D4ED8' }}>
+        <Text className="font-nun-strong text-ink" numberOfLines={task1 ? 2 : 4} style={{ fontSize: 16, lineHeight: 23 }}>
           {title}
         </Text>
-        <Text className="font-nun text-label text-muted" numberOfLines={2} style={{ lineHeight: 18 }}>{blurb}</Text>
-        <Text className="font-nun-mid text-label text-muted">
-          Band {prompt.difficultyBand.toFixed(1)} · {Math.round(prompt.timeLimitSeconds / 60)} {L('phút', 'min')}
-        </Text>
+        <View className="flex-row flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-2.5">
+          <Text className="font-nun-mid text-label" style={{ color: '#586A78' }}>Band {prompt.difficultyBand.toFixed(1)}</Text>
+          <Text className="font-nun-mid text-label text-muted">{prompt.minWords}+ {L('từ', 'words')}</Text>
+          <Text className="font-nun-mid text-label text-muted">{Math.round(prompt.timeLimitSeconds / 60)} {L('phút', 'min')}</Text>
+          <View className="ml-auto flex-row items-center gap-1">
+            <Text className="font-nun-strong text-label" style={{ color: '#126B68' }}>{L('Mở đề', 'Open prompt')}</Text>
+            <Icon name="arrow-right" size={13} color="#126B68" />
+          </View>
+        </View>
       </View>
     </Pressable>
   );

@@ -82,3 +82,6 @@ supabase/.temp/
 .impeccable/
 
 .missing-words.json
+
+# User-provided Hanyu scans, OCR text, extraction CSVs, and QA images remain local.
+/.local-private/hanyu-source/

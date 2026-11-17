@@ -1,0 +1,496 @@
+[
+ {
+  "id": "zh-d-h1-15",
+  "level": 1,
+  "order": 15,
+  "title": "Sở thích và khả năng",
+  "titleZh": "爱好和能力",
+  "topic": "Sở thích, năng lực",
+  "scene": "Hai người bạn trò chuyện về việc đọc sách, xem ti vi và những điều mình biết làm.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你喜欢看书吗？",
+    "py": "nǐ xǐhuan kàn shū ma",
+    "vi": "Bạn có thích đọc sách không?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我很喜欢看书，也喜欢看电视。",
+    "py": "wǒ hěn xǐhuan kàn shū yě xǐhuan kàn diànshì",
+    "vi": "Mình rất thích đọc sách, cũng thích xem ti vi."
+   },
+   {
+    "who": "小明",
+    "zh": "你会说汉语吗？",
+    "py": "nǐ huì shuō hànyǔ ma",
+    "vi": "Bạn biết nói tiếng Trung không?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我会说一点儿汉语。",
+    "py": "wǒ huì shuō yìdiǎnr hànyǔ",
+    "vi": "Mình biết nói một chút tiếng Trung."
+   },
+   {
+    "who": "小明",
+    "zh": "你也会写汉字吗？",
+    "py": "nǐ yě huì xiě hànzì ma",
+    "vi": "Bạn cũng biết viết chữ Hán à?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我会写汉字，也会写我的名字。",
+    "py": "wǒ huì xiě hànzì yě huì xiě wǒ de míngzi",
+    "vi": "Mình biết viết chữ Hán, cũng biết viết tên của mình."
+   },
+   {
+    "who": "小明",
+    "zh": "你每天都看书吗？",
+    "py": "nǐ měitiān dōu kàn shū ma",
+    "vi": "Ngày nào bạn cũng đọc sách à?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我每天看书，也看电视。",
+    "py": "wǒ měitiān kàn shū yě kàn diànshì",
+    "vi": "Ngày nào mình cũng đọc sách, cũng xem ti vi."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "喜欢",
+    "py": "xǐhuan",
+    "vi": "thích"
+   },
+   {
+    "zh": "看书",
+    "py": "kàn shū",
+    "vi": "đọc sách"
+   },
+   {
+    "zh": "看电视",
+    "py": "kàn diànshì",
+    "vi": "xem ti vi"
+   },
+   {
+    "zh": "会",
+    "py": "huì",
+    "vi": "biết, có thể"
+   },
+   {
+    "zh": "汉语",
+    "py": "hànyǔ",
+    "vi": "tiếng Trung"
+   },
+   {
+    "zh": "汉字",
+    "py": "hànzì",
+    "vi": "chữ Hán"
+   },
+   {
+    "zh": "一点儿",
+    "py": "yìdiǎnr",
+    "vi": "một chút"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-16",
+   "zh-g-h1-01",
+   "zh-g-h1-27"
+  ],
+  "quiz": [
+   {
+    "q": "小丽 thích làm gì?",
+    "options": [
+     "Đọc sách",
+     "Nấu ăn",
+     "Xem phim",
+     "Mua quần áo"
+    ],
+    "answer": 0,
+    "explain": "小丽 nói rằng cô ấy rất thích đọc sách."
+   },
+   {
+    "q": "小丽 biết nói ngôn ngữ nào?",
+    "options": [
+     "Tiếng Anh",
+     "Tiếng Trung",
+     "Tiếng Nhật",
+     "Tiếng Pháp"
+    ],
+    "answer": 1,
+    "explain": "小丽 nói mình biết nói một chút tiếng Trung."
+   },
+   {
+    "q": "小丽 biết nói tiếng Trung ở mức nào?",
+    "options": [
+     "Nói rất nhiều",
+     "Không biết nói",
+     "Một chút",
+     "Hai thứ tiếng"
+    ],
+    "answer": 2,
+    "explain": "Cô ấy dùng cụm 一点儿, nghĩa là một chút."
+   },
+   {
+    "q": "小丽 biết viết gì?",
+    "options": [
+     "Tiếng Trung",
+     "Ti vi",
+     "Sách",
+     "Chữ Hán"
+    ],
+    "answer": 3,
+    "explain": "小丽 nói rằng cô ấy biết viết chữ Hán."
+   },
+   {
+    "q": "Ngoài đọc sách mỗi ngày, 小丽 còn làm gì?",
+    "options": [
+     "Xem ti vi",
+     "Đi học",
+     "Mua đồ",
+     "Uống trà"
+    ],
+    "answer": 0,
+    "explain": "Cô ấy nói mỗi ngày mình cũng xem ti vi."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h2-02",
+  "level": 2,
+  "order": 2,
+  "title": "Đi sân bay bằng taxi",
+  "titleZh": "坐飞机和出租车",
+  "topic": "Giao thông",
+  "scene": "Hai người bạn trao đổi về chuyến bay đến Bắc Kinh và cách đi ra sân bay.",
+  "minutes": 6,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你今天怎么去北京？",
+    "py": "nǐ jīntiān zěnme qù běijīng",
+    "vi": "Hôm nay bạn đi Bắc Kinh bằng cách nào?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我是坐飞机去北京的。",
+    "py": "wǒ shì zuò fēijī qù běijīng de",
+    "vi": "Mình đi Bắc Kinh bằng máy bay."
+   },
+   {
+    "who": "小明",
+    "zh": "你几点到机场？",
+    "py": "nǐ jǐ diǎn dào jīchǎng",
+    "vi": "Mấy giờ bạn đến sân bay?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我下午一点到机场，三点坐飞机。",
+    "py": "wǒ xiàwǔ yì diǎn dào jīchǎng sān diǎn zuò fēijī",
+    "vi": "Mình đến sân bay lúc một giờ chiều, ba giờ lên máy bay."
+   },
+   {
+    "who": "小明",
+    "zh": "你怎么去机场？",
+    "py": "nǐ zěnme qù jīchǎng",
+    "vi": "Bạn đi sân bay bằng cách nào?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我坐出租车去机场，很快就到。",
+    "py": "wǒ zuò chūzūchē qù jīchǎng hěn kuài jiù dào",
+    "vi": "Mình đi taxi ra sân bay, sẽ đến nơi rất nhanh."
+   },
+   {
+    "who": "小明",
+    "zh": "出租车贵，还是公共汽车贵？",
+    "py": "chūzūchē guì háishì gōnggòngqìchē guì",
+    "vi": "Taxi đắt hay xe buýt đắt?"
+   },
+   {
+    "who": "小丽",
+    "zh": "出租车比公共汽车贵。",
+    "py": "chūzūchē bǐ gōnggòngqìchē guì",
+    "vi": "Taxi đắt hơn xe buýt."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "飞机",
+    "py": "fēijī",
+    "vi": "máy bay"
+   },
+   {
+    "zh": "出租车",
+    "py": "chūzūchē",
+    "vi": "taxi"
+   },
+   {
+    "zh": "机场",
+    "py": "jīchǎng",
+    "vi": "sân bay"
+   },
+   {
+    "zh": "公共汽车",
+    "py": "gōnggòngqìchē",
+    "vi": "xe buýt"
+   },
+   {
+    "zh": "贵",
+    "py": "guì",
+    "vi": "đắt"
+   },
+   {
+    "zh": "快",
+    "py": "kuài",
+    "vi": "nhanh"
+   },
+   {
+    "zh": "北京",
+    "py": "běijīng",
+    "vi": "Bắc Kinh"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h2-08",
+   "zh-g-h2-14",
+   "zh-g-h2-23"
+  ],
+  "quiz": [
+   {
+    "q": "小丽 đi Bắc Kinh bằng phương tiện gì?",
+    "options": [
+     "Taxi",
+     "Máy bay",
+     "Xe buýt",
+     "Đi bộ"
+    ],
+    "answer": 1,
+    "explain": "小丽 nói rằng cô ấy đi Bắc Kinh bằng máy bay."
+   },
+   {
+    "q": "小丽 đến sân bay lúc mấy giờ?",
+    "options": [
+     "Mười giờ sáng",
+     "Hai giờ chiều",
+     "Một giờ chiều",
+     "Tám giờ tối"
+    ],
+    "answer": 2,
+    "explain": "Cô ấy nói mình đến sân bay lúc một giờ chiều."
+   },
+   {
+    "q": "小丽 lên máy bay lúc mấy giờ?",
+    "options": [
+     "Tám giờ sáng",
+     "Mười hai giờ trưa",
+     "Năm giờ chiều",
+     "Ba giờ chiều"
+    ],
+    "answer": 3,
+    "explain": "小丽 nói rằng cô ấy lên máy bay lúc ba giờ."
+   },
+   {
+    "q": "小丽 đi ra sân bay bằng cách nào?",
+    "options": [
+     "Đi taxi",
+     "Đi xe buýt",
+     "Đi bộ",
+     "Đi xe đạp"
+    ],
+    "answer": 0,
+    "explain": "Cô ấy đi taxi ra sân bay."
+   },
+   {
+    "q": "Phương tiện nào đắt hơn?",
+    "options": [
+     "Xe buýt",
+     "Taxi",
+     "Hai phương tiện giá như nhau",
+     "Không có thông tin"
+    ],
+    "answer": 1,
+    "explain": "小丽 nói taxi đắt hơn xe buýt."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h2-03",
+  "level": 2,
+  "order": 3,
+  "title": "Đi chơi cùng bạn bè",
+  "titleZh": "一起去公园",
+  "topic": "Du lịch",
+  "scene": "Hai người bạn kể về những thành phố đã đến và dự định đi công viên cùng nhau.",
+  "minutes": 6,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你去过北京吗？",
+    "py": "nǐ qù guo běijīng ma",
+    "vi": "Bạn đã từng đến Bắc Kinh chưa?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我去过北京，也去过上海。",
+    "py": "wǒ qù guo běijīng yě qù guo shànghǎi",
+    "vi": "Mình đã đến Bắc Kinh, cũng đã đến Thượng Hải."
+   },
+   {
+    "who": "小明",
+    "zh": "你觉得北京怎么样？",
+    "py": "nǐ juéde běijīng zěnmeyàng",
+    "vi": "Bạn thấy Bắc Kinh thế nào?"
+   },
+   {
+    "who": "小丽",
+    "zh": "北京很大，也很好玩。",
+    "py": "běijīng hěn dà yě hěn hǎowán",
+    "vi": "Bắc Kinh rất rộng, cũng rất vui."
+   },
+   {
+    "who": "小明",
+    "zh": "你喜欢北京还是上海？",
+    "py": "nǐ xǐhuan běijīng háishì shànghǎi",
+    "vi": "Bạn thích Bắc Kinh hay Thượng Hải?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我喜欢上海，上海比北京小。",
+    "py": "wǒ xǐhuan shànghǎi shànghǎi bǐ běijīng xiǎo",
+    "vi": "Mình thích Thượng Hải, Thượng Hải nhỏ hơn Bắc Kinh."
+   },
+   {
+    "who": "小明",
+    "zh": "你明天想去哪儿玩？",
+    "py": "nǐ míngtiān xiǎng qù nǎr wán",
+    "vi": "Ngày mai bạn muốn đi đâu chơi?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我想和朋友一起去公园。",
+    "py": "wǒ xiǎng hé péngyou yìqǐ qù gōngyuán",
+    "vi": "Mình muốn đi công viên cùng bạn."
+   },
+   {
+    "who": "小明",
+    "zh": "我们去公园看什么？",
+    "py": "wǒmen qù gōngyuán kàn shénme",
+    "vi": "Chúng ta đến công viên xem gì?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我们去公园看花，再一起吃饭。",
+    "py": "wǒmen qù gōngyuán kàn huā zài yìqǐ chīfàn",
+    "vi": "Chúng ta đến công viên ngắm hoa, rồi cùng nhau ăn cơm."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "去过",
+    "py": "qù guo",
+    "vi": "đã từng đi"
+   },
+   {
+    "zh": "北京",
+    "py": "běijīng",
+    "vi": "Bắc Kinh"
+   },
+   {
+    "zh": "上海",
+    "py": "shànghǎi",
+    "vi": "Thượng Hải"
+   },
+   {
+    "zh": "好玩",
+    "py": "hǎowán",
+    "vi": "vui, thú vị"
+   },
+   {
+    "zh": "朋友",
+    "py": "péngyou",
+    "vi": "bạn bè"
+   },
+   {
+    "zh": "公园",
+    "py": "gōngyuán",
+    "vi": "công viên"
+   },
+   {
+    "zh": "花",
+    "py": "huā",
+    "vi": "hoa"
+   },
+   {
+    "zh": "吃饭",
+    "py": "chīfàn",
+    "vi": "ăn cơm"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h2-16",
+   "zh-g-h2-05",
+   "zh-g-h2-14"
+  ],
+  "quiz": [
+   {
+    "q": "小丽 đã từng đến hai thành phố nào?",
+    "options": [
+     "Bắc Kinh và Nam Kinh",
+     "Thượng Hải và Quảng Châu",
+     "Bắc Kinh và Thượng Hải",
+     "Bắc Kinh và Thành Đô"
+    ],
+    "answer": 2,
+    "explain": "小丽 nói cô ấy đã đến Bắc Kinh và Thượng Hải."
+   },
+   {
+    "q": "小丽 nhận xét Bắc Kinh thế nào?",
+    "options": [
+     "Nhỏ và buồn",
+     "Rất rộng và vui",
+     "Đắt và xa",
+     "Yên tĩnh và lạnh"
+    ],
+    "answer": 1,
+    "explain": "Cô ấy nói Bắc Kinh rất rộng và cũng rất vui."
+   },
+   {
+    "q": "小丽 thích thành phố nào hơn?",
+    "options": [
+     "Thượng Hải",
+     "Bắc Kinh",
+     "Cả hai như nhau",
+     "Cô ấy chưa đến thành phố nào"
+    ],
+    "answer": 0,
+    "explain": "小丽 nói rằng cô ấy thích Thượng Hải."
+   },
+   {
+    "q": "Ngày mai 小丽 muốn đi đâu cùng bạn?",
+    "options": [
+     "Ra sân bay",
+     "Đến công viên",
+     "Đến trường",
+     "Đến nhà hàng"
+    ],
+    "answer": 1,
+    "explain": "Cô ấy muốn cùng bạn đi công viên."
+   },
+   {
+    "q": "Hai người định làm gì ở công viên?",
+    "options": [
+     "Mua sách rồi về nhà",
+     "Đi xe buýt và chụp ảnh",
+     "Ngắm hoa rồi cùng ăn cơm",
+     "Gặp bạn rồi đi học"
+    ],
+    "answer": 2,
+    "explain": "Họ định ngắm hoa trong công viên rồi cùng nhau ăn cơm."
+   }
+  ]
+ }
+]

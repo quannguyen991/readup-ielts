@@ -1,0 +1,602 @@
+[
+  {
+    "id": "zh-g-h1-05",
+    "level": 1,
+    "order": 1,
+    "title": "Câu 有 biểu thị sở hữu",
+    "titleZh": "有字句",
+    "summary": "Bạn sẽ nói được ai có hoặc không có đồ vật, bạn bè và vật nuôi.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nói ai có thứ gì",
+        "body": "有 diễn tả một người hoặc một nhóm có thứ gì đó. 没有 diễn tả không có.",
+        "formula": "Chủ thể + 有 / 没有 + danh từ",
+        "examples": [
+          {
+            "zh": "我有一本中文书。",
+            "py": "wǒ yǒu yì běn zhōngwén shū",
+            "vi": "Tôi có một quyển sách tiếng Trung."
+          },
+          {
+            "zh": "姐姐有一个中国朋友。",
+            "py": "jiějie yǒu yí ge zhōngguó péngyou",
+            "vi": "Chị gái có một người bạn Trung Quốc."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nói về người và vật",
+        "body": "Dùng mẫu này khi muốn nói một người có đồ vật, bạn bè hoặc vật nuôi. Có thể dùng câu khẳng định hoặc phủ định.",
+        "examples": [
+          {
+            "zh": "妈妈有一只小猫。",
+            "py": "māma yǒu yì zhī xiǎomāo",
+            "vi": "Mẹ có một con mèo nhỏ."
+          },
+          {
+            "zh": "爸爸有一个好朋友。",
+            "py": "bàba yǒu yí ge hǎo péngyou",
+            "vi": "Bố có một người bạn tốt."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt 有 trước danh từ",
+        "body": "Đặt người hoặc nhóm sở hữu trước 有, rồi đến thứ được sở hữu. Khi phủ định, dùng 没有 trước danh từ.",
+        "formula": "Chủ thể + 有 / 没有 + (số lượng) + danh từ",
+        "examples": [
+          {
+            "zh": "我们家有一只猫。",
+            "py": "wǒmen jiā yǒu yì zhī māo",
+            "vi": "Nhà chúng tôi có một con mèo."
+          },
+          {
+            "zh": "他没有中国朋友。",
+            "py": "tā méiyǒu zhōngguó péngyou",
+            "vi": "Anh ấy không có bạn người Trung Quốc."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Hỏi có hay không",
+        "body": "Muốn hỏi ai có thứ gì không, thêm 吗 ở cuối câu. Có thể đặt lượng từ trước danh từ để nói rõ số lượng.",
+        "examples": [
+          {
+            "zh": "老师有一本中文书。",
+            "py": "lǎoshī yǒu yì běn zhōngwén shū",
+            "vi": "Thầy giáo có một quyển sách tiếng Trung."
+          },
+          {
+            "zh": "你有一杯水吗？",
+            "py": "nǐ yǒu yì bēi shuǐ ma",
+            "vi": "Bạn có một cốc nước không?"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không phủ định 有 bằng 不",
+        "body": "Khi nói không có, dùng 没有.",
+        "mistakes": [
+          {
+            "wrong": "我不有中文书。",
+            "right": "我没有中文书。",
+            "why": "Người học tiếng Việt dễ đặt 不 trước 有, nhưng dạng phủ định của 有 là 没有."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu đúng để nói “Tôi có một quyển sách tiếng Trung”.",
+        "options": [
+          "我有一本中文书。",
+          "我一本有中文书。",
+          "我有中文一本书。",
+          "我没有一本中文书。"
+        ],
+        "answer": 0,
+        "explain": "有 đứng sau chủ thể và trước lượng từ cùng danh từ."
+      },
+      {
+        "q": "Câu nào có nghĩa “Tôi không có nước”?",
+        "options": [
+          "我不有水。",
+          "我没有水。",
+          "我水没有。",
+          "我有没水。"
+        ],
+        "answer": 1,
+        "explain": "Dùng 没有 để phủ định việc có thứ gì."
+      },
+      {
+        "q": "Câu nào nói chị có một người bạn Trung Quốc?",
+        "options": [
+          "姐姐一个有中国朋友。",
+          "姐姐有中国一个朋友。",
+          "姐姐有一个中国朋友。",
+          "有姐姐一个中国朋友。"
+        ],
+        "answer": 2,
+        "explain": "姐姐 là chủ thể, còn 有 đứng trước cụm 一个中国朋友."
+      },
+      {
+        "q": "Chọn câu hỏi “Bạn có sách không?”.",
+        "options": [
+          "你书有吗？",
+          "你有吗书？",
+          "你吗有书？",
+          "你有书吗？"
+        ],
+        "answer": 3,
+        "explain": "吗 đứng ở cuối câu hỏi có hoặc không."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Nhà chúng tôi có một con mèo”.",
+        "options": [
+          "我们家有一只猫。",
+          "我们有家一只猫。",
+          "我们家一猫只有。",
+          "有我们家一只猫。"
+        ],
+        "answer": 0,
+        "explain": "Cụm chỉ người sở hữu đứng trước 有, rồi đến danh từ."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h1-06",
+    "level": 1,
+    "order": 2,
+    "title": "Câu tồn hiện với 有 và 是",
+    "titleZh": "存现句",
+    "summary": "Bạn sẽ nói được ở một nơi có người hoặc vật gì, và nơi đó là gì.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nói về nơi và sự vật",
+        "body": "Câu tồn hiện đặt nơi chốn lên đầu để nói ở đó có ai hoặc vật gì. Có thể dùng 是 để xác định nơi đó là gì.",
+        "formula": "Nơi chốn + 有 + danh từ; Nơi chốn + 是 + danh từ",
+        "examples": [
+          {
+            "zh": "学校里有很多学生。",
+            "py": "xuéxiào lǐ yǒu hěn duō xuéshēng",
+            "vi": "Trong trường có rất nhiều học sinh."
+          },
+          {
+            "zh": "桌子上有一本书。",
+            "py": "zhuōzi shàng yǒu yì běn shū",
+            "vi": "Trên bàn có một quyển sách."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Giới thiệu hoặc xác định nơi",
+        "body": "Dùng 有 để giới thiệu người hoặc vật đang có ở một nơi. Dùng 是 để chỉ nơi đó là địa điểm hay sự vật nào.",
+        "examples": [
+          {
+            "zh": "这里是我的学校。",
+            "py": "zhèlǐ shì wǒ de xuéxiào",
+            "vi": "Đây là trường của tôi."
+          },
+          {
+            "zh": "学校前面是商店。",
+            "py": "xuéxiào qiánmiàn shì shāngdiàn",
+            "vi": "Phía trước trường học là cửa hàng."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đưa nơi chốn lên trước",
+        "body": "Mở đầu câu bằng cụm chỉ nơi chốn, sau đó dùng 有 hoặc 是. Danh từ đứng sau 有 nêu người hoặc vật có mặt ở đó.",
+        "formula": "Nơi chốn + 有 / 是 + danh từ",
+        "examples": [
+          {
+            "zh": "我家里有一只小猫。",
+            "py": "wǒ jiā lǐ yǒu yì zhī xiǎomāo",
+            "vi": "Trong nhà tôi có một con mèo nhỏ."
+          },
+          {
+            "zh": "我家前面是学校。",
+            "py": "wǒ jiā qiánmiàn shì xuéxiào",
+            "vi": "Phía trước nhà tôi là trường học."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Phân biệt 有 và 是",
+        "body": "有 giới thiệu thứ xuất hiện ở một nơi; 是 dùng để xác định nơi đó là gì. Trong cả hai mẫu, cụm chỉ nơi chốn đứng trước động từ.",
+        "examples": [
+          {
+            "zh": "商店里有水果和茶。",
+            "py": "shāngdiàn lǐ yǒu shuǐguǒ hé chá",
+            "vi": "Trong cửa hàng có trái cây và trà."
+          },
+          {
+            "zh": "你看，前面是我家。",
+            "py": "nǐ kàn qiánmiàn shì wǒ jiā",
+            "vi": "Bạn nhìn kìa, phía trước là nhà tôi."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không đặt chủ thể sở hữu lên trước",
+        "body": "Khi muốn nói có thứ gì ở một nơi, hãy bắt đầu bằng cụm chỉ nơi chốn.",
+        "mistakes": [
+          {
+            "wrong": "我有学校里一本书。",
+            "right": "学校里有一本书。",
+            "why": "Câu tồn hiện nêu nơi chốn trước rồi mới dùng 有 để giới thiệu vật ở đó."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu đúng để nói “Trên bàn có một quyển sách”.",
+        "options": [
+          "桌子上有一本书。",
+          "桌子有上一本书。",
+          "有桌子上一本书。",
+          "一本书有桌子上。"
+        ],
+        "answer": 0,
+        "explain": "Cụm chỉ nơi chốn 桌子上 đứng trước 有."
+      },
+      {
+        "q": "Câu nào nói “Đây là trường của tôi”?",
+        "options": [
+          "这里我的学校有。",
+          "这里是我的学校。",
+          "是这里我的学校。",
+          "我的学校是这里。"
+        ],
+        "answer": 1,
+        "explain": "这里 đứng trước 是 để xác định đây là trường nào."
+      },
+      {
+        "q": "Chọn câu nói có nhiều học sinh trong trường.",
+        "options": [
+          "学校有学生里很多。",
+          "里学校有很多学生。",
+          "学校里有很多学生。",
+          "有学校里很多学生。"
+        ],
+        "answer": 2,
+        "explain": "学校里 là nơi chốn, đứng trước 有很多学生."
+      },
+      {
+        "q": "Câu nào nói “Phía trước nhà tôi là trường học”?",
+        "options": [
+          "我家是学校前面。",
+          "学校我家前面是。",
+          "是我家前面学校。",
+          "我家前面是学校。"
+        ],
+        "answer": 3,
+        "explain": "我家前面 là cụm chỉ nơi chốn và đứng trước 是."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Trong nhà tôi có một con mèo nhỏ”.",
+        "options": [
+          "我家里有一只小猫。",
+          "我有家里一只小猫。",
+          "小猫我家里有一只。",
+          "有我家里一只小猫。"
+        ],
+        "answer": 0,
+        "explain": "Câu tồn hiện bắt đầu bằng nơi chốn 我家里."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h1-07",
+    "level": 1,
+    "order": 3,
+    "title": "Câu liên động 去…买…",
+    "titleZh": "连动句",
+    "summary": "Bạn sẽ diễn tả việc đi đến một nơi để thực hiện hành động tiếp theo.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Đi để làm việc gì",
+        "body": "Một chủ thể thực hiện hai hành động nối tiếp nhau. Trong mẫu này, 去 nêu việc đi đến nơi nào, còn 买 nêu mục đích.",
+        "formula": "Chủ thể + 去 + nơi chốn + 买 + đồ vật",
+        "examples": [
+          {
+            "zh": "我今天去商店买苹果。",
+            "py": "wǒ jīntiān qù shāngdiàn mǎi píngguǒ",
+            "vi": "Hôm nay tôi đi cửa hàng mua táo."
+          },
+          {
+            "zh": "妈妈去商店买茶。",
+            "py": "māma qù shāngdiàn mǎi chá",
+            "vi": "Mẹ đi cửa hàng mua trà."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nêu mục đích của chuyến đi",
+        "body": "Dùng mẫu này khi muốn nói mình hoặc người khác đến một nơi để mua thứ gì. Có thể thêm thời gian trước 去.",
+        "examples": [
+          {
+            "zh": "爸爸现在去商店买水。",
+            "py": "bàba xiànzài qù shāngdiàn mǎi shuǐ",
+            "vi": "Bây giờ bố đi cửa hàng mua nước."
+          },
+          {
+            "zh": "姐姐下午去商店买衣服。",
+            "py": "jiějie xiàwǔ qù shāngdiàn mǎi yīfu",
+            "vi": "Buổi chiều chị gái đi cửa hàng mua quần áo."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Nêu nơi trước hành động mua",
+        "body": "Đặt 去 trước nơi chốn, rồi đặt 买 và món đồ muốn mua. Chủ thể của cả hai hành động thường giống nhau.",
+        "formula": "Chủ thể + 去 + nơi chốn + 买 + đồ vật",
+        "examples": [
+          {
+            "zh": "我们今天去商店买水果。",
+            "py": "wǒmen jīntiān qù shāngdiàn mǎi shuǐguǒ",
+            "vi": "Hôm nay chúng tôi đi cửa hàng mua trái cây."
+          },
+          {
+            "zh": "老师去商店买一本书。",
+            "py": "lǎoshī qù shāngdiàn mǎi yì běn shū",
+            "vi": "Thầy giáo đi cửa hàng mua một quyển sách."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Giữ đúng thứ tự hành động",
+        "body": "去 đứng trước nơi chốn và 买 đứng sau nơi chốn. Phần 买 cho biết mục đích của việc đi.",
+        "examples": [
+          {
+            "zh": "我上午去商店买水。",
+            "py": "wǒ shàngwǔ qù shāngdiàn mǎi shuǐ",
+            "vi": "Buổi sáng tôi đi cửa hàng mua nước."
+          },
+          {
+            "zh": "妈妈星期天去商店买苹果。",
+            "py": "māma xīngqītiān qù shāngdiàn mǎi píngguǒ",
+            "vi": "Chủ nhật mẹ đi cửa hàng mua táo."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không đặt 买 trước 去",
+        "body": "Để diễn tả đi mua, hãy nêu việc đi và nơi đến trước, rồi mới nêu món đồ sẽ mua.",
+        "mistakes": [
+          {
+            "wrong": "我买苹果去商店。",
+            "right": "我去商店买苹果。",
+            "why": "Người học dễ đặt động từ mua trước, nhưng mẫu này cần nêu 去和 nơi chốn trước 买."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu đúng để nói “Tôi đi cửa hàng mua táo”.",
+        "options": [
+          "我今天去商店买苹果。",
+          "我买苹果去商店。",
+          "我去买商店苹果。",
+          "我商店去买苹果。"
+        ],
+        "answer": 0,
+        "explain": "去 và nơi chốn đứng trước động từ 买."
+      },
+      {
+        "q": "Chọn câu nói “Mẹ đi cửa hàng mua trà”.",
+        "options": [
+          "妈妈买茶去商店。",
+          "妈妈去商店买茶。",
+          "妈妈商店去买茶。",
+          "妈妈买去商店茶。"
+        ],
+        "answer": 1,
+        "explain": "Câu đúng nêu việc đi đến cửa hàng trước mục đích mua trà."
+      },
+      {
+        "q": "Câu nào nói bố đi cửa hàng mua nước?",
+        "options": [
+          "爸爸买商店去水。",
+          "爸爸去买水商店。",
+          "爸爸现在去商店买水。",
+          "爸爸去商店水买。"
+        ],
+        "answer": 2,
+        "explain": "Cụm 去商店 đứng trước 买水."
+      },
+      {
+        "q": "Chọn câu có đúng thứ tự “đi + nơi chốn + mua + đồ vật”.",
+        "options": [
+          "我买苹果去商店。",
+          "我去苹果商店买。",
+          "我商店买苹果去。",
+          "我去商店买苹果。"
+        ],
+        "answer": 3,
+        "explain": "Mẫu này đặt nơi chốn sau 去 và đặt đồ vật sau 买."
+      },
+      {
+        "q": "Chọn câu nói “Buổi chiều chị gái đi cửa hàng mua quần áo”.",
+        "options": [
+          "姐姐下午去商店买衣服。",
+          "姐姐下午买衣服去商店。",
+          "姐姐商店下午去买衣服。",
+          "姐姐下午去买衣服商店。"
+        ],
+        "answer": 0,
+        "explain": "Thời gian có thể đứng trước 去, còn 买衣服 nêu mục đích."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h1-08",
+    "level": 1,
+    "order": 4,
+    "title": "Câu hai tân ngữ",
+    "titleZh": "双宾语句",
+    "summary": "Bạn sẽ nói được ai đưa cho ai một món đồ hoặc đồ uống.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Một động từ, hai tân ngữ",
+        "body": "Một số câu có hai tân ngữ sau động từ 给. Tân ngữ chỉ người nhận đứng trước tân ngữ chỉ vật.",
+        "formula": "Chủ thể + 给 + người nhận + vật",
+        "examples": [
+          {
+            "zh": "老师给我一本书。",
+            "py": "lǎoshī gěi wǒ yì běn shū",
+            "vi": "Thầy giáo đưa cho tôi một quyển sách."
+          },
+          {
+            "zh": "妈妈给我一杯水。",
+            "py": "māma gěi wǒ yì bēi shuǐ",
+            "vi": "Mẹ đưa cho tôi một cốc nước."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nói ai đưa gì cho ai",
+        "body": "Dùng mẫu này khi kể một người đưa đồ vật hoặc đồ uống cho người khác. Người nhận được nêu ngay sau 给.",
+        "examples": [
+          {
+            "zh": "我给妈妈一个苹果。",
+            "py": "wǒ gěi māma yí ge píngguǒ",
+            "vi": "Tôi đưa cho mẹ một quả táo."
+          },
+          {
+            "zh": "她给朋友一杯茶。",
+            "py": "tā gěi péngyou yì bēi chá",
+            "vi": "Cô ấy đưa cho bạn một cốc trà."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Nêu người nhận trước vật",
+        "body": "Sau 给, đặt người nhận trước rồi mới đến vật được đưa. Nếu có số lượng, đặt lượng từ trước danh từ chỉ vật.",
+        "formula": "Chủ thể + 给 + tân ngữ người nhận + tân ngữ đồ vật",
+        "examples": [
+          {
+            "zh": "爸爸给我一本中文书。",
+            "py": "bàba gěi wǒ yì běn zhōngwén shū",
+            "vi": "Bố đưa cho tôi một quyển sách tiếng Trung."
+          },
+          {
+            "zh": "老师给我们一本书。",
+            "py": "lǎoshī gěi wǒmen yì běn shū",
+            "vi": "Thầy giáo đưa cho chúng tôi một quyển sách."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Giữ thứ tự hai tân ngữ",
+        "body": "Trong mẫu này, người nhận là tân ngữ thứ nhất và vật là tân ngữ thứ hai. Không đảo vật lên trước người nhận.",
+        "examples": [
+          {
+            "zh": "我给老师一个苹果。",
+            "py": "wǒ gěi lǎoshī yí ge píngguǒ",
+            "vi": "Tôi đưa cho thầy giáo một quả táo."
+          },
+          {
+            "zh": "妈妈给我一只小猫。",
+            "py": "māma gěi wǒ yì zhī xiǎomāo",
+            "vi": "Mẹ tặng tôi một con mèo nhỏ."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không đảo hai tân ngữ",
+        "body": "Sau 给, đặt người nhận trước đồ vật được đưa.",
+        "mistakes": [
+          {
+            "wrong": "妈妈给一杯水我。",
+            "right": "妈妈给我一杯水。",
+            "why": "Người học tiếng Việt có thể đưa vật lên trước, nhưng mẫu hai tân ngữ đặt người nhận trước vật."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu “Thầy giáo đưa cho tôi một quyển sách”.",
+        "options": [
+          "老师给我一本书。",
+          "老师给一本书我。",
+          "老师一本给我书。",
+          "老师我给一本书。"
+        ],
+        "answer": 0,
+        "explain": "Người nhận 我 đứng sau 给 và trước vật 一本书."
+      },
+      {
+        "q": "Chọn câu “Mẹ đưa cho tôi một cốc nước”.",
+        "options": [
+          "妈妈给一杯水我。",
+          "妈妈给我一杯水。",
+          "妈妈我给一杯水。",
+          "妈妈一杯水给我。"
+        ],
+        "answer": 1,
+        "explain": "Trong mẫu này, người nhận đứng trước vật được đưa."
+      },
+      {
+        "q": "Câu nào đặt người nhận trước quyển sách?",
+        "options": [
+          "老师给一本书我。",
+          "老师一本书给我。",
+          "老师给我一本书。",
+          "老师我给一本书。"
+        ],
+        "answer": 2,
+        "explain": "我 là người nhận nên đứng sau 给 và trước 一本书."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Mẹ đưa cho tôi một cốc nước”.",
+        "options": [
+          "妈妈给一杯水我。",
+          "给妈妈我一杯水。",
+          "妈妈一杯水给我。",
+          "妈妈给我一杯水。"
+        ],
+        "answer": 3,
+        "explain": "Câu đúng có thứ tự chủ thể, 给, người nhận, rồi đến vật."
+      },
+      {
+        "q": "Chọn câu “Tôi đưa cho mẹ một quả táo”.",
+        "options": [
+          "我给妈妈一个苹果。",
+          "我给一个苹果妈妈。",
+          "我妈妈给一个苹果。",
+          "给我妈妈一个苹果。"
+        ],
+        "answer": 0,
+        "explain": "妈妈 là người nhận nên đứng ngay sau 给."
+      }
+    ]
+  }
+]

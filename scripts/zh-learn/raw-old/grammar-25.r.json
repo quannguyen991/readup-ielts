@@ -1,0 +1,520 @@
+[
+ {
+  "id": "zh-g-h4-14",
+  "level": 4,
+  "order": 14,
+  "title": "Nếu… thì…, nếu không",
+  "titleZh": "要是……就……；否则",
+  "summary": "Bạn sẽ biết cách nêu điều kiện, kết quả và hậu quả cần tránh.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu điều kiện và kết quả",
+    "body": "要是 nêu điều kiện, còn 就 dẫn vào kết quả tương ứng. 否则 đứng trước hậu quả nếu điều kiện hoặc yêu cầu không được đáp ứng.",
+    "examples": [
+     {
+      "zh": "要是你今天有时间，我们就去公园。",
+      "py": "Yàoshi nǐ jīntiān yǒu shíjiān wǒmen jiù qù gōngyuán",
+      "vi": "Nếu hôm nay bạn có thời gian thì chúng ta đi công viên."
+     },
+     {
+      "zh": "明天要是下雨，我们就在家看书。",
+      "py": "Míngtiān yàoshi xiàyǔ wǒmen jiù zài jiā kànshū",
+      "vi": "Nếu ngày mai trời mưa thì chúng ta ở nhà đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đưa ra lựa chọn hoặc lời nhắc",
+    "body": "Dùng 要是……就…… để nói điều gì sẽ xảy ra khi một điều kiện đúng. Dùng 否则 để nhắc đến hậu quả nếu không làm điều vừa được yêu cầu.",
+    "examples": [
+     {
+      "zh": "要是你不舒服，就给我打电话。",
+      "py": "Yàoshi nǐ bù shūfu jiù gěi wǒ dǎ diànhuà",
+      "vi": "Nếu bạn không khỏe thì gọi điện cho tôi."
+     },
+     {
+      "zh": "请你快点儿出门，否则我们会迟到。",
+      "py": "Qǐng nǐ kuàidiǎnr chūmén fǒuzé wǒmen huì chídào",
+      "vi": "Bạn mau ra khỏi nhà nhé, nếu không chúng ta sẽ đến muộn."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Sắp xếp điều kiện và kết quả",
+    "body": "要是 có thể đứng trước hoặc sau chủ ngữ. 就 thường đứng trước kết quả; 否则 thường mở đầu mệnh đề nêu hậu quả nếu yêu cầu không được thực hiện.",
+    "formula": "要是 + điều kiện，(chủ ngữ) + 就 + kết quả；yêu cầu，否则 + hậu quả",
+    "examples": [
+     {
+      "zh": "我们现在出发，否则就赶不上火车了。",
+      "py": "Wǒmen xiànzài chūfā fǒuzé jiù gǎnbushàng huǒchē le",
+      "vi": "Chúng ta xuất phát ngay, nếu không sẽ lỡ tàu mất."
+     },
+     {
+      "zh": "你现在告诉我，否则我会忘记。",
+      "py": "Nǐ xiànzài gàosu wǒ fǒuzé wǒ huì wàngjì",
+      "vi": "Bây giờ bạn nói cho tôi biết nhé, nếu không tôi sẽ quên."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không dùng 否则 thay cho 就",
+    "body": "Sau 要是 cần nêu kết quả phù hợp với điều kiện. Không dùng 否则 thay cho 就 trong cùng cặp điều kiện–kết quả.",
+    "mistakes": [
+     {
+      "wrong": "要是你有时间，我们否则就去公园。",
+      "right": "要是你有时间，我们就去公园。",
+      "why": "要是 nêu điều kiện, còn 否则 nêu hậu quả khi điều kiện không được đáp ứng; không dùng 否则 để dẫn vào kết quả tương ứng với điều kiện."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu diễn đạt đúng ý “Nếu trời đẹp thì chúng ta đi dạo”.",
+    "options": [
+     "要是天气好，我们就去散步。",
+     "要是天气好，否则我们去散步。",
+     "天气好要是，我们就去散步。"
+    ],
+    "answer": 0,
+    "explain": "要是 nêu điều kiện, 就 dẫn vào kết quả."
+   },
+   {
+    "q": "Hoàn thành câu theo cấu trúc 要是……就……: 要是明天有空，___。",
+    "options": [
+     "否则我们去看电影",
+     "我们就去看电影",
+     "就明天看电影"
+    ],
+    "answer": 1,
+    "explain": "就 đứng trước kết quả sẽ xảy ra nếu ngày mai có thời gian."
+   },
+   {
+    "q": "Chọn từ thích hợp: 现在就走，___我们会迟到。",
+    "options": [
+     "要是",
+     "就",
+     "否则"
+    ],
+    "answer": 2,
+    "explain": "否则 mở đầu hậu quả nếu chúng ta không đi ngay."
+   },
+   {
+    "q": "Câu nào ghép 要是……就…… chưa đúng?",
+    "options": [
+     "要是你累了，就先休息。",
+     "要是她来了，我们就一起吃饭。",
+     "要是明天下雨，我们就在家。",
+     "要是你有空，我们否则就去公园。"
+    ],
+    "answer": 3,
+    "explain": "Câu cuối dùng 否则 thay cho 就 để dẫn vào kết quả tương ứng với điều kiện."
+   },
+   {
+    "q": "Chọn câu có nghĩa “Nếu bạn không hỏi thì tôi sẽ không biết”.",
+    "options": [
+     "要是你不问，我就不知道。",
+     "要是你不问，否则我不知道。",
+     "要是你问，我就不知道。"
+    ],
+    "answer": 0,
+    "explain": "Không hỏi là điều kiện, còn không biết là kết quả."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-15",
+  "level": 4,
+  "order": 15,
+  "title": "Để… mà…",
+  "titleZh": "为了……而……",
+  "summary": "Bạn sẽ dùng 为了……而…… để nêu mục đích và hành động nhằm đạt mục đích đó.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu mục đích của hành động",
+    "body": "为了 giới thiệu mục đích, còn 而 nối mục đích ấy với hành động được thực hiện. Cấu trúc thường có nghĩa “để… mà…”.",
+    "examples": [
+     {
+      "zh": "他为了孩子的未来而努力工作。",
+      "py": "Tā wèile háizi de wèilái ér nǔlì gōngzuò",
+      "vi": "Anh ấy nỗ lực làm việc vì tương lai của con."
+     },
+     {
+      "zh": "我为了身体健康而每天早上跑步。",
+      "py": "Wǒ wèile shēntǐ jiànkāng ér měitiān zǎoshang pǎobù",
+      "vi": "Tôi chạy bộ mỗi sáng để có sức khỏe tốt."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu mục đích của hành động",
+    "body": "Dùng cấu trúc này khi muốn nói một hành động được thực hiện nhằm đạt mục đích nào đó. Trong văn nói, người ta cũng thường dùng 为了…… rồi nói tiếp hành động mà không có 而.",
+    "examples": [
+     {
+      "zh": "她为了照顾家人而搬回家住。",
+      "py": "Tā wèile zhàogù jiārén ér bānhuí jiā zhù",
+      "vi": "Cô ấy chuyển về nhà sống để chăm sóc gia đình."
+     },
+     {
+      "zh": "他为了学好中文而每天听中文节目。",
+      "py": "Tā wèile xuéhǎo Zhōngwén ér měitiān tīng Zhōngwén jiémù",
+      "vi": "Anh ấy nghe chương trình tiếng Trung mỗi ngày để học tốt tiếng Trung."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt mục đích trước hành động",
+    "body": "Có thể đặt chủ ngữ trước 为了 hoặc đặt cụm 为了 ở đầu câu rồi nêu chủ ngữ và hành động. 而 đứng sau phần chỉ mục đích và trước hành động.",
+    "formula": "Chủ ngữ + 为了 + mục đích + 而 + hành động",
+    "examples": [
+     {
+      "zh": "他为了省钱而每天在家做饭。",
+      "py": "Tā wèile shěngqián ér měitiān zài jiā zuòfàn",
+      "vi": "Anh ấy nấu ăn ở nhà mỗi ngày để tiết kiệm tiền."
+     },
+     {
+      "zh": "我们为了早点儿回家而提前出发。",
+      "py": "Wǒmen wèile zǎodiǎnr huí jiā ér tíqián chūfā",
+      "vi": "Chúng tôi xuất phát sớm để về nhà sớm hơn."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 而 trước chủ ngữ",
+    "body": "Trong cấu trúc này, 而 nối mục đích với hành động, nên không đặt nó trước chủ ngữ của hành động. Hãy giữ cụm 为了 đi cùng mục đích.",
+    "mistakes": [
+     {
+      "wrong": "为了学好中文而我每天听节目。",
+      "right": "我为了学好中文而每天听节目。",
+      "why": "Ở câu này, chủ ngữ 我 đứng trước cụm mục đích; 而 nối mục đích với hành động 每天听节目."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu dùng đúng cấu trúc 为了……而……",
+    "options": [
+     "他为了考试而每天复习。",
+     "他为了考试，每天而复习。",
+     "他而为了考试每天复习。"
+    ],
+    "answer": 0,
+    "explain": "而 đứng giữa mục đích 考试 và hành động 每天复习."
+   },
+   {
+    "q": "Hoàn thành câu bằng một mục đích phù hợp: 她为了___而每天跑步。",
+    "options": [
+     "每天",
+     "跑步",
+     "身体健康"
+    ],
+    "answer": 2,
+    "explain": "身体健康 là mục đích của việc chạy bộ mỗi ngày."
+   },
+   {
+    "q": "Câu 她为了照顾家人而搬回家住 có nghĩa là gì?",
+    "options": [
+     "Cô ấy về nhà vì gia đình đã chuyển đi.",
+     "Cô ấy muốn gia đình chuyển nhà.",
+     "Cô ấy sống với gia đình để đi làm.",
+     "Cô ấy chuyển về nhà để chăm sóc gia đình."
+    ],
+    "answer": 3,
+    "explain": "为了照顾家人 nêu mục đích của việc 搬回家住."
+   },
+   {
+    "q": "Điền từ còn thiếu để hoàn thành mẫu 为了……而……: 我为了学好中文___每天听节目。",
+    "options": [
+     "而",
+     "就",
+     "否则"
+    ],
+    "answer": 0,
+    "explain": "而 nối mục đích 学好中文 với hành động 每天听节目."
+   },
+   {
+    "q": "Chọn câu nêu việc học mỗi ngày nhằm đạt một mục đích.",
+    "options": [
+     "他每天中文而学习。",
+     "他为了学好中文而每天学习。",
+     "他而每天学习为了中文。"
+    ],
+    "answer": 1,
+    "explain": "为了学好中文 là mục đích, còn 每天学习 là hành động."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-16",
+  "level": 4,
+  "order": 16,
+  "title": "Về mặt…; lấy… làm ví dụ",
+  "titleZh": "在……方面；拿……来说",
+  "summary": "Bạn sẽ biết cách giới hạn chủ đề bằng 在……方面 và đưa ví dụ bằng 拿……来说.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Giới hạn chủ đề hoặc nêu ví dụ",
+    "body": "在……方面 có nghĩa là “về mặt” hoặc “xét về” một chủ đề. 拿……来说 có nghĩa là “lấy… làm ví dụ” để bàn về một trường hợp cụ thể.",
+    "examples": [
+     {
+      "zh": "在学习方面，他每天都花很多时间。",
+      "py": "Zài xuéxí fāngmiàn tā měitiān dōu huā hěn duō shíjiān",
+      "vi": "Về việc học, ngày nào cậu ấy cũng dành nhiều thời gian."
+     },
+     {
+      "zh": "拿我来说，我每天坐公共汽车上班。",
+      "py": "Ná wǒ lái shuō wǒ měitiān zuò gōnggòngqìchē shàngbān",
+      "vi": "Lấy tôi làm ví dụ, ngày nào tôi cũng đi xe buýt đến chỗ làm."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói trong một lĩnh vực hoặc đưa ví dụ",
+    "body": "Dùng 在……方面 khi muốn thu hẹp lời nhận xét vào một lĩnh vực. Dùng 拿……来说 khi muốn chọn một người, nơi chốn hoặc sự việc làm ví dụ cụ thể.",
+    "examples": [
+     {
+      "zh": "在工作方面，她已经有了新的计划。",
+      "py": "Zài gōngzuò fāngmiàn tā yǐjīng yǒu le xīn de jìhuà",
+      "vi": "Về công việc, cô ấy đã có kế hoạch mới."
+     },
+     {
+      "zh": "拿我们学校来说，图书馆每天都开门。",
+      "py": "Ná wǒmen xuéxiào lái shuō túshūguǎn měitiān dōu kāimén",
+      "vi": "Lấy trường chúng tôi làm ví dụ, thư viện mở cửa mỗi ngày."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt chủ đề hoặc ví dụ ở đầu",
+    "body": "Sau 在 + chủ đề + 方面, nêu nhận xét về chủ đề ấy. Sau 拿 + đối tượng + 来说, nêu nhận xét cụ thể về đối tượng đó.",
+    "formula": "在 + chủ đề + 方面，nhận xét；拿 + đối tượng + 来说，nhận xét",
+    "examples": [
+     {
+      "zh": "我在中文方面还有很多东西要学。",
+      "py": "Wǒ zài Zhōngwén fāngmiàn hái yǒu hěn duō dōngxi yào xué",
+      "vi": "Về tiếng Trung, tôi vẫn còn nhiều điều phải học."
+     },
+     {
+      "zh": "拿小王来说，他每天都帮助老师。",
+      "py": "Ná Xiǎo Wáng lái shuō tā měitiān dōu bāngzhù lǎoshī",
+      "vi": "Lấy Tiểu Vương làm ví dụ, ngày nào cậu ấy cũng giúp thầy cô."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không trộn hai cấu trúc",
+    "body": "方面 đi với 在 để nêu lĩnh vực, còn 来说 đi với 拿 để đưa ra ví dụ. Tránh ghép 来说 trực tiếp với 在.",
+    "mistakes": [
+     {
+      "wrong": "在工作来说，他已经有新计划。",
+      "right": "在工作方面，他已经有新计划。",
+      "why": "Muốn nói “về mặt công việc” thì dùng 在工作方面; 来说 thuộc cấu trúc 拿……来说."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu dùng 在……方面 đúng.",
+    "options": [
+     "在工作来说，她有新计划。",
+     "工作在方面，她有新计划。",
+     "在工作方面，她已经有了新的计划。",
+     "拿工作方面，她有新计划。"
+    ],
+    "answer": 2,
+    "explain": "在工作方面 giới hạn nhận xét vào lĩnh vực công việc."
+   },
+   {
+    "q": "Hoàn thành câu: 拿小明来说，___。",
+    "options": [
+     "在学校方面",
+     "每天来说上学",
+     "来说在学校",
+     "他每天骑车上学"
+    ],
+    "answer": 3,
+    "explain": "Sau 拿小明来说 là nhận xét cụ thể về Tiểu Minh."
+   },
+   {
+    "q": "Chọn câu có nghĩa “Về sức khỏe, ngày nào anh ấy cũng chạy bộ”.",
+    "options": [
+     "在健康方面，他每天都跑步。",
+     "拿健康来说，他每天都跑步。",
+     "健康在方面，他每天都跑步。"
+    ],
+    "answer": 0,
+    "explain": "在健康方面 có nghĩa là xét về mặt sức khỏe."
+   },
+   {
+    "q": "Hoàn thành câu: 拿我们家来说，___。",
+    "options": [
+     "每天方面很忙",
+     "我妈妈每天都做饭",
+     "在我们家方面",
+     "来说每天做饭"
+    ],
+    "answer": 1,
+    "explain": "拿我们家来说 đưa gia đình làm ví dụ trước khi nêu nhận xét."
+   },
+   {
+    "q": "拿我来说 thường có nghĩa gì?",
+    "options": [
+     "Nói với tôi",
+     "Đưa tôi đi",
+     "Lấy tôi làm ví dụ",
+     "Ở chỗ tôi"
+    ],
+    "answer": 2,
+    "explain": "拿我来说 dùng người nói làm trường hợp cụ thể để minh họa."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-17",
+  "level": 4,
+  "order": 17,
+  "title": "Chẳng lẽ… sao?",
+  "titleZh": "难道……吗？",
+  "summary": "Bạn sẽ dùng 难道……吗 để bày tỏ sự ngạc nhiên hoặc không tin vào một điều.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Đặt câu hỏi tu từ",
+    "body": "难道……吗 tạo câu hỏi tu từ, thường thể hiện sự ngạc nhiên, nghi ngờ hoặc không tin. Người nói thường ngầm cho rằng câu trả lời sẽ trái với điều đang hỏi.",
+    "examples": [
+     {
+      "zh": "你昨天看见他了，难道今天就忘了吗？",
+      "py": "Nǐ zuótiān kànjiàn tā le nándào jīntiān jiù wàng le ma",
+      "vi": "Hôm qua bạn đã gặp anh ấy rồi, chẳng lẽ hôm nay đã quên sao?"
+     },
+     {
+      "zh": "这件事我们都知道，难道他不知道吗？",
+      "py": "Zhè jiàn shì wǒmen dōu zhīdào nándào tā bù zhīdào ma",
+      "vi": "Chuyện này chúng ta đều biết, chẳng lẽ anh ấy lại không biết sao?"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Thể hiện ngạc nhiên hoặc nghi ngờ",
+    "body": "Dùng mẫu này khi một điều có vẻ quá rõ ràng hoặc trái với điều bạn nghĩ. Câu có thể mang sắc thái trách móc, nên cần chú ý ngữ cảnh và giọng nói.",
+    "examples": [
+     {
+      "zh": "外面这么冷，你难道不穿外套吗？",
+      "py": "Wàimiàn zhème lěng nǐ nándào bù chuān wàitào ma",
+      "vi": "Ngoài trời lạnh thế này, chẳng lẽ bạn không mặc áo khoác sao?"
+     },
+     {
+      "zh": "她每天都来，难道你没看见吗？",
+      "py": "Tā měitiān dōu lái nándào nǐ méi kànjiàn ma",
+      "vi": "Ngày nào cô ấy cũng đến, chẳng lẽ bạn không nhìn thấy sao?"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 难道 trước nội dung muốn hỏi",
+    "body": "难道 thường đứng trước chủ ngữ hoặc trước phần muốn nhấn mạnh, còn 吗 thường đứng cuối câu. Câu hỏi có thể dùng dạng phủ định để thể hiện rõ sự không tin.",
+    "formula": "难道 + chủ ngữ + vị ngữ + 吗？",
+    "examples": [
+     {
+      "zh": "你难道不想早点儿回家吗？",
+      "py": "Nǐ nándào bù xiǎng zǎodiǎnr huí jiā ma",
+      "vi": "Chẳng lẽ bạn không muốn về nhà sớm sao?"
+     },
+     {
+      "zh": "这家店已经关门了，难道你不知道吗？",
+      "py": "Zhè jiā diàn yǐjīng guānmén le nándào nǐ bù zhīdào ma",
+      "vi": "Cửa hàng này đã đóng cửa rồi, chẳng lẽ bạn không biết sao?"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đừng quên 吗 và dấu hỏi",
+    "body": "Với mẫu 难道……吗 đang học, đặt 吗 ở cuối câu và dùng dấu hỏi. Một số câu hỏi tu từ với 难道 có thể lược 吗 trong ngữ cảnh khác.",
+    "mistakes": [
+     {
+      "wrong": "难道你今天不来。",
+      "right": "难道你今天不来吗？",
+      "why": "Trong mẫu đang học, câu hỏi tu từ cần 吗 ở cuối và dấu hỏi để thể hiện rõ ý hỏi."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu hỏi tu từ có nghĩa “Chẳng lẽ bạn không muốn về nhà sao?”.",
+    "options": [
+     "你不想回家。",
+     "你想不想回家。",
+     "你难道想回家吗？",
+     "你难道不想回家吗？"
+    ],
+    "answer": 3,
+    "explain": "难道……吗 tạo câu hỏi tu từ, còn 不想 thể hiện ý “không muốn”."
+   },
+   {
+    "q": "Điền trợ từ cuối câu theo mẫu 难道……吗: 难道你不认识他___？",
+    "options": [
+     "吗",
+     "呢",
+     "吧"
+    ],
+    "answer": 0,
+    "explain": "吗 đứng cuối câu hỏi tu từ trong mẫu này."
+   },
+   {
+    "q": "Câu 难道她不知道吗 thường thể hiện điều gì?",
+    "options": [
+     "Người nói đang kể rằng cô ấy biết.",
+     "Người nói ngạc nhiên hoặc không tin rằng cô ấy không biết.",
+     "Người nói đang hỏi cô ấy ở đâu.",
+     "Người nói muốn cô ấy đi ngay."
+    ],
+    "answer": 1,
+    "explain": "Câu hỏi tu từ thường ngầm bày tỏ sự không tin vào khả năng cô ấy không biết."
+   },
+   {
+    "q": "Chọn câu có đủ hình thức câu hỏi tu từ đang học.",
+    "options": [
+     "难道你今天不来。",
+     "你难道今天不来。",
+     "难道你今天不来吗？",
+     "难道今天你不来呢。"
+    ],
+    "answer": 2,
+    "explain": "Câu đúng có 难道, 吗 ở cuối và dấu hỏi."
+   },
+   {
+    "q": "Chọn câu thể hiện sự ngạc nhiên vì ngoài trời lạnh mà người kia không mặc áo khoác.",
+    "options": [
+     "外面冷，你穿外套。",
+     "外面这么冷，你穿外套吗？",
+     "你不穿外套。",
+     "外面这么冷，你难道不穿外套吗？"
+    ],
+    "answer": 3,
+    "explain": "难道……吗 nhấn mạnh sự ngạc nhiên trước việc người kia không mặc áo khoác."
+   }
+  ]
+ }
+]

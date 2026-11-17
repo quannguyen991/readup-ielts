@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
   text: { gap: 10 },
   textWide: { flex: 1, minWidth: 0 },
   title: { fontFamily: 'Nunito_900Black', fontSize: 31, lineHeight: 38, letterSpacing: -0.2 },
-  body: { fontFamily: 'BeVietnamPro_400Regular', fontSize: 15, lineHeight: 23, color: '#2B2350' },
+  body: { fontFamily: 'Inter_400Regular', fontSize: 15, lineHeight: 23, color: '#2B2350' },
   bullets: { gap: 8, marginTop: 4 },
   bulletRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
   bulletIcon: {
@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: GOLD,
   },
-  bulletText: { flex: 1, fontFamily: 'BeVietnamPro_500Medium', fontSize: 14, lineHeight: 21, color: INK },
+  bulletText: { flex: 1, fontFamily: 'Inter_500Medium', fontSize: 14, lineHeight: 21, color: INK },
   cta: {
     alignSelf: 'flex-start',
     flexDirection: 'row',

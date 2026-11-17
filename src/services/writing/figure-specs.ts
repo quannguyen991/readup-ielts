@@ -1,4 +1,5 @@
 import type { Task1Chart } from '@/lib/writing/types';
+import type { MapPanel } from '@/lib/writing/types';
 
 /**
  * Mô tả từng hình minh hoạ của đề Task 1.
@@ -29,6 +30,11 @@ export type FigureSpec = {
   labels: string[];
   /** Tên hai nhóm cột, chỉ dùng cho bar không có trục thời gian. */
   groups?: [string, string];
+  /** Các bước gốc cho sơ đồ quy trình. */
+  processSteps?: string[];
+  processCycle?: boolean;
+  /** Hai hoặc nhiều bản đồ trước/sau cho đề dạng map. */
+  mapPanels?: MapPanel[];
 };
 
 export const FIGURE_SPECS: FigureSpec[] = [
@@ -349,5 +355,203 @@ export const FIGURE_SPECS: FigureSpec[] = [
     range: [0, 60],
     subjects: ['Brand A', 'Brand B', 'Brand C', 'Brand D'],
     labels: ['2015', '2017', '2019', '2021'],
+  },
+  {
+    slug: 'water-filtration',
+    kind: 'process',
+    topicSlug: 'environment',
+    subject: 'how water is treated and filtered before it is supplied to households',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    processSteps: [
+      'Raw water is extracted from the reservoir',
+      'Chemicals are added so particles clump together',
+      'Water settles in clarifier tanks',
+      'Water passes through sand and carbon filters',
+      'Chlorine and ultraviolet light disinfect the water',
+      'Treated water is stored in a clean-water reservoir',
+      'Pumps send the supply to homes through a pipe network',
+    ],
+  },
+  {
+    slug: 'plastic-recycling',
+    kind: 'process',
+    topicSlug: 'environment',
+    subject: 'how household plastic is recycled into new products',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    processSteps: ['Plastic is collected', 'Items are sorted by type', 'Labels and caps are removed', 'Plastic is washed and shredded', 'Flakes are melted into pellets', 'Pellets are moulded into new products'],
+  },
+  {
+    slug: 'coffee-cycle',
+    kind: 'process',
+    topicSlug: 'business',
+    subject: 'the production of coffee from growing beans to serving a cup',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    processCycle: true,
+    processSteps: ['Coffee seeds are planted', 'Young plants are moved to fields', 'Ripe cherries are picked', 'Beans are dried and roasted', 'Roasted beans are ground and brewed', 'Spent coffee grounds are composted'],
+  },
+  {
+    slug: 'brick-production',
+    kind: 'process',
+    topicSlug: 'industry',
+    subject: 'the manufacture of bricks for the construction industry',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    processSteps: ['Clay is excavated', 'Clay is crushed and mixed with sand', 'The mixture is shaped into bricks', 'Bricks are dried in a heated chamber', 'They are fired in a kiln', 'Finished bricks are cooled', 'Bricks are packaged and transported'],
+  },
+  {
+    slug: 'solar-panel-installation',
+    kind: 'process',
+    topicSlug: 'technology',
+    subject: 'how rooftop solar panels generate electricity for a home',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    processSteps: ['Sunlight reaches the roof panels', 'Photovoltaic cells produce direct current', 'An inverter converts it to alternating current', 'Electricity powers household appliances', 'Surplus power is sent to the grid or stored'],
+  },
+  {
+    slug: 'university-campus',
+    kind: 'map',
+    topicSlug: 'education',
+    subject: 'the development of a university campus between 2000 and the present',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    mapPanels: [
+      { caption: '2000', items: [
+        { shape: 'building', label: 'Main hall', x: 0.08, y: 0.18, w: 0.24, h: 0.2 },
+        { shape: 'building', label: 'Library', x: 0.39, y: 0.18, w: 0.23, h: 0.2 },
+        { shape: 'green', label: 'Sports field', x: 0.68, y: 0.18, w: 0.24, h: 0.3 },
+        { shape: 'road', label: 'Campus road', x: 0.08, y: 0.5, w: 0.84, h: 0.08 },
+        { shape: 'building', label: 'Car park', x: 0.1, y: 0.66, w: 0.26, h: 0.2 },
+        { shape: 'green', label: 'Lawn', x: 0.48, y: 0.66, w: 0.42, h: 0.2 },
+      ] },
+      { caption: 'Present', items: [
+        { shape: 'building', label: 'Main hall', x: 0.08, y: 0.18, w: 0.24, h: 0.2 },
+        { shape: 'building', label: 'Expanded library', x: 0.37, y: 0.18, w: 0.27, h: 0.2 },
+        { shape: 'building', label: 'Science centre', x: 0.68, y: 0.18, w: 0.24, h: 0.3 },
+        { shape: 'road', label: 'Campus road', x: 0.08, y: 0.5, w: 0.84, h: 0.08 },
+        { shape: 'building', label: 'Underground parking', x: 0.1, y: 0.66, w: 0.26, h: 0.2 },
+        { shape: 'green', label: 'Central garden', x: 0.48, y: 0.66, w: 0.42, h: 0.2 },
+      ] },
+    ],
+  },
+  {
+    slug: 'island-resort',
+    kind: 'map',
+    topicSlug: 'tourism',
+    subject: 'the proposed development of an island for tourism',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    mapPanels: [
+      { caption: 'Before development', items: [
+        { shape: 'water', label: 'Sea', x: 0, y: 0, w: 1, h: 1 },
+        { shape: 'green', label: 'Forest', x: 0.12, y: 0.22, w: 0.38, h: 0.44 },
+        { shape: 'sand', label: 'Beach', x: 0.55, y: 0.2, w: 0.32, h: 0.18 },
+        { shape: 'plain', label: 'Hill', x: 0.56, y: 0.48, w: 0.29, h: 0.28 },
+      ] },
+      { caption: 'After development', items: [
+        { shape: 'water', label: 'Sea', x: 0, y: 0, w: 1, h: 1 },
+        { shape: 'green', label: 'Protected forest', x: 0.1, y: 0.2, w: 0.35, h: 0.42 },
+        { shape: 'sand', label: 'Beach', x: 0.54, y: 0.2, w: 0.32, h: 0.18 },
+        { shape: 'building', label: 'Hotel', x: 0.55, y: 0.5, w: 0.27, h: 0.2 },
+        { shape: 'road', label: 'Footpath', x: 0.12, y: 0.71, w: 0.72, h: 0.06 },
+      ] },
+    ],
+  },
+  {
+    slug: 'seabourne',
+    kind: 'map',
+    topicSlug: 'society',
+    subject: 'the redevelopment of the coastal town of Seabourne between 1995 and the present day',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    mapPanels: [
+      { caption: '1995', items: [
+        { shape: 'water', label: 'Sea', x: 0, y: 0, w: 1, h: 0.22 },
+        { shape: 'building', label: 'Docklands', x: 0.05, y: 0.27, w: 0.3, h: 0.2 },
+        { shape: 'building', label: 'Fish market', x: 0.4, y: 0.27, w: 0.2, h: 0.2 },
+        { shape: 'building', label: 'Railway depot', x: 0.7, y: 0.27, w: 0.25, h: 0.2 },
+        { shape: 'road', label: 'Access road', x: 0.05, y: 0.52, w: 0.9, h: 0.08 },
+        { shape: 'green', label: 'Fields', x: 0.05, y: 0.66, w: 0.4, h: 0.28 },
+        { shape: 'building', label: 'Houses', x: 0.55, y: 0.66, w: 0.4, h: 0.28 },
+      ] },
+      { caption: 'Present', items: [
+        { shape: 'water', label: 'Sea', x: 0, y: 0, w: 1, h: 0.22 },
+        { shape: 'water', label: 'Marina', x: 0.05, y: 0.27, w: 0.3, h: 0.2 },
+        { shape: 'sand', label: 'Promenade and cafés', x: 0.4, y: 0.27, w: 0.2, h: 0.2 },
+        { shape: 'building', label: 'Rail terminus', x: 0.7, y: 0.27, w: 0.25, h: 0.2 },
+        { shape: 'road', label: 'Dual carriageway', x: 0.05, y: 0.52, w: 0.9, h: 0.08 },
+        { shape: 'green', label: 'Eco-park', x: 0.05, y: 0.66, w: 0.4, h: 0.28 },
+        { shape: 'building', label: 'Apartments', x: 0.55, y: 0.66, w: 0.4, h: 0.28 },
+      ] },
+    ],
+  },
+  {
+    slug: 'city-centre',
+    kind: 'map',
+    topicSlug: 'transport',
+    subject: 'changes to the centre of a town following a transport plan',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    mapPanels: [
+      { caption: 'Before', items: [
+        { shape: 'building', label: 'Shops', x: 0.08, y: 0.16, w: 0.26, h: 0.24 },
+        { shape: 'building', label: 'Market', x: 0.66, y: 0.16, w: 0.25, h: 0.24 },
+        { shape: 'road', label: 'Main road', x: 0.08, y: 0.49, w: 0.84, h: 0.12 },
+        { shape: 'building', label: 'Car park', x: 0.08, y: 0.7, w: 0.26, h: 0.18 },
+        { shape: 'green', label: 'Small square', x: 0.66, y: 0.68, w: 0.25, h: 0.2 },
+      ] },
+      { caption: 'After', items: [
+        { shape: 'building', label: 'Shops', x: 0.08, y: 0.16, w: 0.26, h: 0.24 },
+        { shape: 'building', label: 'Market', x: 0.66, y: 0.16, w: 0.25, h: 0.24 },
+        { shape: 'road', label: 'Bus-only street', x: 0.08, y: 0.49, w: 0.84, h: 0.12 },
+        { shape: 'building', label: 'Bus station', x: 0.08, y: 0.7, w: 0.26, h: 0.18 },
+        { shape: 'green', label: 'Expanded plaza', x: 0.55, y: 0.66, w: 0.36, h: 0.24 },
+      ] },
+    ],
+  },
+  {
+    slug: 'riverside-park',
+    kind: 'map',
+    topicSlug: 'society',
+    subject: 'the transformation of a riverside park over a twenty-year period',
+    unit: '',
+    range: [0, 1],
+    subjects: [],
+    labels: [],
+    mapPanels: [
+      { caption: '2005', items: [
+        { shape: 'water', label: 'River', x: 0, y: 0.74, w: 1, h: 0.26 },
+        { shape: 'green', label: 'Open grassland', x: 0.08, y: 0.18, w: 0.36, h: 0.42 },
+        { shape: 'plain', label: 'Footpath', x: 0.48, y: 0.26, w: 0.42, h: 0.08 },
+        { shape: 'building', label: 'Old pavilion', x: 0.62, y: 0.46, w: 0.24, h: 0.18 },
+      ] },
+      { caption: '2025', items: [
+        { shape: 'water', label: 'River', x: 0, y: 0.74, w: 1, h: 0.26 },
+        { shape: 'green', label: 'Woodland', x: 0.08, y: 0.18, w: 0.36, h: 0.42 },
+        { shape: 'road', label: 'Looped walking trail', x: 0.48, y: 0.26, w: 0.42, h: 0.08 },
+        { shape: 'building', label: 'Visitor centre', x: 0.62, y: 0.46, w: 0.24, h: 0.18 },
+        { shape: 'sand', label: 'Boat landing', x: 0.34, y: 0.65, w: 0.22, h: 0.08 },
+      ] },
+    ],
   },
 ];

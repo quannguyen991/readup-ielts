@@ -4,7 +4,9 @@ import { router } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
 import { HUB_UI, HubChips, HubHero, HubPanel, HubTag, hubLift } from '@/components/hub/HubUi';
+import { Image } from 'react-native';
 import { Icon } from '@/components/ui/Icon';
+import { hubCover } from '@/data/hub-covers';
 import { useL } from '@/i18n/useL';
 import { TUTORS, type Tutor } from '@/services/hub/tutors';
 
@@ -114,11 +116,15 @@ export default function TutorList() {
                     accessibilityRole="button"
                     accessibilityLabel={tutor.name}
                     onPress={() => open(tutor)}
-                    style={({ hovered }: Hover) => ({ flexBasis: 300, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+                    style={({ hovered }: Hover) => ({ flexBasis: 340, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 14, padding: 10, paddingRight: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
                   >
-                    <View style={{ width: 54, height: 54, borderRadius: 16, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ fontSize: 28 }}>{m.icon}</Text>
-                    </View>
+                    {hubCover(tutor.id) ? (
+                      <Image source={{ uri: hubCover(tutor.id)! }} accessibilityIgnoresInvertColors style={{ width: 96, height: 96, borderRadius: 18, backgroundColor: m.tint }} resizeMode="cover" />
+                    ) : (
+                      <View style={{ width: 96, height: 96, borderRadius: 18, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 40 }}>{m.icon}</Text>
+                      </View>
+                    )}
                     <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 6 }}>
                         <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', flexShrink: 1 }}>{tutor.name}</Text>

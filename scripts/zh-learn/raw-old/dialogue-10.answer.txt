@@ -1,0 +1,499 @@
+[
+  {
+    "id": "zh-d-h4-02",
+    "level": 4,
+    "order": 2,
+    "title": "Tình yêu và chuyện kết hôn",
+    "titleZh": "爱情和结婚",
+    "topic": "tình yêu",
+    "scene": "Sau ba năm quen nhau, hai người trò chuyện về chuyện kết hôn và cuộc sống sau này.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "小雨",
+        "zh": "我们认识三年了，你想过结婚吗？",
+        "py": "Wǒmen rènshi sān nián le nǐ xiǎng guo jiéhūn ma",
+        "vi": "Chúng mình quen nhau ba năm rồi, anh đã nghĩ đến chuyện kết hôn chưa?"
+      },
+      {
+        "who": "阿明",
+        "zh": "想过，不过我想先和你商量一下。",
+        "py": "Xiǎng guo búguò wǒ xiǎng xiān hé nǐ shāngliang yíxià",
+        "vi": "Anh có nghĩ đến rồi, nhưng muốn bàn với em trước."
+      },
+      {
+        "who": "小雨",
+        "zh": "你在担心什么？我们可以一起想办法。",
+        "py": "Nǐ zài dānxīn shénme wǒmen kěyǐ yìqǐ xiǎng bànfǎ",
+        "vi": "Anh đang lo chuyện gì vậy? Chúng mình có thể cùng nghĩ cách."
+      },
+      {
+        "who": "阿明",
+        "zh": "我担心工作太忙，没时间陪你。",
+        "py": "Wǒ dānxīn gōngzuò tài máng méi shíjiān péi nǐ",
+        "vi": "Anh lo công việc quá bận, không có thời gian ở bên em."
+      },
+      {
+        "who": "小雨",
+        "zh": "结婚不是为了赶时间，而是想一起生活。",
+        "py": "Jiéhūn bú shì wèile gǎn shíjiān ér shì xiǎng yìqǐ shēnghuó",
+        "vi": "Kết hôn không phải để chạy đua với thời gian, mà là để cùng nhau sống bên nhau."
+      },
+      {
+        "who": "阿明",
+        "zh": "你说得对，我也希望以后有一个家。",
+        "py": "Nǐ shuō de duì wǒ yě xīwàng yǐhòu yǒu yí ge jiā",
+        "vi": "Em nói đúng, anh cũng mong sau này chúng mình có một gia đình."
+      },
+      {
+        "who": "小雨",
+        "zh": "我们可以先聊聊以后的生活。",
+        "py": "Wǒmen kěyǐ xiān liáoliao yǐhòu de shēnghuó",
+        "vi": "Chúng mình có thể nói chuyện trước về cuộc sống sau này."
+      },
+      {
+        "who": "阿明",
+        "zh": "好，我会认真听你的想法。",
+        "py": "Hǎo wǒ huì rènzhēn tīng nǐ de xiǎngfǎ",
+        "vi": "Được, anh sẽ nghiêm túc lắng nghe suy nghĩ của em."
+      },
+      {
+        "who": "小雨",
+        "zh": "要是我们都准备好了，就告诉父母吧。",
+        "py": "Yàoshi wǒmen dōu zhǔnbèi hǎo le jiù gàosu fùmǔ ba",
+        "vi": "Nếu cả hai chúng mình đều sẵn sàng thì hãy nói với bố mẹ nhé."
+      },
+      {
+        "who": "阿明",
+        "zh": "好，我们一起准备，不用着急。",
+        "py": "Hǎo wǒmen yìqǐ zhǔnbèi búyòng zhāojí",
+        "vi": "Được, chúng mình cùng chuẩn bị, không cần vội."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "结婚",
+        "py": "jiéhūn",
+        "vi": "kết hôn"
+      },
+      {
+        "zh": "商量",
+        "py": "shāngliang",
+        "vi": "bàn bạc"
+      },
+      {
+        "zh": "工作",
+        "py": "gōngzuò",
+        "vi": "công việc"
+      },
+      {
+        "zh": "陪",
+        "py": "péi",
+        "vi": "ở bên,陪 cùng"
+      },
+      {
+        "zh": "生活",
+        "py": "shēnghuó",
+        "vi": "cuộc sống"
+      },
+      {
+        "zh": "父母",
+        "py": "fùmǔ",
+        "vi": "bố mẹ"
+      },
+      {
+        "zh": "准备",
+        "py": "zhǔnbèi",
+        "vi": "chuẩn bị"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h4-06",
+      "zh-g-h4-14"
+    ],
+    "quiz": [
+      {
+        "q": "小雨和阿明 quen nhau bao lâu rồi?",
+        "options": [
+          "Một năm",
+          "Ba năm",
+          "Năm năm"
+        ],
+        "answer": 1,
+        "explain": "小雨 nói hai người đã quen nhau ba năm."
+      },
+      {
+        "q": "阿明 lo điều gì?",
+        "options": [
+          "Công việc bận nên không có thời gian ở bên 小雨",
+          "Bố mẹ không muốn gặp 小雨",
+          "Hai người chưa biết nhau đủ lâu"
+        ],
+        "answer": 0,
+        "explain": "阿明 lo công việc bận và không có thời gian ở bên 小雨."
+      },
+      {
+        "q": "小雨 nói kết hôn là để làm gì?",
+        "options": [
+          "Để tổ chức một bữa tiệc lớn",
+          "Để nói chuyện với bố mẹ",
+          "Để cùng nhau sống bên nhau"
+        ],
+        "answer": 2,
+        "explain": "小雨 nói kết hôn là để hai người cùng nhau sống bên nhau."
+      },
+      {
+        "q": "Nếu cả hai đã sẵn sàng, họ sẽ nói với ai?",
+        "options": [
+          "Bạn bè",
+          "Bố mẹ",
+          "Đồng nghiệp"
+        ],
+        "answer": 1,
+        "explain": "小雨 đề nghị nói với bố mẹ khi cả hai đã sẵn sàng."
+      },
+      {
+        "q": "阿明 nói hai người nên chuẩn bị như thế nào?",
+        "options": [
+          "Cùng chuẩn bị và không cần vội",
+          "Để 小雨 tự chuẩn bị",
+          "Chờ bố mẹ quyết định mọi việc"
+        ],
+        "answer": 0,
+        "explain": "阿明 đồng ý cùng chuẩn bị và nói rằng không cần vội."
+      }
+    ]
+  },
+  {
+    "id": "zh-d-h4-03",
+    "level": 4,
+    "order": 3,
+    "title": "Giữ dòng sông sạch",
+    "titleZh": "让河水更干净",
+    "topic": "môi trường",
+    "scene": "Hai người bạn thấy rác bên sông và bàn cách cùng mọi người dọn dẹp.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "小林",
+        "zh": "以前这条河很干净，你记得吗？",
+        "py": "Yǐqián zhè tiáo hé hěn gānjìng nǐ jìde ma",
+        "vi": "Trước đây con sông này sạch lắm, bạn còn nhớ không?"
+      },
+      {
+        "who": "小周",
+        "zh": "记得，现在河边常常有很多垃圾。",
+        "py": "Jìde xiànzài hébiān chángcháng yǒu hěn duō lājī",
+        "vi": "Nhớ chứ, bây giờ bên sông thường có rất nhiều rác."
+      },
+      {
+        "who": "小林",
+        "zh": "周末我们去河边，把垃圾捡起来吧。",
+        "py": "Zhōumò wǒmen qù hébiān bǎ lājī jiǎn qǐlai ba",
+        "vi": "Cuối tuần chúng ta ra bờ sông nhặt rác nhé."
+      },
+      {
+        "who": "小周",
+        "zh": "好啊，我可以请邻居和我们一起去。",
+        "py": "Hǎo a wǒ kěyǐ qǐng línjū hé wǒmen yìqǐ qù",
+        "vi": "Được đó, mình có thể rủ hàng xóm đi cùng."
+      },
+      {
+        "who": "小林",
+        "zh": "要是大家少扔垃圾，河边就会干净些。",
+        "py": "Yàoshi dàjiā shǎo rēng lājī hébiān jiù huì gānjìng xiē",
+        "vi": "Nếu mọi người vứt ít rác hơn thì bờ sông sẽ sạch hơn."
+      },
+      {
+        "who": "小周",
+        "zh": "天气很热，我们还是可以一起帮忙。",
+        "py": "Tiānqì hěn rè wǒmen háishi kěyǐ yìqǐ bāngmáng",
+        "vi": "Trời nóng thật, nhưng chúng ta vẫn có thể cùng nhau góp sức."
+      },
+      {
+        "who": "小林",
+        "zh": "我们也可以让孩子们一起保护河水。",
+        "py": "Wǒmen yě kěyǐ ràng háizimen yìqǐ bǎohù héshuǐ",
+        "vi": "Chúng ta cũng có thể để các em nhỏ cùng bảo vệ dòng sông."
+      },
+      {
+        "who": "小周",
+        "zh": "好，我先准备几个袋子，你去问邻居吧。",
+        "py": "Hǎo wǒ xiān zhǔnbèi jǐ ge dàizi nǐ qù wèn línjū ba",
+        "vi": "Được, mình chuẩn bị vài cái túi trước, bạn đi hỏi hàng xóm nhé."
+      },
+      {
+        "who": "小林",
+        "zh": "谢谢你，大家一起做，环境会更好。",
+        "py": "Xièxie nǐ dàjiā yìqǐ zuò huánjìng huì gèng hǎo",
+        "vi": "Cảm ơn bạn, mọi người cùng làm thì môi trường sẽ tốt hơn."
+      },
+      {
+        "who": "小周",
+        "zh": "不客气，我希望这条河以后更干净。",
+        "py": "Bù kèqi wǒ xīwàng zhè tiáo hé yǐhòu gèng gānjìng",
+        "vi": "Không có gì, mình mong con sông này sau này sẽ sạch hơn."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "河边",
+        "py": "hébiān",
+        "vi": "bờ sông"
+      },
+      {
+        "zh": "垃圾",
+        "py": "lājī",
+        "vi": "rác"
+      },
+      {
+        "zh": "捡",
+        "py": "jiǎn",
+        "vi": "nhặt"
+      },
+      {
+        "zh": "邻居",
+        "py": "línjū",
+        "vi": "hàng xóm"
+      },
+      {
+        "zh": "扔",
+        "py": "rēng",
+        "vi": "vứt"
+      },
+      {
+        "zh": "保护",
+        "py": "bǎohù",
+        "vi": "bảo vệ"
+      },
+      {
+        "zh": "干净",
+        "py": "gānjìng",
+        "vi": "sạch sẽ"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h4-01",
+      "zh-g-h4-03",
+      "zh-g-h4-14"
+    ],
+    "quiz": [
+      {
+        "q": "Trước đây con sông trong bài như thế nào?",
+        "options": [
+          "Nước rất sâu",
+          "Bên sông có nhiều người",
+          "Con sông rất sạch"
+        ],
+        "answer": 2,
+        "explain": "小林 nói trước đây con sông rất sạch."
+      },
+      {
+        "q": "Cuối tuần hai người định làm gì bên sông?",
+        "options": [
+          "Đi câu cá",
+          "Nhặt rác",
+          "Đi dạo một mình"
+        ],
+        "answer": 1,
+        "explain": "小林 đề nghị hai người ra bờ sông nhặt rác."
+      },
+      {
+        "q": "Điều gì sẽ giúp bờ sông sạch hơn?",
+        "options": [
+          "Mọi người vứt ít rác hơn",
+          "Trời nóng hơn",
+          "Trẻ em ở nhà"
+        ],
+        "answer": 0,
+        "explain": "小林 nói nếu mọi người vứt ít rác hơn thì bờ sông sẽ sạch hơn."
+      },
+      {
+        "q": "小周 có thể rủ ai đi cùng?",
+        "options": [
+          "Thầy cô",
+          "Bạn học",
+          "Hàng xóm"
+        ],
+        "answer": 2,
+        "explain": "小周 nói mình có thể rủ hàng xóm đi cùng."
+      },
+      {
+        "q": "小周 mong điều gì về con sông?",
+        "options": [
+          "Mong con sông rộng hơn",
+          "Mong sau này con sông sạch hơn",
+          "Mong mọi người chuyển đi"
+        ],
+        "answer": 1,
+        "explain": "小周 mong con sông sẽ sạch hơn trong tương lai."
+      }
+    ]
+  },
+  {
+    "id": "zh-d-h4-04",
+    "level": 4,
+    "order": 4,
+    "title": "Cùng con học tập",
+    "titleZh": "陪孩子学习",
+    "topic": "giáo dục",
+    "scene": "Một phụ huynh hỏi giáo viên cách giúp con gái học tập thoải mái và chủ động hơn.",
+    "minutes": 6,
+    "lines": [
+      {
+        "who": "王女士",
+        "zh": "老师，我女儿最近不太愿意做作业。",
+        "py": "Lǎoshī wǒ nǚ'ér zuìjìn bú tài yuànyì zuò zuòyè",
+        "vi": "Thưa cô, gần đây con gái tôi không muốn làm bài tập lắm."
+      },
+      {
+        "who": "老师",
+        "zh": "她在学校很认真，可能晚上有点累。",
+        "py": "Tā zài xuéxiào hěn rènzhēn kěnéng wǎnshang yǒudiǎn lèi",
+        "vi": "Ở trường em ấy học rất nghiêm túc, có thể buổi tối hơi mệt."
+      },
+      {
+        "who": "王女士",
+        "zh": "我一回家就催她，她就不高兴。",
+        "py": "Wǒ yì huíjiā jiù cuī tā tā jiù bù gāoxìng",
+        "vi": "Tôi vừa về nhà là giục con, thế là con không vui."
+      },
+      {
+        "who": "老师",
+        "zh": "您可以先问问她，再和她一起安排时间。",
+        "py": "Nín kěyǐ xiān wènwen tā zài hé tā yìqǐ ānpái shíjiān",
+        "vi": "Chị có thể hỏi con trước, rồi cùng con sắp xếp thời gian."
+      },
+      {
+        "who": "王女士",
+        "zh": "我想让她每天读一点书，可以吗？",
+        "py": "Wǒ xiǎng ràng tā měitiān dú yìdiǎn shū kěyǐ ma",
+        "vi": "Tôi muốn con đọc một chút sách mỗi ngày, có được không?"
+      },
+      {
+        "who": "老师",
+        "zh": "可以，不过要让她自己选喜欢的书。",
+        "py": "Kěyǐ búguò yào ràng tā zìjǐ xuǎn xǐhuan de shū",
+        "vi": "Được, nhưng nên để con tự chọn quyển sách mình thích."
+      },
+      {
+        "who": "王女士",
+        "zh": "要是每天安排太多，她就会觉得很累。",
+        "py": "Yàoshi měitiān ānpái tài duō tā jiù huì juéde hěn lèi",
+        "vi": "Nếu mỗi ngày sắp xếp quá nhiều việc thì con sẽ thấy rất mệt."
+      },
+      {
+        "who": "老师",
+        "zh": "对，您也可以和她一起读书，慢慢来。",
+        "py": "Duì nín yě kěyǐ hé tā yìqǐ dúshū mànman lái",
+        "vi": "Đúng vậy, chị cũng có thể đọc sách cùng con, cứ từ từ thôi."
+      },
+      {
+        "who": "王女士",
+        "zh": "好，我会和她商量，也把我的手机收起来。",
+        "py": "Hǎo wǒ huì hé tā shāngliang yě bǎ wǒ de shǒujī shōu qǐlai",
+        "vi": "Được, tôi sẽ bàn với con và cất điện thoại của mình đi."
+      },
+      {
+        "who": "老师",
+        "zh": "您愿意听她说，她就会更放心。",
+        "py": "Nín yuànyì tīng tā shuō tā jiù huì gèng fàngxīn",
+        "vi": "Chị sẵn lòng lắng nghe thì con sẽ yên tâm hơn."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "女儿",
+        "py": "nǚ'ér",
+        "vi": "con gái"
+      },
+      {
+        "zh": "作业",
+        "py": "zuòyè",
+        "vi": "bài tập"
+      },
+      {
+        "zh": "催",
+        "py": "cuī",
+        "vi": "thúc giục"
+      },
+      {
+        "zh": "安排",
+        "py": "ānpái",
+        "vi": "sắp xếp"
+      },
+      {
+        "zh": "选",
+        "py": "xuǎn",
+        "vi": "chọn"
+      },
+      {
+        "zh": "手机",
+        "py": "shǒujī",
+        "vi": "điện thoại"
+      },
+      {
+        "zh": "商量",
+        "py": "shāngliang",
+        "vi": "bàn bạc"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h4-01",
+      "zh-g-h4-03",
+      "zh-g-h4-14"
+    ],
+    "quiz": [
+      {
+        "q": "Con gái của 王女士 gần đây không muốn làm gì?",
+        "options": [
+          "Làm bài tập",
+          "Đi học",
+          "Đọc sách cùng mẹ"
+        ],
+        "answer": 0,
+        "explain": "王女士 nói con gái gần đây không muốn làm bài tập lắm."
+      },
+      {
+        "q": "Theo giáo viên, buổi tối cô bé có thể cảm thấy thế nào?",
+        "options": [
+          "Đói",
+          "Buồn ngủ",
+          "Hơi mệt"
+        ],
+        "answer": 2,
+        "explain": "Giáo viên đoán buổi tối cô bé có thể hơi mệt."
+      },
+      {
+        "q": "王女士 muốn con làm gì mỗi ngày?",
+        "options": [
+          "Tự sắp xếp thời gian",
+          "Đọc một chút sách",
+          "Cất điện thoại"
+        ],
+        "answer": 1,
+        "explain": "王女士 muốn con đọc một chút sách mỗi ngày."
+      },
+      {
+        "q": "Nếu mỗi ngày sắp xếp quá nhiều việc thì cô bé sẽ ra sao?",
+        "options": [
+          "Sẽ cảm thấy rất mệt",
+          "Sẽ không muốn đọc sách",
+          "Sẽ vui hơn"
+        ],
+        "answer": 0,
+        "explain": "王女士 nói con sẽ thấy rất mệt nếu mỗi ngày có quá nhiều việc."
+      },
+      {
+        "q": "王女士 dự định làm gì với điện thoại của mình?",
+        "options": [
+          "Đưa cho con dùng",
+          "Mang đến trường",
+          "Cất đi"
+        ],
+        "answer": 2,
+        "explain": "王女士 nói mình sẽ cất điện thoại đi."
+      }
+    ]
+  }
+]

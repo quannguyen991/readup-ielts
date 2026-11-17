@@ -4,6 +4,16 @@ import band9T1 from './band9-t1.json';
 import sampleS1 from './sample-s1.json';
 import studentLifeAndTravel from './student-life-and-travel.json';
 import mockListening02 from './mock-listening-02.json';
+import band9Listening11 from './band9-listening-11.json';
+import band9Listening12 from './band9-listening-12.json';
+import band9Listening13 from './band9-listening-13.json';
+import band9Listening14 from './band9-listening-14.json';
+import band9Listening15 from './band9-listening-15.json';
+import band9Listening16 from './band9-listening-16.json';
+import band9Listening17 from './band9-listening-17.json';
+import band9Listening18 from './band9-listening-18.json';
+import band9Listening19 from './band9-listening-19.json';
+import band9Listening20 from './band9-listening-20.json';
 import { ORIGINAL_TOPIC_TESTS } from './original-topics';
 
 /**
@@ -16,6 +26,16 @@ export const LISTENING_TESTS: ListeningTest[] = [
   band9T1 as ListeningTest,
   studentLifeAndTravel as ListeningTest,
   mockListening02 as ListeningTest,
+  band9Listening11 as ListeningTest,
+  band9Listening12 as ListeningTest,
+  band9Listening13 as ListeningTest,
+  band9Listening14 as ListeningTest,
+  band9Listening15 as ListeningTest,
+  band9Listening16 as ListeningTest,
+  band9Listening17 as ListeningTest,
+  band9Listening18 as ListeningTest,
+  band9Listening19 as ListeningTest,
+  band9Listening20 as ListeningTest,
   ...ORIGINAL_TOPIC_TESTS,
 ];
 

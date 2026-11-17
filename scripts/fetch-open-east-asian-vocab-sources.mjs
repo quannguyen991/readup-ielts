@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { Buffer } from 'node:buffer';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,6 +17,22 @@ const downloads = [
     path: path.join(outputDir, 'jlpt', `n${level}.json`),
     url: `https://raw.githubusercontent.com/evanclan/OpenJLPT/main/data/json/vocab/n${level}.json`,
   })),
+  {
+    path: path.join(outputDir, 'linzi', 'tocfl-words.json'),
+    url: 'https://www.linzi.app/data/files/tocfl-words.json',
+  },
+  {
+    path: path.join(outputDir, 'linzi', 'hsk30-words.json'),
+    url: 'https://www.linzi.app/data/files/hsk30-words.json',
+  },
+  {
+    path: path.join(outputDir, 'frequency', 'words.json'),
+    url: 'https://doudou-chinese.com/downloads/frequency/words.json',
+  },
+  {
+    path: path.join(outputDir, 'frequency', 'cedict_1_0_ts_utf-8_mdbg.txt.gz'),
+    url: 'https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz',
+  },
 ];
 
 for (const item of downloads) {

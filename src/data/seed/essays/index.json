@@ -1,0 +1,990 @@
+[
+  {
+    "id": "es-01",
+    "title": "Một ngày ốm",
+    "titleEn": "A Day in Bed",
+    "level": "B1",
+    "topic": "Đời thường",
+    "blurb": "Kể lại một ngày ốm và những người đã chăm sóc mình.",
+    "kind": "story",
+    "paragraphs": [
+      [
+        {
+          "vi": "Sáng thứ Hai tuần trước, tôi tỉnh dậy với cái đầu nặng trịch và cổ họng rát như có lửa.",
+          "en": "Last Monday morning, I woke up with a heavy head and a throat that burned as if it were on fire."
+        },
+        {
+          "vi": "Tôi lấy nhiệt kế ra đo thì thấy gần ba mươi chín độ.",
+          "en": "I took out the thermometer and found that my temperature was almost thirty-nine degrees."
+        },
+        {
+          "vi": "Lúc đó tôi biết chắc mình không thể đến lớp được.",
+          "en": "At that moment I knew for sure that I would not be able to go to class."
+        },
+        {
+          "vi": "Tôi nhắn tin xin cô giáo cho nghỉ một ngày rồi nằm lại xuống giường.",
+          "en": "I texted my teacher to ask for a day off and then lay back down in bed."
+        },
+        {
+          "vi": "Dù đã đắp chăn mà tôi vẫn thấy lạnh run người.",
+          "en": "Even under the blanket I was shivering with cold."
+        }
+      ],
+      [
+        {
+          "vi": "Khoảng chín giờ, mẹ gọi điện từ chỗ làm để hỏi xem tôi đã ăn gì chưa.",
+          "en": "Around nine o'clock, Mum called from work to ask whether I had eaten anything yet."
+        },
+        {
+          "vi": "Tôi nói mình chẳng thấy đói, nhưng mẹ bảo nhất định phải ăn chút cháo rồi mới uống thuốc.",
+          "en": "I said I did not feel hungry, but Mum insisted that I had to eat some porridge before taking my medicine."
+        },
+        {
+          "vi": "Thế là tôi lê bước vào bếp, hâm lại nồi cháo mẹ nấu từ tối hôm trước.",
+          "en": "So I dragged myself into the kitchen and reheated the pot of porridge that Mum had cooked the evening before."
+        },
+        {
+          "vi": "Cháo hơi nhạt nhưng nóng hổi, và tôi thấy dễ chịu hơn hẳn sau vài thìa.",
+          "en": "The porridge was a little bland but piping hot, and after a few spoonfuls I felt much better."
+        },
+        {
+          "vi": "Uống thuốc xong, tôi ngủ thiếp đi lúc nào không hay.",
+          "en": "After taking the medicine, I fell asleep without even noticing."
+        }
+      ],
+      [
+        {
+          "vi": "Đến trưa, tiếng chuông cửa làm tôi giật mình tỉnh dậy.",
+          "en": "At noon, the sound of the doorbell startled me awake."
+        },
+        {
+          "vi": "Hóa ra là Lan, cô bạn thân ngồi cạnh tôi trong lớp, mang bài vở đến cho tôi.",
+          "en": "It turned out to be Lan, my close friend who sits next to me in class, bringing my homework for me."
+        },
+        {
+          "vi": "Cậu ấy còn mua cho tôi một túi cam và dặn tôi uống nhiều nước.",
+          "en": "She had even bought me a bag of oranges and told me to drink plenty of water."
+        },
+        {
+          "vi": "Tôi cảm động đến mức không biết nói gì ngoài lời cảm ơn.",
+          "en": "I was so touched that I did not know what to say except thank you."
+        },
+        {
+          "vi": "Lan ngồi chơi một lát rồi về, vì sợ bị lây cảm của tôi.",
+          "en": "Lan stayed for a little while and then left, because she was afraid of catching my cold."
+        }
+      ],
+      [
+        {
+          "vi": "Chiều hôm đó, cơn sốt của tôi bắt đầu hạ dần.",
+          "en": "That afternoon, my fever slowly began to go down."
+        },
+        {
+          "vi": "Tôi ngồi dậy, mở cửa sổ cho phòng thoáng và thấy nắng đã phủ vàng cả sân.",
+          "en": "I sat up, opened the window to let some fresh air into the room, and saw that the sunlight had covered the whole yard in gold."
+        },
+        {
+          "vi": "Lâu rồi tôi mới để ý thấy một ngày bình thường lại đẹp đến thế.",
+          "en": "It had been a long time since I had noticed that an ordinary day could be so beautiful."
+        },
+        {
+          "vi": "Có nằm bệnh mới thấy sức khỏe quý giá biết bao.",
+          "en": "Only when you are sick do you realise how precious health is."
+        },
+        {
+          "vi": "Tôi tự hứa từ nay sẽ ngủ sớm và bớt thức khuya học bài.",
+          "en": "I promised myself that from now on I would go to bed earlier and stay up less late studying."
+        }
+      ],
+      [
+        {
+          "vi": "Tối đến, cả nhà ăn cơm cùng nhau, và tôi đã có thể ăn hết một bát đầy.",
+          "en": "In the evening, the whole family ate dinner together, and I was able to finish a full bowl."
+        },
+        {
+          "vi": "Ba trêu rằng chỉ cần một ngày ốm là tôi đã gầy đi cả ký.",
+          "en": "Dad joked that just one day of illness had made me lose a whole kilo."
+        },
+        {
+          "vi": "Tôi bật cười, dù cổ họng vẫn còn hơi đau.",
+          "en": "I burst out laughing, even though my throat still hurt a little."
+        },
+        {
+          "vi": "Sáng hôm sau, tôi trở lại lớp, khỏe hơn nhiều và biết ơn những người đã chăm sóc mình.",
+          "en": "The next morning, I went back to class, feeling much better and grateful to the people who had looked after me."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-02",
+    "title": "Chuyến đi biển cuối hè",
+    "titleEn": "A Seaside Trip at the End of Summer",
+    "level": "B1",
+    "topic": "Du lịch",
+    "blurb": "Ba ngày ở biển cùng gia đình, kể cả cơn mưa bất ngờ.",
+    "kind": "story",
+    "paragraphs": [
+      [
+        {
+          "vi": "Cuối hè năm ngoái, cả nhà tôi quyết định đi biển ba ngày để nghỉ ngơi trước năm học mới.",
+          "en": "At the end of last summer, my whole family decided to go to the seaside for three days to relax before the new school year."
+        },
+        {
+          "vi": "Ba mượn xe của chú, còn mẹ thì chuẩn bị đồ ăn từ tối hôm trước.",
+          "en": "Dad borrowed my uncle's car, while Mum prepared the food the night before."
+        },
+        {
+          "vi": "Chúng tôi xuất phát từ năm giờ sáng để tránh kẹt xe.",
+          "en": "We set off at five in the morning to avoid the traffic."
+        },
+        {
+          "vi": "Em trai tôi ngủ gục trên ghế sau ngay khi xe vừa ra khỏi thành phố.",
+          "en": "My younger brother fell asleep on the back seat as soon as the car left the city."
+        },
+        {
+          "vi": "Còn tôi thì ngồi nhìn những cánh đồng lúa chạy dài hai bên đường.",
+          "en": "As for me, I sat watching the rice fields stretch along both sides of the road."
+        }
+      ],
+      [
+        {
+          "vi": "Sau gần sáu tiếng, cuối cùng chúng tôi cũng đến nơi.",
+          "en": "After almost six hours, we finally arrived."
+        },
+        {
+          "vi": "Khách sạn nhỏ nhưng sạch sẽ, và từ ban công có thể nhìn thẳng ra biển.",
+          "en": "The hotel was small but clean, and from the balcony you could look straight out to the sea."
+        },
+        {
+          "vi": "Chưa kịp cất hành lý, em tôi đã đòi chạy xuống bãi cát.",
+          "en": "Before we could even put away our luggage, my brother was already begging to run down to the beach."
+        },
+        {
+          "vi": "Mẹ phải nhắc đi nhắc lại rằng cả nhà cần ăn trưa trước đã.",
+          "en": "Mum had to remind him again and again that we all needed to have lunch first."
+        },
+        {
+          "vi": "Bữa trưa hôm đó là món hải sản tươi nhất mà tôi từng được ăn.",
+          "en": "That lunch was the freshest seafood I had ever eaten."
+        }
+      ],
+      [
+        {
+          "vi": "Chiều hôm đó, chúng tôi tắm biển cho đến khi mặt trời bắt đầu lặn.",
+          "en": "That afternoon, we swam in the sea until the sun began to set."
+        },
+        {
+          "vi": "Nước mát và trong đến mức tôi có thể nhìn thấy những con cá nhỏ bơi quanh chân mình.",
+          "en": "The water was so cool and clear that I could see small fish swimming around my feet."
+        },
+        {
+          "vi": "Ba dạy em tôi cách bơi ngửa, nhưng nó cứ uống phải nước và ho sặc sụa.",
+          "en": "Dad taught my brother how to swim on his back, but he kept swallowing water and coughing."
+        },
+        {
+          "vi": "Cả nhà cười ầm lên, và chính nó cũng cười theo.",
+          "en": "The whole family burst out laughing, and he joined in too."
+        },
+        {
+          "vi": "Khi ánh hoàng hôn nhuộm đỏ mặt nước, tôi đứng lặng một lúc lâu.",
+          "en": "When the sunset turned the water red, I stood silently for a long while."
+        },
+        {
+          "vi": "Tôi nghĩ mình sẽ không bao giờ quên khoảnh khắc ấy.",
+          "en": "I thought I would never forget that moment."
+        }
+      ],
+      [
+        {
+          "vi": "Ngày thứ hai, trời bất ngờ đổ mưa, nên kế hoạch đi thuyền của chúng tôi bị hủy.",
+          "en": "On the second day, it suddenly rained, so our plan to go on a boat trip was cancelled."
+        },
+        {
+          "vi": "Thay vì buồn bực, cả nhà ngồi trong quán cà phê gần khách sạn chơi bài.",
+          "en": "Instead of feeling upset, the whole family sat in a café near the hotel and played cards."
+        },
+        {
+          "vi": "Lần đầu tiên sau nhiều tháng, không ai cầm điện thoại cả.",
+          "en": "For the first time in months, nobody was holding a phone."
+        },
+        {
+          "vi": "Tôi nhận ra những chuyến đi vui nhất không nhất thiết phải theo đúng kế hoạch.",
+          "en": "I realised that the most enjoyable trips do not necessarily go according to plan."
+        },
+        {
+          "vi": "Đến chiều, mưa tạnh và chúng tôi ra dạo trên bờ biển ẩm mát.",
+          "en": "By the afternoon the rain had stopped, and we went for a walk along the cool, damp shore."
+        }
+      ],
+      [
+        {
+          "vi": "Sáng ngày thứ ba, chúng tôi thu dọn đồ đạc và trả phòng.",
+          "en": "On the morning of the third day, we packed our things and checked out."
+        },
+        {
+          "vi": "Trên đường về, ai cũng hơi tiếc vì kỳ nghỉ trôi qua quá nhanh.",
+          "en": "On the way home, everyone felt a little sorry that the holiday had passed so quickly."
+        },
+        {
+          "vi": "Em trai tôi hỏi liệu năm sau chúng tôi có quay lại đây không.",
+          "en": "My brother asked whether we would come back here next year."
+        },
+        {
+          "vi": "Ba mỉm cười và nói rằng nếu cả nhà cùng tiết kiệm thì chắc chắn sẽ được.",
+          "en": "Dad smiled and said that if we all saved money together, we certainly could."
+        },
+        {
+          "vi": "Tôi tựa đầu vào cửa kính, mang theo cát trong giày và nụ cười trên môi.",
+          "en": "I leaned my head against the window, carrying sand in my shoes and a smile on my face."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-03",
+    "title": "Mạng xã hội và giới trẻ",
+    "titleEn": "Social Media and Young People",
+    "level": "B2",
+    "topic": "Mạng xã hội",
+    "blurb": "Phân tích mặt lợi và mặt hại của mạng xã hội đối với người trẻ.",
+    "kind": "essay",
+    "paragraphs": [
+      [
+        {
+          "vi": "Ngày nay, mạng xã hội đã trở thành một phần không thể thiếu trong cuộc sống của giới trẻ.",
+          "en": "Nowadays, social media has become an indispensable part of young people's lives."
+        },
+        {
+          "vi": "Thực tế, một thanh niên bình thường dành vài giờ mỗi ngày trên các nền tảng như vậy.",
+          "en": "In fact, an average young person spends several hours a day on such platforms."
+        },
+        {
+          "vi": "Chỉ cần một chiếc điện thoại, ai cũng có thể chia sẻ khoảnh khắc của mình với hàng trăm người bạn trong vài giây.",
+          "en": "With just a phone, anyone can share their moments with hundreds of friends within seconds."
+        },
+        {
+          "vi": "Tuy nhiên, sự tiện lợi ấy cũng kéo theo không ít hệ lụy mà chúng ta cần nhìn nhận một cách thẳng thắn.",
+          "en": "However, this convenience also brings with it quite a few consequences that we need to face honestly."
+        },
+        {
+          "vi": "Bài viết này sẽ phân tích cả mặt lợi lẫn mặt hại của mạng xã hội đối với người trẻ.",
+          "en": "This essay will analyse both the benefits and the drawbacks of social media for young people."
+        }
+      ],
+      [
+        {
+          "vi": "Trước hết, mạng xã hội giúp con người giữ liên lạc với nhau bất kể khoảng cách địa lý.",
+          "en": "First of all, social media helps people stay in touch with one another regardless of geographical distance."
+        },
+        {
+          "vi": "Một sinh viên đi du học vẫn có thể trò chuyện hằng ngày với gia đình ở quê nhà.",
+          "en": "A student studying abroad can still chat with their family back home every day."
+        },
+        {
+          "vi": "Bên cạnh đó, đây còn là kênh học hỏi hiệu quả, nơi nhiều chuyên gia chia sẻ kiến thức hoàn toàn miễn phí.",
+          "en": "In addition, it is also an effective channel for learning, where many experts share knowledge entirely for free."
+        },
+        {
+          "vi": "Nhiều bạn trẻ đã tìm được cơ hội việc làm nhờ những mối quan hệ được xây dựng trực tuyến.",
+          "en": "Many young people have found job opportunities thanks to relationships built online."
+        },
+        {
+          "vi": "Những người vốn nhút nhát cũng dễ bày tỏ ý kiến hơn khi không phải nói trực tiếp.",
+          "en": "People who are naturally shy also find it easier to express their opinions when they do not have to speak face to face."
+        },
+        {
+          "vi": "Ngoài ra, các chiến dịch thiện nguyện lan truyền nhanh chóng trên mạng đã giúp đỡ được rất nhiều hoàn cảnh khó khăn.",
+          "en": "Moreover, charity campaigns that spread quickly online have helped many people in difficult circumstances."
+        }
+      ],
+      [
+        {
+          "vi": "Mặt khác, việc lạm dụng mạng xã hội có thể gây ảnh hưởng nghiêm trọng đến sức khỏe tinh thần.",
+          "en": "On the other hand, overusing social media can seriously affect mental health."
+        },
+        {
+          "vi": "Khi liên tục so sánh cuộc sống của mình với những hình ảnh được chỉnh sửa hoàn hảo của người khác, nhiều bạn trẻ cảm thấy tự ti và lo âu.",
+          "en": "When they constantly compare their own lives with other people's perfectly edited images, many young people feel insecure and anxious."
+        },
+        {
+          "vi": "Hơn nữa, việc lướt điện thoại vô tận đã lấy đi những giờ phút đáng lẽ dành cho việc học và nghỉ ngơi.",
+          "en": "Furthermore, endless scrolling takes away hours that should have been spent studying and resting."
+        },
+        {
+          "vi": "Tin giả cũng lan truyền nhanh đến mức nhiều người chưa kịp kiểm chứng đã vội tin và chia sẻ.",
+          "en": "Fake news also spreads so fast that many people believe and share it before they have time to check it."
+        },
+        {
+          "vi": "Đáng lo ngại hơn, nạn bắt nạt trên mạng có thể để lại những vết thương mà người ngoài khó nhận ra.",
+          "en": "More worryingly, cyberbullying can leave wounds that outsiders find hard to notice."
+        }
+      ],
+      [
+        {
+          "vi": "Vậy làm thế nào để tận dụng ưu điểm mà vẫn hạn chế tác hại?",
+          "en": "So how can we take advantage of the benefits while limiting the harm?"
+        },
+        {
+          "vi": "Theo tôi, mỗi người nên tự đặt giới hạn thời gian sử dụng mỗi ngày và tuân thủ nghiêm túc.",
+          "en": "In my opinion, everyone should set a daily time limit for using it and stick to it strictly."
+        },
+        {
+          "vi": "Nhà trường và gia đình cũng cần trang bị cho học sinh kỹ năng nhận biết thông tin đáng tin cậy.",
+          "en": "Schools and families also need to equip students with the skills to recognise reliable information."
+        },
+        {
+          "vi": "Cuối cùng, chính các nền tảng cũng nên chịu trách nhiệm nhiều hơn trong việc kiểm duyệt nội dung độc hại.",
+          "en": "Finally, the platforms themselves should take more responsibility for moderating harmful content."
+        },
+        {
+          "vi": "Nếu được hướng dẫn đúng cách, giới trẻ sẽ biết dùng mạng xã hội như một công cụ chứ không để nó điều khiển mình.",
+          "en": "If they are guided properly, young people will learn to use social media as a tool rather than let it control them."
+        }
+      ],
+      [
+        {
+          "vi": "Tóm lại, mạng xã hội giống như một con dao hai lưỡi.",
+          "en": "In conclusion, social media is like a double-edged sword."
+        },
+        {
+          "vi": "Nó mang lại cơ hội to lớn cho những ai biết sử dụng có chừng mực.",
+          "en": "It offers great opportunities to those who know how to use it in moderation."
+        },
+        {
+          "vi": "Nhưng nó cũng có thể làm tổn thương những ai sa đà vào nó mà không nhận ra.",
+          "en": "But it can also hurt those who become absorbed in it without realising."
+        },
+        {
+          "vi": "Điều quan trọng không phải là từ bỏ công nghệ, mà là học cách làm chủ nó.",
+          "en": "What matters is not giving up technology, but learning how to master it."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-04",
+    "title": "Học trực tuyến có thay thế được lớp học?",
+    "titleEn": "Can Online Learning Replace the Classroom?",
+    "level": "B2",
+    "topic": "Giáo dục",
+    "blurb": "Cân nhắc ưu và nhược điểm của học trực tuyến so với học trực tiếp.",
+    "kind": "essay",
+    "paragraphs": [
+      [
+        {
+          "vi": "Trong vài năm gần đây, học trực tuyến đã chuyển từ một lựa chọn phụ thành một phương thức giáo dục phổ biến.",
+          "en": "In recent years, online learning has shifted from a secondary option to a widespread method of education."
+        },
+        {
+          "vi": "Nhiều người cho rằng nó sẽ dần thay thế lớp học truyền thống.",
+          "en": "Many people believe that it will gradually replace the traditional classroom."
+        },
+        {
+          "vi": "Tôi thì không hoàn toàn đồng tình với quan điểm đó.",
+          "en": "I, however, do not entirely agree with that view."
+        },
+        {
+          "vi": "Theo tôi, học trực tuyến có nhiều ưu thế rõ rệt nhưng vẫn không thể thay thế hoàn toàn việc học trực tiếp.",
+          "en": "In my view, online learning has clear advantages, but it cannot fully replace face-to-face study."
+        }
+      ],
+      [
+        {
+          "vi": "Ưu điểm lớn nhất của hình thức này là sự linh hoạt về thời gian và địa điểm.",
+          "en": "The biggest advantage of this format is its flexibility in time and location."
+        },
+        {
+          "vi": "Một người đi làm ban ngày vẫn có thể theo học một khóa tiếng Anh vào buổi tối ngay tại nhà.",
+          "en": "Someone who works during the day can still take an English course in the evening from home."
+        },
+        {
+          "vi": "Học sinh ở vùng sâu vùng xa cũng được tiếp cận những bài giảng chất lượng mà trước đây họ khó có cơ hội nghe.",
+          "en": "Students in remote areas also gain access to high-quality lectures that they would have had little chance of hearing in the past."
+        },
+        {
+          "vi": "Hơn nữa, bài giảng được ghi lại nên người học có thể xem đi xem lại cho đến khi hiểu hẳn.",
+          "en": "Furthermore, lectures are recorded, so learners can watch them again and again until they fully understand."
+        },
+        {
+          "vi": "Chi phí thường thấp hơn nhiều so với các khóa học trực tiếp, vì không phải tốn tiền đi lại hay thuê phòng.",
+          "en": "The cost is also usually much lower than for in-person courses, since there is no need to spend money on travel or renting a room."
+        },
+        {
+          "vi": "Đối với nhiều gia đình có thu nhập trung bình, đó là một điểm cộng đáng kể.",
+          "en": "For many middle-income families, that is a significant plus."
+        }
+      ],
+      [
+        {
+          "vi": "Tuy vậy, học trực tuyến cũng bộc lộ những hạn chế không nhỏ.",
+          "en": "Nevertheless, online learning also reveals some considerable limitations."
+        },
+        {
+          "vi": "Điều đầu tiên là người học dễ mất tập trung khi không có ai giám sát.",
+          "en": "The first is that learners easily lose focus when nobody is supervising them."
+        },
+        {
+          "vi": "Chỉ một thông báo điện thoại cũng đủ khiến họ rời khỏi bài giảng suốt nửa giờ.",
+          "en": "A single phone notification is enough to pull them away from a lecture for half an hour."
+        },
+        {
+          "vi": "Thêm vào đó, việc thiếu tương tác trực tiếp khiến học sinh khó đặt câu hỏi và khó xây dựng tình bạn với những người cùng lớp.",
+          "en": "In addition, the lack of direct interaction makes it hard for students to ask questions and to build friendships with classmates."
+        },
+        {
+          "vi": "Những kỹ năng như làm việc nhóm hay thuyết trình trước đám đông cũng khó được rèn luyện qua màn hình.",
+          "en": "Skills such as teamwork or presenting in front of a crowd are also hard to practise through a screen."
+        },
+        {
+          "vi": "Cuối cùng, không phải ai cũng có đường truyền ổn định hay thiết bị đủ tốt để học.",
+          "en": "Finally, not everyone has a stable connection or a device good enough to study with."
+        }
+      ],
+      [
+        {
+          "vi": "Vì vậy, giải pháp hợp lý nhất có lẽ là kết hợp cả hai hình thức.",
+          "en": "Therefore, the most reasonable solution is probably to combine both formats."
+        },
+        {
+          "vi": "Phần lý thuyết có thể được học trực tuyến, còn thảo luận và thực hành nên diễn ra trên lớp.",
+          "en": "Theory can be learned online, while discussion and practice should take place in the classroom."
+        },
+        {
+          "vi": "Nhờ đó, người học vừa tiết kiệm thời gian vừa không bị tách khỏi cộng đồng.",
+          "en": "In this way, learners both save time and avoid becoming cut off from their community."
+        },
+        {
+          "vi": "Các trường học cần đầu tư vào đào tạo giáo viên để họ sử dụng công nghệ hiệu quả hơn.",
+          "en": "Schools need to invest in teacher training so that teachers can use technology more effectively."
+        },
+        {
+          "vi": "Chỉ khi đó, công nghệ mới thực sự phục vụ giáo dục thay vì làm nó rối thêm.",
+          "en": "Only then will technology truly serve education instead of complicating it further."
+        }
+      ],
+      [
+        {
+          "vi": "Tóm lại, học trực tuyến là một công cụ mạnh mẽ nhưng không phải là phép màu.",
+          "en": "In short, online learning is a powerful tool, but it is not a miracle."
+        },
+        {
+          "vi": "Hiệu quả của nó phụ thuộc vào kỷ luật của người học và cách tổ chức của nhà trường.",
+          "en": "Its effectiveness depends on the learner's discipline and on how schools organise it."
+        },
+        {
+          "vi": "Nếu biết kết hợp khéo léo, chúng ta sẽ có một nền giáo dục linh hoạt hơn mà vẫn giữ được sự gắn kết giữa con người.",
+          "en": "If we combine the two skilfully, we will have a more flexible education system that still preserves human connection."
+        },
+        {
+          "vi": "Đó mới là hướng đi bền vững cho các thế hệ học sinh tương lai.",
+          "en": "That is the sustainable direction for future generations of students."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-05",
+    "title": "Thành phố đáng sống",
+    "titleEn": "Making Cities Worth Living In",
+    "level": "B2",
+    "topic": "Môi trường đô thị",
+    "blurb": "Nguyên nhân ô nhiễm đô thị và những giải pháp từ chính quyền lẫn người dân.",
+    "kind": "essay",
+    "paragraphs": [
+      [
+        {
+          "vi": "Các thành phố lớn đang phát triển với tốc độ chóng mặt, nhưng môi trường sống của người dân lại không được cải thiện tương ứng.",
+          "en": "Big cities are growing at a dizzying pace, yet residents' living environment has not improved correspondingly."
+        },
+        {
+          "vi": "Không khí ô nhiễm, tiếng ồn và rác thải đã trở thành nỗi lo thường trực của hàng triệu người.",
+          "en": "Polluted air, noise and waste have become a constant worry for millions of people."
+        },
+        {
+          "vi": "Nếu không có biện pháp kịp thời, chất lượng cuộc sống đô thị sẽ tiếp tục suy giảm.",
+          "en": "If no timely measures are taken, the quality of urban life will continue to decline."
+        },
+        {
+          "vi": "Vậy nguyên nhân là gì, và chúng ta có thể làm gì để thay đổi?",
+          "en": "So what are the causes, and what can we do to change things?"
+        }
+      ],
+      [
+        {
+          "vi": "Trước hết, lượng phương tiện cá nhân tăng nhanh là thủ phạm chính gây ô nhiễm không khí.",
+          "en": "First, the rapid increase in private vehicles is the main culprit behind air pollution."
+        },
+        {
+          "vi": "Vào giờ cao điểm, khói xe khiến nhiều tuyến đường gần như không thể thở nổi.",
+          "en": "During rush hour, exhaust fumes make many streets almost impossible to breathe on."
+        },
+        {
+          "vi": "Bên cạnh đó, các công trình xây dựng mọc lên san sát đã chiếm dần diện tích cây xanh vốn đã ít ỏi.",
+          "en": "Besides, buildings sprouting up close together have gradually taken over the already scarce green space."
+        },
+        {
+          "vi": "Khi mặt đất bị phủ kín bởi bê tông, nước mưa không thể thấm xuống và gây ngập úng mỗi mùa mưa.",
+          "en": "When the ground is covered with concrete, rainwater cannot soak in and causes flooding every rainy season."
+        },
+        {
+          "vi": "Ngoài ra, thói quen xả rác bừa bãi của một bộ phận người dân khiến việc giữ gìn vệ sinh trở nên khó khăn hơn.",
+          "en": "Furthermore, the habit of littering among some residents makes keeping the city clean harder."
+        },
+        {
+          "vi": "Có thể thấy, vấn đề xuất phát từ cả quy hoạch lẫn ý thức của mỗi cá nhân.",
+          "en": "Clearly, the problem comes from both planning and the awareness of individuals."
+        }
+      ],
+      [
+        {
+          "vi": "Về phía chính quyền, việc ưu tiên phát triển giao thông công cộng là hướng đi cần thiết.",
+          "en": "On the government's side, giving priority to public transport is a necessary direction."
+        },
+        {
+          "vi": "Một hệ thống xe buýt và tàu điện đáng tin cậy sẽ khuyến khích người dân để xe riêng ở nhà.",
+          "en": "A reliable bus and metro system would encourage people to leave their private vehicles at home."
+        },
+        {
+          "vi": "Đồng thời, mỗi dự án xây dựng nên được yêu cầu dành một tỷ lệ nhất định cho công viên và cây xanh.",
+          "en": "At the same time, every construction project should be required to set aside a certain proportion for parks and greenery."
+        },
+        {
+          "vi": "Những quy định như vậy chỉ có tác dụng khi được thực thi nghiêm túc.",
+          "en": "Such regulations only work when they are enforced seriously."
+        },
+        {
+          "vi": "Nhiều thành phố trên thế giới đã giảm đáng kể khói bụi chỉ sau vài năm nhờ áp dụng khu vực hạn chế xe.",
+          "en": "Many cities around the world have cut smog considerably within just a few years by introducing low-emission zones."
+        },
+        {
+          "vi": "Đây là bài học mà chúng ta hoàn toàn có thể học hỏi.",
+          "en": "This is a lesson we can certainly learn from."
+        }
+      ],
+      [
+        {
+          "vi": "Tuy nhiên, chính sách sẽ khó thành công nếu thiếu sự chung tay của người dân.",
+          "en": "However, policies will struggle to succeed without the cooperation of residents."
+        },
+        {
+          "vi": "Mỗi người có thể bắt đầu từ những việc nhỏ như phân loại rác, đi bộ quãng đường ngắn hoặc trồng cây trên ban công.",
+          "en": "Everyone can start with small things such as sorting waste, walking short distances or growing plants on the balcony."
+        },
+        {
+          "vi": "Những thay đổi này tuy nhỏ, nhưng khi hàng triệu người cùng làm thì tác động sẽ rất lớn.",
+          "en": "These changes may be small, but when millions of people do them together, the impact is huge."
+        },
+        {
+          "vi": "Trường học cũng nên đưa giáo dục môi trường vào chương trình để hình thành thói quen tốt từ sớm.",
+          "en": "Schools should also include environmental education in the curriculum to build good habits early."
+        },
+        {
+          "vi": "Một thế hệ lớn lên cùng ý thức bảo vệ môi trường sẽ tạo ra những thành phố sạch hơn.",
+          "en": "A generation that grows up with environmental awareness will create cleaner cities."
+        }
+      ],
+      [
+        {
+          "vi": "Tóm lại, ô nhiễm đô thị là vấn đề phức tạp, nhưng không phải không có lời giải.",
+          "en": "In conclusion, urban pollution is a complex problem, but it is not without solutions."
+        },
+        {
+          "vi": "Chỉ khi chính quyền và người dân cùng hành động, thành phố mới thực sự trở thành nơi đáng sống.",
+          "en": "Only when authorities and residents act together will cities truly become places worth living in."
+        },
+        {
+          "vi": "Một thành phố xanh không phải là giấc mơ xa vời nếu chúng ta quyết tâm.",
+          "en": "A green city is not a distant dream if we are determined."
+        },
+        {
+          "vi": "Chúng ta cần bắt đầu ngay từ hôm nay, bởi cái giá của sự chậm trễ sẽ do con cháu chúng ta gánh chịu.",
+          "en": "We need to start today, because the cost of delay will be borne by our children and grandchildren."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-06",
+    "title": "Trí tuệ nhân tạo và tương lai việc làm",
+    "titleEn": "Artificial Intelligence and the Future of Work",
+    "level": "C1",
+    "topic": "AI và việc làm",
+    "blurb": "Vì sao thách thức thật sự của AI nằm ở cách phân phối lợi ích.",
+    "kind": "essay",
+    "paragraphs": [
+      [
+        {
+          "vi": "Trí tuệ nhân tạo đang len lỏi vào hầu hết các ngành nghề, từ y tế, tài chính cho đến sáng tạo nội dung.",
+          "en": "Artificial intelligence is making its way into nearly every profession, from healthcare and finance to content creation."
+        },
+        {
+          "vi": "Mỗi khi một công nghệ đột phá xuất hiện, nỗi lo mất việc lại quay trở lại, và lần này nỗi lo ấy dường như có cơ sở hơn bao giờ hết.",
+          "en": "Whenever a breakthrough technology appears, the fear of job losses returns, and this time that fear seems better founded than ever."
+        },
+        {
+          "vi": "Khác với máy móc thời công nghiệp vốn chỉ thay thế sức lao động chân tay, AI có khả năng đảm nhận cả những công việc đòi hỏi tư duy.",
+          "en": "Unlike the machines of the industrial age, which merely replaced manual labour, AI is capable of taking on tasks that demand thinking."
+        },
+        {
+          "vi": "Câu hỏi đặt ra không chỉ là bao nhiêu việc làm sẽ biến mất, mà còn là xã hội sẽ ứng phó ra sao với sự chuyển đổi này.",
+          "en": "The question is not merely how many jobs will disappear, but how society will respond to this transition."
+        },
+        {
+          "vi": "Bài viết này cho rằng thách thức thực sự nằm ở cách phân phối lợi ích hơn là ở bản thân công nghệ.",
+          "en": "This essay argues that the real challenge lies in how the benefits are distributed rather than in the technology itself."
+        }
+      ],
+      [
+        {
+          "vi": "Lịch sử cho thấy công nghệ thường tạo ra nhiều việc làm hơn số mà nó xóa bỏ.",
+          "en": "History shows that technology has usually created more jobs than it has eliminated."
+        },
+        {
+          "vi": "Sự ra đời của máy tính cá nhân đã làm biến mất nghề đánh máy, nhưng lại sinh ra hàng triệu vị trí trong lĩnh vực phần mềm và dịch vụ số.",
+          "en": "The arrival of the personal computer made the typist's profession disappear, but it gave rise to millions of positions in software and digital services."
+        },
+        {
+          "vi": "Tuy nhiên, quá trình chuyển đổi ấy chưa bao giờ diễn ra êm ả đối với những người ở giữa cuộc.",
+          "en": "However, that transition has never been smooth for those caught in the middle of it."
+        },
+        {
+          "vi": "Một công nhân năm mươi tuổi bị mất việc không thể dễ dàng trở thành lập trình viên chỉ sau vài tháng đào tạo.",
+          "en": "A fifty-year-old worker who has lost their job cannot easily become a programmer after just a few months of training."
+        },
+        {
+          "vi": "Do đó, việc nói rằng tổng số việc làm sẽ không giảm là chưa đủ để trấn an những người đang đối diện với rủi ro trước mắt.",
+          "en": "Therefore, saying that the total number of jobs will not fall is not enough to reassure those who face immediate risk."
+        },
+        {
+          "vi": "Thiệt hại thường tập trung vào một nhóm người cụ thể, trong khi lợi ích lại phân tán trong toàn xã hội.",
+          "en": "The damage tends to be concentrated on a specific group, while the benefits are spread across society as a whole."
+        }
+      ],
+      [
+        {
+          "vi": "Điều đáng quan tâm hơn là bản chất của những công việc có nguy cơ bị tự động hóa.",
+          "en": "More worthy of attention is the nature of the jobs that are at risk of automation."
+        },
+        {
+          "vi": "Những nhiệm vụ lặp đi lặp lại và có quy tắc rõ ràng, dù là trí óc hay chân tay, đều dễ bị máy móc thay thế nhất.",
+          "en": "Tasks that are repetitive and governed by clear rules, whether mental or manual, are the easiest for machines to replace."
+        },
+        {
+          "vi": "Ngược lại, những nghề đòi hỏi sự đồng cảm, phán đoán trong tình huống mơ hồ và sáng tạo thực thụ vẫn còn chỗ đứng vững chắc.",
+          "en": "By contrast, professions that demand empathy, judgement in ambiguous situations and genuine creativity still have a firm place."
+        },
+        {
+          "vi": "Song, ranh giới này không cố định, vì năng lực của AI đang tiến bộ nhanh hơn hầu hết các dự đoán.",
+          "en": "Yet this boundary is not fixed, as AI's capabilities are advancing faster than most predictions."
+        },
+        {
+          "vi": "Vì thế, bất kỳ bản đồ nghề nghiệp nào được coi là an toàn cũng cần được xem xét với thái độ dè dặt.",
+          "en": "Hence any map of careers considered safe should be viewed with caution."
+        },
+        {
+          "vi": "Điều chắc chắn hơn cả là khả năng học hỏi liên tục sẽ trở thành tài sản quý giá nhất của người lao động.",
+          "en": "What is more certain is that the ability to keep learning will become a worker's most valuable asset."
+        }
+      ],
+      [
+        {
+          "vi": "Nếu muốn quá trình chuyển đổi mang tính công bằng, nhà nước cần đóng vai trò chủ động hơn là chỉ đứng ngoài quan sát.",
+          "en": "If the transition is to be fair, the state needs to play a more active role than simply watching from the sidelines."
+        },
+        {
+          "vi": "Các chương trình đào tạo lại nên được thiết kế cùng với doanh nghiệp để bảo đảm kỹ năng học được thực sự phù hợp với nhu cầu thị trường.",
+          "en": "Retraining programmes should be designed together with businesses to ensure that the skills acquired genuinely match market needs."
+        },
+        {
+          "vi": "Hệ thống an sinh xã hội cũng cần được tăng cường để người lao động có thời gian chuyển nghề mà không rơi vào cảnh túng quẫn.",
+          "en": "The social security system also needs strengthening so that workers have time to change careers without falling into destitution."
+        },
+        {
+          "vi": "Một số học giả còn đề xuất đánh thuế các doanh nghiệp hưởng lợi lớn từ tự động hóa nhằm tài trợ cho những quỹ như vậy.",
+          "en": "Some scholars have even proposed taxing companies that profit heavily from automation in order to fund such programmes."
+        },
+        {
+          "vi": "Dù còn nhiều tranh cãi về tính khả thi, ý tưởng này phản ánh một thực tế rằng lợi ích của công nghệ không nên rơi vào tay số ít.",
+          "en": "Although its feasibility is still hotly debated, the idea reflects the reality that the benefits of technology should not end up in the hands of a few."
+        },
+        {
+          "vi": "Cuộc thảo luận như vậy cần được tiến hành sớm, trước khi những xáo trộn trở nên khó kiểm soát.",
+          "en": "Such a discussion needs to take place early, before the disruption becomes hard to control."
+        }
+      ],
+      [
+        {
+          "vi": "Tóm lại, AI không phải là mối đe dọa tự thân, cũng không phải là lời giải cho mọi vấn đề.",
+          "en": "In conclusion, AI is neither a threat in itself nor a solution to every problem."
+        },
+        {
+          "vi": "Tác động của nó sẽ phụ thuộc vào những lựa chọn chính sách và đạo đức mà chúng ta đưa ra hôm nay.",
+          "en": "Its impact will depend on the policy and ethical choices we make today."
+        },
+        {
+          "vi": "Một xã hội biết đầu tư vào con người song song với đầu tư vào công nghệ sẽ có nhiều khả năng biến sự đột phá này thành sự thịnh vượng chung.",
+          "en": "A society that invests in people alongside technology is far more likely to turn this disruption into shared prosperity."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-07",
+    "title": "Bất bình đẳng và cái giá của nó",
+    "titleEn": "Inequality and Its Cost",
+    "level": "C1",
+    "topic": "Bất bình đẳng",
+    "blurb": "Nguyên nhân, hệ quả và hướng thu hẹp khoảng cách giàu nghèo.",
+    "kind": "essay",
+    "paragraphs": [
+      [
+        {
+          "vi": "Bất bình đẳng kinh tế không phải là hiện tượng mới, nhưng quy mô của nó trong thế kỷ này khiến nhiều nhà nghiên cứu phải lo ngại.",
+          "en": "Economic inequality is not a new phenomenon, but its scale in this century has alarmed many researchers."
+        },
+        {
+          "vi": "Một nhóm rất nhỏ nắm giữ phần lớn của cải, trong khi hàng triệu người vẫn phải vật lộn để trang trải những nhu cầu cơ bản.",
+          "en": "A very small group holds most of the wealth, while millions still struggle to meet their basic needs."
+        },
+        {
+          "vi": "Người ta thường lập luận rằng chênh lệch là cái giá tất yếu của tăng trưởng.",
+          "en": "It is often argued that disparity is the inevitable price of growth."
+        },
+        {
+          "vi": "Tôi cho rằng lập luận đó chỉ đúng một phần và che khuất những hệ quả lâu dài.",
+          "en": "I believe that argument is only partly true and obscures the long-term consequences."
+        },
+        {
+          "vi": "Một xã hội quá chênh lệch không chỉ bất công mà còn kém bền vững.",
+          "en": "A society that is too unequal is not only unjust but also less sustainable."
+        }
+      ],
+      [
+        {
+          "vi": "Nguyên nhân của bất bình đẳng có nhiều tầng lớp và không thể quy về một yếu tố duy nhất.",
+          "en": "The causes of inequality are multi-layered and cannot be reduced to a single factor."
+        },
+        {
+          "vi": "Trước hết, xuất phát điểm khác nhau quyết định rất nhiều đến cơ hội mà mỗi đứa trẻ có được.",
+          "en": "First, differing starting points greatly determine the opportunities each child receives."
+        },
+        {
+          "vi": "Một em bé sinh ra trong gia đình khá giả được tiếp cận giáo dục tốt, sức khỏe tốt và những mối quan hệ hữu ích ngay từ đầu.",
+          "en": "A child born into a well-off family has access from the start to good education, good health and useful connections."
+        },
+        {
+          "vi": "Trong khi đó, những đứa trẻ khác dù nỗ lực không kém vẫn phải bắt đầu từ một vạch xuất phát lùi xa hơn rất nhiều.",
+          "en": "Meanwhile, other children, however hard they try, must start from a line that is set far further back."
+        },
+        {
+          "vi": "Bên cạnh đó, toàn cầu hóa và tiến bộ công nghệ đã thưởng hậu hĩnh cho những người có kỹ năng cao, nhưng lại bỏ lại phía sau nhiều người lao động phổ thông.",
+          "en": "In addition, globalisation and technological progress have richly rewarded the highly skilled while leaving many ordinary workers behind."
+        },
+        {
+          "vi": "Hệ quả là khoảng cách thu nhập không ngừng bị kéo giãn, ngay cả ở những nền kinh tế đang tăng trưởng mạnh.",
+          "en": "As a result, the income gap keeps widening, even in economies that are growing strongly."
+        }
+      ],
+      [
+        {
+          "vi": "Hậu quả của tình trạng này vượt xa phạm vi kinh tế.",
+          "en": "The consequences of this situation go far beyond the economy."
+        },
+        {
+          "vi": "Khi cảm thấy cố gắng đến mấy cũng không thể thay đổi số phận, con người dễ mất niềm tin vào các thể chế và vào chính tương lai của mình.",
+          "en": "When people feel that no amount of effort can change their fate, they easily lose faith in institutions and in their own future."
+        },
+        {
+          "vi": "Nghiên cứu cho thấy những xã hội có mức chênh lệch cao thường ghi nhận tỷ lệ tội phạm và bệnh tật cao hơn.",
+          "en": "Research shows that societies with high levels of disparity tend to record higher rates of crime and illness."
+        },
+        {
+          "vi": "Sự căng thẳng xã hội kéo dài còn tạo mảnh đất màu mỡ cho những tư tưởng cực đoan và chia rẽ.",
+          "en": "Prolonged social tension also provides fertile ground for extremist and divisive ideas."
+        },
+        {
+          "vi": "Về lâu dài, chính tầng lớp giàu có cũng không thể hưởng lợi từ một xã hội bất ổn.",
+          "en": "In the long run, even the wealthy cannot benefit from an unstable society."
+        },
+        {
+          "vi": "Do vậy, giảm bất bình đẳng không đơn thuần là vấn đề đạo đức mà còn là lợi ích chung.",
+          "en": "Therefore, reducing inequality is not simply a moral matter but a shared interest."
+        }
+      ],
+      [
+        {
+          "vi": "Vậy đâu là những giải pháp khả thi?",
+          "en": "So what are the viable solutions?"
+        },
+        {
+          "vi": "Đầu tư vào giáo dục chất lượng cho trẻ em thuộc mọi hoàn cảnh có lẽ là biện pháp hiệu quả nhất về lâu dài.",
+          "en": "Investing in quality education for children of all backgrounds is perhaps the most effective measure in the long term."
+        },
+        {
+          "vi": "Hệ thống thuế lũy tiến, nếu được thiết kế hợp lý và được giám sát chặt chẽ, có thể giúp tái phân phối nguồn lực mà không triệt tiêu động lực làm việc.",
+          "en": "A progressive tax system, if sensibly designed and closely monitored, can help redistribute resources without destroying the incentive to work."
+        },
+        {
+          "vi": "Tuy nhiên, những chính sách này sẽ thất bại nếu tình trạng trốn thuế và đặc quyền cho các nhóm lợi ích vẫn tiếp diễn.",
+          "en": "However, these policies will fail if tax evasion and privileges for special interests continue."
+        },
+        {
+          "vi": "Minh bạch và trách nhiệm giải trình vì thế là điều kiện không thể thiếu.",
+          "en": "Transparency and accountability are therefore indispensable conditions."
+        },
+        {
+          "vi": "Quan trọng hơn cả, người dân cần được lắng nghe khi chính sách được hoạch định, thay vì chỉ là đối tượng chịu tác động.",
+          "en": "Most importantly, citizens need to be heard when policies are being drawn up, rather than merely being the people affected by them."
+        }
+      ],
+      [
+        {
+          "vi": "Tóm lại, bất bình đẳng không phải là định mệnh mà là kết quả của những lựa chọn xã hội.",
+          "en": "In conclusion, inequality is not destiny but the result of social choices."
+        },
+        {
+          "vi": "Chúng ta không thể xóa bỏ hoàn toàn mọi chênh lệch, nhưng hoàn toàn có thể thu hẹp chúng xuống mức mà mọi người đều còn hy vọng.",
+          "en": "We cannot eliminate every disparity, but we can certainly narrow them to a level at which everyone still has hope."
+        },
+        {
+          "vi": "Một nền kinh tế phục vụ số đông sẽ bền vững hơn một nền kinh tế chỉ phục vụ số ít.",
+          "en": "An economy that serves the many will be more durable than one that serves only the few."
+        },
+        {
+          "vi": "Đó là lý do vì sao vấn đề này xứng đáng nằm ở trung tâm của mọi cuộc tranh luận chính sách.",
+          "en": "That is why this issue deserves to lie at the centre of every policy debate."
+        }
+      ]
+    ]
+  },
+  {
+    "id": "es-08",
+    "title": "Giữ gìn di sản trong thời hiện đại",
+    "titleEn": "Preserving Heritage in the Modern Age",
+    "level": "C1",
+    "topic": "Bảo tồn di sản",
+    "blurb": "Cân bằng giữa gìn giữ, du lịch, công nghệ và lợi ích cộng đồng.",
+    "kind": "essay",
+    "paragraphs": [
+      [
+        {
+          "vi": "Di sản văn hóa là sợi dây nối liền quá khứ với hiện tại, và mất đi nó cũng đồng nghĩa với việc đánh mất một phần ký ức của cả cộng đồng.",
+          "en": "Cultural heritage is the thread that connects the past with the present, and losing it means losing part of a whole community's memory."
+        },
+        {
+          "vi": "Thế nhưng, trước áp lực của đô thị hóa và du lịch đại trà, nhiều di tích đang xuống cấp với tốc độ đáng báo động.",
+          "en": "Yet under the pressure of urbanisation and mass tourism, many monuments are deteriorating at an alarming rate."
+        },
+        {
+          "vi": "Câu hỏi khó nhất không phải là có nên bảo tồn hay không, mà là bảo tồn như thế nào.",
+          "en": "The hardest question is not whether to preserve, but how."
+        },
+        {
+          "vi": "Nếu giữ nguyên mọi thứ, di sản có nguy cơ trở thành một bảo tàng chết, xa lạ với đời sống.",
+          "en": "If everything is kept exactly as it is, heritage risks becoming a lifeless museum, alien to everyday life."
+        },
+        {
+          "vi": "Ngược lại, nếu cải tạo quá tay, giá trị nguyên bản có thể bị xóa nhòa.",
+          "en": "Conversely, if it is renovated too heavily, its original value may be erased."
+        }
+      ],
+      [
+        {
+          "vi": "Cuộc tranh luận ấy thể hiện rõ nhất ở các khu phố cổ, nơi người dân vẫn đang sinh sống.",
+          "en": "This debate is most visible in old quarters, where people still live."
+        },
+        {
+          "vi": "Chủ nhà thường mong muốn nâng cấp căn nhà cho tiện nghi hơn, trong khi các nhà bảo tồn lại đòi hỏi giữ nguyên kiến trúc cũ.",
+          "en": "Homeowners usually want to upgrade their houses for greater comfort, while conservationists demand that the old architecture be kept."
+        },
+        {
+          "vi": "Cả hai đều có lý do chính đáng, nhưng nếu không được dung hòa thì xung đột là điều khó tránh.",
+          "en": "Both have legitimate reasons, but unless they are reconciled, conflict is hard to avoid."
+        },
+        {
+          "vi": "Một giải pháp đáng cân nhắc là hỗ trợ tài chính để chủ nhà tu sửa theo đúng nguyên tắc bảo tồn.",
+          "en": "One solution worth considering is to provide financial support so that homeowners can renovate in line with conservation principles."
+        },
+        {
+          "vi": "Cách làm này vừa giữ được hình hài di sản, vừa cải thiện điều kiện sống cho cư dân.",
+          "en": "This approach preserves the form of the heritage while improving living conditions for residents."
+        },
+        {
+          "vi": "Quan trọng hơn, nó biến người dân từ đối tượng bị hạn chế thành những người đồng hành trong công cuộc bảo tồn.",
+          "en": "More importantly, it turns residents from people who are restricted into partners in the work of conservation."
+        }
+      ],
+      [
+        {
+          "vi": "Du lịch là con dao hai lưỡi đối với di sản.",
+          "en": "Tourism is a double-edged sword for heritage."
+        },
+        {
+          "vi": "Một mặt, nguồn thu từ khách tham quan cung cấp kinh phí cần thiết cho việc trùng tu và duy trì.",
+          "en": "On the one hand, revenue from visitors provides the funds needed for restoration and upkeep."
+        },
+        {
+          "vi": "Mặt khác, lượng khách quá đông gây hao mòn vật lý, làm thay đổi đời sống bản địa và biến nghi lễ truyền thống thành những màn trình diễn thương mại.",
+          "en": "On the other hand, excessive visitor numbers cause physical wear, alter local life and turn traditional rituals into commercial performances."
+        },
+        {
+          "vi": "Khi sự chân thực bị đánh đổi lấy lợi nhuận, điều mà du khách tìm đến cũng không còn nguyên vẹn.",
+          "en": "When authenticity is traded for profit, what visitors come in search of is no longer intact."
+        },
+        {
+          "vi": "Việc giới hạn số lượng khách và phân bổ lại dòng khách đến các điểm ít nổi tiếng hơn có thể giúp giảm áp lực.",
+          "en": "Capping visitor numbers and redirecting crowds to lesser-known sites could help reduce the pressure."
+        },
+        {
+          "vi": "Quan trọng là phần lợi ích phải được chia sẻ công bằng cho cộng đồng sở tại.",
+          "en": "What matters is that the benefits are shared fairly with the local community."
+        }
+      ],
+      [
+        {
+          "vi": "Công nghệ cũng đang mở ra những khả năng mới cho công tác bảo tồn.",
+          "en": "Technology is also opening up new possibilities for conservation."
+        },
+        {
+          "vi": "Việc quét ba chiều cho phép lưu giữ chính xác hình dạng của một công trình trước khi nó bị thiên tai hay chiến tranh tàn phá.",
+          "en": "Three-dimensional scanning makes it possible to record a structure's exact form before it is destroyed by natural disaster or war."
+        },
+        {
+          "vi": "Các bản số hóa cũng giúp người ở xa có thể tiếp cận di sản mà không cần đặt chân đến hiện trường.",
+          "en": "Digitised versions also allow people far away to access heritage without setting foot on site."
+        },
+        {
+          "vi": "Tuy nhiên, không nên nhầm lẫn bản sao kỹ thuật số với trải nghiệm thực.",
+          "en": "However, a digital copy should not be mistaken for the real experience."
+        },
+        {
+          "vi": "Công nghệ chỉ nên là công cụ hỗ trợ, chứ không thể thay thế sự gắn bó giữa con người với không gian lịch sử.",
+          "en": "Technology should be only a supporting tool and cannot replace the bond between people and historical space."
+        },
+        {
+          "vi": "Hơn nữa, di sản phi vật thể như ngôn ngữ, âm nhạc hay nghề thủ công chỉ sống được khi vẫn còn người thực hành chúng.",
+          "en": "Moreover, intangible heritage such as language, music or craftsmanship survives only so long as people continue to practise it."
+        }
+      ],
+      [
+        {
+          "vi": "Tóm lại, bảo tồn di sản không phải là đóng băng quá khứ mà là giữ cho nó tiếp tục có ý nghĩa với hôm nay.",
+          "en": "In conclusion, preserving heritage is not about freezing the past but about keeping it meaningful for today."
+        },
+        {
+          "vi": "Điều đó đòi hỏi sự cân bằng tinh tế giữa gìn giữ, phát triển và lợi ích của cộng đồng.",
+          "en": "That requires a delicate balance between preservation, development and the interests of the community."
+        },
+        {
+          "vi": "Nếu thế hệ hôm nay không hành động, thế hệ mai sau sẽ chỉ còn biết nhìn di sản qua những bức ảnh cũ.",
+          "en": "If today's generation does not act, tomorrow's will be left to see heritage only through old photographs."
+        },
+        {
+          "vi": "Chúng ta nợ họ một di sản còn sống, chứ không phải một ký ức đã phai.",
+          "en": "We owe them a living heritage, not a fading memory."
+        }
+      ]
+    ]
+  }
+]

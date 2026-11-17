@@ -1,0 +1,1323 @@
+{
+  "source": "The IELTS Dictionary",
+  "rightsNote": "Collected at user request under user-stated license.",
+  "records": [
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/1",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 1,
+      "words": 194,
+      "sentenceCount": 10,
+      "prompt": "The first chart below shows the percentage of school-aged girls and boys who were at secondary school in four regions of the world in 2000. The second chart shows the percentages of college-aged men and women in higher education in the same year. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "Secondary Education",
+          "unit": "% of school-aged population",
+          "imageAlt": "Secondary Education",
+          "series": [
+            "Male",
+            "Female"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": false,
+          "dataTables": [
+            {
+              "title": "Secondary Education",
+              "columns": [
+                "Male",
+                "Female"
+              ],
+              "rows": [
+                {
+                  "label": "Europe",
+                  "values": [
+                    "98",
+                    "100"
+                  ]
+                },
+                {
+                  "label": "Sub-Saharan Africa",
+                  "values": [
+                    "30",
+                    "20"
+                  ]
+                },
+                {
+                  "label": "Latin America",
+                  "values": [
+                    "50",
+                    "60"
+                  ]
+                },
+                {
+                  "label": "East Asia",
+                  "values": [
+                    "60",
+                    "58"
+                  ]
+                }
+              ],
+              "dataPrecision": "exact"
+            }
+          ],
+          "chartAnnotations": []
+        },
+        {
+          "title": "Higher Education (Colleges, Universities)",
+          "unit": "% of college-aged population",
+          "imageAlt": "Higher Education (Colleges, Universities)",
+          "series": [
+            "Male",
+            "Female"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "Higher Education (Colleges, Universities)",
+              "columns": [
+                "Male",
+                "Female"
+              ],
+              "rows": [
+                {
+                  "label": "Europe",
+                  "values": [
+                    "60",
+                    "70"
+                  ]
+                },
+                {
+                  "label": "Sub-Saharan Africa",
+                  "values": [
+                    "5",
+                    "2"
+                  ]
+                },
+                {
+                  "label": "Latin America",
+                  "values": [
+                    "20",
+                    "15"
+                  ]
+                },
+                {
+                  "label": "East Asia",
+                  "values": [
+                    "10",
+                    "8"
+                  ]
+                }
+              ],
+              "dataPrecision": "exact"
+            }
+          ],
+          "chartAnnotations": []
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The two bar charts compare the proportions of males and females enrolled in secondary and higher education across four world regions in a single year.",
+          "vi": "Hai biểu đồ cột so sánh tỷ lệ nam và nữ theo học bậc trung học và giáo dục đại học tại bốn khu vực trên thế giới trong cùng một năm.",
+          "wordCount": 25,
+          "sentencePairs": [
+            {
+              "en": "The two bar charts compare the proportions of males and females enrolled in secondary and higher education across four world regions in a single year.",
+              "vi": "Hai biểu đồ cột so sánh tỷ lệ nam và nữ theo học bậc trung học và giáo dục đại học tại bốn khu vực trên thế giới trong cùng một năm."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, Europe recorded by far the highest participation rates at both levels, whereas Sub-Saharan Africa lagged behind all other regions, and enrolment in higher education was considerably lower than in secondary schooling everywhere.",
+          "vi": "Nhìn chung, châu Âu ghi nhận tỷ lệ theo học cao nhất với khoảng cách rất xa ở cả hai bậc, trong khi châu Phi cận Sahara tụt lại phía sau tất cả các khu vực khác, và tỷ lệ theo học đại học ở mọi nơi đều thấp hơn đáng kể so với bậc trung học.",
+          "wordCount": 33,
+          "sentencePairs": [
+            {
+              "en": "Overall, Europe recorded by far the highest participation rates at both levels, whereas Sub-Saharan Africa lagged behind all other regions, and enrolment in higher education was considerably lower than in secondary schooling everywhere.",
+              "vi": "Nhìn chung, châu Âu ghi nhận tỷ lệ theo học cao nhất với khoảng cách rất xa ở cả hai bậc, trong khi châu Phi cận Sahara tụt lại phía sau tất cả các khu vực khác, và tỷ lệ theo học đại học ở mọi nơi đều thấp hơn đáng kể so với bậc trung học."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In secondary education, Europe led the way, with 100% of school-aged girls and 98% of boys attending. East Asia came next, where 60% of boys and 58% of girls were enrolled, giving males a slight advantage. In Latin America, by contrast, girls outnumbered boys, at 60% compared with 50%. Sub-Saharan Africa had the lowest figures, at just 30% for boys and 20% for girls.",
+          "vi": "Ở bậc trung học, châu Âu dẫn đầu, với 100% nữ sinh và 98% nam sinh trong độ tuổi đi học được đến trường. Đông Á đứng kế tiếp, nơi 60% nam sinh và 58% nữ sinh được ghi danh, giúp nam giới nhỉnh hơn một chút. Ngược lại, ở Mỹ Latinh, tỷ lệ nữ sinh cao hơn nam sinh, ở mức 60% so với 50%. Châu Phi cận Sahara có số liệu thấp nhất, chỉ 30% đối với nam sinh và 20% đối với nữ sinh.",
+          "wordCount": 64,
+          "sentencePairs": [
+            {
+              "en": "In secondary education, Europe led the way, with 100% of school-aged girls and 98% of boys attending.",
+              "vi": "Ở bậc trung học, châu Âu dẫn đầu, với 100% nữ sinh và 98% nam sinh trong độ tuổi đi học được đến trường."
+            },
+            {
+              "en": "East Asia came next, where 60% of boys and 58% of girls were enrolled, giving males a slight advantage.",
+              "vi": "Đông Á đứng kế tiếp, nơi 60% nam sinh và 58% nữ sinh được ghi danh, giúp nam giới nhỉnh hơn một chút."
+            },
+            {
+              "en": "In Latin America, by contrast, girls outnumbered boys, at 60% compared with 50%.",
+              "vi": "Ngược lại, ở Mỹ Latinh, tỷ lệ nữ sinh cao hơn nam sinh, ở mức 60% so với 50%."
+            },
+            {
+              "en": "Sub-Saharan Africa had the lowest figures, at just 30% for boys and 20% for girls.",
+              "vi": "Châu Phi cận Sahara có số liệu thấp nhất, chỉ 30% đối với nam sinh và 20% đối với nữ sinh."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "At tertiary level, Europe again stood out, with 70% of college-aged women and 60% of men in higher education. Elsewhere, men were more likely than women to continue their studies. Latin America recorded rates of 20% for men and 15% for women, while the equivalent figures in East Asia were 10% and 8%. Sub-Saharan Africa trailed far behind, with only 5% of men and a mere 2% of women in higher education.",
+          "vi": "Ở bậc đại học, châu Âu một lần nữa nổi bật, với 70% phụ nữ và 60% nam giới trong độ tuổi đại học đang theo học giáo dục đại học. Ở các khu vực khác, nam giới có xu hướng tiếp tục học lên cao hơn so với nữ giới. Mỹ Latinh ghi nhận tỷ lệ 20% ở nam giới và 15% ở nữ giới, trong khi các con số tương ứng ở Đông Á là 10% và 8%. Châu Phi cận Sahara bị bỏ lại rất xa phía sau, với chỉ 5% nam giới và vỏn vẹn 2% nữ giới theo học giáo dục đại học.",
+          "wordCount": 72,
+          "sentencePairs": [
+            {
+              "en": "At tertiary level, Europe again stood out, with 70% of college-aged women and 60% of men in higher education.",
+              "vi": "Ở bậc đại học, châu Âu một lần nữa nổi bật, với 70% phụ nữ và 60% nam giới trong độ tuổi đại học đang theo học giáo dục đại học."
+            },
+            {
+              "en": "Elsewhere, men were more likely than women to continue their studies.",
+              "vi": "Ở các khu vực khác, nam giới có xu hướng tiếp tục học lên cao hơn so với nữ giới."
+            },
+            {
+              "en": "Latin America recorded rates of 20% for men and 15% for women, while the equivalent figures in East Asia were 10% and 8%.",
+              "vi": "Mỹ Latinh ghi nhận tỷ lệ 20% ở nam giới và 15% ở nữ giới, trong khi các con số tương ứng ở Đông Á là 10% và 8%."
+            },
+            {
+              "en": "Sub-Saharan Africa trailed far behind, with only 5% of men and a mere 2% of women in higher education.",
+              "vi": "Châu Phi cận Sahara bị bỏ lại rất xa phía sau, với chỉ 5% nam giới và vỏn vẹn 2% nữ giới theo học giáo dục đại học."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/2",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 2,
+      "words": 198,
+      "sentenceCount": 11,
+      "prompt": "The bar chart below shows the percentage of the world population in four countries in 1950 and 2002, and projections for 2050. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "The percentage of the total world population",
+          "unit": "Percentage of total world population (%)",
+          "imageAlt": "The percentage of the total world population",
+          "series": [
+            "1950",
+            "2002",
+            "2050"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "The percentage of the total world population",
+              "columns": [
+                "1950",
+                "2002",
+                "2050"
+              ],
+              "rows": [
+                {
+                  "label": "India",
+                  "values": [
+                    "15",
+                    "17",
+                    "19"
+                  ]
+                },
+                {
+                  "label": "China",
+                  "values": [
+                    "23",
+                    "20",
+                    "15"
+                  ]
+                },
+                {
+                  "label": "USA",
+                  "values": [
+                    "7",
+                    "5",
+                    "5"
+                  ]
+                },
+                {
+                  "label": "Japan",
+                  "values": [
+                    "4",
+                    "3",
+                    "1"
+                  ]
+                }
+              ],
+              "dataPrecision": "exact"
+            }
+          ],
+          "chartAnnotations": []
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar chart compares the proportion of the global population living in India, China, the USA and Japan in 1950 and 2002, with projections for 2050.",
+          "vi": "Biểu đồ cột so sánh tỷ lệ dân số toàn cầu sinh sống tại Ấn Độ, Trung Quốc, Mỹ và Nhật Bản vào năm 1950 và 2002, cùng với các dự báo cho năm 2050.",
+          "wordCount": 26,
+          "sentencePairs": [
+            {
+              "en": "The bar chart compares the proportion of the global population living in India, China, the USA and Japan in 1950 and 2002, with projections for 2050.",
+              "vi": "Biểu đồ cột so sánh tỷ lệ dân số toàn cầu sinh sống tại Ấn Độ, Trung Quốc, Mỹ và Nhật Bản vào năm 1950 và 2002, cùng với các dự báo cho năm 2050."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, India is the only country whose share is expected to grow throughout the period, and it is predicted to overtake China, whose proportion follows a steady downward trend. Meanwhile, the USA and Japan represented much smaller fractions of the world's population, and both saw their shares shrink.",
+          "vi": "Nhìn chung, Ấn Độ là quốc gia duy nhất có tỷ trọng được kỳ vọng sẽ tăng trong suốt giai đoạn này, và được dự đoán sẽ vượt qua Trung Quốc, quốc gia có tỷ lệ đi theo xu hướng giảm đều đặn. Trong khi đó, Mỹ và Nhật Bản chiếm những phần nhỏ hơn nhiều trong dân số thế giới, và cả hai đều chứng kiến tỷ trọng của mình bị thu hẹp.",
+          "wordCount": 48,
+          "sentencePairs": [
+            {
+              "en": "Overall, India is the only country whose share is expected to grow throughout the period, and it is predicted to overtake China, whose proportion follows a steady downward trend.",
+              "vi": "Nhìn chung, Ấn Độ là quốc gia duy nhất có tỷ trọng được kỳ vọng sẽ tăng trong suốt giai đoạn này, và được dự đoán sẽ vượt qua Trung Quốc, quốc gia có tỷ lệ đi theo xu hướng giảm đều đặn."
+            },
+            {
+              "en": "Meanwhile, the USA and Japan represented much smaller fractions of the world's population, and both saw their shares shrink.",
+              "vi": "Trong khi đó, Mỹ và Nhật Bản chiếm những phần nhỏ hơn nhiều trong dân số thế giới, và cả hai đều chứng kiến tỷ trọng của mình bị thu hẹp."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In 1950, China was home to 23% of the world's population, the highest figure. This share then fell to 20% in 2002 and is forecast to drop further to 15% by 2050. India, by contrast, accounted for 15% in 1950, and its share rose to 17% in 2002. It is projected to reach 19% in 2050, the largest share among the four countries at that point.",
+          "vi": "Vào năm 1950, Trung Quốc là nơi sinh sống của 23% dân số thế giới, con số cao nhất. Tỷ trọng này sau đó giảm xuống 20% vào năm 2002 và được dự báo sẽ tiếp tục giảm xuống 15% vào năm 2050. Ngược lại, Ấn Độ chiếm 15% vào năm 1950, và tỷ trọng của nước này tăng lên 17% vào năm 2002. Tỷ trọng này được dự kiến sẽ đạt 19% vào năm 2050, mức cao nhất trong bốn quốc gia vào thời điểm đó.",
+          "wordCount": 66,
+          "sentencePairs": [
+            {
+              "en": "In 1950, China was home to 23% of the world's population, the highest figure.",
+              "vi": "Vào năm 1950, Trung Quốc là nơi sinh sống của 23% dân số thế giới, con số cao nhất."
+            },
+            {
+              "en": "This share then fell to 20% in 2002 and is forecast to drop further to 15% by 2050.",
+              "vi": "Tỷ trọng này sau đó giảm xuống 20% vào năm 2002 và được dự báo sẽ tiếp tục giảm xuống 15% vào năm 2050."
+            },
+            {
+              "en": "India, by contrast, accounted for 15% in 1950, and its share rose to 17% in 2002.",
+              "vi": "Ngược lại, Ấn Độ chiếm 15% vào năm 1950, và tỷ trọng của nước này tăng lên 17% vào năm 2002."
+            },
+            {
+              "en": "It is projected to reach 19% in 2050, the largest share among the four countries at that point.",
+              "vi": "Tỷ trọng này được dự kiến sẽ đạt 19% vào năm 2050, mức cao nhất trong bốn quốc gia vào thời điểm đó."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "The USA's share was considerably lower, standing at 7% in 1950 before falling to 5% in 2002. This figure is expected to remain at 5% in 2050. Japan, meanwhile, consistently had the smallest proportion, decreasing from 4% to 3% between 1950 and 2002. By 2050, its share is predicted to shrink to just 1%, the lowest figure shown.",
+          "vi": "Tỷ trọng của Mỹ thấp hơn đáng kể, ở mức 7% vào năm 1950 trước khi giảm xuống 5% vào năm 2002. Con số này được kỳ vọng sẽ giữ nguyên ở mức 5% vào năm 2050. Trong khi đó, Nhật Bản luôn có tỷ lệ nhỏ nhất, giảm từ 4% xuống 3% trong khoảng thời gian từ năm 1950 đến năm 2002. Đến năm 2050, tỷ trọng của nước này được dự đoán sẽ thu hẹp xuống chỉ còn 1%, con số thấp nhất được thể hiện.",
+          "wordCount": 58,
+          "sentencePairs": [
+            {
+              "en": "The USA's share was considerably lower, standing at 7% in 1950 before falling to 5% in 2002.",
+              "vi": "Tỷ trọng của Mỹ thấp hơn đáng kể, ở mức 7% vào năm 1950 trước khi giảm xuống 5% vào năm 2002."
+            },
+            {
+              "en": "This figure is expected to remain at 5% in 2050.",
+              "vi": "Con số này được kỳ vọng sẽ giữ nguyên ở mức 5% vào năm 2050."
+            },
+            {
+              "en": "Japan, meanwhile, consistently had the smallest proportion, decreasing from 4% to 3% between 1950 and 2002.",
+              "vi": "Trong khi đó, Nhật Bản luôn có tỷ lệ nhỏ nhất, giảm từ 4% xuống 3% trong khoảng thời gian từ năm 1950 đến năm 2002."
+            },
+            {
+              "en": "By 2050, its share is predicted to shrink to just 1%, the lowest figure shown.",
+              "vi": "Đến năm 2050, tỷ trọng của nước này được dự đoán sẽ thu hẹp xuống chỉ còn 1%, con số thấp nhất được thể hiện."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/3",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 3,
+      "words": 186,
+      "sentenceCount": 10,
+      "prompt": "The chart below shows information about fuel used in the transport sector in different countries in Europe, compared to the EU average, in 2009 and 2010. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "The percentage of fuel used in transport sector in 6 EU countries, compared to the average",
+          "unit": "Percentage of fuel used (%)",
+          "imageAlt": "The percentage of fuel used in transport sector in 6 EU countries, compared to the average",
+          "series": [
+            "2009",
+            "2010"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "The percentage of fuel used in transport sector in 6 EU countries, compared to the average",
+              "columns": [
+                "2009",
+                "2010"
+              ],
+              "rows": [
+                {
+                  "label": "Slovakia",
+                  "values": [
+                    "8.8",
+                    "6.5"
+                  ]
+                },
+                {
+                  "label": "Italy",
+                  "values": [
+                    "4.5",
+                    "5.2"
+                  ]
+                },
+                {
+                  "label": "France",
+                  "values": [
+                    "3.7",
+                    "4.3"
+                  ]
+                },
+                {
+                  "label": "Austria",
+                  "values": [
+                    "5.2",
+                    "5.2"
+                  ]
+                },
+                {
+                  "label": "Spain",
+                  "values": [
+                    "3.8",
+                    "3"
+                  ]
+                },
+                {
+                  "label": "Greece",
+                  "values": [
+                    "1.2",
+                    "2"
+                  ]
+                },
+                {
+                  "label": "EU Average",
+                  "values": [
+                    "6",
+                    "5"
+                  ]
+                }
+              ],
+              "dataPrecision": "exact"
+            }
+          ],
+          "chartAnnotations": []
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar chart compares the proportion of fuel used in the transport sector in six European countries with the EU average in 2009 and 2010.",
+          "vi": "Biểu đồ cột so sánh tỷ lệ nhiên liệu được sử dụng trong ngành giao thông vận tải ở sáu quốc gia châu Âu với mức trung bình của EU vào năm 2009 và 2010.",
+          "wordCount": 25,
+          "sentencePairs": [
+            {
+              "en": "The bar chart compares the proportion of fuel used in the transport sector in six European countries with the EU average in 2009 and 2010.",
+              "vi": "Biểu đồ cột so sánh tỷ lệ nhiên liệu được sử dụng trong ngành giao thông vận tải ở sáu quốc gia châu Âu với mức trung bình của EU vào năm 2009 và 2010."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, Slovakia recorded the highest figures in both years, whereas Greece consistently had the lowest, and the EU average declined over the period. Changes among the individual countries were mixed, with three nations rising, two falling and one remaining stable.",
+          "vi": "Nhìn chung, Slovakia ghi nhận các con số cao nhất trong cả hai năm, trong khi Hy Lạp luôn có mức thấp nhất, và mức trung bình của EU giảm trong giai đoạn này. Sự thay đổi giữa các quốc gia riêng lẻ không đồng nhất, với ba nước tăng, hai nước giảm và một nước giữ ổn định.",
+          "wordCount": 40,
+          "sentencePairs": [
+            {
+              "en": "Overall, Slovakia recorded the highest figures in both years, whereas Greece consistently had the lowest, and the EU average declined over the period.",
+              "vi": "Nhìn chung, Slovakia ghi nhận các con số cao nhất trong cả hai năm, trong khi Hy Lạp luôn có mức thấp nhất, và mức trung bình của EU giảm trong giai đoạn này."
+            },
+            {
+              "en": "Changes among the individual countries were mixed, with three nations rising, two falling and one remaining stable.",
+              "vi": "Sự thay đổi giữa các quốc gia riêng lẻ không đồng nhất, với ba nước tăng, hai nước giảm và một nước giữ ổn định."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In 2009, Slovakia stood at 8.8%, considerably higher than the EU average of 6.0%, and it was the only country to exceed this benchmark. Austria followed at 5.2%, while Italy, Spain and France registered 4.5%, 3.8% and 3.7% respectively. Greece trailed far behind at just 1.2%, the smallest proportion of all.",
+          "vi": "Vào năm 2009, Slovakia đạt mức 8.8%, cao hơn đáng kể so với mức trung bình của EU là 6.0%, và đây là quốc gia duy nhất vượt qua mức chuẩn này. Áo đứng tiếp theo với 5.2%, trong khi Ý, Tây Ban Nha và Pháp lần lượt ghi nhận 4.5%, 3.8% và 3.7%. Hy Lạp bị bỏ xa phía sau với chỉ 1.2%, tỷ lệ nhỏ nhất trong tất cả.",
+          "wordCount": 51,
+          "sentencePairs": [
+            {
+              "en": "In 2009, Slovakia stood at 8.8%, considerably higher than the EU average of 6.0%, and it was the only country to exceed this benchmark.",
+              "vi": "Vào năm 2009, Slovakia đạt mức 8.8%, cao hơn đáng kể so với mức trung bình của EU là 6.0%, và đây là quốc gia duy nhất vượt qua mức chuẩn này."
+            },
+            {
+              "en": "Austria followed at 5.2%, while Italy, Spain and France registered 4.5%, 3.8% and 3.7% respectively.",
+              "vi": "Áo đứng tiếp theo với 5.2%, trong khi Ý, Tây Ban Nha và Pháp lần lượt ghi nhận 4.5%, 3.8% và 3.7%."
+            },
+            {
+              "en": "Greece trailed far behind at just 1.2%, the smallest proportion of all.",
+              "vi": "Hy Lạp bị bỏ xa phía sau với chỉ 1.2%, tỷ lệ nhỏ nhất trong tất cả."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "By 2010, Slovakia's figure had fallen to 6.5%, yet it remained the highest, and Spain also declined, to 3.0%. In contrast, Italy rose to 5.2%, matching Austria, whose share was unchanged. France and Greece likewise increased, to 4.3% and 2.0% respectively. Meanwhile, the EU average dropped to 5.0%, leaving Slovakia, Italy and Austria above the European benchmark.",
+          "vi": "Đến năm 2010, con số của Slovakia đã giảm xuống 6.5% nhưng vẫn là cao nhất, và Tây Ban Nha cũng giảm, xuống còn 3.0%. Ngược lại, Ý tăng lên 5.2%, ngang bằng với Áo, nước có tỷ lệ không thay đổi. Pháp và Hy Lạp cũng tăng tương tự, lần lượt lên 4.3% và 2.0%. Trong khi đó, mức trung bình của EU giảm xuống 5.0%, khiến Slovakia, Ý và Áo nằm trên mức chuẩn của châu Âu.",
+          "wordCount": 57,
+          "sentencePairs": [
+            {
+              "en": "By 2010, Slovakia's figure had fallen to 6.5%, yet it remained the highest, and Spain also declined, to 3.0%.",
+              "vi": "Đến năm 2010, con số của Slovakia đã giảm xuống 6.5% nhưng vẫn là cao nhất, và Tây Ban Nha cũng giảm, xuống còn 3.0%."
+            },
+            {
+              "en": "In contrast, Italy rose to 5.2%, matching Austria, whose share was unchanged.",
+              "vi": "Ngược lại, Ý tăng lên 5.2%, ngang bằng với Áo, nước có tỷ lệ không thay đổi."
+            },
+            {
+              "en": "France and Greece likewise increased, to 4.3% and 2.0% respectively.",
+              "vi": "Pháp và Hy Lạp cũng tăng tương tự, lần lượt lên 4.3% và 2.0%."
+            },
+            {
+              "en": "Meanwhile, the EU average dropped to 5.0%, leaving Slovakia, Italy and Austria above the European benchmark.",
+              "vi": "Trong khi đó, mức trung bình của EU giảm xuống 5.0%, khiến Slovakia, Ý và Áo nằm trên mức chuẩn của châu Âu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/4",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 4,
+      "words": 194,
+      "sentenceCount": 11,
+      "prompt": "The chart below shows different methods of waste disposal in a European country from 2005 to 2008. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "Amount of waste by method of disposal (in million tonnes)",
+          "unit": "Amount in million tonnes",
+          "imageAlt": "Amount of waste by method of disposal (in million tonnes)",
+          "series": [
+            "Landfill",
+            "Burning",
+            "Dumping in sea"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "Amount of waste by method of disposal (in million tonnes)",
+              "columns": [
+                "Landfill",
+                "Burning",
+                "Dumping in sea"
+              ],
+              "rows": [
+                {
+                  "label": "2005",
+                  "values": [
+                    "70",
+                    "65",
+                    "55"
+                  ]
+                },
+                {
+                  "label": "2006",
+                  "values": [
+                    "60",
+                    "60",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "2007",
+                  "values": [
+                    "50",
+                    "40",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "2008",
+                  "values": [
+                    "40",
+                    "65",
+                    "40"
+                  ]
+                }
+              ],
+              "dataPrecision": "exact"
+            }
+          ],
+          "chartAnnotations": []
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar chart illustrates the amount of waste, in million tonnes, disposed of by landfill, burning and dumping in the sea in a European country between 2005 and 2008.",
+          "vi": "Biểu đồ cột minh họa lượng rác thải, tính bằng triệu tấn, được xử lý bằng phương pháp chôn lấp, đốt và đổ ra biển tại một quốc gia châu Âu trong giai đoạn từ năm 2005 đến năm 2008.",
+          "wordCount": 29,
+          "sentencePairs": [
+            {
+              "en": "The bar chart illustrates the amount of waste, in million tonnes, disposed of by landfill, burning and dumping in the sea in a European country between 2005 and 2008.",
+              "vi": "Biểu đồ cột minh họa lượng rác thải, tính bằng triệu tấn, được xử lý bằng phương pháp chôn lấp, đốt và đổ ra biển tại một quốc gia châu Âu trong giai đoạn từ năm 2005 đến năm 2008."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, the quantities handled by landfill and sea dumping declined over the period, whereas burning fluctuated before returning to its original level. As a result, landfill, initially the dominant method, had been overtaken by burning by 2008.",
+          "vi": "Nhìn chung, lượng rác được xử lý bằng chôn lấp và đổ ra biển đã giảm trong suốt giai đoạn, trong khi phương pháp đốt biến động trước khi trở lại mức ban đầu. Do đó, chôn lấp, vốn ban đầu là phương pháp chiếm ưu thế, đã bị phương pháp đốt vượt qua vào năm 2008.",
+          "wordCount": 37,
+          "sentencePairs": [
+            {
+              "en": "Overall, the quantities handled by landfill and sea dumping declined over the period, whereas burning fluctuated before returning to its original level.",
+              "vi": "Nhìn chung, lượng rác được xử lý bằng chôn lấp và đổ ra biển đã giảm trong suốt giai đoạn, trong khi phương pháp đốt biến động trước khi trở lại mức ban đầu."
+            },
+            {
+              "en": "As a result, landfill, initially the dominant method, had been overtaken by burning by 2008.",
+              "vi": "Do đó, chôn lấp, vốn ban đầu là phương pháp chiếm ưu thế, đã bị phương pháp đốt vượt qua vào năm 2008."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In 2005, landfill accounted for 70 million tonnes, the highest figure of any method. This fell steadily to 60 and 50 million tonnes in the following two years, reaching 40 million tonnes in 2008. Dumping in the sea followed a similar pattern, slipping from 55 to 50 million tonnes in 2006. After remaining unchanged in 2007, it dropped to 40 million tonnes, matching landfill.",
+          "vi": "Vào năm 2005, chôn lấp chiếm 70 triệu tấn, con số cao nhất trong số các phương pháp. Con số này giảm đều đặn xuống 60 và 50 triệu tấn trong hai năm tiếp theo, rồi chạm mức 40 triệu tấn vào năm 2008. Việc đổ rác ra biển cũng diễn biến theo xu hướng tương tự, giảm nhẹ từ 55 xuống 50 triệu tấn vào năm 2006. Sau khi giữ nguyên vào năm 2007, con số này giảm xuống 40 triệu tấn, bằng với phương pháp chôn lấp.",
+          "wordCount": 64,
+          "sentencePairs": [
+            {
+              "en": "In 2005, landfill accounted for 70 million tonnes, the highest figure of any method.",
+              "vi": "Vào năm 2005, chôn lấp chiếm 70 triệu tấn, con số cao nhất trong số các phương pháp."
+            },
+            {
+              "en": "This fell steadily to 60 and 50 million tonnes in the following two years, reaching 40 million tonnes in 2008.",
+              "vi": "Con số này giảm đều đặn xuống 60 và 50 triệu tấn trong hai năm tiếp theo, rồi chạm mức 40 triệu tấn vào năm 2008."
+            },
+            {
+              "en": "Dumping in the sea followed a similar pattern, slipping from 55 to 50 million tonnes in 2006.",
+              "vi": "Việc đổ rác ra biển cũng diễn biến theo xu hướng tương tự, giảm nhẹ từ 55 xuống 50 triệu tấn vào năm 2006."
+            },
+            {
+              "en": "After remaining unchanged in 2007, it dropped to 40 million tonnes, matching landfill.",
+              "vi": "Sau khi giữ nguyên vào năm 2007, con số này giảm xuống 40 triệu tấn, bằng với phương pháp chôn lấp."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "Burning, by contrast, showed a more erratic trend. Starting at 65 million tonnes in 2005, it edged down to 60 million tonnes in 2006, equalling landfill. In 2007, however, it plummeted to 40 million tonnes, making it the least used method that year. This was followed by a sharp recovery to 65 million tonnes in 2008, when burning became the leading form of disposal.",
+          "vi": "Ngược lại, phương pháp đốt cho thấy một xu hướng thất thường hơn. Bắt đầu ở mức 65 triệu tấn vào năm 2005, con số này giảm nhẹ xuống 60 triệu tấn vào năm 2006, ngang bằng với chôn lấp. Tuy nhiên, vào năm 2007, con số này giảm mạnh xuống 40 triệu tấn, khiến đốt trở thành phương pháp ít được sử dụng nhất trong năm đó. Tiếp theo đó là sự phục hồi mạnh mẽ lên 65 triệu tấn vào năm 2008, khi phương pháp đốt trở thành hình thức xử lý rác hàng đầu.",
+          "wordCount": 64,
+          "sentencePairs": [
+            {
+              "en": "Burning, by contrast, showed a more erratic trend.",
+              "vi": "Ngược lại, phương pháp đốt cho thấy một xu hướng thất thường hơn."
+            },
+            {
+              "en": "Starting at 65 million tonnes in 2005, it edged down to 60 million tonnes in 2006, equalling landfill.",
+              "vi": "Bắt đầu ở mức 65 triệu tấn vào năm 2005, con số này giảm nhẹ xuống 60 triệu tấn vào năm 2006, ngang bằng với chôn lấp."
+            },
+            {
+              "en": "In 2007, however, it plummeted to 40 million tonnes, making it the least used method that year.",
+              "vi": "Tuy nhiên, vào năm 2007, con số này giảm mạnh xuống 40 triệu tấn, khiến đốt trở thành phương pháp ít được sử dụng nhất trong năm đó."
+            },
+            {
+              "en": "This was followed by a sharp recovery to 65 million tonnes in 2008, when burning became the leading form of disposal.",
+              "vi": "Tiếp theo đó là sự phục hồi mạnh mẽ lên 65 triệu tấn vào năm 2008, khi phương pháp đốt trở thành hình thức xử lý rác hàng đầu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/5",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 5,
+      "words": 193,
+      "sentenceCount": 9,
+      "prompt": "The charts below give information on the ages of people when they got married in one particular country in 1998 and 2008.",
+      "charts": [
+        {
+          "title": "Age when getting married (by age group) 1998",
+          "unit": "% of people getting married",
+          "imageAlt": "Age when getting married (by age group) 1998",
+          "series": [
+            "Female",
+            "Male"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": false,
+          "dataTables": [
+            {
+              "title": "Age when getting married (by age group) 1998",
+              "columns": [
+                "Female",
+                "Male"
+              ],
+              "rows": [
+                {
+                  "label": "16-19",
+                  "values": [
+                    "≈1",
+                    "≈0"
+                  ]
+                },
+                {
+                  "label": "20-24",
+                  "values": [
+                    "≈6",
+                    "≈2.5"
+                  ]
+                },
+                {
+                  "label": "25-29",
+                  "values": [
+                    "≈11.3",
+                    "≈8.9"
+                  ]
+                },
+                {
+                  "label": "30-34",
+                  "values": [
+                    "≈7",
+                    "≈8.9"
+                  ]
+                },
+                {
+                  "label": "35-39",
+                  "values": [
+                    "≈4",
+                    "≈7"
+                  ]
+                },
+                {
+                  "label": "40-44",
+                  "values": [
+                    "≈2",
+                    "≈5"
+                  ]
+                }
+              ],
+              "dataPrecision": "approximate"
+            }
+          ],
+          "chartAnnotations": [
+            "Số liệu ước lượng theo trục"
+          ]
+        },
+        {
+          "title": "Age when getting married (by age group) 2008",
+          "unit": "% of people getting married",
+          "imageAlt": "Age when getting married (by age group) 2008",
+          "series": [
+            "Female",
+            "Male"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "Age when getting married (by age group) 2008",
+              "columns": [
+                "Female",
+                "Male"
+              ],
+              "rows": [
+                {
+                  "label": "16-19",
+                  "values": [
+                    "≈0.3",
+                    "≈0"
+                  ]
+                },
+                {
+                  "label": "20-24",
+                  "values": [
+                    "≈3",
+                    "≈1.5"
+                  ]
+                },
+                {
+                  "label": "25-29",
+                  "values": [
+                    "≈11.4",
+                    "≈8"
+                  ]
+                },
+                {
+                  "label": "30-34",
+                  "values": [
+                    "≈8",
+                    "≈10.9"
+                  ]
+                },
+                {
+                  "label": "35-39",
+                  "values": [
+                    "≈4.5",
+                    "≈9"
+                  ]
+                },
+                {
+                  "label": "40-44",
+                  "values": [
+                    "≈2.5",
+                    "≈6.5"
+                  ]
+                }
+              ],
+              "dataPrecision": "approximate"
+            }
+          ],
+          "chartAnnotations": [
+            "Số liệu ước lượng theo trục"
+          ]
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar charts compare the proportions of men and women in one country who married at different ages in 1998 and 2008.",
+          "vi": "Các biểu đồ cột so sánh tỷ lệ nam giới và nữ giới ở một quốc gia kết hôn ở các độ tuổi khác nhau vào năm 1998 và năm 2008.",
+          "wordCount": 22,
+          "sentencePairs": [
+            {
+              "en": "The bar charts compare the proportions of men and women in one country who married at different ages in 1998 and 2008.",
+              "vi": "Các biểu đồ cột so sánh tỷ lệ nam giới và nữ giới ở một quốc gia kết hôn ở các độ tuổi khác nhau vào năm 1998 và năm 2008."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, marriage was most common among people in their late twenties and early thirties in both years, and there was a noticeable shift towards marrying later, especially among men.",
+          "vi": "Nhìn chung, việc kết hôn phổ biến nhất ở những người ngoài hai mươi lăm tuổi và đầu ba mươi tuổi trong cả hai năm, và có một sự chuyển dịch đáng chú ý sang xu hướng kết hôn muộn hơn, đặc biệt là ở nam giới.",
+          "wordCount": 29,
+          "sentencePairs": [
+            {
+              "en": "Overall, marriage was most common among people in their late twenties and early thirties in both years, and there was a noticeable shift towards marrying later, especially among men.",
+              "vi": "Nhìn chung, việc kết hôn phổ biến nhất ở những người ngoài hai mươi lăm tuổi và đầu ba mươi tuổi trong cả hai năm, và có một sự chuyển dịch đáng chú ý sang xu hướng kết hôn muộn hơn, đặc biệt là ở nam giới."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In 1998, the 25-29 age group recorded the highest marriage rates for both sexes, at around 11% for women and 9% for men. Women also outnumbered men among 20-24-year-olds, at about 6% compared with 2.5%. However, men married at higher rates from the age of 30 onwards, with figures of 7.5% and 4.5% for the 35-39 and 40-44 groups respectively.",
+          "vi": "Vào năm 1998, nhóm tuổi 25-29 ghi nhận tỷ lệ kết hôn cao nhất ở cả hai giới, với khoảng 11% ở nữ giới và 9% ở nam giới. Nữ giới cũng chiếm tỷ lệ cao hơn nam giới ở nhóm 20-24 tuổi, với khoảng 6% so với 2.5%. Tuy nhiên, nam giới kết hôn với tỷ lệ cao hơn từ 30 tuổi trở lên, với các con số lần lượt là 7.5% và 4.5% ở nhóm 35-39 và 40-44 tuổi.",
+          "wordCount": 60,
+          "sentencePairs": [
+            {
+              "en": "In 1998, the 25-29 age group recorded the highest marriage rates for both sexes, at around 11% for women and 9% for men.",
+              "vi": "Vào năm 1998, nhóm tuổi 25-29 ghi nhận tỷ lệ kết hôn cao nhất ở cả hai giới, với khoảng 11% ở nữ giới và 9% ở nam giới."
+            },
+            {
+              "en": "Women also outnumbered men among 20-24-year-olds, at about 6% compared with 2.5%.",
+              "vi": "Nữ giới cũng chiếm tỷ lệ cao hơn nam giới ở nhóm 20-24 tuổi, với khoảng 6% so với 2.5%."
+            },
+            {
+              "en": "However, men married at higher rates from the age of 30 onwards, with figures of 7.5% and 4.5% for the 35-39 and 40-44 groups respectively.",
+              "vi": "Tuy nhiên, nam giới kết hôn với tỷ lệ cao hơn từ 30 tuổi trở lên, với các con số lần lượt là 7.5% và 4.5% ở nhóm 35-39 và 40-44 tuổi."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "By 2008, the female peak remained in the 25-29 bracket, edging up to approximately 11.5%, while the figure for women aged 20-24 fell to around 3%. Men, by contrast, were most likely to marry between the ages of 30 and 34, at about 10.5%. Male rates for the 35-39 and 40-44 groups also rose, to 9% and 6.5% respectively. Teenage marriage remained negligible in both years, with 0% of males marrying before the age of 20.",
+          "vi": "Đến năm 2008, mức cao nhất ở nữ giới vẫn thuộc nhóm 25-29 tuổi, nhích lên khoảng 11.5%, trong khi con số ở phụ nữ 20-24 tuổi giảm xuống còn khoảng 3%. Ngược lại, nam giới có khả năng kết hôn cao nhất trong độ tuổi từ 30 đến 34, với khoảng 10.5%. Tỷ lệ của nam giới ở nhóm 35-39 và 40-44 tuổi cũng tăng lên, lần lượt đạt 9% và 6.5%. Việc kết hôn ở tuổi thiếu niên vẫn không đáng kể trong cả hai năm, với 0% nam giới kết hôn trước 20 tuổi.",
+          "wordCount": 76,
+          "sentencePairs": [
+            {
+              "en": "By 2008, the female peak remained in the 25-29 bracket, edging up to approximately 11.5%, while the figure for women aged 20-24 fell to around 3%.",
+              "vi": "Đến năm 2008, mức cao nhất ở nữ giới vẫn thuộc nhóm 25-29 tuổi, nhích lên khoảng 11.5%, trong khi con số ở phụ nữ 20-24 tuổi giảm xuống còn khoảng 3%."
+            },
+            {
+              "en": "Men, by contrast, were most likely to marry between the ages of 30 and 34, at about 10.5%.",
+              "vi": "Ngược lại, nam giới có khả năng kết hôn cao nhất trong độ tuổi từ 30 đến 34, với khoảng 10.5%."
+            },
+            {
+              "en": "Male rates for the 35-39 and 40-44 groups also rose, to 9% and 6.5% respectively.",
+              "vi": "Tỷ lệ của nam giới ở nhóm 35-39 và 40-44 tuổi cũng tăng lên, lần lượt đạt 9% và 6.5%."
+            },
+            {
+              "en": "Teenage marriage remained negligible in both years, with 0% of males marrying before the age of 20.",
+              "vi": "Việc kết hôn ở tuổi thiếu niên vẫn không đáng kể trong cả hai năm, với 0% nam giới kết hôn trước 20 tuổi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/6",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 6,
+      "words": 192,
+      "sentenceCount": 11,
+      "prompt": "The chart below shows the percentage of the population in the UK who consumed the recommended daily amount of fruit and vegetables in 2002, 2006 and 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "UK's fruit and vegetables intake percentage in 2002, 2006 and 2010",
+          "unit": "Percentage (%)",
+          "imageAlt": "UK's fruit and vegetables intake percentage in 2002, 2006 and 2010",
+          "series": [
+            "Men",
+            "Women",
+            "Children"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "UK's fruit and vegetables intake percentage in 2002, 2006 and 2010",
+              "columns": [
+                "Men",
+                "Women",
+                "Children"
+              ],
+              "rows": [
+                {
+                  "label": "2002",
+                  "values": [
+                    "22",
+                    "24.5",
+                    "11"
+                  ]
+                },
+                {
+                  "label": "2006",
+                  "values": [
+                    "28",
+                    "32",
+                    "16"
+                  ]
+                },
+                {
+                  "label": "2010",
+                  "values": [
+                    "24",
+                    "27",
+                    "13.5"
+                  ]
+                }
+              ],
+              "dataPrecision": "exact"
+            }
+          ],
+          "chartAnnotations": []
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar chart illustrates the proportion of men, women and children in the UK who ate the recommended daily quantity of fruit and vegetables in 2002, 2006 and 2010.",
+          "vi": "Biểu đồ cột minh họa tỷ lệ nam giới, nữ giới và trẻ em ở Vương quốc Anh đã ăn đủ lượng rau quả được khuyến nghị hằng ngày vào các năm 2002, 2006 và 2010.",
+          "wordCount": 29,
+          "sentencePairs": [
+            {
+              "en": "The bar chart illustrates the proportion of men, women and children in the UK who ate the recommended daily quantity of fruit and vegetables in 2002, 2006 and 2010.",
+              "vi": "Biểu đồ cột minh họa tỷ lệ nam giới, nữ giới và trẻ em ở Vương quốc Anh đã ăn đủ lượng rau quả được khuyến nghị hằng ngày vào các năm 2002, 2006 và 2010."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, all three groups followed a similar pattern, with consumption rising between 2002 and 2006 before falling back by 2010. Women were consistently the most likely to meet the recommendation, whereas children were the least likely throughout the period.",
+          "vi": "Nhìn chung, cả ba nhóm đều có xu hướng tương tự nhau, khi mức tiêu thụ tăng trong giai đoạn từ 2002 đến 2006 rồi giảm trở lại vào năm 2010. Nữ giới luôn là nhóm có khả năng đáp ứng mức khuyến nghị cao nhất, trong khi trẻ em là nhóm có khả năng thấp nhất trong suốt giai đoạn này.",
+          "wordCount": 39,
+          "sentencePairs": [
+            {
+              "en": "Overall, all three groups followed a similar pattern, with consumption rising between 2002 and 2006 before falling back by 2010.",
+              "vi": "Nhìn chung, cả ba nhóm đều có xu hướng tương tự nhau, khi mức tiêu thụ tăng trong giai đoạn từ 2002 đến 2006 rồi giảm trở lại vào năm 2010."
+            },
+            {
+              "en": "Women were consistently the most likely to meet the recommendation, whereas children were the least likely throughout the period.",
+              "vi": "Nữ giới luôn là nhóm có khả năng đáp ứng mức khuyến nghị cao nhất, trong khi trẻ em là nhóm có khả năng thấp nhất trong suốt giai đoạn này."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In 2002, 24.5% of women consumed the recommended amount, slightly more than the 22% recorded for men. Both figures rose over the following four years, with the proportion of women peaking at 32% in 2006 and that of men reaching 28%. By 2010, however, these rates had declined to 27% and 24% respectively. Even so, both remained above their 2002 levels.",
+          "vi": "Năm 2002, 24.5% nữ giới tiêu thụ đủ lượng khuyến nghị, cao hơn một chút so với mức 22% được ghi nhận ở nam giới. Cả hai số liệu đều tăng trong bốn năm tiếp theo, trong đó tỷ lệ của nữ giới đạt đỉnh 32% vào năm 2006 còn tỷ lệ của nam giới đạt 28%. Tuy nhiên, đến năm 2010, các tỷ lệ này đã giảm xuống lần lượt còn 27% và 24%. Dù vậy, cả hai vẫn cao hơn mức của năm 2002.",
+          "wordCount": 61,
+          "sentencePairs": [
+            {
+              "en": "In 2002, 24.5% of women consumed the recommended amount, slightly more than the 22% recorded for men.",
+              "vi": "Năm 2002, 24.5% nữ giới tiêu thụ đủ lượng khuyến nghị, cao hơn một chút so với mức 22% được ghi nhận ở nam giới."
+            },
+            {
+              "en": "Both figures rose over the following four years, with the proportion of women peaking at 32% in 2006 and that of men reaching 28%.",
+              "vi": "Cả hai số liệu đều tăng trong bốn năm tiếp theo, trong đó tỷ lệ của nữ giới đạt đỉnh 32% vào năm 2006 còn tỷ lệ của nam giới đạt 28%."
+            },
+            {
+              "en": "By 2010, however, these rates had declined to 27% and 24% respectively.",
+              "vi": "Tuy nhiên, đến năm 2010, các tỷ lệ này đã giảm xuống lần lượt còn 27% và 24%."
+            },
+            {
+              "en": "Even so, both remained above their 2002 levels.",
+              "vi": "Dù vậy, cả hai vẫn cao hơn mức của năm 2002."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "Children, by contrast, had markedly lower intake rates in every year shown. Only 11% of children ate enough fruit and vegetables in 2002, which was the lowest figure on the chart. This share climbed to 16% in 2006, its highest point, but subsequently dropped to 13.5% in 2010. Consequently, the gap between children and adults remained substantial across the entire period.",
+          "vi": "Ngược lại, trẻ em có tỷ lệ tiêu thụ thấp hơn rõ rệt trong tất cả các năm được thể hiện. Chỉ có 11% trẻ em ăn đủ rau quả vào năm 2002, và đây là số liệu thấp nhất trên biểu đồ. Tỷ lệ này tăng lên 16% vào năm 2006, mức cao nhất của nhóm, nhưng sau đó giảm xuống 13.5% vào năm 2010. Do đó, khoảng cách giữa trẻ em và người lớn vẫn còn đáng kể trong suốt toàn bộ giai đoạn.",
+          "wordCount": 61,
+          "sentencePairs": [
+            {
+              "en": "Children, by contrast, had markedly lower intake rates in every year shown.",
+              "vi": "Ngược lại, trẻ em có tỷ lệ tiêu thụ thấp hơn rõ rệt trong tất cả các năm được thể hiện."
+            },
+            {
+              "en": "Only 11% of children ate enough fruit and vegetables in 2002, which was the lowest figure on the chart.",
+              "vi": "Chỉ có 11% trẻ em ăn đủ rau quả vào năm 2002, và đây là số liệu thấp nhất trên biểu đồ."
+            },
+            {
+              "en": "This share climbed to 16% in 2006, its highest point, but subsequently dropped to 13.5% in 2010.",
+              "vi": "Tỷ lệ này tăng lên 16% vào năm 2006, mức cao nhất của nhóm, nhưng sau đó giảm xuống 13.5% vào năm 2010."
+            },
+            {
+              "en": "Consequently, the gap between children and adults remained substantial across the entire period.",
+              "vi": "Do đó, khoảng cách giữa trẻ em và người lớn vẫn còn đáng kể trong suốt toàn bộ giai đoạn."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/7",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 7,
+      "words": 189,
+      "sentenceCount": 9,
+      "prompt": "The chart shows information about the actual and expected figures of population of three cities, Jakarta, Sao Paulo, and Shanghai. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "Population size (1990-2000)",
+          "unit": "In millions",
+          "imageAlt": "Hình của đề",
+          "assetUrl": null,
+          "originalImageControlAvailable": false,
+          "series": [
+            "1990",
+            "2000 in prediction",
+            "2000 actual figures"
+          ],
+          "labels": [
+            "Jakarta",
+            "Shanghai",
+            "Sao Paulo"
+          ],
+          "axisTicks": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25"
+          ],
+          "chartVisualLabelsSource": "Visible chart image",
+          "dataTables": [],
+          "dataAvailability": "No numeric table or point-value labels exposed in the reader UI; no values transcribed from bar lengths."
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar chart compares the populations of Jakarta, Shanghai and Sao Paulo in 1990 with both the forecast and the actual figures for 2000.",
+          "vi": "Biểu đồ cột so sánh dân số của Jakarta, Thượng Hải và Sao Paulo vào năm 1990 với cả số liệu dự báo lẫn số liệu thực tế của năm 2000.",
+          "wordCount": 24,
+          "sentencePairs": [
+            {
+              "en": "The bar chart compares the populations of Jakarta, Shanghai and Sao Paulo in 1990 with both the forecast and the actual figures for 2000.",
+              "vi": "Biểu đồ cột so sánh dân số của Jakarta, Thượng Hải và Sao Paulo vào năm 1990 với cả số liệu dự báo lẫn số liệu thực tế của năm 2000."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, all three cities grew over the decade, and in each case the actual population in 2000 surpassed the projection. Sao Paulo was consistently the most populous city, whereas Jakarta remained the smallest throughout the period.",
+          "vi": "Nhìn chung, cả ba thành phố đều tăng dân số trong thập kỷ này, và ở mỗi thành phố, dân số thực tế vào năm 2000 đều vượt quá con số dự báo. Sao Paulo luôn là thành phố đông dân nhất, trong khi Jakarta vẫn là thành phố có dân số nhỏ nhất trong suốt giai đoạn này.",
+          "wordCount": 36,
+          "sentencePairs": [
+            {
+              "en": "Overall, all three cities grew over the decade, and in each case the actual population in 2000 surpassed the projection.",
+              "vi": "Nhìn chung, cả ba thành phố đều tăng dân số trong thập kỷ này, và ở mỗi thành phố, dân số thực tế vào năm 2000 đều vượt quá con số dự báo."
+            },
+            {
+              "en": "Sao Paulo was consistently the most populous city, whereas Jakarta remained the smallest throughout the period.",
+              "vi": "Sao Paulo luôn là thành phố đông dân nhất, trong khi Jakarta vẫn là thành phố có dân số nhỏ nhất trong suốt giai đoạn này."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In 1990, Sao Paulo was home to approximately 18 million people, considerably more than Shanghai, at about 13 million, and Jakarta, at roughly 8.5 million. Sao Paulo's population had been predicted to reach about 22 million by 2000, but it in fact climbed to around 24 million. This represented the largest increase among the three cities over the period.",
+          "vi": "Vào năm 1990, Sao Paulo có khoảng 18 triệu dân, nhiều hơn đáng kể so với Thượng Hải với khoảng 13 triệu dân và Jakarta với khoảng 8,5 triệu dân. Dân số của Sao Paulo từng được dự đoán sẽ đạt khoảng 22 triệu người vào năm 2000, nhưng trên thực tế đã tăng lên khoảng 24 triệu người. Đây là mức tăng lớn nhất trong số ba thành phố trong giai đoạn này.",
+          "wordCount": 59,
+          "sentencePairs": [
+            {
+              "en": "In 1990, Sao Paulo was home to approximately 18 million people, considerably more than Shanghai, at about 13 million, and Jakarta, at roughly 8.5 million.",
+              "vi": "Vào năm 1990, Sao Paulo có khoảng 18 triệu dân, nhiều hơn đáng kể so với Thượng Hải với khoảng 13 triệu dân và Jakarta với khoảng 8,5 triệu dân."
+            },
+            {
+              "en": "Sao Paulo's population had been predicted to reach about 22 million by 2000, but it in fact climbed to around 24 million.",
+              "vi": "Dân số của Sao Paulo từng được dự đoán sẽ đạt khoảng 22 triệu người vào năm 2000, nhưng trên thực tế đã tăng lên khoảng 24 triệu người."
+            },
+            {
+              "en": "This represented the largest increase among the three cities over the period.",
+              "vi": "Đây là mức tăng lớn nhất trong số ba thành phố trong giai đoạn này."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "Shanghai was expected to have approximately 15 million residents in 2000, yet its actual figure stood at around 17 million. Jakarta's population was forecast to rise to about 12.5 million, although the real total turned out to be roughly 14 million. Consequently, the projection for Jakarta was exceeded by about 1.5 million, while the forecasts for both Shanghai and Sao Paulo were surpassed by about 2 million.",
+          "vi": "Thượng Hải được dự kiến có khoảng 15 triệu cư dân vào năm 2000, nhưng con số thực tế của thành phố này lại ở mức khoảng 17 triệu người. Dân số của Jakarta được dự báo sẽ tăng lên khoảng 12,5 triệu người, mặc dù tổng số thực tế hóa ra là khoảng 14 triệu người. Do đó, dân số thực tế của Jakarta vượt con số dự báo khoảng 1,5 triệu người, trong khi dân số thực tế của cả Thượng Hải và Sao Paulo đều vượt dự báo khoảng 2 triệu người.",
+          "wordCount": 67,
+          "sentencePairs": [
+            {
+              "en": "Shanghai was expected to have approximately 15 million residents in 2000, yet its actual figure stood at around 17 million.",
+              "vi": "Thượng Hải được dự kiến có khoảng 15 triệu cư dân vào năm 2000, nhưng con số thực tế của thành phố này lại ở mức khoảng 17 triệu người."
+            },
+            {
+              "en": "Jakarta's population was forecast to rise to about 12.5 million, although the real total turned out to be roughly 14 million.",
+              "vi": "Dân số của Jakarta được dự báo sẽ tăng lên khoảng 12,5 triệu người, mặc dù tổng số thực tế hóa ra là khoảng 14 triệu người."
+            },
+            {
+              "en": "Consequently, the projection for Jakarta was exceeded by about 1.5 million, while the forecasts for both Shanghai and Sao Paulo were surpassed by about 2 million.",
+              "vi": "Do đó, dân số thực tế của Jakarta vượt con số dự báo khoảng 1,5 triệu người, trong khi dân số thực tế của cả Thượng Hải và Sao Paulo đều vượt dự báo khoảng 2 triệu người."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "The IELTS Dictionary",
+      "sourceUrl": "https://theieltsdictionary.com/practice/writing/bai-mau/task-1/bar-chart/8",
+      "task": 1,
+      "topic": "Task 1 charts",
+      "type": "Bar Chart",
+      "typeSlug": "bar-chart",
+      "sampleId": 8,
+      "words": 192,
+      "sentenceCount": 10,
+      "prompt": "The graphs below show the total percentage of films released and the total percentage of ticket sales in 1996 and 2000 in a country. Summarize the information by selecting and reporting the main features and make comparisons where relevant.",
+      "charts": [
+        {
+          "title": "Percentage of films released",
+          "unit": "%",
+          "imageAlt": "Percentage of films released",
+          "series": [
+            "1996",
+            "2000",
+            "Số liệu ước lượng theo trục"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": false,
+          "dataTables": [
+            {
+              "title": "Percentage of films released",
+              "columns": [
+                "1996",
+                "2000"
+              ],
+              "rows": [
+                {
+                  "label": "Drama",
+                  "values": [
+                    "≈27",
+                    "≈35"
+                  ]
+                },
+                {
+                  "label": "Comedy",
+                  "values": [
+                    "≈20",
+                    "≈25"
+                  ]
+                },
+                {
+                  "label": "Fantasy",
+                  "values": [
+                    "≈12",
+                    "≈16"
+                  ]
+                },
+                {
+                  "label": "Romance",
+                  "values": [
+                    "≈6",
+                    "≈6"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Percentage of cinema ticket sales",
+          "unit": "%",
+          "imageAlt": "Percentage of cinema ticket sales",
+          "series": [
+            "1996",
+            "2000",
+            "Số liệu ước lượng theo trục"
+          ],
+          "assetUrl": null,
+          "originalImageControlAvailable": true,
+          "dataTables": [
+            {
+              "title": "Percentage of cinema ticket sales",
+              "columns": [
+                "1996",
+                "2000"
+              ],
+              "rows": [
+                {
+                  "label": "Drama",
+                  "values": [
+                    "≈15.8",
+                    "≈16.8"
+                  ]
+                },
+                {
+                  "label": "Comedy",
+                  "values": [
+                    "≈20",
+                    "≈23"
+                  ]
+                },
+                {
+                  "label": "Fantasy",
+                  "values": [
+                    "≈2.8",
+                    "≈7"
+                  ]
+                },
+                {
+                  "label": "Romance",
+                  "values": [
+                    "≈5",
+                    "≈2.8"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "paragraphs": [
+        {
+          "section": "MỞ BÀI (INTRODUCTION)",
+          "en": "The bar charts compare the proportions of films released and cinema tickets sold across four genres, namely drama, comedy, fantasy and romance, in a particular country in 1996 and 2000.",
+          "vi": "Các biểu đồ cột so sánh tỷ lệ phim được phát hành và vé xem phim được bán ra của bốn thể loại, cụ thể là chính kịch, hài, giả tưởng và lãng mạn, tại một quốc gia vào năm 1996 và năm 2000.",
+          "wordCount": 30,
+          "sentencePairs": [
+            {
+              "en": "The bar charts compare the proportions of films released and cinema tickets sold across four genres, namely drama, comedy, fantasy and romance, in a particular country in 1996 and 2000.",
+              "vi": "Các biểu đồ cột so sánh tỷ lệ phim được phát hành và vé xem phim được bán ra của bốn thể loại, cụ thể là chính kịch, hài, giả tưởng và lãng mạn, tại một quốc gia vào năm 1996 và năm 2000."
+            }
+          ]
+        },
+        {
+          "section": "TỔNG QUAN (OVERVIEW)",
+          "en": "Overall, drama dominated film releases in both years, whereas comedy consistently accounted for the largest share of ticket sales. Moreover, most genres grew in both respects, with romance being the notable exception.",
+          "vi": "Nhìn chung, phim chính kịch chiếm ưu thế về số lượng phát hành trong cả hai năm, trong khi phim hài luôn chiếm tỷ trọng doanh số bán vé lớn nhất. Hơn nữa, hầu hết các thể loại đều tăng trưởng ở cả hai phương diện, ngoại trừ đáng chú ý là phim lãng mạn.",
+          "wordCount": 32,
+          "sentencePairs": [
+            {
+              "en": "Overall, drama dominated film releases in both years, whereas comedy consistently accounted for the largest share of ticket sales.",
+              "vi": "Nhìn chung, phim chính kịch chiếm ưu thế về số lượng phát hành trong cả hai năm, trong khi phim hài luôn chiếm tỷ trọng doanh số bán vé lớn nhất."
+            },
+            {
+              "en": "Moreover, most genres grew in both respects, with romance being the notable exception.",
+              "vi": "Hơn nữa, hầu hết các thể loại đều tăng trưởng ở cả hai phương diện, ngoại trừ đáng chú ý là phim lãng mạn."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 1 (DETAIL 1)",
+          "en": "In terms of releases, drama films made up 27% of the total in 1996, a figure which rose to 35% by 2000. Comedy followed a similar upward pattern, climbing from 20% to 25%, while the share of fantasy films increased from 12% to 16%. By contrast, romance remained unchanged at a modest 6% in both years.",
+          "vi": "Về số lượng phát hành, phim chính kịch chiếm 27% tổng số vào năm 1996, và con số này đã tăng lên 35% vào năm 2000. Phim hài cũng có xu hướng tăng tương tự, từ 20% lên 25%, trong khi tỷ lệ phim giả tưởng tăng từ 12% lên 16%. Ngược lại, phim lãng mạn giữ nguyên ở mức khiêm tốn 6% trong cả hai năm.",
+          "wordCount": 56,
+          "sentencePairs": [
+            {
+              "en": "In terms of releases, drama films made up 27% of the total in 1996, a figure which rose to 35% by 2000.",
+              "vi": "Về số lượng phát hành, phim chính kịch chiếm 27% tổng số vào năm 1996, và con số này đã tăng lên 35% vào năm 2000."
+            },
+            {
+              "en": "Comedy followed a similar upward pattern, climbing from 20% to 25%, while the share of fantasy films increased from 12% to 16%.",
+              "vi": "Phim hài cũng có xu hướng tăng tương tự, từ 20% lên 25%, trong khi tỷ lệ phim giả tưởng tăng từ 12% lên 16%."
+            },
+            {
+              "en": "By contrast, romance remained unchanged at a modest 6% in both years.",
+              "vi": "Ngược lại, phim lãng mạn giữ nguyên ở mức khiêm tốn 6% trong cả hai năm."
+            }
+          ]
+        },
+        {
+          "section": "CHI TIẾT 2 (DETAIL 2)",
+          "en": "Turning to ticket sales, comedy led the way, rising from 20% in 1996 to 23% in 2000. Drama, despite its prominence in releases, saw only a marginal increase in sales, from 16% to 17%. Fantasy, which had the lowest share in 1996 at just 3%, rose to 7% four years later. Romance, however, was the only genre to decline, falling from 5% to 3% and thus recording the smallest share of sales in 2000.",
+          "vi": "Chuyển sang doanh số bán vé, phim hài dẫn đầu, tăng từ 20% vào năm 1996 lên 23% vào năm 2000. Phim chính kịch, mặc dù nổi bật về số lượng phát hành, chỉ tăng nhẹ về doanh số bán vé, từ 16% lên 17%. Phim giả tưởng, thể loại có tỷ lệ thấp nhất vào năm 1996 với chỉ 3%, đã tăng lên 7% bốn năm sau đó. Tuy nhiên, phim lãng mạn là thể loại duy nhất giảm, từ 5% xuống 3%, và do đó có tỷ lệ doanh số bán vé nhỏ nhất vào năm 2000.",
+          "wordCount": 74,
+          "sentencePairs": [
+            {
+              "en": "Turning to ticket sales, comedy led the way, rising from 20% in 1996 to 23% in 2000.",
+              "vi": "Chuyển sang doanh số bán vé, phim hài dẫn đầu, tăng từ 20% vào năm 1996 lên 23% vào năm 2000."
+            },
+            {
+              "en": "Drama, despite its prominence in releases, saw only a marginal increase in sales, from 16% to 17%.",
+              "vi": "Phim chính kịch, mặc dù nổi bật về số lượng phát hành, chỉ tăng nhẹ về doanh số bán vé, từ 16% lên 17%."
+            },
+            {
+              "en": "Fantasy, which had the lowest share in 1996 at just 3%, rose to 7% four years later.",
+              "vi": "Phim giả tưởng, thể loại có tỷ lệ thấp nhất vào năm 1996 với chỉ 3%, đã tăng lên 7% bốn năm sau đó."
+            },
+            {
+              "en": "Romance, however, was the only genre to decline, falling from 5% to 3% and thus recording the smallest share of sales in 2000.",
+              "vi": "Tuy nhiên, phim lãng mạn là thể loại duy nhất giảm, từ 5% xuống 3%, và do đó có tỷ lệ doanh số bán vé nhỏ nhất vào năm 2000."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2342 @@
+[
+ {
+  "slug": "question-tags",
+  "title": "Câu hỏi đuôi",
+  "blurb": "Thêm đuôi hỏi đúng trợ động từ để xác nhận điều mình nói.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-question-tags-01",
+    "difficulty": "easy",
+    "vi": "Hôm nay trời đẹp, đúng không?",
+    "en": "The weather is nice today, isn't it?",
+    "hint": "Câu hỏi đuôi phủ định sau câu khẳng định với to be."
+   },
+   {
+    "id": "tr-question-tags-02",
+    "difficulty": "easy",
+    "vi": "Anh ấy hoàn toàn không biết bơi, đúng không?",
+    "en": "He can't swim at all, can he?",
+    "hint": "Câu phủ định thì đuôi khẳng định, dùng can."
+   },
+   {
+    "id": "tr-question-tags-03",
+    "difficulty": "easy",
+    "vi": "Chúng ta đã gặp nhau trước đây, phải không?",
+    "en": "We have met before, haven't we?",
+    "hint": "Đuôi hỏi với thì hiện tại hoàn thành."
+   },
+   {
+    "id": "tr-question-tags-04",
+    "difficulty": "easy",
+    "vi": "Cô ấy làm việc ở ngân hàng, phải không?",
+    "en": "She works at a bank, doesn't she?",
+    "hint": "Hiện tại đơn dùng đuôi does/doesn't."
+   },
+   {
+    "id": "tr-question-tags-05",
+    "difficulty": "easy",
+    "vi": "Bạn đã ăn tối rồi, đúng không?",
+    "en": "You have already had dinner, haven't you?",
+    "hint": "Đuôi hỏi haven't you sau have."
+   },
+   {
+    "id": "tr-question-tags-06",
+    "difficulty": "easy",
+    "vi": "Họ đã không đến muộn, phải không?",
+    "en": "They didn't arrive late, did they?",
+    "hint": "Quá khứ đơn phủ định thì đuôi did they."
+   },
+   {
+    "id": "tr-question-tags-07",
+    "difficulty": "easy",
+    "vi": "Bạn giúp tôi một chút nhé, được không?",
+    "en": "Help me a little, will you?",
+    "hint": "Câu mệnh lệnh dùng đuôi will you."
+   },
+   {
+    "id": "tr-question-tags-08",
+    "difficulty": "easy",
+    "vi": "Chúng ta hãy cùng đi bộ đến đó nhé?",
+    "en": "Let's walk there together, shall we?",
+    "hint": "Let's dùng đuôi shall we."
+   },
+   {
+    "id": "tr-question-tags-09",
+    "difficulty": "easy",
+    "vi": "Bạn sẽ gọi cho tôi tối nay, đúng không?",
+    "en": "You will call me tonight, won't you?",
+    "hint": "Tương lai với will dùng đuôi won't you."
+   },
+   {
+    "id": "tr-question-tags-10",
+    "difficulty": "easy",
+    "vi": "Tôi không nên nói to ở đây, đúng không?",
+    "en": "I shouldn't speak loudly here, should I?",
+    "hint": "Đuôi khẳng định sau shouldn't."
+   }
+  ]
+ },
+ {
+  "slug": "used-to-habits",
+  "title": "Thói quen ngày xưa",
+  "blurb": "Dùng used to, would và be used to để nói về quá khứ và sự quen thuộc.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-used-to-habits-01",
+    "difficulty": "easy",
+    "vi": "Hồi nhỏ tôi hay chơi bên bờ sông.",
+    "en": "I used to play by the river as a child.",
+    "hint": "Used to + V chỉ thói quen trong quá khứ."
+   },
+   {
+    "id": "tr-used-to-habits-02",
+    "difficulty": "easy",
+    "vi": "Ông tôi từng sống ở nông thôn.",
+    "en": "My grandfather used to live in the countryside.",
+    "hint": "Used to chỉ trạng thái đã qua."
+   },
+   {
+    "id": "tr-used-to-habits-03",
+    "difficulty": "easy",
+    "vi": "Thành phố này từng rất yên tĩnh.",
+    "en": "This city used to be very quiet.",
+    "hint": "Used to be + tính từ."
+   },
+   {
+    "id": "tr-used-to-habits-04",
+    "difficulty": "easy",
+    "vi": "Hồi đó chúng tôi không hay đi xem phim.",
+    "en": "We didn't use to go to the cinema then.",
+    "hint": "Phủ định: didn't use to, không có d."
+   },
+   {
+    "id": "tr-used-to-habits-05",
+    "difficulty": "easy",
+    "vi": "Bạn từng học ở trường này phải không?",
+    "en": "Did you use to study at this school?",
+    "hint": "Nghi vấn: Did + S + use to."
+   },
+   {
+    "id": "tr-used-to-habits-06",
+    "difficulty": "easy",
+    "vi": "Cô ấy từng hút thuốc nhưng giờ đã bỏ rồi.",
+    "en": "She used to smoke, but she has quit now.",
+    "hint": "Đối lập quá khứ với hiện tại."
+   },
+   {
+    "id": "tr-used-to-habits-07",
+    "difficulty": "easy",
+    "vi": "Tôi đã quen với việc dậy sớm rồi.",
+    "en": "I am used to getting up early.",
+    "hint": "Be used to + V-ing nghĩa là đã quen với."
+   },
+   {
+    "id": "tr-used-to-habits-08",
+    "difficulty": "easy",
+    "vi": "Anh ấy đang dần quen với thời tiết lạnh.",
+    "en": "He is getting used to the cold weather.",
+    "hint": "Get used to + danh từ, đang dần quen."
+   },
+   {
+    "id": "tr-used-to-habits-09",
+    "difficulty": "easy",
+    "vi": "Mỗi mùa hè cả nhà tôi đều về quê.",
+    "en": "Every summer, my family would go back to the village.",
+    "hint": "Would chỉ thói quen lặp lại trong quá khứ."
+   },
+   {
+    "id": "tr-used-to-habits-10",
+    "difficulty": "easy",
+    "vi": "Trước đây mẹ thường kể chuyện cho tôi nghe trước khi ngủ.",
+    "en": "My mother would tell me stories before bedtime.",
+    "hint": "Would + V cho hành động lặp lại ngày xưa."
+   }
+  ]
+ },
+ {
+  "slug": "hotel-booking",
+  "title": "Đặt phòng khách sạn",
+  "blurb": "Những câu cần thiết khi đặt phòng, nhận phòng và nhờ hỗ trợ.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-hotel-booking-01",
+    "difficulty": "easy",
+    "vi": "Tôi muốn đặt một phòng đôi.",
+    "en": "I would like to book a double room.",
+    "hint": "Would like to + V, cách đề nghị lịch sự."
+   },
+   {
+    "id": "tr-hotel-booking-02",
+    "difficulty": "easy",
+    "vi": "Phòng này giá bao nhiêu một đêm?",
+    "en": "How much is this room per night?",
+    "hint": "Hỏi giá với How much."
+   },
+   {
+    "id": "tr-hotel-booking-03",
+    "difficulty": "easy",
+    "vi": "Giá phòng có bao gồm bữa sáng không?",
+    "en": "Does the room price include breakfast?",
+    "hint": "Câu hỏi Yes/No với trợ động từ does."
+   },
+   {
+    "id": "tr-hotel-booking-04",
+    "difficulty": "easy",
+    "vi": "Tôi sẽ ở lại ba đêm liên tiếp.",
+    "en": "I will stay for three nights in a row.",
+    "hint": "Tương lai với will, for + khoảng thời gian."
+   },
+   {
+    "id": "tr-hotel-booking-05",
+    "difficulty": "easy",
+    "vi": "Giờ nhận phòng là mấy giờ?",
+    "en": "What time is check-in at your hotel?",
+    "hint": "Hỏi giờ với What time."
+   },
+   {
+    "id": "tr-hotel-booking-06",
+    "difficulty": "easy",
+    "vi": "Chúng tôi cần một phòng yên tĩnh, làm ơn.",
+    "en": "We need a quiet room, please.",
+    "hint": "Thêm please để yêu cầu lịch sự."
+   },
+   {
+    "id": "tr-hotel-booking-07",
+    "difficulty": "easy",
+    "vi": "Điều hòa trong phòng tôi bị hỏng.",
+    "en": "The air conditioner in my room is broken.",
+    "hint": "Be + quá khứ phân từ dùng như tính từ."
+   },
+   {
+    "id": "tr-hotel-booking-08",
+    "difficulty": "easy",
+    "vi": "Bạn có thể giữ hộ hành lý của tôi không?",
+    "en": "Can you keep my luggage for me?",
+    "hint": "Can you ...? nhờ vả."
+   },
+   {
+    "id": "tr-hotel-booking-09",
+    "difficulty": "easy",
+    "vi": "Tôi muốn trả phòng vào trưa mai.",
+    "en": "I want to check out at noon tomorrow.",
+    "hint": "Check out là cụm động từ, trả phòng."
+   },
+   {
+    "id": "tr-hotel-booking-10",
+    "difficulty": "easy",
+    "vi": "Khách sạn có xe đưa đón sân bay không?",
+    "en": "Does the hotel have an airport shuttle?",
+    "hint": "Does ... have ...? hỏi về dịch vụ."
+   }
+  ]
+ },
+ {
+  "slug": "at-the-doctor",
+  "title": "Đi khám bệnh",
+  "blurb": "Mô tả triệu chứng và hiểu lời dặn của bác sĩ.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-at-the-doctor-01",
+    "difficulty": "easy",
+    "vi": "Tôi bị đau đầu từ sáng nay.",
+    "en": "I have had a headache since this morning.",
+    "hint": "Hiện tại hoàn thành với since."
+   },
+   {
+    "id": "tr-at-the-doctor-02",
+    "difficulty": "easy",
+    "vi": "Tôi bị sốt và ho từ hôm qua.",
+    "en": "I have had a fever and a cough since yesterday.",
+    "hint": "Hiện tại hoàn thành với have had."
+   },
+   {
+    "id": "tr-at-the-doctor-03",
+    "difficulty": "easy",
+    "vi": "Bạn cảm thấy đau chính xác ở chỗ nào?",
+    "en": "Where exactly do you feel the pain?",
+    "hint": "Câu hỏi Wh- với trợ động từ do."
+   },
+   {
+    "id": "tr-at-the-doctor-04",
+    "difficulty": "easy",
+    "vi": "Bạn có bị dị ứng với loại thuốc nào không?",
+    "en": "Are you allergic to any medicine?",
+    "hint": "Be allergic to + danh từ."
+   },
+   {
+    "id": "tr-at-the-doctor-05",
+    "difficulty": "easy",
+    "vi": "Hãy uống thuốc này ba lần mỗi ngày.",
+    "en": "Take this medicine three times a day.",
+    "hint": "Câu mệnh lệnh, three times a day chỉ tần suất."
+   },
+   {
+    "id": "tr-at-the-doctor-06",
+    "difficulty": "easy",
+    "vi": "Bạn nên nghỉ ngơi và uống nhiều nước.",
+    "en": "You should rest and drink plenty of water.",
+    "hint": "Should + V để khuyên."
+   },
+   {
+    "id": "tr-at-the-doctor-07",
+    "difficulty": "easy",
+    "vi": "Tôi muốn đặt lịch khám vào thứ Ba.",
+    "en": "I would like to make an appointment for Tuesday.",
+    "hint": "Make an appointment, đặt lịch hẹn."
+   },
+   {
+    "id": "tr-at-the-doctor-08",
+    "difficulty": "easy",
+    "vi": "Vết thương này đã đau hai ngày rồi.",
+    "en": "This wound has hurt for two days.",
+    "hint": "Hiện tại hoàn thành với for + khoảng thời gian."
+   },
+   {
+    "id": "tr-at-the-doctor-09",
+    "difficulty": "easy",
+    "vi": "Bác sĩ bảo tôi không được ăn đồ cay.",
+    "en": "The doctor told me not to eat spicy food.",
+    "hint": "Tell + O + not to V, lời dặn phủ định."
+   },
+   {
+    "id": "tr-at-the-doctor-10",
+    "difficulty": "easy",
+    "vi": "Nếu cơn đau vẫn còn, hãy quay lại gặp tôi.",
+    "en": "If the pain stays, come back and see me.",
+    "hint": "Câu điều kiện loại 1 với mệnh lệnh."
+   }
+  ]
+ },
+ {
+  "slug": "simple-comparisons",
+  "title": "So sánh cơ bản",
+  "blurb": "So sánh hơn, bằng và nhất bằng những ví dụ quen thuộc.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-simple-comparisons-01",
+    "difficulty": "easy",
+    "vi": "Chiếc xe này nhanh hơn chiếc kia.",
+    "en": "This car is faster than that one.",
+    "hint": "So sánh hơn của tính từ ngắn."
+   },
+   {
+    "id": "tr-simple-comparisons-02",
+    "difficulty": "easy",
+    "vi": "Em gái tôi cao hơn tôi.",
+    "en": "My younger sister is taller than I am.",
+    "hint": "Than + đại từ chủ ngữ + be."
+   },
+   {
+    "id": "tr-simple-comparisons-03",
+    "difficulty": "easy",
+    "vi": "Hôm nay trời lạnh hơn hôm qua.",
+    "en": "It is colder today than it was yesterday.",
+    "hint": "So sánh hơn giữa hai thời điểm."
+   },
+   {
+    "id": "tr-simple-comparisons-04",
+    "difficulty": "easy",
+    "vi": "Cuốn sách này đắt hơn cuốn kia nhiều.",
+    "en": "This book is much more expensive than that one.",
+    "hint": "More + tính từ dài, much nhấn mạnh."
+   },
+   {
+    "id": "tr-simple-comparisons-05",
+    "difficulty": "easy",
+    "vi": "Tôi cao bằng anh trai tôi.",
+    "en": "I am as tall as my brother.",
+    "hint": "So sánh bằng as ... as."
+   },
+   {
+    "id": "tr-simple-comparisons-06",
+    "difficulty": "easy",
+    "vi": "Món này không cay bằng món kia.",
+    "en": "This dish is not as spicy as that one.",
+    "hint": "Not as ... as, so sánh kém."
+   },
+   {
+    "id": "tr-simple-comparisons-07",
+    "difficulty": "easy",
+    "vi": "Đây là quán cà phê đông khách nhất phố.",
+    "en": "This is the busiest coffee shop on the street.",
+    "hint": "So sánh nhất của tính từ đuôi y."
+   },
+   {
+    "id": "tr-simple-comparisons-08",
+    "difficulty": "easy",
+    "vi": "Cô ấy là học sinh giỏi nhất lớp.",
+    "en": "She is the best student in the class.",
+    "hint": "Good, better, best là dạng bất quy tắc."
+   },
+   {
+    "id": "tr-simple-comparisons-09",
+    "difficulty": "easy",
+    "vi": "Căn phòng này rộng hơn phòng của tôi nhiều.",
+    "en": "This room is much bigger than mine.",
+    "hint": "Mine thay cho my room, đại từ sở hữu."
+   },
+   {
+    "id": "tr-simple-comparisons-10",
+    "difficulty": "easy",
+    "vi": "Đi tàu thì chậm hơn đi máy bay.",
+    "en": "Travelling by train is slower than flying.",
+    "hint": "So sánh hai danh động từ."
+   }
+  ]
+ },
+ {
+  "slug": "describing-rooms",
+  "title": "Có gì trong phòng",
+  "blurb": "Dùng there is và there are để tả đồ vật và nơi chốn.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-describing-rooms-01",
+    "difficulty": "easy",
+    "vi": "Trong phòng có một cái bàn.",
+    "en": "There is a table in the room.",
+    "hint": "There is + danh từ số ít."
+   },
+   {
+    "id": "tr-describing-rooms-02",
+    "difficulty": "easy",
+    "vi": "Có ba chiếc ghế quanh cái bàn.",
+    "en": "There are three chairs around the table.",
+    "hint": "There are + danh từ số nhiều."
+   },
+   {
+    "id": "tr-describing-rooms-03",
+    "difficulty": "easy",
+    "vi": "Trong phòng khách không có cái tivi nào.",
+    "en": "There is no TV in the living room.",
+    "hint": "There is no + danh từ."
+   },
+   {
+    "id": "tr-describing-rooms-04",
+    "difficulty": "easy",
+    "vi": "Trên kệ có nhiều sách không?",
+    "en": "Are there many books on the shelf?",
+    "hint": "Nghi vấn: Are there ...?"
+   },
+   {
+    "id": "tr-describing-rooms-05",
+    "difficulty": "easy",
+    "vi": "Có một con mèo ở dưới gầm giường.",
+    "en": "There is a cat under the bed.",
+    "hint": "There is + giới từ chỉ vị trí."
+   },
+   {
+    "id": "tr-describing-rooms-06",
+    "difficulty": "easy",
+    "vi": "Trong tủ lạnh chẳng có gì cả.",
+    "en": "There is nothing in the fridge.",
+    "hint": "There is nothing, không có gì."
+   },
+   {
+    "id": "tr-describing-rooms-07",
+    "difficulty": "easy",
+    "vi": "Có hai cửa sổ lớn nhìn ra khu vườn.",
+    "en": "There are two big windows facing the garden.",
+    "hint": "Phân từ hiện tại facing bổ nghĩa danh từ."
+   },
+   {
+    "id": "tr-describing-rooms-08",
+    "difficulty": "easy",
+    "vi": "Bên ngoài nhà tôi có một cây xoài rất to.",
+    "en": "There is a huge mango tree outside my house.",
+    "hint": "There is + danh từ + giới từ chỉ nơi chốn."
+   },
+   {
+    "id": "tr-describing-rooms-09",
+    "difficulty": "easy",
+    "vi": "Ở nhà có ai không?",
+    "en": "Is there anyone at home right now?",
+    "hint": "Is there anyone ...? trong câu hỏi."
+   },
+   {
+    "id": "tr-describing-rooms-10",
+    "difficulty": "easy",
+    "vi": "Ngày xưa sau nhà tôi có một cái giếng cũ.",
+    "en": "There used to be an old well behind my house.",
+    "hint": "There used to be, ngày xưa từng có."
+   }
+  ]
+ },
+ {
+  "slug": "invitations-refusals",
+  "title": "Lời mời và từ chối",
+  "blurb": "Mời ai đó, nhận lời hoặc từ chối một cách lịch sự.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-invitations-refusals-01",
+    "difficulty": "easy",
+    "vi": "Bạn có muốn đi xem phim với tôi không?",
+    "en": "Would you like to go to the cinema with me?",
+    "hint": "Would you like to ...? lời mời lịch sự."
+   },
+   {
+    "id": "tr-invitations-refusals-02",
+    "difficulty": "easy",
+    "vi": "Tôi rất sẵn lòng, chúng ta đi lúc mấy giờ?",
+    "en": "I would love to. What time shall we go?",
+    "hint": "Nhận lời với would love to."
+   },
+   {
+    "id": "tr-invitations-refusals-03",
+    "difficulty": "easy",
+    "vi": "Tiếc quá, tối nay tôi bận mất rồi.",
+    "en": "I am sorry, but I am busy tonight.",
+    "hint": "Từ chối nhẹ nhàng với sorry, but."
+   },
+   {
+    "id": "tr-invitations-refusals-04",
+    "difficulty": "easy",
+    "vi": "Cảm ơn bạn rất nhiều vì đã mời tôi.",
+    "en": "Thank you very much for inviting me.",
+    "hint": "Thank you for + V-ing, cảm ơn vì đã làm gì."
+   },
+   {
+    "id": "tr-invitations-refusals-05",
+    "difficulty": "easy",
+    "vi": "Sao ta không cùng ăn trưa vào ngày mai nhỉ?",
+    "en": "Why don't we have lunch together tomorrow?",
+    "hint": "Why don't we ...? gợi ý."
+   },
+   {
+    "id": "tr-invitations-refusals-06",
+    "difficulty": "easy",
+    "vi": "Tôi e là tôi không thể đến được.",
+    "en": "I am afraid I cannot come to the party.",
+    "hint": "I am afraid + mệnh đề, từ chối lịch sự."
+   },
+   {
+    "id": "tr-invitations-refusals-07",
+    "difficulty": "easy",
+    "vi": "Cuối tuần này bạn có thời gian rảnh không?",
+    "en": "Do you have any free time this weekend?",
+    "hint": "Any trong câu hỏi."
+   },
+   {
+    "id": "tr-invitations-refusals-08",
+    "difficulty": "easy",
+    "vi": "Mời bạn đến dự tiệc sinh nhật của tôi.",
+    "en": "Please come to my birthday party.",
+    "hint": "Lời mời bằng câu mệnh lệnh lịch sự."
+   },
+   {
+    "id": "tr-invitations-refusals-09",
+    "difficulty": "easy",
+    "vi": "Để lần sau nhé, hôm nay tôi hơi mệt.",
+    "en": "Maybe next time, because I am a bit tired.",
+    "hint": "Maybe next time, hẹn dịp khác."
+   },
+   {
+    "id": "tr-invitations-refusals-10",
+    "difficulty": "easy",
+    "vi": "Rất tiếc, nhưng tôi đã có kế hoạch khác rồi.",
+    "en": "I am sorry, but I already have other plans.",
+    "hint": "Already đứng trước động từ chính."
+   }
+  ]
+ },
+ {
+  "slug": "polite-requests",
+  "title": "Nhờ vả lịch sự",
+  "blurb": "Dùng could, would, may và would you mind để nhờ giúp đỡ.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-polite-requests-01",
+    "difficulty": "easy",
+    "vi": "Bạn có thể giúp tôi việc này được không?",
+    "en": "Could you please help me with this?",
+    "hint": "Could you please ...? lịch sự hơn can."
+   },
+   {
+    "id": "tr-polite-requests-02",
+    "difficulty": "easy",
+    "vi": "Tôi mở cửa sổ ra có được không?",
+    "en": "Is it all right if I open the window?",
+    "hint": "Xin phép bằng Is it all right if ...?"
+   },
+   {
+    "id": "tr-polite-requests-03",
+    "difficulty": "easy",
+    "vi": "Làm ơn đóng cửa lại giúp tôi.",
+    "en": "Please close the door for me.",
+    "hint": "Please + V, lời nhờ trực tiếp."
+   },
+   {
+    "id": "tr-polite-requests-04",
+    "difficulty": "easy",
+    "vi": "Bạn có phiền nếu tôi ngồi đây không?",
+    "en": "Would you mind if I sat here?",
+    "hint": "Would you mind if + quá khứ đơn."
+   },
+   {
+    "id": "tr-polite-requests-05",
+    "difficulty": "easy",
+    "vi": "Bạn có thể nói chậm hơn một chút không?",
+    "en": "Could you speak more slowly, please?",
+    "hint": "Could you + V, nhờ lịch sự."
+   },
+   {
+    "id": "tr-polite-requests-06",
+    "difficulty": "easy",
+    "vi": "Tôi có thể mượn bút của bạn một lát không?",
+    "en": "Could I borrow your pen for a minute?",
+    "hint": "Could I ...? xin phép lịch sự."
+   },
+   {
+    "id": "tr-polite-requests-07",
+    "difficulty": "easy",
+    "vi": "Phiền bạn chỉ giúp tôi đường đến nhà ga.",
+    "en": "Could you tell me the way to the station?",
+    "hint": "Could you tell me ...? hỏi đường lịch sự."
+   },
+   {
+    "id": "tr-polite-requests-08",
+    "difficulty": "easy",
+    "vi": "Bạn làm ơn nhắc lại câu hỏi được không?",
+    "en": "Could you repeat the question, please?",
+    "hint": "Could you repeat ...? nhờ nhắc lại."
+   },
+   {
+    "id": "tr-polite-requests-09",
+    "difficulty": "easy",
+    "vi": "Bạn có phiền tắt nhạc đi không?",
+    "en": "Would you mind turning off the music?",
+    "hint": "Would you mind + V-ing, có phiền không."
+   },
+   {
+    "id": "tr-polite-requests-10",
+    "difficulty": "easy",
+    "vi": "Tôi muốn hỏi xem còn chỗ trống không.",
+    "en": "I would like to ask if any seats are free.",
+    "hint": "Mệnh đề if trong câu hỏi gián tiếp."
+   }
+  ]
+ },
+ {
+  "slug": "restaurant-orders",
+  "title": "Gọi món ở nhà hàng",
+  "blurb": "Gọi món, hỏi gợi ý và thanh toán bằng tiếng Anh tự nhiên.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-restaurant-orders-01",
+    "difficulty": "easy",
+    "vi": "Cho tôi xem thực đơn nhé.",
+    "en": "Could I see the menu, please?",
+    "hint": "Could I ...? xin phép lịch sự."
+   },
+   {
+    "id": "tr-restaurant-orders-02",
+    "difficulty": "easy",
+    "vi": "Tôi muốn gọi một bát phở bò.",
+    "en": "I would like a bowl of beef pho.",
+    "hint": "A bowl of + danh từ."
+   },
+   {
+    "id": "tr-restaurant-orders-03",
+    "difficulty": "easy",
+    "vi": "Bạn gợi ý cho tôi món nào?",
+    "en": "Which dish would you recommend to me?",
+    "hint": "Which + danh từ + would you recommend?"
+   },
+   {
+    "id": "tr-restaurant-orders-04",
+    "difficulty": "easy",
+    "vi": "Tôi không ăn được đồ cay.",
+    "en": "I cannot eat spicy food at all.",
+    "hint": "Cannot + V, at all nhấn mạnh."
+   },
+   {
+    "id": "tr-restaurant-orders-05",
+    "difficulty": "easy",
+    "vi": "Cho tôi thêm một ly nước cam nữa nhé.",
+    "en": "Can I have another glass of orange juice?",
+    "hint": "Another + danh từ số ít."
+   },
+   {
+    "id": "tr-restaurant-orders-06",
+    "difficulty": "easy",
+    "vi": "Món này vẫn chưa được nấu chín kỹ.",
+    "en": "This dish has not been cooked through.",
+    "hint": "Bị động hiện tại hoàn thành phủ định."
+   },
+   {
+    "id": "tr-restaurant-orders-07",
+    "difficulty": "easy",
+    "vi": "Chúng tôi muốn thanh toán riêng.",
+    "en": "We would like to pay separately.",
+    "hint": "Would like to + V, cách nói lịch sự."
+   },
+   {
+    "id": "tr-restaurant-orders-08",
+    "difficulty": "easy",
+    "vi": "Chúng tôi đã đặt bàn trước rồi.",
+    "en": "We booked our table in advance.",
+    "hint": "In advance, trước."
+   },
+   {
+    "id": "tr-restaurant-orders-09",
+    "difficulty": "easy",
+    "vi": "Nhà hàng có món chay nào không?",
+    "en": "Do you have any vegetarian dishes?",
+    "hint": "Any trong câu hỏi."
+   },
+   {
+    "id": "tr-restaurant-orders-10",
+    "difficulty": "easy",
+    "vi": "Tôi nghĩ hoá đơn này bị tính sai.",
+    "en": "I think there is a mistake in the bill.",
+    "hint": "I think + mệnh đề."
+   }
+  ]
+ },
+ {
+  "slug": "time-prepositions",
+  "title": "Giới từ chỉ thời gian",
+  "blurb": "Phân biệt at, on, in, since, for, before, within và while.",
+  "level": "easy",
+  "items": [
+   {
+    "id": "tr-time-prepositions-01",
+    "difficulty": "easy",
+    "vi": "Tôi thức dậy lúc sáu giờ mỗi ngày.",
+    "en": "I wake up at six o'clock every day.",
+    "hint": "At + giờ cụ thể."
+   },
+   {
+    "id": "tr-time-prepositions-02",
+    "difficulty": "easy",
+    "vi": "Cuộc họp diễn ra vào thứ Hai tuần này.",
+    "en": "The meeting is on Monday this week.",
+    "hint": "On + thứ trong tuần."
+   },
+   {
+    "id": "tr-time-prepositions-03",
+    "difficulty": "easy",
+    "vi": "Chúng tôi gặp nhau lần đầu vào tháng Năm năm ngoái.",
+    "en": "We first met in May last year.",
+    "hint": "In + tháng."
+   },
+   {
+    "id": "tr-time-prepositions-04",
+    "difficulty": "easy",
+    "vi": "Tôi đã học tiếng Anh từ năm 2020.",
+    "en": "I have studied English since 2020.",
+    "hint": "Since + mốc thời gian."
+   },
+   {
+    "id": "tr-time-prepositions-05",
+    "difficulty": "easy",
+    "vi": "Cô ấy đã sống ở đây được năm năm.",
+    "en": "She has lived here for five years.",
+    "hint": "For + khoảng thời gian."
+   },
+   {
+    "id": "tr-time-prepositions-06",
+    "difficulty": "easy",
+    "vi": "Hãy nộp bài tập trước thứ Sáu nhé.",
+    "en": "Please hand in your homework before Friday.",
+    "hint": "Before + mốc thời gian."
+   },
+   {
+    "id": "tr-time-prepositions-07",
+    "difficulty": "easy",
+    "vi": "Chúng tôi thường đi dạo vào buổi tối.",
+    "en": "We usually go for a walk in the evening.",
+    "hint": "In + buổi trong ngày."
+   },
+   {
+    "id": "tr-time-prepositions-08",
+    "difficulty": "easy",
+    "vi": "Cửa hàng mở cửa từ tám giờ đến năm giờ.",
+    "en": "The shop is open from eight until five.",
+    "hint": "From ... until ..., từ lúc này đến lúc kia."
+   },
+   {
+    "id": "tr-time-prepositions-09",
+    "difficulty": "easy",
+    "vi": "Tôi sẽ gọi lại cho bạn trong vòng một giờ nữa.",
+    "en": "I will call you back within an hour.",
+    "hint": "Within, trong vòng."
+   },
+   {
+    "id": "tr-time-prepositions-10",
+    "difficulty": "easy",
+    "vi": "Trong lúc bạn ngủ, tôi đã dọn dẹp nhà cửa.",
+    "en": "While you were sleeping, I cleaned the house.",
+    "hint": "While + quá khứ tiếp diễn."
+   }
+  ]
+ },
+ {
+  "slug": "relative-clauses",
+  "title": "Mệnh đề quan hệ",
+  "blurb": "Dùng who, which, whose, where để nối câu gọn và rõ.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-relative-clauses-01",
+    "difficulty": "medium",
+    "vi": "Người đàn ông đang đứng ở cửa là giáo viên cũ của tôi.",
+    "en": "The man who is standing at the door is my former teacher.",
+    "hint": "Who thay cho người làm chủ ngữ."
+   },
+   {
+    "id": "tr-relative-clauses-02",
+    "difficulty": "medium",
+    "vi": "Cuốn sách mà bạn cho tôi mượn tuần trước thật sự rất hay.",
+    "en": "The book that you lent me last week was really interesting.",
+    "hint": "That thay cho vật làm tân ngữ."
+   },
+   {
+    "id": "tr-relative-clauses-03",
+    "difficulty": "medium",
+    "vi": "Tôi vẫn sống ở thành phố nơi tôi sinh ra và lớn lên.",
+    "en": "I still live in the city where I was born and raised.",
+    "hint": "Where thay cho nơi chốn."
+   },
+   {
+    "id": "tr-relative-clauses-04",
+    "difficulty": "medium",
+    "vi": "Cô gái có chiếc xe đạp bị mất đã báo cảnh sát.",
+    "en": "The girl whose bike was stolen reported it to the police.",
+    "hint": "Whose chỉ sở hữu."
+   },
+   {
+    "id": "tr-relative-clauses-05",
+    "difficulty": "medium",
+    "vi": "Đây là lý do tại sao tôi quyết định ở lại quê nhà.",
+    "en": "This is the reason why I decided to stay in my hometown.",
+    "hint": "Why theo sau the reason, chỉ lý do."
+   },
+   {
+    "id": "tr-relative-clauses-06",
+    "difficulty": "medium",
+    "vi": "Ông ấy có hai người con, cả hai đều làm bác sĩ ở Hà Nội.",
+    "en": "He has two children, both of whom work as doctors in Hanoi.",
+    "hint": "Both of whom trong mệnh đề không xác định."
+   },
+   {
+    "id": "tr-relative-clauses-07",
+    "difficulty": "medium",
+    "vi": "Công ty nơi tôi làm việc đang tuyển thêm vài nhân viên mới.",
+    "en": "The company where I work is hiring some new employees.",
+    "hint": "Where thay cho nơi chốn trong mệnh đề xác định."
+   },
+   {
+    "id": "tr-relative-clauses-08",
+    "difficulty": "medium",
+    "vi": "Tuần trước tôi đã gặp bà Lan, người đã viết cuốn tiểu thuyết nổi tiếng đó.",
+    "en": "Last week I met Mrs Lan, who wrote that famous novel.",
+    "hint": "Mệnh đề quan hệ không xác định có dấu phẩy."
+   },
+   {
+    "id": "tr-relative-clauses-09",
+    "difficulty": "medium",
+    "vi": "Những gì bạn nói hôm qua đã làm tôi suy nghĩ về nó rất nhiều.",
+    "en": "What you said yesterday made me think about it a great deal.",
+    "hint": "What là đại từ quan hệ không có tiền ngữ."
+   },
+   {
+    "id": "tr-relative-clauses-10",
+    "difficulty": "medium",
+    "vi": "Căn nhà mà chúng tôi định mua nằm gần một công viên rộng.",
+    "en": "The house which we are planning to buy is near a large park.",
+    "hint": "Which thay cho vật, có thể lược bỏ."
+   }
+  ]
+ },
+ {
+  "slug": "reported-speech",
+  "title": "Lời nói gián tiếp",
+  "blurb": "Lùi thì và đổi trạng từ khi thuật lại lời người khác.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-reported-speech-01",
+    "difficulty": "medium",
+    "vi": "Cô ấy bảo tôi rằng cô ấy quá bận nên không thể ăn tối cùng chúng tôi.",
+    "en": "She told me that she was too busy to join us for dinner.",
+    "hint": "Lùi thì từ hiện tại sang quá khứ."
+   },
+   {
+    "id": "tr-reported-speech-02",
+    "difficulty": "medium",
+    "vi": "Anh ấy hỏi tôi đã làm xong bài tập trước giờ học chưa.",
+    "en": "He asked me whether I had finished my homework before the lesson.",
+    "hint": "Câu hỏi Yes/No gián tiếp với whether, lùi sang quá khứ hoàn thành."
+   },
+   {
+    "id": "tr-reported-speech-03",
+    "difficulty": "medium",
+    "vi": "Mẹ bảo tôi đừng về nhà muộn vì đường phố rất nguy hiểm.",
+    "en": "My mother told me not to come home late because the streets were dangerous.",
+    "hint": "Tell + O + not to V, lời dặn phủ định."
+   },
+   {
+    "id": "tr-reported-speech-04",
+    "difficulty": "medium",
+    "vi": "Họ nói rằng họ sẽ đến vào ngày hôm sau bằng tàu hỏa.",
+    "en": "They said that they would arrive the following day by train.",
+    "hint": "Will lùi thành would, tomorrow thành the following day."
+   },
+   {
+    "id": "tr-reported-speech-05",
+    "difficulty": "medium",
+    "vi": "Bác sĩ khuyên ông ấy nên nghỉ làm vài ngày.",
+    "en": "The doctor advised him to take a few days off work.",
+    "hint": "Advise + O + to V, khuyên ai làm gì."
+   },
+   {
+    "id": "tr-reported-speech-06",
+    "difficulty": "medium",
+    "vi": "Cô giáo hỏi chúng tôi hôm trước đã đi đâu.",
+    "en": "The teacher asked us where we had gone the day before.",
+    "hint": "Câu hỏi Wh- gián tiếp, trật tự câu khẳng định."
+   },
+   {
+    "id": "tr-reported-speech-07",
+    "difficulty": "medium",
+    "vi": "Anh ấy thừa nhận đã làm vỡ chiếc bình nhưng từ chối trả tiền.",
+    "en": "He admitted breaking the vase, but he refused to pay for it.",
+    "hint": "Admit + V-ing, refuse + to V, thừa nhận và từ chối."
+   },
+   {
+    "id": "tr-reported-speech-08",
+    "difficulty": "medium",
+    "vi": "Cô ấy hứa sẽ gọi cho tôi ngay khi đến khách sạn.",
+    "en": "She promised to call me as soon as she arrived at the hotel.",
+    "hint": "Promise + to V, hứa làm gì."
+   },
+   {
+    "id": "tr-reported-speech-09",
+    "difficulty": "medium",
+    "vi": "Quản lý nói rằng cuộc họp đã bị hoãn đến thứ Năm.",
+    "en": "The manager said that the meeting had been postponed until Thursday.",
+    "hint": "Bị động quá khứ hoàn thành trong lời gián tiếp."
+   },
+   {
+    "id": "tr-reported-speech-10",
+    "difficulty": "medium",
+    "vi": "Tôi tự hỏi liệu họ có biết chuyện gì đã xảy ra với toà nhà cũ không.",
+    "en": "I wondered whether they knew what had happened to the old building.",
+    "hint": "Wonder whether + mệnh đề, lùi thì."
+   }
+  ]
+ },
+ {
+  "slug": "customer-complaints",
+  "title": "Khiếu nại dịch vụ",
+  "blurb": "Nêu vấn đề, yêu cầu hoàn tiền và xin lỗi khách hàng.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-customer-complaints-01",
+    "difficulty": "medium",
+    "vi": "Tôi nhận được một sản phẩm bị hỏng và muốn được hoàn tiền.",
+    "en": "I received a damaged product, and I would like a refund.",
+    "hint": "Quá khứ đơn và would like."
+   },
+   {
+    "id": "tr-customer-complaints-02",
+    "difficulty": "medium",
+    "vi": "Đơn hàng của tôi lẽ ra phải đến vào thứ Hai nhưng đến giờ vẫn chưa thấy.",
+    "en": "My order should have arrived on Monday, but it still has not come.",
+    "hint": "Should have + quá khứ phân từ, điều lẽ ra đã xảy ra."
+   },
+   {
+    "id": "tr-customer-complaints-03",
+    "difficulty": "medium",
+    "vi": "Tôi đã gọi ba lần mà không ai trả lời máy.",
+    "en": "I have called three times, but nobody has answered my calls.",
+    "hint": "Hiện tại hoàn thành."
+   },
+   {
+    "id": "tr-customer-complaints-04",
+    "difficulty": "medium",
+    "vi": "Nếu bạn không giải quyết vấn đề này, tôi sẽ khiếu nại chính thức.",
+    "en": "If you do not solve this problem, I will make a formal complaint.",
+    "hint": "Câu điều kiện loại 1."
+   },
+   {
+    "id": "tr-customer-complaints-05",
+    "difficulty": "medium",
+    "vi": "Chiếc áo tôi nhận được khác với hình trên trang web.",
+    "en": "The shirt I received is different from the picture on the website.",
+    "hint": "Mệnh đề quan hệ lược bỏ that."
+   },
+   {
+    "id": "tr-customer-complaints-06",
+    "difficulty": "medium",
+    "vi": "Tôi muốn đổi đôi giày này sang cỡ lớn hơn, nếu có thể.",
+    "en": "I would like to exchange these shoes for a larger size, if possible.",
+    "hint": "Exchange A for B, đổi A lấy B."
+   },
+   {
+    "id": "tr-customer-complaints-07",
+    "difficulty": "medium",
+    "vi": "Chúng tôi xin lỗi vì sự bất tiện này và sẽ gửi hàng thay thế ngay.",
+    "en": "We apologise for the inconvenience, and we will send a replacement immediately.",
+    "hint": "Apologise for + danh từ."
+   },
+   {
+    "id": "tr-customer-complaints-08",
+    "difficulty": "medium",
+    "vi": "Tuần trước tôi bị tính tiền hai lần cho cùng một đơn hàng.",
+    "en": "I was charged twice for the same order last week.",
+    "hint": "Bị động quá khứ đơn."
+   },
+   {
+    "id": "tr-customer-complaints-09",
+    "difficulty": "medium",
+    "vi": "Tôi sẽ không mua hàng ở đây nữa nếu tình trạng này tiếp diễn.",
+    "en": "I will not shop here again if this situation continues.",
+    "hint": "Điều kiện loại 1 với if ở cuối câu."
+   },
+   {
+    "id": "tr-customer-complaints-10",
+    "difficulty": "medium",
+    "vi": "Bạn có thể cho tôi biết khi nào tiền sẽ được hoàn vào tài khoản của tôi không?",
+    "en": "Could you tell me when the money will be refunded to my account?",
+    "hint": "Câu hỏi gián tiếp với bị động tương lai."
+   }
+  ]
+ },
+ {
+  "slug": "work-phrasal-verbs",
+  "title": "Cụm động từ công sở",
+  "blurb": "Các cụm động từ thường gặp trong công việc hằng ngày.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-work-phrasal-verbs-01",
+    "difficulty": "medium",
+    "vi": "Chúng ta cần xem lại kế hoạch một lần nữa trước khi nộp.",
+    "en": "We need to go over the plan again before we submit it.",
+    "hint": "Go over, xem lại."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-02",
+    "difficulty": "medium",
+    "vi": "Cô ấy đã từ chối lời mời làm việc vì mức lương quá thấp.",
+    "en": "She turned down the job offer because the salary was too low.",
+    "hint": "Turn down, từ chối."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-03",
+    "difficulty": "medium",
+    "vi": "Công ty sẽ mở rộng sang các thị trường châu Á vào năm sau.",
+    "en": "The company will branch out into Asian markets next year.",
+    "hint": "Branch out, mở rộng sang lĩnh vực mới."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-04",
+    "difficulty": "medium",
+    "vi": "Hôm nay tôi phải nộp báo cáo này trước năm giờ.",
+    "en": "I have to hand in this report before five o'clock today.",
+    "hint": "Hand in, nộp."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-05",
+    "difficulty": "medium",
+    "vi": "Anh ấy nghỉ việc để thành lập doanh nghiệp riêng.",
+    "en": "He quit his job to set up his own business.",
+    "hint": "Set up, thành lập."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-06",
+    "difficulty": "medium",
+    "vi": "Cuộc họp bị hoãn lại vì sếp bị ốm.",
+    "en": "The meeting was put off because the boss fell ill.",
+    "hint": "Put off ở thể bị động, hoãn lại."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-07",
+    "difficulty": "medium",
+    "vi": "Tháng tới chúng tôi sẽ nhận thêm ba người vào đội.",
+    "en": "We are going to take on three more people for the team next month.",
+    "hint": "Take on, nhận thêm người."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-08",
+    "difficulty": "medium",
+    "vi": "Tôi sẽ giải quyết việc này, nên bạn không cần lo về nó.",
+    "en": "I will sort it out, so you do not need to worry about it.",
+    "hint": "Sort out, giải quyết."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-09",
+    "difficulty": "medium",
+    "vi": "Cô ấy đã vươn lên từ trợ lý lên quản lý trong năm năm.",
+    "en": "She worked her way up from assistant to manager in five years.",
+    "hint": "Work one's way up, thăng tiến dần."
+   },
+   {
+    "id": "tr-work-phrasal-verbs-10",
+    "difficulty": "medium",
+    "vi": "Sau nhiều năm cố gắng, cuối cùng họ cũng bắt kịp đối thủ.",
+    "en": "After years of effort, they finally caught up with their competitors.",
+    "hint": "Catch up with, bắt kịp."
+   }
+  ]
+ },
+ {
+  "slug": "compound-adjectives",
+  "title": "Tính từ ghép",
+  "blurb": "Ghép số, danh từ và tính từ bằng dấu gạch nối để mô tả ngắn gọn.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-compound-adjectives-01",
+    "difficulty": "medium",
+    "vi": "Đó là một cuộc họp kéo dài hai giờ về dự án mới của công ty.",
+    "en": "It was a two-hour meeting about the company's new project.",
+    "hint": "Số + danh từ số ít làm tính từ ghép."
+   },
+   {
+    "id": "tr-compound-adjectives-02",
+    "difficulty": "medium",
+    "vi": "Cô ấy sống trong một ngôi nhà ba tầng có khu vườn nhỏ.",
+    "en": "She lives in a three-storey house with a small garden.",
+    "hint": "Three-storey, danh từ không thêm s."
+   },
+   {
+    "id": "tr-compound-adjectives-03",
+    "difficulty": "medium",
+    "vi": "Cậu bé mười tuổi đó chơi đàn piano giỏi đến kinh ngạc so với tuổi.",
+    "en": "That ten-year-old boy plays the piano remarkably well for his age.",
+    "hint": "Ten-year-old làm tính từ trước danh từ."
+   },
+   {
+    "id": "tr-compound-adjectives-04",
+    "difficulty": "medium",
+    "vi": "Chúng tôi đã nghỉ ở một khách sạn năm sao có tầm nhìn ra biển rất đẹp.",
+    "en": "We stayed at a five-star hotel with a beautiful sea view.",
+    "hint": "Five-star, tính từ ghép số + danh từ."
+   },
+   {
+    "id": "tr-compound-adjectives-05",
+    "difficulty": "medium",
+    "vi": "Ông ấy là một người tốt bụng, ăn nói nhẹ nhàng mà ai cũng kính trọng.",
+    "en": "He is a kind-hearted and soft-spoken man whom everybody respects.",
+    "hint": "Tính từ + phân từ quá khứ làm tính từ ghép."
+   },
+   {
+    "id": "tr-compound-adjectives-06",
+    "difficulty": "medium",
+    "vi": "Đây là bánh tự làm ở nhà nên ngon hơn bánh mua ở cửa hàng.",
+    "en": "This is a home-made cake, so it tastes better than store-bought ones.",
+    "hint": "Home-made và store-bought."
+   },
+   {
+    "id": "tr-compound-adjectives-07",
+    "difficulty": "medium",
+    "vi": "Tôi cần một chiếc áo khoác chống thấm nước cho chuyến đi đường dài vào tuần tới.",
+    "en": "I need a waterproof jacket for the long-distance trip next week.",
+    "hint": "Long-distance, tính từ ghép."
+   },
+   {
+    "id": "tr-compound-adjectives-08",
+    "difficulty": "medium",
+    "vi": "Cô ấy là nhà văn nổi tiếng thế giới có những cuốn sách rất dễ đọc.",
+    "en": "She is a world-famous writer whose books are easy to read.",
+    "hint": "World-famous, danh từ + tính từ."
+   },
+   {
+    "id": "tr-compound-adjectives-09",
+    "difficulty": "medium",
+    "vi": "Đó là một dự án tốn thời gian mà không ai muốn nhận.",
+    "en": "It was a time-consuming project that nobody wanted to take on.",
+    "hint": "Time-consuming, danh từ + V-ing."
+   },
+   {
+    "id": "tr-compound-adjectives-10",
+    "difficulty": "medium",
+    "vi": "Tôi thích làm việc với những người có đầu óc cởi mở và sẵn sàng học hỏi.",
+    "en": "I prefer working with open-minded people who are willing to learn.",
+    "hint": "Open-minded, tính từ + danh từ thêm ed."
+   }
+  ]
+ },
+ {
+  "slug": "team-meetings",
+  "title": "Họp nhóm",
+  "blurb": "Mở đầu, đề xuất, ngắt lời lịch sự và chốt việc trong cuộc họp.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-team-meetings-01",
+    "difficulty": "medium",
+    "vi": "Hãy bắt đầu cuộc họp bằng việc xem lại mọi việc chúng ta đã làm tuần trước.",
+    "en": "Let's begin the meeting by reviewing everything we did last week.",
+    "hint": "By + V-ing chỉ cách thức."
+   },
+   {
+    "id": "tr-team-meetings-02",
+    "difficulty": "medium",
+    "vi": "Ai sẽ phụ trách phần thiết kế của dự án?",
+    "en": "Who will be in charge of the design part of the project?",
+    "hint": "Be in charge of, phụ trách."
+   },
+   {
+    "id": "tr-team-meetings-03",
+    "difficulty": "medium",
+    "vi": "Tôi đề nghị chúng ta chia thành hai nhóm để tiết kiệm thời gian.",
+    "en": "I suggest that we split into two groups to save time.",
+    "hint": "Suggest that + S + V nguyên mẫu hoặc thì thường."
+   },
+   {
+    "id": "tr-team-meetings-04",
+    "difficulty": "medium",
+    "vi": "Hạn chót là cuối tháng này, vì vậy chúng ta phải làm nhanh.",
+    "en": "The deadline is the end of this month, so we have to hurry.",
+    "hint": "So nối kết quả."
+   },
+   {
+    "id": "tr-team-meetings-05",
+    "difficulty": "medium",
+    "vi": "Tôi muốn nghe ý kiến của mọi người trước khi chúng ta quyết định.",
+    "en": "I would like to hear everyone's opinion before we make a decision.",
+    "hint": "Make a decision, kết hợp từ."
+   },
+   {
+    "id": "tr-team-meetings-06",
+    "difficulty": "medium",
+    "vi": "Xin lỗi vì ngắt lời, nhưng tôi có một câu hỏi về ngân sách.",
+    "en": "Sorry to interrupt, but I have a question about the budget.",
+    "hint": "Sorry to + V, ngắt lời lịch sự."
+   },
+   {
+    "id": "tr-team-meetings-07",
+    "difficulty": "medium",
+    "vi": "Nếu mọi người đồng ý, chúng ta sẽ chuyển sang mục tiếp theo.",
+    "en": "If everyone agrees, we will move on to the next item.",
+    "hint": "Điều kiện loại 1, move on to."
+   },
+   {
+    "id": "tr-team-meetings-08",
+    "difficulty": "medium",
+    "vi": "Lan sẽ gửi biên bản cuộc họp cho cả nhóm vào ngày mai.",
+    "en": "Lan will send the minutes of the meeting to the whole team tomorrow.",
+    "hint": "The minutes, biên bản họp."
+   },
+   {
+    "id": "tr-team-meetings-09",
+    "difficulty": "medium",
+    "vi": "Chúng tôi vẫn chưa thống nhất được ai sẽ dẫn dắt dự án mới.",
+    "en": "We have not yet agreed on who should lead the new project.",
+    "hint": "Agree on + mệnh đề danh từ với who."
+   },
+   {
+    "id": "tr-team-meetings-10",
+    "difficulty": "medium",
+    "vi": "Tóm lại, mỗi người cần hoàn thành phần việc của mình trước thứ Sáu.",
+    "en": "To sum up, everyone needs to finish their own part before Friday.",
+    "hint": "To sum up mở đầu phần tóm tắt."
+   }
+  ]
+ },
+ {
+  "slug": "giving-opinions",
+  "title": "Nêu ý kiến",
+  "blurb": "Đồng ý, phản đối nhẹ nhàng và đưa ý kiến có lập luận.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-giving-opinions-01",
+    "difficulty": "medium",
+    "vi": "Theo tôi, học trực tuyến thì tiện hơn nhưng kém hiệu quả hơn.",
+    "en": "In my opinion, online learning is more convenient but less effective.",
+    "hint": "In my opinion, so sánh hơn với more và less."
+   },
+   {
+    "id": "tr-giving-opinions-02",
+    "difficulty": "medium",
+    "vi": "Tôi hoàn toàn đồng ý với bạn về điểm này vì nó rất hợp lý.",
+    "en": "I completely agree with you on this point because it makes sense.",
+    "hint": "Agree with someone on something, đồng ý với ai về điều gì."
+   },
+   {
+    "id": "tr-giving-opinions-03",
+    "difficulty": "medium",
+    "vi": "Tôi không chắc điều đó đúng vì tôi chưa từng thấy bằng chứng nào.",
+    "en": "I am not sure that is true, because I have never seen any evidence.",
+    "hint": "Never + hiện tại hoàn thành."
+   },
+   {
+    "id": "tr-giving-opinions-04",
+    "difficulty": "medium",
+    "vi": "Mặt khác, nhiều người cho rằng bài tập về nhà là không cần thiết.",
+    "en": "On the other hand, many people believe that homework is unnecessary.",
+    "hint": "On the other hand nêu ý đối lập."
+   },
+   {
+    "id": "tr-giving-opinions-05",
+    "difficulty": "medium",
+    "vi": "Tôi nghĩ chúng ta nên làm nhiều hơn nữa để bảo vệ môi trường.",
+    "en": "I think we should do more to protect the environment.",
+    "hint": "Should + V, to V chỉ mục đích."
+   },
+   {
+    "id": "tr-giving-opinions-06",
+    "difficulty": "medium",
+    "vi": "Điều khiến tôi lo nhất là chi phí quá cao đối với nhiều gia đình.",
+    "en": "What worries me most is that the cost is too high for many families.",
+    "hint": "What + động từ ... is that ..."
+   },
+   {
+    "id": "tr-giving-opinions-07",
+    "difficulty": "medium",
+    "vi": "Tôi không hẳn đồng ý, vì mọi người sống trong những hoàn cảnh rất khác nhau.",
+    "en": "I do not entirely agree with that, because people live in very different circumstances.",
+    "hint": "Not entirely, phản đối nhẹ."
+   },
+   {
+    "id": "tr-giving-opinions-08",
+    "difficulty": "medium",
+    "vi": "Nếu tôi là bạn, tôi sẽ suy nghĩ thật kỹ trước khi đưa ra quyết định cuối cùng.",
+    "en": "If I were you, I would think very carefully before making a final decision.",
+    "hint": "Câu điều kiện loại 2 để khuyên."
+   },
+   {
+    "id": "tr-giving-opinions-09",
+    "difficulty": "medium",
+    "vi": "Có vẻ như phần lớn học sinh ủng hộ ý tưởng này.",
+    "en": "It seems that most students are in favour of this idea.",
+    "hint": "It seems that + mệnh đề."
+   },
+   {
+    "id": "tr-giving-opinions-10",
+    "difficulty": "medium",
+    "vi": "Dù có nhiều ý kiến trái chiều, tôi vẫn tin rằng đây là hướng đi đúng.",
+    "en": "Although opinions differ, I still believe this is the right direction.",
+    "hint": "Although + mệnh đề đối lập."
+   }
+  ]
+ },
+ {
+  "slug": "double-comparatives",
+  "title": "So sánh kép",
+  "blurb": "Cấu trúc the more ... the more ... và more and more.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-double-comparatives-01",
+    "difficulty": "medium",
+    "vi": "Bạn càng học nhiều thì càng hiểu bài rõ hơn.",
+    "en": "The more you study, the better you understand the lesson.",
+    "hint": "The + so sánh hơn, the + so sánh hơn."
+   },
+   {
+    "id": "tr-double-comparatives-02",
+    "difficulty": "medium",
+    "vi": "Trời càng tối, đường phố trong thị trấn chúng tôi càng vắng.",
+    "en": "The darker it got, the emptier the streets became in our town.",
+    "hint": "So sánh kép ở quá khứ."
+   },
+   {
+    "id": "tr-double-comparatives-03",
+    "difficulty": "medium",
+    "vi": "Chúng tôi càng leo lên núi cao, không khí càng loãng.",
+    "en": "The higher we climbed up the mountain, the thinner the air became.",
+    "hint": "Higher và thinner là tính từ ngắn."
+   },
+   {
+    "id": "tr-double-comparatives-04",
+    "difficulty": "medium",
+    "vi": "Theo thời gian, cô ấy ngày càng tự tin hơn.",
+    "en": "She is becoming more and more confident as time goes by.",
+    "hint": "More and more + tính từ dài."
+   },
+   {
+    "id": "tr-double-comparatives-05",
+    "difficulty": "medium",
+    "vi": "Giá nhà ở các thành phố lớn ngày càng cao.",
+    "en": "Housing prices are getting higher and higher in big cities.",
+    "hint": "Tính từ ngắn lặp lại: higher and higher."
+   },
+   {
+    "id": "tr-double-comparatives-06",
+    "difficulty": "medium",
+    "vi": "Bạn đi khám bác sĩ càng sớm thì càng tốt cho bạn.",
+    "en": "The sooner you see a doctor, the better it will be for you.",
+    "hint": "The sooner, the better, càng sớm càng tốt."
+   },
+   {
+    "id": "tr-double-comparatives-07",
+    "difficulty": "medium",
+    "vi": "Càng có nhiều người tham gia, buổi tiệc càng vui.",
+    "en": "The more people join the party, the more fun it becomes.",
+    "hint": "The more + danh từ, the more + danh từ."
+   },
+   {
+    "id": "tr-double-comparatives-08",
+    "difficulty": "medium",
+    "vi": "Anh ấy càng giải thích, tôi càng thấy bối rối về vấn đề đó.",
+    "en": "The more he explained, the more confused I felt about the problem.",
+    "hint": "The more + S + V, the more + tính từ."
+   },
+   {
+    "id": "tr-double-comparatives-09",
+    "difficulty": "medium",
+    "vi": "Công nghệ càng tiên tiến, cuộc sống hằng ngày của chúng ta càng dễ dàng.",
+    "en": "The more advanced technology becomes, the easier our daily lives get.",
+    "hint": "Hai vế so sánh hơn với become và get."
+   },
+   {
+    "id": "tr-double-comparatives-10",
+    "difficulty": "medium",
+    "vi": "Món ăn càng cay, tôi càng thích ăn.",
+    "en": "The spicier the food is, the more I enjoy eating it.",
+    "hint": "So sánh kép với tính từ cay."
+   }
+  ]
+ },
+ {
+  "slug": "gerund-infinitive",
+  "title": "Danh động từ và động từ nguyên mẫu",
+  "blurb": "Chọn V-ing hay to V sau enjoy, decide, remember, stop và nhiều động từ khác.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-gerund-infinitive-01",
+    "difficulty": "medium",
+    "vi": "Tôi thích đọc sách vào buổi tối, sau khi làm việc xong.",
+    "en": "I enjoy reading books in the evening, after I finish work.",
+    "hint": "Enjoy + V-ing, thích làm gì."
+   },
+   {
+    "id": "tr-gerund-infinitive-02",
+    "difficulty": "medium",
+    "vi": "Cô ấy quyết định học tiếng Nhật để có thể làm việc ở Tokyo.",
+    "en": "She decided to learn Japanese so that she could work in Tokyo.",
+    "hint": "Decide + to V, quyết định làm gì."
+   },
+   {
+    "id": "tr-gerund-infinitive-03",
+    "difficulty": "medium",
+    "vi": "Tôi nhớ là đã khóa cửa, nên tôi chắc nhà vẫn an toàn.",
+    "en": "I remember locking the door, so I am sure the house is safe.",
+    "hint": "Remember + V-ing, nhớ việc đã làm."
+   },
+   {
+    "id": "tr-gerund-infinitive-04",
+    "difficulty": "medium",
+    "vi": "Đừng quên gửi bức thư này cho dì của bạn trên đường về nhà.",
+    "en": "Do not forget to send this letter to your aunt on the way home.",
+    "hint": "Forget + to V, quên làm việc cần làm."
+   },
+   {
+    "id": "tr-gerund-infinitive-05",
+    "difficulty": "medium",
+    "vi": "Anh ấy từ chối trả lời mọi câu hỏi về vụ tai nạn tuần trước.",
+    "en": "He refused to answer any questions about the accident last week.",
+    "hint": "Refuse + to V, từ chối làm gì."
+   },
+   {
+    "id": "tr-gerund-infinitive-06",
+    "difficulty": "medium",
+    "vi": "Họ ngừng nói chuyện ngay khi tôi bước vào phòng.",
+    "en": "They stopped talking as soon as I walked into the room.",
+    "hint": "Stop + V-ing, ngừng hẳn việc đang làm."
+   },
+   {
+    "id": "tr-gerund-infinitive-07",
+    "difficulty": "medium",
+    "vi": "Tôi dừng lại để mua chút nước vì tôi rất khát.",
+    "en": "I stopped to buy some water because I was very thirsty.",
+    "hint": "Stop + to V, dừng lại để làm gì."
+   },
+   {
+    "id": "tr-gerund-infinitive-08",
+    "difficulty": "medium",
+    "vi": "Cô ấy không nhịn được cười khi nhìn thấy chiếc mũ ngộ nghĩnh của anh ấy.",
+    "en": "She couldn't help laughing when she saw his funny hat.",
+    "hint": "Can't help + V-ing, không nhịn được."
+   },
+   {
+    "id": "tr-gerund-infinitive-09",
+    "difficulty": "medium",
+    "vi": "Việc dành thời gian và công sức học thêm một ngoại ngữ là đáng giá.",
+    "en": "Spending time and effort learning another foreign language is worthwhile.",
+    "hint": "Danh động từ làm chủ ngữ."
+   },
+   {
+    "id": "tr-gerund-infinitive-10",
+    "difficulty": "medium",
+    "vi": "Tôi rất mong được gặp bạn tại hội nghị vào tháng tới.",
+    "en": "I am looking forward to meeting you at the conference next month.",
+    "hint": "Look forward to + V-ing, mong được."
+   }
+  ]
+ },
+ {
+  "slug": "describing-charts",
+  "title": "Mô tả biểu đồ",
+  "blurb": "Từ vựng và cấu trúc để nói về xu hướng và số liệu.",
+  "level": "medium",
+  "items": [
+   {
+    "id": "tr-describing-charts-01",
+    "difficulty": "medium",
+    "vi": "Biểu đồ cho thấy số lượng khách du lịch từ năm 2015 đến năm 2020.",
+    "en": "The chart shows the number of tourists from 2015 to 2020.",
+    "hint": "The number of + danh từ số nhiều."
+   },
+   {
+    "id": "tr-describing-charts-02",
+    "difficulty": "medium",
+    "vi": "Doanh số tăng mạnh từ năm 2016 và đạt đỉnh vào năm 2019.",
+    "en": "Sales rose sharply from 2016 to reach a peak in 2019.",
+    "hint": "To V chỉ kết quả, reach a peak."
+   },
+   {
+    "id": "tr-describing-charts-03",
+    "difficulty": "medium",
+    "vi": "Sau đó, con số này giảm nhẹ rồi giữ ổn định.",
+    "en": "After that, the figure fell slightly and then remained stable.",
+    "hint": "Động từ + trạng từ miêu tả xu hướng."
+   },
+   {
+    "id": "tr-describing-charts-04",
+    "difficulty": "medium",
+    "vi": "Tỷ lệ thất nghiệp giảm từ 8 phần trăm xuống còn 5 phần trăm.",
+    "en": "The unemployment rate dropped from 8 per cent to 5 per cent.",
+    "hint": "From ... to ... chỉ mức thay đổi."
+   },
+   {
+    "id": "tr-describing-charts-05",
+    "difficulty": "medium",
+    "vi": "Xe máy là phương tiện phổ biến nhất, chiếm 60 phần trăm.",
+    "en": "Motorbikes were the most popular means of transport, accounting for 60 per cent.",
+    "hint": "Account for, chiếm."
+   },
+   {
+    "id": "tr-describing-charts-06",
+    "difficulty": "medium",
+    "vi": "Số học sinh đã tăng gấp đôi trong khoảng mười năm.",
+    "en": "The number of students doubled over the period of ten years.",
+    "hint": "Double là động từ, over the period of."
+   },
+   {
+    "id": "tr-describing-charts-07",
+    "difficulty": "medium",
+    "vi": "Trong khi mức tiêu thụ điện tăng lên, mức tiêu thụ than giảm đều theo thời gian.",
+    "en": "While electricity consumption went up, coal consumption fell steadily over time.",
+    "hint": "While nối hai xu hướng trái ngược."
+   },
+   {
+    "id": "tr-describing-charts-08",
+    "difficulty": "medium",
+    "vi": "Nhìn chung, số người dùng trực tuyến có xu hướng tăng rõ rệt.",
+    "en": "Overall, there was a clear upward trend in the number of online users.",
+    "hint": "Overall mở đầu nhận xét tổng quát."
+   },
+   {
+    "id": "tr-describing-charts-09",
+    "difficulty": "medium",
+    "vi": "Con số này dự kiến sẽ đạt 2 triệu vào cuối năm 2030.",
+    "en": "The figure is expected to reach 2 million by the end of 2030.",
+    "hint": "Bị động với be expected to."
+   },
+   {
+    "id": "tr-describing-charts-10",
+    "difficulty": "medium",
+    "vi": "Chi tiêu cho thực phẩm chiếm tỷ trọng lớn hơn chi tiêu cho quần áo.",
+    "en": "Spending on food made up a larger share than spending on clothes.",
+    "hint": "Make up a share, so sánh tỷ trọng."
+   }
+  ]
+ },
+ {
+  "slug": "mixed-conditionals",
+  "title": "Điều kiện hỗn hợp",
+  "blurb": "Nối quá khứ với hiện tại trong cùng một câu điều kiện.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-mixed-conditionals-01",
+    "difficulty": "hard",
+    "vi": "Nếu đêm qua tôi ngủ đủ giấc, giờ đây tôi đã không buồn ngủ đến thế trong buổi họp dài này.",
+    "en": "If I had slept enough last night, I would not feel so sleepy now in this long meeting.",
+    "hint": "Điều kiện loại 3 ở vế if, loại 2 ở vế chính."
+   },
+   {
+    "id": "tr-mixed-conditionals-02",
+    "difficulty": "hard",
+    "vi": "Nếu cô ấy nói tiếng Pháp trôi chảy, thì năm ngoái cô ấy đã nhận được công việc ở Paris mà không gặp khó khăn gì.",
+    "en": "If she spoke French fluently, she would have got the job in Paris last year without any difficulty.",
+    "hint": "If + quá khứ đơn, would have + quá khứ phân từ."
+   },
+   {
+    "id": "tr-mixed-conditionals-03",
+    "difficulty": "hard",
+    "vi": "Nếu tôi là bạn thì hôm qua tôi đã không tin lời hứa của anh ta, vì anh ta luôn nuốt lời.",
+    "en": "If I were you, I would not have trusted his promise yesterday, because he always breaks his word.",
+    "hint": "Were cho mọi ngôi, vế chính loại 3."
+   },
+   {
+    "id": "tr-mixed-conditionals-04",
+    "difficulty": "hard",
+    "vi": "Nếu họ đã đầu tư vào nhà đất mười năm trước, bây giờ họ đã là những người rất giàu có.",
+    "en": "If they had invested in property ten years ago, they would be very wealthy people by now.",
+    "hint": "Nguyên nhân trong quá khứ, kết quả ở hiện tại."
+   },
+   {
+    "id": "tr-mixed-conditionals-05",
+    "difficulty": "hard",
+    "vi": "Nếu anh ấy không phải là người cẩn thận như vậy, dự án đã thất bại từ lâu rồi.",
+    "en": "If he were not such a careful person, the project would have failed a long time ago.",
+    "hint": "Đặc điểm hiện tại gây ra kết quả quá khứ."
+   },
+   {
+    "id": "tr-mixed-conditionals-06",
+    "difficulty": "hard",
+    "vi": "Giá như hồi đó tôi học chăm hơn, thì ngay bây giờ tôi có thể đang làm việc cho một công ty nước ngoài lớn.",
+    "en": "If I had studied harder back then, I could be working for a big foreign company right now.",
+    "hint": "Could be + V-ing ở vế chính hiện tại."
+   },
+   {
+    "id": "tr-mixed-conditionals-07",
+    "difficulty": "hard",
+    "vi": "Nếu chúng ta đã không đến kịp lúc, thì giờ đây cả gia đình họ có thể vẫn đang bị mắc kẹt trong ngôi nhà ngập nước.",
+    "en": "If we had not arrived in time, their whole family might still be trapped in the flooded house now.",
+    "hint": "Might still be + quá khứ phân từ chỉ kết quả hiện tại."
+   },
+   {
+    "id": "tr-mixed-conditionals-08",
+    "difficulty": "hard",
+    "vi": "Nếu đường cao tốc hôm qua không bị chặn, tôi đã không lỡ chuyến bay và sẽ đang nghỉ mát bây giờ.",
+    "en": "If the highway had not been blocked yesterday, I would not have missed my flight and would be on holiday now.",
+    "hint": "Hai vế chính, một loại 3 và một loại 2."
+   },
+   {
+    "id": "tr-mixed-conditionals-09",
+    "difficulty": "hard",
+    "vi": "Nếu cô ấy không nhút nhát đến thế, hôm qua cô ấy đã dám lên tiếng trong cuộc họp.",
+    "en": "If she were not so terribly shy, she would have spoken up at the meeting yesterday.",
+    "hint": "Speak up, dám lên tiếng."
+   },
+   {
+    "id": "tr-mixed-conditionals-10",
+    "difficulty": "hard",
+    "vi": "Nếu tôi từng sống ở nước ngoài thì có lẽ ngày nay tôi sẽ không gặp khó khăn gì khi nói chuyện với du khách nước ngoài.",
+    "en": "If I had ever lived abroad, I would probably have no trouble talking to foreign tourists these days.",
+    "hint": "Have no trouble + V-ing, không gặp khó khăn khi."
+   }
+  ]
+ },
+ {
+  "slug": "cleft-sentences",
+  "title": "Câu chẻ nhấn mạnh",
+  "blurb": "Dùng it is ... that và what ... is để làm nổi bật thông tin.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-cleft-sentences-01",
+    "difficulty": "hard",
+    "vi": "Chính tiếng ồn từ công trường đã khiến tôi không thể tập trung suốt cả buổi chiều.",
+    "en": "It was the noise from the construction site that made it impossible for me to concentrate all afternoon.",
+    "hint": "Câu chẻ It was ... that ..."
+   },
+   {
+    "id": "tr-cleft-sentences-02",
+    "difficulty": "hard",
+    "vi": "Chính cô giáo cũ của tôi là người đã khuyến khích tôi theo đuổi ước mơ trở thành nhà văn.",
+    "en": "It was my former teacher who encouraged me to pursue my dream of becoming a writer.",
+    "hint": "Dùng who nhấn mạnh người."
+   },
+   {
+    "id": "tr-cleft-sentences-03",
+    "difficulty": "hard",
+    "vi": "Điều khiến tôi ngạc nhiên nhất là việc anh ấy chưa bao giờ một lần phàn nàn về khối lượng công việc nặng nề đó.",
+    "en": "What surprised me most was the fact that he had never once complained about that heavy workload.",
+    "hint": "Câu chẻ giả với What."
+   },
+   {
+    "id": "tr-cleft-sentences-04",
+    "difficulty": "hard",
+    "vi": "Mãi đến khi mất công việc lương cao, anh ấy mới thực sự nhận ra giá trị của một cuộc sống ổn định.",
+    "en": "It was not until he lost his well-paid job that he fully realised the value of a stable life.",
+    "hint": "It was not until ... that ..., mãi đến khi."
+   },
+   {
+    "id": "tr-cleft-sentences-05",
+    "difficulty": "hard",
+    "vi": "Chính vào mùa hè năm ngoái, khi ở làng của bà ngoại, tôi đã học được cách nấu những món ăn truyền thống.",
+    "en": "It was last summer, while staying at my grandmother's village, that I learned how to cook traditional dishes.",
+    "hint": "Nhấn mạnh trạng ngữ thời gian."
+   },
+   {
+    "id": "tr-cleft-sentences-06",
+    "difficulty": "hard",
+    "vi": "Điều tôi cần bây giờ không phải là lời khuyên mà là một người chịu lắng nghe tôi.",
+    "en": "What I need now is not advice but someone who is willing to listen to me.",
+    "hint": "What ... is not A but B, không phải A mà là B."
+   },
+   {
+    "id": "tr-cleft-sentences-07",
+    "difficulty": "hard",
+    "vi": "Chính những thói quen nhỏ hằng ngày, chứ không phải những nỗ lực lớn lao nhất thời, mới tạo nên thành công bền vững về lâu dài.",
+    "en": "It is small daily habits, rather than occasional great efforts, that create lasting success in the long run.",
+    "hint": "Rather than xen giữa câu chẻ."
+   },
+   {
+    "id": "tr-cleft-sentences-08",
+    "difficulty": "hard",
+    "vi": "Điều chúng ta cần làm để giải quyết vấn đề này là liên hệ với quản lý của chi nhánh phía Bắc.",
+    "en": "What we need to do to solve this problem is contact the manager of the northern branch.",
+    "hint": "Sau What ... do, is + V nguyên mẫu không to."
+   },
+   {
+    "id": "tr-cleft-sentences-09",
+    "difficulty": "hard",
+    "vi": "Chính vì hoàn cảnh khó khăn mà cô ấy đã học được tính tự lập từ rất sớm, và điều đó đã giúp cô ấy thành công.",
+    "en": "It is precisely because of her difficult circumstances that she learned independence so early, and that has helped her succeed.",
+    "hint": "Câu chẻ nhấn mạnh nguyên nhân."
+   },
+   {
+    "id": "tr-cleft-sentences-10",
+    "difficulty": "hard",
+    "vi": "Không phải số tiền mà là cảm giác được công nhận đã khuyến khích nhiều nhân viên ở lại công ty suốt nhiều năm.",
+    "en": "It is not the money but the feeling of being appreciated that has encouraged many employees to stay with the company for years.",
+    "hint": "It is not A but B that ..., không phải A mà là B."
+   }
+  ]
+ },
+ {
+  "slug": "subjunctive-demands",
+  "title": "Giả định và yêu cầu",
+  "blurb": "Dùng thể giả định sau suggest, insist, demand và it is essential.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-subjunctive-demands-01",
+    "difficulty": "hard",
+    "vi": "Bác sĩ khuyến nghị mạnh mẽ rằng bệnh nhân phải nghỉ ngơi hoàn toàn tại nhà ít nhất hai tuần.",
+    "en": "The doctor strongly recommended that the patient rest completely at home for at least two weeks.",
+    "hint": "Recommend that + S + V nguyên mẫu."
+   },
+   {
+    "id": "tr-subjunctive-demands-02",
+    "difficulty": "hard",
+    "vi": "Giáo viên yêu cầu mọi học sinh phải nộp bài luận của mình muộn nhất là trước nửa đêm tối thứ Sáu.",
+    "en": "The teacher demanded that every student submit his or her essay before midnight on Friday night at the latest.",
+    "hint": "Demand that + S + V nguyên mẫu."
+   },
+   {
+    "id": "tr-subjunctive-demands-03",
+    "difficulty": "hard",
+    "vi": "Điều thiết yếu là mọi người phải được đối xử công bằng ở nơi làm việc, bất kể xuất thân của họ.",
+    "en": "It is essential that everyone be treated fairly in the workplace, regardless of his or her background.",
+    "hint": "It is essential that + S + be + quá khứ phân từ."
+   },
+   {
+    "id": "tr-subjunctive-demands-04",
+    "difficulty": "hard",
+    "vi": "Cô ấy khăng khăng rằng chúng tôi nên bắt đầu cuộc họp ngay lập tức, dù vài đồng nghiệp vẫn chưa đến.",
+    "en": "She insisted that we start the meeting immediately, even though several colleagues had not arrived yet.",
+    "hint": "Insist that + S + V nguyên mẫu."
+   },
+   {
+    "id": "tr-subjunctive-demands-05",
+    "difficulty": "hard",
+    "vi": "Tôi ước gì mình đã biết chuyện này sớm hơn, để tôi đã không ký vào bản hợp đồng đó.",
+    "en": "I wish I had known about this earlier, so that I would not have signed that contract.",
+    "hint": "Wish + quá khứ hoàn thành, tiếc về quá khứ."
+   },
+   {
+    "id": "tr-subjunctive-demands-06",
+    "difficulty": "hard",
+    "vi": "Ủy ban đề xuất rằng chính phủ nên tăng ngân sách giáo dục ít nhất mười phần trăm vào năm tới.",
+    "en": "The committee proposed that the government increase the education budget by at least ten per cent next year.",
+    "hint": "Propose that + S + V nguyên mẫu."
+   },
+   {
+    "id": "tr-subjunctive-demands-07",
+    "difficulty": "hard",
+    "vi": "Đây là yêu cầu nghiêm ngặt của chương trình: người nộp đơn phải có ít nhất ba năm kinh nghiệm làm việc.",
+    "en": "It is a strict requirement of the programme that applicants have at least three years of work experience.",
+    "hint": "Requirement that + S + V nguyên mẫu."
+   },
+   {
+    "id": "tr-subjunctive-demands-08",
+    "difficulty": "hard",
+    "vi": "Bà ấy đề nghị rằng cuộc họp được dời sang tuần sau để mọi người có đủ thời gian chuẩn bị.",
+    "en": "She suggested that the meeting be moved to next week so that everyone would have enough time to prepare.",
+    "hint": "Suggest that + S + be + quá khứ phân từ."
+   },
+   {
+    "id": "tr-subjunctive-demands-09",
+    "difficulty": "hard",
+    "vi": "Chúng tôi yêu cầu rằng nhà thầu hoàn thành công trình đúng hạn, nếu không anh ta sẽ phải nộp phạt.",
+    "en": "We demanded that the contractor finish the construction on time, or else he would have to pay a fine.",
+    "hint": "Giả định ở vế đầu, or else nêu hậu quả."
+   },
+   {
+    "id": "tr-subjunctive-demands-10",
+    "difficulty": "hard",
+    "vi": "Giá như bây giờ anh ấy ở đây, thì chúng ta đã không phải lo lắng nhiều đến thế về mọi thứ.",
+    "en": "If only he were here now, we would not have to worry so much about everything.",
+    "hint": "If only + quá khứ đơn, mong ước ở hiện tại."
+   }
+  ]
+ },
+ {
+  "slug": "contrast-concession",
+  "title": "Đối lập và nhượng bộ",
+  "blurb": "Although, despite, while, however và các cách nối ý trái ngược.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-contrast-concession-01",
+    "difficulty": "hard",
+    "vi": "Mặc dù trời mưa rất to, các cầu thủ vẫn tiếp tục thi đấu đến hết trận.",
+    "en": "Although it was raining very heavily, the players kept on playing until the end of the match.",
+    "hint": "Although + mệnh đề."
+   },
+   {
+    "id": "tr-contrast-concession-02",
+    "difficulty": "hard",
+    "vi": "Cô ấy cực kỳ giàu có, vậy mà cô ấy chưa bao giờ khoe khoang về tài sản trước mặt người khác.",
+    "en": "She is extremely rich, yet she has never boasted about her wealth in front of other people.",
+    "hint": "Yet nối hai ý trái ngược."
+   },
+   {
+    "id": "tr-contrast-concession-03",
+    "difficulty": "hard",
+    "vi": "Trong khi anh trai tôi thích mọi loại thể thao, em gái tôi chỉ thích đọc sách và vẽ tranh.",
+    "en": "While my older brother loves all kinds of sports, my younger sister only likes reading and drawing.",
+    "hint": "While nối hai vế tương phản."
+   },
+   {
+    "id": "tr-contrast-concession-04",
+    "difficulty": "hard",
+    "vi": "Dù chúng tôi cố gắng thế nào, dự án vẫn không thể hoàn thành đúng tiến độ, điều khiến mọi người thất vọng.",
+    "en": "No matter how hard we tried, the project could not be completed on schedule, which disappointed everyone.",
+    "hint": "No matter how + tính từ, which bổ nghĩa cả mệnh đề."
+   },
+   {
+    "id": "tr-contrast-concession-05",
+    "difficulty": "hard",
+    "vi": "Tuy giá cao, chiếc điện thoại này vẫn bán rất chạy nhờ thiết kế đẹp và pin bền.",
+    "en": "Despite its high price, this phone sells extremely well thanks to its beautiful design and long-lasting battery.",
+    "hint": "Despite + cụm danh từ."
+   },
+   {
+    "id": "tr-contrast-concession-06",
+    "difficulty": "hard",
+    "vi": "Dù đã già, ông vẫn đi bộ ra chợ mỗi sáng và tự nấu ăn cho mình.",
+    "en": "Old as he is, he still walks to the market every morning and cooks for himself.",
+    "hint": "Tính từ + as + S + be, đảo cấu trúc nhượng bộ."
+   },
+   {
+    "id": "tr-contrast-concession-07",
+    "difficulty": "hard",
+    "vi": "Dù thừa nhận rằng công nghệ mang lại nhiều lợi ích, nhiều người vẫn lo ngại về tác động của nó đối với trẻ em.",
+    "en": "While admitting that technology brings many benefits, many people remain worried about its effects on children.",
+    "hint": "While + V-ing, rút gọn mệnh đề nhượng bộ."
+   },
+   {
+    "id": "tr-contrast-concession-08",
+    "difficulty": "hard",
+    "vi": "Mặc dù kết quả khảo sát khá khả quan, các chuyên gia vẫn cảnh báo rằng chúng ta không nên quá lạc quan.",
+    "en": "Despite the fairly positive survey results, experts still warn that we should not be overly optimistic.",
+    "hint": "Despite + cụm danh từ, mệnh đề that sau warn."
+   },
+   {
+    "id": "tr-contrast-concession-09",
+    "difficulty": "hard",
+    "vi": "Bạn có thể không đồng ý, nhưng tôi vẫn cho rằng đây là giải pháp rẻ nhất trong tất cả các lựa chọn hiện nay.",
+    "en": "You may disagree, but I still think this is the cheapest solution out of all the options available now.",
+    "hint": "May ... but ..., nhượng bộ rồi khẳng định."
+   },
+   {
+    "id": "tr-contrast-concession-10",
+    "difficulty": "hard",
+    "vi": "Dù hai ngôi làng nằm rất gần nhau, phong tục và cách nói chuyện của họ lại khác nhau đến ngạc nhiên.",
+    "en": "Although the two villages lie very close to each other, their customs and ways of speaking differ surprisingly.",
+    "hint": "Although + mệnh đề, trạng từ surprisingly."
+   }
+  ]
+ },
+ {
+  "slug": "nominalisation",
+  "title": "Danh hoá trong văn viết",
+  "blurb": "Biến động từ và tính từ thành danh từ để viết trang trọng hơn.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-nominalisation-01",
+    "difficulty": "hard",
+    "vi": "Sự gia tăng nhanh chóng của dân số trong thập kỷ qua đã gây áp lực rất lớn lên hệ thống y tế vốn đã quá tải của thành phố.",
+    "en": "The rapid increase in population over the past decade has put enormous pressure on the city's overstretched healthcare system.",
+    "hint": "Danh hoá increase thay cho động từ tăng."
+   },
+   {
+    "id": "tr-nominalisation-02",
+    "difficulty": "hard",
+    "vi": "Quyết định tăng thuế của chính phủ hồi năm ngoái đã gây ra sự phản đối rất mạnh mẽ trong công chúng.",
+    "en": "The government's decision to raise taxes last year provoked very strong opposition among the general public.",
+    "hint": "Decision to V, opposition thay cho động từ oppose."
+   },
+   {
+    "id": "tr-nominalisation-03",
+    "difficulty": "hard",
+    "vi": "Sự phát triển của trí tuệ nhân tạo đang thay đổi căn bản cách chúng ta làm việc và học tập mỗi ngày.",
+    "en": "The development of artificial intelligence is fundamentally changing the way we work and learn every day.",
+    "hint": "Danh từ development làm chủ ngữ."
+   },
+   {
+    "id": "tr-nominalisation-04",
+    "difficulty": "hard",
+    "vi": "Việc thiếu hụt nước sạch là một trong những nguyên nhân chính gây ra bệnh tật ở vùng nông thôn.",
+    "en": "The shortage of clean water is one of the main causes of disease in rural areas.",
+    "hint": "Shortage thay cho cụm thiếu nước."
+   },
+   {
+    "id": "tr-nominalisation-05",
+    "difficulty": "hard",
+    "vi": "Sự thất bại của dự án chủ yếu là do việc lập kế hoạch kém và thiếu giao tiếp giữa các phòng ban.",
+    "en": "The failure of the project was mainly due to poor planning and a lack of communication between departments.",
+    "hint": "Failure, planning, lack là các danh từ hoá."
+   },
+   {
+    "id": "tr-nominalisation-06",
+    "difficulty": "hard",
+    "vi": "Việc nâng cao chất lượng giáo dục ở vùng sâu vùng xa đòi hỏi sự đầu tư cẩn trọng và lâu dài chứ không phải những giải pháp ngắn hạn.",
+    "en": "Improving the quality of education in remote areas requires careful, long-term investment rather than short-term solutions.",
+    "hint": "Danh động từ làm chủ ngữ, rather than đối lập."
+   },
+   {
+    "id": "tr-nominalisation-07",
+    "difficulty": "hard",
+    "vi": "Sự tăng giá nhà đất đã khiến nhiều người trẻ không còn khả năng mua căn hộ đầu tiên của mình.",
+    "en": "The rise in property prices has made it impossible for many young people to afford their first apartment.",
+    "hint": "Make it impossible for ... to V, khiến ai không thể."
+   },
+   {
+    "id": "tr-nominalisation-08",
+    "difficulty": "hard",
+    "vi": "Sự hiện diện của camera giám sát đã làm giảm đáng kể số vụ trộm cắp trên các tuyến phố chính của thành phố.",
+    "en": "The presence of surveillance cameras has significantly reduced the number of thefts on the city's main streets.",
+    "hint": "Presence là danh từ hoá của be present."
+   },
+   {
+    "id": "tr-nominalisation-09",
+    "difficulty": "hard",
+    "vi": "Việc nhiều công ty áp dụng mô hình làm việc linh hoạt trong vài năm qua đã cải thiện đáng kể sự hài lòng của nhân viên.",
+    "en": "The adoption of flexible working models by many companies over the last few years has greatly improved employee satisfaction.",
+    "hint": "Adoption by + tác nhân, satisfaction thay cho be satisfied."
+   },
+   {
+    "id": "tr-nominalisation-10",
+    "difficulty": "hard",
+    "vi": "Sự suy giảm đa dạng sinh học trên toàn thế giới là hậu quả trực tiếp của nạn phá rừng kéo dài và ô nhiễm môi trường tiếp diễn.",
+    "en": "The worldwide decline in biodiversity is a direct consequence of prolonged deforestation and continuing environmental pollution.",
+    "hint": "Decline, deforestation, pollution là danh từ trừu tượng."
+   }
+  ]
+ },
+ {
+  "slug": "causative-structures",
+  "title": "Thể sai khiến",
+  "blurb": "Have, get, make, let và get fined: nhờ ai làm hoặc chịu tác động.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-causative-structures-01",
+    "difficulty": "hard",
+    "vi": "Tuần này tôi đã nhờ một kỹ thuật viên ở cửa hàng gần nhà sửa chiếc máy tính xách tay bị hỏng của mình.",
+    "en": "This week I had my broken laptop repaired by a technician at a shop near my house.",
+    "hint": "Have + vật + quá khứ phân từ."
+   },
+   {
+    "id": "tr-causative-structures-02",
+    "difficulty": "hard",
+    "vi": "Cô ấy luôn bắt các con dọn phòng trước khi cho chúng xem tivi vào buổi tối.",
+    "en": "She always makes her children tidy their rooms before she lets them watch TV in the evening.",
+    "hint": "Make và let + O + V nguyên mẫu."
+   },
+   {
+    "id": "tr-causative-structures-03",
+    "difficulty": "hard",
+    "vi": "Chúng tôi sẽ nhờ một nhà thiết kế chuyên nghiệp vẽ lại toàn bộ bản kế hoạch trước khi việc xây dựng bắt đầu.",
+    "en": "We are going to get a professional designer to redraw the whole plan before construction begins.",
+    "hint": "Get + người + to V."
+   },
+   {
+    "id": "tr-causative-structures-04",
+    "difficulty": "hard",
+    "vi": "Ông chủ đã cho nhân viên làm thêm giờ suốt cả tuần để họ kịp hạn chót.",
+    "en": "The boss had the staff work overtime all week long so that they could meet the deadline.",
+    "hint": "Have + người + V nguyên mẫu."
+   },
+   {
+    "id": "tr-causative-structures-05",
+    "difficulty": "hard",
+    "vi": "Tối qua, khi anh ấy đang ở trong nhà, chiếc xe đạp của anh ấy bị trộm lấy mất ngay trước cửa.",
+    "en": "Last night, while he was inside, he had his bicycle stolen right in front of the door.",
+    "hint": "Have + vật + quá khứ phân từ chỉ điều không mong muốn."
+   },
+   {
+    "id": "tr-causative-structures-06",
+    "difficulty": "hard",
+    "vi": "Tôi sẽ không cho phép ai làm phiền mình khi tôi đang tập trung vào công việc cực kỳ quan trọng này.",
+    "en": "I will not allow anybody to disturb me while I am concentrating on this extremely important work.",
+    "hint": "Allow + O + to V, cho phép ai làm gì."
+   },
+   {
+    "id": "tr-causative-structures-07",
+    "difficulty": "hard",
+    "vi": "Cô giáo đã khiến cả lớp bật cười khi kể câu chuyện về ngày đầu tiên bà đi dạy.",
+    "en": "The teacher made the whole class burst out laughing when she told the story of her first day teaching.",
+    "hint": "Make + O + V nguyên mẫu, burst out laughing."
+   },
+   {
+    "id": "tr-causative-structures-08",
+    "difficulty": "hard",
+    "vi": "Tháng trước họ bị chính quyền địa phương phạt vì đổ rác gần sông mà không được phép.",
+    "en": "They got fined by the local council for dumping rubbish near the river without permission last month.",
+    "hint": "Get + quá khứ phân từ, bị động thân mật."
+   },
+   {
+    "id": "tr-causative-structures-09",
+    "difficulty": "hard",
+    "vi": "Cô ấy đã khiến mọi người tin rằng cô ấy là một chuyên gia, mặc dù cô ấy chỉ mới vào nghề.",
+    "en": "She got everyone to believe that she was an expert, even though she had only just entered the profession.",
+    "hint": "Get + O + to V, khiến ai làm gì."
+   },
+   {
+    "id": "tr-causative-structures-10",
+    "difficulty": "hard",
+    "vi": "Nếu bạn muốn mái tóc đẹp hơn, hãy nhờ cắt ở một tiệm uy tín thay vì tự cắt.",
+    "en": "If you want better-looking hair, have it cut at a reputable salon instead of cutting it yourself.",
+    "hint": "Have it cut, nhờ người khác làm."
+   }
+  ]
+ },
+ {
+  "slug": "future-perfect-forms",
+  "title": "Tương lai hoàn thành và tiếp diễn",
+  "blurb": "Will be doing, will have done và will have been doing.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-future-perfect-forms-01",
+    "difficulty": "hard",
+    "vi": "Vào thời điểm này năm sau, tôi sẽ đang học đại học ở nước ngoài và sống trong một căn hộ nhỏ.",
+    "en": "This time next year, I will be studying at a university abroad and living in a small flat.",
+    "hint": "Tương lai tiếp diễn will be + V-ing."
+   },
+   {
+    "id": "tr-future-perfect-forms-02",
+    "difficulty": "hard",
+    "vi": "Đến cuối tháng này, họ sẽ hoàn thành việc xây dựng cây cầu mới qua sông.",
+    "en": "By the end of this month, they will have finished building the new bridge across the river.",
+    "hint": "Tương lai hoàn thành với by."
+   },
+   {
+    "id": "tr-future-perfect-forms-03",
+    "difficulty": "hard",
+    "vi": "Khi tối nay bạn đến, tôi sẽ đã nấu xong bữa tối và dọn dẹp xong bếp.",
+    "en": "By the time you arrive tonight, I will have finished cooking dinner and tidied up the kitchen.",
+    "hint": "By the time + hiện tại đơn, will have + quá khứ phân từ."
+   },
+   {
+    "id": "tr-future-perfect-forms-04",
+    "difficulty": "hard",
+    "vi": "Đến năm 2030, cô ấy sẽ đã làm việc cho công ty này được hai mươi năm mà không nghỉ dài ngày.",
+    "en": "By 2030, she will have been working for this company for twenty years without taking a long holiday.",
+    "hint": "Tương lai hoàn thành tiếp diễn."
+   },
+   {
+    "id": "tr-future-perfect-forms-05",
+    "difficulty": "hard",
+    "vi": "Đừng gọi cho tôi lúc tám giờ tối mai, vì khi đó tôi sẽ đang dự một buổi hòa nhạc.",
+    "en": "Do not call me at eight tomorrow evening, because I will be attending a concert then.",
+    "hint": "Tương lai tiếp diễn chỉ việc đang diễn ra tại thời điểm."
+   },
+   {
+    "id": "tr-future-perfect-forms-06",
+    "difficulty": "hard",
+    "vi": "Nếu cứ tiếp tục như thế này, chúng ta sẽ tiêu hết toàn bộ số tiền tiết kiệm vào cuối tháng sau.",
+    "en": "If we carry on like this, we will have spent all of our savings by the end of next month.",
+    "hint": "Điều kiện loại 1 với tương lai hoàn thành."
+   },
+   {
+    "id": "tr-future-perfect-forms-07",
+    "difficulty": "hard",
+    "vi": "Tôi đoán rằng vào lúc họ phát hiện ra lỗi, công ty sẽ đã mất hàng triệu đô la.",
+    "en": "I expect that by the time they discover the error, the company will have lost millions of dollars.",
+    "hint": "Expect that + tương lai hoàn thành."
+   },
+   {
+    "id": "tr-future-perfect-forms-08",
+    "difficulty": "hard",
+    "vi": "Mười năm nữa, nhiều công việc ngày nay sẽ đã biến mất và những ngành nghề mới sẽ đã xuất hiện.",
+    "en": "In ten years, many of today's jobs will have disappeared and new professions will have appeared.",
+    "hint": "Hai vế tương lai hoàn thành nối bằng and."
+   },
+   {
+    "id": "tr-future-perfect-forms-09",
+    "difficulty": "hard",
+    "vi": "Khi cô ấy tốt nghiệp, cô ấy sẽ đã học ngành này được bốn năm và sẽ đã có hai chứng chỉ quốc tế.",
+    "en": "When she graduates, she will have been studying this subject for four years and will have earned two international certificates.",
+    "hint": "Kết hợp hoàn thành tiếp diễn và hoàn thành."
+   },
+   {
+    "id": "tr-future-perfect-forms-10",
+    "difficulty": "hard",
+    "vi": "Vào lúc chúng ta tới nơi, buổi lễ có lẽ đã bắt đầu và khách mời đã ngồi vào chỗ của mình.",
+    "en": "By the time we get there, the ceremony will probably have started and the guests will have taken their seats.",
+    "hint": "Probably đứng sau will."
+   }
+  ]
+ },
+ {
+  "slug": "formal-letters",
+  "title": "Thư từ trang trọng",
+  "blurb": "Cách mở đầu, đính kèm, từ chối và kết thư công việc.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-formal-letters-01",
+    "difficulty": "hard",
+    "vi": "Tôi viết thư này để hỏi về vị trí kế toán mà quý công ty đã quảng cáo trên mạng.",
+    "en": "I am writing to enquire about the accountant position that your company advertised on the internet.",
+    "hint": "I am writing to + V, mở đầu thư."
+   },
+   {
+    "id": "tr-formal-letters-02",
+    "difficulty": "hard",
+    "vi": "Xin xem bản sơ yếu lý lịch của tôi đính kèm cùng với thư giới thiệu của giáo sư hướng dẫn.",
+    "en": "Please find enclosed my curriculum vitae together with a letter of recommendation from my supervising professor.",
+    "hint": "Please find enclosed, văn phong thư tín."
+   },
+   {
+    "id": "tr-formal-letters-03",
+    "difficulty": "hard",
+    "vi": "Chúng tôi rất tiếc phải thông báo rằng đơn xin học bổng của bà chưa thành công trong đợt này.",
+    "en": "We regret to inform you that your application for the scholarship has not been successful on this occasion.",
+    "hint": "Regret to inform you that ..., rất tiếc phải thông báo."
+   },
+   {
+    "id": "tr-formal-letters-04",
+    "difficulty": "hard",
+    "vi": "Tôi sẽ rất biết ơn nếu ông có thể gửi cho tôi thông tin chi tiết về học phí và chỗ ở.",
+    "en": "I would be grateful if you could send me detailed information about the tuition fees and accommodation.",
+    "hint": "I would be grateful if you could ..., lời nhờ trang trọng."
+   },
+   {
+    "id": "tr-formal-letters-05",
+    "difficulty": "hard",
+    "vi": "Tôi xin lỗi vì đã không trả lời sớm hơn, nhưng tôi vừa đi công tác nước ngoài về.",
+    "en": "I apologise for not replying earlier, but I have only just returned from a business trip abroad.",
+    "hint": "Apologise for + V-ing, only just + hiện tại hoàn thành."
+   },
+   {
+    "id": "tr-formal-letters-06",
+    "difficulty": "hard",
+    "vi": "Xin ông chân thành thông cảm cho sự bất tiện này và vui lòng xác nhận lại cuộc hẹn trước thứ Sáu.",
+    "en": "Please accept our sincere apologies for the inconvenience and kindly confirm the appointment again before Friday.",
+    "hint": "Please accept our apologies và kindly + V."
+   },
+   {
+    "id": "tr-formal-letters-07",
+    "difficulty": "hard",
+    "vi": "Nếu cần thêm bất kỳ thông tin nào, xin đừng ngần ngại liên hệ với tôi qua điện thoại hoặc thư điện tử.",
+    "en": "Should you require any further information, please do not hesitate to contact me by phone or email.",
+    "hint": "Should + S + V thay cho if, đảo ngữ điều kiện."
+   },
+   {
+    "id": "tr-formal-letters-08",
+    "difficulty": "hard",
+    "vi": "Tôi xin phép nhắc lại rằng khoản thanh toán cho hoá đơn này hiện đã quá hạn hơn ba mươi ngày.",
+    "en": "I would like to remind you that the payment for this invoice is now more than thirty days overdue.",
+    "hint": "Remind someone that + mệnh đề."
+   },
+   {
+    "id": "tr-formal-letters-09",
+    "difficulty": "hard",
+    "vi": "Chúng tôi rất mong sớm nhận được phản hồi của quý vị và hy vọng sẽ được hợp tác lâu dài với quý công ty.",
+    "en": "We look forward to receiving your reply at your earliest convenience and hope to cooperate with your company for a long time.",
+    "hint": "Look forward to + V-ing, at your earliest convenience, sớm nhất có thể."
+   },
+   {
+    "id": "tr-formal-letters-10",
+    "difficulty": "hard",
+    "vi": "Với tư cách là một khách hàng lâu năm, tôi rất thất vọng về chất lượng dịch vụ gần đây mà quý công ty cung cấp.",
+    "en": "As a long-standing customer, I am extremely disappointed with the recent quality of service provided by your company.",
+    "hint": "Phân từ quá khứ provided rút gọn mệnh đề quan hệ."
+   }
+  ]
+ },
+ {
+  "slug": "academic-hedging",
+  "title": "Diễn đạt dè dặt trong học thuật",
+  "blurb": "Dùng may, seem, tend to để nêu nhận định thận trọng.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-academic-hedging-01",
+    "difficulty": "hard",
+    "vi": "Có vẻ như việc ngủ đủ giấc có thể liên quan đến kết quả học tập tốt hơn ở thanh thiếu niên.",
+    "en": "It would appear that getting enough sleep may be linked to better academic results among teenagers.",
+    "hint": "It would appear that + may, hai lớp dè dặt."
+   },
+   {
+    "id": "tr-academic-hedging-02",
+    "difficulty": "hard",
+    "vi": "Kết quả này cho thấy rằng, ở một mức độ nào đó, chương trình đã giúp giảm tỷ lệ bỏ học ở trường.",
+    "en": "These results suggest that, to some extent, the programme has helped reduce the school dropout rate.",
+    "hint": "Suggest và to some extent."
+   },
+   {
+    "id": "tr-academic-hedging-03",
+    "difficulty": "hard",
+    "vi": "Người ta thường nói rằng giá tăng là do chi phí vận chuyển, nhưng vẫn còn thiếu bằng chứng thuyết phục.",
+    "en": "It is often claimed that rising prices result from transport costs, but convincing evidence is still lacking.",
+    "hint": "It is claimed that, câu bị động khách quan."
+   },
+   {
+    "id": "tr-academic-hedging-04",
+    "difficulty": "hard",
+    "vi": "Có thể những thay đổi này sẽ ảnh hưởng đến thị trường lao động, mặc dù mức độ vẫn chưa rõ.",
+    "en": "It is possible that these changes will affect the labour market, although the extent remains unclear.",
+    "hint": "It is possible that + mệnh đề."
+   },
+   {
+    "id": "tr-academic-hedging-05",
+    "difficulty": "hard",
+    "vi": "Nhìn chung, dữ liệu có xu hướng cho thấy phần lớn người tham gia cảm thấy hài lòng hơn đôi chút sau sáu tháng.",
+    "en": "Generally speaking, the data tend to indicate that most participants felt slightly more satisfied after six months.",
+    "hint": "Tend to, xu hướng, không tuyệt đối."
+   },
+   {
+    "id": "tr-academic-hedging-06",
+    "difficulty": "hard",
+    "vi": "Nghiên cứu này có một số hạn chế, và vì vậy các kết luận chính của nó cần được diễn giải hết sức thận trọng.",
+    "en": "This study has certain limitations, and its main conclusions should therefore be interpreted with considerable caution.",
+    "hint": "Should be interpreted with caution, cần diễn giải thận trọng."
+   },
+   {
+    "id": "tr-academic-hedging-07",
+    "difficulty": "hard",
+    "vi": "Dường như một số yếu tố khác, chẳng hạn như thu nhập và trình độ học vấn, cũng đóng vai trò quan trọng.",
+    "en": "It seems that other factors, such as income and level of education, also play an important role.",
+    "hint": "It seems that + mệnh đề, such as nêu ví dụ."
+   },
+   {
+    "id": "tr-academic-hedging-08",
+    "difficulty": "hard",
+    "vi": "Chúng tôi không thể loại trừ khả năng rằng kết quả bị ảnh hưởng bởi cỡ mẫu tương đối nhỏ.",
+    "en": "We cannot rule out the possibility that the results were affected by the relatively small sample size.",
+    "hint": "Rule out the possibility that ..., loại trừ khả năng."
+   },
+   {
+    "id": "tr-academic-hedging-09",
+    "difficulty": "hard",
+    "vi": "Giả thuyết này có lẽ đúng với các thành phố lớn, nhưng chưa chắc áp dụng được cho vùng nông thôn.",
+    "en": "This hypothesis is probably true for large cities, but it may not necessarily apply to rural areas.",
+    "hint": "Probably và may not necessarily."
+   },
+   {
+    "id": "tr-academic-hedging-10",
+    "difficulty": "hard",
+    "vi": "Mặc dù cần nghiên cứu thêm, các bằng chứng hiện có gợi ý rằng việc tập thể dục thường xuyên có thể làm giảm nguy cơ trầm cảm.",
+    "en": "Although further research is needed, the available evidence suggests that regular exercise may reduce the risk of depression.",
+    "hint": "Although + mệnh đề, suggests that ... may ..."
+   }
+  ]
+ },
+ {
+  "slug": "modal-deduction",
+  "title": "Suy đoán với động từ khuyết thiếu",
+  "blurb": "Must have, can't have, might have để đoán về quá khứ.",
+  "level": "hard",
+  "items": [
+   {
+    "id": "tr-modal-deduction-01",
+    "difficulty": "hard",
+    "vi": "Chắc hẳn anh ấy đã quên chìa khóa, vì cửa vẫn khóa và đèn thì tắt.",
+    "en": "He must have forgotten his keys, because the door is still locked and the lights are off.",
+    "hint": "Must have + quá khứ phân từ, suy đoán chắc chắn."
+   },
+   {
+    "id": "tr-modal-deduction-02",
+    "difficulty": "hard",
+    "vi": "Cô ấy không thể đã đi làm hôm nay, vì tôi vừa thấy cô ấy ở siêu thị lúc chín giờ sáng.",
+    "en": "She cannot have gone to work today, because I saw her at the supermarket at nine this morning.",
+    "hint": "Cannot have + quá khứ phân từ, chắc chắn không."
+   },
+   {
+    "id": "tr-modal-deduction-03",
+    "difficulty": "hard",
+    "vi": "Có lẽ họ đã bị lạc đường, điều đó sẽ giải thích vì sao đến giờ vẫn chưa ai trong nhóm họ đến.",
+    "en": "They might have got lost on the way, which would explain why nobody from their group has arrived yet.",
+    "hint": "Might have + quá khứ phân từ, which bổ nghĩa cả mệnh đề."
+   },
+   {
+    "id": "tr-modal-deduction-04",
+    "difficulty": "hard",
+    "vi": "Lẽ ra bạn nên hỏi tôi trước khi quyết định bán chiếc xe đó với giá rẻ như vậy.",
+    "en": "You should have asked me before deciding to sell that car at such a low price.",
+    "hint": "Should have + quá khứ phân từ, trách nhẹ."
+   },
+   {
+    "id": "tr-modal-deduction-05",
+    "difficulty": "hard",
+    "vi": "Hẳn là anh ấy đã làm việc cực kỳ vất vả ở văn phòng, vì suốt tuần qua anh ấy trông rất kiệt sức.",
+    "en": "He must have been working extremely hard at the office, because he has looked exhausted all week.",
+    "hint": "Must have been + V-ing, suy đoán về hành động kéo dài."
+   },
+   {
+    "id": "tr-modal-deduction-06",
+    "difficulty": "hard",
+    "vi": "Họ đã không cần phải đến sớm như vậy, vì cuộc họp đã bị hoãn từ tối qua rồi.",
+    "en": "They need not have come so early, because the meeting had already been postponed since last night.",
+    "hint": "Need not have + quá khứ phân từ, làm việc không cần thiết."
+   },
+   {
+    "id": "tr-modal-deduction-07",
+    "difficulty": "hard",
+    "vi": "Rất có thể tôi đã gặp ông ấy ở đâu đó trước đây, nhưng tôi không nhớ chính xác là ở đâu.",
+    "en": "I may well have met him somewhere before, but I cannot remember exactly where it was.",
+    "hint": "May have + quá khứ phân từ, khả năng."
+   },
+   {
+    "id": "tr-modal-deduction-08",
+    "difficulty": "hard",
+    "vi": "Giờ này lẽ ra họ phải đến nơi rồi nếu họ khởi hành vào buổi trưa như đã dự định.",
+    "en": "They ought to have arrived by now if they left at noon as they had planned.",
+    "hint": "Ought to have + quá khứ phân từ, điều lẽ ra đã xảy ra."
+   },
+   {
+    "id": "tr-modal-deduction-09",
+    "difficulty": "hard",
+    "vi": "Cô ấy không thể là người lấy trộm chiếc ví, vì lúc đó cô ấy đang ở cùng chúng tôi.",
+    "en": "She cannot have been the one who stole the wallet, because she was with us at that time.",
+    "hint": "Cannot have been + danh từ, loại trừ khả năng."
+   },
+   {
+    "id": "tr-modal-deduction-10",
+    "difficulty": "hard",
+    "vi": "Chiếc đồng hồ này trông rất cũ nên chắc chắn nó phải được làm từ hơn một trăm năm trước.",
+    "en": "This clock looks so old that it must have been made more than a hundred years ago.",
+    "hint": "So ... that ... kết hợp must have been + quá khứ phân từ."
+   }
+  ]
+ }
+]

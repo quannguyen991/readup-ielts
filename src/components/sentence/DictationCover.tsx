@@ -1,17 +1,15 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
 
 import type { LessonTone } from '@/components/sentence/LessonCard';
 
 /**
- * BÌA CỦA BỘ CHÉP CHÍNH TẢ: dải sóng âm vẽ từ độ dài các câu của bài, lớp sóng nền,
- * và một huy hiệu tròn mang biểu tượng của chủ đề (công nghệ, du lịch, ẩm thực,
- * môi trường, giáo dục; mặc định là nốt nhạc). Màu lấy theo trình độ.
- *
- * Bố cục bằng flex (không đo chiều rộng): sóng âm trải đều theo chiều ngang của thẻ,
- * huy hiệu neo bên phải, nên đúng cả trên điện thoại lẫn máy tính.
+ * BÌA CỦA THẺ BÀI (chép chính tả, dịch câu): gradient đậm theo TRÌNH ĐỘ, lớp chấm bi
+ * + vòng tròn mờ (đổi vị trí theo số bài để mỗi bài một vẻ), và một "con tem" chủ đề.
+ * Bài nghe có sóng âm trắng vẽ từ độ dài các câu; bài dịch có hai bong bóng Việt–Anh
+ * lấy từ chính câu đầu của bài.
  */
 
 type Props = {
@@ -20,25 +18,24 @@ type Props = {
   sentences: readonly string[];
 };
 
-type Motif = 'tech' | 'globe' | 'bowl' | 'leaf' | 'book' | 'note';
+export type Motif = 'tech' | 'globe' | 'bowl' | 'leaf' | 'book' | 'note';
 
-const BAR_COUNT = 40;
-const BADGE = 80;
+const BADGE = 76;
 const COVER_H = 112;
 
 /** Chọn biểu tượng theo từ khoá trong tên chủ đề (chữ thường, có dấu). */
-function motifOf(topic: string): Motif {
+export function motifOf(topic: string): Motif {
   const t = topic.toLowerCase();
-  if (/công nghệ|khoa học|ai|tech/.test(t)) return 'tech';
-  if (/du lịch|bản đồ|di cư|travel/.test(t)) return 'globe';
-  if (/ẩm thực|food|nấu/.test(t)) return 'bowl';
-  if (/môi trường|đại dương|khí hậu|năng lượng|nature|climate/.test(t)) return 'leaf';
-  if (/giáo dục|báo chí|bảo tàng|lịch sử|education|news/.test(t)) return 'book';
+  if (/công nghệ|khoa học|\bai\b|tech|điện thoại|mạng|dữ liệu|thiết kế|khởi nghiệp/.test(t)) return 'tech';
+  if (/du lịch|bản đồ|di cư|travel|sân bay|khách sạn|giao thông|chỉ đường|khảo cổ|vũ trụ/.test(t)) return 'globe';
+  if (/ẩm thực|food|nấu|mua sắm|chợ|nhà hàng|cà phê|siêu thị/.test(t)) return 'bowl';
+  if (/môi trường|đại dương|khí hậu|năng lượng|nature|climate|thiên nhiên|thời tiết|làm vườn|nông|thú cưng|công viên/.test(t)) return 'leaf';
+  if (/giáo dục|báo chí|bảo tàng|lịch sử|education|news|học|thư viện|sách|nghệ thuật/.test(t)) return 'book';
   return 'note';
 }
 
 /** Biểu tượng trong huy hiệu, vẽ quanh gốc (0,0), trong khung khoảng 44. */
-function MotifGlyph({ motif, ink }: { motif: Motif; ink: string }) {
+export function MotifGlyph({ motif, ink }: { motif: Motif; ink: string }) {
   switch (motif) {
     case 'tech':
       return (
@@ -88,53 +85,97 @@ function MotifGlyph({ motif, ink }: { motif: Motif; ink: string }) {
   }
 }
 
-export function DictationCover({ tone, topic, sentences }: Props) {
-  // Chiều cao mỗi vạch đổi theo độ dài câu, nên bài dài trông khác bài ngắn.
+/** Cặp màu gradient theo trình độ — đậm, rực, cùng họ với thẻ lộ trình bên trên. */
+const LEVEL_GRADIENT: Record<string, [string, string]> = {
+  A2: ['#10B981', '#06B6D4'],
+  B1: ['#0EA5E9', '#6366F1'],
+  B2: ['#6366F1', '#A855F7'],
+  C1: ['#F43F5E', '#F97316'],
+  easy: ['#10B981', '#06B6D4'],
+  medium: ['#0EA5E9', '#6366F1'],
+  hard: ['#F43F5E', '#F97316'],
+};
+
+function gradientFor(tone: LessonTone, level?: string): [string, string] {
+  return LEVEL_GRADIENT[level ?? ''] ?? [tone.mid, tone.ink];
+}
+
+/** Lớp hoạ tiết dùng chung: chấm bi + hai vòng tròn mờ, đổi vị trí theo `seed`. */
+function Pattern({ seed }: { seed: number }) {
+  const dx = (seed * 37) % 60;
+  return (
+    <Svg pointerEvents="none" width="100%" height="100%" viewBox="0 0 400 128" preserveAspectRatio="xMidYMid slice" style={StyleSheet.absoluteFill}>
+      {Array.from({ length: 6 }, (_, r) =>
+        Array.from({ length: 14 }, (_, c) => (
+          <Circle key={`${r}-${c}`} cx={c * 32 + (r % 2) * 16 - 6} cy={r * 24 + 8} r={1.8} fill="#FFFFFF" opacity={0.22} />
+        )),
+      )}
+      <Circle cx={330 - dx} cy={10} r={70} fill="#FFFFFF" opacity={0.1} />
+      <Circle cx={40 + dx} cy={140} r={80} fill="#000000" opacity={0.08} />
+    </Svg>
+  );
+}
+
+type CoverProps = Props & { level?: string; seed?: number };
+
+export function DictationCover({ tone, topic, sentences, level, seed = 0 }: CoverProps) {
   const lengths = sentences.length ? sentences.map((s) => s.length) : [40];
   const longest = Math.max(...lengths, 1);
-  const bars = Array.from({ length: BAR_COUNT }, (_, i) => {
+  const N = 22;
+  const bars = Array.from({ length: N }, (_, i) => {
     const len = lengths[i % lengths.length] ?? 40;
-    return Math.max(6, (len / longest) * 50) * (0.55 + 0.45 * Math.abs(Math.sin(i * 1.7)));
+    const envelope = 0.35 + 0.65 * Math.sin((Math.PI * (i + 0.5)) / N);
+    const jitter = 0.55 + 0.45 * Math.abs(Math.sin(i * 1.7 + seed));
+    return Math.max(5, Math.min(30, (0.45 + 0.55 * (len / longest)) * 30 * envelope * jitter));
   });
+  const [c1, c2] = gradientFor(tone, level);
   const motif = motifOf(topic);
 
   return (
     <View style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-      <LinearGradient colors={[tone.mid + '4D', tone.soft]} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={StyleSheet.absoluteFill} />
-      {/* Sóng nền: hai lớp mềm ở đáy, kéo theo chiều ngang của thẻ. */}
-      <Svg pointerEvents="none" width="100%" height="100%" viewBox="0 0 400 112" preserveAspectRatio="none" style={StyleSheet.absoluteFill}>
-        <Path d="M0 84 C60 66 110 96 170 80 S290 64 400 84 V112 H0 Z" fill={tone.mid} opacity={0.22} />
-        <Path d="M0 96 C90 84 150 104 230 92 S340 82 400 96 V112 H0 Z" fill={tone.mid} opacity={0.36} />
-      </Svg>
-      {/* Sóng âm từ các câu của bài, trải đều và chừa chỗ cho huy hiệu. */}
+      <LinearGradient colors={[c1, c2]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+      <Pattern seed={seed} />
       <View
         pointerEvents="none"
-        style={{ position: 'absolute', left: 16, right: BADGE + 30, top: 0, bottom: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+        style={{ position: 'absolute', left: 14, top: (COVER_H - BADGE) / 2, width: BADGE, height: BADGE, borderRadius: 22, backgroundColor: '#FFFFFF', borderWidth: 3, borderColor: 'rgba(255,255,255,0.55)', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-6deg' }] }}
       >
-        {bars.map((h, i) => (
-          <View key={`b-${i}`} style={{ width: 3.6, height: h, borderRadius: 2, backgroundColor: tone.mid, opacity: 0.9 }} />
-        ))}
-      </View>
-      {/* Huy hiệu chủ đề, neo bên phải. */}
-      <View
-        pointerEvents="none"
-        style={{
-          position: 'absolute',
-          right: 14,
-          top: (COVER_H - BADGE) / 2,
-          width: BADGE,
-          height: BADGE,
-          borderRadius: BADGE / 2,
-          backgroundColor: 'rgba(255,255,255,0.92)',
-          borderWidth: 1.5,
-          borderColor: tone.mid,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Svg width={44} height={44} viewBox="-22 -22 44 44">
-          <MotifGlyph motif={motif} ink={tone.ink} />
+        <Svg width={48} height={48} viewBox="-22 -22 44 44">
+          <MotifGlyph motif={motif} ink={c1} />
         </Svg>
+      </View>
+      {/* Thanh phát nhạc: nút play + sóng âm thon dần hai đầu, phần đã "phát" sáng hơn. */}
+      <View
+        pointerEvents="none"
+        style={{ position: 'absolute', left: BADGE + 28, right: 14, top: (COVER_H - 46) / 2, height: 46, borderRadius: 23, backgroundColor: 'rgba(255,255,255,0.2)', borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.4)', flexDirection: 'row', alignItems: 'center', paddingLeft: 5, paddingRight: 12, gap: 9 }}
+      >
+        <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}>
+          <Svg width={16} height={16} viewBox="-8 -8 16 16">
+            <Path d="M-3 -6 L6 0 L-3 6 Z" fill={c1} />
+          </Svg>
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 34 }}>
+          {bars.map((h, i) => (
+            <View key={i} style={{ width: 3, height: h, borderRadius: 1.5, backgroundColor: '#FFFFFF', opacity: i < 9 ? 1 : 0.5 }} />
+          ))}
+        </View>
+      </View>
+    </View>
+  );
+}
+
+/** Bìa bộ dịch câu: hai bong bóng hội thoại Việt (mờ) – Anh (đặc) lấy từ chính câu đầu của bài. */
+export function TranslationCover({ tone, pairs, level, seed = 0 }: { tone: LessonTone; pairs: readonly { vi: string; en: string }[]; level?: string; seed?: number }) {
+  const [c1, c2] = gradientFor(tone, level);
+  const first = pairs[0];
+  return (
+    <View style={{ width: '100%', height: '100%', overflow: 'hidden', justifyContent: 'center', paddingHorizontal: 14, gap: 6 }}>
+      <LinearGradient colors={[c1, c2]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+      <Pattern seed={seed} />
+      <View style={{ alignSelf: 'flex-start', maxWidth: '86%', backgroundColor: 'rgba(255,255,255,0.28)', borderRadius: 14, borderBottomLeftRadius: 4, paddingHorizontal: 10, paddingVertical: 5 }}>
+        <Text numberOfLines={1} className="font-nun-strong" style={{ fontSize: 12.5, color: '#FFFFFF' }}>{first?.vi ?? ''}</Text>
+      </View>
+      <View style={{ alignSelf: 'flex-end', maxWidth: '90%', backgroundColor: '#FFFFFF', borderRadius: 14, borderBottomRightRadius: 4, paddingHorizontal: 10, paddingVertical: 6 }}>
+        <Text numberOfLines={2} className="font-nun-heavy" style={{ fontSize: 13, lineHeight: 17, color: c1 }}>{first?.en ?? ''}</Text>
       </View>
     </View>
   );

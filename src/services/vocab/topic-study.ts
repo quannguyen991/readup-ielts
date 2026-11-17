@@ -30,10 +30,15 @@ export type StudyWord = {
   antonyms?: string[];
   language?: 'en' | 'ja' | 'zh';
   romanization?: string;
+  zhuyin?: string;
+  traditional?: string;
+  glossLanguage?: 'vi' | 'en';
   sourcePos?: string;
   glossLanguage?: 'vi' | 'en';
   sourcePage?: number;
   sourceLevel?: string;
+  sourceLevels?: string[];
+  readingVariants?: { pinyin: string; zhuyin?: string; definitionEn: string; traditional?: string }[];
   sourceNote?: string;
 };
 

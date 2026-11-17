@@ -1,0 +1,451 @@
+[
+ {
+  "id": "zh-d-h1-01",
+  "level": 1,
+  "order": 1,
+  "title": "Chào hỏi và hẹn gặp",
+  "titleZh": "问候和约时间",
+  "topic": "Chào hỏi",
+  "scene": "Hai bạn gặp nhau trước giờ học, hỏi thăm rồi hẹn uống trà vào buổi tối.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你好，小红，你今天好吗？",
+    "py": "nǐ hǎo Xiǎohóng nǐ jīntiān hǎo ma",
+    "vi": "Chào Tiểu Hồng, hôm nay bạn khỏe không?"
+   },
+   {
+    "who": "小红",
+    "zh": "我很好，谢谢你，你也好吗？",
+    "py": "wǒ hěn hǎo xièxie nǐ nǐ yě hǎo ma",
+    "vi": "Mình khỏe lắm, cảm ơn bạn, bạn cũng khỏe chứ?"
+   },
+   {
+    "who": "小明",
+    "zh": "我也很好，今天见你很高兴。",
+    "py": "wǒ yě hěn hǎo jīntiān jiàn nǐ hěn gāoxìng",
+    "vi": "Mình cũng khỏe, hôm nay gặp bạn mình vui lắm."
+   },
+   {
+    "who": "小红",
+    "zh": "你现在要去学校上课吗？",
+    "py": "nǐ xiànzài yào qù xuéxiào shàngkè ma",
+    "vi": "Bây giờ bạn định đến trường học à?"
+   },
+   {
+    "who": "小明",
+    "zh": "我要去学校上课，你呢？",
+    "py": "wǒ yào qù xuéxiào shàngkè nǐ ne",
+    "vi": "Mình định đến trường học, còn bạn?"
+   },
+   {
+    "who": "小红",
+    "zh": "我也要去学校，我今天有课。",
+    "py": "wǒ yě yào qù xuéxiào wǒ jīntiān yǒu kè",
+    "vi": "Mình cũng định đến trường, hôm nay mình có tiết học."
+   },
+   {
+    "who": "小明",
+    "zh": "你晚上有时间吗？",
+    "py": "nǐ wǎnshang yǒu shíjiān ma",
+    "vi": "Tối nay bạn có thời gian không?"
+   },
+   {
+    "who": "小红",
+    "zh": "我有时间，我们晚上喝茶吧。",
+    "py": "wǒ yǒu shíjiān wǒmen wǎnshang hē chá ba",
+    "vi": "Mình có thời gian, tối nay chúng ta uống trà nhé."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "今天",
+    "py": "jīntiān",
+    "vi": "hôm nay"
+   },
+   {
+    "zh": "高兴",
+    "py": "gāoxìng",
+    "vi": "vui"
+   },
+   {
+    "zh": "上课",
+    "py": "shàngkè",
+    "vi": "lên lớp"
+   },
+   {
+    "zh": "晚上",
+    "py": "wǎnshang",
+    "vi": "buổi tối"
+   },
+   {
+    "zh": "有时间",
+    "py": "yǒu shíjiān",
+    "vi": "có thời gian"
+   },
+   {
+    "zh": "喝茶",
+    "py": "hē chá",
+    "vi": "uống trà"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-11",
+   "zh-g-h1-02"
+  ],
+  "quiz": [
+   {
+    "q": "Tiểu Minh hỏi thăm ai?",
+    "options": [
+     "Tiểu Lan",
+     "Tiểu Hồng",
+     "Cô giáo"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Minh chào Tiểu Hồng và hỏi hôm nay cô ấy có khỏe không."
+   },
+   {
+    "q": "Tiểu Minh cảm thấy thế nào khi gặp Tiểu Hồng?",
+    "options": [
+     "Buồn",
+     "Vui",
+     "Bận"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Minh nói rằng hôm nay gặp Tiểu Hồng thì rất vui."
+   },
+   {
+    "q": "Tiểu Minh định đi đâu?",
+    "options": [
+     "Đến trường",
+     "Về nhà",
+     "Đến cửa hàng"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Minh nói mình định đến trường học."
+   },
+   {
+    "q": "Ai nói hôm nay mình có tiết học?",
+    "options": [
+     "Tiểu Minh",
+     "Cô giáo",
+     "Tiểu Lan",
+     "Tiểu Hồng"
+    ],
+    "answer": 3,
+    "explain": "Tiểu Hồng nói hôm nay cô ấy có tiết học."
+   },
+   {
+    "q": "Hai bạn hẹn làm gì vào buổi tối?",
+    "options": [
+     "Uống trà",
+     "Ăn cơm",
+     "Đi học"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Hồng đề nghị hai bạn uống trà vào buổi tối."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h1-02",
+  "level": 1,
+  "order": 2,
+  "title": "Giới thiệu tên ở trường",
+  "titleZh": "在学校介绍名字",
+  "topic": "Giới thiệu tên",
+  "scene": "Hai bạn mới quen ở trường tự giới thiệu tên rồi hỏi về việc học tiếng Hán.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你好，我叫小明，你叫什么名字？",
+    "py": "nǐ hǎo wǒ jiào Xiǎomíng nǐ jiào shénme míngzi",
+    "vi": "Chào bạn, mình tên là Tiểu Minh, bạn tên gì?"
+   },
+   {
+    "who": "小红",
+    "zh": "你好，我叫小红，很高兴认识你。",
+    "py": "nǐ hǎo wǒ jiào Xiǎohóng hěn gāoxìng rènshi nǐ",
+    "vi": "Chào bạn, mình tên là Tiểu Hồng, rất vui được làm quen với bạn."
+   },
+   {
+    "who": "小明",
+    "zh": "我也很高兴认识你，小红。",
+    "py": "wǒ yě hěn gāoxìng rènshi nǐ Xiǎohóng",
+    "vi": "Mình cũng rất vui được làm quen với bạn, Tiểu Hồng."
+   },
+   {
+    "who": "小红",
+    "zh": "你是学生吗？",
+    "py": "nǐ shì xuéshēng ma",
+    "vi": "Bạn là học sinh à?"
+   },
+   {
+    "who": "小明",
+    "zh": "是，我在学校学习汉语，你呢？",
+    "py": "shì wǒ zài xuéxiào xuéxí Hànyǔ nǐ ne",
+    "vi": "Đúng vậy, mình học tiếng Hán ở trường, còn bạn?"
+   },
+   {
+    "who": "小红",
+    "zh": "我也是学生，我也学习汉语。",
+    "py": "wǒ yě shì xuéshēng wǒ yě xuéxí Hànyǔ",
+    "vi": "Mình cũng là học sinh, mình cũng học tiếng Hán."
+   },
+   {
+    "who": "小明",
+    "zh": "你今天有汉语课吗？",
+    "py": "nǐ jīntiān yǒu Hànyǔ kè ma",
+    "vi": "Hôm nay bạn có tiết tiếng Hán không?"
+   },
+   {
+    "who": "小红",
+    "zh": "有，我现在去学校上课。",
+    "py": "yǒu wǒ xiànzài qù xuéxiào shàngkè",
+    "vi": "Có, bây giờ mình đến trường học đây."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "叫",
+    "py": "jiào",
+    "vi": "tên là"
+   },
+   {
+    "zh": "名字",
+    "py": "míngzi",
+    "vi": "tên"
+   },
+   {
+    "zh": "认识",
+    "py": "rènshi",
+    "vi": "quen biết"
+   },
+   {
+    "zh": "学生",
+    "py": "xuéshēng",
+    "vi": "học sinh"
+   },
+   {
+    "zh": "学习",
+    "py": "xuéxí",
+    "vi": "học"
+   },
+   {
+    "zh": "汉语",
+    "py": "Hànyǔ",
+    "vi": "tiếng Hán"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-04",
+   "zh-g-h1-09",
+   "zh-g-h1-27"
+  ],
+  "quiz": [
+   {
+    "q": "Tiểu Minh giới thiệu tên mình là gì?",
+    "options": [
+     "Tiểu Hồng",
+     "Tiểu Minh",
+     "Vương Minh"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Minh nói tên mình là 小明."
+   },
+   {
+    "q": "Tiểu Hồng cảm thấy thế nào khi làm quen với Tiểu Minh?",
+    "options": [
+     "Buồn",
+     "Bận",
+     "Vui"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Hồng nói cô ấy rất vui khi làm quen với bạn."
+   },
+   {
+    "q": "Cả hai bạn đều là gì?",
+    "options": [
+     "Học sinh",
+     "Giáo viên",
+     "Bác sĩ"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Minh và Tiểu Hồng đều nói mình là học sinh."
+   },
+   {
+    "q": "Hai bạn đang học ngôn ngữ nào?",
+    "options": [
+     "Tiếng Anh",
+     "Tiếng Việt",
+     "Toán",
+     "Tiếng Hán"
+    ],
+    "answer": 3,
+    "explain": "Cả hai nói mình học tiếng Hán."
+   },
+   {
+    "q": "Tiểu Hồng đi đâu để lên lớp?",
+    "options": [
+     "Về nhà",
+     "Đến trường",
+     "Đến cửa hàng"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Hồng nói bây giờ cô ấy đến trường lên lớp."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h1-03",
+  "level": 1,
+  "order": 3,
+  "title": "Hỏi về quốc tịch",
+  "titleZh": "询问国籍",
+  "topic": "Quốc tịch",
+  "scene": "Một bạn hỏi người mới quen có phải người Trung Quốc không; người kia đang sống ở Trung Quốc để học tiếng Hán.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你好，你是中国人吗？",
+    "py": "nǐ hǎo nǐ shì Zhōngguó rén ma",
+    "vi": "Chào bạn, bạn là người Trung Quốc phải không?"
+   },
+   {
+    "who": "小华",
+    "zh": "不是，我在中国学习汉语。",
+    "py": "bú shì wǒ zài Zhōngguó xuéxí Hànyǔ",
+    "vi": "Không, mình đang học tiếng Hán ở Trung Quốc."
+   },
+   {
+    "who": "小明",
+    "zh": "你现在住在中国吗？",
+    "py": "nǐ xiànzài zhù zài Zhōngguó ma",
+    "vi": "Bây giờ bạn sống ở Trung Quốc à?"
+   },
+   {
+    "who": "小华",
+    "zh": "是，我住在中国，我喜欢这里。",
+    "py": "shì wǒ zhù zài Zhōngguó wǒ xǐhuan zhèlǐ",
+    "vi": "Đúng vậy, mình sống ở Trung Quốc, mình thích nơi này."
+   },
+   {
+    "who": "小明",
+    "zh": "你家人也住在中国吗？",
+    "py": "nǐ jiārén yě zhù zài Zhōngguó ma",
+    "vi": "Người nhà của bạn cũng sống ở Trung Quốc à?"
+   },
+   {
+    "who": "小华",
+    "zh": "不，他们现在不在中国。",
+    "py": "bù tāmen xiànzài bú zài Zhōngguó",
+    "vi": "Không, hiện giờ họ không ở Trung Quốc."
+   },
+   {
+    "who": "小明",
+    "zh": "你很喜欢中国和中文吗？",
+    "py": "nǐ hěn xǐhuan Zhōngguó hé Zhōngwén ma",
+    "vi": "Bạn rất thích Trung Quốc và tiếng Trung phải không?"
+   },
+   {
+    "who": "小华",
+    "zh": "是，我很喜欢中国，也很喜欢中文。",
+    "py": "shì wǒ hěn xǐhuan Zhōngguó yě hěn xǐhuan Zhōngwén",
+    "vi": "Đúng vậy, mình rất thích Trung Quốc và cũng rất thích tiếng Trung."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "中国人",
+    "py": "Zhōngguó rén",
+    "vi": "người Trung Quốc"
+   },
+   {
+    "zh": "中国",
+    "py": "Zhōngguó",
+    "vi": "Trung Quốc"
+   },
+   {
+    "zh": "学习",
+    "py": "xuéxí",
+    "vi": "học"
+   },
+   {
+    "zh": "汉语",
+    "py": "Hànyǔ",
+    "vi": "tiếng Hán"
+   },
+   {
+    "zh": "家人",
+    "py": "jiārén",
+    "vi": "người nhà"
+   },
+   {
+    "zh": "中文",
+    "py": "Zhōngwén",
+    "vi": "tiếng Trung"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-09",
+   "zh-g-h1-17",
+   "zh-g-h1-20"
+  ],
+  "quiz": [
+   {
+    "q": "Tiểu Hoa đang học tiếng Hán ở đâu?",
+    "options": [
+     "Ở trường",
+     "Ở nhà",
+     "Ở Trung Quốc"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Hoa nói mình đang học tiếng Hán ở Trung Quốc."
+   },
+   {
+    "q": "Hiện giờ Tiểu Hoa sống ở đâu?",
+    "options": [
+     "Ở Trung Quốc",
+     "Ở trường",
+     "Ở cửa hàng"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Hoa nói mình sống ở Trung Quốc."
+   },
+   {
+    "q": "Người nhà của Tiểu Hoa hiện có ở Trung Quốc không?",
+    "options": [
+     "Có",
+     "Không",
+     "Không rõ"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Hoa nói hiện giờ người nhà không ở Trung Quốc."
+   },
+   {
+    "q": "Tiểu Hoa thích những gì?",
+    "options": [
+     "Trường học và lớp học",
+     "Gia đình và bạn bè",
+     "Trà và cơm",
+     "Trung Quốc và tiếng Trung"
+    ],
+    "answer": 3,
+    "explain": "Tiểu Hoa nói mình rất thích Trung Quốc và tiếng Trung."
+   },
+   {
+    "q": "Tiểu Minh hỏi điều gì đầu tiên?",
+    "options": [
+     "Tiểu Hoa có phải người Trung Quốc không",
+     "Tiểu Hoa tên gì",
+     "Tiểu Hoa có tiết học không"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Minh mở đầu bằng câu hỏi Tiểu Hoa có phải người Trung Quốc không."
+   }
+  ]
+ }
+]

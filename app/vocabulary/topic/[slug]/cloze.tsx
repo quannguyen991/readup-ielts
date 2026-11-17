@@ -13,6 +13,7 @@ import {
   StudyCard,
   StudyFrame,
   useHotkeys,
+  exitStudy,
 } from '@/components/vocab/study/StudyKit';
 import { RoundAnalysis } from '@/components/vocab/study/MistakeViews';
 import { CrossFade } from '@/components/motion/Motion';
@@ -314,7 +315,7 @@ export default function ClozeScreen() {
             </Text>
             <RoundAnalysis mistakes={mistakes} />
             <PrimaryButton label={L('Vòng tiếp theo', 'Next round')} onPress={() => startRound(roundNo + 1, [...slipped])} />
-            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => router.replace(backHref as never)} />
+            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => exitStudy(backHref)} />
           </StudyCard>
         </CrossFade>
       </StudyFrame>

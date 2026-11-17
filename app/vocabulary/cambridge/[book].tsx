@@ -7,6 +7,7 @@ import { Grid } from '@/components/layout/Grid';
 import { CamVocabCover } from '@/components/vocab/CamVocabCover';
 import { Badge, Button, Card } from '@/components/ui';
 import { CAM_VOCAB_BOOKS, camVocabCount, getCamVocabBook } from '@/data/cambridge-vocab';
+import { getCambridgeOcrSections, getCambridgeOcrVocabulary, type CambridgeOcrSection, type CambridgeOcrVocabularyTerm } from '@/data/cambridge-vocabulary-ocr';
 import { useL } from '@/i18n/useL';
 
 /** /vocabulary/cambridge/[book] — từ và cụm từ của một sách Cambridge, chia theo Test và Passage. */
@@ -17,6 +18,7 @@ export default function CambridgeVocabBookScreen() {
   const book = getCamVocabBook(n);
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState<Record<string, boolean>>({ '1.1': true });
+  const [ocrSection, setOcrSection] = useState<CambridgeOcrSection | 'All'>('All');
 
   const needle = query.trim().toLocaleLowerCase();
   const passages = useMemo(() => {
@@ -33,9 +35,22 @@ export default function CambridgeVocabBookScreen() {
     test,
     passages: passages.filter((p) => p.test === test),
   }));
+  const ocrSections = book ? getCambridgeOcrSections(book.n) : [];
+  const ocrSectionGroups = useMemo(() => {
+    if (!book) return [];
+    const sections = ocrSection === 'All' ? getCambridgeOcrSections(book.n) : [ocrSection];
+    return sections.map((section) => {
+      const terms = getCambridgeOcrVocabulary(book.n, section);
+      const shown = needle ? terms.filter((term) => matchesOcrTerm(term, needle)) : terms;
+      return { section, terms: shown, count: terms.length };
+    });
+  }, [book?.n, needle, ocrSection]);
+  const ocrMatchCount = ocrSectionGroups.reduce((sum, group) => sum + group.terms.length, 0);
+  const ocrTotalCount = ocrSections.reduce((sum, section) => sum + getCambridgeOcrVocabulary(n, section).length, 0);
 
   const lookup = (word: string) => router.push(`/tu-dien?q=${encodeURIComponent(word)}` as never);
   const study = (test: number, passage: number) => router.push(`/vocabulary/topic/cambridge-${n}-test-${test}-passage-${passage}` as never);
+  const lookupOcr = (term: CambridgeOcrVocabularyTerm) => router.push(`/tu-dien?q=${encodeURIComponent(term.term)}` as never);
 
   return (
     <Screen>
@@ -78,7 +93,7 @@ export default function CambridgeVocabBookScreen() {
                   key={b.n}
                   accessibilityRole="button"
                   accessibilityState={{ selected }}
-                  onPress={() => { setQuery(''); setOpen({ '1.1': true }); router.replace(`/vocabulary/cambridge/${b.n}` as never); }}
+                  onPress={() => { setQuery(''); setOcrSection('All'); setOpen({ '1.1': true }); router.replace(`/vocabulary/cambridge/${b.n}` as never); }}
                   className={`rounded-pill px-3 py-2 ${selected ? 'bg-primary-700' : 'border border-borderStrong bg-surface'}`}
                 >
                   <Text className={`font-semi text-label ${selected ? 'text-white' : 'text-muted'}`}>{`Cam ${b.n}`}</Text>
@@ -91,14 +106,14 @@ export default function CambridgeVocabBookScreen() {
             <TextInput
               value={query}
               onChangeText={setQuery}
-              placeholder={L('Tìm từ trong sách này…', 'Search words in this book…')}
+              placeholder={L('Tìm trong từ vựng Reading và OCR…', 'Search Reading and OCR vocabulary…')}
               placeholderTextColor="#8B8175"
-              accessibilityLabel={L('Tìm từ trong sách', 'Search words in this book')}
+              accessibilityLabel={L('Tìm từ vựng trong sách', 'Search vocabulary in this book')}
               className="rounded-panel border border-border bg-surface px-3 py-3 font-sans text-body text-ink"
             />
             <View className="mt-3 flex-row items-center justify-between gap-2">
               <Text className="font-mid text-label text-muted">
-                {needle ? L(`${matches} từ khớp`, `${matches} matching words`) : L(`${passages.length} bài đọc`, `${passages.length} passages`)}
+                {needle ? L(`${matches} từ Reading · ${ocrMatchCount} từ OCR khớp`, `${matches} Reading · ${ocrMatchCount} OCR matches`) : L(`${passages.length} bài đọc · ${ocrTotalCount} mục OCR`, `${passages.length} passages · ${ocrTotalCount} OCR terms`)}
               </Text>
               <Pressable
                 accessibilityRole="button"
@@ -164,8 +179,166 @@ export default function CambridgeVocabBookScreen() {
               );
             })}
           </Grid>
+
+          <View className="mt-9 gap-4">
+            <View className="flex-row flex-wrap items-end justify-between gap-2 border-b border-borderStrong pb-3">
+              <View className="flex-1">
+                <View className="flex-row flex-wrap items-center gap-2">
+                  <Text className="font-heavy text-sectionTitle text-ink">{L('Từ vựng OCR từ đề Cambridge', 'OCR vocabulary from Cambridge tests')}</Text>
+                  <Badge label={L(`${ocrTotalCount} mục`, `${ocrTotalCount} terms`)} tone="primary" />
+                </View>
+                <Text className="mt-1 font-sans text-body text-muted">
+                  {L('Từ và cụm từ được dò trên trang đề đã lưu, kèm nghĩa, cách diễn đạt gần nghĩa và vị trí nguồn. Bấm thẻ để tra từ điển.', 'Terms matched against cached exam pages, with meanings, paraphrases and source locations. Tap a card to open the dictionary.')}
+                </Text>
+              </View>
+              <Text className="font-mid text-label text-muted">{needle ? L(`${ocrMatchCount} mục khớp`, `${ocrMatchCount} matches`) : ''}</Text>
+            </View>
+
+            <View className="flex-row flex-wrap gap-2">
+              <OcrFilter label={L('Tất cả', 'All')} count={ocrTotalCount} selected={ocrSection === 'All'} onPress={() => setOcrSection('All')} />
+              {ocrSections.map((section) => (
+                <OcrFilter
+                  key={section}
+                  label={sectionLabel(section, L)}
+                  count={getCambridgeOcrVocabulary(book.n, section).length}
+                  selected={ocrSection === section}
+                  onPress={() => setOcrSection(section)}
+                />
+              ))}
+            </View>
+
+            {ocrMatchCount ? (
+              <View className="gap-5">
+                {ocrSectionGroups.filter((group) => group.terms.length > 0).map((group) => (
+                  <View key={group.section} className="gap-3">
+                    {ocrSection === 'All' ? (
+                      <View className="flex-row items-center gap-2">
+                        <Text className="font-strong text-cardTitle text-ink">{sectionLabel(group.section, L)}</Text>
+                        <Badge label={L(`${group.terms.length} từ`, `${group.terms.length} terms`)} tone="neutral" />
+                      </View>
+                    ) : null}
+                    <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={12}>
+                      {group.terms.map((term) => (
+                        <OcrTermCard key={`${group.section}-${term.id}`} term={term} section={group.section} onPress={() => lookupOcr(term)} L={L} />
+                      ))}
+                    </Grid>
+                  </View>
+                ))}
+              </View>
+            ) : (
+              <Card>
+                <Text className="font-mid text-body text-muted">{needle ? L('Không có mục OCR nào khớp từ khóa này.', 'No OCR terms match this search.') : L('Chưa có mục OCR cho sách này.', 'No OCR terms are available for this book.')}</Text>
+              </Card>
+            )}
+          </View>
         </>
       )}
     </Screen>
+  );
+}
+
+function matchesOcrTerm(term: CambridgeOcrVocabularyTerm, needle: string): boolean {
+  const searchable = [
+    term.term,
+    term.lemma,
+    ...term.variants,
+    term.dictionary?.definitionEn,
+    term.dictionary?.meaningVi,
+    ...(term.dictionary?.paraphrases ?? []),
+    term.dictionary?.collocation,
+  ].filter(Boolean).join(' ').toLocaleLowerCase();
+  return searchable.includes(needle);
+}
+
+function sectionLabel(section: CambridgeOcrSection, L: (vi: string, en: string) => string): string {
+  const labels: Record<CambridgeOcrSection, [string, string]> = {
+    Listening: ['Listening', 'Listening'],
+    Reading: ['Reading', 'Reading'],
+    Writing: ['Writing', 'Writing'],
+    Speaking: ['Speaking', 'Speaking'],
+  };
+  const [vi, en] = labels[section];
+  return L(vi, en);
+}
+
+function OcrFilter({ label, count, selected, onPress }: { label: string; count: number; selected: boolean; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      onPress={onPress}
+      className={`flex-row items-center gap-2 rounded-pill border px-3 py-2 ${selected ? 'border-primary-700 bg-primary-700' : 'border-borderStrong bg-surface'}`}
+    >
+      <Text className={`font-semi text-label ${selected ? 'text-white' : 'text-muted'}`}>{label}</Text>
+      <Text className={`font-mid text-[11px] ${selected ? 'text-white' : 'text-subtle'}`}>{count}</Text>
+    </Pressable>
+  );
+}
+
+function OcrTermCard({ term, section, onPress, L }: {
+  term: CambridgeOcrVocabularyTerm;
+  section: CambridgeOcrSection;
+  onPress: () => void;
+  L: (vi: string, en: string) => string;
+}) {
+  const refs = [...term.references.standalonePdfOcr, ...term.references.cachedPageText]
+    .filter((ref) => ref.section === section)
+    .sort((a, b) => (a.test ?? 99) - (b.test ?? 99) || (a.page ?? 999) - (b.page ?? 999));
+  const refByPage = new Map<string, (typeof refs)[number]>();
+  for (const ref of refs) {
+    const key = `${ref.book}:${ref.section}:${ref.page}`;
+    const previous = refByPage.get(key);
+    if (!previous) {
+      refByPage.set(key, ref);
+    } else {
+      const preferCurrentSource = ref.evidence === 'standalone-pdf-ocr-cache' && previous.evidence !== 'standalone-pdf-ocr-cache';
+      refByPage.set(key, {
+        ...(preferCurrentSource ? ref : previous),
+        test: previous.test ?? ref.test,
+        pageQuestionRangeContext: previous.pageQuestionRangeContext ?? ref.pageQuestionRangeContext,
+      });
+    }
+  }
+  const uniqueRefs = [...refByPage.values()];
+  const shownRefs = uniqueRefs.slice(0, 2);
+  const dictionary = term.dictionary;
+
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={L(`Tra từ ${term.term} trong từ điển`, `Look up ${term.term} in the dictionary`)}
+      onPress={onPress}
+      className="rounded-panel border border-border bg-surface p-4"
+    >
+      <View className="flex-row flex-wrap items-start justify-between gap-2">
+        <Text className="min-w-0 flex-1 font-strong text-bodyLg text-ink">{term.term}</Text>
+        <Badge label={term.priority === 'high' ? L('Nên học', 'High value') : L('Bổ ích', 'Useful')} tone={term.priority === 'high' ? 'success' : 'neutral'} />
+      </View>
+      {term.lemma && term.lemma !== term.term ? <Text className="mt-1 font-mid text-label text-muted">{L('Dạng gốc', 'Lemma')}: {term.lemma}</Text> : null}
+      {dictionary?.ipa || dictionary?.partOfSpeech ? (
+        <Text className="mt-1 font-mid text-label text-subtle">{[dictionary.ipa, dictionary.partOfSpeech].filter(Boolean).join(' · ')}</Text>
+      ) : null}
+      {dictionary?.definitionEn ? <Text className="mt-3 font-sans text-body text-ink">{dictionary.definitionEn}</Text> : null}
+      {dictionary?.meaningVi ? <Text className="mt-1 font-mid text-label text-muted">{dictionary.meaningVi}</Text> : null}
+      {dictionary?.collocation ? (
+        <Text className="mt-3 font-mid text-label text-primary-700">{L('Collocation', 'Collocation')}: {dictionary.collocation}</Text>
+      ) : null}
+      {dictionary?.paraphrases?.length ? (
+        <Text className="mt-2 font-mid text-label text-muted" numberOfLines={2}>
+          {L('Paraphrase', 'Paraphrases')}: {dictionary.paraphrases.slice(0, 4).join(' · ')}
+        </Text>
+      ) : null}
+      <View className="mt-3 border-t border-border pt-2">
+        {shownRefs.map((ref, index) => (
+          <Text key={`${ref.source}-${ref.test}-${ref.page}-${index}`} className="font-mid text-[11px] text-subtle" numberOfLines={1}>
+            {`${ref.evidence === 'standalone-pdf-ocr-cache' ? 'PDF OCR' : L('Trang đã lưu', 'Cached page')} · ${ref.test ? `Test ${ref.test} · ` : ''}${ref.page ? `p. ${ref.page} · ` : ''}${ref.source}`}
+          </Text>
+        ))}
+        {uniqueRefs.length > shownRefs.length ? (
+          <Text className="mt-1 font-mid text-[11px] text-subtle">{L(`+ ${uniqueRefs.length - shownRefs.length} nguồn khác`, `+ ${uniqueRefs.length - shownRefs.length} more references`)}</Text>
+        ) : null}
+      </View>
+      <Text className="mt-3 font-semi text-label text-primary-700">{L('Mở từ điển →', 'Open dictionary →')}</Text>
+    </Pressable>
   );
 }

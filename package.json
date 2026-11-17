@@ -81,6 +81,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "web:lite": "node scripts/dev/web-lite.mjs",
+    "web:static": "node scripts/dev/web-static.mjs",
     "ielts:import-local-ocr": "node scripts/ielts/import-local-ocr.mjs",
     "ielts:rebuild-sources": "python scripts/ielts/rebuild-source-bank.py",
     "ielts:crawl-catalog": "python scripts/ielts/crawl-public-catalog.py",

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { gunzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -73,7 +74,7 @@ function readingFromFurigana(text = '') {
   return text.replace(/\{[^|}]+\|([^}]+)\}/g, '$1').replace(/[{}]/g, '').trim();
 }
 
-function makeBook({ slug, name, nameVi, language, sourceNote, sourceUrl, levels }) {
+function makeBook({ slug, name, nameVi, language, sourceNote, sourceUrl, wordBandPrefix, levels }) {
   const topics = [];
   let wordCount = 0;
   let unitCount = 0;
@@ -126,7 +127,50 @@ function makeBook({ slug, name, nameVi, language, sourceNote, sourceUrl, levels 
       });
     }
   }
-  return { slug, name, nameVi, language, blurb: `${wordCount.toLocaleString('vi-VN')} từ · chủ đề tự phân nhóm · mỗi buổi tối đa 50 từ.`, sourceNote, sourceUrl, wordCount, unitCount, topics };
+  return { slug, name, nameVi, language, blurb: `${wordCount.toLocaleString('vi-VN')} từ · chủ đề tự phân nhóm · mỗi buổi tối đa 50 từ.`, sourceNote, sourceUrl, wordBandPrefix, wordCount, unitCount, topics };
+}
+
+function cedictPinyinToToneMarks(input) {
+  const marks = {
+    a: ['ā', 'á', 'ǎ', 'à'], e: ['ē', 'é', 'ě', 'è'], i: ['ī', 'í', 'ǐ', 'ì'],
+    o: ['ō', 'ó', 'ǒ', 'ò'], u: ['ū', 'ú', 'ǔ', 'ù'], 'ü': ['ǖ', 'ǘ', 'ǚ', 'ǜ'],
+  };
+  return input.replace(/([a-züv]+)([1-5])/gi, (_match, rawSyllable, rawTone) => {
+    const tone = Number(rawTone);
+    const syllable = String(rawSyllable).replace(/v/gi, (letter) => (letter === 'V' ? 'Ü' : 'ü'));
+    if (tone === 5) return syllable;
+    const lower = syllable.toLowerCase();
+    const vowel = lower.includes('a') ? lower.indexOf('a')
+      : lower.includes('e') ? lower.indexOf('e')
+        : lower.includes('ou') ? lower.indexOf('o')
+          : Math.max(...[...lower].map((letter, index) => 'aeiouü'.includes(letter) ? index : -1));
+    if (vowel < 0) return syllable;
+    const original = [...syllable][vowel];
+    const marked = marks[original.toLowerCase()]?.[tone - 1];
+    if (!marked) return syllable;
+    const preserveUpper = original === original.toUpperCase();
+    return `${[...syllable].slice(0, vowel).join('')}${preserveUpper ? marked.toUpperCase() : marked}${[...syllable].slice(vowel + 1).join('')}`;
+  });
+}
+
+function readCedict() {
+  const compressed = fs.readFileSync(path.join(sourceDir, 'frequency/cedict_1_0_ts_utf-8_mdbg.txt.gz'));
+  const lines = gunzipSync(compressed).toString('utf8').split(/\r?\n/);
+  const entries = new Map();
+  for (const line of lines) {
+    if (!line || line.startsWith('#')) continue;
+    const match = line.match(/^\S+\s+(\S+)\s+\[([^\]]+)\]\s+\/(.*)\/$/);
+    if (!match) continue;
+    const word = match[1];
+    const entry = entries.get(word) ?? { readings: [], glosses: [] };
+    const reading = cedictPinyinToToneMarks(match[2]);
+    if (reading && !entry.readings.includes(reading)) entry.readings.push(reading);
+    for (const gloss of match[3].split('/').filter(Boolean)) {
+      if (!entry.glosses.includes(gloss)) entry.glosses.push(gloss);
+    }
+    entries.set(word, entry);
+  }
+  return new Map([...entries].map(([word, entry]) => [word, { p: entry.readings.join(' / '), g: entry.glosses.join('; ') }]));
 }
 
 const hskPos = (pos) => [...new Set((pos ?? []).map((item) => posToChinese[item]).filter(Boolean))].join('、');
@@ -179,7 +223,104 @@ for (let level = 5; level >= 1; level -= 1) {
   jlptLevels.push({ labelEn, labelVi, rows });
 }
 
+const tocflSource = readJson('linzi/tocfl-words.json');
+const tocflByBand = new Map();
+const tocflMerged = new Map();
+for (const entry of tocflSource.data) {
+  const band = entry.tocfl_band;
+  const current = tocflMerged.get(entry.simp);
+  if (!current) {
+    tocflMerged.set(entry.simp, { w: entry.simp, t: entry.trad, p: entry.pinyin, z: entry.zhuyin, g: entry.definitions, l: band, level: entry.tocfl_level });
+    continue;
+  }
+  for (const key of ['p', 'z', 'g']) {
+    const values = [...new Set([...(current[key] ? [current[key]] : []), entry[key === 'p' ? 'pinyin' : key === 'z' ? 'zhuyin' : 'definitions']].filter(Boolean))];
+    current[key] = values.join(' / ');
+  }
+  if (Number(entry.tocfl_level) < Number(current.level)) {
+    current.l = band;
+    current.level = entry.tocfl_level;
+  }
+}
+for (const row of tocflMerged.values()) {
+  const rows = tocflByBand.get(row.l) ?? [];
+  delete row.level;
+  rows.push(row);
+  tocflByBand.set(row.l, rows);
+}
+const tocflLevels = [...tocflByBand].map(([band, rows]) => ({ labelEn: `TOCFL ${band}`, labelVi: `TOCFL ${band}`, rows }));
+
+const hsk30Source = readJson('linzi/hsk30-words.json');
+const hsk30Merged = new Map();
+const hskLevelNumber = (value) => (value === '7-9' ? 7 : Number(value));
+for (const entry of hsk30Source.data) {
+  const level = String(entry.hsk_level);
+  const current = hsk30Merged.get(entry.simp);
+  if (!current) {
+    hsk30Merged.set(entry.simp, {
+      w: entry.simp,
+      traditions: new Set([entry.trad]),
+      pinyins: new Set([entry.pinyin]),
+      zhuyins: new Set([entry.zhuyin]),
+      glosses: new Set([entry.definitions]),
+      levels: new Set([level]),
+      variants: new Map([[`${entry.pinyin}\u0000${entry.zhuyin}\u0000${entry.definitions}\u0000${entry.trad}`, { p: entry.pinyin, z: entry.zhuyin, g: entry.definitions, t: entry.trad }]]),
+    });
+    continue;
+  }
+  current.traditions.add(entry.trad);
+  current.pinyins.add(entry.pinyin);
+  current.zhuyins.add(entry.zhuyin);
+  current.glosses.add(entry.definitions);
+  current.levels.add(level);
+  current.variants.set(`${entry.pinyin}\u0000${entry.zhuyin}\u0000${entry.definitions}\u0000${entry.trad}`, { p: entry.pinyin, z: entry.zhuyin, g: entry.definitions, t: entry.trad });
+}
+const hsk30ByLevel = new Map();
+for (const entry of hsk30Merged.values()) {
+  const levels = [...entry.levels].sort((a, b) => hskLevelNumber(a) - hskLevelNumber(b));
+  const row = {
+    w: entry.w,
+    t: [...entry.traditions].join(' / '),
+    p: [...entry.pinyins].join(' / '),
+    z: [...entry.zhuyins].join(' / '),
+    g: [...entry.glosses].join(' / '),
+    l: levels[0],
+    ls: levels,
+    variants: [...entry.variants.values()],
+  };
+  const rows = hsk30ByLevel.get(row.l) ?? [];
+  rows.push(row);
+  hsk30ByLevel.set(row.l, rows);
+}
+const hsk30Levels = [...hsk30ByLevel].map(([level, rows]) => ({ labelEn: `HSK ${level}`, labelVi: `HSK ${level}`, rows }));
+
+const cedict = readCedict();
+const frequencyLevels = new Map();
+const frequencyList = readJson('frequency/words.json').filter((entry) => entry.rank <= 10_000);
+for (const entry of frequencyList) {
+  const dictionaryEntry = cedict.get(entry.word);
+  if (!dictionaryEntry) continue;
+  const firstRank = Math.floor((entry.rank - 1) / 1_000) * 1_000 + 1;
+  const lastRank = Math.min(firstRank + 999, 10_000);
+  const label = `${firstRank.toLocaleString('en-US')}–${lastRank.toLocaleString('en-US')}`;
+  const rows = frequencyLevels.get(label) ?? [];
+  rows.push({ w: entry.word, p: dictionaryEntry.p, g: dictionaryEntry.g, l: label });
+  frequencyLevels.set(label, rows);
+}
+const frequencyCount = [...frequencyLevels.values()].reduce((sum, rows) => sum + rows.length, 0);
+const rankedFrequencyLevels = [...frequencyLevels].map(([band, rows]) => ({ labelEn: `Top ${band}`, labelVi: `Top ${band}`, rows }));
+
 const result = [
+  makeBook({
+    slug: 'book-hsk-2021-linzi',
+    name: 'International Chinese Proficiency Grading Standards · LinZi',
+    nameVi: 'Từ vựng chuẩn trình độ tiếng Trung quốc tế · LinZi',
+    language: 'zh',
+    wordBandPrefix: 'HSK chuẩn 2021',
+    sourceNote: `Danh sách theo chuẩn GF0025-2021: ${hsk30Source.data.length.toLocaleString('vi-VN')} dòng nguồn được gộp thành ${hsk30Merged.size.toLocaleString('vi-VN')} mục từ giản thể khác nhau. Giữ mọi cấp nguồn, dạng phồn thể, cách đọc và nghĩa riêng; cấp sớm nhất dùng để xếp thứ tự học. Đây là bộ HSK 3.0 theo chuẩn 2021, khác bộ đề cương kỳ thi mới công bố năm 2025. Dữ liệu LinZi phát hành theo CC BY-SA 4.0; phần nghĩa tiếng Anh dựa trên CC-CEDICT. Chủ đề và buổi học tối đa 50 từ do ReadUp tự sắp xếp.`,
+    sourceUrl: 'https://www.linzi.app/data/',
+    levels: hsk30Levels,
+  }),
   makeBook({
     slug: 'book-hsk-2-0-community',
     name: 'HSK 2.0 Vocabulary Review · community list',
@@ -188,6 +329,26 @@ const result = [
     sourceNote: 'Danh sách HSK 2.0 cộng đồng từ complete-HSK Vocabulary, dùng ôn bổ trợ HSK Standard Course. Chủ đề và buổi học do Band 9 tự sắp xếp; không phải danh mục CTI 2015 nguyên bản hay thứ tự từng bài trong giáo trình. CC BY-SA 4.0.',
     sourceUrl: 'https://github.com/drkameleon/complete-hsk-vocabulary',
     levels: hskLevels,
+  }),
+  makeBook({
+    slug: 'book-zh-tocfl-linzi',
+    name: 'TOCFL 華語八千詞 · LinZi',
+    nameVi: 'Từ vựng TOCFL · LinZi',
+    language: 'zh',
+    wordBandPrefix: 'TOCFL',
+    sourceNote: `Dữ liệu TOCFL LinZi có ${tocflSource.data.length.toLocaleString('vi-VN')} dòng nguồn và ${tocflMerged.size.toLocaleString('vi-VN')} từ giản thể khác nhau; các dòng lặp được gộp, giữ các cách đọc và nghĩa riêng. Có phồn thể, giản thể, pinyin, zhuyin và nghĩa tiếng Anh. LinZi phát hành theo CC BY-SA 4.0; nghĩa tiếng Anh dựa trên CC-CEDICT. Band 9 sắp xếp lại theo chủ đề và buổi học tối đa 50 từ; đây là bộ TOCFL riêng, không phải thứ tự bài Giáo trình Hán ngữ.`,
+    sourceUrl: 'https://www.linzi.app/data/',
+    levels: tocflLevels,
+  }),
+  makeBook({
+    slug: 'book-zh-frequency-doudou-10k',
+    name: 'Mandarin Frequency · DouDou / wordfreq Top 10,000',
+    nameVi: 'Từ vựng tiếng Trung theo tần suất · Top 10.000',
+    language: 'zh',
+    wordBandPrefix: 'Tần suất',
+    sourceNote: `Từ trong 10.000 hạng đầu của wordfreq 3.1.1, lấy qua DouDou Chinese; ${frequencyCount.toLocaleString('vi-VN')} mục có khớp từ điển giản thể CC-CEDICT, nên danh sách được gắn nhãn theo dải hạng và không đại diện cho bài học sách giáo khoa. wordfreq và CC-CEDICT đều CC BY-SA 4.0; nhóm chủ đề và buổi học tối đa 50 từ do Band 9 sắp xếp.`,
+    sourceUrl: 'https://doudou-chinese.com/',
+    levels: rankedFrequencyLevels,
   }),
   makeBook({
     slug: 'book-jlpt-open-vocabulary',

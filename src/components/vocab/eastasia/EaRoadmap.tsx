@@ -1,4 +1,5 @@
 import { ZhLearnTiles } from '@/components/zh-learn/LearnTiles';
+import { EaSentenceTiles } from '@/components/east-asian-sentences/SentenceTiles';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
@@ -186,6 +187,7 @@ export function EaRoadmap({ lang }: { lang: EaLang }) {
         </View>
       </Appear>
       {lang === 'zh' ? <ZhLearnTiles accent={c.accent} /> : null}
+      <EaSentenceTiles lang={lang} accent={c.accent} />
 
       {/* ---------------------------------------------------------------- skin */}
       <SkinPicker lang={lang} skin={skin} onPick={(id) => setSkin(lang, id)} />

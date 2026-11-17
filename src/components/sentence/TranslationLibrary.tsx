@@ -4,10 +4,12 @@ import { router } from 'expo-router';
 
 import { CatalogHub, type CatalogItem } from '@/components/catalog/CatalogHub';
 import { normalizeLevel, type GroupKey } from '@/components/catalog/catalog-model';
-import { BilingualLines, LessonCard } from '@/components/sentence/LessonCard';
+import { LessonCard } from '@/components/sentence/LessonCard';
+import { TranslationCover } from '@/components/sentence/DictationCover';
 import { SENTENCE_DIFFICULTY_LABEL, type SentenceTopic } from '@/data/sentence-drills';
 import { TRANSLATION_SETS, type TranslationSet } from '@/data/translation-sets';
-import { useSentenceStore } from '@/store/useSentenceStore';
+import { useLearnStats, useSentenceStore } from '@/store/useSentenceStore';
+import { setProgress, type SetProgress } from '@/services/sentence/learn-status';
 import { useL } from '@/i18n/useL';
 
 /** Nhãn độ khó bằng tiếng Anh (bản tiếng Việt: `SENTENCE_DIFFICULTY_LABEL`). */
@@ -35,13 +37,20 @@ const TOPIC_GROUP: Record<SentenceTopic, GroupKey> = {
  * hai chỗ. Khác ở dấu vân: bài nghe là sóng âm, bài dịch là cặp vạch Việt–Anh. Chỉ khác ở chỗ bài dịch gom theo CHỦ ĐỀ, vì đó là trục người học
  * nghĩ tới khi muốn ôn từ vựng của một mảng.
  */
-export function TranslationLibrary() {
+export function TranslationLibrary({ express = false }: { express?: boolean }) {
   const sessions = useSentenceStore((s) => s.sessions);
   const doneBySet = useMemo(() => {
     const m = new Map<string, number>();
     for (const x of sessions) if (x.mode === 'translation' && x.setId) m.set(x.setId, (m.get(x.setId) ?? 0) + 1);
     return m;
   }, [sessions]);
+
+  const learnStats = useLearnStats();
+  const statusBySet = useMemo(() => {
+    const m = new Map<string, SetProgress>();
+    for (const set of TRANSLATION_SETS) m.set(set.id, setProgress(learnStats, express ? 'express' : 'translation', set.items.map((it) => it.id)));
+    return m;
+  }, [learnStats, express]);
 
   const items = useMemo<CatalogItem[]>(
     () =>
@@ -51,20 +60,21 @@ export function TranslationLibrary() {
         topic: set.title,
         group: TOPIC_GROUP[set.topic] ?? 'life',
         title: set.title,
-        done: (doneBySet.get(set.id) ?? 0) > 0,
-        node: <SetCard set={set} doneCount={doneBySet.get(set.id) ?? 0} />,
+        done: statusBySet.get(set.id)?.state === 'learned',
+        state: statusBySet.get(set.id)?.state,
+        node: <SetCard set={set} doneCount={doneBySet.get(set.id) ?? 0} status={statusBySet.get(set.id)} express={express} />,
       })),
-    [doneBySet],
+    [doneBySet, statusBySet, express],
   );
 
   return (
     <View>
-      <CatalogHub items={items} searchHintVi="Tìm chủ đề dịch…" searchHintEn="Search a translation topic…" onStart={(it) => router.push(`/sentence/translate?set=${it.id}` as never)} />
+      <CatalogHub items={items} searchHintVi="Tìm chủ đề dịch…" searchHintEn="Search a translation topic…" onStart={(it) => router.push(`/sentence/${express ? 'express' : 'translate'}?set=${it.id}` as never)} />
     </View>
   );
 }
 
-const SetCard = React.memo(function SetCard({ set, doneCount }: { set: TranslationSet; doneCount: number }) {
+const SetCard = React.memo(function SetCard({ set, doneCount, status, express }: { set: TranslationSet; doneCount: number; status?: SetProgress; express: boolean }) {
   const { L, en } = useL();
 
   return (
@@ -77,8 +87,11 @@ const SetCard = React.memo(function SetCard({ set, doneCount }: { set: Translati
       blurb={set.blurb}
       meta={[{ icon: 'list', label: L(`${set.items.length} câu`, `${set.items.length} sentences`) }]}
       done={doneCount}
-      visual={(tone, active) => <BilingualLines pairs={set.items} tone={tone} active={active} />}
-      onPress={() => router.push(`/sentence/translate?set=${set.id}` as never)}
+      status={status}
+      visualHeight={112}
+      bleed
+      visual={(tone) => <TranslationCover tone={tone} pairs={set.items} level={set.level} seed={set.order} />}
+      onPress={() => router.push(`/sentence/${express ? 'express' : 'translate'}?set=${set.id}` as never)}
     />
   );
 });

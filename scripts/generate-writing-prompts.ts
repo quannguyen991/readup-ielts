@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 import { validateChartData } from '../src/lib/writing/chart-data';
@@ -25,7 +25,8 @@ function main(): void {
   const bad: string[] = [];
   for (const p of task1) {
     const r = validateChartData(p.chartData);
-    if (!r.ok) bad.push(`${p.id}: ${r.reason}`);
+    const hasSourceFigure = Boolean(p.sourceUrl && p.sourceCharts?.length);
+    if (!r.ok && !hasSourceFigure) bad.push(`${p.id}: ${r.reason}`);
   }
   if (bad.length > 0) {
     console.error('Có đề Task 1 không hợp lệ, KHÔNG ghi seed:');
@@ -41,7 +42,9 @@ function main(): void {
   }
 
   mkdirSync(dirname(OUT), { recursive: true });
-  writeFileSync(OUT, `${JSON.stringify(all, null, 2)}\n`, 'utf8');
+  const temporaryOutput = `${OUT}.tmp-${process.pid}`;
+  writeFileSync(temporaryOutput, `${JSON.stringify(all, null, 2)}\n`, 'utf8');
+  renameSync(temporaryOutput, OUT);
 
   const byKind = new Map<string, number>();
   for (const p of task1) {

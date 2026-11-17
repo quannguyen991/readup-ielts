@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, useWindowDimensions, View } from 'react-native';
 import Svg, { Circle, G, Line, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { arcPath, niceTicks, pieSlices, seriesExtent } from '@/services/writing/chart-scale';
@@ -23,8 +23,17 @@ import type { ChartData, LineOrBarChart, MapChart, PieChart, ProcessChart, Table
 
 const PALETTE = chartPalette;
 
-export function ChartFigure({ data, width = 640 }: { data: ChartData; width?: number }) {
+export function ChartFigure({ data, width }: { data: ChartData; width?: number }) {
   const locale = useLocale();
+  const { width: windowWidth } = useWindowDimensions();
+  const [measuredWidth, setMeasuredWidth] = React.useState(0);
+  const chartWidth = width ?? (measuredWidth > 0
+    ? Math.max(180, measuredWidth - 26)
+    : Math.max(180, Math.min(640, windowWidth - 48)));
+  const measureCard = width === undefined
+    ? (event: { nativeEvent: { layout: { width: number } } }) => setMeasuredWidth(event.nativeEvent.layout.width)
+    : undefined;
+
   if (data.kind === 'mixed') {
     return (
       <View className="gap-3">
@@ -36,12 +45,12 @@ export function ChartFigure({ data, width = 640 }: { data: ChartData; width?: nu
   }
 
   return (
-    <View className="rounded-card border border-border bg-surface p-3">
+    <View onLayout={measureCard} className="rounded-card border border-border bg-surface p-3">
       <Text className="mb-1 text-center font-heavy text-body text-ink">{data.title}</Text>
       {'unit' in data ? (
         <Text className="mb-2 text-center font-sans text-label text-muted">{data.unit}</Text>
       ) : null}
-      {renderBody(data, width, locale)}
+      {renderBody(data, chartWidth, locale)}
     </View>
   );
 }
@@ -56,9 +65,9 @@ function renderBody(data: Exclude<ChartData, { kind: 'mixed' }>, width: number, 
     case 'table':
       return <TableFigure data={data} />;
     case 'process':
-      return <ProcessFigure data={data} />;
+      return <ProcessFigure data={data} width={width} locale={locale} />;
     case 'map':
-      return <MapFigure data={data} />;
+      return <MapFigure data={data} width={width} locale={locale} />;
     default:
       return null;
   }
@@ -68,45 +77,170 @@ const MAP_FILL: Record<string, string> = {
   building: '#E9D5FF', green: '#BBF7D0', water: '#BAE6FD', road: '#D6D3D1', sand: '#FDE68A', plain: '#F1F5F9',
 };
 
-/** Quy trình: các bước đánh số nối bằng mũi tên; vòng đời thì có dòng quay lại bước 1. */
-function ProcessFigure({ data }: { data: ProcessChart }) {
+const MAP_STROKE: Record<string, string> = {
+  building: '#8064B8', green: '#4E9872', water: '#4D94B8', road: '#7C818C', sand: '#B78938', plain: '#A2A8B2',
+};
+
+const MAP_LABEL: Record<string, { vi: string; en: string }> = {
+  building: { vi: 'Khu xây dựng', en: 'Built area' },
+  green: { vi: 'Cây xanh', en: 'Green space' },
+  water: { vi: 'Mặt nước', en: 'Water' },
+  road: { vi: 'Đường', en: 'Road' },
+  sand: { vi: 'Khu bờ biển', en: 'Coastal area' },
+  plain: { vi: 'Khu đất', en: 'Open land' },
+};
+
+/** Dòng tiến trình có hướng, điểm đầu/cuối rõ và bước đọc được ở mọi cỡ màn hình. */
+function ProcessFigure({ data, width, locale }: { data: ProcessChart; width: number; locale: Locale }) {
+  const compact = width < 500;
+  const columns = compact ? 1 : width < 760 ? 3 : 4;
+  const rows: number[][] = [];
+  for (let i = 0; i < data.steps.length; i += columns) {
+    const row = Array.from({ length: Math.min(columns, data.steps.length - i) }, (_, j) => i + j);
+    // Đường đi zíc-zắc giữ đúng thứ tự của quy trình mà không phải bẻ sơ đồ xuống thành danh sách.
+    if (rows.length % 2 === 1) row.reverse();
+    rows.push(row);
+  }
+
   return (
-    <View className="gap-1 p-2">
-      {data.steps.map((step, i) => (
-        <View key={i} className="items-center">
-          <View className="w-full flex-row items-center gap-3 rounded-xl border border-border bg-canvas px-3 py-2.5">
-            <View className="h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: PALETTE[0] }}>
-              <Text className="font-strong text-label" style={{ color: '#FFFFFF' }}>{i + 1}</Text>
+    <View className="p-2" style={{ gap: compact ? 4 : 10 }}>
+      {rows.map((row, rowIndex) => {
+        const reverse = rowIndex % 2 === 1;
+        return (
+          <React.Fragment key={`row-${rowIndex}`}>
+            <View style={{ flexDirection: 'row', alignItems: 'stretch' }}>
+              {row.map((stepIndex, cellIndex) => {
+                const first = stepIndex === 0;
+                const last = stepIndex === data.steps.length - 1;
+                const accent = first ? '#0E7490' : last ? '#B45309' : PALETTE[stepIndex % PALETTE.length];
+                const flowingRight = !reverse;
+                const hasNextInRow = cellIndex < row.length - 1;
+                return (
+                  <View key={stepIndex} style={{ flex: 1, paddingHorizontal: compact ? 0 : 7, paddingVertical: compact ? 2 : 0 }}>
+                    <View
+                      style={{
+                        minHeight: compact ? 58 : 102,
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                        gap: 8,
+                        borderRadius: 12,
+                        borderWidth: 1,
+                        borderColor: first || last ? `${accent}75` : '#E4E1EB',
+                        backgroundColor: first || last ? `${accent}0D` : '#FBFAFD',
+                        paddingHorizontal: compact ? 11 : 9,
+                        paddingVertical: compact ? 10 : 11,
+                      }}
+                    >
+                      <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: accent }}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 11, lineHeight: 15, fontWeight: '800' }}>{stepIndex + 1}</Text>
+                      </View>
+                      <View style={{ flex: 1, gap: 4 }}>
+                        {first || last ? (
+                          <Text style={{ color: accent, fontSize: 9, fontWeight: '800', letterSpacing: 0.7, textTransform: 'uppercase' }}>
+                            {first ? pick(locale, 'BẮT ĐẦU', 'START') : pick(locale, 'KẾT THÚC', 'FINISH')}
+                          </Text>
+                        ) : null}
+                        <Text className="font-sans text-body text-ink" style={{ fontSize: compact ? 14 : 12, lineHeight: compact ? 20 : 17 }}>
+                          {stepIndex === 0 ? pick(locale, 'Nguyên liệu đầu vào: ', 'Input: ') + data.steps[stepIndex] : data.steps[stepIndex]}
+                        </Text>
+                      </View>
+                    </View>
+                    {!compact && hasNextInRow ? (
+                      <Text style={{ position: 'absolute', top: '42%', right: -4, zIndex: 2, color: '#827C93', fontSize: 17, fontWeight: '700' }}>
+                        {flowingRight ? '›' : '‹'}
+                      </Text>
+                    ) : null}
+                  </View>
+                );
+              })}
             </View>
-            <Text className="flex-1 font-sans text-body text-ink">{step}</Text>
-          </View>
-          {i < data.steps.length - 1 ? <Text className="font-heavy text-body text-muted">↓</Text> : null}
-        </View>
-      ))}
-      {data.isCycle ? <Text className="mt-1 text-center font-mid text-label text-muted">↻ Quay lại bước 1</Text> : null}
+            {rowIndex < rows.length - 1 ? (
+              <View style={{ alignItems: compact ? 'center' : reverse ? 'flex-start' : 'flex-end', paddingHorizontal: compact ? 12 : 28, height: compact ? 15 : 12 }}>
+                <Text style={{ color: '#827C93', fontSize: 15, lineHeight: 15, fontWeight: '700' }}>↓</Text>
+              </View>
+            ) : null}
+          </React.Fragment>
+        );
+      })}
+      <View className="mt-1 flex-row items-center justify-center gap-2 self-center rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F3F0FB' }}>
+        <Text style={{ color: '#6A4BD9', fontSize: 11, fontWeight: '700' }}>
+          {data.isCycle ? '↻' : '●'}
+        </Text>
+        <Text className="font-mid text-label text-muted">
+          {data.isCycle ? pick(locale, 'Giai đoạn cuối quay lại bước đầu', 'The final stage returns to the first') : pick(locale, `${data.steps.length} bước · theo chiều mũi tên`, `${data.steps.length} stages · follow the arrows`)}
+        </Text>
+      </View>
     </View>
   );
 }
 
-/** Bản đồ: mỗi khung là một hình chữ nhật, ô đặt theo toạ độ tương đối 0–1. */
-function MapFigure({ data }: { data: MapChart }) {
+/** Bản đồ so sánh: nền phân khu, chú giải và ký hiệu đường rõ ràng. */
+function MapFigure({ data, width, locale }: { data: MapChart; width: number; locale: Locale }) {
+  const horizontal = width >= 760 && data.panels.length > 1;
+  const shapes = ['water', 'sand', 'green', 'plain', 'road', 'building'].filter((shape) => data.panels.some((panel) => panel.items.some((item) => item.shape === shape)));
+
   return (
-    <View className="gap-3 p-2">
-      {data.panels.map((panel, pi) => (
-        <View key={pi}>
-          <Text className="mb-1 font-strong text-label text-ink">{panel.caption}</Text>
-          <View style={{ width: '100%', aspectRatio: 1.5, borderRadius: 12, borderWidth: 1, borderColor: '#CBD5E1', backgroundColor: '#FFFFFF', overflow: 'hidden' }}>
-            {panel.items.map((item, i) => (
-              <View
-                key={i}
-                style={{ position: 'absolute', left: `${item.x * 100}%`, top: `${item.y * 100}%`, width: `${item.w * 100}%`, height: `${item.h * 100}%`, backgroundColor: MAP_FILL[item.shape] ?? '#F1F5F9', borderWidth: 1, borderColor: '#94A3B8', borderRadius: 6, alignItems: 'center', justifyContent: 'center', padding: 2 }}
-              >
-                <Text className="text-center font-mid text-[11px] text-ink" numberOfLines={3}>{item.label}</Text>
+    <View className="p-1" style={{ gap: 12 }}>
+      <View style={{ flexDirection: horizontal ? 'row' : 'column', gap: 12 }}>
+        {data.panels.map((panel, pi) => (
+          <View key={pi} style={{ flex: 1, minWidth: 0, gap: 6 }}>
+            <View className="self-start rounded-pill px-2.5 py-1" style={{ backgroundColor: '#F3F0FB' }}>
+              <Text className="font-heavy text-label text-ink">{panel.caption}</Text>
+            </View>
+            <View style={{ width: '100%', aspectRatio: horizontal ? 1.8 : 1.95, borderRadius: 12, borderWidth: 1, borderColor: '#C8C4D2', backgroundColor: '#F7F6F1', overflow: 'hidden' }}>
+              {/* Subtle block grid helps the learner compare relative positions without implying extra data. */}
+              <View pointerEvents="none" style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, flexDirection: 'row' }}>
+                {[0, 1, 2, 3, 4].map((i) => <View key={i} style={{ flex: 1, borderRightWidth: i < 4 ? 1 : 0, borderColor: 'rgba(128,120,140,0.08)' }} />)}
               </View>
-            ))}
+              {panel.items.map((item, i) => (
+                <View
+                  key={i}
+                  style={{
+                    position: 'absolute',
+                    left: `${item.x * 100}%`,
+                    top: `${item.y * 100}%`,
+                    width: `${item.w * 100}%`,
+                    height: `${item.h * 100}%`,
+                    backgroundColor: MAP_FILL[item.shape] ?? '#F1F5F9',
+                    borderWidth: item.shape === 'road' ? 0 : 1,
+                    borderColor: MAP_STROKE[item.shape] ?? '#94A3B8',
+                    borderRadius: item.shape === 'road' ? 2 : item.shape === 'water' ? 0 : 6,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: 2,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {item.shape === 'road' ? (
+                    <View pointerEvents="none" style={{ position: 'absolute', left: item.w >= item.h ? '3%' : '49%', top: item.w >= item.h ? '47%' : '3%', width: item.w >= item.h ? '94%' : '2%', height: item.w >= item.h ? '6%' : '94%', borderColor: '#F8F5ED', borderStyle: 'dashed', borderWidth: 1 }} />
+                  ) : null}
+                  {item.shape === 'water' ? (
+                    <Text numberOfLines={1} style={{ position: 'absolute', right: 4, top: 2, color: '#4386A8', fontSize: 9, opacity: 0.65 }}>≈ ≈</Text>
+                  ) : null}
+                  <Text
+                    className="text-center font-mid text-ink"
+                    numberOfLines={horizontal ? 3 : 2}
+                    style={{ fontSize: width < 500 ? 9 : 10, lineHeight: width < 500 ? 11 : 12, fontWeight: '600', textShadowColor: 'rgba(255,255,255,0.55)', textShadowRadius: 2 }}
+                  >
+                    {item.label}
+                  </Text>
+                </View>
+              ))}
+            </View>
           </View>
-        </View>
-      ))}
+        ))}
+      </View>
+      <View className="flex-row flex-wrap justify-center" style={{ columnGap: 14, rowGap: 7 }}>
+        {shapes.map((shape) => (
+          <View key={shape} className="flex-row items-center gap-1.5">
+            <View style={{ width: 11, height: 11, borderRadius: 3, backgroundColor: MAP_FILL[shape], borderWidth: 1, borderColor: MAP_STROKE[shape] }} />
+            <Text className="font-sans text-label text-body">{pick(locale, MAP_LABEL[shape]?.vi ?? shape, MAP_LABEL[shape]?.en ?? shape)}</Text>
+          </View>
+        ))}
+      </View>
+      <Text className="text-center font-sans text-[10px] text-muted">
+        {pick(locale, 'Sơ đồ minh hoạ · không theo tỷ lệ', 'Illustrative map · not to scale')}
+      </Text>
     </View>
   );
 }
@@ -116,9 +250,15 @@ function MapFigure({ data }: { data: MapChart }) {
 // ---------------------------------------------------------------------------
 
 function LineOrBarFigure({ data, width }: { data: LineOrBarChart; width: number }) {
-  const height = 300;
-  const pad = { top: 12, right: 16, bottom: 54, left: 48 };
-  const innerW = Math.max(80, width - pad.left - pad.right);
+  const left = 48;
+  const right = 16;
+  const innerW = Math.max(80, width - left - right);
+  const labelFontSize = width < 500 ? 9 : 11;
+  const labelMaxChars = Math.max(6, Math.floor((innerW / Math.max(1, data.xLabels.length)) / (labelFontSize * 0.55)));
+  const wrappedLabels = data.xLabels.map((label) => wrapLabel(label, labelMaxChars));
+  const labelRows = Math.max(1, ...wrappedLabels.map((lines) => lines.length));
+  const height = 300 + Math.max(0, labelRows - 2) * 12;
+  const pad = { top: 12, right, bottom: Math.max(54, 30 + labelRows * 12), left };
   const innerH = height - pad.top - pad.bottom;
 
   const { min, max } = seriesExtent(data.series);
@@ -202,18 +342,18 @@ function LineOrBarFigure({ data, width }: { data: LineOrBarChart; width: number 
                 </G>
               ))}
 
-          {data.xLabels.map((label, i) => (
+          {wrappedLabels.map((lines, i) => lines.map((line, lineIndex) => (
             <SvgText
-              key={`x${i}`}
+              key={`x${i}-${lineIndex}`}
               x={xAt(i)}
-              y={innerH + 18}
-              fontSize={11}
+              y={innerH + (lines.length > 1 ? 13 : 18) + lineIndex * 12}
+              fontSize={labelFontSize}
               fill={color.subtle}
               textAnchor="middle"
             >
-              {shorten(label, Math.max(6, Math.floor(slot / 6.5)))}
+              {line}
             </SvgText>
-          ))}
+          )))}
         </G>
       </Svg>
       <Legend names={data.series.map((s) => s.name)} />
@@ -350,7 +490,27 @@ function formatTick(v: number): string {
   return Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100);
 }
 
-/** Cắt nhãn trục X quá dài để các nhãn không đè lên nhau. */
-function shorten(label: string, maxChars: number): string {
-  return label.length <= maxChars ? label : `${label.slice(0, Math.max(1, maxChars - 1))}…`;
+/** Keep full category names while wrapping them to avoid collisions on narrow charts. */
+function wrapLabel(label: string, maxChars: number): string[] {
+  const lines: string[] = [];
+  let current = '';
+
+  for (const word of label.split(/\s+/)) {
+    if (word.length > maxChars) {
+      if (current) lines.push(current);
+      current = '';
+      for (let i = 0; i < word.length; i += maxChars) lines.push(word.slice(i, i + maxChars));
+      continue;
+    }
+
+    if (current && current.length + word.length + 1 > maxChars) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = current ? `${current} ${word}` : word;
+    }
+  }
+
+  if (current) lines.push(current);
+  return lines.length > 0 ? lines : [label];
 }

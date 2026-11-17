@@ -12,7 +12,7 @@ import { CuteRocket, Motion } from '@/components/illust/CuteMore';
 import { Sticker } from '@/components/illust/Sticker';
 import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Icon } from '@/components/ui/Icon';
-import { ExamSwitch, LevelPicker, NodeDetail, P, PartTrail, ProgressLine, primaryLabel } from '@/components/learning-path/PathUi';
+import { ExamSwitch, LevelPicker, NodeDetail, P, PartTabs, PartTiles, ProgressLine, primaryLabel } from '@/components/learning-path/PathUi';
 import { usePathData } from '@/components/learning-path/usePathData';
 import { PathPlanner } from '@/components/learning-path/PathPlanner';
 import {
@@ -126,7 +126,7 @@ export default function LearningPathScreen() {
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 9 }}>
           <Text className="font-heavy" style={{ fontSize: 15, color: P.navy }}>{L('Trình độ', 'Level')}</Text>
-          {planLevel ? <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 5, backgroundColor: P.goldWash }}><Icon name="target" size={12} color={P.goldDeep} /><Text className="font-strong" style={{ fontSize: 11, color: P.goldDeep }}>{L('Gợi ý', 'Suggested')}</Text></View> : null}
+          {planLevel ? <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 5, backgroundColor: P.goldWash }}><Icon name="target" size={12} color={P.goldDeep} /><Text className="font-strong" style={{ fontSize: 13, color: P.goldDeep }}>{L('Gợi ý', 'Suggested')}</Text></View> : null}
         </View>
         <LevelPicker levels={levels} value={level.id} planLevelId={planLevel?.id ?? null} onChange={(id) => setLevel(exam, id)} compact={compactPicker} />
       </View>
@@ -145,10 +145,10 @@ export default function LearningPathScreen() {
             {level.parts.map((p, i) => {
               const pp = prog.parts[p.id]!;
               const complete = pp.done === pp.total;
-              return <View key={p.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}><View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: complete ? '#64B58A' : pp.done > 0 ? P.gold : P.line }} /><Text className="font-semi" style={{ fontSize: 11, color: P.muted }}>P{i + 1} {pp.done}/{pp.total}</Text></View>;
+              return <View key={p.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}><View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: complete ? '#64B58A' : pp.done > 0 ? P.gold : P.line }} /><Text className="font-semi" style={{ fontSize: 13, color: P.muted }}>P{i + 1} {pp.done}/{pp.total}</Text></View>;
             })}
           </View>
-          <Text className="font-heavy" style={{ fontSize: 12, color: P.goldDeep }}>{pct}%</Text>
+          <Text className="font-heavy" style={{ fontSize: 14, color: P.goldDeep }}>{pct}%</Text>
         </View>
       </View>
     </View>
@@ -156,22 +156,24 @@ export default function LearningPathScreen() {
   );
 
   /* ---------------------------------------------------------------- đường mòn */
+  // Chỉ hiện một Part mỗi lần (như tab bộ từ): mặc định là Part có bài học tiếp.
+  const [partPick, setPartPick] = useState<string | null>(null);
+  const activePart = level.parts.find((p) => p.id === partPick) ?? (prog.next ? partOfNode(level, prog.next.id) : undefined) ?? level.parts[0]!;
+  const activeNo = level.parts.indexOf(activePart) + 1;
   const trail = (
-    <View>
-      {level.parts.map((p, i) => (
-        <PartTrail
-          key={p.id}
-          part={p}
-          partNo={i + 1}
-          progress={prog.parts[p.id]!}
-          statuses={prog.statuses}
-          nextId={prog.next?.id ?? null}
-          selectedId={wide ? panelNode.id : selectedId}
-          inlineDetail={!wide}
-          onSelect={select}
-          renderDetail={(n, _idx, dark) => detailFor(n, dark)}
-        />
-      ))}
+    <View style={{ marginTop: 20 }}>
+      <PartTabs parts={level.parts} value={activePart.id} progress={prog.parts} onChange={(id) => { setPartPick(id); setSelectedId(null); }} />
+      <PartTiles
+        part={activePart}
+        partNo={activeNo}
+        progress={prog.parts[activePart.id]!}
+        statuses={prog.statuses}
+        nextId={prog.next?.id ?? null}
+        selectedId={wide ? panelNode.id : selectedId}
+        inlineDetail={!wide}
+        onSelect={select}
+        renderDetail={(n, _idx, dark) => detailFor(n, dark)}
+      />
 
       {hydrated ? (
         <PathPlanner exam={exam} level={level} statuses={prog.statuses} focusExtra={focusExtra} plan={planRhythm} compact={compactPicker} />
@@ -229,6 +231,7 @@ export default function LearningPathScreen() {
                   onPickPart={(partId) => {
                     const part = level.parts.find((p) => p.id === partId)!;
                     const first = part.nodes.find((n) => prog.statuses[n.id]?.state !== 'done') ?? part.nodes[0]!;
+                    setPartPick(partId);
                     setSelectedId(first.id);
                   }}
                   onNextLevel={(id) => setLevel(exam, id)}
@@ -303,8 +306,8 @@ function SidePanel({
     <NeonWindow title={L('Bài chọn', 'Selected')} icon="gem" padded={false}>
       <View style={{ padding: 22, paddingBottom: 16 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <View style={{ borderRadius: 999, backgroundColor: P.goldWash, paddingHorizontal: 10, paddingVertical: 5 }}><Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 1.5, color: P.goldDeep }}>BAND 9</Text></View>
-          <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.2, color: P.goldDeep }}>
+          <View style={{ borderRadius: 999, backgroundColor: P.goldWash, paddingHorizontal: 10, paddingVertical: 5 }}><Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 1.5, color: P.goldDeep }}>BAND 9</Text></View>
+          <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 1.2, color: P.goldDeep }}>
             {prog.next ? (isNext ? L('HỌC TIẾP', 'NEXT') : L('ĐANG CHỌN', 'SELECTED')) : L('ĐÃ XONG HẾT', 'ALL DONE')}
           </Text>
         </View>
@@ -313,7 +316,7 @@ function SidePanel({
             <AllDone level={level} levels={levels} onNext={onNextLevel} light />
           </View>
         ) : null}
-        <Text className="font-strong" style={{ marginTop: 16, fontSize: 11, letterSpacing: 1.4, color: P.goldDeep }}>
+        <Text className="font-strong" style={{ marginTop: 16, fontSize: 13, letterSpacing: 1.4, color: P.goldDeep }}>
           {`PART ${partNo} · ${(en ? part.title.en : part.title.vi).toUpperCase()}`}
         </Text>
         <Text className="font-heavy" style={{ marginTop: 4, fontSize: 21, lineHeight: 27, color: P.navy }}>
@@ -325,7 +328,7 @@ function SidePanel({
       <View style={{ marginHorizontal: 20, borderTopWidth: 1, borderColor: P.line }} />
 
       <View style={{ paddingHorizontal: 16, paddingBottom: 18, paddingTop: 12, gap: 4 }}>
-        <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.3, color: P.muted, marginBottom: 4 }}>
+        <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 1.3, color: P.muted, marginBottom: 4 }}>
           {L(`${level.label} · ${level.parts.length} PART`, `${level.label} · ${level.parts.length} PARTS`)}
         </Text>
         {level.parts.map((p, i) => {
@@ -339,13 +342,13 @@ function SidePanel({
               onPress={() => onPickPart(p.id)}
               style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 11, paddingHorizontal: 10, paddingVertical: 9, backgroundColor: here ? P.goldWash : hovered ? '#F5F2FF' : 'transparent' })}
             >
-              <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: here ? P.gold : '#F5F2FF' }}><Text className="font-heavy" style={{ fontSize: 10, color: here ? '#FFFFFF' : P.goldDeep }}>
+              <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: here ? P.gold : '#F5F2FF' }}><Text className="font-heavy" style={{ fontSize: 12, color: here ? '#FFFFFF' : P.goldDeep }}>
                 {String(i + 1).padStart(2, '0')}
               </Text></View>
               <Text className="font-semi" numberOfLines={1} style={{ flex: 1, fontSize: 13, color: P.navy }}>
                 {en ? p.title.en : p.title.vi}
               </Text>
-              <Text className="font-strong" style={{ fontSize: 12, color: pp.done === pp.total ? '#3F9C6D' : P.muted }}>
+              <Text className="font-strong" style={{ fontSize: 14, color: pp.done === pp.total ? '#3F9C6D' : P.muted }}>
                 {pp.done}/{pp.total}
               </Text>
             </Pressable>

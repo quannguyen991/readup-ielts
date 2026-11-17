@@ -1,12 +1,12 @@
 import { themedHex } from '@/theme/palette-state';
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import Svg, { Path } from 'react-native-svg';
+import React from 'react';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 
-import { SealIcon } from '@/components/illust/HeroArt';
+import { NeonIcon, NeonWindow } from '@/components/neon/Neon';
+import type { NeonIconId } from '@/components/neon/neon-art';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { KIND_SKILL, type PathExam, type PathLevel, type PathNode, type PathPart, type PathTargetKind } from '@/data/learning-path';
+import { TILE_TONES } from '@/components/vocab/UnitTile';
 import { useL } from '@/i18n/useL';
 import type { NodeStatus } from '@/services/learning-path/progress';
 
@@ -142,7 +142,7 @@ export function LevelPicker({
             {planLevelId === l.id ? (
                 <View style={{ marginTop: 6, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 5, paddingHorizontal: 5, paddingVertical: 1, backgroundColor: on ? 'rgba(255,255,255,0.18)' : P.goldWash }}>
                 <Icon name="target" size={10} color={on ? '#FFFFFF' : P.goldDeep} strokeWidth={2.4} />
-                <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.4, color: on ? '#FFFFFF' : P.goldDeep }}>
+                <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 0.4, color: on ? '#FFFFFF' : P.goldDeep }}>
                   {L('Theo lộ trình', 'Your plan')}
                 </Text>
               </View>
@@ -217,7 +217,6 @@ export function NodeDetail({
   const statusText = useStatusText();
   const ink = dark ? '#FFFFFF' : P.navy;
   const sub = dark ? 'rgba(255,255,255,0.72)' : P.muted;
-  const rule = DONE_RULE[node.target.kind];
   const manualOn = !!status?.manual;
   const auto = status?.auto ?? true;
 
@@ -228,15 +227,9 @@ export function NodeDetail({
         <Tag text={L(`~${node.minutes} phút`, `~${node.minutes} min`)} dark={dark} icon="clock" />
         <Tag text={statusText(node, status, isNext)} dark={dark} icon={status?.state === 'done' ? 'check' : undefined} />
       </View>
-      <Text className="font-sans" style={{ fontSize: 15, lineHeight: 23, color: ink }}>
+      <Text className="font-sans" numberOfLines={2} style={{ fontSize: 14, lineHeight: 21, color: ink }}>
         {en ? node.desc.en : node.desc.vi}
       </Text>
-      <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-        <Icon name="info" size={14} color={dark ? P.goldLight : P.goldDeep} />
-        <Text className="font-sans" style={{ flex: 1, fontSize: 13, lineHeight: 19, color: sub }}>
-          {en ? rule.en : rule.vi}
-        </Text>
-      </View>
       <Pressable
         accessibilityRole="link"
         accessibilityLabel={`${primaryLabel(status, L)} · ${en ? node.title.en : node.title.vi}`}
@@ -308,12 +301,13 @@ function Tag({ text, dark, strong, icon }: { text: string; dark?: boolean; stron
 
 /* ------------------------------------------------------------------ đường mòn */
 
-const CONNECTOR_H = 34;
 
 /**
  * Một Part: tiêu đề "PART n" + tên chủ đề + tiến độ, rồi các bài so le trái /
  * phải nối nhau bằng đường chấm vàng uốn lượn như một con đường mòn.
  */
+const PART_ICON: NeonIconId[] = ['planet', 'rocket', 'moon', 'gem', 'coin', 'bolt', 'cloud', 'gift'];
+
 export function PartTrail({
   part,
   partNo,
@@ -337,159 +331,217 @@ export function PartTrail({
   renderDetail: (node: PathNode, index: number, dark: boolean) => React.ReactNode;
 }) {
   const { L, en } = useL();
-  const [w, setW] = useState(0);
-  const narrow = w > 0 && w < 520;
-  const cardW = w === 0 ? 0 : Math.round(narrow ? w * 0.68 : w * 0.46);
+  const statusText = useStatusText();
   const complete = progress.done === progress.total;
 
-  const centerX = (i: number, expanded: boolean) => (expanded || cardW === 0 || part.nodes.length === 1 ? w / 2 : i % 2 === 0 ? cardW / 2 : w - cardW / 2);
-
   return (
-    <View style={{ marginTop: 30 }}>
-      {/* đầu Part: chỉ vàng, PART n, tên chủ đề, tiến độ */}
-      <View style={{ borderTopWidth: 1, borderColor: P.line, paddingTop: 16, flexDirection: 'row', alignItems: 'flex-end', gap: 12 }}>
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text className="font-heavy" style={{ fontSize: 12, letterSpacing: 2.4, color: P.gold }}>
-            PART {partNo}
-          </Text>
-          <Text className="font-heavy" style={{ marginTop: 2, fontSize: 22, lineHeight: 28, color: P.navy }}>
-            {en ? part.title.en : part.title.vi}
-          </Text>
-          <Text className="font-sans" numberOfLines={2} style={{ marginTop: 2, fontSize: 14, lineHeight: 20, color: P.muted }}>
-            {en ? part.blurb.en : part.blurb.vi}
-          </Text>
+    <NeonWindow title={`PART ${partNo}`} badge={`${progress.done}/${progress.total}`} icon={PART_ICON[(partNo - 1) % PART_ICON.length]} padded={false} style={{ marginTop: 24 }}>
+      <View style={{ padding: 20, flexDirection: 'row', alignItems: 'center', gap: 14, borderBottomWidth: 2, borderColor: P.line }}>
+        <View style={{ width: 44, height: 44, borderRadius: 14, backgroundColor: P.goldWash, alignItems: 'center', justifyContent: 'center' }}>
+          <Text className="font-heavy" style={{ fontSize: 16, color: P.goldDeep }}>{String(partNo).padStart(2, '0')}</Text>
         </View>
-        <View style={{ width: 84, alignItems: 'flex-end', gap: 6 }}>
-          <Text className="font-heavy" style={{ fontSize: 18, color: complete ? P.goldDeep : P.navy }}>
-            {progress.done}
-            <Text className="font-semi" style={{ fontSize: 13, color: P.muted }}>
-              /{progress.total}
-            </Text>
-          </Text>
-          <View style={{ width: 84 }}>
-            <ProgressLine done={progress.done} total={progress.total} />
-          </View>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text className="font-heavy" style={{ fontSize: 19, lineHeight: 25, color: P.navy }}>{en ? part.title.en : part.title.vi}</Text>
+        </View>
+        <View style={{ alignItems: 'flex-end', gap: 6, width: 70 }}>
+          <Text className="font-heavy" style={{ fontSize: 14, color: complete ? '#16814E' : P.navy }}>{progress.done}/{progress.total}</Text>
+          <View style={{ width: 70 }}><ProgressLine done={progress.done} total={progress.total} /></View>
         </View>
       </View>
-
-      <View style={{ marginTop: 18 }} onLayout={(e: LayoutChangeEvent) => setW(e.nativeEvent.layout.width)}>
-        {part.nodes.map((n, i) => {
-          const expanded = inlineDetail && selectedId === n.id;
-          const prevExpanded = inlineDetail && i > 0 && selectedId === part.nodes[i - 1]!.id;
+      <View style={{ padding: 10, gap: 4 }}>
+        {part.nodes.map((node, i) => {
+          const selected = selectedId === node.id;
+          const expanded = inlineDetail && selected;
+          const next = nextId === node.id;
+          const status = statuses[node.id];
+          const done = status?.state === 'done';
           return (
-            <React.Fragment key={n.id}>
-              {i > 0 && w > 0 ? <Connector width={w} from={centerX(i - 1, prevExpanded)} to={centerX(i, expanded)} /> : null}
-              <View style={{ width: expanded || cardW === 0 ? '100%' : cardW, alignSelf: expanded ? 'stretch' : i % 2 === 0 ? 'flex-start' : 'flex-end' }}>
-                <NodeCard
-                  node={n}
-                  index={i + 1}
-                  status={statuses[n.id]}
-                  isNext={nextId === n.id}
-                  selected={selectedId === n.id}
-                  expanded={expanded}
-                  narrow={narrow}
-                  onPress={() => onSelect(n.id)}
-                >
-                  {expanded ? renderDetail(n, i + 1, nextId === n.id) : null}
-                </NodeCard>
-              </View>
-            </React.Fragment>
+            <View key={node.id}>
+              <Pressable accessibilityRole="button" aria-expanded={expanded} aria-selected={selected} onPress={() => onSelect(node.id)}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 13, backgroundColor: selected ? P.goldWash : '#FFFFFF', borderWidth: 1, borderColor: selected ? P.goldMid : 'transparent' }}>
+                <View style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: done ? '#E5F6ED' : next ? P.gold : P.goldWash }}>
+                  {done ? <NeonIcon name="check" height={20} /> : <Text className="font-heavy" style={{ fontSize: 12, color: next ? '#FFFFFF' : P.goldDeep }}>{String(i + 1).padStart(2, '0')}</Text>}
+                </View>
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <Text className="font-heavy" style={{ fontSize: 14, lineHeight: 20, color: P.navy }}>{en ? node.title.en : node.title.vi}</Text>
+                  <Text className="font-sans" style={{ marginTop: 2, fontSize: 12, color: P.muted }}>{en ? KIND_SKILL[node.target.kind].en : KIND_SKILL[node.target.kind].vi} · {node.minutes} {L('phút', 'min')}{next || done || status?.state === 'started' ? ` · ${statusText(node, status, next)}` : ''}</Text>
+                </View>
+                <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={17} color={P.goldDeep} />
+              </Pressable>
+              {expanded ? <View style={{ marginHorizontal: 12, marginBottom: 8, paddingHorizontal: 14, paddingBottom: 14, borderRadius: 14, backgroundColor: P.goldWash }}>{renderDetail(node, i + 1, false)}</View> : null}
+            </View>
           );
         })}
       </View>
-      {complete ? (
-        <Text className="font-strong" style={{ marginTop: 12, alignSelf: 'center', fontSize: 13, letterSpacing: 1, color: P.goldDeep }}>
-          {L(`✓ XONG PART ${partNo}`, `✓ PART ${partNo} COMPLETE`)}
-        </Text>
-      ) : null}
-    </View>
+    </NeonWindow>
   );
 }
 
-/** Đoạn nối chấm vàng uốn hình chữ S từ đáy thẻ trên tới đỉnh thẻ dưới. */
-function Connector({ width, from, to }: { width: number; from: number; to: number }) {
-  const h = CONNECTOR_H;
-  const d = `M ${from} 0 C ${from} ${h * 0.55}, ${to} ${h * 0.45}, ${to} ${h}`;
-  return (
-    <View aria-hidden style={{ height: h }} pointerEvents="none">
-      <Svg width={width} height={h}>
-        <Path d={d} stroke={P.goldMid} strokeWidth={2.5} strokeDasharray="0.5 7" strokeLinecap="round" fill="none" />
-      </Svg>
-    </View>
-  );
-}
+/* ------------------------------------------------------------------ ô thư mục màu */
 
-/** Nút bài kiểu bản đồ: trạng thái ở huy hiệu, tên bài nằm ngay bên dưới. */
-function NodeCard({
-  node,
-  index,
-  status,
-  isNext,
-  selected,
-  expanded,
-  narrow,
-  onPress,
-  children,
+/** Mỗi kỹ năng một màu cố định, để nhìn vào là biết đang ở dạng bài nào. */
+const KIND_TONE: Record<PathTargetKind, number> = {
+  vocab: 0,
+  'sat-vocab': 0,
+  read: 1,
+  bilingual: 2,
+  dictation: 7,
+  translate: 4,
+  write: 3,
+  speak: 6,
+  'math-lesson': 5,
+  'math-set': 1,
+  'sat-chapter': 4,
+  'rw-lesson': 2,
+  'rw-set': 3,
+};
+
+/** Thanh chọn Part: một hàng nút tròn có tiến độ, cuộn ngang trên máy nhỏ. */
+export function PartTabs({
+  parts,
+  value,
+  progress,
+  onChange,
 }: {
-  node: PathNode;
-  index: number;
-  status: NodeStatus | undefined;
-  isNext: boolean;
-  selected: boolean;
-  expanded: boolean;
-  /** Màn hẹp: thu nút tròn lại để giữ đủ khoảng trống hai bên đường học. */
-  narrow: boolean;
-  onPress: () => void;
-  children?: React.ReactNode;
+  parts: readonly PathPart[];
+  value: string;
+  progress: Record<string, { done: number; total: number }>;
+  onChange: (id: string) => void;
 }) {
   const { en } = useL();
-  const statusText = useStatusText();
-  const done = status?.state === 'done';
-  const started = status?.state === 'started';
-  const dark = isNext;
-
-  const seal = done || dark ? '#FFFFFF' : started ? P.goldDeep : P.navySoft;
-  const badge = started ? P.goldWash : '#FFFFFF';
-  const border = done ? '#16814E' : dark ? '#5B3AD6' : selected ? P.goldMid : P.line;
-  // Xong thì xanh lá, bài học tiếp thì tím đậm: cùng bảng màu với thẻ đơn vị ở trang SAT Math.
-  const fill: [string, string] = done ? ['#4FC3A1', '#1E9E74'] : ['#8B6CF0', '#5B3AD6'];
-  const kicker = `${String(index).padStart(2, '0')} · ${node.minutes}'`;
-
   return (
-    <View style={{ alignItems: 'center', width: '100%' }}>
-      <Pressable
-        accessibilityRole="button"
-        aria-expanded={expanded}
-        aria-selected={selected}
-        accessibilityLabel={`${en ? node.title.en : node.title.vi} · ${statusText(node, status, isNext)}`}
-        onPress={onPress}
-        style={{ width: '100%', alignItems: 'center', paddingHorizontal: 8, paddingVertical: 4 }}
-      >
-        <View style={{ width: narrow ? 58 : 66, height: narrow ? 58 : 66, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: badge, borderWidth: dark ? 3 : 2, borderColor: border, boxShadow: dark ? '0 6px 16px rgba(91,58,214,0.3)' : '0 2px 8px rgba(106,75,217,0.12)' } as object}>
-          {done || dark ? <LinearGradient colors={fill} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[StyleSheet.absoluteFill, { borderRadius: 40 }]} /> : null}
-          <SealIcon name={done ? 'check' : KIND_ICON[node.target.kind]} color={seal} size={32} />
-          {dark ? (
-            <View style={{ position: 'absolute', right: -5, bottom: -3, width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: P.navy, borderWidth: 2, borderColor: '#FFFFFF' }}>
-              <Icon name="play" size={12} color="#FFFFFF" />
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} accessibilityRole="tablist" contentContainerStyle={{ gap: 8, paddingVertical: 4, paddingRight: 12 }}>
+      {parts.map((p, i) => {
+        const on = p.id === value;
+        const pp = progress[p.id] ?? { done: 0, total: 0 };
+        const complete = pp.total > 0 && pp.done === pp.total;
+        return (
+          <Pressable
+            key={p.id}
+            accessibilityRole="tab"
+            aria-selected={on}
+            accessibilityLabel={`Part ${i + 1}: ${en ? p.title.en : p.title.vi}`}
+            onPress={() => onChange(p.id)}
+            style={{ flexDirection: 'row', alignItems: 'center', gap: 8, height: 44, paddingHorizontal: 16, borderRadius: 999, backgroundColor: on ? P.gold : '#FFFFFF', borderWidth: 1, borderColor: on ? P.gold : P.line }}
+          >
+            <Text className="font-heavy" style={{ fontSize: 15, color: on ? '#FFFFFF' : P.navy }}>{`Part ${i + 1}`}</Text>
+            <View style={{ borderRadius: 999, paddingHorizontal: 8, paddingVertical: 1, backgroundColor: on ? 'rgba(255,255,255,0.24)' : complete ? '#E5F6ED' : P.goldWash }}>
+              <Text className="font-strong" style={{ fontSize: 13, color: on ? '#FFFFFF' : complete ? '#16814E' : P.goldDeep }}>{pp.done}/{pp.total}</Text>
             </View>
-          ) : null}
+          </Pressable>
+        );
+      })}
+    </ScrollView>
+  );
+}
+
+/**
+ * Một Part dạng lưới ô màu: tai thư mục ghi kỹ năng, số phút thật to, tên bài và trạng thái.
+ * Bài xong ngả sang xanh lá, bài học tiếp có viền vàng; chạm vào để xem chi tiết.
+ */
+export function PartTiles({
+  part,
+  partNo,
+  progress,
+  statuses,
+  nextId,
+  selectedId,
+  inlineDetail,
+  onSelect,
+  renderDetail,
+}: {
+  part: PathPart;
+  partNo: number;
+  progress: { done: number; total: number };
+  statuses: Record<string, NodeStatus>;
+  nextId: string | null;
+  selectedId: string | null;
+  inlineDetail: boolean;
+  onSelect: (id: string) => void;
+  renderDetail: (node: PathNode, index: number, dark: boolean) => React.ReactNode;
+}) {
+  const { L, en } = useL();
+  const statusText = useStatusText();
+  const expandedNode = inlineDetail ? part.nodes.find((n) => n.id === selectedId) : undefined;
+  return (
+    <View style={{ marginTop: 14 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 4 }}>
+        <View style={{ width: 48, height: 48, borderRadius: 16, backgroundColor: P.gold, alignItems: 'center', justifyContent: 'center' }}>
+          <Text className="font-heavy" style={{ fontSize: 18, color: '#FFFFFF' }}>{String(partNo).padStart(2, '0')}</Text>
         </View>
-        <View style={{ alignItems: 'center', width: '100%', marginTop: 4 }}>
-          <Text className="font-semi" numberOfLines={1} style={{ fontSize: 11, letterSpacing: 0.7, color: dark ? P.goldDeep : P.muted }}>
-            {kicker}
-          </Text>
-          <Text className="font-heavy" numberOfLines={2} style={{ marginTop: 1, textAlign: 'center', fontSize: 15, lineHeight: 20, color: P.navy }}>
-            {en ? node.title.en : node.title.vi}
-          </Text>
-          {dark || started || done ? <Text className="font-semi" numberOfLines={1} style={{ marginTop: 1, fontSize: 12, color: done ? '#16814E' : dark ? P.goldDeep : P.muted }}>{statusText(node, status, isNext)}</Text> : null}
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text className="font-heavy" style={{ fontSize: 22, lineHeight: 28, color: P.navy }}>{en ? part.title.en : part.title.vi}</Text>
+          <Text className="font-sans" style={{ fontSize: 14, color: P.muted }}>{progress.done}/{progress.total} {L('bài đã xong', 'lessons done')}</Text>
         </View>
-        <View style={{ position: 'absolute', top: 26, right: 7 }}>
-          <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={16} color={dark ? P.goldDeep : P.faint} />
-        </View>
-      </Pressable>
-      {children ? (
-        <View style={{ width: '100%', marginTop: 12, borderRadius: 16, borderWidth: 1, borderColor: dark ? P.navy : selected ? P.goldLight : P.line, backgroundColor: dark ? P.navy : P.paper, paddingHorizontal: 14, paddingBottom: 14, paddingTop: 2 }}>
-          {children}
+      </View>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 6 }}>
+        {part.nodes.map((node, i) => {
+          const [from, to] = TILE_TONES[KIND_TONE[node.target.kind] ?? 0] ?? TILE_TONES[0]!;
+          const status = statuses[node.id];
+          const done = status?.state === 'done';
+          const next = nextId === node.id;
+          const selected = selectedId === node.id;
+          const c1 = done ? '#27A872' : from;
+          const c2 = done ? '#157A4F' : to;
+          return (
+            <Pressable
+              key={node.id}
+              accessibilityRole="button"
+              aria-expanded={inlineDetail ? selected : undefined}
+              aria-selected={selected}
+              onPress={() => onSelect(node.id)}
+              style={({ hovered }: { hovered?: boolean }) =>
+                ({
+                  flexGrow: 1,
+                  flexBasis: 220,
+                  minHeight: 156,
+                  marginTop: 12,
+                  padding: 14,
+                  borderRadius: 22,
+                  borderTopLeftRadius: 8,
+                  backgroundColor: c1,
+                  backgroundImage: `linear-gradient(145deg, ${c1}, ${c2})`,
+                  boxShadow: selected
+                    ? `0 0 0 3px #FFFFFF, 0 0 0 6px ${P.gold}, 0 12px 26px ${c2}55`
+                    : next
+                      ? `0 0 0 3px #FDE68A, 0 8px 20px ${c2}44`
+                      : hovered
+                        ? `0 12px 26px ${c2}55`
+                        : `0 6px 16px ${c2}33`,
+                  transform: [{ translateY: hovered ? -3 : 0 }],
+                  transition: 'transform 180ms ease, box-shadow 180ms ease',
+                }) as never
+              }
+            >
+              <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -11, width: 64, height: 14, borderTopLeftRadius: 8, borderTopRightRadius: 12, backgroundColor: c2 }} />
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
+                <View style={{ flexShrink: 1, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: 'rgba(255,255,255,0.22)' }}>
+                  <Text numberOfLines={1} style={{ fontSize: 12, fontFamily: 'Inter_700Bold', letterSpacing: 0.6, color: '#FFFFFF' }}>{(en ? KIND_SKILL[node.target.kind].en : KIND_SKILL[node.target.kind].vi).toUpperCase()}</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 3 }}>
+                  <Text style={{ fontSize: 32, lineHeight: 34, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{node.minutes}</Text>
+                  <Text style={{ fontSize: 12, fontFamily: 'Inter_700Bold', color: 'rgba(255,255,255,0.85)' }}>{L('PHÚT', 'MIN')}</Text>
+                </View>
+              </View>
+              <Text numberOfLines={3} style={{ marginTop: 10, fontSize: 17, lineHeight: 22, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{en ? node.title.en : node.title.vi}</Text>
+              <View style={{ flex: 1 }} />
+              <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <View style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.25)' }}>
+                  {done ? <Icon name="check" size={16} color="#FFFFFF" strokeWidth={3} /> : <Text style={{ fontSize: 13, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{String(i + 1).padStart(2, '0')}</Text>}
+                </View>
+                <Text numberOfLines={1} style={{ flex: 1, fontSize: 14, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{statusText(node, status, next)}</Text>
+                <Icon name="chevron-right" size={16} color="#FFFFFF" strokeWidth={2.4} />
+              </View>
+              <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, borderRadius: 22, borderTopLeftRadius: 8, overflow: 'hidden' }}>
+                <View style={{ position: 'absolute', right: -24, bottom: -24, width: 96, height: 96, borderRadius: 48, backgroundColor: 'rgba(255,255,255,0.12)' }} />
+              </View>
+            </Pressable>
+          );
+        })}
+      </View>
+      {expandedNode ? (
+        <View style={{ marginTop: 14, padding: 16, borderRadius: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: P.line }}>
+          {renderDetail(expandedNode, part.nodes.indexOf(expandedNode) + 1, false)}
         </View>
       ) : null}
     </View>

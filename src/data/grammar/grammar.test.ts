@@ -29,3 +29,14 @@ test('thứ tự bài trong mỗi cấp liên tục từ 1', () => {
     orders.forEach((o, i) => assert.equal(o, i + 1, `${lv}: thứ tự bài không liên tục`));
   }
 });
+
+test('chuỗi tô nổi (mark) nằm đúng trong câu ví dụ và mọi ví dụ có bản dịch', () => {
+  for (const l of GRAMMAR_LESSONS) {
+    for (const s of l.steps) {
+      for (const e of s.examples ?? []) {
+        if (e.mark) assert.ok(e.en.includes(e.mark), `${l.id}: mark "${e.mark}" không nằm trong "${e.en}"`);
+        assert.ok(e.vi.trim().length > 0, `${l.id}: thiếu bản dịch cho "${e.en}"`);
+      }
+    }
+  }
+});

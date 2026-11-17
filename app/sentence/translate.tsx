@@ -14,6 +14,8 @@ import {
 import { SENTENCE_ENRICHMENT } from '@/data/sentence-enrichment';
 import { getTranslationSet } from '@/data/translation-sets';
 import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
+import { SentenceHero } from '@/components/sentence/SentenceHero';
+import { StructureBreakdown } from '@/components/sentence/StructureBreakdown';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
 import { buildLetterBoard, gradeLetters, revealNextWord as revealThroughNextWord, sanitizeTyped } from '@/services/sentence/letter-cells';
 import { chunkItems, itemsForStructure } from '@/services/writing/translation-path';
@@ -206,6 +208,14 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
         />
       }
     >
+      <View className="mb-5">
+        <SentenceHero
+          kind="translation"
+          title={L('Dịch Câu', 'Translate')}
+          sub={L('Đọc câu tiếng Việt, tái tạo đúng câu tiếng Anh từng chữ, rồi học các cách diễn đạt khác.', 'Read the Vietnamese, rebuild the English letter by letter, then learn other ways to say it.')}
+          secondary={{ label: L('Dịch essay dài', 'Long essays'), onPress: () => router.push('/sentence/essay' as never) }}
+        />
+      </View>
       <TranslationLibrary />
     </TaskShell>
   );
@@ -227,6 +237,7 @@ function RunningView({
   onSubmit: (attempt: TranslationAttempt) => void;
 }) {
   const { L, en } = useL();
+  const recordItem = useSentenceStore((s) => s.recordItem);
   const [letters, setLetters] = useState('');
   const [showHint, setShowHint] = useState(false);
   /*
@@ -296,6 +307,7 @@ function RunningView({
   }, [item.id]);
 
   const goNext = () => {
+    recordItem('translation', item.id, done && !showHint && !revealed ? 1 : 0, done && !showHint && !revealed);
     onSubmit({
       itemId: item.id,
       topic: item.topic,
@@ -573,6 +585,9 @@ function RunningView({
                 </View>
               </View>
             ) : null}
+
+            {/* Giải cấu trúc câu mẫu — chỉ với một câu (lượt gộp nhiều câu thì bỏ). Cách diễn đạt khác đã có ở khối trên. */}
+            {finished && !/[.!?]\s+\S/.test(item.en) ? <StructureBreakdown text={item.en} id={item.id} vi={item.vi} showRewrites={!enrichment} /> : null}
           </View>
         </View>
       </View>

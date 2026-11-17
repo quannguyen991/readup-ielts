@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Image, Modal, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
 import { HUB_UI, HubBar, HubHero, HubPanel, HubTag, hubLift } from '@/components/hub/HubUi';
 import { TalkRow, allTalks } from '@/components/hub/TalkCards';
 import { Icon } from '@/components/ui/Icon';
+import { hubCover } from '@/data/hub-covers';
 import { SPEAKING_TOPICS } from '@/data/hub/speaking-topics';
 import { useL } from '@/i18n/useL';
 import { PHONEMES } from '@/services/hub/phonemes';
@@ -26,14 +27,14 @@ const SURPRISES = [
 
 /** Công cụ AI — cùng tám công cụ với trang Hôm nay, để vào luyện ngay từ Khám phá. */
 const TOOLS = [
-  { title: 'Phân tích giọng nói', desc: 'Chấm phát âm, ngữ điệu, lưu loát', icon: '🎙️', tint: '#DFEEFF', route: '/hub/analyze', tag: 'MỚI' },
-  { title: 'Điều chỉnh giọng nói', desc: 'Sửa trọng âm và ngữ điệu', icon: '🎧', tint: '#FFF0D6', route: '/hub/pitch' },
-  { title: 'Video ngắn', desc: 'Xem clip rồi nói lại cụm từ', icon: '📱', tint: '#FFE3EC', route: '/hub/short', tag: 'BETA' },
-  { title: 'Nói đuổi', desc: 'Nói theo giọng bản ngữ', icon: '🔁', tint: '#EFE4FF', route: '/hub/shadow', tag: 'BETA' },
-  { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại', icon: '🎭', tint: '#FFE3E0', route: '/hub/scenarios' },
-  { title: 'Chủ đề', desc: 'Nói 1–2 phút có gợi ý ý', icon: '🌏', tint: '#DDF7E8', route: '/hub/topics' },
-  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', icon: '💡', tint: '#FFF0D6', route: '/hub/tutor' },
-  { title: 'Trợ lý họp', desc: 'Phản hồi sau các cuộc họp', icon: '📅', tint: '#F3E9FF', route: '/hub/meeting' },
+  { title: 'Phân tích giọng nói', desc: 'Chấm phát âm, ngữ điệu, lưu loát', icon: '🎙️', tint: '#DFEEFF', route: '/hub/analyze', cover: 'tool-analyze', tag: 'MỚI' },
+  { title: 'Điều chỉnh giọng nói', desc: 'Sửa trọng âm và ngữ điệu', icon: '🎧', tint: '#FFF0D6', route: '/hub/pitch', cover: 'tool-pitch' },
+  { title: 'Video ngắn', desc: 'Xem clip rồi nói lại cụm từ', icon: '📱', tint: '#FFE3EC', route: '/hub/short', cover: 'tool-short', tag: 'BETA' },
+  { title: 'Nói đuổi', desc: 'Nói theo giọng bản ngữ', icon: '🔁', tint: '#EFE4FF', route: '/hub/shadow', cover: 'tool-shadow', tag: 'BETA' },
+  { title: 'Tình huống nói', desc: 'Nhập vai, gọi điện, hội thoại', icon: '🎭', tint: '#FFE3E0', route: '/hub/scenarios', cover: 'tool-scenarios' },
+  { title: 'Chủ đề', desc: 'Nói 1–2 phút có gợi ý ý', icon: '🌏', tint: '#DDF7E8', route: '/hub/topics', cover: 'tool-topics' },
+  { title: 'Gia sư', desc: 'Trò chuyện và sửa lỗi cùng AI', icon: '💡', tint: '#FFF0D6', route: '/hub/tutor', cover: 'grammar' },
+  { title: 'Trợ lý họp', desc: 'Phản hồi sau các cuộc họp', icon: '📅', tint: '#F3E9FF', route: '/hub/meeting', cover: 'tool-meeting' },
 ];
 
 export default function HubExplore() {
@@ -133,9 +134,13 @@ export default function HubExplore() {
           {TOOLS.map((t) => (
             <Pressable key={t.title} accessibilityRole="button" accessibilityLabel={t.title} onPress={() => router.push(t.route as never)} style={({ hovered }: Hover) => ({ width: 200, gap: 6, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <View style={{ width: 50, height: 50, borderRadius: 15, backgroundColor: t.tint, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 26 }}>{t.icon}</Text>
-                </View>
+                {hubCover(t.cover) ? (
+                  <Image source={{ uri: hubCover(t.cover)! }} accessibilityIgnoresInvertColors style={{ width: 64, height: 64, borderRadius: 16, backgroundColor: t.tint }} resizeMode="cover" />
+                ) : (
+                  <View style={{ width: 64, height: 64, borderRadius: 16, backgroundColor: t.tint, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 30 }}>{t.icon}</Text>
+                  </View>
+                )}
                 {t.tag ? <HubTag label={t.tag} color="#7C3AED" bg="#EDE9FE" /> : null}
               </View>
               <Text style={{ color: HUB_UI.navy, fontSize: 15.5, fontWeight: '900' }}>{t.title}</Text>

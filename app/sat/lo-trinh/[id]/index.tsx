@@ -220,7 +220,7 @@ export default function RoadChapterScreen() {
               <View key={lv} style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: tone.soft, borderWidth: 2, borderColor: st === 'passed' ? tone.bg : 'transparent', gap: 8 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <View style={{ gap: 6 }}>
-                    <Label text={st === 'passed' ? L('Đã qua 🏅', 'Passed 🏅') : st === 'tried' ? L('Đang luyện', 'In progress') : L('Chưa mở', 'Not started')} color={st === 'passed' ? tone.bg : '#FFFFFF'} ink={st === 'passed' ? '#FFFFFF' : tone.ink} tilt={-4} size={12} />
+                    <Label text={st === 'passed' ? L('Đã qua 🏅', 'Passed 🏅') : st === 'tried' ? L('Đang luyện', 'In progress') : L('Chưa mở', 'Not started')} color={st === 'passed' ? tone.bg : '#FFFFFF'} ink={st === 'passed' ? '#FFFFFF' : tone.ink} tilt={-4} size={13} />
                     <Text className="font-heavy" style={{ fontSize: 22, color: tone.ink }}>
                       {en ? LEVEL_LABEL[lv].en : LEVEL_LABEL[lv].vi}
                     </Text>
@@ -285,7 +285,7 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
             <CuteBook size={64} />
           </Sticker>
         </Motion>
-        <Label text={L('Theo sách', 'From the book')} color="#FACC15" ink="#2B2350" tilt={4} size={12} />
+        <Label text={L('Theo sách', 'From the book')} color="#FACC15" ink="#2B2350" tilt={4} size={13} />
       </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
         <Text className="font-heavy" style={{ fontSize: 22, color: '#FFFFFF' }}>
@@ -340,7 +340,7 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
             <CutePencil size={60} />
           </Sticker>
         </Motion>
-        <Label text={L(`+${EXTRA_SIZE} câu`, `+${EXTRA_SIZE} questions`)} color="#0F172A" ink="#FFFFFF" tilt={-4} size={12} />
+        <Label text={L(`+${EXTRA_SIZE} câu`, `+${EXTRA_SIZE} questions`)} color="#0F172A" ink="#FFFFFF" tilt={-4} size={13} />
       </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
         <Text className="font-heavy" style={{ fontSize: 22, color: '#2B2350' }}>
@@ -372,7 +372,7 @@ function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title:
       <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: tone, borderWidth: 1, borderColor: '#F3F0FB' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 14 }}>
           <View style={{ flex: 1, gap: 2 }}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: '#64748B' }}>
+            <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: '#64748B' }}>
               {kicker}
             </Text>
             <Text className="font-heavy" style={{ fontSize: 28, color: '#0F172A' }}>
@@ -380,7 +380,7 @@ function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title:
             </Text>
             {tag ? (
               <View style={{ marginTop: 6 }}>
-                <Label text={tag.text} color={tag.color} ink={tag.ink} tilt={-3} size={12} />
+                <Label text={tag.text} color={tag.color} ink={tag.ink} tilt={-3} size={13} />
               </View>
             ) : null}
           </View>

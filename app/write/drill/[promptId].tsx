@@ -4,6 +4,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 
 import { Badge, Button, Card, Icon } from '@/components/ui';
 import { ChartFigure } from '@/components/writing/ChartFigure';
+import { Task1SourceFigure } from '@/components/writing/Task1SourceFigure';
 import { getWritingPromptById } from '@/data/writing-repository';
 import { analyseDraft } from '@/services/writing/analyzer';
 import { gradeBrainstorm, gradeOverview, gradeParaphrase } from '@/services/writing/drill-grader';
@@ -189,7 +190,9 @@ export default function WritingDrillScreen() {
 
         <View className="mt-4 flex-col gap-4 lg:flex-row">
           <View className="lg:w-[36%]">
-            {prompt.chartData ? <ChartFigure data={prompt.chartData} width={400} /> : null}
+            {prompt.chartData ? <ChartFigure data={prompt.chartData} width={400} /> : prompt.task === 'ielts_task1' && prompt.sourceCharts?.length ? (
+              <Task1SourceFigure charts={prompt.sourceCharts} english={en} />
+            ) : null}
           </View>
 
           <View className="lg:flex-1">

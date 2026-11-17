@@ -16,7 +16,6 @@ import {
   PlusJakartaSans_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/plus-jakarta-sans';
-// Be Vietnam Pro: phông chính của app (các class font-sans/mid/semi/strong/heavy, xem tailwind.config.js).
 // Thiết kế riêng cho tiếng Việt, dấu rõ và đều ở mọi cỡ chữ.
 // Nạp từng trọng lượng theo đường dẫn riêng: gói gom tất cả (index gốc) kéo theo cả biến thể
 // Italic có file thiếu trong bản 0.4.1, làm Metro lỗi khi build.
@@ -28,11 +27,6 @@ import { Inter_700Bold } from '@expo-google-fonts/inter/700Bold';
 // Inter Tight: phông tiêu đề (display) — chữ to, khoảng cách hẹp, nét gọn kiểu Apple.
 import { InterTight_600SemiBold } from '@expo-google-fonts/inter-tight/600SemiBold';
 import { InterTight_500Medium } from '@expo-google-fonts/inter-tight/500Medium';
-import { BeVietnamPro_400Regular } from '@expo-google-fonts/be-vietnam-pro/400Regular';
-import { BeVietnamPro_500Medium } from '@expo-google-fonts/be-vietnam-pro/500Medium';
-import { BeVietnamPro_600SemiBold } from '@expo-google-fonts/be-vietnam-pro/600SemiBold';
-import { BeVietnamPro_700Bold } from '@expo-google-fonts/be-vietnam-pro/700Bold';
-import { BeVietnamPro_800ExtraBold } from '@expo-google-fonts/be-vietnam-pro/800ExtraBold';
 // Nunito: font bo tròn cho giao diện trang chủ kiểu nhân vật (xem src/components/cute-home).
 import {
   Nunito_400Regular,
@@ -99,11 +93,6 @@ export default function RootLayout() {
     Inter_500Medium,
     Inter_600SemiBold,
     Inter_700Bold,
-    BeVietnamPro_400Regular,
-    BeVietnamPro_500Medium,
-    BeVietnamPro_600SemiBold,
-    BeVietnamPro_700Bold,
-    BeVietnamPro_800ExtraBold,
     PlusJakartaSans_400Regular,
     PlusJakartaSans_500Medium,
     PlusJakartaSans_600SemiBold,
@@ -169,11 +158,11 @@ function AppTitle() {
   return (
     <Head>
       <title>Band 9</title>
-      {/* Nạp phông Be Vietnam Pro qua Google Fonts để web hiển thị ngay tức thì, đồng bộ mọi thiết bị */}
+      {/* Nạp phông Inter qua Google Fonts để web hiển thị ngay tức thì, đồng bộ mọi thiết bị */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
       {/* Manifest + chế độ standalone: iPhone chỉ nhận thông báo đẩy (nhắc học)

@@ -19,6 +19,8 @@ export const BOOK_COVER: Record<string, { lang: EaLang; key: string }> = {
   'book-jlpt-open-vocabulary': { lang: 'ja', key: 'bookTorii' },
   'book-hsk-3-0': { lang: 'zh', key: 'bookHsk' },
   'book-hsk-2-0-community': { lang: 'zh', key: 'bookDragon' },
+  'book-zh-tocfl-linzi': { lang: 'zh', key: 'bookLotus' },
+  'book-zh-frequency-doudou-10k': { lang: 'zh', key: 'bookMoon' },
 };
 
 export const coverOf = (slug: string): number | undefined => {

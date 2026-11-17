@@ -40,7 +40,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/review\/[^/]+$/,
 
   // Luyện câu: dịch câu và chép chính tả.
-  /^\/sentence\/(translate|dictation|youtube)$/,
+  /^\/sentence\/(translate|dictation|youtube|express|paragraph|essay|mix)$/,
   // Đọc theo một bài VOA và phòng đấu 1–1: có micro / đồng hồ, không mời rẽ ngang.
   /^\/shadow\/[^/]+$/,
   /^\/duel\/[^/]+$/,
@@ -106,7 +106,7 @@ export function isLookupBlocked(pathname: string): boolean {
 }
 
 /** Màn luyện câu có nền cá nhân hoá (cảnh bay, cảnh thành phố, tranh…; tông sáng): chép chính tả, dịch câu, nghe chép, chép theo video. */
-const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate|listen|youtube)$/;
+const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate|listen|youtube|express|paragraph|essay|mix)$/;
 
 /** Màn có nền cảnh bay: ôn từ vựng (tông tối) + luyện câu (tông sáng). */
 export function isTravelRoute(pathname: string): boolean {

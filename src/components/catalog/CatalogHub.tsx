@@ -39,6 +39,8 @@ export type CatalogItem = {
   group: GroupKey;
   title: string;
   done: boolean;
+  /** Trạng thái học (chưa/đang/đã). Có ít nhất một bài mang trường này thì hiện thêm bộ lọc trạng thái. */
+  state?: 'new' | 'learning' | 'learned';
   node: React.ReactNode;
 };
 
@@ -73,6 +75,13 @@ export function CatalogHub({
   const [level, setLevel] = useState<StageKey | 'all'>(() => recommended ?? 'all');
   const [group, setGroup] = useState<GroupKey | 'all'>('all');
   const [query, setQuery] = useState('');
+  const [state, setState] = useState<'all' | 'new' | 'learning' | 'learned'>('all');
+  const hasState = useMemo(() => items.some((it) => it.state !== undefined), [items]);
+  const stateCounts = useMemo(() => {
+    const m = { new: 0, learning: 0, learned: 0 };
+    for (const it of items) if (it.state) m[it.state] += 1;
+    return m;
+  }, [items]);
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   const needle = foldVi(query.trim());
@@ -82,9 +91,10 @@ export function CatalogHub({
         (it) =>
           (level === 'all' || it.level === level) &&
           (group === 'all' || it.group === group) &&
+          (state === 'all' || it.state === state) &&
           (!needle || foldVi(`${it.title} ${it.topic}`).includes(needle)),
       ),
-    [items, level, group, needle],
+    [items, level, group, needle, state],
   );
 
   // Số bài theo nhóm trong phạm vi mức + tìm kiếm (không tính bộ lọc nhóm, để chip hiện đúng số sẽ thấy).
@@ -161,6 +171,15 @@ export function CatalogHub({
           ))}
           <Chip on={level === 'all'} onPress={() => setLevel('all')} label={L('Mọi mức', 'All levels')} outline />
         </ScrollView>
+
+        {hasState ? (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 4 }}>
+            <Chip on={state === 'all'} onPress={() => setState('all')} label={L('Mọi trạng thái', 'Any status')} outline />
+            <Chip on={state === 'new'} onPress={() => setState(state === 'new' ? 'all' : 'new')} label={L('Chưa học', 'Not started')} count={stateCounts.new} />
+            <Chip on={state === 'learning'} onPress={() => setState(state === 'learning' ? 'all' : 'learning')} label={L('Đang học', 'In progress')} count={stateCounts.learning} />
+            <Chip on={state === 'learned'} onPress={() => setState(state === 'learned' ? 'all' : 'learned')} label={L('Đã học', 'Learned')} count={stateCounts.learned} />
+          </ScrollView>
+        ) : null}
       </View>
 
       {/* ───────────── DANH SÁCH BÀI ───────────── */}

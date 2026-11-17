@@ -1,0 +1,619 @@
+[
+ {
+  "id": "zh-g-h2-01",
+  "level": 2,
+  "order": 1,
+  "title": "Bổ ngữ kết quả",
+  "titleZh": "结果补语",
+  "summary": "Bạn sẽ diễn tả hành động đã hoàn thành hoặc tạo ra kết quả cụ thể.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói rõ kết quả",
+    "body": "Bổ ngữ kết quả đứng sau động từ để cho biết hành động đạt kết quả gì. Ví dụ, nghe hiểu và viết sai có kết quả khác nhau.",
+    "examples": [
+     {
+      "zh": "老师的话我都听懂了。",
+      "py": "Lǎoshī de huà wǒ dōu tīngdǒng le",
+      "vi": "Tôi đã nghe hiểu lời thầy cô nói."
+     },
+     {
+      "zh": "我今天写错了一个字。",
+      "py": "Wǒ jīntiān xiěcuò le yí ge zì",
+      "vi": "Hôm nay tôi viết sai một chữ."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn theo kết quả",
+    "body": "Dùng 完 khi việc đã xong, 好 khi đã làm xong hoặc chuẩn bị ổn, 懂 khi đã hiểu. Dùng 错 để nói làm sai và 会 để nói đã học được một kỹ năng.",
+    "examples": [
+     {
+      "zh": "爸爸已经做好晚饭了。",
+      "py": "Bàba yǐjīng zuòhǎo wǎnfàn le",
+      "vi": "Bố đã chuẩn bị xong bữa tối."
+     },
+     {
+      "zh": "我学会了用这个字。",
+      "py": "Wǒ xuéhuì le yòng zhè ge zì",
+      "vi": "Tôi đã học được cách dùng chữ này."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Động từ cộng kết quả",
+    "body": "Đặt 完、好、懂、错 hoặc 会 ngay sau động từ. 了 thường đứng sau phần bổ ngữ để đánh dấu kết quả đã xảy ra.",
+    "formula": "S + V + 完/好/懂/错/会 + (了) + O",
+    "examples": [
+     {
+      "zh": "我已经看完这本书了。",
+      "py": "Wǒ yǐjīng kànwán zhè běn shū le",
+      "vi": "Tôi đã đọc xong quyển sách này."
+     },
+     {
+      "zh": "他听错了我的名字。",
+      "py": "Tā tīngcuò le wǒ de míngzi",
+      "vi": "Anh ấy đã nghe nhầm tên tôi."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Không đổi thứ tự",
+    "body": "Bổ ngữ kết quả đi sát sau động từ, không chen 了 vào giữa. Nếu có tân ngữ, tân ngữ thường đứng sau cả cụm động từ và bổ ngữ.",
+    "examples": [
+     {
+      "zh": "妹妹做好了今天的早饭。",
+      "py": "Mèimei zuòhǎo le jīntiān de zǎofàn",
+      "vi": "Em gái đã làm xong bữa sáng hôm nay."
+     },
+     {
+      "zh": "小明看完了电影才回家。",
+      "py": "Xiǎomíng kànwán le diànyǐng cái huíjiā",
+      "vi": "Tiểu Minh xem hết phim rồi mới về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 了 sau bổ ngữ",
+    "body": "Người học thường đặt 了 giữa động từ và bổ ngữ, khiến thứ tự câu không đúng. Hãy giữ động từ và bổ ngữ liền nhau.",
+    "mistakes": [
+     {
+      "wrong": "我已经看了完这本书。",
+      "right": "我已经看完这本书了。",
+      "why": "完 phải đứng ngay sau 看, còn 了 đứng sau bổ ngữ."
+     },
+     {
+      "wrong": "老师的话我听了懂。",
+      "right": "老师的话我听懂了。",
+      "why": "懂 là bổ ngữ của 听 nên không đặt 了 giữa hai phần."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Tôi đã ___ quyển sách này rồi, tối nay có thể trả bạn.",
+    "options": [
+     "看错",
+     "看完",
+     "看懂",
+     "看好"
+    ],
+    "answer": 1,
+    "explain": "看完 nghĩa là đọc xong."
+   },
+   {
+    "q": "Nghe thầy cô giải thích xong, cô ấy đã ___ từ này.",
+    "options": [
+     "听错了",
+     "听好了",
+     "听懂了",
+     "听会了"
+    ],
+    "answer": 2,
+    "explain": "听懂了 diễn tả kết quả là đã nghe hiểu."
+   },
+   {
+    "q": "Tôi định viết chữ này nhưng lại viết sai: 我把这个字___。",
+    "options": [
+     "写好",
+     "学会",
+     "看完",
+     "写错"
+    ],
+    "answer": 3,
+    "explain": "写错 nghĩa là viết sai."
+   },
+   {
+    "q": "Bữa tối đã làm xong, cả nhà có thể ăn rồi: 这个饭已经___。",
+    "options": [
+     "做好",
+     "听懂",
+     "写错",
+     "学会"
+    ],
+    "answer": 0,
+    "explain": "做好 nói món ăn đã được làm xong."
+   },
+   {
+    "q": "Cô ấy đã học được cách dùng chữ này: 她已经___用这个字了。",
+    "options": [
+     "看完了",
+     "学会了",
+     "写错了",
+     "做好了"
+    ],
+    "answer": 1,
+    "explain": "学会了 nghĩa là đã học được."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h2-02",
+  "level": 2,
+  "order": 2,
+  "title": "Bổ ngữ xu hướng",
+  "titleZh": "趋向补语",
+  "summary": "Bạn sẽ chọn 来、去 và các dạng kết hợp để nói hướng di chuyển.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói hướng di chuyển",
+    "body": "来 và 去 đứng sau động từ để cho biết chuyển động hướng về phía người nói hay đi xa khỏi người nói. Có thể ghép chúng với 上、下、进、出、回、过 để nói hướng cụ thể hơn.",
+    "examples": [
+     {
+      "zh": "请你进来坐一会儿。",
+      "py": "Qǐng nǐ jìnlái zuò yíhuìr",
+      "vi": "Mời bạn vào đây ngồi một lát."
+     },
+     {
+      "zh": "弟弟从学校回来了。",
+      "py": "Dìdi cóng xuéxiào huílai le",
+      "vi": "Em trai đã từ trường về đây."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Xác định điểm nhìn",
+    "body": "Chọn 来 khi chuyển động hướng về chỗ người nói; chọn 去 khi chuyển động rời xa chỗ đó. Hãy xác định người nói đang ở đâu trong tình huống.",
+    "examples": [
+     {
+      "zh": "我在外面等他，他从教室走出来了。",
+      "py": "Wǒ zài wàimiàn děng tā tā cóng jiàoshì zǒu chūlái le",
+      "vi": "Tôi đợi bên ngoài, anh ấy đi ra khỏi lớp."
+     },
+     {
+      "zh": "小明从门外跑进来了。",
+      "py": "Xiǎomíng cóng ménwài pǎo jìnlái le",
+      "vi": "Tiểu Minh chạy từ ngoài cửa vào đây."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Động từ cộng hướng",
+    "body": "Cấu trúc đơn thường là động từ cộng 来 hoặc 去. Cấu trúc kép ghép thêm từ chỉ hướng như 进来、出来、拿过去; với một số tân ngữ, tân ngữ đứng giữa phần hướng và 来 hoặc 去.",
+    "formula": "S + V + 来/去 ； S + V + 上/下/进/出/回/过 + 来/去",
+    "examples": [
+     {
+      "zh": "爸爸把书拿过去给老师。",
+      "py": "Bàba bǎ shū ná guòqu gěi lǎoshī",
+      "vi": "Bố mang quyển sách qua cho thầy cô."
+     },
+     {
+      "zh": "妈妈把水拿过来给我。",
+      "py": "Māma bǎ shuǐ ná guòlái gěi wǒ",
+      "vi": "Mẹ mang nước lại cho tôi."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Nói rõ điểm đến",
+    "body": "Trong dạng kép, có thể nói rõ nơi chốn trước 来 hoặc 去 để người nghe biết chuyển động đến đâu. 来 vẫn hướng về điểm nhìn của người nói, còn 去 hướng ra xa.",
+    "examples": [
+     {
+      "zh": "哥哥从家里走出来了。",
+      "py": "Gēge cóng jiālǐ zǒu chūlái le",
+      "vi": "Anh trai đi từ trong nhà ra đây."
+     },
+     {
+      "zh": "我在门外等他，他走出来了。",
+      "py": "Wǒ zài ménwài děng tā tā zǒu chūlái le",
+      "vi": "Tôi đợi ngoài cửa, anh ấy đi ra."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt đúng nơi chốn",
+    "body": "Không đặt 来 hoặc 去 trước từ chỉ nơi chốn trong dạng hướng kép. Hãy đặt nơi chốn sau động từ và phần hướng chính.",
+    "mistakes": [
+     {
+      "wrong": "小明走来教室了。",
+      "right": "小明走进教室来了。",
+      "why": "Khi nói đi vào lớp, cần nói 走进教室来, không đặt 来 ngay trước 教室."
+     },
+     {
+      "wrong": "弟弟昨天回去了家。",
+      "right": "弟弟昨天回家去了。",
+      "why": "Trong 回家去, nơi chốn 家 đứng sau 回 và trước 去."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Tôi đang ở nhà, mời bạn ___ ngồi một lát: 我在家，请你___坐一会儿。",
+    "options": [
+     "进来",
+     "进去",
+     "出来",
+     "出去"
+    ],
+    "answer": 0,
+    "explain": "Người nói ở nhà nên hướng về phía người nói dùng 进来."
+   },
+   {
+    "q": "Tôi ở trong phòng, em trai đi từ ngoài ___: 我在房间里，弟弟从外面走___。",
+    "options": [
+     "来",
+     "进来",
+     "出去",
+     "回来"
+    ],
+    "answer": 1,
+    "explain": "Em trai đi vào chỗ người nói đang ở nên dùng 进来."
+   },
+   {
+    "q": "Tiểu Minh đang trong lớp và đi ra ngoài qua cửa: 他从门走___。",
+    "options": [
+     "出来",
+     "进来",
+     "出去",
+     "回来"
+    ],
+    "answer": 2,
+    "explain": "Đi ra xa khỏi điểm nhìn trong lớp dùng 出去."
+   },
+   {
+    "q": "Tôi ở ngoài cửa, mời bạn từ trong nhà đi ___: 我在门外，请你从屋里走___。",
+    "options": [
+     "进来",
+     "进去",
+     "出去",
+     "出来"
+    ],
+    "answer": 3,
+    "explain": "Người nói ở ngoài cửa nên hướng ra phía người nói dùng 出来."
+   },
+   {
+    "q": "Anh trai mang sách qua cho thầy cô: 哥哥把书拿___了。",
+    "options": [
+     "过去",
+     "过来",
+     "回来",
+     "出来"
+    ],
+    "answer": 0,
+    "explain": "Mang sách rời khỏi chỗ người nói đến chỗ khác dùng 过去."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h2-03",
+  "level": 2,
+  "order": 3,
+  "title": "Bổ ngữ trạng thái với 得",
+  "titleZh": "状态补语",
+  "summary": "Bạn sẽ miêu tả cách một hành động diễn ra bằng mẫu động từ cộng 得.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Miêu tả hành động",
+    "body": "得 đứng sau động từ để nối hành động với phần miêu tả trạng thái hoặc mức độ. Phần sau 得 cho biết hành động diễn ra như thế nào.",
+    "examples": [
+     {
+      "zh": "我弟弟汉语说得很好。",
+      "py": "Wǒ dìdi Hànyǔ shuō de hěn hǎo",
+      "vi": "Em trai tôi nói tiếng Trung rất tốt."
+     },
+     {
+      "zh": "姐姐今天睡得很晚，下午才起床。",
+      "py": "Jiějie jīntiān shuì de hěn wǎn xiàwǔ cái qǐchuáng",
+      "vi": "Hôm nay chị ngủ rất muộn, đến chiều mới thức dậy."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu cách hoặc mức độ",
+    "body": "Dùng mẫu này khi muốn nhận xét tốc độ, chất lượng hoặc cách làm một việc. Phần miêu tả có thể là tính từ kèm 很、太 hoặc 不太.",
+    "examples": [
+     {
+      "zh": "爸爸今天开车开得很慢。",
+      "py": "Bàba jīntiān kāichē kāi de hěn màn",
+      "vi": "Hôm nay bố lái xe rất chậm."
+     },
+     {
+      "zh": "小明跑得很快，一会儿就到家了。",
+      "py": "Xiǎomíng pǎo de hěn kuài yíhuìr jiù dào jiā le",
+      "vi": "Tiểu Minh chạy rất nhanh, chẳng mấy chốc đã về đến nhà."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Động từ cộng 得",
+    "body": "Khi động từ không có tân ngữ, đặt 得 và phần miêu tả ngay sau động từ. 得 thường đọc nhẹ là de.",
+    "formula": "S + V + 得 + trạng thái hoặc mức độ",
+    "examples": [
+     {
+      "zh": "妹妹唱歌唱得很好听。",
+      "py": "Mèimei chànggē chàng de hěn hǎotīng",
+      "vi": "Em gái hát rất hay."
+     },
+     {
+      "zh": "我昨天起床起得很早。",
+      "py": "Wǒ zuótiān qǐchuáng qǐ de hěn zǎo",
+      "vi": "Hôm qua tôi thức dậy rất sớm."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Động từ có tân ngữ",
+    "body": "Khi động từ đã có tân ngữ, thường nhắc lại động từ sau tân ngữ rồi mới đặt 得. Cách này giúp phần miêu tả gắn rõ với hành động.",
+    "formula": "S + V + O + V + 得 + trạng thái",
+    "examples": [
+     {
+      "zh": "他在家做饭做得很好。",
+      "py": "Tā zài jiā zuòfàn zuò de hěn hǎo",
+      "vi": "Anh ấy nấu ăn rất ngon ở nhà."
+     },
+     {
+      "zh": "哥哥今天写字写得很快。",
+      "py": "Gēge jīntiān xiězì xiě de hěn kuài",
+      "vi": "Hôm nay anh trai viết chữ rất nhanh."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không bỏ 得",
+    "body": "Không bỏ 得 khi muốn nối động từ với phần miêu tả. Nếu động từ có tân ngữ, nhớ dùng mẫu có động từ lặp lại.",
+    "mistakes": [
+     {
+      "wrong": "姐姐今天睡很晚。",
+      "right": "姐姐今天睡得很晚。",
+      "why": "得 nối 睡 với phần miêu tả 很晚."
+     },
+     {
+      "wrong": "小明跑很快，马上到家了。",
+      "right": "小明跑得很快，马上到家了。",
+      "why": "Muốn nói chạy nhanh cần đặt 得 sau 跑."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu diễn đạt “em trai nói tiếng Trung rất tốt”.",
+    "options": [
+     "弟弟汉语说很好。",
+     "弟弟汉语很好说。",
+     "弟弟说汉语很好。",
+     "弟弟汉语说得很好。"
+    ],
+    "answer": 3,
+    "explain": "得 đứng sau động từ để nối hành động nói với phần miêu tả 很好."
+   },
+   {
+    "q": "Chị ngủ muộn nên buổi sáng chưa dậy: 姐姐今天睡___，所以早上没有起来。",
+    "options": [
+     "很晚得",
+     "得晚很",
+     "得很晚",
+     "很得晚"
+    ],
+    "answer": 2,
+    "explain": "Mẫu đúng là 睡得很晚."
+   },
+   {
+    "q": "Tiểu Minh chạy rất nhanh: 小明跑得___，一会儿就到家了。",
+    "options": [
+     "很",
+     "很快",
+     "快很",
+     "得快"
+    ],
+    "answer": 1,
+    "explain": "Sau 得 dùng cụm miêu tả 很快."
+   },
+   {
+    "q": "Bố nấu ăn ngon, cả nhà đều thích: 爸爸做饭做___。",
+    "options": [
+     "得很好",
+     "很好",
+     "得很快",
+     "很得好"
+    ],
+    "answer": 0,
+    "explain": "Vì 做饭 có tân ngữ, nhắc lại 做 rồi nối với 得很好."
+   },
+   {
+    "q": "Hôm qua tôi dậy sớm nên còn ăn sáng: 我昨天起床起___，早上还能吃早饭。",
+    "options": [
+     "很早",
+     "得早很",
+     "很得早",
+     "得很早"
+    ],
+    "answer": 3,
+    "explain": "Cụm miêu tả đúng sau 起得 là 很早."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h2-04",
+  "level": 2,
+  "order": 4,
+  "title": "Bổ ngữ thời lượng",
+  "titleZh": "时量补语",
+  "summary": "Bạn sẽ nói một hành động kéo dài trong bao lâu bằng cụm thời lượng.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói thời gian kéo dài",
+    "body": "Bổ ngữ thời lượng cho biết hành động diễn ra trong bao lâu. Cụm thời lượng thường đứng sau động từ và 了.",
+    "examples": [
+     {
+      "zh": "我昨天看书看了一个小时。",
+      "py": "Wǒ zuótiān kànshū kànle yí ge xiǎoshí",
+      "vi": "Hôm qua tôi đọc sách trong một tiếng."
+     },
+     {
+      "zh": "姐姐学中文学了两年。",
+      "py": "Jiějie xué Zhōngwén xuéle liǎng nián",
+      "vi": "Chị đã học tiếng Trung hai năm."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Trả lời câu hỏi bao lâu",
+    "body": "Dùng mẫu này để kể hành động đã kéo dài bao lâu, chẳng hạn lái xe hoặc trò chuyện. Cụm thời lượng có thể là 半个小时、一个小时 hoặc 两年.",
+    "examples": [
+     {
+      "zh": "爸爸昨天开车开了两个小时。",
+      "py": "Bàba zuótiān kāichē kāile liǎng ge xiǎoshí",
+      "vi": "Hôm qua bố lái xe trong hai tiếng."
+     },
+     {
+      "zh": "我们在家说话说了半个小时。",
+      "py": "Wǒmen zài jiā shuōhuà shuōle bàn ge xiǎoshí",
+      "vi": "Chúng tôi trò chuyện ở nhà nửa tiếng."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Động từ cộng 了 và thời lượng",
+    "body": "Khi động từ không có tân ngữ, đặt 了 và cụm thời lượng sau động từ. Nếu có tân ngữ, có thể nhắc lại động từ sau tân ngữ rồi mới nói thời lượng.",
+    "formula": "S + V + 了 + thời lượng ； S + V + O + V + 了 + thời lượng",
+    "examples": [
+     {
+      "zh": "妈妈在家等了我半个小时。",
+      "py": "Māma zài jiā děngle wǒ bàn ge xiǎoshí",
+      "vi": "Mẹ đợi tôi ở nhà nửa tiếng."
+     },
+     {
+      "zh": "他在中国住了三年。",
+      "py": "Tā zài Zhōngguó zhùle sān nián",
+      "vi": "Anh ấy đã sống ở Trung Quốc ba năm."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Lặp động từ khi có tân ngữ",
+    "body": "Khi nêu rõ việc gì đã kéo dài bao lâu, thường đặt tân ngữ sau động từ đầu tiên rồi lặp lại động từ trước 了. Cách này giúp câu rõ ràng, tự nhiên.",
+    "examples": [
+     {
+      "zh": "我昨天在家写字写了半个小时。",
+      "py": "Wǒ zuótiān zài jiā xiězì xiěle bàn ge xiǎoshí",
+      "vi": "Hôm qua tôi viết chữ ở nhà nửa tiếng."
+     },
+     {
+      "zh": "哥哥在家看电视看了一个小时。",
+      "py": "Gēge zài jiā kàn diànshì kànle yí ge xiǎoshí",
+      "vi": "Anh trai xem tivi ở nhà một tiếng."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt thời lượng đúng chỗ",
+    "body": "Không đặt thời lượng trực tiếp sau tân ngữ mà bỏ động từ lặp lại trong mẫu này. Cũng không đặt 了 sau thời lượng khi muốn dùng cấu trúc V + 了 + thời lượng.",
+    "mistakes": [
+     {
+      "wrong": "我昨天看书一个小时了。",
+      "right": "我昨天看书看了一个小时。",
+      "why": "Với tân ngữ 看书, nhắc lại 看 rồi đặt 了一个小时 phía sau."
+     },
+     {
+      "wrong": "爸爸昨天开车了两个小时。",
+      "right": "爸爸昨天开车开了两个小时。",
+      "why": "Lặp lại 开 sau tân ngữ 开车 để nối với thời lượng."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Hôm qua tôi đọc sách một tiếng rồi mới đi ngủ: 我昨天看书看___，才去睡觉。",
+    "options": [
+     "一个小时",
+     "一个小时了",
+     "了一个小时",
+     "了一个小时书"
+    ],
+    "answer": 2,
+    "explain": "Sau động từ lặp lại, đặt 了一个小时."
+   },
+   {
+    "q": "Anh ấy sống ở Trung Quốc ba năm rồi sau đó đến Bắc Kinh: 他在中国住___，后来去了北京。",
+    "options": [
+     "了三年",
+     "三年了",
+     "了三年中国",
+     "三年"
+    ],
+    "answer": 0,
+    "explain": "住了三年 diễn tả thời gian sống kéo dài ba năm."
+   },
+   {
+    "q": "Hôm qua bố lái xe hai tiếng nên về nhà rất mệt: 爸爸昨天开车开___，回家后很累。",
+    "options": [
+     "两个小时",
+     "两个小时了",
+     "了两个小时车",
+     "了两个小时"
+    ],
+    "answer": 3,
+    "explain": "Mẫu đúng là 开车开了两个小时."
+   },
+   {
+    "q": "Chị học tiếng Trung hai năm và bây giờ nói tốt: 姐姐学中文学___，现在说得很好。",
+    "options": [
+     "两年",
+     "了两年",
+     "两年了",
+     "了两年中文"
+    ],
+    "answer": 1,
+    "explain": "Đặt 了两年 sau động từ được lặp lại 学."
+   },
+   {
+    "q": "Chúng tôi trò chuyện nửa tiếng rồi mới đi ăn: 我们昨天说话说___，才去吃饭。",
+    "options": [
+     "半个小时",
+     "半个小时了",
+     "了半个小时",
+     "了半个小时话"
+    ],
+    "answer": 2,
+    "explain": "说话 là động từ có tân ngữ, nên lặp lại 说 rồi đặt 了半个小时."
+   }
+  ]
+ }
+]

@@ -1,12 +1,16 @@
 import sourceBooks from './east-asian-vocab.json';
 import openBooks from './east-asian-open-vocab.json';
+import hanyuBooks from './east-asian-hanyu-vocab.json';
 import extraZh from './east-asian-extra-zh.json';
 import extraJa from './east-asian-extra-ja.json';
 import homographZh from './east-asian-homograph-zh.json';
 import type { BookVocabBook, BookVocabLesson, BookVocabTheme, VocabTopicWord } from './vocab-topics';
 
 type SourceWord = {
-  w: string; p?: string; r?: string; g?: string; o?: string; s?: number; l?: string;
+  w: string; p?: string; r?: string; g?: string; o?: string; s?: number; l?: string; n?: string;
+  t?: string; z?: string;
+  ls?: string[];
+  variants?: { p: string; z?: string; g: string; t?: string }[];
   vi?: string; ex?: string; exVi?: string; exEn?: string; exReading?: string; syn?: string[]; coll?: string;
 };
 type SourceLesson = {
@@ -37,9 +41,17 @@ type SourceBook = {
   blurb: string;
   sourceNote: string;
   sourceUrl?: string;
+  wordBandPrefix?: string;
   wordCount: number;
   unitCount: number;
   topics: SourceTheme[];
+};
+
+const SOURCE_METADATA_OVERRIDES: Record<string, Partial<Pick<SourceBook, 'sourceNote' | 'sourceUrl'>>> = {
+  'book-hsk-3-0': {
+    sourceNote: 'Theo đề cương HSK mới năm 2025: 11.000 mục, cấp 1–6 cộng dồn 300/500/1.000/2.000/3.600/5.400 và cấp 7–9 tổng 11.000. Trang HSK chính thức thông báo kỳ thi 3.0 ra mắt toàn cầu ngày 13/12/2026; tại thời điểm hiện tại đây là danh sách theo đề cương, chưa phải kỳ thi đã triển khai. Danh sách có chữ Hán, pinyin, từ loại ở một số mục và trang nguồn; không có nghĩa tiếng Việt, ví dụ hoặc từ đồng nghĩa.',
+    sourceUrl: 'https://www.chinesetest.cn/HSK',
+  },
 };
 
 const HSK_POS_VI: Record<string, string> = {
@@ -86,10 +98,18 @@ function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
       exampleVi: exOk ? extra!.ex.vi : undefined,
       exampleEn: exOk ? extra!.ex.en : undefined,
       exampleReading: exOk ? extra!.ex.py : undefined,
+      zhuyin: row.z,
+      traditional: row.t && row.t !== row.w ? row.t : undefined,
+      sourceLevels: row.ls,
+      sourcePage: row.s,
+      sourceNote: row.n,
+      readingVariants: row.variants?.length && row.variants.length > 1
+        ? row.variants.map((variant) => ({ pinyin: variant.p, zhuyin: variant.z, definitionEn: variant.g, traditional: variant.t }))
+        : undefined,
       synonyms: extra?.syn?.length ? extra.syn : undefined,
       collocation: exOk ? (extra?.coll ?? '') : '',
       glossLanguage: 'vi',
-      band: `HSK ${row.l ?? ''}`.trim(),
+      band: book.wordBandPrefix ? `${book.wordBandPrefix} ${row.l ?? ''}`.trim() : `HSK ${row.l ?? ''}`.trim(),
       language: book.language,
       romanization: row.r,
       sourceLevel: row.l,
@@ -107,12 +127,20 @@ function makeWord(row: SourceWord, book: SourceBook): VocabTopicWord {
     // Câu ví dụ lấy từ bảng bổ sung thì bản dịch Anh cũng phải lấy ở đó (không lẫn với câu gốc của dòng).
     exampleEn: extra?.ex ? extra.ex.en : row.exEn,
     exampleReading: extra?.ex?.py ?? row.exReading,
+    zhuyin: row.z,
+    traditional: row.t && row.t !== row.w ? row.t : undefined,
+    sourceLevels: row.ls,
+    sourcePage: row.s,
+    sourceNote: row.n,
+    readingVariants: row.variants?.length && row.variants.length > 1
+      ? row.variants.map((variant) => ({ pinyin: variant.p, zhuyin: variant.z, definitionEn: variant.g, traditional: variant.t }))
+      : undefined,
     synonyms: extra?.syn?.length ? extra.syn : row.syn?.length ? row.syn : undefined,
     collocation: extra?.coll ?? row.coll ?? '',
     glossLanguage: extra?.vi || row.vi ? 'vi' : row.g ? 'en' : undefined,
     band: isJapanese
       ? (row.l?.startsWith('N') ? `JLPT ${row.l}` : IRODORI_LEVEL_LABEL[row.l ?? ''] ?? 'Irodori')
-      : `HSK ${row.l ?? ''}`.trim(),
+      : book.wordBandPrefix ? `${book.wordBandPrefix} ${row.l ?? ''}`.trim() : `HSK ${row.l ?? ''}`.trim(),
     language: book.language,
     romanization: row.r,
     sourceLevel: row.l,
@@ -151,7 +179,7 @@ function makeLesson(source: SourceLesson, book: SourceBook, topic: SourceTheme):
     sourceLesson: source.sourceLesson ?? undefined,
     sourceUnit: source.sourceUnit,
     lessonTitle: source.lessonTitle ?? undefined,
-    sourcePages: [],
+    sourcePages: book.slug === 'book-hanyu-revised-2006' ? source.sourcePages : [],
     language: book.language,
     sourceNote: book.sourceNote,
     sourceUrl: book.sourceUrl,
@@ -195,11 +223,13 @@ function standaloneVocabLessons(topic: SourceTheme): SourceLesson[] {
 export const EAST_ASIAN_VOCAB_BOOKS: BookVocabBook[] = ([
   ...(sourceBooks as unknown as SourceBook[]),
   ...(openBooks as unknown as SourceBook[]),
+  ...(hanyuBooks as unknown as SourceBook[]),
 ]).map((book) => {
-  const isIrodori = book.language === 'ja' && (sourceBooks as unknown as SourceBook[]).includes(book);
-  const topics: BookVocabTheme[] = book.topics.map((topic) => {
+  const currentBook = { ...book, ...SOURCE_METADATA_OVERRIDES[book.slug] };
+  const isIrodori = currentBook.language === 'ja' && (sourceBooks as unknown as SourceBook[]).includes(book);
+  const topics: BookVocabTheme[] = currentBook.topics.map((topic) => {
     // Từ của bộ (topic.words) chỉ tính từ bài hội thoại, để không đếm trùng từ ở bài riêng lẻ.
-    const dialogue = topic.lessons.map((lesson) => makeLesson(lesson, book, topic));
+    const dialogue = topic.lessons.map((lesson) => makeLesson(lesson, currentBook, topic));
     const vocab = isIrodori ? standaloneVocabLessons(topic).map((lesson) => makeLesson(lesson, book, topic)) : [];
     return {
       slug: topic.slug,
@@ -211,14 +241,14 @@ export const EAST_ASIAN_VOCAB_BOOKS: BookVocabBook[] = ([
     };
   });
   return {
-    slug: book.slug,
-    name: book.name,
-    nameVi: book.nameVi,
-    blurb: book.blurb,
+    slug: currentBook.slug,
+    name: currentBook.name,
+    nameVi: currentBook.nameVi,
+    blurb: currentBook.blurb,
     words: topics.flatMap((topic) => topic.words),
-    language: book.language,
-    sourceNote: book.sourceNote,
-    sourceUrl: book.sourceUrl,
+    language: currentBook.language,
+    sourceNote: currentBook.sourceNote,
+    sourceUrl: currentBook.sourceUrl,
     topics,
   };
 });

@@ -1,0 +1,606 @@
+[
+  {
+    "id": "zh-g-h5-02",
+    "level": 5,
+    "order": 1,
+    "title": "Diễn tả “kể từ… đến nay”",
+    "titleZh": "以来",
+    "summary": "Bạn sẽ diễn tả được trạng thái hoặc thay đổi kéo dài từ một mốc trong quá khứ đến hiện tại.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Từ một mốc đến hiện tại",
+        "body": "……以来 diễn tả khoảng thời gian bắt đầu từ một mốc trong quá khứ và kéo dài đến nay. Mốc đó có thể là thời gian hoặc một sự kiện.",
+        "examples": [
+          {
+            "zh": "自去年以来，我们一直在这里工作。",
+            "py": "zì qùnián yǐlái wǒmen yìzhí zài zhèlǐ gōngzuò",
+            "vi": "Kể từ năm ngoái, chúng tôi vẫn luôn làm việc ở đây."
+          },
+          {
+            "zh": "自从我搬到这里以来，生活变得方便了。",
+            "py": "zìcóng wǒ bān dào zhèlǐ yǐlái shēnghuó biàn de fāngbiàn le",
+            "vi": "Kể từ khi chuyển đến đây, cuộc sống trở nên thuận tiện hơn."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nêu việc đã kéo dài",
+        "body": "Dùng cấu trúc này khi muốn nói một trạng thái, thay đổi hoặc việc lặp lại bắt đầu từ mốc ấy. Nội dung chính thường liên quan đến khoảng thời gian kéo dài đến hiện tại.",
+        "examples": [
+          {
+            "zh": "自毕业以来，她每天都在医院工作。",
+            "py": "zì bìyè yǐlái tā měitiān dōu zài yīyuàn gōngzuò",
+            "vi": "Kể từ khi tốt nghiệp, ngày nào cô ấy cũng làm việc ở bệnh viện."
+          },
+          {
+            "zh": "开学以来，我每天都和同学一起吃饭。",
+            "py": "kāixué yǐlái wǒ měitiān dōu hé tóngxué yìqǐ chīfàn",
+            "vi": "Từ khi khai giảng, ngày nào tôi cũng ăn cùng bạn học."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt mốc trước 以来",
+        "body": "Mốc thời gian hoặc sự kiện đứng trước 以来, còn nội dung chính đứng sau. 自 và 自从 có thể đặt trước mốc để nhấn mạnh điểm bắt đầu.",
+        "formula": "（自／自从）+ 时间或事件 + 以来，主句",
+        "examples": [
+          {
+            "zh": "自从我学中文以来，我认识了新朋友。",
+            "py": "zìcóng wǒ xué Zhōngwén yǐlái wǒ rènshi le xīn péngyou",
+            "vi": "Từ khi học tiếng Trung, tôi đã quen thêm bạn mới."
+          },
+          {
+            "zh": "老师自上个月以来一直很忙。",
+            "py": "lǎoshī zì shàng ge yuè yǐlái yìzhí hěn máng",
+            "vi": "Từ tháng trước đến nay, thầy giáo vẫn luôn bận."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Có thể lược bỏ 自",
+        "body": "Khi mốc đã rõ, có thể dùng trực tiếp mốc + 以来. 自从 thường đi trước một sự kiện hoặc mệnh đề.",
+        "examples": [
+          {
+            "zh": "自从我来这里以来，我每天都很开心。",
+            "py": "zìcóng wǒ lái zhèlǐ yǐlái wǒ měitiān dōu hěn kāixīn",
+            "vi": "Từ khi đến đây, ngày nào tôi cũng rất vui."
+          },
+          {
+            "zh": "工作以来，他认识了很多朋友。",
+            "py": "gōngzuò yǐlái tā rènshi le hěn duō péngyou",
+            "vi": "Từ khi đi làm, anh ấy đã quen rất nhiều bạn."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Dùng với hành động một lần",
+        "body": "以来 thường nói về trạng thái hoặc diễn biến tiếp tục đến hiện tại. Với hành động xảy ra một lần, hãy nêu trạng thái tiếp diễn sau hành động đó.",
+        "mistakes": [
+          {
+            "wrong": "自去年以来，我搬到这里。",
+            "wrongPy": "zì qùnián yǐlái wǒ bān dào zhèlǐ",
+            "right": "自去年以来，我一直住在这里。",
+            "rightPy": "zì qùnián yǐlái wǒ yìzhí zhù zài zhèlǐ",
+            "why": "搬到 là hành động xảy ra một lần; 一直住在 đây nêu rõ trạng thái kéo dài đến nay."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "……以来 thường diễn tả điều gì?",
+        "options": [
+          "Một mốc quá khứ kéo dài đến hiện tại",
+          "Một việc sẽ làm trong tương lai",
+          "Một hành động đang diễn ra đúng lúc nói",
+          "Một nguyên nhân đã kết thúc"
+        ],
+        "answer": 0,
+        "explain": "以来 nối một mốc trong quá khứ với trạng thái hoặc diễn biến còn liên quan đến hiện tại."
+      },
+      {
+        "q": "Trong cấu trúc “自从……以来”, phần sau chỗ trống thường là gì?",
+        "options": [
+          "Một địa điểm",
+          "Một mốc thời gian hoặc sự kiện",
+          "Một câu hỏi",
+          "Một số lượng"
+        ],
+        "answer": 1,
+        "explain": "Sau 自从 thường nêu thời gian hoặc sự kiện làm điểm bắt đầu."
+      },
+      {
+        "q": "Nội dung chính sau 以来 thường nói về điều gì?",
+        "options": [
+          "Một mệnh lệnh",
+          "Một việc chỉ xảy ra trong tương lai",
+          "Trạng thái hoặc diễn biến kéo dài đến nay",
+          "Một câu hỏi về địa điểm"
+        ],
+        "answer": 2,
+        "explain": "Cấu trúc này thường nêu điều tiếp diễn hoặc thay đổi trong khoảng thời gian từ mốc ấy đến nay."
+      },
+      {
+        "q": "Cách dùng nào hợp lý nhất với ……以来?",
+        "options": [
+          "Gắn với một hành động một lần mà không nói trạng thái sau đó",
+          "Dùng để kể riêng một kế hoạch ngày mai",
+          "Đặt 以来 trước mốc thời gian",
+          "Nêu trạng thái kéo dài từ mốc ấy đến nay"
+        ],
+        "answer": 3,
+        "explain": "……以来 hợp với điều kéo dài hoặc có diễn biến tiếp tục đến hiện tại."
+      },
+      {
+        "q": "Có bắt buộc phải có 自 hoặc 自从 trước mốc không?",
+        "options": [
+          "Không, có thể dùng trực tiếp mốc + 以来",
+          "Có, bắt buộc phải dùng 自从",
+          "Có, bắt buộc phải dùng 自",
+          "Không, nhưng phải bỏ 以来"
+        ],
+        "answer": 0,
+        "explain": "Khi mốc đã rõ, có thể dùng thẳng thời gian hoặc sự kiện rồi đến 以来."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h5-03",
+    "level": 5,
+    "order": 2,
+    "title": "Nói về các thành phần tạo nên một chỉnh thể",
+    "titleZh": "由…组成",
+    "summary": "Bạn sẽ nêu được một chỉnh thể gồm những thành phần nào bằng 由……组成.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu các phần cấu thành",
+        "body": "由……组成 dùng để nói một chỉnh thể được tạo nên từ những thành phần nào. Chủ thể thường là chỉnh thể cần giới thiệu.",
+        "examples": [
+          {
+            "zh": "我们的小组由四人组成，常一起学习。",
+            "py": "wǒmen de xiǎozǔ yóu sì rén zǔchéng cháng yìqǐ xuéxí",
+            "vi": "Nhóm chúng tôi gồm bốn người, thường học cùng nhau."
+          },
+          {
+            "zh": "这本书由许多小故事组成，孩子很喜欢。",
+            "py": "zhè běn shū yóu xǔduō xiǎo gùshi zǔchéng háizi hěn xǐhuan",
+            "vi": "Cuốn sách này gồm nhiều câu chuyện nhỏ, trẻ con rất thích."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Giới thiệu thành phần",
+        "body": "Dùng khi mô tả nhóm, tổ chức, đồ vật hoặc một chỉnh thể gồm những phần nào. Cách nói này phù hợp cả khi giới thiệu người lẫn sự vật.",
+        "examples": [
+          {
+            "zh": "学校由几座楼组成，环境很安静。",
+            "py": "xuéxiào yóu jǐ zuò lóu zǔchéng huánjìng hěn ānjìng",
+            "vi": "Trường học gồm vài tòa nhà, môi trường rất yên tĩnh."
+          },
+          {
+            "zh": "这个菜由鸡蛋和西红柿组成，味道很好。",
+            "py": "zhège cài yóu jīdàn hé xīhóngshì zǔchéng wèidào hěn hǎo",
+            "vi": "Món này gồm trứng và cà chua, hương vị rất ngon."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt chỉnh thể ở đầu câu",
+        "body": "Nêu chỉnh thể trước, đặt 由 trước các thành phần, rồi dùng 组成 sau phần liệt kê. Có thể nối nhiều thành phần bằng 和.",
+        "formula": "整体 + 由 + 组成部分 + 组成",
+        "examples": [
+          {
+            "zh": "乐队由五人组成，大家都会唱歌。",
+            "py": "yuèduì yóu wǔ rén zǔchéng dàjiā dōu huì chànggē",
+            "vi": "Ban nhạc gồm năm người, ai cũng biết hát."
+          },
+          {
+            "zh": "我家晚饭由米饭和两个菜组成。",
+            "py": "wǒjiā wǎnfàn yóu mǐfàn hé liǎng ge cài zǔchéng",
+            "vi": "Bữa tối nhà tôi gồm cơm và hai món ăn."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Giữ đúng vị trí của 由 và 组成",
+        "body": "由 đứng trước danh sách thành phần, còn 组成 đứng sau danh sách ấy. Nếu có nhiều thành phần, hãy nối chúng rõ ràng bằng 和 hoặc dấu phẩy.",
+        "examples": [
+          {
+            "zh": "我的房间由一张床和一张桌子组成。",
+            "py": "wǒ de fángjiān yóu yì zhāng chuáng hé yì zhāng zhuōzi zǔchéng",
+            "vi": "Phòng của tôi gồm một chiếc giường và một cái bàn."
+          },
+          {
+            "zh": "这支球队由年轻队员组成，比赛很顺利。",
+            "py": "zhè zhī qiúduì yóu niánqīng duìyuán zǔchéng bǐsài hěn shùnlì",
+            "vi": "Đội bóng này gồm các cầu thủ trẻ, trận đấu diễn ra rất thuận lợi."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đảo vị trí thành phần",
+        "body": "Người học đôi khi đặt 组成 trước 由 theo thứ tự trong tiếng Việt. Hãy nhớ nêu thành phần sau 由 và đặt 组成 ở cuối phần đó.",
+        "mistakes": [
+          {
+            "wrong": "我们的小组组成由四人。",
+            "wrongPy": "wǒmen de xiǎozǔ zǔchéng yóu sì rén",
+            "right": "我们的小组由四人组成。",
+            "rightPy": "wǒmen de xiǎozǔ yóu sì rén zǔchéng",
+            "why": "由 phải đứng trước phần cấu thành, còn 组成 đặt sau phần liệt kê."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "由……组成 dùng để làm gì?",
+        "options": [
+          "Kể một hành động đã hoàn thành",
+          "Nêu các thành phần tạo nên một chỉnh thể",
+          "Hỏi về thời gian",
+          "So sánh hai sự vật"
+        ],
+        "answer": 1,
+        "explain": "由……组成 giới thiệu những phần tạo nên chỉnh thể được nói đến."
+      },
+      {
+        "q": "Trong cấu trúc này, phần đứng trước 由 thường là gì?",
+        "options": [
+          "Một trạng từ chỉ thời gian",
+          "Một câu hỏi",
+          "Chỉnh thể được tạo nên từ các phần",
+          "Một thành phần trong danh sách"
+        ],
+        "answer": 2,
+        "explain": "Chỉnh thể thường được nêu đầu câu rồi mới giới thiệu các phần cấu thành."
+      },
+      {
+        "q": "Ngay sau 由 thường là gì?",
+        "options": [
+          "Kết quả của sự việc",
+          "Một câu hỏi",
+          "Động từ 组成",
+          "Các thành phần tạo nên chỉnh thể"
+        ],
+        "answer": 3,
+        "explain": "由 đứng trước danh sách những người hoặc sự vật cấu thành chỉnh thể."
+      },
+      {
+        "q": "Trong cấu trúc 由……组成, 组成 thường đứng ở đâu?",
+        "options": [
+          "Sau phần liệt kê các thành phần",
+          "Trước chủ thể",
+          "Ngay trước 由",
+          "Ở đầu câu thay cho chủ thể"
+        ],
+        "answer": 0,
+        "explain": "组成 đặt sau các thành phần để khép lại cách mô tả chỉnh thể."
+      },
+      {
+        "q": "Thứ tự nào đúng với cấu trúc 由……组成?",
+        "options": [
+          "Thành phần + 组成 + chỉnh thể + 由",
+          "Chỉnh thể + 由 + thành phần + 组成",
+          "由 + 组成 + chỉnh thể + thành phần",
+          "组成 + thành phần + 由 + chỉnh thể"
+        ],
+        "answer": 1,
+        "explain": "Thứ tự cơ bản là chỉnh thể, 由, các thành phần, rồi 组成."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h5-04",
+    "level": 5,
+    "order": 3,
+    "title": "Diễn tả điều kiện và kết quả",
+    "titleZh": "一旦…就…",
+    "summary": "Bạn sẽ nối một điều kiện với kết quả xảy ra khi điều kiện ấy xuất hiện.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Khi điều kiện xuất hiện",
+        "body": "一旦……就…… nối một điều kiện với kết quả theo sau. Cấu trúc thường nhấn mạnh rằng khi điều kiện xảy ra thì kết quả cũng sẽ đến.",
+        "examples": [
+          {
+            "zh": "一旦我决定了，就会认真做好这件事。",
+            "py": "yídàn wǒ juédìng le jiù huì rènzhēn zuò hǎo zhè jiàn shì",
+            "vi": "Một khi đã quyết định, tôi sẽ nghiêm túc làm tốt việc này."
+          },
+          {
+            "zh": "一旦雨停了，我们就去公园散步。",
+            "py": "yídàn yǔ tíng le wǒmen jiù qù gōngyuán sànbù",
+            "vi": "Một khi mưa tạnh, chúng tôi sẽ đi dạo trong công viên."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nêu kết quả khi có điều kiện",
+        "body": "Dùng cấu trúc này khi muốn nói điều gì sẽ xảy ra nếu một điều kiện được đáp ứng. Điều kiện có thể là một sự việc thường ngày hoặc một thay đổi cụ thể.",
+        "examples": [
+          {
+            "zh": "一旦孩子发烧，妈妈就带他去医院。",
+            "py": "yídàn háizi fāshāo māma jiù dài tā qù yīyuàn",
+            "vi": "Nếu đứa trẻ bị sốt, mẹ sẽ đưa em ấy đến bệnh viện."
+          },
+          {
+            "zh": "一旦工作完成，我们就可以回家休息。",
+            "py": "yídàn gōngzuò wánchéng wǒmen jiù kěyǐ huí jiā xiūxi",
+            "vi": "Một khi công việc hoàn thành, chúng tôi có thể về nhà nghỉ ngơi."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt điều kiện trước",
+        "body": "一旦 mở đầu phần điều kiện, còn 就 mở đầu phần kết quả. Chủ ngữ có thể được lặp lại hoặc lược bỏ nếu người nghe đã biết rõ.",
+        "formula": "一旦 + 条件，主语 + 就 + 结果",
+        "examples": [
+          {
+            "zh": "一旦你答应了朋友，就要按时去见他。",
+            "py": "yídàn nǐ dāying le péngyou jiù yào ànshí qù jiàn tā",
+            "vi": "Một khi đã hứa với bạn, bạn phải đi gặp người ấy đúng giờ."
+          },
+          {
+            "zh": "一旦天气冷了，爸爸就关上窗户。",
+            "py": "yídàn tiānqì lěng le bàba jiù guān shàng chuānghu",
+            "vi": "Một khi trời lạnh, bố sẽ đóng cửa sổ."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Nối rõ điều kiện với kết quả",
+        "body": "就 thường đứng đầu phần kết quả để nối hai vế thật rõ. Có thể thêm 会 hoặc 要 sau 就 để diễn tả dự đoán hay việc cần làm.",
+        "examples": [
+          {
+            "zh": "一旦你有问题，就可以来找我。",
+            "py": "yídàn nǐ yǒu wèntí jiù kěyǐ lái zhǎo wǒ",
+            "vi": "Nếu bạn có vấn đề, bạn có thể đến tìm tôi."
+          },
+          {
+            "zh": "一旦他到了家，就会给我们打电话。",
+            "py": "yídàn tā dào le jiā jiù huì gěi wǒmen dǎ diànhuà",
+            "vi": "Một khi anh ấy về đến nhà, anh ấy sẽ gọi điện cho chúng tôi."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Dùng sai từ nối kết quả",
+        "body": "Trong mẫu này, 就 nối điều kiện với kết quả dự kiến. Dùng 才 có thể làm câu chuyển sang sắc thái “mãi đến lúc đó mới”, không còn là kết quả thông thường.",
+        "mistakes": [
+          {
+            "wrong": "一旦天气冷了，爸爸才关上窗户。",
+            "wrongPy": "yídàn tiānqì lěng le bàba cái guān shàng chuānghu",
+            "right": "一旦天气冷了，爸爸就关上窗户。",
+            "rightPy": "yídàn tiānqì lěng le bàba jiù guān shàng chuānghu",
+            "why": "Với quan hệ điều kiện và kết quả thông thường, dùng 就; 才 nhấn mạnh “mãi đến khi ấy mới”."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "一旦……就…… thường diễn tả quan hệ nào?",
+        "options": [
+          "Hai việc xảy ra ngẫu nhiên, không liên quan",
+          "Một việc xảy ra trước một mốc quá khứ",
+          "Điều kiện xuất hiện thì kết quả theo sau",
+          "Hai sự vật có hình dạng giống nhau"
+        ],
+        "answer": 2,
+        "explain": "Cấu trúc này nối điều kiện với kết quả sẽ xảy ra khi điều kiện xuất hiện."
+      },
+      {
+        "q": "就 thường đứng ở vị trí nào trong cấu trúc này?",
+        "options": [
+          "Trước 一旦",
+          "Cuối phần điều kiện",
+          "Trước chủ ngữ đầu câu",
+          "Đầu phần nêu kết quả"
+        ],
+        "answer": 3,
+        "explain": "就 thường mở đầu vế kết quả sau phần điều kiện."
+      },
+      {
+        "q": "Phần điều kiện thường được đặt ở đâu?",
+        "options": [
+          "Sau 一旦 và trước phần kết quả",
+          "Sau toàn bộ câu",
+          "Sau phần kết quả",
+          "Trước 一旦"
+        ],
+        "answer": 0,
+        "explain": "一旦 mở đầu điều kiện, rồi câu mới nêu kết quả với 就."
+      },
+      {
+        "q": "Trong 一旦……就……, 就 có tác dụng gì?",
+        "options": [
+          "Chỉ thời điểm trong quá khứ",
+          "Nối điều kiện với kết quả",
+          "Thay thế chủ ngữ",
+          "Đưa ra một câu hỏi"
+        ],
+        "answer": 1,
+        "explain": "就 báo hiệu rằng vế sau là kết quả của điều kiện vừa nêu."
+      },
+      {
+        "q": "Khi nào nên dùng 一旦……就……?",
+        "options": [
+          "Khi chỉ muốn nêu tên một đồ vật",
+          "Khi muốn hỏi người nghe ở đâu",
+          "Khi điều kiện xảy ra thì có kết quả theo sau",
+          "Khi kể hai việc không liên quan"
+        ],
+        "answer": 2,
+        "explain": "Mẫu này phù hợp khi người nói muốn nêu kết quả gắn với một điều kiện."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h5-05",
+    "level": 5,
+    "order": 4,
+    "title": "Đặt giả thiết và nêu kết quả",
+    "titleZh": "假如/万一",
+    "summary": "Bạn sẽ dùng 假如 hoặc 万一 để nêu một giả thiết và nói kết quả có thể xảy ra.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu một tình huống giả định",
+        "body": "假如……就…… và 万一……就…… đều nêu điều kiện giả định rồi nói kết quả. 万一 thường nhấn mạnh việc bất ngờ có thể xảy ra và cần tính trước.",
+        "examples": [
+          {
+            "zh": "假如明天下雨，我们就坐车去学校。",
+            "py": "jiǎrú míngtiān xiàyǔ wǒmen jiù zuò chē qù xuéxiào",
+            "vi": "Nếu ngày mai trời mưa, chúng tôi sẽ đi xe đến trường."
+          },
+          {
+            "zh": "万一孩子晚上发烧，爸爸就带他去医院。",
+            "py": "wànyī háizi wǎnshang fāshāo bàba jiù dài tā qù yīyuàn",
+            "vi": "Lỡ tối nay đứa trẻ bị sốt, bố sẽ đưa em ấy đến bệnh viện."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Giả định kế hoạch hoặc tình huống bất ngờ",
+        "body": "Dùng 假如 khi nêu một giả thiết để bàn về kế hoạch hoặc kết quả. Dùng 万一 khi muốn nói đến một khả năng bất ngờ mà người nói cần chuẩn bị.",
+        "examples": [
+          {
+            "zh": "假如你想学中文，我就每天陪你练习。",
+            "py": "jiǎrú nǐ xiǎng xué Zhōngwén wǒ jiù měitiān péi nǐ liànxí",
+            "vi": "Nếu bạn muốn học tiếng Trung, tôi sẽ luyện tập cùng bạn mỗi ngày."
+          },
+          {
+            "zh": "万一我迟到了，老师就先开始上课。",
+            "py": "wànyī wǒ chídào le lǎoshī jiù xiān kāishǐ shàngkè",
+            "vi": "Lỡ tôi đến muộn, thầy giáo sẽ bắt đầu buổi học trước."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Giả thiết đứng trước kết quả",
+        "body": "Đặt 假如 hoặc 万一 trước phần giả thiết. 就 thường đứng đầu vế kết quả để thể hiện việc sẽ làm hoặc có thể xảy ra.",
+        "formula": "假如／万一 + 条件，主语 + 就 + 结果",
+        "examples": [
+          {
+            "zh": "假如周末有空，我们就一起去看电影。",
+            "py": "jiǎrú zhōumò yǒu kòng wǒmen jiù yìqǐ qù kàn diànyǐng",
+            "vi": "Nếu cuối tuần rảnh, chúng tôi sẽ cùng đi xem phim."
+          },
+          {
+            "zh": "万一火车晚点，我们就给家里打电话。",
+            "py": "wànyī huǒchē wǎndiǎn wǒmen jiù gěi jiālǐ dǎ diànhuà",
+            "vi": "Lỡ tàu bị trễ, chúng tôi sẽ gọi điện về nhà."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Chọn từ theo sắc thái",
+        "body": "假如 phù hợp với giả thiết trung tính hoặc dự tính thông thường. 万一 nhấn mạnh khả năng bất ngờ, thường là tình huống không mong muốn nên cần đề phòng.",
+        "examples": [
+          {
+            "zh": "假如你不舒服，就在家休息一天。",
+            "py": "jiǎrú nǐ bù shūfu jiù zài jiā xiūxi yì tiān",
+            "vi": "Nếu bạn không khỏe, hãy nghỉ ở nhà một ngày."
+          },
+          {
+            "zh": "万一手机没电，我就借你的电话。",
+            "py": "wànyī shǒujī méi diàn wǒ jiù jiè nǐ de diànhuà",
+            "vi": "Lỡ điện thoại hết pin, tôi sẽ mượn điện thoại của bạn."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Chọn 万一 cho giả thiết trung tính",
+        "body": "万一 thường gợi một tình huống bất ngờ cần đề phòng. Với giả thiết trung tính về kế hoạch, 假如 thường phù hợp hơn.",
+        "mistakes": [
+          {
+            "wrong": "万一明天有空，我们就去公园。",
+            "wrongPy": "wànyī míngtiān yǒu kòng wǒmen jiù qù gōngyuán",
+            "right": "假如明天有空，我们就去公园。",
+            "rightPy": "jiǎrú míngtiān yǒu kòng wǒmen jiù qù gōngyuán",
+            "why": "Khi chỉ dự tính đi chơi nếu rảnh, giả thiết mang sắc thái trung tính nên dùng 假如."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "万一 thường nhấn mạnh điều gì?",
+        "options": [
+          "Một kế hoạch chắc chắn xảy ra",
+          "Một thói quen hằng ngày",
+          "Một mốc thời gian trong quá khứ",
+          "Một việc bất ngờ có thể xảy ra và cần đề phòng"
+        ],
+        "answer": 3,
+        "explain": "万一 thường báo hiệu một khả năng bất ngờ mà người nói cần tính trước."
+      },
+      {
+        "q": "Phần nào thường đứng sau 假如 hoặc 万一?",
+        "options": [
+          "Điều kiện giả định",
+          "Kết quả của điều kiện",
+          "Một câu hỏi",
+          "Một lời chào"
+        ],
+        "answer": 0,
+        "explain": "假如 và 万一 mở đầu vế nêu điều kiện giả định."
+      },
+      {
+        "q": "就 thường mở đầu phần nào trong mẫu này?",
+        "options": [
+          "Phần nêu thời gian",
+          "Phần nêu kết quả",
+          "Phần xưng hô",
+          "Phần giải thích từ vựng"
+        ],
+        "answer": 1,
+        "explain": "就 thường mở đầu vế nêu kết quả có thể xảy ra nếu điều kiện được đáp ứng."
+      },
+      {
+        "q": "Từ nào hợp hơn khi giả thiết về một kế hoạch trung tính?",
+        "options": [
+          "万一, vì chỉ tương lai",
+          "以来, vì chỉ thời gian",
+          "假如, vì nêu giả thiết trung tính",
+          "组成, vì nêu thành phần"
+        ],
+        "answer": 2,
+        "explain": "假如 thường phù hợp khi nói về một giả thiết trung tính hoặc kế hoạch."
+      },
+      {
+        "q": "Cấu trúc nào đúng để nêu giả thiết rồi nêu kết quả?",
+        "options": [
+          "就 + kết quả + 假如／万一 + điều kiện",
+          "Điều kiện + 组成 + kết quả",
+          "以来 + điều kiện + 就",
+          "假如／万一 + điều kiện，主语 + 就 + kết quả"
+        ],
+        "answer": 3,
+        "explain": "Nêu giả thiết trước với 假如 hoặc 万一, rồi dùng 就 để mở đầu kết quả."
+      }
+    ]
+  }
+]

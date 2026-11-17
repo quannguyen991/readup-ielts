@@ -23,6 +23,7 @@ import {
   StudyCard,
   StudyFrame,
   useHotkeys,
+  exitStudy,
 } from "@/components/vocab/study/StudyKit";
 import {
   DetailFace,
@@ -43,7 +44,7 @@ import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import { levelOf } from "@/data/study-decks";
 import { dueLemmasToday } from "@/services/vocab/topic-fsrs";
 import { useVocabStore } from "@/store/useVocabStore";
-import { mixByLevel } from "@/services/vocab/topic-study";
+import { mixByLevel, shuffled } from "@/services/vocab/topic-study";
 import { uid } from "@/store/persist";
 import {
   activeKinds,
@@ -172,7 +173,9 @@ export default function LearnScreen() {
     );
     // Từ đến hạn ôn hôm nay vào vòng trước, để lịch ôn thật sự chạy (mỗi lần trả lời đẩy hạn xa thêm).
     const dueSet = dueLemmasToday(useVocabStore.getState(), new Date());
-    const dueFirst = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase())).slice(0, ROUND_SIZE);
+    // Từ đến hạn xáo đều trước khi cắt: không thì chỉ lấy những từ đầu bộ, nối đuôi nhau theo từng unit.
+    const dueAll = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase()));
+    const dueFirst = (s.ordered ? dueAll : shuffled(dueAll, seededRng((Date.now() + 7919) % 100000))).slice(0, ROUND_SIZE);
     const rest = picked.filter((w) => !dueSet.has(w.word.trim().toLowerCase()));
     return topUpRound([...dueFirst, ...rest].slice(0, ROUND_SIZE), mixByLevel(pool, levelOf));
   };
@@ -680,7 +683,7 @@ export default function LearnScreen() {
             />
             <GhostButton
               label={L("Về bộ từ", "Back to word set")}
-              onPress={() => router.replace(backHref as never)}
+              onPress={() => exitStudy(backHref)}
             />
           </StudyCard>
         </CrossFade>

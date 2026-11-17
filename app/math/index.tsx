@@ -297,10 +297,10 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
         <Text className="font-heavy" style={{ fontSize: 24, lineHeight: 30, color: '#1B1140' }}>
           {L('Lộ trình học SAT Math', 'SAT Math learning path')}
         </Text>
-        <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: 'rgba(27,17,64,0.85)' }}>
+        <Text className="font-sans" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(27,17,64,0.9)', maxWidth: '62%' }}>
           {L(
-            'Bắt đầu với hướng dẫn, rồi học bốn mảng qua ba mức. Tiến độ tính theo lượt đã nộp; điểm thấp sẽ chỉ bạn quay lại kỹ năng cần ôn.',
-            'Start with the test guide, then work through four domains at three levels. Progress counts submitted attempts; lower scores point back to skills to review.',
+            'Bốn mảng, ba mức; điểm thấp chỉ bạn quay lại đúng kỹ năng cần ôn.',
+            'Four domains, three levels; low scores point you back to the skill to review.',
           )}
         </Text>
         <View className="flex-row flex-wrap" style={{ gap: 8, marginTop: 4 }}>

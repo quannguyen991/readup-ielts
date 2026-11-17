@@ -16,7 +16,7 @@
     {
      "speaker": "Officer",
      "text": "Good morning, Riverside Student Housing. How can I help you?",
-     "start": 0.0,
+     "start": 0,
      "end": 2.76
     },
     {
@@ -238,7 +238,7 @@
     {
      "speaker": "Guide",
      "text": "Good morning, everyone, and welcome to the Hoi An Ancient Town walking tour. My name is Duc, and I'll be your guide for the next two hours. Please gather around me. We'll meet outside the old post office on Tran Phu Street.",
-     "start": 0.0,
+     "start": 0,
      "end": 13.7
     },
     {
@@ -436,7 +436,7 @@
     {
      "speaker": "Tutor",
      "text": "Come in, Ben. Let's look at your cycling project. Where have you got to?",
-     "start": 0.0,
+     "start": 0,
      "end": 3.91
     },
     {
@@ -685,7 +685,7 @@
     {
      "speaker": "Lecturer",
      "text": "Good morning, everyone. Today we're looking at coral reef restoration. To begin, it's worth knowing how little of the ocean floor is covered by reefs. Coral reefs cover only about one percent of the ocean floor, yet they support around a quarter of all marine species.",
-     "start": 0.0,
+     "start": 0,
      "end": 16.28
     },
     {
@@ -800,10 +800,11 @@
       },
       {
        "n": 38,
-       "answer": "two hundred thousand",
+       "answer": "200,000",
        "accept": [
         "200,000",
-        "200000"
+        "200000",
+        "two hundred thousand"
        ]
       },
       {

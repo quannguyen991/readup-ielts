@@ -1,6 +1,6 @@
 import { deriveAnalysisKey } from './analysis-key';
 import type { FigureSpec } from './figure-specs';
-import type { ChartData, LineOrBarChart, PieChart, TableChart } from '@/lib/writing/types';
+import type { ChartData, LineOrBarChart, MapChart, PieChart, ProcessChart, TableChart } from '@/lib/writing/types';
 import { hashString, mulberry32 } from '@/services/questions/rng';
 
 /**
@@ -205,6 +205,21 @@ export function generateFigure(spec: FigureSpec, seed: string): ChartData {
       return generatePieChart(spec, seed);
     case 'table':
       return generateTableChart(spec, seed);
+    case 'process':
+      return {
+        kind: 'process',
+        title: titleOf(spec),
+        steps: spec.processSteps ?? ['Materials are prepared', 'The main process takes place', 'The finished product is checked'],
+        isCycle: spec.processCycle ?? false,
+        analysisKey: STRUCTURE_KEY,
+      } satisfies ProcessChart;
+    case 'map':
+      return {
+        kind: 'map',
+        title: titleOf(spec),
+        panels: spec.mapPanels ?? [],
+        analysisKey: STRUCTURE_KEY,
+      } satisfies MapChart;
     default:
       return generateLineChart(spec, seed);
   }
@@ -234,6 +249,13 @@ const EMPTY_KEY = {
   crossings: [],
   grouping: [[], []],
 } as const satisfies LineOrBarChart['analysisKey'];
+
+const STRUCTURE_KEY: ProcessChart['analysisKey'] = {
+  trends: [{ subject: 'overall process', direction: 'stable', magnitude: 'small', from: 0, to: 0 }],
+  extremes: [],
+  crossings: [],
+  grouping: [['starting point'], ['final stage']],
+};
 
 function withKey(chart: Omit<LineOrBarChart, 'analysisKey'>): LineOrBarChart {
   const withEmpty: LineOrBarChart = { ...chart, analysisKey: EMPTY_KEY };

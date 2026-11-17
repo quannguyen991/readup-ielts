@@ -35,7 +35,7 @@ export function DailyQuests() {
   const { L, locale } = useL();
   return (
     <View style={{ gap: GAP.sm }}>
-      <Text className="font-semi" style={{ fontSize: 12, color: HUB.muted }}>
+      <Text className="font-semi" style={{ fontSize: 13, color: HUB.muted }}>
         {L(`Đã nhận ${doneCount}/${quests.length} · đổi nhiệm vụ mỗi ngày`, `Claimed ${doneCount}/${quests.length} · new quests every day`)}
       </Text>
       {quests.map((q) => {
@@ -75,7 +75,7 @@ export function DailyQuests() {
               {got || ready ? (
                 <Image source={{ uri: got ? '/icons/chest-open.png' : '/icons/chest-closed.png' }} resizeMode="contain" style={{ width: 28, height: 28 }} accessible={false} />
               ) : (
-                <Text className="font-heavy" style={{ fontSize: 11, color: HUB.muted }}>
+                <Text className="font-heavy" style={{ fontSize: 12, color: HUB.muted }}>
                   {Math.round((value / q.goal) * 100)}%
                 </Text>
               )}
@@ -101,18 +101,18 @@ export function DailyQuests() {
                 <Bar value={value / q.goal} color={done ? HUB.green : HUB.blue} height={6} label={`${title}: ${value}/${q.goal}`} />
               </View>
               <View style={{ marginTop: 5, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', columnGap: 8, rowGap: 2 }}>
-                <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.green : HUB.muted, fontVariant: ['tabular-nums'] }}>
+                <Text className="font-semi" style={{ fontSize: 13, color: got ? HUB.green : HUB.muted, fontVariant: ['tabular-nums'] }}>
                   {got ? L('Đã nhận thưởng', 'Reward claimed') : `${value}/${q.goal}${done ? L(' · xong, bấm Nhận', ' · done, tap Claim') : ''}`}
                 </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                  <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>
+                  <Text className="font-semi" style={{ fontSize: 13, color: got ? HUB.faint : HUB.amber }}>
                     {`+${q.rewardXp} XP`}
                   </Text>
                   {q.rewardItem ? (
                     <>
-                      <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>·</Text>
+                      <Text className="font-semi" style={{ fontSize: 13, color: got ? HUB.faint : HUB.amber }}>·</Text>
                       <ItemIcon kind={q.rewardItem} size={16} />
-                      <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>
+                      <Text className="font-semi" style={{ fontSize: 13, color: got ? HUB.faint : HUB.amber }}>
                         {itemKindName(q.rewardItem, ITEMS[q.rewardItem].name, locale)}
                       </Text>
                     </>

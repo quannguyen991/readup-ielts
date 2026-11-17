@@ -1,0 +1,456 @@
+[
+ {
+  "id": "zh-d-h2-01",
+  "level": 2,
+  "order": 1,
+  "title": "Đổi tiền ở quầy",
+  "titleZh": "在柜台换钱",
+  "topic": "Đổi tiền",
+  "scene": "Một khách hàng hỏi nhân viên về việc đổi một trăm nhân dân tệ sang đô la Mỹ.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "顾客",
+    "zh": "你好，我想用一百元换美元。",
+    "py": "Nǐ hǎo wǒ xiǎng yòng yì bǎi yuán huàn měiyuán",
+    "vi": "Xin chào, tôi muốn dùng một trăm tệ đổi đô la Mỹ."
+   },
+   {
+    "who": "工作人员",
+    "zh": "你想换美元还是人民币？",
+    "py": "Nǐ xiǎng huàn měiyuán háishi rénmínbì",
+    "vi": "Bạn muốn đổi đô la Mỹ hay nhân dân tệ?"
+   },
+   {
+    "who": "顾客",
+    "zh": "我想换美元，今天可以吗？",
+    "py": "Wǒ xiǎng huàn měiyuán jīntiān kěyǐ ma",
+    "vi": "Tôi muốn đổi đô la Mỹ, hôm nay được không?"
+   },
+   {
+    "who": "工作人员",
+    "zh": "可以，我给你十四美元。",
+    "py": "Kěyǐ wǒ gěi nǐ shísì měiyuán",
+    "vi": "Được, tôi đưa bạn mười bốn đô la Mỹ."
+   },
+   {
+    "who": "顾客",
+    "zh": "好，我现在给你一百元。",
+    "py": "Hǎo wǒ xiànzài gěi nǐ yì bǎi yuán",
+    "vi": "Được, bây giờ tôi đưa bạn một trăm tệ."
+   },
+   {
+    "who": "工作人员",
+    "zh": "谢谢，这是你的美元，请数一数。",
+    "py": "Xièxie zhè shì nǐ de měiyuán qǐng shǔ yi shǔ",
+    "vi": "Cảm ơn, đây là đô la Mỹ của bạn, mời bạn đếm thử."
+   },
+   {
+    "who": "顾客",
+    "zh": "好，我数一下，谢谢你。",
+    "py": "Hǎo wǒ shǔ yíxià xièxie nǐ",
+    "vi": "Được, tôi đếm một chút. Cảm ơn bạn."
+   },
+   {
+    "who": "工作人员",
+    "zh": "不客气，今天人不多。",
+    "py": "Bú kèqi jīntiān rén bù duō",
+    "vi": "Không có gì, hôm nay không đông người."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "换",
+    "py": "huàn",
+    "vi": "đổi"
+   },
+   {
+    "zh": "美元",
+    "py": "měiyuán",
+    "vi": "đô la Mỹ"
+   },
+   {
+    "zh": "人民币",
+    "py": "rénmínbì",
+    "vi": "nhân dân tệ"
+   },
+   {
+    "zh": "元",
+    "py": "yuán",
+    "vi": "tệ; đồng"
+   },
+   {
+    "zh": "给",
+    "py": "gěi",
+    "vi": "đưa; cho"
+   },
+   {
+    "zh": "数",
+    "py": "shǔ",
+    "vi": "đếm"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h2-10",
+   "zh-g-h2-14"
+  ],
+  "quiz": [
+   {
+    "q": "Khách hàng muốn dùng bao nhiêu tệ để đổi tiền?",
+    "options": [
+     "Một trăm tệ",
+     "Năm mươi tệ",
+     "Hai trăm tệ"
+    ],
+    "answer": 0,
+    "explain": "Khách hàng nói muốn dùng một trăm tệ để đổi đô la Mỹ."
+   },
+   {
+    "q": "Nhân viên hỏi khách muốn đổi loại tiền nào?",
+    "options": [
+     "Nhân dân tệ",
+     "Đô la Mỹ",
+     "Tiền Nhật"
+    ],
+    "answer": 1,
+    "explain": "Nhân viên hỏi khách muốn đổi đô la Mỹ hay nhân dân tệ."
+   },
+   {
+    "q": "Khách hàng hỏi có thể đổi tiền vào lúc nào?",
+    "options": [
+     "Ngày mai",
+     "Buổi chiều",
+     "Hôm nay"
+    ],
+    "answer": 2,
+    "explain": "Khách hỏi hôm nay có thể đổi đô la Mỹ không."
+   },
+   {
+    "q": "Nhân viên đưa khách bao nhiêu đô la Mỹ?",
+    "options": [
+     "Mười đô la",
+     "Mười hai đô la",
+     "Mười ba đô la",
+     "Mười bốn đô la"
+    ],
+    "answer": 3,
+    "explain": "Nhân viên nói sẽ đưa khách mười bốn đô la Mỹ."
+   },
+   {
+    "q": "Nhân viên nhờ khách làm gì với số đô la?",
+    "options": [
+     "Đếm thử",
+     "Đổi lại",
+     "Mang về ngày mai"
+    ],
+    "answer": 0,
+    "explain": "Nhân viên mời khách đếm số đô la vừa nhận."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h1-10",
+  "level": 1,
+  "order": 10,
+  "title": "Hỏi đường đến trường",
+  "titleZh": "问路去学校",
+  "topic": "Hỏi đường và vị trí",
+  "scene": "Một người đi đường hỏi người dân cách đi bộ từ đây đến trường.",
+  "minutes": 4,
+  "lines": [
+   {
+    "who": "游客",
+    "zh": "请问，学校在哪儿？",
+    "py": "Qǐngwèn xuéxiào zài nǎr",
+    "vi": "Xin hỏi, trường học ở đâu?"
+   },
+   {
+    "who": "路人",
+    "zh": "学校在商店前面。",
+    "py": "Xuéxiào zài shāngdiàn qiánmiàn",
+    "vi": "Trường học ở phía trước cửa hàng."
+   },
+   {
+    "who": "游客",
+    "zh": "我可以走路去吗？",
+    "py": "Wǒ kěyǐ zǒulù qù ma",
+    "vi": "Tôi có thể đi bộ đến đó không?"
+   },
+   {
+    "who": "路人",
+    "zh": "可以，商店在这儿左边。",
+    "py": "Kěyǐ shāngdiàn zài zhèr zuǒbian",
+    "vi": "Được, cửa hàng ở bên trái chỗ này."
+   },
+   {
+    "who": "游客",
+    "zh": "我现在去学校，怎么走？",
+    "py": "Wǒ xiànzài qù xuéxiào zěnme zǒu",
+    "vi": "Bây giờ tôi đi đến trường thì đi thế nào?"
+   },
+   {
+    "who": "路人",
+    "zh": "你先走到商店，再走五分钟。",
+    "py": "Nǐ xiān zǒu dào shāngdiàn zài zǒu wǔ fēnzhōng",
+    "vi": "Bạn đi đến cửa hàng trước, rồi đi thêm năm phút."
+   },
+   {
+    "who": "游客",
+    "zh": "我走五分钟就到学校吗？",
+    "py": "Wǒ zǒu wǔ fēnzhōng jiù dào xuéxiào ma",
+    "vi": "Tôi đi bộ năm phút là đến trường phải không?"
+   },
+   {
+    "who": "路人",
+    "zh": "对，你走五分钟就到。",
+    "py": "Duì nǐ zǒu wǔ fēnzhōng jiù dào",
+    "vi": "Đúng, bạn đi bộ năm phút là đến."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "学校",
+    "py": "xuéxiào",
+    "vi": "trường học"
+   },
+   {
+    "zh": "商店",
+    "py": "shāngdiàn",
+    "vi": "cửa hàng"
+   },
+   {
+    "zh": "前面",
+    "py": "qiánmiàn",
+    "vi": "phía trước"
+   },
+   {
+    "zh": "左边",
+    "py": "zuǒbian",
+    "vi": "bên trái"
+   },
+   {
+    "zh": "走路",
+    "py": "zǒulù",
+    "vi": "đi bộ"
+   },
+   {
+    "zh": "分钟",
+    "py": "fēnzhōng",
+    "vi": "phút"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-10",
+   "zh-g-h1-20",
+   "zh-g-h1-22"
+  ],
+  "quiz": [
+   {
+    "q": "Trường học ở đâu?",
+    "options": [
+     "Ở phía trước cửa hàng",
+     "Ở trong cửa hàng",
+     "Ở bên trái chỗ này"
+    ],
+    "answer": 0,
+    "explain": "Người đi đường nói trường học ở phía trước cửa hàng."
+   },
+   {
+    "q": "Cửa hàng ở vị trí nào?",
+    "options": [
+     "Bên phải chỗ này",
+     "Bên trái chỗ này",
+     "Phía sau trường học"
+    ],
+    "answer": 1,
+    "explain": "Cửa hàng ở bên trái chỗ người hỏi đang đứng."
+   },
+   {
+    "q": "Người đi đường bảo đi bộ thêm bao lâu?",
+    "options": [
+     "Ba phút",
+     "Bốn phút",
+     "Năm phút"
+    ],
+    "answer": 2,
+    "explain": "Người đi đường bảo đi thêm năm phút."
+   },
+   {
+    "q": "Người hỏi muốn đi đến đâu?",
+    "options": [
+     "Đến nhà",
+     "Đến cửa hàng",
+     "Đến bệnh viện",
+     "Đến trường"
+    ],
+    "answer": 3,
+    "explain": "Người hỏi đang tìm đường đến trường."
+   },
+   {
+    "q": "Người hỏi có thể đi bộ đến trường không?",
+    "options": [
+     "Có",
+     "Không",
+     "Người đi đường không biết"
+    ],
+    "answer": 0,
+    "explain": "Người đi đường trả lời rằng có thể đi bộ."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h1-11",
+  "level": 1,
+  "order": 11,
+  "title": "Hỏi số điện thoại",
+  "titleZh": "问电话号码",
+  "topic": "Điện thoại và số điện thoại",
+  "scene": "Hai người bạn gặp nhau ở trường và hỏi số điện thoại để gọi cho nhau buổi tối.",
+  "minutes": 4,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你好，你的电话号码是多少？",
+    "py": "Nǐ hǎo nǐ de diànhuà hàomǎ shì duōshao",
+    "vi": "Chào bạn, số điện thoại của bạn là bao nhiêu?"
+   },
+   {
+    "who": "小红",
+    "zh": "你要我的电话号码吗？",
+    "py": "Nǐ yào wǒ de diànhuà hàomǎ ma",
+    "vi": "Bạn muốn số điện thoại của tôi à?"
+   },
+   {
+    "who": "小明",
+    "zh": "是，我想给你打电话。",
+    "py": "Shì wǒ xiǎng gěi nǐ dǎ diànhuà",
+    "vi": "Đúng vậy, tôi muốn gọi điện cho bạn."
+   },
+   {
+    "who": "小红",
+    "zh": "好，我的号码是一三六八零五二四。",
+    "py": "Hǎo wǒ de hàomǎ shì yī sān liù bā líng wǔ èr sì",
+    "vi": "Được, số của tôi là một ba sáu tám không năm hai bốn."
+   },
+   {
+    "who": "小明",
+    "zh": "谢谢，你现在在家吗？",
+    "py": "Xièxie nǐ xiànzài zài jiā ma",
+    "vi": "Cảm ơn bạn, bây giờ bạn ở nhà không?"
+   },
+   {
+    "who": "小红",
+    "zh": "不在，我在学校。",
+    "py": "Bú zài wǒ zài xuéxiào",
+    "vi": "Không, tôi đang ở trường."
+   },
+   {
+    "who": "小明",
+    "zh": "好，我晚上给你打电话。",
+    "py": "Hǎo wǒ wǎnshang gěi nǐ dǎ diànhuà",
+    "vi": "Được, tối nay tôi sẽ gọi điện cho bạn."
+   },
+   {
+    "who": "小红",
+    "zh": "好，我在家等你的电话。",
+    "py": "Hǎo wǒ zài jiā děng nǐ de diànhuà",
+    "vi": "Được, tôi sẽ ở nhà chờ điện thoại của bạn."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "电话",
+    "py": "diànhuà",
+    "vi": "điện thoại; cuộc gọi"
+   },
+   {
+    "zh": "号码",
+    "py": "hàomǎ",
+    "vi": "số"
+   },
+   {
+    "zh": "打电话",
+    "py": "dǎ diànhuà",
+    "vi": "gọi điện thoại"
+   },
+   {
+    "zh": "现在",
+    "py": "xiànzài",
+    "vi": "bây giờ"
+   },
+   {
+    "zh": "家",
+    "py": "jiā",
+    "vi": "nhà"
+   },
+   {
+    "zh": "学校",
+    "py": "xuéxiào",
+    "vi": "trường học"
+   },
+   {
+    "zh": "晚上",
+    "py": "wǎnshang",
+    "vi": "buổi tối"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-10",
+   "zh-g-h1-20",
+   "zh-g-h1-24"
+  ],
+  "quiz": [
+   {
+    "q": "小明 muốn làm gì với 小红?",
+    "options": [
+     "Gọi điện cho cô ấy",
+     "Đến nhà cô ấy",
+     "Mua điện thoại cho cô ấy"
+    ],
+    "answer": 0,
+    "explain": "小明 nói muốn gọi điện cho 小红."
+   },
+   {
+    "q": "Số điện thoại của 小红 là gì?",
+    "options": [
+     "一三六八零五二三",
+     "一三六八零五二四",
+     "一三六八零五四二"
+    ],
+    "answer": 1,
+    "explain": "小红 đọc số là một ba sáu tám không năm hai bốn."
+   },
+   {
+    "q": "小红 đang ở đâu?",
+    "options": [
+     "Ở nhà",
+     "Ở cửa hàng",
+     "Ở trường"
+    ],
+    "answer": 2,
+    "explain": "小红 nói mình đang ở trường."
+   },
+   {
+    "q": "小明 sẽ gọi cho 小红 khi nào?",
+    "options": [
+     "Buổi sáng",
+     "Buổi trưa",
+     "Bây giờ",
+     "Buổi tối"
+    ],
+    "answer": 3,
+    "explain": "小明 nói tối nay sẽ gọi điện."
+   },
+   {
+    "q": "小红 sẽ chờ điện thoại của 小明 ở đâu?",
+    "options": [
+     "Ở trường",
+     "Ở nhà",
+     "Ở cửa hàng"
+    ],
+    "answer": 1,
+    "explain": "小红 nói sẽ ở nhà chờ cuộc gọi."
+   }
+  ]
+ }
+]

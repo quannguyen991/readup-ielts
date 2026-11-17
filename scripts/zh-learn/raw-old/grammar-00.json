@@ -1,0 +1,575 @@
+[
+ {
+  "id": "zh-g-h1-01",
+  "level": 1,
+  "order": 1,
+  "title": "Câu vị ngữ động từ",
+  "titleZh": "动词谓语句",
+  "summary": "Bạn có thể nói ai làm gì bằng câu có chủ ngữ, động từ và tân ngữ.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Động từ nêu hành động",
+    "body": "Câu vị ngữ động từ kể hành động hoặc việc chủ ngữ thực hiện. Sau động từ thường là đối tượng của hành động.",
+    "examples": [
+     {
+      "zh": "今天我在家学习汉语。",
+      "py": "jīntiān wǒ zài jiā xuéxí hànyǔ",
+      "vi": "Hôm nay tôi học tiếng Trung ở nhà.",
+      "mark": "学习汉语"
+     },
+     {
+      "zh": "妈妈在家看书。",
+      "py": "māma zài jiā kàn shū",
+      "vi": "Mẹ đọc sách ở nhà.",
+      "mark": "看书"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Kể việc thường ngày",
+    "body": "Dùng mẫu này để nói về việc học, làm, đi đâu hoặc ăn uống. Thời gian và nơi chốn có thể đứng sau chủ ngữ, trước động từ.",
+    "examples": [
+     {
+      "zh": "我明天去学校上课。",
+      "py": "wǒ míngtiān qù xuéxiào shàngkè",
+      "vi": "Ngày mai tôi đến trường học.",
+      "mark": "去学校上课"
+     },
+     {
+      "zh": "爸爸今天在家工作。",
+      "py": "bàba jīntiān zài jiā gōngzuò",
+      "vi": "Hôm nay bố làm việc ở nhà.",
+      "mark": "工作"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt động từ trước tân ngữ",
+    "body": "Câu cơ bản theo thứ tự Chủ ngữ + Động từ + Tân ngữ. Nếu có thời gian hoặc nơi chốn, thường đặt chúng trước động từ.",
+    "formula": "S + (thời gian / nơi chốn) + V + O",
+    "examples": [
+     {
+      "zh": "我今天喜欢看书。",
+      "py": "wǒ jīntiān xǐhuan kàn shū",
+      "vi": "Hôm nay tôi thích đọc sách.",
+      "mark": "喜欢看书"
+     },
+     {
+      "zh": "爸爸下午买水果。",
+      "py": "bàba xiàwǔ mǎi shuǐguǒ",
+      "vi": "Buổi chiều bố mua trái cây.",
+      "mark": "买水果"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đảo tân ngữ lên trước",
+    "body": "Trong câu kể thông thường, động từ đứng trước tân ngữ. Người học dễ đặt tân ngữ trước động từ theo thói quen tiếng Việt.",
+    "mistakes": [
+     {
+      "wrong": "今天我汉语学习。",
+      "right": "今天我学习汉语。",
+      "why": "学习 là động từ, còn 汉语 là đối tượng được học nên đứng sau động từ."
+     },
+     {
+      "wrong": "我明天学校去上课。",
+      "right": "我明天去学校上课。",
+      "why": "去 đứng trước nơi đến 学校; không đặt nơi chốn trước động từ theo trật tự này."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào diễn đạt đúng ý Hôm nay tôi học tiếng Trung?",
+    "options": [
+     "我今天学习汉语。",
+     "我今天汉语学习。",
+     "学习我今天汉语。",
+     "我汉语今天学习。"
+    ],
+    "answer": 0,
+    "explain": "学习 là động từ và 汉语 là tân ngữ đứng sau nó."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Ngày mai tôi đến trường học.",
+    "options": [
+     "我明天学校去上课。",
+     "我明天去学校上课。",
+     "明天学校我上课去。",
+     "我去明天学校上课。"
+    ],
+    "answer": 1,
+    "explain": "Thời gian đứng sau chủ ngữ, rồi đến động từ và nơi chốn."
+   },
+   {
+    "q": "Câu nào có trật tự động từ rồi đến tân ngữ?",
+    "options": [
+     "爸爸水果下午买。",
+     "下午水果爸爸买。",
+     "爸爸下午买水果。",
+     "买爸爸下午水果。"
+    ],
+    "answer": 2,
+    "explain": "买 là động từ, 水果 là tân ngữ."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Mẹ đọc sách ở nhà.",
+    "options": [
+     "妈妈书在家看。",
+     "看书妈妈在家。",
+     "妈妈看在家书。",
+     "妈妈在家看书。"
+    ],
+    "answer": 3,
+    "explain": "在家 nêu nơi chốn, 看书 nêu hành động và đối tượng."
+   },
+   {
+    "q": "Câu nào có trật tự chủ ngữ, động từ, tân ngữ đúng?",
+    "options": [
+     "我今天喜欢看书。",
+     "我今天看书喜欢。",
+     "喜欢我今天看书。",
+     "我看喜欢今天书。"
+    ],
+    "answer": 0,
+    "explain": "喜欢 là động từ đứng trước cụm tân ngữ 看书."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-02",
+  "level": 1,
+  "order": 2,
+  "title": "Câu vị ngữ tính từ",
+  "titleZh": "形容词谓语句",
+  "summary": "Bạn có thể miêu tả người và sự vật bằng tính từ, thường dùng 很 trước tính từ.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Tính từ làm vị ngữ",
+    "body": "Câu vị ngữ tính từ dùng tính từ để miêu tả chủ ngữ. Trong câu khẳng định cơ bản, 很 thường đứng trước tính từ.",
+    "examples": [
+     {
+      "zh": "我今天很高兴。",
+      "py": "wǒ jīntiān hěn gāoxìng",
+      "vi": "Hôm nay tôi rất vui.",
+      "mark": "很高兴"
+     },
+     {
+      "zh": "我们学校很大。",
+      "py": "wǒmen xuéxiào hěn dà",
+      "vi": "Trường chúng tôi rộng.",
+      "mark": "很大"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu trạng thái hoặc đặc điểm",
+    "body": "Dùng mẫu này để nói một người đang thế nào hoặc một sự vật có đặc điểm gì. Trong câu miêu tả thông thường, 很 thường giúp nối chủ ngữ với tính từ.",
+    "examples": [
+     {
+      "zh": "妈妈今天很忙。",
+      "py": "māma jīntiān hěn máng",
+      "vi": "Hôm nay mẹ rất bận.",
+      "mark": "很忙"
+     },
+     {
+      "zh": "我的汉语老师很好。",
+      "py": "wǒ de hànyǔ lǎoshī hěn hǎo",
+      "vi": "Giáo viên tiếng Trung của tôi rất tốt.",
+      "mark": "很好"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 很 trước tính từ",
+    "body": "Mẫu cơ bản là Chủ ngữ + 很 + Tính từ. Khi phủ định, thường dùng 不 trước tính từ.",
+    "formula": "S + 很 + Adj；S + 不 + Adj",
+    "examples": [
+     {
+      "zh": "我买的书很新。",
+      "py": "wǒ mǎi de shū hěn xīn",
+      "vi": "Quyển sách tôi mua còn mới.",
+      "mark": "很新"
+     },
+     {
+      "zh": "妈妈的衣服很漂亮。",
+      "py": "māma de yīfu hěn piàoliang",
+      "vi": "Quần áo của mẹ rất đẹp.",
+      "mark": "很漂亮"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không dùng 是 trước tính từ",
+    "body": "Trong câu miêu tả cơ bản, tính từ làm vị ngữ trực tiếp và thường có 很 đứng trước. Không chèn 是 vào giữa chủ ngữ và cụm 很 + tính từ.",
+    "mistakes": [
+     {
+      "wrong": "我妹妹是很漂亮。",
+      "right": "我妹妹很漂亮。",
+      "why": "漂亮 là tính từ làm vị ngữ nên dùng 很漂亮, không thêm 是 trong mẫu cơ bản."
+     },
+     {
+      "wrong": "我的老师是很忙。",
+      "right": "我的老师很忙。",
+      "why": "忙 miêu tả chủ ngữ trực tiếp; không đặt 是 trước 很忙."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu đúng với nghĩa Mẹ hôm nay rất bận.",
+    "options": [
+     "妈妈今天是很忙。",
+     "妈妈今天很忙。",
+     "妈妈很忙今天。",
+     "妈妈今天很是忙。"
+    ],
+    "answer": 1,
+    "explain": "Câu miêu tả cơ bản dùng 很 đứng trước tính từ 忙."
+   },
+   {
+    "q": "Câu nào dùng vị ngữ tính từ đúng?",
+    "options": [
+     "他很老师今天。",
+     "他老师今天很。",
+     "他今天很高兴。",
+     "他是今天高兴。"
+    ],
+    "answer": 2,
+    "explain": "很高兴 là cụm tính từ làm vị ngữ cho 他."
+   },
+   {
+    "q": "Chọn câu phủ định đúng với tính từ 忙.",
+    "options": [
+     "老师不今天很忙。",
+     "老师今天很不忙。",
+     "老师今天忙不。",
+     "老师今天不忙。"
+    ],
+    "answer": 3,
+    "explain": "不 đứng trước tính từ, sau chủ ngữ và thời gian."
+   },
+   {
+    "q": "Sửa câu 我们学校是很大 thành câu miêu tả cơ bản đúng.",
+    "options": [
+     "我们学校很大。",
+     "我们学校大很。",
+     "很我们学校大。",
+     "我们是学校很大。"
+    ],
+    "answer": 0,
+    "explain": "Bỏ 是 để dùng 很大 làm vị ngữ tính từ."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Quyển sách tôi mua còn mới.",
+    "options": [
+     "我买的书是很新。",
+     "我买的书很新。",
+     "我买书的很新。",
+     "很新我买的书。"
+    ],
+    "answer": 1,
+    "explain": "Cụm 我买的书 làm chủ ngữ và 很新 làm vị ngữ."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-03",
+  "level": 1,
+  "order": 3,
+  "title": "Câu vị ngữ danh từ",
+  "titleZh": "名词谓语句",
+  "summary": "Bạn có thể nói thứ, giờ và tuổi bằng vị ngữ danh từ hoặc số lượng mà không cần 是 trong mẫu cơ bản.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Danh từ hoặc số lượng làm vị ngữ",
+    "body": "Một số câu tiếng Trung dùng trực tiếp danh từ chỉ ngày hoặc cụm số lượng chỉ tuổi và giờ làm vị ngữ. Mẫu cơ bản thường không cần 是.",
+    "examples": [
+     {
+      "zh": "明天星期三，我们去学校。",
+      "py": "míngtiān xīngqīsān wǒmen qù xuéxiào",
+      "vi": "Ngày mai là thứ Tư, chúng tôi đến trường.",
+      "mark": "明天星期三"
+     },
+     {
+      "zh": "妈妈今年三十岁了。",
+      "py": "māma jīnnián sānshí suì le",
+      "vi": "Năm nay mẹ ba mươi tuổi rồi.",
+      "mark": "三十岁"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói thứ, giờ và tuổi",
+    "body": "Dùng kiểu câu này khi nêu hôm nay thứ mấy, hiện tại mấy giờ hoặc một người bao nhiêu tuổi. Số lượng thường đứng trước đơn vị như 点 và 岁.",
+    "examples": [
+     {
+      "zh": "现在八点，我要回家。",
+      "py": "xiànzài bā diǎn wǒ yào huí jiā",
+      "vi": "Bây giờ là tám giờ, tôi muốn về nhà.",
+      "mark": "八点"
+     },
+     {
+      "zh": "哥哥今年二十岁了。",
+      "py": "gēge jīnnián èrshí suì le",
+      "vi": "Năm nay anh trai hai mươi tuổi rồi.",
+      "mark": "二十岁"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt thông tin thời gian sau chủ ngữ",
+    "body": "Nêu ngày hoặc thứ trực tiếp sau chủ ngữ; với giờ và tuổi, đặt số lượng trước đơn vị. Có thể thêm 了 để nói trạng thái hiện tại hoặc sự thay đổi.",
+    "formula": "S + thứ / ngày；S + số + 点；S + số + 岁",
+    "examples": [
+     {
+      "zh": "老师下午三点来学校。",
+      "py": "lǎoshī xiàwǔ sān diǎn lái xuéxiào",
+      "vi": "Giáo viên đến trường lúc ba giờ chiều.",
+      "mark": "三点"
+     },
+     {
+      "zh": "我们今天星期二，明天不上课。",
+      "py": "wǒmen jīntiān xīngqīèr míngtiān bù shàngkè",
+      "vi": "Hôm nay là thứ Ba, ngày mai chúng tôi không học.",
+      "mark": "今天星期二"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không thêm từ thừa sau vị ngữ",
+    "body": "Khi nói tuổi theo mẫu cơ bản, đặt số trước 岁 mà không cần 是. Khi nêu giờ chính xác, không thêm 时间 ngay sau cụm giờ.",
+    "mistakes": [
+     {
+      "wrong": "我今年是十八岁了。",
+      "right": "我今年十八岁了。",
+      "why": "Mẫu cơ bản nói tuổi theo thứ tự 今年 + số + 岁, không cần 是."
+     },
+     {
+      "wrong": "现在九点时间。",
+      "right": "现在九点了，我要回家。",
+      "why": "九点 đã nêu giờ cụ thể nên không thêm 时间 phía sau."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu đúng với nghĩa Mẹ năm nay ba mươi tuổi rồi.",
+    "options": [
+     "妈妈今年是三十岁了。",
+     "妈妈三十今年岁了。",
+     "妈妈今年三十岁了。",
+     "妈妈岁三十今年了。"
+    ],
+    "answer": 2,
+    "explain": "Tuổi được nói theo thứ tự năm, số tuổi rồi đến 岁."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Bây giờ tám giờ, tôi muốn về nhà.",
+    "options": [
+     "现在八点我要回家是。",
+     "现在要八点我回家。",
+     "八点现在我回家要。",
+     "现在八点，我要回家。"
+    ],
+    "answer": 3,
+    "explain": "Nêu giờ trực tiếp sau 现在, rồi nói hành động tiếp theo."
+   },
+   {
+    "q": "Câu nào nêu thứ theo mẫu vị ngữ danh từ?",
+    "options": [
+     "明天星期三，我们去学校。",
+     "明天是星期三的，我们去学校。",
+     "星期三明天，我们去学校。",
+     "明天星期三是，我们去学校。"
+    ],
+    "answer": 0,
+    "explain": "明天星期三 nêu thứ trực tiếp, không cần thêm 是 trong mẫu cơ bản."
+   },
+   {
+    "q": "Câu nào dùng mẫu tuổi chưa tự nhiên theo cách nói cơ bản?",
+    "options": [
+     "我今年十八岁了。",
+     "我今年是十八岁了。",
+     "哥哥今年二十岁了。",
+     "妹妹今年十岁了。"
+    ],
+    "answer": 1,
+    "explain": "Trong mẫu cơ bản, nói 今年 + số + 岁 và lược 是."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Giáo viên đến trường lúc ba giờ chiều.",
+    "options": [
+     "老师三点下午来学校。",
+     "老师下午来三点学校。",
+     "老师下午三点来学校。",
+     "下午老师学校三点来。"
+    ],
+    "answer": 2,
+    "explain": "下午三点 nêu thời gian trước động từ 来."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-04",
+  "level": 1,
+  "order": 4,
+  "title": "Câu chữ 是",
+  "titleZh": "是字句",
+  "summary": "Bạn có thể dùng 是 để xác định một người hoặc sự vật là ai, là gì hay thuộc nhóm nào.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "是 nối hai danh từ",
+    "body": "是 nối chủ ngữ với danh từ hoặc cụm danh từ để xác định người, sự vật hoặc nhóm của chủ ngữ. Mẫu cơ bản là Chủ ngữ + 是 + danh từ.",
+    "formula": "A + 是 + B",
+    "examples": [
+     {
+      "zh": "我爸爸是中国人。",
+      "py": "wǒ bàba shì zhōngguó rén",
+      "vi": "Bố tôi là người Trung Quốc.",
+      "mark": "是中国人"
+     },
+     {
+      "zh": "这本书是我的。",
+      "py": "zhè běn shū shì wǒ de",
+      "vi": "Quyển sách này là của tôi.",
+      "mark": "是我的"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Xác định người hoặc sự vật",
+    "body": "Dùng 是 để giới thiệu nghề nghiệp, quan hệ hoặc nói một người hay vật thuộc nhóm nào. Dùng 不是 để phủ định.",
+    "examples": [
+     {
+      "zh": "她是我的汉语老师。",
+      "py": "tā shì wǒ de hànyǔ lǎoshī",
+      "vi": "Cô ấy là giáo viên tiếng Trung của tôi.",
+      "mark": "是我的汉语老师"
+     },
+     {
+      "zh": "他不是我的朋友。",
+      "py": "tā bú shì wǒ de péngyou",
+      "vi": "Anh ấy không phải bạn tôi.",
+      "mark": "不是"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 是 giữa hai thành phần",
+    "body": "Đặt 是 sau chủ ngữ và trước danh từ chỉ nghề nghiệp, quan hệ hoặc loại sự vật. Khi phủ định, 不 đứng trước 是.",
+    "formula": "S + 是 / 不是 + danh từ",
+    "examples": [
+     {
+      "zh": "我哥哥是学生。",
+      "py": "wǒ gēge shì xuéshēng",
+      "vi": "Anh trai tôi là học sinh.",
+      "mark": "是学生"
+     },
+     {
+      "zh": "这是我家的书。",
+      "py": "zhè shì wǒ jiā de shū",
+      "vi": "Đây là sách ở nhà tôi.",
+      "mark": "这是"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Phân biệt 是 với 很",
+    "body": "Dùng 是 trước danh từ để xác định người hoặc vật. Tính từ làm vị ngữ thường dùng 很, không dùng 很 thay cho 是 trước danh từ.",
+    "mistakes": [
+     {
+      "wrong": "我爸爸是中国。",
+      "right": "我爸爸是中国人。",
+      "why": "中国 là tên nước; muốn nói người Trung Quốc thì thêm 人."
+     },
+     {
+      "wrong": "他现在很老师。",
+      "right": "他现在是老师。",
+      "why": "老师 là danh từ chỉ nghề nghiệp nên dùng 是 để nối với chủ ngữ."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu đúng với nghĩa Bố tôi là người Trung Quốc.",
+    "options": [
+     "我爸爸中国人。",
+     "我爸爸很中国人。",
+     "我爸爸中国是人。",
+     "我爸爸是中国人。"
+    ],
+    "answer": 3,
+    "explain": "是 đứng giữa chủ ngữ 我爸爸 và danh từ 中国人."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Quyển sách này là của tôi.",
+    "options": [
+     "这本书是我的。",
+     "这本书我的是。",
+     "这是我的本书的。",
+     "是这本书我的。"
+    ],
+    "answer": 0,
+    "explain": "Cấu trúc là cụm chủ ngữ 这本书 + 是 + 我的."
+   },
+   {
+    "q": "Chọn câu phủ định đúng với nghĩa Anh ấy không phải bạn tôi.",
+    "options": [
+     "他不我的朋友。",
+     "他不是我的朋友。",
+     "他很不是我的朋友。",
+     "他朋友不是我的。"
+    ],
+    "answer": 1,
+    "explain": "不 đứng ngay trước 是 để tạo dạng phủ định 不是."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa Mẹ tôi là giáo viên.",
+    "options": [
+     "我妈妈很老师。",
+     "我妈妈老师是。",
+     "我妈妈是老师。",
+     "我妈妈是很老师。"
+    ],
+    "answer": 2,
+    "explain": "老师 là danh từ nên đặt sau 是."
+   },
+   {
+    "q": "Câu nào xác định chuối thuộc nhóm trái cây ngon?",
+    "options": [
+     "香蕉很好吃的水果。",
+     "香蕉一个是好吃的水果。",
+     "香蕉好吃的是水果。",
+     "香蕉是好吃的水果。"
+    ],
+    "answer": 3,
+    "explain": "是 nối 香蕉 với cụm danh từ 好吃的水果."
+   }
+  ]
+ }
+]

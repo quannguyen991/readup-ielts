@@ -1,0 +1,334 @@
+[
+ {
+  "id": "zh-d-h6-03",
+  "level": 6,
+  "order": 3,
+  "title": "网上购物遇到诈骗",
+  "titleZh": "网上买东西遇到骗子",
+  "topic": "xã hội",
+  "scene": "Một người mua hàng đến đồn cảnh sát trình bày việc bị lừa chuyển tiền và hỏi cách phối hợp điều tra.",
+  "minutes": 6,
+  "lines": [
+   {
+    "who": "王女士",
+    "zh": "警察同志，我在网上买东西时遇到了骗子。",
+    "py": "jǐngchá tóngzhì wǒ zài wǎngshàng mǎi dōngxi shí yùdào le piànzi",
+    "vi": "Anh cảnh sát, tôi gặp kẻ lừa đảo khi mua hàng trên mạng."
+   },
+   {
+    "who": "警察",
+    "zh": "您先别着急，凡是转账记录都要保存。",
+    "py": "nín xiān bié zháojí fánshì zhuǎnzhàng jìlù dōu yào bǎocún",
+    "vi": "Chị đừng lo, mọi ghi chép chuyển tiền đều cần được lưu lại."
+   },
+   {
+    "who": "王女士",
+    "zh": "我把付款记录发给您了。",
+    "py": "wǒ bǎ fùkuǎn jìlù fā gěi nín le",
+    "vi": "Tôi gửi anh ghi chép thanh toán rồi."
+   },
+   {
+    "who": "警察",
+    "zh": "这些记录能说明付款时间。",
+    "py": "zhèxiē jìlù néng shuōmíng fùkuǎn shíjiān",
+    "vi": "Những ghi chép này có thể cho biết thời gian thanh toán."
+   },
+   {
+    "who": "王女士",
+    "zh": "我还需要提供聊天内容吗？",
+    "py": "wǒ hái xūyào tígōng liáotiān nèiróng ma",
+    "vi": "Tôi có cần cung cấp nội dung trò chuyện nữa không?"
+   },
+   {
+    "who": "警察",
+    "zh": "需要，您可以把对方的话也交给我们。",
+    "py": "xūyào nín kěyǐ bǎ duìfāng de huà yě jiāo gěi wǒmen",
+    "vi": "Cần chứ, chị có thể đưa cả lời nhắn của đối phương cho chúng tôi."
+   },
+   {
+    "who": "王女士",
+    "zh": "对方说今天会退款，可一直没有消息。",
+    "py": "duìfāng shuō jīntiān huì tuìkuǎn kě yìzhí méiyǒu xiāoxi",
+    "vi": "Đối phương nói hôm nay sẽ hoàn tiền, nhưng mãi vẫn chưa có tin tức."
+   },
+   {
+    "who": "警察",
+    "zh": "除非钱退回来了，您才可以考虑不再追究。",
+    "py": "chúfēi qián tuì huílai le nín cái kěyǐ kǎolǜ bú zài zhuījiū",
+    "vi": "Chỉ khi tiền được trả lại, chị mới có thể cân nhắc không tiếp tục truy cứu."
+   },
+   {
+    "who": "王女士",
+    "zh": "我会配合调查，也会提供资料。",
+    "py": "wǒ huì pèihé diàochá yě huì tígōng zīliào",
+    "vi": "Tôi sẽ phối hợp điều tra và cung cấp tài liệu."
+   },
+   {
+    "who": "警察",
+    "zh": "请您留下电话，以便我们及时联系您。",
+    "py": "qǐng nín liúxià diànhuà yǐbiàn wǒmen jíshí liánxì nín",
+    "vi": "Chị vui lòng để lại số điện thoại để chúng tôi kịp thời liên hệ."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "转账记录",
+    "py": "zhuǎnzhàng jìlù",
+    "vi": "ghi chép chuyển tiền"
+   },
+   {
+    "zh": "保存",
+    "py": "bǎocún",
+    "vi": "lưu giữ"
+   },
+   {
+    "zh": "付款记录",
+    "py": "fùkuǎn jìlù",
+    "vi": "ghi chép thanh toán"
+   },
+   {
+    "zh": "聊天内容",
+    "py": "liáotiān nèiróng",
+    "vi": "nội dung trò chuyện"
+   },
+   {
+    "zh": "退款",
+    "py": "tuìkuǎn",
+    "vi": "hoàn tiền"
+   },
+   {
+    "zh": "调查",
+    "py": "diàochá",
+    "vi": "điều tra"
+   },
+   {
+    "zh": "追究",
+    "py": "zhuījiū",
+    "vi": "truy cứu"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h6-03",
+   "zh-g-h6-04",
+   "zh-g-h6-06"
+  ],
+  "quiz": [
+   {
+    "q": "王女士最初来找警察是因为什么？",
+    "options": [
+     "买东西时遇到了骗子",
+     "手机不见了",
+     "和邻居发生了争吵"
+    ],
+    "answer": 0,
+    "explain": "她说自己在网上买东西时遇到了骗子。"
+   },
+   {
+    "q": "警察让王女士保存什么？",
+    "options": [
+     "身份证",
+     "转账记录",
+     "购物袋"
+    ],
+    "answer": 1,
+    "explain": "警察请她保存所有转账记录。"
+   },
+   {
+    "q": "王女士已经把什么发给警察了？",
+    "options": [
+     "聊天内容",
+     "电话号码",
+     "付款记录"
+    ],
+    "answer": 2,
+    "explain": "她已经把付款记录发给警察了。"
+   },
+   {
+    "q": "对方说会在什么时候退款？",
+    "options": [
+     "今天",
+     "明天",
+     "周末"
+    ],
+    "answer": 0,
+    "explain": "王女士说对方承诺今天退款。"
+   },
+   {
+    "q": "警察请王女士留下电话是为了什么？",
+    "options": [
+     "让她马上离开",
+     "有新消息时及时联系她",
+     "帮她换手机"
+    ],
+    "answer": 1,
+    "explain": "警察需要在有新消息时及时联系她。"
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h5-06",
+  "level": 5,
+  "order": 6,
+  "title": "慢慢养成早睡习惯",
+  "titleZh": "慢慢养成早睡的习惯",
+  "topic": "lối sống",
+  "scene": "Hai người bạn trò chuyện về thói quen ngủ sớm và cách điều chỉnh giờ giấc vào cuối tuần.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小林",
+    "zh": "你最近精神好多了，晚上睡得好吗？",
+    "py": "nǐ zuìjìn jīngshén hǎo duō le wǎnshang shuì de hǎo ma",
+    "vi": "Dạo này trông bạn tỉnh táo hơn hẳn, buổi tối ngủ có ngon không?"
+   },
+   {
+    "who": "阿宁",
+    "zh": "自从我每天早睡以来，白天轻松多了。",
+    "py": "zìcóng wǒ měitiān zǎoshuì yǐlái báitiān qīngsōng duō le",
+    "vi": "Từ khi ngày nào tôi cũng ngủ sớm, ban ngày thấy thoải mái hơn nhiều."
+   },
+   {
+    "who": "小林",
+    "zh": "你是怎么改掉熬夜习惯的？",
+    "py": "nǐ shì zěnme gǎidiào áoyè xíguàn de",
+    "vi": "Bạn đã làm thế nào để bỏ thói quen thức khuya vậy?"
+   },
+   {
+    "who": "阿宁",
+    "zh": "我把手机收好，一旦上床就不再看了。",
+    "py": "wǒ bǎ shǒujī shōu hǎo yídàn shàngchuáng jiù bú zài kàn le",
+    "vi": "Tôi cất điện thoại đi, hễ lên giường là không xem nữa."
+   },
+   {
+    "who": "小林",
+    "zh": "这样不会觉得无聊吗？",
+    "py": "zhèyàng bú huì juéde wúliáo ma",
+    "vi": "Làm vậy bạn không thấy buồn chán sao?"
+   },
+   {
+    "who": "阿宁",
+    "zh": "开始有点难，可我睡得越来越好了。",
+    "py": "kāishǐ yǒudiǎn nán kě wǒ shuì de yuèláiyuè hǎo le",
+    "vi": "Lúc đầu hơi khó, nhưng giấc ngủ của tôi ngày càng tốt hơn."
+   },
+   {
+    "who": "小林",
+    "zh": "哪怕周末睡晚一点，你也按时起床吗？",
+    "py": "nǎpà zhōumò shuì wǎn yìdiǎn nǐ yě ànshí qǐchuáng ma",
+    "vi": "Dù cuối tuần ngủ muộn hơn một chút, bạn vẫn dậy đúng giờ à?"
+   },
+   {
+    "who": "阿宁",
+    "zh": "周末我会多睡一会儿，但不会睡到中午。",
+    "py": "zhōumò wǒ huì duō shuì yíhuìr dàn bú huì shuì dào zhōngwǔ",
+    "vi": "Cuối tuần tôi sẽ ngủ thêm một lát, nhưng không ngủ đến tận trưa."
+   },
+   {
+    "who": "小林",
+    "zh": "我也想试试，最近压力让我睡不好。",
+    "py": "wǒ yě xiǎng shìshi zuìjìn yālì ràng wǒ shuì bù hǎo",
+    "vi": "Tôi cũng muốn thử, gần đây áp lực khiến tôi ngủ không ngon."
+   },
+   {
+    "who": "阿宁",
+    "zh": "你先慢慢来，别急着改变全部习惯。",
+    "py": "nǐ xiān mànmàn lái bié jí zhe gǎibiàn quánbù xíguàn",
+    "vi": "Bạn cứ từ từ thôi, đừng vội thay đổi hết mọi thói quen."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "早睡",
+    "py": "zǎoshuì",
+    "vi": "ngủ sớm"
+   },
+   {
+    "zh": "熬夜",
+    "py": "áoyè",
+    "vi": "thức khuya"
+   },
+   {
+    "zh": "习惯",
+    "py": "xíguàn",
+    "vi": "thói quen"
+   },
+   {
+    "zh": "手机",
+    "py": "shǒujī",
+    "vi": "điện thoại"
+   },
+   {
+    "zh": "按时",
+    "py": "ànshí",
+    "vi": "đúng giờ"
+   },
+   {
+    "zh": "压力",
+    "py": "yālì",
+    "vi": "áp lực"
+   },
+   {
+    "zh": "慢慢",
+    "py": "mànmàn",
+    "vi": "từ từ"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h5-02",
+   "zh-g-h5-04",
+   "zh-g-h5-06"
+  ],
+  "quiz": [
+   {
+    "q": "阿宁早睡以后，白天有什么变化？",
+    "options": [
+     "觉得轻松多了",
+     "变得更忙了",
+     "总是很困"
+    ],
+    "answer": 0,
+    "explain": "她说自从每天早睡以来，白天轻松多了。"
+   },
+   {
+    "q": "阿宁上床后怎么处理手机？",
+    "options": [
+     "继续看手机",
+     "收好手机，不再看",
+     "把手机送给朋友"
+    ],
+    "answer": 1,
+    "explain": "她会先把手机收好，上床后就不再看了。"
+   },
+   {
+    "q": "阿宁觉得刚开始改变习惯容易吗？",
+    "options": [
+     "她觉得特别容易",
+     "她还没有开始改变",
+     "她觉得有点难"
+    ],
+    "answer": 2,
+    "explain": "她说开始时有点难，不过后来睡得越来越好。"
+   },
+   {
+    "q": "哪怕周末睡晚一点，阿宁也会怎样？",
+    "options": [
+     "按时起床",
+     "一直睡到中午",
+     "不吃早饭"
+    ],
+    "answer": 0,
+    "explain": "阿宁说周末睡晚一点也会按时起床。"
+   },
+   {
+    "q": "小林最近为什么想试着改变作息？",
+    "options": [
+     "他买了新手机",
+     "最近压力让他睡不好",
+     "他准备搬家"
+    ],
+    "answer": 1,
+    "explain": "小林说最近压力让他睡不好。"
+   }
+  ]
+ }
+]

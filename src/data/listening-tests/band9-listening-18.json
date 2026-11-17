@@ -1,0 +1,944 @@
+{
+ "id": "band9-listening-18",
+ "title": "Band 9 Listening Test 18",
+ "source": "Band 9 Original",
+ "level": "hard",
+ "cover": {
+  "topic": "Community halls, backcountry parks, sleep research and energy storage",
+  "category": "Australia and Canada"
+ },
+ "sections": [
+  {
+   "n": 1,
+   "title": "Hiring a community hall for a birthday party",
+   "context": "You will hear a man phoning a community hall in Adelaide to book it for a party.",
+   "audio": "/listening/band9-listening-18/s1.mp3",
+   "durationSec": 235,
+   "transcript": [
+    {
+     "speaker": "Gillian",
+     "text": "Fairview Community Hall bookings, Gillian speaking."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Hello Gillian. I'm hoping to hire the hall for my wife's fiftieth birthday party. Could you tell me what's available?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Of course. Let me start a booking form. May I have your surname first?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "It's Fitzgerald."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Can you spell it?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "Yes. F-I-T-Z-G-E-R-A-L-D."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Thank you, Mr Fitzgerald. Do you have a date in mind?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "Saturday 12 September, if possible."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Let me look at the calendar. Oh, I'm sorry, the twelfth is already taken. There's a wedding that day. I do have the following Saturday, the nineteenth, or Friday the eighteenth."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Hmm. Friday would be a bit difficult, because a lot of our guests work late and some are travelling from Mount Gambier. Her actual birthday's on the seventeenth, so the nineteenth is close enough. Let's go with Saturday."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "So that's Saturday 19 September. Now, what time would you like the party to start?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "We'd like people to arrive at seven, I think. Actually, my wife prefers a bit later, so let's say half past seven. 7:30."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "That's fine. You can have access to the hall from six o'clock, so you'll have an hour and a half to decorate and set out the food. On Saturdays the hall must be empty by midnight."
+    },
+    {
+     "speaker": "Warren",
+     "text": "That should be plenty. We'll start clearing up at about eleven."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "How many guests are you expecting?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "Around sixty, I'd say. Although, hold on. My wife has a very big family. Once I count all the cousins and the neighbours, it's probably closer to 85."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "That's no problem. The hall seats up to 90 at tables, or 120 if everyone is standing, so you have plenty of room."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Great. And what will it cost?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "For a Saturday evening, the hire fee is 380 dollars. However, we offer a twenty percent discount to members of local clubs and associations. Do you belong to anything in the area?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "I'm a member of the Fairview Bowling Club."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Then you qualify. If you bring your membership card when you collect the keys, the fee comes down to 304 dollars."
+    },
+    {
+     "speaker": "Warren",
+     "text": "That's a nice surprise. Is there a deposit?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "There's a refundable bond. It's normally 200 dollars, but if you plan to serve alcohol, it goes up to 300."
+    },
+    {
+     "speaker": "Warren",
+     "text": "We'll have wine and beer, so 300, then."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Yes, that's right. It's returned within a week, as long as the hall is left clean and nothing is damaged. Do you need the kitchen?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "Just the fridge and the oven, because the food is being delivered by a caterer."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "That's included. Now, is there going to be any entertainment? I ask because of the noise rules."
+    },
+    {
+     "speaker": "Warren",
+     "text": "I was thinking of a DJ, but my wife's brother plays in a band, and he's offered to perform. So I think it'll be a live band."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "That's lovely, but the music has to finish by eleven o'clock, and you'll need to keep the doors closed once the band starts, because there are houses nearby. Will that be all right?"
+    },
+    {
+     "speaker": "Warren",
+     "text": "I'll make sure he knows. Where exactly is the hall? I haven't been since the community fair years ago."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "We're at 23 Wattle Avenue."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Was that 32?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "No, it's 23. Two, three. It's the brick building next to the library."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Okay. And the postcode, for the invitations?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "It's 5042."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Perfect. And when do I pick up the key?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "Keys are not collected from here, because our office is only open on weekdays. You collect them from the library, between four and five on the Friday afternoon, and you return them there on Monday morning."
+    },
+    {
+     "speaker": "Warren",
+     "text": "The council office, did you say?"
+    },
+    {
+     "speaker": "Gillian",
+     "text": "No, the library, which is right next door. The staff will ask to see your membership card, so please don't forget it."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Understood. What about parking? I'm worried about eighty-five people trying to park."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "There's room for about twenty cars behind the hall, and the school across the road lets people use their car park on weekends, so most guests manage fine."
+    },
+    {
+     "speaker": "Warren",
+     "text": "Wonderful. Thank you, Gillian, you've been very helpful."
+    },
+    {
+     "speaker": "Gillian",
+     "text": "My pleasure. I'll send you an email with a booking form to sign, and we'll see you on the nineteenth."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 1-10",
+     "instruction": "Complete the booking form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Fairview Community Hall: Booking Form",
+      "Surname: {{1}}",
+      "Date of event: {{2}}",
+      "Start time of party: {{3}}",
+      "Number of guests: {{4}}",
+      "Hire fee (after discount): ${{5}}",
+      "Bond (alcohol being served): ${{6}}",
+      "Entertainment: {{7}}",
+      "Hall address: {{8}}",
+      "Postcode: {{9}}",
+      "Keys to be collected from the {{10}}"
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "answer": "Fitzgerald"
+      },
+      {
+       "n": 2,
+       "answer": "19 September"
+      },
+      {
+       "n": 3,
+       "answer": "7:30",
+       "accept": [
+        "7.30",
+        "half past seven"
+       ]
+      },
+      {
+       "n": 4,
+       "answer": "85",
+       "accept": [
+        "eighty-five"
+       ]
+      },
+      {
+       "n": 5,
+       "answer": "304"
+      },
+      {
+       "n": 6,
+       "answer": "300"
+      },
+      {
+       "n": 7,
+       "answer": "live band"
+      },
+      {
+       "n": 8,
+       "answer": "23 Wattle Avenue"
+      },
+      {
+       "n": 9,
+       "answer": "5042"
+      },
+      {
+       "n": 10,
+       "answer": "library"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Backcountry briefing at Mount Larch Provincial Park",
+   "context": "You will hear a park ranger giving visitors a safety briefing at a provincial park in Canada.",
+   "audio": "/listening/band9-listening-18/s2.mp3",
+   "durationSec": 234,
+   "transcript": [
+    {
+     "speaker": "Ranger Singh",
+     "text": "Good morning, everyone, and welcome to Mount Larch Provincial Park. My name's Ranger Singh, and I'll be taking you through the main points you need to know before you head into the backcountry. It will take about ten minutes, and I'd ask you to listen carefully, because some of the information has changed since last summer."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Let's begin with permits. Many of you reserved your campsites online, and you've brought a printed copy of your confirmation. That's useful, but it isn't enough. Before you set off, every group must come to this visitor centre to collect a backcountry permit, which has to be attached to your pack. Rangers do check on the trails, and we do turn people back. You don't need to register again at the campgrounds themselves."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Next, wildlife. This park has both black bears and grizzly bears, and in the past few weeks we've seen more activity than usual around the campgrounds, because the berries are late this year. Please keep all your food, toothpaste, and anything with a smell, in the metal lockers provided at each campground. A few years ago, we advised people to hang their food from a tree, but bears learned how to get it down, so we no longer recommend that. And please, never keep food in your tent, even a chocolate bar."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "A related matter is fire. As the summer has been unusually dry, there is a fire restriction in force across the park. You may not light a fire anywhere except in the metal fire pits at the Larch Lake campground. We've provided firewood there, so you don't need to gather any from the forest. Gas stoves are permitted everywhere, but please take care with them, and keep a bucket of water nearby."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Now, water. Most of the creeks look beautifully clean, but they can contain parasites, so all water has to be treated. Some people use tablets, and others carry filters. Both work, but the filters can fail if they have frozen overnight, and tablets take a long time to work in cold water. So the most reliable method is to boil your water for at least a minute. It takes a little more fuel, but you can be sure it's safe."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Let me finish with the trails themselves, because several of them have special conditions this season. The Larch Lake loop is the easiest, and it's the only trail with a smooth, wide surface, so it's suitable for wheelchairs and pushchairs. It takes about an hour, and there are benches along the lake."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Eagle Ridge is a very different story. It is a spectacular hike with views over three valleys, but there is one steep section, about halfway up, where you'll need to pull yourself up using fixed ropes. They're in good condition, but if you have a fear of heights, or you're carrying a heavy pack, you might prefer another route."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Cedar Falls was a favourite with many of you, I know, but I'm afraid the trail is closed for repairs. A bridge was damaged in the spring floods, and the crews are working on it now. We hope to reopen it by the end of the month, but please check the notice board before you plan anything. I should add that the longest route in the park is the Highland Traverse, which takes four days, and I'm not covering it today, because it needs a separate permit."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "The Marten Creek trail is lovely, but you must be aware that there is no bridge over the river about two kilometres from the start. You'll have to wade across, and in the spring melt the water can be knee-deep and very cold. Take a pair of sandals, and always undo the waist strap on your pack before you cross, in case you fall."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "Then there's the Old Quarry track, which is short, but it's the best place in the park for watching wildlife. If you're there at dawn, you have a good chance of seeing deer, and sometimes even a moose, drinking at the pond. Please keep your distance and stay quiet, because the animals are easily frightened."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "One last thing about Silver Creek campground. It's a beautiful spot, right beside the water, but I must stress that the pump there is out of order, and so there is no drinking water at all. Bring everything you need from Larch Lake, or be prepared to treat creek water, as I mentioned."
+    },
+    {
+     "speaker": "Ranger Singh",
+     "text": "If you have any questions, I'll be here for a few minutes. Otherwise, please collect your permits from the desk, and enjoy your trip."
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-one",
+     "title": "Questions 11-14",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 11,
+       "prompt": "What must every group do before entering the backcountry?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "show a printed reservation at the trailhead"
+        },
+        {
+         "key": "B",
+         "text": "collect a permit from the visitor centre"
+        },
+        {
+         "key": "C",
+         "text": "register again at the first campground"
+        }
+       ]
+      },
+      {
+       "n": 12,
+       "prompt": "Where does the ranger say food should be kept?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "hung from a tree"
+        },
+        {
+         "key": "B",
+         "text": "in a metal locker"
+        },
+        {
+         "key": "C",
+         "text": "inside the tent"
+        }
+       ]
+      },
+      {
+       "n": 13,
+       "prompt": "What does the ranger say about campfires?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are banned throughout the park."
+        },
+        {
+         "key": "B",
+         "text": "They are allowed only in metal pits at Larch Lake."
+        },
+        {
+         "key": "C",
+         "text": "They are allowed with a special permit."
+        }
+       ]
+      },
+      {
+       "n": 14,
+       "prompt": "What does the ranger say is the most reliable way to treat water?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "boiling it"
+        },
+        {
+         "key": "B",
+         "text": "filtering it"
+        },
+        {
+         "key": "C",
+         "text": "using tablets"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 15-20",
+     "instruction": "What does the ranger say about each trail or campground? Choose SIX answers from the box and write the correct letter, A-G, next to Questions 15-20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "It is closed for repairs."
+      },
+      {
+       "key": "B",
+       "text": "It has a steep section with fixed ropes."
+      },
+      {
+       "key": "C",
+       "text": "It is the best place to see wildlife at dawn."
+      },
+      {
+       "key": "D",
+       "text": "It requires walkers to cross a river without a bridge."
+      },
+      {
+       "key": "E",
+       "text": "It is suitable for wheelchairs and pushchairs."
+      },
+      {
+       "key": "F",
+       "text": "It is the longest route in the park."
+      },
+      {
+       "key": "G",
+       "text": "It has no drinking water."
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "prompt": "Larch Lake loop",
+       "answer": "E"
+      },
+      {
+       "n": 16,
+       "prompt": "Eagle Ridge",
+       "answer": "B"
+      },
+      {
+       "n": 17,
+       "prompt": "Cedar Falls",
+       "answer": "A"
+      },
+      {
+       "n": 18,
+       "prompt": "Marten Creek",
+       "answer": "D"
+      },
+      {
+       "n": 19,
+       "prompt": "Old Quarry track",
+       "answer": "C"
+      },
+      {
+       "n": 20,
+       "prompt": "Silver Creek campground",
+       "answer": "G"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Planning an experiment on sleep and memory",
+   "context": "You will hear two psychology students, Hannah and Jamal, discussing their experiment with their tutor, Doctor Okonkwo.",
+   "audio": "/listening/band9-listening-18/s3.mp3",
+   "durationSec": 282,
+   "transcript": [
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Right, Hannah, Jamal. Let's talk about your experiment on sleep and memory. Hannah, could you remind me of the main idea?"
+    },
+    {
+     "speaker": "Hannah",
+     "text": "Of course. We want to test whether a short nap after learning a list of words helps people remember more of them later, compared with people who stay awake."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "It's based on a study from Canada, which found that even a twenty-minute nap improved recall. But we're not sure it was a fair test."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Which study was that? I know a few from Toronto."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "A paper from Toronto, yes, published about ten years ago. They tested forty volunteers, and the nap group scored about a fifth higher."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "Our lecturer in first year called it a classic, but said it had never been properly repeated."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "That is exactly why a small replication like yours is worth doing. Even a modest result tells us something, as long as the design is sound."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "A healthy attitude. Let's go through the design, then. Who are your participants?"
+    },
+    {
+     "speaker": "Hannah",
+     "text": "First-year psychology students. They get course credit for taking part, so recruitment is easy."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "That's convenient, but it's a weakness. Students are young, they sleep irregular hours, and they're not typical of the wider population, so your results may not apply to older adults, for example. You'll need to say so in your discussion."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "I did wonder about that, but we don't have time to recruit anyone else."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Fine. Just be honest about it. What's the memory test?"
+    },
+    {
+     "speaker": "Hannah",
+     "text": "A list of fifteen common words, which participants study for two minutes and then try to recall."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "I'm worried that it's too easy. In my experience, people remember most of fifteen common words whether or not they've slept, and then you'll have no difference to measure. I'd use at least thirty words, or choose less familiar ones."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "I thought a short list would be less stressful, but I see your point."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "Alternatively, we could make the words more abstract."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Possibly, but start with a longer list. Now, how will you measure the sleep itself?"
+    },
+    {
+     "speaker": "Jamal",
+     "text": "We've borrowed some wristbands from the sports science department. They record movement, and the software estimates whether someone is asleep."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "That's the right idea, but remember what they actually measure. They detect movement, not brain activity, so they can't distinguish light sleep from simply lying still. That might blur your results."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "Could we borrow the electrode equipment from the lab instead? It reads the brain directly."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "I wouldn't. It's booked for months, and the setup takes an hour for each participant. I'd keep the wristbands, but I'd also ask your participants to write down how long they think they slept. That doesn't replace the data, but it gives you a second source."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "A sleep diary, you mean? That's easy enough. We'll do that."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Next, the timing. Some people will be tested at nine in the morning, and some at two in the afternoon, I see."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "That's just because of the timetable."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "But the morning group will probably have had coffee, and caffeine can affect both sleep and memory. Either test everyone at the same time, or ask people to avoid caffeine on the day."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "We'll ask them to avoid it. Everyone is free at two, so we could also move the morning group."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "I'd rather keep both times and just ask them. It's more flexible."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Well, whichever you choose, put it in your method section. And the last point is the control group. You've planned for eight people in each group."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "Yes, because it's a small project."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "That's very small, and a single unusual person could change the result. Aim for at least fifteen per group, even if you have to spread the testing over several days."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "That's a big increase. Well, we'll try."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "If we run sessions on two afternoons a week for three weeks, we could just manage it."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "And we should book the testing room now, before other groups take every slot."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Sensible. The booking system opens on Monday, so be quick, and remember that the room has to be left exactly as you found it."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Good. So where does that leave the design? What are you going to change?"
+    },
+    {
+     "speaker": "Jamal",
+     "text": "I think we should double the length of the word list. We'll do that first."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "Agreed. And as for the wristbands, we'll keep them, but add the diary, so we're not relying on a single source."
+    },
+    {
+     "speaker": "Jamal",
+     "text": "What about the controls? Shall I contact more students about the extra participants?"
+    },
+    {
+     "speaker": "Hannah",
+     "text": "Let's wait until the ethics committee approves the plan. We shouldn't contact anyone until then."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Quite right. Now the ethics application. It's short, but there are two things the committee will look at carefully. The first is how you'll store the data, which should be on the university server and not on your own laptops. The second is how you will recruit participants. They'll want to see the exact wording of your invitation. You don't need to list the names of participants, since the data will be anonymous, and the test materials can be sent later."
+    },
+    {
+     "speaker": "Hannah",
+     "text": "That's clear. We'll write it this week."
+    },
+    {
+     "speaker": "Doctor Okonkwo",
+     "text": "Excellent. Send me a draft by Friday, and I'll look it over before you submit it."
+    }
+   ],
+   "groups": [
+    {
+     "type": "matching",
+     "title": "Questions 21-25",
+     "instruction": "What concern does the tutor raise about each part of the students' experiment? Choose FIVE answers from the box and write the correct letter, A-G, next to Questions 21-25.",
+     "options": [
+      {
+       "key": "A",
+       "text": "The sample is too small."
+      },
+      {
+       "key": "B",
+       "text": "Caffeine could affect the results."
+      },
+      {
+       "key": "C",
+       "text": "The participants may not represent the wider population."
+      },
+      {
+       "key": "D",
+       "text": "The task may be too easy."
+      },
+      {
+       "key": "E",
+       "text": "The equipment measures movement rather than brain activity."
+      },
+      {
+       "key": "F",
+       "text": "The equipment is too expensive."
+      },
+      {
+       "key": "G",
+       "text": "Ethical approval has not been given."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "prompt": "The participants",
+       "answer": "C"
+      },
+      {
+       "n": 22,
+       "prompt": "The memory test",
+       "answer": "D"
+      },
+      {
+       "n": 23,
+       "prompt": "The wristbands",
+       "answer": "E"
+      },
+      {
+       "n": 24,
+       "prompt": "The time of testing",
+       "answer": "B"
+      },
+      {
+       "n": 25,
+       "prompt": "The size of each group",
+       "answer": "A"
+      }
+     ]
+    },
+    {
+     "type": "mcq-one",
+     "title": "Questions 26-28",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 26,
+       "prompt": "What do the students decide to do about the word list?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "make it longer"
+        },
+        {
+         "key": "B",
+         "text": "use pictures instead of words"
+        },
+        {
+         "key": "C",
+         "text": "give participants more time"
+        }
+       ]
+      },
+      {
+       "n": 27,
+       "prompt": "How will they deal with the limits of the wristbands?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "by borrowing brain-scanning equipment"
+        },
+        {
+         "key": "B",
+         "text": "by asking participants to keep a sleep diary"
+        },
+        {
+         "key": "C",
+         "text": "by testing participants in the laboratory"
+        }
+       ]
+      },
+      {
+       "n": 28,
+       "prompt": "What do the students agree to do before contacting extra participants?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "wait for ethical approval"
+        },
+        {
+         "key": "B",
+         "text": "ask their tutor for a list of names"
+        },
+        {
+         "key": "C",
+         "text": "run a trial with friends"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "mcq-many",
+     "title": "Questions 29-30",
+     "instruction": "Choose TWO letters, A-E. Which TWO things does the tutor say the ethics application must include?",
+     "options": [
+      {
+       "key": "A",
+       "text": "a plan for storing the data"
+      },
+      {
+       "key": "B",
+       "text": "a list of participants' names"
+      },
+      {
+       "key": "C",
+       "text": "details of how participants will be recruited"
+      },
+      {
+       "key": "D",
+       "text": "a copy of the memory test"
+      },
+      {
+       "key": "E",
+       "text": "a letter from the sports science department"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "A",
+        "C"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Storing renewable energy",
+   "context": "You will hear a lecturer in engineering talking about ways of storing energy from solar and wind power.",
+   "audio": "/listening/band9-listening-18/s4.mp3",
+   "durationSec": 277,
+   "transcript": [
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "Good afternoon, everyone. In the last lecture, we looked at how much electricity solar panels and wind turbines can produce. Today I want to look at the other half of the problem, which is what to do when the sun isn't shining and the wind isn't blowing. In other words, storage."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "Let me start with why storage matters. An electricity grid has to match supply and demand at every moment. With coal or gas, we simply burn more or less fuel. But solar power peaks in the middle of the day, whereas demand peaks in the evening, when people come home, cook dinner and switch on lights, and the sun has already gone. That mismatch is the central challenge, and that's why the evening peak is the focus of most storage projects."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "There are many ways to store energy, but two technologies dominate: pumped hydro and batteries. Let's take pumped hydro first. It's an old idea, and the principle is simple. You have two reservoirs, one high up and one low down. When electricity is cheap, you use it to pump water uphill. When electricity is expensive, you release the water, and it flows downhill through turbines and generates power. Round-trip efficiency is typically around 80 percent, which means that you get four-fifths of the energy back. That's excellent for something so simple."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "Pumped hydro plants are also extremely durable. A well-built scheme can operate for 50 years or more, much longer than any battery. The largest projects can store enough energy to supply hundreds of thousands of homes for many hours. A major scheme in the Snowy Mountains of Australia is an example, though its cost has increased several times since it was first announced, and that's a warning about the risks involved."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "The main drawback of pumped hydro is geography. You need the right landscape, with a large height difference between two reservoirs, and you need water. Many cities are nowhere near mountains. Building a scheme takes many years, and it can raise environmental concerns, as it involves flooding valleys or damaging habitats. So although it's the cheapest storage per unit of energy, it can't be built everywhere."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "Now, batteries. Most grid batteries today use lithium-ion technology, the same as in your phone, but on a far larger scale. Their great advantage is speed. A battery can respond to a change on the grid in milliseconds, which is thousands of times faster than a gas power station. That makes them ideal for stabilising the grid, and not only for storing energy."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "A famous example is a battery in South Australia, which was installed in just 100 days after a series of blackouts. Within a year it had saved consumers many millions of dollars in grid stabilisation costs. It's a striking demonstration of how quickly batteries can be built, compared with the many years for a hydro plant."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "But batteries have limitations too. They don't last as long. A typical grid battery lasts about 15 years before its capacity falls significantly, and it has to be replaced. Their cost has fallen dramatically, by almost 90 percent over the past decade, but the materials, such as lithium and cobalt, are mined in places where the environmental and social conditions are often poor. And when batteries do reach the end of their life, we need to dispose of them safely. At present, the main challenge is recycling, because only a small percentage of lithium-ion batteries are recycled properly, and the technology to do it cheaply is still being developed."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "Batteries also store energy for relatively short periods, usually between two and four hours. They're excellent for smoothing out the evening peak, but not for the long gaps, such as a week of cloudy, windless weather in winter. For that, we need something else."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "This is where hydrogen comes in. The idea is to use surplus solar and wind power to split water into hydrogen and oxygen, store the hydrogen in tanks or underground caverns, and burn it or use it in fuel cells when it's needed. Hydrogen can be stored for months, and that makes it attractive for seasonal storage. However, the round-trip efficiency is poor, often below 40 percent, and the infrastructure doesn't yet exist. So for the long-term future it may be vital, but for the next decade, it's mainly a research topic."
+    },
+    {
+     "speaker": "Professor Ibrahim",
+     "text": "To sum up, there's no single solution. Pumped hydro offers cheap, long-lasting storage but depends on geography. Batteries are fast and flexible but expensive and short-lived. Hydrogen could fill the gap over weeks and months but is not yet ready. Most experts now believe that a grid with a high share of renewable energy will need all three. For next week, I'd like you to read the two reports on the course page, and prepare a short comparison."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 31-40",
+     "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Energy storage for renewable power",
+      "Solar output peaks at midday, but demand peaks in the {{31}}",
+      "## Pumped hydro",
+      "Water is pumped {{32}} when electricity is cheap",
+      "Round-trip efficiency around {{33}} percent",
+      "A scheme can operate for {{34}} years or more",
+      "Main drawback: depends on suitable {{35}}",
+      "## Batteries",
+      "Can respond to grid changes in {{36}}",
+      "A battery in South Australia was installed in {{37}} days",
+      "Typical lifespan about {{38}} years",
+      "Main challenge at end of life: {{39}}",
+      "## Long-term storage",
+      "Surplus power can be used to make {{40}}"
+     ],
+     "questions": [
+      {
+       "n": 31,
+       "answer": "evening"
+      },
+      {
+       "n": 32,
+       "answer": "uphill"
+      },
+      {
+       "n": 33,
+       "answer": "80",
+       "accept": [
+        "eighty"
+       ]
+      },
+      {
+       "n": 34,
+       "answer": "50",
+       "accept": [
+        "fifty"
+       ]
+      },
+      {
+       "n": 35,
+       "answer": "geography"
+      },
+      {
+       "n": 36,
+       "answer": "milliseconds"
+      },
+      {
+       "n": 37,
+       "answer": "100",
+       "accept": [
+        "one hundred"
+       ]
+      },
+      {
+       "n": 38,
+       "answer": "15",
+       "accept": [
+        "fifteen"
+       ]
+      },
+      {
+       "n": 39,
+       "answer": "recycling"
+      },
+      {
+       "n": 40,
+       "answer": "hydrogen"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -5,6 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Button, Icon, PaperCard } from '@/components/ui';
 import { ChartFigure } from '@/components/writing/ChartFigure';
+import { Task1SourceFigure } from '@/components/writing/Task1SourceFigure';
 import { getWritingPromptById } from '@/data/writing-repository';
 import { writingGuide, type GuideSection } from '@/services/writing/guide';
 import { analyseDraft } from '@/services/writing/analyzer';
@@ -57,7 +58,7 @@ export default function WritingRoomScreen() {
   const saveDraft = useWritingStore((s) => s.saveDraft);
   const getDraft = useWritingStore((s) => s.getDraft);
   const submit = useWritingStore((s) => s.submit);
-  const { L } = useL();
+  const { L, en } = useL();
 
   const isTask1 = prompt?.task === 'ielts_task1';
   const keys = isTask1 ? TASK1_KEYS : TASK2_KEYS;
@@ -182,6 +183,10 @@ export default function WritingRoomScreen() {
             {prompt.chartData ? (
               <View className="mt-4 items-center rounded-panel border border-brand-soft bg-white p-3">
                 <ChartFigure data={prompt.chartData} width={360} />
+              </View>
+            ) : isTask1 && prompt.sourceCharts?.length ? (
+              <View className="mt-4">
+                <Task1SourceFigure charts={prompt.sourceCharts} english={en} />
               </View>
             ) : null}
           </PaperCard>

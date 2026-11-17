@@ -1,6 +1,9 @@
 import { generateFigure, periodOf } from './chart-generator';
 import { FIGURE_SPECS } from './figure-specs';
-import type { Task1Chart, Task2Essay, WritingPrompt } from '@/lib/writing/types';
+import { deriveAnalysisKey } from './analysis-key';
+import { WRITING_SAMPLES } from '@/data/writing-samples';
+import { TID_TASK1_PROMPTS } from '@/data/tid';
+import type { AnalysisKey, LineOrBarChart, MixedChart, Task1Chart, Task2Essay, WritingPrompt } from '@/lib/writing/types';
 
 /**
  * Bộ sinh đề.
@@ -75,19 +78,66 @@ export const TASK2_THEMES: Theme[] = [
     subject: 'funding space exploration',
     counterpoint: 'solving problems on Earth',
   },
+  { topicSlug: 'transport', subject: 'expanding urban public transport', counterpoint: 'building more roads for private cars' },
+  { topicSlug: 'transport', subject: 'encouraging people to cycle to work', counterpoint: 'improving bus and train services' },
+  { topicSlug: 'media', subject: 'getting news from social media', counterpoint: 'relying on established news organisations' },
+  { topicSlug: 'media', subject: 'limiting the amount of advertising aimed at children', counterpoint: 'allowing parents to decide what children see' },
+  { topicSlug: 'crime', subject: 'using longer prison sentences to reduce crime', counterpoint: 'investing in education and rehabilitation' },
+  { topicSlug: 'crime', subject: 'installing surveillance cameras in public places', counterpoint: 'protecting individual privacy' },
+  { topicSlug: 'government', subject: 'spending public money on preventive healthcare', counterpoint: 'treating illness after it develops' },
+  { topicSlug: 'government', subject: 'providing free childcare for working families', counterpoint: 'leaving childcare arrangements to parents' },
+  { topicSlug: 'culture', subject: 'preserving historic buildings in growing cities', counterpoint: 'replacing them with modern housing' },
+  { topicSlug: 'culture', subject: 'teaching traditional arts in schools', counterpoint: 'giving more time to science and technology' },
+  { topicSlug: 'tourism', subject: 'promoting international tourism', counterpoint: 'protecting local communities from overcrowding' },
+  { topicSlug: 'tourism', subject: 'choosing local holidays instead of overseas trips', counterpoint: 'travelling abroad to experience other cultures' },
+  { topicSlug: 'family', subject: 'parents spending more time with young children', counterpoint: 'children learning independence early' },
+  { topicSlug: 'family', subject: 'older people living with their adult children', counterpoint: 'older people living independently' },
+  { topicSlug: 'economy', subject: 'raising the minimum wage', counterpoint: 'helping businesses keep their costs low' },
+  { topicSlug: 'economy', subject: 'measuring national success by quality of life', counterpoint: 'measuring it mainly by economic growth' },
+  { topicSlug: 'work', subject: 'introducing a four-day working week', counterpoint: 'keeping a conventional five-day schedule' },
+  { topicSlug: 'work', subject: 'changing jobs frequently during a career', counterpoint: 'staying with one employer for many years' },
+  { topicSlug: 'housing', subject: 'building high-density housing near city centres', counterpoint: 'expanding suburbs with more private homes' },
+  { topicSlug: 'housing', subject: 'renting a home rather than buying one', counterpoint: 'saving to own a property' },
+  { topicSlug: 'food', subject: 'eating less meat to protect the environment', counterpoint: 'continuing to eat a traditional diet' },
+  { topicSlug: 'food', subject: 'buying food produced locally', counterpoint: 'choosing a wider range of imported products' },
+  { topicSlug: 'globalisation', subject: 'international companies operating in local markets', counterpoint: 'protecting small domestic businesses' },
+  { topicSlug: 'globalisation', subject: 'young people adopting global popular culture', counterpoint: 'maintaining local customs and languages' },
+  { topicSlug: 'privacy', subject: 'companies collecting data about their customers', counterpoint: 'using less personalised digital services' },
+  { topicSlug: 'privacy', subject: 'using facial recognition in public spaces', counterpoint: 'requiring traditional identity checks' },
+  { topicSlug: 'sport', subject: 'schools making daily physical education compulsory', counterpoint: 'allowing more time for academic subjects' },
+  { topicSlug: 'sport', subject: 'professional athletes receiving very high salaries', counterpoint: 'teachers and nurses being paid more' },
+  { topicSlug: 'agriculture', subject: 'using modern technology to increase food production', counterpoint: 'supporting small-scale traditional farming' },
+  { topicSlug: 'agriculture', subject: 'converting farmland into housing', counterpoint: 'protecting land for future food supplies' },
+  { topicSlug: 'volunteering', subject: 'young adults completing a period of community service', counterpoint: 'beginning their careers immediately' },
+  { topicSlug: 'volunteering', subject: 'volunteering as part of a university degree', counterpoint: 'keeping education focused on academic study' },
 ];
 
-const TEMPLATES: Record<Task2Essay, (t: Theme) => string> = {
-  opinion: (t) =>
+const TEMPLATES: Record<Task2Essay, (t: Theme, variant: number) => string> = {
+  opinion: (t, i) => [
     `Some people believe that ${t.subject} is the most effective way to improve modern life. To what extent do you agree or disagree?`,
-  discussion: (t) =>
+    `It is often argued that ${t.subject} should be a priority for society. To what extent do you agree or disagree?`,
+    `In the modern world, ${t.subject} is increasingly seen as essential. Do you agree or disagree with this view?`,
+  ][i % 3]!,
+  discussion: (t, i) => [
     `Some people think that ${t.subject} should be a priority, while others believe that ${t.counterpoint} matters more. Discuss both views and give your own opinion.`,
-  advantage_disadvantage: (t) =>
+    `While some people support ${t.subject}, others prefer ${t.counterpoint}. Discuss both sides and give your own view.`,
+    `There is disagreement about whether ${t.subject} or ${t.counterpoint} deserves greater attention. Discuss both views and give your opinion.`,
+  ][i % 3]!,
+  advantage_disadvantage: (t, i) => [
     `In many countries, ${t.subject} has become increasingly common. Do the advantages of this development outweigh the disadvantages?`,
-  problem_solution: (t) =>
+    `More people are now choosing ${t.subject}. What are the advantages and disadvantages of this change?`,
+    `The growing emphasis on ${t.subject} has affected many communities. Do the advantages outweigh the disadvantages?`,
+  ][i % 3]!,
+  problem_solution: (t, i) => [
     `Despite growing awareness, ${t.subject} remains difficult to achieve. What are the main causes of this, and what solutions can you suggest?`,
-  two_part: (t) =>
+    `Many societies face challenges related to ${t.subject}. Why has this become a problem, and how could it be addressed?`,
+    `${t.subject} is a concern in a number of countries. What problems does this create, and what measures could solve them?`,
+  ][i % 3]!,
+  two_part: (t, i) => [
     `Today more people are choosing ${t.subject} rather than ${t.counterpoint}. Why is this happening, and is it a positive or a negative development?`,
+    `The popularity of ${t.subject} is increasing. What explains this trend, and what effects might it have on society?`,
+    `In recent years, ${t.subject} has attracted growing attention. Why has this happened, and do you consider it beneficial?`,
+  ][i % 3]!,
 };
 
 const ESSAY_KINDS = Object.keys(TEMPLATES) as Task2Essay[];
@@ -98,9 +148,8 @@ const BANDS = [6.0, 6.5, 7.0];
 /**
  * Đề Task 2 viết tay, đi kèm bộ sinh theo công thức ở trên.
  *
- * Bộ sinh chỉ cho mỗi chủ đề ba dạng luận cố định, nên không bao giờ ra được
- * dạng "thảo luận" cho hai chủ đề thêm vào sau. Đề viết tay bù chỗ đó. Vẫn giữ
- * đúng cụm câu lệnh mà các kiểm tra dạng luận phía trên đòi hỏi.
+ * Bộ sinh tạo đủ năm dạng câu hỏi cho từng nhóm chủ đề để người học có thể
+ * luyện cùng một lĩnh vực theo nhiều yêu cầu lập luận khác nhau.
  */
 const TASK2_CURATED: WritingPrompt[] = [
   {
@@ -194,14 +243,10 @@ export function generateTask2Prompts(): WritingPrompt[] {
 
   TASK2_THEMES.forEach((theme, themeIndex) => {
     ESSAY_KINDS.forEach((kind, kindIndex) => {
-      // Mỗi chủ đề chỉ lấy 3 trong 5 dạng, lệch nhau theo chủ đề. Lấy đủ 5 thì
-      // năm đề cùng một chủ đề đọc lên rất giống nhau.
-      if ((kindIndex + themeIndex) % 5 >= 3) return;
-
       out.push({
         id: `w-t2-${theme.topicSlug}-${themeIndex}-${kind}`,
         task: 'ielts_task2',
-        promptText: TEMPLATES[kind](theme),
+        promptText: TEMPLATES[kind](theme, themeIndex + kindIndex),
         chartKind: null,
         chartData: null,
         essayKind: kind,
@@ -215,6 +260,21 @@ export function generateTask2Prompts(): WritingPrompt[] {
   });
 
   out.push(...TASK2_CURATED);
+  out.push(
+    ...WRITING_SAMPLES.filter((sample) => sample.task === 'ielts_task2').map((sample) => ({
+      id: sample.promptId ?? `w-${sample.id}`,
+      task: 'ielts_task2' as const,
+      promptText: sample.promptText,
+      chartKind: null,
+      chartData: null,
+      essayKind: sample.essayKind ?? 'opinion',
+      topicSlug: sample.topicSlug,
+      difficultyBand: sample.band,
+      timeLimitSeconds: 2400,
+      minWords: 250,
+      source: 'curated' as const,
+    })),
+  );
   return out;
 }
 
@@ -230,7 +290,7 @@ const TASK1_LEAD: Record<Task1Chart, string> = {
 };
 
 export function generateTask1Prompts(): WritingPrompt[] {
-  return FIGURE_SPECS.map((spec, index) => ({
+  const prompts = FIGURE_SPECS.map((spec, index) => ({
     id: `w-t1-${spec.kind}-${spec.slug}`,
     task: 'ielts_task1',
     // `subject` đã viết thường và có sẵn mạo từ nên ghép vào là đọc trôi:
@@ -245,4 +305,64 @@ export function generateTask1Prompts(): WritingPrompt[] {
     minWords: 150,
     source: 'generated',
   }));
+
+  {
+    const emptyKey: AnalysisKey = { trends: [], extremes: [], crossings: [], grouping: [[], []] };
+    const lineBase: LineOrBarChart = {
+      kind: 'line',
+      title: 'Average commuting time by car and bus in Metroville, 2000 and 2020',
+      unit: 'minutes per journey',
+      xLabels: ['2000', '2020'],
+      series: [
+        { name: 'Car', values: [28, 36] },
+        { name: 'Bus', values: [42, 44] },
+      ],
+      analysisKey: emptyKey,
+    };
+    const barBase: LineOrBarChart = {
+      kind: 'bar',
+      title: 'Commuters by transport mode in Metroville, 2000 and 2020',
+      unit: '% of commuters',
+      xLabels: ['Car', 'Bus', 'Train', 'Bicycle'],
+      series: [
+        { name: '2000', values: [62, 20, 12, 6] },
+        { name: '2020', values: [48, 27, 18, 7] },
+      ],
+      analysisKey: emptyKey,
+    };
+    const commuteLine = { ...lineBase, analysisKey: deriveAnalysisKey(lineBase) };
+    const commuteBars = { ...barBase, analysisKey: deriveAnalysisKey(barBase) };
+    const analysisKey: AnalysisKey = {
+      trends: [...commuteLine.analysisKey.trends, ...commuteBars.analysisKey.trends],
+      extremes: [...commuteLine.analysisKey.extremes, ...commuteBars.analysisKey.extremes],
+      crossings: [...commuteLine.analysisKey.crossings, ...commuteBars.analysisKey.crossings],
+      grouping: [
+        [...commuteLine.analysisKey.grouping[0], ...commuteBars.analysisKey.grouping[0]],
+        [...commuteLine.analysisKey.grouping[1], ...commuteBars.analysisKey.grouping[1]],
+      ],
+    };
+    const chartData: MixedChart = {
+      kind: 'mixed',
+      title: 'Commuting time and transport choices in Metroville',
+      parts: [commuteBars, commuteLine],
+      analysisKey,
+    };
+    prompts.push({
+      id: 'w-t1-mixed-metroville-commuting',
+      task: 'ielts_task1',
+      promptText:
+        'The bar chart compares the percentage of commuters using four transport modes, while the line graph shows average journey time in Metroville in 2000 and 2020.',
+      chartKind: 'mixed',
+      chartData,
+      essayKind: null,
+      topicSlug: 'transport',
+      difficultyBand: 7.0,
+      timeLimitSeconds: 1200,
+      minWords: 150,
+      source: 'generated',
+    });
+  }
+
+  prompts.push(...TID_TASK1_PROMPTS);
+  return prompts;
 }

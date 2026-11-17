@@ -1,0 +1,513 @@
+[
+ {
+  "id": "zh-d-h6-01",
+  "level": 6,
+  "order": 1,
+  "title": "Khám phá âm thanh dưới biển",
+  "titleZh": "听见海洋的声音",
+  "topic": "khoa học",
+  "scene": "Hai bạn học sinh tham quan triển lãm biển và trò chuyện về cá sống dưới biển sâu.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小林",
+    "zh": "海里的鱼很多，它们都有自己的生活方式。",
+    "py": "hǎi lǐ de yú hěn duō tāmen dōu yǒu zìjǐ de shēnghuó fāngshì",
+    "vi": "Trong biển có nhiều loài cá, chúng đều có cách sống riêng."
+   },
+   {
+    "who": "小安",
+    "zh": "凡是住在深海里的鱼，都有特别的本领。",
+    "py": "fánshì zhù zài shēnhǎi lǐ de yú dōu yǒu tèbié de běnlǐng",
+    "vi": "Những loài cá sống dưới biển sâu đều có khả năng đặc biệt."
+   },
+   {
+    "who": "小林",
+    "zh": "深海里没有阳光，它们怎么找到食物？",
+    "py": "shēnhǎi lǐ méiyǒu yángguāng tāmen zěnme zhǎodào shíwù",
+    "vi": "Dưới biển sâu không có ánh nắng, chúng tìm thức ăn bằng cách nào?"
+   },
+   {
+    "who": "小安",
+    "zh": "有些鱼会发光，也能找到身边的食物。",
+    "py": "yǒuxiē yú huì fāguāng yě néng zhǎodào shēnbiān de shíwù",
+    "vi": "Một số loài cá phát sáng và có thể tìm thấy thức ăn quanh mình."
+   },
+   {
+    "who": "小林",
+    "zh": "海水把声音传得很远，附近的鱼听得见。",
+    "py": "hǎishuǐ bǎ shēngyīn chuán de hěn yuǎn fùjìn de yú tīng de jiàn",
+    "vi": "Nước biển truyền âm thanh đi rất xa, những con cá gần đó nghe được."
+   },
+   {
+    "who": "小安",
+    "zh": "研究人员用小机器听它们的声音。",
+    "py": "yánjiū rényuán yòng xiǎo jīqì tīng tāmen de shēngyīn",
+    "vi": "Các nhà nghiên cứu dùng máy nhỏ để nghe âm thanh của chúng."
+   },
+   {
+    "who": "小林",
+    "zh": "它们听到声音，就会慢慢游过来。",
+    "py": "tāmen tīngdào shēngyīn jiù huì mànmàn yóu guòlái",
+    "vi": "Khi nghe thấy âm thanh, chúng sẽ từ từ bơi lại."
+   },
+   {
+    "who": "小安",
+    "zh": "科学家观察了很久，才知道它们吃小鱼。",
+    "py": "kēxuéjiā guānchá le hěn jiǔ cái zhīdào tāmen chī xiǎo yú",
+    "vi": "Các nhà khoa học quan sát rất lâu mới biết chúng ăn cá nhỏ."
+   },
+   {
+    "who": "小林",
+    "zh": "那我们也该保护海洋，对吗？",
+    "py": "nà wǒmen yě gāi bǎohù hǎiyáng duì ma",
+    "vi": "Vậy chúng ta cũng nên bảo vệ biển, đúng không?"
+   },
+   {
+    "who": "小安",
+    "zh": "对，只有海洋保持健康，动物才有家。",
+    "py": "duì zhǐyǒu hǎiyáng bǎochí jiànkāng dòngwù cái yǒu jiā",
+    "vi": "Đúng vậy, chỉ khi biển khỏe mạnh thì động vật mới có nhà."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "深海",
+    "py": "shēnhǎi",
+    "vi": "biển sâu"
+   },
+   {
+    "zh": "本领",
+    "py": "běnlǐng",
+    "vi": "khả năng"
+   },
+   {
+    "zh": "发光",
+    "py": "fāguāng",
+    "vi": "phát sáng"
+   },
+   {
+    "zh": "海水",
+    "py": "hǎishuǐ",
+    "vi": "nước biển"
+   },
+   {
+    "zh": "声音",
+    "py": "shēngyīn",
+    "vi": "âm thanh"
+   },
+   {
+    "zh": "研究人员",
+    "py": "yánjiū rényuán",
+    "vi": "nhà nghiên cứu"
+   },
+   {
+    "zh": "保护",
+    "py": "bǎohù",
+    "vi": "bảo vệ"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h6-03",
+   "zh-g-h6-11"
+  ],
+  "quiz": [
+   {
+    "q": "Theo Tiểu An, cá sống dưới biển sâu đều có gì?",
+    "options": [
+     "Khả năng đặc biệt",
+     "Thân hình rất lớn",
+     "Đôi cánh dài",
+     "Bộ lông sáng màu"
+    ],
+    "answer": 0,
+    "explain": "Tiểu An nói cá sống dưới biển sâu đều có khả năng đặc biệt."
+   },
+   {
+    "q": "Một số loài cá phát sáng có thể tìm thấy gì quanh mình?",
+    "options": [
+     "Nước ấm",
+     "Thức ăn",
+     "Nhà nghiên cứu",
+     "Ánh nắng"
+    ],
+    "answer": 1,
+    "explain": "Một số loài cá phát sáng và có thể tìm thấy thức ăn quanh mình."
+   },
+   {
+    "q": "Nước biển truyền âm thanh đi như thế nào?",
+    "options": [
+     "Rất chậm",
+     "Chỉ một đoạn ngắn",
+     "Rất xa",
+     "Chỉ lên mặt nước"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Lâm nói nước biển truyền âm thanh đi rất xa."
+   },
+   {
+    "q": "Các nhà nghiên cứu dùng gì để nghe tiếng cá?",
+    "options": [
+     "Một chiếc thuyền",
+     "Một cái chuông",
+     "Một chiếc đèn",
+     "Máy nhỏ"
+    ],
+    "answer": 3,
+    "explain": "Họ dùng máy nhỏ để nghe âm thanh của cá."
+   },
+   {
+    "q": "Vì sao hai bạn nói nên bảo vệ biển?",
+    "options": [
+     "Để cá bơi nhanh hơn",
+     "Để động vật có nhà",
+     "Để biển có thêm ánh nắng",
+     "Để máy nhỏ hoạt động tốt"
+    ],
+    "answer": 1,
+    "explain": "Biển khỏe mạnh thì động vật mới có nhà."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h6-02",
+  "level": 6,
+  "order": 2,
+  "title": "Thành phố tương lai và dữ liệu",
+  "titleZh": "未来城市和数据",
+  "topic": "tương lai, dữ liệu lớn",
+  "scene": "Hai bạn học sinh tham quan triển lãm thành phố tương lai và trò chuyện về dữ liệu, giao thông cùng thông tin cá nhân.",
+  "minutes": 6,
+  "lines": [
+   {
+    "who": "小雨",
+    "zh": "你觉得未来的城市会更聪明吗？",
+    "py": "nǐ juéde wèilái de chéngshì huì gèng cōngmíng ma",
+    "vi": "Bạn nghĩ thành phố trong tương lai sẽ thông minh hơn không?"
+   },
+   {
+    "who": "小东",
+    "zh": "会，路上的设备能记录车和人的情况。",
+    "py": "huì lùshang de shèbèi néng jìlù chē hé rén de qíngkuàng",
+    "vi": "Có chứ, thiết bị trên đường có thể ghi lại tình hình xe cộ và mọi người."
+   },
+   {
+    "who": "小雨",
+    "zh": "这些数据可以帮城市安排交通。",
+    "py": "zhèxiē shùjù kěyǐ bāng chéngshì ānpái jiāotōng",
+    "vi": "Những dữ liệu này có thể giúp thành phố sắp xếp giao thông."
+   },
+   {
+    "who": "小东",
+    "zh": "电脑还能早点发现哪条路最堵。",
+    "py": "diànnǎo hái néng zǎodiǎn fāxiàn nǎ tiáo lù zuì dǔ",
+    "vi": "Máy tính còn có thể phát hiện sớm tuyến đường nào tắc nhất."
+   },
+   {
+    "who": "小雨",
+    "zh": "个人信息会不会被大家看到？",
+    "py": "gèrén xìnxī huì bu huì bèi dàjiā kàndào",
+    "vi": "Liệu mọi người có nhìn thấy thông tin cá nhân không?"
+   },
+   {
+    "who": "小东",
+    "zh": "公司要把数据管好，以便保护每个人。",
+    "py": "gōngsī yào bǎ shùjù guǎn hǎo yǐbiàn bǎohù měi ge rén",
+    "vi": "Công ty cần quản lý dữ liệu tốt để bảo vệ mọi người."
+   },
+   {
+    "who": "小雨",
+    "zh": "就算技术越来越好，人们也要小心。",
+    "py": "jiùsuàn jìshù yuèláiyuè hǎo rénmen yě yào xiǎoxīn",
+    "vi": "Dù công nghệ ngày càng tốt, mọi người vẫn phải cẩn thận."
+   },
+   {
+    "who": "小东",
+    "zh": "以后我们能自己决定分享什么吗？",
+    "py": "yǐhòu wǒmen néng zìjǐ juédìng fēnxiǎng shénme ma",
+    "vi": "Sau này chúng ta có thể tự quyết định chia sẻ điều gì không?"
+   },
+   {
+    "who": "小雨",
+    "zh": "我希望可以，大家也要先学会保护自己。",
+    "py": "wǒ xīwàng kěyǐ dàjiā yě yào xiān xuéhuì bǎohù zìjǐ",
+    "vi": "Mình mong là có thể, mọi người cũng nên học cách tự bảo vệ mình trước."
+   },
+   {
+    "who": "小东",
+    "zh": "这样科技才能让生活更方便。",
+    "py": "zhèyàng kējì cái néng ràng shēnghuó gèng fāngbiàn",
+    "vi": "Như vậy công nghệ mới có thể giúp cuộc sống thuận tiện hơn."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "未来",
+    "py": "wèilái",
+    "vi": "tương lai"
+   },
+   {
+    "zh": "设备",
+    "py": "shèbèi",
+    "vi": "thiết bị"
+   },
+   {
+    "zh": "记录",
+    "py": "jìlù",
+    "vi": "ghi lại"
+   },
+   {
+    "zh": "数据",
+    "py": "shùjù",
+    "vi": "dữ liệu"
+   },
+   {
+    "zh": "交通",
+    "py": "jiāotōng",
+    "vi": "giao thông"
+   },
+   {
+    "zh": "信息",
+    "py": "xìnxī",
+    "vi": "thông tin"
+   },
+   {
+    "zh": "技术",
+    "py": "jìshù",
+    "vi": "công nghệ"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h6-05",
+   "zh-g-h6-06"
+  ],
+  "quiz": [
+   {
+    "q": "Thiết bị trên đường ghi lại điều gì?",
+    "options": [
+     "Tình hình xe cộ và mọi người",
+     "Thời tiết trên biển",
+     "Số lượng cây trong công viên",
+     "Tên các công ty"
+    ],
+    "answer": 0,
+    "explain": "Thiết bị ghi lại tình hình xe cộ và mọi người."
+   },
+   {
+    "q": "Dữ liệu có thể giúp thành phố làm gì?",
+    "options": [
+     "Xây thêm trường học",
+     "Sắp xếp giao thông",
+     "Tìm động vật dưới biển",
+     "Dạy mọi người ngoại ngữ"
+    ],
+    "answer": 1,
+    "explain": "Dữ liệu có thể giúp thành phố sắp xếp giao thông."
+   },
+   {
+    "q": "Vì sao công ty cần quản lý dữ liệu tốt?",
+    "options": [
+     "Để đường phố rộng hơn",
+     "Để máy tính chạy chậm lại",
+     "Để bảo vệ mọi người",
+     "Để xe cộ biến mất"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Đông nói công ty cần quản lý dữ liệu để bảo vệ mọi người."
+   },
+   {
+    "q": "Dù công nghệ ngày càng tốt, mọi người vẫn cần làm gì?",
+    "options": [
+     "Chia sẻ mọi thông tin",
+     "Tránh dùng máy tính",
+     "Rời khỏi thành phố",
+     "Cẩn thận"
+    ],
+    "answer": 3,
+    "explain": "Tiểu Vũ nói mọi người vẫn cần cẩn thận."
+   },
+   {
+    "q": "Tiểu Đông hỏi sau này mọi người có thể tự quyết định điều gì?",
+    "options": [
+     "Tuyến đường nào đông nhất",
+     "Công ty nào dùng máy tính",
+     "Thành phố nào thông minh hơn",
+     "Chia sẻ điều gì"
+    ],
+    "answer": 3,
+    "explain": "Cậu ấy hỏi liệu mọi người có thể tự quyết định chia sẻ điều gì không."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h5-05",
+  "level": 5,
+  "order": 5,
+  "title": "Chuẩn bị cho cuộc thi chạy",
+  "titleZh": "准备比赛",
+  "topic": "thể thao",
+  "scene": "Hai thành viên đội chạy của trường bàn về cách phối hợp và luyện tập trước cuộc thi.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "从今天的训练来看，咱们配合得好多了。",
+    "py": "cóng jīntiān de xùnliàn lái kàn zánmen pèihé de hǎo duō le",
+    "vi": "Nhìn vào buổi tập hôm nay thì chúng ta phối hợp tốt hơn nhiều rồi."
+   },
+   {
+    "who": "小刚",
+    "zh": "我们队由四名同学组成，每人跑一段。",
+    "py": "wǒmen duì yóu sì míng tóngxué zǔchéng měi rén pǎo yí duàn",
+    "vi": "Đội chúng ta gồm bốn bạn, mỗi người chạy một đoạn."
+   },
+   {
+    "who": "小明",
+    "zh": "我跑第二段，最后一段交给小王。",
+    "py": "wǒ pǎo dì èr duàn zuìhòu yí duàn jiāo gěi Xiǎo Wáng",
+    "vi": "Mình chạy đoạn thứ hai, còn đoạn cuối giao cho Tiểu Vương."
+   },
+   {
+    "who": "小刚",
+    "zh": "你跑到我身边时，记得看我的手。",
+    "py": "nǐ pǎo dào wǒ shēnbiān shí jìde kàn wǒ de shǒu",
+    "vi": "Khi bạn chạy đến bên cạnh mình, nhớ nhìn tay mình nhé."
+   },
+   {
+    "who": "小明",
+    "zh": "假如我慢了，你就大声提醒我。",
+    "py": "jiǎrú wǒ màn le nǐ jiù dàshēng tíxǐng wǒ",
+    "vi": "Nếu mình chậm thì bạn nhắc mình thật to nhé."
+   },
+   {
+    "who": "小刚",
+    "zh": "哪怕前面的人跑得快，我们也要跑完。",
+    "py": "nǎpà qiánmiàn de rén pǎo de kuài wǒmen yě yào pǎo wán",
+    "vi": "Dù người phía trước chạy nhanh, chúng ta vẫn phải chạy hết phần của mình."
+   },
+   {
+    "who": "小明",
+    "zh": "大家认真训练，为的是比赛时不出错。",
+    "py": "dàjiā rènzhēn xùnliàn wèi de shì bǐsài shí bù chūcuò",
+    "vi": "Mọi người chăm chỉ luyện tập là để không mắc lỗi khi thi đấu."
+   },
+   {
+    "who": "小刚",
+    "zh": "上次我们没拿到第一，但都很开心。",
+    "py": "shàngcì wǒmen méi ná dào dì yī dàn dōu hěn kāixīn",
+    "vi": "Lần trước chúng ta không giành được giải nhất, nhưng ai cũng vui."
+   },
+   {
+    "who": "小明",
+    "zh": "我想明天早点到学校，再练一次。",
+    "py": "wǒ xiǎng míngtiān zǎodiǎn dào xuéxiào zài liàn yí cì",
+    "vi": "Mình muốn đến trường sớm hơn vào ngày mai để tập thêm một lần."
+   },
+   {
+    "who": "小刚",
+    "zh": "好，我们一起跑，别忘了带水。",
+    "py": "hǎo wǒmen yìqǐ pǎo bié wàng le dài shuǐ",
+    "vi": "Được, chúng ta cùng chạy nhé, đừng quên mang nước."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "训练",
+    "py": "xùnliàn",
+    "vi": "luyện tập"
+   },
+   {
+    "zh": "配合",
+    "py": "pèihé",
+    "vi": "phối hợp"
+   },
+   {
+    "zh": "组成",
+    "py": "zǔchéng",
+    "vi": "gồm có"
+   },
+   {
+    "zh": "提醒",
+    "py": "tíxǐng",
+    "vi": "nhắc nhở"
+   },
+   {
+    "zh": "认真",
+    "py": "rènzhēn",
+    "vi": "nghiêm túc"
+   },
+   {
+    "zh": "比赛",
+    "py": "bǐsài",
+    "vi": "thi đấu"
+   },
+   {
+    "zh": "出错",
+    "py": "chūcuò",
+    "vi": "mắc lỗi"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h5-01",
+   "zh-g-h5-03",
+   "zh-g-h5-06"
+  ],
+  "quiz": [
+   {
+    "q": "Đội của Tiểu Minh gồm bao nhiêu bạn?",
+    "options": [
+     "Bốn bạn",
+     "Hai bạn",
+     "Sáu bạn",
+     "Tám bạn"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Cương nói đội gồm bốn bạn."
+   },
+   {
+    "q": "Tiểu Minh chạy đoạn thứ mấy?",
+    "options": [
+     "Đoạn đầu",
+     "Đoạn thứ hai",
+     "Đoạn cuối",
+     "Cả cuộc thi"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Minh nói mình chạy đoạn thứ hai."
+   },
+   {
+    "q": "Nếu Tiểu Minh chậm, Tiểu Cương sẽ làm gì?",
+    "options": [
+     "Chạy về trường",
+     "Đổi vị trí với Tiểu Vương",
+     "Nhắc cậu ấy thật to",
+     "Dừng lại nghỉ"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Minh nhờ bạn nhắc mình thật to nếu cậu chạy chậm."
+   },
+   {
+    "q": "Vì sao mọi người chăm chỉ luyện tập?",
+    "options": [
+     "Để không mắc lỗi khi thi đấu",
+     "Để được nghỉ học",
+     "Để chạy ít hơn",
+     "Để đổi đội"
+    ],
+    "answer": 0,
+    "explain": "Họ luyện tập để không mắc lỗi khi thi đấu."
+   },
+   {
+    "q": "Kết quả lần thi trước của đội thế nào?",
+    "options": [
+     "Họ giành giải nhất",
+     "Họ không chạy hết cuộc thi",
+     "Họ không giành giải nhất nhưng vẫn vui",
+     "Họ không tham gia"
+    ],
+    "answer": 2,
+    "explain": "Lần trước đội không giành giải nhất, nhưng mọi người đều vui."
+   }
+  ]
+ }
+]

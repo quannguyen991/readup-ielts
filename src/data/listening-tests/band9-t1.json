@@ -16,7 +16,7 @@
     {
      "speaker": "Receptionist",
      "text": "Good afternoon, Riverside Cycling Club. This is Helen speaking. How can I help?",
-     "start": 0.0,
+     "start": 0,
      "end": 4.28
     },
     {
@@ -205,43 +205,29 @@
      "type": "gap",
      "title": "Questions 1-10",
      "instruction": "Complete the membership enquiry form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
-     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "wordLimit": "NO MORE THAN THREE WORDS AND/OR A NUMBER",
      "lines": [
-      "Surname: {{1}}",
-      "Telephone number: {{2}}",
-      "Membership type: {{3}}",
-      "Annual fee: £{{4}}",
-      "Main club meeting day: {{5}}",
-      "Meeting place address: {{6}}",
-      "Postcode: {{7}}",
-      "Planned first visit: {{8}}",
-      "Arrival time for first visit: {{9}}",
-      "Cycling experience: comfortable cycling {{10}}"
+      "Membership type: {{1}}",
+      "Annual fee: £{{2}}",
+      "Cycling experience: comfortable cycling {{3}}",
+      "Main club meeting day: {{4}}",
+      "Meeting place address: {{5}}",
+      "Postcode: {{6}}",
+      "Surname: {{7}}",
+      "Telephone number: {{8}}",
+      "Planned first visit: {{9}}",
+      "Arrival time for first visit: {{10}}"
      ],
      "options": [],
      "questions": [
       {
        "n": 1,
-       "prompt": "Surname",
-       "answer": "Hargreaves",
-       "accept": []
-      },
-      {
-       "n": 2,
-       "prompt": "Telephone number",
-       "answer": "01632 458 271",
-       "accept": [
-        "01632458271"
-       ]
-      },
-      {
-       "n": 3,
        "prompt": "Membership type",
        "answer": "beginner membership",
        "accept": []
       },
       {
-       "n": 4,
+       "n": 2,
        "prompt": "Annual fee",
        "answer": "34",
        "accept": [
@@ -249,21 +235,31 @@
        ]
       },
       {
-       "n": 5,
+       "n": 3,
+       "prompt": "Cycling experience",
+       "answer": "on my own",
+       "accept": [
+        "cycling on my own"
+       ]
+      },
+      {
+       "n": 4,
        "prompt": "Main club meeting day",
        "answer": "Thursday",
        "accept": []
       },
       {
-       "n": 6,
+       "n": 5,
        "prompt": "Meeting place address",
        "answer": "14 Mill Lane",
        "accept": [
-        "number 14 Mill Lane"
+        "number 14 Mill Lane",
+        "fourteen Mill Lane",
+        "number fourteen Mill Lane"
        ]
       },
       {
-       "n": 7,
+       "n": 6,
        "prompt": "Postcode",
        "answer": "RG7 4PL",
        "accept": [
@@ -271,7 +267,21 @@
        ]
       },
       {
+       "n": 7,
+       "prompt": "Surname",
+       "answer": "Hargreaves",
+       "accept": []
+      },
+      {
        "n": 8,
+       "prompt": "Telephone number",
+       "answer": "01632 458 271",
+       "accept": [
+        "01632458271"
+       ]
+      },
+      {
+       "n": 9,
        "prompt": "Planned first visit",
        "answer": "12 May",
        "accept": [
@@ -279,19 +289,11 @@
        ]
       },
       {
-       "n": 9,
+       "n": 10,
        "prompt": "Arrival time for first visit",
        "answer": "6:10",
        "accept": [
         "ten past six"
-       ]
-      },
-      {
-       "n": 10,
-       "prompt": "Cycling experience",
-       "answer": "on my own",
-       "accept": [
-        "cycling on my own"
        ]
       }
      ]
@@ -308,7 +310,7 @@
     {
      "speaker": "Guide",
      "text": "Good morning, everyone, and welcome to Kingsford Botanic Garden. My name's Helen, and before we begin our walk, I'd like to tell you a little about the new greenhouse complex and the changes we've made to the surrounding gardens.",
-     "start": 0.0,
+     "start": 0,
      "end": 13.04
     },
     {
@@ -608,7 +610,7 @@
     {
      "speaker": "Maya",
      "text": "Thanks for seeing me, Dr Patel. I wanted to check that my seagrass project is focused enough before I start the main fieldwork.",
-     "start": 0.0,
+     "start": 0,
      "end": 7.94
     },
     {
@@ -1054,7 +1056,7 @@
     {
      "speaker": "Lecturer",
      "text": "Today I'd like to look at urban beekeeping, a practice which has expanded considerably in many European and North American cities over the last two decades. When people first hear the term, they often imagine hives squeezed into tiny back gardens, but many successful projects actually use rooftops.",
-     "start": 0.0,
+     "start": 0,
      "end": 17.06
     },
     {

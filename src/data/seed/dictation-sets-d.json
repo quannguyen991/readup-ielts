@@ -1,0 +1,962 @@
+[
+ {
+  "id": "set-55",
+  "order": 55,
+  "title": "Ở sân bay",
+  "titleEn": "At the Airport",
+  "blurb": "Luyện câu ngắn về thủ tục trước khi lên máy bay.",
+  "level": "A2",
+  "topic": "Sân bay",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "We arrived at the airport two hours early.",
+    "vi": "Chúng tôi đến sân bay sớm hai tiếng."
+   },
+   {
+    "en": "My sister checked in her big blue suitcase.",
+    "vi": "Chị tôi ký gửi chiếc vali xanh to của chị ấy."
+   },
+   {
+    "en": "The woman at the desk asked for our passports.",
+    "vi": "Người phụ nữ ở quầy yêu cầu xem hộ chiếu của chúng tôi."
+   },
+   {
+    "en": "We didn't have anything heavy in our bags.",
+    "vi": "Trong túi xách của chúng tôi không có gì nặng cả."
+   },
+   {
+    "en": "Then we walked through the security gate together.",
+    "vi": "Sau đó chúng tôi cùng đi qua cổng an ninh."
+   },
+   {
+    "en": "My sister took off her shoes and her coat.",
+    "vi": "Chị tôi cởi giày và áo khoác ra."
+   },
+   {
+    "en": "I've never seen such a long line before.",
+    "vi": "Tôi chưa từng thấy hàng người nào dài như vậy."
+   },
+   {
+    "en": "After that, we bought two sandwiches and some water.",
+    "vi": "Sau đó, chúng tôi mua hai chiếc bánh mì kẹp và ít nước."
+   },
+   {
+    "en": "Our gate was at the end of the hall.",
+    "vi": "Cổng lên máy bay của chúng tôi ở cuối sảnh."
+   },
+   {
+    "en": "The flight to London was ten minutes late.",
+    "vi": "Chuyến bay đi Luân Đôn bị trễ mười phút."
+   },
+   {
+    "en": "Finally, a man called our names at the door.",
+    "vi": "Cuối cùng, một người đàn ông gọi tên chúng tôi ở cửa."
+   },
+   {
+    "en": "We sat by the window and waved goodbye.",
+    "vi": "Chúng tôi ngồi cạnh cửa sổ và vẫy tay chào tạm biệt."
+   }
+  ]
+ },
+ {
+  "id": "set-56",
+  "order": 56,
+  "title": "Gửi hộp quà ở bưu điện",
+  "titleEn": "A Parcel at the Post Office",
+  "blurb": "Luyện câu đơn giản về việc gửi một gói hàng nhỏ.",
+  "level": "A2",
+  "topic": "Bưu điện",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "I went to the post office this morning.",
+    "vi": "Sáng nay tôi đến bưu điện."
+   },
+   {
+    "en": "I had a small box for my aunt.",
+    "vi": "Tôi có một chiếc hộp nhỏ gửi cho dì tôi."
+   },
+   {
+    "en": "The clerk weighed it on a metal scale.",
+    "vi": "Nhân viên cân nó trên một chiếc cân kim loại."
+   },
+   {
+    "en": "\"It's only one kilo,\" she said with a smile.",
+    "vi": "\"Chỉ có một ký thôi,\" cô ấy mỉm cười nói."
+   },
+   {
+    "en": "I wrote my aunt's address on the front.",
+    "vi": "Tôi viết địa chỉ của dì lên mặt trước hộp."
+   },
+   {
+    "en": "The clerk asked if I wanted it to go fast.",
+    "vi": "Nhân viên hỏi: \"Anh có muốn gửi nhanh không?\""
+   },
+   {
+    "en": "I said no, because it wasn't urgent.",
+    "vi": "Tôi nói không, vì việc này không gấp."
+   },
+   {
+    "en": "The slow post costs less money.",
+    "vi": "Gửi thường thì tốn ít tiền hơn."
+   },
+   {
+    "en": "I paid and she gave me a receipt.",
+    "vi": "Tôi trả tiền và cô ấy đưa tôi một tờ biên nhận."
+   },
+   {
+    "en": "I've kept the paper in my wallet.",
+    "vi": "Tôi đã cất tờ giấy đó trong ví."
+   },
+   {
+    "en": "My aunt will get the box next week.",
+    "vi": "Dì tôi sẽ nhận được hộp vào tuần sau."
+   },
+   {
+    "en": "She'll be happy with the tea inside.",
+    "vi": "Dì sẽ vui với chỗ trà bên trong."
+   }
+  ]
+ },
+ {
+  "id": "set-57",
+  "order": 57,
+  "title": "Sinh nhật của em trai",
+  "titleEn": "My Brother's Birthday",
+  "blurb": "Luyện câu về kế hoạch cho một bữa tiệc sinh nhật.",
+  "level": "A2",
+  "topic": "Sinh nhật",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "Tomorrow is my brother's tenth birthday.",
+    "vi": "Ngày mai là sinh nhật lần thứ mười của em trai tôi."
+   },
+   {
+    "en": "Mom is making a big chocolate cake.",
+    "vi": "Mẹ đang làm một chiếc bánh sô-cô-la lớn."
+   },
+   {
+    "en": "I'm putting up colorful balloons in the garden.",
+    "vi": "Tôi đang treo những quả bóng bay nhiều màu trong vườn."
+   },
+   {
+    "en": "Dad has bought candles and paper cups.",
+    "vi": "Bố đã mua nến và cốc giấy."
+   },
+   {
+    "en": "Ten children from his class will come.",
+    "vi": "Mười bạn trong lớp của em sẽ đến."
+   },
+   {
+    "en": "They don't know about the surprise yet.",
+    "vi": "Các bạn chưa biết về điều bất ngờ này."
+   },
+   {
+    "en": "We're going to hide behind the sofa.",
+    "vi": "Chúng tôi sẽ nấp sau ghế sofa."
+   },
+   {
+    "en": "When he walks in, we'll shout loudly.",
+    "vi": "Khi em bước vào, chúng tôi sẽ hét thật to."
+   },
+   {
+    "en": "My brother loves football, so we'll play outside.",
+    "vi": "Em tôi mê bóng đá, nên chúng tôi sẽ chơi ngoài sân."
+   },
+   {
+    "en": "After the game, everyone will eat cake.",
+    "vi": "Sau trận đấu, mọi người sẽ ăn bánh."
+   },
+   {
+    "en": "He can't blow out all the candles alone.",
+    "vi": "Em không thể tự thổi tắt hết các ngọn nến."
+   },
+   {
+    "en": "I'll help him, and then we'll sing.",
+    "vi": "Tôi sẽ giúp em, rồi chúng tôi sẽ hát."
+   }
+  ]
+ },
+ {
+  "id": "set-58",
+  "order": 58,
+  "title": "Mùa mưa trong thành phố",
+  "titleEn": "The Rainy Season",
+  "blurb": "Luyện đoạn văn về sinh hoạt trong những tháng mưa kéo dài.",
+  "level": "B1",
+  "topic": "Mùa mưa",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "Every June, the rain arrives in my city and stays for months.",
+    "vi": "Mỗi dịp tháng Sáu, mưa kéo đến thành phố tôi và ở lại nhiều tháng."
+   },
+   {
+    "en": "At first, people complain, but soon they get used to carrying umbrellas.",
+    "vi": "Lúc đầu, mọi người phàn nàn, nhưng chẳng bao lâu họ quen với việc mang theo ô."
+   },
+   {
+    "en": "The streets near our house flood whenever the rain is really heavy.",
+    "vi": "Những con phố gần nhà chúng tôi bị ngập mỗi khi mưa thật to."
+   },
+   {
+    "en": "Last week, I had to walk home with my shoes in my hands.",
+    "vi": "Tuần trước, tôi phải xách giày trên tay mà đi bộ về nhà."
+   },
+   {
+    "en": "My neighbour sells cheap plastic raincoats outside the shop on the corner.",
+    "vi": "Người hàng xóm của tôi bán áo mưa nhựa giá rẻ trước cửa hàng ở góc phố."
+   },
+   {
+    "en": "He says that this is the best season for his business.",
+    "vi": "Ông ấy nói đây là mùa tốt nhất cho việc buôn bán của ông."
+   },
+   {
+    "en": "Farmers, on the other hand, are glad because the rice fields need the water.",
+    "vi": "Ngược lại, nông dân thì vui vì ruộng lúa cần nước."
+   },
+   {
+    "en": "I don't mind the rain as much as I used to.",
+    "vi": "Tôi không còn ngại mưa như trước nữa."
+   },
+   {
+    "en": "It's actually quite pleasant to read by the window while it pours.",
+    "vi": "Thật ra ngồi đọc sách bên cửa sổ khi trời đổ mưa khá dễ chịu."
+   },
+   {
+    "en": "Mum has started making hot soup every evening to keep us warm.",
+    "vi": "Mẹ bắt đầu nấu súp nóng mỗi tối để giữ ấm cho cả nhà."
+   },
+   {
+    "en": "If the weather stays like this, the river will probably rise again.",
+    "vi": "Nếu thời tiết cứ thế này, nhiều khả năng nước sông sẽ lại dâng."
+   },
+   {
+    "en": "Still, I've learned that the sun always comes back sooner or later.",
+    "vi": "Dù vậy, tôi đã học được rằng sớm muộn gì mặt trời cũng quay lại."
+   }
+  ]
+ },
+ {
+  "id": "set-59",
+  "order": 59,
+  "title": "Đơn hàng đến muộn",
+  "titleEn": "The Delivery",
+  "blurb": "Luyện đoạn văn về việc đặt hàng và nhận hàng tận nhà.",
+  "level": "B1",
+  "topic": "Giao hàng",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "I ordered a new desk lamp online on Monday evening.",
+    "vi": "Tôi đặt mua một chiếc đèn bàn mới trên mạng vào tối thứ Hai."
+   },
+   {
+    "en": "The website said it would be delivered within three working days.",
+    "vi": "Trang web nói hàng sẽ được giao trong vòng ba ngày làm việc."
+   },
+   {
+    "en": "On Wednesday, I received a message saying the package was on its way.",
+    "vi": "Vào thứ Tư, tôi nhận được tin nhắn báo gói hàng đang trên đường đến."
+   },
+   {
+    "en": "Unfortunately, I was at work when the delivery driver rang the bell.",
+    "vi": "Không may là tôi đang đi làm khi người giao hàng bấm chuông."
+   },
+   {
+    "en": "He left a small note asking me to collect the parcel from the neighbor.",
+    "vi": "Anh ấy để lại mẩu giấy nhỏ bảo tôi sang nhà hàng xóm lấy gói hàng."
+   },
+   {
+    "en": "I knocked on her door after dinner, and she handed me the box.",
+    "vi": "Tôi gõ cửa nhà bà ấy sau bữa tối, và bà đưa tôi chiếc hộp."
+   },
+   {
+    "en": "The lamp was wrapped in so much paper that opening it took ages.",
+    "vi": "Chiếc đèn được gói trong nhiều giấy đến mức mở ra mất rất lâu."
+   },
+   {
+    "en": "Inside, I found the lamp, a spare bulb, and a short instruction leaflet.",
+    "vi": "Bên trong có chiếc đèn, một bóng đèn dự phòng và tờ hướng dẫn ngắn."
+   },
+   {
+    "en": "It works perfectly, and the light is softer than I expected.",
+    "vi": "Đèn dùng rất tốt, và ánh sáng dịu hơn tôi tưởng."
+   },
+   {
+    "en": "I've already left a positive review on the shop's website.",
+    "vi": "Tôi đã để lại một đánh giá tích cực trên trang web của cửa hàng."
+   },
+   {
+    "en": "Next time, I'll choose a pickup point instead of waiting at home.",
+    "vi": "Lần sau, tôi sẽ chọn điểm nhận hàng thay vì chờ ở nhà."
+   },
+   {
+    "en": "That way, I won't have to bother my neighbor again.",
+    "vi": "Như vậy, tôi sẽ không phải làm phiền hàng xóm nữa."
+   }
+  ]
+ },
+ {
+  "id": "set-60",
+  "order": 60,
+  "title": "Đạp xe đi làm",
+  "titleEn": "Cycling to Work",
+  "blurb": "Luyện đoạn văn về thói quen đi xe đạp thay xe máy.",
+  "level": "B1",
+  "topic": "Đi xe đạp",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "Three months ago, I sold my motorbike and bought a second-hand bicycle.",
+    "vi": "Ba tháng trước, tôi bán xe máy và mua một chiếc xe đạp cũ."
+   },
+   {
+    "en": "My office is only six kilometres from my flat, so cycling makes sense.",
+    "vi": "Văn phòng chỉ cách căn hộ của tôi sáu ki-lô-mét, nên đi xe đạp là hợp lý."
+   },
+   {
+    "en": "In the beginning, my legs hurt and I arrived at work out of breath.",
+    "vi": "Lúc đầu, chân tôi đau và tôi đến chỗ làm trong tình trạng hụt hơi."
+   },
+   {
+    "en": "Now I can ride the whole distance without stopping once.",
+    "vi": "Bây giờ tôi có thể đạp hết quãng đường mà không dừng lần nào."
+   },
+   {
+    "en": "I leave home earlier than before to avoid the busiest roads.",
+    "vi": "Tôi ra khỏi nhà sớm hơn trước để tránh những con đường đông nhất."
+   },
+   {
+    "en": "There's a quiet lane along the canal where I can relax.",
+    "vi": "Có một lối đi yên tĩnh dọc con kênh, nơi tôi có thể thư giãn."
+   },
+   {
+    "en": "I've saved quite a lot of money on petrol and parking.",
+    "vi": "Tôi đã tiết kiệm được khá nhiều tiền xăng và tiền gửi xe."
+   },
+   {
+    "en": "My colleagues were surprised when they saw me arriving in the rain.",
+    "vi": "Đồng nghiệp ngạc nhiên khi thấy tôi đến nơi giữa trời mưa."
+   },
+   {
+    "en": "I always keep a spare shirt in my locker for days like that.",
+    "vi": "Tôi luôn để sẵn một chiếc áo dự phòng trong tủ cho những ngày như vậy."
+   },
+   {
+    "en": "Some drivers don't pay attention, so I wear a bright jacket and a helmet.",
+    "vi": "Một số tài xế không để ý, nên tôi mặc áo khoác sáng màu và đội mũ bảo hiểm."
+   },
+   {
+    "en": "If more people cycled, the traffic in this city would be much better.",
+    "vi": "Nếu nhiều người đi xe đạp hơn, giao thông ở thành phố này sẽ tốt hơn nhiều."
+   },
+   {
+    "en": "I'm even thinking about buying a lighter bike for longer weekend trips.",
+    "vi": "Tôi thậm chí đang nghĩ đến việc mua một chiếc xe nhẹ hơn cho những chuyến đi cuối tuần dài hơn."
+   }
+  ]
+ },
+ {
+  "id": "set-61",
+  "order": 61,
+  "title": "Quán cà phê gần trường",
+  "titleEn": "The Coffee Shop Near Campus",
+  "blurb": "Luyện đoạn văn tả một quán nhỏ và những người quen ở đó.",
+  "level": "B1",
+  "topic": "Quán cà phê",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "There's a tiny coffee shop near my university that I visit every afternoon.",
+    "vi": "Có một quán cà phê nhỏ xíu gần trường đại học mà chiều nào tôi cũng ghé."
+   },
+   {
+    "en": "The owner, a friendly woman in her fifties, remembers what everyone usually orders.",
+    "vi": "Bà chủ, một người phụ nữ thân thiện ngoài năm mươi tuổi, nhớ món mà mỗi người thường gọi."
+   },
+   {
+    "en": "She roasts the beans herself, so the whole street smells wonderful at four o'clock.",
+    "vi": "Bà tự rang hạt cà phê, nên cả con phố thơm lừng vào lúc bốn giờ."
+   },
+   {
+    "en": "I normally order a small latte and a piece of lemon cake.",
+    "vi": "Tôi thường gọi một ly latte nhỏ và một miếng bánh chanh."
+   },
+   {
+    "en": "The tables are old and a bit uneven, but nobody seems to mind.",
+    "vi": "Những chiếc bàn cũ và hơi cập kênh, nhưng dường như chẳng ai bận tâm."
+   },
+   {
+    "en": "Students bring laptops and stay for hours, and she never asks them to leave.",
+    "vi": "Sinh viên mang máy tính đến ngồi hàng giờ, và bà chưa bao giờ yêu cầu họ ra về."
+   },
+   {
+    "en": "Last month, she put a small shelf of used books next to the window.",
+    "vi": "Tháng trước, bà đặt một kệ sách cũ nhỏ cạnh cửa sổ."
+   },
+   {
+    "en": "Customers can borrow a book as long as they bring it back.",
+    "vi": "Khách có thể mượn sách miễn là họ mang trả lại."
+   },
+   {
+    "en": "I picked up a detective novel, and I finished it in two weeks.",
+    "vi": "Tôi lấy một cuốn tiểu thuyết trinh thám và đọc xong trong hai tuần."
+   },
+   {
+    "en": "On Fridays, a young man plays the guitar quietly in the corner.",
+    "vi": "Vào các tối thứ Sáu, một chàng trai chơi guitar nhẹ nhàng ở góc quán."
+   },
+   {
+    "en": "I think small places like this give a neighborhood its character.",
+    "vi": "Tôi nghĩ những nơi nhỏ như thế này tạo nên nét riêng cho một khu phố."
+   },
+   {
+    "en": "If she ever closed the shop, I would honestly miss it a lot.",
+    "vi": "Nếu bà đóng cửa quán, thật lòng tôi sẽ nhớ nơi này rất nhiều."
+   }
+  ]
+ },
+ {
+  "id": "set-62",
+  "order": 62,
+  "title": "Mở tài khoản đầu tiên",
+  "titleEn": "Opening a Bank Account",
+  "blurb": "Luyện đoạn văn về lần đầu làm việc với ngân hàng.",
+  "level": "B2",
+  "topic": "Ngân hàng",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "When I started my first job, my manager told me that I needed a bank account.",
+    "vi": "Khi tôi bắt đầu công việc đầu tiên, quản lý bảo tôi rằng tôi cần một tài khoản ngân hàng."
+   },
+   {
+    "en": "I took my identity card and my contract to the nearest branch on Saturday morning.",
+    "vi": "Tôi mang chứng minh thư và hợp đồng đến chi nhánh gần nhất vào sáng thứ Bảy."
+   },
+   {
+    "en": "A young adviser explained the difference between a current account and a savings account very patiently.",
+    "vi": "Một nhân viên tư vấn trẻ giải thích rất kiên nhẫn sự khác nhau giữa tài khoản thanh toán và tài khoản tiết kiệm."
+   },
+   {
+    "en": "She warned me that some accounts charge monthly fees unless you keep a minimum balance.",
+    "vi": "Cô ấy cảnh báo rằng một số tài khoản thu phí hằng tháng trừ khi bạn giữ số dư tối thiểu."
+   },
+   {
+    "en": "Since I didn't want to pay for something I barely understood, I chose the simplest option.",
+    "vi": "Vì không muốn trả tiền cho thứ mình hầu như không hiểu, tôi chọn phương án đơn giản nhất."
+   },
+   {
+    "en": "Filling in the application form took longer than I had expected because every detail had to match.",
+    "vi": "Điền đơn đăng ký mất nhiều thời gian hơn tôi dự đoán vì mọi chi tiết đều phải khớp nhau."
+   },
+   {
+    "en": "After I had signed everywhere she pointed, she handed me a debit card and a temporary password.",
+    "vi": "Sau khi tôi ký vào mọi chỗ cô ấy chỉ, cô đưa tôi một thẻ ghi nợ và một mật khẩu tạm thời."
+   },
+   {
+    "en": "She suggested that I set up an automatic transfer to my savings account on payday.",
+    "vi": "Cô ấy gợi ý tôi cài đặt lệnh chuyển tiền tự động sang tài khoản tiết kiệm vào ngày nhận lương."
+   },
+   {
+    "en": "At first I thought the amount was too small to matter, but I agreed to try.",
+    "vi": "Lúc đầu tôi nghĩ số tiền quá nhỏ nên chẳng đáng kể, nhưng tôi đồng ý thử."
+   },
+   {
+    "en": "Within three months, the balance had grown enough for me to feel a little more secure.",
+    "vi": "Trong vòng ba tháng, số dư đã tăng đủ để tôi cảm thấy yên tâm hơn một chút."
+   },
+   {
+    "en": "I now check my statements once a week, which helps me notice unusual payments quickly.",
+    "vi": "Giờ tôi xem sao kê mỗi tuần một lần, việc này giúp tôi nhanh chóng nhận ra những khoản thanh toán bất thường."
+   },
+   {
+    "en": "Looking back, I wish I had opened an account years earlier, instead of keeping cash at home.",
+    "vi": "Nhìn lại, tôi ước mình đã mở tài khoản sớm hơn nhiều năm, thay vì giữ tiền mặt ở nhà."
+   }
+  ]
+ },
+ {
+  "id": "set-63",
+  "order": 63,
+  "title": "Buổi phỏng vấn đầu tiên",
+  "titleEn": "My First Job Interview",
+  "blurb": "Luyện đoạn văn kể lại một buổi phỏng vấn xin việc.",
+  "level": "B2",
+  "topic": "Phỏng vấn",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "I had been preparing for the interview for a week, yet my hands were still shaking.",
+    "vi": "Tôi đã chuẩn bị cho buổi phỏng vấn suốt một tuần, vậy mà tay tôi vẫn run."
+   },
+   {
+    "en": "The receptionist offered me a glass of water and asked me to wait for ten minutes.",
+    "vi": "Cô lễ tân mời tôi một ly nước và bảo tôi đợi mười phút."
+   },
+   {
+    "en": "Two interviewers, a woman from the marketing team and a man from human resources, greeted me warmly.",
+    "vi": "Hai người phỏng vấn, một phụ nữ từ nhóm tiếp thị và một nam giới từ phòng nhân sự, chào đón tôi nồng hậu."
+   },
+   {
+    "en": "They began by asking me to describe a time when I had solved a difficult problem.",
+    "vi": "Họ bắt đầu bằng việc yêu cầu tôi kể về một lần tôi đã giải quyết được vấn đề khó."
+   },
+   {
+    "en": "I explained how I once reorganized a small project that was running behind schedule.",
+    "vi": "Tôi giải thích cách tôi từng sắp xếp lại một dự án nhỏ đang chậm tiến độ."
+   },
+   {
+    "en": "When they asked about my weaknesses, I admitted that I sometimes take on more work than I can handle.",
+    "vi": "Khi họ hỏi về điểm yếu, tôi thừa nhận rằng đôi khi tôi nhận nhiều việc hơn mức mình xử lý được."
+   },
+   {
+    "en": "Instead of sounding defensive, I described the steps I was taking to plan my time more carefully.",
+    "vi": "Thay vì tỏ ra phòng thủ, tôi mô tả những bước mình đang làm để lên kế hoạch thời gian cẩn thận hơn."
+   },
+   {
+    "en": "Toward the end, I asked what a typical day would look like for someone in the role.",
+    "vi": "Gần cuối buổi, tôi hỏi một ngày làm việc điển hình của người ở vị trí này sẽ như thế nào."
+   },
+   {
+    "en": "The woman said that the team was growing quickly and needed someone who could learn fast.",
+    "vi": "Người phụ nữ nói rằng nhóm đang phát triển nhanh và cần một người có thể học nhanh."
+   },
+   {
+    "en": "We shook hands, and I thanked them for giving me so much of their time.",
+    "vi": "Chúng tôi bắt tay, và tôi cảm ơn họ đã dành cho tôi nhiều thời gian như vậy."
+   },
+   {
+    "en": "Walking out of the building, I felt both exhausted and strangely proud of myself.",
+    "vi": "Bước ra khỏi toà nhà, tôi vừa kiệt sức vừa thấy tự hào về mình một cách lạ lùng."
+   },
+   {
+    "en": "Two days later, I received an email offering me the position, and I accepted immediately.",
+    "vi": "Hai ngày sau, tôi nhận được email mời tôi vào vị trí đó, và tôi nhận lời ngay."
+   }
+  ]
+ },
+ {
+  "id": "set-64",
+  "order": 64,
+  "title": "Đội bóng lội ngược dòng",
+  "titleEn": "The Team That Turned Around",
+  "blurb": "Luyện đoạn văn về một đội bóng thay đổi nhờ huấn luyện viên mới.",
+  "level": "B2",
+  "topic": "Thể thao đồng đội",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "Our football team had lost five matches in a row before the new coach arrived.",
+    "vi": "Đội bóng của chúng tôi đã thua liền năm trận trước khi huấn luyện viên mới đến."
+   },
+   {
+    "en": "She didn't shout at us or complain, but simply asked each player what they wanted to improve.",
+    "vi": "Cô ấy không quát mắng hay phàn nàn, mà chỉ hỏi từng cầu thủ họ muốn cải thiện điều gì."
+   },
+   {
+    "en": "We began training three evenings a week, and the first sessions were mostly about passing accurately.",
+    "vi": "Chúng tôi bắt đầu tập ba buổi tối mỗi tuần, và những buổi đầu chủ yếu là về chuyền bóng chính xác."
+   },
+   {
+    "en": "Some players were frustrated because they wanted to score goals rather than practise basic skills.",
+    "vi": "Một số cầu thủ bực bội vì họ muốn ghi bàn hơn là luyện các kỹ năng cơ bản."
+   },
+   {
+    "en": "However, after a month, we noticed that we were keeping the ball much longer than our opponents.",
+    "vi": "Tuy nhiên, sau một tháng, chúng tôi nhận thấy mình giữ bóng lâu hơn đối thủ rất nhiều."
+   },
+   {
+    "en": "The coach also insisted that we eat dinner together after every match, whatever the result.",
+    "vi": "Huấn luyện viên cũng khăng khăng rằng chúng tôi phải ăn tối cùng nhau sau mỗi trận, bất kể kết quả."
+   },
+   {
+    "en": "Those meals helped us to understand each other, and the atmosphere in the dressing room changed.",
+    "vi": "Những bữa ăn đó giúp chúng tôi hiểu nhau hơn, và không khí trong phòng thay đồ đã thay đổi."
+   },
+   {
+    "en": "In our next game, we were losing by two goals when the first half ended.",
+    "vi": "Trong trận kế tiếp, chúng tôi đang thua hai bàn khi hiệp một kết thúc."
+   },
+   {
+    "en": "Instead of panicking, we calmly returned to the plan that we had practised so many times.",
+    "vi": "Thay vì hoảng loạn, chúng tôi bình tĩnh quay lại kế hoạch đã tập luyện rất nhiều lần."
+   },
+   {
+    "en": "Our captain scored twice in the last fifteen minutes, and the match finished as a draw.",
+    "vi": "Đội trưởng ghi hai bàn trong mười lăm phút cuối, và trận đấu kết thúc với tỷ số hoà."
+   },
+   {
+    "en": "Although we hadn't won, the crowd stood up and applauded us as we left the pitch.",
+    "vi": "Dù chưa thắng, khán giả vẫn đứng dậy vỗ tay khi chúng tôi rời sân."
+   },
+   {
+    "en": "That afternoon taught me that a good team is built on trust more than on talent.",
+    "vi": "Buổi chiều hôm đó dạy tôi rằng một đội mạnh được xây dựng bằng niềm tin nhiều hơn bằng tài năng."
+   }
+  ]
+ },
+ {
+  "id": "set-65",
+  "order": 65,
+  "title": "Đám cưới của chị",
+  "titleEn": "My Sister's Wedding",
+  "blurb": "Luyện đoạn văn kể về việc chuẩn bị và ngày cưới của một người thân.",
+  "level": "B2",
+  "topic": "Lễ cưới",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "My older sister got married last spring, and the preparations began almost a year before.",
+    "vi": "Chị gái tôi kết hôn vào mùa xuân năm ngoái, và việc chuẩn bị bắt đầu từ gần một năm trước đó."
+   },
+   {
+    "en": "She and her fiancé wanted a small ceremony, but both families insisted on inviting everyone they knew.",
+    "vi": "Chị và chồng sắp cưới muốn một buổi lễ nhỏ, nhưng cả hai gia đình đều nhất quyết mời tất cả những người quen."
+   },
+   {
+    "en": "In the end, more than two hundred guests were invited, which made the budget very tight.",
+    "vi": "Cuối cùng, hơn hai trăm khách được mời, khiến ngân sách rất eo hẹp."
+   },
+   {
+    "en": "I was asked to help with the decorations, so I spent several weekends folding paper flowers.",
+    "vi": "Tôi được nhờ giúp phần trang trí, nên tôi dành nhiều cuối tuần để gấp hoa giấy."
+   },
+   {
+    "en": "My mother worried constantly about the food, the weather, and whether the relatives would get along.",
+    "vi": "Mẹ tôi lo lắng liên tục về đồ ăn, thời tiết, và việc họ hàng có hòa thuận với nhau không."
+   },
+   {
+    "en": "On the morning of the wedding, it rained heavily, and everyone feared the garden party would be ruined.",
+    "vi": "Sáng hôm cưới, trời mưa to, và ai cũng sợ bữa tiệc ngoài vườn sẽ bị hỏng."
+   },
+   {
+    "en": "Fortunately, the clouds cleared just before the ceremony, and the guests moved outside with great relief.",
+    "vi": "May mắn là mây tan ngay trước buổi lễ, và khách ra ngoài vườn với cảm giác nhẹ nhõm."
+   },
+   {
+    "en": "My sister walked down the aisle slowly, smiling at people she hadn't seen for years.",
+    "vi": "Chị tôi bước chậm trên lối đi, mỉm cười với những người chị đã nhiều năm không gặp."
+   },
+   {
+    "en": "When my father gave his speech, he tried to be funny but ended up crying instead.",
+    "vi": "Khi bố tôi phát biểu, ông cố nói đùa nhưng rốt cuộc lại khóc."
+   },
+   {
+    "en": "Later, the band played an old song, and even the shyest guests got up to dance.",
+    "vi": "Lát sau, ban nhạc chơi một bài hát cũ, và ngay cả những vị khách nhút nhát nhất cũng đứng dậy nhảy."
+   },
+   {
+    "en": "I stayed until the very end, helping to carry gifts and flowers to the cars.",
+    "vi": "Tôi ở lại đến tận cuối, giúp mang quà và hoa ra xe."
+   },
+   {
+    "en": "Although I was exhausted, I realized that I had never seen my family so happy.",
+    "vi": "Dù kiệt sức, tôi nhận ra mình chưa bao giờ thấy gia đình mình hạnh phúc đến thế."
+   }
+  ]
+ },
+ {
+  "id": "set-66",
+  "order": 66,
+  "title": "Căn nhà đầu tiên",
+  "titleEn": "Buying a First Home",
+  "blurb": "Luyện đoạn văn về quá trình tìm và mua căn nhà đầu tiên.",
+  "level": "B2",
+  "topic": "Mua nhà",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "After five years of saving, my husband and I finally decided to look for a house.",
+    "vi": "Sau năm năm tiết kiệm, vợ chồng tôi cuối cùng quyết định đi tìm một căn nhà."
+   },
+   {
+    "en": "We spoke to several estate agents, who all recommended areas that were far beyond our budget.",
+    "vi": "Chúng tôi nói chuyện với nhiều người môi giới, ai cũng giới thiệu những khu vực vượt xa ngân sách của mình."
+   },
+   {
+    "en": "Eventually, a friend told us about a small terraced house that had just come onto the market.",
+    "vi": "Rốt cuộc, một người bạn kể cho chúng tôi về một căn nhà liền kề nhỏ vừa được rao bán."
+   },
+   {
+    "en": "The kitchen was old and the garden was overgrown, but the rooms were bright and spacious.",
+    "vi": "Nhà bếp đã cũ và khu vườn mọc um tùm, nhưng các phòng sáng sủa và rộng rãi."
+   },
+   {
+    "en": "We were worried that the roof might leak, so we paid a surveyor to inspect the whole building.",
+    "vi": "Chúng tôi lo mái nhà có thể bị dột, nên đã thuê một chuyên viên kiểm định xem xét toàn bộ căn nhà."
+   },
+   {
+    "en": "He found a few minor problems, which allowed us to negotiate a slightly lower price.",
+    "vi": "Ông ấy tìm ra vài lỗi nhỏ, nhờ đó chúng tôi thương lượng được mức giá thấp hơn một chút."
+   },
+   {
+    "en": "Getting a mortgage was the most stressful part, because the bank asked for document after document.",
+    "vi": "Vay thế chấp là phần căng thẳng nhất, vì ngân hàng hết yêu cầu giấy tờ này đến giấy tờ khác."
+   },
+   {
+    "en": "For weeks we didn't know whether the loan would be approved, and neither of us slept well.",
+    "vi": "Suốt nhiều tuần chúng tôi không biết khoản vay có được duyệt không, và cả hai đều ngủ không ngon."
+   },
+   {
+    "en": "When the call finally came, I was so relieved that I nearly dropped the phone.",
+    "vi": "Khi cuộc gọi cuối cùng đến, tôi nhẹ nhõm đến mức suýt làm rơi điện thoại."
+   },
+   {
+    "en": "We moved in on a cold Sunday in November, surrounded by boxes and unwashed cups.",
+    "vi": "Chúng tôi dọn vào vào một Chủ nhật lạnh của tháng Mười Một, giữa những thùng đồ và những chiếc cốc chưa rửa."
+   },
+   {
+    "en": "It will take us years to repair everything, but each small improvement feels like a victory.",
+    "vi": "Sẽ mất nhiều năm để sửa hết mọi thứ, nhưng mỗi cải thiện nhỏ đều giống như một chiến thắng."
+   },
+   {
+    "en": "Standing in our own living room, I understood why people call a home the biggest purchase of a lifetime.",
+    "vi": "Đứng giữa phòng khách của chính mình, tôi hiểu vì sao người ta gọi ngôi nhà là món mua lớn nhất đời."
+   }
+  ]
+ },
+ {
+  "id": "set-67",
+  "order": 67,
+  "title": "Điện từ mái nhà",
+  "titleEn": "Power from the Roof",
+  "blurb": "Luyện đoạn văn dài về lợi ích và giới hạn của điện mặt trời.",
+  "level": "C1",
+  "topic": "Năng lượng mặt trời",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "Over the past decade, the cost of solar panels has fallen so sharply that many households now consider installing them.",
+    "vi": "Trong mười năm qua, giá tấm pin mặt trời đã giảm mạnh đến mức nhiều hộ gia đình giờ cân nhắc lắp đặt."
+   },
+   {
+    "en": "A typical rooftop system can cover a large share of a family's electricity needs, provided the roof faces the sun.",
+    "vi": "Một hệ thống trên mái nhà thông thường có thể đáp ứng phần lớn nhu cầu điện của một gia đình, miễn là mái hướng về phía mặt trời."
+   },
+   {
+    "en": "The difficulty, however, is that panels produce the most power at midday, when people are often away from home.",
+    "vi": "Tuy nhiên, khó khăn là các tấm pin phát nhiều điện nhất vào buổi trưa, khi mọi người thường không có nhà."
+   },
+   {
+    "en": "Unless the surplus is stored or sold back to the grid, much of that energy is simply wasted.",
+    "vi": "Nếu phần dư không được lưu trữ hoặc bán lại cho lưới điện, phần lớn năng lượng đó đơn giản là bị lãng phí."
+   },
+   {
+    "en": "Batteries have improved considerably, yet they remain expensive enough that many owners postpone buying one for several years.",
+    "vi": "Pin lưu trữ đã tiến bộ đáng kể, nhưng vẫn đắt đến mức nhiều chủ nhà hoãn mua trong vài năm."
+   },
+   {
+    "en": "Some utilities have responded by offering lower rates to customers who agree to use appliances during sunny hours.",
+    "vi": "Một số công ty điện lực đã đáp lại bằng cách giảm giá cho khách đồng ý dùng thiết bị vào những giờ nắng."
+   },
+   {
+    "en": "Critics argue that such schemes mainly benefit wealthier households, who can afford the upfront cost of the equipment.",
+    "vi": "Giới phê bình cho rằng những chương trình như vậy chủ yếu có lợi cho hộ giàu hơn, những người đủ khả năng trả chi phí ban đầu cho thiết bị."
+   },
+   {
+    "en": "Governments, therefore, face a delicate choice between encouraging private investment and ensuring that the benefits are spread fairly across society.",
+    "vi": "Vì vậy, các chính phủ đứng trước lựa chọn tế nhị giữa khuyến khích đầu tư tư nhân và bảo đảm lợi ích được chia sẻ công bằng trong xã hội."
+   },
+   {
+    "en": "In several countries, community solar projects allow residents without suitable roofs to buy a share of a larger installation.",
+    "vi": "Ở một số nước, các dự án điện mặt trời cộng đồng cho phép người dân không có mái phù hợp mua một phần của hệ thống lớn hơn."
+   },
+   {
+    "en": "Such arrangements reduce the cost per person, although they depend heavily on clear regulations and reliable local management over many years.",
+    "vi": "Những cách sắp xếp này giảm chi phí cho mỗi người, dù chúng phụ thuộc nhiều vào quy định rõ ràng và sự quản lý địa phương đáng tin cậy trong nhiều năm."
+   },
+   {
+    "en": "Engineers also point out that the energy used to manufacture a panel is usually recovered within two or three years.",
+    "vi": "Các kỹ sư cũng chỉ ra rằng năng lượng dùng để sản xuất một tấm pin thường được bù lại trong vòng hai đến ba năm."
+   },
+   {
+    "en": "Whatever one thinks of the politics, the technology has reached a point where ignoring it no longer seems sensible.",
+    "vi": "Dù nghĩ gì về khía cạnh chính trị, công nghệ này đã đến mức mà bỏ qua nó dường như không còn hợp lý."
+   }
+  ]
+ },
+ {
+  "id": "set-68",
+  "order": 68,
+  "title": "Đại học dạy ta điều gì",
+  "titleEn": "What University Teaches",
+  "blurb": "Luyện đoạn văn về cách học ở đại học khác trường phổ thông.",
+  "level": "C1",
+  "topic": "Đại học",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "When I began my degree, I assumed that lectures would be the most important part of university life.",
+    "vi": "Khi bắt đầu bậc đại học, tôi cho rằng các bài giảng sẽ là phần quan trọng nhất của đời sống đại học."
+   },
+   {
+    "en": "It turned out that the real learning happened in small seminars, where nobody could hide behind a notebook.",
+    "vi": "Hóa ra việc học thật sự diễn ra ở những buổi thảo luận nhỏ, nơi không ai có thể nấp sau cuốn vở."
+   },
+   {
+    "en": "Our tutor rarely gave answers; instead, she kept asking us what evidence we actually had for our opinions.",
+    "vi": "Giảng viên hướng dẫn hiếm khi đưa đáp án; thay vào đó, cô liên tục hỏi chúng tôi thực sự có bằng chứng gì cho ý kiến của mình."
+   },
+   {
+    "en": "At first I found this deeply irritating, because I had always been rewarded for simply memorising information at school.",
+    "vi": "Lúc đầu tôi thấy điều này rất khó chịu, vì ở trường tôi luôn được thưởng chỉ vì học thuộc thông tin."
+   },
+   {
+    "en": "Gradually, however, I realised that questioning an idea carefully was not at all the same as rejecting it outright.",
+    "vi": "Tuy nhiên, dần dần tôi nhận ra rằng đặt câu hỏi cẩn thận cho một ý tưởng hoàn toàn không giống với việc bác bỏ nó thẳng thừng."
+   },
+   {
+    "en": "My classmates came from very different backgrounds, which meant that every discussion exposed assumptions I had never examined.",
+    "vi": "Các bạn cùng lớp có xuất thân rất khác nhau, nghĩa là mỗi cuộc thảo luận đều phơi bày những giả định mà tôi chưa từng xem xét."
+   },
+   {
+    "en": "One of them, who had worked in a factory for six years before enrolling, challenged almost everything we read.",
+    "vi": "Một bạn trong số đó, từng làm trong nhà máy sáu năm trước khi nhập học, phản biện hầu hết những gì chúng tôi đọc."
+   },
+   {
+    "en": "Her objections were often more practical than theoretical, and they forced the whole group to be more precise.",
+    "vi": "Những phản đối của bạn ấy thường mang tính thực tế hơn lý thuyết, và buộc cả nhóm phải chính xác hơn."
+   },
+   {
+    "en": "By the second year, I was spending far more time in the library than in the lecture hall.",
+    "vi": "Đến năm thứ hai, tôi dành nhiều thời gian trong thư viện hơn hẳn trong giảng đường."
+   },
+   {
+    "en": "I also started to see that universities are not only places for acquiring qualifications but also communities of argument.",
+    "vi": "Tôi cũng bắt đầu thấy rằng đại học không chỉ là nơi lấy bằng cấp mà còn là cộng đồng của những cuộc tranh luận."
+   },
+   {
+    "en": "That, in my view, is what employers truly value, even if they rarely describe it in these terms.",
+    "vi": "Theo tôi, đó chính là điều nhà tuyển dụng thật sự coi trọng, dù họ hiếm khi diễn đạt theo cách này."
+   },
+   {
+    "en": "If I could advise my younger self, I would say that confusion is a sign of progress rather than failure.",
+    "vi": "Nếu có thể khuyên bản thân thời trẻ, tôi sẽ nói rằng sự bối rối là dấu hiệu của tiến bộ chứ không phải thất bại."
+   }
+  ]
+ },
+ {
+  "id": "set-69",
+  "order": 69,
+  "title": "Cuốn sách nổi tiếng về kinh doanh",
+  "titleEn": "The Famous Business Book",
+  "blurb": "Luyện đoạn văn phê bình một cuốn sách và rút ra bài học.",
+  "level": "C1",
+  "topic": "Sách kinh doanh",
+  "accentHint": "Anh – Mỹ",
+  "sentences": [
+   {
+    "en": "Last year, a colleague lent me a famous business book that promised to explain why some companies succeed.",
+    "vi": "Năm ngoái, một đồng nghiệp cho tôi mượn một cuốn sách kinh doanh nổi tiếng hứa hẹn giải thích vì sao một số công ty thành công."
+   },
+   {
+    "en": "The author had studied dozens of firms and concluded that they all shared a handful of simple habits.",
+    "vi": "Tác giả đã nghiên cứu hàng chục công ty và kết luận rằng tất cả đều có chung một vài thói quen đơn giản."
+   },
+   {
+    "en": "At first, the argument seemed entirely convincing, and I filled the margins with enthusiastic notes and underlined sentences.",
+    "vi": "Lúc đầu, lập luận có vẻ hoàn toàn thuyết phục, và tôi ghi đầy lề sách những ghi chú hào hứng cùng những câu gạch chân."
+   },
+   {
+    "en": "Halfway through, though, I began to wonder whether the author had only chosen examples that supported his theory.",
+    "vi": "Tuy nhiên, đến giữa sách, tôi bắt đầu tự hỏi liệu tác giả có chỉ chọn những ví dụ ủng hộ lý thuyết của mình hay không."
+   },
+   {
+    "en": "Several of the companies he praised had since struggled badly, which suggested that their success had owed as much to luck as to habit.",
+    "vi": "Nhiều công ty ông ca ngợi sau đó đã gặp khó khăn nghiêm trọng, cho thấy thành công của họ nhờ vào may mắn không kém gì thói quen."
+   },
+   {
+    "en": "This is a common weakness in the genre, because stories about winners are far easier to write than studies of failures.",
+    "vi": "Đây là điểm yếu phổ biến của thể loại này, vì những câu chuyện về người chiến thắng dễ viết hơn nhiều so với nghiên cứu về thất bại."
+   },
+   {
+    "en": "Nevertheless, I don't regret reading it, since the book made me think harder about how organizations actually make decisions.",
+    "vi": "Dù vậy, tôi không hối hận vì đã đọc, vì cuốn sách khiến tôi suy nghĩ kỹ hơn về cách các tổ chức thật sự ra quyết định."
+   },
+   {
+    "en": "One chapter, on the importance of admitting mistakes early, described a problem that my own team had been ignoring for months.",
+    "vi": "Một chương, nói về tầm quan trọng của việc sớm thừa nhận sai sót, mô tả đúng một vấn đề mà nhóm của tôi đã lờ đi suốt nhiều tháng."
+   },
+   {
+    "en": "I raised the issue at our next meeting, and to my surprise, nobody argued against changing our approach.",
+    "vi": "Tôi nêu vấn đề đó trong cuộc họp kế tiếp, và thật bất ngờ, không ai phản đối việc thay đổi cách làm."
+   },
+   {
+    "en": "Within a few weeks, we had simplified a process that had frustrated both customers and employees for years.",
+    "vi": "Trong vài tuần, chúng tôi đã đơn giản hóa một quy trình khiến cả khách hàng lẫn nhân viên bực bội suốt nhiều năm."
+   },
+   {
+    "en": "The lesson, I think, is to treat such books as sources of questions rather than collections of reliable answers.",
+    "vi": "Tôi nghĩ bài học là hãy coi những cuốn sách như vậy là nguồn câu hỏi hơn là tập hợp các câu trả lời đáng tin."
+   },
+   {
+    "en": "I've since passed the copy on to another colleague, along with a pencil and a warning to read critically.",
+    "vi": "Từ đó tôi đã chuyển cuốn sách cho một đồng nghiệp khác, kèm một cây bút chì và lời dặn hãy đọc một cách phản biện."
+   }
+  ]
+ },
+ {
+  "id": "set-70",
+  "order": 70,
+  "title": "Công viên giữa phố",
+  "titleEn": "A Park in the Middle of the City",
+  "blurb": "Luyện đoạn văn về một dự án công viên và tác động của nó.",
+  "level": "C1",
+  "topic": "Công viên",
+  "accentHint": "Anh – Anh",
+  "sentences": [
+   {
+    "en": "When the council announced plans to turn an abandoned car park into a public garden, many residents were openly sceptical.",
+    "vi": "Khi hội đồng thành phố công bố kế hoạch biến một bãi đỗ xe bỏ hoang thành vườn công cộng, nhiều cư dân tỏ ra hoài nghi công khai."
+   },
+   {
+    "en": "They argued that the land was too valuable to be wasted on grass, and that housing was the real priority.",
+    "vi": "Họ cho rằng mảnh đất quá quý để phí cho cỏ, và nhà ở mới là ưu tiên thật sự."
+   },
+   {
+    "en": "The designers, however, pointed out that the neighbourhood had less green space per person than almost any other district.",
+    "vi": "Tuy nhiên, các nhà thiết kế chỉ ra rằng khu phố này có ít không gian xanh trên đầu người hơn gần như mọi quận khác."
+   },
+   {
+    "en": "Their proposal included shaded benches, a small playground, and a shallow pond intended to collect rainwater during heavy storms.",
+    "vi": "Đề xuất của họ gồm những băng ghế có bóng mát, một sân chơi nhỏ và một cái ao nông dùng để chứa nước mưa khi có bão lớn."
+   },
+   {
+    "en": "Construction took nearly two years, partly because the soil beneath the concrete turned out to be badly contaminated.",
+    "vi": "Việc xây dựng mất gần hai năm, một phần vì lớp đất dưới nền bê tông hóa ra bị ô nhiễm nặng."
+   },
+   {
+    "en": "Once the park opened, however, the doubts began to fade, as families, joggers, and elderly neighbours arrived in large numbers.",
+    "vi": "Tuy nhiên, khi công viên mở cửa, những nghi ngờ bắt đầu tan dần, khi các gia đình, người chạy bộ và hàng xóm lớn tuổi kéo đến rất đông."
+   },
+   {
+    "en": "Researchers who counted visitors over a summer found that the park attracted far more people than anyone had predicted.",
+    "vi": "Các nhà nghiên cứu đếm lượng khách trong một mùa hè và thấy công viên thu hút nhiều người hơn hẳn dự đoán của bất kỳ ai."
+   },
+   {
+    "en": "Local shop owners, who had feared the noise, reported that their takings had actually increased on warm weekends.",
+    "vi": "Các chủ cửa hàng địa phương, vốn lo ngại tiếng ồn, cho biết doanh thu của họ thực ra đã tăng vào những cuối tuần ấm áp."
+   },
+   {
+    "en": "Perhaps the most surprising effect was social, since strangers who had lived on the same street for decades finally started talking.",
+    "vi": "Có lẽ tác động bất ngờ nhất là về mặt xã hội, vì những người lạ sống chung một con phố hàng chục năm cuối cùng đã bắt đầu trò chuyện."
+   },
+   {
+    "en": "Of course, the project is not without problems, because maintaining a garden costs money that the council has to find every year.",
+    "vi": "Tất nhiên, dự án không phải không có vấn đề, vì duy trì một khu vườn tốn khoản tiền mà hội đồng phải tìm ra hằng năm."
+   },
+   {
+    "en": "Even so, most residents now agree that the space has improved the character of the area in ways no spreadsheet could measure.",
+    "vi": "Dù vậy, hầu hết cư dân giờ đồng ý rằng không gian này đã cải thiện đặc trưng của khu vực theo những cách mà không bảng tính nào đo được."
+   },
+   {
+    "en": "If other cities followed this example, forgotten corners of concrete might gradually become the places people care about most.",
+    "vi": "Nếu các thành phố khác noi theo ví dụ này, những góc bê tông bị lãng quên có thể dần trở thành nơi người ta quan tâm nhất."
+   }
+  ]
+ }
+]

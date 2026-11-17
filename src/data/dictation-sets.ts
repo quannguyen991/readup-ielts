@@ -1,6 +1,9 @@
 import { DICTATION_SETS_A, type DictationSet, type DictationSetSentence } from './dictation-sets-a';
 import { DICTATION_SETS_B } from './dictation-sets-b';
 import { DICTATION_SETS_C } from './dictation-sets-c';
+import SETS_D from './seed/dictation-sets-d.json';
+import SETS_E from './seed/dictation-sets-e.json';
+import SETS_F from './seed/dictation-sets-f.json';
 
 /**
  * Kho BỘ ĐỀ chép chính tả — gộp các nửa lại thành một danh sách.
@@ -29,7 +32,7 @@ const LEVEL_RANK: Record<string, number> = { A2: 0, B1: 1, B2: 2, C1: 3 };
  * `id` giữ nguyên vì tiến độ đã lưu trên máy người dùng khoá theo id; thứ đổi
  * chỉ là VỊ TRÍ hiển thị, và `position` bên dưới mới là số bài in trên thẻ.
  */
-export const DICTATION_SETS: DictationSet[] = [...DICTATION_SETS_A, ...DICTATION_SETS_B, ...DICTATION_SETS_C].sort(
+export const DICTATION_SETS: DictationSet[] = [...DICTATION_SETS_A, ...DICTATION_SETS_B, ...DICTATION_SETS_C, ...(SETS_D as unknown as DictationSet[]), ...(SETS_E as unknown as DictationSet[]), ...(SETS_F as unknown as DictationSet[])].sort(
   (a, b) => (LEVEL_RANK[a.level] ?? 9) - (LEVEL_RANK[b.level] ?? 9) || a.order - b.order,
 );
 
@@ -98,6 +101,72 @@ export const DICTATION_TOPIC_EN: Record<string, string> = {
   'Di cư': 'Migration',
   'Chính sách khí hậu': 'Climate policy',
   'Đạo đức nghiên cứu': 'Research ethics',
+  'Sân bay': 'Airport',
+  'Bưu điện': 'Post office',
+  'Sinh nhật': 'Birthdays',
+  'Mùa mưa': 'Rainy season',
+  'Giao hàng': 'Deliveries',
+  'Đi xe đạp': 'Cycling',
+  'Quán cà phê': 'Cafes',
+  'Ngân hàng': 'Banking',
+  'Phỏng vấn': 'Interviews',
+  'Thể thao đồng đội': 'Team sports',
+  'Lễ cưới': 'Weddings',
+  'Mua nhà': 'Buying a home',
+  'Năng lượng mặt trời': 'Solar energy',
+  'Đại học': 'University',
+  'Sách kinh doanh': 'Business books',
+  'Công viên': 'Parks',
+  'Tại phòng khám': 'At the clinic',
+  'Tiệm cắt tóc': 'Barber shop',
+  'Cắm trại': 'Camping',
+  'Làm bánh': 'Baking',
+  'Ở khách sạn': 'Hotel stay',
+  'Đi biển': 'Beach day',
+  'Trạm xe buýt': 'Bus stop',
+  'Tiệm giặt là': 'Laundromat',
+  'Xem phim': 'Cinema',
+  'Dọn nhà': 'Moving house',
+  'Hồ bơi': 'Swimming pool',
+  'Chợ nổi': 'Floating market',
+  'Lớp yoga': 'Yoga class',
+  'Buổi hòa nhạc': 'Concerts',
+  'Hiệu sách': 'Bookshops',
+  'Thuê xe': 'Car rental',
+  'Họp nhóm': 'Team meetings',
+  'Trò chơi bàn': 'Board games',
+  'Bảo hiểm': 'Insurance',
+  'Thuế': 'Taxes',
+  'Tái chế': 'Recycling',
+  'Podcast': 'Podcasts',
+  'Thương mại điện tử': 'Online retail',
+  'Đầu bếp': 'Chefs',
+  'Phi hành gia': 'Astronauts',
+  'Dịch thuật': 'Translation',
+  'Cứu hộ': 'Rescue',
+  'Hội thảo': 'Conferences',
+  'Bệnh viện': 'Hospitals',
+  'Đi leo núi': 'Mountain climbing',
+  'Đi chợ cuối tuần': 'Weekend market',
+  'Học nấu ăn': 'Cooking lessons',
+  'Sửa xe': 'Bike repair',
+  'Công viên nước': 'Water park',
+  'Tết': 'Lunar New Year',
+  'Nhà hàng': 'Restaurants',
+  'Mùa gặt': 'Harvest season',
+  'Cuộc thi': 'Contests',
+  'Phòng gym': 'Gym',
+  'Nhật ký du lịch': 'Travel diary',
+  'Bác sĩ nha khoa': 'Dentist',
+  'Đồ cũ': 'Secondhand goods',
+  'Cuộc gọi khẩn cấp': 'Emergency calls',
+  'Livestream': 'Livestreaming',
+  'Kinh tế chia sẻ': 'Sharing economy',
+  'Trí tuệ nhân tạo': 'Artificial intelligence',
+  'Bảo tồn': 'Conservation',
+  'Tâm lý đám đông': 'Crowd psychology',
+  'Đạo đức báo chí': 'Press ethics',
+  'Chủ nghĩa tối giản': 'Minimalism',
 };
 
 /** Nhãn chủ đề theo ngôn ngữ; chủ đề chưa có bản tiếng Anh thì giữ nguyên. */

@@ -83,8 +83,8 @@ module.exports = {
       // Tên key tránh trùng với utility font-weight của Tailwind
       // (medium / semibold / bold / extrabold) để không sinh class đè nhau.
       fontFamily: {
-        // Be Vietnam Pro: phông chính, nạp trong app/_layout.tsx. Plus Jakarta Sans vẫn còn cho trang giới thiệu.
-        // Inter (21/10/2026): gọn, mỏng hơn Be Vietnam Pro. Độ đậm vẫn phân cấp nhưng nhẹ hơn:
+        // Inter: phông chính, nạp trong app/_layout.tsx. Plus Jakarta Sans vẫn còn cho trang giới thiệu.
+        // Inter (21/10/2026): gọn, mỏng hơn phông cũ. Độ đậm vẫn phân cấp nhưng nhẹ hơn:
         // tiêu đề dùng 600 thay cho 800.
         sans: ['Inter_400Regular', 'system-ui', 'sans-serif'],
         mid: ['Inter_500Medium', 'system-ui', 'sans-serif'],

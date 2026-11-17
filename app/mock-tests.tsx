@@ -245,9 +245,6 @@ function MockTestCard({
             */}
             <Chip label={L(`~${minutes} phút đọc`, `~${minutes} min reading`)} tone="neutral" />
           </View>
-          <Text className="mt-2 font-sans text-label text-muted">
-            {L('Listening 4 section, rồi Reading 3 passage tăng dần độ khó — đúng thứ tự bài thi thật.', 'Listening in 4 sections, then 3 Reading passages of rising difficulty — the real exam order.')}
-          </Text>
         </View>
       </View>
 

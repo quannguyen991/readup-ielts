@@ -4,6 +4,17 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage, uid } from './persist';
 import type { SentenceTopic } from '@/data/sentence-drills';
+import {
+  addExpressRound,
+  bumpStat,
+  expressScore,
+  itemKey,
+  mergeStats,
+  paragraphResult,
+  statsFromSessions,
+  type LearnMode,
+  type StatMap,
+} from '@/services/sentence/learn-status';
 
 /**
  * Lịch sử luyện tập của hai bài cấp câu: chép chính tả và dịch Việt→Anh.
@@ -66,9 +77,49 @@ export type SentenceSessionRecord =
       setId?: string;
     };
 
+/** Một lần nộp bài Tự diễn đạt: câu người học viết + lỗi đã chỉ ra. */
+export type ExpressRound = {
+  text: string;
+  at: string;
+  /** Số lỗi cứng ở lần nộp này. */
+  errors: number;
+  /** Đã đúng ý, đúng cấu trúc đích. */
+  passed: boolean;
+};
+
+export type ExpressRecord = {
+  rounds: ExpressRound[];
+  /** Đã xem mức gợi ý cao nhất bao nhiêu (0–3). */
+  hintLevel: number;
+};
+
+/** Bài Viết cả đoạn đã nộp (mỗi lần nộp là một dòng). */
+export type ParagraphSubmission = {
+  id: string;
+  promptId: string;
+  text: string;
+  at: string;
+  sentences: number;
+  /** Số câu không còn lỗi cứng. */
+  cleanSentences: number;
+  words: number;
+  /** Số câu tối thiểu của đề (để tính "đã học"). */
+  minSentences?: number;
+};
+
 type SentenceState = {
   sessions: SentenceSessionRecord[];
+  /** Thống kê theo từng câu, ghi ngay khi xong câu. Khoá: `mode:itemId`. */
+  itemStats: StatMap;
+  /** Tự diễn đạt: lịch sử các lần chỉnh, khoá theo itemId. */
+  express: Record<string, ExpressRecord>;
+  /** Viết cả đoạn: các bài đã nộp, mới nhất trước. */
+  paragraphs: ParagraphSubmission[];
   addSession: (session: Omit<SentenceSessionRecord, 'id' | 'finishedAt'>) => string;
+  /** Ghi một lượt làm câu (điểm 0–1, `passed` = tính là đã học). */
+  recordItem: (mode: LearnMode, itemId: string, score: number, passed: boolean) => void;
+  recordExpressRound: (itemId: string, round: Omit<ExpressRound, 'at'>, hintLevel: number) => void;
+  addParagraph: (entry: Omit<ParagraphSubmission, 'id' | 'at'>) => string;
   clearHistory: () => void;
 };
 
@@ -76,6 +127,9 @@ export const useSentenceStore = create<SentenceState>()(
   persist(
     (set) => ({
       sessions: [],
+      itemStats: {},
+      express: {},
+      paragraphs: [],
 
       addSession: (session) => {
         const id = uid();
@@ -84,7 +138,44 @@ export const useSentenceStore = create<SentenceState>()(
         return id;
       },
 
-      clearHistory: () => set({ sessions: [] }),
+      recordItem: (mode, itemId, score, passed) =>
+        set((state) => {
+          const key = itemKey(mode, itemId);
+          // Câu chưa có ghi riêng thì khởi từ lịch sử cũ để `tries` không tụt về 0.
+          const base = state.itemStats[key] ?? statsFromSessions(state.sessions)[key];
+          return { itemStats: { ...state.itemStats, [key]: bumpStat(base, score, passed, new Date().toISOString()) } };
+        }),
+
+      recordExpressRound: (itemId, round, hintLevel) =>
+        set((state) => {
+          const prev = state.express[itemId];
+          const at = new Date().toISOString();
+          const rec: ExpressRecord = addExpressRound(prev, { ...round, at }, hintLevel);
+          const key = itemKey('express', itemId);
+          const score = expressScore(round);
+          const base = state.itemStats[key];
+          return {
+            express: { ...state.express, [itemId]: rec },
+            itemStats: { ...state.itemStats, [key]: bumpStat(base, score, round.passed, at) },
+          };
+        }),
+
+      addParagraph: (entry) => {
+        const id = uid();
+        const at = new Date().toISOString();
+        set((state) => {
+          const key = itemKey('paragraph', entry.promptId);
+          const base = state.itemStats[key];
+          const res = paragraphResult(entry.sentences, entry.cleanSentences, entry.minSentences ?? 4);
+          return {
+            paragraphs: [{ ...entry, id, at }, ...state.paragraphs].slice(0, 60),
+            itemStats: { ...state.itemStats, [key]: bumpStat(base, res.score, res.passed, at) },
+          };
+        });
+        return id;
+      },
+
+      clearHistory: () => set({ sessions: [], itemStats: {}, express: {}, paragraphs: [] }),
     }),
     { name: `${STORAGE_PREFIX}sentence`, storage: storage<SentenceState>() },
   ),
@@ -121,6 +212,13 @@ function statsFor(sessions: SentenceSessionRecord[], mode: 'dictation' | 'transl
   const scores = matched.map((s) => (mode === 'dictation' ? dictationSessionScore(s as never) : translationSessionScore(s as never)));
   const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
   return { sessions: matched.length, attempts, avgScore, latestScore: scores[0] ?? null };
+}
+
+/** Thống kê từng câu: nguồn cũ (bài đã xong) + ghi mới theo từng câu. */
+export function useLearnStats(): StatMap {
+  const sessions = useSentenceStore((s) => s.sessions);
+  const itemStats = useSentenceStore((s) => s.itemStats);
+  return useMemo(() => mergeStats(statsFromSessions(sessions), itemStats), [sessions, itemStats]);
 }
 
 export function useSentenceStats(): { dictation: SentenceModeStats; translation: SentenceModeStats } {

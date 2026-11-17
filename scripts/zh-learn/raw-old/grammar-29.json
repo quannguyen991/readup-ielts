@@ -1,0 +1,550 @@
+[
+ {
+  "id": "zh-g-h5-10",
+  "level": 5,
+  "order": 10,
+  "title": "Diễn tả dù…đến mấy cũng…",
+  "titleZh": "再……也……",
+  "summary": "Bạn sẽ diễn tả một điều vẫn đúng dù tình huống hoặc mức độ có thay đổi.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Ý nghĩa nhượng bộ",
+    "body": "再……也…… diễn tả ý “dù… đến mấy thì vẫn…”. Vế sau nêu điều không thay đổi trước tình huống ở vế trước.",
+    "examples": [
+     {
+      "zh": "妈妈再忙也会给我做饭。",
+      "py": "māma zài máng yě huì gěi wǒ zuòfàn",
+      "vi": "Dù bận đến mấy, mẹ vẫn nấu cơm cho tôi."
+     },
+     {
+      "zh": "天气再冷，我们也要去上班。",
+      "py": "tiānqì zài lěng wǒmen yě yào qù shàngbān",
+      "vi": "Dù trời lạnh đến mấy, chúng tôi vẫn phải đi làm."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu tình huống không làm đổi ý",
+    "body": "Dùng cấu trúc này khi muốn nhấn mạnh rằng một mức độ, khó khăn hoặc cách làm không khiến kết quả thay đổi. Tình huống ở vế đầu có thể là thật hoặc giả định.",
+    "examples": [
+     {
+      "zh": "路再远，我也想回家看看。",
+      "py": "lù zài yuǎn wǒ yě xiǎng huíjiā kànkan",
+      "vi": "Dù đường xa đến mấy, tôi vẫn muốn về nhà thăm."
+     },
+     {
+      "zh": "他再累也会陪孩子玩一会儿。",
+      "py": "tā zài lèi yě huì péi háizi wán yíhuìr",
+      "vi": "Dù mệt đến mấy, anh ấy vẫn chơi với con một lúc."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 再 trước tình huống",
+    "body": "Cấu trúc thường gặp là 再 + tính từ hoặc cụm động từ + 也 + mệnh đề. Khi nói “dù làm thế nào”, có thể dùng 再怎么 + động từ.",
+    "formula": "再 + tính từ / cụm động từ + 也 + mệnh đề",
+    "examples": [
+     {
+      "zh": "我再怎么问，他也不告诉我。",
+      "py": "wǒ zài zěnme wèn tā yě bù gàosu wǒ",
+      "vi": "Dù tôi hỏi thế nào, anh ấy cũng không nói cho tôi biết."
+     },
+     {
+      "zh": "这件衣服再贵，我也会买。",
+      "py": "zhè jiàn yīfu zài guì wǒ yě huì mǎi",
+      "vi": "Dù bộ quần áo này đắt đến mấy, tôi vẫn sẽ mua."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đừng bỏ mất 也",
+    "body": "Trong mẫu nhượng bộ này, 也 đứng ở vế sau để nối tình huống với điều vẫn xảy ra. Thiếu 也 có thể làm câu mất ý nhấn mạnh của cấu trúc.",
+    "mistakes": [
+     {
+      "wrong": "天气再冷，我们不想出门。",
+      "right": "天气再冷，我们也不想出门。",
+      "why": "Trong mẫu 再……也…… cần có 也 ở vế sau để thể hiện ý “dù lạnh đến mấy thì vẫn không muốn ra ngoài”."
+     },
+     {
+      "wrong": "他再累会陪孩子玩一会儿。",
+      "right": "他再累也会陪孩子玩一会儿。",
+      "why": "Đặt 也 trước động từ 会 để câu giữ đúng cặp nhượng bộ 再……也……."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào nói dù trời lạnh đến mấy, mọi người vẫn đi làm?",
+    "options": [
+     "天气再冷，我们也要去上班。",
+     "天气很冷，我们不去上班。",
+     "天气冷了，我们回家休息。",
+     "天气再冷，我们要上班吗？"
+    ],
+    "answer": 0,
+    "explain": "Câu đầu dùng 再……也…… để nói thời tiết lạnh không làm thay đổi việc đi làm."
+   },
+   {
+    "q": "Chọn câu dùng đúng mẫu 再……也…….",
+    "options": [
+     "你很忙，所以要吃饭。",
+     "你再忙，也要记得吃饭。",
+     "你忙完以后再吃饭。",
+     "你忙得没有时间吃饭。"
+    ],
+    "answer": 1,
+    "explain": "再忙 nêu tình huống nhượng bộ, còn 也要记得 ăn饭 nêu điều vẫn cần làm."
+   },
+   {
+    "q": "Câu nào diễn tả dù đường xa, người nói vẫn muốn về nhà?",
+    "options": [
+     "路很远，我今天不回家。",
+     "我想回家看看。",
+     "路再远，我也想回家看看。",
+     "我走路回家了。"
+    ],
+    "answer": 2,
+    "explain": "Câu thứ ba dùng 再远……也想…… để thể hiện ý định không đổi."
+   },
+   {
+    "q": "Câu nào nói dù bị hỏi thế nào, người kia vẫn không trả lời?",
+    "options": [
+     "我问了他很多问题。",
+     "他没有告诉我。",
+     "我再问他一次。",
+     "我再怎么问，他也不告诉我。"
+    ],
+    "answer": 3,
+    "explain": "Câu cuối dùng 再怎么问……也不…… để nhấn mạnh việc hỏi không làm thay đổi kết quả."
+   },
+   {
+    "q": "Chọn câu nói dù bộ quần áo đắt, người nói vẫn sẽ mua.",
+    "options": [
+     "这件衣服再贵，我也会买。",
+     "这件衣服很贵，我不买。",
+     "我今天买了衣服。",
+     "这件衣服不贵。"
+    ],
+    "answer": 0,
+    "explain": "再贵……也会买 diễn tả giá cao không làm người nói đổi ý."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h5-11",
+  "level": 5,
+  "order": 11,
+  "title": "因而 và 可见: nêu kết quả và suy luận",
+  "titleZh": "因而与可见",
+  "summary": "Bạn sẽ phân biệt cách nêu kết quả thực tế với cách rút ra nhận định từ thông tin trước đó.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Hai cách nối ý khác nhau",
+    "body": "因而 nối nguyên nhân với kết quả thực tế, gần nghĩa “do đó”. 可见 dẫn từ thông tin đã nêu đến một nhận định hoặc kết luận có thể suy ra.",
+    "examples": [
+     {
+      "zh": "昨晚下了大雨，因而路上很滑。",
+      "py": "zuówǎn xià le dàyǔ yīn'ér lùshang hěn huá",
+      "vi": "Tối qua mưa to nên đường rất trơn."
+     },
+     {
+      "zh": "大家都来了，可见消息传开了。",
+      "py": "dàjiā dōu lái le kějiàn xiāoxi chuánkāi le",
+      "vi": "Mọi người đều đến, có thể thấy tin tức đã lan ra."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn theo quan hệ giữa hai vế",
+    "body": "Dùng 因而 khi vế sau là kết quả của sự việc trước đó. Dùng 可见 khi vế sau là điều người nói kết luận dựa trên dấu hiệu đã nêu.",
+    "examples": [
+     {
+      "zh": "他感冒了，因而今天没来上课。",
+      "py": "tā gǎnmào le yīn'ér jīntiān méi lái shàngkè",
+      "vi": "Anh ấy bị cảm nên hôm nay không đến lớp."
+     },
+     {
+      "zh": "他一直没说话，可见心里很难过。",
+      "py": "tā yìzhí méi shuōhuà kějiàn xīnlǐ hěn nánguò",
+      "vi": "Anh ấy cứ im lặng, có thể thấy trong lòng rất buồn."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt từ nối trước vế sau",
+    "body": "因而 thường đứng đầu vế nêu kết quả. 可见 thường đứng đầu vế đưa ra nhận định, và vế này có thể chứa ý kiến hoặc đánh giá.",
+    "formula": "Nguyên nhân，因而 + kết quả / Dấu hiệu，可见 + nhận định",
+    "examples": [
+     {
+      "zh": "路上很滑，因而车开得很慢。",
+      "py": "lùshang hěn huá yīn'ér chē kāi de hěn màn",
+      "vi": "Đường rất trơn nên xe chạy rất chậm."
+     },
+     {
+      "zh": "大家都在排队，可见里面很热闹。",
+      "py": "dàjiā dōu zài páiduì kějiàn lǐmiàn hěn rènao",
+      "vi": "Mọi người đều đang xếp hàng, có thể thấy bên trong rất đông vui."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không dùng hai từ như nhau",
+    "body": "因而 nêu kết quả, còn 可见 nêu điều được suy ra từ dấu hiệu. Chọn từ theo quan hệ logic giữa hai vế, không chỉ dựa vào việc cả hai đều thường đứng đầu vế sau.",
+    "mistakes": [
+     {
+      "wrong": "门口有很多人，因而这家店很受欢迎。",
+      "right": "门口有很多人，可见这家店很受欢迎。",
+      "why": "Nhiều người đứng trước cửa là dấu hiệu để suy ra quán được ưa thích, nên 可见 hợp với ý kết luận hơn."
+     },
+     {
+      "wrong": "他感冒了，可见今天没来上课。",
+      "right": "他感冒了，因而今天没来上课。",
+      "why": "Không đến lớp là kết quả thực tế của việc bị cảm trong câu này, nên dùng 因而."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào dùng 因而 để nêu kết quả thực tế?",
+    "options": [
+     "昨晚下了大雨，因而路上很滑。",
+     "门口有很多人，可见这家店很受欢迎。",
+     "大家都来了，可见消息传开了。",
+     "他一直没说话，可见心里很难过。"
+    ],
+    "answer": 0,
+    "explain": "Đường trơn là kết quả thực tế của trận mưa lớn nên câu dùng 因而."
+   },
+   {
+    "q": "Câu nào dùng 可见 để rút ra nhận định từ dấu hiệu?",
+    "options": [
+     "他感冒了，因而今天没来上课。",
+     "门口有很多人，可见这家店很受欢迎。",
+     "路上很滑，因而车开得很慢。",
+     "昨晚下了大雨，因而路上很滑。"
+    ],
+    "answer": 1,
+    "explain": "Có nhiều người trước cửa là dấu hiệu để người nói suy ra quán được ưa thích."
+   },
+   {
+    "q": "Chọn câu dùng 因而 để nối nguyên nhân với kết quả.",
+    "options": [
+     "大家都在排队，可见里面很热闹。",
+     "他一直没说话，可见心里很难过。",
+     "他感冒了，因而今天没来上课。",
+     "大家都来了，可见消息传开了。"
+    ],
+    "answer": 2,
+    "explain": "Việc bị cảm dẫn đến kết quả là hôm nay anh ấy không đến lớp."
+   },
+   {
+    "q": "Câu nào cho thấy người nói đang suy luận từ việc mọi người xếp hàng?",
+    "options": [
+     "他每天认真练习，因而进步很快。",
+     "昨晚下了大雨，因而路上很滑。",
+     "路上很滑，因而车开得很慢。",
+     "大家都在排队，可见里面很热闹。"
+    ],
+    "answer": 3,
+    "explain": "Vế sau là nhận định suy ra từ dấu hiệu mọi người đang xếp hàng."
+   },
+   {
+    "q": "Chọn câu nêu kết quả của việc luyện tập mỗi ngày.",
+    "options": [
+     "他每天认真练习，因而进步很快。",
+     "大家都来了，可见消息传开了。",
+     "门口有很多人，可见这家店很受欢迎。",
+     "他一直没说话，可见心里很难过。"
+    ],
+    "answer": 0,
+    "explain": "Tiến bộ nhanh là kết quả được nêu sau việc luyện tập mỗi ngày."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h5-12",
+  "level": 5,
+  "order": 12,
+  "title": "Hoặc là…hoặc là…",
+  "titleZh": "或是……或是……",
+  "summary": "Bạn sẽ dùng cặp 或是……或是…… để trình bày rõ hai lựa chọn có thể thay thế nhau.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu các phương án lựa chọn",
+    "body": "或是……或是…… nối hai lựa chọn hoặc hai khả năng. Người nói thường đưa ra một phương án hoặc phương án còn lại.",
+    "examples": [
+     {
+      "zh": "周末我们或是看电影，或是去公园散步。",
+      "py": "zhōumò wǒmen huòshì kàn diànyǐng huòshì qù gōngyuán sànbù",
+      "vi": "Cuối tuần chúng tôi hoặc xem phim, hoặc đi dạo ở công viên."
+     },
+     {
+      "zh": "我晚上或是看书，或是听音乐。",
+      "py": "wǒ wǎnshang huòshì kànshū huòshì tīng yīnyuè",
+      "vi": "Buổi tối tôi hoặc đọc sách, hoặc nghe nhạc."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đưa ra lựa chọn trong cùng ngữ cảnh",
+    "body": "Dùng cấu trúc này khi muốn liệt kê các việc có thể chọn trong một tình huống. Hai vế thường có chức năng giống nhau, như hai hoạt động hoặc hai cách đi lại.",
+    "examples": [
+     {
+      "zh": "天冷时，他或是喝茶，或是喝热水。",
+      "py": "tiān lěng shí tā huòshì hē chá huòshì hē rèshuǐ",
+      "vi": "Trời lạnh thì anh ấy hoặc uống trà, hoặc uống nước nóng."
+     },
+     {
+      "zh": "她累了，或是回家休息，或是听音乐。",
+      "py": "tā lèi le huòshì huíjiā xiūxi huòshì tīng yīnyuè",
+      "vi": "Cô ấy mệt rồi thì hoặc về nhà nghỉ ngơi, hoặc nghe nhạc."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Lặp 或是 ở hai vế",
+    "body": "Đặt 或是 trước từng lựa chọn để người nghe nhận ra quan hệ lựa chọn giữa chúng. Có thể giữ cùng một chủ ngữ ở đầu câu và lược chủ ngữ ở vế sau.",
+    "formula": "Chủ ngữ + 或是 + lựa chọn A，或是 + lựa chọn B",
+    "examples": [
+     {
+      "zh": "我们或是坐车，或是走路回家。",
+      "py": "wǒmen huòshì zuòchē huòshì zǒulù huíjiā",
+      "vi": "Chúng tôi hoặc đi xe, hoặc đi bộ về nhà."
+     },
+     {
+      "zh": "他今天或是看电视，或是看书。",
+      "py": "tā jīntiān huòshì kàn diànshì huòshì kànshū",
+      "vi": "Hôm nay anh ấy hoặc xem ti vi, hoặc đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Giữ cặp lựa chọn nhất quán",
+    "body": "Khi dùng đúng mẫu đang học, hãy lặp 或是 ở cả hai lựa chọn. 还 thường thêm một thông tin khác, nên không thay thế vế thứ hai của cặp lựa chọn.",
+    "mistakes": [
+     {
+      "wrong": "我今天或是看书，还听音乐。",
+      "right": "我今天或是看书，或是听音乐。",
+      "why": "还 mang ý bổ sung, còn vế thứ hai của mẫu lựa chọn cần có 或是."
+     },
+     {
+      "wrong": "他或是坐车，或者走路回家。",
+      "right": "他或是坐车，或是走路回家。",
+      "why": "Trong mẫu này, lặp cùng một dấu hiệu 或是 trước cả hai phương án để câu cân đối và rõ nghĩa."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào trình bày hai lựa chọn cho cuối tuần?",
+    "options": [
+     "周末我们或是看电影，或是去公园散步。",
+     "周末我们去公园散步。",
+     "周末我们看完电影再回家。",
+     "周末我们想去公园。"
+    ],
+    "answer": 0,
+    "explain": "Câu đầu lặp 或是 để nêu hai lựa chọn cho cuối tuần."
+   },
+   {
+    "q": "Chọn câu dùng đúng cặp 或是……或是…….",
+    "options": [
+     "我们坐车回家，今天很晚。",
+     "我们或是坐车，或是走路回家。",
+     "我们先坐车，再走路回家。",
+     "我们不坐车，也不走路。"
+    ],
+    "answer": 1,
+    "explain": "Câu thứ hai đặt 或是 trước cả hai cách về nhà."
+   },
+   {
+    "q": "Câu nào nói buổi tối người nói có thể đọc sách hoặc nghe nhạc?",
+    "options": [
+     "我晚上看书，也听音乐。",
+     "我晚上听音乐以后看书。",
+     "我晚上或是看书，或是听音乐。",
+     "我晚上不看书。"
+    ],
+    "answer": 2,
+    "explain": "Câu thứ ba nêu hai phương án bằng cặp 或是……或是……."
+   },
+   {
+    "q": "Chọn câu đưa ra hai việc anh ấy có thể làm hôm nay.",
+    "options": [
+     "他今天看电视，也看书。",
+     "他今天看了电视。",
+     "他今天看电视以后去睡觉。",
+     "他今天或是看电视，或是看书。"
+    ],
+    "answer": 3,
+    "explain": "Câu cuối nêu hai lựa chọn cân xứng bằng cách lặp 或是."
+   },
+   {
+    "q": "Câu nào đưa ra hai việc cô ấy có thể làm khi mệt?",
+    "options": [
+     "她累了，或是回家休息，或是听音乐。",
+     "她累了，就回家休息。",
+     "她回家以后听音乐。",
+     "她今天很喜欢音乐。"
+    ],
+    "answer": 0,
+    "explain": "Câu đầu đưa ra hai phương án khi cô ấy mệt: về nhà nghỉ hoặc nghe nhạc."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h5-13",
+  "level": 5,
+  "order": 13,
+  "title": "Bổ ngữ trạng thái mở rộng với 得",
+  "titleZh": "状态补语",
+  "summary": "Bạn sẽ dùng 得 để miêu tả mức độ hoặc trạng thái của hành động và tính chất.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "得 dẫn phần miêu tả trạng thái",
+    "body": "得 đứng sau động từ hoặc tính từ để dẫn phần mô tả mức độ, cách thức hay trạng thái. Phần bổ ngữ phía sau có thể là cụm từ hoặc một mệnh đề ngắn.",
+    "examples": [
+     {
+      "zh": "老师讲得很清楚，大家都听懂了。",
+      "py": "lǎoshī jiǎng de hěn qīngchu dàjiā dōu tīngdǒng le",
+      "vi": "Thầy cô giảng rất rõ nên mọi người đều hiểu."
+     },
+     {
+      "zh": "小狗跑得很快，孩子们都追它。",
+      "py": "xiǎogǒu pǎo de hěn kuài háizimen dōu zhuī tā",
+      "vi": "Chú chó chạy rất nhanh, bọn trẻ đều đuổi theo nó."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Miêu tả hành động hoặc trạng thái",
+    "body": "Dùng bổ ngữ trạng thái khi muốn nói một việc diễn ra như thế nào hoặc một người ở trạng thái ra sao. Phần sau 得 có thể miêu tả cảm xúc, mức độ hoặc hành động tiếp nối.",
+    "examples": [
+     {
+      "zh": "下课以后，孩子们玩得很开心。",
+      "py": "xiàkè yǐhòu háizimen wán de hěn kāixīn",
+      "vi": "Sau giờ học, bọn trẻ chơi rất vui."
+     },
+     {
+      "zh": "妹妹高兴得跳了起来。",
+      "py": "mèimei gāoxìng de tiào le qǐlái",
+      "vi": "Em gái vui đến mức nhảy cẫng lên."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 得 sau động từ hoặc tính từ",
+    "body": "Mẫu cơ bản là động từ hoặc tính từ + 得 + phần miêu tả. Khi động từ có tân ngữ, có thể đưa tân ngữ lên trước động từ hoặc lặp lại động từ sau tân ngữ.",
+    "formula": "Chủ ngữ + động từ / tính từ + 得 + bổ ngữ trạng thái; hoặc Chủ ngữ + tân ngữ + động từ + 得 + bổ ngữ",
+    "examples": [
+     {
+      "zh": "他汉语说得很流利。",
+      "py": "tā Hànyǔ shuō de hěn liúlì",
+      "vi": "Anh ấy nói tiếng Trung rất lưu loát."
+     },
+     {
+      "zh": "姐姐唱歌唱得很好听。",
+      "py": "jiějie chànggē chàng de hěn hǎotīng",
+      "vi": "Chị hát rất hay."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 得 đúng vị trí",
+    "body": "得 đứng sau động từ hoặc tính từ được miêu tả, không đứng trước động từ. Nếu câu có tân ngữ, hãy đặt 得 sau động từ như mẫu đã học.",
+    "mistakes": [
+     {
+      "wrong": "他汉语得说很流利。",
+      "right": "他汉语说得很流利。",
+      "why": "得 phải theo sau động từ 说, rồi mới đến phần miêu tả 很流利."
+     },
+     {
+      "wrong": "这道菜做很好吃。",
+      "right": "这道菜做得很好吃。",
+      "why": "Cần có 得 giữa động từ 做 và phần miêu tả kết quả 很好吃."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào dùng 得 để miêu tả cách giảng bài?",
+    "options": [
+     "老师讲得很清楚，大家都听懂了。",
+     "老师今天讲了一个故事。",
+     "今天的老师很高兴。",
+     "大家听了老师的话。"
+    ],
+    "answer": 0,
+    "explain": "得 nối động từ 讲 với phần miêu tả 很清楚."
+   },
+   {
+    "q": "Chọn câu có 得 đặt đúng sau động từ khi nói về khả năng nói tiếng Trung.",
+    "options": [
+     "他得说汉语很流利。",
+     "他汉语说得很流利。",
+     "他说汉语很流利地。",
+     "他汉语得说很流利。"
+    ],
+    "answer": 1,
+    "explain": "Trong câu này 得 đứng ngay sau động từ 说 và trước phần miêu tả."
+   },
+   {
+    "q": "Câu nào nói em gái vui đến mức nhảy cẫng lên?",
+    "options": [
+     "妹妹今天很高兴。",
+     "妹妹高兴地跳了起来。",
+     "妹妹高兴得跳了起来。",
+     "妹妹今天跳了起来。"
+    ],
+    "answer": 2,
+    "explain": "高兴得跳了起来 dùng 得 để nối mức độ vui với trạng thái tiếp theo."
+   },
+   {
+    "q": "Chọn câu lặp động từ sau tân ngữ rồi mới dùng 得.",
+    "options": [
+     "姐姐今天唱了一首歌。",
+     "姐姐唱歌很好听。",
+     "姐姐唱完歌就回家。",
+     "姐姐唱歌唱得很好听。"
+    ],
+    "answer": 3,
+    "explain": "Câu cuối có tân ngữ 唱歌, lặp động từ 唱 rồi mới đặt 得."
+   },
+   {
+    "q": "Câu nào miêu tả món ăn được nấu ngon?",
+    "options": [
+     "这道菜做得很好吃。",
+     "这道菜很大。",
+     "我今天做了一道菜。",
+     "我喜欢吃这道菜。"
+    ],
+    "answer": 0,
+    "explain": "得 nối 做 với phần miêu tả món ăn 很好吃."
+   }
+  ]
+ }
+]

@@ -29,8 +29,8 @@ export function QuestTaskBoard() {
 
   return (
     <View style={{ marginBottom: 20, overflow: 'hidden', borderRadius: 22, backgroundColor: '#FFFBFC', borderWidth: 1, borderColor: P.border, ...(typeof document !== 'undefined' ? { boxShadow: '0 10px 26px rgba(180,86,117,0.1)' } : null) }}>
-      <View style={{ height: 30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 13, backgroundColor: '#F7C6D5' }}>
-        <Text className="font-heavy" style={{ color: '#754854', fontSize: 10, letterSpacing: 1.2 }}>BAND 9  ·  QUEST ARCADE</Text>
+      <View style={{ height: 34, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 13, backgroundColor: '#F7C6D5' }}>
+        <Text className="font-heavy" style={{ color: '#754854', fontSize: 12, letterSpacing: 1.2 }}>BAND 9  ·  QUEST ARCADE</Text>
         <View style={{ flexDirection: 'row', gap: 5 }}>
           {['#FFF0B5', '#FFE0E9', '#E985A2'].map((c) => <View key={c} style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: c, borderWidth: 1, borderColor: '#C87992' }} />)}
         </View>
@@ -42,8 +42,8 @@ export function QuestTaskBoard() {
             <Image source={require('../../../../assets/illustrations/cute-home/mascot-peace.png')} resizeMode="contain" style={{ width: 54, height: 54 }} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text className="font-heavy" style={{ fontSize: 17, color: P.ink }}>{L('Nhiệm vụ của bạn', 'Your mission board')}</Text>
-            <Text className="font-mid" style={{ marginTop: 2, fontSize: 12, color: P.muted }}>{L('Mỗi lượt học thêm XP, tiến gần cấp tiếp theo.', 'Earn XP with every study session.')}</Text>
+            <Text className="font-heavy" style={{ fontSize: 18, color: P.ink }}>{L('Nhiệm vụ của bạn', 'Your mission board')}</Text>
+            <Text className="font-mid" style={{ marginTop: 2, fontSize: 13, color: P.muted }}>{L('Mỗi lượt học thêm XP, tiến gần cấp tiếp theo.', 'Earn XP with every study session.')}</Text>
             <View style={{ marginTop: 8, height: 8, overflow: 'hidden', borderRadius: 6, backgroundColor: '#F5DCE4' }}>
               <View style={{ width: `${Math.round(level.need > 0 ? (level.into / level.need) * 100 : 0)}%`, height: 8, borderRadius: 6, backgroundColor: '#E985A2' }} />
             </View>
@@ -59,11 +59,11 @@ export function QuestTaskBoard() {
 
         <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}>
           {actions.map((a) => (
-            <Pressable key={a.href} accessibilityRole="link" accessibilityLabel={`${a.label}: ${a.detail}`} onPress={() => router.push(a.href as never)} style={{ minWidth: 125, flexGrow: 1, flexBasis: 125, minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 11, paddingVertical: 7, backgroundColor: a.tone, borderWidth: 1, borderColor: '#C85F80', boxShadow: '0 3px 0 rgba(163,64,97,0.18), inset 0 1px 0 rgba(255,255,255,0.4)' } as object}>
+            <Pressable key={a.href} accessibilityRole="link" accessibilityLabel={`${a.label}: ${a.detail}`} onPress={() => router.push(a.href as never)} style={{ minWidth: 125, flexGrow: 1, flexBasis: 125, minHeight: 54, flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 11, paddingVertical: 7, backgroundColor: a.tone, borderWidth: 1, borderColor: '#C85F80', boxShadow: '0 3px 0 rgba(163,64,97,0.18), inset 0 1px 0 rgba(255,255,255,0.4)' } as object}>
               <Text style={{ width: 24, textAlign: 'center', color: '#2A1808', fontSize: 19, fontWeight: '900' }}>{a.glyph}</Text>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text className="font-heavy" numberOfLines={1} style={{ color: '#2A1808', fontSize: 12 }}>{a.label}</Text>
-                <Text className="font-semi" numberOfLines={1} style={{ color: '#FFF7FA', fontSize: 9 }}>{a.detail}</Text>
+                <Text className="font-heavy" numberOfLines={1} style={{ color: '#2A1808', fontSize: 14 }}>{a.label}</Text>
+                <Text className="font-semi" numberOfLines={1} style={{ color: '#4A1F31', fontSize: 12 }}>{a.detail}</Text>
               </View>
               <Icon name="arrow-right" size={13} color="#FFF" strokeWidth={2.7} />
             </Pressable>
@@ -76,12 +76,12 @@ export function QuestTaskBoard() {
 
 function Stat({ glyph, title, value }: { glyph: string; title: string; value: string }) {
   return (
-    <View style={{ flexGrow: 1, flexBasis: 105, minWidth: 90, borderRadius: 12, paddingHorizontal: 9, paddingVertical: 7, backgroundColor: P.blush, borderWidth: 1, borderColor: '#F6DDE5' }}>
+    <View style={{ flexGrow: 1, flexBasis: 130, minWidth: 110, borderRadius: 12, paddingHorizontal: 9, paddingVertical: 7, backgroundColor: P.blush, borderWidth: 1, borderColor: '#F6DDE5' }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-        <Text style={{ color: P.pink, fontSize: 11, fontWeight: '900' }}>{glyph}</Text>
-        <Text className="font-strong" numberOfLines={1} style={{ color: P.muted, fontSize: 8, letterSpacing: 0.5 }}>{title}</Text>
+        <Text style={{ color: P.pink, fontSize: 13, fontWeight: '900' }}>{glyph}</Text>
+        <Text className="font-strong" numberOfLines={1} style={{ color: P.muted, fontSize: 11, letterSpacing: 0.4 }}>{title}</Text>
       </View>
-      <Text className="font-heavy" numberOfLines={1} style={{ marginTop: 2, color: P.ink, fontSize: 13 }}>{value}</Text>
+      <Text className="font-heavy" numberOfLines={1} style={{ marginTop: 2, color: P.ink, fontSize: 16 }}>{value}</Text>
     </View>
   );
 }

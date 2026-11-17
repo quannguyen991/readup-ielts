@@ -1,0 +1,701 @@
+[
+ {
+  "id": "zh-g-h5-14",
+  "level": 5,
+  "order": 14,
+  "title": "下来、下去、起来的引申义",
+  "titleZh": "趋向补语引申用法",
+  "summary": "Bạn sẽ nhận biết và dùng 下来、下去、起来 để diễn tả sự thay đổi trạng thái, sự tiếp tục hoặc sự bắt đầu.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Động từ chỉ thêm ý nghĩa",
+    "body": "下来、下去、起来 ngoài nghĩa chỉ hướng di chuyển còn có thể diễn tả kết quả hoặc diễn biến của hành động.",
+    "examples": [
+     {
+      "zh": "我把老师说的话都记下来了。",
+      "py": "wǒ bǎ lǎo shī shuō de huà dōu jì xià lái le",
+      "vi": "Tôi đã ghi lại tất cả những điều thầy cô nói.",
+      "mark": "记下来了"
+     },
+     {
+      "zh": "听到这个笑话，大家都笑起来了。",
+      "py": "tīng dào zhè ge xiào huà dà jiā dōu xiào qǐ lái le",
+      "vi": "Nghe câu chuyện cười này, mọi người đều bật cười.",
+      "mark": "笑起来了"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nhìn vào diễn biến",
+    "body": "Dùng 下来 khi hành động tạo ra kết quả ổn định hoặc được giữ lại. Dùng 下去 để nói hành động tiếp diễn, còn 起来 thường nói một trạng thái bắt đầu xuất hiện.",
+    "examples": [
+     {
+      "zh": "开会时，我先把大家的意见记下来。",
+      "py": "kāi huì shí wǒ xiān bǎ dà jiā de yì jiàn jì xià lái",
+      "vi": "Khi họp, tôi ghi lại ý kiến của mọi người trước.",
+      "mark": "记下来"
+     },
+     {
+      "zh": "老师讲得很好，大家都想听下去。",
+      "py": "lǎo shī jiǎng de hěn hǎo dà jiā dōu xiǎng tīng xià qù",
+      "vi": "Thầy cô giảng rất hay, mọi người đều muốn nghe tiếp.",
+      "mark": "听下去"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt sau động từ",
+    "body": "Thường đặt 来 hoặc 去 sau 下、起 để bổ sung ý nghĩa cho động từ. Tân ngữ có thể đứng sau cả cụm hoặc ở vị trí phù hợp với động từ.",
+    "formula": "Động từ + 下来 / 下去 / 起来",
+    "examples": [
+     {
+      "zh": "他说完这句话，大家都安静下来了。",
+      "py": "tā shuō wán zhè jù huà dà jiā dōu ān jìng xià lái le",
+      "vi": "Anh ấy nói xong câu đó, mọi người đều yên lặng lại.",
+      "mark": "安静下来了"
+     },
+     {
+      "zh": "看见朋友来了，她马上站起来了。",
+      "py": "kàn jiàn péng you lái le tā mǎ shàng zhàn qǐ lái le",
+      "vi": "Thấy bạn đến, cô ấy lập tức đứng dậy.",
+      "mark": "站起来了"
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "下来: ghi lại hoặc ổn định",
+    "body": "下来 có thể nhấn mạnh việc ghi, giữ lại thông tin hoặc một trạng thái dần ổn định. Hãy xét ý nghĩa của cả câu để chọn cách hiểu.",
+    "examples": [
+     {
+      "zh": "孩子们玩了一会儿，终于安静下来了。",
+      "py": "hái zi men wán le yí huìr zhōng yú ān jìng xià lái le",
+      "vi": "Bọn trẻ chơi một lúc rồi cuối cùng cũng yên lặng lại.",
+      "mark": "安静下来了"
+     },
+     {
+      "zh": "我每天学汉字，都把新词写下来。",
+      "py": "wǒ měi tiān xué hàn zì dōu bǎ xīn cí xiě xià lái",
+      "vi": "Mỗi ngày học chữ Hán, tôi đều ghi lại từ mới.",
+      "mark": "写下来"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Phân biệt ý nghĩa",
+    "body": "Không chọn bổ ngữ chỉ theo hình dạng chữ. Muốn nói nhớ ra một điều đã biết, dùng 想起来; muốn nói tiếp tục nghe hoặc làm, dùng 下去.",
+    "examples": [
+     {
+      "zh": "我把姐姐的话认真地记下来了。",
+      "py": "wǒ bǎ jiě jie de huà rèn zhēn de jì xià lái le",
+      "vi": "Tôi nghiêm túc ghi lại lời chị gái.",
+      "mark": "记下来了"
+     },
+     {
+      "zh": "他想起来以前住过的地方了。",
+      "py": "tā xiǎng qǐ lái yǐ qián zhù guo de dì fang le",
+      "vi": "Anh ấy nhớ ra nơi mình từng sống trước đây.",
+      "mark": "想起来"
+     }
+    ],
+    "mistakes": [
+     {
+      "wrong": "他听到熟悉的声音，就想下来了。",
+      "right": "他听到熟悉的声音，就想起来了。",
+      "why": "想起来 diễn tả nhớ ra; 想下来 không mang nghĩa này."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Muốn nói “ghi lại lời thầy cô”, chọn câu nào?",
+    "options": [
+     "我把老师的话记下来了。",
+     "我把老师的话记下去了。",
+     "我把老师的话记起来了。",
+     "我把老师的话记上来了。"
+    ],
+    "answer": 0,
+    "explain": "记下来 có thể diễn tả việc ghi lại và lưu giữ thông tin."
+   },
+   {
+    "q": "Chọn câu diễn tả mọi người bắt đầu bật cười.",
+    "options": [
+     "大家都笑下来了。",
+     "大家都笑起来了。",
+     "大家都笑下去了。",
+     "大家都笑上来了。"
+    ],
+    "answer": 1,
+    "explain": "笑起来 diễn tả trạng thái bật cười bắt đầu xuất hiện."
+   },
+   {
+    "q": "Điền vào chỗ trống: 大家都想听___。",
+    "options": [
+     "起来",
+     "下来",
+     "下去",
+     "出来"
+    ],
+    "answer": 2,
+    "explain": "听下去 nghĩa là tiếp tục nghe."
+   },
+   {
+    "q": "Chọn câu dùng 下来 để diễn tả mọi người dần yên lặng lại.",
+    "options": [
+     "大家慢慢安静下去。",
+     "大家慢慢安静起来。",
+     "大家慢慢安静出来。",
+     "大家慢慢安静下来。"
+    ],
+    "answer": 3,
+    "explain": "安静下来 diễn tả trạng thái dần ổn định, yên lặng."
+   },
+   {
+    "q": "Điền vào chỗ trống: 听到这个名字，我马上想___了。",
+    "options": [
+     "起来",
+     "下去",
+     "下来",
+     "出来"
+    ],
+    "answer": 0,
+    "explain": "想起来 có nghĩa là nhớ ra."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h5-15",
+  "level": 5,
+  "order": 15,
+  "title": "Nhiều trạng ngữ trong một câu",
+  "titleZh": "多项状语",
+  "summary": "Bạn sẽ sắp xếp thời gian, địa điểm và cách thức để câu tiếng Trung rõ ràng, tự nhiên.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Bổ sung thông tin cho hành động",
+    "body": "Một câu có thể có nhiều trạng ngữ để nói rõ hành động xảy ra khi nào, ở đâu hoặc theo cách nào.",
+    "examples": [
+     {
+      "zh": "我昨天在图书馆认真地看书。",
+      "py": "wǒ zuó tiān zài tú shū guǎn rèn zhēn de kàn shū",
+      "vi": "Hôm qua tôi chăm chú đọc sách ở thư viện.",
+      "mark": "昨天在图书馆认真地"
+     },
+     {
+      "zh": "她今天在家慢慢地做晚饭。",
+      "py": "tā jīn tiān zài jiā màn màn de zuò wǎn fàn",
+      "vi": "Hôm nay cô ấy thong thả nấu bữa tối ở nhà.",
+      "mark": "今天在家慢慢地"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi cần nói rõ hoàn cảnh",
+    "body": "Dùng nhiều trạng ngữ khi muốn bổ sung nhiều thông tin cùng lúc mà vẫn giữ hành động chính ở cuối cụm. Thứ tự thường gặp là thời gian, địa điểm, cách thức rồi đến động từ.",
+    "examples": [
+     {
+      "zh": "爸爸每天早上在公园跑步。",
+      "py": "bà ba měi tiān zǎo shang zài gōng yuán pǎo bù",
+      "vi": "Sáng nào bố cũng chạy bộ ở công viên.",
+      "mark": "每天早上在公园"
+     },
+     {
+      "zh": "弟弟在教室里认真地写汉字。",
+      "py": "dì di zài jiào shì lǐ rèn zhēn de xiě hàn zì",
+      "vi": "Em trai chăm chú viết chữ Hán trong lớp học.",
+      "mark": "在教室里认真地"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Xếp trạng ngữ trước động từ",
+    "body": "Thời gian thường đứng trước địa điểm; trạng ngữ chỉ cách thức thường đứng ngay trước động từ. Trật tự có thể thay đổi đôi chút theo điều người nói muốn nhấn mạnh.",
+    "formula": "Chủ ngữ + thời gian + địa điểm + cách thức + động từ + tân ngữ",
+    "examples": [
+     {
+      "zh": "我昨天在图书馆看了两本书。",
+      "py": "wǒ zuó tiān zài tú shū guǎn kàn le liǎng běn shū",
+      "vi": "Hôm qua tôi đọc hai quyển sách ở thư viện.",
+      "mark": "昨天在图书馆"
+     },
+     {
+      "zh": "我们昨天也在学校一起吃午饭。",
+      "py": "wǒ men zuó tiān yě zài xué xiào yì qǐ chī wǔ fàn",
+      "vi": "Hôm qua chúng tôi cũng ăn trưa cùng nhau ở trường.",
+      "mark": "昨天也在学校一起"
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Thời gian và địa điểm",
+    "body": "Trạng ngữ thời gian thường đứng sau chủ ngữ, còn cụm chỉ địa điểm thường đứng trước động từ. Cách xếp này giúp người nghe nắm được bối cảnh trước khi nghe hành động.",
+    "examples": [
+     {
+      "zh": "我每天在家学习汉语。",
+      "py": "wǒ měi tiān zài jiā xué xí hàn yǔ",
+      "vi": "Ngày nào tôi cũng học tiếng Trung ở nhà.",
+      "mark": "每天在家"
+     },
+     {
+      "zh": "妈妈晚上在厨房做饭。",
+      "py": "mā ma wǎn shang zài chú fáng zuò fàn",
+      "vi": "Buổi tối mẹ nấu cơm trong bếp.",
+      "mark": "晚上在厨房"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt trạng ngữ gần hành động",
+    "body": "Không đặt cụm chỉ thời gian hay cách thức ở vị trí lộn xộn sau động từ. Hãy để trạng ngữ chỉ cách thức ngay trước hành động mà nó bổ nghĩa.",
+    "examples": [
+     {
+      "zh": "她今天在家认真地看书。",
+      "py": "tā jīn tiān zài jiā rèn zhēn de kàn shū",
+      "vi": "Hôm nay cô ấy chăm chú đọc sách ở nhà.",
+      "mark": "认真地看书"
+     },
+     {
+      "zh": "我每天在学校学习汉语。",
+      "py": "wǒ měi tiān zài xué xiào xué xí hàn yǔ",
+      "vi": "Ngày nào tôi cũng học tiếng Trung ở trường.",
+      "mark": "每天在学校"
+     }
+    ],
+    "mistakes": [
+     {
+      "wrong": "我学习汉语在学校每天。",
+      "right": "我每天在学校学习汉语。",
+      "why": "Trong cách nói thông thường, thời gian và địa điểm đứng trước động từ, không dồn ra sau cả cụm."
+     },
+     {
+      "wrong": "她在家看书认真地。",
+      "right": "她在家认真地看书。",
+      "why": "认真地 bổ nghĩa cho 看书 nên thường đặt ngay trước động từ."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu có thứ tự trạng ngữ tự nhiên nhất.",
+    "options": [
+     "我每天学习在家汉语。",
+     "我每天在家学习汉语。",
+     "我学习每天在家汉语。",
+     "我学习汉语每天在家。"
+    ],
+    "answer": 1,
+    "explain": "Thời gian và địa điểm thường đứng trước động từ 学习."
+   },
+   {
+    "q": "Điền trạng ngữ cách thức vào chỗ thích hợp: 弟弟在教室里___写汉字。",
+    "options": [
+     "认真地",
+     "写认真地",
+     "汉字认真地",
+     "认真汉字地"
+    ],
+    "answer": 0,
+    "explain": "认真地 đứng trước động từ 写 để bổ nghĩa cho cách viết."
+   },
+   {
+    "q": "Chọn câu nói “Hôm qua mẹ nấu cơm ở nhà”.",
+    "options": [
+     "妈妈做饭在家昨天。",
+     "妈妈在家昨天做饭。",
+     "妈妈昨天在家做饭。",
+     "昨天做饭妈妈在家。"
+    ],
+    "answer": 2,
+    "explain": "昨天 nêu thời gian trước, 在家 nêu địa điểm trước động từ 做饭."
+   },
+   {
+    "q": "Câu nào đặt trạng ngữ chỉ cách thức đúng vị trí?",
+    "options": [
+     "他跑步认真地在公园。",
+     "他在认真地公园跑步。",
+     "他在认真地跑步公园。",
+     "他在公园认真地跑步。"
+    ],
+    "answer": 3,
+    "explain": "Câu tự nhiên đặt địa điểm trước cụm cách thức và động từ."
+   },
+   {
+    "q": "Chọn câu có thời gian, địa điểm và hành động theo trật tự thường gặp.",
+    "options": [
+     "我们晚上在学校吃饭。",
+     "我们在学校吃饭晚上。",
+     "我们吃饭晚上在学校。",
+     "我们在晚上吃饭学校。"
+    ],
+    "answer": 0,
+    "explain": "晚上 và 在学校 đều đứng trước động từ 吃饭."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h6-01",
+  "level": 6,
+  "order": 1,
+  "title": "Hoặc… hoặc…",
+  "titleZh": "要么……要么……",
+  "summary": "Bạn sẽ dùng 要么……要么…… để nêu hai lựa chọn hoặc hai khả năng thay thế nhau.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu hai lựa chọn",
+    "body": "要么……要么…… nối hai phương án để cho biết người hoặc sự việc sẽ chọn một trong hai.",
+    "examples": [
+     {
+      "zh": "我今晚要么看电影，要么在家休息。",
+      "py": "wǒ jīn wǎn yào me kàn diàn yǐng yào me zài jiā xiū xi",
+      "vi": "Tối nay tôi hoặc đi xem phim, hoặc nghỉ ở nhà.",
+      "mark": "要么看电影，要么"
+     },
+     {
+      "zh": "我们周末要么在家做饭，要么去饭馆吃。",
+      "py": "wǒ men zhōu mò yào me zài jiā zuò fàn yào me qù fàn guǎn chī",
+      "vi": "Cuối tuần chúng tôi hoặc nấu ăn ở nhà, hoặc đến quán ăn.",
+      "mark": "要么在家做饭，要么"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi có phương án thay thế",
+    "body": "Dùng mẫu này khi đưa ra lựa chọn, kế hoạch hoặc khả năng thay thế nhau. Hai vế thường cùng nói về một người hoặc cùng một tình huống.",
+    "examples": [
+     {
+      "zh": "你要么打电话，要么给老师发短信。",
+      "py": "nǐ yào me dǎ diàn huà yào me gěi lǎo shī fā duǎn xìn",
+      "vi": "Bạn hoặc gọi điện, hoặc nhắn tin cho thầy cô.",
+      "mark": "要么打电话，要么"
+     },
+     {
+      "zh": "姐姐早上要么喝茶，要么喝咖啡。",
+      "py": "jiě jie zǎo shang yào me hē chá yào me hē kā fēi",
+      "vi": "Buổi sáng chị gái hoặc uống trà, hoặc uống cà phê.",
+      "mark": "要么喝茶，要么"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt trước mỗi phương án",
+    "body": "Đặt 要么 trước vế thứ nhất và lặp lại trước vế thứ hai. Hai vế thường giữ cách diễn đạt song song để lựa chọn dễ hiểu.",
+    "formula": "Chủ ngữ + 要么 + phương án một，要么 + phương án hai",
+    "examples": [
+     {
+      "zh": "周末我们要么去公园，要么在家看书。",
+      "py": "zhōu mò wǒ men yào me qù gōng yuán yào me zài jiā kàn shū",
+      "vi": "Cuối tuần chúng tôi hoặc đi công viên, hoặc đọc sách ở nhà.",
+      "mark": "要么去公园，要么"
+     },
+     {
+      "zh": "他每天要么坐车上班，要么骑车上班。",
+      "py": "tā měi tiān yào me zuò chē shàng bān yào me qí chē shàng bān",
+      "vi": "Ngày nào anh ấy cũng hoặc đi làm bằng xe, hoặc đạp xe đi làm.",
+      "mark": "要么坐车上班，要么"
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Giữ hai vế song song",
+    "body": "Hai lựa chọn nên cùng loại, chẳng hạn đều là hoạt động hoặc đều là cách đi lại. Như vậy, người nghe dễ so sánh hai phương án.",
+    "examples": [
+     {
+      "zh": "妹妹要么自己做饭，要么和朋友吃饭。",
+      "py": "mèi mei yào me zì jǐ zuò fàn yào me hé péng you chī fàn",
+      "vi": "Em gái hoặc tự nấu ăn, hoặc ăn cùng bạn bè.",
+      "mark": "要么自己做饭，要么"
+     },
+     {
+      "zh": "爸爸要么开车送我去学校，要么骑车送我去学校。",
+      "py": "bà ba yào me kāi chē sòng wǒ qù xué xiào yào me qí chē sòng wǒ qù xué xiào",
+      "vi": "Bố hoặc lái xe đưa tôi đến trường, hoặc đạp xe đưa tôi đến trường.",
+      "mark": "要么开车送我去学校，要么"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Lặp lại 要么",
+    "body": "Trong mẫu này, thường dùng 要么 ở cả hai vế. Tránh ghép 要么 với 或者 hoặc 还是 trong cùng cấu trúc.",
+    "examples": [
+     {
+      "zh": "下雨时，我们要么在家学习，要么看电视。",
+      "py": "xià yǔ shí wǒ men yào me zài jiā xué xí yào me kàn diàn shì",
+      "vi": "Khi trời mưa, chúng tôi hoặc học ở nhà, hoặc xem tivi.",
+      "mark": "要么在家学习，要么"
+     },
+     {
+      "zh": "弟弟要么今天来，要么明天来。",
+      "py": "dì di yào me jīn tiān lái yào me míng tiān lái",
+      "vi": "Em trai hoặc đến hôm nay, hoặc đến ngày mai.",
+      "mark": "要么今天来，要么"
+     }
+    ],
+    "mistakes": [
+     {
+      "wrong": "我们要么坐车，或者走路去。",
+      "right": "我们要么坐车，要么走路去。",
+      "why": "要么 cần được lặp lại ở vế thứ hai; không nối vế đó bằng 或者."
+     },
+     {
+      "wrong": "要么你去，还是我去？",
+      "right": "要么你去，要么我去。",
+      "why": "Trong mẫu này, dùng 要么 ở cả hai lựa chọn thay vì dùng 还是."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu hoàn chỉnh với mẫu “hoặc uống trà, hoặc uống nước”.",
+    "options": [
+     "要么喝茶，还是喝水。",
+     "或者喝茶，要么喝水。",
+     "要么喝茶，要么喝水。",
+     "要么喝茶，和喝水。"
+    ],
+    "answer": 2,
+    "explain": "Mẫu này lặp lại 要么 trước mỗi phương án."
+   },
+   {
+    "q": "Điền vào chỗ trống: 我们要么坐车，___走路去。",
+    "options": [
+     "要么",
+     "还是",
+     "虽然",
+     "但是"
+    ],
+    "answer": 0,
+    "explain": "Vế thứ hai cũng cần bắt đầu bằng 要么."
+   },
+   {
+    "q": "Câu nào diễn tả hai cách đi làm để lựa chọn?",
+    "options": [
+     "他每天要么坐车上班，要么骑车上班。",
+     "他每天要么坐车上班，还是骑车上班。",
+     "他每天坐车要么上班骑车。",
+     "他每天或者坐车，要么上班骑车。"
+    ],
+    "answer": 0,
+    "explain": "Hai vế cùng nêu cách đi làm và đều có 要么."
+   },
+   {
+    "q": "Chọn câu nói “Cuối tuần tôi hoặc đọc sách, hoặc xem phim”.",
+    "options": [
+     "我周末读书，还是看电影。",
+     "我周末要么读书，和看电影。",
+     "我周末或者读书，要么看电影。",
+     "我周末要么读书，要么看电影。"
+    ],
+    "answer": 3,
+    "explain": "Hai phương án được nối bằng cặp 要么……要么……."
+   },
+   {
+    "q": "Câu nào dùng 要么……要么…… đúng?",
+    "options": [
+     "妹妹要么在家休息，要么去公园玩。",
+     "妹妹要么在家休息，或者去公园玩。",
+     "妹妹在家要么休息去公园玩。",
+     "妹妹要么在家休息，还是去公园玩。"
+    ],
+    "answer": 0,
+    "explain": "要么 đứng trước cả phương án ở nhà và phương án đi công viên."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h6-02",
+  "level": 6,
+  "order": 2,
+  "title": "Tuy… nhưng…",
+  "titleZh": "虽……但……",
+  "summary": "Bạn sẽ dùng 虽（然）……但、可 hoặc 却…… để diễn tả hai ý tương phản.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu ý tương phản",
+    "body": "虽（然）……但、可 hoặc 却…… diễn tả rằng kết quả hay sự thật ở vế sau trái với điều người nghe có thể dự đoán từ vế trước.",
+    "examples": [
+     {
+      "zh": "她虽然年纪不大，但已经会照顾弟弟了。",
+      "py": "tā suī rán nián jì bú dà dàn yǐ jīng huì zhào gù dì di le",
+      "vi": "Tuy cô ấy còn trẻ nhưng đã biết chăm sóc em trai.",
+      "mark": "虽然年纪不大，但"
+     },
+     {
+      "zh": "外面虽然下着雨，可大家还是去上课了。",
+      "py": "wài miàn suī rán xià zhe yǔ kě dà jiā hái shì qù shàng kè le",
+      "vi": "Tuy bên ngoài đang mưa nhưng mọi người vẫn đi học.",
+      "mark": "虽然下着雨，可"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi kết quả trái dự đoán",
+    "body": "Dùng cấu trúc này để thừa nhận một hoàn cảnh, rồi nêu kết quả tương phản. Vế sau thường chứa thông tin chính mà người nói muốn nhấn mạnh.",
+    "examples": [
+     {
+      "zh": "虽然路不远，但是我们还是坐车去了。",
+      "py": "suī rán lù bù yuǎn dàn shì wǒ men hái shì zuò chē qù le",
+      "vi": "Tuy đường không xa nhưng chúng tôi vẫn đi xe đến đó.",
+      "mark": "虽然路不远，但是"
+     },
+     {
+      "zh": "他虽然没说话，却一直认真地听。",
+      "py": "tā suī rán méi shuō huà què yì zhí rèn zhēn de tīng",
+      "vi": "Tuy anh ấy không nói gì nhưng vẫn chăm chú lắng nghe.",
+      "mark": "虽然没说话，却"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Nối hai vế tương phản",
+    "body": "Có thể dùng 虽 hoặc 虽然 ở vế đầu, rồi đặt 但、但是、可 hoặc 却 ở vế sau. Không nhất thiết phải thêm 然 sau 虽 trong mọi cách nói.",
+    "formula": "虽（然）+ vế một， 但 / 可 / 却 + vế hai",
+    "examples": [
+     {
+      "zh": "虽然他很忙，但每天都给妈妈打电话。",
+      "py": "suī rán tā hěn máng dàn měi tiān dōu gěi mā ma dǎ diàn huà",
+      "vi": "Tuy anh ấy rất bận nhưng ngày nào cũng gọi điện cho mẹ.",
+      "mark": "虽然他很忙，但"
+     },
+     {
+      "zh": "虽然这本书很小，却有很多新词。",
+      "py": "suī rán zhè běn shū hěn xiǎo què yǒu hěn duō xīn cí",
+      "vi": "Tuy quyển sách này nhỏ nhưng có nhiều từ mới.",
+      "mark": "虽然这本书很小，却"
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Giữ quan hệ tương phản",
+    "body": "Hai vế cần có quan hệ tương phản rõ ràng: vế sau vẫn xảy ra hoặc khác với điều thường được dự đoán từ vế đầu.",
+    "examples": [
+     {
+      "zh": "虽然我今天很累，但我还要学习汉语。",
+      "py": "suī rán wǒ jīn tiān hěn lèi dàn wǒ hái yào xué xí hàn yǔ",
+      "vi": "Tuy hôm nay tôi rất mệt nhưng tôi vẫn phải học tiếng Trung.",
+      "mark": "虽然我今天很累，但"
+     },
+     {
+      "zh": "虽然她没吃早饭，可她还是去上课了。",
+      "py": "suī rán tā méi chī zǎo fàn kě tā hái shì qù shàng kè le",
+      "vi": "Tuy cô ấy chưa ăn sáng nhưng vẫn đi học.",
+      "mark": "虽然她没吃早饭，可"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Chọn từ nối phù hợp",
+    "body": "Đừng ghép các từ nối tương phản chồng lên nhau. Nếu muốn diễn tả nguyên nhân và kết quả, hãy dùng 因为……所以…… thay vì 虽然……所以…….",
+    "examples": [
+     {
+      "zh": "这件衣服虽然旧，却很干净。",
+      "py": "zhè jiàn yī fu suī rán jiù què hěn gān jìng",
+      "vi": "Tuy chiếc áo này cũ nhưng vẫn rất sạch.",
+      "mark": "虽然旧，却"
+     },
+     {
+      "zh": "虽然他很累，但他还在工作。",
+      "py": "suī rán tā hěn lèi dàn tā hái zài gōng zuò",
+      "vi": "Tuy anh ấy rất mệt nhưng vẫn đang làm việc.",
+      "mark": "虽然他很累，但"
+     }
+    ],
+    "mistakes": [
+     {
+      "wrong": "虽然今天很冷，但是可我还要出门。",
+      "right": "虽然今天很冷，但是我还要出门。",
+      "why": "但是 và 可 đều nối ý tương phản; dùng đồng thời ở cùng vị trí là thừa."
+     },
+     {
+      "wrong": "虽然他很累，所以他早点睡了。",
+      "right": "因为他很累，所以他早点睡了。",
+      "why": "所以 nêu kết quả, nên đi với nguyên nhân 因为 thay vì 虽然."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu hoàn chỉnh với nghĩa “Tuy mệt nhưng tôi vẫn học”.",
+    "options": [
+     "虽然我很累，所以我还学习。",
+     "虽然我很累，可我还在学习。",
+     "虽然我很累，或者我还在学习。",
+     "虽然我很累，因为我还在学习。"
+    ],
+    "answer": 1,
+    "explain": "可 nối ý tương phản với thông tin ở vế đầu."
+   },
+   {
+    "q": "Điền từ nối: 虽然路很远，___我们还是去了。",
+    "options": [
+     "所以",
+     "因为",
+     "但是",
+     "或者"
+    ],
+    "answer": 2,
+    "explain": "但是 nối hai vế có ý tương phản."
+   },
+   {
+    "q": "Chọn cách nối đúng: 虽然他不会做饭，___他每天在家吃饭。",
+    "options": [
+     "所以",
+     "因为",
+     "要么",
+     "但"
+    ],
+    "answer": 3,
+    "explain": "但 thể hiện sự tương phản giữa không biết nấu và vẫn ăn ở nhà."
+   },
+   {
+    "q": "Câu nào dùng 却 để nêu ý tương phản?",
+    "options": [
+     "虽然这家店不大，却有很多人。",
+     "虽然这家店不大，所以有很多人。",
+     "虽然这家店不大，或者有很多人。",
+     "虽然这家店不大，因为有很多人。"
+    ],
+    "answer": 0,
+    "explain": "却 nối thông tin trái với điều có thể dự đoán từ vế đầu."
+   },
+   {
+    "q": "Chọn câu dùng đúng cặp nguyên nhân và kết quả.",
+    "options": [
+     "虽然他很忙，所以没来。",
+     "虽然他很忙，因为没来。",
+     "因为他很忙，所以没来。",
+     "因为他很忙，但是没来。"
+    ],
+    "answer": 2,
+    "explain": "因为 nêu nguyên nhân, còn 所以 dẫn vào kết quả."
+   }
+  ]
+ }
+]

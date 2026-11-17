@@ -1,0 +1,631 @@
+[
+ {
+  "id": "zh-g-h1-09",
+  "level": 1,
+  "order": 1,
+  "title": "Câu hỏi có hoặc không",
+  "titleZh": "是非问句",
+  "summary": "Bạn sẽ hỏi và nhận biết câu hỏi có hoặc không bằng 吗, từ nghi vấn và dạng chính phản.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Hỏi người nghe xác nhận",
+    "body": "Câu hỏi có hoặc không thường dùng 吗 ở cuối câu kể. Dạng chính phản đặt dạng khẳng định và phủ định cạnh nhau.",
+    "formula": "Câu kể + 吗？ / A不A？",
+    "examples": [
+     {
+      "zh": "你今天在家吗？",
+      "py": "nǐ jīntiān zài jiā ma",
+      "vi": "Hôm nay bạn ở nhà không?"
+     },
+     {
+      "zh": "你今天去不去学校？",
+      "py": "nǐ jīntiān qù bu qù xuéxiào",
+      "vi": "Hôm nay bạn có đi học không?"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Hỏi thông tin chưa biết",
+    "body": "Khi muốn hỏi người, vật, nơi chốn hoặc cách thức, hãy dùng từ nghi vấn ở đúng vị trí của thông tin chưa biết. Câu hỏi dạng này thường không cần 吗.",
+    "examples": [
+     {
+      "zh": "你今天想喝什么？",
+      "py": "nǐ jīntiān xiǎng hē shénme",
+      "vi": "Hôm nay bạn muốn uống gì?"
+     },
+     {
+      "zh": "谁今天在学校？",
+      "py": "shéi jīntiān zài xuéxiào",
+      "vi": "Hôm nay ai ở trường?"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt hai dạng cạnh nhau",
+    "body": "Với động từ 是 và 有, có thể lặp động từ theo dạng khẳng định rồi phủ định. Đây là cách hỏi có hoặc không mà không cần 吗.",
+    "formula": "是 + 不是 / 有 + 没有",
+    "examples": [
+     {
+      "zh": "你是不是学校的老师？",
+      "py": "nǐ shì bú shì xuéxiào de lǎoshī",
+      "vi": "Bạn có phải là giáo viên của trường không?"
+     },
+     {
+      "zh": "你有没有中国朋友？",
+      "py": "nǐ yǒu méi yǒu Zhōngguó péngyou",
+      "vi": "Bạn có bạn người Trung Quốc không?"
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Đặt 吗 ở cuối câu",
+    "body": "Trong câu hỏi có hoặc không, 吗 đứng sau toàn bộ phần câu kể. Giữ nguyên trật tự câu kể rồi thêm 吗.",
+    "formula": "Chủ ngữ + vị ngữ + 吗？",
+    "examples": [
+     {
+      "zh": "你妈妈今天在家吗？",
+      "py": "nǐ māma jīntiān zài jiā ma",
+      "vi": "Hôm nay mẹ bạn ở nhà không?"
+     },
+     {
+      "zh": "你现在想喝水吗？",
+      "py": "nǐ xiànzài xiǎng hē shuǐ ma",
+      "vi": "Bây giờ bạn muốn uống nước không?"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không ghép 吗 với từ hỏi",
+    "body": "Từ nghi vấn đã tạo thành câu hỏi nên không thêm 吗 vào cuối. Dạng chính phản cũng thường không đi kèm 吗.",
+    "mistakes": [
+     {
+      "wrong": "你今天在家不吗？",
+      "right": "你今天在家吗？",
+      "why": "Không đặt 不 và 吗 cùng lúc theo mẫu này; dùng 吗 hoặc dạng chính phản."
+     },
+     {
+      "wrong": "你今天找谁吗？",
+      "right": "你今天找谁？",
+      "why": "谁 đã hỏi về người cần tìm nên không cần thêm 吗."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Muốn hỏi “Hôm nay bạn ở nhà không?”, chọn câu đúng.",
+    "options": [
+     "你今天在家吗？",
+     "你今天家在吗？",
+     "你今天是家在吗？",
+     "你吗今天在家？"
+    ],
+    "answer": 0,
+    "explain": "Giữ trật tự câu kể và đặt 吗 ở cuối."
+   },
+   {
+    "q": "Khi chưa biết hôm nay bạn tìm ai, hỏi thế nào?",
+    "options": [
+     "你今天是老师吗？",
+     "你今天找谁？",
+     "你今天在哪儿？",
+     "你去不去学校？"
+    ],
+    "answer": 1,
+    "explain": "谁 đứng ở vị trí của người cần tìm."
+   },
+   {
+    "q": "Chọn câu chính phản có nghĩa “Hôm nay bạn có đi học không?”.",
+    "options": [
+     "你今天去学校不吗？",
+     "你今天不去不学校？",
+     "你今天去不去学校？",
+     "你今天去学校吗不？"
+    ],
+    "answer": 2,
+    "explain": "Động từ 去 được lặp theo dạng 去不去."
+   },
+   {
+    "q": "Câu nào hỏi “Hôm nay bạn muốn uống gì?”",
+    "options": [
+     "什么你今天想喝？",
+     "你今天想喝什么吗？",
+     "你今天什么想喝？",
+     "你今天想喝什么？"
+    ],
+    "answer": 3,
+    "explain": "什么 thay cho món muốn uống và không đi kèm 吗."
+   },
+   {
+    "q": "Câu nào dùng 吗 để hỏi có hoặc không?",
+    "options": [
+     "他们是中国人吗？",
+     "他们什么中国人？",
+     "他们谁中国人？",
+     "他们在不中国人？"
+    ],
+    "answer": 0,
+    "explain": "Câu kể hoàn chỉnh thêm 吗 ở cuối để hỏi xác nhận."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-10",
+  "level": 1,
+  "order": 2,
+  "title": "Đại từ nghi vấn",
+  "titleZh": "疑问代词",
+  "summary": "Bạn sẽ chọn từ nghi vấn phù hợp để hỏi về người, vật, nơi chốn, số lượng và cách thức.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Từ hỏi thay cho thông tin chưa biết",
+    "body": "Đại từ nghi vấn thay cho phần thông tin người nói muốn biết. Từ hỏi thường đứng ngay ở vị trí của thông tin đó.",
+    "examples": [
+     {
+      "zh": "你今天想吃什么东西？",
+      "py": "nǐ jīntiān xiǎng chī shénme dōngxi",
+      "vi": "Hôm nay bạn muốn ăn món gì?"
+     },
+     {
+      "zh": "谁今天在家里看书？",
+      "py": "shéi jīntiān zài jiālǐ kàn shū",
+      "vi": "Hôm nay ai ở nhà đọc sách?"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Hỏi nơi chốn và lựa chọn",
+    "body": "Dùng 哪儿 hoặc 哪里 để hỏi nơi chốn, 哪本 để hỏi chọn một quyển và 哪些 để hỏi nhiều lựa chọn. Các từ này vẫn giữ vị trí tự nhiên trong câu.",
+    "examples": [
+     {
+      "zh": "你今天在哪里看书？明天去哪儿？",
+      "py": "nǐ jīntiān zài nǎlǐ kàn shū míngtiān qù nǎr",
+      "vi": "Hôm nay bạn đọc sách ở đâu? Ngày mai bạn đi đâu?"
+     },
+     {
+      "zh": "你今天想看哪些书？",
+      "py": "nǐ jīntiān xiǎng kàn nǎxiē shū",
+      "vi": "Hôm nay bạn muốn đọc những quyển sách nào?"
+     },
+     {
+      "zh": "你今天要哪本书？",
+      "py": "nǐ jīntiān yào nǎ běn shū",
+      "vi": "Hôm nay bạn muốn quyển sách nào?"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Hỏi độ tuổi và số lượng",
+    "body": "Dùng 多大 để hỏi tuổi hoặc kích thước, 多少 để hỏi số lượng nói chung và 几 khi thường dự đoán số lượng không lớn.",
+    "formula": "多大 + 了 / 多少 + danh từ / 几 + lượng từ + danh từ",
+    "examples": [
+     {
+      "zh": "你爸爸今年多大了？",
+      "py": "nǐ bàba jīnnián duō dà le",
+      "vi": "Năm nay bố bạn bao nhiêu tuổi?"
+     },
+     {
+      "zh": "你们家有多少人？",
+      "py": "nǐmen jiā yǒu duōshao rén",
+      "vi": "Nhà bạn có bao nhiêu người?"
+     },
+     {
+      "zh": "你们今天有几个人来？",
+      "py": "nǐmen jīntiān yǒu jǐ ge rén lái",
+      "vi": "Hôm nay có mấy người trong số các bạn đến?"
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Hỏi cách thức và đặc điểm",
+    "body": "怎么 thường hỏi cách làm hoặc cách đi. 怎么样 hỏi về tình trạng hay nhận xét; cần dựa vào ngữ cảnh để hiểu rõ điều được hỏi.",
+    "examples": [
+     {
+      "zh": "你今天怎么去学校？",
+      "py": "nǐ jīntiān zěnme qù xuéxiào",
+      "vi": "Hôm nay bạn đi đến trường bằng cách nào?"
+     },
+     {
+      "zh": "你们的老师怎么样？",
+      "py": "nǐmen de lǎoshī zěnmeyàng",
+      "vi": "Giáo viên của các bạn thế nào?"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt từ hỏi đúng vị trí",
+    "body": "Từ nghi vấn thường không đưa lên đầu câu một cách tùy ý. Hãy đặt nó vào vị trí của thành phần đang cần hỏi.",
+    "mistakes": [
+     {
+      "wrong": "你今天想什么喝？",
+      "right": "你今天想喝什么？",
+      "why": "什么 thay cho thứ muốn uống nên đứng sau động từ 喝."
+     },
+     {
+      "wrong": "你哪儿去学校？",
+      "right": "你怎么去学校？",
+      "why": "Câu hỏi muốn biết cách đi nên dùng 怎么; nếu muốn hỏi nơi đến, nói 你去哪儿？"
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào hỏi tuổi của bố?",
+    "options": [
+     "你爸爸在哪儿？",
+     "你爸爸今年多大了？",
+     "你爸爸是谁？",
+     "你爸爸怎么样？"
+    ],
+    "answer": 1,
+    "explain": "多大了 hỏi tuổi trong cách nói thông dụng."
+   },
+   {
+    "q": "Câu nào hỏi hôm nay đi đâu ăn?",
+    "options": [
+     "你们今天怎么吃饭？",
+     "你们今天吃什么？",
+     "你们今天去哪儿吃饭？",
+     "你们今天怎么样？"
+    ],
+    "answer": 2,
+    "explain": "去哪儿 hỏi về nơi chốn."
+   },
+   {
+    "q": "Chọn câu dùng 怎么 để hỏi cách đi đến trường.",
+    "options": [
+     "你今天去哪儿？",
+     "你今天去哪儿学校？",
+     "你今天学校怎么？",
+     "你今天怎么去学校？"
+    ],
+    "answer": 3,
+    "explain": "怎么 đứng trước cụm động từ để hỏi cách thức."
+   },
+   {
+    "q": "Câu nào hỏi số người trong gia đình?",
+    "options": [
+     "你们家有多少人？",
+     "你们家在哪儿？",
+     "你们家怎么样？",
+     "你们家有什么？"
+    ],
+    "answer": 0,
+    "explain": "多少人 hỏi số lượng người."
+   },
+   {
+    "q": "Câu nào hỏi hôm nay bạn muốn đọc những quyển sách nào?",
+    "options": [
+     "你今天看什么书？",
+     "你今天想看哪些书？",
+     "你今天看书吗？",
+     "你今天看谁？"
+    ],
+    "answer": 1,
+    "explain": "哪些 hỏi nhiều lựa chọn cụ thể."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-11",
+  "level": 1,
+  "order": 3,
+  "title": "Trợ từ ngữ khí",
+  "titleZh": "语气助词",
+  "summary": "Bạn sẽ dùng 吗, 吧, 了 và 呢 để hỏi, gợi ý hoặc thể hiện sắc thái của câu.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Thể hiện sắc thái ở cuối câu",
+    "body": "Các trợ từ ngữ khí thường đứng cuối câu để thể hiện câu hỏi, lời gợi ý hoặc thái độ của người nói. Cùng một câu kể có thể đổi sắc thái khi thêm trợ từ phù hợp.",
+    "examples": [
+     {
+      "zh": "你今天在学校吗？",
+      "py": "nǐ jīntiān zài xuéxiào ma",
+      "vi": "Hôm nay bạn ở trường không?"
+     },
+     {
+      "zh": "我今天在家，你今天呢？",
+      "py": "wǒ jīntiān zài jiā nǐ jīntiān ne",
+      "vi": "Hôm nay tôi ở nhà, còn bạn thì sao?"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Gợi ý và nói việc đang diễn ra",
+    "body": "吧 làm lời rủ rê hoặc gợi ý nghe nhẹ nhàng hơn. Đặt 呢 sau cụm động từ có thể báo việc đang diễn ra.",
+    "examples": [
+     {
+      "zh": "他在家里看书呢。",
+      "py": "tā zài jiālǐ kàn shū ne",
+      "vi": "Anh ấy đang đọc sách ở nhà."
+     },
+     {
+      "zh": "我们下午一起看书吧。",
+      "py": "wǒmen xiàwǔ yìqǐ kàn shū ba",
+      "vi": "Chiều nay chúng ta cùng đọc sách nhé."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt trợ từ sau phần câu chính",
+    "body": "吗, 吧 và 呢 thường đứng cuối mệnh đề mà chúng bổ nghĩa. Với hành động đang diễn ra, mẫu 在 + động từ + 呢 thường dùng trong lời nói.",
+    "formula": "Câu kể + 吗 / 吧 / 呢；Chủ ngữ + 在 + động từ + 呢",
+    "examples": [
+     {
+      "zh": "妈妈在看书呢。",
+      "py": "māma zài kàn shū ne",
+      "vi": "Mẹ đang đọc sách."
+     },
+     {
+      "zh": "我们今天一起去学校吧。",
+      "py": "wǒmen jīntiān yìqǐ qù xuéxiào ba",
+      "vi": "Hôm nay chúng ta cùng đến trường nhé."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "了 báo trạng thái đổi khác",
+    "body": "了 ở cuối câu có thể báo tình hình đã thay đổi. 呢 cũng có thể nhấn vào trạng thái hiện tại, hoặc dùng để hỏi lại người nghe.",
+    "examples": [
+     {
+      "zh": "他今天不在家了。",
+      "py": "tā jīntiān bú zài jiā le",
+      "vi": "Hôm nay anh ấy không còn ở nhà nữa."
+     },
+     {
+      "zh": "妈妈在学校呢。",
+      "py": "māma zài xuéxiào ne",
+      "vi": "Mẹ đang ở trường đấy."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Tránh chồng trợ từ cuối câu",
+    "body": "Mỗi trợ từ cuối câu mang một sắc thái riêng, vì vậy không ghép tùy ý hai trợ từ để tạo một câu hỏi.",
+    "mistakes": [
+     {
+      "wrong": "你是学生吧吗？",
+      "right": "你是学生吗？",
+      "why": "Chọn 吗 để hỏi có hoặc không; không nối thêm 吧 trước 吗."
+     },
+     {
+      "wrong": "弟弟在看书呢吗？",
+      "right": "弟弟在看书呢。",
+      "why": "Đây là câu kể dùng 呢 để nhấn vào hành động đang diễn ra, không thêm 吗."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào dùng 吧 để rủ cùng đọc sách?",
+    "options": [
+     "弟弟在家看书呢。",
+     "妈妈今天在家吗？",
+     "我们下午一起看书吧。",
+     "他今天不在家了。"
+    ],
+    "answer": 2,
+    "explain": "吧 làm lời rủ rê nghe nhẹ nhàng."
+   },
+   {
+    "q": "Câu nào dùng 呢 để hỏi lại “còn bạn thì sao”?",
+    "options": [
+     "我今天在家看书吧。",
+     "我今天在家看书吗？",
+     "我今天在家看书了。",
+     "我今天在家，你今天呢？"
+    ],
+    "answer": 3,
+    "explain": "你今天呢 hỏi tiếp về tình hình của người nghe."
+   },
+   {
+    "q": "Câu nào diễn tả hành động đang diễn ra?",
+    "options": [
+     "他在家里看书呢。",
+     "他在家里看书吗？",
+     "他在家里看书吧。",
+     "他在家里看书了。"
+    ],
+    "answer": 0,
+    "explain": "在家里看书呢 diễn tả việc đang đọc sách."
+   },
+   {
+    "q": "Câu nào dùng 了 để báo tình hình đã đổi khác?",
+    "options": [
+     "他今天不在家吗？",
+     "他今天不在家了。",
+     "他今天不在家呢？",
+     "他今天不在家吧？"
+    ],
+    "answer": 1,
+    "explain": "了 ở cuối câu báo trạng thái không ở nhà đã thay đổi."
+   },
+   {
+    "q": "Câu nào hỏi có hoặc không bằng 吗?",
+    "options": [
+     "妈妈在学校呢。",
+     "妈妈在学校吧。",
+     "妈妈今天在家吗？",
+     "妈妈在学校了。"
+    ],
+    "answer": 2,
+    "explain": "吗 đặt cuối câu để tạo câu hỏi có hoặc không."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-12",
+  "level": 1,
+  "order": 4,
+  "title": "Trợ từ kết cấu 的",
+  "titleZh": "的字结构",
+  "summary": "Bạn sẽ dùng 的 để nối thành phần bổ nghĩa với danh từ và lược danh từ khi ngữ cảnh đã rõ.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nối phần bổ nghĩa với danh từ",
+    "body": "的 đứng sau phần bổ nghĩa và trước danh từ. Khi nói về sở hữu hoặc quan hệ giữa người với vật, 的 thường nối người sở hữu với danh từ.",
+    "formula": "Phần bổ nghĩa + 的 + danh từ",
+    "examples": [
+     {
+      "zh": "你看，这是我的中文书。",
+      "py": "nǐ kàn zhè shì wǒ de zhōngwén shū",
+      "vi": "Bạn xem này, đây là sách tiếng Trung của tôi."
+     },
+     {
+      "zh": "那是我妈妈的朋友。",
+      "py": "nà shì wǒ māma de péngyou",
+      "vi": "Kia là bạn của mẹ tôi."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói về sở hữu và quan hệ",
+    "body": "Dùng 的 sau đại từ hoặc danh từ chỉ người để nói vật thuộc về ai hay ai có quan hệ với ai. Quan hệ đã rõ và gần gũi đôi khi có thể không cần 的.",
+    "examples": [
+     {
+      "zh": "他是我妈妈的好朋友。",
+      "py": "tā shì wǒ māma de hǎo péngyou",
+      "vi": "Anh ấy là bạn thân của mẹ tôi."
+     },
+     {
+      "zh": "这是老师的书。",
+      "py": "zhè shì lǎoshī de shū",
+      "vi": "Đây là sách của giáo viên."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Dùng 的 với tính từ và mệnh đề",
+    "body": "Tính từ hoặc cụm từ bổ nghĩa đứng trước 的, danh từ đứng sau. Cụm động từ cũng có thể đứng trước 的 để mô tả danh từ.",
+    "formula": "Tính từ / cụm từ + 的 + danh từ",
+    "examples": [
+     {
+      "zh": "她是一个很好的老师。",
+      "py": "tā shì yí ge hěn hǎo de lǎoshī",
+      "vi": "Cô ấy là một giáo viên rất tốt."
+     },
+     {
+      "zh": "我喜欢的书在这里。",
+      "py": "wǒ xǐhuan de shū zài zhèlǐ",
+      "vi": "Quyển sách tôi thích ở đây."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Có thể lược danh từ đã rõ",
+    "body": "Khi người nghe biết danh từ đang được nhắc tới, có thể giữ lại phần bổ nghĩa và 的 rồi lược danh từ. Cách này thường xuất hiện khi đối chiếu hai người hoặc hai vật.",
+    "examples": [
+     {
+      "zh": "我的书在这里，你的在学校。",
+      "py": "wǒ de shū zài zhèlǐ nǐ de zài xuéxiào",
+      "vi": "Sách của tôi ở đây, sách của bạn ở trường."
+     },
+     {
+      "zh": "你要大的还是小的？",
+      "py": "nǐ yào dà de háishi xiǎo de",
+      "vi": "Bạn muốn cái lớn hay cái nhỏ?"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 的 sau phần bổ nghĩa",
+    "body": "Không đặt 的 trước người sở hữu hoặc chen 的 giữa đại từ sở hữu và phần còn lại. Đưa 的 ra sau phần bổ nghĩa để câu tự nhiên.",
+    "mistakes": [
+     {
+      "wrong": "这是我喜欢书。",
+      "right": "这是我喜欢的书。",
+      "why": "Cụm 我喜欢 bổ nghĩa cho 书 nên cần 的 nối hai phần."
+     },
+     {
+      "wrong": "这是好我的朋友。",
+      "right": "这是我的好朋友。",
+      "why": "我的 đứng trước rồi đến cụm 好朋友; không đặt 好 trước 我的."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào nói “Đây là sách tiếng Trung của tôi”?",
+    "options": [
+     "这是我中文书。",
+     "这是中文我书。",
+     "这是我书的中文。",
+     "这是我的中文书。"
+    ],
+    "answer": 3,
+    "explain": "我的 đứng trước danh từ 中文书 để chỉ sở hữu."
+   },
+   {
+    "q": "Chọn câu nói “Cô ấy là một giáo viên rất tốt”.",
+    "options": [
+     "她是一个很好的老师。",
+     "她是一个好很的老师。",
+     "她是一个很好老师的。",
+     "她是一个的很好老师。"
+    ],
+    "answer": 0,
+    "explain": "Cụm 很好 đứng trước 的, rồi đến danh từ 老师."
+   },
+   {
+    "q": "Câu nào nói “Kia là bạn của mẹ tôi”?",
+    "options": [
+     "那是我朋友妈妈的。",
+     "那是我妈妈的朋友。",
+     "那是我妈妈朋友的。",
+     "那是的我妈妈朋友。"
+    ],
+    "answer": 1,
+    "explain": "我妈妈的 đứng trước danh từ 朋友."
+   },
+   {
+    "q": "Chọn cụm có nghĩa “sách của tôi”.",
+    "options": [
+     "书我的",
+     "的我的书",
+     "我的书",
+     "我书的"
+    ],
+    "answer": 2,
+    "explain": "我的 là phần sở hữu đứng trước danh từ 书."
+   },
+   {
+    "q": "Đang chọn giữa hai cỡ sách, câu nào lược danh từ 书 sau 的?",
+    "options": [
+     "你要大的书还是小的书？",
+     "你要书大的还是书小的？",
+     "你要大的还是书小的？",
+     "你要大的还是小的？"
+    ],
+    "answer": 3,
+    "explain": "大的 và 小的 dùng 的 thay cho danh từ đã rõ."
+   }
+  ]
+ }
+]

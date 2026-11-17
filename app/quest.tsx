@@ -184,7 +184,7 @@ function Rule({ glyph, text, tone }: { glyph: string; text: string; tone: string
       <View aria-hidden style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: `${tone}26` }}>
         <Text style={{ fontSize: 19 }}>{glyph}</Text>
       </View>
-      <Text className="font-sans" style={{ fontSize: 13, lineHeight: 19, color: 'rgba(240, 235, 226,0.9)' }}>
+      <Text className="font-sans" style={{ fontSize: 14, lineHeight: 20, color: HUB.ink }}>
         {text}
       </Text>
     </View>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 
@@ -48,18 +48,19 @@ export function ChineseFlashcard({
   onStar: () => void;
   onSave: () => void;
 }) {
-  const [flipped, setFlipped] = useState(false);
-  useEffect(() => setFlipped(false), [word.word, index]);
+  const cardKey = `${word.word}:${index}`;
+  const [flippedKey, setFlippedKey] = useState<string | null>(null);
+  const flipped = flippedKey === cardKey;
   useAutoPronounce(word.word, `zh-${index}-${word.word}`, 'zh');
 
   useHotkeys((e) => {
     const tag = (e.target as HTMLElement | null)?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-    if (e.key === 'ArrowRight') onNext();
-    else if (e.key === 'ArrowLeft') onPrev();
+    if (e.key === 'ArrowRight') { setFlippedKey(null); onNext(); }
+    else if (e.key === 'ArrowLeft') { setFlippedKey(null); onPrev(); }
     else if (e.key === ' ' || e.code === 'Space' || e.key === 'Enter') {
       e.preventDefault();
-      setFlipped((f) => !f);
+      setFlippedKey((key) => key === cardKey ? null : cardKey);
     } else if (flipped && (e.key === '1' || e.key === '2' || e.key === '3')) {
       onRate((Number(e.key) - 1) as WordStage);
     }
@@ -101,6 +102,12 @@ export function ChineseFlashcard({
         </View>
       </View>
 
+      {word.sourceLevels && word.sourceLevels.length > 1 ? (
+        <Text style={{ marginTop: -8, fontSize: 11, lineHeight: 16, color: ZH.ink2 }}>
+          Cũng xuất hiện ở các cấp: {word.sourceLevels.join(', ')}
+        </Text>
+      ) : null}
+
       {/* Sân khấu thẻ: một khối cho cả hai mặt, không nhảy kích thước */}
       <View
         style={{
@@ -118,7 +125,7 @@ export function ChineseFlashcard({
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Lật thẻ để xem nghĩa"
-            onPress={() => setFlipped(true)}
+            onPress={() => setFlippedKey(cardKey)}
             style={{ alignItems: 'center', gap: 14 }}
           >
             <View style={{ width: 168, height: 168, borderRadius: 12, borderWidth: 1.5, borderColor: ZH.seal, backgroundColor: ZH.card, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
@@ -127,18 +134,39 @@ export function ChineseFlashcard({
               <Text style={{ fontFamily: HANZI_FAMILY, fontSize: long ? 74 : 132, lineHeight: long ? 90 : 146, color: ZH.ink }}>{word.word}</Text>
             </View>
             <Text style={{ fontSize: 24, fontWeight: '600', color: toneColor }}>{py}</Text>
+            {word.traditional || word.zhuyin ? (
+              <Text style={{ fontSize: 12, color: ZH.ink2 }}>
+                {word.traditional ? `Phồn thể ${word.traditional}` : ''}{word.traditional && word.zhuyin ? ' · ' : ''}{word.zhuyin ? `Zhuyin ${word.zhuyin}` : ''}
+              </Text>
+            ) : null}
             <Text style={{ fontSize: 12, color: ZH.mist }}>{word.pos ? `${word.pos} · ` : ''}{toneLabel(tone)} · chạm để lật</Text>
           </Pressable>
         ) : (
           <View style={{ gap: 14 }}>
-            <Pressable accessibilityRole="button" onPress={() => setFlipped(false)} style={{ gap: 2 }}>
+            <Pressable accessibilityRole="button" onPress={() => setFlippedKey(null)} style={{ gap: 2 }}>
               <View className="flex-row items-baseline" style={{ gap: 10, flexWrap: 'wrap' }}>
                 <Text style={{ fontFamily: HANZI_FAMILY, fontSize: 34, color: ZH.ink }}>{word.word}</Text>
                 <Text style={{ fontSize: 15, fontWeight: '600', color: toneColor }}>{py}</Text>
               </View>
+              {word.traditional || word.zhuyin ? (
+                <Text style={{ fontSize: 12, color: ZH.ink2 }}>
+                  {word.traditional ? `Phồn thể ${word.traditional}` : ''}{word.traditional && word.zhuyin ? ' · ' : ''}{word.zhuyin ? `Zhuyin ${word.zhuyin}` : ''}
+                </Text>
+              ) : null}
               {word.glossLanguage === 'en' ? <Text style={{ fontSize: 10, color: ZH.mist }}>Nghĩa tiếng Anh</Text> : null}
               <Text style={{ fontFamily: HEAD_FAMILY, fontSize: word.glossLanguage === 'en' ? 19 : 24, fontWeight: '700', color: ZH.ink }}>{word.meaningVi}</Text>
             </Pressable>
+
+            {word.readingVariants && word.readingVariants.length > 1 ? (
+              <View style={{ borderRadius: RADIUS.control, borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card, padding: 12, gap: 5 }}>
+                <Text style={{ fontSize: 11, fontWeight: '700', color: ZH.ink2 }}>Cách đọc và nghĩa theo mục nguồn</Text>
+                {word.readingVariants.map((variant, variantIndex) => (
+                  <Text key={`${variant.pinyin}-${variant.zhuyin ?? ''}-${variantIndex}`} style={{ fontSize: 12, lineHeight: 18, color: ZH.ink }}>
+                    {variant.pinyin}{variant.zhuyin ? ` · ${variant.zhuyin}` : ''}{variant.traditional ? ` · ${variant.traditional}` : ''}: {variant.definitionEn}
+                  </Text>
+                ))}
+              </View>
+            ) : null}
 
             {word.example ? (
               <View style={{ borderRadius: RADIUS.control, borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card, padding: 14, gap: 4 }}>
@@ -197,10 +225,10 @@ export function ChineseFlashcard({
           <Text style={{ fontSize: 13, fontWeight: '600', color: ZH.ink }}>Nghe</Text>
         </Pressable>
         <View className="flex-row" style={{ gap: 8 }}>
-          <Pressable accessibilityRole="button" onPress={onPrev} disabled={index === 0} style={({ pressed }: { pressed?: boolean }) => navBtn(index === 0, pressed)}>
+          <Pressable accessibilityRole="button" onPress={() => { setFlippedKey(null); onPrev(); }} disabled={index === 0} style={({ pressed }: { pressed?: boolean }) => navBtn(index === 0, pressed)}>
             <Text style={{ fontSize: 13, fontWeight: '600', color: ZH.ink }}>← Trước</Text>
           </Pressable>
-          <Pressable accessibilityRole="button" onPress={onNext} style={({ pressed }: { pressed?: boolean }) => navBtn(false, pressed)}>
+          <Pressable accessibilityRole="button" onPress={() => { setFlippedKey(null); onNext(); }} style={({ pressed }: { pressed?: boolean }) => navBtn(false, pressed)}>
             <Text style={{ fontSize: 13, fontWeight: '600', color: ZH.ink }}>Tiếp →</Text>
           </Pressable>
         </View>

@@ -115,6 +115,16 @@ export function themeAttrs(t: StudyTheme): object {
   return Platform.OS === "web" ? { dataSet: { st: t.id } } : {};
 }
 
+/**
+ * Thoát màn học về nơi vừa đến. Có lịch sử thì lùi đúng một bước: `replace` thế chỗ màn học bằng trang bộ từ
+ * làm trang bộ từ xuất hiện hai lần trong lịch sử, nên phải bấm Quay lại hai lần mới ra khỏi phần ôn.
+ * Mở thẳng vào màn học (không có lịch sử) thì mới thay bằng `backHref`.
+ */
+export function exitStudy(backHref: string) {
+  if (router.canGoBack()) router.back();
+  else router.replace(backHref as never);
+}
+
 /** Khung một màn học: nút thoát, tên màn, thanh tiến độ, nội dung, dòng số liệu dưới. */
 export function StudyFrame({
   backHref,
@@ -171,7 +181,7 @@ export function StudyFrame({
       <View className="flex-row items-center justify-between">
         <Pressable
           accessibilityRole="button"
-          onPress={() => router.replace(backHref as never)}
+          onPress={() => exitStudy(backHref)}
           className="flex-row items-center gap-2 rounded-pill px-4 py-2"
           style={{ backgroundColor: pill }}
         >

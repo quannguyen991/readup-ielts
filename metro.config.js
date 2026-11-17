@@ -4,6 +4,10 @@ const { withNativeWind } = require('nativewind/metro');
 
 const config = getDefaultConfig(__dirname);
 
+// Mặc định Metro mở (số nhân CPU − 1) tiến trình biên dịch, mỗi cái vài trăm MB; máy 16 nhân thì thành ~15 cái.
+// Bốn worker là đủ cho app này và tiết kiệm nhiều GB RAM. Đổi bằng METRO_MAX_WORKERS nếu cần.
+config.maxWorkers = Number(process.env.METRO_MAX_WORKERS ?? 4);
+
 // Block watching .git directory to prevent Windows path crashes on turn-diffs/checkpoints
 // Thư mục KHÔNG chứa mã nguồn nhưng rất nhiều tệp (public ~86 000 clip âm thanh/ảnh, dist, tmp…): bỏ khỏi bản đồ tệp của
 // Metro thì khởi động nhanh hơn nhiều và không còn hết bộ nhớ lúc quét. Web vẫn phục vụ `public/` bằng middleware riêng của

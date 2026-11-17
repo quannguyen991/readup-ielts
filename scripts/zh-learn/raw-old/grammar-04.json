@@ -1,0 +1,618 @@
+[
+ {
+  "id": "zh-g-h1-17",
+  "level": 1,
+  "order": 17,
+  "title": "Phó từ phủ định 不, 没有, 不要",
+  "titleZh": "否定副词",
+  "summary": "Học xong, bạn có thể chọn 不, 没有 và 不要 để phủ định đúng ý.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Ba cách phủ định",
+    "body": "不 thường phủ định thói quen, ý định hoặc tính chất; 没有 phủ định việc đã không xảy ra hoặc sự tồn tại. 没 là dạng rút gọn thường gặp của 没有, còn 不要 thường dùng để ngăn hoặc nhắc ai đừng làm gì.",
+    "examples": [
+     {
+      "zh": "我今天不喝茶，我喝水。",
+      "py": "Wǒ jīntiān bù hē chá wǒ hē shuǐ",
+      "vi": "Hôm nay tôi không uống trà, tôi uống nước."
+     },
+     {
+      "zh": "昨天我没有看电视，我看书了。",
+      "py": "Zuótiān wǒ méiyǒu kàn diànshì wǒ kàn shū le",
+      "vi": "Hôm qua tôi không xem ti vi, tôi đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn theo ý muốn nói",
+    "body": "Dùng 不 khi nói về sở thích, thói quen hoặc dự định; dùng 没有 hay 没 khi nói một việc không xảy ra hoặc nói mình không có thứ gì. Dùng 不要 khi muốn khuyên hoặc yêu cầu ai đừng làm.",
+    "examples": [
+     {
+      "zh": "他不喜欢这本书，想看中文书。",
+      "py": "Tā bù xǐhuan zhè běn shū xiǎng kàn Zhōngwén shū",
+      "vi": "Anh ấy không thích quyển sách này, muốn đọc sách tiếng Trung."
+     },
+     {
+      "zh": "我现在没有时间，妈妈在家等我。",
+      "py": "Wǒ xiànzài méiyǒu shíjiān māma zài jiā děng wǒ",
+      "vi": "Bây giờ tôi không có thời gian, mẹ đang ở nhà đợi tôi."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt từ phủ định trước động từ",
+    "body": "Từ phủ định thường đứng trước động từ hoặc tính từ. Với 不要, theo sau là hành động mà người nói muốn ngăn lại.",
+    "formula": "S + 不 + V/Adj; S + 没(有) + V; S + 不要 + V",
+    "examples": [
+     {
+      "zh": "妈妈说你不要在家看电视。",
+      "py": "Māma shuō nǐ bú yào zài jiā kàn diànshì",
+      "vi": "Mẹ bảo bạn đừng xem ti vi ở nhà."
+     },
+     {
+      "zh": "哥哥昨天没吃饭，今天很忙。",
+      "py": "Gēge zuótiān méi chī fàn jīntiān hěn máng",
+      "vi": "Hôm qua anh trai không ăn cơm, hôm nay anh ấy rất bận."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Phân biệt 不 và 没有",
+    "body": "不 thường đi với việc không muốn làm hoặc sẽ không làm. 没有 và 没 thường đi với việc đã không xảy ra, hoặc dùng để nói không có thứ gì.",
+    "examples": [
+     {
+      "zh": "明天我不工作，想在家看书。",
+      "py": "Míngtiān wǒ bù gōngzuò xiǎng zài jiā kàn shū",
+      "vi": "Ngày mai tôi không làm việc, muốn ở nhà đọc sách."
+     },
+     {
+      "zh": "我今天没买东西，想在家休息。",
+      "py": "Wǒ jīntiān méi mǎi dōngxi xiǎng zài jiā xiūxi",
+      "vi": "Hôm nay tôi không mua gì, muốn nghỉ ngơi ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Dùng đúng từ phủ định",
+    "body": "Người học tiếng Việt đôi khi dùng 不 cho việc đã không xảy ra, hoặc đặt 没有 trước động từ chỉ sở thích. Hãy chọn từ phủ định theo ý và mốc thời gian.",
+    "mistakes": [
+     {
+      "wrong": "昨天我不去学校。",
+      "right": "昨天我没有去学校。",
+      "why": "Khi nói việc đã không xảy ra hôm qua, dùng 没有 hoặc 没 thay vì 不."
+     },
+     {
+      "wrong": "我没有喜欢喝茶。",
+      "right": "我不喜欢喝茶。",
+      "why": "Sở thích hiện tại thường được phủ định bằng 不 đặt trước 喜欢."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Dựa vào mốc 昨天, điền từ phù hợp: 昨天我___去学校，在家看书。",
+    "options": [
+     "没有",
+     "不",
+     "不要",
+     "都"
+    ],
+    "answer": 0,
+    "explain": "没有 phủ định việc không xảy ra trong quá khứ."
+   },
+   {
+    "q": "Muốn nói “Tôi không thích quyển sách này”, điền từ nào: 我___喜欢这本书，想看中文书。",
+    "options": [
+     "没有",
+     "不",
+     "都",
+     "不要"
+    ],
+    "answer": 1,
+    "explain": "不 đứng trước 喜欢 để phủ định sở thích."
+   },
+   {
+    "q": "Mẹ bảo bạn đừng xem ti vi ở nhà: 妈妈说你___在家看电视。",
+    "options": [
+     "都",
+     "不",
+     "不要",
+     "没有"
+    ],
+    "answer": 2,
+    "explain": "不要 dùng để ngăn hoặc nhắc ai đừng làm việc gì."
+   },
+   {
+    "q": "Điền từ để nói “Tôi không có thời gian”: 我___有时间，今天不看书。",
+    "options": [
+     "不",
+     "都",
+     "再",
+     "没有"
+    ],
+    "answer": 3,
+    "explain": "没有 đứng trước 有 để nói không có."
+   },
+   {
+    "q": "Nói dự định ngày mai không đi làm: 明天我___工作，想在家看书。",
+    "options": [
+     "不",
+     "没有",
+     "再",
+     "不要"
+    ],
+    "answer": 0,
+    "explain": "不 phù hợp để nói về dự định không làm việc vào ngày mai."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-18",
+  "level": 1,
+  "order": 18,
+  "title": "Phó từ mức độ 很, 太, 非常, 有点儿",
+  "titleZh": "程度副词",
+  "summary": "Học xong, bạn có thể dùng các phó từ mức độ để diễn tả từ rất đến hơi.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói mức độ của tính chất",
+    "body": "Các từ 很, 非常, 太, 真 và 有点儿 đứng trước tính từ để thể hiện mức độ hoặc cảm nhận. 有一点儿 cũng mang nghĩa “hơi”, trong đó 一点儿 là một phần của cấu trúc này.",
+    "examples": [
+     {
+      "zh": "这个苹果很大，那个苹果很小。",
+      "py": "Zhège píngguǒ hěn dà nàge píngguǒ hěn xiǎo",
+      "vi": "Quả táo này to, quả táo kia nhỏ."
+     },
+     {
+      "zh": "这本书非常好，妈妈也喜欢。",
+      "py": "Zhè běn shū fēicháng hǎo māma yě xǐhuan",
+      "vi": "Quyển sách này rất hay, mẹ cũng thích."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn sắc thái phù hợp",
+    "body": "很 diễn tả mức độ cao theo cách trung tính, 非常 nhấn mạnh hơn, còn 真 thường thể hiện cảm nhận rõ của người nói. 太…了 có thể nhấn mạnh mức độ, còn 有点儿 và 有一点儿 thường diễn tả “hơi”.",
+    "examples": [
+     {
+      "zh": "我今天很忙，晚上还要工作。",
+      "py": "Wǒ jīntiān hěn máng wǎnshang hái yào gōngzuò",
+      "vi": "Hôm nay tôi rất bận, buổi tối còn phải làm việc."
+     },
+     {
+      "zh": "这杯茶真好，爸爸也喜欢。",
+      "py": "Zhè bēi chá zhēn hǎo bàba yě xǐhuan",
+      "vi": "Tách trà này thật ngon, bố cũng thích."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt phó từ trước tính từ",
+    "body": "Phó từ mức độ thường đứng ngay trước tính từ. 太 thường đi cùng 了 ở cuối cụm, còn 有点儿 và 有一点儿 đặt trước tính từ.",
+    "formula": "S + 很/非常/真 + Adj; S + 太 + Adj + 了; S + 有(一)点儿 + Adj",
+    "examples": [
+     {
+      "zh": "我非常喜欢看书，今天在家看中文书。",
+      "py": "Wǒ fēicháng xǐhuan kàn shū jīntiān zài jiā kàn Zhōngwén shū",
+      "vi": "Tôi rất thích đọc sách, hôm nay đọc sách tiếng Trung ở nhà."
+     },
+     {
+      "zh": "这杯茶非常热，我现在不喝。",
+      "py": "Zhè bēi chá fēicháng rè wǒ xiànzài bù hē",
+      "vi": "Tách trà này rất nóng, bây giờ tôi không uống."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Dùng 太…了 và 有点儿",
+    "body": "太…了 thường nhấn mạnh mức độ cao, đôi khi mang ý “quá”. 有点儿 và 有一点儿 thường diễn tả trạng thái hơi không như ý, chẳng hạn nóng hoặc bận.",
+    "examples": [
+     {
+      "zh": "今天太热了，我想喝水。",
+      "py": "Jīntiān tài rè le wǒ xiǎng hē shuǐ",
+      "vi": "Hôm nay nóng quá, tôi muốn uống nước."
+     },
+     {
+      "zh": "我今天有一点儿忙，晚上在家工作。",
+      "py": "Wǒ jīntiān yǒu yìdiǎnr máng wǎnshang zài jiā gōngzuò",
+      "vi": "Hôm nay tôi hơi bận, buổi tối làm việc ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Tránh chồng hai phó từ",
+    "body": "Không ghép 太 và 很 liền nhau trước cùng một tính từ. Sau 有点儿 cũng không cần thêm 很.",
+    "mistakes": [
+     {
+      "wrong": "这本书太很贵了，今天我不买。",
+      "right": "这本书太贵了，今天我不买。",
+      "why": "太 đã biểu thị mức độ cao nên không thêm 很 trước tính từ."
+     },
+     {
+      "wrong": "这个苹果有点儿很大，我不想买。",
+      "right": "这个苹果有点儿大，我不想买。",
+      "why": "有点儿 đứng trực tiếp trước tính từ, không cần chèn 很."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn từ cho câu “Tôi vô cùng thích quyển sách này”: 我___喜欢这本书。",
+    "options": [
+     "很",
+     "非常",
+     "太",
+     "有点儿"
+    ],
+    "answer": 1,
+    "explain": "非常 diễn tả mức độ cao, gần với “vô cùng” trong câu này."
+   },
+   {
+    "q": "Điền từ để nói “Trời nóng quá”: 天气___热了。",
+    "options": [
+     "有点儿",
+     "都",
+     "太",
+     "真"
+    ],
+    "answer": 2,
+    "explain": "太 kết hợp với tính từ và 了 để nhấn mạnh mức độ."
+   },
+   {
+    "q": "Chọn cụm mang nghĩa “hơi bận”: 我今天___忙。",
+    "options": [
+     "太",
+     "非常",
+     "真",
+     "有一点儿"
+    ],
+    "answer": 3,
+    "explain": "有一点儿 đứng trước tính từ để diễn tả “hơi bận”."
+   },
+   {
+    "q": "Từ nào nhấn mạnh cảm nhận “thật hay” trong câu 这本书___好？",
+    "options": [
+     "真",
+     "很",
+     "再",
+     "没有"
+    ],
+    "answer": 0,
+    "explain": "真 thường nhấn mạnh cảm nhận của người nói."
+   },
+   {
+    "q": "Muốn nói trung tính “quyển sách này rất tốt”, chọn từ nào: 这本书___好。",
+    "options": [
+     "太",
+     "很",
+     "再",
+     "都"
+    ],
+    "answer": 1,
+    "explain": "很 thường đứng trước tính từ trong cách nói trung tính."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-19",
+  "level": 1,
+  "order": 19,
+  "title": "Phó từ phạm vi 都, 也, 还, 再",
+  "titleZh": "范围副词",
+  "summary": "Học xong, bạn có thể dùng 都 để nói về toàn bộ và phân biệt nó với 也, 还, 再.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "都 bao quát cả nhóm",
+    "body": "都 đứng sau chủ ngữ chỉ một nhóm hoặc nhiều người, rồi đứng trước vị ngữ để nói rằng điều ấy đúng với toàn bộ nhóm. 也 nghĩa là “cũng”, 还 thường là “vẫn/còn”, còn 再 thường chỉ việc làm lại trong tương lai.",
+    "examples": [
+     {
+      "zh": "我和哥哥都在家看书。",
+      "py": "Wǒ hé gēge dōu zài jiā kàn shū",
+      "vi": "Tôi và anh trai đều đọc sách ở nhà."
+     },
+     {
+      "zh": "我们都喜欢喝茶，妈妈也喜欢。",
+      "py": "Wǒmen dōu xǐhuan hē chá māma yě xǐhuan",
+      "vi": "Chúng tôi đều thích uống trà, mẹ cũng thích."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói về mọi thành viên",
+    "body": "Dùng 都 khi muốn gom toàn bộ người hoặc vật được nêu làm chủ ngữ. Nếu chỉ muốn thêm một người hay một ý nữa, dùng 也 thay vì 都.",
+    "examples": [
+     {
+      "zh": "学生都在学校学习中文。",
+      "py": "Xuésheng dōu zài xuéxiào xuéxí Zhōngwén",
+      "vi": "Học sinh đều học tiếng Trung ở trường."
+     },
+     {
+      "zh": "哥哥和妈妈都喜欢这本书。",
+      "py": "Gēge hé māma dōu xǐhuan zhè běn shū",
+      "vi": "Anh trai và mẹ đều thích quyển sách này."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 都 sau nhóm chủ ngữ",
+    "body": "Khi chủ ngữ gồm nhiều người hoặc vật, đặt 都 sau cả nhóm chủ ngữ và trước động từ hoặc tính từ. Không đặt 都 giữa hai phần của cụm chủ ngữ.",
+    "formula": "Nhóm chủ ngữ + 都 + động từ/tính từ",
+    "examples": [
+     {
+      "zh": "我和朋友都在这里看书。",
+      "py": "Wǒ hé péngyou dōu zài zhèlǐ kàn shū",
+      "vi": "Tôi và bạn đều đọc sách ở đây."
+     },
+     {
+      "zh": "他们都喜欢中文。",
+      "py": "Tāmen dōu xǐhuan Zhōngwén",
+      "vi": "Họ đều thích tiếng Trung."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Phân biệt 也, 还 và 再",
+    "body": "也 nói “cũng”, 还 nói trạng thái hoặc hành động vẫn tiếp tục, còn 再 thường nói hành động sẽ được làm thêm lần nữa. Hãy dựa vào ý muốn nói, không chỉ dựa vào vị trí trong câu.",
+    "examples": [
+     {
+      "zh": "我也喜欢喝茶，爸爸也喜欢。",
+      "py": "Wǒ yě xǐhuan hē chá bàba yě xǐhuan",
+      "vi": "Tôi cũng thích uống trà, bố cũng thích."
+     },
+     {
+      "zh": "妈妈还在家，明天我们再来看她。",
+      "py": "Māma hái zài jiā míngtiān wǒmen zài lái kàn tā",
+      "vi": "Mẹ vẫn ở nhà, ngày mai chúng tôi sẽ đến thăm mẹ lần nữa."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 都 đúng vị trí",
+    "body": "Đặt 都 sau toàn bộ chủ ngữ của nhóm. Dùng 还 cho trạng thái còn tiếp diễn và 再 cho hành động sẽ lặp lại.",
+    "mistakes": [
+     {
+      "wrong": "我和哥哥喜欢都喝茶。",
+      "right": "我和哥哥都喜欢喝茶。",
+      "why": "都 đứng sau cả nhóm chủ ngữ và trước động từ hoặc cụm động từ."
+     },
+     {
+      "wrong": "我现在再在家里看书。",
+      "right": "我现在还在家里看书。",
+      "why": "Trạng thái vẫn ở nhà dùng 还; 再 thường nói việc sẽ làm lại."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Muốn nói tất cả học sinh đều học tiếng Trung ở trường, điền từ nào: 学生___在学校学习中文。",
+    "options": [
+     "也",
+     "再",
+     "都",
+     "还"
+    ],
+    "answer": 2,
+    "explain": "都 cho biết điều được nói đúng với toàn bộ nhóm học sinh."
+   },
+   {
+    "q": "Điền từ có nghĩa “cũng”: 我___喜欢这本书，哥哥也喜欢。",
+    "options": [
+     "都",
+     "再",
+     "还",
+     "也"
+    ],
+    "answer": 3,
+    "explain": "也 thêm ý rằng người nói cũng thích quyển sách."
+   },
+   {
+    "q": "Muốn nói mẹ vẫn ở nhà, điền từ nào: 妈妈___在家，爸爸还没回来。",
+    "options": [
+     "还",
+     "都",
+     "也",
+     "再"
+    ],
+    "answer": 0,
+    "explain": "还 diễn tả trạng thái tiếp tục, ở đây là vẫn ở nhà."
+   },
+   {
+    "q": "Muốn nói ngày mai sẽ đi lại, điền từ nào: 昨天我们去过学校，明天想___去。",
+    "options": [
+     "都",
+     "再",
+     "也",
+     "还"
+    ],
+    "answer": 1,
+    "explain": "再 thường dùng cho hành động lặp lại sẽ xảy ra sau đó."
+   },
+   {
+    "q": "Nói tôi và bạn đều thích đọc sách, điền từ nào: 我和朋友___喜欢看书。",
+    "options": [
+     "也",
+     "还",
+     "都",
+     "再"
+    ],
+    "answer": 2,
+    "explain": "都 đứng sau nhóm chủ ngữ 我和朋友 để nói cả hai đều thích."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-20",
+  "level": 1,
+  "order": 20,
+  "title": "Giới từ 在 chỉ địa điểm",
+  "titleZh": "地点介词",
+  "summary": "Học xong, bạn có thể đặt 在 và địa điểm vào đúng vị trí để nói hành động diễn ra ở đâu.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "在 nêu nơi diễn ra hành động",
+    "body": "Trong cấu trúc này, 在 đứng trước địa điểm để nói hành động diễn ra ở đâu. Cụm 在 và địa điểm thường đứng trước động từ.",
+    "examples": [
+     {
+      "zh": "我在学校学习中文，老师在家看书。",
+      "py": "Wǒ zài xuéxiào xuéxí Zhōngwén lǎoshī zài jiā kàn shū",
+      "vi": "Tôi học tiếng Trung ở trường, thầy cô đọc sách ở nhà."
+     },
+     {
+      "zh": "妈妈在家喝茶，哥哥在学校看书。",
+      "py": "Māma zài jiā hē chá gēge zài xuéxiào kàn shū",
+      "vi": "Mẹ uống trà ở nhà, anh trai đọc sách ở trường."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói hành động xảy ra ở đâu",
+    "body": "Dùng 在 khi muốn cho biết nơi học, làm việc, đọc sách hoặc làm một việc khác. Phần địa điểm cần phù hợp với hành động trong ngữ cảnh.",
+    "examples": [
+     {
+      "zh": "朋友在这里看书，我在家工作。",
+      "py": "Péngyou zài zhèlǐ kàn shū wǒ zài jiā gōngzuò",
+      "vi": "Bạn tôi đọc sách ở đây, tôi làm việc ở nhà."
+     },
+     {
+      "zh": "老师在学校工作，学生在家学习。",
+      "py": "Lǎoshī zài xuéxiào gōngzuò xuésheng zài jiā xuéxí",
+      "vi": "Thầy cô làm việc ở trường, học sinh học ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt địa điểm trước động từ",
+    "body": "Đặt 在 và địa điểm sau chủ ngữ, rồi mới đến động từ. Sau động từ có thể thêm đối tượng hoặc thông tin khác.",
+    "formula": "S + 在 + địa điểm + V + thành phần khác",
+    "examples": [
+     {
+      "zh": "我在家里看电视，爸爸在学校看书。",
+      "py": "Wǒ zài jiālǐ kàn diànshì bàba zài xuéxiào kàn shū",
+      "vi": "Tôi xem ti vi ở nhà, bố đọc sách ở trường."
+     },
+     {
+      "zh": "他们在学校学习中文，我在家看书。",
+      "py": "Tāmen zài xuéxiào xuéxí Zhōngwén wǒ zài jiā kàn shū",
+      "vi": "Họ học tiếng Trung ở trường, tôi đọc sách ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Địa điểm đứng trước hành động",
+    "body": "Trong câu đơn giản diễn tả hành động tại một nơi, đặt cụm 在 và địa điểm trước động từ chính. Cách sắp xếp này giúp người nghe nhận ra nơi xảy ra hành động.",
+    "examples": [
+     {
+      "zh": "爸爸在家看书，妈妈在学校工作。",
+      "py": "Bàba zài jiā kàn shū māma zài xuéxiào gōngzuò",
+      "vi": "Bố đọc sách ở nhà, mẹ làm việc ở trường."
+     },
+     {
+      "zh": "哥哥在这里喝茶，朋友在家学习中文。",
+      "py": "Gēge zài zhèlǐ hē chá péngyou zài jiā xuéxí Zhōngwén",
+      "vi": "Anh trai uống trà ở đây, bạn tôi học tiếng Trung ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đặt 在 sau động từ",
+    "body": "Người học tiếng Việt đôi khi dịch nguyên trật tự tiếng Việt rồi đặt địa điểm sau động từ. Với mẫu câu này, hãy đưa cụm 在 và địa điểm lên trước động từ.",
+    "mistakes": [
+     {
+      "wrong": "我学习中文在学校。",
+      "right": "我在学校学习中文。",
+      "why": "Trong câu nói nơi học diễn ra, 在学校 đứng trước động từ 学习."
+     },
+     {
+      "wrong": "妈妈做饭在家里。",
+      "right": "妈妈在家里做饭。",
+      "why": "Cụm chỉ địa điểm đứng trước hành động 做饭 trong cấu trúc này."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền giới từ chỉ nơi chốn: 我___学校看书。",
+    "options": [
+     "和",
+     "对",
+     "再",
+     "在"
+    ],
+    "answer": 3,
+    "explain": "在 đứng trước địa điểm 学校 để nêu nơi đọc sách."
+   },
+   {
+    "q": "Điền từ chỉ nơi diễn ra hành động: 妈妈___家里喝茶。",
+    "options": [
+     "在",
+     "也",
+     "和",
+     "都"
+    ],
+    "answer": 0,
+    "explain": "Cụm 在家里 cho biết mẹ uống trà ở nhà."
+   },
+   {
+    "q": "Cụm chỉ địa điểm thường đứng ở đâu so với động từ trong mẫu này?",
+    "options": [
+     "Bên cạnh động từ",
+     "Trước động từ",
+     "Sau động từ",
+     "Cuối câu"
+    ],
+    "answer": 1,
+    "explain": "Cụm 在 và địa điểm thường đứng trước động từ chính."
+   },
+   {
+    "q": "Trong câu “Tôi học tiếng Trung ở trường”, cụm 在学校 đặt ở đâu?",
+    "options": [
+     "Sau 中文",
+     "Trước 在",
+     "Sau 我, trước 学习",
+     "Cuối câu"
+    ],
+    "answer": 2,
+    "explain": "Mẫu câu đặt 在学校 sau chủ ngữ 我 và trước động từ 学习."
+   },
+   {
+    "q": "Điền từ để nói “Tôi làm việc ở nhà”: 我___家工作。",
+    "options": [
+     "再",
+     "都",
+     "和",
+     "在"
+    ],
+    "answer": 3,
+    "explain": "在家 đứng trước 工作 để nêu nơi làm việc."
+   }
+  ]
+ }
+]

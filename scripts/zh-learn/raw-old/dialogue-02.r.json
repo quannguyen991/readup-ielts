@@ -1,0 +1,459 @@
+[
+ {
+  "id": "zh-d-h1-07",
+  "level": 1,
+  "order": 7,
+  "title": "Hỏi giờ và lên lịch",
+  "titleZh": "几点回家",
+  "topic": "Giờ giấc",
+  "scene": "Hai người bạn hỏi giờ, bàn lúc đi học và khi nào về nhà.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你看现在几点了？",
+    "py": "nǐ kàn xiànzài jǐ diǎn le",
+    "vi": "Bạn xem bây giờ là mấy giờ rồi?"
+   },
+   {
+    "who": "小丽",
+    "zh": "现在是上午九点半。",
+    "py": "xiànzài shì shàngwǔ jiǔ diǎn bàn",
+    "vi": "Bây giờ là chín giờ rưỡi sáng."
+   },
+   {
+    "who": "小明",
+    "zh": "我们几点去学校？",
+    "py": "wǒmen jǐ diǎn qù xuéxiào",
+    "vi": "Mấy giờ chúng ta đi học?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我们十点去学校吧。",
+    "py": "wǒmen shí diǎn qù xuéxiào ba",
+    "vi": "Chúng ta đi học lúc mười giờ nhé."
+   },
+   {
+    "who": "小明",
+    "zh": "你中午回家吃饭吗？",
+    "py": "nǐ zhōngwǔ huí jiā chīfàn ma",
+    "vi": "Buổi trưa bạn có về nhà ăn cơm không?"
+   },
+   {
+    "who": "小丽",
+    "zh": "我中午不回家，我在学校吃饭。",
+    "py": "wǒ zhōngwǔ bù huí jiā wǒ zài xuéxiào chīfàn",
+    "vi": "Buổi trưa mình không về nhà, mình ăn cơm ở trường."
+   },
+   {
+    "who": "小明",
+    "zh": "那我们下午三点回家吧。",
+    "py": "nà wǒmen xiàwǔ sān diǎn huí jiā ba",
+    "vi": "Vậy chúng ta về nhà lúc ba giờ chiều nhé."
+   },
+   {
+    "who": "小丽",
+    "zh": "好，我们下午三点回家。",
+    "py": "hǎo wǒmen xiàwǔ sān diǎn huí jiā",
+    "vi": "Được, chúng ta về nhà lúc ba giờ chiều."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "现在",
+    "py": "xiànzài",
+    "vi": "bây giờ"
+   },
+   {
+    "zh": "上午",
+    "py": "shàngwǔ",
+    "vi": "buổi sáng"
+   },
+   {
+    "zh": "中午",
+    "py": "zhōngwǔ",
+    "vi": "buổi trưa"
+   },
+   {
+    "zh": "下午",
+    "py": "xiàwǔ",
+    "vi": "buổi chiều"
+   },
+   {
+    "zh": "学校",
+    "py": "xuéxiào",
+    "vi": "trường học"
+   },
+   {
+    "zh": "回家",
+    "py": "huí jiā",
+    "vi": "về nhà"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-10",
+   "zh-g-h1-11",
+   "zh-g-h1-25"
+  ],
+  "quiz": [
+   {
+    "q": "Bây giờ là mấy giờ?",
+    "options": [
+     "Chín giờ rưỡi sáng",
+     "Mười giờ sáng",
+     "Ba giờ chiều"
+    ],
+    "answer": 0,
+    "explain": "小丽 nói bây giờ là chín giờ rưỡi sáng."
+   },
+   {
+    "q": "小丽 đề nghị mấy giờ đi học?",
+    "options": [
+     "Chín giờ rưỡi",
+     "Ba giờ chiều",
+     "Mười giờ"
+    ],
+    "answer": 2,
+    "explain": "小丽 đề nghị hai người đi học lúc mười giờ."
+   },
+   {
+    "q": "小丽 có về nhà ăn cơm buổi trưa không?",
+    "options": [
+     "Có, cô ấy ăn ở nhà",
+     "Không, cô ấy ăn ở trường",
+     "Không, cô ấy không ăn cơm"
+    ],
+    "answer": 1,
+    "explain": "小丽 nói buổi trưa cô ấy ăn cơm ở trường."
+   },
+   {
+    "q": "Hai người định mấy giờ về nhà?",
+    "options": [
+     "Ba giờ chiều",
+     "Mười giờ sáng",
+     "Chín giờ rưỡi sáng"
+    ],
+    "answer": 0,
+    "explain": "小明 đề nghị hai người về nhà lúc ba giờ chiều."
+   },
+   {
+    "q": "小丽 ăn cơm trưa ở đâu?",
+    "options": [
+     "Ở nhà",
+     "Ở trường",
+     "Ở nhà bạn"
+    ],
+    "answer": 1,
+    "explain": "Cô ấy nói mình ăn cơm ở trường."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h1-08",
+  "level": 1,
+  "order": 8,
+  "title": "Gọi món ở quán ăn",
+  "titleZh": "我想吃米饭",
+  "topic": "Ăn uống",
+  "scene": "Một khách gọi cơm và món ăn, chọn nước uống rồi hỏi giá.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你好，我想吃米饭和这个菜。",
+    "py": "nǐ hǎo wǒ xiǎng chī mǐfàn hé zhège cài",
+    "vi": "Xin chào, tôi muốn ăn cơm và món này."
+   },
+   {
+    "who": "服务员",
+    "zh": "好的，你今天想喝水吗？这里也有茶。",
+    "py": "hǎo de nǐ jīntiān xiǎng hē shuǐ ma zhèlǐ yě yǒu chá",
+    "vi": "Được ạ, hôm nay bạn muốn uống nước không? Ở đây cũng có trà."
+   },
+   {
+    "who": "小明",
+    "zh": "我今天想喝水，这里有点热。",
+    "py": "wǒ jīntiān xiǎng hē shuǐ zhèlǐ yǒudiǎn rè",
+    "vi": "Hôm nay tôi muốn uống nước, ở đây hơi nóng."
+   },
+   {
+    "who": "服务员",
+    "zh": "好的，我给你水，你还想要什么？",
+    "py": "hǎo de wǒ gěi nǐ shuǐ nǐ hái xiǎng yào shénme",
+    "vi": "Được ạ, tôi lấy nước cho bạn. Bạn còn muốn gì nữa?"
+   },
+   {
+    "who": "小明",
+    "zh": "这个菜很好吃吗？",
+    "py": "zhège cài hěn hǎochī ma",
+    "vi": "Món này ngon lắm không?"
+   },
+   {
+    "who": "服务员",
+    "zh": "这个菜很好吃，很多人都吃。",
+    "py": "zhège cài hěn hǎochī hěn duō rén dōu chī",
+    "vi": "Món này ngon lắm, nhiều người đều ăn món này."
+   },
+   {
+    "who": "小明",
+    "zh": "米饭和这个菜多少钱？",
+    "py": "mǐfàn hé zhège cài duōshao qián",
+    "vi": "Cơm và món này bao nhiêu tiền?"
+   },
+   {
+    "who": "服务员",
+    "zh": "米饭是五块钱，这个菜是十块钱。",
+    "py": "mǐfàn shì wǔ kuài qián zhège cài shì shí kuài qián",
+    "vi": "Cơm năm tệ, món này mười tệ."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "米饭",
+    "py": "mǐfàn",
+    "vi": "cơm"
+   },
+   {
+    "zh": "喝水",
+    "py": "hē shuǐ",
+    "vi": "uống nước"
+   },
+   {
+    "zh": "茶",
+    "py": "chá",
+    "vi": "trà"
+   },
+   {
+    "zh": "有点",
+    "py": "yǒudiǎn",
+    "vi": "hơi, có chút"
+   },
+   {
+    "zh": "菜",
+    "py": "cài",
+    "vi": "món ăn"
+   },
+   {
+    "zh": "好吃",
+    "py": "hǎochī",
+    "vi": "ngon"
+   },
+   {
+    "zh": "多少钱",
+    "py": "duōshao qián",
+    "vi": "bao nhiêu tiền"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-10",
+   "zh-g-h1-18",
+   "zh-g-h1-24"
+  ],
+  "quiz": [
+   {
+    "q": "小明 muốn ăn gì?",
+    "options": [
+     "Cơm và món này",
+     "Cơm và trà",
+     "Nước và món này"
+    ],
+    "answer": 0,
+    "explain": "小明 nói anh ấy muốn ăn cơm và món này."
+   },
+   {
+    "q": "小明 chọn uống gì?",
+    "options": [
+     "Trà",
+     "Nước",
+     "Sữa"
+    ],
+    "answer": 1,
+    "explain": "小明 nói hôm nay anh ấy muốn uống nước."
+   },
+   {
+    "q": "小明 nói ở đây thế nào?",
+    "options": [
+     "Ở đây hơi lạnh",
+     "Ở đây hơi nóng",
+     "Ở đây không có nước"
+    ],
+    "answer": 1,
+    "explain": "小明 nói ở đây hơi nóng."
+   },
+   {
+    "q": "Người phục vụ nhận xét món ăn thế nào?",
+    "options": [
+     "Món này ngon và nhiều người ăn",
+     "Món này không ngon",
+     "Món này chỉ có cơm"
+    ],
+    "answer": 0,
+    "explain": "Người phục vụ nói món này ngon và nhiều người ăn."
+   },
+   {
+    "q": "Một phần cơm giá bao nhiêu?",
+    "options": [
+     "Mười tệ",
+     "Năm tệ",
+     "Mười lăm tệ"
+    ],
+    "answer": 1,
+    "explain": "Người phục vụ nói cơm giá năm tệ."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h1-09",
+  "level": 1,
+  "order": 9,
+  "title": "Mua táo và hỏi giá",
+  "titleZh": "买两个苹果",
+  "topic": "Mua sắm",
+  "scene": "Một khách hỏi giá táo, chọn mua hai quả và trả tiền.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小丽",
+    "zh": "你好，这个苹果多少钱？",
+    "py": "nǐ hǎo zhège píngguǒ duōshao qián",
+    "vi": "Xin chào, quả táo này bao nhiêu tiền?"
+   },
+   {
+    "who": "老板",
+    "zh": "这个苹果十块钱一个。",
+    "py": "zhège píngguǒ shí kuài qián yí ge",
+    "vi": "Quả táo này mười tệ một quả."
+   },
+   {
+    "who": "小丽",
+    "zh": "十块钱一个太贵了。",
+    "py": "shí kuài qián yí ge tài guì le",
+    "vi": "Mười tệ một quả đắt quá."
+   },
+   {
+    "who": "老板",
+    "zh": "这个苹果很大，也很好吃。",
+    "py": "zhège píngguǒ hěn dà yě hěn hǎochī",
+    "vi": "Quả táo này to lắm, cũng rất ngon."
+   },
+   {
+    "who": "小丽",
+    "zh": "好，我买两个苹果吧。",
+    "py": "hǎo wǒ mǎi liǎng ge píngguǒ ba",
+    "vi": "Được, tôi mua hai quả táo nhé."
+   },
+   {
+    "who": "老板",
+    "zh": "两个苹果是二十块钱。",
+    "py": "liǎng ge píngguǒ shì èrshí kuài qián",
+    "vi": "Hai quả táo là hai mươi tệ."
+   },
+   {
+    "who": "小丽",
+    "zh": "好，我给你二十块钱。",
+    "py": "hǎo wǒ gěi nǐ èrshí kuài qián",
+    "vi": "Được, tôi đưa bạn hai mươi tệ."
+   },
+   {
+    "who": "老板",
+    "zh": "好的，谢谢你，再见。",
+    "py": "hǎo de xièxie nǐ zàijiàn",
+    "vi": "Được rồi, cảm ơn bạn, tạm biệt."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "苹果",
+    "py": "píngguǒ",
+    "vi": "táo"
+   },
+   {
+    "zh": "多少钱",
+    "py": "duōshao qián",
+    "vi": "bao nhiêu tiền"
+   },
+   {
+    "zh": "块钱",
+    "py": "kuài qián",
+    "vi": "tệ"
+   },
+   {
+    "zh": "太贵",
+    "py": "tài guì",
+    "vi": "đắt quá"
+   },
+   {
+    "zh": "买",
+    "py": "mǎi",
+    "vi": "mua"
+   },
+   {
+    "zh": "两个",
+    "py": "liǎng ge",
+    "vi": "hai quả"
+   },
+   {
+    "zh": "给",
+    "py": "gěi",
+    "vi": "đưa, cho"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h1-10",
+   "zh-g-h1-21",
+   "zh-g-h1-24"
+  ],
+  "quiz": [
+   {
+    "q": "Một quả táo giá bao nhiêu?",
+    "options": [
+     "Mười tệ",
+     "Hai mươi tệ",
+     "Năm tệ"
+    ],
+    "answer": 0,
+    "explain": "Người bán nói một quả táo giá mười tệ."
+   },
+   {
+    "q": "小丽 mua mấy quả táo?",
+    "options": [
+     "Một quả",
+     "Hai quả",
+     "Ba quả"
+    ],
+    "answer": 1,
+    "explain": "小丽 nói cô ấy mua hai quả táo."
+   },
+   {
+    "q": "Người bán miêu tả quả táo thế nào?",
+    "options": [
+     "Nhỏ và chua",
+     "Rẻ và mềm",
+     "To và ngon"
+    ],
+    "answer": 2,
+    "explain": "Người bán nói táo to và ngon."
+   },
+   {
+    "q": "Hai quả táo có giá bao nhiêu?",
+    "options": [
+     "Hai mươi tệ",
+     "Mười tệ",
+     "Năm tệ"
+    ],
+    "answer": 0,
+    "explain": "Người bán nói hai quả táo giá hai mươi tệ."
+   },
+   {
+    "q": "小丽 đưa người bán bao nhiêu tiền?",
+    "options": [
+     "Mười tệ",
+     "Hai mươi tệ",
+     "Năm tệ"
+    ],
+    "answer": 1,
+    "explain": "小丽 nói cô ấy đưa người bán hai mươi tệ."
+   }
+  ]
+ }
+]

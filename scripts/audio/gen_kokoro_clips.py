@@ -133,6 +133,14 @@ def run_examples(kokoro: Kokoro, voice: str) -> None:
 def run_listening(kokoro: Kokoro, voice: str) -> None:
     manifest = load(ROOT / ".listening-manifest.json")
     items = manifest.get("sections", [])
+    # Chạy song song nhiều tiến trình: SHARD="i/n" (ví dụ 0/3, 1/3, 2/3) — mỗi tiến trình lấy các section có chỉ số % n == i.
+    shard = os.environ.get("SHARD")
+    if shard:
+        si, sn = (int(x) for x in shard.split("/"))
+        items = [it for k, it in enumerate(items) if k % sn == si]
+    only = os.environ.get("ONLY_TEST_PREFIX")
+    if only:
+        items = [it for it in items if it["test"].startswith(only)]
     if LIMIT:
         items = items[:LIMIT]
     for item in items:
@@ -166,7 +174,16 @@ def main() -> None:
     parser.add_argument("--kind", choices=["words", "lines", "examples", "listening"], required=True)
     parser.add_argument("--words-file", help="JSON array of explicit word/phrase keys for --kind words")
     args = parser.parse_args()
-    kokoro = Kokoro(str(MODELS / "kokoro-v1.0.onnx"), str(MODELS / "voices-v1.0.bin"))
+    threads = int(os.environ.get("KOKORO_THREADS", "0") or 0)
+    if threads:  # giới hạn luồng để nhiều tiến trình/ứng dụng khác không tranh nhau CPU
+        import onnxruntime as ort
+        so = ort.SessionOptions()
+        so.intra_op_num_threads = threads
+        so.inter_op_num_threads = 1
+        sess = ort.InferenceSession(str(MODELS / "kokoro-v1.0.onnx"), sess_options=so, providers=["CPUExecutionProvider"])
+        kokoro = Kokoro.from_session(sess, str(MODELS / "voices-v1.0.bin"))
+    else:
+        kokoro = Kokoro(str(MODELS / "kokoro-v1.0.onnx"), str(MODELS / "voices-v1.0.bin"))
     kv = VOICES[args.voice]
     {"words": run_words, "lines": run_lines, "examples": run_examples, "listening": run_listening}[args.kind](kokoro, kv)
 

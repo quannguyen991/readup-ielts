@@ -88,6 +88,38 @@ export default function SentenceHubScreen() {
       <Appear index={3}>
         <View className="mt-8 flex-row flex-wrap gap-4">
           <EntryCard
+            icon="pencil"
+            tint="accent"
+            title={L('Tự diễn đạt', 'Write it your way')}
+            body={L('Đọc nghĩa tiếng Việt, tự viết câu tiếng Anh, sửa lặp lại cho tới khi đúng và đúng cấu trúc.', 'Read the Vietnamese, write your own English, and revise until it is right.')}
+            cta={L('Bắt đầu viết', 'Start writing')}
+            onPress={() => router.push('/sentence/express' as never)}
+          />
+          <EntryCard
+            icon="pencil"
+            tint="accent"
+            title={L('Dịch essay dài', 'Long essay translation')}
+            body={L('Dịch bài văn dài và đoạn IELTS Reading (Cambridge) từng câu một, nhận góp ý sau mỗi câu.', 'Translate a 25-sentence text one sentence at a time with feedback.')}
+            cta={L('Mở essay', 'Open essays')}
+            onPress={() => router.push('/sentence/essay' as never)}
+          />
+          <EntryCard
+            icon="play"
+            tint="primary"
+            title={L('Luyện đa dạng', 'Mixed drills')}
+            body={L('Sắp xếp từ, điền từ, tìm lỗi sai — bài ngắn, chấm ngay.', 'Word order, gap fill and error spotting — short, instant feedback.')}
+            cta={L('Làm bài', 'Start')}
+            onPress={() => router.push('/sentence/mix' as never)}
+          />
+          <EntryCard
+            icon="pencil"
+            tint="primary"
+            title={L('Viết cả đoạn', 'Paragraph writing')}
+            body={L('Viết cả đoạn, nhận góp ý từng câu và nhận xét cả đoạn.', 'Write a paragraph and get feedback sentence by sentence.')}
+            cta={L('Viết đoạn văn', 'Write a paragraph')}
+            onPress={() => router.push('/sentence/paragraph' as never)}
+          />
+          <EntryCard
             icon="play"
             tint="primary"
             title={L('Thư viện bộ đề', 'Practice sets')}
@@ -160,7 +192,7 @@ function EntryCard({
   cta,
   onPress,
 }: {
-  icon: 'play' | 'volume';
+  icon: 'play' | 'volume' | 'pencil';
   tint: 'primary' | 'accent';
   title: string;
   body: string;

@@ -30,7 +30,8 @@ function useHubFont() {
     if (!document.getElementById(STYLE_ID)) {
       const style = document.createElement('style');
       style.id = STYLE_ID;
-      style.textContent = `html.${CLASS} body, html.${CLASS} body * { font-family: "Nunito", system-ui, sans-serif !important; }`;
+      // Trang nào muốn phông riêng (vd. khoá phát âm) gắn thêm class `hub-own-font` lên <html> khi vào trang.
+      style.textContent = `html.${CLASS}:not(.hub-own-font) body, html.${CLASS}:not(.hub-own-font) body * { font-family: "Nunito", system-ui, sans-serif !important; }`;
       document.head.appendChild(style);
     }
 

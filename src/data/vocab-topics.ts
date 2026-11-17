@@ -49,6 +49,14 @@ export type VocabTopicWord = {
   language?: 'en' | 'ja' | 'zh';
   /** Romaji của từ tiếng Nhật. */
   romanization?: string;
+  /** Chú âm cho mục từ tiếng Trung có dữ liệu Zhuyin. */
+  zhuyin?: string;
+  /** Dạng phồn thể khi từ chính hiển thị bằng giản thể. */
+  traditional?: string;
+  /** Các cấp nguồn cùng có mục từ này (một từ có thể xuất hiện ở nhiều cấp HSK). */
+  sourceLevels?: string[];
+  /** Cách đọc, chú âm, nghĩa và dạng phồn thể ghép theo từng dòng nguồn. */
+  readingVariants?: { pinyin: string; zhuyin?: string; definitionEn: string; traditional?: string }[];
   sourcePos?: string;
   /** Ngôn ngữ của nghĩa nguồn; Irodori cung cấp nghĩa tiếng Anh. */
   glossLanguage?: 'vi' | 'en';

@@ -123,6 +123,31 @@ export type MixedChart = Base & {
 
 export type ChartData = SimpleChartData | MixedChart;
 
+export type WritingPromptSourceChart = {
+  title: string;
+  unit?: string;
+  imageAlt?: string;
+  assetUrl?: string | null;
+  type?: string;
+  kind?: string;
+  series?: string[];
+  labels?: string[];
+  axisTicks?: string[];
+  chartVisualLabelsSource?: string;
+  dataAvailability?: string;
+  dataTables?: Array<{
+    title?: string;
+    columns: string[];
+    rows: Array<{ label: string; values: Array<string | number> }>;
+    dataPrecision?: 'exact' | 'approximate';
+  }>;
+  steps?: string[];
+  isCycle?: boolean;
+  panels?: MapPanel[];
+  dataPrecision?: 'exact' | 'approximate';
+  chartAnnotations?: string[];
+};
+
 export type WritingPrompt = {
   id: string;
   task: WritingTask;
@@ -135,6 +160,8 @@ export type WritingPrompt = {
   timeLimitSeconds: number;
   minWords: number;
   source: 'generated' | 'official' | 'curated';
+  sourceUrl?: string;
+  sourceCharts?: WritingPromptSourceChart[];
 };
 
 export type WritingSubmission = {

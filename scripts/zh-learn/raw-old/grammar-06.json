@@ -1,0 +1,602 @@
+[
+ {
+  "id": "zh-g-h1-25",
+  "level": 1,
+  "order": 25,
+  "title": "Nói năm, tháng, ngày và thứ",
+  "titleZh": "年月日星期",
+  "summary": "Bạn sẽ sắp xếp năm, tháng, ngày, thứ và giờ trong câu tiếng Trung.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Thứ tự thời gian",
+    "body": "Tiếng Trung thường nói thời gian từ lớn đến nhỏ: năm, tháng, ngày rồi đến thứ. Khi nói giờ, ta thường đặt buổi trước giờ.",
+    "examples": [
+     {
+      "zh": "今天是星期一，我们去学校学习。",
+      "py": "jīntiān shì xīngqī yī wǒmen qù xuéxiào xuéxí",
+      "vi": "Hôm nay là thứ Hai, chúng tôi đi học ở trường."
+     },
+     {
+      "zh": "我的生日是五月二日，妈妈很高兴。",
+      "py": "wǒ de shēngrì shì wǔ yuè èr rì māma hěn gāoxìng",
+      "vi": "Sinh nhật của tôi là ngày hai tháng năm, mẹ rất vui."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói lịch và giờ",
+    "body": "Dùng cách nói này khi cho biết ngày, thứ hoặc giờ của một hoạt động. 星期 theo sau là số chỉ thứ; buổi như 上午 thường đứng trước giờ.",
+    "examples": [
+     {
+      "zh": "我们明天上午八点去学校。",
+      "py": "wǒmen míngtiān shàngwǔ bā diǎn qù xuéxiào",
+      "vi": "Sáng mai lúc tám giờ chúng tôi đi đến trường."
+     },
+     {
+      "zh": "他星期五下午在家看书。",
+      "py": "tā xīngqī wǔ xiàwǔ zài jiā kànshū",
+      "vi": "Chiều thứ Sáu anh ấy ở nhà đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Năm đến ngày",
+    "body": "Nói ngày theo thứ tự 年 + 月 + 日 hoặc 号. Thứ được nói bằng 星期 + số; giờ có thể nói theo mẫu buổi + giờ + 点.",
+    "formula": "Năm + 年 + tháng + 月 + ngày + 日/号；星期 + số；buổi + giờ + 点",
+    "examples": [
+     {
+      "zh": "今天是二零二六年十一月十六日。",
+      "py": "jīntiān shì èr líng èr liù nián shíyī yuè shíliù rì",
+      "vi": "Hôm nay là ngày mười sáu tháng mười một năm hai nghìn không trăm hai mươi sáu."
+     },
+     {
+      "zh": "我星期三上午九点上课。",
+      "py": "wǒ xīngqī sān shàngwǔ jiǔ diǎn shàngkè",
+      "vi": "Thứ Tư lúc chín giờ sáng tôi học."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đừng đảo thứ tự",
+    "body": "Ngày tháng đi từ đơn vị lớn đến nhỏ. 号 dùng sau số ngày trong tháng, không dùng sau số chỉ thứ.",
+    "mistakes": [
+     {
+      "wrong": "今天是十一月十六日二零二六年。",
+      "right": "今天是二零二六年十一月十六日。",
+      "why": "Người Việt có thể quen đặt tháng trước năm, nhưng tiếng Trung thường xếp năm rồi đến tháng và ngày."
+     },
+     {
+      "wrong": "今天是星期一号。",
+      "right": "今天是星期一。",
+      "why": "号 chỉ ngày trong tháng; thứ Hai nói là 星期一, không thêm 号."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn cách viết ngày theo thứ tự năm, tháng, ngày.",
+    "options": [
+     "二零二六年十一月十六日",
+     "十一月二零二六年十六日",
+     "二零二六日十一月十六年",
+     "十六日十一月二零二六年"
+    ],
+    "answer": 0,
+    "explain": "Ngày tháng tiếng Trung thường xếp năm trước, rồi tháng và ngày."
+   },
+   {
+    "q": "Cách nói “thứ Tư” là gì?",
+    "options": [
+     "星期四",
+     "星期三",
+     "星期二",
+     "星期日"
+    ],
+    "answer": 1,
+    "explain": "Thứ Tư là 星期三."
+   },
+   {
+    "q": "Chọn câu đúng để nói “Tôi học lúc tám giờ sáng”.",
+    "options": [
+     "我八点上午上课。",
+     "我上午点八上课。",
+     "我上午八点上课。",
+     "我上课上午八点。"
+    ],
+    "answer": 2,
+    "explain": "Buổi đứng trước giờ, nên nói 上午八点."
+   },
+   {
+    "q": "Chọn cách nói “ngày mười sáu tháng mười một”.",
+    "options": [
+     "十一月十六年",
+     "十六日十一月",
+     "十六月十一日",
+     "十一月十六日"
+    ],
+    "answer": 3,
+    "explain": "Tháng đứng trước ngày, nên nói 十一月十六日."
+   },
+   {
+    "q": "Chọn câu đúng để nói “Chúng tôi đến trường vào thứ Hai”.",
+    "options": [
+     "我们星期一去学校。",
+     "我们一星期去学校。",
+     "我们星期去学校一。",
+     "我们去一学校星期。"
+    ],
+    "answer": 0,
+    "explain": "Số chỉ thứ đứng sau 星期, nên dùng 星期一."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-26",
+  "level": 1,
+  "order": 26,
+  "title": "Vị trí định ngữ và trạng ngữ",
+  "titleZh": "定语和状语",
+  "summary": "Bạn sẽ đặt từ bổ nghĩa trước danh từ và đặt thời gian, nơi chốn trước động từ.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Từ bổ nghĩa đứng trước",
+    "body": "Định ngữ bổ nghĩa cho danh từ và thường đứng trước danh từ đó. Trạng ngữ bổ nghĩa cho hành động, thường đứng trước động từ.",
+    "examples": [
+     {
+      "zh": "这是我的中文书，你可以看。",
+      "py": "zhè shì wǒ de zhōngwén shū nǐ kěyǐ kàn",
+      "vi": "Đây là sách tiếng Trung của tôi, bạn có thể xem."
+     },
+     {
+      "zh": "他是我的好朋友，我们在学校学习。",
+      "py": "tā shì wǒ de hǎo péngyou wǒmen zài xuéxiào xuéxí",
+      "vi": "Anh ấy là bạn tốt của tôi, chúng tôi học ở trường."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Thêm thông tin cho danh từ",
+    "body": "Dùng định ngữ để nói rõ danh từ thuộc về ai, có đặc điểm gì hoặc có số lượng bao nhiêu. Cụm chỉ thời gian và nơi chốn có thể làm trạng ngữ trước hành động.",
+    "examples": [
+     {
+      "zh": "我今天买了两本中文书。",
+      "py": "wǒ jīntiān mǎi le liǎng běn zhōngwén shū",
+      "vi": "Hôm nay tôi đã mua hai quyển sách tiếng Trung."
+     },
+     {
+      "zh": "妈妈给我一个苹果。",
+      "py": "māma gěi wǒ yí ge píngguǒ",
+      "vi": "Mẹ cho tôi một quả táo."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Định ngữ trước danh từ",
+    "body": "Từ chỉ sở hữu, danh từ bổ nghĩa, tính từ hoặc cụm số lượng thường đứng trước danh từ chính. 的 thường dùng với cụm chỉ sở hữu; nhiều cụm ngắn như 好朋友 không cần 的.",
+    "formula": "Định ngữ + (的) + danh từ",
+    "examples": [
+     {
+      "zh": "我有一个中国朋友。",
+      "py": "wǒ yǒu yí ge zhōngguó péngyou",
+      "vi": "Tôi có một người bạn Trung Quốc."
+     },
+     {
+      "zh": "她是我的好老师。",
+      "py": "tā shì wǒ de hǎo lǎoshī",
+      "vi": "Cô ấy là giáo viên tốt của tôi."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Trạng ngữ trước động từ",
+    "body": "Thời gian và nơi chốn thường đứng trước động từ trong câu kể thông thường. Khi có cả hai, thời gian thường đứng trước nơi chốn.",
+    "formula": "Chủ ngữ + thời gian + nơi chốn + động từ",
+    "examples": [
+     {
+      "zh": "我今天在家看中文书。",
+      "py": "wǒ jīntiān zài jiā kàn zhōngwén shū",
+      "vi": "Hôm nay tôi đọc sách tiếng Trung ở nhà."
+     },
+     {
+      "zh": "我们明天在学校学习汉语。",
+      "py": "wǒmen míngtiān zài xuéxiào xuéxí hànyǔ",
+      "vi": "Ngày mai chúng tôi học tiếng Trung ở trường."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt đúng vị trí",
+    "body": "Cụm số lượng đặt trước danh từ, còn trạng ngữ thời gian thường đặt trước nơi chốn và động từ.",
+    "mistakes": [
+     {
+      "wrong": "我有中文书两本。",
+      "right": "我有两本中文书。",
+      "why": "Cụm chỉ số lượng 两本 đứng trước danh từ 中文书."
+     },
+     {
+      "wrong": "我在家今天看书。",
+      "right": "我今天在家看书。",
+      "why": "Trong câu kể thông thường, thời gian thường đứng trước cụm chỉ nơi chốn."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn cụm đúng cho nghĩa “hai quyển sách”.",
+    "options": [
+     "两本书",
+     "书两本",
+     "两书本",
+     "本两书"
+    ],
+    "answer": 0,
+    "explain": "Cụm số lượng 两本 đứng trước danh từ 书."
+   },
+   {
+    "q": "Chọn cụm đúng cho nghĩa “sách hay”.",
+    "options": [
+     "书好",
+     "好书",
+     "书的好",
+     "好一个书"
+    ],
+    "answer": 1,
+    "explain": "Tính từ 好 đứng trước danh từ 书."
+   },
+   {
+    "q": "Chọn câu đặt thời gian và nơi chốn đúng.",
+    "options": [
+     "我在家今天看书。",
+     "我看书今天在家。",
+     "我今天在家看书。",
+     "我看今天在家书。"
+    ],
+    "answer": 2,
+    "explain": "今天 và 在家 đứng trước động từ 看."
+   },
+   {
+    "q": "Chọn câu đúng cho nghĩa “Đây là sách tiếng Trung của tôi”.",
+    "options": [
+     "这是中文书的我。",
+     "这是书中文我的。",
+     "这是我书中文。",
+     "这是我的中文书。"
+    ],
+    "answer": 3,
+    "explain": "Cụm sở hữu 我的 đứng trước danh từ 中文书."
+   },
+   {
+    "q": "Chọn câu đúng để nói “Tôi đã mua hai quyển sách”.",
+    "options": [
+     "我买了两本书。",
+     "我买了书两本。",
+     "我两本买了书。",
+     "我买两书本了。"
+    ],
+    "answer": 0,
+    "explain": "两本书 là cụm số lượng đứng trước danh từ."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-27",
+  "level": 1,
+  "order": 27,
+  "title": "Nối ý với 也 và 还",
+  "titleZh": "也和还",
+  "summary": "Bạn sẽ dùng 也 để diễn tả điều tương tự và dùng 还 để bổ sung ý.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Thêm ý tương tự",
+    "body": "也 thường mang nghĩa “cũng”, còn 还 thường mang nghĩa “còn” hoặc “thêm”. Cả hai thường đứng trước động từ hoặc tính từ mà chúng bổ nghĩa.",
+    "examples": [
+     {
+      "zh": "我喜欢看书，也喜欢写字。",
+      "py": "wǒ xǐhuan kànshū yě xǐhuan xiězì",
+      "vi": "Tôi thích đọc sách, cũng thích viết chữ."
+     },
+     {
+      "zh": "他会说汉语，还会说英语。",
+      "py": "tā huì shuō hànyǔ hái huì shuō yīngyǔ",
+      "vi": "Anh ấy biết nói tiếng Trung, còn biết nói tiếng Anh."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nối hành động hoặc đặc điểm",
+    "body": "Dùng 也 khi vế sau lặp lại hoặc có điểm giống vế trước. Dùng 还 khi muốn thêm một hành động, khả năng hoặc sự vật.",
+    "examples": [
+     {
+      "zh": "我今天在家学习，明天也在家学习。",
+      "py": "wǒ jīntiān zài jiā xuéxí míngtiān yě zài jiā xuéxí",
+      "vi": "Hôm nay tôi học ở nhà, ngày mai cũng học ở nhà."
+     },
+     {
+      "zh": "她星期一上课，星期五也上课。",
+      "py": "tā xīngqī yī shàngkè xīngqī wǔ yě shàngkè",
+      "vi": "Thứ Hai cô ấy học, thứ Sáu cũng học."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 也 hoặc 还",
+    "body": "Có thể lặp lại chủ ngữ hoặc lược chủ ngữ nếu người nghe hiểu rõ. Đặt 也 hoặc 还 trước phần vị ngữ cần bổ sung.",
+    "formula": "Chủ ngữ + vế trước，(chủ ngữ) + 也/还 + vị ngữ",
+    "examples": [
+     {
+      "zh": "爸爸在家做饭，妈妈也在家做饭。",
+      "py": "bàba zài jiā zuòfàn māma yě zài jiā zuòfàn",
+      "vi": "Bố nấu ăn ở nhà, mẹ cũng nấu ăn ở nhà."
+     },
+     {
+      "zh": "我有一个朋友，还有一个同学。",
+      "py": "wǒ yǒu yí ge péngyou hái yǒu yí ge tóngxué",
+      "vi": "Tôi có một người bạn và còn có một bạn học nữa."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Đặt trước vị ngữ",
+    "body": "也 và 还 đứng trước động từ hoặc tính từ, không chen sau động từ chính. Nếu dùng 还 để thêm ý, thường không cần đặt thêm 也 ngay cạnh nó.",
+    "examples": [
+     {
+      "zh": "我今天看书，也写字。",
+      "py": "wǒ jīntiān kànshū yě xiězì",
+      "vi": "Hôm nay tôi đọc sách, cũng viết chữ."
+     },
+     {
+      "zh": "我有一个哥哥，还有一个姐姐。",
+      "py": "wǒ yǒu yí ge gēge hái yǒu yí ge jiějie",
+      "vi": "Tôi có một anh trai và còn có một chị gái nữa."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đặt sau động từ",
+    "body": "Đặt 也 hoặc 还 trước động từ mà từ đó bổ nghĩa. Tránh xếp chồng 也 và 还 khi chỉ cần một từ để nối ý.",
+    "mistakes": [
+     {
+      "wrong": "我喜欢也看书。",
+      "right": "我也喜欢看书。",
+      "why": "也 bổ nghĩa cho hành động 喜欢 nên đứng trước động từ."
+     },
+     {
+      "wrong": "我喜欢看书，也还喜欢写字。",
+      "right": "我喜欢看书，还喜欢写字。",
+      "why": "Trong câu này 还 đã bổ sung ý, không cần dùng thêm 也."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu đúng với nghĩa “Tôi cũng thích đọc sách”.",
+    "options": [
+     "我也喜欢看书。",
+     "我喜欢也看书。",
+     "也我喜欢看书。",
+     "我喜欢看也书。"
+    ],
+    "answer": 0,
+    "explain": "也 đứng trước vị ngữ 喜欢看书."
+   },
+   {
+    "q": "Chọn câu dùng 还 để bổ sung một hoạt động.",
+    "options": [
+     "我今天还也学习英语。",
+     "我今天学习汉语，还学习英语。",
+     "我今天学习还汉语，英语。",
+     "还我今天学习英语。"
+    ],
+    "answer": 1,
+    "explain": "还 đứng trước động từ 学习 để thêm hoạt động học tiếng Anh."
+   },
+   {
+    "q": "Điền phần còn thiếu: 我喜欢苹果，也___牛奶。",
+    "options": [
+     "喜欢不",
+     "牛奶也",
+     "喜欢",
+     "苹果"
+    ],
+    "answer": 2,
+    "explain": "Câu đúng là 我喜欢苹果，也喜欢牛奶, với 也 đứng trước 喜欢."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa “Bố nấu ăn ở nhà, mẹ cũng nấu ăn ở nhà”.",
+    "options": [
+     "爸爸也在家做饭，妈妈在家做饭。",
+     "爸爸在家也做饭，妈妈做饭在家。",
+     "爸爸做饭在家，妈妈也做饭在家。",
+     "爸爸在家做饭，妈妈也在家做饭。"
+    ],
+    "answer": 3,
+    "explain": "Vế sau lặp lại cùng hành động và dùng 也 trước vị ngữ."
+   },
+   {
+    "q": "Trong câu này, 也 có nghĩa gần nhất với từ nào: 我也学习汉语。",
+    "options": [
+     "cũng",
+     "đang",
+     "đã",
+     "ở trong"
+    ],
+    "answer": 0,
+    "explain": "也 có nghĩa là “cũng” trong câu này."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-28",
+  "level": 1,
+  "order": 28,
+  "title": "Cụm giới tân và cụm phương vị",
+  "titleZh": "介宾方位",
+  "summary": "Bạn sẽ tạo cụm giới từ và nói vị trí của người hoặc vật bằng từ phương vị.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói quan hệ và vị trí",
+    "body": "Cụm giới tân gồm giới từ và đối tượng theo sau, như 在家 hoặc 给妈妈. Cụm phương vị thường gồm danh từ chỉ nơi chốn và từ như 上 hoặc 里.",
+    "examples": [
+     {
+      "zh": "我今天在家看书，弟弟在学校学习。",
+      "py": "wǒ jīntiān zài jiā kànshū dìdi zài xuéxiào xuéxí",
+      "vi": "Hôm nay tôi đọc sách ở nhà, em trai học ở trường."
+     },
+     {
+      "zh": "我的中文书在桌子上，手机也在桌子上。",
+      "py": "wǒ de zhōngwén shū zài zhuōzi shàng shǒujī yě zài zhuōzi shàng",
+      "vi": "Sách tiếng Trung của tôi ở trên bàn, điện thoại cũng ở trên bàn."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói nơi chốn và đối tượng",
+    "body": "Dùng cụm giới tân để nói hành động diễn ra ở đâu, bắt đầu từ đâu hoặc hướng đến ai. Cụm phương vị giúp xác định vật ở trên, dưới hoặc trong một nơi.",
+    "examples": [
+     {
+      "zh": "我从家去学校，下午回家。",
+      "py": "wǒ cóng jiā qù xuéxiào xiàwǔ huí jiā",
+      "vi": "Tôi đi từ nhà đến trường, buổi chiều về nhà."
+     },
+     {
+      "zh": "我在家给妈妈打电话。",
+      "py": "wǒ zài jiā gěi māma dǎ diànhuà",
+      "vi": "Tôi gọi điện cho mẹ ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Giới từ trước đối tượng",
+    "body": "Trong câu kể thông thường, cụm giới tân đứng trước động từ mà nó bổ nghĩa. Cụm có 在 thường cho biết nơi diễn ra hành động.",
+    "formula": "Chủ ngữ + giới từ + đối tượng + động từ + phần còn lại",
+    "examples": [
+     {
+      "zh": "我每天在家学习汉语。",
+      "py": "wǒ měitiān zài jiā xuéxí hànyǔ",
+      "vi": "Ngày nào tôi cũng học tiếng Trung ở nhà."
+     },
+     {
+      "zh": "妈妈给我买了一个苹果。",
+      "py": "māma gěi wǒ mǎi le yí ge píngguǒ",
+      "vi": "Mẹ đã mua cho tôi một quả táo."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Từ phương vị theo sau danh từ",
+    "body": "Từ chỉ phương vị thường đứng sau danh từ nơi chốn, như 桌子上 hoặc 家里. Khi nói hành động ở đâu, cụm 在 + nơi chốn thường đứng trước động từ.",
+    "examples": [
+     {
+      "zh": "我的中文书在桌子上。",
+      "py": "wǒ de zhōngwén shū zài zhuōzi shàng",
+      "vi": "Sách tiếng Trung của tôi ở trên bàn."
+     },
+     {
+      "zh": "我妈妈在家里做饭。",
+      "py": "wǒ māma zài jiālǐ zuòfàn",
+      "vi": "Mẹ tôi nấu ăn ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Giữ đúng thứ tự",
+    "body": "Đặt cụm nơi chốn trước động từ khi nó nói hành động diễn ra ở đâu. Trong cụm phương vị, từ như 上 hoặc 里 đứng sau danh từ nơi chốn.",
+    "mistakes": [
+     {
+      "wrong": "我今天在看书家里。",
+      "right": "我今天在家里看书。",
+      "why": "Cụm 在家里 đứng trước hành động 看书 trong câu kể thông thường."
+     },
+     {
+      "wrong": "手机在上桌子。",
+      "right": "手机在桌子上。",
+      "why": "上 đứng sau danh từ chỉ nơi chốn 桌子."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn cụm có nghĩa “ở nhà”.",
+    "options": [
+     "在家",
+     "家在",
+     "在上家",
+     "家里在"
+    ],
+    "answer": 0,
+    "explain": "在 đứng trước đối tượng 家 trong cụm giới tân."
+   },
+   {
+    "q": "Chọn cụm đúng cho nghĩa “trên bàn”.",
+    "options": [
+     "上桌子",
+     "桌子上",
+     "桌上子",
+     "子桌上"
+    ],
+    "answer": 1,
+    "explain": "Từ phương vị 上 đứng sau danh từ 桌子."
+   },
+   {
+    "q": "Chọn câu đúng để nói “Tôi đọc sách ở nhà”.",
+    "options": [
+     "我看书在家。",
+     "在我家看书。",
+     "我在家看书。",
+     "我书在看家。"
+    ],
+    "answer": 2,
+    "explain": "Cụm chỉ nơi chốn 在家 đứng trước động từ 看书."
+   },
+   {
+    "q": "Chọn câu đúng để nói “Mẹ gọi điện cho tôi ở nhà”.",
+    "options": [
+     "妈妈电话打在家。",
+     "在家妈妈打我电话。",
+     "妈妈在家我打电话。",
+     "妈妈在家给我打电话。"
+    ],
+    "answer": 3,
+    "explain": "在家 nêu nơi chốn, còn 给我 đứng trước động từ 打电话 để chỉ đối tượng."
+   },
+   {
+    "q": "Chọn cụm đúng cho nghĩa “từ nhà đi đến trường”.",
+    "options": [
+     "从家去学校",
+     "家从去学校",
+     "去学校从家",
+     "从去家学校"
+    ],
+    "answer": 0,
+    "explain": "从 đứng trước nơi bắt đầu là 家, rồi đến 去学校."
+   }
+  ]
+ }
+]
