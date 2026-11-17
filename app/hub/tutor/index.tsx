@@ -1,231 +1,146 @@
-import React from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { CosmicBottomTabs } from '@/components/hub/CosmicBottomTabs';
-import { CosmicHeader } from '@/components/hub/CosmicHeader';
+import { HubScreen } from '@/components/hub/HubScreen';
+import { HUB_UI, HubChips, HubHero, HubPanel, HubTag, hubLift } from '@/components/hub/HubUi';
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
+import { TUTORS, type Tutor } from '@/services/hub/tutors';
 
-type TutorItem = {
-  id: string;
-  name: string;
-  desc: string;
-  icon: string;
-  iconBg: string;
-  tag?: 'MỚI' | 'BETA' | 'BAND 8.5' | 'HOT';
-  route: string;
-};
+/** Nhóm theo mục tiêu — giống các tab Tất cả / Ngôn ngữ / Chuyên nghiệp / Xã hội của app tham chiếu, thêm nhóm IELTS. */
+type Group = 'exam' | 'language' | 'work' | 'social';
+type Meta = { group: Group; icon: string; tint: string; does: string; route?: string };
 
-const TUTOR_LIST: TutorItem[] = [
-  {
-    id: 'grammar',
-    name: 'Gia sư ngữ pháp',
-    desc: 'Cải thiện kỹ năng ngữ pháp của bạn với các bài tập cá nhân hoá.',
-    icon: '📚',
-    iconBg: 'linear-gradient(135deg, #FF6B8B, #FF8E53)',
-    route: '/hub/tutor/grammar',
-  },
-  {
-    id: 'speech-analysis',
-    name: 'Phân tích giọng nói',
-    tag: 'MỚI',
-    desc: 'Ghi âm và khám phá giọng nói của bạn nghe thế nào.',
-    icon: '🎙️',
-    iconBg: 'linear-gradient(135deg, #4E65FF, #92EFFD)',
-    route: '/hub/analyze',
-  },
-  {
-    id: 'vocab',
-    name: 'Gia sư từ vựng',
-    desc: 'Mở rộng vốn từ vựng tiếng Anh của bạn với bài luyện tập cá nhân hoá.',
-    icon: '🗂️',
-    iconBg: 'linear-gradient(135deg, #F39034, #FFD269)',
-    route: '/hub/tutor/vocab',
-  },
-  {
-    id: 'pronounce',
-    name: 'Gia sư phát âm',
-    desc: 'Học cách phát âm tiếng Anh rõ ràng',
-    icon: '🗣️',
-    iconBg: 'linear-gradient(135deg, #36D1DC, #5B86E5)',
-    route: '/hub/learn',
-  },
-  {
-    id: 'meeting',
-    name: 'Gia sư họp',
-    tag: 'MỚI',
-    desc: 'Luyện tập họp công việc',
-    icon: '📅',
-    iconBg: 'linear-gradient(135deg, #FF416C, #FF4B2B)',
-    route: '/hub/meeting',
-  },
-  {
-    id: 'interview',
-    name: 'Gia sư phỏng vấn',
-    desc: 'Luyện tập các cuộc trò chuyện phỏng vấn trực tiếp với người phỏng vấn AI',
-    icon: '👥',
-    iconBg: 'linear-gradient(135deg, #654ea3, #eaafc8)',
-    route: '/hub/tutor/interview',
-  },
-  {
-    id: 'public-speaking',
-    name: 'Gia sư nói trước đám đông',
-    desc: 'Thuyết trình tự tin trước khán giả AI trực tiếp',
-    icon: '🎤',
-    iconBg: 'linear-gradient(135deg, #F857A6, #FF5858)',
-    route: '/hub/tutor/public-speaking',
-  },
-  {
-    id: 'presentation',
-    name: 'Gia sư thuyết trình',
-    tag: 'BETA',
-    desc: 'Tải lên bộ slide của bạn và diễn tập từ đầu đến cuối',
-    icon: '📊',
-    iconBg: 'linear-gradient(135deg, #00B4DB, #0083B0)',
-    route: '/hub/course/presentation',
-  },
-  {
-    id: 'sales',
-    name: 'Gia sư bán hàng',
-    tag: 'BETA',
-    desc: 'Luyện tập cuộc gọi bán hàng trực tiếp và nhận huấn luyện tức thì',
-    icon: '📈',
-    iconBg: 'linear-gradient(135deg, #11998E, #38EF7D)',
-    route: '/hub/tutor/sales',
-  },
-  {
-    id: 'dating',
-    name: 'Gia sư hẹn hò',
-    desc: 'Luyện tập buổi hẹn hò trực tiếp để được huấn luyện',
-    icon: '💌',
-    iconBg: 'linear-gradient(135deg, #FC466B, #3F5EFB)',
-    route: '/hub/tutor/dating',
-  },
-  {
-    id: 'travel',
-    name: 'Gia sư du lịch',
-    desc: 'Luyện tiếng Anh cho chuyến đi sắp tới của bạn',
-    icon: '✈️',
-    iconBg: 'linear-gradient(135deg, #2193B0, #6DD5ED)',
-    route: '/hub/tutor/travel',
-  },
-  {
-    id: 'negotiation',
-    name: 'Huấn luyện viên Đàm phán',
-    tag: 'MỚI',
-    desc: 'Luyện tập những cuộc đàm phán thực tế nơi công sở — lời mời làm việc, tăng lương, khách hàng khó tính, hạn chót. AI đóng vai đối phương rồi huấn luyện bạn sau đó.',
-    icon: '🤝',
-    iconBg: 'linear-gradient(135deg, #F2994A, #F2C94C)',
-    route: '/hub/tutor/negotiation',
-  },
-  {
-    id: 'ielts-speaking',
-    name: 'Luyện thi IELTS Speaking & Forecast Quý 3/2026',
-    tag: 'BAND 8.5',
-    desc: 'Ngân hàng đề thi thật, Sample 8.0+, Speaking Roulette và phòng thi mô phỏng giám khảo thực tế.',
-    icon: '🏆',
-    iconBg: 'linear-gradient(135deg, #D946EF, #8B5CF6)',
-    route: '/speaking',
-  },
-  {
-    id: 'dubbing',
-    name: 'Lồng tiếng video BBC · TED-Ed',
-    tag: 'HOT',
-    desc: 'Phòng thu lồng tiếng theo từng cảnh, ghép giọng bạn vào video và AI phân tích độ nhấn, phát âm IELTS.',
-    icon: '🎬',
-    iconBg: 'linear-gradient(135deg, #0EA5E9, #3B82F6)',
-    route: '/speaking/long-tieng',
-  },
+const GROUPS: { id: Group; title: string; hint: string; neon: 'trophy' | 'book' | 'bolt' | 'heart' }[] = [
+  { id: 'exam', title: 'Luyện thi IELTS', hint: 'Từng phần của bài thi nói, từ Part 1 đến phòng thi giám khảo', neon: 'trophy' },
+  { id: 'language', title: 'Ngôn ngữ', hint: 'Ngữ pháp, từ vựng, phát âm, thành ngữ và độ trôi chảy', neon: 'book' },
+  { id: 'work', title: 'Chuyên nghiệp', hint: 'Họp, phỏng vấn, thuyết trình, bán hàng, đàm phán, lãnh đạo', neon: 'bolt' },
+  { id: 'social', title: 'Xã hội', hint: 'Du lịch, hẹn hò, gọi điện, trò chuyện hằng ngày', neon: 'heart' },
 ];
 
-function TagBadge({ tag }: { tag: TutorItem['tag'] }) {
-  if (!tag) return null;
-  if (tag === 'MỚI') {
-    return (
-      <View className="rounded-full bg-[#1E3A8A] px-2 py-0.5">
-        <Text className="font-heavy text-[13px] text-[#60A5FA] uppercase tracking-wide">MỚI</Text>
-      </View>
-    );
-  }
-  if (tag === 'BETA') {
-    return (
-      <View className="rounded-full bg-[#581C87] px-2 py-0.5">
-        <Text className="font-heavy text-[13px] text-[#C084FC] uppercase tracking-wide">BETA</Text>
-      </View>
-    );
-  }
-  if (tag === 'BAND 8.5') {
-    return (
-      <View className="rounded-full bg-[#831843] px-2 py-0.5">
-        <Text className="font-heavy text-[13px] text-[#F472B6] uppercase tracking-wide">BAND 8.5</Text>
-      </View>
-    );
-  }
-  return (
-    <View className="rounded-full bg-[#2B2350] px-2 py-0.5">
-      <Text className="font-heavy text-[13px] text-[#FB923C] uppercase tracking-wide">HOT</Text>
-    </View>
-  );
-}
+const META: Record<string, Meta> = {
+  'ielts-examiner': { group: 'exam', icon: '🏆', tint: '#EFE4FF', does: 'Thi thử đủ 3 phần, giám khảo ngắt lời như thật', route: '/speaking' },
+  'ielts-part1': { group: 'exam', icon: '1️⃣', tint: '#DFEEFF', does: 'Mở rộng câu trả lời: ý chính → lý do → ví dụ' },
+  'ielts-part2': { group: 'exam', icon: '🗒️', tint: '#FFF0D6', does: '1 phút lập dàn ý, 2 phút nói, có nhận xét cấu trúc' },
+  'ielts-part3': { group: 'exam', icon: '🧠', tint: '#E8E2FF', does: 'Nêu quan điểm, so sánh, dự đoán, phản biện' },
+  'band-upgrade': { group: 'exam', icon: '📈', tint: '#DDF7E8', does: 'Viết lại câu trả lời cao hơn một band' },
+  grammar: { group: 'language', icon: '📚', tint: '#FFE3E8', does: 'Bài tập ngắn, sửa lỗi ngay' },
+  'speech-analysis': { group: 'language', icon: '🎙️', tint: '#DFEEFF', does: 'Báo cáo 6 tiêu chí sau mỗi lần nói', route: '/hub/analyze' },
+  vocab: { group: 'language', icon: '🗂️', tint: '#FFF0D6', does: 'Học từ trong câu nói thật' },
+  pronounce: { group: 'language', icon: '🗣️', tint: '#DDF5F6', does: '44 âm IPA, chấm từng âm', route: '/hub/learn' },
+  idioms: { group: 'language', icon: '💬', tint: '#FFE3F0', does: '3 cụm tự nhiên mỗi buổi, đặt câu của riêng bạn' },
+  fluency: { group: 'language', icon: '⚡', tint: '#FFF0D6', does: 'Hỏi nhanh, đếm từ đệm, thay bằng cụm nối ý' },
+  diary: { group: 'language', icon: '📓', tint: '#EFE4FF', does: 'Viết 3–5 câu mỗi ngày, được sửa một lỗi' },
+  meeting: { group: 'work', icon: '📅', tint: '#FFE3E0', does: 'Nhận phản hồi sau mỗi cuộc họp', route: '/hub/meeting' },
+  interview: { group: 'work', icon: '👥', tint: '#EFE4FF', does: 'Hỏi đáp như buổi phỏng vấn thật' },
+  profile: { group: 'work', icon: '📄', tint: '#DFEEFF', does: 'Tải CV, AI hỏi xoáy vào hồ sơ của bạn' },
+  'public-speaking': { group: 'work', icon: '🎤', tint: '#FFE3F0', does: 'Khán giả AI phản ứng theo lời bạn' },
+  presentation: { group: 'work', icon: '📊', tint: '#DFF3FF', does: 'Diễn tập theo từng slide', route: '/hub/course/presentation' },
+  sales: { group: 'work', icon: '📈', tint: '#DDF7E8', does: 'Cuộc gọi bán hàng có chấm điểm' },
+  negotiation: { group: 'work', icon: '🤝', tint: '#FFF0D6', does: 'AI đóng đối phương, huấn luyện sau buổi' },
+  conflict: { group: 'work', icon: '🕊️', tint: '#E3F1FF', does: 'Xử lý bất đồng mà không tổn hại quan hệ' },
+  'leader-comms': { group: 'work', icon: '📣', tint: '#FFE3E0', does: 'Phát biểu trấn an đội ngũ trong 1 phút' },
+  storytelling: { group: 'work', icon: '📖', tint: '#EFE4FF', does: 'Cấu trúc SCQA biến số liệu thành chuyện' },
+  leadership: { group: 'work', icon: '🧭', tint: '#DDF5F6', does: 'Câu hỏi tự nhận thức và ra quyết định' },
+  'daily-english': { group: 'social', icon: '☕', tint: '#FFF0D6', does: 'Hỏi đường, gọi món, nhờ giúp đỡ' },
+  'small-talk': { group: 'social', icon: '👋', tint: '#FFE3F0', does: 'Mở đầu, duy trì và kết thúc cuộc chuyện' },
+  phone: { group: 'social', icon: '📞', tint: '#DDF3FA', does: 'Nghe gọi đến, trả lời từng câu một' },
+  travel: { group: 'social', icon: '✈️', tint: '#DDF3FA', does: 'Sân bay, khách sạn, nhà hàng' },
+  dating: { group: 'social', icon: '💌', tint: '#FFE3EC', does: 'Trò chuyện tự nhiên, được góp ý' },
+};
+
+const TAG_STYLE: Record<string, { fg: string; bg: string }> = {
+  MỚI: { fg: '#1D4ED8', bg: '#DBEAFE' },
+  NEW: { fg: '#1D4ED8', bg: '#DBEAFE' },
+  BETA: { fg: '#7C3AED', bg: '#EDE9FE' },
+  PREMIUM: { fg: '#B45309', bg: '#FEF3C7' },
+  'BAND 9 EXCLUSIVE': { fg: '#BE185D', bg: '#FCE7F3' },
+};
+
+type Hover = { hovered?: boolean };
+type GroupFilter = 'all' | Group;
 
 export default function TutorList() {
   const { L } = useL();
+  const [q, setQ] = useState('');
+  const [group, setGroup] = useState<GroupFilter>('all');
+
+  const all = useMemo(() => TUTORS.filter((t) => t.status === 'live' && META[t.id]), []);
+  const shown = useMemo(() => {
+    const key = q.trim().toLowerCase();
+    return all.filter((t) => (group === 'all' || META[t.id]!.group === group) && (!key || t.name.toLowerCase().includes(key) || t.desc.toLowerCase().includes(key)));
+  }, [all, q, group]);
+
+  const filters: { id: GroupFilter; label: string }[] = [{ id: 'all', label: `${L('Tất cả', 'All')} · ${all.length}` }, ...GROUPS.map((g) => ({ id: g.id as GroupFilter, label: `${g.title} · ${all.filter((t) => META[t.id]!.group === g.id).length}` }))];
+
+  const open = (t: Tutor) => router.push((META[t.id]!.route ?? `/hub/tutor/${t.id}`) as never);
 
   return (
-    <View className="flex-1 bg-[#0B0D26]">
-      {/* Khung nội dung chính cuộn dọc */}
-      <ScrollView className="flex-1 px-4 pt-3 pb-8" contentContainerStyle={{ paddingBottom: 100 }}>
-        <View className="mx-auto w-full max-w-[700px]">
-          {/* Header với flame, gem, trophy khớp ảnh 1 */}
-          <CosmicHeader title={L('Gia sư', 'AI Tutors')} />
+    <HubScreen title={L('Gia sư', 'AI Tutors')} subtitle={L('Trò chuyện và sửa lỗi cùng AI', 'Talk and get corrected by AI')} back padBottom={120}>
+      <HubHero
+        eyebrow="IELTS · AI TUTORS"
+        title={L('Mỗi mục tiêu,', 'One tutor')}
+        accent={L('một gia sư riêng', 'for every goal')}
+        desc={L('AI đóng vai người đối diện, nghe bạn nói, rồi chỉ ra lỗi phát âm, ngữ pháp và cách diễn đạt tự nhiên hơn.', 'AI plays the other person, listens, then points out pronunciation, grammar and more natural phrasing.')}
+        stats={[
+          { value: String(all.length), label: L('Gia sư', 'Tutors') },
+          { value: String(GROUPS.length), label: L('Nhóm mục tiêu', 'Goal groups') },
+          { value: String(all.filter((t) => t.tag === 'MỚI' || t.tag === 'NEW').length), label: L('Mới ra mắt', 'New') },
+          { value: '24/7', label: L('Luyện bất cứ lúc nào', 'Always on') },
+        ]}
+      />
 
-          {/* Danh sách 12 gia sư AI + 2 kết nối IELTS Speaking */}
-          <View className="gap-3">
-            {TUTOR_LIST.map((tutor) => (
-              <Pressable
-                key={tutor.id}
-                accessibilityRole="button"
-                accessibilityLabel={tutor.name}
-                onPress={() => router.push(tutor.route as never)}
-                className="flex-row items-center gap-3.5 rounded-2xl border border-[#232552] bg-[#16173B] p-4 active:scale-[0.99] active:bg-[#1E204D]"
-                style={{
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
-                }}
-              >
-                {/* Icon minh hoạ */}
-                <View
-                  className="h-12 w-12 items-center justify-center rounded-2xl shadow-md"
-                  style={{
-                    backgroundImage: tutor.iconBg,
-                  }}
-                >
-                  <Text className="text-[24px]">{tutor.icon}</Text>
-                </View>
-
-                {/* Tiêu đề, tag và mô tả */}
-                <View className="flex-1 pr-1">
-                  <View className="flex-row items-center gap-2">
-                    <Text className="font-heavy text-[16px] tracking-wide text-white" numberOfLines={1}>
-                      {tutor.name}
-                    </Text>
-                    <TagBadge tag={tutor.tag} />
-                  </View>
-                  <Text className="mt-1 font-sans text-[12.5px] leading-[18px] text-[#94A3B8]" numberOfLines={3}>
-                    {tutor.desc}
-                  </Text>
-                </View>
-
-                {/* Mũi tên dẫn hướng */}
-                <Icon name="chevron-right" size={18} color="#64748B" />
-              </Pressable>
-            ))}
-          </View>
+      <HubPanel title={L('Tìm gia sư', 'Find a tutor')} icon="cursor">
+        <HubChips options={filters} value={group} onChange={setGroup} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 14, borderWidth: 1.5, borderColor: HUB_UI.line, backgroundColor: HUB_UI.wash, paddingHorizontal: 14, height: 46 }}>
+          <Icon name="search" size={18} color={HUB_UI.muted} />
+          <TextInput value={q} onChangeText={setQ} placeholder={L('Tìm: phỏng vấn, du lịch, Part 2…', 'Search: interview, travel, Part 2…')} placeholderTextColor="#A59CC4" accessibilityLabel={L('Tìm gia sư', 'Find a tutor')} style={{ flex: 1, color: HUB_UI.navy, fontSize: 15 }} />
         </View>
-      </ScrollView>
+      </HubPanel>
 
-      {/* Thanh tab dưới cùng khớp ảnh 1 */}
-      <CosmicBottomTabs activeTab="tutor" />
-    </View>
+      {GROUPS.map((g) => {
+        const items = shown.filter((t) => META[t.id]!.group === g.id);
+        if (items.length === 0) return null;
+        return (
+          <HubPanel key={g.id} title={g.title} icon={g.neon} badge={String(items.length)}>
+            <Text style={{ color: HUB_UI.muted, fontSize: 14, fontWeight: '600', marginTop: -4 }}>{g.hint}</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+              {items.map((tutor) => {
+                const m = META[tutor.id]!;
+                return (
+                  <Pressable
+                    key={tutor.id}
+                    accessibilityRole="button"
+                    accessibilityLabel={tutor.name}
+                    onPress={() => open(tutor)}
+                    style={({ hovered }: Hover) => ({ flexBasis: 300, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+                  >
+                    <View style={{ width: 54, height: 54, borderRadius: 16, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
+                      <Text style={{ fontSize: 28 }}>{m.icon}</Text>
+                    </View>
+                    <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 6 }}>
+                        <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', flexShrink: 1 }}>{tutor.name}</Text>
+                        {tutor.tag ? <HubTag label={tutor.tag === 'BAND 9 EXCLUSIVE' ? 'BAND 9' : tutor.tag} color={(TAG_STYLE[tutor.tag] ?? TAG_STYLE.BETA!).fg} bg={(TAG_STYLE[tutor.tag] ?? TAG_STYLE.BETA!).bg} /> : null}
+                      </View>
+                      <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }} numberOfLines={3}>{tutor.desc}</Text>
+                      <Text style={{ color: HUB_UI.purple, fontSize: 13, fontWeight: '800' }}>{m.does}</Text>
+                    </View>
+                    <Icon name="chevron-right" size={16} color={HUB_UI.muted} />
+                  </Pressable>
+                );
+              })}
+            </View>
+          </HubPanel>
+        );
+      })}
+
+      {shown.length === 0 ? (
+        <HubPanel title={L('Không có gia sư nào khớp', 'No tutor matches')} icon="cloud">
+          <Text style={{ color: HUB_UI.muted, fontSize: 14 }}>{L('Thử từ khoá khác hoặc chọn “Tất cả”.', 'Try another keyword or pick “All”.')}</Text>
+        </HubPanel>
+      ) : null}
+    </HubScreen>
   );
 }

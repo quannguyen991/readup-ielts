@@ -21,6 +21,7 @@ import { OliveGrid } from './OliveGrid';
 import { TravelBackdrop, useSentenceThemeId, useTravelActive } from '@/components/rail/TravelBackdrop';
 import { isExamRoute, isFocusRoute, isImmersiveRoute, isPhoneChromelessRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
+import { useExamImmersive } from '@/store/useExamImmersive';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { useAssistantDock } from '@/store/useAssistantDock';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
@@ -75,7 +76,8 @@ function AppShellBody({ children }: { children: React.ReactNode }) {
   // Kính của Thành Phố Tri Thức theo mốc chuỗi ngày — chạy ở mọi thiết bị.
   useStreakGlass();
   const focus = isFocusRoute(pathname);
-  const immersive = isImmersiveRoute(pathname);
+  const examOpen = useExamImmersive((s) => s.on);
+  const immersive = isImmersiveRoute(pathname) || examOpen;
   const cyberHackRoute = pathname === '/duel/hack';
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
@@ -251,7 +253,8 @@ function AppShellBody({ children }: { children: React.ReactNode }) {
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const focus = isFocusRoute(pathname);
-  const hidden = pathname === '/duel/hack' || isImmersiveRoute(pathname);
+  const examOpen = useExamImmersive((s) => s.on);
+  const hidden = pathname === '/duel/hack' || isImmersiveRoute(pathname) || examOpen;
   const hubRoute = pathname.startsWith('/hub');
   const travelGlass = useTravelActive();
   const retro = useRetroOn();

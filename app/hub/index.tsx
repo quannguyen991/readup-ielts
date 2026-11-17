@@ -43,6 +43,8 @@ const AI_TOOLS: {
 /** Chế độ luyện nói và các khu còn lại của Hub (trước đây nằm ở thanh tab dưới). */
 const MODES: { title: string; desc: string; art: (size: number) => React.ReactNode; route: string; bg: string }[] = [
   { title: 'Học', desc: 'Bài học theo từng kỹ năng', art: (s) => <CuteBook size={s} />, route: '/hub/learn', bg: '#DFEEFF' },
+  { title: 'Nói chuyện', desc: 'Trò chuyện thật, không bài học', art: (s) => <CuteChat size={s} />, route: '/hub/talk', bg: '#FFE9E0' },
+  { title: 'Gia sư', desc: 'Hơn 25 gia sư AI theo mục tiêu', art: (s) => <CuteBulb size={s} />, route: '/hub/tutor', bg: '#FFF3CF' },
   { title: 'Khám phá', desc: 'Tìm nội dung và bài luyện mới', art: (s) => <CuteMagnifier size={s} />, route: '/hub/explore', bg: '#EEE6FF' },
   { title: 'Từ điển', desc: 'Tra từ, nghe phát âm', art: (s) => <CuteNotebook size={s} />, route: '/hub/dictionary', bg: '#E2F7F8' },
 ];

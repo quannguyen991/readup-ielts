@@ -506,6 +506,7 @@ export function IeltsExamRoom({
 }) {
   const { width: winW } = useWindowDimensions();
   const narrow = winW < NARROW_BELOW;
+  const [split, setSplit] = useState(0.5);
   const items = useMemo(() => allItems(parts), [parts]);
   const [activeKey, setActiveKey] = useState(parts[0]!.key);
   const [answers, setAnswers] = useState<ExamAnswers>({});
@@ -631,8 +632,9 @@ export function IeltsExamRoom({
   return (
     <View style={{ flex: 1, minHeight: 780, backgroundColor: CREAM }}>
       <View style={{ height: 64, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20 }}>
-        <Pressable onPress={onExit} accessibilityRole="button" accessibilityLabel="Thoát" style={{ width: 38, height: 38, borderRadius: 19, borderWidth: 2, borderColor: '#9CA3AF', alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 18, color: '#6B7280', fontWeight: '700' }}>×</Text>
+        <Pressable onPress={onExit} accessibilityRole="button" accessibilityLabel="Home" style={{ height: 40, paddingHorizontal: 14, borderRadius: 20, borderWidth: 2, borderColor: '#9CA3AF', flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <Icon name="home" size={18} color="#6B7280" />
+          <Text style={{ fontSize: 14, color: '#6B7280', fontWeight: '800' }}>Home</Text>
         </Pressable>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, height: 40, paddingHorizontal: 18, borderRadius: 20, backgroundColor: timerColor }}>
           <Text style={{ fontSize: 17, fontWeight: '800', color: '#FFFFFF', fontVariant: ['tabular-nums'] as never }}>⏱ {clock(shown)}</Text>
@@ -665,13 +667,29 @@ export function IeltsExamRoom({
             )}
           </View>
         )}
-        {skill === 'reading' && (!narrow || mobileTab === 'passage') ? <View style={{ flex: 1, minHeight: 0, minWidth: 0 }}>{passagePane}</View> : null}
+        {skill === 'reading' && (!narrow || mobileTab === 'passage') ? <View style={{ flex: narrow ? 1 : split, minHeight: 0, minWidth: 0 }}>{passagePane}</View> : null}
         {skill === 'reading' && !narrow ? (
-          <View style={{ width: 16, alignItems: 'center', justifyContent: 'center', borderLeftWidth: 1, borderRightWidth: 1, borderColor: LINE, backgroundColor: '#F6EEDD' }}>
+          <View
+            accessibilityLabel="Kéo để đổi độ rộng hai cột"
+            {...(Platform.OS === 'web'
+              ? ({
+                  onPointerDown: (e: { clientX: number; preventDefault: () => void }) => {
+                    e.preventDefault();
+                    const x0 = e.clientX;
+                    const s0 = split;
+                    const move = (ev: PointerEvent) => setSplit(Math.min(0.75, Math.max(0.25, s0 + (ev.clientX - x0) / Math.max(600, winW))));
+                    const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+                    window.addEventListener('pointermove', move);
+                    window.addEventListener('pointerup', up);
+                  },
+                } as object)
+              : {})}
+            style={[{ width: 16, alignItems: 'center', justifyContent: 'center', borderLeftWidth: 1, borderRightWidth: 1, borderColor: LINE, backgroundColor: '#F6EEDD' }, (Platform.OS === 'web' ? { cursor: 'col-resize', userSelect: 'none' } : null) as never]}
+          >
             <Text style={{ fontSize: 14, color: '#9CA3AF' }}>⋮</Text>
           </View>
         ) : null}
-        {!narrow || mobileTab === 'questions' ? <View style={{ flex: 1, minHeight: 0, minWidth: 0 }}>{questionPane}</View> : null}
+        {!narrow || mobileTab === 'questions' ? <View style={{ flex: narrow || skill !== 'reading' ? 1 : 1 - split, minHeight: 0, minWidth: 0 }}>{questionPane}</View> : null}
       </View>
 
       {skill === 'listening' ? <AudioBar part={part} showTranscript={practice || review} /> : null}

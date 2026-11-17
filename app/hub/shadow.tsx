@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { HubScreen } from '@/components/hub/HubScreen';
+import { HubHero } from '@/components/hub/HubUi';
 import { GLASS_CARD, COSMIC, BAND_COLOR } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { Icon } from '@/components/ui/Icon';
@@ -95,6 +96,19 @@ export default function ShadowPage() {
 
   return (
     <HubScreen title="Nói đuổi" subtitle="Nói đuổi theo giọng bản ngữ để nhận phản hồi ngay" back>
+      <HubHero
+        eyebrow="IELTS · SHADOWING"
+        title="Nói đuổi theo bản ngữ,"
+        accent="trễ nửa nhịp thôi"
+        desc="Nghe một câu rồi nói gần như cùng lúc. Cách này luyện nối âm, nhịp điệu và tốc độ nhanh hơn nhiều so với đọc lại."
+        stats={[
+          { value: '3', label: 'Bước: nghe · đuổi · chấm' },
+          { value: '130–160', label: 'Từ / phút mục tiêu' },
+          { value: 'Từng câu', label: 'Chấm theo câu' },
+          { value: 'Lặp lại', label: 'Đến khi đạt' },
+        ]}
+      />
+
       {/* Chọn bài */}
       <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
         {PASSAGES.map((p, k) => (

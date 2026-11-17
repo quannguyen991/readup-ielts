@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Pressable, Text, View, ScrollView } from 'react-native';
 
 import { HubScreen } from '@/components/hub/HubScreen';
+import { HubHero } from '@/components/hub/HubUi';
 import { GLASS_CARD, COSMIC } from '@/components/hub/theme';
 import { useMicAudio } from '@/components/hub/useMicAudio';
 import { intonationScore, intonationStats, pitchTrack, semitones, type PitchPoint } from '@/services/hub/pitch';
@@ -103,6 +104,19 @@ export default function PitchPage() {
 
   return (
     <HubScreen title="Điều chỉnh giọng nói" subtitle="Học cách phát âm tiếng Anh rõ ràng." back>
+      <HubHero
+        eyebrow="IELTS · INTONATION"
+        title="Giọng lên xuống"
+        accent="đúng chỗ, nghe tự nhiên"
+        desc="Nghe câu mẫu, nói lại, rồi so đường cao độ của bạn với giọng bản ngữ để sửa trọng âm và ngữ điệu."
+        stats={[
+          { value: '3', label: 'Bước: nghe · nói · so' },
+          { value: 'Pitch', label: 'Đường cao độ' },
+          { value: '0–100', label: 'Điểm ngữ điệu' },
+          { value: 'Tức thì', label: 'Phản hồi' },
+        ]}
+      />
+
       {/* Thẻ câu hỏi và IPA tách âm tiết */}
       <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

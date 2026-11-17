@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { HubScreen } from '@/components/hub/HubScreen';
+import { HUB_UI, HubChips, HubHero, HubPanel } from '@/components/hub/HubUi';
 import { GLASS_CARD, COSMIC, BADGE_STYLES } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { useMicAudio } from '@/components/hub/useMicAudio';
@@ -21,6 +22,19 @@ const IELTS_PROMPTS: TopicPrompt[] = [
   { id: 'p1-work', part: 'Part 1', topic: 'Studies & Work', question: 'Do you prefer working alone or in a team?' },
   { id: 'p2-teacher', part: 'Part 2', topic: 'An Influential Teacher', question: 'Describe a teacher who had a positive impact on your education.' },
   { id: 'p3-education', part: 'Part 3', topic: 'Future of Education', question: 'How will artificial intelligence transform classroom learning in the next decade?' },
+  { id: 'p1-hometown', part: 'Part 1', topic: 'Hometown', question: 'What do you like most about your hometown, and has it changed much?' },
+  { id: 'p1-food', part: 'Part 1', topic: 'Food', question: 'Do you prefer eating at home or in restaurants? Why?' },
+  { id: 'p2-place', part: 'Part 2', topic: 'A Place You Visited', question: 'Describe a place you visited that you would like to go back to. You should say where it is, when you went, what you did there, and explain why you want to return.' },
+  { id: 'p2-skill', part: 'Part 2', topic: 'A Skill You Learned', question: 'Describe a skill you learned that you are proud of. You should say what it is, how you learned it, and why it matters to you.' },
+  { id: 'p3-tech', part: 'Part 3', topic: 'Technology & Society', question: 'Do you think people rely too much on technology to solve everyday problems?' },
+  { id: 'p3-work', part: 'Part 3', topic: 'Work & Careers', question: 'How might the idea of a career for life change in the future?' },
+];
+
+const TIPS = [
+  { t: 'Nói 30–60 giây trở lên', d: 'Bài quá ngắn không đủ dữ liệu để đo tốc độ và ngập ngừng.' },
+  { t: 'Giữ 130–160 từ mỗi phút', d: 'Nhanh quá dễ nuốt âm, chậm quá bị tính ngập ngừng.' },
+  { t: 'Thay từ đệm bằng quãng nghỉ', d: 'Dừng một nhịp thay cho “um, uh” sẽ nghe tự tin hơn.' },
+  { t: 'Lên xuống giọng theo ý', d: 'Giọng đều một nhịp bị trừ điểm ngữ điệu dù phát âm đúng.' },
 ];
 
 const DIM_LABEL: Record<DimensionScore['key'], { vi: string; en: string }> = {
@@ -144,28 +158,29 @@ export default function AnalyzePage() {
 
   return (
     <HubScreen title="Phân tích giọng nói" subtitle="Ghi âm, rồi xem bài nói của bạn được đo thế nào." back>
-      {/* Chế độ: ghi âm tự do hay trả lời đề IELTS */}
-      <View style={{ flexDirection: 'row', padding: 4, borderRadius: 14, backgroundColor: '#F3F0FB', borderWidth: 1, borderColor: COSMIC.line }}>
-        {(['free', 'topic'] as const).map((m) => {
-          const on = mode === m;
-          return (
-            <Pressable
-              key={m}
-              accessibilityRole="tab"
-              accessibilityState={{ selected: on }}
-              onPress={() => setMode(m)}
-              style={{ flex: 1, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? '#FFFFFF' : 'transparent', borderWidth: on ? 1 : 0, borderColor: COSMIC.cardBorder }}
-            >
-              <Text style={{ color: on ? COSMIC.ink : COSMIC.muted, fontSize: 13, fontWeight: '800' }}>
-                {m === 'free' ? 'Ghi âm tự do' : 'Đề IELTS (Part 1–3)'}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
+      <HubHero
+        eyebrow="IELTS · SPEAKING"
+        title="Nói một lần,"
+        accent="đo được sáu chiều"
+        desc="Ghi âm tự do hoặc trả lời một đề IELTS. Sau khi dừng, báo cáo chỉ dùng số đo thật từ bài nói: tốc độ, từ đệm, ngập ngừng, độ rõ, ngữ điệu."
+        stats={[
+          { value: '6', label: 'Chiều được chấm' },
+          { value: String(IELTS_PROMPTS.length), label: 'Đề có sẵn' },
+          { value: '30s+', label: 'Nên nói tối thiểu' },
+          { value: '0–100', label: 'Thang điểm' },
+        ]}
+      />
+
+      <HubPanel title="Chọn cách nói" icon="gamepad">
+        <HubChips
+          options={[{ id: 'free', label: 'Ghi âm tự do' }, { id: 'topic', label: 'Đề IELTS (Part 1–3)' }]}
+          value={mode}
+          onChange={(m) => setMode(m)}
+        />
+      </HubPanel>
 
       {mode === 'topic' ? (
-        <View style={[GLASS_CARD, { padding: 16, gap: 12 }]}>
+        <HubPanel title="Đề cần trả lời" icon="note" badge={selectedPrompt.part}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }}>
             {IELTS_PROMPTS.map((p) => {
               const sel = p.id === selectedPrompt.id;
@@ -186,11 +201,12 @@ export default function AnalyzePage() {
           <View style={{ backgroundColor: '#F3F0FB', padding: 14, borderRadius: 12 }}>
             <Text style={{ color: COSMIC.ink, fontSize: 15, fontWeight: '600', lineHeight: 22 }}>{selectedPrompt.question}</Text>
           </View>
-        </View>
+        </HubPanel>
       ) : null}
 
       {/* Nút ghi âm */}
-      <View style={[GLASS_CARD, { padding: 22, gap: 14, alignItems: 'center' }]}>
+      <HubPanel title={recording ? 'Đang ghi âm' : 'Ghi âm'} icon="speaker" badge={recording ? 'REC' : undefined}>
+       <View style={{ alignItems: 'center', gap: 14 }}>
         <Text style={{ color: recording ? POOR : COSMIC.ink, fontSize: 34, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
           {String(Math.floor(seconds / 60)).padStart(2, '0')}:{String(seconds % 60).padStart(2, '0')}
         </Text>
@@ -213,21 +229,33 @@ export default function AnalyzePage() {
         <Text style={{ color: COSMIC.muted, fontSize: 13, textAlign: 'center' }}>
           {recording ? 'Đang nghe. Bấm dừng khi nói xong để xem kết quả.' : 'Bấm mic, nói tự nhiên, rồi bấm dừng.'}
         </Text>
-      </View>
+       </View>
+      </HubPanel>
+
+      {!report ? (
+        <HubPanel title="Mẹo để điểm cao" icon="bolt">
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+            {TIPS.map((tip) => (
+              <View key={tip.t} style={{ flexBasis: 250, flexGrow: 1, padding: 12, gap: 3, borderRadius: 14, backgroundColor: HUB_UI.wash, borderWidth: 1, borderColor: HUB_UI.line }}>
+                <Text style={{ color: HUB_UI.navy, fontSize: 14.5, fontWeight: '900' }}>{tip.t}</Text>
+                <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }}>{tip.d}</Text>
+              </View>
+            ))}
+          </View>
+        </HubPanel>
+      ) : null}
 
       {/* Kết quả: chỉ hiện số đo được từ bản ghi này */}
       {!report ? (
-        <View style={[GLASS_CARD, { padding: 18, gap: 8 }]}>
-          <SectionTitle>Kết quả</SectionTitle>
+        <HubPanel title="Kết quả" icon="trophy">
           <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 19 }}>
             Sau khi bạn dừng ghi âm, phần này hiện các số đo lấy từ đúng bài nói đó: tốc độ, từ đệm, ngập ngừng, độ rõ và ngữ điệu. Chiều nào không đo được sẽ ghi “Chưa đo”, không đoán số.
           </Text>
-        </View>
+        </HubPanel>
       ) : (
         <View style={{ gap: 14 }}>
           {/* Tổng quan */}
-          <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-            <SectionTitle aside="Chỉ tính các chiều đo được">Tổng quan</SectionTitle>
+          <HubPanel title="Tổng quan" icon="trophy" badge="Chỉ tính chiều đo được">
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
               <View style={{ width: 96, alignItems: 'center', gap: 2 }}>
                 <Text style={{ color: report.overall === null ? COSMIC.muted : scoreColor(report.overall), fontSize: 36, fontWeight: '900', fontVariant: ['tabular-nums'] }}>
@@ -253,19 +281,17 @@ export default function AnalyzePage() {
               <Stat label="Từ đệm" value={String(report.fillers.total)} hint={report.fillers.total ? Object.keys(report.fillers.byWord).slice(0, 3).join(', ') : 'Không có'} />
               <Stat label="Ngập ngừng" value={String(report.pauses.count)} hint={report.pauses.count ? `dài nhất ${(report.pauses.longestMs / 1000).toFixed(1)} giây` : undefined} />
             </View>
-          </View>
+          </HubPanel>
 
           {/* Sáu chiều */}
-          <View style={[GLASS_CARD, { padding: 18 }]}>
-            <SectionTitle aside="6 chiều">Chi tiết từng chiều</SectionTitle>
+          <HubPanel title="Chi tiết từng chiều" icon="medal" badge="6 chiều">
             {report.dimensions.map((d) => (
               <DimensionRow key={d.key} dim={d} />
             ))}
-          </View>
+          </HubPanel>
 
           {/* Bài nói, tô theo độ tin cậy của máy nghe */}
-          <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-            <SectionTitle>Bài nói của bạn</SectionTitle>
+          <HubPanel title="Bài nói của bạn" icon="note">
             <View style={{ gap: 8 }}>
               {report.segments.map((s, i) => {
                 const c = s.level === 'good' ? GOOD : s.level === 'fair' ? FAIR : s.level === 'poor' ? POOR : UNKNOWN;
@@ -293,7 +319,7 @@ export default function AnalyzePage() {
                 </View>
               </View>
             ) : null}
-          </View>
+          </HubPanel>
         </View>
       )}
     </HubScreen>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
 import { HubScreen } from '@/components/hub/HubScreen';
+import { HubHero } from '@/components/hub/HubUi';
 import { GLASS_CARD, HUB } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { Icon } from '@/components/ui/Icon';
@@ -116,6 +117,19 @@ export default function MeetingAssistant() {
 
   return (
     <HubScreen title="Trợ lý cuộc họp AI" subtitle="Ghi âm tách giọng · Đánh giá WPM & phong cách công sở" back>
+      <HubHero
+        eyebrow="WORK · MEETING"
+        title="Họp bằng tiếng Anh,"
+        accent="biết ngay mình nói thế nào"
+        desc="Ghi âm cuộc họp, tách giọng từng người, đo tốc độ và phong cách công sở, rồi nhận gợi ý diễn đạt chuyên nghiệp hơn."
+        stats={[
+          { value: 'Tách giọng', label: 'Từng người nói' },
+          { value: 'WPM', label: 'Tốc độ nói' },
+          { value: 'Công sở', label: 'Phong cách' },
+          { value: 'Gợi ý', label: 'Diễn đạt lại' },
+        ]}
+      />
+
       {/* Mode Selector Tabs */}
       <View style={{ flexDirection: 'row', padding: 4, borderRadius: 14, backgroundColor: HUB.glass, borderWidth: 1, borderColor: HUB.line }}>
         <Pressable

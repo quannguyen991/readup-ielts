@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useExamImmersive } from '@/store/useExamImmersive';
 import { Pressable, Text, View } from 'react-native';
 
 import { DrillReportView } from '@/components/ielts/DrillReportView';
@@ -44,6 +45,11 @@ export function DrillExamHost({
 }) {
   const { L } = useL();
   useExamFont();
+  const setImmersive = useExamImmersive((s) => s.set);
+  useEffect(() => {
+    setImmersive(true);
+    return () => setImmersive(false);
+  }, [setImmersive]);
   const record = useDrillSetStore((s) => s.record);
   const recordReport = useDrillSetStore((s) => s.recordReport);
   const [run, setRun] = useState(0);
