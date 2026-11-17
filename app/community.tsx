@@ -283,6 +283,31 @@ function FriendsPane({ token }: { token: string }) {
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState('');
   const [notice, setNotice] = useState('');
+  const [myName, setMyName] = useState<string | null>(null);
+  const [nameInput, setNameInput] = useState('');
+  const [nameReady, setNameReady] = useState(true);
+  const [nameBusy, setNameBusy] = useState(false);
+  const [nameNote, setNameNote] = useState('');
+
+  useEffect(() => {
+    let alive = true;
+    communityApi<{ username: string | null; usernameReady: boolean }>('/api/community?view=me', { token })
+      .then((me) => { if (!alive) return; setMyName(me.username); setNameInput(me.username ?? ''); setNameReady(me.usernameReady); })
+      .catch(() => undefined);
+    return () => { alive = false; };
+  }, [token]);
+
+  const saveName = async () => {
+    setNameBusy(true);
+    setNameNote('');
+    try {
+      const res = await communityApi<{ username: string }>('/api/community', { token, method: 'POST', body: { action: 'set_username', username: nameInput } });
+      setMyName(res.username);
+      setNameInput(res.username);
+      setNameNote(L('Đã lưu. Bạn bè tìm bạn bằng @' + res.username + '.', 'Saved. Friends can find you as @' + res.username + '.'));
+    } catch (err) { setNameNote(errorText(err, L)); }
+    finally { setNameBusy(false); }
+  };
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -297,7 +322,7 @@ function FriendsPane({ token }: { token: string }) {
 
   const search = async () => {
     setNotice('');
-    if (query.trim().length < 2) { setNotice(L('Nhập ít nhất 2 ký tự tên hiển thị.', 'Enter at least 2 characters of a display name.')); return; }
+    if (query.trim().replace(/^@/, '').length < 2) { setNotice(L('Nhập ít nhất 2 ký tự tên hiển thị hoặc @tên người dùng.', 'Enter at least 2 characters of a display name or @username.')); return; }
     setLoading(true);
     try {
       const data = await communityApi<CommunityPeopleResponse>(`/api/community?view=people&q=${encodeURIComponent(query.trim())}`, { token });
@@ -312,7 +337,7 @@ function FriendsPane({ token }: { token: string }) {
     try {
       await communityApi('/api/community', { token, method: 'POST', body: { userId, ...body } });
       await refresh();
-      if (query.trim().length >= 2) await search();
+      if (query.trim().replace(/^@/, '').length >= 2) await search();
     } catch (err) { setNotice(errorText(err, L)); }
     finally { setBusyId(''); }
   };
@@ -320,10 +345,22 @@ function FriendsPane({ token }: { token: string }) {
   return (
     <View className="mt-4 gap-3">
       <Card className="p-4">
+        <Text className="font-heavy text-bodyLg text-ink">{L('Tên người dùng của bạn', 'Your username')}</Text>
+        <Text className="mt-1 font-sans text-label text-muted">{myName ? L('Gửi @' + myName + ' cho bạn bè để họ kết bạn đúng người.', 'Share @' + myName + ' so friends find the right person.') : L('Đặt một tên riêng (@tên) để bạn bè tìm đúng bạn, kể cả khi trùng tên hiển thị.', 'Pick a unique @handle so friends can find you even if display names match.')}</Text>
+        {nameReady ? (
+          <View className="mt-3 flex-row items-center gap-2">
+            <Text className="font-heavy text-bodyLg text-muted">@</Text>
+            <TextInput value={nameInput} onChangeText={(v) => setNameInput(v.replace(/^@+/, '').toLowerCase())} onSubmitEditing={() => void saveName()} maxLength={20} autoCapitalize="none" autoCorrect={false} placeholder="minh_anh" placeholderTextColor="#89928B" className="min-w-0 flex-1 rounded-xl border border-border bg-white px-3 py-2 font-sans text-body text-ink" />
+            <Button label={nameBusy ? L('Đang lưu', 'Saving') : myName ? L('Đổi', 'Change') : L('Lưu', 'Save')} disabled={nameBusy || nameInput.trim().length < 3 || nameInput.trim() === myName} onPress={() => void saveName()} />
+          </View>
+        ) : <Text className="mt-2 font-sans text-label text-muted">{L('Tính năng này sẽ bật sau khi máy chủ cập nhật.', 'This turns on once the server is updated.')}</Text>}
+        {nameNote ? <Text className="mt-2 font-sans text-label text-muted">{nameNote}</Text> : null}
+      </Card>
+      <Card className="p-4">
         <Text className="font-heavy text-bodyLg text-ink">{L('Tìm bạn học', 'Find a study buddy')}</Text>
-        <Text className="mt-1 font-sans text-label text-muted">{L('Tìm bằng tên hiển thị trong ReadUp. Email không được công khai.', 'Search by ReadUp display name. Email addresses are never shown.')}</Text>
+        <Text className="mt-1 font-sans text-label text-muted">{L('Gõ @tên người dùng để tìm chính xác, hoặc tên hiển thị. Email không được công khai.', 'Type @username for an exact match, or a display name. Email addresses are never shown.')}</Text>
         <View className="mt-3 flex-row items-center gap-2">
-          <TextInput value={query} onChangeText={setQuery} onSubmitEditing={() => void search()} maxLength={60} placeholder={L('Tên hiển thị', 'Display name')} placeholderTextColor="#89928B" className="min-w-0 flex-1 rounded-xl border border-border bg-white px-3 py-3 font-sans text-body text-ink" />
+          <TextInput value={query} onChangeText={setQuery} onSubmitEditing={() => void search()} maxLength={60} placeholder={L('@tên người dùng hoặc tên hiển thị', '@username or display name')} placeholderTextColor="#89928B" className="min-w-0 flex-1 rounded-xl border border-border bg-white px-3 py-3 font-sans text-body text-ink" />
           <Button iconLeft="search" label={L('Tìm', 'Search')} onPress={() => void search()} />
         </View>
         {notice ? <Text className="mt-2 font-sans text-label text-muted">{notice}</Text> : null}
@@ -358,11 +395,11 @@ function PersonRow({ person, busy, L, onPress }: { person: CommunityPerson; busy
           : person.relation === 'blocked_by_me' ? L('Bỏ chặn', 'Unblock')
             : L('Không khả dụng', 'Unavailable');
   const disabled = busy || person.relation === 'outgoing' || person.relation === 'blocked_me';
-  return <View className="mt-3 flex-row items-center gap-2"><Avatar name={person.displayName} /><Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>{person.displayName}</Text><Button size="sm" variant={person.relation === 'none' || person.relation === 'incoming' ? 'brand' : 'outline'} label={busy ? L('Đang xử lý', 'Please wait') : label} disabled={disabled} onPress={onPress} /></View>;
+  return <View className="mt-3 flex-row items-center gap-2"><Avatar name={person.displayName} /><View className="min-w-0 flex-1"><Text className="font-semi text-body text-ink" numberOfLines={1}>{person.displayName}</Text>{person.username ? <Text className="font-sans text-label text-muted" numberOfLines={1}>@{person.username}</Text> : null}</View><Button size="sm" variant={person.relation === 'none' || person.relation === 'incoming' ? 'brand' : 'outline'} label={busy ? L('Đang xử lý', 'Please wait') : label} disabled={disabled} onPress={onPress} /></View>;
 }
 
 function FriendRow({ friend, L }: { friend: CommunityFriend; L: (vi: string, en: string) => string }) {
-  return <Pressable accessibilityRole="button" onPress={() => router.push(`/community/chat/${friend.id}` as never)} className="mt-3 flex-row items-center gap-2"><Avatar name={friend.displayName} /><Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>{friend.displayName}</Text><Text className="font-semi text-label" style={{ color: '#39705B' }}>{L('Nhắn tin →', 'Message →')}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" onPress={() => router.push(`/community/chat/${friend.id}` as never)} className="mt-3 flex-row items-center gap-2"><Avatar name={friend.displayName} /><View className="min-w-0 flex-1"><Text className="font-semi text-body text-ink" numberOfLines={1}>{friend.displayName}</Text>{friend.username ? <Text className="font-sans text-label text-muted" numberOfLines={1}>@{friend.username}</Text> : null}</View><Text className="font-semi text-label" style={{ color: '#39705B' }}>{L('Nhắn tin →', 'Message →')}</Text></Pressable>;
 }
 
 function InboxPane({ token }: { token: string }) {

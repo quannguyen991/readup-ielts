@@ -55,6 +55,7 @@ const TOOLS: { key: string; icon: IconName; title: string; vi: string; en: strin
   { key: 'speaking', icon: 'mic', title: 'Speaking', vi: 'Nói to, tự tin hơn mỗi ngày.', en: 'Speak with confidence.', href: '/speaking' },
   { key: 'math', icon: 'grid', title: 'SAT Math', vi: 'Chấm bằng code, sai đâu biết đó.', en: 'Checked by code.', href: '/math' },
   { key: 'vocab', icon: 'bookmark', title: 'Từ vựng', vi: 'Ôn theo lịch, nhớ lâu hơn.', en: 'Spaced review.', href: '/vocabulary/topics' },
+  { key: 'path', icon: 'compass', title: 'Lộ trình học', vi: 'IELTS và SAT theo trình độ.', en: 'IELTS and SAT by level.', href: '/lo-trinh-hoc' },
 ];
 
 /** Nút tròn kính ở đầu trang. */

@@ -16,6 +16,16 @@ export const HUB_UI = {
   green: '#16A34A',
 } as const;
 
+
+/**
+ * Chữ của khu Luyện nói và các trang dùng bộ thành phần này: Nunito (đã nạp toàn app ở app/_layout.tsx), đặt phông RÕ RÀNG
+ * theo độ đậm. Không đặt phông thì chữ rơi về phông hệ thống của máy — mỗi máy một kiểu — nên mọi `fontWeight` ở đây đi kèm họ phông.
+ */
+export function nun(weight: '400' | '600' | '700' | '800' | '900'): { fontFamily: string; fontWeight: 'normal' } {
+  const family = weight === '900' ? 'Nunito_700Bold' : weight === '800' ? 'Nunito_400Regular' : weight === '700' ? 'Nunito_700Bold' : weight === '600' ? 'Nunito_600SemiBold' : 'Nunito_400Regular';
+  return { fontFamily: `${family}, Nunito, system-ui, sans-serif`, fontWeight: 'normal' };
+}
+
 export type HubStat = { value: string; label: string };
 
 /** Đầu trang kiểu Hôm nay: nhãn nhỏ, tiêu đề hai dòng (dòng 2 màu cam), mô tả và hàng chỉ số. */
@@ -23,16 +33,16 @@ export function HubHero({ eyebrow, title, accent, desc, stats }: { eyebrow: stri
   const wide = useWindowDimensions().width >= 720;
   return (
     <HeroShell radius={28} style={{ padding: wide ? 26 : 18, gap: 6 }}>
-      <Text style={{ color: HUB_UI.purple, fontSize: 13, fontWeight: '800', letterSpacing: 1.6, alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.88)', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, marginBottom: 4, overflow: 'hidden' }}>{eyebrow}</Text>
-      <Text style={{ color: HUB_UI.navy, fontSize: wide ? 36 : 26, fontWeight: '900', lineHeight: wide ? 42 : 32, letterSpacing: -0.4 }}>{title}</Text>
-      {accent ? <Text style={{ color: HUB_UI.orange, fontSize: wide ? 36 : 26, fontWeight: '900', lineHeight: wide ? 42 : 32, letterSpacing: -0.4 }}>{accent}</Text> : null}
-      {desc ? <Text style={{ color: HUB_UI.muted, fontSize: 15, fontWeight: '600', lineHeight: 22, marginTop: 4, maxWidth: 560 }}>{desc}</Text> : null}
+      <Text style={{ color: HUB_UI.purple, fontSize: 13, ...nun('800'), letterSpacing: 1.6, alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.88)', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, marginBottom: 4, overflow: 'hidden' }}>{eyebrow}</Text>
+      <Text style={{ color: HUB_UI.navy, fontSize: wide ? 36 : 26, ...nun('900'), lineHeight: wide ? 42 : 32, letterSpacing: -0.4 }}>{title}</Text>
+      {accent ? <Text style={{ color: HUB_UI.orange, fontSize: wide ? 36 : 26, ...nun('900'), lineHeight: wide ? 42 : 32, letterSpacing: -0.4 }}>{accent}</Text> : null}
+      {desc ? <Text style={{ color: HUB_UI.muted, fontSize: 15, ...nun('600'), lineHeight: 22, marginTop: 4, maxWidth: 560 }}>{desc}</Text> : null}
       {stats?.length ? (
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
           {stats.map((s) => (
             <View key={s.label} style={{ flexGrow: 1, flexBasis: 150, minWidth: 140, padding: 12, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.94)' }}>
-              <Text style={{ color: HUB_UI.navy, fontSize: 22, fontWeight: '900' }}>{s.value}</Text>
-              <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '700' }}>{s.label}</Text>
+              <Text style={{ color: HUB_UI.navy, fontSize: 22, ...nun('900') }}>{s.value}</Text>
+              <Text style={{ color: HUB_UI.muted, fontSize: 13, ...nun('700') }}>{s.label}</Text>
             </View>
           ))}
         </View>
@@ -58,7 +68,7 @@ export function HubChips<T extends string>({ options, value, onChange }: { optio
         const on = o.id === value;
         return (
           <Pressable key={o.id} accessibilityRole="button" accessibilityState={{ selected: on }} onPress={() => onChange(o.id)} style={{ borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: on ? HUB_UI.purple : '#FFFFFF', borderWidth: 1.5, borderColor: on ? HUB_UI.purple : HUB_UI.line }}>
-            <Text style={{ fontSize: 14, fontWeight: '800', color: on ? '#FFFFFF' : HUB_UI.navy }}>{o.label}</Text>
+            <Text style={{ fontSize: 14, ...nun('800'), color: on ? '#FFFFFF' : HUB_UI.navy }}>{o.label}</Text>
           </Pressable>
         );
       })}
@@ -79,7 +89,7 @@ export function HubBar({ ratio, color = HUB_UI.purple }: { ratio: number; color?
 export function HubTag({ label, color = HUB_UI.purple, bg = HUB_UI.wash }: { label: string; color?: string; bg?: string }) {
   return (
     <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: bg }}>
-      <Text style={{ fontSize: 12.5, fontWeight: '800', color }}>{label}</Text>
+      <Text style={{ fontSize: 12.5, ...nun('800'), color }}>{label}</Text>
     </View>
   );
 }

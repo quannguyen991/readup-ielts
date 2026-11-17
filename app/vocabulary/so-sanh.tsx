@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { Screen } from '@/components/layout/Screen';
+import { NeonPageHero } from '@/components/neon/NeonPageHero';
 import { Icon } from '@/components/ui/Icon';
 import { TILE_TONES } from '@/components/vocab/UnitTile';
 import { useHotkeys } from '@/components/vocab/study/StudyKit';
@@ -11,7 +11,7 @@ import { useL } from '@/i18n/useL';
 import { pronounce } from '@/services/audio/pronounce';
 
 /** So sánh từ dễ nhầm: thẻ đối đầu A vs B (nghĩa, ví dụ, mẹo) và luyện điền từ, bấm phím 1–2 để chọn. */
-const F = { reg: 'Nunito_600SemiBold', bold: 'Nunito_800ExtraBold', black: 'Nunito_900Black' };
+const F = { reg: 'Nunito_600SemiBold', bold: 'Nunito_700Bold', black: 'Nunito_700Bold' };
 const ROUND = 10;
 
 function shuffle<T>(arr: readonly T[]): T[] {
@@ -34,18 +34,7 @@ export default function CompareWordsScreen() {
 
   return (
     <Screen>
-      <LinearGradient colors={['#F97316', '#EC4899', '#7C3AED']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 32, padding: 24, overflow: 'hidden', boxShadow: '0 14px 36px rgba(236,72,153,0.30)' } as never}>
-        <View pointerEvents="none" style={{ position: 'absolute', right: -30, top: -40, width: 200, height: 200, borderRadius: 100, backgroundColor: 'rgba(255,255,255,0.14)' }} />
-        <Text style={{ fontFamily: F.bold, fontSize: 14, letterSpacing: 3, color: 'rgba(255,255,255,0.88)' }}>{L('TỪ DỄ NHẦM', 'CONFUSING WORDS')}</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginTop: 4 }}>
-          <Text style={{ fontFamily: F.black, fontSize: 52, lineHeight: 58, color: '#FFFFFF' }}>affect</Text>
-          <View style={{ width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FDE68A' }}>
-            <Text style={{ fontFamily: F.black, fontSize: 16, color: '#7C2D12' }}>VS</Text>
-          </View>
-          <Text style={{ fontFamily: F.black, fontSize: 52, lineHeight: 58, color: '#FFFFFF' }}>effect</Text>
-        </View>
-        <Text style={{ marginTop: 4, fontFamily: F.reg, fontSize: 17, color: 'rgba(255,255,255,0.94)' }}>{L('40 cặp hay dùng lẫn, mỗi cặp một mẹo nhớ.', '40 pairs people mix up, each with a memory tip.')}</Text>
-      </LinearGradient>
+      <NeonPageHero scene="vocab" titleScale={0.8} title="affect VS effect" subtitle={L('40 cặp hay dùng lẫn, mỗi cặp một mẹo nhớ.', '40 pairs people mix up, each with a memory tip.')} chips={[{ label: L('Từ dễ nhầm', 'Confusing words'), icon: 'book' }]} />
 
       <View style={{ flexDirection: 'row', gap: 10, marginTop: 18 }} accessibilityRole="tablist">
         {([['look', L('Tra cặp từ', 'Browse')], ['drill', L('Luyện điền từ', 'Fill-in drill')]] as const).map(([k, label]) => {

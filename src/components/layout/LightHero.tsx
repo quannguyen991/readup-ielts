@@ -130,9 +130,9 @@ export function LightHero({
               end={{ x: 1, y: 0 }}
               style={{ borderRadius: line * 0.3, paddingHorizontal: size * 0.4, paddingVertical: size * 0.08, transform: [{ skewX: '-8deg' }] }}
             >
-              <Text style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: size, lineHeight: line, color: '#FFFFFF' }}>{chip}</Text>
+              <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: size, lineHeight: line, color: '#FFFFFF' }}>{chip}</Text>
             </LinearGradient>
-            <Text style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: size, lineHeight: line, color: retro ? RINK : modern ? '#1B1140' : '#2B2350' }}>{line1}</Text>
+            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: size, lineHeight: line, color: retro ? RINK : modern ? '#1B1140' : '#2B2350' }}>{line1}</Text>
           </View>
         ) : (
           <Text className="mt-4 font-heavy text-paper-ink" style={{ fontSize: size, lineHeight: line, color: retro ? RINK : modern ? '#1B1140' : undefined }}>

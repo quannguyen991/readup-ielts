@@ -137,12 +137,12 @@ export function BlueHero({
                   end={{ x: 1, y: 0 }}
                   style={{ maxWidth: '100%', borderRadius: wide ? 16 : 12, paddingHorizontal: wide ? 18 : 12, paddingVertical: wide ? 4 : 2, transform: [{ skewX: '-8deg' }] }}
                 >
-                  <Text style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: titleSize, lineHeight: titleLine, color: '#FFFFFF' }}>{chip}</Text>
+                  <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: titleSize, lineHeight: titleLine, color: '#FFFFFF' }}>{chip}</Text>
                 </LinearGradient>
               ) : null}
               <Text
                 accessibilityRole="header"
-                style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: titleSize, lineHeight: titleLine, color: '#1B1140', letterSpacing: -1.1 }}
+                style={{ fontFamily: 'Nunito_700Bold', fontSize: titleSize, lineHeight: titleLine, color: '#1B1140', letterSpacing: -1.1 }}
               >
                 {title}
               </Text>

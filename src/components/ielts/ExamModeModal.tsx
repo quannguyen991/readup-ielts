@@ -57,7 +57,7 @@ export function ExamModeModal({ visible, onClose, onSelectMode, testTitle, quest
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 22, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: color.border }}>
             <View style={{ flex: 1, gap: 2 }}>
-              <Text style={{ fontSize: 17, fontWeight: '800', color: color.ink }} numberOfLines={2}>{testTitle}</Text>
+              <Text style={{ fontSize: 17, fontWeight: '400', color: color.ink }} numberOfLines={2}>{testTitle}</Text>
               <Text style={{ fontSize: 12, color: color.muted, fontWeight: '500' }}>{questionCount} câu</Text>
             </View>
             <Pressable
@@ -110,7 +110,7 @@ export function ExamModeModal({ visible, onClose, onSelectMode, testTitle, quest
                         }}
                       />
                       <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: 16, fontWeight: '800', color: color.ink }}>{option.title}</Text>
+                        <Text style={{ fontSize: 16, fontWeight: '400', color: color.ink }}>{option.title}</Text>
                       </View>
                     </View>
                     <View style={{ gap: 8 }}>

@@ -172,7 +172,7 @@ function Dice({ value, rolling, bonus, keyId, size }: { value: number; rolling: 
           <Text style={{ fontSize: size * 0.5, fontWeight: '900', color: ARENA.ink }}>{shown}</Text>
         </View>
       </Pop>
-      <Text style={{ marginTop: 4, fontSize: 12, fontWeight: '800', color: GOLD_TXT }}>{!rolling && bonus > 0 ? `+${bonus} xúc xắc` : ' '}</Text>
+      <Text style={{ marginTop: 4, fontSize: 12, fontWeight: '400', color: GOLD_TXT }}>{!rolling && bonus > 0 ? `+${bonus} xúc xắc` : ' '}</Text>
     </View>
   );
 }

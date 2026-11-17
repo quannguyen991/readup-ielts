@@ -197,7 +197,7 @@ function EssayRunner({ essay }: { essay: Essay }) {
                       key={x.index}
                       style={
                         x.index === index
-                          ? { color: '#E5287A', fontWeight: '800', backgroundColor: '#FFE4F1' }
+                          ? { color: '#E5287A', fontWeight: '400', backgroundColor: '#FFE4F1' }
                           : x.index < index
                             ? { color: '#4B4670' }
                             : { color: '#A9A4C4' }
@@ -305,9 +305,9 @@ function EssayFeedback({ round, model }: { round: Round; model: string }) {
               key={i}
               style={
                 t.status === 'missing'
-                  ? { color: '#15803D', fontWeight: '800' }
+                  ? { color: '#15803D', fontWeight: '400' }
                   : t.status === 'extra'
-                    ? { color: '#BE123C', fontWeight: '800', textDecorationLine: 'line-through' }
+                    ? { color: '#BE123C', fontWeight: '400', textDecorationLine: 'line-through' }
                     : undefined
               }
             >

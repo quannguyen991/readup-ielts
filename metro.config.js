@@ -13,7 +13,7 @@ config.maxWorkers = Number(process.env.METRO_MAX_WORKERS ?? 4);
 // Metro thì khởi động nhanh hơn nhiều và không còn hết bộ nhớ lúc quét. Web vẫn phục vụ `public/` bằng middleware riêng của
 // Expo (đọc thẳng từ ổ đĩa), nên các đường dẫn /audio/... không đổi.
 const escapeRe = (p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-const SKIP_DIRS = ['public', 'dist', 'tmp', 'tmp-art', 'outputs', 'work', '.claude', 'docs', 'scratchpad', 'supabase'];
+const SKIP_DIRS = ['public', 'dist', 'dist-prod', 'tmp', 'tmp-art', 'outputs', 'work', '.claude', 'docs', 'scratchpad', 'supabase'];
 config.resolver.blockList = [
   /\.git[\/\\].*/,
   ...SKIP_DIRS.map((d) => new RegExp(`^${escapeRe(path.join(__dirname, d))}[\\\\/].*`)),

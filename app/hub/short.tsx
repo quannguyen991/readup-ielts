@@ -146,7 +146,7 @@ export default function ShortPractice() {
                   borderColor: 'rgba(255, 255, 255, 0.2)',
                 }}
               >
-                <Text style={{ color: '#38BDF8', fontSize: 13, fontWeight: '800' }}>
+                <Text style={{ color: '#38BDF8', fontSize: 13, fontWeight: '400' }}>
                   {item.sourceType}
                 </Text>
               </View>
@@ -176,7 +176,7 @@ export default function ShortPractice() {
             >
               <Text style={{ fontSize: 18, lineHeight: 28, color: '#F8FAFC', fontWeight: '600' }}>
                 {parts[0]}
-                <Text style={{ backgroundColor: 'rgba(56, 189, 248, 0.35)', color: '#38BDF8', fontWeight: '800' }}>
+                <Text style={{ backgroundColor: 'rgba(56, 189, 248, 0.35)', color: '#38BDF8', fontWeight: '400' }}>
                   {item.keyPhrase}
                 </Text>
                 {parts[1]}
@@ -223,7 +223,7 @@ export default function ShortPractice() {
               <View style={{ width: 1, height: 30, backgroundColor: 'rgba(255, 255, 255, 0.15)' }} />
               <View style={{ alignItems: 'center', gap: 2 }}>
                 <Text style={{ color: '#94A3B8', fontSize: 13, fontWeight: '700' }}>KẾT QUẢ</Text>
-                <Text style={{ color: '#FCD34D', fontSize: 14, fontWeight: '800' }}>
+                <Text style={{ color: '#FCD34D', fontSize: 14, fontWeight: '400' }}>
                   {sc.overall >= 80 ? 'Xuất sắc ✨' : 'Đạt'}
                 </Text>
               </View>
@@ -273,7 +273,7 @@ export default function ShortPractice() {
               }}
             >
               <Icon name={listen.listening && isCurrent ? 'close' : 'mic'} size={18} color="#090A1A" strokeWidth={2.4} />
-              <Text style={{ color: '#090A1A', fontWeight: '800' }}>
+              <Text style={{ color: '#090A1A', fontWeight: '400' }}>
                 {listen.listening && isCurrent ? 'Dừng ghi' : 'Nói lại cụm'}
               </Text>
             </Pressable>

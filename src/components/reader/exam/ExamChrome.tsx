@@ -145,7 +145,7 @@ function TimerPill({
       }}
     >
       <Icon name="clock" size={14} color={EXAM.accentDeep} strokeWidth={2.2} />
-      <Text style={{ fontSize: 14, fontWeight: '800', color: EXAM.accentDeep, fontVariant: ['tabular-nums'] }}>{label}</Text>
+      <Text style={{ fontSize: 14, fontWeight: '400', color: EXAM.accentDeep, fontVariant: ['tabular-nums'] }}>{label}</Text>
     </Pressable>
   );
 }
@@ -310,7 +310,7 @@ export function ToolRail({
   }
   return (
     <View style={{ width: 96, paddingTop: 16, paddingHorizontal: 8, gap: 8 }}>
-      <Text style={{ fontSize: 12, fontWeight: '800', color: EXAM.muted, textAlign: 'center', marginBottom: 2 }}>{L('Công cụ', 'Tools')}</Text>
+      <Text style={{ fontSize: 12, fontWeight: '400', color: EXAM.muted, textAlign: 'center', marginBottom: 2 }}>{L('Công cụ', 'Tools')}</Text>
       {cards}
       {extras}
     </View>
@@ -593,7 +593,7 @@ export function QuestionNav({
                 borderColor: isCurrent ? EXAM.accentDeep : it.answered ? EXAM.accent : EXAM.accentLine,
               }}
             >
-              <Text style={{ fontSize: 14, fontWeight: '800', color: it.answered ? '#FFFFFF' : EXAM.accentDeep }}>{n}</Text>
+              <Text style={{ fontSize: 14, fontWeight: '400', color: it.answered ? '#FFFFFF' : EXAM.accentDeep }}>{n}</Text>
               {it.marked ? (
                 <View style={{ position: 'absolute', top: -1, right: -1, width: 10, height: 10, borderRadius: 5, backgroundColor: EXAM.flag, borderWidth: 1.5, borderColor: '#FFFFFF' }} />
               ) : null}
@@ -618,7 +618,7 @@ export function QuestionNav({
         opacity: items.length === 0 ? 0.5 : 1,
       }}
     >
-      <Text style={{ fontSize: 15, fontWeight: '800', color: ready ? '#FFFFFF' : '#7A7566' }}>
+      <Text style={{ fontSize: 15, fontWeight: '400', color: ready ? '#FFFFFF' : '#7A7566' }}>
         {submitting ? L('Đang chấm…', 'Grading…') : L('Hoàn thành', 'Finish')}
       </Text>
     </Pressable>
@@ -652,7 +652,7 @@ export function QuestionNav({
               className="flex-1 items-center justify-center rounded-pill"
               style={{ height: 44, backgroundColor: tab === t ? EXAM.accent : 'transparent' }}
             >
-              <Text style={{ fontSize: 14, fontWeight: '800', color: tab === t ? '#FFFFFF' : EXAM.ink }}>
+              <Text style={{ fontSize: 14, fontWeight: '400', color: tab === t ? '#FFFFFF' : EXAM.ink }}>
                 {t === 'passage' ? L('Bài đọc', 'Passage') : `${L('Câu hỏi', 'Questions')}${items.length ? ` ${answered}/${items.length}` : ''}`}
               </Text>
             </Pressable>

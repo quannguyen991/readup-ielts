@@ -103,14 +103,14 @@ export default function CallPage() {
     return (
       <HubScreen title={play.title} subtitle="Cuộc gọi đã kết thúc" back>
         <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>
+          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>
             {result.passed ? 'Cuộc gọi tốt' : 'Cuộc gọi chưa đạt'}: {result.good}/{result.total} lượt đúng
           </Text>
           <Text style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>
             {`Thời lượng ${mm}:${ss} · gợi ý đã dùng ${hints} lần. ${result.passed ? 'Kịch bản được ghi vào tiến độ và nhiệm vụ hôm nay.' : 'Cần ít nhất 2 lượt đúng để tính là đạt.'}`}
           </Text>
           <Pressable accessibilityRole="button" onPress={restart} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Gọi lại</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Gọi lại</Text>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={() => router.back()} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong }}>
             <Text style={{ color: HUB.ink, fontWeight: '700' }}>Về danh sách</Text>
@@ -133,11 +133,11 @@ export default function CallPage() {
           <Image source={{ uri: SCENE_THUMB[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: 110, height: 110, borderRadius: 999, backgroundColor: HUB.glassStrong }} />
         </View>
         <Text style={{ color: HUB.muted, fontSize: 13, fontVariant: ['tabular-nums'] }}>{`${mm}:${ss} · Lượt ${Math.min(step + 1, play.steps.length)}/${play.steps.length}`}</Text>
-        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800' }}>{play.difficulty}</Text>
+        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '400' }}>{play.difficulty}</Text>
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Nhiệm vụ</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Nhiệm vụ</Text>
         {play.tasks.map((task, i) => {
           const done = i < answered && Boolean(play.steps[i]?.options[picks[i] ?? -1]?.good);
           return (
@@ -203,7 +203,7 @@ export default function CallPage() {
                 {current.options[chosen]!.good ? 'Tốt. ' : 'Chưa tối ưu. '}{current.options[chosen]!.tip}
               </Text>
               <Pressable accessibilityRole="button" onPress={next} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet }}>
-                <Text style={{ color: '#fff', fontWeight: '800' }}>{step + 1 >= play.steps.length ? 'Kết thúc cuộc gọi' : 'Lượt tiếp'}</Text>
+                <Text style={{ color: '#fff', fontWeight: '400' }}>{step + 1 >= play.steps.length ? 'Kết thúc cuộc gọi' : 'Lượt tiếp'}</Text>
               </Pressable>
             </View>
           ) : null}
@@ -212,7 +212,7 @@ export default function CallPage() {
 
       {chosen === null ? (
         <Pressable accessibilityRole="button" onPress={endCall} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: HUB.red }}>
-          <Text style={{ color: HUB.red, fontWeight: '800' }}>Kết thúc cuộc gọi</Text>
+          <Text style={{ color: HUB.red, fontWeight: '400' }}>Kết thúc cuộc gọi</Text>
         </Pressable>
       ) : null}
     </HubScreen>

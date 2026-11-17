@@ -186,11 +186,11 @@ export const fontSize = {
 } as const;
 
 export const fontFamily = {
-  regular: 'Inter_400Regular',
-  medium: 'Inter_500Medium',
-  semibold: 'Inter_600SemiBold',
-  bold: 'Inter_700Bold',
-  extrabold: 'Inter_700Bold',
+  regular: 'Nunito_400Regular',
+  medium: 'Nunito_600SemiBold',
+  semibold: 'Nunito_600SemiBold',
+  bold: 'Nunito_700Bold',
+  extrabold: 'Nunito_700Bold',
 } as const;
 
 /** Đổ bóng rất nhẹ của card trắng trong ảnh tham chiếu. */

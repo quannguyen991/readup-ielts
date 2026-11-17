@@ -49,7 +49,7 @@ export default function LessonScreen() {
     return (
       <HubScreen title={L('Bài học', 'Lesson')} back>
         <Panel>
-          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>{L('Không tìm thấy bài này', 'This lesson could not be found')}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>{L('Không tìm thấy bài này', 'This lesson could not be found')}</Text>
           <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>
             {L('Quay lại Khám phá để mở lại khoá học.', 'Go back to Explore to open the course again.')}
           </Text>
@@ -121,7 +121,7 @@ function LearnBody({ lesson, finished, onComplete, en }: BodyProps<LearnLesson>)
                 backgroundColor: KIND_STYLE.LEARN.bg,
               }}
             >
-              <Text style={{ color: KIND_STYLE.LEARN.fg, fontSize: 13, fontWeight: '800' }}>{i + 1}</Text>
+              <Text style={{ color: KIND_STYLE.LEARN.fg, fontSize: 13, fontWeight: '400' }}>{i + 1}</Text>
             </View>
             <Text style={{ flex: 1, color: HUB.body, fontSize: 14, lineHeight: 21 }}>{tr(p, en)}</Text>
           </View>
@@ -201,7 +201,7 @@ function QuizBody({ lesson, finished, onComplete, en }: BodyProps<QuizLesson>) {
     <View style={{ gap: 12 }}>
       {lesson.questions.map((q, qi) => (
         <Panel key={qi}>
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800', lineHeight: 22 }}>
+          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400', lineHeight: 22 }}>
             {qi + 1}. {tr(q.q, en)}
           </Text>
           <View style={{ gap: 8 }}>
@@ -232,10 +232,10 @@ function QuizBody({ lesson, finished, onComplete, en }: BodyProps<QuizLesson>) {
       {result ? (
         <Panel>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text style={{ color: result.passed ? HUB.green : HUB.orange, fontSize: 18, fontWeight: '800' }}>
+            <Text style={{ color: result.passed ? HUB.green : HUB.orange, fontSize: 18, fontWeight: '400' }}>
               {result.passed ? L('Đạt rồi!', 'Passed!') : L('Chưa đạt', 'Not yet')}
             </Text>
-            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>{result.score}%</Text>
+            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>{result.score}%</Text>
           </View>
           <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>
             {L(`Đúng ${result.correct}/${result.total} câu.`, `${result.correct}/${result.total} correct.`)}{' '}
@@ -334,7 +334,7 @@ function LockedNotice({ course, lesson, done }: { course: Course; lesson: Lesson
     <Panel>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
         <Icon name="lock" size={18} color={HUB.muted} />
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>{L('Bài này đang khoá', 'This lesson is locked')}</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>{L('Bài này đang khoá', 'This lesson is locked')}</Text>
       </View>
       <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>{cause}</Text>
       <ActionButton tone="ghost" label={L('Về khoá học', 'Back to course')} onPress={() => router.replace(`/hub/course/${course.id}` as never)} />
@@ -370,7 +370,7 @@ function ChoiceBlock({ choice, en, finished, onRight }: { choice: Choice; en: bo
 
   return (
     <Panel>
-      <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800', lineHeight: 22 }}>{tr(choice.q, en)}</Text>
+      <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400', lineHeight: 22 }}>{tr(choice.q, en)}</Text>
       <View style={{ gap: 8 }}>
         {choice.options.map((o, i) => {
           let tone: OptionTone = 'idle';
@@ -409,7 +409,7 @@ function SlideCard({ label, slide, en, after = false }: { label: string; slide: 
       ]}
     >
       <Label text={label} />
-      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800', lineHeight: 23 }}>{tr(slide.headline, en)}</Text>
+      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '400', lineHeight: 23 }}>{tr(slide.headline, en)}</Text>
       {slide.bullets.map((b, i) => (
         <View key={i} style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
           <View style={{ width: 6, height: 6, borderRadius: 3, marginTop: 7, backgroundColor: HUB.muted }} />
@@ -468,7 +468,7 @@ function DoneTag() {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, padding: 12, borderRadius: 14, backgroundColor: '#DCFCE7' }}>
       <Icon name="check" size={16} color={HUB.green} strokeWidth={2.4} />
-      <Text style={{ color: '#166534', fontSize: 14, fontWeight: '800' }}>{L('Đã xong', 'Done')}</Text>
+      <Text style={{ color: '#166534', fontSize: 14, fontWeight: '400' }}>{L('Đã xong', 'Done')}</Text>
     </View>
   );
 }
@@ -490,13 +490,13 @@ function ActionButton({ label, onPress, disabled = false, tone = 'primary' }: { 
         backgroundColor: ghost ? '#FFFFFF' : disabled ? HUB.line : HUB.blue,
       }}
     >
-      <Text style={{ color: ghost ? HUB.blue : disabled ? HUB.muted : '#FFFFFF', fontSize: 15, fontWeight: '800' }}>{label}</Text>
+      <Text style={{ color: ghost ? HUB.blue : disabled ? HUB.muted : '#FFFFFF', fontSize: 15, fontWeight: '400' }}>{label}</Text>
     </Pressable>
   );
 }
 
 function Label({ text }: { text: string }) {
-  return <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '800', letterSpacing: 0.6 }}>{text.toUpperCase()}</Text>;
+  return <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '400', letterSpacing: 0.6 }}>{text.toUpperCase()}</Text>;
 }
 
 function Panel({ children }: { children: React.ReactNode }) {

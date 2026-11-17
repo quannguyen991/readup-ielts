@@ -42,8 +42,7 @@ const ORANGE = '#6A4BD9';
 const GREEN = '#16A34A';
 
 const FONTS = [
-  { key: 'nunito', label: 'Nunito', family: 'Nunito_400Regular' },
-  { key: 'sans', label: 'Jakarta', family: 'PlusJakartaSans_400Regular' },
+  { key: 'sans', label: 'Nunito', family: 'Nunito_400Regular' },
   { key: 'serif', label: 'Có chân', family: Platform.select({ web: 'Georgia, serif', default: 'serif' }) },
 ] as const;
 
@@ -68,7 +67,7 @@ export default function WritingRoomScreen() {
   );
   const [secondsLeft, setSecondsLeft] = useState(prompt?.timeLimitSeconds ?? 1200);
   const [running, setRunning] = useState(false);
-  const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('nunito');
+  const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('sans');
   const [fontSize, setFontSize] = useState<number>(16);
   const startedAt = useRef<number | null>(null);
 

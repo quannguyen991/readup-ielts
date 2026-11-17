@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { PC, SectionCard, useCourseFonts } from '@/components/hub/PhonemeCourse';
 import { Screen } from '@/components/layout/Screen';
+import { NeonPageHero } from '@/components/neon/NeonPageHero';
 import { useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CEFR_LEVELS, lessonsOfLevel, type CefrLevel, type GrammarQuizItem } from '@/data/grammar';
 import { useL } from '@/i18n/useL';
@@ -81,13 +81,13 @@ export default function GrammarFinalTest() {
 
   return (
     <Screen>
-      <LinearGradient colors={['#FFE5D1', '#E6E0FF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 28, padding: 20, ...SOFT }}>
-        <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 32, lineHeight: 38, color: PC.ink }}>{L(`Kiểm tra tổng hợp ${level}`, `${level} review test`)}</Text>
-        <Text style={{ marginTop: 2, fontFamily: PC.body, fontSize: 15, color: '#5B4F8A' }}>
-          {L(`${TOTAL} câu từ mọi bài của cấp ${level}. Đạt từ ${FINAL_PASS}/${TOTAL}.`, `${TOTAL} questions from every ${level} lesson. Pass at ${FINAL_PASS}/${TOTAL}.`)}
-          {bestBefore !== undefined ? L(` Điểm cao nhất: ${bestBefore}/${TOTAL}.`, ` Best: ${bestBefore}/${TOTAL}.`) : ''}
-        </Text>
-      </LinearGradient>
+      <NeonPageHero
+        scene="path"
+        titleScale={0.7}
+        title={L(`Kiểm tra tổng hợp ${level}`, `${level} review test`)}
+        subtitle={L(`${TOTAL} câu từ mọi bài của cấp ${level}. Đạt từ ${FINAL_PASS}/${TOTAL}.`, `${TOTAL} questions from every ${level} lesson. Pass at ${FINAL_PASS}/${TOTAL}.`)}
+        chips={bestBefore !== undefined ? [{ label: L(`Điểm cao nhất ${bestBefore}/${TOTAL}`, `Best ${bestBefore}/${TOTAL}`), icon: 'star5' }] : undefined}
+      />
 
       {total === 0 ? (
         <SectionCard title={L('Chưa có câu hỏi', 'No questions')}>
@@ -95,13 +95,13 @@ export default function GrammarFinalTest() {
         </SectionCard>
       ) : done ? (
         <SectionCard title={L('Kết quả', 'Result')}>
-          <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 44, color: score >= FINAL_PASS ? '#16814E' : PC.purple }}>{score}/{total}</Text>
+          <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 44, color: score >= FINAL_PASS ? '#16814E' : PC.purple }}>{score}/{total}</Text>
           <Text style={{ marginTop: 4, fontFamily: PC.body, fontWeight: '700', fontSize: 16, color: PC.ink }}>
             {score >= FINAL_PASS ? L(`Đạt! Bạn đã vững cấp ${level}.`, `Passed! You have ${level} under control.`) : L('Chưa đạt, ôn lại các bài bên dưới rồi thử lại.', 'Not yet — review the lessons below and try again.')}
           </Text>
           {wrong.length ? (
             <View style={{ marginTop: 14, gap: 8 }}>
-              <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 16, color: PC.ink }}>{L('Bài cần xem lại', 'Lessons to review')}</Text>
+              <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 16, color: PC.ink }}>{L('Bài cần xem lại', 'Lessons to review')}</Text>
               {[...new Map(wrong.map((w) => [w.lessonId, w.lessonTitle])).entries()].map(([id, title]) => (
                 <Pressable key={id} accessibilityRole="link" onPress={() => router.push(`/ngu-phap/${id}` as never)} style={{ minHeight: 48, justifyContent: 'center', paddingHorizontal: 14, borderRadius: 14, backgroundColor: '#FBFAFF', borderWidth: 1.5, borderColor: PC.line }}>
                   <Text style={{ fontFamily: PC.body, fontWeight: '700', fontSize: 15, color: PC.purple }}>{title} →</Text>
@@ -131,7 +131,7 @@ export default function GrammarFinalTest() {
               return (
                 <Pressable key={i} accessibilityRole="button" onPress={() => pick(i)} style={{ minHeight: 56, flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 14, paddingVertical: 8, borderRadius: 16, backgroundColor: right ? '#EAF9F0' : bad ? '#FDECEC' : '#FFFFFF', borderWidth: 2, borderColor: right ? '#22C55E' : bad ? '#EF4444' : PC.line }}>
                   <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EFEBFA' }}>
-                    <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 14, color: PC.purple }}>{i + 1}</Text>
+                    <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 14, color: PC.purple }}>{i + 1}</Text>
                   </View>
                   <Text style={{ flex: 1, fontFamily: PC.body, fontSize: 16, color: PC.ink }}>{opt}</Text>
                 </Pressable>

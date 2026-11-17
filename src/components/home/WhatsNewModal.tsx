@@ -378,8 +378,8 @@ const styles = StyleSheet.create({
   },
   head: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingRight: 44 },
   pill: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: INK, paddingHorizontal: 11, paddingVertical: 6, borderRadius: 999 },
-  pillText: { fontFamily: 'Nunito_900Black', fontSize: 13, letterSpacing: 1.6, color: GOLD_LIGHT },
-  count: { fontFamily: 'Nunito_800ExtraBold', fontSize: 14, color: GOLD_DEEP, fontVariant: ['tabular-nums'] },
+  pillText: { fontFamily: 'Nunito_700Bold', fontSize: 13, letterSpacing: 1.6, color: GOLD_LIGHT },
+  count: { fontFamily: 'Nunito_700Bold', fontSize: 14, color: GOLD_DEEP, fontVariant: ['tabular-nums'] },
 
   stage: { gap: 18 },
   stageWide: { flexDirection: 'row', alignItems: 'center' },
@@ -403,8 +403,8 @@ const styles = StyleSheet.create({
 
   text: { gap: 10 },
   textWide: { flex: 1, minWidth: 0 },
-  title: { fontFamily: 'Nunito_900Black', fontSize: 31, lineHeight: 38, letterSpacing: -0.2 },
-  body: { fontFamily: 'Inter_400Regular', fontSize: 15, lineHeight: 23, color: '#2B2350' },
+  title: { fontFamily: 'Nunito_700Bold', fontSize: 31, lineHeight: 38, letterSpacing: -0.2 },
+  body: { fontFamily: 'Nunito_400Regular', fontSize: 15, lineHeight: 23, color: '#2B2350' },
   bullets: { gap: 8, marginTop: 4 },
   bulletRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
   bulletIcon: {
@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: GOLD,
   },
-  bulletText: { flex: 1, fontFamily: 'Inter_500Medium', fontSize: 14, lineHeight: 21, color: INK },
+  bulletText: { flex: 1, fontFamily: 'Nunito_600SemiBold', fontSize: 14, lineHeight: 21, color: INK },
   cta: {
     alignSelf: 'flex-start',
     flexDirection: 'row',
@@ -440,7 +440,7 @@ const styles = StyleSheet.create({
     transform: [{ translateY: -2 }],
     ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 18px rgba(43,33,16,0.25)' } as object) : {}),
   },
-  ctaText: { fontFamily: 'Nunito_900Black', fontSize: 15, letterSpacing: 0.2, color: INK },
+  ctaText: { fontFamily: 'Nunito_700Bold', fontSize: 15, letterSpacing: 0.2, color: INK },
 
   footer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   navBtn: {

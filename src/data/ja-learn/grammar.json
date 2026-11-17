@@ -1,0 +1,2669 @@
+[
+ {
+  "id": "ja-g-n3-01",
+  "level": 3,
+  "order": 1,
+  "pattern": "～ようになる",
+  "meaning": "Trở nên / bắt đầu có thể",
+  "form": "Vる／Vない + ようになる",
+  "tip": "Sự thay đổi dần dần về khả năng hoặc thói quen.",
+  "examples": [
+   {
+    "ja": "毎日練習して、漢字が書けるようになりました。",
+    "vi": "Luyện mỗi ngày nên tôi đã viết được chữ Hán.",
+    "mark": "書けるようになりました"
+   },
+   {
+    "ja": "最近、朝早く起きるようになりました。",
+    "vi": "Dạo này tôi bắt đầu dậy sớm.",
+    "mark": "起きるようになりました"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-02",
+  "level": 3,
+  "order": 2,
+  "pattern": "～わけだ",
+  "meaning": "Hèn chi / vậy nên",
+  "form": "thể thường + わけだ",
+  "tip": "Giải thích kết luận tự nhiên từ lý do đã biết.",
+  "examples": [
+   {
+    "ja": "毎日十時間も働いているのか。疲れるわけだ。",
+    "vi": "Ngày nào cũng làm mười tiếng à. Hèn chi mệt.",
+    "mark": "疲れるわけだ"
+   },
+   {
+    "ja": "彼は日本に十年住んでいた。日本語が上手なわけだ。",
+    "vi": "Anh ấy sống ở Nhật mười năm. Hèn chi giỏi tiếng Nhật.",
+    "mark": "上手なわけだ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-03",
+  "level": 3,
+  "order": 3,
+  "pattern": "～わけではない",
+  "meaning": "Không có nghĩa là",
+  "form": "thể thường + わけではない",
+  "tip": "Phủ định một suy luận dễ hiểu lầm.",
+  "examples": [
+   {
+    "ja": "嫌いなわけではありませんが、今日は食べたくないです。",
+    "vi": "Không phải là ghét, nhưng hôm nay tôi không muốn ăn.",
+    "mark": "嫌いなわけではありません"
+   },
+   {
+    "ja": "お金がないわけではない。使いたくないだけだ。",
+    "vi": "Không phải là không có tiền. Chỉ là không muốn tiêu.",
+    "mark": "ないわけではない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-04",
+  "level": 3,
+  "order": 4,
+  "pattern": "～ばかり",
+  "meaning": "Chỉ toàn / cứ",
+  "form": "N／Vて + ばかり",
+  "tip": "Làm một việc quá nhiều.",
+  "examples": [
+   {
+    "ja": "弟はゲームばかりしています。",
+    "vi": "Em trai tôi chỉ toàn chơi game.",
+    "mark": "ゲームばかり"
+   },
+   {
+    "ja": "最近、肉ばかり食べています。",
+    "vi": "Dạo này tôi chỉ toàn ăn thịt.",
+    "mark": "肉ばかり"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-05",
+  "level": 3,
+  "order": 5,
+  "pattern": "～たばかりだ",
+  "meaning": "Vừa mới làm xong",
+  "form": "Vた + ばかりだ",
+  "tip": "Cảm giác thời gian vừa trôi qua rất ngắn.",
+  "examples": [
+   {
+    "ja": "日本に来たばかりで、まだ慣れていません。",
+    "vi": "Tôi vừa mới đến Nhật nên chưa quen.",
+    "mark": "来たばかり"
+   },
+   {
+    "ja": "昼ご飯を食べたばかりなのに、もうおなかがすいた。",
+    "vi": "Vừa mới ăn trưa mà đã đói rồi.",
+    "mark": "食べたばかり"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-06",
+  "level": 3,
+  "order": 6,
+  "pattern": "～ところだ",
+  "meaning": "Sắp / đang / vừa",
+  "form": "Vる／Vている／Vた + ところだ",
+  "tip": "Chỉ đúng thời điểm của hành động.",
+  "examples": [
+   {
+    "ja": "ちょうど今、出かけるところです。",
+    "vi": "Tôi đang chuẩn bị ra ngoài ngay bây giờ.",
+    "mark": "出かけるところ"
+   },
+   {
+    "ja": "今、料理を作っているところです。",
+    "vi": "Bây giờ tôi đang nấu ăn.",
+    "mark": "作っているところ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-07",
+  "level": 3,
+  "order": 7,
+  "pattern": "～はずがない",
+  "meaning": "Không thể nào",
+  "form": "thể thường + はずがない",
+  "tip": "Phủ định mạnh mẽ.",
+  "examples": [
+   {
+    "ja": "彼が嘘をつくはずがありません。",
+    "vi": "Anh ấy không thể nào nói dối.",
+    "mark": "はずがありません"
+   },
+   {
+    "ja": "こんなに安いはずがない。",
+    "vi": "Không thể nào rẻ thế này được.",
+    "mark": "はずがない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-08",
+  "level": 3,
+  "order": 8,
+  "pattern": "～らしい",
+  "meaning": "Nghe nói / có vẻ / đúng kiểu",
+  "form": "thể thường + らしい",
+  "tip": "Suy đoán từ thông tin nghe hoặc thấy.",
+  "examples": [
+   {
+    "ja": "田中さんは風邪をひいたらしいです。",
+    "vi": "Nghe nói anh Tanaka bị cảm.",
+    "mark": "ひいたらしい"
+   },
+   {
+    "ja": "あの店はとても人気があるらしい。",
+    "vi": "Cửa hàng kia có vẻ rất nổi tiếng.",
+    "mark": "あるらしい"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-09",
+  "level": 3,
+  "order": 9,
+  "pattern": "～ようだ／みたいだ",
+  "meaning": "Hình như / giống như",
+  "form": "thể thường + ようだ／みたいだ",
+  "tip": "Phán đoán dựa trên cảm nhận của chính mình.",
+  "examples": [
+   {
+    "ja": "誰もいないようです。",
+    "vi": "Hình như không có ai.",
+    "mark": "いないようです"
+   },
+   {
+    "ja": "彼女は何か悩んでいるみたいです。",
+    "vi": "Hình như cô ấy đang lo lắng điều gì.",
+    "mark": "悩んでいるみたい"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-10",
+  "level": 3,
+  "order": 10,
+  "pattern": "～っぽい",
+  "meaning": "Có vẻ / hay …",
+  "form": "N／Vます bỏ ます + っぽい",
+  "tip": "Thường mang sắc thái hơi tiêu cực.",
+  "examples": [
+   {
+    "ja": "彼は子供っぽいです。",
+    "vi": "Anh ấy trẻ con.",
+    "mark": "子供っぽい"
+   },
+   {
+    "ja": "最近、忘れっぽくなりました。",
+    "vi": "Dạo này tôi hay quên.",
+    "mark": "忘れっぽく"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-11",
+  "level": 3,
+  "order": 11,
+  "pattern": "～気味",
+  "meaning": "Hơi có vẻ",
+  "form": "N／Vます bỏ ます + 気味",
+  "tip": "Cảm giác hơi khó chịu, hơi quá.",
+  "examples": [
+   {
+    "ja": "少し風邪気味なので、早く寝ます。",
+    "vi": "Tôi hơi có vẻ bị cảm nên đi ngủ sớm.",
+    "mark": "風邪気味"
+   },
+   {
+    "ja": "最近、太り気味です。",
+    "vi": "Dạo này tôi hơi mập ra.",
+    "mark": "太り気味"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-12",
+  "level": 3,
+  "order": 12,
+  "pattern": "～によって",
+  "meaning": "Tùy theo / bởi",
+  "form": "N + によって",
+  "tip": "Chỉ sự khác nhau theo trường hợp, hoặc tác nhân trong câu bị động.",
+  "examples": [
+   {
+    "ja": "国によって、習慣が違います。",
+    "vi": "Tùy theo từng nước mà phong tục khác nhau.",
+    "mark": "国によって"
+   },
+   {
+    "ja": "この絵はピカソによって描かれました。",
+    "vi": "Bức tranh này do Picasso vẽ.",
+    "mark": "ピカソによって"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-13",
+  "level": 3,
+  "order": 13,
+  "pattern": "～について",
+  "meaning": "Về …",
+  "form": "N + について",
+  "tip": "Đề tài của lời nói, suy nghĩ.",
+  "examples": [
+   {
+    "ja": "日本の文化について調べています。",
+    "vi": "Tôi đang tìm hiểu về văn hóa Nhật.",
+    "mark": "文化について"
+   },
+   {
+    "ja": "環境問題について話し合いました。",
+    "vi": "Chúng tôi đã thảo luận về vấn đề môi trường.",
+    "mark": "問題について"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-14",
+  "level": 3,
+  "order": 14,
+  "pattern": "～に対して",
+  "meaning": "Đối với / ngược lại",
+  "form": "N + に対して",
+  "tip": "Chỉ đối tượng của hành động; hoặc đối lập.",
+  "examples": [
+   {
+    "ja": "お客様に対して、丁寧に話してください。",
+    "vi": "Hãy nói chuyện lịch sự với khách hàng.",
+    "mark": "お客様に対して"
+   },
+   {
+    "ja": "兄は静かなのに対して、弟はとてもにぎやかだ。",
+    "vi": "Anh trai thì trầm, ngược lại em trai rất náo nhiệt.",
+    "mark": "のに対して"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-15",
+  "level": 3,
+  "order": 15,
+  "pattern": "～せいで",
+  "meaning": "Tại vì (kết quả xấu)",
+  "form": "thể thường + せいで",
+  "tip": "Đổ lỗi, kết quả không mong muốn.",
+  "examples": [
+   {
+    "ja": "寝坊したせいで、電車に乗り遅れました。",
+    "vi": "Tại ngủ quên mà tôi lỡ tàu.",
+    "mark": "寝坊したせいで"
+   },
+   {
+    "ja": "雨のせいで、試合が中止になりました。",
+    "vi": "Vì mưa mà trận đấu bị hủy.",
+    "mark": "雨のせいで"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-16",
+  "level": 3,
+  "order": 16,
+  "pattern": "～おかげで",
+  "meaning": "Nhờ có",
+  "form": "thể thường + おかげで",
+  "tip": "Kết quả tốt, biết ơn.",
+  "examples": [
+   {
+    "ja": "先生のおかげで、試験に合格できました。",
+    "vi": "Nhờ thầy mà tôi đã đậu kỳ thi.",
+    "mark": "先生のおかげで"
+   },
+   {
+    "ja": "友達が手伝ってくれたおかげで、早く終わった。",
+    "vi": "Nhờ bạn giúp mà xong sớm.",
+    "mark": "くれたおかげで"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-17",
+  "level": 3,
+  "order": 17,
+  "pattern": "～うちに",
+  "meaning": "Trong lúc còn / trước khi",
+  "form": "Vる／Vている／adj + うちに",
+  "tip": "Tranh thủ khi trạng thái chưa đổi.",
+  "examples": [
+   {
+    "ja": "若いうちに、いろいろな経験をしたいです。",
+    "vi": "Tôi muốn trải nghiệm nhiều thứ khi còn trẻ.",
+    "mark": "若いうちに"
+   },
+   {
+    "ja": "熱いうちに、食べてください。",
+    "vi": "Hãy ăn khi còn nóng.",
+    "mark": "熱いうちに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-18",
+  "level": 3,
+  "order": 18,
+  "pattern": "～間に",
+  "meaning": "Trong khoảng thời gian",
+  "form": "Vている／N の + 間に",
+  "tip": "Việc xảy ra giữa chừng một trạng thái kéo dài.",
+  "examples": [
+   {
+    "ja": "母が料理をしている間に、掃除をしました。",
+    "vi": "Trong lúc mẹ nấu ăn, tôi đã dọn dẹp.",
+    "mark": "している間に"
+   },
+   {
+    "ja": "夏休みの間に、運転免許を取りたい。",
+    "vi": "Tôi muốn lấy bằng lái trong kỳ nghỉ hè.",
+    "mark": "夏休みの間に"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-19",
+  "level": 3,
+  "order": 19,
+  "pattern": "～際に",
+  "meaning": "Khi / nhân dịp",
+  "form": "Vる／Vた／N の + 際に",
+  "tip": "Văn phong trang trọng hơn とき.",
+  "examples": [
+   {
+    "ja": "お帰りの際に、受付に声をかけてください。",
+    "vi": "Khi ra về, xin hãy báo với quầy lễ tân.",
+    "mark": "お帰りの際に"
+   },
+   {
+    "ja": "日本へ行った際に、温泉に入りました。",
+    "vi": "Khi đến Nhật, tôi đã đi tắm suối nước nóng.",
+    "mark": "行った際に"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-20",
+  "level": 3,
+  "order": 20,
+  "pattern": "～たびに",
+  "meaning": "Mỗi lần",
+  "form": "Vる／N の + たびに",
+  "tip": "Cứ mỗi lần thì …",
+  "examples": [
+   {
+    "ja": "この歌を聞くたびに、故郷を思い出します。",
+    "vi": "Mỗi lần nghe bài hát này tôi lại nhớ quê hương.",
+    "mark": "聞くたびに"
+   },
+   {
+    "ja": "旅行のたびに、写真をたくさん撮ります。",
+    "vi": "Mỗi lần đi du lịch tôi chụp rất nhiều ảnh.",
+    "mark": "旅行のたびに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-21",
+  "level": 3,
+  "order": 21,
+  "pattern": "～ついでに",
+  "meaning": "Nhân tiện",
+  "form": "Vる／Vた／N の + ついでに",
+  "tip": "Nhân dịp làm việc chính, làm luôn việc phụ.",
+  "examples": [
+   {
+    "ja": "買い物のついでに、郵便局に寄りました。",
+    "vi": "Nhân tiện đi mua sắm tôi ghé bưu điện.",
+    "mark": "ついでに"
+   },
+   {
+    "ja": "散歩するついでに、パンを買ってきます。",
+    "vi": "Nhân tiện đi dạo tôi sẽ mua bánh mì.",
+    "mark": "ついでに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-22",
+  "level": 3,
+  "order": 22,
+  "pattern": "～かわりに",
+  "meaning": "Thay vì / đổi lại",
+  "form": "Vる／N の + かわりに",
+  "tip": "Thay cho; hoặc bù đắp lại.",
+  "examples": [
+   {
+    "ja": "肉のかわりに、豆腐を食べます。",
+    "vi": "Tôi ăn đậu phụ thay cho thịt.",
+    "mark": "かわりに"
+   },
+   {
+    "ja": "手伝ってもらうかわりに、昼ご飯をおごります。",
+    "vi": "Đổi lại việc được giúp, tôi mời cơm trưa.",
+    "mark": "かわりに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-23",
+  "level": 3,
+  "order": 23,
+  "pattern": "～ほど",
+  "meaning": "Đến mức / khoảng",
+  "form": "thể thường / N + ほど",
+  "tip": "Mức độ; phủ định ～ほど～ない là không bằng.",
+  "examples": [
+   {
+    "ja": "昨日は倒れるほど疲れました。",
+    "vi": "Hôm qua tôi mệt đến mức muốn ngã quỵ.",
+    "mark": "倒れるほど"
+   },
+   {
+    "ja": "東京は大阪ほど暑くありません。",
+    "vi": "Tokyo không nóng bằng Osaka.",
+    "mark": "大阪ほど"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-24",
+  "level": 3,
+  "order": 24,
+  "pattern": "～てしまう",
+  "meaning": "Lỡ / hoàn toàn …",
+  "form": "Vて + しまう",
+  "tip": "Việc đã xong hoàn toàn hoặc lỡ làm điều đáng tiếc.",
+  "examples": [
+   {
+    "ja": "大切な書類をなくしてしまいました。",
+    "vi": "Tôi đã lỡ làm mất tài liệu quan trọng.",
+    "mark": "なくしてしまいました"
+   },
+   {
+    "ja": "宿題はもう全部やってしまった。",
+    "vi": "Bài tập tôi đã làm hết rồi.",
+    "mark": "やってしまった"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-25",
+  "level": 3,
+  "order": 25,
+  "pattern": "～ておく",
+  "meaning": "Làm sẵn / để nguyên",
+  "form": "Vて + おく",
+  "tip": "Chuẩn bị trước hoặc giữ nguyên trạng thái.",
+  "examples": [
+   {
+    "ja": "旅行の前に、ホテルを予約しておきます。",
+    "vi": "Trước chuyến đi tôi sẽ đặt khách sạn trước.",
+    "mark": "予約しておきます"
+   },
+   {
+    "ja": "窓は開けておいてください。",
+    "vi": "Xin hãy để cửa sổ mở.",
+    "mark": "開けておいて"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n3-26",
+  "level": 3,
+  "order": 26,
+  "pattern": "～つもり",
+  "meaning": "Dự định",
+  "form": "Vる／Vない + つもりだ",
+  "tip": "Ý định đã có từ trước, khá chắc chắn.",
+  "examples": [
+   {
+    "ja": "来年、日本で働くつもりです。",
+    "vi": "Năm sau tôi dự định làm việc ở Nhật.",
+    "mark": "働くつもりです"
+   },
+   {
+    "ja": "今日は何も買わないつもりです。",
+    "vi": "Hôm nay tôi định không mua gì cả.",
+    "mark": "買わないつもりです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-01",
+  "level": 2,
+  "order": 1,
+  "pattern": "～にもかかわらず",
+  "meaning": "Mặc dù",
+  "form": "N／thể thường + にもかかわらず",
+  "tip": "Kết quả trái với dự đoán, văn viết.",
+  "examples": [
+   {
+    "ja": "雨にもかかわらず、大勢の人が集まりました。",
+    "vi": "Mặc dù mưa, rất đông người vẫn tập trung.",
+    "mark": "にもかかわらず"
+   },
+   {
+    "ja": "忙しいにもかかわらず、手伝ってくれました。",
+    "vi": "Dù bận, anh ấy vẫn giúp tôi.",
+    "mark": "にもかかわらず"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-02",
+  "level": 2,
+  "order": 2,
+  "pattern": "～ざるを得ない",
+  "meaning": "Đành phải",
+  "form": "Vない bỏ ない + ざるを得ない",
+  "tip": "する → せざるを得ない.",
+  "examples": [
+   {
+    "ja": "病気のため、会議を欠席せざるを得なかった。",
+    "vi": "Vì ốm nên tôi đành phải vắng họp.",
+    "mark": "せざるを得なかった"
+   },
+   {
+    "ja": "雨が降ってきたので、中止せざるを得ない。",
+    "vi": "Trời mưa nên đành phải hủy.",
+    "mark": "せざるを得ない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-03",
+  "level": 2,
+  "order": 3,
+  "pattern": "～わけにはいかない",
+  "meaning": "Không thể (vì lẽ)",
+  "form": "Vる／Vない + わけにはいかない",
+  "tip": "Có lý do khiến không thể làm / không thể không làm.",
+  "examples": [
+   {
+    "ja": "明日は試験なので、遊びに行くわけにはいかない。",
+    "vi": "Mai thi nên tôi không thể đi chơi.",
+    "mark": "行くわけにはいかない"
+   },
+   {
+    "ja": "約束した以上、断るわけにはいきません。",
+    "vi": "Đã hứa rồi nên không thể từ chối.",
+    "mark": "断るわけにはいきません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-04",
+  "level": 2,
+  "order": 4,
+  "pattern": "～に違いない",
+  "meaning": "Chắc chắn là",
+  "form": "thể thường + に違いない",
+  "tip": "Phán đoán chắc chắn của người nói.",
+  "examples": [
+   {
+    "ja": "あの人が犯人に違いない。",
+    "vi": "Người đó chắc chắn là thủ phạm.",
+    "mark": "に違いない"
+   },
+   {
+    "ja": "こんなに高いのだから、品質がいいに違いありません。",
+    "vi": "Đắt thế này thì chắc chắn chất lượng tốt.",
+    "mark": "いいに違いありません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-05",
+  "level": 2,
+  "order": 5,
+  "pattern": "～に関して",
+  "meaning": "Liên quan đến",
+  "form": "N + に関して",
+  "tip": "Trang trọng hơn について.",
+  "examples": [
+   {
+    "ja": "この問題に関して、ご意見をお聞かせください。",
+    "vi": "Xin cho biết ý kiến về vấn đề này.",
+    "mark": "問題に関して"
+   },
+   {
+    "ja": "契約に関しては、後ほど説明します。",
+    "vi": "Về hợp đồng, tôi sẽ giải thích sau.",
+    "mark": "契約に関しては"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-06",
+  "level": 2,
+  "order": 6,
+  "pattern": "～をはじめ",
+  "meaning": "Bắt đầu từ / tiêu biểu là",
+  "form": "N + をはじめ",
+  "tip": "Nêu ví dụ tiêu biểu trong một nhóm lớn.",
+  "examples": [
+   {
+    "ja": "社長をはじめ、社員全員が参加しました。",
+    "vi": "Từ giám đốc trở đi, toàn thể nhân viên đều tham gia.",
+    "mark": "社長をはじめ"
+   },
+   {
+    "ja": "京都をはじめ、多くの観光地を訪れた。",
+    "vi": "Tôi đã thăm nhiều địa điểm du lịch, tiêu biểu là Kyoto.",
+    "mark": "京都をはじめ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-07",
+  "level": 2,
+  "order": 7,
+  "pattern": "～に応じて",
+  "meaning": "Tùy theo",
+  "form": "N + に応じて",
+  "tip": "Thay đổi theo mức hoặc tình huống.",
+  "examples": [
+   {
+    "ja": "収入に応じて、税金を払います。",
+    "vi": "Nộp thuế tùy theo thu nhập.",
+    "mark": "収入に応じて"
+   },
+   {
+    "ja": "状況に応じて、計画を変更します。",
+    "vi": "Thay đổi kế hoạch tùy theo tình hình.",
+    "mark": "状況に応じて"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-08",
+  "level": 2,
+  "order": 8,
+  "pattern": "～に基づいて",
+  "meaning": "Dựa trên",
+  "form": "N + に基づいて",
+  "tip": "Lấy nền tảng là số liệu, quy định.",
+  "examples": [
+   {
+    "ja": "データに基づいて、結論を出しました。",
+    "vi": "Chúng tôi đã đưa ra kết luận dựa trên dữ liệu.",
+    "mark": "データに基づいて"
+   },
+   {
+    "ja": "事実に基づいた報道が大切だ。",
+    "vi": "Đưa tin dựa trên sự thật là điều quan trọng.",
+    "mark": "事実に基づいた"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-09",
+  "level": 2,
+  "order": 9,
+  "pattern": "～に加えて",
+  "meaning": "Thêm vào đó",
+  "form": "N + に加えて",
+  "tip": "Thêm một yếu tố nữa vào cái đã có.",
+  "examples": [
+   {
+    "ja": "雨に加えて、風も強くなってきた。",
+    "vi": "Ngoài mưa ra, gió cũng mạnh lên.",
+    "mark": "雨に加えて"
+   },
+   {
+    "ja": "給料に加えて、ボーナスももらえる。",
+    "vi": "Ngoài lương còn được nhận thưởng.",
+    "mark": "給料に加えて"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-10",
+  "level": 2,
+  "order": 10,
+  "pattern": "～かねない",
+  "meaning": "Có thể gây ra điều xấu",
+  "form": "Vます bỏ ます + かねない",
+  "tip": "Khả năng xấu có thể xảy ra.",
+  "examples": [
+   {
+    "ja": "無理をすると、体を壊しかねない。",
+    "vi": "Nếu cố quá thì có thể hỏng sức khỏe.",
+    "mark": "壊しかねない"
+   },
+   {
+    "ja": "そんな運転をしたら、事故を起こしかねません。",
+    "vi": "Lái như thế có thể gây tai nạn.",
+    "mark": "起こしかねません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-11",
+  "level": 2,
+  "order": 11,
+  "pattern": "～がちだ",
+  "meaning": "Hay / dễ …",
+  "form": "Vます bỏ ます／N + がちだ",
+  "tip": "Xu hướng thường xảy ra, thường là điều không tốt.",
+  "examples": [
+   {
+    "ja": "冬は風邪をひきがちです。",
+    "vi": "Mùa đông dễ bị cảm.",
+    "mark": "ひきがち"
+   },
+   {
+    "ja": "彼は遅刻しがちだ。",
+    "vi": "Anh ấy hay đi trễ.",
+    "mark": "しがち"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-12",
+  "level": 2,
+  "order": 12,
+  "pattern": "～ものの",
+  "meaning": "Tuy … nhưng",
+  "form": "thể thường + ものの",
+  "tip": "Thừa nhận vế trước nhưng thực tế khác.",
+  "examples": [
+   {
+    "ja": "買ったものの、一度も使っていない。",
+    "vi": "Tuy mua rồi nhưng chưa dùng lần nào.",
+    "mark": "買ったものの"
+   },
+   {
+    "ja": "日本語を勉強しているものの、なかなか上達しない。",
+    "vi": "Tuy đang học tiếng Nhật nhưng mãi không tiến bộ.",
+    "mark": "しているものの"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-13",
+  "level": 2,
+  "order": 13,
+  "pattern": "～とはいえ",
+  "meaning": "Dù nói là … nhưng",
+  "form": "thể thường + とはいえ",
+  "tip": "Văn viết, trang trọng.",
+  "examples": [
+   {
+    "ja": "春とはいえ、まだ寒い日が続いている。",
+    "vi": "Dù là mùa xuân nhưng những ngày lạnh vẫn tiếp tục.",
+    "mark": "春とはいえ"
+   },
+   {
+    "ja": "安いとはいえ、買う必要はない。",
+    "vi": "Dù rẻ, cũng không cần phải mua.",
+    "mark": "安いとはいえ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-14",
+  "level": 2,
+  "order": 14,
+  "pattern": "～どころか",
+  "meaning": "Đâu chỉ … mà còn",
+  "form": "thể thường + どころか",
+  "tip": "Thực tế ngược hẳn / vượt xa điều vừa nói.",
+  "examples": [
+   {
+    "ja": "上手どころか、全然できません。",
+    "vi": "Đừng nói là giỏi, tôi hoàn toàn không làm được.",
+    "mark": "上手どころか"
+   },
+   {
+    "ja": "忙しくて、休む暇どころか食事の時間もない。",
+    "vi": "Bận đến mức đừng nói nghỉ, đến thời gian ăn cũng không có.",
+    "mark": "暇どころか"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-15",
+  "level": 2,
+  "order": 15,
+  "pattern": "～ばかりか",
+  "meaning": "Không chỉ … mà còn",
+  "form": "thể thường + ばかりか",
+  "tip": "Thêm một điều nữa, thường vế sau mạnh hơn.",
+  "examples": [
+   {
+    "ja": "彼は英語ばかりか、中国語も話せる。",
+    "vi": "Anh ấy không chỉ tiếng Anh mà tiếng Trung cũng nói được.",
+    "mark": "英語ばかりか"
+   },
+   {
+    "ja": "雨がやまないばかりか、風も強くなった。",
+    "vi": "Mưa không tạnh, hơn nữa gió còn mạnh lên.",
+    "mark": "やまないばかりか"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-16",
+  "level": 2,
+  "order": 16,
+  "pattern": "～一方で",
+  "meaning": "Mặt khác",
+  "form": "thể thường + 一方で",
+  "tip": "Hai mặt đối lập của cùng một sự việc.",
+  "examples": [
+   {
+    "ja": "便利な一方で、危険もあります。",
+    "vi": "Tiện lợi nhưng mặt khác cũng có nguy hiểm.",
+    "mark": "便利な一方で"
+   },
+   {
+    "ja": "都市は人口が増える一方で、田舎は減っている。",
+    "vi": "Thành phố dân số tăng, trong khi nông thôn giảm.",
+    "mark": "増える一方で"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-17",
+  "level": 2,
+  "order": 17,
+  "pattern": "～に反して",
+  "meaning": "Trái với",
+  "form": "N + に反して",
+  "tip": "Kết quả trái với kỳ vọng hay dự đoán.",
+  "examples": [
+   {
+    "ja": "予想に反して、結果は悪かった。",
+    "vi": "Trái với dự đoán, kết quả xấu.",
+    "mark": "予想に反して"
+   },
+   {
+    "ja": "親の期待に反して、彼は会社を辞めた。",
+    "vi": "Trái với kỳ vọng của bố mẹ, anh ấy đã nghỉ việc.",
+    "mark": "期待に反して"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-18",
+  "level": 2,
+  "order": 18,
+  "pattern": "～つつある",
+  "meaning": "Đang dần",
+  "form": "Vます bỏ ます + つつある",
+  "tip": "Sự thay đổi đang tiến triển, văn viết.",
+  "examples": [
+   {
+    "ja": "世界は大きく変わりつつあります。",
+    "vi": "Thế giới đang dần thay đổi lớn.",
+    "mark": "変わりつつあります"
+   },
+   {
+    "ja": "経済は回復しつつある。",
+    "vi": "Nền kinh tế đang dần phục hồi.",
+    "mark": "回復しつつある"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-19",
+  "level": 2,
+  "order": 19,
+  "pattern": "～かのようだ",
+  "meaning": "Cứ như thể",
+  "form": "thể thường + かのようだ",
+  "tip": "So sánh với điều không có thật.",
+  "examples": [
+   {
+    "ja": "彼は何も知らないかのように話した。",
+    "vi": "Anh ấy nói cứ như thể không biết gì.",
+    "mark": "知らないかのように"
+   },
+   {
+    "ja": "まるで夢を見ているかのようだ。",
+    "vi": "Cứ như thể đang mơ.",
+    "mark": "見ているかのようだ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-20",
+  "level": 2,
+  "order": 20,
+  "pattern": "～次第",
+  "meaning": "Ngay khi / tùy vào",
+  "form": "Vます bỏ ます／N + 次第",
+  "tip": "Ngay khi xong A thì làm B; hoặc \"tùy thuộc\".",
+  "examples": [
+   {
+    "ja": "準備ができ次第、出発します。",
+    "vi": "Chuẩn bị xong là xuất phát ngay.",
+    "mark": "でき次第"
+   },
+   {
+    "ja": "結果は努力次第です。",
+    "vi": "Kết quả tùy vào nỗ lực.",
+    "mark": "努力次第"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-21",
+  "level": 2,
+  "order": 21,
+  "pattern": "～ことはない",
+  "meaning": "Không cần phải",
+  "form": "Vる + ことはない",
+  "tip": "Không cần làm vì không có lý do.",
+  "examples": [
+   {
+    "ja": "まだ時間があるから、急ぐことはありません。",
+    "vi": "Vẫn còn thời gian nên không cần vội.",
+    "mark": "急ぐことはありません"
+   },
+   {
+    "ja": "謝ることはない。君のせいじゃない。",
+    "vi": "Không cần xin lỗi. Không phải lỗi của bạn.",
+    "mark": "謝ることはない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-22",
+  "level": 2,
+  "order": 22,
+  "pattern": "～をきっかけに",
+  "meaning": "Nhân cơ hội",
+  "form": "N + をきっかけに",
+  "tip": "Sự kiện nhỏ làm khởi đầu thay đổi.",
+  "examples": [
+   {
+    "ja": "病気をきっかけに、運動を始めました。",
+    "vi": "Nhân dịp bị bệnh, tôi bắt đầu tập thể dục.",
+    "mark": "をきっかけに"
+   },
+   {
+    "ja": "留学をきっかけに、日本が好きになった。",
+    "vi": "Nhờ đi du học mà tôi trở nên yêu Nhật.",
+    "mark": "をきっかけに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-23",
+  "level": 2,
+  "order": 23,
+  "pattern": "～上で",
+  "meaning": "Sau khi / trong việc",
+  "form": "Vた／Nの + 上で",
+  "tip": "Làm việc A xong rồi mới làm việc B; hoặc khi làm việc A.",
+  "examples": [
+   {
+    "ja": "よく考えた上で、決めてください。",
+    "vi": "Hãy suy nghĩ kỹ rồi hãy quyết định.",
+    "mark": "考えた上で"
+   },
+   {
+    "ja": "契約書を読んだ上で、サインしました。",
+    "vi": "Tôi đã ký sau khi đọc hợp đồng.",
+    "mark": "読んだ上で"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-24",
+  "level": 2,
+  "order": 24,
+  "pattern": "～からこそ",
+  "meaning": "Chính vì",
+  "form": "thể thường + からこそ",
+  "tip": "Nhấn mạnh duy nhất lý do này.",
+  "examples": [
+   {
+    "ja": "失敗したからこそ、成長できました。",
+    "vi": "Chính vì thất bại mà tôi đã trưởng thành.",
+    "mark": "したからこそ"
+   },
+   {
+    "ja": "あなたを信じているからこそ、頼むのです。",
+    "vi": "Chính vì tin bạn nên tôi mới nhờ.",
+    "mark": "いるからこそ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n2-25",
+  "level": 2,
+  "order": 25,
+  "pattern": "～わりに",
+  "meaning": "So với",
+  "form": "thể thường + わりに",
+  "tip": "Kết quả không tương xứng với kỳ vọng.",
+  "examples": [
+   {
+    "ja": "彼は勉強しないわりに、成績がいいです。",
+    "vi": "Anh ấy không học mà điểm vẫn tốt.",
+    "mark": "しないわりに"
+   },
+   {
+    "ja": "この店は安いわりに、味がいい。",
+    "vi": "Quán này rẻ mà vị lại ngon.",
+    "mark": "安いわりに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-01",
+  "level": 1,
+  "order": 1,
+  "pattern": "～に値する",
+  "meaning": "Đáng để",
+  "form": "N／Vる + に値する",
+  "tip": "Đáng giá, xứng đáng.",
+  "examples": [
+   {
+    "ja": "この映画は見るに値する作品だ。",
+    "vi": "Bộ phim này là tác phẩm đáng xem.",
+    "mark": "見るに値する"
+   },
+   {
+    "ja": "彼の努力は称賛に値する。",
+    "vi": "Nỗ lực của anh ấy đáng được khen ngợi.",
+    "mark": "称賛に値する"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-02",
+  "level": 1,
+  "order": 2,
+  "pattern": "～をものともせず",
+  "meaning": "Bất chấp",
+  "form": "N + をものともせず",
+  "tip": "Không sợ khó khăn, trở ngại.",
+  "examples": [
+   {
+    "ja": "彼は病気をものともせず、練習を続けた。",
+    "vi": "Anh ấy bất chấp bệnh tật, vẫn tiếp tục luyện tập.",
+    "mark": "をものともせず"
+   },
+   {
+    "ja": "登山家たちは悪天候をものともせず、頂上を目指した。",
+    "vi": "Các nhà leo núi bất chấp thời tiết xấu, vẫn hướng tới đỉnh.",
+    "mark": "をものともせず"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-03",
+  "level": 1,
+  "order": 3,
+  "pattern": "～ならでは",
+  "meaning": "Chỉ có ở",
+  "form": "N + ならでは",
+  "tip": "Đặc trưng riêng, khen ngợi.",
+  "examples": [
+   {
+    "ja": "この味は職人ならではのものだ。",
+    "vi": "Hương vị này chỉ có ở người thợ lành nghề.",
+    "mark": "ならではの"
+   },
+   {
+    "ja": "京都ならではの景色を楽しんだ。",
+    "vi": "Tôi đã tận hưởng cảnh đẹp chỉ có ở Kyoto.",
+    "mark": "ならではの"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-04",
+  "level": 1,
+  "order": 4,
+  "pattern": "～を余儀なくされる",
+  "meaning": "Buộc phải",
+  "form": "N／Vる + を余儀なくされる",
+  "tip": "Hoàn cảnh ép buộc, ngoài ý muốn.",
+  "examples": [
+   {
+    "ja": "不況のため、工場は閉鎖を余儀なくされた。",
+    "vi": "Vì suy thoái nên nhà máy buộc phải đóng cửa.",
+    "mark": "を余儀なくされた"
+   },
+   {
+    "ja": "彼は怪我で引退を余儀なくされた。",
+    "vi": "Anh ấy buộc phải giải nghệ vì chấn thương.",
+    "mark": "を余儀なくされた"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-05",
+  "level": 1,
+  "order": 5,
+  "pattern": "～ずにはいられない",
+  "meaning": "Không thể không",
+  "form": "Vない bỏ ない + ずにはいられない",
+  "tip": "Cảm xúc tự trào ra.",
+  "examples": [
+   {
+    "ja": "その話を聞いて、笑わずにはいられなかった。",
+    "vi": "Nghe chuyện đó tôi không thể không cười.",
+    "mark": "笑わずにはいられなかった"
+   },
+   {
+    "ja": "困っている人を見ると、助けずにはいられない。",
+    "vi": "Thấy người gặp khó là tôi không thể không giúp.",
+    "mark": "助けずにはいられない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-06",
+  "level": 1,
+  "order": 6,
+  "pattern": "～を禁じ得ない",
+  "meaning": "Không kìm được",
+  "form": "N + を禁じ得ない",
+  "tip": "Cảm xúc mạnh, văn viết rất trang trọng.",
+  "examples": [
+   {
+    "ja": "彼の死に、悲しみを禁じ得ない。",
+    "vi": "Trước cái chết của anh ấy, tôi không kìm được nỗi buồn.",
+    "mark": "を禁じ得ない"
+   },
+   {
+    "ja": "その事件には、怒りを禁じ得ません。",
+    "vi": "Tôi không kìm được sự phẫn nộ trước vụ việc đó.",
+    "mark": "を禁じ得ません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-07",
+  "level": 1,
+  "order": 7,
+  "pattern": "～に至るまで",
+  "meaning": "Cho đến tận",
+  "form": "N + に至るまで",
+  "tip": "Phạm vi kéo dài đến cả cái nhỏ nhất.",
+  "examples": [
+   {
+    "ja": "彼は細部に至るまで、計画を立てた。",
+    "vi": "Anh ấy lập kế hoạch đến tận từng chi tiết.",
+    "mark": "に至るまで"
+   },
+   {
+    "ja": "子供から老人に至るまで、この歌を知っている。",
+    "vi": "Từ trẻ em đến người già đều biết bài hát này.",
+    "mark": "に至るまで"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-08",
+  "level": 1,
+  "order": 8,
+  "pattern": "～をおいて",
+  "meaning": "Ngoài … ra",
+  "form": "N + をおいて（～ない）",
+  "tip": "Không có lựa chọn nào khác ngoài N.",
+  "examples": [
+   {
+    "ja": "この仕事を任せられるのは、彼をおいて他にいない。",
+    "vi": "Người có thể giao việc này, ngoài anh ấy ra không còn ai.",
+    "mark": "をおいて"
+   },
+   {
+    "ja": "社長を務めるのは、彼女をおいて誰もいない。",
+    "vi": "Làm giám đốc thì ngoài cô ấy ra không ai.",
+    "mark": "をおいて"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-09",
+  "level": 1,
+  "order": 9,
+  "pattern": "～までもない",
+  "meaning": "Không cần phải",
+  "form": "Vる + までもない",
+  "tip": "Quá hiển nhiên nên khỏi cần.",
+  "examples": [
+   {
+    "ja": "説明するまでもなく、皆知っている。",
+    "vi": "Không cần giải thích, ai cũng biết.",
+    "mark": "するまでもなく"
+   },
+   {
+    "ja": "彼の実力は言うまでもない。",
+    "vi": "Thực lực của anh ấy khỏi phải nói.",
+    "mark": "言うまでもない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-10",
+  "level": 1,
+  "order": 10,
+  "pattern": "～極まりない",
+  "meaning": "Cực kỳ",
+  "form": "adj＋こと／な + 極まりない",
+  "tip": "Mức độ cực đoan, thường tiêu cực.",
+  "examples": [
+   {
+    "ja": "彼の態度は失礼極まりない。",
+    "vi": "Thái độ của anh ta cực kỳ thất lễ.",
+    "mark": "失礼極まりない"
+   },
+   {
+    "ja": "この道は危険極まりない。",
+    "vi": "Con đường này cực kỳ nguy hiểm.",
+    "mark": "危険極まりない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-11",
+  "level": 1,
+  "order": 11,
+  "pattern": "～かたわら",
+  "meaning": "Bên cạnh việc",
+  "form": "Vる／N の + かたわら",
+  "tip": "Vừa làm việc chính vừa làm thêm việc khác lâu dài.",
+  "examples": [
+   {
+    "ja": "彼は会社で働くかたわら、小説を書いている。",
+    "vi": "Anh ấy vừa đi làm công ty vừa viết tiểu thuyết.",
+    "mark": "働くかたわら"
+   },
+   {
+    "ja": "学業のかたわら、ボランティア活動をしている。",
+    "vi": "Bên cạnh việc học, cô ấy làm tình nguyện.",
+    "mark": "学業のかたわら"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-12",
+  "level": 1,
+  "order": 12,
+  "pattern": "～がてら",
+  "meaning": "Nhân tiện",
+  "form": "Vます bỏ ます／N + がてら",
+  "tip": "Làm một việc kết hợp việc khác, thoải mái.",
+  "examples": [
+   {
+    "ja": "散歩がてら、パンを買ってきた。",
+    "vi": "Nhân tiện đi dạo, tôi mua bánh mì về.",
+    "mark": "散歩がてら"
+   },
+   {
+    "ja": "旅行がてら、友人を訪ねた。",
+    "vi": "Nhân chuyến du lịch, tôi đã thăm bạn.",
+    "mark": "旅行がてら"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-13",
+  "level": 1,
+  "order": 13,
+  "pattern": "～ともなると",
+  "meaning": "Hễ đến mức … thì",
+  "form": "N／thể thường + ともなると",
+  "tip": "Khi đạt đến vị thế, hoàn cảnh đó thì khác.",
+  "examples": [
+   {
+    "ja": "社長ともなると、忙しさが違う。",
+    "vi": "Đã làm đến giám đốc thì mức bận rộn khác hẳn.",
+    "mark": "ともなると"
+   },
+   {
+    "ja": "年末ともなると、街は買い物客でにぎわう。",
+    "vi": "Hễ đến cuối năm là phố đông khách mua sắm.",
+    "mark": "ともなると"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-14",
+  "level": 1,
+  "order": 14,
+  "pattern": "～とあって",
+  "meaning": "Vì là",
+  "form": "N／thể thường + とあって",
+  "tip": "Lý do đặc biệt dẫn đến kết quả khác thường.",
+  "examples": [
+   {
+    "ja": "人気歌手のコンサートとあって、会場は満員だった。",
+    "vi": "Vì là buổi hòa nhạc của ca sĩ nổi tiếng nên hội trường kín chỗ.",
+    "mark": "コンサートとあって"
+   },
+   {
+    "ja": "連休とあって、観光地は混んでいる。",
+    "vi": "Vì là kỳ nghỉ dài nên nơi du lịch rất đông.",
+    "mark": "連休とあって"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-15",
+  "level": 1,
+  "order": 15,
+  "pattern": "～ながらも",
+  "meaning": "Tuy … nhưng",
+  "form": "Vます bỏ ます／adj／N + ながらも",
+  "tip": "Văn viết, nhấn mạnh sự đối lập.",
+  "examples": [
+   {
+    "ja": "彼は貧しいながらも、幸せに暮らしている。",
+    "vi": "Anh ấy tuy nghèo nhưng sống hạnh phúc.",
+    "mark": "貧しいながらも"
+   },
+   {
+    "ja": "狭いながらも、楽しい我が家です。",
+    "vi": "Tuy nhỏ nhưng là ngôi nhà vui vẻ của tôi.",
+    "mark": "狭いながらも"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-16",
+  "level": 1,
+  "order": 16,
+  "pattern": "～んばかりに",
+  "meaning": "Như thể sắp",
+  "form": "Vない bỏ ない + んばかりに",
+  "tip": "Biểu cảm gần như muốn làm vậy.",
+  "examples": [
+   {
+    "ja": "彼は泣かんばかりに喜んだ。",
+    "vi": "Anh ấy mừng như thể sắp khóc.",
+    "mark": "泣かんばかりに"
+   },
+   {
+    "ja": "子供は飛び上がらんばかりに喜んだ。",
+    "vi": "Đứa bé vui như muốn nhảy cẫng lên.",
+    "mark": "飛び上がらんばかりに"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-17",
+  "level": 1,
+  "order": 17,
+  "pattern": "～てやまない",
+  "meaning": "Mong mãi",
+  "form": "Vて + やまない",
+  "tip": "Cảm xúc kéo dài mãi, văn phong trang trọng.",
+  "examples": [
+   {
+    "ja": "皆様の幸せを願ってやみません。",
+    "vi": "Tôi mãi mong mọi người hạnh phúc.",
+    "mark": "願ってやみません"
+   },
+   {
+    "ja": "彼の成功を信じてやまない。",
+    "vi": "Tôi luôn tin vào thành công của anh ấy.",
+    "mark": "信じてやまない"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-18",
+  "level": 1,
+  "order": 18,
+  "pattern": "～に即して",
+  "meaning": "Phù hợp với",
+  "form": "N + に即して",
+  "tip": "Dựa sát vào thực tế, quy định.",
+  "examples": [
+   {
+    "ja": "現実に即して、計画を見直す必要がある。",
+    "vi": "Cần xem lại kế hoạch cho phù hợp với thực tế.",
+    "mark": "に即して"
+   },
+   {
+    "ja": "法律に即して、処理してください。",
+    "vi": "Hãy xử lý đúng theo luật.",
+    "mark": "に即して"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-19",
+  "level": 1,
+  "order": 19,
+  "pattern": "～いかんでは",
+  "meaning": "Tùy theo",
+  "form": "N + いかんでは",
+  "tip": "Kết quả có thể thay đổi tùy N.",
+  "examples": [
+   {
+    "ja": "結果いかんでは、計画を変更する。",
+    "vi": "Tùy kết quả mà sẽ thay đổi kế hoạch.",
+    "mark": "いかんでは"
+   },
+   {
+    "ja": "説明のいかんでは、承認されないこともある。",
+    "vi": "Tùy cách giải thích mà có khi không được duyệt.",
+    "mark": "いかんでは"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-20",
+  "level": 1,
+  "order": 20,
+  "pattern": "～ようが～まいが",
+  "meaning": "Dù … hay không",
+  "form": "Vよう／Vるが Vまい／Vないが",
+  "tip": "Không ảnh hưởng kết quả.",
+  "examples": [
+   {
+    "ja": "雨が降ろうが降るまいが、試合は行われる。",
+    "vi": "Dù mưa hay không mưa, trận đấu vẫn diễn ra.",
+    "mark": "降ろうが降るまいが"
+   },
+   {
+    "ja": "彼が来ようが来まいが、私は行く。",
+    "vi": "Anh ấy đến hay không, tôi vẫn đi.",
+    "mark": "来ようが来まいが"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-21",
+  "level": 1,
+  "order": 21,
+  "pattern": "～といえども",
+  "meaning": "Dù là",
+  "form": "N／thể thường + といえども",
+  "tip": "Dù là … cũng không ngoại lệ, văn viết.",
+  "examples": [
+   {
+    "ja": "専門家といえども、間違えることはある。",
+    "vi": "Dù là chuyên gia cũng có lúc sai.",
+    "mark": "といえども"
+   },
+   {
+    "ja": "子供といえども、責任がある。",
+    "vi": "Dù là trẻ con cũng có trách nhiệm.",
+    "mark": "といえども"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-22",
+  "level": 1,
+  "order": 22,
+  "pattern": "～ものを",
+  "meaning": "Vậy mà",
+  "form": "thể thường + ものを",
+  "tip": "Tiếc nuối, trách móc; vế sau thường bỏ.",
+  "examples": [
+   {
+    "ja": "言ってくれれば手伝ったものを。",
+    "vi": "Giá nói thì tôi đã giúp rồi vậy mà.",
+    "mark": "手伝ったものを"
+   },
+   {
+    "ja": "早く来ればよかったものを、遅れてしまった。",
+    "vi": "Đáng lẽ đến sớm thì tốt, vậy mà lại trễ.",
+    "mark": "よかったものを"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-23",
+  "level": 1,
+  "order": 23,
+  "pattern": "～まじき",
+  "meaning": "Không được phép",
+  "form": "N + にあるまじき",
+  "tip": "Hành vi không phù hợp với vị thế.",
+  "examples": [
+   {
+    "ja": "教師にあるまじき行為だ。",
+    "vi": "Đó là hành vi không thể chấp nhận ở một giáo viên.",
+    "mark": "あるまじき"
+   },
+   {
+    "ja": "政治家にあるまじき発言に、批判が集まった。",
+    "vi": "Phát ngôn không xứng với chính trị gia đã bị chỉ trích.",
+    "mark": "あるまじき"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-24",
+  "level": 1,
+  "order": 24,
+  "pattern": "～べからず",
+  "meaning": "Cấm",
+  "form": "Vる + べからず",
+  "tip": "Biển cấm kiểu cổ, cũng gặp trong văn viết.",
+  "examples": [
+   {
+    "ja": "芝生に入るべからず。",
+    "vi": "Cấm đi vào bãi cỏ.",
+    "mark": "べからず"
+   },
+   {
+    "ja": "駐車するべからず。",
+    "vi": "Cấm đỗ xe.",
+    "mark": "べからず"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n1-25",
+  "level": 1,
+  "order": 25,
+  "pattern": "～たりとも",
+  "meaning": "Dù chỉ một",
+  "form": "一＋đơn vị + たりとも（～ない）",
+  "tip": "Phủ định hoàn toàn, nhấn mạnh.",
+  "examples": [
+   {
+    "ja": "一円たりとも無駄にしてはならない。",
+    "vi": "Không được lãng phí dù chỉ một yên.",
+    "mark": "一円たりとも"
+   },
+   {
+    "ja": "一瞬たりとも気を抜けない。",
+    "vi": "Không thể lơ là dù chỉ một khoảnh khắc.",
+    "mark": "一瞬たりとも"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-01",
+  "level": 5,
+  "order": 1,
+  "pattern": "～は～です",
+  "meaning": "Là / thì",
+  "form": "N1 は N2 です",
+  "tip": "は đọc là \"wa\". Thân mật bỏ です.",
+  "examples": [
+   {
+    "ja": "私は学生です。",
+    "vi": "Tôi là học sinh.",
+    "mark": "学生です"
+   },
+   {
+    "ja": "これは日本のお菓子です。",
+    "vi": "Đây là bánh kẹo của Nhật.",
+    "mark": "お菓子です"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-02",
+  "level": 5,
+  "order": 2,
+  "pattern": "～ではありません",
+  "meaning": "Không phải là",
+  "form": "N ではありません / N じゃありません",
+  "tip": "じゃありません dùng nhiều trong hội thoại.",
+  "examples": [
+   {
+    "ja": "私は先生ではありません。",
+    "vi": "Tôi không phải là giáo viên.",
+    "mark": "ではありません"
+   },
+   {
+    "ja": "あの人は田中さんじゃありません。",
+    "vi": "Người kia không phải anh Tanaka.",
+    "mark": "じゃありません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-03",
+  "level": 5,
+  "order": 3,
+  "pattern": "～か",
+  "meaning": "Câu hỏi",
+  "form": "câu + か",
+  "tip": "Không cần dấu \"?\" khi viết.",
+  "examples": [
+   {
+    "ja": "あなたは学生ですか。",
+    "vi": "Bạn là học sinh à?",
+    "mark": "ですか"
+   },
+   {
+    "ja": "これはいくらですか。",
+    "vi": "Cái này bao nhiêu tiền?",
+    "mark": "いくらですか"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-04",
+  "level": 5,
+  "order": 4,
+  "pattern": "～も",
+  "meaning": "Cũng",
+  "form": "N も",
+  "tip": "も thay は hoặc が, không đứng cùng.",
+  "examples": [
+   {
+    "ja": "私も学生です。",
+    "vi": "Tôi cũng là học sinh.",
+    "mark": "私も"
+   },
+   {
+    "ja": "彼女は紅茶も飲みます。",
+    "vi": "Cô ấy cũng uống cả trà đen.",
+    "mark": "紅茶も"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-05",
+  "level": 5,
+  "order": 5,
+  "pattern": "～の",
+  "meaning": "Của / thuộc về",
+  "form": "N1 の N2",
+  "tip": "Nối hai danh từ: N1 bổ nghĩa cho N2.",
+  "examples": [
+   {
+    "ja": "これは私の本です。",
+    "vi": "Đây là sách của tôi.",
+    "mark": "私の本"
+   },
+   {
+    "ja": "日本語の先生は優しいです。",
+    "vi": "Giáo viên tiếng Nhật rất hiền.",
+    "mark": "日本語の先生"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-06",
+  "level": 5,
+  "order": 6,
+  "pattern": "～を",
+  "meaning": "Tân ngữ",
+  "form": "N を V",
+  "tip": "を đọc là \"o\".",
+  "examples": [
+   {
+    "ja": "毎朝コーヒーを飲みます。",
+    "vi": "Mỗi sáng tôi uống cà phê.",
+    "mark": "コーヒーを"
+   },
+   {
+    "ja": "友達と映画を見ます。",
+    "vi": "Tôi xem phim cùng bạn.",
+    "mark": "映画を"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-07",
+  "level": 5,
+  "order": 7,
+  "pattern": "～に",
+  "meaning": "Thời điểm / đích đến",
+  "form": "thời gian に V / nơi に V",
+  "tip": "Với \"hôm nay, ngày mai\" không dùng に.",
+  "examples": [
+   {
+    "ja": "七時に起きます。",
+    "vi": "Tôi dậy lúc bảy giờ.",
+    "mark": "七時に"
+   },
+   {
+    "ja": "明日、京都に行きます。",
+    "vi": "Ngày mai tôi đi Kyoto.",
+    "mark": "京都に"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-08",
+  "level": 5,
+  "order": 8,
+  "pattern": "～で",
+  "meaning": "Nơi diễn ra / phương tiện",
+  "form": "N で V",
+  "tip": "で chỉ nơi làm việc gì, hoặc cách thức.",
+  "examples": [
+   {
+    "ja": "図書館で勉強します。",
+    "vi": "Tôi học ở thư viện.",
+    "mark": "図書館で"
+   },
+   {
+    "ja": "バスで学校へ行きます。",
+    "vi": "Tôi đi học bằng xe buýt.",
+    "mark": "バスで"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-09",
+  "level": 5,
+  "order": 9,
+  "pattern": "～があります／います",
+  "meaning": "Có (đồ vật / người, động vật)",
+  "form": "N が あります／います",
+  "tip": "あります cho vật; います cho người và động vật.",
+  "examples": [
+   {
+    "ja": "机の上に本があります。",
+    "vi": "Trên bàn có quyển sách.",
+    "mark": "本があります"
+   },
+   {
+    "ja": "庭に犬がいます。",
+    "vi": "Trong vườn có con chó.",
+    "mark": "犬がいます"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-10",
+  "level": 5,
+  "order": 10,
+  "pattern": "～ます／～ません",
+  "meaning": "Thể lịch sự hiện tại",
+  "form": "Vます / Vません",
+  "tip": "Dùng cho thói quen và tương lai gần.",
+  "examples": [
+   {
+    "ja": "私は毎日野菜を食べます。",
+    "vi": "Mỗi ngày tôi ăn rau.",
+    "mark": "食べます"
+   },
+   {
+    "ja": "夜はテレビを見ません。",
+    "vi": "Buổi tối tôi không xem tivi.",
+    "mark": "見ません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-11",
+  "level": 5,
+  "order": 11,
+  "pattern": "～ました／～ませんでした",
+  "meaning": "Thể lịch sự quá khứ",
+  "form": "Vました / Vませんでした",
+  "tip": "Dạng phủ định quá khứ là ませんでした.",
+  "examples": [
+   {
+    "ja": "昨日、友達に会いました。",
+    "vi": "Hôm qua tôi đã gặp bạn.",
+    "mark": "会いました"
+   },
+   {
+    "ja": "朝ごはんを食べませんでした。",
+    "vi": "Tôi đã không ăn sáng.",
+    "mark": "食べませんでした"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-12",
+  "level": 5,
+  "order": 12,
+  "pattern": "～たいです",
+  "meaning": "Muốn làm",
+  "form": "Vます bỏ ます + たいです",
+  "tip": "Nói về mong muốn của chính mình.",
+  "examples": [
+   {
+    "ja": "日本へ行きたいです。",
+    "vi": "Tôi muốn đi Nhật.",
+    "mark": "行きたいです"
+   },
+   {
+    "ja": "冷たい水が飲みたいです。",
+    "vi": "Tôi muốn uống nước lạnh.",
+    "mark": "飲みたいです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-13",
+  "level": 5,
+  "order": 13,
+  "pattern": "～てください",
+  "meaning": "Xin hãy làm",
+  "form": "Vて + ください",
+  "tip": "Lời nhờ lịch sự, nhẹ nhàng.",
+  "examples": [
+   {
+    "ja": "ここに名前を書いてください。",
+    "vi": "Xin hãy viết tên vào đây.",
+    "mark": "書いてください"
+   },
+   {
+    "ja": "ゆっくり話してください。",
+    "vi": "Xin hãy nói chậm thôi.",
+    "mark": "話してください"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-14",
+  "level": 5,
+  "order": 14,
+  "pattern": "～ています",
+  "meaning": "Đang làm / trạng thái",
+  "form": "Vて + います",
+  "tip": "Vừa là đang diễn ra, vừa là trạng thái kéo dài.",
+  "examples": [
+   {
+    "ja": "今、本を読んでいます。",
+    "vi": "Bây giờ tôi đang đọc sách.",
+    "mark": "読んでいます"
+   },
+   {
+    "ja": "兄は東京に住んでいます。",
+    "vi": "Anh tôi đang sống ở Tokyo.",
+    "mark": "住んでいます"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-15",
+  "level": 5,
+  "order": 15,
+  "pattern": "～から～まで",
+  "meaning": "Từ … đến …",
+  "form": "N から N まで",
+  "tip": "Dùng cho thời gian lẫn địa điểm.",
+  "examples": [
+   {
+    "ja": "九時から五時まで働きます。",
+    "vi": "Tôi làm việc từ chín giờ đến năm giờ.",
+    "mark": "九時から五時まで"
+   },
+   {
+    "ja": "家から駅まで十分です。",
+    "vi": "Từ nhà đến ga mất mười phút.",
+    "mark": "家から駅まで"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-16",
+  "level": 5,
+  "order": 16,
+  "pattern": "～い形容詞／～な形容詞",
+  "meaning": "Tính từ đuôi い / な",
+  "form": "い: 高いです / な: 静かです（＋な＋N）",
+  "tip": "Phủ định い: ～くないです; な: ～ではありません.",
+  "examples": [
+   {
+    "ja": "この部屋は広いです。",
+    "vi": "Căn phòng này rộng.",
+    "mark": "広いです"
+   },
+   {
+    "ja": "駅の近くは静かな町です。",
+    "vi": "Gần ga là một thị trấn yên tĩnh.",
+    "mark": "静かな町"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-17",
+  "level": 5,
+  "order": 17,
+  "pattern": "～より～のほうが",
+  "meaning": "… hơn …",
+  "form": "A より B のほうが adj",
+  "tip": "B là thứ được chọn / trội hơn.",
+  "examples": [
+   {
+    "ja": "電車よりバスのほうが安いです。",
+    "vi": "Xe buýt rẻ hơn tàu điện.",
+    "mark": "よりバスのほうが"
+   },
+   {
+    "ja": "夏より冬のほうが好きです。",
+    "vi": "Tôi thích mùa đông hơn mùa hè.",
+    "mark": "より冬のほうが"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-18",
+  "level": 5,
+  "order": 18,
+  "pattern": "～が好きです",
+  "meaning": "Thích …",
+  "form": "N が 好きです／嫌いです",
+  "tip": "Trợ từ là が, không phải を.",
+  "examples": [
+   {
+    "ja": "私は音楽が好きです。",
+    "vi": "Tôi thích âm nhạc.",
+    "mark": "が好きです"
+   },
+   {
+    "ja": "弟は野菜が嫌いです。",
+    "vi": "Em trai tôi ghét rau.",
+    "mark": "が嫌いです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-19",
+  "level": 5,
+  "order": 19,
+  "pattern": "～ませんか／～ましょう",
+  "meaning": "Rủ rê",
+  "form": "Vませんか / Vましょう",
+  "tip": "ませんか là lời mời; ましょう là đề nghị cùng làm.",
+  "examples": [
+   {
+    "ja": "一緒に食事に行きませんか。",
+    "vi": "Bạn đi ăn cùng tôi nhé?",
+    "mark": "行きませんか"
+   },
+   {
+    "ja": "少し休みましょう。",
+    "vi": "Chúng ta nghỉ một chút nhé.",
+    "mark": "休みましょう"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-20",
+  "level": 5,
+  "order": 20,
+  "pattern": "～てもいいです",
+  "meaning": "Được phép làm",
+  "form": "Vて + もいいです",
+  "tip": "Hỏi xin phép: ～てもいいですか.",
+  "examples": [
+   {
+    "ja": "ここで写真を撮ってもいいですか。",
+    "vi": "Tôi chụp ảnh ở đây được không?",
+    "mark": "撮ってもいいですか"
+   },
+   {
+    "ja": "窓を開けてもいいです。",
+    "vi": "Bạn mở cửa sổ cũng được.",
+    "mark": "開けてもいいです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-21",
+  "level": 5,
+  "order": 21,
+  "pattern": "～てはいけません",
+  "meaning": "Không được làm",
+  "form": "Vて + はいけません",
+  "tip": "Lệnh cấm, thường là biển báo hoặc người trên nói.",
+  "examples": [
+   {
+    "ja": "ここでたばこを吸ってはいけません。",
+    "vi": "Không được hút thuốc ở đây.",
+    "mark": "吸ってはいけません"
+   },
+   {
+    "ja": "教室で食べてはいけません。",
+    "vi": "Không được ăn trong lớp.",
+    "mark": "食べてはいけません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-22",
+  "level": 5,
+  "order": 22,
+  "pattern": "～ないでください",
+  "meaning": "Xin đừng làm",
+  "form": "Vない + でください",
+  "tip": "Nhờ ai đó không làm gì.",
+  "examples": [
+   {
+    "ja": "ここに荷物を置かないでください。",
+    "vi": "Xin đừng để hành lý ở đây.",
+    "mark": "置かないでください"
+   },
+   {
+    "ja": "大きい声で話さないでください。",
+    "vi": "Xin đừng nói to.",
+    "mark": "話さないでください"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-23",
+  "level": 5,
+  "order": 23,
+  "pattern": "～てから",
+  "meaning": "Sau khi làm xong",
+  "form": "Vて + から V2",
+  "tip": "Việc 1 xong rồi mới làm việc 2.",
+  "examples": [
+   {
+    "ja": "手を洗ってから食べます。",
+    "vi": "Tôi rửa tay rồi mới ăn.",
+    "mark": "洗ってから"
+   },
+   {
+    "ja": "宿題をしてから遊びに行きます。",
+    "vi": "Làm bài tập xong tôi mới đi chơi.",
+    "mark": "してから"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-24",
+  "level": 5,
+  "order": 24,
+  "pattern": "～がほしいです",
+  "meaning": "Muốn có …",
+  "form": "N が ほしいです",
+  "tip": "Muốn có đồ vật; muốn làm thì dùng ～たい.",
+  "examples": [
+   {
+    "ja": "新しいパソコンがほしいです。",
+    "vi": "Tôi muốn có một cái máy tính mới.",
+    "mark": "がほしいです"
+   },
+   {
+    "ja": "私は時間がほしいです。",
+    "vi": "Tôi muốn có thêm thời gian.",
+    "mark": "がほしいです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n5-25",
+  "level": 5,
+  "order": 25,
+  "pattern": "～から（理由）",
+  "meaning": "Vì … nên …",
+  "form": "câu 1 から、câu 2",
+  "tip": "Nêu lý do ở vế trước.",
+  "examples": [
+   {
+    "ja": "雨ですから、家にいます。",
+    "vi": "Vì trời mưa nên tôi ở nhà.",
+    "mark": "ですから"
+   },
+   {
+    "ja": "疲れましたから、早く寝ます。",
+    "vi": "Vì mệt nên tôi đi ngủ sớm.",
+    "mark": "疲れましたから"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-01",
+  "level": 4,
+  "order": 1,
+  "pattern": "～ことがある",
+  "meaning": "Có lúc / thỉnh thoảng",
+  "form": "Vる／Vない + ことがある",
+  "tip": "Nói việc thỉnh thoảng xảy ra.",
+  "examples": [
+   {
+    "ja": "朝ごはんを食べないことがあります。",
+    "vi": "Có lúc tôi không ăn sáng.",
+    "mark": "食べないことがあります"
+   },
+   {
+    "ja": "夜、眠れないことがあります。",
+    "vi": "Có những đêm tôi không ngủ được.",
+    "mark": "眠れないことがあります"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-02",
+  "level": 4,
+  "order": 2,
+  "pattern": "～たことがある",
+  "meaning": "Đã từng",
+  "form": "Vた + ことがある",
+  "tip": "Nói về kinh nghiệm trong quá khứ.",
+  "examples": [
+   {
+    "ja": "富士山に登ったことがあります。",
+    "vi": "Tôi đã từng leo núi Phú Sĩ.",
+    "mark": "登ったことがあります"
+   },
+   {
+    "ja": "日本の料理を作ったことがありません。",
+    "vi": "Tôi chưa từng nấu món Nhật.",
+    "mark": "作ったことがありません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-03",
+  "level": 4,
+  "order": 3,
+  "pattern": "～ようにする",
+  "meaning": "Cố gắng làm",
+  "form": "Vる／Vない + ようにする",
+  "tip": "Nỗ lực làm thành thói quen.",
+  "examples": [
+   {
+    "ja": "毎日野菜を食べるようにしています。",
+    "vi": "Tôi cố gắng ăn rau mỗi ngày.",
+    "mark": "食べるようにしています"
+   },
+   {
+    "ja": "夜は遅くまで起きないようにします。",
+    "vi": "Buổi tối tôi cố không thức khuya.",
+    "mark": "起きないようにします"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-04",
+  "level": 4,
+  "order": 4,
+  "pattern": "～ことにする",
+  "meaning": "Quyết định làm",
+  "form": "Vる／Vない + ことにする",
+  "tip": "Người nói tự quyết định.",
+  "examples": [
+   {
+    "ja": "来月から運動することにしました。",
+    "vi": "Tôi đã quyết định tập thể dục từ tháng sau.",
+    "mark": "することにしました"
+   },
+   {
+    "ja": "今日は出かけないことにします。",
+    "vi": "Hôm nay tôi quyết định không ra ngoài.",
+    "mark": "出かけないことにします"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-05",
+  "level": 4,
+  "order": 5,
+  "pattern": "～ことになる",
+  "meaning": "Được quyết định là",
+  "form": "Vる／Vない + ことになる",
+  "tip": "Kết quả do hoàn cảnh hoặc người khác quyết định.",
+  "examples": [
+   {
+    "ja": "来年、東京で働くことになりました。",
+    "vi": "Năm sau tôi sẽ làm việc ở Tokyo.",
+    "mark": "働くことになりました"
+   },
+   {
+    "ja": "来月、大阪へ出張に行くことになりました。",
+    "vi": "Tháng sau tôi sẽ đi công tác Osaka (được quyết định như vậy).",
+    "mark": "行くことになりました"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-06",
+  "level": 4,
+  "order": 6,
+  "pattern": "～そうだ（様子）",
+  "meaning": "Trông có vẻ",
+  "form": "Vます bỏ ます／adj bỏ い・な + そうだ",
+  "tip": "Phán đoán từ vẻ bên ngoài.",
+  "examples": [
+   {
+    "ja": "このケーキはおいしそうです。",
+    "vi": "Cái bánh này trông có vẻ ngon.",
+    "mark": "おいしそうです"
+   },
+   {
+    "ja": "空が暗くて、雨が降りそうです。",
+    "vi": "Trời tối, có vẻ sắp mưa.",
+    "mark": "降りそうです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-07",
+  "level": 4,
+  "order": 7,
+  "pattern": "～そうだ（伝聞）",
+  "meaning": "Nghe nói",
+  "form": "thể thường + そうだ",
+  "tip": "Truyền đạt lại thông tin nghe được.",
+  "examples": [
+   {
+    "ja": "天気予報によると、明日は雪だそうです。",
+    "vi": "Theo dự báo thời tiết, nghe nói mai có tuyết.",
+    "mark": "雪だそうです"
+   },
+   {
+    "ja": "田中さんは来月結婚するそうです。",
+    "vi": "Nghe nói anh Tanaka tháng sau kết hôn.",
+    "mark": "結婚するそうです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-08",
+  "level": 4,
+  "order": 8,
+  "pattern": "～と思う",
+  "meaning": "Tôi nghĩ rằng",
+  "form": "thể thường + と思う",
+  "tip": "Nêu ý kiến hoặc suy đoán.",
+  "examples": [
+   {
+    "ja": "彼は来ると思います。",
+    "vi": "Tôi nghĩ anh ấy sẽ đến.",
+    "mark": "来ると思います"
+   },
+   {
+    "ja": "この問題は難しいと思います。",
+    "vi": "Tôi nghĩ bài này khó.",
+    "mark": "難しいと思います"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-09",
+  "level": 4,
+  "order": 9,
+  "pattern": "～と言う",
+  "meaning": "Nói rằng",
+  "form": "thể thường + と言う",
+  "tip": "Trích dẫn lời nói gián tiếp.",
+  "examples": [
+   {
+    "ja": "先生は明日試験があると言いました。",
+    "vi": "Cô giáo nói mai có kiểm tra.",
+    "mark": "あると言いました"
+   },
+   {
+    "ja": "母は元気だと言っていました。",
+    "vi": "Mẹ tôi bảo là mẹ khỏe.",
+    "mark": "元気だと言っていました"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-10",
+  "level": 4,
+  "order": 10,
+  "pattern": "～ば",
+  "meaning": "Nếu … thì",
+  "form": "Vば／adjければ",
+  "tip": "Điều kiện đủ; vế sau là kết quả tự nhiên.",
+  "examples": [
+   {
+    "ja": "急げば、間に合います。",
+    "vi": "Nếu vội thì sẽ kịp.",
+    "mark": "急げば"
+   },
+   {
+    "ja": "安ければ、買います。",
+    "vi": "Nếu rẻ thì tôi mua.",
+    "mark": "安ければ"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-11",
+  "level": 4,
+  "order": 11,
+  "pattern": "～たら",
+  "meaning": "Nếu / khi … xong",
+  "form": "Vた＋ら",
+  "tip": "Dùng được cho điều kiện lẫn việc sau khi xảy ra.",
+  "examples": [
+   {
+    "ja": "雨が降ったら、行きません。",
+    "vi": "Nếu trời mưa thì tôi không đi.",
+    "mark": "降ったら"
+   },
+   {
+    "ja": "家に着いたら、電話します。",
+    "vi": "Khi về đến nhà tôi sẽ gọi.",
+    "mark": "着いたら"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-12",
+  "level": 4,
+  "order": 12,
+  "pattern": "～と（条件）",
+  "meaning": "Hễ … thì",
+  "form": "Vる＋と",
+  "tip": "Kết quả luôn xảy ra, tự nhiên.",
+  "examples": [
+   {
+    "ja": "春になると、花が咲きます。",
+    "vi": "Hễ sang xuân là hoa nở.",
+    "mark": "なると"
+   },
+   {
+    "ja": "ボタンを押すと、ドアが開きます。",
+    "vi": "Hễ bấm nút là cửa mở.",
+    "mark": "押すと"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-13",
+  "level": 4,
+  "order": 13,
+  "pattern": "～なら",
+  "meaning": "Nếu là chuyện đó thì",
+  "form": "thể thường + なら",
+  "tip": "Nối tiếp chủ đề người kia vừa nêu.",
+  "examples": [
+   {
+    "ja": "日本へ行くなら、京都がおすすめです。",
+    "vi": "Nếu đi Nhật thì tôi khuyên Kyoto.",
+    "mark": "行くなら"
+   },
+   {
+    "ja": "安いのがほしいなら、あの店がいいですよ。",
+    "vi": "Nếu muốn đồ rẻ thì cửa hàng kia tốt.",
+    "mark": "ほしいなら"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-14",
+  "level": 4,
+  "order": 14,
+  "pattern": "～ながら",
+  "meaning": "Vừa … vừa …",
+  "form": "Vます bỏ ます + ながら",
+  "tip": "Hai hành động của cùng một người.",
+  "examples": [
+   {
+    "ja": "音楽を聞きながら、勉強します。",
+    "vi": "Tôi vừa nghe nhạc vừa học.",
+    "mark": "聞きながら"
+   },
+   {
+    "ja": "歩きながら、スマホを見ないでください。",
+    "vi": "Đừng vừa đi vừa xem điện thoại.",
+    "mark": "歩きながら"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-15",
+  "level": 4,
+  "order": 15,
+  "pattern": "～すぎる",
+  "meaning": "Quá …",
+  "form": "Vます bỏ ます／adj bỏ い・な + すぎる",
+  "tip": "Thường hàm ý không tốt.",
+  "examples": [
+   {
+    "ja": "昨日は食べすぎました。",
+    "vi": "Hôm qua tôi đã ăn quá nhiều.",
+    "mark": "食べすぎました"
+   },
+   {
+    "ja": "この部屋は暑すぎます。",
+    "vi": "Căn phòng này nóng quá.",
+    "mark": "暑すぎます"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-16",
+  "level": 4,
+  "order": 16,
+  "pattern": "～やすい／～にくい",
+  "meaning": "Dễ / khó làm",
+  "form": "Vます bỏ ます + やすい／にくい",
+  "tip": "Nói tính chất của đồ vật hay việc làm.",
+  "examples": [
+   {
+    "ja": "このペンは書きやすいです。",
+    "vi": "Cây bút này dễ viết.",
+    "mark": "書きやすいです"
+   },
+   {
+    "ja": "この漢字は覚えにくいです。",
+    "vi": "Chữ Hán này khó nhớ.",
+    "mark": "覚えにくいです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-17",
+  "level": 4,
+  "order": 17,
+  "pattern": "～はずだ",
+  "meaning": "Chắc chắn là",
+  "form": "thể thường + はずだ",
+  "tip": "Suy luận có căn cứ.",
+  "examples": [
+   {
+    "ja": "彼はもう家に着いたはずです。",
+    "vi": "Chắc chắn anh ấy đã về đến nhà rồi.",
+    "mark": "着いたはずです"
+   },
+   {
+    "ja": "田中さんは日本語が話せるはずです。",
+    "vi": "Anh Tanaka chắc hẳn nói được tiếng Nhật.",
+    "mark": "話せるはずです"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-18",
+  "level": 4,
+  "order": 18,
+  "pattern": "～かもしれない",
+  "meaning": "Có thể là",
+  "form": "thể thường + かもしれない",
+  "tip": "Khả năng khoảng 50%, không chắc.",
+  "examples": [
+   {
+    "ja": "明日は雨が降るかもしれません。",
+    "vi": "Mai có thể sẽ mưa.",
+    "mark": "降るかもしれません"
+   },
+   {
+    "ja": "彼は病気かもしれません。",
+    "vi": "Có thể anh ấy bị ốm.",
+    "mark": "病気かもしれません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-19",
+  "level": 4,
+  "order": 19,
+  "pattern": "～でしょう",
+  "meaning": "Chắc là",
+  "form": "thể thường + でしょう",
+  "tip": "Suy đoán; lên giọng khi muốn xác nhận.",
+  "examples": [
+   {
+    "ja": "明日は晴れるでしょう。",
+    "vi": "Ngày mai chắc trời sẽ nắng.",
+    "mark": "晴れるでしょう"
+   },
+   {
+    "ja": "彼はもう知っているでしょう。",
+    "vi": "Chắc anh ấy đã biết rồi.",
+    "mark": "知っているでしょう"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-20",
+  "level": 4,
+  "order": 20,
+  "pattern": "～られる（受身）",
+  "meaning": "Bị / được (bị động)",
+  "form": "Vられる (nhóm 1: Vあ段＋れる)",
+  "tip": "Chủ ngữ là người chịu tác động.",
+  "examples": [
+   {
+    "ja": "先生にほめられました。",
+    "vi": "Tôi được giáo viên khen.",
+    "mark": "ほめられました"
+   },
+   {
+    "ja": "電車で足を踏まれました。",
+    "vi": "Tôi bị giẫm lên chân trên tàu.",
+    "mark": "踏まれました"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-21",
+  "level": 4,
+  "order": 21,
+  "pattern": "～させる（使役）",
+  "meaning": "Bắt / cho phép làm",
+  "form": "Vさせる (nhóm 1: Vあ段＋せる)",
+  "tip": "Người trên bắt hoặc cho người dưới làm.",
+  "examples": [
+   {
+    "ja": "母は子供に野菜を食べさせます。",
+    "vi": "Mẹ bắt con ăn rau.",
+    "mark": "食べさせます"
+   },
+   {
+    "ja": "先生は学生に作文を書かせました。",
+    "vi": "Giáo viên bắt học sinh viết bài luận.",
+    "mark": "書かせました"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-22",
+  "level": 4,
+  "order": 22,
+  "pattern": "～てあげる／もらう／くれる",
+  "meaning": "Cho / nhận / được cho",
+  "form": "Vて + あげる／もらう／くれる",
+  "tip": "Hướng cho nhận: mình cho người khác / nhận / người khác cho mình.",
+  "examples": [
+   {
+    "ja": "友達に日本語を教えてあげました。",
+    "vi": "Tôi đã dạy tiếng Nhật cho bạn.",
+    "mark": "教えてあげました"
+   },
+   {
+    "ja": "先生が本を貸してくれました。",
+    "vi": "Thầy cho tôi mượn sách.",
+    "mark": "貸してくれました"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-23",
+  "level": 4,
+  "order": 23,
+  "pattern": "～ために（目的）",
+  "meaning": "Để …",
+  "form": "Vる／Nの + ために",
+  "tip": "Mục đích; chủ ngữ hai vế giống nhau.",
+  "examples": [
+   {
+    "ja": "日本へ留学するために、お金をためています。",
+    "vi": "Để du học Nhật, tôi đang tiết kiệm tiền.",
+    "mark": "留学するために"
+   },
+   {
+    "ja": "健康のために、毎日歩きます。",
+    "vi": "Vì sức khỏe, tôi đi bộ mỗi ngày.",
+    "mark": "健康のために"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-24",
+  "level": 4,
+  "order": 24,
+  "pattern": "～ように（目的）",
+  "meaning": "Để có thể …",
+  "form": "Vる／Vない + ように",
+  "tip": "Mục tiêu dạng khả năng hoặc trạng thái.",
+  "examples": [
+   {
+    "ja": "日本語が話せるように、毎日練習します。",
+    "vi": "Để nói được tiếng Nhật, tôi luyện tập mỗi ngày.",
+    "mark": "話せるように"
+   },
+   {
+    "ja": "忘れないように、メモします。",
+    "vi": "Tôi ghi chú để không quên.",
+    "mark": "忘れないように"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-25",
+  "level": 4,
+  "order": 25,
+  "pattern": "～なければならない",
+  "meaning": "Phải làm",
+  "form": "Vない bỏ い + ければならない",
+  "tip": "Bổn phận; thân mật là ～なきゃ.",
+  "examples": [
+   {
+    "ja": "明日は早く起きなければなりません。",
+    "vi": "Ngày mai tôi phải dậy sớm.",
+    "mark": "起きなければなりません"
+   },
+   {
+    "ja": "薬を飲まなければなりません。",
+    "vi": "Tôi phải uống thuốc.",
+    "mark": "飲まなければなりません"
+   }
+  ]
+ },
+ {
+  "id": "ja-g-n4-26",
+  "level": 4,
+  "order": 26,
+  "pattern": "～られる（可能）",
+  "meaning": "Có thể làm",
+  "form": "Vられる (nhóm 1: Vえ段＋る)",
+  "tip": "Khả năng; に tân ngữ đổi を thành が.",
+  "examples": [
+   {
+    "ja": "私は泳げます。",
+    "vi": "Tôi biết bơi.",
+    "mark": "泳げます"
+   },
+   {
+    "ja": "日本語の新聞が読めます。",
+    "vi": "Tôi đọc được báo tiếng Nhật.",
+    "mark": "読めます"
+   }
+  ]
+ }
+]

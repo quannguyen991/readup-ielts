@@ -80,17 +80,17 @@ export function UnitTile({
       />
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
         <View style={{ flexShrink: 1, minWidth: 0, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: 'rgba(255,255,255,0.22)' }}>
-          <Text numberOfLines={1} style={{ fontSize: 12, fontFamily: 'Inter_700Bold', letterSpacing: 0.8, color: '#FFFFFF' }}>{tag}</Text>
+          <Text numberOfLines={1} style={{ fontSize: 12, fontFamily: 'Nunito_700Bold', letterSpacing: 0.8, color: '#FFFFFF' }}>{tag}</Text>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 3 }}>
-          <Text style={{ fontSize: 34, lineHeight: 36, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{total}</Text>
-          <Text style={{ fontSize: 12, fontFamily: 'Inter_700Bold', color: 'rgba(255,255,255,0.85)' }}>{L('TỪ', 'WORDS')}</Text>
+          <Text style={{ fontSize: 34, lineHeight: 36, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{total}</Text>
+          <Text style={{ fontSize: 12, fontFamily: 'Nunito_700Bold', color: 'rgba(255,255,255,0.85)' }}>{L('TỪ', 'WORDS')}</Text>
         </View>
       </View>
 
-      <Text numberOfLines={2} style={{ marginTop: 10, fontSize: 17, lineHeight: 22, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{title}</Text>
+      <Text numberOfLines={2} style={{ marginTop: 10, fontSize: 17, lineHeight: 22, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{title}</Text>
       {words.length ? (
-        <Text numberOfLines={1} style={{ fontFamily: 'Inter_400Regular', marginTop: 3, fontSize: 13, color: 'rgba(255,255,255,0.88)' }}>{words.slice(0, 3).join(' · ')}</Text>
+        <Text numberOfLines={1} style={{ fontFamily: 'Nunito_400Regular', marginTop: 3, fontSize: 13, color: 'rgba(255,255,255,0.88)' }}>{words.slice(0, 3).join(' · ')}</Text>
       ) : null}
 
       <View style={{ flex: 1 }} />
@@ -102,7 +102,7 @@ export function UnitTile({
         {complete ? (
           <Icon name="check" size={16} color="#FFFFFF" strokeWidth={3} />
         ) : (
-          <Text style={{ fontSize: 13, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{done}/{total}</Text>
+          <Text style={{ fontSize: 13, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{done}/{total}</Text>
         )}
       </View>
 

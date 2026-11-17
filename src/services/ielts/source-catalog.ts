@@ -1,6 +1,6 @@
 export type TestSection = 'Listening' | 'Reading' | 'Writing' | 'Speaking';
 export type SourcePage = { page: number; text: string; reviewLines?: { confidence: number; original: string }[]; imageAsset?: string; imageWidth?: number; imageHeight?: number };
-export type ExamPart = { id: number; label: string; questionStart: number; questionEnd: number; pages: SourcePage[]; recommendedMinutes?: number; minimumWords?: number };
+export type ExamPart = { id: number; label: string; questionStart: number; questionEnd: number; pages: SourcePage[]; recommendedMinutes?: number; minimumWords?: number; sourceImages?: string[] };
 export type SourceTest = {
   id: string; title: string; source: string; section?: TestSection;
   questionCount?: number; answerMode?: 'short' | 'long'; responseLabels?: string[];

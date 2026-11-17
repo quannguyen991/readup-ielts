@@ -23,7 +23,7 @@ export default function ZhGrammarIndex() {
       <HanyuCourseBanner />
       <View style={{ ...(paper as object), backgroundColor: ZH.seal, borderColor: ZH.gold2 } as object}>
         <Text style={{ fontSize: 13, letterSpacing: 1.2, color: ZH.gold2, fontWeight: '700' }}>NGỮ PHÁP TIẾNG TRUNG</Text>
-        <Text style={{ fontSize: 34, lineHeight: 40, fontWeight: '800', color: '#FFFBF3', marginTop: 4 }}>语法 · Ngữ pháp HSK</Text>
+        <Text style={{ fontSize: 34, lineHeight: 40, fontWeight: '400', color: '#FFFBF3', marginTop: 4 }}>语法 · Ngữ pháp HSK</Text>
         <Text style={{ fontSize: 15, color: '#F4E6C2', marginTop: 6 }}>{done}/{ZH_GRAMMAR.length} bài đã đạt · mỗi bài có ví dụ pinyin, nghe và 5 câu kiểm tra</Text>
       </View>
 
@@ -32,7 +32,7 @@ export default function ZhGrammarIndex() {
           const active = lv === level;
           return (
             <Pressable key={lv} accessibilityRole="tab" aria-selected={active} onPress={() => setLevel(lv)} style={{ flexGrow: 1, flexBasis: 90, paddingVertical: 12, paddingHorizontal: 14, borderRadius: 18, backgroundColor: active ? ZH.seal : '#FFFFFF', borderWidth: 1.5, borderColor: active ? ZH.seal : ZH.line }}>
-              <Text style={{ fontSize: 20, fontWeight: '800', color: active ? '#FFFFFF' : ZH.ink }}>HSK {lv}</Text>
+              <Text style={{ fontSize: 20, fontWeight: '400', color: active ? '#FFFFFF' : ZH.ink }}>HSK {lv}</Text>
               <Text style={{ fontSize: 13, color: active ? '#F4E6C2' : ZH.ink2 }}>{passedIn(lv)}/{zhGrammarOfLevel(lv).length}</Text>
             </Pressable>
           );
@@ -46,10 +46,10 @@ export default function ZhGrammarIndex() {
           return (
             <Pressable key={l.id} accessibilityRole="link" onPress={() => router.push(`/ngu-phap-trung/${l.id}` as never)} style={{ flexGrow: 1, flexBasis: 260, minHeight: 76, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 16, backgroundColor: ok ? ZH.sageSoft : ZH.card, borderWidth: 1.5, borderColor: ok ? ZH.sage : ZH.line }}>
               <View style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: ok ? ZH.sage : ZH.goldSoftBg }}>
-                <Text style={{ fontSize: 16, fontWeight: '800', color: ok ? '#FFFFFF' : ZH.seal }}>{ok ? '✓' : l.order}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '400', color: ok ? '#FFFFFF' : ZH.seal }}>{ok ? '✓' : l.order}</Text>
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text numberOfLines={1} style={{ fontSize: 18, fontWeight: '800', color: ZH.seal }}>{l.titleZh}</Text>
+                <Text numberOfLines={1} style={{ fontSize: 18, fontWeight: '400', color: ZH.seal }}>{l.titleZh}</Text>
                 <Text numberOfLines={2} style={{ fontSize: 15, fontWeight: '600', color: ZH.ink }}>{l.title}</Text>
                 <Text style={{ fontSize: 12, color: ZH.ink2 }}>{l.minutes} phút</Text>
               </View>

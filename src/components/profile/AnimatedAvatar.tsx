@@ -82,7 +82,7 @@ export function AvatarBadge({ avatarId, name, size, skin }: { avatarId: string |
   if (item?.avatarLook) return <AnimatedAvatar look={item.avatarLook} size={size} skin={skin} />;
   return (
     <View style={{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center', backgroundColor: themedHex('#EFE9FF') }}>
-      <Text style={{ fontSize: item?.glyph ? size * 0.5 : size * 0.4, fontWeight: '800', color: themedHex('#6A4BD9') }}>{item?.glyph ?? (name.trim().slice(0, 1).toUpperCase() || '?')}</Text>
+      <Text style={{ fontSize: item?.glyph ? size * 0.5 : size * 0.4, fontWeight: '400', color: themedHex('#6A4BD9') }}>{item?.glyph ?? (name.trim().slice(0, 1).toUpperCase() || '?')}</Text>
     </View>
   );
 }

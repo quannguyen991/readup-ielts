@@ -516,20 +516,20 @@ export function PartTiles({
               <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -11, width: 64, height: 14, borderTopLeftRadius: 8, borderTopRightRadius: 12, backgroundColor: c2 }} />
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
                 <View style={{ flexShrink: 1, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: 'rgba(255,255,255,0.22)' }}>
-                  <Text numberOfLines={1} style={{ fontSize: 12, fontFamily: 'Inter_700Bold', letterSpacing: 0.6, color: '#FFFFFF' }}>{(en ? KIND_SKILL[node.target.kind].en : KIND_SKILL[node.target.kind].vi).toUpperCase()}</Text>
+                  <Text numberOfLines={1} style={{ fontSize: 12, fontFamily: 'Nunito_700Bold', letterSpacing: 0.6, color: '#FFFFFF' }}>{(en ? KIND_SKILL[node.target.kind].en : KIND_SKILL[node.target.kind].vi).toUpperCase()}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 3 }}>
-                  <Text style={{ fontSize: 32, lineHeight: 34, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{node.minutes}</Text>
-                  <Text style={{ fontSize: 12, fontFamily: 'Inter_700Bold', color: 'rgba(255,255,255,0.85)' }}>{L('PHÚT', 'MIN')}</Text>
+                  <Text style={{ fontSize: 32, lineHeight: 34, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{node.minutes}</Text>
+                  <Text style={{ fontSize: 12, fontFamily: 'Nunito_700Bold', color: 'rgba(255,255,255,0.85)' }}>{L('PHÚT', 'MIN')}</Text>
                 </View>
               </View>
-              <Text numberOfLines={3} style={{ marginTop: 10, fontSize: 17, lineHeight: 22, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{en ? node.title.en : node.title.vi}</Text>
+              <Text numberOfLines={3} style={{ marginTop: 10, fontSize: 17, lineHeight: 22, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{en ? node.title.en : node.title.vi}</Text>
               <View style={{ flex: 1 }} />
               <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <View style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.25)' }}>
-                  {done ? <Icon name="check" size={16} color="#FFFFFF" strokeWidth={3} /> : <Text style={{ fontSize: 13, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{String(i + 1).padStart(2, '0')}</Text>}
+                  {done ? <Icon name="check" size={16} color="#FFFFFF" strokeWidth={3} /> : <Text style={{ fontSize: 13, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{String(i + 1).padStart(2, '0')}</Text>}
                 </View>
-                <Text numberOfLines={1} style={{ flex: 1, fontSize: 14, fontFamily: 'Inter_700Bold', color: '#FFFFFF' }}>{statusText(node, status, next)}</Text>
+                <Text numberOfLines={1} style={{ flex: 1, fontSize: 14, fontFamily: 'Nunito_700Bold', color: '#FFFFFF' }}>{statusText(node, status, next)}</Text>
                 <Icon name="chevron-right" size={16} color="#FFFFFF" strokeWidth={2.4} />
               </View>
               <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, borderRadius: 22, borderTopLeftRadius: 8, overflow: 'hidden' }}>

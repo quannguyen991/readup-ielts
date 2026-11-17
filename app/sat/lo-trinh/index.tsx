@@ -898,7 +898,7 @@ function ChapterNode({
               borderColor: '#FFFFFF',
             }}
           >
-            <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '800' }}>✓</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '400' }}>✓</Text>
           </View>
         ) : null}
       </View>

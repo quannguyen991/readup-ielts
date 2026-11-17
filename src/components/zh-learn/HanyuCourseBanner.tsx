@@ -22,12 +22,12 @@ export function HanyuCourseBanner() {
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontSize: 17, fontWeight: '800', color: ZH.seal }}>Giáo trình Hán ngữ · 第3版</Text>
+          <Text style={{ fontSize: 17, fontWeight: '400', color: ZH.seal }}>Giáo trình Hán ngữ · 第3版</Text>
           <Text style={{ marginTop: 4, fontSize: 13, color: ZH.ink2 }}>
             Danh mục NXB: {HANYU_VOLUMES.length} tập · {HANYU_LESSON_TOTAL} bài. Mục lục từ vựng gốc đang chờ tài liệu nguồn.
           </Text>
         </View>
-        <Text style={{ fontSize: 22, fontWeight: '800', color: ZH.seal }}>›</Text>
+        <Text style={{ fontSize: 22, fontWeight: '400', color: ZH.seal }}>›</Text>
       </View>
     </Pressable>
   );

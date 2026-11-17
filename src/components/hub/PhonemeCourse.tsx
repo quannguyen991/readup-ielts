@@ -18,7 +18,7 @@ import {
 
 /**
  * Giao diện khoá phát âm — nhẹ, ít chữ (16/11/2026).
- * Phông: Nunito (tiêu đề và chữ thường, bo tròn, thân thiện), Andika (ký hiệu IPA).
+ * Phông: Inter (tiêu đề và chữ thường, bo tròn, thân thiện), Andika (ký hiệu IPA).
  * Ba phông này cùng được tải bởi `usePronounceFonts()`; đều có đủ dấu tiếng Việt, Andika có đủ ký hiệu IPA.
  */
 
@@ -34,9 +34,9 @@ export const PC = {
 };
 
 export const FONT_HREF =
-  'https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap';
+  'https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700;800;900&display=swap';
 
-/** Tải ba phông của khoá học và tắt luật ép Nunito của khu hub trong lúc trang mở. */
+/** Tải ba phông của khoá học và tắt luật ép Inter của khu hub trong lúc trang mở. */
 export function useCourseFonts() {
   useEffect(() => {
     if (Platform.OS !== 'web' || typeof document === 'undefined') return;
@@ -66,7 +66,7 @@ export function SectionCard({ title, right, children }: { title: string; right?:
   return (
     <View style={{ marginTop: 18, padding: 18, borderRadius: 26, backgroundColor: '#FFFFFF', ...SOFT_SHADOW }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 14 }}>
-        <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 21, color: PC.ink }}>{title}</Text>
+        <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 21, color: PC.ink }}>{title}</Text>
         {right}
       </View>
       {children}
@@ -102,7 +102,7 @@ export function PhonemeHero({ practiced, total, nextSymbol, onNext }: { practice
     >
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
         <View style={{ flexShrink: 1, minWidth: 200 }}>
-          <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 36, lineHeight: 40, color: PC.ink }}>{L('Luyện phát âm', 'Pronunciation')}</Text>
+          <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 36, lineHeight: 40, color: PC.ink }}>{L('Luyện phát âm', 'Pronunciation')}</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 12 }}>
             <View style={{ width: 160, height: 8, borderRadius: 4, backgroundColor: 'rgba(255,255,255,0.7)', overflow: 'hidden' }}>
               <View style={{ width: `${(practiced / total) * 100}%`, height: 8, backgroundColor: PC.teal }} />
@@ -147,7 +147,7 @@ export function StageStrip({ best }: { best: Readonly<Record<string, number>> })
             <View style={{ flexDirection: narrow ? 'column' : 'row', alignItems: narrow ? 'flex-start' : 'center', justifyContent: 'space-between', gap: narrow ? 2 : 0 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
                 <View style={{ width: 11, height: 11, borderRadius: 6, backgroundColor: c.dot }} />
-                <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 19, color: PC.ink }}>{L(LEVEL_LABEL[lv].vi, LEVEL_LABEL[lv].en)}</Text>
+                <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 19, color: PC.ink }}>{L(LEVEL_LABEL[lv].vi, LEVEL_LABEL[lv].en)}</Text>
               </View>
               <Text style={{ fontFamily: PC.body, fontWeight: '700', fontSize: 14, color: active ? c.text : PC.muted }}>{done}/{total}</Text>
             </View>

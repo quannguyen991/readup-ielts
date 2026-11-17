@@ -261,7 +261,7 @@ export default function TeamShowdown() {
           </View>
 
           <View className="flex-row flex-wrap items-center justify-between gap-2 px-5 py-3" style={{ backgroundColor: '#F3F0FB', borderTopWidth: 1, borderTopColor: '#484273' }}>
-            <Text style={{ color: '#2B2350', fontFamily: 'monospace', fontSize: 10, fontWeight: '800' }}>BAND9 · {L('ĐẤU ĐỘI', 'TEAM SHOWDOWN')}</Text>
+            <Text style={{ color: '#2B2350', fontFamily: 'monospace', fontSize: 10, fontWeight: '400' }}>BAND9 · {L('ĐẤU ĐỘI', 'TEAM SHOWDOWN')}</Text>
             <Text style={{ color: '#2B2350', fontSize: 10, fontWeight: '900' }}>{teams.length} {L('đội', 'teams')}  ·  {questions.length} {L('câu', 'questions')}</Text>
           </View>
         </View>

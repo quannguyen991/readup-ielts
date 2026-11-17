@@ -8,33 +8,11 @@ import Head from 'expo-router/head';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import {
-  PlusJakartaSans_400Regular,
-  PlusJakartaSans_500Medium,
-  PlusJakartaSans_600SemiBold,
-  PlusJakartaSans_700Bold,
-  PlusJakartaSans_800ExtraBold,
-  useFonts,
-} from '@expo-google-fonts/plus-jakarta-sans';
-// Thiết kế riêng cho tiếng Việt, dấu rõ và đều ở mọi cỡ chữ.
-// Nạp từng trọng lượng theo đường dẫn riêng: gói gom tất cả (index gốc) kéo theo cả biến thể
-// Italic có file thiếu trong bản 0.4.1, làm Metro lỗi khi build.
-// Inter: phông chính của Band 9 (21/10/2026) — gọn, mỏng hơn, gần cảm giác của phông hệ Apple.
-import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
-import { Inter_500Medium } from '@expo-google-fonts/inter/500Medium';
-import { Inter_600SemiBold } from '@expo-google-fonts/inter/600SemiBold';
-import { Inter_700Bold } from '@expo-google-fonts/inter/700Bold';
-// Inter Tight: phông tiêu đề (display) — chữ to, khoảng cách hẹp, nét gọn kiểu Apple.
-import { InterTight_600SemiBold } from '@expo-google-fonts/inter-tight/600SemiBold';
-import { InterTight_500Medium } from '@expo-google-fonts/inter-tight/500Medium';
-// Nunito: font bo tròn cho giao diện trang chủ kiểu nhân vật (xem src/components/cute-home).
-import {
-  Nunito_400Regular,
-  Nunito_600SemiBold,
-  Nunito_700Bold,
-  Nunito_800ExtraBold,
-  Nunito_900Black,
-} from '@expo-google-fonts/nunito';
+import { useFonts } from 'expo-font';
+// Nunito là font sans chính của giao diện, hỗ trợ tiếng Việt.
+import { Nunito_400Regular } from '@expo-google-fonts/nunito/400Regular';
+import { Nunito_600SemiBold } from '@expo-google-fonts/nunito/600SemiBold';
+import { Nunito_700Bold } from '@expo-google-fonts/nunito/700Bold';
 
 import { AppShell } from '@/components/layout/AppShell';
 import { RewardOverlay } from '@/components/gamify/RewardOverlay';
@@ -87,22 +65,9 @@ export default function RootLayout() {
   // keep the interface usable with platform fallbacks and swap to branded fonts
   // as soon as useFonts finishes loading them.
   useFonts({
-    InterTight_500Medium,
-    InterTight_600SemiBold,
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    PlusJakartaSans_400Regular,
-    PlusJakartaSans_500Medium,
-    PlusJakartaSans_600SemiBold,
-    PlusJakartaSans_700Bold,
-    PlusJakartaSans_800ExtraBold,
     Nunito_400Regular,
     Nunito_600SemiBold,
     Nunito_700Bold,
-    Nunito_800ExtraBold,
-    Nunito_900Black,
   });
 
   // Chủ đề Chiikawa: đổi bảng màu cho cả app. Chờ hydrate để lượt đầu khớp HTML máy
@@ -162,7 +127,7 @@ function AppTitle() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet"
       />
       {/* Manifest + chế độ standalone: iPhone chỉ nhận thông báo đẩy (nhắc học)

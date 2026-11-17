@@ -31,8 +31,8 @@ function SectionTitle({
 }) {
   return (
     <View style={{ marginBottom: 13 }}>
-      <Text style={{ fontSize: 11, letterSpacing: 1.3, fontWeight: '800', color: ZH.seal }}>{kicker}</Text>
-      <Text style={{ marginTop: 3, fontSize: 22, lineHeight: 29, fontWeight: '800', color: ZH.ink }}>{title}</Text>
+      <Text style={{ fontSize: 11, letterSpacing: 1.3, fontWeight: '400', color: ZH.seal }}>{kicker}</Text>
+      <Text style={{ marginTop: 3, fontSize: 22, lineHeight: 29, fontWeight: '400', color: ZH.ink }}>{title}</Text>
       <Text style={{ marginTop: 4, fontSize: 13, lineHeight: 19, color: ZH.ink2 }}>{detail}</Text>
     </View>
   );
@@ -63,7 +63,7 @@ function LinkButton({
         opacity: subtle && pressed ? 0.7 : 1,
       })}
     >
-      <Text style={{ fontSize: 13, fontWeight: '800', color: subtle ? ZH.seal : '#FFFBF3' }}>{label}</Text>
+      <Text style={{ fontSize: 13, fontWeight: '400', color: subtle ? ZH.seal : '#FFFBF3' }}>{label}</Text>
     </Pressable>
   );
 }
@@ -78,8 +78,8 @@ export default function HanyuJiaochengScreen() {
       </Pressable>
 
       <View style={{ marginTop: 8, padding: 22, borderRadius: 22, backgroundColor: ZH.seal, borderWidth: 1.5, borderColor: ZH.gold2 }}>
-        <Text style={{ fontSize: 11, letterSpacing: 1.5, fontWeight: '800', color: ZH.gold2 }}>READUP · 中文学习</Text>
-        <Text style={{ marginTop: 6, fontSize: 29, lineHeight: 36, fontWeight: '800', color: '#FFFBF3' }}>Giáo trình Hán ngữ</Text>
+        <Text style={{ fontSize: 11, letterSpacing: 1.5, fontWeight: '400', color: ZH.gold2 }}>READUP · 中文学习</Text>
+        <Text style={{ marginTop: 6, fontSize: 29, lineHeight: 36, fontWeight: '400', color: '#FFFBF3' }}>Giáo trình Hán ngữ</Text>
         <Text style={{ marginTop: 6, fontSize: 14, lineHeight: 21, color: '#F4E6C2' }}>
           Học theo sáu tập PDF bạn đã gửi. Từ vựng được OCR và sắp theo đúng bài của bản sửa đổi năm 2006.
         </Text>
@@ -91,7 +91,7 @@ export default function HanyuJiaochengScreen() {
             '3.256 từ OCR',
           ].map((item) => (
             <View key={item} style={{ paddingHorizontal: 11, paddingVertical: 7, borderRadius: 999, backgroundColor: 'rgba(255,251,243,0.12)', borderWidth: 1, borderColor: 'rgba(233,201,138,0.4)' }}>
-              <Text style={{ fontSize: 12, fontWeight: '800', color: '#FFFBF3' }}>{item}</Text>
+              <Text style={{ fontSize: 12, fontWeight: '400', color: '#FFFBF3' }}>{item}</Text>
             </View>
           ))}
         </View>
@@ -119,10 +119,10 @@ export default function HanyuJiaochengScreen() {
             <View key={volume.id} style={{ padding: 15, borderRadius: 16, borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card }}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
                 <View style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: ZH.goldSoftBg }}>
-                  <Text style={{ fontSize: 15, fontWeight: '800', color: ZH.seal }}>{String(index + 1).padStart(2, '0')}</Text>
+                  <Text style={{ fontSize: 15, fontWeight: '400', color: ZH.seal }}>{String(index + 1).padStart(2, '0')}</Text>
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontSize: 17, lineHeight: 23, fontWeight: '800', color: ZH.ink }}>{volume.titleVi}</Text>
+                  <Text style={{ fontSize: 17, lineHeight: 23, fontWeight: '400', color: ZH.ink }}>{volume.titleVi}</Text>
                   <Text style={{ marginTop: 2, fontSize: 13, fontWeight: '700', color: ZH.ink2 }}>{volume.title}</Text>
                   <Text style={{ marginTop: 6, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>{volume.lessonCount} bài · ISBN {volume.isbn}</Text>
                   <Text style={{ marginTop: 5, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>{volume.focus}</Text>
@@ -146,7 +146,7 @@ export default function HanyuJiaochengScreen() {
             Nghĩa Việt chỉ hiện khi khớp chính xác chữ giản thể và pinyin với OpenCidian; mục chưa khớp giữ nghĩa tiếng Anh từ sách.
           </Text>
           <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(HANYU_VI_GLOSS_SOURCE_URL)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
-            <Text style={{ fontSize: 13, fontWeight: '800', color: ZH.seal }}>Nguồn nghĩa Việt · OpenCidian ↗</Text>
+            <Text style={{ fontSize: 13, fontWeight: '400', color: ZH.seal }}>Nguồn nghĩa Việt · OpenCidian ↗</Text>
           </Pressable>
         </View>
       </View>
@@ -161,8 +161,8 @@ export default function HanyuJiaochengScreen() {
           {CHINESE_SUPPLEMENTAL_SETS.map((set) => (
             <View key={set.slug} style={{ padding: 15, borderRadius: 16, borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
-                <Text style={{ flex: 1, fontSize: 16, lineHeight: 22, fontWeight: '800', color: ZH.ink }}>{set.title}</Text>
-                <Text style={{ fontSize: 12, fontWeight: '800', color: ZH.seal }}>{set.wordCount.toLocaleString('vi-VN')} từ</Text>
+                <Text style={{ flex: 1, fontSize: 16, lineHeight: 22, fontWeight: '400', color: ZH.ink }}>{set.title}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '400', color: ZH.seal }}>{set.wordCount.toLocaleString('vi-VN')} từ</Text>
               </View>
               <Text style={{ marginTop: 4, fontSize: 12, color: ZH.ink2 }}>{set.topicCount} chủ đề · {set.unitCount} buổi</Text>
               <Text style={{ marginTop: 6, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>{set.note}</Text>
@@ -185,7 +185,7 @@ export default function HanyuJiaochengScreen() {
         />
 
         <View style={{ padding: 15, borderRadius: 16, borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.cream2 }}>
-          <Text style={{ fontSize: 16, lineHeight: 22, fontWeight: '800', color: ZH.ink }}>{CHINESE_OPEN_COURSE.title}</Text>
+          <Text style={{ fontSize: 16, lineHeight: 22, fontWeight: '400', color: ZH.ink }}>{CHINESE_OPEN_COURSE.title}</Text>
           <Text style={{ marginTop: 4, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>
             {CHINESE_OPEN_COURSE.chapterCount} chương · có từ vựng và tư liệu nghe/xem · giấy phép {CHINESE_OPEN_COURSE.license}. Mở tại nguồn; chưa sao chép vào ReadUp.
           </Text>
@@ -197,10 +197,10 @@ export default function HanyuJiaochengScreen() {
         <View style={{ gap: 10, marginTop: 10 }}>
           {CHINESE_ADDITIONAL_COURSES.map((course) => (
             <View key={course.title} style={{ padding: 15, borderRadius: 16, borderWidth: 1, borderColor: ZH.line, backgroundColor: ZH.card }}>
-              <Text style={{ fontSize: 16, lineHeight: 22, fontWeight: '800', color: ZH.ink }}>{course.title}</Text>
+              <Text style={{ fontSize: 16, lineHeight: 22, fontWeight: '400', color: ZH.ink }}>{course.title}</Text>
               <Text style={{ marginTop: 4, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>{course.detail}</Text>
               <View style={{ alignSelf: 'flex-start', marginTop: 8, paddingHorizontal: 9, paddingVertical: 5, borderRadius: 8, backgroundColor: ZH.goldSoftBg }}>
-                <Text style={{ fontSize: 11, lineHeight: 15, fontWeight: '800', color: ZH.seal }}>Giấy phép · {course.license}</Text>
+                <Text style={{ fontSize: 11, lineHeight: 15, fontWeight: '400', color: ZH.seal }}>Giấy phép · {course.license}</Text>
               </View>
               <Text style={{ marginTop: 7, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>{course.accessNote} Nội dung được mở tại trang nguồn.</Text>
               <View style={{ marginTop: 9 }}>
@@ -219,16 +219,16 @@ export default function HanyuJiaochengScreen() {
           style={{ minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}
         >
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 11, letterSpacing: 1.2, fontWeight: '800', color: ZH.seal }}>THAM KHẢO · BLCUP</Text>
-            <Text style={{ marginTop: 3, fontSize: 17, fontWeight: '800', color: ZH.ink }}>Ấn bản 第3版 hiện hành</Text>
+            <Text style={{ fontSize: 11, letterSpacing: 1.2, fontWeight: '400', color: ZH.seal }}>THAM KHẢO · BLCUP</Text>
+            <Text style={{ marginTop: 3, fontSize: 17, fontWeight: '400', color: ZH.ink }}>Ấn bản 第3版 hiện hành</Text>
           </View>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: ZH.seal }}>{showCurrentEdition ? 'Thu gọn ↑' : 'Xem 6 tập ↓'}</Text>
+          <Text style={{ fontSize: 13, fontWeight: '400', color: ZH.seal }}>{showCurrentEdition ? 'Thu gọn ↑' : 'Xem 6 tập ↓'}</Text>
         </Pressable>
         <Text style={{ marginTop: 5, fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>
           Danh mục tham khảo riêng. Trang này chưa có nội dung bài học hay từ vựng của bản 第3版; sáu tập bên trên là dữ liệu OCR từ bản 修订本 (2006).
         </Text>
         <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(HANYU_LOGIN_URL)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: ZH.seal }}>Mở BLCUP ↗</Text>
+          <Text style={{ fontSize: 13, fontWeight: '400', color: ZH.seal }}>Mở BLCUP ↗</Text>
         </Pressable>
         {showCurrentEdition ? (
           <View style={{ marginTop: 6 }}>
@@ -236,10 +236,10 @@ export default function HanyuJiaochengScreen() {
             <View style={{ marginTop: 10, gap: 8 }}>
               <Text style={{ fontSize: 12, lineHeight: 18, color: ZH.ink2 }}>{HANYU_LOGIN_NOTE}</Text>
               <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(HANYU_SERIES_URL)} style={{ alignSelf: 'flex-start' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: ZH.seal }}>Mở danh mục 第3版 tại BLCUP ↗</Text>
+                <Text style={{ fontSize: 13, fontWeight: '400', color: ZH.seal }}>Mở danh mục 第3版 tại BLCUP ↗</Text>
               </Pressable>
               <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(HANYU_REVISED_SERIES_URL)} style={{ alignSelf: 'flex-start' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: ZH.seal }}>Xem danh mục bản 修订本 ↗</Text>
+                <Text style={{ fontSize: 13, fontWeight: '400', color: ZH.seal }}>Xem danh mục bản 修订本 ↗</Text>
               </Pressable>
             </View>
           </View>

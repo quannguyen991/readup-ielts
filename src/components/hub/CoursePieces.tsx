@@ -37,7 +37,7 @@ export function KindBadge({ kind, compact = false }: { kind: LessonKind; compact
       }}
     >
       <Icon name={s.icon} size={compact ? 10 : 12} color={s.fg} strokeWidth={2.2} />
-      <Text style={{ color: s.fg, fontSize: compact ? 10 : 11, fontWeight: '800', letterSpacing: 0.4 }}>{kind}</Text>
+      <Text style={{ color: s.fg, fontSize: compact ? 10 : 11, fontWeight: '400', letterSpacing: 0.4 }}>{kind}</Text>
     </View>
   );
 }

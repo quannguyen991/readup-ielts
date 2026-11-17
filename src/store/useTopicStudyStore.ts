@@ -10,10 +10,12 @@ import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
 import { stageAfterQuiz } from '@/services/vocab/deck-status';
 import { loadByDay, nextReview, repairReviews, type ReviewEntry } from '@/services/vocab/review-schedule';
-import { backupLeitner, gradeTopicWord, leitnerToFsrs } from '@/services/vocab/topic-fsrs';
+import { withTopicFsrs } from '@/services/vocab/topic-fsrs-registry';
 import { useVocabStore } from './useVocabStore';
 import type { LoopState } from '@/services/vocab/learn-loop';
 import { todayKey } from './persist';
+
+const withFsrs = withTopicFsrs;
 
 /** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
 export type MistakeEntry = { kind: MistakeKind; word: string; slug: string; at: string };
@@ -111,10 +113,12 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       leitnerMigrated: false,
       resets: {},
       review: (slug, word, correct) => {
-        useVocabStore.setState((v) => gradeTopicWord(v, slug, word, correct, new Date()));
+        const at = new Date();
+        withFsrs((m) => useVocabStore.setState((v) => m.gradeTopicWord(v, slug, word, correct, at)));
       },
       practice: (slug, word, correct) => {
-        useVocabStore.setState((v) => gradeTopicWord(v, slug, word, correct, new Date()));
+        const at = new Date();
+        withFsrs((m) => useVocabStore.setState((v) => m.gradeTopicWord(v, slug, word, correct, at)));
         set((s) => ({
           stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stageAfterQuiz(s.stages[slug]?.[word], correct) } },
           lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
@@ -124,10 +128,14 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       migrateToSingleSchedule: () => {
         const s = useTopicStudyStore.getState();
         if (s.leitnerMigrated) return;
-        if (!backupLeitner(s.reviews, s.stages, todayKey())) return;
-        const vocab = useVocabStore.getState();
-        useVocabStore.setState(leitnerToFsrs({ entries: vocab.entries, cards: vocab.cards }, s.reviews, s.stages, new Date()));
-        set({ leitnerMigrated: true });
+        withFsrs((m) => {
+          const cur = useTopicStudyStore.getState();
+          if (cur.leitnerMigrated) return;
+          if (!m.backupLeitner(cur.reviews, cur.stages, todayKey())) return;
+          const vocab = useVocabStore.getState();
+          useVocabStore.setState(m.leitnerToFsrs({ entries: vocab.entries, cards: vocab.cards }, cur.reviews, cur.stages, new Date()));
+          set({ leitnerMigrated: true });
+        });
       },
       mistakeLog: [],
       lastAt: {},

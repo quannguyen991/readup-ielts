@@ -175,7 +175,7 @@ export function ChineseTopicPage({
         {/* Vòng phần trăm đã nhớ, như huy hiệu viền vàng */}
         <View style={[{ width: 112, height: 112, borderRadius: 56, backgroundColor: '#F3DCC8', borderWidth: 3, borderColor: ZH.gold2, alignItems: 'center', justifyContent: 'center' }, ringBg]}>
           <View style={{ width: 88, height: 88, borderRadius: 44, backgroundColor: '#FFFBF5', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 24, fontWeight: '800', color: ZH.seal }}>{pct}%</Text>
+            <Text style={{ fontSize: 24, fontWeight: '400', color: ZH.seal }}>{pct}%</Text>
             <Text style={{ fontSize: 11, color: ZH.ink2 }}>đã nhớ</Text>
           </View>
         </View>

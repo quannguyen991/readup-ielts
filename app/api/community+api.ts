@@ -3,12 +3,13 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { msg } from '@/lib/server-locale';
 import { displayableName } from '@/services/gamification/display-name';
+import { checkUsername, normalizeUsername, USERNAME_RE } from '@/services/community/username';
 import { canonicalFriendPair, cleanCommunityText, validMessageBody, validPostInput } from '@/services/community/rules';
 import type { CommunityFriendship, CommunityPostRow } from '@/types/database';
 
 type Db = SupabaseClient;
 type Who = { db: Db; userId: string };
-type ProfileLite = { id: string; display_name: string | null; avatar_url: string | null };
+type ProfileLite = { id: string; display_name: string | null; avatar_url: string | null; username?: string | null };
 type Friendship = CommunityFriendship;
 type Block = { blocker_id: string; blocked_id: string };
 type Message = { id: string; sender_id: string; recipient_id: string; body: string; created_at: string; read_at: string | null };
@@ -53,6 +54,7 @@ function person(profile: ProfileLite) {
     id: profile.id,
     displayName: displayableName(profile.display_name) ?? 'Bạn học',
     avatarUrl: profile.avatar_url,
+    username: profile.username ?? null,
   };
 }
 
@@ -60,8 +62,11 @@ async function profiles(db: Db, ids: readonly string[]): Promise<Map<string, Pro
   const unique = [...new Set(ids)].filter((id) => UUID.test(id));
   const out = new Map<string, ProfileLite>();
   for (let i = 0; i < unique.length; i += 100) {
-    const { data } = await db.from('profiles').select('id, display_name, avatar_url').in('id', unique.slice(i, i + 100));
-    for (const row of (data ?? []) as ProfileLite[]) out.set(row.id, row);
+    const chunk = unique.slice(i, i + 100);
+    let res = await db.from('profiles').select('id, display_name, avatar_url, username').in('id', chunk);
+    // Máy chủ chưa áp migration tên người dùng: vẫn đọc được hồ sơ như cũ.
+    if (res.error) res = await db.from('profiles').select('id, display_name, avatar_url').in('id', chunk);
+    for (const row of (res.data ?? []) as ProfileLite[]) out.set(row.id, row);
   }
   return out;
 }
@@ -173,13 +178,41 @@ export async function GET(request: Request): Promise<Response> {
       })) });
     }
 
+    if (view === 'me') {
+      const { data, error } = await db.from('profiles').select('username').eq('id', userId).maybeSingle();
+      if (error) return Response.json({ username: null, usernameReady: false });
+      return Response.json({ username: (data as { username?: string | null } | null)?.username ?? null, usernameReady: true });
+    }
+
     if (view === 'people') {
-      const query = cleanCommunityText(url.searchParams.get('q'), 60).replace(/[\\%_]/g, '');
-      if (query.length < 2) return Response.json({ people: [] });
-      const { data, error } = await db.from('profiles').select('id, display_name, avatar_url')
-        .ilike('display_name', `%${query}%`).neq('id', userId).order('display_name').limit(30);
-      if (error) return dbFail(request, error);
-      const rows = (data ?? []) as ProfileLite[];
+      const rawQuery = cleanCommunityText(url.searchParams.get('q'), 60);
+      const byHandle = rawQuery.trim().startsWith('@');
+      const handle = normalizeUsername(rawQuery);
+      const query = rawQuery.replace(/[\\%_@]/g, '').trim();
+      if ((byHandle ? handle.length : query.length) < 2) return Response.json({ people: [] });
+      const cols = 'id, display_name, avatar_url, username';
+      let rows: ProfileLite[] = [];
+      if (byHandle) {
+        const like = handle.replace(/[\\%_]/g, (c) => `\\${c}`);
+        const { data, error } = await db.from('profiles').select(cols).ilike('username', `${like}%`).neq('id', userId).order('username').limit(30);
+        if (error) return dbFail(request, error);
+        rows = (data ?? []) as ProfileLite[];
+      } else {
+        // Khớp chính xác tên người dùng đứng đầu (nếu máy chủ đã có cột), rồi tới tên hiển thị.
+        if (USERNAME_RE.test(handle)) {
+          const { data: exact } = await db.from('profiles').select(cols).eq('username', handle).neq('id', userId).limit(1);
+          rows = (exact ?? []) as ProfileLite[];
+        }
+        const { data, error } = await db.from('profiles').select('id, display_name, avatar_url')
+          .ilike('display_name', `%${query}%`).neq('id', userId).order('display_name').limit(30);
+        if (error) return dbFail(request, error);
+        const seen = new Set(rows.map((r) => r.id));
+        rows = [...rows, ...((data ?? []) as ProfileLite[]).filter((r) => !seen.has(r.id))];
+        if (rows.length && rows.some((r) => r.username === undefined)) {
+          const withHandle = await profiles(db, rows.map((r) => r.id));
+          rows = rows.map((r) => withHandle.get(r.id) ?? r);
+        }
+      }
       const relations = await friendshipsFor(db, userId);
       const blocks = await blocksFor(db, userId);
       if (!relations || !blocks) return dbFail(request, { message: 'community relationship query failed' });
@@ -316,6 +349,21 @@ export async function POST(request: Request): Promise<Response> {
       const { data, error } = await db.from('community_comments').insert({ post_id: postId, author_id: userId, body }).select('id').single();
       if (error) return dbFail(request, error);
       return Response.json({ ok: true, id: data.id }, { status: 201 });
+    }
+
+    if (action === 'set_username') {
+      const checked = checkUsername(input.username);
+      if (!checked.ok) {
+        return checked.reason === 'reserved'
+          ? fail(request, 400, 'Tên người dùng này được giữ chỗ. Chọn tên khác.', 'That username is reserved. Pick another.')
+          : fail(request, 400, 'Tên người dùng gồm 3–20 ký tự: chữ thường không dấu, số hoặc dấu gạch dưới.', 'Usernames are 3–20 characters: lowercase letters, digits or underscores.');
+      }
+      const { error } = await db.from('profiles').update({ username: checked.username }).eq('id', userId);
+      if (error) {
+        if (error.code === '23505') return fail(request, 409, 'Tên người dùng này đã có người dùng. Chọn tên khác.', 'That username is taken. Pick another.');
+        return dbFail(request, error);
+      }
+      return Response.json({ ok: true, username: checked.username });
     }
 
     if (action === 'friend_request') {

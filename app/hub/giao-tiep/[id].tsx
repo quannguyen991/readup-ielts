@@ -26,7 +26,7 @@ export default function GiaoTiepRunner() {
           </View>
           <Text style={{ color: HUB_UI.navy, fontSize: 15, lineHeight: 22, fontWeight: '700' }}>{task.situationVi}</Text>
           <View style={{ gap: 6 }}>
-            <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>Cần nói được:</Text>
+            <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '400' }}>Cần nói được:</Text>
             {task.mustVi.map((m) => (
               <View key={m} style={{ flexDirection: 'row', gap: 8 }}>
                 <Text style={{ color: HUB_UI.green, fontWeight: '900' }}>✓</Text>

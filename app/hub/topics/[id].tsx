@@ -303,7 +303,7 @@ export function Practice({ topic, only, extra: extraProp, header }: { topic: Spe
                 backgroundColor: HUB_UI.purple,
               }}
             >
-              <Text style={{ color: '#fff', fontWeight: '800', fontSize: 16 }}>
+              <Text style={{ color: '#fff', fontWeight: '400', fontSize: 16 }}>
                 {at + 1 === steps.length ? 'Xem tổng kết' : 'Câu tiếp theo'}
               </Text>
               <Icon name={at + 1 === steps.length ? 'trophy' : 'arrow-right'} size={18} color="#fff" />
@@ -368,7 +368,7 @@ function QuestionCard({ step }: { step: Step }) {
       </View>
       {step.bullets && step.bullets.length ? (
         <View style={{ gap: 8, padding: 14, borderRadius: 16, backgroundColor: '#FFFBF0', borderWidth: 1.5, borderColor: '#F2DFA6' }}>
-          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>Bạn nên nói về:</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '400' }}>Bạn nên nói về:</Text>
           {step.bullets.map((b, i) => (
             <View key={b} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <View style={{ width: 26, height: 26, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB_UI.purple }}>
@@ -404,7 +404,7 @@ function ReportCard({ report }: { report: Report }) {
       <View style={{ flexDirection: 'row', gap: 10 }}>
         <View style={{ flex: 1.4, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
           <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỐC ĐỘ</Text>
-          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.wpm ?? '—'}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '400' }}>{report.wpm ?? '—'}</Text>
           <Text style={{ color: HUB.muted, fontSize: 13, marginTop: -6 }}>từ/phút</Text>
           <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.14)', overflow: 'hidden' }}>
             <View
@@ -422,12 +422,12 @@ function ReportCard({ report }: { report: Report }) {
         </View>
         <View style={{ flex: 1, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
           <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỪ ĐỆM</Text>
-          <Text style={{ color: fillerTone, fontSize: 24, fontWeight: '800' }}>{report.fillers}</Text>
+          <Text style={{ color: fillerTone, fontSize: 24, fontWeight: '400' }}>{report.fillers}</Text>
           <Text style={{ color: HUB.muted, fontSize: 13 }}>{Math.round(ratio * 100)}% số từ</Text>
         </View>
         <View style={{ flex: 1, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
           <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>SỐ TỪ</Text>
-          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.words}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '400' }}>{report.words}</Text>
           <Text style={{ color: HUB.muted, fontSize: 13 }}>{formatClock(report.ms)}</Text>
         </View>
       </View>
@@ -519,7 +519,7 @@ function Summary({
                   backgroundColor: r && !r.silent ? 'rgba(46,125,79,0.16)' : HUB.glassStrong,
                 }}
               >
-                <Text style={{ color: r && !r.silent ? HUB.green : HUB.muted, fontSize: 13, fontWeight: '800' }}>{shortLabel(s)}</Text>
+                <Text style={{ color: r && !r.silent ? HUB.green : HUB.muted, fontSize: 13, fontWeight: '400' }}>{shortLabel(s)}</Text>
               </View>
               <Text style={{ color: HUB.body, fontSize: 13, flex: 1 }} numberOfLines={1}>
                 {r && !r.silent ? `“${r.transcript}”` : s.text}
@@ -562,7 +562,7 @@ function Summary({
         }}
       >
         <Icon name={doneAt ? 'check' : 'trophy'} size={18} color="#fff" />
-        <Text style={{ color: '#fff', fontWeight: '800', fontSize: 16 }}>
+        <Text style={{ color: '#fff', fontWeight: '400', fontSize: 16 }}>
           {doneAt ? `Đã hoàn thành ${topic.titleVi}` : 'Đánh dấu hoàn thành'}
         </Text>
       </Pressable>

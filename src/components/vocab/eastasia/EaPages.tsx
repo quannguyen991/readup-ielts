@@ -118,7 +118,7 @@ export function EaHero({ lang, skin, kicker, title, blurb, chips, pct, pctLabel,
             <Text style={{ color: c.accent, fontSize: 13, letterSpacing: 2.2, fontFamily: EA_FONT.heavy }}>{kicker}</Text>
             <Text
               accessibilityRole="header"
-              style={[{ fontSize: wide ? 42 : 30, lineHeight: wide ? 50 : 38, fontFamily: TITLE_FONT as never, fontWeight: '800', color: '#FFFFFF' }, lang === 'zh' ? goldTextStyle(c.accent) : web ? { textShadow: '0 2px 10px rgba(0,0,0,0.45)' } : null] as never}
+              style={[{ fontSize: wide ? 42 : 30, lineHeight: wide ? 50 : 38, fontFamily: TITLE_FONT as never, fontWeight: '400', color: '#FFFFFF' }, lang === 'zh' ? goldTextStyle(c.accent) : web ? { textShadow: '0 2px 10px rgba(0,0,0,0.45)' } : null] as never}
             >
               {title}
             </Text>

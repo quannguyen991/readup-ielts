@@ -208,7 +208,7 @@ function Paragraph({
               width: 22,
               fontSize,
               lineHeight,
-              fontWeight: '800',
+              fontWeight: '400',
               color: isEvidence ? '#9F1239' : (textColor ?? '#334155'),
               ...(fontFamily ? { fontFamily } : null),
             }}

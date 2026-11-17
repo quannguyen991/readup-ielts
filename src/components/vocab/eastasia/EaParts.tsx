@@ -16,7 +16,7 @@ import { JA_MOTIF, ZH_MOTIF } from './motifs';
 import { skinById, type EaSkin } from './skins';
 
 /** Phông của app (xem tailwind.config.js): chữ Việt luôn dùng Inter; phông thư pháp chỉ cho chữ Hán. */
-export const EA_FONT = { body: 'Inter_400Regular', mid: 'Inter_500Medium', strong: 'Inter_600SemiBold', heavy: 'InterTight_600SemiBold' } as const;
+export const EA_FONT = { body: 'Nunito_400Regular', mid: 'Nunito_600SemiBold', strong: 'Nunito_600SemiBold', heavy: 'Nunito_400Regular' } as const;
 /** Tiêu đề lớn chữ Việt (serif có đủ dấu), dùng ở hero các trang bên trong. */
 export const TITLE_FONT = "'Noto Serif', serif";
 export const TITLE_HREF = 'https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,800;1,700&display=swap';

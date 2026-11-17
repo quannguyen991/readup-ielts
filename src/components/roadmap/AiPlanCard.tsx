@@ -54,7 +54,7 @@ export function AiPlanCard({
           <Icon name="sparkle" size={20} color={c.goldDeep} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ color: c.ink, fontSize: 18, fontWeight: '800' }}>AI phân tích lịch</Text>
+          <Text style={{ color: c.ink, fontSize: 18, fontWeight: '400' }}>AI phân tích lịch</Text>
           <Text style={{ color: c.muted, fontSize: 12 }}>Ngân sách {budget} phút mỗi tuần</Text>
         </View>
       </View>
@@ -76,7 +76,7 @@ export function AiPlanCard({
           style={{ height: 50, borderRadius: 16, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8, backgroundColor: c.gold, opacity: busy ? 0.6 : 1 }}
         >
           <Icon name="sparkle" size={18} color="#FFFFFF" />
-          <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>{busy ? 'AI đang đọc lịch của bạn…' : 'Nhờ AI phân tích và phân bổ'}</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '400' }}>{busy ? 'AI đang đọc lịch của bạn…' : 'Nhờ AI phân tích và phân bổ'}</Text>
         </Pressable>
       ) : null}
       {error ? <Text style={{ color: c.danger, fontSize: 13, lineHeight: 19 }}>{error}</Text> : null}
@@ -87,7 +87,7 @@ export function AiPlanCard({
 
           {result.analysis.risks.length > 0 ? (
             <View style={{ gap: 6 }}>
-              <Text style={{ color: c.body, fontSize: 13, fontWeight: '800' }}>Rủi ro</Text>
+              <Text style={{ color: c.body, fontSize: 13, fontWeight: '400' }}>Rủi ro</Text>
               {result.analysis.risks.map((r) => (
                 <View key={r} style={{ flexDirection: 'row', gap: 8 }}>
                   <Icon name="info" size={14} color={c.warn} />
@@ -98,7 +98,7 @@ export function AiPlanCard({
           ) : null}
 
           <View style={{ gap: 10 }}>
-            <Text style={{ color: c.body, fontSize: 13, fontWeight: '800' }}>Phân bổ đề xuất mỗi tuần</Text>
+            <Text style={{ color: c.body, fontSize: 13, fontWeight: '400' }}>Phân bổ đề xuất mỗi tuần</Text>
             {scaled.map((row) => {
               const reason = result.analysis.allocation.find((a) => a.skill === row.skill)?.reason ?? '';
               const nowShare = Math.round(((plan.minutesBySkill[row.skill] ?? 0) / currentTotal) * 100);
@@ -106,7 +106,7 @@ export function AiPlanCard({
               return (
                 <View key={row.skill} style={{ gap: 4 }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ color: c.ink, fontSize: 13, fontWeight: '800' }}>{SKILL_LABEL[row.skill]}</Text>
+                    <Text style={{ color: c.ink, fontSize: 13, fontWeight: '400' }}>{SKILL_LABEL[row.skill]}</Text>
                     <Text style={{ color: c.body, fontSize: 12, fontWeight: '700' }}>
                       {row.minutesPerWeek} phút · {suggestShare}% (hiện {nowShare}%)
                     </Text>
@@ -127,7 +127,7 @@ export function AiPlanCard({
 
           {result.analysis.tips.length > 0 ? (
             <View style={{ gap: 6 }}>
-              <Text style={{ color: c.body, fontSize: 13, fontWeight: '800' }}>Gợi ý</Text>
+              <Text style={{ color: c.body, fontSize: 13, fontWeight: '400' }}>Gợi ý</Text>
               {result.analysis.tips.map((t) => (
                 <Text key={t} style={{ color: c.ink, fontSize: 13, lineHeight: 19 }}>
                   • {t}
@@ -141,7 +141,7 @@ export function AiPlanCard({
             onPress={() => onApply(result.analysis.priority)}
             style={{ height: 50, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: c.ink }}
           >
-            <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '800' }}>
+            <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '400' }}>
               Áp dụng: ưu tiên {result.analysis.priority.map((s) => SKILL_LABEL[s]).join(' và ')}
             </Text>
           </Pressable>
@@ -158,7 +158,7 @@ function Chip({ label }: { label: string }) {
   const c = rmColors();
   return (
     <View style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, backgroundColor: c.goldSoft }}>
-      <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '800' }}>{label}</Text>
+      <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '400' }}>{label}</Text>
     </View>
   );
 }

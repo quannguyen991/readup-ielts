@@ -64,7 +64,7 @@ function Loading() {
           <Dot delay={140} reduced={reduced} />
           <Dot delay={280} reduced={reduced} />
         </View>
-        <Text style={{ color: HUB_UI.navy, fontSize: 15, fontWeight: '800' }}>{STEPS[i]}</Text>
+        <Text style={{ color: HUB_UI.navy, fontSize: 15, fontWeight: '400' }}>{STEPS[i]}</Text>
       </View>
       <Shimmer reduced={reduced} />
       <Shimmer reduced={reduced} />
@@ -95,7 +95,7 @@ function Detail({ f }: { f: AnswerFeedback }) {
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
         <View style={{ width: 84, height: 84, borderRadius: 42, borderWidth: 5, borderColor: bandColor(f.band), alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ color: bandColor(f.band), fontSize: 28, fontWeight: '900' }}>{f.band.toFixed(1)}</Text>
-          <Text style={{ color: HUB_UI.muted, fontSize: 11, fontWeight: '800', marginTop: -2 }}>BAND ƯỚC LƯỢNG</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 11, fontWeight: '400', marginTop: -2 }}>BAND ƯỚC LƯỢNG</Text>
         </View>
         <Text style={{ color: HUB_UI.navy, fontSize: 15, lineHeight: 22, flex: 1, fontWeight: '600' }}>{f.summaryVi}</Text>
       </View>
@@ -132,7 +132,7 @@ function Detail({ f }: { f: AnswerFeedback }) {
           {f.fixes.map((x, i) => (
             <View key={i} style={{ gap: 4, padding: 12, borderRadius: 14, backgroundColor: '#FFF7F5', borderWidth: 1, borderColor: '#F6D5CF' }}>
               <Text style={{ color: '#B42318', fontSize: 14.5, textDecorationLine: 'line-through' }}>{x.said}</Text>
-              <Text style={{ color: HUB_UI.green, fontSize: 14.5, fontWeight: '800' }}>{x.better}</Text>
+              <Text style={{ color: HUB_UI.green, fontSize: 14.5, fontWeight: '400' }}>{x.better}</Text>
               <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }}>{x.whyVi}</Text>
             </View>
           ))}

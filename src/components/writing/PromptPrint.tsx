@@ -179,20 +179,20 @@ export function EssayPrint({
       <View className="flex-row items-center justify-between gap-2">
         <View className="flex-row items-center gap-2">
           <View className="h-8 w-8 items-center justify-center rounded-lg" style={{ backgroundColor: accent }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '800' }}>02</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '400' }}>02</Text>
           </View>
           <View className="min-w-0">
-            <Text style={{ color: '#77817B', fontSize: 8, fontWeight: '800', letterSpacing: 1 }}>{english ? 'WRITING BLUEPRINT' : 'SƠ ĐỒ BÀI VIẾT'}</Text>
+            <Text style={{ color: '#77817B', fontSize: 8, fontWeight: '400', letterSpacing: 1 }}>{english ? 'WRITING BLUEPRINT' : 'SƠ ĐỒ BÀI VIẾT'}</Text>
             <Text numberOfLines={1} style={{ color: '#263932', fontSize: 11, fontWeight: '700' }}>{copy.name} · {topic}</Text>
           </View>
         </View>
         <View className="rounded-full border bg-white px-2.5 py-1" style={{ borderColor: '#DFE4DE' }}>
-          <Text style={{ color: '#55635A', fontSize: 8, fontWeight: '800' }}>250+ {english ? 'WORDS' : 'TỪ'}</Text>
+          <Text style={{ color: '#55635A', fontSize: 8, fontWeight: '400' }}>250+ {english ? 'WORDS' : 'TỪ'}</Text>
         </View>
       </View>
 
       <View className="rounded-xl border border-[#E0E5DF] bg-white px-3 py-2">
-        <Text style={{ color: '#87918A', fontSize: 8, fontWeight: '800', letterSpacing: 0.7 }}>{english ? 'THE QUESTION' : 'ĐỀ BÀI'}</Text>
+        <Text style={{ color: '#87918A', fontSize: 8, fontWeight: '400', letterSpacing: 0.7 }}>{english ? 'THE QUESTION' : 'ĐỀ BÀI'}</Text>
         <Text numberOfLines={2} style={{ color: '#28362F', fontSize: 11, lineHeight: 15, marginTop: 3 }}>{promptText}</Text>
       </View>
 
@@ -200,7 +200,7 @@ export function EssayPrint({
         {copy.stages.map((stage, index) => (
           <View key={`${kind}-${index}`} className="min-w-0 flex-1 rounded-lg border border-[#E0E5DF] bg-white px-1.5 py-1.5">
             <View className="h-5 w-5 items-center justify-center rounded-full" style={{ backgroundColor: `${accent}18` }}>
-              <Text style={{ color: accent, fontSize: 8, fontWeight: '800' }}>{index + 1}</Text>
+              <Text style={{ color: accent, fontSize: 8, fontWeight: '400' }}>{index + 1}</Text>
             </View>
             <Text numberOfLines={2} style={{ color: '#45554E', fontSize: 8, lineHeight: 10, fontWeight: '700', marginTop: 4 }}>{stage}</Text>
           </View>

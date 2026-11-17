@@ -257,7 +257,7 @@ export default function HubResult() {
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
               {p.checks.map((c) => (
                 <View key={c.label} style={{ flexGrow: 1, flexBasis: 130, gap: 2, padding: 10, borderRadius: 12, backgroundColor: c.ok ? '#EAF8EF' : '#FFF4E5' }}>
-                  <Text style={{ color: HUB_UI.muted, fontSize: 12, fontWeight: '800' }}>{c.label.toUpperCase()} · {c.ok ? '✓' : '!'}</Text>
+                  <Text style={{ color: HUB_UI.muted, fontSize: 12, fontWeight: '400' }}>{c.label.toUpperCase()} · {c.ok ? '✓' : '!'}</Text>
                   <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900' }}>{c.value}</Text>
                   <Text style={{ color: HUB_UI.muted, fontSize: 12 }}>mục tiêu {c.target}</Text>
                 </View>
@@ -282,10 +282,10 @@ export default function HubResult() {
               <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', lineHeight: 23 }}>{a.question}</Text>
 
               <View style={{ gap: 4, padding: 12, borderRadius: 14, backgroundColor: HUB_UI.wash }}>
-                <Text style={{ color: HUB_UI.muted, fontSize: 12.5, fontWeight: '800' }}>BÀI NÓI CỦA BẠN</Text>
+                <Text style={{ color: HUB_UI.muted, fontSize: 12.5, fontWeight: '400' }}>BÀI NÓI CỦA BẠN</Text>
                 <Text style={{ color: HUB_UI.navy, fontSize: 14.5, lineHeight: 22 }}>
                   {markFillers(a.transcript).map((piece, j) => (
-                    <Text key={j} style={piece.filler ? { backgroundColor: '#FFE1DC', color: '#B42318', fontWeight: '800' } : undefined}>{piece.text}</Text>
+                    <Text key={j} style={piece.filler ? { backgroundColor: '#FFE1DC', color: '#B42318', fontWeight: '400' } : undefined}>{piece.text}</Text>
                   ))}
                 </Text>
               </View>
@@ -296,7 +296,7 @@ export default function HubResult() {
                   {fixes.map((f, j) => (
                     <View key={j} style={{ gap: 3, padding: 10, borderRadius: 12, backgroundColor: '#FFF7F5', borderWidth: 1, borderColor: '#F6D5CF' }}>
                       <Text style={{ color: '#B42318', fontSize: 14, textDecorationLine: 'line-through' }}>{f.quote}</Text>
-                      <Text style={{ color: HUB_UI.green, fontSize: 14, fontWeight: '800' }}>{f.better}</Text>
+                      <Text style={{ color: HUB_UI.green, fontSize: 14, fontWeight: '400' }}>{f.better}</Text>
                       <Text style={{ color: HUB_UI.muted, fontSize: 13, lineHeight: 18 }}>{f.problemVi}</Text>
                     </View>
                   ))}

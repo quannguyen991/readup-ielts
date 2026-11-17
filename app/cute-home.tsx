@@ -345,7 +345,8 @@ export default function HomeScreen() {
           <NeonHeading title={L('Góc học', 'Study corner')} icon="heart" />
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {[
-              { label: L('Lộ trình cá nhân', 'My study plan'), icon: 'calendar' as const, href: '/plan' },
+              { label: L('Lộ trình học', 'Learning path'), icon: 'compass' as const, href: '/lo-trinh-hoc' },
+              { label: L('Kế hoạch thi', 'Exam plan'), icon: 'calendar' as const, href: '/plan' },
               { label: L('Xem tiến độ', 'Progress'), icon: 'trending' as const, href: '/progress' },
               { label: L('Lịch sử học', 'Study history'), icon: 'clock' as const, href: '/history' },
             ].map((item) => (

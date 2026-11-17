@@ -25,21 +25,21 @@ import {
 import { useL } from '@/i18n/useL';
 import { ExamResourceLinks } from '@/components/exam/ExamResourceLinks';
 
-/** Phông Plus Jakarta Sans hiện đại, cao cấp và sắc nét cho toàn bộ màn luyện đề SAT. */
+/** Phông Inter hiện đại, cao cấp và sắc nét cho toàn bộ màn luyện đề SAT. */
 function fontFor(weight: unknown): string {
   switch (String(weight)) {
     case '900':
     case '800':
-      return 'PlusJakartaSans_800ExtraBold';
+      return 'Nunito_700Bold';
     case '700':
     case 'bold':
-      return 'PlusJakartaSans_700Bold';
+      return 'Nunito_700Bold';
     case '600':
-      return 'PlusJakartaSans_600SemiBold';
+      return 'Nunito_600SemiBold';
     case '500':
-      return 'PlusJakartaSans_500Medium';
+      return 'Nunito_600SemiBold';
     default:
-      return 'PlusJakartaSans_400Regular';
+      return 'Nunito_400Regular';
   }
 }
 
@@ -178,7 +178,7 @@ function FlatSatCover({
           zIndex: 2,
         }}
       >
-        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontSize: 13, fontWeight: '800', color: '#FFFFFF', letterSpacing: 0.2 }}>
+        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontSize: 13, fontWeight: '400', color: '#FFFFFF', letterSpacing: 0.2 }}>
           {theme.header}
         </Text>
         <View style={{ width: 4.5, height: 4.5, borderRadius: 2.5, backgroundColor: theme.accent }} />
@@ -217,7 +217,7 @@ function FlatSatCover({
             borderColor: 'rgba(255,255,255,0.25)',
           }}
         >
-          <Text numberOfLines={1} style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF', letterSpacing: 0.2 }}>
+          <Text numberOfLines={1} style={{ fontSize: 13, fontWeight: '400', color: '#FFFFFF', letterSpacing: 0.2 }}>
             {theme.badge}
           </Text>
         </View>
@@ -348,7 +348,7 @@ export default function SatPracticeTestsScreen() {
 
         {/* Quick Filters Row: Kỹ năng / Phần thi (matching IELTS design) */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', width: 68 }}>
+          <Text style={{ fontSize: 13, fontWeight: '400', color: '#2B2350', width: 68 }}>
             {L('Kỹ năng:', 'Skill:')}
           </Text>
           {[
@@ -565,7 +565,7 @@ export default function SatPracticeTestsScreen() {
             >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <Icon name="filter" size={18} color="#B94A70" />
-                <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
+                <Text style={{ fontSize: 16, fontWeight: '400', color: '#2B2350' }}>
                   {L('Bộ lọc', 'Filters')}
                 </Text>
               </View>
@@ -674,7 +674,7 @@ export default function SatPracticeTestsScreen() {
 
               {/* Bluebook Feature Tags */}
               <View style={{ gap: 4, paddingTop: 4, borderTopWidth: 1, borderTopColor: '#F3F0FB' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#B94A70', textTransform: 'uppercase' }}>
+                <Text style={{ fontSize: 13, fontWeight: '400', color: '#B94A70', textTransform: 'uppercase' }}>
                   CHẾ ĐỘ THI CHUẨN BLUEBOOK
                 </Text>
                 <Text style={{ fontSize: 13, color: '#7C6552', lineHeight: 16 }}>
@@ -743,7 +743,7 @@ export default function SatPracticeTestsScreen() {
                   }}
                 >
                   <Text style={{ fontSize: 13 }}>👑</Text>
-                  <Text style={{ fontSize: 13, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.6 }}>
+                  <Text style={{ fontSize: 13, fontWeight: '400', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.6 }}>
                     {L('Luyện tập đề xuất hôm nay', 'Recommended practice today')}
                   </Text>
                 </View>
@@ -923,7 +923,7 @@ export default function SatPracticeTestsScreen() {
                             backgroundColor: badgeBg,
                           }}
                         >
-                          <Text style={{ fontSize: 13, fontWeight: '800', color: badgeFg, letterSpacing: 0.4 }}>
+                          <Text style={{ fontSize: 13, fontWeight: '400', color: badgeFg, letterSpacing: 0.4 }}>
                             {item.categoryLabelVi.toUpperCase()}
                           </Text>
                         </View>
@@ -936,7 +936,7 @@ export default function SatPracticeTestsScreen() {
                             backgroundColor: '#F3F0FB',
                           }}
                         >
-                          <Text style={{ fontSize: 13, fontWeight: '800', color: '#6A4BD9', letterSpacing: 0.3 }}>
+                          <Text style={{ fontSize: 13, fontWeight: '400', color: '#6A4BD9', letterSpacing: 0.3 }}>
                             {item.period}
                           </Text>
                         </View>
@@ -945,7 +945,7 @@ export default function SatPracticeTestsScreen() {
                       <Text
                         style={{
                           fontSize: 16,
-                          fontWeight: '800',
+                          fontWeight: '400',
                           color: '#0F1D33',
                           lineHeight: 22,
                           letterSpacing: -0.2,
@@ -1019,7 +1019,7 @@ export default function SatPracticeTestsScreen() {
                       <View style={{ backgroundColor: '#1E3A8A', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6 }}>
                         <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 13, letterSpacing: 0.5 }}>DIGITAL SAT</Text>
                       </View>
-                      <Text style={{ fontSize: 13, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 1 }}>
+                      <Text style={{ fontSize: 13, fontWeight: '400', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 1 }}>
                         CHỌN PHƯƠNG THỨC LÀM BÀI
                       </Text>
                     </View>
@@ -1074,9 +1074,9 @@ export default function SatPracticeTestsScreen() {
                     <View style={{ flex: 1, gap: 6 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                         <View style={{ backgroundColor: '#B94A70', paddingHorizontal: 7, paddingVertical: 2, borderRadius: 4 }}>
-                          <Text style={{ color: '#FFF', fontSize: 13, fontWeight: '800' }}>KHUYÊN DÙNG</Text>
+                          <Text style={{ color: '#FFF', fontSize: 13, fontWeight: '400' }}>KHUYÊN DÙNG</Text>
                         </View>
-                        <Text style={{ fontSize: 16, fontWeight: '800', color: '#0F1D33' }}>
+                        <Text style={{ fontSize: 16, fontWeight: '400', color: '#0F1D33' }}>
                           🚀 Thi Full Digital SAT
                         </Text>
                       </View>
@@ -1114,7 +1114,7 @@ export default function SatPracticeTestsScreen() {
                     })}
                   >
                     <View style={{ flex: 1, gap: 6 }}>
-                      <Text style={{ fontSize: 16, fontWeight: '800', color: '#0F766E' }}>
+                      <Text style={{ fontSize: 16, fontWeight: '400', color: '#0F766E' }}>
                         🎯 Luyện chuyên sâu Reading (Bài đọc SAT)
                       </Text>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
@@ -1151,7 +1151,7 @@ export default function SatPracticeTestsScreen() {
                     })}
                   >
                     <View style={{ flex: 1, gap: 6 }}>
-                      <Text style={{ fontSize: 16, fontWeight: '800', color: '#0F1D33' }}>
+                      <Text style={{ fontSize: 16, fontWeight: '400', color: '#0F1D33' }}>
                         📖 Thi Reading & Writing
                       </Text>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
@@ -1188,7 +1188,7 @@ export default function SatPracticeTestsScreen() {
                     })}
                   >
                     <View style={{ flex: 1, gap: 6 }}>
-                      <Text style={{ fontSize: 16, fontWeight: '800', color: '#0F1D33' }}>
+                      <Text style={{ fontSize: 16, fontWeight: '400', color: '#0F1D33' }}>
                         📐 Thi SAT Math
                       </Text>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>

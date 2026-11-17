@@ -75,7 +75,7 @@ export function HubScreen({
 
           <View style={{ flex: 1, minWidth: 0 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Text numberOfLines={1} style={{ color: COSMIC.ink, fontSize: 22, fontWeight: '800', letterSpacing: -0.3 }}>
+              <Text numberOfLines={1} style={{ color: COSMIC.ink, fontSize: 22, fontWeight: '400', letterSpacing: -0.3 }}>
                 {title}
               </Text>
             </View>
@@ -126,7 +126,7 @@ export function HubScreen({
             }}
           >
             <Text style={{ fontSize: 13 }}>🔥</Text>
-            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>{displayStreak}</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '400' }}>{displayStreak}</Text>
           </View>
 
           {/* 2. Gems 💎 */}
@@ -145,7 +145,7 @@ export function HubScreen({
             }}
           >
             <Text style={{ fontSize: 13 }}>💎</Text>
-            <Text style={{ color: '#7C3AED', fontSize: 12, fontWeight: '800' }}>{gems}</Text>
+            <Text style={{ color: '#7C3AED', fontSize: 12, fontWeight: '400' }}>{gems}</Text>
           </View>
 
           {/* 3. Trophy 🏆 */}
@@ -164,7 +164,7 @@ export function HubScreen({
             }}
           >
             <Text style={{ fontSize: 13 }}>🏆</Text>
-            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>{displayTrophy}</Text>
+            <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '400' }}>{displayTrophy}</Text>
           </View>
         </View>
       </View>
@@ -176,7 +176,7 @@ export function HubScreen({
         <Pressable onPress={() => setDropdownOpen(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
           <View style={[GLASS_CARD, { backgroundColor: '#FFFFFF', padding: 20, gap: 14, width: '100%', maxWidth: 380, borderWidth: 1, borderColor: 'rgba(168, 85, 247, 0.3)' }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text style={{ color: COSMIC.ink, fontSize: 17, fontWeight: '800' }}>Chọn chương trình học</Text>
+              <Text style={{ color: COSMIC.ink, fontSize: 17, fontWeight: '400' }}>Chọn chương trình học</Text>
               <Pressable onPress={() => setDropdownOpen(false)}>
                 <Icon name="close" size={18} color={COSMIC.muted} />
               </Pressable>

@@ -45,7 +45,7 @@ export function IeltsScoreModal({
             <View className={`rounded-full px-3 py-1 mb-2 ${cheer.bg}`}>
               <Text className={`text-xs font-bold ${cheer.color}`}>{cheer.text}</Text>
             </View>
-            <Text className="text-xl font-extrabold text-gray-900">
+            <Text className="text-xl font-normal text-gray-900">
               {L('Kết quả bài Reading', 'Reading Test Results')}
             </Text>
             <Text className="text-xs text-gray-500 mt-1">
@@ -69,21 +69,21 @@ export function IeltsScoreModal({
             {/* Score pill counts */}
             <View className="w-full flex-row items-center justify-around border-t border-gray-200/80 pt-3">
               <View className="items-center">
-                <Text className="text-xl font-extrabold text-emerald-600">{score}</Text>
+                <Text className="text-xl font-normal text-emerald-600">{score}</Text>
                 <Text className="text-[11px] font-medium text-gray-500">{L('Đúng', 'Correct')}</Text>
               </View>
 
               <View className="h-8 w-px bg-gray-200" />
 
               <View className="items-center">
-                <Text className="text-xl font-extrabold text-rose-600">{incorrect}</Text>
+                <Text className="text-xl font-normal text-rose-600">{incorrect}</Text>
                 <Text className="text-[11px] font-medium text-gray-500">{L('Sai', 'Incorrect')}</Text>
               </View>
 
               <View className="h-8 w-px bg-gray-200" />
 
               <View className="items-center">
-                <Text className="text-xl font-extrabold text-gray-900">{pct}%</Text>
+                <Text className="text-xl font-normal text-gray-900">{pct}%</Text>
                 <Text className="text-[11px] font-medium text-gray-500">{L('Tỉ lệ', 'Accuracy')}</Text>
               </View>
             </View>

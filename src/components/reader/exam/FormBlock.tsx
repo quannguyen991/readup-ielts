@@ -122,7 +122,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
                     borderLeftColor: EXAM.accentLine,
                   }}
                 >
-                  {line(cell, r === 0 ? { fontSize: 13.5, fontWeight: '800', color: EXAM.accentDeep, lineHeight: 20 } : { fontSize: 14.5, lineHeight: 48, color: EXAM.ink })}
+                  {line(cell, r === 0 ? { fontSize: 13.5, fontWeight: '400', color: EXAM.accentDeep, lineHeight: 20 } : { fontSize: 14.5, lineHeight: 48, color: EXAM.ink })}
                 </View>
               ))}
             </View>
@@ -139,7 +139,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
               {line(l)}
             </View>
             {i < form.lines.length - 1 ? (
-              <Text style={{ textAlign: 'center', fontSize: 18, lineHeight: 22, color: EXAM.accent, fontWeight: '800' }}>↓</Text>
+              <Text style={{ textAlign: 'center', fontSize: 18, lineHeight: 22, color: EXAM.accent, fontWeight: '400' }}>↓</Text>
             ) : null}
           </View>
         ))}
@@ -150,7 +150,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
       <View style={{ gap: 2 }}>
         {form.lines.map((l, i) =>
           l.startsWith('## ') ? (
-            <Text key={i} style={{ marginTop: i === 0 ? 0 : 10, fontSize: 15, fontWeight: '800', color: EXAM.accentDeep }}>
+            <Text key={i} style={{ marginTop: i === 0 ? 0 : 10, fontSize: 15, fontWeight: '400', color: EXAM.accentDeep }}>
               {l.slice(3)}
             </Text>
           ) : (
@@ -201,7 +201,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
     <View style={{ gap: 12 }}>
       {bank ? (
         <View style={{ padding: 12, borderRadius: 12, backgroundColor: EXAM.accentSoft, gap: 8 }}>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: EXAM.accentDeep }}>{L('Bảng từ', 'Word list')}</Text>
+          <Text style={{ fontSize: 13, fontWeight: '400', color: EXAM.accentDeep }}>{L('Bảng từ', 'Word list')}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {bank.map((word, i) => {
               const used = questions.some((_, k) => valueOf(k + 1) === word);
@@ -223,7 +223,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
                     backgroundColor: used ? EXAM.accent : EXAM.white,
                   }}
                 >
-                  <Text style={{ fontSize: 13, fontWeight: '800', color: used ? '#FFFFFF' : EXAM.accentDeep }}>{String.fromCharCode(65 + i)}</Text>
+                  <Text style={{ fontSize: 13, fontWeight: '400', color: used ? '#FFFFFF' : EXAM.accentDeep }}>{String.fromCharCode(65 + i)}</Text>
                   <Text style={{ fontSize: 14.5, fontWeight: '600', color: used ? '#FFFFFF' : EXAM.ink }}>{word}</Text>
                 </Pressable>
               );
@@ -231,7 +231,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
           </View>
         </View>
       ) : null}
-      {form.title ? <Text style={{ fontSize: 16, fontWeight: '800', color: EXAM.ink }}>{form.title}</Text> : null}
+      {form.title ? <Text style={{ fontSize: 16, fontWeight: '400', color: EXAM.ink }}>{form.title}</Text> : null}
       {body}
     </View>
   );

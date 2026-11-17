@@ -93,7 +93,7 @@ function Sheet({ theme, onClose }: { theme: Theme; onClose: () => void }) {
       >
         <div style={{ padding: '16px 18px 10px', display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 800, fontSize: 18 }}>{L('Học bộ từ nào?', 'Which word set?')}</div>
+            <div style={{ fontWeight: 400, fontSize: 18 }}>{L('Học bộ từ nào?', 'Which word set?')}</div>
             <div style={{ fontSize: 13, color: c.muted }}>{L('Trả lời ở đây được ghi vào lịch ôn của bộ đó.', 'Answers here count toward that set’s review schedule.')}</div>
           </div>
           <button type="button" onClick={onClose} aria-label={L('Đóng', 'Close')} style={{ border: 'none', background: 'transparent', color: c.ink, fontSize: 20, cursor: 'pointer' }}>
@@ -158,5 +158,5 @@ function Row({ s, title, sub, icon, on, c, onPick }: RowProps) {
 }
 
 function GroupTitle({ c, text }: { c: (typeof T)['dark']; text: string }) {
-  return <div style={{ marginTop: 8, fontSize: 12, fontWeight: 800, letterSpacing: 1.2, textTransform: 'uppercase', color: c.muted }}>{text}</div>;
+  return <div style={{ marginTop: 8, fontSize: 12, fontWeight: 400, letterSpacing: 1.2, textTransform: 'uppercase', color: c.muted }}>{text}</div>;
 }

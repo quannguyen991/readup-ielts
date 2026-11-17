@@ -130,13 +130,13 @@ export default function PitchPage() {
               backgroundColor: sentence.expect === 'rising' ? 'rgba(140, 83, 27, 0.15)' : 'rgba(16, 185, 129, 0.15)',
             }}
           >
-            <Text style={{ color: sentence.expect === 'rising' ? '#6A4BD9' : '#10B981', fontSize: 13, fontWeight: '800' }}>
+            <Text style={{ color: sentence.expect === 'rising' ? '#6A4BD9' : '#10B981', fontSize: 13, fontWeight: '400' }}>
               {sentence.expect === 'rising' ? 'LÊN GIỌNG ↗' : 'XUỐNG GIỌNG ↘'}
             </Text>
           </View>
         </View>
 
-        <Text style={{ color: COSMIC.ink, fontSize: 19, fontWeight: '800', lineHeight: 28 }}>
+        <Text style={{ color: COSMIC.ink, fontSize: 19, fontWeight: '400', lineHeight: 28 }}>
           {sentence.text}
         </Text>
 
@@ -204,7 +204,7 @@ export default function PitchPage() {
             }}
           >
             <Icon name={recording ? 'close' : 'mic'} size={18} color="#090A1A" strokeWidth={2.4} />
-            <Text style={{ color: '#FFFFFF', fontWeight: '800' }}>
+            <Text style={{ color: '#FFFFFF', fontWeight: '400' }}>
               {recording ? 'Dừng ghi' : 'Nói theo'}
             </Text>
           </Pressable>
@@ -234,7 +234,7 @@ export default function PitchPage() {
       {/* BIỂU ĐỒ SÓNG ÂM & ĐƯỜNG CONG CAO ĐỘ (Real-time Pitch Contour) */}
       <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '800' }}>
+          <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '400' }}>
             Biểu đồ Cao độ (Pitch Contour)
           </Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
@@ -322,7 +322,7 @@ export default function PitchPage() {
 
         {track ? (
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 12, borderRadius: 10, backgroundColor: 'rgba(120, 68, 21, 0.04)' }}>
-            <Text style={{ color: matched ? '#10B981' : '#F59E0B', fontSize: 14, fontWeight: '800' }}>
+            <Text style={{ color: matched ? '#10B981' : '#F59E0B', fontSize: 14, fontWeight: '400' }}>
               {matched ? '✓ Ngữ điệu chuẩn xác!' : 'Chưa đúng hướng ngữ điệu ở đuôi câu'}
             </Text>
             <Text style={{ color: COSMIC.ink, fontSize: 13, fontWeight: '700' }}>
@@ -337,7 +337,7 @@ export default function PitchPage() {
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <Text style={{ fontSize: 16 }}>👄</Text>
-            <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '800' }}>
+            <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '400' }}>
               Sơ đồ Khẩu hình miệng: {sentence.mouthGuide.keySound}
             </Text>
           </View>

@@ -1,7 +1,7 @@
 /**
  * Bộ thành phần giao diện "Du ngoạn Band 9": khung giấy kem viền navy có đường
  * chỉ vàng mảnh, nút kiểu game, chip vé / xu. Chữ nội dung vẫn dùng phông đọc
- * của app (Plus Jakarta), cỡ ≥ 14px.
+ * của app (Inter), cỡ ≥ 14px.
  */
 import { themedHex } from '@/theme/palette-state';
 import React from 'react';

@@ -75,6 +75,6 @@ export const HANZI_FAMILY = Platform.select({
  * Chữ Hán vẫn dùng HANZI_FAMILY.
  */
 export const HEAD_FAMILY = Platform.select({
-  web: "'InterTight_600SemiBold', 'Inter_600SemiBold', system-ui, sans-serif",
-  default: 'InterTight_600SemiBold',
+  web: "'Nunito_400Regular', 'Nunito_600SemiBold', system-ui, sans-serif",
+  default: 'Nunito_400Regular',
 }) as string | undefined;

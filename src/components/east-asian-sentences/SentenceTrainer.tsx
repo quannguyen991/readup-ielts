@@ -33,7 +33,7 @@ function Chip({ label, active, onPress, t }: { label: string; active: boolean; o
 function Btn({ label, onPress, t, primary = true, disabled }: { label: string; onPress: () => void; t: (typeof THEME)[EaLang]; primary?: boolean; disabled?: boolean }) {
   return (
     <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={{ paddingHorizontal: 20, paddingVertical: 12, borderRadius: 999, backgroundColor: primary ? t.main : t.card, borderWidth: 1.5, borderColor: primary ? t.main : t.line, opacity: disabled ? 0.45 : 1 }}>
-      <Text style={{ fontSize: 15, fontWeight: '800', color: primary ? t.onMain : t.ink }}>{label}</Text>
+      <Text style={{ fontSize: 15, fontWeight: '400', color: primary ? t.onMain : t.ink }}>{label}</Text>
     </Pressable>
   );
 }
@@ -118,7 +118,7 @@ export function SentenceTrainer({ lang, mode }: { lang: EaLang; mode: TrainerMod
 
       <View style={{ ...card, backgroundColor: t.main, borderColor: t.gold, marginTop: 14 }}>
         <Text style={{ fontSize: 13, letterSpacing: 1.2, color: t.gold, fontWeight: '700' }}>{t.name.toUpperCase()}</Text>
-        <Text style={{ fontSize: 30, lineHeight: 38, fontWeight: '800', color: t.onMain, marginTop: 4 }}>{title}</Text>
+        <Text style={{ fontSize: 30, lineHeight: 38, fontWeight: '400', color: t.onMain, marginTop: 4 }}>{title}</Text>
         <Text style={{ fontSize: 15, color: t.onMain, opacity: 0.9, marginTop: 6 }}>
           {mode === 'dictation' ? 'Nghe câu rồi gõ lại đúng chữ Hán/kana đã nghe. Dấu câu không tính.' : dir === 'vi2t' ? `Đọc câu tiếng Việt rồi gõ câu ${t.name} tương ứng.` : `Đọc câu ${t.name}, chọn nghĩa tiếng Việt đúng.`}
         </Text>
@@ -126,13 +126,13 @@ export function SentenceTrainer({ lang, mode }: { lang: EaLang; mode: TrainerMod
 
       {round === null ? (
         <View style={{ ...card, marginTop: 16, gap: 16 }}>
-          <Text style={{ fontSize: 16, fontWeight: '800', color: t.ink }}>{lang === 'zh' ? 'Chọn cấp HSK' : 'Chọn cấp JLPT'}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: t.ink }}>{lang === 'zh' ? 'Chọn cấp HSK' : 'Chọn cấp JLPT'}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {levels.map((l) => <Chip key={l} t={t} label={`${l.replace('JLPT ', '')} · ${sentencesOf(lang, l).length} câu`} active={l === level} onPress={() => setLevel(l)} />)}
           </View>
           {mode === 'translate' ? (
             <>
-              <Text style={{ fontSize: 16, fontWeight: '800', color: t.ink }}>Hướng dịch</Text>
+              <Text style={{ fontSize: 16, fontWeight: '400', color: t.ink }}>Hướng dịch</Text>
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
                 <Chip t={t} label={`Việt → ${lang === 'zh' ? 'Trung' : 'Nhật'} (gõ)`} active={dir === 'vi2t'} onPress={() => setDir('vi2t')} />
                 <Chip t={t} label={`${lang === 'zh' ? 'Trung' : 'Nhật'} → Việt (chọn)`} active={dir === 't2vi'} onPress={() => setDir('t2vi')} />
@@ -144,7 +144,7 @@ export function SentenceTrainer({ lang, mode }: { lang: EaLang; mode: TrainerMod
       ) : done ? (
         <View style={{ ...card, marginTop: 16, gap: 12 }}>
           <Text style={{ fontSize: 15, color: t.ink2 }}>Kết quả {level}</Text>
-          <Text style={{ fontSize: 44, fontWeight: '800', color: t.main }}>{score}/{round.length}</Text>
+          <Text style={{ fontSize: 44, fontWeight: '400', color: t.main }}>{score}/{round.length}</Text>
           <Text style={{ fontSize: 15, color: t.ink }}>{score >= 9 ? 'Rất chắc. Thử cấp cao hơn nhé.' : score >= 6 ? 'Khá ổn. Làm thêm một lượt để chắc hơn.' : 'Chưa chắc. Làm lại cấp này, nghe kỹ từng câu.'}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             <Btn t={t} label="Làm lượt mới" onPress={start} />
@@ -211,12 +211,12 @@ export function SentenceTrainer({ lang, mode }: { lang: EaLang; mode: TrainerMod
             <View style={{ gap: 6, padding: 14, borderRadius: 16, backgroundColor: t.soft }}>
               {!choiceMode && grade ? (
                 <>
-                  <Text style={{ fontSize: 13, fontWeight: '800', color: isCjkPass(grade) ? OK : BAD }}>{isCjkPass(grade) ? 'Đạt' : 'Chưa đạt'} · đúng {grade.correct}/{grade.total} ký tự</Text>
+                  <Text style={{ fontSize: 13, fontWeight: '400', color: isCjkPass(grade) ? OK : BAD }}>{isCjkPass(grade) ? 'Đạt' : 'Chưa đạt'} · đúng {grade.correct}/{grade.total} ký tự</Text>
                   <GradedText g={grade} />
                   {grade.extra.length ? <Text style={{ fontSize: 14, color: EXTRA }}>Thừa hoặc sai chỗ: {grade.extra.join(' ')}</Text> : null}
                 </>
               ) : (
-                <Text style={{ fontSize: 13, fontWeight: '800', color: options[picked ?? -1] === cur.vi ? OK : BAD }}>{options[picked ?? -1] === cur.vi ? 'Đúng' : 'Chưa đúng'}</Text>
+                <Text style={{ fontSize: 13, fontWeight: '400', color: options[picked ?? -1] === cur.vi ? OK : BAD }}>{options[picked ?? -1] === cur.vi ? 'Đúng' : 'Chưa đúng'}</Text>
               )}
               {choiceMode ? null : <Text style={{ fontSize: 14, color: t.ink2 }}>{mode === 'translate' ? `Câu gốc: ${cur.vi}` : `Nghĩa: ${cur.vi}`}</Text>}
               {lang === 'zh' && cur.reading ? <Text style={{ fontSize: 14, color: t.ink2 }}>{cur.reading}</Text> : null}

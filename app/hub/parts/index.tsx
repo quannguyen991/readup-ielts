@@ -105,7 +105,7 @@ export default function PartsHub() {
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
             {p.starters.map((s) => (
               <View key={s} style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, borderWidth: 1.5, borderColor: HUB_UI.line }}>
-                <Text style={{ color: HUB_UI.purple, fontSize: 13.5, fontWeight: '800' }}>{s}</Text>
+                <Text style={{ color: HUB_UI.purple, fontSize: 13.5, fontWeight: '400' }}>{s}</Text>
               </View>
             ))}
           </View>
@@ -115,7 +115,7 @@ export default function PartsHub() {
               <Text style={{ color: '#FFFFFF', fontWeight: '900', fontSize: 15 }}>Luyện Part {p.n} ngẫu nhiên</Text>
             </Pressable>
             <Pressable accessibilityRole="button" onPress={() => router.push(`/hub/topics/${randomTopic().id}?part=${p.n}` as never)} style={{ height: 48, paddingHorizontal: 16, borderRadius: 14, borderWidth: 1.5, borderColor: HUB_UI.line, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ color: HUB_UI.navy, fontWeight: '800', fontSize: 14 }}>Một chủ đề</Text>
+              <Text style={{ color: HUB_UI.navy, fontWeight: '400', fontSize: 14 }}>Một chủ đề</Text>
             </Pressable>
           </View>
         </HubPanel>
@@ -136,7 +136,7 @@ export default function PartsHub() {
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           {SPEAKING_TOPICS.map((t) => (
             <Pressable key={t.id} accessibilityRole="button" onPress={() => router.push(`/hub/topics/${t.id}` as never)} style={({ hovered }: Hover) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, borderWidth: 1.5, backgroundColor: topicsDone[t.id] ? '#DDF7E8' : '#FFFFFF', ...hubLift(hovered) }) as never}>
-              <Text style={{ color: HUB_UI.navy, fontSize: 14, fontWeight: '800' }}>{t.titleVi}</Text>
+              <Text style={{ color: HUB_UI.navy, fontSize: 14, fontWeight: '400' }}>{t.titleVi}</Text>
               {topicsDone[t.id] ? <Icon name="check" size={13} color={HUB_UI.green} /> : null}
             </Pressable>
           ))}

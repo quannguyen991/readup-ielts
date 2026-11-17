@@ -162,7 +162,7 @@ export default function HubLearn() {
 
       <SectionCard title="IELTS Speaking">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-          <ActionTile title="Lộ trình 5.0 → 9.0" coin="path" onPress={() => go('/hub/ielts')} />
+          <ActionTile title="Lộ trình Speaking 5.0 → 9.0" coin="path" onPress={() => go('/hub/ielts')} />
           <ActionTile title="12 chủ đề" coin="speaking" onPress={() => go('/hub/topics')} />
           <ActionTile title="Nói cùng Leo" coin="friends" onPress={() => go('/hub/live')} />
         </View>
@@ -175,7 +175,7 @@ export default function HubLearn() {
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <Text style={{ fontFamily: PC.body, fontWeight: '700', fontSize: 13, color: '#BE123C' }}>{activeL1Error.badge}</Text>
-                  <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 22, color: PC.ink }}>{activeL1Error.title}</Text>
+                  <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 22, color: PC.ink }}>{activeL1Error.title}</Text>
                 </View>
                 <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={closeDrill} style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4F1FC' }}>
                   <Icon name="close" size={18} color={PC.muted} />
@@ -205,7 +205,7 @@ export default function HubLearn() {
 
               {drill ? (
                 <View style={{ padding: 14, borderRadius: 18, gap: 10, backgroundColor: drill.overall >= 85 ? '#EAF9F0' : drill.overall >= 60 ? '#FEF6E3' : '#FFF1F3' }}>
-                  <Text style={{ fontFamily: PC.display, fontWeight: '800', fontSize: 26, color: drill.overall >= 85 ? '#15803D' : drill.overall >= 60 ? '#B45309' : '#BE123C' }}>{drill.overall}%</Text>
+                  <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 26, color: drill.overall >= 85 ? '#15803D' : drill.overall >= 60 ? '#B45309' : '#BE123C' }}>{drill.overall}%</Text>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                     {drill.words.map((w, i) => (
                       <View key={`${w.target}-${i}`} style={{ paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: w.band === 'good' ? '#D1F5DF' : w.band === 'fair' ? '#FCE9B8' : '#FFD3DA' }}>

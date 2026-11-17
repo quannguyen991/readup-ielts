@@ -802,7 +802,7 @@ function ReadingTrapsSection({ wide }: { wide: boolean }) {
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#EF4444', alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>{t.num}</Text>
+                <Text style={{ fontSize: 13, fontWeight: '400', color: '#FFFFFF' }}>{t.num}</Text>
               </View>
               <Text className="font-heavy text-body text-ink" style={{ flex: 1 }}>
                 {t.nameVi}

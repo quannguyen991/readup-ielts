@@ -8,7 +8,7 @@ import { Icon } from '@/components/ui/Icon';
 /**
  * Linh kiện chung của luồng HSA (khảo sát, bài test đầu vào, kế hoạch, Đua Top). Bố cục theo ảnh mẫu:
  * một khung màu choán cả trang, thanh ba bước ở trên, tiêu đề lớn kèm linh vật, rồi thẻ "cửa sổ" ba
- * chấm chứa nội dung. Màu và phông theo Band 9 (tím, xanh, vàng; phông Nunito bo tròn).
+ * chấm chứa nội dung. Màu và phông theo Band 9 (tím, xanh, vàng; phông Inter bo tròn).
  */
 
 export const INK = '#17132E';

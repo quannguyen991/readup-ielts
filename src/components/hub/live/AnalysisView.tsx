@@ -59,7 +59,7 @@ export function AnalysisView({
         style={{ borderRadius: 24, padding: 20, alignItems: 'center', gap: 12 }}
       >
         <LionMascot pose={celebrate ? 'cheer' : 'think'} size={112} />
-        <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>Kết quả buổi luyện</Text>
+        <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>Kết quả buổi luyện</Text>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 18 }}>
           <View
@@ -75,12 +75,12 @@ export function AnalysisView({
               backgroundColor: 'rgba(120, 68, 21, 0.7)',
             }}
           >
-            <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '800' }}>{overall ?? '—'}</Text>
+            <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '400' }}>{overall ?? '—'}</Text>
             <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '700' }}>/100</Text>
           </View>
           <View style={{ gap: 6 }}>
             <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>BAND ƯỚC LƯỢNG</Text>
-            <Text style={{ color: HUB.ink, fontSize: 28, fontWeight: '800' }}>
+            <Text style={{ color: HUB.ink, fontSize: 28, fontWeight: '400' }}>
               {analysis.band === null ? '—' : analysis.band.toFixed(1)}
             </Text>
             <Text style={{ color: HUB.body, fontSize: 11, lineHeight: 16, maxWidth: 150 }}>
@@ -98,12 +98,12 @@ export function AnalysisView({
       </LinearGradient>
 
       <View style={[GLASS_CARD, { padding: 16, gap: 14 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Các tiêu chí</Text>
+        <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Các tiêu chí</Text>
         {analysis.dimensions.map((d) => (
           <View key={d.key} style={{ gap: 6 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '700' }}>{DIM_LABEL[d.key]}</Text>
-              <Text style={{ color: d.score === null ? HUB.muted : scoreColor(d.score), fontSize: 14, fontWeight: '800' }}>
+              <Text style={{ color: d.score === null ? HUB.muted : scoreColor(d.score), fontSize: 14, fontWeight: '400' }}>
                 {d.score === null ? 'Chưa đo' : d.score}
               </Text>
             </View>
@@ -132,11 +132,11 @@ export function AnalysisView({
       ) : null}
       {analysis.nextSteps.length > 0 ? (
         <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Bước tiếp theo</Text>
+          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Bước tiếp theo</Text>
           {analysis.nextSteps.map((s, i) => (
             <View key={s} style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
               <View style={{ width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-                <Text style={{ color: '#fff', fontSize: 12, fontWeight: '800' }}>{i + 1}</Text>
+                <Text style={{ color: '#fff', fontSize: 12, fontWeight: '400' }}>{i + 1}</Text>
               </View>
               <Text style={{ color: HUB.ink, fontSize: 14, lineHeight: 21, flex: 1 }}>{s}</Text>
             </View>
@@ -147,7 +147,7 @@ export function AnalysisView({
       <View style={[GLASS_CARD, { padding: 16, gap: 12 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Icon name="sparkle" size={18} color={HUB.blue} />
-          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Nhận xét chi tiết từ AI</Text>
+          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Nhận xét chi tiết từ AI</Text>
         </View>
         <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>
           Ngữ pháp và mạch lạc máy chưa chấm được. AI đọc lại bản ghi của bạn để gợi ý hai mục này. Mỗi lần gọi tốn một lượt AI.
@@ -174,13 +174,13 @@ export function AnalysisView({
               opacity: aiBusy || userTurns.length === 0 ? 0.5 : 1,
             }}
           >
-            <Text style={{ color: '#fff', fontWeight: '800', fontSize: 15 }}>{aiBusy ? 'Leo đang đọc bản ghi…' : 'Lấy nhận xét AI'}</Text>
+            <Text style={{ color: '#fff', fontWeight: '400', fontSize: 15 }}>{aiBusy ? 'Leo đang đọc bản ghi…' : 'Lấy nhận xét AI'}</Text>
           </Pressable>
         )}
         {aiError ? <Text style={{ color: HUB.red, fontSize: 13 }}>{aiError}</Text> : null}
       </View>
 
-      <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Từng câu trả lời</Text>
+      <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Từng câu trả lời</Text>
       {userTurns.map((t, i) => {
         const r = t.report!;
         const ratio = r.wordCount > 0 ? r.fillers.total / r.wordCount : 0;
@@ -204,14 +204,14 @@ export function AnalysisView({
           onPress={onRetry}
           style={{ flex: 1, height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong }}
         >
-          <Text style={{ color: HUB.ink, fontWeight: '800' }}>Luyện lại</Text>
+          <Text style={{ color: HUB.ink, fontWeight: '400' }}>Luyện lại</Text>
         </Pressable>
         <Pressable
           accessibilityRole="button"
           onPress={onExit}
           style={{ flex: 1, height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}
         >
-          <Text style={{ color: '#fff', fontWeight: '800' }}>Về đề luyện nói</Text>
+          <Text style={{ color: '#fff', fontWeight: '400' }}>Về đề luyện nói</Text>
         </Pressable>
       </View>
 
@@ -237,7 +237,7 @@ function Chip({ label, tone }: { label: string; tone?: string }) {
 function ListCard({ title, tone, icon, items }: { title: string; tone: string; icon: 'check' | 'info'; items: string[] }) {
   return (
     <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-      <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>{title}</Text>
+      <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>{title}</Text>
       {items.map((s) => (
         <View key={s} style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
           <Icon name={icon} size={16} color={tone} strokeWidth={2.4} />
@@ -252,7 +252,7 @@ function NoteGroup({ title, items }: { title: string; items: string[] }) {
   if (items.length === 0) return null;
   return (
     <View style={{ gap: 4 }}>
-      <Text style={{ color: HUB.blue, fontSize: 13, fontWeight: '800' }}>{title}</Text>
+      <Text style={{ color: HUB.blue, fontSize: 13, fontWeight: '400' }}>{title}</Text>
       {items.map((s) => (
         <Text key={s} style={{ color: HUB.ink, fontSize: 14, lineHeight: 21 }}>
           • {s}

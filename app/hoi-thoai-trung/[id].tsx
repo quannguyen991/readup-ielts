@@ -20,7 +20,7 @@ export default function ZhDialogueScreen() {
   if (!d) {
     return (
       <Screen>
-        <Text style={{ fontSize: 22, fontWeight: '800', color: ZH.ink }}>Không tìm thấy bài này.</Text>
+        <Text style={{ fontSize: 22, fontWeight: '400', color: ZH.ink }}>Không tìm thấy bài này.</Text>
         <Button className="mt-4 self-start" label="Về danh sách hội thoại" onPress={() => router.replace('/hoi-thoai-trung' as never)} />
       </Screen>
     );
@@ -37,16 +37,16 @@ export default function ZhDialogueScreen() {
 
       <View style={{ ...(paper as object), marginTop: 14 } as object}>
         <View style={{ alignSelf: 'flex-start', paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: ZH.goldSoftBg }}>
-          <Text style={{ fontWeight: '800', color: ZH.seal, fontSize: 12 }}>HSK {d.level} · {d.topic}</Text>
+          <Text style={{ fontWeight: '400', color: ZH.seal, fontSize: 12 }}>HSK {d.level} · {d.topic}</Text>
         </View>
-        <Text style={{ marginTop: 8, fontSize: 32, lineHeight: 38, fontWeight: '800', color: ZH.seal }}>{d.titleZh}</Text>
-        <Text style={{ fontSize: 20, fontWeight: '800', color: ZH.ink }}>{d.title}</Text>
+        <Text style={{ marginTop: 8, fontSize: 32, lineHeight: 38, fontWeight: '400', color: ZH.seal }}>{d.titleZh}</Text>
+        <Text style={{ fontSize: 20, fontWeight: '400', color: ZH.ink }}>{d.title}</Text>
         <Text style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: ZH.ink2 }}>{d.scene}</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 14, alignItems: 'center' }}>
           <Toggle label="Pinyin" on={showPy} onPress={() => setShowPy((v) => !v)} />
           <Toggle label="Nghĩa Việt" on={showVi} onPress={() => setShowVi((v) => !v)} />
           <Pressable accessibilityRole="button" onPress={() => speak(d.lines.map((l) => l.zh).join(' '), { language: 'zh', rate: 0.85 })} style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 999, backgroundColor: ZH.seal }}>
-            <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 14 }}>Nghe cả đoạn</Text>
+            <Text style={{ color: '#FFFFFF', fontWeight: '400', fontSize: 14 }}>Nghe cả đoạn</Text>
           </Pressable>
         </View>
       </View>
@@ -59,7 +59,7 @@ export default function ZhDialogueScreen() {
               return (
                 <View key={i} style={{ flexDirection: right ? 'row-reverse' : 'row', gap: 10, alignItems: 'flex-start' }}>
                   <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: right ? ZH.sage : ZH.seal, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 13 }}>{l.who.slice(0, 1)}</Text>
+                    <Text style={{ color: '#FFFFFF', fontWeight: '400', fontSize: 13 }}>{l.who.slice(0, 1)}</Text>
                   </View>
                   <View style={{ flexShrink: 1, maxWidth: '84%', backgroundColor: right ? ZH.sageSoft : ZH.cream2, borderRadius: 16, borderWidth: 1.5, borderColor: right ? ZH.sage : ZH.line, padding: 12, gap: 2 }}>
                     <Text style={{ fontSize: 12, fontWeight: '700', color: ZH.ink2 }}>{l.who}</Text>
@@ -74,11 +74,11 @@ export default function ZhDialogueScreen() {
           </View>
 
           <View style={{ ...(paper as object), marginTop: 14, gap: 8 } as object}>
-            <Text style={{ fontSize: 20, fontWeight: '800', color: ZH.ink }}>Từ khoá</Text>
+            <Text style={{ fontSize: 20, fontWeight: '400', color: ZH.ink }}>Từ khoá</Text>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
               {d.keyWords.map((w, i) => (
                 <Pressable key={i} accessibilityRole="button" onPress={() => speak(w.zh, { language: 'zh' })} style={{ paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12, backgroundColor: ZH.goldSoftBg, borderWidth: 1, borderColor: ZH.line }}>
-                  <Text style={{ fontSize: 18, fontWeight: '800', color: ZH.seal }}>{w.zh}</Text>
+                  <Text style={{ fontSize: 18, fontWeight: '400', color: ZH.seal }}>{w.zh}</Text>
                   <Text style={{ fontSize: 12, color: ZH.seal2 }}>{w.py}</Text>
                   <Text style={{ fontSize: 13, color: ZH.ink }}>{w.vi}</Text>
                 </Pressable>
@@ -86,11 +86,11 @@ export default function ZhDialogueScreen() {
             </View>
             {grammar.length > 0 ? (
               <View style={{ marginTop: 8, gap: 6 }}>
-                <Text style={{ fontSize: 16, fontWeight: '800', color: ZH.ink }}>Ngữ pháp xuất hiện trong bài</Text>
+                <Text style={{ fontSize: 16, fontWeight: '400', color: ZH.ink }}>Ngữ pháp xuất hiện trong bài</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
                   {grammar.map((g) => (
                     <Pressable key={g!.id} accessibilityRole="link" onPress={() => router.push(`/ngu-phap-trung/${g!.id}` as never)} style={{ paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, borderWidth: 1.5, borderColor: ZH.seal }}>
-                      <Text style={{ fontWeight: '800', color: ZH.seal }}>{g!.titleZh} · {g!.title}</Text>
+                      <Text style={{ fontWeight: '400', color: ZH.seal }}>{g!.titleZh} · {g!.title}</Text>
                     </Pressable>
                   ))}
                 </View>

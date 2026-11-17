@@ -178,11 +178,11 @@ export default function MeetingAssistant() {
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <View style={{ gap: 2 }}>
-              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Ghi âm thảo luận nhóm</Text>
+              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Ghi âm thảo luận nhóm</Text>
               <Text style={{ color: HUB.muted, fontSize: 13 }}>Tự động nhận diện thời gian nói & tách người nói</Text>
             </View>
             <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: recording ? 'rgba(239, 68, 68, 0.2)' : HUB.glassStrong }}>
-              <Text style={{ color: recording ? '#EF4444' : HUB.sky, fontSize: 15, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
+              <Text style={{ color: recording ? '#EF4444' : HUB.sky, fontSize: 15, fontWeight: '400', fontVariant: ['tabular-nums'] }}>
                 {recording ? formatTimer(elapsedSeconds) : '01:25 (Mẫu)'}
               </Text>
             </View>
@@ -203,7 +203,7 @@ export default function MeetingAssistant() {
             }}
           >
             <Icon name={recording ? 'close' : 'mic'} size={20} color="#fff" />
-            <Text style={{ color: '#fff', fontSize: 14, fontWeight: '800' }}>
+            <Text style={{ color: '#fff', fontSize: 14, fontWeight: '400' }}>
               {recording ? 'Dừng cuộc họp & Xuất biên bản' : 'Bắt đầu ghi âm cuộc họp mới'}
             </Text>
           </Pressable>
@@ -228,7 +228,7 @@ export default function MeetingAssistant() {
                   >
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                        <Text style={{ color: isYou ? '#6A4BD9' : '#C084FC', fontSize: 13, fontWeight: '800' }}>{turn.name}</Text>
+                        <Text style={{ color: isYou ? '#6A4BD9' : '#C084FC', fontSize: 13, fontWeight: '400' }}>{turn.name}</Text>
                         <Text style={{ color: HUB.muted, fontSize: 13 }}>• {turn.role}</Text>
                       </View>
                       <Text style={{ color: HUB.muted, fontSize: 13, fontVariant: ['tabular-nums'] }}>{turn.time}</Text>
@@ -243,7 +243,7 @@ export default function MeetingAssistant() {
       ) : (
         /* Manual Paste Mode */
         <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Dán phần phát biểu của bạn</Text>
+          <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Dán phần phát biểu của bạn</Text>
           <TextInput
             value={customText}
             onChangeText={setCustomText}
@@ -291,7 +291,7 @@ export default function MeetingAssistant() {
               backgroundColor: HUB.blue,
             }}
           >
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Phân tích ngay</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Phân tích ngay</Text>
           </Pressable>
         </View>
       )}
@@ -304,10 +304,10 @@ export default function MeetingAssistant() {
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <Icon name="sparkle" size={18} color="#38BDF8" />
-                <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Biên bản Cuộc họp Thông minh</Text>
+                <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Biên bản Cuộc họp Thông minh</Text>
               </View>
               <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, backgroundColor: 'rgba(16, 185, 129, 0.2)' }}>
-                <Text style={{ color: '#34D399', fontSize: 13, fontWeight: '800' }}>HOÀN TẤT</Text>
+                <Text style={{ color: '#34D399', fontSize: 13, fontWeight: '400' }}>HOÀN TẤT</Text>
               </View>
             </View>
 
@@ -315,28 +315,28 @@ export default function MeetingAssistant() {
               {/* Metric 1: Speaking Ratio */}
               <View style={{ flexBasis: '47%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: HUB.glassStrong, gap: 2 }}>
                 <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>Tỷ lệ thời gian bạn nói</Text>
-                <Text style={{ color: '#6A4BD9', fontSize: 22, fontWeight: '800' }}>34%</Text>
+                <Text style={{ color: '#6A4BD9', fontSize: 22, fontWeight: '400' }}>34%</Text>
                 <Text style={{ color: '#34D399', fontSize: 13, fontWeight: '700' }}>✓ Cân bằng lý tưởng (30-40%)</Text>
               </View>
 
               {/* Metric 2: WPM */}
               <View style={{ flexBasis: '47%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: HUB.glassStrong, gap: 2 }}>
                 <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>Tốc độ nói trung bình</Text>
-                <Text style={{ color: '#A855F7', fontSize: 22, fontWeight: '800' }}>132 WPM</Text>
+                <Text style={{ color: '#A855F7', fontSize: 22, fontWeight: '400' }}>132 WPM</Text>
                 <Text style={{ color: HUB.muted, fontSize: 13 }}>Chuẩn tự nhiên nơi công sở</Text>
               </View>
 
               {/* Metric 3: Filler words */}
               <View style={{ flexBasis: '47%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: HUB.glassStrong, gap: 2 }}>
                 <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>Từ đệm phát hiện</Text>
-                <Text style={{ color: '#F59E0B', fontSize: 22, fontWeight: '800' }}>4 từ</Text>
+                <Text style={{ color: '#F59E0B', fontSize: 22, fontWeight: '400' }}>4 từ</Text>
                 <Text style={{ color: HUB.muted, fontSize: 13 }}>uhm (2), like (2)</Text>
               </View>
 
               {/* Metric 4: Pronunciation in meeting */}
               <View style={{ flexBasis: '47%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: HUB.glassStrong, gap: 2 }}>
                 <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>Độ rõ phát âm</Text>
-                <Text style={{ color: '#10B981', fontSize: 22, fontWeight: '800' }}>85%</Text>
+                <Text style={{ color: '#10B981', fontSize: 22, fontWeight: '400' }}>85%</Text>
                 <Text style={{ color: HUB.muted, fontSize: 13 }}>2 từ cần chú ý âm cuối</Text>
               </View>
             </View>
@@ -344,7 +344,7 @@ export default function MeetingAssistant() {
 
           {/* Pronunciation Watchlist during meeting */}
           <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-            <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Từ phát âm cần cải thiện trong cuộc họp</Text>
+            <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Từ phát âm cần cải thiện trong cuộc họp</Text>
             <View style={{ gap: 8 }}>
               <View style={{ padding: 10, borderRadius: 10, backgroundColor: HUB.glassStrong, gap: 2 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -367,7 +367,7 @@ export default function MeetingAssistant() {
           {/* Executive Business Rephrasing */}
           <View style={[GLASS_CARD, { padding: 16, gap: 12 }]}>
             <View style={{ gap: 2 }}>
-              <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>
+              <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>
                 Diễn đạt lại theo phong cách Lãnh đạo & Công sở (Executive Rephrasing)
               </Text>
               <Text style={{ color: HUB.muted, fontSize: 13 }}>

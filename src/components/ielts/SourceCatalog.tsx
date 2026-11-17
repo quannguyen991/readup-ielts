@@ -198,7 +198,7 @@ export function SourceCatalog(props: Props) {
                 onChangeText={props.onQuery}
                 placeholder={L('Tìm đề, ví dụ: Cam 19 Reading', 'Search, e.g. Cam 19 Reading')}
                 placeholderTextColor={color.subtle}
-                style={{ flex: 1, height: '100%', color: color.ink, fontSize: 14, fontFamily: 'Inter_500Medium', outlineStyle: 'none' } as never}
+                style={{ flex: 1, height: '100%', color: color.ink, fontSize: 14, fontFamily: 'Nunito_600SemiBold', outlineStyle: 'none' } as never}
               />
               {props.query ? (
                 <Pressable onPress={() => props.onQuery('')} accessibilityLabel={L('Xóa từ khóa', 'Clear search')} hitSlop={8}>
@@ -232,7 +232,7 @@ export function SourceCatalog(props: Props) {
             <View key={group.source} style={{ gap: 12 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                 <FlatCover kind={group.source.toLowerCase().includes('cambridge') ? 'CAMBRIDGE' : 'ACTUAL VOL'} num={numOf(group.source)} width={52} height={58} radius={10} />
-                <Text style={{ fontSize: 20, fontWeight: '800', color: color.ink }}>{group.source}</Text>
+                <Text style={{ fontSize: 20, fontWeight: '400', color: color.ink }}>{group.source}</Text>
                 <View style={{ paddingHorizontal: 9, paddingVertical: 2, borderRadius: 999, backgroundColor: color.primarySoft }}>
                   <Text style={{ fontSize: 12, fontWeight: '700', color: color.primaryDark }}>{group.items.length}</Text>
                 </View>
@@ -270,7 +270,7 @@ export function SourceCatalog(props: Props) {
 
           {!groups.length ? (
             <View style={{ padding: 32, alignItems: 'center', gap: 8, borderRadius: 18, backgroundColor: color.surface, borderWidth: 1, borderColor: color.border }}>
-              <Text style={{ fontSize: 16, fontWeight: '800', color: color.ink }}>{L('Không có đề phù hợp', 'No tests match')}</Text>
+              <Text style={{ fontSize: 16, fontWeight: '400', color: color.ink }}>{L('Không có đề phù hợp', 'No tests match')}</Text>
               <Text style={{ fontSize: 13, color: color.body }}>{L('Thử bỏ bớt bộ lọc hoặc đổi từ khóa.', 'Try removing a filter or changing the keyword.')}</Text>
             </View>
           ) : null}

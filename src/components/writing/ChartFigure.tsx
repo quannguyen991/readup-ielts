@@ -132,11 +132,11 @@ function ProcessFigure({ data, width, locale }: { data: ProcessChart; width: num
                       }}
                     >
                       <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: accent }}>
-                        <Text style={{ color: '#FFFFFF', fontSize: 11, lineHeight: 15, fontWeight: '800' }}>{stepIndex + 1}</Text>
+                        <Text style={{ color: '#FFFFFF', fontSize: 11, lineHeight: 15, fontWeight: '400' }}>{stepIndex + 1}</Text>
                       </View>
                       <View style={{ flex: 1, gap: 4 }}>
                         {first || last ? (
-                          <Text style={{ color: accent, fontSize: 9, fontWeight: '800', letterSpacing: 0.7, textTransform: 'uppercase' }}>
+                          <Text style={{ color: accent, fontSize: 9, fontWeight: '400', letterSpacing: 0.7, textTransform: 'uppercase' }}>
                             {first ? pick(locale, 'BẮT ĐẦU', 'START') : pick(locale, 'KẾT THÚC', 'FINISH')}
                           </Text>
                         ) : null}

@@ -122,7 +122,7 @@ export default function WritingSampleReaderScreen() {
           {sample.sourceEssayType ? (
             <View className="rounded-2xl border border-[#D9E2D7] bg-[#F7F9F5] p-4">
               <View className="flex-row items-center justify-between gap-2">
-                <Text className="font-nun-heavy text-[10px]" style={{ color: '#587347', letterSpacing: 0.9 }}>TID · {sample.bandLabel?.toUpperCase() ?? `BAND ${sample.band.toFixed(1)}`} SAMPLE</Text>
+                <Text className="font-nun-heavy text-[10px]" style={{ color: '#587347', letterSpacing: 0.9 }}>{sample.bandLabel?.toUpperCase() ?? `BAND ${sample.band.toFixed(1)}`} MODEL SAMPLE</Text>
                 <Text className="font-nun-mid text-label text-muted">#{sample.sourceSampleId}</Text>
               </View>
               <Text className="mt-2 font-nun-heavy text-body text-ink">{sample.sourceEssayType}</Text>
@@ -257,7 +257,7 @@ export default function WritingSampleReaderScreen() {
 function SourceBadge() {
   return (
     <View className="rounded-md border border-[#D4DFD4] bg-[#F2F7EF] px-2 py-1">
-      <Text className="font-nun-heavy" style={{ color: '#587347', fontSize: 9, letterSpacing: 0.45 }}>TID SOURCE</Text>
+      <Text className="font-nun-heavy" style={{ color: '#587347', fontSize: 9, letterSpacing: 0.45 }}>BILINGUAL SAMPLE</Text>
     </View>
   );
 }

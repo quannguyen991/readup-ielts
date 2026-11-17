@@ -111,7 +111,7 @@ export async function POST(request: Request): Promise<Response> {
 
 async function servePrivateAsset(request: Request, bundle: PrivateOcrBundle, requestedName: string): Promise<Response> {
   // Only basenames explicitly referenced by the private test manifest can be served.
-  const allowed = new Set(bundle.tests.flatMap((test) => [test.pdfAsset, ...(test.audioFiles ?? []), ...test.pages.map((p) => p.imageAsset), ...test.supportPages.map((p) => p.imageAsset)].filter((v): v is string => typeof v === 'string')));
+  const allowed = new Set(bundle.tests.flatMap((test) => [test.pdfAsset, ...(test.audioFiles ?? []), ...test.pages.map((p) => p.imageAsset), ...(test.parts ?? []).flatMap((part) => part.sourceImages ?? []), ...test.supportPages.map((p) => p.imageAsset)].filter((v): v is string => typeof v === 'string')));
   if (!allowed.has(requestedName) || path.basename(requestedName) !== requestedName) {
     return Response.json({ error: 'Không tìm thấy tệp nguồn.' }, { status: 404 });
   }

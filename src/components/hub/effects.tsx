@@ -221,7 +221,7 @@ export function BadgeUnlockOverlay({ badge, onClose }: { badge: AchievementState
         <Fireworks run={!!badge} />
         {badge ? (
           <View style={{ width: '100%', maxWidth: 360, backgroundColor: '#FFFFFF', borderRadius: 22, padding: 24, alignItems: 'center', gap: 10, borderWidth: 1, borderColor: COSMIC.line }}>
-            <Text style={{ color: COSMIC.primary, fontSize: 12, fontWeight: '800', letterSpacing: 1 }}>HUY HIỆU MỚI</Text>
+            <Text style={{ color: COSMIC.primary, fontSize: 12, fontWeight: '400', letterSpacing: 1 }}>HUY HIỆU MỚI</Text>
             <Image source={{ uri: '/mascot/lion2d/leo-celebrate.png' }} accessibilityLabel="Leo ăn mừng" resizeMode="contain" style={{ width: 96, height: 96, marginTop: -6 }} />
             <Animated.View style={{ transform: [{ scale: pop }] }}>
               <Glow size={128}>
@@ -231,7 +231,7 @@ export function BadgeUnlockOverlay({ badge, onClose }: { badge: AchievementState
             <Text style={{ color: COSMIC.ink, fontSize: 20, fontWeight: '700', textAlign: 'center' }}>{badge.title}</Text>
             <Text style={{ color: COSMIC.body, fontSize: 14, textAlign: 'center', lineHeight: 20 }}>{badge.desc}</Text>
             <View style={{ paddingHorizontal: 14, paddingVertical: 6, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
-              <Text style={{ color: COSMIC.primary, fontSize: 14, fontWeight: '800' }}>{`+${badge.bonusXp} XP`}</Text>
+              <Text style={{ color: COSMIC.primary, fontSize: 14, fontWeight: '400' }}>{`+${badge.bonusXp} XP`}</Text>
             </View>
             <Pressable
               accessibilityRole="button"

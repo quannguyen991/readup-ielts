@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { Screen } from '@/components/layout/Screen';
+import { NeonPageHero } from '@/components/neon/NeonPageHero';
 import { Icon } from '@/components/ui/Icon';
 import { TILE_TONES } from '@/components/vocab/UnitTile';
 import { AWL_SUBLISTS, awlOfSublist, type AwlWord } from '@/data/awl';
@@ -11,7 +11,7 @@ import { pronounce } from '@/services/audio/pronounce';
 import { useVocabStore } from '@/store/useVocabStore';
 
 /** Từ học thuật AWL: 2 nhóm × 60 từ, mỗi từ một thẻ màu. Nghe, đọc ví dụ, lưu vào sổ từ để ôn lặp ngắt quãng. */
-const F = { reg: 'Nunito_600SemiBold', bold: 'Nunito_800ExtraBold', black: 'Nunito_900Black' };
+const F = { reg: 'Nunito_600SemiBold', bold: 'Nunito_700Bold', black: 'Nunito_700Bold' };
 
 /** Tô đậm từ cần học trong câu ví dụ. */
 function Highlighted({ text, word }: { text: string; word: string }) {
@@ -58,20 +58,7 @@ export default function AwlScreen() {
 
   return (
     <Screen>
-      {/* Banner */}
-      <LinearGradient colors={['#4338CA', '#7C3AED', '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 32, padding: 24, overflow: 'hidden', boxShadow: '0 14px 36px rgba(91,50,200,0.32)' } as never}>
-        <View pointerEvents="none" style={{ position: 'absolute', right: -40, top: -50, width: 220, height: 220, borderRadius: 110, backgroundColor: 'rgba(255,255,255,0.12)' }} />
-        <View pointerEvents="none" style={{ position: 'absolute', right: 90, bottom: -70, width: 150, height: 150, borderRadius: 75, backgroundColor: 'rgba(255,255,255,0.09)' }} />
-        <Text style={{ fontFamily: F.bold, fontSize: 14, letterSpacing: 3, color: 'rgba(255,255,255,0.85)' }}>{L('TỪ HỌC THUẬT', 'ACADEMIC WORDS')}</Text>
-        <Text style={{ fontFamily: F.black, fontSize: 64, lineHeight: 70, color: '#FFFFFF', marginTop: 2 }}>AWL</Text>
-        <Text style={{ fontFamily: F.reg, fontSize: 17, color: 'rgba(255,255,255,0.92)', maxWidth: 520 }}>{L('120 từ gặp nhiều nhất trong bài đọc đại học và đề IELTS.', 'The 120 words you meet most in university reading and IELTS.')}</Text>
-        <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', gap: 12, maxWidth: 420 }}>
-          <View style={{ flex: 1, height: 12, borderRadius: 6, backgroundColor: 'rgba(255,255,255,0.28)', overflow: 'hidden' }}>
-            <View style={{ width: `${(total / 120) * 100}%`, height: 12, backgroundColor: '#FDE68A' }} />
-          </View>
-          <Text style={{ fontFamily: F.black, fontSize: 18, color: '#FFFFFF' }}>{total}/120</Text>
-        </View>
-      </LinearGradient>
+      <NeonPageHero scene="vocab" title="AWL" subtitle={L('120 từ gặp nhiều nhất trong bài đọc đại học và đề IELTS.', 'The 120 words you meet most in university reading and IELTS.')} chips={[{ label: L('Từ học thuật', 'Academic words'), icon: 'book' }, { label: `${total}/120 ${L('đã lưu', 'saved')}`, icon: 'gem' }]} />
 
       {/* Chọn nhóm */}
       <View style={{ flexDirection: 'row', gap: 10, marginTop: 18 }} accessibilityRole="tablist">

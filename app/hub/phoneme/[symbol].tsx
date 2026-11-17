@@ -88,7 +88,7 @@ export default function PhonemePage() {
   return (
     <HubScreen title={`Âm /${phoneme.symbol}/`} subtitle={phoneme.group === 'consonant' ? 'Phụ âm' : phoneme.group === 'diphthong' ? 'Nguyên âm đôi' : 'Nguyên âm đơn'} back>
       <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '800' }}>/{phoneme.symbol}/</Text>
+        <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '400' }}>/{phoneme.symbol}/</Text>
         <Text style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>{phoneme.tipVi}</Text>
         {phoneme.viTrap ? (
           <Text style={{ color: HUB.amber, fontSize: 13, lineHeight: 19 }}>
@@ -98,7 +98,7 @@ export default function PhonemePage() {
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 10 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Ví dụ</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Ví dụ</Text>
         {phoneme.examples.map(([w, ipa]) => (
           <Pressable key={w} accessibilityRole="button" accessibilityLabel={`Nghe ${w}`} onPress={() => speak(w)} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 6 }}>
             <Icon name="volume" size={18} color={HUB.blue} />
@@ -109,9 +109,9 @@ export default function PhonemePage() {
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 12 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Luyện nói</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Luyện nói</Text>
         <Text style={{ color: HUB.body, fontSize: 14 }}>
-          Nói to từ: <Text style={{ color: HUB.ink, fontWeight: '800', fontSize: 18 }}>{word}</Text>
+          Nói to từ: <Text style={{ color: HUB.ink, fontWeight: '400', fontSize: 18 }}>{word}</Text>
         </Text>
         {!listen.supported ? (
           <Text style={{ color: HUB.amber, fontSize: 13 }}>Trình duyệt này không có bộ nhận giọng. Hãy mở bằng Chrome trên máy tính hoặc Android.</Text>
@@ -124,7 +124,7 @@ export default function PhonemePage() {
             onPress={() => (listen.listening ? void stopAll() : void startAll())}
             style={{ flex: 1, height: 48, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: listen.listening ? HUB.red : HUB.blue }}
           >
-            <Text style={{ color: '#fff', fontWeight: '800' }}>{listen.listening ? 'Dừng' : 'Nhấn để nói'}</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>{listen.listening ? 'Dừng' : 'Nhấn để nói'}</Text>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={() => { setResult(null); setDetailed(null); setTarget((t) => t + 1); listen.stop(); }} style={{ paddingHorizontal: 16, height: 48, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
             <Text style={{ color: HUB.ink, fontWeight: '700' }}>Từ khác</Text>
@@ -134,7 +134,7 @@ export default function PhonemePage() {
 
         {result ? (
           <View style={{ gap: 8 }}>
-            <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>Điểm {result.overall}/100 (theo chữ)</Text>
+            <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '400' }}>Điểm {result.overall}/100 (theo chữ)</Text>
             <WordLine words={result.words} />
             <Text style={{ color: HUB.muted, fontSize: 13 }}>Điểm theo chữ máy nghe được, dùng để luyện tập chứ không phải band chính thức.</Text>
           </View>
@@ -142,7 +142,7 @@ export default function PhonemePage() {
 
         {wavRef.current && result ? (
           <Pressable accessibilityRole="button" disabled={busy} onPress={() => void scoreDetailed()} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet, opacity: busy ? 0.6 : 1 }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>{busy ? 'Đang chấm…' : 'Chấm chi tiết từng âm'}</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>{busy ? 'Đang chấm…' : 'Chấm chi tiết từng âm'}</Text>
           </Pressable>
         ) : null}
 
@@ -175,7 +175,7 @@ function Assessed({ a }: { a: Assessment }) {
   const color = (score: number) => (score >= 85 ? HUB.green : score >= 60 ? HUB.amber : HUB.red);
   return (
     <View style={{ gap: 10 }}>
-      <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Chi tiết từ máy chủ</Text>
+      <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Chi tiết từ máy chủ</Text>
       <Text style={{ color: HUB.body, fontSize: 13 }}>
         {`Chính xác ${a.overall.accuracy ?? '—'} · lưu loát ${a.overall.fluency ?? '—'} · đầy đủ ${a.overall.completeness ?? '—'}`}
       </Text>

@@ -26,6 +26,7 @@ export type CommunityPerson = {
   id: string;
   displayName: string;
   avatarUrl: string | null;
+  username?: string | null;
   relation: 'none' | 'incoming' | 'outgoing' | 'friend' | 'blocked_by_me' | 'blocked_me';
 };
 
@@ -42,6 +43,7 @@ export type CommunityFriend = {
   id: string;
   displayName: string;
   avatarUrl: string | null;
+  username?: string | null;
 };
 
 export type CommunityInboxItem = CommunityFriend & {

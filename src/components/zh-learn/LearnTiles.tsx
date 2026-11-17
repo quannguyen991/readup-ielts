@@ -18,9 +18,9 @@ export function ZhLearnTiles({ accent }: { accent: string }) {
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
       {tiles.map((t) => (
         <Pressable key={t.href} accessibilityRole="link" onPress={() => router.push(t.href as never)} style={{ flexGrow: 1, flexBasis: 280, minHeight: 92, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14, borderRadius: 20, borderWidth: 1.5, borderColor: accent, backgroundColor: 'rgba(255,251,243,0.96)' }}>
-          <Text style={{ fontSize: 40, fontWeight: '800', color: accent }}>{t.zh}</Text>
+          <Text style={{ fontSize: 40, fontWeight: '400', color: accent }}>{t.zh}</Text>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={{ fontSize: 18, fontWeight: '800', color: '#4A1A24' }}>{t.title}</Text>
+            <Text style={{ fontSize: 18, fontWeight: '400', color: '#4A1A24' }}>{t.title}</Text>
             <Text style={{ fontSize: 13, color: '#6E4B4F' }}>{t.sub}</Text>
           </View>
           <Text style={{ fontSize: 22, color: accent }}>›</Text>

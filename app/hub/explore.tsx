@@ -160,7 +160,7 @@ export default function HubExplore() {
                 <Icon name="chevron-right" size={16} color={HUB_UI.muted} />
               </View>
               <HubBar ratio={st.done / Math.max(1, st.total)} color={HUB_UI.green} />
-              <Text style={{ color: HUB_UI.muted, fontSize: 12.5, fontWeight: '800' }}>{st.done}/{st.total} đã làm</Text>
+              <Text style={{ color: HUB_UI.muted, fontSize: 12.5, fontWeight: '400' }}>{st.done}/{st.total} đã làm</Text>
             </Pressable>
           ))}
         </View>
@@ -173,11 +173,11 @@ export default function HubExplore() {
             <Text style={{ color: HUB_UI.navy, fontSize: 18, fontWeight: '900', textAlign: 'center' }}>{surprise?.title}</Text>
             <Text style={{ color: HUB_UI.muted, fontSize: 14.5, lineHeight: 21 }}>{surprise?.desc}</Text>
             <View style={{ padding: 12, borderRadius: 14, backgroundColor: HUB_UI.wash }}>
-              <Text style={{ color: HUB_UI.navy, fontSize: 13.5, fontWeight: '800' }}>Đối phương AI: <Text style={{ fontWeight: '600' }}>{surprise?.role}</Text></Text>
+              <Text style={{ color: HUB_UI.navy, fontSize: 13.5, fontWeight: '400' }}>Đối phương AI: <Text style={{ fontWeight: '600' }}>{surprise?.role}</Text></Text>
             </View>
             <View style={{ flexDirection: 'row', gap: 10 }}>
               <Pressable accessibilityRole="button" onPress={pickSurprise} style={{ flex: 1, height: 46, borderRadius: 14, borderWidth: 1.5, borderColor: HUB_UI.line, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: HUB_UI.navy, fontWeight: '800' }}>Đổi tình huống</Text>
+                <Text style={{ color: HUB_UI.navy, fontWeight: '400' }}>Đổi tình huống</Text>
               </Pressable>
               <Pressable
                 accessibilityRole="button"
@@ -213,13 +213,13 @@ export default function HubExplore() {
               { label: 'Tình huống và mục tiêu', value: situation, set: setSituation, ph: 'Ví dụ: phỏng vấn xin việc, cần đàm phán mức lương…', multi: true },
             ].map((f) => (
               <View key={f.label} style={{ gap: 4 }}>
-                <Text style={{ color: HUB_UI.navy, fontSize: 13.5, fontWeight: '800' }}>{f.label}</Text>
+                <Text style={{ color: HUB_UI.navy, fontSize: 13.5, fontWeight: '400' }}>{f.label}</Text>
                 <TextInput value={f.value} onChangeText={f.set} placeholder={f.ph} placeholderTextColor="#A59CC4" multiline={f.multi} style={{ minHeight: f.multi ? 80 : 46, paddingHorizontal: 14, paddingVertical: 10, borderRadius: 14, borderWidth: 1.5, borderColor: HUB_UI.line, backgroundColor: HUB_UI.wash, color: HUB_UI.navy, fontSize: 15 }} />
               </View>
             ))}
             <View style={{ flexDirection: 'row', gap: 10 }}>
               <Pressable accessibilityRole="button" onPress={() => setCreatorOpen(false)} style={{ flex: 1, height: 46, borderRadius: 14, borderWidth: 1.5, borderColor: HUB_UI.line, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: HUB_UI.navy, fontWeight: '800' }}>Huỷ</Text>
+                <Text style={{ color: HUB_UI.navy, fontWeight: '400' }}>Huỷ</Text>
               </Pressable>
               <Pressable accessibilityRole="button" onPress={handleCreate} style={{ flex: 1, height: 46, borderRadius: 14, backgroundColor: HUB_UI.purple, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: '#FFFFFF', fontWeight: '900' }}>Bắt đầu nhập vai</Text>

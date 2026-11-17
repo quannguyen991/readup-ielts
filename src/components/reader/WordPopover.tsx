@@ -176,7 +176,7 @@ export function WordPopover({
               color: '#FFFFFF',
               fontFamily: readingFont.display,
               fontStyle: 'italic',
-              fontWeight: '800',
+              fontWeight: '400',
               fontSize: 24,
             }}
           >

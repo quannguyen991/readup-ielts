@@ -47,7 +47,7 @@ function highlightReading(text: string, terms: string[]) {
   const parts = text.split(pattern);
   const lookup = new Set(terms.map((term) => term.toLowerCase()));
   return parts.map((part, index) => lookup.has(part.toLowerCase())
-    ? <Text key={`${part}-${index}`} style={{ fontWeight: '800', color: color.primary, backgroundColor: '#FFF1F5' }}>{part}</Text>
+    ? <Text key={`${part}-${index}`} style={{ fontWeight: '400', color: color.primary, backgroundColor: '#FFF1F5' }}>{part}</Text>
     : part);
 }
 
@@ -152,14 +152,14 @@ export default function DestinationReviewScreen() {
 
       <ScrollView nativeID="destination-review-sheet" className="mt-4" contentContainerStyle={{ gap: 10, paddingBottom: 36 }}>
         <View style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
-          <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>Destination {COURSE_LABEL[course]} · Vocabulary review</Text>
+          <Text style={{ fontSize: 18, fontWeight: '400', color: color.ink }}>Destination {COURSE_LABEL[course]} · Vocabulary review</Text>
           <Text style={{ marginTop: 4, color: '#64748B' }}>{L('Tên: ____________________     Ngày: ______________', 'Name: ____________________     Date: ______________')}</Text>
         </View>
         {questions.map((question, index) => {
           const selected = answers[index];
           return (
             <View key={`${version}-${course}-${index}`} className="destination-question" style={{ padding: 15, borderRadius: 16, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
-              <Text style={{ fontWeight: '800', color: color.ink }}>{index + 1}. {L('Chọn nghĩa phù hợp nhất với', 'Choose the best meaning for')} “{question.word.word}”</Text>
+              <Text style={{ fontWeight: '400', color: color.ink }}>{index + 1}. {L('Chọn nghĩa phù hợp nhất với', 'Choose the best meaning for')} “{question.word.word}”</Text>
               <View style={{ marginTop: 8, gap: 6 }}>
                 {question.choices.map((choice, optionIndex) => {
                   const isSelected = selected === choice;
@@ -176,16 +176,16 @@ export default function DestinationReviewScreen() {
           );
         })}
         <View className="destination-answer-key" style={{ padding: 18, borderRadius: 16, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
-          <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>{L('Đáp án', 'Answer key')}</Text>
+          <Text style={{ fontSize: 18, fontWeight: '400', color: color.ink }}>{L('Đáp án', 'Answer key')}</Text>
           <Text style={{ marginTop: 8, lineHeight: 24, color: color.ink }}>
             {questions.map((q, index) => `${index + 1}. ${LETTERS[q.choices.indexOf(q.answer)]}`).join('    ')}
           </Text>
         </View>
         <View className="destination-no-print" style={{ padding: 18, gap: 14 }}>
-          <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>{L('Luyện từ trong bài đọc', 'Practise vocabulary in readings')}</Text>
+          <Text style={{ fontSize: 18, fontWeight: '400', color: color.ink }}>{L('Luyện từ trong bài đọc', 'Practise vocabulary in readings')}</Text>
           {readings.map((reading) => (
             <View key={reading.title} style={{ padding: 18, borderRadius: 18, backgroundColor: '#fff', borderWidth: 1, borderColor: '#F3F0FB' }}>
-              <Text style={{ fontSize: 16, fontWeight: '800', color: color.ink }}>{reading.title}</Text>
+              <Text style={{ fontSize: 16, fontWeight: '400', color: color.ink }}>{reading.title}</Text>
               <Text style={{ marginTop: 8, lineHeight: 24, color: color.ink }}>{highlightReading(reading.text, readingTerms)}</Text>
               <Text style={{ marginTop: 10, fontWeight: '700', color: color.primary }}>{L('Đọc hiểu', 'Reading check')}</Text>
               {reading.questions.map((q, i) => <Text key={q} style={{ marginTop: 5, lineHeight: 22, color: color.ink }}>{i + 1}. {q}</Text>)}

@@ -64,7 +64,7 @@ export function TalkPoster({ talk, rank, done }: { talk: Talk; rank?: number; do
         {rank ? <Text style={{ position: 'absolute', left: 10, bottom: -4, color: '#FFFFFF', fontSize: 64, fontWeight: '900', lineHeight: 70, textShadowColor: 'rgba(43,35,80,0.7)', textShadowRadius: 8 }}>{rank}</Text> : null}
         <View style={{ position: 'absolute', right: 8, bottom: 8, flexDirection: 'row', alignItems: 'center', gap: 5, paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: 'rgba(43,35,80,0.78)' }}>
           <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: DIFF_COLOR[talk.difficulty] }} />
-          <Text style={{ color: '#FFFFFF', fontSize: 12.5, fontWeight: '800' }}>{LEVEL_VI[talk.difficulty]}</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 12.5, fontWeight: '400' }}>{LEVEL_VI[talk.difficulty]}</Text>
         </View>
         {done ? (
           <View style={{ position: 'absolute', left: 8, top: 8, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 999, backgroundColor: '#16A34A' }}>

@@ -7,7 +7,7 @@ import { HUB } from '@/components/hub/theme';
 
 /**
  * Khu luyện nói (Hub). Không còn thanh tab riêng ở dưới: mọi lối vào (Học, Gia sư,
- * Khám phá, Tiến độ) nằm ngay trên trang Hôm nay. Trên web, cả khu dùng Nunito — cùng
+ * Khám phá, Tiến độ) nằm ngay trên trang Hôm nay. Trên web, cả khu dùng Inter — cùng
  * họ chữ tròn với trang cute-home — bằng cách gắn một class lên <html> khi vào Hub.
  */
 const FONT_HREF =

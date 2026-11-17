@@ -81,7 +81,6 @@ export default function WritingSamplesScreen() {
   const readCount = WRITING_SAMPLES.filter((sample) => Boolean(read[sample.id])).length;
   const task1Count = WRITING_SAMPLES.filter((sample) => sample.task === 'ielts_task1').length;
   const task2Count = WRITING_SAMPLES.filter((sample) => sample.task === 'ielts_task2').length;
-  const tidCount = WRITING_SAMPLES.filter((sample) => sample.sourceName === 'The IELTS Dictionary').length;
   const formatCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const sample of summarySamples) {
@@ -117,7 +116,6 @@ export default function WritingSamplesScreen() {
         <View className="flex-row flex-wrap gap-2 border-t border-[#DDE7F1] px-5 py-4 md:px-8">
           <Stat value={String(WRITING_SAMPLES.length)} label={L('bài mẫu', 'model answers')} />
           <Stat value={String(availableTopicCount())} label={L('chủ đề', 'topics')} />
-          {tidCount ? <Stat value={String(tidCount)} label={L('mẫu TID đã lưu', 'TID source samples')} /> : null}
           <Stat value={`${readCount}/${WRITING_SAMPLES.length}`} label={L('bài đã đọc', 'samples read')} />
           <Stat value={`${translated}/${translationTotal}`} label={L('đoạn đã dịch', 'paragraphs translated')} />
           {started > 0 ? <Stat value={String(started)} label={L('bản nháp đang viết', 'translation drafts')} /> : null}
@@ -449,7 +447,7 @@ function SampleCard({ sample, completed, read, width }: { sample: WritingSample;
 function SourceBadge() {
   return (
     <View className="rounded-md border border-[#D4DFD4] bg-[#F2F7EF] px-2 py-1">
-      <Text className="font-nun-heavy" style={{ color: '#587347', fontSize: 9, letterSpacing: 0.45 }}>TID SOURCE</Text>
+      <Text className="font-nun-heavy" style={{ color: '#587347', fontSize: 9, letterSpacing: 0.45 }}>BILINGUAL SAMPLE</Text>
     </View>
   );
 }

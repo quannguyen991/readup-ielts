@@ -83,7 +83,7 @@ export default function TopicsIndex() {
 
         {topics.length === 0 ? (
           <View style={{ padding: 20, alignItems: 'center', gap: 6 }}>
-            <Text style={{ color: HUB_UI.navy, fontSize: 15, fontWeight: '800' }}>Không có chủ đề nào khớp</Text>
+            <Text style={{ color: HUB_UI.navy, fontSize: 15, fontWeight: '400' }}>Không có chủ đề nào khớp</Text>
             <Text style={{ color: HUB_UI.muted, fontSize: 13 }}>Thử từ khoá khác, ví dụ “công nghệ” hay “food”.</Text>
           </View>
         ) : null}

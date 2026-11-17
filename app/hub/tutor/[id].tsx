@@ -373,7 +373,7 @@ export default function TutorChat() {
                       backgroundColor: showTranslation ? '#6A4BD9' : '#F1F5F9',
                     }}
                   >
-                    <Text style={{ color: showTranslation ? '#FFFFFF' : '#475569', fontSize: 13, fontWeight: '800' }}>
+                    <Text style={{ color: showTranslation ? '#FFFFFF' : '#475569', fontSize: 13, fontWeight: '400' }}>
                       文A
                     </Text>
                   </Pressable>
@@ -391,7 +391,7 @@ export default function TutorChat() {
                       backgroundColor: '#F1F5F9',
                     }}
                   >
-                    <Text style={{ color: '#475569', fontSize: 14, fontWeight: '800' }}>⋮</Text>
+                    <Text style={{ color: '#475569', fontSize: 14, fontWeight: '400' }}>⋮</Text>
                   </Pressable>
                 </View>
               </View>
@@ -560,7 +560,7 @@ export default function TutorChat() {
       <Modal visible={optionsMenuOpen} animationType="fade" transparent onRequestClose={() => setOptionsMenuOpen(false)}>
         <Pressable style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'center', alignItems: 'center' }} onPress={() => setOptionsMenuOpen(false)}>
           <View style={[GLASS_CARD, { width: 280, padding: 16, gap: 10 }]}>
-            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Tuỳ chọn hội thoại</Text>
+            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Tuỳ chọn hội thoại</Text>
 
             <Pressable
               onPress={() => {
@@ -604,7 +604,7 @@ export default function TutorChat() {
         <View style={{ flex: 1, backgroundColor: 'rgba(42, 24, 8, 0.55)', justifyContent: 'center', padding: 18 }}>
           <View style={[GLASS_CARD, { padding: 20, gap: 14 }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Bảng công thức & Từ vựng bài học</Text>
+              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Bảng công thức & Từ vựng bài học</Text>
               <Pressable onPress={() => setCheatsheetOpen(false)} style={{ padding: 4 }}>
                 <Icon name="close" size={20} color={HUB.muted} />
               </Pressable>
@@ -636,7 +636,7 @@ export default function TutorChat() {
                 backgroundColor: HUB.blue,
               }}
             >
-              <Text style={{ color: '#fff', fontSize: 14, fontWeight: '800' }}>Quay lại hội thoại</Text>
+              <Text style={{ color: '#fff', fontSize: 14, fontWeight: '400' }}>Quay lại hội thoại</Text>
             </Pressable>
           </View>
         </View>
@@ -647,7 +647,7 @@ export default function TutorChat() {
         <View style={{ flex: 1, backgroundColor: 'rgba(42, 24, 8, 0.55)', justifyContent: 'center', padding: 18 }}>
           <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Nội dung Slide Thuyết trình</Text>
+              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Nội dung Slide Thuyết trình</Text>
               <Pressable onPress={() => setDeckModalOpen(false)}>
                 <Icon name="close" size={20} color={HUB.muted} />
               </Pressable>
@@ -678,7 +678,7 @@ export default function TutorChat() {
                 backgroundColor: HUB.violet,
               }}
             >
-              <Text style={{ color: '#fff', fontWeight: '800' }}>Lưu và nạp vào buổi diễn tập</Text>
+              <Text style={{ color: '#fff', fontWeight: '400' }}>Lưu và nạp vào buổi diễn tập</Text>
             </Pressable>
           </View>
         </View>
@@ -689,7 +689,7 @@ export default function TutorChat() {
         <View style={{ flex: 1, backgroundColor: 'rgba(42, 24, 8, 0.55)', justifyContent: 'center', padding: 18 }}>
           <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Hồ sơ Cá nhân & Học thuật</Text>
+              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Hồ sơ Cá nhân & Học thuật</Text>
               <Pressable onPress={() => setCvModalOpen(false)}>
                 <Icon name="close" size={20} color={HUB.muted} />
               </Pressable>
@@ -720,7 +720,7 @@ export default function TutorChat() {
                 backgroundColor: HUB.blue,
               }}
             >
-              <Text style={{ color: '#fff', fontWeight: '800' }}>Cập nhật hồ sơ phỏng vấn</Text>
+              <Text style={{ color: '#fff', fontWeight: '400' }}>Cập nhật hồ sơ phỏng vấn</Text>
             </Pressable>
           </View>
         </View>

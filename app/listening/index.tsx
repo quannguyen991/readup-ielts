@@ -7,7 +7,8 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { GROUP_LABEL, ListeningCover } from '@/components/listening/cover';
 import { CatSticker } from '@/components/mascot/CatSticker';
-import { HUB_UI, HubHero, HubPanel, hubLift } from '@/components/hub/HubUi';
+import { HUB_UI, HubHero, HubPanel, hubLift, nun } from '@/components/hub/HubUi';
+import { usePageFont } from '@/components/hub/usePageFont';
 import { Icon, Pagination } from '@/components/ui';
 import { LISTENING_TESTS } from '@/data/listening-tests';
 import { compareSourceTests } from '@/services/ielts/source-catalog';
@@ -71,14 +72,15 @@ function Pill({ label, on, onPress, count }: { label: string; on: boolean; onPre
       }}
       style={{ minHeight: 40, flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, borderWidth: 1.5, borderColor: on ? HUB_UI.purple : HUB_UI.line, backgroundColor: on ? HUB_UI.purple : '#FFFFFF' }}
     >
-      <Text style={{ fontSize: 14, fontWeight: '800', color: on ? '#FFFFFF' : HUB_UI.navy }}>{label}</Text>
-      {count !== undefined ? <Text style={{ fontSize: 12.5, fontWeight: '800', color: on ? '#E3DAFF' : HUB_UI.muted }}>{count}</Text> : null}
+      <Text style={{ fontSize: 14, ...nun('800'), color: on ? '#FFFFFF' : HUB_UI.navy }}>{label}</Text>
+      {count !== undefined ? <Text style={{ fontSize: 12.5, ...nun('800'), color: on ? '#E3DAFF' : HUB_UI.muted }}>{count}</Text> : null}
     </Pressable>
   );
 }
 
 export default function ListeningLibrary() {
   const { L } = useL();
+  usePageFont('listening-font');
   const attempts = useListeningStore((s) => s.attempts);
 
   const [selection, setSelection] = useState<{ option: Mode; child: string | null }>({ option: 'single', child: null });
@@ -177,6 +179,7 @@ export default function ListeningLibrary() {
 
   return (
     <Screen>
+     <View nativeID="listening-font" style={{ gap: 18 }}>
       <HubHero
         eyebrow="IELTS · LISTENING"
         title={L('Nghe một lần, làm như thi thật', 'Listen once, like the real test')}
@@ -204,8 +207,8 @@ export default function ListeningLibrary() {
                 <View style={{ width: 46, height: 46, borderRadius: 14, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 24 }}>{m.icon}</Text>
                 </View>
-                <Text style={{ color: on ? HUB_UI.purple : HUB_UI.navy, fontSize: 15.5, fontWeight: '900' }}>{m.title}</Text>
-                <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '700' }}>{m.count}</Text>
+                <Text style={{ color: on ? HUB_UI.purple : HUB_UI.navy, fontSize: 15.5, ...nun('900') }}>{m.title}</Text>
+                <Text style={{ color: HUB_UI.muted, fontSize: 13, ...nun('700') }}>{m.count}</Text>
               </Pressable>
             );
           })}
@@ -230,13 +233,13 @@ export default function ListeningLibrary() {
 
       {showFilters ? (
         <HubPanel title={L('Bộ lọc', 'Filters')} icon="cursor" badge={filtersOn ? L('ĐANG LỌC', 'ON') : undefined}>
-          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>{L('NGUỒN TÀI LIỆU', 'SOURCES')}</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13, ...nun('800') }}>{L('NGUỒN TÀI LIỆU', 'SOURCES')}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {sourceOptions.map((o) => (
               <Pill key={o.key} label={o.label} count={o.count} on={sources.includes(o.key)} onPress={() => toggle(sources, setSources, o.key)} />
             ))}
           </View>
-          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>{L('TRÌNH ĐỘ', 'LEVEL')}</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13, ...nun('800') }}>{L('TRÌNH ĐỘ', 'LEVEL')}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {([['easy', L('Dễ', 'Easy')], ['medium', L('Trung bình', 'Medium')], ['hard', L('Khó', 'Hard')]] as [ListeningLevel, string][]).map(([k, label]) => (
               <Pill key={k} label={label} on={levels.includes(k)} onPress={() => toggle(levels, setLevels, k)} />
@@ -244,7 +247,7 @@ export default function ListeningLibrary() {
           </View>
           {categories.length ? (
             <>
-              <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>{L('CHỦ ĐỀ', 'TOPIC')}</Text>
+              <Text style={{ color: HUB_UI.muted, fontSize: 13, ...nun('800') }}>{L('CHỦ ĐỀ', 'TOPIC')}</Text>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 4 }}>
                 <Pill label={L('Tất cả chủ đề', 'All topics')} on={!category} onPress={() => setCategory(null)} />
                 {categories.map((name) => (
@@ -255,7 +258,7 @@ export default function ListeningLibrary() {
           ) : null}
           {filtersOn ? (
             <Pressable onPress={clear} accessibilityRole="button" style={{ alignSelf: 'flex-start' }}>
-              <Text style={{ color: HUB_UI.purple, fontSize: 14, fontWeight: '900' }}>{L('Xoá bộ lọc', 'Clear filters')}</Text>
+              <Text style={{ color: HUB_UI.purple, fontSize: 14, ...nun('900') }}>{L('Xoá bộ lọc', 'Clear filters')}</Text>
             </Pressable>
           ) : null}
         </HubPanel>
@@ -302,11 +305,12 @@ export default function ListeningLibrary() {
       >
         <Text style={{ fontSize: 26 }}>🕘</Text>
         <View style={{ flex: 1 }}>
-          <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900' }}>{L('Xem lịch sử làm bài', 'View history')}</Text>
-          <Text style={{ color: HUB_UI.muted, fontSize: 13.5, fontWeight: '600' }}>{L(`${attempts.length} lượt đã làm`, `${attempts.length} attempts`)}</Text>
+          <Text style={{ color: HUB_UI.navy, fontSize: 16, ...nun('900') }}>{L('Xem lịch sử làm bài', 'View history')}</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13.5, ...nun('600') }}>{L(`${attempts.length} lượt đã làm`, `${attempts.length} attempts`)}</Text>
         </View>
         <Icon name="chevron-right" size={18} color={HUB_UI.muted} />
       </Pressable>
+     </View>
     </Screen>
   );
 }

@@ -40,11 +40,11 @@ const RAINBOW_OUTLINE = 6;
 
 /**
  * Font của bản mẫu. Shrikhand (OFL, assets/fonts) chỉ có chữ Latin và số, nên
- * chỉ dùng cho chữ lớn tiếng Anh và số band. Chữ tiếng Việt dùng Nunito.
+ * chỉ dùng cho chữ lớn tiếng Anh và số band. Chữ tiếng Việt dùng Inter.
  */
 export const RFONT = {
   display: 'Shrikhand_400Regular',
-  heavy: 'Nunito_900Black',
+  heavy: 'Nunito_700Bold',
   bold: 'Nunito_700Bold',
   semi: 'Nunito_600SemiBold',
 };

@@ -1,0 +1,312 @@
+# Điểm ngữ pháp tiếng Nhật N5–N4. Định dạng mỗi điểm:
+#   @ tên mẫu | nghĩa ngắn
+#   form: cách ghép
+#   tip: lưu ý một câu
+#   > câu tiếng Nhật | nghĩa Việt | đoạn cần tô (là chuỗi con của câu)
+## JLPT N5
+@ ～は～です | Là / thì
+form: N1 は N2 です
+tip: は đọc là "wa". Thân mật bỏ です.
+> 私は学生です。|Tôi là học sinh.|学生です
+> これは日本のお菓子です。|Đây là bánh kẹo của Nhật.|お菓子です
+
+@ ～ではありません | Không phải là
+form: N ではありません / N じゃありません
+tip: じゃありません dùng nhiều trong hội thoại.
+> 私は先生ではありません。|Tôi không phải là giáo viên.|ではありません
+> あの人は田中さんじゃありません。|Người kia không phải anh Tanaka.|じゃありません
+
+@ ～か | Câu hỏi
+form: câu + か
+tip: Không cần dấu "?" khi viết.
+> あなたは学生ですか。|Bạn là học sinh à?|ですか
+> これはいくらですか。|Cái này bao nhiêu tiền?|いくらですか
+
+@ ～も | Cũng
+form: N も
+tip: も thay は hoặc が, không đứng cùng.
+> 私も学生です。|Tôi cũng là học sinh.|私も
+> 彼女は紅茶も飲みます。|Cô ấy cũng uống cả trà đen.|紅茶も
+
+@ ～の | Của / thuộc về
+form: N1 の N2
+tip: Nối hai danh từ: N1 bổ nghĩa cho N2.
+> これは私の本です。|Đây là sách của tôi.|私の本
+> 日本語の先生は優しいです。|Giáo viên tiếng Nhật rất hiền.|日本語の先生
+
+@ ～を | Tân ngữ
+form: N を V
+tip: を đọc là "o".
+> 毎朝コーヒーを飲みます。|Mỗi sáng tôi uống cà phê.|コーヒーを
+> 友達と映画を見ます。|Tôi xem phim cùng bạn.|映画を
+
+@ ～に | Thời điểm / đích đến
+form: thời gian に V / nơi に V
+tip: Với "hôm nay, ngày mai" không dùng に.
+> 七時に起きます。|Tôi dậy lúc bảy giờ.|七時に
+> 明日、京都に行きます。|Ngày mai tôi đi Kyoto.|京都に
+
+@ ～で | Nơi diễn ra / phương tiện
+form: N で V
+tip: で chỉ nơi làm việc gì, hoặc cách thức.
+> 図書館で勉強します。|Tôi học ở thư viện.|図書館で
+> バスで学校へ行きます。|Tôi đi học bằng xe buýt.|バスで
+
+@ ～があります／います | Có (đồ vật / người, động vật)
+form: N が あります／います
+tip: あります cho vật; います cho người và động vật.
+> 机の上に本があります。|Trên bàn có quyển sách.|本があります
+> 庭に犬がいます。|Trong vườn có con chó.|犬がいます
+
+@ ～ます／～ません | Thể lịch sự hiện tại
+form: Vます / Vません
+tip: Dùng cho thói quen và tương lai gần.
+> 私は毎日野菜を食べます。|Mỗi ngày tôi ăn rau.|食べます
+> 夜はテレビを見ません。|Buổi tối tôi không xem tivi.|見ません
+
+@ ～ました／～ませんでした | Thể lịch sự quá khứ
+form: Vました / Vませんでした
+tip: Dạng phủ định quá khứ là ませんでした.
+> 昨日、友達に会いました。|Hôm qua tôi đã gặp bạn.|会いました
+> 朝ごはんを食べませんでした。|Tôi đã không ăn sáng.|食べませんでした
+
+@ ～たいです | Muốn làm
+form: Vます bỏ ます + たいです
+tip: Nói về mong muốn của chính mình.
+> 日本へ行きたいです。|Tôi muốn đi Nhật.|行きたいです
+> 冷たい水が飲みたいです。|Tôi muốn uống nước lạnh.|飲みたいです
+
+@ ～てください | Xin hãy làm
+form: Vて + ください
+tip: Lời nhờ lịch sự, nhẹ nhàng.
+> ここに名前を書いてください。|Xin hãy viết tên vào đây.|書いてください
+> ゆっくり話してください。|Xin hãy nói chậm thôi.|話してください
+
+@ ～ています | Đang làm / trạng thái
+form: Vて + います
+tip: Vừa là đang diễn ra, vừa là trạng thái kéo dài.
+> 今、本を読んでいます。|Bây giờ tôi đang đọc sách.|読んでいます
+> 兄は東京に住んでいます。|Anh tôi đang sống ở Tokyo.|住んでいます
+
+@ ～から～まで | Từ … đến …
+form: N から N まで
+tip: Dùng cho thời gian lẫn địa điểm.
+> 九時から五時まで働きます。|Tôi làm việc từ chín giờ đến năm giờ.|九時から五時まで
+> 家から駅まで十分です。|Từ nhà đến ga mất mười phút.|家から駅まで
+
+@ ～い形容詞／～な形容詞 | Tính từ đuôi い / な
+form: い: 高いです / な: 静かです（＋な＋N）
+tip: Phủ định い: ～くないです; な: ～ではありません.
+> この部屋は広いです。|Căn phòng này rộng.|広いです
+> 駅の近くは静かな町です。|Gần ga là một thị trấn yên tĩnh.|静かな町
+
+@ ～より～のほうが | … hơn …
+form: A より B のほうが adj
+tip: B là thứ được chọn / trội hơn.
+> 電車よりバスのほうが安いです。|Xe buýt rẻ hơn tàu điện.|よりバスのほうが
+> 夏より冬のほうが好きです。|Tôi thích mùa đông hơn mùa hè.|より冬のほうが
+
+@ ～が好きです | Thích …
+form: N が 好きです／嫌いです
+tip: Trợ từ là が, không phải を.
+> 私は音楽が好きです。|Tôi thích âm nhạc.|が好きです
+> 弟は野菜が嫌いです。|Em trai tôi ghét rau.|が嫌いです
+
+@ ～ませんか／～ましょう | Rủ rê
+form: Vませんか / Vましょう
+tip: ませんか là lời mời; ましょう là đề nghị cùng làm.
+> 一緒に食事に行きませんか。|Bạn đi ăn cùng tôi nhé?|行きませんか
+> 少し休みましょう。|Chúng ta nghỉ một chút nhé.|休みましょう
+
+@ ～てもいいです | Được phép làm
+form: Vて + もいいです
+tip: Hỏi xin phép: ～てもいいですか.
+> ここで写真を撮ってもいいですか。|Tôi chụp ảnh ở đây được không?|撮ってもいいですか
+> 窓を開けてもいいです。|Bạn mở cửa sổ cũng được.|開けてもいいです
+
+@ ～てはいけません | Không được làm
+form: Vて + はいけません
+tip: Lệnh cấm, thường là biển báo hoặc người trên nói.
+> ここでたばこを吸ってはいけません。|Không được hút thuốc ở đây.|吸ってはいけません
+> 教室で食べてはいけません。|Không được ăn trong lớp.|食べてはいけません
+
+@ ～ないでください | Xin đừng làm
+form: Vない + でください
+tip: Nhờ ai đó không làm gì.
+> ここに荷物を置かないでください。|Xin đừng để hành lý ở đây.|置かないでください
+> 大きい声で話さないでください。|Xin đừng nói to.|話さないでください
+
+@ ～てから | Sau khi làm xong
+form: Vて + から V2
+tip: Việc 1 xong rồi mới làm việc 2.
+> 手を洗ってから食べます。|Tôi rửa tay rồi mới ăn.|洗ってから
+> 宿題をしてから遊びに行きます。|Làm bài tập xong tôi mới đi chơi.|してから
+
+@ ～がほしいです | Muốn có …
+form: N が ほしいです
+tip: Muốn có đồ vật; muốn làm thì dùng ～たい.
+> 新しいパソコンがほしいです。|Tôi muốn có một cái máy tính mới.|がほしいです
+> 私は時間がほしいです。|Tôi muốn có thêm thời gian.|がほしいです
+
+@ ～から（理由） | Vì … nên …
+form: câu 1 から、câu 2
+tip: Nêu lý do ở vế trước.
+> 雨ですから、家にいます。|Vì trời mưa nên tôi ở nhà.|ですから
+> 疲れましたから、早く寝ます。|Vì mệt nên tôi đi ngủ sớm.|疲れましたから
+
+## JLPT N4
+@ ～ことがある | Có lúc / thỉnh thoảng
+form: Vる／Vない + ことがある
+tip: Nói việc thỉnh thoảng xảy ra.
+> 朝ごはんを食べないことがあります。|Có lúc tôi không ăn sáng.|食べないことがあります
+> 夜、眠れないことがあります。|Có những đêm tôi không ngủ được.|眠れないことがあります
+
+@ ～たことがある | Đã từng
+form: Vた + ことがある
+tip: Nói về kinh nghiệm trong quá khứ.
+> 富士山に登ったことがあります。|Tôi đã từng leo núi Phú Sĩ.|登ったことがあります
+> 日本の料理を作ったことがありません。|Tôi chưa từng nấu món Nhật.|作ったことがありません
+
+@ ～ようにする | Cố gắng làm
+form: Vる／Vない + ようにする
+tip: Nỗ lực làm thành thói quen.
+> 毎日野菜を食べるようにしています。|Tôi cố gắng ăn rau mỗi ngày.|食べるようにしています
+> 夜は遅くまで起きないようにします。|Buổi tối tôi cố không thức khuya.|起きないようにします
+
+@ ～ことにする | Quyết định làm
+form: Vる／Vない + ことにする
+tip: Người nói tự quyết định.
+> 来月から運動することにしました。|Tôi đã quyết định tập thể dục từ tháng sau.|することにしました
+> 今日は出かけないことにします。|Hôm nay tôi quyết định không ra ngoài.|出かけないことにします
+
+@ ～ことになる | Được quyết định là
+form: Vる／Vない + ことになる
+tip: Kết quả do hoàn cảnh hoặc người khác quyết định.
+> 来年、東京で働くことになりました。|Năm sau tôi sẽ làm việc ở Tokyo.|働くことになりました
+> 来月、大阪へ出張に行くことになりました。|Tháng sau tôi sẽ đi công tác Osaka (được quyết định như vậy).|行くことになりました
+
+@ ～そうだ（様子） | Trông có vẻ
+form: Vます bỏ ます／adj bỏ い・な + そうだ
+tip: Phán đoán từ vẻ bên ngoài.
+> このケーキはおいしそうです。|Cái bánh này trông có vẻ ngon.|おいしそうです
+> 空が暗くて、雨が降りそうです。|Trời tối, có vẻ sắp mưa.|降りそうです
+
+@ ～そうだ（伝聞） | Nghe nói
+form: thể thường + そうだ
+tip: Truyền đạt lại thông tin nghe được.
+> 天気予報によると、明日は雪だそうです。|Theo dự báo thời tiết, nghe nói mai có tuyết.|雪だそうです
+> 田中さんは来月結婚するそうです。|Nghe nói anh Tanaka tháng sau kết hôn.|結婚するそうです
+
+@ ～と思う | Tôi nghĩ rằng
+form: thể thường + と思う
+tip: Nêu ý kiến hoặc suy đoán.
+> 彼は来ると思います。|Tôi nghĩ anh ấy sẽ đến.|来ると思います
+> この問題は難しいと思います。|Tôi nghĩ bài này khó.|難しいと思います
+
+@ ～と言う | Nói rằng
+form: thể thường + と言う
+tip: Trích dẫn lời nói gián tiếp.
+> 先生は明日試験があると言いました。|Cô giáo nói mai có kiểm tra.|あると言いました
+> 母は元気だと言っていました。|Mẹ tôi bảo là mẹ khỏe.|元気だと言っていました
+
+@ ～ば | Nếu … thì
+form: Vば／adjければ
+tip: Điều kiện đủ; vế sau là kết quả tự nhiên.
+> 急げば、間に合います。|Nếu vội thì sẽ kịp.|急げば
+> 安ければ、買います。|Nếu rẻ thì tôi mua.|安ければ
+
+@ ～たら | Nếu / khi … xong
+form: Vた＋ら
+tip: Dùng được cho điều kiện lẫn việc sau khi xảy ra.
+> 雨が降ったら、行きません。|Nếu trời mưa thì tôi không đi.|降ったら
+> 家に着いたら、電話します。|Khi về đến nhà tôi sẽ gọi.|着いたら
+
+@ ～と（条件） | Hễ … thì
+form: Vる＋と
+tip: Kết quả luôn xảy ra, tự nhiên.
+> 春になると、花が咲きます。|Hễ sang xuân là hoa nở.|なると
+> ボタンを押すと、ドアが開きます。|Hễ bấm nút là cửa mở.|押すと
+
+@ ～なら | Nếu là chuyện đó thì
+form: thể thường + なら
+tip: Nối tiếp chủ đề người kia vừa nêu.
+> 日本へ行くなら、京都がおすすめです。|Nếu đi Nhật thì tôi khuyên Kyoto.|行くなら
+> 安いのがほしいなら、あの店がいいですよ。|Nếu muốn đồ rẻ thì cửa hàng kia tốt.|ほしいなら
+
+@ ～ながら | Vừa … vừa …
+form: Vます bỏ ます + ながら
+tip: Hai hành động của cùng một người.
+> 音楽を聞きながら、勉強します。|Tôi vừa nghe nhạc vừa học.|聞きながら
+> 歩きながら、スマホを見ないでください。|Đừng vừa đi vừa xem điện thoại.|歩きながら
+
+@ ～すぎる | Quá …
+form: Vます bỏ ます／adj bỏ い・な + すぎる
+tip: Thường hàm ý không tốt.
+> 昨日は食べすぎました。|Hôm qua tôi đã ăn quá nhiều.|食べすぎました
+> この部屋は暑すぎます。|Căn phòng này nóng quá.|暑すぎます
+
+@ ～やすい／～にくい | Dễ / khó làm
+form: Vます bỏ ます + やすい／にくい
+tip: Nói tính chất của đồ vật hay việc làm.
+> このペンは書きやすいです。|Cây bút này dễ viết.|書きやすいです
+> この漢字は覚えにくいです。|Chữ Hán này khó nhớ.|覚えにくいです
+
+@ ～はずだ | Chắc chắn là
+form: thể thường + はずだ
+tip: Suy luận có căn cứ.
+> 彼はもう家に着いたはずです。|Chắc chắn anh ấy đã về đến nhà rồi.|着いたはずです
+> 田中さんは日本語が話せるはずです。|Anh Tanaka chắc hẳn nói được tiếng Nhật.|話せるはずです
+
+@ ～かもしれない | Có thể là
+form: thể thường + かもしれない
+tip: Khả năng khoảng 50%, không chắc.
+> 明日は雨が降るかもしれません。|Mai có thể sẽ mưa.|降るかもしれません
+> 彼は病気かもしれません。|Có thể anh ấy bị ốm.|病気かもしれません
+
+@ ～でしょう | Chắc là
+form: thể thường + でしょう
+tip: Suy đoán; lên giọng khi muốn xác nhận.
+> 明日は晴れるでしょう。|Ngày mai chắc trời sẽ nắng.|晴れるでしょう
+> 彼はもう知っているでしょう。|Chắc anh ấy đã biết rồi.|知っているでしょう
+
+@ ～られる（受身） | Bị / được (bị động)
+form: Vられる (nhóm 1: Vあ段＋れる)
+tip: Chủ ngữ là người chịu tác động.
+> 先生にほめられました。|Tôi được giáo viên khen.|ほめられました
+> 電車で足を踏まれました。|Tôi bị giẫm lên chân trên tàu.|踏まれました
+
+@ ～させる（使役） | Bắt / cho phép làm
+form: Vさせる (nhóm 1: Vあ段＋せる)
+tip: Người trên bắt hoặc cho người dưới làm.
+> 母は子供に野菜を食べさせます。|Mẹ bắt con ăn rau.|食べさせます
+> 先生は学生に作文を書かせました。|Giáo viên bắt học sinh viết bài luận.|書かせました
+
+@ ～てあげる／もらう／くれる | Cho / nhận / được cho
+form: Vて + あげる／もらう／くれる
+tip: Hướng cho nhận: mình cho người khác / nhận / người khác cho mình.
+> 友達に日本語を教えてあげました。|Tôi đã dạy tiếng Nhật cho bạn.|教えてあげました
+> 先生が本を貸してくれました。|Thầy cho tôi mượn sách.|貸してくれました
+
+@ ～ために（目的） | Để …
+form: Vる／Nの + ために
+tip: Mục đích; chủ ngữ hai vế giống nhau.
+> 日本へ留学するために、お金をためています。|Để du học Nhật, tôi đang tiết kiệm tiền.|留学するために
+> 健康のために、毎日歩きます。|Vì sức khỏe, tôi đi bộ mỗi ngày.|健康のために
+
+@ ～ように（目的） | Để có thể …
+form: Vる／Vない + ように
+tip: Mục tiêu dạng khả năng hoặc trạng thái.
+> 日本語が話せるように、毎日練習します。|Để nói được tiếng Nhật, tôi luyện tập mỗi ngày.|話せるように
+> 忘れないように、メモします。|Tôi ghi chú để không quên.|忘れないように
+
+@ ～なければならない | Phải làm
+form: Vない bỏ い + ければならない
+tip: Bổn phận; thân mật là ～なきゃ.
+> 明日は早く起きなければなりません。|Ngày mai tôi phải dậy sớm.|起きなければなりません
+> 薬を飲まなければなりません。|Tôi phải uống thuốc.|飲まなければなりません
+
+@ ～られる（可能） | Có thể làm
+form: Vられる (nhóm 1: Vえ段＋る)
+tip: Khả năng; に tân ngữ đổi を thành が.
+> 私は泳げます。|Tôi biết bơi.|泳げます
+> 日本語の新聞が読めます。|Tôi đọc được báo tiếng Nhật.|読めます

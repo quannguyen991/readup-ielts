@@ -39,6 +39,11 @@ The generated `src/data/east-asian-open-vocab.json` contains five separately att
 - DouDou/wordfreq frequency data and CC-CEDICT are CC BY-SA 4.0. The snapshot draws on multiple corpora, including Wikipedia, subtitles, news, web text, and social media; it is a frequency reference, not a textbook syllabus.
 - Band 9 separates ranks into 1,000-word bands, then adds its own thematic groups and study units of at most 50 words.
 
+## Japanese kanji and grammar (`src/data/ja-learn/`)
+
+- `kanji.json`: 2,383 kanji N5–N1 from OpenJLPT `data/json/kanji/n1–n5.json` (CC BY-SA 4.0, derived from KANJIDIC2). Sino-Vietnamese readings come from the `vietnam` readings in KANJIDIC2 (EDRDG, CC BY-SA 3.0). Build: `scripts/zh-learn/build_kanji.py`. JLPT levels are community approximations.
+- `grammar.json`: 127 grammar points N5–N1 written by Band 9 (patterns and sentences are original, not copied from any textbook). Sources: `scripts/zh-learn/grammar-ja-*.txt`, build with `scripts/zh-learn/build_grammar_ja.py`.
+
 ## Attribution
 
 When distributing `east-asian-open-vocab.json` or a derivative, credit the sources and retain this CC BY-SA 4.0 notice:

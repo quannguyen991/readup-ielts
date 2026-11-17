@@ -21,7 +21,7 @@ export default function ZhGrammarLessonScreen() {
   if (!lesson) {
     return (
       <Screen>
-        <Text style={{ fontSize: 22, fontWeight: '800', color: ZH.ink }}>Không tìm thấy bài này.</Text>
+        <Text style={{ fontSize: 22, fontWeight: '400', color: ZH.ink }}>Không tìm thấy bài này.</Text>
         <Button className="mt-4 self-start" label="Về danh sách ngữ pháp" onPress={() => router.replace('/ngu-phap-trung' as never)} />
       </Screen>
     );
@@ -41,10 +41,10 @@ export default function ZhGrammarLessonScreen() {
       <View style={{ marginTop: 14, flexDirection: wide ? 'row' : 'column', gap: 16, alignItems: 'flex-start' }}>
         <View style={{ ...(paper as object), width: wide ? 300 : '100%', padding: 18 } as object}>
           <View style={{ alignSelf: 'flex-start', paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: ZH.goldSoftBg }}>
-            <Text style={{ fontWeight: '800', color: ZH.seal, fontSize: 12 }}>HSK {lesson.level} · {lesson.minutes} phút</Text>
+            <Text style={{ fontWeight: '400', color: ZH.seal, fontSize: 12 }}>HSK {lesson.level} · {lesson.minutes} phút</Text>
           </View>
-          <Text style={{ marginTop: 10, fontSize: 30, lineHeight: 36, fontWeight: '800', color: ZH.seal }}>{lesson.titleZh}</Text>
-          <Text style={{ fontSize: 20, lineHeight: 26, fontWeight: '800', color: ZH.ink }}>{lesson.title}</Text>
+          <Text style={{ marginTop: 10, fontSize: 30, lineHeight: 36, fontWeight: '400', color: ZH.seal }}>{lesson.titleZh}</Text>
+          <Text style={{ fontSize: 20, lineHeight: 26, fontWeight: '400', color: ZH.ink }}>{lesson.title}</Text>
           <Text style={{ marginTop: 6, fontSize: 14, lineHeight: 20, color: ZH.ink2 }}>{lesson.summary}</Text>
           <Text style={{ marginTop: 12, fontSize: 13, color: ZH.ink2 }}>Đã đi qua {pct}% bài</Text>
           <View style={{ marginTop: 14, gap: 4 }}>
@@ -96,13 +96,13 @@ function StepView({ step, showPy }: { step: ZhGrammarStep; showPy: boolean }) {
   return (
     <View style={{ ...(paper as object), padding: 24, gap: 14 } as object}>
       <View style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999, backgroundColor: ZH.goldSoftBg }}>
-        <Text style={{ color: ZH.seal, fontSize: 12, letterSpacing: 0.6, fontWeight: '800' }}>{step.label.toUpperCase()}</Text>
+        <Text style={{ color: ZH.seal, fontSize: 12, letterSpacing: 0.6, fontWeight: '400' }}>{step.label.toUpperCase()}</Text>
       </View>
-      <Text style={{ fontSize: 26, lineHeight: 32, fontWeight: '800', color: ZH.ink }}>{step.title}</Text>
+      <Text style={{ fontSize: 26, lineHeight: 32, fontWeight: '400', color: ZH.ink }}>{step.title}</Text>
       <Text style={{ fontSize: 16, lineHeight: 25, color: ZH.ink2 }}>{step.body}</Text>
       {step.formula ? (
         <View style={{ backgroundColor: ZH.cream2, borderRadius: 14, borderWidth: 1.5, borderColor: ZH.line, padding: 14 }}>
-          <Text style={{ color: ZH.seal, fontSize: 18, fontWeight: '800' }}>{step.formula}</Text>
+          <Text style={{ color: ZH.seal, fontSize: 18, fontWeight: '400' }}>{step.formula}</Text>
         </View>
       ) : null}
       {step.bullets ? (

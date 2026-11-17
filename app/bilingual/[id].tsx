@@ -513,7 +513,7 @@ function ReaderSettings(
           <SettingLabel>{L('Cỡ chữ', 'Text size')}</SettingLabel>
           <View className="flex-row items-center gap-3">
             <SizeButton label="−" a11y={L('Giảm cỡ chữ', 'Smaller text')} disabled={props.fontSize <= MIN_SIZE} onPress={() => props.onSize(-1)} />
-            <Text style={{ fontSize: 18, fontWeight: '800', color: PAPER.ink, minWidth: 28, textAlign: 'center' }}>{props.fontSize}</Text>
+            <Text style={{ fontSize: 18, fontWeight: '400', color: PAPER.ink, minWidth: 28, textAlign: 'center' }}>{props.fontSize}</Text>
             <SizeButton label="+" a11y={L('Tăng cỡ chữ', 'Larger text')} disabled={props.fontSize >= MAX_SIZE} onPress={() => props.onSize(1)} />
           </View>
 
@@ -542,7 +542,7 @@ function ReaderSettings(
             <Icon name="bookmark" size={14} color={PAPER.accent} strokeWidth={2} />
             <Text style={{ flex: 1, fontSize: 13, color: PAPER.ink }}>
               {L('Đã lưu ', 'Saved ')}
-              <Text style={{ fontWeight: '800' }}>{L(`${props.savedCount} từ`, `${props.savedCount} words`)}</Text>
+              <Text style={{ fontWeight: '400' }}>{L(`${props.savedCount} từ`, `${props.savedCount} words`)}</Text>
               {L(' từ bài này', ' from this article')}
             </Text>
             <Pressable
@@ -624,7 +624,7 @@ function SizeButton({ label, a11y, disabled, onPress }: { label: string; a11y: s
       className="h-10 w-10 items-center justify-center rounded-pill"
       style={{ backgroundColor: PAPER.chip, opacity: disabled ? 0.45 : 1 }}
     >
-      <Text style={{ fontSize: 18, fontWeight: '800', color: PAPER.ink, lineHeight: 20 }}>{label}</Text>
+      <Text style={{ fontSize: 18, fontWeight: '400', color: PAPER.ink, lineHeight: 20 }}>{label}</Text>
     </Pressable>
   );
 }
@@ -896,7 +896,7 @@ function TtsShadowBar({
               <Text
                 style={{
                   fontSize: 12.5,
-                  fontWeight: '800',
+                  fontWeight: '400',
                   color: shadowScore >= 80 ? '#16A34A' : shadowScore >= 60 ? '#6A4BD9' : '#DC2626',
                 }}
               >
@@ -1340,7 +1340,7 @@ function QuestionsBody({ questions, theme, answers, checked, onAnswer, onCheck }
         className="mt-8 items-center self-start rounded-pill px-6 py-3"
         style={({ hovered }) => [{ backgroundColor: checked ? theme.tint : hovered ? '#7C6338' : theme.accent }, webTransition]}
       >
-        <Text style={{ fontSize: 14, fontWeight: '800', color: checked ? theme.ink : '#FFFFFF' }}>
+        <Text style={{ fontSize: 14, fontWeight: '400', color: checked ? theme.ink : '#FFFFFF' }}>
           {checked ? L(`Đúng ${score}/${questions.length} · Làm lại`, `${score}/${questions.length} correct · Try again`) : L('Xem kết quả', 'Check answers')}
         </Text>
       </HoverPressable>
@@ -1471,7 +1471,7 @@ function VocabPronounceWidget({ word, meaningVi, theme }: { word: string; meanin
               <Text
                 style={{
                   fontSize: 12,
-                  fontWeight: '800',
+                  fontWeight: '400',
                   color: score >= 80 ? '#16A34A' : score >= 60 ? '#6A4BD9' : '#DC2626',
                 }}
               >
@@ -1654,7 +1654,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                   className="rounded-pill px-3 py-1"
                   style={{ backgroundColor: saved ? theme.tint : theme.accent }}
                 >
-                  <Text style={{ fontSize: 11.5, fontWeight: '800', color: saved ? theme.muted : '#FFFFFF' }}>
+                  <Text style={{ fontSize: 11.5, fontWeight: '400', color: saved ? theme.muted : '#FFFFFF' }}>
                     {saved ? L('✓ Đã lưu', '✓ Saved') : L('+ Lưu', '+ Save')}
                   </Text>
                 </Pressable>

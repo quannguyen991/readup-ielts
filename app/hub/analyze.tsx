@@ -59,7 +59,7 @@ function scoreColor(score: number): string {
 function SectionTitle({ children, aside }: { children: string; aside?: string }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-      <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '800' }}>{children}</Text>
+      <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '400' }}>{children}</Text>
       {aside ? <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '600' }}>{aside}</Text> : null}
     </View>
   );
@@ -69,7 +69,7 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
   return (
     <View style={{ flexBasis: '48%', flexGrow: 1, padding: 12, borderRadius: 12, backgroundColor: '#F3F0FB', gap: 2 }}>
       <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '700' }}>{label}</Text>
-      <Text style={{ color: COSMIC.ink, fontSize: 20, fontWeight: '800', fontVariant: ['tabular-nums'] }}>{value}</Text>
+      <Text style={{ color: COSMIC.ink, fontSize: 20, fontWeight: '400', fontVariant: ['tabular-nums'] }}>{value}</Text>
       {hint ? <Text style={{ color: COSMIC.muted, fontSize: 13 }}>{hint}</Text> : null}
     </View>
   );
@@ -85,7 +85,7 @@ function DimensionRow({ dim }: { dim: DimensionScore }) {
         <Text style={{ color: COSMIC.ink, fontSize: 14, fontWeight: '700' }}>
           {label.vi} <Text style={{ color: COSMIC.muted, fontWeight: '500', fontSize: 13 }}>· {label.en}</Text>
         </Text>
-        <Text style={{ color, fontSize: 14, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
+        <Text style={{ color, fontSize: 14, fontWeight: '400', fontVariant: ['tabular-nums'] }}>
           {measured ? `${dim.score}/100` : 'Chưa đo'}
         </Text>
       </View>
@@ -206,7 +206,7 @@ export default function AnalyzePage() {
       {/* Nút ghi âm */}
       <HubPanel title={recording ? 'Đang ghi âm' : 'Ghi âm'} icon="speaker" badge={recording ? 'REC' : undefined}>
        <View style={{ alignItems: 'center', gap: 14 }}>
-        <Text style={{ color: recording ? POOR : COSMIC.ink, fontSize: 34, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
+        <Text style={{ color: recording ? POOR : COSMIC.ink, fontSize: 34, fontWeight: '400', fontVariant: ['tabular-nums'] }}>
           {String(Math.floor(seconds / 60)).padStart(2, '0')}:{String(seconds % 60).padStart(2, '0')}
         </Text>
 
@@ -264,7 +264,7 @@ export default function AnalyzePage() {
               </View>
               <View style={{ flex: 1, gap: 6 }}>
                 <View style={{ alignSelf: 'flex-start', backgroundColor: BADGE_STYLES.NEW.bg, borderColor: BADGE_STYLES.NEW.border, borderWidth: 1, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8 }}>
-                  <Text style={{ color: BADGE_STYLES.NEW.text, fontSize: 13, fontWeight: '800' }}>
+                  <Text style={{ color: BADGE_STYLES.NEW.text, fontSize: 13, fontWeight: '400' }}>
                     Band ước lượng {report.estimatedBand === null ? '—' : report.estimatedBand.toFixed(1)}
                   </Text>
                 </View>

@@ -69,12 +69,12 @@ export default function RoleplayPage() {
       <Image source={{ uri: SCENE_THUMB[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{play.difficulty}</Text>
+        <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 13, fontWeight: '400', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{play.difficulty}</Text>
         <Text style={{ color: HUB.muted, fontSize: 13 }}>{CATEGORY_LABEL[play.category]} · Lượt {Math.min(step + 1, play.steps.length)}/{play.steps.length}</Text>
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Nhiệm vụ</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Nhiệm vụ</Text>
         {play.tasks.map((task, i) => (
           <Text key={task} style={{ color: i < step || (finished && result?.passed) ? HUB.green : HUB.body, fontSize: 13, lineHeight: 19 }}>
             {`${i < step || (finished && result?.passed) ? '✓' : '○'}  ${task}`}
@@ -83,7 +83,7 @@ export default function RoleplayPage() {
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 10 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Từ mục tiêu</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Từ mục tiêu</Text>
         {play.vocab.map((v) => (
           <Pressable key={v.word} accessibilityRole="button" accessibilityLabel={`Nghe ${v.word}`} onPress={() => speak(v.word)} style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
@@ -129,7 +129,7 @@ export default function RoleplayPage() {
                 {current.options[chosen]!.good ? 'Tốt. ' : 'Chưa tối ưu. '}{current.options[chosen]!.tip}
               </Text>
               <Pressable accessibilityRole="button" onPress={next} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet }}>
-                <Text style={{ color: '#fff', fontWeight: '800' }}>{step + 1 >= play.steps.length ? 'Xem kết quả' : 'Lượt tiếp'}</Text>
+                <Text style={{ color: '#fff', fontWeight: '400' }}>{step + 1 >= play.steps.length ? 'Xem kết quả' : 'Lượt tiếp'}</Text>
               </Pressable>
             </View>
           ) : null}
@@ -138,12 +138,12 @@ export default function RoleplayPage() {
 
       {finished && result ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>{result.passed ? 'Hoàn thành tốt' : 'Hoàn thành'}: {result.good}/{result.total} lượt tốt</Text>
+          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>{result.passed ? 'Hoàn thành tốt' : 'Hoàn thành'}: {result.good}/{result.total} lượt tốt</Text>
           <Text style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>
             {result.passed ? 'Kịch bản được ghi vào tiến độ và nhiệm vụ hôm nay.' : 'Cần ít nhất 2 lượt tốt để tính là đạt. Thử lại để chọn cách đáp khác.'}
           </Text>
           <Pressable accessibilityRole="button" onPress={restart} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Chơi lại</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Chơi lại</Text>
           </Pressable>
         </View>
       ) : null}

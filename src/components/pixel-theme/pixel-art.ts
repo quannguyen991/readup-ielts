@@ -12,7 +12,7 @@ import { useRewardStore } from '@/store/useRewardStore';
  *
  * Chỉ dùng màu và hình khối tự vẽ. Không chép hình minh hoạ hay logo của ai.
  * Không dùng font pixel: các font pixel phổ biến thiếu chữ tiếng Việt (ví dụ Silkscreen),
- * nên chữ vẫn là Nunito như mọi giao diện khác.
+ * nên chữ vẫn là Inter như mọi giao diện khác.
  */
 export const PIXEL_THEME_ID = 'theme-pixel';
 export const CYBER_THEME_ID = 'theme-cyber';

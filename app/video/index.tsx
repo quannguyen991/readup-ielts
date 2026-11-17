@@ -120,7 +120,7 @@ export default function VideoHub() {
           }) as ViewStyle}
         >
           <Icon name="play" size={15} color="#FFFFFF" />
-          <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 15 }}>{L('Mở kho video', 'Open video library')}</Text>
+          <Text style={{ color: '#FFFFFF', fontWeight: '400', fontSize: 15 }}>{L('Mở kho video', 'Open video library')}</Text>
         </Pressable>
       </View>
 
@@ -181,10 +181,10 @@ function ContinueStrip({ mode, en, onOpen }: { mode: Mode | undefined; en: boole
         <Icon name={mode.icon} size={18} color={mode.ink} />
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
-        <Text style={{ fontSize: 12, fontWeight: '800', color: '#8A7F72', letterSpacing: 0.4 }}>{en ? 'CONTINUE' : 'TIẾP TỤC'}</Text>
-        <Text numberOfLines={1} style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>{en ? mode.en : mode.vi}</Text>
+        <Text style={{ fontSize: 12, fontWeight: '400', color: '#8A7F72', letterSpacing: 0.4 }}>{en ? 'CONTINUE' : 'TIẾP TỤC'}</Text>
+        <Text numberOfLines={1} style={{ fontSize: 16, fontWeight: '400', color: '#2B2350' }}>{en ? mode.en : mode.vi}</Text>
       </View>
-      <Text style={{ fontSize: 14, fontWeight: '800', color: mode.ink }}>{en ? 'Open ›' : 'Mở lại ›'}</Text>
+      <Text style={{ fontSize: 14, fontWeight: '400', color: mode.ink }}>{en ? 'Open ›' : 'Mở lại ›'}</Text>
     </Pressable>
   );
 }
@@ -215,7 +215,7 @@ function ModeCard({ mode, en, tall, badge, onOpen }: { mode: Mode; en: boolean; 
       </View>
       {badge ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 16, right: 16, paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: mode.ink }}>
-          <Text style={{ color: mode.bg, fontSize: 12, fontWeight: '800' }}>
+          <Text style={{ color: mode.bg, fontSize: 12, fontWeight: '400' }}>
             {badge === 'recent' ? (en ? 'Recent' : 'Gần đây') : en ? 'Favourite' : 'Hay dùng'}
           </Text>
         </View>

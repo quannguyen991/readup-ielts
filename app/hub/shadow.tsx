@@ -155,11 +155,11 @@ export default function ShadowPage() {
         <View style={{ flex: 1, gap: 3, paddingRight: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <Text style={{ fontSize: 16 }}>🧬</Text>
-            <Text style={{ color: selfVoiceCloned ? '#C084FC' : COSMIC.ink, fontSize: 14, fontWeight: '800' }}>
+            <Text style={{ color: selfVoiceCloned ? '#C084FC' : COSMIC.ink, fontSize: 14, fontWeight: '400' }}>
               Self-Voice Cloning Shadowing
             </Text>
             <View style={{ backgroundColor: '#4C1D95', paddingHorizontal: 6, paddingVertical: 1, borderRadius: 6 }}>
-              <Text style={{ color: '#C084FC', fontSize: 13, fontWeight: '800' }}>BAND 9</Text>
+              <Text style={{ color: '#C084FC', fontSize: 13, fontWeight: '400' }}>BAND 9</Text>
             </View>
           </View>
           <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 18 }}>
@@ -244,7 +244,7 @@ export default function ShadowPage() {
                 borderColor: s === speed ? COSMIC.blue : 'rgba(120, 68, 21, 0.1)',
               }}
             >
-              <Text style={{ color: s === speed ? COSMIC.blue : COSMIC.ink, fontWeight: '800', fontSize: 13 }}>
+              <Text style={{ color: s === speed ? COSMIC.blue : COSMIC.ink, fontWeight: '400', fontSize: 13 }}>
                 {s}x
               </Text>
             </Pressable>
@@ -268,7 +268,7 @@ export default function ShadowPage() {
             }}
           >
             <Icon name={playing ? 'close' : 'play'} size={18} color="#090A1A" strokeWidth={2.4} />
-            <Text style={{ color: '#FFFFFF', fontWeight: '800' }}>
+            <Text style={{ color: '#FFFFFF', fontWeight: '400' }}>
               {playing ? 'Dừng đọc' : selfVoiceCloned ? 'Nghe Self-Clone' : 'Nghe câu mẫu'}
             </Text>
           </Pressable>
@@ -302,10 +302,10 @@ export default function ShadowPage() {
       {result ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 10 }]}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '800' }}>
+            <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '400' }}>
               Kết quả Nói đuổi: {result.overall}/100
             </Text>
-            <Text style={{ color: '#10B981', fontSize: 13, fontWeight: '800' }}>
+            <Text style={{ color: '#10B981', fontSize: 13, fontWeight: '400' }}>
               Độ trôi chảy: {result.fluency}%
             </Text>
           </View>

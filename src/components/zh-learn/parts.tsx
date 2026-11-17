@@ -27,7 +27,7 @@ export function ZhText({ zh, mark, size = 22, color = ZH.ink }: { zh: string; ma
       {parts.map((p, i) => (
         <Text key={i}>
           {p}
-          {i < parts.length - 1 ? <Text style={{ color: ZH.seal, fontWeight: '800' }}>{mark}</Text> : null}
+          {i < parts.length - 1 ? <Text style={{ color: ZH.seal, fontWeight: '400' }}>{mark}</Text> : null}
         </Text>
       ))}
     </Text>
@@ -70,7 +70,7 @@ export function ZhQuiz({ id, quiz, onAgain, onBack, backLabel }: { id: string; q
   const all = picks.every((p) => p !== null);
   return (
     <View style={{ ...paper, gap: 16 } as object}>
-      <Text style={{ fontSize: 26, fontWeight: '800', color: ZH.ink }}>Kiểm tra cuối</Text>
+      <Text style={{ fontSize: 26, fontWeight: '400', color: ZH.ink }}>Kiểm tra cuối</Text>
       <Text style={{ fontSize: 15, color: ZH.ink2 }}>{quiz.length} câu, không có gợi ý. Chọn đáp án rồi nộp bài.</Text>
       {quiz.map((q, qi) => (
         <View key={qi} style={{ gap: 8 }}>
@@ -100,7 +100,7 @@ export function ZhQuiz({ id, quiz, onAgain, onBack, backLabel }: { id: string; q
         <Button label="Nộp bài" disabled={!all} onPress={() => { record(id, score); setSubmitted(true); }} />
       ) : (
         <View style={{ gap: 10 }}>
-          <Text style={{ fontSize: 22, fontWeight: '800', color: score >= 4 ? ZH.sage : ZH.seal }}>{score} / {quiz.length} câu đúng</Text>
+          <Text style={{ fontSize: 22, fontWeight: '400', color: score >= 4 ? ZH.sage : ZH.seal }}>{score} / {quiz.length} câu đúng</Text>
           <View style={{ flexDirection: 'row', gap: 10, flexWrap: 'wrap' }}>
             <Button variant="outline" label="Học lại từ đầu" onPress={onAgain} />
             <Button label={backLabel} onPress={onBack} />

@@ -161,7 +161,7 @@ export function Button({
       ) : (
         <>
           {iconLeft ? <Icon name={iconLeft} size={s.icon} color={retro ? RINK : iconColor[variant]} /> : null}
-          <Text className={['font-semi', s.text, retro || pixel ? '' : labelClass[variant]].join(' ')} style={retro ? { color: RINK, fontFamily: 'Nunito_900Black' } : px ? { color: pixelLabelColor(variant, px) } : undefined}>{label}</Text>
+          <Text className={['font-semi', s.text, retro || pixel ? '' : labelClass[variant]].join(' ')} style={retro ? { color: RINK, fontFamily: 'Nunito_700Bold' } : px ? { color: pixelLabelColor(variant, px) } : undefined}>{label}</Text>
           {iconRight ? <Icon name={iconRight} size={s.icon} color={retro ? RINK : iconColor[variant]} /> : null}
         </>
       )}

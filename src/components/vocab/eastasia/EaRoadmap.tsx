@@ -20,6 +20,7 @@ import { coverOf, KIT, SEALS } from './kit';
 import { JA_MOTIF, ZH_MOTIF } from './motifs';
 import { PART_MOTIF } from './EaPages';
 import { Bar, Chip, Divider, EA_FONT, Footer, SectionTitle, glow, useBi, useSkinFont, web } from './EaParts';
+import { EaSearch } from './EaSearch';
 import { skinById, skinsOf, type EaSkin } from './skins';
 
 /** Tiêu đề lớn chữ Việt ở hero Nhật (serif có đủ dấu). */
@@ -113,12 +114,12 @@ export function EaRoadmap({ lang }: { lang: EaLang }) {
             <View style={{ paddingLeft: wide ? 64 : 34, paddingRight: wide ? 24 : 20, paddingTop: wide ? 40 : 54, paddingBottom: 38, gap: 10, maxWidth: wide ? '60%' : '90%' }}>
               <Text style={{ color: c.accent, fontSize: 13, letterSpacing: 2.2, fontFamily: EA_FONT.heavy }}>{kicker}</Text>
               {lang === 'zh' ? (
-                <Text accessibilityRole="header" style={[{ fontSize: wide ? 80 : 54, lineHeight: wide ? 92 : 62, fontFamily: skin.fontHan as never, fontWeight: '800' }, goldText] as never}>
+                <Text accessibilityRole="header" style={[{ fontSize: wide ? 80 : 54, lineHeight: wide ? 92 : 62, fontFamily: skin.fontHan as never, fontWeight: '400' }, goldText] as never}>
                   {skin.han}
                 </Text>
               ) : (
                 <>
-                  <Text accessibilityRole="header" style={{ color: '#FFFFFF', fontSize: wide ? 56 : 38, lineHeight: wide ? 64 : 44, fontFamily: JA_TITLE_FONT as never, fontWeight: '800', letterSpacing: 1, ...(web ? { textShadow: '0 2px 10px rgba(0,0,0,0.45)' } : null) }}>
+                  <Text accessibilityRole="header" style={{ color: '#FFFFFF', fontSize: wide ? 56 : 38, lineHeight: wide ? 64 : 44, fontFamily: JA_TITLE_FONT as never, fontWeight: '400', letterSpacing: 1, ...(web ? { textShadow: '0 2px 10px rgba(0,0,0,0.45)' } : null) }}>
                     {L('TIẾNG NHẬT', 'JAPANESE')}
                   </Text>
                   <View style={{ alignSelf: 'flex-start', justifyContent: 'center', minHeight: 48, minWidth: wide ? 360 : 300, paddingHorizontal: wide ? 34 : 22 }}>
@@ -186,13 +187,8 @@ export function EaRoadmap({ lang }: { lang: EaLang }) {
           )}
         </View>
       </Appear>
-      {lang === 'zh' ? <ZhLearnTiles accent={c.accent} /> : null}
-      <EaSentenceTiles lang={lang} accent={c.accent} />
-
-      {/* ---------------------------------------------------------------- skin */}
-      <SkinPicker lang={lang} skin={skin} onPick={(id) => setSkin(lang, id)} />
-
-      <Divider lang={lang} skin={skin} />
+      {/* ---------------------------------------------------------------- tìm nhanh */}
+      <EaSearch lang={lang} skin={skin} />
 
       {/* ---------------------------------------------------------------- cấp */}
       <View style={{ gap: 12 }}>
@@ -220,6 +216,18 @@ export function EaRoadmap({ lang }: { lang: EaLang }) {
           </View>
         </View>
       ) : null}
+
+      <Divider lang={lang} skin={skin} />
+
+      {/* ---------------------------------------------------------------- luyện thêm */}
+      <View style={{ gap: 12 }}>
+        <SectionTitle skin={skin} text={L('Luyện thêm', 'More practice')} sub={lang === 'zh' ? 'HSK' : 'JLPT'} />
+        {lang === 'zh' ? <ZhLearnTiles accent={c.accent} /> : null}
+        <EaSentenceTiles lang={lang} accent={c.accent} />
+      </View>
+
+      {/* ---------------------------------------------------------------- skin */}
+      <SkinPicker lang={lang} skin={skin} onPick={(id) => setSkin(lang, id)} />
 
       <Footer lang={lang} skin={skin} wide={wide} />
     </View>
@@ -288,7 +296,7 @@ function LevelSeal({ level, skin, seal, active, done, total, onPress }: { level:
         )}
         <View style={{ flex: 1 }}>
           <Text style={{ color: c.ink, fontSize: 17, fontFamily: EA_FONT.heavy }}>{level.label}</Text>
-          <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }} numberOfLines={1}>{title}</Text>
+          <Text style={{ color: c.ink2, fontSize: 13, fontFamily: EA_FONT.body }} numberOfLines={2}>{title}</Text>
         </View>
       </View>
       <Bar pct={pct} skin={skin} />

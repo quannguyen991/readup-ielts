@@ -163,8 +163,8 @@ function NodeView({
           gap: 3,
         } as never}
       >
-        <Text style={{ color: colors.goldDeep, fontSize: 12, fontWeight: '800' }}>Bài {index + 1}</Text>
-        <Text numberOfLines={1} style={{ color: colors.ink, fontSize: 16, fontWeight: '800' }}>
+        <Text style={{ color: colors.goldDeep, fontSize: 12, fontWeight: '400' }}>Bài {index + 1}</Text>
+        <Text numberOfLines={1} style={{ color: colors.ink, fontSize: 16, fontWeight: '400' }}>
           {node.title}
         </Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>

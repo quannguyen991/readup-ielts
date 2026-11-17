@@ -613,7 +613,7 @@ function SetupCard({
                 style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, padding: 11, borderRadius: 8, borderWidth: 1.5, borderColor: selected ? T.goldDark : T.line, backgroundColor: selected ? 'rgba(183,139,57,0.12)' : '#FFFFFF' }}
               >
                 <View style={{ width: 22, height: 22, borderRadius: 6, borderWidth: 1.5, borderColor: selected ? T.goldDark : T.muted, backgroundColor: selected ? T.goldDark : 'transparent', alignItems: 'center', justifyContent: 'center', marginTop: 1 }}>
-                  <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '800' }}>{selected ? '✓' : index + 1}</Text>
+                  <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '400' }}>{selected ? '✓' : index + 1}</Text>
                 </View>
                 <View style={{ flex: 1, gap: 3 }}>
                   <Text className="font-semi" style={{ fontSize: 14, color: T.ink }}>{scenario.setup}</Text>
