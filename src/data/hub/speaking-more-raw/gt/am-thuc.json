@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-am-thuc-1",
+  "level": "EASY",
+  "title": "Ordering Lunch at a Casual Cafe",
+  "titleVi": "Gọi món trưa tại quán cà phê",
+  "situationVi": "Bạn đang đi du lịch nước ngoài và bước vào một quán ăn nhanh hoặc quán cà phê để gọi bữa trưa trực tiếp với nhân viên phục vụ.",
+  "task": "You are at a cafe placing your lunch order. Tell the server what food and drink you would like, ask for a minor modification to your meal, and ask for the bill at the end.",
+  "mustVi": [
+   "Gọi một món ăn chính và một loại thức uống cụ thể",
+   "Đưa ra một yêu cầu tùy chỉnh đơn giản (ví dụ: bớt đá, bỏ hành, đổi món phụ)",
+   "Yêu cầu thanh toán hóa đơn một cách lịch sự"
+  ],
+  "phrases": [
+   {
+    "en": "Could I get...",
+    "vi": "Cho tôi gọi món...",
+    "ex": "Could I get the grilled chicken sandwich, please?"
+   },
+   {
+    "en": "I'd like to have...",
+    "vi": "Tôi muốn dùng...",
+    "ex": "I'd like to have an iced Americano with light ice."
+   },
+   {
+    "en": "Can I get that with no...",
+    "vi": "Tôi có thể lấy món đó không có... được không?",
+    "ex": "Can I get that burger with no onions, please?"
+   },
+   {
+    "en": "Instead of...",
+    "vi": "Thay vì...",
+    "ex": "Could I have a side salad instead of fries?"
+   },
+   {
+    "en": "Could we get the check, please?",
+    "vi": "Cho chúng tôi xin hóa đơn thanh toán nhé?",
+    "ex": "Excuse me, could we get the check, please?"
+   },
+   {
+    "en": "Do you accept card payments?",
+    "vi": "Quán có nhận thanh toán bằng thẻ không?",
+    "ex": "Do you accept card payments or cash only?"
+   }
+  ],
+  "sample": "Hi there! Could I get the grilled chicken sandwich, please? But can I get that with no onions? Also, I'd like to have a side salad instead of French fries if that's possible. To drink, I'll just have an iced Americano with very little ice. That would be all for now. ... Thank you, the meal was wonderful! Excuse me, could we get the check, please? We're ready to pay, and do you accept credit cards? Thanks so much for your help!",
+  "tipVi": "Hãy dùng các mẫu câu lịch sự như 'Could I get...' hoặc 'I'd like...' thay vì nói cộc lốc 'I want...' khi giao tiếp với nhân viên phục vụ."
+ },
+ {
+  "id": "gt-am-thuc-2",
+  "level": "EASY",
+  "title": "Inviting a Friend to Dinner",
+  "titleVi": "Mời bạn đến nhà dùng bữa tối",
+  "situationVi": "Bạn muốn mời một người bạn hoặc đồng nghiệp nước ngoài đến căn hộ của mình ăn tối vào dịp cuối tuần.",
+  "task": "Talk to your friend to invite them over for dinner. Suggest a specific day and time, share what you plan to cook, and ask about their food preferences or dietary restrictions.",
+  "mustVi": [
+   "Đưa ra lời mời và đề xuất thời gian, địa điểm cụ thể",
+   "Tiết lộ món ăn bạn dự định tự tay chế biến",
+   "Hỏi thăm sở thích ăn uống hoặc các món bạn mình kiêng ăn"
+  ],
+  "phrases": [
+   {
+    "en": "Are you free this...?",
+    "vi": "Bạn có rảnh vào... này không?",
+    "ex": "Are you free this Saturday evening?"
+   },
+   {
+    "en": "I was wondering if you'd like to...",
+    "vi": "Mình tự hỏi liệu bạn có muốn...",
+    "ex": "I was wondering if you'd like to come over for dinner."
+   },
+   {
+    "en": "I'm planning to make...",
+    "vi": "Mình dự định nấu món...",
+    "ex": "I'm planning to make traditional beef pho from scratch."
+   },
+   {
+    "en": "Do you have any dietary restrictions?",
+    "vi": "Bạn có kiêng ăn món gì không?",
+    "ex": "Do you have any dietary restrictions or allergies?"
+   },
+   {
+    "en": "Let me know if that works for you.",
+    "vi": "Báo lại cho mình biết nếu thời gian đó tiện cho bạn nhé.",
+    "ex": "Let me know if 7 PM this Friday works for you."
+   },
+   {
+    "en": "Bring your appetite!",
+    "vi": "Hãy chuẩn bị một chiếc bụng đói nhé!",
+    "ex": "You don't need to bring anything, just bring your appetite!"
+   }
+  ],
+  "sample": "Hey Mark! Are you free this Saturday evening? I was wondering if you'd like to come over to my place for dinner around 7 PM. I'm planning to cook some traditional Vietnamese beef noodle soup, also known as Pho, from scratch. Before I go grocery shopping, do you have any dietary restrictions or food allergies? Let me know if you can't eat beef or spicy food. You don't need to bring anything, just bring your appetite! Let me know if that works for you.",
+  "tipVi": "Hãy duy trì tông giọng hào hứng, thân mật và chủ động hỏi về dị ứng để thể hiện sự chu đáo của người chủ nhà."
+ },
+ {
+  "id": "gt-am-thuc-3",
+  "level": "MEDIUM",
+  "title": "Describing a Signature Vietnamese Dish",
+  "titleVi": "Miêu tả món ăn đặc trưng Việt Nam",
+  "situationVi": "Bạn đang trò chuyện với một du khách nước ngoài mới đến Việt Nam lần đầu và muốn giới thiệu một món ăn đường phố nổi tiếng mà họ nhất định phải thử.",
+  "task": "Describe a signature Vietnamese dish to a foreign visitor. Explain its key ingredients and flavors, guide them on how to eat it properly, and explain why it is worth trying.",
+  "mustVi": [
+   "Nêu tên món ăn kèm các thành phần chính và hương vị đặc trưng",
+   "Hướng dẫn cách thưởng thức món ăn đúng điệu theo văn hóa bản địa",
+   "Giải thích lý do thuyết phục vì sao người bạn đó không nên bỏ lỡ món này"
+  ],
+  "phrases": [
+   {
+    "en": "It consists of...",
+    "vi": "Nó bao gồm các thành phần...",
+    "ex": "It consists of crispy rice pancakes filled with shrimp and pork."
+   },
+   {
+    "en": "A perfect balance of...",
+    "vi": "Sự cân bằng hoàn hảo giữa...",
+    "ex": "The sauce has a perfect balance of sweet, salty, and sour."
+   },
+   {
+    "en": "The traditional way to eat it is...",
+    "vi": "Cách ăn truyền thống là...",
+    "ex": "The traditional way to eat it is by wrapping it with fresh herbs."
+   },
+   {
+    "en": "Dip it into...",
+    "vi": "Chấm món đó vào...",
+    "ex": "Dip each roll into the fragrant chili garlic fish sauce."
+   },
+   {
+    "en": "A must-try dish",
+    "vi": "Một món nhất định phải nếm thử",
+    "ex": "This is truly a must-try dish for any food lover visiting Hanoi."
+   },
+   {
+    "en": "Crispy on the outside, tender on the inside",
+    "vi": "Bên ngoài giòn rụm, bên trong mềm mọng",
+    "ex": "The pancake is crispy on the outside and tender on the inside."
+   }
+  ],
+  "sample": "If you only try one street food here, you must try Banh Xeo, which is a savory Vietnamese crepe. It consists of a crispy rice-flour pancake filled with shrimp, pork slices, and bean sprouts. It has a rich, turmeric aroma and a lovely crunchy texture. The traditional way to eat it is by cutting a piece, wrapping it in mustard greens and fresh mint, and dipping it into sweet and sour fish sauce. You should try it because it offers an incredible harmony of hot, crunchy, fresh, and tangy flavors in just one bite!",
+  "tipVi": "Tận dụng các tính từ miêu tả đa giác quan (crispy, savory, tangy, aromatic) để khơi gợi cảm giác thèm ăn của người nghe."
+ },
+ {
+  "id": "gt-am-thuc-4",
+  "level": "MEDIUM",
+  "title": "Clarifying Dietary Needs and Allergies",
+  "titleVi": "Làm rõ yêu cầu ăn kiêng và dị ứng",
+  "situationVi": "Bạn đang dùng bữa tại một nhà hàng quốc tế cao cấp và bạn có tiền sử dị ứng nghiêm trọng với đậu phộng, đồng thời không ăn được hải sản.",
+  "task": "Inform your server about your food allergies and dietary needs. Ask detailed questions about specific menu ingredients, and negotiate a safe substitution for your meal.",
+  "mustVi": [
+   "Trình bày rõ ràng về tình trạng dị ứng và hạn chế ăn uống của bản thân",
+   "Hỏi kỹ về thành phần nước sốt và loại dầu ăn được dùng trong bếp",
+   "Đề xuất đổi thành phần thay thế an toàn hoặc nhờ phục vụ gợi ý món phù hợp"
+  ],
+  "phrases": [
+   {
+    "en": "I'm severely allergic to...",
+    "vi": "Tôi bị dị ứng rất nặng với...",
+    "ex": "I'm severely allergic to peanuts and tree nuts."
+   },
+   {
+    "en": "Does this dish contain any...?",
+    "vi": "Món ăn này có chứa... không?",
+    "ex": "Does this dressing contain any peanut oil or seafood extract?"
+   },
+   {
+    "en": "Could you check with the chef if...",
+    "vi": "Bạn có thể hỏi lại đầu bếp xem...",
+    "ex": "Could you check with the chef if they can prepare it separately?"
+   },
+   {
+    "en": "Risk of cross-contamination",
+    "vi": "Nguy cơ nhiễm chéo",
+    "ex": "Is there any risk of cross-contamination with shellfish in the fryer?"
+   },
+   {
+    "en": "Is it possible to substitute... with...?",
+    "vi": "Có thể thay thế... bằng... được không?",
+    "ex": "Is it possible to substitute the shrimp with grilled chicken or tofu?"
+   },
+   {
+    "en": "Could you recommend a safe option?",
+    "vi": "Bạn có thể gợi ý một lựa chọn an toàn không?",
+    "ex": "Could you recommend a safe alternative from the main courses?"
+   }
+  ],
+  "sample": "Excuse me, before I place my order, I need to mention that I'm severely allergic to peanuts and I don't eat seafood. I was looking at the chef's special stir-fried noodles, but does this dish contain any peanut oil or shrimp paste? Could you please check with the chef to ensure there is no cross-contamination in the kitchen? If the sauce has shellfish, is it possible to substitute it with a simple soy sauce glaze and replace the shrimp with tofu? If not, could you recommend another safe vegetarian option from the menu?",
+  "tipVi": "Hãy nói với ngữ điệu nghiêm túc, rành mạch đối với các từ khóa y tế như 'severely allergic' và 'cross-contamination' để nhân viên nhận thức rõ mức độ quan trọng."
+ },
+ {
+  "id": "gt-am-thuc-5",
+  "level": "HARD",
+  "title": "Guiding a Recipe Step by Step",
+  "titleVi": "Hướng dẫn công thức nấu ăn từng bước",
+  "situationVi": "Bạn đang quay một video nấu ăn ngắn hoặc gọi video hướng dẫn một người bạn nước ngoài cách làm món cơm chiên gia đình thơm ngon chuẩn vị.",
+  "task": "Explain how to cook a popular homemade dish step-by-step. Outline the prep work, guide them through the cooking stages using precise sequencers, and share crucial tips to avoid common cooking mistakes.",
+  "mustVi": [
+   "Liệt kê công đoạn sơ chế và lưu ý chọn nguyên liệu ban đầu",
+   "Mô tả chi tiết các bước nấu và kiểm soát nhiệt độ bằng từ nối trình tự",
+   "Chỉ ra lỗi sai phổ biến người mới hay mắc và bí quyết khắc phục"
+  ],
+  "phrases": [
+   {
+    "en": "First and foremost, you need to...",
+    "vi": "Trước hết và quan trọng nhất, bạn cần...",
+    "ex": "First and foremost, you need to ensure the rice is completely chilled."
+   },
+   {
+    "en": "Sauté the aromatics until fragrant",
+    "vi": "Phi thơm các loại gia vị hành tỏi",
+    "ex": "Sauté the minced garlic and shallots until golden and fragrant."
+   },
+   {
+    "en": "Bring it to a gentle simmer",
+    "vi": "Đun sôi liu riu nhỏ lửa",
+    "ex": "Add the sauce and bring it to a gentle simmer over medium heat."
+   },
+   {
+    "en": "A common mistake people make is...",
+    "vi": "Một sai lầm phổ biến mà nhiều người mắc phải là...",
+    "ex": "A common mistake people make is overcrowding the pan with wet ingredients."
+   },
+   {
+    "en": "The key to success is...",
+    "vi": "Bí quyết quyết định thành công là...",
+    "ex": "The key to success is using high heat and stirring constantly."
+   },
+   {
+    "en": "Stir continuously to prevent burning",
+    "vi": "Đảo liên tục để không bị cháy dính",
+    "ex": "Stir continuously so that the seasonings coat every grain evenly."
+   }
+  ],
+  "sample": "Today, I'll teach you how to make classic Vietnamese fried rice. First, finely dice your carrots, sausages, and garlic, and make sure your cooked rice is completely chilled overnight. Heat some oil in a wok, sauté the aromatics until golden brown, then scramble two eggs and toss in the diced vegetables. Next, add the rice, turn the heat up high, and season with soy sauce and fish sauce. A common mistake people make is using warm, freshly cooked rice, which makes the dish soggy. The key is using dry, cold rice and stirring continuously so every grain separates nicely!",
+  "tipVi": "Sắp xếp bài nói bằng các từ nối thời gian rõ ràng (First, Next, Then, Finally) và kết hợp các động từ chỉ thao tác nấu bếp cụ thể (dice, sauté, toss, season) để tăng tính lưu loát."
+ }
+]

@@ -1,0 +1,117 @@
+{
+ "id": "libraries",
+ "title": "Libraries",
+ "titleVi": "Thư viện",
+ "tipVi": "Khi nói về thư viện, hãy tránh chỉ lặp lại ý 'nơi yên tĩnh để đọc sách' mà nên mở rộng sang các góc nhìn như chuyển đổi số, không gian tự học đa năng và vai trò bình đẳng hóa cơ hội tiếp cận tri thức.",
+ "part1": [
+  "How often do you visit libraries?",
+  "Did you go to a library when you were a child?",
+  "Do you prefer studying in a library or at home?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable library you have visited",
+  "bullets": [
+   "where this library is located",
+   "what facilities and resources it offers",
+   "what you did there during your visit",
+   "and explain why this library left such a strong impression on you"
+  ]
+ },
+ "part3": [
+  "In what ways have digital resources altered the traditional role of libraries?",
+  "Should governments continue to allocate public funds to maintain physical libraries?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "treasure trove of knowledge",
+    "vi": "kho tàng tri thức quý giá",
+    "ex": "The municipal library houses a veritable treasure trove of knowledge, ranging from antique maps to modern academic papers."
+   },
+   {
+    "en": "hit the books",
+    "vi": "vùi đầu vào học bài miệt mài",
+    "ex": "Final exams are coming up next week, so I plan to hit the books at the campus library every evening."
+   },
+   {
+    "en": "conducive to learning",
+    "vi": "tạo điều kiện thuận lợi cho việc học tập",
+    "ex": "The minimalist interior and lack of phone chatter make this library extremely conducive to learning."
+   },
+   {
+    "en": "digitize collections",
+    "vi": "số hóa các bộ sưu tập tài liệu",
+    "ex": "Many national institutions are working hard to digitize collections so that remote citizens can access rare texts online."
+   },
+   {
+    "en": "tuck oneself away",
+    "vi": "thu mình vào một góc kín đáo yên tĩnh",
+    "ex": "Whenever I feel overwhelmed by urban noise, I like to tuck myself away in a quiet corner of the reading hall."
+   },
+   {
+    "en": "state-of-the-art facilities",
+    "vi": "cơ sở vật chất tối tân, hiện đại",
+    "ex": "The renovated building now features state-of-the-art facilities, including automated book sorting and interactive multimedia hubs."
+   },
+   {
+    "en": "foster a reading culture",
+    "vi": "nuôi dưỡng và lan tỏa văn hóa đọc",
+    "ex": "Free community workshops at local libraries play an instrumental role in fostering a lifelong reading culture among kids."
+   },
+   {
+    "en": "community hub",
+    "vi": "trung tâm sinh hoạt cộng đồng",
+    "ex": "Beyond lending books, modern libraries function as a lively community hub where neighbors attend seminars and exhibitions."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên và vị trí của thư viện (Thư viện Quốc gia Việt Nam ở trung tâm Hà Nội).",
+   "Ý 1: Mô tả cơ sở vật chất, kiến trúc Pháp cổ điển kết hợp thiết bị hiện đại và nguồn học liệu đa dạng.",
+   "Ý 2: Thuật lại hoạt động cụ thể (tìm tài liệu nghiên cứu khóa luận tốt nghiệp, ngồi tự học tại phòng đọc yên tĩnh).",
+   "Kết: Giải thích ấn tượng sâu sắc (bầu không khí học thuật tĩnh lặng truyền cảm hứng và sự đối lập kỳ diệu với phố xá ồn ào bên ngoài)."
+  ],
+  "sample": "I’d like to talk about the National Library of Vietnam, nestled right in the heart of Hanoi on Trang Thi Street. It is an extraordinary space that seamlessly blends French colonial architecture with state-of-the-art facilities.\n\nThe library boasts a massive collection spanning rare historical manuscripts, academic periodicals, and an extensive digital database. There are also spacious, naturally lit reading rooms, private multimedia booths, and a leafy courtyard outside.\n\nI visited it a couple of years ago while working on my undergraduate dissertation. Desperate for a distraction-free environment, I tucked myself away in an air-conditioned reading hall on the second floor. I spent hours sifting through physical archives and accessing peer-reviewed journals on their terminals.\n\nWhat impressed me most was the serene, almost reverent atmosphere. Despite being located in a bustling urban district, the interior was totally insulated from traffic noise, making it remarkably conducive to deep focus. Seeing people of all ages—from elderly researchers to high school students—absorbed in their reading really inspired me and revitalized my love for quiet scholarship.",
+  "p1": [
+   {
+    "q": "How often do you visit libraries?",
+    "a": "To be honest, I rarely visit physical libraries these days, maybe once every few months. I conduct most of my reading digitally on tablets, although I still drop by my local university library when I urgently need a quiet, distraction-free corner."
+   },
+   {
+    "q": "Did you go to a library when you were a child?",
+    "a": "Yes, definitely. My primary school had a modest reading room, and I used to spend my lunch breaks there. I was particularly fascinated by illustrated fairy tales and science encyclopedias, which sparked my lifelong curiosity."
+   },
+   {
+    "q": "Do you prefer studying in a library or at home?",
+    "a": "I definitely lean towards libraries because the disciplined ambiance helps me stay focused. At home, there are simply too many temptations, like household chores or social media, whereas a library peer-pressures me into productive study sessions."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what ways have digital resources altered the traditional role of libraries?",
+    "a": "Digital platforms have shifted libraries from mere warehouses of printed books into versatile community learning hubs. Instead of simply borrowing physical paperbacks, patrons nowadays utilize online repositories, high-speed internet, and collaborative co-working desks. That said, the physical space remains indispensable for those without reliable digital access at home. Ultimately, modern libraries have evolved to complement digital connectivity rather than being replaced by it."
+   },
+   {
+    "q": "Should governments continue to allocate public funds to maintain physical libraries?",
+    "a": "I firmly believe public investment in libraries should continue. While some consider them costly relics, public libraries ensure equitable access to educational resources for underprivileged demographics who cannot afford personal computers or premium subscriptions. Furthermore, they serve as vital social venues that foster community cohesion. Cutting public funding would inevitably deepen the educational divide between socioeconomic classes."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng lẫn lộn giữa 'library' (thư viện - nơi mượn đọc miễn phí) và 'bookstore' (nhà sách - nơi mua bán), ví dụ nói nhầm 'I bought three books at the library'.",
+   "Lạm dụng lặp đi lặp lại cụm từ đơn giản 'quiet and peaceful' thay vì dùng các tính từ học thuật phong phú như 'conducive to learning', 'distraction-free', hay 'studious environment'.",
+   "Phát âm sai từ 'library' do nuốt âm /r/ hoặc đọc thành /ˈlaɪbəri/ thay vì hai cách chuẩn: /ˈlaɪbrəri/ (Anh-Anh) hoặc /ˈlaɪbreri/ (Anh-Mỹ)."
+  ],
+  "p1More": [
+   "What kinds of books do you usually borrow from a library?",
+   "Do you think public libraries should charge a membership fee?",
+   "What makes a library a pleasant place to visit?",
+   "Do students in your country use school libraries frequently?",
+   "Have you ever borrowed an e-book from an online library?"
+  ],
+  "p3More": [
+   "Will traditional printed books in libraries become completely obsolete in the future?",
+   "How can municipal libraries attract younger generations accustomed to instant digital entertainment?",
+   "To what extent do public libraries contribute to social equality within a community?",
+   "Who should bear the primary responsibility for preserving ancient books and manuscripts: private collectors or public libraries?"
+  ]
+ }
+}

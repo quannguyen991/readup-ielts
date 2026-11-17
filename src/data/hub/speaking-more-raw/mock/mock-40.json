@@ -1,0 +1,62 @@
+{
+ "id": "mock-40",
+ "title": "IELTS Speaking Mock Test 40",
+ "titleVi": "Đề thi thử số 40",
+ "focusVi": "Rèn luyện kỹ năng phân tích lý do dẫn đến sự thay đổi, mở rộng quan điểm cá nhân và bàn luận các vấn đề trừu tượng một cách đa chiều.",
+ "part1": [
+  {
+   "topic": "Studies",
+   "qs": [
+    "What subject do you find most challenging in your current studies?",
+    "Do you prefer studying alone or collaborating with classmates?",
+    "How have your study habits changed compared to when you were in secondary school?",
+    "Do you think modern technology has made studying easier or more stressful?"
+   ]
+  },
+  {
+   "topic": "Friends",
+   "qs": [
+    "How often do you usually spend time hanging out with your friends?",
+    "What qualities do you value most in a close friend?",
+    "Do you prefer having a few close friends or a large social circle?",
+    "Is it easy for you to make new friends when visiting unfamiliar places?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a time when you changed your mind about an important decision.",
+  "bullets": [
+   "what the initial decision was",
+   "what made you reconsider your choice",
+   "what new decision you made instead",
+   "and explain how you felt after making this change"
+  ]
+ },
+ "part3": [
+  "Why do some people find it difficult to admit they were wrong and change their mind?",
+  "How do opinions formed in childhood differ from those held in adulthood?",
+  "To what extent can advertising influence consumers to change their purchasing decisions?",
+  "Do you believe strong leaders should stick to their initial decisions or remain adaptable?",
+  "In what ways has the internet affected how people form and alter their viewpoints?"
+ ],
+ "answers": {
+  "p1": [
+   "I find advanced mathematics particularly demanding because it requires deep abstract reasoning. Whenever I deal with complex calculus formulas, I often have to spend hours re-reading lecture slides to fully grasp the concepts.",
+   "I definitely prefer studying alone because it allows me to concentrate without distractions. For example, when revising for final exams, working in absolute silence in my bedroom helps me absorb information much faster.",
+   "I am far more self-disciplined now than in secondary school. Back then, my teachers constantly monitored my homework, whereas nowadays at university, I plan my own revision timetable using digital calendar apps.",
+   "I believe technology makes learning substantially easier because information is instantly accessible. Whenever I encounter an unfamiliar academic term, I can immediately look up verified journal articles online instead of searching through library shelves.",
+   "I usually meet up with my friends once or twice a week, typically on weekends. We often unwind at a quiet local café in downtown Hanoi to chat about our work and daily lives.",
+   "Above all, I value sincerity and empathy in a friend. A trustworthy friend who genuinely listens during tough times, like my best friend Minh does, is someone I treasure above everything else.",
+   "I lean towards having a small circle of intimate friends. Having four or five genuine companions allows for deeper, more meaningful emotional support, whereas having dozens of acquaintances often feels superficial and exhausting.",
+   "Honestly, it can be slightly intimidating at first, but I manage quite well. For instance, when I travel solo to Da Nang, striking up casual conversations at community hostels helps me make friends easily."
+  ],
+  "sample": "I’d like to share an experience from two years ago when I completely reconsidered my academic path. Initially, I was determined to major in business administration at university, mostly because my parents strongly encouraged me to follow a traditional corporate career. However, during the summer before enrollment, I volunteered at a non-profit community project that involved designing educational content for underprivileged children. Working hands-on with graphic tools and digital media made me realize that my true passion lay in creative arts and graphic design, rather than corporate spreadsheets. I spent weeks reflecting deeply and discussing my aspirations with my mentors, who encouraged me to pursue what genuinely excited me. Consequently, I gathered my courage, sat down with my parents, and decided to switch my major to digital multimedia design instead. It was quite a daunting choice because it meant entering an unfamiliar field with less conventional career stability. Ultimately, I felt an immense sense of relief and liberation. Embracing my creative intuition gave me authentic enthusiasm for my studies, and looking back, it remains one of the best decisions I have ever made.",
+  "p3": [
+   "Many individuals struggle to change their stance because personal ego and pride often cloud objective thinking. Admitting an error can feel like an embarrassing sign of intellectual weakness or vulnerability. For instance, in workplace debates, professionals sometimes cling to outdated strategies simply to protect their authority. Ultimately, overcoming this fear requires emotional maturity and an openness to constructive criticism.",
+   "Childhood opinions are predominantly inherited from parental guidance and immediate social environments without much critical evaluation. In contrast, adults tend to develop nuanced perspectives shaped by diverse life experiences, higher education, and exposure to contrasting viewpoints. While a child might view moral dilemmas in black and white, a mature adult typically recognizes contextual subtleties before arriving at a balanced judgment.",
+   "Commercial advertising exercises tremendous psychological leverage over consumer behavior by appealing to emotional aspirations. Even if a shopper enters a store intending to buy a budget-friendly smartphone, aggressive promotional campaigns highlighting premium lifestyle imagery can sway them into purchasing a far pricier model. Therefore, marketing strategies frequently succeed in reshaping buyers' preferences through persuasive visual storytelling and targeted endorsements.",
+   "In my view, truly effective leadership demands cognitive flexibility rather than stubborn consistency. While sticking to core ethical principles is vital, blindly pursuing an initial plan amid changing market dynamics often leads to organizational failure. Great political and business leaders readily pivot when new evidence emerges, demonstrating pragmatic wisdom rather than indecisiveness, which ultimately inspires greater public confidence.",
+   "The internet serves as a double-edged sword regarding intellectual flexibility. On one hand, instant access to global research allows individuals to fact-check beliefs and broaden their horizons. Conversely, social media algorithms often trap users within ideological echo chambers, reinforcing existing biases rather than encouraging open debate. Consequently, while information is abundant, truly shifting one's mindset online requires deliberate discernment."
+  ]
+ }
+}

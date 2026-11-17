@@ -1,0 +1,62 @@
+{
+ "id": "mock-36",
+ "title": "IELTS Speaking Mock Test 36",
+ "titleVi": "Đề thi thử số 36",
+ "focusVi": "Rèn luyện kỹ năng thuật lại sai lầm trong quá khứ, phân tích nguyên nhân và rút ra bài học kinh nghiệm sâu sắc.",
+ "part1": [
+  {
+   "topic": "Leadership",
+   "qs": [
+    "Do you consider yourself a natural leader?",
+    "Have you ever led a team or group project?",
+    "What qualities do you think make an effective leader?",
+    "Would you like to take on more leadership responsibilities in the future?"
+   ]
+  },
+  {
+   "topic": "Job Interviews",
+   "qs": [
+    "Have you ever attended a formal job interview?",
+    "What do you think is the hardest part of an interview?",
+    "How do people usually prepare for job interviews in your country?",
+    "Do you think online interviews are better than face-to-face ones?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a time you made a mistake at work or school.",
+  "bullets": [
+   "what the mistake was",
+   "when and where it happened",
+   "what the consequences were",
+   "and explain why you made this mistake and what you learned from it"
+  ]
+ },
+ "part3": [
+  "Why are some people reluctant to admit their mistakes in public?",
+  "Do you believe that making mistakes is an essential part of the learning process?",
+  "How can teachers or employers encourage a culture where failure is not punished?",
+  "What kinds of mistakes are unacceptable in professional environments?",
+  "Has modern technology made people more or less forgiving of human error?"
+ ],
+ "answers": {
+  "p1": [
+   "Not really, as I generally prefer supporting others rather than directing them. I feel much more comfortable analyzing data or refining details behind the scenes than standing at the forefront managing group dynamics.",
+   "Yes, during my final university year, I coordinated our capstone marketing campaign. It was quite demanding because I had to delegate tasks to four classmates, but we ultimately earned top marks for our teamwork.",
+   "In my view, active listening and empathy are paramount. A truly inspiring leader must understand their team members' strengths and concerns, rather than simply issuing commands without considering how others feel.",
+   "Definitely, because I want to challenge myself and mentor junior colleagues. Stepping into a managerial role would allow me to shape meaningful workplace projects, which sounds both fulfilling and professionally rewarding.",
+   "Yes, I have been through a few, including one for my current position. I remember feeling extremely nervous before entering the boardroom, but the panel was warm and put me at ease quickly.",
+   "I would say answering unexpected situational questions under pressure. When an interviewer asks about a sudden workplace conflict, it is tough to structure a thoughtful, coherent response without stumbling or hesitating.",
+   "Most candidates research the company extensively and rehearse common questions in front of a mirror. Many fresh graduates also seek advice from senior peers or join online career forums to polish their responses.",
+   "Not necessarily. While virtual interviews save commuting time and reduce initial tension, in-person meetings allow both parties to gauge body language and genuine workplace culture far more accurately."
+  ],
+  "sample": "I would like to share an experience from my sophomore year at university when I made a rather embarrassing academic blunder. I was taking an advanced statistics module, and we were assigned a major group project that contributed significantly to our final grade. My role was compiling the final dataset and submitting the consolidated report through the online portal. However, due to severe exhaustion after pulling an all-nighter, I accidentally uploaded an unedited draft containing incomplete calculations instead of the polished file. The consequence hit us the following week when our professor awarded our submission a failing mark for lacking methodology notes. I was devastated because my teammates had worked tirelessly, and my carelessness jeopardized their academic standings. I immediately scheduled a meeting with our lecturer, took full accountability, and showed the file timestamps to prove the completed work had existed before the deadline. Gratefully, she agreed to review the correct document with a minor late penalty. This slip-up taught me that fatigue severely impairs judgment. Since then, I always set reminders to double-check file names and avoid doing crucial submissions at the eleventh hour.",
+  "p3": [
+   "Primarily, it stems from the fear of losing face or damaging one's professional reputation. In highly competitive settings, admitting an error is often perceived as a sign of incompetence rather than honesty. For instance, an employee might conceal an administrative oversight to avoid reprimands from superiors. Consequently, pride and anxiety frequently prevent individuals from being transparent about their shortcomings.",
+   "Undoubtedly, because errors provide tangible feedback that theoretical instruction simply cannot replicate. When people stumble, they are compelled to analyze what went wrong, which deepens their critical thinking and resilience. Conversely, those who never face setbacks rarely develop robust problem-solving skills. Therefore, constructive trial and error is fundamentally the most effective teacher anyone can have.",
+   "Leaders can cultivate this environment by framing slip-ups as developmental opportunities rather than disciplinary offenses. Instead of assigning blame when a project derails, managers should hold open debriefing sessions to dissect root causes collectively. In contrast, punitive systems only foster secrecy and anxiety among staff. Ultimately, psychological safety is what allows innovation and honest problem-solving to flourish.",
+   "I would argue that errors caused by gross negligence or ethical breaches are completely intolerable, particularly in high-stakes fields like healthcare or civil engineering. While minor technical oversights can usually be rectified, ignoring established safety protocols puts lives at risk. An architect cutting corners on structural integrity, for example, cannot be excused. Hence, when intentional neglect causes harm, leniency is rarely warranted.",
+   "I believe technology has made society significantly less forgiving. Because digital footprints are permanent, an individual's past blunders can be archived, publicized, and scrutinized indefinitely on social media platforms. In the pre-internet era, minor personal gaffes were forgotten relatively quickly, whereas today they can trigger immediate public outrage. Thus, hyper-connectivity has substantially narrowed our tolerance for human fallibility."
+  ]
+ }
+}

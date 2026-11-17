@@ -1,5 +1,728 @@
 [
  {
+  "id": "am-thuc",
+  "titleVi": "Ăn uống và nấu nướng",
+  "tasks": [
+   {
+    "id": "gt-am-thuc-1",
+    "level": "EASY",
+    "title": "Ordering Lunch at a Casual Cafe",
+    "titleVi": "Gọi món trưa tại quán cà phê",
+    "situationVi": "Bạn đang đi du lịch nước ngoài và bước vào một quán ăn nhanh hoặc quán cà phê để gọi bữa trưa trực tiếp với nhân viên phục vụ.",
+    "task": "You are at a cafe placing your lunch order. Tell the server what food and drink you would like, ask for a minor modification to your meal, and ask for the bill at the end.",
+    "mustVi": [
+     "Gọi một món ăn chính và một loại thức uống cụ thể",
+     "Đưa ra một yêu cầu tùy chỉnh đơn giản (ví dụ: bớt đá, bỏ hành, đổi món phụ)",
+     "Yêu cầu thanh toán hóa đơn một cách lịch sự"
+    ],
+    "phrases": [
+     {
+      "en": "Could I get...",
+      "vi": "Cho tôi gọi món...",
+      "ex": "Could I get the grilled chicken sandwich, please?"
+     },
+     {
+      "en": "I'd like to have...",
+      "vi": "Tôi muốn dùng...",
+      "ex": "I'd like to have an iced Americano with light ice."
+     },
+     {
+      "en": "Can I get that with no...",
+      "vi": "Tôi có thể lấy món đó không có... được không?",
+      "ex": "Can I get that burger with no onions, please?"
+     },
+     {
+      "en": "Instead of...",
+      "vi": "Thay vì...",
+      "ex": "Could I have a side salad instead of fries?"
+     },
+     {
+      "en": "Could we get the check, please?",
+      "vi": "Cho chúng tôi xin hóa đơn thanh toán nhé?",
+      "ex": "Excuse me, could we get the check, please?"
+     },
+     {
+      "en": "Do you accept card payments?",
+      "vi": "Quán có nhận thanh toán bằng thẻ không?",
+      "ex": "Do you accept card payments or cash only?"
+     }
+    ],
+    "sample": "Hi there! Could I get the grilled chicken sandwich, please? But can I get that with no onions? Also, I'd like to have a side salad instead of French fries if that's possible. To drink, I'll just have an iced Americano with very little ice. That would be all for now. ... Thank you, the meal was wonderful! Excuse me, could we get the check, please? We're ready to pay, and do you accept credit cards? Thanks so much for your help!",
+    "tipVi": "Hãy dùng các mẫu câu lịch sự như 'Could I get...' hoặc 'I'd like...' thay vì nói cộc lốc 'I want...' khi giao tiếp với nhân viên phục vụ."
+   },
+   {
+    "id": "gt-am-thuc-2",
+    "level": "EASY",
+    "title": "Inviting a Friend to Dinner",
+    "titleVi": "Mời bạn đến nhà dùng bữa tối",
+    "situationVi": "Bạn muốn mời một người bạn hoặc đồng nghiệp nước ngoài đến căn hộ của mình ăn tối vào dịp cuối tuần.",
+    "task": "Talk to your friend to invite them over for dinner. Suggest a specific day and time, share what you plan to cook, and ask about their food preferences or dietary restrictions.",
+    "mustVi": [
+     "Đưa ra lời mời và đề xuất thời gian, địa điểm cụ thể",
+     "Tiết lộ món ăn bạn dự định tự tay chế biến",
+     "Hỏi thăm sở thích ăn uống hoặc các món bạn mình kiêng ăn"
+    ],
+    "phrases": [
+     {
+      "en": "Are you free this...?",
+      "vi": "Bạn có rảnh vào... này không?",
+      "ex": "Are you free this Saturday evening?"
+     },
+     {
+      "en": "I was wondering if you'd like to...",
+      "vi": "Mình tự hỏi liệu bạn có muốn...",
+      "ex": "I was wondering if you'd like to come over for dinner."
+     },
+     {
+      "en": "I'm planning to make...",
+      "vi": "Mình dự định nấu món...",
+      "ex": "I'm planning to make traditional beef pho from scratch."
+     },
+     {
+      "en": "Do you have any dietary restrictions?",
+      "vi": "Bạn có kiêng ăn món gì không?",
+      "ex": "Do you have any dietary restrictions or allergies?"
+     },
+     {
+      "en": "Let me know if that works for you.",
+      "vi": "Báo lại cho mình biết nếu thời gian đó tiện cho bạn nhé.",
+      "ex": "Let me know if 7 PM this Friday works for you."
+     },
+     {
+      "en": "Bring your appetite!",
+      "vi": "Hãy chuẩn bị một chiếc bụng đói nhé!",
+      "ex": "You don't need to bring anything, just bring your appetite!"
+     }
+    ],
+    "sample": "Hey Mark! Are you free this Saturday evening? I was wondering if you'd like to come over to my place for dinner around 7 PM. I'm planning to cook some traditional Vietnamese beef noodle soup, also known as Pho, from scratch. Before I go grocery shopping, do you have any dietary restrictions or food allergies? Let me know if you can't eat beef or spicy food. You don't need to bring anything, just bring your appetite! Let me know if that works for you.",
+    "tipVi": "Hãy duy trì tông giọng hào hứng, thân mật và chủ động hỏi về dị ứng để thể hiện sự chu đáo của người chủ nhà."
+   },
+   {
+    "id": "gt-am-thuc-3",
+    "level": "MEDIUM",
+    "title": "Describing a Signature Vietnamese Dish",
+    "titleVi": "Miêu tả món ăn đặc trưng Việt Nam",
+    "situationVi": "Bạn đang trò chuyện với một du khách nước ngoài mới đến Việt Nam lần đầu và muốn giới thiệu một món ăn đường phố nổi tiếng mà họ nhất định phải thử.",
+    "task": "Describe a signature Vietnamese dish to a foreign visitor. Explain its key ingredients and flavors, guide them on how to eat it properly, and explain why it is worth trying.",
+    "mustVi": [
+     "Nêu tên món ăn kèm các thành phần chính và hương vị đặc trưng",
+     "Hướng dẫn cách thưởng thức món ăn đúng điệu theo văn hóa bản địa",
+     "Giải thích lý do thuyết phục vì sao người bạn đó không nên bỏ lỡ món này"
+    ],
+    "phrases": [
+     {
+      "en": "It consists of...",
+      "vi": "Nó bao gồm các thành phần...",
+      "ex": "It consists of crispy rice pancakes filled with shrimp and pork."
+     },
+     {
+      "en": "A perfect balance of...",
+      "vi": "Sự cân bằng hoàn hảo giữa...",
+      "ex": "The sauce has a perfect balance of sweet, salty, and sour."
+     },
+     {
+      "en": "The traditional way to eat it is...",
+      "vi": "Cách ăn truyền thống là...",
+      "ex": "The traditional way to eat it is by wrapping it with fresh herbs."
+     },
+     {
+      "en": "Dip it into...",
+      "vi": "Chấm món đó vào...",
+      "ex": "Dip each roll into the fragrant chili garlic fish sauce."
+     },
+     {
+      "en": "A must-try dish",
+      "vi": "Một món nhất định phải nếm thử",
+      "ex": "This is truly a must-try dish for any food lover visiting Hanoi."
+     },
+     {
+      "en": "Crispy on the outside, tender on the inside",
+      "vi": "Bên ngoài giòn rụm, bên trong mềm mọng",
+      "ex": "The pancake is crispy on the outside and tender on the inside."
+     }
+    ],
+    "sample": "If you only try one street food here, you must try Banh Xeo, which is a savory Vietnamese crepe. It consists of a crispy rice-flour pancake filled with shrimp, pork slices, and bean sprouts. It has a rich, turmeric aroma and a lovely crunchy texture. The traditional way to eat it is by cutting a piece, wrapping it in mustard greens and fresh mint, and dipping it into sweet and sour fish sauce. You should try it because it offers an incredible harmony of hot, crunchy, fresh, and tangy flavors in just one bite!",
+    "tipVi": "Tận dụng các tính từ miêu tả đa giác quan (crispy, savory, tangy, aromatic) để khơi gợi cảm giác thèm ăn của người nghe."
+   },
+   {
+    "id": "gt-am-thuc-4",
+    "level": "MEDIUM",
+    "title": "Clarifying Dietary Needs and Allergies",
+    "titleVi": "Làm rõ yêu cầu ăn kiêng và dị ứng",
+    "situationVi": "Bạn đang dùng bữa tại một nhà hàng quốc tế cao cấp và bạn có tiền sử dị ứng nghiêm trọng với đậu phộng, đồng thời không ăn được hải sản.",
+    "task": "Inform your server about your food allergies and dietary needs. Ask detailed questions about specific menu ingredients, and negotiate a safe substitution for your meal.",
+    "mustVi": [
+     "Trình bày rõ ràng về tình trạng dị ứng và hạn chế ăn uống của bản thân",
+     "Hỏi kỹ về thành phần nước sốt và loại dầu ăn được dùng trong bếp",
+     "Đề xuất đổi thành phần thay thế an toàn hoặc nhờ phục vụ gợi ý món phù hợp"
+    ],
+    "phrases": [
+     {
+      "en": "I'm severely allergic to...",
+      "vi": "Tôi bị dị ứng rất nặng với...",
+      "ex": "I'm severely allergic to peanuts and tree nuts."
+     },
+     {
+      "en": "Does this dish contain any...?",
+      "vi": "Món ăn này có chứa... không?",
+      "ex": "Does this dressing contain any peanut oil or seafood extract?"
+     },
+     {
+      "en": "Could you check with the chef if...",
+      "vi": "Bạn có thể hỏi lại đầu bếp xem...",
+      "ex": "Could you check with the chef if they can prepare it separately?"
+     },
+     {
+      "en": "Risk of cross-contamination",
+      "vi": "Nguy cơ nhiễm chéo",
+      "ex": "Is there any risk of cross-contamination with shellfish in the fryer?"
+     },
+     {
+      "en": "Is it possible to substitute... with...?",
+      "vi": "Có thể thay thế... bằng... được không?",
+      "ex": "Is it possible to substitute the shrimp with grilled chicken or tofu?"
+     },
+     {
+      "en": "Could you recommend a safe option?",
+      "vi": "Bạn có thể gợi ý một lựa chọn an toàn không?",
+      "ex": "Could you recommend a safe alternative from the main courses?"
+     }
+    ],
+    "sample": "Excuse me, before I place my order, I need to mention that I'm severely allergic to peanuts and I don't eat seafood. I was looking at the chef's special stir-fried noodles, but does this dish contain any peanut oil or shrimp paste? Could you please check with the chef to ensure there is no cross-contamination in the kitchen? If the sauce has shellfish, is it possible to substitute it with a simple soy sauce glaze and replace the shrimp with tofu? If not, could you recommend another safe vegetarian option from the menu?",
+    "tipVi": "Hãy nói với ngữ điệu nghiêm túc, rành mạch đối với các từ khóa y tế như 'severely allergic' và 'cross-contamination' để nhân viên nhận thức rõ mức độ quan trọng."
+   },
+   {
+    "id": "gt-am-thuc-5",
+    "level": "HARD",
+    "title": "Guiding a Recipe Step by Step",
+    "titleVi": "Hướng dẫn công thức nấu ăn từng bước",
+    "situationVi": "Bạn đang quay một video nấu ăn ngắn hoặc gọi video hướng dẫn một người bạn nước ngoài cách làm món cơm chiên gia đình thơm ngon chuẩn vị.",
+    "task": "Explain how to cook a popular homemade dish step-by-step. Outline the prep work, guide them through the cooking stages using precise sequencers, and share crucial tips to avoid common cooking mistakes.",
+    "mustVi": [
+     "Liệt kê công đoạn sơ chế và lưu ý chọn nguyên liệu ban đầu",
+     "Mô tả chi tiết các bước nấu và kiểm soát nhiệt độ bằng từ nối trình tự",
+     "Chỉ ra lỗi sai phổ biến người mới hay mắc và bí quyết khắc phục"
+    ],
+    "phrases": [
+     {
+      "en": "First and foremost, you need to...",
+      "vi": "Trước hết và quan trọng nhất, bạn cần...",
+      "ex": "First and foremost, you need to ensure the rice is completely chilled."
+     },
+     {
+      "en": "Sauté the aromatics until fragrant",
+      "vi": "Phi thơm các loại gia vị hành tỏi",
+      "ex": "Sauté the minced garlic and shallots until golden and fragrant."
+     },
+     {
+      "en": "Bring it to a gentle simmer",
+      "vi": "Đun sôi liu riu nhỏ lửa",
+      "ex": "Add the sauce and bring it to a gentle simmer over medium heat."
+     },
+     {
+      "en": "A common mistake people make is...",
+      "vi": "Một sai lầm phổ biến mà nhiều người mắc phải là...",
+      "ex": "A common mistake people make is overcrowding the pan with wet ingredients."
+     },
+     {
+      "en": "The key to success is...",
+      "vi": "Bí quyết quyết định thành công là...",
+      "ex": "The key to success is using high heat and stirring constantly."
+     },
+     {
+      "en": "Stir continuously to prevent burning",
+      "vi": "Đảo liên tục để không bị cháy dính",
+      "ex": "Stir continuously so that the seasonings coat every grain evenly."
+     }
+    ],
+    "sample": "Today, I'll teach you how to make classic Vietnamese fried rice. First, finely dice your carrots, sausages, and garlic, and make sure your cooked rice is completely chilled overnight. Heat some oil in a wok, sauté the aromatics until golden brown, then scramble two eggs and toss in the diced vegetables. Next, add the rice, turn the heat up high, and season with soy sauce and fish sauce. A common mistake people make is using warm, freshly cooked rice, which makes the dish soggy. The key is using dry, cold rice and stirring continuously so every grain separates nicely!",
+    "tipVi": "Sắp xếp bài nói bằng các từ nối thời gian rõ ràng (First, Next, Then, Finally) và kết hợp các động từ chỉ thao tác nấu bếp cụ thể (dice, sauté, toss, season) để tăng tính lưu loát."
+   }
+  ]
+ },
+ {
+  "id": "ban-be",
+  "titleVi": "Bạn bè, gia đình và kế hoạch",
+  "tasks": [
+   {
+    "id": "gt-ban-be-1",
+    "level": "EASY",
+    "title": "Inviting a Friend for Coffee",
+    "titleVi": "Rủ bạn đi cà phê cuối tuần",
+    "situationVi": "Bạn muốn rủ một người bạn đồng nghiệp thân thiết đi cà phê thư giãn vào sáng thứ Bảy tuần này sau một tuần làm việc bận rộn.",
+    "task": "You want to catch up with your coworker this weekend. Invite them out for coffee, suggest a specific time and location, and ask if that plan works for them.",
+    "mustVi": [
+     "Đưa ra lời mời và lý do muốn gặp mặt (xả hơi sau tuần làm việc).",
+     "Gợi ý thời gian, địa điểm cụ thể và mô tả ngắn về quán đó.",
+     "Hỏi xem đối phương có tiện không và sẵn sàng linh hoạt đổi lịch nếu cần."
+    ],
+    "phrases": [
+     {
+      "en": "Are you free this...?",
+      "vi": "Bạn có rảnh vào... không?",
+      "ex": "Are you free this Saturday morning?"
+     },
+     {
+      "en": "How about grabbing a coffee?",
+      "vi": "Đi uống cà phê chút nhé?",
+      "ex": "How about grabbing a coffee together around 9 AM?"
+     },
+     {
+      "en": "It's been a while since...",
+      "vi": "Cũng lâu rồi kể từ khi...",
+      "ex": "It's been a while since we caught up properly."
+     },
+     {
+      "en": "There's a cozy café near...",
+      "vi": "Có một quán cà phê ấm cúng gần...",
+      "ex": "There's a cozy café near our office with great drinks."
+     },
+     {
+      "en": "Let me know if that works for you.",
+      "vi": "Báo cho mình biết nếu tiện cho bạn nhé.",
+      "ex": "Let me know if that works for you, or we can reschedule."
+     },
+     {
+      "en": "No pressure at all.",
+      "vi": "Không sao cả, đừng ngại nhé.",
+      "ex": "If you already have plans, no pressure at all!"
+     }
+    ],
+    "sample": "Hi Lan! It's been such a hectic week at work, so I was wondering if you are free this Saturday morning? How about grabbing a cup of coffee together? There is a really cozy café called The Workshop near our office. They have fantastic drip coffee and quiet outdoor seating, which is perfect for unwinding. I'm thinking around 9:30 AM, but let me know if that time works for you. If you already have plans, no pressure at all, we can easily pick another day!",
+    "tipVi": "Hãy giữ giọng điệu ấm áp, tự nhiên và dùng câu hỏi mở ở cuối để người nghe cảm thấy thoải mái lựa chọn."
+   },
+   {
+    "id": "gt-ban-be-2",
+    "level": "EASY",
+    "title": "Declining a Dinner Invitation Politely",
+    "titleVi": "Từ chối lời mời ăn tối lịch sự",
+    "situationVi": "Một người bạn thân rủ bạn đến ăn tối tại nhà vào tối thứ Sáu, nhưng bạn đã có lịch ăn tiệc mừng thọ bà ngoại cùng gia đình.",
+    "task": "A close friend invited you to dinner this Friday, but you cannot attend because of a family gathering. Call them to thank them, explain your reason politely, and propose another time to meet.",
+    "mustVi": [
+     "Cảm ơn vì lời mời và bày tỏ sự tiếc nuối vì không thể tham gia.",
+     "Giải thích lý do bận việc gia đình (tiệc mừng thọ của bà).",
+     "Đề xuất một buổi hẹn khác vào tuần sau để bù lại."
+    ],
+    "phrases": [
+     {
+      "en": "Thanks so much for inviting me.",
+      "vi": "Cảm ơn bạn rất nhiều vì đã mời mình.",
+      "ex": "Thanks so much for inviting me to dinner!"
+     },
+     {
+      "en": "I'd love to come, but...",
+      "vi": "Mình rất muốn đến, nhưng mà...",
+      "ex": "I'd love to come, but I have a prior family commitment."
+     },
+     {
+      "en": "It's my grandmother's birthday.",
+      "vi": "Hôm đó là sinh nhật/mừng thọ của bà mình.",
+      "ex": "It's my grandmother's 80th birthday dinner this Friday."
+     },
+     {
+      "en": "I can't miss it.",
+      "vi": "Mình không thể vắng mặt được.",
+      "ex": "All my relatives are coming, so I really cannot miss it."
+     },
+     {
+      "en": "Can I take a rain check?",
+      "vi": "Cho mình xin hẹn dịp khác được không?",
+      "ex": "Can I take a rain check and make it up to you?"
+     },
+     {
+      "en": "How about next week instead?",
+      "vi": "Hay là chuyển sang tuần sau nhé?",
+      "ex": "How about lunch next Tuesday instead? My treat!"
+     }
+    ],
+    "sample": "Hey Nam, thank you so much for the dinner invitation! I'd really love to come and hang out with everyone, but unfortunately, I can't make it this Friday. It's actually my grandmother's 80th birthday, and my whole family is hosting a celebration dinner for her at a restaurant. All my relatives from out of town will be there, so I definitely cannot miss it. Can I take a rain check? How about we grab lunch next Tuesday instead? I'll treat you to make up for it!",
+    "tipVi": "Công thức từ chối lịch thiệp nhất là: Cảm ơn và tiếc nuối, nêu lý do gia đình chính đáng, sau đó chủ động hẹn bù vào ngày khác."
+   },
+   {
+    "id": "gt-ban-be-3",
+    "level": "MEDIUM",
+    "title": "Planning a Surprise Birthday Party",
+    "titleVi": "Lên kế hoạch tiệc sinh nhật bất ngờ",
+    "situationVi": "Bạn và một người bạn tên Sarah đang bàn bạc để cùng nhau tổ chức một bữa tiệc sinh nhật bất ngờ cho Minh, bạn chung của hai người.",
+    "task": "You are discussing plans for Minh's surprise birthday party with Sarah. Suggest a suitable venue and time, divide tasks between the two of you, and discuss how to keep the party a secret.",
+    "mustVi": [
+     "Đề xuất địa điểm tổ chức và thời gian thích hợp cho buổi tiệc.",
+     "Phân chia nhiệm vụ cụ thể (đặt bánh kem, trang trí, chuẩn bị đồ ăn).",
+     "Đưa ra cách thức để giữ bí mật với người bạn đó cho tới phút chót."
+    ],
+    "phrases": [
+     {
+      "en": "We need to figure out...",
+      "vi": "Chúng mình cần chốt/xem xét...",
+      "ex": "We need to figure out a convenient venue first."
+     },
+     {
+      "en": "How about hosting it at...?",
+      "vi": "Hay là tổ chức ở... đi?",
+      "ex": "How about hosting it at my apartment this Saturday?"
+     },
+     {
+      "en": "I can take care of...",
+      "vi": "Mình có thể phụ trách phần...",
+      "ex": "I can take care of ordering the cake and drinks."
+     },
+     {
+      "en": "Could you handle the...?",
+      "vi": "Bạn lo giúp phần... được không?",
+      "ex": "Could you handle the decorations and balloons?"
+     },
+     {
+      "en": "Keep it under wraps.",
+      "vi": "Giữ kín bí mật.",
+      "ex": "We must keep everything completely under wraps."
+     },
+     {
+      "en": "Make up an excuse.",
+      "vi": "Nghĩ ra một cái cớ.",
+      "ex": "Let's make up an excuse to lure him there on time."
+     }
+    ],
+    "sample": "Hi Sarah! Let's finalize the plan for Minh's surprise party. I think Saturday evening at my apartment would be ideal because it's private and we can stay late. For the preparation, I can take care of ordering his favorite chocolate cake and picking up snacks and drinks. Could you handle the decorations and create a photo album from all of us? Most importantly, we must keep everything under wraps. To trick him, let's make up an excuse that you and I need his help moving some heavy boxes. When he walks in, everyone yells surprise!",
+    "tipVi": "Sử dụng các mẫu câu đề xuất mang tính hợp tác như 'How about...', 'I can take care of...', 'Could you handle...' để phân công việc khéo léo."
+   },
+   {
+    "id": "gt-ban-be-4",
+    "level": "MEDIUM",
+    "title": "Talking About a Family Gathering",
+    "titleVi": "Chia sẻ về buổi sum họp gia đình",
+    "situationVi": "Bạn đang trò chuyện với một người bạn nước ngoài và kể cho họ nghe về buổi họp mặt đại gia đình sắp diễn ra ở quê của bạn.",
+    "task": "Talk to an international friend about an upcoming family reunion in your hometown. Describe who will be there, your role in the preparation, and why this event is meaningful to you.",
+    "mustVi": [
+     "Giới thiệu về dịp họp mặt gia đình và các thành viên tham gia.",
+     "Mô tả các hoạt động chuẩn bị nấu nướng truyền thống và phần việc của bạn.",
+     "Bày tỏ cảm xúc và lý do sự kiện này có ý nghĩa quan trọng với bạn."
+    ],
+    "phrases": [
+     {
+      "en": "We gather at my grandparents' house.",
+      "vi": "Cả nhà tụ họp tại nhà ông bà mình.",
+      "ex": "Every year, we gather at my grandparents' countryside house."
+     },
+     {
+      "en": "Relatives from across the country...",
+      "vi": "Họ hàng từ khắp mọi miền...",
+      "ex": "Relatives from across the country travel back home."
+     },
+     {
+      "en": "Help out with cooking...",
+      "vi": "Phụ giúp việc nấu nướng...",
+      "ex": "I usually help out with cooking traditional dishes."
+     },
+     {
+      "en": "Sit around the dinner table.",
+      "vi": "Quây quần bên bàn ăn.",
+      "ex": "We love to sit around the dinner table and share memories."
+     },
+     {
+      "en": "Strengthen family bonds.",
+      "vi": "Gắn kết tình cảm gia đình.",
+      "ex": "This gathering really helps strengthen our family bonds."
+     },
+     {
+      "en": "A breath of fresh air.",
+      "vi": "Một làn gió mới / khoảng thời gian thư thái.",
+      "ex": "Leaving the busy city for family time is always a breath of fresh air."
+     }
+    ],
+    "sample": "Next month, my whole family is holding our annual reunion in Da Nang. Around thirty relatives, from my little cousins to great-aunts, will gather at my grandparents' countryside home. My primary role is helping my mom and aunts prepare traditional dishes like spring rolls and steamed chicken, while the men clean the garden. In the evening, we sit around a huge table outside, laughing and sharing childhood stories. With everyone leading hectic lives in different cities, this gathering truly strengthens our family bonds. It always reminds me of my roots and brings me immense peace.",
+    "tipVi": "Kết hợp miêu tả chi tiết thực tế (món ăn, công việc) với cảm xúc cá nhân để bài nói vừa chân thực vừa truyền cảm hứng."
+   },
+   {
+    "id": "gt-ban-be-5",
+    "level": "HARD",
+    "title": "Advising a Friend on Work-Life Balance",
+    "titleVi": "Khuyên bạn cân bằng công việc và gia đình",
+    "situationVi": "Bạn thân của bạn đang rơi vào tình trạng kiệt sức trầm trọng vì vừa phải cáng đáng dự án lớn ở công ty, vừa phải chăm con nhỏ và phụng dưỡng bố mẹ già.",
+    "task": "Talk to your close friend who is experiencing severe burnout from balancing work and family duties. Show deep empathy, offer two practical pieces of advice, and propose a concrete way to assist them.",
+    "mustVi": [
+     "Thể hiện sự đồng cảm sâu sắc với tình trạng kiệt sức và quá tải của bạn mình.",
+     "Đưa ra 2 lời khuyên thực tế (đặt ranh giới giờ làm việc, san sẻ việc nhà hoặc thuê hỗ trợ).",
+     "Đề nghị nhận giúp một việc cụ thể để bạn mình có thời gian nghỉ ngơi phục hồi."
+    ],
+    "phrases": [
+     {
+      "en": "I can see how exhausted you are.",
+      "vi": "Mình thấy rõ bạn đang kiệt sức đến mức nào.",
+      "ex": "I can see how exhausted you are lately, and I'm worried."
+     },
+     {
+      "en": "You can't pour from an empty cup.",
+      "vi": "Bạn không thể chăm sóc ai khi chính mình đã cạn kiệt.",
+      "ex": "Remember that you can't pour from an empty cup; your health matters."
+     },
+     {
+      "en": "Set firm boundaries.",
+      "vi": "Thiết lập ranh giới rõ ràng.",
+      "ex": "Try to set firm boundaries between your office hours and home life."
+     },
+     {
+      "en": "Don't hesitate to delegate.",
+      "vi": "Đừng ngần ngại chia sẻ / giao bớt việc cho người khác.",
+      "ex": "Don't hesitate to delegate chores or hire a temporary helper."
+     },
+     {
+      "en": "Take something off your plate.",
+      "vi": "Gánh bớt một phần việc cho bạn.",
+      "ex": "Let me take something off your plate this weekend."
+     },
+     {
+      "en": "I'm always in your corner.",
+      "vi": "Mình luôn ở bên cạnh ủng hộ bạn.",
+      "ex": "Whatever you decide, remember that I'm always in your corner."
+     }
+    ],
+    "sample": "I've noticed how completely drained you look lately, and I truly understand how overwhelmed you feel trying to juggle that massive work project with caring for your toddler and aging parents. But remember, you cannot pour from an empty cup. First, try to set firm boundaries at work by refusing non-urgent overtime emails after 7 PM. Second, don't hesitate to hire a part-time helper twice a week for deep cleaning and cooking. To take something off your plate right now, I can babysit your son this Saturday afternoon so you can sleep or visit a spa. I'm always in your corner!",
+    "tipVi": "Hãy bắt đầu bằng sự thấu hiểu chân thành trước khi đưa ra lời khuyên để tránh gây cảm giác phán xét hoặc áp đặt lên người nghe."
+   }
+  ]
+ },
+ {
+  "id": "cong-nghe",
+  "titleVi": "Công nghệ và mạng xã hội",
+  "tasks": [
+   {
+    "id": "gt-cong-nghe-1",
+    "level": "EASY",
+    "title": "Recommending Your Favorite Useful App",
+    "titleVi": "Giới thiệu ứng dụng điện thoại yêu thích",
+    "situationVi": "Bạn đang trò chuyện giờ giải lao với một đồng nghiệp muốn quản lý công việc và tài chính cá nhân hiệu quả hơn trên điện thoại.",
+    "task": "Tell your coworker about a mobile app you use every day. Explain what it does, why it helps you, and suggest how they can get started using it.",
+    "mustVi": [
+     "Tên ứng dụng và công dụng chính của nó trong đời sống hàng ngày",
+     "Lý do bạn thích và ứng dụng này đã giúp bạn tiết kiệm thời gian hoặc tiền bạc ra sao",
+     "Lời khuyên giúp đồng nghiệp bắt đầu cài đặt và làm quen với ứng dụng"
+    ],
+    "phrases": [
+     {
+      "en": "I use it on a daily basis",
+      "vi": "Tôi dùng nó hàng ngày",
+      "ex": "I use it on a daily basis to track my spending."
+     },
+     {
+      "en": "The interface is very user-friendly",
+      "vi": "Giao diện rất thân thiện và dễ dùng",
+      "ex": "The interface is very user-friendly, so you will learn it fast."
+     },
+     {
+      "en": "It helps me keep track of...",
+      "vi": "Nó giúp tôi theo dõi...",
+      "ex": "It helps me keep track of my monthly expenses and savings."
+     },
+     {
+      "en": "One feature I really like is...",
+      "vi": "Một tính năng tôi thực sự thích là...",
+      "ex": "One feature I really like is the automatic budget reminder."
+     },
+     {
+      "en": "You can download it for free",
+      "vi": "Bạn có thể tải nó hoàn toàn miễn phí",
+      "ex": "You can download it for free on both iOS and Android."
+     },
+     {
+      "en": "Give it a try",
+      "vi": "Hãy dùng thử xem sao",
+      "ex": "Give it a try this weekend and see if it fits your needs."
+     }
+    ],
+    "sample": "Hey Minh, you should definitely check out Notion. It's an all-in-one productivity app that I use on a daily basis. The interface is very user-friendly, and it helps me keep track of both work deadlines and personal budgets in one convenient place. One feature I really like is the customizable templates, which save me tons of planning time each week. You can download it for free on the App Store or Google Play. I suggest starting with a simple to-do list template so you don't feel overwhelmed. Give it a try this evening!",
+    "tipVi": "Hãy dùng giọng điệu hào hứng, thân thiện và sử dụng các tính từ đơn giản miêu tả trải nghiệm người dùng."
+   },
+   {
+    "id": "gt-cong-nghe-2",
+    "level": "EASY",
+    "title": "Reporting a Home Internet Outage",
+    "titleVi": "Báo sự cố mất mạng internet tại nhà",
+    "situationVi": "Đường truyền internet nhà bạn đột ngột ngừng hoạt động khi bạn đang làm việc từ xa, và bạn gọi đến đường dây nóng hỗ trợ kỹ thuật của nhà mạng.",
+    "task": "You are calling your internet service provider's customer hotline. Explain the issue you are facing, mention what steps you have already tried, and request urgent technical assistance.",
+    "mustVi": [
+     "Nêu rõ vấn đề mất mạng xảy ra từ lúc nào và tình trạng đèn tín hiệu trên modem",
+     "Các thao tác tự khắc phục bạn đã làm (khởi động lại modem, kiểm tra dây cáp) nhưng không hiệu quả",
+     "Nhấn mạnh tính cấp bách của công việc và yêu cầu cử kỹ thuật viên hỗ trợ"
+    ],
+    "phrases": [
+     {
+      "en": "I'm calling to report an issue with...",
+      "vi": "Tôi gọi điện để báo cáo sự cố về...",
+      "ex": "I'm calling to report an issue with my home Wi-Fi connection."
+     },
+     {
+      "en": "The internet connection dropped suddenly",
+      "vi": "Mạng internet đột ngột bị ngắt",
+      "ex": "The internet connection dropped suddenly about two hours ago."
+     },
+     {
+      "en": "The optical light is blinking red",
+      "vi": "Đèn báo tín hiệu quang đang nhấp nháy đỏ",
+      "ex": "The optical light is blinking red on the main router."
+     },
+     {
+      "en": "I've tried restarting the router",
+      "vi": "Tôi đã thử khởi động lại bộ định tuyến",
+      "ex": "I've tried restarting the router twice, but nothing changed."
+     },
+     {
+      "en": "I work remotely, so it's quite urgent",
+      "vi": "Tôi làm việc từ xa nên việc này khá khẩn cấp",
+      "ex": "I work remotely, so having no internet is quite urgent."
+     },
+     {
+      "en": "Could you send a technician over?",
+      "vi": "Bên bạn có thể cử nhân viên kỹ thuật qua được không?",
+      "ex": "Could you send a technician over this afternoon to inspect the line?"
+     }
+    ],
+    "sample": "Hello, my customer account number is VNPT-4589. I'm calling to report an issue with my home internet. The connection dropped suddenly about two hours ago, and the optical light on my router has been blinking red ever since. I've already tried restarting the router and checking all cables, but nothing changed. I work remotely from home, so having a reliable connection is extremely urgent for my meetings today. Could you please check the line from your end or send a technician over this morning to fix it? Thank you.",
+    "tipVi": "Giữ giọng điệu lịch sự nhưng kiên quyết, đồng thời chủ động đọc mã hợp đồng để nhân viên tổng đài tra cứu nhanh hơn."
+   },
+   {
+    "id": "gt-cong-nghe-3",
+    "level": "MEDIUM",
+    "title": "Resolving an Online Shopping Issue",
+    "titleVi": "Khiếu nại sự cố mua sắm trực tuyến",
+    "situationVi": "Bạn đặt mua một chiếc tai nghe không dây trên sàn thương mại điện tử, nhưng khi nhận hàng thì bao bì bị móp rách và một bên tai nghe không hoạt động.",
+    "task": "Call the online store's customer service representative to complain about a defective product. Describe the order details and damage, explain why you are dissatisfied, and state your preferred resolution.",
+    "mustVi": [
+     "Cung cấp mã đơn hàng, sản phẩm đã mua và miêu tả cụ thể tình trạng lỗi",
+     "Bày tỏ sự thất vọng về khâu đóng gói hoặc kiểm tra chất lượng trước khi giao",
+     "Đưa ra yêu cầu cụ thể (đổi sản phẩm mới nguyên seal hoặc hoàn tiền 100%)"
+    ],
+    "phrases": [
+     {
+      "en": "I'm calling regarding order number...",
+      "vi": "Tôi gọi về đơn hàng số...",
+      "ex": "I'm calling regarding order number #SH-9921."
+     },
+     {
+      "en": "The parcel arrived in poor condition",
+      "vi": "Kiện hàng được giao trong tình trạng hư hỏng",
+      "ex": "The parcel arrived in poor condition with a crushed outer box."
+     },
+     {
+      "en": "The item appears to be defective",
+      "vi": "Sản phẩm dường như đã bị lỗi kỹ thuật",
+      "ex": "The item appears to be defective because the left earbud won't charge."
+     },
+     {
+      "en": "I'm quite disappointed with the quality",
+      "vi": "Tôi khá thất vọng về chất lượng kiểm hàng",
+      "ex": "I'm quite disappointed with your store's quality control."
+     },
+     {
+      "en": "I have taken photos as proof",
+      "vi": "Tôi đã chụp ảnh làm bằng chứng",
+      "ex": "I have taken photos and an unboxing video as clear proof."
+     },
+     {
+      "en": "I would like to request an immediate replacement",
+      "vi": "Tôi muốn yêu cầu đổi sản phẩm mới ngay lập tức",
+      "ex": "I would like to request an immediate replacement or a full refund."
+     }
+    ],
+    "sample": "Hello, I'm calling regarding order number SH-9921 for wireless earbuds. The parcel arrived yesterday in very poor condition with a crushed outer box. When I tested the device, the left earbud appeared to be completely defective and would not charge at all. I'm quite disappointed because I needed this headset for an overseas client call tomorrow. I have taken photos and an unboxing video as proof of the defect. Since the product is faulty upon arrival, I would like to request an immediate replacement, or a full refund if stock is unavailable. Please guide me through the return process.",
+    "tipVi": "Hãy trình bày sự việc theo trình tự thời gian rõ ràng và giữ thái độ chuyên nghiệp, tránh công kích cá nhân nhân viên tổng đài."
+   },
+   {
+    "id": "gt-cong-nghe-4",
+    "level": "MEDIUM",
+    "title": "Guiding Someone to Avoid Scams",
+    "titleVi": "Hướng dẫn người thân phòng tránh lừa đảo mạng",
+    "situationVi": "Bạn nhận thấy bố mẹ hoặc người thân lớn tuổi hay nhận được các tin nhắn trúng thưởng lạ hoặc cuộc gọi mạo danh ngân hàng trên điện thoại.",
+    "task": "Explain to an older family member how to identify common online scams and keep their phone secure. Describe the warning signs of fraudulent messages and provide two clear safety rules they must follow.",
+    "mustVi": [
+     "Chỉ ra các dấu hiệu nhận biết tin nhắn hoặc cuộc gọi giả mạo phổ biến",
+     "Cảnh báo hậu quả nếu bấm vào đường link lạ hoặc chia sẻ mã OTP ngân hàng",
+     "Đưa ra hai nguyên tắc bảo mật cốt lõi, dễ nhớ để người thân tự bảo vệ mình"
+    ],
+    "phrases": [
+     {
+      "en": "Be cautious when receiving...",
+      "vi": "Hãy cẩn trọng khi nhận được...",
+      "ex": "Be cautious when receiving unexpected messages offering easy money."
+     },
+     {
+      "en": "A classic warning sign is...",
+      "vi": "Một dấu hiệu cảnh báo kinh điển là...",
+      "ex": "A classic warning sign is creating a sense of panic or urgency."
+     },
+     {
+      "en": "Under no circumstances should you...",
+      "vi": "Trong bất kỳ hoàn cảnh nào cũng không được...",
+      "ex": "Under no circumstances should you share your banking OTP with anyone."
+     },
+     {
+      "en": "Clicking suspicious links can compromise your phone",
+      "vi": "Bấm vào link đáng ngờ có thể khiến điện thoại bị xâm nhập",
+      "ex": "Clicking suspicious links can compromise your phone and leak private data."
+     },
+     {
+      "en": "Legitimate banks never ask for...",
+      "vi": "Các ngân hàng uy tín không bao giờ yêu cầu...",
+      "ex": "Legitimate banks never ask for passwords over chat applications."
+     },
+     {
+      "en": "Always double-check with me first",
+      "vi": "Hãy luôn hỏi lại con để kiểm tra trước",
+      "ex": "Whenever you feel unsure, always double-check with me first."
+     }
+    ],
+    "sample": "Mom, please be very cautious when receiving messages claiming you won prizes or urgent bank alerts on Zalo. A classic warning sign is when strangers pressure you to act immediately or say your account will be frozen. Clicking suspicious links can compromise your phone, allowing criminals to steal your savings. To stay completely safe, please remember two basic rules. First, under no circumstances should you ever reveal your OTP code or bank password, because legitimate banks never ask for them. Second, never click unknown links. Whenever you feel doubtful about any strange notification, simply call and double-check with me first.",
+    "tipVi": "Sử dụng tông giọng ấm áp, kiên nhẫn và giải thích các khái niệm bảo mật bằng từ ngữ mộc mạc, tránh thuật ngữ kỹ thuật quá phức tạp."
+   },
+   {
+    "id": "gt-cong-nghe-5",
+    "level": "HARD",
+    "title": "Debating Social Media's Mental Impact",
+    "titleVi": "Bình luận tác động tâm lý của mạng xã hội",
+    "situationVi": "Bạn tham gia một buổi tọa đàm tiếng Anh thảo luận về việc thuật toán video ngắn (TikTok, Reels) đang làm giảm sự tập trung và ảnh hưởng sức khỏe tinh thần người dùng.",
+    "task": "Present your viewpoint on how social media algorithms influence user behavior and mental wellbeing. Weigh the advantages against the risks, and propose practical ways individuals can maintain digital balance.",
+    "mustVi": [
+     "Phân tích cách thuật toán cuốn hút người xem và làm suy giảm khả năng tập trung sâu",
+     "So sánh giữa lợi ích kết nối, thông tin với mặt trái như hội chứng sợ bỏ lỡ (FOMO) và so sánh xã hội tiêu cực",
+     "Đề xuất các giải pháp kỷ luật cá nhân thiết thực để xây dựng thói quen số lành mạnh"
+    ],
+    "phrases": [
+     {
+      "en": "Algorithms are engineered to maximize screen time",
+      "vi": "Thuật toán được thiết kế chuyên biệt để tối đa hóa thời gian nhìn màn hình",
+      "ex": "Algorithms are engineered to maximize screen time through endless dopamine loops."
+     },
+     {
+      "en": "It takes a heavy toll on our attention span",
+      "vi": "Nó gây tổn hại nghiêm trọng đến khả năng tập trung của chúng ta",
+      "ex": "Constant doomscrolling takes a heavy toll on our attention span."
+     },
+     {
+      "en": "On the flip side,...",
+      "vi": "Ở chiều ngược lại / Mặt khác,...",
+      "ex": "On the flip side, social media provides great community networking opportunities."
+     },
+     {
+      "en": "Fostering unhealthy social comparison",
+      "vi": "Thúc đẩy thói quen so sánh xã hội không lành mạnh",
+      "ex": "Curated highlight reels end up fostering unhealthy social comparison and anxiety."
+     },
+     {
+      "en": "Establish healthy digital boundaries",
+      "vi": "Thiết lập ranh giới công nghệ số lành mạnh",
+      "ex": "We need to establish healthy digital boundaries like phone-free bedrooms."
+     },
+     {
+      "en": "To practice mindful consumption",
+      "vi": "Thực hành việc tiêu thụ nội dung có ý thức",
+      "ex": "Users should practice mindful consumption instead of passive scrolling."
+     }
+    ],
+    "sample": "In my opinion, modern short-form algorithms are engineered to maximize screen time, which takes a heavy toll on our attention span and capacity for deep work. On the flip side, social media undeniably democratizes information and fosters creative communities. However, passive doomscrolling often leads to depression by fostering unhealthy social comparison against polished online personas. To regain control, we must establish healthy digital boundaries. Practicing mindful consumption by turning off non-essential notifications, tracking daily app limits, and keeping our bedrooms phone-free before sleep can help us harness technology effectively without sacrificing our mental wellbeing.",
+    "tipVi": "Cấu trúc bài nói theo mô hình nghị luận chặt chẽ (luận điểm - phân tích hai mặt - giải pháp) và vận dụng từ nối học thuật để tăng tính thuyết phục."
+   }
+  ]
+ },
+ {
   "id": "cong-so",
   "titleVi": "Công sở: họp, báo cáo, email nói",
   "tasks": [
@@ -237,6 +960,247 @@
     ],
     "sample": "Thank you for meeting with me, Mr. David. Over the past quarter, I've noticed a recurring bottleneck in how we track client deliverables. Because our teams still rely heavily on scattered email threads and spreadsheets, important task updates get lost, leading to frequent project delays. To solve this, I propose we adopt a centralized project management platform like Asana. This tool will streamline task assignments, automate status reports, and improve cross-department visibility. Based on my research, this could save our staff roughly five hours per week. I'd like to get your approval to pilot this system with my team for four weeks. Could we give that a try?",
     "tipVi": "Khi đề xuất cải tiến với lãnh đạo cấp cao, hãy nhấn mạnh vào giá trị kinh doanh (thời gian và chi phí tiết kiệm được) và giảm thiểu rủi ro bằng phương án thử nghiệm quy mô nhỏ."
+   }
+  ]
+ },
+ {
+  "id": "di-chuyen",
+  "titleVi": "Di chuyển và giao thông",
+  "tasks": [
+   {
+    "id": "gt-di-chuyen-1",
+    "level": "EASY",
+    "title": "Describing Your Daily Commute",
+    "titleVi": "Kể về lộ trình đi làm hàng ngày",
+    "situationVi": "Bạn đang trò chuyện giờ giải lao với một đồng nghiệp nước ngoài mới chuyển tới thành phố của bạn. Người đó tò mò muốn biết bạn đi làm bằng cách nào và giao thông ở đây ra sao.",
+    "task": "Tell your new expat coworker about how you travel to work every day. Describe your usual transportation, mention rush hour traffic conditions, and share what you like to do on the road to pass the time.",
+    "mustVi": [
+     "Phương tiện bạn sử dụng hàng ngày và thời gian di chuyển thường mất bao lâu.",
+     "Tình hình giao thông vào giờ cao điểm trên tuyến đường bạn đi.",
+     "Cách bạn thư giãn hoặc tận dụng thời gian trên đường đi làm (nghe nhạc, podcast hoặc ngắm phố xá)."
+    ],
+    "phrases": [
+     {
+      "en": "I commute to work by...",
+      "vi": "Tôi đi làm bằng...",
+      "ex": "I commute to work by motorbike every morning."
+     },
+     {
+      "en": "It takes me about [time] to get there",
+      "vi": "Tôi mất khoảng [thời gian] để tới đó",
+      "ex": "It takes me about thirty minutes to get there."
+     },
+     {
+      "en": "rush hour",
+      "vi": "giờ cao điểm",
+      "ex": "Traffic during rush hour is always crazy."
+     },
+     {
+      "en": "get stuck in a traffic jam",
+      "vi": "bị kẹt xe",
+      "ex": "I often get stuck in a traffic jam near the bridge."
+     },
+     {
+      "en": "To pass the time, I...",
+      "vi": "Để giết thời gian/tận dụng thời gian, tôi...",
+      "ex": "To pass the time, I listen to English podcasts."
+     },
+     {
+      "en": "navigate through heavy traffic",
+      "vi": "luồn lách qua dòng xe cộ đông đúc",
+      "ex": "It requires full attention to navigate through heavy traffic."
+     }
+    ],
+    "sample": "Every weekday, I commute to work by motorbike, which is the most popular way to travel in my city. My office is about eight kilometers away, and it usually takes me around thirty minutes. However, during rush hour, traffic gets really crazy. I often get stuck in a traffic jam along the main avenue, where thousands of motorbikes and cars crowd together. To pass the time and stay calm, I love listening to music or upbeat podcasts through my earphones. Despite the heavy traffic, riding a motorbike gives me the flexibility to take small alleys when main roads are blocked.",
+    "tipVi": "Giữ giọng điệu cởi mở, thân thiện và dùng các từ nối thời gian như 'usually', 'however', 'every weekday' để bài nói mạch lạc tự nhiên."
+   },
+   {
+    "id": "gt-di-chuyen-2",
+    "level": "EASY",
+    "title": "Guiding a Driver for Pickup",
+    "titleVi": "Chỉ vị trí đón cho tài xế xe công nghệ",
+    "situationVi": "Bạn vừa đặt xe qua ứng dụng tại một trung tâm thương mại rất đông đúc. Tài xế gọi điện báo không tìm thấy bạn, và bạn cần hướng dẫn anh ấy tới đúng chỗ.",
+    "task": "Speak on the phone with your ride-hailing driver outside a crowded mall. Explain your exact location, describe what you are wearing and holding, and tell him how to spot you easily.",
+    "mustVi": [
+     "Địa điểm cụ thể bạn đang đứng (tên cổng, gần cửa hàng hoặc biển hiệu nào).",
+     "Đặc điểm nhận dạng của bạn (màu sắc trang phục, phụ kiện hoặc hành lý mang theo).",
+     "Chỉ dẫn cách xe tiếp cận hoặc yêu cầu tài xế bật đèn khẩn cấp để bạn dễ nhận diện."
+    ],
+    "phrases": [
+     {
+      "en": "I'm standing right in front of...",
+      "vi": "Tôi đang đứng ngay trước...",
+      "ex": "I'm standing right in front of Gate B."
+     },
+     {
+      "en": "next to the coffee shop",
+      "vi": "bên cạnh quán cà phê",
+      "ex": "I am standing right next to the coffee shop on the ground floor."
+     },
+     {
+      "en": "I'm wearing a...",
+      "vi": "Tôi đang mặc một chiếc...",
+      "ex": "I'm wearing a bright blue jacket and dark jeans."
+     },
+     {
+      "en": "pull over near...",
+      "vi": "tấp xe vào gần...",
+      "ex": "Could you pull over near the pedestrian crossing?"
+     },
+     {
+      "en": "turn on your hazard lights",
+      "vi": "bật đèn khẩn cấp/đèn cảnh báo nguy hiểm",
+      "ex": "Please turn on your hazard lights so I can spot you."
+     },
+     {
+      "en": "I'll wave my hand",
+      "vi": "Tôi sẽ vẫy tay",
+      "ex": "I'll wave my hand as soon as I see your license plate."
+     }
+    ],
+    "sample": "Hello, driver! I'm standing right in front of Gate B, just next to the Highlands Coffee shop on the ground floor. It's quite crowded out here, so to help you recognize me, I'm wearing a bright blue jacket and dark jeans, and I'm holding a small black suitcase. When you turn into the pickup lane, please drive slowly and pull over near the pedestrian crossing. Could you also turn on your hazard lights? I'm watching out for your license plate number right now, and I'll wave my hand as soon as I see your car approaching. Thanks!",
+    "tipVi": "Nói với tốc độ vừa phải, nhấn mạnh các từ khóa nhận diện như số cổng, màu áo và luôn giữ lời cảm ơn lịch sự ở cuối cuộc gọi."
+   },
+   {
+    "id": "gt-di-chuyen-3",
+    "level": "MEDIUM",
+    "title": "Asking for Directions When Lost",
+    "titleVi": "Hỏi đường khi điện thoại hết pin",
+    "situationVi": "Bạn đang đi du lịch tự túc ở nước ngoài và bị lạc trong khu phố lạ. Điện thoại của bạn vừa sập nguồn, bạn cần dừng một người đi đường lại để hỏi đường ra ga tàu điện ngầm.",
+    "task": "You are lost in an unfamiliar city abroad and your phone battery just died. Stop a local pedestrian, politely explain your situation, and ask for clear walking directions to the nearest subway station.",
+    "mustVi": [
+     "Giải thích rằng bạn bị lạc và điện thoại vừa hết pin nên không dùng được bản đồ.",
+     "Hỏi đường đi bộ tới ga tàu điện ngầm gần nhất kèm các mốc nhận biết chính trên đường.",
+     "Xác nhận lại khoảng cách hoặc thời gian đi bộ và cảm ơn sự giúp đỡ của họ."
+    ],
+    "phrases": [
+     {
+      "en": "Excuse me, could you help me for a second?",
+      "vi": "Xin lỗi, bạn có thể giúp tôi một lát được không?",
+      "ex": "Excuse me, could you help me for a second? I'm a bit lost."
+     },
+     {
+      "en": "My phone just died",
+      "vi": "Điện thoại của tôi vừa sập nguồn/hết pin",
+      "ex": "My phone just died, so I can't check my navigation app."
+     },
+     {
+      "en": "the nearest subway station",
+      "vi": "ga tàu điện ngầm gần nhất",
+      "ex": "Could you please show me the way to the nearest subway station?"
+     },
+     {
+      "en": "go straight until you see...",
+      "vi": "đi thẳng cho tới khi bạn thấy...",
+      "ex": "Do I go straight until I see the clock tower?"
+     },
+     {
+      "en": "take a left/right at the intersection",
+      "vi": "rẽ trái/phải ở ngã tư",
+      "ex": "Should I take a right at the main intersection?"
+     },
+     {
+      "en": "Is it within walking distance?",
+      "vi": "Nơi đó có trong tầm đi bộ được không?",
+      "ex": "Is it within easy walking distance from here?"
+     }
+    ],
+    "sample": "Excuse me, could you help me for a moment? I'm visiting the city, but I seem to be completely lost. My phone just died, so I can't check my navigation app. Could you please show me the way to the nearest subway station? Do I need to walk straight down this avenue and take a right at the main intersection, or is there a shortcut? Also, what major landmarks should I look out for along the way? Finally, is it within easy walking distance, or would it take more than fifteen minutes? Thank you so much for your kindness!",
+    "tipVi": "Bắt đầu bằng lời xin lỗi nhã nhặn ('Excuse me'), sử dụng cấu trúc câu hỏi gián tiếp ('Could you please...') để tăng tính lịch sự với người lạ."
+   },
+   {
+    "id": "gt-di-chuyen-4",
+    "level": "MEDIUM",
+    "title": "Explaining a Transit Delay",
+    "titleVi": "Báo trễ hẹn do phương tiện công cộng gặp sự cố",
+    "situationVi": "Bạn đang trên đường tới buổi gặp mặt quan trọng với đối tác kinh doanh thì tàu điện bất ngờ dừng lại do trục trặc kỹ thuật. Bạn gọi điện thông báo cho đối tác.",
+    "task": "Call your business partner to inform them that you are stuck on a delayed train. Apologize sincerely, explain the transit issue, give an updated arrival estimate, and propose a flexible solution.",
+    "mustVi": [
+     "Giải thích nguyên nhân bị trễ (sự cố kỹ thuật trên tuyến tàu khiến phương tiện dừng hẳn).",
+     "Ước tính thời gian đến muộn và thời điểm dự kiến bạn có thể có mặt.",
+     "Lời xin lỗi chân thành cùng giải pháp thay thế (lùi giờ họp hoặc gửi tài liệu trước)."
+    ],
+    "phrases": [
+     {
+      "en": "I'm calling to let you know that...",
+      "vi": "Tôi gọi điện để báo với bạn rằng...",
+      "ex": "I'm calling to let you know that I'm stuck on the train."
+     },
+     {
+      "en": "due to unexpected technical difficulties",
+      "vi": "do sự cố kỹ thuật bất ngờ",
+      "ex": "The train halted due to unexpected technical difficulties on the track."
+     },
+     {
+      "en": "I'm afraid I won't make it on time",
+      "vi": "Tôi e là tôi sẽ không tới kịp giờ",
+      "ex": "I'm afraid I won't make it to our two o'clock meeting on time."
+     },
+     {
+      "en": "My estimated arrival time is...",
+      "vi": "Thời gian dự kiến đến của tôi là...",
+      "ex": "My updated estimated arrival time is now two thirty."
+     },
+     {
+      "en": "I sincerely apologize for this inconvenience",
+      "vi": "Tôi thành thật xin lỗi vì sự bất tiện này",
+      "ex": "I sincerely apologize for this unexpected inconvenience."
+     },
+     {
+      "en": "push the meeting back by [time]",
+      "vi": "lùi lịch họp lại [khoảng thời gian]",
+      "ex": "Could we push the meeting back by thirty minutes?"
+     }
+    ],
+    "sample": "Good afternoon, Mr. Davis. I'm calling to let you know that I'm currently stuck on the express train. Unfortunately, the train has come to a complete halt due to unexpected technical difficulties on the track. I'm afraid I won't make it to our two o'clock meeting on time. The conductor announced that we should start moving in ten minutes, so my estimated arrival time is now two thirty. I sincerely apologize for this inconvenience. If your schedule allows, could we push the meeting back by thirty minutes? Alternatively, I can email you the presentation slides right now.",
+    "tipVi": "Giữ thái độ điềm tĩnh, chuyên nghiệp và chủ động đưa ra phương án xử lý thay vì chỉ thụ động báo tin trễ."
+   },
+   {
+    "id": "gt-di-chuyen-5",
+    "level": "HARD",
+    "title": "Comparing Cars and Public Transit",
+    "titleVi": "Trình bày so sánh xe cá nhân và phương tiện công cộng",
+    "situationVi": "Trong cuộc họp nội bộ về chính sách phát triển bền vững của công ty, bạn được yêu cầu phát biểu so sánh giữa việc nhân viên đi làm bằng xe riêng và phương tiện công cộng.",
+    "task": "Deliver a short, persuasive presentation comparing private cars with public transit for employee commutes. Analyze the pros and cons of both, evaluate environmental and stress factors, and recommend a company policy.",
+    "mustVi": [
+     "Phân tích ưu và nhược điểm của xe cá nhân so với phương tiện công cộng (chi phí, thời gian, sự tiện lợi cá nhân).",
+     "Đánh giá tác động đến môi trường (lượng khí thải carbon) và mức độ căng thẳng của người đi làm.",
+     "Đề xuất chính sách công ty khuyến khích đi lại xanh (trợ cấp vé tàu xe công cộng thay vì tiền đỗ xe)."
+    ],
+    "phrases": [
+     {
+      "en": "On the one hand..., on the other hand...",
+      "vi": "Một mặt thì..., mặt khác thì...",
+      "ex": "On the one hand, cars offer flexibility; on the other hand, transit reduces stress."
+     },
+     {
+      "en": "shrink our collective carbon footprint",
+      "vi": "cắt giảm dấu chân carbon chung của chúng ta",
+      "ex": "Public transport helps shrink our collective carbon footprint significantly."
+     },
+     {
+      "en": "cost-effective alternative",
+      "vi": "giải pháp thay thế tiết kiệm chi phí",
+      "ex": "Subway passes are a far more cost-effective alternative for staff."
+     },
+     {
+      "en": "the daily hassle of finding parking",
+      "vi": "nỗi phiền toái hàng ngày khi tìm chỗ đỗ xe",
+      "ex": "Drivers regularly face the daily hassle of finding parking."
+     },
+     {
+      "en": "promote sustainable commuting habits",
+      "vi": "thúc đẩy thói quen đi lại bền vững",
+      "ex": "We need initiatives to promote sustainable commuting habits."
+     },
+     {
+      "en": "subsidize monthly transit passes",
+      "vi": "trợ cấp vé tháng giao thông công cộng",
+      "ex": "I propose that management subsidize monthly subway and bus passes."
+     }
+    ],
+    "sample": "When evaluating our commuting options, both private vehicles and public transit present clear trade-offs. On the one hand, private cars offer unmatched privacy and flexible scheduling. However, drivers face worsening traffic jams, high fuel costs, and the daily hassle of finding parking. On the other hand, public transportation is a far more cost-effective alternative that significantly shrinks our collective carbon footprint and eases commuting stress. Therefore, to promote sustainable commuting habits across our company, I strongly propose that management subsidize monthly subway and bus passes instead of expanding parking allowances. This initiative will support our sustainability goals while improving employee wellbeing.",
+    "tipVi": "Sử dụng cấu trúc so sánh tương phản rõ ràng ('On the one hand... On the other hand... Therefore...') và kết thúc bằng đề xuất hành động dứt khoát."
    }
   ]
  },
@@ -964,6 +1928,247 @@
   ]
  },
  {
+  "id": "hoc-tap",
+  "titleVi": "Học tập và trường lớp",
+  "tasks": [
+   {
+    "id": "gt-hoc-tap-1",
+    "level": "EASY",
+    "title": "Joining an English Club",
+    "titleVi": "Đăng ký tham gia câu lạc bộ tiếng Anh",
+    "situationVi": "Bạn đang đến bàn thông tin của Câu lạc bộ Tiếng Anh tại trường để đăng ký làm thành viên mới và gặp bạn phụ trách câu lạc bộ.",
+    "task": "You want to join the campus English club. Talk to the club leader to introduce yourself, explain why you want to join, and ask about the meeting schedule.",
+    "mustVi": [
+     "Giới thiệu ngắn gọn về bản thân và trình độ tiếng Anh hiện tại",
+     "Nêu lý do bạn muốn tham gia câu lạc bộ",
+     "Hỏi về lịch sinh hoạt hàng tuần và địa điểm gặp mặt"
+    ],
+    "phrases": [
+     {
+      "en": "I'm interested in joining...",
+      "vi": "Tôi rất quan tâm đến việc tham gia...",
+      "ex": "I'm interested in joining the English speaking club this term."
+     },
+     {
+      "en": "My speaking skills are...",
+      "vi": "Kỹ năng nói của tôi thì...",
+      "ex": "My speaking skills are quite basic right now."
+     },
+     {
+      "en": "I want to improve my...",
+      "vi": "Tôi muốn cải thiện...",
+      "ex": "I want to improve my communication confidence."
+     },
+     {
+      "en": "How often do you meet?",
+      "vi": "Câu lạc bộ sinh hoạt bao lâu một lần?",
+      "ex": "How often do you meet every week?"
+     },
+     {
+      "en": "Where do you usually meet?",
+      "vi": "Mọi người thường sinh hoạt ở đâu?",
+      "ex": "Where do you usually meet for discussions?"
+     },
+     {
+      "en": "I'm looking forward to...",
+      "vi": "Tôi rất mong chờ...",
+      "ex": "I'm looking forward to meeting new friends."
+     }
+    ],
+    "sample": "Hi there! My name is Linh, and I'm a second-year business student. I'm really interested in joining your English club this semester. To be honest, my speaking skills are quite basic, and I often feel shy when talking to foreigners. I really want to improve my speaking confidence and make new friends who share the same goal. Could you tell me how often the club meets each week and what time you usually start? Also, is there any membership fee I need to pay today? Thank you so much!",
+    "tipVi": "Hãy giữ nụ cười và thái độ cởi mở, dùng các câu đơn giản và ngắt nghỉ tự nhiên để người nghe dễ theo dõi."
+   },
+   {
+    "id": "gt-hoc-tap-2",
+    "level": "EASY",
+    "title": "Asking a Teacher for Help",
+    "titleVi": "Hỏi giáo viên về bài tập về nhà",
+    "situationVi": "Bạn nán lại lớp sau giờ học để hỏi giáo viên về một phần bài tập lớn mà nhóm bạn chưa hiểu rõ.",
+    "task": "You stayed after class to speak with your instructor. Politely explain which part of the assignment confuses you, ask for an example, and confirm the submission deadline.",
+    "mustVi": [
+     "Chào hỏi lịch sự và xin phép thầy cô vài phút để hỏi bài",
+     "Chỉ rõ phần yêu cầu bài tập chưa hiểu và xin một ví dụ minh họa",
+     "Xác nhận lại hạn nộp và hình thức nộp bài"
+    ],
+    "phrases": [
+     {
+      "en": "Do you have a few minutes?",
+      "vi": "Thầy/Cô có rảnh vài phút không ạ?",
+      "ex": "Excuse me, do you have a few minutes to help me?"
+     },
+     {
+      "en": "I'm a bit confused about...",
+      "vi": "Em hơi bối rối/chưa rõ về...",
+      "ex": "I'm a bit confused about the second question."
+     },
+     {
+      "en": "Could you give me an example?",
+      "vi": "Thầy/Cô có thể cho em một ví dụ được không ạ?",
+      "ex": "Could you give me an example of this concept?"
+     },
+     {
+      "en": "Just to make sure, ...",
+      "vi": "Để chắc chắn thì...",
+      "ex": "Just to make sure, is the essay due on Friday?"
+     },
+     {
+      "en": "Should we submit it online or...?",
+      "vi": "Tụi em nên nộp trực tuyến hay là...?",
+      "ex": "Should we submit it online or bring a hard copy?"
+     },
+     {
+      "en": "Thank you for your time.",
+      "vi": "Em cảm ơn thầy/cô đã dành thời gian.",
+      "ex": "Thank you for your time and helpful guidance."
+     }
+    ],
+    "sample": "Excuse me, Mr. David, do you have a few minutes? I have a quick question about the group presentation next week. I'm a bit confused about the case study requirement in section two. Could you explain what kind of real-world examples you want us to focus on? Also, just to make sure, is the final deadline next Monday at midnight or before class starts? We want to organize our research properly this weekend. Thank you so much for your help and time!",
+    "tipVi": "Luôn mở đầu bằng lời xin phép lịch sự và sử dụng các từ khiếm khuyết như 'could' hay 'would' để tạo sự tôn trọng."
+   },
+   {
+    "id": "gt-hoc-tap-3",
+    "level": "MEDIUM",
+    "title": "Dividing Group Project Work",
+    "titleVi": "Phân chia công việc bài tập nhóm",
+    "situationVi": "Nhóm của bạn đang họp trực tiếp để phân công nhiệm vụ cho bài thuyết trình kết thúc môn, nhưng một thành viên chưa chủ động nhận việc.",
+    "task": "Lead a short discussion with your team members. Review the remaining project tasks, assign a specific task to your teammate tactfully, and set an internal deadline for everyone.",
+    "mustVi": [
+     "Tóm tắt tiến độ chung và liệt kê các phần việc còn thiếu người làm",
+     "Gợi ý phân công một đầu việc phù hợp cho bạn cùng nhóm một cách khéo léo",
+     "Thống nhất mốc thời gian hoàn thành bản nháp đầu tiên của cả nhóm"
+    ],
+    "phrases": [
+     {
+      "en": "Let's review where we are.",
+      "vi": "Hãy cùng xem lại tiến độ hiện tại của chúng ta.",
+      "ex": "Let's review where we are before assigning new roles."
+     },
+     {
+      "en": "We still need someone to handle...",
+      "vi": "Chúng ta vẫn cần ai đó đảm nhận phần...",
+      "ex": "We still need someone to handle the survey analysis."
+     },
+     {
+      "en": "Since you are good at...",
+      "vi": "Vì bạn rất có thế mạnh về...",
+      "ex": "Since you are good at graphic design, could you take this?"
+     },
+     {
+      "en": "How would you feel about...?",
+      "vi": "Bạn thấy thế nào nếu nhận...?",
+      "ex": "How would you feel about designing the presentation slides?"
+     },
+     {
+      "en": "To keep things on track, ...",
+      "vi": "Để giữ mọi việc đúng tiến độ, ...",
+      "ex": "To keep things on track, we should set strict milestones."
+     },
+     {
+      "en": "Let's aim to finish by...",
+      "vi": "Chúng ta hãy đặt mục tiêu xong trước...",
+      "ex": "Let's aim to finish by Thursday evening."
+     }
+    ],
+    "sample": "Hi everyone, let's review where we are with our marketing project. Nam and I have drafted the introduction and background research, but we still need someone to handle the survey analysis and slide design. Huy, since you're really good at visual presentations, how would you feel about taking charge of the slides and charts? That would really help the team. To keep things on track before the presentation day, let's aim to finish our individual drafts by Thursday evening. Then, we can practice together on Friday. Does that sound workable for you?",
+    "tipVi": "Dùng câu hỏi gợi mở như 'How would you feel about...?' thay vì mệnh lệnh để đồng đội cảm thấy được tôn trọng và sẵn lòng hợp tác."
+   },
+   {
+    "id": "gt-hoc-tap-4",
+    "level": "MEDIUM",
+    "title": "Managing Stress and Study Plans",
+    "titleVi": "Giải tỏa áp lực thi cử và lập kế hoạch",
+    "situationVi": "Bạn và bạn học cùng lớp đang cảm thấy quá tải vì kỳ thi cuối kỳ sắp diễn ra và hai bạn ngồi lại để lên lịch ôn thi hiệu quả hơn.",
+    "task": "Talk to your study partner about how stressed you feel, suggest a realistic revision schedule for both of you, and propose a healthy habit to avoid burnout.",
+    "mustVi": [
+     "Bày tỏ sự lo lắng về kỳ thi sắp tới và nêu môn học bạn thấy khó khăn nhất",
+     "Đề xuất một thời gian biểu ôn tập cụ thể chia theo từng khung giờ hoặc ngày",
+     "Gợi ý một thói quen hoặc hoạt động thư giãn để giữ sức khỏe tinh thần"
+    ],
+    "phrases": [
+     {
+      "en": "I'm feeling completely overwhelmed by...",
+      "vi": "Tôi đang cảm thấy hoàn toàn quá tải bởi...",
+      "ex": "I'm feeling completely overwhelmed by the upcoming finals."
+     },
+     {
+      "en": "My biggest concern right now is...",
+      "vi": "Mối lo lớn nhất của tôi hiện tại là...",
+      "ex": "My biggest concern right now is advanced statistics."
+     },
+     {
+      "en": "If we break it down into...",
+      "vi": "Nếu chúng ta chia nhỏ nó thành...",
+      "ex": "If we break it down into smaller chapters, it's easier."
+     },
+     {
+      "en": "How about dedicating two hours to...?",
+      "vi": "Hay là chúng ta dành hai tiếng cho...?",
+      "ex": "How about dedicating two hours to practice tests every morning?"
+     },
+     {
+      "en": "We shouldn't forget to...",
+      "vi": "Chúng ta không nên quên việc...",
+      "ex": "We shouldn't forget to get enough sleep each night."
+     },
+     {
+      "en": "It will keep us from burning out.",
+      "vi": "Nó sẽ giúp chúng ta không bị kiệt sức.",
+      "ex": "Short daily walks will keep us from burning out."
+     }
+    ],
+    "sample": "Honestly, I'm feeling completely overwhelmed by this upcoming exam week. My biggest concern right now is advanced statistics because there are so many complex formulas to memorize. If we break it down into smaller steps, it will be much more manageable. How about dedicating two hours every morning to practice calculations together, and reviewing theory in the afternoon? Also, we shouldn't forget to take proper breaks. We can take a thirty-minute walk in the park every evening or grab a smoothie. It will keep us from burning out before finals.",
+    "tipVi": "Kết hợp từ vựng chia sẻ cảm xúc chân thành với các cấu trúc đề xuất hành động thực tế để bài nói vừa tự nhiên vừa có giải pháp."
+   },
+   {
+    "id": "gt-hoc-tap-5",
+    "level": "HARD",
+    "title": "Consulting an Academic Advisor",
+    "titleVi": "Tư vấn chọn môn học và định hướng",
+    "situationVi": "Bạn đang tham gia buổi tư vấn học tập 1-1 với giáo sư cố vấn để xin lời khuyên về việc chọn chuyên ngành hẹp cho năm học tiếp theo.",
+    "task": "Speak with your academic advisor. Present your career dilemma between two elective tracks, weigh the pros and cons of each option, and ask for their expert recommendation based on industry trends.",
+    "mustVi": [
+     "Trình bày định hướng nghề nghiệp và sự phân vân giữa hai hướng môn học tự chọn",
+     "Phân tích ưu điểm và nhược điểm của từng lựa chọn đối với năng lực bản thân",
+     "Xin lời khuyên của giáo sư dựa trên nhu cầu tuyển dụng thực tế của doanh nghiệp"
+    ],
+    "phrases": [
+     {
+      "en": "I'm currently at a crossroads regarding...",
+      "vi": "Em hiện đang đứng trước ngã rẽ về việc...",
+      "ex": "I'm currently at a crossroads regarding my elective modules."
+     },
+     {
+      "en": "On one hand, ... but on the other hand, ...",
+      "vi": "Một mặt thì..., nhưng mặt khác thì...",
+      "ex": "On one hand, it is lucrative, but on the other hand, it requires heavy coding."
+     },
+     {
+      "en": "This path would provide solid foundations in...",
+      "vi": "Hướng đi này sẽ mang lại nền tảng vững chắc về...",
+      "ex": "This path would provide solid foundations in quantitative analytics."
+     },
+     {
+      "en": "I'm slightly concerned about the workload.",
+      "vi": "Em hơi lo ngại về khối lượng bài vở.",
+      "ex": "I'm slightly concerned about the heavy research workload."
+     },
+     {
+      "en": "From your perspective, which option aligns better with...?",
+      "vi": "Theo góc nhìn của thầy/cô, lựa chọn nào phù hợp hơn với...?",
+      "ex": "From your perspective, which option aligns better with corporate needs?"
+     },
+     {
+      "en": "What skill sets are employers prioritizing?",
+      "vi": "Các nhà tuyển dụng đang ưu tiên những bộ kỹ năng nào?",
+      "ex": "What skill sets are employers prioritizing for fresh graduates?"
+     }
+    ],
+    "sample": "Good afternoon, Professor Thorne. I'm currently at a crossroads regarding my electives for next year. I'm passionate about business analytics, but I'm torn between Data Science and Digital Marketing. On one hand, Data Science provides solid technical foundations in Python and machine learning, but I'm concerned the heavy mathematical workload might affect my GPA. On the other hand, Digital Marketing seems more practical and immediately applicable to brand strategy. From your perspective, which pathway aligns better with modern corporate demands? I'd appreciate your advice on what skill sets employers are prioritizing in today's job market.",
+    "tipVi": "Duy trì phong thái học thuật đĩnh đạc, sử dụng cấu trúc tương phản ('On one hand... on the other hand') để thể hiện khả năng tư duy phân tích sâu sắc."
+   }
+  ]
+ },
+ {
   "id": "hoi-thong-tin",
   "titleVi": "Hỏi thông tin và chỉ đường",
   "tasks": [
@@ -1687,6 +2892,488 @@
   ]
  },
  {
+  "id": "mua-sam",
+  "titleVi": "Mua sắm và tiền bạc",
+  "tasks": [
+   {
+    "id": "gt-mua-sam-1",
+    "level": "EASY",
+    "title": "Shopping for a New Jacket",
+    "titleVi": "Mua áo khoác tại cửa hàng",
+    "situationVi": "Bạn đang ở một cửa hàng quần áo để mua một chiếc áo khoác ấm cho chuyến du lịch sắp tới. Hãy nói chuyện với nhân viên bán hàng để tìm món đồ phù hợp.",
+    "task": "You are looking for a jacket in a clothing store. Tell the shop assistant what style and color you prefer, ask to try a different size, and inquire if there is any discount today.",
+    "mustVi": [
+     "Nêu rõ loại áo khoác, màu sắc hoặc mục đích bạn muốn mua",
+     "Yêu cầu đổi kích cỡ khác để thử vì cỡ hiện tại chưa vừa",
+     "Hỏi xem cửa hàng hiện có chương trình giảm giá hay khuyến mãi nào không"
+    ],
+    "phrases": [
+     {
+      "en": "I'm looking for...",
+      "vi": "Tôi đang tìm kiếm...",
+      "ex": "I'm looking for a warm jacket for my trip."
+     },
+     {
+      "en": "Do you have this in...?",
+      "vi": "Bạn có món này cỡ/màu... không?",
+      "ex": "Do you have this in a medium size?"
+     },
+     {
+      "en": "It feels a bit too tight/loose",
+      "vi": "Mặc vào cảm thấy hơi chật/rộng",
+      "ex": "It feels a bit too tight around the chest."
+     },
+     {
+      "en": "Where is the fitting room?",
+      "vi": "Phòng thử đồ ở đâu?",
+      "ex": "Excuse me, where is the fitting room?"
+     },
+     {
+      "en": "Is there any discount on this?",
+      "vi": "Món này có được giảm giá không?",
+      "ex": "Is there any discount on this winter jacket today?"
+     },
+     {
+      "en": "I'll take it",
+      "vi": "Tôi sẽ lấy món này",
+      "ex": "The larger size fits well, so I'll take it."
+     }
+    ],
+    "sample": "Excuse me, I'm looking for a warm jacket for my upcoming trip to Hanoi. I really like this black bomber jacket, but it feels a bit too tight around my chest. Do you have this in a larger size, maybe size L? Also, where is the fitting room so I can try it on? By the way, is there any special discount on winter clothes today? If the larger size fits comfortably and the price is reasonable, I will definitely take it right away. Thank you for your help!",
+    "tipVi": "Hãy bắt đầu bằng lời chào lịch sự như 'Excuse me' và dùng trợ động từ khiêm tốn 'Could you please' khi nhờ nhân viên tìm đồ."
+   },
+   {
+    "id": "gt-mua-sam-2",
+    "level": "EASY",
+    "title": "Finding Ingredients at the Supermarket",
+    "titleVi": "Hỏi mua nguyên liệu tại siêu thị",
+    "situationVi": "Bạn đang đi siêu thị để mua đồ nấu bữa tối cho gia đình nhưng không tìm thấy vài món cần thiết. Bạn tiến lại nhờ một nhân viên siêu thị giúp đỡ.",
+    "task": "You are at a local supermarket shopping for groceries. Ask the supermarket clerk where to find specific ingredients, check if they have fresh stock, and ask about current promotions.",
+    "mustVi": [
+     "Hỏi vị trí của ít nhất hai loại thực phẩm hoặc nguyên liệu bạn đang cần",
+     "Hỏi về độ tươi mới hoặc ngày nhập hàng của sản phẩm tươi sống",
+     "Hỏi về chương trình khuyến mãi hoặc ưu đãi đặc biệt trong ngày"
+    ],
+    "phrases": [
+     {
+      "en": "Could you tell me where... is?",
+      "vi": "Bạn có thể chỉ cho tôi chỗ để... không?",
+      "ex": "Could you tell me where the dairy section is?"
+     },
+     {
+      "en": "Which aisle is... in?",
+      "vi": "...nằm ở lối đi số mấy?",
+      "ex": "Which aisle is the olive oil in?"
+     },
+     {
+      "en": "Are these freshly arrived?",
+      "vi": "Những món này mới về hôm nay phải không?",
+      "ex": "Are these salmon fillets freshly arrived today?"
+     },
+     {
+      "en": "What is the expiration date?",
+      "vi": "Hạn sử dụng là ngày nào?",
+      "ex": "Could you help me check the expiration date on this bottle?"
+     },
+     {
+      "en": "Is this item on sale?",
+      "vi": "Mặt hàng này có đang giảm giá không?",
+      "ex": "Is this organic pasta on sale right now?"
+     },
+     {
+      "en": "Buy one get one free",
+      "vi": "Mua một tặng một",
+      "ex": "Is there a buy one get one free promotion on this shelf?"
+     }
+    ],
+    "sample": "Excuse me, could you help me find a few ingredients for dinner? Which aisle is the organic pasta in, and where can I find the tomato sauce? Also, I want to pick some salmon fillets, but could you tell me if these were freshly delivered today? I want to make sure the seafood is fresh. Finally, are there any promotions going on, like buy one get one free on dairy or pasta today? Thank you so much for your guidance!",
+    "tipVi": "Từ 'aisle' (lối đi giữa các quầy kệ) phát âm là /aɪl/ với âm 's' câm, hãy phát âm chuẩn từ này để nhân viên siêu thị dễ hiểu."
+   },
+   {
+    "id": "gt-mua-sam-3",
+    "level": "MEDIUM",
+    "title": "Returning a Faulty Electronic Device",
+    "titleVi": "Đổi trả thiết bị điện tử bị lỗi",
+    "situationVi": "Bạn vừa mua một chiếc tai nghe không dây hôm qua nhưng mang về nhà thì tai nghe bên trái không hoạt động. Bạn đem sản phẩm cùng hóa đơn quay lại quầy dịch vụ khách hàng để khiếu nại.",
+    "task": "You are speaking to a customer service representative at an electronics store. Explain the defect with the item you purchased, present your receipt, and request a replacement or a full refund.",
+    "mustVi": [
+     "Nêu rõ sản phẩm đã mua, thời điểm mua và lỗi kỹ thuật cụ thể gặp phải",
+     "Xuất trình hóa đơn mua hàng và cho biết sản phẩm còn nguyên hộp, phụ kiện",
+     "Đưa ra yêu cầu rõ ràng: muốn đổi sang sản phẩm mới tương đương hoặc hoàn tiền"
+    ],
+    "phrases": [
+     {
+      "en": "I would like to return/exchange...",
+      "vi": "Tôi muốn trả lại/đổi...",
+      "ex": "I would like to exchange these wireless earbuds."
+     },
+     {
+      "en": "There seems to be a defect with...",
+      "vi": "Dường như có lỗi sản xuất ở...",
+      "ex": "There seems to be a defect with the left earbud."
+     },
+     {
+      "en": "It doesn't work properly",
+      "vi": "Nó không hoạt động bình thường",
+      "ex": "It doesn't work properly even after charging all night."
+     },
+     {
+      "en": "I have the original receipt right here",
+      "vi": "Tôi có mang theo hóa đơn gốc ngay đây",
+      "ex": "I have the original receipt and full packaging right here."
+     },
+     {
+      "en": "Still under warranty",
+      "vi": "Vẫn còn trong thời hạn bảo hành",
+      "ex": "The product was bought yesterday, so it is still under warranty."
+     },
+     {
+      "en": "A replacement or a full refund",
+      "vi": "Một sản phẩm thay thế hoặc hoàn tiền toàn bộ",
+      "ex": "I prefer a replacement, but a full refund works too."
+     }
+    ],
+    "sample": "Good afternoon. I bought these wireless earbuds here yesterday afternoon, but there seems to be a serious defect. When I tested them at home, the left earbud didn't charge at all and made a constant buzzing noise. I brought everything back in the original box with all cables, and I have the original receipt right here. Since it is brand new and still under warranty, I would really appreciate an immediate replacement with a working pair. If you don't have another one in stock, I would like to request a full refund to my card, please.",
+    "tipVi": "Giữ thái độ bình tĩnh, lịch sự nhưng dứt khoát; tập trung mô tả chính xác triệu chứng hỏng hóc thay vì bày tỏ sự bực tức cá nhân."
+   },
+   {
+    "id": "gt-mua-sam-4",
+    "level": "MEDIUM",
+    "title": "Bargaining at a Souvenir Market",
+    "titleVi": "Mặc cả mua quà lưu niệm tại chợ",
+    "situationVi": "Bạn đang đi du lịch nước ngoài và muốn mua vài món đồ thủ công mỹ nghệ làm quà lưu niệm tại một khu chợ đêm địa phương. Bạn đang thương lượng giá cả với người bán hàng.",
+    "task": "You are talking to a souvenir vendor at a local night market. Inquire about the price of handcrafted items, negotiate a lower price for buying in bulk, and agree on a final deal.",
+    "mustVi": [
+     "Hỏi giá ban đầu của món đồ và nhận xét rằng mức giá hơi cao so với túi tiền của bạn",
+     "Đề xuất mức giảm giá nếu bạn mua số lượng nhiều (từ 3 đến 4 món trở lên)",
+     "Chốt mức giá thỏa thuận cuối cùng và xác nhận hình thức thanh toán thuận tiện"
+    ],
+    "phrases": [
+     {
+      "en": "How much are you asking for this?",
+      "vi": "Bạn bán món này giá bao nhiêu?",
+      "ex": "How much are you asking for this handmade scarf?"
+     },
+     {
+      "en": "That's a bit beyond my budget",
+      "vi": "Mức giá đó hơi vượt quá ngân sách của tôi",
+      "ex": "Twenty dollars each is a bit beyond my budget."
+     },
+     {
+      "en": "Can you give me a discount if I buy...?",
+      "vi": "Bạn có thể giảm giá nếu tôi mua... không?",
+      "ex": "Can you give me a discount if I buy four of them?"
+     },
+     {
+      "en": "What's your best price?",
+      "vi": "Giá tốt nhất bạn có thể để lại là bao nhiêu?",
+      "ex": "What's your best price if I take the whole set?"
+     },
+     {
+      "en": "Could we meet in the middle?",
+      "vi": "Chúng ta có thể thương lượng mức giá ở giữa được không?",
+      "ex": "How about sixteen dollars? Could we meet in the middle?"
+     },
+     {
+      "en": "It's a deal",
+      "vi": "Thống nhất giá đó nhé / Đồng ý chốt đơn",
+      "ex": "If sixteen dollars is okay, it's a deal."
+     }
+    ],
+    "sample": "Hi there! These handmade ceramic bowls look lovely. How much are you asking for one? Hmm, twenty dollars each is a bit beyond my budget for souvenirs. If I buy four bowls together for my family, can you give me a good discount? How about fifteen dollars each? Could we meet in the middle at sixteen dollars? If that works for you, it's a deal, and I'll take all four right now. Do you accept mobile payment, or do you prefer cash?",
+    "tipVi": "Hãy duy trì nụ cười thân thiện và sử dụng cấu trúc 'Could we meet in the middle?' để tạo cảm giác đôi bên cùng có lợi khi trả giá."
+   },
+   {
+    "id": "gt-mua-sam-5",
+    "level": "HARD",
+    "title": "Reviewing Household Budget and Expenses",
+    "titleVi": "Rà soát ngân sách và chi tiêu gia đình",
+    "situationVi": "Chi tiêu tháng vừa rồi của bạn và bạn đời (hoặc bạn cùng phòng) vượt quá kế hoạch ban đầu, đặc biệt là tiền ăn ngoài và hóa đơn tiện ích. Hai bạn cùng ngồi lại để phân tích và lập kế hoạch thắt chặt chi tiêu.",
+    "task": "You are discussing monthly household finances with your partner or roommate. Analyze why last month's spending exceeded the budget, propose specific ways to cut down recurring costs, and establish a realistic financial target for next month.",
+    "mustVi": [
+     "Chỉ ra những khoản chi cụ thể đã bị bội chi trong tháng qua (ăn ngoài, hóa đơn điện, mua sắm tùy hứng...)",
+     "Đề xuất ít nhất hai giải pháp thiết thực để cắt giảm chi phí sinh hoạt hàng ngày và hóa đơn cố định",
+     "Thiết lập một con số ngân sách trần cụ thể hoặc mục tiêu tiết kiệm rõ ràng cho tháng tới"
+    ],
+    "phrases": [
+     {
+      "en": "We went way over budget on...",
+      "vi": "Chúng ta đã chi vượt quá xa ngân sách cho...",
+      "ex": "We went way over budget on food delivery and dining out."
+     },
+     {
+      "en": "Utility bills have skyrocketed",
+      "vi": "Hóa đơn điện nước đã tăng vọt",
+      "ex": "Our electricity bill skyrocketed because of the heatwave."
+     },
+     {
+      "en": "Cut back on non-essential spending",
+      "vi": "Cắt giảm các khoản chi tiêu không thiết yếu",
+      "ex": "We need to cut back on non-essential spending immediately."
+     },
+     {
+      "en": "Track our daily expenses",
+      "vi": "Theo dõi chi tiêu hàng ngày",
+      "ex": "Let's use a budgeting app to track our daily expenses."
+     },
+     {
+      "en": "Cap our spending at...",
+      "vi": "Giới hạn chi tiêu tối đa ở mức...",
+      "ex": "Let's cap our entertainment spending at one hundred dollars."
+     },
+     {
+      "en": "Set aside a fixed amount for savings",
+      "vi": "Trích riêng một khoản cố định để tiết kiệm",
+      "ex": "We should set aside twenty percent of our income for savings."
+     }
+    ],
+    "sample": "I think we need to sit down and review our monthly finances. Looking at our bank statements, we went way over budget last month, especially on food delivery and weekend entertainment. On top of that, our electricity bill skyrocketed because we kept the air conditioning running all night. To fix this, I suggest we cook at home on weekdays and prepare our own lunchboxes for work. We should also cancel unused streaming subscriptions to cut recurring costs. Let's cap our personal spending at two hundred dollars each and aim to set aside twenty percent of our total income for savings next month.",
+    "tipVi": "Sử dụng đại từ tập thể 'we' và 'our' thay vì 'you' để thể hiện tinh thần hợp tác, tránh tạo cảm giác chỉ trích hay đổ lỗi khi bàn về tiền bạc."
+   }
+  ]
+ },
+ {
+  "id": "nha-cua",
+  "titleVi": "Nhà cửa và hàng xóm",
+  "tasks": [
+   {
+    "id": "gt-nha-cua-1",
+    "level": "EASY",
+    "title": "Describing Your Current Home",
+    "titleVi": "Miêu tả ngôi nhà của bạn",
+    "situationVi": "Bạn đang trò chuyện giờ giải lao với một đồng nghiệp nước ngoài mới đến công ty. Người ấy hỏi thăm về nơi ở và cuộc sống thường nhật của bạn tại Việt Nam.",
+    "task": "You are chatting with your new foreign colleague during a break. Describe where you live, explain the layout of your home, and share what you like most about your living space.",
+    "mustVi": [
+     "Địa điểm và loại hình nhà ở (chung cư, nhà phố hay phòng trọ)",
+     "Bố cục cơ bản và góc yêu thích nhất trong nhà",
+     "Lý do bạn thích hoặc chưa hài lòng về khu vực xung quanh"
+    ],
+    "phrases": [
+     {
+      "en": "I live in a...",
+      "vi": "Tôi sống trong một...",
+      "ex": "I live in a cozy two-bedroom apartment."
+     },
+     {
+      "en": "It's located in...",
+      "vi": "Nó nằm ở...",
+      "ex": "It's located in a quiet alley near the city centre."
+     },
+     {
+      "en": "My favourite spot is...",
+      "vi": "Góc yêu thích nhất của tôi là...",
+      "ex": "My favourite spot is the sunny balcony with lots of plants."
+     },
+     {
+      "en": "It gets plenty of natural light",
+      "vi": "Nhà đón được nhiều ánh sáng tự nhiên",
+      "ex": "The living room gets plenty of natural light in the morning."
+     },
+     {
+      "en": "Within walking distance of...",
+      "vi": "Chỉ cách vài bước chân tới...",
+      "ex": "It's within walking distance of several local markets."
+     },
+     {
+      "en": "What I really like is...",
+      "vi": "Điều tôi thực sự thích là...",
+      "ex": "What I really like is how friendly the local neighbourhood is."
+     }
+    ],
+    "sample": "I currently live in a two-bedroom apartment in District 7. It's on the eighth floor of a quiet building, so it's not too noisy. The flat has an open-plan kitchen, a bright living room, and a small balcony. My favourite spot is definitely the balcony, where I enjoy having my morning coffee and tending to my potted herbs. The area is very convenient because grocery stores and cafes are all within walking distance. The only slight downside is the heavy traffic during rush hour, but overall, it's a very comfortable place to call home.",
+    "tipVi": "Sử dụng các tính từ miêu tả không gian tích cực và dùng liên từ nối để câu nói trôi chảy, tự nhiên hơn."
+   },
+   {
+    "id": "gt-nha-cua-2",
+    "level": "EASY",
+    "title": "Introducing Yourself to a Neighbour",
+    "titleVi": "Làm quen với hàng xóm mới",
+    "situationVi": "Bạn vừa dọn tới một khu chung cư mới và tình cờ gặp người hàng xóm sát vách ở hành lang. Hãy bắt chuyện làm quen và hỏi thăm một vài thông tin về tòa nhà.",
+    "task": "You have just moved into a new apartment and run into your next-door neighbour in the hallway. Introduce yourself, explain you just moved in, and ask a couple of quick questions about the building.",
+    "mustVi": [
+     "Chào hỏi, giới thiệu tên và số phòng bạn vừa chuyển đến",
+     "Hỏi về một quy định hoặc tiện ích chung (nơi bỏ rác, giờ đóng cửa hoặc bãi giữ xe)",
+     "Bày tỏ thiện chí muốn giữ mối quan hệ hàng xóm hòa thuận"
+    ],
+    "phrases": [
+     {
+      "en": "I just moved in next door",
+      "vi": "Tôi vừa mới chuyển đến căn bên cạnh",
+      "ex": "Hi there, I just moved into apartment 402 yesterday."
+     },
+     {
+      "en": "I'm still finding my way around",
+      "vi": "Tôi vẫn đang làm quen với khu vực này",
+      "ex": "I'm still finding my way around the amenities here."
+     },
+     {
+      "en": "Could you tell me where...?",
+      "vi": "Bạn có thể cho tôi biết... ở đâu không?",
+      "ex": "Could you tell me where the garbage chute is located?"
+     },
+     {
+      "en": "Do you happen to know...?",
+      "vi": "Bạn có tình cờ biết... không?",
+      "ex": "Do you happen to know what time the main gate locks?"
+     },
+     {
+      "en": "If you ever need anything...",
+      "vi": "Nếu bạn cần giúp đỡ gì...",
+      "ex": "If you ever need anything, please feel free to knock."
+     },
+     {
+      "en": "It's great to meet you",
+      "vi": "Rất vui được gặp bạn",
+      "ex": "It's really great to meet you, hope to see you around!"
+     }
+    ],
+    "sample": "Hi there! Good morning. I'm Nam, your new neighbour in apartment 504. I just moved in last weekend, so I'm still getting settled and finding my way around. Could you tell me where the waste disposal area is located on this floor? Also, do you happen to know if the underground parking has fixed slots for motorbikes? Thank you so much for the helpful tips! If my moving boxes ever get in your way, please let me know. It's really nice meeting you, and I look forward to seeing you around!",
+    "tipVi": "Giữ nụ cười thân thiện, phát âm rõ tên và số phòng, đồng thời sử dụng các câu hỏi gián tiếp lịch sự như 'Could you tell me...'."
+   },
+   {
+    "id": "gt-nha-cua-3",
+    "level": "MEDIUM",
+    "title": "Inquiring About a Rental Flat",
+    "titleVi": "Hỏi thông tin thuê căn hộ",
+    "situationVi": "Bạn thấy một tin đăng cho thuê căn hộ trực tuyến và đang gọi điện cho chủ nhà hoặc môi giới để hỏi thêm chi tiết trước khi quyết định.",
+    "task": "You are calling a landlord about an online flat listing. State which property you are interested in, ask about key details like rent and utility bills, and request an in-person viewing.",
+    "mustVi": [
+     "Nêu rõ tin đăng bạn đang quan tâm và thời điểm bạn muốn dọn vào",
+     "Hỏi chi tiết về tiền thuê, tiền đặt cọc và các chi phí phát sinh (điện, nước, quản lý)",
+     "Đề xuất thời gian cụ thể để đến xem nhà trực tiếp"
+    ],
+    "phrases": [
+     {
+      "en": "I'm calling regarding the listing for...",
+      "vi": "Tôi gọi điện liên quan đến tin đăng về...",
+      "ex": "I'm calling regarding your listing for the one-bedroom flat on Elm Street."
+     },
+     {
+      "en": "Is the property still available?",
+      "vi": "Căn hộ này vẫn còn trống chứ?",
+      "ex": "I wanted to check if the property is still available to rent."
+     },
+     {
+      "en": "Are utilities included in the rent?",
+      "vi": "Tiền thuê đã bao gồm phí sinh hoạt chưa?",
+      "ex": "Does the monthly rent include internet and building management fees?"
+     },
+     {
+      "en": "How much is the security deposit?",
+      "vi": "Tiền đặt cọc là bao nhiêu?",
+      "ex": "Could you let me know how much the security deposit is?"
+     },
+     {
+      "en": "What is the minimum lease term?",
+      "vi": "Thời hạn hợp đồng thuê tối thiểu là bao lâu?",
+      "ex": "Is the minimum lease term six months or one year?"
+     },
+     {
+      "en": "Would it be possible to arrange a viewing?",
+      "vi": "Tôi có thể hẹn lịch xem nhà được không?",
+      "ex": "Would it be possible to arrange a viewing this Thursday evening?"
+     }
+    ],
+    "sample": "Hello! I'm calling regarding your listing on Facebook for the one-bedroom apartment on Le Loi Street. I'm looking to move in around the first of next month, and I wanted to check if it's still available. Could you clarify whether utilities like water, electricity, and the management fee are included in the monthly rent? Also, how much is the security deposit required upfront? The place looks perfect for my needs, so would it be possible to arrange an in-person viewing sometime this Thursday after five o'clock? I'd really appreciate your time. Thank you!",
+    "tipVi": "Đặt câu hỏi rành mạch, đi thẳng vào các chi phí thực tế và dùng ngữ điệu chuyên nghiệp, lịch sự trên điện thoại."
+   },
+   {
+    "id": "gt-nha-cua-4",
+    "level": "MEDIUM",
+    "title": "Reporting an Urgent Apartment Issue",
+    "titleVi": "Báo sự cố hỏng hóc cho chủ nhà",
+    "situationVi": "Hệ thống ống nước dưới bồn rửa chén trong căn hộ thuê của bạn bị rò rỉ nghiêm trọng gây ngập sàn bếp. Bạn gọi điện báo cho chủ nhà để yêu cầu sửa chữa khẩn cấp.",
+    "task": "You are calling your landlord to report a serious plumbing issue in your rented apartment. Explain the problem clearly, explain how it affects your daily life, and ask for a technician to fix it promptly.",
+    "mustVi": [
+     "Mô tả chính xác sự cố (vị trí rò rỉ, mức độ nước tràn)",
+     "Nêu ảnh hưởng của sự cố đến sinh hoạt và nguy cơ hư hỏng sàn gỗ/nội thất",
+     "Đề nghị chủ nhà cử thợ đến xử lý và thống nhất thời gian cụ thể"
+    ],
+    "phrases": [
+     {
+      "en": "I'm calling to report an urgent issue with...",
+      "vi": "Tôi gọi để báo cáo một sự cố khẩn cấp về...",
+      "ex": "I'm calling to report an urgent issue with the kitchen plumbing."
+     },
+     {
+      "en": "Water is leaking heavily from...",
+      "vi": "Nước đang rò rỉ rất mạnh từ...",
+      "ex": "Water is leaking heavily from the pipe beneath the sink."
+     },
+     {
+      "en": "It's causing water damage to...",
+      "vi": "Nó đang gây hư hại do ngấm nước đối với...",
+      "ex": "It's already pooling on the floor and risking damage to the wooden cabinets."
+     },
+     {
+      "en": "I've turned off the main valve",
+      "vi": "Tôi đã khóa van nước chính",
+      "ex": "I've turned off the main water valve as a temporary measure."
+     },
+     {
+      "en": "Could you send a plumber over...?",
+      "vi": "Bác có thể cử thợ sửa ống nước qua... được không?",
+      "ex": "Could you send a plumber over as soon as possible today?"
+     },
+     {
+      "en": "I'll be home to let them in",
+      "vi": "Tôi sẽ có mặt ở nhà để mở cửa cho họ",
+      "ex": "I'll be home all afternoon to let the technician in."
+     }
+    ],
+    "sample": "Good afternoon, Mrs. Lan. I'm calling to report an urgent problem in apartment 3B. The drainage pipe underneath the kitchen sink burst this morning, and water is leaking heavily across the kitchen floor. I've turned off the main shut-off valve, but water is still pooling around the wooden cabinets, which could cause lasting water damage. Because of this, I currently have no running water to cook or wash up. Could you please arrange for an emergency plumber to come inspect and fix it today? I will be home until 6 PM to let them in. Thank you for your prompt help!",
+    "tipVi": "Giữ thái độ bình tĩnh nhưng kiên quyết, nhấn mạnh rủi ro thiệt hại tài sản chung để chủ nhà xử lý ngay mà không cần đôi co."
+   },
+   {
+    "id": "gt-nha-cua-5",
+    "level": "HARD",
+    "title": "Resolving a Neighbour Noise Issue",
+    "titleVi": "Giải quyết mâu thuẫn tiếng ồn với hàng xóm",
+    "situationVi": "Người hàng xóm sát vách thường xuyên mở nhạc to và tiệc tùng sau 11 giờ đêm. Bạn trực tiếp sang gõ cửa để nói chuyện một cách văn minh, khéo léo nhưng dứt khoát.",
+    "task": "You are speaking directly to your neighbor who frequently plays loud music late into the night. Address the issue politely without sounding aggressive, explain how it impacts your rest or work, and negotiate a reasonable compromise.",
+    "mustVi": [
+     "Bày tỏ sự thông cảm và mở đầu câu chuyện một cách nhã nhặn, không kích động",
+     "Nêu rõ sự việc (tiếng bass, nhạc to sau 11h đêm) và tác động tiêu cực đến giấc ngủ/công việc của bạn",
+     "Đề xuất một giải pháp hoặc khung giờ thỏa hiệp hợp lý (ví dụ vặn nhỏ loa sau 10h tối, dùng tai nghe)"
+    ],
+    "phrases": [
+     {
+      "en": "I hate to bring this up, but...",
+      "vi": "Tôi rất ngại khi phải đề cập chuyện này, nhưng...",
+      "ex": "I really hate to bring this up, but the bass from your speakers carries through the walls."
+     },
+     {
+      "en": "I don't mean to be unreasonable",
+      "vi": "Tôi không có ý muốn làm khó bạn đâu",
+      "ex": "I don't mean to be unreasonable, as I know everyone wants to unwind after work."
+     },
+     {
+      "en": "The sound carries quite easily",
+      "vi": "Âm thanh truyền qua tường khá rõ",
+      "ex": "Because the walls are quite thin, the bass reverberates right into my bedroom."
+     },
+     {
+      "en": "It's been keeping me awake",
+      "vi": "Nó khiến tôi bị mất ngủ",
+      "ex": "It's been keeping me awake until 1 AM, and I have to wake up early for work."
+     },
+     {
+      "en": "Would you mind turning it down after...?",
+      "vi": "Bạn có phiền vặn nhỏ lại sau... giờ không?",
+      "ex": "Would you mind keeping the volume down after 10 PM on weekdays?"
+     },
+     {
+      "en": "I'd really appreciate your understanding",
+      "vi": "Tôi rất cảm kích sự thấu hiểu của bạn",
+      "ex": "I'd really appreciate your understanding so we can both live comfortably."
+     }
+    ],
+    "sample": "Hi Alex, sorry to disturb you this evening. I hate to bring this up, but I wanted to talk briefly about the music volume. I know you enjoy having friends over to unwind, and I certainly don't want to spoil your fun. However, the walls between our flats are quite thin, and the bass carries directly into my bedroom. Over the past week, the loud music after 11 PM has kept me awake, which makes it very hard to focus on work early the next morning. Would you mind turning the bass down or using headphones after 10 PM on weeknights? I'd really appreciate your cooperation!",
+    "tipVi": "Áp dụng kỹ thuật sandwich (mềm mỏng thấu hiểu trước - chỉ rõ vấn đề cụ thể - đề xuất thỏa hiệp cùng có lợi) để giải quyết xung đột trong êm đẹp."
+   }
+  ]
+ },
+ {
   "id": "nho-giup",
   "titleVi": "Nhờ giúp, đề nghị và từ chối lịch sự",
   "tasks": [
@@ -2165,6 +3852,729 @@
     ],
     "sample": "Thank you for your time today, Mr. Henderson. On behalf of our executive team, I take full accountability for missing the agreed deployment deadline. We deeply regret the disruption this delay causes to your scheduled marketing campaign. During final system integration last weekend, our engineers detected data synchronisation vulnerabilities that posed severe security risks if deployed. We have mobilised our senior engineering squad around the clock, guaranteeing a fully patched release by next Thursday. To offset your commercial losses, we will apply a 15% deduction to the final contract milestone and provide six months of premium maintenance free of charge. We are determined to regain your trust.",
     "tipVi": "Trong giao tiếp B2B cấp cao, không bao biện hay đổ lỗi cho hoàn cảnh; hãy tập trung vào trách nhiệm giải trình (accountability), mốc thời gian rõ ràng và phương án tài chính cụ thể."
+   }
+  ]
+ },
+ {
+  "id": "suc-khoe",
+  "titleVi": "Sức khỏe và đi khám",
+  "tasks": [
+   {
+    "id": "gt-suc-khoe-1",
+    "level": "EASY",
+    "title": "Buying Medicine at the Pharmacy",
+    "titleVi": "Mua thuốc tại hiệu thuốc",
+    "situationVi": "Bạn đang bị cảm lạnh nhẹ trong chuyến du lịch nước ngoài và ghé vào một hiệu thuốc địa phương để mua thuốc. Bạn nói chuyện trực tiếp với người dược sĩ đứng quầy.",
+    "task": "You are at a local pharmacy. Tell the pharmacist about your current symptoms, ask for a suitable over-the-counter medicine, and ask how often you should take it.",
+    "mustVi": [
+     "Nêu rõ các triệu chứng bạn đang gặp phải (sổ mũi, đau họng, nhức đầu)",
+     "Hỏi dược sĩ xem có loại thuốc không kê đơn nào phù hợp để giảm triệu chứng không",
+     "Hỏi về liều lượng, cách uống và tác dụng phụ gây buồn ngủ"
+    ],
+    "phrases": [
+     {
+      "en": "I've come down with...",
+      "vi": "Tôi bị nhiễm / mắc phải...",
+      "ex": "I think I've come down with a bad cold."
+     },
+     {
+      "en": "Do you have anything for...?",
+      "vi": "Bạn có thuốc nào trị... không?",
+      "ex": "Do you have anything for a sore throat?"
+     },
+     {
+      "en": "How often should I take this?",
+      "vi": "Tôi nên uống thuốc này mấy lần một ngày?",
+      "ex": "How often should I take this painkiller?"
+     },
+     {
+      "en": "Does it have any side effects?",
+      "vi": "Nó có tác dụng phụ nào không?",
+      "ex": "Does this medicine have any side effects like drowsiness?"
+     },
+     {
+      "en": "Should I take it before or after meals?",
+      "vi": "Tôi nên uống trước hay sau bữa ăn?",
+      "ex": "Should I take this capsule before or after meals?"
+     },
+     {
+      "en": "It has been going on for...",
+      "vi": "Tình trạng này đã kéo dài...",
+      "ex": "It has been going on for two days now."
+     }
+    ],
+    "sample": "Hello. I woke up yesterday feeling unwell, and I think I've come down with a cold. I have a running nose, a slight headache, and a scratchy throat. It has been going on for about two days now. Do you have any over-the-counter medication that could help relieve these symptoms? Also, how often should I take this medicine, and should I take it before or after meals? Lastly, please let me know if it causes drowsiness because I need to work this afternoon. Thank you for your help!",
+    "tipVi": "Hãy nói rõ ràng, dùng các từ miêu tả triệu chứng cơ bản và chú ý lắng nghe kỹ hướng dẫn liều lượng từ dược sĩ."
+   },
+   {
+    "id": "gt-suc-khoe-2",
+    "level": "EASY",
+    "title": "Scheduling a Doctor's Appointment",
+    "titleVi": "Đặt lịch hẹn khám bệnh",
+    "situationVi": "Bạn bị đau răng dữ dội từ tối hôm trước và quyết định gọi điện thoại đến phòng khám nha khoa để đặt lịch hẹn khám sớm nhất có thể.",
+    "task": "Call the dental clinic receptionist to book an appointment. State the problem you are having, suggest your preferred day and time, and ask what documents or insurance you need to bring.",
+    "mustVi": [
+     "Trình bày lý do đặt khám và mức độ khẩn cấp của cơn đau",
+     "Đề xuất ngày và khung giờ bạn muốn đến khám",
+     "Hỏi về các giấy tờ hoặc bảo hiểm y tế cần mang theo khi đến"
+    ],
+    "phrases": [
+     {
+      "en": "I'd like to make an appointment with...",
+      "vi": "Tôi muốn đặt lịch hẹn với...",
+      "ex": "I'd like to make an appointment with Dr. Smith."
+     },
+     {
+      "en": "I have an unbearable toothache",
+      "vi": "Tôi bị đau răng không chịu nổi",
+      "ex": "I have an unbearable toothache since last night."
+     },
+     {
+      "en": "Are there any available slots on...?",
+      "vi": "Có khung giờ nào còn trống vào... không?",
+      "ex": "Are there any available slots on Thursday morning?"
+     },
+     {
+      "en": "As soon as possible",
+      "vi": "Càng sớm càng tốt",
+      "ex": "I really need to see someone as soon as possible."
+     },
+     {
+      "en": "Do you accept private insurance?",
+      "vi": "Phòng khám có chấp nhận bảo hiểm tư nhân không?",
+      "ex": "Do you accept international private insurance?"
+     },
+     {
+      "en": "What documents do I need to bring?",
+      "vi": "Tôi cần mang theo giấy tờ gì?",
+      "ex": "What documents do I need to bring for my first visit?"
+     }
+    ],
+    "sample": "Good morning. I'd like to make an appointment to see a dentist, please. I have developed an unbearable toothache on my lower right jaw since last night, so I really need to see a dentist as soon as possible. Do you have any available slots this afternoon or tomorrow morning? Also, this is my first visit to your clinic. What documents do I need to bring with me, and do you accept private health insurance? Thank you, I look forward to hearing from you.",
+    "tipVi": "Khi gọi điện thoại, hãy mở đầu lịch sự, cung cấp thông tin ngắn gọn và nhắc lại giờ hẹn để xác nhận chính xác."
+   },
+   {
+    "id": "gt-suc-khoe-3",
+    "level": "MEDIUM",
+    "title": "Explaining Symptoms to the Doctor",
+    "titleVi": "Mô tả triệu chứng với bác sĩ",
+    "situationVi": "Bạn đang ở trong phòng khám gặp bác sĩ đa khoa sau khi bị đau bụng quằn quại và buồn nôn suốt đêm. Bác sĩ yêu cầu bạn kể chi tiết tình trạng bệnh.",
+    "task": "Explain your symptoms clearly to the doctor. Describe when the pain started and what kind of pain it is, mention what you ate or did beforehand, and ask if you need further medical tests.",
+    "mustVi": [
+     "Mô tả chi tiết vị trí, cảm giác đau (đau quặn, nhói) và thời điểm bắt đầu",
+     "Nêu các triệu chứng đi kèm và nghi vấn về đồ ăn bạn đã dùng trước đó",
+     "Bày tỏ lo lắng và hỏi bác sĩ liệu có cần xét nghiệm máu hay siêu âm không"
+    ],
+    "phrases": [
+     {
+      "en": "I've been experiencing sharp pain in...",
+      "vi": "Tôi bị những cơn đau nhói ở...",
+      "ex": "I've been experiencing sharp pain in my lower abdomen."
+     },
+     {
+      "en": "The pain comes and goes",
+      "vi": "Cơn đau lúc có lúc không",
+      "ex": "The pain comes and goes, but it got worse at midnight."
+     },
+     {
+      "en": "I suspect it might be food poisoning",
+      "vi": "Tôi nghi ngờ có thể do ngộ độc thực phẩm",
+      "ex": "I suspect it might be food poisoning from dinner."
+     },
+     {
+      "en": "I felt nauseous and threw up",
+      "vi": "Tôi thấy buồn nôn và đã nôn mửa",
+      "ex": "I felt nauseous and threw up twice last night."
+     },
+     {
+      "en": "Do I need an ultrasound or blood test?",
+      "vi": "Tôi có cần siêu âm hay xét nghiệm máu không?",
+      "ex": "Do I need an ultrasound or blood test to be sure?"
+     },
+     {
+      "en": "Is it anything serious?",
+      "vi": "Liệu có vấn đề gì nghiêm trọng không?",
+      "ex": "Do you think it is anything serious, doctor?"
+     }
+    ],
+    "sample": "Doctor, since yesterday evening, I've been experiencing severe stomach cramps and a sharp pain in my upper abdomen. The pain comes and goes, but it kept me awake all night. I also felt extremely nauseous and threw up twice. I suspect it might be food poisoning because I ate raw seafood at a street market yesterday. I took some antacid tablets at home, but they didn't help at all. Do you think it is anything serious? Will I need to take a blood test or have an ultrasound done today?",
+    "tipVi": "Dùng các tính từ mô tả tính chất cơn đau (cramps, sharp, dull) và sắp xếp diễn biến bệnh theo dòng thời gian để bác sĩ chẩn đoán chính xác."
+   },
+   {
+    "id": "gt-suc-khoe-4",
+    "level": "MEDIUM",
+    "title": "Inquiring About Gym Membership Plans",
+    "titleVi": "Tìm hiểu đăng ký gói tập gym",
+    "situationVi": "Bạn muốn bắt đầu cải thiện thể lực sau thời gian dài ít vận động. Bạn đến quầy tư vấn của một trung tâm thể hình để hỏi về các gói tập và dịch vụ huấn luyện viên.",
+    "task": "Talk to the fitness center consultant. Share your current fitness goals, ask about membership packages and personal trainer fees, and inquire about trial sessions or gym amenities.",
+    "mustVi": [
+     "Trình bày mục tiêu tập luyện cá nhân (tăng sức bền, giảm cân do ngồi văn phòng nhiều)",
+     "Hỏi chi tiết về các gói hội viên và chi phí thuê huấn luyện viên cá nhân (PT)",
+     "Hỏi về các tiện ích đi kèm (phòng xông hơi, lớp yoga) và chính sách tập thử"
+    ],
+    "phrases": [
+     {
+      "en": "My main goal is to build stamina and...",
+      "vi": "Mục tiêu chính của tôi là tăng sức bền và...",
+      "ex": "My main goal is to build stamina and lose some belly fat."
+     },
+     {
+      "en": "What are your membership options?",
+      "vi": "Trung tâm có các gói hội viên nào?",
+      "ex": "What are your monthly and yearly membership options?"
+     },
+     {
+      "en": "How much do you charge for a personal trainer?",
+      "vi": "Chi phí thuê huấn luyện viên cá nhân là bao nhiêu?",
+      "ex": "How much do you charge for a one-on-one personal trainer?"
+     },
+     {
+      "en": "Are group classes included in the fee?",
+      "vi": "Các lớp học nhóm có bao gồm trong phí không?",
+      "ex": "Are group fitness classes included in the standard fee?"
+     },
+     {
+      "en": "Can I sign up for a free trial?",
+      "vi": "Tôi có thể đăng ký buổi tập thử miễn phí không?",
+      "ex": "Can I sign up for a three-day free trial first?"
+     },
+     {
+      "en": "What amenities do you offer?",
+      "vi": "Trung tâm có những tiện ích gì?",
+      "ex": "What amenities do you offer, like lockers or a sauna?"
+     }
+    ],
+    "sample": "Hi there. I'm looking to get back into shape, so my main goal is to build stamina and shed some weight after sitting at an office desk all day. Could you tell me about your membership options and current promotions? I am also interested in hiring a personal trainer for my first month. How much do you charge for private coaching sessions? Furthermore, are amenities like the sauna and group yoga classes included in the standard package? Lastly, is it possible to sign up for a free trial pass before making a long-term commitment?",
+    "tipVi": "Đặt câu hỏi trực diện nhưng lịch sự, kết hợp câu hỏi đóng và mở để khai thác đầy đủ quyền lợi trước khi ký hợp đồng."
+   },
+   {
+    "id": "gt-suc-khoe-5",
+    "level": "HARD",
+    "title": "Creating a Healthy Lifestyle Plan",
+    "titleVi": "Thảo luận kế hoạch sống lành mạnh",
+    "situationVi": "Bạn có buổi tư vấn sức khỏe 1-1 với chuyên gia chăm sóc sức khỏe (health coach) sau khi nhận kết quả khám sức khỏe định kỳ cho thấy chỉ số mỡ máu tăng cao và bạn thường xuyên bị căng thẳng.",
+    "task": "Discuss your health concerns with the wellness coach. Analyze why your current work routine harms your sleep and diet, propose realistic changes you want to make, and ask for their advice on sustaining these habits long term.",
+    "mustVi": [
+     "Trình bày kết quả khám sức khỏe đáng lo ngại (mỡ máu nhẹ, stress, mất ngủ)",
+     "Phân tích nguyên nhân sâu xa từ áp lực công việc dẫn tới thói quen ăn đồ ăn nhanh và thiếu vận động",
+     "Đưa ra các thay đổi cụ thể dự định làm và xin lời khuyên để duy trì thói quen bền vững không bị nản"
+    ],
+    "phrases": [
+     {
+      "en": "My recent health checkup revealed that...",
+      "vi": "Kết quả khám sức khỏe gần đây của tôi cho thấy...",
+      "ex": "My recent health checkup revealed that my cholesterol levels are slightly elevated."
+     },
+     {
+      "en": "Due to my demanding schedule, I tend to...",
+      "vi": "Do lịch trình bận rộn, tôi có xu hướng...",
+      "ex": "Due to my demanding schedule, I tend to skip breakfast and eat fast food."
+     },
+     {
+      "en": "It takes a toll on my mental wellbeing",
+      "vi": "Nó gây ảnh hưởng xấu tới sức khỏe tinh thần của tôi",
+      "ex": "Working late nights takes a heavy toll on my mental wellbeing."
+     },
+     {
+      "en": "I want to incorporate more physical activity",
+      "vi": "Tôi muốn lồng ghép thêm hoạt động thể chất",
+      "ex": "I want to incorporate more physical activity into my daily routine."
+     },
+     {
+      "en": "How can I maintain consistency without burning out?",
+      "vi": "Làm thế nào để duy trì tính đều đặn mà không kiệt sức?",
+      "ex": "How can I maintain consistency without burning out within two weeks?"
+     },
+     {
+      "en": "Strike a realistic balance",
+      "vi": "Đạt được sự cân bằng thực tế",
+      "ex": "I need to strike a realistic balance between work and exercise."
+     }
+    ],
+    "sample": "Good afternoon. My recent health checkup revealed borderline high cholesterol and chronic stress. Due to my demanding corporate schedule, I often skip breakfast, rely heavily on takeout, and stay glued to my desk for ten hours straight. This lifestyle has ruined my sleep quality and taken a heavy toll on my energy. Moving forward, I want to prepare home-cooked meals and incorporate thirty minutes of brisk walking every evening. However, I often struggle with motivation after exhaustive workdays. In your professional opinion, how can I maintain consistency without burning out, and strike a realistic balance that fits my busy career?",
+    "tipVi": "Sử dụng cấu trúc câu phức để trình bày nguyên nhân - kết quả và thể hiện thái độ cầu thị, sẵn sàng cam kết thay đổi bản thân."
+   }
+  ]
+ },
+ {
+  "id": "thoi-quen",
+  "titleVi": "Thói quen và một ngày của bạn",
+  "tasks": [
+   {
+    "id": "gt-thoi-quen-1",
+    "level": "EASY",
+    "title": "My Productive Morning Routine",
+    "titleVi": "Thói quen buổi sáng tràn đầy năng lượng",
+    "situationVi": "Bạn đang tham gia buổi gặp gỡ đầu tiên tại một câu lạc bộ tiếng Anh và được một người bạn nước ngoài hỏi về cách bạn bắt đầu một ngày mới.",
+    "task": "You are talking to a new foreign friend at an English club. Tell them about your typical morning routine from the moment you wake up until you arrive at your workplace or school.",
+    "mustVi": [
+     "Bạn thức dậy lúc mấy giờ và những việc đầu tiên bạn làm sau khi rời giường.",
+     "Bạn chuẩn bị bữa sáng và di chuyển đến nơi làm việc hoặc trường học như thế nào.",
+     "Thói quen nhỏ nào giúp bạn cảm thấy tỉnh táo và hào hứng bắt đầu ngày mới."
+    ],
+    "phrases": [
+     {
+      "en": "as soon as I wake up",
+      "vi": "ngay sau khi tôi thức dậy",
+      "ex": "As soon as I wake up, I drink a large glass of warm water."
+     },
+     {
+      "en": "kick-start my day",
+      "vi": "khởi động ngày mới đầy hứng khởi",
+      "ex": "A cup of strong black coffee helps kick-start my day."
+     },
+     {
+      "en": "grab a quick breakfast",
+      "vi": "ăn nhanh bữa sáng",
+      "ex": "I usually grab a quick breakfast like bread or sticky rice."
+     },
+     {
+      "en": "head out the door",
+      "vi": "rời khỏi nhà, bước ra khỏi cửa",
+      "ex": "I head out the door around seven thirty to avoid heavy traffic."
+     },
+     {
+      "en": "commute to work",
+      "vi": "đi làm (chặng đường di chuyển)",
+      "ex": "It takes me twenty minutes to commute to work by motorbike."
+     },
+     {
+      "en": "feel refreshed and ready",
+      "vi": "cảm thấy sảng khoái và sẵn sàng",
+      "ex": "A short morning stretch makes me feel refreshed and ready."
+     }
+    ],
+    "sample": "My alarm goes off at six every morning. As soon as I wake up, I drink a glass of warm water and stretch for ten minutes. Then, I take a quick shower and brush my teeth. I usually grab a quick breakfast, like Vietnamese banh mi or oatmeal, while listening to upbeat music. A cup of black coffee really helps kick-start my day and makes me feel alert. Around seven thirty, I head out the door and commute to work by motorbike. It usually takes twenty minutes, so I arrive feeling refreshed and ready to work.",
+    "tipVi": "Hãy sử dụng các từ nối trình tự thời gian đơn giản như 'first', 'then', 'after that' và giữ ngữ điệu tươi vui, tự nhiên."
+   },
+   {
+    "id": "gt-thoi-quen-2",
+    "level": "EASY",
+    "title": "Unwinding After a Busy Day",
+    "titleVi": "Thư giãn sau một ngày bận rộn",
+    "situationVi": "Bạn đang trò chuyện qua video với một người bạn trao đổi ngôn ngữ trực tuyến về cách mỗi người nghỉ ngơi vào buổi tối sau giờ làm.",
+    "task": "You are chatting with your online language partner. Describe what you usually do in the evening after work or study to relax and get ready for a good night's sleep.",
+    "mustVi": [
+     "Bạn thường về đến nhà lúc mấy giờ và chuẩn bị bữa tối như thế nào.",
+     "Hoạt động giải trí hoặc sở thích yêu thích của bạn vào buổi tối để giải tỏa căng thẳng.",
+     "Thời gian bạn đi ngủ và thói quen bạn làm ngay trước khi lên giường."
+    ],
+    "phrases": [
+     {
+      "en": "unwind after work",
+      "vi": "thả lỏng, xả hơi sau giờ làm",
+      "ex": "Cooking a warm dinner helps me unwind after work."
+     },
+     {
+      "en": "sit down for dinner",
+      "vi": "ngồi vào bàn ăn tối",
+      "ex": "My family usually sits down for dinner together at seven."
+     },
+     {
+      "en": "binge-watch a show",
+      "vi": "xem liền tù tì một bộ phim / chương trình",
+      "ex": "I often binge-watch an episode of a comedy show to laugh."
+     },
+     {
+      "en": "stay away from screens",
+      "vi": "tránh xa màn hình điện tử",
+      "ex": "I try to stay away from screens thirty minutes before bed."
+     },
+     {
+      "en": "turn in for the night",
+      "vi": "đi ngủ vào buổi tối",
+      "ex": "I usually turn in for the night around eleven o'clock."
+     },
+     {
+      "en": "drift off to sleep",
+      "vi": "chìm dần vào giấc ngủ",
+      "ex": "Listening to calm rain sounds helps me drift off to sleep easily."
+     }
+    ],
+    "sample": "I usually get home around six thirty in the evening. First, I cook a simple dinner and sit down to eat with my family, which helps me unwind after work. Afterwards, I spend about an hour on my favorite pastime: binge-watching a travel show or listening to calm acoustic songs. Around ten, I put my phone away because I try to stay away from screens before sleeping. Then, I read a few pages of a novel to relax my eyes. I turn in for the night at eleven and drift off to sleep easily.",
+    "tipVi": "Hãy nói với nhịp điệu chậm rãi, ấm áp và sử dụng các tính từ miêu tả cảm giác thư thái như 'calm', 'simple', 'peaceful'."
+   },
+   {
+    "id": "gt-thoi-quen-3",
+    "level": "MEDIUM",
+    "title": "Weekdays versus Weekend Routine",
+    "titleVi": "Khác biệt giữa ngày trong tuần và cuối tuần",
+    "situationVi": "Trong lớp học tiếng Anh giao tiếp, giáo viên yêu cầu bạn thuyết trình ngắn để so sánh nhịp sống giữa ngày làm việc và ngày nghỉ cuối tuần của bạn.",
+    "task": "You are giving a short presentation to your English class. Compare your structured weekday schedule with your flexible weekend routine, explaining which one you enjoy more and why.",
+    "mustVi": [
+     "Sự khác biệt về thời gian biểu thức dậy và mức độ kỷ luật giữa ngày thường và cuối tuần.",
+     "Những hoạt động giao lưu, sở thích bạn chỉ dành riêng cho hai ngày thứ Bảy và Chủ nhật.",
+     "Cảm nhận của bạn về tầm quan trọng của việc cân bằng giữa làm việc và nghỉ ngơi."
+    ],
+    "phrases": [
+     {
+      "en": "stick to a strict schedule",
+      "vi": "tuân thủ một lịch trình nghiêm ngặt",
+      "ex": "On weekdays, I must stick to a strict schedule to meet deadlines."
+     },
+     {
+      "en": "sleep in",
+      "vi": "ngủ nướng (dậy muộn hơn ngày thường)",
+      "ex": "I love sleeping in until eight thirty on Sunday mornings."
+     },
+     {
+      "en": "catch up with friends",
+      "vi": "gặp gỡ trò chuyện với bạn bè",
+      "ex": "Weekends are my chance to catch up with old friends over coffee."
+     },
+     {
+      "en": "in stark contrast to",
+      "vi": "hoàn toàn trái ngược với",
+      "ex": "My weekends are leisurely, in stark contrast to my hectic weekdays."
+     },
+     {
+      "en": "recharge my batteries",
+      "vi": "nạp lại năng lượng",
+      "ex": "Spending time outdoors helps me recharge my batteries."
+     },
+     {
+      "en": "strike a healthy balance",
+      "vi": "đạt được sự cân bằng lành mạnh",
+      "ex": "I always strive to strike a healthy balance between work and rest."
+     }
+    ],
+    "sample": "During the week, I must stick to a strict schedule. I wake up at six, rush to the office, and work until late afternoon. In stark contrast to my hectic weekdays, my weekend routine is much more relaxed and flexible. I often sleep in until eight or nine, take my time brewing drip coffee, and catch up with close friends at a quiet cafe. I also dedicate Sunday afternoons to outdoor sports. While weekdays demand focus and discipline, weekends allow me to recharge my batteries. I believe this contrast is essential to strike a healthy balance in life.",
+    "tipVi": "Sử dụng linh hoạt các liên từ tương phản như 'in contrast', 'while', 'whereas' để bài so sánh có tính liên kết chặt chẽ."
+   },
+   {
+    "id": "gt-thoi-quen-4",
+    "level": "MEDIUM",
+    "title": "Breaking My Bad Habit",
+    "titleVi": "Hành trình từ bỏ một thói quen xấu",
+    "situationVi": "Bạn đang tham gia một nhóm thảo luận về phát triển bản thân và chia sẻ câu chuyện mình đã nỗ lực từ bỏ thói quen thức khuya lướt mạng xã hội như thế nào.",
+    "task": "You are speaking to your self-improvement discussion group. Explain a bad daily habit you have been trying to break, what concrete steps you took, and how your daily life has improved.",
+    "mustVi": [
+     "Thói quen xấu đó là gì và nó đã ảnh hưởng tiêu cực đến sức khỏe hay công việc của bạn ra sao.",
+     "Những giải pháp hoặc quy tắc kỷ luật mới mà bạn đã chủ động thiết lập để thay đổi.",
+     "Sự thay đổi tích cực bạn nhận thấy và bài học rút ra về việc duy trì thói quen tốt."
+    ],
+    "phrases": [
+     {
+      "en": "fall into the trap of",
+      "vi": "rơi vào cái bẫy của việc...",
+      "ex": "I fell into the trap of mindless scrolling every single night."
+     },
+     {
+      "en": "take a heavy toll on",
+      "vi": "gây ảnh hưởng nặng nề lên...",
+      "ex": "Lack of sleep took a heavy toll on my daytime focus."
+     },
+     {
+      "en": "break the vicious cycle",
+      "vi": "phá vỡ vòng luẩn quẩn",
+      "ex": "I knew I needed strong rules to break the vicious cycle."
+     },
+     {
+      "en": "set a firm boundary",
+      "vi": "thiết lập ranh giới dứt khoát",
+      "ex": "I set a firm boundary by keeping all devices outside my bedroom."
+     },
+     {
+      "en": "notice a dramatic difference",
+      "vi": "nhận thấy một sự khác biệt rõ rệt",
+      "ex": "Within two weeks, I noticed a dramatic difference in my energy."
+     },
+     {
+      "en": "require conscious effort",
+      "vi": "đòi hỏi nỗ lực có ý thức",
+      "ex": "Replacing negative habits requires constant conscious effort."
+     }
+    ],
+    "sample": "For a long time, I fell into the trap of mindless phone scrolling until one in the morning. This bad habit took a heavy toll on my focus and left me exhausted every morning. Last month, I decided to break the vicious cycle. I set a firm boundary: my smartphone stays in the living room after ten thirty, and I bought a simple alarm clock instead. Within two weeks, I noticed a dramatic difference in my morning energy and mood. This journey taught me that replacing negative routines requires conscious effort, but the long-term benefits are definitely worth it.",
+    "tipVi": "Nên kết hợp thì quá khứ đơn (khi kể về thói quen cũ) và hiện tại hoàn thành / hiện tại đơn (khi nói về kết quả đạt được)."
+   },
+   {
+    "id": "gt-thoi-quen-5",
+    "level": "HARD",
+    "title": "Redesigning Daily Work Schedules",
+    "titleVi": "Tái cấu trúc lịch trình làm việc",
+    "situationVi": "Bạn là một quản lý giàu kinh nghiệm, đang đưa ra lời khuyên cho một nhân viên cấp dưới đang gặp tình trạng kiệt sức (burnout) do không biết sắp xếp thứ tự ưu tiên trong ngày.",
+    "task": "You are mentoring a junior team member who feels overwhelmed by daily tasks. Advise them on how to restructure their daily work schedule, implement deep work blocks, and protect their personal downtime.",
+    "mustVi": [
+     "Chỉ ra những lỗi phổ biến trong lịch trình hàng ngày dẫn đến tình trạng làm việc thụ động và kiệt sức.",
+     "Hướng dẫn phương pháp phân bổ thời gian cụ thể (như phân chia khung giờ làm việc tập trung và xử lý việc vặt).",
+     "Khẳng định lý do vì sao việc thiết lập ranh giới rõ ràng giữa công việc và đời sống là điều kiện tiên quyết cho sự nghiệp bền vững."
+    ],
+    "phrases": [
+     {
+      "en": "burn the candle at both ends",
+      "vi": "làm việc kiệt sức từ sáng sớm đến đêm muộn",
+      "ex": "You cannot burn the candle at both ends without risking burnout."
+     },
+     {
+      "en": "fall victim to reactive working",
+      "vi": "trở thành nạn nhân của lối làm việc thụ động, đối phó",
+      "ex": "Many employees fall victim to reactive working by answering every ping immediately."
+     },
+     {
+      "en": "block out time for deep work",
+      "vi": "dành riêng khung thời gian cho công việc tập trung cao độ",
+      "ex": "I recommend you block out two hours every morning for deep work."
+     },
+     {
+      "en": "tackle high-priority deliverables",
+      "vi": "giải quyết các nhiệm vụ/sản phẩm có độ ưu tiên cao",
+      "ex": "Use your morning energy peak to tackle high-priority deliverables."
+     },
+     {
+      "en": "draw a definitive line between",
+      "vi": "vạch ra ranh giới rõ ràng, dứt khoát giữa...",
+      "ex": "You must draw a definitive line between professional duties and private time."
+     },
+     {
+      "en": "sustainable over the long run",
+      "vi": "bền vững về lâu dài",
+      "ex": "A structured routine is the only way to remain sustainable over the long run."
+     }
+    ],
+    "sample": "I noticed you frequently burn the candle at both ends, which inevitably causes severe burnout. Right now, you fall victim to reactive working because you respond to every email instantly. To regain control, you must restructure your schedule. Block out two uninterrupted hours every morning for deep work, and tackle high-priority deliverables when your mental energy peaks. Defer administrative tasks and meetings strictly to the afternoon. Above all, draw a definitive line between your work commitments and evening downtime. Remember, pushing through endless hours is never sustainable over the long run; protecting your daily rhythm creates enduring career success.",
+    "tipVi": "Giữ giọng điệu điềm tĩnh, thấu hiểu nhưng quyết đoán của một người cố vấn (mentor); sử dụng các động từ chỉ dẫn như 'recommend', 'must', 'restructure'."
+   }
+  ]
+ },
+ {
+  "id": "xa-hoi",
+  "titleVi": "Xã hội, tin tức và ý kiến",
+  "tasks": [
+   {
+    "id": "gt-xa-hoi-1",
+    "level": "EASY",
+    "title": "My Daily Eco-Friendly Habits",
+    "titleVi": "Thói quen sống xanh hàng ngày",
+    "situationVi": "Bạn đang trò chuyện với một người bạn nước ngoài mới quen về những thói quen bảo vệ môi trường đơn giản mà bạn áp dụng ở nhà.",
+    "task": "Talk about your daily eco-friendly habits. Describe what you do to protect the environment, why you started doing it, and one habit you want to build in the future.",
+    "mustVi": [
+     "Kể tên ít nhất hai việc bạn làm hàng ngày để bảo vệ môi trường",
+     "Lý do khiến bạn bắt đầu duy trì những thói quen này",
+     "Một thói quen xanh mới mà bạn muốn thử áp dụng trong tương lai"
+    ],
+    "phrases": [
+     {
+      "en": "cut down on plastic",
+      "vi": "cắt giảm rác thải nhựa",
+      "ex": "I always bring my own bag to cut down on plastic."
+     },
+     {
+      "en": "make a habit of",
+      "vi": "tập thói quen làm gì",
+      "ex": "I make a habit of turning off the lights when leaving a room."
+     },
+     {
+      "en": "reusable bottle",
+      "vi": "bình nước tái sử dụng",
+      "ex": "Carrying a reusable bottle saves money and reduces waste."
+     },
+     {
+      "en": "raise my awareness",
+      "vi": "nâng cao nhận thức của tôi",
+      "ex": "A documentary raised my awareness about pollution."
+     },
+     {
+      "en": "every little bit helps",
+      "vi": "mỗi hành động nhỏ đều có ích",
+      "ex": "Even small actions matter because every little bit helps."
+     },
+     {
+      "en": "switch to",
+      "vi": "chuyển sang dùng hoặc làm gì",
+      "ex": "I hope to switch to using public transport next month."
+     }
+    ],
+    "sample": "To be honest, I try to live as sustainably as I can. Every day, I carry a reusable water bottle and bring a canvas bag when I go grocery shopping to cut down on single-use plastic. I started doing this two years ago after watching a documentary about ocean pollution, which really opened my eyes. I realize that every little bit helps our planet. In the near future, I really want to switch to riding a bicycle to work twice a week instead of using my motorbike, which will reduce my carbon footprint even more.",
+    "tipVi": "Hãy dùng thì hiện tại đơn để nói về thói quen thường nhật và kết nối các ý bằng từ chuyển tiếp như 'to be honest' hoặc 'in the near future'."
+   },
+   {
+    "id": "gt-xa-hoi-2",
+    "level": "EASY",
+    "title": "A Meaningful Volunteer Experience",
+    "titleVi": "Trải nghiệm tình nguyện ý nghĩa",
+    "situationVi": "Bạn đang kể cho một đồng nghiệp nghe về một hoạt động thiện nguyện hoặc hoạt động cộng đồng mà bạn đã từng tham gia.",
+    "task": "Share a volunteer or community activity you took part in. Explain what you did, who you helped, and how you felt about the whole experience.",
+    "mustVi": [
+     "Hoạt động tình nguyện đó là gì và diễn ra ở đâu",
+     "Nhiệm vụ cụ thể của bạn trong sự kiện hoặc chuyến đi đó",
+     "Cảm xúc hoặc bài học bạn rút ra sau trải nghiệm"
+    ],
+    "phrases": [
+     {
+      "en": "take part in",
+      "vi": "tham gia vào",
+      "ex": "Last summer, I took part in a local charity program."
+     },
+     {
+      "en": "give back to the community",
+      "vi": "đóng góp lại cho cộng đồng",
+      "ex": "Volunteering is a great way to give back to the community."
+     },
+     {
+      "en": "hand out",
+      "vi": "phân phát trực tiếp",
+      "ex": "We handed out warm clothes and food to homeless people."
+     },
+     {
+      "en": "lend a helping hand",
+      "vi": "giúp đỡ một tay",
+      "ex": "I felt proud to lend a helping hand to those in need."
+     },
+     {
+      "en": "rewarding experience",
+      "vi": "trải nghiệm bổ ích, xứng đáng",
+      "ex": "Teaching free English classes was a truly rewarding experience."
+     },
+     {
+      "en": "appreciate what I have",
+      "vi": "trân trọng những gì mình đang có",
+      "ex": "The trip taught me to appreciate what I have in life."
+     }
+    ],
+    "sample": "Last winter, I took part in a weekend charity trip to a rural village in northern Vietnam. Our team collected warm clothes, books, and rice to hand out to disadvantaged children before the cold season. My main job was sorting the donations and organizing fun games for the kids at the local primary school. Seeing the bright smiles on their faces was truly a rewarding experience. It really taught me to appreciate what I have and motivated me to give back to the community more often whenever I have free time.",
+    "tipVi": "Kết hợp linh hoạt thì quá khứ đơn khi tường thuật sự việc và thì hiện tại đơn khi bày tỏ cảm xúc, giá trị đọng lại."
+   },
+   {
+    "id": "gt-xa-hoi-3",
+    "level": "MEDIUM",
+    "title": "Sharing Interesting Local News",
+    "titleVi": "Chia sẻ một tin tức địa phương",
+    "situationVi": "Trong giờ nghỉ trưa, bạn trò chuyện với một đồng nghiệp nước ngoài về một sự kiện hoặc tin tức mới diễn ra gần đây tại thành phố.",
+    "task": "Tell your coworker about a recent news story in your city. Explain what happened, how people are reacting to it, and your personal view on the event.",
+    "mustVi": [
+     "Nội dung chính của tin tức hoặc sự kiện mới xảy ra",
+     "Phản ứng hoặc ý kiến của người dân xung quanh bạn",
+     "Quan điểm cá nhân của bạn về tác động lâu dài của tin tức này"
+    ],
+    "phrases": [
+     {
+      "en": "did you hear about...?",
+      "vi": "bạn đã nghe tin về... chưa?",
+      "ex": "Did you hear about the new metro line opening next month?"
+     },
+     {
+      "en": "hit the headlines",
+      "vi": "lên trang nhất, thành tâm điểm tin tức",
+      "ex": "The new traffic policy has hit the headlines this week."
+     },
+     {
+      "en": "mixed feelings",
+      "vi": "cảm xúc lẫn lộn, ý kiến trái chiều",
+      "ex": "Local residents have mixed feelings about the fare increase."
+     },
+     {
+      "en": "alleviate traffic congestion",
+      "vi": "giảm tải ùn tắc giao thông",
+      "ex": "This new bridge should alleviate traffic congestion during rush hour."
+     },
+     {
+      "en": "from my perspective",
+      "vi": "theo góc nhìn của tôi",
+      "ex": "From my perspective, it will take some time for people to adapt."
+     },
+     {
+      "en": "step in the right direction",
+      "vi": "bước đi đúng hướng",
+      "ex": "Promoting public transport is definitely a step in the right direction."
+     }
+    ],
+    "sample": "Did you hear about the city opening the new elevated railway section this week? It has really hit the headlines across all local newspapers. Most commuters are extremely excited because it should significantly alleviate traffic congestion during peak hours, though some older residents have mixed feelings about learning how to use the automated ticketing system. From my perspective, this project is definitely a huge step in the right direction for our city. In the long run, I believe it will encourage more people to switch from motorbikes to public transport, leading to cleaner air for everyone.",
+    "tipVi": "Mở đầu tự nhiên bằng câu hỏi mở gợi chuyện và thể hiện tính khách quan trước khi chốt lại bằng quan điểm cá nhân."
+   },
+   {
+    "id": "gt-xa-hoi-4",
+    "level": "MEDIUM",
+    "title": "Discussing Flexible Work Models",
+    "titleVi": "Thảo luận mô hình làm việc linh hoạt",
+    "situationVi": "Trong buổi sinh hoạt câu lạc bộ tiếng Anh, bạn được mời phát biểu quan điểm về xu hướng làm việc kết hợp (hybrid work) tại các đô thị lớn.",
+    "task": "Express your opinion on hybrid work versus full-time office work. Discuss the benefits, the challenges for community connections, and your recommendation for modern companies.",
+    "mustVi": [
+     "Lợi ích của mô hình làm việc linh hoạt đối với cá nhân và môi trường",
+     "Khó khăn hoặc mặt trái liên quan đến sự gắn kết cộng đồng và đồng nghiệp",
+     "Đề xuất hoặc giải pháp của bạn cho các doanh nghiệp hiện nay"
+    ],
+    "phrases": [
+     {
+      "en": "strike a healthy balance",
+      "vi": "đạt được sự cân bằng hợp lý",
+      "ex": "Hybrid work helps employees strike a healthy balance between work and life."
+     },
+     {
+      "en": "cut down on commute time",
+      "vi": "giảm bớt thời gian đi lại",
+      "ex": "Working remotely cuts down on commute time and saves fuel."
+     },
+     {
+      "en": "face-to-face interaction",
+      "vi": "tương tác trực tiếp mặt đối mặt",
+      "ex": "Virtual meetings cannot replace genuine face-to-face interaction."
+     },
+     {
+      "en": "sense of belonging",
+      "vi": "cảm giác thuộc về tập thể",
+      "ex": "Working alone at home can weaken an employee's sense of belonging."
+     },
+     {
+      "en": "double-edged sword",
+      "vi": "con dao hai lưỡi",
+      "ex": "Complete flexibility can be a double-edged sword if mismanaged."
+     },
+     {
+      "en": "adopt a hybrid model",
+      "vi": "áp dụng mô hình làm việc kết hợp",
+      "ex": "Companies should adopt a hybrid model to keep staff motivated."
+     }
+    ],
+    "sample": "In my view, hybrid work is a wonderful trend that helps employees cut down on commute time and strike a healthy balance between work and family. It also reduces traffic jams and carbon emissions across big cities. However, it can be a double-edged sword. Without regular face-to-face interaction, people easily feel isolated, which weakens their sense of belonging to a team and a community. Therefore, I believe modern companies should adopt a flexible model where employees come to the office two days a week for collaborative brainstorming, while working from home the rest of the time.",
+    "tipVi": "Cân bằng bài nói bằng cách phân tích cả hai mặt lợi - hại trước khi đưa ra kiến nghị hợp lý."
+   },
+   {
+    "id": "gt-xa-hoi-5",
+    "level": "HARD",
+    "title": "Heritage Preservation versus Modern Development",
+    "titleVi": "Bảo tồn di sản và phát triển hiện đại",
+    "situationVi": "Bạn đang tham gia một buổi tọa đàm về quy hoạch đô thị, thảo luận về việc phá dỡ hay bảo tồn các công trình kiến trúc cổ ở trung tâm thành phố.",
+    "task": "Give a speech presenting your perspective on balancing historical preservation with urban economic growth. Acknowledge opposing viewpoints, provide compelling arguments, and propose a viable compromise.",
+    "mustVi": [
+     "Lập luận của phía ủng hộ xây dựng cao ốc hiện đại thay cho kiến trúc cũ",
+     "Tầm quan trọng của việc giữ gìn bản sắc văn hóa và di sản lịch sử",
+     "Giải pháp hài hòa giữa phát triển kinh tế và bảo tồn di sản"
+    ],
+    "phrases": [
+     {
+      "en": "cultural identity",
+      "vi": "bản sắc văn hóa",
+      "ex": "Historic landmarks define our city's unique cultural identity."
+     },
+     {
+      "en": "at the expense of",
+      "vi": "phải trả giá bằng, đánh đổi",
+      "ex": "Economic progress should not come at the expense of our heritage."
+     },
+     {
+      "en": "economic viability",
+      "vi": "hiệu quả, khả năng sinh lời kinh tế",
+      "ex": "Developers often prioritize the economic viability of new high-rises."
+     },
+     {
+      "en": "strike a delicate balance",
+      "vi": "đạt được sự cân bằng tinh tế",
+      "ex": "City planners must strike a delicate balance between old and new."
+     },
+     {
+      "en": "adaptive reuse",
+      "vi": "tái sử dụng thích ứng (công trình cổ)",
+      "ex": "Adaptive reuse allows old warehouses to become creative art hubs."
+     },
+     {
+      "en": "tangible link to the past",
+      "vi": "mối liên kết hữu hình với quá khứ",
+      "ex": "Old buildings serve as a tangible link to our shared past."
+     }
+    ],
+    "sample": "City planners face a tough dilemma today. Proponents of rapid modernization argue that replacing dilapidated old buildings with modern commercial towers boosts economic viability and accommodates our booming population. However, we cannot pursue economic progress at the expense of our heritage. Historic buildings serve as a tangible link to our past and shape our unique cultural identity, attracting cultural tourism. Instead of demolishing historical sites, the most sensible solution is adaptive reuse. By renovating old structures into cultural centers, boutique hotels, or creative hubs, we can preserve our architectural legacy while still generating economic value for the future.",
+    "tipVi": "Dùng cấu trúc nhượng bộ (như 'Proponents argue that..., however...') để bài nói mang tính học thuật và thuyết phục cao."
    }
   ]
  },

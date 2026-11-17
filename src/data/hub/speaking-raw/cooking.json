@@ -1,0 +1,117 @@
+{
+ "id": "cooking",
+ "title": "Cooking",
+ "titleVi": "Nấu ăn",
+ "tipVi": "Hãy sử dụng các động từ chỉ thao tác nấu nướng cụ thể cùng tính từ miêu tả hương vị và kết cấu thay vì lặp lại những từ chung chung như 'cook' hay 'delicious'.",
+ "part1": [
+  "Do you often cook your own meals at home?",
+  "What was the very first dish you learned to make?",
+  "Do you prefer eating home-cooked food or dining out?"
+ ],
+ "part2": {
+  "prompt": "Describe a special meal or dish that you know how to prepare",
+  "bullets": [
+   "what dish it is and what ingredients are needed",
+   "who taught you how to prepare it or how you learned it",
+   "how you usually cook this dish",
+   "and explain why you enjoy cooking this particular meal"
+  ]
+ },
+ "part3": [
+  "Should schools include culinary skills as a compulsory subject for young students?",
+  "How has modern technology changed the way families prepare and consume food?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "whip up a meal",
+    "vi": "nhanh chóng nấu một bữa ăn",
+    "ex": "Whenever I get home late from work, I usually whip up a quick pasta dish."
+   },
+   {
+    "en": "comfort food",
+    "vi": "món ăn quen thuộc mang lại cảm giác dễ chịu",
+    "ex": "A warm bowl of chicken noodle soup is my ultimate comfort food on rainy days."
+   },
+   {
+    "en": "from scratch",
+    "vi": "tự làm từ đầu bằng nguyên liệu tươi",
+    "ex": "My grandmother always insists on making bread completely from scratch."
+   },
+   {
+    "en": "season to taste",
+    "vi": "nêm nếm vừa miệng",
+    "ex": "After simmering the stew, remember to season to taste with black pepper and herbs."
+   },
+   {
+    "en": "culinary prowess",
+    "vi": "tài nghệ hoặc kỹ năng nấu nướng",
+    "ex": "He took every opportunity to show off his culinary prowess when hosting dinner parties."
+   },
+   {
+    "en": "piping hot",
+    "vi": "nóng hổi",
+    "ex": "The traditional savory pancakes taste best when served piping hot straight from the skillet."
+   },
+   {
+    "en": "bursting with flavor",
+    "vi": "đậm đà, bùng nổ hương vị",
+    "ex": "Fresh herbs make this Vietnamese dipping sauce bursting with flavor."
+   },
+   {
+    "en": "acquired taste",
+    "vi": "món ăn có hương vị đặc thù cần thời gian làm quen",
+    "ex": "Fermented shrimp paste is definitely an acquired taste for most foreign visitors."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu món thịt kho tàu (caramelised braised pork belly) cùng các nguyên liệu cốt lõi như thịt ba chỉ, nước dừa tươi và trứng luộc.",
+   "Ý 1: Người hướng dẫn và hoàn cảnh học: Mẹ dạy khi bắt đầu sống tự lập thời sinh viên, gắn liền với ký ức gia đình ấm cúng ngày Tết.",
+   "Ý 2: Các bước thực hiện: Ướp thịt ngấm gia vị, thắng đường tạo màu cánh gián, xào săn rồi ninh nhỏ lửa cùng nước dừa cho thịt mềm rục.",
+   "Kết: Lý do thích nấu: Quá trình nấu mang tính giải tỏa căng thẳng (therapeutic) và cảm giác hạnh phúc khi chia sẻ món ăn quê nhà nóng hổi cùng bạn bè."
+  ],
+  "sample": "I’d like to talk about braised pork belly with eggs, a staple Vietnamese comfort food that I have mastered over the years. To prepare this savory dish, the essential ingredients include pork belly, quail or chicken eggs, shallots, garlic, fish sauce, and, crucially, fresh coconut water. I actually learned how to cook this from my mother when I first moved away for university. She taught me that the secret lies in balancing the sweet and savory notes properly. The preparation starts with cubing the pork and marinating it with minced aromatics and fish sauce. Then, I caramelize some sugar until it turns a deep amber color before tossing in the meat to brown. Next, I pour in fresh coconut water and let everything simmer on low heat for about an hour. Towards the end, I toss in the hard-boiled eggs so they absorb the rich, golden broth. I truly enjoy making this meal because it serves as therapeutic downtime after a hectic week. More importantly, seeing my friends savoring it with piping hot rice gives me a genuine sense of accomplishment and nostalgia.",
+  "p1": [
+   {
+    "q": "Do you often cook your own meals at home?",
+    "a": "Yes, I usually prepare my own meals on weekdays because it allows me to control the ingredients and eat healthily. For instance, last night I quickly stir-fried some vegetables and chicken breast after getting home from work."
+   },
+   {
+    "q": "What was the very first dish you learned to make?",
+    "a": "If I recall correctly, it was a simple fried egg with spring onions. My mother taught me how to crack eggs properly and regulate the stove flame when I was just around ten years old."
+   },
+   {
+    "q": "Do you prefer eating home-cooked food or dining out?",
+    "a": "I definitely lean towards home-cooked meals since they are far more wholesome and cost-effective. However, on busy weekends, I still treat myself to dinner at local restaurants to unwind with friends and try new cuisines."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should schools include culinary skills as a compulsory subject for young students?",
+    "a": "In my opinion, basic culinary training should definitely be part of the curriculum. Cooking is an indispensable life skill that fosters independence and helps youngsters make healthier dietary choices early on. Without these fundamental skills, many adolescents become overly reliant on processed fast food, which often leads to lifestyle-related health complications. Therefore, teaching children how to prepare simple, nutritious meals offers lifelong benefits."
+   },
+   {
+    "q": "How has modern technology changed the way families prepare and consume food?",
+    "a": "Advancements in technology have fundamentally revolutionized domestic cooking. Modern appliances like air fryers and smart pressure cookers significantly cut down preparation time while promoting oil-free, healthier meals. Moreover, online recipe apps provide instant culinary inspiration for busy parents. Conversely, food delivery platforms sometimes discourage families from cooking together at all, which weakens communal bonding around the kitchen table. Overall, technology brings immense convenience despite reducing traditional culinary habits."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn từ vựng 'cooker' và 'cook': Nhiều người nói nhầm 'My mother is a good cooker', trong khi 'cooker' là nồi/bếp nấu (như rice cooker), còn danh từ chỉ người nấu ăn là 'cook' hoặc 'chef'.",
+   "Lạm dụng từ 'delicious' và 'yummy': Thí sinh thường thiếu hụt các tính từ miêu tả chuyên sâu về mùi vị và kết cấu như 'savory' (đậm đà), 'tender' (mềm), 'crispy' (giòn) hay 'fragrant' (thơm phức).",
+   "Dịch vụng về từ tiếng Việt khi mô tả thao tác: Dùng 'put spices' thay vì các cụm tự nhiên như 'season the dish', 'marinate the meat' (ướp thịt) hay 'garnish with herbs' (rắc rau thơm trang trí)."
+  ],
+  "p1More": [
+   "Who does most of the cooking in your household?",
+   "Do you watch any cooking shows or online recipe videos?",
+   "Is there any food that you really dislike cooking?",
+   "Did you learn how to cook at school or at home?",
+   "Do you think cooking is an essential life skill for everyone?"
+  ],
+  "p3More": [
+   "Why are traditional family recipes increasingly being forgotten by younger generations?",
+   "To what extent does globalization threaten the preservation of authentic national cuisines?",
+   "Do you believe men and women share cooking responsibilities equally in contemporary society?",
+   "How might changing economic conditions influence people's dining habits in the future?"
+  ]
+ }
+}

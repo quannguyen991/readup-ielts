@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-xa-hoi-1",
+  "level": "EASY",
+  "title": "My Daily Eco-Friendly Habits",
+  "titleVi": "Thói quen sống xanh hàng ngày",
+  "situationVi": "Bạn đang trò chuyện với một người bạn nước ngoài mới quen về những thói quen bảo vệ môi trường đơn giản mà bạn áp dụng ở nhà.",
+  "task": "Talk about your daily eco-friendly habits. Describe what you do to protect the environment, why you started doing it, and one habit you want to build in the future.",
+  "mustVi": [
+   "Kể tên ít nhất hai việc bạn làm hàng ngày để bảo vệ môi trường",
+   "Lý do khiến bạn bắt đầu duy trì những thói quen này",
+   "Một thói quen xanh mới mà bạn muốn thử áp dụng trong tương lai"
+  ],
+  "phrases": [
+   {
+    "en": "cut down on plastic",
+    "vi": "cắt giảm rác thải nhựa",
+    "ex": "I always bring my own bag to cut down on plastic."
+   },
+   {
+    "en": "make a habit of",
+    "vi": "tập thói quen làm gì",
+    "ex": "I make a habit of turning off the lights when leaving a room."
+   },
+   {
+    "en": "reusable bottle",
+    "vi": "bình nước tái sử dụng",
+    "ex": "Carrying a reusable bottle saves money and reduces waste."
+   },
+   {
+    "en": "raise my awareness",
+    "vi": "nâng cao nhận thức của tôi",
+    "ex": "A documentary raised my awareness about pollution."
+   },
+   {
+    "en": "every little bit helps",
+    "vi": "mỗi hành động nhỏ đều có ích",
+    "ex": "Even small actions matter because every little bit helps."
+   },
+   {
+    "en": "switch to",
+    "vi": "chuyển sang dùng hoặc làm gì",
+    "ex": "I hope to switch to using public transport next month."
+   }
+  ],
+  "sample": "To be honest, I try to live as sustainably as I can. Every day, I carry a reusable water bottle and bring a canvas bag when I go grocery shopping to cut down on single-use plastic. I started doing this two years ago after watching a documentary about ocean pollution, which really opened my eyes. I realize that every little bit helps our planet. In the near future, I really want to switch to riding a bicycle to work twice a week instead of using my motorbike, which will reduce my carbon footprint even more.",
+  "tipVi": "Hãy dùng thì hiện tại đơn để nói về thói quen thường nhật và kết nối các ý bằng từ chuyển tiếp như 'to be honest' hoặc 'in the near future'."
+ },
+ {
+  "id": "gt-xa-hoi-2",
+  "level": "EASY",
+  "title": "A Meaningful Volunteer Experience",
+  "titleVi": "Trải nghiệm tình nguyện ý nghĩa",
+  "situationVi": "Bạn đang kể cho một đồng nghiệp nghe về một hoạt động thiện nguyện hoặc hoạt động cộng đồng mà bạn đã từng tham gia.",
+  "task": "Share a volunteer or community activity you took part in. Explain what you did, who you helped, and how you felt about the whole experience.",
+  "mustVi": [
+   "Hoạt động tình nguyện đó là gì và diễn ra ở đâu",
+   "Nhiệm vụ cụ thể của bạn trong sự kiện hoặc chuyến đi đó",
+   "Cảm xúc hoặc bài học bạn rút ra sau trải nghiệm"
+  ],
+  "phrases": [
+   {
+    "en": "take part in",
+    "vi": "tham gia vào",
+    "ex": "Last summer, I took part in a local charity program."
+   },
+   {
+    "en": "give back to the community",
+    "vi": "đóng góp lại cho cộng đồng",
+    "ex": "Volunteering is a great way to give back to the community."
+   },
+   {
+    "en": "hand out",
+    "vi": "phân phát trực tiếp",
+    "ex": "We handed out warm clothes and food to homeless people."
+   },
+   {
+    "en": "lend a helping hand",
+    "vi": "giúp đỡ một tay",
+    "ex": "I felt proud to lend a helping hand to those in need."
+   },
+   {
+    "en": "rewarding experience",
+    "vi": "trải nghiệm bổ ích, xứng đáng",
+    "ex": "Teaching free English classes was a truly rewarding experience."
+   },
+   {
+    "en": "appreciate what I have",
+    "vi": "trân trọng những gì mình đang có",
+    "ex": "The trip taught me to appreciate what I have in life."
+   }
+  ],
+  "sample": "Last winter, I took part in a weekend charity trip to a rural village in northern Vietnam. Our team collected warm clothes, books, and rice to hand out to disadvantaged children before the cold season. My main job was sorting the donations and organizing fun games for the kids at the local primary school. Seeing the bright smiles on their faces was truly a rewarding experience. It really taught me to appreciate what I have and motivated me to give back to the community more often whenever I have free time.",
+  "tipVi": "Kết hợp linh hoạt thì quá khứ đơn khi tường thuật sự việc và thì hiện tại đơn khi bày tỏ cảm xúc, giá trị đọng lại."
+ },
+ {
+  "id": "gt-xa-hoi-3",
+  "level": "MEDIUM",
+  "title": "Sharing Interesting Local News",
+  "titleVi": "Chia sẻ một tin tức địa phương",
+  "situationVi": "Trong giờ nghỉ trưa, bạn trò chuyện với một đồng nghiệp nước ngoài về một sự kiện hoặc tin tức mới diễn ra gần đây tại thành phố.",
+  "task": "Tell your coworker about a recent news story in your city. Explain what happened, how people are reacting to it, and your personal view on the event.",
+  "mustVi": [
+   "Nội dung chính của tin tức hoặc sự kiện mới xảy ra",
+   "Phản ứng hoặc ý kiến của người dân xung quanh bạn",
+   "Quan điểm cá nhân của bạn về tác động lâu dài của tin tức này"
+  ],
+  "phrases": [
+   {
+    "en": "did you hear about...?",
+    "vi": "bạn đã nghe tin về... chưa?",
+    "ex": "Did you hear about the new metro line opening next month?"
+   },
+   {
+    "en": "hit the headlines",
+    "vi": "lên trang nhất, thành tâm điểm tin tức",
+    "ex": "The new traffic policy has hit the headlines this week."
+   },
+   {
+    "en": "mixed feelings",
+    "vi": "cảm xúc lẫn lộn, ý kiến trái chiều",
+    "ex": "Local residents have mixed feelings about the fare increase."
+   },
+   {
+    "en": "alleviate traffic congestion",
+    "vi": "giảm tải ùn tắc giao thông",
+    "ex": "This new bridge should alleviate traffic congestion during rush hour."
+   },
+   {
+    "en": "from my perspective",
+    "vi": "theo góc nhìn của tôi",
+    "ex": "From my perspective, it will take some time for people to adapt."
+   },
+   {
+    "en": "step in the right direction",
+    "vi": "bước đi đúng hướng",
+    "ex": "Promoting public transport is definitely a step in the right direction."
+   }
+  ],
+  "sample": "Did you hear about the city opening the new elevated railway section this week? It has really hit the headlines across all local newspapers. Most commuters are extremely excited because it should significantly alleviate traffic congestion during peak hours, though some older residents have mixed feelings about learning how to use the automated ticketing system. From my perspective, this project is definitely a huge step in the right direction for our city. In the long run, I believe it will encourage more people to switch from motorbikes to public transport, leading to cleaner air for everyone.",
+  "tipVi": "Mở đầu tự nhiên bằng câu hỏi mở gợi chuyện và thể hiện tính khách quan trước khi chốt lại bằng quan điểm cá nhân."
+ },
+ {
+  "id": "gt-xa-hoi-4",
+  "level": "MEDIUM",
+  "title": "Discussing Flexible Work Models",
+  "titleVi": "Thảo luận mô hình làm việc linh hoạt",
+  "situationVi": "Trong buổi sinh hoạt câu lạc bộ tiếng Anh, bạn được mời phát biểu quan điểm về xu hướng làm việc kết hợp (hybrid work) tại các đô thị lớn.",
+  "task": "Express your opinion on hybrid work versus full-time office work. Discuss the benefits, the challenges for community connections, and your recommendation for modern companies.",
+  "mustVi": [
+   "Lợi ích của mô hình làm việc linh hoạt đối với cá nhân và môi trường",
+   "Khó khăn hoặc mặt trái liên quan đến sự gắn kết cộng đồng và đồng nghiệp",
+   "Đề xuất hoặc giải pháp của bạn cho các doanh nghiệp hiện nay"
+  ],
+  "phrases": [
+   {
+    "en": "strike a healthy balance",
+    "vi": "đạt được sự cân bằng hợp lý",
+    "ex": "Hybrid work helps employees strike a healthy balance between work and life."
+   },
+   {
+    "en": "cut down on commute time",
+    "vi": "giảm bớt thời gian đi lại",
+    "ex": "Working remotely cuts down on commute time and saves fuel."
+   },
+   {
+    "en": "face-to-face interaction",
+    "vi": "tương tác trực tiếp mặt đối mặt",
+    "ex": "Virtual meetings cannot replace genuine face-to-face interaction."
+   },
+   {
+    "en": "sense of belonging",
+    "vi": "cảm giác thuộc về tập thể",
+    "ex": "Working alone at home can weaken an employee's sense of belonging."
+   },
+   {
+    "en": "double-edged sword",
+    "vi": "con dao hai lưỡi",
+    "ex": "Complete flexibility can be a double-edged sword if mismanaged."
+   },
+   {
+    "en": "adopt a hybrid model",
+    "vi": "áp dụng mô hình làm việc kết hợp",
+    "ex": "Companies should adopt a hybrid model to keep staff motivated."
+   }
+  ],
+  "sample": "In my view, hybrid work is a wonderful trend that helps employees cut down on commute time and strike a healthy balance between work and family. It also reduces traffic jams and carbon emissions across big cities. However, it can be a double-edged sword. Without regular face-to-face interaction, people easily feel isolated, which weakens their sense of belonging to a team and a community. Therefore, I believe modern companies should adopt a flexible model where employees come to the office two days a week for collaborative brainstorming, while working from home the rest of the time.",
+  "tipVi": "Cân bằng bài nói bằng cách phân tích cả hai mặt lợi - hại trước khi đưa ra kiến nghị hợp lý."
+ },
+ {
+  "id": "gt-xa-hoi-5",
+  "level": "HARD",
+  "title": "Heritage Preservation versus Modern Development",
+  "titleVi": "Bảo tồn di sản và phát triển hiện đại",
+  "situationVi": "Bạn đang tham gia một buổi tọa đàm về quy hoạch đô thị, thảo luận về việc phá dỡ hay bảo tồn các công trình kiến trúc cổ ở trung tâm thành phố.",
+  "task": "Give a speech presenting your perspective on balancing historical preservation with urban economic growth. Acknowledge opposing viewpoints, provide compelling arguments, and propose a viable compromise.",
+  "mustVi": [
+   "Lập luận của phía ủng hộ xây dựng cao ốc hiện đại thay cho kiến trúc cũ",
+   "Tầm quan trọng của việc giữ gìn bản sắc văn hóa và di sản lịch sử",
+   "Giải pháp hài hòa giữa phát triển kinh tế và bảo tồn di sản"
+  ],
+  "phrases": [
+   {
+    "en": "cultural identity",
+    "vi": "bản sắc văn hóa",
+    "ex": "Historic landmarks define our city's unique cultural identity."
+   },
+   {
+    "en": "at the expense of",
+    "vi": "phải trả giá bằng, đánh đổi",
+    "ex": "Economic progress should not come at the expense of our heritage."
+   },
+   {
+    "en": "economic viability",
+    "vi": "hiệu quả, khả năng sinh lời kinh tế",
+    "ex": "Developers often prioritize the economic viability of new high-rises."
+   },
+   {
+    "en": "strike a delicate balance",
+    "vi": "đạt được sự cân bằng tinh tế",
+    "ex": "City planners must strike a delicate balance between old and new."
+   },
+   {
+    "en": "adaptive reuse",
+    "vi": "tái sử dụng thích ứng (công trình cổ)",
+    "ex": "Adaptive reuse allows old warehouses to become creative art hubs."
+   },
+   {
+    "en": "tangible link to the past",
+    "vi": "mối liên kết hữu hình với quá khứ",
+    "ex": "Old buildings serve as a tangible link to our shared past."
+   }
+  ],
+  "sample": "City planners face a tough dilemma today. Proponents of rapid modernization argue that replacing dilapidated old buildings with modern commercial towers boosts economic viability and accommodates our booming population. However, we cannot pursue economic progress at the expense of our heritage. Historic buildings serve as a tangible link to our past and shape our unique cultural identity, attracting cultural tourism. Instead of demolishing historical sites, the most sensible solution is adaptive reuse. By renovating old structures into cultural centers, boutique hotels, or creative hubs, we can preserve our architectural legacy while still generating economic value for the future.",
+  "tipVi": "Dùng cấu trúc nhượng bộ (như 'Proponents argue that..., however...') để bài nói mang tính học thuật và thuyết phục cao."
+ }
+]

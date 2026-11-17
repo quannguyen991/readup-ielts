@@ -1,0 +1,117 @@
+{
+ "id": "television",
+ "title": "Television",
+ "titleVi": "Truyền hình",
+ "tipVi": "Hãy phân biệt rõ giữa truyền hình truyền thống (linear television) và các nền tảng xem phim trực tuyến (streaming services) để thể hiện tư duy cập nhật và vốn từ vựng phong phú.",
+ "part1": [
+  "How often do you watch television programs?",
+  "What kind of TV shows do you enjoy watching the most?",
+  "Do you prefer watching television alone or with other people?"
+ ],
+ "part2": {
+  "prompt": "Describe an educational television program you enjoy watching",
+  "bullets": [
+   "what the program is",
+   "when and where you usually watch it",
+   "what topic or subject it covers",
+   "and explain why you find this program beneficial or engaging"
+  ]
+ },
+ "part3": [
+  "How has the way people consume television content changed over recent decades?",
+  "To what extent should governments regulate educational versus entertainment content on public television?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "prime-time television",
+    "vi": "khung giờ vàng phát sóng truyền hình",
+    "ex": "Major news channels reserve their most critical reports for prime-time television when viewer ratings peak."
+   },
+   {
+    "en": "binge-watch",
+    "vi": "cày phim, xem liên tục nhiều tập",
+    "ex": "Instead of waiting for weekly episodes, many viewers now prefer to binge-watch entire seasons over a single weekend."
+   },
+   {
+    "en": "commercial break",
+    "vi": "thời lượng phát sóng quảng cáo chen ngang",
+    "ex": "Traditional television is losing viewers because people dislike sitting through a five-minute commercial break."
+   },
+   {
+    "en": "thought-provoking documentary",
+    "vi": "bộ phim tài liệu gợi mở nhiều suy ngẫm",
+    "ex": "I watched a thought-provoking documentary about deforestation that completely shifted my lifestyle choices."
+   },
+   {
+    "en": "streamlined content",
+    "vi": "nội dung được biên tập tinh gọn, liền mạch",
+    "ex": "Online platforms offer streamlined content that removes unnecessary filler and keeps viewers hooked."
+   },
+   {
+    "en": "couch potato",
+    "vi": "người lười biếng, chỉ ngồi lì xem TV",
+    "ex": "Spending the entire Sunday as a couch potato can leave you feeling more lethargic than refreshed."
+   },
+   {
+    "en": "tune in to",
+    "vi": "bật kênh hoặc đón xem một chương trình",
+    "ex": "Millions of sports enthusiasts across the country regularly tune in to watch live Premier League matches."
+   },
+   {
+    "en": "viewer fatigue",
+    "vi": "hội chứng mệt mỏi, quá tải do tiếp nhận quá nhiều nội dung",
+    "ex": "The endless flood of reality shows has led to noticeable viewer fatigue among young demographics."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên chương trình giáo dục mà bạn yêu thích (ví dụ: Planet Earth của BBC) và ấn tượng đầu tiên.",
+   "Ý 1: Nêu rõ hoàn cảnh bạn xem chương trình (cuối tuần, xem trên Smart TV tại phòng khách, thường xem lại qua ứng dụng).",
+   "Ý 2: Miêu tả cụ thể nội dung mà chương trình khai thác (thế giới động vật hoang dã, hệ sinh thái cực hạn, kỹ xảo quay phim chân thực).",
+   "Kết: Phân tích lý do bạn thấy chương trình bổ ích và cuốn hút (kết hợp giải trí và khoa học, nâng cao ý thức môi trường, giọng dẫn lôi cuốn)."
+  ],
+  "sample": "I would like to talk about an exceptional educational television series called Planet Earth, produced by the BBC Natural History Unit. I usually tune in to this show on lazy Sunday evenings on my living room Smart TV, streaming it in high definition. Over time, watching an episode has become a calming ritual for me right before a demanding work week begins. The series primarily delves into wildlife biology, fragile ecosystems, and animal survival strategies across remote corners of the globe. Narrated by the legendary Sir David Attenborough, each episode captures breathtaking footage ranging from deep oceanic trenches to frozen polar tundras. What makes this program so profoundly engaging is its seamless blend of cutting-edge cinematography with scientific storytelling. Rather than bombarding the audience with dry statistics, it dramatizes natural phenomena through dramatic predator-prey chases and intimate animal behaviors. Watching it not only expands my factual understanding of biodiversity, but also awakens a genuine sense of urgency regarding environmental conservation. Ultimately, it is both intellectually stimulating and visually magnificent.",
+  "p1": [
+   {
+    "q": "How often do you watch television programs?",
+    "a": "To be honest, I rarely watch traditional broadcast TV nowadays. Instead, I stream programs a few times a week on my laptop, usually unwinding with a comedy show like Friends for half an hour before heading to bed."
+   },
+   {
+    "q": "What kind of TV shows do you enjoy watching the most?",
+    "a": "I am particularly keen on investigative documentaries and science programs. They examine real-world issues in great depth, which I find far more intellectually rewarding than dramatic soap operas or frivolous talent competitions."
+   },
+   {
+    "q": "Do you prefer watching television alone or with other people?",
+    "a": "I generally prefer watching solo because it allows me to pause or rewind whenever I like without negotiating with anyone. That said, when it comes to live sporting events, watching alongside enthusiastic friends is unbeatable."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has the way people consume television content changed over recent decades?",
+    "a": "In the past, viewers were constrained by strict broadcast schedules and uninterrupted commercial interruptions. Today, the rise of streaming platforms has radically personalized content consumption. People now demand on-demand access and frequently binge-watch complete seasons whenever they please. Consequently, linear television is steadily declining, particularly among digital natives who prioritize convenience and flexible viewing schedules over traditional living-room sets."
+   },
+   {
+    "q": "To what extent should governments regulate educational versus entertainment content on public television?",
+    "a": "State authorities ought to maintain a responsible baseline by mandating minimum quotas for informative and culturally significant programming. Commercial broadcasters naturally prioritize sensationalist entertainment to maximize advertisement revenue, but public television owes a civic duty to educate the citizenry. Enforcing balanced schedules that include historical analysis and scientific discovery broadens public knowledge, preventing commercial media from reducing broadcasting purely to mindless consumerism."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp lại động từ 'watch TV' quá nhiều lần; nên thay thế linh hoạt bằng 'stream content', 'tune in to a broadcast', hay 'consume television programming'.",
+   "Nhầm lẫn giữa 'on TV' (phát sóng trên truyền hình) và 'on the TV' (đặt đồ vật trên bề mặt của chiếc máy thu hình).",
+   "Dùng từ 'program' để chỉ chung toàn bộ kênh truyền hình, thay vì phân biệt rõ giữa 'channel' (kênh phát sóng), 'program/show' (tập/chương trình), và 'series' (loạt phim nhiều tập)."
+  ],
+  "p1More": [
+   "Did you watch much television when you were a child?",
+   "What was your favorite television show when you were growing up?",
+   "Do you think children nowadays spend too much time in front of the TV?",
+   "Do people in your country usually have a television set in the living room?",
+   "Has your taste in television shows changed compared to five years ago?"
+  ],
+  "p3More": [
+   "Do you think traditional television will eventually become completely obsolete due to the internet?",
+   "In what ways do television commercials subtly influence consumer habits and values?",
+   "Should violent or distressing news coverage be restricted to late-night broadcasting hours?",
+   "How does the international exchange of television dramas affect mutual understanding between different cultures?"
+  ]
+ }
+}

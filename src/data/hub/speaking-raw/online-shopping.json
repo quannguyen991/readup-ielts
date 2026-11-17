@@ -1,0 +1,117 @@
+{
+ "id": "online-shopping",
+ "title": "Online Shopping",
+ "titleVi": "Mua sắm trực tuyến",
+ "tipVi": "Hãy kết hợp linh hoạt từ vựng chuyên ngành như 'e-commerce platforms' hay 'impulse buying' và cân bằng giữa mặt tiện lợi với rủi ro nhận hàng kém chất lượng để đạt điểm Lexical Resource cao.",
+ "part1": [
+  "How often do you buy things on the internet?",
+  "What kind of items do you usually purchase online?",
+  "Have you ever encountered any problems when shopping online?"
+ ],
+ "part2": {
+  "prompt": "Describe an online purchase you made that you were really satisfied with",
+  "bullets": [
+   "what item you bought",
+   "which platform or website you bought it from",
+   "why you decided to buy it online rather than in a physical store",
+   "and explain why you were so satisfied with this purchase"
+  ]
+ },
+ "part3": [
+  "How has e-commerce transformed traditional retail businesses in recent years?",
+  "Do you think consumer spending habits have become more reckless because of online shopping?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "browse through",
+    "vi": "lướt xem (sản phẩm, trang web)",
+    "ex": "I spent over an hour browsing through different fashion apps before picking a jacket."
+   },
+   {
+    "en": "impulse buying",
+    "vi": "mua sắm bốc đồng / ngẫu hứng",
+    "ex": "Flash sales and discount vouchers often trigger impulse buying among young shoppers."
+   },
+   {
+    "en": "bricks-and-mortar store",
+    "vi": "cửa hàng truyền thống (có mặt bằng thực tế)",
+    "ex": "Many bricks-and-mortar stores have struggled to compete with cut-price digital platforms."
+   },
+   {
+    "en": "user-friendly interface",
+    "vi": "giao diện thân thiện, dễ sử dụng",
+    "ex": "The app boasts a user-friendly interface that simplifies the checkout process."
+   },
+   {
+    "en": "customer reviews",
+    "vi": "đánh giá của khách hàng",
+    "ex": "I always scrutinize verified customer reviews to check the genuine quality of the merchandise."
+   },
+   {
+    "en": "snap up a bargain",
+    "vi": "nhanh tay chớp được món hời",
+    "ex": "During the Black Friday sale, I managed to snap up a bargain on wireless earbuds."
+   },
+   {
+    "en": "refund policy",
+    "vi": "chính sách hoàn tiền",
+    "ex": "Trustworthy e-commerce vendors usually offer a no-questions-asked refund policy."
+   },
+   {
+    "en": "delivery fee",
+    "vi": "phí giao hàng",
+    "ex": "Offering free shipping eliminates high delivery fees, which often deter cautious buyers."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu món hàng bạn đã mua gần đây và cảm giác hài lòng (ví dụ: chiếc bàn phím công thái học không dây).",
+   "Ý 1: Nêu rõ nền tảng thương mại điện tử bạn sử dụng (Shopee/Lazada) và quá trình tìm kiếm, đặt hàng thuận tiện.",
+   "Ý 2: So sánh lý do chọn mua qua mạng thay vì ra tiệm (dễ so sánh thông số, xem đánh giá chân thực, áp mã giảm giá tiết kiệm chi phí).",
+   "Kết: Nhấn mạnh lý do hài lòng tuyệt đối (sản phẩm chính hãng, đóng gói kỹ, giao siêu nhanh và cải thiện đáng kể hiệu suất làm việc)."
+  ],
+  "sample": "I'd like to share an experience of buying an ergonomic wireless keyboard online, which turned out to be an absolute bargain. I purchased it about three months ago from a flagship store on Shopee, one of the leading e-commerce platforms in Vietnam. I had been suffering from chronic wrist strain from typing all day, so I urgently needed an upgrade. Instead of visiting a bricks-and-mortar electronics store, I decided to shop online. Digital platforms allowed me to effortlessly compare specs, watch video demonstrations, and read hundreds of authentic customer reviews before committing. Furthermore, by using seasonal discount vouchers and free shipping codes, I saved nearly thirty percent compared to high-street retail prices. What made me exceptionally satisfied was not just the swift two-day delivery, but the impeccable build quality. The keys feel remarkably tactile and comfortable, instantly alleviating my joint pain. It arrived meticulously packaged with a genuine warranty seal. Overall, this seamless transaction reinforced my trust in online shopping and proved to be an invaluable investment for my remote work setup.",
+  "p1": [
+   {
+    "q": "How often do you buy things on the internet?",
+    "a": "I shop online quite frequently, roughly two or three times a month. It saves me considerable time, especially when restocking everyday essentials like skincare items or coffee beans via popular digital marketplaces."
+   },
+   {
+    "q": "What kind of items do you usually purchase online?",
+    "a": "I mostly purchase tech accessories and non-perishable household goods. For instance, last week I bought a sturdy phone case and some books online because the pricing was far more competitive than physical shops."
+   },
+   {
+    "q": "Have you ever encountered any problems when shopping online?",
+    "a": "Yes, on one occasion I ordered a cotton shirt that looked completely different from the website photos. The fabric felt flimsy, so I had to initiate a return request to retrieve my money."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has e-commerce transformed traditional retail businesses in recent years?",
+    "a": "Undoubtedly, e-commerce has forced traditional retailers to rethink their operating models. With digital platforms offering round-the-clock convenience and lower overhead costs, brick-and-mortar stores must now provide engaging customer experiences rather than just selling goods. For example, many apparel shops have created interactive showrooms where shoppers can test outfits before ordering them online. Ultimately, physical stores have had to integrate digital elements to survive."
+   },
+   {
+    "q": "Do you think consumer spending habits have become more reckless because of online shopping?",
+    "a": "In my view, digital shopping certainly exacerbates impulsive spending. Algorithmic marketing, limited-time flash sales, and frictionless one-click payments lure consumers into purchasing goods they rarely require. In contrast, shopping in person requires deliberate effort and cash transactions, which encourage second thoughts. Consequently, people nowadays often accumulate clutter and blow their personal budgets far more easily than previous generations."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp lại cụm 'buy online' quá nhiều lần thay vì đa dạng hóa bằng 'shop online', 'order via digital storefronts' hay 'make online purchases'.",
+   "Nói 'hunting sales' theo lối dịch thô tiếng Việt (săn sale), thay vào đó nên dùng cụm chuẩn tự nhiên như 'bargain hunting' hoặc 'looking for discounts'.",
+   "Nhầm lẫn giữa 'cash on delivery' (trả tiền khi nhận hàng) và các hình thức chuyển khoản số, dẫn tới việc dùng sai thuật ngữ khi mô tả phương thức thanh toán."
+  ],
+  "p1More": [
+   "Do you prefer shopping on mobile apps or computers?",
+   "Have you ever bought clothes online, and were they a good fit?",
+   "Is online shopping popular among older generations in your country?",
+   "Do you pay for online purchases with cash on delivery or digital payment?",
+   "What is one thing you would never buy on the internet?"
+  ],
+  "p3More": [
+   "To what extent does rapid package delivery contribute to environmental pollution?",
+   "Will physical supermarkets and department stores disappear completely in the future?",
+   "How can governments better protect online consumers against counterfeit merchandise and data breaches?",
+   "In what ways do social media influencers manipulate the shopping behavior of young people?"
+  ]
+ }
+}

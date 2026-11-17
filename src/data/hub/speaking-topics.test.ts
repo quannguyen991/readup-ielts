@@ -34,9 +34,9 @@ test('tra cứu và đếm câu', () => {
   for (const t of SPEAKING_TOPICS) assert.equal(questionCount(t), 6);
 });
 
-test('kho có đủ 40 chủ đề và mỗi chủ đề có phần học kèm đầy đủ', async () => {
+test('kho có đủ 64 chủ đề và mỗi chủ đề có phần học kèm đầy đủ', async () => {
   const { topicExtra } = await import('./speaking-topics');
-  assert.equal(SPEAKING_TOPICS.length, 40);
+  assert.equal(SPEAKING_TOPICS.length, 64);
   for (const t of SPEAKING_TOPICS) {
     const e = topicExtra(t.id);
     assert.ok(e, `thiếu extra: ${t.id}`);

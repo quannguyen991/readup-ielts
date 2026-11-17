@@ -1,0 +1,117 @@
+{
+ "id": "handwriting",
+ "title": "Handwriting and Typing",
+ "titleVi": "Viết tay và gõ phím",
+ "tipVi": "Hãy khéo léo kết hợp các cấu trúc so sánh đối chiếu giữa tính hiệu quả tiện lợi của việc gõ phím với giá trị cảm xúc và lợi ích tư duy sâu của chữ viết tay.",
+ "part1": [
+  "Do you prefer writing by hand or typing on a keyboard?",
+  "When was the last time you wrote something by hand?",
+  "Do you think handwriting will still be important in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe a handwritten letter or card that you received.",
+  "bullets": [
+   "who sent it to you",
+   "what the message was about",
+   "when and where you received it",
+   "and explain why this handwritten message was special to you"
+  ]
+ },
+ "part3": [
+  "In what situations do people still prefer handwriting over digital typing?",
+  "Should primary schools allocate more curriculum time to keyboard skills than penmanship?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "legible handwriting",
+    "vi": "chữ viết rõ ràng, dễ đọc",
+    "ex": "Despite writing quickly during the timed essay, she maintained exceptionally legible handwriting."
+   },
+   {
+    "en": "a personal touch",
+    "vi": "dấu ấn cá nhân, nét gần gũi riêng biệt",
+    "ex": "Adding a handwritten note to the parcel lent a warm, personal touch that customers adored."
+   },
+   {
+    "en": "streamline the workflow",
+    "vi": "tối ưu hóa quy trình làm việc",
+    "ex": "Mastering touch typing has helped administrative staff streamline their daily workflow substantially."
+   },
+   {
+    "en": "cognitive benefits",
+    "vi": "những lợi ích về mặt nhận thức và tư duy",
+    "ex": "Neuroscientists emphasize that taking lecture notes by hand yields notable cognitive benefits for memory retention."
+   },
+   {
+    "en": "scrawl something down",
+    "vi": "viết nguệch ngoạc, ghi vội thứ gì đó",
+    "ex": "I had to scrawl down the directions on a spare napkin before my phone battery died."
+   },
+   {
+    "en": "put pen to paper",
+    "vi": "đặt bút viết",
+    "ex": "In our fast-paced digital era, it is quite rare for young people to put pen to paper."
+   },
+   {
+    "en": "muscle memory",
+    "vi": "trí nhớ cơ bắp (phản xạ vận động tự động)",
+    "ex": "Touch typing at high speeds relies heavily on muscle memory rather than looking at individual keys."
+   },
+   {
+    "en": "sentimental keepsake",
+    "vi": "kỷ vật lưu giữ giá trị tình cảm",
+    "ex": "I carefully stored my grandfather's handwritten postcards in a wooden box as a sentimental keepsake."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người gửi (bạn thân thời thơ ấu), dịp nhận (sinh nhật lần thứ 24) và cảm xúc bất ngờ khi thấy bì thư trong hòm thư.",
+   "Ý 1 (Who & Where/When): Chi tiết về hoàn cảnh nhận tại nhà riêng vào một buổi chiều sau giờ làm việc bận rộn; nêu bật sự đối lập với tin nhắn điện thoại thông thường.",
+   "Ý 2 (Content): Tóm lược nội dung lá thư dài hai trang (kể lại kỷ niệm ngây ngô thời học sinh, động viên khi mình chuyển việc, nét mực có đoạn vội vã chân thật).",
+   "Kết (Why special): Giải thích lý do đặc biệt (sự kiên nhẫn khi 'put pen to paper', tấm lòng chân thành không thể thay thế bởi văn bản gõ phím, trở thành kỷ vật quý giá)."
+  ],
+  "sample": "I would like to talk about a handwritten birthday card I received from my childhood best friend, Linh, about two years ago. It arrived in my mailbox right on my twenty-fourth birthday, completely out of the blue. Nowadays, people almost exclusively send quick emoji-filled texts on messaging apps, so holding a physical envelope with my name penned in familiar, slightly messy ink was genuinely heartwarming. Inside, she had written a two-page letter reflecting on our ten-year friendship. She recalled hilarious blunders from our high school days, acknowledged how tough my recent job transition had been, and offered sincere words of encouragement. You could actually see where her handwriting accelerated when she got excited and where she hesitated, which made the message come alive. What made this card truly irreplaceable was the deliberate effort behind it. In this fast-paced digital era, typing a generic greeting takes seconds, but putting pen to paper requires real mindfulness and patience. It proved that she took time out of her hectic schedule to craft something tangible. I still keep that card tucked safely inside my favorite book as a treasured keepsake.",
+  "p1": [
+   {
+    "q": "Do you prefer writing by hand or typing on a keyboard?",
+    "a": "I definitely lean towards typing because it is significantly faster and allows for effortless editing. When drafting complex work reports, using a mechanical keyboard boosts my daily productivity, though I still use pen and paper for creative brainstorming."
+   },
+   {
+    "q": "When was the last time you wrote something by hand?",
+    "a": "Just yesterday morning, actually. I quickly scrawled down a grocery shopping list on a sticky note before leaving for the market, as holding a paper slip feels much more convenient than constantly unlocking my phone in crowded aisles."
+   },
+   {
+    "q": "Do you think handwriting will still be important in the future?",
+    "a": "Yes, absolutely. While digital typing dominates professional correspondence, handwriting retains immense legal and sentimental value, such as signing binding contracts or penning heartfelt greeting cards that generic computer fonts can never truly substitute."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what situations do people still prefer handwriting over digital typing?",
+    "a": "People generally favor handwriting in formal legal transactions or deeply sentimental contexts. For instance, signing official certificates or endorsing marriage registers demands physical ink to establish authenticity. Furthermore, sending handwritten sympathy or wedding notes conveys genuine warmth and emotional investment that a typed message completely lacks. Whenever personal intimacy or legal irrevocability is essential, penmanship remains unmatched."
+   },
+   {
+    "q": "Should primary schools allocate more curriculum time to keyboard skills than penmanship?",
+    "a": "I believe educational institutions should strike a sensible balance rather than discard penmanship altogether. While touch typing is undeniably essential for modern workplace competence, early handwriting fosters fine motor control and deepens cognitive processing in young learners. Therefore, schools ought to teach foundational keyboarding skills alongside traditional cursive, ensuring students develop practical technological agility without compromising brain development."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'handwrite' như một động từ chia thông thường; nên dùng cụm động từ tự nhiên như 'write by hand' hoặc dùng phân từ 'handwritten' làm tính từ bổ nghĩa cho danh từ.",
+   "Nhầm lẫn giới từ khi nói về phương tiện viết và gõ, chẳng hạn nói sai 'type by keyboard' thay vì chuẩn xác là 'type on a keyboard' hoặc 'write with a pen'.",
+   "Thiếu từ vựng mô tả tính chất chữ viết (như 'legible', 'messy scrawl', 'penmanship'), khiến thí sinh liên tục lặp lại các từ cơ bản như 'write beautifully' hoặc 'bad writing'."
+  ],
+  "p1More": [
+   "Did you have penmanship or handwriting classes when you were a child?",
+   "Can you usually tell someone's personality from their handwriting?",
+   "Do you find it easy to read other people's handwriting?",
+   "How fast can you type on a computer keyboard?",
+   "Do you prefer receiving a handwritten note or a text message?"
+  ],
+  "p3More": [
+   "How has the widespread reliance on keyboards affected children's literacy and cognitive development?",
+   "Is the gradual decline of physical letter writing a regrettable cultural loss or simply practical evolution?",
+   "Do you believe voice-recognition technology will eventually render typing on keyboards obsolete?",
+   "Why do judicial and governmental systems still insist on physical handwritten signatures rather than digital ones?"
+  ]
+ }
+}

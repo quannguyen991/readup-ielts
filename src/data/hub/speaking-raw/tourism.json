@@ -1,0 +1,117 @@
+{
+ "id": "tourism",
+ "title": "Tourism",
+ "titleVi": "Du lịch đại chúng",
+ "tipVi": "Hãy cân bằng giữa việc chia sẻ trải nghiệm cá nhân và việc phân tích tác động hai mặt của du lịch đối với kinh tế và môi trường để ghi điểm từ vựng học thuật.",
+ "part1": [
+  "Do you enjoy travelling to crowded tourist destinations?",
+  "What kind of places do you prefer to visit during holidays?",
+  "Has your hometown become more popular with tourists in recent years?"
+ ],
+ "part2": {
+  "prompt": "Describe a popular tourist attraction you visited that was very crowded",
+  "bullets": [
+   "where this place is",
+   "when and why you went there",
+   "what you did while you were there",
+   "and explain how you felt about the large number of visitors"
+  ]
+ },
+ "part3": [
+  "What negative consequences can mass tourism bring to local communities?",
+  "How might governments strike a balance between promoting tourism and protecting the environment?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "mass tourism",
+    "vi": "du lịch đại chúng",
+    "ex": "Mass tourism has boosted the local economy but put enormous pressure on the city's transport infrastructure."
+   },
+   {
+    "en": "off the beaten track",
+    "vi": "những nơi xa xôi, ít người lui tới",
+    "ex": "Instead of staying at crowded resorts, we opted for a small cottage off the beaten track."
+   },
+   {
+    "en": "tourist trap",
+    "vi": "địa điểm chặt chém khách du lịch",
+    "ex": "Souvenir shops around the temple are overpriced tourist traps that locals rarely visit."
+   },
+   {
+    "en": "influx of visitors",
+    "vi": "lượng lớn du khách đổ về",
+    "ex": "The coastal town experiences a massive influx of visitors during the summer holidays."
+   },
+   {
+    "en": "spoil the charm",
+    "vi": "làm mất đi vẻ đẹp quyến rũ vốn có",
+    "ex": "Commercial advertisements and high-rise hotels risk spoiling the charm of this historic village."
+   },
+   {
+    "en": "peak season",
+    "vi": "mùa cao điểm du lịch",
+    "ex": "Airfares and hotel accommodation usually skyrocket during the peak season."
+   },
+   {
+    "en": "sustainable tourism",
+    "vi": "du lịch bền vững",
+    "ex": "The ministry is encouraging sustainable tourism to preserve local biodiversity while creating jobs."
+   },
+   {
+    "en": "soak up the atmosphere",
+    "vi": "tận hưởng không khí, hòa mình vào không gian",
+    "ex": "I spent the entire afternoon sitting in a sidewalk cafe to soak up the atmosphere of the ancient quarter."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu địa điểm đã ghé thăm là phố cổ Hội An, một di sản văn hóa nổi tiếng tại miền Trung Việt Nam.",
+   "Ý 1: Thời gian và lý do đến thăm là vào dịp Tết Nguyên Đán cùng gia đình để thư giãn và ngắm lễ hội đèn lồng truyền thống.",
+   "Ý 2: Miêu tả các hoạt động như đi dạo quanh các con hẻm cổ kính, thưởng thức món Cao Lầu và đi thuyền thả hoa đăng trên sông Hoài.",
+   "Kết: Chia sẻ cảm xúc đan xen, vừa thấy ngột ngạt vì dòng người chen chúc, vừa hào hứng vì không khí lễ hội sôi động và nhộn nhịp."
+  ],
+  "sample": "I'd like to talk about my trip to Hoi An Ancient Town, a globally renowned UNESCO World Heritage site located in central Vietnam. I visited it last February during the Lunar New Year holiday with my family, mainly because we wanted to soak up the festive atmosphere and admire the famous lantern festival. While we were there, we wandered through the historic pedestrian streets, sampled local delicacies like Cao Lau noodles, and even took a wooden boat ride along the Hoai River to release floating lanterns. However, visiting during the peak season meant that the town was completely packed with an overwhelming influx of visitors. Everywhere we went, we had to squeeze through narrow alleys and wait in long queues just to enter ancient houses or order street food. To be honest, I felt quite conflicted. On one hand, the sea of crowds somewhat spoiled the nostalgic charm and made sightseeing exhausting. On the other hand, the sheer energy and lively vibe of tourists from all over the world added an undeniable buzz to the celebrations, making it an unforgettable, albeit hectic, experience.",
+  "p1": [
+   {
+    "q": "Do you enjoy travelling to crowded tourist destinations?",
+    "a": "Not really, because I find bustling crowds rather overwhelming. I prefer peaceful getaways, like camping in Da Lat, where I can actually unwind and connect with nature rather than jostling with other holidaymakers."
+   },
+   {
+    "q": "What kind of places do you prefer to visit during holidays?",
+    "a": "I lean towards secluded coastal areas or mountainous retreats. For instance, last summer I explored Phu Quy Island, enjoying its pristine beaches and tranquil scenery far away from commercial tourist traps."
+   },
+   {
+    "q": "Has your hometown become more popular with tourists in recent years?",
+    "a": "Yes, definitely. Thanks to improved transport infrastructure, my coastal city now welcomes droves of domestic visitors every weekend, especially families eager to enjoy fresh seafood and beachside resorts."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What negative consequences can mass tourism bring to local communities?",
+    "a": "In my view, uncontrolled mass tourism poses severe risks to local infrastructure and the natural environment. When millions of holidaymakers descend on a destination, it often leads to acute traffic congestion, soaring living costs, and excessive littering. A clear example is Venice, where surging rents have driven away local residents. Consequently, while it generates short-term revenue, it often erodes the authentic community identity."
+   },
+   {
+    "q": "How might governments strike a balance between promoting tourism and protecting the environment?",
+    "a": "Authorities should enforce stricter regulations alongside promoting ecotourism initiatives. By capping daily visitor numbers at fragile heritage sites and imposing tourist taxes, governments can directly fund conservation efforts. For example, Bhutan limits tourist intake through high daily tariffs, which preserves its pristine ecosystem. Ultimately, sustainable policies ensure that economic gains do not come at the expense of irreversible ecological destruction."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'travel' thay vì phân biệt rõ ràng giữa danh từ không đếm được 'travel', danh từ đếm được 'trip/journey', và động từ 'travel'.",
+   "Dùng cách diễn đạt thiếu tự nhiên 'tourist place' thay vì sử dụng các từ học thuật chuẩn xác như 'tourist destination', 'sightseeing spot', hoặc 'tourist attraction'.",
+   "Dùng sai giới từ trong các cụm từ phổ biến, ví dụ nói 'go to holiday' thay vì 'go on holiday', hoặc 'in peak season' thay vì 'during the peak season'."
+  ],
+  "p1More": [
+   "How often do you go on vacation each year?",
+   "Do you prefer travelling alone or with a tour group?",
+   "What is the most memorable trip you have ever taken?",
+   "Do you like buying souvenirs when you visit new cities?",
+   "Which country would you most like to travel to in the future?"
+  ],
+  "p3More": [
+   "To what extent has social media altered the way people choose travel destinations?",
+   "Should historic monuments charge higher entrance fees for international tourists than for locals?",
+   "How might space tourism affect our perception of conventional travel in the coming decades?",
+   "Do you believe the development of tourism always benefits the economic welfare of indigenous people?"
+  ]
+ }
+}

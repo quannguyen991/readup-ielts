@@ -1,0 +1,117 @@
+{
+ "id": "sports-events",
+ "title": "Sports Events",
+ "titleVi": "Sự kiện thể thao",
+ "tipVi": "Hãy tập trung miêu tả bầu không khí cuồng nhiệt và cảm xúc thăng trầm thay vì chỉ mải mê thuật lại tỉ số hay luật chơi.",
+ "part1": [
+  "Do you enjoy watching sports competitions live or on television?",
+  "Have you ever attended a major sporting event in person?",
+  "What kind of sports tournaments are popular in your country?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable sports event you watched or attended",
+  "bullets": [
+   "what the event was and where it took place",
+   "who you watched it with",
+   "what happened during the competition",
+   "and explain why this event was so memorable to you"
+  ]
+ },
+ "part3": [
+  "What are the benefits and drawbacks of a country hosting an international tournament like the Olympics?",
+  "Why do professional athletes receive substantially higher salaries than people in essential professions like teaching or healthcare?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "electric atmosphere",
+    "vi": "bầu không khí cuồng nhiệt, sôi động",
+    "ex": "The stadium was packed to the rafters, creating an electric atmosphere throughout the final."
+   },
+   {
+    "en": "edge-of-your-seat",
+    "vi": "hồi hộp, gay cấn đến nghẹt thở",
+    "ex": "It was an edge-of-your-seat match that was decided only in the final seconds of extra time."
+   },
+   {
+    "en": "underdog",
+    "vi": "đội hoặc người bị đánh giá yếu hơn",
+    "ex": "Against all odds, the underdog managed to pull off a stunning victory over the defending champions."
+   },
+   {
+    "en": "turn the tide",
+    "vi": "xoay chuyển cục diện trận đấu",
+    "ex": "A brilliant tactical substitution in the second half helped our team turn the tide."
+   },
+   {
+    "en": "die-hard fan",
+    "vi": "người hâm mộ trung thành, cuồng nhiệt",
+    "ex": "My brother is a die-hard fan of Manchester United and rarely misses a single fixture."
+   },
+   {
+    "en": "host nation",
+    "vi": "quốc gia đăng cai",
+    "ex": "Being the host nation brings prestige but also poses an immense financial burden."
+   },
+   {
+    "en": "come from behind",
+    "vi": "lội ngược dòng thành công",
+    "ex": "They managed to come from behind and secure a dramatic win in the closing minutes."
+   },
+   {
+    "en": "national pride",
+    "vi": "lòng tự hào dân tộc",
+    "ex": "Winning the regional championship sparked an extraordinary wave of national pride."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn trận chung kết bóng đá U23 châu Á 2018 tại Thường Châu mà bạn theo dõi qua màn hình lớn ở trung tâm thành phố.",
+   "Ý 1: Nêu rõ không gian theo dõi cùng nhóm bạn thân giữa một biển người hâm mộ mặc áo cờ đỏ sao vàng.",
+   "Ý 2: Tái hiện diễn biến gay cấn dưới bão tuyết, siêu phẩm đá phạt cầu vồng gỡ hòa và bàn thua nghẹt thở ở phút cuối hiệp phụ.",
+   "Kết: Giải thích lý do khó quên là tinh thần quật cường của các cầu thủ và cảm giác gắn kết hàng triệu người dân xa lạ thành một khối thống nhất."
+  ],
+  "sample": "I would like to talk about the 2018 AFC U23 Championship final between Vietnam and Uzbekistan, which is arguably the most unforgettable sporting event I have ever witnessed. I watched it on a massive public screen at a bustling square in downtown Hanoi, surrounded by thousands of passionate supporters.\n\nThe match took place amidst a fierce blizzard in Changzhou, China—conditions that were entirely alien to our players. Despite falling behind early on, Vietnam fought back valiantly. The defining moment came just before halftime when Quang Hải scored an iconic free kick through the falling snow, an equalizer that sent the entire crowd into pure euphoria. Both sides battled fiercely into extra time until Uzbekistan scored a heartbreaking winner in the dying seconds.\n\nEven though we narrowly missed out on the trophy, the match remains deeply etched in my memory. Seeing our young athletes demonstrate such resilience against physical and environmental adversity united the entire nation. That collective sense of pride and camaraderie is something I will cherish for the rest of my life.",
+  "p1": [
+   {
+    "q": "Do you enjoy watching sports competitions live or on television?",
+    "a": "I definitely prefer watching them on TV because the multiple camera angles and expert commentary offer a clearer perspective. For instance, watching Premier League football from my couch is much more comfortable than braving rowdy stadium crowds."
+   },
+   {
+    "q": "Have you ever attended a major sporting event in person?",
+    "a": "Yes, I attended a SEA Games football match at My Dinh National Stadium two years ago. The atmosphere was deafening with drums and chants, which made it a far more visceral experience than watching at home."
+   },
+   {
+    "q": "What kind of sports tournaments are popular in your country?",
+    "a": "Football tournaments are overwhelmingly the most popular, especially international fixtures involving the national team. Whenever there is an Asian Cup match, streets empty out and people gather in coffee shops to cheer together."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What are the benefits and drawbacks of a country hosting an international tournament like the Olympics?",
+    "a": "Hosting such mega-events can significantly boost tourism, modernize urban infrastructure, and foster immense national prestige. However, the financial risks are enormous. Many host nations incur staggering debts and are left with white elephant stadiums that require exorbitant maintenance fees. Therefore, unless meticulously planned, the economic hangover often outweighs the temporary economic windfall."
+   },
+   {
+    "q": "Why do professional athletes receive substantially higher salaries than people in essential professions like teaching or healthcare?",
+    "a": "This disparity primarily stems from market economics and entertainment value rather than societal utility. Elite athletes generate billions of dollars through global broadcasting rights, merchandise, and commercial sponsorships, so their wages reflect that revenue. While teachers and doctors clearly provide far more vital contributions to human well-being, public sector budgets simply cannot compete with the commercial juggernaut of professional sports entertainment."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn động từ thể hiện kết quả: nói 'win an opponent' thay vì 'beat an opponent' hoặc 'defeat a rival', và nhầm với 'win a trophy / a match'.",
+   "Lạm dụng thì hiện tại đơn khi kể lại trận đấu quá khứ thay vì kết hợp quá khứ đơn, quá khứ tiếp diễn và quá khứ hoàn thành để tạo chiều sâu thời gian.",
+   "Thiếu từ vựng mô tả sắc thái thể thao chuyên sâu, dùng lặp đi lặp lại những từ cơ bản như 'very exciting', 'happy', thay vì 'electric atmosphere', 'edge-of-your-seat' hay 'resilience'."
+  ],
+  "p1More": [
+   "Did you participate in any sports days when you were at school?",
+   "Do you think children should be encouraged to watch sporting events?",
+   "Which sport would you like to watch live in the future?",
+   "Do you prefer individual sports competitions or team sports events?",
+   "How do people in your city celebrate when the national sports team wins?"
+  ],
+  "p3More": [
+   "To what extent should governments invest taxpayer money into training elite athletes rather than promoting grassroots sports?",
+   "Do commercial sponsorships undermine the integrity of traditional sporting competitions?",
+   "How has modern technology, such as video assistant referees, altered the spectator experience?",
+   "Can international sporting events genuinely foster diplomatic peace between rival nations?"
+  ]
+ }
+}

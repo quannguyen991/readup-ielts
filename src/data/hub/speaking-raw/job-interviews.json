@@ -1,0 +1,117 @@
+{
+ "id": "job-interviews",
+ "title": "Job Interviews",
+ "titleVi": "Phỏng vấn xin việc",
+ "tipVi": "Hãy kết hợp thuật ngữ nghề nghiệp tự nhiên cùng việc chia sẻ cảm xúc chân thật thay vì chỉ liệt kê các câu hỏi phỏng vấn thông thường.",
+ "part1": [
+  "Have you ever attended a job interview?",
+  "How do people usually prepare for an interview in your country?",
+  "Do you think wearing formal clothes to an interview is still necessary?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable job interview you had or heard about",
+  "bullets": [
+   "what the position was",
+   "who the interviewer was",
+   "what happened during the interview",
+   "and explain why this interview was memorable to you"
+  ]
+ },
+ "part3": [
+  "How have recruitment methods changed over the past decade?",
+  "Do you think artificial intelligence will completely replace human recruiters in the future?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "nerve-racking",
+    "vi": "căng thẳng tột độ",
+    "ex": "Walking into the boardroom for the final interview was a nerve-racking experience."
+   },
+   {
+    "en": "tailor one's CV",
+    "vi": "điều chỉnh CV cho phù hợp",
+    "ex": "Candidates should tailor their CVs to highlight relevant skills for each specific role."
+   },
+   {
+    "en": "think on one's feet",
+    "vi": "ứng biến nhanh nhạy",
+    "ex": "The panel asked several unexpected behavioral questions, forcing me to think on my feet."
+   },
+   {
+    "en": "field questions",
+    "vi": "khéo léo xử lý hàng loạt câu hỏi",
+    "ex": "She fielded questions from the recruitment team with remarkable poise."
+   },
+   {
+    "en": "land a job",
+    "vi": "thành công giành được công việc",
+    "ex": "After four rounds of rigorous interviews, he finally landed a job at a tech firm."
+   },
+   {
+    "en": "a competitive edge",
+    "vi": "lợi thế cạnh tranh",
+    "ex": "Having practical project experience gave her a competitive edge over other applicants."
+   },
+   {
+    "en": "cultural fit",
+    "vi": "sự phù hợp về văn hóa doanh nghiệp",
+    "ex": "Hiring managers often evaluate whether an applicant will be a good cultural fit for the team."
+   },
+   {
+    "en": "leave a lasting impression",
+    "vi": "tạo ấn tượng sâu sắc dài lâu",
+    "ex": "Her articulate answers and confident posture left a lasting impression on the interviewers."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu cuộc phỏng vấn đáng nhớ (vị trí chuyên viên marketing tập sự tại một công ty khởi nghiệp công nghệ cách đây hai năm).",
+   "Ý 1: Mô tả người phỏng vấn và bầu không khí (hai người phỏng vấn gồm giám đốc sáng tạo và trưởng phòng nhân sự, thái độ cởi mở giúp giải tỏa áp lực ban đầu).",
+   "Ý 2: Diễn biến bất ngờ (bị yêu cầu giải quyết tình huống khủng hoảng truyền thông thực tế trong mười phút thay vì trả lời câu hỏi lý thuyết quen thuộc).",
+   "Kết: Lý do khó quên (thử thách buộc bản thân ứng biến linh hoạt dưới áp lực cao, giúp giành được việc làm và nhận ra giá trị của năng lực xử lý vấn đề thực tế)."
+  ],
+  "sample": "I would like to talk about a memorable job interview I had about two years ago when applying for a junior marketing position at a fast-growing tech startup. The interview took place in a glass-walled conference room with two interviewers: the creative director and the head of HR. Both were surprisingly approachable, which helped ease my initial tension.\n\nWhat made the session unforgettable was an unexpected challenge. Instead of standard questions about strengths and weaknesses, the director handed me a sudden crisis scenario: their flagship app had just received widespread negative reviews, and I had ten minutes to outline a damage-control campaign. I had to think on my feet, quickly structuring a three-step response focusing on transparent communication and user compensation. I fielded their follow-up questions as calmly as possible.\n\nThis experience remains vivid because it pushed me out of my comfort zone. Even though it was nerve-racking, I managed to showcase my analytical thinking under pressure rather than rehearsed answers. Ultimately, I landed the job, and that interview taught me that authenticity and problem-solving skills matter far more than flawless memorization.",
+  "p1": [
+   {
+    "q": "Have you ever attended a job interview?",
+    "a": "Yes, I have had a couple so far. My most recent one was for a part-time teaching role, where I had to deliver a mock lesson. It was quite demanding, but I passed successfully."
+   },
+   {
+    "q": "How do people usually prepare for an interview in your country?",
+    "a": "Most applicants thoroughly research the company and rehearse common questions. Many young graduates also practice mock interviews with friends to polish their body language and refine their CVs before the big day."
+   },
+   {
+    "q": "Do you think wearing formal clothes to an interview is still necessary?",
+    "a": "Generally, yes, because dressing smartly shows respect and professionalism. Even for casual creative firms, opting for neat business attire creates a positive first impression, though strict suits are becoming less mandatory."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have recruitment methods changed over the past decade?",
+    "a": "In the past, hiring relied heavily on printed resumes and rigid face-to-face panels. Nowadays, digital platforms like LinkedIn and automated video assessments dominate the screening phase. This shift allows employers to evaluate candidate portfolios globally, saving significant time. However, it can sometimes feel impersonal compared to traditional interactions, making cultural evaluation slightly more challenging."
+   },
+   {
+    "q": "Do you think artificial intelligence will completely replace human recruiters in the future?",
+    "a": "I highly doubt AI will entirely take over. While machine learning algorithms excel at parsing resumes and filtering qualifications efficiently, human intuition remains irreplaceable. Deciding whether an applicant aligns with workplace culture or possesses genuine empathy requires emotional intelligence that machines simply lack. Therefore, AI will likely remain a supportive screening tool rather than a final decision-maker."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh từ 'interview' liên tục thay vì linh hoạt chuyển đổi sang các cụm từ tương đương như 'screening session', 'hiring process', hoặc 'selection round'.",
+   "Nhầm lẫn giữa 'interviewer' (người phỏng vấn/nhà tuyển dụng) và 'interviewee' (ứng viên đi phỏng vấn).",
+   "Lỗi dùng giới từ sai do ảnh hưởng tiếng Việt: nói 'apply a job' thay vì 'apply for a job', hoặc dịch word-by-word 'pass the interview easily' thiếu tự nhiên."
+  ],
+  "p1More": [
+   "What do you find most difficult about job interviews?",
+   "Do you prefer online interviews or face-to-face interviews?",
+   "What qualities do you think interviewers value the most?",
+   "Have you ever felt nervous before an interview or test?",
+   "Do you think schools should teach students how to pass an interview?"
+  ],
+  "p3More": [
+   "To what extent should an applicant's personality outweigh their technical qualifications?",
+   "Should employers rely on social media profiles when assessing prospective employees?",
+   "How can companies minimize unconscious bias during the hiring process?",
+   "What impact does a high turnover rate have on an organization's reputation and productivity?"
+  ]
+ }
+}

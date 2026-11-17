@@ -120,6 +120,54 @@
   ]
  },
  {
+  "id": "cinema",
+  "title": "Films and Cinema",
+  "titleVi": "Phim ảnh",
+  "tipVi": "Hãy tập trung miêu tả cảm xúc và thông điệp của bộ phim thay vì chỉ tóm tắt cốt truyện quá chi tiết.",
+  "part1": [
+   "How often do you go to the cinema to watch a movie?",
+   "What genre of films do you usually prefer watching?",
+   "Did you enjoy watching movies when you were a child?"
+  ],
+  "part2": {
+   "prompt": "Describe an inspiring film that made a lasting impression on you",
+   "bullets": [
+    "what the film was about",
+    "when and where you watched it",
+    "who the main characters were",
+    "and explain why this film made such a strong impression on you"
+   ]
+  },
+  "part3": [
+   "Why do some people still prefer watching films in theaters rather than on streaming platforms?",
+   "To what extent can films influence people's moral values and worldview?"
+  ]
+ },
+ {
+  "id": "climate",
+  "title": "Climate Change",
+  "titleVi": "Biến đổi khí hậu",
+  "tipVi": "Hãy liên hệ các hiện tượng thời tiết cực đoan hoặc thói quen sống xanh hằng ngày tại địa phương thay vì chỉ đưa ra các số liệu khoa học vĩ mô khô khan.",
+  "part1": [
+   "Have you noticed any changes in the weather in your hometown recently?",
+   "What do you do in your daily life to protect the environment?",
+   "Do you think schools should teach children about environmental issues?"
+  ],
+  "part2": {
+   "prompt": "Describe an environmental initiative or project you know that tackles climate change",
+   "bullets": [
+    "what the initiative or project is",
+    "where and how it is carried out",
+    "who participates in or supports it",
+    "and explain why you think it is effective in combating climate change"
+   ]
+  },
+  "part3": [
+   "Who should bear the primary responsibility for tackling global warming: individuals or governments?",
+   "How might technological advancements help reduce the impact of climate change in the future?"
+  ]
+ },
+ {
   "id": "clothes",
   "title": "Clothes and Fashion",
   "titleVi": "Trang phục",
@@ -144,6 +192,78 @@
   ]
  },
  {
+  "id": "cooking",
+  "title": "Cooking",
+  "titleVi": "Nấu ăn",
+  "tipVi": "Hãy sử dụng các động từ chỉ thao tác nấu nướng cụ thể cùng tính từ miêu tả hương vị và kết cấu thay vì lặp lại những từ chung chung như 'cook' hay 'delicious'.",
+  "part1": [
+   "Do you often cook your own meals at home?",
+   "What was the very first dish you learned to make?",
+   "Do you prefer eating home-cooked food or dining out?"
+  ],
+  "part2": {
+   "prompt": "Describe a special meal or dish that you know how to prepare",
+   "bullets": [
+    "what dish it is and what ingredients are needed",
+    "who taught you how to prepare it or how you learned it",
+    "how you usually cook this dish",
+    "and explain why you enjoy cooking this particular meal"
+   ]
+  },
+  "part3": [
+   "Should schools include culinary skills as a compulsory subject for young students?",
+   "How has modern technology changed the way families prepare and consume food?"
+  ]
+ },
+ {
+  "id": "culture",
+  "title": "Culture and Traditions",
+  "titleVi": "Văn hoá và truyền thống",
+  "tipVi": "Khi nói về văn hóa, hãy tránh dịch thô từng chữ các khái niệm truyền thống sang tiếng Anh mà nên dùng từ vựng diễn giải súc tích kết hợp chia sẻ cảm xúc cá nhân.",
+  "part1": [
+   "Do you enjoy learning about traditions from other countries?",
+   "What is an important celebration in your hometown?",
+   "Did your family have any special customs when you were growing up?"
+  ],
+  "part2": {
+   "prompt": "Describe a traditional festival or cultural event in your country that you find meaningful.",
+   "bullets": [
+    "what the festival is",
+    "when and where it takes place",
+    "what people usually do during this event",
+    "and explain why this celebration is meaningful to you"
+   ]
+  },
+  "part3": [
+   "How has globalization affected the way younger generations view traditional customs?",
+   "Do you think governments should invest public funds in preserving endangered cultural rituals?"
+  ]
+ },
+ {
+  "id": "daily-routine",
+  "title": "Daily Routine",
+  "titleVi": "Thói quen hằng ngày",
+  "tipVi": "Hãy sử dụng linh hoạt các trạng từ chỉ tần suất và các cụm động từ chỉ chuỗi hành động thay vì chỉ liệt kê các mốc thời gian một cách máy móc.",
+  "part1": [
+   "What is the first thing you usually do after waking up?",
+   "Do you prefer to do challenging tasks in the morning or in the evening?",
+   "Has your daily routine changed much compared to when you were younger?"
+  ],
+  "part2": {
+   "prompt": "Describe a healthy habit that has become an important part of your daily routine",
+   "bullets": [
+    "what the habit is",
+    "when and how you started doing it",
+    "how it fits into your daily schedule",
+    "and explain why this habit is so beneficial to your daily life"
+   ]
+  },
+  "part3": [
+   "Why do some people find it difficult to stick to a consistent daily schedule?",
+   "How has modern technology influenced the way people organize their day-to-day lives?"
+  ]
+ },
+ {
   "id": "festivals",
   "title": "Festivals",
   "titleVi": "Lễ hội",
@@ -165,6 +285,78 @@
   "part3": [
    "In what ways do commercial promotions alter the traditional essence of cultural festivals?",
    "Why might younger generations feel less connected to ancient customs and folk celebrations?"
+  ]
+ },
+ {
+  "id": "gardens",
+  "title": "Gardens and Plants",
+  "titleVi": "Vườn và cây cối",
+  "tipVi": "Hãy kết hợp từ vựng miêu tả cảm giác thư thái và tác động của mảng xanh đối với sức khỏe tinh thần thay vì chỉ liệt kê tên các loài thực vật.",
+  "part1": [
+   "Do you have any potted plants or flowers in your home?",
+   "Did you enjoy visiting public gardens when you were a child?",
+   "Would you like to grow your own vegetables in the future?"
+  ],
+  "part2": {
+   "prompt": "Describe a memorable garden or park with plants that you have visited",
+   "bullets": [
+    "where this garden or park is located",
+    "what kinds of plants or flowers you saw there",
+    "what you did during your visit",
+    "and explain why this visit left such a strong impression on you"
+   ]
+  },
+  "part3": [
+   "Why do many urban residents find it important to maintain green spaces in modern cities?",
+   "How might children benefit from participating in gardening activities at school?"
+  ]
+ },
+ {
+  "id": "handwriting",
+  "title": "Handwriting and Typing",
+  "titleVi": "Viết tay và gõ phím",
+  "tipVi": "Hãy khéo léo kết hợp các cấu trúc so sánh đối chiếu giữa tính hiệu quả tiện lợi của việc gõ phím với giá trị cảm xúc và lợi ích tư duy sâu của chữ viết tay.",
+  "part1": [
+   "Do you prefer writing by hand or typing on a keyboard?",
+   "When was the last time you wrote something by hand?",
+   "Do you think handwriting will still be important in the future?"
+  ],
+  "part2": {
+   "prompt": "Describe a handwritten letter or card that you received.",
+   "bullets": [
+    "who sent it to you",
+    "what the message was about",
+    "when and where you received it",
+    "and explain why this handwritten message was special to you"
+   ]
+  },
+  "part3": [
+   "In what situations do people still prefer handwriting over digital typing?",
+   "Should primary schools allocate more curriculum time to keyboard skills than penmanship?"
+  ]
+ },
+ {
+  "id": "happiness",
+  "title": "Happiness",
+  "titleVi": "Hạnh phúc",
+  "tipVi": "Hãy tránh lạm dụng từ 'happy' bằng cách linh hoạt sử dụng các tính từ và thành ngữ chỉ cảm xúc như 'content', 'over the moon' hoặc 'a sense of fulfillment', đồng thời liên hệ cụ thể với trải nghiệm đời sống.",
+  "part1": [
+   "What kinds of things make you feel happy in your daily life?",
+   "Do you think you were happier when you were a child than you are now?",
+   "What do you usually do when you want to cheer yourself up after a hard day?"
+  ],
+  "part2": {
+   "prompt": "Describe an unexpected event that brought you immense happiness",
+   "bullets": [
+    "what the event was",
+    "when and where it happened",
+    "who shared that moment with you",
+    "and explain why it brought you such immense happiness"
+   ]
+  },
+  "part3": [
+   "Do you believe that material wealth is essential for long-term happiness in modern society?",
+   "How has the way people define happiness changed compared to previous generations?"
   ]
  },
  {
@@ -216,6 +408,78 @@
   ]
  },
  {
+  "id": "internet",
+  "title": "The Internet",
+  "titleVi": "Internet",
+  "tipVi": "Hãy tránh lạm dụng các từ chung chung như 'good' hay 'convenient', thay vào đó hãy dùng các cụm từ chuyên biệt như 'streamline workflow' hay 'information overload' để nâng band điểm từ vựng.",
+  "part1": [
+   "How much time do you spend online every day?",
+   "What do you usually use the internet for?",
+   "Do you think you could live without an internet connection for a week?"
+  ],
+  "part2": {
+   "prompt": "Describe an online platform or website that you find particularly useful",
+   "bullets": [
+    "what platform or website it is",
+    "how often you visit it",
+    "what features or content it offers",
+    "and explain why you find it so useful in your daily life"
+   ]
+  },
+  "part3": [
+   "How has internet access changed the way people acquire knowledge compared to the past?",
+   "What are the main risks associated with children having unrestricted access to the web?"
+  ]
+ },
+ {
+  "id": "job-interviews",
+  "title": "Job Interviews",
+  "titleVi": "Phỏng vấn xin việc",
+  "tipVi": "Hãy kết hợp thuật ngữ nghề nghiệp tự nhiên cùng việc chia sẻ cảm xúc chân thật thay vì chỉ liệt kê các câu hỏi phỏng vấn thông thường.",
+  "part1": [
+   "Have you ever attended a job interview?",
+   "How do people usually prepare for an interview in your country?",
+   "Do you think wearing formal clothes to an interview is still necessary?"
+  ],
+  "part2": {
+   "prompt": "Describe a memorable job interview you had or heard about",
+   "bullets": [
+    "what the position was",
+    "who the interviewer was",
+    "what happened during the interview",
+    "and explain why this interview was memorable to you"
+   ]
+  },
+  "part3": [
+   "How have recruitment methods changed over the past decade?",
+   "Do you think artificial intelligence will completely replace human recruiters in the future?"
+  ]
+ },
+ {
+  "id": "jobs",
+  "title": "Jobs and Careers",
+  "titleVi": "Nghề nghiệp",
+  "tipVi": "Hãy linh hoạt kết hợp các cụm từ chỉ trách nhiệm và môi trường làm việc thay vì chỉ liệt kê các nhiệm vụ lặp đi lặp lại một cách đơn điệu.",
+  "part1": [
+   "Do you currently work or are you a student?",
+   "What do you enjoy most about your daily work routine?",
+   "Would you like to change your job or career path in the future?"
+  ],
+  "part2": {
+   "prompt": "Describe an ideal job you would like to have in the future",
+   "bullets": [
+    "what job it is",
+    "what qualifications or skills are needed for it",
+    "what responsibilities you would have in this role",
+    "and explain why you consider this to be your ideal career"
+   ]
+  },
+  "part3": [
+   "How do you think artificial intelligence will change the nature of employment in the coming decades?",
+   "Should governments prioritize job security or labor market flexibility when formulating economic policies?"
+  ]
+ },
+ {
   "id": "language-learning",
   "title": "Language Learning",
   "titleVi": "Học ngoại ngữ",
@@ -237,6 +501,102 @@
   "part3": [
    "Do you think artificial intelligence and translation tools will make language learning obsolete?",
    "Why do children often pick up foreign languages more quickly than adults?"
+  ]
+ },
+ {
+  "id": "leadership",
+  "title": "Leadership",
+  "titleVi": "Lãnh đạo",
+  "tipVi": "Khi nói về lãnh đạo, hãy tránh liệt kê các tính từ chung chung như 'good' hay 'smart'; thay vào đó, hãy dùng ngôn ngữ quản trị Band 7+ như 'lead by example', 'delegate tasks' và kể một tình huống xử lý áp lực cụ thể.",
+  "part1": [
+   "Have you ever been the leader of a team or a project?",
+   "Do you prefer working independently or leading a group?",
+   "What kind of qualities do you think make a good school monitor or team captain?"
+  ],
+  "part2": {
+   "prompt": "Describe an effective leader you have worked with or know about",
+   "bullets": [
+    "who this person is",
+    "when and where you met or saw them lead",
+    "what they did to manage the situation",
+    "and explain why you think their leadership was effective"
+   ]
+  },
+  "part3": [
+   "Do you think great leaders are born with their abilities, or can leadership be taught?",
+   "How has the definition of a good leader changed compared to past generations?"
+  ]
+ },
+ {
+  "id": "libraries",
+  "title": "Libraries",
+  "titleVi": "Thư viện",
+  "tipVi": "Khi nói về thư viện, hãy tránh chỉ lặp lại ý 'nơi yên tĩnh để đọc sách' mà nên mở rộng sang các góc nhìn như chuyển đổi số, không gian tự học đa năng và vai trò bình đẳng hóa cơ hội tiếp cận tri thức.",
+  "part1": [
+   "How often do you visit libraries?",
+   "Did you go to a library when you were a child?",
+   "Do you prefer studying in a library or at home?"
+  ],
+  "part2": {
+   "prompt": "Describe a memorable library you have visited",
+   "bullets": [
+    "where this library is located",
+    "what facilities and resources it offers",
+    "what you did there during your visit",
+    "and explain why this library left such a strong impression on you"
+   ]
+  },
+  "part3": [
+   "In what ways have digital resources altered the traditional role of libraries?",
+   "Should governments continue to allocate public funds to maintain physical libraries?"
+  ]
+ },
+ {
+  "id": "memory",
+  "title": "Memory",
+  "titleVi": "Trí nhớ",
+  "tipVi": "Hãy kết hợp linh hoạt các thì quá khứ với những cụm từ diễn tả mức độ rõ ràng của ký ức như 'vividly recall' hay 'hazy memory' thay vì chỉ lặp lại động từ 'remember'.",
+  "part1": [
+   "Do you have a good memory for numbers or names?",
+   "How do you usually remind yourself of important tasks?",
+   "Have you ever forgotten something really important?"
+  ],
+  "part2": {
+   "prompt": "Describe an important childhood event that you remember clearly",
+   "bullets": [
+    "what the event was",
+    "when and where it happened",
+    "who was there with you",
+    "and explain why you still remember it so vividly"
+   ]
+  },
+  "part3": [
+   "Why do people tend to remember negative experiences more vividly than positive ones?",
+   "How has modern technology influenced human memory and retention skills?"
+  ]
+ },
+ {
+  "id": "mobile-apps",
+  "title": "Mobile Apps",
+  "titleVi": "Ứng dụng di động",
+  "tipVi": "Thay vì chỉ liệt kê các ứng dụng quen thuộc như Facebook hay TikTok, hãy tập trung miêu tả tính năng cụ thể và tác động thực tế của ứng dụng đó đến thói quen sinh hoạt hoặc học tập của bạn.",
+  "part1": [
+   "What kinds of mobile apps do you use most frequently on your smartphone?",
+   "Have your preferences for apps changed compared to when you were younger?",
+   "Do you think you spend too much time using mobile applications?"
+  ],
+  "part2": {
+   "prompt": "Describe a mobile app that you find extremely useful in your daily routine.",
+   "bullets": [
+    "what the app is and how you learned about it",
+    "what specific features it offers",
+    "how often and in what situations you use it",
+    "and explain why you find it so essential to your everyday life"
+   ]
+  },
+  "part3": [
+   "How have mobile applications altered the way people communicate in modern society?",
+   "To what extent do you agree that mobile software may pose significant risks to personal privacy?"
   ]
  },
  {
@@ -360,6 +720,54 @@
   ]
  },
  {
+  "id": "online-shopping",
+  "title": "Online Shopping",
+  "titleVi": "Mua sắm trực tuyến",
+  "tipVi": "Hãy kết hợp linh hoạt từ vựng chuyên ngành như 'e-commerce platforms' hay 'impulse buying' và cân bằng giữa mặt tiện lợi với rủi ro nhận hàng kém chất lượng để đạt điểm Lexical Resource cao.",
+  "part1": [
+   "How often do you buy things on the internet?",
+   "What kind of items do you usually purchase online?",
+   "Have you ever encountered any problems when shopping online?"
+  ],
+  "part2": {
+   "prompt": "Describe an online purchase you made that you were really satisfied with",
+   "bullets": [
+    "what item you bought",
+    "which platform or website you bought it from",
+    "why you decided to buy it online rather than in a physical store",
+    "and explain why you were so satisfied with this purchase"
+   ]
+  },
+  "part3": [
+   "How has e-commerce transformed traditional retail businesses in recent years?",
+   "Do you think consumer spending habits have become more reckless because of online shopping?"
+  ]
+ },
+ {
+  "id": "pets",
+  "title": "Pets and Animals",
+  "titleVi": "Thú cưng và động vật",
+  "tipVi": "Hãy kết hợp miêu tả đặc điểm hành vi của con vật cùng cảm xúc cá nhân để bài nói sinh động và tự nhiên hơn.",
+  "part1": [
+   "Do you have any pets at home?",
+   "What kind of animals did you like when you were a child?",
+   "Why do some people prefer having pets over other hobbies?"
+  ],
+  "part2": {
+   "prompt": "Describe a memorable encounter you had with a wild animal",
+   "bullets": [
+    "what animal it was",
+    "where and when you encountered it",
+    "what the animal was doing",
+    "and explain why this encounter was memorable to you"
+   ]
+  },
+  "part3": [
+   "Do you think humans have a moral obligation to protect endangered species?",
+   "How has urbanization affected the relationship between humans and wild animals?"
+  ]
+ },
+ {
   "id": "photography",
   "title": "Photography",
   "titleVi": "Nhiếp ảnh",
@@ -381,6 +789,30 @@
   "part3": [
    "Why do some people prefer to capture moments on camera rather than simply enjoying them in the present?",
    "How has digital photography altered the way society preserves history and memories?"
+  ]
+ },
+ {
+  "id": "public-speaking",
+  "title": "Public Speaking",
+  "titleVi": "Nói trước đám đông",
+  "tipVi": "Hãy thành thật chia sẻ cảm xúc cá nhân như sự hồi hộp ban đầu và cách bạn vượt qua nó thay vì cố tỏ ra mình là một diễn giả hoàn hảo.",
+  "part1": [
+   "Have you ever given a speech or presentation in public?",
+   "Do you feel nervous when speaking in front of a group of people?",
+   "Would you like to improve your public speaking skills in the future?"
+  ],
+  "part2": {
+   "prompt": "Describe a speech or presentation that you gave to a large audience",
+   "bullets": [
+    "when and where you gave it",
+    "what topic you talked about",
+    "who was in the audience",
+    "and explain how you felt before and after delivering the talk"
+   ]
+  },
+  "part3": [
+   "Why do many people find speaking in public terrifying?",
+   "How important is body language compared to spoken words during a speech?"
   ]
  },
  {
@@ -480,6 +912,54 @@
   ]
  },
  {
+  "id": "sports-events",
+  "title": "Sports Events",
+  "titleVi": "Sự kiện thể thao",
+  "tipVi": "Hãy tập trung miêu tả bầu không khí cuồng nhiệt và cảm xúc thăng trầm thay vì chỉ mải mê thuật lại tỉ số hay luật chơi.",
+  "part1": [
+   "Do you enjoy watching sports competitions live or on television?",
+   "Have you ever attended a major sporting event in person?",
+   "What kind of sports tournaments are popular in your country?"
+  ],
+  "part2": {
+   "prompt": "Describe a memorable sports event you watched or attended",
+   "bullets": [
+    "what the event was and where it took place",
+    "who you watched it with",
+    "what happened during the competition",
+    "and explain why this event was so memorable to you"
+   ]
+  },
+  "part3": [
+   "What are the benefits and drawbacks of a country hosting an international tournament like the Olympics?",
+   "Why do professional athletes receive substantially higher salaries than people in essential professions like teaching or healthcare?"
+  ]
+ },
+ {
+  "id": "stress",
+  "title": "Stress and Relaxation",
+  "titleVi": "Căng thẳng và thư giãn",
+  "tipVi": "Hãy sử dụng linh hoạt các cụm từ chỉ cường độ căng thẳng và cách giải tỏa thay vì lặp lại từ 'stress' hay 'relax', đồng thời đưa ví dụ cụ thể về thói quen cá nhân.",
+  "part1": [
+   "What do you usually do when you feel stressed?",
+   "Do you think your daily life is more stressful than in the past?",
+   "Where is your favourite place to unwind?"
+  ],
+  "part2": {
+   "prompt": "Describe an activity you do that helps you relieve stress",
+   "bullets": [
+    "what the activity is",
+    "where and when you usually do it",
+    "who you do it with, or if you do it alone",
+    "and explain why this activity helps you feel calm and refreshed"
+   ]
+  },
+  "part3": [
+   "Why do you think modern lifestyle causes more mental pressure than in previous generations?",
+   "Should employers take responsibility for reducing their employees' workplace stress?"
+  ]
+ },
+ {
   "id": "teachers",
   "title": "Teachers",
   "titleVi": "Thầy cô",
@@ -504,6 +984,54 @@
   ]
  },
  {
+  "id": "teamwork",
+  "title": "Teamwork",
+  "titleVi": "Làm việc nhóm",
+  "tipVi": "Hãy minh họa cụ thể cách phân chia vai trò và cách nhóm giải quyết bất đồng, tránh chỉ dùng những từ chung chung như 'good' hay 'helpful'.",
+  "part1": [
+   "Do you prefer working on your own or in a group?",
+   "What was the last project you completed with other people?",
+   "Do you find it difficult to cooperate with people you do not know well?"
+  ],
+  "part2": {
+   "prompt": "Describe an effective team project you took part in.",
+   "bullets": [
+    "what the project was and who you worked with",
+    "how tasks were divided among team members",
+    "what challenges your team encountered",
+    "and explain why you think this team project was successful"
+   ]
+  },
+  "part3": [
+   "What key qualities make an individual an effective team player?",
+   "How has modern technology changed the way teams collaborate in the workplace?"
+  ]
+ },
+ {
+  "id": "television",
+  "title": "Television",
+  "titleVi": "Truyền hình",
+  "tipVi": "Hãy phân biệt rõ giữa truyền hình truyền thống (linear television) và các nền tảng xem phim trực tuyến (streaming services) để thể hiện tư duy cập nhật và vốn từ vựng phong phú.",
+  "part1": [
+   "How often do you watch television programs?",
+   "What kind of TV shows do you enjoy watching the most?",
+   "Do you prefer watching television alone or with other people?"
+  ],
+  "part2": {
+   "prompt": "Describe an educational television program you enjoy watching",
+   "bullets": [
+    "what the program is",
+    "when and where you usually watch it",
+    "what topic or subject it covers",
+    "and explain why you find this program beneficial or engaging"
+   ]
+  },
+  "part3": [
+   "How has the way people consume television content changed over recent decades?",
+   "To what extent should governments regulate educational versus entertainment content on public television?"
+  ]
+ },
+ {
   "id": "time-management",
   "title": "Time Management",
   "titleVi": "Quản lý thời gian",
@@ -525,6 +1053,30 @@
   "part3": [
    "Why do some people struggle to balance their work commitments and personal life nowadays?",
    "To what extent can digital tools improve personal productivity compared to traditional paper planners?"
+  ]
+ },
+ {
+  "id": "tourism",
+  "title": "Tourism",
+  "titleVi": "Du lịch đại chúng",
+  "tipVi": "Hãy cân bằng giữa việc chia sẻ trải nghiệm cá nhân và việc phân tích tác động hai mặt của du lịch đối với kinh tế và môi trường để ghi điểm từ vựng học thuật.",
+  "part1": [
+   "Do you enjoy travelling to crowded tourist destinations?",
+   "What kind of places do you prefer to visit during holidays?",
+   "Has your hometown become more popular with tourists in recent years?"
+  ],
+  "part2": {
+   "prompt": "Describe a popular tourist attraction you visited that was very crowded",
+   "bullets": [
+    "where this place is",
+    "when and why you went there",
+    "what you did while you were there",
+    "and explain how you felt about the large number of visitors"
+   ]
+  },
+  "part3": [
+   "What negative consequences can mass tourism bring to local communities?",
+   "How might governments strike a balance between promoting tourism and protecting the environment?"
   ]
  },
  {
@@ -573,6 +1125,30 @@
   "part3": [
    "Should voluntary work be compulsory for high school students before graduation?",
    "How can non-profit organizations encourage more people to participate in community service?"
+  ]
+ },
+ {
+  "id": "weekends",
+  "title": "Weekends",
+  "titleVi": "Cuối tuần",
+  "tipVi": "Thay vì chỉ liệt kê một chuỗi hoạt động tẻ nhạt, hãy tập trung làm nổi bật sự tương phản giữa guồng quay bận rộn trong tuần và cảm giác phục hồi năng lượng thể chất lẫn tinh thần vào cuối tuần.",
+  "part1": [
+   "How do you usually spend your weekends?",
+   "Do you prefer spending weekends with friends or alone?",
+   "Did you have more free time on weekends when you were a child?"
+  ],
+  "part2": {
+   "prompt": "Describe a memorable weekend activity you did recently",
+   "bullets": [
+    "what the activity was",
+    "who you did it with",
+    "where you went",
+    "and explain why this weekend was memorable to you"
+   ]
+  },
+  "part3": [
+   "How have people's weekend habits changed over the past few decades?",
+   "Should employers be allowed to contact employees about work during weekends?"
   ]
  }
 ]

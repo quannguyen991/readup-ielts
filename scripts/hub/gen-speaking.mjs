@@ -31,6 +31,13 @@ const NEW_TOPICS = [
   ['birthdays', 'Birthdays and Gifts', 'Sinh nhật và quà tặng'], ['language-learning', 'Language Learning', 'Học ngoại ngữ'], ['social-media', 'Social Media', 'Mạng xã hội'], ['advertising', 'Advertising', 'Quảng cáo'],
   ['nature', 'Nature and Parks', 'Thiên nhiên và công viên'], ['hobbies', 'Hobbies', 'Sở thích'], ['teachers', 'Teachers', 'Thầy cô'], ['science', 'Science', 'Khoa học'],
   ['safety', 'Safety and Crime', 'An toàn và tội phạm'], ['volunteering', 'Volunteering', 'Tình nguyện'], ['time-management', 'Time Management', 'Quản lý thời gian'], ['celebrities', 'Celebrities', 'Người nổi tiếng'],
+
+  ['daily-routine', 'Daily Routine', 'Thói quen hằng ngày'], ['weekends', 'Weekends', 'Cuối tuần'], ['cooking', 'Cooking', 'Nấu ăn'], ['gardens', 'Gardens and Plants', 'Vườn và cây cối'],
+  ['pets', 'Pets and Animals', 'Thú cưng và động vật'], ['libraries', 'Libraries', 'Thư viện'], ['sports-events', 'Sports Events', 'Sự kiện thể thao'], ['cinema', 'Films and Cinema', 'Phim ảnh'],
+  ['television', 'Television', 'Truyền hình'], ['internet', 'The Internet', 'Internet'], ['online-shopping', 'Online Shopping', 'Mua sắm trực tuyến'], ['mobile-apps', 'Mobile Apps', 'Ứng dụng di động'],
+  ['jobs', 'Jobs and Careers', 'Nghề nghiệp'], ['job-interviews', 'Job Interviews', 'Phỏng vấn xin việc'], ['teamwork', 'Teamwork', 'Làm việc nhóm'], ['leadership', 'Leadership', 'Lãnh đạo'],
+  ['public-speaking', 'Public Speaking', 'Nói trước đám đông'], ['memory', 'Memory', 'Trí nhớ'], ['happiness', 'Happiness', 'Hạnh phúc'], ['stress', 'Stress and Relaxation', 'Căng thẳng và thư giãn'],
+  ['tourism', 'Tourism', 'Du lịch đại chúng'], ['culture', 'Culture and Traditions', 'Văn hoá và truyền thống'], ['handwriting', 'Handwriting and Typing', 'Viết tay và gõ phím'], ['climate', 'Climate Change', 'Biến đổi khí hậu'],
 ];
 
 const mod = fs.readFileSync(path.join(ROOT, 'src/data/hub/speaking-topics.ts'), 'utf8');

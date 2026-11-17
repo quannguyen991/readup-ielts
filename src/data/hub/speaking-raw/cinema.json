@@ -1,0 +1,117 @@
+{
+ "id": "cinema",
+ "title": "Films and Cinema",
+ "titleVi": "Phim ảnh",
+ "tipVi": "Hãy tập trung miêu tả cảm xúc và thông điệp của bộ phim thay vì chỉ tóm tắt cốt truyện quá chi tiết.",
+ "part1": [
+  "How often do you go to the cinema to watch a movie?",
+  "What genre of films do you usually prefer watching?",
+  "Did you enjoy watching movies when you were a child?"
+ ],
+ "part2": {
+  "prompt": "Describe an inspiring film that made a lasting impression on you",
+  "bullets": [
+   "what the film was about",
+   "when and where you watched it",
+   "who the main characters were",
+   "and explain why this film made such a strong impression on you"
+  ]
+ },
+ "part3": [
+  "Why do some people still prefer watching films in theaters rather than on streaming platforms?",
+  "To what extent can films influence people's moral values and worldview?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "box-office hit",
+    "vi": "bộ phim bom tấn thành công về mặt doanh thu",
+    "ex": "The new superhero flick turned out to be a massive box-office hit worldwide."
+   },
+   {
+    "en": "plot twist",
+    "vi": "bước ngoặt cốt truyện bất ngờ",
+    "ex": "The unexpected plot twist at the climax completely caught the audience off guard."
+   },
+   {
+    "en": "thought-provoking",
+    "vi": "khiến người xem phải suy ngẫm",
+    "ex": "It was a thought-provoking documentary about climate change and human impact."
+   },
+   {
+    "en": "cinematography",
+    "vi": "nghệ thuật quay phim và góc quay",
+    "ex": "The breathtaking cinematography captured the bleak beauty of the desert."
+   },
+   {
+    "en": "live up to the hype",
+    "vi": "đáp ứng được kỳ vọng hoặc sự tán dương",
+    "ex": "Although heavily advertised, the sequel failed to live up to the hype."
+   },
+   {
+    "en": "stellar cast",
+    "vi": "dàn diễn viên thực lực hoặc xuất sắc",
+    "ex": "With such a stellar cast, the director brought every nuanced character to life."
+   },
+   {
+    "en": "edge-of-your-seat",
+    "vi": "vô cùng hồi hộp và gay cấn",
+    "ex": "It was an edge-of-your-seat thriller that kept me gripped until the very last frame."
+   },
+   {
+    "en": "tear-jerker",
+    "vi": "bộ phim lấy đi nhiều nước mắt",
+    "ex": "That family drama was an absolute tear-jerker; everyone in the room cried."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn tên phim ('The Pursuit of Happyness'), thể loại (biographical drama) và dịp xem phim (cuối tuần trên Netflix khi đang căng thẳng vì bài vở).",
+   "Ý 1: Tóm tắt ngắn gọn bối cảnh và tuyến nhân vật chính (Chris Gardner do Will Smith thủ vai, người cha đơn thân đối mặt cảnh vô gia cư khi nuôi con).",
+   "Ý 2: Nêu những điểm đắt giá nhất trong trải nghiệm xem (diễn xuất chân thực, mối liên kết xúc động giữa hai cha con, hành trình thực tập không lương gian nan).",
+   "Kết: Phân tích lý do phim để lại dấu ấn sâu sắc (bài học đắt giá về sự bền bỉ vượt nghịch cảnh, nguồn động lực to lớn mỗi khi bản thân gặp bế tắc)."
+  ],
+  "sample": "I'd like to talk about an uplifting biographical drama called 'The Pursuit of Happyness', which left a profound mark on me. I first stumbled upon it on Netflix a couple of years ago during a particularly stressful exam period.\n\nThe film revolves around Chris Gardner, played brilliantly by Will Smith, a struggling salesman facing homelessness while trying to raise his young son all by himself. Despite facing relentless setbacks and financial despair, he secures an unpaid internship at a competitive brokerage firm, pinning all his hopes on a better future.\n\nWhat resonated with me most was the raw authenticity of the performances. The emotional bond between father and son felt genuine and heartwarming. This movie made such an indelible impression on me because it wasn't just entertaining; it served as a masterclass in resilience. Whenever I feel overwhelmed by life's hurdles, I remind myself of Chris's determination, which reinforces my belief that perseverance can turn even the darkest circumstances around.",
+  "p1": [
+   {
+    "q": "How often do you go to the cinema to watch a movie?",
+    "a": "I usually go once or twice a month, typically on weekends with friends. We love catching newly released blockbusters on the big screen because the surround sound and visual quality are unmatched at home."
+   },
+   {
+    "q": "What genre of films do you usually prefer watching?",
+    "a": "I am particularly fond of psychological thrillers. I enjoy complex plot twists that challenge my deduction skills, and movies like 'Inception' or 'Shutter Island' always keep me hooked right until the closing credits."
+   },
+   {
+    "q": "Did you enjoy watching movies when you were a child?",
+    "a": "Yes, definitely. As a kid, I was obsessed with animated movies, especially Disney classics like 'The Lion King'. My parents used to reward me with a movie night whenever I got good grades at school."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people still prefer watching films in theaters rather than on streaming platforms?",
+    "a": "In my opinion, going to the theater offers an immersive audiovisual spectacle that home streaming simply cannot replicate. Giant IMAX screens and acoustic engineering create a sensory experience where viewers can truly escape reality. Furthermore, cinema outings provide a communal atmosphere, sharing collective gasps and laughter with strangers, which makes the whole viewing experience far more memorable."
+   },
+   {
+    "q": "To what extent can films influence people's moral values and worldview?",
+    "a": "I believe cinema exerts a profound influence on shaping cultural perceptions and empathy. By presenting diverse narratives and ethical dilemmas, films expose viewers to realities beyond their immediate circles. For instance, socially conscious movies can alter public attitudes towards prejudice or mental health. However, audiences with firm principles might remain unaffected, meaning cinema often reinforces existing convictions rather than completely transforming them."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng việc tóm tắt toàn bộ cốt truyện (plot summary) quá chi tiết trong Part 2 thay vì tập trung vào cảm xúc cá nhân, kỹ thuật làm phim và lý do tác phẩm gây ấn tượng.",
+   "Nhầm lẫn từ vựng cơ bản như dùng lẫn lộn giữa 'character' (nhân vật hư cấu) và 'actor' (diễn viên ngoài đời), hoặc lặp đi lặp lại từ 'film'/'movie' mà không đổi sang 'picture', 'motion picture' hay 'flick'.",
+   "Không nhất quán về thì: khi thuật lại diễn biến của một câu chuyện trên phim, người bản xứ thường dùng thì hiện tại đơn (narrative present), nhưng thí sinh Việt Nam hay nhảy lộn xộn giữa quá khứ và hiện tại."
+  ],
+  "p1More": [
+   "Do you prefer watching films alone or with other people?",
+   "Are foreign films popular in your country?",
+   "Have you ever rewatched a movie multiple times?",
+   "Do you prefer watching films with subtitles or dubbed voices?",
+   "Has your taste in movies changed compared to five years ago?"
+  ],
+  "p3More": [
+   "Should governments provide subsidies to support local film industries against Hollywood competition?",
+   "How has the rise of digital streaming platforms affected traditional filmmaking standards?",
+   "Do you think historical accuracy should take priority over dramatic entertainment in biographical films?",
+   "What impact does celebrity culture around movie stars have on young people today?"
+  ]
+ }
+}

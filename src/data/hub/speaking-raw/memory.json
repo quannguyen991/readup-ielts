@@ -1,0 +1,117 @@
+{
+ "id": "memory",
+ "title": "Memory",
+ "titleVi": "Trí nhớ",
+ "tipVi": "Hãy kết hợp linh hoạt các thì quá khứ với những cụm từ diễn tả mức độ rõ ràng của ký ức như 'vividly recall' hay 'hazy memory' thay vì chỉ lặp lại động từ 'remember'.",
+ "part1": [
+  "Do you have a good memory for numbers or names?",
+  "How do you usually remind yourself of important tasks?",
+  "Have you ever forgotten something really important?"
+ ],
+ "part2": {
+  "prompt": "Describe an important childhood event that you remember clearly",
+  "bullets": [
+   "what the event was",
+   "when and where it happened",
+   "who was there with you",
+   "and explain why you still remember it so vividly"
+  ]
+ },
+ "part3": [
+  "Why do people tend to remember negative experiences more vividly than positive ones?",
+  "How has modern technology influenced human memory and retention skills?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "have a photographic memory",
+    "vi": "có trí nhớ siêu phàm / nhớ như in",
+    "ex": "My brother seems to have a photographic memory because he can memorize an entire page of text in minutes."
+   },
+   {
+    "en": "slip one's mind",
+    "vi": "quên bẵng mất",
+    "ex": "I planned to call my grandmother yesterday, but the thought completely slipped my mind."
+   },
+   {
+    "en": "vividly recall",
+    "vi": "nhớ lại một cách rõ ràng, sống động",
+    "ex": "Even though decades have passed, I still vividly recall the day I received my first bicycle."
+   },
+   {
+    "en": "jog someone's memory",
+    "vi": "gợi lại trí nhớ của ai",
+    "ex": "Looking through old family albums really helped jog my memory about our childhood trips."
+   },
+   {
+    "en": "commit something to memory",
+    "vi": "ghi nhớ kỹ điều gì vào đầu",
+    "ex": "Actors usually spend hours committing their script lines to memory before a performance."
+   },
+   {
+    "en": "etched in one's memory",
+    "vi": "khắc sâu vào tâm trí",
+    "ex": "The awe-inspiring view of the northern lights will remain etched in my memory forever."
+   },
+   {
+    "en": "ring a bell",
+    "vi": "nghe quen quen",
+    "ex": "His face doesn't look familiar, but his name definitely rings a bell."
+   },
+   {
+    "en": "short-term memory",
+    "vi": "trí nhớ ngắn hạn",
+    "ex": "Multitasking frequently can have a negative impact on a person's short-term memory."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu sự kiện tuổi thơ đáng nhớ nhất (lần đi lạc tại hội chợ hoa Tết năm 7 tuổi).",
+   "Ý 1: Mô tả bối cảnh thời gian, địa điểm đông đúc và người đi cùng (mẹ và chị gái).",
+   "Ý 2: Kể lại chi tiết diễn biến (bị cuốn hút bởi gian hàng tò he, lạc mất người thân, cảm giác hoảng loạn và được người bán hàng tốt bụng giúp đỡ).",
+   "Kết: Giải thích lý do sự kiện in sâu vào tâm trí (bài học đầu đời về sự cẩn thận và lòng biết ơn đối với sự tử tế của người lạ)."
+  ],
+  "sample": "One childhood memory that is still etched in my mind happened when I was around seven years old during the Lunar New Year festival. My mother and older sister took me to a bustling floral market in our hometown to pick up peach blossoms.\n\nSurrounded by vibrant blooms and massive crowds, I got completely mesmerized by a stall selling colourful traditional dough figurines. When I turned around, my family had vanished in the sea of shoppers. A wave of sheer panic washed over me, and I started sobbing uncontrollably. Fortunately, an elderly vendor noticed my distress. She offered me a warm sweet treat to calm me down and immediately contacted the market security. Within twenty minutes, my frantic mother rushed into the booth, hugging me with tears of relief.\n\nI still recall this incident so vividly because it was my first real brush with vulnerability. More importantly, it taught me a lifelong lesson about attentiveness and showed me how profound the kindness of strangers can be, leaving an indelible imprint on who I am today.",
+  "p1": [
+   {
+    "q": "Do you have a good memory for numbers or names?",
+    "a": "Honestly, I'm much better with names than numbers. When I meet someone, their face and name usually stick with me, whereas I constantly struggle to memorize bank details or phone numbers without writing them down."
+   },
+   {
+    "q": "How do you usually remind yourself of important tasks?",
+    "a": "I rely heavily on digital productivity tools. I set calendar alerts on my smartphone for deadlines and keep a sticky note widget on my desktop for daily errands, ensuring nothing slips through the cracks."
+   },
+   {
+    "q": "Have you ever forgotten something really important?",
+    "a": "Yes, once I completely forgot my passport before heading to the airport for an overseas flight. I had to pay an exorbitant taxi fare to rush back home, which was an absolute nightmare."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do people tend to remember negative experiences more vividly than positive ones?",
+    "a": "I believe this stems from human evolutionary biology. Our ancestors had to remember dangerous threats to survive, which makes distressing events deeply imprinted in our psyche. For instance, getting burned once teaches a child caution for years. While positive events bring joy, negative ones act as protective mechanisms against future adversity, so our brains prioritize retaining them."
+   },
+   {
+    "q": "How has modern technology influenced human memory and retention skills?",
+    "a": "Modern technology has undeniably outsourced much of our memory capacity. With smartphones instantly storing contacts, dates, and navigation routes, people rarely exercise their cognitive recall. While this digital convenience frees up mental bandwidth for analytical tasks, it also leads to digital amnesia, where individuals struggle to retain even basic factual information without immediate internet assistance."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng nhầm giữa 'remember' và 'remind': Thí sinh thường nói 'He remembered me to do this' thay vì 'He reminded me to do this'.",
+   "Lạm dụng từ 'memory' một cách gượng gạo thay vì dùng tính từ hoặc cụm động từ tự nhiên (ví dụ nói 'I have bad memory of it' thay vì 'My memory of it is rather hazy').",
+   "Chỉ sử dụng duy nhất thì quá khứ đơn (Past Simple) suốt cả bài Part 2 mà bỏ qua thì quá khứ hoàn thành (Past Perfect) để diễn tả sự việc xảy ra trước một mốc quá khứ khác."
+  ],
+  "p1More": [
+   "Did you have to memorize poems or speeches when you were at school?",
+   "Do you think keeping a diary helps preserve memories?",
+   "What kinds of things do you easily forget on a daily basis?",
+   "Do you prefer to store photos digitally or in printed albums?",
+   "Are you good at remembering people's birthdays?"
+  ],
+  "p3More": [
+   "To what extent can historical memories shape a nation's cultural identity?",
+   "Do you think elderly people generally have better long-term memory than young people?",
+   "Should schools place less emphasis on rote memorization in the age of artificial intelligence?",
+   "Can false memories be created by external influences such as media or family stories?"
+  ]
+ }
+}

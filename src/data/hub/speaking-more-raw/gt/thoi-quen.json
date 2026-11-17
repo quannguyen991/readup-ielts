@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-thoi-quen-1",
+  "level": "EASY",
+  "title": "My Productive Morning Routine",
+  "titleVi": "Thói quen buổi sáng tràn đầy năng lượng",
+  "situationVi": "Bạn đang tham gia buổi gặp gỡ đầu tiên tại một câu lạc bộ tiếng Anh và được một người bạn nước ngoài hỏi về cách bạn bắt đầu một ngày mới.",
+  "task": "You are talking to a new foreign friend at an English club. Tell them about your typical morning routine from the moment you wake up until you arrive at your workplace or school.",
+  "mustVi": [
+   "Bạn thức dậy lúc mấy giờ và những việc đầu tiên bạn làm sau khi rời giường.",
+   "Bạn chuẩn bị bữa sáng và di chuyển đến nơi làm việc hoặc trường học như thế nào.",
+   "Thói quen nhỏ nào giúp bạn cảm thấy tỉnh táo và hào hứng bắt đầu ngày mới."
+  ],
+  "phrases": [
+   {
+    "en": "as soon as I wake up",
+    "vi": "ngay sau khi tôi thức dậy",
+    "ex": "As soon as I wake up, I drink a large glass of warm water."
+   },
+   {
+    "en": "kick-start my day",
+    "vi": "khởi động ngày mới đầy hứng khởi",
+    "ex": "A cup of strong black coffee helps kick-start my day."
+   },
+   {
+    "en": "grab a quick breakfast",
+    "vi": "ăn nhanh bữa sáng",
+    "ex": "I usually grab a quick breakfast like bread or sticky rice."
+   },
+   {
+    "en": "head out the door",
+    "vi": "rời khỏi nhà, bước ra khỏi cửa",
+    "ex": "I head out the door around seven thirty to avoid heavy traffic."
+   },
+   {
+    "en": "commute to work",
+    "vi": "đi làm (chặng đường di chuyển)",
+    "ex": "It takes me twenty minutes to commute to work by motorbike."
+   },
+   {
+    "en": "feel refreshed and ready",
+    "vi": "cảm thấy sảng khoái và sẵn sàng",
+    "ex": "A short morning stretch makes me feel refreshed and ready."
+   }
+  ],
+  "sample": "My alarm goes off at six every morning. As soon as I wake up, I drink a glass of warm water and stretch for ten minutes. Then, I take a quick shower and brush my teeth. I usually grab a quick breakfast, like Vietnamese banh mi or oatmeal, while listening to upbeat music. A cup of black coffee really helps kick-start my day and makes me feel alert. Around seven thirty, I head out the door and commute to work by motorbike. It usually takes twenty minutes, so I arrive feeling refreshed and ready to work.",
+  "tipVi": "Hãy sử dụng các từ nối trình tự thời gian đơn giản như 'first', 'then', 'after that' và giữ ngữ điệu tươi vui, tự nhiên."
+ },
+ {
+  "id": "gt-thoi-quen-2",
+  "level": "EASY",
+  "title": "Unwinding After a Busy Day",
+  "titleVi": "Thư giãn sau một ngày bận rộn",
+  "situationVi": "Bạn đang trò chuyện qua video với một người bạn trao đổi ngôn ngữ trực tuyến về cách mỗi người nghỉ ngơi vào buổi tối sau giờ làm.",
+  "task": "You are chatting with your online language partner. Describe what you usually do in the evening after work or study to relax and get ready for a good night's sleep.",
+  "mustVi": [
+   "Bạn thường về đến nhà lúc mấy giờ và chuẩn bị bữa tối như thế nào.",
+   "Hoạt động giải trí hoặc sở thích yêu thích của bạn vào buổi tối để giải tỏa căng thẳng.",
+   "Thời gian bạn đi ngủ và thói quen bạn làm ngay trước khi lên giường."
+  ],
+  "phrases": [
+   {
+    "en": "unwind after work",
+    "vi": "thả lỏng, xả hơi sau giờ làm",
+    "ex": "Cooking a warm dinner helps me unwind after work."
+   },
+   {
+    "en": "sit down for dinner",
+    "vi": "ngồi vào bàn ăn tối",
+    "ex": "My family usually sits down for dinner together at seven."
+   },
+   {
+    "en": "binge-watch a show",
+    "vi": "xem liền tù tì một bộ phim / chương trình",
+    "ex": "I often binge-watch an episode of a comedy show to laugh."
+   },
+   {
+    "en": "stay away from screens",
+    "vi": "tránh xa màn hình điện tử",
+    "ex": "I try to stay away from screens thirty minutes before bed."
+   },
+   {
+    "en": "turn in for the night",
+    "vi": "đi ngủ vào buổi tối",
+    "ex": "I usually turn in for the night around eleven o'clock."
+   },
+   {
+    "en": "drift off to sleep",
+    "vi": "chìm dần vào giấc ngủ",
+    "ex": "Listening to calm rain sounds helps me drift off to sleep easily."
+   }
+  ],
+  "sample": "I usually get home around six thirty in the evening. First, I cook a simple dinner and sit down to eat with my family, which helps me unwind after work. Afterwards, I spend about an hour on my favorite pastime: binge-watching a travel show or listening to calm acoustic songs. Around ten, I put my phone away because I try to stay away from screens before sleeping. Then, I read a few pages of a novel to relax my eyes. I turn in for the night at eleven and drift off to sleep easily.",
+  "tipVi": "Hãy nói với nhịp điệu chậm rãi, ấm áp và sử dụng các tính từ miêu tả cảm giác thư thái như 'calm', 'simple', 'peaceful'."
+ },
+ {
+  "id": "gt-thoi-quen-3",
+  "level": "MEDIUM",
+  "title": "Weekdays versus Weekend Routine",
+  "titleVi": "Khác biệt giữa ngày trong tuần và cuối tuần",
+  "situationVi": "Trong lớp học tiếng Anh giao tiếp, giáo viên yêu cầu bạn thuyết trình ngắn để so sánh nhịp sống giữa ngày làm việc và ngày nghỉ cuối tuần của bạn.",
+  "task": "You are giving a short presentation to your English class. Compare your structured weekday schedule with your flexible weekend routine, explaining which one you enjoy more and why.",
+  "mustVi": [
+   "Sự khác biệt về thời gian biểu thức dậy và mức độ kỷ luật giữa ngày thường và cuối tuần.",
+   "Những hoạt động giao lưu, sở thích bạn chỉ dành riêng cho hai ngày thứ Bảy và Chủ nhật.",
+   "Cảm nhận của bạn về tầm quan trọng của việc cân bằng giữa làm việc và nghỉ ngơi."
+  ],
+  "phrases": [
+   {
+    "en": "stick to a strict schedule",
+    "vi": "tuân thủ một lịch trình nghiêm ngặt",
+    "ex": "On weekdays, I must stick to a strict schedule to meet deadlines."
+   },
+   {
+    "en": "sleep in",
+    "vi": "ngủ nướng (dậy muộn hơn ngày thường)",
+    "ex": "I love sleeping in until eight thirty on Sunday mornings."
+   },
+   {
+    "en": "catch up with friends",
+    "vi": "gặp gỡ trò chuyện với bạn bè",
+    "ex": "Weekends are my chance to catch up with old friends over coffee."
+   },
+   {
+    "en": "in stark contrast to",
+    "vi": "hoàn toàn trái ngược với",
+    "ex": "My weekends are leisurely, in stark contrast to my hectic weekdays."
+   },
+   {
+    "en": "recharge my batteries",
+    "vi": "nạp lại năng lượng",
+    "ex": "Spending time outdoors helps me recharge my batteries."
+   },
+   {
+    "en": "strike a healthy balance",
+    "vi": "đạt được sự cân bằng lành mạnh",
+    "ex": "I always strive to strike a healthy balance between work and rest."
+   }
+  ],
+  "sample": "During the week, I must stick to a strict schedule. I wake up at six, rush to the office, and work until late afternoon. In stark contrast to my hectic weekdays, my weekend routine is much more relaxed and flexible. I often sleep in until eight or nine, take my time brewing drip coffee, and catch up with close friends at a quiet cafe. I also dedicate Sunday afternoons to outdoor sports. While weekdays demand focus and discipline, weekends allow me to recharge my batteries. I believe this contrast is essential to strike a healthy balance in life.",
+  "tipVi": "Sử dụng linh hoạt các liên từ tương phản như 'in contrast', 'while', 'whereas' để bài so sánh có tính liên kết chặt chẽ."
+ },
+ {
+  "id": "gt-thoi-quen-4",
+  "level": "MEDIUM",
+  "title": "Breaking My Bad Habit",
+  "titleVi": "Hành trình từ bỏ một thói quen xấu",
+  "situationVi": "Bạn đang tham gia một nhóm thảo luận về phát triển bản thân và chia sẻ câu chuyện mình đã nỗ lực từ bỏ thói quen thức khuya lướt mạng xã hội như thế nào.",
+  "task": "You are speaking to your self-improvement discussion group. Explain a bad daily habit you have been trying to break, what concrete steps you took, and how your daily life has improved.",
+  "mustVi": [
+   "Thói quen xấu đó là gì và nó đã ảnh hưởng tiêu cực đến sức khỏe hay công việc của bạn ra sao.",
+   "Những giải pháp hoặc quy tắc kỷ luật mới mà bạn đã chủ động thiết lập để thay đổi.",
+   "Sự thay đổi tích cực bạn nhận thấy và bài học rút ra về việc duy trì thói quen tốt."
+  ],
+  "phrases": [
+   {
+    "en": "fall into the trap of",
+    "vi": "rơi vào cái bẫy của việc...",
+    "ex": "I fell into the trap of mindless scrolling every single night."
+   },
+   {
+    "en": "take a heavy toll on",
+    "vi": "gây ảnh hưởng nặng nề lên...",
+    "ex": "Lack of sleep took a heavy toll on my daytime focus."
+   },
+   {
+    "en": "break the vicious cycle",
+    "vi": "phá vỡ vòng luẩn quẩn",
+    "ex": "I knew I needed strong rules to break the vicious cycle."
+   },
+   {
+    "en": "set a firm boundary",
+    "vi": "thiết lập ranh giới dứt khoát",
+    "ex": "I set a firm boundary by keeping all devices outside my bedroom."
+   },
+   {
+    "en": "notice a dramatic difference",
+    "vi": "nhận thấy một sự khác biệt rõ rệt",
+    "ex": "Within two weeks, I noticed a dramatic difference in my energy."
+   },
+   {
+    "en": "require conscious effort",
+    "vi": "đòi hỏi nỗ lực có ý thức",
+    "ex": "Replacing negative habits requires constant conscious effort."
+   }
+  ],
+  "sample": "For a long time, I fell into the trap of mindless phone scrolling until one in the morning. This bad habit took a heavy toll on my focus and left me exhausted every morning. Last month, I decided to break the vicious cycle. I set a firm boundary: my smartphone stays in the living room after ten thirty, and I bought a simple alarm clock instead. Within two weeks, I noticed a dramatic difference in my morning energy and mood. This journey taught me that replacing negative routines requires conscious effort, but the long-term benefits are definitely worth it.",
+  "tipVi": "Nên kết hợp thì quá khứ đơn (khi kể về thói quen cũ) và hiện tại hoàn thành / hiện tại đơn (khi nói về kết quả đạt được)."
+ },
+ {
+  "id": "gt-thoi-quen-5",
+  "level": "HARD",
+  "title": "Redesigning Daily Work Schedules",
+  "titleVi": "Tái cấu trúc lịch trình làm việc",
+  "situationVi": "Bạn là một quản lý giàu kinh nghiệm, đang đưa ra lời khuyên cho một nhân viên cấp dưới đang gặp tình trạng kiệt sức (burnout) do không biết sắp xếp thứ tự ưu tiên trong ngày.",
+  "task": "You are mentoring a junior team member who feels overwhelmed by daily tasks. Advise them on how to restructure their daily work schedule, implement deep work blocks, and protect their personal downtime.",
+  "mustVi": [
+   "Chỉ ra những lỗi phổ biến trong lịch trình hàng ngày dẫn đến tình trạng làm việc thụ động và kiệt sức.",
+   "Hướng dẫn phương pháp phân bổ thời gian cụ thể (như phân chia khung giờ làm việc tập trung và xử lý việc vặt).",
+   "Khẳng định lý do vì sao việc thiết lập ranh giới rõ ràng giữa công việc và đời sống là điều kiện tiên quyết cho sự nghiệp bền vững."
+  ],
+  "phrases": [
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức từ sáng sớm đến đêm muộn",
+    "ex": "You cannot burn the candle at both ends without risking burnout."
+   },
+   {
+    "en": "fall victim to reactive working",
+    "vi": "trở thành nạn nhân của lối làm việc thụ động, đối phó",
+    "ex": "Many employees fall victim to reactive working by answering every ping immediately."
+   },
+   {
+    "en": "block out time for deep work",
+    "vi": "dành riêng khung thời gian cho công việc tập trung cao độ",
+    "ex": "I recommend you block out two hours every morning for deep work."
+   },
+   {
+    "en": "tackle high-priority deliverables",
+    "vi": "giải quyết các nhiệm vụ/sản phẩm có độ ưu tiên cao",
+    "ex": "Use your morning energy peak to tackle high-priority deliverables."
+   },
+   {
+    "en": "draw a definitive line between",
+    "vi": "vạch ra ranh giới rõ ràng, dứt khoát giữa...",
+    "ex": "You must draw a definitive line between professional duties and private time."
+   },
+   {
+    "en": "sustainable over the long run",
+    "vi": "bền vững về lâu dài",
+    "ex": "A structured routine is the only way to remain sustainable over the long run."
+   }
+  ],
+  "sample": "I noticed you frequently burn the candle at both ends, which inevitably causes severe burnout. Right now, you fall victim to reactive working because you respond to every email instantly. To regain control, you must restructure your schedule. Block out two uninterrupted hours every morning for deep work, and tackle high-priority deliverables when your mental energy peaks. Defer administrative tasks and meetings strictly to the afternoon. Above all, draw a definitive line between your work commitments and evening downtime. Remember, pushing through endless hours is never sustainable over the long run; protecting your daily rhythm creates enduring career success.",
+  "tipVi": "Giữ giọng điệu điềm tĩnh, thấu hiểu nhưng quyết đoán của một người cố vấn (mentor); sử dụng các động từ chỉ dẫn như 'recommend', 'must', 'restructure'."
+ }
+]

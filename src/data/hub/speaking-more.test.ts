@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 
 import { GT_CATEGORIES, MOCK_TESTS, gtAsTopic, gtById, gtExtra, mockAsTopic, mockExtra } from './speaking-more';
 
-test('24 đề thi thử, mỗi đề đủ ba Part và đáp án mẫu', () => {
-  assert.equal(MOCK_TESTS.length, 24);
-  assert.equal(new Set(MOCK_TESTS.map((m) => m.id)).size, 24);
+test('40 đề thi thử, mỗi đề đủ ba Part và đáp án mẫu', () => {
+  assert.equal(MOCK_TESTS.length, 40);
+  assert.equal(new Set(MOCK_TESTS.map((m) => m.id)).size, 40);
   for (const m of MOCK_TESTS) {
     assert.equal(m.part1.length, 2, m.id);
     assert.ok(m.part1.every((g) => g.qs.length === 4), `Part 1 ${m.id}`);
@@ -21,8 +21,8 @@ test('24 đề thi thử, mỗi đề đủ ba Part và đáp án mẫu', () => 
   }
 });
 
-test('10 nhóm giao tiếp, mỗi nhóm 5 đề đủ ý bắt buộc, mẫu câu và bài mẫu', () => {
-  assert.equal(GT_CATEGORIES.length, 10);
+test('20 nhóm giao tiếp, mỗi nhóm 5 đề đủ ý bắt buộc, mẫu câu và bài mẫu', () => {
+  assert.equal(GT_CATEGORIES.length, 20);
   const ids = new Set<string>();
   for (const c of GT_CATEGORIES) {
     assert.equal(c.tasks.length, 5, c.id);

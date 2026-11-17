@@ -1,0 +1,117 @@
+{
+ "id": "daily-routine",
+ "title": "Daily Routine",
+ "titleVi": "Thói quen hằng ngày",
+ "tipVi": "Hãy sử dụng linh hoạt các trạng từ chỉ tần suất và các cụm động từ chỉ chuỗi hành động thay vì chỉ liệt kê các mốc thời gian một cách máy móc.",
+ "part1": [
+  "What is the first thing you usually do after waking up?",
+  "Do you prefer to do challenging tasks in the morning or in the evening?",
+  "Has your daily routine changed much compared to when you were younger?"
+ ],
+ "part2": {
+  "prompt": "Describe a healthy habit that has become an important part of your daily routine",
+  "bullets": [
+   "what the habit is",
+   "when and how you started doing it",
+   "how it fits into your daily schedule",
+   "and explain why this habit is so beneficial to your daily life"
+  ]
+ },
+ "part3": [
+  "Why do some people find it difficult to stick to a consistent daily schedule?",
+  "How has modern technology influenced the way people organize their day-to-day lives?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "kick-start one's day",
+    "vi": "khởi đầu ngày mới đầy hứng khởi",
+    "ex": "I always drink a tall glass of lemon water to kick-start my day."
+   },
+   {
+    "en": "wind down",
+    "vi": "thư giãn, thả lỏng cuối ngày",
+    "ex": "Listening to soothing instrumental tracks helps me wind down before going to sleep."
+   },
+   {
+    "en": "stick to a schedule",
+    "vi": "tuân thủ lịch trình",
+    "ex": "It takes tremendous self-discipline to stick to a schedule when studying from home."
+   },
+   {
+    "en": "early bird",
+    "vi": "người có thói quen dậy sớm",
+    "ex": "Being an early bird allows me to finish demanding tasks before noon."
+   },
+   {
+    "en": "strike a balance",
+    "vi": "cân bằng giữa các yếu tố",
+    "ex": "Busy professionals must strike a balance between career ambitions and personal rest."
+   },
+   {
+    "en": "creature of habit",
+    "vi": "người sống theo nếp quen cố định",
+    "ex": "My grandfather is a creature of habit who eats breakfast at precisely six every morning."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức từ sáng sớm đến khuya",
+    "ex": "Constantly burning the candle at both ends will inevitably lead to severe burnout."
+   },
+   {
+    "en": "set aside time",
+    "vi": "dành riêng một khoảng thời gian",
+    "ex": "I try to set aside time for a brief brisk walk every afternoon."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu thói quen lành mạnh (đi bộ nhanh 30 phút mỗi sáng) và nhấn mạnh tầm quan trọng của nó trong đời sống hiện tại.",
+   "Ý 1: Kể lại cơ duyên bắt đầu (bắt đầu từ một năm trước khi cảm thấy uể oải vì ngồi làm việc quá nhiều, phải mua giày và quyết tâm dậy sớm).",
+   "Ý 2: Miêu tả chi tiết thói quen diễn ra như thế nào trong ngày (thức dậy lúc sáu giờ, ra công viên gần nhà đi bộ kết hợp nghe podcast trước khi đường phố đông đúc).",
+   "Kết: Nêu bật tác động tích cực (kích thích tuần hoàn máu, giải tỏa căng thẳng đầu óc và duy trì năng lượng dồi dào suốt cả ngày)."
+  ],
+  "sample": "I'd like to talk about a habit that has truly transformed my life: a brisk thirty-minute morning walk.\n\nI adopted this routine about a year ago. Back then, I was constantly glued to my desk and felt utterly exhausted by midday. Realizing that I needed to shake things up, I bought a pair of running shoes and committed to waking up half an hour earlier every single day.\n\nNowadays, this activity fits seamlessly into my morning schedule. Right after getting out of bed at six, I put on my sneakers and head straight to a leafy park near my apartment. During this walk, I usually listen to an inspiring podcast or simply take in the crisp morning air before traffic gets chaotic. By seven, I am back home, refreshed and ready for breakfast.\n\nThis ritual is exceptionally beneficial to me for a couple of reasons. Physically, it gets my blood flowing and boosts my metabolism right off the bat. Mentally, it clears my head and sets a positive tone for the entire day. Without this routine, I genuinely feel sluggish and unproductive.",
+  "p1": [
+   {
+    "q": "What is the first thing you usually do after waking up?",
+    "a": "Generally, I drink a large glass of warm water right after getting out of bed. It instantly rehydrates my system and wakes up my brain, especially when I have an early morning study session."
+   },
+   {
+    "q": "Do you prefer to do challenging tasks in the morning or in the evening?",
+    "a": "I definitely lean towards tackling demanding tasks early in the morning. My concentration is at its peak during those early hours, whereas by evening, mental fatigue usually sets in after a full day."
+   },
+   {
+    "q": "Has your daily routine changed much compared to when you were younger?",
+    "a": "Yes, substantially. When I was a student, my schedule was quite spontaneous and flexible. Nowadays, due to work commitments, I have to stick strictly to structured timetables and set alarms every single day."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people find it difficult to stick to a consistent daily schedule?",
+    "a": "In my view, unpredictable demands are the primary culprit. People often encounter urgent work deadlines or social commitments that derail their original plans. Additionally, many individuals lack self-discipline or set unrealistically rigid goals, which leads to early burnout. Consequently, when things go slightly off track, they abandon the schedule altogether instead of adapting flexibly."
+   },
+   {
+    "q": "How has modern technology influenced the way people organize their day-to-day lives?",
+    "a": "Technology is undeniably a double-edged sword in this regard. On the positive side, digital calendars and productivity apps help individuals automate reminders and streamline daily commitments efficiently. However, constant notifications and social media feeds often disrupt focus, leading to severe procrastination. Therefore, while tools exist to optimize schedules, poor digital boundaries often shatter daily routines."
+   }
+  ],
+  "mistakesVi": [
+   "Lỗi liệt kê thời gian máy móc: Thí sinh thường lặp lại các liên từ cơ bản như 'First', 'After that', 'And then' kèm mốc giờ cụ thể, khiến bài nói giống bản báo cáo thay vì dùng các cụm tự nhiên như 'Right after waking up' hay 'Once that is taken care of'.",
+   "Nhầm lẫn thì hiện tại tiếp diễn và hiện tại đơn: Thí sinh hay dùng sai thì tiếp diễn để nói về thói quen lặp đi lặp lại (ví dụ nói 'I am usually drinking coffee' thay vì chuẩn xác là 'I usually drink coffee').",
+   "Lạm dụng từ vựng dịch thô: Thí sinh hay dịch cụm 'giết thời gian' hoặc 'xả hơi' thành các câu rườm rà; thay vào đó nên dùng các phrasal verbs tự nhiên của người bản xứ như 'wind down', 'unwind' hoặc 'decompress'."
+  ],
+  "p1More": [
+   "Do you usually have the same routine on weekdays and weekends?",
+   "Which part of your day do you find most productive?",
+   "Do you like to plan your day in advance or just go with the flow?",
+   "What is your favorite part of your daily routine?",
+   "Do you find it easy to change your routine when unexpected events happen?"
+  ],
+  "p3More": [
+   "Do you think society puts too much emphasis on rigid productivity and morning routines?",
+   "To what extent should employers allow workers to design their own daily work hours?",
+   "How do retirement and major life transitions affect a person's psychological need for a routine?",
+   "Will artificial intelligence eventually eliminate the need for humans to plan their daily schedules?"
+  ]
+ }
+}

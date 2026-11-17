@@ -1,0 +1,62 @@
+{
+ "id": "mock-37",
+ "title": "IELTS Speaking Mock Test 37",
+ "titleVi": "Đề thi thử số 37",
+ "focusVi": "Rèn luyện kỹ năng phát triển ý tưởng đa chiều và sử dụng từ vựng nâng cao về các chủ đề gia đình và biến đổi xã hội.",
+ "part1": [
+  {
+   "topic": "Family",
+   "qs": [
+    "Do you have a large family or a small family?",
+    "How much time do you usually spend with your family each week?",
+    "What do you and your family enjoy doing together?",
+    "Who are you closest to in your family?"
+   ]
+  },
+  {
+   "topic": "Weather and Seasons",
+   "qs": [
+    "What kind of weather do you like best?",
+    "Does the weather ever affect your mood?",
+    "Which season is the most popular in your country?",
+    "Do you prefer dry weather or rainy weather?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a family member you spend a lot of time with",
+  "bullets": [
+   "who this person is",
+   "what kinds of things you usually do together",
+   "how often you see each other",
+   "and explain why you enjoy spending time with this person"
+  ]
+ },
+ "part3": [
+  "How have traditional family roles changed in your country in recent decades?",
+  "Do you think older family members still hold the same authority as they did in the past?",
+  "What are the potential drawbacks of children spending less time with their parents?",
+  "In what ways can technology both help and hinder family relationships?",
+  "Should governments provide more financial support to families caring for elderly relatives?"
+ ],
+ "answers": {
+  "p1": [
+   "I come from a nuclear family with just four members, including my parents, my younger sister, and me. It feels cozy and manageable, unlike extended families that can get quite hectic during holidays.",
+   "On weekdays, we only share dinner together due to our busy schedules. However, on Sundays, we dedicate the whole afternoon to catching up, cooking, or relaxing at home.",
+   "We often gather around the living room to watch game shows or cook elaborate weekend meals together. Preparing traditional noodle soups like pho on weekends is our absolute favorite shared pastime.",
+   "I am definitely closest to my mother because she is an empathetic listener. Whenever I face challenges at work, she gives me pragmatic advice, which makes our bond truly special.",
+   "I prefer cool, breezy weather typical of autumn. It is exceptionally comfortable for outdoor activities like cycling or jogging, and I do not have to worry about sweating or getting sunburned.",
+   "Yes, gloomy and drizzly days make me feel lethargic and unmotivated to study. In contrast, bright sunny mornings instantly boost my energy levels and put me in a productive mindset.",
+   "In Vietnam, spring is arguably the most popular season because it hosts the Lunar New Year celebrations. People appreciate the mild temperatures and the lively festive atmosphere across towns and cities.",
+   "I definitely lean towards dry weather. Rain often causes severe traffic congestion in my city and dampens my daily plans, whereas dry conditions allow me to travel freely without any hassle."
+  ],
+  "sample": "I would like to talk about my grandfather, whom I spend a great deal of time with. He is in his late seventies and a retired history teacher. Because we live in the same house, I see him almost every single day, especially in the early mornings and late afternoons. Typically, we start our day by tending to our small rooftop garden together. While watering the bonsai trees and orchids, he often shares fascinating historical anecdotes or discusses current affairs with me. On weekends, we usually play chess over a pot of green tea, which has become our favorite ritual. I really cherish the time we spend together because he has an enormous wealth of wisdom and life experience. Even though there is a substantial generation gap between us, he is surprisingly open-minded and never judges my career choices. Furthermore, his calm demeanor always brings me a sense of peace whenever I feel overwhelmed by modern life. Spending time with him is not just entertaining, but it also grounds me and reminds me of my core values.",
+  "p3": [
+   "In the past, traditional patriarchal structures dictated that fathers were breadwinners while mothers managed domestic chores. Today, gender roles have become remarkably fluid in Vietnam, with many women pursuing thriving corporate careers and fathers actively participating in child-rearing. While this transition empowers women, it also demands flexible scheduling from both partners. Overall, modern households prioritize egalitarian partnership over strict hierarchy.",
+   "I believe their authority has diminished somewhat due to rapid societal shifts. Previously, elders were the ultimate decision-makers whose advice was unquestionable. Nowadays, younger generations have greater access to education and information via the internet, making them more independent thinkers. Although elders are still deeply respected, their counsel is viewed more as guidance rather than absolute commands, reflecting a broader cultural shift towards individualism.",
+   "The primary drawback is the weakening of emotional bonds, which can lead to behavioral issues and isolation among children. When parents are excessively absent due to work commitments, kids often turn to digital devices for companionship instead of learning social norms at home. Conversely, children from engaged households demonstrate higher emotional resilience. Therefore, a lack of parental interaction can hinder a child's healthy psychological development.",
+   "Technology cuts both ways. On the positive side, video calls and messaging apps bridge geographical distances, allowing families to maintain instant contact despite living miles apart. On the other hand, the excessive use of smartphones during family meals fosters alienation, creating a phenomenon known as phubbing. Thus, while technology enables connectivity across distances, it frequently disrupts genuine intimacy in physical spaces.",
+   "Undoubtedly, governments ought to subsidize eldercare because medical expenses and specialized assistance place an immense financial burden on working households. In countries without robust state pensions, families must bear these exorbitant costs alone, which often pushes them into debt. By offering tax incentives or direct subsidies, the state can alleviate domestic stress and ensure that senior citizens receive dignified, high-quality care in their final years."
+  ]
+ }
+}

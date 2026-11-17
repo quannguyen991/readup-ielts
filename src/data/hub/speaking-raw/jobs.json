@@ -1,0 +1,117 @@
+{
+ "id": "jobs",
+ "title": "Jobs and Careers",
+ "titleVi": "Nghề nghiệp",
+ "tipVi": "Hãy linh hoạt kết hợp các cụm từ chỉ trách nhiệm và môi trường làm việc thay vì chỉ liệt kê các nhiệm vụ lặp đi lặp lại một cách đơn điệu.",
+ "part1": [
+  "Do you currently work or are you a student?",
+  "What do you enjoy most about your daily work routine?",
+  "Would you like to change your job or career path in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe an ideal job you would like to have in the future",
+  "bullets": [
+   "what job it is",
+   "what qualifications or skills are needed for it",
+   "what responsibilities you would have in this role",
+   "and explain why you consider this to be your ideal career"
+  ]
+ },
+ "part3": [
+  "How do you think artificial intelligence will change the nature of employment in the coming decades?",
+  "Should governments prioritize job security or labor market flexibility when formulating economic policies?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "climb the corporate ladder",
+    "vi": "thăng tiến trong môi trường doanh nghiệp",
+    "ex": "She worked overtime consistently to climb the corporate ladder and secure an executive position."
+   },
+   {
+    "en": "job satisfaction",
+    "vi": "sự hài lòng trong công việc",
+    "ex": "Many young professionals prioritize job satisfaction over earning an extraordinarily high salary."
+   },
+   {
+    "en": "lucrative income",
+    "vi": "thu nhập béo bở, hậu hĩnh",
+    "ex": "Software engineering continues to provide a lucrative income alongside abundant remote opportunities."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức thâu đêm suốt sáng",
+    "ex": "Launching his own tech startup forced him to burn the candle at both ends for months."
+   },
+   {
+    "en": "heavy workload",
+    "vi": "khối lượng công việc lớn, áp lực",
+    "ex": "Employees frequently suffer from burnout when handling a persistently heavy workload without adequate support."
+   },
+   {
+    "en": "career advancement",
+    "vi": "sự thăng tiến và phát triển sự nghiệp",
+    "ex": "The multinational company organizes regular training workshops to support long-term career advancement."
+   },
+   {
+    "en": "work-life balance",
+    "vi": "sự cân bằng giữa công việc và đời sống riêng",
+    "ex": "Flexible working arrangements enable working parents to maintain a healthier work-life balance."
+   },
+   {
+    "en": "hands-on experience",
+    "vi": "kinh nghiệm thực tế, thực hành",
+    "ex": "Internships are invaluable because they give university undergraduates practical, hands-on experience."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu trực tiếp công việc mơ ước (ví dụ: Chuyên gia tư vấn phát triển bền vững cho doanh nghiệp - Sustainable Business Consultant).",
+   "Ý 1: Nêu những yêu cầu chuyên môn và kỹ năng cần có như am hiểu kinh tế tuần hoàn, tư duy phân tích dữ liệu và khả năng thuyết phục khách hàng.",
+   "Ý 2: Miêu tả các nhiệm vụ chính như khảo sát quy trình phát thải của doanh nghiệp, tư vấn chiến lược chuyển đổi xanh và tổ chức tập huấn nhân sự.",
+   "Kết: Nêu lý do đây là công việc lý tưởng vì vừa mang lại thu nhập tốt và sự thăng tiến lâu dài, vừa tạo ra tác động tích cực đối với môi trường xã hội."
+  ],
+  "sample": "If I could pursue any profession in the foreseeable future, I would love to work as a sustainable business consultant. This role entails advising enterprises on how to reduce their ecological footprint while maintaining commercial profitability. To excel in this field, one needs a solid background in environmental science, coupled with sharp analytical skills and a firm grasp of corporate finance. Furthermore, effective negotiation and interpersonal skills are essential to persuade corporate executives to adopt eco-friendly practices. In this position, my daily responsibilities would involve assessing a company's carbon emissions, auditing their supply chains, and formulating pragmatic sustainability strategies. I would also conduct workshops to foster environmental awareness among employees. I consider this my ideal career because it combines intellectual stimulation with meaningful social impact. Rather than merely chasing a lucrative salary, I aspire to make a tangible contribution toward combating climate change. Additionally, the green economy is rapidly expanding, offering robust job security alongside vast potential for career advancement.",
+  "p1": [
+   {
+    "q": "Do you currently work or are you a student?",
+    "a": "I am currently working full-time as a digital marketer for a retail firm. My day-to-day work mainly involves managing social media campaigns and analyzing customer metrics, which I find quite dynamic and engaging."
+   },
+   {
+    "q": "What do you enjoy most about your daily work routine?",
+    "a": "What I appreciate most is the creative autonomy my manager grants me. For instance, when designing new advertising campaigns, I am free to experiment with novel visual concepts, which keeps my job exciting and fulfilling."
+   },
+   {
+    "q": "Would you like to change your job or career path in the future?",
+    "a": "Yes, I would certainly like to transition into data analytics eventually. Although marketing is enjoyable, data science offers higher job security and lucrative remuneration, especially with the exponential rise of tech-driven businesses in Vietnam."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How do you think artificial intelligence will change the nature of employment in the coming decades?",
+    "a": "I believe artificial intelligence will primarily automate routine, administrative tasks, shifting human labor toward higher-order creative and strategic responsibilities. For instance, while data entry clerks might become obsolete, demand for prompt engineers and ethical AI overseers will surge. Consequently, workers will need continuous reskilling to stay competitive, as adaptability will become the single most vital asset in the automated workforce."
+   },
+   {
+    "q": "Should governments prioritize job security or labor market flexibility when formulating economic policies?",
+    "a": "In my view, governments must strike a delicate balance between both priorities rather than favoring one exclusively. Overly rigid job protections can discourage foreign investment and hinder innovation, whereas extreme flexibility often leaves workers vulnerable to exploitation and sudden unemployment. A viable solution is the Nordic flexicurity model, which combines easy hiring and firing with robust social safety nets and state-funded retraining programs."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn giữa 'work', 'job' và 'career': Thí sinh thường dùng sai ngữ pháp như nói 'a work' thay vì 'a job' (vì 'work' là danh từ không đếm được khi chỉ công việc nói chung), hoặc dùng 'career' khi chỉ một vị trí làm việc cụ thể.",
+   "Dịch từng từ từ tiếng Việt (word-by-word translation): Dùng các cụm thiếu tự nhiên như 'make high salary' thay vì 'earn a competitive salary', hoặc 'have a lot of work' thay vì 'handle a heavy workload'.",
+   "Lặp từ vựng cơ bản và thiếu tính học thuật: Quá lạm dụng các từ đơn giản như 'hard', 'busy', 'money' thay vì diễn đạt tự nhiên ở Band 7+ với các cụm như 'demanding', 'lucrative income', 'work-life balance' hay 'career prospects'."
+  ],
+  "p1More": [
+   "What qualities do you think make someone a good colleague?",
+   "Did you want to do this kind of job when you were a child?",
+   "Do you prefer working individually or as part of a team?",
+   "How do you usually relax after a demanding day at work?",
+   "Is it common for people in your country to stay in one job for their entire life?"
+  ],
+  "p3More": [
+   "What measures can companies implement to reduce occupational burnout among their staff?",
+   "To what extent should university curricula be determined by the current demands of the labor market?",
+   "Why are traditional high-prestige professions, such as medicine and law, facing declining interest among some youth today?",
+   "Do you think working remotely from home will permanently replace conventional office environments?"
+  ]
+ }
+}

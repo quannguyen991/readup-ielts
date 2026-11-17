@@ -1486,5 +1486,997 @@
     "Personal keepsakes serve as powerful psychological anchors to our personal history. Physical objects like family photo albums or handmade gifts instantly trigger vivid recollections that abstract memory alone cannot easily recall. Even when individuals relocate or experience major life transitions, these tangible mementos provide continuity and emotional security. Ultimately, they act as indispensable bridges that link our present identity with our roots."
    ]
   }
+ },
+ {
+  "id": "mock-25",
+  "title": "IELTS Speaking Mock Test 25",
+  "titleVi": "Đề thi thử số 25",
+  "focusVi": "Luyện tập kỹ năng miêu tả chi tiết không gian học tập, làm việc và thảo luận đa chiều về môi trường làm việc hiện đại.",
+  "part1": [
+   {
+    "topic": "Daily Routine",
+    "qs": [
+     "What is the busiest part of the day for you?",
+     "Do you usually follow the same routine every day?",
+     "Have you made any changes to your daily schedule recently?",
+     "Do you think having a set daily routine is important?"
+    ]
+   },
+   {
+    "topic": "Cooking",
+    "qs": [
+     "Do you often cook your own meals at home?",
+     "What kind of food do you find easiest to prepare?",
+     "Did you learn how to cook when you were a child?",
+     "Do you prefer cooking for yourself or for other people?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a place where you study or work.",
+   "bullets": [
+    "where this place is located",
+    "what it looks like and what facilities it has",
+    "how often you go there to study or work",
+    "and explain why this place is suitable for your productivity"
+   ]
+  },
+  "part3": [
+   "How do environmental factors such as lighting and noise affect a person's work performance?",
+   "Why are open-plan offices becoming less popular in modern companies?",
+   "Do you think working remotely from home is better than working in a traditional office?",
+   "What measures can employers take to design healthier workplaces for their staff?",
+   "How might advancements in virtual reality change where and how people work in the future?"
+  ],
+  "answers": {
+   "p1": [
+    "My mornings are definitely the most hectic because I have to juggle commuting and early meetings. For example, between eight and ten, my inbox is flooded, so I barely have time for coffee.",
+    "Generally yes, as consistency helps me stay productive throughout the week. On weekdays, I wake up at six and start reviewing tasks, though my weekends are far more flexible and spontaneous.",
+    "Yes, I recently started setting aside thirty minutes before bed for reading instead of scrolling on my phone. This small adjustment has noticeably improved both my sleep quality and focus the next day.",
+    "I believe it is crucial because it reduces decision fatigue and keeps you organized. When you have structured habits, like exercising after work, you are less likely to procrastinate on important goals.",
+    "I try to cook at home most weeknights since it is healthier and more cost-effective. For instance, I usually prepare simple stir-fries with fresh vegetables instead of relying on takeout meals.",
+    "I find pasta dishes the simplest to make because boiling noodles and adding a jar of sauce takes under fifteen minutes. It is my reliable go-to dish whenever I come home exhausted from work.",
+    "Not really, as my mother handled all the cooking while I focused on schoolwork. I only picked up basic culinary skills in university when I had to fend for myself in a shared flat.",
+    "I much prefer cooking for friends and family because sharing food creates a wonderful social bond. Seeing everyone enjoy a hot meal I prepared together on a weekend is incredibly rewarding for me."
+   ],
+   "sample": "I would like to talk about a local independent café called The Study Nook, which is situated just a short stroll from my apartment. Visually, it has a warm, minimalist aesthetic with exposed brick walls, timber desks, and an abundance of hanging plants. The café is equipped with ergonomic chairs, high-speed Wi-Fi, and plenty of power outlets beside every workstation. There is also a quiet corner specifically designated for focused work where conversation is kept to a minimum. I visit this place about three or four times a week, usually during the afternoons when I need a change of scenery from my home office. Working from home can sometimes feel stifling, so heading there gives my day structure. The main reason this café suits my productivity so well is its ambient atmosphere. The background hum of subdued jazz and the aroma of roasted coffee beans stimulate my concentration rather than distracting me. Furthermore, surrounded by other remote workers diligently typing away, I feel naturally compelled to stay on task and avoid procrastinating on my projects.",
+   "p3": [
+    "In my view, ambient conditions directly dictate cognitive efficiency. Proper natural lighting reduces eye strain, while excess noise creates constant interruptions that fracture concentration. For example, employees in dim, noisy spaces often experience fatigue and make more errors compared to those in well-regulated environments. Therefore, maintaining optimal lighting and acoustic control is indispensable for sustaining high work quality.",
+    "I believe open layouts are declining because they frequently compromise employee focus. Although initially designed to foster spontaneous collaboration, they often generate excessive chatter and visual distractions. Studies show that staff members wear noise-cancelling headphones simply to carve out privacy in these shared spaces. Consequently, many corporations are pivoting toward hybrid setups with dedicated quiet zones instead.",
+    "From my perspective, both models offer distinct advantages depending on individual roles. Remote work eliminates stressful commutes and allows greater flexibility, which many find liberating. However, physical offices still facilitate spontaneous brainstorming and team bonding that digital calls cannot replicate. Ultimately, a balanced hybrid model combining both environments seems to offer the most practical compromise.",
+    "Employers can promote staff well-being by integrating ergonomic furniture and dedicated wellness areas. Investing in adjustable standing desks and natural indoor greenery, for instance, alleviates physical stiffness and lowers mental stress during long shifts. While these upgrades require upfront capital, they significantly reduce burnout and absenteeism in the long run. Thus, investing in physical comfort benefits both staff and employers.",
+    "I anticipate that virtual reality will make physical geography largely irrelevant to corporate collaboration. Instead of commuting to physical boardrooms, professionals from across the globe could meet in immersive virtual environments that mimic real-life interactions accurately. While technical barriers and motion fatigue remain hurdles today, this technology will likely redefine workspaces by eliminating corporate offices altogether within decades."
+   ]
+  }
+ },
+ {
+  "id": "mock-26",
+  "title": "IELTS Speaking Mock Test 26",
+  "titleVi": "Đề thi thử số 26",
+  "focusVi": "Rèn luyện kỹ năng khắc họa tính cách nhân vật thông qua trải nghiệm cá nhân kết hợp lập luận trừu tượng ở Phần 3.",
+  "part1": [
+   {
+    "topic": "Weekends",
+    "qs": [
+     "How do you usually spend your weekends?",
+     "Did you enjoy weekends more when you were a child?",
+     "Do you think weekends are long enough nowadays?",
+     "What new activity would you like to try on a future weekend?"
+    ]
+   },
+   {
+    "topic": "Pets and Animals",
+    "qs": [
+     "Do you or your family keep any pets at home?",
+     "What kinds of animals are popular as pets in your country?",
+     "Why do some people prefer not to have pets?",
+     "Did you learn about wild animals at school when you were younger?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a person you know who often makes you laugh.",
+   "bullets": [
+    "who this person is",
+    "how you first met them",
+    "what kind of things they do or say to make people laugh",
+    "and explain why you enjoy their sense of humour so much"
+   ]
+  },
+  "part3": [
+   "Why do people value a good sense of humour in everyday relationships?",
+   "In what ways can comedy influence social or political attitudes?",
+   "Do different generations find the same types of jokes funny?",
+   "Can using humour ever be inappropriate in professional settings?",
+   "How has the internet changed the way people consume comedic content?"
+  ],
+  "answers": {
+   "p1": [
+    "I usually spend my weekends unwinding outdoors. On Saturdays, I typically catch up with close friends at a local café, while Sundays are reserved for reading and recharging before another demanding week of work.",
+    "Definitely, because I had virtually no responsibilities back then. As a schoolchild, Saturdays meant endless games of football in the yard, whereas today my weekends are often consumed by chores and study commitments.",
+    "Honestly, I think two days feel rather rushed. By the time I finish household errands, there is hardly any downtime left, so a three-day weekend would offer much healthier work-life balance.",
+    "I would love to try paddleboarding on West Lake soon. Many colleagues have recommended it as a refreshing outdoor workout, and I think it would be a fantastic way to escape screen fatigue.",
+    "Yes, my family currently has a mischievous ginger cat named Miu. We adopted him two years ago, and playing with him in the evening always relieves stress after a long day.",
+    "Dogs and cats are by far the most common in Vietnam. In urban apartments, small toy breeds like poodles or French bulldogs are especially trendy because they adapt well to confined indoor spaces.",
+    "Keeping pets demands substantial time, patience, and money. Some individuals avoid them due to severe fur allergies, while others travel frequently for work and cannot provide consistent daily companionship.",
+    "Yes, we had biology lessons focusing on native wildlife and conservation. I vividly remember our teacher showing documentaries about endangered species like the Javan rhino, which sparked my fascination with biodiversity."
+   ],
+   "sample": "I would like to talk about my close friend Nam, who is easily the funniest person in my social circle. We first crossed paths during our freshman year at university when we were randomly assigned as lab partners in chemistry. At first, he seemed rather reserved, but within ten minutes, his sharp wit completely transformed our dull lab session.\n\nNam has an incredible knack for observational comedy. He mimics professors' quirky gestures with pinpoint accuracy and always manages to find the absurdity in stressful everyday situations, like surviving public transit during torrential downpours. Rather than telling rehearsed jokes, he relies on spontaneous, self-deprecating remarks that instantly diffuse tension whenever our group feels overwhelmed.\n\nWhat I appreciate most about his humour is that it is genuinely warm-hearted. Nam never resorts to mean-spirited mockery or offensive banter to get a cheap laugh. Instead, his lighthearted optimism brings everyone together and puts people at ease, even when we are dealing with high-pressure deadlines. Being around someone with that infectious cheerfulness is a true blessing, and he never fails to brighten my day.",
+   "p3": [
+    "In my view, humour acts as a social catalyst that builds instant rapport between individuals. When people laugh together, it releases tension and establishes mutual trust, making interpersonal communication smoother. In contrast, relationships devoid of humour often feel overly formal and strained. For instance, couples who share lighthearted moments typically navigate conflicts far more constructively. Ultimately, humour strengthens emotional bonds and makes daily interactions significantly more enjoyable.",
+    "Satirical comedy has immense power to challenge entrenched societal norms and critique authority constructively. By wrapping sharp criticism in entertaining formats, comedians make complex civic issues accessible to ordinary citizens who might otherwise ignore dry political debates. For example, popular television parodies frequently expose institutional hypocrisy more effectively than conventional journalism. Consequently, thoughtful comedy can stimulate critical thinking and raise public awareness on pressing issues.",
+    "Generally speaking, comedic tastes vary dramatically across generations due to contrasting cultural touchstones. Older individuals often prefer narrative-driven anecdotes, situational comedies, or traditional wordplay grounded in shared social etiquette. Conversely, Gen Z leans heavily toward surrealist internet memes, ironies, and rapid visual humor spread via platforms like TikTok. Therefore, while fundamental human emotions remain identical, the stylistic formats of humour inevitably diverge over time.",
+    "Undoubtedly, humour can backfire dramatically in corporate environments if it crosses professional boundaries. Sarcasm or jokes targeting sensitive personal traits like gender or ethnicity can foster a toxic, exclusionary workplace atmosphere. While self-effacing humor during icebreakers can ease collective anxiety, formal negotiations and disciplinary reviews require sober seriousness. Ultimately, professionals must exercise emotional intelligence and read the room to ensure levity does not compromise mutual respect.",
+    "The internet has revolutionized comedy by shifting consumption from scheduled television broadcasts to on-demand, bite-sized digital media. Algorithms now deliver hyper-personalized sketch clips, stand-up snippets, and interactive memes directly to users' feeds around the clock. While traditional audiences patiently watched hour-long specials, modern viewers expect punchlines delivered within seconds. In summary, digital media has democratized comedic production while drastically shrinking our collective attention spans."
+   ]
+  }
+ },
+ {
+  "id": "mock-27",
+  "title": "IELTS Speaking Mock Test 27",
+  "titleVi": "Đề thi thử số 27",
+  "focusVi": "Phát triển kỹ năng so sánh lợi ích - hạn chế và diễn đạt quá trình tự học một cách mạch lạc.",
+  "part1": [
+   {
+    "topic": "Libraries",
+    "qs": [
+     "Do you often visit libraries in your hometown?",
+     "Did you use to go to the library more when you were a child?",
+     "What kind of facilities do you think a modern library should have?",
+     "Do you prefer reading books in a library or at home?"
+    ]
+   },
+   {
+    "topic": "Television",
+    "qs": [
+     "How often do you watch television programs nowadays?",
+     "What types of TV shows are popular in your country?",
+     "Did you watch a lot of TV when you were younger?",
+     "Do you think television will eventually be replaced by the internet?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a time you learned something new online",
+   "bullets": [
+    "what you learned",
+    "which website or platform you used",
+    "how you learned it",
+    "and explain why you decided to learn this skill online instead of in person"
+   ]
+  },
+  "part3": [
+   "What are the main advantages of online learning compared to traditional classroom education?",
+   "Do you believe some subjects are unsuitable to be taught through the internet?",
+   "How has the rise of online tutorials changed people's attitudes toward self-directed learning?",
+   "Will artificial intelligence tools replace human instructors in online education?",
+   "What challenges might older generations face when trying to acquire digital knowledge?"
+  ],
+  "answers": {
+   "p1": [
+    "Honestly, I rarely visit local libraries these days because most reading materials are accessible on my tablet. However, I still stop by the municipal library occasionally when I need a quiet environment to study.",
+    "Yes, absolutely. As a primary school student, my parents took me to our district library every weekend. I loved browsing illustrated fairy tales and comic books there since we couldn't afford buying many books.",
+    "In my opinion, modern libraries need high-speed Wi-Fi, comfortable ergonomic seating, and private study pods. Having digital research terminals and a small coffee shop also makes the space much more welcoming for students.",
+    "I definitely prefer reading at home because it offers total privacy and comfort. I can lounge on my sofa, play soft background music, and sip tea without worrying about disturbing anyone around me.",
+    "Hardly ever, to be honest. I mostly stream documentaries and dramas on digital platforms like Netflix instead of watching scheduled broadcasts. I only tune in to traditional TV during major international football tournaments.",
+    "Reality game shows and music competitions are currently dominating Vietnamese television. Programs like Rap Viet attract millions of viewers of all ages because they are lively, emotional, and feature prominent celebrity judges.",
+    "Yes, I spent hours watching cartoons like Doraemon and Tom and Jerry every afternoon. Back then, television was our primary source of home entertainment, so my siblings and I constantly fought over the remote.",
+    "To a large extent, yes. On-demand streaming provides far greater flexibility than linear TV broadcasting. Nonetheless, live news channels and national events on traditional television will likely retain older audiences for decades to come."
+   ],
+   "sample": "A couple of months ago, I decided to teach myself basic video editing using DaVinci Resolve. Since I wanted to edit travel clips from my family vacation, I turned to YouTube rather than enrolling in a formal offline course. I followed an intensive, ten-part tutorial series produced by a professional videographer. Each lesson was structured around practical tasks, covering essential techniques such as color grading, audio synchronization, and trimming footage efficiently. While watching, I kept the software open on a second monitor so I could practice the keyboard shortcuts in real time, pausing and rewinding whenever I encountered tricky transition effects. The primary reason I chose online learning over a traditional classroom was convenience. As a busy professional, I couldn't commit to fixed weekly sessions across town. Learning via web tutorials allowed me to progress at my own pace late at night. Furthermore, online forums like Reddit gave me immediate solutions whenever I hit technical roadblocks. Mastering this skill online proved remarkably empowering, and it saved me a substantial amount of money that would otherwise have gone into tuition fees.",
+   "p3": [
+    "In my view, the greatest benefit is unprecedented flexibility. Learners can access world-class lectures anytime regardless of geographical location, eliminating commuting time. For instance, working adults can study university modules after work at their own pace. Although physical classrooms offer spontaneous face-to-face networking, digital platforms democratize knowledge, making quality education affordable and adaptable to diverse personal schedules.",
+    "Certainly, subjects requiring tactile precision and hands-on laboratory work, such as surgery or mechanical engineering, cannot be fully mastered online. While interactive simulations provide valuable theoretical foundations, real-world execution demands physical motor skills and immediate physical supervision. Therefore, a blended approach is essential, ensuring practical disciplines retain mandatory in-person training alongside digital components.",
+    "The widespread availability of web tutorials has fostered a much more proactive mindset. Previously, people assumed acquiring expertise required formal certificates and expensive seminars. Today, however, DIY culture flourishes because free video guides make learning accessible to anyone with curiosity. Consequently, individuals feel empowered to tackle complex skills independently, viewing education as an ongoing personal habit rather than an institutional requirement.",
+    "I doubt AI will completely displace human educators, even though it can personalize exercises and deliver instant feedback effectively. Teaching extends beyond content delivery; it encompasses emotional encouragement, mentorship, and moral guidance. A chatbot might clarify grammatical structures, but it cannot genuinely inspire a struggling student. Thus, AI will remain a powerful supportive assistant rather than a true replacement for educators.",
+    "The main hurdle is digital literacy and fear of modern technology. Many elderly individuals did not grow up using touchscreens or navigating complex user interfaces, making online search engines bewildering. Additionally, worries about cybersecurity fraud often deter them from exploring web resources. Without patient guidance from family members or community workshops, older citizens risk being marginalized from valuable digital educational opportunities."
+   ]
+  }
+ },
+ {
+  "id": "mock-28",
+  "title": "IELTS Speaking Mock Test 28",
+  "titleVi": "Đề thi thử số 28",
+  "focusVi": "Luyện tập kỹ năng miêu tả không gian công cộng và phát triển lập luận đa chiều về vai trò của quy hoạch đô thị đối với đời sống cộng đồng.",
+  "part1": [
+   {
+    "topic": "Films and Cinema",
+    "qs": [
+     "How often do you watch movies at a cinema?",
+     "What genres of films do you enjoy the most?",
+     "Did you go to the cinema often when you were a child?",
+     "Do you prefer watching movies alone or with friends?"
+    ]
+   },
+   {
+    "topic": "The Internet",
+    "qs": [
+     "How many hours a day do you spend on the internet?",
+     "What do you usually use the internet for?",
+     "How has the internet changed the way you study or work?",
+     "Can you imagine your daily life without the internet?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a public place you like to visit in your free time",
+   "bullets": [
+    "where this public place is located",
+    "what you usually do there",
+    "who you usually go there with",
+    "and explain why you enjoy visiting this public place"
+   ]
+  },
+  "part3": [
+   "Why are public parks and squares important for city residents?",
+   "How have public spaces changed in your country compared to the past?",
+   "Do you think governments should invest more money in outdoor spaces or indoor facilities like libraries?",
+   "What problems can occur if a city lacks adequate public spaces?",
+   "Will digital technology decrease people's need to visit public places in the future?"
+  ],
+  "answers": {
+   "p1": [
+    "I go to the cinema roughly once a month, mainly when an exciting blockbuster comes out. Last week, for instance, I watched the latest superhero movie with my brother on a giant IMAX screen.",
+    "I am particularly fond of psychological thrillers because they keep me on the edge of my seat. Films like 'Inception' really challenge my thinking and make the cinematic experience truly memorable.",
+    "Not really, because movie tickets were quite pricey for my family back then. Instead, we mostly rented video compact discs on weekends to watch classic animated films like 'The Lion King' at home.",
+    "I definitely prefer watching films with close companions because we can share popcorn and discuss the plot twists afterwards. Going alone feels a bit dull, especially during hilarious comedies or tense horror movies.",
+    "I typically spend around five to six hours online every day, mostly for university coursework and remote communication. On weekends, this figure might rise if I stream series on Netflix or browse social media.",
+    "I primarily rely on the internet for academic research, catching up on international news, and staying in touch with friends. For example, I use cloud tools like Google Docs daily for group assignments.",
+    "It has made learning far more efficient since I can access academic journals and video lectures instantly. In the past, students spent hours in libraries searching through physical encyclopedias for basic reference materials.",
+    "Honestly, that would be virtually impossible for me because modern living relies heavily on online platforms. Simple routines like banking, booking ride-hailing cabs, and submitting university papers would grind to an abrupt halt."
+   ],
+   "sample": "One public place I frequently visit whenever I need to unwind is the West Lake promenade, situated right in the heart of Hanoi. It is an expansive waterfront area surrounded by shady trees, bustling open-air cafes, and serene walking tracks. Whenever I drop by, I usually take a leisurely stroll along the pedestrian walkway, grab an iced Vietnamese coffee, and watch the sunset reflect over the water. Occasionally, I rent a bicycle to pedal around the shore or simply sit on a bench with a good book. Most of the time, I go there with a couple of close university friends on weekend afternoons to catch up and decompress after a hectic week. Sometimes, though, I visit on my own early in the morning when the atmosphere is much quieter. I absolutely love spending time there because it serves as an urban sanctuary away from the chaotic traffic and relentless noise of the city center. Breathing in the fresh breeze while gazing at the open horizon revitalizes my mental well-being and gives me a much-needed breath of fresh air amidst busy metropolitan life.",
+   "p3": [
+    "In my view, public parks and squares are essential because they offer communal green spaces where citizens can exercise and socialize outdoors. In densely populated metropolises, high-rise buildings and concrete roads often dominate the landscape, causing sensory overload and stress. Having accessible public parks allows residents to reconnect with nature and recharge their batteries, which is undeniably crucial for both physical and mental public health.",
+    "Historically, public spaces in Vietnam were mostly traditional open-air markets or village communal houses centered on straightforward trade and cultural festivals. Nowadays, however, modern public venues feature integrated leisure complexes, pedestrian-only walking streets, and landscaped waterfront plazas with public Wi-Fi. While these modern facilities provide enhanced safety and contemporary amenities, some argue that they sometimes lack the authentic cultural charm found in vintage community squares.",
+    "I believe municipal authorities should strike a balance rather than favoring one over the other. Outdoor green areas foster physical fitness, community sports, and environmental sustainability, whereas indoor venues like municipal libraries and cultural centers nurture intellectual development and lifelong learning. In rainy seasons, indoor facilities become indispensable, while outdoor parks shine during sunny weekends. Therefore, balanced budgetary allocation is fundamental for a healthy, well-rounded community.",
+    "A shortage of public spaces can lead to severe sociological and physiological repercussions. Without affordable recreational areas, people frequently become sedentary, staying indoors glued to screens, which accelerates lifestyle diseases like obesity. Furthermore, social cohesion deteriorates because neighbors have fewer neutral meeting grounds to interact and build mutual trust. Consequently, urban environments risk degenerating into isolated, stress-inducing concrete jungles where community spirit is virtually nonexistent.",
+    "Although virtual reality and online networking allow people to socialize remotely, I doubt they will ever replace real-world public venues. Humans have an innate biological craving for genuine tactile experiences, fresh air, and face-to-face interaction that digital avatars simply cannot replicate. While remote work might keep people home during office hours, it will likely increase their desire to seek solace and authentic companionship in public spaces afterward."
+   ]
+  }
+ },
+ {
+  "id": "mock-29",
+  "title": "IELTS Speaking Mock Test 29",
+  "titleVi": "Đề thi thử số 29",
+  "focusVi": "Kỹ năng xây dựng mục tiêu dài hạn, phát triển kế hoạch hành động và lập luận thuyết phục về thành công cá nhân.",
+  "part1": [
+   {
+    "topic": "Online Shopping",
+    "qs": [
+     "How often do you buy things on the internet?",
+     "What kind of items do you usually purchase online?",
+     "Have you ever had a bad experience while shopping online?",
+     "Do you think traditional stores will disappear in the future?"
+    ]
+   },
+   {
+    "topic": "Mobile Apps",
+    "qs": [
+     "What kinds of mobile apps do you use most frequently?",
+     "Have you downloaded any new applications recently?",
+     "Do you prefer free apps or are you willing to pay for premium ones?",
+     "How have mobile applications changed people's daily routines?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a long-term goal you would like to achieve in the future.",
+   "bullets": [
+    "what the goal is",
+    "when you first decided to pursue it",
+    "what steps you need to take to achieve it",
+    "and explain why this goal is particularly important to you"
+   ]
+  },
+  "part3": [
+   "Why do some individuals find it difficult to stick to their long-term plans?",
+   "How can parents encourage their children to set realistic personal ambitions?",
+   "Should people prioritize personal happiness or professional success when setting targets?",
+   "In what ways do modern technology and social media influence young people's aspirations?",
+   "Do you agree that experiencing failure is an essential part of reaching meaningful goals?"
+  ],
+  "answers": {
+   "p1": [
+    "I purchase items online roughly twice a month, mainly because it saves time compared to visiting retail stores. For instance, last week I ordered several household supplies through Shopee while commuting home.",
+    "I usually buy tech gadgets and books over the internet since they offer better discounts and authentic customer reviews. Recently, I picked up a wireless keyboard online that was significantly cheaper than in local shops.",
+    "Yes, I once ordered a winter jacket that arrived two sizes too small and looked nothing like the pictures. Returning it proved to be a real headache because the merchant was unresponsive.",
+    "No, I doubt physical shops will vanish completely because shoppers still value hands-on experience and immediate gratification. For example, people generally prefer trying on clothes or testing perfume in person before paying.",
+    "I rely heavily on messaging platforms and educational apps throughout the day to stay connected and productive. In particular, I spend about twenty minutes every morning reviewing vocabulary on Duolingo.",
+    "Yes, I recently installed a budget tracking app called Spendee to monitor my monthly expenses. It has already helped me cut back on unnecessary coffee runs by showing clear visual charts of my spending.",
+    "I generally stick to free applications because they easily satisfy my basic needs, even with ads. However, I did pay for a meditation app called Headspace since the ad-free guidance was truly worth the investment.",
+    "Mobile applications have streamlined everyday tasks, making communication, banking, and food delivery practically instantaneous. For instance, rather than waiting in bank queues, we can transfer money securely within seconds using a mobile banking app."
+   ],
+   "sample": "One major long-term objective that I am determined to accomplish is establishing my own sustainable coffee shop within the next five years. I first conceived this ambition during my university years, when I worked part-time as a barista in downtown Da Nang. Seeing how a welcoming cafe could bring communities together sparked a genuine passion for hospitality. To turn this vision into reality, I have mapped out several concrete milestones. Currently, I am setting aside a portion of my monthly salary while taking weekend courses in business management and supply chain logistics. Additionally, I intend to visit ethical coffee farms in the Central Highlands to secure direct-trade partnerships with local growers. This aspiration is exceptionally meaningful to me because it combines entrepreneurship with social responsibility. Rather than just running a commercial enterprise, I want to create an eco-friendly space that supports fair wages for farmers and promotes zero-waste practices. Achieving this would not only signify financial independence, but also grant me the fulfillment of contributing positively to both society and the environment.",
+   "p3": [
+    "In my view, many people fail to maintain their long-term focus because they crave immediate gratification rather than gradual progress. When tangible results take months or years to materialize, frustration sets in and motivation dwindles. For instance, individuals frequently abandon fitness routines after a few weeks if visible changes do not appear immediately. Consequently, without self-discipline and interim benchmarks, sticking to ambitious targets becomes exceedingly challenging.",
+    "Parents can guide children by teaching them to break down grand aspirations into manageable, step-by-step milestones. Instead of demanding perfection or imposing unrealistic expectations, adults should celebrate small accomplishments along the way. For example, if a child dreams of becoming a musician, encouraging daily thirty-minute practice sessions is far healthier than expecting instant mastery. Ultimately, positive reinforcement builds resilience and practical goal-setting habits.",
+    "Personally, I believe emotional well-being should take precedence, as career achievements feel hollow if one is chronically exhausted or unhappy. While professional milestones provide financial stability and status, prioritizing work at the expense of health often leads to severe burnout. A corporate executive earning a high salary, for instance, might still feel unfulfilled without genuine connections. Therefore, true success relies on sustaining personal contentment first.",
+    "Digital platforms significantly shape youth aspirations by exposing them to global opportunities, yet they also foster unrealistic benchmarks. On one hand, educational tutorials inspire self-taught skills; on the other hand, curated lifestyle posts on Instagram breed unhealthy comparison and imposter syndrome. Young people may pursue superficial vanity metrics rather than grounded career paths. Hence, while technology expands horizons, it can distort how adolescents measure accomplishment.",
+    "I wholeheartedly agree with this premise because setbacks provide invaluable feedback that success simply cannot offer. When plans go awry, individuals are forced to reassess their strategies, develop mental fortitude, and cultivate humility. For example, prominent innovators like Thomas Edison refined hundreds of prototypes before perfecting the incandescent bulb. In essence, enduring adversity is not a roadblock, but the very foundation upon which genuine achievement is built."
+   ]
+  }
+ },
+ {
+  "id": "mock-30",
+  "title": "IELTS Speaking Mock Test 30",
+  "titleVi": "Đề thi thử số 30",
+  "focusVi": "Luyện tập kỹ năng trình bày nguyện vọng nghề nghiệp tương lai kết hợp phân tích đa chiều các xu hướng lao động hiện đại.",
+  "part1": [
+   {
+    "topic": "Jobs and Careers",
+    "qs": [
+     "What kind of work do you do, or are you currently studying?",
+     "Why did you choose that particular line of work or study?",
+     "Do you think your job or major will change much in the future?",
+     "What skills do you think are most important for young professionals today?"
+    ]
+   },
+   {
+    "topic": "Teamwork",
+    "qs": [
+     "Do you prefer working alone or as part of a team?",
+     "When was the last time you collaborated with others on a project?",
+     "What makes a person a good team player?",
+     "Are there any disadvantages to working in a group?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a job you would like to do in the future",
+   "bullets": [
+    "what the job is",
+    "what qualifications or skills are needed for it",
+    "how you first became interested in this field",
+    "and explain why you would like to pursue this career"
+   ]
+  },
+  "part3": [
+   "How has technology transformed traditional career paths over recent decades?",
+   "Do you believe high salaries are more important than job satisfaction for modern workers?",
+   "To what extent should universities design their courses based primarily on employers' needs?",
+   "Why are some people reluctant to switch careers later in life?",
+   "How might artificial intelligence reshape the definition of meaningful employment in the future?"
+  ],
+  "answers": {
+   "p1": [
+    "I am currently working as a graphic designer for a marketing firm in Hanoi. I create digital assets like banners and social media templates, which allows me to explore my creativity on daily assignments.",
+    "I chose graphic design because visual storytelling has always fascinated me since high school. Seeing my concepts transform into compelling brand identities gives me a genuine sense of personal achievement.",
+    "Yes, definitely, because generative AI is rapidly transforming creative workflows. I will need to master new digital tools and prompt engineering to remain competitive in the creative industry.",
+    "In my view, adaptability and strong communication are essential. Industries change quickly nowadays, so professionals who can easily learn new software and collaborate effectively will thrive much faster.",
+    "I generally prefer team projects because diverse perspectives lead to richer ideas. For example, brainstorming alongside copywriters often helps me produce much sharper visual concepts than working in isolation.",
+    "Just last week, my team launched a brand campaign for an eco-friendly client. We held daily stand-up meetings to coordinate illustrations and content deadlines, ensuring smooth progress overall.",
+    "A dependable team player listens actively and communicates transparently. For instance, when someone faces an unexpected delay, taking initiative to assist without judging keeps group morale high.",
+    "Group work can sometimes breed conflict or slow down decision-making. In fact, if team members hold clashing opinions or unequal commitment, reaching consensus can become frustratingly prolonged."
+   ],
+   "sample": "If I could pursue any profession in the future, I would love to work as an environmental data analyst. This role involves collecting ecological data, interpreting climate models, and helping organisations make sustainable operational decisions. To thrive in this field, one needs a solid background in data science, proficiency in programming languages like Python or R, and deep ecological literacy. Additionally, strong analytical thinking and persuasive communication skills are crucial to convey complex climate trends to non-specialists. I first developed an interest in this niche during my university days when I volunteered for a wetland conservation campaign. Seeing firsthand how accurate data helped local authorities formulate better flood mitigation policies truly opened my eyes to the power of numbers in environmental protection. Ultimately, I would like to do this job because it merges my passion for statistical analysis with my desire to tackle real-world climate crises. Rather than simply working for corporate profit, producing insights that directly safeguard natural ecosystems and support sustainable community development would grant me a profound sense of purpose.",
+   "p3": [
+    "Technology has undeniably dismantled conventional lifelong employment, ushering in agile, digital-first roles. For instance, while administrative clerks have dwindled due to automated software, remote programming and digital marketing positions have proliferated. Consequently, professionals can no longer rely on a static skill set; instead, continuous lifelong upskilling has become an absolute necessity to stay relevant in a volatile employment market.",
+    "While a handsome remuneration package is vital for meeting living costs, long-term career fulfillment typically hinges on job satisfaction. High earners often experience severe burnout if their daily responsibilities lack meaning or create chronic stress. Conversely, individuals who feel valued and intellectually stimulated tend to remain committed and emotionally resilient. Therefore, a balance is ideal, but genuine satisfaction ultimately sustains a person's working life.",
+    "Higher education should certainly align its curricula with industry demands to enhance graduate employability, yet doing so exclusively is shortsighted. Vocational training addresses immediate corporate needs, but universities must also nurture critical thinking, ethical reasoning, and scholarly curiosity. Without these broader humanities-based competencies, graduates may struggle to adapt when market dynamics inevitably shift. Thus, a balanced curriculum integrating practical skills and intellectual foundations is optimal.",
+    "A primary deterrent is the financial uncertainty associated with starting afresh in an unfamiliar sector. Mature professionals often have mortgages and family dependents, making the prospect of accepting an entry-level salary daunting. Furthermore, psychological inertia and fear of failure can hinder decisive action, especially after establishing a respected reputation in one's current field. Hence, these pragmatic and emotional risks frequently outweigh potential personal fulfillment elsewhere.",
+    "As artificial intelligence automates routine cognitive and manual duties, meaningful employment will increasingly centre on uniquely human attributes like empathy, creativity, and strategic ethics. Instead of measuring productivity solely by technical output, roles in healthcare, artistic creation, and social enterprise will gain greater cultural prestige. Ultimately, people will judge a career's worth not by repetitive efficiency, but by its capacity to foster human connection and positive social impact."
+   ]
+  }
+ },
+ {
+  "id": "mock-31",
+  "title": "IELTS Speaking Mock Test 31",
+  "titleVi": "Đề thi thử số 31",
+  "focusVi": "Rèn luyện kỹ năng biểu đạt cảm xúc, cấu trúc hóa câu chuyện cá nhân và bàn luận các vấn đề trừu tượng về sự công nhận trong xã hội.",
+  "part1": [
+   {
+    "topic": "Public Speaking",
+    "qs": [
+     "Do you often have to speak in front of a group of people?",
+     "Did you enjoy giving presentations when you were at school?",
+     "What makes a person a good public speaker?",
+     "Would you like to improve your public speaking skills in the future?"
+    ]
+   },
+   {
+    "topic": "Memory",
+    "qs": [
+     "Do you consider yourself to have a good memory?",
+     "What kinds of things do you usually find difficult to remember?",
+     "Do you use any specific techniques to help you remember important information?",
+     "Why do some people forget childhood memories more easily than others?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a time when you felt proud of an achievement",
+   "bullets": [
+    "what you achieved",
+    "when and where this happened",
+    "what difficulties you faced while trying to achieve it",
+    "and explain why this achievement made you feel so proud"
+   ]
+  },
+  "part3": [
+   "How do people in your country usually celebrate personal achievements?",
+   "Do you think parents should praise their children frequently for minor accomplishments?",
+   "Is personal pride always a positive emotion, or can it have negative consequences?",
+   "Why do some individuals find it uncomfortable to receive public recognition?",
+   "In what ways can a community cultivate a collective sense of pride among its residents?"
+  ],
+  "answers": {
+   "p1": [
+    "Yes, quite regularly, especially during weekly team meetings at my workplace. I often report progress on ongoing projects, which helps me stay confident when addressing colleagues directly.",
+    "To be honest, not at all, as I was extremely introverted back then. Delivering book reports made my hands tremble, so I usually tried to avoid speaking in class.",
+    "In my view, clarity and empathy are paramount. A truly engaging speaker uses straightforward language and connects emotionally with listeners, much like an inspiring teacher telling a compelling story.",
+    "Definitely, because mastering rhetoric can boost my career prospects tremendously. I am actually planning to join a local public speaking club next month to practice impromptu speeches under pressure.",
+    "Generally speaking, yes, especially when it comes to visual details and faces. For instance, I can easily recognize a casual acquaintance I met briefly at an event months ago.",
+    "I struggle with strings of numbers and complex passwords. Without my digital password manager, I would constantly lock myself out of my personal banking and email accounts.",
+    "I rely heavily on digital reminder apps and color-coded sticky notes on my desk. Setting alarms ensures that I never miss critical deadlines or upcoming medical appointments.",
+    "I think it mainly depends on how emotionally significant those early events were. Traumatic or exceptionally joyous moments tend to endure, whereas mundane everyday routines simply fade over time."
+   ],
+   "sample": "I would like to talk about the time I successfully organized a charity art exhibition during my final year of university in Hanoi. The goal was to auction student artwork to fund warm clothes for underprivileged children in the northern highlands. Organizing the event was far from smooth sailing. We had barely two months to solicit artwork from reluctant students, secure a suitable venue without any budget, and attract potential buyers. At one point, our main sponsor pulled out just a week before the opening, leaving us in complete panic. However, our team rallied together, launched an urgent crowdfunding campaign online, and managed to secure enough funds to cover the operational costs. On the opening night, over two hundred people attended, and we ended up raising more than fifty million VND. I felt immensely proud because this project proved that my leadership and perseverance could create tangible, positive change for vulnerable communities. Standing in that crowded hall, seeing the generous bids, I realized that all our sleepless nights had truly paid off. It boosted my self-confidence immensely and taught me the true value of collective effort.",
+   "p3": [
+    "In Vietnam, personal milestones are traditionally marked by gathering over elaborate meals with family and friends. When someone graduates or earns a promotion, hosting a celebratory dinner is customary because it honors the communal support behind that success. While younger generations also share their triumphs on social media, sharing food remains the cornerstone of celebration. Thus, personal success is largely viewed as a shared collective victory.",
+    "I believe praise should be balanced rather than excessive. While regular encouragement nurtures a child's confidence, overpraising trivial deeds can foster complacency and unrealistic expectations. For instance, if a child is applauded simply for finishing a regular meal, they might struggle when facing genuine criticism later in life. Therefore, offering sincere feedback focused on effort rather than constant flattery produces far more resilient individuals.",
+    "Pride is certainly a double-edged sword. On one hand, healthy self-respect motivates people to uphold high personal standards and overcome adversity. Conversely, unchecked pride often morphs into arrogance, blinding individuals to their flaws and alienating peers. A clear example is an executive who dismisses valuable feedback due to excessive hubris. Ultimately, pride remains constructive only when tempered by genuine humility and self-awareness.",
+    "Many people feel uneasy with public accolades due to natural introversion or cultural modesty. In many Asian societies, standing out conspicuously can attract unwanted scrutiny or envy, prompting people to downplay their merits. Additionally, imposter syndrome makes some achievers feel undeserving of the spotlight, fearing they cannot sustain such elevated expectations. Consequently, they prefer quiet, private validation over grand public fanfare.",
+    "Communities can build collective pride by engaging residents in shared civic initiatives, such as neighborhood clean-up drives or local cultural festivals. When residents actively contribute to revitalizing public spaces, they develop a profound sense of ownership. Conversely, neglected neighborhoods often breed apathy. By celebrating local heritage and recognizing civic volunteers, a community fosters mutual respect, creating an environment where everyone feels genuinely invested in their hometown."
+   ]
+  }
+ },
+ {
+  "id": "mock-32",
+  "title": "IELTS Speaking Mock Test 32",
+  "titleVi": "Đề thi thử số 32",
+  "focusVi": "Phát triển khả năng mở rộng câu trả lời bằng cách so sánh quá khứ với hiện tại và phân tích các góc nhìn đa chiều về gìn giữ văn hóa truyền thống.",
+  "part1": [
+   {
+    "topic": "Happiness",
+    "qs": [
+     "What kinds of things generally make you feel happy?",
+     "Do you think people in your country are generally happier now than in the past?",
+     "What do you do when you are in a bad mood to cheer yourself up?",
+     "Can money buy happiness in your opinion?"
+    ]
+   },
+   {
+    "topic": "Stress and Relaxation",
+    "qs": [
+     "What causes you the most stress in your daily life?",
+     "How do you prefer to relax after a demanding day?",
+     "Do you think modern life is more stressful than life decades ago?",
+     "Do people in your country have enough time for leisure activities?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe an important cultural tradition in your country.",
+   "bullets": [
+    "what the tradition is",
+    "when and where it takes place",
+    "what people typically do during this tradition",
+    "and explain why this tradition is significant to your culture"
+   ]
+  },
+  "part3": [
+   "Why do some young people show less interest in traditional customs today?",
+   "To what extent should traditions evolve to suit modern lifestyles?",
+   "How can governments effectively protect intangible cultural heritage from vanishing?",
+   "Do you think international tourism helps or harms local cultural traditions?",
+   "Will globalization eventually lead to the loss of unique national identities?"
+  ],
+  "answers": {
+   "p1": [
+    "Simple pleasures make me happiest, like sipping hot coffee on a quiet morning or sharing home-cooked meals with family. These small moments always lift my spirits after busy workdays.",
+    "Not necessarily. Although our living standards have improved dramatically, people today face fierce workplace competition and social media pressures, which often detract from genuine emotional well-being compared to simpler times.",
+    "I usually go for a brisk walk around a nearby lake listening to upbeat podcasts. Getting fresh air and stepping away from screens immediately helps clear my head and reset my emotions.",
+    "Up to a certain point, yes, because financial stability eliminates severe anxieties about housing and healthcare. However, authentic joy stems from meaningful relationships and inner peace, which money simply cannot purchase.",
+    "Strict professional deadlines create the most tension for me. When multiple assignments pile up simultaneously, juggling priorities while trying to maintain top quality can feel quite overwhelming, especially late in the week.",
+    "I unwind by cooking a wholesome dinner while listening to acoustic music. Preparing fresh ingredients forces me to focus on the present, effectively washing away the day's mental exhaustion.",
+    "Absolutely, because modern workers are perpetually plugged in via smartphones and emails. In the past, people disconnected completely after five o'clock, whereas today work boundaries have largely blurred into personal time.",
+    "Unfortunately, many young professionals don't because overtime work and lengthy commutes consume most daylight hours. Most citizens only manage to properly unwind during major national holidays like the Lunar New Year."
+   ],
+   "sample": "I would like to talk about the custom of making Banh Chung, or square sticky rice cakes, during the Lunar New Year festival in Vietnam. This centuries-old tradition occurs annually in late winter, roughly a week before the New Year kicks off, primarily bringing extended families together in rural and urban households alike. The preparation involves several generations working harmoniously. Grandparents wash aromatic dong leaves, adults marinate seasoned pork belly and mung beans, while children eagerly watch the assembly process. The cakes are tightly wrapped with bamboo strings and simmered in a huge pot over an open wood fire for over ten hours. We often stay up all night around the glowing hearth, sharing folk tales and reminiscing about the departing year. This tradition holds immense cultural weight because Banh Chung represents the earth and embodies deep filial gratitude toward our ancestors. More importantly, in an era where everyone is glued to digital devices, this ritual provides an irreplaceable communal anchor, strengthening familial bonds and preserving intangible cultural values for future generations.",
+   "p3": [
+    "In my view, the rapid rise of digital entertainment and consumerist culture is primarily responsible. Many young people find lengthy customs tedious compared to the immediate gratification offered by social media and global media. For instance, few teenagers now bother learning intricate ceremonial greetings or holiday cooking techniques. Unless traditions are modernized and made engaging, younger generations will continue prioritizing global pop trends over local heritage.",
+    "I believe traditions must adapt moderately to survive without losing their core essence. If customs remain overly rigid or demand excessive time, practical citizens will gradually abandon them altogether. For example, pre-ordering ceremonial foods instead of spending days preparing them allows families to honor ancestors while respecting hectic work schedules. Ultimately, sensible compromises preserve the underlying meaning of customs in our fast-paced society.",
+    "Governments should take a proactive stance by integrating indigenous folklore and traditional arts into school curricula. Furthermore, offering financial subsidies to master craftspeople and folk performers ensures that endangered skills can be passed down economically. Japan's Living National Treasure system is an excellent illustration of this principle in action. Without institutional support and early education, fragile living heritage risks fading away irrevocably.",
+    "Tourism is genuinely a double-edged sword in this regard. On one hand, tourist interest injects vital revenue into regional craft villages and traditional dance troupes, incentivizing preservation. However, heavy commercialization frequently degrades authentic ceremonies into shallow, staged spectacles for holidaymakers. Therefore, sustainable tourism management is essential so that financial gains do not come at the expense of genuine cultural integrity.",
+    "I am cautiously optimistic that national identities will persist despite growing homogenization. While Western attire and fast food have spread worldwide, this phenomenon often prompts a strong counter-cultural resurgence as communities strive to assert their distinctiveness. In many Asian nations, traditional garments and local delicacies are experiencing a vibrant renaissance among youths. Hence, globalization encourages cultural hybridity rather than total cultural erasure."
+   ]
+  }
+ },
+ {
+  "id": "mock-33",
+  "title": "IELTS Speaking Mock Test 33",
+  "titleVi": "Đề thi thử số 33",
+  "focusVi": "Rèn luyện kỹ năng kể chuyện mạch lạc theo trình tự thời gian kết hợp diễn giải nguyên nhân - kết quả và bộc lộ cảm xúc.",
+  "part1": [
+   {
+    "topic": "Tourism",
+    "qs": [
+     "Do you prefer traveling alone or in a group?",
+     "What makes a tourist destination popular in your country?",
+     "How has tourism changed in your hometown over recent years?",
+     "Would you like to work in the tourism industry in the future?"
+    ]
+   },
+   {
+    "topic": "Culture and Traditions",
+    "qs": [
+     "What is an important traditional festival in your country?",
+     "Do you think young people still value traditional customs today?",
+     "How do families in your country celebrate special occasions?",
+     "Is it important to learn about other cultures when traveling abroad?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a journey you took that was difficult or challenging.",
+   "bullets": [
+    "where you went and who accompanied you",
+    "what difficulties you encountered during the trip",
+    "how you managed to overcome these challenges",
+    "and explain why this journey was so memorable to you"
+   ]
+  },
+  "part3": [
+   "Why do some people actively seek out arduous or adventurous trips rather than relaxing holidays?",
+   "How have technological advancements made journeys safer and more predictable today?",
+   "What role does public infrastructure play in reducing travel hardship for daily commuters?",
+   "Can facing adversity while traveling contribute to a person's personal growth?",
+   "Do you think space tourism will ever become accessible despite the immense physical challenges involved?"
+  ],
+  "answers": {
+   "p1": [
+    "I definitely prefer traveling with friends because sharing experiences enhances the joy. For instance, when we explore local street food together in Da Nang, the laughter and shared moments make the trip far more memorable.",
+    "Scenic beauty and rich heritage usually draw travelers. In Vietnam, places like Ha Long Bay attract millions primarily because of their stunning limestone karsts and unique floating villages, which offer unforgettable visual experiences.",
+    "It has grown dramatically, with many modern hotels and cafes replacing older residential quarters. While this boom boosts our local economy, it has noticeably increased traffic congestion during peak holiday seasons.",
+    "Not really, because working in tourism requires irregular working hours and dealing with demanding customers constantly. I prefer a predictable schedule, such as an office job in finance, which suits my personality better.",
+    "Tet, or the Lunar New Year, is undeniably the most vital celebration. It reunites separated family members, who gather to prepare traditional dishes like banh chung and exchange heartfelt wishes for prosperity.",
+    "Yes, though they adapt customs to modern lifestyles. For example, during mid-autumn festivals, youngsters still buy mooncakes and gather with relatives, even if they document the festivities on social media rather than lighting lanterns.",
+    "Most Vietnamese families celebrate milestones by hosting large communal feasts at home. Relatives gather to cook classic dishes, toast with rice wine, and reminisce about shared family memories throughout the evening.",
+    "Absolutely, because understanding local norms prevents unintentional disrespect. For instance, knowing dress codes when entering temples in Thailand shows genuine appreciation for their spiritual traditions and enriches your overall experience."
+   ],
+   "sample": "I would like to talk about a treacherous motorbike journey I took two years ago across Ha Giang's Ma Pi Leng Pass with my university friend, Minh. Our plan was to reach Dong Van before dusk, but midway through the mountains, a torrential downpour triggered thick fog and minor landslides. The winding roads became slick as ice, and visibility dropped to barely two meters. Worse yet, our rear tyre suffered a puncture on an isolated stretch with no mobile signal. To cope, Minh and I had to push the bike through pouring rain for nearly two kilometres until we spotted a local ethnic minority homestead. The generous host welcomed us inside, helped patch our tyre with improvised tools, and offered us hot ginger tea to ward off hypothermia. We eventually reached our homestay late at night, thoroughly exhausted. This trip remains unforgettable because it truly tested my composure and resilience under pressure. More importantly, it taught me that unexpected kindness from total strangers can turn a frightening ordeal into one of life's most heartwarming memories.",
+   "p3": [
+    "In my view, people pursue demanding journeys to escape monotony and test their personal limits. While beach holidays offer rest, navigating rugged terrain or survival trekking delivers an intense rush of dopamine and a profound sense of achievement. By conquering physical fatigue and unpredictable obstacles, adventurous travelers discover their inner fortitude, which makes the experience vastly more rewarding than ordinary leisure.",
+    "Technology has revolutionized travel safety primarily through real-time communication and precise satellite navigation. Previously, explorers relied on physical maps and local guesswork, risking becoming lost in hazardous areas. Nowadays, GPS applications alert drivers to road hazards immediately, while satellite phones ensure emergency assistance even in remote wilderness. Consequently, journeys that were once perilous can now be navigated with minimal uncertainty.",
+    "Well-maintained infrastructure plays a crucial role in alleviating daily travel distress. When cities invest in reliable metro lines and synchronized traffic signals, workers spend significantly less time gridlocked on congested roads. Conversely, shoddy road surfaces and inadequate bus networks induce chronic stress and physical exhaustion. Therefore, modern transit systems are fundamental not just for mobility, but for safeguarding public mental well-being.",
+    "Undoubtedly, encountering adversity fosters emotional maturity and adaptability. When travelers confront travel disruptions, such as canceled connections or language barriers in foreign environments, they are forced to solve problems independently. This contrasts sharply with routine daily life, where solutions are readily accessible. Ultimately, surmounting travel challenges builds self-reliance and patience, equipping individuals with resilience that extends into their professional careers.",
+    "I believe commercial space travel will eventually become viable, although democratization will take several decades. Currently, extreme G-forces, radiation, and astronomical costs restrict this pursuit to billionaires and elite astronauts. However, just as commercial aviation transitioned from a perilous luxury into everyday transportation throughout the twentieth century, advancing aerospace engineering will likely streamline spaceflight, eventually making orbital excursions safe for the wider public."
+   ]
+  }
+ },
+ {
+  "id": "mock-34",
+  "title": "IELTS Speaking Mock Test 34",
+  "titleVi": "Đề thi thử số 34",
+  "focusVi": "Rèn luyện kỹ năng phân tích nguyên nhân - hệ quả và trình bày quan điểm logic về các chuẩn mực, quy tắc xã hội.",
+  "part1": [
+   {
+    "topic": "Climate Change",
+    "qs": [
+     "Have you noticed any changes in the weather where you live recently?",
+     "What do you think is the main cause of these climate shifts?",
+     "Do schools in your country teach students about environmental protection?",
+     "What practical actions do you take personally to reduce environmental harm?"
+    ]
+   },
+   {
+    "topic": "Handwriting and Typing",
+    "qs": [
+     "Do you write by hand more often or type on a digital device?",
+     "When did you first learn to write neatly in cursive or print?",
+     "In what situations do you think handwriting is still essential?",
+     "Do you believe keyboard skills will completely replace penmanship in the future?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a rule you think is important at school or work",
+   "bullets": [
+    "what the rule is",
+    "where and when it applies",
+    "how people usually react to it",
+    "and explain why you think this rule is so important"
+   ]
+  },
+  "part3": [
+   "Why do some people find it difficult to comply with institutional rules?",
+   "Should workplaces allow employees to participate in setting organizational rules?",
+   "How do societal penalties influence public adherence to laws?",
+   "Do you believe children who grow up with strict rules become more successful adults?",
+   "To what extent can moral principles be effective without formal legal enforcement?"
+  ],
+  "answers": {
+   "p1": [
+    "Yes, definitely. Summers in Hanoi have become noticeably hotter and more erratic over the past few years, with severe heatwaves regularly exceeding forty degrees Celsius, which disrupts daily outdoor activities.",
+    "I believe rapid industrial expansion and vehicle emissions are the primary drivers. In developing nations like Vietnam, heavy traffic and coal-dependent factories release immense amounts of greenhouse gases into the atmosphere.",
+    "Yes, they do. Most primary schools integrate environmental awareness into moral education or science classes, encouraging kids to plant trees, sort domestic trash, and conserve water from a young age.",
+    "I consistently carry a reusable canvas bag when grocery shopping and use a refillable water bottle instead of buying single-use plastics, which noticeably cuts down my daily household waste.",
+    "I definitely type much more frequently because my work demands fast digital communication. Typing reports on my laptop or texting on my smartphone saves considerable time compared to jotting notes manually.",
+    "I learned penmanship around age six when entering primary school. My teacher placed great emphasis on neat cursive script, making us practice repetitive strokes with fountain pens every single afternoon.",
+    "Handwriting remains indispensable for signing legal contracts and writing heartfelt greeting cards. A handwritten note conveys personal warmth and authenticity that a generic printed font or text message simply cannot replicate.",
+    "Not completely, although digital typing will certainly dominate. Handwriting retains emotional, artistic, and legal value, so while its everyday utilitarian usage might decline, it won't disappear entirely from human culture."
+   ],
+   "sample": "I'd like to talk about a policy that I consider vital in any professional or academic setting: the strict prohibition of mobile phone use during collaborative meetings. In my current company, this guideline applies to all internal briefing sessions and client presentations held in the main conference room. Whenever someone enters the boardroom, they are required to switch their smartphones to silent mode and keep them face-down inside their bags. Initially, some colleagues resisted this policy, feeling slightly anxious about missing urgent notifications or personal messages. However, over time, most people have come to embrace it wholeheartedly. In my view, this rule is extremely important because modern devices are huge attention traps. When employees are constantly glancing at screens, discussions drag on, misunderstandings arise, and creative synergy drops dramatically. By enforcing a screen-free environment, everyone stays fully engaged, actively listens to colleagues, and respects each other's valuable time. Ultimately, this straightforward boundary not only accelerates decision-making but also fosters genuine teamwork, proving that a little self-discipline can boost overall workplace productivity and mutual respect.",
+   "p3": [
+    "Often, non-compliance stems from a perceived lack of fairness or relevance. When rules appear arbitrary or excessively restrictive, individuals naturally resist them as an infringement on personal autonomy. For instance, rigid dress codes in creative industries often trigger backlash because employees feel their individuality is stifled. Thus, unless people comprehend the rationale behind regulations, voluntary adherence remains difficult to achieve.",
+    "Absolutely, involving staff in policymaking creates psychological ownership and mutual trust. When workers contribute to establishing guidelines, such as flexible scheduling or remote work protocols, they feel respected rather than micromanaged. Conversely, purely top-down directives can generate resentment and quiet resistance. Therefore, participatory governance usually yields higher compliance and fosters a healthier corporate culture overall.",
+    "Penalties serve as a potent deterrent against reckless behavior by raising the cost of misconduct. For example, severe fines and driving license revocations for drunk driving in Vietnam have dramatically reduced traffic violations. However, fear of punishment alone cannot sustain long-term compliance; genuine public awareness and moral consensus are also crucial. Penalties establish boundaries, but education ensures lasting respect for the law.",
+    "Not necessarily, as strictness can be a double-edged sword. While structured environments instill discipline, punctuality, and focus, excessive micromanagement often dampens a child's creative initiative and emotional resilience. In contrast, children raised with reasonable boundaries combined with autonomy tend to develop stronger problem-solving skills and self-motivation. Consequently, balanced guidance generally fosters well-rounded success much better than rigid authoritarianism.",
+    "Moral principles are undeniably powerful within close-knit communities where social reputation and peer accountability matter, such as returning lost items in neighborhood shops. Nevertheless, in complex modern societies, ethical standards alone often fail to deter self-serving individuals. Legal frameworks provide necessary mechanisms for conflict resolution and justice. Ultimately, morals define our social ideals, but laws remain indispensable for collective order."
+   ]
+  }
+ },
+ {
+  "id": "mock-35",
+  "title": "IELTS Speaking Mock Test 35",
+  "titleVi": "Đề thi thử số 35",
+  "focusVi": "Rèn luyện kỹ năng giải thích nguyên nhân, đưa ví dụ thực tế và phân tích các khía cạnh xã hội sâu sắc.",
+  "part1": [
+   {
+    "topic": "Gardens and Plants",
+    "qs": [
+     "Do you enjoy visiting public gardens or parks?",
+     "Did you grow any plants when you were a child?",
+     "What kinds of plants are popular in your country?",
+     "Would you like to have your own garden in the future?"
+    ]
+   },
+   {
+    "topic": "Sports Events",
+    "qs": [
+     "Do you prefer watching sports live or on television?",
+     "Have you ever attended a major sporting competition?",
+     "What sports event is most popular in your country?",
+     "Did you participate in school sports days when you were younger?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a famous person you would like to meet",
+   "bullets": [
+    "who this person is",
+    "what this person is well known for",
+    "what you would do or talk about if you met them",
+    "and explain why you would like to meet this person"
+   ]
+  },
+  "part3": [
+   "Why do many young people aspire to become famous nowadays?",
+   "Do you think celebrities have a moral responsibility to act as positive role models?",
+   "How has the rise of social media changed the relationship between famous people and their fans?",
+   "In what ways can intense media attention affect the private lives of public figures?",
+   "Will the qualities that make a person famous change in the future?"
+  ],
+  "answers": {
+   "p1": [
+    "Yes, I definitely do because being surrounded by greenery helps me unwind after long working hours. For instance, I frequently visit our municipal botanical garden on weekends to read peacefully.",
+    "Actually, I did help my grandmother tend to her small tomato patch. It was fascinating to see seeds sprout into fruiting plants, which taught me early lessons about patience.",
+    "In Vietnam, ornamental plants like kumquat trees and peach blossoms are extremely popular, particularly during the Lunar New Year. Many urbanites also keep low-maintenance succulents on balconies.",
+    "I would absolutely love that, as growing fresh herbs and flowers provides immense daily satisfaction. Having a tranquil private courtyard with potted orchids is actually a personal dream of mine.",
+    "I generally prefer watching matches on television because the high-definition replays and expert commentary provide a clearer perspective. For example, international football tournaments are much more enjoyable from home.",
+    "Yes, I attended an international football match at My Dinh Stadium two years ago. The roaring atmosphere among thousands of passionate fans was an electric and truly unforgettable experience.",
+    "Football tournaments, especially the regional AFF Cup, captivate the entire nation. Whenever our national team plays crucial matches, streets across the country completely empty as everyone gathers around screens.",
+    "Yes, I took part annually, mostly competing in sprint relays and badminton. Although I rarely won medals, cheering alongside my classmates fostered a wonderful sense of camaraderie and teamwork."
+   ],
+   "sample": "If I were given the opportunity to meet any public figure, I would immediately choose Sir David Attenborough. He is an iconic British natural historian and legendary broadcaster, globally celebrated for narrating groundbreaking documentary series such as Planet Earth and Blue Planet. His soothing voice and infectious passion for wildlife have inspired millions across generations. If I ever met him in person, I would eagerly ask about his most perilous expeditions in remote corners of the globe, like the Antarctic tundra or deep oceanic trenches. I would also love to discuss his personal perspectives on combating climate crisis and preserving endangered ecosystems. Rather than just listening, I would express how profoundly his work has shaped my own environmental consciousness. The main reason I would love to meet him is his unparalleled resilience and genuine humility. Despite spending over seven decades at the forefront of natural sciences, he remains utterly dedicated to advocating for planetary preservation. Conversing with someone possessing such vast wisdom, empathy, and firsthand historical experience would truly be a once-in-a-lifetime privilege.",
+   "p3": [
+    "In my view, modern youth are attracted to celebrity status primarily because it promises instant validation, enormous wealth, and elevated social prestige. Digital platforms exacerbate this desire by showcasing glamorous influencer lifestyles. Unlike traditional careers requiring decades of steady effort, internet fame appears deceptively accessible, leading many to believe that public recognition is the quickest route to personal autonomy and fulfillment.",
+    "Yes, I believe they definitely do, because their elevated social reach grants them immense influence over impressionable youth. When celebrities endorse charitable causes or maintain ethical conduct, their followers often emulate those behaviors. Conversely, reckless public actions can normalize harmful attitudes. Therefore, public figures should recognize the societal impact of their visibility and act conscientiously rather than disregarding their social footprint.",
+    "Social platforms have fundamentally collapsed the traditional boundary separating celebrities from their audience. In the past, famous individuals maintained an enigmatic distance, whereas today they share intimate, behind-the-scenes moments daily. While this creates a sense of direct intimacy and democratic connection, it can also breed parasocial delusions, where dedicated fans mistakenly assume they hold genuine, reciprocal friendships with public figures.",
+    "Relentless media scrutiny often inflicts severe psychological tolls on public figures by completely eroding their personal privacy. Paparazzi intrusion and pervasive online judgment mean that even minor missteps are sensationalized across international headlines. Consequently, many celebrities experience chronic anxiety, isolation, and strained personal relationships, as they must continuously navigate life under an intrusive microscope without genuine safe havens.",
+    "Undoubtedly, the criteria for fame are already shifting dramatically toward relatable digital creators and virtual personas rather than traditional artistic virtuosos. As artificial intelligence advances, audiences may admire algorithmic avatars or niche community leaders rather than mainstream movie stars. Ultimately, future fame will likely reward authenticity, interactive audience engagement, and rapid adaptation to emerging technologies more than conventional talent alone."
+   ]
+  }
+ },
+ {
+  "id": "mock-36",
+  "title": "IELTS Speaking Mock Test 36",
+  "titleVi": "Đề thi thử số 36",
+  "focusVi": "Rèn luyện kỹ năng thuật lại sai lầm trong quá khứ, phân tích nguyên nhân và rút ra bài học kinh nghiệm sâu sắc.",
+  "part1": [
+   {
+    "topic": "Leadership",
+    "qs": [
+     "Do you consider yourself a natural leader?",
+     "Have you ever led a team or group project?",
+     "What qualities do you think make an effective leader?",
+     "Would you like to take on more leadership responsibilities in the future?"
+    ]
+   },
+   {
+    "topic": "Job Interviews",
+    "qs": [
+     "Have you ever attended a formal job interview?",
+     "What do you think is the hardest part of an interview?",
+     "How do people usually prepare for job interviews in your country?",
+     "Do you think online interviews are better than face-to-face ones?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a time you made a mistake at work or school.",
+   "bullets": [
+    "what the mistake was",
+    "when and where it happened",
+    "what the consequences were",
+    "and explain why you made this mistake and what you learned from it"
+   ]
+  },
+  "part3": [
+   "Why are some people reluctant to admit their mistakes in public?",
+   "Do you believe that making mistakes is an essential part of the learning process?",
+   "How can teachers or employers encourage a culture where failure is not punished?",
+   "What kinds of mistakes are unacceptable in professional environments?",
+   "Has modern technology made people more or less forgiving of human error?"
+  ],
+  "answers": {
+   "p1": [
+    "Not really, as I generally prefer supporting others rather than directing them. I feel much more comfortable analyzing data or refining details behind the scenes than standing at the forefront managing group dynamics.",
+    "Yes, during my final university year, I coordinated our capstone marketing campaign. It was quite demanding because I had to delegate tasks to four classmates, but we ultimately earned top marks for our teamwork.",
+    "In my view, active listening and empathy are paramount. A truly inspiring leader must understand their team members' strengths and concerns, rather than simply issuing commands without considering how others feel.",
+    "Definitely, because I want to challenge myself and mentor junior colleagues. Stepping into a managerial role would allow me to shape meaningful workplace projects, which sounds both fulfilling and professionally rewarding.",
+    "Yes, I have been through a few, including one for my current position. I remember feeling extremely nervous before entering the boardroom, but the panel was warm and put me at ease quickly.",
+    "I would say answering unexpected situational questions under pressure. When an interviewer asks about a sudden workplace conflict, it is tough to structure a thoughtful, coherent response without stumbling or hesitating.",
+    "Most candidates research the company extensively and rehearse common questions in front of a mirror. Many fresh graduates also seek advice from senior peers or join online career forums to polish their responses.",
+    "Not necessarily. While virtual interviews save commuting time and reduce initial tension, in-person meetings allow both parties to gauge body language and genuine workplace culture far more accurately."
+   ],
+   "sample": "I would like to share an experience from my sophomore year at university when I made a rather embarrassing academic blunder. I was taking an advanced statistics module, and we were assigned a major group project that contributed significantly to our final grade. My role was compiling the final dataset and submitting the consolidated report through the online portal. However, due to severe exhaustion after pulling an all-nighter, I accidentally uploaded an unedited draft containing incomplete calculations instead of the polished file. The consequence hit us the following week when our professor awarded our submission a failing mark for lacking methodology notes. I was devastated because my teammates had worked tirelessly, and my carelessness jeopardized their academic standings. I immediately scheduled a meeting with our lecturer, took full accountability, and showed the file timestamps to prove the completed work had existed before the deadline. Gratefully, she agreed to review the correct document with a minor late penalty. This slip-up taught me that fatigue severely impairs judgment. Since then, I always set reminders to double-check file names and avoid doing crucial submissions at the eleventh hour.",
+   "p3": [
+    "Primarily, it stems from the fear of losing face or damaging one's professional reputation. In highly competitive settings, admitting an error is often perceived as a sign of incompetence rather than honesty. For instance, an employee might conceal an administrative oversight to avoid reprimands from superiors. Consequently, pride and anxiety frequently prevent individuals from being transparent about their shortcomings.",
+    "Undoubtedly, because errors provide tangible feedback that theoretical instruction simply cannot replicate. When people stumble, they are compelled to analyze what went wrong, which deepens their critical thinking and resilience. Conversely, those who never face setbacks rarely develop robust problem-solving skills. Therefore, constructive trial and error is fundamentally the most effective teacher anyone can have.",
+    "Leaders can cultivate this environment by framing slip-ups as developmental opportunities rather than disciplinary offenses. Instead of assigning blame when a project derails, managers should hold open debriefing sessions to dissect root causes collectively. In contrast, punitive systems only foster secrecy and anxiety among staff. Ultimately, psychological safety is what allows innovation and honest problem-solving to flourish.",
+    "I would argue that errors caused by gross negligence or ethical breaches are completely intolerable, particularly in high-stakes fields like healthcare or civil engineering. While minor technical oversights can usually be rectified, ignoring established safety protocols puts lives at risk. An architect cutting corners on structural integrity, for example, cannot be excused. Hence, when intentional neglect causes harm, leniency is rarely warranted.",
+    "I believe technology has made society significantly less forgiving. Because digital footprints are permanent, an individual's past blunders can be archived, publicized, and scrutinized indefinitely on social media platforms. In the pre-internet era, minor personal gaffes were forgotten relatively quickly, whereas today they can trigger immediate public outrage. Thus, hyper-connectivity has substantially narrowed our tolerance for human fallibility."
+   ]
+  }
+ },
+ {
+  "id": "mock-37",
+  "title": "IELTS Speaking Mock Test 37",
+  "titleVi": "Đề thi thử số 37",
+  "focusVi": "Rèn luyện kỹ năng phát triển ý tưởng đa chiều và sử dụng từ vựng nâng cao về các chủ đề gia đình và biến đổi xã hội.",
+  "part1": [
+   {
+    "topic": "Family",
+    "qs": [
+     "Do you have a large family or a small family?",
+     "How much time do you usually spend with your family each week?",
+     "What do you and your family enjoy doing together?",
+     "Who are you closest to in your family?"
+    ]
+   },
+   {
+    "topic": "Weather and Seasons",
+    "qs": [
+     "What kind of weather do you like best?",
+     "Does the weather ever affect your mood?",
+     "Which season is the most popular in your country?",
+     "Do you prefer dry weather or rainy weather?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a family member you spend a lot of time with",
+   "bullets": [
+    "who this person is",
+    "what kinds of things you usually do together",
+    "how often you see each other",
+    "and explain why you enjoy spending time with this person"
+   ]
+  },
+  "part3": [
+   "How have traditional family roles changed in your country in recent decades?",
+   "Do you think older family members still hold the same authority as they did in the past?",
+   "What are the potential drawbacks of children spending less time with their parents?",
+   "In what ways can technology both help and hinder family relationships?",
+   "Should governments provide more financial support to families caring for elderly relatives?"
+  ],
+  "answers": {
+   "p1": [
+    "I come from a nuclear family with just four members, including my parents, my younger sister, and me. It feels cozy and manageable, unlike extended families that can get quite hectic during holidays.",
+    "On weekdays, we only share dinner together due to our busy schedules. However, on Sundays, we dedicate the whole afternoon to catching up, cooking, or relaxing at home.",
+    "We often gather around the living room to watch game shows or cook elaborate weekend meals together. Preparing traditional noodle soups like pho on weekends is our absolute favorite shared pastime.",
+    "I am definitely closest to my mother because she is an empathetic listener. Whenever I face challenges at work, she gives me pragmatic advice, which makes our bond truly special.",
+    "I prefer cool, breezy weather typical of autumn. It is exceptionally comfortable for outdoor activities like cycling or jogging, and I do not have to worry about sweating or getting sunburned.",
+    "Yes, gloomy and drizzly days make me feel lethargic and unmotivated to study. In contrast, bright sunny mornings instantly boost my energy levels and put me in a productive mindset.",
+    "In Vietnam, spring is arguably the most popular season because it hosts the Lunar New Year celebrations. People appreciate the mild temperatures and the lively festive atmosphere across towns and cities.",
+    "I definitely lean towards dry weather. Rain often causes severe traffic congestion in my city and dampens my daily plans, whereas dry conditions allow me to travel freely without any hassle."
+   ],
+   "sample": "I would like to talk about my grandfather, whom I spend a great deal of time with. He is in his late seventies and a retired history teacher. Because we live in the same house, I see him almost every single day, especially in the early mornings and late afternoons. Typically, we start our day by tending to our small rooftop garden together. While watering the bonsai trees and orchids, he often shares fascinating historical anecdotes or discusses current affairs with me. On weekends, we usually play chess over a pot of green tea, which has become our favorite ritual. I really cherish the time we spend together because he has an enormous wealth of wisdom and life experience. Even though there is a substantial generation gap between us, he is surprisingly open-minded and never judges my career choices. Furthermore, his calm demeanor always brings me a sense of peace whenever I feel overwhelmed by modern life. Spending time with him is not just entertaining, but it also grounds me and reminds me of my core values.",
+   "p3": [
+    "In the past, traditional patriarchal structures dictated that fathers were breadwinners while mothers managed domestic chores. Today, gender roles have become remarkably fluid in Vietnam, with many women pursuing thriving corporate careers and fathers actively participating in child-rearing. While this transition empowers women, it also demands flexible scheduling from both partners. Overall, modern households prioritize egalitarian partnership over strict hierarchy.",
+    "I believe their authority has diminished somewhat due to rapid societal shifts. Previously, elders were the ultimate decision-makers whose advice was unquestionable. Nowadays, younger generations have greater access to education and information via the internet, making them more independent thinkers. Although elders are still deeply respected, their counsel is viewed more as guidance rather than absolute commands, reflecting a broader cultural shift towards individualism.",
+    "The primary drawback is the weakening of emotional bonds, which can lead to behavioral issues and isolation among children. When parents are excessively absent due to work commitments, kids often turn to digital devices for companionship instead of learning social norms at home. Conversely, children from engaged households demonstrate higher emotional resilience. Therefore, a lack of parental interaction can hinder a child's healthy psychological development.",
+    "Technology cuts both ways. On the positive side, video calls and messaging apps bridge geographical distances, allowing families to maintain instant contact despite living miles apart. On the other hand, the excessive use of smartphones during family meals fosters alienation, creating a phenomenon known as phubbing. Thus, while technology enables connectivity across distances, it frequently disrupts genuine intimacy in physical spaces.",
+    "Undoubtedly, governments ought to subsidize eldercare because medical expenses and specialized assistance place an immense financial burden on working households. In countries without robust state pensions, families must bear these exorbitant costs alone, which often pushes them into debt. By offering tax incentives or direct subsidies, the state can alleviate domestic stress and ensure that senior citizens receive dignified, high-quality care in their final years."
+   ]
+  }
+ },
+ {
+  "id": "mock-38",
+  "title": "IELTS Speaking Mock Test 38",
+  "titleVi": "Đề thi thử số 38",
+  "focusVi": "Phát triển câu trả lời trừu tượng và sử dụng ngôn ngữ biểu cảm để miêu tả trải nghiệm nghệ thuật.",
+  "part1": [
+   {
+    "topic": "Music",
+    "qs": [
+     "Do you often listen to music when you are studying or working?",
+     "What genres of music are popular among young people in your country?",
+     "Did you learn to play any musical instruments when you were a child?",
+     "Do you prefer listening to live concerts or recorded tracks?"
+    ]
+   },
+   {
+    "topic": "Technology at Home",
+    "qs": [
+     "Which electronic device do you use the most when you are at home?",
+     "Has modern home technology made household chores much easier?",
+     "Are there any smart appliances in your house that you find difficult to use?",
+     "Would you like your home to be fully automated in the future?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a song or piece of music that has had a significant impact on you",
+   "bullets": [
+    "what song or piece of music it is",
+    "when and where you first listened to it",
+    "what the lyrics or melody convey",
+    "and explain why this music has had such a meaningful impact on your life"
+   ]
+  },
+  "part3": [
+   "Why do people of different generations often have distinct musical tastes?",
+   "In what ways can traditional folk music help preserve cultural heritage?",
+   "Has the rise of digital streaming platforms affected the quality of modern music?",
+   "Should schools make musical education compulsory for all children?",
+   "How can governments effectively support independent musicians and emerging artists?"
+  ],
+  "answers": {
+   "p1": [
+    "Yes, I regularly play instrumental lo-fi beats while working. It drowns out ambient background noise and boosts my productivity, especially during demanding tasks like writing reports.",
+    "V-pop and hip-hop definitely dominate among Vietnamese youth today. Catchy melodies blended with rap verses are extremely trendy, and they frequently go viral on social media platforms like TikTok.",
+    "I briefly tried learning the piano when I was ten, but I lacked patience. Practicing repetitive scales every afternoon felt tedious, so I eventually quit after a few months.",
+    "I prefer recorded tracks because of the superior sound clarity. While live concerts offer electrifying energy, recorded audio lets me appreciate subtle nuances through my noise-canceling headphones without distractions.",
+    "My laptop is definitely the gadget I rely on most. I use it for attending remote meetings, researching information, and unwinding with streaming series after a hectic workday.",
+    "Undoubtedly, smart appliances have revolutionized domestic life. For instance, our robotic vacuum cleaner tidies the living room floors automatically, freeing up precious evening hours for my family to relax together.",
+    "Actually, my grandparents struggle with our smart microwave because of its digital touch controls. Traditional physical dials were much simpler, whereas multi-step digital interfaces can often be bewildering for seniors.",
+    "To be honest, I would love that convenience. Having lighting, air conditioning, and security systems synchronize seamlessly via voice commands would drastically improve comfort and streamline daily routines."
+   ],
+   "sample": "I’d like to talk about 'A Million Dreams' from the musical The Greatest Showman. It is an uplifting pop ballad that I first encountered back in 2018 during my final year of high school, while watching the film at a local cinema with close friends. The song begins with a gentle piano melody before swelling into an inspiring, powerful chorus. Lyrically, it portrays someone daring to envision a brighter, extraordinary future despite current hardships. The core message is about perseverance, unshakeable ambition, and believing in possibilities when others doubt you. This piece has had a profound impact on my life because it became my personal anthem during stressful college entrance exams. Whenever academic burnout or self-doubt crept in, listening to those soaring vocals instantly reignited my determination. Even now, whenever I face professional hurdles or creative blocks at work, putting this track on helps me regain perspective and reminds me why pursuing long-term aspirations is worth the temporary struggle. It simply never fails to give me goosebumps and lift my spirits.",
+   "p3": [
+    "In my view, musical tastes are fundamentally shaped by the socio-cultural environment during one’s formative years. Older generations usually gravitate toward acoustic or classic genres that evoke nostalgia for simpler times, whereas teenagers today gravitate toward electronic synthesizers and fast-paced beats that reflect modern digital culture. Consequently, music acts as a generational marker, reflecting different lifestyles and shifting societal values.",
+    "Traditional music serves as a living archive of a nation's history, folklore, and collective memory. Songs often embed indigenous languages, poetic storytelling, and customary rituals that might otherwise vanish in an era of rapid globalization. For instance, Vietnamese Quan Ho singing preserves ancient courtship traditions and regional dialects. Without these musical traditions, future generations would lose an emotional bridge to their ancestral roots.",
+    "I believe streaming has produced mixed outcomes for musical artistry. On one hand, algorithms incentivize shorter, formulaic tracks designed to hook listeners within five seconds, arguably diminishing lyrical depth. However, it also democratizes production, allowing avant-garde creators to distribute experimental work globally without record label interference. Ultimately, while commercial pop may sound repetitive, true musical innovation remains highly vibrant.",
+    "I strongly advocate for mandatory music lessons in elementary curricula. Learning an instrument fosters cognitive dexterity, patience, and team coordination far better than purely academic subjects. While some skeptics argue that schools should focus exclusively on STEM fields, exposure to melody and rhythm stimulates creative problem-solving and emotional well-being. Therefore, a balanced education should definitely integrate formal musical training for every pupil.",
+    "Governments should establish dedicated cultural grants and subsidize affordable studio rehearsal spaces. Many promising artists abandon creative careers because commercial venues and production gear are prohibitively expensive. In countries like South Korea, state-backed cultural incubators and public performance festivals have successfully propelled domestic talent onto global stages. Providing reliable safety nets ensures diverse artistic expression survives alongside major corporate entertainment franchises."
+   ]
+  }
+ },
+ {
+  "id": "mock-39",
+  "title": "IELTS Speaking Mock Test 39",
+  "titleVi": "Đề thi thử số 39",
+  "focusVi": "Mở rộng câu trả lời tự nhiên bằng cách kết hợp lý do, ví dụ thực tế và từ vựng mang tính mô tả cao.",
+  "part1": [
+   {
+    "topic": "Hometown",
+    "qs": [
+     "Where is your hometown located?",
+     "What do you like most about living there?",
+     "Has your hometown changed much since you were a child?",
+     "Would you prefer to live in your hometown in the future?"
+    ]
+   },
+   {
+    "topic": "Shopping",
+    "qs": [
+     "How often do you go shopping for clothes?",
+     "Do you prefer shopping in physical stores or online?",
+     "Have your shopping habits changed recently?",
+     "What kind of shops are most popular in your neighborhood?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe an interesting conversation you had with someone you did not know well",
+   "bullets": [
+    "who this person was",
+    "where and when you met them",
+    "what you talked about",
+    "and explain why you found this conversation so interesting"
+   ]
+  },
+  "part3": [
+   "Why do some people find it difficult to talk to strangers?",
+   "How has technology altered the way people communicate on a daily basis?",
+   "Is face-to-face communication always superior to online communication?",
+   "Do young people communicate differently compared to older generations?",
+   "What qualities make someone an exceptionally good listener in a conversation?"
+  ],
+  "answers": {
+   "p1": [
+    "My hometown is Da Nang, a coastal city situated in central Vietnam. It is renowned for its picturesque sandy beaches, bridges, and relaxed atmosphere compared to bustling metropolises like Hanoi or Ho Chi Minh City.",
+    "I truly appreciate the culinary scene and the friendly locals. The street food, especially local noodle dishes like Mi Quang, is both affordable and flavorful, which makes everyday life genuinely delightful.",
+    "Tremendously, to be honest. Over the past decade, rapid urbanisation has replaced traditional houses with high-rise hotels along the coastline, boosting tourism but also increasing road traffic noticeably.",
+    "Definitely, because it offers an ideal balance between career prospects and quality of life. Unlike chaotic megacities, my hometown provides clean air and scenic nature, which suits my long-term lifestyle goals.",
+    "I usually buy new clothes once every couple of months. I only shop when necessary, like picking up warm jackets for winter, rather than following fast-fashion trends impulsively.",
+    "I definitely lean towards online shopping because of convenience and competitive pricing. Platforms like Shopee allow me to compare customer reviews and purchase items anytime without having to queue up.",
+    "Yes, I have become much more budget-conscious recently. In the past, I bought things randomly, but now I research discounts and prioritize durable goods, like buying second-hand electronics.",
+    "Convenience stores and open-air grocery markets are definitely the most common. Residents frequently visit mini-marts like WinMart to grab fresh produce, snacks, and daily household essentials within walking distance."
+   ],
+   "sample": "A memorable conversation I had with a stranger took place about six months ago on an overnight train from Hanoi to Hue. I was seated opposite an elderly Japanese architect who was traveling across Southeast Asia to study traditional vernacular architecture. At first, we simply exchanged polite nods, but soon struck up a dialogue about the passing scenery. The conversation quickly deepened as he shared his insights on how ancient Vietnamese wooden houses naturally adapt to humid tropical climates without modern air conditioning. He pointed out subtle design features, such as raised stilts and porous ceramic roof tiles, illustrating concepts with quick sketches in his travel notebook. What made this discussion thoroughly captivating was his genuine enthusiasm and ability to reveal hidden beauty in everyday buildings I had always taken for granted. Listening to an international specialist analyze my own country's cultural heritage gave me a fresh perspective on traditional design. By the time we arrived at the station, hours had flown by, leaving me feeling intellectually stimulated and grateful for such an impromptu encounter.",
+   "p3": [
+    "Many individuals struggle to converse with strangers primarily due to social anxiety and fear of negative judgment. People worry about awkward silences or making an unfavorable impression. For instance, introverts often overthink their opening lines, whereas extroverts initiate small talk effortlessly without apprehension. Ultimately, this hesitation stems from an innate human desire to protect one's social standing and avoid rejection.",
+    "Technology has shifted daily communication toward instantaneous, text-based platforms at the expense of spontaneous, in-depth verbal exchanges. Messaging apps allow people to communicate across continents seamlessly, yet they eliminate emotional nuances like tone and body language. For example, people often send brief emojis instead of having meaningful phone calls. Consequently, while our connectivity has expanded significantly, the depth of interpersonal connection has somewhat diminished.",
+    "In my view, face-to-face interaction is generally superior for emotional bonding, but not necessarily in every context. In-person discussions convey empathy, subtle facial cues, and trust, which are critical for resolving conflicts. Conversely, digital communication is far more practical and time-efficient for routine tasks, such as remote corporate meetings or international collaboration. Therefore, the optimal medium depends largely on the communicative purpose.",
+    "Undeniably, generational differences in communication styles are quite pronounced. Younger people tend to favor informal, shorthand digital expressions, including memes, voice notes, and slang. In contrast, older generations usually value structured, formal language and prefer direct phone calls or physical visits. This difference often reflects the distinct technological environments each demographic grew up with, resulting in divergent communication habits.",
+    "An exceptional listener demonstrates active engagement rather than merely waiting for their turn to speak. This involves showing empathy, maintaining appropriate eye contact, and withholding premature judgments. For instance, skilled listeners ask clarifying questions that encourage the speaker to elaborate on their thoughts without interruption. In essence, genuine attentiveness and emotional presence define a truly supportive conversation partner."
+   ]
+  }
+ },
+ {
+  "id": "mock-40",
+  "title": "IELTS Speaking Mock Test 40",
+  "titleVi": "Đề thi thử số 40",
+  "focusVi": "Rèn luyện kỹ năng phân tích lý do dẫn đến sự thay đổi, mở rộng quan điểm cá nhân và bàn luận các vấn đề trừu tượng một cách đa chiều.",
+  "part1": [
+   {
+    "topic": "Studies",
+    "qs": [
+     "What subject do you find most challenging in your current studies?",
+     "Do you prefer studying alone or collaborating with classmates?",
+     "How have your study habits changed compared to when you were in secondary school?",
+     "Do you think modern technology has made studying easier or more stressful?"
+    ]
+   },
+   {
+    "topic": "Friends",
+    "qs": [
+     "How often do you usually spend time hanging out with your friends?",
+     "What qualities do you value most in a close friend?",
+     "Do you prefer having a few close friends or a large social circle?",
+     "Is it easy for you to make new friends when visiting unfamiliar places?"
+    ]
+   }
+  ],
+  "part2": {
+   "prompt": "Describe a time when you changed your mind about an important decision.",
+   "bullets": [
+    "what the initial decision was",
+    "what made you reconsider your choice",
+    "what new decision you made instead",
+    "and explain how you felt after making this change"
+   ]
+  },
+  "part3": [
+   "Why do some people find it difficult to admit they were wrong and change their mind?",
+   "How do opinions formed in childhood differ from those held in adulthood?",
+   "To what extent can advertising influence consumers to change their purchasing decisions?",
+   "Do you believe strong leaders should stick to their initial decisions or remain adaptable?",
+   "In what ways has the internet affected how people form and alter their viewpoints?"
+  ],
+  "answers": {
+   "p1": [
+    "I find advanced mathematics particularly demanding because it requires deep abstract reasoning. Whenever I deal with complex calculus formulas, I often have to spend hours re-reading lecture slides to fully grasp the concepts.",
+    "I definitely prefer studying alone because it allows me to concentrate without distractions. For example, when revising for final exams, working in absolute silence in my bedroom helps me absorb information much faster.",
+    "I am far more self-disciplined now than in secondary school. Back then, my teachers constantly monitored my homework, whereas nowadays at university, I plan my own revision timetable using digital calendar apps.",
+    "I believe technology makes learning substantially easier because information is instantly accessible. Whenever I encounter an unfamiliar academic term, I can immediately look up verified journal articles online instead of searching through library shelves.",
+    "I usually meet up with my friends once or twice a week, typically on weekends. We often unwind at a quiet local café in downtown Hanoi to chat about our work and daily lives.",
+    "Above all, I value sincerity and empathy in a friend. A trustworthy friend who genuinely listens during tough times, like my best friend Minh does, is someone I treasure above everything else.",
+    "I lean towards having a small circle of intimate friends. Having four or five genuine companions allows for deeper, more meaningful emotional support, whereas having dozens of acquaintances often feels superficial and exhausting.",
+    "Honestly, it can be slightly intimidating at first, but I manage quite well. For instance, when I travel solo to Da Nang, striking up casual conversations at community hostels helps me make friends easily."
+   ],
+   "sample": "I’d like to share an experience from two years ago when I completely reconsidered my academic path. Initially, I was determined to major in business administration at university, mostly because my parents strongly encouraged me to follow a traditional corporate career. However, during the summer before enrollment, I volunteered at a non-profit community project that involved designing educational content for underprivileged children. Working hands-on with graphic tools and digital media made me realize that my true passion lay in creative arts and graphic design, rather than corporate spreadsheets. I spent weeks reflecting deeply and discussing my aspirations with my mentors, who encouraged me to pursue what genuinely excited me. Consequently, I gathered my courage, sat down with my parents, and decided to switch my major to digital multimedia design instead. It was quite a daunting choice because it meant entering an unfamiliar field with less conventional career stability. Ultimately, I felt an immense sense of relief and liberation. Embracing my creative intuition gave me authentic enthusiasm for my studies, and looking back, it remains one of the best decisions I have ever made.",
+   "p3": [
+    "Many individuals struggle to change their stance because personal ego and pride often cloud objective thinking. Admitting an error can feel like an embarrassing sign of intellectual weakness or vulnerability. For instance, in workplace debates, professionals sometimes cling to outdated strategies simply to protect their authority. Ultimately, overcoming this fear requires emotional maturity and an openness to constructive criticism.",
+    "Childhood opinions are predominantly inherited from parental guidance and immediate social environments without much critical evaluation. In contrast, adults tend to develop nuanced perspectives shaped by diverse life experiences, higher education, and exposure to contrasting viewpoints. While a child might view moral dilemmas in black and white, a mature adult typically recognizes contextual subtleties before arriving at a balanced judgment.",
+    "Commercial advertising exercises tremendous psychological leverage over consumer behavior by appealing to emotional aspirations. Even if a shopper enters a store intending to buy a budget-friendly smartphone, aggressive promotional campaigns highlighting premium lifestyle imagery can sway them into purchasing a far pricier model. Therefore, marketing strategies frequently succeed in reshaping buyers' preferences through persuasive visual storytelling and targeted endorsements.",
+    "In my view, truly effective leadership demands cognitive flexibility rather than stubborn consistency. While sticking to core ethical principles is vital, blindly pursuing an initial plan amid changing market dynamics often leads to organizational failure. Great political and business leaders readily pivot when new evidence emerges, demonstrating pragmatic wisdom rather than indecisiveness, which ultimately inspires greater public confidence.",
+    "The internet serves as a double-edged sword regarding intellectual flexibility. On one hand, instant access to global research allows individuals to fact-check beliefs and broaden their horizons. Conversely, social media algorithms often trap users within ideological echo chambers, reinforcing existing biases rather than encouraging open debate. Consequently, while information is abundant, truly shifting one's mindset online requires deliberate discernment."
+   ]
+  }
  }
 ]

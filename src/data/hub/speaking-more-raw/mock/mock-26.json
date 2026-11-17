@@ -1,0 +1,62 @@
+{
+ "id": "mock-26",
+ "title": "IELTS Speaking Mock Test 26",
+ "titleVi": "Đề thi thử số 26",
+ "focusVi": "Rèn luyện kỹ năng khắc họa tính cách nhân vật thông qua trải nghiệm cá nhân kết hợp lập luận trừu tượng ở Phần 3.",
+ "part1": [
+  {
+   "topic": "Weekends",
+   "qs": [
+    "How do you usually spend your weekends?",
+    "Did you enjoy weekends more when you were a child?",
+    "Do you think weekends are long enough nowadays?",
+    "What new activity would you like to try on a future weekend?"
+   ]
+  },
+  {
+   "topic": "Pets and Animals",
+   "qs": [
+    "Do you or your family keep any pets at home?",
+    "What kinds of animals are popular as pets in your country?",
+    "Why do some people prefer not to have pets?",
+    "Did you learn about wild animals at school when you were younger?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a person you know who often makes you laugh.",
+  "bullets": [
+   "who this person is",
+   "how you first met them",
+   "what kind of things they do or say to make people laugh",
+   "and explain why you enjoy their sense of humour so much"
+  ]
+ },
+ "part3": [
+  "Why do people value a good sense of humour in everyday relationships?",
+  "In what ways can comedy influence social or political attitudes?",
+  "Do different generations find the same types of jokes funny?",
+  "Can using humour ever be inappropriate in professional settings?",
+  "How has the internet changed the way people consume comedic content?"
+ ],
+ "answers": {
+  "p1": [
+   "I usually spend my weekends unwinding outdoors. On Saturdays, I typically catch up with close friends at a local café, while Sundays are reserved for reading and recharging before another demanding week of work.",
+   "Definitely, because I had virtually no responsibilities back then. As a schoolchild, Saturdays meant endless games of football in the yard, whereas today my weekends are often consumed by chores and study commitments.",
+   "Honestly, I think two days feel rather rushed. By the time I finish household errands, there is hardly any downtime left, so a three-day weekend would offer much healthier work-life balance.",
+   "I would love to try paddleboarding on West Lake soon. Many colleagues have recommended it as a refreshing outdoor workout, and I think it would be a fantastic way to escape screen fatigue.",
+   "Yes, my family currently has a mischievous ginger cat named Miu. We adopted him two years ago, and playing with him in the evening always relieves stress after a long day.",
+   "Dogs and cats are by far the most common in Vietnam. In urban apartments, small toy breeds like poodles or French bulldogs are especially trendy because they adapt well to confined indoor spaces.",
+   "Keeping pets demands substantial time, patience, and money. Some individuals avoid them due to severe fur allergies, while others travel frequently for work and cannot provide consistent daily companionship.",
+   "Yes, we had biology lessons focusing on native wildlife and conservation. I vividly remember our teacher showing documentaries about endangered species like the Javan rhino, which sparked my fascination with biodiversity."
+  ],
+  "sample": "I would like to talk about my close friend Nam, who is easily the funniest person in my social circle. We first crossed paths during our freshman year at university when we were randomly assigned as lab partners in chemistry. At first, he seemed rather reserved, but within ten minutes, his sharp wit completely transformed our dull lab session.\n\nNam has an incredible knack for observational comedy. He mimics professors' quirky gestures with pinpoint accuracy and always manages to find the absurdity in stressful everyday situations, like surviving public transit during torrential downpours. Rather than telling rehearsed jokes, he relies on spontaneous, self-deprecating remarks that instantly diffuse tension whenever our group feels overwhelmed.\n\nWhat I appreciate most about his humour is that it is genuinely warm-hearted. Nam never resorts to mean-spirited mockery or offensive banter to get a cheap laugh. Instead, his lighthearted optimism brings everyone together and puts people at ease, even when we are dealing with high-pressure deadlines. Being around someone with that infectious cheerfulness is a true blessing, and he never fails to brighten my day.",
+  "p3": [
+   "In my view, humour acts as a social catalyst that builds instant rapport between individuals. When people laugh together, it releases tension and establishes mutual trust, making interpersonal communication smoother. In contrast, relationships devoid of humour often feel overly formal and strained. For instance, couples who share lighthearted moments typically navigate conflicts far more constructively. Ultimately, humour strengthens emotional bonds and makes daily interactions significantly more enjoyable.",
+   "Satirical comedy has immense power to challenge entrenched societal norms and critique authority constructively. By wrapping sharp criticism in entertaining formats, comedians make complex civic issues accessible to ordinary citizens who might otherwise ignore dry political debates. For example, popular television parodies frequently expose institutional hypocrisy more effectively than conventional journalism. Consequently, thoughtful comedy can stimulate critical thinking and raise public awareness on pressing issues.",
+   "Generally speaking, comedic tastes vary dramatically across generations due to contrasting cultural touchstones. Older individuals often prefer narrative-driven anecdotes, situational comedies, or traditional wordplay grounded in shared social etiquette. Conversely, Gen Z leans heavily toward surrealist internet memes, ironies, and rapid visual humor spread via platforms like TikTok. Therefore, while fundamental human emotions remain identical, the stylistic formats of humour inevitably diverge over time.",
+   "Undoubtedly, humour can backfire dramatically in corporate environments if it crosses professional boundaries. Sarcasm or jokes targeting sensitive personal traits like gender or ethnicity can foster a toxic, exclusionary workplace atmosphere. While self-effacing humor during icebreakers can ease collective anxiety, formal negotiations and disciplinary reviews require sober seriousness. Ultimately, professionals must exercise emotional intelligence and read the room to ensure levity does not compromise mutual respect.",
+   "The internet has revolutionized comedy by shifting consumption from scheduled television broadcasts to on-demand, bite-sized digital media. Algorithms now deliver hyper-personalized sketch clips, stand-up snippets, and interactive memes directly to users' feeds around the clock. While traditional audiences patiently watched hour-long specials, modern viewers expect punchlines delivered within seconds. In summary, digital media has democratized comedic production while drastically shrinking our collective attention spans."
+  ]
+ }
+}

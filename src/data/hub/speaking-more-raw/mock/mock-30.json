@@ -1,0 +1,62 @@
+{
+ "id": "mock-30",
+ "title": "IELTS Speaking Mock Test 30",
+ "titleVi": "Đề thi thử số 30",
+ "focusVi": "Luyện tập kỹ năng trình bày nguyện vọng nghề nghiệp tương lai kết hợp phân tích đa chiều các xu hướng lao động hiện đại.",
+ "part1": [
+  {
+   "topic": "Jobs and Careers",
+   "qs": [
+    "What kind of work do you do, or are you currently studying?",
+    "Why did you choose that particular line of work or study?",
+    "Do you think your job or major will change much in the future?",
+    "What skills do you think are most important for young professionals today?"
+   ]
+  },
+  {
+   "topic": "Teamwork",
+   "qs": [
+    "Do you prefer working alone or as part of a team?",
+    "When was the last time you collaborated with others on a project?",
+    "What makes a person a good team player?",
+    "Are there any disadvantages to working in a group?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a job you would like to do in the future",
+  "bullets": [
+   "what the job is",
+   "what qualifications or skills are needed for it",
+   "how you first became interested in this field",
+   "and explain why you would like to pursue this career"
+  ]
+ },
+ "part3": [
+  "How has technology transformed traditional career paths over recent decades?",
+  "Do you believe high salaries are more important than job satisfaction for modern workers?",
+  "To what extent should universities design their courses based primarily on employers' needs?",
+  "Why are some people reluctant to switch careers later in life?",
+  "How might artificial intelligence reshape the definition of meaningful employment in the future?"
+ ],
+ "answers": {
+  "p1": [
+   "I am currently working as a graphic designer for a marketing firm in Hanoi. I create digital assets like banners and social media templates, which allows me to explore my creativity on daily assignments.",
+   "I chose graphic design because visual storytelling has always fascinated me since high school. Seeing my concepts transform into compelling brand identities gives me a genuine sense of personal achievement.",
+   "Yes, definitely, because generative AI is rapidly transforming creative workflows. I will need to master new digital tools and prompt engineering to remain competitive in the creative industry.",
+   "In my view, adaptability and strong communication are essential. Industries change quickly nowadays, so professionals who can easily learn new software and collaborate effectively will thrive much faster.",
+   "I generally prefer team projects because diverse perspectives lead to richer ideas. For example, brainstorming alongside copywriters often helps me produce much sharper visual concepts than working in isolation.",
+   "Just last week, my team launched a brand campaign for an eco-friendly client. We held daily stand-up meetings to coordinate illustrations and content deadlines, ensuring smooth progress overall.",
+   "A dependable team player listens actively and communicates transparently. For instance, when someone faces an unexpected delay, taking initiative to assist without judging keeps group morale high.",
+   "Group work can sometimes breed conflict or slow down decision-making. In fact, if team members hold clashing opinions or unequal commitment, reaching consensus can become frustratingly prolonged."
+  ],
+  "sample": "If I could pursue any profession in the future, I would love to work as an environmental data analyst. This role involves collecting ecological data, interpreting climate models, and helping organisations make sustainable operational decisions. To thrive in this field, one needs a solid background in data science, proficiency in programming languages like Python or R, and deep ecological literacy. Additionally, strong analytical thinking and persuasive communication skills are crucial to convey complex climate trends to non-specialists. I first developed an interest in this niche during my university days when I volunteered for a wetland conservation campaign. Seeing firsthand how accurate data helped local authorities formulate better flood mitigation policies truly opened my eyes to the power of numbers in environmental protection. Ultimately, I would like to do this job because it merges my passion for statistical analysis with my desire to tackle real-world climate crises. Rather than simply working for corporate profit, producing insights that directly safeguard natural ecosystems and support sustainable community development would grant me a profound sense of purpose.",
+  "p3": [
+   "Technology has undeniably dismantled conventional lifelong employment, ushering in agile, digital-first roles. For instance, while administrative clerks have dwindled due to automated software, remote programming and digital marketing positions have proliferated. Consequently, professionals can no longer rely on a static skill set; instead, continuous lifelong upskilling has become an absolute necessity to stay relevant in a volatile employment market.",
+   "While a handsome remuneration package is vital for meeting living costs, long-term career fulfillment typically hinges on job satisfaction. High earners often experience severe burnout if their daily responsibilities lack meaning or create chronic stress. Conversely, individuals who feel valued and intellectually stimulated tend to remain committed and emotionally resilient. Therefore, a balance is ideal, but genuine satisfaction ultimately sustains a person's working life.",
+   "Higher education should certainly align its curricula with industry demands to enhance graduate employability, yet doing so exclusively is shortsighted. Vocational training addresses immediate corporate needs, but universities must also nurture critical thinking, ethical reasoning, and scholarly curiosity. Without these broader humanities-based competencies, graduates may struggle to adapt when market dynamics inevitably shift. Thus, a balanced curriculum integrating practical skills and intellectual foundations is optimal.",
+   "A primary deterrent is the financial uncertainty associated with starting afresh in an unfamiliar sector. Mature professionals often have mortgages and family dependents, making the prospect of accepting an entry-level salary daunting. Furthermore, psychological inertia and fear of failure can hinder decisive action, especially after establishing a respected reputation in one's current field. Hence, these pragmatic and emotional risks frequently outweigh potential personal fulfillment elsewhere.",
+   "As artificial intelligence automates routine cognitive and manual duties, meaningful employment will increasingly centre on uniquely human attributes like empathy, creativity, and strategic ethics. Instead of measuring productivity solely by technical output, roles in healthcare, artistic creation, and social enterprise will gain greater cultural prestige. Ultimately, people will judge a career's worth not by repetitive efficiency, but by its capacity to foster human connection and positive social impact."
+  ]
+ }
+}

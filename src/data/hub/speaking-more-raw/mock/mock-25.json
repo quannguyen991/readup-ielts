@@ -1,0 +1,62 @@
+{
+ "id": "mock-25",
+ "title": "IELTS Speaking Mock Test 25",
+ "titleVi": "Đề thi thử số 25",
+ "focusVi": "Luyện tập kỹ năng miêu tả chi tiết không gian học tập, làm việc và thảo luận đa chiều về môi trường làm việc hiện đại.",
+ "part1": [
+  {
+   "topic": "Daily Routine",
+   "qs": [
+    "What is the busiest part of the day for you?",
+    "Do you usually follow the same routine every day?",
+    "Have you made any changes to your daily schedule recently?",
+    "Do you think having a set daily routine is important?"
+   ]
+  },
+  {
+   "topic": "Cooking",
+   "qs": [
+    "Do you often cook your own meals at home?",
+    "What kind of food do you find easiest to prepare?",
+    "Did you learn how to cook when you were a child?",
+    "Do you prefer cooking for yourself or for other people?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a place where you study or work.",
+  "bullets": [
+   "where this place is located",
+   "what it looks like and what facilities it has",
+   "how often you go there to study or work",
+   "and explain why this place is suitable for your productivity"
+  ]
+ },
+ "part3": [
+  "How do environmental factors such as lighting and noise affect a person's work performance?",
+  "Why are open-plan offices becoming less popular in modern companies?",
+  "Do you think working remotely from home is better than working in a traditional office?",
+  "What measures can employers take to design healthier workplaces for their staff?",
+  "How might advancements in virtual reality change where and how people work in the future?"
+ ],
+ "answers": {
+  "p1": [
+   "My mornings are definitely the most hectic because I have to juggle commuting and early meetings. For example, between eight and ten, my inbox is flooded, so I barely have time for coffee.",
+   "Generally yes, as consistency helps me stay productive throughout the week. On weekdays, I wake up at six and start reviewing tasks, though my weekends are far more flexible and spontaneous.",
+   "Yes, I recently started setting aside thirty minutes before bed for reading instead of scrolling on my phone. This small adjustment has noticeably improved both my sleep quality and focus the next day.",
+   "I believe it is crucial because it reduces decision fatigue and keeps you organized. When you have structured habits, like exercising after work, you are less likely to procrastinate on important goals.",
+   "I try to cook at home most weeknights since it is healthier and more cost-effective. For instance, I usually prepare simple stir-fries with fresh vegetables instead of relying on takeout meals.",
+   "I find pasta dishes the simplest to make because boiling noodles and adding a jar of sauce takes under fifteen minutes. It is my reliable go-to dish whenever I come home exhausted from work.",
+   "Not really, as my mother handled all the cooking while I focused on schoolwork. I only picked up basic culinary skills in university when I had to fend for myself in a shared flat.",
+   "I much prefer cooking for friends and family because sharing food creates a wonderful social bond. Seeing everyone enjoy a hot meal I prepared together on a weekend is incredibly rewarding for me."
+  ],
+  "sample": "I would like to talk about a local independent café called The Study Nook, which is situated just a short stroll from my apartment. Visually, it has a warm, minimalist aesthetic with exposed brick walls, timber desks, and an abundance of hanging plants. The café is equipped with ergonomic chairs, high-speed Wi-Fi, and plenty of power outlets beside every workstation. There is also a quiet corner specifically designated for focused work where conversation is kept to a minimum. I visit this place about three or four times a week, usually during the afternoons when I need a change of scenery from my home office. Working from home can sometimes feel stifling, so heading there gives my day structure. The main reason this café suits my productivity so well is its ambient atmosphere. The background hum of subdued jazz and the aroma of roasted coffee beans stimulate my concentration rather than distracting me. Furthermore, surrounded by other remote workers diligently typing away, I feel naturally compelled to stay on task and avoid procrastinating on my projects.",
+  "p3": [
+   "In my view, ambient conditions directly dictate cognitive efficiency. Proper natural lighting reduces eye strain, while excess noise creates constant interruptions that fracture concentration. For example, employees in dim, noisy spaces often experience fatigue and make more errors compared to those in well-regulated environments. Therefore, maintaining optimal lighting and acoustic control is indispensable for sustaining high work quality.",
+   "I believe open layouts are declining because they frequently compromise employee focus. Although initially designed to foster spontaneous collaboration, they often generate excessive chatter and visual distractions. Studies show that staff members wear noise-cancelling headphones simply to carve out privacy in these shared spaces. Consequently, many corporations are pivoting toward hybrid setups with dedicated quiet zones instead.",
+   "From my perspective, both models offer distinct advantages depending on individual roles. Remote work eliminates stressful commutes and allows greater flexibility, which many find liberating. However, physical offices still facilitate spontaneous brainstorming and team bonding that digital calls cannot replicate. Ultimately, a balanced hybrid model combining both environments seems to offer the most practical compromise.",
+   "Employers can promote staff well-being by integrating ergonomic furniture and dedicated wellness areas. Investing in adjustable standing desks and natural indoor greenery, for instance, alleviates physical stiffness and lowers mental stress during long shifts. While these upgrades require upfront capital, they significantly reduce burnout and absenteeism in the long run. Thus, investing in physical comfort benefits both staff and employers.",
+   "I anticipate that virtual reality will make physical geography largely irrelevant to corporate collaboration. Instead of commuting to physical boardrooms, professionals from across the globe could meet in immersive virtual environments that mimic real-life interactions accurately. While technical barriers and motion fatigue remain hurdles today, this technology will likely redefine workspaces by eliminating corporate offices altogether within decades."
+  ]
+ }
+}

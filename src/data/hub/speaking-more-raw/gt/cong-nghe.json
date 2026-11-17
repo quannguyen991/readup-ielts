@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-cong-nghe-1",
+  "level": "EASY",
+  "title": "Recommending Your Favorite Useful App",
+  "titleVi": "Giới thiệu ứng dụng điện thoại yêu thích",
+  "situationVi": "Bạn đang trò chuyện giờ giải lao với một đồng nghiệp muốn quản lý công việc và tài chính cá nhân hiệu quả hơn trên điện thoại.",
+  "task": "Tell your coworker about a mobile app you use every day. Explain what it does, why it helps you, and suggest how they can get started using it.",
+  "mustVi": [
+   "Tên ứng dụng và công dụng chính của nó trong đời sống hàng ngày",
+   "Lý do bạn thích và ứng dụng này đã giúp bạn tiết kiệm thời gian hoặc tiền bạc ra sao",
+   "Lời khuyên giúp đồng nghiệp bắt đầu cài đặt và làm quen với ứng dụng"
+  ],
+  "phrases": [
+   {
+    "en": "I use it on a daily basis",
+    "vi": "Tôi dùng nó hàng ngày",
+    "ex": "I use it on a daily basis to track my spending."
+   },
+   {
+    "en": "The interface is very user-friendly",
+    "vi": "Giao diện rất thân thiện và dễ dùng",
+    "ex": "The interface is very user-friendly, so you will learn it fast."
+   },
+   {
+    "en": "It helps me keep track of...",
+    "vi": "Nó giúp tôi theo dõi...",
+    "ex": "It helps me keep track of my monthly expenses and savings."
+   },
+   {
+    "en": "One feature I really like is...",
+    "vi": "Một tính năng tôi thực sự thích là...",
+    "ex": "One feature I really like is the automatic budget reminder."
+   },
+   {
+    "en": "You can download it for free",
+    "vi": "Bạn có thể tải nó hoàn toàn miễn phí",
+    "ex": "You can download it for free on both iOS and Android."
+   },
+   {
+    "en": "Give it a try",
+    "vi": "Hãy dùng thử xem sao",
+    "ex": "Give it a try this weekend and see if it fits your needs."
+   }
+  ],
+  "sample": "Hey Minh, you should definitely check out Notion. It's an all-in-one productivity app that I use on a daily basis. The interface is very user-friendly, and it helps me keep track of both work deadlines and personal budgets in one convenient place. One feature I really like is the customizable templates, which save me tons of planning time each week. You can download it for free on the App Store or Google Play. I suggest starting with a simple to-do list template so you don't feel overwhelmed. Give it a try this evening!",
+  "tipVi": "Hãy dùng giọng điệu hào hứng, thân thiện và sử dụng các tính từ đơn giản miêu tả trải nghiệm người dùng."
+ },
+ {
+  "id": "gt-cong-nghe-2",
+  "level": "EASY",
+  "title": "Reporting a Home Internet Outage",
+  "titleVi": "Báo sự cố mất mạng internet tại nhà",
+  "situationVi": "Đường truyền internet nhà bạn đột ngột ngừng hoạt động khi bạn đang làm việc từ xa, và bạn gọi đến đường dây nóng hỗ trợ kỹ thuật của nhà mạng.",
+  "task": "You are calling your internet service provider's customer hotline. Explain the issue you are facing, mention what steps you have already tried, and request urgent technical assistance.",
+  "mustVi": [
+   "Nêu rõ vấn đề mất mạng xảy ra từ lúc nào và tình trạng đèn tín hiệu trên modem",
+   "Các thao tác tự khắc phục bạn đã làm (khởi động lại modem, kiểm tra dây cáp) nhưng không hiệu quả",
+   "Nhấn mạnh tính cấp bách của công việc và yêu cầu cử kỹ thuật viên hỗ trợ"
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling to report an issue with...",
+    "vi": "Tôi gọi điện để báo cáo sự cố về...",
+    "ex": "I'm calling to report an issue with my home Wi-Fi connection."
+   },
+   {
+    "en": "The internet connection dropped suddenly",
+    "vi": "Mạng internet đột ngột bị ngắt",
+    "ex": "The internet connection dropped suddenly about two hours ago."
+   },
+   {
+    "en": "The optical light is blinking red",
+    "vi": "Đèn báo tín hiệu quang đang nhấp nháy đỏ",
+    "ex": "The optical light is blinking red on the main router."
+   },
+   {
+    "en": "I've tried restarting the router",
+    "vi": "Tôi đã thử khởi động lại bộ định tuyến",
+    "ex": "I've tried restarting the router twice, but nothing changed."
+   },
+   {
+    "en": "I work remotely, so it's quite urgent",
+    "vi": "Tôi làm việc từ xa nên việc này khá khẩn cấp",
+    "ex": "I work remotely, so having no internet is quite urgent."
+   },
+   {
+    "en": "Could you send a technician over?",
+    "vi": "Bên bạn có thể cử nhân viên kỹ thuật qua được không?",
+    "ex": "Could you send a technician over this afternoon to inspect the line?"
+   }
+  ],
+  "sample": "Hello, my customer account number is VNPT-4589. I'm calling to report an issue with my home internet. The connection dropped suddenly about two hours ago, and the optical light on my router has been blinking red ever since. I've already tried restarting the router and checking all cables, but nothing changed. I work remotely from home, so having a reliable connection is extremely urgent for my meetings today. Could you please check the line from your end or send a technician over this morning to fix it? Thank you.",
+  "tipVi": "Giữ giọng điệu lịch sự nhưng kiên quyết, đồng thời chủ động đọc mã hợp đồng để nhân viên tổng đài tra cứu nhanh hơn."
+ },
+ {
+  "id": "gt-cong-nghe-3",
+  "level": "MEDIUM",
+  "title": "Resolving an Online Shopping Issue",
+  "titleVi": "Khiếu nại sự cố mua sắm trực tuyến",
+  "situationVi": "Bạn đặt mua một chiếc tai nghe không dây trên sàn thương mại điện tử, nhưng khi nhận hàng thì bao bì bị móp rách và một bên tai nghe không hoạt động.",
+  "task": "Call the online store's customer service representative to complain about a defective product. Describe the order details and damage, explain why you are dissatisfied, and state your preferred resolution.",
+  "mustVi": [
+   "Cung cấp mã đơn hàng, sản phẩm đã mua và miêu tả cụ thể tình trạng lỗi",
+   "Bày tỏ sự thất vọng về khâu đóng gói hoặc kiểm tra chất lượng trước khi giao",
+   "Đưa ra yêu cầu cụ thể (đổi sản phẩm mới nguyên seal hoặc hoàn tiền 100%)"
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling regarding order number...",
+    "vi": "Tôi gọi về đơn hàng số...",
+    "ex": "I'm calling regarding order number #SH-9921."
+   },
+   {
+    "en": "The parcel arrived in poor condition",
+    "vi": "Kiện hàng được giao trong tình trạng hư hỏng",
+    "ex": "The parcel arrived in poor condition with a crushed outer box."
+   },
+   {
+    "en": "The item appears to be defective",
+    "vi": "Sản phẩm dường như đã bị lỗi kỹ thuật",
+    "ex": "The item appears to be defective because the left earbud won't charge."
+   },
+   {
+    "en": "I'm quite disappointed with the quality",
+    "vi": "Tôi khá thất vọng về chất lượng kiểm hàng",
+    "ex": "I'm quite disappointed with your store's quality control."
+   },
+   {
+    "en": "I have taken photos as proof",
+    "vi": "Tôi đã chụp ảnh làm bằng chứng",
+    "ex": "I have taken photos and an unboxing video as clear proof."
+   },
+   {
+    "en": "I would like to request an immediate replacement",
+    "vi": "Tôi muốn yêu cầu đổi sản phẩm mới ngay lập tức",
+    "ex": "I would like to request an immediate replacement or a full refund."
+   }
+  ],
+  "sample": "Hello, I'm calling regarding order number SH-9921 for wireless earbuds. The parcel arrived yesterday in very poor condition with a crushed outer box. When I tested the device, the left earbud appeared to be completely defective and would not charge at all. I'm quite disappointed because I needed this headset for an overseas client call tomorrow. I have taken photos and an unboxing video as proof of the defect. Since the product is faulty upon arrival, I would like to request an immediate replacement, or a full refund if stock is unavailable. Please guide me through the return process.",
+  "tipVi": "Hãy trình bày sự việc theo trình tự thời gian rõ ràng và giữ thái độ chuyên nghiệp, tránh công kích cá nhân nhân viên tổng đài."
+ },
+ {
+  "id": "gt-cong-nghe-4",
+  "level": "MEDIUM",
+  "title": "Guiding Someone to Avoid Scams",
+  "titleVi": "Hướng dẫn người thân phòng tránh lừa đảo mạng",
+  "situationVi": "Bạn nhận thấy bố mẹ hoặc người thân lớn tuổi hay nhận được các tin nhắn trúng thưởng lạ hoặc cuộc gọi mạo danh ngân hàng trên điện thoại.",
+  "task": "Explain to an older family member how to identify common online scams and keep their phone secure. Describe the warning signs of fraudulent messages and provide two clear safety rules they must follow.",
+  "mustVi": [
+   "Chỉ ra các dấu hiệu nhận biết tin nhắn hoặc cuộc gọi giả mạo phổ biến",
+   "Cảnh báo hậu quả nếu bấm vào đường link lạ hoặc chia sẻ mã OTP ngân hàng",
+   "Đưa ra hai nguyên tắc bảo mật cốt lõi, dễ nhớ để người thân tự bảo vệ mình"
+  ],
+  "phrases": [
+   {
+    "en": "Be cautious when receiving...",
+    "vi": "Hãy cẩn trọng khi nhận được...",
+    "ex": "Be cautious when receiving unexpected messages offering easy money."
+   },
+   {
+    "en": "A classic warning sign is...",
+    "vi": "Một dấu hiệu cảnh báo kinh điển là...",
+    "ex": "A classic warning sign is creating a sense of panic or urgency."
+   },
+   {
+    "en": "Under no circumstances should you...",
+    "vi": "Trong bất kỳ hoàn cảnh nào cũng không được...",
+    "ex": "Under no circumstances should you share your banking OTP with anyone."
+   },
+   {
+    "en": "Clicking suspicious links can compromise your phone",
+    "vi": "Bấm vào link đáng ngờ có thể khiến điện thoại bị xâm nhập",
+    "ex": "Clicking suspicious links can compromise your phone and leak private data."
+   },
+   {
+    "en": "Legitimate banks never ask for...",
+    "vi": "Các ngân hàng uy tín không bao giờ yêu cầu...",
+    "ex": "Legitimate banks never ask for passwords over chat applications."
+   },
+   {
+    "en": "Always double-check with me first",
+    "vi": "Hãy luôn hỏi lại con để kiểm tra trước",
+    "ex": "Whenever you feel unsure, always double-check with me first."
+   }
+  ],
+  "sample": "Mom, please be very cautious when receiving messages claiming you won prizes or urgent bank alerts on Zalo. A classic warning sign is when strangers pressure you to act immediately or say your account will be frozen. Clicking suspicious links can compromise your phone, allowing criminals to steal your savings. To stay completely safe, please remember two basic rules. First, under no circumstances should you ever reveal your OTP code or bank password, because legitimate banks never ask for them. Second, never click unknown links. Whenever you feel doubtful about any strange notification, simply call and double-check with me first.",
+  "tipVi": "Sử dụng tông giọng ấm áp, kiên nhẫn và giải thích các khái niệm bảo mật bằng từ ngữ mộc mạc, tránh thuật ngữ kỹ thuật quá phức tạp."
+ },
+ {
+  "id": "gt-cong-nghe-5",
+  "level": "HARD",
+  "title": "Debating Social Media's Mental Impact",
+  "titleVi": "Bình luận tác động tâm lý của mạng xã hội",
+  "situationVi": "Bạn tham gia một buổi tọa đàm tiếng Anh thảo luận về việc thuật toán video ngắn (TikTok, Reels) đang làm giảm sự tập trung và ảnh hưởng sức khỏe tinh thần người dùng.",
+  "task": "Present your viewpoint on how social media algorithms influence user behavior and mental wellbeing. Weigh the advantages against the risks, and propose practical ways individuals can maintain digital balance.",
+  "mustVi": [
+   "Phân tích cách thuật toán cuốn hút người xem và làm suy giảm khả năng tập trung sâu",
+   "So sánh giữa lợi ích kết nối, thông tin với mặt trái như hội chứng sợ bỏ lỡ (FOMO) và so sánh xã hội tiêu cực",
+   "Đề xuất các giải pháp kỷ luật cá nhân thiết thực để xây dựng thói quen số lành mạnh"
+  ],
+  "phrases": [
+   {
+    "en": "Algorithms are engineered to maximize screen time",
+    "vi": "Thuật toán được thiết kế chuyên biệt để tối đa hóa thời gian nhìn màn hình",
+    "ex": "Algorithms are engineered to maximize screen time through endless dopamine loops."
+   },
+   {
+    "en": "It takes a heavy toll on our attention span",
+    "vi": "Nó gây tổn hại nghiêm trọng đến khả năng tập trung của chúng ta",
+    "ex": "Constant doomscrolling takes a heavy toll on our attention span."
+   },
+   {
+    "en": "On the flip side,...",
+    "vi": "Ở chiều ngược lại / Mặt khác,...",
+    "ex": "On the flip side, social media provides great community networking opportunities."
+   },
+   {
+    "en": "Fostering unhealthy social comparison",
+    "vi": "Thúc đẩy thói quen so sánh xã hội không lành mạnh",
+    "ex": "Curated highlight reels end up fostering unhealthy social comparison and anxiety."
+   },
+   {
+    "en": "Establish healthy digital boundaries",
+    "vi": "Thiết lập ranh giới công nghệ số lành mạnh",
+    "ex": "We need to establish healthy digital boundaries like phone-free bedrooms."
+   },
+   {
+    "en": "To practice mindful consumption",
+    "vi": "Thực hành việc tiêu thụ nội dung có ý thức",
+    "ex": "Users should practice mindful consumption instead of passive scrolling."
+   }
+  ],
+  "sample": "In my opinion, modern short-form algorithms are engineered to maximize screen time, which takes a heavy toll on our attention span and capacity for deep work. On the flip side, social media undeniably democratizes information and fosters creative communities. However, passive doomscrolling often leads to depression by fostering unhealthy social comparison against polished online personas. To regain control, we must establish healthy digital boundaries. Practicing mindful consumption by turning off non-essential notifications, tracking daily app limits, and keeping our bedrooms phone-free before sleep can help us harness technology effectively without sacrificing our mental wellbeing.",
+  "tipVi": "Cấu trúc bài nói theo mô hình nghị luận chặt chẽ (luận điểm - phân tích hai mặt - giải pháp) và vận dụng từ nối học thuật để tăng tính thuyết phục."
+ }
+]

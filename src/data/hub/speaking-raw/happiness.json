@@ -1,0 +1,117 @@
+{
+ "id": "happiness",
+ "title": "Happiness",
+ "titleVi": "Hạnh phúc",
+ "tipVi": "Hãy tránh lạm dụng từ 'happy' bằng cách linh hoạt sử dụng các tính từ và thành ngữ chỉ cảm xúc như 'content', 'over the moon' hoặc 'a sense of fulfillment', đồng thời liên hệ cụ thể với trải nghiệm đời sống.",
+ "part1": [
+  "What kinds of things make you feel happy in your daily life?",
+  "Do you think you were happier when you were a child than you are now?",
+  "What do you usually do when you want to cheer yourself up after a hard day?"
+ ],
+ "part2": {
+  "prompt": "Describe an unexpected event that brought you immense happiness",
+  "bullets": [
+   "what the event was",
+   "when and where it happened",
+   "who shared that moment with you",
+   "and explain why it brought you such immense happiness"
+  ]
+ },
+ "part3": [
+  "Do you believe that material wealth is essential for long-term happiness in modern society?",
+  "How has the way people define happiness changed compared to previous generations?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "on cloud nine",
+    "vi": "vô cùng hạnh phúc, vui sướng tột cùng",
+    "ex": "I was on cloud nine when I found out I had won the full scholarship."
+   },
+   {
+    "en": "a sense of fulfillment",
+    "vi": "cảm giác mãn nguyện, toại nguyện sâu sắc",
+    "ex": "Volunteering at the shelter gave me a profound sense of fulfillment."
+   },
+   {
+    "en": "contentment",
+    "vi": "sự hài lòng, bình yên với thực tại",
+    "ex": "True contentment comes from appreciating simple moments rather than chasing luxury."
+   },
+   {
+    "en": "lift someone's spirits",
+    "vi": "làm ai đó phấn chấn, vui vẻ hơn",
+    "ex": "A short walk in the park always helps lift my spirits when I feel stressed."
+   },
+   {
+    "en": "elated",
+    "vi": "phấn khởi, cực kỳ vui mừng",
+    "ex": "The whole team was elated after clinching victory in the final minutes."
+   },
+   {
+    "en": "hedonic treadmill",
+    "vi": "vòng xoáy mưu cầu khoái lạc (nhanh chóng quen với niềm vui và muốn nhiều hơn)",
+    "ex": "Constantly buying new gadgets traps people on a hedonic treadmill of endless desire."
+   },
+   {
+    "en": "radiate joy",
+    "vi": "tỏa ra niềm vui, rạng rỡ",
+    "ex": "Her face radiated joy as she reunited with her family at the airport."
+   },
+   {
+    "en": "strike a chord",
+    "vi": "chạm đến cảm xúc, gợi niềm đồng cảm sâu sắc",
+    "ex": "His thoughtful compliment really struck a chord and brightened my whole week."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn về sự kiện bất ngờ khiến bản thân vỡ òa hạnh phúc (nhận email trúng tuyển học bổng du học khi tưởng chừng đã trượt).",
+   "Ý 1 (Khi nào, ở đâu): Diễn ra vào một buổi chiều mưa tại phòng riêng khoảng hai năm trước, lúc đang chuẩn bị tâm lý đón nhận thất bại.",
+   "Ý 2 (Người cùng chia sẻ): Bố mẹ ở nhà và người bạn thân; cảm xúc ôm chầm lấy mẹ trong nước mắt và gọi điện khoe bạn bè.",
+   "Kết (Lý do mang lại hạnh phúc to lớn): Không chỉ vì cơ hội học thuật mà còn là sự ghi nhận nỗ lực suốt nhiều tháng, đồng thời trút bỏ gánh nặng tài chính cho gia đình."
+  ],
+  "sample": "I'd like to talk about an unexpected moment that truly made my day, which was when I received an acceptance letter for an overseas exchange programme about two years ago. It happened on a gloomy Tuesday afternoon while I was sitting alone in my bedroom. Honestly, I had convinced myself that I stood no chance because the competition was fierce, so I was bracing for rejection. But when I refreshed my inbox and saw the word 'Congratulations', I was utterly elated. My mother was preparing dinner downstairs, and the moment I rushed down shouting, she immediately burst into tears of relief. We hugged each other tightly, and shortly after, I called my best friend, who had reviewed countless essay drafts with me, to share the news. This event brought me immense happiness because it wasn't just a validation of my academic efforts after months of burning the midnight oil; it also relieved a tremendous financial burden off my parents' shoulders through a full tuition waiver. Experiencing such relief and pride alongside my loved ones created an enduring memory of sheer joy.",
+  "p1": [
+   {
+    "q": "What kinds of things make you feel happy in your daily life?",
+    "a": "For me, it is mostly small everyday pleasures, like sipping a freshly brewed coffee in the morning or sharing a laugh with colleagues. These simple rituals help relieve stress and ground me amidst my busy schedule."
+   },
+   {
+    "q": "Do you think you were happier when you were a child than you are now?",
+    "a": "I would say yes. As a child, I enjoyed sheer carefree freedom without the weight of financial obligations or work pressure, whereas now, happiness requires more deliberate effort and a good work-life balance."
+   },
+   {
+    "q": "What do you usually do when you want to cheer yourself up after a hard day?",
+    "a": "Whenever I feel drained, I usually go for a brisk jog or listen to upbeat acoustic music. Engaging in physical movement triggers endorphins, which almost immediately lifts my mood and clears my head."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you believe that material wealth is essential for long-term happiness in modern society?",
+    "a": "While wealth provides basic financial security and access to healthcare, I don't believe it guarantees lasting fulfillment. Beyond a certain threshold, money merely fuels consumerism, as people quickly adapt to luxury through the hedonic treadmill. Conversely, genuine joy stems from meaningful relationships and personal growth. Therefore, money serves as a vital foundation, but emotional well-being is what truly sustains happiness."
+   },
+   {
+    "q": "How has the way people define happiness changed compared to previous generations?",
+    "a": "In the past, happiness was closely tied to communal stability, raising a family, and securing permanent employment. Nowadays, however, younger generations prioritize individual self-actualization, mental wellness, and unique experiences like global travel. While our grandparents valued duty and social conformity, modern individuals tend to seek authenticity and autonomy, redefining happiness as a deeply personal journey rather than a societal checklist."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng lặp từ 'happy' hoặc 'very happy' thay vì sử dụng đa dạng các từ vựng band điểm cao hơn như 'content', 'thrilled', 'overjoyed' hay 'on cloud nine'.",
+   "Nhầm lẫn từ loại giữa danh từ 'happiness' và tính từ 'happy', hoặc dùng sai giới từ phổ biến (ví dụ nói 'happy with' khi nói về sự kiện thay vì 'happy about').",
+   "Trong Part 3, thí sinh có thói quen trả lời quá cảm tính và mang tính cá nhân ('I feel happy when...') thay vì phân tích ở bình diện vĩ mô, xã hội hoặc tâm lý học con người."
+  ],
+  "p1More": [
+   "Is it easy for you to stay optimistic when facing challenges?",
+   "Do you think weather can influence how happy people feel?",
+   "Who usually makes you smile the most in your family?",
+   "Do you prefer celebrating happy occasions alone or with a group?",
+   "Can spending money on gifts for others make a person happier?"
+  ],
+  "p3More": [
+   "Should governments measure national success by gross national happiness rather than economic growth?",
+   "To what extent does social media distort people's perception of what it means to be happy?",
+   "Do you think people living in rural areas enjoy a higher quality of happiness than urban dwellers?",
+   "Is it possible for someone to remain happy during extended periods of societal adversity?"
+  ]
+ }
+}

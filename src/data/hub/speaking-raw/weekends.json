@@ -1,0 +1,117 @@
+{
+ "id": "weekends",
+ "title": "Weekends",
+ "titleVi": "Cuối tuần",
+ "tipVi": "Thay vì chỉ liệt kê một chuỗi hoạt động tẻ nhạt, hãy tập trung làm nổi bật sự tương phản giữa guồng quay bận rộn trong tuần và cảm giác phục hồi năng lượng thể chất lẫn tinh thần vào cuối tuần.",
+ "part1": [
+  "How do you usually spend your weekends?",
+  "Do you prefer spending weekends with friends or alone?",
+  "Did you have more free time on weekends when you were a child?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable weekend activity you did recently",
+  "bullets": [
+   "what the activity was",
+   "who you did it with",
+   "where you went",
+   "and explain why this weekend was memorable to you"
+  ]
+ },
+ "part3": [
+  "How have people's weekend habits changed over the past few decades?",
+  "Should employers be allowed to contact employees about work during weekends?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "recharge one's batteries",
+    "vi": "nạp lại năng lượng",
+    "ex": "Spending a quiet Sunday reading at home is the best way to recharge my batteries before Monday."
+   },
+   {
+    "en": "unwind",
+    "vi": "thư giãn, thả lỏng sau áp lực",
+    "ex": "After a grueling work week, I usually head out to a suburban café to unwind."
+   },
+   {
+    "en": "catch up on sleep",
+    "vi": "ngủ bù",
+    "ex": "On Saturday mornings, I tend to turn off my alarm clock to catch up on sleep."
+   },
+   {
+    "en": "weekend getaway",
+    "vi": "chuyến du lịch ngắn ngày cuối tuần",
+    "ex": "My colleagues and I organized a spontaneous weekend getaway to a nearby coastal town."
+   },
+   {
+    "en": "blur the boundaries",
+    "vi": "làm mờ ranh giới (giữa công việc và đời sống)",
+    "ex": "Constant smartphone notifications tend to blur the boundaries between professional work and personal weekend time."
+   },
+   {
+    "en": "downtime",
+    "vi": "thời gian nghỉ ngơi không vướng bận",
+    "ex": "Having dedicated downtime at the weekend is crucial for preventing burnout."
+   },
+   {
+    "en": "couch potato",
+    "vi": "người lười biếng chỉ nằm xem màn hình",
+    "ex": "I rarely turn into a couch potato on weekends because I prefer getting outdoor exercise."
+   },
+   {
+    "en": "break the monotony",
+    "vi": "phá vỡ sự đơn điệu thường nhật",
+    "ex": "Trying out a new pottery workshop last Sunday was a fantastic way to break the monotony of routine."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn chuyến cắm trại ngẫu hứng tại Ba Vì vào cuối tuần trước cùng hai người bạn thân.",
+   "Ý 1 (Ai và Ở đâu): Mô tả hành trình di chuyển ngắn thoát khỏi nội đô đến một rừng thông yên tĩnh, xa lánh khói bụi thành phố.",
+   "Ý 2 (Hoạt động chính): Dựng lều, nướng BBQ và quyết định ngắt kết nối internet hoàn toàn để tập trung trò chuyện, đàn hát.",
+   "Kết (Cảm xúc & Lý do đáng nhớ): Nhấn mạnh giá trị của việc phục hồi tinh thần thực sự khi tách biệt khỏi công việc và củng cố tình bạn bền chặt."
+  ],
+  "sample": "I'd like to share an unforgettable weekend camping trip I took just a couple of weeks ago. On a whim, my two closest university friends and I decided to go on a short getaway to Ba Vi National Park, just a two-hour drive from Hanoi. We rented camping gear, set up a tent beside a pine forest, and prepared an outdoor barbecue under the afternoon sun. What made this activity truly stand out was our mutual agreement to turn off mobile data for the entire weekend. Rather than being glued to work emails or social media feeds, we spent hours strumming the guitar, chatting about our careers, and simply enjoying the crisp mountain air. This weekend was deeply memorable because it gave me genuine downtime after months of intense screen time and demanding work deadlines. Escaping the suffocating urban traffic and reconnecting with both nature and long-time companions completely recharged my batteries. It reminded me how vital it is to disconnect from professional duties and truly live in the moment with the people who matter most.",
+  "p1": [
+   {
+    "q": "How do you usually spend your weekends?",
+    "a": "I usually strike a balance between leisure and preparation. On Saturdays, I often meet friends for coffee or try out a new restaurant, whereas Sundays are mostly reserved for quiet downtime at home, doing household chores and planning for the week ahead."
+   },
+   {
+    "q": "Do you prefer spending weekends with friends or alone?",
+    "a": "It depends on my energy levels, but I lean toward spending alone time. After a hectic week of meetings, having a quiet afternoon to read or cook by myself helps me recharge much better than social gatherings."
+   },
+   {
+    "q": "Did you have more free time on weekends when you were a child?",
+    "a": "Undoubtedly yes. Back then, weekends were purely dedicated to playing outdoor games with neighborhood kids and watching morning cartoons, completely free from the academic pressures and adult responsibilities I face today."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have people's weekend habits changed over the past few decades?",
+    "a": "In the past, weekends were predominantly centered around domestic family gatherings and face-to-face community events. Today, however, digital entertainment and consumer culture have reshaped leisure time. People often frequent bustling shopping malls or scroll on social media indoors. Moreover, due to remote work technology, many professionals now struggle to detach from job-related tasks, meaning weekends are no longer the strictly sacred rest days they once were."
+   },
+   {
+    "q": "Should employers be allowed to contact employees about work during weekends?",
+    "a": "I firmly believe this practice should be strictly restricted except in genuine emergencies. Constant out-of-hours communication infringes on personal leisure and inevitably leads to chronic stress and burnout. In fact, several European nations have enacted 'right to disconnect' laws to protect employees. Establishing clear boundaries between work and personal life ultimately fosters higher productivity and better mental well-being during standard working days."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh sách liệt kê rời rạc: Trả lời theo kiểu 'I sleep, watch TV, eat out' mà không liên kết câu bằng từ nối mạch lạc hoặc không phân tích mục đích phục hồi năng lượng.",
+   "Dùng sai giới từ thời gian: Thí sinh Việt Nam rất hay nói 'in the weekend' thay vì dùng chính xác 'at the weekend' (Anh-Anh) hoặc 'on the weekend' (Anh-Mỹ).",
+   "Lẫn lộn thì động từ: Khi trả lời Part 1 về thói quen thường kỳ (habitual routine) lại vô thức chuyển sang thì Quá khứ đơn, hoặc ngược lại kể trải nghiệm đáng nhớ ở Part 2 bằng thì Hiện tại đơn."
+  ],
+  "p1More": [
+   "Do you think weekends are long enough?",
+   "What is your favorite part of the weekend?",
+   "Do you usually plan your weekends in advance or act spontaneously?",
+   "Do you ever work or study at the weekend?",
+   "Is there anything you dislike doing at the weekend?"
+  ],
+  "p3More": [
+   "Would introducing a three-day weekend benefit the economy and workers' well-being?",
+   "How do weekends differ between people living in urban centers and those in rural areas?",
+   "In what ways do commercial marketing and consumerism influence how people spend their weekends?",
+   "Should children be assigned homework to complete over the weekend?"
+  ]
+ }
+}

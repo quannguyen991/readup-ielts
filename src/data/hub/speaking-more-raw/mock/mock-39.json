@@ -1,0 +1,62 @@
+{
+ "id": "mock-39",
+ "title": "IELTS Speaking Mock Test 39",
+ "titleVi": "Đề thi thử số 39",
+ "focusVi": "Mở rộng câu trả lời tự nhiên bằng cách kết hợp lý do, ví dụ thực tế và từ vựng mang tính mô tả cao.",
+ "part1": [
+  {
+   "topic": "Hometown",
+   "qs": [
+    "Where is your hometown located?",
+    "What do you like most about living there?",
+    "Has your hometown changed much since you were a child?",
+    "Would you prefer to live in your hometown in the future?"
+   ]
+  },
+  {
+   "topic": "Shopping",
+   "qs": [
+    "How often do you go shopping for clothes?",
+    "Do you prefer shopping in physical stores or online?",
+    "Have your shopping habits changed recently?",
+    "What kind of shops are most popular in your neighborhood?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an interesting conversation you had with someone you did not know well",
+  "bullets": [
+   "who this person was",
+   "where and when you met them",
+   "what you talked about",
+   "and explain why you found this conversation so interesting"
+  ]
+ },
+ "part3": [
+  "Why do some people find it difficult to talk to strangers?",
+  "How has technology altered the way people communicate on a daily basis?",
+  "Is face-to-face communication always superior to online communication?",
+  "Do young people communicate differently compared to older generations?",
+  "What qualities make someone an exceptionally good listener in a conversation?"
+ ],
+ "answers": {
+  "p1": [
+   "My hometown is Da Nang, a coastal city situated in central Vietnam. It is renowned for its picturesque sandy beaches, bridges, and relaxed atmosphere compared to bustling metropolises like Hanoi or Ho Chi Minh City.",
+   "I truly appreciate the culinary scene and the friendly locals. The street food, especially local noodle dishes like Mi Quang, is both affordable and flavorful, which makes everyday life genuinely delightful.",
+   "Tremendously, to be honest. Over the past decade, rapid urbanisation has replaced traditional houses with high-rise hotels along the coastline, boosting tourism but also increasing road traffic noticeably.",
+   "Definitely, because it offers an ideal balance between career prospects and quality of life. Unlike chaotic megacities, my hometown provides clean air and scenic nature, which suits my long-term lifestyle goals.",
+   "I usually buy new clothes once every couple of months. I only shop when necessary, like picking up warm jackets for winter, rather than following fast-fashion trends impulsively.",
+   "I definitely lean towards online shopping because of convenience and competitive pricing. Platforms like Shopee allow me to compare customer reviews and purchase items anytime without having to queue up.",
+   "Yes, I have become much more budget-conscious recently. In the past, I bought things randomly, but now I research discounts and prioritize durable goods, like buying second-hand electronics.",
+   "Convenience stores and open-air grocery markets are definitely the most common. Residents frequently visit mini-marts like WinMart to grab fresh produce, snacks, and daily household essentials within walking distance."
+  ],
+  "sample": "A memorable conversation I had with a stranger took place about six months ago on an overnight train from Hanoi to Hue. I was seated opposite an elderly Japanese architect who was traveling across Southeast Asia to study traditional vernacular architecture. At first, we simply exchanged polite nods, but soon struck up a dialogue about the passing scenery. The conversation quickly deepened as he shared his insights on how ancient Vietnamese wooden houses naturally adapt to humid tropical climates without modern air conditioning. He pointed out subtle design features, such as raised stilts and porous ceramic roof tiles, illustrating concepts with quick sketches in his travel notebook. What made this discussion thoroughly captivating was his genuine enthusiasm and ability to reveal hidden beauty in everyday buildings I had always taken for granted. Listening to an international specialist analyze my own country's cultural heritage gave me a fresh perspective on traditional design. By the time we arrived at the station, hours had flown by, leaving me feeling intellectually stimulated and grateful for such an impromptu encounter.",
+  "p3": [
+   "Many individuals struggle to converse with strangers primarily due to social anxiety and fear of negative judgment. People worry about awkward silences or making an unfavorable impression. For instance, introverts often overthink their opening lines, whereas extroverts initiate small talk effortlessly without apprehension. Ultimately, this hesitation stems from an innate human desire to protect one's social standing and avoid rejection.",
+   "Technology has shifted daily communication toward instantaneous, text-based platforms at the expense of spontaneous, in-depth verbal exchanges. Messaging apps allow people to communicate across continents seamlessly, yet they eliminate emotional nuances like tone and body language. For example, people often send brief emojis instead of having meaningful phone calls. Consequently, while our connectivity has expanded significantly, the depth of interpersonal connection has somewhat diminished.",
+   "In my view, face-to-face interaction is generally superior for emotional bonding, but not necessarily in every context. In-person discussions convey empathy, subtle facial cues, and trust, which are critical for resolving conflicts. Conversely, digital communication is far more practical and time-efficient for routine tasks, such as remote corporate meetings or international collaboration. Therefore, the optimal medium depends largely on the communicative purpose.",
+   "Undeniably, generational differences in communication styles are quite pronounced. Younger people tend to favor informal, shorthand digital expressions, including memes, voice notes, and slang. In contrast, older generations usually value structured, formal language and prefer direct phone calls or physical visits. This difference often reflects the distinct technological environments each demographic grew up with, resulting in divergent communication habits.",
+   "An exceptional listener demonstrates active engagement rather than merely waiting for their turn to speak. This involves showing empathy, maintaining appropriate eye contact, and withholding premature judgments. For instance, skilled listeners ask clarifying questions that encourage the speaker to elaborate on their thoughts without interruption. In essence, genuine attentiveness and emotional presence define a truly supportive conversation partner."
+  ]
+ }
+}

@@ -1,6 +1,6 @@
 // Sinh thêm đề luyện nói bằng hạn mức gói qua router cục bộ (AI_LOCAL_* trong .env.local):
 //   mock — 24 đề thi thử IELTS Speaking đủ ba Part (Part 1 hai chủ đề × 4 câu, cue card, Part 3 năm câu) kèm đáp án mẫu.
-//   gt   — 10 nhóm × 5 đề luyện nói GIAO TIẾP (tình huống đời sống, công việc) kèm ý bắt buộc, mẫu câu và bài mẫu.
+//   gt   — 20 nhóm × 5 đề luyện nói GIAO TIẾP (10 nhóm đời sống hằng ngày thêm sau) (tình huống đời sống, công việc) kèm ý bắt buộc, mẫu câu và bài mẫu.
 // Ghi từng phần vào src/data/hub/speaking-more-raw/<mock|gt>/<id>.json; chạy lại thì bỏ qua cái đã có.
 // Chạy: node scripts/hub/gen-speaking-more.mjs [--kind mock|gt] [--workers 4]
 import fs from 'node:fs';
@@ -79,6 +79,22 @@ const MOCK_SEEDS = [
   ['Jobs and Careers', 'Weather and Seasons', 'a team you were part of'],
   ['Shopping Online', 'Free Time', 'a quiet place you enjoy'],
   ['Health and Diet', 'Technology at Home', 'an old object you keep'],
+  ['Daily Routine', 'Cooking', 'a place where you study or work'],
+  ['Weekends', 'Pets and Animals', 'a person who makes you laugh'],
+  ['Libraries', 'Television', 'a time you learned something new online'],
+  ['Films and Cinema', 'The Internet', 'a public place you like to visit'],
+  ['Online Shopping', 'Mobile Apps', 'a goal you want to achieve'],
+  ['Jobs and Careers', 'Teamwork', 'a job you would like to do'],
+  ['Public Speaking', 'Memory', 'a time you felt proud'],
+  ['Happiness', 'Stress and Relaxation', 'a tradition in your country'],
+  ['Tourism', 'Culture and Traditions', 'a journey that was difficult'],
+  ['Climate Change', 'Handwriting and Typing', 'a rule you think is important'],
+  ['Gardens and Plants', 'Sports Events', 'a famous person you would like to meet'],
+  ['Leadership', 'Job Interviews', 'a time you made a mistake'],
+  ['Family', 'Weather and Seasons', 'a family member you spend time with'],
+  ['Music', 'Technology at Home', 'a song or piece of music you like'],
+  ['Hometown', 'Shopping', 'an interesting conversation you had'],
+  ['Studies', 'Friends', 'a time you changed your mind'],
 ];
 
 function mockPrompt(i, seed) {
@@ -127,6 +143,17 @@ const GT_CATS = [
   ['dien-thoai', 'Điện thoại, đặt chỗ và dịch vụ', 'phone calls, booking tables or rooms, making appointments, leaving messages'],
   ['cong-so', 'Công sở: họp, báo cáo, email nói', 'giving a work update, explaining a delay, leading a short meeting, presenting a plan'],
   ['du-lich', 'Du lịch và nhà hàng', 'airports, hotels, restaurants, taxis, shopping abroad, handling problems while travelling'],
+
+  ['thoi-quen', 'Thói quen và một ngày của bạn', 'describing a daily routine, habits, schedules, mornings and evenings, weekends, changing a bad habit'],
+  ['mua-sam', 'Mua sắm và tiền bạc', 'shopping for clothes and groceries, comparing prices, returning an item, bargaining, budgeting, paying bills'],
+  ['am-thuc', 'Ăn uống và nấu nướng', 'ordering food, describing dishes, explaining a recipe, dietary needs and allergies, inviting friends to dinner'],
+  ['suc-khoe', 'Sức khỏe và đi khám', 'describing symptoms, making a doctor appointment, at the pharmacy, healthy habits, joining a gym'],
+  ['nha-cua', 'Nhà cửa và hàng xóm', 'renting a flat, describing your home, reporting a problem to a landlord, talking to neighbours, moving house'],
+  ['di-chuyen', 'Di chuyển và giao thông', 'commuting, taxis and ride apps, trains and buses, getting lost, delays, car versus public transport'],
+  ['ban-be', 'Bạn bè, gia đình và kế hoạch', 'making plans, inviting people, accepting and declining invitations, family events, giving advice to a friend'],
+  ['cong-nghe', 'Công nghệ và mạng xã hội', 'phone and internet problems, tech support calls, apps, online shopping, opinions about social media'],
+  ['hoc-tap', 'Học tập và trường lớp', 'asking a teacher for help, group projects, exam stress, study plans, joining a club, talking about courses'],
+  ['xa-hoi', 'Xã hội, tin tức và ý kiến', 'talking about news and events, volunteering, environmental habits, giving opinions on social issues, community life'],
 ];
 
 function gtPrompt(cat) {

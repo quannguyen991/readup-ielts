@@ -464,6 +464,99 @@
    "In what ways do socioeconomic inequalities impact the quality of a child's upbringing?"
   ]
  },
+ "cinema": {
+  "vocab": [
+   {
+    "en": "box-office hit",
+    "vi": "bộ phim bom tấn thành công về mặt doanh thu",
+    "ex": "The new superhero flick turned out to be a massive box-office hit worldwide."
+   },
+   {
+    "en": "plot twist",
+    "vi": "bước ngoặt cốt truyện bất ngờ",
+    "ex": "The unexpected plot twist at the climax completely caught the audience off guard."
+   },
+   {
+    "en": "thought-provoking",
+    "vi": "khiến người xem phải suy ngẫm",
+    "ex": "It was a thought-provoking documentary about climate change and human impact."
+   },
+   {
+    "en": "cinematography",
+    "vi": "nghệ thuật quay phim và góc quay",
+    "ex": "The breathtaking cinematography captured the bleak beauty of the desert."
+   },
+   {
+    "en": "live up to the hype",
+    "vi": "đáp ứng được kỳ vọng hoặc sự tán dương",
+    "ex": "Although heavily advertised, the sequel failed to live up to the hype."
+   },
+   {
+    "en": "stellar cast",
+    "vi": "dàn diễn viên thực lực hoặc xuất sắc",
+    "ex": "With such a stellar cast, the director brought every nuanced character to life."
+   },
+   {
+    "en": "edge-of-your-seat",
+    "vi": "vô cùng hồi hộp và gay cấn",
+    "ex": "It was an edge-of-your-seat thriller that kept me gripped until the very last frame."
+   },
+   {
+    "en": "tear-jerker",
+    "vi": "bộ phim lấy đi nhiều nước mắt",
+    "ex": "That family drama was an absolute tear-jerker; everyone in the room cried."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn tên phim ('The Pursuit of Happyness'), thể loại (biographical drama) và dịp xem phim (cuối tuần trên Netflix khi đang căng thẳng vì bài vở).",
+   "Ý 1: Tóm tắt ngắn gọn bối cảnh và tuyến nhân vật chính (Chris Gardner do Will Smith thủ vai, người cha đơn thân đối mặt cảnh vô gia cư khi nuôi con).",
+   "Ý 2: Nêu những điểm đắt giá nhất trong trải nghiệm xem (diễn xuất chân thực, mối liên kết xúc động giữa hai cha con, hành trình thực tập không lương gian nan).",
+   "Kết: Phân tích lý do phim để lại dấu ấn sâu sắc (bài học đắt giá về sự bền bỉ vượt nghịch cảnh, nguồn động lực to lớn mỗi khi bản thân gặp bế tắc)."
+  ],
+  "sample": "I'd like to talk about an uplifting biographical drama called 'The Pursuit of Happyness', which left a profound mark on me. I first stumbled upon it on Netflix a couple of years ago during a particularly stressful exam period.\n\nThe film revolves around Chris Gardner, played brilliantly by Will Smith, a struggling salesman facing homelessness while trying to raise his young son all by himself. Despite facing relentless setbacks and financial despair, he secures an unpaid internship at a competitive brokerage firm, pinning all his hopes on a better future.\n\nWhat resonated with me most was the raw authenticity of the performances. The emotional bond between father and son felt genuine and heartwarming. This movie made such an indelible impression on me because it wasn't just entertaining; it served as a masterclass in resilience. Whenever I feel overwhelmed by life's hurdles, I remind myself of Chris's determination, which reinforces my belief that perseverance can turn even the darkest circumstances around.",
+  "p1": [
+   {
+    "q": "How often do you go to the cinema to watch a movie?",
+    "a": "I usually go once or twice a month, typically on weekends with friends. We love catching newly released blockbusters on the big screen because the surround sound and visual quality are unmatched at home."
+   },
+   {
+    "q": "What genre of films do you usually prefer watching?",
+    "a": "I am particularly fond of psychological thrillers. I enjoy complex plot twists that challenge my deduction skills, and movies like 'Inception' or 'Shutter Island' always keep me hooked right until the closing credits."
+   },
+   {
+    "q": "Did you enjoy watching movies when you were a child?",
+    "a": "Yes, definitely. As a kid, I was obsessed with animated movies, especially Disney classics like 'The Lion King'. My parents used to reward me with a movie night whenever I got good grades at school."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people still prefer watching films in theaters rather than on streaming platforms?",
+    "a": "In my opinion, going to the theater offers an immersive audiovisual spectacle that home streaming simply cannot replicate. Giant IMAX screens and acoustic engineering create a sensory experience where viewers can truly escape reality. Furthermore, cinema outings provide a communal atmosphere, sharing collective gasps and laughter with strangers, which makes the whole viewing experience far more memorable."
+   },
+   {
+    "q": "To what extent can films influence people's moral values and worldview?",
+    "a": "I believe cinema exerts a profound influence on shaping cultural perceptions and empathy. By presenting diverse narratives and ethical dilemmas, films expose viewers to realities beyond their immediate circles. For instance, socially conscious movies can alter public attitudes towards prejudice or mental health. However, audiences with firm principles might remain unaffected, meaning cinema often reinforces existing convictions rather than completely transforming them."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng việc tóm tắt toàn bộ cốt truyện (plot summary) quá chi tiết trong Part 2 thay vì tập trung vào cảm xúc cá nhân, kỹ thuật làm phim và lý do tác phẩm gây ấn tượng.",
+   "Nhầm lẫn từ vựng cơ bản như dùng lẫn lộn giữa 'character' (nhân vật hư cấu) và 'actor' (diễn viên ngoài đời), hoặc lặp đi lặp lại từ 'film'/'movie' mà không đổi sang 'picture', 'motion picture' hay 'flick'.",
+   "Không nhất quán về thì: khi thuật lại diễn biến của một câu chuyện trên phim, người bản xứ thường dùng thì hiện tại đơn (narrative present), nhưng thí sinh Việt Nam hay nhảy lộn xộn giữa quá khứ và hiện tại."
+  ],
+  "p1More": [
+   "Do you prefer watching films alone or with other people?",
+   "Are foreign films popular in your country?",
+   "Have you ever rewatched a movie multiple times?",
+   "Do you prefer watching films with subtitles or dubbed voices?",
+   "Has your taste in movies changed compared to five years ago?"
+  ],
+  "p3More": [
+   "Should governments provide subsidies to support local film industries against Hollywood competition?",
+   "How has the rise of digital streaming platforms affected traditional filmmaking standards?",
+   "Do you think historical accuracy should take priority over dramatic entertainment in biographical films?",
+   "What impact does celebrity culture around movie stars have on young people today?"
+  ]
+ },
  "city": {
   "vocab": [
    {
@@ -557,6 +650,99 @@
    "In what ways might smart city technology transform urban living in the future?"
   ]
  },
+ "climate": {
+  "vocab": [
+   {
+    "en": "carbon footprint",
+    "vi": "lượng phát thải carbon cá nhân hoặc tổ chức",
+    "ex": "Switching to public transit is an easy way to shrink your carbon footprint."
+   },
+   {
+    "en": "extreme weather events",
+    "vi": "các hiện tượng thời tiết cực đoan",
+    "ex": "Prolonged droughts and flash floods are clear examples of extreme weather events."
+   },
+   {
+    "en": "phase out",
+    "vi": "loại bỏ dần theo lộ trình",
+    "ex": "Many developed nations plan to phase out fossil-fuel vehicles over the next decade."
+   },
+   {
+    "en": "renewable energy sources",
+    "vi": "các nguồn năng lượng tái tạo",
+    "ex": "Investing heavily in renewable energy sources like wind and solar is vital."
+   },
+   {
+    "en": "take a toll on",
+    "vi": "gây thiệt hại, ảnh hưởng nặng nề đến",
+    "ex": "Unprecedented heatwaves have taken a heavy toll on public health and crop yields."
+   },
+   {
+    "en": "eco-conscious",
+    "vi": "có ý thức bảo vệ môi trường",
+    "ex": "Young consumers are becoming more eco-conscious and refusing single-use plastics."
+   },
+   {
+    "en": "curb greenhouse gas emissions",
+    "vi": "cắt giảm khí thải nhà kính",
+    "ex": "Stricter regulations are urgently needed to curb industrial greenhouse gas emissions."
+   },
+   {
+    "en": "environmental degradation",
+    "vi": "sự suy thoái môi trường",
+    "ex": "Deforestation is a leading cause of severe environmental degradation in tropical regions."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên dự án 'Million Trees Vietnam' và mục đích chính là giảm bớt hiệu ứng đảo nhiệt đô thị.",
+   "Ý 1: Nêu địa điểm thực hiện (dọc các đại lộ, công viên, khu đất trống ở Hà Nội) và phương pháp chọn loại cây bản địa phù hợp.",
+   "Ý 2: Nêu rõ các thành phần tham gia như sinh viên tình nguyện, đoàn thanh niên địa phương và sự tài trợ của doanh nghiệp.",
+   "Kết: Giải thích hiệu quả kép của dự án: vừa hấp thụ khí CO2, tạo bóng mát vừa lan tỏa mạnh mẽ lối sống bền vững trong cộng đồng."
+  ],
+  "sample": "I’d like to talk about an urban reforestation initiative in my city called 'Million Trees Vietnam'. It was launched a couple of years ago to address deteriorating air quality and the urban heat island effect. Basically, the project involves planting native shade trees along major boulevards, public parks, and empty communal spaces across Hanoi. Before planting, organizers carefully survey local soil conditions to select species that thrive naturally and require minimal chemical fertilizers. What impresses me most is the community involvement. While non-profit groups coordinate the logistics, hundreds of student volunteers, local youth unions, and even neighborhood elders roll up their sleeves every weekend to dig holes and plant saplings. Private companies also sponsor tools and saplings as part of their social responsibility. I consider this campaign truly effective because it tackles climate change on multiple fronts. Beyond the obvious benefit of absorbing carbon dioxide and providing cooling shade during sweltering summers, it visibly raises eco-awareness among city dwellers. Seeing tangible green patches flourish right where they live inspires everyday citizens to adopt more sustainable lifestyles.",
+  "p1": [
+   {
+    "q": "Have you noticed any changes in the weather in your hometown recently?",
+    "a": "Definitely. In recent years, summers in Hanoi have become unbearably scorching, with heatwaves lasting for weeks. Just last July, daytime temperatures consistently exceeded forty degrees Celsius, which rarely happened during my childhood."
+   },
+   {
+    "q": "What do you do in your daily life to protect the environment?",
+    "a": "I try to minimize single-use plastics by carrying my own canvas bag and stainless steel tumbler everywhere. Additionally, I commute to work by electric scooter rather than a petrol motorbike to cut down on emissions."
+   },
+   {
+    "q": "Do you think schools should teach children about environmental issues?",
+    "a": "Yes, absolutely. Educating children early fosters eco-friendly habits, such as recycling and conserving water, from a young age. In my primary school, we organized regular clean-up days, which taught me the value of responsible waste disposal."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Who should bear the primary responsibility for tackling global warming: individuals or governments?",
+    "a": "In my view, governments must lead the charge because systemic change requires enforceable regulations and major funding. While individual actions like recycling matter, only policymakers can introduce carbon taxes, mandate renewable energy transitions, and penalize polluting corporations. Without strict environmental laws, voluntary consumer efforts simply cannot offset industrial emissions at the necessary scale. Therefore, while citizens should play their part, state-level leadership remains the fundamental driver."
+   },
+   {
+    "q": "How might technological advancements help reduce the impact of climate change in the future?",
+    "a": "Technological innovation holds immense potential, particularly in green energy and direct carbon capture. For instance, more efficient solar cells and next-generation battery storage can completely replace coal-fired power plants. However, technology alone isn't a silver bullet; these inventions must be economically viable and widely accessible to developing nations. Ultimately, combining breakthrough tech with political commitment offers our best chance to reverse ecological damage."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng lặp lại từ 'climate change' hoặc 'environment' thay vì linh hoạt biến hóa sang 'global warming', 'ecological crisis', hoặc 'environmental degradation'.",
+   "Dịch từ ghép tiếng Việt sang tiếng Anh sai quy chuẩn collocation, ví dụ nói 'destroy the environment' quá chung chung thay vì 'wreak havoc on the ecosystem' hoặc 'take a heavy toll on nature'.",
+   "Dùng sai dạng danh từ không đếm được sang số nhiều, chẳng hạn nói 'many pollutions' hoặc 'plastic wastes' thay vì 'widespread pollution' hoặc 'plastic waste'."
+  ],
+  "p1More": [
+   "Do you prefer hot or cold weather?",
+   "Have you ever participated in a tree-planting activity?",
+   "How do people in your country stay cool during intense heatwaves?",
+   "Do you frequently use public transportation to reduce pollution?",
+   "Did you learn about global warming when you were at school?"
+  ],
+  "p3More": [
+   "Why are some countries more vulnerable to the effects of climate change than others?",
+   "To what extent can international climate agreements influence domestic environmental policies?",
+   "Do you think economic growth must inevitably come at the expense of environmental preservation?",
+   "How can media outlets communicate the urgency of climate issues without causing public despair?"
+  ]
+ },
  "clothes": {
   "vocab": [
    {
@@ -648,6 +834,285 @@
    "Do you believe traditional costumes will gradually vanish in modern globalized societies?",
    "Should public schools and workplaces enforce strict dress codes, or should personal expression be prioritized?",
    "How might technological advancements, such as smart fabrics or 3D-printed garments, reshape the future of fashion?"
+  ]
+ },
+ "cooking": {
+  "vocab": [
+   {
+    "en": "whip up a meal",
+    "vi": "nhanh chóng nấu một bữa ăn",
+    "ex": "Whenever I get home late from work, I usually whip up a quick pasta dish."
+   },
+   {
+    "en": "comfort food",
+    "vi": "món ăn quen thuộc mang lại cảm giác dễ chịu",
+    "ex": "A warm bowl of chicken noodle soup is my ultimate comfort food on rainy days."
+   },
+   {
+    "en": "from scratch",
+    "vi": "tự làm từ đầu bằng nguyên liệu tươi",
+    "ex": "My grandmother always insists on making bread completely from scratch."
+   },
+   {
+    "en": "season to taste",
+    "vi": "nêm nếm vừa miệng",
+    "ex": "After simmering the stew, remember to season to taste with black pepper and herbs."
+   },
+   {
+    "en": "culinary prowess",
+    "vi": "tài nghệ hoặc kỹ năng nấu nướng",
+    "ex": "He took every opportunity to show off his culinary prowess when hosting dinner parties."
+   },
+   {
+    "en": "piping hot",
+    "vi": "nóng hổi",
+    "ex": "The traditional savory pancakes taste best when served piping hot straight from the skillet."
+   },
+   {
+    "en": "bursting with flavor",
+    "vi": "đậm đà, bùng nổ hương vị",
+    "ex": "Fresh herbs make this Vietnamese dipping sauce bursting with flavor."
+   },
+   {
+    "en": "acquired taste",
+    "vi": "món ăn có hương vị đặc thù cần thời gian làm quen",
+    "ex": "Fermented shrimp paste is definitely an acquired taste for most foreign visitors."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu món thịt kho tàu (caramelised braised pork belly) cùng các nguyên liệu cốt lõi như thịt ba chỉ, nước dừa tươi và trứng luộc.",
+   "Ý 1: Người hướng dẫn và hoàn cảnh học: Mẹ dạy khi bắt đầu sống tự lập thời sinh viên, gắn liền với ký ức gia đình ấm cúng ngày Tết.",
+   "Ý 2: Các bước thực hiện: Ướp thịt ngấm gia vị, thắng đường tạo màu cánh gián, xào săn rồi ninh nhỏ lửa cùng nước dừa cho thịt mềm rục.",
+   "Kết: Lý do thích nấu: Quá trình nấu mang tính giải tỏa căng thẳng (therapeutic) và cảm giác hạnh phúc khi chia sẻ món ăn quê nhà nóng hổi cùng bạn bè."
+  ],
+  "sample": "I’d like to talk about braised pork belly with eggs, a staple Vietnamese comfort food that I have mastered over the years. To prepare this savory dish, the essential ingredients include pork belly, quail or chicken eggs, shallots, garlic, fish sauce, and, crucially, fresh coconut water. I actually learned how to cook this from my mother when I first moved away for university. She taught me that the secret lies in balancing the sweet and savory notes properly. The preparation starts with cubing the pork and marinating it with minced aromatics and fish sauce. Then, I caramelize some sugar until it turns a deep amber color before tossing in the meat to brown. Next, I pour in fresh coconut water and let everything simmer on low heat for about an hour. Towards the end, I toss in the hard-boiled eggs so they absorb the rich, golden broth. I truly enjoy making this meal because it serves as therapeutic downtime after a hectic week. More importantly, seeing my friends savoring it with piping hot rice gives me a genuine sense of accomplishment and nostalgia.",
+  "p1": [
+   {
+    "q": "Do you often cook your own meals at home?",
+    "a": "Yes, I usually prepare my own meals on weekdays because it allows me to control the ingredients and eat healthily. For instance, last night I quickly stir-fried some vegetables and chicken breast after getting home from work."
+   },
+   {
+    "q": "What was the very first dish you learned to make?",
+    "a": "If I recall correctly, it was a simple fried egg with spring onions. My mother taught me how to crack eggs properly and regulate the stove flame when I was just around ten years old."
+   },
+   {
+    "q": "Do you prefer eating home-cooked food or dining out?",
+    "a": "I definitely lean towards home-cooked meals since they are far more wholesome and cost-effective. However, on busy weekends, I still treat myself to dinner at local restaurants to unwind with friends and try new cuisines."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should schools include culinary skills as a compulsory subject for young students?",
+    "a": "In my opinion, basic culinary training should definitely be part of the curriculum. Cooking is an indispensable life skill that fosters independence and helps youngsters make healthier dietary choices early on. Without these fundamental skills, many adolescents become overly reliant on processed fast food, which often leads to lifestyle-related health complications. Therefore, teaching children how to prepare simple, nutritious meals offers lifelong benefits."
+   },
+   {
+    "q": "How has modern technology changed the way families prepare and consume food?",
+    "a": "Advancements in technology have fundamentally revolutionized domestic cooking. Modern appliances like air fryers and smart pressure cookers significantly cut down preparation time while promoting oil-free, healthier meals. Moreover, online recipe apps provide instant culinary inspiration for busy parents. Conversely, food delivery platforms sometimes discourage families from cooking together at all, which weakens communal bonding around the kitchen table. Overall, technology brings immense convenience despite reducing traditional culinary habits."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn từ vựng 'cooker' và 'cook': Nhiều người nói nhầm 'My mother is a good cooker', trong khi 'cooker' là nồi/bếp nấu (như rice cooker), còn danh từ chỉ người nấu ăn là 'cook' hoặc 'chef'.",
+   "Lạm dụng từ 'delicious' và 'yummy': Thí sinh thường thiếu hụt các tính từ miêu tả chuyên sâu về mùi vị và kết cấu như 'savory' (đậm đà), 'tender' (mềm), 'crispy' (giòn) hay 'fragrant' (thơm phức).",
+   "Dịch vụng về từ tiếng Việt khi mô tả thao tác: Dùng 'put spices' thay vì các cụm tự nhiên như 'season the dish', 'marinate the meat' (ướp thịt) hay 'garnish with herbs' (rắc rau thơm trang trí)."
+  ],
+  "p1More": [
+   "Who does most of the cooking in your household?",
+   "Do you watch any cooking shows or online recipe videos?",
+   "Is there any food that you really dislike cooking?",
+   "Did you learn how to cook at school or at home?",
+   "Do you think cooking is an essential life skill for everyone?"
+  ],
+  "p3More": [
+   "Why are traditional family recipes increasingly being forgotten by younger generations?",
+   "To what extent does globalization threaten the preservation of authentic national cuisines?",
+   "Do you believe men and women share cooking responsibilities equally in contemporary society?",
+   "How might changing economic conditions influence people's dining habits in the future?"
+  ]
+ },
+ "culture": {
+  "vocab": [
+   {
+    "en": "cultural heritage",
+    "vi": "di sản văn hóa",
+    "ex": "Folk music is an indispensable part of our nation's rich cultural heritage."
+   },
+   {
+    "en": "pass down from generation to generation",
+    "vi": "lưu truyền qua nhiều thế hệ",
+    "ex": "These ancient culinary techniques have been passed down from generation to generation."
+   },
+   {
+    "en": "steeped in tradition",
+    "vi": "thấm đượm nét truyền thống",
+    "ex": "The Mid-Autumn Festival is a joyous occasion steeped in tradition and folklore."
+   },
+   {
+    "en": "sense of belonging",
+    "vi": "cảm giác gắn kết cộng đồng",
+    "ex": "Participating in communal rituals fosters a deep sense of belonging among villagers."
+   },
+   {
+    "en": "cultural assimilation",
+    "vi": "sự đồng hóa văn hóa",
+    "ex": "Minority tribes often face the threat of cultural assimilation in expanding metropolitan areas."
+   },
+   {
+    "en": "stand the test of time",
+    "vi": "trường tồn với thời gian",
+    "ex": "Despite modern trends, classic wedding customs still stand the test of time."
+   },
+   {
+    "en": "bridge the generation gap",
+    "vi": "thu hẹp khoảng cách thế hệ",
+    "ex": "Family banquets during traditional holidays help bridge the generation gap."
+   },
+   {
+    "en": "pay homage to",
+    "vi": "bày tỏ lòng thành kính với",
+    "ex": "Every spring, locals gather at the communal temple to pay homage to their ancestors."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên lễ hội (Tết Nguyên Đán), vị thế quan trọng nhất trong văn hóa Việt và thời gian diễn ra (tháng Giêng âm lịch).",
+   "Ý 1: Nêu bối cảnh chuẩn bị đặc trưng trước Tết (dọn dẹp nhà cửa, trang trí hoa đào/hoa mai, mua sắm đồ thờ cúng).",
+   "Ý 2: Miêu tả các phong tục chính trong kỳ lễ (cúng tổ tiên với bánh chưng, xông đất, chúc Tết họ hàng và lì xì trẻ nhỏ).",
+   "Kết: Giải thích ý nghĩa thiêng liêng đối với bản thân (cơ hội sum họp gia đình, kết nối cội nguồn giữa nhịp sống hiện đại vội vã)."
+  ],
+  "sample": "I would like to talk about the Lunar New Year, locally known as Tet, which is undoubtedly the most sacred festival in Vietnam. It takes place in late January or early February across the entire nation, marking the arrival of spring and a fresh beginning. In the run-up to the event, streets are bursting with vibrant peach blossoms and kumquat trees. Families spend days spring-cleaning their homes to sweep away misfortune. During the official days of Tet, people pay homage to their ancestors by offering traditional dishes like square glutinous rice cakes. We also visit relatives to exchange heartfelt blessings, while elders give children crisp banknotes in red envelopes for good fortune. This festival holds immense sentimental value for me because it serves as an irreplaceable family reunion. In our fast-paced society, my siblings and I work far from home, so Tet provides an opportunity to unwind, reconnect with loved ones, and bridge the generation gap. Ultimately, it reinforces my cultural identity and reminds me of my roots, no matter how much the world changes.",
+  "p1": [
+   {
+    "q": "Do you enjoy learning about traditions from other countries?",
+    "a": "Definitely, yes. I find foreign customs fascinating because they offer a fresh perspective on how different societies live. For instance, discovering Japanese tea ceremony rituals showed me how mindfully everyday actions can be performed."
+   },
+   {
+    "q": "What is an important celebration in your hometown?",
+    "a": "Without a doubt, it is the Mid-Autumn Festival. Families gather under the full moon to share sweet mooncakes while children parade with colorful lanterns, creating a wonderfully vibrant community atmosphere throughout the neighborhood."
+   },
+   {
+    "q": "Did your family have any special customs when you were growing up?",
+    "a": "Yes, we did. Every Sunday morning, my grandparents would gather all the children to prepare a communal breakfast together. It was a simple habit, but it taught us respect and mutual support from an early age."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has globalization affected the way younger generations view traditional customs?",
+    "a": "In my view, globalization has brought both opportunities and challenges. On the one hand, exposure to Western lifestyles sometimes makes youngsters consider local customs outdated or time-consuming. On the other hand, many young people now take pride in showcasing their distinct cultural heritage on global platforms like social media. Therefore, while modern integration may dilute certain rituals, it can also spark a renewed appreciation for indigenous roots."
+   },
+   {
+    "q": "Do you think governments should invest public funds in preserving endangered cultural rituals?",
+    "a": "I wholeheartedly agree with this idea. Cultural rituals are the soul of a nation, carrying centuries of collective wisdom and historical values. If the state does not step in to financially subsidize intangible heritage, such as tribal chants or craft-making rituals, these practices will inevitably fade under commercial pressures. Thus, allocating budget to safeguard them is a crucial investment in national identity."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng dịch 'Tet holiday' lặp đi lặp lại mà không linh hoạt sử dụng các từ thay thế học thuật như 'traditional spring festival' hay 'lunar new year celebration'.",
+   "Dịch nguyên văn tiếng Việt sang tiếng Anh thiếu tự nhiên (ví dụ: nói 'eat Tet' thay vì 'celebrate Tet', hoặc dùng 'lucky money' mà không diễn giải rõ ý niệm văn hóa).",
+   "Chỉ mô tả bề nổi hoạt động trong Part 3 như thể đang trả lời Part 1, quên đi việc bàn luận sâu về tác động xã hội, sự mai một văn hóa và tính bền vững."
+  ],
+  "p1More": [
+   "Do you prefer traditional food or modern fast food?",
+   "Have you ever participated in a traditional wedding?",
+   "Do you think wearing traditional clothing is still popular today?",
+   "What traditional music or instruments do people in your country enjoy?",
+   "Is it easy to preserve old customs in big cities?"
+  ],
+  "p3More": [
+   "To what extent can traditional values coexist with rapid technological advancement?",
+   "Is commercializing traditional festivals beneficial or harmful to their original spiritual significance?",
+   "Who should bear the primary responsibility for transmitting cultural traditions: schools, families, or the media?",
+   "Could the decline of indigenous customs lead to a loss of national sovereignty and identity in a globalized world?"
+  ]
+ },
+ "daily-routine": {
+  "vocab": [
+   {
+    "en": "kick-start one's day",
+    "vi": "khởi đầu ngày mới đầy hứng khởi",
+    "ex": "I always drink a tall glass of lemon water to kick-start my day."
+   },
+   {
+    "en": "wind down",
+    "vi": "thư giãn, thả lỏng cuối ngày",
+    "ex": "Listening to soothing instrumental tracks helps me wind down before going to sleep."
+   },
+   {
+    "en": "stick to a schedule",
+    "vi": "tuân thủ lịch trình",
+    "ex": "It takes tremendous self-discipline to stick to a schedule when studying from home."
+   },
+   {
+    "en": "early bird",
+    "vi": "người có thói quen dậy sớm",
+    "ex": "Being an early bird allows me to finish demanding tasks before noon."
+   },
+   {
+    "en": "strike a balance",
+    "vi": "cân bằng giữa các yếu tố",
+    "ex": "Busy professionals must strike a balance between career ambitions and personal rest."
+   },
+   {
+    "en": "creature of habit",
+    "vi": "người sống theo nếp quen cố định",
+    "ex": "My grandfather is a creature of habit who eats breakfast at precisely six every morning."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức từ sáng sớm đến khuya",
+    "ex": "Constantly burning the candle at both ends will inevitably lead to severe burnout."
+   },
+   {
+    "en": "set aside time",
+    "vi": "dành riêng một khoảng thời gian",
+    "ex": "I try to set aside time for a brief brisk walk every afternoon."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu thói quen lành mạnh (đi bộ nhanh 30 phút mỗi sáng) và nhấn mạnh tầm quan trọng của nó trong đời sống hiện tại.",
+   "Ý 1: Kể lại cơ duyên bắt đầu (bắt đầu từ một năm trước khi cảm thấy uể oải vì ngồi làm việc quá nhiều, phải mua giày và quyết tâm dậy sớm).",
+   "Ý 2: Miêu tả chi tiết thói quen diễn ra như thế nào trong ngày (thức dậy lúc sáu giờ, ra công viên gần nhà đi bộ kết hợp nghe podcast trước khi đường phố đông đúc).",
+   "Kết: Nêu bật tác động tích cực (kích thích tuần hoàn máu, giải tỏa căng thẳng đầu óc và duy trì năng lượng dồi dào suốt cả ngày)."
+  ],
+  "sample": "I'd like to talk about a habit that has truly transformed my life: a brisk thirty-minute morning walk.\n\nI adopted this routine about a year ago. Back then, I was constantly glued to my desk and felt utterly exhausted by midday. Realizing that I needed to shake things up, I bought a pair of running shoes and committed to waking up half an hour earlier every single day.\n\nNowadays, this activity fits seamlessly into my morning schedule. Right after getting out of bed at six, I put on my sneakers and head straight to a leafy park near my apartment. During this walk, I usually listen to an inspiring podcast or simply take in the crisp morning air before traffic gets chaotic. By seven, I am back home, refreshed and ready for breakfast.\n\nThis ritual is exceptionally beneficial to me for a couple of reasons. Physically, it gets my blood flowing and boosts my metabolism right off the bat. Mentally, it clears my head and sets a positive tone for the entire day. Without this routine, I genuinely feel sluggish and unproductive.",
+  "p1": [
+   {
+    "q": "What is the first thing you usually do after waking up?",
+    "a": "Generally, I drink a large glass of warm water right after getting out of bed. It instantly rehydrates my system and wakes up my brain, especially when I have an early morning study session."
+   },
+   {
+    "q": "Do you prefer to do challenging tasks in the morning or in the evening?",
+    "a": "I definitely lean towards tackling demanding tasks early in the morning. My concentration is at its peak during those early hours, whereas by evening, mental fatigue usually sets in after a full day."
+   },
+   {
+    "q": "Has your daily routine changed much compared to when you were younger?",
+    "a": "Yes, substantially. When I was a student, my schedule was quite spontaneous and flexible. Nowadays, due to work commitments, I have to stick strictly to structured timetables and set alarms every single day."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people find it difficult to stick to a consistent daily schedule?",
+    "a": "In my view, unpredictable demands are the primary culprit. People often encounter urgent work deadlines or social commitments that derail their original plans. Additionally, many individuals lack self-discipline or set unrealistically rigid goals, which leads to early burnout. Consequently, when things go slightly off track, they abandon the schedule altogether instead of adapting flexibly."
+   },
+   {
+    "q": "How has modern technology influenced the way people organize their day-to-day lives?",
+    "a": "Technology is undeniably a double-edged sword in this regard. On the positive side, digital calendars and productivity apps help individuals automate reminders and streamline daily commitments efficiently. However, constant notifications and social media feeds often disrupt focus, leading to severe procrastination. Therefore, while tools exist to optimize schedules, poor digital boundaries often shatter daily routines."
+   }
+  ],
+  "mistakesVi": [
+   "Lỗi liệt kê thời gian máy móc: Thí sinh thường lặp lại các liên từ cơ bản như 'First', 'After that', 'And then' kèm mốc giờ cụ thể, khiến bài nói giống bản báo cáo thay vì dùng các cụm tự nhiên như 'Right after waking up' hay 'Once that is taken care of'.",
+   "Nhầm lẫn thì hiện tại tiếp diễn và hiện tại đơn: Thí sinh hay dùng sai thì tiếp diễn để nói về thói quen lặp đi lặp lại (ví dụ nói 'I am usually drinking coffee' thay vì chuẩn xác là 'I usually drink coffee').",
+   "Lạm dụng từ vựng dịch thô: Thí sinh hay dịch cụm 'giết thời gian' hoặc 'xả hơi' thành các câu rườm rà; thay vào đó nên dùng các phrasal verbs tự nhiên của người bản xứ như 'wind down', 'unwind' hoặc 'decompress'."
+  ],
+  "p1More": [
+   "Do you usually have the same routine on weekdays and weekends?",
+   "Which part of your day do you find most productive?",
+   "Do you like to plan your day in advance or just go with the flow?",
+   "What is your favorite part of your daily routine?",
+   "Do you find it easy to change your routine when unexpected events happen?"
+  ],
+  "p3More": [
+   "Do you think society puts too much emphasis on rigid productivity and morning routines?",
+   "To what extent should employers allow workers to design their own daily work hours?",
+   "How do retirement and major life transitions affect a person's psychological need for a routine?",
+   "Will artificial intelligence eventually eliminate the need for humans to plan their daily schedules?"
   ]
  },
  "environment": {
@@ -1115,6 +1580,285 @@
    "In what ways do societal expectations of friendship differ between older and younger generations?"
   ]
  },
+ "gardens": {
+  "vocab": [
+   {
+    "en": "have a green thumb",
+    "vi": "mát tay làm vườn, có khiếu trồng cây",
+    "ex": "My grandmother really has a green thumb; her balcony is always bursting with vibrant orchids."
+   },
+   {
+    "en": "lush greenery",
+    "vi": "cây cối xanh tươi rậm rạp",
+    "ex": "I love escaping the noisy downtown area to unwind amid lush greenery."
+   },
+   {
+    "en": "commune with nature",
+    "vi": "hòa mình vào thiên nhiên",
+    "ex": "Taking a weekend stroll through the botanical park allows me to commune with nature."
+   },
+   {
+    "en": "urban sprawl",
+    "vi": "sự mở rộng đô thị tràn lan",
+    "ex": "Due to rapid urban sprawl, many community gardens have been replaced by commercial complexes."
+   },
+   {
+    "en": "therapeutic effect",
+    "vi": "tác dụng chữa lành, thư giãn tinh thần",
+    "ex": "Caring for indoor houseplants has a noticeable therapeutic effect after a hectic workday."
+   },
+   {
+    "en": "in full bloom",
+    "vi": "đang nở rộ rực rỡ",
+    "ex": "The cherry blossoms were in full bloom, attracting hundreds of sightseers."
+   },
+   {
+    "en": "concrete jungle",
+    "vi": "rừng bê tông (thành phố ngột ngạt thiếu cây xanh)",
+    "ex": "Living in a concrete jungle makes people appreciate pocket parks and rooftop gardens even more."
+   },
+   {
+    "en": "green lung",
+    "vi": "lá phổi xanh của thành phố",
+    "ex": "Large botanical gardens function as the green lungs of industrial metropolises by purifying polluted air."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu địa điểm ghé thăm (ví dụ Vườn bách thảo Đà Lạt) và thời điểm cùng người đồng hành.",
+   "Ý 1: Miêu tả địa hình, quy mô và thảm thực vật nổi bật (các luống hoa cẩm tú cầu nở rộ, đồi thông cổ thụ, nhà kính xương rồng).",
+   "Ý 2: Trình bày các hoạt động đã làm (tản bộ trên lối đi lát đá, chụp ảnh lưu niệm, ngồi hít thở không khí trong lành).",
+   "Kết: Nêu lý do gây ấn tượng mạnh (tác dụng giải tỏa căng thẳng sau chuỗi ngày ở đô thị, khơi dậy niềm đam mê chăm sóc cây cỏ)."
+  ],
+  "sample": "I would like to talk about the botanical garden in Da Lat that I visited last spring with a close friend. It is nestled right near the city centre, surrounded by rolling hills. The garden was breathtaking, filled with lush greenery and diverse indigenous flora. I saw vibrant beds of hydrangeas in full bloom, towering pine trees offering soothing shade, and a massive greenhouse packed with rare orchids and desert succulents. During our visit, we spent hours meandering down stone pathways, taking snapshots of exotic flowers, and simply sitting on a wooden bench to breathe in the crisp, floral-scented air. What made this visit truly unforgettable was how incredibly peaceful it felt. Living in a bustling concrete jungle, I rarely get the chance to slow down, so immersing myself in that tranquil sanctuary was like a breath of fresh air. It had an immediate therapeutic effect on my stressed mind and sparked my genuine appreciation for botanical conservation.",
+  "p1": [
+   {
+    "q": "Do you have any potted plants or flowers in your home?",
+    "a": "Yes, I keep a few small succulents and a money plant on my windowsill. They do not require frequent watering, and having that touch of green really brightens up my living space after a long day."
+   },
+   {
+    "q": "Did you enjoy visiting public gardens when you were a child?",
+    "a": "Definitely. My parents used to take me to the municipal flower park on weekends. I was fascinated by the colourful blossoms and loved chasing dragonflies across the spacious lawns with my siblings."
+   },
+   {
+    "q": "Would you like to grow your own vegetables in the future?",
+    "a": "I certainly would. Having a small rooftop vegetable patch would allow me to harvest fresh organic herbs like basil and mint, which are much safer and taste far better than store-bought produce."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do many urban residents find it important to maintain green spaces in modern cities?",
+    "a": "In fast-paced metropolitan areas, green spaces serve as vital sanctuaries. They act as natural air purifiers, absorbing carbon dioxide and mitigating urban heat. Furthermore, spending time amidst trees and flower beds offers people an emotional refuge from daily workplace pressures. Without these green lungs, concrete jungles can feel suffocating and contribute significantly to mental exhaustion, which is why preserving public parks has become indispensable for urban well-being."
+   },
+   {
+    "q": "How might children benefit from participating in gardening activities at school?",
+    "a": "Engaging in gardening fosters a strong sense of responsibility and patience among young learners. When children plant seeds and tend to them daily, they understand where food comes from and gain respect for nature. Unlike passive classroom learning, getting their hands dirty provides tactile experiences that stimulate scientific curiosity. Ultimately, this hands-on involvement nurtures environmental awareness from an early age, helping them develop into more eco-conscious adults."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng từ 'tree' hoặc 'flower' lặp đi lặp lại thay vì linh hoạt biến hóa với các thuật ngữ chính xác như 'houseplants', 'succulents', 'foliage', hay 'botanical species'.",
+   "Dịch thô cụm từ 'trồng cây' thành 'grow tree' thay vì dùng chuẩn xác 'plant trees' (hành động hạ giống) hoặc 'grow/cultivate plants' (quá trình chăm bón để cây phát triển).",
+   "Nhầm lẫn giới từ trong cụm từ kết nối với thiên nhiên, thường nói 'connect to nature' thay vì cấu trúc tự nhiên hơn trong văn nói là 'connect with nature' hoặc 'commune with nature'."
+  ],
+  "p1More": [
+   "What kinds of plants are popular in your country?",
+   "Have you ever received a potted plant or flowers as a gift?",
+   "Do you think you have a green thumb?",
+   "Is it easy to take care of indoor houseplants?",
+   "Do you prefer spending your free time in a garden or at the beach?"
+  ],
+  "p3More": [
+   "To what extent should municipal governments mandate rooftop gardens on commercial high-rises?",
+   "How has rapid urbanization over recent decades transformed the relationship between citizens and nature?",
+   "Do you think artificial indoor greenery can provide the same psychological benefits as genuine living gardens?",
+   "In what ways can community allotment gardens promote social cohesion among diverse residential groups?"
+  ]
+ },
+ "handwriting": {
+  "vocab": [
+   {
+    "en": "legible handwriting",
+    "vi": "chữ viết rõ ràng, dễ đọc",
+    "ex": "Despite writing quickly during the timed essay, she maintained exceptionally legible handwriting."
+   },
+   {
+    "en": "a personal touch",
+    "vi": "dấu ấn cá nhân, nét gần gũi riêng biệt",
+    "ex": "Adding a handwritten note to the parcel lent a warm, personal touch that customers adored."
+   },
+   {
+    "en": "streamline the workflow",
+    "vi": "tối ưu hóa quy trình làm việc",
+    "ex": "Mastering touch typing has helped administrative staff streamline their daily workflow substantially."
+   },
+   {
+    "en": "cognitive benefits",
+    "vi": "những lợi ích về mặt nhận thức và tư duy",
+    "ex": "Neuroscientists emphasize that taking lecture notes by hand yields notable cognitive benefits for memory retention."
+   },
+   {
+    "en": "scrawl something down",
+    "vi": "viết nguệch ngoạc, ghi vội thứ gì đó",
+    "ex": "I had to scrawl down the directions on a spare napkin before my phone battery died."
+   },
+   {
+    "en": "put pen to paper",
+    "vi": "đặt bút viết",
+    "ex": "In our fast-paced digital era, it is quite rare for young people to put pen to paper."
+   },
+   {
+    "en": "muscle memory",
+    "vi": "trí nhớ cơ bắp (phản xạ vận động tự động)",
+    "ex": "Touch typing at high speeds relies heavily on muscle memory rather than looking at individual keys."
+   },
+   {
+    "en": "sentimental keepsake",
+    "vi": "kỷ vật lưu giữ giá trị tình cảm",
+    "ex": "I carefully stored my grandfather's handwritten postcards in a wooden box as a sentimental keepsake."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người gửi (bạn thân thời thơ ấu), dịp nhận (sinh nhật lần thứ 24) và cảm xúc bất ngờ khi thấy bì thư trong hòm thư.",
+   "Ý 1 (Who & Where/When): Chi tiết về hoàn cảnh nhận tại nhà riêng vào một buổi chiều sau giờ làm việc bận rộn; nêu bật sự đối lập với tin nhắn điện thoại thông thường.",
+   "Ý 2 (Content): Tóm lược nội dung lá thư dài hai trang (kể lại kỷ niệm ngây ngô thời học sinh, động viên khi mình chuyển việc, nét mực có đoạn vội vã chân thật).",
+   "Kết (Why special): Giải thích lý do đặc biệt (sự kiên nhẫn khi 'put pen to paper', tấm lòng chân thành không thể thay thế bởi văn bản gõ phím, trở thành kỷ vật quý giá)."
+  ],
+  "sample": "I would like to talk about a handwritten birthday card I received from my childhood best friend, Linh, about two years ago. It arrived in my mailbox right on my twenty-fourth birthday, completely out of the blue. Nowadays, people almost exclusively send quick emoji-filled texts on messaging apps, so holding a physical envelope with my name penned in familiar, slightly messy ink was genuinely heartwarming. Inside, she had written a two-page letter reflecting on our ten-year friendship. She recalled hilarious blunders from our high school days, acknowledged how tough my recent job transition had been, and offered sincere words of encouragement. You could actually see where her handwriting accelerated when she got excited and where she hesitated, which made the message come alive. What made this card truly irreplaceable was the deliberate effort behind it. In this fast-paced digital era, typing a generic greeting takes seconds, but putting pen to paper requires real mindfulness and patience. It proved that she took time out of her hectic schedule to craft something tangible. I still keep that card tucked safely inside my favorite book as a treasured keepsake.",
+  "p1": [
+   {
+    "q": "Do you prefer writing by hand or typing on a keyboard?",
+    "a": "I definitely lean towards typing because it is significantly faster and allows for effortless editing. When drafting complex work reports, using a mechanical keyboard boosts my daily productivity, though I still use pen and paper for creative brainstorming."
+   },
+   {
+    "q": "When was the last time you wrote something by hand?",
+    "a": "Just yesterday morning, actually. I quickly scrawled down a grocery shopping list on a sticky note before leaving for the market, as holding a paper slip feels much more convenient than constantly unlocking my phone in crowded aisles."
+   },
+   {
+    "q": "Do you think handwriting will still be important in the future?",
+    "a": "Yes, absolutely. While digital typing dominates professional correspondence, handwriting retains immense legal and sentimental value, such as signing binding contracts or penning heartfelt greeting cards that generic computer fonts can never truly substitute."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what situations do people still prefer handwriting over digital typing?",
+    "a": "People generally favor handwriting in formal legal transactions or deeply sentimental contexts. For instance, signing official certificates or endorsing marriage registers demands physical ink to establish authenticity. Furthermore, sending handwritten sympathy or wedding notes conveys genuine warmth and emotional investment that a typed message completely lacks. Whenever personal intimacy or legal irrevocability is essential, penmanship remains unmatched."
+   },
+   {
+    "q": "Should primary schools allocate more curriculum time to keyboard skills than penmanship?",
+    "a": "I believe educational institutions should strike a sensible balance rather than discard penmanship altogether. While touch typing is undeniably essential for modern workplace competence, early handwriting fosters fine motor control and deepens cognitive processing in young learners. Therefore, schools ought to teach foundational keyboarding skills alongside traditional cursive, ensuring students develop practical technological agility without compromising brain development."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'handwrite' như một động từ chia thông thường; nên dùng cụm động từ tự nhiên như 'write by hand' hoặc dùng phân từ 'handwritten' làm tính từ bổ nghĩa cho danh từ.",
+   "Nhầm lẫn giới từ khi nói về phương tiện viết và gõ, chẳng hạn nói sai 'type by keyboard' thay vì chuẩn xác là 'type on a keyboard' hoặc 'write with a pen'.",
+   "Thiếu từ vựng mô tả tính chất chữ viết (như 'legible', 'messy scrawl', 'penmanship'), khiến thí sinh liên tục lặp lại các từ cơ bản như 'write beautifully' hoặc 'bad writing'."
+  ],
+  "p1More": [
+   "Did you have penmanship or handwriting classes when you were a child?",
+   "Can you usually tell someone's personality from their handwriting?",
+   "Do you find it easy to read other people's handwriting?",
+   "How fast can you type on a computer keyboard?",
+   "Do you prefer receiving a handwritten note or a text message?"
+  ],
+  "p3More": [
+   "How has the widespread reliance on keyboards affected children's literacy and cognitive development?",
+   "Is the gradual decline of physical letter writing a regrettable cultural loss or simply practical evolution?",
+   "Do you believe voice-recognition technology will eventually render typing on keyboards obsolete?",
+   "Why do judicial and governmental systems still insist on physical handwritten signatures rather than digital ones?"
+  ]
+ },
+ "happiness": {
+  "vocab": [
+   {
+    "en": "on cloud nine",
+    "vi": "vô cùng hạnh phúc, vui sướng tột cùng",
+    "ex": "I was on cloud nine when I found out I had won the full scholarship."
+   },
+   {
+    "en": "a sense of fulfillment",
+    "vi": "cảm giác mãn nguyện, toại nguyện sâu sắc",
+    "ex": "Volunteering at the shelter gave me a profound sense of fulfillment."
+   },
+   {
+    "en": "contentment",
+    "vi": "sự hài lòng, bình yên với thực tại",
+    "ex": "True contentment comes from appreciating simple moments rather than chasing luxury."
+   },
+   {
+    "en": "lift someone's spirits",
+    "vi": "làm ai đó phấn chấn, vui vẻ hơn",
+    "ex": "A short walk in the park always helps lift my spirits when I feel stressed."
+   },
+   {
+    "en": "elated",
+    "vi": "phấn khởi, cực kỳ vui mừng",
+    "ex": "The whole team was elated after clinching victory in the final minutes."
+   },
+   {
+    "en": "hedonic treadmill",
+    "vi": "vòng xoáy mưu cầu khoái lạc (nhanh chóng quen với niềm vui và muốn nhiều hơn)",
+    "ex": "Constantly buying new gadgets traps people on a hedonic treadmill of endless desire."
+   },
+   {
+    "en": "radiate joy",
+    "vi": "tỏa ra niềm vui, rạng rỡ",
+    "ex": "Her face radiated joy as she reunited with her family at the airport."
+   },
+   {
+    "en": "strike a chord",
+    "vi": "chạm đến cảm xúc, gợi niềm đồng cảm sâu sắc",
+    "ex": "His thoughtful compliment really struck a chord and brightened my whole week."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn về sự kiện bất ngờ khiến bản thân vỡ òa hạnh phúc (nhận email trúng tuyển học bổng du học khi tưởng chừng đã trượt).",
+   "Ý 1 (Khi nào, ở đâu): Diễn ra vào một buổi chiều mưa tại phòng riêng khoảng hai năm trước, lúc đang chuẩn bị tâm lý đón nhận thất bại.",
+   "Ý 2 (Người cùng chia sẻ): Bố mẹ ở nhà và người bạn thân; cảm xúc ôm chầm lấy mẹ trong nước mắt và gọi điện khoe bạn bè.",
+   "Kết (Lý do mang lại hạnh phúc to lớn): Không chỉ vì cơ hội học thuật mà còn là sự ghi nhận nỗ lực suốt nhiều tháng, đồng thời trút bỏ gánh nặng tài chính cho gia đình."
+  ],
+  "sample": "I'd like to talk about an unexpected moment that truly made my day, which was when I received an acceptance letter for an overseas exchange programme about two years ago. It happened on a gloomy Tuesday afternoon while I was sitting alone in my bedroom. Honestly, I had convinced myself that I stood no chance because the competition was fierce, so I was bracing for rejection. But when I refreshed my inbox and saw the word 'Congratulations', I was utterly elated. My mother was preparing dinner downstairs, and the moment I rushed down shouting, she immediately burst into tears of relief. We hugged each other tightly, and shortly after, I called my best friend, who had reviewed countless essay drafts with me, to share the news. This event brought me immense happiness because it wasn't just a validation of my academic efforts after months of burning the midnight oil; it also relieved a tremendous financial burden off my parents' shoulders through a full tuition waiver. Experiencing such relief and pride alongside my loved ones created an enduring memory of sheer joy.",
+  "p1": [
+   {
+    "q": "What kinds of things make you feel happy in your daily life?",
+    "a": "For me, it is mostly small everyday pleasures, like sipping a freshly brewed coffee in the morning or sharing a laugh with colleagues. These simple rituals help relieve stress and ground me amidst my busy schedule."
+   },
+   {
+    "q": "Do you think you were happier when you were a child than you are now?",
+    "a": "I would say yes. As a child, I enjoyed sheer carefree freedom without the weight of financial obligations or work pressure, whereas now, happiness requires more deliberate effort and a good work-life balance."
+   },
+   {
+    "q": "What do you usually do when you want to cheer yourself up after a hard day?",
+    "a": "Whenever I feel drained, I usually go for a brisk jog or listen to upbeat acoustic music. Engaging in physical movement triggers endorphins, which almost immediately lifts my mood and clears my head."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you believe that material wealth is essential for long-term happiness in modern society?",
+    "a": "While wealth provides basic financial security and access to healthcare, I don't believe it guarantees lasting fulfillment. Beyond a certain threshold, money merely fuels consumerism, as people quickly adapt to luxury through the hedonic treadmill. Conversely, genuine joy stems from meaningful relationships and personal growth. Therefore, money serves as a vital foundation, but emotional well-being is what truly sustains happiness."
+   },
+   {
+    "q": "How has the way people define happiness changed compared to previous generations?",
+    "a": "In the past, happiness was closely tied to communal stability, raising a family, and securing permanent employment. Nowadays, however, younger generations prioritize individual self-actualization, mental wellness, and unique experiences like global travel. While our grandparents valued duty and social conformity, modern individuals tend to seek authenticity and autonomy, redefining happiness as a deeply personal journey rather than a societal checklist."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng lặp từ 'happy' hoặc 'very happy' thay vì sử dụng đa dạng các từ vựng band điểm cao hơn như 'content', 'thrilled', 'overjoyed' hay 'on cloud nine'.",
+   "Nhầm lẫn từ loại giữa danh từ 'happiness' và tính từ 'happy', hoặc dùng sai giới từ phổ biến (ví dụ nói 'happy with' khi nói về sự kiện thay vì 'happy about').",
+   "Trong Part 3, thí sinh có thói quen trả lời quá cảm tính và mang tính cá nhân ('I feel happy when...') thay vì phân tích ở bình diện vĩ mô, xã hội hoặc tâm lý học con người."
+  ],
+  "p1More": [
+   "Is it easy for you to stay optimistic when facing challenges?",
+   "Do you think weather can influence how happy people feel?",
+   "Who usually makes you smile the most in your family?",
+   "Do you prefer celebrating happy occasions alone or with a group?",
+   "Can spending money on gifts for others make a person happier?"
+  ],
+  "p3More": [
+   "Should governments measure national success by gross national happiness rather than economic growth?",
+   "To what extent does social media distort people's perception of what it means to be happy?",
+   "Do you think people living in rural areas enjoy a higher quality of happiness than urban dwellers?",
+   "Is it possible for someone to remain happy during extended periods of societal adversity?"
+  ]
+ },
  "health": {
   "vocab": [
    {
@@ -1487,6 +2231,285 @@
    "How does the architectural style of residential buildings reflect the culture of a country?"
   ]
  },
+ "internet": {
+  "vocab": [
+   {
+    "en": "digital footprint",
+    "vi": "dấu chân kỹ thuật số (dữ liệu cá nhân để lại trên mạng)",
+    "ex": "Every time you sign up for a new service, you leave behind a digital footprint."
+   },
+   {
+    "en": "information overload",
+    "vi": "tình trạng quá tải thông tin",
+    "ex": "With thousands of articles published every second, users often suffer from information overload."
+   },
+   {
+    "en": "curate content",
+    "vi": "chắt lọc và biên soạn nội dung",
+    "ex": "Social media algorithms curate content based on individual preferences and browsing history."
+   },
+   {
+    "en": "streamline workflow",
+    "vi": "tối ưu hóa quy trình làm việc",
+    "ex": "Modern web applications have streamlined workflow for remote teams across the globe."
+   },
+   {
+    "en": "unreliable source",
+    "vi": "nguồn thông tin không đáng tin cậy",
+    "ex": "Students should cross-check facts instead of trusting an unreliable source found online."
+   },
+   {
+    "en": "screen addiction",
+    "vi": "hội chứng nghiện màn hình thiết bị số",
+    "ex": "Excessive gaming and endless scrolling can easily trigger screen addiction among teenagers."
+   },
+   {
+    "en": "seamless connectivity",
+    "vi": "khả năng kết nối liền mạch",
+    "ex": "High-speed broadband provides seamless connectivity for interactive distance learning."
+   },
+   {
+    "en": "bridge the geographical gap",
+    "vi": "thu hẹp khoảng cách địa lý",
+    "ex": "The internet has bridged the geographical gap, allowing families to talk face-to-face from anywhere."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu Notion - ứng dụng quản lý công việc và học tập, lý do bạn biết tới nó và tần suất truy cập hằng ngày.",
+   "Ý 1: Mô tả các tính năng cốt lõi (ghi chú, lập kế hoạch, tạo cơ sở dữ liệu tùy biến theo nhu cầu).",
+   "Ý 2: Nêu chi tiết cách bạn áp dụng vào thực tế (sắp xếp bài tập, theo dõi thời hạn và lưu trữ tài liệu).",
+   "Kết: Khẳng định vai trò như 'bộ não thứ hai', giúp giảm bớt căng thẳng và gia tăng năng suất rõ rệt."
+  ],
+  "sample": "I'd like to talk about Notion, an all-in-one productivity workspace that I rely on almost every single day. I initially stumbled upon it two years ago through a tech review on YouTube when I was struggling to organize my university assignments. Essentially, it's a cloud-based platform that combines note-taking, project management, and task tracking into a single customizable dashboard. What makes it stand out is its modular design—you can create databases, embed multimedia, and customize personal planners effortlessly. I usually log in first thing in the morning to review my to-do list and update project deadlines. The main reason I find Notion so indispensable is that it has completely transformed my workflow. Before using it, my study notes were scattered across various notebooks and apps, which caused a lot of mental clutter. Notion has streamlined everything into a centralized hub, saving me hours of searching for information. It basically acts as my second brain, keeping me organized and significantly reducing stress during busy work weeks.",
+  "p1": [
+   {
+    "q": "How much time do you spend online every day?",
+    "a": "On average, I'd say around six to seven hours daily. Most of that time is dedicated to work tasks and studying, though I also spend an hour or two unwinding by streaming music or chatting with friends."
+   },
+   {
+    "q": "What do you usually use the internet for?",
+    "a": "Primarily, I use it for research and daily communication. For instance, I look up academic materials on search engines and rely on messaging apps to coordinate group projects with my classmates throughout the day."
+   },
+   {
+    "q": "Do you think you could live without an internet connection for a week?",
+    "a": "Honestly, it would be quite tough because my work depends heavily on digital communication. However, if I were on a nature retreat, unplugging for a week might actually be a refreshing and peaceful experience."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has internet access changed the way people acquire knowledge compared to the past?",
+    "a": "In my view, the internet has fundamentally democratized learning. In the past, people had to visit physical libraries and comb through heavy encyclopedias to find specific information. Nowadays, anyone with a smartphone can access vast databases, online courses, and video tutorials within seconds. While this instant availability fosters self-directed learning, it also requires individuals to filter out misinformation, which was far less prevalent with traditional print media."
+   },
+   {
+    "q": "What are the main risks associated with children having unrestricted access to the web?",
+    "a": "The most concerning hazard is exposure to inappropriate content, such as violent imagery or online scams, since youngsters often lack critical digital literacy. Moreover, excessive screen time can lead to digital addiction and disrupt sleep patterns, negatively affecting their physical health and social development. Therefore, without parental supervision and safety filters, children remain particularly vulnerable to cyberbullying and exploitation in the virtual world."
+   }
+  ],
+  "mistakesVi": [
+   "Phát âm sai từ 'internet' thành âm /in tơ nét/ theo thói quen tiếng Việt thay vì nhấn trọng âm đầu chuẩn xác /ˈɪn.tə.net/.",
+   "Dùng sai giới từ chỉ không gian mạng, phổ biến nhất là nói 'in the internet' thay vì 'on the internet' hoặc dùng trạng từ 'online'.",
+   "Lạm dụng từ 'convenience' và 'convenient' để trả lời cho mọi câu hỏi, thiếu những cách diễn đạt học thuật cụ thể như 'enhance efficiency', 'remote accessibility' hay 'facilitate collaboration'."
+  ],
+  "p1More": [
+   "Did you use the internet much when you were a child?",
+   "Do you prefer browsing the internet on a smartphone or a computer?",
+   "Have you ever bought anything on the internet?",
+   "What is your favorite website to browse in your leisure time?",
+   "How would your day change if the internet broke down suddenly?"
+  ],
+  "p3More": [
+   "To what extent has the internet contributed to the decline of traditional newspapers?",
+   "Should governments implement stricter regulations to protect user privacy online?",
+   "How might artificial intelligence transform search engines and the internet in the future?",
+   "Does the widespread use of the internet tend to isolate individuals or bring communities closer together?"
+  ]
+ },
+ "job-interviews": {
+  "vocab": [
+   {
+    "en": "nerve-racking",
+    "vi": "căng thẳng tột độ",
+    "ex": "Walking into the boardroom for the final interview was a nerve-racking experience."
+   },
+   {
+    "en": "tailor one's CV",
+    "vi": "điều chỉnh CV cho phù hợp",
+    "ex": "Candidates should tailor their CVs to highlight relevant skills for each specific role."
+   },
+   {
+    "en": "think on one's feet",
+    "vi": "ứng biến nhanh nhạy",
+    "ex": "The panel asked several unexpected behavioral questions, forcing me to think on my feet."
+   },
+   {
+    "en": "field questions",
+    "vi": "khéo léo xử lý hàng loạt câu hỏi",
+    "ex": "She fielded questions from the recruitment team with remarkable poise."
+   },
+   {
+    "en": "land a job",
+    "vi": "thành công giành được công việc",
+    "ex": "After four rounds of rigorous interviews, he finally landed a job at a tech firm."
+   },
+   {
+    "en": "a competitive edge",
+    "vi": "lợi thế cạnh tranh",
+    "ex": "Having practical project experience gave her a competitive edge over other applicants."
+   },
+   {
+    "en": "cultural fit",
+    "vi": "sự phù hợp về văn hóa doanh nghiệp",
+    "ex": "Hiring managers often evaluate whether an applicant will be a good cultural fit for the team."
+   },
+   {
+    "en": "leave a lasting impression",
+    "vi": "tạo ấn tượng sâu sắc dài lâu",
+    "ex": "Her articulate answers and confident posture left a lasting impression on the interviewers."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu cuộc phỏng vấn đáng nhớ (vị trí chuyên viên marketing tập sự tại một công ty khởi nghiệp công nghệ cách đây hai năm).",
+   "Ý 1: Mô tả người phỏng vấn và bầu không khí (hai người phỏng vấn gồm giám đốc sáng tạo và trưởng phòng nhân sự, thái độ cởi mở giúp giải tỏa áp lực ban đầu).",
+   "Ý 2: Diễn biến bất ngờ (bị yêu cầu giải quyết tình huống khủng hoảng truyền thông thực tế trong mười phút thay vì trả lời câu hỏi lý thuyết quen thuộc).",
+   "Kết: Lý do khó quên (thử thách buộc bản thân ứng biến linh hoạt dưới áp lực cao, giúp giành được việc làm và nhận ra giá trị của năng lực xử lý vấn đề thực tế)."
+  ],
+  "sample": "I would like to talk about a memorable job interview I had about two years ago when applying for a junior marketing position at a fast-growing tech startup. The interview took place in a glass-walled conference room with two interviewers: the creative director and the head of HR. Both were surprisingly approachable, which helped ease my initial tension.\n\nWhat made the session unforgettable was an unexpected challenge. Instead of standard questions about strengths and weaknesses, the director handed me a sudden crisis scenario: their flagship app had just received widespread negative reviews, and I had ten minutes to outline a damage-control campaign. I had to think on my feet, quickly structuring a three-step response focusing on transparent communication and user compensation. I fielded their follow-up questions as calmly as possible.\n\nThis experience remains vivid because it pushed me out of my comfort zone. Even though it was nerve-racking, I managed to showcase my analytical thinking under pressure rather than rehearsed answers. Ultimately, I landed the job, and that interview taught me that authenticity and problem-solving skills matter far more than flawless memorization.",
+  "p1": [
+   {
+    "q": "Have you ever attended a job interview?",
+    "a": "Yes, I have had a couple so far. My most recent one was for a part-time teaching role, where I had to deliver a mock lesson. It was quite demanding, but I passed successfully."
+   },
+   {
+    "q": "How do people usually prepare for an interview in your country?",
+    "a": "Most applicants thoroughly research the company and rehearse common questions. Many young graduates also practice mock interviews with friends to polish their body language and refine their CVs before the big day."
+   },
+   {
+    "q": "Do you think wearing formal clothes to an interview is still necessary?",
+    "a": "Generally, yes, because dressing smartly shows respect and professionalism. Even for casual creative firms, opting for neat business attire creates a positive first impression, though strict suits are becoming less mandatory."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have recruitment methods changed over the past decade?",
+    "a": "In the past, hiring relied heavily on printed resumes and rigid face-to-face panels. Nowadays, digital platforms like LinkedIn and automated video assessments dominate the screening phase. This shift allows employers to evaluate candidate portfolios globally, saving significant time. However, it can sometimes feel impersonal compared to traditional interactions, making cultural evaluation slightly more challenging."
+   },
+   {
+    "q": "Do you think artificial intelligence will completely replace human recruiters in the future?",
+    "a": "I highly doubt AI will entirely take over. While machine learning algorithms excel at parsing resumes and filtering qualifications efficiently, human intuition remains irreplaceable. Deciding whether an applicant aligns with workplace culture or possesses genuine empathy requires emotional intelligence that machines simply lack. Therefore, AI will likely remain a supportive screening tool rather than a final decision-maker."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh từ 'interview' liên tục thay vì linh hoạt chuyển đổi sang các cụm từ tương đương như 'screening session', 'hiring process', hoặc 'selection round'.",
+   "Nhầm lẫn giữa 'interviewer' (người phỏng vấn/nhà tuyển dụng) và 'interviewee' (ứng viên đi phỏng vấn).",
+   "Lỗi dùng giới từ sai do ảnh hưởng tiếng Việt: nói 'apply a job' thay vì 'apply for a job', hoặc dịch word-by-word 'pass the interview easily' thiếu tự nhiên."
+  ],
+  "p1More": [
+   "What do you find most difficult about job interviews?",
+   "Do you prefer online interviews or face-to-face interviews?",
+   "What qualities do you think interviewers value the most?",
+   "Have you ever felt nervous before an interview or test?",
+   "Do you think schools should teach students how to pass an interview?"
+  ],
+  "p3More": [
+   "To what extent should an applicant's personality outweigh their technical qualifications?",
+   "Should employers rely on social media profiles when assessing prospective employees?",
+   "How can companies minimize unconscious bias during the hiring process?",
+   "What impact does a high turnover rate have on an organization's reputation and productivity?"
+  ]
+ },
+ "jobs": {
+  "vocab": [
+   {
+    "en": "climb the corporate ladder",
+    "vi": "thăng tiến trong môi trường doanh nghiệp",
+    "ex": "She worked overtime consistently to climb the corporate ladder and secure an executive position."
+   },
+   {
+    "en": "job satisfaction",
+    "vi": "sự hài lòng trong công việc",
+    "ex": "Many young professionals prioritize job satisfaction over earning an extraordinarily high salary."
+   },
+   {
+    "en": "lucrative income",
+    "vi": "thu nhập béo bở, hậu hĩnh",
+    "ex": "Software engineering continues to provide a lucrative income alongside abundant remote opportunities."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức thâu đêm suốt sáng",
+    "ex": "Launching his own tech startup forced him to burn the candle at both ends for months."
+   },
+   {
+    "en": "heavy workload",
+    "vi": "khối lượng công việc lớn, áp lực",
+    "ex": "Employees frequently suffer from burnout when handling a persistently heavy workload without adequate support."
+   },
+   {
+    "en": "career advancement",
+    "vi": "sự thăng tiến và phát triển sự nghiệp",
+    "ex": "The multinational company organizes regular training workshops to support long-term career advancement."
+   },
+   {
+    "en": "work-life balance",
+    "vi": "sự cân bằng giữa công việc và đời sống riêng",
+    "ex": "Flexible working arrangements enable working parents to maintain a healthier work-life balance."
+   },
+   {
+    "en": "hands-on experience",
+    "vi": "kinh nghiệm thực tế, thực hành",
+    "ex": "Internships are invaluable because they give university undergraduates practical, hands-on experience."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu trực tiếp công việc mơ ước (ví dụ: Chuyên gia tư vấn phát triển bền vững cho doanh nghiệp - Sustainable Business Consultant).",
+   "Ý 1: Nêu những yêu cầu chuyên môn và kỹ năng cần có như am hiểu kinh tế tuần hoàn, tư duy phân tích dữ liệu và khả năng thuyết phục khách hàng.",
+   "Ý 2: Miêu tả các nhiệm vụ chính như khảo sát quy trình phát thải của doanh nghiệp, tư vấn chiến lược chuyển đổi xanh và tổ chức tập huấn nhân sự.",
+   "Kết: Nêu lý do đây là công việc lý tưởng vì vừa mang lại thu nhập tốt và sự thăng tiến lâu dài, vừa tạo ra tác động tích cực đối với môi trường xã hội."
+  ],
+  "sample": "If I could pursue any profession in the foreseeable future, I would love to work as a sustainable business consultant. This role entails advising enterprises on how to reduce their ecological footprint while maintaining commercial profitability. To excel in this field, one needs a solid background in environmental science, coupled with sharp analytical skills and a firm grasp of corporate finance. Furthermore, effective negotiation and interpersonal skills are essential to persuade corporate executives to adopt eco-friendly practices. In this position, my daily responsibilities would involve assessing a company's carbon emissions, auditing their supply chains, and formulating pragmatic sustainability strategies. I would also conduct workshops to foster environmental awareness among employees. I consider this my ideal career because it combines intellectual stimulation with meaningful social impact. Rather than merely chasing a lucrative salary, I aspire to make a tangible contribution toward combating climate change. Additionally, the green economy is rapidly expanding, offering robust job security alongside vast potential for career advancement.",
+  "p1": [
+   {
+    "q": "Do you currently work or are you a student?",
+    "a": "I am currently working full-time as a digital marketer for a retail firm. My day-to-day work mainly involves managing social media campaigns and analyzing customer metrics, which I find quite dynamic and engaging."
+   },
+   {
+    "q": "What do you enjoy most about your daily work routine?",
+    "a": "What I appreciate most is the creative autonomy my manager grants me. For instance, when designing new advertising campaigns, I am free to experiment with novel visual concepts, which keeps my job exciting and fulfilling."
+   },
+   {
+    "q": "Would you like to change your job or career path in the future?",
+    "a": "Yes, I would certainly like to transition into data analytics eventually. Although marketing is enjoyable, data science offers higher job security and lucrative remuneration, especially with the exponential rise of tech-driven businesses in Vietnam."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How do you think artificial intelligence will change the nature of employment in the coming decades?",
+    "a": "I believe artificial intelligence will primarily automate routine, administrative tasks, shifting human labor toward higher-order creative and strategic responsibilities. For instance, while data entry clerks might become obsolete, demand for prompt engineers and ethical AI overseers will surge. Consequently, workers will need continuous reskilling to stay competitive, as adaptability will become the single most vital asset in the automated workforce."
+   },
+   {
+    "q": "Should governments prioritize job security or labor market flexibility when formulating economic policies?",
+    "a": "In my view, governments must strike a delicate balance between both priorities rather than favoring one exclusively. Overly rigid job protections can discourage foreign investment and hinder innovation, whereas extreme flexibility often leaves workers vulnerable to exploitation and sudden unemployment. A viable solution is the Nordic flexicurity model, which combines easy hiring and firing with robust social safety nets and state-funded retraining programs."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn giữa 'work', 'job' và 'career': Thí sinh thường dùng sai ngữ pháp như nói 'a work' thay vì 'a job' (vì 'work' là danh từ không đếm được khi chỉ công việc nói chung), hoặc dùng 'career' khi chỉ một vị trí làm việc cụ thể.",
+   "Dịch từng từ từ tiếng Việt (word-by-word translation): Dùng các cụm thiếu tự nhiên như 'make high salary' thay vì 'earn a competitive salary', hoặc 'have a lot of work' thay vì 'handle a heavy workload'.",
+   "Lặp từ vựng cơ bản và thiếu tính học thuật: Quá lạm dụng các từ đơn giản như 'hard', 'busy', 'money' thay vì diễn đạt tự nhiên ở Band 7+ với các cụm như 'demanding', 'lucrative income', 'work-life balance' hay 'career prospects'."
+  ],
+  "p1More": [
+   "What qualities do you think make someone a good colleague?",
+   "Did you want to do this kind of job when you were a child?",
+   "Do you prefer working individually or as part of a team?",
+   "How do you usually relax after a demanding day at work?",
+   "Is it common for people in your country to stay in one job for their entire life?"
+  ],
+  "p3More": [
+   "What measures can companies implement to reduce occupational burnout among their staff?",
+   "To what extent should university curricula be determined by the current demands of the labor market?",
+   "Why are traditional high-prestige professions, such as medicine and law, facing declining interest among some youth today?",
+   "Do you think working remotely from home will permanently replace conventional office environments?"
+  ]
+ },
  "language-learning": {
   "vocab": [
    {
@@ -1578,6 +2601,378 @@
    "How does learning a new language change the way a person thinks or perceives the world?",
    "What impact does the dominance of English have on minority languages worldwide?",
    "Do you believe immersion programs are more effective than traditional grammar-based schooling?"
+  ]
+ },
+ "leadership": {
+  "vocab": [
+   {
+    "en": "lead by example",
+    "vi": "nêu gương đi đầu",
+    "ex": "A truly inspiring manager does not just issue orders; they lead by example."
+   },
+   {
+    "en": "foster team spirit",
+    "vi": "nuôi dưỡng tinh thần đồng đội",
+    "ex": "Organizing casual debrief sessions helped foster team spirit during the stressful campaign."
+   },
+   {
+    "en": "decisive action",
+    "vi": "hành động quyết đoán",
+    "ex": "When sales plummeted, the director took decisive action to restructure the marketing department."
+   },
+   {
+    "en": "rally the troops",
+    "vi": "tập hợp và khích lệ mọi người",
+    "ex": "Our supervisor managed to rally the troops right before the strict deadline arrived."
+   },
+   {
+    "en": "conflict resolution",
+    "vi": "kỹ năng giải quyết xung đột",
+    "ex": "Effective leaders rely on calm conflict resolution to prevent minor friction from escalating."
+   },
+   {
+    "en": "delegate tasks",
+    "vi": "phân chia, ủy thác công việc",
+    "ex": "A competent project lead knows how to delegate tasks instead of micromanaging."
+   },
+   {
+    "en": "command respect",
+    "vi": "nhận được sự nể trọng tự nhiên",
+    "ex": "Her deep subject knowledge and fairness command respect across the entire office."
+   },
+   {
+    "en": "steer the ship",
+    "vi": "chèo lái con thuyền (lãnh đạo vượt khó)",
+    "ex": "During turbulent economic times, a seasoned executive is vital to steer the ship."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người bạn muốn kể (ví dụ: cựu nhóm trưởng Minh trong chiến dịch gây quỹ năm cuối đại học).",
+   "Ý 1 (Bối cảnh): Nêu thời gian và áp lực cực lớn khi nhóm chỉ có ba tuần để tổ chức sự kiện và gặp sự cố mất địa điểm.",
+   "Ý 2 (Hành động): Kể cách người đó giữ bình tĩnh, phân chia việc theo thế mạnh từng người, cùng thức đêm làm banner và giải quyết xung đột.",
+   "Kết: Nhấn mạnh lý do lãnh đạo hiệu quả là vì họ biết truyền cảm hứng, lắng nghe và trao quyền thay vì áp đặt quyền lực."
+  ],
+  "sample": "I would like to talk about Minh, who was my team leader during our final-year university charity campaign. We were tasked with organizing an art auction within just three weeks, and the emotional pressure on our squad was immense.\n\nMinh stood out immediately due to his calm demeanor. Instead of panicking or micromanaging, he gathered everyone to brainstorm, carefully assessed each member's strengths, and delegated tasks accordingly. When our reserved venue backed out at the last minute, causing widespread panic, he took decisive action. He remained composed, rallied the troops, and negotiated an alternative sponsorship deal within twenty-four hours.\n\nWhat made his leadership truly exceptional was his ability to lead by example. He did not simply sit back and issue instructions; he stayed up late alongside us assembling promotional materials. Furthermore, his conflict resolution skills kept the group unified despite severe exhaustion.\n\nUltimately, the exhibition raised substantial funds for local orphanages. I deeply admire Minh because he proved that authentic leadership is not about exerting dominance, but about empowering others and staying grounded under immense strain.",
+  "p1": [
+   {
+    "q": "Have you ever been the leader of a team or a project?",
+    "a": "Yes, I led a student committee back at university. We organized cultural workshops and charity drives. Although managing logistical headaches was challenging, it taught me how to coordinate people and make quick decisions under pressure."
+   },
+   {
+    "q": "Do you prefer working independently or leading a group?",
+    "a": "To be honest, it depends on the task. For deep analytical assignments, I prefer working solo to concentrate fully, whereas for creative campaigns, leading a group is far more rewarding because collective brainstorming yields better results."
+   },
+   {
+    "q": "What kind of qualities do you think make a good school monitor or team captain?",
+    "a": "I believe empathy and active listening are paramount. A decent captain needs to treat everyone equitably and communicate transparently, ensuring that every teammate feels valued and genuinely motivated to pull their weight together."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think great leaders are born with their abilities, or can leadership be taught?",
+    "a": "In my view, while some individuals naturally possess charismatic personalities, leadership is largely a skill refined through experience. People can learn communication strategies, emotional resilience, and conflict management through deliberate mentorship and practical exposure. Many introverted professionals evolve into remarkable executives after formal managerial training, demonstrating that nurture plays a far more decisive role than innate talent."
+   },
+   {
+    "q": "How has the definition of a good leader changed compared to past generations?",
+    "a": "Historically, leadership was equated with autocratic authority, where strict hierarchy and unquestioned obedience prevailed. Nowadays, contemporary workplaces prioritize empathetic leadership, emotional intelligence, and shared governance. Modern leaders act primarily as facilitators who foster psychological safety and invite input, contrasting sharply with the traditional command-and-control paradigm of previous eras."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'leader' và 'lead' lặp lại quá nhiều lần thay vì biến hóa bằng các cụm như 'take the helm', 'head up a team', hay 'provide guidance'.",
+   "Dùng sai giới từ hoặc cấu trúc, ví dụ dịch máy 'lead someone to do something' trong ngữ cảnh quản lý nhóm thay vì dùng 'guide the team' hoặc 'oversee members'.",
+   "Trả lời Part 3 quá thiên về cảm tính cá nhân (chỉ khen ngợi tính tốt bụng, hiền lành) mà quên bàn luận về khía cạnh quản trị, trách nhiệm giải trình và văn hóa tổ chức."
+  ],
+  "p1More": [
+   "Did you ever want to be a class monitor when you were younger?",
+   "What do you think is the most stressful part of managing other people?",
+   "Can quiet or introverted individuals make successful leaders?",
+   "Do you think leadership skills should be taught in primary school?",
+   "How do you usually handle disagreements when working in a group project?"
+  ],
+  "p3More": [
+   "Why do some individuals become corrupt or abusive once they gain substantial leadership power?",
+   "Should political leaders rely more on expert consensus or on everyday public opinion?",
+   "What systemic obstacles do women still encounter when trying to secure top executive positions?",
+   "How might artificial intelligence alter the responsibilities of organizational leaders in the coming decades?"
+  ]
+ },
+ "libraries": {
+  "vocab": [
+   {
+    "en": "treasure trove of knowledge",
+    "vi": "kho tàng tri thức quý giá",
+    "ex": "The municipal library houses a veritable treasure trove of knowledge, ranging from antique maps to modern academic papers."
+   },
+   {
+    "en": "hit the books",
+    "vi": "vùi đầu vào học bài miệt mài",
+    "ex": "Final exams are coming up next week, so I plan to hit the books at the campus library every evening."
+   },
+   {
+    "en": "conducive to learning",
+    "vi": "tạo điều kiện thuận lợi cho việc học tập",
+    "ex": "The minimalist interior and lack of phone chatter make this library extremely conducive to learning."
+   },
+   {
+    "en": "digitize collections",
+    "vi": "số hóa các bộ sưu tập tài liệu",
+    "ex": "Many national institutions are working hard to digitize collections so that remote citizens can access rare texts online."
+   },
+   {
+    "en": "tuck oneself away",
+    "vi": "thu mình vào một góc kín đáo yên tĩnh",
+    "ex": "Whenever I feel overwhelmed by urban noise, I like to tuck myself away in a quiet corner of the reading hall."
+   },
+   {
+    "en": "state-of-the-art facilities",
+    "vi": "cơ sở vật chất tối tân, hiện đại",
+    "ex": "The renovated building now features state-of-the-art facilities, including automated book sorting and interactive multimedia hubs."
+   },
+   {
+    "en": "foster a reading culture",
+    "vi": "nuôi dưỡng và lan tỏa văn hóa đọc",
+    "ex": "Free community workshops at local libraries play an instrumental role in fostering a lifelong reading culture among kids."
+   },
+   {
+    "en": "community hub",
+    "vi": "trung tâm sinh hoạt cộng đồng",
+    "ex": "Beyond lending books, modern libraries function as a lively community hub where neighbors attend seminars and exhibitions."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên và vị trí của thư viện (Thư viện Quốc gia Việt Nam ở trung tâm Hà Nội).",
+   "Ý 1: Mô tả cơ sở vật chất, kiến trúc Pháp cổ điển kết hợp thiết bị hiện đại và nguồn học liệu đa dạng.",
+   "Ý 2: Thuật lại hoạt động cụ thể (tìm tài liệu nghiên cứu khóa luận tốt nghiệp, ngồi tự học tại phòng đọc yên tĩnh).",
+   "Kết: Giải thích ấn tượng sâu sắc (bầu không khí học thuật tĩnh lặng truyền cảm hứng và sự đối lập kỳ diệu với phố xá ồn ào bên ngoài)."
+  ],
+  "sample": "I’d like to talk about the National Library of Vietnam, nestled right in the heart of Hanoi on Trang Thi Street. It is an extraordinary space that seamlessly blends French colonial architecture with state-of-the-art facilities.\n\nThe library boasts a massive collection spanning rare historical manuscripts, academic periodicals, and an extensive digital database. There are also spacious, naturally lit reading rooms, private multimedia booths, and a leafy courtyard outside.\n\nI visited it a couple of years ago while working on my undergraduate dissertation. Desperate for a distraction-free environment, I tucked myself away in an air-conditioned reading hall on the second floor. I spent hours sifting through physical archives and accessing peer-reviewed journals on their terminals.\n\nWhat impressed me most was the serene, almost reverent atmosphere. Despite being located in a bustling urban district, the interior was totally insulated from traffic noise, making it remarkably conducive to deep focus. Seeing people of all ages—from elderly researchers to high school students—absorbed in their reading really inspired me and revitalized my love for quiet scholarship.",
+  "p1": [
+   {
+    "q": "How often do you visit libraries?",
+    "a": "To be honest, I rarely visit physical libraries these days, maybe once every few months. I conduct most of my reading digitally on tablets, although I still drop by my local university library when I urgently need a quiet, distraction-free corner."
+   },
+   {
+    "q": "Did you go to a library when you were a child?",
+    "a": "Yes, definitely. My primary school had a modest reading room, and I used to spend my lunch breaks there. I was particularly fascinated by illustrated fairy tales and science encyclopedias, which sparked my lifelong curiosity."
+   },
+   {
+    "q": "Do you prefer studying in a library or at home?",
+    "a": "I definitely lean towards libraries because the disciplined ambiance helps me stay focused. At home, there are simply too many temptations, like household chores or social media, whereas a library peer-pressures me into productive study sessions."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what ways have digital resources altered the traditional role of libraries?",
+    "a": "Digital platforms have shifted libraries from mere warehouses of printed books into versatile community learning hubs. Instead of simply borrowing physical paperbacks, patrons nowadays utilize online repositories, high-speed internet, and collaborative co-working desks. That said, the physical space remains indispensable for those without reliable digital access at home. Ultimately, modern libraries have evolved to complement digital connectivity rather than being replaced by it."
+   },
+   {
+    "q": "Should governments continue to allocate public funds to maintain physical libraries?",
+    "a": "I firmly believe public investment in libraries should continue. While some consider them costly relics, public libraries ensure equitable access to educational resources for underprivileged demographics who cannot afford personal computers or premium subscriptions. Furthermore, they serve as vital social venues that foster community cohesion. Cutting public funding would inevitably deepen the educational divide between socioeconomic classes."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng lẫn lộn giữa 'library' (thư viện - nơi mượn đọc miễn phí) và 'bookstore' (nhà sách - nơi mua bán), ví dụ nói nhầm 'I bought three books at the library'.",
+   "Lạm dụng lặp đi lặp lại cụm từ đơn giản 'quiet and peaceful' thay vì dùng các tính từ học thuật phong phú như 'conducive to learning', 'distraction-free', hay 'studious environment'.",
+   "Phát âm sai từ 'library' do nuốt âm /r/ hoặc đọc thành /ˈlaɪbəri/ thay vì hai cách chuẩn: /ˈlaɪbrəri/ (Anh-Anh) hoặc /ˈlaɪbreri/ (Anh-Mỹ)."
+  ],
+  "p1More": [
+   "What kinds of books do you usually borrow from a library?",
+   "Do you think public libraries should charge a membership fee?",
+   "What makes a library a pleasant place to visit?",
+   "Do students in your country use school libraries frequently?",
+   "Have you ever borrowed an e-book from an online library?"
+  ],
+  "p3More": [
+   "Will traditional printed books in libraries become completely obsolete in the future?",
+   "How can municipal libraries attract younger generations accustomed to instant digital entertainment?",
+   "To what extent do public libraries contribute to social equality within a community?",
+   "Who should bear the primary responsibility for preserving ancient books and manuscripts: private collectors or public libraries?"
+  ]
+ },
+ "memory": {
+  "vocab": [
+   {
+    "en": "have a photographic memory",
+    "vi": "có trí nhớ siêu phàm / nhớ như in",
+    "ex": "My brother seems to have a photographic memory because he can memorize an entire page of text in minutes."
+   },
+   {
+    "en": "slip one's mind",
+    "vi": "quên bẵng mất",
+    "ex": "I planned to call my grandmother yesterday, but the thought completely slipped my mind."
+   },
+   {
+    "en": "vividly recall",
+    "vi": "nhớ lại một cách rõ ràng, sống động",
+    "ex": "Even though decades have passed, I still vividly recall the day I received my first bicycle."
+   },
+   {
+    "en": "jog someone's memory",
+    "vi": "gợi lại trí nhớ của ai",
+    "ex": "Looking through old family albums really helped jog my memory about our childhood trips."
+   },
+   {
+    "en": "commit something to memory",
+    "vi": "ghi nhớ kỹ điều gì vào đầu",
+    "ex": "Actors usually spend hours committing their script lines to memory before a performance."
+   },
+   {
+    "en": "etched in one's memory",
+    "vi": "khắc sâu vào tâm trí",
+    "ex": "The awe-inspiring view of the northern lights will remain etched in my memory forever."
+   },
+   {
+    "en": "ring a bell",
+    "vi": "nghe quen quen",
+    "ex": "His face doesn't look familiar, but his name definitely rings a bell."
+   },
+   {
+    "en": "short-term memory",
+    "vi": "trí nhớ ngắn hạn",
+    "ex": "Multitasking frequently can have a negative impact on a person's short-term memory."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu sự kiện tuổi thơ đáng nhớ nhất (lần đi lạc tại hội chợ hoa Tết năm 7 tuổi).",
+   "Ý 1: Mô tả bối cảnh thời gian, địa điểm đông đúc và người đi cùng (mẹ và chị gái).",
+   "Ý 2: Kể lại chi tiết diễn biến (bị cuốn hút bởi gian hàng tò he, lạc mất người thân, cảm giác hoảng loạn và được người bán hàng tốt bụng giúp đỡ).",
+   "Kết: Giải thích lý do sự kiện in sâu vào tâm trí (bài học đầu đời về sự cẩn thận và lòng biết ơn đối với sự tử tế của người lạ)."
+  ],
+  "sample": "One childhood memory that is still etched in my mind happened when I was around seven years old during the Lunar New Year festival. My mother and older sister took me to a bustling floral market in our hometown to pick up peach blossoms.\n\nSurrounded by vibrant blooms and massive crowds, I got completely mesmerized by a stall selling colourful traditional dough figurines. When I turned around, my family had vanished in the sea of shoppers. A wave of sheer panic washed over me, and I started sobbing uncontrollably. Fortunately, an elderly vendor noticed my distress. She offered me a warm sweet treat to calm me down and immediately contacted the market security. Within twenty minutes, my frantic mother rushed into the booth, hugging me with tears of relief.\n\nI still recall this incident so vividly because it was my first real brush with vulnerability. More importantly, it taught me a lifelong lesson about attentiveness and showed me how profound the kindness of strangers can be, leaving an indelible imprint on who I am today.",
+  "p1": [
+   {
+    "q": "Do you have a good memory for numbers or names?",
+    "a": "Honestly, I'm much better with names than numbers. When I meet someone, their face and name usually stick with me, whereas I constantly struggle to memorize bank details or phone numbers without writing them down."
+   },
+   {
+    "q": "How do you usually remind yourself of important tasks?",
+    "a": "I rely heavily on digital productivity tools. I set calendar alerts on my smartphone for deadlines and keep a sticky note widget on my desktop for daily errands, ensuring nothing slips through the cracks."
+   },
+   {
+    "q": "Have you ever forgotten something really important?",
+    "a": "Yes, once I completely forgot my passport before heading to the airport for an overseas flight. I had to pay an exorbitant taxi fare to rush back home, which was an absolute nightmare."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do people tend to remember negative experiences more vividly than positive ones?",
+    "a": "I believe this stems from human evolutionary biology. Our ancestors had to remember dangerous threats to survive, which makes distressing events deeply imprinted in our psyche. For instance, getting burned once teaches a child caution for years. While positive events bring joy, negative ones act as protective mechanisms against future adversity, so our brains prioritize retaining them."
+   },
+   {
+    "q": "How has modern technology influenced human memory and retention skills?",
+    "a": "Modern technology has undeniably outsourced much of our memory capacity. With smartphones instantly storing contacts, dates, and navigation routes, people rarely exercise their cognitive recall. While this digital convenience frees up mental bandwidth for analytical tasks, it also leads to digital amnesia, where individuals struggle to retain even basic factual information without immediate internet assistance."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng nhầm giữa 'remember' và 'remind': Thí sinh thường nói 'He remembered me to do this' thay vì 'He reminded me to do this'.",
+   "Lạm dụng từ 'memory' một cách gượng gạo thay vì dùng tính từ hoặc cụm động từ tự nhiên (ví dụ nói 'I have bad memory of it' thay vì 'My memory of it is rather hazy').",
+   "Chỉ sử dụng duy nhất thì quá khứ đơn (Past Simple) suốt cả bài Part 2 mà bỏ qua thì quá khứ hoàn thành (Past Perfect) để diễn tả sự việc xảy ra trước một mốc quá khứ khác."
+  ],
+  "p1More": [
+   "Did you have to memorize poems or speeches when you were at school?",
+   "Do you think keeping a diary helps preserve memories?",
+   "What kinds of things do you easily forget on a daily basis?",
+   "Do you prefer to store photos digitally or in printed albums?",
+   "Are you good at remembering people's birthdays?"
+  ],
+  "p3More": [
+   "To what extent can historical memories shape a nation's cultural identity?",
+   "Do you think elderly people generally have better long-term memory than young people?",
+   "Should schools place less emphasis on rote memorization in the age of artificial intelligence?",
+   "Can false memories be created by external influences such as media or family stories?"
+  ]
+ },
+ "mobile-apps": {
+  "vocab": [
+   {
+    "en": "user-friendly interface",
+    "vi": "giao diện thân thiện, dễ sử dụng",
+    "ex": "The new navigation app has an exceptionally user-friendly interface, making it effortless to plan my daily commute."
+   },
+   {
+    "en": "streamline daily tasks",
+    "vi": "tối ưu hóa, đơn giản hóa các công việc hàng ngày",
+    "ex": "Productivity tools help me streamline daily tasks and stay ahead of university deadlines."
+   },
+   {
+    "en": "glitch-prone",
+    "vi": "dễ phát sinh lỗi kỹ thuật",
+    "ex": "I stopped using that food delivery platform because it was glitch-prone and crashed during peak hours."
+   },
+   {
+    "en": "scroll mindlessly",
+    "vi": "lướt màn hình vô thức",
+    "ex": "Instead of studying, many teenagers tend to scroll mindlessly through short-form video apps late at night."
+   },
+   {
+    "en": "keep track of",
+    "vi": "theo dõi, nắm bắt tiến độ hoặc số liệu",
+    "ex": "I rely on this budgeting app to keep track of my monthly expenses down to the last penny."
+   },
+   {
+    "en": "in-app purchase",
+    "vi": "giao dịch mua bán vật phẩm bên trong ứng dụng",
+    "ex": "Although the base version is free, unlocking premium analytics requires an in-app purchase."
+   },
+   {
+    "en": "digital detox",
+    "vi": "thời gian cai nghiện hoặc tạm rời xa thiết bị công nghệ",
+    "ex": "After realizing how dependent I was on social media apps, I decided to do a weekend digital detox."
+   },
+   {
+    "en": "over-reliance on",
+    "vi": "sự phụ thuộc quá mức vào cái gì",
+    "ex": "Over-reliance on map navigation apps might diminish our innate sense of direction over time."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn tên ứng dụng (Notion), mục đích chính (quản lý công việc/ghi chép) và bối cảnh biết đến app (được bạn đại học giới thiệu).",
+   "Ý 1 - Tính năng nổi bật: Miêu tả giao diện tối giản, khả năng đồng bộ đa nền tảng tức thì và các bảng kế hoạch tùy biến linh hoạt.",
+   "Ý 2 - Tần suất và bối cảnh sử dụng: Mở ứng dụng nhiều lần trong ngày (buổi sáng để lập to-do list, ban ngày để ghi chú bài học, kỳ thi dùng làm trung tâm ôn tập).",
+   "Kết - Lý do không thể thiếu: Nhấn mạnh app giúp tổ chức cuộc sống ngăn nắp, giảm căng thẳng quên bài và tối ưu hóa năng suất cá nhân."
+  ],
+  "sample": "I would like to talk about Notion, an all-in-one productivity app that has become an indispensable part of my day-to-day life. I first stumbled upon it about two years ago through a classmate’s recommendation when we were struggling to organize group assignments. Essentially, Notion functions as a flexible workspace where you can take notes, create databases, and manage to-do lists. What sets it apart is its clean, user-friendly interface and seamless cross-platform syncing, which lets me switch between my phone and laptop without missing a beat. I open this app multiple times a day. Every morning, I check my master planner to prioritize tasks, and throughout the day, I use it to jot down sudden ideas or track my fitness regime. Whenever exams approach, it acts as my primary revision hub. The main reason it is so essential to me is that it has completely transformed my time management. Before adopting Notion, I was constantly overwhelmed by sticky notes and scattered reminders. Now, everything is centralized in one reliable place, saving me hours of stress and keeping my academic life thoroughly on track.",
+  "p1": [
+   {
+    "q": "What kinds of mobile apps do you use most frequently on your smartphone?",
+    "a": "I primarily depend on utility and communication tools like Telegram and Google Calendar. These apps help me stay connected with colleagues and structure my daily schedule efficiently without getting distracted by endless social media feeds."
+   },
+   {
+    "q": "Have your preferences for apps changed compared to when you were younger?",
+    "a": "Definitely. In high school, I spent hours playing mobile games and browsing photo-sharing platforms. Nowadays, however, I gravitate towards productivity and language learning apps such as Duolingo to support my self-improvement goals."
+   },
+   {
+    "q": "Do you think you spend too much time using mobile applications?",
+    "a": "Honestly, yes, especially on video-streaming platforms. Although I try to set strict screen time limits, I often catch myself scrolling late into the night, which sometimes compromises my sleep quality."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have mobile applications altered the way people communicate in modern society?",
+    "a": "Mobile apps have made interpersonal communication instantaneous and borderless. Through instant messaging and video-calling platforms, individuals can bridge physical distances and collaborate seamlessly across time zones. Nevertheless, this shift has also replaced nuanced face-to-face dialogues with brief, superficial text exchanges. While our reach has broadened significantly, the emotional depth of interpersonal relationships has somewhat diminished as a result."
+   },
+   {
+    "q": "To what extent do you agree that mobile software may pose significant risks to personal privacy?",
+    "a": "I strongly believe that modern apps present serious privacy hazards. Many applications routinely harvest sensitive user data, including geographical locations and browsing habits, often selling this information to third-party advertisers without explicit consent. While data collection can personalize user experiences, frequent corporate data breaches demonstrate that unchecked digital tracking leaves consumers exceptionally vulnerable to identity theft and unwanted surveillance."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'software' thay cho 'app/application': Trong văn nói tự nhiên khi nhắc đến điện thoại, người bản xứ hầu như dùng 'app', còn 'software' thường dùng cho hệ thống hoặc máy tính để bàn.",
+   "Dùng sai giới từ chỉ không gian ứng dụng: Người học hay nói nhầm 'in my phone' hoặc 'in the app', trong khi cấu trúc chuẩn xác phải dùng giới từ 'on' ('on my smartphone', 'on this app').",
+   "Thiếu các cụm collocation tự nhiên: Thí sinh thường dùng tính từ đơn lẻ như 'the app is good/easy' thay vì các cụm Band 7+ chuẩn xác như 'user-friendly interface', 'seamless integration', hay 'in-app features'."
+  ],
+  "p1More": [
+   "Do you prefer free apps or paid apps with premium features?",
+   "How do you usually discover new applications to install?",
+   "Have you ever uninstalled an application shortly after downloading it?",
+   "Do you think children should be allowed to use mobile apps independently?",
+   "Which app do you find most difficult to live without for a single day?"
+  ],
+  "p3More": [
+   "Why do older generations often encounter difficulties when adapting to modern mobile apps?",
+   "How might excessive reliance on mobile applications impact cognitive abilities like memory and attention span?",
+   "Should governments introduce stricter regulations on mobile app algorithms designed to keep users hooked?",
+   "In what ways could educational applications reshape conventional schooling in the next decade?"
   ]
  },
  "money": {
@@ -2138,6 +3533,192 @@
    "Should public broadcasting services be funded entirely by the state or by commercial advertisements?"
   ]
  },
+ "online-shopping": {
+  "vocab": [
+   {
+    "en": "browse through",
+    "vi": "lướt xem (sản phẩm, trang web)",
+    "ex": "I spent over an hour browsing through different fashion apps before picking a jacket."
+   },
+   {
+    "en": "impulse buying",
+    "vi": "mua sắm bốc đồng / ngẫu hứng",
+    "ex": "Flash sales and discount vouchers often trigger impulse buying among young shoppers."
+   },
+   {
+    "en": "bricks-and-mortar store",
+    "vi": "cửa hàng truyền thống (có mặt bằng thực tế)",
+    "ex": "Many bricks-and-mortar stores have struggled to compete with cut-price digital platforms."
+   },
+   {
+    "en": "user-friendly interface",
+    "vi": "giao diện thân thiện, dễ sử dụng",
+    "ex": "The app boasts a user-friendly interface that simplifies the checkout process."
+   },
+   {
+    "en": "customer reviews",
+    "vi": "đánh giá của khách hàng",
+    "ex": "I always scrutinize verified customer reviews to check the genuine quality of the merchandise."
+   },
+   {
+    "en": "snap up a bargain",
+    "vi": "nhanh tay chớp được món hời",
+    "ex": "During the Black Friday sale, I managed to snap up a bargain on wireless earbuds."
+   },
+   {
+    "en": "refund policy",
+    "vi": "chính sách hoàn tiền",
+    "ex": "Trustworthy e-commerce vendors usually offer a no-questions-asked refund policy."
+   },
+   {
+    "en": "delivery fee",
+    "vi": "phí giao hàng",
+    "ex": "Offering free shipping eliminates high delivery fees, which often deter cautious buyers."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu món hàng bạn đã mua gần đây và cảm giác hài lòng (ví dụ: chiếc bàn phím công thái học không dây).",
+   "Ý 1: Nêu rõ nền tảng thương mại điện tử bạn sử dụng (Shopee/Lazada) và quá trình tìm kiếm, đặt hàng thuận tiện.",
+   "Ý 2: So sánh lý do chọn mua qua mạng thay vì ra tiệm (dễ so sánh thông số, xem đánh giá chân thực, áp mã giảm giá tiết kiệm chi phí).",
+   "Kết: Nhấn mạnh lý do hài lòng tuyệt đối (sản phẩm chính hãng, đóng gói kỹ, giao siêu nhanh và cải thiện đáng kể hiệu suất làm việc)."
+  ],
+  "sample": "I'd like to share an experience of buying an ergonomic wireless keyboard online, which turned out to be an absolute bargain. I purchased it about three months ago from a flagship store on Shopee, one of the leading e-commerce platforms in Vietnam. I had been suffering from chronic wrist strain from typing all day, so I urgently needed an upgrade. Instead of visiting a bricks-and-mortar electronics store, I decided to shop online. Digital platforms allowed me to effortlessly compare specs, watch video demonstrations, and read hundreds of authentic customer reviews before committing. Furthermore, by using seasonal discount vouchers and free shipping codes, I saved nearly thirty percent compared to high-street retail prices. What made me exceptionally satisfied was not just the swift two-day delivery, but the impeccable build quality. The keys feel remarkably tactile and comfortable, instantly alleviating my joint pain. It arrived meticulously packaged with a genuine warranty seal. Overall, this seamless transaction reinforced my trust in online shopping and proved to be an invaluable investment for my remote work setup.",
+  "p1": [
+   {
+    "q": "How often do you buy things on the internet?",
+    "a": "I shop online quite frequently, roughly two or three times a month. It saves me considerable time, especially when restocking everyday essentials like skincare items or coffee beans via popular digital marketplaces."
+   },
+   {
+    "q": "What kind of items do you usually purchase online?",
+    "a": "I mostly purchase tech accessories and non-perishable household goods. For instance, last week I bought a sturdy phone case and some books online because the pricing was far more competitive than physical shops."
+   },
+   {
+    "q": "Have you ever encountered any problems when shopping online?",
+    "a": "Yes, on one occasion I ordered a cotton shirt that looked completely different from the website photos. The fabric felt flimsy, so I had to initiate a return request to retrieve my money."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has e-commerce transformed traditional retail businesses in recent years?",
+    "a": "Undoubtedly, e-commerce has forced traditional retailers to rethink their operating models. With digital platforms offering round-the-clock convenience and lower overhead costs, brick-and-mortar stores must now provide engaging customer experiences rather than just selling goods. For example, many apparel shops have created interactive showrooms where shoppers can test outfits before ordering them online. Ultimately, physical stores have had to integrate digital elements to survive."
+   },
+   {
+    "q": "Do you think consumer spending habits have become more reckless because of online shopping?",
+    "a": "In my view, digital shopping certainly exacerbates impulsive spending. Algorithmic marketing, limited-time flash sales, and frictionless one-click payments lure consumers into purchasing goods they rarely require. In contrast, shopping in person requires deliberate effort and cash transactions, which encourage second thoughts. Consequently, people nowadays often accumulate clutter and blow their personal budgets far more easily than previous generations."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp lại cụm 'buy online' quá nhiều lần thay vì đa dạng hóa bằng 'shop online', 'order via digital storefronts' hay 'make online purchases'.",
+   "Nói 'hunting sales' theo lối dịch thô tiếng Việt (săn sale), thay vào đó nên dùng cụm chuẩn tự nhiên như 'bargain hunting' hoặc 'looking for discounts'.",
+   "Nhầm lẫn giữa 'cash on delivery' (trả tiền khi nhận hàng) và các hình thức chuyển khoản số, dẫn tới việc dùng sai thuật ngữ khi mô tả phương thức thanh toán."
+  ],
+  "p1More": [
+   "Do you prefer shopping on mobile apps or computers?",
+   "Have you ever bought clothes online, and were they a good fit?",
+   "Is online shopping popular among older generations in your country?",
+   "Do you pay for online purchases with cash on delivery or digital payment?",
+   "What is one thing you would never buy on the internet?"
+  ],
+  "p3More": [
+   "To what extent does rapid package delivery contribute to environmental pollution?",
+   "Will physical supermarkets and department stores disappear completely in the future?",
+   "How can governments better protect online consumers against counterfeit merchandise and data breaches?",
+   "In what ways do social media influencers manipulate the shopping behavior of young people?"
+  ]
+ },
+ "pets": {
+  "vocab": [
+   {
+    "en": "domesticated animal",
+    "vi": "động vật thuần hóa",
+    "ex": "Unlike domesticated animals, wild creatures retain their natural hunting instincts."
+   },
+   {
+    "en": "natural habitat",
+    "vi": "môi trường sống tự nhiên",
+    "ex": "Deforestation forces countless primates out of their natural habitat."
+   },
+   {
+    "en": "endangered species",
+    "vi": "loài có nguy cơ tuyệt chủng",
+    "ex": "Poaching remains the single gravest threat to this endangered species."
+   },
+   {
+    "en": "coexist peacefully",
+    "vi": "chung sống hòa bình",
+    "ex": "Urban planners must find sustainable ways for residents and wildlife to coexist peacefully."
+   },
+   {
+    "en": "unconditional affection",
+    "vi": "tình cảm vô điều kiện",
+    "ex": "Dogs are widely cherished because they offer unconditional affection to their owners."
+   },
+   {
+    "en": "in captivity",
+    "vi": "bị nuôi nhốt, giam cầm",
+    "ex": "Certain marine mammals suffer immense psychological distress when kept in captivity."
+   },
+   {
+    "en": "poach for profit",
+    "vi": "săn trộm vì lợi nhuận",
+    "ex": "Criminal syndicates continue to poach rhinos for profit in protected reserves."
+   },
+   {
+    "en": "therapeutic effect",
+    "vi": "tác dụng trị liệu, thư giãn",
+    "ex": "Interacting with therapy animals has a proven therapeutic effect on recovering patients."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu cuộc chạm trán khó quên với loài voọc chà vá chân nâu (red-shanked douc langur) tại bán đảo Sơn Trà cách đây hai năm.",
+   "Ý 1: Nêu bối cảnh không gian buổi sáng trong rừng nguyên sinh và khoảnh khắc bất ngờ phát hiện gia đình voọc trên ngọn cây.",
+   "Ý 2: Miêu tả chi tiết hành vi của chúng (chuyền cành thoăn thoắt, hái lá non, màu lông rực rỡ và ánh nhìn tò mò về phía con người).",
+   "Kết: Giải thích lý do khó quên—chứng kiến vẻ đẹp hoang dã ngoài đời thực giúp thức tỉnh nhận thức bảo tồn thiên nhiên sâu sắc."
+  ],
+  "sample": "I'd like to talk about an unforgettable encounter I had with a family of red-shanked douc langurs. This happened about two years ago during a morning hike through Son Tra Peninsula in Da Nang.\n\nWhile trekking along a quiet forest trail, my companion and I heard rustling leaves overhead. Looking up, we were astonished to spot a troop of around four langurs perched high in the canopy. They were foraging for tender young leaves, leaping effortlessly between branches. What struck me most was their vivid coloration—striking orange faces, white forearms, and deep chestnut legs—often dubbed the 'queen of primates.' One juvenile briefly paused and stared directly at us with curious, gentle eyes before swinging away.\n\nThis encounter remains etched in my memory because it was my first time witnessing such a rare, endangered creature in its natural habitat rather than behind bars in a zoo. Seeing their grace and innocence firsthand completely transformed my view on wildlife preservation. It made me realize how vulnerable these species are to human encroachment and deeply reinforced my desire to advocate for ecological protection.",
+  "p1": [
+   {
+    "q": "Do you have any pets at home?",
+    "a": "Currently, I don't keep any pets because my apartment complex has strict restrictions. However, I used to raise a golden retriever back in my hometown, and playing fetch with him every afternoon was the highlight of my teenage years."
+   },
+   {
+    "q": "What kind of animals did you like when you were a child?",
+    "a": "I was absolutely fascinated by dolphins as a kid. I found their intelligence and playful nature captivating, and I spent hours watching wildlife documentaries about how they communicate using clicks and whistles."
+   },
+   {
+    "q": "Why do some people prefer having pets over other hobbies?",
+    "a": "I believe it boils down to emotional connection. Unlike solitary pastimes like reading, caring for a pet provides reciprocal warmth and companionship, especially for busy urbanites seeking relief from daily stress."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think humans have a moral obligation to protect endangered species?",
+    "a": "Without a doubt, humans carry a profound responsibility toward vulnerable wildlife. Human activities like deforestation and commercial poaching have driven countless creatures to the brink of extinction. For instance, the destruction of tropical rainforests directly threatens biodiversity worldwide. Therefore, establishing stringent conservation policies and funding habitat restoration are essential moral duties to preserve ecological balance for future generations."
+   },
+   {
+    "q": "How has urbanization affected the relationship between humans and wild animals?",
+    "a": "Rapid urban sprawl has unfortunately severed our connection with nature while escalating human-wildlife conflict. As cities encroach upon natural habitats, animals such as monkeys or wild boars are forced to scavenge in urban zones, causing public nuisance. Consequently, many city dwellers view wild fauna with apprehension rather than admiration. Fostering green corridors and ecological buffers is crucial to rebuild a harmonious relationship."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh từ chung chung 'animal' thay vì phân loại rõ nét như 'domesticated pets' (thú nuôi trong nhà), 'livestock' (gia súc) hay 'wildlife/fauna' (động vật hoang dã).",
+   "Dịch chay từ tiếng Việt sang tiếng Anh dẫn đến cụm từ thiếu tự nhiên, ví dụ nói 'play with animals' khi nói về chăm sóc thú cưng thay vì dùng 'care for a pet' hoặc 'walk the dog'.",
+   "Nhầm lẫn giữa các tính từ mô tả sự tuyệt chủng, ví dụ dùng 'danger animals' thay vì cụm chuẩn xác 'endangered species' hoặc 'animals on the verge of extinction'."
+  ],
+  "p1More": [
+   "Have you ever visited a wildlife sanctuary or zoo?",
+   "Do you think children should learn how to care for animals at school?",
+   "What is the most popular pet in your country?",
+   "Would you ever consider adopting a stray animal?",
+   "Did you have a favorite animal character in cartoons when growing up?"
+  ],
+  "p3More": [
+   "To what extent should governments regulate the keeping of exotic animals as household pets?",
+   "Is keeping wild animals in modern zoos justifiable from an educational perspective?",
+   "What measures can international organizations take to combat the illegal global wildlife trade?",
+   "Do you believe scientific advancements like animal cloning could effectively reverse biodiversity loss?"
+  ]
+ },
  "photography": {
   "vocab": [
    {
@@ -2229,6 +3810,99 @@
    "Do you think professional photographers will eventually be replaced by artificial intelligence and automated editing tools?",
    "Why do certain iconic photographs possess the power to sway public opinion on global issues?",
    "In what ways has the widespread culture of photo editing influenced young people's self-esteem?"
+  ]
+ },
+ "public-speaking": {
+  "vocab": [
+   {
+    "en": "stage fright",
+    "vi": "nỗi sợ sân khấu, run sợ trước khán giả",
+    "ex": "Even seasoned performers can suffer from stage fright before stepping up to the microphone."
+   },
+   {
+    "en": "command the room",
+    "vi": "làm chủ khán phòng, thu hút sự chú ý của mọi người",
+    "ex": "A charismatic speaker knows how to command the room from the very first minute."
+   },
+   {
+    "en": "deliver a compelling talk",
+    "vi": "thuyết trình một bài nói lôi cuốn",
+    "ex": "She managed to deliver a compelling talk that kept everyone on the edge of their seats."
+   },
+   {
+    "en": "butterflies in one's stomach",
+    "vi": "cảm giác bồn chồn, hồi hộp",
+    "ex": "I had butterflies in my stomach right up until I cleared my throat and began."
+   },
+   {
+    "en": "engage the audience",
+    "vi": "tương tác và cuốn hút người nghe",
+    "ex": "He asked rhetorical questions and maintained eye contact to engage the audience."
+   },
+   {
+    "en": "lose one's train of thought",
+    "vi": "mất mạch suy nghĩ, quên mất định nói gì",
+    "ex": "When the projector flickered, I momentarily lost my train of thought."
+   },
+   {
+    "en": "convey a message",
+    "vi": "truyền tải thông điệp",
+    "ex": "Effective visuals can help you convey a complex message much more clearly."
+   },
+   {
+    "en": "a round of applause",
+    "vi": "một tràng pháo tay",
+    "ex": "Her closing remarks were greeted with an enthusiastic round of applause."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn bài thuyết trình bạn từng thực hiện (buổi bảo vệ đồ án tốt nghiệp đại học trước hội đồng và sinh viên).",
+   "Ý 1: Mô tả bối cảnh thời gian, địa điểm giảng đường lớn, chủ đề về giao thông đô thị bền vững, cùng thành phần khán giả tham dự.",
+   "Ý 2: Miêu tả quá trình trình bày (sử dụng slide, ngôn ngữ hình thể, cách xử lý sự im lặng ban đầu và giải đáp câu hỏi phản biện).",
+   "Kết: Chia sẻ cảm xúc ban đầu (tim đập nhanh, run rẩy) và sự tự hào, nhẹ nhõm tột cùng khi nhận được tràng pháo tay tán thưởng."
+  ],
+  "sample": "I'd like to share an experience of giving a presentation during my final year at university. It took place in a lecture hall packed with over a hundred people, including professors, industry experts, and fellow classmates. My talk centered on sustainable urban transport solutions in emerging economies. Right before stepping up to the podium, I had intense butterflies in my stomach. My palms were sweaty, and I genuinely feared I would lose my train of thought. However, once I gripped the remote and made eye contact with the front row, my stage fright began to dissolve. I focused on telling relatable stories rather than merely reciting dry statistics, which helped me engage the audience and command the room. Towards the end, I opened the floor to questions, handling a few tough queries from the committee with composure. Hearing the enthusiastic round of applause at the finish line was an immense relief. I walked off the stage feeling exhausted yet thoroughly exhilarated and proud of having stepped out of my comfort zone.",
+  "p1": [
+   {
+    "q": "Have you ever given a speech or presentation in public?",
+    "a": "Yes, definitely. Back at university, I frequently gave group presentations in seminars. My most memorable one was pitching a digital marketing strategy to a panel of lecturers, which went surprisingly well."
+   },
+   {
+    "q": "Do you feel nervous when speaking in front of a group of people?",
+    "a": "To be honest, yes. I almost always get butterflies in my stomach beforehand, especially if the audience is unfamiliar. But once I speak the first few lines, that initial anxiety usually fades away."
+   },
+   {
+    "q": "Would you like to improve your public speaking skills in the future?",
+    "a": "Certainly, because it is vital for career progression. I would love to master storytelling techniques and voice modulation so that I can deliver compelling presentations with absolute confidence at corporate conferences."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do many people find speaking in public terrifying?",
+    "a": "I believe the primary trigger is the acute fear of negative social judgment. When standing under the spotlight, people feel deeply vulnerable and worry about stumbling over words or embarrassing themselves. While confident individuals might treat a presentation as an opportunity to shine, most people perceive an audience as critical evaluators, which naturally induces severe anxiety."
+   },
+   {
+    "q": "How important is body language compared to spoken words during a speech?",
+    "a": "Non-verbal cues are just as crucial as the verbal message itself, if not more so. A speaker might have flawless content, yet slouching and avoiding eye contact will immediately undermine their authority and disconnect the listeners. Conversely, purposeful gestures and open posture project genuine confidence. Therefore, body language reinforces spoken words and makes the delivery far more persuasive."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai từ vựng: Học viên thường lạm dụng từ 'speech' thay cho 'presentation' (thuyết trình học tập/công việc) hoặc nói 'talk to many people' thay vì cụm collocation tự nhiên như 'address an audience' hay 'command the room'.",
+   "Lỗi ngữ pháp thì quá khứ trong Part 2: Khi kể lại sự việc đã diễn ra, thí sinh hay quên chia động từ ở Past Simple (ví dụ nói 'I feel nervous' thay vì 'I felt nervous') hoặc chuyển đổi thì lộn xộn giữa quá khứ và hiện tại.",
+   "Thiếu cấu trúc phát triển ý trong Part 3: Câu trả lời ngắn cụt và chỉ dừng lại ở cảm nhận cá nhân ('I think public speaking is hard because I am shy') thay vì phân tích khái quát ở góc độ tâm lý xã hội (như nỗi sợ bị đánh giá hay cảm giác yếu thế)."
+  ],
+  "p1More": [
+   "Did you enjoy reading aloud in front of the class as a child?",
+   "What kind of public talks do you find most interesting to listen to?",
+   "Do you think schools should teach students how to speak in public?",
+   "Have you ever attended an inspiring public lecture?",
+   "Do you prefer speaking online via webinars or in person on a stage?"
+  ],
+  "p3More": [
+   "To what extent can charismatic public speakers influence public opinion in modern society?",
+   "Do you believe effective public speakers are born with talent or created through training?",
+   "How has virtual conferencing technology altered the traditional concept of public speaking?",
+   "Why do some political leaders rely heavily on emotion rather than facts in their public addresses?"
   ]
  },
  "reading": {
@@ -2882,6 +4556,192 @@
    "What role should governments play in promoting community fitness and healthy living?"
   ]
  },
+ "sports-events": {
+  "vocab": [
+   {
+    "en": "electric atmosphere",
+    "vi": "bầu không khí cuồng nhiệt, sôi động",
+    "ex": "The stadium was packed to the rafters, creating an electric atmosphere throughout the final."
+   },
+   {
+    "en": "edge-of-your-seat",
+    "vi": "hồi hộp, gay cấn đến nghẹt thở",
+    "ex": "It was an edge-of-your-seat match that was decided only in the final seconds of extra time."
+   },
+   {
+    "en": "underdog",
+    "vi": "đội hoặc người bị đánh giá yếu hơn",
+    "ex": "Against all odds, the underdog managed to pull off a stunning victory over the defending champions."
+   },
+   {
+    "en": "turn the tide",
+    "vi": "xoay chuyển cục diện trận đấu",
+    "ex": "A brilliant tactical substitution in the second half helped our team turn the tide."
+   },
+   {
+    "en": "die-hard fan",
+    "vi": "người hâm mộ trung thành, cuồng nhiệt",
+    "ex": "My brother is a die-hard fan of Manchester United and rarely misses a single fixture."
+   },
+   {
+    "en": "host nation",
+    "vi": "quốc gia đăng cai",
+    "ex": "Being the host nation brings prestige but also poses an immense financial burden."
+   },
+   {
+    "en": "come from behind",
+    "vi": "lội ngược dòng thành công",
+    "ex": "They managed to come from behind and secure a dramatic win in the closing minutes."
+   },
+   {
+    "en": "national pride",
+    "vi": "lòng tự hào dân tộc",
+    "ex": "Winning the regional championship sparked an extraordinary wave of national pride."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn trận chung kết bóng đá U23 châu Á 2018 tại Thường Châu mà bạn theo dõi qua màn hình lớn ở trung tâm thành phố.",
+   "Ý 1: Nêu rõ không gian theo dõi cùng nhóm bạn thân giữa một biển người hâm mộ mặc áo cờ đỏ sao vàng.",
+   "Ý 2: Tái hiện diễn biến gay cấn dưới bão tuyết, siêu phẩm đá phạt cầu vồng gỡ hòa và bàn thua nghẹt thở ở phút cuối hiệp phụ.",
+   "Kết: Giải thích lý do khó quên là tinh thần quật cường của các cầu thủ và cảm giác gắn kết hàng triệu người dân xa lạ thành một khối thống nhất."
+  ],
+  "sample": "I would like to talk about the 2018 AFC U23 Championship final between Vietnam and Uzbekistan, which is arguably the most unforgettable sporting event I have ever witnessed. I watched it on a massive public screen at a bustling square in downtown Hanoi, surrounded by thousands of passionate supporters.\n\nThe match took place amidst a fierce blizzard in Changzhou, China—conditions that were entirely alien to our players. Despite falling behind early on, Vietnam fought back valiantly. The defining moment came just before halftime when Quang Hải scored an iconic free kick through the falling snow, an equalizer that sent the entire crowd into pure euphoria. Both sides battled fiercely into extra time until Uzbekistan scored a heartbreaking winner in the dying seconds.\n\nEven though we narrowly missed out on the trophy, the match remains deeply etched in my memory. Seeing our young athletes demonstrate such resilience against physical and environmental adversity united the entire nation. That collective sense of pride and camaraderie is something I will cherish for the rest of my life.",
+  "p1": [
+   {
+    "q": "Do you enjoy watching sports competitions live or on television?",
+    "a": "I definitely prefer watching them on TV because the multiple camera angles and expert commentary offer a clearer perspective. For instance, watching Premier League football from my couch is much more comfortable than braving rowdy stadium crowds."
+   },
+   {
+    "q": "Have you ever attended a major sporting event in person?",
+    "a": "Yes, I attended a SEA Games football match at My Dinh National Stadium two years ago. The atmosphere was deafening with drums and chants, which made it a far more visceral experience than watching at home."
+   },
+   {
+    "q": "What kind of sports tournaments are popular in your country?",
+    "a": "Football tournaments are overwhelmingly the most popular, especially international fixtures involving the national team. Whenever there is an Asian Cup match, streets empty out and people gather in coffee shops to cheer together."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What are the benefits and drawbacks of a country hosting an international tournament like the Olympics?",
+    "a": "Hosting such mega-events can significantly boost tourism, modernize urban infrastructure, and foster immense national prestige. However, the financial risks are enormous. Many host nations incur staggering debts and are left with white elephant stadiums that require exorbitant maintenance fees. Therefore, unless meticulously planned, the economic hangover often outweighs the temporary economic windfall."
+   },
+   {
+    "q": "Why do professional athletes receive substantially higher salaries than people in essential professions like teaching or healthcare?",
+    "a": "This disparity primarily stems from market economics and entertainment value rather than societal utility. Elite athletes generate billions of dollars through global broadcasting rights, merchandise, and commercial sponsorships, so their wages reflect that revenue. While teachers and doctors clearly provide far more vital contributions to human well-being, public sector budgets simply cannot compete with the commercial juggernaut of professional sports entertainment."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn động từ thể hiện kết quả: nói 'win an opponent' thay vì 'beat an opponent' hoặc 'defeat a rival', và nhầm với 'win a trophy / a match'.",
+   "Lạm dụng thì hiện tại đơn khi kể lại trận đấu quá khứ thay vì kết hợp quá khứ đơn, quá khứ tiếp diễn và quá khứ hoàn thành để tạo chiều sâu thời gian.",
+   "Thiếu từ vựng mô tả sắc thái thể thao chuyên sâu, dùng lặp đi lặp lại những từ cơ bản như 'very exciting', 'happy', thay vì 'electric atmosphere', 'edge-of-your-seat' hay 'resilience'."
+  ],
+  "p1More": [
+   "Did you participate in any sports days when you were at school?",
+   "Do you think children should be encouraged to watch sporting events?",
+   "Which sport would you like to watch live in the future?",
+   "Do you prefer individual sports competitions or team sports events?",
+   "How do people in your city celebrate when the national sports team wins?"
+  ],
+  "p3More": [
+   "To what extent should governments invest taxpayer money into training elite athletes rather than promoting grassroots sports?",
+   "Do commercial sponsorships undermine the integrity of traditional sporting competitions?",
+   "How has modern technology, such as video assistant referees, altered the spectator experience?",
+   "Can international sporting events genuinely foster diplomatic peace between rival nations?"
+  ]
+ },
+ "stress": {
+  "vocab": [
+   {
+    "en": "wind down",
+    "vi": "thả lỏng, xả hơi sau một ngày bận rộn",
+    "ex": "After a hectic day at the office, I usually listen to soft jazz to wind down."
+   },
+   {
+    "en": "take a toll on",
+    "vi": "gây tổn hại hoặc ảnh hưởng tiêu cực lâu dài lên",
+    "ex": "Working twelve-hour shifts every day has taken a heavy toll on his mental health."
+   },
+   {
+    "en": "recharge one's batteries",
+    "vi": "nạp lại năng lượng tinh thần hoặc thể chất",
+    "ex": "A weekend getaway in the mountains helped me recharge my batteries before the exam."
+   },
+   {
+    "en": "at one's wits' end",
+    "vi": "bế tắc, cùng quẫn vì quá nhiều áp lực",
+    "ex": "She was at her wits' end trying to manage both child care and strict project deadlines."
+   },
+   {
+    "en": "blow off steam",
+    "vi": "giải tỏa căng thẳng hoặc cơn giận",
+    "ex": "Hitting the gym after work is a constructive way to blow off steam."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức từ sáng sớm đến đêm muộn",
+    "ex": "Students who burn the candle at both ends during finals week often end up burning out."
+   },
+   {
+    "en": "keep something at bay",
+    "vi": "ngăn chặn điều gì tiêu cực làm phiền hoặc áp đảo",
+    "ex": "Practicing mindfulness meditation helps me keep work-related anxiety at bay."
+   },
+   {
+    "en": "a sense of tranquility",
+    "vi": "cảm giác thanh thản, tĩnh lặng sâu sắc",
+    "ex": "Sitting beside the lotus pond early in the morning brings me a rare sense of tranquility."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu hoạt động xả stress quen thuộc (chạy bộ buổi tối quanh hồ gần nhà sau giờ làm việc).",
+   "Ý 1 (Thời gian, địa điểm, bạn đồng hành): Nêu rõ thời điểm (khoảng 8 giờ tối các ngày trong tuần) và lý do thích chạy một mình để có không gian riêng tư.",
+   "Ý 2 (Quá trình thực hiện): Miêu tả việc đeo tai nghe, nhịp bước chân, giải phóng năng lượng ứ đọng sau cả ngày ngồi văn phòng.",
+   "Kết (Lý do hiệu quả): Giải thích cơ chế giải tỏa (sản sinh endorphin, tách rời màn hình điện tử, cải thiện giấc ngủ)."
+  ],
+  "sample": "Whenever work pressure becomes overwhelming, my go-to remedy is going for an evening run around the lake near my apartment. I usually lace up my running shoes around 8 p.m., especially on weekdays after spending eight hours glued to my laptop. While some people prefer jogging in groups, I deliberately choose to do this solo because I desperately need quiet time to gather my thoughts without any social expectations.\n\nDuring the run, I plug in my earphones and listen to instrumental lofi tracks. Focusing solely on my breathing and the steady rhythm of my footsteps helps me completely disconnect from pending deadlines and endless emails. The physical exertion allows me to blow off steam and triggers the release of endorphins, which instantly lifts my spirits. By the time I finish a five-kilometer loop and cool down with light stretching, the tension in my shoulders simply melts away. Not only does this routine give me a genuine sense of tranquility, but it also ensures I sleep deeply, ready to tackle the next day with renewed focus.",
+  "p1": [
+   {
+    "q": "What do you usually do when you feel stressed?",
+    "a": "I usually prepare a warm cup of chamomile tea and listen to acoustic music. It instantly slows down my racing thoughts, especially after dealing with demanding deadlines at work."
+   },
+   {
+    "q": "Do you think your daily life is more stressful than in the past?",
+    "a": "Definitely, yes. Back in university, my only major concern was passing exams. Nowadays, juggling demanding professional responsibilities, living expenses, and personal commitments generates far more persistent mental pressure."
+   },
+   {
+    "q": "Where is your favourite place to unwind?",
+    "a": "My bedroom balcony is my ultimate sanctuary. It overlooks a quiet alley with leafy potted plants, making it the perfect corner to read a novel and escape the city noise."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do you think modern lifestyle causes more mental pressure than in previous generations?",
+    "a": "In my view, the hyper-connected nature of contemporary life is the primary culprit. Constant digital alerts and ubiquitous social media comparisons make it virtually impossible to switch off mentally. Whereas previous generations maintained distinct boundaries between labor and leisure, today's 24/7 work culture pushes people toward chronic exhaustion."
+   },
+   {
+    "q": "Should employers take responsibility for reducing their employees' workplace stress?",
+    "a": "Without doubt, companies bear both a moral duty and an economic incentive to prioritize employee well-being. Unchecked workplace pressure triggers severe burnout and accelerates employee turnover. By assigning realistic workloads and promoting flexible schedules, employers foster a healthier workforce, which inevitably boosts collective productivity and institutional loyalty."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai từ loại của 'stress': thí sinh thường nói 'I am very stress' thay vì tính từ 'I am stressed' hoặc 'stressed out'.",
+   "Thiếu giới từ đi kèm các cụm từ thông dụng, chẳng hạn dùng 'cope stress' thay vì 'cope with stress', hoặc nhầm lẫn giữa 'relieve stress' (ngoại động từ) và 'get relief from stress'.",
+   "Lạm dụng từ 'relax' như một câu trả lời chung chung lặp đi lặp lại mà không bổ sung chi tiết hành động cụ thể hoặc cảm giác tĩnh tâm sâu hơn (như 'unwind', 'clear my head')."
+  ],
+  "p1More": [
+   "Do you find it easy or difficult to relax on weekends?",
+   "Did you feel stressed when you were a child?",
+   "Do you prefer relaxing indoors or outdoors?",
+   "Does listening to music help you reduce anxiety?",
+   "What kind of activities make you feel under pressure?"
+  ],
+  "p3More": [
+   "How has technological advancement impacted people's ability to achieve mental peace?",
+   "To what extent do cultural expectations contribute to stress among young people in Asian societies?",
+   "Should governments allocate more public funds to mental health facilities and recreational spaces?",
+   "Will future generations experience higher or lower levels of chronic stress than we do today?"
+  ]
+ },
  "studies": {
   "vocab": [
    {
@@ -3068,6 +4928,99 @@
    "To what extent should students have the freedom to evaluate their teachers' performance?"
   ]
  },
+ "teamwork": {
+  "vocab": [
+   {
+    "en": "pull one's weight",
+    "vi": "đóng góp công sức tương xứng với phần việc của mình",
+    "ex": "The presentation was a hit because every single member pulled their weight from day one."
+   },
+   {
+    "en": "bounce ideas off someone",
+    "vi": "trao đổi ý kiến với ai đó để nhận phản hồi",
+    "ex": "I love brainstorming sessions where team members can bounce ideas off each other freely."
+   },
+   {
+    "en": "delegate tasks",
+    "vi": "phân chia, giao phó nhiệm vụ",
+    "ex": "Our team leader was brilliant at delegating tasks based on individual strengths."
+   },
+   {
+    "en": "reach a consensus",
+    "vi": "đạt được sự nhất trí, đồng thuận",
+    "ex": "After hours of heated debate, we finally reached a consensus on the campaign concept."
+   },
+   {
+    "en": "smooth over differences",
+    "vi": "xoa dịu, hòa giải những bất đồng",
+    "ex": "A skilled mediator can easily smooth over differences before they escalate into conflicts."
+   },
+   {
+    "en": "friction",
+    "vi": "sự xích mích, bất đồng ngầm",
+    "ex": "Poor communication early on caused unnecessary friction between our departments."
+   },
+   {
+    "en": "synergy",
+    "vi": "hiệu ứng cộng hưởng, sức mạnh tổng hợp",
+    "ex": "When designers and copywriters collaborate closely, their synergy produces remarkable outcomes."
+   },
+   {
+    "en": "fall behind schedule",
+    "vi": "chậm tiến độ so với kế hoạch",
+    "ex": "Unexpected technical glitches caused our project to fall behind schedule for a few days."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu dự án nhóm gần đây (ví dụ: làm video truyền thông về bảo vệ môi trường ở trường đại học cùng 3 người bạn).",
+   "Ý 1: Mô tả việc phân chia công việc rõ ràng dựa trên thế mạnh từng người (kịch bản, quay phim, dựng và lồng tiếng).",
+   "Ý 2: Nêu khó khăn phát sinh (bất đồng về phong cách video, áp lực hạn chót) và cách cả nhóm ngồi lại để giải tỏa căng thẳng.",
+   "Kết: Giải thích lý do dự án thành công (đạt giải thưởng, tương tác cao) và bài học về tinh thần trách nhiệm, tôn trọng ý kiến lẫn nhau."
+  ],
+  "sample": "I'd like to talk about a community video project I took part in during my final year at university. Our goal was to produce a short promotional clip raising awareness about single-use plastics on campus, and I collaborated with three classmates. To ensure efficiency, we delegated tasks based on our individual strengths: one friend drafted the script, another handled filming, while I took charge of post-production and editing. The main challenge we ran into was a clash of creative visions regarding the tone of the video—some wanted it humorous, whereas others preferred a serious documentary style. Things became tense, but we sat down, bounced ideas off each other, and reached a consensus to blend light-hearted storytelling with hard-hitting facts. In the end, our video went viral on the university fanpage and won first prize in the green initiative competition. I believe this project was a resounding success not just because of the award, but because every single person pulled their weight and respected differing perspectives, creating true synergy.",
+  "p1": [
+   {
+    "q": "Do you prefer working on your own or in a group?",
+    "a": "I generally lean towards working independently because it allows me to stay laser-focused without constant interruptions. However, for creative brainstorms or complex assignments, pooling ideas in a group definitely produces far better results."
+   },
+   {
+    "q": "What was the last project you completed with other people?",
+    "a": "Just last month, I organized a charity book drive alongside four colleagues. We collected hundreds of textbooks from our local neighbourhood and delivered them to underprivileged children, which was immensely gratifying."
+   },
+   {
+    "q": "Do you find it difficult to cooperate with people you do not know well?",
+    "a": "Initially, yes, because breaking the ice and establishing trust takes time. For instance, when I first joined my current team, communication was somewhat awkward until we organized an informal lunch to get acquainted."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What key qualities make an individual an effective team player?",
+    "a": "In my view, active listening and reliability are paramount. A team player must genuinely absorb others' feedback rather than push their own agenda. Furthermore, accountability matters; if someone fails to pull their weight, the whole group suffers. While having technical expertise is useful, emotional maturity and the willingness to compromise are what truly bind a team together."
+   },
+   {
+    "q": "How has modern technology changed the way teams collaborate in the workplace?",
+    "a": "Digital platforms like Slack and Zoom have revolutionized teamwork by enabling seamless cross-border communication. Teams can now share real-time updates and collaborate on cloud documents irrespective of physical geography. On the flip side, remote coordination can sometimes erode spontaneous bonding and lead to misunderstandings through text. Nevertheless, technology has overall democratized collaboration and boosted productivity across industries."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp đi lặp lại từ 'teamwork' hoặc 'work in group' thay vì dùng từ vựng đa dạng như 'collaborate', 'pool ideas', hay 'joint effort'.",
+   "Sai giới từ hoặc mạo từ cơ bản: nói nhầm 'work in team' (đúng: 'work in a team') hoặc 'cooperate to someone' (đúng: 'cooperate with someone').",
+   "Chỉ nhắc đến xung đột chung chung mà quên giải thích nguyên nhân và cách nhóm hòa giải, làm giảm chiều sâu câu trả lời."
+  ],
+  "p1More": [
+   "Do you think children should learn to work in teams at school?",
+   "Have you ever led a team before?",
+   "What do you do if a team member is not doing their share of the work?",
+   "Do you prefer team sports or individual sports?",
+   "Is it easy for you to share your ideas in a meeting?"
+  ],
+  "p3More": [
+   "Why do some highly capable individuals struggle to work within a team?",
+   "Should schools place more emphasis on group assessments rather than individual exams?",
+   "How can corporate leaders resolve deep-seated conflicts between team members?",
+   "In what ways might excessive teamwork suppress individual creativity and critical thinking?"
+  ]
+ },
  "technology": {
   "vocab": [
    {
@@ -3161,6 +5114,99 @@
    "In what ways might excessive automation affect global employment rates?"
   ]
  },
+ "television": {
+  "vocab": [
+   {
+    "en": "prime-time television",
+    "vi": "khung giờ vàng phát sóng truyền hình",
+    "ex": "Major news channels reserve their most critical reports for prime-time television when viewer ratings peak."
+   },
+   {
+    "en": "binge-watch",
+    "vi": "cày phim, xem liên tục nhiều tập",
+    "ex": "Instead of waiting for weekly episodes, many viewers now prefer to binge-watch entire seasons over a single weekend."
+   },
+   {
+    "en": "commercial break",
+    "vi": "thời lượng phát sóng quảng cáo chen ngang",
+    "ex": "Traditional television is losing viewers because people dislike sitting through a five-minute commercial break."
+   },
+   {
+    "en": "thought-provoking documentary",
+    "vi": "bộ phim tài liệu gợi mở nhiều suy ngẫm",
+    "ex": "I watched a thought-provoking documentary about deforestation that completely shifted my lifestyle choices."
+   },
+   {
+    "en": "streamlined content",
+    "vi": "nội dung được biên tập tinh gọn, liền mạch",
+    "ex": "Online platforms offer streamlined content that removes unnecessary filler and keeps viewers hooked."
+   },
+   {
+    "en": "couch potato",
+    "vi": "người lười biếng, chỉ ngồi lì xem TV",
+    "ex": "Spending the entire Sunday as a couch potato can leave you feeling more lethargic than refreshed."
+   },
+   {
+    "en": "tune in to",
+    "vi": "bật kênh hoặc đón xem một chương trình",
+    "ex": "Millions of sports enthusiasts across the country regularly tune in to watch live Premier League matches."
+   },
+   {
+    "en": "viewer fatigue",
+    "vi": "hội chứng mệt mỏi, quá tải do tiếp nhận quá nhiều nội dung",
+    "ex": "The endless flood of reality shows has led to noticeable viewer fatigue among young demographics."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên chương trình giáo dục mà bạn yêu thích (ví dụ: Planet Earth của BBC) và ấn tượng đầu tiên.",
+   "Ý 1: Nêu rõ hoàn cảnh bạn xem chương trình (cuối tuần, xem trên Smart TV tại phòng khách, thường xem lại qua ứng dụng).",
+   "Ý 2: Miêu tả cụ thể nội dung mà chương trình khai thác (thế giới động vật hoang dã, hệ sinh thái cực hạn, kỹ xảo quay phim chân thực).",
+   "Kết: Phân tích lý do bạn thấy chương trình bổ ích và cuốn hút (kết hợp giải trí và khoa học, nâng cao ý thức môi trường, giọng dẫn lôi cuốn)."
+  ],
+  "sample": "I would like to talk about an exceptional educational television series called Planet Earth, produced by the BBC Natural History Unit. I usually tune in to this show on lazy Sunday evenings on my living room Smart TV, streaming it in high definition. Over time, watching an episode has become a calming ritual for me right before a demanding work week begins. The series primarily delves into wildlife biology, fragile ecosystems, and animal survival strategies across remote corners of the globe. Narrated by the legendary Sir David Attenborough, each episode captures breathtaking footage ranging from deep oceanic trenches to frozen polar tundras. What makes this program so profoundly engaging is its seamless blend of cutting-edge cinematography with scientific storytelling. Rather than bombarding the audience with dry statistics, it dramatizes natural phenomena through dramatic predator-prey chases and intimate animal behaviors. Watching it not only expands my factual understanding of biodiversity, but also awakens a genuine sense of urgency regarding environmental conservation. Ultimately, it is both intellectually stimulating and visually magnificent.",
+  "p1": [
+   {
+    "q": "How often do you watch television programs?",
+    "a": "To be honest, I rarely watch traditional broadcast TV nowadays. Instead, I stream programs a few times a week on my laptop, usually unwinding with a comedy show like Friends for half an hour before heading to bed."
+   },
+   {
+    "q": "What kind of TV shows do you enjoy watching the most?",
+    "a": "I am particularly keen on investigative documentaries and science programs. They examine real-world issues in great depth, which I find far more intellectually rewarding than dramatic soap operas or frivolous talent competitions."
+   },
+   {
+    "q": "Do you prefer watching television alone or with other people?",
+    "a": "I generally prefer watching solo because it allows me to pause or rewind whenever I like without negotiating with anyone. That said, when it comes to live sporting events, watching alongside enthusiastic friends is unbeatable."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has the way people consume television content changed over recent decades?",
+    "a": "In the past, viewers were constrained by strict broadcast schedules and uninterrupted commercial interruptions. Today, the rise of streaming platforms has radically personalized content consumption. People now demand on-demand access and frequently binge-watch complete seasons whenever they please. Consequently, linear television is steadily declining, particularly among digital natives who prioritize convenience and flexible viewing schedules over traditional living-room sets."
+   },
+   {
+    "q": "To what extent should governments regulate educational versus entertainment content on public television?",
+    "a": "State authorities ought to maintain a responsible baseline by mandating minimum quotas for informative and culturally significant programming. Commercial broadcasters naturally prioritize sensationalist entertainment to maximize advertisement revenue, but public television owes a civic duty to educate the citizenry. Enforcing balanced schedules that include historical analysis and scientific discovery broadens public knowledge, preventing commercial media from reducing broadcasting purely to mindless consumerism."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp lại động từ 'watch TV' quá nhiều lần; nên thay thế linh hoạt bằng 'stream content', 'tune in to a broadcast', hay 'consume television programming'.",
+   "Nhầm lẫn giữa 'on TV' (phát sóng trên truyền hình) và 'on the TV' (đặt đồ vật trên bề mặt của chiếc máy thu hình).",
+   "Dùng từ 'program' để chỉ chung toàn bộ kênh truyền hình, thay vì phân biệt rõ giữa 'channel' (kênh phát sóng), 'program/show' (tập/chương trình), và 'series' (loạt phim nhiều tập)."
+  ],
+  "p1More": [
+   "Did you watch much television when you were a child?",
+   "What was your favorite television show when you were growing up?",
+   "Do you think children nowadays spend too much time in front of the TV?",
+   "Do people in your country usually have a television set in the living room?",
+   "Has your taste in television shows changed compared to five years ago?"
+  ],
+  "p3More": [
+   "Do you think traditional television will eventually become completely obsolete due to the internet?",
+   "In what ways do television commercials subtly influence consumer habits and values?",
+   "Should violent or distressing news coverage be restricted to late-night broadcasting hours?",
+   "How does the international exchange of television dramas affect mutual understanding between different cultures?"
+  ]
+ },
  "time-management": {
   "vocab": [
    {
@@ -3252,6 +5298,99 @@
    "Do you think schools should formally teach time management as a core subject?",
    "Why are older generations often perceived to be more punctual than younger generations?",
    "In what ways might working long hours affect a nation's overall economic productivity?"
+  ]
+ },
+ "tourism": {
+  "vocab": [
+   {
+    "en": "mass tourism",
+    "vi": "du lịch đại chúng",
+    "ex": "Mass tourism has boosted the local economy but put enormous pressure on the city's transport infrastructure."
+   },
+   {
+    "en": "off the beaten track",
+    "vi": "những nơi xa xôi, ít người lui tới",
+    "ex": "Instead of staying at crowded resorts, we opted for a small cottage off the beaten track."
+   },
+   {
+    "en": "tourist trap",
+    "vi": "địa điểm chặt chém khách du lịch",
+    "ex": "Souvenir shops around the temple are overpriced tourist traps that locals rarely visit."
+   },
+   {
+    "en": "influx of visitors",
+    "vi": "lượng lớn du khách đổ về",
+    "ex": "The coastal town experiences a massive influx of visitors during the summer holidays."
+   },
+   {
+    "en": "spoil the charm",
+    "vi": "làm mất đi vẻ đẹp quyến rũ vốn có",
+    "ex": "Commercial advertisements and high-rise hotels risk spoiling the charm of this historic village."
+   },
+   {
+    "en": "peak season",
+    "vi": "mùa cao điểm du lịch",
+    "ex": "Airfares and hotel accommodation usually skyrocket during the peak season."
+   },
+   {
+    "en": "sustainable tourism",
+    "vi": "du lịch bền vững",
+    "ex": "The ministry is encouraging sustainable tourism to preserve local biodiversity while creating jobs."
+   },
+   {
+    "en": "soak up the atmosphere",
+    "vi": "tận hưởng không khí, hòa mình vào không gian",
+    "ex": "I spent the entire afternoon sitting in a sidewalk cafe to soak up the atmosphere of the ancient quarter."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu địa điểm đã ghé thăm là phố cổ Hội An, một di sản văn hóa nổi tiếng tại miền Trung Việt Nam.",
+   "Ý 1: Thời gian và lý do đến thăm là vào dịp Tết Nguyên Đán cùng gia đình để thư giãn và ngắm lễ hội đèn lồng truyền thống.",
+   "Ý 2: Miêu tả các hoạt động như đi dạo quanh các con hẻm cổ kính, thưởng thức món Cao Lầu và đi thuyền thả hoa đăng trên sông Hoài.",
+   "Kết: Chia sẻ cảm xúc đan xen, vừa thấy ngột ngạt vì dòng người chen chúc, vừa hào hứng vì không khí lễ hội sôi động và nhộn nhịp."
+  ],
+  "sample": "I'd like to talk about my trip to Hoi An Ancient Town, a globally renowned UNESCO World Heritage site located in central Vietnam. I visited it last February during the Lunar New Year holiday with my family, mainly because we wanted to soak up the festive atmosphere and admire the famous lantern festival. While we were there, we wandered through the historic pedestrian streets, sampled local delicacies like Cao Lau noodles, and even took a wooden boat ride along the Hoai River to release floating lanterns. However, visiting during the peak season meant that the town was completely packed with an overwhelming influx of visitors. Everywhere we went, we had to squeeze through narrow alleys and wait in long queues just to enter ancient houses or order street food. To be honest, I felt quite conflicted. On one hand, the sea of crowds somewhat spoiled the nostalgic charm and made sightseeing exhausting. On the other hand, the sheer energy and lively vibe of tourists from all over the world added an undeniable buzz to the celebrations, making it an unforgettable, albeit hectic, experience.",
+  "p1": [
+   {
+    "q": "Do you enjoy travelling to crowded tourist destinations?",
+    "a": "Not really, because I find bustling crowds rather overwhelming. I prefer peaceful getaways, like camping in Da Lat, where I can actually unwind and connect with nature rather than jostling with other holidaymakers."
+   },
+   {
+    "q": "What kind of places do you prefer to visit during holidays?",
+    "a": "I lean towards secluded coastal areas or mountainous retreats. For instance, last summer I explored Phu Quy Island, enjoying its pristine beaches and tranquil scenery far away from commercial tourist traps."
+   },
+   {
+    "q": "Has your hometown become more popular with tourists in recent years?",
+    "a": "Yes, definitely. Thanks to improved transport infrastructure, my coastal city now welcomes droves of domestic visitors every weekend, especially families eager to enjoy fresh seafood and beachside resorts."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What negative consequences can mass tourism bring to local communities?",
+    "a": "In my view, uncontrolled mass tourism poses severe risks to local infrastructure and the natural environment. When millions of holidaymakers descend on a destination, it often leads to acute traffic congestion, soaring living costs, and excessive littering. A clear example is Venice, where surging rents have driven away local residents. Consequently, while it generates short-term revenue, it often erodes the authentic community identity."
+   },
+   {
+    "q": "How might governments strike a balance between promoting tourism and protecting the environment?",
+    "a": "Authorities should enforce stricter regulations alongside promoting ecotourism initiatives. By capping daily visitor numbers at fragile heritage sites and imposing tourist taxes, governments can directly fund conservation efforts. For example, Bhutan limits tourist intake through high daily tariffs, which preserves its pristine ecosystem. Ultimately, sustainable policies ensure that economic gains do not come at the expense of irreversible ecological destruction."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'travel' thay vì phân biệt rõ ràng giữa danh từ không đếm được 'travel', danh từ đếm được 'trip/journey', và động từ 'travel'.",
+   "Dùng cách diễn đạt thiếu tự nhiên 'tourist place' thay vì sử dụng các từ học thuật chuẩn xác như 'tourist destination', 'sightseeing spot', hoặc 'tourist attraction'.",
+   "Dùng sai giới từ trong các cụm từ phổ biến, ví dụ nói 'go to holiday' thay vì 'go on holiday', hoặc 'in peak season' thay vì 'during the peak season'."
+  ],
+  "p1More": [
+   "How often do you go on vacation each year?",
+   "Do you prefer travelling alone or with a tour group?",
+   "What is the most memorable trip you have ever taken?",
+   "Do you like buying souvenirs when you visit new cities?",
+   "Which country would you most like to travel to in the future?"
+  ],
+  "p3More": [
+   "To what extent has social media altered the way people choose travel destinations?",
+   "Should historic monuments charge higher entrance fees for international tourists than for locals?",
+   "How might space tourism affect our perception of conventional travel in the coming decades?",
+   "Do you believe the development of tourism always benefits the economic welfare of indigenous people?"
   ]
  },
  "transport": {
@@ -3624,6 +5763,99 @@
    "To what extent should governments be held financially responsible for natural disaster relief?",
    "How does the climate of a country shape the lifestyle and collective personality of its citizens?",
    "Do you believe individual lifestyle changes can genuinely help mitigate global climate change?"
+  ]
+ },
+ "weekends": {
+  "vocab": [
+   {
+    "en": "recharge one's batteries",
+    "vi": "nạp lại năng lượng",
+    "ex": "Spending a quiet Sunday reading at home is the best way to recharge my batteries before Monday."
+   },
+   {
+    "en": "unwind",
+    "vi": "thư giãn, thả lỏng sau áp lực",
+    "ex": "After a grueling work week, I usually head out to a suburban café to unwind."
+   },
+   {
+    "en": "catch up on sleep",
+    "vi": "ngủ bù",
+    "ex": "On Saturday mornings, I tend to turn off my alarm clock to catch up on sleep."
+   },
+   {
+    "en": "weekend getaway",
+    "vi": "chuyến du lịch ngắn ngày cuối tuần",
+    "ex": "My colleagues and I organized a spontaneous weekend getaway to a nearby coastal town."
+   },
+   {
+    "en": "blur the boundaries",
+    "vi": "làm mờ ranh giới (giữa công việc và đời sống)",
+    "ex": "Constant smartphone notifications tend to blur the boundaries between professional work and personal weekend time."
+   },
+   {
+    "en": "downtime",
+    "vi": "thời gian nghỉ ngơi không vướng bận",
+    "ex": "Having dedicated downtime at the weekend is crucial for preventing burnout."
+   },
+   {
+    "en": "couch potato",
+    "vi": "người lười biếng chỉ nằm xem màn hình",
+    "ex": "I rarely turn into a couch potato on weekends because I prefer getting outdoor exercise."
+   },
+   {
+    "en": "break the monotony",
+    "vi": "phá vỡ sự đơn điệu thường nhật",
+    "ex": "Trying out a new pottery workshop last Sunday was a fantastic way to break the monotony of routine."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn chuyến cắm trại ngẫu hứng tại Ba Vì vào cuối tuần trước cùng hai người bạn thân.",
+   "Ý 1 (Ai và Ở đâu): Mô tả hành trình di chuyển ngắn thoát khỏi nội đô đến một rừng thông yên tĩnh, xa lánh khói bụi thành phố.",
+   "Ý 2 (Hoạt động chính): Dựng lều, nướng BBQ và quyết định ngắt kết nối internet hoàn toàn để tập trung trò chuyện, đàn hát.",
+   "Kết (Cảm xúc & Lý do đáng nhớ): Nhấn mạnh giá trị của việc phục hồi tinh thần thực sự khi tách biệt khỏi công việc và củng cố tình bạn bền chặt."
+  ],
+  "sample": "I'd like to share an unforgettable weekend camping trip I took just a couple of weeks ago. On a whim, my two closest university friends and I decided to go on a short getaway to Ba Vi National Park, just a two-hour drive from Hanoi. We rented camping gear, set up a tent beside a pine forest, and prepared an outdoor barbecue under the afternoon sun. What made this activity truly stand out was our mutual agreement to turn off mobile data for the entire weekend. Rather than being glued to work emails or social media feeds, we spent hours strumming the guitar, chatting about our careers, and simply enjoying the crisp mountain air. This weekend was deeply memorable because it gave me genuine downtime after months of intense screen time and demanding work deadlines. Escaping the suffocating urban traffic and reconnecting with both nature and long-time companions completely recharged my batteries. It reminded me how vital it is to disconnect from professional duties and truly live in the moment with the people who matter most.",
+  "p1": [
+   {
+    "q": "How do you usually spend your weekends?",
+    "a": "I usually strike a balance between leisure and preparation. On Saturdays, I often meet friends for coffee or try out a new restaurant, whereas Sundays are mostly reserved for quiet downtime at home, doing household chores and planning for the week ahead."
+   },
+   {
+    "q": "Do you prefer spending weekends with friends or alone?",
+    "a": "It depends on my energy levels, but I lean toward spending alone time. After a hectic week of meetings, having a quiet afternoon to read or cook by myself helps me recharge much better than social gatherings."
+   },
+   {
+    "q": "Did you have more free time on weekends when you were a child?",
+    "a": "Undoubtedly yes. Back then, weekends were purely dedicated to playing outdoor games with neighborhood kids and watching morning cartoons, completely free from the academic pressures and adult responsibilities I face today."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have people's weekend habits changed over the past few decades?",
+    "a": "In the past, weekends were predominantly centered around domestic family gatherings and face-to-face community events. Today, however, digital entertainment and consumer culture have reshaped leisure time. People often frequent bustling shopping malls or scroll on social media indoors. Moreover, due to remote work technology, many professionals now struggle to detach from job-related tasks, meaning weekends are no longer the strictly sacred rest days they once were."
+   },
+   {
+    "q": "Should employers be allowed to contact employees about work during weekends?",
+    "a": "I firmly believe this practice should be strictly restricted except in genuine emergencies. Constant out-of-hours communication infringes on personal leisure and inevitably leads to chronic stress and burnout. In fact, several European nations have enacted 'right to disconnect' laws to protect employees. Establishing clear boundaries between work and personal life ultimately fosters higher productivity and better mental well-being during standard working days."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh sách liệt kê rời rạc: Trả lời theo kiểu 'I sleep, watch TV, eat out' mà không liên kết câu bằng từ nối mạch lạc hoặc không phân tích mục đích phục hồi năng lượng.",
+   "Dùng sai giới từ thời gian: Thí sinh Việt Nam rất hay nói 'in the weekend' thay vì dùng chính xác 'at the weekend' (Anh-Anh) hoặc 'on the weekend' (Anh-Mỹ).",
+   "Lẫn lộn thì động từ: Khi trả lời Part 1 về thói quen thường kỳ (habitual routine) lại vô thức chuyển sang thì Quá khứ đơn, hoặc ngược lại kể trải nghiệm đáng nhớ ở Part 2 bằng thì Hiện tại đơn."
+  ],
+  "p1More": [
+   "Do you think weekends are long enough?",
+   "What is your favorite part of the weekend?",
+   "Do you usually plan your weekends in advance or act spontaneously?",
+   "Do you ever work or study at the weekend?",
+   "Is there anything you dislike doing at the weekend?"
+  ],
+  "p3More": [
+   "Would introducing a three-day weekend benefit the economy and workers' well-being?",
+   "How do weekends differ between people living in urban centers and those in rural areas?",
+   "In what ways do commercial marketing and consumerism influence how people spend their weekends?",
+   "Should children be assigned homework to complete over the weekend?"
   ]
  },
  "work": {

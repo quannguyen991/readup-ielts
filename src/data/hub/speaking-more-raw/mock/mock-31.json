@@ -1,0 +1,62 @@
+{
+ "id": "mock-31",
+ "title": "IELTS Speaking Mock Test 31",
+ "titleVi": "Đề thi thử số 31",
+ "focusVi": "Rèn luyện kỹ năng biểu đạt cảm xúc, cấu trúc hóa câu chuyện cá nhân và bàn luận các vấn đề trừu tượng về sự công nhận trong xã hội.",
+ "part1": [
+  {
+   "topic": "Public Speaking",
+   "qs": [
+    "Do you often have to speak in front of a group of people?",
+    "Did you enjoy giving presentations when you were at school?",
+    "What makes a person a good public speaker?",
+    "Would you like to improve your public speaking skills in the future?"
+   ]
+  },
+  {
+   "topic": "Memory",
+   "qs": [
+    "Do you consider yourself to have a good memory?",
+    "What kinds of things do you usually find difficult to remember?",
+    "Do you use any specific techniques to help you remember important information?",
+    "Why do some people forget childhood memories more easily than others?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a time when you felt proud of an achievement",
+  "bullets": [
+   "what you achieved",
+   "when and where this happened",
+   "what difficulties you faced while trying to achieve it",
+   "and explain why this achievement made you feel so proud"
+  ]
+ },
+ "part3": [
+  "How do people in your country usually celebrate personal achievements?",
+  "Do you think parents should praise their children frequently for minor accomplishments?",
+  "Is personal pride always a positive emotion, or can it have negative consequences?",
+  "Why do some individuals find it uncomfortable to receive public recognition?",
+  "In what ways can a community cultivate a collective sense of pride among its residents?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, quite regularly, especially during weekly team meetings at my workplace. I often report progress on ongoing projects, which helps me stay confident when addressing colleagues directly.",
+   "To be honest, not at all, as I was extremely introverted back then. Delivering book reports made my hands tremble, so I usually tried to avoid speaking in class.",
+   "In my view, clarity and empathy are paramount. A truly engaging speaker uses straightforward language and connects emotionally with listeners, much like an inspiring teacher telling a compelling story.",
+   "Definitely, because mastering rhetoric can boost my career prospects tremendously. I am actually planning to join a local public speaking club next month to practice impromptu speeches under pressure.",
+   "Generally speaking, yes, especially when it comes to visual details and faces. For instance, I can easily recognize a casual acquaintance I met briefly at an event months ago.",
+   "I struggle with strings of numbers and complex passwords. Without my digital password manager, I would constantly lock myself out of my personal banking and email accounts.",
+   "I rely heavily on digital reminder apps and color-coded sticky notes on my desk. Setting alarms ensures that I never miss critical deadlines or upcoming medical appointments.",
+   "I think it mainly depends on how emotionally significant those early events were. Traumatic or exceptionally joyous moments tend to endure, whereas mundane everyday routines simply fade over time."
+  ],
+  "sample": "I would like to talk about the time I successfully organized a charity art exhibition during my final year of university in Hanoi. The goal was to auction student artwork to fund warm clothes for underprivileged children in the northern highlands. Organizing the event was far from smooth sailing. We had barely two months to solicit artwork from reluctant students, secure a suitable venue without any budget, and attract potential buyers. At one point, our main sponsor pulled out just a week before the opening, leaving us in complete panic. However, our team rallied together, launched an urgent crowdfunding campaign online, and managed to secure enough funds to cover the operational costs. On the opening night, over two hundred people attended, and we ended up raising more than fifty million VND. I felt immensely proud because this project proved that my leadership and perseverance could create tangible, positive change for vulnerable communities. Standing in that crowded hall, seeing the generous bids, I realized that all our sleepless nights had truly paid off. It boosted my self-confidence immensely and taught me the true value of collective effort.",
+  "p3": [
+   "In Vietnam, personal milestones are traditionally marked by gathering over elaborate meals with family and friends. When someone graduates or earns a promotion, hosting a celebratory dinner is customary because it honors the communal support behind that success. While younger generations also share their triumphs on social media, sharing food remains the cornerstone of celebration. Thus, personal success is largely viewed as a shared collective victory.",
+   "I believe praise should be balanced rather than excessive. While regular encouragement nurtures a child's confidence, overpraising trivial deeds can foster complacency and unrealistic expectations. For instance, if a child is applauded simply for finishing a regular meal, they might struggle when facing genuine criticism later in life. Therefore, offering sincere feedback focused on effort rather than constant flattery produces far more resilient individuals.",
+   "Pride is certainly a double-edged sword. On one hand, healthy self-respect motivates people to uphold high personal standards and overcome adversity. Conversely, unchecked pride often morphs into arrogance, blinding individuals to their flaws and alienating peers. A clear example is an executive who dismisses valuable feedback due to excessive hubris. Ultimately, pride remains constructive only when tempered by genuine humility and self-awareness.",
+   "Many people feel uneasy with public accolades due to natural introversion or cultural modesty. In many Asian societies, standing out conspicuously can attract unwanted scrutiny or envy, prompting people to downplay their merits. Additionally, imposter syndrome makes some achievers feel undeserving of the spotlight, fearing they cannot sustain such elevated expectations. Consequently, they prefer quiet, private validation over grand public fanfare.",
+   "Communities can build collective pride by engaging residents in shared civic initiatives, such as neighborhood clean-up drives or local cultural festivals. When residents actively contribute to revitalizing public spaces, they develop a profound sense of ownership. Conversely, neglected neighborhoods often breed apathy. By celebrating local heritage and recognizing civic volunteers, a community fosters mutual respect, creating an environment where everyone feels genuinely invested in their hometown."
+  ]
+ }
+}

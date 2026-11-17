@@ -1,0 +1,62 @@
+{
+ "id": "mock-34",
+ "title": "IELTS Speaking Mock Test 34",
+ "titleVi": "Đề thi thử số 34",
+ "focusVi": "Rèn luyện kỹ năng phân tích nguyên nhân - hệ quả và trình bày quan điểm logic về các chuẩn mực, quy tắc xã hội.",
+ "part1": [
+  {
+   "topic": "Climate Change",
+   "qs": [
+    "Have you noticed any changes in the weather where you live recently?",
+    "What do you think is the main cause of these climate shifts?",
+    "Do schools in your country teach students about environmental protection?",
+    "What practical actions do you take personally to reduce environmental harm?"
+   ]
+  },
+  {
+   "topic": "Handwriting and Typing",
+   "qs": [
+    "Do you write by hand more often or type on a digital device?",
+    "When did you first learn to write neatly in cursive or print?",
+    "In what situations do you think handwriting is still essential?",
+    "Do you believe keyboard skills will completely replace penmanship in the future?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a rule you think is important at school or work",
+  "bullets": [
+   "what the rule is",
+   "where and when it applies",
+   "how people usually react to it",
+   "and explain why you think this rule is so important"
+  ]
+ },
+ "part3": [
+  "Why do some people find it difficult to comply with institutional rules?",
+  "Should workplaces allow employees to participate in setting organizational rules?",
+  "How do societal penalties influence public adherence to laws?",
+  "Do you believe children who grow up with strict rules become more successful adults?",
+  "To what extent can moral principles be effective without formal legal enforcement?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, definitely. Summers in Hanoi have become noticeably hotter and more erratic over the past few years, with severe heatwaves regularly exceeding forty degrees Celsius, which disrupts daily outdoor activities.",
+   "I believe rapid industrial expansion and vehicle emissions are the primary drivers. In developing nations like Vietnam, heavy traffic and coal-dependent factories release immense amounts of greenhouse gases into the atmosphere.",
+   "Yes, they do. Most primary schools integrate environmental awareness into moral education or science classes, encouraging kids to plant trees, sort domestic trash, and conserve water from a young age.",
+   "I consistently carry a reusable canvas bag when grocery shopping and use a refillable water bottle instead of buying single-use plastics, which noticeably cuts down my daily household waste.",
+   "I definitely type much more frequently because my work demands fast digital communication. Typing reports on my laptop or texting on my smartphone saves considerable time compared to jotting notes manually.",
+   "I learned penmanship around age six when entering primary school. My teacher placed great emphasis on neat cursive script, making us practice repetitive strokes with fountain pens every single afternoon.",
+   "Handwriting remains indispensable for signing legal contracts and writing heartfelt greeting cards. A handwritten note conveys personal warmth and authenticity that a generic printed font or text message simply cannot replicate.",
+   "Not completely, although digital typing will certainly dominate. Handwriting retains emotional, artistic, and legal value, so while its everyday utilitarian usage might decline, it won't disappear entirely from human culture."
+  ],
+  "sample": "I'd like to talk about a policy that I consider vital in any professional or academic setting: the strict prohibition of mobile phone use during collaborative meetings. In my current company, this guideline applies to all internal briefing sessions and client presentations held in the main conference room. Whenever someone enters the boardroom, they are required to switch their smartphones to silent mode and keep them face-down inside their bags. Initially, some colleagues resisted this policy, feeling slightly anxious about missing urgent notifications or personal messages. However, over time, most people have come to embrace it wholeheartedly. In my view, this rule is extremely important because modern devices are huge attention traps. When employees are constantly glancing at screens, discussions drag on, misunderstandings arise, and creative synergy drops dramatically. By enforcing a screen-free environment, everyone stays fully engaged, actively listens to colleagues, and respects each other's valuable time. Ultimately, this straightforward boundary not only accelerates decision-making but also fosters genuine teamwork, proving that a little self-discipline can boost overall workplace productivity and mutual respect.",
+  "p3": [
+   "Often, non-compliance stems from a perceived lack of fairness or relevance. When rules appear arbitrary or excessively restrictive, individuals naturally resist them as an infringement on personal autonomy. For instance, rigid dress codes in creative industries often trigger backlash because employees feel their individuality is stifled. Thus, unless people comprehend the rationale behind regulations, voluntary adherence remains difficult to achieve.",
+   "Absolutely, involving staff in policymaking creates psychological ownership and mutual trust. When workers contribute to establishing guidelines, such as flexible scheduling or remote work protocols, they feel respected rather than micromanaged. Conversely, purely top-down directives can generate resentment and quiet resistance. Therefore, participatory governance usually yields higher compliance and fosters a healthier corporate culture overall.",
+   "Penalties serve as a potent deterrent against reckless behavior by raising the cost of misconduct. For example, severe fines and driving license revocations for drunk driving in Vietnam have dramatically reduced traffic violations. However, fear of punishment alone cannot sustain long-term compliance; genuine public awareness and moral consensus are also crucial. Penalties establish boundaries, but education ensures lasting respect for the law.",
+   "Not necessarily, as strictness can be a double-edged sword. While structured environments instill discipline, punctuality, and focus, excessive micromanagement often dampens a child's creative initiative and emotional resilience. In contrast, children raised with reasonable boundaries combined with autonomy tend to develop stronger problem-solving skills and self-motivation. Consequently, balanced guidance generally fosters well-rounded success much better than rigid authoritarianism.",
+   "Moral principles are undeniably powerful within close-knit communities where social reputation and peer accountability matter, such as returning lost items in neighborhood shops. Nevertheless, in complex modern societies, ethical standards alone often fail to deter self-serving individuals. Legal frameworks provide necessary mechanisms for conflict resolution and justice. Ultimately, morals define our social ideals, but laws remain indispensable for collective order."
+  ]
+ }
+}
