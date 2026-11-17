@@ -16,6 +16,10 @@ import { topicById, topicExtra, type SpeakingExtra, type SpeakingTopic } from '@
 import { speak } from '@/services/hub/speak';
 import { buildVoiceReport } from '@/services/hub/voice-report';
 import { useHubStore } from '@/store/useHubStore';
+import { useSpeakingStore } from '@/store/useSpeakingStore';
+import { part2Question } from '@/services/hub/hub-questions';
+import type { SpeakingAnswer, SpeakingAttempt } from '@/services/speaking/attempts';
+import { answerMetrics, attemptMetrics, type AnswerMetrics, type RecognizedSegment } from '@/services/speaking/metrics';
 
 /** Thí sinh được nói tối đa hai phút ở cue card (Part 2). */
 const PART2_LIMIT_MS = 120_000;
@@ -37,7 +41,7 @@ function stepsOf(topic: SpeakingTopic, only?: 1 | 2 | 3): Step[] {
 }
 
 /** Kết quả một lượt nói: số liệu lấy từ `buildVoiceReport`, cùng bản ghi lời nói để đọc lại. */
-type Report = { transcript: string; wpm: number | null; fillers: number; words: number; silent: boolean; ms: number };
+type Report = { transcript: string; wpm: number | null; fillers: number; words: number; silent: boolean; ms: number; segments?: RecognizedSegment[]; metrics?: AnswerMetrics };
 
 /**
  * Luyện đề theo chủ đề, đi lần lượt qua Part 1, cue card Part 2 và Part 3 như bài thi.
@@ -70,6 +74,7 @@ export function Practice({ topic, only, extra: extraProp, header }: { topic: Spe
   const [reports, setReports] = useState<Record<number, Report>>({});
   const [, setTick] = useState(0);
   const [justDone, setJustDone] = useState(false);
+  const startedAt = useRef(new Date().toISOString());
   // Chỉ chấm lượt vừa ghi xong, và ghi vào đúng bước đã bắt đầu ghi (không phải bước đang hiển thị).
   const armed = useRef(false);
   const recordingAt = useRef(0);
@@ -112,9 +117,11 @@ export function Practice({ topic, only, extra: extraProp, header }: { topic: Spe
       eventTimes: listen.times,
       durationMs: ms,
     });
+    const segments: RecognizedSegment[] = listen.segments.map((sg) => ({ text: sg.text, confidence: sg.confidence }));
+    const metrics = answerMetrics({ transcript, segments, durationMs: ms, eventTimes: listen.times });
     setReports((r) => ({
       ...r,
-      [bucket]: { transcript, wpm: report.wpm, fillers: report.fillers.total, words: report.wordCount, silent: false, ms },
+      [bucket]: { transcript, wpm: report.wpm, fillers: report.fillers.total, words: report.wordCount, silent: false, ms, segments, metrics },
     }));
     // Chỉ chạy khi micro dừng hoặc có chữ mới; số liệu lấy từ chính các giá trị đó.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,6 +145,37 @@ export function Practice({ topic, only, extra: extraProp, header }: { topic: Spe
       stop();
     }
     setAt(next);
+  };
+
+  /** Gói các câu đã nói thành một lượt chấm rồi mở phiếu chấm chi tiết (điểm theo bốn tiêu chí, đáp án, đối chiếu band). */
+  const openResult = () => {
+    const answers: SpeakingAnswer[] = [];
+    steps.forEach((st, i) => {
+      const r = reports[i];
+      if (!r || r.silent || !r.metrics) return;
+      answers.push({
+        questionId: `hub:${topic.id}:${st.part}:${st.index}`,
+        part: st.part === 'part1' ? 1 : st.part === 'part2' ? 2 : 3,
+        question: st.bullets ? part2Question(st.text, st.bullets) : st.text,
+        transcript: r.transcript,
+        segments: r.segments ?? [],
+        metrics: r.metrics,
+      });
+    });
+    if (answers.length === 0) return;
+    const attempt: SpeakingAttempt = {
+      id: `hub-${Date.now().toString(36)}`,
+      mode: only ? (`p${only}` as 'p1' | 'p2' | 'p3') : 'full',
+      typed: false,
+      titleVi: topic.titleVi,
+      startedAt: startedAt.current,
+      finishedAt: new Date().toISOString(),
+      answers,
+      metrics: attemptMetrics(answers.map((a) => ({ part: a.part, transcript: a.transcript, metrics: a.metrics }))),
+      grade: null,
+    };
+    useSpeakingStore.getState().add(attempt);
+    router.push(`/hub/result/${attempt.id}` as never);
   };
 
   const restart = () => {
@@ -193,6 +231,7 @@ export function Practice({ topic, only, extra: extraProp, header }: { topic: Spe
           }}
           onRestart={restart}
           onJump={goTo}
+          onResult={openResult}
         />
       ) : (
         <>
@@ -424,6 +463,7 @@ function Summary({
   onComplete,
   onRestart,
   onJump,
+  onResult,
 }: {
   topic: SpeakingTopic;
   steps: Step[];
@@ -434,6 +474,7 @@ function Summary({
   onComplete: () => void;
   onRestart: () => void;
   onJump: (i: number) => void;
+  onResult: () => void;
 }) {
   const all = Object.values(reports).filter((r) => !r.silent);
   const words = all.reduce((sum, r) => sum + r.words, 0);
@@ -490,6 +531,20 @@ function Summary({
           );
         })}
       </HubPanel>
+
+      <Pressable
+        accessibilityRole="button"
+        disabled={answered === 0}
+        onPress={onResult}
+        style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16, borderRadius: 18, borderWidth: 2, borderColor: HUB_UI.purple, backgroundColor: HUB_UI.wash, opacity: answered === 0 ? 0.5 : 1, ...(hovered ? { transform: [{ translateY: -2 }] } : null) }) as never}
+      >
+        <Text style={{ fontSize: 30 }}>📝</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: HUB_UI.navy, fontSize: 16.5, fontWeight: '900' }}>Xem phiếu chấm chi tiết</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13.5, fontWeight: '600' }}>Band, 4 tiêu chí, đáp án và đối chiếu</Text>
+        </View>
+        <Icon name="arrow-right" size={18} color={HUB_UI.purple} />
+      </Pressable>
 
       <Pressable
         accessibilityRole="button"
