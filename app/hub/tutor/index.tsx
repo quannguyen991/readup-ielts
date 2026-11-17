@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
@@ -65,6 +65,7 @@ type GroupFilter = 'all' | Group;
 
 export default function TutorList() {
   const { L } = useL();
+  const cover = useWindowDimensions().width < 520 ? 84 : 112;
   const [q, setQ] = useState('');
   const [group, setGroup] = useState<GroupFilter>('all');
 
@@ -118,9 +119,9 @@ export default function TutorList() {
                     style={({ hovered }: Hover) => ({ flexBasis: 340, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 14, padding: 10, paddingRight: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
                   >
                     {hubCover(tutor.id) ? (
-                      <Image source={{ uri: hubCover(tutor.id)! }} accessibilityIgnoresInvertColors style={{ width: 112, height: 112, borderRadius: 18, backgroundColor: m.tint }} resizeMode="cover" />
+                      <Image source={{ uri: hubCover(tutor.id)! }} accessibilityIgnoresInvertColors style={{ width: cover, height: cover, borderRadius: 18, backgroundColor: m.tint }} resizeMode="cover" />
                     ) : (
-                      <View style={{ width: 112, height: 112, borderRadius: 18, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
+                      <View style={{ width: cover, height: cover, borderRadius: 18, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
                         <Text style={{ fontSize: 40 }}>{m.icon}</Text>
                       </View>
                     )}

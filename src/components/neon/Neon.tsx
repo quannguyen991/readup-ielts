@@ -223,7 +223,7 @@ export function NeonWindow({
           ))}
         </View>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <PixelText size={narrow ? 20 : 24} glow="rgba(140,200,255,0.8)">
+          <PixelText size={narrow ? (title.length > 24 ? 15 : title.length > 17 ? 17 : 20) : 24} glow="rgba(140,200,255,0.8)">
             {title}
           </PixelText>
         </View>

@@ -1,22 +1,21 @@
-import { themedHex } from '@/theme/palette-state';
-import React, { useMemo, useState } from 'react';
-import { Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
-import { CheckGroup, FilterRail, type RailSelection, type RailSkill } from '@/components/practice/FilterRail';
 import { GROUP_LABEL, ListeningCover } from '@/components/listening/cover';
 import { CatSticker } from '@/components/mascot/CatSticker';
-import { Button, Card, Icon, Pagination } from '@/components/ui';
+import { HUB_UI, HubHero, HubPanel, hubLift } from '@/components/hub/HubUi';
+import { Icon, Pagination } from '@/components/ui';
 import { LISTENING_TESTS } from '@/data/listening-tests';
+import { compareSourceTests } from '@/services/ielts/source-catalog';
 import { sectionNumbers } from '@/services/listening/scoring';
 import type { ListeningGroupType, ListeningLevel, ListeningSection, ListeningTest } from '@/services/listening/types';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
-import { color } from '@/theme/tokens';
-import { useL, type L as LFn } from '@/i18n/useL';
+import { useL } from '@/i18n/useL';
 
 /**
  * Thư viện Listening: lọc bên trái (Bài lẻ theo Section / Full đề / Dictation),
@@ -24,38 +23,18 @@ import { useL, type L as LFn } from '@/i18n/useL';
  * liệt kê đề có đủ 4 section.
  */
 
-const buildSkills = (L: LFn): RailSkill[] => [
-  { key: 'reading', label: 'Reading', icon: 'book', tint: themedHex('#8B6CF0'), options: [], href: '/practice' },
-  {
-    key: 'listening',
-    label: 'Listening',
-    icon: 'volume',
-    tint: '#F59E0B',
-    options: [
-      {
-        key: 'single',
-        label: L('Bài lẻ', 'Single sections'),
-        children: [1, 2, 3, 4].map((n) => ({ key: `s${n}`, label: `Section ${n}` })),
-      },
-      { key: 'full', label: L('Full đề', 'Full test') },
-      {
-        key: 'task',
-        label: L('Luyện theo dạng', 'By question type'),
-        children: [
-          { key: 'gap', label: L('Điền từ', 'Completion') },
-          { key: 'mcq-one', label: L('Trắc nghiệm một đáp án', 'Single choice') },
-          { key: 'mcq-many', label: L('Trắc nghiệm nhiều đáp án', 'Multiple choice') },
-          { key: 'matching', label: L('Nối thông tin', 'Matching') },
-        ],
-      },
-      { key: 'dictation', label: 'Dictation' },
-    ],
-  },
-  { key: 'writing', label: 'Writing', icon: 'pencil', tint: '#D5B377', options: [], href: '/write' },
-  { key: 'speaking', label: 'Speaking', icon: 'chat', tint: '#6A4BD9', options: [], href: '/speaking' },
-];
-
 type Item = { test: ListeningTest; section: ListeningSection | null; task?: ListeningGroupType };
+
+/** Một đề nghe trong kho sách Cambridge / Actual Test (chỉ metadata, không kèm lời thoại). */
+type SourceMeta = {
+  id: string;
+  title: string;
+  source: string;
+  section?: string;
+  questionCount: number;
+  audioCount: number;
+  answerKeyVerified: boolean;
+};
 
 const PAGE_SIZE = 12;
 
@@ -70,19 +49,65 @@ function minutesOf(sections: ListeningSection[]): number {
   return Math.max(1, Math.round(sec / 60));
 }
 
+type Mode = 'single' | 'full' | 'source' | 'task' | 'dictation';
+const TASKS: { key: ListeningGroupType | string; vi: string; en: string }[] = [
+  { key: 'gap', vi: 'Điền từ', en: 'Completion' },
+  { key: 'mcq-one', vi: 'Trắc nghiệm một đáp án', en: 'Single choice' },
+  { key: 'mcq-many', vi: 'Trắc nghiệm nhiều đáp án', en: 'Multiple choice' },
+  { key: 'matching', vi: 'Nối thông tin', en: 'Matching' },
+];
+
+type Hover = { hovered?: boolean };
+
+/** Nút lọc dạng viên thuốc, chọn được nhiều. */
+function Pill({ label, on, onPress, count }: { label: string; on: boolean; onPress: () => void; count?: number }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected: on }}
+      onPress={() => {
+        playSfx('tab');
+        onPress();
+      }}
+      style={{ minHeight: 40, flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, borderWidth: 1.5, borderColor: on ? HUB_UI.purple : HUB_UI.line, backgroundColor: on ? HUB_UI.purple : '#FFFFFF' }}
+    >
+      <Text style={{ fontSize: 14, fontWeight: '800', color: on ? '#FFFFFF' : HUB_UI.navy }}>{label}</Text>
+      {count !== undefined ? <Text style={{ fontSize: 12.5, fontWeight: '800', color: on ? '#E3DAFF' : HUB_UI.muted }}>{count}</Text> : null}
+    </Pressable>
+  );
+}
+
 export default function ListeningLibrary() {
   const { L } = useL();
-  const { width } = useWindowDimensions();
-  const wide = width >= 1024;
-  const SKILLS = useMemo(() => buildSkills(L), [L]);
   const attempts = useListeningStore((s) => s.attempts);
 
-  const [selection, setSelection] = useState<RailSelection>({ skill: 'listening', option: 'single', child: null });
+  const [selection, setSelection] = useState<{ option: Mode; child: string | null }>({ option: 'single', child: null });
   const [sources, setSources] = useState<string[]>([]);
   const [levels, setLevels] = useState<ListeningLevel[]>([]);
   const [category, setCategory] = useState<string | null>(null);
-  const [railOpen, setRailOpen] = useState(false);
   const [page, setPage] = useState(0);
+
+  // Kho sách Cambridge: đọc từ API cục bộ, chỉ tải khi người dùng mở mục này.
+  const [sourceTests, setSourceTests] = useState<SourceMeta[] | null>(null);
+  const [sourceError, setSourceError] = useState(false);
+  useEffect(() => {
+    if (selection.option !== 'source' || sourceTests || sourceError) return;
+    let alive = true;
+    fetch('/api/ielts/local-ocr')
+      .then(async (response) => {
+        if (!response.ok) throw new Error('not-ready');
+        return (await response.json()) as { tests: SourceMeta[] };
+      })
+      .then((data) => {
+        if (alive) setSourceTests(data.tests.filter((t) => t.section === 'Listening').sort(compareSourceTests));
+      })
+      .catch(() => {
+        if (alive) setSourceError(true);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [selection.option, sourceTests, sourceError]);
 
   const toggle = <T extends string>(list: T[], set: (v: T[]) => void, k: T) =>
     set(list.includes(k) ? list.filter((x) => x !== k) : [...list, k]);
@@ -103,14 +128,15 @@ export default function ListeningLibrary() {
   }
 
   const items = useMemo<Item[]>(() => {
+    if (selection.option === 'source' || selection.option === 'dictation') return [];
     const pool = LISTENING_TESTS.filter(
       (t) => (sources.length === 0 || sources.includes(t.source)) && (levels.length === 0 || levels.includes(t.level)) && (!category || t.cover.category === category),
     );
     if (selection.option === 'full') {
       return pool.filter((t) => t.sections.length === 4).map((test) => ({ test, section: null }));
     }
-    if (selection.option === 'task' && selection.child) {
-      const task = selection.child as ListeningGroupType;
+    if (selection.option === 'task') {
+      const task = (selection.child ?? 'gap') as ListeningGroupType;
       return pool.flatMap((test) => test.sections
         .filter((s) => s.groups.some((g) => g.type === task))
         .map((section) => ({ test, section, task })));
@@ -128,112 +154,128 @@ export default function ListeningLibrary() {
     setCategory(null);
   };
 
-  const rail = (
-    <FilterRail
-      skills={SKILLS}
-      selection={selection}
-      onSelect={(next) => {
-        playSfx('tab');
-        if (next.skill === 'listening' && next.option === 'dictation') {
-          router.push('/sentence' as never);
-          return;
-        }
-        setSelection(next);
-      }}
-      onNavigate={(href) => router.push(href as never)}
-      groups={
-        <View className="mt-2 gap-2">
-          <CheckGroup
-            title={L('Nguồn tài liệu', 'Sources')}
-            options={sourceOptions}
-            selected={sources}
-            onToggle={(k) => toggle(sources, setSources, k)}
-          />
-          <CheckGroup
-            title={L('Trình độ', 'Level')}
-            options={[
-              { key: 'easy', label: L('Dễ', 'Easy') },
-              { key: 'medium', label: L('Trung bình', 'Medium') },
-              { key: 'hard', label: L('Khó', 'Hard') },
-            ]}
-            selected={levels}
-            onToggle={(k) => toggle(levels, setLevels, k as ListeningLevel)}
-          />
-        </View>
-      }
-    />
-  );
+  const sectionTotal = useMemo(() => LISTENING_TESTS.reduce((n, t) => n + t.sections.length, 0), []);
+  const fullTotal = useMemo(() => LISTENING_TESTS.filter((t) => t.sections.length === 4).length, []);
+  const modes: { key: Mode; icon: string; tint: string; title: string; count: string }[] = [
+    { key: 'single', icon: '🎧', tint: '#DFEEFF', title: L('Bài lẻ', 'Single sections'), count: `${sectionTotal} ${L('bài', 'sections')}` },
+    { key: 'full', icon: '🏁', tint: '#FFF0D6', title: L('Full đề', 'Full test'), count: `${fullTotal} ${L('đề', 'tests')}` },
+    { key: 'source', icon: '📚', tint: '#EFE4FF', title: L('Cambridge & Actual', 'Cambridge & Actual'), count: sourceTests ? `${sourceTests.length} ${L('đề', 'tests')}` : '160+ ' + L('đề', 'tests') },
+    { key: 'task', icon: '🎯', tint: '#DDF7E8', title: L('Luyện theo dạng', 'By question type'), count: `${TASKS.length} ${L('dạng', 'types')}` },
+    { key: 'dictation', icon: '✍️', tint: '#FFE3E8', title: 'Dictation', count: L('Nghe chép', 'Listen and type') },
+  ];
+
+  const pick = (key: Mode) => {
+    playSfx('tab');
+    if (key === 'dictation') {
+      router.push('/sentence' as never);
+      return;
+    }
+    setSelection({ option: key, child: null });
+  };
+
+  const showFilters = selection.option !== 'source';
 
   return (
-    <Screen cat="headphones">
-      <View className="flex-row flex-wrap items-center justify-between gap-2">
-        <View>
-          <Text className="font-nun-heavy text-ink" style={{ fontSize: 26 }}>
-            Listening
-          </Text>
-          <Text className="font-nun text-label text-muted">
-            {L('Nghe một lần, làm như thi thật — hoặc nghe lại để học.', 'Listen once like the real test, or replay to learn.')}
-          </Text>
-        </View>
-        <View>
-          <Pressable
-            accessibilityRole="link"
-            onPress={() => router.push('/listening/history' as never)}
-            className="flex-row items-center gap-1.5 rounded-pill border border-border bg-surface px-3.5 py-2"
-          >
-            <Icon name="clock" size={15} color={color.primary} />
-            <Text className="font-nun-strong text-label text-primary-700">{L('Xem lịch sử làm bài', 'View history')}</Text>
-          </Pressable>
-          {/* Mèo đeo tai nghe ngồi trên nút lịch sử (màn hẹp) */}
-          {!wide ? <CatSticker pose="headphones" size={56} style={{ position: 'absolute', right: 12, top: -40 }} /> : null}
-        </View>
-      </View>
+    <Screen>
+      <HubHero
+        eyebrow="IELTS · LISTENING"
+        title={L('Nghe một lần, làm như thi thật', 'Listen once, like the real test')}
+        accent={L('hoặc nghe lại để học', 'or replay to learn')}
+        stats={[
+          { value: String(LISTENING_TESTS.length), label: L('Đề nghe', 'Tests') },
+          { value: String(sectionTotal), label: L('Bài lẻ', 'Sections') },
+          { value: '160+', label: L('Đề Cambridge & Actual', 'Cambridge & Actual') },
+          { value: String(attempts.length), label: L('Lượt đã làm', 'Your attempts') },
+        ]}
+      />
 
-      {!wide ? (
-        <View className="mt-3">
-          <Button
-            label={railOpen ? L('Đóng bộ lọc', 'Close filters') : L('Bộ lọc', 'Filters')}
-            variant="outline"
-            iconLeft="filter"
-            onPress={() => setRailOpen((v) => !v)}
-          />
+      <HubPanel title={L('Chọn kiểu luyện', 'Choose a mode')} icon="gamepad">
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+          {modes.map((m) => {
+            const on = selection.option === m.key;
+            return (
+              <Pressable
+                key={m.key}
+                accessibilityRole="button"
+                accessibilityState={{ selected: on }}
+                onPress={() => pick(m.key)}
+                style={({ hovered }: Hover) => ({ flexGrow: 1, flexBasis: 150, gap: 6, padding: 14, borderRadius: 18, borderWidth: 2, backgroundColor: on ? HUB_UI.wash : '#FFFFFF', ...(on ? { borderColor: HUB_UI.purple } : hubLift(hovered)) }) as never}
+              >
+                <View style={{ width: 46, height: 46, borderRadius: 14, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 24 }}>{m.icon}</Text>
+                </View>
+                <Text style={{ color: on ? HUB_UI.purple : HUB_UI.navy, fontSize: 15.5, fontWeight: '900' }}>{m.title}</Text>
+                <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '700' }}>{m.count}</Text>
+              </Pressable>
+            );
+          })}
         </View>
-      ) : null}
 
-      <View className={wide ? 'mt-4 flex-row gap-5' : 'mt-4'}>
-        {wide || railOpen ? (
-          <View style={wide ? { width: 268 } : undefined} className={wide ? '' : 'mb-4'}>
-            {rail}
+        {selection.option === 'single' ? (
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            <Pill label={L('Mọi Section', 'All sections')} on={!selection.child} onPress={() => setSelection({ option: 'single', child: null })} />
+            {[1, 2, 3, 4].map((n) => (
+              <Pill key={n} label={`Section ${n}`} on={selection.child === `s${n}`} onPress={() => setSelection({ option: 'single', child: selection.child === `s${n}` ? null : `s${n}` })} />
+            ))}
           </View>
         ) : null}
-
-        <View className="flex-1" key={filterKey}>
-          {categories.length ? (
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 10 }}>
-              <CategoryChip label={L('Tất cả chủ đề', 'All topics')} selected={!category} onPress={() => setCategory(null)} />
-              {categories.map((name) => <CategoryChip key={name} label={name} selected={category === name} onPress={() => setCategory(category === name ? null : name)} />)}
-            </ScrollView>
-          ) : null}
-          <View className="mb-3 flex-row flex-wrap items-center justify-between gap-2">
-            <Text className="font-nun-mid text-label text-muted">
-              <Text className="font-nun-heavy text-ink">{items.length}</Text> {L('bài khớp bộ lọc', 'tests match')}
-            </Text>
-            {filtersOn ? (
-              <Pressable onPress={clear} accessibilityRole="button">
-                <Text className="font-nun-strong text-label text-primary-700">{L('Xoá bộ lọc', 'Clear filters')}</Text>
-              </Pressable>
-            ) : null}
+        {selection.option === 'task' ? (
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {TASKS.map((t) => (
+              <Pill key={t.key} label={L(t.vi, t.en)} on={(selection.child ?? 'gap') === t.key} onPress={() => setSelection({ option: 'task', child: t.key })} />
+            ))}
           </View>
+        ) : null}
+      </HubPanel>
 
-          {items.length === 0 ? (
-            <Card>
-              <View className="items-center py-6">
-                <CatSticker pose="sleep" size={96} />
-                <Text className="mt-3 text-center font-nun text-body text-muted">
-                  {L('Chưa có bài nào khớp. Bỏ bớt một bộ lọc là ra.', 'Nothing matches yet. Remove a filter to see more.')}
-                </Text>
-              </View>
-            </Card>
+      {showFilters ? (
+        <HubPanel title={L('Bộ lọc', 'Filters')} icon="cursor" badge={filtersOn ? L('ĐANG LỌC', 'ON') : undefined}>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>{L('NGUỒN TÀI LIỆU', 'SOURCES')}</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {sourceOptions.map((o) => (
+              <Pill key={o.key} label={o.label} count={o.count} on={sources.includes(o.key)} onPress={() => toggle(sources, setSources, o.key)} />
+            ))}
+          </View>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>{L('TRÌNH ĐỘ', 'LEVEL')}</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {([['easy', L('Dễ', 'Easy')], ['medium', L('Trung bình', 'Medium')], ['hard', L('Khó', 'Hard')]] as [ListeningLevel, string][]).map(([k, label]) => (
+              <Pill key={k} label={label} on={levels.includes(k)} onPress={() => toggle(levels, setLevels, k)} />
+            ))}
+          </View>
+          {categories.length ? (
+            <>
+              <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '800' }}>{L('CHỦ ĐỀ', 'TOPIC')}</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 4 }}>
+                <Pill label={L('Tất cả chủ đề', 'All topics')} on={!category} onPress={() => setCategory(null)} />
+                {categories.map((name) => (
+                  <Pill key={name} label={name} on={category === name} onPress={() => setCategory(category === name ? null : name)} />
+                ))}
+              </ScrollView>
+            </>
+          ) : null}
+          {filtersOn ? (
+            <Pressable onPress={clear} accessibilityRole="button" style={{ alignSelf: 'flex-start' }}>
+              <Text style={{ color: HUB_UI.purple, fontSize: 14, fontWeight: '900' }}>{L('Xoá bộ lọc', 'Clear filters')}</Text>
+            </Pressable>
+          ) : null}
+        </HubPanel>
+      ) : null}
+
+      <HubPanel
+        title={selection.option === 'source' ? L('Đề Cambridge & Actual', 'Cambridge & Actual') : L('Danh sách bài nghe', 'Listening tests')}
+        icon="book"
+        badge={selection.option === 'source' ? (sourceTests ? String(sourceTests.length) : '…') : String(items.length)}
+      >
+        <View key={filterKey}>
+          {selection.option === 'source' ? (
+            <SourceShelf tests={sourceTests} error={sourceError} page={page} onPage={setPage} />
+          ) : items.length === 0 ? (
+            <View style={{ alignItems: 'center', paddingVertical: 18 }}>
+              <CatSticker pose="sleep" size={96} />
+              <Text style={{ marginTop: 10, textAlign: 'center', color: HUB_UI.muted, fontSize: 14.5 }}>
+                {L('Chưa có bài nào khớp. Bỏ bớt một bộ lọc là ra.', 'Nothing matches yet. Remove a filter to see more.')}
+              </Text>
+            </View>
           ) : (
             <>
               <Grid columns={3} tabletColumns={2} mobileColumns={1}>
@@ -251,8 +293,96 @@ export default function ListeningLibrary() {
             </>
           )}
         </View>
-      </View>
+      </HubPanel>
+
+      <Pressable
+        accessibilityRole="link"
+        onPress={() => router.push('/listening/history' as never)}
+        style={({ hovered }: Hover) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+      >
+        <Text style={{ fontSize: 26 }}>🕘</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900' }}>{L('Xem lịch sử làm bài', 'View history')}</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13.5, fontWeight: '600' }}>{L(`${attempts.length} lượt đã làm`, `${attempts.length} attempts`)}</Text>
+        </View>
+        <Icon name="chevron-right" size={18} color={HUB_UI.muted} />
+      </Pressable>
     </Screen>
+  );
+}
+
+function SourceShelf({ tests, error, page, onPage }: { tests: SourceMeta[] | null; error: boolean; page: number; onPage: (p: number) => void }) {
+  const { L } = useL();
+  if (error) {
+    return (
+      <View style={{ alignItems: 'center', paddingVertical: 18 }}>
+        <CatSticker pose="sleep" size={96} />
+        <Text style={{ marginTop: 10, textAlign: 'center', color: HUB_UI.muted, fontSize: 14.5 }}>
+          {L(
+            'Kho đề Cambridge chỉ mở được trên máy có dữ liệu cục bộ (bản chạy thử). Bản đưa lên mạng chưa có mục này.',
+            'The Cambridge bank only opens on a machine with local data (dev build). The online build does not have it yet.',
+          )}
+        </Text>
+      </View>
+    );
+  }
+  if (!tests) {
+    return <Text className="font-nun text-body text-muted">{L('Đang tải kho đề…', 'Loading the bank…')}</Text>;
+  }
+  const pageCount = Math.max(1, Math.ceil(tests.length / PAGE_SIZE));
+  const current = Math.min(page, pageCount - 1);
+  return (
+    <>
+      <Text className="mb-3 font-nun-mid text-label text-muted">
+        <Text className="font-nun-heavy text-ink">{tests.length}</Text>{' '}
+        {L('đề nghe từ sách Cambridge và Actual Test', 'listening tests from the Cambridge and Actual Test books')}
+      </Text>
+      <Grid columns={3} tabletColumns={2} mobileColumns={1}>
+        {tests.slice(current * PAGE_SIZE, current * PAGE_SIZE + PAGE_SIZE).map((t, i) => (
+          <Appear key={t.id} index={i} style={{ height: '100%' }}>
+            <SourceCard test={t} />
+          </Appear>
+        ))}
+      </Grid>
+      <Pagination page={current} pageCount={pageCount} onChange={onPage} />
+    </>
+  );
+}
+
+function SourceCard({ test }: { test: SourceMeta }) {
+  const { L } = useL();
+  const chip = (text: string, muted = false) => (
+    <View key={text} style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: muted ? '#FFFFFF' : HUB_UI.wash, borderWidth: muted ? 1 : 0, borderColor: HUB_UI.line }}>
+      <Text className="font-nun-mid" style={{ fontSize: 13, color: muted ? HUB_UI.muted : HUB_UI.purple }}>
+        {text}
+      </Text>
+    </View>
+  );
+  return (
+    <PressScale
+      onPress={() => {
+        playSfx('select');
+        router.push(`/ielts-source-practice?test=${encodeURIComponent(test.id)}` as never);
+      }}
+      style={{ height: '100%' }}
+      fill
+      accessibilityRole="link"
+      accessibilityLabel={test.title}
+    >
+      <View style={{ height: '100%', overflow: 'hidden', borderRadius: 18, borderWidth: 1.5, borderColor: HUB_UI.line, backgroundColor: '#FFFFFF', padding: 14 }}>
+        <Text className="mb-1.5 font-nun-strong" style={{ fontSize: 13, color: HUB_UI.purple }}>
+          {test.source}
+        </Text>
+        <Text className="font-nun-heavy text-body text-ink" numberOfLines={2}>
+          {test.title}
+        </Text>
+        <View className="mt-2 flex-row flex-wrap gap-1.5">
+          {chip(`${test.questionCount} câu`)}
+          {chip(test.audioCount > 0 ? L('Có audio', 'Audio') : L('Chưa có audio', 'No audio'), test.audioCount === 0)}
+          {test.answerKeyVerified ? chip(L('Đáp án đã kiểm', 'Key checked')) : null}
+        </View>
+      </View>
+    </PressScale>
   );
 }
 
@@ -279,7 +409,7 @@ function TestCard({ item, count }: { item: Item; count: number }) {
       accessibilityRole="link"
       accessibilityLabel={`${test.title}${section ? ` — Section ${section.n}` : ''}`}
     >
-      <View className="h-full overflow-hidden rounded-card border border-border bg-surface">
+      <View style={{ height: '100%', overflow: 'hidden', borderRadius: 18, borderWidth: 1.5, borderColor: HUB_UI.line, backgroundColor: '#FFFFFF' }}>
         <ListeningCover test={test} section={section?.n ?? null}>
           {count > 0 ? (
             <View
@@ -300,7 +430,7 @@ function TestCard({ item, count }: { item: Item; count: number }) {
         </ListeningCover>
         <View className="flex-1 p-3.5">
           {test.cover.category ? (
-            <Text className="mb-1.5 font-nun-strong text-primary-700" style={{ fontSize: 13 }}>
+            <Text className="mb-1.5 font-nun-strong" style={{ fontSize: 13, color: HUB_UI.purple }}>
               {test.cover.category}
             </Text>
           ) : null}
@@ -310,8 +440,8 @@ function TestCard({ item, count }: { item: Item; count: number }) {
           </Text>
           <View className="mt-2 flex-row flex-wrap gap-1.5">
             {types.map((t) => (
-              <View key={t} className="rounded-pill bg-primary-50 px-2.5 py-1">
-                <Text className="font-nun-mid text-primary-700" style={{ fontSize: 13 }}>
+              <View key={t} style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: HUB_UI.wash }}>
+                <Text className="font-nun-mid" style={{ fontSize: 13, color: HUB_UI.purple }}>
                   {t}
                 </Text>
               </View>

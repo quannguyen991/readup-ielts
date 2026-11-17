@@ -1,5 +1,5 @@
 import React, { useState, type ReactNode } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { Modal, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
@@ -41,6 +41,7 @@ export function HubScreen({
   const selectedProgram = useHubStore((s) => s.selectedProgram);
   const setProgram = useHubStore((s) => s.setProgram);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const narrow = useWindowDimensions().width < 520;
 
   const displayStreak = useStreak().current;
   const displayTrophy = trophyScore >= 10000 ? '10000+' : String(trophyScore);
@@ -49,9 +50,9 @@ export function HubScreen({
 
   const header = (
     <View style={{ paddingHorizontal: 16, paddingTop: 14, paddingBottom: 12, gap: 10, width: '100%', maxWidth: CONTENT_MAX, alignSelf: 'center' }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
         {/* Góc trái: Nút back (nếu có) + Tiêu đề Tab & Program Switcher */}
-        <View style={{ flex: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <View style={{ flex: 1, minWidth: narrow ? '100%' : 0, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           {back ? (
             <Pressable
               accessibilityRole="button"
