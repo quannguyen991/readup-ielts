@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import externalCatalog from '@/data/ielts-external-tests.json';
 import { CAM_VOL_TEST_PACKAGES, testPackageToSourceTest } from '@/data/ielts-cam-vol-bank';
+import { answerMatches } from '@/services/ielts/answer-match';
 import { canonicalSourceTestId, compareSourceTests, hasCompleteKey, prepareSourceTest, type SourceTest } from '@/services/ielts/source-catalog';
 
 type PrivateOcrBundle = { tests: SourceTest[]; reviewPages: number[] };
@@ -150,10 +151,6 @@ function sanitizeAnswers(raw: unknown, count: number, maxLength: number): Record
   return out;
 }
 
-function normalizeAnswer(value: string): string {
-  return value.normalize('NFKC').toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
-}
-
 function gradeTest(test: SourceTest, answers: Record<string, string>): null | { score: number; total: number; results: GradeResult[]; verified: boolean; bandEstimate: number | null } {
   if (!hasCompleteKey(test)) return null;
   const total = test.questionCount ?? 40;
@@ -162,7 +159,7 @@ function gradeTest(test: SourceTest, answers: Record<string, string>): null | { 
     const given = answers[String(number)] ?? '';
     const rawExpected = test.answerKey?.[String(number)] ?? '';
     const expectedList = (Array.isArray(rawExpected) ? rawExpected : [rawExpected]).filter(Boolean);
-    const correct = Boolean(given) && expectedList.some((expected) => normalizeAnswer(expected) === normalizeAnswer(given));
+    const correct = answerMatches(given, expectedList);
     return { number, answer: given, expected: expectedList.join(' / '), correct };
   });
   const score = results.filter((item) => item.correct).length;

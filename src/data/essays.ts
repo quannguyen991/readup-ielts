@@ -2,6 +2,7 @@ import SEED from './seed/essays/index.json';
 import READING_A from './seed/essays/reading-a.json';
 import READING_B from './seed/essays/reading-b.json';
 import READING_C from './seed/essays/reading-c.json';
+import READING_D from './seed/essays/reading-d.json';
 
 /**
  * BÀI ESSAY DÀI để dịch từng câu (Việt → Anh): 4–6 đoạn, 24–32 câu, mỗi câu tiếng Việt có
@@ -37,12 +38,9 @@ type Seed = {
   paragraphs: { vi: string; en: string }[][];
 };
 
-/**
- * Passage IELTS Reading (Cambridge) dùng làm bài dịch. Bỏ hai passage có văn bản nguồn không đáng tin:
- * cam17-t1-p2 (bản quét thiếu một đoạn) và cam18-t1-p1 (có câu phải đoán vì OCR hỏng).
- */
-const SKIP_READING = new Set(['rd-cam17-t1-p2', 'rd-cam18-t1-p1']);
-const READING = [...(READING_A as Seed[]), ...(READING_B as Seed[]), ...(READING_C as Seed[])].filter((e) => !SKIP_READING.has(e.id));
+/** Passage IELTS Reading (Cambridge) dùng làm bài dịch; có thể thêm id vào đây để tạm ẩn một passage. */
+const SKIP_READING = new Set<string>();
+const READING = [...(READING_A as Seed[]), ...(READING_B as Seed[]), ...(READING_C as Seed[]), ...(READING_D as Seed[])].filter((e) => !SKIP_READING.has(e.id));
 
 /** "rd-cam15-t1-p2" → "Cambridge IELTS 15 · Test 1 · Passage 2"; bài khác thì không có nguồn. */
 export function essaySource(id: string): string | null {

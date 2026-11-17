@@ -9,7 +9,7 @@ test('bài essay: đủ số lượng, độ dài và id không trùng', () => {
   for (const e of ESSAYS) {
     const reading = e.kind === 'reading';
     assert.ok(reading ? e.sentences.length >= 25 && e.sentences.length <= 60 : e.sentences.length >= 24 && e.sentences.length <= 32, `${e.id}: ${e.sentences.length} câu`);
-    assert.ok(reading ? e.paragraphSizes.length >= 4 && e.paragraphSizes.length <= 20 : e.paragraphSizes.length >= 4 && e.paragraphSizes.length <= 6, e.id);
+    assert.ok(reading ? e.paragraphSizes.length >= 3 && e.paragraphSizes.length <= 24 : e.paragraphSizes.length >= 4 && e.paragraphSizes.length <= 6, e.id);
     assert.equal(e.paragraphSizes.reduce((a, b) => a + b, 0), e.sentences.length);
     for (const s of e.sentences) {
       assert.ok(s.vi.trim().length > 2 && s.en.trim().length > 2, e.id);

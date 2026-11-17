@@ -30,6 +30,7 @@ import { ieltsAudioUrl } from '@/services/ielts/audio-url';
 
 import type { Grade } from './ComputerDeliveredExamRoom';
 import { trackAppEvent } from '@/services/analytics/app-events';
+import { readingExplanation } from '@/data/ielts-reading-explanations';
 
 function Text(props: TextProps) {
 
@@ -728,6 +729,7 @@ export function SourceExamRoom({
   }, [submitted]);
 
   const { width: winW } = useWindowDimensions();
+  const [openExpl, setOpenExpl] = useState<Record<number, boolean>>({});
 
   const isDesktop = winW >= 1024;
 
@@ -1603,45 +1605,40 @@ export function SourceExamRoom({
 
                 <View style={{ gap: 8 }}>
 
-                  {grade.results.map((r) => (
-
-                    <View
-
-                      key={r.number}
-
-                      style={{
-
-                        flexDirection: 'row',
-
-                        alignItems: 'center',
-
-                        justifyContent: 'space-between',
-
-                        padding: 10,
-
-                        borderRadius: 8,
-
-                        backgroundColor: r.correct ? '#DCFCE7' : '#FEE2E2',
-
-                      }}
-
-                    >
-
-                      <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
-
-                        Câu {r.number}: {r.answer || '(chưa làm)'}
-
-                      </Text>
-
-                      <Text style={{ fontFamily: 'Inter_700Bold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
-
-                        Đáp án chuẩn: {r.expected}
-
-                      </Text>
-
-                    </View>
-
-                  ))}
+                  {grade.results.map((r) => {
+                    const ex = readingExplanation(test.id, r.number);
+                    const open = !!openExpl[r.number];
+                    return (
+                      <View key={r.number} style={{ gap: 6 }}>
+                        <Pressable
+                          disabled={!ex}
+                          onPress={() => setOpenExpl((m) => ({ ...m, [r.number]: !m[r.number] }))}
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            padding: 10,
+                            borderRadius: 8,
+                            backgroundColor: r.correct ? '#DCFCE7' : '#FEE2E2',
+                          }}
+                        >
+                          <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
+                            Câu {r.number}: {r.answer || '(chưa làm)'}
+                          </Text>
+                          <Text style={{ fontFamily: 'Inter_700Bold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
+                            Đáp án chuẩn: {r.expected}{ex ? (open ? '  ▲' : '  ▼ Giải') : ''}
+                          </Text>
+                        </Pressable>
+                        {ex && open ? (
+                          <View style={{ padding: 12, borderRadius: 8, backgroundColor: '#F8FAFC', borderWidth: 1, borderColor: '#E2E8F0', gap: 6 }}>
+                            <Text style={{ fontFamily: 'Inter_500Medium', fontSize: 13, lineHeight: 19, color: '#0F172A' }}>{ex.vi}</Text>
+                            <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 12.5, lineHeight: 18, color: '#334155', fontStyle: 'italic' }}>“{ex.quote}”</Text>
+                            <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 11.5, color: '#64748B' }}>{ex.where}</Text>
+                          </View>
+                        ) : null}
+                      </View>
+                    );
+                  })}
 
                 </View>
 
