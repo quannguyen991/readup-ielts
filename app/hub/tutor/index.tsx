@@ -119,9 +119,9 @@ export default function TutorList() {
                     style={({ hovered }: Hover) => ({ flexBasis: 340, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 14, padding: 10, paddingRight: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
                   >
                     {hubCover(tutor.id) ? (
-                      <Image source={{ uri: hubCover(tutor.id)! }} accessibilityIgnoresInvertColors style={{ width: 96, height: 96, borderRadius: 18, backgroundColor: m.tint }} resizeMode="cover" />
+                      <Image source={{ uri: hubCover(tutor.id)! }} accessibilityIgnoresInvertColors style={{ width: 112, height: 112, borderRadius: 18, backgroundColor: m.tint }} resizeMode="cover" />
                     ) : (
-                      <View style={{ width: 96, height: 96, borderRadius: 18, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
+                      <View style={{ width: 112, height: 112, borderRadius: 18, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
                         <Text style={{ fontSize: 40 }}>{m.icon}</Text>
                       </View>
                     )}
@@ -130,7 +130,7 @@ export default function TutorList() {
                         <Text style={{ color: HUB_UI.navy, fontSize: 16, fontWeight: '900', flexShrink: 1 }}>{tutor.name}</Text>
                         {tutor.tag ? <HubTag label={tutor.tag === 'BAND 9 EXCLUSIVE' ? 'BAND 9' : tutor.tag} color={(TAG_STYLE[tutor.tag] ?? TAG_STYLE.BETA!).fg} bg={(TAG_STYLE[tutor.tag] ?? TAG_STYLE.BETA!).bg} /> : null}
                       </View>
-                      <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }} numberOfLines={3}>{tutor.desc}</Text>
+                      <Text style={{ color: HUB_UI.muted, fontSize: 13.5, lineHeight: 19 }} numberOfLines={2}>{tutor.desc}</Text>
                       <Text style={{ color: HUB_UI.purple, fontSize: 13, fontWeight: '800' }}>{m.does}</Text>
                     </View>
                     <Icon name="chevron-right" size={16} color={HUB_UI.muted} />
