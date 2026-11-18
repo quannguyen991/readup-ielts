@@ -339,7 +339,7 @@ export function DarkChip({ label, active, onPress }: { label: string; active: bo
       accessibilityRole="button"
       aria-selected={active}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         borderRadius: 999,
         paddingHorizontal: 12,
         paddingVertical: 7,
@@ -364,7 +364,7 @@ export function QuickFight({ item, stacked = false }: { item: (typeof QUICK_FIGH
       accessibilityRole="link"
       accessibilityLabel={en ? item.titleEn : item.title}
       onPress={() => router.push(item.href as never)}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         ...(stacked ? null : { flexGrow: 1, flexShrink: 1, flexBasis: 200 }),
         flexDirection: 'row',
         alignItems: 'center',

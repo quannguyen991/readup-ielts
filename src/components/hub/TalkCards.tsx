@@ -57,7 +57,7 @@ export function TalkPoster({ talk, rank, done }: { talk: Talk; rank?: number; do
       accessibilityRole="button"
       accessibilityLabel={talk.title}
       onPress={() => router.push(talk.route as never)}
-      style={({ hovered }: Hover) => ({ width: 220, gap: 8, padding: 8, borderRadius: 20, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+      style={({ hovered }) => ({ width: 220, gap: 8, padding: 8, borderRadius: 20, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
     >
       <View style={{ height: 150, borderRadius: 14, overflow: 'hidden', backgroundColor: HUB_UI.wash }}>
         <Image source={{ uri: SCENE_THUMB[talk.setting] }} accessibilityIgnoresInvertColors style={{ width: '100%', height: '100%' }} resizeMode="cover" />

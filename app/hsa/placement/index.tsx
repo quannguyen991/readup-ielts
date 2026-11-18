@@ -68,7 +68,7 @@ export default function HsaPlacementScreen() {
                     key={s.id}
                     accessibilityRole="button"
                     onPress={() => open(s.id)}
-                    style={({ hovered }: { hovered?: boolean }) => ({
+                    style={({ hovered }) => ({
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 12,

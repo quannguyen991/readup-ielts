@@ -244,7 +244,7 @@ export default function RoadChapterScreen() {
                   accessibilityRole="button"
                   disabled={!ready}
                   onPress={() => router.push(`/sat/lo-trinh/${c.id}/${lv}` as never)}
-                  style={({ hovered }: { hovered?: boolean }) => ({ marginTop: 4, borderRadius: 14, paddingVertical: 12, alignItems: 'center', backgroundColor: ready ? (hovered ? tone.ink : tone.bg) : '#E1D9CB' })}
+                  style={({ hovered }) => ({ marginTop: 4, borderRadius: 14, paddingVertical: 12, alignItems: 'center', backgroundColor: ready ? (hovered ? tone.ink : tone.bg) : '#E1D9CB' })}
                 >
                   <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
                     {ready ? (b ? L('Làm lượt mới', 'New round') : L(`Làm ${QUIZ_SIZE} câu`, `Do ${QUIZ_SIZE} questions`)) : L('Đang soạn câu hỏi', 'Questions coming soon')}
@@ -305,9 +305,9 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
         accessibilityRole="button"
         disabled={!ready}
         onPress={() => router.push(`/sat/lo-trinh/${c.id}/book` as never)}
-        style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: ready ? (hovered ? '#FFFFFF' : color) : '#475569' })}
+        style={({ hovered }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: ready ? (hovered ? '#FFFFFF' : color) : '#475569' })}
       >
-        {({ hovered }: { hovered?: boolean }) => (
+        {({ hovered }) => (
           <Text className="font-heavy" style={{ fontSize: 15, color: ready && hovered ? '#0F172A' : '#FFFFFF' }}>
             {ready ? (best ? L('Làm lượt mới', 'New round') : L(`Làm ${set.length} bài`, `Do ${set.length} problems`)) : L('Đang soạn', 'Coming soon')}
           </Text>
@@ -356,7 +356,7 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
       <Pressable
         accessibilityRole="button"
         onPress={() => router.push(`/sat/lo-trinh/${c.id}/extra` as never)}
-        style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: hovered ? '#2B2350' : '#F2B632' })}
+        style={({ hovered }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: hovered ? '#2B2350' : '#F2B632' })}
       >
         <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
           {best ? L('Làm lượt mới', 'New round') : L(`Làm ${EXTRA_SIZE} câu`, `Do ${EXTRA_SIZE} questions`)}

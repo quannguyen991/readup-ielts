@@ -65,7 +65,7 @@ async function profiles(db: Db, ids: readonly string[]): Promise<Map<string, Pro
     const chunk = unique.slice(i, i + 100);
     let res = await db.from('profiles').select('id, display_name, avatar_url, username').in('id', chunk);
     // Máy chủ chưa áp migration tên người dùng: vẫn đọc được hồ sơ như cũ.
-    if (res.error) res = await db.from('profiles').select('id, display_name, avatar_url').in('id', chunk);
+    if (res.error) res = (await db.from('profiles').select('id, display_name, avatar_url').in('id', chunk)) as typeof res;
     for (const row of (res.data ?? []) as ProfileLite[]) out.set(row.id, row);
   }
   return out;

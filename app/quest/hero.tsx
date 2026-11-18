@@ -383,7 +383,7 @@ function GoButton({ label, href }: { label: string; href: string }) {
     <Pressable
       accessibilityRole="link"
       onPress={() => router.push(href as never)}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         borderRadius: 12,
         paddingHorizontal: 12,
         paddingVertical: 8,

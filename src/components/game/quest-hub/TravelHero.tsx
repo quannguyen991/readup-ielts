@@ -58,7 +58,7 @@ export function TravelHero() {
             accessibilityRole="link"
             accessibilityLabel={L('Du ngoạn', 'Travel')}
             onPress={go}
-            style={({ hovered }: { hovered?: boolean }) => ({
+            style={({ hovered }) => ({
               minHeight: 56,
               flexDirection: 'row',
               alignItems: 'center',

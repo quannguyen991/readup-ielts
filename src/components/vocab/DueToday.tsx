@@ -99,7 +99,7 @@ export function DueToday() {
               key={s}
               accessibilityRole="link"
               onPress={() => router.push(`/vocabulary/topic/${s}/quiz?only=due` as never)}
-              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: hovered ? '#F0FDF4' : '#FFFFFF' })}
+              style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: hovered ? '#F0FDF4' : '#FFFFFF' })}
             >
               <Text className="font-strong" style={{ fontSize: 14, color: '#14532D' }}>
                 {deckName(s, en)}

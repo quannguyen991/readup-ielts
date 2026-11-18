@@ -490,7 +490,7 @@ export function PartTiles({
               aria-expanded={inlineDetail ? selected : undefined}
               aria-selected={selected}
               onPress={() => onSelect(node.id)}
-              style={({ hovered }: { hovered?: boolean }) =>
+              style={({ hovered }) =>
                 ({
                   flexGrow: 1,
                   flexBasis: 220,

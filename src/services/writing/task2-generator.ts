@@ -290,7 +290,7 @@ const TASK1_LEAD: Record<Task1Chart, string> = {
 };
 
 export function generateTask1Prompts(): WritingPrompt[] {
-  const prompts = FIGURE_SPECS.map((spec, index) => ({
+  const prompts: WritingPrompt[] = FIGURE_SPECS.map((spec, index): WritingPrompt => ({
     id: `w-t1-${spec.kind}-${spec.slug}`,
     task: 'ielts_task1',
     // `subject` đã viết thường và có sẵn mạo từ nên ghép vào là đọc trôi:

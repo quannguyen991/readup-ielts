@@ -72,7 +72,7 @@ export function MonthCalendar({
                   accessibilityState={{ selected, disabled }}
                   disabled={disabled}
                   onPress={() => onChange(key)}
-                  style={({ hovered }: { hovered?: boolean }) => ({ width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? accent : hovered && !disabled ? '#EFEAFD' : '#F3F2F7', opacity: disabled ? 0.35 : 1 })}
+                  style={({ hovered }) => ({ width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? accent : hovered && !disabled ? '#EFEAFD' : '#F3F2F7', opacity: disabled ? 0.35 : 1 })}
                 >
                   <Text className="font-nun-heavy" style={{ fontSize: 13, color: selected ? '#FFFFFF' : INK }}>
                     {d}

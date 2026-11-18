@@ -875,7 +875,7 @@ export default function SatPracticeTestsScreen() {
                   <Pressable
                     key={item.id}
                     onPress={() => setModalTest(item)}
-                    style={({ hovered }: { hovered?: boolean }) => ({
+                    style={({ hovered }) => ({
                       flex: 1,
                       minWidth: wide ? 420 : '100%',
                       maxWidth: wide ? 560 : '100%',
@@ -1058,7 +1058,7 @@ export default function SatPracticeTestsScreen() {
                   {/* Option 1: Full Digital SAT */}
                   <Pressable
                     onPress={() => openTestMode(modalTest, 'full')}
-                    style={({ hovered }: { hovered?: boolean }) => ({
+                    style={({ hovered }) => ({
                       borderRadius: 16,
                       backgroundColor: '#F3F0FB',
                       borderWidth: 2,
@@ -1100,7 +1100,7 @@ export default function SatPracticeTestsScreen() {
                   {/* Option 2: Luyện chuyên sâu Reading (Bài đọc SAT) */}
                   <Pressable
                     onPress={() => openTestMode(modalTest, 'rw')}
-                    style={({ hovered }: { hovered?: boolean }) => ({
+                    style={({ hovered }) => ({
                       borderRadius: 16,
                       backgroundColor: '#F0FDFA',
                       borderWidth: 1.5,
@@ -1137,7 +1137,7 @@ export default function SatPracticeTestsScreen() {
                   {/* Option 3: Reading & Writing */}
                   <Pressable
                     onPress={() => openTestMode(modalTest, 'rw')}
-                    style={({ hovered }: { hovered?: boolean }) => ({
+                    style={({ hovered }) => ({
                       borderRadius: 16,
                       backgroundColor: '#FFFFFF',
                       borderWidth: 1.5,
@@ -1174,7 +1174,7 @@ export default function SatPracticeTestsScreen() {
                   {/* Option 4: SAT Math */}
                   <Pressable
                     onPress={() => openTestMode(modalTest, 'math')}
-                    style={({ hovered }: { hovered?: boolean }) => ({
+                    style={({ hovered }) => ({
                       borderRadius: 16,
                       backgroundColor: '#FFFFFF',
                       borderWidth: 1.5,

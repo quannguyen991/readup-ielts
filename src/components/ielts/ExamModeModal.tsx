@@ -64,7 +64,7 @@ export function ExamModeModal({ visible, onClose, onSelectMode, testTitle, quest
               onPress={onClose}
               accessibilityRole="button"
               accessibilityLabel="Đóng"
-              style={({ hovered }: { hovered?: boolean }) => ({
+              style={({ hovered }) => ({
                 width: 36,
                 height: 36,
                 borderRadius: 18,
@@ -131,7 +131,7 @@ export function ExamModeModal({ visible, onClose, onSelectMode, testTitle, quest
             <Pressable
               onPress={() => onSelectMode(mode)}
               accessibilityRole="button"
-              style={({ hovered }: { hovered?: boolean }) => ({
+              style={({ hovered }) => ({
                 height: 46,
                 paddingHorizontal: 32,
                 borderRadius: 999,

@@ -80,7 +80,7 @@ export function QuestCityHero() {
                 e.stopPropagation?.();
                 router.push('/quest/city' as never);
               }}
-              style={({ hovered }: { hovered?: boolean }) => ({
+              style={({ hovered }) => ({
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 8,
@@ -100,7 +100,7 @@ export function QuestCityHero() {
                 e.stopPropagation?.();
                 router.push('/quest/city?own=1' as never);
               }}
-              style={({ hovered }: { hovered?: boolean }) => ({
+              style={({ hovered }) => ({
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 8,

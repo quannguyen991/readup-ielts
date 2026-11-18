@@ -86,7 +86,7 @@ export default function MixScreen() {
 
         {done ? (
           <View style={{ backgroundColor: '#FFFFFF', borderRadius: 24, borderWidth: 2, borderColor: '#C9C2EE', padding: 24, alignItems: 'center', gap: 10 }}>
-            {score >= qs.length * 0.8 ? <Confetti /> : null}
+            {score >= qs.length * 0.8 ? <Confetti seed={`mix-${round}`} /> : null}
             <Text className="font-nun-heavy" style={{ fontSize: 28, color: '#2B2350' }}>{score}/{qs.length}</Text>
             <Text className="font-nun-strong" style={{ fontSize: 15, color: '#6B6590' }}>{score >= qs.length * 0.8 ? L('Rất tốt!', 'Great work!') : L('Làm thêm một lượt để chắc hơn.', 'Do another round to lock it in.')}</Text>
             <Button label={L('Lượt mới', 'New round')} onPress={() => reset(() => setRound((r) => r + 1))} />

@@ -8,8 +8,6 @@ import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { GlossOrb } from '@/components/ui/GlossOrb';
 import { TileArt } from '@/components/ui/TileArt';
-import { BookCover } from './BookCover';
-import type { BookCoverSpec } from '@/data/book-covers';
 import { studiedPct, type DeckProgress } from '@/services/vocab/deck-library';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { useL } from '@/i18n/useL';
@@ -98,7 +96,6 @@ const COVER_RATIO = 0.8;
  */
 function DeckCover({
   cover,
-  book,
   count,
   icon,
   soft,
@@ -107,7 +104,6 @@ function DeckCover({
   hovered,
 }: {
   cover?: string;
-  book?: BookCoverSpec;
   count: number;
   icon: IconName;
   soft: string;
@@ -115,14 +111,6 @@ function DeckCover({
   seed: string;
   hovered: boolean;
 }) {
-  if (book) {
-    // Bìa sách đứng 4:5, vẽ bằng code (xem `BookCover`), không có quả cầu icon.
-    return (
-      <View style={{ aspectRatio: COVER_RATIO, overflow: 'hidden' }}>
-        <BookCover spec={book} count={count} />
-      </View>
-    );
-  }
   return (
     <View style={{ aspectRatio: 1.5, overflow: 'hidden', backgroundColor: soft }}>
       {cover ? (
@@ -150,7 +138,6 @@ export function DeckCard({
   icon,
   sourceLabel,
   cover,
-  book,
   onPress,
 }: {
   title: string;
@@ -162,8 +149,6 @@ export function DeckCard({
   sourceLabel: string;
   /** Ảnh bìa của bộ (đường dẫn trong app). Không có thì dùng nền màu. */
   cover?: string;
-  /** Bìa sách vẽ bằng code (7 bộ sách từ vựng). Có thì thay cho ảnh bìa. */
-  book?: BookCoverSpec;
   now?: Date;
   onPress: () => void;
 }) {
@@ -173,48 +158,6 @@ export function DeckCard({
   const { L } = useL();
   const [hovered, setHovered] = React.useState(false);
 
-  if (book) {
-    // Sách từ vựng: cả thẻ là một tấm bìa, chân thẻ gọn gồm số chủ đề/từ, tiến độ và mũi tên.
-    return (
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel={L(
-          `${title}. Đã học ${pct}% (${progress.mastered} đã nhớ, ${progress.learning} đang học), ${progress.total} từ.`,
-          `${title}. ${pct}% studied (${progress.mastered} remembered, ${progress.learning} learning), ${progress.total} words.`,
-        )}
-        onPress={onPress}
-        onHoverIn={() => setHovered(true)}
-        onHoverOut={() => setHovered(false)}
-        style={{ height: '100%', minHeight: 300 }}
-      >
-        <View
-          style={{
-            flex: 1,
-            aspectRatio: COVER_RATIO,
-            borderRadius: 18,
-            overflow: 'hidden',
-            ...(WEB
-              ? ({
-                  boxShadow: hovered ? '0 16px 32px rgba(15,15,20,0.4)' : '0 8px 18px rgba(15,15,20,0.26)',
-                  transform: hovered ? 'translateY(-4px)' : 'none',
-                  transition: 'transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease',
-                } as object)
-              : { elevation: 4 }),
-          }}
-        >
-          <BookCover spec={book} count={progress.total}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <DeckProgressBar progress={progress} color={book.accent} height={6} track="rgba(255,255,255,0.18)" />
-              <Text style={{ fontFamily: fontFamily.semibold, fontSize: 12, color: '#FFFFFF' }}>{`${progress.total} ${L('từ', 'words')}`}</Text>
-              <View style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: book.accent, alignItems: 'center', justifyContent: 'center' }}>
-                <Icon name="arrow-right" size={14} color="#0B1F1D" strokeWidth={2.4} />
-              </View>
-            </View>
-          </BookCover>
-        </View>
-      </Pressable>
-    );
-  }
 
   return (
     <Pressable
@@ -244,7 +187,7 @@ export function DeckCard({
         }}
       >
         <LinearGradient colors={[soft, strong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
-        <DeckCover cover={cover} book={book} count={progress.total} icon={icon} soft={soft} strong={strong} seed={title} hovered={hovered} />
+        <DeckCover cover={cover} count={progress.total} icon={icon} soft={soft} strong={strong} seed={title} hovered={hovered} />
 
         <View style={{ flex: 1, paddingHorizontal: 16, paddingBottom: 14, gap: 6, justifyContent: 'flex-end' }}>
           <Text
@@ -286,7 +229,7 @@ export function DeckActionCard({ title, detail, icon, onPress }: { title: string
     <Pressable
       accessibilityRole="link"
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         height: '100%',
         minHeight: 180,
         borderRadius: 20,

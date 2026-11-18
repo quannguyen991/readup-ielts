@@ -24,7 +24,7 @@ export function PrimaryButton({ label, onPress, small }: { label: string; onPres
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         alignSelf: 'flex-start',
         flexDirection: 'row',
         alignItems: 'center',

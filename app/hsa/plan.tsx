@@ -154,7 +154,7 @@ export default function HsaPlanScreen() {
                   {note}
                 </Text>
               ) : null}
-              <Pressable accessibilityRole="button" disabled={loading} onPress={() => void generate(true)} style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, minHeight: 44, borderRadius: 22, backgroundColor: hovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.12)', opacity: loading ? 0.6 : 1 })}>
+              <Pressable accessibilityRole="button" disabled={loading} onPress={() => void generate(true)} style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, minHeight: 44, borderRadius: 22, backgroundColor: hovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.12)', opacity: loading ? 0.6 : 1 })}>
                 <Icon name="sparkle" size={15} color="#FFD84A" strokeWidth={2.2} />
                 <Text className="font-nun-heavy" style={{ fontSize: 14, color: '#FFFFFF' }}>
                   {loading ? L('Đang lập…', 'Planning…') : L('AI lập lại', 'Re-plan')}

@@ -98,7 +98,7 @@ export default function HsaHomeScreen() {
             <CatSticker pose="read" size={wide ? 96 : 66} />
           </View>
           <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, marginTop: 20 }}>
-            <Pressable accessibilityRole="button" onPress={() => router.push(cta.href as never)} style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, paddingLeft: 22, paddingRight: 6, minHeight: 54, borderRadius: 27, alignSelf: wide ? 'flex-start' : 'stretch', backgroundColor: hovered ? '#F1EDFF' : '#FFFFFF' })}>
+            <Pressable accessibilityRole="button" onPress={() => router.push(cta.href as never)} style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, paddingLeft: 22, paddingRight: 6, minHeight: 54, borderRadius: 27, alignSelf: wide ? 'flex-start' : 'stretch', backgroundColor: hovered ? '#F1EDFF' : '#FFFFFF' })}>
               <Text className="font-nun-heavy" style={{ flexShrink: 1, fontSize: 16, lineHeight: 21, color: INK, paddingVertical: 6 }}>
                 {cta.label}
               </Text>
@@ -213,7 +213,7 @@ function KindGroup({ title, kinds, locale, L }: { title: string; kinds: readonly
               key={kind}
               accessibilityRole="button"
               onPress={() => router.push(`/hsa/practice/${kind}` as never)}
-              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 14, paddingVertical: 9, borderRadius: 999, borderWidth: 2, borderBottomWidth: 4, borderColor: '#E6E1F5', backgroundColor: hovered ? '#F8F6FF' : '#FFFFFF' })}
+              style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 14, paddingVertical: 9, borderRadius: 999, borderWidth: 2, borderBottomWidth: 4, borderColor: '#E6E1F5', backgroundColor: hovered ? '#F8F6FF' : '#FFFFFF' })}
             >
               <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: CRITERION_COLOR[KIND_CRITERION[kind]] }} />
               <Text className="font-nun-heavy" style={{ fontSize: 14, color: INK }}>
@@ -232,7 +232,7 @@ function KindGroup({ title, kinds, locale, L }: { title: string; kinds: readonly
 
 function DocRow({ title, note, onPress }: { title: string; note: string; onPress: () => void }) {
   return (
-    <Pressable accessibilityRole="link" onPress={onPress} style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, opacity: hovered ? 0.8 : 1 })}>
+    <Pressable accessibilityRole="link" onPress={onPress} style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, opacity: hovered ? 0.8 : 1 })}>
       <Icon name="external" size={18} color="#6A4BD9" strokeWidth={2.2} />
       <View style={{ flex: 1, minWidth: 0 }}>
         <Text className="font-nun-heavy" style={{ fontSize: 15, lineHeight: 21, color: INK }}>

@@ -32,7 +32,7 @@ export default function MockTests() {
 
       {next ? (
         <HubPanel title="Đề tiếp theo" icon="rocket">
-          <Pressable accessibilityRole="button" onPress={() => router.push(`/hub/mock/${next.id}` as never)} style={({ hovered }: Hover) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}>
+          <Pressable accessibilityRole="button" onPress={() => router.push(`/hub/mock/${next.id}` as never)} style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}>
             <View style={{ flex: 1, gap: 3 }}>
               <Text style={{ color: HUB_UI.navy, fontSize: 18, fontWeight: '900' }}>{next.titleVi}</Text>
               <Text style={{ color: HUB_UI.muted, fontSize: 14, fontWeight: '700' }}>{next.focusVi}</Text>
@@ -47,7 +47,7 @@ export default function MockTests() {
           {MOCK_TESTS.map((m) => {
             const ok = Boolean(done[m.id]);
             return (
-              <Pressable key={m.id} accessibilityRole="button" accessibilityLabel={m.titleVi} onPress={() => router.push(`/hub/mock/${m.id}` as never)} style={({ hovered }: Hover) => ({ flexBasis: 250, flexGrow: 1, flexShrink: 1, minWidth: 0, gap: 8, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: ok ? '#F1FBF5' : '#FFFFFF', ...hubLift(hovered) }) as never}>
+              <Pressable key={m.id} accessibilityRole="button" accessibilityLabel={m.titleVi} onPress={() => router.push(`/hub/mock/${m.id}` as never)} style={({ hovered }) => ({ flexBasis: 250, flexGrow: 1, flexShrink: 1, minWidth: 0, gap: 8, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: ok ? '#F1FBF5' : '#FFFFFF', ...hubLift(hovered) }) as never}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Text style={{ color: HUB_UI.navy, fontSize: 17, fontWeight: '900' }}>{m.titleVi}</Text>
                   {ok ? <HubTag label="ĐÃ LÀM ✓" color={HUB_UI.green} bg="#DDF7E8" /> : null}

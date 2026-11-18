@@ -162,7 +162,7 @@ export function NeonText({ children, style }: { children: React.ReactNode; style
 
 function PressableBare({ label, onPress, children }: { label: string; onPress: () => void; children: React.ReactNode }) {
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress} style={({ hovered }: { hovered?: boolean }) => ({ opacity: hovered ? 0.85 : 1, minHeight: 44, justifyContent: 'center' })}>
+    <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress} style={({ hovered }) => ({ opacity: hovered ? 0.85 : 1, minHeight: 44, justifyContent: 'center' })}>
       {children}
     </Pressable>
   );

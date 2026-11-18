@@ -318,7 +318,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               aria-checked={sound}
               accessibilityLabel={sound ? L('Tắt âm thanh hiệu ứng (phím M)', 'Turn sound effects off (M key)') : L('Bật âm thanh hiệu ứng (phím M)', 'Turn sound effects on (M key)')}
               onPress={() => useGameStore.getState().setSound(!sound)}
-              style={({ hovered }: { hovered?: boolean }) => ({ width: 28, height: 28, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.1)' })}
+              style={({ hovered }) => ({ width: 28, height: 28, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.1)' })}
             >
               <Text style={{ fontSize: 13, opacity: sound ? 1 : 0.6 }}>{sound ? '🔊' : '🔇'}</Text>
             </Pressable>
@@ -622,7 +622,7 @@ function HudButton({ label, hotkey, glyph, owl, count, onPress, active, dim, a11
       accessibilityRole="button"
       accessibilityLabel={a11y}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 5,

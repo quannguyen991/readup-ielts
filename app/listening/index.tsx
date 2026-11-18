@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { color } from '@/theme/tokens';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
@@ -202,7 +203,7 @@ export default function ListeningLibrary() {
                 accessibilityRole="button"
                 accessibilityState={{ selected: on }}
                 onPress={() => pick(m.key)}
-                style={({ hovered }: Hover) => ({ flexGrow: 1, flexBasis: 150, gap: 6, padding: 14, borderRadius: 18, borderWidth: 2, backgroundColor: on ? HUB_UI.wash : '#FFFFFF', ...(on ? { borderColor: HUB_UI.purple } : hubLift(hovered)) }) as never}
+                style={({ hovered }) => ({ flexGrow: 1, flexBasis: 150, gap: 6, padding: 14, borderRadius: 18, borderWidth: 2, backgroundColor: on ? HUB_UI.wash : '#FFFFFF', ...(on ? { borderColor: HUB_UI.purple } : hubLift(hovered)) }) as never}
               >
                 <View style={{ width: 46, height: 46, borderRadius: 14, backgroundColor: m.tint, alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 24 }}>{m.icon}</Text>
@@ -301,7 +302,7 @@ export default function ListeningLibrary() {
       <Pressable
         accessibilityRole="link"
         onPress={() => router.push('/listening/history' as never)}
-        style={({ hovered }: Hover) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+        style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
       >
         <Text style={{ fontSize: 26 }}>🕘</Text>
         <View style={{ flex: 1 }}>

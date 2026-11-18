@@ -209,7 +209,7 @@ export function SourceCatalog(props: Props) {
             <Pressable
               onPress={() => setSort(sort === 'newest' ? 'oldest' : 'newest')}
               accessibilityRole="button"
-              style={({ hovered }: Hover) => ({
+              style={({ hovered }) => ({
                 height: 44,
                 paddingHorizontal: 14,
                 flexDirection: 'row',
@@ -250,7 +250,7 @@ export function SourceCatalog(props: Props) {
             <Pressable
               onPress={() => setVisibleGroups((n) => n + MORE_GROUPS)}
               accessibilityRole="button"
-              style={({ hovered }: Hover) => ({
+              style={({ hovered }) => ({
                 alignSelf: 'center',
                 height: 44,
                 paddingHorizontal: 22,
@@ -287,7 +287,7 @@ function Tab({ label, on, onPress }: { label: string; on: boolean; onPress: () =
       onPress={onPress}
       accessibilityRole="tab"
       accessibilityState={{ selected: on }}
-      style={({ hovered }: Hover) => ({
+      style={({ hovered }) => ({
         height: 38,
         paddingHorizontal: 18,
         borderRadius: 10,
@@ -324,7 +324,7 @@ function SkillRow({
       onPress={onPress}
       accessibilityRole="button"
       accessibilityState={{ selected: on }}
-      style={({ hovered }: Hover) => ({
+      style={({ hovered }) => ({
         width: wide ? '100%' : undefined,
         minHeight: 40,
         paddingHorizontal: 10,
@@ -352,7 +352,7 @@ function BookRow({ label, on, onPress }: { label: string; on: boolean; onPress: 
       onPress={onPress}
       accessibilityRole="radio"
       accessibilityState={{ selected: on }}
-      style={({ hovered }: Hover) => ({
+      style={({ hovered }) => ({
         minHeight: 34,
         paddingHorizontal: 8,
         flexDirection: 'row',
@@ -388,7 +388,7 @@ const TestCard = memo(function TestCard({ item, width, L, onOpen }: { item: Cata
       onPress={() => onOpen(item.id)}
       accessibilityRole="button"
       accessibilityLabel={item.title}
-      style={({ hovered }: Hover) => ({
+      style={({ hovered }) => ({
         width,
         minHeight: 64,
         paddingVertical: 10,

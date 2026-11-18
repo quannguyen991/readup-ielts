@@ -116,7 +116,7 @@ export default function TutorList() {
                     accessibilityRole="button"
                     accessibilityLabel={tutor.name}
                     onPress={() => open(tutor)}
-                    style={({ hovered }: Hover) => ({ flexBasis: 340, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 14, padding: 10, paddingRight: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+                    style={({ hovered }) => ({ flexBasis: 340, flexGrow: 1, flexShrink: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 14, padding: 10, paddingRight: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
                   >
                     {hubCover(tutor.id) ? (
                       <Image source={{ uri: hubCover(tutor.id)! }} accessibilityIgnoresInvertColors style={{ width: cover, height: cover, borderRadius: 18, backgroundColor: m.tint }} resizeMode="cover" />

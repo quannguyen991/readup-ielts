@@ -66,7 +66,7 @@ export default function TalkHub() {
       <HubPanel title="Chọn cấp độ" icon="gamepad">
         <HubChips options={LEVELS} value={level} onChange={setLevel} />
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-          <Pressable accessibilityRole="button" onPress={() => router.push('/hub/live' as never)} style={({ hovered }: Hover) => ({ flexBasis: 240, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12, borderRadius: 16, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}>
+          <Pressable accessibilityRole="button" onPress={() => router.push('/hub/live' as never)} style={({ hovered }) => ({ flexBasis: 240, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12, borderRadius: 16, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}>
             <Text style={{ fontSize: 26 }}>🦁</Text>
             <View style={{ flex: 1 }}>
               <Text style={{ color: HUB_UI.navy, fontSize: 15, fontWeight: '900' }}>Nói cùng Leo</Text>
@@ -74,7 +74,7 @@ export default function TalkHub() {
             </View>
             <Icon name="chevron-right" size={16} color={HUB_UI.muted} />
           </Pressable>
-          <Pressable accessibilityRole="button" onPress={() => router.push('/hub/explore' as never)} style={({ hovered }: Hover) => ({ flexBasis: 240, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12, borderRadius: 16, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}>
+          <Pressable accessibilityRole="button" onPress={() => router.push('/hub/explore' as never)} style={({ hovered }) => ({ flexBasis: 240, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12, borderRadius: 16, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}>
             <Text style={{ fontSize: 26 }}>🎁</Text>
             <View style={{ flex: 1 }}>
               <Text style={{ color: HUB_UI.navy, fontSize: 15, fontWeight: '900' }}>Tình huống tự tạo</Text>

@@ -25,6 +25,7 @@ import { currentStep, stepSummary } from '@/services/vocab/level-path';
 import { dueLemmasToday, studiedLemmas } from '@/services/vocab/topic-fsrs';
 import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
+import { chapterPracticeReady, satQuizLesson } from '@/services/vocab/sat-quiz';
 import { LevelCard } from '@/components/vocab/LevelCard';
 import { LevelHeader } from '@/components/vocab/LevelHeader';
 import { useReadingFonts } from '@/lib/readingFonts';
@@ -201,6 +202,16 @@ export default function VocabTopicScreen() {
   // Số từ đã hiện trong danh sách, tăng dần khi bấm "Hiện thêm".
   const [listLimit, setListLimit] = useState(30);
   const stages = useTopicStudyStore((s) => (typeof slug === 'string' ? s.stages[slug] : undefined));
+  // Luyện đề SAT mở khi đã nhớ hết từ của chủ điểm; các chế độ khác đi thẳng tới trang của chúng.
+  const satLocked = !(topic?.words ?? []).every((w) => (stages?.[w.word] ?? 0) >= 2);
+  const openMode = (m: { key: string; route?: string }) => {
+    if (m.key === 'satpractice') {
+      if (satLocked) return;
+      router.push(`/vocabulary/sat-practice?lesson=${topic?.slug ?? ''}` as never);
+      return;
+    }
+    router.push(`/vocabulary/topic/${topic?.slug ?? ''}/${m.route ?? m.key}` as never);
+  };
   const starredList = useTopicStudyStore((s) => (typeof slug === 'string' ? s.starred[slug] : undefined));
   const toggleStar = useTopicStudyStore((s) => s.toggleStar);
   const setStage = useTopicStudyStore((s) => s.setStage);
@@ -299,7 +310,7 @@ export default function VocabTopicScreen() {
         pct={pct}
         status={status}
         groups={groups}
-        modes={MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m) => ({ key: m.key, route: m.route, label: m.label, labelEn: m.labelEn, note: m.note, noteEn: m.noteEn, recommended: m.recommended }))}
+        modes={MODES.filter((m) => modeReady(m.key, topic.words, topic.language, topic.slug)).map((m) => ({ key: m.key, route: m.route, label: m.label, labelEn: m.labelEn, note: m.note, noteEn: m.noteEn, recommended: m.recommended }))}
         stages={stages}
         starred={starredWords}
         saved={savedLemmas}
@@ -380,14 +391,14 @@ export default function VocabTopicScreen() {
           </View>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
-              {MODES.filter((m) => modeReady(m.key, topic.words, topic.language)).map((m, i) => topic.language === 'ja' ? (
+              {MODES.filter((m) => modeReady(m.key, topic.words, topic.language, topic.slug)).map((m, i) => topic.language === 'ja' ? (
                 <JaTile
                   key={m.key}
                   art={JA_MODE_ART[m.key]}
                   title={en ? m.labelEn : m.label}
                   sub={en ? m.noteEn : m.note}
                   chip={m.recommended ? (en ? 'Suggested' : 'Gợi ý') : undefined}
-                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.route ?? m.key}` as never)}
+                  onPress={() => openMode(m)}
                 />
               ) : (
                 <ToneTile
@@ -399,7 +410,7 @@ export default function VocabTopicScreen() {
                   sub={en ? m.noteEn : m.note}
                   chip={m.recommended ? (en ? 'Suggested' : 'Gợi ý') : undefined}
                   minHeight={220}
-                  onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.route ?? m.key}` as never)}
+                  onPress={() => openMode(m)}
                 />
               ))}
             </Grid>
@@ -768,6 +779,7 @@ const MODES: { key: string; route?: string; label: string; labelEn: string; note
   { key: 'listen', route: 'abcd?mode=listen', label: 'Luyện nghe', labelEn: 'Listening', note: 'Nghe từ hoặc câu, chọn nghĩa đúng', noteEn: 'Hear a word or sentence, pick the meaning', icon: 'volume', tone: '#0EA5E9' },
   { key: 'quiz', label: 'Trắc nghiệm ABCD', labelEn: 'ABCD quiz', note: 'Đề THPT: điền từ, gần nghĩa, trái nghĩa · chọn 10 đến 50 câu', noteEn: 'THPT style: fill the gap, closest and opposite meaning · 10 to 50 questions', icon: 'clipboard', tone: '#E0533D', recommended: true },
   { key: 'advert', route: 'quiz?mode=advert', label: 'Quảng cáo', labelEn: 'Advertisement', note: 'Điền từ vào đoạn quảng cáo, chọn ABCD như đề thi', noteEn: 'Fill the word into an advertisement, ABCD like the exam', icon: 'sparkle', tone: '#EA580C' },
+  { key: 'satpractice', label: 'Luyện đề SAT', labelEn: 'SAT practice', note: 'Đề kiểu SAT: điền từ vào câu, nghĩa của từ trong câu · 20–40 câu', noteEn: 'SAT style: fill the blank, meaning in context · 20–40 questions', icon: 'clipboard', tone: '#D97706' },
   { key: 'flyer', route: 'quiz?mode=flyer', label: 'Tờ rơi', labelEn: 'Flyer', note: 'Điền từ vào tờ rơi thông báo, chọn ABCD như đề thi', noteEn: 'Fill the word into a flyer notice, ABCD like the exam', icon: 'mail', tone: '#0369A1' },
 ];
 
@@ -775,7 +787,8 @@ const clozeableCount = (words: readonly StudyWord[]) => words.filter((w) => w.ex
 const distinctHeadwordCount = (words: readonly StudyWord[]) => new Set(words.map((word) => normalizeAnswer(word.word)).filter(Boolean)).size;
 
 /** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
-function modeReady(key: string, words: readonly StudyWord[], language?: StudyWord['language']): boolean {
+function modeReady(key: string, words: readonly StudyWord[], language?: StudyWord['language'], slug = ''): boolean {
+  if (key === 'satpractice') return chapterPracticeReady(satQuizLesson(slug));
   const hasMeaning = words.some((word) => Boolean(word.meaningVi?.trim() || word.definitionEn?.trim()));
   if (!hasMeaning && ['learn', 'test', 'game', 'pairs', 'hangman', 'quiz', 'advert', 'flyer'].includes(key)) return false;
   const eastAsian = language === 'ja' || language === 'zh';

@@ -175,7 +175,7 @@ export function TodayPlanHero({ wide, greeting, displayName, recommended, due, m
 
 function FooterLink({ label, onPress }: { label: string; onPress: () => void }) {
   return (
-    <Pressable accessibilityRole="button" onPress={onPress} style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 16, height: 42, borderRadius: 21, backgroundColor: hovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.12)' })}>
+    <Pressable accessibilityRole="button" onPress={onPress} style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 16, height: 42, borderRadius: 21, backgroundColor: hovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.12)' })}>
       <Text className="font-nun-heavy" style={{ fontSize: 14, color: '#FFFFFF' }}>
         {label}
       </Text>
@@ -274,7 +274,7 @@ export function TodayProgressCard({ wide, minutes, goal, recentDays, latest, due
             ) : null}
           </View>
 
-          <Pressable accessibilityRole="button" onPress={() => router.push('/vocabulary/spaced-repetition' as never)} style={({ hovered }: { hovered?: boolean }) => ({ height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? '#3A31C8' : NEON_COLORS.indigo, borderWidth: 2, borderColor: '#8F84FF' })}>
+          <Pressable accessibilityRole="button" onPress={() => router.push('/vocabulary/spaced-repetition' as never)} style={({ hovered }) => ({ height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? '#3A31C8' : NEON_COLORS.indigo, borderWidth: 2, borderColor: '#8F84FF' })}>
             <Text className="font-nun-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
               {due > 0 ? L(`Ôn ${fmt(due)} từ`, `Review ${fmt(due)}`) : L('Lịch ôn', 'Review')}
             </Text>

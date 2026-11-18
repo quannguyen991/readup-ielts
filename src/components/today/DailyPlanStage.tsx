@@ -143,7 +143,7 @@ export function DailyPlanStage({ wide, dateLabel, headline, chips, tasks, art = 
                     accessibilityState={{ checked: current.done }}
                     accessibilityLabel={L('Đánh dấu đã xong', 'Mark as done')}
                     onPress={current.onToggle}
-                    style={({ hovered }: { hovered?: boolean }) => ({ width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: current.done ? '#7CFF9B' : 'rgba(255,255,255,0.45)', backgroundColor: current.done ? 'rgba(60,200,110,0.25)' : hovered ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.08)' })}
+                    style={({ hovered }) => ({ width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: current.done ? '#7CFF9B' : 'rgba(255,255,255,0.45)', backgroundColor: current.done ? 'rgba(60,200,110,0.25)' : hovered ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.08)' })}
                   >
                     <NeonIcon name="check" height={26} style={{ opacity: current.done ? 1 : 0.35 }} />
                   </Pressable>

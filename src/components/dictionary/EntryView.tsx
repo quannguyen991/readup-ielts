@@ -193,7 +193,7 @@ function IpaTile({ label, ipa, active, onPlay }: { label: string; ipa: string; a
       accessibilityRole="button"
       accessibilityLabel={`Nghe giọng ${label}`}
       onPress={onPlay}
-      style={({ hovered }: { hovered?: boolean }) =>
+      style={({ hovered }) =>
         ({
           flexGrow: 1,
           flexBasis: 180,

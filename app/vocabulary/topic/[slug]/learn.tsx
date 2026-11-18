@@ -60,7 +60,6 @@ import {
   MIN_ROUND,
   pickRound,
   seededRng,
-  shuffled,
   synonymMatch,
   topUpRound,
   type LearnSettings,

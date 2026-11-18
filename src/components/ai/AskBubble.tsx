@@ -118,7 +118,7 @@ function HeaderBtn({ icon, label, onPress }: { icon: Parameters<typeof Icon>[0][
       accessibilityRole="button"
       accessibilityLabel={label}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? '#F5F2FF' : 'transparent' })}
+      style={({ hovered }) => ({ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? '#F5F2FF' : 'transparent' })}
     >
       <Icon name={icon} size={18} color="#7A72A0" strokeWidth={2} />
     </Pressable>

@@ -78,7 +78,7 @@ export default function ScenariosHub() {
                 accessibilityRole="tab"
                 accessibilityState={{ selected: on }}
                 onPress={() => setTab(t.key)}
-                style={({ hovered }: Hover) => ({ flexGrow: 1, flexBasis: 180, gap: 3, padding: 14, borderRadius: 16, borderWidth: 2, backgroundColor: on ? HUB_UI.wash : '#FFFFFF', ...(on ? { borderColor: HUB_UI.purple } : hubLift(hovered)) }) as never}
+                style={({ hovered }) => ({ flexGrow: 1, flexBasis: 180, gap: 3, padding: 14, borderRadius: 16, borderWidth: 2, backgroundColor: on ? HUB_UI.wash : '#FFFFFF', ...(on ? { borderColor: HUB_UI.purple } : hubLift(hovered)) }) as never}
               >
                 <Text style={{ color: on ? HUB_UI.purple : HUB_UI.navy, fontSize: 16, fontWeight: '900' }}>{t.label} · {n}</Text>
                 <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '600', lineHeight: 18 }}>{t.hint}</Text>
@@ -149,7 +149,7 @@ function CardShell({ label, onPress, wide, children }: { label: string; onPress:
       accessibilityRole="button"
       accessibilityLabel={label}
       onPress={onPress}
-      style={({ hovered }: Hover) => ({ flexBasis: wide ? '100%' : 230, flexGrow: 1, flexShrink: 1, minWidth: 0, padding: 10, gap: 8, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+      style={({ hovered }) => ({ flexBasis: wide ? '100%' : 230, flexGrow: 1, flexShrink: 1, minWidth: 0, padding: 10, gap: 8, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
     >
       {children}
     </Pressable>

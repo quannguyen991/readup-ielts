@@ -353,7 +353,7 @@ function DayRow({ day, today, label, t }: { day: ScheduleDay; today: boolean; la
             accessibilityRole="link"
             disabled={!it.href}
             onPress={() => it.href && router.push(it.href as never)}
-            style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: it.extra ? P.goldLight : P.line, backgroundColor: hovered ? '#F3F0FB' : it.extra ? '#F3F0FB' : '#FFFFFF', maxWidth: '100%' })}
+            style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: it.extra ? P.goldLight : P.line, backgroundColor: hovered ? '#F3F0FB' : it.extra ? '#F3F0FB' : '#FFFFFF', maxWidth: '100%' })}
           >
             {it.extra ? <Icon name="plus" size={11} color={P.goldDeep} /> : null}
             <Text className="font-semi" numberOfLines={1} style={{ fontSize: 13, color: P.navy, flexShrink: 1 }}>

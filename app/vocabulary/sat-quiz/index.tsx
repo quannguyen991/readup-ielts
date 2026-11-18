@@ -199,7 +199,7 @@ function TopicCard({ lesson, best }: { lesson: VocabLesson; best: Record<string,
               }
               onPress={() => router.push(`/vocabulary/sat-quiz/${lesson.slug}?level=${l.level}` as never)}
               className="flex-1 rounded-xl px-2 py-2"
-              style={({ hovered }: { hovered?: boolean }) => ({
+              style={({ hovered }) => ({
                 borderWidth: 1.5,
                 borderColor: suggested ? LEVEL_TONE[i] : hovered ? '#E0D7C7' : '#F3F0FB',
                 backgroundColor: ok ? `${LEVEL_TONE[i]}14` : '#FFFFFF',

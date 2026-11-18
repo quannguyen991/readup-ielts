@@ -204,7 +204,7 @@ export function Chip({ label, selected, accent, onPress }: { label: string; sele
       accessibilityRole="radio"
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         paddingHorizontal: 16,
         paddingVertical: 9,
         borderRadius: 999,
@@ -228,7 +228,7 @@ export function DarkButton({ label, onPress, disabled, icon = 'arrow-right' }: {
       accessibilityState={{ disabled: !!disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -252,7 +252,7 @@ export function SoftButton({ label, onPress, icon }: { label: string; onPress: (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,

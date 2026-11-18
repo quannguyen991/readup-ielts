@@ -205,7 +205,7 @@ export function Practice({ topic, only, extra: extraProp, header }: { topic: Spe
         accessibilityRole="button"
         accessibilityLabel="Nói cùng Leo, giám khảo AI"
         onPress={() => router.push(`/hub/live/${topic.id}` as never)}
-        style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+        style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
       >
         <View style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFF0D6' }}>
           <Text style={{ fontSize: 24 }}>🦁</Text>
@@ -536,7 +536,7 @@ function Summary({
         accessibilityRole="button"
         disabled={answered === 0}
         onPress={onResult}
-        style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16, borderRadius: 18, borderWidth: 2, borderColor: HUB_UI.purple, backgroundColor: HUB_UI.wash, opacity: answered === 0 ? 0.5 : 1, ...(hovered ? { transform: [{ translateY: -2 }] } : null) }) as never}
+        style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16, borderRadius: 18, borderWidth: 2, borderColor: HUB_UI.purple, backgroundColor: HUB_UI.wash, opacity: answered === 0 ? 0.5 : 1, ...(hovered ? { transform: [{ translateY: -2 }] } : null) }) as never}
       >
         <Text style={{ fontSize: 30 }}>📝</Text>
         <View style={{ flex: 1 }}>

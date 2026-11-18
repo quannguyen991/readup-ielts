@@ -64,7 +64,7 @@ export default function GrammarIndex() {
       <Pressable
         accessibilityRole="link"
         onPress={() => router.push(`/ngu-phap/tong-hop?level=${level}` as never)}
-        style={({ hovered }: { hovered?: boolean }) => ({ marginTop: 14, minHeight: 64, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 20, backgroundColor: hovered ? '#FFE9DA' : '#FFF3EA', borderWidth: 1.5, borderColor: '#F7CFB5' }) as never}
+        style={({ hovered }) => ({ marginTop: 14, minHeight: 64, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 20, backgroundColor: hovered ? '#FFE9DA' : '#FFF3EA', borderWidth: 1.5, borderColor: '#F7CFB5' }) as never}
       >
         <View style={{ width: 40, height: 40, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: ACCENT }}>
           <Icon name="target" size={20} color="#FFFFFF" />

@@ -197,7 +197,7 @@ export default function WelcomeScreen() {
             <Pressable
               accessibilityRole="link"
               onPress={() => router.push('/auth/sign-in?mode=signin' as never)}
-              style={({ hovered }: { hovered?: boolean }) => ({
+              style={({ hovered }) => ({
                 paddingHorizontal: 18,
                 paddingVertical: 9,
                 borderRadius: 999,

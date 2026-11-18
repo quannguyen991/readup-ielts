@@ -109,11 +109,11 @@ export default function HubExplore() {
 
       <HubPanel title={L('Thử nghiệm nhập vai', 'Roleplay experiments')} icon="gamepad">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-          <Pressable accessibilityRole="button" onPress={pickSurprise} style={({ hovered }: Hover) => ({ flexBasis: 260, flexGrow: 1, gap: 8, padding: 16, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#F3E9FF', ...hubLift(hovered) }) as never}>
+          <Pressable accessibilityRole="button" onPress={pickSurprise} style={({ hovered }) => ({ flexBasis: 260, flexGrow: 1, gap: 8, padding: 16, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#F3E9FF', ...hubLift(hovered) }) as never}>
             <Text style={{ fontSize: 34 }}>🎁</Text>
             <Text style={{ color: HUB_UI.navy, fontSize: 17, fontWeight: '900' }}>{L('Làm tôi ngạc nhiên', 'Surprise me')}</Text>
           </Pressable>
-          <Pressable accessibilityRole="button" onPress={() => setCreatorOpen(true)} style={({ hovered }: Hover) => ({ flexBasis: 260, flexGrow: 1, gap: 8, padding: 16, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#E4EEFF', ...hubLift(hovered) }) as never}>
+          <Pressable accessibilityRole="button" onPress={() => setCreatorOpen(true)} style={({ hovered }) => ({ flexBasis: 260, flexGrow: 1, gap: 8, padding: 16, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#E4EEFF', ...hubLift(hovered) }) as never}>
             <Text style={{ fontSize: 34 }}>🔮</Text>
             <Text style={{ color: HUB_UI.navy, fontSize: 17, fontWeight: '900' }}>{L('Tạo của riêng tôi', 'Create my own')}</Text>
           </Pressable>
@@ -129,7 +129,7 @@ export default function HubExplore() {
       <HubPanel title={L('Công cụ AI', 'AI tools')} icon="bolt" badge={String(TOOLS.length)}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 12, paddingBottom: 6 }}>
           {TOOLS.map((t) => (
-            <Pressable key={t.title} accessibilityRole="button" accessibilityLabel={t.title} onPress={() => router.push(t.route as never)} style={({ hovered }: Hover) => ({ width: 200, gap: 6, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}>
+            <Pressable key={t.title} accessibilityRole="button" accessibilityLabel={t.title} onPress={() => router.push(t.route as never)} style={({ hovered }) => ({ width: 200, gap: 6, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 {hubCover(t.cover) ? (
                   <Image source={{ uri: hubCover(t.cover)! }} accessibilityIgnoresInvertColors style={{ width: 64, height: 64, borderRadius: 16, backgroundColor: t.tint }} resizeMode="cover" />
@@ -149,7 +149,7 @@ export default function HubExplore() {
       <HubPanel title={L('Bộ học tập dành cho bạn', 'Study sets for you')} icon="medal">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           {sets.map((st) => (
-            <Pressable key={st.title} accessibilityRole="button" accessibilityLabel={st.title} onPress={() => router.push(st.route as never)} style={({ hovered }: Hover) => ({ flexBasis: 250, flexGrow: 1, gap: 8, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}>
+            <Pressable key={st.title} accessibilityRole="button" accessibilityLabel={st.title} onPress={() => router.push(st.route as never)} style={({ hovered }) => ({ flexBasis: 250, flexGrow: 1, gap: 8, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                 <View style={{ width: 48, height: 48, borderRadius: 14, backgroundColor: st.tint, alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 24 }}>{st.icon}</Text>

@@ -90,7 +90,7 @@ export default function QuestHome() {
                 accessibilityRole="button"
                 accessibilityLabel={L('Bật lại chế độ game', 'Turn game mode back on')}
                 onPress={() => setEnabled(true)}
-                style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 12, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: hovered ? HUB.goldHover : HUB.gold })}
+                style={({ hovered }) => ({ borderRadius: 12, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: hovered ? HUB.goldHover : HUB.gold })}
               >
                 <Text className="font-strong" style={{ fontSize: 13, color: HUB.ctaInk }}>
                   {L('Bật lại', 'Turn on')}

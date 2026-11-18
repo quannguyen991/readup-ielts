@@ -1,4 +1,4 @@
-import type { ChartData, MapPanel, SimpleChartData, Task1Chart, WritingPrompt } from '@/lib/writing/types';
+import type { ChartData, LineOrBarChart, MapPanel, SimpleChartData, Task1Chart, WritingPrompt } from '@/lib/writing/types';
 import { deriveAnalysisKey } from '@/services/writing/analysis-key';
 import type { WritingSample, WritingSampleSection, WritingSampleSourceChart } from '@/data/writing-samples';
 
@@ -95,7 +95,7 @@ export function tidTask1Prompt(record: TidTask1Record): WritingPrompt {
     id: task1PromptId(record),
     task: 'ielts_task1',
     promptText: record.prompt,
-    chartKind: chartKindOf(record.typeSlug),
+    chartKind: chartKindOf(record.typeSlug) ?? null,
     chartData: tidTask1ChartData(record),
     essayKind: null,
     topicSlug: 'task1-charts',
@@ -179,7 +179,7 @@ function toSimpleChart(chart: TidTask1ChartRecord, kind?: Task1Chart): SimpleCha
       xLabels: table.rows.map((row) => row.label),
       series: series as { name: string; values: number[] }[],
     };
-    return { ...base, analysisKey: deriveAnalysisKey(base) };
+    return { ...base, analysisKey: deriveAnalysisKey(base as LineOrBarChart) };
   }
 
   // Pie, table, process, map and image-only source figures remain in their

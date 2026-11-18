@@ -51,7 +51,7 @@ export function ExamResourceLinks({ exam }: { exam: Exam }) {
           key={resource.route}
           accessibilityRole="button"
           onPress={() => router.push(resource.route as never)}
-          style={({ hovered }: { hovered?: boolean }) => ({
+          style={({ hovered }) => ({
             flex: 1,
             minWidth: 260,
             flexDirection: 'row',

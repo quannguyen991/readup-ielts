@@ -114,7 +114,7 @@ export default function IeltsSkillsIndexScreen() {
                         key={sk}
                         accessibilityRole="button"
                         onPress={() => router.push(`/ielts/tong-hop?skill=${sk}` as never)}
-                        style={({ hovered }: Hover) => ({ flex: 1, minWidth: 260, gap: 6, borderRadius: 18, padding: 18, backgroundColor: tone.bg, borderWidth: 2, borderColor: tone.fg, ...lift(hovered, tone.fg, true) }) as never}
+                        style={({ hovered }) => ({ flex: 1, minWidth: 260, gap: 6, borderRadius: 18, padding: 18, backgroundColor: tone.bg, borderWidth: 2, borderColor: tone.fg, ...lift(hovered, tone.fg, true) }) as never}
                       >
                         <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 0.8, color: tone.fg }}>{tone.label.toUpperCase()}</Text>
                         <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 26, color: NAVY }}>{L('Tổng hợp 40 câu, chấm ra band', '40 questions, marked to a band')}</Text>
@@ -155,7 +155,7 @@ export default function IeltsSkillsIndexScreen() {
                       key={item.id}
                       accessibilityRole="button"
                       onPress={() => router.push(`/ielts/skills/${item.id}` as never)}
-                      style={({ hovered }: Hover) => ({ gap: 8, borderRadius: 18, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: hovered ? tone.fg : LINE, ...lift(hovered, tone.fg, false) }) as never}
+                      style={({ hovered }) => ({ gap: 8, borderRadius: 18, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: hovered ? tone.fg : LINE, ...lift(hovered, tone.fg, false) }) as never}
                     >
                       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <View style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: tone.bg }}>

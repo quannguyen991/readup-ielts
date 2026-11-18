@@ -127,7 +127,7 @@ export function DailyQuests() {
                 accessibilityRole="button"
                 accessibilityLabel={L(`Nhận thưởng: ${q.title}`, `Claim reward: ${title}`)}
                 onPress={() => claimQuest(q.id)}
-                style={({ hovered }: { hovered?: boolean }) => ({
+                style={({ hovered }) => ({
                   alignItems: 'center',
                   borderRadius: 12,
                   paddingHorizontal: 16,

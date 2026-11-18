@@ -522,7 +522,7 @@ export function LevelCard({
       accessibilityLabel={title}
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         flexGrow: 1,
         flexBasis: Platform.OS === 'web' ? 280 : '100%',
         minHeight: 240,

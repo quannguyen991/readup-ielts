@@ -99,7 +99,7 @@ function Node({ n, big = false }: { n: MindNode; big?: boolean }) {
   );
   if (!n.onPress) return body;
   return (
-    <Pressable accessibilityRole="link" onPress={n.onPress} style={({ hovered }: { hovered?: boolean }) => ({ transform: [{ scale: hovered ? 1.05 : 1 }], transition: 'transform 150ms ease' } as object)}>
+    <Pressable accessibilityRole="link" onPress={n.onPress} style={({ hovered }) => ({ transform: [{ scale: hovered ? 1.05 : 1 }], transition: 'transform 150ms ease' } as object)}>
       {body}
     </Pressable>
   );

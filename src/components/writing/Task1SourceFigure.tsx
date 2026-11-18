@@ -194,7 +194,7 @@ function isPieChart(chart: WritingPromptSourceChart): boolean {
 
 function SourcePieFigures({ chart, compact }: { chart: WritingPromptSourceChart; compact: boolean }) {
   const tables = (chart.dataTables ?? []).flatMap((table, index) => {
-    const slices = table.rows.map((row) => ({ label: row.label, value: sourceNumber(row.values[0]) }));
+    const slices = table.rows.map((row) => ({ label: row.label, value: row.values[0] === undefined ? 0 : sourceNumber(row.values[0]) }));
     if (slices.length < 2 || slices.some((slice) => slice.value === null || slice.value < 0)) return [];
     return [{ caption: table.title ?? `${chart.title} ${index + 1}`, slices: slices as { label: string; value: number }[] }];
   });

@@ -83,7 +83,7 @@ export type WritingSample = {
   sourceChartData?: ChartData | null;
 };
 
-type ParagraphSeed = Omit<WritingSampleParagraph, 'id'>;
+type ParagraphSeed = Omit<WritingSampleParagraph, 'id' | 'section'>;
 
 function essayKindOf(prompt: string): WritingSampleEssayKind {
   if (/discuss both/i.test(prompt)) return 'discussion';
@@ -93,7 +93,7 @@ function essayKindOf(prompt: string): WritingSampleEssayKind {
   return 'two_part';
 }
 
-function paragraph(sampleId: string, index: number, seed: ParagraphSeed): WritingSampleParagraph {
+function paragraph(sampleId: string, index: number, seed: ParagraphSeed & { section: WritingSampleParagraph['section'] }): WritingSampleParagraph {
   return { id: `${sampleId}-p${index + 1}`, ...seed };
 }
 

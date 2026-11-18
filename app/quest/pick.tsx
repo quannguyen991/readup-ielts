@@ -189,7 +189,7 @@ function LessonStep({ island }: { island: Island }) {
             accessibilityRole="link"
             accessibilityLabel={L(`Học tiếp: ${missionTitle(next, locale)}`, `Continue: ${missionTitle(next, locale)}`)}
             onPress={() => router.push(next.href as never)}
-            style={({ hovered }: { hovered?: boolean }) => ({
+            style={({ hovered }) => ({
               flexDirection: 'row',
               alignItems: 'center',
               gap: 8,

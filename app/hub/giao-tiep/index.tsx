@@ -51,7 +51,7 @@ export default function GiaoTiepHub() {
             <HubBar ratio={ok / Math.max(1, c.tasks.length)} color={HUB_UI.green} />
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
               {c.tasks.map((t) => (
-                <Pressable key={t.id} accessibilityRole="button" accessibilityLabel={t.titleVi} onPress={() => router.push(`/hub/giao-tiep/${t.id}` as never)} style={({ hovered }: Hover) => ({ flexBasis: 250, flexGrow: 1, flexShrink: 1, minWidth: 0, gap: 8, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: done[t.id] ? '#F1FBF5' : '#FFFFFF', ...hubLift(hovered) }) as never}>
+                <Pressable key={t.id} accessibilityRole="button" accessibilityLabel={t.titleVi} onPress={() => router.push(`/hub/giao-tiep/${t.id}` as never)} style={({ hovered }) => ({ flexBasis: 250, flexGrow: 1, flexShrink: 1, minWidth: 0, gap: 8, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: done[t.id] ? '#F1FBF5' : '#FFFFFF', ...hubLift(hovered) }) as never}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                     <HubTag label={LEVEL_VI[t.level]} color={DIFF_COLOR[t.level]} />
                     {done[t.id] ? <HubTag label="Đã làm ✓" color={HUB_UI.green} bg="#DDF7E8" /> : null}

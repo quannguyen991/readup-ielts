@@ -61,7 +61,7 @@ export default function TopicsIndex() {
             accessibilityRole="button"
             accessibilityLabel={`${pick.titleVi} — luyện đề`}
             onPress={() => router.push(`/hub/topics/${pick.id}` as never)}
-            style={({ hovered }: Hover) => ({ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}
+            style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1.5, backgroundColor: HUB_UI.wash, ...hubLift(hovered) }) as never}
           >
             <CoinIcon name="speaking" size={56} />
             <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
@@ -105,7 +105,7 @@ function TopicCard({ topic, done }: { topic: SpeakingTopic; done: boolean }) {
       accessibilityRole="button"
       accessibilityLabel={`${topic.titleVi} — luyện đề`}
       onPress={() => router.push(`/hub/topics/${topic.id}` as never)}
-      style={({ hovered }: Hover) => ({ flexBasis: 240, flexGrow: 1, flexShrink: 1, minWidth: 0, padding: 14, gap: 10, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
+      style={({ hovered }) => ({ flexBasis: 240, flexGrow: 1, flexShrink: 1, minWidth: 0, padding: 14, gap: 10, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <CoinIcon name={done ? 'achievements' : 'speaking'} size={44} />

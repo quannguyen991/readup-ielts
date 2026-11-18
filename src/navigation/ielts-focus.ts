@@ -31,6 +31,8 @@ export const IELTS_SKILL_OF: Readonly<Record<string, IeltsSkill>> = {
   hub: 'speaking',
   'toeic-toefl': 'other',
   'hsa-english': 'other',
+  'irregular-verbs': 'other',
+  'ending-sounds': 'other',
 };
 
 /** Khoá có phải là một trang con của IELTS không (để lọc cả màn "Thêm" trên điện thoại). */

@@ -98,7 +98,7 @@ export function OverviewHero({
             <Pressable
               accessibilityRole="button"
               onPress={secondary.onPress}
-              style={({ hovered }: { hovered?: boolean }) => ({ minHeight: 54, paddingHorizontal: 20, borderRadius: 27, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.28)' : 'rgba(255,255,255,0.16)', borderWidth: 2, borderColor: 'rgba(255,255,255,0.45)' })}
+              style={({ hovered }) => ({ minHeight: 54, paddingHorizontal: 20, borderRadius: 27, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.28)' : 'rgba(255,255,255,0.16)', borderWidth: 2, borderColor: 'rgba(255,255,255,0.45)' })}
             >
               <Text className="font-nun-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
                 {secondary.label}

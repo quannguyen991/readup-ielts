@@ -285,7 +285,7 @@ function AccessBar({ access, L }: { access: Access; L: (vi: string, en: string) 
       <Pressable
         accessibilityRole="button"
         onPress={() => router.push((guest ? '/auth/sign-in?mode=signin&next=%2Ftu-sach' : '/upgrade') as never)}
-        style={({ hovered }: { hovered?: boolean }) => ({
+        style={({ hovered }) => ({
           paddingHorizontal: 16,
           paddingVertical: 9,
           borderRadius: 999,
@@ -329,7 +329,7 @@ function BookCard({
   return (
     <View style={{ width }}>
       <Pressable accessibilityRole="button" accessibilityLabel={L(`Đọc thử ${book.title}`, `Preview ${book.title}`)} onPress={onSample}>
-        {({ hovered }: { hovered?: boolean }) => (
+        {({ hovered }) => (
           <View
             style={{
               borderRadius: 3,
@@ -377,7 +377,7 @@ function SmallButton({ label, onPress, solid = false, busy = false }: { label: s
       accessibilityRole="button"
       disabled={busy}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         paddingVertical: 9,
         paddingHorizontal: 12,
         borderRadius: 999,

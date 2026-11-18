@@ -340,7 +340,7 @@ function SidePanel({
               accessibilityRole="button"
               aria-current={here ? 'step' : undefined}
               onPress={() => onPickPart(p.id)}
-              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 11, paddingHorizontal: 10, paddingVertical: 9, backgroundColor: here ? P.goldWash : hovered ? '#F5F2FF' : 'transparent' })}
+              style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 11, paddingHorizontal: 10, paddingVertical: 9, backgroundColor: here ? P.goldWash : hovered ? '#F5F2FF' : 'transparent' })}
             >
               <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: here ? P.gold : '#F5F2FF' }}><Text className="font-heavy" style={{ fontSize: 12, color: here ? '#FFFFFF' : P.goldDeep }}>
                 {String(i + 1).padStart(2, '0')}

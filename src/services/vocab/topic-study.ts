@@ -34,7 +34,6 @@ export type StudyWord = {
   traditional?: string;
   glossLanguage?: 'vi' | 'en';
   sourcePos?: string;
-  glossLanguage?: 'vi' | 'en';
   sourcePage?: number;
   sourceLevel?: string;
   sourceLevels?: string[];

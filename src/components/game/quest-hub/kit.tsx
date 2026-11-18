@@ -119,7 +119,7 @@ export function TextLink({ label, href, onPress }: { label: string; href?: strin
       accessibilityRole="link"
       accessibilityLabel={label}
       onPress={onPress ?? (() => href && router.push(href as never))}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 4,
@@ -221,7 +221,7 @@ export function CtaButton({
       accessibilityRole="link"
       accessibilityLabel={a11yLabel ?? label}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         ...(full ? { alignSelf: 'stretch' as const } : { flexShrink: 1 }),
         minHeight: 48,
         flexDirection: 'row',
@@ -302,7 +302,7 @@ export function BackPill({ label, onPress }: { label: string; onPress: () => voi
       accessibilityRole="link"
       accessibilityLabel={L(`Quay lại ${label}`, `Back to ${label}`)}
       onPress={onPress}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 6,

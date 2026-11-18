@@ -135,7 +135,7 @@ export default function PartsHub() {
       <HubPanel title="Chọn chủ đề để luyện" icon="book" badge={String(SPEAKING_TOPICS.length)}>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           {SPEAKING_TOPICS.map((t) => (
-            <Pressable key={t.id} accessibilityRole="button" onPress={() => router.push(`/hub/topics/${t.id}` as never)} style={({ hovered }: Hover) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, borderWidth: 1.5, backgroundColor: topicsDone[t.id] ? '#DDF7E8' : '#FFFFFF', ...hubLift(hovered) }) as never}>
+            <Pressable key={t.id} accessibilityRole="button" onPress={() => router.push(`/hub/topics/${t.id}` as never)} style={({ hovered }) => ({ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, borderWidth: 1.5, backgroundColor: topicsDone[t.id] ? '#DDF7E8' : '#FFFFFF', ...hubLift(hovered) }) as never}>
               <Text style={{ color: HUB_UI.navy, fontSize: 14, fontWeight: '400' }}>{t.titleVi}</Text>
               {topicsDone[t.id] ? <Icon name="check" size={13} color={HUB_UI.green} /> : null}
             </Pressable>

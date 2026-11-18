@@ -82,7 +82,7 @@ export function QuestJourneyHero() {
       key={href}
       accessibilityRole="link"
       onPress={() => router.push(href as never)}
-      style={({ hovered }: { hovered?: boolean }) => ({
+      style={({ hovered }) => ({
         borderRadius: 14,
         paddingHorizontal: 16,
         paddingVertical: 11,
